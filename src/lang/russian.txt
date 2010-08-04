@@ -459,7 +459,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Созд
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Создание промышленности
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строительство автомобильных дорог
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посадить деревья
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставить знак
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставить метку
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Сохранить сценарий
@@ -479,7 +479,7 @@ STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настрой�
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показывать названия городов
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Показывать названия станций
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Показывать имена точек пути
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показывать знаки
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Показывать метки
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Полная анимация
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Полная детализация
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Прозрачные здания
@@ -549,7 +549,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Строите�
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Ландшафт
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Высадка деревьев
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Поставить знак
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Поставить метку
 ############ range ends here
 
 ############ range for music menu starts
@@ -1270,7 +1270,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :в середи
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :в конце
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Автотранспорт строится в очередь у станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Смещать обзор, когда курсор находится у края экрана: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Разрешить подкупать муниципальную власть: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Разрешить подкупать местные власти: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Разрешить покупать эксклюзивные трансп. права: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Разрешить передачу денег другим компаниям: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть произвольной формы: {ORANGE}{STRING}
@@ -2627,11 +2627,11 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Най�
 STR_NEWGRF_LIST_MISSING                                         :{RED}Файлы отсутствуют
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{STRING}» может привести к потере синхронизации и вылету игры.
+STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{0:STRING}» может привести к потере синхронизации и вылету игры.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта «{1:ENGINE}», находящегося вне депо.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд «{VEHICLE}», принадлежащий «{COMPANY}», имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики. Игра может рассинхронизироваться или вылететь.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF «{STRING}» указывает неверную информацию.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF «{0:STRING}» указывает неверную информацию.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Информация о вместимости/переоборудовании для локомотива «{1:ENGINE}» после постройки отличается от сведений в списке покупки, что может помешать функции автообновления/автозамены корректно произвести переоборудование.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STRING}» вызвал бесконечный цикл.
 
@@ -2646,11 +2646,11 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<неизвес
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список меток - {COMMA} мет{P ка ки ок}
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить надпись на знаке
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}К следующему знаку
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}К предыдущему знаку
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить надпись метки
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}К следующей метке
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}К предыдущей метке
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введите название знака
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введите название метки
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Города
@@ -2884,7 +2884,7 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Авто
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Корабли - нажмите для получения справки
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - нажмите для получения справки
 
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Прибыль в этом году: {CURRENCY} (прошлый год: {CURRENCY})
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Прибыль в этом году: {CURRENCY} (в прошлом году: {CURRENCY})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Доступные поезда
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Доступные автомобили
@@ -3021,7 +3021,7 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Авто
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Автозамена всех судов в доке
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Автозамена всего авиатранспорта в ангаре
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Новый транспорт
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Новый состав
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Новый автомобиль
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Новое судно
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Новое судно
@@ -3111,7 +3111,7 @@ STR_REPLACE_ENGINES                                             :Локомот�
 STR_REPLACE_WAGONS                                              :Вагоны
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тип ж/д транспорта, подлежащего замене
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}На какой танспорт происходит замена
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}На какой транспорт происходит замена
 STR_REPLACE_RAIL_VEHICLES                                       :Поезда
 STR_REPLACE_ELRAIL_VEHICLES                                     :Электропоезда
 STR_REPLACE_MONORAIL_VEHICLES                                   :Монорельсовые
@@ -3676,6 +3676,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Слиш
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Невозможно переименовать станцию...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... эта дорога принадлежит городу
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... неверное направление дороги
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... на проходных остановках нельзя делать повороты
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... на проходных остановках нельзя делать перекрёстки
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Невозможно удалить часть станции...
@@ -3896,10 +3898,10 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Тран
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Этот транспорт не останавливается на этой станции.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... слишком много знаков
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не удалось установить знак...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не удалось изменить надпись на знаке...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не удалось удалить знак...
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... слишком много меток
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не удалось установить метку...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не удалось изменить надпись метки...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не удалось удалить метку...
 
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Клон игры «Transport Tycoon Deluxe»
@@ -4340,7 +4342,7 @@ STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} #
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар ({STATION})
 
 STR_UNKNOWN_STATION                                             :неизвестная станция
-STR_DEFAULT_SIGN_NAME                                           :Знак
+STR_DEFAULT_SIGN_NAME                                           :Метка
 STR_COMPANY_SOMEONE                                             :кто-то
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}

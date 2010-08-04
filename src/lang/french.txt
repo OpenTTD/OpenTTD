@@ -3497,6 +3497,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Trop pr�
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Impossible de renommer la gare...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... cette route appartient à une ville
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... mauvaise orientation de la route
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... les arrêts ne peuvent pas avoir de virages
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... les arrêts ne peuvent pas avoir de jonctions
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Impossible de supprimer une partie de la gare...

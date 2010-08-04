@@ -3707,6 +3707,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Previše
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ova stanica ne može biti preimenovana...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ova ulica je u vlasništvu naselja
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... ulica je okrenuta u drugom pravcu
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... stajalište ne može biti na krivini
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... stajalište ne može biti na raskrsnici
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Deo stanice se ne može ukloniti...

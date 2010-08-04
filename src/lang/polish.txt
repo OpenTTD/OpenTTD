@@ -1506,7 +1506,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Liczba 
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :brak
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :zredukowana
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalna
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków typu ro-ro na drogach miejskich: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków przelotowych na drogach miejskich: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Pozwól na przejazd przez przystanki należące do przeciwników: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Pozwól na budowę przylegających stacji: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Zezwól na wiele zestawów NewGRF: {ORANGE}{STRING}
@@ -3833,6 +3833,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ta firma
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nie można wybudować żadnego miasta
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nie można zmienić nazwy miasta...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nie można tutaj zbudować miasta...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Nie można rozszerzyć miasta...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... zbyt blisko krawędzi mapy
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zbyt blisko innego miasta
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zbyt wiele miast
@@ -3881,6 +3882,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Zbyt bli
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nie można zmienić nazwy stacji...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ta droga należy do miasta
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... droga jest zorientowana w złym kierunku
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... przystanki przelotowe nie mogą mieć zakrętów
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... przystanki przelotowe nie mogą mieć skrzyżowań
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nie można usunąć części stacji...
@@ -4004,6 +4007,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Koniec t
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nie można wydrążyć drugiego końca tunelu
 
 # Unmovable related errors
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nie można zbudować obiektu...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Obiekt na drodze
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... siedziba firmy na drodze
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nie można nabyć tego terenu...

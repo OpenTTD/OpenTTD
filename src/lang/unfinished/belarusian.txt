@@ -625,7 +625,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Набл
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Аддаліць
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Будаўніцтва чыгунак
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Будаўніцтва аўтамабільных дарог
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Будаўніцтва водных камунікацый
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Будаўніцтва водных камунікацыяў
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Будаўніцтва аэрапортаў
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Адкрыць панэль ляндшафту для змяненьня рэльефу, пасадкi дрэваў i г.д.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Наладка гуку й музыкі
@@ -646,7 +646,7 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Генэ
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Генэрацыя прамысловасьці
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Будаўніцтва аўтамабільных дарог
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Пасадзіць дрэвы
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Паставіць знак
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Паставіць метку
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Захаваць сцэнар
@@ -666,7 +666,7 @@ STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Наладкі 
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Паказваць назвы гарадоў
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Паказваць назвы станцыяў
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Паказваць назвы пунктаў шляху
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Паказваць знакі
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Паказваць меткi
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Поўная анімацыя
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Поўная дэталізацыя
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Празрыстыя будынкі
@@ -683,7 +683,7 @@ STR_FILE_MENU_EXIT                                              :Выхад
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Мапа сусьвету
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Дадатковае вакно прагляду
-STR_MAP_MENU_SIGN_LIST                                          :Сьпіс знакаў
+STR_MAP_MENU_SIGN_LIST                                          :Сьпіс метак
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Сьпіс гарадоў
 ############ end of the 'Display map' dropdown
@@ -726,7 +726,7 @@ STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будаўні�
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Будаўніцтва водных камунікацый
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Будаўніцтва водных камунікацыяў
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -736,7 +736,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Будаўні�
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Ляндшафт
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Пасадзіць дрэвы
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Паставіць знак
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Паставіць метку
 ############ range ends here
 
 ############ range for music menu starts
@@ -1148,7 +1148,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Кампанія «{STRING}» атрымала субсыдыю!{}{}Перавозка {STRING.gen} па маршруце {STRING} - {STRING} будзе аплочана ў патроеным памеры на працягу года!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Кампанія «{STRING}» атрымала субсыдыю!{}{}Перавозка {STRING.gen} па маршруце {STRING} - {STRING} будзе аплочана ў чатырохразовым памеры на працягу года!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Хаос на дарогах г. {NBSP}{TOWN}!{}{}Рэканструкцыя дарог, прафінансаваная {STRING}, прынясе кіроўцам 6 месяцаў пакут!
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Хаос на дарогах г. {NBSP}{TOWN}!{}{}Рэканструкцыя дарогаў, прафінансаваная {STRING}, прынясе кіроўцам 6 месяцаў пакут!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вакно прагляду {COMMA}
@@ -1433,7 +1433,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :ў сярэдз
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ў канцы
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Аўтатранспарт зьбiраецца ў чаргу каля прыпынка: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Перамяшчаць агляд, калі курсор знаходзіцца на краі экрана: {ORANGE}{STRING}
-STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Дазволіць падкупляць муніцыпальную ўладу: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Дазволіць падкупляць мясцовыя ўлады: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Дазволіць купляць эксклюзыўныя трансп. правы: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Дазволіць перадачу грошай іншым кампаніям: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Станцыі могуць быць адвольнай формы: {ORANGE}{STRING}
@@ -1534,11 +1534,11 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Укл�
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Паказваць расклад ў «ціках» замест дзён: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Паказваць у раскладах час прыбыцьця й адпраўленьня: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Хуткае стварэньне заданьняў транспарту: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тып рэйкаў па змоўчанні (пасьля старту/загрузкі): {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тып чыгункі па змоўчанні (пасьля старту/загрузкі): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :першыя даступныя
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :апошнія даступныя
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :найбольш ужывальныя
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Паказваць рэйкі, якія зарэзэрваваў цягнік: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Паказваць каляіны, якія зарэзэрваваў цягнік: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Захоўваць актыўнымі інструмэнты будаўніцтва пасьля ўжываньня: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Групаваць выдаткі ў вакне фінансаў кампаніі: {ORANGE}{STRING}
 
@@ -1575,7 +1575,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Укл�
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Дазволіць купляць акцыі іншых кампаніяў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Частка прыбытку, якая налічваецца за частковую перавозку: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Пры ўсталяваньні сыгналаў лініяй, ставіць кожн{P 0 ую ыя ыя}: {ORANGE}{STRING} клет{P ку кі ак}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Будаваць семафоры (сыгналы старога стылю): {ORANGE}да {STRING} года
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Будаваць сэмафоры (сыгналы старога стылю): {ORANGE}да {STRING} года
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Уключыць адмысловае мэню сыгналаў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тып сыгналаў па змоўчаньні: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :звычайныя
@@ -1721,7 +1721,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Вы ў
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Махлярства (чыты)
-STR_CHEATS_TOOLTIP                                              :{BLACK}«Птушачкі» паказваюць, ці выкарыстоўвалі Вы гэты чыт раней
+STR_CHEATS_TOOLTIP                                              :{BLACK}Птушкі паказваюць, ці выкарыстоўвалі Вы гэты чыт раней
 STR_CHEATS_WARNING                                              :{BLACK}Увага, Вы зьбіраецеся здрадзіць сваім спаборнікам! Гэтага вам ніколі не даруюць!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Дадаць {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Гульня за кампанію: {ORANGE}{COMMA}
@@ -1747,7 +1747,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Пака
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Паказаць каляровыя схэмы самалётаў
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Выбраць асноўны колер
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Выбраць дадатковы колер
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Выберыце каляровую схэму ці некалькі схэмаў з Ctrl, клікніце checkbox для праверкі выбранай схэмы
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Выберыце каляровую схэму ці некалькі схэмаў з Ctrl, пастаўце птушку для праверкі выбранай схэмы
 
 STR_LIVERY_DEFAULT                                              :Стандартная афарбоўка
 STR_LIVERY_STEAM                                                :Паравоз
@@ -1894,7 +1894,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Усталяваць пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Абараніце вашу гульню паролем, калі ня хочаце рабіць яе публічна даступнай
 STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Выбар мапы:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}На якой мапе вы жадаеце гуляць?
+STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}На якой мапе Вы жадаеце гуляць?
 STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Згенэраваць выпадковую новую мапу
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Лакальная сетка / Інтэрнэт
@@ -2082,72 +2082,263 @@ STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :атрыман�
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :няправільная вэрсія
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :гэтае імя ўжо выкарыстоўваецца
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :няправільны пароль
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :Вас выкінуў сэрвэр
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :паспрабаваў махляваць
+STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сэрвэр перапоўнены
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Гульня прыпынена ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Гульня ўсё яшчэ спынена ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Гульня ўсё яшчэ спынена ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Гульня ўсё яшчэ спынена ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Гульня працягнута ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :колькасьць гульцоў
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :злучэньне кліентаў
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :уручную
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :выходзіць
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} далучыўся да гульні
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} далучыўся да гульні (кліент #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} далучыўся да кампаніі #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} далучыўся да назіральнікаў
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} распачаў новую кампанію (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} выйшаў з гульні ({2:STRING})
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} зьмяніў сваё імя на {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} перадаў вашай кампаніі {2:CURRENCY}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Вы перадалі {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Гэты сэрвэр закрыў сэсію
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Гэты сэрвэр перазапускаецца...{}Пачакайце, калі ласка
 
 # Content downloading window
+STR_CONTENT_TITLE                                               :{WHITE}Кантэнт запампоўваецца
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Тып
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Тып кантэнту
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Назва
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Найменаваньне кантэнту
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Клікніце па радку для прагляду падрабязнасьцяў{}Пастаўце птушку побач з тым, што трэба запампаваць
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Выбраць ўсё
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Адзначыць увесь кантэнт для запампоўваньня
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Выбраць абнаўленьні
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Адзначыць увесь кантэнт, які зьяўляецца абнаўленьнем для існуючага
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Нічога не адзначаць
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Адзначыць увесь кантэнт нявыбраным, нічога не запампоўваць
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Фільтар па бірках/назвах:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Запампаваць
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Запусьціць запампоўку выбранага кантэнту
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Агульны памер запампоўкі: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}ІНФАРМАЦЫЯ АБ КАНТЭНЦЕ
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Вы гэтага не выбіралі для запампоўваньня
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Вы выбралі гэта для запампоўваньня
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Гэты модуль залежыць ад іншага і будзе спампаваны
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ўжо маеце гэта
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Гэты кантэнт невядомы й ня можа быць спампаваны ў OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Гэта абнаўленьне існуюч{G ага ай ага ых} {STRING.gen}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Назва: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вэрсія: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Апісаньне: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Тып: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Памер: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Выбрана разам з: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Залежнасьці: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Ярлыкі: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD сабраны без падтрымкі бібліятэкі "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... запампоўваньне кантэнту немагчыма!
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m}Базавая графіка
+STR_CONTENT_TYPE_BASE_GRAPHICS.gen                              :набору базавай графікі
+STR_CONTENT_TYPE_BASE_GRAPHICS.acc                              :набор базавай графікі
+STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
+STR_CONTENT_TYPE_NEWGRF.gen                                     :NewGRF
+STR_CONTENT_TYPE_NEWGRF.acc                                     :NewGRF
+STR_CONTENT_TYPE_AI                                             :{G=m}ШІ
+STR_CONTENT_TYPE_AI.gen                                         :ШІ
+STR_CONTENT_TYPE_AI.acc                                         :ШІ
+STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Бібліятэка ШІ
+STR_CONTENT_TYPE_AI_LIBRARY.gen                                 :бібліятэкі ШІ
+STR_CONTENT_TYPE_AI_LIBRARY.acc                                 :бібліятэку ШІ
+STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Сцэнар
+STR_CONTENT_TYPE_SCENARIO.gen                                   :сцэнара
+STR_CONTENT_TYPE_SCENARIO.acc                                   :сцэнар
+STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Мапа вышыняў
+STR_CONTENT_TYPE_HEIGHTMAP.gen                                  :мапы вышыняў
+STR_CONTENT_TYPE_HEIGHTMAP.acc                                  :мапу вышыняў
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m}Базавыя гукі
+STR_CONTENT_TYPE_BASE_SOUNDS.gen                                :набору базавых гукаў
+STR_CONTENT_TYPE_BASE_SOUNDS.acc                                :набор базавых гукаў
+STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m}Базавая музыка
+STR_CONTENT_TYPE_BASE_MUSIC.gen                                 :набору базавай музыкі
+STR_CONTENT_TYPE_BASE_MUSIC.acc                                 :набор базавай музыкі
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Запампоўваньне кантэнту...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Запытваюцца файлы...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Зараз запампоўваецца {STRING} ({NUM} з {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Запампоўваньне выканана
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} з {BYTES} запампована ({NUM} %)
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Не ўдалося злучыцца з сэрвэрам кантэнту...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Памылка запампоўваньня...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... злучэньне страчана
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... немагчыма запісаць файл
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не ўдалося распакаваць запампованы файл
 
 # Transparency settings window
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Пераключэнне празрыстасці мастоў. Ctrl+пстрычка - блакіроўка.
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Наладкі празрыстасьці
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Пераключыць празрыстасьць для назваў станцыяў. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Пераключыць празрыстасьць для дрэваў. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Пераключыць празрыстасьць для дамоў. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Пераключыць празрыстасьць для прадпрыемстваў. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Пераключыць празрыстасьць для будынінаў кшталту станцый, дэпо, пунктаў шляху. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Пераключыць празрыстасьць для мастоў. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Пераключыць празрыстасьць для пабыдоў кшталту маякоў і антэнаў. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Пераключыць празрыстасьць для кантактнай сеткі. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Пераключыць празрыстасьць для індыкатараў загрузкі. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Зрабіць аб'екты не празрыстымі, а цалкам нябачнымі
 
 # Base for station construction window(s)
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Падсьветка зоны пакрыцьця
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Выкл.
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Укл.
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Не паказваць зону пакрыцьця
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Паказваць зону пакрыцьця
+STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Прымае: {GOLD}{STRING}
+STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Прапаноўвае: {GOLD}{STRING}
 
 # Join station window
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Аб'яднаць станцыі
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Пабудаваць асобную станцыю
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Аб'яднаць пункты шляху
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Пабудаваць асобны пункт шляху
 
 # Rail construction toolbar
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Чыгунка
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Электрыфікаваная чыгунка
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Монарэйкі
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Маглеў
 
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Будаўніцтва чыгункі. Пры націснутым Ctrl - выдаленьне пабудаваных рэйкаў.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Будаўніцтва чыгункі ў аўтаматычным рэжыме. Пры націснутым Ctrl - выдаленьне пабудаваных рэйкаў.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Будаўніцтва дэпо (для пакупак і абслугоўваньня цягнікоў).
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Усталяваць на рэйках пункт шляху. Націсьненьне Ctrl дазваляе аб'ядноўваць пункты шляху.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Будаўніцтва чыгуначных станцыяў. Націсьненьне Ctrl дазваляе аб'ядноўваць станцыі.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Усталяваць чыгуначныя сыгналы. Націсьненьне Ctrl пераключае сэмафоры/сьветлафоры.{}Цяганьнем можна будаваць сыгналы на прамым участку каляіны. Ctrl будуе сыгналы да бліжэйшага скрыжаваньня. {}Ctrl+клік пераключае адкрыцьцё мэню выбару сыгналаў.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Будаўніцтва чыгуначных мастоў
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Будаўніцтва чыгуначных тунеляў
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Будаўніцтва чыгуначных тунэляў
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Пераключэньне паміж будаўніцтвам і выдаленьнем чыгуначных рэйкаў, сыгналаў, станцыяў. Пры націснутым Ctrl станцыі ліквідуюцца разам з рэйкамі.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Канвертаваць/мадэрнізаваць тып каляіны
 
 # Rail depot construction window
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Кірунак дэпо
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Выберыце кірунак дэпо
 
 # Rail waypoint construction window
+STR_WAYPOINT_CAPTION                                            :{WHITE}Пункт шляху (Waypoint)
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Выберыце тып пункта шляху
 
 # Rail station construction window
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Выбар чыгуначнай станцыі
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Кірунак
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Выбар кірунку каляінаў чыгуначнай станцыі
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Колькасьць каляінаў/плятформаў
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Выберыце колькасьць каляінаў чыгуначнай станцыі
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Даўжыня каляінаў
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Выберыце даўжыню станцыйных каляінаў
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Участак
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Пабудаваць станцыю на выбраным участку зямлі
 
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Выберыце клясу станцыі для паказу
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Выберыце тып станцыі для пабудовы
 
+STR_STATION_CLASS_DFLT                                          :Станцыя па змоўчаньні
+STR_STATION_CLASS_WAYP                                          :Пункты шляху
 
 # Signal window
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Выбар сыгналаў
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Звычайны сэмафор.{}Не дазваляе некалькім цягнікам адначасова знаходзіцца на адным блёк-участку.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Уваходны сэмафор (прэсыгнал).{}Адкрыты, калі хаця б адзін з выхадных сыгналаў на наступнай сэкцыі каляіны адкрыты. У астатніх выпадках закрыты.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Выхадны сэмафор (прэсыгнал).{}Працуе як звычайны сэмафор, але яго стан улічваецца ў працы ўваходных і камбінаваных сыгналаў.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Камбінаваны сэмафор (прэсыгнал).{}Працуе адначасова як уваходны і выхадны сэмафор. Гэта дазваляе будаваць вялікія «дрэвы» каляінаў з прэсыгналамі.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Маршрутны сэмафор (PMS).{}Дазваляе некалькім цягнікам знаходзіцца ў адным сыгнальным блёку, калі кожны з іх можа зарэзэрваваць сабе бясьпечны шлях. Дазваляе праходжаньне цягнікоў у абодва бакі.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Аднабаковы маршрутны сэмафор (PMS).{}Дазваляе некалькім цягнікам знаходзіцца ў адным сыгнальным блёку, калі кожны з іх можа зарэзэрваваць сабе бясьпечны шлях. Не дазваляе цягнікам праходзіць у адваротны бок.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Звычайны сьветлафор.{}Не дазваляе некалькім цягнікам адначасова знаходзіцца на адным блёк-участку.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Уваходны сьветлафор (прэсыгнал).{}Адкрыты, калі хаця б адзін з выхадных сыгналаў на наступнай сэкцыі каляіны адкрыты. У астатніх выпадках закрыты.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Выхадны сьветлафор (прэсыгнал).{}Працуе як звычайны сьветлафор, але яго стан улічваецца ў працы ўваходных і камбінаваных сыгналаў.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Камбінаваны сьветлафор (прэсыгнал).{}Працуе адначасова як уваходны і выхадны сьветлафор. Гэта дазваляе будаваць вялікія «дрэвы» каляінаў з прэсыгналамі.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Маршрутны сьветлафор (PMS).{}Дазваляе некалькім цягнікам знаходзіцца ў адным сыгнальным блёку, калі кожны з іх можа зарэзэрваваць сабе бясьпечны шлях. Дазваляе праходжаньне цягнікоў у абодва бакі.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Аднабаковы маршрутны сьветлафор (PMS).{}Дазваляе некалькім цягнікам знаходзіцца ў адным сыгнальным блёку, калі кожны з іх можа зарэзэрваваць сабе бясьпечны шлях. Не дазваляе цягнікам праходзіць у адваротны бок.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Зьмяненьне тыпаў сыгналаў.{}Калі кнопка націснута, пстрыкніце для пераўтварэньня існуючага сыгнала ў сыгнал выбранага тыпу й віду, або пстрыкніце з націснутым Ctrl для перабіраньня існуючых варыянтаў.
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Шчыльнасьць аўтаматычнай расстаноўкі сыгналаў пры цягненьні
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Паменшыць шчыльнасьць расстаноўкі сыгналаў
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Павялічыць шчыльнасьць расстаноўкі сыгналаў
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Выберыце чыгуначны мост
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Выберыце аўтамабiльны мост
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Выбар моста - клікніце на малюнку моста, які вы хочаце пабудаваць
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Выбар моста - пстрыкніце па малюнку моста, які Вы хочаце пабудаваць
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Вісячы стальны
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Бэлечны стальны
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Падвесны сталёвы
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Бэлечны сталёвы
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Кансольны стальны
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Вiсячы бетонны
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Падвесны бэтонавы
 STR_BRIDGE_NAME_WOODEN                                          :Драўляны
-STR_BRIDGE_NAME_CONCRETE                                        :Бетонны
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Трубчасты стальны
+STR_BRIDGE_NAME_CONCRETE                                        :Бэтонавы
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Трубчасты сталёвы
 STR_BRIDGE_TUBULAR_SILICON                                      :Трубчасты крэмніевы
 
 
 # Road construction toolbar
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Будаўніцтва грузавых тэрміналаў. Націск Ctrl дазваляе аб'ядноўваць станцыі.
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Будаўніцтва аўтамабільных дарогаў
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Трамваі
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Будаўніцтва аўтамабільнай дарогі. Пры націснутым Ctrl - выдаленьне дарогі.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Будаўніцтва трамвайных каляінаў. Пры націснутым Ctrl - выдаленьне каляінаў.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Будаўніцтва аўтамабільнай дарогі у аўтаматычным рэжыме. Пры націснутым Ctrl - выдаленьне дарогі.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Будаўніцтва трамвайных каляінаў у аўтаматычным рэжыме. Пры націснутым Ctrl - выдаленьне каляінаў.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Будаўніцтва гаража для аўтатранспарту (для пакупак і абслугоўваньня машынаў)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Будаўніцтва трамвайнага дэпо (для пакупак і абслугоўваньня трамваяў)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Будаўніцтва аўтобусных прыпынкаў. Ctrl дазваляе аб'ядноўваць прыпынкі.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Будаўніцтва трамвайных прыпынкаў. Ctrl дазваляе аб'ядноўваць прыпынкі.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Будаўніцтва грузавых тэрміналаў. Націск Ctrl дазваляе аб'ядноўваць тэрміналы.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Будаўніцтва грузавых трамвайных тэрміналаў. Ctrl дазваляе аб'ядноўваць тэрміналы.
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Уключыць/выключыць аднабаковыя дарогі
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Будаўніцтва аўтамабiльных мастоў
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Будаўніцтва трамвайных мастоў
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Будаўніцтва аўтамабiльных тунеляў
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Будаўніцтва трамвайных тунеляў
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Будаўніцтва аўтамабiльных тунэляў
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Будаўніцтва трамвайных тунэляў
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Будаўніцтва/выдаленьне аўтамабільных дарогаў
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Будаўніцтва/выдаленьне трамвайных каляінаў
 
 # Road depot construction window
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Кірунак гаража
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Выберыце кірунак гаража
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Кірунак трамвайнага дэпо
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Выберыце кірунак трамвайнага дэпо
 
 # Road vehicle station construction window
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Арыентацыя тэрмінала
+STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Кірунак аўтобуснага прыпынка
+STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Выберыце кірунак аўтобуснага прыпынка
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Кірунак грузавога тэрмінала
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Выберыце кірунак грузавога тэрмінала
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Кірунак трамвайнага прыпынка
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Выберыце кірунак трамвайнага прыпынка
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Кірунак грузавога трамвайнага тэрмінала
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Выберыце кірунак грузавога трамвайнага тэрмінала
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Будаўніцтва водных камунікацыяў
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Водныя камунікацыі
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Будаўніцтва каналаў
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Будаўніцтва шлюзаў
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Будаўніцтва докаў (для пакупак і абслугоўваньня караблёў)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Будаўніцтва прыстаняў. Націснуты Ctrl дазваляе аб'ядноўваць прыстані.
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Разьмясьціць буй, які можа быць выкарыстаны як пункт шляху
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Будаўніцтва аквэдукаў
 
 # Ship depot construction window
 
@@ -2188,8 +2379,8 @@ STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ланц
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Вытворцы
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Спажыўцы
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Гарадскія будынкі
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Пстрычка па прадпрыемству пакажа яго пастаўшчыкоў і спажыўцоў
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Пстрычка па тыпу грузу пакажа яго вытворцаў і спажыўцоў
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Пстрычка па прадпрыемстве пакажа ягоных пастаўшчыкоў і спажыўцоў
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Пстрычка па тыпе груза пакажа яго пастаўшчыкоў і спажыўцоў
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Паказаць ланцужок
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Паказаць вытворцаў сыравіны і спажыўцоў прадукцыі гэтага прадпрыемства
 
@@ -2349,55 +2540,222 @@ STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Загружа�
 # NewGRF status
 
 # NewGRF 'it's broken' warnings
+STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{0:STRING}» можа прывесці да страты сінхранізацыі і вылету гульні.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Мяняецца даўжыня транспарту «{1:ENGINE}», які знаходзіцца па-за дэпо.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Цягнік «{VEHICLE}», які належыць «{COMPANY}», мае няправільную даўжыню. Верагодна, гэта выклікана праблемамі ў файле новай графікі. Гульня можа рассінхранізавацца або вылецець.
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF «{0:STRING}» паказвае няправільную інфармацыю.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інфармацыя аб умяшчальнасці/пераабсталяваннi для лакаматыва «{1:ENGINE}» пасля пабудовы адрозніваецца ад звестак у спісе пакупкі, што можа перашкодзіць функцыі аўтаабнаўлення/аўтазамены карэктна зрабіць пераабсталяванне.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}«{1:STRING}» выклікаў бясконцы цыкл.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<невядомы груз>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <невядомага грузу>
+STR_NEWGRF_INVALID_ENGINE                                       :<няправільная мадэль>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невядомае прадпрыемства>
 
 # Sign list window
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Спіс метак - {COMMA} мет{P ка кi ак}
 
 # Sign window
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Змяніць надпіс меткi
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Да наступнай меткi
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Да папярэдняй меткi
 
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Увядзіце назву меткi
 
 # Town directory window
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Гарады
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Няма -
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Сьпіс гарадоў - клiк па назве паказвае горад у асноўным акне. Ctrl+клiк паказвае ў дадатковым акне.
+STR_TOWN_POPULATION                                             :{BLACK}Насельніцтва: {COMMA}
 
 # Town view window
+STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Мегаполіс)
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Насельніцтва: {ORANGE}{COMMA}{BLACK}  Будынкаў: {ORANGE}{COMMA}
+STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Пасажыраў за мінулы месяц: {ORANGE}{COMMA}{BLACK}  макс.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Пошты за мінулы месяц: {ORANGE}{COMMA}{BLACK}  макс.: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Груз, неабходны для росту горада:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} патрабу{G 0 е e e ю}цца
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} патрабу{G 0 е e e ю}цца зiмой
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} дастаўлена ў мінулым месяцы
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Узровень шуму ў горадзе: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Паказаць горад у асноўным акне. Ctrl+клік - паказаць у дадатковым акне.
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Мясцовыя ўлады
+STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Інфармацыя аб мясцовых уладах
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Перайменаваць горад
 
+STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Пашырыць
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Павялічыць памер горада
+STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Знішчыць
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Цалкам знішчыць гэты горад
 
+STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Перайменаваць горад
 
 # Town local authority window
+STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Адміністрацыя г.{NBSP}{TOWN}
+STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Рэйтынг транспартных кампаній
+STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Даступныя дзеянні:
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Тое, што можна зрабіць у гэтым горадзе - клікніце для атрымання дадатк. звестак
+STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Скарыстаць
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Выканаць вылучанае дзеянне ў спісе вышэй
 
+STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Маленькая рэкламная кампанія
+STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Сярэдняя рэкламная кампанія
+STR_LOCAL_AUTHORITY_ACTION_LARGE_ADVERTISING_CAMPAIGN           :Вялікая рэкламная кампанія
+STR_LOCAL_AUTHORITY_ACTION_ROAD_RECONSTRUCTION                  :Прафінансаваць рамонт гарадскіх дарог
+STR_LOCAL_AUTHORITY_ACTION_STATUE_OF_COMPANY                    :Усталяваць статую ўладальніка кампаніі
+STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Прафінансаваць будаўніцтва новых будынкаў
+STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Купіць эксклюзіўныя транспартныя правы
+STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Хабар мясцовай адміністрацыі
 
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Правесці маленькую рэкламную кампанію для павелічэння груза-і пасажырапатоку на вашых станцыях.{}Цана: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Правесці сярэднюю рэкламную кампанію для павелічэння груза-і пасажырапатоку на вашых станцыях.{}Цана: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Правесці вялікую рэкламную кампанію для павелічэння груза-і пасажырапатоку на вашых станцыях.{}Цана: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Прафінансаваць рэканструкцыю гарадскіх дарог. Выклікае вялікія парушэнні руху на тэрмін да 6 месяцаў.{}Цана: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Устанавіць статую ў гонар вашай кампаніі.{}Цана: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Прафінансаваць будаўніцтва новых камерцыйных будынкаў у горадзе.{}Цана: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Купіць гадавыя эксклюзіўныя правы на транспартныя перавозкі ў горадзе. Адміністрацыя дазволіць карыстацца ТОЛЬКІ вашымі станцыямі.{}Цана: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Даць хабар гарадской адміністрацыі для павышэння рэйтынгу. Існуе рызыка санкцый, калі факт хабару раскрыецца.{}Цана: {CURRENCY}
 
 # Subsidies window
+STR_SUBSIDIES_CAPTION                                           :{WHITE}Субсідыі:
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Прапанаваныя субсідыі:
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} па маршруце з {STRING} у {STRING}{YELLOW} (па {DATE_SHORT})
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Няма -
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Субсідыруемыя маршруты:
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} па маршруце з {STRING} у {STRING}{YELLOW} ({COMPANY}{YELLOW}, да {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Націсніце на маршрут для адлюстравання прадпрыемства/горада. Ctrl+пстрычка паказвае ў дадатковым акне.
 
 # Station list window
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Спіс станцый - клiк па назве паказвае станцыю ў асноўным акне. Ctrl+клiк паказвае ў дадатковым акне.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Націсніце і ўтрымлівайце Ctrl для выбару больш аднаго варыянту
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} станцы{P я i й}
+STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
+STR_STATION_LIST_NONE                                           :{YELLOW}- Няма -
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Паказаць усе станцыі
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Выбраць усе тыпы грузаў
+STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}На станцыі няма грузаў, якія чакаюць пагрузкі
 
 # Station view window
+STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATIONFEATURES}
+STR_STATION_VIEW_WAITING_TITLE                                  :{BLACK}Чакае: {WHITE}{STRING}
+STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
+STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} транзітам з {STATION})
 
+STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Прымае
+STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Паказаць спіс прымаемых грузаў
+STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Прымаецца: {WHITE}{STRING}
 
+STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Рэйтынг
+STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Паказаць рэйтынг станцыі
+STR_STATION_VIEW_CARGO_RATINGS_TITLE                            :{BLACK}Мясцовы рэйтынг транспартнай кампаніі:
+STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
+STR_CARGO_RATING_APPALLING                                      :Жудасны
+STR_CARGO_RATING_VERY_POOR                                      :Вельмi дрэнны
+STR_CARGO_RATING_POOR                                           :Дрэнны
+STR_CARGO_RATING_MEDIOCRE                                       :Пасрэдны
+STR_CARGO_RATING_GOOD                                           :Добры
+STR_CARGO_RATING_VERY_GOOD                                      :Вельмі добры
+STR_CARGO_RATING_EXCELLENT                                      :Выдатны
+STR_CARGO_RATING_OUTSTANDING                                    :Цудоўны
 ############ range for rating ends
 
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Паказаць станцыю ў асноўным акне. Ctrl+клік - паказаць у дадатковым акне.
+STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Перайменаваць станцыю
 
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Паказаць усе цягнiкi, у раскладзе якіх ёсць гэтая станцыя
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Паказаць усе аўтамабiлi, у раскладзе якіх ёсць гэты тэрмiнал/прыпынак
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Паказаць увесь авiятранспарт, у раскладзе якога ёсць гэты аэрапорт
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Паказаць усе караблі, у раскладзе якіх ёсць гэтая прыстань
 
+STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Назва станцыі
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Паказаць пункт шляху ў асноўным акне. Ctrl+клік - паказаць у дадатковым акне.
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Перайменаваць пункт шляху
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Паказаць буй у асноўным акне. Ctrl+клік - паказаць у дадатковым акне.
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Змяніць назву буя
 
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Назва пункту шляху
 
 # Finances window
+STR_FINANCES_CAPTION                                            :{WHITE}Фінансы - {COMPANY} {BLACK}{COMPANYNUM}
+STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Расход/даход
+STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Будаўнiцтва
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Новая тэхніка
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Абслугоўванне цягнiкоў
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Абслугоўванне аўтамабiляў
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Абслуг. авiятранспарту
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Абслуг. караблёў
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Абслуг. уласнасці
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Прыбытак ад чыгункi
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Прыбытак ад аўта
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Прыбытак ад авіяцыі
+STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Прыбытак ад караблёў
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Працэнты па пазыцы
+STR_FINANCES_SECTION_OTHER                                      :{GOLD}Іншыя выдаткі
+STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
+STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
+STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}РАЗАМ:
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Баланс
+STR_FINANCES_LOAN_TITLE                                         :{WHITE}Пазыка
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Макс. пазыка: {BLACK}{CURRENCY}
+STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
+STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Заняць {CURRENCY}
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Пазычыць грошы. Ctrl+клiк - пазычыць да максiмальнай сумы
+STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Аддаць {CURRENCY}
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Вярнуць частку пазыкі. Ctrl+клiк - вярнуць усё, па магчымасці.
 
 # Company view
+STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Дырэктар)
 
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}На пасадзе з {WHITE}{NUM} году
+STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Колер:
+STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Транспарт:
+STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} цягнiк{P "" i оў}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} аўтамабiл{P ь i яў}
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} паветр. судн{P а ы аў}
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} караб{P ель лi лёў}
+STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}няма
+STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Кошт кампаніі: {WHITE}{CURRENCY}
+STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% валодае {COMPANY})
 
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Пабудаваць штаб
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Пабудаваць штаб-кватэру кампаніі
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Агледзець штаб
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Агледзець штаб-кватэру кампаніі
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Перамясціць
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Перамясціць штаб кампаніі ў іншае месца за 1% ацэначнага кошту капіталу кампаніі
 
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Знешнасць
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Змяніць знешнасць дырэктара
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Колер
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Змяніць колер транспартных сродкаў кампаніі
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Назва
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Змяненне назвы кампаніі
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Дырэктар
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Змена імя дырэктара
 
+STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Купiць 25% акцый кампаніі
+STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Прадаць 25% акцый кампаніі
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Купiць 25% акцый гэтай кампаніі
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Прадаць 25% акцый гэтай кампаніі
 
+STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Кампанія
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Імя дырэктара
 
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Мы шукаем транспартную кампанію для далучэння да яе.{}{}Вы хочаце купіць {COMPANY} за {CURRENCY}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Прамысловасць
@@ -2429,67 +2787,250 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Выра
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Змяніць прадукцыйнасць (кратна 8, да 2040)
 
 # Vehicle lists
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} цягнiк{P "" i оў}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} аўтамабiл{P ь i яў}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} караб{P ель лi лёў}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} адзін{P ка кi ак} авiятранспарту
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Цягнiкi - клікніце для атрымання даведкі
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Аўтамабілі - клікніце для атрымання даведкі
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Караблi - клікніце для атрымання даведкі
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Самалёты - клікніце для атрымання даведкі
 
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Прыбытак у гэтым годзе: {CURRENCY} (у мінулым годзе: {CURRENCY})
 
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Даступныя цягнiкi
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Даступныя аўтамабiлi
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Даступныя караблi
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Даступныя самалёты
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Спіс даступнага транспарту
 
+STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Арганізацыя
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Упраўленне транспартам, які знаходзiцца ў гэтым спісе
+STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Замена транспарту
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Паслаць абслужыць
 
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Паслаць у дэпо
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Паслаць у гараж
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Паслаць у док
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Паслаць у ангар
 
+STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Націсніце для спынення ўсяго транспарту ў спісе
+STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Націсніце для запуску ўсяго транспарту ў спісе
 
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Агульныя заданні для {COMMA} адз. транспарту
 
 # Group window
+STR_GROUP_ALL_TRAINS                                            :Усе цягнiкi
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Усе аўтамабiлi
+STR_GROUP_ALL_SHIPS                                             :Усе караблi
+STR_GROUP_ALL_AIRCRAFTS                                         :Усе самалёты
 
+STR_GROUP_DEFAULT_TRAINS                                        :Бяз групы
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Бяз групы
+STR_GROUP_DEFAULT_SHIPS                                         :Бяз групы
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Бяз групы
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Клікніце па імя групы для адлюстравання спісу транспарту
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Стварыць групу
+STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Выдалiць выбраную групу
+STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Перайменаваць выбраную групу
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Абарона транспарту ў групе ад глабальнай аўтазамены
 
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Дадаць транспарт з агульнымі заданнямі
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Выдаліць усе
 
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Назва групы
 
 # Build vehicle window
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Новы цягнік
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Новы электрацягнік
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Новы манарэйкавы цягнік
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Новы магнiтарэйкавы цягнік
 
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новы цягнiк
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Новы аўтамабiль
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новы карабель
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новы авiятранспарт
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цана: {GOLD}{CURRENCY}{BLACK} Вага: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Хуткасць: {GOLD}{VELOCITY}{BLACK} Магутнасць: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Хуткасць: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Кошт абслугоўвання: {GOLD}{CURRENCY}/год
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ёмістасць: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(пераабст.)
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Распрацаваны ў {GOLD}{NUM} г.{BLACK} Тэрмін службы: {GOLD}{COMMA} г{P од ады адоў}
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Макс. надзейнасць: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}Цана: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага: {GOLD}{WEIGHT_S} ({WEIGHT_S})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Цана: {GOLD}{CURRENCY}{BLACK} Хуткасць: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ёмістасць: {GOLD}{CARGO}, {CARGO}
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Вядучыя вагоны: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Пераабст. для: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Усе тыпы грузаў
 STR_PURCHASE_INFO_ALL_BUT                                       :Усё, акрамя {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. цягавае намаганне: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Выбар вагонаў - клікніце для даведкі
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Спiс аўтатранспарту - націсніце для атрымання даведкі
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Спiс караблёў - націсніце для атрымання даведкі
+STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Авiятранспарт - націсніце для атрымання даведкі
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купiць
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купiць
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купiць
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купiць
 
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Купіць выбраны лакаматыў/вагон
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Купіць выбраны аўтамабiль
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Купіць выбраны карабель
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Купіць выбраны авiятранспарт
 
+STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Перайменаваць
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Перайменаваць
+STR_BUY_VEHICLE_SHIP_RENAME_BUTTON                              :{BLACK}Перайменаваць
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Перайменаваць
 
+STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Змяніць назву мадэлі цягнiка
+STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Змяніць назву мадэлі аўтамабiля
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Змяніць назву мадэлі карабля
+STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Змяніць назву мадэлі паветр. судна
 
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Назва мадэлі цягнiка
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Назва мадэлі аўтамабiля
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Назва мадэлі карабля
+STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Назва мадэлі паветр. судна
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Перайменаваць дэпо
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Назва дэпо
 
+STR_DEPOT_NO_ENGINE                                             :{BLACK}-
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} адзін{P ка кi ак}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Цягнікі - выкарыстоўвайце перацягванне для змены саставу; націсніце ПКМ для атрымання інфармацыі. Утрымлівайце Ctrl для перацягвання вагона разам з усімі наступнымі за ім.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Аўтамабiлi - націсніце ПКМ для атрымання інфармацыі
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Караблi - націсніце ПКМ для атрымання інфармацыі
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авiятранспарт - націсніце ПКМ для атрымання інфармацыі
 
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Перацягнiце сюды цягнiк, каб прадаць яго
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Перацягнiце сюды аўтамабiль, каб прадаць яго
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Перацягнiце сюды карабель, каб прадаць яго
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Перацягнiце сюды авiятранспарт, каб прадаць яго
 
+STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Перацягнiце сюды лакаматыў для продажу ўсяго саставу
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Прадаць усi цягнiкi ў дэпо
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Прадаць усi аўтамабiлi ў гаражы
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Прадаць усi караблi ў доку
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Прадаць увесь авiятранспарт у ангары
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Аўтазамена ўсiх цягнiкоў у дэпо
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Аўтазамена ўсiх аўтамабiляў у гаражы
+STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Аўтазамена ўсiх караблёў у доку
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Аўтазамена ўсяго авiятранспарту ў ангары
 
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Новы састаў
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Новы аўтамабiль
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Новы карабель
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Новае судна
 
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Купіць новы цягнiк
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Купіць новы аўтамабiль
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Купіць новы карабель
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Купіць новы авiятранспарт
 
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Капіраваць
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Капіраваць
+STR_DEPOT_CLONE_SHIP                                            :{BLACK}Капіраваць
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Капіраваць
 
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Стварыць копію саставу. Націсніце на кнопку, а потым на састаў унутры ці звонку дэпо. Ctrl+пстрычка створыць копію з агульнымі заданнямі.
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Стварыць копію аўтамабiля. Націсніце на кнопку, а потым на аўтамабiлi ўнутры ці звонку гаражу. Ctrl+пстрычка створыць копію з агульнымі заданнямі.
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Стварыць копію карабля. Націсніце на кнопку, а потым на карабель ўнутры ці звонку дока. Ctrl+пстрычка створыць копію з агульнымі заданнямі.
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Стварыць копію самалёта. Націсніце на кнопку, а потым на паветр. судна ўнутры ці звонку ангара. Ctrl+пстрычка створыць копію з агульнымі заданнямі.
 
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Паказаць дэпо ў галоўным акне. Ctrl+клік - паказаць у дадатковым акне.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Паказаць гараж у галоўным акне. Ctrl+клік - паказаць у дадатковым акне.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Паказаць док у галоўным акне. Ctrl+клік - паказаць у дадатковым акне.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Паказаць ангар у галоўным акне. Ctrl+клік - паказаць у дадатковым акне.
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Атрымаць спіс цягнiкоў, у якiх у заданнях ёсць гэтае дэпо
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Атрымаць спіс аўтамабiляў, у якiх у заданнях ёсць гэты гараж
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Атрымаць спіс караблёў, у якiх у заданнях ёсць гэты док
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Атрымаць спіс авiятранспарту, у якога ў заданнях ёсць гэты ангар
 
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Націсніце для спынення ўсiх цягнiкоў у дэпо
+STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Націсніце для спынення ўсiх аўтамабiляў у гаражы
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Націсніце для спынення ўсiх караблёў у доку
+STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Націсніце для спынення ўсяго авiятранспарту ў ангары
 
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Націсніце для запуску ўсiх цягнiкоў у дэпо
+STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Націсніце для запуску ўсiх аўтамабiляў у гаражы
+STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Націсніце для запуску ўсiх караблёў у доку
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Націсніце для запуску ўсяго авiятранспарту ў ангары
 
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Увесь транспарт у дэпо будзе прададзены. Вы ўпэўнены?
 
 # Engine preview window
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Паведамленне ад вытворцы транспарту
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Мы стварылі новую мадэль {STRING.gen}. Цi зацікаўлены вы ў яго гадавым эксклюзіўным выкарыстанні для праверкі перад запускам у серыйную вытворчасць?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :чыгуначны лакаматыў
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.gen                      :чыгуначнага лакаматыва
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :аўтамабiль
+STR_ENGINE_PREVIEW_ROAD_VEHICLE.gen                             :аўтамабiля
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :авiятранспарт
+STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :авiятранспарту
+STR_ENGINE_PREVIEW_SHIP                                         :карабель
+STR_ENGINE_PREVIEW_SHIP.gen                                     :карабля
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :манарэйкавы лакаматыў
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.gen                      :манарэйкавага лакаматыва
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :магнiтарэйкавы лакаматыў
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.gen                        :магнiтарэйкавага лакаматыва
 
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цана: {CURRENCY} Вага: {WEIGHT_S}{}Хуткасць: {VELOCITY}  Магутнасць: {POWER}{}Кошт абслуг.: {CURRENCY}/год{}Ёмістасць: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цана: {CURRENCY} Вага: {WEIGHT_S}{}Хуткасць: {VELOCITY}  Магутнасць: {POWER}  Макс. ЦН: {6:FORCE}{}Кошт абслуг.: {4:CURRENCY}/год{}Ёмістасць: {5:CARGO}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Цана: {CURRENCY} Макс. хуткасць: {VELOCITY}{}Ёмістасць: {CARGO}, {CARGO}{}Кошт абслуг.: {CURRENCY}/год
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Цана: {CURRENCY} Макс. хуткасць: {VELOCITY}{}Ёмістасць: {CARGO}{}Кошт абслуг.: {CURRENCY}/yr
 
 # Autoreplace window
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING.gen}
+STR_REPLACE_VEHICLE_TRAIN                                       :Цягнiк
+STR_REPLACE_VEHICLE_TRAIN.gen                                   :чыгуначнага транспарту
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Аўтатранспарт
+STR_REPLACE_VEHICLE_ROAD_VEHICLE.gen                            :аўтранспарту
+STR_REPLACE_VEHICLE_SHIP                                        :Карабель
+STR_REPLACE_VEHICLE_SHIP.gen                                    :караблёў
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Паветраны транспарт
+STR_REPLACE_VEHICLE_AIRCRAFT.gen                                :паветранага транспарту
 
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Выбар тыпу транспарту для замены
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Выбар тыпу транспарту, на які варта замяніць
 
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Пачаць замену
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Пачаць замену выбраных тыпаў транспарту
+STR_REPLACE_NOT_REPLACING                                       :{BLACK}Няма замены
+STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}Транспарт не выбраны
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Спыніць замену
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Спыніць замену транспарту
 
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Замяняем: {ORANGE}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Пераключэньне паміж вокнамі замены лякаматываў і вагонаў
+STR_REPLACE_ENGINES                                             :Лакаматывы
+STR_REPLACE_WAGONS                                              :Вагоны
 
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Тып чыгуначнага транспарту, якi падлягае замене
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}На які транспарт адбываецца замена
+STR_REPLACE_RAIL_VEHICLES                                       :Цягнiкi
+STR_REPLACE_ELRAIL_VEHICLES                                     :Электрацягнікi
+STR_REPLACE_MONORAIL_VEHICLES                                   :Манарэйкавыя
+STR_REPLACE_MAGLEV_VEHICLES                                     :Магнітныя
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Выдаленьне вагонаў: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дазволіць пры аўтазамене захоўваць даўжыню цягнікоў шляхам выдалення вагонаў (пачынаючы з галавы цягніка), калі пры аўтазамене лакаматыва павялічыцца даўжыня цягніка.
 
 # Vehicle view
@@ -3004,7 +3545,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... за
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... занадта блізка да іншага горада
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... занадта шмат гарадоў
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... няма месца на карце
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Гарады не будуюць дарог. Вы можаце ўключыць будаўнiцтва дарог у Паш. наладкі-> Эканоміка-> Гарады.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Гарады не будуюць дарогі. Вы можаце ўключыць будаўнiцтва дарогаў у Паш. наладкі-> Эканоміка-> Гарады.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Ідуць дарожныя работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Немагчыма знішчыць горад:{}да яго тычыцца станцыя або дэпо, альбо немагчыма ачысціць адну з займаных ім клетак.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... у цэнтры горада няма месца для статуі
@@ -3048,6 +3589,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Зана
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Немагчыма перайменаваць станцыю...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... гэтая дарога належыць гораду
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... няправільны кірунак дарогі
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... на прахадных прыпынках нельга рабіць павароты
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... на прахадных прыпынках нельга рабіць скрыжаваннi
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Немагчыма выдаліць частку станцыi...
@@ -3069,7 +3612,7 @@ STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Спач
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Прымыкае да некалькіх пунктаў шляху
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Занадта блізка да іншага пункту шляху
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Занадта блізка да іншага пункта шляху
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Тут немагчыма пабудаваць пункт шляху...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Не атрымалася ўсталяваць тут буй...
@@ -3175,7 +3718,7 @@ STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Нема
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Аб'ект на шляху
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... штаб-кватэра кампаніі на шляху
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Немагчыма купіць гэтую зямлю...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... вы і так ужо валодаеце гэтым!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... Вы і так ужо валодаеце гэтым!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Не атрымалася стварыць групу...
@@ -3268,10 +3811,10 @@ STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Тран
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Гэты транспарт не спыняецца на гэтай станцыі.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... занадта шмат знакаў
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не атрымалася ўсталяваць знак...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не атрымалася змяніць надпіс на знаку...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не атрымалася выдаліць знак...
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... занадта шмат метак
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не атрымалася ўсталяваць метку...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не атрымалася змяніць надпіс меткi...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не атрымалася выдаліць метку...
 
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Клон гульні «Transport Tycoon Deluxe»
@@ -3460,7 +4003,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :Электра�
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :Электравоз «AsiaStar»
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Пасажырскi вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Паштовы вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Вугальная платформа
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Вугальная плятформа
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Нафтавая цыстэрна
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Вагон для жывёлы
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Таварны вагон
@@ -3490,7 +4033,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :Электра�
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Пасажырскi вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Паштовы вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Вугальная платформа
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Вугальная плятформа
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Нафтавая цыстэрна
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Вагон для жывёлы
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Таварны вагон
@@ -3522,7 +4065,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 «Хiме�
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow «Ракета»
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Пасажырскi вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Паштовы вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Вугальная платформа
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Вугальная плятформа
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Нафтавая цыстэрна
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Вагон для жывёлы
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Таварны вагон
@@ -3712,7 +4255,7 @@ STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} �
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар ({STATION})
 
 STR_UNKNOWN_STATION                                             :невядомая станцыя
-STR_DEFAULT_SIGN_NAME                                           :Знак
+STR_DEFAULT_SIGN_NAME                                           :Метка
 STR_COMPANY_SOMEONE                                             :хтосьцi
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
