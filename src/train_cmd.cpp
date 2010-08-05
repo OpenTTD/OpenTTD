@@ -2034,7 +2034,17 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 {
 	bool sound = false;
 
-	if ((v->vehstatus & VS_TRAIN_SLOWING) || v->cur_speed < 2) {
+	/* Do not show any locomotive smoke/sparks when smoke_amount is set to none (0) or train is:
+	 * slowing down or stopped (by the player) or
+	 * it is ordered to reverse direction (by player) so it is slowing down to do it or
+	 * its current speed is less than 2 km-ish/h or
+	 * it is entering station with an order to stop there and its speed is equal to maximum station entering speed. */
+	if (_settings_game.vehicle.smoke_amount == 0 ||
+			v->vehstatus & (VS_TRAIN_SLOWING | VS_STOPPED) ||
+			HasBit(v->flags, VRF_REVERSING) ||
+			v->cur_speed < 2 ||
+			(IsRailStationTile(v->tile) && v->IsFrontEngine() && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile)) &&
+			v->cur_speed >= v->Train::GetCurrentMaxSpeed())) {
 		return;
 	}
 
@@ -2076,24 +2086,45 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 
 		switch (effect_type) {
 			case 0:
-				/* steam smoke. */
-				if (GB(v->tick_counter, 0, 4) == 0) {
+				/* Steam smoke - amount is gradually falling until train reaches its maximum speed, after that it's normal.
+				 * Details: while train's current speed is gradually increasing, steam plumes' density decreases by one third each
+				 * third of its maximum speed spectrum. Steam emission finally normalises at very close to train's maximum speed.
+				 * REGULATION:
+				 * - instead of 1, 4 / 2^smoke_amount (max. 2) is used to provide sufficient regulation to steam puffs' amount. */
+				if (GB(v->tick_counter, 0, ((4 >> _settings_game.vehicle.smoke_amount) + ((u->cur_speed * 3) / u->tcache.cached_max_speed))) == 0) {
 					CreateEffectVehicleRel(v, x, y, 10, EV_STEAM_SMOKE);
 					sound = true;
 				}
 				break;
 
 			case 1:
-				/* diesel smoke */
-				if (u->cur_speed <= 40 && Chance16(15, 128)) {
+				/* Diesel smoke - thicker when train is starting, gradually subsiding till locomotive reaches its maximum speed
+				 * when it stops.
+				 * Details: Train's (max.) speed spectrum is divided into 32 parts. When max. speed is reached, chance for smoke
+				 * emission erodes by 32 (1/4). Power and train's weight come in handy too to either increase smoke emission in
+				 * 6 steps (1000HP each) if the power is low or decrease smoke emission in 6 steps (512 tonnes each) if the train
+				 * isn't overweight. Power and weight contributions are expressed in a way that neither extreme power, nor
+				 * extreme weight can ruin the balance (e.g. FreightWagonMultiplier) in the formula. When the train reaches
+				 * maximum speed no diesel_smoke is emitted as train has enough traction to keep locomotive running optimally.
+				 * REGULATION:
+				 * - up to which speed a diesel train is emitting smoke (with reduced/small setting only until 1/2 of max_speed),
+				 * - in Chance16 - the last value is 512 / 2^smoke_amount (max. smoke when 128 = smoke_amount of 2). */
+				if (u->cur_speed < (u->tcache.cached_max_speed >> (2 >> _settings_game.vehicle.smoke_amount)) &&
+						Chance16((64 - ((u->cur_speed << 5) / u->tcache.cached_max_speed) + (32 >> (u->acc_cache.cached_power >> 10)) - (32 >> (u->acc_cache.cached_weight >> 9))), (512 >> _settings_game.vehicle.smoke_amount))) {
 					CreateEffectVehicleRel(v, 0, 0, 10, EV_DIESEL_SMOKE);
 					sound = true;
 				}
 				break;
 
 			case 2:
-				/* blue spark */
-				if (GB(v->tick_counter, 0, 2) == 0 && Chance16(1, 45)) {
+				/* Electric train's spark - more often occurs when train is departing (more load)
+				 * Details: Electric locomotives are usually at least twice as powerful as their diesel counterparts, so spark
+				 * emissions are kept simple. Only when starting, creating huge force are sparks more likely to happen, but when
+				 * reaching its max. speed, quarter by quarter of it, chance decreases untill the usuall 2,22% at train's top speed.
+				 * REGULATION:
+				 * - in Chance16 the last value is 360 / 2^smoke_amount (max. sparks when 90 = smoke_amount of 2). */
+				if (GB(v->tick_counter, 0, 2) == 0 &&
+						Chance16((6 - ((u->cur_speed << 2) / u->tcache.cached_max_speed)), (360 >> _settings_game.vehicle.smoke_amount))) {
 					CreateEffectVehicleRel(v, 0, 0, 10, EV_ELECTRIC_SPARK);
 					sound = true;
 				}

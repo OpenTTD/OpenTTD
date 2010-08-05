@@ -1084,6 +1084,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allow t
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Allow removal of more town-owned roads, bridges, etc: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Enable building very long trains: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Amount of locomotive smoke/sparks: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :None
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistic
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Train acceleration model: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistic

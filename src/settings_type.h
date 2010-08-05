@@ -313,6 +313,7 @@ struct OrderSettings {
 /** Settings related to vehicles. */
 struct VehicleSettings {
 	bool   mammoth_trains;                   ///< allow very long trains
+	uint8  smoke_amount;                     ///< amount of smoke/sparks locomotives produce
 	uint8  train_acceleration_model;         ///< realistic acceleration for trains
 	uint8  roadveh_acceleration_model;       ///< realistic acceleration for road vehicles
 	uint8  train_slope_steepness;            ///< Steepness of hills for trains when using realistic acceleration
