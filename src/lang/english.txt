@@ -2025,6 +2025,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Build ai
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Airport Selection
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Select size/type of airport
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Airport class
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Layout {NUM}
 
 STR_AIRPORT_SMALL                                               :Small
 STR_AIRPORT_CITY                                                :City

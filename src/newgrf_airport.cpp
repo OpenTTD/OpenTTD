@@ -326,7 +326,7 @@ uint16 GetAirportCallback(CallbackID callback, uint32 param1, uint32 param2, Sta
 {
 	ResolverObject object;
 
-	NewAirportResolver(&object, tile, st, st->airport.type, 0);
+	NewAirportResolver(&object, tile, st, st->airport.type, st->airport.layout);
 	object.callback = callback;
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;

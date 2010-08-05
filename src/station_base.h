@@ -51,6 +51,7 @@ struct Airport : public TileArea {
 
 	uint64 flags; ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
 	byte type;    ///< Type of this airport, @see AirportTypes.
+	byte layout;  ///< Airport layout number.
 
 	/**
 	 * Get the AirportSpec that from the airport type of this airport. If there

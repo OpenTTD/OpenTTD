@@ -33,6 +33,7 @@
 
 static AirportClassID _selected_airport_class; ///< the currently visible airport class
 static int _selected_airport_index;            ///< the index of the selected airport in the current class or -1
+static byte _selected_airport_layout;          ///< selected airport layout number.
 
 static void ShowBuildAirportPicker(Window *parent);
 
@@ -52,6 +53,7 @@ static void PlaceAirport(TileIndex tile)
 	SB(p2, 16, 16, INVALID_STATION); // no station to join
 
 	uint32 p1 = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index)->GetIndex();
+	p1 |= _selected_airport_layout << 8;
 	CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_AIRPORT | CMD_MSG(STR_ERROR_CAN_T_BUILD_AIRPORT_HERE), CcBuildAirport, "" };
 	ShowSelectStationIfNeeded(cmdcont, TileArea(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE));
 }
@@ -197,6 +199,9 @@ enum AirportPickerWidgets {
 	BAIRW_CLASS_DROPDOWN,
 	BAIRW_AIRPORT_LIST,
 	BAIRW_SCROLLBAR,
+	BAIRW_LAYOUT_NUM,
+	BAIRW_LAYOUT_DECREASE,
+	BAIRW_LAYOUT_INCREASE,
 	BAIRW_BOTTOMPANEL,
 	BAIRW_COVERAGE_LABEL,
 	BAIRW_BTN_DONTHILIGHT,
@@ -240,9 +245,18 @@ public:
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget != BAIRW_CLASS_DROPDOWN) return;
+		switch (widget) {
+			case BAIRW_CLASS_DROPDOWN:
+				SetDParam(0, GetAirportClassName(_selected_airport_class));
+				break;
 
-		SetDParam(0, GetAirportClassName(_selected_airport_class));
+			case BAIRW_LAYOUT_NUM:
+				SetDParam(0, STR_STATION_BUILD_AIRPORT_LAYOUT_NAME);
+				SetDParam(1, _selected_airport_layout + 1);
+				break;
+
+			default: break;
+		}
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -328,6 +342,7 @@ public:
 	void SelectOtherAirport(int airport_index)
 	{
 		_selected_airport_index = airport_index;
+		_selected_airport_layout = 0;
 
 		this->UpdateSelectSize();
 		this->SetDirty();
@@ -337,9 +352,14 @@ public:
 	{
 		if (_selected_airport_index == -1) {
 			SetTileSelectSize(1, 1);
+			this->DisableWidget(BAIRW_LAYOUT_DECREASE);
+			this->DisableWidget(BAIRW_LAYOUT_INCREASE);
 		} else {
 			const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index);
 			SetTileSelectSize(as->size_x, as->size_y);
+
+			this->SetWidgetDisabledState(BAIRW_LAYOUT_DECREASE, _selected_airport_layout == 0);
+			this->SetWidgetDisabledState(BAIRW_LAYOUT_INCREASE, _selected_airport_layout + 1 >= as->num_table);
 
 			int rad = _settings_game.station.modified_catchment ? as->catchment : (uint)CA_UNMODIFIED;
 			if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
@@ -368,6 +388,18 @@ public:
 				this->SetDirty();
 				SndPlayFx(SND_15_BEEP);
 				this->UpdateSelectSize();
+				break;
+
+			case BAIRW_LAYOUT_DECREASE:
+				_selected_airport_layout--;
+				this->UpdateSelectSize();
+				this->SetDirty();
+				break;
+
+			case BAIRW_LAYOUT_INCREASE:
+				_selected_airport_layout++;
+				this->UpdateSelectSize();
+				this->SetDirty();
 				break;
 		}
 	}
@@ -430,6 +462,11 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_MATRIX, COLOUR_GREY, BAIRW_AIRPORT_LIST), SetFill(1, 0), SetDataTip(0x501, STR_NULL),
 			NWidget(WWT_SCROLLBAR, COLOUR_GREY, BAIRW_SCROLLBAR),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, BAIRW_LAYOUT_DECREASE), SetMinimalSize(12, 0),SetDataTip(AWV_DECREASE, STR_NULL),
+			NWidget(WWT_LABEL, COLOUR_GREY, BAIRW_LAYOUT_NUM), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_NULL),
+			NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, BAIRW_LAYOUT_INCREASE), SetMinimalSize(12, 0), SetDataTip(AWV_INCREASE, STR_NULL),
 		EndContainer(),
 	EndContainer(),
 	/* Bottom panel. */

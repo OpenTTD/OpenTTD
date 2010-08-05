@@ -2214,6 +2214,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		st->AddFacility(FACIL_AIRPORT, tile);
 		st->airport.type = airport_type;
+		st->airport.layout = layout;
 		st->airport.flags = 0;
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
