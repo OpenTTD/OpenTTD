@@ -338,6 +338,7 @@ static const SaveLoad _station_desc[] = {
 	  SLE_CONDVAR(Station, airport.layout,             SLE_UINT8,                 145, SL_MAX_VERSION),
 	      SLE_VAR(Station, airport.flags,              SLE_UINT64),
 	  SLE_CONDVAR(Station, airport.rotation,           SLE_UINT8,                 145, SL_MAX_VERSION),
+	  SLE_CONDARR(Station, airport.psa.storage,        SLE_UINT32, 16,            145, SL_MAX_VERSION),
 
 	      SLE_VAR(Station, indtype,                    SLE_UINT8),
 

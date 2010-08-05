@@ -263,6 +263,9 @@ uint32 AirportGetVariable(const ResolverObject *object, byte variable, byte para
 	}
 
 	switch (variable) {
+		/* Get a variable from the persistent storage */
+		case 0x7C: return st->airport.psa.Get(parameter);
+
 		case 0xF0: return st->facilities;
 		case 0xFA: return Clamp(st->build_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535);
 	}
@@ -304,7 +307,7 @@ static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st,
 	res->GetVariable   = AirportGetVariable;
 	res->ResolveReal   = AirportResolveReal;
 
-	res->psa                  = NULL;
+	res->psa                  = st != NULL ? &st->airport.psa : NULL;
 	res->u.airport.st         = st;
 	res->u.airport.airport_id = airport_id;
 	res->u.airport.layout     = layout;
