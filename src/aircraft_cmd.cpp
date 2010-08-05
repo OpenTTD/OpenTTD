@@ -855,8 +855,17 @@ static bool AircraftController(Aircraft *v)
 	const Station *st = Station::GetIfValid(v->targetairport);
 	/* INVALID_TILE if there is no station */
 	TileIndex tile = INVALID_TILE;
+	Direction rotation = DIR_N;
+	uint size_x = 1, size_y = 1;
 	if (st != NULL) {
-		tile = (st->airport.tile != INVALID_TILE) ? st->airport.tile : st->xy;
+		if (st->airport.tile != INVALID_TILE) {
+			tile = st->airport.tile;
+			rotation = st->airport.rotation;
+			size_x = st->airport.w;
+			size_y = st->airport.h;
+		} else {
+			tile = st->xy;
+		}
 	}
 	/* DUMMY if there is no station or no airport */
 	const AirportFTAClass *afc = tile == INVALID_TILE ? GetAirport(AT_DUMMY) : st->airport.GetFTA();
@@ -878,7 +887,7 @@ static bool AircraftController(Aircraft *v)
 	}
 
 	/*  get airport moving data */
-	const AirportMovingData amd = *afc->MovingData(v->pos);
+	const AirportMovingData amd = RotateAirportMovingData(afc->MovingData(v->pos), rotation, size_x, size_y);
 
 	int x = TileX(tile) * TILE_SIZE;
 	int y = TileY(tile) * TILE_SIZE;

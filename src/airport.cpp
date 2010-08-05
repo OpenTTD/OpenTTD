@@ -151,6 +151,42 @@ static byte AirportTestFTA(uint nofelements, const AirportFTA *layout, const byt
 static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool full_report);
 #endif
 
+/**
+ * Rotate the airport moving data to another rotation.
+ * @param orig Pointer to the moving data to rotate.
+ * @param rotation How to rotate the moving data.
+ * @return The rotated moving data.
+ */
+AirportMovingData RotateAirportMovingData(const AirportMovingData *orig, Direction rotation, uint num_tiles_x, uint num_tiles_y)
+{
+	AirportMovingData amd;
+	amd.flag = orig->flag;
+	amd.direction = ChangeDir(orig->direction, (DirDiff)rotation);
+	switch (rotation) {
+		case DIR_N:
+			amd.x = orig->x;
+			amd.y = orig->y;
+			break;
+
+		case DIR_E:
+			amd.x = orig->y;
+			amd.y = num_tiles_y * TILE_SIZE - orig->x - 1;
+			break;
+
+		case DIR_S:
+			amd.x = num_tiles_x * TILE_SIZE - orig->x - 1;
+			amd.y = num_tiles_y * TILE_SIZE - orig->y - 1;
+			break;
+
+		case DIR_W:
+			amd.x = num_tiles_x * TILE_SIZE - orig->y - 1;
+			amd.y = orig->x;
+			break;
+
+		default: NOT_REACHED();
+	}
+	return amd;
+}
 
 AirportFTAClass::AirportFTAClass(
 	const AirportMovingData *moving_data_,
