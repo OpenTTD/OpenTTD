@@ -10,6 +10,7 @@
 /** @file newgrf_airport.cpp NewGRF handling of airports. */
 
 #include "stdafx.h"
+#include "debug.h"
 #include "airport.h"
 #include "newgrf_airport.h"
 #include "date_func.h"
@@ -17,6 +18,9 @@
 #include "core/alloc_type.hpp"
 #include "newgrf.h"
 #include "newgrf_commons.h"
+#include "newgrf_spritegroup.h"
+#include "newgrf_text.h"
+#include "station_base.h"
 #include "table/strings.h"
 
 static AirportClass _airport_classes[APC_MAX];
@@ -238,3 +242,97 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 	}
 }
 
+uint32 AirportGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
+{
+	const Station *st = object->u.airport.st;
+	byte layout       = object->u.airport.layout;
+
+	if (object->scope == VSG_SCOPE_PARENT) {
+		DEBUG(grf, 1, "Parent scope for airports unavailable");
+		*available = false;
+		return UINT_MAX;
+	}
+
+	switch (variable) {
+		case 0x40: return layout;
+	}
+
+	if (st == NULL) {
+		*available = false;
+		return UINT_MAX;
+	}
+
+	switch (variable) {
+		case 0xF0: return st->facilities;
+		case 0xFA: return Clamp(st->build_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535);
+	}
+
+	return st->GetNewGRFVariable(object, variable, parameter, available);
+}
+
+static const SpriteGroup *AirportResolveReal(const ResolverObject *object, const RealSpriteGroup *group)
+{
+	/* Airport action 2s should always have only 1 "loaded" state, but some
+	 * times things don't follow the spec... */
+	if (group->num_loaded > 0) return group->loaded[0];
+	if (group->num_loading > 0) return group->loading[0];
+
+	return NULL;
+}
+
+static uint32 AirportGetRandomBits(const ResolverObject *object)
+{
+	const Station *st = object->u.airport.st;
+	const TileIndex tile = object->u.airport.tile;
+	return (st == NULL ? 0 : st->random_bits) | (tile == INVALID_TILE ? 0 : GetStationTileRandomBits(tile) << 16);
+}
+
+static uint32 AirportGetTriggers(const ResolverObject *object)
+{
+	return 0;
+}
+
+static void AirportSetTriggers(const ResolverObject *object, int triggers)
+{
+}
+
+static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st, byte airport_id, byte layout)
+{
+	res->GetRandomBits = AirportGetRandomBits;
+	res->GetTriggers   = AirportGetTriggers;
+	res->SetTriggers   = AirportSetTriggers;
+	res->GetVariable   = AirportGetVariable;
+	res->ResolveReal   = AirportResolveReal;
+
+	res->psa                  = NULL;
+	res->u.airport.st         = st;
+	res->u.airport.airport_id = airport_id;
+	res->u.airport.layout     = layout;
+	res->u.airport.tile       = tile;
+
+	res->callback        = CBID_NO_CALLBACK;
+	res->callback_param1 = 0;
+	res->callback_param2 = 0;
+	res->last_value      = 0;
+	res->trigger         = 0;
+	res->reseed          = 0;
+	res->count           = 0;
+
+	const AirportSpec *as = AirportSpec::Get(airport_id);
+	res->grffile = (as != NULL ? as->grf_prop.grffile : NULL);
+}
+
+uint16 GetAirportCallback(CallbackID callback, uint32 param1, uint32 param2, Station *st, TileIndex tile)
+{
+	ResolverObject object;
+
+	NewAirportResolver(&object, tile, st, st->airport.type, 0);
+	object.callback = callback;
+	object.callback_param1 = param1;
+	object.callback_param2 = param2;
+
+	const SpriteGroup *group = SpriteGroup::Resolve(st->airport.GetSpec()->grf_prop.spritegroup, &object);
+	if (group == NULL) return CALLBACK_FAILED;
+
+	return group->GetCallbackResult();
+}

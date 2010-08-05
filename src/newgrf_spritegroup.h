@@ -349,9 +349,10 @@ struct ResolverObject {
 			bool upper_halftile;           ///< Are we resolving sprites for the upper halftile?
 		} routes;
 		struct {
-			const struct Station *st;
-			byte airport_id;
-			TileIndex tile;
+			const struct Station *st;      ///< Station of the airport for which the callback is run, or NULL for build gui.
+			byte airport_id;               ///< Type of airport for which the callback is run
+			byte layout;                   ///< Layout of the airport to build.
+			TileIndex tile;                ///< Tile for the callback, only valid for airporttile callbacks.
 		} airport;
 	} u;
 
