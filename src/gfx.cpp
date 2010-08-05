@@ -1775,22 +1775,37 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 	return true;
 }
 
-static void SetCursorSprite(CursorID cursor, PaletteID pal)
+/**
+ * Update cursor dimension.
+ * Called when changing cursor sprite resp. reloading grfs.
+ */
+void UpdateCursorSize()
 {
 	CursorVars *cv = &_cursor;
-	const Sprite *p;
+	const Sprite *p = GetSprite(GB(cv->sprite, 0, SPRITE_WIDTH), ST_NORMAL);
 
-	if (cv->sprite == cursor) return;
-
-	p = GetSprite(GB(cursor, 0, SPRITE_WIDTH), ST_NORMAL);
-	cv->sprite = cursor;
-	cv->pal    = pal;
 	cv->size.y = p->height;
 	cv->size.x = p->width;
 	cv->offs.x = p->x_offs;
 	cv->offs.y = p->y_offs;
 
 	cv->dirty = true;
+}
+
+/**
+ * Switch cursor to different sprite.
+ * @param cursor Sprite to draw for the cursor.
+ * @param pal Palette to use for recolouring.
+ */
+static void SetCursorSprite(CursorID cursor, PaletteID pal)
+{
+	CursorVars *cv = &_cursor;
+	if (cv->sprite == cursor) return;
+
+	cv->sprite = cursor;
+	cv->pal    = pal;
+	UpdateCursorSize();
+
 	cv->short_vehicle_offset = 0;
 }
 
@@ -1813,6 +1828,12 @@ void CursorTick()
 	}
 }
 
+/**
+ * Assign a single non-animated sprite to the cursor.
+ * @param sprite Sprite to draw for the cursor.
+ * @param pal Palette to use for recolouring.
+ * @see SetAnimatedMouseCursor
+ */
 void SetMouseCursor(CursorID sprite, PaletteID pal)
 {
 	/* Turn off animation */
@@ -1821,6 +1842,11 @@ void SetMouseCursor(CursorID sprite, PaletteID pal)
 	SetCursorSprite(sprite, pal);
 }
 
+/**
+ * Assign an animation to the cursor.
+ * @param table Array of animation states.
+ * @see SetMouseCursor
+ */
 void SetAnimatedMouseCursor(const AnimCursor *table)
 {
 	_cursor.animate_list = table;

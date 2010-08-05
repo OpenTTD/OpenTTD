@@ -159,6 +159,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 void SetMouseCursor(CursorID cursor, PaletteID pal);
 void SetAnimatedMouseCursor(const AnimCursor *table);
 void CursorTick();
+void UpdateCursorSize();
 bool ChangeResInGame(int w, int h);
 void SortResolutions(int count);
 bool ToggleFullScreen(bool fs);
