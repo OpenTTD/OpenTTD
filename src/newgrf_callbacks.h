@@ -242,6 +242,12 @@ enum CallbackID {
 
 	/** Called to indicate how long the current animation frame should last. */
 	CBID_AIRPTILE_ANIMATION_SPEED        = 0x154, // 8 bit callback
+
+	/**
+	 * This callback is called from airport list. It returns a value to be
+	 * used as a custom string ID in the 0xD000 range.
+	 */
+	CBID_AIRPORT_ADDITIONAL_TEXT         = 0x155, // 15 bit callback
 };
 
 /**

@@ -24,6 +24,7 @@
 #include "company_base.h"
 #include "station_type.h"
 #include "newgrf_airport.h"
+#include "newgrf_callbacks.h"
 #include "widgets/dropdown_type.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
@@ -204,6 +205,7 @@ enum AirportPickerWidgets {
 	BAIRW_LAYOUT_DECREASE,
 	BAIRW_LAYOUT_INCREASE,
 	BAIRW_AIRPORT_SPRITE,
+	BAIRW_EXTRA_TEXT,
 	BAIRW_BOTTOMPANEL,
 	BAIRW_COVERAGE_LABEL,
 	BAIRW_BTN_DONTHILIGHT,
@@ -306,6 +308,22 @@ public:
 				}
 				break;
 
+			case BAIRW_EXTRA_TEXT:
+				for (int i = NEW_AIRPORT_OFFSET; i < NUM_AIRPORTS; i++) {
+					const AirportSpec *as = AirportSpec::Get(i);
+					if (!as->enabled) continue;
+					for (byte layout = 0; layout < as->num_table; layout++) {
+						StringID string = GetAirportTextCallback(as, layout, CBID_AIRPORT_ADDITIONAL_TEXT);
+						if (string == STR_UNDEFINED) continue;
+
+						/* STR_BLACK_STRING is used to start the string with {BLACK} */
+						SetDParam(0, string);
+						Dimension d = GetStringMultiLineBoundingBox(STR_BLACK_STRING, *size);
+						*size = maxdim(d, *size);
+					}
+				}
+				break;
+
 			default: break;
 		}
 	}
@@ -330,6 +348,17 @@ public:
 				if (this->preview_sprite != 0) {
 					Dimension d = GetSpriteSize(this->preview_sprite);
 					DrawSprite(this->preview_sprite, PAL_NONE, (r.left + r.right - d.width) / 2, (r.top + r.bottom - d.height) / 2);
+				}
+				break;
+
+			case BAIRW_EXTRA_TEXT:
+				if (_selected_airport_index != -1) {
+					const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index);
+					StringID string = GetAirportTextCallback(as, _selected_airport_layout, CBID_AIRPORT_ADDITIONAL_TEXT);
+					if (string != STR_UNDEFINED) {
+						SetDParam(0, string);
+						DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_BLACK_STRING);
+					}
 				}
 				break;
 		}
@@ -507,6 +536,7 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 			NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, BAIRW_LAYOUT_INCREASE), SetMinimalSize(12, 0), SetDataTip(AWV_INCREASE, STR_NULL),
 		EndContainer(),
 		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, BAIRW_AIRPORT_SPRITE), SetFill(1, 0),
+		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, BAIRW_EXTRA_TEXT), SetFill(1, 0), SetMinimalSize(150, 0),
 	EndContainer(),
 	/* Bottom panel. */
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAIRW_BOTTOMPANEL), SetPIP(2, 2, 2),
