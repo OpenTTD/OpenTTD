@@ -28,6 +28,7 @@
 #include "widgets/dropdown_type.h"
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
+#include "sprite.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -352,7 +353,7 @@ public:
 			case BAIRW_AIRPORT_SPRITE:
 				if (this->preview_sprite != 0) {
 					Dimension d = GetSpriteSize(this->preview_sprite);
-					DrawSprite(this->preview_sprite, PAL_NONE, (r.left + r.right - d.width) / 2, (r.top + r.bottom - d.height) / 2);
+					DrawSprite(this->preview_sprite, COMPANY_SPRITE_COLOUR(_local_company), (r.left + r.right - d.width) / 2, (r.top + r.bottom - d.height) / 2);
 				}
 				break;
 
