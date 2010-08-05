@@ -117,4 +117,6 @@ uint GetNumAirportsInClass(AirportClassID id);
 void BindAirportSpecs();
 const AirportSpec *GetAirportSpecFromClass(AirportClassID aclass, uint airport);
 
+StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16 callback);
+
 #endif /* NEWGRF_AIRPORT_H */

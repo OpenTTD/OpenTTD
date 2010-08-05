@@ -349,3 +349,17 @@ uint16 GetAirportCallback(CallbackID callback, uint32 param1, uint32 param2, Sta
 
 	return group->GetCallbackResult();
 }
+
+StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16 callback)
+{
+	const SpriteGroup *group;
+	ResolverObject object;
+
+	NewAirportResolver(&object, INVALID_TILE, NULL, as->GetIndex(), layout);
+	object.callback = (CallbackID)callback;
+
+	group = SpriteGroup::Resolve(as->grf_prop.spritegroup, &object);
+	if (group == NULL) return STR_UNDEFINED;
+
+	return GetGRFStringID(as->grf_prop.grffile->grfid, 0xD000 + group->GetResult());
+}
