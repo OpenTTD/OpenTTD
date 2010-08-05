@@ -1084,6 +1084,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Salli m
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Kaupungin omistamien teiden, siltojen, jne. raivaaminen sallittu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Erittäin pitkien junien rakentaminen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Veturin savun/kipinöiden määrä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ei yhtään
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Alkuperäinen
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistinen
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Junien kiihdytysmalli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Alkuperäinen
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistinen
@@ -2025,6 +2029,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Rakenna 
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Lentokentän valinta
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Valitse lentokentän koko ja tyyppi.
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Lentokentän luokka
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Kaava {NUM}
 
 STR_AIRPORT_SMALL                                               :Pieni
 STR_AIRPORT_CITY                                                :Kaupunki

@@ -3447,6 +3447,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Níl an 
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ní féidir baile ar bith a thógáil
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ní féidir an baile a athainmniú...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Ní féidir baile a bhunú anseo...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Ní féidir an baile a fhairsingiú...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... roghearr to thaobh na léarscáile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... roghearr do bhaile eile
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... an iomarca bailte
@@ -3495,6 +3496,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Roghearr
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ní féidir an stáisiún a athainmniú...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... seo bóthair faoi úinéireacht an bhaile
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tá an bóthair ag dul sa treo mícheart
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... ní féidir cúinní a bheith ag stadanna tiomáin tríd
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... ní féidir acomhal a bheith ag stadanna tiomáin tríd
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ní féidir cuid den stáisiún a bhaint...
@@ -3618,6 +3621,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Bheadh d
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ní féidir an talamh a thochailt don taobh eile den tollán
 
 # Unmovable related errors
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ní féidir an oibiacht a thógáil...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Tá rud sa bhealach
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... tá ceanncheathrú na cuideachta sa bhealach
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Ní féidir leat an píosa talún seo a cheannach...

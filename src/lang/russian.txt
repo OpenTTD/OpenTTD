@@ -1238,6 +1238,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Раз�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Зона покрытия зависит от типа станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрешить снос (почти) всех городских объектов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Разрешить очень длинные поезда: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Количество дыма/искр у локомотивов: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :нет
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :оригинальное
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :реалистичное
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модель ускорения поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :оригинальная
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :реалистичная
@@ -2195,6 +2199,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Стро
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Выбор аэропорта
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Выберите размер/тип аэропорта
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Тип аэропорта
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Зона {NUM}
 
 STR_AIRPORT_SMALL                                               :Малый
 STR_AIRPORT_CITY                                                :Городской
@@ -2495,7 +2500,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Изме
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Создание мира...
-STR_GENERATION_ABORT                                            :{BLACK}Отмена
+STR_GENERATION_ABORT                                            :{BLACK}Прервать
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Прервать создание игрового мира
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Вы серьезно хотите прервать создание мира?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% готово

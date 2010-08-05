@@ -1862,7 +1862,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Växla g
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Växla genomskinlighet för träd. Ctrl+klick för att låsa.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Växla genomskinlighet för byggnader. Ctrl+klick för att låsa.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Växla genomskinlighet för industrier. Ctrl+klick för att låsa.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Växla genomskinlighet för byggnader såsom stationer, depåer, riktmärken eller kedjelinje. Ctrl+klick för att låsa.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Växla genomskinlighet för byggnader såsom stationer, depåer och riktmärken. Ctrl+klick för att låsa.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Växla genomskinlighet för broar. Ctrl+klick för att låsa.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner. Ctrl+klick för att låsa.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Växla genomskinlighet för kedjebro. CTRL+klick för att låsa.
@@ -1899,7 +1899,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg järnvägssignaler. Ctrl växlar mellan semaforer/elektriska signaler{}Dra för att bygga signaler utmed en rak sträcka räls. Ctrl bygger signal till nästa korsning{}Ctrl+Musklick aktiverar öppning av signalväljningsfönstret
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg järnvägsbro
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg järnvägstunnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, waypoints och stationer. Håll nere Ctrl för att ta bort räls från waypoints och stationer
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, riktmärken och stationer. Håll nere Ctrl för att även ta bort räls från waypoints och stationer
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertera/Uppgradera spårtyp
 
 # Rail depot construction window
@@ -1925,7 +1925,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Välj vi
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Välj stationstyp att bygga
 
 STR_STATION_CLASS_DFLT                                          :Grundinställd station
-STR_STATION_CLASS_WAYP                                          :Vägpunkter
+STR_STATION_CLASS_WAYP                                          :Riktmärken
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalval
@@ -2062,7 +2062,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantera
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Skapa mark
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placera stenar i landskapet
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Placera fyrtorn
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiera ökenområde.{}Tryck och håll CTRL för att ta bort
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiera ökenområde.{}Tryck och håll Ctrl för att ta bort
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Placera radiosändare
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Öka storlek av yta att höja/sänka
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minska storlek av yta att höja/sänka
@@ -2203,7 +2203,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Lastbrygga
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Busshållplats
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Hamn
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boj
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Kontrollpunkt
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Riktmärke
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Vatten
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanal
@@ -2469,8 +2469,8 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} av <invalid cargo>
-STR_NEWGRF_INVALID_ENGINE                                       :<invalid engine>
-STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
+STR_NEWGRF_INVALID_ENGINE                                       :<icke giltig fordonstyp>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<icke giltig industri>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
@@ -2550,7 +2550,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klicka f
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamn - klicka på ett namn för att centrera vyn på stationen. Ctrl+Musklick öppnar en ny vy över stationens läge
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Håll nere CTRL för att markera mer än en sak
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Håll nere Ctrl för att markera mer än en sak
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P "" er}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2829,10 +2829,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} fordon{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tåg - klicka på tåg för info, drag vagn för att lägga till/ta bort från tåg
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Fordon - klicka på fordon för information
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skepp - klicka på skepp för information
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flygplan - Klicka på flygplan för information
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tåg - drag vagn/lok för att lägga till/ta bort från tåg. Högerklicka på tåg för information. Håll Ctrl nedtryckt för att respektive funktion även ska gälla resten av tåget
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Fordon - högerklicka på fordon för information
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skepp - högerklicka på skepp för information
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flygplan - högerklicka på flygplan för information
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dra tågvagn hit för att sälja den
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Dra vägfordon hit för att sälja det
@@ -3504,7 +3504,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan inte
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan inte ta bort passagerarspårvagnsstation...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan inte ta bort fraktspårvagnsstation...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Måste ta bort vägstopp först
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...det finns ingen station här
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... det finns ingen station här
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Måste riva järnvägsstation först
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Måste riva busshållplats först
@@ -3570,8 +3570,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan inte
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan inte ta bort järnvägspår här...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kan inte ta bort signaler här...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan inte konvertera signaler här...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...det finns inget järnvägsspår
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...det finns inga signaler
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... det finns inget järnvägsspår
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... det finns inga signaler
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan inte konvertera spårtyp här...
 
@@ -3582,8 +3582,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kan inte
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kan inte bygga spårvagnsräls här...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan inte ta bort väg här...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan inte ta bort spårvagnsrälsen härifrån...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...det finns ingen väg
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...det finns ingen spårvagnsräls
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... det finns ingen väg
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... det finns ingen spårvagnsräls
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan inte bygga kanaler här...

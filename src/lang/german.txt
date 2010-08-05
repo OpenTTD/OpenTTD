@@ -1085,6 +1085,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Landsch
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Verschiedene Stationstypen haben unterschiedlich große Einzugsgebiete: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Entfernung von weiteren Straßen, Brücken, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bau von sehr langen Zügen erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Menge an Rauch / Funken von Lokomotieven: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Keine
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistisch
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Beschleunigungsmodell für Züge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisch

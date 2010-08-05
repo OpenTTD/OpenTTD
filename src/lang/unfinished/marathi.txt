@@ -21,13 +21,52 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(अनामिक स्ट्रींग)
+STR_JUST_NOTHING                                                :काहीही नाही
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :प्रवासी
+STR_CARGO_PLURAL_COAL                                           :कोळसा
+STR_CARGO_PLURAL_MAIL                                           :पत्रे
+STR_CARGO_PLURAL_OIL                                            :तेल
+STR_CARGO_PLURAL_LIVESTOCK                                      :पशुधन
+STR_CARGO_PLURAL_GOODS                                          :माल
+STR_CARGO_PLURAL_GRAIN                                          :धान्य
+STR_CARGO_PLURAL_WOOD                                           :लाकूड
+STR_CARGO_PLURAL_IRON_ORE                                       :लोहखनिज
+STR_CARGO_PLURAL_STEEL                                          :पोलाद
+STR_CARGO_PLURAL_VALUABLES                                      :मौल्यवान वस्तु
+STR_CARGO_PLURAL_COPPER_ORE                                     :ताम्रखनिज
+STR_CARGO_PLURAL_MAIZE                                          :मका
+STR_CARGO_PLURAL_FRUIT                                          :फळे
+STR_CARGO_PLURAL_DIAMONDS                                       :हिरे
+STR_CARGO_PLURAL_FOOD                                           :खाद्य
+STR_CARGO_PLURAL_PAPER                                          :कागद
+STR_CARGO_PLURAL_GOLD                                           :सोने
+STR_CARGO_PLURAL_WATER                                          :पाणी
+STR_CARGO_PLURAL_WHEAT                                          :गहू
+STR_CARGO_PLURAL_RUBBER                                         :रबर
+STR_CARGO_PLURAL_SUGAR                                          :साखर
+STR_CARGO_PLURAL_TOYS                                           :खेळणी
+STR_CARGO_PLURAL_CANDY                                          :मिठाई
+STR_CARGO_PLURAL_COLA                                           :शीतपेये
+STR_CARGO_PLURAL_COTTON_CANDY                                   :म्हातारीचा कापूस
+STR_CARGO_PLURAL_BUBBLES                                        :बुडबुडे
+STR_CARGO_PLURAL_TOFFEE                                         :टॉफी
+STR_CARGO_PLURAL_BATTERIES                                      :बॅटरी
+STR_CARGO_PLURAL_PLASTIC                                        :प्लॅस्टीक
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :फसफसणारी पेये
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
+STR_CARGO_SINGULAR_PASSENGER                                    :प्रवासी
+STR_CARGO_SINGULAR_COAL                                         :कोळसा
+STR_CARGO_SINGULAR_MAIL                                         :पत्र
+STR_CARGO_SINGULAR_OIL                                          :तेल
+STR_CARGO_SINGULAR_LIVESTOCK                                    :पशुधन
+STR_CARGO_SINGULAR_GOODS                                        :माल
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -41,6 +80,13 @@ STR_NOTHING                                                     :
 # Colours, do not shuffle
 
 # Units used in OpenTTD
+
+
+
+
+
+
+
 
 # Common window strings
 
@@ -227,6 +273,10 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}वाहनांचा धूर/ठिणग्या: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :नाही
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :मुळ
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :खरेखुरे
 
 
 
@@ -370,6 +420,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Airport toolbar
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठेवणी {NUM}
 
 
 
@@ -387,6 +438,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 
 # Fund new industry window
+
+# Industry cargoes window
 
 # Land area window
 
@@ -428,6 +481,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 
 
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 

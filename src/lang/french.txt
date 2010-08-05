@@ -1085,6 +1085,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Terrass
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Autoriser des zones de desserte plus réalistes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permettre le retrait de plus d'éléments possédés par une ville{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permettre les trains plus longs{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantité de fumée/étincelles des locomotives{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Aucune
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Réaliste
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modèle d'accélération des trains{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Réaliste
@@ -2026,6 +2030,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construi
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Choix de l'aéroport
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Choix du type & taille de l'aéroport
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Type d'aéroport
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Agencement {NUM}
 
 STR_AIRPORT_SMALL                                               :Petit
 STR_AIRPORT_CITY                                                :Urbain
