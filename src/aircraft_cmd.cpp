@@ -803,9 +803,10 @@ byte GetAircraftFlyingAltitude(const Aircraft *v)
  *
  * @param v   The vehicle that is approaching the airport
  * @param apc The Airport Class being approached.
+ * @param rotation The rotation of the airport.
  * @returns   The index of the entry point
  */
-static byte AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *apc)
+static byte AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *apc, Direction rotation)
 {
 	assert(v != NULL);
 	assert(apc != NULL);
@@ -832,6 +833,7 @@ static byte AircraftGetEntryPoint(const Aircraft *v, const AirportFTAClass *apc)
 		/* We are northwest or southeast of the airport */
 		dir = delta_y < 0 ? DIAGDIR_NW : DIAGDIR_SE;
 	}
+	dir = ChangeDiagDir(dir, (DiagDirDiff)ReverseDiagDir(DirToDiagDir(rotation)));
 	return apc->entry_points[dir];
 }
 
@@ -863,7 +865,7 @@ static bool AircraftController(Aircraft *v)
 	if (st == NULL || st->airport.tile == INVALID_TILE) {
 		/* Jump into our "holding pattern" state machine if possible */
 		if (v->pos >= afc->nofelements) {
-			v->pos = v->previous_pos = AircraftGetEntryPoint(v, afc);
+			v->pos = v->previous_pos = AircraftGetEntryPoint(v, afc, DIR_N);
 		} else if (v->targetairport != v->current_order.GetDestination()) {
 			/* If not possible, just get out of here fast */
 			v->state = FLYING;
@@ -1358,7 +1360,8 @@ void AircraftNextAirportPos_and_Order(Aircraft *v)
 
 	const Station *st = GetTargetAirportIfValid(v);
 	const AirportFTAClass *apc = st == NULL ? GetAirport(AT_DUMMY) : st->airport.GetFTA();
-	v->pos = v->previous_pos = AircraftGetEntryPoint(v, apc);
+	Direction rotation = st == NULL ? DIR_N : st->airport.rotation;
+	v->pos = v->previous_pos = AircraftGetEntryPoint(v, apc, rotation);
 }
 
 void AircraftLeaveHangar(Aircraft *v)
@@ -1997,7 +2000,8 @@ void UpdateAirplanesOnNewStation(const Station *st)
 				/* update position of airplane. If plane is not flying, landing, or taking off
 				 * you cannot delete airport, so it doesn't matter */
 				if (v->state >= FLYING) { // circle around
-					v->pos = v->previous_pos = AircraftGetEntryPoint(v, ap);
+					Direction rotation = st->airport.tile == INVALID_TILE ? DIR_N : st->airport.rotation;
+					v->pos = v->previous_pos = AircraftGetEntryPoint(v, ap, rotation);
 					v->state = FLYING;
 					UpdateAircraftCache(v);
 					/* landing plane needs to be reset to flying height (only if in pause mode upgrade,

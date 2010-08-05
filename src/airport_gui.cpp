@@ -356,7 +356,11 @@ public:
 			this->DisableWidget(BAIRW_LAYOUT_INCREASE);
 		} else {
 			const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index);
-			SetTileSelectSize(as->size_x, as->size_y);
+			int w = as->size_x;
+			int h = as->size_y;
+			Direction rotation = as->rotation[_selected_airport_layout];
+			if (rotation == DIR_E || rotation == DIR_W) Swap(w, h);
+			SetTileSelectSize(w, h);
 
 			this->SetWidgetDisabledState(BAIRW_LAYOUT_DECREASE, _selected_airport_layout == 0);
 			this->SetWidgetDisabledState(BAIRW_LAYOUT_INCREASE, _selected_airport_layout + 1 >= as->num_table);

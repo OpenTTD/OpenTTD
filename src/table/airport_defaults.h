@@ -373,21 +373,25 @@ static AirportTileTable *_tile_table_helistation[] = {
 	_tile_table_helistation_0,
 };
 
+static Direction _default_airports_rotation[] = {
+	DIR_N,
+};
+
 #undef MK
 #undef MKEND
 
 /** General AirportSpec definition. */
-#define AS_GENERIC(fsm, att, att_len, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, ttdpatch_type, class_id, name, enabled) \
-	{fsm, att, att_len, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, name, ttdpatch_type, class_id, enabled, {AT_INVALID, 0, NULL, NULL, AT_INVALID}}
+#define AS_GENERIC(fsm, att, rot, att_len, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, ttdpatch_type, class_id, name, enabled) \
+	{fsm, att, rot, att_len, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, name, ttdpatch_type, class_id, enabled, {AT_INVALID, 0, NULL, NULL, AT_INVALID}}
 
 /** AirportSpec definition for airports without any depot. */
 #define AS_ND(ap_name, size_x, size_y, min_year, max_year, catchment, noise, ttdpatch_type, class_id, name) \
-	AS_GENERIC(&_airportfta_##ap_name, _tile_table_##ap_name, lengthof(_tile_table_##ap_name), NULL, 0, \
+	AS_GENERIC(&_airportfta_##ap_name, _tile_table_##ap_name, _default_airports_rotation, lengthof(_tile_table_##ap_name), NULL, 0, \
 		size_x, size_y, noise, catchment, min_year, max_year, ttdpatch_type, class_id, name, true)
 
 /** AirportSpec definition for airports with at least one depot. */
 #define AS(ap_name, size_x, size_y, min_year, max_year, catchment, noise, ttdpatch_type, class_id, name) \
-	AS_GENERIC(&_airportfta_##ap_name, _tile_table_##ap_name, lengthof(_tile_table_##ap_name), _airport_depots_##ap_name, lengthof(_airport_depots_##ap_name), \
+	AS_GENERIC(&_airportfta_##ap_name, _tile_table_##ap_name, _default_airports_rotation, lengthof(_tile_table_##ap_name), _airport_depots_##ap_name, lengthof(_airport_depots_##ap_name), \
 		size_x, size_y, noise, catchment, min_year, max_year, ttdpatch_type, class_id, name, true)
 
 /* The helidepot and helistation have ATP_TTDP_SMALL because they are at ground level */
@@ -401,12 +405,12 @@ extern const AirportSpec _origin_airport_specs[] = {
 	AS(helidepot,        2, 2,  1976, MAX_YEAR,  4,  2, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELIDEPOT),
 	AS(intercontinental, 9, 11, 2002, MAX_YEAR, 10, 25, ATP_TTDP_LARGE,    APC_HUB,      STR_AIRPORT_INTERCONTINENTAL),
 	AS(helistation,      4, 2,  1980, MAX_YEAR,  4,  3, ATP_TTDP_SMALL,    APC_HELIPORT, STR_AIRPORT_HELISTATION),
-	AS_GENERIC(&_airportfta_oilrig, NULL, 0, NULL, 0, 1, 1, 0, 4, 0, 0, ATP_TTDP_OILRIG, APC_HELIPORT, STR_NULL, false),
+	AS_GENERIC(&_airportfta_oilrig, NULL, _default_airports_rotation, 0, NULL, 0, 1, 1, 0, 4, 0, 0, ATP_TTDP_OILRIG, APC_HELIPORT, STR_NULL, false),
 };
 
 assert_compile(NEW_AIRPORT_OFFSET == lengthof(_origin_airport_specs));
 
-AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, NULL, 0, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, ATP_TTDP_LARGE, APC_BEGIN, STR_NULL, false);
+AirportSpec AirportSpec::dummy = AS_GENERIC(&_airportfta_dummy, NULL, _default_airports_rotation, 0, NULL, 0, 0, 0, 0, 0, MIN_YEAR, MIN_YEAR, ATP_TTDP_LARGE, APC_BEGIN, STR_NULL, false);
 
 #undef AS
 #undef AS_ND

@@ -59,6 +59,7 @@ struct HangarTileTable {
 struct AirportSpec {
 	const struct AirportFTAClass *fsm;     ///< the finite statemachine for the default airports
 	const AirportTileTable * const *table; ///< list of the tiles composing the airport
+	Direction *rotation;                   ///< the rotation of each tiletable
 	byte num_table;                        ///< number of elements in the table
 	const HangarTileTable *depot_table;    ///< gives the position of the depots on the airports
 	byte nof_depots;                       ///< the number of hangar tiles in this airport

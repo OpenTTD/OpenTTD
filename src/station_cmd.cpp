@@ -2125,9 +2125,11 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	const AirportSpec *as = AirportSpec::Get(airport_type);
 	if (!as->IsAvailable() || layout >= as->num_table) return CMD_ERROR;
 
+	Direction rotation = as->rotation[layout];
 	Town *t = ClosestTownFromTile(tile, UINT_MAX);
 	int w = as->size_x;
 	int h = as->size_y;
+	if (rotation == DIR_E || rotation == DIR_W) Swap(w, h);
 
 	if (w > _settings_game.station.station_spread || h > _settings_game.station.station_spread) {
 		return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
@@ -2216,6 +2218,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		st->airport.type = airport_type;
 		st->airport.layout = layout;
 		st->airport.flags = 0;
+		st->airport.rotation = rotation;
 
 		st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TRY);
 
