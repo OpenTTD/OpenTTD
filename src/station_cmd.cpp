@@ -2225,7 +2225,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		it = as->table[layout];
 		do {
 			TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
-			MakeAirport(cur_tile, st->owner, st->index, it->gfx);
+			MakeAirport(cur_tile, st->owner, st->index, it->gfx, WATER_CLASS_INVALID);
 			SetStationTileRandomBits(cur_tile, GB(Random(), 0, 4));
 			st->airport.Add(cur_tile);
 

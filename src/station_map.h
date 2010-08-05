@@ -640,10 +640,12 @@ static inline void MakeDriveThroughRoadStop(TileIndex t, Owner station, Owner ro
  * @param o the owner of the airport
  * @param sid the station to which this tile belongs
  * @param section the StationGfx to be used for this tile
+ * @param wc the type of water on this tile
  */
-static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section)
+static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section, WaterClass wc)
 {
 	MakeStation(t, o, sid, STATION_AIRPORT, section);
+	SetWaterClass(t, wc);
 }
 
 /**

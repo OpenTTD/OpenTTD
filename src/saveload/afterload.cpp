@@ -2153,6 +2153,12 @@ bool AfterLoadGame()
 		FOR_ALL_DEPOTS(d) d->build_date = _date;
 	}
 
+	if (CheckSavegameVersion(145)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsAirportTile(t)) SetWaterClass(t, WATER_CLASS_INVALID);
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
