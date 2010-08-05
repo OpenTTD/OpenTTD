@@ -209,7 +209,20 @@ static const SpriteID SPR_GRASS_RIGHT       = SPR_AIRPORTX_BASE + 13;
 static const SpriteID SPR_GRASS_LEFT        = SPR_AIRPORTX_BASE + 14;
 static const uint16 AIRPORTX_SPRITE_COUNT = 15;
 
-static const SpriteID SPR_ROADSTOP_BASE     = SPR_AIRPORTX_BASE + AIRPORTX_SPRITE_COUNT; // The sprites used for drive-through road stops
+/* Airport preview sprites */
+static const SpriteID SPR_AIRPORT_PREVIEW_BASE             = SPR_AIRPORTX_BASE + AIRPORTX_SPRITE_COUNT;
+static const SpriteID SPR_AIRPORT_PREVIEW_SMALL            = SPR_AIRPORT_PREVIEW_BASE;
+static const SpriteID SPR_AIRPORT_PREVIEW_LARGE            = SPR_AIRPORT_PREVIEW_BASE + 1;
+static const SpriteID SPR_AIRPORT_PREVIEW_HELIPORT         = SPR_AIRPORT_PREVIEW_BASE + 2;
+static const SpriteID SPR_AIRPORT_PREVIEW_METROPOLITAN     = SPR_AIRPORT_PREVIEW_BASE + 3;
+static const SpriteID SPR_AIRPORT_PREVIEW_INTERNATIONAL    = SPR_AIRPORT_PREVIEW_BASE + 4;
+static const SpriteID SPR_AIRPORT_PREVIEW_COMMUTER         = SPR_AIRPORT_PREVIEW_BASE + 5;
+static const SpriteID SPR_AIRPORT_PREVIEW_HELIDEPOT        = SPR_AIRPORT_PREVIEW_BASE + 6;
+static const SpriteID SPR_AIRPORT_PREVIEW_INTERCONTINENTAL = SPR_AIRPORT_PREVIEW_BASE + 7;
+static const SpriteID SPR_AIRPORT_PREVIEW_HELISTATION      = SPR_AIRPORT_PREVIEW_BASE + 8;
+static const SpriteID SPR_AIRPORT_PREVIEW_COUNT            = 9;
+
+static const SpriteID SPR_ROADSTOP_BASE     = SPR_AIRPORT_PREVIEW_BASE + SPR_AIRPORT_PREVIEW_COUNT; // The sprites used for drive-through road stops
 static const SpriteID SPR_BUS_STOP_DT_Y_W   = SPR_ROADSTOP_BASE;
 static const SpriteID SPR_BUS_STOP_DT_Y_E   = SPR_ROADSTOP_BASE + 1;
 static const SpriteID SPR_BUS_STOP_DT_X_W   = SPR_ROADSTOP_BASE + 2;
