@@ -258,6 +258,11 @@ public:
 			case BAIRW_LAYOUT_NUM:
 				SetDParam(0, STR_STATION_BUILD_AIRPORT_LAYOUT_NAME);
 				SetDParam(1, _selected_airport_layout + 1);
+				if (_selected_airport_index != -1) {
+					const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index);
+					StringID string = GetAirportTextCallback(as, _selected_airport_layout, CBID_AIRPORT_LAYOUT_NAME);
+					if (string != STR_UNDEFINED) SetDParam(0, string);
+				}
 				break;
 
 			default: break;

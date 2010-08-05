@@ -248,6 +248,9 @@ enum CallbackID {
 	 * used as a custom string ID in the 0xD000 range.
 	 */
 	CBID_AIRPORT_ADDITIONAL_TEXT         = 0x155, // 15 bit callback
+
+	/** Called to determine text to show as airport layout name. */
+	CBID_AIRPORT_LAYOUT_NAME             = 0x156, // 15 bit callback
 };
 
 /**
