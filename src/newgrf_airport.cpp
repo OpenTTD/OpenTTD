@@ -322,6 +322,19 @@ static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st,
 	res->grffile = (as != NULL ? as->grf_prop.grffile : NULL);
 }
 
+SpriteID GetCustomAirportSprite(const AirportSpec *as, byte layout)
+{
+	const SpriteGroup *group;
+	ResolverObject object;
+
+	NewAirportResolver(&object, INVALID_TILE, NULL, as->GetIndex(), layout);
+
+	group = SpriteGroup::Resolve(as->grf_prop.spritegroup, &object);
+	if (group == NULL) return as->preview_sprite;
+
+	return group->GetResult();
+}
+
 uint16 GetAirportCallback(CallbackID callback, uint32 param1, uint32 param2, Station *st, TileIndex tile)
 {
 	ResolverObject object;

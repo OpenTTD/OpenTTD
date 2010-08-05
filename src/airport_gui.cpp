@@ -37,6 +37,7 @@ static byte _selected_airport_layout;          ///< selected airport layout numb
 
 static void ShowBuildAirportPicker(Window *parent);
 
+SpriteID GetCustomAirportSprite(const AirportSpec *as, byte layout);
 
 void CcBuildAirport(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -202,6 +203,7 @@ enum AirportPickerWidgets {
 	BAIRW_LAYOUT_NUM,
 	BAIRW_LAYOUT_DECREASE,
 	BAIRW_LAYOUT_INCREASE,
+	BAIRW_AIRPORT_SPRITE,
 	BAIRW_BOTTOMPANEL,
 	BAIRW_COVERAGE_LABEL,
 	BAIRW_BTN_DONTHILIGHT,
@@ -209,6 +211,7 @@ enum AirportPickerWidgets {
 };
 
 class BuildAirportWindow : public PickerWindowBase {
+	SpriteID preview_sprite; ///< Cached airport preview sprite.
 	int line_height;
 
 	/** Build a dropdown list of available airport classes */
@@ -287,22 +290,48 @@ public:
 				break;
 			}
 
+			case BAIRW_AIRPORT_SPRITE:
+				for (int i = 0; i < NUM_AIRPORTS; i++) {
+					const AirportSpec *as = AirportSpec::Get(i);
+					if (!as->enabled) continue;
+					for (byte layout = 0; layout < as->num_table; layout++) {
+						SpriteID sprite = GetCustomAirportSprite(as, layout);
+						if (sprite != 0) {
+							Dimension d = GetSpriteSize(sprite);
+							d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+							d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+							*size = maxdim(d, *size);
+						}
+					}
+				}
+				break;
+
 			default: break;
 		}
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		if (widget != BAIRW_AIRPORT_LIST) return;
-
-		int y = r.top;
-		for (uint i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < GetNumAirportsInClass(_selected_airport_class); i++) {
-			const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, i);
-			if (!as->IsAvailable()) {
-				GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->line_height - 2, 0, FILLRECT_CHECKER);
+		switch (widget) {
+			case BAIRW_AIRPORT_LIST: {
+				int y = r.top;
+				for (uint i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < GetNumAirportsInClass(_selected_airport_class); i++) {
+					const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, i);
+					if (!as->IsAvailable()) {
+						GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->line_height - 2, 0, FILLRECT_CHECKER);
+					}
+					DrawString(r.left + WD_MATRIX_LEFT, r.right + WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, as->name, ((int)i == _selected_airport_index) ? TC_WHITE : TC_BLACK);
+					y += this->line_height;
+				}
+				break;
 			}
-			DrawString(r.left + WD_MATRIX_LEFT, r.right + WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, as->name, ((int)i == _selected_airport_index) ? TC_WHITE : TC_BLACK);
-			y += this->line_height;
+
+			case BAIRW_AIRPORT_SPRITE:
+				if (this->preview_sprite != 0) {
+					Dimension d = GetSpriteSize(this->preview_sprite);
+					DrawSprite(this->preview_sprite, PAL_NONE, (r.left + r.right - d.width) / 2, (r.top + r.bottom - d.height) / 2);
+				}
+				break;
 		}
 	}
 
@@ -343,6 +372,11 @@ public:
 	{
 		_selected_airport_index = airport_index;
 		_selected_airport_layout = 0;
+
+		if (_selected_airport_index != -1) {
+			const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index);
+			this->preview_sprite = GetCustomAirportSprite(as, _selected_airport_layout);
+		}
 
 		this->UpdateSelectSize();
 		this->SetDirty();
@@ -472,6 +506,7 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 			NWidget(WWT_LABEL, COLOUR_GREY, BAIRW_LAYOUT_NUM), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_NULL),
 			NWidget(NWID_BUTTON_ARROW, COLOUR_GREY, BAIRW_LAYOUT_INCREASE), SetMinimalSize(12, 0), SetDataTip(AWV_INCREASE, STR_NULL),
 		EndContainer(),
+		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, BAIRW_AIRPORT_SPRITE), SetFill(1, 0),
 	EndContainer(),
 	/* Bottom panel. */
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BAIRW_BOTTOMPANEL), SetPIP(2, 2, 2),

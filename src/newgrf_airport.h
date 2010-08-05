@@ -16,6 +16,7 @@
 #include "map_type.h"
 #include "strings_type.h"
 #include "newgrf_commons.h"
+#include "gfx_type.h"
 
 /* Copy from station_map.h */
 typedef byte StationGfx;
@@ -72,6 +73,7 @@ struct AirportSpec {
 	StringID name;                         ///< name of this airport
 	TTDPAirportType ttd_airport_type;      ///< ttdpatch airport type (Small/Large/Helipad/Oilrig)
 	AirportClassID aclass;                 ///< the class to which this airport type belongs
+	SpriteID preview_sprite;               ///< preview sprite for this airport
 	/* Newgrf data */
 	bool enabled;                          ///< entity still avaible (by default true).newgrf can disable it, though
 	GRFFileProps grf_prop;                 ///< properties related the the grf file
