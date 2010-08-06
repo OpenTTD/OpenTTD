@@ -273,6 +273,7 @@ public:
 		this->callback_timer = DAY_TICKS;
 
 		this->InitNested(&_build_industry_desc, 0);
+		this->SetButtons();
 	}
 
 	virtual void OnInit()
