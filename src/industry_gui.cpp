@@ -256,6 +256,12 @@ class BuildIndustryWindow : public Window {
 		this->vscroll.SetCount(this->count);
 	}
 
+	/** Update status of the fund and display-chain widgets. */
+	void SetButtons()
+	{
+		this->SetWidgetsDisabledState(!this->enabled[this->selected_index], DPIW_DISPLAY_WIDGET, DPIW_FUND_WIDGET, WIDGET_LIST_END);
+	}
+
 public:
 	BuildIndustryWindow() : Window()
 	{
@@ -479,7 +485,7 @@ public:
 						ResetObjectToPlace();
 					}
 
-					this->SetWidgetsDisabledState(!this->enabled[this->selected_index], DPIW_DISPLAY_WIDGET, DPIW_FUND_WIDGET, WIDGET_LIST_END);
+					this->SetButtons();
 					if (this->enabled[this->selected_index] && click_count > 1) this->OnClick(pt, DPIW_FUND_WIDGET, 1);
 				}
 				break;
@@ -569,7 +575,7 @@ public:
 				/* Only if result does match the previous state would it require a redraw. */
 				if (call_back_result != this->enabled[this->selected_index]) {
 					this->enabled[this->selected_index] = call_back_result;
-					this->SetWidgetsDisabledState(!this->enabled[this->selected_index], DPIW_DISPLAY_WIDGET, DPIW_FUND_WIDGET, WIDGET_LIST_END);
+					this->SetButtons();
 					this->SetDirty();
 				}
 			}
@@ -592,7 +598,7 @@ public:
 
 		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
 		if (indsp == NULL) this->enabled[this->selected_index] = _settings_game.difficulty.number_industries != 0;
-		this->SetWidgetsDisabledState(!this->enabled[this->selected_index], DPIW_DISPLAY_WIDGET, DPIW_FUND_WIDGET, WIDGET_LIST_END);
+		this->SetButtons();
 	}
 };
 
