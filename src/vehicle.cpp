@@ -1321,8 +1321,28 @@ UnitID FreeUnitIDGenerator::NextID()
 	return this->curid;
 }
 
+/**
+ * Get an unused unit number for a vehicle (if allowed).
+ * @param type Type of vehicle
+ * @return A unused unit number for the given type of vehicle if it is allowed to build one, else \c UINT16_MAX.
+ */
 UnitID GetFreeUnitNumber(VehicleType type)
 {
+	/* Check whether it is allowed to build another vehicle. */
+	uint max_veh;
+	switch (type) {
+		case VEH_TRAIN:    max_veh = _settings_game.vehicle.max_trains;   break;
+		case VEH_ROAD:     max_veh = _settings_game.vehicle.max_roadveh;  break;
+		case VEH_SHIP:     max_veh = _settings_game.vehicle.max_ships;    break;
+		case VEH_AIRCRAFT: max_veh = _settings_game.vehicle.max_aircraft; break;
+		default: NOT_REACHED();
+	}
+
+	uint amounts[4];
+	CountCompanyVehicles(_current_company, amounts);
+	assert((uint)type < lengthof(amounts));
+	if (amounts[type] >= max_veh) return UINT16_MAX; // Currently already at the limit, no room to make a new one.
+
 	FreeUnitIDGenerator gen(type, _current_company);
 
 	return gen.NextID();
