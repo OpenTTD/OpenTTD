@@ -24,6 +24,7 @@
  * \li AIIndustry::GetIndustryID
  * \li AIIndustryType::INDUSTRYTYPE_TOWN
  * \li AIIndustryType::INDUSTRYTYPE_UNKNOWN
+ * \li AIOrder::IsVoidOrder
  *
  * API removals:
  * \li HasNext for all lists.
@@ -34,6 +35,7 @@
  * \li AIEngine::GetPower can be used for road vehicles.
  * \li AIEngine::GetWeight can be used for road vehicles.
  * \li AIEngine::GetMaxTractiveEffort can be used for road vehicles.
+ * \li AIOrder::GetOrderFlags returns AIOrder::AIOF_INVALID for void orders as well.
  *
  * \b 1.0.3
  *

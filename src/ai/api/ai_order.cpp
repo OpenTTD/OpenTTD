@@ -99,6 +99,15 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	return order->GetType() == OT_CONDITIONAL;
 }
 
+/* static */ bool AIOrder::IsVoidOrder(VehicleID vehicle_id, OrderPosition order_position)
+{
+	if (order_position == ORDER_CURRENT) return false;
+	if (!IsValidVehicleOrder(vehicle_id, order_position)) return false;
+
+	const Order *order = Vehicle::Get(vehicle_id)->GetOrder(order_position);
+	return order->GetType() == OT_DUMMY;
+}
+
 /* static */ bool AIOrder::IsCurrentOrderPartOfOrderList(VehicleID vehicle_id)
 {
 	if (AIVehicle::IsValidVehicle(vehicle_id)) return false;
@@ -224,7 +233,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return AIOF_INVALID;
 
 	const Order *order = ::ResolveOrder(vehicle_id, order_position);
-	if (order == NULL || order->GetType() == OT_CONDITIONAL) return AIOF_INVALID;
+	if (order == NULL || order->GetType() == OT_CONDITIONAL || order->GetType() == OT_DUMMY) return AIOF_INVALID;
 
 	AIOrderFlags order_flags = AIOF_NONE;
 	order_flags |= (AIOrderFlags)order->GetNonStopType();

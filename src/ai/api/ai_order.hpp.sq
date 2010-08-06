@@ -94,6 +94,7 @@ void SQAIOrder_Register(Squirrel *engine)
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsGotoDepotOrder,              "IsGotoDepotOrder",              3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsGotoWaypointOrder,           "IsGotoWaypointOrder",           3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsConditionalOrder,            "IsConditionalOrder",            3, ".ii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsVoidOrder,                   "IsVoidOrder",                   3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsCurrentOrderPartOfOrderList, "IsCurrentOrderPartOfOrderList", 2, ".i");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ResolveOrderPosition,          "ResolveOrderPosition",          3, ".ii");
 	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AreOrderFlagsValid,            "AreOrderFlagsValid",            3, ".ii");

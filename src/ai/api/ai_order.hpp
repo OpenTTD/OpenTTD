@@ -173,6 +173,18 @@ public:
 	static bool IsConditionalOrder(VehicleID vehicle_id, OrderPosition order_position);
 
 	/**
+	 * Checks whether the given order is a void order.
+	 * A void order is an order that used to be a goto station, depot or waypoint order but
+	 * its destination got removed. In OpenTTD these orders as shown as "(Invalid Order)"
+	 * in the order list of a vehicle.
+	 * @param vehicle_id The vehicle to check.
+	 * @param order_position The order index to check.
+	 * @pre order_position != ORDER_CURRENT && IsValidVehicleOrder(vehicle_id, order_position).
+	 * @return True if and only if the order is a void order.
+	 */
+	static bool IsVoidOrder(VehicleID vehicle_id, OrderPosition order_position);
+
+	/**
 	 * Checks whether the current order is part of the orderlist.
 	 * @param vehicle_id The vehicle to check.
 	 * @pre AIVehicle::IsValidVehicle(vehicle_id).
@@ -240,7 +252,7 @@ public:
 	 * @param vehicle_id The vehicle to get the destination for.
 	 * @param order_position The order to get the destination for.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
-	 * @pre order_position == ORDER_CURRENT || !IsConditionalOrder(vehicle_id, order_position).
+	 * @pre order_position == ORDER_CURRENT || (!IsConditionalOrder(vehicle_id, order_position) && !IsVoidOrder(vehicle_id, order_position)).
 	 * @note Giving ORDER_CURRENT as order_position will give the order that is
 	 *  currently being executed by the vehicle. This is not necessarily the
 	 *  current order as given by ResolveOrderPosition (the current index in the
