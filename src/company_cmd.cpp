@@ -585,6 +585,25 @@ void InitializeCompanies()
 }
 
 /**
+ * May company \a cbig buy company \a csmall?
+ * @param cbig   Company buying \a csmall.
+ * @param csmall Company getting bought.
+ * @return Return \c true if it is allowed.
+ */
+bool MayCompanyTakeOver(CompanyID cbig, CompanyID csmall)
+{
+	uint big_counts[4], small_counts[4];
+	CountCompanyVehicles(cbig,   big_counts);
+	CountCompanyVehicles(csmall, small_counts);
+
+	/* Do the combined vehicle counts stay within the limits? */
+	return big_counts[VEH_TRAIN]     + small_counts[VEH_TRAIN]    <= _settings_game.vehicle.max_trains &&
+		big_counts[VEH_ROAD]     + small_counts[VEH_ROAD]     <= _settings_game.vehicle.max_roadveh &&
+		big_counts[VEH_SHIP]     + small_counts[VEH_SHIP]     <= _settings_game.vehicle.max_ships &&
+		big_counts[VEH_AIRCRAFT] + small_counts[VEH_AIRCRAFT] <= _settings_game.vehicle.max_aircraft;
+}
+
+/**
  * Handle the bankruptcy take over of a company.
  * Companies going bankrupt will ask the other companies in order of their
  * performance rating, so better performing companies get the 'do you want to
@@ -623,7 +642,8 @@ static void HandleBankruptcyTakeover(Company *c)
 	FOR_ALL_COMPANIES(c2) {
 		if (c2->bankrupt_asked == 0 && // Don't ask companies going bankrupt themselves
 				!HasBit(c->bankrupt_asked, c2->index) &&
-				best_performance < c2->old_economy[1].performance_history) {
+				best_performance < c2->old_economy[1].performance_history &&
+				MayCompanyTakeOver(c2->index, c->index)) {
 			best_performance = c2->old_economy[1].performance_history;
 			best = c2;
 		}

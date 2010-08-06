@@ -1600,6 +1600,9 @@ CommandCost CmdBuyCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	/* Do not allow companies to take over themselves */
 	if (target_company == _current_company) return CMD_ERROR;
 
+	/* Disable taking over when not allowed. */
+	if (!MayCompanyTakeOver(_current_company, target_company)) return CMD_ERROR;
+
 	/* Get the cost here as the company is deleted in DoAcquireCompany. */
 	CommandCost cost(EXPENSES_OTHER, c->bankrupt_value);
 
