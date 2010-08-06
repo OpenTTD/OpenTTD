@@ -1148,6 +1148,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Építm
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Települési tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mozdonyok kipufogógáz/füst mennyisége: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nincs
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Eredeti
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Valósághű
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vonatok gyorsulási módja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Eredeti
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Valósághű
@@ -1333,7 +1337,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Csak normál
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Csak irányjelzők
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Mind
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Új települések útépítési mintája: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Új települések úthálózati elrendezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :alapértelmezett
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :jobb utak
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2-es háló
@@ -2089,6 +2093,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Repülő
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Repülőtér beállítása
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Repülőtér méretének/típusának kiválasztása
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Repülőtér osztálya
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Elrendezés {NUM}
 
 STR_AIRPORT_SMALL                                               :Kicsi
 STR_AIRPORT_CITY                                                :Városi
@@ -2163,7 +2168,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Város
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Átlagosnál gyorsabban növekedő városok{}Beállítástól függően nagyobbak alapításkor
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Település úthálózat építési mintája:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Válassz úthálózati mintát ehhez a városhoz
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Válassz úthálózati elrendezést ehhez a városhoz
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Eredeti
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Jobb utak
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2-es háló

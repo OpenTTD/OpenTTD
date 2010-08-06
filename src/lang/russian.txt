@@ -50,9 +50,9 @@ STR_CARGO_PLURAL_GOODS.acc                                      :товары
 STR_CARGO_PLURAL_GRAIN                                          :{G=n}Зерно
 STR_CARGO_PLURAL_GRAIN.gen                                      :зерна
 STR_CARGO_PLURAL_GRAIN.acc                                      :зерно
-STR_CARGO_PLURAL_WOOD                                           :{G=n}Дерево
-STR_CARGO_PLURAL_WOOD.gen                                       :дерева
-STR_CARGO_PLURAL_WOOD.acc                                       :дерево
+STR_CARGO_PLURAL_WOOD                                           :{G=n}Древесина
+STR_CARGO_PLURAL_WOOD.gen                                       :древесины
+STR_CARGO_PLURAL_WOOD.acc                                       :древесину
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=f}Железная руда
 STR_CARGO_PLURAL_IRON_ORE.gen                                   :железной руды
 STR_CARGO_PLURAL_IRON_ORE.acc                                   :железную руду
@@ -146,9 +146,9 @@ STR_CARGO_SINGULAR_GOODS.acc                                    :товары
 STR_CARGO_SINGULAR_GRAIN                                        :{G=n}Зерно
 STR_CARGO_SINGULAR_GRAIN.gen                                    :зерна
 STR_CARGO_SINGULAR_GRAIN.acc                                    :зерно
-STR_CARGO_SINGULAR_WOOD                                         :{G=n}Дерево
-STR_CARGO_SINGULAR_WOOD.gen                                     :дерева
-STR_CARGO_SINGULAR_WOOD.acc                                     :дерево
+STR_CARGO_SINGULAR_WOOD                                         :{G=n}Древесина
+STR_CARGO_SINGULAR_WOOD.gen                                     :древесины
+STR_CARGO_SINGULAR_WOOD.acc                                     :древесину
 STR_CARGO_SINGULAR_IRON_ORE                                     :{G=f}Железная руда
 STR_CARGO_SINGULAR_IRON_ORE.gen                                 :железной руды
 STR_CARGO_SINGULAR_IRON_ORE.acc                                 :железную руду
@@ -228,7 +228,7 @@ STR_QUANTITY_OIL                                                :{VOLUME} неф
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} голов{P а ы ""} домашнего скота
 STR_QUANTITY_GOODS                                              :{COMMA} ящик{P "" а ов} товаров
 STR_QUANTITY_GRAIN                                              :{WEIGHT} зерна
-STR_QUANTITY_WOOD                                               :{WEIGHT} дерева
+STR_QUANTITY_WOOD                                               :{WEIGHT} древесины
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} железной руды
 STR_QUANTITY_STEEL                                              :{WEIGHT} стали
 STR_QUANTITY_VALUABLES                                          :{COMMA} меш{P ок ка ков} драгоценностей
@@ -4039,7 +4039,7 @@ STR_SV_STNAME_NORTH                                             :Северна�
 STR_SV_STNAME_SOUTH                                             :Южная {STRING}
 STR_SV_STNAME_EAST                                              :Восточная {STRING}
 STR_SV_STNAME_WEST                                              :Западная {STRING}
-STR_SV_STNAME_CENTRAL                                           :Центральный {STRING}
+STR_SV_STNAME_CENTRAL                                           :Центральная {STRING}
 STR_SV_STNAME_TRANSFER                                          :Перегонная {STRING}
 STR_SV_STNAME_HALT                                              :{STRING}-привал
 STR_SV_STNAME_VALLEY                                            :Долина {STRING}
@@ -4130,7 +4130,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Нефтяна�
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Вагон для скота
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Товарный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Хоппер для зерна
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Вагон для дерева
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Вагон для древесины
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Хоппер для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Бронированный вагон
@@ -4162,7 +4162,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Нефтяна�
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Вагон для скота
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Товарный вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Хоппер для зерна
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Вагон для дерева
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Вагон для древесины
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Хоппер для железной руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Вагон для стали
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Бронированный вагон
@@ -4210,9 +4210,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Грузови�
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Зерновозка Hereford
 STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Зерновозка Thomas
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Зерновозка Goss
-STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Грузовик Witcombe (дерево)
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Грузовик Foster (дерево)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Грузовик Moreland (дерево)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Грузовик Witcombe (древесина)
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Грузовик Foster (древесина)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Грузовик Moreland (древесина)
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :Грузовик MPS (жел. руда)
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Грузовик Uhl (жел. руда)
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Грузовик Chippy (жел. руда)

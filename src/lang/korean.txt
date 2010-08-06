@@ -1085,6 +1085,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}건물,
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}좀더 현실적인 역세권 지정 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}매우 긴 열차 허용 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}기관차 매연/전기 스파크의 양: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :없음
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :오리지널
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :현실적
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}열차 가속 모델: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :오리지널 (언덕을 오를 때 속도 감속)
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :현실적으로 (급커브에서 속도 감속)
@@ -2026,6 +2030,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}공항 �
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}공항 선택
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}공항의 크기/종류를 선택합니다.
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}공항 등급
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}레이아웃 {NUM}
 
 STR_AIRPORT_SMALL                                               :소형 공항
 STR_AIRPORT_CITY                                                :도시 공항

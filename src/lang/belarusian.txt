@@ -722,7 +722,7 @@ STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Будаўні�
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Будаўніцтва дарогаў
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будаўніцтва трамвайных пуцёў
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Будаўніцтва трамвайных каляiнаў
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -884,7 +884,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Пазы
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Усяго:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Колькасьць транспартных сродкаў, якія летась прынеслі даход. У тым ліку аўтамабілі, цягнікі, караблі, самалёты.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Колькасьць станцый, якія абслугоўваюцца. Асобна улічваецца кожная частка злучанай станцыі (чыгуначная, аўтамабільная, аэрапорт).
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Колькасьць станцыяў, якія абслугоўваюцца. Асобна улічваецца кожная частка злучанай станцыі (чыгуначная, аўтамабільная, аэрапорт).
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Прыбытак ад транспартнага сродку з найніжэйшым даходам (сярод ТС старэйшых за два гады).
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Найменшы квартальны прыбытак за апошнія 4 гады (12 кварталаў).
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Найвялікшы квартальны прыбытак за апошнія 4 гады (12 кварталаў).
@@ -1415,7 +1415,7 @@ STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Кру�
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Крутасьць сьхілаў для аўтатранспарту: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забараніць цягнікам і караблям 90-градусныя павароты: {ORANGE}{STRING} {LTBLUE} (не для OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Аб'ядноўваць пабудаваныя побач чыгуначныя станцыі: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Дазволіць аб'яднаньне станцый, не прымыкаючых адна да адной: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Дазволіць аб'яднаньне станцыяў, не прымыкаючых адна да адной: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Выкарыстоўваць палепшаны алгарытм загрузкі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Паступовая загрузка транспарту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Уключыць інфляцыю: {ORANGE}{STRING}
@@ -2199,7 +2199,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Пера
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Пераключыць празрыстасьць для дрэваў. Ctrl+клік - заблякаваць.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Пераключыць празрыстасьць для дамоў. Ctrl+клік - заблякаваць.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Пераключыць празрыстасьць для прадпрыемстваў. Ctrl+клік - заблякаваць.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Пераключыць празрыстасьць для будынінаў кшталту станцый, дэпо, пунктаў шляху. Ctrl+клік - заблякаваць.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Пераключыць празрыстасьць для будынінаў кшталту станцыяў, дэпо, пунктаў шляху. Ctrl+клік - заблякаваць.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Пераключыць празрыстасьць для мастоў. Ctrl+клік - заблякаваць.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Пераключыць празрыстасьць для пабыдоў кшталту маякоў і антэнаў. Ctrl+клік - заблякаваць.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Пераключыць празрыстасьць для кантактнай сеткі. Ctrl+клік - заблякаваць.
@@ -2310,7 +2310,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Буда
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Будаўніцтва аўтобусных прыпынкаў. Ctrl дазваляе аб'ядноўваць прыпынкі.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Будаўніцтва трамвайных прыпынкаў. Ctrl дазваляе аб'ядноўваць прыпынкі.
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Будаўніцтва грузавых тэрміналаў. Націск Ctrl дазваляе аб'ядноўваць тэрміналы.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Будаўніцтва грузавых трамвайных тэрміналаў. Ctrl дазваляе аб'ядноўваць тэрміналы.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Будаўніцтва прыпынкаў для грузавых трамваяў. Ctrl дазваляе аб'ядноўваць прыпынкi.
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Уключыць/выключыць аднабаковыя дарогі
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Будаўніцтва аўтамабiльных мастоў
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Будаўніцтва трамвайных мастоў
@@ -2332,8 +2332,8 @@ STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Кіру
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Выберыце кірунак грузавога тэрмінала
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Кірунак трамвайнага прыпынка
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Выберыце кірунак трамвайнага прыпынка
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Кірунак грузавога трамвайнага тэрмінала
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Выберыце кірунак грузавога трамвайнага тэрмінала
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Кірунак прыпынка грузавых трамваяў
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Выберыце кірунак прыпынка грузавых трамваяў
 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Будаўніцтва водных камунікацыяў
@@ -3809,71 +3809,71 @@ STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Нема
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... занадта блізка да краю карты
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... занадта блізка да іншага горада
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... занадта шмат гарадоў
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... няма месца на карце
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... няма месца на мапе
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Гарады не будуюць дарогі. Вы можаце ўключыць будаўнiцтва дарогаў у Паш. наладкі-> Эканоміка-> Гарады.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Ідуць дарожныя работы...
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Немагчыма знішчыць горад:{}да яго тычыцца станцыя або дэпо, альбо немагчыма ачысціць адну з займаных ім клетак.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Немагчыма зьнішчыць горад:{}да яго адносіцца станцыя або дэпо, альбо немагчыма ачысьціць адну з занятых ім клетак.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... у цэнтры горада няма месца для статуі
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... занадта шмат прадпрыемстваў
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Немагчыма стварыць прамысловасць...
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Немагчыма стварыць прамысловасьць...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Тут нельга стварыць {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Пабудаваць гэтае прадпрыемства немагчыма...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... занадта блізка да іншага прадпрыемства
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... спачатку пабудуйце горад
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... такі аб'ект ужо ёсьць у горадзе
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... можна пабудаваць у гарадах з насельніцтвам не менш 1200 жыхароў
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... можна пабудаваць у гарадах з насельніцтвам ня менш за 1200 жыхароў
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... можна будаваць толькі ў тропіках
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... можна будаваць толькі ў пустынi
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... можна будаваць толькі ў пустэльні
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... можна будаваць толькі ў гарадах
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... можна будаваць толькі ў нізінах
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... можа знаходзіцца толькі каля краю карты
-STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... лес можна саджаць толькі вышэй лініі снегу
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... можа знаходзіцца толькі ля краю мапы
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... лес можна саджаць толькі вышэй за лінію сьнегу
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Тут немагчыма пабудаваць чыгуначную станцыю...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Тут немагчыма пабудаваць аўтобусны прыпынак...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Тут немагчыма пабудаваць грузавы тэрмiнал...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Тут немагчыма пабудаваць пасажырскi трамвайны прыпынак...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Тут немагчыма пабудаваць грузавы трамвайны прыпынак...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Тут немагчыма пабудаваць трамвайны прыпынак...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Тут немагчыма пабудаваць прыпынак грузавых трамваяў...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Тут немагчыма пабудаваць прыстань...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Тут немагчыма пабудаваць аэрапорт...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Далучаецца больш чым да адной існуючай станцыі
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... станцыя занадта вялікая
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... выкарыстанне непрамавугольных станцый забаронена
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Занадта шмат станцый і прыпынкаў
+STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... выкарыстаньне непрамавугольных станцыяў забаронена
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Занадта шмат станцыяў і прыпынкаў
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Занадта вялікая чыгуначная станцыя
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Занадта шмат аўтобусных прыпынкаў
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Занадта шмат грузавых тэрмiналаў
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Занадта блізка да іншай чыгуначнай станцыі
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Занадта блізка да іншай станцыі
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Занадта блізка да іншай прыстані
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Занадта блізка да іншага аэрапорту
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Занадта блізка да іншага аэрапорта
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Немагчыма перайменаваць станцыю...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... гэтая дарога належыць гораду
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... няправільны кірунак дарогі
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... на прахадных прыпынках нельга рабіць павароты
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... на прахадных прыпынках нельга рабіць скрыжаваннi
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... на прахадных прыпынках нельга рабіць скрыжаваньнi
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Немагчыма выдаліць частку станцыi...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Спачатку выдаліце чыгуначную станцыю
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Немагчыма выдаліць аўтобусны прыпынак...
 STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Немагчыма выдаліць грузавы тэрмiнал...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Немагчыма выдаліць пасажырскi трамвайны прыпынак...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Немагчыма выдаліць грузавы трамвайны прыпынак...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Немагчыма выдаліць трамвайны прыпынак...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Немагчыма выдаліць прыпынак грузавых трамваяў...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Спачатку выдаліце прыпынак
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...тут няма станцыі
 
-STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Спачатку знясiце чыгуначную станцыю
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Спачатку знясiце аўтобусны прыпынак
-STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Спачатку знясiце грузавы тэрмiнал
-STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Спачатку знясiце пасажырскi трамвайны прыпынак
-STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Спачатку знясiце грузавы трамвайны прыпынак
-STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Спачатку знясiце прыстань
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Спачатку знясiце аэрапорт
+STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Спачатку зьнясiце чыгуначную станцыю
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Спачатку зьнясiце аўтобусны прыпынак
+STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Спачатку зьнясiце грузавы тэрмiнал
+STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Спачатку зьнясiце трамвайны прыпынак
+STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Спачатку зьнясiце прыпынак грузавых трамваяў
+STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Спачатку зьнясiце прыстань
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Спачатку зьнясiце аэрапорт
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Прымыкае да некалькіх пунктаў шляху
@@ -3898,53 +3898,53 @@ STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Не а�
 
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Цягнік павінен быць спынены ў дэпо
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... павінен быць спынены ў гаражы
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Карабель павінен быць спынены ў доке
+STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Карабель павінен быць спынены ў доку
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Самалёт павінен быць спынены ў ангары
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Структуру цягніка можна мяняць толькі ў дэпо
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Склад цягніка можна мяняць толькі ў дэпо
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Цягнiк занадта доўгi
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Не атрымалася развярнуць цягнік...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Немагчыма развярнуць шматсастаўны транспарт
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Несумяшчальны тып рэек
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Не атрымалася разьвярнуць цягнік...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Немагчыма разьвярнуць шматскладовы транспарт
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Несумяшчальны тып рэйкаў
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Немагчыма перамясьціць трансп. сродак...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Тылавы лякаматыў заўсёды iдзе за яго пярэдняй часткай
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Немагчыма знайсці маршрут да дэпо
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Немагчыма знайсці гараж
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Немагчыма знайсьці маршрут да дэпо
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Немагчыма знайсьці гараж
 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Няправільны тып дэпо
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ТС «{VEHICLE}» занадта доўгае пасьля замены
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Нельга прымяніць правілы аўтазамены/абнаўлення.
-STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(мала грошаў)
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ТС «{VEHICLE}» занадта доўгі пасьля замены
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Нельга прымяніць правілы аўтазамены/абнаўленьня.
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(мала грошай)
 
 # Rail construction errors
-STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Недапушчальная камбінацыя пуцёў
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Спачатку выдаліце сігналы
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Няма прыдатных рэек
+STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Недапушчальная камбінацыя каляінаў
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Спачатку выдаліце сыгналы
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Няма прыдатных рэйкаў
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Спачатку выдаліце чыгунку
-STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дарога аднабаковая або блакаваная
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Праз гэты від рэек забаронена будаваць пераезды
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Тут немагчыма паставiць светлафор...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Тут немагчыма пракласцi рэйкi...
+STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Дарога аднабаковая або блякаваная
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Праз гэты від рэйкаў забаронена будаваць пераезды
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Тут немагчыма паставiць сьветлафор...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Тут немагчыма пракласьцi рэйкі...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Не атрымалася выдаліць чыгунку...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Не атрымалася выдаліць светлафор...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Немагчыма пераўтварыць тут сігнал...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Не атрымалася выдаліць сьветлафор...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Немагчыма пераўтварыць тут сыгнал...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...тут няма чыгункi
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... сігналы адсутнічаюць
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... сыгналы адсутнічаюць
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Тут немагчыма пераўтварыць тып рэйкі...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Тут немагчыма пераўтварыць тып рэйкаў...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Спачатку выдаліце дарогу
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... аднабаковыя дарогі не могуць мець такое скрыжаванне
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... аднабаковыя дарогі ня могуць мець такое скрыжаваньне
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Тут немагчыма пабудаваць дарогу...
-STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Тут немагчыма пракласцi трамвайныя пуцi...
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Тут немагчыма пракласьцi трамвайныя каляiны...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Не атрымалася выдаліць дарогу...
-STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не атрымалася выдаліць трамвайныя пуцi...
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не атрымалася выдаліць трамвайныя каляiны...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...тут няма дарогi
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...тут няма трамвайных пуцёў
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...тут няма трамвайных каляiнаў
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Тут немагчыма пабудаваць канал...
@@ -3952,8 +3952,8 @@ STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Тут �
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Тут немагчыма разьмясьціць раку...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... трэба будаваць у вадзе
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... нельга будаваць у вадзе
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Спачатку знясiце канал
-STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тут немагчыма пабудаваць акведук...
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Спачатку зьнясіце канал
+STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тут немагчыма пабудаваць аквэдук...
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... ўжо ёсьць дрэва
@@ -3962,8 +3962,8 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Нема
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Тут немагчыма пабудаваць мост...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Спачатку знясiце мост
-STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Не можа пачынацца і заканчвацца ў той жа кропцы
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Спачатку зьнясiце мост
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ня можа пачынацца і заканчвацца ў той жа кропцы
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Апоры моста павінны быць на адным узроўні
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Занадта нізкі мост
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Пачатак і канец павінны быць на адной лініі
@@ -3973,17 +3973,17 @@ STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мо
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Тут немагчыма пабудаваць тунэль...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Непрыдатнае месца для будаўніцтва тунэля
-STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Спачатку знясiце тунэль
+STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Спачатку зьнясiце тунэль
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Іншы тунэль на шляху
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунэль заканчваецца за межамі карты
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Немагчыма падняць/апусціць зямлю для іншага канца тунэля
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунэль заканчваецца па-за межамі мапы
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Немагчыма падняць/апусьціць зямлю для іншага канца тунэля
 
 # Unmovable related errors
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Немагчыма пабудаваць аб'ект...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Аб'ект на шляху
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... штаб-кватэра кампаніі на шляху
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Немагчыма купіць гэтую зямлю...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... Вы і так ужо валодаеце гэтым!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... Вы ўжо валодаеце гэтым!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Не атрымалася стварыць групу...
@@ -3991,7 +3991,7 @@ STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Не а�
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Не атрымалася перайменаваць групу...
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Не атрымалася выдаліць увесь транспарт з групы...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Не атрымалася дадаць транспарт у групу...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Не атрымалася дадаць транспарт з агульнымі заданнямі ў групу...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Не атрымалася дадаць транспарт з агульнымі заданьнямі ў групу...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Цягнiк на шляху
@@ -4009,25 +4009,25 @@ STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Нема
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Немагчыма перайменаваць карабель...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Немагчыма перайменаваць паветранае судна...
 
-STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Не атрымалася спыніць/запусціць цягнiк...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Не атрымалася спыніць/запусціць аўтамабiль...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Не атрымалася спыніць/запусціць карабель...
-STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Не атрымалася спыніць/запусціць авiятранспарт...
+STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Не атрымалася спыніць/запусьціць цягнiк...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Не атрымалася спыніць/запусьціць аўтамабiль...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Не атрымалася спыніць/запусьціць карабель...
+STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Не атрымалася спыніць/запусьціць авiятранспарт...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Не атрымалася адправіць цягнiк у дэпо...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Не атрымалася адправіць аўтамабiль у гараж...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Не атрымалася адправіць куарабель у док...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не атрымалася адправіць самалёт у ангар...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Не атрымалася накіраваць цягнiк у дэпо...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Не атрымалася накіраваць аўтамабiль у гараж...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Не атрымалася накіраваць карабель у док...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Не атрымалася накіраваць самалёт у ангар...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Не атрымалася купіць цягнiк...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Не атрымалася купіць аўтамабiль...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Не атрымалася купіць карабель...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Не атрымалася купіць паветр. транспарт...
 
-STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Немагчыма змяніць назву мадэлі цягніка...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Немагчыма змяніць назву мадэлі аўтамабіля...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Немагчыма змяніць назву мадэлі карабля...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Немагчыма змяніць назву мадэлі паветр. судна ...
+STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Немагчыма зьмяніць назву мадэлі цягніка...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Немагчыма зьмяніць назву мадэлі аўтамабіля...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Немагчыма зьмяніць назву мадэлі карабля...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Немагчыма зьмяніць назву мадэлі паветр. судна ...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Не атрымалася прадаць цягнік...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Не атрымалася прадаць аўтамабiль...
@@ -4039,66 +4039,66 @@ STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Аўта
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Карабель недаступны
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Авiятранспарт недаступны
 
-STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Занадта шмат транспарту ў гульне
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не атрымалася змяніць частату абслугоўвання...
+STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Занадта шмат транспарту ў гульні
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не атрымалася зьмяніць інтэрвал абслугоўваньня...
 
-STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспартны сродак знішчаны
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... транспартны сродак зьнішчаны
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Немагчыма ігнараваць сігнал. Небяспечна...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Не атрымалася развярнуць цягнік...
-STR_ERROR_TRAIN_START_NO_CATENARY                               :На гэтых рэйках адсутнічае кантактная сетка, цягнік не можа ехаць.
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Немагчыма ігнараваць сыгнал. Небяспечна...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Не атрымалася завярнуць цягнік...
+STR_ERROR_TRAIN_START_NO_CATENARY                               :На гэтай каляіне адсутнічае кантактная сетка, цягнік ня можа ехаць
 
-STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Немагчыма развярнуць аўтамабіль...
+STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Немагчыма завярнуць аўтамабіль...
 
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Самалёт у палёце
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Спіс заданняў запоўнены
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Занадта шмат заданняў
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Немагчыма ўставіць новае заданне...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Немагчыма выдаліць гэтае заданне...
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Немагчыма змяніць гэта заданне...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Не атрымалася перамясьціць гэта заданне...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Не атрымалася прапусціць бягучае заданне...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Не атрымалася перайсці да выдзеленага задання...
-STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... ТС не можа дасягнуць усіх станцый
-STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ТС не можа дасягнуць гэтай станцыі
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ТС з агульным заданнем не можа дасягнуць гэтай станцыі
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Сьпіс заданьняў запоўнены
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Занадта шмат заданьняў
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Немагчыма ўставіць новае заданьне...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Немагчыма выдаліць гэтае заданьне...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Немагчыма зьмяніць гэта заданьне...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Не атрымалася перамясьціць гэта заданьне...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Не атрымалася прапусьціць бягучае заданьне...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Не атрымалася перайсьці да выдзеленага заданьня...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... ТС ня можа дасягнуць усіх станцыяў
+STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ТС ня можа дасягнуць гэтай станцыі
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ТС з агульным заданьнем ня можа дасягнуць гэтай станцыі
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Немагчыма выкарыстоўваць агульны спіс заданняў
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Немагчыма скапіраваць спіс заданняў
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Немагчыма выкарыстоўваць агульны сьпіс заданьняў
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Немагчыма скапіяаваць сьпіс заданьняў
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... занадта далёка ад папярэдняй кропкі
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не атрымалася скласці расклад для гэтага транспарту...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не атрымалася скласьці расклад руху...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Транспарт можа чакаць толькі на станцыі.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Гэты транспарт не спыняецца на гэтай станцыі.
 
 # Sign related errors
-STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... занадта шмат метак
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не атрымалася ўсталяваць метку...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не атрымалася змяніць надпіс меткi...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не атрымалася выдаліць метку...
+STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... занадта шмат знакаў
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не атрымалася ўсталяваць знак...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не атрымалася зьмяніць надпіс на знаку...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не атрымалася выдаліць знак...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Клон гульні «Transport Tycoon Deluxe»
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Клён гульні Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Вышынны офісны будынак
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Офісны будынак
-STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Жылы дом
+STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Малы жылы дом
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Царква
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Вялікi офісны будынак
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Гарадзкія будынкі
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Гарадзкія дамы
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Гатэль
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Статуя
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Фантан
 STR_TOWN_BUILDING_NAME_PARK_1                                   :Парк
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_2                           :Офісны будынак
 STR_TOWN_BUILDING_NAME_SHOPS_AND_OFFICES_1                      :Гандлёва-офісны цэнтр
-STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Сучасны дзелавы цэнтр
+STR_TOWN_BUILDING_NAME_MODERN_OFFICE_BUILDING_1                 :Сучасны офісны будынак
 STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Склад
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Офісны будынак
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Стадыён
@@ -4114,88 +4114,125 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :Стадыён
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :Офiсы
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Дамы
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Кінатэатр
-STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Тарговы цэнтр
+STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Гандлёвы цэнтр
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iглу
 STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Халупы
-STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Домік-Чайнік
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Свiння-Скарбонка
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Домік-імбрык
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Свiньня-скарбонка
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Вугальная шахта
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Вугальная шахта
 STR_INDUSTRY_NAME_COAL_MINE.gen                                 :вугальнай шахты
-STR_INDUSTRY_NAME_POWER_STATION                                 :Электрастанцыя
+STR_INDUSTRY_NAME_COAL_MINE.acc                                 :вугальную шахту
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Электрастанцыя
 STR_INDUSTRY_NAME_POWER_STATION.gen                             :электрастанцыi
-STR_INDUSTRY_NAME_SAWMILL                                       :Лесапiлка
-STR_INDUSTRY_NAME_SAWMILL.gen                                   :лесапiлкi
-STR_INDUSTRY_NAME_FOREST                                        :Лес
+STR_INDUSTRY_NAME_POWER_STATION.acc                             :электрастанцыю
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Пільня
+STR_INDUSTRY_NAME_SAWMILL.gen                                   :лесапільні
+STR_INDUSTRY_NAME_SAWMILL.acc                                   :лесапільню
+STR_INDUSTRY_NAME_FOREST                                        :{G=m}Лес
 STR_INDUSTRY_NAME_FOREST.gen                                    :лесу
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Нафтазавод
-STR_INDUSTRY_NAME_OIL_REFINERY.gen                              :нафтазаводу
-STR_INDUSTRY_NAME_OIL_RIG                                       :Нафтавая вышка
-STR_INDUSTRY_NAME_OIL_RIG.gen                                   :нафтавай вышкi
-STR_INDUSTRY_NAME_FACTORY                                       :Завод
-STR_INDUSTRY_NAME_FACTORY.gen                                   :заводу
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :Тыпаграфiя
+STR_INDUSTRY_NAME_FOREST.acc                                    :лес
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=m}Нафтазавод
+STR_INDUSTRY_NAME_OIL_REFINERY.gen                              :нафтаперапрацоўчага завода
+STR_INDUSTRY_NAME_OIL_REFINERY.acc                              :нафтаперапрацоўчы завод
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Нафтавая плятформа
+STR_INDUSTRY_NAME_OIL_RIG.gen                                   :нафтаздабываючай плятформы
+STR_INDUSTRY_NAME_OIL_RIG.acc                                   :нафтаздабываючую плятформу
+STR_INDUSTRY_NAME_FACTORY                                       :{G=m}Завод
+STR_INDUSTRY_NAME_FACTORY.gen                                   :завода
+STR_INDUSTRY_NAME_FACTORY.acc                                   :завод
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Тыпаграфiя
 STR_INDUSTRY_NAME_PRINTING_WORKS.gen                            :тыпаграфii
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Сталелiцейны завод
-STR_INDUSTRY_NAME_STEEL_MILL.gen                                :сталелiцейнага заводу
-STR_INDUSTRY_NAME_FARM                                          :Ферма
+STR_INDUSTRY_NAME_PRINTING_WORKS.acc                            :тыпаграфію
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=m}Сталелiцейны завод
+STR_INDUSTRY_NAME_STEEL_MILL.gen                                :сталелiцейнага завода
+STR_INDUSTRY_NAME_STEEL_MILL.acc                                :сталеліцейны завод
+STR_INDUSTRY_NAME_FARM                                          :{G=f}Ферма
 STR_INDUSTRY_NAME_FARM.gen                                      :фермы
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Шахта меднай руды
+STR_INDUSTRY_NAME_FARM.acc                                      :ферму
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Шахта меднай руды
 STR_INDUSTRY_NAME_COPPER_ORE_MINE.gen                           :шахты меднай руды
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Нафтавая свiдравiна
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.acc                           :шахту меднай руды
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=f}Нафтавая сьвiдравiна
 STR_INDUSTRY_NAME_OIL_WELLS.gen                                 :нафтавай свiдравiны
-STR_INDUSTRY_NAME_BANK                                          :Банк
+STR_INDUSTRY_NAME_OIL_WELLS.acc                                 :нафтавую сьвідравіну
+STR_INDUSTRY_NAME_BANK                                          :{G=m}Банк
 STR_INDUSTRY_NAME_BANK.gen                                      :банка
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Завод ежы
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.gen                     :заводу ежы
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Папяровая фабрыка
+STR_INDUSTRY_NAME_BANK.acc                                      :банк
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Харчовая фабрыка
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.gen                     :харчовай фабрыкі
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.acc                     :харчовую фабрыку
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Папяровая фабрыка
 STR_INDUSTRY_NAME_PAPER_MILL.gen                                :папяровай фабрыкi
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Залатая шахта
-STR_INDUSTRY_NAME_GOLD_MINE.gen                                 :залатой шахты
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Банк
+STR_INDUSTRY_NAME_PAPER_MILL.acc                                :папяровую фабрыку
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Залатаносная шахта
+STR_INDUSTRY_NAME_GOLD_MINE.gen                                 :залатаноснай шахты
+STR_INDUSTRY_NAME_GOLD_MINE.acc                                 :залатаносную шахту
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Банк
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.gen                        :банка
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Алмазныя копі
-STR_INDUSTRY_NAME_DIAMOND_MINE.gen                              :алмазных копяў
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Шахта жалезнай руды
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.acc                        :банк
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=p}Алмазныя капальні
+STR_INDUSTRY_NAME_DIAMOND_MINE.gen                              :алмазных капальняў
+STR_INDUSTRY_NAME_DIAMOND_MINE.acc                              :алмазныя капальні
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Шахта жалезнай руды
 STR_INDUSTRY_NAME_IRON_ORE_MINE.gen                             :шахты жалезнай руды
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Плантацыя садавiны
+STR_INDUSTRY_NAME_IRON_ORE_MINE.acc                             :шахту жалезнай руды
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Плантацыя садавiны
 STR_INDUSTRY_NAME_FRUIT_PLANTATION.gen                          :плантацыi садавiны
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Плантацыя гевеі
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.acc                          :плантацыю садавіны
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Плантацыя гевеі
 STR_INDUSTRY_NAME_RUBBER_PLANTATION.gen                         :плантацыi гевеi
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Водная свідравіна
-STR_INDUSTRY_NAME_WATER_SUPPLY.gen                              :воднай свiдравiны
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Воданапорная вежа
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.acc                         :плантацыю гевеі
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=f}Вадзяная сьвідравіна
+STR_INDUSTRY_NAME_WATER_SUPPLY.gen                              :вадзяной сьвiдравiны
+STR_INDUSTRY_NAME_WATER_SUPPLY.acc                              :вадзяную сьвiдравіну
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Воданапорная вежа
 STR_INDUSTRY_NAME_WATER_TOWER.gen                               :воданапорнай вежы
-STR_INDUSTRY_NAME_FACTORY_2                                     :Завод
-STR_INDUSTRY_NAME_FACTORY_2.gen                                 :заводу
-STR_INDUSTRY_NAME_FARM_2                                        :Ферма
+STR_INDUSTRY_NAME_WATER_TOWER.acc                               :воданапорную вежу
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=m}Завод
+STR_INDUSTRY_NAME_FACTORY_2.gen                                 :завода
+STR_INDUSTRY_NAME_FACTORY_2.acc                                 :завод
+STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Ферма
 STR_INDUSTRY_NAME_FARM_2.gen                                    :фермы
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Лесапілка
-STR_INDUSTRY_NAME_LUMBER_MILL.gen                               :лесапiлкi
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Лес цукровай баўны
+STR_INDUSTRY_NAME_FARM_2.acc                                    :ферму
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Пільня
+STR_INDUSTRY_NAME_LUMBER_MILL.gen                               :лесапільні
+STR_INDUSTRY_NAME_LUMBER_MILL.acc                               :лесапільню
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Лес цукровай баўны
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.gen                       :лесу цукровай баўны
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Цукерачная фабрыка
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.acc                       :лес цукровай баўны
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Цукерачная фабрыка
 STR_INDUSTRY_NAME_CANDY_FACTORY.gen                             :цукерачнай фабрыкi
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Поле батарэек
+STR_INDUSTRY_NAME_CANDY_FACTORY.acc                             :цукерачную фабрыку
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=n}Поле батарэек
 STR_INDUSTRY_NAME_BATTERY_FARM.gen                              :поля батарэек
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Калодзежы колы
+STR_INDUSTRY_NAME_BATTERY_FARM.acc                              :поле батарэек
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=p}Калодзежы колы
 STR_INDUSTRY_NAME_COLA_WELLS.gen                                :калодзежаў колы
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Магазін цацак
-STR_INDUSTRY_NAME_TOY_SHOP.gen                                  :магазiна цацак
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Завод цацак
-STR_INDUSTRY_NAME_TOY_FACTORY.gen                               :заводу цацак
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Фантаны плястыка
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.gen                         :фантанаў плястыка
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Завод газiроўкi
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.gen                       :заводу газiроўкi
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Генератар бурбалак
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR.gen                          :генератару бурбалак
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Iрысавы кар'ер
+STR_INDUSTRY_NAME_COLA_WELLS.acc                                :калодзежы колы
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}Крама цацак
+STR_INDUSTRY_NAME_TOY_SHOP.gen                                  :крамы цацак
+STR_INDUSTRY_NAME_TOY_SHOP.acc                                  :краму цацак
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=m}Завод цацак
+STR_INDUSTRY_NAME_TOY_FACTORY.gen                               :завода цацак
+STR_INDUSTRY_NAME_TOY_FACTORY.acc                               :завод цацак
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=p}Фантаны плястыку
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.gen                         :фантанаў плястыку
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.acc                         :фантан плястыку
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=m}Завод газiроўкi
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.gen                       :завода газiроўкi
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.acc                       :завод газіроўкі
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Генэратар бурбалак
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.gen                          :генератара бурбалак
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.acc                          :генэратар бурбалак
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}Iрысавы кар'ер
 STR_INDUSTRY_NAME_TOFFEE_QUARRY.gen                             :iрысавага кар'еру
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Цукровая шахта
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.acc                             :ірысавы кар'ер
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Цукровая шахта
 STR_INDUSTRY_NAME_SUGAR_MINE.gen                                :цукровай шахты
+STR_INDUSTRY_NAME_SUGAR_MINE.acc                                :цукровую шахту
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
@@ -4208,38 +4245,84 @@ STR_SV_SHIP_NAME                                                :Карабел�
 STR_SV_AIRCRAFT_NAME                                            :Самалёт {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :Паўночная {STRING}
-STR_SV_STNAME_SOUTH                                             :Паўднёвая {STRING}
-STR_SV_STNAME_EAST                                              :Усходняя {STRING}
-STR_SV_STNAME_WEST                                              :Захадная {STRING}
-STR_SV_STNAME_CENTRAL                                           :Цэнтральная {STRING}
-STR_SV_STNAME_TRANSFER                                          :Перагонная {STRING}
-STR_SV_STNAME_HALT                                              :{STRING}-прывал
-STR_SV_STNAME_VALLEY                                            :Дaлiна {STRING}
-STR_SV_STNAME_HEIGHTS                                           :{STRING}-вышынная
-STR_SV_STNAME_WOODS                                             :Лясная {STRING}
-STR_SV_STNAME_LAKESIDE                                          :Азёрная {STRING}
-STR_SV_STNAME_EXCHANGE                                          :{STRING}-сартавальная
-STR_SV_STNAME_AIRPORT                                           :Аэрапорт {STRING}
-STR_SV_STNAME_OILFIELD                                          :Нафтавая вышка {STRING}
-STR_SV_STNAME_MINES                                             :Шахты {STRING}
-STR_SV_STNAME_DOCKS                                             :Прыстань {STRING}
+STR_SV_STNAME_NORTH                                             :{G=f}Паўночная {STRING}
+STR_SV_STNAME_NORTH.gen                                         :Паўночнай {STRING}
+STR_SV_STNAME_NORTH.acc                                         :Паўночную {STRING}
+STR_SV_STNAME_SOUTH                                             :{G=f}Паўднёвая {STRING}
+STR_SV_STNAME_SOUTH.gen                                         :Паўднёвай {STRING}
+STR_SV_STNAME_SOUTH.acc                                         :Паўднёвую {STRING}
+STR_SV_STNAME_EAST                                              :{G=f}Усходняя {STRING}
+STR_SV_STNAME_EAST.gen                                          :Усходняй {STRING}
+STR_SV_STNAME_EAST.acc                                          :Усходнюю {STRING}
+STR_SV_STNAME_WEST                                              :{G=f}Заходняя {STRING}
+STR_SV_STNAME_WEST.gen                                          :Заходняй {STRING}
+STR_SV_STNAME_WEST.acc                                          :Заходнюю {STRING}
+STR_SV_STNAME_CENTRAL                                           :{G=f}Цэнтральная {STRING}
+STR_SV_STNAME_CENTRAL.gen                                       :Цэнтральнай {STRING}
+STR_SV_STNAME_CENTRAL.acc                                       :Цэнтральную {STRING}
+STR_SV_STNAME_TRANSFER                                          :{G=f}Таварная {STRING}
+STR_SV_STNAME_TRANSFER.gen                                      :Таварнай {STRING}
+STR_SV_STNAME_TRANSFER.acc                                      :Таварную {STRING}
+STR_SV_STNAME_HALT                                              :Прамежкавая {STRING}
+STR_SV_STNAME_HALT.gen                                          :Прамежкавай {STRING}
+STR_SV_STNAME_HALT.acc                                          :Прамежкавую {STRING}
+STR_SV_STNAME_VALLEY                                            :Даліна {STRING}
+STR_SV_STNAME_VALLEY.gen                                        :Даліны {STRING}
+STR_SV_STNAME_VALLEY.acc                                        :Даліну {STRING}
+STR_SV_STNAME_HEIGHTS                                           :{G=f}{STRING}-Вышынная
+STR_SV_STNAME_HEIGHTS.gen                                       :{STRING}-Вышыннай
+STR_SV_STNAME_HEIGHTS.acc                                       :{STRING}-Вышынную
+STR_SV_STNAME_WOODS                                             :{G=f}Лясная {STRING}
+STR_SV_STNAME_WOODS.gen                                         :Лясной {STRING}
+STR_SV_STNAME_WOODS.acc                                         :Лясную {STRING}
+STR_SV_STNAME_LAKESIDE                                          :{G=f}Азёрная {STRING}
+STR_SV_STNAME_LAKESIDE.gen                                      :Азёрнай {STRING}
+STR_SV_STNAME_LAKESIDE.acc                                      :Азёрную {STRING}
+STR_SV_STNAME_EXCHANGE                                          :{G=f}{STRING}-Сартавальная
+STR_SV_STNAME_EXCHANGE.gen                                      :{STRING}-Сартавальнай
+STR_SV_STNAME_EXCHANGE.acc                                      :{STRING}-Сартавальную
+STR_SV_STNAME_AIRPORT                                           :{G=m}Аэрапорт {STRING}
+STR_SV_STNAME_AIRPORT.gen                                       :Аэрапорта {STRING}
+STR_SV_STNAME_AIRPORT.acc                                       :Аэрапорт {STRING}
+STR_SV_STNAME_OILFIELD                                          :{G=f}Нафтавая плятформа {STRING}
+STR_SV_STNAME_OILFIELD.gen                                      :Нафтавай плятформы {STRING}
+STR_SV_STNAME_OILFIELD.acc                                      :Нафтавую плятформу {STRING}
+STR_SV_STNAME_MINES                                             :{G=p}Шахты {STRING}
+STR_SV_STNAME_MINES.gen                                         :Шахтаў {STRING}
+STR_SV_STNAME_MINES.acc                                         :Шахты {STRING}
+STR_SV_STNAME_DOCKS                                             :{G=f}Прыстань {STRING}
+STR_SV_STNAME_DOCKS.gen                                         :Прыстанi {STRING}
+STR_SV_STNAME_DOCKS.acc                                         :Прыстань {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{STRING}-дадатковая
-STR_SV_STNAME_SIDINGS                                           :{STRING}-запасная
-STR_SV_STNAME_BRANCH                                            :{STRING}-галiнка
-STR_SV_STNAME_UPPER                                             :Верхняя {STRING}
-STR_SV_STNAME_LOWER                                             :Нiжняя {STRING}
-STR_SV_STNAME_HELIPORT                                          :Пляцоўка {STRING}
-STR_SV_STNAME_FOREST                                            :Лес {STRING}
-STR_SV_STNAME_FALLBACK                                          :г.{NBSP}{STRING}, станцыя №{NUM}
+STR_SV_STNAME_ANNEXE                                            :{G=f}{STRING}-Дадатковая
+STR_SV_STNAME_ANNEXE.gen                                        :{STRING}-Дадатковай
+STR_SV_STNAME_ANNEXE.acc                                        :{STRING}-Дадатковую
+STR_SV_STNAME_SIDINGS                                           :{G=f}{STRING}-Запасная
+STR_SV_STNAME_SIDINGS.gen                                       :{STRING}-Запасной
+STR_SV_STNAME_SIDINGS.acc                                       :{STRING}-Запасную
+STR_SV_STNAME_BRANCH                                            :{G=m}{STRING}-Тупік
+STR_SV_STNAME_BRANCH.gen                                        :{STRING}-Тупіка
+STR_SV_STNAME_BRANCH.acc                                        :{STRING}-Тупік
+STR_SV_STNAME_UPPER                                             :{G=f}Верхняя {STRING}
+STR_SV_STNAME_UPPER.gen                                         :Верхняй {STRING}
+STR_SV_STNAME_UPPER.acc                                         :Верхнюю {STRING}
+STR_SV_STNAME_LOWER                                             :{G=f}Нiжняя {STRING}
+STR_SV_STNAME_LOWER.gen                                         :Нiжняй {STRING}
+STR_SV_STNAME_LOWER.acc                                         :Нiжнюю {STRING}
+STR_SV_STNAME_HELIPORT                                          :{G=f}Пляцоўка {STRING}
+STR_SV_STNAME_HELIPORT.gen                                      :Пляцоўкі {STRING}
+STR_SV_STNAME_HELIPORT.acc                                      :Пляцоўку {STRING}
+STR_SV_STNAME_FOREST                                            :{G=m}Лес {STRING}
+STR_SV_STNAME_FOREST.gen                                        :Леса {STRING}
+STR_SV_STNAME_FOREST.acc                                        :Лес {STRING}
+STR_SV_STNAME_FALLBACK                                          :г. {NBSP}{STRING}, станцыя №{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
 # Vehicle names
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Паравоз Kirby Paul Tank
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Танк-паравоз Kirby Paul
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :Цеплавоз MJS 250
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Паравоз Ploddyphut «Чу-Чу»
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Паравоз Powernaut «Чу-Чу»
@@ -4247,25 +4330,25 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :Паравоз 
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Цеплавоз Ploddyphut
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Цеплавоз Powernaut
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Паравоз Wills 2-8-0
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Паравоз Chaney «Юбiлей»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Паравоз Ginzu «A4»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :Паравоз SH «8P»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Дызель-цягнік «Manley-Morel DMU»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :Дызель-цягнік «Dash»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :Цеплавоз SH/Hendry «25»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :Цеплавоз UU «37»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Цеплавоз Floss «47»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :Цеплавоз «CS 4000»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :Цеплавоз «CS 2400»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Цеплавоз «Centennial»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Цеплавоз «Kelling 3100»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Цеплавоз «Turner Турба»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Паравоз Chaney «Юбiлейны»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Паравоз Ginzu A4
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :Паравоз SH 8P
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Дызель-цягнік Manley-Morel (DMU)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :Цеплавоз Dash
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :Цеплавоз SH/Hendry 25
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :Цеплавоз UU 37
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Цеплавоз Floss 47
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :Цеплавоз CS 4000
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :Цеплавоз CS 2400
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Цеплавоз Centennial
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Цеплавоз Kelling 3100
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Цеплавоз Turner «Турба»
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :Цеплавоз MJS 1000
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :Цеплавоз SH «125»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :Электравоз SH «30»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :Электравоз SH «40»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :Электравоз «T.I.M.»
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :Электравоз «AsiaStar»
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :Цеплавоз SH 125
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :Электравоз SH 30
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :Электравоз SH 40
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :Электравоз T.I.M.
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :Электравоз AsiaStar
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Пасажырскi вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Паштовы вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Вугальная плятформа
@@ -4274,14 +4357,14 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Таварны вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Хопер для зерня
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Вагон для драўнiны
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Вагон для жалезнай руды
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Хопер для жалезнай руды
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Вагон для сталi
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_ARMORED_VAN                   :Бранiраваны вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Рэфрыжератар (ежа)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FOOD_VAN                      :Рэфрыжэратар (прадукты)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PAPER_TRUCK                   :Вагон для паперы
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COPPER_ORE_HOPPER             :Хопер для меднай руды
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Водная цыстэрна
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Рэфрыжератар (садавiна)
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Вадзяная цыстэрна
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Рэфрыжэратар (садавiна)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Вагон для каўчуку
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Вагон для цукру
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Хопер для цукровай баўны
@@ -4293,8 +4376,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Вагон для батарэек
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Вагон для газiроўкi
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Вагон для плястыку
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :Электравоз «X2001»
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :Электравоз «Millennium Z1»
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :Электравоз X2001
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :Электравоз Millennium Z1
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Пасажырскi вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Паштовы вагон
@@ -4304,14 +4387,14 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Таварны вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Хопер для зерня
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Вагон для драўнiны
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Вагон для жалезнай руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Хопер для жалезнай руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Вагон для сталi
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Бранiраваны вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Рэфрыжератар (ежа)
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Рэфрыжэратар (прадукты)
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Вагон для паперы
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Хопер для меднай руды
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Водная цыстэрна
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Рэфрыжератар (садавiна)
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Вадзяная цыстэрна
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Рэфрыжэратар (садавiна)
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Вагон для каўчуку
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Вагон для цукру
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Хопер для цукровай баўны
@@ -4322,11 +4405,11 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Вагон для цацак
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Вагон для батарэек
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Вагон для газiроўкi
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Вагон для пластыку
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Вагон для плястыку
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 «Левияфан»
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 «Цыклоп»
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 «Пегас»
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 «Хiмера»
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 «Хiмэра»
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow «Ракета»
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Пасажырскi вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Паштовы вагон
@@ -4336,14 +4419,14 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Таварны вагон
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Хопер для зерня
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Вагон для драўнiны
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Вагон для жалезнай руды
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Хопер для жалезнай руды
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Вагон для сталi
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Бранiраваны вагон
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Рэфрыжератар (ежа)
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Рэфрыжэратар (ежа)
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Вагон для паперы
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Хопер для меднай руды
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Водная цыстэрна
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Рэфрыжератар (садавiна)
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Вадзяная цыстэрна
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Рэфрыжэратар (садавiна)
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Вагон для каўчуку
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Вагон для цукру
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Хопер для цукровай баўны
@@ -4354,7 +4437,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Вагон дл
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Вагон для цацак
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Вагон для батарэек
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Вагон для газiроўкi
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Вагон для пластыку
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Вагон для плястыку
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Аўтобус MPS Regal
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Аўтобус Hereford Leopard
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_BUS                        :Аўтобус Foster
@@ -4404,9 +4487,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :Грузавiк
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_COPPER_ORE_TRUCK              :Грузавiк MPS (медн. руда)
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COPPER_ORE_TRUCK              :Грузавiк Uhl (медн. руда)
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_COPPER_ORE_TRUCK             :Грузавiк Goss (медн. руда)
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Водная цыстэрна Uhl
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Водная цыстэрна Balogh
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Водная цыстэрна MPS
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_WATER_TANKER                  :Вадзяная цыстэрна Uhl
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_WATER_TANKER               :Вадзяная цыстэрна Balogh
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :Вадзяная цыстэрна MPS
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Рэфрыжэратар Balogh (садавіна)
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Рэфрыжэратар Uhl (садавіна)
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Рэфрыжэратар Kelling (садавіна)
@@ -4437,9 +4520,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Грузавiк
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Грузавiк MightyMover (газiроўка)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Грузавiк Powernaught (газiроўка)
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Грузавiк Wizzowow (газiроўка)
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Грузавiк MightyMover (пластык)
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Грузавiк Powernaught (пластык)
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Грузавiк Wizzowow (пластык)
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Грузавiк MightyMover (плястык)
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Грузавiк Powernaught (плястык)
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Грузавiк Wizzowow (плястык)
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :Грузавiк MightyMover (бурбалкi)
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Грузавiк Powernaught (бурбалкi)
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Грузавiк Wizzowow (бурбалкi)
@@ -4471,7 +4554,7 @@ STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Дарвiн 300
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Дарвiн 400
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Дарвiн 500
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Дарвiн 600
-STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Гуру «Галактыка»
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Гуру «Галяктыка»
 STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Аэратаксi A21
 STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Аэратаксi A31
 STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Аэратаксi A32
@@ -4490,7 +4573,7 @@ STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
 STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
 STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
 STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
-STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Джаггерлёт M1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Джаггэрлёт M1
 STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
 STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Верталёт Tricario
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Верталёт Гуру X2
@@ -4498,9 +4581,9 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Верталё�
 
 ##id 0x8800
 # Formatting of some strings
-STR_FORMAT_DATE_TINY                                            :{STRING}-{STRING}-{NUM}
-STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
-STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
+STR_FORMAT_DATE_TINY                                            :{STRING}.{STRING}.{NUM}
+STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM} г.
+STR_FORMAT_DATE_LONG                                            :{STRING} {STRING.gen} {NUM} г.
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :Буй {TOWN}
@@ -4520,7 +4603,7 @@ STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} �
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар ({STATION})
 
 STR_UNKNOWN_STATION                                             :невядомая станцыя
-STR_DEFAULT_SIGN_NAME                                           :Метка
+STR_DEFAULT_SIGN_NAME                                           :Знак
 STR_COMPANY_SOMEONE                                             :хтосьцi
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}

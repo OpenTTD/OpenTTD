@@ -1086,6 +1086,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Consent
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Consenti aree di copertura più realistiche: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione di strade, ponti, etc. delle città: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantità di fumo/scintille delle locomotive: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nessuno
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originale
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistica
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modello accelerazione dei treni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originale
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistico
@@ -2027,6 +2031,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Costruis
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selezione aeroporto
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Seleziona dimensione/tipo di aeroporto
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Classe aeroporto
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Disposizione {NUM}
 
 STR_AIRPORT_SMALL                                               :Piccolo
 STR_AIRPORT_CITY                                                :Cittadino

@@ -1180,6 +1180,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dopusti
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dopusti realističnije veličine područja zahvaćanja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dopusti rušenje više gradskih cesta, mostova itd.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Omogući sastavljanje vrlo dugačkih vlakova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/iskri za lokomotive: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nema
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realističan
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model ubrzanja vlaka: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalni
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistični
@@ -2121,6 +2125,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Izgradi 
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Izbor zračne luke
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Odaberi veličinu/vrstu zračne luke
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Klasa zračne luke
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Raspored {NUM}
 
 STR_AIRPORT_SMALL                                               :Mala
 STR_AIRPORT_CITY                                                :Grad

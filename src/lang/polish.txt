@@ -1464,6 +1464,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Pozwól
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Pozwól na bardziej realistyczny zasięg obejmowania: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Pozwól usuwać drogi, mosty, tunele, itp. należące do miasta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Pozwól budować bardzo długie pociągi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Ilość dymu/pary lokomotywy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :brak
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :oryginalnie
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :realistycznie
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model przyspieszania pociągu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :oryginalny
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :realistyczny
@@ -2405,6 +2409,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Zbuduj l
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Wybór lotniska
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Wybierz wielkość/typ lotniska
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Kategoria lotniska
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Układ {NUM}
 
 STR_AIRPORT_SMALL                                               :Małe
 STR_AIRPORT_CITY                                                :Miejskie
