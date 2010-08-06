@@ -1702,24 +1702,22 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 			break;
 
 		case WWT_PUSHBTN:
-			this->SetFill(0, 0);
-			break;
-
 		case WWT_IMGBTN:
 		case WWT_PUSHIMGBTN:
 		case WWT_IMGBTN_2:
-			this->SetFill(0, 0);
-			break;
-
 		case WWT_TEXTBTN:
 		case WWT_PUSHTXTBTN:
 		case WWT_TEXTBTN_2:
 		case WWT_LABEL:
 		case WWT_TEXT:
 		case WWT_MATRIX:
-		case WWT_EDITBOX:
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_BUTTON_ARROW:
+			this->SetFill(0, 0);
+			break;
+
+		case WWT_EDITBOX:
+			this->SetMinimalSize(10, 0);
 			this->SetFill(0, 0);
 			break;
 
