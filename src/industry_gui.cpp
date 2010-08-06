@@ -259,7 +259,8 @@ class BuildIndustryWindow : public Window {
 	/** Update status of the fund and display-chain widgets. */
 	void SetButtons()
 	{
-		this->SetWidgetsDisabledState(!this->enabled[this->selected_index], DPIW_DISPLAY_WIDGET, DPIW_FUND_WIDGET, WIDGET_LIST_END);
+		this->SetWidgetDisabledState(DPIW_FUND_WIDGET, this->selected_type != INVALID_INDUSTRYTYPE && !this->enabled[this->selected_index]);
+		this->SetWidgetDisabledState(DPIW_DISPLAY_WIDGET, this->selected_type == INVALID_INDUSTRYTYPE && this->enabled[this->selected_index]);
 	}
 
 public:
