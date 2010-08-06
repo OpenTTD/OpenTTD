@@ -593,6 +593,21 @@ uint CountVehiclesInChain(const Vehicle *v)
 }
 
 /**
+ * Count the number of vehicles of a company.
+ * @param c Company owning the vehicles.
+ * @param [out] counts Array of counts. Contains the vehicle count ordered by type afterwards.
+ */
+void CountCompanyVehicles(CompanyID cid, uint counts[4])
+{
+	for (uint i = 0; i < 4; i++) counts[i] = 0;
+
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->owner == cid && v->IsPrimaryVehicle()) counts[v->type]++;
+	}
+}
+
+/**
  * Check if a vehicle is counted in num_engines in each company struct
  * @return true if the vehicle is counted in num_engines
  */
