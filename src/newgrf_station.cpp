@@ -173,9 +173,6 @@ void SetCustomStationSpec(StationSpec *statspec)
 	StationClass *station_class;
 	int i;
 
-	/* If the station has already been allocated, don't reallocate it. */
-	if (statspec->allocated) return;
-
 	assert(statspec->cls_id < STAT_CLASS_MAX);
 	station_class = &_station_classes[statspec->cls_id];
 
@@ -183,7 +180,6 @@ void SetCustomStationSpec(StationSpec *statspec)
 	station_class->spec = ReallocT(station_class->spec, station_class->stations);
 
 	station_class->spec[i] = statspec;
-	statspec->allocated = true;
 }
 
 /**
