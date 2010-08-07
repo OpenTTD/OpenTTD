@@ -1338,6 +1338,7 @@ struct CargoesField {
 	static const int HOR_CARGO_WIDTH, HOR_CARGO_SPACE;
 	static const int CARGO_FIELD_WIDTH;
 	static const int VERT_CARGO_SPACE, VERT_CARGO_EDGE;
+	static const int BLOB_DISTANCE, BLOB_WIDTH, BLOB_HEIGHT;
 
 	static const int INDUSTRY_LINE_COLOUR;
 	static const int CARGO_LINE_COLOUR;
@@ -1533,8 +1534,21 @@ struct CargoesField {
 				GfxDrawLine(xpos2, ypos1, xpos2, ypos2, INDUSTRY_LINE_COLOUR);
 				ypos += (normal_height - FONT_HEIGHT_NORMAL) / 2;
 				if (this->u.industry.ind_type < NUM_INDUSTRYTYPES) {
-					SetDParam(0, GetIndustrySpec(this->u.industry.ind_type)->name);
+					const IndustrySpec *indsp = GetIndustrySpec(this->u.industry.ind_type);
+					SetDParam(0, indsp->name);
 					DrawString(xpos, xpos2, ypos, STR_JUST_STRING, TC_WHITE, SA_HOR_CENTER);
+
+					/* Draw the industry legend. */
+					int blob_left, blob_right;
+					if (_dynlang.text_dir == TD_RTL) {
+						blob_right = xpos2 - BLOB_DISTANCE;
+						blob_left  = blob_right - BLOB_WIDTH;
+					} else {
+						blob_left  = xpos + BLOB_DISTANCE;
+						blob_right = blob_left + BLOB_WIDTH;
+					}
+					GfxFillRect(blob_left,     ypos2 - BLOB_DISTANCE - BLOB_HEIGHT,     blob_right,     ypos2 - BLOB_DISTANCE,     0); // Border
+					GfxFillRect(blob_left + 1, ypos2 - BLOB_DISTANCE - BLOB_HEIGHT + 1, blob_right - 1, ypos2 - BLOB_DISTANCE - 1, indsp->map_colour);
 				} else {
 					DrawString(xpos, xpos2, ypos, STR_INDUSTRY_CARGOES_HOUSES, TC_FROMSTRING, SA_HOR_CENTER);
 				}
@@ -1747,6 +1761,10 @@ const int CargoesField::HOR_CARGO_WIDTH        = 15; ///< Width of a vertical ca
 const int CargoesField::HOR_CARGO_SPACE        =  5; ///< Amount of horizontal space between two vertical cargoes.
 const int CargoesField::VERT_CARGO_EDGE        =  4; ///< Amount of vertical space between top/bottom and the top/bottom connected cargo at an industry.
 const int CargoesField::VERT_CARGO_SPACE       =  4; ///< Amount of vertical space between two connected cargoes at an industry.
+
+const int CargoesField::BLOB_DISTANCE =  5; ///< Distance of the industry legend colour from the edge of the industry box.
+const int CargoesField::BLOB_WIDTH    = 12; ///< Width of the industry legend colour, including border.
+const int CargoesField::BLOB_HEIGHT   =  9; ///< Height of the industry legend colour, including border
 
 /** Width of a #CFT_CARGO field. */
 const int CargoesField::CARGO_FIELD_WIDTH = HOR_CARGO_BORDER_SPACE * 2 + HOR_CARGO_WIDTH * MAX_CARGOES + HOR_CARGO_SPACE * (MAX_CARGOES - 1);
