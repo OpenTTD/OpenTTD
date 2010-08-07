@@ -22,6 +22,13 @@ public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIIndustry"; }
 
+	/** Ways for an industry to accept a cargo. */
+	enum CargoAcceptState {
+		CAS_NOT_ACCEPTED, ///< The CargoID is not accepted by this industry.
+		CAS_ACCEPTED,     ///< The industry currently accepts this CargoID.
+		CAS_TEMP_REFUSED, ///< The industry temporarily refuses to accept this CargoID but may do so again in the future.
+	};
+
 	/**
 	 * Gets the number of industries.
 	 * @return The number of industries.
@@ -56,14 +63,14 @@ public:
 	static char *GetName(IndustryID industry_id);
 
 	/**
-	 * See if an industry accepts a certain cargo.
+	 * See whether an industry currently accepts a certain cargo.
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.
 	 * @pre IsValidIndustry(industry_id).
 	 * @pre AICargo::IsValidCargo(cargo_id).
-	 * @return True if and only if the industry accepts the cargo.
+	 * @return Whether the industry accepts, temporarily refuses or never accepts this cargo.
 	 */
-	static bool IsCargoAccepted(IndustryID industry_id, CargoID cargo_id);
+	static CargoAcceptState IsCargoAccepted(IndustryID industry_id, CargoID cargo_id);
 
 	/**
 	 * Get the amount of cargo stockpiled for processing.

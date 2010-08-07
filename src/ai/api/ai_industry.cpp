@@ -15,6 +15,7 @@
 #include "../../industry.h"
 #include "../../strings_func.h"
 #include "../../station_base.h"
+#include "../../newgrf_industries.h"
 #include "table/strings.h"
 
 /* static */ int32 AIIndustry::GetIndustryCount()
@@ -45,18 +46,21 @@
 	return industry_name;
 }
 
-/* static */ bool AIIndustry::IsCargoAccepted(IndustryID industry_id, CargoID cargo_id)
+/* static */ AIIndustry::CargoAcceptState AIIndustry::IsCargoAccepted(IndustryID industry_id, CargoID cargo_id)
 {
-	if (!IsValidIndustry(industry_id)) return false;
-	if (!AICargo::IsValidCargo(cargo_id)) return false;
+	if (!IsValidIndustry(industry_id)) return CAS_NOT_ACCEPTED;
+	if (!AICargo::IsValidCargo(cargo_id)) return CAS_NOT_ACCEPTED;
 
-	const Industry *i = ::Industry::Get(industry_id);
+	Industry *i = ::Industry::Get(industry_id);
 
 	for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-		if (i->accepts_cargo[j] == cargo_id) return true;
+		if (i->accepts_cargo[j] == cargo_id) {
+			if (IndustryTemporarilyRefusesCargo(i, cargo_id)) return CAS_TEMP_REFUSED;
+			return CAS_ACCEPTED;
+		}
 	}
 
-	return false;
+	return CAS_NOT_ACCEPTED;
 }
 
 /* static */ int32 AIIndustry::GetStockpiledCargo(IndustryID industry_id, CargoID cargo_id)

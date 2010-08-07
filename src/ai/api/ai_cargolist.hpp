@@ -27,6 +27,8 @@ public:
 
 /**
  * Creates a list of cargos that the given industry accepts.
+ * @note This list also includes cargos that are temporarily not accepted
+ *   by this industry, @see AIIndustry::IsCargoAccepted.
  * @ingroup AIList
  */
 class AICargoList_IndustryAccepting : public AIAbstractList {

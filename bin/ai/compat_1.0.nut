@@ -61,3 +61,9 @@ function()
 {
 	return !this.IsEnd();
 }
+
+AIIndustry._IsCargoAccepted <- AIIndustry.IsCargoAccepted;
+AIIndustry.IsCargoAccepted <- function(industry_id, cargo_id)
+{
+	return AIIndustry._IsCargoAccepted(industry_id, cargo_id) != AIIndustry.CAS_NOT_ACCEPTED;
+}

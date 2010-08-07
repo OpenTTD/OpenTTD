@@ -12,6 +12,10 @@
 #include "ai_industry.hpp"
 
 namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIIndustry::CargoAcceptState GetParam(ForceType<AIIndustry::CargoAcceptState>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIIndustry::CargoAcceptState)tmp; }
+	template <> int Return<AIIndustry::CargoAcceptState>(HSQUIRRELVM vm, AIIndustry::CargoAcceptState res) { sq_pushinteger(vm, (int32)res); return 1; }
+
 	/* Allow AIIndustry to be used as Squirrel parameter */
 	template <> AIIndustry *GetParam(ForceType<AIIndustry *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIIndustry *)instance; }
 	template <> AIIndustry &GetParam(ForceType<AIIndustry &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIIndustry *)instance; }
@@ -25,6 +29,10 @@ void SQAIIndustry_Register(Squirrel *engine)
 	DefSQClass <AIIndustry> SQAIIndustry("AIIndustry");
 	SQAIIndustry.PreRegister(engine);
 	SQAIIndustry.AddConstructor<void (AIIndustry::*)(), 1>(engine, "x");
+
+	SQAIIndustry.DefSQConst(engine, AIIndustry::CAS_NOT_ACCEPTED, "CAS_NOT_ACCEPTED");
+	SQAIIndustry.DefSQConst(engine, AIIndustry::CAS_ACCEPTED,     "CAS_ACCEPTED");
+	SQAIIndustry.DefSQConst(engine, AIIndustry::CAS_TEMP_REFUSED, "CAS_TEMP_REFUSED");
 
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::GetIndustryCount,                  "GetIndustryCount",                  1, ".");
 	SQAIIndustry.DefSQStaticMethod(engine, &AIIndustry::IsValidIndustry,                   "IsValidIndustry",                   2, ".i");

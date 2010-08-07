@@ -30,12 +30,13 @@
  * \li HasNext for all lists.
  *
  * Other changes:
- * \li AIRoad::BuildRoadStation now allows overbuilding.
- * \li AIRoad::BuildDriveThroughRoadStation now allows overbuilding.
+ * \li AIEngine::GetMaxTractiveEffort can be used for road vehicles.
  * \li AIEngine::GetPower can be used for road vehicles.
  * \li AIEngine::GetWeight can be used for road vehicles.
- * \li AIEngine::GetMaxTractiveEffort can be used for road vehicles.
+ * \li AIIndustry::IsCargoAccepted now returns CargoAcceptState instead of a boolean.
  * \li AIOrder::GetOrderFlags returns AIOrder::AIOF_INVALID for void orders as well.
+ * \li AIRoad::BuildDriveThroughRoadStation now allows overbuilding.
+ * \li AIRoad::BuildRoadStation now allows overbuilding.
  *
  * \b 1.0.3
  *
