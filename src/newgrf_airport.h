@@ -14,7 +14,7 @@
 
 #include "date_type.h"
 #include "map_type.h"
-#include "strings_type.h"
+#include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "gfx_type.h"
 
@@ -99,23 +99,9 @@ private:
 };
 
 /** Information related to airport classes. */
-struct AirportClass {
-	uint32 id;          ///< ID of this class, e.g. 'SMAL', 'LARG', 'HUB_', 'HELI', etc.
-	StringID name;      ///< name of this class
-	uint airports;      ///< number of airports in this class
-	AirportSpec **spec; ///< array of airport specifications
-};
-
-void ResetAirportClasses();
-AirportClassID AllocateAirportClass(uint32 cls);
-void SetAirportClassName(AirportClassID id, StringID name);
-StringID GetAirportClassName(AirportClassID id);
-
-uint GetNumAirportClasses();
-uint GetNumAirportsInClass(AirportClassID id);
+typedef NewGRFClass<AirportSpec, AirportClassID, APC_MAX> AirportClass;
 
 void BindAirportSpecs();
-const AirportSpec *GetAirportSpecFromClass(AirportClassID aclass, uint airport);
 
 StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16 callback);
 

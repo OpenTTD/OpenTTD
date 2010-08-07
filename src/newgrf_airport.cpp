@@ -22,8 +22,24 @@
 #include "newgrf_text.h"
 #include "station_base.h"
 #include "table/strings.h"
+#include "newgrf_class_func.h"
 
-static AirportClass _airport_classes[APC_MAX];
+/**
+ * Reset airport classes to their default state.
+ * This includes initialising the defaults classes with an empty
+ * entry, for standard airports.
+ */
+template <typename Tspec, typename Tid, Tid Tmax>
+/* static */ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
+{
+	AirportClass::SetName(AirportClass::Allocate('SMAL'), STR_AIRPORT_CLASS_SMALL);
+	AirportClass::SetName(AirportClass::Allocate('LARG'), STR_AIRPORT_CLASS_LARGE);
+	AirportClass::SetName(AirportClass::Allocate('HUB_'), STR_AIRPORT_CLASS_HUB);
+	AirportClass::SetName(AirportClass::Allocate('HELI'), STR_AIRPORT_CLASS_HELIPORTS);
+}
+
+INSTANTIATE_NEWGRF_CLASS_METHODS(AirportClass, AirportSpec, AirportClassID, APC_MAX)
+
 
 AirportOverrideManager _airport_mngr(NEW_AIRPORT_OFFSET, NUM_AIRPORTS, AT_INVALID);
 
@@ -82,141 +98,16 @@ void AirportSpec::ResetAirports()
 }
 
 /**
- * Allocate an airport class for the given class id
- * @param cls A 32 bit value identifying the class
- * @return Index into _airport_classes of allocated class
- */
-AirportClassID AllocateAirportClass(uint32 cls)
-{
-	for (AirportClassID i = APC_BEGIN; i < APC_MAX; i++) {
-		if (_airport_classes[i].id == cls) {
-			/* ClassID is already allocated, so reuse it. */
-			return i;
-		} else if (_airport_classes[i].id == 0) {
-			/* This class is empty, so allocate it to the ClassID. */
-			_airport_classes[i].id = cls;
-			return i;
-		}
-	}
-
-	grfmsg(2, "AllocateAirportClass: already allocated %d classes, using small airports class", APC_MAX);
-	return APC_SMALL;
-}
-
-/**
- * Set the name of an airport class
- * @param id The id of the class to change the name from
- * @param name The new name for the class
- */
-void SetAirportClassName(AirportClassID id, StringID name)
-{
-	assert(id < APC_MAX);
-	_airport_classes[id].name = name;
-}
-
-/**
- * Retrieve the name of an airport class
- * @param id The id of the airport class to get the name from
- * @return The name of the given class
- */
-StringID GetAirportClassName(AirportClassID id)
-{
-	assert(id < APC_MAX);
-	return _airport_classes[id].name;
-}
-
-/**
- * Get the number of airport classes in use
- * @return The number of airport classes
- */
-uint GetNumAirportClasses()
-{
-	uint i;
-	for (i = APC_BEGIN; i < APC_MAX && _airport_classes[i].id != 0; i++) {}
-	return i;
-}
-
-/**
- * Return the number of airports for the given airport class.
- * @param id Index of the airport class.
- * @return Number of airports in the class.
- */
-uint GetNumAirportsInClass(AirportClassID id)
-{
-	assert(id < APC_MAX);
-	return _airport_classes[id].airports;
-}
-
-/**
- * Tie an airport spec to its airport class.
- * @param statspec The airport spec.
- */
-static void BindAirportSpecToClass(AirportSpec *as)
-{
-	assert(as->cls_id < APC_MAX);
-	AirportClass *airport_class = &_airport_classes[as->cls_id];
-
-	int i = airport_class->airports++;
-	airport_class->spec = ReallocT(airport_class->spec, airport_class->airports);
-
-	airport_class->spec[i] = as;
-}
-
-/**
  * Tie all airportspecs to their class.
  */
 void BindAirportSpecs()
 {
 	for (int i = 0; i < NUM_AIRPORTS; i++) {
 		AirportSpec *as = AirportSpec::GetWithoutOverride(i);
-		if (as->enabled) BindAirportSpecToClass(as);
+		if (as->enabled) AirportClass::Assign(as);
 	}
 }
 
-
-/**
- * Retrieve an airport spec from a class.
- * @param aclass Index of the airport class.
- * @param airport The airport index with the class.
- * @return The station spec.
- */
-const AirportSpec *GetAirportSpecFromClass(AirportClassID aclass, uint airport)
-{
-	assert(aclass < APC_MAX);
-	assert(airport < _airport_classes[aclass].airports);
-
-	return _airport_classes[aclass].spec[airport];
-}
-
-/**
- * Reset airport classes to their default state.
- * This includes initialising the defaults classes with an empty
- * entry, for standard airports.
- */
-void ResetAirportClasses()
-{
-	for (AirportClassID i = APC_BEGIN; i < APC_MAX; i++) {
-		_airport_classes[i].id = 0;
-		_airport_classes[i].name = STR_EMPTY;
-		_airport_classes[i].airports = 0;
-
-		free(_airport_classes[i].spec);
-		_airport_classes[i].spec = NULL;
-	}
-
-	/* Set up initial data */
-	AirportClassID id = AllocateAirportClass('SMAL');
-	SetAirportClassName(id, STR_AIRPORT_CLASS_SMALL);
-
-	id = AllocateAirportClass('LARG');
-	SetAirportClassName(id, STR_AIRPORT_CLASS_LARGE);
-
-	id = AllocateAirportClass('HUB_');
-	SetAirportClassName(id, STR_AIRPORT_CLASS_HUB);
-
-	id = AllocateAirportClass('HELI');
-	SetAirportClassName(id, STR_AIRPORT_CLASS_HELIPORTS);
-}
 
 void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 {

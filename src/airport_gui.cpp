@@ -55,7 +55,7 @@ static void PlaceAirport(TileIndex tile)
 	uint32 p2 = _ctrl_pressed;
 	SB(p2, 16, 16, INVALID_STATION); // no station to join
 
-	uint32 p1 = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index)->GetIndex();
+	uint32 p1 = AirportClass::Get(_selected_airport_class, _selected_airport_index)->GetIndex();
 	p1 |= _selected_airport_layout << 8;
 	CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_AIRPORT | CMD_MSG(STR_ERROR_CAN_T_BUILD_AIRPORT_HERE), CcBuildAirport, "" };
 	ShowSelectStationIfNeeded(cmdcont, TileArea(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE));
@@ -222,8 +222,8 @@ class BuildAirportWindow : public PickerWindowBase {
 	{
 		DropDownList *list = new DropDownList();
 
-		for (uint i = 0; i < GetNumAirportClasses(); i++) {
-			list->push_back(new DropDownListStringItem(GetAirportClassName((AirportClassID)i), i, false));
+		for (uint i = 0; i < AirportClass::GetCount(); i++) {
+			list->push_back(new DropDownListStringItem(AirportClass::GetName((AirportClassID)i), i, false));
 		}
 
 		return list;
@@ -240,7 +240,7 @@ public:
 		this->SetWidgetLoweredState(BAIRW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 		this->OnInvalidateData();
 
-		this->vscroll.SetCount(GetNumAirportsInClass(_selected_airport_class));
+		this->vscroll.SetCount(AirportClass::GetCount(_selected_airport_class));
 		this->SelectFirstAvailableAirport(true);
 	}
 
@@ -253,13 +253,13 @@ public:
 	{
 		switch (widget) {
 			case BAIRW_CLASS_DROPDOWN:
-				SetDParam(0, GetAirportClassName(_selected_airport_class));
+				SetDParam(0, AirportClass::GetName(_selected_airport_class));
 				break;
 
 			case BAIRW_LAYOUT_NUM:
 				SetDParam(0, STR_EMPTY);
 				if (_selected_airport_index != -1) {
-					const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index);
+					const AirportSpec *as = AirportClass::Get(_selected_airport_class, _selected_airport_index);
 					StringID string = GetAirportTextCallback(as, _selected_airport_layout, CBID_AIRPORT_LAYOUT_NAME);
 					if (string != STR_UNDEFINED) {
 						SetDParam(0, string);
@@ -279,8 +279,8 @@ public:
 		switch (widget) {
 			case BAIRW_CLASS_DROPDOWN: {
 				Dimension d = {0, 0};
-				for (uint i = 0; i < GetNumAirportClasses(); i++) {
-					SetDParam(0, GetAirportClassName((AirportClassID)i));
+				for (uint i = 0; i < AirportClass::GetCount(); i++) {
+					SetDParam(0, AirportClass::GetName((AirportClassID)i));
 					d = maxdim(d, GetStringBoundingBox(STR_BLACK_STRING));
 				}
 				d.width += padding.width;
@@ -343,8 +343,8 @@ public:
 		switch (widget) {
 			case BAIRW_AIRPORT_LIST: {
 				int y = r.top;
-				for (uint i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < GetNumAirportsInClass(_selected_airport_class); i++) {
-					const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, i);
+				for (uint i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < AirportClass::GetCount(_selected_airport_class); i++) {
+					const AirportSpec *as = AirportClass::Get(_selected_airport_class, i);
 					if (!as->IsAvailable()) {
 						GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->line_height - 2, 0, FILLRECT_CHECKER);
 					}
@@ -363,7 +363,7 @@ public:
 
 			case BAIRW_EXTRA_TEXT:
 				if (_selected_airport_index != -1) {
-					const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index);
+					const AirportSpec *as = AirportClass::Get(_selected_airport_class, _selected_airport_index);
 					StringID string = GetAirportTextCallback(as, _selected_airport_layout, CBID_AIRPORT_ADDITIONAL_TEXT);
 					if (string != STR_UNDEFINED) {
 						SetDParam(0, string);
@@ -385,7 +385,7 @@ public:
 		int bottom = panel_nwi->pos_y +  panel_nwi->current_y;
 
 		if (_selected_airport_index != -1) {
-			const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index);
+			const AirportSpec *as = AirportClass::Get(_selected_airport_class, _selected_airport_index);
 			int rad = _settings_game.station.modified_catchment ? as->catchment : (uint)CA_UNMODIFIED;
 
 			/* only show the station (airport) noise, if the noise option is activated */
@@ -413,7 +413,7 @@ public:
 		_selected_airport_layout = 0;
 
 		if (_selected_airport_index != -1) {
-			const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index);
+			const AirportSpec *as = AirportClass::Get(_selected_airport_class, _selected_airport_index);
 			this->preview_sprite = GetCustomAirportSprite(as, _selected_airport_layout);
 		}
 
@@ -428,7 +428,7 @@ public:
 			this->DisableWidget(BAIRW_LAYOUT_DECREASE);
 			this->DisableWidget(BAIRW_LAYOUT_INCREASE);
 		} else {
-			const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, _selected_airport_index);
+			const AirportSpec *as = AirportClass::Get(_selected_airport_class, _selected_airport_index);
 			int w = as->size_x;
 			int h = as->size_y;
 			Direction rotation = as->rotation[_selected_airport_layout];
@@ -453,7 +453,7 @@ public:
 			case BAIRW_AIRPORT_LIST: {
 				int num_clicked = this->vscroll.GetPosition() + (pt.y - this->nested_array[widget]->pos_y) / this->line_height;
 				if (num_clicked >= this->vscroll.GetCount()) break;
-				const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, num_clicked);
+				const AirportSpec *as = AirportClass::Get(_selected_airport_class, num_clicked);
 				if (as->IsAvailable()) this->SelectOtherAirport(num_clicked);
 				break;
 			}
@@ -489,8 +489,8 @@ public:
 	void SelectFirstAvailableAirport(bool change_class)
 	{
 		/* First try to select an airport in the selected class. */
-		for (uint i = 0; i < GetNumAirportsInClass(_selected_airport_class); i++) {
-			const AirportSpec *as = GetAirportSpecFromClass(_selected_airport_class, i);
+		for (uint i = 0; i < AirportClass::GetCount(_selected_airport_class); i++) {
+			const AirportSpec *as = AirportClass::Get(_selected_airport_class, i);
 			if (as->IsAvailable()) {
 				this->SelectOtherAirport(i);
 				return;
@@ -500,8 +500,8 @@ public:
 			/* If that fails, select the first available airport
 			 * from a random class. */
 			for (AirportClassID j = APC_BEGIN; j < APC_MAX; j++) {
-				for (uint i = 0; i < GetNumAirportsInClass(j); i++) {
-					const AirportSpec *as = GetAirportSpecFromClass(j, i);
+				for (uint i = 0; i < AirportClass::GetCount(j); i++) {
+					const AirportSpec *as = AirportClass::Get(j, i);
 					if (as->IsAvailable()) {
 						_selected_airport_class = j;
 						this->SelectOtherAirport(i);
@@ -518,7 +518,7 @@ public:
 	{
 		assert(widget == BAIRW_CLASS_DROPDOWN);
 		_selected_airport_class = (AirportClassID)index;
-		this->vscroll.SetCount(GetNumAirportsInClass(_selected_airport_class));
+		this->vscroll.SetCount(AirportClass::GetCount(_selected_airport_class));
 		this->SelectFirstAvailableAirport(false);
 	}
 

@@ -6768,7 +6768,7 @@ static void ResetNewGRFData()
 	ResetCustomStations();
 
 	/* Reset airport-related structures */
-	ResetAirportClasses();
+	AirportClass::Reset();
 	ResetCustomAirports();
 	AirportSpec::ResetAirports();
 	AirportTileSpec::ResetAirportTiles();
