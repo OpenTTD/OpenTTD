@@ -5841,7 +5841,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Kennville Oil Refinery
     GetLocation():     19695
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  0
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -5852,7 +5852,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Satown Forest
     GetLocation():     45122
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -5860,7 +5860,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Fudhattan Forest
     GetLocation():     41929
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -5868,7 +5868,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Beningville Forest
     GetLocation():     44640
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  80
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -5876,7 +5876,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Nefingbridge Forest
     GetLocation():     8793
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  135
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -5884,7 +5884,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Hutford Forest
     GetLocation():     55429
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  99
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -5892,7 +5892,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Great Hinninghall Forest
     GetLocation():     6533
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -5900,7 +5900,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Tonston Forest
     GetLocation():     27609
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  115
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -5908,7 +5908,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Planfield Sawmill
     GetLocation():     17318
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -5919,7 +5919,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Hutford Sawmill
     GetLocation():     60050
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -5930,7 +5930,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Natborough Sawmill
     GetLocation():     54184
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -5941,7 +5941,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Prundinghall Sawmill
     GetLocation():     48499
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -5952,7 +5952,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Fratston Sawmill
     GetLocation():     51419
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -5963,7 +5963,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Fort Frindston Sawmill
     GetLocation():     15950
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -5974,7 +5974,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Grinnway Sawmill
     GetLocation():     20001
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -5985,7 +5985,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Trenningville Coal Mine
     GetLocation():     51854
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  126
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -5993,7 +5993,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Kennville Coal Mine
     GetLocation():     11734
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  99
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6001,7 +6001,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Great Hinninghall Coal Mine
     GetLocation():     13947
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  171
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6009,7 +6009,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Little Frutford Coal Mine
     GetLocation():     23682
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  126
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6017,7 +6017,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Hutford Coal Mine
     GetLocation():     57429
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  99
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6025,7 +6025,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Mendston Coal Mine
     GetLocation():     8562
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  171
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6033,7 +6033,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Tonston Coal Mine
     GetLocation():     29147
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  117
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6041,7 +6041,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Quarfingfield Coal Mine
     GetLocation():     27822
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  153
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6049,7 +6049,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Muningville Coal Mine
     GetLocation():     43035
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  90
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6057,7 +6057,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Grinnway Coal Mine
     GetLocation():     17943
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  40
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6065,7 +6065,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Satown Power Station
     GetLocation():     48182
-    IsCargoAccepted(): true
+    IsCargoAccepted(): 1
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6073,7 +6073,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Tunford Power Station
     GetLocation():     33934
-    IsCargoAccepted(): true
+    IsCargoAccepted(): 1
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6081,7 +6081,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Quarfingfield Power Station
     GetLocation():     23714
-    IsCargoAccepted(): true
+    IsCargoAccepted(): 1
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6089,7 +6089,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Kennville Power Station
     GetLocation():     20170
-    IsCargoAccepted(): true
+    IsCargoAccepted(): 1
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6097,7 +6097,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Nuntburg Power Station
     GetLocation():     6685
-    IsCargoAccepted(): true
+    IsCargoAccepted(): 1
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6105,7 +6105,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Beburg Power Station
     GetLocation():     29022
-    IsCargoAccepted(): true
+    IsCargoAccepted(): 1
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6113,7 +6113,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Beningville Power Station
     GetLocation():     44160
-    IsCargoAccepted(): true
+    IsCargoAccepted(): 1
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6121,7 +6121,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Fort Frindston Oil Wells
     GetLocation():     14701
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6129,7 +6129,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Nuntburg Oil Wells
     GetLocation():     5659
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  40
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6137,7 +6137,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Beningville Oil Wells
     GetLocation():     36728
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  64
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6145,7 +6145,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Grinnway Oil Wells
     GetLocation():     14361
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  63
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6153,7 +6153,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Muningville Oil Wells
     GetLocation():     36908
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6161,7 +6161,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Tonston Oil Wells
     GetLocation():     34237
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6169,7 +6169,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Fort Frindston Iron Ore Mine
     GetLocation():     17742
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6177,7 +6177,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Tonston Iron Ore Mine
     GetLocation():     25545
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  30
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6185,7 +6185,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Fudhattan Iron Ore Mine
     GetLocation():     47838
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6193,7 +6193,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Nuntburg Iron Ore Mine
     GetLocation():     8763
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6201,7 +6201,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Larborough Iron Ore Mine
     GetLocation():     60866
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6209,7 +6209,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Tunford Iron Ore Mine
     GetLocation():     41155
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6217,7 +6217,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Chenfingbourne Iron Ore Mine
     GetLocation():     19529
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  135
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6225,7 +6225,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Natborough Farm
     GetLocation():     52931
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6236,7 +6236,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Larborough Farm
     GetLocation():     59604
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6247,7 +6247,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Chenfingbourne Farm
     GetLocation():     24366
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  63
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6258,7 +6258,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Wruntown Farm
     GetLocation():     36847
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6269,7 +6269,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Little Frutford Farm
     GetLocation():     28287
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  90
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6280,7 +6280,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Hutford Farm
     GetLocation():     57432
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  117
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6291,7 +6291,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Tonston Farm
     GetLocation():     23519
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6302,7 +6302,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Nuntburg Farm
     GetLocation():     10773
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  126
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6313,7 +6313,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Satown Farm
     GetLocation():     48206
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  40
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6324,7 +6324,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Quarfingfield Farm
     GetLocation():     24005
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6335,7 +6335,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Little Frutford Steel Mill
     GetLocation():     21107
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  0
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6346,7 +6346,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Quarfingfield Steel Mill
     GetLocation():     23727
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  0
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6357,7 +6357,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Beburg Steel Mill
     GetLocation():     41813
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  0
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6368,7 +6368,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Franinghead Steel Mill
     GetLocation():     8852
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  0
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6379,7 +6379,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Larborough Steel Mill
     GetLocation():     59867
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  0
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6390,7 +6390,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Satown Steel Mill
     GetLocation():     55360
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  0
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6401,7 +6401,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Fratston Steel Mill
     GetLocation():     52953
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  0
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6412,7 +6412,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Chenfingbourne Factory
     GetLocation():     24893
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6429,7 +6429,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Fort Frindston Factory
     GetLocation():     20819
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6446,7 +6446,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Fudhattan Factory
     GetLocation():     46278
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6463,7 +6463,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Prundinghall Factory
     GetLocation():     53096
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6480,7 +6480,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Kennville Factory
     GetLocation():     14818
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6497,7 +6497,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Muningville Factory
     GetLocation():     34375
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6514,7 +6514,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Trenningville Factory
     GetLocation():     44181
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
@@ -6531,7 +6531,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Wruntown Oil Refinery
     GetLocation():     39663
-    IsCargoAccepted(): false
+    IsCargoAccepted(): 0
 	   GetLastMonthProduction():  0
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
@@ -6542,7 +6542,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsValidIndustry(): true
     GetName():         Mendston Power Station
     GetLocation():     6498
-    IsCargoAccepted(): true
+    IsCargoAccepted(): 1
 	   GetLastMonthProduction():  -1
 	   GetLastMonthTransported(): -1
 	   GetStockpiledCargo():      0
