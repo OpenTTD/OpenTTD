@@ -129,11 +129,24 @@ TileIndex GetNearbyTile(byte parameter, TileIndex tile);
 uint32 GetNearbyTileInformation(TileIndex tile);
 
 /** Data related to the handling of grf files. */
-struct GRFFileProps {
-	uint16 subst_id;
+struct GRFFilePropsBase {
+	/** Set all data constructor for the props. */
+	GRFFilePropsBase(uint local_id, const struct GRFFile *grffile) : local_id(local_id), grffile(grffile) {}
+	/** Simple constructor for the props. */
+	GRFFilePropsBase() {}
 	uint16 local_id;                      ///< id defined by the grf file for this entity
-	struct SpriteGroup *spritegroup;      ///< pointer to the different sprites of the entity
 	const struct GRFFile *grffile;        ///< grf file that introduced this entity
+};
+
+/** Data related to the handling of grf files. */
+struct GRFFileProps : GRFFilePropsBase {
+	/** Set all default data constructor for the props. */
+	GRFFileProps(uint16 subst_id) :
+			GRFFilePropsBase(0, NULL), subst_id(subst_id), spritegroup(NULL), override(subst_id) {}
+	/** Simple constructor for the props. */
+	GRFFileProps() : GRFFilePropsBase() {}
+	uint16 subst_id;
+	struct SpriteGroup *spritegroup;      ///< pointer to the different sprites of the entity
 	uint16 override;                      ///< id of the entity been replaced by
 };
 

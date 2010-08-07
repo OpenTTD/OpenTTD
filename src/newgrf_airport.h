@@ -76,7 +76,7 @@ struct AirportSpec {
 	SpriteID preview_sprite;               ///< preview sprite for this airport
 	/* Newgrf data */
 	bool enabled;                          ///< entity still avaible (by default true).newgrf can disable it, though
-	GRFFileProps grf_prop;                 ///< properties related the the grf file
+	struct GRFFileProps grf_prop;          ///< properties related the the grf file
 
 	static const AirportSpec *Get(byte type);
 	static AirportSpec *GetWithoutOverride(byte type);

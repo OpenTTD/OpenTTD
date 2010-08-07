@@ -382,7 +382,7 @@ static Direction _default_airports_rotation[] = {
 
 /** General AirportSpec definition. */
 #define AS_GENERIC(fsm, att, rot, att_len, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, ttdpatch_type, class_id, name, preview, enabled) \
-	{fsm, att, rot, att_len, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, name, ttdpatch_type, class_id, preview, enabled, {AT_INVALID, 0, NULL, NULL, AT_INVALID}}
+	{fsm, att, rot, att_len, depot_tbl, num_depots, size_x, size_y, noise, catchment, min_year, max_year, name, ttdpatch_type, class_id, preview, enabled, GRFFileProps(AT_INVALID)}
 
 /** AirportSpec definition for airports without any depot. */
 #define AS_ND(ap_name, size_x, size_y, min_year, max_year, catchment, noise, ttdpatch_type, class_id, name, preview) \

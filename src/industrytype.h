@@ -131,7 +131,7 @@ struct IndustrySpec {
 	uint16 callback_mask;                 ///< Bitmask of industry callbacks that have to be called
 	uint8 cleanup_flag;                   ///< flags indicating which data should be freed upon cleaning up
 	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
-	struct GRFFileProps grf_prop;         ///< properties related the the grf file
+	GRFFileProps grf_prop;                ///< properties related the the grf file
 
 	/**
 	 * Is an industry with the spec a raw industry?
@@ -172,7 +172,7 @@ struct IndustryTileSpec {
 	uint8 animation_triggers;             ///< When to start the animation
 	IndustryTileSpecialFlags special_flags; ///< Bitmask of extra flags used by the tile
 	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
-	struct GRFFileProps grf_prop;
+	GRFFileProps grf_prop;                ///< properties related the the grf file
 };
 
 /* industry_cmd.cpp*/
