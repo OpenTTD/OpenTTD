@@ -17,6 +17,7 @@
 #include "newgrf_commons.h"
 #include "newgrf_text.h"
 #include "newgrf_town.h"
+#include "newgrf_cargo.h"
 #include "window_func.h"
 #include "town.h"
 #include "company_base.h"
@@ -582,4 +583,25 @@ void GetIndustryResolver(ResolverObject *ro, uint index)
 {
 	Industry *i = Industry::Get(index);
 	NewIndustryResolver(ro, i->location.tile, i, i->type);
+}
+
+/**
+ * Check whether an industry temporarily refuses to accept a certain cargo.
+ * @param ind The industry to query.
+ * @param cargo_type The cargo to get information about.
+ * @pre cargo_type is in ind->accepts_cargo.
+ * @return Whether the given industry refuses to accept this cargo type.
+ */
+bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoID cargo_type)
+{
+	assert(cargo_type == ind->accepts_cargo[0] || cargo_type == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2]);
+
+	const IndustrySpec *indspec = GetIndustrySpec(ind->type);
+	if (HasBit(indspec->callback_mask, CBM_IND_REFUSE_CARGO)) {
+		uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO,
+				0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile),
+				ind, ind->type, ind->location.tile);
+		return res == 0;
+	}
+	return false;
 }

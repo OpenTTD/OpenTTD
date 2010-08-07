@@ -909,8 +909,6 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		Industry *ind = st->industries_near[i];
 		if (ind->index == source) continue;
 
-		const IndustrySpec *indspec = GetIndustrySpec(ind->type);
-
 		uint cargo_index;
 		for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
 			if (cargo_type == ind->accepts_cargo[cargo_index]) break;
@@ -919,10 +917,7 @@ static uint DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, uint n
 		if (cargo_index >= lengthof(ind->accepts_cargo)) continue;
 
 		/* Check if industry temporarily refuses acceptance */
-		if (HasBit(indspec->callback_mask, CBM_IND_REFUSE_CARGO)) {
-			uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO, 0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile), ind, ind->type, ind->location.tile);
-			if (res == 0) continue;
-		}
+		if (IndustryTemporarilyRefusesCargo(ind, cargo_type)) continue;
 
 		/* Insert the industry into _cargo_delivery_destinations, if not yet contained */
 		_cargo_delivery_destinations.Include(ind);
