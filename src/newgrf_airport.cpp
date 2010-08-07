@@ -153,8 +153,8 @@ uint GetNumAirportsInClass(AirportClassID id)
  */
 static void BindAirportSpecToClass(AirportSpec *as)
 {
-	assert(as->aclass < APC_MAX);
-	AirportClass *airport_class = &_airport_classes[as->aclass];
+	assert(as->cls_id < APC_MAX);
+	AirportClass *airport_class = &_airport_classes[as->cls_id];
 
 	int i = airport_class->airports++;
 	airport_class->spec = ReallocT(airport_class->spec, airport_class->airports);

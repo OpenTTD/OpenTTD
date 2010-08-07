@@ -175,7 +175,7 @@
 		if (spec == NULL) {
 			DEBUG(grf, 1, "%s returned an invalid station ID for 'AI construction/purchase selection (18)' callback", file->filename);
 		} else {
-			p2 |= spec->sclass | index << 8;
+			p2 |= spec->cls_id | index << 8;
 		}
 
 	}

@@ -1151,7 +1151,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
 				uint32 classid = buf->ReadDWord();
-				(*spec)->sclass = AllocateStationClass(BSWAP32(classid));
+				(*spec)->cls_id = AllocateStationClass(BSWAP32(classid));
 				break;
 			}
 
@@ -4270,8 +4270,8 @@ static void FeatureNewName(ByteReader *buf)
 						if (_cur_grffile->stations == NULL || _cur_grffile->stations[GB(id, 0, 8)] == NULL) {
 							grfmsg(1, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring", GB(id, 0, 8));
 						} else {
-							StationClassID sclass = _cur_grffile->stations[GB(id, 0, 8)]->sclass;
-							SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED));
+							StationClassID cls_id = _cur_grffile->stations[GB(id, 0, 8)]->cls_id;
+							SetStationClassName(cls_id, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED));
 						}
 						break;
 

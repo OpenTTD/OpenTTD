@@ -51,8 +51,8 @@ struct StationSpec {
 
 	bool allocated; ///< Flag whether this station has been added to a station class list
 
-	StationClassID sclass; ///< The class to which this spec belongs.
-	StringID name; ///< Name of this station.
+	StationClassID cls_id;    ///< The class to which this spec belongs.
+	StringID name;            ///< Name of this station.
 
 	/**
 	 * Bitmask of number of platforms available for the station.

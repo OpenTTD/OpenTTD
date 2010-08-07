@@ -2801,7 +2801,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 		const StationSpec *spec = GetStationSpec(tile);
 
 		if (spec != NULL) {
-			td->station_class = GetStationClassName(spec->sclass);
+			td->station_class = GetStationClassName(spec->cls_id);
 			td->station_name  = spec->name;
 
 			if (spec->grf_prop.grffile != NULL) {

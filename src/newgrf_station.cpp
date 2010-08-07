@@ -176,8 +176,8 @@ void SetCustomStationSpec(StationSpec *statspec)
 	/* If the station has already been allocated, don't reallocate it. */
 	if (statspec->allocated) return;
 
-	assert(statspec->sclass < STAT_CLASS_MAX);
-	station_class = &_station_classes[statspec->sclass];
+	assert(statspec->cls_id < STAT_CLASS_MAX);
+	station_class = &_station_classes[statspec->cls_id];
 
 	i = station_class->stations++;
 	station_class->spec = ReallocT(station_class->spec, station_class->stations);
@@ -606,7 +606,7 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 	uint cargo = 0;
 	CargoID cargo_type = object->u.station.cargo_type;
 
-	if (bst == NULL || statspec->sclass == STAT_CLASS_WAYP) {
+	if (bst == NULL || statspec->cls_id == STAT_CLASS_WAYP) {
 		return group->loading[0];
 	}
 
