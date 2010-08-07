@@ -157,14 +157,14 @@ static bool SearchNearbyHouseID(TileIndex tile, void *user_data)
 	if (IsTileType(tile, MP_HOUSE)) {
 		HouseID house = GetHouseType(tile); // tile been examined
 		const HouseSpec *hs = HouseSpec::Get(house);
-		if (hs->grffile != NULL) { // must be one from a grf file
+		if (hs->grf_prop.grffile != NULL) { // must be one from a grf file
 			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
 
 			TileIndex north_tile = tile + GetHouseNorthPart(house); // modifies 'house'!
 			if (north_tile == nbhd->north_tile) return false; // Always ignore origin house
 
-			return hs->local_id == nbhd->hs->local_id &&  // same local id as the one requested
-				hs->grffile->grfid == nbhd->hs->grffile->grfid;  // from the same grf
+			return hs->grf_prop.local_id == nbhd->hs->grf_prop.local_id &&  // same local id as the one requested
+				hs->grf_prop.grffile->grfid == nbhd->hs->grf_prop.grffile->grfid;  // from the same grf
 		}
 	}
 	return false;
@@ -181,14 +181,14 @@ static bool SearchNearbyHouseClass(TileIndex tile, void *user_data)
 	if (IsTileType(tile, MP_HOUSE)) {
 		HouseID house = GetHouseType(tile); // tile been examined
 		const HouseSpec *hs = HouseSpec::Get(house);
-		if (hs->grffile != NULL) { // must be one from a grf file
+		if (hs->grf_prop.grffile != NULL) { // must be one from a grf file
 			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
 
 			TileIndex north_tile = tile + GetHouseNorthPart(house); // modifies 'house'!
 			if (north_tile == nbhd->north_tile) return false; // Always ignore origin house
 
 			return hs->class_id == nbhd->hs->class_id &&  // same classid as the one requested
-				hs->grffile->grfid == nbhd->hs->grffile->grfid;  // from the same grf
+				hs->grf_prop.grffile->grfid == nbhd->hs->grf_prop.grffile->grfid;  // from the same grf
 		}
 	}
 	return false;
@@ -205,13 +205,13 @@ static bool SearchNearbyHouseGRFID(TileIndex tile, void *user_data)
 	if (IsTileType(tile, MP_HOUSE)) {
 		HouseID house = GetHouseType(tile); // tile been examined
 		const HouseSpec *hs = HouseSpec::Get(house);
-		if (hs->grffile != NULL) { // must be one from a grf file
+		if (hs->grf_prop.grffile != NULL) { // must be one from a grf file
 			SearchNearbyHouseData *nbhd = (SearchNearbyHouseData *)user_data;
 
 			TileIndex north_tile = tile + GetHouseNorthPart(house); // modifies 'house'!
 			if (north_tile == nbhd->north_tile) return false; // Always ignore origin house
 
-			return hs->grffile->grfid == nbhd->hs->grffile->grfid;  // from the same grf
+			return hs->grf_prop.grffile->grfid == nbhd->hs->grf_prop.grffile->grfid;  // from the same grf
 		}
 	}
 	return false;
@@ -297,9 +297,9 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		/* Building counts for new houses with id = parameter. */
 		case 0x61: {
 			const HouseSpec *hs = HouseSpec::Get(house_id);
-			if (hs->grffile == NULL) return 0;
+			if (hs->grf_prop.grffile == NULL) return 0;
 
-			HouseID new_house = _house_mngr.GetID(parameter, hs->grffile->grfid);
+			HouseID new_house = _house_mngr.GetID(parameter, hs->grf_prop.grffile->grfid);
 			return new_house == INVALID_HOUSE_ID ? 0 : GetNumHouses(new_house, town);
 		}
 
@@ -326,7 +326,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 			/* Information about the grf local classid if the house has a class */
 			uint houseclass = 0;
 			if (hs->class_id != HOUSE_NO_CLASS) {
-				houseclass = (hs->grffile == object->grffile ? 1 : 2) << 8;
+				houseclass = (hs->grf_prop.grffile == object->grffile ? 1 : 2) << 8;
 				houseclass |= _class_mapping[hs->class_id].class_id;
 			}
 			/* old house type or grf-local houseid */
@@ -334,8 +334,8 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 			if (house_id < NEW_HOUSE_OFFSET) {
 				local_houseid = house_id;
 			} else {
-				local_houseid = (hs->grffile == object->grffile ? 1 : 2) << 8;
-				local_houseid |= hs->local_id;
+				local_houseid = (hs->grf_prop.grffile == object->grffile ? 1 : 2) << 8;
+				local_houseid |= hs->grf_prop.local_id;
 			}
 			return houseclass << 16 | local_houseid;
 		}
@@ -390,8 +390,8 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->reseed          = 0;
 	res->count           = 0;
 
-	const HouseSpec *hs = HouseSpec::Get(house_id);
-	res->grffile         = (hs != NULL ? hs->grffile : NULL);
+	const HouseSpec *hs  = HouseSpec::Get(house_id);
+	res->grffile         = (hs != NULL ? hs->grf_prop.grffile : NULL);
 }
 
 uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile, bool not_yet_constructed, uint8 initial_random_bits)
@@ -408,7 +408,7 @@ uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, House
 	object.u.house.not_yet_constructed = not_yet_constructed;
 	object.u.house.initial_random_bits = initial_random_bits;
 
-	group = SpriteGroup::Resolve(HouseSpec::Get(house_id)->spritegroup, &object);
+	group = SpriteGroup::Resolve(HouseSpec::Get(house_id)->grf_prop.spritegroup, &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -459,7 +459,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 
 	NewHouseResolver(&object, house_id, ti->tile, Town::GetByTile(ti->tile));
 
-	group = SpriteGroup::Resolve(hs->spritegroup, &object);
+	group = SpriteGroup::Resolve(hs->grf_prop.spritegroup, &object);
 	if (group == NULL || group->type != SGT_TILELAYOUT) {
 		return;
 	} else {
@@ -513,7 +513,7 @@ void AnimateNewHouseTile(TileIndex tile)
 
 			/* If the lower 7 bits of the upper byte of the callback
 			 * result are not empty, it is a sound effect. */
-			if (GB(callback_res, 8, 7) != 0) PlayTileSound(hs->grffile, GB(callback_res, 8, 7), tile);
+			if (GB(callback_res, 8, 7) != 0) PlayTileSound(hs->grf_prop.grffile, GB(callback_res, 8, 7), tile);
 		}
 	}
 
@@ -575,7 +575,7 @@ static void AnimationControl(TileIndex tile, uint16 random_bits)
 		uint32 param = (hs->extra_flags & SYNCHRONISED_CALLBACK_1B) ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_START_STOP, param, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 
-		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(hs->grffile, tile, callback_res);
+		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(hs->grf_prop.grffile, tile, callback_res);
 	}
 }
 
@@ -632,14 +632,14 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 	HouseID hid = GetHouseType(tile);
 	HouseSpec *hs = HouseSpec::Get(hid);
 
-	if (hs->spritegroup == NULL) return;
+	if (hs->grf_prop.spritegroup == NULL) return;
 
 	NewHouseResolver(&object, hid, tile, Town::GetByTile(tile));
 
 	object.callback = CBID_RANDOM_TRIGGER;
 	object.trigger = trigger;
 
-	const SpriteGroup *group = SpriteGroup::Resolve(hs->spritegroup, &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(hs->grf_prop.spritegroup, &object);
 	if (group == NULL) return;
 
 	byte new_random_bits = Random();

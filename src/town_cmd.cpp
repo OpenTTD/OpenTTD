@@ -204,11 +204,11 @@ static void DrawTile_Town(TileInfo *ti)
 		/* Houses don't necessarily need new graphics. If they don't have a
 		 * spritegroup associated with them, then the sprite for the substitute
 		 * house id is drawn instead. */
-		if (HouseSpec::Get(house_id)->spritegroup != NULL) {
+		if (HouseSpec::Get(house_id)->grf_prop.spritegroup != NULL) {
 			DrawNewHouseTile(ti, house_id);
 			return;
 		} else {
-			house_id = HouseSpec::Get(house_id)->substitute_id;
+			house_id = HouseSpec::Get(house_id)->grf_prop.subst_id;
 		}
 	}
 
@@ -261,7 +261,7 @@ static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 	 */
 	if (hid >= NEW_HOUSE_OFFSET) {
 		const HouseSpec *hs = HouseSpec::Get(hid);
-		if (hs->spritegroup != NULL && HasBit(hs->callback_mask, CBM_HOUSE_DRAW_FOUNDATIONS)) {
+		if (hs->grf_prop.spritegroup != NULL && HasBit(hs->callback_mask, CBM_HOUSE_DRAW_FOUNDATIONS)) {
 			uint32 callback_res = GetHouseCallback(CBID_HOUSE_DRAW_FOUNDATIONS, 0, 0, hid, Town::GetByTile(tile), tile);
 			if (callback_res == 0) return FOUNDATION_NONE;
 		}
@@ -409,7 +409,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 	/* Check and/or  */
 	if (HasBit(hs->callback_mask, CBM_HOUSE_CONSTRUCTION_STATE_CHANGE)) {
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
-		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(hs->grffile, tile, callback_res);
+		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(hs->grf_prop.grffile, tile, callback_res);
 	}
 
 	if (IsHouseCompleted(tile)) {
@@ -475,7 +475,7 @@ static void TileLoop_Town(TileIndex tile)
 
 			if (callback == CALLBACK_FAILED || callback == CALLBACK_HOUSEPRODCARGO_END) break;
 
-			CargoID cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grffile);
+			CargoID cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grf_prop.grffile);
 			if (cargo == CT_INVALID) continue;
 
 			uint amt = GB(callback, 0, 8);
@@ -576,7 +576,7 @@ static void AddProducedCargo_Town(TileIndex tile, CargoArray &produced)
 
 			if (callback == CALLBACK_FAILED || callback == CALLBACK_HOUSEPRODCARGO_END) break;
 
-			CargoID cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grffile);
+			CargoID cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grf_prop.grffile);
 
 			if (cargo == CT_INVALID) continue;
 			produced[cargo]++;
@@ -613,9 +613,9 @@ static void AddAcceptedCargo_Town(TileIndex tile, CargoArray &acceptance, uint32
 		uint16 callback = GetHouseCallback(CBID_HOUSE_ACCEPT_CARGO, 0, 0, GetHouseType(tile), Town::GetByTile(tile), tile);
 		if (callback != CALLBACK_FAILED) {
 			/* Replace accepted cargo types with translated values from callback */
-			accepts[0] = GetCargoTranslation(GB(callback,  0, 5), hs->grffile);
-			accepts[1] = GetCargoTranslation(GB(callback,  5, 5), hs->grffile);
-			accepts[2] = GetCargoTranslation(GB(callback, 10, 5), hs->grffile);
+			accepts[0] = GetCargoTranslation(GB(callback,  0, 5), hs->grf_prop.grffile);
+			accepts[1] = GetCargoTranslation(GB(callback,  5, 5), hs->grf_prop.grffile);
+			accepts[2] = GetCargoTranslation(GB(callback, 10, 5), hs->grf_prop.grffile);
 		}
 	}
 
@@ -651,7 +651,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 
 	uint16 callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, house_completed ? 1 : 0, 0, house, Town::GetByTile(tile), tile);
 	if (callback_res != CALLBACK_FAILED) {
-		StringID new_name = GetGRFStringID(hs->grffile->grfid, 0xD000 + callback_res);
+		StringID new_name = GetGRFStringID(hs->grf_prop.grffile->grfid, 0xD000 + callback_res);
 		if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
 			td->str = new_name;
 		}
@@ -662,8 +662,8 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 		td->str = STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION;
 	}
 
-	if (hs->grffile != NULL) {
-		const GRFConfig *gc = GetGRFConfig(hs->grffile->grfid);
+	if (hs->grf_prop.grffile != NULL) {
+		const GRFConfig *gc = GetGRFConfig(hs->grf_prop.grffile->grfid);
 		td->grf = gc->GetName();
 	}
 
@@ -2101,7 +2101,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		const HouseSpec *hs = HouseSpec::Get(i);
 
 		/* Verify that the candidate house spec matches the current tile status */
-		if ((~hs->building_availability & bitmask) != 0 || !hs->enabled || hs->override != INVALID_HOUSE_ID) continue;
+		if ((~hs->building_availability & bitmask) != 0 || !hs->enabled || hs->grf_prop.override != INVALID_HOUSE_ID) continue;
 
 		/* Don't let these counters overflow. Global counters are 32bit, there will never be that many houses. */
 		if (hs->class_id != HOUSE_NO_CLASS) {

@@ -180,7 +180,7 @@ static const NIVariable _niv_house[] = {
 };
 
 class NIHHouse : public NIHelper {
-	bool IsInspectable(uint index) const                 { return HouseSpec::Get(GetHouseType(index))->grffile != NULL; }
+	bool IsInspectable(uint index) const                 { return HouseSpec::Get(GetHouseType(index))->grf_prop.grffile != NULL; }
 	uint GetParent(uint index) const                     { return GetInspectWindowNumber(GSF_FAKE_TOWNS, GetTownIndex(index)); }
 	const void *GetInstance(uint index)const             { return NULL; }
 	const void *GetSpec(uint index) const                { return HouseSpec::Get(GetHouseType(index)); }

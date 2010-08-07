@@ -1581,9 +1581,9 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				MemCpyT(housespec, HouseSpec::Get(subs_id));
 
 				housespec->enabled = true;
-				housespec->local_id = hid + i;
-				housespec->substitute_id = subs_id;
-				housespec->grffile = _cur_grffile;
+				housespec->grf_prop.local_id = hid + i;
+				housespec->grf_prop.subst_id = subs_id;
+				housespec->grf_prop.grffile = _cur_grffile;
 				housespec->random_colour[0] = 0x04;  // those 4 random colours are the base colour
 				housespec->random_colour[1] = 0x08;  // for all new houses
 				housespec->random_colour[2] = 0x0C;  // they stand for red, blue, orange and green
@@ -3920,7 +3920,7 @@ static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			continue;
 		}
 
-		hs->spritegroup = _cur_grffile->spritegroups[groupid];
+		hs->grf_prop.spritegroup = _cur_grffile->spritegroups[groupid];
 	}
 }
 
@@ -7043,7 +7043,7 @@ static void FinaliseHouseArray()
 						(next2 == NULL || !next2->enabled || (next2->building_flags & BUILDING_HAS_1_TILE) != 0 ||
 						next3 == NULL || !next3->enabled || (next3->building_flags & BUILDING_HAS_1_TILE) != 0))) {
 				hs->enabled = false;
-				DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d as multitile, but no suitable tiles follow. Disabling house.", (*file)->filename, hs->local_id);
+				DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d as multitile, but no suitable tiles follow. Disabling house.", (*file)->filename, hs->grf_prop.local_id);
 				continue;
 			}
 
@@ -7053,7 +7053,7 @@ static void FinaliseHouseArray()
 			if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 && next1->population != 0) ||
 					((hs->building_flags & BUILDING_HAS_4_TILES) != 0 && (next2->population != 0 || next3->population != 0))) {
 				hs->enabled = false;
-				DEBUG(grf, 1, "FinaliseHouseArray: %s defines multitile house %d with non-zero population on additional tiles. Disabling house.", (*file)->filename, hs->local_id);
+				DEBUG(grf, 1, "FinaliseHouseArray: %s defines multitile house %d with non-zero population on additional tiles. Disabling house.", (*file)->filename, hs->grf_prop.local_id);
 				continue;
 			}
 

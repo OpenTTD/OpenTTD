@@ -157,7 +157,7 @@ uint16 OverrideManagerBase::GetSubstituteID(uint16 entity_id)
  */
 void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 {
-	HouseID house_id = this->AddEntityID(hs->local_id, hs->grffile->grfid, hs->substitute_id);
+	HouseID house_id = this->AddEntityID(hs->grf_prop.local_id, hs->grf_prop.grffile->grfid, hs->grf_prop.subst_id);
 
 	if (house_id == invalid_ID) {
 		grfmsg(1, "House.SetEntitySpec: Too many houses allocated. Ignoring.");
@@ -170,9 +170,9 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 	for (int i = 0; i != max_offset; i++) {
 		HouseSpec *overridden_hs = HouseSpec::Get(i);
 
-		if (entity_overrides[i] != hs->local_id || grfid_overrides[i] != hs->grffile->grfid) continue;
+		if (entity_overrides[i] != hs->grf_prop.local_id || grfid_overrides[i] != hs->grf_prop.grffile->grfid) continue;
 
-		overridden_hs->override = house_id;
+		overridden_hs->grf_prop.override = house_id;
 		entity_overrides[i] = invalid_ID;
 		grfid_overrides[i] = 0;
 	}

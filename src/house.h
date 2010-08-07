@@ -17,6 +17,7 @@
 #include "economy_type.h"
 #include "date_type.h"
 #include "house_type.h"
+#include "newgrf_commons.h"
 
 /**
  * Simple value that indicates the house has reached the final stage of
@@ -108,9 +109,7 @@ struct HouseSpec {
 	bool enabled;                      ///< the house is available to build (true by default, but can be disabled by newgrf)
 
 	/* NewHouses properties */
-	HouseID substitute_id;             ///< which original house this one is based on
-	struct SpriteGroup *spritegroup;   ///< pointer to the different sprites of the house
-	HouseID override;                  ///< which house this one replaces
+	GRFFileProps grf_prop;             ///< Properties related the the grf file
 	uint16 callback_mask;              ///< Bitmask of house callbacks that have to be called
 	byte random_colour[4];             ///< 4 "random" colours
 	byte probability;                  ///< Relative probability of appearing (16 is the standard value)
@@ -120,10 +119,6 @@ struct HouseSpec {
 	byte animation_speed;              ///< amount of time between each of those frames
 	byte processing_time;              ///< Periodic refresh multiplier
 	byte minimum_life;                 ///< The minimum number of years this house will survive before the town rebuilds it
-
-	/* grf file related properties*/
-	uint8 local_id;                    ///< id defined by the grf file for this house
-	const struct GRFFile *grffile;     ///< grf file that introduced this house
 
 	/**
 	 * Get the cost for removing this house
@@ -147,7 +142,7 @@ struct HouseSpec {
 static inline HouseID GetTranslatedHouseID(HouseID hid)
 {
 	const HouseSpec *hs = HouseSpec::Get(hid);
-	return hs->override == INVALID_HOUSE_ID ? hid : hs->override;
+	return hs->grf_prop.override == INVALID_HOUSE_ID ? hid : hs->grf_prop.override;
 }
 
 #endif /* HOUSE_H */
