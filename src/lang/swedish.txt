@@ -3502,7 +3502,7 @@ STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan inte
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... detta är en stadsägd väg
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vägen pekar i fel riktning
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... drive through stopp kan inte ha gatuhörn
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... drive through stopp kan inte har korsningar
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... drive through stopp kan inte ha korsningar
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ej ta bort del av station...

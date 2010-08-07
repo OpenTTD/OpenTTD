@@ -1209,6 +1209,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Мін�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Великий район обслуговування: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Переміщувати дороги, мости та іншу власність міста: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Будувати дуже довгі поїзди: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Кількість диму та іскр від локомотиву: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Немає
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Стандартно
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Реалістично
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Модель прискорення поїзда: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Оригінальна
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реалістична
@@ -2150,6 +2154,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Буду
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Вибір аеропорту
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Виберіть розмір/тип аеропорту
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Клас аеропорту
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Розміщення {NUM}
 
 STR_AIRPORT_SMALL                                               :Малий
 STR_AIRPORT_CITY                                                :Міський
@@ -3572,6 +3577,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Ця к�
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Не можна створити місто
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Неможливо перейменувати...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Тут не можна будувати місто...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Неможливо розширити місто...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... надто близько до краю карти
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... надто близько до іншого міста
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... забагато міст
@@ -3620,6 +3626,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Дуже
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Неможливо перейменувати станцію...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ця дорога у власності міста
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... дорога не в тому напрямку
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... проїзні зупинки не можуть мати поворотів
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... проїзні зупинки не можуть мати перехресть
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Не можна зруйнувати частину станції...
@@ -3743,6 +3751,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Туне
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Неможливо виконати будівництво іншого кінця тунелю
 
 # Unmovable related errors
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Неможливо побудувати об'єкт...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Об'єкт на шляху
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... на шляху Головний офіс
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Неможливо купити цю ділянку ...

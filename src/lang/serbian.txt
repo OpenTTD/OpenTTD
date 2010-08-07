@@ -1279,6 +1279,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dozvolj
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realističnije veličine prihvatnih površina: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dozvoljeno uklanjanje više gradskih kolovoza, zgrada, itd.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Moguća gradnja veoma dugačkih vozova: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/varnica lokomotiva: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nema
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originalna
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistična
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model ubrzavanja vozova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalan
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realističan
@@ -2220,6 +2224,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Izgradnj
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Izbor aerodroma
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Izbor veličine/tipa aerodroma
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Tip aerodroma
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Raspored {NUM}
 
 STR_AIRPORT_SMALL                                               :Poljski aerodrom
 STR_AIRPORT_CITY                                                :Gradski aerodrom

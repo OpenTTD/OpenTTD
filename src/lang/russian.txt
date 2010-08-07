@@ -50,7 +50,7 @@ STR_CARGO_PLURAL_GOODS.acc                                      :товары
 STR_CARGO_PLURAL_GRAIN                                          :{G=n}Зерно
 STR_CARGO_PLURAL_GRAIN.gen                                      :зерна
 STR_CARGO_PLURAL_GRAIN.acc                                      :зерно
-STR_CARGO_PLURAL_WOOD                                           :{G=n}Древесина
+STR_CARGO_PLURAL_WOOD                                           :{G=f}Древесина
 STR_CARGO_PLURAL_WOOD.gen                                       :древесины
 STR_CARGO_PLURAL_WOOD.acc                                       :древесину
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=f}Железная руда
@@ -146,7 +146,7 @@ STR_CARGO_SINGULAR_GOODS.acc                                    :товары
 STR_CARGO_SINGULAR_GRAIN                                        :{G=n}Зерно
 STR_CARGO_SINGULAR_GRAIN.gen                                    :зерна
 STR_CARGO_SINGULAR_GRAIN.acc                                    :зерно
-STR_CARGO_SINGULAR_WOOD                                         :{G=n}Древесина
+STR_CARGO_SINGULAR_WOOD                                         :{G=f}Древесина
 STR_CARGO_SINGULAR_WOOD.gen                                     :древесины
 STR_CARGO_SINGULAR_WOOD.acc                                     :древесину
 STR_CARGO_SINGULAR_IRON_ORE                                     :{G=f}Железная руда

@@ -1590,10 +1590,10 @@ STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cl
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Număr maxim de clienţi:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Alege un număr maxim de clienţi. Nu trebuie ocupate toate locurile.
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compan{P ie ii}
-STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maximum companii:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Companii maxim:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limitează serverul la un anumit număr de companii
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spectator{P "" i}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maxim spectatori:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Spectatori maxim:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limitează serverul la un anumit număr de spectatori
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Limba vorbită:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ceilalţi jucători vor şti în ce limbă se discută pe server.
@@ -1698,7 +1698,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Observă
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Companie nouă
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Kick
+STR_NETWORK_CLIENTLIST_KICK                                     :Dă afară
 STR_NETWORK_CLIENTLIST_BAN                                      :Interzice acces
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donează bani
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Vorbeşte către toţi
@@ -1866,7 +1866,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comută 
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Comută transparenţa pentru arbori. Ctrl+Click pentru blocare.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Comută transparenţa pentru case. Ctrl+Click pentru blocare.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Comută transparenţa pentru industrii. Ctrl+Click pentru blocare.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Comută transparenţa pentru construibile, precum staţii, depouri, indicatoare şi linii electrificate. Ctrl+Click pentru blocare.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Comută transparenţa pentru construcţii, precum staţii, depouri, indicatoare şi linii electrificate. Ctrl+Click pentru blocare.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Comută transparenţa pentru poduri. Ctrl+Click pentru blocare.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comută transparenţa pentru structuri gen faruri şi antene. Ctrl+Click pentru blocare.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comută transparenţa pentru catenar. Ctrl+Click pentru blocare.
@@ -1875,15 +1875,15 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Setează
 
 # Base for station construction window(s)
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Aria de acoperire
-STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}inactiv
-STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}activ
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Inactiv
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Activ
 STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}Nu arăta aria de acoperire a locaţiei propuse
 STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Arată aria de acoperire a locaţiei propuse
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Acceptă: {GOLD}{STRING}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Resurse: {GOLD}{STRING}
 
 # Join station window
-STR_JOIN_STATION_CAPTION                                        :{WHITE}Contopeşte (uneşte) staţia
+STR_JOIN_STATION_CAPTION                                        :{WHITE}Uneşte staţia
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Construieşte o staţie separată
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneşte punctul de tranzit
@@ -1929,7 +1929,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Alege o 
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Alege tipul de staţie pentru construcţie
 
 STR_STATION_CLASS_DFLT                                          :Staţie implicită
-STR_STATION_CLASS_WAYP                                          :Punct de tranzit
+STR_STATION_CLASS_WAYP                                          :Puncte de tranzit
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Alegere semnal
@@ -1953,16 +1953,16 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Creşte 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Alege pod de cale ferată
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Alege pod rutier
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Alegere pod - clic pe podul preferat pentru a-l construi
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Alegere pod - click pe podul preferat pentru a-l construi
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensie (oţel)
-STR_BRIDGE_NAME_GIRDER_STEEL                                    :Grindă (oţel)
-STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Arc (oţel)
-STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Suspensie (beton)
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensie, Oţel
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :Grindă, Oţel
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Arc, Oţel
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :Suspensie, Beton
 STR_BRIDGE_NAME_WOODEN                                          :Lemn
 STR_BRIDGE_NAME_CONCRETE                                        :Beton
-STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Tubular (oţel)
-STR_BRIDGE_TUBULAR_SILICON                                      :Tubular (silicon)
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :Tubular, Oţel
+STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silicon
 
 
 # Road construction toolbar
@@ -2118,8 +2118,8 @@ STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Multe industrii
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Umple harta cu industrii generate aleator
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cost: {YELLOW}{CURRENCY}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospectează
-STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construieste
-STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanteaza
+STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construieşte
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanţează
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Lanţ industrial pentru industria {STRING}
@@ -2133,23 +2133,23 @@ STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Afişeaz
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Afişează industriile care furnizează şi acceptă cargo
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informatii teren
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informaţii teren
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Costul demolării: {LTBLUE}nu este cazul
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Costul demolării: {RED}{CURRENCY}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Incasari dupa curatare: {LTBLUE}{CURRENCY}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Încasări după curăţare: {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :nu este cazul
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Proprietar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Proprietar al drumului: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Proprietar al şinei de tramvai: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Proprietar al căii ferate: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoritatea locală: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :nici una
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nici una
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonate: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
-STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Data constructiei: {LTBLUE}{DATE_LONG}
-STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clasa statie: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tip statie: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Data construcţiei: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clasa staţiei: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tip staţie: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Numele dalei aeroportului: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NouGRF: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Încărcături acceptate: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limită viteză pe calea ferată: {LTBLUE}{VELOCITY}
@@ -2164,27 +2164,27 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Teren înzăpez
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Deşert
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Cale ferată
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Cale ferată cu semafoare normale
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Cale ferată cu pre-semafoare
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Cale ferată cu semafoare de ieşire
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Cale ferata cu semnale combinate
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Cale ferată cu semnalizare avansată
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Cale ferată cu semnalizare avansată în sens unic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Cale ferată cu semafoare normale şi pre-semafoare
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Cale ferată cu semafoare normale şi semafoare de ieşire
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Cale ferată cu semnale normale şi combinate
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Cale ferată cu semnalizare normală şi avansată
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Cale ferată cu semnalizare normală şi avansată în sens unic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Cale ferată cu pre-semafoare şi semafoare de ieşire
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Cale ferata cu pre-semnalizate si cu semnale combinate
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Cale ferată cu pre-semnalizare şi semnalizare avansată
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Cale ferată cu pre-semnalizare şi semnalizare avansată în sens unic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Cale ferata cu post-semnalizate si cu semnale combinate
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Cale ferată cu post-semnalizare şi semnalizare avansată
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Cale ferată cu post-semnalizare şi semnalizare avansată în sens unic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Cale ferată cu semnalizare combinată şi avansată
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Cale ferată cu semnalizare combinată şi avansată în sens unic
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Cale ferată cu semnalizare avansată şi avansată în sens unic
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Cale ferată cu semnalizare normală
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Cale ferată cu presemnalizare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Cale ferată cu semnale de ieşire
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Cale ferată cu semnale combinate
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Cale ferată cu semnale de cale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Cale ferată cu semnale de cale cu sens unic
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Cale ferată cu semnale normale şi presemnalizare
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Cale ferată cu semnale normale şi semnale de ieşire
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Cale ferată cu semnale normale şi semnale combinate
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Cale ferată cu semnale normale şi semnale de cale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Cale ferată cu semnale normale şi semnale de cale cu sens unic
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Cale ferată cu presemnalizare şi semnale de ieşire
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Cale ferată cu presemnalizare şi semnale combinate
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Cale ferată cu presemnalizare şi semnale de cale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Cale ferată cu presemnalizare şi semnale de cale cu sens unic
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Cale ferată cu semnale de ieşire şi semnale combinate
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Cale ferată cu semnale de ieşire şi semnale de cale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Cale ferată cu semnale de ieşire şi semnale de cale cu sens unic
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Cale ferată cu semnale combinate şi semnale de cale
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Cale ferată cu semnale combinate şi semnale de cale cu sens unic
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Cale ferată cu semnale de cale şi semnale de cale cu sens unic
 STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depou de cale ferată
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Şosea
@@ -2208,13 +2208,13 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Platformă pent
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Staţie de autobuz
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Port
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Baliză
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Haltă de mişcare
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Punct de tranzit
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Apă
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Ecluză
 STR_LAI_WATER_DESCRIPTION_RIVER                                 :Râu
-STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Mal/Coastă
+STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Coastă sau mal
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Şantier naval
 
 # Industries come directly from their industry names
@@ -2247,9 +2247,9 @@ STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Teren în propr
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Despre OpenTTD
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, toate drepturile rezervate
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Toate drepturile rezervate
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versiunea {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2010 Echipa OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2010 Echipa OpenTTD
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Salvează joc
@@ -2257,7 +2257,7 @@ STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Încarc�
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Salvează scenariu
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Încarcă scenariu
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Încarcă harta înălţimilor
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click aici pentru a ajunge la directorul predefinit pentru salvari
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click aici pentru a ajunge la directorul predefinit pentru salvări
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} liberi
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de discuri, directoare şi fişiere cu jocuri salvate
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Numele selectat pentru un joc salvat
@@ -2276,30 +2276,30 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduc
 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Generare lume
-STR_MAPGEN_MAPSIZE                                              :{BLACK}Marime harta:
+STR_MAPGEN_MAPSIZE                                              :{BLACK}Mărime hartă:
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. de orase:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. de oraşe:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. de industrii:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Inaltimea zapezii:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Muta linia zapezii cu un punct in sus
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Muta linia zapezii cu un punct in jos
+STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Înălţimea zăpezii:
+STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mută linia zăpezii cu un punct în sus
+STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mută linia zăpezii cu un punct în jos
 STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Parametru aleator:
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Click pt introducerea unui parametru aleator
 STR_MAPGEN_RANDOM                                               :{BLACK}Aleator
-STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Modifica parametrul aleator folosit la Generarea lumii
+STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Modifică parametrul aleator folosit pentru Generarea Terenului
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator de teren:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritm arbore:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip teren:
-STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivelul marii:
+STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivelul mării:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Netezime:
 STR_MAPGEN_VARIETY                                              :{BLACK}Distribuţia varietăţii:
-STR_MAPGEN_GENERATE                                             :{WHITE}Genereaza
+STR_MAPGEN_GENERATE                                             :{WHITE}Generează
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Margine:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Nord-vest
-STR_MAPGEN_NORTHEAST                                            :{BLACK}Nortd-est
+STR_MAPGEN_NORTHEAST                                            :{BLACK}Nord-est
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Sud-est
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}Sud-vest
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Pământ
@@ -2308,40 +2308,40 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleator
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleator
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotatie harta inaltimi:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nume harta inaltimi:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotaţie hartă înălţimi:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nume hartă înălţimi:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dimensiune:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Introduceţi o valoare de pornire pentru numerele aleatoare
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Nu pot modifica inaltimea zapezii
-STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Modifica inceputul anului
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Modifică înălţimea zăpezii
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Modifică anul de început
 
 # SE Map generation
-STR_SE_MAPGEN_CAPTION                                           :{WHITE}Tip harta
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Tipul scenariului
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Teren plat
-STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genereaza un teren plat
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generează un teren plat
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Teren aleator
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Inaltimea terenului plat:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Muta in jos, cu o unitate, inaltimea terenului plan
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Muta in sus, cu o unitate, inaltimea terenului plan
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Înălţimea terenului plat:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mută înălţimea terenului plat cu o unitate în jos
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mută înălţimea terenului plat cu o unitate în sus
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Modifica inaltimea terenului plan
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Modifică înălţimea terenului plat
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Generez lumea...
-STR_GENERATION_ABORT                                            :{BLACK}Anuleaza
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Anuleaza Generarea Lumii
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Sigur doresti sa anulezi generarea?
+STR_GENERATION_ABORT                                            :{BLACK}Anulează
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Anulează Generarea Lumii
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Sigur doreşti să anulezi generarea?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% efectuat
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generare lume
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generare arbori
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Generare fixa
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generare zona dura si pietroasa
-STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Fac setarile jocului
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Generare fixă
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generare zonă dură şi pietroasă
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Se configurează jocul
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Initializez ciclul dalelor
-STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pregatesc jocul
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pregătesc jocul
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setări NewGRF
@@ -2350,41 +2350,41 @@ STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Fişiere
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Fişiere NewGRF inactive
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Selectează preset:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtru:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Incarcă presetarea selectată
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Încarcă presetarea selectată
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvează presetare
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salvează lista curentă ca presetare
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introdu un nume presetarii
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Sterge presetarea
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Sterge presetarea selectata
-STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Adauga
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adauga fisierul NewGRF ales in configuratie
-STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Redetecteaza fisierele
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualizeaza lista de fisiere NewGRF disponibile
-STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Elimina
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Elimina fisierul NewGRF ales din lista
-STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Muta Sus
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Muta fisierul NewGRF ales mai sus in lista
-STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Muta Jos
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Muta fisierul NewGRF ales mai jos in lista
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O lista a fisierelor NewGRF instalate. Fa click pe un fisier pt a-i modifica parameterii
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introduceţi un nume pentru presetare
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Şterge presetarea
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Şterge presetarea selectată
+STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Adaugă
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adaugă fişierul NewGRF ales în configuraţie
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Redetectează fişierele
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualizează lista de fişiere NewGRF disponibile
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Elimină
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Elimină fişierul NewGRF ales din listă
+STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mută în sus
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mută fişierul NewGRF ales mai sus în listă
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mută în jos
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mută fişierul NewGRF ales mai jos în listă
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O listă a fişierelor NewGRF instalate. Click pe un fişier pt a-i modifica parameterii
 
-STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Seteaza parametri
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Comuta paleta
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Schimba paleta la NewGRF ul selectat .{} Efectueaza acest lucru cand graficele din acest NewGRF sunt roz in joc
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Setează parametri
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Comută paleta
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Schimbă paleta pentru NewGRF-ul selectat.{}Efectuează acest lucru când grafica din acest NewGRF este roz în joc
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplică schimbările
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Caută resursele lipsă online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Caută online resursele lipsă
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Verifică dacă resursele care lipsesc pot fi găsite online
 
-STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nume fisier: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nume fişier: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versiune: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletă: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
 
-STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Nici o informatie disponibila
-STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nici un fisier potrivit
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Nicio informaţie disponibilă
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Niciun fisier potrivit
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dezactivat
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introdu parametrii NewGRF
@@ -2407,14 +2407,14 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parametr
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Aliniere imagine {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Imaginea următoare
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mergi la imaginea indicată. Daca nu este o imagine normală, mergi la următoarea imagine normală
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Mergi la următoarea imagine normală, sărind peste pseudo-imagini, recolorări sau fonturi şi reporneşte când s-a ajuns la sfârşit
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Mergi la imagine
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mergi la imaginea indicată. Daca nu este o imagine normală, mergi la următoarea imagine normală
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Mergi la imaginea indicată. Dacă nu este o imagine normală, mergi la următoarea imagine normală
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Imaginea precedentă
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mergi la următoarea imagine normală, sărind peste orice pseudo-imagini, recolorări sau fonturi
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Reprezentarea maginii curente. Aliniamentul este ignorat
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mişcă imaginea schimbând distanţele pe axe
-STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}distanţa X: {NUM}, distanţaY: {NUM}
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Mergi la precedenta imagine normală, sărind peste pseudo-imagini, recolorări sau fonturi şi reporneşte când s-a ajuns la sfârşit
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Reprezentarea imaginii curente. Aliniamentul este ignorat
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mişcă imaginea schimbând distanţele pe axele X şi Y
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}distanţa X: {NUM}, distanţa Y: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Alege imagine
 STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Alege o imagine de oriunde de pe ecran
 
@@ -2422,38 +2422,38 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Mergi la
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atentie: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atenţie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eroare: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}O erorare fatală NewGRF a avut loc: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nu va functiona cu versiunea TTDPatch raportata de OpenTTD.
+STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}O eroare fatală NewGRF a avut loc: {}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nu va funcţiona cu versiunea TTDPatch raportată de OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} este pentru versiunea {STRING} a TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} este conceput pentru a fi folosit cu {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametru invalid pentru {1:STRING}: parametrul {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} trebuie sa fie incarcat inaintea {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} trebuie sa fie incarcat dupa {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} necesita OpenTTD versiunea {STRING} sau mai noua.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fisierul GRF conceput pentru traducere
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} trebuie să fie încărcat înaintea {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} trebuie să fie încărcat după {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} necesită OpenTTD versiunea {STRING} sau mai nouă.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fişierul GRF conceput pentru traducere
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Prea multe NewGRF-uri încărcate.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Incarcarea {STRING} ca si un NewGRF static cu {STRING} ar putea cauza desincronizari.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Imagine neaşteptată/eronată
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Actiune necunoscuta proprietate 0
-STR_NEWGRF_ERROR_INVALID_ID                                     :Incercare de folosire a unui ID invalid
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING}Contine un sprite corupt. Toate sprite-urile corupte vor fi aratate ca si semne de intrebare (?) de culoare rosie.
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conţine multiple intrari "Acţiunea 8"
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire dincolo de sfârşitul pseudo-spriteului.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Încărcarea {STRING} ca şi un NewGRF static cu {STRING} ar putea cauza desincronizări.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Imagine neaşteptată/eronată.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Proprietate Action 0 necunoscută.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Încercare de folosire a unui ID invalid.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conţine o imagine coruptă. Toate imaginile corupte vor fi afişate ca semne de întrebare (?) roşii.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conţine multiple înregistrări Action 8
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire dincolo de sfârşitul pseudo-imaginii.
 
 # NewGRF related 'general' warnings
-STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atentie!
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atenţie!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Eşti pe cale să faci modificari într-un joc activ. Aceasta poate destabiliza OpenTTD.{}Eşti absolut sigur că vrei să faci asta?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nu pot adăuga fişierul: ID GRF duplicat
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nu am gasit niciun fisier corespunzator (am incarcat un GRF compatibil)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nu am găsit niciun fişier corespunzător (am încărcat un GRF compatibil)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Fisier(e) GRF compatibil(e) incarcate pentru fisierele lipsa
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fisierele GRF lipsa au fost dezactivate
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fisier(e) GRF lipsa
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Reluarea jocului poate bloca OpenTTD. Nu raportati raporturi cu probleme pentru blocari succesive.{}Sigur doresti sa reiei jocul?
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF-uri compatibile au fost încărcate pentru fişierele lipsă
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fişierele GRF lipsă au fost dezactivate
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fişier(e) GRF lipsă
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Reluarea jocului poate bloca OpenTTD. Nu raportaţi bug-uri pentru blocările ulterioare.{}Sigur doreşti să reiei jocul?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Nimic
@@ -2462,7 +2462,7 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Fişier
 STR_NEWGRF_LIST_MISSING                                         :{RED}Fişiere lipsă
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Comportamentul NewGRF '{0:STRING}' poate cauza desincronizari sau opriri.
+STR_NEWGRF_BROKEN                                               :{WHITE}Comportamentul NewGRF '{0:STRING}' poate cauza desincronizări şi/sau blocări.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica lungimea vehicolului pentru '{1:ENGINE}' cand nu este in depou.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', apartinand '{COMPANY}' nu are o lungima valida. Crobabila este o problema cu fisierele NewGRF. Jocul s-ar putea desincroniza sau prabusi.
 
