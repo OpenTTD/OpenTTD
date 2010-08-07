@@ -13,6 +13,7 @@
 #define NEWGRF_STATION_H
 
 #include "newgrf_callbacks.h"
+#include "newgrf_commons.h"
 #include "sprite.h"
 #include "direction_type.h"
 #include "cargo_type.h"
@@ -46,8 +47,7 @@ typedef byte *StationLayout;
 
 /** Station specification. */
 struct StationSpec {
-	const struct GRFFile *grffile; ///< ID of GRF file station belongs to.
-	int localidx; ///< Index within GRF file of station.
+	GRFFilePropsBase grf_prop; ///< Properties related the the grf file
 
 	bool allocated; ///< Flag whether this station has been added to a station class list
 

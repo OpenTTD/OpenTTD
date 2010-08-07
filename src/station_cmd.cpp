@@ -2804,8 +2804,8 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 			td->station_class = GetStationClassName(spec->sclass);
 			td->station_name  = spec->name;
 
-			if (spec->grffile != NULL) {
-				const GRFConfig *gc = GetGRFConfig(spec->grffile->grfid);
+			if (spec->grf_prop.grffile != NULL) {
+				const GRFConfig *gc = GetGRFConfig(spec->grf_prop.grffile->grfid);
 				td->grf = gc->GetName();
 			}
 		}

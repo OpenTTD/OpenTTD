@@ -217,7 +217,7 @@ const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx, int *i
 		for (j = 0; j < _station_classes[i].stations; j++) {
 			const StationSpec *statspec = _station_classes[i].spec[j];
 			if (statspec == NULL) continue;
-			if (statspec->grffile->grfid == grfid && statspec->localidx == localidx) {
+			if (statspec->grf_prop.grffile->grfid == grfid && statspec->grf_prop.local_id == localidx) {
 				if (index != NULL) *index = j;
 				return statspec;
 			}
@@ -439,7 +439,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			if (!HasBit(_svc.valid, 1)) { _svc.v41 = GetPlatformInfoHelper(tile, true,  false, false); SetBit(_svc.valid, 1); }
 			return _svc.v41;
 
-		case 0x42: return GetTerrainType(tile) | (GetReverseRailTypeTranslation(GetRailType(tile), object->u.station.statspec->grffile) << 8);
+		case 0x42: return GetTerrainType(tile) | (GetReverseRailTypeTranslation(GetRailType(tile), object->u.station.statspec->grf_prop.grffile) << 8);
 		case 0x43: return st->owner; // Station owner
 		case 0x44: return HasStationReservation(tile) ? 7 : 4; // PBS status
 		case 0x45:
@@ -529,7 +529,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject *object, byte variable, b
 
 	/* Handle cargo variables with parameter, 0x60 to 0x65 */
 	if (variable >= 0x60 && variable <= 0x65) {
-		CargoID c = GetCargoTranslation(parameter, object->u.station.statspec->grffile);
+		CargoID c = GetCargoTranslation(parameter, object->u.station.statspec->grf_prop.grffile);
 
 		if (c == CT_INVALID) return 0;
 		const GoodsEntry *ge = &this->goods[c];
@@ -668,7 +668,7 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 	res->trigger         = 0;
 	res->reseed          = 0;
 	res->count           = 0;
-	res->grffile         = (statspec != NULL ? statspec->grffile : NULL);
+	res->grffile         = (statspec != NULL ? statspec->grf_prop.grffile : NULL);
 }
 
 static const SpriteGroup *ResolveStation(ResolverObject *object)
@@ -813,8 +813,8 @@ int AllocateSpecToStation(const StationSpec *statspec, BaseStation *st, bool exe
 		}
 
 		st->speclist[i].spec     = statspec;
-		st->speclist[i].grfid    = statspec->grffile->grfid;
-		st->speclist[i].localidx = statspec->localidx;
+		st->speclist[i].grfid    = statspec->grf_prop.grffile->grfid;
+		st->speclist[i].localidx = statspec->grf_prop.local_id;
 	}
 
 	return i;
@@ -989,7 +989,7 @@ void AnimateStationTile(TileIndex tile)
 
 			/* If the lower 7 bits of the upper byte of the callback
 			 * result are not empty, it is a sound effect. */
-			if (GB(callback, 8, 7) != 0) PlayTileSound(ss->grffile, GB(callback, 8, 7), tile);
+			if (GB(callback, 8, 7) != 0) PlayTileSound(ss->grf_prop.grffile, GB(callback, 8, 7), tile);
 		}
 	}
 
@@ -1027,7 +1027,7 @@ static void ChangeStationAnimationFrame(const StationSpec *ss, const BaseStation
 
 	/* If the lower 7 bits of the upper byte of the callback
 	 * result are not empty, it is a sound effect. */
-	if (GB(callback, 8, 7) != 0) PlayTileSound(ss->grffile, GB(callback, 8, 7), tile);
+	if (GB(callback, 8, 7) != 0) PlayTileSound(ss->grf_prop.grffile, GB(callback, 8, 7), tile);
 }
 
 void StationAnimationTrigger(const BaseStation *st, TileIndex tile, StatAnimTrigger trigger, CargoID cargo_type)
@@ -1056,7 +1056,7 @@ void StationAnimationTrigger(const BaseStation *st, TileIndex tile, StatAnimTrig
 				if (cargo_type == CT_INVALID) {
 					cargo = CT_INVALID;
 				} else {
-					cargo = GetReverseCargoTranslation(cargo_type, ss->grffile);
+					cargo = GetReverseCargoTranslation(cargo_type, ss->grf_prop.grffile);
 				}
 				ChangeStationAnimationFrame(ss, st, tile, random_bits, trigger, cargo);
 			}

@@ -3886,8 +3886,8 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		}
 
 		statspec->spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
-		statspec->grffile = _cur_grffile;
-		statspec->localidx = stations[i];
+		statspec->grf_prop.grffile = _cur_grffile;
+		statspec->grf_prop.local_id = stations[i];
 		SetCustomStationSpec(statspec);
 	}
 }

@@ -85,7 +85,7 @@ void MoveWaypointsToBaseStations()
 		for (OldWaypoint *wp = _old_waypoints.Begin(); wp != _old_waypoints.End(); wp++) {
 			for (uint i = 0; i < GetNumCustomStations(STAT_CLASS_WAYP); i++) {
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, i);
-				if (statspec != NULL && statspec->grffile->grfid == wp->grfid && statspec->localidx == wp->localidx) {
+				if (statspec != NULL && statspec->grf_prop.grffile->grfid == wp->grfid && statspec->grf_prop.local_id == wp->localidx) {
 					wp->spec = statspec;
 					break;
 				}
