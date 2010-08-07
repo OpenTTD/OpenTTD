@@ -54,7 +54,7 @@ struct RailStationGUISettings {
 	Axis orientation;                 ///< Currently selected rail station orientation
 
 	bool newstations;                 ///< Are custom station definitions available?
-	StationClassIDByte station_class; ///< Currently selected custom station class (if newstations is \c true )
+	StationClassID station_class;     ///< Currently selected custom station class (if newstations is \c true )
 	byte station_type;                ///< Station type within the currently selected custom station class (if newstations is \c true )
 	byte station_count;               ///< Number of custom stations (if newstations is \c true )
 };
@@ -433,7 +433,7 @@ static void BuildRailClick_Depot(Window *w)
  */
 static void BuildRailClick_Waypoint(Window *w)
 {
-	_waypoint_count = GetNumCustomStations(STAT_CLASS_WAYP);
+	_waypoint_count = StationClass::GetCount(STAT_CLASS_WAYP);
 	if (HandlePlacePushButton(w, RTW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT, PlaceRail_Waypoint) &&
 			_waypoint_count > 1) {
 		ShowBuildWaypointPicker(w);
@@ -1029,9 +1029,9 @@ private:
 	{
 		DropDownList *list = new DropDownList();
 
-		for (uint i = 0; i < GetNumStationClasses(); i++) {
+		for (uint i = 0; i < StationClass::GetCount(); i++) {
 			if (i == STAT_CLASS_WAYP) continue;
-			list->push_back(new DropDownListStringItem(GetStationClassName((StationClassID)i), i, false));
+			list->push_back(new DropDownListStringItem(StationClass::GetName((StationClassID)i), i, false));
 		}
 
 		return list;
@@ -1058,7 +1058,7 @@ public:
 		_railstation.newstations = newstation;
 
 		if (newstation) {
-			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
+			_railstation.station_count = StationClass::GetCount(_railstation.station_class);
 
 			this->vscroll.SetCount(_railstation.station_count);
 			this->vscroll.SetCapacity(GB(this->GetWidget<NWidgetCore>(BRSW_NEWST_LIST)->widget_data, MAT_ROW_START, MAT_ROW_BITS));
@@ -1079,7 +1079,7 @@ public:
 	virtual void OnPaint()
 	{
 		bool newstations = _railstation.newstations;
-		const StationSpec *statspec = newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
+		const StationSpec *statspec = newstations ? StationClass::Get(_railstation.station_class, _railstation.station_type) : NULL;
 
 		if (_settings_client.gui.station_dragdrop) {
 			SetTileSelectSize(1, 1);
@@ -1127,9 +1127,9 @@ public:
 		switch (widget) {
 			case BRSW_NEWST_DROPDOWN: {
 				Dimension d = {0, 0};
-				for (uint i = 0; i < GetNumStationClasses(); i++) {
+				for (uint i = 0; i < StationClass::GetCount(); i++) {
 					if (i == STAT_CLASS_WAYP) continue;
-					SetDParam(0, GetStationClassName((StationClassID)i));
+					SetDParam(0, StationClass::GetName((StationClassID)i));
 					d = maxdim(d, GetStringBoundingBox(STR_BLACK_STRING));
 				}
 				d.width += padding.width;
@@ -1139,10 +1139,10 @@ public:
 			}
 			case BRSW_NEWST_LIST: {
 				Dimension d = GetStringBoundingBox(STR_STATION_CLASS_DFLT);
-				for (StationClassID statclass = STAT_CLASS_BEGIN; statclass < (StationClassID)GetNumStationClasses(); statclass++) {
+				for (StationClassID statclass = STAT_CLASS_BEGIN; statclass < (StationClassID)StationClass::GetCount(); statclass++) {
 					if (statclass == STAT_CLASS_WAYP) continue;
-					for (uint16 j = 0; j < GetNumCustomStations(statclass); j++) {
-						const StationSpec *statspec = GetCustomStationSpec(statclass, j);
+					for (uint16 j = 0; j < StationClass::GetCount(statclass); j++) {
+						const StationSpec *statspec = StationClass::Get(statclass, j);
 						if (statspec != NULL && statspec->name != 0) d = maxdim(d, GetStringBoundingBox(statspec->name));
 					}
 				}
@@ -1187,7 +1187,7 @@ public:
 			case BRSW_NEWST_LIST: {
 				uint y = r.top;
 				for (uint16 i = this->vscroll.GetPosition(); i < _railstation.station_count && this->vscroll.IsVisible(i); i++) {
-					const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, i);
+					const StationSpec *statspec = StationClass::Get(_railstation.station_class, i);
 
 					StringID str = STR_STATION_CLASS_DFLT;
 					if (statspec != NULL && statspec->name != 0) {
@@ -1207,7 +1207,7 @@ public:
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == BRSW_NEWST_DROPDOWN) SetDParam(0, GetStationClassName(_railstation.station_class));
+		if (widget == BRSW_NEWST_DROPDOWN) SetDParam(0, StationClass::GetName(_railstation.station_class));
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -1238,7 +1238,7 @@ public:
 
 				_settings_client.gui.station_dragdrop = false;
 
-				const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
+				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class, _railstation.station_type) : NULL;
 				if (statspec != NULL && HasBit(statspec->disallowed_lengths, _settings_client.gui.station_platlength - 1)) {
 					/* The previously selected number of platforms in invalid */
 					for (uint i = 0; i < 7; i++) {
@@ -1273,7 +1273,7 @@ public:
 
 				_settings_client.gui.station_dragdrop = false;
 
-				const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
+				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class, _railstation.station_type) : NULL;
 				if (statspec != NULL && HasBit(statspec->disallowed_platforms, _settings_client.gui.station_numtracks - 1)) {
 					/* The previously selected number of tracks in invalid */
 					for (uint i = 0; i < 7; i++) {
@@ -1299,7 +1299,7 @@ public:
 				this->ToggleWidgetLoweredState(BRSW_PLATFORM_DRAG_N_DROP);
 
 				/* get the first allowed length/number of platforms */
-				const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
+				const StationSpec *statspec = _railstation.newstations ? StationClass::Get(_railstation.station_class, _railstation.station_type) : NULL;
 				if (statspec != NULL && HasBit(statspec->disallowed_lengths, _settings_client.gui.station_platlength - 1)) {
 					for (uint i = 0; i < 7; i++) {
 						if (!HasBit(statspec->disallowed_lengths, i)) {
@@ -1346,7 +1346,7 @@ public:
 				if (y >= _railstation.station_count) return;
 
 				/* Check station availability callback */
-				const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, y);
+				const StationSpec *statspec = StationClass::Get(_railstation.station_class, y);
 				if (statspec != NULL && HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
 						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
 
@@ -1367,9 +1367,9 @@ public:
 		if (_railstation.station_class != index) {
 			_railstation.station_class = (StationClassID)index;
 			_railstation.station_type  = 0;
-			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
+			_railstation.station_count = StationClass::GetCount(_railstation.station_class);
 
-			this->CheckSelectedSize(GetCustomStationSpec(_railstation.station_class, _railstation.station_type));
+			this->CheckSelectedSize(StationClass::Get(_railstation.station_class, _railstation.station_type));
 
 			this->vscroll.SetCount(_railstation.station_count);
 			this->vscroll.SetPosition(_railstation.station_type);
@@ -1466,7 +1466,7 @@ static const WindowDesc _station_builder_desc(
 /** Open station build window */
 static void ShowStationBuilder(Window *parent)
 {
-	bool newstations = GetNumStationClasses() > 2 || GetNumCustomStations(STAT_CLASS_DFLT) != 1;
+	bool newstations = StationClass::GetCount() > 2 || StationClass::GetCount(STAT_CLASS_DFLT) != 1;
 	new BuildRailStationWindow(&_station_builder_desc, parent, newstations);
 }
 
@@ -1788,7 +1788,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 
 		for (uint i = 0; i < this->hscroll.GetCapacity(); i++) {
 			if (this->hscroll.GetPosition() + i < this->hscroll.GetCount()) {
-				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, this->hscroll.GetPosition() + i);
+				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, this->hscroll.GetPosition() + i);
 				NWidgetBase *nw = this->GetWidget<NWidgetBase>(BRWW_WAYPOINT_1 + i);
 
 				int bottom = nw->pos_y + nw->current_y;
@@ -1814,7 +1814,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 				byte type = widget - BRWW_WAYPOINT_1 + this->hscroll.GetPosition();
 
 				/* Check station availability callback */
-				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, type);
+				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, type);
 				if (statspec != NULL &&
 						HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
 						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;

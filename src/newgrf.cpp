@@ -1151,7 +1151,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
 				uint32 classid = buf->ReadDWord();
-				(*spec)->cls_id = AllocateStationClass(BSWAP32(classid));
+				(*spec)->cls_id = StationClass::Allocate(BSWAP32(classid));
 				break;
 			}
 
@@ -3893,7 +3893,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		statspec->spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
 		statspec->grf_prop.grffile = _cur_grffile;
 		statspec->grf_prop.local_id = stations[i];
-		SetCustomStationSpec(statspec);
+		StationClass::Assign(statspec);
 	}
 }
 
@@ -4276,7 +4276,7 @@ static void FeatureNewName(ByteReader *buf)
 							grfmsg(1, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring", GB(id, 0, 8));
 						} else {
 							StationClassID cls_id = _cur_grffile->stations[GB(id, 0, 8)]->cls_id;
-							SetStationClassName(cls_id, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED));
+							StationClass::SetName(cls_id, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED));
 						}
 						break;
 
@@ -6764,7 +6764,7 @@ static void ResetNewGRFData()
 	ResetIndustries();
 
 	/* Reset station classes */
-	ResetStationClasses();
+	StationClass::Reset();
 	ResetCustomStations();
 
 	/* Reset airport-related structures */

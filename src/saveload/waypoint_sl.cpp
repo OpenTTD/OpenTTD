@@ -76,15 +76,15 @@ void MoveWaypointsToBaseStations()
 			_m[wp->xy].m2 = (StationID)wp->index;
 
 			if (HasBit(_m[wp->xy].m3, 4)) {
-				wp->spec = GetCustomStationSpec(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1);
+				wp->spec = StationClass::Get(STAT_CLASS_WAYP, _m[wp->xy].m4 + 1);
 			}
 		}
 	} else {
 		/* As of version 17, we recalculate the custom graphic ID of waypoints
 		 * from the GRF ID / station index. */
 		for (OldWaypoint *wp = _old_waypoints.Begin(); wp != _old_waypoints.End(); wp++) {
-			for (uint i = 0; i < GetNumCustomStations(STAT_CLASS_WAYP); i++) {
-				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, i);
+			for (uint i = 0; i < StationClass::GetCount(STAT_CLASS_WAYP); i++) {
+				const StationSpec *statspec =  StationClass::Get(STAT_CLASS_WAYP, i);
 				if (statspec != NULL && statspec->grf_prop.grffile->grfid == wp->grfid && statspec->grf_prop.local_id == wp->localidx) {
 					wp->spec = statspec;
 					break;

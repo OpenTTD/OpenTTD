@@ -171,7 +171,7 @@
 	uint32 p2 = (AIStation::IsValidStation(station_id) ? station_id : INVALID_STATION) << 16;
 	if (res != CALLBACK_FAILED) {
 		int index = 0;
-		const StationSpec *spec = GetCustomStationSpecByGrf(file->grfid, res, &index);
+		const StationSpec *spec = StationClass::GetByGrf(file->grfid, res, &index);
 		if (spec == NULL) {
 			DEBUG(grf, 1, "%s returned an invalid station ID for 'AI construction/purchase selection (18)' callback", file->filename);
 		} else {

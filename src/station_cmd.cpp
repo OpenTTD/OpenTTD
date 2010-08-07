@@ -1134,8 +1134,8 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	if (!ValParamRailtype(rt)) return CMD_ERROR;
 
 	/* Check if the given station class is valid */
-	if ((uint)spec_class >= GetNumStationClasses() || spec_class == STAT_CLASS_WAYP) return CMD_ERROR;
-	if (spec_index >= GetNumCustomStations(spec_class)) return CMD_ERROR;
+	if ((uint)spec_class >= StationClass::GetCount() || spec_class == STAT_CLASS_WAYP) return CMD_ERROR;
+	if (spec_index >= StationClass::GetCount(spec_class)) return CMD_ERROR;
 	if (plat_len == 0 || numtracks == 0) return CMD_ERROR;
 
 	int w_org, h_org;
@@ -1207,7 +1207,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	}
 
 	/* Check if we can allocate a custom stationspec to this station */
-	const StationSpec *statspec = GetCustomStationSpec(spec_class, spec_index);
+	const StationSpec *statspec = StationClass::Get(spec_class, spec_index);
 	int specindex = AllocateSpecToStation(statspec, st, (flags & DC_EXEC) != 0);
 	if (specindex == -1) return_cmd_error(STR_ERROR_TOO_MANY_STATION_SPECS);
 
@@ -2801,7 +2801,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 		const StationSpec *spec = GetStationSpec(tile);
 
 		if (spec != NULL) {
-			td->station_class = GetStationClassName(spec->cls_id);
+			td->station_class = StationClass::GetName(spec->cls_id);
 			td->station_name  = spec->name;
 
 			if (spec->grf_prop.grffile != NULL) {

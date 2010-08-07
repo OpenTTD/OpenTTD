@@ -95,7 +95,7 @@ void AfterLoadStations()
 		for (uint i = 0; i < st->num_specs; i++) {
 			if (st->speclist[i].grfid == 0) continue;
 
-			st->speclist[i].spec = GetCustomStationSpecByGrf(st->speclist[i].grfid, st->speclist[i].localidx, NULL);
+			st->speclist[i].spec = StationClass::GetByGrf(st->speclist[i].grfid, st->speclist[i].localidx, NULL);
 		}
 
 		if (Station::IsExpected(st)) {
