@@ -1412,7 +1412,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Valintar
 STR_CHEATS_WARNING                                              :{BLACK}Varoitus! Olet juuri pettämässä kanssakilpailijoitasi. Pidä mielessä, että tällainen häväistys pidetään mielessä ikuisuuden ajan.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Anna lisää rahaa: {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hallinnassa oleva yritys: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Taikapuskutraktori (poista teollisuutta yms.): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Taikapuskutraktori (poista teollisuutta, liikuttamattomia kohteita): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelit voivat mennä ristiin: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Rakenna tauon aikana: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Suihkukoneet eivät syöksy (usein) pienille lentokentille: {ORANGE}{STRING}
@@ -2131,6 +2131,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikkaa 
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikkaa rahtia nähdäksesi sen tuottajat ja kuluttajat
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Näytä ketju
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Näytä rahdin tuottajat ja hyväksyvät teollisuudet
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Yhdistä karttaan
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Valitse näytetyt teollisuudet kartalla
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-aluetiedot
