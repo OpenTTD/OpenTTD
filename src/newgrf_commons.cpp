@@ -22,6 +22,7 @@
 #include "station_map.h"
 #include "tree_map.h"
 #include "tunnelbridge_map.h"
+#include "genworld.h"
 #include "core/mem_func.hpp"
 
 /**
@@ -304,26 +305,36 @@ uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 			bool has_snow;
 			switch (GetTileType(tile)) {
 				case MP_CLEAR:
+					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
+					if (_generating_world) goto genworld;
 					has_snow = IsSnowTile(tile) && GetClearDensity(tile) >= 2;
 					break;
 
 				case MP_RAILWAY: {
+					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
+					if (_generating_world) goto genworld; // we do not care about foundations here
 					RailGroundType ground = GetRailGroundType(tile);
 					has_snow = (ground == RAIL_GROUND_ICE_DESERT || (upper_halftile && ground == RAIL_GROUND_HALF_SNOW));
 					break;
 				}
 
 				case MP_ROAD:
+					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
+					if (_generating_world) goto genworld; // we do not care about foundations here
 					has_snow = IsOnSnow(tile);
 					break;
 
 				case MP_TREES: {
+					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
+					if (_generating_world) goto genworld;
 					TreeGround ground = GetTreeGround(tile);
 					has_snow = (ground == TREE_GROUND_SNOW_DESERT || ground == TREE_GROUND_ROUGH_SNOW) && GetTreeDensity(tile) >= 2;
 					break;
 				}
 
 				case MP_TUNNELBRIDGE:
+					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
+					if (_generating_world) goto genworld; // we do not care about foundations here
 					has_snow = HasTunnelBridgeSnowOrDesert(tile);
 					break;
 
@@ -337,6 +348,7 @@ uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 
 				case MP_VOID:
 				case MP_WATER:
+				genworld:
 					has_snow = (GetTileZ(tile) > GetSnowLine());
 					break;
 
