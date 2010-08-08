@@ -2281,11 +2281,21 @@ struct IndustryCargoesWindow : public Window {
 	}
 
 	/**
-	 * Notify the window to display another industry type.
-	 * @param data The new industry type to display.
+	 * Notify the window about external events.
+	 * - data = 0 .. NUM_INDUSTRYTYPES - 1: Display the chain around the given industry.
+	 * - data = NUM_INDUSTRYTYPES: Stop sending updates to the smallmap window.
+	 * @param data The event.
 	 */
 	virtual void OnInvalidateData(int data)
 	{
+		if (data == NUM_INDUSTRYTYPES) {
+			if (this->IsWidgetLowered(ICW_NOTIFY)) {
+				this->RaiseWidget(ICW_NOTIFY);
+				this->SetWidgetDirty(ICW_NOTIFY);
+			}
+			return;
+		}
+
 		assert(data >= 0 && data < NUM_INDUSTRYTYPES);
 		this->ComputeIndustryDisplay(data);
 	}

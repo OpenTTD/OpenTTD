@@ -1154,6 +1154,9 @@ public:
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
+		/* User clicked something, notify the industry chain window to stop sending newly selected industries. */
+		InvalidateWindowClassesData(WC_INDUSTRY_CARGOES, NUM_INDUSTRYTYPES);
+
 		switch (widget) {
 			case SM_WIDGET_MAP: { // Map window
 				/*
