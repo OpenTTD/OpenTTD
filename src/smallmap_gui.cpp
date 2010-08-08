@@ -1278,6 +1278,21 @@ public:
 		}
 	}
 
+	/**
+	 * Notifications for the smallmap window.
+	 * - data = 0: Displayed industries at the industry chain window have changed.
+	 */
+	virtual void OnInvalidateData(int data)
+	{
+		extern uint64 _displayed_industries;
+		if (this->map_type != SMT_INDUSTRY) this->SwitchMapType(SMT_INDUSTRY);
+
+		for (int i = 0; i != _smallmap_industry_count; i++) {
+			_legend_from_industries[i].show_on_map = HasBit(_displayed_industries, _legend_from_industries[i].u.type);
+		}
+		this->SetDirty();
+	}
+
 	virtual bool OnRightClick(Point pt, int widget)
 	{
 		if (widget != SM_WIDGET_MAP || _scrolling_viewport) return false;

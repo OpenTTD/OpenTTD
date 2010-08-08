@@ -2131,6 +2131,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click at
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click at the cargo to see its suppliers and customers
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Display chain
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Display cargo supplying and accepting industries
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link to smallmap
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Select the displayed industries at the smallmap as well
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Area Information
