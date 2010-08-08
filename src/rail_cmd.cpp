@@ -1998,7 +1998,7 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailtypeIn
 		}
 
 		DrawTrackSprite(ground + offset, PAL_NONE, ti, fake_slope);
-		if (HasReservedTracks(ti->tile, track)) {
+		if (_settings_client.gui.show_track_reservation && HasReservedTracks(ti->tile, track)) {
 			DrawTrackSprite(overlay + offset, PALETTE_CRASH, ti, fake_slope);
 		}
 	}
