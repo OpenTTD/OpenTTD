@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file object_map.h Types related to object tiles. */
+/** @file object_type.h Types related to object tiles. */
 
 #ifndef OBJECT_TYPE_H
 #define OBJECT_TYPE_H
@@ -24,4 +24,4 @@ enum ObjectType {
 
 struct ObjectSpec;
 
-#endif /* OBJECT_MAP_H */
+#endif /* OBJECT_TYPE_H */
