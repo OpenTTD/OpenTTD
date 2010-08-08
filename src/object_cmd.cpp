@@ -254,7 +254,8 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	/* Get to the northern most tile. */
-	tile -= GetObjectOffset(tile);
+	byte tile_offset = GetObjectOffset(tile);
+	tile -= TileXY(GB(tile_offset, 0, 4), GB(tile_offset, 4, 4));
 
 	/* Water can remove everything! */
 	if (_current_company != OWNER_WATER) {
