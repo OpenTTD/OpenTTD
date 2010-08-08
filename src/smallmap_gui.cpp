@@ -1136,6 +1136,22 @@ public:
 		this->DrawWidgets();
 	}
 
+	/**
+	 * Select a new map type.
+	 * @param map_type New map type.
+	 */
+	void SwitchMapType(SmallMapType map_type)
+	{
+		this->RaiseWidget(this->map_type + SM_WIDGET_CONTOUR);
+		this->map_type = map_type;
+		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
+
+		/* Hide Enable all/Disable all buttons if is not industry type small map */
+		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
+
+		this->SetDirty();
+	}
+
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
@@ -1180,14 +1196,7 @@ public:
 			case SM_WIDGET_ROUTES:     // Show transport routes
 			case SM_WIDGET_VEGETATION: // Show vegetation
 			case SM_WIDGET_OWNERS:     // Show land owners
-				this->RaiseWidget(this->map_type + SM_WIDGET_CONTOUR);
-				this->map_type = (SmallMapType)(widget - SM_WIDGET_CONTOUR);
-				this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
-
-				/* Hide Enable all/Disable all buttons if is not industry type small map */
-				this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
-
-				this->SetDirty();
+				this->SwitchMapType((SmallMapType)(widget - SM_WIDGET_CONTOUR));
 				SndPlayFx(SND_15_BEEP);
 				break;
 
