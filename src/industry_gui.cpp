@@ -2346,33 +2346,36 @@ struct IndustryCargoesWindow : public Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget != ICW_PANEL) return;
+		switch (widget) {
+			case ICW_PANEL: {
+				Point fieldxy, xy;
+				if (!CalculatePositionInWidget(pt, &fieldxy, &xy)) return;
 
-		Point fieldxy, xy;
-		if (!CalculatePositionInWidget(pt, &fieldxy, &xy)) return;
+				const CargoesField *fld = this->fields[fieldxy.y].columns + fieldxy.x;
+				switch (fld->type) {
+					case CFT_INDUSTRY:
+						if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES) this->ComputeIndustryDisplay(fld->u.industry.ind_type);
+						break;
 
-		const CargoesField *fld = this->fields[fieldxy.y].columns + fieldxy.x;
-		switch (fld->type) {
-			case CFT_INDUSTRY:
-				if (fld->u.industry.ind_type < NUM_INDUSTRYTYPES) this->ComputeIndustryDisplay(fld->u.industry.ind_type);
-				break;
+					case CFT_CARGO: {
+						CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : NULL;
+						CargoesField *rgt = (fieldxy.x < 4) ? this->fields[fieldxy.y].columns + fieldxy.x + 1 : NULL;
+						CargoID cid = fld->CargoClickedAt(lft, rgt, xy);
+						if (cid != INVALID_CARGO) this->ComputeCargoDisplay(cid);
+						break;
+					}
 
-			case CFT_CARGO: {
-				CargoesField *lft = (fieldxy.x > 0) ? this->fields[fieldxy.y].columns + fieldxy.x - 1 : NULL;
-				CargoesField *rgt = (fieldxy.x < 4) ? this->fields[fieldxy.y].columns + fieldxy.x + 1 : NULL;
-				CargoID cid = fld->CargoClickedAt(lft, rgt, xy);
-				if (cid != INVALID_CARGO) this->ComputeCargoDisplay(cid);
+					case CFT_CARGO_LABEL: {
+						CargoID cid = fld->CargoLabelClickedAt(xy);
+						if (cid != INVALID_CARGO) this->ComputeCargoDisplay(cid);
+						break;
+					}
+
+					default:
+						break;
+				}
 				break;
 			}
-
-			case CFT_CARGO_LABEL: {
-				CargoID cid = fld->CargoLabelClickedAt(xy);
-				if (cid != INVALID_CARGO) this->ComputeCargoDisplay(cid);
-				break;
-			}
-
-			default:
-				break;
 		}
 	}
 
