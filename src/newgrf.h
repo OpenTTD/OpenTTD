@@ -12,12 +12,8 @@
 #ifndef NEWGRF_H
 #define NEWGRF_H
 
-#include "newgrf_config.h"
 #include "cargotype.h"
-#include "industry_type.h"
-#include "station_type.h"
 #include "rail_type.h"
-#include "house_type.h"
 
 enum GrfLoadingStage {
 	GLS_FILESCAN,
@@ -106,10 +102,10 @@ struct GRFFile {
 	uint sound_offset;
 	uint16 num_sounds;
 
-	StationSpec **stations;
-	HouseSpec **housespec;
-	IndustrySpec **industryspec;
-	IndustryTileSpec **indtspec;
+	struct StationSpec **stations;
+	struct HouseSpec **housespec;
+	struct IndustrySpec **industryspec;
+	struct IndustryTileSpec **indtspec;
 	struct AirportSpec **airportspec;
 	struct AirportTileSpec **airtspec;
 
@@ -159,7 +155,7 @@ struct GRFLoadedFeatures {
 /* Indicates which are the newgrf features currently loaded ingame */
 extern GRFLoadedFeatures _loaded_newgrf_features;
 
-void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage);
+void LoadNewGRFFile(struct GRFConfig *config, uint file_index, GrfLoadingStage stage);
 void LoadNewGRF(uint load_index, uint file_index);
 void ReloadNewGRFData(); // in saveload/afterload.cpp
 

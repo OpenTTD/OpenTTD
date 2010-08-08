@@ -27,6 +27,7 @@
 #include "newgrf_house.h"
 #include "newgrf_commons.h"
 #include "newgrf_text.h"
+#include "newgrf_config.h"
 #include "autoslope.h"
 #include "tunnelbridge_map.h"
 #include "strings_func.h"
