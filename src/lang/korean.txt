@@ -2241,10 +2241,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :원통형 다�
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :수도교
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :송신기
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :등대
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :회사 HQ
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :회사 소유지
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :송신기
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :등대
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :회사 HQ
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :회사 소유지
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD에 대해서
@@ -2338,7 +2338,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}지형 만드는 중
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}나무 심는 중
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}움직일수 없는 객체 만드는 중
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}움직일수 없는 객체 만드는 중
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}거친 암석지대 만드는 중
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}게임 설정 중
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}타일 루프 작동중
@@ -3415,7 +3415,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 이�
 STR_ERROR_OWNED_BY                                              :{WHITE}... {STRING}의 소유입니다.
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 다른 회사의 소유지입니다!
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}이름은 유일해야 합니다
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}중간에 {1:STRING}{G 1 "이" "가"} 있습니다.
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}중간에 {1:STRING}{G 1 "이" "가"} 있습니다.
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}에 대한 낮은 성취도로 인해 지역당국이 이 행위를 거절했습니다!
@@ -3626,7 +3626,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}도중�
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}터널이 맵 끝을 통과합니다
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}지형 문제로 터널의 반대쪽 출구를 만들 수 없습니다
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}오브젝트를 건설할 수 없습니다...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}중간에 오브젝트가 있습니다
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 중간에 회사 HQ가 있습니다.

@@ -51,7 +51,7 @@ static inline bool MayHaveBridgeAbove(TileIndex t)
 		IsTileType(t, MP_ROAD) ||
 		IsTileType(t, MP_WATER) ||
 		IsTileType(t, MP_TUNNELBRIDGE) ||
-		IsTileType(t, MP_UNMOVABLE);
+		IsTileType(t, MP_OBJECT);
 }
 
 /**

@@ -7,21 +7,21 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file unmovable_map.h Types related to unmovable tiles. */
+/** @file object_map.h Types related to object tiles. */
 
-#ifndef UNMOVABLE_TYPE_H
-#define UNMOVABLE_TYPE_H
+#ifndef OBJECT_TYPE_H
+#define OBJECT_TYPE_H
 
-/** Types of unmovable structure */
-enum UnmovableType {
-	UNMOVABLE_TRANSMITTER = 0,    ///< The large antenna
-	UNMOVABLE_LIGHTHOUSE  = 1,    ///< The nice lighthouse
-	UNMOVABLE_STATUE      = 2,    ///< Statue in towns
-	UNMOVABLE_OWNED_LAND  = 3,    ///< Owned land 'flag'
-	UNMOVABLE_HQ          = 4,    ///< HeadQuarter of a player
-	UNMOVABLE_MAX,
+/** Types of objects. */
+enum ObjectType {
+	OBJECT_TRANSMITTER = 0,    ///< The large antenna
+	OBJECT_LIGHTHOUSE  = 1,    ///< The nice lighthouse
+	OBJECT_STATUE      = 2,    ///< Statue in towns
+	OBJECT_OWNED_LAND  = 3,    ///< Owned land 'flag'
+	OBJECT_HQ          = 4,    ///< HeadQuarter of a player
+	OBJECT_MAX,
 };
 
-struct UnmovableSpec;
+struct ObjectSpec;
 
-#endif /* UNMOVABLE_MAP_H */
+#endif /* OBJECT_MAP_H */

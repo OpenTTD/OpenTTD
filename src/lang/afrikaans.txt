@@ -2216,10 +2216,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Buis pad brug
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akwamaryn
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Sender
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Vuurtoring
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Maatskappy Hoofkwartier
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Maatskappy-besitte land
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Sender
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Vuurtoring
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Maatskappy Hoofkwartier
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Maatskappy-besitte land
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Oor OpenTTD
@@ -2307,7 +2307,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% k
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wêreld generasie
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Boom generasie
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Onbeweegbaar generasie
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Onbeweegbaar generasie
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ru en rotserig area ontwikkeling
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Stel speletjie op
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Hardloop teël-herhaling
@@ -3327,7 +3327,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... alre
 STR_ERROR_OWNED_BY                                              :{WHITE}... besit deur {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is besit deur 'n ander maatskappy
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naam moet unike wees
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} in die pad
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} in die pad
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} plaaslike raad weier om dit te toelaat
@@ -3525,7 +3525,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Ander to
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tonnel so op die einde van die kaart eindig
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan nie daal vir ander einde van tonnel te uitgrawe nie
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Voorwerp in die pad
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... maatskappy hoofkwartier in die pad
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Die land area kan nie aangekoop word nie...

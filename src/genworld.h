@@ -58,7 +58,7 @@ enum GenWorldProgress {
 	GWP_ROUGH_ROCKY, ///< Make rough and rocky areas
 	GWP_TOWN,        ///< Generate towns
 	GWP_INDUSTRY,    ///< Generate industries
-	GWP_UNMOVABLE,   ///< Generate unmovables (radio tower, light houses)
+	GWP_OBJECT,      ///< Generate objects (radio tower, light houses)
 	GWP_TREE,        ///< Generate trees
 	GWP_GAME_INIT,   ///< Initialize the game
 	GWP_RUNTILELOOP, ///< Runs the tile loop 1280 times to make snow etc

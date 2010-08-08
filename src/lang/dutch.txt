@@ -2240,10 +2240,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Buisvormige bru
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Aquaduct
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Radiomast
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Vuurtoren
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Bedrijfshoofdkwartier
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Terrein in bedrijfseigendom
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Radiomast
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Vuurtoren
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Bedrijfshoofdkwartier
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terrein in bedrijfseigendom
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Over OpenTTD
@@ -2337,7 +2337,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Wereldontwikkeling
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Bosplaatsing
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Ontwikkeling van onverplaatsbare objecten
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ontwikkeling van onverplaatsbare objecten
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Ontwikkeling van ruig en rotsachtig gebied
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spel aan het configureren
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Bezig met vlakken
@@ -3414,7 +3414,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... reed
 STR_ERROR_OWNED_BY                                              :{WHITE}... is eigendom van {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is van ander bedrijf
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naam moet uniek zijn
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} in de weg
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} in de weg
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De gemeenteraad van {TOWN} staat dit niet toe
@@ -3625,7 +3625,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Andere t
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel eindigt buiten de kaart
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan geen land uitgraven voor andere uiteinde tunnel
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kan object niet bouwen...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Object in de weg
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... bedrijfshoofdkwartier in de weg

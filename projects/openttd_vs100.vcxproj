@@ -479,6 +479,8 @@
     <ClInclude Include="..\src\newgrf_callbacks.h" />
     <ClInclude Include="..\src\newgrf_canal.h" />
     <ClInclude Include="..\src\newgrf_cargo.h" />
+    <ClInclude Include="..\src\newgrf_class.h" />
+    <ClInclude Include="..\src\newgrf_class_func.h" />
     <ClInclude Include="..\src\newgrf_commons.h" />
     <ClInclude Include="..\src\newgrf_config.h" />
     <ClInclude Include="..\src\newgrf_debug.h" />
@@ -502,6 +504,8 @@
     <ClInclude Include="..\src\music\null_m.h" />
     <ClInclude Include="..\src\sound\null_s.h" />
     <ClInclude Include="..\src\video\null_v.h" />
+    <ClInclude Include="..\src\object.h" />
+    <ClInclude Include="..\src\object_type.h" />
     <ClInclude Include="..\src\openttd.h" />
     <ClInclude Include="..\src\order_base.h" />
     <ClInclude Include="..\src\order_func.h" />
@@ -577,8 +581,6 @@
     <ClInclude Include="..\src\transparency_gui.h" />
     <ClInclude Include="..\src\transport_type.h" />
     <ClInclude Include="..\src\tunnelbridge.h" />
-    <ClInclude Include="..\src\unmovable.h" />
-    <ClInclude Include="..\src\unmovable_type.h" />
     <ClInclude Include="..\src\vehicle_base.h" />
     <ClInclude Include="..\src\vehicle_func.h" />
     <ClInclude Include="..\src\vehicle_gui.h" />
@@ -687,6 +689,7 @@
     <ClCompile Include="..\src\group_cmd.cpp" />
     <ClCompile Include="..\src\industry_cmd.cpp" />
     <ClCompile Include="..\src\misc_cmd.cpp" />
+    <ClCompile Include="..\src\object_cmd.cpp" />
     <ClCompile Include="..\src\order_cmd.cpp" />
     <ClCompile Include="..\src\rail_cmd.cpp" />
     <ClCompile Include="..\src\road_cmd.cpp" />
@@ -700,7 +703,6 @@
     <ClCompile Include="..\src\train_cmd.cpp" />
     <ClCompile Include="..\src\tree_cmd.cpp" />
     <ClCompile Include="..\src\tunnelbridge_cmd.cpp" />
-    <ClCompile Include="..\src\unmovable_cmd.cpp" />
     <ClCompile Include="..\src\vehicle_cmd.cpp" />
     <ClCompile Include="..\src\water_cmd.cpp" />
     <ClCompile Include="..\src\waypoint_cmd.cpp" />
@@ -753,6 +755,7 @@
     <ClInclude Include="..\src\table\industry_land.h" />
     <ClInclude Include="..\src\table\landscape_sprite.h" />
     <ClInclude Include="..\src\table\newgrf_debug_data.h" />
+    <ClInclude Include="..\src\table\object_land.h" />
     <ClInclude Include="..\src\table\palette_convert.h" />
     <ClInclude Include="..\src\table\palettes.h" />
     <ClInclude Include="..\src\table\pricebase.h" />
@@ -770,7 +773,6 @@
     <ClInclude Include="..\src\table\train_cmd.h" />
     <ClInclude Include="..\src\table\tree_land.h" />
     <ClInclude Include="..\src\table\unicode.h" />
-    <ClInclude Include="..\src\table\unmovable_land.h" />
     <ClInclude Include="..\src\table\water_land.h" />
     <ClCompile Include="..\src\3rdparty\md5\md5.cpp" />
     <ClInclude Include="..\src\3rdparty\md5\md5.h" />
@@ -995,6 +997,7 @@
     <ClInclude Include="..\src\bridge_map.h" />
     <ClInclude Include="..\src\clear_map.h" />
     <ClInclude Include="..\src\industry_map.h" />
+    <ClInclude Include="..\src\object_map.h" />
     <ClInclude Include="..\src\rail_map.h" />
     <ClCompile Include="..\src\road_map.cpp" />
     <ClInclude Include="..\src\road_map.h" />
@@ -1005,7 +1008,6 @@
     <ClCompile Include="..\src\tunnel_map.cpp" />
     <ClInclude Include="..\src\tunnel_map.h" />
     <ClInclude Include="..\src\tunnelbridge_map.h" />
-    <ClInclude Include="..\src\unmovable_map.h" />
     <ClInclude Include="..\src\void_map.h" />
     <ClInclude Include="..\src\water_map.h" />
     <ClInclude Include="..\src\misc\array.hpp" />

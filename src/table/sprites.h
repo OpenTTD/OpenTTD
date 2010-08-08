@@ -279,9 +279,9 @@ static const SpriteID SPR_FOUNDATION_BASE = 989;
 /* Shadow cell */
 static const SpriteID SPR_SHADOW_CELL = 1004;
 
-/* Unmovables spritenumbers */
-static const SpriteID SPR_UNMOVABLE_TRANSMITTER   = 2601;
-static const SpriteID SPR_UNMOVABLE_LIGHTHOUSE    = 2602;
+/* Objects spritenumbers */
+static const SpriteID SPR_TRANSMITTER             = 2601;
+static const SpriteID SPR_LIGHTHOUSE              = 2602;
 static const SpriteID SPR_TINYHQ_NORTH            = 2603;
 static const SpriteID SPR_TINYHQ_EAST             = 2604;
 static const SpriteID SPR_TINYHQ_WEST             = 2605;

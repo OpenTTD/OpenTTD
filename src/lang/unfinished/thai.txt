@@ -2070,7 +2070,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}ต้�
 
 # Tunnel related errors
 
-# Unmovable related errors
+# Object related errors
 
 # Group related errors
 

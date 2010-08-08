@@ -2207,10 +2207,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :鋼管橋
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :水路橋
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :送信機
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :灯台
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :交通会社本部ビル
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :会社が所有している地域
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :送信機
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :灯台
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :交通会社本部ビル
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :会社が所有している地域
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD について
@@ -2298,7 +2298,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}％
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}／{NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}地形作成中
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}植林中
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}灯台／送信機作成中
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}灯台／送信機作成中
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}岩石／でこぼこの地形を作成中
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}ゲームを設定中
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}タイルループを実行中
@@ -3270,7 +3270,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... す�
 STR_ERROR_OWNED_BY                                              :{WHITE}... 所有者は {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... この土地は他の会社に所有されています
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名前は唯一でなければなりません
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING}があります
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING}があります
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}の町議会が拒否しました。
@@ -3463,7 +3463,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}他の�
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}トンネルの突き当たりは地図の外にあります。
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}向こうの土地を掘削できません
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}灯台／送信機があります
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 交通会社本部ビルがあります
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}この地域を購入できません...

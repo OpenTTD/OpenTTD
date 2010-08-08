@@ -1126,7 +1126,7 @@ STR_FACE_SAVE                                                   :{BLACK}Упра
 
 # Tunnel related errors
 
-# Unmovable related errors
+# Object related errors
 
 # Group related errors
 

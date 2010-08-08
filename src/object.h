@@ -7,14 +7,14 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file unmovable.h Functions related to unmovable objects. */
+/** @file object.h Functions related to objects. */
 
-#ifndef UNMOVABLE_H
-#define UNMOVABLE_H
+#ifndef OBJECT_H
+#define OBJECT_H
 
 #include "economy_func.h"
 #include "strings_type.h"
-#include "unmovable_type.h"
+#include "object_type.h"
 
 /**
  * Update the CompanyHQ to the state associated with the given score
@@ -24,7 +24,7 @@
 void UpdateCompanyHQ(TileIndex tile, uint score);
 
 /**
- * Actually build the unmovable object.
+ * Actually build the object.
  * @param type  The type of object to build.
  * @param tile  The tile to build the northern tile of the object on.
  * @param owner The owner of the object.
@@ -32,7 +32,7 @@ void UpdateCompanyHQ(TileIndex tile, uint score);
  * @pre All preconditions for building the object at that location
  *      are met, e.g. slope and clearness of tiles are checked.
  */
-void BuildUnmovable(UnmovableType type, TileIndex tile, CompanyID owner = OWNER_NONE, uint index = 0);
+void BuildObject(ObjectType type, TileIndex tile, CompanyID owner = OWNER_NONE, uint index = 0);
 
 
 /** Various object behaviours. */
@@ -55,8 +55,8 @@ enum ObjectFlags {
 DECLARE_ENUM_AS_BIT_SET(ObjectFlags)
 
 
-/** An (unmovable) object that isn't use for transport, industries or houses. */
-struct UnmovableSpec {
+/** An object that isn't use for transport, industries or houses. */
+struct ObjectSpec {
 	StringID name;               ///< The name for this object.
 	uint8 size;                  ///< The size of this objects; low nibble for X, high nibble for Y.
 	uint8 build_cost_multiplier; ///< Build cost multiplier per tile.
@@ -67,28 +67,28 @@ struct UnmovableSpec {
 	 * Get the cost for building a structure of this type.
 	 * @return The cost for building.
 	 */
-	Money GetBuildCost() const { return (_price[PR_BUILD_UNMOVABLE] * this->build_cost_multiplier); }
+	Money GetBuildCost() const { return (_price[PR_BUILD_OBJECT] * this->build_cost_multiplier); }
 
 	/**
 	 * Get the cost for clearing a structure of this type.
 	 * @return The cost for clearing.
 	 */
-	Money GetClearCost() const { return (_price[PR_CLEAR_UNMOVABLE] * this->clear_cost_multiplier); }
+	Money GetClearCost() const { return (_price[PR_CLEAR_OBJECT] * this->clear_cost_multiplier); }
 
 	/**
-	 * Get the specification associated with a specific UnmovableType.
-	 * @param index The unmovable type to fetch.
+	 * Get the specification associated with a specific ObjectType.
+	 * @param index The object type to fetch.
 	 * @return The specification.
 	 */
-	static const UnmovableSpec *Get(UnmovableType index);
+	static const ObjectSpec *Get(ObjectType index);
 
 	/**
 	 * Get the specification associated with a tile.
 	 * @param tile The tile to fetch the data for.
 	 * @return The specification.
 	 */
-	static const UnmovableSpec *GetByTile(TileIndex tile);
+	static const ObjectSpec *GetByTile(TileIndex tile);
 };
 
 
-#endif /* UNMOVABLE_H */
+#endif /* OBJECT_H */

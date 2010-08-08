@@ -2240,10 +2240,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Rörbro
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvedukt
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Radiosändare
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Fyrtorn
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Företagets huvudkontor
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Mark som ägs av företag
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Radiosändare
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Fyrtorn
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Företagets huvudkontor
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Mark som ägs av företag
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
@@ -2337,7 +2337,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% f
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generera Värld
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generera Träd
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Oflyttbar generera
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Oflyttbar generera
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Svår och stenig markgenerering
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ställer in spel
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kör tile-loop
@@ -3414,7 +3414,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... reda
 STR_ERROR_OWNED_BY                                              :{WHITE}... ägs av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ägs av ett annat företag
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet måste vara unikt
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} i vägen
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} i vägen
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} de lokala myndigheterna tillåter inte detta
@@ -3625,7 +3625,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}En annan
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunneln slutar utanför kartans gränser
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan inte gräva till marken på andra sidan av tunneln
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kan inte bygga objekt...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt i vägen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... huvudkontor i vägen

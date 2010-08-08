@@ -2234,10 +2234,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :גשר צינו
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :מוביל-מים
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :אנטנה
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :מיגדלור
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :מטה החברה
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :שטח בבעלות חברה
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :אנטנה
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :מיגדלור
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :מטה החברה
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :שטח בבעלות חברה
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD אודות
@@ -2331,7 +2331,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% :
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}יצור עולם
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}יצירת עצים
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}יצירת מבנים בלתי ניידים
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}יצירת מבנים בלתי ניידים
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}יצירת איזורים סלעיים
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}קביעת הגדרות המשחק
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}מריץ לולאה על כל המשבצות
@@ -3387,7 +3387,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... כב
 STR_ERROR_OWNED_BY                                              :{WHITE}... בבעלות {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... השטח בבעלותה של חברה אחרת
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}השם חייב להיות ייחודי
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}חוסם את הדרך {1:STRING}
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}חוסם את הדרך {1:STRING}
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}הרשות המקומית של {TOWN} מתנגדת לפעולה זו
@@ -3588,7 +3588,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}מנהר
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}התעלה תסתיים מחוץ למפה
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}לא ניתן היה לפנות את השטח בקצה השני של המנהרה
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}עצם חוסם את הדרך
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... מטה חברה חוסם את הדרך
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}לא ניתן לקנות שטח זה...

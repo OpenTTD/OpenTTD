@@ -2220,10 +2220,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Rørformet bro
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvædukt
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Sender
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Fyrtårn
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Selskabets hovedkontor
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Land ejet af selskabet
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Sender
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Fyrtårn
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Selskabets hovedkontor
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Land ejet af selskabet
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
@@ -2311,7 +2311,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% f
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Verdensgenerering
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trægenerering
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Ikke-flytbar generering
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikke-flytbar generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generer råt og stenet område
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargør spil
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kører flise-løkken
@@ -3370,7 +3370,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... alle
 STR_ERROR_OWNED_BY                                              :{WHITE}... ejes af {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ejes af et andet selskab
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Navnet skal være unikt
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} i vejen
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} i vejen
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} de lokale myndigheder nægter at tillade dette
@@ -3571,7 +3571,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}En anden
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnellen ville slutte uden for kortet
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Det er umuligt at lave en udgravning til tunnelen i den anden ende
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Der er et objekt i vejen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... selskabets hovedkontor i vejen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikke købe dette landområde...

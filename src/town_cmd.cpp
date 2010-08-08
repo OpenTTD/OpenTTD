@@ -21,7 +21,7 @@
 #include "company_base.h"
 #include "news_func.h"
 #include "gui.h"
-#include "unmovable.h"
+#include "object.h"
 #include "genworld.h"
 #include "newgrf_debug.h"
 #include "newgrf_house.h"
@@ -2505,7 +2505,7 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 	if (CircularTileSearch(&tile, 9, SearchTileForStatue, NULL)) {
 		if (flags & DC_EXEC) {
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-			BuildUnmovable(UNMOVABLE_STATUE, tile, _current_company, t->index);
+			BuildObject(OBJECT_STATUE, tile, _current_company, t->index);
 			SetBit(t->statues, _current_company); // Once found and built, "inform" the Town.
 			MarkTileDirtyByTile(tile);
 		}

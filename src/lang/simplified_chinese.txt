@@ -2233,10 +2233,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :函梁公路桥
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :水渠
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :转播塔
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :灯塔
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :公司总部
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :公司属地
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :转播塔
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :灯塔
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :公司总部
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :公司属地
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}关于 OpenTTD
@@ -2330,7 +2330,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}已完�
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}地图生成
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}生成树木
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}生成固定设施
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}生成固定设施
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}生成岩石地貌
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}设置游戏
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}地貌细节生成
@@ -3407,7 +3407,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已�
 STR_ERROR_OWNED_BY                                              :{WHITE}归 {STRING} 所有
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此区域由另一公司所有
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复!请重新命名.
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}目标位置有 {1:STRING}
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}目标位置有 {1:STRING}
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} 地方政府不批准此操作……
@@ -3615,7 +3615,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}规划�
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}隧道出口将超出地图边界
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}隧道出口的地形无法处理
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}目标处有其他物体
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}目标处有公司总部
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}不能购买这个地块！

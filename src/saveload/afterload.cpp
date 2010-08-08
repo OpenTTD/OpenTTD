@@ -36,7 +36,7 @@
 #include "../elrail_func.h"
 #include "../signs_func.h"
 #include "../aircraft.h"
-#include "../unmovable_map.h"
+#include "../object_map.h"
 #include "../tree_map.h"
 #include "../company_func.h"
 #include "../road_cmd.h"
@@ -1789,22 +1789,22 @@ bool AfterLoadGame()
 		for (TileIndex t = 0; t < map_size; t++) {
 			/* Check for HQ bit being set, instead of using map accessor,
 			 * since we've already changed it code-wise */
-			if (IsTileType(t, MP_UNMOVABLE) && HasBit(_m[t].m5, 7)) {
+			if (IsTileType(t, MP_OBJECT) && HasBit(_m[t].m5, 7)) {
 				/* Move size and part identification of HQ out of the m5 attribute,
 				 * on new locations */
 				_m[t].m3 = GB(_m[t].m5, 0, 5);
-				_m[t].m5 = UNMOVABLE_HQ;
+				_m[t].m5 = OBJECT_HQ;
 			}
 		}
 	}
 	if (CheckSavegameVersion(144)) {
 		for (TileIndex t = 0; t < map_size; t++) {
-			if (!IsTileType(t, MP_UNMOVABLE)) continue;
+			if (!IsTileType(t, MP_OBJECT)) continue;
 
-			/* Reordering/generalisation of the unmovable bits. */
-			UnmovableType type = GetUnmovableType(t);
-			SetUnmovableAnimationStage(t, type == UNMOVABLE_HQ ? GB(_m[t].m3, 2, 3) : 0);
-			SetUnmovableOffset(t, type == UNMOVABLE_HQ ? GB(_m[t].m3, 1, 1) | GB(_m[t].m3, 0, 1) << 4 : 0);
+			/* Reordering/generalisation of the object bits. */
+			ObjectType type = GetObjectType(t);
+			SetObjectAnimationStage(t, type == OBJECT_HQ ? GB(_m[t].m3, 2, 3) : 0);
+			SetObjectOffset(t, type == OBJECT_HQ ? GB(_m[t].m3, 1, 1) | GB(_m[t].m3, 0, 1) << 4 : 0);
 
 			/* Make sure those bits are clear as well! */
 			_m[t].m4 = 0;

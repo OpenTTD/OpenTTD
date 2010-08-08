@@ -28,7 +28,7 @@ enum TransparencyOption {
 	TO_INDUSTRIES, ///< industries
 	TO_BUILDINGS,  ///< company buildings - depots, stations, HQ, ...
 	TO_BRIDGES,    ///< bridges
-	TO_STRUCTURES, ///< unmovable structures
+	TO_STRUCTURES, ///< other objects such as transmitters and lighthouses
 	TO_CATENARY,   ///< catenary
 	TO_LOADING,    ///< loading indicators
 	TO_END,

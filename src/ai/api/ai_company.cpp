@@ -16,11 +16,11 @@
 #include "../../company_base.h"
 #include "../../company_manager_face.h"
 #include "../../economy_func.h"
+#include "../../object_type.h"
 #include "../../strings_func.h"
 #include "../../tile_map.h"
 #include "../../string_func.h"
 #include "../../settings_func.h"
-#include "../../unmovable_type.h"
 #include "table/strings.h"
 
 /* static */ AICompany::CompanyID AICompany::ResolveCompanyID(AICompany::CompanyID company)
@@ -163,7 +163,7 @@
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return AIObject::DoCommand(tile, UNMOVABLE_HQ, 0, CMD_BUILD_UNMOVABLE);
+	return AIObject::DoCommand(tile, OBJECT_HQ, 0, CMD_BUILD_OBJECT);
 }
 
 /* static */ TileIndex AICompany::GetCompanyHQ(CompanyID company)

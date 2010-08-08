@@ -874,7 +874,7 @@ STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ma tista
 
 # Tunnel related errors
 
-# Unmovable related errors
+# Object related errors
 
 # Group related errors
 

@@ -43,7 +43,7 @@ extern const TileTypeProcs
 	_tile_type_dummy_procs,
 	_tile_type_industry_procs,
 	_tile_type_tunnelbridge_procs,
-	_tile_type_unmovable_procs;
+	_tile_type_object_procs;
 
 /**
  * Tile callback functions for each type of tile.
@@ -61,7 +61,7 @@ const TileTypeProcs * const _tile_type_procs[16] = {
 	&_tile_type_dummy_procs,        ///< Callback functions for MP_VOID tiles
 	&_tile_type_industry_procs,     ///< Callback functions for MP_INDUSTRY tiles
 	&_tile_type_tunnelbridge_procs, ///< Callback functions for MP_TUNNELBRIDGE tiles
-	&_tile_type_unmovable_procs,    ///< Callback functions for MP_UNMOVABLE tiles
+	&_tile_type_object_procs,       ///< Callback functions for MP_OBJECT tiles
 };
 
 /** landscape slope => sprite */

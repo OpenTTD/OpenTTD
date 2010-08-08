@@ -1065,9 +1065,9 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :پل ماشین
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :پل جاده ای لوله ای
 
 
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :فانوس دریایی
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :ساختمان اصلی شرکت
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :زمین خریداری شده
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :فانوس دریایی
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :ساختمان اصلی شرکت
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :زمین خریداری شده
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD در باره ی
@@ -1699,7 +1699,7 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}اینج
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}محل برای شروع تونل نا مناسب است
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}اول باید تونل خراب شود
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}چیزی در مسیر قرار گرفته
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}ساختمان اصلی شرکت در مسیر قرار گرفته است
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}نمی توان این ناحیه را خرید

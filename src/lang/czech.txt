@@ -2294,10 +2294,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Potrubní silni
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvadukt
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Vysílač
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Maják
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Ředitelství společnosti
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Půda vlastněna společností
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Vysílač
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Maják
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Ředitelství společnosti
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Půda vlastněna společností
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}O OpenTTD
@@ -2391,7 +2391,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}Z {NUM} 
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tvorba krajiny
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Výsadba stromů
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Výstavba nepřesunutelných objektů
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Výstavba nepřesunutelných objektů
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Tvorba členitého a kamenitého území
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavování hry
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spouštění tile-loopu (cyklus na dílcích mapy)
@@ -3474,7 +3474,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... již
 STR_ERROR_OWNED_BY                                              :{WHITE}... vlastněno {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... území vlastní jiná společnost
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Jméno musí být jedinečné
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} v cestě
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} v cestě
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Místní správa města {TOWN} odmítla vydat povolení.
@@ -3682,7 +3682,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}V cestě
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel by končil mimo mapu
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nelze vyrovnat zemi na druhém konci tunelu
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}V cestě je objekt
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... v cestě je ředitelství společnosti
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nelze zakoupit tento pozemek...

@@ -2435,10 +2435,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Cevasti drumski
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvadukt
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Predajnik
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Svetionik
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Upravna zgrada preduzeća
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Zemljište u posedu preduzeća
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Predajnik
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Svetionik
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Upravna zgrada preduzeća
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Zemljište u posedu preduzeća
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}O OpenTTD-u
@@ -2532,7 +2532,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% z
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Stvaranje sveta
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Postavljanje drveća
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Postavljenje nepomičnih objekata
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Postavljenje nepomičnih objekata
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Dodavanje grubih i stenovitih područja
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Podešavanje partije
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Razrađivanje pločica
@@ -3625,7 +3625,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... već
 STR_ERROR_OWNED_BY                                              :{WHITE}... je u vlasništvu igrača {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemljište je u vlasništvu drugog preduzeća
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naziv mora biti jedinstven
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} je na putu
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} je na putu
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} vlast odbija da izda dozvolu
@@ -3836,7 +3836,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Drugi tu
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel bi završio van okvira terena
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nije moguće iskopati drugi kraj tunela
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Objekat se ne može izgraditi...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekat na putu
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... upravna zgrada preduzeća na putu

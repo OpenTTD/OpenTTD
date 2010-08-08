@@ -2264,10 +2264,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Cevast cestni m
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvedukt
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Oddajnik
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Svetilnik
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Sedež podjetja
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Ozemlje v lasti podjetja
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Oddajnik
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Svetilnik
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Sedež podjetja
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ozemlje v lasti podjetja
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}O OpenTTD
@@ -2361,7 +2361,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% n
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Ustvarjanje sveta
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ustvarjanje dreves
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Nepremično ustvarjanje
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nepremično ustvarjanje
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generiranje grobih in skalnatih tal
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavljanje igre
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Zagnano ponavljanje kvadratkov
@@ -3432,7 +3432,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... že 
 STR_ERROR_OWNED_BY                                              :{WHITE}... v lasti {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemljišče je last drugega podjetja
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Ime mora biti edinstveno
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} na poti
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} na poti
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} mestna oblast tega ne dovoli
@@ -3634,7 +3634,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Obstoje�
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Predor se konča izven ozemlja
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nemogoč izkop zaključka predora na drugi strani
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ovira na poti
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sedež podjetja na poti
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nemogoč nakup tega zemljišča...

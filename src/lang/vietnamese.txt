@@ -2239,10 +2239,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Cầu ống đ�
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Cống
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Trạm phát sóng
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Hải đăng
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Trụ sở công ty
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Đất công ty sở hữu
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Trạm phát sóng
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Hải đăng
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Trụ sở công ty
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Đất công ty sở hữu
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
@@ -2336,7 +2336,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% h
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tạo màn
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Trồng cây
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Sinh đối tượng cứng
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Sinh đối tượng cứng
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Sinh đá và sự gồ ghề
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Thiết lập ván chơi
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Đang chạy sinh tile
@@ -3413,7 +3413,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... đã
 STR_ERROR_OWNED_BY                                              :{WHITE}... sở hữu bởi {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... vùng này sở hữu bởi công ty khác
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Tên phải không trùng lặp
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} đang có trên đường
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} đang có trên đường
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Chính quyền {TOWN} từ chối bạn làm việc này
@@ -3622,7 +3622,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Có hầ
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Một đầu hầm kéo ra ngoài bản đồ
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Không thể đào đất để làm đầu kia của hầm
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Không thể xây đối tượng này...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Có vật thể trên đường
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... trụ sở công ty nằm trên đường

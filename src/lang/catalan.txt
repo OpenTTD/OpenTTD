@@ -2222,10 +2222,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Pont de carrete
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Aqüeducte
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Repetidor
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Far
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Seu de l'Empresa
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :terreny propietat de l'Empresa
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Repetidor
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Far
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Seu de l'Empresa
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :terreny propietat de l'Empresa
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Quant a OpenTTD
@@ -2313,7 +2313,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generació del món
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generació d'arbres
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Generació inamovible
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generació inamovible
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generació d'una àrea escarpada i rocosa
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurant el joc
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Passant el bucle de cel·les
@@ -3377,7 +3377,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ja c
 STR_ERROR_OWNED_BY                                              :{WHITE}... propietat de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... l'àrea és propietat d'una altra companyia
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}El nom ha de ser únic
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} en el camí
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} en el camí
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Les autoritats locals de {TOWN} no permeten fer això
@@ -3578,7 +3578,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Un altre
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}El túnel acabarà fora del mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Impossible excavar la terra a l'altre extrem del túnel
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objecte en el camí
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... seu de la companyia en el camí
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No pots comprar aquesta àrea de terreny...

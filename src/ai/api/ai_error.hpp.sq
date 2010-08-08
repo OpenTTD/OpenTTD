@@ -79,7 +79,7 @@ void SQAIError_Register(Squirrel *engine)
 	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST,            AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_BUOY_IN_THE_WAY,                            AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_MUST_DEMOLISH_DOCK_FIRST,                   AIError::ERR_AREA_NOT_CLEAR);
-	AIError::RegisterErrorMap(STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY,                AIError::ERR_AREA_NOT_CLEAR);
+	AIError::RegisterErrorMap(STR_ERROR_GENERIC_OBJECT_IN_THE_WAY,                  AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_COMPANY_HEADQUARTERS_IN,                    AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_OBJECT_IN_THE_WAY,                          AIError::ERR_AREA_NOT_CLEAR);
 	AIError::RegisterErrorMap(STR_ERROR_MUST_REMOVE_ROAD_FIRST,                     AIError::ERR_AREA_NOT_CLEAR);

@@ -546,7 +546,7 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 
 
 
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Faro
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Faro
 
 # About OpenTTD window
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versiono {REV}
@@ -864,7 +864,7 @@ STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas
 
 # Tunnel related errors
 
-# Unmovable related errors
+# Object related errors
 
 # Group related errors
 

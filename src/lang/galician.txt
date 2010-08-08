@@ -2180,10 +2180,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Ponte tubular p
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Acueducto
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Transmisor
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Faro
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Cuartel Xeral de Compañía
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Terreo propiedade dunha compañía
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Transmisor
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Faro
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Cuartel Xeral de Compañía
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terreo propiedade dunha compañía
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Acerca de OpenTTD
@@ -2270,7 +2270,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Xeración do mundo
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Xeración de árbores
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Xeración inamovible
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Xeración inamovible
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Xeración de áreas rocosas e quebradas
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Configurando partida
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Executando tile-loop
@@ -3280,7 +3280,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... xa e
 STR_ERROR_OWNED_BY                                              :{WHITE}... é propiedade de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a área é propiedade doutra compañía
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}O nome debe ser único
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} no camiño
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} no camiño
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}: a autoridade local négase a permitilo
@@ -3475,7 +3475,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Hai outr
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}O túnel terminaría fóra do mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Non se pode excava-lo terreo no outro lado do túnel
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Hai un obxecto no camiño
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... hai un cuartel xeral no camiño
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Non se pode compra-la área de terreo...

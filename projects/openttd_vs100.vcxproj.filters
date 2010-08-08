@@ -640,6 +640,12 @@
     <ClInclude Include="..\src\newgrf_cargo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\newgrf_class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\newgrf_class_func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\newgrf_commons.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -707,6 +713,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\video\null_v.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\object_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\openttd.h">
@@ -932,12 +944,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\tunnelbridge.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\unmovable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\unmovable_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\vehicle_base.h">
@@ -1264,6 +1270,9 @@
     <ClCompile Include="..\src\misc_cmd.cpp">
       <Filter>Command handlers</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\object_cmd.cpp">
+      <Filter>Command handlers</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\order_cmd.cpp">
       <Filter>Command handlers</Filter>
     </ClCompile>
@@ -1301,9 +1310,6 @@
       <Filter>Command handlers</Filter>
     </ClCompile>
     <ClCompile Include="..\src\tunnelbridge_cmd.cpp">
-      <Filter>Command handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\unmovable_cmd.cpp">
       <Filter>Command handlers</Filter>
     </ClCompile>
     <ClCompile Include="..\src\vehicle_cmd.cpp">
@@ -1462,6 +1468,9 @@
     <ClInclude Include="..\src\table\newgrf_debug_data.h">
       <Filter>Tables</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\table\object_land.h">
+      <Filter>Tables</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\table\palette_convert.h">
       <Filter>Tables</Filter>
     </ClInclude>
@@ -1511,9 +1520,6 @@
       <Filter>Tables</Filter>
     </ClInclude>
     <ClInclude Include="..\src\table\unicode.h">
-      <Filter>Tables</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\table\unmovable_land.h">
       <Filter>Tables</Filter>
     </ClInclude>
     <ClInclude Include="..\src\table\water_land.h">
@@ -2188,6 +2194,9 @@
     <ClInclude Include="..\src\industry_map.h">
       <Filter>Map Accessors</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\object_map.h">
+      <Filter>Map Accessors</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\rail_map.h">
       <Filter>Map Accessors</Filter>
     </ClInclude>
@@ -2216,9 +2225,6 @@
       <Filter>Map Accessors</Filter>
     </ClInclude>
     <ClInclude Include="..\src\tunnelbridge_map.h">
-      <Filter>Map Accessors</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\unmovable_map.h">
       <Filter>Map Accessors</Filter>
     </ClInclude>
     <ClInclude Include="..\src\void_map.h">

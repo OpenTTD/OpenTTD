@@ -2279,10 +2279,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Torujas autotee
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvedukt
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Retranslaator
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Tuletorn
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Ettevõtte peakorter
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Ettevõtte maa
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Retranslaator
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Tuletorn
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Ettevõtte peakorter
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ettevõtte maa
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD lisainfo
@@ -2376,7 +2376,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% v
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Maailma genereerimine
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puude genereerimine
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Liigutamatu tekitamine
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Liigutamatu tekitamine
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Mägise ja kivise maaala tegemine
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Mängu seadistamine
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Klotsisilmuse täitmine
@@ -3447,7 +3447,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... juba
 STR_ERROR_OWNED_BY                                              :{WHITE}... omanik on {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... ala kuulub teisele ettevõttele
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nime ei tohi korduda
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} on ees
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} on ees
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} kohalik omavalitsus keeldub seda lubamast
@@ -3649,7 +3649,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Teine tu
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel lõpeks väljaspool kaarti
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ei saa tunneli teise otsa jaoks maad parajaks kaevata
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Mingi objekt on ees
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... ettevõtte peakorter on ees
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Seda maad ei saa osta...

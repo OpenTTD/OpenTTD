@@ -771,7 +771,7 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठे�
 
 # Tunnel related errors
 
-# Unmovable related errors
+# Object related errors
 
 # Group related errors
 

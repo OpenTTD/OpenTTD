@@ -42,7 +42,7 @@ enum TileType {
 	MP_VOID,                ///< Invisible tiles at the SW and SE border
 	MP_INDUSTRY,            ///< Part of an industry
 	MP_TUNNELBRIDGE,        ///< Tunnel entry/exit and bridge heads
-	MP_UNMOVABLE,           ///< Contains an object with cannot be removed like transmitters
+	MP_OBJECT,              ///< Contains objects such as transmitters and owned land
 };
 
 /**

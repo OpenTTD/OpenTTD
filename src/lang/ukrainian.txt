@@ -2365,10 +2365,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Трубчас�
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Акведук
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Ретранслятор
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Маяк
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Головний офіс компанії
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Ця ділянка - власність компанії
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Ретранслятор
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Маяк
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Головний офіс компанії
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ця ділянка - власність компанії
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Про OpenTTD
@@ -2462,7 +2462,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Створення світу
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Насадження дерев
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Генерація нерухомості
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерація нерухомості
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Розкидати каміння
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Налаштування гри
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Виконуємо цикл
@@ -3539,7 +3539,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... вж
 STR_ERROR_OWNED_BY                                              :{WHITE}... власність {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... ділянка у власності іншої компанії
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Назва має бути унікальною
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} на шляху
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} на шляху
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Влада міста {TOWN} проти цього
@@ -3750,7 +3750,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Інши
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунель закінчиться поза картою
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Неможливо виконати будівництво іншого кінця тунелю
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Неможливо побудувати об'єкт...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Об'єкт на шляху
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... на шляху Головний офіс

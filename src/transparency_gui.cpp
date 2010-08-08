@@ -32,7 +32,7 @@ enum TransparencyToolbarWidgets {
 	TTW_WIDGET_INDUSTRIES,               ///< industries transparency toggle button.
 	TTW_WIDGET_BUILDINGS,                ///< Company buildings and structures transparency toggle button.
 	TTW_WIDGET_BRIDGES,                  ///< Bridges transparency toggle button.
-	TTW_WIDGET_STRUCTURES,               ///< Unmovable structures transparency toggle button.
+	TTW_WIDGET_STRUCTURES,               ///< Object structure transparency toggle button.
 	TTW_WIDGET_CATENARY,                 ///< Catenary transparency toggle button.
 	TTW_WIDGET_LOADING,                  ///< Loading indicators transparency toggle button.
 	TTW_WIDGET_END,                      ///< End of toggle buttons.

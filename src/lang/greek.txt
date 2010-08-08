@@ -2330,10 +2330,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Κυλινδρ�
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Κανάλι
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Αναμεταδότης
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Φάρος
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Κεντρικά Γραφεία Εταιρίας
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Ιδιόκτητη γή από εταιρία
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Αναμεταδότης
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Φάρος
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Κεντρικά Γραφεία Εταιρίας
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ιδιόκτητη γή από εταιρία
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Σχετικά με το OpenTTD
@@ -2427,7 +2427,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Δημιουργία Κόσμου
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Δημιουργία Δέντρων
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Δημιουργία μη μετακινούμενων
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Δημιουργία μη μετακινούμενων
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Δημιουργία άγριας και πετρώδης περιοχής
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ρύθμιση παιχνιδιού
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Εκτέλεση βρόγχου πλακιδίων
@@ -3510,7 +3510,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ήδ
 STR_ERROR_OWNED_BY                                              :{WHITE}... ιδιοκτησία του {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... αυτή η περιοχή είναι ιδιοκτησία άλλης εταιρίας
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Το όνομα πρέπει να είναι μοναδικό
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} στη μέση
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} στη μέση
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Οι τοπικές αρχές της πόλης {TOWN} δεν το επιτρέπουν
@@ -3719,7 +3719,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Άλλο
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Το τούνελ θα καταλήξει εκτός του χάρτη
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Αδύνατο να γίνει εκσκαφή γης στην άλλη άκρη του τούνελ
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Δεν μπορεί να κτιστεί το αντικείμενο...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Αντικείμενο στη μέση
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... κεντρικά γραφεία εταιρίας στη μέση

@@ -330,7 +330,7 @@ uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 				case MP_STATION:
 				case MP_HOUSE:
 				case MP_INDUSTRY:
-				case MP_UNMOVABLE:
+				case MP_OBJECT:
 					/* These tiles usually have a levelling foundation. So use max Z */
 					has_snow = (GetTileMaxZ(tile) > GetSnowLine());
 					break;

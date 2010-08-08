@@ -48,7 +48,7 @@ CommandProc CmdRemoveSingleSignal;
 
 CommandProc CmdTerraformLand;
 
-CommandProc CmdBuildUnmovable;
+CommandProc CmdBuildObject;
 CommandProc CmdSellLandArea;
 
 CommandProc CmdBuildTunnel;
@@ -209,7 +209,7 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdBuildSingleSignal,                       CMD_AUTO), // CMD_BUILD_SIGNALS
 	DEF_CMD(CmdRemoveSingleSignal,                      CMD_AUTO), // CMD_REMOVE_SIGNALS
 	DEF_CMD(CmdTerraformLand,           CMD_ALL_TILES | CMD_AUTO), // CMD_TERRAFORM_LAND
-	DEF_CMD(CmdBuildUnmovable,           CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_UNMOVABLE
+	DEF_CMD(CmdBuildObject,              CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_OBJECT
 	DEF_CMD(CmdBuildTunnel,                             CMD_AUTO), // CMD_BUILD_TUNNEL
 	DEF_CMD(CmdRemoveFromRailStation,                          0), // CMD_REMOVE_FROM_RAIL_STATION
 	DEF_CMD(CmdConvertRail,                                    0), // CMD_CONVERT_RAILD

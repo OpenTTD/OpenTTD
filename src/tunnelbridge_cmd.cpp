@@ -16,7 +16,7 @@
 #include "stdafx.h"
 #include "rail_map.h"
 #include "landscape.h"
-#include "unmovable.h"
+#include "object.h"
 #include "viewport_func.h"
 #include "cmd_helper.h"
 #include "command_func.h"
@@ -395,8 +395,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 					if (z_start < GetBridgeHeight(tile)) goto not_valid_below;
 					break;
 
-				case MP_UNMOVABLE: {
-					const UnmovableSpec *spec = UnmovableSpec::GetByTile(tile);
+				case MP_OBJECT: {
+					const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
 					if ((spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) == 0) goto not_valid_below;
 					break;
 				}

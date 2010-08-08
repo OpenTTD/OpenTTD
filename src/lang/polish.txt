@@ -2620,10 +2620,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Cylindryczny mo
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akwedukt
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Nadajnik
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Latarnia
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Siedziba firmy
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Teren w posiadaniu firmy
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Nadajnik
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Latarnia
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Siedziba firmy
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Teren w posiadaniu firmy
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
@@ -2717,7 +2717,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}gotowe w
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tworzenie świata
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tworzenie drzew
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Tworzenie obiektów
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Tworzenie obiektów
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Tworzenie terenów skalistych i nierówności
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Ustawianie gry
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Uaktywnianie pól
@@ -3800,7 +3800,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... już
 STR_ERROR_OWNED_BY                                              :{WHITE}... w posiadaniu {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... teren jest własnością innej firmy
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nazwa nie może się powtarzać
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} na drodze
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} na drodze
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Lokalne władze {TOWN} nie pozwalają na to
@@ -4011,7 +4011,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Inny tun
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Koniec tunelu poza mapą
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nie można wydrążyć drugiego końca tunelu
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nie można zbudować obiektu...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Obiekt na drodze
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... siedziba firmy na drodze

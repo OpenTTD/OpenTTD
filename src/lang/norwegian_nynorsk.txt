@@ -2223,10 +2223,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Hvelvbru (veg)
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvedukt
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Radiosendar
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Fyrtårn
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Hovudkontor til firma
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Feltet eigast av eit firma
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Radiosendar
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Fyrtårn
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Hovudkontor til firma
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Feltet eigast av eit firma
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
@@ -2320,7 +2320,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NB
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generer ei verd
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Ikkje-flyttbar generering
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikkje-flyttbar generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generering av ulendt og steinete område
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargjer spelet
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Køyrer rute-løkkje
@@ -3391,7 +3391,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... alle
 STR_ERROR_OWNED_BY                                              :{WHITE}... eigd av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... feltet er eigd av eit anna firma
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet må vera unikt
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} er i vegen
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} er i vegen
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Bystyret i {TOWN} nektar deg å gjere dette
@@ -3592,7 +3592,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Annan tu
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnelen vil enda utanfor kartet
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan ikkje grave ut land til den andre tunnelutgangen
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt er i vegen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... hovudkontor til firma er i vegen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikkje kjøpe dette landområdet...

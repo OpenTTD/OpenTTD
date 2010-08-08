@@ -2215,10 +2215,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :جسر عربا
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :قناة مائية
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :برج ارسال
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :منارة ضوئية
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :مبنى الشركة الرئيسي
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :ارض مملوكة لشركة
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :برج ارسال
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :منارة ضوئية
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :مبنى الشركة الرئيسي
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :ارض مملوكة لشركة
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}حول النسخة المفتوحة
@@ -2306,7 +2306,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK} مولد الخريطة
 STR_GENERATION_TREE_GENERATION                                  :{BLACK} مولد الشجر
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK} غير قابل لتحريك
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK} غير قابل لتحريك
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}مولد المناطق الخشنة والصخرية
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}تجهيز لعبة
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK} تشغيل المتكررة
@@ -3318,7 +3318,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... تم
 STR_ERROR_OWNED_BY                                              :{WHITE}مملوكة من قبل ... {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... المنطقة مملوكة لشركة منافسة
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}السم يجب ان يكون فريدا - غير مستخدم
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} على الطريق
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} على الطريق
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}بلدية المدينة ترفض السماح بهذا
@@ -3515,7 +3515,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}نفق �
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}الانفاق تنتهي خارج حدود الخريطة
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}لا يمكن تعديل الأرض في نهاية النفق
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}عائق في الطريق
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}مبنى شركة على الطريق
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}لا يمكن شراء هذة القطعة ...

@@ -2156,10 +2156,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Cauruļveida ti
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvadukts
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Raidītājs
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Bāka
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Uzņēmuma birojs
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Uzņēmumam piederoša zeme
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Raidītājs
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Bāka
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Uzņēmuma birojs
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Uzņēmumam piederoša zeme
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Par OpenTTD
@@ -2246,7 +2246,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% p
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Pasaules ģenerēšana
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Koka radīšana
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Nepārvietojama radīšana
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nepārvietojama radīšana
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Klinšaina un akmeņaina apvidus ģenerācija
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Uzstādīt spēli
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Skrejošs nosaukums
@@ -3224,7 +3224,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... jau 
 STR_ERROR_OWNED_BY                                              :{WHITE}... pieder {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemes gabals pieder citam uzņēmumam
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Vārdam jābūt unikālam
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} traucē
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} traucē
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} vietējā pašvaldība neatļauj šādu rīcību
@@ -3419,7 +3419,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Traucē 
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunelis beigsies ārpus kartes
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nevar izrakt citu tuneli
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Traucējošs objekts
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... traucē uzņēmuma birojs
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nevar nopirkt šo zemes pleķi...

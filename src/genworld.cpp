@@ -39,7 +39,7 @@
 
 void GenerateClearTile();
 void GenerateIndustries();
-void GenerateUnmovables();
+void GenerateObjects();
 void GenerateTrees();
 
 void StartupEconomy();
@@ -118,7 +118,7 @@ static void _GenerateWorld(void *)
 
 		/* Don't generate landscape items when in the scenario editor. */
 		if (_gw.mode == GWM_EMPTY) {
-			SetGeneratingWorldProgress(GWP_UNMOVABLE, 1);
+			SetGeneratingWorldProgress(GWP_OBJECT, 1);
 
 			/* Make sure the tiles at the north border are void tiles if needed. */
 			if (_settings_game.construction.freeform_edges) {
@@ -130,7 +130,7 @@ static void _GenerateWorld(void *)
 			if (_game_mode != GM_MENU) FlatEmptyWorld(_settings_game.game_creation.se_flat_world_height);
 
 			ConvertGroundTilesIntoWaterTiles();
-			IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
+			IncreaseGeneratingWorldProgress(GWP_OBJECT);
 		} else {
 			GenerateLandscape(_gw.mode);
 			GenerateClearTile();
@@ -143,7 +143,7 @@ static void _GenerateWorld(void *)
 					return;
 				}
 				GenerateIndustries();
-				GenerateUnmovables();
+				GenerateObjects();
 				GenerateTrees();
 			}
 		}

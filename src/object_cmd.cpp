@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file unmovable_cmd.cpp Handling of unmovable tiles. */
+/** @file object_cmd.cpp Handling of object tiles. */
 
 #include "stdafx.h"
 #include "landscape.h"
@@ -25,35 +25,35 @@
 #include "company_gui.h"
 #include "cheat_type.h"
 #include "landscape_type.h"
-#include "unmovable.h"
+#include "object.h"
 #include "cargopacket.h"
 #include "sprite.h"
 #include "core/random_func.hpp"
-#include "unmovable_map.h"
+#include "object_map.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "table/unmovable_land.h"
+#include "table/object_land.h"
 
-/* static */ const UnmovableSpec *UnmovableSpec::Get(UnmovableType index)
+/* static */ const ObjectSpec *ObjectSpec::Get(ObjectType index)
 {
-	assert(index < UNMOVABLE_MAX);
-	return &_original_unmovable[index];
+	assert(index < OBJECT_MAX);
+	return &_original_objects[index];
 }
 
-/* static */ const UnmovableSpec *UnmovableSpec::GetByTile(TileIndex tile)
+/* static */ const ObjectSpec *ObjectSpec::GetByTile(TileIndex tile)
 {
-	return UnmovableSpec::Get(GetUnmovableType(tile));
+	return ObjectSpec::Get(GetObjectType(tile));
 }
 
-void BuildUnmovable(UnmovableType type, TileIndex tile, CompanyID owner, uint index)
+void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, uint index)
 {
-	const UnmovableSpec *spec = UnmovableSpec::Get(type);
+	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	TileArea ta(tile, GB(spec->size, 0, 4), GB(spec->size, 4, 4));
 	TILE_AREA_LOOP(t, ta) {
 		TileIndex offset = t - tile;
-		MakeUnmovable(t, type, owner, TileY(offset) << 4 | TileX(offset), index);
+		MakeObject(t, type, owner, TileY(offset) << 4 | TileX(offset), index);
 		MarkTileDirtyByTile(t);
 	}
 }
@@ -61,22 +61,22 @@ void BuildUnmovable(UnmovableType type, TileIndex tile, CompanyID owner, uint in
 /**
  * Increase the animation stage of a whole structure.
  * @param northern The northern tile of the structure.
- * @pre GetUnmovableOffset(northern) == 0
+ * @pre GetObjectOffset(northern) == 0
  */
 void IncreaseAnimationStage(TileIndex northern)
 {
-	assert(GetUnmovableOffset(northern) == 0);
-	const UnmovableSpec *spec = UnmovableSpec::GetByTile(northern);
+	assert(GetObjectOffset(northern) == 0);
+	const ObjectSpec *spec = ObjectSpec::GetByTile(northern);
 
 	TileArea ta(northern, GB(spec->size, 0, 4), GB(spec->size, 4, 4));
 	TILE_AREA_LOOP(t, ta) {
-		SetUnmovableAnimationStage(t, GetUnmovableAnimationStage(t) + 1);
+		SetObjectAnimationStage(t, GetObjectAnimationStage(t) + 1);
 		MarkTileDirtyByTile(t);
 	}
 }
 
 /** We encode the company HQ size in the animation stage. */
-#define GetCompanyHQSize GetUnmovableAnimationStage
+#define GetCompanyHQSize GetObjectAnimationStage
 /** We encode the company HQ size in the animation stage. */
 #define IncreaseCompanyHQSize IncreaseAnimationStage
 
@@ -97,10 +97,10 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
 }
 
 extern CommandCost CheckFlatLand(TileArea tile_area, DoCommandFlag flags);
-static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags);
+static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags);
 
 /**
- * Build an unmovable object
+ * Build an object object
  * @param tile tile where the object will be located
  * @param flags type of operation
  * @param p1 the object type to build
@@ -108,14 +108,14 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags);
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildUnmovable(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_PROPERTY);
 
-	UnmovableType type = (UnmovableType)GB(p1, 0, 8);
-	if (type >= UNMOVABLE_MAX) return CMD_ERROR;
+	ObjectType type = (ObjectType)GB(p1, 0, 8);
+	if (type >= OBJECT_MAX) return CMD_ERROR;
 
-	const UnmovableSpec *spec = UnmovableSpec::Get(type);
+	const ObjectSpec *spec = ObjectSpec::Get(type);
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_SCENEDIT && (_game_mode != GM_EDITOR || _current_company != OWNER_NONE)) return CMD_ERROR;
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_GAME && (_game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
 
@@ -142,20 +142,20 @@ CommandCost CmdBuildUnmovable(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	int hq_score = 0;
 	switch (type) {
-		case UNMOVABLE_OWNED_LAND:
-			if (IsTileType(tile, MP_UNMOVABLE) &&
+		case OBJECT_OWNED_LAND:
+			if (IsTileType(tile, MP_OBJECT) &&
 					IsTileOwner(tile, _current_company) &&
 					IsOwnedLand(tile)) {
 				return_cmd_error(STR_ERROR_YOU_ALREADY_OWN_IT);
 			}
 			break;
 
-		case UNMOVABLE_HQ: {
+		case OBJECT_HQ: {
 			Company *c = Company::Get(_current_company);
 			if (c->location_of_HQ != INVALID_TILE) {
 				/* We need to persuade a bit harder to remove the old HQ. */
 				_current_company = OWNER_WATER;
-				cost.AddCost(ClearTile_Unmovable(c->location_of_HQ, flags));
+				cost.AddCost(ClearTile_Object(c->location_of_HQ, flags));
 				_current_company = c->index;
 			}
 
@@ -171,34 +171,34 @@ CommandCost CmdBuildUnmovable(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	}
 
 	if (flags & DC_EXEC) {
-		BuildUnmovable(type, tile, _current_company);
+		BuildObject(type, tile, _current_company);
 
 		/* Make sure the HQ starts at the right size. */
-		if (type == UNMOVABLE_HQ) UpdateCompanyHQ(tile, hq_score);
+		if (type == OBJECT_HQ) UpdateCompanyHQ(tile, hq_score);
 	}
 
-	cost.AddCost(UnmovableSpec::Get(type)->GetBuildCost() * size_x * size_y);
+	cost.AddCost(ObjectSpec::Get(type)->GetBuildCost() * size_x * size_y);
 	return cost;
 }
 
 
-static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);
+static Foundation GetFoundation_Object(TileIndex tile, Slope tileh);
 
-static void DrawTile_Unmovable(TileInfo *ti)
+static void DrawTile_Object(TileInfo *ti)
 {
-	UnmovableType type = GetUnmovableType(ti->tile);
-	const UnmovableSpec *spec = UnmovableSpec::Get(type);
-	if ((spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) == 0) DrawFoundation(ti, GetFoundation_Unmovable(ti->tile, ti->tileh));
+	ObjectType type = GetObjectType(ti->tile);
+	const ObjectSpec *spec = ObjectSpec::Get(type);
+	if ((spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) == 0) DrawFoundation(ti, GetFoundation_Object(ti->tile, ti->tileh));
 
 	const DrawTileSprites *dts = NULL;
 	Owner to = GetTileOwner(ti->tile);
 	PaletteID palette = to == OWNER_NONE ? PAL_NONE : COMPANY_SPRITE_COLOUR(to);
 
-	if (type == UNMOVABLE_HQ) {
-		uint8 offset = GetUnmovableOffset(ti->tile);
-		dts = &_unmovable_hq[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) << 1 | GB(offset, 0, 1)];
+	if (type == OBJECT_HQ) {
+		uint8 offset = GetObjectOffset(ti->tile);
+		dts = &_object_hq[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) << 1 | GB(offset, 0, 1)];
 	} else {
-		dts = &_unmovables[type];
+		dts = &_objects[type];
 	}
 
 	if (spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) {
@@ -231,7 +231,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 	if (spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) DrawBridgeMiddle(ti);
 }
 
-static uint GetSlopeZ_Unmovable(TileIndex tile, uint x, uint y)
+static uint GetSlopeZ_Object(TileIndex tile, uint x, uint y)
 {
 	if (IsOwnedLand(tile)) {
 		uint z;
@@ -243,24 +243,24 @@ static uint GetSlopeZ_Unmovable(TileIndex tile, uint x, uint y)
 	}
 }
 
-static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh)
+static Foundation GetFoundation_Object(TileIndex tile, Slope tileh)
 {
 	return IsOwnedLand(tile) ? FOUNDATION_NONE : FlatteningFoundation(tileh);
 }
 
-static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
+static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 {
-	UnmovableType type = GetUnmovableType(tile);
-	const UnmovableSpec *spec = UnmovableSpec::Get(type);
+	ObjectType type = GetObjectType(tile);
+	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	/* Get to the northern most tile. */
-	tile -= GetUnmovableOffset(tile);
+	tile -= GetObjectOffset(tile);
 
 	/* Water can remove everything! */
 	if (_current_company != OWNER_WATER) {
 		if ((spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0 && flags & DC_AUTO) {
 			/* No automatic removal by overbuilding stuff. */
-			return_cmd_error(type == UNMOVABLE_HQ ? STR_ERROR_COMPANY_HEADQUARTERS_IN : STR_ERROR_OBJECT_IN_THE_WAY);
+			return_cmd_error(type == OBJECT_HQ ? STR_ERROR_COMPANY_HEADQUARTERS_IN : STR_ERROR_OBJECT_IN_THE_WAY);
 		} else if (_game_mode == GM_EDITOR) {
 			/* No further limitations for the editor. */
 		} else if (GetTileOwner(tile) == OWNER_NONE) {
@@ -283,7 +283,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 	if (spec->flags & OBJECT_FLAG_CLEAR_INCOME) cost.MultiplyCost(-1); // They get an income!
 
 	switch (type) {
-		case UNMOVABLE_HQ: {
+		case OBJECT_HQ: {
 			Company *c = Company::Get(GetTileOwner(tile));
 			if (flags & DC_EXEC) {
 				c->location_of_HQ = INVALID_TILE; // reset HQ position
@@ -296,7 +296,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 			break;
 		}
 
-		case UNMOVABLE_STATUE:
+		case OBJECT_STATUE:
 			if (flags & DC_EXEC) {
 				TownID town = GetStatueTownID(tile);
 				ClrBit(Town::Get(town)->statues, GetTileOwner(tile));
@@ -315,7 +315,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, DoCommandFlag flags)
 	return cost;
 }
 
-static void AddAcceptedCargo_Unmovable(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted)
+static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, uint32 *always_accepted)
 {
 	if (!IsCompanyHQ(tile)) return;
 
@@ -339,13 +339,13 @@ static void AddAcceptedCargo_Unmovable(TileIndex tile, CargoArray &acceptance, u
 }
 
 
-static void GetTileDesc_Unmovable(TileIndex tile, TileDesc *td)
+static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
 {
-	td->str = UnmovableSpec::GetByTile(tile)->name;
+	td->str = ObjectSpec::GetByTile(tile)->name;
 	td->owner[0] = GetTileOwner(tile);
 }
 
-static void TileLoop_Unmovable(TileIndex tile)
+static void TileLoop_Object(TileIndex tile)
 {
 	if (!IsCompanyHQ(tile)) return;
 
@@ -377,12 +377,12 @@ static void TileLoop_Unmovable(TileIndex tile)
 }
 
 
-static TrackStatus GetTileTrackStatus_Unmovable(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Object(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	return 0;
 }
 
-static bool ClickTile_Unmovable(TileIndex tile)
+static bool ClickTile_Object(TileIndex tile)
 {
 	if (!IsCompanyHQ(tile)) return false;
 
@@ -405,7 +405,7 @@ static bool IsRadioTowerNearby(TileIndex tile)
 	return false;
 }
 
-void GenerateUnmovables()
+void GenerateObjects()
 {
 	if (_settings_game.game_creation.landscape == LT_TOYLAND) return;
 
@@ -429,7 +429,7 @@ void GenerateUnmovables()
 		lighthouses_to_build = lighthouses_to_build * num_water_tiles / (2 * MapMaxY() + 2 * MapMaxX() - 6);
 	}
 
-	SetGeneratingWorldProgress(GWP_UNMOVABLE, radiotower_to_build + lighthouses_to_build);
+	SetGeneratingWorldProgress(GWP_OBJECT, radiotower_to_build + lighthouses_to_build);
 
 	for (uint i = ScaleByMapSize(1000); i != 0; i--) {
 		TileIndex tile = RandomTile();
@@ -438,8 +438,8 @@ void GenerateUnmovables()
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4 && !IsBridgeAbove(tile)) {
 			if (IsRadioTowerNearby(tile)) continue;
 
-			BuildUnmovable(UNMOVABLE_TRANSMITTER, tile);
-			IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
+			BuildObject(OBJECT_TRANSMITTER, tile);
+			IncreaseGeneratingWorldProgress(GWP_OBJECT);
 			if (--radiotower_to_build == 0) break;
 		}
 	}
@@ -472,8 +472,8 @@ void GenerateUnmovables()
 		for (int j = 0; j < 19; j++) {
 			uint h;
 			if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2 && !IsBridgeAbove(tile)) {
-				BuildUnmovable(UNMOVABLE_LIGHTHOUSE, tile);
-				IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
+				BuildObject(OBJECT_LIGHTHOUSE, tile);
+				IncreaseGeneratingWorldProgress(GWP_OBJECT);
 				lighthouses_to_build--;
 				assert(tile < MapSize());
 				break;
@@ -484,7 +484,7 @@ void GenerateUnmovables()
 	}
 }
 
-static void ChangeTileOwner_Unmovable(TileIndex tile, Owner old_owner, Owner new_owner)
+static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	if (!IsTileOwner(tile, old_owner)) return;
 
@@ -508,10 +508,10 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, Owner old_owner, Owner new
 	}
 }
 
-static CommandCost TerraformTile_Unmovable(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
+static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
-	UnmovableType type = GetUnmovableType(tile);
-	const UnmovableSpec *spec = UnmovableSpec::Get(type);
+	ObjectType type = GetObjectType(tile);
+	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	if (spec->flags & OBJECT_FLAG_REQUIRE_FLAT) {
 		/* If a flat tile is required by the object, then terraforming is never good. */
@@ -529,19 +529,19 @@ static CommandCost TerraformTile_Unmovable(TileIndex tile, DoCommandFlag flags, 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }
 
-extern const TileTypeProcs _tile_type_unmovable_procs = {
-	DrawTile_Unmovable,             // draw_tile_proc
-	GetSlopeZ_Unmovable,            // get_slope_z_proc
-	ClearTile_Unmovable,            // clear_tile_proc
-	AddAcceptedCargo_Unmovable,     // add_accepted_cargo_proc
-	GetTileDesc_Unmovable,          // get_tile_desc_proc
-	GetTileTrackStatus_Unmovable,   // get_tile_track_status_proc
-	ClickTile_Unmovable,            // click_tile_proc
-	NULL,                           // animate_tile_proc
-	TileLoop_Unmovable,             // tile_loop_clear
-	ChangeTileOwner_Unmovable,      // change_tile_owner_clear
-	NULL,                           // add_produced_cargo_proc
-	NULL,                           // vehicle_enter_tile_proc
-	GetFoundation_Unmovable,        // get_foundation_proc
-	TerraformTile_Unmovable,        // terraform_tile_proc
+extern const TileTypeProcs _tile_type_object_procs = {
+	DrawTile_Object,             // draw_tile_proc
+	GetSlopeZ_Object,            // get_slope_z_proc
+	ClearTile_Object,            // clear_tile_proc
+	AddAcceptedCargo_Object,     // add_accepted_cargo_proc
+	GetTileDesc_Object,          // get_tile_desc_proc
+	GetTileTrackStatus_Object,   // get_tile_track_status_proc
+	ClickTile_Object,            // click_tile_proc
+	NULL,                        // animate_tile_proc
+	TileLoop_Object,             // tile_loop_clear
+	ChangeTileOwner_Object,      // change_tile_owner_clear
+	NULL,                        // add_produced_cargo_proc
+	NULL,                        // vehicle_enter_tile_proc
+	GetFoundation_Object,        // get_foundation_proc
+	TerraformTile_Object,        // terraform_tile_proc
 };

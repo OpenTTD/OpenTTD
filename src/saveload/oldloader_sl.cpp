@@ -323,7 +323,7 @@ static bool FixTTOMapArray()
 				}
 				break;
 
-			case MP_UNMOVABLE:
+			case MP_OBJECT:
 				_m[t].m2 = 0;
 				_m[t].m3 = 0;
 				break;

@@ -22,7 +22,7 @@
 #include "functions.h"
 #include "sound_func.h"
 #include "base_station_base.h"
-#include "unmovable_map.h"
+#include "object_map.h"
 #include "textbuf_gui.h"
 #include "genworld.h"
 #include "tree_map.h"
@@ -135,7 +135,7 @@ typedef void OnButtonClick(Window *w);
 
 static void PlaceProc_BuyLand(TileIndex tile)
 {
-	DoCommandP(tile, UNMOVABLE_OWNED_LAND, 0, CMD_BUILD_UNMOVABLE | CMD_MSG(STR_ERROR_CAN_T_PURCHASE_THIS_LAND), CcPlaySound1E);
+	DoCommandP(tile, OBJECT_OWNED_LAND, 0, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_PURCHASE_THIS_LAND), CcPlaySound1E);
 }
 
 void PlaceProc_DemolishArea(TileIndex tile)
@@ -433,12 +433,12 @@ static void PlaceProc_RockyArea(TileIndex tile)
 
 static void PlaceProc_LightHouse(TileIndex tile)
 {
-	DoCommandP(tile, UNMOVABLE_LIGHTHOUSE, 0, CMD_BUILD_UNMOVABLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
+	DoCommandP(tile, OBJECT_LIGHTHOUSE, 0, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
 }
 
 static void PlaceProc_Transmitter(TileIndex tile)
 {
-	DoCommandP(tile, UNMOVABLE_TRANSMITTER, 0, CMD_BUILD_UNMOVABLE | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
+	DoCommandP(tile, OBJECT_TRANSMITTER, 0, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
 }
 
 static void PlaceProc_DesertArea(TileIndex tile)

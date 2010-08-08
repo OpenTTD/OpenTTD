@@ -2221,10 +2221,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Rouerstol Brèc
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Aquadukt
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Sender
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Liichttuerm
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Firmen Haaptgebai
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Land am Firmenbesëtz
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Sender
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Liichttuerm
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Firmen Haaptgebai
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Land am Firmenbesëtz
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Iwwert OpenTTD
@@ -2318,7 +2318,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% k
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Welt Generatioun
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Baam Generatioun
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Unbewegbar Generatioun
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Unbewegbar Generatioun
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generatioun vun knubblegen an stengegen Areal
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Spill gëtt opgestallt
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Running tile-loop
@@ -3389,7 +3389,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... scho
 STR_ERROR_OWNED_BY                                              :{WHITE}... am Besëtz vun {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... d'Plaz ass am Besëtz vun enger aanerer Firma
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Numm muss eenzegartëg sinn
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} am Wee
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} am Wee
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} d'Gemeng wëll dat net erlaaben
@@ -3590,7 +3590,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Aaneren 
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel géif ausserhalb der Kaart erauskommen
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kann d'Land net fir dei aaner Säit vum Tunnel fräi leen
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objet am Wee
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... Firmen Haaptgebai am Wee
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kann daat Land net kafen...

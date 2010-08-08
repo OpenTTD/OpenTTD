@@ -28,7 +28,7 @@
 #include "newgrf_industrytiles.h"
 #include "newgrf_station.h"
 #include "newgrf_airporttiles.h"
-#include "unmovable.h"
+#include "object.h"
 #include "group.h"
 #include "strings_func.h"
 #include "functions.h"

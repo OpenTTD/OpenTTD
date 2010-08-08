@@ -2207,10 +2207,10 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Jambatan tubula
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akueduk
 
-STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Menara pemancar
-STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Rumah api
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Ibu pejabat syarikat
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Tanah dimiliki syarikat
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Menara pemancar
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Rumah api
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Ibu pejabat syarikat
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tanah dimiliki syarikat
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Tentang OpenTTD
@@ -2304,7 +2304,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% s
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Penjanaan dunia
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Penjanaan pokok
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Penjanaan objek-objek yang tidak boleh digerakkan
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Penjanaan objek-objek yang tidak boleh digerakkan
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Penjanaan kawasan berbatu dan tanah kasar
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Permainan sedang diuruskan
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lingkaran petak sedang dijalankan
@@ -3131,7 +3131,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... suda
 STR_ERROR_OWNED_BY                                              :{WHITE}... dimiliki oleh {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... kawasan dimiliki oleh syarikat lain
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nama mesti unik
-STR_ERROR_UNMOVABLE_OBJECT_IN_THE_WAY                           :{WHITE}{1:STRING} menghalang
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} menghalang
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} majlis tempatan tidak membenarkannya
@@ -3330,7 +3330,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Terdapat
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Hujung terowong akan keluar di luar batasan peta
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tanah tidak dapat dikorek untuk pembinaan hujung terowong
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objek sedang menghalang
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... ibu pejabat syarikat menghalang
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kawasan ini tidak dapat dibeli...
