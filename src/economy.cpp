@@ -1501,8 +1501,12 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, DoCommandFlag flags, uint32 p1,
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(c, COMPANY_SPECTATOR) == 0) return cost;
 
-	/* We can not buy out a real company (temporarily). TODO: well, enable it obviously */
-	if (GetAmountOwnedBy(c, COMPANY_SPECTATOR) == 1 && !c->is_ai) return cost;
+	if (GetAmountOwnedBy(c, COMPANY_SPECTATOR) == 1) {
+		if (!c->is_ai) return cost; //  We can not buy out a real company (temporarily). TODO: well, enable it obviously.
+
+		if (GetAmountOwnedBy(c, _current_company) == 3 && !MayCompanyTakeOver(_current_company, target_company)) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
+	}
+
 
 	cost.AddCost(CalculateCompanyValue(c) >> 2);
 	if (flags & DC_EXEC) {
@@ -1582,6 +1586,9 @@ CommandCost CmdBuyCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 	/* Do not allow companies to take over themselves */
 	if (target_company == _current_company) return CMD_ERROR;
+
+	/* Disable taking over when not allowed. */
+	if (!MayCompanyTakeOver(_current_company, target_company)) return CMD_ERROR;
 
 	/* Get the cost here as the company is deleted in DoAcquireCompany. */
 	CommandCost cost(EXPENSES_OTHER, c->bankrupt_value);

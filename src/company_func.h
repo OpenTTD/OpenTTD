@@ -16,6 +16,7 @@
 #include "tile_type.h"
 #include "gfx_type.h"
 
+bool MayCompanyTakeOver(CompanyID cbig, CompanyID small);
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);
 void GetNameOfOwner(Owner owner, TileIndex tile);
 void SetLocalCompany(CompanyID new_company);
