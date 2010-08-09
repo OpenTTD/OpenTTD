@@ -21,6 +21,7 @@
 #include "station_map.h"
 #include "tree_map.h"
 #include "tunnelbridge_map.h"
+#include "variables.h"
 #include "core/mem_func.hpp"
 
 /** Constructor of generic class
@@ -283,7 +284,7 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
  * @param upper_halftile If true, query upper halftile in case of rail tiles.
  * @return value corresponding to the grf expected format:
  *         Terrain type: 0 normal, 1 desert, 2 rainforest, 4 on or above snowline */
-uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
+uint32 GetTerrainType(TileIndex tile, TileContext context)
 {
 	switch (_settings_game.game_creation.landscape) {
 		case LT_TROPIC: return GetTropicZone(tile);
@@ -291,27 +292,41 @@ uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 			bool has_snow;
 			switch (GetTileType(tile)) {
 				case MP_CLEAR:
+					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
+					if (_generating_world) goto genworld;
 					has_snow = IsSnowTile(tile) && GetClearDensity(tile) >= 2;
 					break;
 
 				case MP_RAILWAY: {
+					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
+					if (_generating_world) goto genworld; // we do not care about foundations here
 					RailGroundType ground = GetRailGroundType(tile);
-					has_snow = (ground == RAIL_GROUND_ICE_DESERT || (upper_halftile && ground == RAIL_GROUND_HALF_SNOW));
+					has_snow = (ground == RAIL_GROUND_ICE_DESERT || (context == TCX_UPPER_HALFTILE && ground == RAIL_GROUND_HALF_SNOW));
 					break;
 				}
 
 				case MP_ROAD:
+					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
+					if (_generating_world) goto genworld; // we do not care about foundations here
 					has_snow = IsOnSnow(tile);
 					break;
 
 				case MP_TREES: {
+					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
+					if (_generating_world) goto genworld;
 					TreeGround ground = GetTreeGround(tile);
 					has_snow = (ground == TREE_GROUND_SNOW_DESERT || ground == TREE_GROUND_ROUGH_SNOW) && GetTreeDensity(tile) >= 2;
 					break;
 				}
 
 				case MP_TUNNELBRIDGE:
-					has_snow = HasTunnelBridgeSnowOrDesert(tile);
+					if (context == TCX_ON_BRIDGE) {
+						has_snow = (GetBridgeHeight(tile) > GetSnowLine());
+					} else {
+						/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
+						if (_generating_world) goto genworld; // we do not care about foundations here
+						has_snow = HasTunnelBridgeSnowOrDesert(tile);
+					}
 					break;
 
 				case MP_STATION:
@@ -324,6 +339,7 @@ uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 
 				case MP_VOID:
 				case MP_WATER:
+				genworld:
 					has_snow = (GetTileZ(tile) > GetSnowLine());
 					break;
 

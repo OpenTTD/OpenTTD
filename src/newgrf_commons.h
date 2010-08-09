@@ -16,6 +16,13 @@
 
 #include "tile_cmd.h"
 
+/** Contextx for tile accesses */
+enum TileContext {
+	TCX_NORMAL,         ///< Nothing special.
+	TCX_UPPER_HALFTILE, ///< Querying information about the upper part of a tile with halftile foundation.
+	TCX_ON_BRIDGE,      ///< Querying information about stuff on the bridge (via some bridgehead).
+};
+
 /**
  * Maps an entity id stored on the map to a GRF file.
  * Entities are objects used ingame (houses, industries, industry tiles) for
@@ -101,7 +108,7 @@ extern HouseOverrideManager _house_mngr;
 extern IndustryOverrideManager _industry_mngr;
 extern IndustryTileOverrideManager _industile_mngr;
 
-uint32 GetTerrainType(TileIndex tile, bool upper_halftile = false);
+uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);
 uint32 GetNearbyTileInformation(TileIndex tile);
 

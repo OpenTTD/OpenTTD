@@ -22,6 +22,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_generic.h"
 #include "newgrf_storage.h"
+#include "newgrf_commons.h"
 
 /**
  * Gets the value of a so-called newgrf "register".
@@ -341,8 +342,8 @@ struct ResolverObject {
 			uint8 station_size;
 		} generic;
 		struct {
-			TileIndex tile;
-			bool upper_halftile;           ///< Are we resolving sprites for the upper halftile?
+			TileIndex tile;                ///< Tracktile. For track on a bridge this is the southern bridgehead.
+			TileContext context;           ///< Are we resolving sprites for the upper halftile, or on a bridge?
 		} routes;
 	} u;
 
