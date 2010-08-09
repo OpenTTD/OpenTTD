@@ -1084,6 +1084,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允許�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}依車站種類不同改變收集範圍：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}可移除更多市鎮所有的道路、橋樑等：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}提高列車長度限制：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}火車頭產生的蒸氣／火花數量：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :無
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :原版
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :真實
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列車加速演算模型：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :原版
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :真實
@@ -1408,7 +1412,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}方塊�
 STR_CHEATS_WARNING                                              :{BLACK}警告！您正準備背叛您的競爭對手，請記住這種恥辱將永傳不朽
 STR_CHEAT_MONEY                                                 :{LTBLUE}增加金錢：{CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}切換玩家操控的公司：{ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}無敵推土機 (可摧毀工業、所有東西)：{ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土機 (可摧毀工業、無法移除的物件)：{ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}允許隧道互相交叉：{ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}可在暫停時興建：{ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}噴射機不會 (經常) 在小機場墜毀：{ORANGE} {STRING}
@@ -2025,6 +2029,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}興建�
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}選擇機場
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}選擇機場大小／種類
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}機場等級
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}配置 {NUM}
 
 STR_AIRPORT_SMALL                                               :小機場
 STR_AIRPORT_CITY                                                :城市機場
@@ -2126,6 +2131,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}按該�
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}按該貨物可顯示其上下游工業
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}顯示產業鍊
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}顯示貨物的上下游工業
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}於小地圖顯示
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}將該產業鍊的工業顯示在小地圖上
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}土地資訊
@@ -2385,6 +2392,9 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}關閉
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}輸入 NewGRF 參數
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 NewGRF 參數
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}關閉
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :參數 {NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}變數檢查 - {STRING}
@@ -3435,15 +3445,16 @@ STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... 需�
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}無法償還貸款...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}無法把貸款的錢流通出去...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}無法購買公司...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}無法建造公司總部...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}無法興建公司總部...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}無法購買這間公司的股份...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}無法出售這間公司的股份...
 STR_ERROR_PROTECTED                                             :{WHITE}這間公司才剛成立，還不能交易股票...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}不能建立市鎮
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}無法建立市鎮
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}無法修改市鎮名稱...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}不能在此建造市鎮...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}無法擴展市鎮...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... 太接近地圖邊緣
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... 太接近另一個市鎮
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... 已有太多市鎮
@@ -3451,11 +3462,12 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 地�
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}此市鎮不會自動興建道路。你可以到 [進階設定] -> [經濟] -> [市鎮] 中啟用 [市鎮可以興建道路] 選項。
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路施工中
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}無法刪除此市鎮...{}市鎮範圍內還有車站或機廠或無法移除的區塊
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 市中心沒有適合的空間建造雕像
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... 已有太多工業
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}無法產生工業...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}不能在這裡建造 {STRING} ...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}無法在此建造 {STRING} ...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}無法在此新建這種工業...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... 太接近另一個工業
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... 應先建造市鎮
@@ -3469,7 +3481,7 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... 只�
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... 森林只能種在雪線以上
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}不能在這邊興建火車站...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}無法在此興建火車站...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}無法興建公車站...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}無法興建貨運站...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}無法興建電車站...
@@ -3491,6 +3503,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}太接�
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}無法修改車站名稱...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... 此路段為市鎮所有
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... 此道路面向錯誤的方向
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... 路邊車站不能建在轉角處
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... 路邊車站不能建在路口處
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}無法移除車站元件...
@@ -3500,7 +3514,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}無法�
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}無法移除載客電車站...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}無法移除載貨電車站...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}必須先移除路通站
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...這裡沒有車站
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... 這裡沒有車站
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}必須先摧毀火車站
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}必須先摧毀公車站
@@ -3524,10 +3538,10 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... 被�
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... 浮標正在使用中！
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}不能在這邊興建鐵路機廠...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}不能在此興建車廠...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}無法在此興建鐵路機廠...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}無法在此興建車廠...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}無法在此興建電車機廠...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}不能在此建造船塢...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}無法在此建造船塢...
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}無法修改機廠名稱...
 
@@ -3561,25 +3575,25 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}沒有�
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}必須先移除鐵路
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}道路是單行道或已封閉
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}這種軌道不能建設平交道
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}不能在這邊興建號誌...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}不能在這邊鋪設鐵路...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}無法在此興建號誌...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}無法在此鋪設鐵路...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}不能從這邊移除鐵路...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}不能從這邊移除號誌...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}無法轉換這裡的號誌...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...這裡沒有鐵軌
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...這裡沒有號誌
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... 這裡沒有鐵軌
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... 這裡沒有號誌
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}無法轉換軌道種類...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}必須先移除道路
-STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... 單行道不能有交叉點
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}不能在此鋪設道路...
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... 單行道不能有交叉路口
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}無法在此鋪設道路...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}無法在此鋪設電車軌...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}不能從此移除道路...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}無法移除此處的電車軌...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...這裡沒有道路
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...這裡沒有電車軌
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... 這裡沒有道路
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... 這裡沒有電車軌
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}無法在此興建運河...
@@ -3614,6 +3628,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}隧道�
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}無法挖掘隧道出口
 
 # Object related errors
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}無法建立物件...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}被東西擋住
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 被公司總部擋住
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}不能購買這塊土地...

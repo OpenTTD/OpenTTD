@@ -2030,6 +2030,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Flughafe
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Flughafen bauen
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Wähle die Größe/Art des Flughafens
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Flughafenart
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Layout {NUM}
 
 STR_AIRPORT_SMALL                                               :Klein
 STR_AIRPORT_CITY                                                :Stadt
@@ -2131,6 +2132,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Auf Indu
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Auf Frachttyp klicken, um dessen Anbieter und Abnehmer anzuzeigen
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Produktionskette
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zeige Industrien, die Fracht liefern oder akzeptieren
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Verweis auf Übersichtskarte
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Wähle auch die angezeigte Industrie auf der Übersichtskarte
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Gebietsinformation

@@ -660,8 +660,8 @@ STR_LIVERY_TRUCK                                                :Ҫӑк маши
 STR_LIVERY_PASSENGER_SHIP                                       :Пассажирсем карап
 STR_LIVERY_FREIGHT_SHIP                                         :Ҫӑк карап
 STR_LIVERY_HELICOPTER                                           :Вертолёт
-STR_LIVERY_SMALL_PLANE                                          :Шӑрчӑк(Пӗчӗк самолёт)
-STR_LIVERY_LARGE_PLANE                                          :Сывлӑш карап(Пысӑк самолёт)
+STR_LIVERY_SMALL_PLANE                                          :Шӑрчӑк(Пӗчӗк яраплан)
+STR_LIVERY_LARGE_PLANE                                          :Сывлӑш карап(Пысӑк яраплан)
 STR_LIVERY_PASSENGER_TRAM                                       :Пасажир трамвай
 STR_LIVERY_FREIGHT_TRAM                                         :Ҫӑк трамвай
 
@@ -785,14 +785,37 @@ STR_FACE_SAVE                                                   :{BLACK}Упра
 # Tree planting window (last two for SE only)
 
 # Land generation window (SE)
+STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Передатчик ларт
 
 
 # Town generation window (SE)
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Ҫӗнӗ хула
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Ҫӗнӗ хула ларт
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Ӑнсӑрт хула
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Нумай ӑнсӑрт хула
 
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Хула ят:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Хула ят кӗрт
+STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Ӑнсӑрт ят
 
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Хула пысӑкӑшӗ:
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Пӗчӗк
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Вӑта
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Пысӑк
+STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Ӑнсӑрт
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Хула пысӑкӑшӗ суйла
+STR_FOUND_TOWN_CITY                                             :{BLACK}Тӑп хула
 
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Чӑн
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 серепе
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 серепе
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Ӑнсӑрт
 
 # Fund new industry window
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Хак: {YELLOW}{CURRENCY}
+STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Малашлӑх
+STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Ларт
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Укҫа сап(Fund)
 
 # Industry cargoes window
 

@@ -2301,6 +2301,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Щелч
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Щелчок по типу груза покажет его производителей и потребителей
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Показать цепочку
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Показать производителей сырья и потребителей продукции этого предприятия
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Показать на карте
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Показать на карте выбранные предприятия
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Информация об участке земли
@@ -2507,7 +2509,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Создание мира
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Высадка лесов
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Генерация недвижимости
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Создание объектов
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Расстановка декораций и камней
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Настройка
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Подготовка к запуску...

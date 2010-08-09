@@ -692,7 +692,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}雪地
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}切换是否显示城镇名称
-STR_SMALLMAP_CENTER                                             :{BLACK}把当前位置在地图中心点显示
+STR_SMALLMAP_CENTER                                             :{BLACK}在地图中心点显示当前位置
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全部禁用
@@ -1084,6 +1084,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允许�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}允许更真实的客源范围：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁等：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}允许购买超长列车：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}火车头产生的蒸气/火花数量: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :无
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :原版
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :真实
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列车加速度： {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :TTD原版
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :改良真实版
@@ -2025,6 +2029,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}新建�
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}飞机场选单
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}选择机场的大小和类型
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}机场等级
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}配置 {NUM}
 
 STR_AIRPORT_SMALL                                               :小型机场
 STR_AIRPORT_CITY                                                :城市机场
@@ -2119,11 +2124,15 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}建设
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING} 的产业链
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} 的产业链
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}供应商
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}采购商
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}房屋
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}点該工业可显示其上下游工业
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}点该货物可显示其上下游工业
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}显示产业链
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}显示货物的上下游工业
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}在缩略地图显示
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}将该产业链的工业显示在缩略地图中
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地块信息
@@ -3445,6 +3454,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}这个�
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}不能建设任何城镇
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}不能重命名城镇……
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}不能在这里建设城镇……
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}无法扩展城镇...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}太靠近地图边缘了
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}太靠近另一个城镇了
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}城镇太多了
@@ -3493,6 +3503,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}距离�
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}不能重命名车站
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}这是一条城镇所属的道路
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}道路方向不对
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... 途中型车站不能建在转角处
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... 途中型车站不册建在路口处
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}不能拆除站台的一部分……
@@ -3616,6 +3628,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}隧道�
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}隧道出口的地形无法处理
 
 # Object related errors
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}无法建立物件...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}目标处有其他物体
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}目标处有公司总部
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}不能购买这个地块！
