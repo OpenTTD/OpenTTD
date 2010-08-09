@@ -166,7 +166,7 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 /**
  * Get the base wire sprite to use.
  */
-static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TC_NORMAL)
+static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TCX_NORMAL)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	SpriteID wires = GetCustomRailSprite(rti, tile, RTSG_WIRES, context);
@@ -176,7 +176,7 @@ static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TC_NORM
 /**
  * Get the base pylon sprite to use.
  */
-static inline SpriteID GetPylonBase(TileIndex tile, TileContext context = TC_NORMAL)
+static inline SpriteID GetPylonBase(TileIndex tile, TileContext context = TCX_NORMAL)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
 	SpriteID pylons = GetCustomRailSprite(rti, tile, RTSG_PYLONS, context);
@@ -303,7 +303,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	AdjustTileh(ti->tile, &tileh[TS_HOME]);
 
 	SpriteID pylon_normal = GetPylonBase(ti->tile);
-	SpriteID pylon_halftile = (halftile_corner != CORNER_INVALID) ? GetPylonBase(ti->tile, TC_UPPER_HALFTILE) : pylon_normal;
+	SpriteID pylon_halftile = (halftile_corner != CORNER_INVALID) ? GetPylonBase(ti->tile, TCX_UPPER_HALFTILE) : pylon_normal;
 
 	for (DiagDirection i = DIAGDIR_BEGIN; i < DIAGDIR_END; i++) {
 		static const uint edge_corners[] = {
@@ -442,7 +442,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	}
 
 	SpriteID wire_normal = GetWireBase(ti->tile);
-	SpriteID wire_halftile = (halftile_corner != CORNER_INVALID) ? GetWireBase(ti->tile, TC_UPPER_HALFTILE) : wire_normal;
+	SpriteID wire_halftile = (halftile_corner != CORNER_INVALID) ? GetWireBase(ti->tile, TCX_UPPER_HALFTILE) : wire_normal;
 	Track halftile_track;
 	switch (halftile_corner) {
 		case CORNER_W: halftile_track = TRACK_LEFT; break;
@@ -503,14 +503,14 @@ void DrawCatenaryOnBridge(const TileInfo *ti)
 
 	height = GetBridgeHeight(end);
 
-	SpriteID wire_base = GetWireBase(end, TC_ON_BRIDGE);
+	SpriteID wire_base = GetWireBase(end, TCX_ON_BRIDGE);
 
 	AddSortableSpriteToDraw(wire_base + sss->image_offset, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
 		sss->x_size, sss->y_size, sss->z_size, height + sss->z_offset,
 		IsTransparencySet(TO_CATENARY)
 	);
 
-	SpriteID pylon_base = GetPylonBase(end, TC_ON_BRIDGE);
+	SpriteID pylon_base = GetPylonBase(end, TCX_ON_BRIDGE);
 
 	/* Finished with wires, draw pylons
 	 * every other tile needs a pylon on the northern end */

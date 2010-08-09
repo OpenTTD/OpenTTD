@@ -135,5 +135,5 @@ uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
  */
 void GetRailTypeResolver(ResolverObject *ro, uint index)
 {
-	NewRailTypeResolver(ro, index, TC_NORMAL);
+	NewRailTypeResolver(ro, index, TCX_NORMAL);
 }

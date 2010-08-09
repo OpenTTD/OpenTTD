@@ -314,7 +314,7 @@ uint32 GetTerrainType(TileIndex tile, TileContext context)
 					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 					if (_generating_world) goto genworld; // we do not care about foundations here
 					RailGroundType ground = GetRailGroundType(tile);
-					has_snow = (ground == RAIL_GROUND_ICE_DESERT || (context == TC_UPPER_HALFTILE && ground == RAIL_GROUND_HALF_SNOW));
+					has_snow = (ground == RAIL_GROUND_ICE_DESERT || (context == TCX_UPPER_HALFTILE && ground == RAIL_GROUND_HALF_SNOW));
 					break;
 				}
 
@@ -333,7 +333,7 @@ uint32 GetTerrainType(TileIndex tile, TileContext context)
 				}
 
 				case MP_TUNNELBRIDGE:
-					if (context == TC_ON_BRIDGE) {
+					if (context == TCX_ON_BRIDGE) {
 						has_snow = (GetBridgeHeight(tile) > GetSnowLine());
 					} else {
 						/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */

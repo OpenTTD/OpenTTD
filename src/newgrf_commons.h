@@ -19,9 +19,9 @@
 
 /** Contextx for tile accesses */
 enum TileContext {
-	TC_NORMAL,         ///< Nothing special.
-	TC_UPPER_HALFTILE, ///< Querying information about the upper part of a tile with halftile foundation.
-	TC_ON_BRIDGE,      ///< Querying information about stuff on the bridge (via some bridgehead).
+	TCX_NORMAL,         ///< Nothing special.
+	TCX_UPPER_HALFTILE, ///< Querying information about the upper part of a tile with halftile foundation.
+	TCX_ON_BRIDGE,      ///< Querying information about stuff on the bridge (via some bridgehead).
 };
 
 /**
@@ -131,7 +131,7 @@ extern IndustryTileOverrideManager _industile_mngr;
 extern AirportOverrideManager _airport_mngr;
 extern AirportTileOverrideManager _airporttile_mngr;
 
-uint32 GetTerrainType(TileIndex tile, TileContext context = TC_NORMAL);
+uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);
 uint32 GetNearbyTileInformation(TileIndex tile);
 
