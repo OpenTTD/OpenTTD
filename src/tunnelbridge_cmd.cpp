@@ -1396,12 +1396,17 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 {
 	bool snow_or_desert = HasTunnelBridgeSnowOrDesert(tile);
 	switch (_settings_game.game_creation.landscape) {
-		case LT_ARCTIC:
-			if (snow_or_desert != (GetTileZ(tile) > GetSnowLine())) {
+		case LT_ARCTIC: {
+			/* As long as we do not have a snow density, we want to use the density
+			 * from the entry endge. For tunnels this is the lowest point for bridges the highest point.
+			 * (Independent of foundations) */
+			uint z = IsBridge(tile) ? GetTileMaxZ(tile) : GetTileZ(tile);
+			if (snow_or_desert != (z > GetSnowLine())) {
 				SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
+		}
 
 		case LT_TROPIC:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT && !snow_or_desert) {
