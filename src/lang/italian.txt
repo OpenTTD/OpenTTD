@@ -199,18 +199,18 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} hp
+STR_UNITS_POWER_METRIC                                          :{COMMA} hp
+STR_UNITS_POWER_SI                                              :{COMMA} kW
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} kg
 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonnellat{P a e}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P o i}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
@@ -383,10 +383,10 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Sussidi
 ############ range for graph menu starts
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Grafico margine operativo
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Grafico incassi
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafico merci consegnate
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Grafico carichi consegnati
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Grafico storico prestazioni
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Grafico valore compagnie
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Grafico tariffe merci
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Grafico tariffe carichi
 ############ range ends here
 
 ############ range for company league menu starts
@@ -521,7 +521,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unità d
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Valutazione prestazioni compagnie (massima valutazione=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valore delle compagnie
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tariffe di pagamento merci
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tariffe di pagamento carichi
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Giorni di viaggio
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pagamento per la consegna di 10 unità (o 10.000 litri) di merce alla distanza di 20 riquadri
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Attiva/disattiva il grafico per il tipo di merce
@@ -559,7 +559,7 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Profitto
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Incasso min:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Incasso max:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Consegnato:
-STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Merci:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carichi:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Denaro:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prestito:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totale:
@@ -777,8 +777,8 @@ STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuov{G o o a} {STRING} in costruzione vicino a {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuov{G 0 o o a} {STRING} piantat{G 0 o o a} vicino a {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} annuncia imminente chiusura!!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Per problemi di rifornimenti {STRING} annuncia imminente chiusura!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{G Il L' La} {STRING} annuncia imminente chiusura!!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Per problemi di rifornimenti {G il l' la} {STRING} annuncia imminente chiusura!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}La mancanza di alberi vicini costringe la {STRING} ad imminente chiusura!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Unione Monetaria Europea!{}{}È stato introdotto l'Euro come unica moneta per le transazioni quotidiane nel nostro Paese!
@@ -1400,7 +1400,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Le casel
 STR_CHEATS_WARNING                                              :{BLACK}Attenzione! Stai per tradire i tuoi avversari. Ricordati che un così grande disonore sarà ricordato per l'eternità.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumenta denaro di {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Compagnia controllata: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magico (rimuove industrie e oggetti inamovibili): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magico (rimuove industrie e oggetti fissi): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}I tunnel possono incrociarsi tra loro: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Consenti costruzione in pausa: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}I jet non si schiantano (frequentemente) nei piccoli aeroporti: {ORANGE} {STRING}
@@ -1878,10 +1878,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unisci w
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Costruisci waypoint separato
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Costruzione ferrovie
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Costruzione ferrovie elettrificate
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Costruzione monorotaia
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Costruzione maglev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Costruzione ferrovie
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Costruzione ferrovie elettrificate
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Costruzione monorotaia
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Costruzione maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Costruisce binari. CTRL alterna costruzione/rimozione.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Costruisce binari usando la modalità automatica. CTRL alterna costruzione/rimozione.
@@ -2106,6 +2106,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Costo: {
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Esegui prospezione
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Costruisci
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanzia
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informazioni sull'area di terreno
@@ -2348,6 +2350,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File corri
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabilitato
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Inserire i parametri NewGRF
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 
@@ -2658,10 +2662,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeromobi
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profitto quest'anno: {CURRENCY} (anno scorso: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Treni disponibili
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Automezzi disponibili
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Navi disponibili
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Aeromobili disponibili
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Treni disponibili
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Automezzi disponibili
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Navi disponibili
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeromobili disponibili
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Mostra un elenco di veicoli disponibili in questa categoria di mezzi di trasporto
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gestione veicoli
@@ -2702,15 +2706,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Rimuovi tutti i
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rinomina un gruppo
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nuovi veicoli ferroviari
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nuovi veicoli ferroviari elettrici
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nuovi veicoli monorotaia
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nuovi veicoli maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nuovi veicoli ferroviari
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuovi veicoli ferroviari elettrici
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuovi veicoli monorotaia
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuovi veicoli maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Veicoli ferroviari
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nuovi automezzi
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nuove navi
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nuovo aeromobile
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Veicoli ferroviari
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuovi automezzi
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuove navi
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nuovo aeromobile
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocità: {GOLD}{VELOCITY}{BLACK} Potenza: {GOLD}{POWER}
@@ -3464,7 +3468,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossibile rimuovere il waypoint ferroviario da qui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Bisogna rimuovere il waypoint ferroviario prima
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boa di mezzo
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... la boa è in uso!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boa in uso
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossibile costruire il deposito qui...
@@ -3551,7 +3555,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Altro tu
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Il tunnel terminerebbe fuori dalla mappa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Impossibile scavare il terreno all'altra estremità del tunnel
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Oggetto di mezzo
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede della compagnia di mezzo
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Impossibile acquistare quest'area di terreno...

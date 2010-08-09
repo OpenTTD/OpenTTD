@@ -862,7 +862,7 @@ STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Din l-is
 
 # Tunnel related errors
 
-# Unmovable related errors
+# Object related errors
 
 # Group related errors
 

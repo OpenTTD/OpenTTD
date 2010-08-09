@@ -869,7 +869,7 @@ STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas
 
 # Tunnel related errors
 
-# Unmovable related errors
+# Object related errors
 
 # Group related errors
 

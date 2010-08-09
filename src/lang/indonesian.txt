@@ -1876,10 +1876,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Gabungka
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Pisahkan waypoint
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Pembangun Rel Kereta
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Konstruksi Rel Kereta Listrik
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Pembangunan Monorel
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Pembangunan Maglev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Pembangun Rel Kereta
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Konstruksi Rel Kereta Listrik
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Pembangunan Monorel
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Pembangunan Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bangun rel. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi rel
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bangun rel kereta menggunakan mode Autorail. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi rel
@@ -2104,6 +2104,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Biaya: {
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospek
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bangun
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Danai
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasi area daratan
@@ -2346,6 +2348,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Berkas yan
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Non-aktifkan
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan Parameter NewGRF
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 
@@ -2656,10 +2660,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Pesawat 
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Laba tahun ini: {CURRENCY} (tahun lalu: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Kereta tersedia
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Kendaraan tersedia
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Kapal tersedia
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Pesawat tersedia
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Kereta tersedia
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Kendaraan tersedia
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Kapal tersedia
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Pesawat tersedia
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Lihat daftar desain mesin yang tersedia untuk kendaraan tipe ini
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Atur Daftar
@@ -2700,15 +2704,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Jual semua
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ubah nama kelompok
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Kereta Baru
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Kereta listrik baru
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Monorel Baru
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Maglev Baru
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Kereta Baru
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Kereta listrik baru
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Monorel Baru
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Maglev Baru
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Semua Kereta
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Kendaraan Baru
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Kapal Baru
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Buat Pesawat
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Semua Kereta
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Kendaraan Baru
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Kapal Baru
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Buat Pesawat
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Berat: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Kecepatan: {GOLD}{VELOCITY}{BLACK} Daya: {GOLD}{POWER}
@@ -3500,6 +3504,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Sinyal h
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tidak tersedia rel yang sesuai
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Harus membongkar rel terlebih dahulu
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Jalan satu arah atau ada yang menghalangi
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Perlintasan tingkat tidak diperbolehkan pada tipe rel ini
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Tidak dapat membangun sinyal disini
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Tidak dapat membangun jalur rel disini
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Tidak dapat menghapus jalur rel dari sini
@@ -3548,7 +3553,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Bersingg
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Terowongan boleh berakhir di luar peta
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tidak dapat menyesuaikan kemiringan tanah di ujung terowongan
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}terhalang obyek
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... terhalang kantor pusat perusahaan
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Tidak dapat membeli area ini

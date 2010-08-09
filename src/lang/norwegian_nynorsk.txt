@@ -1773,7 +1773,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spelet er framl
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spelet held fram ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ikkje nok spelarar
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kobler til klienter
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuelt
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :forlet
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har blitt med i spelet
@@ -1878,10 +1878,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spleis k
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg eit seperat kontrollpunkt
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Bygg jernbane
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Bygg elektrisk jernbane
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Bygg monorail
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Bygg maglev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Bygg jernbane
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Bygg elektrisk jernbane
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Bygg monorail
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Bygg maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bygg jernbanespor. CTRL vekslar mellom bygg/fjern jernbanekonstruksjon
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jernbanespor med automatisk jernbanemodus. CTRL vekslar mellom bygg/fjern for jernbanekonstruksjon
@@ -2658,10 +2658,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Luftfart
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Forteneste i år: {CURRENCY} (førre år: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Tilgjengelege tog
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Tilgjengelege køyretøy
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Tilgjengelege skip
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Tilgjengelege luftfartøy
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tilgjengelege tog
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Tilgjengelege køyretøy
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Tilgjengelege skip
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Tilgjengelege luftfartøy
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Sjå ei liste over mogelege modellar for denne køyretøytypen.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Behandle liste
@@ -2702,15 +2702,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjern alle køy
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gje nytt namn til ei gruppe
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nye tog/vogner for jernbane
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nytt elektrisk tog
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nye tog/vogner for monorail
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nye tog/vogner for maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nye tog/vogner for jernbane
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nytt elektrisk tog
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nye tog/vogner for monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nye tog/vogner for maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nye tog/vogner
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nye køyretøy
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nye skip
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nytt luftfartøy
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nye tog/vogner
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nye køyretøy
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nye skip
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nytt luftfartøy
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vekt: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastigheit: {GOLD}{VELOCITY}{BLACK} Kraft: {GOLD}{POWER}
@@ -3550,7 +3550,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Annan tu
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnelen vil enda utanfor kartet
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan ikkje grave ut land til den andre tunnelutgangen
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt er i vegen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... hovudkontor til firma er i vegen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikkje kjøpe dette landområdet...

@@ -1877,10 +1877,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}연결�
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}분리된 웨이포인트를 새로 만들기
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}철로 건설
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}전기철로 건설
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}모노레일 건설
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}자기부상열차 건설
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :철로 건설
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :전기철로 건설
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :모노레일 건설
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :자기부상열차 건설
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}철로를 건설합니다. Ctrl키는 철로의 건설/제거를 전환합니다.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}철로 자동건설 모드로 철로를 만듭니다. Ctrl키는 철로의 건설/제거를 전환합니다.
@@ -2105,6 +2105,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}가격: 
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}답사
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}건설
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}투자
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지역의 지형 정보
@@ -2348,6 +2350,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}사용안�
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF 파라미터 입력
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -2407,7 +2411,11 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}{1:ENGIN
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' 때문에 결과물 콜백 과정에서 무한 루프가 발생하고 있습니다.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<인식오류 화물>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA}<인식오류 화물>의
+STR_NEWGRF_INVALID_ENGINE                                       :<인식오류 차량모델>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<인식오류 산업시설>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
@@ -2653,10 +2661,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}항공�
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}올해 수입: {CURRENCY} (작년: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}사용 가능 열차
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}사용 가능 자동차
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}사용 가능 선박
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}사용 가능 항공기
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :사용 가능 열차
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :사용 가능 자동차
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :사용 가능 선박
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :사용 가능 항공기
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}이 차량 타입에 사용할 수 있는 기관차의 목록 보기
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}관리
@@ -2697,15 +2705,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 �
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 바꾸기
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}새 열차
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}새 전기 열차
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}새 모노레일
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}새 자기부상열차
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :새 열차
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :새 전기 열차
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :새 모노레일
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :새 자기부상열차
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}새 열차
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}새 자동차
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}새 선박
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}새 항공기
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :새 열차
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :새 자동차
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :새 선박
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :새 항공기
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}가격: {GOLD}{CURRENCY}{BLACK} 중량: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}속력: {GOLD}{VELOCITY}{BLACK} 힘: {GOLD}{POWER}
@@ -2933,12 +2941,12 @@ STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}기관차 
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}빈 경로 탐색중
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중 ({VELOCITY})
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중, ({VELOCITY})
 STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}경로 없음
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}경로 없음 ({VELOCITY})
 
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}{WAYPOINT}{G 0 "으" ""}로 향하는 중
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}{G 0 "으" ""}로 향하는 중, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}{G 0 "으" ""}로 향하는 중, ({VELOCITY})
 
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}{TOWN} 차량기지로 가는 중
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT_VEL                  :{ORANGE}{TOWN} 차량기지로 가는 중 ({VELOCITY})
@@ -3177,8 +3185,8 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간�
 
 STR_TIMETABLE_NO_TRAVEL                                         :운행정보 없음
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :여행 (시간표 없음)
-STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}로 여행
-STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}에 머무름
+STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} 동안 운행
+STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING} 동안 머무름
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRING}(으)로 이동
 STR_TIMETABLE_DAYS                                              :{COMMA} 일
 STR_TIMETABLE_TICKS                                             :{COMMA} 틱
@@ -3546,7 +3554,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}도중�
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}터널이 맵 끝을 통과합니다
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}지형 문제로 터널의 반대쪽 출구를 만들 수 없습니다
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}중간에 오브젝트가 있습니다
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 중간에 회사 HQ가 있습니다.
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}이 지역을 매입할 수 없습니다...
@@ -3601,7 +3609,7 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}자동�
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}선박을 팔 수 없습니다...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}항공기를 팔 수 없습니다...
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}열차는 불가능합니다
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}이 열차는 사용 불가능합니다
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}차량은 불가능합니다
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}선박은 불가능합니다
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}항공기는 불가능합니다
@@ -3650,6 +3658,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}팻말 �
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}팻말을 삭제할 수 없습니다...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :트랜스포트 타이쿤 디럭스 복사본
 
 ##id 0x2000
 # Town building names

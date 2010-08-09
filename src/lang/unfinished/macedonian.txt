@@ -995,10 +995,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авио
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Годинашна заработка: {CURRENCY} (лани: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Достапни Возови
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Достапни Возила
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Достапни Бродови
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Достапни Летала
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Достапни Возови
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Достапни Возила
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Достапни Бродови
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Достапни Летала
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Преглед на листа на достапни мотори за овој вид на возило
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Менаџирање на листа
@@ -1019,8 +1019,8 @@ STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Испрати 
 
 # Build vehicle window
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Шински возила
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Нов авион
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Шински возила
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нов авион
 
 
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Листа за селекција од авиони - кликни на авионот за информации
@@ -1283,7 +1283,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Мост
 
 # Tunnel related errors
 
-# Unmovable related errors
+# Object related errors
 
 # Group related errors
 

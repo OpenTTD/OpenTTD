@@ -1829,10 +1829,10 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Reisa a
 
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Járnbrautarlestarframkvæmdir
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Raflestaframkvæmdir
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Einteinungsframkvæmdir
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}MagLev framkvæmdir
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Járnbrautarlestarframkvæmdir
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Raflestaframkvæmdir
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Einteinungsframkvæmdir
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :MagLev framkvæmdir
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Leggja lestarteina. Ctrl velur byggja/fjarlægja fyrir lestarframkvæmdir
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Byggja lestarteina í Sjálvirkiteina ham. Ctrl velur byggja/farjlæga fyrir lestarframkvæmdir
@@ -2575,10 +2575,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugvél
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Hagnaður þetta ár: {CURRENCY} (síðasta ár: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Lestaúrval
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Bifreiðaúrval
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Skipaúrval
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Flugvélaúrval
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Lestaúrval
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Bifreiðaúrval
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Skipaúrval
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Flugvélaúrval
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Skoða úrval
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Stýra lista
@@ -2619,15 +2619,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Fjarlægja öll
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Endurnefna hóp
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Lestaúrval
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nýjir rafdrifnir lestarvagnar
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nýir einteingungsvagnar
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nýir segullestarvagnar
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Lestaúrval
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nýjir rafdrifnir lestarvagnar
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nýir einteingungsvagnar
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nýir segullestarvagnar
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Járnbrautarlestir
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Bifreiðaúrval
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Skipaúrval
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Flugvélaúrval
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Járnbrautarlestir
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Bifreiðaúrval
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Skipaúrval
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Flugvélaúrval
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK}   Afl: {GOLD}{POWER}
@@ -3428,7 +3428,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Önnur g
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Göng myndu enda utan korts
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Get ekki breytt landi fyrir hinn enda gangnanna
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Hluturinn er fyrir
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... höfuðstöðvar fyrirtækis eru fyrir
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Þú getur ekki keypt þetta land...

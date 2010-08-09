@@ -1398,7 +1398,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Checkbox
 STR_CHEATS_WARNING                                              :{BLACK}Warning! You are about to betray your fellow competitors. Keep in mind that such a disgrace will be remembered for eternity.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Increase money by {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Playing as company: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovables): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovable objects): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Build while in pause mode: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE}{STRING}
@@ -1876,10 +1876,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Join way
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Build a separate waypoint
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Railroad Construction
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Electrified Railroad Construction
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monorail Construction
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}MagLev Construction
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Railroad Construction
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Electrified Railroad Construction
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorail Construction
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :MagLev Construction
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Build railroad track. Ctrl toggles build/remove for railroad construction
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Build railroad track using the Autorail mode. Ctrl toggles build/remove for railroad construction
@@ -2302,7 +2302,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}World generation
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tree generation
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Unmovable generation
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Object generation
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Rough and rocky area generation
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Setting up game
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Running tile-loop
@@ -2650,10 +2650,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aircraft
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profit this year: {CURRENCY} (last year: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Available Trains
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Available Road Vehicles
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Available Ships
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Available Aircraft
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Available Trains
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Available Road Vehicles
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Available Ships
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Available Aircraft
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}See a list of available engine designs for this vehicle type.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Manage list
@@ -2694,15 +2694,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remove all vehi
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rename a group
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}New Rail Vehicles
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}New Electric Rail Vehicles
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}New Monorail Vehicles
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}New Maglev Vehicles
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :New Rail Vehicles
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :New Electric Rail Vehicles
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :New Monorail Vehicles
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :New Maglev Vehicles
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Rail Vehicles
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}New Road Vehicles
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}New Ships
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}New Aircraft
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Rail Vehicles
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :New Road Vehicles
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :New Ships
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :New Aircraft
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Weight: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK} Power: {GOLD}{POWER}
@@ -3539,7 +3539,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Another 
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel would end out of the map
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Unable to excavate land for other end of tunnel
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Object in the way
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... company headquarters in the way
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Can't purchase this land area...

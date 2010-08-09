@@ -290,7 +290,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}Ні
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :пасАжир
+STR_PASSENGERS                                                  :пасажирів
 STR_BAGS                                                        :мішків
 STR_TONS                                                        :тони
 STR_LITERS                                                      :літрів
@@ -364,7 +364,7 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуг
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Зруйнувати будинки, дороги і т.п.
 
 # Query window
-STR_BUTTON_DEFAULT                                              :{BLACK}За замовч.
+STR_BUTTON_DEFAULT                                              :{BLACK}За промовчанням
 STR_BUTTON_CANCEL                                               :{BLACK}Відміна
 STR_BUTTON_OK                                                   :{BLACK}Так
 
@@ -1153,11 +1153,11 @@ STR_VARIETY_MEDIUM                                              :Середня
 STR_VARIETY_HIGH                                                :Велика
 STR_VARIETY_VERY_HIGH                                           :Дуже велика
 
-STR_AI_SPEED_VERY_SLOW                                          :Дуже повільно
-STR_AI_SPEED_SLOW                                               :Повільно
-STR_AI_SPEED_MEDIUM                                             :середньо
-STR_AI_SPEED_FAST                                               :швидко
-STR_AI_SPEED_VERY_FAST                                          :дуже швидко
+STR_AI_SPEED_VERY_SLOW                                          :дуже повільна
+STR_AI_SPEED_SLOW                                               :повільна
+STR_AI_SPEED_MEDIUM                                             :середня
+STR_AI_SPEED_FAST                                               :швидка
+STR_AI_SPEED_VERY_FAST                                          :дуже швидка
 
 STR_SEA_LEVEL_VERY_LOW                                          :дуже мало
 STR_SEA_LEVEL_LOW                                               :мало
@@ -1333,7 +1333,7 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Доз�
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Показувати розклад в одиницях, а не в днях: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Показувати прибуття та відправлення у розкладах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Швидке створення списку завдань: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип колії за замовчанням (при новій грі/завантаженні): {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип колії за промовчанням (при новій грі/завантаженні): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Перша з доступних
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Остання з доступних
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Найчастіше використовувана
@@ -1826,8 +1826,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введ
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не запам'ятовувати введений пароль
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Дати компанії новий пароль
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Пароль компанії
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Пароль компанії за замовчуванням
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Використовувати цей пароль компанії за замовчуванням для нових компаній
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Пароль компанії за промовчанням
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Використовувати цей пароль компанії як пароль за промовчанням для нових компаній
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Приєднатись
@@ -2001,10 +2001,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}З'єд�
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Створити окрему точку маршруту
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Будівництво залізниці
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Будувати електрифіковану колію
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Будівництво монорельса
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Будівництво магнітної подушки
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Будівництво залізниці
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Будувати електрифіковану колію
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Будівництво монорельса
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Будівництво магнітної подушки
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Будувати колію. Ctrl переключає побудову/знесення для будівництва колії
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Будувати колію, використовуючи авторежим. Ctrl переключає побудову/знесення для будівництва колії
@@ -2229,6 +2229,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Варт
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Огляд
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Будувати
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Фінансувати
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Інформація про ділянку
@@ -2471,6 +2473,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Таких
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Вимкнено
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Введіть параметри NewGRF
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 
@@ -2781,10 +2785,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Літа
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Прибуток цього року: {CURRENCY} (торік: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Доступні поїзди
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Доступні автомобілі
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Доступні кораблі
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Доступні літаки
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Доступні поїзди
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Доступні автомобілі
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Доступні кораблі
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Доступні літаки
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Перелік доступного транспорту
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Редагувати список
@@ -2825,15 +2829,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Позбути�
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Перейменувати групу
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Новий залізничний транспорт
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Новий електрозалізничний транспорт
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Новий монорельсовий транспорт
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Новий транспорт на магнітній подушці
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Новий залізничний транспорт
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Новий електрозалізничний транспорт
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Новий монорельсовий транспорт
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Новий транспорт на магнітній подушці
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Потяги
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Нове авто
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Нові кораблі
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Нові літаки
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Потяги
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Нове авто
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Нові кораблі
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Нові літаки
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK} Вага: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK} Потужність: {GOLD}{POWER}
@@ -3653,7 +3657,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Тут �
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... тут вже росте дерево
-STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... невірний тип поверхні для цього виду дерева
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... місцевість не підходить для цього виду дерева
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Неможливо посадити тут дерево
 
 # Bridge related errors
@@ -3674,7 +3678,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Інши
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунель закінчиться поза картою
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Неможливо виконати будівництво іншого кінця тунелю
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Об'єкт на шляху
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... на шляху Головний офіс
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Неможливо купити цю ділянку ...

@@ -294,7 +294,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Átnevez
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Ablak bezárása
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Ablak címsora - húzd ezt a mozgatáshoz
 STR_TOOLTIP_SHADE                                               :{BLACK}Ablak összecsukása - csak a címsor látszódik
-STR_TOOLTIP_STICKY                                              :{BLACK}Ez az ablak akkor se záródjon be, ha a DEL billentyűvel az összes ablakot bezárjuk
+STR_TOOLTIP_STICKY                                              :{BLACK}Ez az ablak akkor se záródjon be, ha az "Összes ablak bezárása" gombot megnyomjuk
 STR_TOOLTIP_RESIZE                                              :{BLACK}Fogd és húzd hogy átméretezd az ablakot
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Kicsi/nagy ablakméret közötti váltás
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Görgetősáv - fel/le görgeti a listát
@@ -1183,8 +1183,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lezuhan
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nincs
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :csökkentett
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normál
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtó állomások engedélyezése települési tulajdonú utakon: {ORANGE}{STRING}
-STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Áthajtó állomások engedélyezése vetélytárs tulajdonában lévő utakon: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthaladó megállóhelyek engedélyezése települési tulajdonú utakon: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Áthaladó megállóhelyek engedélyezése vetélytárs tulajdonában lévő utakon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Érintkező állomások építésének engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Több NewGRF járműgarnitúra engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beállítást nem lehet megváltoztatni, ha van használatban jármű.
@@ -1324,7 +1324,7 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Csak normál
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Csak irányjelzők
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Mind
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Új települések útépítési mintája: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :{LTBLUE}Új települések úthálózati elrendezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :alapértelmezett
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :jobb utak
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2-es háló
@@ -1462,7 +1462,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}A kijel�
 STR_CHEATS_WARNING                                              :{BLACK}Figyelem! Te épp a versenytársaidat készülöd elárulni. Sose felejtsd el, hogy egy ilyen szégyenletes tett sose merül feledésbe.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tőkeemelés {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Irányított vállalat: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, stb): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, mozgathatatlan objektumokat): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Alagutak keresztezhessék egymást: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Építés szünet módban: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet-repülők nem fognak (gyakran) lezuhanni a kis repülőtereken: {ORANGE} {STRING}
@@ -1940,10 +1940,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ellenőr
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Különálló ellenőrző pont építése
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Normál vasút építése
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Villamosított vasút építése
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Egysínű vasút építése
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}MagLev vasút építése
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Normál vasút építése
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Villamosított vasút építése
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Egysínű vasút építése
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :MagLev vasút építése
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Pályafektetés. A Ctrl billentyűvel válthatsz építés és rombolás között.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Vasúti pálya építése egyszerűsített módón. A Ctrl billentyű segítségével lehet váltani az építés/rombolás között.
@@ -2152,7 +2152,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}Város
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Átlagosnál gyorsabban növekedő városok{}Beállítástól függően nagyobbak alapításkor
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Település úthálózat építési mintája:
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Válassz úthálózati mintát ehhez a városhoz
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Válassz úthálózati elrendezést ehhez a városhoz
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Eredeti
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Jobb utak
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2-es háló
@@ -2168,6 +2168,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Ár: {YE
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Kutatás
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Épít
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Alapít
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Terület-információ
@@ -2410,6 +2412,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fájl nem 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Kikapcsolva
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Adj meg NewGRF paramétereket
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 
@@ -2720,10 +2724,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Repülő
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Idei nyereség: {CURRENCY} (Tavalyi: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Elérhető vonatok
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Elérhető közúti járművek
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Elérhető hajók
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Elérhető repülők
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Elérhető vonatok
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Elérhető közúti járművek
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Elérhető hajók
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Elérhető repülők
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Tekintsd meg az ehhez a járműtípushoz választható mozdonyok listáját
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Lista kezelése
@@ -2764,15 +2768,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Összes jármű
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Csoport átnevezése
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Új vasúti járművek
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Új villamos vasúti járművek
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Új egysínű járművek
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Új MagLev járművek
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Új vasúti járművek
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Új villamos vasúti járművek
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Új egysínű járművek
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Új MagLev járművek
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Új vasúti járművek
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Új közúti járművek
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Új hajók
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Új repülőgépek
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Új vasúti járművek
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Új közúti járművek
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Új hajók
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Új repülőgépek
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Súly: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK} Telj.: {GOLD}{POWER}
@@ -3070,7 +3074,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Repülő
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK} Vásárlás éve: {LTBLUE}{NUM}{BLACK} Érték: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Teljes rakomány-kapacitása ennek a vonatnak:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Teljes szállítási kapacitása ennek a vonatnak:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 
@@ -3254,8 +3258,8 @@ STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}A menetr
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}A menetrend teljesítési ideje legalább: {STRING} (nincs minden időzítve)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ez a jármű jelenleg pontosan közlekedik
-STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ez a jármű jelenleg {STRING} késéssel közlekedik
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ez a jármű jelenleg {STRING}pal korábban közlekedik
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ez a jármű jelenleg {STRING} eltéréssel, késéssel közlekedik
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Ez a jármű jelenleg {STRING} eltéréssel, korábban közlekedik
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}A menetrend még nincs megkezdve
 STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}A menetrend megkezdésének dátuma {STRING}
 
@@ -3613,7 +3617,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Másik a
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Az alagút vége a pályán kívülre esik
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nem lehet kiásni a földet az alagút túloldalán
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objektum van az útban
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... vállalat székháza van az útban
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nem veheted meg ezt a földterületet...

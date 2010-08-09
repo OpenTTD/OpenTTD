@@ -1842,10 +1842,10 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Constru
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir punto de ruta
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Construción de Ferrocarrís
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Construción de Vías Electrificadas
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Construción de Monorraíl
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Construción de MagLev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construción de Ferrocarrís
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construción de Vías Electrificadas
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construción de Monorraíl
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construción de MagLev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construír vía de ferrocarril. CTRL conmuta entre construír/borrar para a construción das vías
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construír a vía de ferrocarril usando o modo Autoraíl. CTRL conmuta entre construír/borrar para a construción das vías
@@ -2604,10 +2604,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Avións 
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Beneficio este ano: {CURRENCY} (ano pasado: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Trens Dispoñibles
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Vehículos Dispoñibles
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Barcos Dispoñibles
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Aeronaves Dispoñibles
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trens Dispoñibles
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos Dispoñibles
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos Dispoñibles
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronaves Dispoñibles
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ve-la lista das máquinas dispoñibles para este tipo de vehículo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Xestionar lista
@@ -2648,15 +2648,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Borrar tódolos
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear un grupo
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Novos Vehículos de Ferrocarril
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Novos Vehículos Eléctricos de Raíles
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Novos Vehículos de Monorraíl
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Novos Vehículos de Maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Novos Vehículos de Ferrocarril
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Novos Vehículos Eléctricos de Raíles
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Novos Vehículos de Monorraíl
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Novos Vehículos de Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Vehículos de Ferrocaril
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Novos Vehículos de Estrada
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Novos Barcos
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nova Aeronave
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehículos de Ferrocaril
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos Vehículos de Estrada
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novos Barcos
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova Aeronave
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidade: {GOLD}{VELOCITY}{BLACK} Potencia: {GOLD}{POWER}
@@ -3489,7 +3489,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Hai outr
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}O túnel terminaría fóra do mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Non se pode excava-lo terreo no outro lado do túnel
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Hai un obxecto no camiño
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... hai un cuartel xeral no camiño
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Non se pode compra-la área de terreo...

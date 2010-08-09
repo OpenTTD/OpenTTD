@@ -1877,10 +1877,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir pun
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir un punto de ruta separado
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Construcción de ferrocarril
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Construcción Línea Eléctrica de Ferrocarril
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Construcción de monorraíl
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Construcción de tren de levitación magnética
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcción de ferrocarril
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcción Línea Eléctrica de Ferrocarril
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcción de monorraíl
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcción de tren de levitación magnética
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir tramo de ferrocarril. Ctrl permite retirar ferrocarriles
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir tramos de ferrocarril usando modo Autorraíl. Ctrl permite retirar ferrocarriles
@@ -2052,7 +2052,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta �
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generación de terrenos
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Coloca zonas rocosas sobre el paisaje
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Colocar faro
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define área désertica.{}Pulsa y mantén Ctrl para quitarla
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define área désertica.{}Mantén pulsado Ctrl para quitarla
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Colocar transmisor
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumentar el tamaño del bloque de terreno a bajar/subir
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Reducir tamaño del bloque de terreno a bajar/subir
@@ -2105,6 +2105,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Coste: {
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospección
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construir
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fundar
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Información sobre el terreno
@@ -2348,6 +2350,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivad
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introduce los parámetros del NewGRF
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -2491,7 +2495,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Haga cli
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estación - Click sobre un nombre para centrar vista en la estación. Ctrl+Click abre un punto de vista en dicha posición
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantén pulsado Ctrl para seleccionar varios elementos
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantén pulsado Ctrl para seleccionar más de un elemento
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estaciones
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2657,10 +2661,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Beneficio este año: {CURRENCY} (año anterior: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Trenes disponibles
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Vehículos disponibles
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Barcos disponibles
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Aviones disponibles
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponibles
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos disponibles
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos disponibles
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aviones disponibles
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver la lista de los motores disponibles para este tipo de vehículo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administrar lista
@@ -2701,15 +2705,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Quitar todos lo
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renombrar un grupo
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nuevos vehículos de raíl
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nuevo Vehículo Eléctrico de Raíles
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nuevos vehículos de monorraíl
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nuevos Vehículos Maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nuevos vehículos de raíl
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuevo Vehículo Eléctrico de Raíles
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuevos vehículos de monorraíl
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuevos Vehículos Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Vehículos de Rail
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nuevos vehículos
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nuevos barcos
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nueva Aeronave
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehículos de Rail
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuevos vehículos
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuevos barcos
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nueva Aeronave
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocidad: {GOLD}{VELOCITY}{BLACK} Potencia: {GOLD}{POWER}
@@ -2771,7 +2775,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehículo {P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenes - arrastrar vehículo con click izquierdo para añadir/retirar del tren, click derecho para mostrar información del vehículo, CTRL+click para mostrar información del tren
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenes - arrastrar vehículo con click izquierdo para añadir/retirar del tren, click derecho para mostrar información. Mantén pulsado Ctrl para usar estos comandos con el resto del tren
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos - Click derecho en vehículo para información
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - Click derecho en barco para información
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - Click derecho en la aeronave para información
@@ -3550,7 +3554,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Otro tú
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}El túnel acabaría fuera del mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}No se puede excavar en la tierra al otro lado del túnel
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objeto en medio
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede de empresa está en medio
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No es posible comprar este terreno...

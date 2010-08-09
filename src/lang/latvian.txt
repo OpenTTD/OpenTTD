@@ -1824,10 +1824,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Pievieno
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Uzbūvēt jaunu maršruta punktu
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Dzelzceļa būvēšana
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektriskā dzelzceļa būve
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Viensliežu būvēšana
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Magleva būvēšana
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Dzelzceļa būvēšana
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektriskā dzelzceļa būve
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Viensliežu būvēšana
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magleva būvēšana
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Būvēt sliedes. Ctrl pārslēdz sliežu būvniecību/demolēšanu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Būvēt dzelzceļu, izmantojot Autorail režīmu. Ctrl pārslēdz sliežu būvniecību/demolēšanu
@@ -2578,10 +2578,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lidapar�
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Peļņa šogad: {CURRENCY} (pērn: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Pieejamie vilcieni
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Pieejamie transportlīdzekļi
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Pieejamie kuģi
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Pieejamie lidaparāti
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Pieejamie vilcieni
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Pieejamie transportlīdzekļi
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Pieejamie kuģi
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Pieejamie lidaparāti
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Apskatīties visus vilcējus, kas pieejami šim transportlīdzekļu veidam.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Labot sarakstu
@@ -2622,15 +2622,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Izņemt visus t
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pārsaukt grupu
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Jauni vilcieni
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Jauni Elektriskā Dzelzceļa Satiksmes Līdzekļi
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Jauni vilcieni
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Jauni vilcieni
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Jauni vilcieni
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Jauni Elektriskā Dzelzceļa Satiksmes Līdzekļi
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Jauni vilcieni
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Jauni vilcieni
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Jauni vilcieni
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Jauni transportl.
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Jauni kuģi
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Jauns lidaparāts
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Jauni vilcieni
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Jauni transportl.
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Jauni kuģi
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Jauns lidaparāts
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Svars: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Ātrums: {GOLD}{VELOCITY}{BLACK} Jauda: {GOLD}{POWER}
@@ -3440,7 +3440,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Traucē 
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunelis beigsies ārpus kartes
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nevar izrakt citu tuneli
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Traucējošs objekts
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... traucē uzņēmuma birojs
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nevar nopirkt šo zemes pleķi...

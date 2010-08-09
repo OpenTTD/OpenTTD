@@ -1455,7 +1455,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Märgist
 STR_CHEATS_WARNING                                              :{BLACK}Hoiatus! Sa kavatsed oma konkurente reeta. Pea meeles, et sellisest häbist ei saa sa enam kunagi lahti.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Suurenda raha hulka {CURRENCY} võrra
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Mängimine ettevõttena: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Maagiline buldooser (eemaldamatute rajatiste lammutamine): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Võlubuldooser (eemaldab tööstused, paiksed objektid): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelid võivad üksteist läbida: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Seisatuse ajal ehitamine: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktiivlennukid ei kuku (tihti) väikestel lennuväljadel alla: {ORANGE} {STRING}
@@ -1603,10 +1603,10 @@ STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}OSAD EI
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF SOBIMATUS
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Liitu mänguga
-STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Värskenda servereid
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Uuenda andmeid
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Serveri info värskendamine
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Serveri otsimine
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Leia server
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Võrgust serveri otsimine
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Lisa server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pidevalt jälgitava serveri lisamine loendisse.
@@ -1933,10 +1933,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Liida te
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ehita eraldi teemärgis
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Rööbasteede ehitamine
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektriraudtee ehitamine
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Monorelsi ehitamine
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Magnethõljuktee ehitamine
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Rööbasteede ehitamine
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektriraudtee ehitamine
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorelsi ehitamine
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnethõljuktee ehitamine
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Ehita raudteed. Ctrl vahetab ehitamise eemaldamise vastu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Rööbaste ehitamine kasutades "lohistamist"
@@ -1946,7 +1946,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Ehita ra
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Ehita rööbastee signaale
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Ehita raudteesild
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Ehita rongitunnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Lülitu rööbastee ja signaalide ehitamise ja lammutamise vahel
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Vaheta rongitee, signaalide, meldepunktide ja jaamade ehitamise ja lammutamise vahel. Ctrl-klahviga eemaldatakse meldepunktid ja jaamad.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Muuda/uuenda rööpaliiki
 
 # Rail depot construction window
@@ -2108,7 +2108,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Istutab 
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Maastiku loomine
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Loo maastikule kivised alad
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Ehita tuletorn
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Loo kõrbealad.{}Eemaldamiseks klõpsa hoides all CTRL nuppu
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Määra kõrbealad.{}Eemalda Ctrl-klahviga
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Paigalda saatjamast
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Suurenda kõrgendatava/madaldatava maa-ala pindala
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Vähenda kõrgendatava/madaldatava maa-ala pindala
@@ -2161,6 +2161,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Hind: {Y
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Rahasta
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Ehita
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Rahasta
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-ala andmed
@@ -2404,6 +2406,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Väljas
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sisesta NewGRF parameetrid
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -2466,7 +2470,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<vale või vigane kaup>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <vale või vigane kaup>
-STR_NEWGRF_INVALID_ENGINE                                       :<vigane mootor>
+STR_NEWGRF_INVALID_ENGINE                                       :<sobimatu mootorimudel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<vigane tööstus>
 
 # Sign list window
@@ -2547,7 +2551,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Vajuta p
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Jaamanimed - nimel vajutades viiakse vaade jaamale. Ctrl+klõps avab jaama asukohas uue vaate.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Enam kui ühe eseme valimiseks hoia all CTRL klahvi
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mitme asja valimiseks kasuta Ctrl-klahvi
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} jaam{P "" a}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2713,10 +2717,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Lennuk -
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Kasum sellel aastal: {CURRENCY} (eelneval: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Saadaval rongid
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Saadaval sõidukid
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Saadaval laevad
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Saadaval õhusõidukid
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Saadaval rongid
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Saadaval sõidukid
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Saadaval laevad
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Saadaval õhusõidukid
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Vaata nimekirja seda tüüpi veovahenditest
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Halda nimekirja
@@ -2757,15 +2761,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Eemalda kõik s
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Rühma nime vahetamine
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Uued rööbassõidukid
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Uus elektriraudteesõiduk
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Uus monorelsssõiduk
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Uus magnethõljuksõiduk
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Uued rööbassõidukid
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Uus elektriraudteesõiduk
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Uus monorelsssõiduk
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Uus magnethõljuksõiduk
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Rööbassõidukid
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Uued mootorsõidukid
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Uued laevad
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Uus lennuk
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Rööbassõidukid
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Uued mootorsõidukid
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Uued laevad
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Uus lennuk
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Hind: {GOLD}{CURRENCY}{BLACK} Tühimass: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tippkiirus: {GOLD}{VELOCITY}{BLACK} Võimsus: {GOLD}{POWER}
@@ -2827,10 +2831,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} sõiduk{P "" id}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Rongid - et andmeid saada, vajuta rongile; liiguta vagunit, et seda rongile lisada või sellelt eemaldada
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veovahendid - andmete saamiseks klõpsa veovahendile
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laevad - info saamiseks klõpsa laevale
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lennuk - info saamiseks vajuta lennukile
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Rongid - vasaku hiireklahviga lisatakse ja eemaldatakse veeremit, paremklõpsuga saadakse teavet. Ctrl klahvi kasutatakse operatsiooni kordamiseks järgnevas ahelas.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veovahendid - paremklõpsuga näidatakse teavet
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Laevad - paremklõpsuga näidatakse teavet
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Õhusõiduk - paremklõpsuga näidatakse teavet
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Tiri rongi veok siia et müüa
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Et müüa, tiri sõiduk siia
@@ -3051,7 +3055,7 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Ülekant
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Hooldusvahemik: {LTBLUE}{COMMA}päevad{BLACK}  Viimati hooldatud: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Hooldusvahemik: {LTBLUE}{COMMA}%{BLACK}   Viimati hooldatud: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Suurenda hooldusvahemiku 10 võrra. Ctrl+Klõps suurendab hooldusvahemikku 5 võrra.
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Suurenda hooldusvahemiku 10 võrra. Ctrl-klahviga suurendatakse hooldusvahemiku 5 võrra.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Vähenda hooldusvahemiku 10 võrra. Ctrl+Klõps vähendab hooldusvahemikku 5 võrra.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Anna rongile nimi
@@ -3606,7 +3610,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Teine tu
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel lõpeks väljaspool kaarti
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ei saa tunneli teise otsa jaoks maad parajaks kaevata
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Mingi objekt on ees
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... ettevõtte peakorter on ees
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Seda maad ei saa osta...

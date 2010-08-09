@@ -1852,7 +1852,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Växla g
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Växla genomskinlighet för träd. Ctrl+klick för att låsa.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Växla genomskinlighet för byggnader. Ctrl+klick för att låsa.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Växla genomskinlighet för industrier. Ctrl+klick för att låsa.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Växla genomskinlighet för byggnader såsom stationer, depåer, riktmärken eller kedjelinje. Ctrl+klick för att låsa.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Växla genomskinlighet för byggnader såsom stationer, depåer och riktmärken. Ctrl+klick för att låsa.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Växla genomskinlighet för broar. Ctrl+klick för att låsa.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner. Ctrl+klick för att låsa.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Växla genomskinlighet för kedjebro. CTRL+klick för att låsa.
@@ -1876,10 +1876,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Slå iho
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg ett separat riktmärke
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Bygg järnväg
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektrifierad järnvägskonstruktion
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Bygg monorail
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Bygg MagLev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Bygg järnväg
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrifierad järnvägskonstruktion
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Bygg monorail
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Bygg MagLev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bygg järnväg. Ctrl växlar mellan att bygga/ta bort järnväg
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg järnvägspår genom att använda Autorail-funktionen. Ctrl växlar mellan att bygga/ta bort järnvägsspår
@@ -1889,7 +1889,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg järnvägssignaler. Ctrl växlar mellan semaforer/elektriska signaler{}Dra för att bygga signaler utmed en rak sträcka räls. Ctrl bygger signal till nästa korsning{}Ctrl+Musklick aktiverar öppning av signalväljningsfönstret
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg järnvägsbro
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg järnvägstunnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, waypoints och stationer. Håll nere Ctrl för att ta bort räls från waypoints och stationer
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, riktmärken och stationer. Håll nere Ctrl för att även ta bort räls från waypoints och stationer
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertera/Uppgradera spårtyp
 
 # Rail depot construction window
@@ -1915,7 +1915,7 @@ STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Välj vi
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Välj stationstyp att bygga
 
 STR_STATION_CLASS_DFLT                                          :Grundinställd station
-STR_STATION_CLASS_WAYP                                          :Vägpunkter
+STR_STATION_CLASS_WAYP                                          :Riktmärken
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalval
@@ -2051,7 +2051,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantera
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Skapa mark
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placera stenar i landskapet
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Placera fyrtorn
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiera ökenområde.{}Tryck och håll CTRL för att ta bort
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiera ökenområde.{}Tryck och håll Ctrl för att ta bort
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Placera radiosändare
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Öka storlek av yta att höja/sänka
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minska storlek av yta att höja/sänka
@@ -2104,6 +2104,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kostnad:
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospektera
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bygga
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Grunda
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Markområdesinformation
@@ -2180,7 +2182,7 @@ STR_LAI_STATION_DESCRIPTION_TRUCK_LOADING_AREA                  :Lastbrygga
 STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :Busshållplats
 STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Hamn
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Boj
-STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Kontrollpunkt
+STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Riktmärke
 
 STR_LAI_WATER_DESCRIPTION_WATER                                 :Vatten
 STR_LAI_WATER_DESCRIPTION_CANAL                                 :Kanal
@@ -2347,6 +2349,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Avstängd
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv NewGRF parameterar
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -2409,8 +2413,8 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} av <invalid cargo>
-STR_NEWGRF_INVALID_ENGINE                                       :<invalid engine>
-STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
+STR_NEWGRF_INVALID_ENGINE                                       :<icke giltig fordonstyp>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<icke giltig industri>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
@@ -2490,7 +2494,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klicka f
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamn - klicka på ett namn för att centrera vyn på stationen. Ctrl+Musklick öppnar en ny vy över stationens läge
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Håll nere CTRL för att markera mer än en sak
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Håll nere Ctrl för att markera mer än en sak
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P "" er}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2656,10 +2660,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flygplan
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Vinst detta år: {CURRENCY} (förra året: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Tillgängliga tåg
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Tillgängliga fordon
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Tillgängliga skepp
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Tillgängliga flyplan
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tillgängliga tåg
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Tillgängliga fordon
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Tillgängliga skepp
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Tillgängliga flyplan
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Se lista med tillgängliga motordesigner för denna fordonstyp
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Behandlingslista
@@ -2700,15 +2704,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Ta bort alla fo
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Döp om en grupp
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nytt tågfordon
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nya elektriska järnvägsfordon
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nytt monorailfordon
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nytt maglevfordon
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nytt tågfordon
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nya elektriska järnvägsfordon
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nytt monorailfordon
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nytt maglevfordon
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nya Rälsfordon
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nytt Vägfordon
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nytt skepp
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nytt flygplan
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nya Rälsfordon
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nytt Vägfordon
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nytt skepp
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nytt flygplan
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Vikt: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK} Kraft: {GOLD}{POWER}
@@ -2770,10 +2774,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} fordon{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tåg - klicka på tåg för info, drag vagn för att lägga till/ta bort från tåg
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Fordon - klicka på fordon för information
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skepp - klicka på skepp för information
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flygplan - Klicka på flygplan för information
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tåg - drag vagn/lok för att lägga till/ta bort från tåg. Högerklicka på tåg för information. Håll Ctrl nedtryckt för att respektive funktion även ska gälla resten av tåget
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Fordon - högerklicka på fordon för information
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skepp - högerklicka på skepp för information
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flygplan - högerklicka på flygplan för information
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dra tågvagn hit för att sälja den
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Dra vägfordon hit för att sälja det
@@ -3549,7 +3553,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}En annan
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunneln slutar utanför kartans gränser
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan inte gräva till marken på andra sidan av tunneln
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt i vägen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... huvudkontor i vägen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan inte köpa denna mark...

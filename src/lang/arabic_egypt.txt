@@ -1875,10 +1875,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}اربط
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW} ابني نقطة عبور مستقلة
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}بناء السكك الحديدية
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}بناء سكة القطار الكهربائية
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}بناء السكة الاحادية
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}بناء السكة الممغنطة
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :بناء السكك الحديدية
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :بناء سكة القطار الكهربائية
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :بناء السكة الاحادية
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :بناء السكة الممغنطة
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}بناء سكة حديد
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}بناء سكة القطار باستخدام البناء التلقائي
@@ -2639,10 +2639,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}الطا
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK} دخل السنة الحالية : {CURRENCY} السنة السابقة : {CURRENCY}
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}القطارات المتاحة
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}العربات المتاحة
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}السفن المتاحة
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}الطائرات المتاحة
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :القطارات المتاحة
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :العربات المتاحة
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :السفن المتاحة
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :الطائرات المتاحة
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}عرض جميع المحركات لهذا النوع من العربات
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}ادارة الوحدات
@@ -2683,15 +2683,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :أزل جميع
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}إعادة تسمية مجموعة
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}عربات قطار جديدة
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}عربات قطار كهربائية جديدة
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}عربات قطار احادي جديدة
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}عربات قطار ممغنط جديدة
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :عربات قطار جديدة
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :عربات قطار كهربائية جديدة
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :عربات قطار احادي جديدة
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :عربات قطار ممغنط جديدة
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}عربات قطار
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}عربات جديدة
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}سفن جديدة
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}طائرة جديدة
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :عربات قطار
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :عربات جديدة
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :سفن جديدة
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :طائرة جديدة
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK} التكلفة: {GOLD}{CURRENCY}{BLACK} الوزن: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}السرعة: {GOLD}{VELOCITY}{BLACK} الطاقة: {GOLD}{POWER}
@@ -3525,7 +3525,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}نفق �
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}الانفاق تنتهي خارج حدود الخريطة
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}لا يمكن تعديل الأرض في نهاية النفق
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}عائق في الطريق
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}مبنى شركة على الطريق
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}لا يمكن شراء هذة القطعة ...

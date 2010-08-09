@@ -1876,10 +1876,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Nối đ
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tạo một điểm mốc riêng rẽ
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Xây dựng đường ray
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Xây dựng đường ray điện
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Xây dựng đường ray đơn
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Xây dựng ray đệm từ
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Xây dựng đường ray
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Xây dựng đường ray điện
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Xây dựng đường ray đơn
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Xây dựng ray đệm từ
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Xây dựng đường ray. Ctrl để đổi chế độ xây/phá đường ray
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Xây dựng đường ray dùng cơ chế tự xây. Ctrl để đổi chế độ xây/phá đường ray
@@ -2104,6 +2104,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Chi phí
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Viễn cảnh
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Xây
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Góp vốn
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Thông tin về vùng đất
@@ -2347,6 +2349,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Nhập NewGRF tham số
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -2409,7 +2413,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<sai kiểu hàng>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} hàng hoá bất hợp lệ
-STR_NEWGRF_INVALID_ENGINE                                       :<sai engine>
+STR_NEWGRF_INVALID_ENGINE                                       :<sai mẫu xe>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
 
 # Sign list window
@@ -2656,10 +2660,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Máy bay
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Lợi nhuận năm nay: {CURRENCY} (năm ngoái: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Tàu sẵn có
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Xe sẵn có
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Các tàu thuỷ sẵn có
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Máy bay sẵn có
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Tàu sẵn có
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Xe sẵn có
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Các tàu thuỷ sẵn có
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Máy bay sẵn có
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Xam danh sách các động cơ thiết kế cho loại toa xe này.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Quản lý danh sách
@@ -2700,15 +2704,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Xoá tất cả
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Đổi tên nhóm
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Tàu Hỏa Mới
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Tàu Điện Mới
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Tàu Đơn Ray Mới
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Tàu Đệm Từ Mới
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Tàu Hỏa Mới
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Tàu Điện Mới
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Tàu Đơn Ray Mới
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Tàu Đệm Từ Mới
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Tàu Hỏa Mới
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Xe Cộ Mới
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Tàu Mới
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Máy Bay Mới
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Tàu Hỏa Mới
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Xe Cộ Mới
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Tàu Mới
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Máy Bay Mới
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Chi phí: {GOLD}{CURRENCY}{BLACK} Tải trọng: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Tốc độ: {GOLD}{VELOCITY}{BLACK} Công suất: {GOLD}{POWER}
@@ -2770,10 +2774,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} phương tiện{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tàu hoả - nháy vào đoàn tàu để xem chi tiết, kéo thả để thêm/bớt toa tàu
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ôtô - nháy vào ôtô để xem chi tiết
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Tàu thuỷ - nháy vào tàu thuỷ để xem chi tiết
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Máy bay - nháy vào máy bay để xem chi tiết
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tàu hoả - kéo thả để thêm/bớt toa tàu, nháy chuột phải để xem chi tiết.Giữ Ctrl để thực hiện cả chuỗi hành động nêu trên
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Ôtô - nháy chuột phải vào ôtô để xem chi tiết
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Tàu thuỷ - nháy chuột phải vào tàu thuỷ để xem chi tiết
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Máy bay - nháy chuột phải vào máy bay để xem chi tiết
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Thả toa tàu vào đây để bán nó đi
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Thả ôtô vào đây để bán nó đi
@@ -3549,7 +3553,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Có hầ
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Một đầu hầm kéo ra ngoài bản đồ
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Không thể đào đất để làm đầu kia của hầm
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Có vật thể trên đường
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... trụ sở công ty nằm trên đường
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Không thể mua được mảnh đất này...

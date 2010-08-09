@@ -1918,10 +1918,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Združi 
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zgradi ločeno točko poti
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Gradnja železnice
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Elektrificirana Železnica
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Gradnja enotirne železnice
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Gradnja magnetne železnice
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Gradnja železnice
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrificirana Železnica
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Gradnja enotirne železnice
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Gradnja magnetne železnice
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Zgradi tračnice. Ctrl preklopi gradnja/rušenje za gradnjo železnice
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gradi tire s pomočjo Samodejne gradnje. Ctrl preklopi gradnja/rušenje za gradnjo železnice
@@ -2698,10 +2698,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Letalo -
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Dobiček letos: {CURRENCY} (lani: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Vlaki na voljo
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Vozila na voljo
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Ladje na voljo
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Letala na voljo
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Vlaki na voljo
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vozila na voljo
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Ladje na voljo
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Letala na voljo
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Prikaži seznam motorjev na voljo za ta tip vozila.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Uredi seznam
@@ -2742,15 +2742,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Odstrani vsa vo
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Preimenuj eno skupino
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nova železniška vozila
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nova električna tirna vozila
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nova enotirna vozila
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nova magnetna vozila
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nova železniška vozila
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova električna tirna vozila
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova enotirna vozila
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova magnetna vozila
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Tirna vozila
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nova cestna vozila
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nove ladje
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Novo letalo
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Tirna vozila
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nova cestna vozila
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nove ladje
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novo letalo
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Teža: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hitrost: {GOLD}{VELOCITY}{BLACK} Moč: {GOLD}{POWER}
@@ -3591,7 +3591,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Obstoje�
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Predor se konča izven ozemlja
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nemogoč izkop zaključka predora na drugi strani
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ovira na poti
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sedež podjetja na poti
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nemogoč nakup tega zemljišča...

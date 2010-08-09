@@ -1499,7 +1499,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Liczba 
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :brak
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :zredukowana
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normalna
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków typu ro-ro na drogach miejskich: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków przelotowych na drogach miejskich: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Pozwól na przejazd przez przystanki należące do przeciwników: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Pozwól na budowę przylegających stacji: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Zezwól na wiele zestawów NewGRF: {ORANGE}{STRING}
@@ -2256,10 +2256,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Połącz
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj oddzielny pkt. orientacyjny
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :{WHITE}Konstrukcja torowiska
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :{WHITE}Konstrukcja torowiska elektryfikowanego
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :{WHITE}Konstrukcja torowiska jednoszynowego
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :{WHITE}Konstrukcja torowiska MagLev
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstrukcja torowiska
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Konstrukcja torowiska elektryfikowanego
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Konstrukcja torowiska jednoszynowego
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Konstrukcja torowiska MagLev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Budowa torów kolejowych. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Zbuduj tory kolejowe za pomocą trybu Autotory. Ctrl przełącza buduj/usuń dla konstrukcji kolejowych
@@ -2484,6 +2484,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Koszt: {
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Zleć poszukiwanie
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Zbuduj
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ufunduj
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacja o terenie
@@ -2727,6 +2729,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Niedostęp
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Wprowadź parametry NewGRF
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -2789,7 +2793,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<nieprawidłowy ładunek>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <nieprawidłowy ładunek>
-STR_NEWGRF_INVALID_ENGINE                                       :<nieprawidłowy silnik>
+STR_NEWGRF_INVALID_ENGINE                                       :<nieprawidłowy model pojazdu>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nieprawidłowy przemysł>
 
 # Sign list window
@@ -3036,10 +3040,10 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Samolot 
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Zysk w tym roku: {CURRENCY} (ostatni rok: {CURRENCY})
 
-STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :{BLACK}Dostępne lokomotywy
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :{BLACK}Dostępne pojazdy
-STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :{BLACK}Dostępne statki
-STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :{BLACK}Dostępny samolot
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostępne lokomotywy
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostępne pojazdy
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostępne statki
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostępny samolot
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Zobacz listę dostępnych projektów silników dla tego typu pojazdów.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Zarządzaj listą
@@ -3080,15 +3084,15 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Zmień nazwę grupy
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :{WHITE}Nowe pociągi
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :{WHITE}Nowe elektryczne pojazdy szynowe
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :{WHITE}Nowe pociągi jednoszynowe
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :{WHITE}Nowe pociągi MagLev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nowe pociągi
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nowe elektryczne pojazdy szynowe
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nowe pociągi jednoszynowe
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nowe pociągi MagLev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :{WHITE}Nowe Pojazdy Szynowe
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :{WHITE}Nowy pojazd drogowy
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :{WHITE}Nowe statki
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :{WHITE}Nowy samolot
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nowe Pojazdy Szynowe
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nowy pojazd drogowy
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nowe statki
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nowy samolot
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Waga: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędkość: {GOLD}{VELOCITY}{BLACK} Moc: {GOLD}{POWER}
@@ -3150,10 +3154,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} pojazd{P "" y ów}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - kliknij na pociągu aby uzyskać informacje, przeciągnij pojazd/wagon aby dodać/usunąć z pociągu
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - klik na pojeździe po więcej informacji
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - kliknij aby uzyskać informacje o statku
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - klik na samolocie aby uzyskać informacje
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd/wagon przytrzymując lewy klawisz myszy aby go dodać/usunąć ze składu pociągu, prawy-klik na pociągu aby uzyskać informacje, przytrzymując ctrl dla podanych akcji stosuje zmiany do całego składu pociągu
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - prawy-klik na pojeździe po więcej informacji
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - prawy-kliknij aby uzyskać informacje o statku
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - prawy-klik na samolocie aby uzyskać informacje
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Przeciągnij tutaj pociąg aby go sprzedać
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Przeciągnij tutaj samochód aby go sprzedać
@@ -3935,7 +3939,7 @@ STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Inny tun
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Koniec tunelu poza mapą
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nie można wydrążyć drugiego końca tunelu
 
-# Unmovable related errors
+# Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Obiekt na drodze
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... siedziba firmy na drodze
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nie można nabyć tego terenu...
