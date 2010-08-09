@@ -113,7 +113,7 @@ void str_validate(char *str, const char *last, bool allow_newlines, bool ignore)
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
 
 	char *dst = str;
-	while (*str != '\0') {
+	while (str <= last && *str != '\0') {
 		size_t len = Utf8EncodedCharLen(*str);
 		/* If the character is unknown, i.e. encoded length is 0
 		 * we assume worst case for the length check.
@@ -146,6 +146,16 @@ void str_validate(char *str, const char *last, bool allow_newlines, bool ignore)
 			/* Replace the undesirable character with a question mark */
 			str += len;
 			if (!ignore) *dst++ = '?';
+
+			/* In case of these two special cases assume that they really
+			 * mean SETX/SETXY and also "eat" the paramater. If this was
+			 * not the case the string was broken to begin with and this
+			 * would not break much more. */
+			if (c == SCC_SETX) {
+				str++;
+			} else if (c == SCC_SETXY) {
+				str += 2;
+			}
 		}
 	}
 

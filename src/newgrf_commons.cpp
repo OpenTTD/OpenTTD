@@ -322,6 +322,7 @@ uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 					has_snow = (GetTileMaxZ(tile) > GetSnowLine());
 					break;
 
+				case MP_VOID:
 				case MP_WATER:
 					has_snow = (GetTileZ(tile) > GetSnowLine());
 					break;
