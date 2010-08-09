@@ -21,6 +21,7 @@
 
 #include "saveload_internal.h"
 #include "oldloader.h"
+#include <exception>
 
 enum {
 	TTO_HEADER_SIZE = 41,
@@ -51,13 +52,14 @@ static byte ReadByteFromFile(LoadgameState *ls)
 	/* To avoid slow reads, we read BUFFER_SIZE of bytes per time
 	and just return a byte per time */
 	if (ls->buffer_cur >= ls->buffer_count) {
+
 		/* Read some new bytes from the file */
 		int count = (int)fread(ls->buffer, 1, BUFFER_SIZE, ls->file);
 
 		/* We tried to read, but there is nothing in the file anymore.. */
 		if (count == 0) {
 			DEBUG(oldloader, 0, "Read past end of file, loading failed");
-			ls->failed = true;
+			throw std::exception();
 		}
 
 		ls->buffer_count = count;
@@ -121,8 +123,6 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 		if (chunk->type & OC_DEREFERENCE_POINTER) ptr = *(byte**)ptr;
 
 		for (uint i = 0; i < chunk->amount; i++) {
-			if (ls->failed) return false;
-
 			/* Handle simple types */
 			if (GetOldChunkType(chunk->type) != 0) {
 				switch (GetOldChunkType(chunk->type)) {
@@ -137,7 +137,7 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 
 					case OC_ASSERT:
 						DEBUG(oldloader, 4, "Assert point: 0x%X / 0x%X", ls->total_read, chunk->offset + _bump_assert_value);
-						if (ls->total_read != chunk->offset + _bump_assert_value) ls->failed = true;
+						if (ls->total_read != chunk->offset + _bump_assert_value) throw std::exception();
 					default: break;
 				}
 			} else {
@@ -191,7 +191,6 @@ static void InitLoading(LoadgameState *ls)
 {
 	ls->chunk_size   = 0;
 	ls->total_read   = 0;
-	ls->failed       = false;
 
 	ls->decoding     = false;
 	ls->decode_char  = 0;
@@ -303,7 +302,14 @@ bool LoadOldSaveGame(const char *file)
 
 	_savegame_type = type;
 
-	if (proc == NULL || !proc(&ls)) {
+	bool game_loaded;
+	try {
+		game_loaded = proc != NULL && proc(&ls);
+	} catch (...) {
+		game_loaded = false;
+	}
+
+	if (!game_loaded) {
 		SetSaveLoadError(STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED);
 		fclose(ls.file);
 		return false;

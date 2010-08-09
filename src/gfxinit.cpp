@@ -201,6 +201,8 @@ void GfxLoadSprites()
 	GfxInitSpriteMem();
 	LoadSpriteTables();
 	GfxInitPalettes();
+
+	UpdateCursorSize();
 }
 
 bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path, const char *full_filename)

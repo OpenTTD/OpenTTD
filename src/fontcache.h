@@ -53,6 +53,7 @@ uint GetGlyphWidth(FontSize size, uint32 key);
  * @param settings the settings to overwrite the fontname of.
  * @param language_isocode the language, e.g. en_GB.
  * @param winlangid the language ID windows style.
+ * @param str Sample string.
  * @return true if a font has been set, false otherwise.
  */
 bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, const char *str);

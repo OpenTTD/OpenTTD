@@ -33,7 +33,6 @@ struct LoadgameState {
 	byte buffer[BUFFER_SIZE];
 
 	uint total_read;
-	bool failed;
 };
 
 /* OldChunk-Type */

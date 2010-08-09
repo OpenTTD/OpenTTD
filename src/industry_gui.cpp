@@ -206,6 +206,7 @@ public:
 		this->callback_timer = DAY_TICKS;
 
 		this->InitNested(&_build_industry_desc, 0);
+		this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
