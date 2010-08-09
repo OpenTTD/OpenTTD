@@ -685,7 +685,6 @@
     <ClCompile Include="..\src\company_cmd.cpp" />
     <ClCompile Include="..\src\depot_cmd.cpp" />
     <ClCompile Include="..\src\disaster_cmd.cpp" />
-    <ClCompile Include="..\src\dummy_land.cpp" />
     <ClCompile Include="..\src\group_cmd.cpp" />
     <ClCompile Include="..\src\industry_cmd.cpp" />
     <ClCompile Include="..\src\misc_cmd.cpp" />
@@ -704,6 +703,7 @@
     <ClCompile Include="..\src\tree_cmd.cpp" />
     <ClCompile Include="..\src\tunnelbridge_cmd.cpp" />
     <ClCompile Include="..\src\vehicle_cmd.cpp" />
+    <ClCompile Include="..\src\void_cmd.cpp" />
     <ClCompile Include="..\src\water_cmd.cpp" />
     <ClCompile Include="..\src\waypoint_cmd.cpp" />
     <ClCompile Include="..\src\saveload\afterload.cpp" />

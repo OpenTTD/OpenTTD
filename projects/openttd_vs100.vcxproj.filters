@@ -1258,9 +1258,6 @@
     <ClCompile Include="..\src\disaster_cmd.cpp">
       <Filter>Command handlers</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\dummy_land.cpp">
-      <Filter>Command handlers</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\group_cmd.cpp">
       <Filter>Command handlers</Filter>
     </ClCompile>
@@ -1313,6 +1310,9 @@
       <Filter>Command handlers</Filter>
     </ClCompile>
     <ClCompile Include="..\src\vehicle_cmd.cpp">
+      <Filter>Command handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\void_cmd.cpp">
       <Filter>Command handlers</Filter>
     </ClCompile>
     <ClCompile Include="..\src\water_cmd.cpp">

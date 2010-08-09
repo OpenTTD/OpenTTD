@@ -2024,10 +2024,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\dummy_land.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\group_cmd.cpp"
 				>
 			</File>
@@ -2097,6 +2093,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\vehicle_cmd.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\void_cmd.cpp"
 				>
 			</File>
 			<File

@@ -434,7 +434,6 @@ clear_cmd.cpp
 company_cmd.cpp
 depot_cmd.cpp
 disaster_cmd.cpp
-dummy_land.cpp
 group_cmd.cpp
 industry_cmd.cpp
 misc_cmd.cpp
@@ -453,6 +452,7 @@ train_cmd.cpp
 tree_cmd.cpp
 tunnelbridge_cmd.cpp
 vehicle_cmd.cpp
+void_cmd.cpp
 water_cmd.cpp
 waypoint_cmd.cpp
 
