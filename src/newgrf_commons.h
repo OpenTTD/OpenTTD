@@ -21,6 +21,7 @@
 enum TileContext {
 	TC_NORMAL,         ///< Nothing special.
 	TC_UPPER_HALFTILE, ///< Querying information about the upper part of a tile with halftile foundation.
+	TC_ON_BRIDGE,      ///< Querying information about stuff on the bridge (via some bridgehead).
 };
 
 /**

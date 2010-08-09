@@ -503,14 +503,14 @@ void DrawCatenaryOnBridge(const TileInfo *ti)
 
 	height = GetBridgeHeight(end);
 
-	SpriteID wire_base = GetWireBase(end);
+	SpriteID wire_base = GetWireBase(end, TC_ON_BRIDGE);
 
 	AddSortableSpriteToDraw(wire_base + sss->image_offset, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
 		sss->x_size, sss->y_size, sss->z_size, height + sss->z_offset,
 		IsTransparencySet(TO_CATENARY)
 	);
 
-	SpriteID pylon_base = GetPylonBase(end);
+	SpriteID pylon_base = GetPylonBase(end, TC_ON_BRIDGE);
 
 	/* Finished with wires, draw pylons
 	 * every other tile needs a pylon on the northern end */
