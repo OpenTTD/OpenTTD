@@ -491,11 +491,20 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 							Owner owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 							if (owner != OWNER_NONE && !CheckOwnership(owner, tile)) return CMD_ERROR;
 
-							if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+							DisallowedRoadDirections dis_existing = GetDisallowedRoadDirections(tile);
+							DisallowedRoadDirections dis_new      = dis_existing ^ toggle_drd;
+
+							/* We allow removing disallowed directions to break up
+							 * deadlocks, but adding them can break articulated
+							 * vehicles. As such, only when less is disallowed,
+							 * i.e. bits are removed, we skip the vehicle check. */
+							if (CountBits(dis_existing) <= CountBits(dis_new)) {
+								if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+							}
 
 							/* Ignore half built tiles */
 							if ((flags & DC_EXEC) && rt != ROADTYPE_TRAM && IsStraightRoad(existing)) {
-								SetDisallowedRoadDirections(tile, GetDisallowedRoadDirections(tile) ^ toggle_drd);
+								SetDisallowedRoadDirections(tile, dis_new);
 								MarkTileDirtyByTile(tile);
 							}
 							return CommandCost();
