@@ -32,7 +32,7 @@ public:
 
 class FMusicDriver_DMusic: public MusicDriverFactory<FMusicDriver_DMusic> {
 public:
-	static const int priority = 5;
+	static const int priority = 10;
 	/* virtual */ const char *GetName() { return "dmusic"; }
 	/* virtual */ const char *GetDescription() { return "DirectMusic MIDI Driver"; }
 	/* virtual */ Driver *CreateInstance() { return new MusicDriver_DMusic(); }
