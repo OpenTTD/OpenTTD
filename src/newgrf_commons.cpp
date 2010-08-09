@@ -297,7 +297,7 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
  * @return value corresponding to the grf expected format:
  *         Terrain type: 0 normal, 1 desert, 2 rainforest, 4 on or above snowline
  */
-uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
+uint32 GetTerrainType(TileIndex tile, TileContext context)
 {
 	switch (_settings_game.game_creation.landscape) {
 		case LT_TROPIC: return GetTropicZone(tile);
@@ -314,7 +314,7 @@ uint32 GetTerrainType(TileIndex tile, bool upper_halftile)
 					/* During map generation the snowstate may not be valid yet, as the tileloop may not have run yet. */
 					if (_generating_world) goto genworld; // we do not care about foundations here
 					RailGroundType ground = GetRailGroundType(tile);
-					has_snow = (ground == RAIL_GROUND_ICE_DESERT || (upper_halftile && ground == RAIL_GROUND_HALF_SNOW));
+					has_snow = (ground == RAIL_GROUND_ICE_DESERT || (context == TC_UPPER_HALFTILE && ground == RAIL_GROUND_HALF_SNOW));
 					break;
 				}
 

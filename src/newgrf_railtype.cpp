@@ -55,7 +55,7 @@ static uint32 RailTypeGetVariable(const ResolverObject *object, byte variable, b
 	}
 
 	switch (variable) {
-		case 0x40: return GetTerrainType(tile, object->u.routes.upper_halftile);
+		case 0x40: return GetTerrainType(tile, object->u.routes.context);
 		case 0x41: return 0;
 		case 0x42: return IsLevelCrossingTile(tile) && IsCrossingBarred(tile);
 		case 0x43:
@@ -76,7 +76,7 @@ static const SpriteGroup *RailTypeResolveReal(const ResolverObject *object, cons
 	return NULL;
 }
 
-static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, bool upper_halftile)
+static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, TileContext context)
 {
 	res->GetRandomBits = &RailTypeGetRandomBits;
 	res->GetTriggers   = &RailTypeGetTriggers;
@@ -85,7 +85,7 @@ static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, bool
 	res->ResolveReal   = &RailTypeResolveReal;
 
 	res->u.routes.tile = tile;
-	res->u.routes.upper_halftile = upper_halftile;
+	res->u.routes.context = context;
 
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
@@ -96,7 +96,7 @@ static inline void NewRailTypeResolver(ResolverObject *res, TileIndex tile, bool
 	res->count           = 0;
 }
 
-SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, bool upper_halftile)
+SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context)
 {
 	assert(rtsg < RTSG_END);
 
@@ -105,7 +105,7 @@ SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSp
 	const SpriteGroup *group;
 	ResolverObject object;
 
-	NewRailTypeResolver(&object, tile, upper_halftile);
+	NewRailTypeResolver(&object, tile, context);
 
 	group = SpriteGroup::Resolve(rti->group[rtsg], &object);
 	if (group == NULL || group->GetNumResults() == 0) return 0;
@@ -135,5 +135,5 @@ uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile)
  */
 void GetRailTypeResolver(ResolverObject *ro, uint index)
 {
-	NewRailTypeResolver(ro, index, false);
+	NewRailTypeResolver(ro, index, TC_NORMAL);
 }

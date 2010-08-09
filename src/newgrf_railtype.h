@@ -13,8 +13,9 @@
 #define NEWGRF_RAILTYPE_H
 
 #include "rail.h"
+#include "newgrf_commons.h"
 
-SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, bool upper_halftile = false);
+SpriteID GetCustomRailSprite(const RailtypeInfo *rti, TileIndex tile, RailTypeSpriteGroup rtsg, TileContext context = TC_NORMAL);
 
 uint8 GetReverseRailTypeTranslation(RailType railtype, const GRFFile *grffile);
 

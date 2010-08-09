@@ -166,20 +166,20 @@ static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 /**
  * Get the base wire sprite to use.
  */
-static inline SpriteID GetWireBase(TileIndex tile, bool upper_halftile = false)
+static inline SpriteID GetWireBase(TileIndex tile, TileContext context = TC_NORMAL)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-	SpriteID wires = GetCustomRailSprite(rti, tile, RTSG_WIRES, upper_halftile);
+	SpriteID wires = GetCustomRailSprite(rti, tile, RTSG_WIRES, context);
 	return wires == 0 ? SPR_WIRE_BASE : wires;
 }
 
 /**
  * Get the base pylon sprite to use.
  */
-static inline SpriteID GetPylonBase(TileIndex tile, bool upper_halftile = false)
+static inline SpriteID GetPylonBase(TileIndex tile, TileContext context = TC_NORMAL)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-	SpriteID pylons = GetCustomRailSprite(rti, tile, RTSG_PYLONS, upper_halftile);
+	SpriteID pylons = GetCustomRailSprite(rti, tile, RTSG_PYLONS, context);
 	return pylons == 0 ? SPR_PYLON_BASE : pylons;
 }
 
@@ -303,7 +303,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	AdjustTileh(ti->tile, &tileh[TS_HOME]);
 
 	SpriteID pylon_normal = GetPylonBase(ti->tile);
-	SpriteID pylon_halftile = (halftile_corner != CORNER_INVALID) ? GetPylonBase(ti->tile, true) : pylon_normal;
+	SpriteID pylon_halftile = (halftile_corner != CORNER_INVALID) ? GetPylonBase(ti->tile, TC_UPPER_HALFTILE) : pylon_normal;
 
 	for (DiagDirection i = DIAGDIR_BEGIN; i < DIAGDIR_END; i++) {
 		static const uint edge_corners[] = {
@@ -442,7 +442,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	}
 
 	SpriteID wire_normal = GetWireBase(ti->tile);
-	SpriteID wire_halftile = (halftile_corner != CORNER_INVALID) ? GetWireBase(ti->tile, true) : wire_normal;
+	SpriteID wire_halftile = (halftile_corner != CORNER_INVALID) ? GetWireBase(ti->tile, TC_UPPER_HALFTILE) : wire_normal;
 	Track halftile_track;
 	switch (halftile_corner) {
 		case CORNER_W: halftile_track = TRACK_LEFT; break;

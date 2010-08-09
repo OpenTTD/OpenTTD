@@ -22,6 +22,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_generic.h"
 #include "newgrf_storage.h"
+#include "newgrf_commons.h"
 
 /**
  * Gets the value of a so-called newgrf "register".
@@ -346,7 +347,7 @@ struct ResolverObject {
 		} generic;
 		struct {
 			TileIndex tile;
-			bool upper_halftile;           ///< Are we resolving sprites for the upper halftile?
+			TileContext context;           ///< Are we resolving sprites for the upper halftile, or on a bridge?
 		} routes;
 		struct {
 			const struct Station *st;      ///< Station of the airport for which the callback is run, or NULL for build gui.
