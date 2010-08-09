@@ -65,6 +65,13 @@ No suitable AI can be found
 	"AI Settings" -> "Select AI" -> "Check Online Content" which is also
 	accessed via the main menu.
 
+After a while of playing, colours get corrupted
+	In Windows 7 the background slideshow corrupts the colour mapping of
+	OpenTTD's 8bpp screen modes. Workarounds for this are:
+		a) Switching to windowed mode, instead of fullscreen
+		b) Switching off background slideshow
+		c) Setting up the 32bpp-anim or 32bpp-optimized blitter
+
 Long delay between switching songs/music
 	On Windows there is a delay of a (few) second(s) between switching of
 	songs for the "win32" driver. This delay is caused by the fact that
@@ -201,3 +208,9 @@ OpenTTD not properly resizing with SDL on X [FS#3305]
 	Window managers that are known to exhibit this behaviour are KDE's
 	and GNOME's. With the XFCE's and LXDE's window managers the resize
 	event is sent when the user releases the mouse.
+
+Crashes when playing music [FS#3941]
+	Mac OS X's QuickTime (default music driver) and Windows' MCI (win32
+	music driver) crash on some songs from OpenMSX. OpenTTD cannot do
+	anything about this. Please report these crashes to the authors of
+	OpenMSX so the crash causing songs can be removed or fixed.
