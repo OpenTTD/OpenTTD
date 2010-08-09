@@ -346,7 +346,7 @@ struct ResolverObject {
 			uint8 station_size;
 		} generic;
 		struct {
-			TileIndex tile;
+			TileIndex tile;                ///< Tracktile. For track on a bridge this is the southern bridgehead.
 			TileContext context;           ///< Are we resolving sprites for the upper halftile, or on a bridge?
 		} routes;
 		struct {
