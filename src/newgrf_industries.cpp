@@ -397,7 +397,7 @@ uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, In
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	group = SpriteGroup::Resolve(GetIndustrySpec(type)->grf_prop.spritegroup, &object);
+	group = SpriteGroup::Resolve(GetIndustrySpec(type)->grf_prop.spritegroup[0], &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -483,7 +483,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 	object.callback = CBID_INDUSTRY_LOCATION;
 	_industry_creation_random_bits = seed;
 
-	group = SpriteGroup::Resolve(GetIndustrySpec(type)->grf_prop.spritegroup, &object);
+	group = SpriteGroup::Resolve(GetIndustrySpec(type)->grf_prop.spritegroup[0], &object);
 
 	/* Unlike the "normal" cases, not having a valid result means we allow
 	 * the building of the industry, as that's how it's done in TTDP. */
@@ -552,7 +552,7 @@ void IndustryProductionCallback(Industry *ind, int reason)
 		}
 
 		SB(object.callback_param2, 8, 16, loop);
-		const SpriteGroup *tgroup = SpriteGroup::Resolve(spec->grf_prop.spritegroup, &object);
+		const SpriteGroup *tgroup = SpriteGroup::Resolve(spec->grf_prop.spritegroup[0], &object);
 		if (tgroup == NULL || tgroup->type != SGT_INDUSTRY_PRODUCTION) break;
 		const IndustryProductionSpriteGroup *group = (const IndustryProductionSpriteGroup *)tgroup;
 

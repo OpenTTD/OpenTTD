@@ -251,7 +251,7 @@ uint16 GetAirportTileCallback(CallbackID callback, uint32 param1, uint32 param2,
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	group = SpriteGroup::Resolve(AirportTileSpec::Get(gfx_id)->grf_prop.spritegroup, &object);
+	group = SpriteGroup::Resolve(AirportTileSpec::Get(gfx_id)->grf_prop.spritegroup[0], &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -293,7 +293,7 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const Airport
 
 	AirportTileResolver(&object, gfx, ti->tile, st);
 
-	group = SpriteGroup::Resolve(airts->grf_prop.spritegroup, &object);
+	group = SpriteGroup::Resolve(airts->grf_prop.spritegroup[0], &object);
 	if (group == NULL || group->type != SGT_TILELAYOUT) {
 		return false;
 	}

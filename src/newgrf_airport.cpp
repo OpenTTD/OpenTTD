@@ -223,7 +223,7 @@ SpriteID GetCustomAirportSprite(const AirportSpec *as, byte layout)
 
 	NewAirportResolver(&object, INVALID_TILE, NULL, as->GetIndex(), layout);
 
-	group = SpriteGroup::Resolve(as->grf_prop.spritegroup, &object);
+	group = SpriteGroup::Resolve(as->grf_prop.spritegroup[0], &object);
 	if (group == NULL) return as->preview_sprite;
 
 	return group->GetResult();
@@ -238,7 +238,7 @@ uint16 GetAirportCallback(CallbackID callback, uint32 param1, uint32 param2, Sta
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	const SpriteGroup *group = SpriteGroup::Resolve(st->airport.GetSpec()->grf_prop.spritegroup, &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(st->airport.GetSpec()->grf_prop.spritegroup[0], &object);
 	if (group == NULL) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -252,7 +252,7 @@ StringID GetAirportTextCallback(const AirportSpec *as, byte layout, uint16 callb
 	NewAirportResolver(&object, INVALID_TILE, NULL, as->GetIndex(), layout);
 	object.callback = (CallbackID)callback;
 
-	group = SpriteGroup::Resolve(as->grf_prop.spritegroup, &object);
+	group = SpriteGroup::Resolve(as->grf_prop.spritegroup[0], &object);
 	if (group == NULL) return STR_UNDEFINED;
 
 	return GetGRFStringID(as->grf_prop.grffile->grfid, 0xD000 + group->GetResult());

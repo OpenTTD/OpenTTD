@@ -212,7 +212,7 @@ uint16 GetIndustryTileCallback(CallbackID callback, uint32 param1, uint32 param2
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	group = SpriteGroup::Resolve(GetIndustryTileSpec(gfx_id)->grf_prop.spritegroup, &object);
+	group = SpriteGroup::Resolve(GetIndustryTileSpec(gfx_id)->grf_prop.spritegroup[0], &object);
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->GetCallbackResult();
@@ -236,7 +236,7 @@ bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const Indus
 
 	NewIndustryTileResolver(&object, gfx, ti->tile, i);
 
-	group = SpriteGroup::Resolve(inds->grf_prop.spritegroup, &object);
+	group = SpriteGroup::Resolve(inds->grf_prop.spritegroup[0], &object);
 	if (group == NULL || group->type != SGT_TILELAYOUT) {
 		return false;
 	} else {
@@ -426,7 +426,7 @@ static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, I
 	object.callback = CBID_RANDOM_TRIGGER;
 	object.trigger = trigger;
 
-	const SpriteGroup *group = SpriteGroup::Resolve(itspec->grf_prop.spritegroup, &object);
+	const SpriteGroup *group = SpriteGroup::Resolve(itspec->grf_prop.spritegroup[0], &object);
 	if (group == NULL) return;
 
 	byte new_random_bits = Random();

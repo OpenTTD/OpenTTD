@@ -47,7 +47,7 @@ typedef byte *StationLayout;
 
 /** Station specification. */
 struct StationSpec {
-	GRFFilePropsBase grf_prop; ///< Properties related the the grf file
+	GRFFilePropsBase<0> grf_prop; ///< Properties related the the grf file
 	StationClassID cls_id;     ///< The class to which this spec belongs.
 	StringID name;             ///< Name of this station.
 

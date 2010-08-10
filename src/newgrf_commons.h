@@ -135,25 +135,31 @@ uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);
 uint32 GetNearbyTileInformation(TileIndex tile);
 
-/** Data related to the handling of grf files. */
+/**
+ * Data related to the handling of grf files.
+ * @tparam Tcnt Number of spritegroups
+ */
+template <size_t Tcnt>
 struct GRFFilePropsBase {
-	/** Set all data constructor for the props. */
-	GRFFilePropsBase(uint local_id, const struct GRFFile *grffile) : local_id(local_id), grffile(grffile) {}
-	/** Simple constructor for the props. */
-	GRFFilePropsBase() {}
-	uint16 local_id;                      ///< id defined by the grf file for this entity
-	const struct GRFFile *grffile;        ///< grf file that introduced this entity
+	/* The lack of constructor means the default zero-ing constructor is used. */
+	uint16 local_id;                             ///< id defined by the grf file for this entity
+	const struct GRFFile *grffile;               ///< grf file that introduced this entity
+	const struct SpriteGroup *spritegroup[Tcnt]; ///< pointer to the different sprites of the entity
 };
 
 /** Data related to the handling of grf files. */
-struct GRFFileProps : GRFFilePropsBase {
+struct GRFFileProps : GRFFilePropsBase<1> {
 	/** Set all default data constructor for the props. */
 	GRFFileProps(uint16 subst_id) :
-			GRFFilePropsBase(0, NULL), subst_id(subst_id), spritegroup(NULL), override(subst_id) {}
+			GRFFilePropsBase<1>(), subst_id(subst_id), override(subst_id)
+	{
+		/* Check whether the constructor did comply with the specs. */
+		assert(this->spritegroup[0] == NULL);
+	}
+
 	/** Simple constructor for the props. */
-	GRFFileProps() : GRFFilePropsBase() {}
+	GRFFileProps() : GRFFilePropsBase<1>() {}
 	uint16 subst_id;
-	struct SpriteGroup *spritegroup;      ///< pointer to the different sprites of the entity
 	uint16 override;                      ///< id of the entity been replaced by
 };
 
