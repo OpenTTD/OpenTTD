@@ -61,7 +61,7 @@ static const NIVariable _niv_vehicles[] = {
 };
 
 class NIHVehicle : public NIHelper {
-	bool IsInspectable(uint index) const                 { return Engine::Get(Vehicle::Get(index)->engine_type)->grffile != NULL; }
+	bool IsInspectable(uint index) const                 { return Engine::Get(Vehicle::Get(index)->engine_type)->grf_prop.grffile != NULL; }
 	uint GetParent(uint index) const                     { const Vehicle *first = Vehicle::Get(index)->First(); return GetInspectWindowNumber(GetGrfSpecFeature(first->type), first->index); }
 	const void *GetInstance(uint index)const             { return Vehicle::Get(index); }
 	const void *GetSpec(uint index) const                { return Engine::Get(Vehicle::Get(index)->engine_type); }

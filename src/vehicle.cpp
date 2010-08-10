@@ -200,7 +200,7 @@ uint Vehicle::Crash(bool flooded)
 void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRFBugs bug_type, bool critical)
 {
 	const Engine *e = Engine::Get(engine);
-	uint32 grfid = e->grffile->grfid;
+	uint32 grfid = e->grf_prop.grffile->grfid;
 	GRFConfig *grfconfig = GetGRFConfig(grfid);
 
 	if (!HasBit(grfconfig->grf_bugs, bug_type)) {

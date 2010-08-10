@@ -74,7 +74,7 @@ Engine::Engine() :
 Engine::Engine(VehicleType type, EngineID base)
 {
 	this->type = type;
-	this->internal_id = base;
+	this->grf_prop.local_id = base;
 	this->list_position = base;
 
 	/* Check if this base engine is within the original engine data range */
@@ -241,7 +241,7 @@ Money Engine::GetRunningCost() const
 		default: NOT_REACHED();
 	}
 
-	return GetPrice(base_price, cost_factor, this->grffile, -8);
+	return GetPrice(base_price, cost_factor, this->grf_prop.grffile, -8);
 }
 
 /**
@@ -281,7 +281,7 @@ Money Engine::GetCost() const
 		default: NOT_REACHED();
 	}
 
-	return GetPrice(base_price, cost_factor, this->grffile, -8);
+	return GetPrice(base_price, cost_factor, this->grf_prop.grffile, -8);
 }
 
 /**

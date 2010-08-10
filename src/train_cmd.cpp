@@ -98,9 +98,9 @@ static void RailVehicleLengthChanged(const Train *u)
 {
 	/* show a warning once for each engine in whole game and once for each GRF after each game load */
 	const Engine *engine = Engine::Get(u->engine_type);
-	uint32 grfid = engine->grffile->grfid;
+	uint32 grfid = engine->grf_prop.grffile->grfid;
 	GRFConfig *grfconfig = GetGRFConfig(grfid);
-	if (GamelogGRFBugReverse(grfid, engine->internal_id) || !HasBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH)) {
+	if (GamelogGRFBugReverse(grfid, engine->grf_prop.local_id) || !HasBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH)) {
 		ShowNewGrfVehicleError(u->engine_type, STR_NEWGRF_BROKEN, STR_NEWGRF_BROKEN_VEHICLE_LENGTH, GBUG_VEH_LENGTH, true);
 	}
 }
@@ -458,9 +458,9 @@ int Train::GetDisplayImageWidth(Point *offset) const
 	int vehicle_pitch = 0;
 
 	const Engine *e = Engine::Get(this->engine_type);
-	if (e->grffile != NULL && is_custom_sprite(e->u.rail.image_index)) {
-		reference_width = e->grffile->traininfo_vehicle_width;
-		vehicle_pitch = e->grffile->traininfo_vehicle_pitch;
+	if (e->grf_prop.grffile != NULL && is_custom_sprite(e->u.rail.image_index)) {
+		reference_width = e->grf_prop.grffile->traininfo_vehicle_width;
+		vehicle_pitch = e->grf_prop.grffile->traininfo_vehicle_pitch;
 	}
 
 	if (offset != NULL) {
@@ -505,8 +505,8 @@ static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y)
 	if (is_custom_sprite(spritenum)) {
 		SpriteID sprite = GetCustomVehicleIcon(engine, dir);
 		if (sprite != 0) {
-			if (e->grffile != NULL) {
-				y += e->grffile->traininfo_vehicle_pitch;
+			if (e->grf_prop.grffile != NULL) {
+				y += e->grf_prop.grffile->traininfo_vehicle_pitch;
 			}
 			return sprite;
 		}
@@ -3984,7 +3984,7 @@ Money Train::GetRunningCost() const
 		/* Halve running cost for multiheaded parts */
 		if (v->IsMultiheaded()) cost_factor /= 2;
 
-		cost += GetPrice(e->u.rail.running_cost_class, cost_factor, e->grffile);
+		cost += GetPrice(e->u.rail.running_cost_class, cost_factor, e->grf_prop.grffile);
 	} while ((v = v->GetNextVehicle()) != NULL);
 
 	return cost;

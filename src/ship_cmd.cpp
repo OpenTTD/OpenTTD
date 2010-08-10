@@ -162,7 +162,7 @@ Money Ship::GetRunningCost() const
 {
 	const Engine *e = Engine::Get(this->engine_type);
 	uint cost_factor = GetVehicleProperty(this, PROP_SHIP_RUNNING_COST_FACTOR, e->u.ship.running_cost);
-	return GetPrice(PR_RUNNING_SHIP, cost_factor, e->grffile);
+	return GetPrice(PR_RUNNING_SHIP, cost_factor, e->grf_prop.grffile);
 }
 
 void Ship::OnNewDay()

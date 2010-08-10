@@ -92,12 +92,12 @@ void UnloadWagonOverrides(Engine *e)
 void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
 {
 	Engine *e = Engine::Get(engine);
-	assert(cargo < lengthof(e->group));
+	assert(cargo < lengthof(e->grf_prop.spritegroup));
 
-	if (e->group[cargo] != NULL) {
+	if (e->grf_prop.spritegroup[cargo] != NULL) {
 		grfmsg(6, "SetCustomEngineSprites: engine %d cargo %d already has group -- replacing", engine, cargo);
 	}
-	e->group[cargo] = group;
+	e->grf_prop.spritegroup[cargo] = group;
 }
 
 
@@ -110,7 +110,7 @@ void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *grou
 void SetEngineGRF(EngineID engine, const GRFFile *file)
 {
 	Engine *e = Engine::Get(engine);
-	e->grffile = file;
+	e->grf_prop.grffile = file;
 }
 
 
@@ -121,7 +121,7 @@ void SetEngineGRF(EngineID engine, const GRFFile *file)
  */
 const GRFFile *GetEngineGRF(EngineID engine)
 {
-	return Engine::Get(engine)->grffile;
+	return Engine::Get(engine)->grf_prop.grffile;
 }
 
 
@@ -655,12 +655,12 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		/* Variables which use the parameter */
 		case 0x60: // Count consist's engine ID occurance
 			//EngineID engine = GetNewEngineID(GetEngineGRF(v->engine_type), v->type, parameter);
-			if (v->type != VEH_TRAIN) return Engine::Get(v->engine_type)->internal_id == parameter;
+			if (v->type != VEH_TRAIN) return Engine::Get(v->engine_type)->grf_prop.local_id == parameter;
 
 			{
 				uint count = 0;
 				for (; v != NULL; v = v->Next()) {
-					if (Engine::Get(v->engine_type)->internal_id == parameter) count++;
+					if (Engine::Get(v->engine_type)->grf_prop.local_id == parameter) count++;
 				}
 				return count;
 			}
@@ -745,8 +745,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x43: return GB(v->max_age, 8, 8);
 		case 0x44: return Clamp(v->build_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 		case 0x45: return v->unitnumber;
-		case 0x46: return Engine::Get(v->engine_type)->internal_id;
-		case 0x47: return GB(Engine::Get(v->engine_type)->internal_id, 8, 8);
+		case 0x46: return Engine::Get(v->engine_type)->grf_prop.local_id;
+		case 0x47: return GB(Engine::Get(v->engine_type)->grf_prop.local_id, 8, 8);
 		case 0x48:
 			if (v->type != VEH_TRAIN || v->spritenum != 0xFD) return v->spritenum;
 			return HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION) ? 0xFE : 0xFD;
@@ -877,7 +877,7 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 	res->count           = 0;
 
 	const Engine *e = Engine::Get(engine_type);
-	res->grffile         = (e != NULL ? e->grffile : NULL);
+	res->grffile         = (e != NULL ? e->grf_prop.grffile : NULL);
 }
 
 
@@ -914,12 +914,12 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 
 	const Engine *e = Engine::Get(engine);
 
-	assert(cargo < lengthof(e->group));
-	group = e->group[cargo];
+	assert(cargo < lengthof(e->grf_prop.spritegroup));
+	group = e->grf_prop.spritegroup[cargo];
 	if (group != NULL) return group;
 
 	/* Fall back to the default set if the selected cargo type is not defined */
-	return e->group[CT_DEFAULT];
+	return e->grf_prop.spritegroup[CT_DEFAULT];
 }
 
 
@@ -1133,10 +1133,10 @@ void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
 uint ListPositionOfEngine(EngineID engine)
 {
 	const Engine *e = Engine::Get(engine);
-	if (e->grffile == NULL) return e->list_position;
+	if (e->grf_prop.grffile == NULL) return e->list_position;
 
 	/* Crude sorting to group by GRF ID */
-	return (e->grffile->grfid * 256) + e->list_position;
+	return (e->grf_prop.grffile->grfid * 256) + e->list_position;
 }
 
 struct ListOrderChange {
@@ -1173,8 +1173,8 @@ void CommitVehicleListOrderChanges()
 		/* Populate map with current list positions */
 		Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, source_e->type) {
-			if (!_settings_game.vehicle.dynamic_engines || e->grffile == source_e->grffile) {
-				if (e->internal_id == target) target_e = e;
+			if (!_settings_game.vehicle.dynamic_engines || e->grf_prop.grffile == source_e->grf_prop.grffile) {
+				if (e->grf_prop.local_id == target) target_e = e;
 				lptr_map[e->list_position] = e;
 			}
 		}

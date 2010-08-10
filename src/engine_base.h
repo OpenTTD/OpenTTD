@@ -17,6 +17,7 @@
 #include "vehicle_type.h"
 #include "core/pool_type.hpp"
 #include "core/smallvec_type.hpp"
+#include "newgrf_commons.h"
 
 typedef Pool<Engine, EngineID, 64, 64000> EnginePool;
 extern EnginePool _engine_pool;
@@ -46,9 +47,13 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	} u;
 
 	/* NewGRF related data */
-	const struct GRFFile *grffile;
-	const struct SpriteGroup *group[NUM_CARGO + 2];
-	uint16 internal_id;                             ///< ID within the GRF file
+	/**
+	 * Properties related the the grf file.
+	 * NUM_CARGO real cargo plus two pseudo cargo sprite groups.
+	 * Used for obtaining the sprite offset of custom sprites, and for
+	 * evaluating callbacks.
+	 */
+	GRFFilePropsBase<NUM_CARGO + 2> grf_prop;
 	uint16 overrides_count;
 	struct WagonOverride *overrides;
 	uint16 list_position;

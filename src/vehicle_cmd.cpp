@@ -281,7 +281,7 @@ static CommandCost GetRefitCost(EngineID engine_type)
 
 		default: NOT_REACHED();
 	}
-	return CommandCost(expense_type, GetPrice(base_price, cost_factor, e->grffile, -10));
+	return CommandCost(expense_type, GetPrice(base_price, cost_factor, e->grf_prop.grffile, -10));
 }
 
 /**
