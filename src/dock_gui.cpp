@@ -58,7 +58,12 @@ static void PlaceDocks_Dock(TileIndex tile)
 
 	/* tile is always the land tile, so need to evaluate _thd.pos */
 	CommandContainer cmdcont = { tile, _ctrl_pressed, p2, CMD_BUILD_DOCK | CMD_MSG(STR_ERROR_CAN_T_BUILD_DOCK_HERE), CcBuildDocks, "" };
-	ShowSelectStationIfNeeded(cmdcont, TileArea(tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE));
+
+	/* Determine the watery part of the dock. */
+	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
+	TileIndex tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile, ReverseDiagDir(dir)) : tile);
+
+	ShowSelectStationIfNeeded(cmdcont, TileArea(tile, tile_to));
 }
 
 static void PlaceDocks_Depot(TileIndex tile)
