@@ -233,36 +233,6 @@ extern const byte _town_action_costs[TACT_COUNT];
 extern TownID _new_town_id;
 
 /**
- * Calculate a hash value from a tile position
- *
- * @param x The X coordinate
- * @param y The Y coordinate
- * @return The hash of the tile
- */
-static inline uint TileHash(uint x, uint y)
-{
-	uint hash = x >> 4;
-	hash ^= x >> 6;
-	hash ^= y >> 4;
-	hash -= y >> 6;
-	return hash;
-}
-
-/**
- * Get the last two bits of the TileHash
- *  from a tile position.
- *
- * @see TileHash()
- * @param x The X coordinate
- * @param y The Y coordinate
- * @return The last two bits from hash of the tile
- */
-static inline uint TileHash2Bit(uint x, uint y)
-{
-	return GB(TileHash(x, y), 0, 2);
-}
-
-/**
  * Set the default name for a depot/waypoint
  * @tparam T The type/class to make a default name for
  * @param obj The object/instance we want to find the name for
