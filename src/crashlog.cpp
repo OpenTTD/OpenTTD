@@ -109,25 +109,25 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 	buffer += seprintf(buffer, last,
 			"Configuration:\n"
 			" Blitter:      %s\n"
-			" Graphics set: %s (%d)\n"
+			" Graphics set: %s (%u)\n"
 			" Language:     %s\n"
 			" Music driver: %s\n"
-			" Music set:    %s (%d)\n"
+			" Music set:    %s (%u)\n"
 			" Network:      %s\n"
 			" Sound driver: %s\n"
-			" Sound set:    %s (%d)\n"
+			" Sound set:    %s (%u)\n"
 			" Video driver: %s\n\n",
 			BlitterFactoryBase::GetCurrentBlitter() == NULL ? "none" : BlitterFactoryBase::GetCurrentBlitter()->GetName(),
 			BaseGraphics::GetUsedSet() == NULL ? "none" : BaseGraphics::GetUsedSet()->name,
-			BaseGraphics::GetUsedSet() == NULL ? -1 : BaseGraphics::GetUsedSet()->version,
+			BaseGraphics::GetUsedSet() == NULL ? UINT32_MAX : BaseGraphics::GetUsedSet()->version,
 			StrEmpty(_dynlang.curr_file) ? "none" : _dynlang.curr_file,
 			_music_driver == NULL ? "none" : _music_driver->GetName(),
 			BaseMusic::GetUsedSet() == NULL ? "none" : BaseMusic::GetUsedSet()->name,
-			BaseMusic::GetUsedSet() == NULL ? -1 : BaseMusic::GetUsedSet()->version,
+			BaseMusic::GetUsedSet() == NULL ? UINT32_MAX : BaseMusic::GetUsedSet()->version,
 			_networking ? (_network_server ? "server" : "client") : "no",
 			_sound_driver == NULL ? "none" : _sound_driver->GetName(),
 			BaseSounds::GetUsedSet() == NULL ? "none" : BaseSounds::GetUsedSet()->name,
-			BaseSounds::GetUsedSet() == NULL ? -1 : BaseSounds::GetUsedSet()->version,
+			BaseSounds::GetUsedSet() == NULL ? UINT32_MAX : BaseSounds::GetUsedSet()->version,
 			_video_driver == NULL ? "none" : _video_driver->GetName()
 	);
 
