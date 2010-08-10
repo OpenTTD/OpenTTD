@@ -525,7 +525,7 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 
 		case OT_GOTO_DEPOT: {
-			if (new_order.GetDepotActionType() != ODATFB_NEAREST_DEPOT) {
+			if ((new_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) == 0) {
 				if (v->type == VEH_AIRCRAFT) {
 					const Station *st = Station::GetIfValid(new_order.GetDestination());
 
