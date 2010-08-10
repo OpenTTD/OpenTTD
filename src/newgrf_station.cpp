@@ -550,7 +550,7 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 		/* Pick the first cargo that we have waiting */
 		const CargoSpec *cs;
 		FOR_ALL_CARGOSPECS(cs) {
-			if (object->u.station.statspec->spritegroup[cs->Index()] != NULL &&
+			if (object->u.station.statspec->grf_prop.spritegroup[cs->Index()] != NULL &&
 					!st->goods[cs->Index()].cargo.Empty()) {
 				ctype = cs->Index();
 				break;
@@ -558,10 +558,10 @@ static const SpriteGroup *ResolveStation(ResolverObject *object)
 		}
 	}
 
-	group = object->u.station.statspec->spritegroup[ctype];
+	group = object->u.station.statspec->grf_prop.spritegroup[ctype];
 	if (group == NULL) {
 		ctype = CT_DEFAULT;
-		group = object->u.station.statspec->spritegroup[ctype];
+		group = object->u.station.statspec->grf_prop.spritegroup[ctype];
 	}
 
 	if (group == NULL) return NULL;

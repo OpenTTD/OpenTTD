@@ -3870,7 +3870,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 				continue;
 			}
 
-			statspec->spritegroup[ctype] = _cur_grffile->spritegroups[groupid];
+			statspec->grf_prop.spritegroup[ctype] = _cur_grffile->spritegroups[groupid];
 		}
 	}
 
@@ -3890,7 +3890,7 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 			continue;
 		}
 
-		statspec->spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
+		statspec->grf_prop.spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
 		statspec->grf_prop.grffile = _cur_grffile;
 		statspec->grf_prop.local_id = stations[i];
 		StationClass::Assign(statspec);
