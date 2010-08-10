@@ -2142,7 +2142,7 @@ struct IndustryCargoesWindow : public Window {
 	{
 		this->GetWidget<NWidgetCore>(ICW_CAPTION)->widget_data = STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION;
 		this->ind_cargo = it;
-		_displayed_industries = 1 << it;
+		_displayed_industries = 1ULL << it;
 
 		this->fields.Clear();
 		CargoesRow *row = this->fields.Append();
