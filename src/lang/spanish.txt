@@ -2132,6 +2132,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click en
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click en la carga para mostrar sus suministradores y clientes
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostrar cadena
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar industrias que suministran o aceptan la carga
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Enlazar al mapa
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Seleccionar las industrias mostradas en el mapa
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Información sobre el terreno

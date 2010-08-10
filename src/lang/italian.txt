@@ -2133,6 +2133,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Fare cli
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Fare clic sul carico per visualizzarne fornitori e clienti
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Catena distributiva
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostra la catena di industrie fornitrici e clienti
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Collega alla minimappa
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Seleziona le industrie visualizzate anche sulla minimappa
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informazioni sull'area di terreno

@@ -2511,6 +2511,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Kliknij 
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Kliknij na towar aby zobaczyć jego dostawców i odbiorców
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Łańcuch przetwarzania
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Wyświetla dostawców i odbiorców dla towaru
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Pokaż na mapie
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pokazuje aktualnie wyświetlone przedsiębiorstwa na mapie
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacja o terenie

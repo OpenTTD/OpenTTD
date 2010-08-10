@@ -2131,6 +2131,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik op 
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik op de vracht om de leveranciers en klanten te zien
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Toon keten
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Toon vracht leverende en accepterende industrieën
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link naar de kleine kaart
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Kies de getoonde industrie ook in de kleine kaart
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landinformatie

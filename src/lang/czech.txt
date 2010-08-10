@@ -1476,7 +1476,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Zaškrt�
 STR_CHEATS_WARNING                                              :{BLACK}Varování! Chystáš se podvést ostatní hráče. Pamatuj si, že tento podlý čin nebude nikdy zapomenut!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Navýšit peníze o {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hrát jako společnost: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozer (odstraní průmysl a neodstranitelné předměty): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozer (odstraní průmysl a další objekty): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely se mohou křížit: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Povolit stavění v pauze: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Letadla nebudou na malých letištích havarovat (tak často): {ORANGE}{STRING}
@@ -3629,7 +3629,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Je nutn�
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Žádné použitelné koleje
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Je nutné nejprve odstranit koleje
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Silnice je jednosměrná nebo zablokovaná
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Žělezniční přejezd není povolen pro tento typ kolejí
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Železniční přejezd není povolen pro tento typ kolejí
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Zde nelze postavit semafory...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Zde nelze postavit koleje...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Odsud nelze odstranit koleje...
