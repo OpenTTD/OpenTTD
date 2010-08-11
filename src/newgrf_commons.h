@@ -141,7 +141,13 @@ uint32 GetNearbyTileInformation(TileIndex tile);
  */
 template <size_t Tcnt>
 struct GRFFilePropsBase {
-	/* The lack of constructor means the default zero-ing constructor is used. */
+	GRFFilePropsBase() : local_id(0), grffile(0)
+	{
+		/* The lack of some compilers to provide default constructors complying to the specs
+		 * requires us to zero the stuff ourself. */
+		memset(spritegroup, 0, sizeof(spritegroup));
+	}
+
 	uint16 local_id;                             ///< id defined by the grf file for this entity
 	const struct GRFFile *grffile;               ///< grf file that introduced this entity
 	const struct SpriteGroup *spritegroup[Tcnt]; ///< pointer to the different sprites of the entity
@@ -153,8 +159,6 @@ struct GRFFileProps : GRFFilePropsBase<1> {
 	GRFFileProps(uint16 subst_id) :
 			GRFFilePropsBase<1>(), subst_id(subst_id), override(subst_id)
 	{
-		/* Check whether the constructor did comply with the specs. */
-		assert(this->spritegroup[0] == NULL);
 	}
 
 	/** Simple constructor for the props. */
