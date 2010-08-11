@@ -553,7 +553,7 @@ static inline byte GetStationTileRandomBits(TileIndex t)
  * @param st the type this station tile
  * @param section the StationGfx to be used for this tile
  */
-static inline void MakeStation(TileIndex t, Owner o, StationID sid, StationType st, byte section)
+static inline void MakeStation(TileIndex t, Owner o, StationID sid, StationType st, byte section, WaterClass wc = WATER_CLASS_INVALID)
 {
 	SetTileType(t, MP_STATION);
 	SetTileOwner(t, o);
@@ -644,8 +644,7 @@ static inline void MakeDriveThroughRoadStop(TileIndex t, Owner station, Owner ro
  */
 static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section, WaterClass wc)
 {
-	MakeStation(t, o, sid, STATION_AIRPORT, section);
-	SetWaterClass(t, wc);
+	MakeStation(t, o, sid, STATION_AIRPORT, section, wc);
 }
 
 /**
@@ -659,8 +658,7 @@ static inline void MakeBuoy(TileIndex t, StationID sid, WaterClass wc)
 	/* Make the owner of the buoy tile the same as the current owner of the
 	 * water tile. In this way, we can reset the owner of the water to its
 	 * original state when the buoy gets removed. */
-	MakeStation(t, GetTileOwner(t), sid, STATION_BUOY, 0);
-	SetWaterClass(t, wc);
+	MakeStation(t, GetTileOwner(t), sid, STATION_BUOY, 0, wc);
 }
 
 /**
@@ -674,8 +672,7 @@ static inline void MakeBuoy(TileIndex t, StationID sid, WaterClass wc)
 static inline void MakeDock(TileIndex t, Owner o, StationID sid, DiagDirection d, WaterClass wc)
 {
 	MakeStation(t, o, sid, STATION_DOCK, d);
-	MakeStation(t + TileOffsByDiagDir(d), o, sid, STATION_DOCK, GFX_DOCK_BASE_WATER_PART + DiagDirToAxis(d));
-	SetWaterClass(t + TileOffsByDiagDir(d), wc);
+	MakeStation(t + TileOffsByDiagDir(d), o, sid, STATION_DOCK, GFX_DOCK_BASE_WATER_PART + DiagDirToAxis(d), wc);
 }
 
 /**
@@ -686,8 +683,7 @@ static inline void MakeDock(TileIndex t, Owner o, StationID sid, DiagDirection d
  */
 static inline void MakeOilrig(TileIndex t, StationID sid, WaterClass wc)
 {
-	MakeStation(t, OWNER_NONE, sid, STATION_OILRIG, 0);
-	SetWaterClass(t, wc);
+	MakeStation(t, OWNER_NONE, sid, STATION_OILRIG, 0, wc);
 }
 
 #endif /* STATION_MAP_H */

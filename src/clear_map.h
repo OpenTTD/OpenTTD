@@ -277,6 +277,7 @@ static inline void MakeClear(TileIndex t, ClearGround g, uint density)
 	if (!MayHaveBridgeAbove(t)) SB(_m[t].m6, 6, 2, 0);
 
 	SetTileType(t, MP_CLEAR);
+	_m[t].m1 = 0;
 	SetTileOwner(t, OWNER_NONE);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
@@ -296,6 +297,7 @@ static inline void MakeClear(TileIndex t, ClearGround g, uint density)
 static inline void MakeField(TileIndex t, uint field_type, IndustryID industry)
 {
 	SetTileType(t, MP_CLEAR);
+	_m[t].m1 = 0;
 	SetTileOwner(t, OWNER_NONE);
 	_m[t].m2 = industry;
 	_m[t].m3 = field_type;

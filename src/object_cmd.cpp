@@ -53,7 +53,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, uint index)
 	TileArea ta(tile, GB(spec->size, 0, 4), GB(spec->size, 4, 4));
 	TILE_AREA_LOOP(t, ta) {
 		TileIndex offset = t - tile;
-		MakeObject(t, type, owner, TileY(offset) << 4 | TileX(offset), index);
+		MakeObject(t, type, owner, TileY(offset) << 4 | TileX(offset), index, WATER_CLASS_INVALID);
 		MarkTileDirtyByTile(t);
 	}
 }

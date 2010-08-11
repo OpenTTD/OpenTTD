@@ -72,8 +72,8 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
  */
 static inline WaterClass GetWaterClass(TileIndex t)
 {
-	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY));
-	return (WaterClass)(IsTileType(t, MP_INDUSTRY) ? GB(_m[t].m1, 5, 2) : GB(_m[t].m3, 0, 2));
+	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT));
+	return (WaterClass)GB(_m[t].m1, 5, 2);
 }
 
 /**
@@ -83,12 +83,8 @@ static inline WaterClass GetWaterClass(TileIndex t)
  */
 static inline void SetWaterClass(TileIndex t, WaterClass wc)
 {
-	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY));
-	if (IsTileType(t, MP_INDUSTRY)) {
-		SB(_m[t].m1, 5, 2, wc);
-	} else {
-		SB(_m[t].m3, 0, 2, wc);
-	}
+	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT));
+	SB(_m[t].m1, 5, 2, wc);
 }
 
 /**
@@ -251,6 +247,7 @@ static inline void MakeShore(TileIndex t)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, OWNER_WATER);
+	SetWaterClass(t, WATER_CLASS_SEA);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
@@ -270,8 +267,9 @@ static inline void MakeWater(TileIndex t, Owner o, WaterClass wc, uint8 random_b
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
+	SetWaterClass(t, wc);
 	_m[t].m2 = 0;
-	_m[t].m3 = wc;
+	_m[t].m3 = 0;
 	_m[t].m4 = random_bits;
 	_m[t].m5 = 0;
 	SB(_m[t].m6, 2, 4, 0);
@@ -322,8 +320,9 @@ static inline void MakeShipDepot(TileIndex t, Owner o, DepotID did, DepotPart ba
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
+	SetWaterClass(t, original_water_class);
 	_m[t].m2 = did;
-	_m[t].m3 = original_water_class;
+	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = base + a * 2;
 	SB(_m[t].m6, 2, 4, 0);
@@ -342,8 +341,9 @@ static inline void MakeLockTile(TileIndex t, Owner o, byte section, WaterClass o
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
+	SetWaterClass(t, original_water_class);
 	_m[t].m2 = 0;
-	_m[t].m3 = original_water_class;
+	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = section;
 	SB(_m[t].m6, 2, 4, 0);

@@ -52,7 +52,7 @@
   <a href="landscape_grid.html">Landscape grid</a> page.
  </p>
 
-  The <a name="OwnershipInfo">owner of a tile</a>, as frequently associated with attribute m1,
+  The <a name="OwnershipInfo">owner of a tile</a>, as frequently associated with attribute m1 bits 4..0,
   can be either companies (human or AI) or "Game entities".
   They are identified using:
   <table border="1">
@@ -78,7 +78,7 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
-     <li>m1: <a href="#OwnershipInfo">owner</a> of the tile (normally <tt>10</tt>)</li>
+     <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the tile (normally <tt>10</tt>)</li>
      <li>m2: see fields</li>
      <li>m3 bits 3..0: see fields</li>
      <li>m3 bit 4: set if the tile is covered with snow</li>
@@ -183,7 +183,7 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
-     <li>m1: <a href="#OwnershipInfo">owner</a> of the tile</li>
+     <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the tile</li>
      <li>m2: see signals</li>
      <li>m3 bits 7..4: see signals</li>
      <li>m3 bits 3..0 = <a name="TrackType">track type</a>:
@@ -548,7 +548,7 @@
        <li>m3 bits 7..4: <a href="#OwnershipInfo">owner</a> of road type 1 (tram); OWNER_NONE (<tt>10</tt>) is stored as OWNER_TOWN (<tt>0F</tt>)
        <li>m5 bit 6 clear: road
         <ul>
-         <li>m1: <a href="#OwnershipInfo">owner</a> of the road type 0 (normal road)</li>
+         <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the road type 0 (normal road)</li>
          <li>m7 bits 3..0: counter for the roadworks</li>
          <li>m5 bits 3..0: road layout road type 0 (normal road): bit set = road piece present:
           <table>
@@ -587,7 +587,7 @@
        </li>
        <li>m5 bit 6 set: level crossing
         <ul>
-         <li>m1: <a href="#OwnershipInfo">owner</a> of the railway track</li>
+         <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the railway track</li>
          <li>m3 bits 3..0: <a href="#TrackType">railway track type</a></li>
          <li>m5 bit 0: direction
           <table>
@@ -610,7 +610,7 @@
      </li>
      <li>m5 bit 7 set, bit 6 clear: road depot
       <ul>
-       <li>m1: <a href="#OwnershipInfo">owner</a> of the depot</li>
+       <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the depot</li>
        <li>m2: Depot index</li>
        <li>m5 bits 3..0: exit towards:
         <table>
@@ -723,7 +723,7 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
-     <li>m1: <a href="#OwnershipInfo">owner</a> (normally <tt>10</tt>)</li>
+     <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> (normally <tt>10</tt>)</li>
      <li>m2 bits 8..6: ground
       <table>
 
@@ -822,12 +822,12 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
-     <li>m1: <a href="#OwnershipInfo">owner</a> of the station</li>
+     <li>m1 bits 6..5: water class for buoys, water part of docks and for airport tiles</li>
+     <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the station</li>
      <li>m2: index into the array of stations</li>
      <li>m3 bits 7..4: persistent random data for railway stations/waypoints and airports)</li>
      <li>m3 bits 7..4: <a href="#OwnershipInfo">owner</a> of tram tracks (road stop)</li>
      <li>m3 bits 3..0: <a href="#TrackType">track type</a> for railway stations/waypoints</li>
-     <li>m3 bits 1..0: water class for buoys, water part of docks and for airport tiles</li>
      <li>m4: custom station id; 0 means standard graphics</li>
      <li>m5: graphics index (range from 0..255 for each station type):
       <table>
@@ -959,9 +959,9 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
-     <li>m1: <a href="#OwnershipInfo">owner</a> (for sea, rivers, and coasts normally <tt>11</tt>)</li>
+     <li>m1 bits 6..5 : Water class (sea, canal or river)
+     <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> (for sea, rivers, and coasts normally <tt>11</tt>)</li>
      <li>m2: Depot index (for depots only)</li>
-     <li>m3 bits 1..0 : Water class (sea, canal or river)
      <li>m4: Random data for canal or river tiles</li>
      <li>m5: tile type:
       <table>
@@ -1413,7 +1413,7 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
-     <li>m1: <a href="#OwnershipInfo">owner</a></li>
+     <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a></li>
      <li>m3 bits 7..4: <a href="#OwnershipInfo">owner</a> of tram</li>
      <li>m3 bits 3..0: <a href="#TrackType">track type</a> for railway</li>
      <li>m5 bit 4: pbs reservation state for railway</li>
@@ -1566,7 +1566,8 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
-     <li>m1: <a href="#OwnershipInfo">owner</a> of the object (for lighthouses and transmitters normally <tt>10</tt>)</li>
+     <li>m1 bits 6..5 : Water class (sea, canal, river or land)
+     <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the object (for lighthouses and transmitters normally <tt>10</tt>)</li>
      <li>m2: see company statue
      <li>m3: offset to northern most tile
      <li>m5: tile type:

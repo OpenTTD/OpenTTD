@@ -13,6 +13,7 @@
 #define OBJECT_MAP_H
 
 #include "tile_map.h"
+#include "water_map.h"
 #include "object_type.h"
 
 /**
@@ -162,11 +163,13 @@ static inline void SetObjectOffset(TileIndex t, uint8 offset)
  * @param o      The new owner of the tile.
  * @param offset The offset to the northern tile of this object.
  * @param index  Generic index associated with the object type.
+ * @param wc     Water class for this obect.
  */
-static inline void MakeObject(TileIndex t, ObjectType u, Owner o, uint8 offset, uint index)
+static inline void MakeObject(TileIndex t, ObjectType u, Owner o, uint8 offset, uint index, WaterClass wc)
 {
 	SetTileType(t, MP_OBJECT);
 	SetTileOwner(t, o);
+	SetWaterClass(t, wc);
 	_m[t].m2 = index;
 	_m[t].m3 = offset;
 	_m[t].m4 = 0;
