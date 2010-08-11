@@ -2465,8 +2465,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Fişiere l
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Comportamentul NewGRF '{0:STRING}' poate cauza desincronizări şi/sau blocări.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica lungimea vehicolului pentru '{1:ENGINE}' cand nu este in depou.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', apartinand '{COMPANY}' nu are o lungima valida. Crobabila este o problema cu fisierele NewGRF. Jocul s-ar putea desincroniza sau prabusi.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifică lungimea vehiculului pentru '{1:ENGINE}' când nu este în depou.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', aparţinând '{COMPANY}' nu are o lungime validă. Probabil este o problemă cu fişierele NewGRF. Jocul s-ar putea desincroniza sau bloca.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Datele despre marfa/regarnisire pentru '{1:ENGINE}' diferă de valorile iniţiale după construcţie. Acest lucru ar putea cauza eşuarea autorenovarii/schimbarii.

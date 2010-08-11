@@ -1084,6 +1084,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ceadaig
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ceadaigh ceantair stáisiún ar mhéid níos realaíoch: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ceadaigh tuilleadh bóithre, droichid srl. ar le baile iad a bhaint: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Cumasaigh traenacha an-fhada a thógáil: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Méid deataigh/splancacha na dtraenacha: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Deatach ar bith
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Bunaidh
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Réalaíoch
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Samhail luasghéaraithe do thraenacha: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Bunaidh
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Réalaíoch
@@ -2025,6 +2029,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Tóg aer
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Roghnú Aerfoirt
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Rognaigh cineál/méid an aerfoirt
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Aicme an aerfoirt
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Leagan amach {NUM}
 
 STR_AIRPORT_SMALL                                               :Beag
 STR_AIRPORT_CITY                                                :Cathrach
@@ -2126,6 +2131,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Cliceái
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Cliceáil ar an lastas chun a soláthróirí agus a chustaiméirí a fheiceáil
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Taispeáin an slabhra
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Taispeáin na tionscadail a dhéanann lastas a sholáthar agus a ghlacann leis
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Nasc leis an léarscáil bheag
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Roghnaigh na tionscail a thaispeántar ar an léarscáil bheag chomh maith
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Faisnéis faoin bPíosa Talún

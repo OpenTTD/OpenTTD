@@ -2464,6 +2464,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Пстр
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Пстрычка па тыпе грузу пакажа ягоных пастаўшчыкоў і спажыўцоў
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Паказаць ланцужок
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Паказаць вытворцаў сыравіны і спажыўцоў прадукцыі гэтага прадпрыемства
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Лiнк да мiнiмапы
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Выберыце паказаныя прадпрыемствы таксама й на мiнiмапе
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Інфармацыя аб участку зямлі

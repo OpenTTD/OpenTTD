@@ -847,8 +847,8 @@ STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}{STRING} bejelentette, hogy a közeli fák hiánya miatt hamarosan bezár!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Európai Monetáris Unió!{}{}Az Euró bevezetésre került mint kizárólagos valuta a mindennapos pénzügyi tranzakciókhoz az országodban!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Gazdasági visszaesés!{}{}A közgazdászok gazdasági válságtól tartanak!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Vége a visszaesésnek!{}{}A kereskedelem fellendül, ami önbizalmat ad az iparnak, és erősödik a gazdaság!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Gazdasági világválság!{}{}A közgazdászok gazdasági válságtól tartanak!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Vége a világválságnak!{}{}A kereskedelem fellendül, ami önbizalmat ad az iparnak, és erősödik a gazdaság!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} növeli a termelését!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Új szénrétegeket találtak {INDUSTRY} tárnáiban!{}A termelés megkétszereződik!
@@ -1217,7 +1217,7 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Lebegé
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Lebegési események késése: {ORANGE}kikapcsolva
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mutassa a település lakosságát a feliratban: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Térkép generálás: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Terep generálás: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Eredeti
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Olajfinomítók max. távolsága a szélektől: {ORANGE}{STRING}
@@ -1431,7 +1431,7 @@ STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Új ját
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Mentett játék betöltése
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Új játékot kezd egy magasságtérkép alapján
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Új játék kezdése saját pályán
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Testreszabott pálya készítése
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Testreszabott világ/pálya készítése
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Többfős játék indítása
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Mérsékelt égövi táj kiválasztása
@@ -2195,6 +2195,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Kattints
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Kattints a rakományra az ellátók és a fogyasztók megjelenítéséhez.
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Láncolat mutatása
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Rakományellátó és fogyasztó gazdasági épületek megjelenítése
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Térképre kapcsolás
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}A térképen megjelenített gazdasági épületek kiválasztása
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Terület-információ
@@ -2339,7 +2341,7 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Add meg a játékmentés nevét
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Térkép létrehozása
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Világ létrehozása
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Térkép méret:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Várossűrűség:
@@ -2383,23 +2385,23 @@ STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Kezdő �
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Pálya típusa
-STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Lapos térkép
-STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Lapos térképet generál
+STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Lapos terep
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Egy lapos terepet generál
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Véletlen térkép
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Sima terep magassága:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Csökkenti eggyel a sima terep magasságát
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Növeli eggyel a sima terep magasságát
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Lapos terep magassága:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Lapos terep magasságának csökkentése eggyel
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Lapos terep magasságának növelése eggyel
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Sima terep magasságát változtatja
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Lapos terep magasságának megváltoztatása
 
 # Map generation progress
-STR_GENERATION_WORLD                                            :{WHITE}Térkép létrehozása...
+STR_GENERATION_WORLD                                            :{WHITE}Világ létrehozása...
 STR_GENERATION_ABORT                                            :{BLACK}Félbeszakít
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Megszakítja a térkép létrehozását
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Megszakítja a világ létrehozását
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Tényleg meg akarod szakítani a térkép generálását?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% kész
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
-STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Térkép létrehozása
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Világ létrehozása
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Fák generálása
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Mozgathatatlan létesítmények létrehozása
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Durva és köves területek generálása
@@ -3616,7 +3618,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a j
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}A járművet nem lehet megfordítani...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Több részből álló járművet nem lehet megfordítani...
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Inkompatibilis pályatípusok
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Nem kompatibilis pályatípusok
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nem mozgathatod a járművet...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}A mozdony első felének mindig elől kell lennie
