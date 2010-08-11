@@ -17,6 +17,39 @@
 #include "../fios.h"
 
 #include "saveload.h"
+#include "newgrf_sl.h"
+
+/** Save and load the mapping between a spec and the NewGRF it came from. */
+static const SaveLoad _newgrf_mapping_desc[] = {
+	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
+	SLE_VAR(EntityIDMapping, entity_id,     SLE_UINT8),
+	SLE_VAR(EntityIDMapping, substitute_id, SLE_UINT8),
+	SLE_END()
+};
+
+void Save_NewGRFMapping(const OverrideManagerBase &mapping)
+{
+	for (uint i = 0; i < mapping.GetMaxMapping(); i++) {
+		SlSetArrayIndex(i);
+		SlObject(&mapping.mapping_ID[i], _newgrf_mapping_desc);
+	}
+}
+
+void Load_NewGRFMapping(OverrideManagerBase &mapping)
+{
+	/* Clear the current mapping stored.
+	 * This will create the manager if ever it is not yet done */
+	mapping.ResetMapping();
+
+	uint max_id = mapping.GetMaxMapping();
+
+	int index;
+	while ((index = SlIterateArray()) != -1) {
+		if ((uint)index >= max_id) break;
+		SlObject(&mapping.mapping_ID[index], _newgrf_mapping_desc);
+	}
+}
+
 
 static const SaveLoad _grfconfig_desc[] = {
 	    SLE_STR(GRFConfig, filename,         SLE_STR,    0x40),

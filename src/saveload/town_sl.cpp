@@ -11,10 +11,10 @@
 
 #include "../stdafx.h"
 #include "../newgrf_house.h"
-#include "../newgrf_commons.h"
 #include "../town.h"
 
 #include "saveload.h"
+#include "newgrf_sl.h"
 
 /**
  * Check and update town and house values.
@@ -139,36 +139,14 @@ static const SaveLoad _town_desc[] = {
 	SLE_END()
 };
 
-/* Save and load the mapping between the house id on the map, and the grf file
- * it came from. */
-static const SaveLoad _house_id_mapping_desc[] = {
-	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
-	SLE_VAR(EntityIDMapping, entity_id,     SLE_UINT8),
-	SLE_VAR(EntityIDMapping, substitute_id, SLE_UINT8),
-	SLE_END()
-};
-
-static void Save_HOUSEIDS()
+static void Save_HIDS()
 {
-	uint j = _house_mngr.GetMaxMapping();
-
-	for (uint i = 0; i < j; i++) {
-		SlSetArrayIndex(i);
-		SlObject(&_house_mngr.mapping_ID[i], _house_id_mapping_desc);
-	}
+	Save_NewGRFMapping(_house_mngr);
 }
 
-static void Load_HOUSEIDS()
+static void Load_HIDS()
 {
-	int index;
-
-	_house_mngr.ResetMapping();
-	uint max_id = _house_mngr.GetMaxMapping();
-
-	while ((index = SlIterateArray()) != -1) {
-		if ((uint)index >= max_id) break;
-		SlObject(&_house_mngr.mapping_ID[index], _house_id_mapping_desc);
-	}
+	Load_NewGRFMapping(_house_mngr);
 }
 
 static void Save_TOWN()
@@ -192,6 +170,6 @@ static void Load_TOWN()
 }
 
 extern const ChunkHandler _town_chunk_handlers[] = {
-	{ 'HIDS', Save_HOUSEIDS, Load_HOUSEIDS, NULL, NULL, CH_ARRAY },
-	{ 'CITY', Save_TOWN,     Load_TOWN,     NULL, NULL, CH_ARRAY | CH_LAST},
+	{ 'HIDS', Save_HIDS, Load_HIDS, NULL, NULL, CH_ARRAY },
+	{ 'CITY', Save_TOWN, Load_TOWN, NULL, NULL, CH_ARRAY | CH_LAST},
 };

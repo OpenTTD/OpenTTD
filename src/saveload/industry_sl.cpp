@@ -11,9 +11,9 @@
 
 #include "../stdafx.h"
 #include "../industry.h"
-#include "../newgrf_commons.h"
 
 #include "saveload.h"
+#include "newgrf_sl.h"
 
 static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, location.tile,              SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
@@ -71,35 +71,14 @@ static void Save_INDY()
 	}
 }
 
-/* Save and load the mapping between the industry/tile id on the map, and the grf file
- * it came from. */
-static const SaveLoad _industries_id_mapping_desc[] = {
-	SLE_VAR(EntityIDMapping, grfid,         SLE_UINT32),
-	SLE_VAR(EntityIDMapping, entity_id,     SLE_UINT8),
-	SLE_VAR(EntityIDMapping, substitute_id, SLE_UINT8),
-	SLE_END()
-};
-
 static void Save_IIDS()
 {
-	uint i;
-	uint j = _industry_mngr.GetMaxMapping();
-
-	for (i = 0; i < j; i++) {
-		SlSetArrayIndex(i);
-		SlObject(&_industry_mngr.mapping_ID[i], _industries_id_mapping_desc);
-	}
+	Save_NewGRFMapping(_industry_mngr);
 }
 
 static void Save_TIDS()
 {
-	uint i;
-	uint j = _industile_mngr.GetMaxMapping();
-
-	for (i = 0; i < j; i++) {
-		SlSetArrayIndex(i);
-		SlObject(&_industile_mngr.mapping_ID[i], _industries_id_mapping_desc);
-	}
+	Save_NewGRFMapping(_industile_mngr);
 }
 
 static void Load_INDY()
@@ -117,38 +96,12 @@ static void Load_INDY()
 
 static void Load_IIDS()
 {
-	int index;
-	uint max_id;
-
-	/* clear the current mapping stored.
-	 * This will create the manager if ever it is not yet done */
-	_industry_mngr.ResetMapping();
-
-	/* get boundary for the temporary map loader NUM_INDUSTRYTYPES? */
-	max_id = _industry_mngr.GetMaxMapping();
-
-	while ((index = SlIterateArray()) != -1) {
-		if ((uint)index >= max_id) break;
-		SlObject(&_industry_mngr.mapping_ID[index], _industries_id_mapping_desc);
-	}
+	Load_NewGRFMapping(_industry_mngr);
 }
 
 static void Load_TIDS()
 {
-	int index;
-	uint max_id;
-
-	/* clear the current mapping stored.
-	 * This will create the manager if ever it is not yet done */
-	_industile_mngr.ResetMapping();
-
-	/* get boundary for the temporary map loader NUM_INDUSTILES? */
-	max_id = _industile_mngr.GetMaxMapping();
-
-	while ((index = SlIterateArray()) != -1) {
-		if ((uint)index >= max_id) break;
-		SlObject(&_industile_mngr.mapping_ID[index], _industries_id_mapping_desc);
-	}
+	Load_NewGRFMapping(_industile_mngr);
 }
 
 static void Ptrs_INDY()

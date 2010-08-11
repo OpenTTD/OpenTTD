@@ -724,6 +724,7 @@
     <ClCompile Include="..\src\saveload\map_sl.cpp" />
     <ClCompile Include="..\src\saveload\misc_sl.cpp" />
     <ClCompile Include="..\src\saveload\newgrf_sl.cpp" />
+    <ClInclude Include="..\src\saveload\newgrf_sl.h" />
     <ClCompile Include="..\src\saveload\oldloader.cpp" />
     <ClInclude Include="..\src\saveload\oldloader.h" />
     <ClCompile Include="..\src\saveload\oldloader_sl.cpp" />

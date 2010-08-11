@@ -7,23 +7,23 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file airport_sl.cpp Code handling saving and loading airport ids */
+/** @file newgrf_sl.h Code handling saving and loading of NewGRF mappings. */
 
-#include "../stdafx.h"
+#ifndef SAVELOAD_NEWGRF_SL_H
+#define SAVELOAD_NEWGRF_SL_H
 
-#include "saveload.h"
-#include "newgrf_sl.h"
+#include "../newgrf_commons.h"
 
-static void Save_APID()
-{
-	Save_NewGRFMapping(_airport_mngr);
-}
+/**
+ * Save a GRF ID + local id -> OpenTTD's id mapping.
+ * @param mapping The mapping to save.
+ */
+void Save_NewGRFMapping(const OverrideManagerBase &mapping);
 
-static void Load_APID()
-{
-	Load_NewGRFMapping(_airport_mngr);
-}
+/**
+ * Load a GRF ID + local id -> OpenTTD's id mapping.
+ * @param mapping The mapping to load.
+ */
+void Load_NewGRFMapping(OverrideManagerBase &mapping);
 
-extern const ChunkHandler _airport_chunk_handlers[] = {
-	{ 'APID', Save_APID, Load_APID, NULL, NULL, CH_ARRAY | CH_LAST },
-};
+#endif /* SAVELOAD_NEWGRF_SL_H */

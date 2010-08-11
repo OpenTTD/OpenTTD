@@ -475,6 +475,7 @@ saveload/labelmaps_sl.cpp
 saveload/map_sl.cpp
 saveload/misc_sl.cpp
 saveload/newgrf_sl.cpp
+saveload/newgrf_sl.h
 saveload/oldloader.cpp
 saveload/oldloader.h
 saveload/oldloader_sl.cpp

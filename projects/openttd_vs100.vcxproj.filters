@@ -1375,6 +1375,9 @@
     <ClCompile Include="..\src\saveload\newgrf_sl.cpp">
       <Filter>Save/Load handlers</Filter>
     </ClCompile>
+    <ClInclude Include="..\src\saveload\newgrf_sl.h">
+      <Filter>Save/Load handlers</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\saveload\oldloader.cpp">
       <Filter>Save/Load handlers</Filter>
     </ClCompile>

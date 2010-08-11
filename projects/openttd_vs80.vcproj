@@ -2184,6 +2184,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\saveload\newgrf_sl.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\saveload\oldloader.cpp"
 				>
 			</File>
