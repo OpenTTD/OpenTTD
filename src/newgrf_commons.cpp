@@ -92,7 +92,7 @@ void OverrideManagerBase::ResetOverride()
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
  */
-uint16 OverrideManagerBase::GetID(uint8 grf_local_id, uint32 grfid)
+uint16 OverrideManagerBase::GetID(uint8 grf_local_id, uint32 grfid) const
 {
 	const EntityIDMapping *map;
 
@@ -146,7 +146,7 @@ uint16 OverrideManagerBase::AddEntityID(byte grf_local_id, uint32 grfid, byte su
  * @param entity_id of the entity being queried
  * @return mapped id
  */
-uint16 OverrideManagerBase::GetSubstituteID(uint16 entity_id)
+uint16 OverrideManagerBase::GetSubstituteID(uint16 entity_id) const
 {
 	return mapping_ID[entity_id].substitute_id;
 }
@@ -185,7 +185,7 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
  * @param grfid ID of the grf file
  * @return the ID of the candidate, of the Invalid flag item ID
  */
-uint16 IndustryOverrideManager::GetID(uint8 grf_local_id, uint32 grfid)
+uint16 IndustryOverrideManager::GetID(uint8 grf_local_id, uint32 grfid) const
 {
 	uint16 id = OverrideManagerBase::GetID(grf_local_id, grfid);
 	if (id != invalid_ID) return id;
