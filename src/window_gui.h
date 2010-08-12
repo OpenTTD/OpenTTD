@@ -398,6 +398,8 @@ public:
 	NWidgetStacked *shade_select;    ///< Selection widget (#NWID_SELECTION) to use for shading the window. If \c NULL, window cannot shade.
 	Dimension unshaded_size;         ///< Last known unshaded size (only valid while shaded).
 
+	int scrolling_scrollbar;         ///< Widgetindex of just being dragged scrollbar. -1 of none is active.
+
 	Window *parent;                  ///< Parent window.
 	Window *z_front;                 ///< The window in front of us in z-order.
 	Window *z_back;                  ///< The window behind us in z-order.
@@ -875,7 +877,6 @@ enum WindowFlags {
 	WF_DRAGGING          = 1 <<  3, ///< Window is being dragged
 	WF_SCROLL_UP         = 1 <<  4, ///< Upper scroll button has been pressed, @see ScrollbarClickHandler()
 	WF_SCROLL_DOWN       = 1 <<  5, ///< Lower scroll button has been pressed, @see ScrollbarClickHandler()
-	WF_SCROLL_MIDDLE     = 1 <<  6, ///< Scrollbar scrolling, @see ScrollbarClickHandler()
 	WF_SCROLL2           = 1 <<  7,
 	WF_HSCROLL           = 1 <<  8,
 	WF_SIZING_RIGHT      = 1 <<  9, ///< Window is being resized towards the right.
@@ -933,7 +934,6 @@ extern int _scrollbar_start_pos;
 extern int _scrollbar_size;
 extern byte _scroller_click_timeout;
 
-extern bool _scrolling_scrollbar;
 extern bool _scrolling_viewport;
 extern bool _mouse_hovering;
 
@@ -951,6 +951,6 @@ Window *GetCallbackWnd();
 void SetFocusedWindow(Window *w);
 bool EditBoxInGlobalFocus();
 
-void ScrollbarClickHandler(Window *w, const NWidgetCore *nw, int x, int y);
+void ScrollbarClickHandler(Window *w, NWidgetCore *nw, int x, int y);
 
 #endif /* WINDOW_GUI_H */

@@ -56,7 +56,6 @@ int _scrollbar_start_pos;
 int _scrollbar_size;
 byte _scroller_click_timeout;
 
-bool _scrolling_scrollbar; ///< A scrollbar is being scrolled with the mouse.
 bool _scrolling_viewport;  ///< A viewport is being scrolled with the mouse.
 bool _mouse_hovering;      ///< The mouse is hovering over the same point.
 
@@ -312,7 +311,7 @@ static void StartWindowSizing(Window *w, bool to_left);
  */
 static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 {
-	const NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
+	NWidgetCore *nw = w->nested_root->GetWidgetFromPos(x, y);
 	WidgetType widget_type = (nw != NULL) ? nw->type : WWT_EMPTY;
 
 	bool focused_widget_changed = false;
@@ -1337,7 +1336,7 @@ void Window::InitNested(const WindowDesc *desc, WindowNumber window_number)
 }
 
 /** Empty constructor, initialization has been moved to #InitNested() called from the constructor of the derived class. */
-Window::Window() : old_hscroll(false), old_vscroll(true), old_vscroll2(true)
+Window::Window() : old_hscroll(false), old_vscroll(true), old_vscroll2(true), scrolling_scrollbar(-1)
 {
 }
 
@@ -1854,33 +1853,25 @@ static void StartWindowSizing(Window *w, bool to_left)
 static EventState HandleScrollbarScrolling()
 {
 	Window *w;
-
-	/* Get out quickly if no item is being scrolled */
-	if (!_scrolling_scrollbar) return ES_NOT_HANDLED;
-
-	/* Find the scrolling window */
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->flags4 & WF_SCROLL_MIDDLE) {
+		if (w->scrolling_scrollbar >= 0) {
 			/* Abort if no button is clicked any more. */
 			if (!_left_button_down) {
-				w->flags4 &= ~WF_SCROLL_MIDDLE;
+				w->scrolling_scrollbar = -1;
 				w->SetDirty();
-				break;
+				return ES_HANDLED;
 			}
 
 			int i;
-			Scrollbar *sb;
+			Scrollbar *sb = w->GetScrollbar(w->scrolling_scrollbar);
 			bool rtl = false;
 
 			if (w->flags4 & WF_HSCROLL) {
-				sb = &w->old_hscroll;
 				i = _cursor.pos.x - _cursorpos_drag_start.x;
 				rtl = _dynlang.text_dir == TD_RTL;
 			} else if (w->flags4 & WF_SCROLL2) {
-				sb = &w->old_vscroll2;
 				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			} else {
-				sb = &w->old_vscroll;
 				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			}
 
@@ -1895,8 +1886,7 @@ static EventState HandleScrollbarScrolling()
 		}
 	}
 
-	_scrolling_scrollbar = false;
-	return ES_HANDLED;
+	return ES_NOT_HANDLED;
 }
 
 /**
