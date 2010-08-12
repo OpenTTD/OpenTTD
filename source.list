@@ -914,7 +914,7 @@ music/null_m.cpp
 	#end
 #end
 #if BEOS
- 	music/bemidi.cpp
+	music/bemidi.cpp
 #end
 #if LIBTIMIDITY
 	music/libtimidity.cpp

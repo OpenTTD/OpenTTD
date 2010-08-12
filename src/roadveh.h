@@ -210,7 +210,7 @@ protected: // These functions should not be called outside acceleration code.
 		return RoadVehInfo(this->engine_type)->tractive_effort;
 	}
 
- 	/**
+	/**
 	 * Gets the area used for calculating air drag.
 	 * @return Area of the engine.
 	 */
