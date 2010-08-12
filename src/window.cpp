@@ -1380,9 +1380,15 @@ static void DecreaseWindowCounters()
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		/* Unclick scrollbar buttons if they are pressed. */
-		if (w->flags4 & (WF_SCROLL_DOWN | WF_SCROLL_UP)) {
-			w->flags4 &= ~(WF_SCROLL_DOWN | WF_SCROLL_UP);
-			w->SetDirty();
+		for (uint i = 0; i < w->nested_array_size; i++) {
+			NWidgetBase *nwid = w->nested_array[i];
+			if (nwid != NULL && (nwid->type == WWT_HSCROLLBAR || nwid->type == WWT_SCROLLBAR || nwid->type == WWT_SCROLL2BAR)) {
+				NWidgetScrollbar *sb = static_cast<NWidgetScrollbar*>(nwid);
+				if (sb->disp_flags & (ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN)) {
+					sb->disp_flags &= ~(ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN);
+					sb->SetDirty(w);
+				}
+			}
 		}
 		w->OnMouseLoop();
 	}
@@ -1831,14 +1837,12 @@ static EventState HandleScrollbarScrolling()
 			}
 
 			int i;
-			Scrollbar *sb = w->GetScrollbar(w->scrolling_scrollbar);
+			NWidgetScrollbar *sb = w->GetWidget<NWidgetScrollbar>(w->scrolling_scrollbar);
 			bool rtl = false;
 
-			if (w->flags4 & WF_HSCROLL) {
+			if (sb->type == WWT_HSCROLLBAR) {
 				i = _cursor.pos.x - _cursorpos_drag_start.x;
 				rtl = _dynlang.text_dir == TD_RTL;
-			} else if (w->flags4 & WF_SCROLL2) {
-				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			} else {
 				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			}

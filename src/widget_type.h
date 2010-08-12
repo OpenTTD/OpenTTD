@@ -250,6 +250,9 @@ enum NWidgetDisplay {
 	NDB_SHADE_DIMMED    = 4, ///< Display dimmed colours in the viewport.
 	/* Button dropdown widget. */
 	NDB_DROPDOWN_ACTIVE = 5, ///< Dropdown menu of the button dropdown widget is active. @see #NWID_BUTTON_DRPDOWN
+	/* Scrollbar widget. */
+	NDB_SCROLLBAR_UP    = 6, ///< Up-button is lowered bit.
+	NDB_SCROLLBAR_DOWN  = 7, ///< Down-button is lowered bit.
 
 	ND_LOWERED  = 1 << NDB_LOWERED,                ///< Bit value of the lowered flag.
 	ND_DISABLED = 1 << NDB_DISABLED,               ///< Bit value of the disabled flag.
@@ -257,6 +260,8 @@ enum NWidgetDisplay {
 	ND_SHADE_GREY      = 1 << NDB_SHADE_GREY,      ///< Bit value of the 'shade to grey' flag.
 	ND_SHADE_DIMMED    = 1 << NDB_SHADE_DIMMED,    ///< Bit value of the 'dimmed colours' flag.
 	ND_DROPDOWN_ACTIVE = 1 << NDB_DROPDOWN_ACTIVE, ///< Bit value of the 'dropdown active' flag.
+	ND_SCROLLBAR_UP    = 1 << NDB_SCROLLBAR_UP,    ///< Bit value of the 'scrollbar up' flag.
+	ND_SCROLLBAR_DOWN  = 1 << NDB_SCROLLBAR_DOWN,  ///< Bit value of the 'scrollbar down' flag.
 };
 DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay)
 

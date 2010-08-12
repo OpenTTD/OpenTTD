@@ -65,46 +65,26 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom, bo
 /**
  * Compute new position of the scrollbar after a click and updates the window flags.
  * @param w   Window on which a scroll was performed.
- * @param nw  Scrollbar
+ * @param sb  Scrollbar
  * @param mi  Minimum coordinate of the scroll bar.
  * @param ma  Maximum coordinate of the scroll bar.
  * @param x   The X coordinate of the mouse click.
  * @param y   The Y coordinate of the mouse click.
  */
-static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *nw, int x, int y, int mi, int ma)
+static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, int y, int mi, int ma)
 {
 	int pos;
 	bool rtl = false;
-	Scrollbar *sb = nw;
 
-	switch (nw->type) {
-		case WWT_SCROLLBAR:
-			/* vertical scroller */
-			w->flags4 &= ~WF_HSCROLL;
-			w->flags4 &= ~WF_SCROLL2;
-			pos = y;
-			break;
-
-		case WWT_SCROLL2BAR:
-			/* 2nd vertical scroller */
-			w->flags4 &= ~WF_HSCROLL;
-			w->flags4 |= WF_SCROLL2;
-			pos = y;
-			break;
-
-		case WWT_HSCROLLBAR:
-			/* horizontal scroller */
-			w->flags4 &= ~WF_SCROLL2;
-			w->flags4 |= WF_HSCROLL;
-			pos = x;
-			rtl = _dynlang.text_dir == TD_RTL;
-			break;
-
-		default: NOT_REACHED();
+	if (sb->type == WWT_HSCROLLBAR) {
+		pos = x;
+		rtl = _dynlang.text_dir == TD_RTL;
+	} else {
+		pos = y;
 	}
 	if (pos <= mi + 9) {
 		/* Pressing the upper button? */
-		w->flags4 |= WF_SCROLL_UP;
+		SetBit(sb->disp_flags, NDB_SCROLLBAR_UP);
 		if (_scroller_click_timeout == 0) {
 			_scroller_click_timeout = 6;
 			sb->UpdatePosition(rtl ? 1 : -1);
@@ -112,7 +92,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *nw, int x, in
 		_left_button_clicked = false;
 	} else if (pos >= ma - 10) {
 		/* Pressing the lower button? */
-		w->flags4 |= WF_SCROLL_DOWN;
+		SetBit(sb->disp_flags, NDB_SCROLLBAR_DOWN);
 
 		if (_scroller_click_timeout == 0) {
 			_scroller_click_timeout = 6;
@@ -120,7 +100,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *nw, int x, in
 		}
 		_left_button_clicked = false;
 	} else {
-		Point pt = HandleScrollbarHittest(sb, mi, ma, nw->type == WWT_HSCROLLBAR);
+		Point pt = HandleScrollbarHittest(sb, mi, ma, sb->type == WWT_HSCROLLBAR);
 
 		if (pos < pt.x) {
 			sb->UpdatePosition(rtl ? sb->GetCapacity() : -sb->GetCapacity());
@@ -129,7 +109,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *nw, int x, in
 		} else {
 			_scrollbar_start_pos = pt.x - mi - 9;
 			_scrollbar_size = ma - mi - 23;
-			w->scrolling_scrollbar = nw->index;
+			w->scrolling_scrollbar = sb->index;
 			_cursorpos_drag_start = _cursor.pos;
 		}
 	}
@@ -1718,28 +1698,14 @@ void NWidgetScrollbar::Draw(const Window *w)
 	const DrawPixelInfo *dpi = _cur_dpi;
 	if (dpi->left > r.right || dpi->left + dpi->width <= r.left || dpi->top > r.bottom || dpi->top + dpi->height <= r.top) return;
 
-	switch (this->type) {
-		case WWT_HSCROLLBAR:
-			DrawHorizontalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL),
-								w->scrolling_scrollbar == this->index,
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), this);
-			break;
+	bool up_lowered = HasBit(this->disp_flags, NDB_SCROLLBAR_UP);
+	bool down_lowered = HasBit(this->disp_flags, NDB_SCROLLBAR_DOWN);
+	bool middle_lowered = (w->scrolling_scrollbar == this->index);
 
-		case WWT_SCROLLBAR:
-			assert(this->widget_data == 0);
-			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP,
-								w->scrolling_scrollbar == this->index,
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN, this);
-			break;
-
-		case WWT_SCROLL2BAR:
-			assert(this->widget_data == 0);
-			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2),
-								w->scrolling_scrollbar == this->index,
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2), this);
-			break;
-
-		default: NOT_REACHED();
+	if (this->type == WWT_HSCROLLBAR) {
+		DrawHorizontalScrollbar(r, this->colour, up_lowered, middle_lowered, down_lowered, this);
+	} else {
+		DrawVerticalScrollbar(r, this->colour, up_lowered, middle_lowered, down_lowered, this);
 	}
 
 	if (this->IsDisabled()) {

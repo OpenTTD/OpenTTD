@@ -746,21 +746,17 @@ enum WindowFlags {
 	WF_TIMEOUT_BEGIN     = 7,       ///< The initial value for the timeout
 	WF_TIMEOUT_MASK      = 7,       ///< Window timeout counter bit mask (3 bits)
 	WF_DRAGGING          = 1 <<  3, ///< Window is being dragged
-	WF_SCROLL_UP         = 1 <<  4, ///< Upper scroll button has been pressed, @see ScrollbarClickHandler()
-	WF_SCROLL_DOWN       = 1 <<  5, ///< Lower scroll button has been pressed, @see ScrollbarClickHandler()
-	WF_SCROLL2           = 1 <<  7,
-	WF_HSCROLL           = 1 <<  8,
-	WF_SIZING_RIGHT      = 1 <<  9, ///< Window is being resized towards the right.
-	WF_SIZING_LEFT       = 1 << 10, ///< Window is being resized towards the left.
+	WF_SIZING_RIGHT      = 1 <<  4, ///< Window is being resized towards the right.
+	WF_SIZING_LEFT       = 1 <<  5, ///< Window is being resized towards the left.
 	WF_SIZING            = WF_SIZING_RIGHT | WF_SIZING_LEFT, ///< Window is being resized.
-	WF_STICKY            = 1 << 11, ///< Window is made sticky by user
+	WF_STICKY            = 1 <<  6, ///< Window is made sticky by user
 
-	WF_DISABLE_VP_SCROLL = 1 << 12, ///< Window does not do autoscroll, @see HandleAutoscroll()
+	WF_DISABLE_VP_SCROLL = 1 <<  7, ///< Window does not do autoscroll, @see HandleAutoscroll()
 
-	WF_WHITE_BORDER_ONE  = 1 << 13,
-	WF_WHITE_BORDER_MASK = 1 << 14 | WF_WHITE_BORDER_ONE,
+	WF_WHITE_BORDER_ONE  = 1 <<  8,
+	WF_WHITE_BORDER_MASK = 1 <<  9 | WF_WHITE_BORDER_ONE,
 
-	WF_CENTERED          = 1 << 15, ///< Window is centered and shall stay centered after ReInit
+	WF_CENTERED          = 1 << 10, ///< Window is centered and shall stay centered after ReInit
 };
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
