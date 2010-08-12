@@ -216,6 +216,7 @@ enum AirportPickerWidgets {
 class BuildAirportWindow : public PickerWindowBase {
 	SpriteID preview_sprite; ///< Cached airport preview sprite.
 	int line_height;
+	Scrollbar *vscroll;
 
 	/** Build a dropdown list of available airport classes */
 	static DropDownList *BuildAirportClassDropDown()
@@ -232,15 +233,19 @@ class BuildAirportWindow : public PickerWindowBase {
 public:
 	BuildAirportWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
-		this->vscroll.SetCapacity(5);
-		this->vscroll.SetPosition(0);
-		this->InitNested(desc, TRANSPORT_AIR);
+		this->CreateNestedTree(desc);
+
+		this->vscroll = this->GetScrollbar(BAIRW_SCROLLBAR);
+		this->vscroll->SetCapacity(5);
+		this->vscroll->SetPosition(0);
+
+		this->FinishInitNested(desc, TRANSPORT_AIR);
 
 		this->SetWidgetLoweredState(BAIRW_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
 		this->SetWidgetLoweredState(BAIRW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 		this->OnInvalidateData();
 
-		this->vscroll.SetCount(AirportClass::GetCount(_selected_airport_class));
+		this->vscroll->SetCount(AirportClass::GetCount(_selected_airport_class));
 		this->SelectFirstAvailableAirport(true);
 	}
 
@@ -298,7 +303,7 @@ public:
 				}
 
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
-				size->height = this->vscroll.GetCapacity() * this->line_height;
+				size->height = this->vscroll->GetCapacity() * this->line_height;
 				break;
 			}
 
@@ -343,7 +348,7 @@ public:
 		switch (widget) {
 			case BAIRW_AIRPORT_LIST: {
 				int y = r.top;
-				for (uint i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < AirportClass::GetCount(_selected_airport_class); i++) {
+				for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < AirportClass::GetCount(_selected_airport_class); i++) {
 					const AirportSpec *as = AirportClass::Get(_selected_airport_class, i);
 					if (!as->IsAvailable()) {
 						GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->line_height - 2, 0, FILLRECT_CHECKER);
@@ -451,8 +456,8 @@ public:
 				break;
 
 			case BAIRW_AIRPORT_LIST: {
-				int num_clicked = this->vscroll.GetPosition() + (pt.y - this->nested_array[widget]->pos_y) / this->line_height;
-				if (num_clicked >= this->vscroll.GetCount()) break;
+				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->nested_array[widget]->pos_y) / this->line_height;
+				if (num_clicked >= this->vscroll->GetCount()) break;
 				const AirportSpec *as = AirportClass::Get(_selected_airport_class, num_clicked);
 				if (as->IsAvailable()) this->SelectOtherAirport(num_clicked);
 				break;
@@ -518,7 +523,7 @@ public:
 	{
 		assert(widget == BAIRW_CLASS_DROPDOWN);
 		_selected_airport_class = (AirportClassID)index;
-		this->vscroll.SetCount(AirportClass::GetCount(_selected_airport_class));
+		this->vscroll->SetCount(AirportClass::GetCount(_selected_airport_class));
 		this->SelectFirstAvailableAirport(false);
 	}
 

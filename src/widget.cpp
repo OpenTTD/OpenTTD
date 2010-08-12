@@ -83,7 +83,7 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 			w->flags4 &= ~WF_HSCROLL;
 			w->flags4 &= ~WF_SCROLL2;
 			pos = y;
-			sb = &w->vscroll;
+			sb = &w->old_vscroll;
 			break;
 
 		case WWT_SCROLL2BAR:
@@ -91,7 +91,7 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 			w->flags4 &= ~WF_HSCROLL;
 			w->flags4 |= WF_SCROLL2;
 			pos = y;
-			sb = &w->vscroll2;
+			sb = &w->old_vscroll2;
 			break;
 
 		case WWT_HSCROLLBAR:
@@ -99,7 +99,7 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 			w->flags4 &= ~WF_SCROLL2;
 			w->flags4 |= WF_HSCROLL;
 			pos = x;
-			sb = &w->hscroll;
+			sb = &w->old_hscroll;
 			rtl = _dynlang.text_dir == TD_RTL;
 			break;
 
@@ -1997,14 +1997,14 @@ void NWidgetLeaf::Draw(const Window *w)
 			assert(this->widget_data == 0);
 			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP,
 								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE,
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN, &w->vscroll);
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN, &w->old_vscroll);
 			break;
 
 		case WWT_SCROLL2BAR:
 			assert(this->widget_data == 0);
 			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2),
 								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2),
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2), &w->vscroll2);
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2), &w->old_vscroll2);
 			break;
 
 		case WWT_CAPTION:
@@ -2016,7 +2016,7 @@ void NWidgetLeaf::Draw(const Window *w)
 			assert(this->widget_data == 0);
 			DrawHorizontalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL),
 								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL),
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), &w->hscroll);
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), &w->old_hscroll);
 			break;
 
 		case WWT_SHADEBOX:

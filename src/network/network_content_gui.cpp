@@ -239,6 +239,7 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	const ContentInfo *selected; ///< The selected content info
 	int list_pos;                ///< Our position in the list
 	uint filesize_sum;           ///< The sum of all selected file sizes
+	Scrollbar *vscroll;
 
 	/**
 	 * (Re)build the network game list as its amount has changed because
@@ -260,7 +261,7 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 		this->content.RebuildDone();
 		this->SortContentList();
 
-		this->vscroll.SetCount(this->content.Length()); // Update the scrollbar
+		this->vscroll->SetCount(this->content.Length()); // Update the scrollbar
 		this->ScrollToSelected();
 	}
 
@@ -338,7 +339,7 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	{
 		if (this->selected == NULL) return;
 
-		this->vscroll.ScrollTowards(this->list_pos);
+		this->vscroll->ScrollTowards(this->list_pos);
 	}
 
 public:
@@ -351,7 +352,9 @@ public:
 			selected(NULL),
 			list_pos(0)
 	{
-		this->InitNested(desc, 1);
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(NCLWW_SCROLLBAR);
+		this->FinishInitNested(desc, 1);
 
 		this->GetWidget<NWidgetStacked>(NCLWW_SEL_ALL_UPDATE)->SetDisplayedPlane(select_all);
 
@@ -448,7 +451,7 @@ public:
 		int sprite_y_offset = WD_MATRIX_TOP + (FONT_HEIGHT_NORMAL - 10) / 2;
 		uint y = r.top;
 		int cnt = 0;
-		for (ConstContentIterator iter = this->content.Get(this->vscroll.GetPosition()); iter != this->content.End() && cnt < this->vscroll.GetCapacity(); iter++, cnt++) {
+		for (ConstContentIterator iter = this->content.Get(this->vscroll->GetPosition()); iter != this->content.End() && cnt < this->vscroll->GetCapacity(); iter++, cnt++) {
 			const ContentInfo *ci = *iter;
 
 			if (ci == this->selected) GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->resize.step_height - 1, 10);
@@ -590,7 +593,7 @@ public:
 	{
 		switch (widget) {
 			case NCLWW_MATRIX: {
-				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, NCLWW_MATRIX);
+				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, NCLWW_MATRIX);
 				if (id_v >= this->content.Length()) return; // click out of bounds
 
 				this->selected = *this->content.Get(id_v);
@@ -664,11 +667,11 @@ public:
 				break;
 			case WKC_PAGEUP:
 				/* scroll up a page */
-				this->list_pos = (this->list_pos < this->vscroll.GetCapacity()) ? 0 : this->list_pos - this->vscroll.GetCapacity();
+				this->list_pos = (this->list_pos < this->vscroll->GetCapacity()) ? 0 : this->list_pos - this->vscroll->GetCapacity();
 				break;
 			case WKC_PAGEDOWN:
 				/* scroll down a page */
-				this->list_pos = min(this->list_pos + this->vscroll.GetCapacity(), (int)this->content.Length() - 1);
+				this->list_pos = min(this->list_pos + this->vscroll->GetCapacity(), (int)this->content.Length() - 1);
 				break;
 			case WKC_HOME:
 				/* jump to beginning */
@@ -723,8 +726,8 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, NCLWW_MATRIX);
-		this->GetWidget<NWidgetCore>(NCLWW_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll->SetCapacityFromWidget(this, NCLWW_MATRIX);
+		this->GetWidget<NWidgetCore>(NCLWW_MATRIX)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnReceiveContentInfo(const ContentInfo *rci)

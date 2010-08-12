@@ -994,6 +994,7 @@ enum BuildRailStationWidgets {
 struct BuildRailStationWindow : public PickerWindowBase {
 private:
 	uint line_height; ///< Height of a single line in the newstation selection matrix (#BRSW_NEWST_LIST widget).
+	Scrollbar *vscroll;
 
 	/**
 	 * Verify whether the currently selected station size is allowed after selecting a new station class/type.
@@ -1041,6 +1042,7 @@ public:
 	BuildRailStationWindow(const WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(parent)
 	{
 		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(BRSW_NEWST_SCROLL);
 		NWidgetStacked *newst_additions = this->GetWidget<NWidgetStacked>(BRSW_SHOW_NEWST_ADDITIONS);
 		newst_additions->SetDisplayedPlane(newstation ? 0 : SZSP_NONE);
 		this->FinishInitNested(desc, TRANSPORT_RAIL);
@@ -1060,9 +1062,9 @@ public:
 		if (newstation) {
 			_railstation.station_count = StationClass::GetCount(_railstation.station_class);
 
-			this->vscroll.SetCount(_railstation.station_count);
-			this->vscroll.SetCapacity(GB(this->GetWidget<NWidgetCore>(BRSW_NEWST_LIST)->widget_data, MAT_ROW_START, MAT_ROW_BITS));
-			this->vscroll.SetPosition(Clamp(_railstation.station_type - 2, 0, max(this->vscroll.GetCount() - this->vscroll.GetCapacity(), 0)));
+			this->vscroll->SetCount(_railstation.station_count);
+			this->vscroll->SetCapacity(GB(this->GetWidget<NWidgetCore>(BRSW_NEWST_LIST)->widget_data, MAT_ROW_START, MAT_ROW_BITS));
+			this->vscroll->SetPosition(Clamp(_railstation.station_type - 2, 0, max(this->vscroll->GetCount() - this->vscroll->GetCapacity(), 0)));
 		} else {
 			/* New stations are not available, so ensure the default station
 			 * type is 'selected'. */
@@ -1186,7 +1188,7 @@ public:
 
 			case BRSW_NEWST_LIST: {
 				uint y = r.top;
-				for (uint16 i = this->vscroll.GetPosition(); i < _railstation.station_count && this->vscroll.IsVisible(i); i++) {
+				for (uint16 i = this->vscroll->GetPosition(); i < _railstation.station_count && this->vscroll->IsVisible(i); i++) {
 					const StationSpec *statspec = StationClass::Get(_railstation.station_class, i);
 
 					StringID str = STR_STATION_CLASS_DFLT;
@@ -1342,7 +1344,7 @@ public:
 				break;
 
 			case BRSW_NEWST_LIST: {
-				int y = this->vscroll.GetScrolledRowFromWidget(pt.y, this, BRSW_NEWST_LIST, 0, this->line_height);
+				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, BRSW_NEWST_LIST, 0, this->line_height);
 				if (y >= _railstation.station_count) return;
 
 				/* Check station availability callback */
@@ -1371,8 +1373,8 @@ public:
 
 			this->CheckSelectedSize(StationClass::Get(_railstation.station_class, _railstation.station_type));
 
-			this->vscroll.SetCount(_railstation.station_count);
-			this->vscroll.SetPosition(_railstation.station_type);
+			this->vscroll->SetCount(_railstation.station_count);
+			this->vscroll->SetPosition(_railstation.station_type);
 		}
 
 		SndPlayFx(SND_15_BEEP);
@@ -1771,28 +1773,31 @@ enum BuildRailWaypointWidgets {
 };
 
 struct BuildRailWaypointWindow : PickerWindowBase {
+	Scrollbar *hscroll;
+
 	BuildRailWaypointWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
 		this->InitNested(desc, TRANSPORT_RAIL);
-		this->hscroll.SetCapacity(5);
-		this->hscroll.SetCount(_waypoint_count);
+		this->hscroll = this->GetScrollbar(BRWW_SCROLL);
+		this->hscroll->SetCapacity(5);
+		this->hscroll->SetCount(_waypoint_count);
 	};
 
 	virtual void OnPaint()
 	{
-		for (uint i = 0; i < this->hscroll.GetCapacity(); i++) {
-			this->SetWidgetLoweredState(i + BRWW_WAYPOINT_1, (this->hscroll.GetPosition() + i) == _cur_waypoint_type);
+		for (uint i = 0; i < this->hscroll->GetCapacity(); i++) {
+			this->SetWidgetLoweredState(i + BRWW_WAYPOINT_1, (this->hscroll->GetPosition() + i) == _cur_waypoint_type);
 		}
 
 		this->DrawWidgets();
 
-		for (uint i = 0; i < this->hscroll.GetCapacity(); i++) {
-			if (this->hscroll.GetPosition() + i < this->hscroll.GetCount()) {
-				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, this->hscroll.GetPosition() + i);
+		for (uint i = 0; i < this->hscroll->GetCapacity(); i++) {
+			if (this->hscroll->GetPosition() + i < this->hscroll->GetCount()) {
+				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, this->hscroll->GetPosition() + i);
 				NWidgetBase *nw = this->GetWidget<NWidgetBase>(BRWW_WAYPOINT_1 + i);
 
 				int bottom = nw->pos_y + nw->current_y;
-				DrawWaypointSprite(nw->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll.GetPosition() + i, _cur_railtype);
+				DrawWaypointSprite(nw->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll->GetPosition() + i, _cur_railtype);
 
 				if (statspec != NULL &&
 						HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
@@ -1811,7 +1816,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 			case BRWW_WAYPOINT_3:
 			case BRWW_WAYPOINT_4:
 			case BRWW_WAYPOINT_5: {
-				byte type = widget - BRWW_WAYPOINT_1 + this->hscroll.GetPosition();
+				byte type = widget - BRWW_WAYPOINT_1 + this->hscroll->GetPosition();
 
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, type);

@@ -1504,6 +1504,8 @@ struct GameSettingsWindow : Window {
 	SettingEntry *valuewindow_entry; ///< If non-NULL, pointer to setting for which a value-entering window has been opened
 	SettingEntry *clicked_entry; ///< If non-NULL, pointer to a clicked numeric setting (with a depressed left or right button)
 
+	Scrollbar *vscroll;
+
 	GameSettingsWindow(const WindowDesc *desc) : Window()
 	{
 		static bool first_time = true;
@@ -1521,9 +1523,11 @@ struct GameSettingsWindow : Window {
 		this->valuewindow_entry = NULL; // No setting entry for which a entry window is opened
 		this->clicked_entry = NULL; // No numeric setting buttons are depressed
 
-		this->InitNested(desc, 0);
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(SETTINGSEL_SCROLLBAR);
+		this->FinishInitNested(desc, 0);
 
-		this->vscroll.SetCount(_settings_main_page.Length());
+		this->vscroll->SetCount(_settings_main_page.Length());
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -1541,7 +1545,7 @@ struct GameSettingsWindow : Window {
 		if (widget != SETTINGSEL_OPTIONSPANEL) return;
 
 		_settings_main_page.Draw(settings_ptr, r.left + SETTINGTREE_LEFT_OFFSET, r.right - SETTINGTREE_RIGHT_OFFSET, r.top + SETTINGTREE_TOP_OFFSET,
-				this->vscroll.GetPosition(), this->vscroll.GetPosition() + this->vscroll.GetCapacity());
+				this->vscroll->GetPosition(), this->vscroll->GetPosition() + this->vscroll->GetCapacity());
 	}
 
 	virtual void OnPaint()
@@ -1553,7 +1557,7 @@ struct GameSettingsWindow : Window {
 	{
 		if (widget != SETTINGSEL_OPTIONSPANEL) return;
 
-		uint btn = this->vscroll.GetScrolledRowFromWidget(pt.y, this, SETTINGSEL_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET - 1);
+		uint btn = this->vscroll->GetScrolledRowFromWidget(pt.y, this, SETTINGSEL_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET - 1);
 		if (btn == INT_MAX) return;
 
 		uint cur_row = 0;
@@ -1567,7 +1571,7 @@ struct GameSettingsWindow : Window {
 		if ((pe->flags & SEF_KIND_MASK) == SEF_SUBTREE_KIND) {
 			pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
 
-			this->vscroll.SetCount(_settings_main_page.Length());
+			this->vscroll->SetCount(_settings_main_page.Length());
 			this->SetDirty();
 			return;
 		}
@@ -1695,7 +1699,7 @@ struct GameSettingsWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, SETTINGSEL_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET + SETTINGTREE_BOTTOM_OFFSET);
+		this->vscroll->SetCapacityFromWidget(this, SETTINGSEL_OPTIONSPANEL, SETTINGTREE_TOP_OFFSET + SETTINGTREE_BOTTOM_OFFSET);
 	}
 };
 

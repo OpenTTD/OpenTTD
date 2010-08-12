@@ -80,6 +80,7 @@ private:
 	uint32 type;
 	GUIBridgeList *bridges;
 	int bridgetext_offset; ///< Horizontal offset of the text describing the bridge properties in #BBSW_BRIDGE_LIST relative to the left edge.
+	Scrollbar *vscroll;
 
 	/** Sort the bridges by their index */
 	static int CDECL BridgeIndexSorter(const BuildBridgeData *a, const BuildBridgeData *b)
@@ -131,6 +132,7 @@ public:
 		bridges(bl)
 	{
 		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(BBSW_SCROLLBAR);
 		/* Change the data, or the caption of the gui. Set it to road or rail, accordingly. */
 		this->GetWidget<NWidgetCore>(BBSW_CAPTION)->widget_data = (GB(this->type, 15, 2) == TRANSPORT_ROAD) ? STR_SELECT_ROAD_BRIDGE_CAPTION : STR_SELECT_RAIL_BRIDGE_CAPTION;
 		this->FinishInitNested(desc, GB(br_type, 15, 2)); // Initializes 'this->bridgetext_offset'.
@@ -141,14 +143,14 @@ public:
 		this->bridges->NeedResort();
 		this->SortBridgeList();
 
-		this->vscroll.SetCount(bl->Length());
-		if (this->last_size < this->vscroll.GetCapacity()) this->last_size = this->vscroll.GetCapacity();
-		if (this->last_size > this->vscroll.GetCount()) this->last_size = this->vscroll.GetCount();
+		this->vscroll->SetCount(bl->Length());
+		if (this->last_size < this->vscroll->GetCapacity()) this->last_size = this->vscroll->GetCapacity();
+		if (this->last_size > this->vscroll->GetCount()) this->last_size = this->vscroll->GetCount();
 		/* Resize the bridge selection window if we used a bigger one the last time. */
-		if (this->last_size > this->vscroll.GetCapacity()) {
-			ResizeWindow(this, 0, (this->last_size - this->vscroll.GetCapacity()) * this->resize.step_height);
+		if (this->last_size > this->vscroll->GetCapacity()) {
+			ResizeWindow(this, 0, (this->last_size - this->vscroll->GetCapacity()) * this->resize.step_height);
 		}
-		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	~BuildBridgeWindow()
@@ -216,7 +218,7 @@ public:
 
 			case BBSW_BRIDGE_LIST: {
 				uint y = r.top;
-				for (int i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < (int)this->bridges->Length(); i++) {
+				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < (int)this->bridges->Length(); i++) {
 					const BridgeSpec *b = this->bridges->Get(i)->spec;
 
 					SetDParam(2, this->bridges->Get(i)->cost);
@@ -249,7 +251,7 @@ public:
 		switch (widget) {
 			default: break;
 			case BBSW_BRIDGE_LIST: {
-				uint i = this->vscroll.GetScrolledRowFromWidget(pt.y, this, BBSW_BRIDGE_LIST);
+				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, BBSW_BRIDGE_LIST);
 				if (i < this->bridges->Length()) {
 					this->BuildBridge(i);
 					delete this;
@@ -279,10 +281,10 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, BBSW_BRIDGE_LIST);
-		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll->SetCapacityFromWidget(this, BBSW_BRIDGE_LIST);
+		this->GetWidget<NWidgetCore>(BBSW_BRIDGE_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
-		this->last_size = max(this->vscroll.GetCapacity(), this->last_size);
+		this->last_size = max(this->vscroll->GetCapacity(), this->last_size);
 	}
 };
 

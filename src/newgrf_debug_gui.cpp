@@ -251,6 +251,8 @@ struct NewGRFInspectWindow : Window {
 	/** The currently editted parameter, to update the right one. */
 	byte current_edit_param;
 
+	Scrollbar *vscroll;
+
 	/**
 	 * Check whether the given variable has a parameter.
 	 * @param variable the variable to check.
@@ -263,9 +265,11 @@ struct NewGRFInspectWindow : Window {
 
 	NewGRFInspectWindow(const WindowDesc *desc, WindowNumber wno) : Window()
 	{
-		this->InitNested(desc, wno);
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(NIW_SCROLLBAR);
+		this->FinishInitNested(desc, wno);
 
-		this->vscroll.SetCount(0);
+		this->vscroll->SetCount(0);
 		this->SetWidgetDisabledState(NIW_PARENT, GetFeatureHelper(this->window_number)->GetParent(GetFeatureIndex(this->window_number)) == UINT32_MAX);
 	}
 
@@ -301,8 +305,8 @@ struct NewGRFInspectWindow : Window {
 		vsnprintf(buf, lengthof(buf), format, va);
 		va_end(va);
 
-		offset -= this->vscroll.GetPosition();
-		if (offset < 0 || offset >= this->vscroll.GetCapacity()) return;
+		offset -= this->vscroll->GetPosition();
+		if (offset < 0 || offset >= this->vscroll->GetCapacity()) return;
 
 		::DrawString(r.left + LEFT_OFFSET, r.right + RIGHT_OFFSET, r.top + TOP_OFFSET + (offset * this->resize.step_height), buf, TC_BLACK);
 	}
@@ -401,7 +405,7 @@ struct NewGRFInspectWindow : Window {
 		/* Not nice and certainly a hack, but it beats duplicating
 		 * this whole function just to count the actual number of
 		 * elements. Especially because they need to be redrawn. */
-		const_cast<NewGRFInspectWindow*>(this)->vscroll.SetCount(i);
+		const_cast<NewGRFInspectWindow*>(this)->vscroll->SetCount(i);
 	}
 
 	virtual void OnPaint()
@@ -424,7 +428,7 @@ struct NewGRFInspectWindow : Window {
 				if (nif->variables == NULL) return;
 
 				/* Get the line, make sure it's within the boundaries. */
-				int line = this->vscroll.GetScrolledRowFromWidget(pt.y, this, NIW_MAINPANEL, TOP_OFFSET);
+				int line = this->vscroll->GetScrolledRowFromWidget(pt.y, this, NIW_MAINPANEL, TOP_OFFSET);
 				if (line == INT_MAX) return;
 
 				/* Find the variable related to the line */
@@ -450,7 +454,7 @@ struct NewGRFInspectWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, NIW_MAINPANEL, TOP_OFFSET + BOTTOM_OFFSET);
+		this->vscroll->SetCapacityFromWidget(this, NIW_MAINPANEL, TOP_OFFSET + BOTTOM_OFFSET);
 	}
 };
 
@@ -560,10 +564,13 @@ enum SpriteAlignerWidgets {
 /** Window used for aligning sprites. */
 struct SpriteAlignerWindow : Window {
 	SpriteID current_sprite; ///< The currently shown sprite
+	Scrollbar *vscroll;
 
 	SpriteAlignerWindow(const WindowDesc *desc, WindowNumber wno) : Window()
 	{
-		this->InitNested(desc, wno);
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(SAW_SCROLLBAR);
+		this->FinishInitNested(desc, wno);
 
 		/* Oh yes, we assume there is at least one normal sprite! */
 		while (GetSpriteType(this->current_sprite) != ST_NORMAL) this->current_sprite++;
@@ -628,10 +635,10 @@ struct SpriteAlignerWindow : Window {
 				int step_size = nwid->resize_y;
 
 				SmallVector<SpriteID, 256> &list = _newgrf_debug_sprite_picker.sprites;
-				int max = min<int>(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), list.Length());
+				int max = min<int>(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), list.Length());
 
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (int i = this->vscroll.GetPosition(); i < max; i++) {
+				for (int i = this->vscroll->GetPosition(); i < max; i++) {
 					SetDParam(0, list[i]);
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_BLACK_COMMA, TC_FROMSTRING, SA_RIGHT | SA_FORCE);
 					y += step_size;
@@ -677,7 +684,7 @@ struct SpriteAlignerWindow : Window {
 				const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
 				int step_size = nwid->resize_y;
 
-				uint i = this->vscroll.GetPosition() + (pt.y - nwid->pos_y) / step_size;
+				uint i = this->vscroll->GetPosition() + (pt.y - nwid->pos_y) / step_size;
 				if (i < _newgrf_debug_sprite_picker.sprites.Length()) {
 					SpriteID spr = _newgrf_debug_sprite_picker.sprites[i];
 					if (GetSpriteType(spr) == ST_NORMAL) this->current_sprite = spr;
@@ -735,14 +742,14 @@ struct SpriteAlignerWindow : Window {
 		if (data == 1) {
 			/* Sprite picker finished */
 			this->RaiseWidget(SAW_PICKER);
-			this->vscroll.SetCount(_newgrf_debug_sprite_picker.sprites.Length());
+			this->vscroll->SetCount(_newgrf_debug_sprite_picker.sprites.Length());
 		}
 	}
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, SAW_LIST);
-		this->GetWidget<NWidgetCore>(SAW_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll->SetCapacityFromWidget(this, SAW_LIST);
+		this->GetWidget<NWidgetCore>(SAW_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 

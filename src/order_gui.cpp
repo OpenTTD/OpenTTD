@@ -466,6 +466,7 @@ private:
 	OrderID order_over;     ///< Order over which another order is dragged, \c INVALID_ORDER if none.
 	OrderPlaceObjectState goto_type;
 	const Vehicle *vehicle; ///< Vehicle owning the orders being displayed and manipulated.
+	Scrollbar *vscroll;
 
 	/**
 	 * Return the memorised selected order.
@@ -491,9 +492,9 @@ private:
 		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST);
 		int sel = (y - nwid->pos_y - WD_FRAMERECT_TOP) / nwid->resize_y; // Selected line in the ORDER_WIDGET_ORDER_LIST panel.
 
-		if ((uint)sel >= this->vscroll.GetCapacity()) return INVALID_ORDER;
+		if ((uint)sel >= this->vscroll->GetCapacity()) return INVALID_ORDER;
 
-		sel += this->vscroll.GetPosition();
+		sel += this->vscroll->GetPosition();
 
 		return (sel <= vehicle->GetNumOrders() && sel >= 0) ? sel : INVALID_ORDER;
 	}
@@ -710,7 +711,9 @@ public:
 	{
 		this->vehicle = v;
 
-		this->InitNested(desc, v->index);
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(ORDER_WIDGET_SCROLLBAR);
+		this->FinishInitNested(desc, v->index);
 
 		this->selected_order = -1;
 		this->order_over = INVALID_ORDER;
@@ -819,7 +822,7 @@ public:
 			}
 		}
 
-		this->vscroll.SetCount(this->vehicle->GetNumOrders() + 1);
+		this->vscroll->SetCount(this->vehicle->GetNumOrders() + 1);
 		this->UpdateButtonState();
 	}
 
@@ -968,13 +971,13 @@ public:
 		int y = r.top + WD_FRAMERECT_TOP;
 		int line_height = this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST)->resize_y;
 
-		int i = this->vscroll.GetPosition();
+		int i = this->vscroll->GetPosition();
 		const Order *order = this->vehicle->GetOrder(i);
 		/* First draw the highlighting underground if it exists. */
 		if (this->order_over != INVALID_ORDER) {
 			while (order != NULL) {
 				/* Don't draw anything if it extends past the end of the window. */
-				if (!this->vscroll.IsVisible(i)) break;
+				if (!this->vscroll->IsVisible(i)) break;
 
 				if (i != this->selected_order && i == this->order_over) {
 					/* Highlight dragged order destination. */
@@ -992,14 +995,14 @@ public:
 
 			/* Reset counters for drawing the orders. */
 			y = r.top + WD_FRAMERECT_TOP;
-			i = this->vscroll.GetPosition();
+			i = this->vscroll->GetPosition();
 			order = this->vehicle->GetOrder(i);
 		}
 
 		/* Draw the orders. */
 		while (order != NULL) {
 			/* Don't draw anything if it extends past the end of the window. */
-			if (!this->vscroll.IsVisible(i)) break;
+			if (!this->vscroll->IsVisible(i)) break;
 
 			DrawOrderString(this->vehicle, order, i, y, i == this->selected_order, false, r.left + WD_FRAMETEXT_LEFT, middle, r.right - WD_FRAMETEXT_RIGHT);
 			y += line_height;
@@ -1008,7 +1011,7 @@ public:
 			order = order->next;
 		}
 
-		if (this->vscroll.IsVisible(i)) {
+		if (this->vscroll->IsVisible(i)) {
 			StringID str = this->vehicle->IsOrderListShared() ? STR_ORDERS_END_OF_SHARED_ORDERS : STR_ORDERS_END_OF_ORDERS;
 			DrawString(rtl ? r.left + WD_FRAMETEXT_LEFT : middle, rtl ? middle : r.right - WD_FRAMETEXT_RIGHT, y, str, (i == this->selected_order) ? TC_WHITE : TC_BLACK);
 		}
@@ -1340,7 +1343,7 @@ public:
 	virtual void OnResize()
 	{
 		/* Update the scroll bar */
-		this->vscroll.SetCapacityFromWidget(this, ORDER_WIDGET_ORDER_LIST);
+		this->vscroll->SetCapacityFromWidget(this, ORDER_WIDGET_ORDER_LIST);
 	}
 
 	virtual void OnTimeout()

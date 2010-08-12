@@ -99,6 +99,7 @@ struct DropdownWindow : Window {
 	bool instant_close;           ///< Close the window when the mouse button is raised.
 	int scrolling;                ///< If non-zero, auto-scroll the item list (one time).
 	Point position;               ///< Position of the topleft corner of the window.
+	Scrollbar *vscroll;
 
 	/**
 	 * Create a dropdown menu.
@@ -118,6 +119,8 @@ struct DropdownWindow : Window {
 		this->position = position;
 
 		this->CreateNestedTree(&_dropdown_desc);
+
+		this->vscroll = this->GetScrollbar(DDM_SCROLL);
 
 		uint items_width = size.width - (scroll ? WD_VSCROLLBAR_WIDTH : 0);
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(DDM_ITEMS);
@@ -142,8 +145,8 @@ struct DropdownWindow : Window {
 		}
 
 		/* Capacity is the average number of items visible */
-		this->vscroll.SetCapacity(size.height * (uint16)list->size() / list_height);
-		this->vscroll.SetCount((uint16)list->size());
+		this->vscroll->SetCapacity(size.height * (uint16)list->size() / list_height);
+		this->vscroll->SetCount((uint16)list->size());
 
 		this->parent_wnd_class = parent->window_class;
 		this->parent_wnd_num   = parent->window_number;
@@ -192,7 +195,7 @@ struct DropdownWindow : Window {
 		NWidgetBase *nwi = this->GetWidget<NWidgetBase>(DDM_ITEMS);
 		int y     = _cursor.pos.y - this->top - nwi->pos_y - 2;
 		int width = nwi->current_x - 4;
-		int pos   = this->vscroll.GetPosition();
+		int pos   = this->vscroll->GetPosition();
 
 		const DropDownList *list = this->list;
 
@@ -227,7 +230,7 @@ struct DropdownWindow : Window {
 		TextColour colour = (TextColour)this->GetWidget<NWidgetCore>(widget)->colour;
 
 		int y = r.top + 2;
-		int pos = this->vscroll.GetPosition();
+		int pos = this->vscroll->GetPosition();
 		for (DropDownList::const_iterator it = this->list->begin(); it != this->list->end(); ++it) {
 			const DropDownListItem *item = *it;
 			int item_height = item->Height(r.right - r.left + 1);
@@ -263,12 +266,12 @@ struct DropdownWindow : Window {
 	virtual void OnTick()
 	{
 		if (this->scrolling != 0) {
-			int pos = this->vscroll.GetPosition();
+			int pos = this->vscroll->GetPosition();
 
-			this->vscroll.UpdatePosition(this->scrolling);
+			this->vscroll->UpdatePosition(this->scrolling);
 			this->scrolling = 0;
 
-			if (pos != this->vscroll.GetPosition()) {
+			if (pos != this->vscroll->GetPosition()) {
 				this->SetDirty();
 			}
 		}

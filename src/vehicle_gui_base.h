@@ -23,6 +23,7 @@ struct BaseVehicleListWindow : public Window {
 	Listing *sorting;         ///< Pointer to the vehicle type related sorting.
 	VehicleType vehicle_type; ///< The vehicle type that is sorted
 	byte unitnumber_digits;   ///< The number of digits of the highest unit number
+	Scrollbar *vscroll;
 
 	enum ActionDropdownItem {
 		ADI_REPLACE,

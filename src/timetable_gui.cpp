@@ -172,6 +172,7 @@ struct TimetableWindow : Window {
 	bool show_expected;     ///< Whether we show expected arrival or scheduled
 	uint deparr_time_width; ///< The width of the departure/arrival time
 	uint deparr_abbr_width; ///< The width of the departure/arrival abbreviation
+	Scrollbar *vscroll;
 
 	TimetableWindow(const WindowDesc *desc, WindowNumber window_number) :
 			Window(),
@@ -180,6 +181,8 @@ struct TimetableWindow : Window {
 			show_expected(true)
 	{
 		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(TTV_SCROLLBAR);
+		// TODO TTV_FAKE_SCROLLBAR
 		this->UpdateSelectionStates();
 		this->FinishInitNested(desc, window_number);
 
@@ -229,9 +232,9 @@ struct TimetableWindow : Window {
 	{
 		int sel = (y - this->GetWidget<NWidgetBase>(TTV_TIMETABLE_PANEL)->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL;
 
-		if ((uint)sel >= this->vscroll.GetCapacity()) return INVALID_ORDER;
+		if ((uint)sel >= this->vscroll->GetCapacity()) return INVALID_ORDER;
 
-		sel += this->vscroll.GetPosition();
+		sel += this->vscroll->GetPosition();
 
 		return (sel < v->GetNumOrders() * 2 && sel >= 0) ? sel : INVALID_ORDER;
 	}
@@ -308,7 +311,7 @@ struct TimetableWindow : Window {
 		const Vehicle *v = this->vehicle;
 		int selected = this->sel_index;
 
-		this->vscroll.SetCount(v->GetNumOrders() * 2);
+		this->vscroll->SetCount(v->GetNumOrders() * 2);
 
 		if (v->owner == _local_company) {
 			bool disable = true;
@@ -358,7 +361,7 @@ struct TimetableWindow : Window {
 		switch (widget) {
 			case TTV_TIMETABLE_PANEL: {
 				int y = r.top + WD_FRAMERECT_TOP;
-				int i = this->vscroll.GetPosition();
+				int i = this->vscroll->GetPosition();
 				VehicleOrderID order_id = (i + 1) / 2;
 				bool final_order = false;
 
@@ -370,7 +373,7 @@ struct TimetableWindow : Window {
 				const Order *order = v->GetOrder(order_id);
 				while (order != NULL) {
 					/* Don't draw anything if it extends past the end of the window. */
-					if (!this->vscroll.IsVisible(i)) break;
+					if (!this->vscroll->IsVisible(i)) break;
 
 					if (i % 2 == 0) {
 						DrawOrderString(v, order, order_id, y, i == selected, true, r.left + WD_FRAMERECT_LEFT, middle, r.right - WD_FRAMERECT_RIGHT);
@@ -430,9 +433,9 @@ struct TimetableWindow : Window {
 				int time_left  = rtl ? r.left + WD_FRAMERECT_LEFT : r.right - WD_FRAMERECT_RIGHT - this->deparr_time_width;
 				int time_right = rtl ? r.left + WD_FRAMERECT_LEFT + this->deparr_time_width : r.right - WD_FRAMERECT_RIGHT;
 
-				for (int i = this->vscroll.GetPosition(); i / 2 < v->GetNumOrders(); ++i) { // note: i is also incremented in the loop
+				for (int i = this->vscroll->GetPosition(); i / 2 < v->GetNumOrders(); ++i) { // note: i is also incremented in the loop
 					/* Don't draw anything if it extends past the end of the window. */
-					if (!this->vscroll.IsVisible(i)) break;
+					if (!this->vscroll->IsVisible(i)) break;
 
 					if (i % 2 == 0) {
 						if (arr_dep[i / 2].arrival != INVALID_TICKS) {
@@ -591,7 +594,7 @@ struct TimetableWindow : Window {
 	virtual void OnResize()
 	{
 		/* Update the scroll bar */
-		this->vscroll.SetCapacityFromWidget(this, TTV_TIMETABLE_PANEL, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
+		this->vscroll->SetCapacityFromWidget(this, TTV_TIMETABLE_PANEL, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
 	/**

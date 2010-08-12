@@ -779,6 +779,7 @@ struct BuildVehicleWindow : Window {
 	StringID cargo_filter_texts[NUM_CARGO + 3]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID
 	byte cargo_filter_criteria;                 ///< Selected cargo filter
 	int details_height;                         ///< Minimal needed height of the details panels (found so far).
+	Scrollbar *vscroll;
 
 	BuildVehicleWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window()
 	{
@@ -805,6 +806,8 @@ struct BuildVehicleWindow : Window {
 		this->listview_mode = (this->window_number <= VEH_END);
 
 		this->CreateNestedTree(desc);
+
+		this->vscroll = this->GetScrollbar(BUILD_VEHICLE_WIDGET_SCROLLBAR);
 
 		/* If we are just viewing the list of vehicles, we do not need the Build button.
 		 * So we just hide it, and enlarge the Rename buton by the now vacant place. */
@@ -1056,7 +1059,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case BUILD_VEHICLE_WIDGET_LIST: {
-				uint i = this->vscroll.GetScrolledRowFromWidget(pt.y, this, BUILD_VEHICLE_WIDGET_LIST);
+				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, BUILD_VEHICLE_WIDGET_LIST);
 				size_t num_items = this->eng_list.Length();
 				this->sel_engine = (i < num_items) ? this->eng_list[i] : INVALID_ENGINE;
 				this->SetDirty();
@@ -1152,7 +1155,7 @@ struct BuildVehicleWindow : Window {
 	{
 		switch (widget) {
 			case BUILD_VEHICLE_WIDGET_LIST:
-				DrawEngineList(this->vehicle_type, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, &this->eng_list, this->vscroll.GetPosition(), min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->eng_list.Length()), this->sel_engine, false, DEFAULT_GROUP);
+				DrawEngineList(this->vehicle_type, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, &this->eng_list, this->vscroll->GetPosition(), min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->eng_list.Length()), this->sel_engine, false, DEFAULT_GROUP);
 				break;
 
 			case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING:
@@ -1164,7 +1167,7 @@ struct BuildVehicleWindow : Window {
 	virtual void OnPaint()
 	{
 		this->GenerateBuildList();
-		this->vscroll.SetCount(this->eng_list.Length());
+		this->vscroll->SetCount(this->eng_list.Length());
 
 		this->DrawWidgets();
 
@@ -1219,8 +1222,8 @@ struct BuildVehicleWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, BUILD_VEHICLE_WIDGET_LIST);
-		this->GetWidget<NWidgetCore>(BUILD_VEHICLE_WIDGET_LIST)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll->SetCapacityFromWidget(this, BUILD_VEHICLE_WIDGET_LIST);
+		this->GetWidget<NWidgetCore>(BUILD_VEHICLE_WIDGET_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 

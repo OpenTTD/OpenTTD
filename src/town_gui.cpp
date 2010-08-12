@@ -74,6 +74,7 @@ struct TownAuthorityWindow : Window {
 private:
 	Town *town;    ///< Town being displayed.
 	int sel_index; ///< Currently selected town action, \c 0 to \c TACT_COUNT-1, \c -1 means no action selected.
+	Scrollbar *vscroll;
 
 	/**
 	 * Get the position of the Nth set bit.
@@ -101,7 +102,8 @@ public:
 	{
 		this->town = Town::Get(window_number);
 		this->InitNested(desc, window_number);
-		this->vscroll.SetCapacity((this->GetWidget<NWidgetBase>(TWA_COMMAND_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / FONT_HEIGHT_NORMAL);
+		this->vscroll = this->GetScrollbar(TWA_SCROLLBAR);
+		this->vscroll->SetCapacity((this->GetWidget<NWidgetBase>(TWA_COMMAND_LIST)->current_y - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM) / FONT_HEIGHT_NORMAL);
 	}
 
 	virtual void OnPaint()
@@ -109,7 +111,7 @@ public:
 		int numact;
 		uint buttons = GetMaskOfTownActions(&numact, _local_company, this->town);
 
-		this->vscroll.SetCount(numact + 1);
+		this->vscroll->SetCount(numact + 1);
 
 		if (this->sel_index != -1 && !HasBit(buttons, this->sel_index)) {
 			this->sel_index = -1;
@@ -198,7 +200,7 @@ public:
 				int numact;
 				uint buttons = GetMaskOfTownActions(&numact, _local_company, this->town);
 				int y = r.top + WD_FRAMERECT_TOP;
-				int pos = this->vscroll.GetPosition();
+				int pos = this->vscroll->GetPosition();
 
 				if (--pos < 0) {
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_LOCAL_AUTHORITY_ACTIONS_TITLE);
@@ -260,7 +262,7 @@ public:
 				int y = this->GetRowFromWidget(pt.y, TWA_COMMAND_LIST, 1, FONT_HEIGHT_NORMAL);
 				if (!IsInsideMM(y, 0, 5)) return;
 
-				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_company, this->town), y + this->vscroll.GetPosition() - 1);
+				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_company, this->town), y + this->vscroll->GetPosition() - 1);
 				if (y >= 0) {
 					this->sel_index = y;
 					this->SetDirty();
@@ -654,6 +656,8 @@ private:
 
 	GUITownList towns;
 
+	Scrollbar *vscroll;
+
 	void BuildSortTownList()
 	{
 		if (this->towns.NeedRebuild()) {
@@ -666,7 +670,7 @@ private:
 
 			this->towns.Compact();
 			this->towns.RebuildDone();
-			this->vscroll.SetCount(this->towns.Length()); // Update scrollbar as well.
+			this->vscroll->SetCount(this->towns.Length()); // Update scrollbar as well.
 		}
 		/* Always sort the towns. */
 		this->last_town = NULL;
@@ -705,12 +709,16 @@ private:
 public:
 	TownDirectoryWindow(const WindowDesc *desc) : Window()
 	{
+		this->CreateNestedTree(desc);
+
+		this->vscroll = this->GetScrollbar(TDW_SCROLLBAR);
+
 		this->towns.SetListing(this->last_sorting);
 		this->towns.SetSortFuncs(TownDirectoryWindow::sorter_funcs);
 		this->towns.ForceRebuild();
 		this->BuildSortTownList();
 
-		this->InitNested(desc, 0);
+		this->FinishInitNested(desc, 0);
 	}
 
 	~TownDirectoryWindow()
@@ -747,7 +755,7 @@ public:
 					break;
 				}
 				/* At least one town available. */
-				for (uint i = this->vscroll.GetPosition(); i < this->towns.Length(); i++) {
+				for (uint i = this->vscroll->GetPosition(); i < this->towns.Length(); i++) {
 					const Town *t = this->towns[i];
 
 					assert(t->xy != INVALID_TILE);
@@ -757,7 +765,7 @@ public:
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_TOWN_DIRECTORY_TOWN);
 
 					y += this->resize.step_height;
-					if (++n == this->vscroll.GetCapacity()) break; // max number of towns in 1 window
+					if (++n == this->vscroll->GetCapacity()) break; // max number of towns in 1 window
 				}
 				break;
 			}
@@ -827,7 +835,7 @@ public:
 				break;
 
 			case TDW_CENTERTOWN: { // Click on Town Matrix
-				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, TDW_CENTERTOWN, WD_FRAMERECT_TOP);
+				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, TDW_CENTERTOWN, WD_FRAMERECT_TOP);
 				if (id_v >= this->towns.Length()) return; // click out of town bounds
 
 				const Town *t = this->towns[id_v];
@@ -850,7 +858,7 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, TDW_CENTERTOWN);
+		this->vscroll->SetCapacityFromWidget(this, TDW_CENTERTOWN);
 	}
 
 	virtual void OnInvalidateData(int data)

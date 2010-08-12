@@ -217,7 +217,7 @@ protected:
 	static GUIStationList::SortFunction * const sorter_funcs[];
 
 	GUIStationList stations;
-
+	Scrollbar *vscroll;
 
 	/**
 	 * (Re)Build station list
@@ -257,7 +257,7 @@ protected:
 		this->stations.Compact();
 		this->stations.RebuildDone();
 
-		this->vscroll.SetCount(this->stations.Length()); // Update the scrollbar
+		this->vscroll->SetCount(this->stations.Length()); // Update the scrollbar
 	}
 
 	/** Sort stations by their name */
@@ -349,7 +349,9 @@ public:
 		this->stations.NeedResort();
 		this->SortStationsList();
 
-		this->InitNested(desc, window_number);
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(SLW_SCROLLBAR);
+		this->FinishInitNested(desc, window_number);
 		this->owner = (Owner)this->window_number;
 
 		CargoID cid;
@@ -449,9 +451,9 @@ public:
 
 			case SLW_LIST: {
 				bool rtl = _dynlang.text_dir == TD_RTL;
-				int max = min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), this->stations.Length());
+				int max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->stations.Length());
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (int i = this->vscroll.GetPosition(); i < max; ++i) { // do until max number of stations of owner
+				for (int i = this->vscroll->GetPosition(); i < max; ++i) { // do until max number of stations of owner
 					const Station *st = this->stations[i];
 					assert(st->xy != INVALID_TILE);
 
@@ -485,7 +487,7 @@ public:
 					y += FONT_HEIGHT_NORMAL;
 				}
 
-				if (this->vscroll.GetCount() == 0) { // company has no stations
+				if (this->vscroll->GetCount() == 0) { // company has no stations
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_STATION_LIST_NONE);
 					return;
 				}
@@ -527,7 +529,7 @@ public:
 	{
 		if (widget == SLW_CAPTION) {
 			SetDParam(0, this->window_number);
-			SetDParam(1, this->vscroll.GetCount());
+			SetDParam(1, this->vscroll->GetCount());
 		}
 	}
 
@@ -535,7 +537,7 @@ public:
 	{
 		switch (widget) {
 			case SLW_LIST: {
-				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, SLW_LIST, 0, FONT_HEIGHT_NORMAL);
+				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, SLW_LIST, 0, FONT_HEIGHT_NORMAL);
 				if (id_v >= this->stations.Length()) return; // click out of list bound
 
 				const Station *st = this->stations[id_v];
@@ -682,7 +684,7 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, SLW_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
+		this->vscroll->SetCapacityFromWidget(this, SLW_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -878,6 +880,7 @@ struct StationViewWindow : public Window {
 	uint expand_shrink_width;     ///< The width allocated to the expand/shrink 'button'
 	int rating_lines;             ///< Number of lines in the cargo ratings view.
 	int accepts_lines;            ///< Number of lines in the accepted cargo view.
+	Scrollbar *vscroll;
 
 	/** Height of the #SVW_ACCEPTLIST widget for different views. */
 	enum AcceptListHeight {
@@ -891,6 +894,7 @@ struct StationViewWindow : public Window {
 		this->accepts_lines = ALH_ACCEPTS;
 
 		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(SVW_SCROLLBAR);
 		/* Nested widget tree creation is done in two steps to ensure that this->GetWidget<NWidgetCore>(SVW_ACCEPTS) exists in UpdateWidgetSize(). */
 		this->FinishInitNested(desc, window_number);
 
@@ -929,7 +933,7 @@ struct StationViewWindow : public Window {
 		uint32 transfers = 0;
 		this->OrderWaitingCargo(&cargolist, &transfers);
 
-		this->vscroll.SetCount((int)cargolist.size() + 1); // update scrollbar
+		this->vscroll->SetCount((int)cargolist.size() + 1); // update scrollbar
 
 		/* disable some buttons */
 		const Station *st = Station::Get(this->window_number);
@@ -1041,7 +1045,7 @@ struct StationViewWindow : public Window {
 	void DrawWaitingCargo(const Rect &r, const CargoDataList &cargolist, uint32 transfers) const
 	{
 		int y = r.top + WD_FRAMERECT_TOP;
-		int pos = this->vscroll.GetPosition();
+		int pos = this->vscroll->GetPosition();
 
 		const Station *st = Station::Get(this->window_number);
 		if (--pos < 0) {
@@ -1061,7 +1065,7 @@ struct StationViewWindow : public Window {
 		int shrink_right = rtl ? r.left + this->expand_shrink_width - WD_FRAMERECT_RIGHT : r.right - WD_FRAMERECT_RIGHT;
 
 
-		int maxrows = this->vscroll.GetCapacity();
+		int maxrows = this->vscroll->GetCapacity();
 		for (CargoDataList::const_iterator it = cargolist.begin(); it != cargolist.end() && pos > -maxrows; ++it) {
 			if (--pos < 0) {
 				const CargoData *cd = &(*it);
@@ -1152,7 +1156,7 @@ struct StationViewWindow : public Window {
 	{
 		switch (widget) {
 			case SVW_WAITING:
-				this->HandleCargoWaitingClick(this->vscroll.GetScrolledRowFromWidget(pt.y, this, SVW_WAITING, WD_FRAMERECT_TOP, FONT_HEIGHT_NORMAL));
+				this->HandleCargoWaitingClick(this->vscroll->GetScrolledRowFromWidget(pt.y, this, SVW_WAITING, WD_FRAMERECT_TOP, FONT_HEIGHT_NORMAL));
 				break;
 
 			case SVW_LOCATION:
@@ -1202,7 +1206,7 @@ struct StationViewWindow : public Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, SVW_WAITING, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
+		this->vscroll->SetCapacityFromWidget(this, SVW_WAITING, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 };
 
@@ -1354,6 +1358,7 @@ template <class T>
 struct SelectStationWindow : Window {
 	CommandContainer select_station_cmd; ///< Command to build new station
 	TileArea area; ///< Location of new station
+	Scrollbar *vscroll;
 
 	SelectStationWindow(const WindowDesc *desc, CommandContainer cmd, TileArea ta) :
 		Window(),
@@ -1361,6 +1366,7 @@ struct SelectStationWindow : Window {
 		area(ta)
 	{
 		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(JSW_SCROLLBAR);
 		this->GetWidget<NWidgetCore>(JSW_WIDGET_CAPTION)->widget_data = T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CAPTION : STR_JOIN_STATION_CAPTION;
 		this->FinishInitNested(desc, 0);
 		this->OnInvalidateData(0);
@@ -1396,14 +1402,14 @@ struct SelectStationWindow : Window {
 		if (widget != JSW_PANEL) return;
 
 		uint y = r.top + WD_FRAMERECT_TOP;
-		if (this->vscroll.GetPosition() == 0) {
+		if (this->vscroll->GetPosition() == 0) {
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, T::EXPECTED_FACIL == FACIL_WAYPOINT ? STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT : STR_JOIN_STATION_CREATE_SPLITTED_STATION);
 			y += this->resize.step_height;
 		}
 
-		for (uint i = max<uint>(1, this->vscroll.GetPosition()); i <= _stations_nearby_list.Length(); ++i, y += this->resize.step_height) {
+		for (uint i = max<uint>(1, this->vscroll->GetPosition()); i <= _stations_nearby_list.Length(); ++i, y += this->resize.step_height) {
 			/* Don't draw anything if it extends past the end of the window. */
-			if (i - this->vscroll.GetPosition() >= this->vscroll.GetCapacity()) break;
+			if (i - this->vscroll->GetPosition() >= this->vscroll->GetCapacity()) break;
 
 			const T *st = T::Get(_stations_nearby_list[i - 1]);
 			SetDParam(0, st->index);
@@ -1416,7 +1422,7 @@ struct SelectStationWindow : Window {
 	{
 		if (widget != JSW_PANEL) return;
 
-		uint st_index = this->vscroll.GetScrolledRowFromWidget(pt.y, this, JSW_PANEL, WD_FRAMERECT_TOP);
+		uint st_index = this->vscroll->GetScrolledRowFromWidget(pt.y, this, JSW_PANEL, WD_FRAMERECT_TOP);
 		bool distant_join = (st_index > 0);
 		if (distant_join) st_index--;
 
@@ -1443,13 +1449,13 @@ struct SelectStationWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, JSW_PANEL, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
+		this->vscroll->SetCapacityFromWidget(this, JSW_PANEL, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
 	virtual void OnInvalidateData(int data)
 	{
 		FindStationsNearby<T>(this->area, true);
-		this->vscroll.SetCount(_stations_nearby_list.Length() + 1);
+		this->vscroll->SetCount(_stations_nearby_list.Length() + 1);
 		this->SetDirty();
 	}
 };

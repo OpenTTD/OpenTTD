@@ -139,9 +139,9 @@ const Scrollbar *Window::GetScrollbar(uint widnum) const
 {
 	const NWidgetLeaf *wid = this->GetWidget<NWidgetLeaf>(widnum);
 	switch (wid->type) {
-		case WWT_HSCROLLBAR: return &this->hscroll;
-		case WWT_SCROLLBAR:  return &this->vscroll;
-		case WWT_SCROLL2BAR: return &this->vscroll2;
+		case WWT_HSCROLLBAR: return &this->old_hscroll;
+		case WWT_SCROLLBAR:  return &this->old_vscroll;
+		case WWT_SCROLL2BAR: return &this->old_vscroll2;
 		default: NOT_REACHED();
 	}
 }
@@ -155,9 +155,9 @@ Scrollbar *Window::GetScrollbar(uint widnum)
 {
 	NWidgetLeaf *wid = this->GetWidget<NWidgetLeaf>(widnum);
 	switch (wid->type) {
-		case WWT_HSCROLLBAR: return &this->hscroll;
-		case WWT_SCROLLBAR:  return &this->vscroll;
-		case WWT_SCROLL2BAR: return &this->vscroll2;
+		case WWT_HSCROLLBAR: return &this->old_hscroll;
+		case WWT_SCROLLBAR:  return &this->old_vscroll;
+		case WWT_SCROLL2BAR: return &this->old_vscroll2;
 		default: NOT_REACHED();
 	}
 }
@@ -1349,7 +1349,7 @@ void Window::InitNested(const WindowDesc *desc, WindowNumber window_number)
 }
 
 /** Empty constructor, initialization has been moved to #InitNested() called from the constructor of the derived class. */
-Window::Window() : hscroll(false), vscroll(true), vscroll2(true)
+Window::Window() : old_hscroll(false), old_vscroll(true), old_vscroll2(true)
 {
 }
 
@@ -1885,14 +1885,14 @@ static EventState HandleScrollbarScrolling()
 			bool rtl = false;
 
 			if (w->flags4 & WF_HSCROLL) {
-				sb = &w->hscroll;
+				sb = &w->old_hscroll;
 				i = _cursor.pos.x - _cursorpos_drag_start.x;
 				rtl = _dynlang.text_dir == TD_RTL;
 			} else if (w->flags4 & WF_SCROLL2) {
-				sb = &w->vscroll2;
+				sb = &w->old_vscroll2;
 				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			} else {
-				sb = &w->vscroll;
+				sb = &w->old_vscroll;
 				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			}
 

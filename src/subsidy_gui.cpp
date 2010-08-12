@@ -31,9 +31,13 @@ enum SubsidyListWidgets {
 };
 
 struct SubsidyListWindow : Window {
+	Scrollbar *vscroll;
+
 	SubsidyListWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->InitNested(desc, window_number);
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(SLW_SCROLLBAR);
+		this->FinishInitNested(desc, window_number);
 		this->OnInvalidateData(0);
 	}
 
@@ -41,7 +45,7 @@ struct SubsidyListWindow : Window {
 	{
 		if (widget != SLW_PANEL) return;
 
-		int y = this->vscroll.GetScrolledRowFromWidget(pt.y, this, SLW_PANEL, WD_FRAMERECT_TOP);
+		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, SLW_PANEL, WD_FRAMERECT_TOP);
 		int num = 0;
 		const Subsidy *s;
 		FOR_ALL_SUBSIDIES(s) {
@@ -157,8 +161,8 @@ struct SubsidyListWindow : Window {
 		int y = r.top + WD_FRAMERECT_TOP;
 		int x = r.left + WD_FRAMERECT_LEFT;
 
-		int pos = -this->vscroll.GetPosition();
-		const int cap = this->vscroll.GetCapacity();
+		int pos = -this->vscroll->GetPosition();
+		const int cap = this->vscroll->GetCapacity();
 
 		/* Section for drawing the offered subisidies */
 		if (IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_SUBSIDIES_OFFERED_TITLE);
@@ -213,12 +217,12 @@ struct SubsidyListWindow : Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, SLW_PANEL);
+		this->vscroll->SetCapacityFromWidget(this, SLW_PANEL);
 	}
 
 	virtual void OnInvalidateData(int data)
 	{
-		this->vscroll.SetCount(this->CountLines());
+		this->vscroll->SetCount(this->CountLines());
 	}
 };
 

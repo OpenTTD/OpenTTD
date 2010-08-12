@@ -90,17 +90,20 @@ enum SignListWidgets {
 
 struct SignListWindow : Window, SignList {
 	int text_offset; // Offset of the sign text relative to the left edge of the SLW_LIST widget.
+	Scrollbar *vscroll;
 
 	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->InitNested(desc, window_number);
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(SLW_SCROLLBAR);
+		this->FinishInitNested(desc, window_number);
 
 		/* Create initial list. */
 		this->signs.ForceRebuild();
 		this->signs.ForceResort();
 		this->BuildSignsList();
 		this->SortSignsList();
-		this->vscroll.SetCount(this->signs.Length());
+		this->vscroll->SetCount(this->signs.Length());
 	}
 
 	virtual void OnPaint()
@@ -114,7 +117,7 @@ struct SignListWindow : Window, SignList {
 			case SLW_LIST: {
 				uint y = r.top + WD_FRAMERECT_TOP; // Offset from top of widget.
 				/* No signs? */
-				if (this->vscroll.GetCount() == 0) {
+				if (this->vscroll->GetCount() == 0) {
 					DrawString(r.left + WD_FRAMETEXT_LEFT, r.right, y, STR_STATION_LIST_NONE);
 					return;
 				}
@@ -126,7 +129,7 @@ struct SignListWindow : Window, SignList {
 				uint text_right = r.right - (rtl ? this->text_offset : WD_FRAMERECT_RIGHT);
 
 				/* At least one sign available. */
-				for (uint16 i = this->vscroll.GetPosition(); this->vscroll.IsVisible(i) && i < this->vscroll.GetCount(); i++) {
+				for (uint16 i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
 					const Sign *si = this->signs[i];
 
 					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, y + sprite_offset_y);
@@ -142,13 +145,13 @@ struct SignListWindow : Window, SignList {
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == SLW_CAPTION) SetDParam(0, this->vscroll.GetCount());
+		if (widget == SLW_CAPTION) SetDParam(0, this->vscroll->GetCount());
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget == SLW_LIST) {
-			uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, SLW_LIST, WD_FRAMERECT_TOP);
+			uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, SLW_LIST, WD_FRAMERECT_TOP);
 			if (id_v == INT_MAX) return;
 
 			const Sign *si = this->signs[id_v];
@@ -158,7 +161,7 @@ struct SignListWindow : Window, SignList {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, SLW_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
+		this->vscroll->SetCapacityFromWidget(this, SLW_LIST, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -188,7 +191,7 @@ struct SignListWindow : Window, SignList {
 			this->signs.ForceRebuild();
 			this->BuildSignsList();
 			this->SetWidgetDirty(SLW_CAPTION);
-			this->vscroll.SetCount(this->signs.Length());
+			this->vscroll->SetCount(this->signs.Length());
 		} else { // Change of sign contents.
 			this->signs.ForceResort();
 		}

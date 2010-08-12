@@ -254,6 +254,7 @@ protected:
 	NetworkGameList *last_joined; ///< the last joined server
 	GUIGameServerList servers;    ///< list with game servers.
 	ServerListPosition list_pos;  ///< position of the selected server
+	Scrollbar *vscroll;
 
 	/**
 	 * (Re)build the network game list as its amount has changed because
@@ -272,7 +273,7 @@ protected:
 
 		this->servers.Compact();
 		this->servers.RebuildDone();
-		this->vscroll.SetCount(this->servers.Length());
+		this->vscroll->SetCount(this->servers.Length());
 	}
 
 	/** Sort servers by name. */
@@ -443,13 +444,15 @@ protected:
 	void ScrollToSelectedServer()
 	{
 		if (this->list_pos == SLP_INVALID) return; // no server selected
-		this->vscroll.ScrollTowards(this->list_pos);
+		this->vscroll->ScrollTowards(this->list_pos);
 	}
 
 public:
 	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_CLIENT_NAME_LENGTH)
 	{
-		this->InitNested(desc, 0);
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(NGWW_SCROLLBAR);
+		this->FinishInitNested(desc, 0);
 
 		ttd_strlcpy(this->edit_str_buf, _settings_client.network.client_name, this->edit_str_size);
 		this->afilter = CS_ALPHANUMERAL;
@@ -539,9 +542,9 @@ public:
 			case NGWW_MATRIX: {
 				uint16 y = r.top + WD_MATRIX_TOP;
 
-				const int max = min(this->vscroll.GetPosition() + this->vscroll.GetCapacity(), (int)this->servers.Length());
+				const int max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (int)this->servers.Length());
 
-				for (int i = this->vscroll.GetPosition(); i < max; ++i) {
+				for (int i = this->vscroll->GetPosition(); i < max; ++i) {
 					const NetworkGameList *ngl = this->servers[i];
 					this->DrawServerLine(ngl, y, ngl == this->server);
 					y += this->resize.step_height;
@@ -696,7 +699,7 @@ public:
 				break;
 
 			case NGWW_MATRIX: { // Matrix to show networkgames
-				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, NGWW_MATRIX);
+				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, NGWW_MATRIX);
 				this->server = (id_v < this->servers.Length()) ? this->servers[id_v] : NULL;
 				this->list_pos = (server == NULL) ? SLP_INVALID : id_v;
 				this->SetDirty();
@@ -843,12 +846,12 @@ public:
 				case WKC_PAGEUP:
 					/* scroll up a page */
 					if (this->server == NULL) return ES_HANDLED;
-					this->list_pos = (this->list_pos < this->vscroll.GetCapacity()) ? 0 : this->list_pos - this->vscroll.GetCapacity();
+					this->list_pos = (this->list_pos < this->vscroll->GetCapacity()) ? 0 : this->list_pos - this->vscroll->GetCapacity();
 					break;
 				case WKC_PAGEDOWN:
 					/* scroll down a page */
 					if (this->server == NULL) return ES_HANDLED;
-					this->list_pos = min(this->list_pos + this->vscroll.GetCapacity(), (int)this->servers.Length() - 1);
+					this->list_pos = min(this->list_pos + this->vscroll->GetCapacity(), (int)this->servers.Length() - 1);
 					break;
 				case WKC_HOME:
 					/* jump to beginning */
@@ -900,8 +903,8 @@ public:
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, NGWW_MATRIX);
-		this->GetWidget<NWidgetCore>(NGWW_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll->SetCapacityFromWidget(this, NGWW_MATRIX);
+		this->GetWidget<NWidgetCore>(NGWW_MATRIX)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 
@@ -1055,17 +1058,20 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 	byte field;                  ///< Selected text-field
 	FiosItem *map;               ///< Selected map
 	byte widget_id;              ///< The widget that has the pop-up input menu
+	Scrollbar *vscroll;
 
 	NetworkStartServerWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_NAME_LENGTH)
 	{
 		this->InitNested(desc, 0);
 
+		this->vscroll = this->GetScrollbar(NSSW_SCROLLBAR);
+
 		ttd_strlcpy(this->edit_str_buf, _settings_client.network.server_name, this->edit_str_size);
 
 		_saveload_mode = SLD_NEW_GAME;
 		BuildFileList();
-		this->vscroll.SetCapacity(14);
-		this->vscroll.SetCount(_fios_items.Length() + 1);
+		this->vscroll->SetCapacity(14);
+		this->vscroll->SetCount(_fios_items.Length() + 1);
 
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 160);
@@ -1143,7 +1149,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		/* draw list of maps */
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0xD7);  // black background of maps list
 
-		for (uint pos = this->vscroll.GetPosition(); pos < _fios_items.Length() + 1; pos++) {
+		for (uint pos = this->vscroll->GetPosition(); pos < _fios_items.Length() + 1; pos++) {
 			const FiosItem *item = (pos == 0) ? NULL : _fios_items.Get(pos - 1);
 			if (item == this->map) { // this->map == NULL for first item
 				GfxFillRect(r.left + 1, y, r.right - 1, y + FONT_HEIGHT_NORMAL - 1, 155); // show highlighted item with a different colour
@@ -1156,7 +1162,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			}
 			y += FONT_HEIGHT_NORMAL;
 
-			if (y >= this->vscroll.GetCapacity() * FONT_HEIGHT_NORMAL + r.top) break;
+			if (y >= this->vscroll->GetCapacity() * FONT_HEIGHT_NORMAL + r.top) break;
 		}
 	}
 
@@ -1175,8 +1181,8 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 				break;
 
 			case NSSW_SELMAP: { // Select map
-				int y = this->vscroll.GetScrolledRowFromWidget(pt.y, this, NSSW_SELMAP, WD_FRAMERECT_TOP, FONT_HEIGHT_NORMAL);
-				if (y >= this->vscroll.GetCount()) return;
+				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, NSSW_SELMAP, WD_FRAMERECT_TOP, FONT_HEIGHT_NORMAL);
+				if (y >= this->vscroll->GetCount()) return;
 
 				this->map = (y == 0) ? NULL : _fios_items.Get(y - 1);
 				this->SetDirty();
@@ -1454,11 +1460,14 @@ struct NetworkLobbyWindow : public Window {
 	CompanyID company;       ///< Select company
 	NetworkGameList *server; ///< Selected server
 	NetworkCompanyInfo company_info[MAX_COMPANIES];
+	Scrollbar *vscroll;
 
 	NetworkLobbyWindow(const WindowDesc *desc, NetworkGameList *ngl) :
 			Window(), company(INVALID_COMPANY), server(ngl)
 	{
-		this->InitNested(desc, 0);
+		this->CreateNestedTree(desc);
+		this->vscroll = this->GetScrollbar(NLWW_SCROLLBAR);
+		this->FinishInitNested(desc, 0);
 		this->OnResize();
 	}
 
@@ -1525,7 +1534,7 @@ struct NetworkLobbyWindow : public Window {
 		/* Cannot spectate if there are too many spectators */
 		this->SetWidgetDisabledState(NLWW_SPECTATE, gi->spectators_on >= gi->spectators_max);
 
-		this->vscroll.SetCount(gi->companies_on);
+		this->vscroll->SetCount(gi->companies_on);
 
 		/* Draw window widgets */
 		this->DrawWidgets();
@@ -1544,7 +1553,7 @@ struct NetworkLobbyWindow : public Window {
 
 		int y = r.top + WD_MATRIX_TOP;
 		/* Draw company list */
-		int pos = this->vscroll.GetPosition();
+		int pos = this->vscroll->GetPosition();
 		while (pos < this->server->info.companies_on) {
 			byte company = NetworkLobbyFindCompanyIndex(pos);
 			bool income = false;
@@ -1561,7 +1570,7 @@ struct NetworkLobbyWindow : public Window {
 
 			pos++;
 			y += this->resize.step_height;
-			if (pos >= this->vscroll.GetPosition() + this->vscroll.GetCapacity()) break;
+			if (pos >= this->vscroll->GetPosition() + this->vscroll->GetCapacity()) break;
 		}
 	}
 
@@ -1636,7 +1645,7 @@ struct NetworkLobbyWindow : public Window {
 				break;
 
 			case NLWW_MATRIX: { // Company list
-				uint id_v = this->vscroll.GetScrolledRowFromWidget(pt.y, this, NLWW_MATRIX);
+				uint id_v = this->vscroll->GetScrolledRowFromWidget(pt.y, this, NLWW_MATRIX);
 				this->company = (id_v >= this->server->info.companies_on) ? INVALID_COMPANY : NetworkLobbyFindCompanyIndex(id_v);
 				this->SetDirty();
 
@@ -1669,8 +1678,8 @@ struct NetworkLobbyWindow : public Window {
 
 	virtual void OnResize()
 	{
-		this->vscroll.SetCapacityFromWidget(this, NLWW_MATRIX);
-		this->GetWidget<NWidgetCore>(NLWW_MATRIX)->widget_data = (this->vscroll.GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->vscroll->SetCapacityFromWidget(this, NLWW_MATRIX);
+		this->GetWidget<NWidgetCore>(NLWW_MATRIX)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
 

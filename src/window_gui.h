@@ -382,9 +382,9 @@ public:
 	int width;  ///< width of the window (number of pixels to the right in x direction)
 	int height; ///< Height of the window (number of pixels down in y direction)
 
-	Scrollbar hscroll;  ///< Horizontal scroll bar
-	Scrollbar vscroll;  ///< First vertical scroll bar
-	Scrollbar vscroll2; ///< Second vertical scroll bar
+	Scrollbar old_hscroll;  ///< Horizontal scroll bar
+	Scrollbar old_vscroll;  ///< First vertical scroll bar
+	Scrollbar old_vscroll2; ///< Second vertical scroll bar
 	ResizeInfo resize;  ///< Resize information
 
 	Owner owner;        ///< The owner of the content shown in this window. Company colour is acquired from this variable.
@@ -412,7 +412,7 @@ public:
 
 	void InitNested(const WindowDesc *desc, WindowNumber number = 0);
 	void CreateNestedTree(const WindowDesc *desc, bool fill_nested = true);
-	void FinishInitNested(const WindowDesc *desc, WindowNumber window_number);
+	void FinishInitNested(const WindowDesc *desc, WindowNumber window_number = 0);
 
 	/**
 	 * Sets the enabled/disabled status of a widget.
