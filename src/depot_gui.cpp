@@ -222,6 +222,7 @@ struct DepotWindow : Window {
 	bool generate_list;
 	VehicleList vehicle_list;
 	VehicleList wagon_list;
+	uint num_columns;       ///< Number of columns.
 	Scrollbar *hscroll;     ///< Only for trains.
 	Scrollbar *vscroll;
 
@@ -233,6 +234,7 @@ struct DepotWindow : Window {
 		this->vehicle_over = INVALID_VEHICLE;
 		this->generate_list = true;
 		this->type = type;
+		this->num_columns = 1; // for non-trains this gets set in FinishInitNested()
 
 		this->CreateNestedTree(desc);
 		this->hscroll = (this->type == VEH_TRAIN ? this->GetScrollbar(DEPOT_WIDGET_H_SCROLL) : NULL);
@@ -388,7 +390,7 @@ struct DepotWindow : Window {
 		} else {
 			xt = x / this->resize.step_width;
 			xm = x % this->resize.step_width;
-			if (xt >= this->hscroll->GetCapacity()) return MODE_ERROR;
+			if (xt >= this->num_columns) return MODE_ERROR;
 		}
 		ym = y % this->resize.step_height;
 
@@ -414,7 +416,7 @@ struct DepotWindow : Window {
 		if (this->vehicle_list.Length() > pos) {
 			*veh = this->vehicle_list[pos];
 			/* Skip vehicles that are scrolled off the list */
-			x += this->hscroll->GetPosition();
+			if (this->type == VEH_TRAIN) x += this->hscroll->GetPosition();
 		} else {
 			pos -= this->vehicle_list.Length();
 			*veh = this->wagon_list[pos];
@@ -700,7 +702,7 @@ struct DepotWindow : Window {
 			this->vscroll->SetCount(this->vehicle_list.Length() + this->wagon_list.Length() + 1);
 			this->hscroll->SetCount(max_width);
 		} else {
-			this->vscroll->SetCount(CeilDiv(this->vehicle_list.Length(), this->hscroll->GetCapacity()));
+			this->vscroll->SetCount(CeilDiv(this->vehicle_list.Length(), this->num_columns));
 		}
 
 		/* Setup disabled buttons. */
@@ -1014,8 +1016,8 @@ struct DepotWindow : Window {
 			this->hscroll->SetCapacity(nwi->current_x - this->header_width - this->count_width);
 			nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		} else {
-			this->hscroll->SetCapacityFromWidget(this, DEPOT_WIDGET_MATRIX);
-			nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (this->hscroll->GetCapacity() << MAT_COL_START);
+			this->num_columns = nwi->current_x / nwi->resize_x;
+			nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (this->num_columns << MAT_COL_START);
 		}
 	}
 
