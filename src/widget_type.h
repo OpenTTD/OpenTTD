@@ -50,7 +50,7 @@ enum WidgetType {
 	WWT_INSET,      ///< Pressed (inset) panel, most commonly used as combo box _text_ area
 	WWT_IMGBTN,     ///< Button with image
 	WWT_IMGBTN_2,   ///< Button with diff image when clicked
-
+	WWT_ARROWBTN,   ///< Button with an arrow
 	WWT_TEXTBTN,    ///< Button with text
 	WWT_TEXTBTN_2,  ///< Button with diff text when clicked
 	WWT_LABEL,      ///< Centered label
@@ -76,7 +76,6 @@ enum WidgetType {
 	NWID_SELECTION,       ///< Stacked widgets, only one visible at a time (eg in a panel with tabs).
 	NWID_VIEWPORT,        ///< Nested widget containing a viewport.
 	NWID_BUTTON_DROPDOWN, ///< Button with a drop-down.
-	NWID_BUTTON_ARROW,    ///< Button with an arrow
 	NWID_HSCROLLBAR,      ///< Horizontal scrollbar
 	NWID_VSCROLLBAR,      ///< Vertical scrollbar
 
@@ -95,11 +94,12 @@ enum WidgetType {
 	/* Pushable window widget types. */
 	WWT_MASK = 0x7F,
 
-	WWB_PUSHBUTTON  = 1 << 7,
+	WWB_PUSHBUTTON    = 1 << 7,
 
-	WWT_PUSHBTN     = WWT_PANEL   | WWB_PUSHBUTTON,
-	WWT_PUSHTXTBTN  = WWT_TEXTBTN | WWB_PUSHBUTTON,
-	WWT_PUSHIMGBTN  = WWT_IMGBTN  | WWB_PUSHBUTTON,
+	WWT_PUSHBTN       = WWT_PANEL    | WWB_PUSHBUTTON,
+	WWT_PUSHTXTBTN    = WWT_TEXTBTN  | WWB_PUSHBUTTON,
+	WWT_PUSHIMGBTN    = WWT_IMGBTN   | WWB_PUSHBUTTON,
+	WWT_PUSHARROWBTN  = WWT_ARROWBTN | WWB_PUSHBUTTON,
 };
 
 /** Different forms of sizing nested widgets, using NWidgetBase::AssignSizePosition() */

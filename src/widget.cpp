@@ -1745,7 +1745,8 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 		case WWT_TEXT:
 		case WWT_MATRIX:
 		case NWID_BUTTON_DROPDOWN:
-		case NWID_BUTTON_ARROW:
+		case WWT_ARROWBTN:
+		case WWT_PUSHARROWBTN:
 			this->SetFill(0, 0);
 			break;
 
@@ -1895,7 +1896,8 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 			size = maxdim(size, d2);
 			break;
 		}
-		case NWID_BUTTON_ARROW: {
+		case WWT_ARROWBTN:
+		case WWT_PUSHARROWBTN: {
 			static const Dimension extra = {WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT,  WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM};
 			padding = &extra;
 			Dimension d2 = maxdim(GetSpriteSize(SPR_ARROW_LEFT), GetSpriteSize(SPR_ARROW_RIGHT));
@@ -2008,7 +2010,8 @@ void NWidgetLeaf::Draw(const Window *w)
 			DrawLabel(r, this->type, clicked, this->widget_data);
 			break;
 
-		case NWID_BUTTON_ARROW: {
+		case WWT_ARROWBTN:
+		case WWT_PUSHARROWBTN: {
 			SpriteID sprite;
 			switch (this->widget_data) {
 				case AWV_DECREASE: sprite = _dynlang.text_dir != TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
@@ -2263,7 +2266,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 
 			default:
 				if (*dest != NULL) return num_used;
-				assert((parts->type & WWT_MASK) < WWT_LAST || parts->type == NWID_BUTTON_DROPDOWN || parts->type == NWID_BUTTON_ARROW);
+				assert((parts->type & WWT_MASK) < WWT_LAST || parts->type == NWID_BUTTON_DROPDOWN);
 				*dest = new NWidgetLeaf(parts->type, parts->u.widget.colour, parts->u.widget.index, 0x0, STR_NULL);
 				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
 				break;

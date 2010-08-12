@@ -329,14 +329,9 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 	 * list's own button, then we should not process the click any further. */
 	if (HideDropDownMenu(w) == widget_index && widget_index >= 0) return;
 
-	switch (widget_type) {
-		/* special widget handling for buttons*/
-		case WWT_PANEL   | WWB_PUSHBUTTON: // WWT_PUSHBTN
-		case WWT_IMGBTN  | WWB_PUSHBUTTON: // WWT_PUSHIMGBTN
-		case WWT_TEXTBTN | WWB_PUSHBUTTON: // WWT_PUSHTXTBTN
-			w->HandleButtonClick(widget_index);
-			break;
+	if ((widget_type & ~WWB_PUSHBUTTON) < WWT_LAST && (widget_type & WWB_PUSHBUTTON)) w->HandleButtonClick(widget_index);
 
+	switch (widget_type) {
 		case NWID_VSCROLLBAR:
 		case NWID_HSCROLLBAR:
 			ScrollbarClickHandler(w, nw, x, y);
