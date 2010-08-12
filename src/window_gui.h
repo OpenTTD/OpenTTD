@@ -256,9 +256,6 @@ public:
 	int width;  ///< width of the window (number of pixels to the right in x direction)
 	int height; ///< Height of the window (number of pixels down in y direction)
 
-	Scrollbar old_hscroll;  ///< Horizontal scroll bar
-	Scrollbar old_vscroll;  ///< First vertical scroll bar
-	Scrollbar old_vscroll2; ///< Second vertical scroll bar
 	ResizeInfo resize;  ///< Resize information
 
 	Owner owner;        ///< The owner of the content shown in this window. Company colour is acquired from this variable.

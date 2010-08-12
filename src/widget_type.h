@@ -632,15 +632,12 @@ public:
  * Also assign the scrollbar to other widgets using #SetScrollbar() to make the mousewheel work.
  * @ingroup NestedWidgets
  */
-class NWidgetScrollbar : public NWidgetCore {
+class NWidgetScrollbar : public NWidgetCore, public Scrollbar {
 public:
 	NWidgetScrollbar(WidgetType tp, Colours colour, int index);
 
 	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
 	/* virtual */ void Draw(const Window *w);
-
-	const Scrollbar *GetScrollbar(const Window *w) const;
-	Scrollbar *GetScrollbar(Window *w) const;
 };
 
 /**

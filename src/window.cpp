@@ -104,7 +104,7 @@ int Window::GetRowFromWidget(int clickpos, int widget, int padding, int line_hei
  */
 const Scrollbar *Window::GetScrollbar(uint widnum) const
 {
-	return this->GetWidget<NWidgetScrollbar>(widnum)->GetScrollbar(this);
+	return this->GetWidget<NWidgetScrollbar>(widnum);
 }
 
 /**
@@ -114,7 +114,7 @@ const Scrollbar *Window::GetScrollbar(uint widnum) const
  */
 Scrollbar *Window::GetScrollbar(uint widnum)
 {
-	return this->GetWidget<NWidgetScrollbar>(widnum)->GetScrollbar(this);
+	return this->GetWidget<NWidgetScrollbar>(widnum);
 }
 
 
@@ -1304,7 +1304,7 @@ void Window::InitNested(const WindowDesc *desc, WindowNumber window_number)
 }
 
 /** Empty constructor, initialization has been moved to #InitNested() called from the constructor of the derived class. */
-Window::Window() : old_hscroll(false), old_vscroll(true), old_vscroll2(true), scrolling_scrollbar(-1)
+Window::Window() : scrolling_scrollbar(-1)
 {
 }
 

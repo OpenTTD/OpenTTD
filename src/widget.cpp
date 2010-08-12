@@ -75,7 +75,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *nw, int x, in
 {
 	int pos;
 	bool rtl = false;
-	Scrollbar *sb = nw->GetScrollbar(w);
+	Scrollbar *sb = nw;
 
 	switch (nw->type) {
 		case WWT_SCROLLBAR:
@@ -1670,7 +1670,7 @@ void Scrollbar::SetCapacityFromWidget(Window *w, int widget, int padding)
  * @param colour Colour of the scrollbar.
  * @param index  Index in the widget array used by the window system.
  */
-NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL)
+NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL), Scrollbar(tp != WWT_HSCROLLBAR)
 {
 	assert(tp == WWT_HSCROLLBAR || tp == WWT_SCROLLBAR || tp == WWT_SCROLL2BAR);
 	this->SetIndex(index);
@@ -1722,21 +1722,21 @@ void NWidgetScrollbar::Draw(const Window *w)
 		case WWT_HSCROLLBAR:
 			DrawHorizontalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL),
 								w->scrolling_scrollbar == this->index,
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), this->GetScrollbar(w));
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), this);
 			break;
 
 		case WWT_SCROLLBAR:
 			assert(this->widget_data == 0);
 			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP,
 								w->scrolling_scrollbar == this->index,
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN, this->GetScrollbar(w));
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN, this);
 			break;
 
 		case WWT_SCROLL2BAR:
 			assert(this->widget_data == 0);
 			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2),
 								w->scrolling_scrollbar == this->index,
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2), this->GetScrollbar(w));
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2), this);
 			break;
 
 		default: NOT_REACHED();
@@ -1744,26 +1744,6 @@ void NWidgetScrollbar::Draw(const Window *w)
 
 	if (this->IsDisabled()) {
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
-	}
-}
-
-const Scrollbar *NWidgetScrollbar::GetScrollbar(const Window *w) const
-{
-	switch (this->type) {
-		case WWT_HSCROLLBAR: return &w->old_hscroll;
-		case WWT_SCROLLBAR:  return &w->old_vscroll;
-		case WWT_SCROLL2BAR: return &w->old_vscroll2;
-		default: NOT_REACHED();
-	}
-}
-
-Scrollbar *NWidgetScrollbar::GetScrollbar(Window *w) const
-{
-	switch (this->type) {
-		case WWT_HSCROLLBAR: return &w->old_hscroll;
-		case WWT_SCROLLBAR:  return &w->old_vscroll;
-		case WWT_SCROLL2BAR: return &w->old_vscroll2;
-		default: NOT_REACHED();
 	}
 }
 
