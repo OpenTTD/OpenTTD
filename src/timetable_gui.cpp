@@ -182,7 +182,6 @@ struct TimetableWindow : Window {
 	{
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(TTV_SCROLLBAR);
-		// TODO TTV_FAKE_SCROLLBAR
 		this->UpdateSelectionStates();
 		this->FinishInitNested(desc, window_number);
 
