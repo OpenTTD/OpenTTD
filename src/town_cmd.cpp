@@ -2504,7 +2504,9 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 	TileIndex tile = t->xy;
 	if (CircularTileSearch(&tile, 9, SearchTileForStatue, NULL)) {
 		if (flags & DC_EXEC) {
+			Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			cur_company.Restore();
 			BuildObject(OBJECT_STATUE, tile, _current_company, t->index);
 			SetBit(t->statues, _current_company); // Once found and built, "inform" the Town.
 			MarkTileDirtyByTile(tile);
