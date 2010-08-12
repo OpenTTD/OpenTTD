@@ -69,14 +69,17 @@ static void DeleteDropDownList(DropDownList *list)
 
 /** Widget numbers of the dropdown menu. */
 enum DropdownMenuWidgets {
-	DDM_ITEMS,  ///< Panel showing the dropdown items.
-	DDM_SCROLL, ///< Scrollbar.
+	DDM_ITEMS,        ///< Panel showing the dropdown items.
+	DDM_SHOW_SCROLL,  ///< Hide scrollbar if too few items.
+	DDM_SCROLL,       ///< Scrollbar.
 };
 
 static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_END, DDM_ITEMS), SetMinimalSize(1, 1), SetScrollbar(DDM_SCROLL), EndContainer(),
-		NWidget(NWID_VSCROLLBAR, COLOUR_END, DDM_SCROLL),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, DDM_SHOW_SCROLL),
+			NWidget(NWID_VSCROLLBAR, COLOUR_END, DDM_SCROLL),
+		EndContainer(),
 	EndContainer(),
 };
 
@@ -128,11 +131,9 @@ struct DropdownWindow : Window {
 		nwi->colour = wi_colour;
 
 		nwi = this->GetWidget<NWidgetCore>(DDM_SCROLL);
-		if (scroll) {
-			nwi->colour = wi_colour;
-		} else {
-			nwi->min_x = 0; // Make scrollbar invisible.
-		}
+		nwi->colour = wi_colour;
+
+		this->GetWidget<NWidgetStacked>(DDM_SHOW_SCROLL)->SetDisplayedPlane(scroll ? 0 : SZSP_NONE);
 
 		this->FinishInitNested(&_dropdown_desc, 0);
 		this->flags4 &= ~WF_WHITE_BORDER_MASK;
