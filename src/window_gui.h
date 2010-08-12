@@ -407,6 +407,8 @@ public:
 	template <class NWID>
 	inline NWID *GetWidget(uint widnum);
 
+	const Scrollbar *GetScrollbar(uint widnum) const;
+	Scrollbar *GetScrollbar(uint widnum);
 
 	void InitNested(const WindowDesc *desc, WindowNumber number = 0);
 	void CreateNestedTree(const WindowDesc *desc, bool fill_nested = true);

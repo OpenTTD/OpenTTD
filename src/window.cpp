@@ -131,6 +131,39 @@ void Scrollbar::SetCapacityFromWidget(Window *w, int widget, int padding)
 }
 
 /**
+ * Return the Scrollbar to a widget index.
+ * @param widnum Scrollbar widget index
+ * @return Scrollbar to the widget
+ */
+const Scrollbar *Window::GetScrollbar(uint widnum) const
+{
+	const NWidgetLeaf *wid = this->GetWidget<NWidgetLeaf>(widnum);
+	switch (wid->type) {
+		case WWT_HSCROLLBAR: return &this->hscroll;
+		case WWT_SCROLLBAR:  return &this->vscroll;
+		case WWT_SCROLL2BAR: return &this->vscroll2;
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Return the Scrollbar to a widget index.
+ * @param widnum Scrollbar widget index
+ * @return Scrollbar to the widget
+ */
+Scrollbar *Window::GetScrollbar(uint widnum)
+{
+	NWidgetLeaf *wid = this->GetWidget<NWidgetLeaf>(widnum);
+	switch (wid->type) {
+		case WWT_HSCROLLBAR: return &this->hscroll;
+		case WWT_SCROLLBAR:  return &this->vscroll;
+		case WWT_SCROLL2BAR: return &this->vscroll2;
+		default: NOT_REACHED();
+	}
+}
+
+
+/**
  * Set the window that has the focus
  * @param w The window to set the focus on
  */
