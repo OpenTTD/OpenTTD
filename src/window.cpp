@@ -98,38 +98,6 @@ int Window::GetRowFromWidget(int clickpos, int widget, int padding, int line_hei
 }
 
 /**
- * Compute the row of a scrolled widget that a user clicked in.
- * @param clickpos    Vertical position of the mouse click (without taking scrolling into account).
- * @param widget      Widget number of the widget clicked in.
- * @param padding     Amount of empty space between the widget edge and the top of the first row. Default value is \c 0.
- * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.
- * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
- */
-int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding, int line_height) const
-{
-	uint pos = w->GetRowFromWidget(clickpos, widget, padding, line_height);
-	if (pos != INT_MAX) pos += this->GetPosition();
-	return (pos >= this->GetCount()) ? INT_MAX : pos;
-}
-
-/**
- * Set capacity of visible elements from the size and resize properties of a widget.
- * @param w       Window.
- * @param widget  Widget with size and resize properties.
- * @param padding Padding to subtract from the size.
- * @note Updates the position if needed.
- */
-void Scrollbar::SetCapacityFromWidget(Window *w, int widget, int padding)
-{
-	NWidgetBase *nwid = w->GetWidget<NWidgetBase>(widget);
-	if (this->is_vertical) {
-		this->SetCapacity(((int)nwid->current_y - padding) / (int)nwid->resize_y);
-	} else {
-		this->SetCapacity(((int)nwid->current_x - padding) / (int)nwid->resize_x);
-	}
-}
-
-/**
  * Return the Scrollbar to a widget index.
  * @param widnum Scrollbar widget index
  * @return Scrollbar to the widget
