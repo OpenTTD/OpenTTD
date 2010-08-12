@@ -2788,7 +2788,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строительство
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Новая техника
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Обслуживание ж/д
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Обслуживание автомобилей
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Обслуж. автомобилей
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Обслуж. авиатранспорта
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Обслуж. кораблей
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Обслуж. собственности
