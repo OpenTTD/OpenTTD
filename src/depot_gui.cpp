@@ -44,11 +44,13 @@
 enum DepotWindowWidgets {
 	DEPOT_WIDGET_CAPTION,
 	DEPOT_WIDGET_SELL,
+	DEPOT_WIDGET_SHOW_SELL_CHAIN,
 	DEPOT_WIDGET_SELL_CHAIN,
 	DEPOT_WIDGET_SELL_ALL,
 	DEPOT_WIDGET_AUTOREPLACE,
 	DEPOT_WIDGET_MATRIX,
 	DEPOT_WIDGET_V_SCROLL, ///< Vertical scrollbar
+	DEPOT_WIDGET_SHOW_H_SCROLL,
 	DEPOT_WIDGET_H_SCROLL, ///< Horizontal scrollbar
 	DEPOT_WIDGET_BUILD,
 	DEPOT_WIDGET_CLONE,
@@ -71,11 +73,15 @@ static const NWidgetPart _nested_train_depot_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_MATRIX, COLOUR_GREY, DEPOT_WIDGET_MATRIX), SetDataTip(0x0, STR_NULL), SetResize(1, 1), SetScrollbar(DEPOT_WIDGET_V_SCROLL),
-			NWidget(NWID_HSCROLLBAR, COLOUR_GREY, DEPOT_WIDGET_H_SCROLL),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, DEPOT_WIDGET_SHOW_H_SCROLL),
+				NWidget(NWID_HSCROLLBAR, COLOUR_GREY, DEPOT_WIDGET_H_SCROLL),
+			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_VERTICAL),
 			NWidget(WWT_IMGBTN, COLOUR_GREY, DEPOT_WIDGET_SELL), SetDataTip(0x0, STR_NULL), SetResize(0, 1), SetFill(0, 1),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, DEPOT_WIDGET_SELL_CHAIN), SetDataTip(SPR_SELL_CHAIN_TRAIN, STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP), SetResize(0, 1), SetFill(0, 1),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, DEPOT_WIDGET_SHOW_SELL_CHAIN),
+				NWidget(WWT_IMGBTN, COLOUR_GREY, DEPOT_WIDGET_SELL_CHAIN), SetDataTip(SPR_SELL_CHAIN_TRAIN, STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP), SetResize(0, 1), SetFill(0, 1),
+			EndContainer(),
 			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_SELL_ALL), SetDataTip(0x0, STR_NULL),
 			NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, DEPOT_WIDGET_AUTOREPLACE), SetDataTip(0x0, STR_NULL),
 		EndContainer(),
@@ -241,6 +247,9 @@ struct DepotWindow : Window {
 		this->vscroll = this->GetScrollbar(DEPOT_WIDGET_V_SCROLL);
 		/* Don't show 'rename button' of aircraft hangar */
 		this->GetWidget<NWidgetStacked>(DEPOT_WIDGET_SHOW_RENAME)->SetDisplayedPlane(type == VEH_AIRCRAFT ? SZSP_NONE : 0);
+		/* Only train depots have a horizontal scrollbar and a 'sell chain' button */
+		this->GetWidget<NWidgetStacked>(DEPOT_WIDGET_SHOW_H_SCROLL)->SetDisplayedPlane(type == VEH_TRAIN ? 0 : SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetStacked>(DEPOT_WIDGET_SHOW_SELL_CHAIN)->SetDisplayedPlane(type == VEH_TRAIN ? 0 : SZSP_NONE);
 		this->SetupWidgetData(type);
 		this->FinishInitNested(desc, tile);
 
@@ -559,8 +568,6 @@ struct DepotWindow : Window {
 	 */
 	void SetupWidgetData(VehicleType type)
 	{
-		if (type != VEH_TRAIN) this->GetWidget<NWidgetCore>(DEPOT_WIDGET_SELL_CHAIN)->fill_y = 0; // Disable vertical filling of chain-sell widget for non-train windows.
-
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_STOP_ALL)->tool_tip     = STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP + type;
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_START_ALL)->tool_tip    = STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP + type;
 		this->GetWidget<NWidgetCore>(DEPOT_WIDGET_SELL)->tool_tip         = STR_DEPOT_TRAIN_SELL_TOOLTIP + type;
@@ -623,15 +630,6 @@ struct DepotWindow : Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case DEPOT_WIDGET_SELL_CHAIN:
-			case DEPOT_WIDGET_H_SCROLL:
-				/* Hide the 'sell chain' and the horizontal scrollbar when not a train depot. */
-				if (this->type != VEH_TRAIN) {
-					size->height = 0;
-					resize->height = 0;
-				}
-				break;
-
 			case DEPOT_WIDGET_MATRIX: {
 				uint min_height = 0;
 
