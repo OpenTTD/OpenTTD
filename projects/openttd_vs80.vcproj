@@ -3408,10 +3408,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\misc\crc32.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\misc\dbg_helpers.cpp"
 				>
 			</File>

@@ -141,28 +141,6 @@ static StationID FindNearestHangar(const Aircraft *v)
 	return index;
 }
 
-#if 0
-/**
- * Check if given vehicle has a goto hangar in his orders
- * @param v vehicle to inquiry
- * @return true if vehicle v has an airport in the schedule, that has a hangar
- */
-static bool HaveHangarInOrderList(Aircraft *v)
-{
-	const Order *order;
-
-	FOR_VEHICLE_ORDERS(v, order) {
-		const Station *st = Station::Get(order->station);
-		if (st->owner == v->owner && (st->facilities & FACIL_AIRPORT)) {
-			/* If an airport doesn't have a hangar, skip it */
-			if (st->Airport()->nof_depots != 0) return true;
-		}
-	}
-
-	return false;
-}
-#endif
-
 SpriteID Aircraft::GetImage(Direction direction) const
 {
 	uint8 spritenum = this->spritenum;

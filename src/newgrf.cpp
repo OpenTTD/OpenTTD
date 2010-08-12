@@ -4317,22 +4317,6 @@ static void FeatureNewName(ByteReader *buf)
 						break;
 				}
 				break;
-
-#if 0
-				case GSF_CANALS:
-				case GSF_BRIDGES:
-					AddGRFString(_cur_spriteid, id, lang, name);
-					switch (GB(id, 8, 8)) {
-						case 0xC9: // House name
-						default:
-							grfmsg(7, "FeatureNewName: Unsupported ID (0x%04X)", id);
-					}
-					break;
-
-				default :
-					grfmsg(7, "FeatureNewName: Unsupported feature (0x%02X)", feature);
-					break;
-#endif
 		}
 	}
 }

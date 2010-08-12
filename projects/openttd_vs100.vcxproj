@@ -1016,7 +1016,6 @@
     <ClInclude Include="..\src\misc\blob.hpp" />
     <ClCompile Include="..\src\misc\countedobj.cpp" />
     <ClInclude Include="..\src\misc\countedptr.hpp" />
-    <ClInclude Include="..\src\misc\crc32.hpp" />
     <ClCompile Include="..\src\misc\dbg_helpers.cpp" />
     <ClInclude Include="..\src\misc\dbg_helpers.h" />
     <ClInclude Include="..\src\misc\fixedsizearray.hpp" />

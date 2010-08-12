@@ -890,26 +890,6 @@ static double int_noise(const long x, const long y, const int prime)
 
 
 /**
- * Hj. Malthaner's routine included 2 different noise smoothing methods.
- * We now use the "raw" int_noise one.
- * However, it may be useful to move to the other routine in future.
- * So it is included too.
- */
-static double smoothed_noise(const int x, const int y, const int prime)
-{
-#if 0
-	/* A hilly world (four corner smooth) */
-	const double sides = int_noise(x - 1, y) + int_noise(x + 1, y) + int_noise(x, y - 1) + int_noise(x, y + 1);
-	const double center  =  int_noise(x, y);
-	return (sides + sides + center * 4) / 8.0;
-#endif
-
-	/* This gives very hilly world */
-	return int_noise(x, y, prime);
-}
-
-
-/**
  * This routine determines the interpolated value between a and b
  */
 static inline double linear_interpolate(const double a, const double b, const double x)
@@ -930,10 +910,10 @@ static double interpolated_noise(const double x, const double y, const int prime
 	const double fractional_X = x - (double)integer_X;
 	const double fractional_Y = y - (double)integer_Y;
 
-	const double v1 = smoothed_noise(integer_X,     integer_Y,     prime);
-	const double v2 = smoothed_noise(integer_X + 1, integer_Y,     prime);
-	const double v3 = smoothed_noise(integer_X,     integer_Y + 1, prime);
-	const double v4 = smoothed_noise(integer_X + 1, integer_Y + 1, prime);
+	const double v1 = int_noise(integer_X,     integer_Y,     prime);
+	const double v2 = int_noise(integer_X + 1, integer_Y,     prime);
+	const double v3 = int_noise(integer_X,     integer_Y + 1, prime);
+	const double v4 = int_noise(integer_X + 1, integer_Y + 1, prime);
 
 	const double i1 = linear_interpolate(v1, v2, fractional_X);
 	const double i2 = linear_interpolate(v3, v4, fractional_X);

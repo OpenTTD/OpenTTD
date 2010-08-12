@@ -802,7 +802,6 @@ misc/binaryheap.hpp
 misc/blob.hpp
 misc/countedobj.cpp
 misc/countedptr.hpp
-misc/crc32.hpp
 misc/dbg_helpers.cpp
 misc/dbg_helpers.h
 misc/fixedsizearray.hpp

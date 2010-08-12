@@ -717,13 +717,6 @@ struct MusicWindow : public Window {
 				break;
 		}
 	}
-
-#if 0
-	virtual void OnTick()
-	{
-		this->SetWidgetDirty(MW_GAUGE);
-	}
-#endif
 };
 
 static const NWidgetPart _nested_music_window_widgets[] = {

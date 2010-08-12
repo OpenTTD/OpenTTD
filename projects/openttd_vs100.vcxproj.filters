@@ -2251,9 +2251,6 @@
     <ClInclude Include="..\src\misc\countedptr.hpp">
       <Filter>Misc</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\misc\crc32.hpp">
-      <Filter>Misc</Filter>
-    </ClInclude>
     <ClCompile Include="..\src\misc\dbg_helpers.cpp">
       <Filter>Misc</Filter>
     </ClCompile>
