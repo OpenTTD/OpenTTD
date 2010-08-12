@@ -345,7 +345,7 @@ static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_MATRIX, COLOUR_MAUVE, GRFPAR_WIDGET_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetDataTip(0x501, STR_NULL), SetScrollbar(GRFPAR_WIDGET_SCROLLBAR),
-		NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, GRFPAR_WIDGET_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, GRFPAR_WIDGET_SCROLLBAR),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_MAUVE, GRFPAR_WIDGET_DESCRIPTION), SetResize(1, 0), SetFill(1, 0),
 	EndContainer(),
@@ -1397,7 +1397,7 @@ static const NWidgetPart _nested_newgrf_actives_widgets[] = {
 						SetFill(1, 1), SetResize(1, 1), SetScrollbar(SNGRFS_SCROLLBAR),
 				EndContainer(),
 			EndContainer(),
-			NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, SNGRFS_SCROLLBAR),
+			NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, SNGRFS_SCROLLBAR),
 		EndContainer(),
 		/* Buttons. */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
@@ -1431,7 +1431,7 @@ static const NWidgetPart _nested_newgrf_availables_widgets[] = {
 						SetFill(1, 1), SetResize(1, 1), SetScrollbar(SNGRFS_SCROLL2BAR),
 				EndContainer(),
 			EndContainer(),
-			NWidget(WWT_SCROLL2BAR, COLOUR_MAUVE, SNGRFS_SCROLL2BAR),
+			NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, SNGRFS_SCROLL2BAR),
 		EndContainer(),
 		/* Left side, available grfs, buttons. */
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),

@@ -337,9 +337,8 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, int click_count)
 			w->HandleButtonClick(widget_index);
 			break;
 
-		case WWT_SCROLLBAR:
-		case WWT_SCROLL2BAR:
-		case WWT_HSCROLLBAR:
+		case NWID_VSCROLLBAR:
+		case NWID_HSCROLLBAR:
 			ScrollbarClickHandler(w, nw, x, y);
 			break;
 
@@ -1382,7 +1381,7 @@ static void DecreaseWindowCounters()
 		/* Unclick scrollbar buttons if they are pressed. */
 		for (uint i = 0; i < w->nested_array_size; i++) {
 			NWidgetBase *nwid = w->nested_array[i];
-			if (nwid != NULL && (nwid->type == WWT_HSCROLLBAR || nwid->type == WWT_SCROLLBAR || nwid->type == WWT_SCROLL2BAR)) {
+			if (nwid != NULL && (nwid->type == NWID_HSCROLLBAR || nwid->type == NWID_VSCROLLBAR)) {
 				NWidgetScrollbar *sb = static_cast<NWidgetScrollbar*>(nwid);
 				if (sb->disp_flags & (ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN)) {
 					sb->disp_flags &= ~(ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN);
@@ -1840,7 +1839,7 @@ static EventState HandleScrollbarScrolling()
 			NWidgetScrollbar *sb = w->GetWidget<NWidgetScrollbar>(w->scrolling_scrollbar);
 			bool rtl = false;
 
-			if (sb->type == WWT_HSCROLLBAR) {
+			if (sb->type == NWID_HSCROLLBAR) {
 				i = _cursor.pos.x - _cursorpos_drag_start.x;
 				rtl = _dynlang.text_dir == TD_RTL;
 			} else {

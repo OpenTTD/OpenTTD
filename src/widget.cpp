@@ -76,7 +76,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 	int pos;
 	bool rtl = false;
 
-	if (sb->type == WWT_HSCROLLBAR) {
+	if (sb->type == NWID_HSCROLLBAR) {
 		pos = x;
 		rtl = _dynlang.text_dir == TD_RTL;
 	} else {
@@ -100,7 +100,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 		}
 		_left_button_clicked = false;
 	} else {
-		Point pt = HandleScrollbarHittest(sb, mi, ma, sb->type == WWT_HSCROLLBAR);
+		Point pt = HandleScrollbarHittest(sb, mi, ma, sb->type == NWID_HSCROLLBAR);
 
 		if (pos < pt.x) {
 			sb->UpdatePosition(rtl ? sb->GetCapacity() : -sb->GetCapacity());
@@ -129,26 +129,12 @@ void ScrollbarClickHandler(Window *w, NWidgetCore *nw, int x, int y)
 {
 	int mi, ma;
 
-	switch (nw->type) {
-		case WWT_SCROLLBAR:
-			/* vertical scroller */
-			mi = nw->pos_y;
-			ma = nw->pos_y + nw->current_y;
-			break;
-
-		case WWT_SCROLL2BAR:
-			/* 2nd vertical scroller */
-			mi = nw->pos_y;
-			ma = nw->pos_y + nw->current_y;
-			break;
-
-		case WWT_HSCROLLBAR:
-			/* horizontal scroller */
-			mi = nw->pos_x;
-			ma = nw->pos_x + nw->current_x;
-			break;
-
-		default: NOT_REACHED();
+	if (nw->type == NWID_HSCROLLBAR) {
+		mi = nw->pos_x;
+		ma = nw->pos_x + nw->current_x;
+	} else {
+		mi = nw->pos_y;
+		ma = nw->pos_y + nw->current_y;
 	}
 	ScrollbarClickPositioning(w, dynamic_cast<NWidgetScrollbar*>(nw), x, y, mi, ma);
 }
@@ -1650,21 +1636,20 @@ void Scrollbar::SetCapacityFromWidget(Window *w, int widget, int padding)
  * @param colour Colour of the scrollbar.
  * @param index  Index in the widget array used by the window system.
  */
-NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL), Scrollbar(tp != WWT_HSCROLLBAR)
+NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL), Scrollbar(tp != NWID_HSCROLLBAR)
 {
-	assert(tp == WWT_HSCROLLBAR || tp == WWT_SCROLLBAR || tp == WWT_SCROLL2BAR);
+	assert(tp == NWID_HSCROLLBAR || tp == NWID_VSCROLLBAR);
 	this->SetIndex(index);
 
 	switch (this->type) {
-		case WWT_HSCROLLBAR:
+		case NWID_HSCROLLBAR:
 			this->SetMinimalSize(30, WD_HSCROLLBAR_HEIGHT);
 			this->SetResize(1, 0);
 			this->SetFill(1, 0);
 			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 			break;
 
-		case WWT_SCROLLBAR:
-		case WWT_SCROLL2BAR:
+		case NWID_VSCROLLBAR:
 			this->SetMinimalSize(WD_VSCROLLBAR_WIDTH, 30);
 			this->SetResize(0, 1);
 			this->SetFill(0, 1);
@@ -1702,7 +1687,7 @@ void NWidgetScrollbar::Draw(const Window *w)
 	bool down_lowered = HasBit(this->disp_flags, NDB_SCROLLBAR_DOWN);
 	bool middle_lowered = (w->scrolling_scrollbar == this->index);
 
-	if (this->type == WWT_HSCROLLBAR) {
+	if (this->type == NWID_HSCROLLBAR) {
 		DrawHorizontalScrollbar(r, this->colour, up_lowered, middle_lowered, down_lowered, this);
 	} else {
 		DrawVerticalScrollbar(r, this->colour, up_lowered, middle_lowered, down_lowered, this);
@@ -2258,9 +2243,8 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
 				break;
 
-			case WWT_HSCROLLBAR:
-			case WWT_SCROLLBAR:
-			case WWT_SCROLL2BAR:
+			case NWID_HSCROLLBAR:
+			case NWID_VSCROLLBAR:
 				if (*dest != NULL) return num_used;
 				*dest = new NWidgetScrollbar(parts->type, parts->u.widget.colour, parts->u.widget.index);
 				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);

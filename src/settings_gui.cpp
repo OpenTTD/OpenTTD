@@ -1713,7 +1713,7 @@ static const NWidgetPart _nested_settings_selection_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_MAUVE, SETTINGSEL_OPTIONSPANEL), SetMinimalSize(400, 174), SetScrollbar(SETTINGSEL_SCROLLBAR), EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_SCROLLBAR, COLOUR_MAUVE, SETTINGSEL_SCROLLBAR),
+			NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, SETTINGSEL_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 		EndContainer(),
 	EndContainer(),

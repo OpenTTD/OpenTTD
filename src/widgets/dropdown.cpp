@@ -76,7 +76,7 @@ enum DropdownMenuWidgets {
 static const NWidgetPart _nested_dropdown_menu_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_END, DDM_ITEMS), SetMinimalSize(1, 1), SetScrollbar(DDM_SCROLL), EndContainer(),
-		NWidget(WWT_SCROLLBAR, COLOUR_END, DDM_SCROLL),
+		NWidget(NWID_VSCROLLBAR, COLOUR_END, DDM_SCROLL),
 	EndContainer(),
 };
 

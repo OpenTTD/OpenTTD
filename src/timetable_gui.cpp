@@ -620,7 +620,7 @@ static const NWidgetPart _nested_timetable_widgets[] = {
 		NWidget(NWID_SELECTION, INVALID_COLOUR, TTV_ARRIVAL_DEPARTURE_SELECTION),
 			NWidget(WWT_PANEL, COLOUR_GREY, TTV_ARRIVAL_DEPARTURE_PANEL), SetMinimalSize(110, 0), SetFill(0, 1), SetDataTip(STR_NULL, STR_TIMETABLE_TOOLTIP), SetScrollbar(TTV_SCROLLBAR), EndContainer(),
 		EndContainer(),
-		NWidget(WWT_SCROLLBAR, COLOUR_GREY, TTV_SCROLLBAR),
+		NWidget(NWID_VSCROLLBAR, COLOUR_GREY, TTV_SCROLLBAR),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, TTV_SUMMARY_PANEL), SetMinimalSize(400, 22), SetResize(1, 0), EndContainer(),
 	NWidget(NWID_HORIZONTAL),

@@ -1400,7 +1400,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, BRSW_NEWST_DROPDOWN), SetMinimalSize(134, 12), SetFill(1, 0), SetPadding(3, 7, 3, 7), SetDataTip(STR_BLACK_STRING, STR_STATION_BUILD_STATION_CLASS_TOOLTIP),
 				NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7),
 					NWidget(WWT_MATRIX, COLOUR_GREY, BRSW_NEWST_LIST), SetMinimalSize(122, 71), SetFill(1, 0), SetDataTip(0x501, STR_STATION_BUILD_STATION_TYPE_TOOLTIP), SetScrollbar(BRSW_NEWST_SCROLL),
-					NWidget(WWT_SCROLLBAR, COLOUR_GREY, BRSW_NEWST_SCROLL),
+					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, BRSW_NEWST_SCROLL),
 				EndContainer(),
 				NWidget(NWID_SPACER), SetMinimalSize(0, 1),
 			EndContainer(),
@@ -1849,7 +1849,7 @@ static const NWidgetPart _nested_build_waypoint_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_5), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
 		EndContainer(),
 		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-		NWidget(WWT_HSCROLLBAR, COLOUR_DARK_GREEN, BRWW_SCROLL),
+		NWidget(NWID_HSCROLLBAR, COLOUR_DARK_GREEN, BRWW_SCROLL),
 	EndContainer(),
 };
 

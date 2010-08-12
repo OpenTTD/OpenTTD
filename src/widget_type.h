@@ -56,15 +56,12 @@ enum WidgetType {
 	WWT_LABEL,      ///< Centered label
 	WWT_TEXT,       ///< Pure simple text
 	WWT_MATRIX,     ///< Grid of rows and columns. @see MatrixWidgetValues
-	WWT_SCROLLBAR,  ///< Vertical scrollbar
 	WWT_FRAME,      ///< Frame
 	WWT_CAPTION,    ///< Window caption (window title between closebox and stickybox)
 
-	WWT_HSCROLLBAR, ///< Horizontal scrollbar
 	WWT_SHADEBOX,   ///< Shade box (at top-right of a window, between caption and stickybox)
 	WWT_STICKYBOX,  ///< Sticky box (normally at top-right of a window)
 	WWT_DEBUGBOX,   ///< NewGRF debug box (between shade box and caption)
-	WWT_SCROLL2BAR, ///< 2nd vertical scrollbar
 	WWT_RESIZEBOX,  ///< Resize box (normally at bottom-right of a window)
 	WWT_CLOSEBOX,   ///< Close box (at top-left of a window)
 	WWT_DROPDOWN,   ///< Drop down list
@@ -80,6 +77,8 @@ enum WidgetType {
 	NWID_VIEWPORT,        ///< Nested widget containing a viewport.
 	NWID_BUTTON_DROPDOWN, ///< Button with a drop-down.
 	NWID_BUTTON_ARROW,    ///< Button with an arrow
+	NWID_HSCROLLBAR,      ///< Horizontal scrollbar
+	NWID_VSCROLLBAR,      ///< Vertical scrollbar
 
 	/* Nested widget part types. */
 	WPT_RESIZE,       ///< Widget part for specifying resizing.

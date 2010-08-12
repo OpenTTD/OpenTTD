@@ -211,7 +211,7 @@ static const NWidgetPart _nested_sign_list_widgets[] = {
 		NWidget(WWT_PANEL, COLOUR_GREY, SLW_LIST), SetMinimalSize(WD_FRAMETEXT_LEFT + 16 + MAX_LENGTH_SIGN_NAME_PIXELS + WD_FRAMETEXT_RIGHT, 50),
 							SetResize(1, 10), SetFill(1, 0), SetScrollbar(SLW_SCROLLBAR), EndContainer(),
 		NWidget(NWID_VERTICAL),
-			NWidget(WWT_SCROLLBAR, COLOUR_GREY, SLW_SCROLLBAR),
+			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, SLW_SCROLLBAR),
 			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 		EndContainer(),
 	EndContainer(),
