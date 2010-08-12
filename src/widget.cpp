@@ -854,18 +854,6 @@ NWidgetCore *NWidgetCore::GetWidgetFromPos(int x, int y)
 }
 
 /**
- * @fn Scrollbar *NWidgetCore::FindScrollbar(Window *w, bool allow_next = true) const
- * Find the scrollbar of the widget through the Window::nested_array.
- * @param w          Window containing the widgets and the scrollbar,
- * @param allow_next Search may be extended to the next widget.
- *
- * @todo This implementation uses the constraint that a scrollbar must be the next item in the #Window::nested_array, and the scrollbar
- *       data is stored in the #Window structure (#Window::vscroll, #Window::vscroll2, and #Window::hscroll).
- *       Alternative light-weight implementations may be considered, eg by sub-classing a canvas-like widget, and/or by having
- *       an explicit link between the scrollbar and the widget being scrolled.
- */
-
-/**
  * Constructor container baseclass.
  * @param tp Type of the container.
  */
@@ -1578,19 +1566,6 @@ NWidgetCore *NWidgetBackground::GetWidgetFromPos(int x, int y)
 	return nwid;
 }
 
-Scrollbar *NWidgetBackground::FindScrollbar(Window *w, bool allow_next) const
-{
-	if (this->index >= 0 && allow_next && this->child == NULL && (uint)(this->index) + 1 < w->nested_array_size) {
-		/* GetWidget ensures that the widget is of the given type.
-		 * As we might have cases where the next widget in the array
-		 * is a non-Core widget (e.g. NWID_SELECTION) we first get
-		 * the base class and then dynamic_cast that. */
-		const NWidgetCore *next_wid = dynamic_cast<NWidgetCore*>(w->GetWidget<NWidgetBase>(this->index + 1));
-		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
-	}
-	return NULL;
-}
-
 NWidgetBase *NWidgetBackground::GetWidgetOfType(WidgetType tp)
 {
 	NWidgetBase *nwid = NULL;
@@ -1630,11 +1605,6 @@ void NWidgetViewport::Draw(const Window *w)
 		GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1,
 				(this->disp_flags & ND_SHADE_DIMMED) ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOUR);
 	}
-}
-
-Scrollbar *NWidgetViewport::FindScrollbar(Window *w, bool allow_next) const
-{
-	return NULL;
 }
 
 /**
@@ -2092,22 +2062,6 @@ void NWidgetLeaf::Draw(const Window *w)
 	}
 }
 
-Scrollbar *NWidgetLeaf::FindScrollbar(Window *w, bool allow_next) const
-{
-	if (this->type == WWT_SCROLLBAR) return &w->vscroll;
-	if (this->type == WWT_SCROLL2BAR) return &w->vscroll2;
-
-	if (this->index >= 0 && allow_next && (uint)(this->index) + 1 < w->nested_array_size) {
-		/* GetWidget ensures that the widget is of the given type.
-		 * As we might have cases where the next widget in the array
-		 * is a non-Core widget (e.g. NWID_SELECTION) we first get
-		 * the base class and then dynamic_cast that. */
-		const NWidgetCore *next_wid = dynamic_cast<NWidgetCore*>(w->GetWidget<NWidgetBase>(this->index + 1));
-		if (next_wid != NULL) return next_wid->FindScrollbar(w, false);
-	}
-	return NULL;
-}
-
 /**
  * For a #NWID_BUTTON_DROPDOWN, test whether \a pt refers to the button or to the drop-down.
  * @param pt Point in the widget.
@@ -2246,6 +2200,14 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 
 				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(*dest);
 				if (nwb != NULL) nwb->SetPIP(parts->u.pip.pre,  parts->u.pip.inter, parts->u.pip.post);
+				break;
+			}
+
+			case WPT_SCROLLBAR: {
+				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
+				if (nwc != NULL) {
+					nwc->scrollbar_index = parts->u.widget.index;
+				}
 				break;
 			}
 

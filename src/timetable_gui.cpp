@@ -32,7 +32,6 @@ enum TimetableViewWindowWidgets {
 	TTV_CAPTION,
 	TTV_ORDER_VIEW,
 	TTV_TIMETABLE_PANEL,
-	TTV_FAKE_SCROLLBAR,               ///< So the timetable panel 'sees' the scrollbar too
 	TTV_ARRIVAL_DEPARTURE_PANEL,      ///< Panel with the expected/scheduled arrivals
 	TTV_SCROLLBAR,
 	TTV_SUMMARY_PANEL,
@@ -614,10 +613,9 @@ static const NWidgetPart _nested_timetable_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PANEL, COLOUR_GREY, TTV_TIMETABLE_PANEL), SetMinimalSize(388, 82), SetResize(1, 10), SetDataTip(STR_NULL, STR_TIMETABLE_TOOLTIP), EndContainer(),
-		NWidget(WWT_SCROLLBAR, COLOUR_GREY, TTV_FAKE_SCROLLBAR), SetMinimalSize(0, 0), // Hack so the timetable panel can 'use' the scrollbar too
+		NWidget(WWT_PANEL, COLOUR_GREY, TTV_TIMETABLE_PANEL), SetMinimalSize(388, 82), SetResize(1, 10), SetDataTip(STR_NULL, STR_TIMETABLE_TOOLTIP), SetScrollbar(TTV_SCROLLBAR), EndContainer(),
 		NWidget(NWID_SELECTION, INVALID_COLOUR, TTV_ARRIVAL_DEPARTURE_SELECTION),
-			NWidget(WWT_PANEL, COLOUR_GREY, TTV_ARRIVAL_DEPARTURE_PANEL), SetMinimalSize(110, 0), SetFill(0, 1), SetDataTip(STR_NULL, STR_TIMETABLE_TOOLTIP), EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_GREY, TTV_ARRIVAL_DEPARTURE_PANEL), SetMinimalSize(110, 0), SetFill(0, 1), SetDataTip(STR_NULL, STR_TIMETABLE_TOOLTIP), SetScrollbar(TTV_SCROLLBAR), EndContainer(),
 		EndContainer(),
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, TTV_SCROLLBAR),
 	EndContainer(),

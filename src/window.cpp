@@ -502,7 +502,7 @@ static void DispatchMouseWheelEvent(Window *w, const NWidgetCore *nwid, int whee
 	}
 
 	/* Scroll the widget attached to the scrollbar. */
-	Scrollbar *sb = nwid->FindScrollbar(w);
+	Scrollbar *sb = (nwid->scrollbar_index >= 0 ? w->GetScrollbar(nwid->scrollbar_index) : NULL);
 	if (sb != NULL && sb->GetCount() > sb->GetCapacity()) {
 		sb->UpdatePosition(wheel);
 		w->SetDirty();

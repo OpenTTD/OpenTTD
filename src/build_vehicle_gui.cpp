@@ -77,7 +77,7 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 	EndContainer(),
 	/* Vehicle list. */
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_MATRIX, COLOUR_GREY, BUILD_VEHICLE_WIDGET_LIST), SetResize(1, 1), SetFill(1, 0), SetDataTip(0x101, STR_NULL),
+		NWidget(WWT_MATRIX, COLOUR_GREY, BUILD_VEHICLE_WIDGET_LIST), SetResize(1, 1), SetFill(1, 0), SetDataTip(0x101, STR_NULL), SetScrollbar(BUILD_VEHICLE_WIDGET_SCROLLBAR),
 		NWidget(WWT_SCROLLBAR, COLOUR_GREY, BUILD_VEHICLE_WIDGET_SCROLLBAR),
 	EndContainer(),
 	/* Panel with details. */

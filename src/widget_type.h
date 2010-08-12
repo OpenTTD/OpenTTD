@@ -91,6 +91,7 @@ enum WidgetType {
 	WPT_PIPSPACE,     ///< Widget part for specifying pre/inter/post space for containers.
 	WPT_ENDCONTAINER, ///< Widget part to denote end of a container.
 	WPT_FUNCTION,     ///< Widget part for calling a user function.
+	WPT_SCROLLBAR,    ///< Widget part for attaching a scrollbar.
 
 	/* Pushable window widget types. */
 	WWT_MASK = 0x7F,
@@ -278,13 +279,12 @@ public:
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
 
-	virtual Scrollbar *FindScrollbar(Window *w, bool allow_next = true) const = 0;
-
 	NWidgetDisplay disp_flags; ///< Flags that affect display and interaction with the widget.
 	Colours colour;            ///< Colour of this widget.
 	int index;                 ///< Index of the nested widget in the widget array of the window (\c -1 means 'not used').
 	uint16 widget_data;        ///< Data of the widget. @see Widget::data
 	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
+	int scrollbar_index;       ///< Index of an attached scrollbar.
 };
 
 /**
@@ -476,7 +476,6 @@ public:
 	/* virtual */ void Draw(const Window *w);
 	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
 	/* virtual */ NWidgetBase *GetWidgetOfType(WidgetType tp);
-	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true) const;
 
 private:
 	NWidgetPIPContainer *child; ///< Child widget.
@@ -497,7 +496,6 @@ public:
 
 	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
 	/* virtual */ void Draw(const Window *w);
-	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true) const;
 
 	void InitializeViewport(Window *w, uint32 follow_flags, ZoomLevel zoom);
 	void UpdateViewportCoordinates(Window *w);
@@ -513,7 +511,6 @@ public:
 
 	/* virtual */ void SetupSmallestSize(Window *w, bool init_array);
 	/* virtual */ void Draw(const Window *w);
-	/* virtual */ Scrollbar *FindScrollbar(Window *w, bool allow_next = true) const;
 
 	bool ButtonHit(const Point &pt);
 
@@ -807,6 +804,23 @@ static inline NWidgetPart SetPIP(uint8 pre, uint8 inter, uint8 post)
 	part.u.pip.pre = pre;
 	part.u.pip.inter = inter;
 	part.u.pip.post = post;
+
+	return part;
+}
+
+/**
+ * Attach a scrollbar to a widget.
+ * The scrollbar is controlled when using the mousewheel on the widget.
+ * Multipe widgets can refer to the same scrollbar to make the mousewheel work in all of them.
+ * @param index Widget index of the scrollbar.
+ * @ingroup NestedWidgetParts
+ */
+static inline NWidgetPart SetScrollbar(int index)
+{
+	NWidgetPart part;
+
+	part.type = WPT_SCROLLBAR;
+	part.u.widget.index = index;
 
 	return part;
 }
