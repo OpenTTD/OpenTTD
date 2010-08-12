@@ -782,6 +782,7 @@ NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y
 	this->index = -1;
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
+	this->scrollbar_index = -1;
 }
 
 /**
