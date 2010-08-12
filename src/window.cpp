@@ -137,13 +137,7 @@ void Scrollbar::SetCapacityFromWidget(Window *w, int widget, int padding)
  */
 const Scrollbar *Window::GetScrollbar(uint widnum) const
 {
-	const NWidgetLeaf *wid = this->GetWidget<NWidgetLeaf>(widnum);
-	switch (wid->type) {
-		case WWT_HSCROLLBAR: return &this->old_hscroll;
-		case WWT_SCROLLBAR:  return &this->old_vscroll;
-		case WWT_SCROLL2BAR: return &this->old_vscroll2;
-		default: NOT_REACHED();
-	}
+	return this->GetWidget<NWidgetScrollbar>(widnum)->GetScrollbar(this);
 }
 
 /**
@@ -153,13 +147,7 @@ const Scrollbar *Window::GetScrollbar(uint widnum) const
  */
 Scrollbar *Window::GetScrollbar(uint widnum)
 {
-	NWidgetLeaf *wid = this->GetWidget<NWidgetLeaf>(widnum);
-	switch (wid->type) {
-		case WWT_HSCROLLBAR: return &this->old_hscroll;
-		case WWT_SCROLLBAR:  return &this->old_vscroll;
-		case WWT_SCROLL2BAR: return &this->old_vscroll2;
-		default: NOT_REACHED();
-	}
+	return this->GetWidget<NWidgetScrollbar>(widnum)->GetScrollbar(this);
 }
 
 

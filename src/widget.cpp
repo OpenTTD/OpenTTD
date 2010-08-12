@@ -1636,6 +1636,109 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
 	}
 }
 
+/**
+ * Scrollbar widget.
+ * @param tp     Scrollbar type. (horizontal/vertical)
+ * @param colour Colour of the scrollbar.
+ * @param index  Index in the widget array used by the window system.
+ */
+NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : NWidgetCore(tp, colour, 1, 1, 0x0, STR_NULL)
+{
+	assert(tp == WWT_HSCROLLBAR || tp == WWT_SCROLLBAR || tp == WWT_SCROLL2BAR);
+	this->SetIndex(index);
+
+	switch (this->type) {
+		case WWT_HSCROLLBAR:
+			this->SetMinimalSize(30, WD_HSCROLLBAR_HEIGHT);
+			this->SetResize(1, 0);
+			this->SetFill(1, 0);
+			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
+			break;
+
+		case WWT_SCROLLBAR:
+		case WWT_SCROLL2BAR:
+			this->SetMinimalSize(WD_VSCROLLBAR_WIDTH, 30);
+			this->SetResize(0, 1);
+			this->SetFill(0, 1);
+			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
+			break;
+
+		default: NOT_REACHED();
+	}
+}
+
+void NWidgetScrollbar::SetupSmallestSize(Window *w, bool init_array)
+{
+	if (init_array && this->index >= 0) {
+		assert(w->nested_array_size > (uint)this->index);
+		w->nested_array[this->index] = this;
+	}
+	this->smallest_x = this->min_x;
+	this->smallest_y = this->min_y;
+}
+
+void NWidgetScrollbar::Draw(const Window *w)
+{
+	if (this->current_x == 0 || this->current_y == 0) return;
+
+	Rect r;
+	r.left = this->pos_x;
+	r.right = this->pos_x + this->current_x - 1;
+	r.top = this->pos_y;
+	r.bottom = this->pos_y + this->current_y - 1;
+
+	const DrawPixelInfo *dpi = _cur_dpi;
+	if (dpi->left > r.right || dpi->left + dpi->width <= r.left || dpi->top > r.bottom || dpi->top + dpi->height <= r.top) return;
+
+	switch (this->type) {
+		case WWT_HSCROLLBAR:
+			DrawHorizontalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL),
+								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL),
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), this->GetScrollbar(w));
+			break;
+
+		case WWT_SCROLLBAR:
+			assert(this->widget_data == 0);
+			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP,
+								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE,
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN, this->GetScrollbar(w));
+			break;
+
+		case WWT_SCROLL2BAR:
+			assert(this->widget_data == 0);
+			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2),
+								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2),
+								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2), this->GetScrollbar(w));
+			break;
+
+		default: NOT_REACHED();
+	}
+
+	if (this->IsDisabled()) {
+		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[this->colour & 0xF][2], FILLRECT_CHECKER);
+	}
+}
+
+const Scrollbar *NWidgetScrollbar::GetScrollbar(const Window *w) const
+{
+	switch (this->type) {
+		case WWT_HSCROLLBAR: return &w->old_hscroll;
+		case WWT_SCROLLBAR:  return &w->old_vscroll;
+		case WWT_SCROLL2BAR: return &w->old_vscroll2;
+		default: NOT_REACHED();
+	}
+}
+
+Scrollbar *NWidgetScrollbar::GetScrollbar(Window *w) const
+{
+	switch (this->type) {
+		case WWT_HSCROLLBAR: return &w->old_hscroll;
+		case WWT_SCROLLBAR:  return &w->old_vscroll;
+		case WWT_SCROLL2BAR: return &w->old_vscroll2;
+		default: NOT_REACHED();
+	}
+}
+
 /** Reset the cached dimensions. */
 /* static */ void NWidgetLeaf::InvalidateDimensionCache()
 {
@@ -1691,26 +1794,11 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint16 data, 
 			this->SetFill(0, 0);
 			break;
 
-		case WWT_SCROLLBAR:
-		case WWT_SCROLL2BAR:
-			this->SetFill(0, 1);
-			this->SetResize(0, 1);
-			this->min_x = WD_VSCROLLBAR_WIDTH;
-			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
-			break;
-
 		case WWT_CAPTION:
 			this->SetFill(1, 0);
 			this->SetResize(1, 0);
 			this->min_y = WD_CAPTION_HEIGHT;
 			this->SetDataTip(data, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
-			break;
-
-		case WWT_HSCROLLBAR:
-			this->SetFill(1, 0);
-			this->SetResize(1, 0);
-			this->min_y = WD_HSCROLLBAR_HEIGHT;
-			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 			break;
 
 		case WWT_STICKYBOX:
@@ -1766,10 +1854,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 	/* Get padding, and update size with the real content size if appropriate. */
 	const Dimension *padding = NULL;
 	switch (this->type) {
-		case WWT_EMPTY:
-		case WWT_SCROLLBAR:
-		case WWT_SCROLL2BAR:
-		case WWT_HSCROLLBAR: {
+		case WWT_EMPTY: {
 			static const Dimension extra = {0, 0};
 			padding = &extra;
 			break;
@@ -1993,30 +2078,9 @@ void NWidgetLeaf::Draw(const Window *w)
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, FR_LOWERED | FR_DARKENED);
 			break;
 
-		case WWT_SCROLLBAR:
-			assert(this->widget_data == 0);
-			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_UP,
-								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_MIDDLE,
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == WF_SCROLL_DOWN, &w->old_vscroll);
-			break;
-
-		case WWT_SCROLL2BAR:
-			assert(this->widget_data == 0);
-			DrawVerticalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_UP | WF_SCROLL2),
-								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_MIDDLE | WF_SCROLL2),
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL | WF_SCROLL2)) == (WF_SCROLL_DOWN | WF_SCROLL2), &w->old_vscroll2);
-			break;
-
 		case WWT_CAPTION:
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawCaption(r, this->colour, w->owner, this->widget_data);
-			break;
-
-		case WWT_HSCROLLBAR:
-			assert(this->widget_data == 0);
-			DrawHorizontalScrollbar(r, this->colour, (w->flags4 & (WF_SCROLL_UP | WF_HSCROLL)) == (WF_SCROLL_UP | WF_HSCROLL),
-								(w->flags4 & (WF_SCROLL_MIDDLE | WF_HSCROLL)) == (WF_SCROLL_MIDDLE | WF_HSCROLL),
-								(w->flags4 & (WF_SCROLL_DOWN | WF_HSCROLL)) == (WF_SCROLL_DOWN | WF_HSCROLL), &w->old_hscroll);
 			break;
 
 		case WWT_SHADEBOX:
@@ -2217,6 +2281,14 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 			case NWID_VIEWPORT:
 				if (*dest != NULL) return num_used;
 				*dest = new NWidgetViewport(parts->u.widget.index);
+				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
+				break;
+
+			case WWT_HSCROLLBAR:
+			case WWT_SCROLLBAR:
+			case WWT_SCROLL2BAR:
+				if (*dest != NULL) return num_used;
+				*dest = new NWidgetScrollbar(parts->type, parts->u.widget.colour, parts->u.widget.index);
 				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
 				break;
 
