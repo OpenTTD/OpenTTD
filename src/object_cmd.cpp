@@ -46,14 +46,14 @@
 	return ObjectSpec::Get(GetObjectType(tile));
 }
 
-void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, uint index)
+void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town)
 {
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	TileArea ta(tile, GB(spec->size, 0, 4), GB(spec->size, 4, 4));
 	TILE_AREA_LOOP(t, ta) {
 		TileIndex offset = t - tile;
-		MakeObject(t, type, owner, TileY(offset) << 4 | TileX(offset), index, WATER_CLASS_INVALID);
+		MakeObject(t, type, owner, TileY(offset) << 4 | TileX(offset), town == NULL ? 0 : town->index, WATER_CLASS_INVALID);
 		MarkTileDirtyByTile(t);
 	}
 }
@@ -299,9 +299,9 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 
 		case OBJECT_STATUE:
 			if (flags & DC_EXEC) {
-				TownID town = GetStatueTownID(tile);
-				ClrBit(Town::Get(town)->statues, GetTileOwner(tile));
-				SetWindowDirty(WC_TOWN_AUTHORITY, town);
+				Town *t = Town::Get(GetStatueTownID(tile));
+				ClrBit(t->statues, GetTileOwner(tile));
+				SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
 			}
 			break;
 
@@ -492,8 +492,7 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 	if (IsOwnedLand(tile) && new_owner != INVALID_OWNER) {
 		SetTileOwner(tile, new_owner);
 	} else if (IsStatueTile(tile)) {
-		TownID town = GetStatueTownID(tile);
-		Town *t = Town::Get(town);
+		Town *t = Town::Get(GetStatueTownID(tile));
 		ClrBit(t->statues, old_owner);
 		if (new_owner != INVALID_OWNER && !HasBit(t->statues, new_owner)) {
 			/* Transfer ownership to the new company */
@@ -503,7 +502,7 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 			DoClearSquare(tile);
 		}
 
-		SetWindowDirty(WC_TOWN_AUTHORITY, town);
+		SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
 	} else {
 		DoClearSquare(tile);
 	}

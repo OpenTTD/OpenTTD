@@ -2507,7 +2507,7 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 			Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			cur_company.Restore();
-			BuildObject(OBJECT_STATUE, tile, _current_company, t->index);
+			BuildObject(OBJECT_STATUE, tile, _current_company, t);
 			SetBit(t->statues, _current_company); // Once found and built, "inform" the Town.
 			MarkTileDirtyByTile(tile);
 		}

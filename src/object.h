@@ -28,11 +28,11 @@ void UpdateCompanyHQ(TileIndex tile, uint score);
  * @param type  The type of object to build.
  * @param tile  The tile to build the northern tile of the object on.
  * @param owner The owner of the object.
- * @param index A (generic) index to be stored on the tile, e.g. TownID for statues.
+ * @param town  Town the tile is related with.
  * @pre All preconditions for building the object at that location
  *      are met, e.g. slope and clearness of tiles are checked.
  */
-void BuildObject(ObjectType type, TileIndex tile, CompanyID owner = OWNER_NONE, uint index = 0);
+void BuildObject(ObjectType type, TileIndex tile, CompanyID owner = OWNER_NONE, struct Town *town = NULL);
 
 
 /** Various object behaviours. */
