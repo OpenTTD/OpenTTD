@@ -119,7 +119,7 @@ private:
 	GroupID group_rename;  ///< Group being renamed, INVALID_GROUP if none
 	GUIGroupList groups;   ///< List of groups
 	uint tiny_step_height; ///< Step height for the group list
-	Scrollbar *vscroll2;
+	Scrollbar *group_sb;
 
 	/**
 	 * (Re)Build the group list.
@@ -172,7 +172,7 @@ public:
 		this->CreateNestedTree(desc);
 
 		this->vscroll = this->GetScrollbar(GRP_WIDGET_LIST_VEHICLE_SCROLLBAR);
-		this->vscroll2 = this->GetScrollbar(GRP_WIDGET_LIST_GROUP_SCROLLBAR);
+		this->group_sb = this->GetScrollbar(GRP_WIDGET_LIST_GROUP_SCROLLBAR);
 
 		this->vehicle_type = (VehicleType)GB(window_number, 11, 5);
 		switch (this->vehicle_type) {
@@ -309,7 +309,7 @@ public:
 		this->BuildGroupList(owner);
 		this->groups.Sort(&GroupNameSorter);
 
-		this->vscroll2->SetCount(this->groups.Length());
+		this->group_sb->SetCount(this->groups.Length());
 		this->vscroll->SetCount(this->vehicles.Length());
 
 		/* The drop down menu is out, *but* it may not be used, retract it. */
@@ -369,8 +369,8 @@ public:
 
 			case GRP_WIDGET_LIST_GROUP: {
 				int y1 = r.top + WD_FRAMERECT_TOP + 1;
-				int max = min(this->vscroll2->GetPosition() + this->vscroll2->GetCapacity(), this->groups.Length());
-				for (int i = this->vscroll2->GetPosition(); i < max; ++i) {
+				int max = min(this->group_sb->GetPosition() + this->group_sb->GetCapacity(), this->groups.Length());
+				for (int i = this->group_sb->GetPosition(); i < max; ++i) {
 					const Group *g = this->groups[i];
 
 					assert(g->owner == this->owner);
@@ -427,7 +427,7 @@ public:
 				break;
 
 			case GRP_WIDGET_LIST_GROUP: { // Matrix Group
-				uint id_g = this->vscroll2->GetScrolledRowFromWidget(pt.y, this, GRP_WIDGET_LIST_GROUP, 0, this->tiny_step_height);
+				uint id_g = this->group_sb->GetScrolledRowFromWidget(pt.y, this, GRP_WIDGET_LIST_GROUP, 0, this->tiny_step_height);
 				if (id_g >= this->groups.Length()) return;
 
 				this->group_sel = this->groups[id_g]->index;
@@ -516,7 +516,7 @@ public:
 				this->vehicle_sel = INVALID_VEHICLE;
 				this->SetDirty();
 
-				uint id_g = this->vscroll2->GetScrolledRowFromWidget(pt.y, this, GRP_WIDGET_LIST_GROUP, 0, this->tiny_step_height);
+				uint id_g = this->group_sb->GetScrolledRowFromWidget(pt.y, this, GRP_WIDGET_LIST_GROUP, 0, this->tiny_step_height);
 				if (id_g >= this->groups.Length()) return;
 
 				DoCommandP(0, this->groups[id_g]->index, vindex, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE));
@@ -550,8 +550,8 @@ public:
 	virtual void OnResize()
 	{
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(GRP_WIDGET_LIST_GROUP);
-		this->vscroll2->SetCapacity(nwi->current_y / this->tiny_step_height);
-		nwi->widget_data = (this->vscroll2->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
+		this->group_sb->SetCapacity(nwi->current_y / this->tiny_step_height);
+		nwi->widget_data = (this->group_sb->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 
 		nwi = this->GetWidget<NWidgetCore>(GRP_WIDGET_LIST_VEHICLE);
 		this->vscroll->SetCapacityFromWidget(this, GRP_WIDGET_LIST_VEHICLE);
