@@ -2395,6 +2395,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Anna New
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuta NewGRF-parametrejä
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sulje
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametri {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Tutki - {STRING}
@@ -3341,6 +3342,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Älä va
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tekoälyn parametrit
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulje
 STR_AI_SETTINGS_RESET                                           :{BLACK}Palauta
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3628,6 +3630,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunneli 
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Maata ei voi kaivaa tunnelin toisessa päässä.
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... liian monta kohdetta
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kohdetta ei voida rakentaa...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekti on tiellä.
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... yhtiön päärakennus on tiellä.

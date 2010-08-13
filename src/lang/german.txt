@@ -2396,6 +2396,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-P
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF Parameter ändern
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Schließen
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiziere - {STRING}
@@ -3342,6 +3343,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}KI nicht
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Parameter
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Schließen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Rücksetzen
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3629,6 +3631,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel w
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Land kann am anderen Ende des Tunnels nicht angehoben werden
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... zu viele Objekte
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Objekt kann nicht gebaut werden...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Gegenstand im Weg
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... Firmensitz ist im Weg

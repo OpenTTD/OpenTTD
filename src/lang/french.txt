@@ -2396,6 +2396,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Entrer l
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Modifier les paramètres NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fermer
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramètre {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}{NBSP}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspection - {STRING}
@@ -3342,6 +3343,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne pas m
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramètres IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermer
 STR_AI_SETTINGS_RESET                                           :{BLACK}Réinitialiser
+STR_AI_SETTINGS_SETTING                                         :{STRING}{NBSP}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3629,6 +3631,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Le tunne
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Impossible de creuser pour faire déboucher le tunnel
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... trop d'objets
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Impossible de construire l'objet...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objet présent
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... siège de la compagnie présent

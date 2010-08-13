@@ -2728,6 +2728,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Увяд
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Зьмянiць парамэтры NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрыць
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Парамэтр {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Прагляд - {STRING}
@@ -3694,6 +3695,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не в�
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Парамэтры штучнага інтэлекту (ШІ/AI)
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Закрыць
 STR_AI_SETTINGS_RESET                                           :{BLACK}Ськід
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
