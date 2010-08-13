@@ -32,7 +32,7 @@
 static AirportFTAClass _airportfta_dummy(
 		_airport_moving_data_dummy,
 		NULL,
-		NULL,
+		0,
 		_airport_entries_dummy,
 		AirportFTAClass::ALL,
 		_airport_fta_dummy,
@@ -42,7 +42,7 @@ static AirportFTAClass _airportfta_dummy(
 static AirportFTAClass _airportfta_country(
 		_airport_moving_data_country,
 		_airport_terminal_country,
-		NULL,
+		0,
 		_airport_entries_country,
 		AirportFTAClass::ALL | AirportFTAClass::SHORT_STRIP,
 		_airport_fta_country,
@@ -52,7 +52,7 @@ static AirportFTAClass _airportfta_country(
 static AirportFTAClass _airportfta_city(
 		_airport_moving_data_town,
 		_airport_terminal_city,
-		NULL,
+		0,
 		_airport_entries_city,
 		AirportFTAClass::ALL,
 		_airport_fta_city,
@@ -62,7 +62,7 @@ static AirportFTAClass _airportfta_city(
 static AirportFTAClass _airportfta_oilrig(
 		_airport_moving_data_oilrig,
 		NULL,
-		_airport_helipad_heliport_oilrig,
+		1,
 		_airport_entries_heliport_oilrig,
 		AirportFTAClass::HELICOPTERS,
 		_airport_fta_heliport_oilrig,
@@ -72,7 +72,7 @@ static AirportFTAClass _airportfta_oilrig(
 static AirportFTAClass _airportfta_heliport(
 		_airport_moving_data_heliport,
 		NULL,
-		_airport_helipad_heliport_oilrig,
+		1,
 		_airport_entries_heliport_oilrig,
 		AirportFTAClass::HELICOPTERS,
 		_airport_fta_heliport_oilrig,
@@ -82,7 +82,7 @@ static AirportFTAClass _airportfta_heliport(
 static AirportFTAClass _airportfta_metropolitan(
 		_airport_moving_data_metropolitan,
 		_airport_terminal_metropolitan,
-		NULL,
+		0,
 		_airport_entries_metropolitan,
 		AirportFTAClass::ALL,
 		_airport_fta_metropolitan,
@@ -92,7 +92,7 @@ static AirportFTAClass _airportfta_metropolitan(
 static AirportFTAClass _airportfta_international(
 		_airport_moving_data_international,
 		_airport_terminal_international,
-		_airport_helipad_international,
+		2,
 		_airport_entries_international,
 		AirportFTAClass::ALL,
 		_airport_fta_international,
@@ -102,7 +102,7 @@ static AirportFTAClass _airportfta_international(
 static AirportFTAClass _airportfta_commuter(
 		_airport_moving_data_commuter,
 		_airport_terminal_commuter,
-		_airport_helipad_commuter,
+		2,
 		_airport_entries_commuter,
 		AirportFTAClass::ALL | AirportFTAClass::SHORT_STRIP,
 		_airport_fta_commuter,
@@ -112,7 +112,7 @@ static AirportFTAClass _airportfta_commuter(
 static AirportFTAClass _airportfta_helidepot(
 		_airport_moving_data_helidepot,
 		NULL,
-		_airport_helipad_helidepot,
+		1,
 		_airport_entries_helidepot,
 		AirportFTAClass::HELICOPTERS,
 		_airport_fta_helidepot,
@@ -122,7 +122,7 @@ static AirportFTAClass _airportfta_helidepot(
 static AirportFTAClass _airportfta_intercontinental(
 		_airport_moving_data_intercontinental,
 		_airport_terminal_intercontinental,
-		_airport_helipad_intercontinental,
+		2,
 		_airport_entries_intercontinental,
 		AirportFTAClass::ALL,
 		_airport_fta_intercontinental,
@@ -132,7 +132,7 @@ static AirportFTAClass _airportfta_intercontinental(
 static AirportFTAClass _airportfta_helistation(
 		_airport_moving_data_helistation,
 		NULL,
-		_airport_helipad_helistation,
+		3,
 		_airport_entries_helistation,
 		AirportFTAClass::HELICOPTERS,
 		_airport_fta_helistation,
@@ -191,7 +191,7 @@ AirportMovingData RotateAirportMovingData(const AirportMovingData *orig, Directi
 AirportFTAClass::AirportFTAClass(
 	const AirportMovingData *moving_data_,
 	const byte *terminals_,
-	const byte *helipads_,
+	const byte num_helipads_,
 	const byte *entry_points_,
 	Flags flags_,
 	const AirportFTAbuildup *apFA,
@@ -199,13 +199,13 @@ AirportFTAClass::AirportFTAClass(
 ) :
 	moving_data(moving_data_),
 	terminals(terminals_),
-	helipads(helipads_),
+	num_helipads(num_helipads_),
 	flags(flags_),
 	nofelements(AirportGetNofElements(apFA)),
 	entry_points(entry_points_),
 	delta_z(delta_z_)
 {
-	byte nofterminalgroups, nofhelipadgroups;
+	byte nofterminalgroups;
 
 	/* Set up the terminal and helipad count for an airport.
 	 * TODO: If there are more than 10 terminals or 4 helipads, internal variables
@@ -216,10 +216,9 @@ AirportFTAClass::AirportFTAClass(
 		assert(nofterminals <= MAX_TERMINALS);
 	}
 
-	uint nofhelipads = AirportGetTerminalCount(helipads, &nofhelipadgroups);
-	if (nofhelipads > MAX_HELIPADS) {
-		DEBUG(misc, 0, "[Ap] only a maximum of %d helipads are supported (requested %d)", MAX_HELIPADS, nofhelipads);
-		assert(nofhelipads <= MAX_HELIPADS);
+	if (num_helipads > MAX_HELIPADS) {
+		DEBUG(misc, 0, "[Ap] only a maximum of %d helipads are supported (requested %d)", MAX_HELIPADS, num_helipads);
+		assert(num_helipads <= MAX_HELIPADS);
 	}
 
 	/* Get the number of elements from the source table. We also double check this
@@ -234,8 +233,8 @@ AirportFTAClass::AirportFTAClass(
 
 	/* Build the state machine itself */
 	layout = AirportBuildAutomata(nofelements, apFA);
-	DEBUG(misc, 6, "[Ap] #count %3d; #term %2d (%dgrp); #helipad %2d (%dgrp); entries %3d, %3d, %3d, %3d",
-		nofelements, nofterminals, nofterminalgroups, nofhelipads, nofhelipadgroups,
+	DEBUG(misc, 6, "[Ap] #count %3d; #term %2d (%dgrp); #helipad %2d; entries %3d, %3d, %3d, %3d",
+		nofelements, nofterminals, nofterminalgroups, num_helipads,
 		entry_points[DIAGDIR_NE], entry_points[DIAGDIR_SE], entry_points[DIAGDIR_SW], entry_points[DIAGDIR_NW]);
 
 	/* Test if everything went allright. This is only a rude static test checking

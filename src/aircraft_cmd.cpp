@@ -1431,7 +1431,7 @@ static void AircraftEventHandler_AtTerminal(Aircraft *v, const AirportFTAClass *
 		/* on an airport with helipads, a helicopter will always land there
 		 * and get serviced at the same time - setting */
 		if (_settings_game.order.serviceathelipad) {
-			if (v->subtype == AIR_HELICOPTER && apc->helipads != NULL) {
+			if (v->subtype == AIR_HELICOPTER && apc->num_helipads > 0) {
 				/* an exerpt of ServiceAircraft, without the invisibility stuff */
 				v->date_of_last_service = _date;
 				v->breakdowns_since_last_service = 0;
@@ -1869,12 +1869,11 @@ static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 static bool AirportFindFreeHelipad(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* if an airport doesn't have helipads, use terminals */
-	if (apc->helipads == NULL) return AirportFindFreeTerminal(v, apc);
+	if (apc->num_helipads == 0) return AirportFindFreeTerminal(v, apc);
 
-	assert(apc->helipads[0] == 1);
 	/* only 1 helicoptergroup, check all helipads
 	 * The blocks for helipads start after the last terminal (MAX_TERMINALS) */
-	return FreeTerminal(v, MAX_TERMINALS, apc->helipads[1] + MAX_TERMINALS);
+	return FreeTerminal(v, MAX_TERMINALS, apc->num_helipads + MAX_TERMINALS);
 }
 
 static bool AircraftEventHandler(Aircraft *v, int loop)

@@ -150,7 +150,7 @@ public:
 	AirportFTAClass(
 		const AirportMovingData *moving_data,
 		const byte *terminals,
-		const byte *helipads,
+		const byte num_helipads,
 		const byte *entry_points,
 		Flags flags,
 		const AirportFTAbuildup *apFA,
@@ -168,7 +168,7 @@ public:
 	const AirportMovingData *moving_data;
 	struct AirportFTA *layout;            ///< state machine for airport
 	const byte *terminals;
-	const byte *helipads;
+	const byte num_helipads;              ///< Number of helipads on this airport. When 0 helicopters will go to normal terminals.
 	Flags flags;
 	byte nofelements;                     ///< number of positions the airport consists of
 	const byte *entry_points;             ///< when an airplane arrives at this airport, enter it at position entry_point, index depends on direction
