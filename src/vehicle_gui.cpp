@@ -284,11 +284,21 @@ struct RefitOption {
 	uint16 value;     ///< GRF-local String to display for the cargo
 	EngineID engine;  ///< Engine for which to resolve #value
 
+	/**
+	 * Inequality operator for #RefitOption.
+	 * @param other Compare to this #RefitOption.
+	 * @return True if both #RefitOption are different.
+	 */
 	FORCEINLINE bool operator != (const RefitOption &other) const
 	{
 		return other.cargo != this->cargo || other.value != this->value;
 	}
 
+	/**
+	 * Equality operator for #RefitOption.
+	 * @param other Compare to this #RefitOption.
+	 * @return True if both #RefitOption are equal.
+	 */
 	FORCEINLINE bool operator == (const RefitOption &other) const
 	{
 		return other.cargo == this->cargo && other.value == this->value;
