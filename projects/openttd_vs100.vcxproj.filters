@@ -718,6 +718,9 @@
     <ClInclude Include="..\src\object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\object_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\object_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -1378,6 +1381,9 @@
     <ClInclude Include="..\src\saveload\newgrf_sl.h">
       <Filter>Save/Load handlers</Filter>
     </ClInclude>
+    <ClCompile Include="..\src\saveload\object_sl.cpp">
+      <Filter>Save/Load handlers</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\saveload\oldloader.cpp">
       <Filter>Save/Load handlers</Filter>
     </ClCompile>

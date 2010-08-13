@@ -505,6 +505,7 @@
     <ClInclude Include="..\src\sound\null_s.h" />
     <ClInclude Include="..\src\video\null_v.h" />
     <ClInclude Include="..\src\object.h" />
+    <ClInclude Include="..\src\object_base.h" />
     <ClInclude Include="..\src\object_type.h" />
     <ClInclude Include="..\src\openttd.h" />
     <ClInclude Include="..\src\order_base.h" />
@@ -725,6 +726,7 @@
     <ClCompile Include="..\src\saveload\misc_sl.cpp" />
     <ClCompile Include="..\src\saveload\newgrf_sl.cpp" />
     <ClInclude Include="..\src\saveload\newgrf_sl.h" />
+    <ClCompile Include="..\src\saveload\object_sl.cpp" />
     <ClCompile Include="..\src\saveload\oldloader.cpp" />
     <ClInclude Include="..\src\saveload\oldloader.h" />
     <ClCompile Include="..\src\saveload\oldloader_sl.cpp" />

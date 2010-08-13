@@ -231,6 +231,7 @@ music/null_m.h
 sound/null_s.h
 video/null_v.h
 object.h
+object_base.h
 object_type.h
 openttd.h
 order_base.h
@@ -476,6 +477,7 @@ saveload/map_sl.cpp
 saveload/misc_sl.cpp
 saveload/newgrf_sl.cpp
 saveload/newgrf_sl.h
+saveload/object_sl.cpp
 saveload/oldloader.cpp
 saveload/oldloader.h
 saveload/oldloader_sl.cpp

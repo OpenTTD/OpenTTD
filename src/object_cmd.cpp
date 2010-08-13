@@ -29,11 +29,28 @@
 #include "cargopacket.h"
 #include "sprite.h"
 #include "core/random_func.hpp"
+#include "core/pool_func.hpp"
 #include "object_map.h"
+#include "object_base.h"
+#include "date_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "table/object_land.h"
+
+ObjectPool _object_pool("Object");
+INSTANTIATE_POOL_METHODS(Object)
+
+/* static */ Object *Object::GetByTile(TileIndex tile)
+{
+	return Object::Get(GetObjectIndex(tile));
+}
+
+/** Initialize/reset the objects. */
+void InitializeObjects()
+{
+	_object_pool.CleanPool();
+}
 
 /* static */ const ObjectSpec *ObjectSpec::Get(ObjectType index)
 {
@@ -51,24 +68,26 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town)
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	TileArea ta(tile, GB(spec->size, 0, 4), GB(spec->size, 4, 4));
+	Object *o = new Object();
+	o->location   = ta;
+	o->town       = town == NULL ? CalcClosestTownFromTile(tile) : town;
+	o->build_date = _date;
+
+	assert(o->town != NULL);
+
 	TILE_AREA_LOOP(t, ta) {
-		TileIndex offset = t - tile;
-		MakeObject(t, type, owner, TileY(offset) << 4 | TileX(offset), town == NULL ? 0 : town->index, WATER_CLASS_INVALID);
+		MakeObject(t, type, owner, o->index, WATER_CLASS_INVALID);
 		MarkTileDirtyByTile(t);
 	}
 }
 
 /**
  * Increase the animation stage of a whole structure.
- * @param northern The northern tile of the structure.
- * @pre GetObjectOffset(northern) == 0
+ * @param tile The tile of the structure.
  */
-void IncreaseAnimationStage(TileIndex northern)
+static void IncreaseAnimationStage(TileIndex tile)
 {
-	assert(GetObjectOffset(northern) == 0);
-	const ObjectSpec *spec = ObjectSpec::GetByTile(northern);
-
-	TileArea ta(northern, GB(spec->size, 0, 4), GB(spec->size, 4, 4));
+	TileArea ta = Object::GetByTile(tile)->location;
 	TILE_AREA_LOOP(t, ta) {
 		SetObjectAnimationStage(t, GetObjectAnimationStage(t) + 1);
 		MarkTileDirtyByTile(t);
@@ -118,6 +137,9 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_SCENEDIT && (_game_mode != GM_EDITOR || _current_company != OWNER_NONE)) return CMD_ERROR;
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_GAME && (_game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
+
+	if (!Object::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_OBJECTS);
+	if (Town::GetNumItems() == 0) return_cmd_error(STR_ERROR_MUST_FOUND_TOWN_FIRST);
 
 	int size_x = GB(spec->size, 0, 4);
 	int size_y = GB(spec->size, 4, 4);
@@ -195,8 +217,8 @@ static void DrawTile_Object(TileInfo *ti)
 	PaletteID palette = to == OWNER_NONE ? PAL_NONE : COMPANY_SPRITE_COLOUR(to);
 
 	if (type == OBJECT_HQ) {
-		uint8 offset = GetObjectOffset(ti->tile);
-		dts = &_object_hq[GetCompanyHQSize(ti->tile) << 2 | GB(offset, 4, 1) << 1 | GB(offset, 0, 1)];
+		TileIndex diff = ti->tile - Object::GetByTile(ti->tile)->location.tile;
+		dts = &_object_hq[GetCompanyHQSize(ti->tile) << 2 | TileY(diff) << 1 | TileX(diff)];
 	} else {
 		dts = &_objects[type];
 	}
@@ -254,8 +276,8 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 
 	/* Get to the northern most tile. */
-	byte tile_offset = GetObjectOffset(tile);
-	tile -= TileXY(GB(tile_offset, 0, 4), GB(tile_offset, 4, 4));
+	Object *o = Object::GetByTile(tile);
+	TileArea ta = o->location;
 
 	/* Water can remove everything! */
 	if (_current_company != OWNER_WATER) {
@@ -276,11 +298,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 		}
 	}
 
-	int size_x = GB(spec->size, 0, 4);
-	int size_y = GB(spec->size, 4, 4);
-	TileArea ta(tile, size_x, size_y);
-
-	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost() * size_x * size_y);
+	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost() * ta.w * ta.h);
 	if (spec->flags & OBJECT_FLAG_CLEAR_INCOME) cost.MultiplyCost(-1); // They get an income!
 
 	switch (type) {
@@ -299,9 +317,9 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 
 		case OBJECT_STATUE:
 			if (flags & DC_EXEC) {
-				Town *t = Town::Get(GetStatueTownID(tile));
-				ClrBit(t->statues, GetTileOwner(tile));
-				SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
+				Town *town = o->town;
+				ClrBit(town->statues, GetTileOwner(tile));
+				SetWindowDirty(WC_TOWN_AUTHORITY, town->index);
 			}
 			break;
 
@@ -311,6 +329,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 
 	if (flags & DC_EXEC) {
 		TILE_AREA_LOOP(tile_cur, ta) DoClearSquare(tile_cur);
+		delete o;
 	}
 
 	return cost;
@@ -344,6 +363,7 @@ static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
 {
 	td->str = ObjectSpec::GetByTile(tile)->name;
 	td->owner[0] = GetTileOwner(tile);
+	td->build_date = Object::GetByTile(tile)->build_date;
 }
 
 static void TileLoop_Object(TileIndex tile)
@@ -492,7 +512,7 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 	if (IsOwnedLand(tile) && new_owner != INVALID_OWNER) {
 		SetTileOwner(tile, new_owner);
 	} else if (IsStatueTile(tile)) {
-		Town *t = Town::Get(GetStatueTownID(tile));
+		Town *t = Object::GetByTile(tile)->town;
 		ClrBit(t->statues, old_owner);
 		if (new_owner != INVALID_OWNER && !HasBit(t->statues, new_owner)) {
 			/* Transfer ownership to the new company */

@@ -29,6 +29,18 @@ static inline ObjectType GetObjectType(TileIndex t)
 }
 
 /**
+ * Get the index of which object this tile is attached to.
+ * @param t the tile
+ * @pre IsTileType(t, MP_OBJECT)
+ * @return The ObjectID of the object.
+ */
+static inline ObjectID GetObjectIndex(TileIndex t)
+{
+	assert(IsTileType(t, MP_OBJECT));
+	return _m[t].m2;
+}
+
+/**
  * Does the given tile have a transmitter?
  * @param t the tile to inspect.
  * @return true if and only if the tile has a transmitter.
@@ -95,18 +107,6 @@ static inline bool IsStatueTile(TileIndex t)
 }
 
 /**
- * Get the town of the given statue tile.
- * @param t the tile of the statue.
- * @pre IsStatueTile(t)
- * @return the town the given statue is in.
- */
-static inline TownID GetStatueTownID(TileIndex t)
-{
-	assert(IsStatueTile(t));
-	return _m[t].m2;
-}
-
-/**
  * Get animation stage/counter of this tile.
  * @param t The tile to query.
  * @pre IsTileType(t, MP_OBJECT)
@@ -115,7 +115,7 @@ static inline TownID GetStatueTownID(TileIndex t)
 static inline byte GetObjectAnimationStage(TileIndex t)
 {
 	assert(IsTileType(t, MP_OBJECT));
-	return GB(_m[t].m6, 2, 4);
+	return _m[t].m3;
 }
 
 /**
@@ -127,31 +127,7 @@ static inline byte GetObjectAnimationStage(TileIndex t)
 static inline void SetObjectAnimationStage(TileIndex t, uint8 stage)
 {
 	assert(IsTileType(t, MP_OBJECT));
-	SB(_m[t].m6, 2, 4, stage);
-}
-
-/**
- * Get offset to the northern most tile.
- * @param t The tile to get the offset from.
- * @return The offset to the northern most tile of this structure.
- * @pre IsTileType(t, MP_OBJECT)
- */
-static inline byte GetObjectOffset(TileIndex t)
-{
-	assert(IsTileType(t, MP_OBJECT));
-	return _m[t].m3;
-}
-
-/**
- * Set offset to the northern most tile.
- * @param t      The tile to set the offset of.
- * @param offset The offset to the northern most tile of this structure.
- * @pre IsTileType(t, MP_OBJECT)
- */
-static inline void SetObjectOffset(TileIndex t, uint8 offset)
-{
-	assert(IsTileType(t, MP_OBJECT));
-	_m[t].m3 = offset;
+	_m[t].m3 = stage;
 }
 
 
@@ -161,17 +137,16 @@ static inline void SetObjectOffset(TileIndex t, uint8 offset)
  * @param t      The tile to make and object tile.
  * @param u      The object type of the tile.
  * @param o      The new owner of the tile.
- * @param offset The offset to the northern tile of this object.
- * @param index  Generic index associated with the object type.
+ * @param index  Index to the object.
  * @param wc     Water class for this obect.
  */
-static inline void MakeObject(TileIndex t, ObjectType u, Owner o, uint8 offset, uint index, WaterClass wc)
+static inline void MakeObject(TileIndex t, ObjectType u, Owner o, ObjectID index, WaterClass wc)
 {
 	SetTileType(t, MP_OBJECT);
 	SetTileOwner(t, o);
 	SetWaterClass(t, wc);
 	_m[t].m2 = index;
-	_m[t].m3 = offset;
+	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = u;
 	SB(_m[t].m6, 2, 4, 0);

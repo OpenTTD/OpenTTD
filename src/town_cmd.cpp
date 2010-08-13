@@ -48,6 +48,7 @@
 #include "core/backup_type.hpp"
 #include "depot_base.h"
 #include "object_map.h"
+#include "object_base.h"
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -71,8 +72,12 @@ Town::~Town()
 	DeleteWindowById(WC_TOWN_VIEW, this->index);
 
 	/* Check no industry is related to us. */
-	Industry *i;
+	const Industry *i;
 	FOR_ALL_INDUSTRIES(i) assert(i->town != this);
+
+	/* ... and no object is related to us. */
+	const Object *o;
+	FOR_ALL_OBJECTS(o) assert(o->town != this);
 
 	/* Check no tile is related to us. */
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
@@ -87,10 +92,6 @@ Town::~Town()
 
 			case MP_TUNNELBRIDGE:
 				assert(!IsTileOwner(tile, OWNER_TOWN) || ClosestTownFromTile(tile, UINT_MAX) != this);
-				break;
-
-			case MP_OBJECT:
-				assert(GetObjectType(tile) != OBJECT_STATUE || GetStatueTownID(tile) != this->index);
 				break;
 
 			default:
@@ -114,6 +115,12 @@ void Town::PostDestructor(size_t index)
 {
 	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 0);
 	UpdateNearestTownForRoadTiles(false);
+
+	/* Give objects a new home! */
+	Object *o;
+	FOR_ALL_OBJECTS(o) {
+		if (o->town == NULL) o->town = CalcClosestTownFromTile(o->location.tile, UINT_MAX);
+	}
 }
 
 /**
@@ -2403,7 +2410,21 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 				break;
 
 			case MP_OBJECT:
-				try_clear = GetObjectType(tile) == OBJECT_STATUE && GetStatueTownID(tile) == t->index;
+				if (Town::GetNumItems() == 1) {
+					/* No towns will be left, remove it! */
+					try_clear = true;
+				} else {
+					Object *o = Object::GetByTile(tile);
+					if (o->town == t) {
+						if (GetObjectType(tile) == OBJECT_STATUE) {
+							/* Statue... always remove. */
+							try_clear = true;
+						} else {
+							/* Tell to find a new town. */
+							o->town = NULL;
+						}
+					}
+				}
 				break;
 
 			default:

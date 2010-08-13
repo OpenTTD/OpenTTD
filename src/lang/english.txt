@@ -3630,6 +3630,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel w
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Unable to excavate land for other end of tunnel
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... too many objects
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Can't build object...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Object in the way
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... company headquarters in the way

@@ -1568,8 +1568,8 @@
     <ul>
      <li>m1 bits 6..5 : Water class (sea, canal, river or land)
      <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the object (for lighthouses and transmitters normally <tt>10</tt>)</li>
-     <li>m2: see company statue
-     <li>m3: offset to northern most tile
+     <li>m2: index into the array of objects
+     <li>m3: animation counter
      <li>m5: tile type:
       <table>
        <tr>
@@ -1585,10 +1585,6 @@
        <tr>
         <td nowrap valign=top><tt>02</tt>&nbsp; </td>
         <td align=left>company statue
-         <ul>
-          <li>m2: TownID on which the statue is built in</li>
-         </ul>
-        </td>
        </tr>
 
        <tr>
@@ -1603,7 +1599,6 @@
       </table>
      </li>
      <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
-     <li>m6 bits 2..5 : Animation counter</li>
      <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
     </ul>
    </td>

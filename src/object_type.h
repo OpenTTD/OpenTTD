@@ -22,6 +22,10 @@ enum ObjectType {
 	OBJECT_MAX,
 };
 
+/** Unique identifier for an object. */
+typedef uint16 ObjectID;
+
+struct Object;
 struct ObjectSpec;
 
 #endif /* OBJECT_TYPE_H */

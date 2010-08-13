@@ -37,6 +37,7 @@
 #include "../signs_func.h"
 #include "../aircraft.h"
 #include "../object_map.h"
+#include "../object_base.h"
 #include "../tree_map.h"
 #include "../company_func.h"
 #include "../road_cmd.h"
@@ -1838,12 +1839,49 @@ bool AfterLoadGame()
 
 			/* Reordering/generalisation of the object bits. */
 			ObjectType type = GetObjectType(t);
-			SetObjectAnimationStage(t, type == OBJECT_HQ ? GB(_m[t].m3, 2, 3) : 0);
-			SetObjectOffset(t, type == OBJECT_HQ ? GB(_m[t].m3, 1, 1) | GB(_m[t].m3, 0, 1) << 4 : 0);
+			SB(_m[t].m6, 2, 4, type == OBJECT_HQ ? GB(_m[t].m3, 2, 3) : 0);
+			_m[t].m3 = type == OBJECT_HQ ? GB(_m[t].m3, 1, 1) | GB(_m[t].m3, 0, 1) << 4 : 0;
 
 			/* Make sure those bits are clear as well! */
 			_m[t].m4 = 0;
 			_me[t].m7 = 0;
+		}
+	}
+
+	if (CheckSavegameVersion(147) && Object::GetNumItems() == 0) {
+		/* Make real objects for object tiles. */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (!IsTileType(t, MP_OBJECT)) continue;
+
+			if (Town::GetNumItems() == 0) {
+				/* No towns, so remove all objects! */
+				DoClearSquare(t);
+			} else {
+				uint offset = _m[t].m3;
+
+				/* Also move the animation state. */
+				_m[t].m3 = GB(_m[t].m6, 2, 4);
+				SB(_m[t].m6, 2, 4, 0);
+
+				if (offset == 0) {
+					/* No offset, so make the object. */
+					ObjectType type = GetObjectType(t);
+					int size = type == OBJECT_HQ ? 2 : 1;
+
+					Object *o = new Object();
+					o->location.tile = t;
+					o->location.w    = size;
+					o->location.h    = size;
+					o->build_date    = _date;
+					o->town          = type == OBJECT_STATUE ? Town::Get(_m[t].m2) : CalcClosestTownFromTile(t, UINT_MAX);
+					_m[t].m2 = o->index;
+				} else {
+					/* We're at an offset, so get the ID from our "root". */
+					TileIndex northern_tile = t - TileXY(GB(offset, 0, 4), GB(offset, 4, 4));
+					assert(IsTileType(northern_tile, MP_OBJECT));
+					_m[t].m2 = _m[northern_tile].m2;
+				}
+			}
 		}
 	}
 
