@@ -308,79 +308,6 @@ struct RefitOption {
 typedef SmallVector<RefitOption, 32> RefitList;
 
 /**
- * Collects all (cargo, subcargo) refit-options of a vehicle chain
- * @param v front vehicle
- * @param refit_list container to store result
- */
-static void BuildRefitList(const Vehicle *v, RefitList *refit_list)
-{
-	refit_list->Clear();
-	Vehicle *u = const_cast<Vehicle *>(v);
-
-	do {
-		const Engine *e = Engine::Get(u->engine_type);
-		uint32 cmask = e->info.refit_mask;
-		byte callback_mask = e->info.callback_mask;
-
-		/* Skip this engine if it does not carry anything */
-		if (!e->CanCarryCargo()) continue;
-
-		/* Loop through all cargos in the refit mask */
-		const CargoSpec *cs;
-		FOR_ALL_SORTED_CARGOSPECS(cs) {
-			CargoID cid = cs->Index();
-			/* Skip cargo type if it's not listed */
-			if (!HasBit(cmask, cid)) continue;
-
-			/* Check the vehicle's callback mask for cargo suffixes */
-			if (HasBit(callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) {
-				/* Make a note of the original cargo type. It has to be
-				 * changed to test the cargo & subtype... */
-				CargoID temp_cargo = u->cargo_type;
-				byte temp_subtype  = u->cargo_subtype;
-
-				u->cargo_type = cid;
-
-				for (uint refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE; refit_cyc++) {
-					u->cargo_subtype = refit_cyc;
-
-					/* Make sure we don't pick up anything cached. */
-					u->First()->InvalidateNewGRFCache();
-					u->InvalidateNewGRFCache();
-					uint16 callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, u->engine_type, u);
-
-					if (callback == 0xFF) callback = CALLBACK_FAILED;
-					if (refit_cyc != 0 && callback == CALLBACK_FAILED) break;
-
-					RefitOption option;
-					option.cargo   = cid;
-					option.subtype = refit_cyc;
-					option.value   = callback;
-					option.engine  = u->engine_type;
-					refit_list->Include(option);
-				}
-
-				/* Reset the vehicle's cargo type */
-				u->cargo_type    = temp_cargo;
-				u->cargo_subtype = temp_subtype;
-
-				/* And make sure we haven't tainted the cache */
-				u->First()->InvalidateNewGRFCache();
-				u->InvalidateNewGRFCache();
-			} else {
-				/* No cargo suffix callback -- use no subtype */
-				RefitOption option;
-				option.cargo   = cid;
-				option.subtype = 0;
-				option.value   = CALLBACK_FAILED;
-				option.engine  = INVALID_ENGINE;
-				refit_list->Include(option);
-			}
-		}
-	} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (u = u->Next()) != NULL);
-}
-
-/**
  * Draw the list of available refit options for a consist and highlight the selected refit option (if any).
  * @param *list First vehicle in consist to get the refit-options of
  * @param sel   Selected refit cargo-type in the window
@@ -430,6 +357,78 @@ struct RefitWindow : public Window {
 	VehicleOrderID order; ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
 	Scrollbar *vscroll;
 
+	/**
+	 * Collects all (cargo, subcargo) refit options of a vehicle chain.
+	 */
+	void BuildRefitList()
+	{
+		this->list.Clear();
+		Vehicle *v = Vehicle::Get(this->window_number);
+
+		do {
+			const Engine *e = Engine::Get(v->engine_type);
+			uint32 cmask = e->info.refit_mask;
+			byte callback_mask = e->info.callback_mask;
+
+			/* Skip this engine if it does not carry anything */
+			if (!e->CanCarryCargo()) continue;
+
+			/* Loop through all cargos in the refit mask */
+			const CargoSpec *cs;
+			FOR_ALL_SORTED_CARGOSPECS(cs) {
+				CargoID cid = cs->Index();
+				/* Skip cargo type if it's not listed */
+				if (!HasBit(cmask, cid)) continue;
+
+				/* Check the vehicle's callback mask for cargo suffixes */
+				if (HasBit(callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) {
+					/* Make a note of the original cargo type. It has to be
+					 * changed to test the cargo & subtype... */
+					CargoID temp_cargo = v->cargo_type;
+					byte temp_subtype  = v->cargo_subtype;
+
+					v->cargo_type = cid;
+
+					for (uint refit_cyc = 0; refit_cyc < MAX_REFIT_CYCLE; refit_cyc++) {
+						v->cargo_subtype = refit_cyc;
+
+						/* Make sure we don't pick up anything cached. */
+						v->First()->InvalidateNewGRFCache();
+						v->InvalidateNewGRFCache();
+						uint16 callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, v->engine_type, v);
+
+						if (callback == 0xFF) callback = CALLBACK_FAILED;
+						if (refit_cyc != 0 && callback == CALLBACK_FAILED) break;
+
+						RefitOption option;
+						option.cargo   = cid;
+						option.subtype = refit_cyc;
+						option.value   = callback;
+						option.engine  = v->engine_type;
+						this->list.Include(option);
+					}
+
+					/* Reset the vehicle's cargo type */
+					v->cargo_type    = temp_cargo;
+					v->cargo_subtype = temp_subtype;
+
+					/* And make sure we haven't tainted the cache */
+					v->First()->InvalidateNewGRFCache();
+					v->InvalidateNewGRFCache();
+				} else {
+					/* No cargo suffix callback -- use no subtype */
+					RefitOption option;
+					option.cargo   = cid;
+					option.subtype = 0;
+					option.value   = CALLBACK_FAILED;
+					option.engine  = INVALID_ENGINE;
+					this->list.Include(option);
+				}
+			}
+		} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (v = v->Next()) != NULL);
+		this->vscroll->SetCount(this->list.Length());
+	}
+
 	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order) : Window()
 	{
 		this->CreateNestedTree(desc);
@@ -446,8 +445,6 @@ struct RefitWindow : public Window {
 
 		this->order = order;
 		this->sel  = -1;
-		BuildRefitList(v, &this->list);
-		this->vscroll->SetCount(this->list.Length());
 	}
 
 	virtual void OnInit()
@@ -457,8 +454,7 @@ struct RefitWindow : public Window {
 			RefitOption current_refit_option = *(this->cargo);
 
 			/* Rebuild the refit list */
-			BuildRefitList(Vehicle::Get(this->window_number), &this->list);
-			this->vscroll->SetCount(this->list.Length());
+			this->BuildRefitList();
 			this->sel = -1;
 			this->cargo = NULL;
 			for (uint i = 0; i < this->list.Length(); i++) {
@@ -525,9 +521,7 @@ struct RefitWindow : public Window {
 	{
 		switch (data) {
 			case 0: { // The consist lenght of the vehicle has changed; rebuild the entire list.
-				Vehicle *v = Vehicle::Get(this->window_number);
-				BuildRefitList(v, &this->list);
-				this->vscroll->SetCount(this->list.Length());
+				this->BuildRefitList();
 				/* FALL THROUGH */
 			}
 
