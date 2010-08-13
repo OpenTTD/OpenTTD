@@ -305,37 +305,46 @@ struct RefitOption {
 	}
 };
 
-typedef SmallVector<RefitOption, 32> RefitList;
+typedef SmallVector<RefitOption, 32> SubtypeList; ///< List of refit subtypes associated to a cargo.
 
 /**
  * Draw the list of available refit options for a consist and highlight the selected refit option (if any).
- * @param *list First vehicle in consist to get the refit-options of
+ * @param list  List of subtype options for each (sorted) cargo.
  * @param sel   Selected refit cargo-type in the window
  * @param pos   Position of the selected item in caller widow
  * @param rows  Number of rows(capacity) in caller window
  * @param delta Step height in caller window
  * @param r     Rectangle of the matrix widget.
  */
-static void DrawVehicleRefitWindow(const RefitList &list, int sel, uint pos, uint rows, uint delta, const Rect &r)
+static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, uint pos, uint rows, uint delta, const Rect &r)
 {
 	uint y = r.top + WD_MATRIX_TOP;
-	/* Draw the list, and find the selected cargo (by its position in list) */
-	for (uint i = pos; i < pos + rows && i < list.Length(); i++) {
-		TextColour colour = (sel == (int)i) ? TC_WHITE : TC_BLACK;
-		const RefitOption *refit = &list[i];
+	uint current = 0;
 
-		/* Get the cargo name */
-		SetDParam(0, CargoSpec::Get(refit->cargo)->name);
+	/* Draw the list of subtypes for each cargo, and find the selected refit option (by its position). */
+	for (uint i = 0; current < pos + rows && i < NUM_CARGO; i++) {
+		for (uint j = 0; current < pos + rows && j < list[i].Length(); j++) {
+			/* Refit options with a position smaller than pos don't have to be drawn. */
+			if (current < pos) {
+				current++;
+				continue;
+			}
 
-		/* If the callback succeeded, draw the cargo suffix */
-		if (refit->value != CALLBACK_FAILED) {
-			SetDParam(1, GetGRFStringID(GetEngineGRFID(refit->engine), 0xD000 + refit->value));
-			DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING_SPACE_STRING, colour);
-		} else {
-			DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING, colour);
+			TextColour colour = (sel == (int)current) ? TC_WHITE : TC_BLACK;
+			const RefitOption refit = list[i][j];
+			/* Get the cargo name. */
+			SetDParam(0, CargoSpec::Get(refit.cargo)->name);
+			/* If the callback succeeded, draw the cargo suffix. */
+			if (refit.value != CALLBACK_FAILED) {
+				SetDParam(1, GetGRFStringID(GetEngineGRFID(refit.engine), 0xD000 + refit.value));
+				DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING_SPACE_STRING, colour);
+			} else {
+				DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y, STR_JUST_STRING, colour);
+			}
+
+			y += delta;
+			current++;
 		}
-
-		y += delta;
 	}
 }
 
@@ -351,10 +360,10 @@ enum VehicleRefitWidgets {
 
 /** Refit cargo window. */
 struct RefitWindow : public Window {
-	int sel;              ///< Index in refit options, \c -1 if nothing is selected.
-	RefitOption *cargo;   ///< Refit option selected by \v sel.
-	RefitList list;       ///< List of cargo types available for refitting.
-	VehicleOrderID order; ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
+	int sel;                     ///< Index in refit options, \c -1 if nothing is selected.
+	RefitOption *cargo;          ///< Refit option selected by \v sel.
+	SubtypeList list[NUM_CARGO]; ///< List of refit subtypes available for each sorted cargo.
+	VehicleOrderID order;        ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
 	Scrollbar *vscroll;
 
 	/**
@@ -362,7 +371,7 @@ struct RefitWindow : public Window {
 	 */
 	void BuildRefitList()
 	{
-		this->list.Clear();
+		for (uint i = 0; i < NUM_CARGO; i++) this->list[i].Clear();
 		Vehicle *v = Vehicle::Get(this->window_number);
 
 		do {
@@ -374,11 +383,15 @@ struct RefitWindow : public Window {
 			if (!e->CanCarryCargo()) continue;
 
 			/* Loop through all cargos in the refit mask */
+			int current_index = 0;
 			const CargoSpec *cs;
 			FOR_ALL_SORTED_CARGOSPECS(cs) {
 				CargoID cid = cs->Index();
 				/* Skip cargo type if it's not listed */
-				if (!HasBit(cmask, cid)) continue;
+				if (!HasBit(cmask, cid)) {
+					current_index++;
+					continue;
+				}
 
 				/* Check the vehicle's callback mask for cargo suffixes */
 				if (HasBit(callback_mask, CBM_VEHICLE_CARGO_SUFFIX)) {
@@ -405,7 +418,7 @@ struct RefitWindow : public Window {
 						option.subtype = refit_cyc;
 						option.value   = callback;
 						option.engine  = v->engine_type;
-						this->list.Include(option);
+						this->list[current_index].Include(option);
 					}
 
 					/* Reset the vehicle's cargo type */
@@ -422,11 +435,37 @@ struct RefitWindow : public Window {
 					option.subtype = 0;
 					option.value   = CALLBACK_FAILED;
 					option.engine  = INVALID_ENGINE;
-					this->list.Include(option);
+					this->list[current_index].Include(option);
 				}
+				current_index++;
 			}
 		} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (v = v->Next()) != NULL);
-		this->vscroll->SetCount(this->list.Length());
+
+		int scroll_size = 0;
+		for (uint i = 0; i < NUM_CARGO; i++) {
+			scroll_size += (this->list[i].Length());
+		}
+		this->vscroll->SetCount(scroll_size);
+	}
+
+	/**
+	 * Gets the #RefitOption placed in the selected index.
+	 * @return Pointer to the #RefitOption currently in use.
+	 */
+	RefitOption *GetRefitOption()
+	{
+		if (this->sel < 0) return NULL;
+		int subtype = 0;
+		for (uint i = 0; subtype <= this->sel && i < NUM_CARGO; i++) {
+			for (uint j = 0; subtype <= this->sel && j < this->list[i].Length(); j++) {
+				if (subtype == this->sel) {
+					return &this->list[i][j];
+				}
+				subtype++;
+			}
+		}
+
+		return NULL;
 	}
 
 	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order) : Window()
@@ -457,12 +496,16 @@ struct RefitWindow : public Window {
 			this->BuildRefitList();
 			this->sel = -1;
 			this->cargo = NULL;
-			for (uint i = 0; i < this->list.Length(); i++) {
-				if (this->list[i] == current_refit_option) {
-					this->sel = i;
-					this->cargo = &this->list[i];
-					this->vscroll->ScrollTowards(i);
-					break;
+			int current = 0;
+			for (uint i = 0; this->cargo == NULL && i < NUM_CARGO; i++) {
+				for (uint j = 0; j < list[i].Length(); j++) {
+					if (list[i][j] == current_refit_option) {
+						this->sel = current;
+						this->cargo = &list[i][j];
+						this->vscroll->ScrollTowards(current);
+						break;
+					}
+					current++;
 				}
 			}
 
@@ -526,7 +569,7 @@ struct RefitWindow : public Window {
 			}
 
 			case 1: // A new cargo has been selected.
-				this->cargo = (this->sel >= 0 && this->sel < (int)this->list.Length()) ? &this->list[this->sel] : NULL;
+				this->cargo = GetRefitOption();
 				break;
 		}
 	}
