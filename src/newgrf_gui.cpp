@@ -204,10 +204,8 @@ struct NewGRFParametersWindow : public Window {
 
 		bool rtl = _dynlang.text_dir == TD_RTL;
 		uint buttons_left = rtl ? r.right - 23 : r.left + 4;
-		uint value_left   = r.left + (rtl ? WD_FRAMERECT_LEFT : 28);
-		uint value_right  = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
-		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : 54);
-		uint text_right   = r.right - (rtl ? 54 : WD_FRAMERECT_RIGHT);
+		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : 28);
+		uint text_right   = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
 
 		int y = r.top;
 		for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->grf_config->num_valid_params; i++) {
@@ -216,40 +214,32 @@ struct NewGRFParametersWindow : public Window {
 			uint32 current_value = par_info->GetValue(this->grf_config);
 			bool selected = (i == this->clicked_row);
 
-			uint x = rtl ? r.right : r.left;
 			if (par_info->type == PTYPE_BOOL) {
 				DrawFrameRect(buttons_left, y  + 2, buttons_left + 19, y + 10, (current_value != 0) ? COLOUR_GREEN : COLOUR_RED, (current_value != 0) ? FR_LOWERED : FR_NONE);
+				SetDParam(2, par_info->GetValue(this->grf_config) == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else if (par_info->type == PTYPE_UINT_ENUM) {
 				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, current_value > par_info->min_value, current_value < par_info->max_value);
-				bool draw_numeric = true;
+				SetDParam(2, STR_JUST_INT);
+				SetDParam(3, current_value);
 				if (par_info->value_names.Find(current_value) != par_info->value_names.End()) {
 					const char *label = GetGRFStringFromGRFText(par_info->value_names.Find(current_value)->second);
 					if (label != NULL) {
-						x = DrawString(value_left, value_right, y + WD_MATRIX_TOP, label, TC_ORANGE);
-						draw_numeric = false;
+						SetDParam(2, STR_JUST_RAW_STRING);
+						SetDParamStr(3, label);
 					}
-				}
-				if (draw_numeric) {
-					SetDParam(0, current_value);
-					x = DrawString(value_left, value_right, y + WD_MATRIX_TOP, STR_JUST_INT, TC_ORANGE);
 				}
 			}
 
-			int left  = max(rtl ? 0U : x + 3, text_left);
-			int right = min(rtl ? x - 3 : r.right, text_right);
 			const char *name = GetGRFStringFromGRFText(par_info->name);
 			if (name != NULL) {
-				x = DrawString(left, right, y + WD_MATRIX_TOP, name, selected ? TC_WHITE : TC_LIGHT_BLUE);
+				SetDParam(0, STR_JUST_RAW_STRING);
+				SetDParamStr(1, name);
 			} else {
-				SetDParam(0, i + 1);
-				x = DrawString(left, right, y + WD_MATRIX_TOP, STR_NEWGRF_PARAMETERS_DEFAULT_NAME, selected ? TC_WHITE : TC_LIGHT_BLUE);
+				SetDParam(0, STR_NEWGRF_PARAMETERS_DEFAULT_NAME);
+				SetDParam(1, i + 1);
 			}
-			if (par_info->type == PTYPE_BOOL) {
-				left  = max(rtl ? 0U : x + 3, text_left);
-				right = min(rtl ? x - 3 : r.right, text_right);
-				StringID str = par_info->GetValue(this->grf_config) == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON;
-				DrawString(left, right, y + WD_MATRIX_TOP, str, selected ? TC_WHITE : TC_LIGHT_BLUE);
-			}
+
+			DrawString(text_left, text_right, y + WD_MATRIX_TOP, STR_NEWGRF_PARAMETERS_SETTING, selected ? TC_WHITE : TC_LIGHT_BLUE);
 			y += this->line_height;
 		}
 	}

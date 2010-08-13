@@ -294,10 +294,8 @@ struct AISettingsWindow : public Window {
 
 		bool rtl = _dynlang.text_dir == TD_RTL;
 		uint buttons_left = rtl ? r.right - 23 : r.left + 4;
-		uint value_left   = r.left + (rtl ? WD_FRAMERECT_LEFT : 28);
-		uint value_right  = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
-		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : 54);
-		uint text_right   = r.right - (rtl ? 54 : WD_FRAMERECT_RIGHT);
+		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : 28);
+		uint text_right   = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
 
 
 		int y = r.top;
@@ -305,20 +303,23 @@ struct AISettingsWindow : public Window {
 			int current_value = config->GetSetting((*it).name);
 			bool editable = (_game_mode == GM_MENU) || ((it->flags & AICONFIG_INGAME) != 0);
 
-			uint x = rtl ? r.right : r.left;
+			SetDParamStr(0, (*it).description);
+
 			if (((*it).flags & AICONFIG_BOOLEAN) != 0) {
 				DrawFrameRect(buttons_left, y  + 2, buttons_left + 19, y + 10, (current_value != 0) ? COLOUR_GREEN : COLOUR_RED, (current_value != 0) ? FR_LOWERED : FR_NONE);
+				SetDParam(1, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else {
 				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > (*it).min_value, editable && current_value < (*it).max_value);
 				if (it->labels != NULL && it->labels->Find(current_value) != it->labels->End()) {
-					x = DrawString(value_left, value_right, y + WD_MATRIX_TOP, it->labels->Find(current_value)->second, TC_ORANGE);
+					SetDParam(1, STR_JUST_RAW_STRING);
+					SetDParamStr(2, it->labels->Find(current_value)->second);
 				} else {
-					SetDParam(0, current_value);
-					x = DrawString(value_left, value_right, y + WD_MATRIX_TOP, STR_JUST_INT, TC_ORANGE);
+					SetDParam(1, STR_JUST_INT);
+					SetDParam(2, current_value);
 				}
 			}
 
-			DrawString(max(rtl ? 0U : x + 3, text_left), min(rtl ? x - 3 : r.right, text_right), y + WD_MATRIX_TOP, (*it).description, TC_LIGHT_BLUE);
+			DrawString(text_left, text_right, y + WD_MATRIX_TOP, STR_AI_SETTINGS_SETTING, TC_LIGHT_BLUE);
 			y += this->line_height;
 		}
 	}

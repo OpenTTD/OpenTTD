@@ -24,7 +24,7 @@
 /** Configuration for AI start date, every AI has this setting. */
 AIConfigItem _start_date_config = {
 	"start_date",
-	"The amount of days after the start of the last AI, this AI will start (give or take).",
+	"Number of days to start this AI after the previous one (give or take)",
 	AI::START_NEXT_MIN,
 	AI::START_NEXT_MAX,
 	AI::START_NEXT_MEDIUM,
