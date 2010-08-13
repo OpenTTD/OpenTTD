@@ -89,6 +89,10 @@ Town::~Town()
 				assert(!IsTileOwner(tile, OWNER_TOWN) || ClosestTownFromTile(tile, UINT_MAX) != this);
 				break;
 
+			case MP_OBJECT:
+				assert(GetObjectType(tile) != OBJECT_STATUE || GetStatueTownID(tile) != this->index);
+				break;
+
 			default:
 				break;
 		}
@@ -2396,6 +2400,10 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 			case MP_INDUSTRY:
 				try_clear = Industry::GetByTile(tile)->town == t;
+				break;
+
+			case MP_OBJECT:
+				try_clear = GetObjectType(tile) == OBJECT_STATUE && GetStatueTownID(tile) == t->index;
 				break;
 
 			default:
