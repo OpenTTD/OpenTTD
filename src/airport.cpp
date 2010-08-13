@@ -393,7 +393,6 @@ static const char * const _airport_heading_strings[] = {
 	"TERM7",
 	"TERM8",
 	"HELIPAD3",
-	"HELIPAD4",
 	"DUMMY" // extra heading for 255
 };
 

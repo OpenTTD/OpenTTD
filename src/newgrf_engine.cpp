@@ -242,7 +242,7 @@ static byte MapAircraftMovementState(const Aircraft *v)
 		case HELIPAD1:
 		case HELIPAD2:
 		case HELIPAD3:
-		case HELIPAD4: // Will only occur for helicopters.
+			/* Will only occur for helicopters.*/
 			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPORT; // Descending.
 			if (amdflag & AMED_SLOWTURN)   return AMS_TTDP_FLIGHT_TO_TOWER;   // Still hasn't started descent.
 			return AMS_TTDP_TO_JUNCTION; // On the ground.
@@ -340,7 +340,6 @@ static byte MapAircraftMovementAction(const Aircraft *v)
 		case TERM7:
 		case TERM8:
 		case HELIPAD3:
-		case HELIPAD4:
 			return (v->current_order.IsType(OT_LOADING)) ? AMA_TTDP_ON_PAD3 : AMA_TTDP_LANDING_TO_PAD3;
 
 		case TAKEOFF:      // Moving to takeoff position
