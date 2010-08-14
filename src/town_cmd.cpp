@@ -30,6 +30,7 @@
 #include "newgrf_text.h"
 #include "autoslope.h"
 #include "tunnelbridge_map.h"
+#include "unmovable_map.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "string_func.h"
@@ -90,6 +91,12 @@ Town::~Town()
 				if (IsTileOwner(tile, OWNER_TOWN) &&
 						ClosestTownFromTile(tile, UINT_MAX) == this)
 					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				break;
+
+			case MP_UNMOVABLE:
+				if (GetUnmovableType(tile) == UNMOVABLE_STATUE && GetStatueTownID(tile) == this->index) {
+					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				}
 				break;
 
 			default:
@@ -2418,7 +2425,10 @@ static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 	TileIndex tile = t->xy;
 	if (CircularTileSearch(&tile, 9, SearchTileForStatue, NULL)) {
 		if (flags & DC_EXEC) {
+			CompanyID old = _current_company;
+			_current_company = OWNER_NONE;
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			_current_company = old;
 			MakeStatue(tile, _current_company, t->index);
 			SetBit(t->statues, _current_company); // Once found and built, "inform" the Town.
 			MarkTileDirtyByTile(tile);

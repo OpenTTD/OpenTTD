@@ -59,7 +59,7 @@
 	/* Tiles not neighbouring */
 	if (::DistanceManhattan(t1, t2) != 1) return false;
 
-	DiagDirection to_other_tile = ::DiagdirBetweenTiles(t1, t2);
+	DiagDirection to_other_tile = ::DiagdirBetweenTiles(t2, t1);
 
 	/* Determine the reachable tracks from the shared edge */
 	TrackBits gtts1 = ::TrackStatusToTrackBits(::GetTileTrackStatus(t1, TRANSPORT_WATER, 0, to_other_tile)) & ::DiagdirReachesTracks(to_other_tile);
