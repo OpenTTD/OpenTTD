@@ -249,7 +249,7 @@ Function DetermineSVNVersion()
 							End If ' line <> "default"
 						End If ' Err.Number = 0
 
-						Set oExec = WshShell.Exec("hg log -f -k " & Chr(34) & "(svn r" & Chr(34) & " -l 1 --template " & Chr(34) & "{desc}\n" & Chr(34) & " ../")
+						Set oExec = WshShell.Exec("hg log -f -k " & Chr(34) & "(svn r" & Chr(34) & " -l 1 --template " & Chr(34) & "{desc}\n" & Chr(34) & " --cwd ../")
 						If Err.Number = 0 Then
 							revision = Mid(OExec.StdOut.ReadLine(), 7)
 							revision = Mid(revision, 1, InStr(revision, ")") - 1)
