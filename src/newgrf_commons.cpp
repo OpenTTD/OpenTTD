@@ -242,7 +242,7 @@ uint16 IndustryOverrideManager::AddEntityID(byte grf_local_id, uint32 grfid, byt
  */
 void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 {
-	/* First step : We need to find if this industry is already specified in the savegame data */
+	/* First step : We need to find if this industry is already specified in the savegame data. */
 	IndustryType ind_id = this->GetID(inds->grf_prop.local_id, inds->grf_prop.grffile->grfid);
 
 	if (ind_id == invalid_ID) {
@@ -259,9 +259,9 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 		return;
 	}
 
-	/* Now that we know we can use the given id, copy the spech to its final destination*/
+	/* Now that we know we can use the given id, copy the spec to its final destination... */
 	memcpy(&_industry_specs[ind_id], inds, sizeof(*inds));
-	/* and mark it as usable*/
+	/* ... and mark it as usable*/
 	_industry_specs[ind_id].enabled = true;
 }
 
