@@ -1,0 +1,260 @@
+GIMP Palette
+Name: openttd
+Columns: 16
+#
+  0   0 255	unnamed
+238   0 238	unnamed
+239   0 239	unnamed
+240   0 240	unnamed
+241   0 241	unnamed
+242   0 242	unnamed
+243   0 243	unnamed
+244   0 244	unnamed
+245   0 245	unnamed
+246   0 246	unnamed
+168 168 168	unnamed
+184 184 184	unnamed
+200 200 200	unnamed
+216 216 216	unnamed
+232 232 232	unnamed
+252 252 252	unnamed
+ 52  60  72	unnamed
+ 68  76  92	unnamed
+ 88  96 112	unnamed
+108 116 132	unnamed
+132 140 152	unnamed
+156 160 172	unnamed
+176 184 196	unnamed
+204 208 220	unnamed
+ 48  44   4	unnamed
+ 64  60  12	unnamed
+ 80  76  20	unnamed
+ 96  92  28	unnamed
+120 120  64	unnamed
+148 148 100	unnamed
+176 176 132	unnamed
+204 204 168	unnamed
+100 100 100	unnamed
+116 116 116	unnamed
+104  80  44	unnamed
+124 104  72	unnamed
+152 132  92	unnamed
+184 160 120	unnamed
+212 188 148	unnamed
+244 220 176	unnamed
+132 132 132	unnamed
+ 88   4  16	unnamed
+112  16  32	unnamed
+136  32  52	unnamed
+160  56  76	unnamed
+188  84 108	unnamed
+204 104 124	unnamed
+220 132 144	unnamed
+236 156 164	unnamed
+252 188 192	unnamed
+252 208   0	unnamed
+252 232  60	unnamed
+252 252 128	unnamed
+ 76  40   0	unnamed
+ 96  60   8	unnamed
+116  88  28	unnamed
+136 116  56	unnamed
+156 136  80	unnamed
+176 156 108	unnamed
+196 180 136	unnamed
+ 68  24   0	unnamed
+ 96  44   4	unnamed
+128  68   8	unnamed
+156  96  16	unnamed
+184 120  24	unnamed
+212 156  32	unnamed
+232 184  16	unnamed
+252 212   0	unnamed
+252 248 128	unnamed
+252 252 192	unnamed
+ 32   4   0	unnamed
+ 64  20   8	unnamed
+ 84  28  16	unnamed
+108  44  28	unnamed
+128  56  40	unnamed
+148  72  56	unnamed
+168  92  76	unnamed
+184 108  88	unnamed
+196 128 108	unnamed
+212 148 128	unnamed
+  8  52   0	unnamed
+ 16  64   0	unnamed
+ 32  80   4	unnamed
+ 48  96   4	unnamed
+ 64 112  12	unnamed
+ 84 132  20	unnamed
+104 148  28	unnamed
+128 168  44	unnamed
+ 64  64  64	unnamed
+ 44  68  32	unnamed
+ 60  88  48	unnamed
+ 80 104  60	unnamed
+104 124  76	unnamed
+128 148  92	unnamed
+152 176 108	unnamed
+180 204 124	unnamed
+ 16  52  24	unnamed
+ 32  72  44	unnamed
+ 56  96  72	unnamed
+ 76 116  88	unnamed
+ 96 136 108	unnamed
+120 164 136	unnamed
+152 192 168	unnamed
+184 220 200	unnamed
+ 32  24   0	unnamed
+ 56  28   0	unnamed
+ 80  80  80	unnamed
+ 88  52  12	unnamed
+104  64  24	unnamed
+124  84  44	unnamed
+140 108  64	unnamed
+160 128  88	unnamed
+ 76  40  16	unnamed
+ 96  52  24	unnamed
+116  68  40	unnamed
+136  84  56	unnamed
+164  96  64	unnamed
+184 112  80	unnamed
+204 128  96	unnamed
+212 148 112	unnamed
+224 168 128	unnamed
+236 188 148	unnamed
+ 80  28   4	unnamed
+100  40  20	unnamed
+120  56  40	unnamed
+140  76  64	unnamed
+160 100  96	unnamed
+184 136 136	unnamed
+ 36  40  68	unnamed
+ 48  52  84	unnamed
+ 64  64 100	unnamed
+ 80  80 116	unnamed
+100 100 136	unnamed
+132 132 164	unnamed
+172 172 192	unnamed
+212 212 224	unnamed
+ 48  48  48	unnamed
+ 64  44 144	unnamed
+ 88  64 172	unnamed
+104  76 196	unnamed
+120  88 224	unnamed
+140 104 252	unnamed
+160 136 252	unnamed
+188 168 252	unnamed
+  0  24 108	unnamed
+  0  36 132	unnamed
+  0  52 160	unnamed
+  0  72 184	unnamed
+  0  96 212	unnamed
+ 24 120 220	unnamed
+ 56 144 232	unnamed
+ 88 168 240	unnamed
+128 196 252	unnamed
+188 224 252	unnamed
+ 16  64  96	unnamed
+ 24  80 108	unnamed
+ 40  96 120	unnamed
+ 52 112 132	unnamed
+ 80 140 160	unnamed
+116 172 192	unnamed
+156 204 220	unnamed
+204 240 252	unnamed
+172  52  52	unnamed
+212  52  52	unnamed
+252  52  52	unnamed
+252 100  88	unnamed
+252 144 124	unnamed
+252 184 160	unnamed
+252 216 200	unnamed
+252 244 236	unnamed
+ 72  20 112	unnamed
+ 92  44 140	unnamed
+112  68 168	unnamed
+140 100 196	unnamed
+168 136 224	unnamed
+200 176 248	unnamed
+208 184 255	unnamed
+232 208 252	unnamed
+ 60   0   0	unnamed
+ 92   0   0	unnamed
+128   0   0	unnamed
+160   0   0	unnamed
+196   0   0	unnamed
+224   0   0	unnamed
+252   0   0	unnamed
+252  80   0	unnamed
+252 108   0	unnamed
+252 136   0	unnamed
+252 164   0	unnamed
+252 192   0	unnamed
+252 220   0	unnamed
+252 252   0	unnamed
+204 136   8	unnamed
+228 144   4	unnamed
+252 156   0	unnamed
+252 176  48	unnamed
+252 196 100	unnamed
+252 216 152	unnamed
+  8  24  88	unnamed
+ 12  36 104	unnamed
+ 20  52 124	unnamed
+ 28  68 140	unnamed
+ 40  92 164	unnamed
+ 56 120 188	unnamed
+ 72 152 216	unnamed
+100 172 224	unnamed
+ 92 156  52	unnamed
+108 176  64	unnamed
+124 200  76	unnamed
+144 224  92	unnamed
+224 244 252	unnamed
+200 236 248	unnamed
+180 220 236	unnamed
+132 188 216	unnamed
+ 88 152 172	unnamed
+ 16  16  16	unnamed
+ 32  32  32	unnamed
+ 32  68 112	unnamed
+ 36  72 116	unnamed
+ 40  76 120	unnamed
+ 44  80 124	unnamed
+ 48  84 128	unnamed
+ 72 100 144	unnamed
+100 132 168	unnamed
+216 244 252	unnamed
+ 96 128 164	unnamed
+ 68  96 140	unnamed
+ 76  24   8	unnamed
+108  44  24	unnamed
+144  72  52	unnamed
+176 108  84	unnamed
+210 146 126	unnamed
+252  60   0	unnamed
+252  84   0	unnamed
+252 104   0	unnamed
+252 124   0	unnamed
+252 148   0	unnamed
+252 172   0	unnamed
+252 196   0	unnamed
+ 64   0   0	unnamed
+255   0   0	unnamed
+ 48  48   0	unnamed
+ 64  64   0	unnamed
+ 80  80   0	unnamed
+255 255   0	unnamed
+148 148 148	unnamed
+247   0 247	unnamed
+248   0 248	unnamed
+249   0 249	unnamed
+250   0 250	unnamed
+251   0 251	unnamed
+252   0 252	unnamed
+253   0 253	unnamed
+254   0 254	unnamed
+255   0 255	unnamed
+255 255 255	unnamed

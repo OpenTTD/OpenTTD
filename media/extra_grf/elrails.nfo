@@ -1,0 +1,58 @@
+//
+// $Id$
+//
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Electrified rail by Michael Blunck"
+   -1 * 0	 05 05 30
+   -1 sprites/elrails.pcx 66 8 01 16 32 -29 -2
+   -1 sprites/elrails.pcx 114 8 01 16 32 -1 -2
+   -1 sprites/elrails.pcx 162 8 01 1 32 -1 -2
+   -1 sprites/elrails.pcx 210 8 01 16 1 0 -3
+   -1 sprites/elrails.pcx 226 8 01 24 32 -29 -2
+   -1 sprites/elrails.pcx 274 8 01 9 32 -1 6
+   -1 sprites/elrails.pcx 322 8 01 9 32 -29 6
+   -1 sprites/elrails.pcx 370 8 01 24 32 -1 -2
+   -1 sprites/elrails.pcx 418 8 01 16 32 -29 -2
+   -1 sprites/elrails.pcx 466 8 01 16 32 -1 -2
+   -1 sprites/elrails.pcx 514 8 01 1 32 -1 -2
+   -1 sprites/elrails.pcx 562 8 01 16 1 0 -3
+   -1 sprites/elrails.pcx 578 8 01 24 32 -29 -2
+   -1 sprites/elrails.pcx 626 8 01 9 32 -1 6
+   -1 sprites/elrails.pcx 674 8 01 9 32 -29 6
+   -1 sprites/elrails.pcx 722 8 01 24 32 -1 -2
+   -1 sprites/elrails.pcx 2 56 01 16 32 -29 -2
+   -1 sprites/elrails.pcx 50 56 01 16 32 -1 -2
+   -1 sprites/elrails.pcx 98 56 01 1 32 -1 -2
+   -1 sprites/elrails.pcx 146 56 01 16 1 0 -3
+   -1 sprites/elrails.pcx 162 56 01 24 32 -29 -2
+   -1 sprites/elrails.pcx 210 56 01 9 32 -1 6
+   -1 sprites/elrails.pcx 258 56 01 9 32 -29 6
+   -1 sprites/elrails.pcx 306 56 01 24 32 -1 -2
+   -1 sprites/elrails.pcx 354 56 01 8 16 -29 6
+   -1 sprites/elrails.pcx 386 56 01 8 16 -1 -2
+   -1 sprites/elrails.pcx 418 56 01 8 16 -13 -2
+   -1 sprites/elrails.pcx 450 56 01 8 16 15 6
+   -1 sprites/elrails.pcx 482 56 01 16 8 -7 -14
+   -1 sprites/elrails.pcx 498 56 01 18 8 0 -17
+   -1 sprites/elrails.pcx 514 56 01 16 8 0 -14
+   -1 sprites/elrails.pcx 530 56 01 18 8 -7 -17
+   -1 sprites/elrails.pcx 546 56 01 16 2 0 -15
+   -1 sprites/elrails.pcx 562 56 01 18 2 0 -16
+   -1 sprites/elrails.pcx 578 56 01 16 8 0 -15
+   -1 sprites/elrails.pcx 594 56 01 16 8 -7 -15
+   -1 sprites/elrails.pcx 610 56 09 16 13 4 2
+   -1 sprites/elrails.pcx 642 56 09 16 20 0 2
+   -1 sprites/elrails.pcx 674 56 09 16 20 0 2
+   -1 sprites/elrails.pcx 706 56 09 16 20 0 2
+   -1 sprites/elrails.pcx 738 56 03 30 38 -3 -14
+   -1 sprites/elrails.pcx 2 104 03 44 72 -16 -8
+   -1 sprites/elrails.pcx 82 104 03 35 44 -21 -2
+   -1 sprites/elrails.pcx 146 104 03 44 72 -16 -35
+   -1 sprites/elrails.pcx 226 104 09 19 20 0 1
+   -1 sprites/elrails.pcx 258 104 03 32 32 0 0
+   -1 sprites/elrails.pcx 306 104 01 22 12 -9 -18
+   -1 sprites/elrails.pcx 338 104 01 22 12 -1 -18

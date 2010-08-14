@@ -54,7 +54,7 @@ ifdef DISTCC
 	@if [ -z "`echo '$(MFLAGS)' | grep '\-j'`" ]; then echo; echo "WARNING: you enabled distcc support, but you don't seem to be using the -jN paramter"; echo; fi
 endif
 	@for dir in $(DIRS); do \
-		$(MAKE) -C $$dir all; \
+		$(MAKE) -C $$dir all || exit 1; \
 	done
 ifdef LIPO
 # Lipo is an OSX thing. If it is defined, it means we are building for universal,

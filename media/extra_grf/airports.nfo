@@ -1,0 +1,25 @@
+//
+// $Id$
+//
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Extra airport graphics"
+   -1 * 0	 05 10 0F
+   -1 sprites/airports.pcx 18 8 09 31 64 -31 0
+   -1 sprites/airports.pcx 98 8 09 31 64 -31 0
+   -1 sprites/airports.pcx 178 8 09 31 64 -31 0
+   -1 sprites/airports.pcx 258 8 09 31 64 -31 0
+   -1 sprites/airports.pcx 338 8 09 31 64 -31 0
+   -1 sprites/airports.pcx 418 8 09 31 64 -31 0
+   -1 sprites/airports.pcx 498 8 09 55 64 -2 -38
+   -1 sprites/airports.pcx 578 8 09 17 18 16 -1
+   -1 sprites/airports.pcx 610 8 09 55 64 -2 -38
+   -1 sprites/airports.pcx 690 8 09 17 18 -30 1
+   -1 sprites/airports.pcx 722 8 09 55 64 -2 -38
+   -1 sprites/airports.pcx 2 88 09 55 64 -2 -38
+   -1 sprites/airports.pcx 82 88 09 31 64 -31 0
+   -1 sprites/airports.pcx 162 88 09 31 64 -31 0
+   -1 sprites/airports.pcx 242 88 09 31 64 -31 0
