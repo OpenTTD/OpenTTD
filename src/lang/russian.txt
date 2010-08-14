@@ -2449,7 +2449,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вруч
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот карты:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Название карты:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Размер:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Введите случайное число
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Изменить высоту снеговой линии
@@ -2725,7 +2725,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Строительство
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Новая техника
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Обслуживание ж/д
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Обслуживание автомобилей
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Обслуж. автомобилей
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Обслуж. авиатранспорта
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Обслуж. кораблей
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Обслуж. собственности
@@ -3579,6 +3579,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... не
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Города не строят дорог. Вы можете включить строительство дорог в Расш. настройки->Экономика->Города.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Идут дорожные работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Невозможно уничтожить город:{}к нему относится станция или депо, либо невозможно очистить одну из занимаемых им клеток.
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}...в центре города нет места для статуи
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Невозможно создать промышленность...

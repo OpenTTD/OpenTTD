@@ -941,8 +941,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 
 
 
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Berdea
 
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Berdea
 
 
 

@@ -2119,7 +2119,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Eigenaar
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Spoorweg eigenaar: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Gemeente: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Geen
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coördinaten: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coördinaten: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bouwjaar: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstype: {LTBLUE}{STRING}
@@ -2279,7 +2279,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handmati
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotatie van hoogtekaart:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naam van hoogtekaart:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grootte:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Voer een willekeurig getal in
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Verander hoogte van sneeuwgrens
@@ -3399,6 +3399,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er i
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}De plaats bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Geavanceerde Instellingen->Economie->Plaatsen.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Wegwerkzaamheden in uitvoering
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze plaats niet verwijderen...{}Een station of depot verwijst naar deze plaats of een door de plaats beheerde tegel kan niet worden verwijderd
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... er is geen geschikte plaats voor een standbeeld in het centrum van dit dorp
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan geen industrieën genereren...

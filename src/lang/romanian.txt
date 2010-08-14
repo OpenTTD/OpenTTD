@@ -2276,78 +2276,80 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Aleator
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Aleator
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotatie harta inaltimi:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nume harta inaltimi:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotaţie hartă înălţimi:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nume hartă înălţimi:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dimensiune:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Introduceţi o valoare de pornire pentru numerele aleatoare
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Nu pot modifica inaltimea zapezii
-STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Modifica inceputul anului
+STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Modifică înălţimea zăpezii
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Modifică anul de început
 
 # SE Map generation
-STR_SE_MAPGEN_CAPTION                                           :{WHITE}Tip harta
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Tipul scenariului
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Teren plat
-STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Genereaza un teren plat
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generează un teren plat
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Teren aleator
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Inaltimea terenului plat:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Muta in jos, cu o unitate, inaltimea terenului plan
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Muta in sus, cu o unitate, inaltimea terenului plan
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Înălţimea terenului plat:
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mută înălţimea terenului plat cu o unitate în jos
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mută înălţimea terenului plat cu o unitate în sus
 
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Modifica inaltimea terenului plan
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Modifică înălţimea terenului plat
 
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Generez lumea...
-STR_GENERATION_ABORT                                            :{BLACK}Anuleaza
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Anuleaza Generarea Lumii
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Sigur doresti sa anulezi generarea?
+STR_GENERATION_ABORT                                            :{BLACK}Anulează
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Anulează Generarea Lumii
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Sigur doreşti să anulezi generarea?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% efectuat
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generare lume
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generare arbori
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Generare fixa
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generare zona dura si pietroasa
-STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Fac setarile jocului
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Generare fixă
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generare zonă dură şi pietroasă
+STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Se configurează jocul
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Initializez ciclul dalelor
-STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pregatesc jocul
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pregătesc jocul
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setări NewGRF
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Incarcă presetarea selectată
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Încarcă presetarea selectată
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Salvează presetare
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Salvează lista curentă ca presetare
-STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introdu un nume presetarii
-STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Sterge presetarea
-STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Sterge presetarea selectata
-STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Adauga
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introduceţi un nume pentru presetare
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Şterge presetarea
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Şterge presetarea selectată
+STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Adaugă
 STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Adauga un fisier NewGRF in lista
-STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Elimina
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Elimina fisierul NewGRF ales din lista
-STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Muta Sus
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Muta fisierul NewGRF ales mai sus in lista
-STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Muta Jos
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Muta fisierul NewGRF ales mai jos in lista
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O lista a fisierelor NewGRF instalate. Fa click pe un fisier pt a-i modifica parameterii
+STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Elimină
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Elimină fişierul NewGRF ales din listă
+STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Mută în sus
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mută fişierul NewGRF ales mai sus în listă
+STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Mută în jos
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mută fişierul NewGRF ales mai jos în listă
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}O listă a fişierelor NewGRF instalate. Click pe un fişier pt a-i modifica parameterii
 
-STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Seteaza parametri
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Comuta paleta
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Schimba paleta la NewGRF ul selectat .{} Efectueaza acest lucru cand graficele din acest NewGRF sunt roz in joc
+STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Setează parametri
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Comută paleta
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Schimbă paleta pentru NewGRF-ul selectat.{}Efectuează acest lucru când grafica din acest NewGRF este roz în joc
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplică schimbările
 
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Caută resursele lipsă online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Caută online resursele lipsă
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Verifică dacă resursele care lipsesc pot fi găsite online
 
-STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nume fisier: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nume fişier: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletă: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
 
-STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Nici o informatie disponibila
-STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nici un fisier potrivit
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Nicio informaţie disponibilă
+STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Niciun fisier potrivit
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dezactivat
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introdu parametrii NewGRF
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 
@@ -2400,8 +2402,8 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Reluarea
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Comportamentul NewGRF '{0:STRING}' poate cauza desincronizări şi/sau blocări.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica lungimea vehicolului pentru '{1:ENGINE}' cand nu este in depou.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', apartinand '{COMPANY}' nu are o lungima valida. Crobabila este o problema cu fisierele NewGRF. Jocul s-ar putea desincroniza sau prabusi.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifică lungimea vehiculului pentru '{1:ENGINE}' când nu este în depou.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', aparţinând '{COMPANY}' nu are o lungime validă. Probabil este o problemă cu fişierele NewGRF. Jocul s-ar putea desincroniza sau bloca.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Datele despre marfa/regarnisire pentru '{1:ENGINE}' diferă de valorile iniţiale după construcţie. Acest lucru ar putea cauza eşuarea autorenovarii/schimbarii.
@@ -3397,6 +3399,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nu m
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Oraşul nu va construi drumuri. Poţi activa construirea drumurilor via Setari avansate -> Economie -> Oraşe
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lucrari la drum in curs de desfasurare
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Acest oraş nu poate fi şters...{}O staţie sau un depou face referire la acest oraş, sau o parcelă deţinută de oraş nu poate fi eliminată
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nu există nici un loc potrivit pentru o statuie în centrul acestui oraş
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nu pot genera industrii...

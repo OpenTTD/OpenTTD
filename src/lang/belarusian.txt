@@ -3716,6 +3716,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ня
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Гарады не будуюць дарогі. Вы можаце ўключыць будаўнiцтва дарогаў у Паш. наладкі-> Эканоміка-> Гарады.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Ідуць дарожныя работы...
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Немагчыма зьнішчыць горад:{}да яго адносіцца станцыя або дэпо, альбо немагчыма ачысьціць адну з занятых ім клетак.
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... у цэнтры горада няма месца для статуі
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Немагчыма стварыць прамысловасьць...

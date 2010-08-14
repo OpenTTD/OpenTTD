@@ -3456,6 +3456,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... pole
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Linn ei ehita teid. Teedeehituse lubamiseks Täpsemad seaded->Majandus->Linnad.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Teede ehitamine
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Seda linna ei saa kustutada...{}Jaam või depoo viitab linnale või mõnd linna omanduses olevat tükki ei saa kustutada
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... linnakeskuses ei leidu kujule sobivat kohta
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tööstust ei saa tekitada...

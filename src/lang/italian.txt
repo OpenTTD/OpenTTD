@@ -2121,7 +2121,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Propriet
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Proprietario ferrovia: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autorità locale: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nessuna
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordinate: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordinate: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Costruito il: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Categoria stazione: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo stazione: {LTBLUE}{STRING}
@@ -2281,7 +2281,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuale
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotazione heightmap:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome heightmap:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dim.:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Inserire un seme casuale
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Cambia l'altezza delle nevi perenni
@@ -3024,8 +3024,8 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Carico
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Mostra i dettagli sul carico trasportato
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informazioni
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Mostra i dettagli sui veicoli che compongono il treno
-STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Capienza
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Mostra la capienza di ogni veicolo
+STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Capacità
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Mostra la capacità di ogni veicolo
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Carico totale
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Mostra la capacità totale del treno, suddivisa per tipo di carico
 
@@ -3401,6 +3401,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non 
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Alla città non è permesso costruire strade. È possibile abilitare la costruzione di strade in Impostazioni avanzate -> Economia -> Città.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lavori stradali in corso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossibile eliminare la città...{}Una stazione o un deposito fa ancora riferimento alla città o un riquadro di proprietà della città non può essere rimosso
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... non ci sono spazi adeguati per una statua nel centro di questa città
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Impossibile generare industrie...
@@ -3761,7 +3762,7 @@ STR_SV_STNAME_WOODS                                             :{STRING} Bosco
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Lago
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Scambio
 STR_SV_STNAME_AIRPORT                                           :Aeroporto di {STRING}
-STR_SV_STNAME_OILFIELD                                          :Pozzi di {STRING}
+STR_SV_STNAME_OILFIELD                                          :Campo petrolifero di {STRING}
 STR_SV_STNAME_MINES                                             :{STRING} Miniere
 STR_SV_STNAME_DOCKS                                             :Porto di {STRING}
 STR_SV_STNAME_BUOY                                              :{STRING}

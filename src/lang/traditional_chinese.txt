@@ -3399,6 +3399,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... 地�
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}此市鎮不會自動興建道路。你可以到 [進階設定] -> [經濟] -> [市鎮] 中啟用 [市鎮可以興建道路] 選項。
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}道路施工中
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}無法刪除此市鎮...{}市鎮範圍內還有車站或機廠或無法移除的區塊
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 市中心沒有適合的空間建造雕像
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}無法產生工業...

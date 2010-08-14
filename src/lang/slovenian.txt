@@ -1440,7 +1440,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Kljukice
 STR_CHEATS_WARNING                                              :{BLACK}Pozor! Nameravaš izdati svoje tekmece. Tako sramotno dejanje bo zabeleženo za vselej.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Povečaj denar za {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Igra kot podjetje: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Čarobni buldožer (odstrani tovarne, neodstranljive objekte): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Čarobni buldožer (odstrani industrije, neodstranljive objekte): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneli se lahko križajo pod zemljo: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Zgrajeno med pavzo: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktivna letala ne bodo (pogosto) strmoglavila na malih letališčih: {ORANGE}{STRING}
@@ -1931,7 +1931,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zgradi �
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zgradi železniško signalizacijo. Ctrl preklopi semaforje/svetlobne signale{}Vlečenje zgradi signale po ravni črti. Ctrl zgradi signale do naslednjega križišča{}Ctrl+Klik odpre izbiro signala
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zgradi žel. most
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zgradi žel. predor
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Preklopi gradnja/rušenje železniških proge, signalov, točk poti in postaj. Držanje Ctrl odstrani tudi tire s točk poti in postaj
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Preklopi gradnja/rušenje železniških prog, signalov, točk poti in postaj. Držanje Ctrl odstrani tudi tire s točk poti in postaj
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadgradi tip tirov
 
 # Rail depot construction window
@@ -2147,6 +2147,8 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Obetajo�
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Zgradi
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ustanovi
 
+# Industry cargoes window
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacije o zemljišču
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cena za čiščenje: {LTBLUE}Ni na voljo
@@ -2159,7 +2161,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Lastnik 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Lastnik železnice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokalna oblast: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Brez
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinate: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinate: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Zgrajeno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Razred postaje: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Vrsta postaje: {LTBLUE}{STRING}
@@ -2319,7 +2321,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Ročno
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Zasuk višinskega zemljevida:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ime višinskega zemljevida:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Velikost:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Vpiši naključno seme
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Spremeni višino snežne meje
@@ -2389,6 +2391,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemogoče
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Vnesi NewGRF parametre
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -2451,7 +2455,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<neveljaven tovor>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <neveljaven tovor>
-STR_NEWGRF_INVALID_ENGINE                                       :<neveljaven pogon>
+STR_NEWGRF_INVALID_ENGINE                                       :<neveljaven model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neveljavna industrija>
 
 # Sign list window
@@ -2812,10 +2816,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o i a ""}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaki - klikni na vlak za informacije, povleci vozilo za dodajanje/odstranjevanje iz vlaka
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - klikni na vozilo za informacije
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ladje - klikni na ladjo za informacije
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Letalo - klikni na letalo za informacije
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaki - povleci vozilo z levim klikom za dodajanje/odstranjevanje iz vlaka, desno klikni na vlak za informacije. Držanje Ctrl naredi obe funkciji hkrati
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - desno klikni na vozilo za informacije
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ladje - desno klikni na ladjo za informacije
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Letalo - desno klikni na letalo za informacije
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Povleci železniško vozilo sem, če ga želiš prodati
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Povleci cestno vozilo sem, če ga želiš prodati
