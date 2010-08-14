@@ -3625,6 +3625,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Một đ
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Không thể đào đất để làm đầu kia của hầm
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... quá nhiều đối tượng
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Không thể xây đối tượng này...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Có vật thể trên đường
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... trụ sở công ty nằm trên đường

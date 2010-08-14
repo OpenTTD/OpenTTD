@@ -1126,6 +1126,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dovoli 
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnični območni zajem postaj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest, mostov, itd.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Omogoči gradnjo zelo dolgih vlakov: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/isker lokomotiv: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Brez
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originalno
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistično
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model pospeškov vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realističen
@@ -1448,7 +1452,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Kljukice
 STR_CHEATS_WARNING                                              :{BLACK}Pozor! Nameravaš izdati svoje tekmece. Tako sramotno dejanje bo zabeleženo za vselej.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Povečaj denar za {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Igra kot podjetje: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Čarobni buldožer (odstrani tovarne, neodstranljive objekte): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Čarobni buldožer (odstrani industrije, neodstranljive objekte): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneli se lahko križajo pod zemljo: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Zgrajeno med pavzo: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktivna letala ne bodo (pogosto) strmoglavila na malih letališčih: {ORANGE}{STRING}
@@ -1939,7 +1943,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zgradi �
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zgradi železniško signalizacijo. Ctrl preklopi semaforje/svetlobne signale{}Vlečenje zgradi signale po ravni črti. Ctrl zgradi signale do naslednjega križišča{}Ctrl+Klik odpre izbiro signala
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zgradi žel. most
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zgradi žel. predor
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Preklopi gradnja/rušenje železniških proge, signalov, točk poti in postaj. Držanje Ctrl odstrani tudi tire s točk poti in postaj
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Preklopi gradnja/rušenje železniških prog, signalov, točk poti in postaj. Držanje Ctrl odstrani tudi tire s točk poti in postaj
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadgradi tip tirov
 
 # Rail depot construction window
@@ -2065,6 +2069,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Zgradi l
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Izbira letališča
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Izbira velikosti/tipa letališča
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Vrsta letališča
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Oblika {NUM}
 
 STR_AIRPORT_SMALL                                               :Majno letališče
 STR_AIRPORT_CITY                                                :Mestno
@@ -2156,6 +2161,12 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Obetajo�
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Zgradi
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ustanovi
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Proizvajajoče industrije
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Sprejemajoče industrije
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hiše
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Poveži z zemljevidom
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacije o zemljišču
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cena za čiščenje: {LTBLUE}Ni na voljo
@@ -2168,7 +2179,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Lastnik 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Lastnik železnice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokalna oblast: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Brez
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinate: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinate: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Zgrajeno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Razred postaje: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Vrsta postaje: {LTBLUE}{STRING}
@@ -2335,7 +2346,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Ročno
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Zasuk višinskega zemljevida:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ime višinskega zemljevida:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Velikost:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Vpiši naključno seme
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Spremeni višino snežne meje
@@ -2402,6 +2413,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Preveri 
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Ime datoteke: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Verzija: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
@@ -2411,6 +2423,11 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ni ujemajo
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemogočeno
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Vnesi NewGRF parametre
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zapri
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Preglej - {STRING}
@@ -2492,7 +2509,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<neveljaven tovor>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <neveljaven tovor>
-STR_NEWGRF_INVALID_ENGINE                                       :<neveljaven pogon>
+STR_NEWGRF_INVALID_ENGINE                                       :<neveljaven model vozila>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neveljavna industrija>
 
 # Sign list window
@@ -2852,10 +2869,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozil{P o i a ""}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaki - klikni na vlak za informacije, povleci vozilo za dodajanje/odstranjevanje iz vlaka
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - klikni na vozilo za informacije
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ladje - klikni na ladjo za informacije
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Letalo - klikni na letalo za informacije
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vlaki - povleci vozilo z levim klikom za dodajanje/odstranjevanje iz vlaka, desno klikni na vlak za informacije. Držanje Ctrl naredi obe funkciji hkrati
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vozila - desno klikni na vozilo za informacije
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ladje - desno klikni na ladjo za informacije
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Letalo - desno klikni na letalo za informacije
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Povleci železniško vozilo sem, če ga želiš prodati
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Povleci cestno vozilo sem, če ga želiš prodati
@@ -3357,6 +3374,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne sprem
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}UI parametri
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zapri
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetiraj
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3470,6 +3488,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Podjetje
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ni mogoče zgraditi mest
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ne moreš preimenovati mesta...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tukaj ni mogoče zgraditi mesta...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Nemogoče širjenje mesta...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... preblizu roba zemljevida
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... preblizu drugemu mestu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... preveliko število mest
@@ -3526,6 +3545,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Ni mogo�
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nemogoča odstranitev potniške tramvaj postaje...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nemogoča odstranitev tovorne tramvaj postaje...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Najprej moraš odstraniti cestno postajo
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ni postaje
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Najprej moraš porušiti postajo
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Najprej moraš porušiti avtobusno postajo
@@ -3591,6 +3611,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nemogoč
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemogoča odstranitev tirov...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nemogoča odstranitev signalov...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Tukaj ni mogoče spremeniti vrste signalov...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... ni železniške proge
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... ni signalov
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tukaj ni mogoče spremeniti tipa železnice...
 
@@ -3601,6 +3623,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Nemogoč
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tukaj ni mogoče zgraditi tramvaja...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nemogoča odstranitev ceste...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tukaj ni mogoče odstraniti tramvaja...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ni ceste
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ni tramvaj proge
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tukaj ni mogoče zgraditi kanalov...
@@ -3635,6 +3659,8 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Predor s
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nemogoč izkop zaključka predora na drugi strani
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... preveč objektov
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ni mogoče zgraditi objekta...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ovira na poti
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sedež podjetja na poti
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nemogoč nakup tega zemljišča...

@@ -3726,6 +3726,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel bi
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ne moguće iskopoati zemlju na drugoj strani tunela
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... previše objekata
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nemoguće izgraditi objekt...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Smeta objekt
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... smeta sjedište tvrtke
