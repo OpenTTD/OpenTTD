@@ -1,0 +1,18 @@
+//
+// $Id$
+//
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Road stop graphics"
+   -1 * 0	 05 11 08
+   -1 sprites/roadstops.pcx 18 8 09 23 13 5 -11
+   -1 sprites/roadstops.pcx 50 8 09 15 13 5 -2
+   -1 sprites/roadstops.pcx 82 8 09 19 21 -20 -7
+   -1 sprites/roadstops.pcx 114 8 09 17 22 -25 -4
+   -1 sprites/roadstops.pcx 146 8 09 25 32 -5 -9
+   -1 sprites/roadstops.pcx 194 8 09 26 28 -3 -12
+   -1 sprites/roadstops.pcx 242 8 09 25 29 -24 -12
+   -1 sprites/roadstops.pcx 290 8 09 25 32 -25 -9

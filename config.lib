@@ -2904,6 +2904,7 @@ make_sed() {
 		s@!!SOURCE_LIST!!@$SOURCE_LIST@g;
 		s@!!SRC_OBJS_DIR!!@$SRC_OBJS_DIR@g;
 		s@!!LANG_OBJS_DIR!!@$LANG_OBJS_DIR@g;
+		s@!!GRF_OBJS_DIR!!@$GRF_OBJS_DIR@g;
 		s@!!SRC_DIR!!@$SRC_DIR@g;
 		s@!!SCRIPT_SRC_DIR!!@$SCRIPT_SRC_DIR@g;
 		s@!!OSXAPP!!@$OSXAPP@g;
@@ -3027,6 +3028,20 @@ generate_lang() {
 	< $ROOT_DIR/Makefile.lang.in sed "$SRC_REPLACE" >> $LANG_OBJS_DIR/Makefile
 	echo "DIRS += $LANG_OBJS_DIR" >> Makefile.am
 	echo "LANG_DIRS += $LANG_OBJS_DIR" >> Makefile.am
+}
+
+generate_grf() {
+	STAGE="[GRF]"
+
+	make_sed
+
+	# Create the language file
+	mkdir -p $GRF_OBJS_DIR
+
+	log 1 "Generating grf/Makefile..."
+	echo "# Auto-generated file from 'Makefile.grf.in' -- DO NOT EDIT" > $GRF_OBJS_DIR/Makefile
+	< $ROOT_DIR/Makefile.grf.in sed "$SRC_REPLACE" >> $GRF_OBJS_DIR/Makefile
+	echo "DIRS += $GRF_OBJS_DIR" >> Makefile.am
 }
 
 generate_src_normal() {

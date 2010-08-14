@@ -1,0 +1,135 @@
+//
+// $Id$
+//
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Fixing (alignment) bugs in the orignal graphics. By Addi."
+   -1 * 6	 07 83 01 \7= 03 69
+// Different grahpics for same wood truck
+   -1 * 14	 0A 04 01 87 0C 01 89 0C 01 07 0E 01 09 0E
+   -1 sprites/fix_graphics.pcx 82 8 09 16 22 -6 -7
+   -1 sprites/fix_graphics.pcx 114 8 09 16 22 -14 -7
+   -1 sprites/fix_graphics.pcx 146 8 09 16 22 -6 -7
+   -1 sprites/fix_graphics.pcx 178 8 09 16 22 -14 -7
+// Different grahpics for lots of trucks
+   -1 * 5	 0A 01 28 C4 0D
+   -1 sprites/fix_graphics.pcx 226 8 01 18 8 -3 -10
+   -1 sprites/fix_graphics.pcx 242 8 09 16 20 -14 -7
+   -1 sprites/fix_graphics.pcx 274 8 01 12 28 -14 -6
+   -1 sprites/fix_graphics.pcx 322 8 09 16 20 -6 -7
+   -1 sprites/fix_graphics.pcx 354 8 01 18 8 -3 -10
+   -1 sprites/fix_graphics.pcx 370 8 09 16 20 -14 -7
+   -1 sprites/fix_graphics.pcx 402 8 01 12 28 -14 -6
+   -1 sprites/fix_graphics.pcx 450 8 09 16 20 -6 -7
+   -1 sprites/fix_graphics.pcx 482 8 01 18 8 -3 -10
+   -1 sprites/fix_graphics.pcx 498 8 09 16 20 -14 -7
+   -1 sprites/fix_graphics.pcx 530 8 01 12 28 -14 -6
+   -1 sprites/fix_graphics.pcx 578 8 09 16 20 -6 -7
+   -1 sprites/fix_graphics.pcx 610 8 01 18 8 -3 -10
+   -1 sprites/fix_graphics.pcx 626 8 09 16 20 -14 -7
+   -1 sprites/fix_graphics.pcx 658 8 01 12 28 -14 -6
+   -1 sprites/fix_graphics.pcx 706 8 09 16 20 -6 -7
+   -1 sprites/fix_graphics.pcx 738 8 01 18 8 -3 -10
+   -1 sprites/fix_graphics.pcx 754 8 09 16 22 -14 -7
+   -1 sprites/fix_graphics.pcx 2 40 01 12 28 -14 -6
+   -1 sprites/fix_graphics.pcx 50 40 09 16 22 -6 -7
+   -1 sprites/fix_graphics.pcx 82 40 01 18 8 -3 -10
+   -1 sprites/fix_graphics.pcx 98 40 09 16 22 -14 -7
+   -1 sprites/fix_graphics.pcx 130 40 01 12 28 -14 -6
+   -1 sprites/fix_graphics.pcx 178 40 09 16 22 -6 -7
+   -1 sprites/fix_graphics.pcx 210 40 01 18 8 -3 -10
+   -1 sprites/fix_graphics.pcx 226 40 09 16 22 -14 -7
+   -1 sprites/fix_graphics.pcx 258 40 01 12 28 -14 -6
+   -1 sprites/fix_graphics.pcx 306 40 09 16 22 -6 -7
+   -1 sprites/fix_graphics.pcx 338 40 01 18 8 -3 -10
+   -1 sprites/fix_graphics.pcx 354 40 09 16 22 -14 -7
+   -1 sprites/fix_graphics.pcx 386 40 01 12 28 -14 -6
+   -1 sprites/fix_graphics.pcx 434 40 09 16 22 -6 -7
+   -1 sprites/fix_graphics.pcx 466 40 01 18 8 -3 -10
+   -1 sprites/fix_graphics.pcx 482 40 09 16 20 -14 -7
+   -1 sprites/fix_graphics.pcx 514 40 01 12 28 -14 -6
+   -1 sprites/fix_graphics.pcx 562 40 09 16 20 -6 -7
+   -1 sprites/fix_graphics.pcx 594 40 01 18 8 -3 -10
+   -1 sprites/fix_graphics.pcx 610 40 09 16 20 -14 -7
+   -1 sprites/fix_graphics.pcx 642 40 01 12 28 -14 -6
+   -1 sprites/fix_graphics.pcx 690 40 09 16 20 -6 -7
+// Different grahpics for same truck
+   -1 * 14	 0A 04 01 9D 0C 01 9F 0C 01 A1 0C 01 A3 0C
+   -1 sprites/fix_graphics.pcx 738 40 09 16 22 -14 -7
+   -1 sprites/fix_graphics.pcx 770 40 09 16 22 -6 -7
+   -1 sprites/fix_graphics.pcx 2 72 09 16 22 -14 -7
+   -1 sprites/fix_graphics.pcx 34 72 09 16 22 -6 -7
+// Different grahpics for same paper truck
+   -1 * 14	 0A 04 01 5D 0D 01 5F 0D 01 61 0D 01 63 0D
+   -1 sprites/fix_graphics.pcx 82 72 09 16 22 -14 -7
+   -1 sprites/fix_graphics.pcx 114 72 09 17 22 -5 -7
+   -1 sprites/fix_graphics.pcx 146 72 09 17 22 -14 -8
+   -1 sprites/fix_graphics.pcx 178 72 09 16 22 -6 -7
+// Different grahpics for same paper truck (truck #2)
+   -1 * 14	 0A 04 01 1D 0E 01 1F 0E 01 21 0E 01 23 0E
+   -1 sprites/fix_graphics.pcx 226 72 09 16 22 -14 -7
+   -1 sprites/fix_graphics.pcx 258 72 09 16 22 -6 -7
+   -1 sprites/fix_graphics.pcx 290 72 09 16 22 -14 -7
+   -1 sprites/fix_graphics.pcx 322 72 09 16 22 -6 -7
+// Misaligned monorail bridge heads
+   -1 * 8	 0A 02 01 EA 10 02 EC 10
+   -1 sprites/fix_graphics.pcx 370 72 09 35 48 -23 -7
+   -1 sprites/fix_graphics.pcx 434 72 09 35 48 -23 -7
+   -1 sprites/fix_graphics.pcx 498 72 09 21 49 -24 3
+// Improperly cut cinema
+   -1 * 5	 0A 01 02 34 11
+   -1 sprites/fix_graphics.pcx 578 72 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 658 72 09 47 50 -28 -20
+// Misaligned undergrounds for temperate monorail
+   -1 * 6	 07 83 01 \7! 00 06
+   -1 * 5	 0A 01 05 4C 04
+   -1 sprites/fix_graphics.pcx 2 136 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 82 136 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 162 136 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 242 136 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 322 136 09 31 64 -31 0
+// Misaligned undergrounds for arctic monorail
+   -1 * 6	 07 83 01 \7! 01 06
+   -1 * 5	 0A 01 05 4C 04
+   -1 sprites/fix_graphics.pcx 434 136 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 514 136 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 594 136 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 674 136 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 2 184 09 31 64 -31 0
+// Misaligned undergrounds for tropical/desert monorail/maglev
+   -1 * 6	 07 83 01 \7! 02 10
+   -1 * 11	 0A 03 05 4C 04 05 66 04 05 B8 04
+   -1 sprites/fix_graphics.pcx 114 184 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 194 184 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 274 184 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 354 184 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 434 184 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 514 184 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 594 184 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 674 184 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 2 232 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 82 232 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 162 232 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 242 232 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 322 232 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 402 232 09 31 64 -31 0
+   -1 sprites/fix_graphics.pcx 482 232 09 31 64 -31 0
+// Misaligned monorail snowed X crossing
+   -1 * 6	 07 83 01 \7! 01 02
+   -1 * 5	 0A 01 01 65 04
+   -1 sprites/fix_graphics.pcx 594 232 09 31 64 -31 0
+// Floating tropical house
+   -1 * 6	 07 83 01 \7! 02 02
+   -1 * 5	 0A 01 01 FF 11
+   -1 sprites/fix_graphics.pcx 706 232 09 47 64 -31 -16
+// Clipped vehicle in the original German DOS graphics
+   -1 * 6	 07 83 01 \7! 03 02
+   -1 * 5	 0A 01 01 5D 0C
+   -1 sprites/fix_graphics.pcx 776 232 09 16 20 -14 -7
+// Graphics metadata pixel higher than actual graphics
+   -1 * 6	 12 01 00 01 AC E2
+   -1 sprites/fix_graphics.pcx 776 250 01 10 9 0 0
+

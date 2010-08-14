@@ -1,0 +1,75 @@
+//
+// $Id$
+//
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Canal graphics by George"
+   -1 * 0	 05 08 41
+   -1 sprites/canals.pcx 98 8 09 23 64 -31 0
+   -1 sprites/canals.pcx 178 8 09 39 64 -31 -8
+   -1 sprites/canals.pcx 258 8 09 23 64 -31 0
+   -1 sprites/canals.pcx 338 8 09 39 64 -31 -8
+   -1 sprites/canals.pcx 418 8 09 59 64 -31 -36
+   -1 sprites/canals.pcx 498 8 09 65 64 -31 -34
+   -1 sprites/canals.pcx 578 8 09 59 64 -31 -36
+   -1 sprites/canals.pcx 658 8 09 59 64 -31 -28
+   -1 sprites/canals.pcx 2 88 09 62 64 -1 -51
+   -1 sprites/canals.pcx 82 88 09 62 64 -61 -43
+   -1 sprites/canals.pcx 162 88 09 62 64 -61 -51
+   -1 sprites/canals.pcx 242 88 09 62 64 -1 -43
+   -1 sprites/canals.pcx 322 88 09 59 64 -31 -28
+   -1 sprites/canals.pcx 402 88 09 65 66 -33 -34
+   -1 sprites/canals.pcx 482 88 09 59 64 -31 -28
+   -1 sprites/canals.pcx 562 88 09 59 64 -31 -28
+   -1 sprites/canals.pcx 642 88 09 62 64 -1 -43
+   -1 sprites/canals.pcx 722 88 09 60 64 -61 -43
+   -1 sprites/canals.pcx 2 168 09 62 66 -61 -43
+   -1 sprites/canals.pcx 82 168 09 60 64 -1 -43
+   -1 sprites/canals.pcx 162 168 09 59 64 -31 -28
+   -1 sprites/canals.pcx 242 168 09 59 64 -31 -28
+   -1 sprites/canals.pcx 322 168 09 59 64 -31 -28
+   -1 sprites/canals.pcx 402 168 09 59 64 -31 -28
+   -1 sprites/canals.pcx 482 168 09 60 64 -1 -43
+   -1 sprites/canals.pcx 562 168 09 62 68 -61 -43
+   -1 sprites/canals.pcx 642 168 09 60 64 -61 -43
+   -1 sprites/canals.pcx 722 168 09 62 64 -1 -43
+   -1 sprites/canals.pcx 2 248 09 59 64 -31 -36
+   -1 sprites/canals.pcx 82 248 09 65 64 -31 -34
+   -1 sprites/canals.pcx 162 248 09 59 64 -31 -36
+   -1 sprites/canals.pcx 242 248 09 59 64 -31 -28
+   -1 sprites/canals.pcx 322 248 09 62 64 -1 -51
+   -1 sprites/canals.pcx 402 248 09 62 64 -61 -43
+   -1 sprites/canals.pcx 482 248 09 62 64 -61 -51
+   -1 sprites/canals.pcx 562 248 09 62 64 -1 -43
+   -1 sprites/canals.pcx 642 248 09 59 64 -31 -28
+   -1 sprites/canals.pcx 722 248 09 65 66 -33 -34
+   -1 sprites/canals.pcx 2 328 09 59 64 -31 -28
+   -1 sprites/canals.pcx 82 328 09 59 64 -31 -28
+   -1 sprites/canals.pcx 162 328 09 62 64 -1 -43
+   -1 sprites/canals.pcx 242 328 09 60 64 -61 -43
+   -1 sprites/canals.pcx 322 328 09 62 66 -61 -43
+   -1 sprites/canals.pcx 402 328 09 60 64 -1 -43
+   -1 sprites/canals.pcx 482 328 09 59 64 -31 -28
+   -1 sprites/canals.pcx 562 328 09 59 64 -31 -28
+   -1 sprites/canals.pcx 642 328 09 59 64 -31 -28
+   -1 sprites/canals.pcx 722 328 09 59 64 -31 -28
+   -1 sprites/canals.pcx 2 408 09 60 64 -1 -43
+   -1 sprites/canals.pcx 82 408 09 62 68 -61 -43
+   -1 sprites/canals.pcx 162 408 09 60 64 -61 -43
+   -1 sprites/canals.pcx 242 408 09 62 64 -1 -43
+   -1 sprites/canals.pcx 322 408 09 37 70 -31 -6
+   -1 sprites/canals.pcx 402 408 09 37 70 -31 0
+   -1 sprites/canals.pcx 482 408 09 37 70 -37 0
+   -1 sprites/canals.pcx 562 408 09 37 70 -37 -6
+   -1 sprites/canals.pcx 642 408 09 31 64 -31 0
+   -1 sprites/canals.pcx 722 408 09 31 64 -31 0
+   -1 sprites/canals.pcx 2 488 09 31 64 -31 0
+   -1 sprites/canals.pcx 82 488 09 37 64 -31 -6
+   -1 sprites/canals.pcx 162 488 09 31 64 -31 0
+   -1 sprites/canals.pcx 242 488 09 31 64 -31 0
+   -1 sprites/canals.pcx 322 488 09 31 64 -31 0
+   -1 sprites/canals.pcx 402 488 09 37 64 -31 -6
+   -1 sprites/canals.pcx 482 488 09 20 20 0 0

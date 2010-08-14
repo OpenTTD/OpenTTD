@@ -1,0 +1,175 @@
+//
+// $Id$
+//
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+// -- NFO Renum 'settings' --
+// Do not make nforenum warn about the fact that we use more sprites.
+// We are the 'authority' on how many sprites may be used.
+// @@WARNING DISABLE 60
+// -- End of NFO Renum 'settings' --
+//
+   -1 * 0	 0C "OpenTTD GUI graphics"
+   -1 * 0	 05 15 9A
+   -1 sprites/openttdgui.pcx 18 8 09 31 64 -31 7
+   -1 sprites/openttdgui.pcx 98 8 09 31 64 -31 7
+   -1 sprites/openttdgui.pcx 178 8 09 31 64 -31 7
+   -1 sprites/openttdgui.pcx 258 8 09 31 64 -31 7
+   -1 sprites/openttdgui.pcx 338 8 09 31 64 -31 -1
+   -1 sprites/openttdgui.pcx 418 8 09 39 64 -31 -1
+   -1 sprites/openttdgui.pcx 498 8 09 31 64 -31 -1
+   -1 sprites/openttdgui.pcx 578 8 09 23 64 -31 7
+   -1 sprites/openttdgui.pcx 658 8 09 31 64 -31 7
+   -1 sprites/openttdgui.pcx 2 72 09 23 64 -31 7
+   -1 sprites/openttdgui.pcx 82 72 09 31 64 -31 7
+   -1 sprites/openttdgui.pcx 162 72 09 39 64 -31 -1
+   -1 sprites/openttdgui.pcx 242 72 01 26 23 0 0
+   -1 sprites/openttdgui.pcx 274 72 09 26 24 0 0
+   -1 sprites/openttdgui.pcx 306 72 01 8 4 28 16
+   -1 sprites/openttdgui.pcx 322 72 01 9 4 0 1
+   -1 sprites/openttdgui.pcx 338 72 09 23 32 0 1
+   -1 sprites/openttdgui.pcx 386 72 01 8 4 -31 15
+   -1 sprites/openttdgui.pcx 402 72 01 9 4 -3 0
+   -1 sprites/openttdgui.pcx 418 72 09 23 32 -31 0
+   -1 sprites/openttdgui.pcx 466 72 01 8 4 28 16
+   -1 sprites/openttdgui.pcx 482 72 01 9 4 0 1
+   -1 sprites/openttdgui.pcx 498 72 09 23 32 0 1
+   -1 sprites/openttdgui.pcx 546 72 01 8 4 -31 15
+   -1 sprites/openttdgui.pcx 562 72 01 9 4 -3 0
+   -1 sprites/openttdgui.pcx 578 72 09 23 32 -31 0
+   -1 sprites/openttdgui.pcx 626 72 01 8 4 28 16
+   -1 sprites/openttdgui.pcx 642 72 01 9 4 0 1
+   -1 sprites/openttdgui.pcx 658 72 09 23 32 0 1
+   -1 sprites/openttdgui.pcx 706 72 01 8 4 -31 15
+   -1 sprites/openttdgui.pcx 722 72 01 9 4 -3 0
+   -1 sprites/openttdgui.pcx 738 72 09 23 32 -31 0
+   -1 sprites/openttdgui.pcx 786 72 01 8 4 28 16
+   -1 sprites/openttdgui.pcx 2 136 01 9 4 0 1
+   -1 sprites/openttdgui.pcx 18 136 09 23 32 0 1
+   -1 sprites/openttdgui.pcx 66 136 01 8 4 -31 15
+   -1 sprites/openttdgui.pcx 82 136 01 9 4 -3 0
+   -1 sprites/openttdgui.pcx 98 136 09 23 32 -31 0
+   -1 sprites/openttdgui.pcx 146 136 09 10 10 0 0
+   -1 sprites/openttdgui.pcx 162 136 01 8 8 0 0
+   -1 sprites/openttdgui.pcx 178 136 09 9 7 0 0
+   -1 sprites/openttdgui.pcx 194 136 01 7 9 0 0
+   -1 sprites/openttdgui.pcx 210 136 01 7 9 0 0
+   -1 sprites/openttdgui.pcx 226 136 01 10 10 0 0
+   -1 sprites/openttdgui.pcx 242 136 09 7 7 0 0
+   -1 sprites/openttdgui.pcx 258 136 09 4 7 1 2
+   -1 sprites/openttdgui.pcx 274 136 09 4 7 1 2
+   -1 sprites/openttdgui.pcx 290 136 09 7 4 1 1
+   -1 sprites/openttdgui.pcx 306 136 09 7 4 2 1
+   -1 sprites/openttdgui.pcx 322 136 01 8 8 1 1
+   -1 sprites/openttdgui.pcx 338 136 01 9 9 0 0
+   -1 sprites/openttdgui.pcx 354 136 01 8 7 0 0
+   -1 sprites/openttdgui.pcx 370 136 01 8 8 0 0
+   -1 sprites/openttdgui.pcx 386 136 09 13 20 0 4
+   -1 sprites/openttdgui.pcx 418 136 03 36 56 0 0
+   -1 sprites/openttdgui.pcx 482 136 01 20 20 0 0
+   -1 sprites/openttdgui.pcx 514 136 01 32 32 0 0
+   -1 sprites/openttdgui.pcx 562 136 09 16 20 0 3
+   -1 sprites/openttdgui.pcx 594 136 03 43 56 0 0
+   -1 sprites/openttdgui.pcx 658 136 01 19 20 0 1
+   -1 sprites/openttdgui.pcx 690 136 01 32 32 0 0
+   -1 sprites/openttdgui.pcx 738 136 01 20 20 0 0
+   -1 sprites/openttdgui.pcx 2 200 01 31 31 1 1
+   -1 sprites/openttdgui.pcx 50 200 09 15 20 0 3
+   -1 sprites/openttdgui.pcx 82 200 03 36 56 0 0
+   -1 sprites/openttdgui.pcx 146 200 01 20 20 0 0
+   -1 sprites/openttdgui.pcx 178 200 01 32 32 0 0
+   -1 sprites/openttdgui.pcx 226 200 01 20 20 0 0
+   -1 sprites/openttdgui.pcx 258 200 01 32 32 0 0
+   -1 sprites/openttdgui.pcx 306 200 09 11 19 0 6
+   -1 sprites/openttdgui.pcx 338 200 03 36 56 0 0
+   -1 sprites/openttdgui.pcx 402 200 01 20 20 0 0
+   -1 sprites/openttdgui.pcx 434 200 01 32 32 0 0
+   -1 sprites/openttdgui.pcx 482 200 01 20 20 0 0
+   -1 sprites/openttdgui.pcx 514 200 01 32 32 0 0
+   -1 sprites/openttdgui.pcx 562 200 09 20 20 0 0
+   -1 sprites/openttdgui.pcx 594 200 09 20 20 0 0
+   -1 sprites/openttdgui.pcx 626 200 03 32 52 0 0
+   -1 sprites/openttdgui.pcx 690 200 09 33 29 -27 -16
+   -1 sprites/openttdgui.pcx 738 200 09 39 35 -29 -29
+   -1 sprites/openttdgui.pcx 2 264 09 34 29 1 -17
+   -1 sprites/openttdgui.pcx 50 264 09 39 34 -3 -28
+   -1 sprites/openttdgui.pcx 98 264 09 13 20 0 4
+   -1 sprites/openttdgui.pcx 130 264 03 36 56 0 0
+   -1 sprites/openttdgui.pcx 194 264 09 13 20 0 4
+   -1 sprites/openttdgui.pcx 226 264 03 36 56 0 0
+   -1 sprites/openttdgui.pcx 290 264 01 18 39 -9 -9
+   -1 sprites/openttdgui.pcx 338 264 01 44 72 -16 -35
+   -1 sprites/openttdgui.pcx 418 264 01 20 20 0 0
+   -1 sprites/openttdgui.pcx 450 264 01 44 72 -16 -35
+   -1 sprites/openttdgui.pcx 530 264 09 18 18 1 1
+   -1 sprites/openttdgui.pcx 562 264 01 20 20 0 0
+   -1 sprites/openttdgui.pcx 594 264 01 32 32 0 0
+   -1 sprites/openttdgui.pcx 642 264 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 674 264 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 706 264 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 738 264 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 770 264 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 2 328 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 34 328 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 66 328 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 98 328 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 130 328 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 162 328 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 194 328 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 226 328 01 18 18 0 0
+   -1 sprites/openttdgui.pcx 258 328 09 16 16 0 0
+   -1 sprites/openttdgui.pcx 290 328 01 16 16 0 0
+   -1 sprites/openttdgui.pcx 322 328 01 16 16 0 0
+   -1 sprites/openttdgui.pcx 354 328 01 16 16 0 0
+   -1 sprites/openttdgui.pcx 386 328 09 31 35 0 0
+   -1 sprites/openttdgui.pcx 434 328 01 30 33 0 0
+   -1 sprites/openttdgui.pcx 482 328 01 33 36 0 0
+   -1 sprites/openttdgui.pcx 530 328 01 33 37 0 0
+   -1 sprites/openttdgui.pcx 578 328 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 610 328 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 642 328 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 674 328 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 706 328 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 738 328 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 770 328 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 2 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 34 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 66 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 98 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 130 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 162 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 194 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 226 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 258 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 290 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 322 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 354 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 386 376 09 18 18 0 0
+   -1 sprites/openttdgui.pcx 417 376 01 20 20 0 0
+   -1 sprites/openttdgui.pcx 447 376 01 22 19 0 0
+   -1 sprites/openttdgui.pcx 482 376 01 20 20 0 0
+   -1 sprites/openttdgui.pcx 514 376 01 44 54 -16 -35
+   -1 sprites/openttdgui.pcx 578 376 01 7 7 3 4
+   -1 sprites/openttdgui.pcx 594 376 01 7 7 3 4
+   -1 sprites/openttdgui.pcx 610 376 01 9 10 2 3
+   -1 sprites/openttdgui.pcx 626 376 01 9 10 2 3
+   -1 sprites/openttdgui.pcx 642 376 01 7 11 2 1
+   -1 sprites/openttdgui.pcx 658 376 01 9 9 3 3
+   -1 sprites/openttdgui.pcx 672 376 09 20 20 0 0
+   -1 sprites/openttdgui.pcx 700 376 09 20 20 0 0
+   -1 sprites/openttdgui.pcx 726 376 09 32 32 0 0
+   -1 sprites/openttdgui.pcx 764 376 09 10 10 0 0
+   -1 sprites/openttdgui.pcx 780 376 09 10 10 0 0
+   -1 sprites/openttdgui.pcx 4 430 09 7 7 0 0
+   -1 sprites/openttdgui.pcx 20 430 09 13 14 4 4
+   -1 sprites/openttdgui.pcx 38 430 09 8 7 0 0
+   -1 sprites/openttdgui.pcx 52 430 09 8 7 0 0
+   -1 sprites/openttdgui.pcx 65 430 09 8 7 0 0
+
+// -- NFO Renum 'settings' --
+// Undo disabling the warning
+// @@WARNING ENABLE 60
+// -- End of NFO Renum 'settings' --

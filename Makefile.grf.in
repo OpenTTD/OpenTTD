@@ -1,0 +1,72 @@
+# $Id$
+
+# This file is part of OpenTTD.
+# OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+# OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+#
+# Building requires GRFCodec and NFORenum. Older versions of GRFCodec are
+#  known to miscompile the graphics.
+#
+# Recent nightlies (including sources) of both can be found at:
+#  http://www.openttd.org/download-grfcodec
+#  http://www.openttd.org/download-nforenum
+#
+# The mercurial repository of both can be found at:
+#  http://hg.openttdcoop.org/grfcodec
+#  http://hg.openttdcoop.org/nforenum
+#
+
+
+ROOT_DIR = !!ROOT_DIR!!
+GRF_DIR  = $(ROOT_DIR)/media/extra_grf
+BIN_DIR  = !!BIN_DIR!!/data
+OBJS_DIR = !!GRF_OBJS_DIR!!
+
+# Check if we want to show what we are doing
+ifdef VERBOSE
+	Q =
+	E = @true
+else
+	Q = @
+	E = @echo
+endif
+
+# Some configurational settings for your environment.
+GRFCODEC := grfcodec
+NFORENUM := $(shell [ `which nforenum 2>/dev/null` ] && echo "nforenum" || echo "renum")
+
+# Some "should not be changed" settings.
+NFO_FILES    := $(GRF_DIR)/*.nfo
+PCX_FILES    := $(GRF_DIR)/*.pcx
+
+# Build the GRF.
+all: $(BIN_DIR)/openttd.grf
+
+# Make sure the sprites directory exists.
+$(OBJS_DIR)/sprites:
+	$(Q)-mkdir "$@"
+
+# Generic
+$(BIN_DIR)/openttd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
+	@# Only try; if nforenum isn't available, just retouch the file as they likely didn't need it anyway.
+	$(Q) ($(NFORENUM) -? > /dev/null 2>&1 && $(MAKE) $(OBJS_DIR)/openttd.grf && cp $(OBJS_DIR)/openttd.grf $(BIN_DIR)/openttd.grf) || ([ -e $(BIN_DIR)/openttd.grf ] && touch $(BIN_DIR)/openttd.grf && echo "no NFORenum and GRFCodec found, skipping rebuild of openttd.grf...") || (echo "no NFORenum and GRFCodec found, but no openttd.grf either. Install NFORenum and GRFCodec." && exit 1)
+
+$(OBJS_DIR)/openttd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
+	$(Q)-cp $(PCX_FILES) $(OBJS_DIR)/sprites 2> /dev/null
+	$(Q) gcc -I$(GRF_DIR) -C -E - < "$(GRF_DIR)/openttd.nfo" | sed -e '/^#/d' -e '/^$$/d' > $(OBJS_DIR)/sprites/openttd.nfo
+	$(Q) $(NFORENUM) $(OBJS_DIR)/sprites/openttd.nfo
+	$(Q) $(GRFCODEC) -e -m1 $(OBJS_DIR)/openttd.grf
+	$(Q) cp $(OBJS_DIR)/openttd.grf $(BIN_DIR)/openttd.grf
+	$(Q) for grf in $(BIN_DIR)/orig*.obg; do sed 's/^OPENTTD.GRF  = [0-9a-f]*$$/OPENTTD.GRF  = '`md5sum $(BIN_DIR)/openttd.grf | sed 's@ .*@@'`'/' -i $$grf; done
+
+# Clean up temporary files.
+clean:
+	$(Q)rm -f *.bak *.grf
+
+# Clean up temporary files and result of generation, i.e. the grfs.
+mrproper: clean
+	$(Q)rm -fr sprites
+	$(Q)rm -f $(BIN_DIR)/openttd.grf
+
+.PHONY: all mrproper depend clean

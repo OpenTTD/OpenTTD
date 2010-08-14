@@ -1,0 +1,65 @@
+//
+// $Id$
+//
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Autorail graphics"
+   -1 * 0	 05 13 37
+   -1 sprites/autorail.pcx 18 8 09 31 64 -31 7
+   -1 sprites/autorail.pcx 98 8 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 178 8 09 39 64 -31 -1
+   -1 sprites/autorail.pcx 258 8 09 47 64 -31 -9
+   -1 sprites/autorail.pcx 338 8 09 31 64 -31 -5
+   -1 sprites/autorail.pcx 418 8 09 23 64 -31 7
+   -1 sprites/autorail.pcx 498 8 09 18 64 -31 4
+   -1 sprites/autorail.pcx 578 8 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 658 8 09 31 64 -31 7
+   -1 sprites/autorail.pcx 2 72 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 82 72 09 23 64 -31 7
+   -1 sprites/autorail.pcx 162 72 09 18 64 -31 4
+   -1 sprites/autorail.pcx 242 72 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 322 72 09 39 64 -31 -1
+   -1 sprites/autorail.pcx 402 72 09 47 64 -31 -9
+   -1 sprites/autorail.pcx 482 72 09 31 64 -31 -5
+   -1 sprites/autorail.pcx 562 72 09 31 64 -31 7
+   -1 sprites/autorail.pcx 642 72 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 722 72 09 47 64 -31 -9
+   -1 sprites/autorail.pcx 2 136 09 26 64 -31 4
+   -1 sprites/autorail.pcx 82 136 09 23 64 -31 4
+   -1 sprites/autorail.pcx 162 136 09 31 64 -31 -3
+   -1 sprites/autorail.pcx 242 136 09 26 64 -31 4
+   -1 sprites/autorail.pcx 322 136 09 23 64 -31 4
+   -1 sprites/autorail.pcx 402 136 09 31 64 -31 -3
+   -1 sprites/autorail.pcx 482 136 09 31 64 -31 7
+   -1 sprites/autorail.pcx 562 136 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 642 136 09 15 64 -31 7
+   -1 sprites/autorail.pcx 722 136 09 31 64 -31 7
+   -1 sprites/autorail.pcx 2 184 09 39 64 -31 -1
+   -1 sprites/autorail.pcx 82 184 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 162 184 09 31 64 -31 7
+   -1 sprites/autorail.pcx 242 184 09 39 64 -31 -1
+   -1 sprites/autorail.pcx 322 184 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 402 184 09 31 64 -31 7
+   -1 sprites/autorail.pcx 482 184 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 562 184 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 642 184 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 722 184 09 23 64 -31 7
+   -1 sprites/autorail.pcx 2 248 09 15 64 -31 7
+   -1 sprites/autorail.pcx 82 248 09 39 64 -31 -1
+   -1 sprites/autorail.pcx 162 248 09 47 64 -31 -9
+   -1 sprites/autorail.pcx 242 248 09 31 64 -31 7
+   -1 sprites/autorail.pcx 322 248 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 402 248 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 482 248 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 562 248 09 23 64 -31 7
+   -1 sprites/autorail.pcx 642 248 09 15 64 -31 7
+   -1 sprites/autorail.pcx 722 248 09 39 64 -31 -1
+   -1 sprites/autorail.pcx 2 312 09 47 64 -31 -9
+   -1 sprites/autorail.pcx 82 312 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 162 312 09 31 64 -31 -1
+   -1 sprites/autorail.pcx 242 312 09 23 64 -31 7
+   -1 sprites/autorail.pcx 322 312 09 31 64 -31 7
+   -1 sprites/autorail.pcx 402 312 09 31 64 -31 7

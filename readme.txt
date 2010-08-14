@@ -432,6 +432,13 @@ zlib you cannot open most savegames or use the content downloading system.
 Without libSDL/liballegro on non-Windows and non-MacOS X machines you have
 no graphical user interface; you would be building a dedicated server.
 
+To recompile the extra graphics needed to play with the original Transport
+Tycoon Deluxe graphics you need GRFCodec and NFORenum as well. These can be
+found at respectively: http://dev.openttdcoop.org/projects/grfcodec and
+http://dev.openttdcoop.org/projects/nforenum
+The compilation of these extra does generally not happen, unless you remove
+the graphics file using "make distclean" or "make mrproper".
+
 7.2) Supported compilers:
 ---- -------------------
 The following compilers are known to compile OpenTTD:
