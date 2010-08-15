@@ -1161,6 +1161,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	bool completely_emptied = true;
 	bool anything_unloaded = false;
 	bool anything_loaded   = false;
+	bool full_load_amount  = false;
 	uint32 cargo_not_full  = 0;
 	uint32 cargo_full      = 0;
 
@@ -1239,8 +1240,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			continue;
 		}
 
-		/* Do not pick up goods when we have no-load set. */
-		if (u->current_order.GetLoadType() & OLFB_NO_LOAD) continue;
+		/* Do not pick up goods when we have no-load set or loading is stopped. */
+		if (u->current_order.GetLoadType() & OLFB_NO_LOAD || HasBit(u->vehicle_flags, VF_STOP_LOADING)) continue;
 
 		/* update stats */
 		int t;
@@ -1272,12 +1273,17 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			}
 
 			if (cap > count) cap = count;
-			if (_settings_game.order.gradual_loading) cap = min(cap, load_amount);
+			if (_settings_game.order.gradual_loading) {
+				cap = min(cap, load_amount);
+				cap_left = min(cap_left, load_amount);
+			}
 			if (_settings_game.order.improved_load) {
 				/* Don't load stuff that is already 'reserved' for other vehicles */
 				cap = min((uint)cargo_left[v->cargo_type], cap);
+				count = cargo_left[v->cargo_type];
 				cargo_left[v->cargo_type] -= cap;
 			}
+			if (count >= (uint)cap_left) full_load_amount = true;
 
 			if (v->cargo.Empty()) TriggerVehicle(v, VEHICLE_TRIGGER_NEW_CARGO);
 
@@ -1330,6 +1336,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 	if (!anything_unloaded) delete payment;
 
+	ClrBit(u->vehicle_flags, VF_STOP_LOADING);
 	if (anything_loaded || anything_unloaded) {
 		if (_settings_game.order.gradual_loading) {
 			/* The time it takes to load one 'slice' of cargo or passengers depends
@@ -1338,6 +1345,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			unloading_time = gradual_loading_wait_time[v->type];
 		}
+		/* We loaded less cargo than possible and it's not full load, stop loading. */
+		if (!anything_unloaded && !full_load_amount && !(v->current_order.GetLoadType() & OLFB_FULL_LOAD)) SetBit(u->vehicle_flags, VF_STOP_LOADING);
 	} else {
 		bool finished_loading = true;
 		if (v->current_order.GetLoadType() & OLFB_FULL_LOAD) {

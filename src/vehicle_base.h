@@ -40,6 +40,7 @@ enum VehicleFlags {
 	VF_TIMETABLE_STARTED,       ///< Whether the vehicle has started running on the timetable yet.
 	VF_AUTOFILL_TIMETABLE,      ///< Whether the vehicle should fill in the timetable automatically.
 	VF_AUTOFILL_PRES_WAIT_TIME, ///< Whether non-destructive auto-fill should preserve waiting times
+	VF_STOP_LOADING,            ///< Don't load anymore during the next load cycle.
 };
 
 /** Cached oftenly queried (NewGRF) values */
