@@ -442,6 +442,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toggle console
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zoomed in screenshot
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Whole map screenshot
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :About 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner

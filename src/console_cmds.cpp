@@ -1226,9 +1226,10 @@ DEF_CONSOLE_CMD(ConAlias)
 DEF_CONSOLE_CMD(ConScreenShot)
 {
 	if (argc == 0) {
-		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big | no_con] [file name]'");
-		IConsoleHelp("'big' makes a screenshot of the whole map, 'no_con' hides the console to create "
-				"the screenshot. Screenshots of whole map are always drawn without console");
+		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big | giant | no_con] [file name]'");
+		IConsoleHelp("'big' makes a zoomed-in screenshot of the visible area, 'giant' makes a screenshot of the "
+				"whole map, 'no_con' hides the console to create the screenshot. 'big' or 'giant' "
+				"screenshots are always drawn without console");
 		return true;
 	}
 
@@ -1240,6 +1241,10 @@ DEF_CONSOLE_CMD(ConScreenShot)
 	if (argc > 1) {
 		if (strcmp(argv[1], "big") == 0) {
 			/* screenshot big [filename] */
+			type = SC_ZOOMEDIN;
+			if (argc > 2) name = argv[2];
+		} else if (strcmp(argv[1], "giant") == 0) {
+			/* screenshot giant [filename] */
 			type = SC_WORLD;
 			if (argc > 2) name = argv[2];
 		} else if (strcmp(argv[1], "no_con") == 0) {

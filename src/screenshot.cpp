@@ -23,6 +23,8 @@
 #include "company_func.h"
 #include "strings_func.h"
 #include "gui.h"
+#include "window_gui.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
@@ -602,12 +604,34 @@ static const char *MakeScreenshotName(const char *ext)
 	return _full_screenshot_name;
 }
 
+/** Make a screenshot of the current screen. */
 static bool MakeSmallScreenshot()
 {
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
 	return sf->proc(MakeScreenshotName(sf->extension), CurrentScreenCallback, NULL, _screen.width, _screen.height, BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth(), _cur_palette);
 }
 
+/** Make a zoomed-in screenshot of the currently visible area. */
+static bool MakeZoomedInScreenshot()
+{
+	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+	ViewPort vp;
+
+	vp.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
+	vp.left = w->viewport->left;
+	vp.top = w->viewport->top;
+	vp.virtual_left = w->viewport->virtual_left;
+	vp.virtual_top = w->viewport->virtual_top;
+	vp.virtual_width = w->viewport->virtual_width;
+	vp.width = vp.virtual_width;
+	vp.virtual_height = w->viewport->virtual_height;
+	vp.height = vp.virtual_height;
+
+	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
+	return sf->proc(MakeScreenshotName(sf->extension), LargeWorldCallback, &vp, vp.width, vp.height, BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth(), _cur_palette);
+}
+
+/** Make a screenshot of the whole map. */
 static bool MakeWorldScreenshot()
 {
 	ViewPort vp;
@@ -652,6 +676,10 @@ bool MakeScreenshot(ScreenshotType t, const char *name)
 		case SC_VIEWPORT:
 		case SC_RAW:
 			ret = MakeSmallScreenshot();
+			break;
+
+		case SC_ZOOMEDIN:
+			ret = MakeZoomedInScreenshot();
 			break;
 
 		case SC_WORLD:

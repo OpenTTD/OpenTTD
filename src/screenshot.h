@@ -21,6 +21,7 @@ void SetScreenshotFormat(uint i);
 enum ScreenshotType {
 	SC_VIEWPORT, ///< Screenshot of viewport
 	SC_RAW,      ///< Raw screenshot from blitter buffer
+	SC_ZOOMEDIN, ///< Zoomed in screenshot of the visible area
 	SC_WORLD,    ///< World screenshot
 };
 

@@ -758,12 +758,17 @@ static void MenuClickNewspaper(int index)
 
 static void ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 8 : 7);
+	PopupMainToolbMenu(w, TBN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 9 : 8);
 }
 
 static void MenuClickSmallScreenshot()
 {
 	MakeScreenshot(SC_VIEWPORT, NULL);
+}
+
+static void MenuClickZoomedInScreenshot()
+{
+	MakeScreenshot(SC_ZOOMEDIN, NULL);
 }
 
 static void MenuClickWorldScreenshot()
@@ -774,13 +779,14 @@ static void MenuClickWorldScreenshot()
 static void MenuClickHelp(int index)
 {
 	switch (index) {
-		case 0: PlaceLandBlockInfo();       break;
-		case 2: IConsoleSwitch();           break;
-		case 3: ShowAIDebugWindow();        break;
-		case 4: MenuClickSmallScreenshot(); break;
-		case 5: MenuClickWorldScreenshot(); break;
-		case 6: ShowAboutWindow();          break;
-		case 7: ShowSpriteAlignerWindow();  break;
+		case 0: PlaceLandBlockInfo();          break;
+		case 2: IConsoleSwitch();              break;
+		case 3: ShowAIDebugWindow();           break;
+		case 4: MenuClickSmallScreenshot();    break;
+		case 5: MenuClickZoomedInScreenshot(); break;
+		case 6: MenuClickWorldScreenshot();    break;
+		case 7: ShowAboutWindow();             break;
+		case 8: ShowSpriteAlignerWindow();     break;
 	}
 }
 
@@ -1252,6 +1258,7 @@ enum MainToolbarHotkeys {
 	MTHK_BUILD_TREES,
 	MTHK_MUSIC,
 	MTHK_SMALL_SCREENSHOT,
+	MTHK_ZOOMEDIN_SCREENSHOT,
 	MTHK_GIANT_SCREENSHOT,
 	MTHK_CHEATS,
 	MTHK_TERRAFORM,
@@ -1327,6 +1334,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_BUILD_TREES: ShowBuildTreesToolbar(); break;
 			case MTHK_MUSIC: ShowMusicWindow(); break;
 			case MTHK_SMALL_SCREENSHOT: MenuClickSmallScreenshot(); break;
+			case MTHK_ZOOMEDIN_SCREENSHOT: MenuClickZoomedInScreenshot(); break;
 			case MTHK_GIANT_SCREENSHOT: MenuClickWorldScreenshot(); break;
 			case MTHK_CHEATS: if (!_networking) ShowCheatWindow(); break;
 			case MTHK_TERRAFORM: ShowTerraformToolbar(); break;
@@ -1411,6 +1419,7 @@ Hotkey<MainToolbarWindow> MainToolbarWindow::maintoolbar_hotkeys[] = {
 	Hotkey<MainToolbarWindow>(WKC_SHIFT | WKC_F11, "build_trees", MTHK_BUILD_TREES),
 	Hotkey<MainToolbarWindow>(WKC_SHIFT | WKC_F12, "music", MTHK_MUSIC),
 	Hotkey<MainToolbarWindow>(WKC_CTRL  | 'S', "small_screenshot", MTHK_SMALL_SCREENSHOT),
+	Hotkey<MainToolbarWindow>(WKC_CTRL  | 'P', "zoomedin_screenshot", MTHK_ZOOMEDIN_SCREENSHOT),
 	Hotkey<MainToolbarWindow>((uint16)0, "giant_screenshot", MTHK_GIANT_SCREENSHOT),
 	Hotkey<MainToolbarWindow>(WKC_CTRL | WKC_ALT | 'C', "cheats", MTHK_CHEATS),
 	Hotkey<MainToolbarWindow>('L', "terraform", MTHK_TERRAFORM),
@@ -1529,6 +1538,7 @@ enum MainToolbarEditorHotkeys {
 	MTEHK_MUSIC,
 	MTEHK_LANDINFO,
 	MTEHK_SMALL_SCREENSHOT,
+	MTEHK_ZOOMEDIN_SCREENSHOT,
 	MTEHK_GIANT_SCREENSHOT,
 	MTEHK_ZOOM_IN,
 	MTEHK_ZOOM_OUT,
@@ -1624,6 +1634,7 @@ public:
 			case MTEHK_MUSIC: ShowMusicWindow(); break;
 			case MTEHK_LANDINFO: PlaceLandBlockInfo(); break;
 			case MTEHK_SMALL_SCREENSHOT: MenuClickSmallScreenshot(); break;
+			case MTEHK_ZOOMEDIN_SCREENSHOT: MenuClickZoomedInScreenshot(); break;
 			case MTEHK_GIANT_SCREENSHOT: MenuClickWorldScreenshot(); break;
 			case MTEHK_ZOOM_IN: ToolbarZoomInClick(this); break;
 			case MTEHK_ZOOM_OUT: ToolbarZoomOutClick(this); break;
@@ -1700,6 +1711,7 @@ Hotkey<ScenarioEditorToolbarWindow> ScenarioEditorToolbarWindow::scenedit_mainto
 	Hotkey<ScenarioEditorToolbarWindow>(WKC_F11, "industry_list", MTEHK_MUSIC),
 	Hotkey<ScenarioEditorToolbarWindow>(WKC_F12, "train_list", MTEHK_LANDINFO),
 	Hotkey<ScenarioEditorToolbarWindow>(WKC_CTRL  | 'S', "small_screenshot", MTEHK_SMALL_SCREENSHOT),
+	Hotkey<ScenarioEditorToolbarWindow>(WKC_CTRL  | 'P', "zoomedin_screenshot", MTEHK_ZOOMEDIN_SCREENSHOT),
 	Hotkey<ScenarioEditorToolbarWindow>((uint16)0, "giant_screenshot", MTEHK_GIANT_SCREENSHOT),
 	Hotkey<ScenarioEditorToolbarWindow>(_maintoolbar_zoomin_keys, "zoomin", MTEHK_ZOOM_IN),
 	Hotkey<ScenarioEditorToolbarWindow>(_maintoolbar_zoomout_keys, "zoomout", MTEHK_ZOOM_OUT),
