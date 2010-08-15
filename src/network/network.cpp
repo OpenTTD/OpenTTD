@@ -937,6 +937,9 @@ void NetworkDisconnect(bool blocking)
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
 	NetworkClose();
+
+	/* Reinitialize the UDP stack, i.e. close all existing connections. */
+	NetworkUDPInitialize();
 }
 
 /**

@@ -877,6 +877,7 @@ bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory
 		case SL_OK: return true;
 
 		case SL_REINIT:
+#ifdef ENABLE_NETWORK
 			if (_network_dedicated) {
 				/*
 				 * We need to reinit a network map...
@@ -888,6 +889,11 @@ bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory
 				MakeNewGame(false, true);
 				return false;
 			}
+			if (_network_server) {
+				/* We can't load the intro game as server, so disconnect first. */
+				NetworkDisconnect();
+			}
+#endif /* ENABLE_NETWORK */
 
 			switch (ogm) {
 				default:
