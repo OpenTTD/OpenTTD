@@ -623,16 +623,6 @@ void ShowBuildIndustryWindow()
 
 static void UpdateIndustryProduction(Industry *i);
 
-static inline bool IsProductionMinimum(const Industry *i, int pt)
-{
-	return i->production_rate[pt] == 0;
-}
-
-static inline bool IsProductionMaximum(const Industry *i, int pt)
-{
-	return i->production_rate[pt] >= 255;
-}
-
 static inline bool IsProductionAlterable(const Industry *i)
 {
 	return ((_game_mode == GM_EDITOR || _cheats.setup_prod.value) &&
@@ -755,7 +745,7 @@ public:
 			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
 				DrawArrowButtons(left + WD_FRAMETEXT_LEFT, y, COLOUR_YELLOW, (this->clicked_line == j + 1) ? this->clicked_button : 0,
-						!IsProductionMinimum(i, j), !IsProductionMaximum(i, j));
+						i->production_rate[j] > 0, i->production_rate[j] < 255);
 			}
 			y += FONT_HEIGHT_NORMAL;
 		}
@@ -807,12 +797,12 @@ public:
 					if (IsInsideMM(x, left, left + 20) ) {
 						/* Clicked buttons, decrease or increase production */
 						if (x < left + 10) {
-							if (IsProductionMinimum(i, line)) return;
+							if (i->production_rate[line] <= 0) return;
 							i->production_rate[line] = max(i->production_rate[line] / 2, 0);
 						} else {
 							/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
 							int new_prod = i->production_rate[line] == 0 ? 1 : i->production_rate[line] * 2;
-							if (IsProductionMaximum(i, line)) return;
+							if (i->production_rate[line] >= 255) return;
 							i->production_rate[line] = minu(new_prod, 255);
 						}
 
