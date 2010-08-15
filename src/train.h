@@ -145,6 +145,8 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 
 	void ConsistChanged(bool same_length);
 
+	void RailtypeChanged();
+
 	int UpdateSpeed();
 
 	void UpdateAcceleration();
@@ -372,7 +374,7 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 
 protected: // These functions should not be called outside acceleration code.
 
-	void UpdateVisualEffect();
+	void UpdateVisualEffect(bool allow_power_change);
 
 	/**
 	 * Allows to know the power value that this vehicle will use.

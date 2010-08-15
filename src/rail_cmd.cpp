@@ -1380,7 +1380,6 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 {
 	if (v->type != VEH_TRAIN) return NULL;
 
-	/* Similar checks as in Train::PowerChanged() */
 	TrainList *affected_trains = static_cast<TrainList*>(data);
 	affected_trains->Include(Train::From(v)->First());
 
@@ -1583,8 +1582,7 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (flags & DC_EXEC) {
 		/* Railtype changed, update trains as when entering different track */
 		for (Train **v = affected_trains.Begin(); v != affected_trains.End(); v++) {
-			(*v)->PowerChanged();
-			(*v)->UpdateAcceleration();
+			(*v)->RailtypeChanged();
 		}
 	}
 
