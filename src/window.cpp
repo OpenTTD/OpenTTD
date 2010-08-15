@@ -446,7 +446,7 @@ static void DispatchMouseWheelEvent(Window *w, const NWidgetCore *nwid, int whee
 
 	/* Using wheel on caption/shade-box shades or unshades the window. */
 	if (nwid->type == WWT_CAPTION || nwid->type == WWT_SHADEBOX) {
-		w->SetShaded(!w->IsShaded());
+		w->SetShaded(wheel < 0);
 		return;
 	}
 
