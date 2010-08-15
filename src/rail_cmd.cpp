@@ -43,6 +43,9 @@
 #include "table/railtypes.h"
 #include "table/track_land.h"
 
+/** Helper type for lists/vectors of trains */
+typedef SmallVector<Train *, 16> TrainList;
+
 RailtypeInfo _railtypes[RAILTYPE_END];
 
 assert_compile(sizeof(_original_railtypes) <= sizeof(_railtypes));
@@ -1378,12 +1381,8 @@ static Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 	if (v->type != VEH_TRAIN) return NULL;
 
 	/* Similar checks as in Train::PowerChanged() */
-
-	Train *t = Train::From(v);
-	if (t->IsArticulatedPart()) return NULL;
-
-	const RailVehicleInfo *rvi = RailVehInfo(t->engine_type);
-	if (GetVehicleProperty(t, PROP_TRAIN_POWER, rvi->power) != 0) t->First()->PowerChanged();
+	TrainList *affected_trains = static_cast<TrainList*>(data);
+	affected_trains->Include(Train::From(v)->First());
 
 	return NULL;
 }
@@ -1413,6 +1412,8 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	/* make sure sx,sy are smaller than ex,ey */
 	if (ex < sx) Swap(ex, sx);
 	if (ey < sy) Swap(ey, sy);
+
+	TrainList affected_trains;
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost error = CommandCost(STR_ERROR_NO_SUITABLE_RAILROAD_TRACK); // by default, there is no track to convert.
@@ -1480,8 +1481,8 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 					SetRailType(tile, totype);
 					MarkTileDirtyByTile(tile);
-					/* update power of train engines on this tile */
-					FindVehicleOnPos(tile, NULL, &UpdateTrainPowerProc);
+					/* update power of train on this tile */
+					FindVehicleOnPos(tile, &affected_trains, &UpdateTrainPowerProc);
 				}
 			}
 
@@ -1543,8 +1544,8 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 						SetRailType(tile, totype);
 						SetRailType(endtile, totype);
 
-						FindVehicleOnPos(tile, NULL, &UpdateTrainPowerProc);
-						FindVehicleOnPos(endtile, NULL, &UpdateTrainPowerProc);
+						FindVehicleOnPos(tile, &affected_trains, &UpdateTrainPowerProc);
+						FindVehicleOnPos(endtile, &affected_trains, &UpdateTrainPowerProc);
 
 						YapfNotifyTrackLayoutChange(tile, track);
 						YapfNotifyTrackLayoutChange(endtile, track);
@@ -1576,6 +1577,14 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			for (uint i = 0; i < vehicles_affected.Length(); ++i) {
 				TryPathReserve(vehicles_affected[i], true);
 			}
+		}
+	}
+
+	if (flags & DC_EXEC) {
+		/* Railtype changed, update trains as when entering different track */
+		for (Train **v = affected_trains.Begin(); v != affected_trains.End(); v++) {
+			(*v)->PowerChanged();
+			(*v)->UpdateAcceleration();
 		}
 	}
 
