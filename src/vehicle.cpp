@@ -136,7 +136,7 @@ bool Vehicle::NeedsServicing() const
 		/* Is there anything to refit? */
 		if (union_mask != 0) {
 			CargoID cargo_type;
-			/* We cannot refit to mixed cargos in an automated way */
+			/* We cannot refit to mixed cargoes in an automated way */
 			if (IsArticulatedVehicleCarryingDifferentCargos(v, &cargo_type)) continue;
 
 			/* Did the old vehicle carry anything? */
@@ -569,7 +569,7 @@ void ResetVehicleColourMap()
 
 /**
  * List of vehicles that should check for autoreplace this tick.
- * Mapping of vehicle -> leave depot immediatelly after autoreplace.
+ * Mapping of vehicle -> leave depot immediately after autoreplace.
  */
 typedef SmallMap<Vehicle *, bool, 4> AutoreplaceMap;
 static AutoreplaceMap _vehicles_to_autoreplace;
@@ -1416,7 +1416,7 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 			default: NOT_REACHED();
 			case VEH_TRAIN: {
 				if (v != NULL && parent_engine_type != INVALID_ENGINE && (UsesWagonOverride(v) || (Train::From(v)->IsArticulatedPart() && e->u.rail.railveh_type != RAILVEH_WAGON))) {
-					/* Wagonoverrides use the coloir scheme of the front engine.
+					/* Wagonoverrides use the colour scheme of the front engine.
 					 * Articulated parts use the colour scheme of the first part. (Not supported for articulated wagons) */
 					engine_type = parent_engine_type;
 					e = Engine::Get(engine_type);

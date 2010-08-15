@@ -80,7 +80,7 @@ enum GenerateLandscapeWindowWidgets {
 	GLAND_START_DATE_TEXT,    ///< Start year
 	GLAND_START_DATE_UP,      ///< Increase start year
 
-	GLAND_SNOW_LEVEL_DOWN,    ///< Docrease snow level
+	GLAND_SNOW_LEVEL_DOWN,    ///< Decrease snow level
 	GLAND_SNOW_LEVEL_TEXT,    ///< Snow level
 	GLAND_SNOW_LEVEL_UP,      ///< Increase snow level
 
@@ -1244,7 +1244,7 @@ void PrepareGenerateWorldProgress()
 	_gws.current = 0;
 	_gws.total   = 0;
 	_gws.percent = 0;
-	_gws.timer   = 0; // Forces to paint the progress window immediatelly
+	_gws.timer   = 0; // Forces to paint the progress window immediately
 }
 
 /**

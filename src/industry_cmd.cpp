@@ -1991,7 +1991,7 @@ static void MaybeNewIndustry()
 
 		if (!ind_spc->enabled || chance == 0 || ind_spc->num_table == 0) continue;
 
-		/* If there is no Callback CBID_INDUSTRY_AVAILABLE or if this one did anot failed,
+		/* If there is no Callback CBID_INDUSTRY_AVAILABLE or if this one did not fail,
 		 * and if appearing chance for this landscape is above 0, this industry can be chosen */
 		if (CheckIfCallBackAllowsAvailability(j, IACT_RANDOMCREATION)) {
 			probability_max += chance;

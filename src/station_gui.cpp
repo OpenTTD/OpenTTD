@@ -1500,7 +1500,7 @@ static bool StationJoinerNeeded(CommandContainer cmd, TileArea ta)
 
 	/* Test for adjacent station or station below selection.
 	 * If adjacent-stations is disabled and we are building next to a station, do not show the selection window.
-	 * but join the other station immediatelly. */
+	 * but join the other station immediately. */
 	const T *st = FindStationsNearby<T>(ta, false);
 	return st == NULL && (_settings_game.station.adjacent_stations || _stations_nearby_list.Length() == 0);
 }

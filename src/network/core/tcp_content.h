@@ -191,7 +191,7 @@ protected:
 	 * Handle the given packet, i.e. pass it to the right
 	 * parser receive command.
 	 * @param p the packet to handle
-	 * @return true if we should immediatelly handle further packets, false otherwise
+	 * @return true if we should immediately handle further packets, false otherwise
 	 */
 	bool HandlePacket(Packet *p);
 public:

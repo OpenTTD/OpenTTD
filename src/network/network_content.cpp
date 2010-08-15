@@ -988,7 +988,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 
 		/* Nothing depends on us, mark the whole graph as unselected.
 		 * After that's done run over them once again to test their children
-		 * to unselect. Don't do it immediatelly because it'll do exactly what
+		 * to unselect. Don't do it immediately because it'll do exactly what
 		 * we're doing now. */
 		for (ConstContentIterator iter = parents.Begin(); iter != parents.End(); iter++) {
 			const ContentInfo *c = *iter;

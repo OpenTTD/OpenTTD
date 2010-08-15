@@ -331,7 +331,7 @@ public:
 					}
 					d = maxdim(d, GetStringBoundingBox(str));
 
-					/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
+					/* Draw the produced cargoes, if any. Otherwise, will print "Nothing". */
 					GetAllCargoSuffixes(3, CST_FUND, NULL, this->index[i], indsp, indsp->produced_cargo, cargo_suffix);
 					str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
 					p = 0;
@@ -422,7 +422,7 @@ public:
 					y += FONT_HEIGHT_NORMAL;
 				}
 
-				/* Draw the accepted cargos, if any. Otherwhise, will print "Nothing" */
+				/* Draw the accepted cargoes, if any. Otherwise, will print "Nothing". */
 				char cargo_suffix[3][512];
 				GetAllCargoSuffixes(0, CST_FUND, NULL, this->selected_type, indsp, indsp->accepts_cargo, cargo_suffix);
 				StringID str = STR_INDUSTRY_VIEW_REQUIRES_CARGO;
@@ -438,7 +438,7 @@ public:
 				DrawString(left, right, y, str);
 				y += FONT_HEIGHT_NORMAL;
 
-				/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
+				/* Draw the produced cargoes, if any. Otherwise, will print "Nothing". */
 				GetAllCargoSuffixes(3, CST_FUND, NULL, this->selected_type, indsp, indsp->produced_cargo, cargo_suffix);
 				str = STR_INDUSTRY_VIEW_PRODUCES_CARGO;
 				p = 0;
@@ -1259,7 +1259,7 @@ public:
 Listing IndustryDirectoryWindow::last_sorting = {false, 0};
 const Industry *IndustryDirectoryWindow::last_industry = NULL;
 
-/* Availible station sorting functions */
+/* Available station sorting functions. */
 GUIIndustryList::SortFunction * const IndustryDirectoryWindow::sorter_funcs[] = {
 	&IndustryNameSorter,
 	&IndustryTypeSorter,

@@ -36,7 +36,7 @@ public:
 
 	/**
 	 * Get a random value.
-	 * @param unused_param This param is not used, but is needed to work with lists.
+	 * @param unused_param This parameter is not used, but is needed to work with lists.
 	 * @return A random value between 0 and MAX(uint32).
 	 */
 	static uint32 RandItem(int unused_param);
@@ -50,14 +50,14 @@ public:
 
 	/**
 	 * Get a random value in a range.
-	 * @param unused_param This param is not used, but is needed to work with lists.
+	 * @param unused_param This parameter is not used, but is needed to work with lists.
 	 * @param max The first number this function will never return (the maximum it returns is max - 1).
 	 * @return A random value between 0 .. max - 1.
 	 */
 	static uint RandRangeItem(int unused_param, uint max);
 
 	/**
-	 * Returns approximatelly 'out' times true when called 'max' times.
+	 * Returns approximately 'out' times true when called 'max' times.
 	 *   After all, it is a random function.
 	 * @param out How many times it should return true.
 	 * @param max Out of this many times.
@@ -66,9 +66,9 @@ public:
 	static bool Chance(uint out, uint max);
 
 	/**
-	 * Returns approximatelly 'out' times true when called 'max' times.
+	 * Returns approximately 'out' times true when called 'max' times.
 	 *   After all, it is a random function.
-	 * @param unused_param This param is not used, but is needed to work with lists.
+	 * @param unused_param This parameter is not used, but is needed to work with lists.
 	 * @param out How many times it should return true.
 	 * @param max Out of this many times.
 	 * @return True if the chance worked out.

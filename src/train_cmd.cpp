@@ -316,7 +316,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 			break;
 	}
 
-	/* Substract half the front vehicle length of the train so we get the real
+	/* Subtract half the front vehicle length of the train so we get the real
 	 * stop location of the train. */
 	return stop - (v->tcache.cached_veh_length + 1) / 2;
 }
@@ -717,7 +717,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		CountArticulatedParts(eid, false);
 
 	/* Check if depot and new engine uses the same kind of tracks *
-	 * We need to see if the engine got power on the tile to avoid eletric engines in non-electric depots */
+	 * We need to see if the engine got power on the tile to avoid electric engines in non-electric depots */
 	if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
 
 	/* Allow for the dual-heads and the articulated parts */
@@ -821,7 +821,7 @@ bool Train::IsInDepot() const
 
 bool Train::IsStoppedInDepot() const
 {
-	/* Are we stopped? Ofcourse wagons don't really care... */
+	/* Are we stopped? Of course wagons don't really care... */
 	if (this->IsFrontEngine() && !(this->vehstatus & VS_STOPPED)) return false;
 	return this->IsInDepot();
 }
@@ -948,7 +948,7 @@ static void NormaliseSubtypes(Train *chain)
 	/* We must be the first in the chain. */
 	assert(chain->Previous() == NULL);
 
-	/* Set the appropirate bits for the first in the chain. */
+	/* Set the appropriate bits for the first in the chain. */
 	if (chain->IsWagon()) {
 		chain->SetFreeWagon();
 	} else {
@@ -974,7 +974,7 @@ static void NormaliseSubtypes(Train *chain)
  */
 static CommandCost CheckNewTrain(Train *original_dst, Train *dst, Train *original_src, Train *src)
 {
-	/* Just add 'new' engines and substract the original ones.
+	/* Just add 'new' engines and subtract the original ones.
 	 * If that's less than or equal to 0 we can be sure we did
 	 * not add any engines (read: trains) along the way. */
 	if ((src          != NULL && src->IsEngine()          ? 1 : 0) +
@@ -1405,7 +1405,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		if (v == first && v->IsEngine() && !sell_chain && new_head != NULL && new_head->IsFrontEngine()) {
 			/* We are selling the front engine. In this case we want to
-			 * 'give' the order, unitnumber and such to the new head. */
+			 * 'give' the order, unit number and such to the new head. */
 			new_head->orders.list = first->orders.list;
 			new_head->AddToShared(first);
 			DeleteVehicleOrders(first);
@@ -1555,7 +1555,7 @@ static void ReverseTrainSwapVeh(Train *v, int l, int r)
 		if (a->track != TRACK_BIT_WORMHOLE) VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
 	}
 
-	/* Update train's power incase tiles were different rail type */
+	/* Update power of the train in case tiles were different rail type. */
 	v->PowerChanged();
 }
 
@@ -1713,13 +1713,13 @@ static void AdvanceWagonsAfterSwap(Train *v)
 	Train *last = v->Last(); // last vehicle to move
 	uint length = CountVehiclesInChain(v);
 
-	/* we have to make sure all wagons that leave a depot because of train reversing are moved coorectly
+	/* We have to make sure all wagons that leave a depot because of train reversing are moved correctly
 	 * they have already correct spacing, so we have to make sure they are moved how they should */
-	bool nomove = (dep == NULL); // if there is no vehicle leaving a depot, limit the number of wagons moved immediatelly
+	bool nomove = (dep == NULL); // If there is no vehicle leaving a depot, limit the number of wagons moved immediately.
 
 	while (length > 2) {
 		/* we reached vehicle (originally) in front of a depot, stop now
-		 * (we would move wagons that are alredy moved with new wagon length) */
+		 * (we would move wagons that are already moved with new wagon length). */
 		if (base == dep) break;
 
 		/* the last wagon was that one leaving a depot, so do not move it anymore */
@@ -2066,7 +2066,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 		/* No smoke in depots or tunnels */
 		if (IsRailDepotTile(v->tile) || IsTunnelTile(v->tile)) continue;
 
-		/* No sparks for electric vehicles on nonelectrified tracks */
+		/* No sparks for electric vehicles on non-electrified tracks. */
 		if (!HasPowerOnRail(v->railtype, GetTileRailType(v->tile))) continue;
 
 		if (effect_type == 0) {
@@ -2787,7 +2787,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 
 	Vehicle *other_train = NULL;
 	PBSTileInfo origin = FollowTrainReservation(v, &other_train);
-	/* The path we are driving on is alread blocked by some other train.
+	/* The path we are driving on is already blocked by some other train.
 	 * This can only happen in certain situations when mixing path and
 	 * block signals or when changing tracks and/or signals.
 	 * Exit here as doing any further reservations will probably just
@@ -2804,7 +2804,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 		return true;
 	}
 
-	/* If we are in a depot, tentativly reserve the depot. */
+	/* If we are in a depot, tentatively reserve the depot. */
 	if (v->track == TRACK_BIT_DEPOT) {
 		SetDepotReservation(v->tile, true);
 		if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
@@ -3225,7 +3225,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 
 				if (bits == TRACK_BIT_NONE) goto invalid_rail;
 
-				/* Check if the new tile contrains tracks that are compatible
+				/* Check if the new tile constrains tracks that are compatible
 				 * with the current train, if not, bail out. */
 				if (!CheckCompatibleRail(v, gp.new_tile)) goto invalid_rail;
 
@@ -3309,8 +3309,8 @@ static void TrainController(Train *v, Vehicle *nomove)
 						 * This case is active if 'prev' is already on the second next tile, when 'v' just enters the next tile.
 						 * I.e. when the tile between them has only space for a single vehicle like
 						 *  1) horizontal/vertical track tiles and
-						 *  2) some orientations of tunnelentries, where the vehicle is already inside the wormhole at 8/16 from the tileedge.
-						 *     Is also the train just reversing, the wagon inside the tunnel is 'on' the tile of the opposite tunnelentry.
+						 *  2) some orientations of tunnel entries, where the vehicle is already inside the wormhole at 8/16 from the tile edge.
+						 *     Is also the train just reversing, the wagon inside the tunnel is 'on' the tile of the opposite tunnel entry.
 						 */
 						static const TrackBits _connecting_track[DIAGDIR_END][DIAGDIR_END] = {
 							{TRACK_BIT_X,     TRACK_BIT_LOWER, TRACK_BIT_NONE,  TRACK_BIT_LEFT },
@@ -3382,7 +3382,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 				if (v->IsFrontEngine()) {
 					v->wait_counter = 0;
 
-					/* If we are approching a crossing that is reserved, play the sound now. */
+					/* If we are approaching a crossing that is reserved, play the sound now. */
 					TileIndex crossing = TrainApproachingCrossingTile(v);
 					if (crossing != INVALID_TILE && HasCrossingReservation(crossing)) SndPlayTileFx(SND_0E_LEVEL_CROSSING, crossing);
 
@@ -3514,7 +3514,7 @@ static void DeleteLastWagon(Train *v)
 
 	/* Go to the last wagon and delete the link pointing there
 	 * *u is then the one-before-last wagon, and *v the last
-	 * one which will physicially be removed */
+	 * one which will physically be removed */
 	Train *u = v;
 	for (; v->Next() != NULL; v = v->Next()) u = v;
 	u->SetNext(NULL);

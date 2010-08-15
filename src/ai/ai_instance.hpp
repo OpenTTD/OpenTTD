@@ -30,7 +30,7 @@ public:
 	{}
 
 	/**
-	 * Get the amount ot ticks the AI should be suspended.
+	 * Get the amount of ticks the AI should be suspended.
 	 * @return The amount of AI ticks to suspend the AI.
 	 */
 	int GetSuspendTime() { return time; }
@@ -172,7 +172,7 @@ private:
 	void RegisterAPI();
 
 	/**
-	 * Load squirrel scipts to emulate an older API.
+	 * Load squirrel scripts to emulate an older API.
 	 */
 	bool LoadCompatibilityScripts(const char *api_version);
 
@@ -182,7 +182,7 @@ private:
 	void Died();
 
 	/**
-	 * Save one object (int / string / arrray / table) to the savegame.
+	 * Save one object (int / string / array / table) to the savegame.
 	 * @param vm The virtual machine to get all the data from.
 	 * @param index The index on the squirrel stack of the element to save.
 	 * @param max_depth The maximum depth recursive arrays / tables will be stored

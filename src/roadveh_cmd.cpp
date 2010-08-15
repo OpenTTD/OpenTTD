@@ -146,6 +146,15 @@ SpriteID RoadVehicle::GetImage(Direction direction) const
 	return sprite;
 }
 
+/**
+ * Draw a road vehicle engine.
+ * @param left Left edge to draw within.
+ * @param right Right edge to draw within.
+ * @param preferred_x Preferred position of the engine.
+ * @param y Vertical position of the engine.
+ * @param engine Engine to draw
+ * @param pal Palette to use.
+ */
 void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal)
 {
 	SpriteID sprite = GetRoadVehIcon(engine);
@@ -1122,7 +1131,7 @@ static Trackdir FollowPreviousRoadVehicle(const RoadVehicle *v, const RoadVehicl
 		if (already_reversed && prev->tile != tile) {
 			/*
 			 * The vehicle has reversed, but did not go straight back.
-			 * It immediatelly turn onto another tile. This means that
+			 * It immediately turn onto another tile. This means that
 			 * the roadstate of the previous vehicle cannot be used
 			 * as the direction we have to go with this vehicle.
 			 *

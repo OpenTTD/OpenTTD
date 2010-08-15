@@ -716,7 +716,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
  * @param type Type of vehicle (VEH_*)
  * @param l The left most location of the list
  * @param r The right most location of the list
- * @param y The top most location of teh list
+ * @param y The top most location of the list
  * @param eng_list What engines to draw
  * @param min where to start in the list
  * @param max where in the list to end
