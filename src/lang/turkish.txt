@@ -1085,6 +1085,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Binalar
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Daha gerçekçi kapsama alanı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Şehrin yollarını, köprülerini yıkma izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlere izin ver: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Lokomotif duman/kıvılcım miktarı: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Hiçbiri
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orijinal
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Gerçekçi
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Tren ivme modeli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Orjinal
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Gerçekçi
@@ -2026,6 +2030,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Havalima
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Havalimanı seçimi
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Havalimanı boyutunu seç
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Havalimanı sınıfı
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Yerleşim {NUM}
 
 STR_AIRPORT_SMALL                                               :Küçük
 STR_AIRPORT_CITY                                                :Şehirlerarası
@@ -2116,6 +2121,19 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Fiyat: {
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Tetkik arama
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}İnşa et
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Parayla Yap
+
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING} fabrikası için sanayi zinciri
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}{STRING} kargo tipi için sanayi zinciri
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Üreten fabrikalar
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Kabul eden fabrikalar
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Evler
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Sağlayanlarını ve müşterilerini görmek için fabrikayı tıklayın
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Sağlayanlarını ve müşterilerini görmek için kargoyu tıklayın
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zinciri göster
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Kargo sağlayan ve kabul eden fabrikaları göster
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Küçük haritaya bağla
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Gösterilen fabrikaları küçük haritada da seç
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Arazi Bilgisi
@@ -2363,6 +2381,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Eksik i�
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Dosya adı: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Sürüm: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Seçenekler: {SILVER}{STRING}
@@ -2372,6 +2391,12 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Eşleşen 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Etkisiz
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF seçeneklerini girin
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parametrelerini değiştir
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Kapat
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametre {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}İncele - {STRING}
@@ -3318,6 +3343,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}YZ'yi de
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}YZ Parametreleri
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Kapat
 STR_AI_SETTINGS_RESET                                           :{BLACK}Yeniden başlat
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}%{NUM}{UPARROW}
@@ -3431,6 +3457,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Bu şirk
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Şehir kurulamaz
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}İsim değiştirilemiyor...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Buraya şehir yapılamıyor...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Şehir genişletilemiyor...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... haritanin kenarına çok yakın
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... başka bir şehire çok yakın
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... çok fazla şehir var
@@ -3438,6 +3465,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... hari
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Şehir yol yapmayacak. Yol yapımını Gelişmiş Ayarlar->Ekonomi->Şehirler'den etkinleştirebilirsiniz.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Yol çalışmaları
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Bu kasaba silinemiyor...{}Bir istasyon ya da garaj kasabaya atıfta bulunuyor ya da bir kasaba karesi kaldırılamıyor
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... bu şehrin merkezinde heykel için uygun bir yer yok
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... çok fazla fabrika var
@@ -3478,6 +3506,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Başka b
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}İsim değiştirilemiyor...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... bu yol belediyeye ait
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... yol yanlış yönde
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... yol üstü durakların köşeleri olamaz
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... yol üstü durakların kavşağı olamaz
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}İstasyonun parçasi kaldırılamaz...
@@ -3601,6 +3631,8 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tünel h
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tünelin diğer ucunda düzeltme yapılmasi gerekiyor
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... çok fazla nesne var
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nesne inşa edilemiyor...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Yolda birsey var
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... yolda şirket binası var
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Burası satın alınamaz...

@@ -649,10 +649,17 @@ STR_OSNAME_SUNOS                                                :SunOS
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Вӑййи ан килӗш
 
 # Cheat window
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Виҫеллӗ климат
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Сивӗ климат
+STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Тропик климат
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Вӑйӑ пахчи
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Тӳрлет вӑхӑт: {ORANGE}{DATE_SHORT}
 
 # Livery window
 
 
+STR_LIVERY_DEFAULT                                              :Яланхи тӗс
+STR_LIVERY_STEAM                                                :Пӑравус
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_BUS                                                  :Автобус

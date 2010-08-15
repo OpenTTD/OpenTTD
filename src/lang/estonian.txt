@@ -2203,7 +2203,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Trammite
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Raudtee omanik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Kohalik omavalitsus: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :puudub
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaadid: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaadid: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Ehitatud: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Jaama liik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Jaama rühm: {LTBLUE}{STRING}
@@ -2370,7 +2370,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Ise vali
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Kõrgustekaardi pööre:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Kõrgusekaardi nimi:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Suurus:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Sisesta suvaline arv
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Muuda lumepiiri kõrgust
@@ -2452,6 +2452,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sisesta 
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuda NewGRF parameetreid
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sulge
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameeter {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspekteeri- {STRING}
@@ -3398,6 +3399,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ära muu
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tehismõistuse parameetrid
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulge
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulli
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3685,6 +3687,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel l
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ei saa tunneli teise otsa jaoks maad parajaks kaevata
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... liiga palju objekte
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Objekti ei saa ehitada...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Mingi objekt on ees
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... ettevõtte peakorter on ees

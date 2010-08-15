@@ -2210,7 +2210,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}A villam
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}A vasúti pálya tulajdonosa: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Helyi önkormányzat: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nincs
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordináták: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordináták: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Épült: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Állomás osztálya: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Állomás típusa: {LTBLUE}{STRING}
@@ -2377,7 +2377,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Kézi
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Magasságtérkép elforgatása:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Magasságtérkép neve:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méret:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Irj be egy tetszőleges számot
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Hóhatár megváltoztatása
@@ -2459,6 +2459,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Adj meg 
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF paraméterek megváltoztatása
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Bezárás
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paraméter {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Megtekintés - {STRING}
@@ -3405,6 +3406,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}MI vált
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}MI paraméterek
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Bezárás
 STR_AI_SETTINGS_RESET                                           :{BLACK}Visszaállítás
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3559,7 +3561,7 @@ STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... csak
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Túl sok az állomás/rakodóhely
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Túl sok vasútállomás-rész
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Túl sok buszmegálló
-STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Túl sok teherautó-rakodóhely
+STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Túl sok a teherautó-rakodóhely
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Túl közel van egy másik vasútállomáshoz
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Túl közel van egy másik állomáshoz/rakodóhelyhez
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Túl közel van egy másik kikötőhöz
@@ -3692,6 +3694,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Az alag�
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nem lehet kiásni a földet az alagút túloldalán
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... túl sok az objektum
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nem építhető objektum...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objektum van az útban
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... vállalat székháza van az útban
