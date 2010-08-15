@@ -52,8 +52,53 @@ static CommandCallback * const _callback_table[] = {
 	/* 0x19 */ CcStartStopVehicle,
 };
 
+/**
+ * Append a CommandPacket at the end of the queue.
+ * @param p The packet to append to the queue.
+ */
+void CommandQueue::Append(CommandPacket *p)
+{
+	assert(p != NULL);
+	if (this->first == NULL) {
+		this->first = p;
+	} else {
+		this->last->next = p;
+	}
+	this->last = p;
+}
+
+/**
+ * Return the first item in the queue and remove it from the queue.
+ * @return the first item in the queue.
+ */
+CommandPacket *CommandQueue::Pop()
+{
+	CommandPacket *ret = this->first;
+	if (ret != NULL) this->first = this->first->next;
+	return ret;
+}
+
+/**
+ * Return the first item in the queue, but don't remove it.
+ * @return the first item in the queue.
+ */
+CommandPacket *CommandQueue::Peek()
+{
+	return this->first;
+}
+
+/** Free everything that is in the queue. */
+void CommandQueue::Free()
+{
+	CommandPacket *cp;
+	while ((cp = this->Pop()) != NULL) {
+		free(cp);
+	}
+}
+
+
 /** Local queue of packets */
-static CommandPacket *_local_command_queue = NULL;
+static CommandQueue _local_command_queue;
 
 /**
  * Add a command to the local or client socket command queue,
@@ -65,16 +110,7 @@ void NetworkAddCommandQueue(CommandPacket cp, NetworkClientSocket *cs)
 {
 	CommandPacket *new_cp = MallocT<CommandPacket>(1);
 	*new_cp = cp;
-
-	CommandPacket **begin = (cs == NULL ? &_local_command_queue : &cs->command_queue);
-
-	if (*begin == NULL) {
-		*begin = new_cp;
-	} else {
-		CommandPacket *c = *begin;
-		while (c->next != NULL) c = c->next;
-		c->next = new_cp;
-	}
+	(cs == NULL ? _local_command_queue : cs->command_queue).Append(new_cp);
 }
 
 /**
@@ -141,7 +177,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
  */
 void NetworkSyncCommandQueue(NetworkClientSocket *cs)
 {
-	for (CommandPacket *p = _local_command_queue; p != NULL; p = p->next) {
+	for (CommandPacket *p = _local_command_queue.Peek(); p != NULL; p = p->next) {
 		CommandPacket c = *p;
 		c.callback = 0;
 		c.next = NULL;
@@ -156,26 +192,24 @@ void NetworkExecuteLocalCommandQueue()
 {
 	assert(IsLocalCompany());
 
-	while (_local_command_queue != NULL) {
-
+	CommandPacket *cp;
+	while ((cp = _local_command_queue.Peek()) != NULL) {
 		/* The queue is always in order, which means
 		 * that the first element will be executed first. */
-		if (_frame_counter < _local_command_queue->frame) break;
+		if (_frame_counter < cp->frame) break;
 
-		if (_frame_counter > _local_command_queue->frame) {
+		if (_frame_counter > cp->frame) {
 			/* If we reach here, it means for whatever reason, we've already executed
 			 * past the command we need to execute. */
 			error("[net] Trying to execute a packet in the past!");
 		}
-
-		CommandPacket *cp = _local_command_queue;
 
 		/* We can execute this command */
 		_current_company = cp->company;
 		cp->cmd |= CMD_NETWORK_COMMAND;
 		DoCommandP(cp, cp->my_cmd);
 
-		_local_command_queue = _local_command_queue->next;
+		_local_command_queue.Pop();
 		free(cp);
 	}
 
@@ -188,12 +222,7 @@ void NetworkExecuteLocalCommandQueue()
  */
 void NetworkFreeLocalCommandQueue()
 {
-	/* Free all queued commands */
-	while (_local_command_queue != NULL) {
-		CommandPacket *p = _local_command_queue;
-		_local_command_queue = _local_command_queue->next;
-		free(p);
-	}
+	_local_command_queue.Free();
 }
 
 /**

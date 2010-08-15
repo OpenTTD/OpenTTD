@@ -1618,11 +1618,8 @@ void NetworkServer_ReadPackets(NetworkClientSocket *cs)
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs)
 {
 	CommandPacket *cp;
-
-	while ( (cp = cs->command_queue) != NULL) {
+	while ((cp = cs->command_queue.Pop()) != NULL) {
 		SEND_COMMAND(PACKET_SERVER_COMMAND)(cs, cp);
-
-		cs->command_queue = cp->next;
 		free(cp);
 	}
 }
