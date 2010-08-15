@@ -395,7 +395,8 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	FORCEINLINE uint16 GetPoweredPartPower(const Train *head) const
 	{
-		if (HasBit(this->flags, VRF_POWEREDWAGON) && HasPowerOnRail(head->railtype, GetRailType(head->tile))) {
+		/* For powered wagons the engine defines the type of engine (i.e. railtype) */
+		if (HasBit(this->flags, VRF_POWEREDWAGON) && HasPowerOnRail(head->railtype, GetRailType(this->tile))) {
 			return RailVehInfo(this->tcache.first_engine)->pow_wag_power;
 		}
 
