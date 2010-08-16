@@ -224,6 +224,21 @@ void IConsoleAddSorted(T **base, T *item_new)
 }
 
 /**
+ * Remove underscores from a string; the string will be modified!
+ * @param name The string to remove the underscores from.
+ * @return #name.
+ */
+char *RemoveUnderscores(char *name)
+{
+	char *q = name;
+	for (const char *p = name; *p != '\0'; p++) {
+		if (*p != '_') *q++ = *p;
+	}
+	*q = '\0';
+	return name;
+}
+
+/**
  * Register a new command to be used in the console
  * @param name name of the command that will be used
  * @param proc function that will be called upon execution of command
@@ -231,7 +246,7 @@ void IConsoleAddSorted(T **base, T *item_new)
 void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc, IConsoleHook *hook)
 {
 	IConsoleCmd *item_new = MallocT<IConsoleCmd>(1);
-	item_new->name = strdup(name);
+	item_new->name = RemoveUnderscores(strdup(name));
 	item_new->next = NULL;
 	item_new->proc = proc;
 	item_new->hook = hook;
@@ -266,7 +281,7 @@ void IConsoleAliasRegister(const char *name, const char *cmd)
 		return;
 	}
 
-	char *new_alias = strdup(name);
+	char *new_alias = RemoveUnderscores(strdup(name));
 	char *cmd_aliased = strdup(cmd);
 	IConsoleAlias *item_new = MallocT<IConsoleAlias>(1);
 
@@ -467,6 +482,7 @@ void IConsoleCmdExec(const char *cmdstr)
 	 * First try commands, then aliases. Execute
 	 * the found action taking into account its hooking code
 	 */
+	RemoveUnderscores(tokens[0]);
 	IConsoleCmd *cmd = IConsoleCmdGet(tokens[0]);
 	if (cmd != NULL) {
 		ConsoleHookResult chr = (cmd->hook == NULL ? CHR_ALLOW : cmd->hook(true));

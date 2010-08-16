@@ -1767,8 +1767,6 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("dir",          "ls");
 	IConsoleAliasRegister("del",          "rm %+");
 	IConsoleAliasRegister("newmap",       "newgame");
-	IConsoleAliasRegister("new_map",      "newgame");
-	IConsoleAliasRegister("new_game",     "newgame");
 	IConsoleAliasRegister("patch",        "setting %+");
 	IConsoleAliasRegister("set",          "setting %+");
 	IConsoleAliasRegister("set_newgame",  "setting_newgame %+");
