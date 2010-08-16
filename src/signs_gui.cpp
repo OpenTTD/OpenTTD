@@ -143,10 +143,6 @@ enum SignListHotkeys {
 };
 
 struct SignListWindow : QueryStringBaseWindow, SignList {
-private:
-	const Sign *selected; ///< The selected sign
-
-public:
 	int text_offset; ///< Offset of the sign text relative to the left edge of the SLW_LIST widget.
 	Scrollbar *vscroll;
 
@@ -164,7 +160,6 @@ public:
 
 		/* Initialize the filtering variables */
 		this->SetFilterString("");
-		this->selected = NULL;
 
 		/* Create initial list. */
 		this->signs.ForceRebuild();
@@ -215,28 +210,7 @@ public:
 
 		/* Rebuild the list of signs */
 		this->InvalidateData();
-
-		/* Unset the selected sign pointer if the selected sign has
-		 * been filtered out of the list.
-		 */
-		if (this->selected != NULL && this->signs.Find(this->selected) == this->signs.End()) {
-			this->selected = NULL;
-		}
-
-		if (this->selected != NULL)	this->ScrollToSelected();
 	}
-
-	/** Make sure that the currently selected sign is within the visible part of the sign list */
-	void ScrollToSelected()
-	{
-		if (this->selected) {
-			/* Get the index of the selected sign */
-			int idx = this->signs.FindIndex(this->selected);
-			if (idx == -1) return; // abort if the selected sign is not in the list anymore (got filtered away)
-
-			this->vscroll->ScrollTowards(idx);
-		}
- 	}
 
 	virtual void OnPaint()
 	{
@@ -268,7 +242,7 @@ public:
 					if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, icon_left, y + sprite_offset_y);
 
 					SetDParam(0, si->index);
-					DrawString(text_left, text_right, y, STR_SIGN_NAME, this->selected == si ? TC_BLUE : TC_YELLOW);
+					DrawString(text_left, text_right, y, STR_SIGN_NAME, TC_YELLOW);
 					y += this->resize.step_height;
 				}
 				break;
@@ -290,9 +264,6 @@ public:
 
 				const Sign *si = this->signs[id_v];
 				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
-				/* Select clicked sign */
-				this->selected = si;
-				this->SetWidgetDirty(SLW_LIST);
 				break;
 			}
 			case SLW_FILTER_CLEAR_BTN:
@@ -342,14 +313,12 @@ public:
 				this->SetFilterString(this->text.buf);
 				break;
 
-			case HEBR_CONFIRM: { // Enter pressed -> goto selected sign in list (or first if no selected sign)
-				uint n_signs = this->signs.Length();
-				if (n_signs >= 1) {
-					const Sign *si = this->selected ? this->selected : this->signs[0];
+			case HEBR_CONFIRM: // Enter pressed -> goto first sign in list
+				if (this->signs.Length() >= 1) {
+					const Sign *si = this->signs[0];
 					ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 				}
 				return state;
-			}
 
 			case HEBR_CANCEL: // ESC pressed, clear filter.
 				this->OnClick(Point(), SLW_FILTER_CLEAR_BTN, 1); // Simulate click on clear button.
@@ -369,64 +338,6 @@ public:
 		}
 
 		if (state == ES_HANDLED) OnOSKInput(SLW_FILTER_TEXT);
-
-		/* Selection of signs using arrow up/down , page up/down and ctrl + home/end keys.
-		 * This only happens if the edit box is globaly focused.
-		 */
-		int selected_idx = this->selected ? this->signs.FindIndex(this->selected) : 0;
-		if (selected_idx == -1) selected_idx = 0; // FindIndex could return -1 if a non-available sign is selected
-		if (state != ES_HANDLED && this->IsWidgetGloballyFocused(SLW_FILTER_TEXT)) {
-			switch (keycode) {
-				case WKC_UP:
-					/* scroll up by one */
-					selected_idx--;
-					selected_idx = Clamp(selected_idx, 0, (int)this->signs.Length() - 1);
-					state = ES_HANDLED;
-					break;
-
-				case WKC_DOWN:
-					/* scroll down by one */
-					selected_idx++;
-					selected_idx = Clamp(selected_idx, 0, (int)this->signs.Length() - 1);
-					state = ES_HANDLED;
-					break;
-
-				case WKC_PAGEUP:
-					/* scroll up a page */
-					selected_idx = max(0, selected_idx - (int)this->vscroll->GetCapacity());
-					state = ES_HANDLED;
-					break;
-
-				case WKC_PAGEDOWN:
-					/* scroll down a page */
-					selected_idx = min(selected_idx + this->vscroll->GetCapacity(), (int)this->signs.Length() - 1);
-					state = ES_HANDLED;
-					break;
-
-				case WKC_CTRL | WKC_HOME: // Home key without ctrl is processed by the edit box
-					/* jump to beginning */
-					selected_idx = 0;
-					state = ES_HANDLED;
-					break;
-
-				case WKC_CTRL | WKC_END: // End key without ctrl is processed by the edit box
-					/* jump to end */
-					selected_idx = (int)this->signs.Length() - 1;
-					state = ES_HANDLED;
-					break;
-			}
-
-			if (state == ES_HANDLED) {
-				/* Update the selected pointer */
-				this->selected = this->signs[selected_idx];
-
-				/* Make sure the selected sign is visible */
-				this->ScrollToSelected();
-
-				/* Repaint the window */
-				this->SetDirty();
-			}
-		}
 
 		return state;
 	}
@@ -458,9 +369,6 @@ public:
 		}
 
 		this->SortSignsList();
-
-		/* Make sure the selected sign is visible after the change of the contents */
-		this->ScrollToSelected();
 	}
 
 	static Hotkey<SignListWindow> signlist_hotkeys[];
