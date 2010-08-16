@@ -970,7 +970,7 @@ DEF_CONSOLE_CMD(ConNewGame)
 		return true;
 	}
 
-	StartNewGameWithoutGUI((argc == 2) ? (uint)atoi(argv[1]) : GENERATE_NEW_SEED);
+	StartNewGameWithoutGUI((argc == 2) ? strtoul(argv[1], NULL, 10) : GENERATE_NEW_SEED);
 	return true;
 }
 
