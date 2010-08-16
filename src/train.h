@@ -161,6 +161,8 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 	void CargoChanged();
 	void PowerChanged();
 
+	void RailtypeChanged();
+
 	int UpdateSpeed();
 
 	void UpdateAcceleration();
@@ -389,6 +391,8 @@ struct Train : public SpecializedVehicle<Train, VEH_TRAIN> {
 
 protected: // These functions should not be called outside acceleration code.
 
+	void UpdateVisualEffect(bool allow_power_change);
+
 	/**
 	 * Allows to know the power value that this vehicle will use.
 	 * @return Power value from the engine in HP, or zero if the vehicle is not powered.
@@ -412,7 +416,8 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	FORCEINLINE uint16 GetPoweredPartPower(const Train *head) const
 	{
-		if (HasBit(this->flags, VRF_POWEREDWAGON) && HasPowerOnRail(head->railtype, GetRailType(head->tile))) {
+		/* For powered wagons the engine defines the type of engine (i.e. railtype) */
+		if (HasBit(this->flags, VRF_POWEREDWAGON) && HasPowerOnRail(head->railtype, GetRailType(this->tile))) {
 			return RailVehInfo(this->tcache.first_engine)->pow_wag_power;
 		}
 

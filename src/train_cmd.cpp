@@ -197,6 +197,57 @@ void CheckTrainsLengths()
 }
 
 /**
+ * Update visual effect, power and acceleration caches.
+ * Called when a vehicle in the consist enters a different railtype.
+ */
+void Train::RailtypeChanged()
+{
+	for (Train *u = this; u != NULL; u = u->Next()) {
+		/* The wagon-is-powered-state should not change, so the weight does not change. */
+		u->UpdateVisualEffect(false);
+	}
+	this->PowerChanged();
+	if (this->IsFrontEngine()) this->UpdateAcceleration();
+}
+
+/**
+ * Update the cached visual effect.
+ * @param allow_power_change true if the wagon-is-powered-state may change.
+ */
+void Train::UpdateVisualEffect(bool allow_power_change)
+{
+	byte powered_before = this->tcache.cached_vis_effect & 0x80;
+
+	const Engine *e = Engine::Get(this->engine_type);
+	if (e->u.rail.visual_effect != 0) {
+		this->tcache.cached_vis_effect = e->u.rail.visual_effect;
+	} else {
+		if (this->IsWagon() || this->IsArticulatedPart()) {
+			/* Wagons and articulated parts have no effect by default */
+			this->tcache.cached_vis_effect = 0x40;
+		} else if (e->u.rail.engclass == 0) {
+			/* Steam is offset by -4 units */
+			this->tcache.cached_vis_effect = 4;
+		} else {
+			/* Diesel fumes and sparks come from the centre */
+			this->tcache.cached_vis_effect = 8;
+		}
+	}
+
+	/* Check powered wagon / visual effect callback */
+	if (HasBit(e->info.callback_mask, CBM_TRAIN_WAGON_POWER)) {
+		uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, this->engine_type, this);
+
+		if (callback != CALLBACK_FAILED) this->tcache.cached_vis_effect = GB(callback, 0, 8);
+	}
+
+	if (!allow_power_change && powered_before != (this->tcache.cached_vis_effect & 0x80)) {
+		this->tcache.cached_vis_effect ^= 0x80;
+		ShowNewGrfVehicleError(this->engine_type, STR_NEWGRF_BROKEN, STR_NEWGRF_BROKEN_POWERED_WAGON, GBUG_VEH_POWERED_WAGON, false);
+	}
+}
+
+/**
  * Recalculates the cached stuff of a train. Should be called each time a vehicle is added
  * to/removed from the chain, and when the game is loaded.
  * Note: this needs to be called too for 'wagon chains' (in the depot, without an engine)
@@ -252,27 +303,8 @@ void Train::ConsistChanged(bool same_length)
 		/* Reset colour map */
 		u->colourmap = PAL_NONE;
 
-		if (rvi_u->visual_effect != 0) {
-			u->tcache.cached_vis_effect = rvi_u->visual_effect;
-		} else {
-			if (u->IsWagon() || u->IsArticulatedPart()) {
-				/* Wagons and articulated parts have no effect by default */
-				u->tcache.cached_vis_effect = 0x40;
-			} else if (rvi_u->engclass == 0) {
-				/* Steam is offset by -4 units */
-				u->tcache.cached_vis_effect = 4;
-			} else {
-				/* Diesel fumes and sparks come from the centre */
-				u->tcache.cached_vis_effect = 8;
-			}
-		}
-
-		/* Check powered wagon / visual effect callback */
-		if (HasBit(e_u->info.callback_mask, CBM_TRAIN_WAGON_POWER)) {
-			uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
-
-			if (callback != CALLBACK_FAILED) u->tcache.cached_vis_effect = GB(callback, 0, 8);
-		}
+		/* Update powered-wagon-status and visual effect */
+		u->UpdateVisualEffect(true);
 
 		if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
 			UsesWagonOverride(u) && !HasBit(u->tcache.cached_vis_effect, 7)) {
@@ -1669,7 +1701,7 @@ static void ReverseTrainSwapVeh(Train *v, int l, int r)
 	}
 
 	/* Update train's power incase tiles were different rail type */
-	v->PowerChanged();
+	v->RailtypeChanged();
 }
 
 
@@ -3450,8 +3482,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 					v->tile = gp.new_tile;
 
 					if (GetTileRailType(gp.new_tile) != GetTileRailType(gp.old_tile)) {
-						v->First()->PowerChanged();
-						v->First()->UpdateAcceleration();
+						v->First()->RailtypeChanged();
 					}
 
 					v->track = chosen_track;
