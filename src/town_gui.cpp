@@ -631,7 +631,7 @@ static const NWidgetPart _nested_town_directory_widgets[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TDW_SORTNAME), SetMinimalSize(99, 12), SetDataTip(STR_SORT_BY_CAPTION_NAME, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, TDW_SORTPOPULATION), SetMinimalSize(97, 12), SetDataTip(STR_SORT_BY_CAPTION_POPULATION, STR_TOOLTIP_SORT_ORDER), SetFill(1, 0),
 			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_BROWN, TDW_CENTERTOWN), SetMinimalSize(196, 164), SetDataTip(0x0, STR_TOWN_DIRECTORY_LIST_TOOLTIP),
+			NWidget(WWT_PANEL, COLOUR_BROWN, TDW_CENTERTOWN), SetMinimalSize(196, 0), SetDataTip(0x0, STR_TOWN_DIRECTORY_LIST_TOOLTIP),
 							SetFill(1, 0), SetResize(0, 10), SetScrollbar(TDW_SCROLLBAR), EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_BROWN, TDW_BOTTOM_PANEL),
 				NWidget(WWT_TEXT, COLOUR_BROWN, TDW_BOTTOM_TEXT), SetPadding(2, 0, 0, 2), SetMinimalSize(196, 12), SetFill(1, 0), SetDataTip(STR_TOWN_POPULATION, STR_NULL),
@@ -794,10 +794,11 @@ public:
 					SetDParam(1, 10000000); // 10^7
 					d = maxdim(d, GetStringBoundingBox(STR_TOWN_DIRECTORY_TOWN));
 				}
-				d.width += padding.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-				d.height += padding.height;
-				*size = maxdim(*size, d);
 				resize->height = d.height;
+				d.height *= 5;
+				d.width += padding.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				d.height += padding.height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				*size = maxdim(*size, d);
 				break;
 			}
 			case TDW_BOTTOM_TEXT: {
