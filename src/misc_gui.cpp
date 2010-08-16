@@ -661,13 +661,14 @@ public:
 				} else {
 					int extra = (r.bottom - r.top + 1 - this->height_summary - this->height_detailed - WD_PAR_VSEP_WIDE) / 2;
 
+					/* Note: NewGRF supplied error message often do not start with a colour code, so default to white. */
 					int top = r.top + WD_FRAMERECT_TOP;
 					int bottom = top + this->height_summary + extra;
-					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, top, bottom, this->summary_msg, TC_FROMSTRING, SA_CENTER);
+					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, top, bottom, this->summary_msg, TC_WHITE, SA_CENTER);
 
 					bottom = r.bottom - WD_FRAMERECT_BOTTOM;
 					top = bottom - this->height_detailed - extra;
-					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, top, bottom, this->detailed_msg, TC_FROMSTRING, SA_CENTER);
+					DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, top, bottom, this->detailed_msg, TC_WHITE, SA_CENTER);
 				}
 
 				SwitchToNormalRefStack(); // Switch back to the normal text ref. stack for NewGRF texts.
