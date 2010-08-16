@@ -442,8 +442,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebietsinformat
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole öffnen/schließen
 STR_ABOUT_MENU_AI_DEBUG                                         :KI Debug
-STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Strg+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Riesiger Screenshot (Strg+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Standard: Strg+S)
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Hereingezoomter Screenshot
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Riesiger Screenshot (Standard: Strg+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Über 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-Ausrichtung
 ############ range ends here
@@ -2467,6 +2468,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Fehlende D
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs '{STRING}' wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ändert die Antriebseigenschaften für '{1:ENGINE}' außerhalb von Depots
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von '{1:ENGINE}' außerhalb eines Depots.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VEHICLE}' der Firma '{COMPANY}' hat eine ungültige Länge. Vermutlich ein NewGRF Problem. Spiel kann desynchronisieren oder abstürzen.
 
@@ -2483,6 +2485,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ungültige Ind
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste ({COMMA} Schild{P "" er})
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Groß/Klein beachten
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Suchbegriff{}löschen
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Umschalten zwischen Beachtung und Nichtbeachtung der Groß- und Kleinschreibung beim Vergleich von Schildern mit dem Suchbegriff
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Suchbegriff{}löschen
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schildtext ändern
@@ -3298,7 +3304,7 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}An/Aussc
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Unterbrechung bei:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Unterbrechung an
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Wenn eine KI Log-Nachricht auf diesen Text paßt, wird das Spiel pausiert.
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Passender Fall
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Groß/Klein beachten
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Für den Vergleich der KI Log-Nachrichten mit dem Unterbrechungs-Text den passenden Fall umschalten.
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortfahren
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Pause aufheben und die KI weiter ausführen

@@ -442,8 +442,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Información so
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Activar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuración de IA
-STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante (Ctrl+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Captura de pantalla
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura con zoom
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de mapa completo
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Acerca de 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alineador de sprites
 ############ range ends here
@@ -2467,6 +2468,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Ficheros q
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Problema con el NewGRF '{STRING}' puede causar desincronización o cuelgues
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Cambia el estado de vagón con potencia para '{1:ENGINE}' cuando no está dentro de un depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambia la longitud del vehículo para '{1:ENGINE}' cuando no está dentro de un depósito
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar.
 
@@ -2483,6 +2485,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria inco
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de carteles - {COMMA} Carteles
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Comprobar mayúsculas/minúsculas
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Borrar filtro
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Activa/desactiva la comprobación de mayúsculas y minúsculas al filtrar la lista de carteles
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Borrar texto de filtrado
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto del cartel
@@ -3298,8 +3304,8 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activar 
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pausa activada:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pausa activada
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Cuando el mensaje de log de una IA coincide con esta cadena, el juego se pausa.
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Cadena de parada
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Activar / desactivar comparación de mensajes de log de la IA con la cadena de parada
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Comprobar mayúsculas/minúsculas
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Activa/desactiva la comprobación de mayúsculas y minúsculas al comparar los mensajes de log de la IA con la cadena de parada
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausar y hacer que la IA continúe
 

@@ -660,8 +660,18 @@ STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Тӳр�
 
 STR_LIVERY_DEFAULT                                              :Яланхи тӗс
 STR_LIVERY_STEAM                                                :Пӑравус
+STR_LIVERY_DIESEL                                               :Ӑшӑвус(Diesel Engine)
+STR_LIVERY_ELECTRIC                                             :Электровоз(Electric Engine)
+STR_LIVERY_MONORAIL                                             :Пӗр-релсӑ Локомотив(Monorail Engine)
+STR_LIVERY_MAGLEV                                               :Маглев Локомотив
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажир Вакун(Парӑвус)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажир Вакун(Ӑшӑвус)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажир Вакун(Электровоз)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пасажир Вакун(Пӗр-релсӑ)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Пасажир Вакун(Маглев)
+STR_LIVERY_FREIGHT_WAGON                                        :Ҫӑк Вакун
 STR_LIVERY_BUS                                                  :Автобус
 STR_LIVERY_TRUCK                                                :Ҫӑк машинаи
 STR_LIVERY_PASSENGER_SHIP                                       :Пассажирсем карап
@@ -682,8 +692,28 @@ STR_FACE_ADVANCED                                               :{BLACK}Хушм
 STR_FACE_SIMPLE                                                 :{BLACK}Ансат
 STR_FACE_LOAD                                                   :{BLACK}Тие
 STR_FACE_SAVE                                                   :{BLACK}Упра
+STR_FACE_EUROPEAN                                               :{BLACK}Европӑ
+STR_FACE_AFRICAN                                                :{BLACK}Африкан
+STR_FACE_YES                                                    :Ҫапла
+STR_FACE_NO                                                     :Ҫук
+STR_FACE_HAIR                                                   :Ҫӳҫ:
+STR_FACE_EYEBROWS                                               :Куҫ харши:
+STR_FACE_EYECOLOUR                                              :Куҫ тӗс:
+STR_FACE_GLASSES                                                :Куҫлӑх:
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}Куҫлӑх яр
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}Тӳрлет куҫлӑх
+STR_FACE_NOSE                                                   :Сӑмса:
+STR_FACE_LIPS                                                   :Тута:
+STR_FACE_MOUSTACHE                                              :Мӑйӑх:
+STR_FACE_CHIN                                                   :Янах:
+STR_FACE_JACKET                                                 :Пиншак:
+STR_FACE_COLLAR                                                 :Ҫуха:
+STR_FACE_TIE                                                    :Галстук:
+STR_FACE_EARRING                                                :Алка:
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Ҫыхӑну:
+STR_NETWORK_SERVER_LIST_LAN                                     :LAN
 
 
 

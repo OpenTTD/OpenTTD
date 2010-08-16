@@ -441,8 +441,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informaţii des
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Consolă pornit/oprit
 STR_ABOUT_MENU_AI_DEBUG                                         :Depanare Inteligenţă Artificială
-STR_ABOUT_MENU_SCREENSHOT                                       :Capturează ecranul (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toată harta (Ctrl+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Capturează ecranul
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captură mărită
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Capturează toată harta
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Despre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliniere imagini
 ############ range ends here
@@ -2146,7 +2147,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Propriet
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Proprietar al căii ferate: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoritatea locală: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nici una
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonate: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonate: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Data construcţiei: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Clasa staţiei: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tip staţie: {LTBLUE}{STRING}
@@ -2313,7 +2314,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotaţie hartă înălţimi:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nume hartă înălţimi:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dimensiune:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Introduceţi o valoare de pornire pentru numerele aleatoare
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Modifică înălţimea zăpezii
@@ -2395,6 +2396,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introdu 
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Schimbă parametrii NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Închide
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametru {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspectează - {STRING}
@@ -2465,7 +2467,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Fişiere l
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Comportamentul NewGRF '{0:STRING}' poate cauza desincronizări şi/sau blocări.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifică lungimea vehiculului pentru '{1:ENGINE}' când nu este în depou.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}A modificat starea trenului pentru '{1:ENGINE}' când nu se afla în depou.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}A modificat lungimea vehiculului pentru '{1:ENGINE}' când nu se afla în depou.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', aparţinând '{COMPANY}' nu are o lungime validă. Probabil este o problemă cu fişierele NewGRF. Jocul s-ar putea desincroniza sau bloca.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' produce informaţii incorecte.
@@ -2755,16 +2758,16 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehicule rutier
 STR_GROUP_DEFAULT_SHIPS                                         :Nave negrupate
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronave negrupate
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupuri - Dă clic pe un grup pentru lista completă a vehiculelor acestuia
-STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Da click pentru a creea un grup
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupuri - click pe un grup pentru lista completă a vehiculelor acestuia
+STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Click pentru a creea un grup
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Şterge grupul selectat
-STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Redenumeste grupul selectat
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click aici pentru a proteja acest grup de la inlocuirile automate globale
+STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Redenumeşte grupul selectat
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click aici pentru a proteja acest grup de la înlocuirile automate globale
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :Adauga vehiculele partajate
-STR_GROUP_REMOVE_ALL_VEHICLES                                   :Elimina toate vehiculele
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Adaugă vehicule partajate
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Elimină toate vehiculele
 
-STR_GROUP_RENAME_CAPTION                                        :{BLACK}Redenumeste un grup
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Redenumeşte un grup
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Noi vehicule feroviare
@@ -2779,11 +2782,11 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Aeronavă nouă
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Greutate: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteză: {GOLD}{VELOCITY}{BLACK} Putere: {GOLD}{POWER}
-STR_PURCHASE_INFO_SPEED                                         :{BLACK}Viteza: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}Viteză: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost de rulare: {GOLD}{CURRENCY}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(suportă alte mărfuri)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An aparitie: {GOLD}{NUM}{BLACK} Durata de viata: {GOLD}{COMMA} years
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An apariţie: {GOLD}{NUM}{BLACK} Durata de viaţă: {GOLD}{COMMA} ani
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficienţă max.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -2791,8 +2794,8 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {G
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{POWER}{BLACK} Greutate: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Rearanjabil in: {GOLD}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Toate tipurile de incarcaturi
-STR_PURCHASE_INFO_ALL_BUT                                       :Toate, cu exceptia {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Toate tipurile de mărfuri
+STR_PURCHASE_INFO_ALL_BUT                                       :Toate, cu excepţia {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Efort tractor max.: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selectie a componentelor trenului - clic pe vehicule pt. informatii
@@ -3341,6 +3344,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nu schim
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Închide
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetează
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3545,7 +3549,7 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nu se po
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nu se poate redenumi depoul...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trenul trebuie oprit intr-un depou
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trenul trebuie oprit într-un depou
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... trebuie oprit într-o autobază
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Nava trebuie să fie staţionată într-un şantier
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Aeronava trebuie să staţioneze într-un hangar
@@ -3628,6 +3632,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunelul 
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Terenul de la celălalt capăt al tunelului este imposibil de excavat
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... prea multe obiecte
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Obiectul nu poate fi construit...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Obiect în cale
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sediu de companie în cale

@@ -567,8 +567,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Информа�
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Консоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Отладка ИИ
-STR_ABOUT_MENU_SCREENSHOT                                       :Снимок экрана (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Полный снимок экрана (Ctrl-G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Снимок экрана
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Снимок экрана в обычном масштабе
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Полный снимок экрана
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Об игре
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выравнивание спрайтов
 ############ range ends here

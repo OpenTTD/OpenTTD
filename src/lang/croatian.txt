@@ -537,8 +537,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Podaci o zemlji
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Otvori konzolu
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugiranje UI
-STR_ABOUT_MENU_SCREENSHOT                                       :Slika zaslona (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ogromna slika zaslona (Ctrl+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Slika zaslona
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zumirano u slici zaslona
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Slika zaslona cijele mape
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnjanje sprite-a
 ############ range ends here
@@ -2562,6 +2563,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Nedostaju 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Ponašanje NewGRF '{0:STRING}' će vjerojatno uzrokovati deharmonizaciju i/ili rušenje igre.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Vagon '{1:ENGINE}' promijenjen status motoriziranogt vagona kad nije u depou.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ovo mijenja dužinu vozila za '{1:ENGINE}' kada vozilo nije unutar spremišta.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak'{VEHICLE}' koji pripada tvrtci '{COMPANY}' neispravne je dužine. Uzrok problema je vjerojatno u NewGRF-ovima. Igra će se možda deharmonizirati ili srušiti.
 

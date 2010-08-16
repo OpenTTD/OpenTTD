@@ -441,8 +441,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landinformatie
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Schakel console aan/uit
 STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
-STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Groot screenshot (Ctrl+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :ingezoomde schermprint
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Hele kaart schermprint
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Over OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Afbeelding uitlijner
 ############ range ends here
@@ -2466,6 +2467,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Ontbrekend
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag van NewGRF '{0:STRING}' zal waarschijnlijk desynchronisatiefouten (desyncs) en/of crashes veroorzaken.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Wagon '{1:ENGINE}' gewijzigde status van aandrijfeenheid wanneer niet in een depot
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het verandert de lengte van voertuig '{1:ENGINE}' terwijl het niet in een depot is.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Het is waarschijnlijk veroorzaakt door problemen met NewGRFs. Het spel kan desynchroniseren of vastlopen.
 
@@ -3630,6 +3632,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel e
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan geen land uitgraven voor andere uiteinde tunnel
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... te veel objecten
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kan object niet bouwen...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Object in de weg
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... bedrijfshoofdkwartier in de weg

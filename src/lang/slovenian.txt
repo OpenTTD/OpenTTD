@@ -483,8 +483,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacije o t
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vklopi/Izklopi konzolo
 STR_ABOUT_MENU_AI_DEBUG                                         :UI razhroščevanje
-STR_ABOUT_MENU_SCREENSHOT                                       :Zajemi sliko (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zajemi celostno sliko (Ctrl-G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Zajemi sliko
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zajemi približano sliko
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zajemi celostno sliko
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Uravnavanje sličice
 ############ range ends here
@@ -2162,10 +2163,17 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Zgradi
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ustanovi
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrijska veriga za industrijo {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrijska veriga za tovor {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Proizvajajoče industrije
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Sprejemajoče industrije
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hiše
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikni na industrijo za ogled strank in dobaviteljev
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikni na tovor za ogled strank in dobaviteljev
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Prikaži verigo
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikaži oskrbo s tovorom in pripadajoče industrije
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Poveži z zemljevidom
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Izberi prikazane industrije tudi na zemljevidu
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informacije o zemljišču
@@ -2425,6 +2433,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemogoče
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Vnesi NewGRF parametre
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Spremeni NewGRF parametre
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zapri
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
@@ -2498,6 +2507,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Manjkajoč
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Ozadje NewGRFa '{0:STRING}' lahko povzroči desinhronizacijo in sesutje igre.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Vozilo '{1:ENGINE}' je spremenilo status obratovanja, ko ni bilo znotraj garaže.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremeni dolžino vozila za '{1:ENGINE}' ko ni v garaži.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' , ki pripada družbi '{COMPANY}', ima neveljavno dolžino. Najbrž vsebuje probleme povezane z NewGRF. Igra se lahko sesuje.
 
@@ -3496,6 +3506,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ni v
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Mesta ne bodo gradila cest. Lahko omogočiš gradnjo cest v Napredne nastavitve->Ekonomija->Mesta.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Cestna dela napredujejo
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ni mogoče zbrisati mesta...{}Postaja ali garaža se nanaša na to mesto ali pa področje v lastnini mesta ne more biti odstranjeno
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ni primernega mesta za kip v centru tega mesta
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... preveliko število industrij
@@ -3536,6 +3547,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Preblizu
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ni mogoče preimenovati postaje
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... ta cesta je last mesta
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... cesta je obrnjena napačno
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... postanki ne smejo imeti vogalov
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... postanki ne smejo imeti odcepov
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ni mogoče odstraniti dela postaje...

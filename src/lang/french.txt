@@ -442,8 +442,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Outil d'Inspect
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Afficher/cacher la console
 STR_ABOUT_MENU_AI_DEBUG                                         :Débogage d'IA
-STR_ABOUT_MENU_SCREENSHOT                                       :Copie d'écran (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Copie géante d'écran (Ctrl-G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Copie d'écran
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Copie d'écran zoomée
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Copie d'écran de la carte entière
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :À Propos de 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alignement de sprite
 ############ range ends here
@@ -2467,7 +2468,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Fichiers m
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF '{0:STRING}' peut causer des erreurs de synchronisation et/ou des plantages.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il modifie la longueur de véhicule pour '{1:ENGINE}' en dehors du dépôt.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Il a modifié l'état de wagon motorisé pour '{1:ENGINE}' en dehors du dépôt.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il a modifié la longueur de véhicule pour '{1:ENGINE}' en dehors du dépôt.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train '{VEHICLE}' appartenant à '{COMPANY}' a une longueur invalide. Celà est probablement dû à des problèmes avec des NewGRFs. Le jeu peut avoir des erreurs de synchronisation ou planter.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Le NewGRF '{0:STRING}' fournit une information incorrecte.
@@ -2483,6 +2485,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industrie inva
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste des panneaux - {COMMA} panneau{P "" x}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Respecter la casse
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Enlever le filtre
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Basculer "respecter la casse" pour comparer les panneaux avec le filtre
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Enlever le filtre
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Éditer le texte du panneau

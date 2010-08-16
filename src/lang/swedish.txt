@@ -2395,6 +2395,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv Ne
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ändra NewGRF parametrar
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Stäng
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektera - {STRING}
@@ -2481,6 +2482,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<icke giltig in
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Matcha VERSALER/gemener
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ändra skylttext
@@ -3341,6 +3343,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ändra i
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Datorspelarens parametrar
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Stäng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Återställ
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3628,6 +3631,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunneln 
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan inte gräva till marken på andra sidan av tunneln
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... för många objekt
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kan inte bygga objekt...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt i vägen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... huvudkontor i vägen

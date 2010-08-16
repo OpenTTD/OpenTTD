@@ -441,8 +441,8 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Thông tin vùn
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
-STR_ABOUT_MENU_SCREENSHOT                                       :Chụp ảnh màn hình (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Phóng to ảnh màn hình (Ctrl+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Ảnh chụp màn hình
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ảnh màn hình toàn bản đồ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Về 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Trình điều chỉnh sprite
 ############ range ends here

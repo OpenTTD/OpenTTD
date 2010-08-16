@@ -2185,6 +2185,13 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Postavit
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Financovat
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Odkaz na malou mapu
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.nom                        :{BLACK}Odkaz na malou mapu
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.gen                        :{BLACK}Odkazu na malou mapu
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.dat                        :{BLACK}Odkazu na malou mapu
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.acc                        :{BLACK}Odkaz na malou mapu
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.loc                        :{BLACK}Odkazu na malou mapu
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.ins                        :{BLACK}Odkazem na malou mapu
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informace o uzemí
@@ -3683,6 +3690,14 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel by
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nelze vyrovnat zemi na druhém konci tunelu
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... příliš mnoho objektů
+STR_ERROR_TOO_MANY_OBJECTS.nom                                  :{WHITE}... příliš mnoho objektů
+STR_ERROR_TOO_MANY_OBJECTS.gen                                  :{WHITE}... příliš mnoha objektů
+STR_ERROR_TOO_MANY_OBJECTS.dat                                  :{WHITE}... příliš mnoha objektům
+STR_ERROR_TOO_MANY_OBJECTS.acc                                  :{WHITE}... příliš mnoho objektů
+STR_ERROR_TOO_MANY_OBJECTS.voc                                  :{WHITE}... příliš mnoho objektů!
+STR_ERROR_TOO_MANY_OBJECTS.loc                                  :{WHITE}... příliš mnoha objektech
+STR_ERROR_TOO_MANY_OBJECTS.ins                                  :{WHITE}... příliš mnoha objekty
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}V cestě je objekt
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... v cestě je ředitelství společnosti
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nelze zakoupit tento pozemek...

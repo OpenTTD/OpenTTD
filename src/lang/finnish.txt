@@ -441,8 +441,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-alueen tied
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsoli
 STR_ABOUT_MENU_AI_DEBUG                                         :Tekoälyn virheenjäljitys
-STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Valtava kuvakaappaus (Ctrl+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Kuvakaappaus
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Lähennetty kuvakaappaus
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Koko kartan kuvakaappaus
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tietoja 'OpenTTD':stä
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite-kohdistaja
 ############ range ends here
@@ -2466,7 +2467,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Puuttuvia 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF:n '{0:STRING}' käytös aiheuttaa todennäköisesti nykimistä ja/tai kaatumisia.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Se muuttaa kulkuneuvon '{1:ENGINE}' pituutta, kun se ei ole varikolla.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Se muutti vetävän vaunun '{1:ENGINE}' tilaa tallin ulkopuolella.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Se muutti kulkuneuvon '{1:ENGINE}' pituutta varikon ulkopuolella.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiölle '{1:COMPANY}' kuuluvan junan '{0:VEHICLE}' pituus on virheellinen. Tämä johtuu luultavasti NewGRF:ien ongelmista. Peli saattaa nykiä tai kaatua.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' antaa väärää tietoa.
