@@ -732,5 +732,5 @@ void GamelogGetOriginalGRFMD5Checksum(uint32 grfid, byte *md5sum)
 		} while (lc-- != la->change);
 	} while (la-- != _gamelog_action);
 
-	NOT_REACHED();
+	DEBUG(grf, 0, "The NewGRF with GRF ID %08X is not listed in the game's log. Can't recover the original MD5 checksum.", BSWAP32(grfid));
 }
