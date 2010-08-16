@@ -15,6 +15,7 @@
 #include "signs_type.h"
 #include "tile_type.h"
 
+struct Window;
 extern SignID _new_sign_id;
 
 void UpdateAllSignVirtCoords();
@@ -25,6 +26,6 @@ void ShowRenameSignWindow(const Sign *si);
 void HandleClickOnSign(const Sign *si);
 void DeleteRenameSignWindow(SignID sign);
 
-void ShowSignList();
+Window *ShowSignList();
 
 #endif /* SIGNS_FUNC_H */
