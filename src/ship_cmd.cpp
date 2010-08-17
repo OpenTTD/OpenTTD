@@ -604,37 +604,15 @@ bool Ship::Tick()
 
 /**
  * Build a ship.
- * @param tile tile of depot where ship is built
- * @param flags type of operation
- * @param p1 ship type being built (engine)
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
+ * @param tile     tile of the depot where ship is built.
+ * @param flags    type of operation.
+ * @param e        the engine to build.
+ * @param data     unused.
+ * @param ret[out] the vehicle that has been built.
+ * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
 {
-	EngineID eid = GB(p1, 0, 16);
-	UnitID unit_num;
-
-	if (!IsEngineBuildable(eid, VEH_SHIP, _current_company)) return_cmd_error(STR_ERROR_SHIP_NOT_AVAILABLE);
-
-	const Engine *e = Engine::Get(eid);
-	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
-
-	/* Engines without valid cargo should not be available */
-	if (e->GetDefaultCargoType() == CT_INVALID) return CMD_ERROR;
-
-	if (flags & DC_QUERY_COST) return value;
-
-	/* The ai_new queries the vehicle cost before building the route,
-	 * so we must check against cheaters no sooner than now. --pasky */
-	if (!IsShipDepotTile(tile)) return CMD_ERROR;
-	if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
-
-	unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_SHIP);
-
-	if (!Vehicle::CanAllocateItem() || unit_num > _settings_game.vehicle.max_ships) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
-
 	if (flags & DC_EXEC) {
 		int x;
 		int y;
@@ -642,7 +620,7 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		const ShipVehicleInfo *svi = &e->u.ship;
 
 		Ship *v = new Ship();
-		v->unitnumber = unit_num;
+		*ret = v;
 
 		v->owner = _current_company;
 		v->tile = tile;
@@ -658,11 +636,10 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->spritenum = svi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();
 		v->cargo_cap = svi->capacity;
-		v->value = value.GetCost();
 
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = svi->max_speed;
-		v->engine_type = eid;
+		v->engine_type = e->index;
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
@@ -686,18 +663,9 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		v->InvalidateNewGRFCacheOfChain();
 
 		VehicleMove(v, false);
-
-		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
-		SetWindowDirty(WC_COMPANY, v->owner);
-		if (IsLocalCompany()) {
-			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Ship window
-		}
-
-		Company::Get(_current_company)->num_engines[eid]++;
 	}
 
-	return value;
+	return CommandCost();
 }
 
 /**

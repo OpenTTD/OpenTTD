@@ -28,15 +28,19 @@
 #include "depot_map.h"
 #include "vehiclelist.h"
 #include "engine_base.h"
+#include "engine_func.h"
+#include "articulated_vehicles.h"
+#include "autoreplace_gui.h"
+#include "company_base.h"
 
 #include "table/strings.h"
 
 /* Tables used in vehicle.h to find the right command for a certain vehicle type */
 const uint32 _veh_build_proc_table[] = {
-	CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN),
-	CMD_BUILD_ROAD_VEH     | CMD_MSG(STR_ERROR_CAN_T_BUY_ROAD_VEHICLE),
-	CMD_BUILD_SHIP         | CMD_MSG(STR_ERROR_CAN_T_BUY_SHIP),
-	CMD_BUILD_AIRCRAFT     | CMD_MSG(STR_ERROR_CAN_T_BUY_AIRCRAFT),
+	CMD_BUILD_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN),
+	CMD_BUILD_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_ROAD_VEHICLE),
+	CMD_BUILD_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_SHIP),
+	CMD_BUILD_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_AIRCRAFT),
 };
 
 const uint32 _veh_sell_proc_table[] = {
@@ -60,6 +64,90 @@ const uint32 _send_to_depot_proc_table[] = {
 	CMD_SEND_SHIP_TO_DEPOT      | CMD_MSG(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT),
 	CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR),
 };
+
+
+CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **v);
+CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **v);
+CommandCost CmdBuildShip       (TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **v);
+CommandCost CmdBuildAircraft   (TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **v);
+
+/**
+ * Build a vehicle.
+ * @param tile tile of depot where the vehicle is built
+ * @param flags for command
+ * @param p1 various bitstuffed data
+ *  bits  0-15: vehicle type being built.
+ *  bits 16-31: vehicle type specific bits passed on to the vehicle build functions.
+ * @param p2 unused
+ * @param text unused
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	/* Elementary check for valid location. */
+	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
+
+	VehicleType type;
+	switch (GetTileType(tile)) {
+		case MP_RAILWAY: type = VEH_TRAIN;    break;
+		case MP_ROAD:    type = VEH_ROAD;     break;
+		case MP_WATER:   type = VEH_SHIP;     break;
+		case MP_STATION: type = VEH_AIRCRAFT; break;
+		default: NOT_REACHED(); // Safe due to IsDepotTile()
+	}
+
+	/* Validate the engine type. */
+	EngineID eid = GB(p1, 0, 16);
+	if (!IsEngineBuildable(eid, type, _current_company)) return_cmd_error(STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE + type);
+
+	const Engine *e = Engine::Get(eid);
+	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
+
+	/* Engines without valid cargo should not be available */
+	if (e->GetDefaultCargoType() == CT_INVALID) return CMD_ERROR;
+
+	/* Check whether the number of vehicles we need to build can be built according to pool space. */
+	uint num_vehicles;
+	switch (type) {
+		case VEH_TRAIN:    num_vehicles = (e->u.rail.railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) + CountArticulatedParts(eid, false); break;
+		case VEH_ROAD:     num_vehicles = 1 + CountArticulatedParts(eid, false); break;
+		case VEH_SHIP:     num_vehicles = 1; break;
+		case VEH_AIRCRAFT: num_vehicles = e->u.air.subtype & AIR_CTOL ? 2 : 3; break;
+		default: NOT_REACHED(); // Safe due to IsDepotTile()
+	}
+	if (!Vehicle::CanAllocateItem(num_vehicles)) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
+
+	/* Check whether we can allocate a unit number. Autoreplace does not allocate
+	 * an unit number as it will (always) reuse the one of the replaced vehicle
+	 * and (train) wagons don't have an unit number in any scenario. */
+	UnitID unit_num = (flags & DC_AUTOREPLACE || (type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON)) ? 0 : GetFreeUnitNumber(type);
+	if (unit_num == UINT16_MAX) return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
+
+	Vehicle *v;
+	switch (type) {
+		case VEH_TRAIN:    value.AddCost(CmdBuildRailVehicle(tile, flags, e, GB(p1, 16, 16), &v)); break;
+		case VEH_ROAD:     value.AddCost(CmdBuildRoadVehicle(tile, flags, e, GB(p1, 16, 16), &v)); break;
+		case VEH_SHIP:     value.AddCost(CmdBuildShip       (tile, flags, e, GB(p1, 16, 16), &v)); break;
+		case VEH_AIRCRAFT: value.AddCost(CmdBuildAircraft   (tile, flags, e, GB(p1, 16, 16), &v)); break;
+		default: NOT_REACHED(); // Safe due to IsDepotTile()
+	}
+
+	if (value.Succeeded() && flags & DC_EXEC) {
+		v->unitnumber = unit_num;
+		v->value      = value.GetCost();
+
+		InvalidateWindowData(WC_VEHICLE_DEPOT, tile);
+		InvalidateWindowClassesData(GetWindowClassForVehicleType(type), 0);
+		SetWindowDirty(WC_COMPANY, _current_company);
+		if (IsLocalCompany()) {
+			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the auto replace window
+		}
+
+		Company::Get(_current_company)->num_engines[eid]++;
+	}
+
+	return value;
+}
 
 /**
  * Start/Stop a vehicle
@@ -467,7 +555,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		DoCommandFlag build_flags = flags;
 		if ((flags & DC_EXEC) && !v->IsPrimaryVehicle()) build_flags |= DC_AUTOREPLACE;
 
-		CommandCost cost = DoCommand(tile, v->engine_type, 2, build_flags, GetCmdBuildVeh(v));
+		CommandCost cost = DoCommand(tile, v->engine_type | (1 << 16), 0, build_flags, GetCmdBuildVeh(v));
 
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */

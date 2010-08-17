@@ -202,50 +202,22 @@ void RoadVehUpdateCache(RoadVehicle *v)
 
 /**
  * Build a road vehicle.
- * @param tile tile of depot where road vehicle is built
- * @param flags operation to perform
- * @param p1 bus/truck type being built (engine)
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
+ * @param tile     tile of the depot where road vehicle is built.
+ * @param flags    type of operation.
+ * @param e        the engine to build.
+ * @param data     unused.
+ * @param ret[out] the vehicle that has been built.
+ * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
 {
-	EngineID eid = GB(p1, 0, 16);
-	if (!IsEngineBuildable(eid, VEH_ROAD, _current_company)) return_cmd_error(STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE);
-
-	const Engine *e = Engine::Get(eid);
-	/* Engines without valid cargo should not be available */
-	if (e->GetDefaultCargoType() == CT_INVALID) return CMD_ERROR;
-
-	CommandCost cost(EXPENSES_NEW_VEHICLES, e->GetCost());
-	if (flags & DC_QUERY_COST) return cost;
-
-	/* The ai_new queries the vehicle cost before building the route,
-	 * so we must check against cheaters no sooner than now. --pasky */
-	if (!IsRoadDepotTile(tile)) return CMD_ERROR;
-	if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
-
 	if (HasTileRoadType(tile, ROADTYPE_TRAM) != HasBit(e->info.misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_ERROR_DEPOT_WRONG_DEPOT_TYPE);
-
-	uint num_vehicles = 1 + CountArticulatedParts(eid, false);
-
-	/* Allow for the front and the articulated parts */
-	if (!Vehicle::CanAllocateItem(num_vehicles)) {
-		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
-	}
-
-	/* find the first free roadveh id */
-	UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_ROAD);
-	if (unit_num > _settings_game.vehicle.max_roadveh) {
-		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
-	}
 
 	if (flags & DC_EXEC) {
 		const RoadVehicleInfo *rvi = &e->u.road;
 
 		RoadVehicle *v = new RoadVehicle();
-		v->unitnumber = unit_num;
+		*ret = v;
 		v->direction = DiagDirToDir(GetRoadDepotDirection(tile));
 		v->owner = _current_company;
 
@@ -262,11 +234,10 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->spritenum = rvi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();
 		v->cargo_cap = rvi->capacity;
-		v->value = cost.GetCost();
 
 		v->last_station_visited = INVALID_STATION;
 		v->max_speed = rvi->max_speed;
-		v->engine_type = eid;
+		v->engine_type = e->index;
 		v->rcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
 
 		v->reliability = e->reliability;
@@ -304,19 +275,10 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		VehicleMove(v, false);
 
-		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
-		SetWindowDirty(WC_COMPANY, v->owner);
-		if (IsLocalCompany()) {
-			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Road window
-		}
-
-		Company::Get(_current_company)->num_engines[eid]++;
-
 		CheckConsistencyOfArticulatedVehicle(v);
 	}
 
-	return cost;
+	return CommandCost();
 }
 
 bool RoadVehicle::IsStoppedInDepot() const

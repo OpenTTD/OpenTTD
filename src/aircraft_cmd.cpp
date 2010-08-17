@@ -215,48 +215,25 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 
 /**
  * Build an aircraft.
- * @param tile tile of depot where aircraft is built
- * @param flags for command
- * @param p1 aircraft type being built (engine)
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
+ * @param tile     tile of the depot where aircraft is built.
+ * @param flags    type of operation.
+ * @param e        the engine to build.
+ * @param data     unused.
+ * @param ret[out] the vehicle that has been built.
+ * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
 {
-	EngineID eid = GB(p1, 0, 16);
-	if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _current_company)) return_cmd_error(STR_ERROR_AIRCRAFT_NOT_AVAILABLE);
-
-	const Engine *e = Engine::Get(eid);
 	const AircraftVehicleInfo *avi = &e->u.air;
-	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
-
-	/* Engines without valid cargo should not be available */
-	if (e->GetDefaultCargoType() == CT_INVALID) return CMD_ERROR;
-
-	/* to just query the cost, it is not neccessary to have a valid tile (automation/AI) */
-	if (flags & DC_QUERY_COST) return value;
-
-	if (!IsHangarTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	/* Prevent building aircraft types at places which can't handle them */
-	if (!CanVehicleUseStation(eid, Station::GetByTile(tile))) return CMD_ERROR;
-
-	/* We will need to allocate 2 or 3 vehicle structs, depending on type */
-	if (!Vehicle::CanAllocateItem(avi->subtype & AIR_CTOL ? 2 : 3)) {
-		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
-	}
-
-	UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_AIRCRAFT);
-	if (unit_num > _settings_game.vehicle.max_aircraft) {
-		return_cmd_error(STR_ERROR_TOO_MANY_VEHICLES_IN_GAME);
-	}
+	if (!CanVehicleUseStation(e->index, Station::GetByTile(tile))) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Aircraft *v = new Aircraft(); // aircraft
 		Aircraft *u = new Aircraft(); // shadow
+		*ret = v;
 
-		v->unitnumber = unit_num;
 		v->direction = DIR_SE;
 
 		v->owner = u->owner = _current_company;
@@ -288,12 +265,11 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		v->max_speed = avi->max_speed;
 		v->acceleration = avi->acceleration;
-		v->engine_type = eid;
-		u->engine_type = eid;
+		v->engine_type = e->index;
+		u->engine_type = e->index;
 
 		v->subtype = (avi->subtype & AIR_CTOL ? AIR_AIRCRAFT : AIR_HELICOPTER);
 		v->UpdateDeltaXY(INVALID_DIR);
-		v->value = value.GetCost();
 
 		u->subtype = AIR_SHADOW;
 		u->UpdateDeltaXY(INVALID_DIR);
@@ -338,7 +314,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		/* Aircraft with 3 vehicles (chopper)? */
 		if (v->subtype == AIR_HELICOPTER) {
 			Aircraft *w = new Aircraft();
-			w->engine_type = eid;
+			w->engine_type = e->index;
 			w->direction = DIR_N;
 			w->owner = _current_company;
 			w->x_pos = v->x_pos;
@@ -356,18 +332,9 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			u->SetNext(w);
 			VehicleMove(w, false);
 		}
-
-		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
-		SetWindowDirty(WC_COMPANY, v->owner);
-		if (IsLocalCompany()) {
-			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Aircraft window
-		}
-
-		Company::Get(_current_company)->num_engines[eid]++;
 	}
 
-	return value;
+	return CommandCost();
 }
 
 
