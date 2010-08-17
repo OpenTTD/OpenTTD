@@ -417,7 +417,6 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost total_cost(EXPENSES_NEW_VEHICLES);
-	uint32 build_argument = 2;
 
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
@@ -468,8 +467,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		DoCommandFlag build_flags = flags;
 		if ((flags & DC_EXEC) && !v->IsPrimaryVehicle()) build_flags |= DC_AUTOREPLACE;
 
-		CommandCost cost = DoCommand(tile, v->engine_type, build_argument, build_flags, GetCmdBuildVeh(v));
-		build_argument = 3; // ensure that we only assign a number to the first engine
+		CommandCost cost = DoCommand(tile, v->engine_type, 2, build_flags, GetCmdBuildVeh(v));
 
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
