@@ -303,23 +303,33 @@ struct AISettingsWindow : public Window {
 			int current_value = config->GetSetting((*it).name);
 			bool editable = (_game_mode == GM_MENU) || ((it->flags & AICONFIG_INGAME) != 0);
 
-			SetDParamStr(0, (*it).description);
+			StringID str;
+			TextColour colour;
+			uint idx = 0;
+			if (StrEmpty((*it).description)) {
+				str = STR_JUST_STRING;
+				colour = TC_ORANGE;
+			} else {
+				str = STR_AI_SETTINGS_SETTING;
+				colour = TC_LIGHT_BLUE;
+				SetDParamStr(idx++, (*it).description);
+			}
 
 			if (((*it).flags & AICONFIG_BOOLEAN) != 0) {
 				DrawFrameRect(buttons_left, y  + 2, buttons_left + 19, y + 10, (current_value != 0) ? COLOUR_GREEN : COLOUR_RED, (current_value != 0) ? FR_LOWERED : FR_NONE);
-				SetDParam(1, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
+				SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else {
 				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > (*it).min_value, editable && current_value < (*it).max_value);
 				if (it->labels != NULL && it->labels->Find(current_value) != it->labels->End()) {
-					SetDParam(1, STR_JUST_RAW_STRING);
-					SetDParamStr(2, it->labels->Find(current_value)->second);
+					SetDParam(idx++, STR_JUST_RAW_STRING);
+					SetDParamStr(idx++, it->labels->Find(current_value)->second);
 				} else {
-					SetDParam(1, STR_JUST_INT);
-					SetDParam(2, current_value);
+					SetDParam(idx++, STR_JUST_INT);
+					SetDParam(idx++, current_value);
 				}
 			}
 
-			DrawString(text_left, text_right, y + WD_MATRIX_TOP, STR_AI_SETTINGS_SETTING, TC_LIGHT_BLUE);
+			DrawString(text_left, text_right, y + WD_MATRIX_TOP, str, colour);
 			y += this->line_height;
 		}
 	}
