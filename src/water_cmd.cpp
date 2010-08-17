@@ -817,7 +817,21 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 	td->owner[0] = GetTileOwner(tile);
 }
 
-static void FloodVehicle(Vehicle *v);
+/**
+ * Handle the flooding of a vehicle. This sets the vehicle state to crashed,
+ * creates a newsitem and dirties the necessary windows.
+ * @param v The vehicle to flood.
+ */
+static void FloodVehicle(Vehicle *v)
+{
+	uint pass = v->Crash(true);
+
+	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_FLOODED));
+	SetDParam(0, pass);
+	AddVehicleNewsItem(STR_NEWS_DISASTER_FLOOD_VEHICLE, NS_ACCIDENT, v->index);
+	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
+	SndPlayVehicleFx(SND_12_EXPLOSION, v);
+}
 
 /**
  * Flood a vehicle if we are allowed to flood it, i.e. when it is on the ground.
@@ -827,12 +841,34 @@ static void FloodVehicle(Vehicle *v);
  */
 static Vehicle *FloodVehicleProc(Vehicle *v, void *data)
 {
-	byte z = *(byte*)data;
+	if ((v->vehstatus & VS_CRASHED) != 0) return NULL;
 
-	if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return NULL;
-	if (v->z_pos > z || (v->vehstatus & VS_CRASHED) != 0) return NULL;
+	switch (v->type) {
+		default: break;
 
-	FloodVehicle(v);
+		case VEH_AIRCRAFT: {
+			if (!IsAirportTile(v->tile) || GetTileMaxZ(v->tile) != 0) break;
+			if (v->subtype == AIR_SHADOW) break;
+
+			/* We compare v->z_pos against delta_z + 1 because the shadow
+			 * is at delta_z and the actual aircraft at delta_z + 1. */
+			const Station *st = Station::GetByTile(v->tile);
+			const AirportFTAClass *airport = st->airport.GetFTA();
+			if (v->z_pos != airport->delta_z + 1) break;
+
+			FloodVehicle(v);
+			break;
+		}
+
+		case VEH_TRAIN:
+		case VEH_ROAD: {
+			byte z = *(byte*)data;
+			if (v->z_pos > z) break;
+			FloodVehicle(v->First());
+			break;
+		}
+	}
+
 	return NULL;
 }
 
@@ -847,7 +883,6 @@ static void FloodVehicles(TileIndex tile)
 
 	if (IsAirportTile(tile)) {
 		const Station *st = Station::GetByTile(tile);
-		z = 1 + st->airport.GetFTA()->delta_z;
 		TILE_AREA_LOOP(tile, st->airport) {
 			if (st->TileBelongsToAirport(tile)) FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 		}
@@ -879,35 +914,6 @@ static void FloodVehicles(TileIndex tile)
 
 	FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 	FindVehicleOnPos(end, &z, &FloodVehicleProc);
-}
-
-static void FloodVehicle(Vehicle *v)
-{
-	if ((v->vehstatus & VS_CRASHED) != 0) return;
-	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_AIRCRAFT) return;
-
-	if (v->type == VEH_AIRCRAFT) {
-		/* Crashing aircraft are always at z_pos == 1, never on z_pos == 0,
-		 * because that's always the shadow. Except for the heliport, because
-		 * that station has a big z_offset for the aircraft. */
-		if (!IsAirportTile(v->tile) || GetTileMaxZ(v->tile) != 0) return;
-		const Station *st = Station::GetByTile(v->tile);
-		const AirportFTAClass *airport = st->airport.GetFTA();
-
-		if (v->z_pos != airport->delta_z + 1) return;
-	} else {
-		v = v->First();
-	}
-
-	uint pass = v->Crash(true);
-
-	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_FLOODED));
-	SetDParam(0, pass);
-	AddVehicleNewsItem(STR_NEWS_DISASTER_FLOOD_VEHICLE,
-		NS_ACCIDENT,
-		v->index);
-	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
-	SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
 
 /**
