@@ -755,6 +755,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Кансоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Наладка штучнага інтэлекту (ШІ/AI)
 STR_ABOUT_MENU_SCREENSHOT                                       :Скрыншот (Ctrl+S)
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Здымак экрана ў звычайным маштабе
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Велізарны скрыншот (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Аб гульні OpenTTD
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выраўноўваньне спрайтаў
@@ -2799,6 +2800,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Файлы
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{0:STRING}» можа прывесьці да страты сынхранізацыі й крушэньня гульні.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Мяняецца стан лакаматыва «{1:ENGINE}», які знаходзіцца па-за дэпо.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Мяняецца даўжыня транспарту «{1:ENGINE}», які знаходзіцца па-за дэпо.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Цягнік «{VEHICLE}», які належыць «{COMPANY}», мае няправільную даўжыню. Верагодна, гэта выклікана праблемамі ў файле новай графікі. Гульня можа рассынхранізавацца або «выляцець».
 
@@ -2815,6 +2817,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невядом
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Сьпіс знакаў - {COMMA} зна{P к кi каў}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Рэгiстр
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Ачысціць фільтр
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Пераключыць праверку рэгістра пры параўнанні імёнаў метак з фільтрам
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Ачысціць фільтр
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Зьмяніць надпіс на знаку
@@ -3983,6 +3989,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунэ
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Немагчыма падняць/апусьціць зямлю для іншага канца тунэля
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... занадта шмат аб'ектаў
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Немагчыма пабудаваць аб'ект...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Аб'ект на шляху
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... штаб-кватэра кампаніі на шляху

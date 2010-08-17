@@ -836,7 +836,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} proizvodnja v {INDUSTRY} narašča za {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} proizvodnja upada za 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insekti so povzročili opustošenje v {INDUSTRY}!{}Proizvodnja zmanjšana za 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} proizvodnja v {INDUSTRY} vpada za {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} proizvodnja v {INDUSTRY} upada za {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čaka v garaži
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čaka v garaži
@@ -1192,6 +1192,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Samoobn
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Samoobnovi, ko je vozilo {ORANGE}{STRING}{LTBLUE} mesecev pred/po največji starosti
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Samoobnovi najmanj potrebnega denarja za obnovo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje sporočila o napaki: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zamik lebdenja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Zamik lebdenja: {ORANGE}onemogočeno
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikaz števila prebivalcev ob imenu mesta: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Urejevalnik terena: {ORANGE}{STRING}
@@ -2508,7 +2510,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Manjkajoč
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Ozadje NewGRFa '{0:STRING}' lahko povzroči desinhronizacijo in sesutje igre.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Vozilo '{1:ENGINE}' je spremenilo status obratovanja, ko ni bilo znotraj garaže.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremeni dolžino vozila za '{1:ENGINE}' ko ni v garaži.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremenila se je dolžina vozila za '{1:ENGINE}' ko ni bil v garaži.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' , ki pripada družbi '{COMPANY}', ima neveljavno dolžino. Najbrž vsebuje probleme povezane z NewGRF. Igra se lahko sesuje.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo.
@@ -2524,6 +2526,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neveljavna ind
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam oznak - {COMMA} oznak{P a i e ""}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Ujemanje začetnic
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Počisti filter
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Vključi ujemanje začetnic pri primerjanju imen znakov s filtrom
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Počisti filter
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Uredi znak

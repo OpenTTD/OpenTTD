@@ -442,6 +442,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Visa/dölj konsolen
 STR_ABOUT_MENU_AI_DEBUG                                         :AI-felsökning
 STR_ABOUT_MENU_SCREENSHOT                                       :Skärmdump (Ctrl-S)
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Inzoomad skärmdump
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantisk skärmdump (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteobjekt justering
@@ -2466,6 +2467,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Saknade fi
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}'Beteendet hos '{STRING}' kommer troligen orsaka desynkronisering och/eller krascher.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Byter power wagon-tillstånd för '{1:ENGINE}' utanför en depå.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter fordonlängd för '{1:ENGINE}' utanför en depå.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
@@ -2483,6 +2485,9 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<icke giltig in
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Matcha VERSALER/gemener
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Rensa sökfilter
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Slå på/av matchning av VERSALER/gemener när skyltnamn matchas mot sökfiltret
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Rensa sökfilter
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ändra skylttext

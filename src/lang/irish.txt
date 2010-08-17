@@ -442,6 +442,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Scoránaigh consól
 STR_ABOUT_MENU_AI_DEBUG                                         :Dífhabhtú AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Seat scáileáin (Ctrl+S)
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Seat scáileáin zúmáilte isteach
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Seat scáileáin ollmhór (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Maidir le 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ailínóir spriteanna
@@ -2395,6 +2396,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Iontrái
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Athraigh na paraiméadair NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Dún
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paraiméadar{NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Déan iniúchadh - {STRING}
@@ -2465,6 +2467,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Comhaid ar
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Tá seans maith ann go mbeidh díshioncronú agus/nó tuairteálacha de thoradh ar iompar an NewGRF '{0:STRING}'.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}D'athraigh sé an staid vaigín cumhachtaithe le haghaidh '{1:ENGINE}' nuair nach bhfuil sé in iosta.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Athraíonn sé fad na feithicle le haghaidh '{1:ENGINE}' nuair nach bhfuil sé laistigh d'iosta.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tá fad neamhbhailí ag '{VEHICLE}' le '{COMPANY}'. Is dócha gur fadhbanna le NewGRFanna is cúis leis. Is féidir go ndíshioncronófar an cluiche nó go gclisfidh sé
 
@@ -2481,6 +2484,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<tionscal neamh
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liosta Comhartaí - {COMMA} {P Ch Ch Ch gC C}omhartha
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Meaitseáil an cás
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Glan scagaire
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Scoránaigh idir an cás a mheaitseáil agus ainmneacha comharthaí á gcur i gcomparáid leis an teaghrán scagtha
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Glan teaghrán scagtha
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Cuir téacs an chomhartha in eagar
@@ -3341,6 +3348,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ná hath
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paraiméadair an AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Dún
 STR_AI_SETTINGS_RESET                                           :{BLACK}Athshocraigh
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3628,6 +3636,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Bheadh d
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ní féidir an talamh a thochailt don taobh eile den tollán
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... an iomarca oibiachtaí
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ní féidir an oibiacht a thógáil...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Tá rud sa bhealach
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... tá ceanncheathrú na cuideachta sa bhealach

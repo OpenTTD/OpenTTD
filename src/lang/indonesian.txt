@@ -441,8 +441,8 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasi area 
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Hidup/matikan Layar Konsol
 STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
-STR_ABOUT_MENU_SCREENSHOT                                       :Ambil gambar (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ambil gambar besar (Ctrl-G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Ambil gambar
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ambil gambar keseluruhan peta
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar Sprite
 ############ range ends here
@@ -1408,7 +1408,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Daftar c
 STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan mencurangi pemain lainnya. Kecurangan ini akan tetap tercatat selama game berjalan.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai pemain: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, mercu suar dsb): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, objek tidak bergerak): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowongan boleh menerobos terowongan lain: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Membangun saat mode "BERHENTI": {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat tak akan (sering) celaka di bandara kecil: {ORANGE} {STRING}
@@ -2139,7 +2139,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Pemilik 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Pemilik Rel Kereta: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Pemkot setempat: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Kosong
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinat: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinat: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Dibuat: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Kelas Stasiun: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipe Stasiun: {LTBLUE}{STRING}
@@ -2306,7 +2306,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotasi Heightmap:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nama Peta Heightmap:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Luas:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Masukkan angka umpan pengacakan
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ubah ketinggian garis salju
@@ -2458,7 +2458,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Berkas hil
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Biasanya NewGRF '{0:STRING}' dapat menyebabkan de-sinkron dan atau crash.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ini akan mengubah panjang kereta '{1:ENGINE}' ketika tidak berada di dalam dipo lokomotif.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ini akan mengubah panjang kereta sebanyak '{1:ENGINE}' ketika tidak berada di dalam dipo lokomotif.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin akan rusak atau hang.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' memberikan informasi yang salah.

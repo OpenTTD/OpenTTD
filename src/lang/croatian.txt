@@ -2564,7 +2564,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Nedostaju 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Ponašanje NewGRF '{0:STRING}' će vjerojatno uzrokovati deharmonizaciju i/ili rušenje igre.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Vagon '{1:ENGINE}' promijenjen status motoriziranogt vagona kad nije u depou.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ovo mijenja dužinu vozila za '{1:ENGINE}' kada vozilo nije unutar spremišta.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ovo mijenja dužinu vozila za '{1:ENGINE}' kada vozilo nije unutar depoa.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak'{VEHICLE}' koji pripada tvrtci '{COMPANY}' neispravne je dužine. Uzrok problema je vjerojatno u NewGRF-ovima. Igra će se možda deharmonizirati ili srušiti.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' daje netočne informacije.
@@ -2580,6 +2580,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<pogrešna indu
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Popis znakova - {COMMA} znak{P "" a ova}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Velika i mala slova
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Poništi filter
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Koristi/ne koristi velika i mala slova kod usporedbe imena oznaka sa imenima sa slijedom filtera
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Poništi slijed filtera
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Izmijeni tekst znaka

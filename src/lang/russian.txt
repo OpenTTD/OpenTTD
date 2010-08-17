@@ -2637,6 +2637,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Файлы
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{0:STRING}» может привести к потере синхронизации и вылету игры.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Меняется состояние локомотива «{1:ENGINE}», находящегося вне депо.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта «{1:ENGINE}», находящегося вне депо.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд «{VEHICLE}», принадлежащий «{COMPANY}», имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики. Игра может рассинхронизироваться или вылететь.
 
@@ -2653,6 +2654,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<неизвес
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список меток - {COMMA} мет{P ка ки ок}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Регистр
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Очистить фильтр
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Переключить проверку регистра при сравнении имён меток с фильтром
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Очистить фильтр
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить надпись метки

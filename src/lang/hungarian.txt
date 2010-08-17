@@ -504,8 +504,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terület-inform
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
 STR_ABOUT_MENU_AI_DEBUG                                         :MI debug
-STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Óriás képmentés (Ctrl+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Képmentésben ránagyítva
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Képmentés teljes térképről
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite elhelyező
 ############ range ends here
@@ -2530,7 +2531,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Hiányzó 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}A '{0:STRING}' viselkedése valószínűleg ütközést vagy összeomlást okoz.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatja '{1:ENGINE}' jármű hosszát mikor nincs bent a járműtelepen.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztatta '{1:ENGINE}' hajtott jármű állapotát mikor nem volt bent a járműtelepen.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatta '{1:ENGINE}' jármű hosszát mikor nem volt bent a járműtelepen.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:COMPANY}' vállalat '{0:VEHICLE}'-jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat - lefagyhat.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}A(z) '{0:STRING}' NewGRF helytelen információt tartalmaz.
@@ -2546,6 +2548,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<érvénytelen 
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Egyezés
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Szűrő törlése
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Egyezés ki/bekapcsolása feliratok szövegei és a szűrő kulcsszó összehasonlítása közben
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Szűrő kulcsszó törlése
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Felirat szerkesztése

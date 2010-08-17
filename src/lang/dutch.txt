@@ -2484,6 +2484,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ongeldig bedri
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Hoofdletter gevoelig
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Verwijder filter
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Verwissel hoofdlettergevoeligheid bij het vergelijken van bordnamen met het filter
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Verwijderd het filter
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Wijzig tekst van bord

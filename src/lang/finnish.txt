@@ -219,7 +219,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Syötä suodatin teksti
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Syötä suodatinteksti
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Syötä avainsana suodattaaksesi listan
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Valitse järjestys (laskeva/nouseva)
@@ -2484,6 +2484,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<virheellinen t
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Kylttilista - {COMMA} kylttiä
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Kirjainkoon täsmäys
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Tyhjennä suodatin
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Kytke kirjainkoon täsmäys kun verrataan kylttien nimiä suodatintekstiin
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Tyhjennä suodatinteksti
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Muokkaa kyltin tekstiä.
@@ -3299,8 +3303,8 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Pysäyte
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pysäytä kun:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pysäytä kun
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kun tekoälyn lokiviesti on sama kuin tämä merkkijono, peli pysäytetään.
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Isojen ja pienten kirjainten täsmääminen
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Isojen ja pienten kirjainten täsmääminen kun tekoälyn lokitiedostoja verrataan pysätysmerkkijonoon
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Kirjainkoon täsmäys
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Kytke kirjainkoon täsmäys kun verrataan tekoälyn viestejä pysäytysmerkkijonoon
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jatka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Jatka tekoälyn suorittamista
 

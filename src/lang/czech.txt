@@ -511,8 +511,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informace o zem
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Zobrazit nebo skrýt konzoli
 STR_ABOUT_MENU_AI_DEBUG                                         :Ladění AI
-STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Obrovský screenshot (Ctrl+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Přiblíženo na screenshot
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot celé mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Zarovnávání spritů
 ############ range ends here
@@ -2205,7 +2206,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Majitel 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Majitel tratě: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Místní správa: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nic
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Souřadnice: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Souřadnice: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Postaveno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Třída stanice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Druh stanice: {LTBLUE}{STRING}
@@ -2372,7 +2373,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}vlastní
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Otočení výškové mapy:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Jméno výškové mapy:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Velikost:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Zadej náhodné číslo
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Změnit výšku sněžne čáry
@@ -2454,6 +2455,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Zadej pa
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Úprava nastavení parametrů
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zavřít
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametr {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Zkoumání - {STRING}
@@ -2524,7 +2526,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}některé 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Chování grafiky '{0:STRING}' by mohlo způsobit desynchronizaci a/nebo pád hry.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Mění délku vozidla '{1:ENGINE}', které není v depu.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Změnilo délku vozidla '{1:ENGINE}', když nebylo v depu.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Grafika '{0:STRING}' poskytuje neplatné informace.
@@ -3406,6 +3408,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Neměnit
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametery AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zavřít
 STR_AI_SETTINGS_RESET                                           :{BLACK}Obnovit nastavení
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

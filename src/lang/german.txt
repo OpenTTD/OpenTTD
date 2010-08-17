@@ -22,7 +22,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(nicht definierter String)
+STR_UNDEFINED                                                   :(nicht definierter Text)
 STR_JUST_NOTHING                                                :Nichts
 
 # Cargo related strings
@@ -233,13 +233,13 @@ STR_BUTTON_RENAME                                               :{BLACK}Umbenenn
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fenster schließen
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titelleiste klicken und ziehen, um das Fenster zu verschieben
 STR_TOOLTIP_SHADE                                               :{BLACK}Fenster einklappen - Nur die Titelleiste zeigen
-STR_TOOLTIP_DEBUG                                               :{BLACK}Zeige NewGRF Debug-Informationen
+STR_TOOLTIP_DEBUG                                               :{BLACK}Zeige Daten für NewGRF-Fehlerbeseitigung
 STR_TOOLTIP_STICKY                                              :{BLACK}Fenster wird nicht durch die "schließe alle Fenster"-Taste geschlossen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicken und Ziehen zum Ändern der Größe des Fensters
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Schalter für großes/kleines Fenster
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Zwischen Fenstergrössen umschalten
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: Liste auf- und abwärts blättern
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: Liste nach links und rechts blättern
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Gebäude usw. auf einem Planquadrat abreißen
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Gebäude etc. von einem Planquadrat abreißen
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
