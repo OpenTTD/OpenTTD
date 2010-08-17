@@ -2106,7 +2106,6 @@ void UpdateAirportsNoise()
  */
 CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	bool airport_upgrade = true;
 	StationID station_to_join = GB(p2, 16, 16);
 	bool reuse = (station_to_join != NEW_STATION);
 	if (!reuse) station_to_join = INVALID_STATION;
@@ -2188,8 +2187,6 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT);
 		}
 	} else {
-		airport_upgrade = false;
-
 		/* allocate and initialize new station */
 		if (!Station::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_STATIONS_LOADING);
 
@@ -2239,14 +2236,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			AirportTileAnimationTrigger(st, cur_tile, AAT_BUILT);
 		} while ((++it)->ti.x != -0x80);
 
-		/* if airport was demolished while planes were en-route to it, the
-		 * positions can no longer be the same (v->u.air.pos), since different
-		 * airports have different indexes. So update all planes en-route to this
-		 * airport. Only update if
-		 * 1. airport is upgraded
-		 * 2. airport is added to existing station (unfortunately unavoideable)
-		 */
-		if (airport_upgrade) UpdateAirplanesOnNewStation(st);
+		UpdateAirplanesOnNewStation(st);
 
 		st->UpdateVirtCoord();
 		UpdateStationAcceptance(st, false);

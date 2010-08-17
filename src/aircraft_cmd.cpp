@@ -1958,37 +1958,13 @@ void UpdateAirplanesOnNewStation(const Station *st)
 {
 	/* only 1 station is updated per function call, so it is enough to get entry_point once */
 	const AirportFTAClass *ap = st->airport.GetFTA();
+	Direction rotation = st->airport.tile == INVALID_TILE ? DIR_N : st->airport.rotation;
 
 	Aircraft *v;
 	FOR_ALL_AIRCRAFT(v) {
-		if (v->IsNormalAircraft()) {
-			if (v->targetairport == st->index) { // if heading to this airport
-				/* update position of airplane. If plane is not flying, landing, or taking off
-				 * you cannot delete airport, so it doesn't matter */
-				if (v->state >= FLYING) { // circle around
-					Direction rotation = st->airport.tile == INVALID_TILE ? DIR_N : st->airport.rotation;
-					v->pos = v->previous_pos = AircraftGetEntryPoint(v, ap, rotation);
-					v->state = FLYING;
-					UpdateAircraftCache(v);
-					/* landing plane needs to be reset to flying height (only if in pause mode upgrade,
-					 * in normal mode, plane is reset in AircraftController. It doesn't hurt for FLYING */
-					GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-					/* set new position x,y,z */
-					SetAircraftPosition(v, gp.x, gp.y, GetAircraftFlyingAltitude(v));
-				} else {
-					assert(v->state == ENDTAKEOFF || v->state == HELITAKEOFF);
-					byte takeofftype = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : ENDTAKEOFF;
-					/* search in airportdata for that heading
-					 * easiest to do, since this doesn't happen a lot */
-					for (uint cnt = 0; cnt < ap->nofelements; cnt++) {
-						if (ap->layout[cnt].heading == takeofftype) {
-							v->pos = ap->layout[cnt].position;
-							UpdateAircraftCache(v);
-							break;
-						}
-					}
-				}
-			}
-		}
+		if (!v->IsNormalAircraft() || v->targetairport != st->index) continue;
+		assert(v->state == FLYING);
+		v->pos = v->previous_pos = AircraftGetEntryPoint(v, ap, rotation);
+		UpdateAircraftCache(v);
 	}
 }
