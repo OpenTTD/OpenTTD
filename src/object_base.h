@@ -29,6 +29,8 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 
 	/** Make sure the object isn't zeroed. */
 	Object() {}
+	/** Make sure the right destructor is called as well! */
+	~Object() {}
 
 	/**
 	 * Get the object associated with a tile.
