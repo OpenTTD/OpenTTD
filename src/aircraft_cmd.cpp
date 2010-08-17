@@ -45,30 +45,39 @@
 
 void Aircraft::UpdateDeltaXY(Direction direction)
 {
-	uint32 x;
-#define MKIT(a, b, c, d) ((a & 0xFF) << 24) | ((b & 0xFF) << 16) | ((c & 0xFF) << 8) | ((d & 0xFF) << 0)
+	this->x_offs = -1;
+	this->y_offs = -1;
+	this->x_extent = 2;
+	this->y_extent = 2;
+
 	switch (this->subtype) {
 		default: NOT_REACHED();
+
 		case AIR_AIRCRAFT:
 		case AIR_HELICOPTER:
 			switch (this->state) {
+				default: break;
 				case ENDTAKEOFF:
 				case LANDING:
 				case HELILANDING:
-				case FLYING:     x = MKIT(24, 24, -1, -1); break;
-				default:         x = MKIT( 2,  2, -1, -1); break;
+				case FLYING:
+					this->x_extent = 24;
+					this->y_extent = 24;
+					break;
 			}
 			this->z_extent = 5;
 			break;
-		case AIR_SHADOW:     this->z_extent = 1; x = MKIT(2,  2,  0,  0); break;
-		case AIR_ROTOR:      this->z_extent = 1; x = MKIT(2,  2, -1, -1); break;
-	}
-#undef MKIT
 
-	this->x_offs        = GB(x,  0, 8);
-	this->y_offs        = GB(x,  8, 8);
-	this->x_extent      = GB(x, 16, 8);
-	this->y_extent      = GB(x, 24, 8);
+		case AIR_SHADOW:
+			this->z_extent = 1;
+			this->x_offs = 0;
+			this->y_offs = 0;
+			break;
+
+		case AIR_ROTOR:
+			this->z_extent = 1;
+			break;
+	}
 }
 
 static bool AirportMove(Aircraft *v, const AirportFTAClass *apc);
