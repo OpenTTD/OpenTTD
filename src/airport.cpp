@@ -22,12 +22,6 @@
 #include "table/airport_movement.h"
 #include "table/airporttile_ids.h"
 
-/* Uncomment this to print out a full report of the airport-structure
- * You should either use
- * - true: full-report, print out every state and choice with string-names
- * OR
- * - false: give a summarized report which only shows current and next position */
-//#define DEBUG_AIRPORT false
 
 static AirportFTAClass _airportfta_dummy(
 		_airport_moving_data_dummy,
@@ -144,12 +138,7 @@ static AirportFTAClass _airportfta_helistation(
 
 static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA);
 static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA);
-static byte AirportGetTerminalCount(const byte *terminals, byte *groups);
-static byte AirportTestFTA(uint nofelements, const AirportFTA *layout, const byte *terminals);
 
-#ifdef DEBUG_AIRPORT
-static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool full_report);
-#endif
 
 /**
  * Rotate the airport moving data to another rotation.
@@ -205,48 +194,8 @@ AirportFTAClass::AirportFTAClass(
 	entry_points(entry_points_),
 	delta_z(delta_z_)
 {
-	byte nofterminalgroups;
-
-	/* Set up the terminal and helipad count for an airport.
-	 * TODO: If there are more than 10 terminals or 4 helipads, internal variables
-	 * need to be changed, so don't allow that for now */
-	uint nofterminals = AirportGetTerminalCount(terminals, &nofterminalgroups);
-	if (nofterminals > MAX_TERMINALS) {
-		DEBUG(misc, 0, "[Ap] only a maximum of %d terminals are supported (requested %d)", MAX_TERMINALS, nofterminals);
-		assert(nofterminals <= MAX_TERMINALS);
-	}
-
-	if (num_helipads > MAX_HELIPADS) {
-		DEBUG(misc, 0, "[Ap] only a maximum of %d helipads are supported (requested %d)", MAX_HELIPADS, num_helipads);
-		assert(num_helipads <= MAX_HELIPADS);
-	}
-
-	/* Get the number of elements from the source table. We also double check this
-	 * with the entry point which must be within bounds and use this information
-	 * later on to build and validate the state machine */
-	for (DiagDirection i = DIAGDIR_BEGIN; i < DIAGDIR_END; i++) {
-		if (entry_points[i] >= nofelements) {
-			DEBUG(misc, 0, "[Ap] entry (%d) must be within the airport (maximum %d)", entry_points[i], nofelements);
-			assert(entry_points[i] < nofelements);
-		}
-	}
-
 	/* Build the state machine itself */
-	layout = AirportBuildAutomata(nofelements, apFA);
-	DEBUG(misc, 6, "[Ap] #count %3d; #term %2d (%dgrp); #helipad %2d; entries %3d, %3d, %3d, %3d",
-		nofelements, nofterminals, nofterminalgroups, num_helipads,
-		entry_points[DIAGDIR_NE], entry_points[DIAGDIR_SE], entry_points[DIAGDIR_SW], entry_points[DIAGDIR_NW]);
-
-	/* Test if everything went allright. This is only a rude static test checking
-	 * the symantic correctness. By no means does passing the test mean that the
-	 * airport is working correctly or will not deadlock for example */
-	uint ret = AirportTestFTA(nofelements, layout, terminals);
-	if (ret != MAX_ELEMENTS) DEBUG(misc, 0, "[Ap] problem with element: %d", ret - 1);
-	assert(ret == MAX_ELEMENTS);
-
-#ifdef DEBUG_AIRPORT
-	AirportPrintOut(nofelements, layout, DEBUG_AIRPORT);
-#endif
+	this->layout = AirportBuildAutomata(this->nofelements, apFA);
 }
 
 AirportFTAClass::~AirportFTAClass()
@@ -282,28 +231,6 @@ static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
 	return nofelements;
 }
 
-/**
- * We calculate the terminal/helipod count based on the data passed to us
- * This data (terminals) contains an index as a first element as to how many
- * groups there are, and then the number of terminals for each group
- */
-static byte AirportGetTerminalCount(const byte *terminals, byte *groups)
-{
-	byte nof_terminals = 0;
-	*groups = 0;
-
-	if (terminals != NULL) {
-		uint i = terminals[0];
-		*groups = i;
-		while (i-- > 0) {
-			terminals++;
-			assert(*terminals != 0); // no empty groups please
-			nof_terminals += *terminals;
-		}
-	}
-	return nof_terminals;
-}
-
 
 static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA)
 {
@@ -335,85 +262,6 @@ static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildu
 	}
 	return FAutomata;
 }
-
-
-static byte AirportTestFTA(uint nofelements, const AirportFTA *layout, const byte *terminals)
-{
-	uint next_position = 0;
-
-	for (uint i = 0; i < nofelements; i++) {
-		uint position = layout[i].position;
-		if (position != next_position) return i;
-		const AirportFTA *first = &layout[i];
-
-		for (const AirportFTA *current = first; current != NULL; current = current->next) {
-			/* A heading must always be valid. The only exceptions are
-			 * - multiple choices as start, identified by a special value of 255
-			 * - terminal group which is identified by a special value of 255 */
-			if (current->heading > MAX_HEADINGS) {
-				if (current->heading != 255) return i;
-				if (current == first && current->next == NULL) return i;
-				if (current != first && current->next_position > terminals[0]) return i;
-			}
-
-			/* If there is only one choice, it must be at the end */
-			if (current->heading == 0 && current->next != NULL) return i;
-			/* Obviously the elements of the linked list must have the same identifier */
-			if (position != current->position) return i;
-			/* A next position must be within bounds */
-			if (current->next_position >= nofelements) return i;
-		}
-		next_position++;
-	}
-	return MAX_ELEMENTS;
-}
-
-#ifdef DEBUG_AIRPORT
-static const char * const _airport_heading_strings[] = {
-	"TO_ALL",
-	"HANGAR",
-	"TERM1",
-	"TERM2",
-	"TERM3",
-	"TERM4",
-	"TERM5",
-	"TERM6",
-	"HELIPAD1",
-	"HELIPAD2",
-	"TAKEOFF",
-	"STARTTAKEOFF",
-	"ENDTAKEOFF",
-	"HELITAKEOFF",
-	"FLYING",
-	"LANDING",
-	"ENDLANDING",
-	"HELILANDING",
-	"HELIENDLANDING",
-	"TERM7",
-	"TERM8",
-	"HELIPAD3",
-	"DUMMY" // extra heading for 255
-};
-
-static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool full_report)
-{
-	if (!full_report) printf("(P = Current Position; NP = Next Position)\n");
-
-	for (uint i = 0; i < nofelements; i++) {
-		for (const AirportFTA *current = &layout[i]; current != NULL; current = current->next) {
-			if (full_report) {
-				byte heading = (current->heading == 255) ? MAX_HEADINGS + 1 : current->heading;
-				printf("\tPos:%2d NPos:%2d Heading:%15s Block:%2d\n", current->position,
-					    current->next_position, _airport_heading_strings[heading],
-							FindLastBit(current->block));
-			} else {
-				printf("P:%2d NP:%2d", current->position, current->next_position);
-			}
-		}
-		printf("\n");
-	}
-}
-#endif
 
 const AirportFTAClass *GetAirport(const byte airport_type)
 {
