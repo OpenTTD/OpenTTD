@@ -294,38 +294,6 @@ bool RoadVehicle::IsStoppedInDepot() const
 	return true;
 }
 
-/**
- * Sell a road vehicle.
- * @param tile unused
- * @param flags operation to perform
- * @param p1 vehicle ID to be sold
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
- */
-CommandCost CmdSellRoadVeh(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
-
-	CommandCost ret = CheckOwnership(v->owner);
-	if (ret.Failed()) return ret;
-
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
-
-	if (!v->IsStoppedInDepot()) {
-		return_cmd_error(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT);
-	}
-
-	ret = CommandCost(EXPENSES_NEW_VEHICLES, -v->value);
-
-	if (flags & DC_EXEC) {
-		delete v;
-	}
-
-	return ret;
-}
-
 static FindDepotData FindClosestRoadDepot(const RoadVehicle *v, int max_distance)
 {
 	if (IsRoadDepotTile(v->tile)) return FindDepotData(v->tile, 0);

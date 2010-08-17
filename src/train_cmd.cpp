@@ -1319,39 +1319,24 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 /**
  * Sell a (single) train wagon/engine.
- * @param tile unused
  * @param flags type of operation
- * @param p1 the wagon/engine index
- * @param p2 the selling mode
- * - p2 = 0: only sell the single dragged wagon/engine (and any belonging rear-engines)
- * - p2 = 1: sell the vehicle and all vehicles following it in the chain
- *           if the wagon is dragged, don't delete the possibly belonging rear-engine to some front
- * @param text unused
+ * @param t     the train wagon to sell
+ * @param data  the selling mode
+ * - data = 0: only sell the single dragged wagon/engine (and any belonging rear-engines)
+ * - data = 1: sell the vehicle and all vehicles following it in the chain
+ *             if the wagon is dragged, don't delete the possibly belonging rear-engine to some front
  * @return the cost of this operation or an error
  */
-CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data)
 {
 	/* Check if we deleted a vehicle window */
 	Window *w = NULL;
 
-	Train *v = Train::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
-
-	CommandCost ret = CheckOwnership(v->owner);
-	if (ret.Failed()) return ret;
-
 	/* Sell a chain of vehicles or not? */
-	bool sell_chain = HasBit(p2, 0);
+	bool sell_chain = HasBit(data, 0);
 
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
-
-	v = v->GetFirstEnginePart();
+	Train *v = Train::From(t)->GetFirstEnginePart();
 	Train *first = v->First();
-
-	/* make sure the vehicle is stopped in the depot */
-	if (!first->IsStoppedInDepot()) {
-		return_cmd_error(STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT);
-	}
 
 	if (v->IsRearDualheaded()) return_cmd_error(STR_ERROR_REAR_ENGINE_FOLLOW_FRONT);
 
@@ -1368,7 +1353,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	ArrangeTrains(&sell_head, NULL, &new_head, v, sell_chain);
 
 	/* We don't need to validate the second train; it's going to be sold. */
-	ret = ValidateTrains(NULL, NULL, first, new_head);
+	CommandCost ret = ValidateTrains(NULL, NULL, first, new_head);
 	if (ret.Failed()) {
 		/* Restore the train we had. */
 		RestoreTrainBackup(original);

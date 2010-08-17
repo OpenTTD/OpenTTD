@@ -178,10 +178,9 @@ enum Commands {
 	CMD_PLANT_TREE,                   ///< plant a tree
 
 	CMD_BUILD_VEHICLE,                ///< build a vehicle
+	CMD_SELL_VEHICLE,                 ///< sell a vehicle
+
 	CMD_MOVE_RAIL_VEHICLE,            ///< move a rail vehicle (in the depot)
-
-	CMD_SELL_RAIL_WAGON,              ///< sell a rail wagon
-
 	CMD_SEND_TRAIN_TO_DEPOT,          ///< send a train to a depot
 	CMD_FORCE_TRAIN_PROCEED,          ///< proceed a train to pass a red signal
 	CMD_REVERSE_TRAIN_DIRECTION,      ///< turn a train around
@@ -210,14 +209,12 @@ enum Commands {
 	CMD_RENAME_STATION,               ///< rename a station
 	CMD_RENAME_DEPOT,                 ///< rename a depot
 
-	CMD_SELL_AIRCRAFT,                ///< sell an aircraft
 	CMD_SEND_AIRCRAFT_TO_HANGAR,      ///< send an aircraft to a hanger
 	CMD_REFIT_AIRCRAFT,               ///< refit the cargo space of an aircraft
 
 	CMD_PLACE_SIGN,                   ///< place a sign
 	CMD_RENAME_SIGN,                  ///< rename a sign
 
-	CMD_SELL_ROAD_VEH,                ///< sell a road vehicle
 	CMD_SEND_ROADVEH_TO_DEPOT,        ///< send a road vehicle to the depot
 	CMD_TURN_ROADVEH,                 ///< turn a road vehicle around
 	CMD_REFIT_ROAD_VEH,               ///< refit the cargo space of a road vehicle
@@ -234,7 +231,6 @@ enum Commands {
 	CMD_EXPAND_TOWN,                  ///< expand a town
 	CMD_DELETE_TOWN,                  ///< delete a town
 
-	CMD_SELL_SHIP,                    ///< sell a ship
 	CMD_SEND_SHIP_TO_DEPOT,           ///< send a ship to a depot
 	CMD_REFIT_SHIP,                   ///< refit the cargo space of a ship
 

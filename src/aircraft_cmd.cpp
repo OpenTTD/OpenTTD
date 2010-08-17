@@ -338,36 +338,6 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 }
 
 
-/**
- * Sell an aircraft.
- * @param tile unused
- * @param flags for command type
- * @param p1 vehicle ID to be sold
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
- */
-CommandCost CmdSellAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	Aircraft *v = Aircraft::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
-
-	CommandCost ret = CheckOwnership(v->owner);
-	if (ret.Failed()) return ret;
-
-	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED);
-
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
-
-	ret = CommandCost(EXPENSES_NEW_VEHICLES, -v->value);
-
-	if (flags & DC_EXEC) {
-		delete v;
-	}
-
-	return ret;
-}
-
 bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
 {
 	const Station *st = GetTargetAirportIfValid(this);

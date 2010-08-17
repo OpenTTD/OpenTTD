@@ -44,10 +44,10 @@ const uint32 _veh_build_proc_table[] = {
 };
 
 const uint32 _veh_sell_proc_table[] = {
-	CMD_SELL_RAIL_WAGON | CMD_MSG(STR_ERROR_CAN_T_SELL_TRAIN),
-	CMD_SELL_ROAD_VEH   | CMD_MSG(STR_ERROR_CAN_T_SELL_ROAD_VEHICLE),
-	CMD_SELL_SHIP       | CMD_MSG(STR_ERROR_CAN_T_SELL_SHIP),
-	CMD_SELL_AIRCRAFT   | CMD_MSG(STR_ERROR_CAN_T_SELL_AIRCRAFT),
+	CMD_SELL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_SELL_TRAIN),
+	CMD_SELL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_SELL_ROAD_VEHICLE),
+	CMD_SELL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_SELL_SHIP),
+	CMD_SELL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_SELL_AIRCRAFT),
 };
 
 const uint32 _veh_refit_proc_table[] = {
@@ -147,6 +147,44 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	return value;
+}
+
+CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *v, uint16 data);
+
+/**
+ * Sell a vehicle.
+ * @param tile unused.
+ * @param flags for command.
+ * @param p1 vehicle ID to be sold.
+ * @param p2 unused.
+ * @param text unused.
+ * @return the cost of this operation or an error.
+ */
+CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 16));
+	if (v == NULL) return CMD_ERROR;
+
+	Vehicle *front = v->First();
+
+	CommandCost ret = CheckOwnership(front->owner);
+	if (ret.Failed()) return ret;
+
+	if (front->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
+
+	if (!front->IsStoppedInDepot()) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED + front->type);
+
+	if (v->type == VEH_TRAIN) {
+		ret = CmdSellRailWagon(flags, v, GB(p2, 0, 16));
+	} else {
+		ret = CommandCost(EXPENSES_NEW_VEHICLES, -front->value);
+
+		if (flags & DC_EXEC) {
+			delete front;
+		}
+	}
+
+	return ret;
 }
 
 /**

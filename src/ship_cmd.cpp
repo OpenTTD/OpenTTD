@@ -668,38 +668,6 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, u
 	return CommandCost();
 }
 
-/**
- * Sell a ship.
- * @param tile unused
- * @param flags type of operation
- * @param p1 vehicle ID to be sold
- * @param p2 unused
- * @param text unused
- * @return the cost of this operation or an error
- */
-CommandCost CmdSellShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	Ship *v = Ship::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
-
-	CommandCost ret = CheckOwnership(v->owner);
-	if (ret.Failed()) return ret;
-
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
-
-	if (!v->IsStoppedInDepot()) {
-		return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);
-	}
-
-	ret = CommandCost(EXPENSES_NEW_VEHICLES, -v->value);
-
-	if (flags & DC_EXEC) {
-		delete v;
-	}
-
-	return ret;
-}
-
 bool Ship::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
 {
 	const Depot *depot = FindClosestShipDepot(this, 0);
