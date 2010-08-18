@@ -37,9 +37,6 @@
 assert_compile(sizeof(DestinationID) >= sizeof(DepotID));
 assert_compile(sizeof(DestinationID) >= sizeof(StationID));
 
-TileIndex _backup_orders_tile;
-BackuppedOrders _backup_orders_data;
-
 OrderPool _order_pool("Order");
 INSTANTIATE_POOL_METHODS(Order)
 OrderListPool _orderlist_pool("OrderList");
@@ -1332,113 +1329,6 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 }
 
 /**
- *
- * Backup a vehicle order-list, so you can replace a vehicle
- *  without losing the order-list
- *
- */
-void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
-{
-	/* Make sure we always have freed the stuff */
-	free(bak->order);
-	bak->order = NULL;
-	free(bak->name);
-	bak->name = NULL;
-
-	/* Save general info */
-	bak->orderindex       = v->cur_order_index;
-	bak->group            = v->group_id;
-	bak->service_interval = v->service_interval;
-	if (v->name != NULL) bak->name = strdup(v->name);
-
-	/* If we have shared orders, store it on a special way */
-	if (v->IsOrderListShared()) {
-		const Vehicle *u = (v->FirstShared() == v) ? v->NextShared() : v->FirstShared();
-
-		bak->clone = u->index;
-	} else {
-		/* Else copy the orders */
-
-		/* We do not have shared orders */
-		bak->clone = INVALID_VEHICLE;
-
-
-		/* Count the number of orders */
-		uint cnt = 0;
-		const Order *order;
-		FOR_VEHICLE_ORDERS(v, order) cnt++;
-
-		/* Allocate memory for the orders plus an end-of-orders marker */
-		bak->order = MallocT<Order>(cnt + 1);
-
-		Order *dest = bak->order;
-
-		/* Copy the orders */
-		FOR_VEHICLE_ORDERS(v, order) {
-			memcpy(dest, order, sizeof(Order));
-			dest++;
-		}
-		/* End the list with an empty order */
-		dest->Free();
-	}
-}
-
-/**
- *
- * Restore vehicle orders that are backupped via BackupVehicleOrders
- *
- */
-void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
-{
-	/* If we have a custom name, process that */
-	if (bak->name != NULL) DoCommandP(0, v->index, 0, CMD_RENAME_VEHICLE, NULL, bak->name);
-
-	/* If we had shared orders, recover that */
-	if (bak->clone != INVALID_VEHICLE) {
-		DoCommandP(0, v->index | (bak->clone << 16), CO_SHARE, CMD_CLONE_ORDER);
-	} else {
-
-		/* CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
-		 *  order number is one more than the current amount of orders, and because
-		 *  in network the commands are queued before send, the second insert always
-		 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
-		for (uint i = 0; !bak->order[i].IsType(OT_NOTHING); i++) {
-			Order o = bak->order[i];
-			/* Conditional orders need to have their destination to be valid on insertion. */
-			if (o.IsType(OT_CONDITIONAL)) o.SetConditionSkipToOrder(0);
-
-			if (!DoCommandP(0, v->index + (i << 16), o.Pack(),
-					CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
-				break;
-			}
-
-			/* Copy timetable if enabled */
-			if (_settings_game.order.timetabling && !DoCommandP(0, v->index | (i << 16) | (1 << 25),
-					o.wait_time << 16 | o.travel_time,
-					CMD_CHANGE_TIMETABLE | CMD_NO_TEST_IF_IN_NETWORK)) {
-				break;
-			}
-		}
-
-			/* Fix the conditional orders' destination. */
-		for (uint i = 0; !bak->order[i].IsType(OT_NOTHING); i++) {
-			if (!bak->order[i].IsType(OT_CONDITIONAL)) continue;
-
-			if (!DoCommandP(0, v->index + (i << 16), MOF_LOAD | (bak->order[i].GetConditionSkipToOrder() << 4),
-					CMD_MODIFY_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
-				break;
-			}
-		}
-	}
-
-	/* Restore vehicle order-index and service interval */
-	DoCommandP(0, v->index, bak->orderindex | (bak->service_interval << 16), CMD_RESTORE_ORDER_INDEX);
-
-	/* Restore vehicle group */
-	DoCommandP(0, bak->group, v->index, CMD_ADD_VEHICLE_GROUP);
-}
-
-/**
  * Restore the current order-index of a vehicle and sets service-interval.
  * @param tile unused
  * @param flags operation to perform
@@ -1904,8 +1794,5 @@ bool Order::ShouldStopAtStation(const Vehicle *v, StationID station) const
 void InitializeOrders()
 {
 	_order_pool.CleanPool();
-
 	_orderlist_pool.CleanPool();
-
-	_backup_orders_tile = 0;
 }

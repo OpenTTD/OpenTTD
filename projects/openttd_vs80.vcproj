@@ -644,6 +644,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\order_backup.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\os_timer.cpp"
 				>
 			</File>
@@ -1297,6 +1301,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\openttd.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\order_backup.h"
 				>
 			</File>
 			<File

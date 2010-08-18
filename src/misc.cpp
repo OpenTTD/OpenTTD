@@ -36,6 +36,7 @@ void InitializeVehicles();
 void InitializeDepots();
 void InitializeEngineRenews();
 void InitializeOrders();
+void InitializeOrderBackups();
 void InitializeClearLand();
 void InitializeRailGui();
 void InitializeRoadGui();
@@ -83,6 +84,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	InitializeVehicles();
 	InitializeDepots();
 	InitializeOrders();
+	InitializeOrderBackups();
 	InitializeGroup();
 
 	InitNewsItemStructs();

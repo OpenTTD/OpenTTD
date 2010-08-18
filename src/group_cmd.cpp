@@ -23,6 +23,7 @@
 #include "string_func.h"
 #include "company_func.h"
 #include "core/pool_func.hpp"
+#include "order_backup.h"
 
 #include "table/strings.h"
 
@@ -126,7 +127,7 @@ CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 
 		/* Update backupped orders if needed */
-		if (_backup_orders_data.group == g->index) _backup_orders_data.group = DEFAULT_GROUP;
+		OrderBackup::ClearGroup(g->index);
 
 		/* If we set an autoreplace for the group we delete, remove it. */
 		if (_current_company < MAX_COMPANIES) {

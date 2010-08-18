@@ -21,6 +21,7 @@
 #include "engine_type.h"
 #include "order_func.h"
 #include "transport_type.h"
+#include "group_type.h"
 
 enum VehStatus {
 	VS_HIDDEN          = 0x01,

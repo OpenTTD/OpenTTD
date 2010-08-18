@@ -44,6 +44,7 @@
 #include "engine_func.h"
 #include "newgrf.h"
 #include "station_base.h"
+#include "order_backup.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -2372,9 +2373,7 @@ void CcBuildPrimaryVehicle(const CommandCost &result, TileIndex tile, uint32 p1,
 	if (result.Failed()) return;
 
 	const Vehicle *v = Vehicle::Get(_new_vehicle_id);
-	if (v->tile == _backup_orders_tile) {
-		_backup_orders_tile = 0;
-		RestoreVehicleOrders(v);
-	}
+	OrderBackup *ob = OrderBackup::GetByTile(v->tile);
+	if (ob != NULL) ob->RestoreTo(v);
 	ShowVehicleViewWindow(v);
 }

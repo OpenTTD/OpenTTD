@@ -14,27 +14,7 @@
 
 #include "order_type.h"
 #include "vehicle_type.h"
-#include "tile_type.h"
-#include "group_type.h"
 #include "company_type.h"
-
-struct BackuppedOrders {
-	BackuppedOrders() : order(NULL), name(NULL) { }
-	~BackuppedOrders() { free(order); free(name); }
-
-	VehicleID clone;
-	VehicleOrderID orderindex;
-	GroupID group;
-	Order *order;
-	uint16 service_interval;
-	char *name;
-};
-
-extern TileIndex _backup_orders_tile;
-extern BackuppedOrders _backup_orders_data;
-
-void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *order = &_backup_orders_data);
-void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *order = &_backup_orders_data);
 
 /* Functions */
 void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination);

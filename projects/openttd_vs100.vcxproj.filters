@@ -238,6 +238,9 @@
     <ClCompile Include="..\src\openttd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\order_backup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\os_timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -725,6 +728,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\openttd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\order_backup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\src\order_base.h">

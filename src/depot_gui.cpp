@@ -30,6 +30,7 @@
 #include "tilehighlight_func.h"
 #include "window_gui.h"
 #include "vehiclelist.h"
+#include "order_backup.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -254,8 +255,7 @@ struct DepotWindow : Window {
 		this->FinishInitNested(desc, tile);
 
 		this->owner = GetTileOwner(tile);
-		_backup_orders_tile = 0;
-
+		OrderBackup::Reset();
 	}
 
 	~DepotWindow()
@@ -979,11 +979,11 @@ struct DepotWindow : Window {
 				bool is_engine = (v->type != VEH_TRAIN || Train::From(v)->IsFrontEngine());
 
 				if (is_engine) {
-					_backup_orders_tile = v->tile;
-					BackupVehicleOrders(v);
+					OrderBackup::Reset();
+					new OrderBackup(v);
 				}
 
-				if (!DoCommandP(v->tile, v->index | sell_cmd << 16, 0, GetCmdSellVeh(v->type)) && is_engine) _backup_orders_tile = 0;
+				if (!DoCommandP(v->tile, v->index | sell_cmd << 16, 0, GetCmdSellVeh(v->type)) && is_engine) OrderBackup::Reset();
 				break;
 			}
 

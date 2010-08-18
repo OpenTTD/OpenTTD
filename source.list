@@ -46,6 +46,7 @@ network/network_gamelist.cpp
 network/network_server.cpp
 network/network_udp.cpp
 openttd.cpp
+order_backup.cpp
 os_timer.cpp
 pbs.cpp
 rail.cpp
@@ -234,6 +235,7 @@ object.h
 object_base.h
 object_type.h
 openttd.h
+order_backup.h
 order_base.h
 order_func.h
 order_type.h
