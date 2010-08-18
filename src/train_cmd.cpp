@@ -1888,52 +1888,6 @@ CommandCost CmdForceTrainProceed(TileIndex tile, DoCommandFlag flags, uint32 p1,
 }
 
 /**
- * Refits a train to the specified cargo type.
- * @param tile unused
- * @param flags type of operation
- * @param p1 vehicle ID of the train to refit
- * @param p2 various bitstuffed elements
- * - p2 = (bit 0-7) - the new cargo type to refit to
- * - p2 = (bit 8-15) - the new cargo subtype to refit to
- * - p2 = (bit 16) - refit only this vehicle
- * @param text unused
- * @return the cost of this operation or an error
- */
-CommandCost CmdRefitRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	CargoID new_cid = GB(p2, 0, 8);
-	byte new_subtype = GB(p2, 8, 8);
-	bool only_this = HasBit(p2, 16);
-
-	Train *v = Train::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
-
-	CommandCost ret = CheckOwnership(v->owner);
-	if (ret.Failed()) return ret;
-
-	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT);
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
-
-	/* Check cargo */
-	if (new_cid >= NUM_CARGO) return CMD_ERROR;
-
-	CommandCost cost = RefitVehicle(v, only_this, new_cid, new_subtype, flags);
-
-	/* Update the train's cached variables */
-	if (flags & DC_EXEC) {
-		Train *front = v->First();
-		front->ConsistChanged(false);
-		SetWindowDirty(WC_VEHICLE_DETAILS, front->index);
-		SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
-		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
-	} else {
-		v->InvalidateNewGRFCacheOfChain(); // always invalidate; querycost might have filled it
-	}
-
-	return cost;
-}
-
-/**
  * returns the tile of a depot to goto to. The given vehicle must not be
  * crashed!
  */

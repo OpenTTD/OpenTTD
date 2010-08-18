@@ -179,6 +179,7 @@ enum Commands {
 
 	CMD_BUILD_VEHICLE,                ///< build a vehicle
 	CMD_SELL_VEHICLE,                 ///< sell a vehicle
+	CMD_REFIT_VEHICLE,                ///< refit the cargo space of a vehicle
 
 	CMD_MOVE_RAIL_VEHICLE,            ///< move a rail vehicle (in the depot)
 	CMD_SEND_TRAIN_TO_DEPOT,          ///< send a train to a depot
@@ -210,14 +211,12 @@ enum Commands {
 	CMD_RENAME_DEPOT,                 ///< rename a depot
 
 	CMD_SEND_AIRCRAFT_TO_HANGAR,      ///< send an aircraft to a hanger
-	CMD_REFIT_AIRCRAFT,               ///< refit the cargo space of an aircraft
 
 	CMD_PLACE_SIGN,                   ///< place a sign
 	CMD_RENAME_SIGN,                  ///< rename a sign
 
 	CMD_SEND_ROADVEH_TO_DEPOT,        ///< send a road vehicle to the depot
 	CMD_TURN_ROADVEH,                 ///< turn a road vehicle around
-	CMD_REFIT_ROAD_VEH,               ///< refit the cargo space of a road vehicle
 
 	CMD_PAUSE,                        ///< pause the game
 
@@ -232,7 +231,6 @@ enum Commands {
 	CMD_DELETE_TOWN,                  ///< delete a town
 
 	CMD_SEND_SHIP_TO_DEPOT,           ///< send a ship to a depot
-	CMD_REFIT_SHIP,                   ///< refit the cargo space of a ship
 
 	CMD_ORDER_REFIT,                  ///< change the refit informaction of an order (for "goto depot" )
 	CMD_CLONE_ORDER,                  ///< clone (and share) an order
@@ -244,7 +242,6 @@ enum Commands {
 	CMD_COMPANY_CTRL,                 ///< used in multiplayer to create a new companies etc.
 	CMD_LEVEL_LAND,                   ///< level land
 
-	CMD_REFIT_RAIL_VEHICLE,           ///< refit the cargo space of a train
 	CMD_RESTORE_ORDER_INDEX,          ///< restore vehicle order-index and service interval
 	CMD_BUILD_LOCK,                   ///< build a lock
 

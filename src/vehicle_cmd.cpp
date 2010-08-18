@@ -51,10 +51,10 @@ const uint32 _veh_sell_proc_table[] = {
 };
 
 const uint32 _veh_refit_proc_table[] = {
-	CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_TRAIN),
-	CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE),
-	CMD_REFIT_SHIP         | CMD_MSG(STR_ERROR_CAN_T_REFIT_SHIP),
-	CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_ERROR_CAN_T_REFIT_AIRCRAFT),
+	CMD_REFIT_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_TRAIN),
+	CMD_REFIT_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE),
+	CMD_REFIT_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_SHIP),
+	CMD_REFIT_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_REFIT_AIRCRAFT),
 };
 
 const uint32 _send_to_depot_proc_table[] = {
@@ -187,6 +187,76 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	}
 
 	return ret;
+}
+
+/**
+ * Refits a vehicle to the specified cargo type.
+ * @param tile unused
+ * @param flags type of operation
+ * @param p1 vehicle ID of the train to refit
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit 0-7) - the new cargo type to refit to
+ * - p2 = (bit 8-15) - the new cargo subtype to refit to
+ * - p2 = (bit 16) - refit only this vehicle
+ * @param text unused
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL) return CMD_ERROR;
+
+	Vehicle *front = v->First();
+
+	CommandCost ret = CheckOwnership(front->owner);
+	if (ret.Failed()) return ret;
+
+	/* Don't allow disasters and sparks and such to be refitted. */
+	if (!front->IsPrimaryVehicle()) return CMD_ERROR;
+	/* Don't allow shadows and such to be refitted. */
+	if (v != front && (v->type == VEH_SHIP || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
+	if (!front->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
+	if (front->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
+
+	/* Check cargo */
+	CargoID new_cid = GB(p2, 0, 8);
+	byte new_subtype = GB(p2, 8, 8);
+	if (new_cid >= NUM_CARGO) return CMD_ERROR;
+
+	/* For ships and aircrafts there is always only one. */
+	bool only_this = HasBit(p2, 16) || front->type == VEH_SHIP || front->type == VEH_AIRCRAFT;
+
+	CommandCost cost = RefitVehicle(v, only_this, new_cid, new_subtype, flags);
+
+	if (flags & DC_EXEC) {
+		/* Update the cached variables */
+		switch (v->type) {
+			case VEH_TRAIN:
+				Train::From(front)->ConsistChanged(false);
+				break;
+			case VEH_ROAD:
+				RoadVehUpdateCache(RoadVehicle::From(front));
+				if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) RoadVehicle::From(front)->CargoChanged();
+				break;
+
+			case VEH_SHIP:
+			case VEH_AIRCRAFT:
+				v->InvalidateNewGRFCacheOfChain();
+				v->colourmap = PAL_NONE; // invalidate vehicle colour map
+				break;
+
+			default: NOT_REACHED();
+		}
+
+		InvalidateWindowData(WC_VEHICLE_DETAILS, front->index);
+		SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
+		InvalidateWindowClassesData(GetWindowClassForVehicleType(v->type), 0);
+	} else {
+		/* Always invalidate the cache; querycost might have filled it. */
+		v->InvalidateNewGRFCacheOfChain();
+	}
+
+	return cost;
 }
 
 /**

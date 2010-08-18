@@ -383,49 +383,6 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, DoCommandFlag flags, uint32 
 }
 
 
-/**
- * Refits an aircraft to the specified cargo type.
- * @param tile unused
- * @param flags for command type
- * @param p1 vehicle ID of the aircraft to refit
- * @param p2 various bitstuffed elements
- * - p2 = (bit 0-7) - the new cargo type to refit to
- * - p2 = (bit 8-15) - the new cargo subtype to refit to
- * - p2 = (bit 16) - refit only this vehicle (ignored)
- * @param text unused
- * @return the cost of this operation or an error
- */
-CommandCost CmdRefitAircraft(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	byte new_subtype = GB(p2, 8, 8);
-
-	Aircraft *v = Aircraft::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
-
-	CommandCost ret = CheckOwnership(v->owner);
-	if (ret.Failed()) return ret;
-
-	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR);
-	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
-
-	/* Check cargo */
-	CargoID new_cid = GB(p2, 0, 8);
-	if (new_cid >= NUM_CARGO) return CMD_ERROR;
-
-	CommandCost cost = RefitVehicle(v, true, new_cid, new_subtype, flags);
-
-	if (flags & DC_EXEC) {
-		v->colourmap = PAL_NONE; // invalidate vehicle colour map
-		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
-	}
-	v->InvalidateNewGRFCacheOfChain(); // always invalidate; querycost might have filled it
-
-	return cost;
-}
-
-
 static void CheckIfAircraftNeedsService(Aircraft *v)
 {
 	if (Company::Get(v->owner)->settings.vehicle.servint_aircraft == 0 || !v->NeedsAutomaticServicing()) return;

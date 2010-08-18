@@ -81,6 +81,7 @@ CommandProc CmdMoveRailVehicle;
 
 CommandProc CmdBuildVehicle;
 CommandProc CmdSellVehicle;
+CommandProc CmdRefitVehicle;
 
 CommandProc CmdSendTrainToDepot;
 CommandProc CmdForceTrainProceed;
@@ -113,14 +114,12 @@ CommandProc CmdRenameStation;
 CommandProc CmdRenameDepot;
 
 CommandProc CmdSendAircraftToHangar;
-CommandProc CmdRefitAircraft;
 
 CommandProc CmdPlaceSign;
 CommandProc CmdRenameSign;
 
 CommandProc CmdSendRoadVehToDepot;
 CommandProc CmdTurnRoadVeh;
-CommandProc CmdRefitRoadVeh;
 
 CommandProc CmdPause;
 
@@ -138,7 +137,6 @@ CommandProc CmdChangeSetting;
 CommandProc CmdChangeCompanySetting;
 
 CommandProc CmdSendShipToDepot;
-CommandProc CmdRefitShip;
 
 CommandProc CmdOrderRefit;
 CommandProc CmdCloneOrder;
@@ -153,8 +151,6 @@ CommandProc CmdBuildLock;
 CommandProc CmdCompanyCtrl;
 
 CommandProc CmdLevelLand;
-
-CommandProc CmdRefitRailVehicle;
 
 CommandProc CmdBuildSignalTrack;
 CommandProc CmdRemoveSignalTrack;
@@ -223,8 +219,10 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdBuildShipDepot,                          CMD_AUTO), // CMD_BUILD_SHIP_DEPOT
 	DEF_CMD(CmdBuildBuoy,                               CMD_AUTO), // CMD_BUILD_BUOY
 	DEF_CMD(CmdPlantTree,                               CMD_AUTO), // CMD_PLANT_TREE
+
 	DEF_CMD(CmdBuildVehicle,                                   0), // CMD_BUILD_VEHICLE
 	DEF_CMD(CmdSellVehicle,                                    0), // CMD_SELL_VEHICLE
+	DEF_CMD(CmdRefitVehicle,                                   0), // CMD_REFIT_VEHICLE
 
 	DEF_CMD(CmdMoveRailVehicle,                                0), // CMD_MOVE_RAIL_VEHICLE
 	DEF_CMD(CmdSendTrainToDepot,                               0), // CMD_SEND_TRAIN_TO_DEPOT
@@ -257,14 +255,12 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdRenameDepot,                                    0), // CMD_RENAME_DEPOT
 
 	DEF_CMD(CmdSendAircraftToHangar,                           0), // CMD_SEND_AIRCRAFT_TO_HANGAR
-	DEF_CMD(CmdRefitAircraft,                                  0), // CMD_REFIT_AIRCRAFT
 
 	DEF_CMD(CmdPlaceSign,                                      0), // CMD_PLACE_SIGN
 	DEF_CMD(CmdRenameSign,                                     0), // CMD_RENAME_SIGN
 
 	DEF_CMD(CmdSendRoadVehToDepot,                             0), // CMD_SEND_ROADVEH_TO_DEPOT
 	DEF_CMD(CmdTurnRoadVeh,                                    0), // CMD_TURN_ROADVEH
-	DEF_CMD(CmdRefitRoadVeh,                                   0), // CMD_REFIT_ROAD_VEH
 
 	DEF_CMD(CmdPause,                                 CMD_SERVER), // CMD_PAUSE
 
@@ -279,7 +275,6 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdDeleteTown,                           CMD_OFFLINE), // CMD_DELETE_TOWN
 
 	DEF_CMD(CmdSendShipToDepot,                                0), // CMD_SEND_SHIP_TO_DEPOT
-	DEF_CMD(CmdRefitShip,                                      0), // CMD_REFIT_SHIP
 
 	DEF_CMD(CmdOrderRefit,                                     0), // CMD_ORDER_REFIT
 	DEF_CMD(CmdCloneOrder,                                     0), // CMD_CLONE_ORDER
@@ -292,7 +287,6 @@ static const Command _command_proc_table[] = {
 
 	DEF_CMD(CmdLevelLand, CMD_ALL_TILES | CMD_NO_TEST | CMD_AUTO), // CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once
 
-	DEF_CMD(CmdRefitRailVehicle,                               0), // CMD_REFIT_RAIL_VEHICLE
 	DEF_CMD(CmdRestoreOrderIndex,                              0), // CMD_RESTORE_ORDER_INDEX
 	DEF_CMD(CmdBuildLock,                               CMD_AUTO), // CMD_BUILD_LOCK
 
