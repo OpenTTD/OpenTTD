@@ -103,7 +103,7 @@ static const AirportMovingData _airport_moving_data_commuter[37] = {
 };
 
 /* City Airport (large) 6x6 */
-static const AirportMovingData _airport_moving_data_town[] = {
+static const AirportMovingData _airport_moving_data_city[] = {
 	AMD(   85,    3, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar
 	AMD(   85,   22, 0,                               DIR_N ), // 01 Taxi to right outside depot
 	AMD(   26,   41, AMED_EXACTPOS,                   DIR_SW), // 02 Terminal 1
@@ -728,8 +728,8 @@ static const AirportFTAbuildup _airport_fta_intercontinental[] = {
 
 
 /* heliports, oilrigs don't have depots */
-static const byte _airport_entries_heliport_oilrig[] = { 7, 7, 7, 7 };
-static const AirportFTAbuildup _airport_fta_heliport_oilrig[] = {
+static const byte _airport_entries_heliport[] = { 7, 7, 7, 7 };
+static const AirportFTAbuildup _airport_fta_heliport[] = {
 	{ 0, HELIPAD1, HELIPAD1_block, 1 },
 	{ 1, HELITAKEOFF, NOTHING_block, 0 }, // takeoff
 	{ 2, 255, AIRPORT_BUSY_block, 0 }, { 2, HELILANDING, 0, 3 }, { 2, HELITAKEOFF, 0, 1 },
@@ -742,6 +742,8 @@ static const AirportFTAbuildup _airport_fta_heliport_oilrig[] = {
 	{ 8, FLYING, NOTHING_block, 5 }, { 8, HELILANDING, HELIPAD1_block, 2 }, // landing
 	{ MAX_ELEMENTS, 0, 0, 0 } // end marker. DO NOT REMOVE
 };
+#define _airport_entries_oilrig _airport_entries_heliport
+#define _airport_fta_oilrig _airport_fta_heliport
 
 /* helidepots */
 static const HangarTileTable _airport_depots_helidepot[] = { {{1, 0}, 0} };

@@ -23,115 +23,31 @@
 #include "table/airporttile_ids.h"
 
 
-static AirportFTAClass _airportfta_dummy(
-		_airport_moving_data_dummy,
-		NULL,
-		0,
-		_airport_entries_dummy,
-		AirportFTAClass::ALL,
-		_airport_fta_dummy,
-		0
-	);
+#define AIRPORT_GENERIC(name, terminals, num_helipads, flags, delta_z) \
+	static AirportFTAClass _airportfta_ ## name(_airport_moving_data_ ## name, terminals, \
+			num_helipads, _airport_entries_ ## name, flags, _airport_fta_ ## name, delta_z);
 
-static AirportFTAClass _airportfta_country(
-		_airport_moving_data_country,
-		_airport_terminal_country,
-		0,
-		_airport_entries_country,
-		AirportFTAClass::ALL | AirportFTAClass::SHORT_STRIP,
-		_airport_fta_country,
-		0
-	);
+#define AIRPORT(name, num_helipads, short_strip) \
+	AIRPORT_GENERIC(name, _airport_terminal_ ## name, num_helipads, AirportFTAClass::ALL | (short_strip ? AirportFTAClass::SHORT_STRIP : (AirportFTAClass::Flags)0), 0)
 
-static AirportFTAClass _airportfta_city(
-		_airport_moving_data_town,
-		_airport_terminal_city,
-		0,
-		_airport_entries_city,
-		AirportFTAClass::ALL,
-		_airport_fta_city,
-		0
-	);
+#define HELIPORT(name, num_helipads, delta_z) \
+	AIRPORT_GENERIC(name, NULL, num_helipads, AirportFTAClass::HELICOPTERS, delta_z)
 
-static AirportFTAClass _airportfta_oilrig(
-		_airport_moving_data_oilrig,
-		NULL,
-		1,
-		_airport_entries_heliport_oilrig,
-		AirportFTAClass::HELICOPTERS,
-		_airport_fta_heliport_oilrig,
-		54
-	);
+AIRPORT(country, 0, true)
+AIRPORT(city, 0, false)
+HELIPORT(heliport, 1, 60)
+AIRPORT(metropolitan, 0, false)
+AIRPORT(international, 2, false)
+AIRPORT(commuter, 2, true)
+HELIPORT(helidepot, 1, 0)
+AIRPORT(intercontinental, 2, false)
+HELIPORT(helistation, 3, 0)
+HELIPORT(oilrig, 1, 54)
+AIRPORT_GENERIC(dummy, NULL, 0, AirportFTAClass::ALL, 0)
 
-static AirportFTAClass _airportfta_heliport(
-		_airport_moving_data_heliport,
-		NULL,
-		1,
-		_airport_entries_heliport_oilrig,
-		AirportFTAClass::HELICOPTERS,
-		_airport_fta_heliport_oilrig,
-		60
-	);
-
-static AirportFTAClass _airportfta_metropolitan(
-		_airport_moving_data_metropolitan,
-		_airport_terminal_metropolitan,
-		0,
-		_airport_entries_metropolitan,
-		AirportFTAClass::ALL,
-		_airport_fta_metropolitan,
-		0
-	);
-
-static AirportFTAClass _airportfta_international(
-		_airport_moving_data_international,
-		_airport_terminal_international,
-		2,
-		_airport_entries_international,
-		AirportFTAClass::ALL,
-		_airport_fta_international,
-		0
-	);
-
-static AirportFTAClass _airportfta_commuter(
-		_airport_moving_data_commuter,
-		_airport_terminal_commuter,
-		2,
-		_airport_entries_commuter,
-		AirportFTAClass::ALL | AirportFTAClass::SHORT_STRIP,
-		_airport_fta_commuter,
-		0
-	);
-
-static AirportFTAClass _airportfta_helidepot(
-		_airport_moving_data_helidepot,
-		NULL,
-		1,
-		_airport_entries_helidepot,
-		AirportFTAClass::HELICOPTERS,
-		_airport_fta_helidepot,
-		0
-	);
-
-static AirportFTAClass _airportfta_intercontinental(
-		_airport_moving_data_intercontinental,
-		_airport_terminal_intercontinental,
-		2,
-		_airport_entries_intercontinental,
-		AirportFTAClass::ALL,
-		_airport_fta_intercontinental,
-		0
-	);
-
-static AirportFTAClass _airportfta_helistation(
-		_airport_moving_data_helistation,
-		NULL,
-		3,
-		_airport_entries_helistation,
-		AirportFTAClass::HELICOPTERS,
-		_airport_fta_helistation,
-		0
-	);
+#undef HELIPORT
+#undef AIRPORT
+#undef AIRPORT_GENERIC
 
 #include "table/airport_defaults.h"
 
