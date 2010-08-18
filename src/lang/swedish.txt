@@ -3553,10 +3553,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan inte
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan inte byta namn på terminal
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tåget måste stoppas inne i depån
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Tåget måste stoppas inne i depån
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... måste stoppas inuti ett bussgarage
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skepp måste vara stoppat i depå
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Flygplan måste stoppas i hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Skepp måste vara stoppat i depå
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Flygplan måste stoppas i hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tåg kan bara ändras när det står still inuti en depå
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tåg för långt

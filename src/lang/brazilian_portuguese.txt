@@ -3536,10 +3536,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossí
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Impossível renomear depósito...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}O trem deve estar parado dentro do depósito
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}O trem deve estar parado dentro do depósito
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve estar parado dentro de uma garagem
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}A embarcação deve estar parado no depósito naval
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}A aeronave deve estar parada no hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}A embarcação deve estar parado no depósito naval
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}A aeronave deve estar parada no hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os trens só podem ser alterados quando parados num depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trem muito longo

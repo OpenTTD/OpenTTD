@@ -3553,10 +3553,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ní féi
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ní féidir an t-iosta a athainmniú...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Ní mór an traein a bheith stoptha in iosta
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Ní mór an traein a bheith stoptha in iosta
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... ní mór go mbeadh sé stoptha in iosta feithiclí bóthair
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Ní mór an long a bheith stoptha in iosta
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Ní mór don aerárthach a bheith stoptha i haingear
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Ní mór an long a bheith stoptha in iosta
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Ní mór don aerárthach a bheith stoptha i haingear
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Ní féidir traenacha a athrú ach amháin nuair atá siad in iosta
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tá an traein rófhada

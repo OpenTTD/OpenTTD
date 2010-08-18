@@ -3501,10 +3501,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Aquí no
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}No es pot canviar el nom a la cotxera...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}El tren s'ha de parar dins de la cotxera
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}El tren s'ha de parar dins de la cotxera
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... s'ha de parar dins d'una cotxera
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}El vaixell s'ha de parar a la drassana
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}L'avió s'ha de parar a l'hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}El vaixell s'ha de parar a la drassana
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}L'avió s'ha de parar a l'hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Els trens només es poden modificar quan estan parats dins d'una cotxera
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren massa llarg

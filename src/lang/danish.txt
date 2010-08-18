@@ -3494,10 +3494,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikke
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan ikke omdøbe depot...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget skal være stoppet inde i en remise
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Toget skal være stoppet inde i en remise
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... skal være stoppet inde i et værksted først
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skibet skal være stoppet i dok
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Flyet skal være stoppet i en hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Skibet skal være stoppet i dok
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Flyet skal være stoppet i en hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tog kan kun ændres når de er stoppet i en remise
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt

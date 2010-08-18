@@ -3593,10 +3593,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Laivų d
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Garažo pervadinti negalima...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Traukinys turi buti sustabdytas depe
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Traukinys turi buti sustabdytas depe
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... automobilis turi buti sustabdytas garaže
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Laivas turi buti sustabdytas garaze
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lėktuvas turi būti sustabdytas angare
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Laivas turi buti sustabdytas garaze
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Lėktuvas turi būti sustabdytas angare
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Sukeisti traukinius galima tiktai sustabdytus depe
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Traukinys per ilgas

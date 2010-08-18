@@ -3546,10 +3546,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}여기�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}차량 기지의 이름을 바꿀 수 없습니다...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}차량기지 안에 정지해있어야 합니다!
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}차량기지 안에 정지해있어야 합니다!
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 차고 안에서 정지해있어야 합니다!
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}정박소 내에서 정지해있어야 합니다!
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}격납고 내에서 정지해있어야합니다
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}정박소 내에서 정지해있어야 합니다!
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}격납고 내에서 정지해있어야합니다
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}차량기지 내에서 정지한 경우에만 개조할 수 있습니다
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}열차가 너무 깁니다!

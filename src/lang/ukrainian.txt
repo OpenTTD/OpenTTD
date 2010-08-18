@@ -3668,10 +3668,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Немо
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Неможливо перейменувати депо...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поїзд повинен стояти в депо
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Поїзд повинен стояти в депо
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... повинно стояти в гаражі
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Корабль має стояти в доці
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Літак повинен стояти в ангарі
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Корабль має стояти в доці
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Літак повинен стояти в ангарі
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Поїзд можна змінювати тільки тоді, коли зупинений в депо
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поїзд дуже довгий

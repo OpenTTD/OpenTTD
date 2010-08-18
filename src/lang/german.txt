@@ -3554,10 +3554,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Werft ka
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Depot kann nicht umbenannt werden...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zug muss im Depot angehalten sein
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Zug muss im Depot angehalten sein
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... muss in einem Fahrzeugdepot angehalten werden
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schiff muss in der Werft angehalten werden
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Flugzeug muss im Hangar angehalten werden
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Schiff muss in der Werft angehalten werden
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Flugzeug muss im Hangar angehalten werden
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Züge können nur verändert werden, wenn sie im Depot halten
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Zug zu lang

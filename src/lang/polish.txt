@@ -3933,10 +3933,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nie moż
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nie można zmienić nazwy zajezdni...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Pociąg musi być zatrzymany w zajezdni
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Pociąg musi być zatrzymany w zajezdni
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musi być zatrzymany w zajezdni samochodowej
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Statek musi być zatrzymany w stoczni
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Samolot musi być zatrzymany w hangarze
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Statek musi być zatrzymany w stoczni
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Samolot musi być zatrzymany w hangarze
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Pociąg może być modyfikowany tylko gdy jest zatrzymany w zajezdni
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Pociąg jest zbyt długi

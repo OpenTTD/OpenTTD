@@ -3332,10 +3332,10 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Get ekki reist sporvagnaskýli hér...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Get ekki reist slipp hér...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Lest þarf að vera stöðvuð í skýli
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Lest þarf að vera stöðvuð í skýli
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... verður að stöðvast í bifreiðaskýli
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skip verður að vera stöðvað í skýli
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Flugvélin verður að vera stöðvuð í flugskýli
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Skip verður að vera stöðvað í skýli
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Flugvélin verður að vera stöðvuð í flugskýli
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Lestin er of löng

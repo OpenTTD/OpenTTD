@@ -3649,10 +3649,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ovdje ni
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nije moguće preimenovati depo...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti zaustavljen unutar spremišta
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Vlak mora biti zaustavljen unutar spremišta
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora biti zaustavljen unutar spremišta cestovnih vozila
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Brod mora biti zaustavljen u spremištu
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Zrakoplov mora biti zaustavljen u hangaru
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Brod mora biti zaustavljen u spremištu
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Zrakoplov mora biti zaustavljen u hangaru
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlakovi mogu biti izmjenjeni jedino kad su zaustavljeni u spremištu
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Predugačak vlak

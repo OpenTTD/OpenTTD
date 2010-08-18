@@ -1652,7 +1652,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}نمیت
 
 # Depot related errors
 
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}هواپیما باید در آشیانه متوقف شود
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}هواپیما باید در آشیانه متوقف شود
 
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}قطار بسیار طولانی شده
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}نمیتوان جهت حرکت وسیله را معکوس کرد...

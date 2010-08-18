@@ -3595,10 +3595,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tukaj ni
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ni mogoče preimenovati garaže...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti ustavljen v garaži
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Vlak mora biti ustavljen v garaži
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora biti ustavljen v garaži cestnih vozil
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Ladja mora biti ustavljena in v garaži
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Letalo mora biti ustavljeno v hangarju
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Ladja mora biti ustavljena in v garaži
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Letalo mora biti ustavljeno v hangarju
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaki so lahko spremenjeni šele, ko stojijo v garaži
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vlak je predolg

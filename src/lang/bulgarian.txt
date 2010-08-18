@@ -3464,10 +3464,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Тук �
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Преименуването на депото не се получи...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Влакът трябва да бъде спрян в депото
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Влакът трябва да бъде спрян в депото
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... трябва да бъде спряно в сервиз за коли
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Корабът трябва да е спрян в депото
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Самолета трябва да бъде спрян в хангар
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Корабът трябва да е спрян в депото
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Самолета трябва да бъде спрян в хангар
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Влаковете могат да бъдат променяни само когато са спрени в депото
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Влакът е прекалено дълъг

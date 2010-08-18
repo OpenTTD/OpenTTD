@@ -3343,10 +3343,10 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Šeit ne
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Šeit nav iespējams uzbūvēt tramvaja depo...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Šeit nevar būvēt ķuģu depo...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vilciens ja'apsta'dina kad tas ierodas depo
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Vilciens ja'apsta'dina kad tas ierodas depo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... jābūt apstādinātam depo iekšpusē
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Kuģim jābūt apstādinātam depo
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lidaparātu var apturēt angārā
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Kuģim jābūt apstādinātam depo
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Lidaparātu var apturēt angārā
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vilcienus ir iespējams pārveidot tikai tad, kad tie ir apstādināti depo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vilciens ir pārāk garš

@@ -3553,10 +3553,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan dok 
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan depot niet hernoemen...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trein moet gestopt zijn in depot
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Trein moet gestopt zijn in depot
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moet gestopt zijn binnen een wegvoertuigdepot
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schip moet gestopt zijn binnen een dok
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Vliegtuig moet gestopt zijn in een hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Schip moet gestopt zijn binnen een dok
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Vliegtuig moet gestopt zijn in een hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treinen kunnen alleen aangepast worden als ze gestopt zijn binnen een depot
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lang

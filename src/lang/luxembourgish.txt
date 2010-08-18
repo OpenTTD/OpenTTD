@@ -3513,10 +3513,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kann de 
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kann den Depot net ëmbenennen
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zuch muss am Depot sinn
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Zuch muss am Depot sinn
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... muss an engem Depot gestoppt gin
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Schëff muss am Depot stoen
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Fliger muss am Hangar sinn
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Schëff muss am Depot stoen
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Fliger muss am Hangar sinn
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Zich kënnen nëmmen an engem Depot verännert ginn
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Zuch ze laang

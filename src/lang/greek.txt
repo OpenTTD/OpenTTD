@@ -3637,10 +3637,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Δεν �
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Δεν μπορεί να μετανομαστεί το αμαξοστάσιο/ναυπηγείο
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Το τρένο πρέπει να σταματήσει μέσα σε αμαξοστάσιο
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Το τρένο πρέπει να σταματήσει μέσα σε αμαξοστάσιο
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... πρέπει να σταματήσει μέσα σε αμαξοστάσιο οχημάτων
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Το πλοίο πρέπει να σταματήσει μέσα στο ναυπηγείο
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Το αεροπλάνο πρέπει να σταματήσει μέσα στο υπόστεγο
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Το πλοίο πρέπει να σταματήσει μέσα στο ναυπηγείο
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Το αεροπλάνο πρέπει να σταματήσει μέσα στο υπόστεγο
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Τα τρένα μπόρουν να τροποιηθούν μόνο όταν σταματήσουν μέσα σε αμαξοστάσιο
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Τρένο πολύ μεγάλο

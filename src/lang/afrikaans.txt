@@ -3450,10 +3450,10 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Kan nie 
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Skip depot kan nie hier gebou word nie...
 
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trein moet binne in 'n depot gestop word
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Trein moet binne in 'n depot gestop word
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moet gestop binne 'n pad voertuig depot wees
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skip moet in 'n depot gestop wees
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Vliegtuig moet in hangar gestop wees
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Skip moet in 'n depot gestop wees
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Vliegtuig moet in hangar gestop wees
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treine kan slegs verander word as hulle in die depot gestop is
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lank

@@ -3389,10 +3389,10 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}ここ�
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}ここに路面電車庫を建設できません...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}ここに造船所を建設できません...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列車は車庫に止めなければなりません
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}列車は車庫に止めなければなりません
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 車庫内に停止しなければなりません
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船舶は造船所内で停止しなければなりません
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}飛行機を格納庫内で停止しなければなりません
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}船舶は造船所内で停止しなければなりません
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}飛行機を格納庫内で停止しなければなりません
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車の変更は鉄道車庫内でのみ行えます
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車が長過ぎます

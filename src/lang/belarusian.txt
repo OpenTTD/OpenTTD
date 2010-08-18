@@ -3906,10 +3906,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Тут �
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Не атрымалася перайменаваць дэпо...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Цягнік павінен быць спынены ў дэпо
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Цягнік павінен быць спынены ў дэпо
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... павінен быць спынены ў гаражы
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Карабель павінен быць спынены ў доку
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Самалёт павінен быць спынены ў ангары
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Карабель павінен быць спынены ў доку
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Самалёт павінен быць спынены ў ангары
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Склад цягніка можна мяняць толькі ў дэпо
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Цягнiк занадта доўгi

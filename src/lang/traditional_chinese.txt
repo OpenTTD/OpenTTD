@@ -3545,10 +3545,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}無法�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}無法修改機廠名稱...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列車必須停在機廠内
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}列車必須停在機廠内
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 必須停在車庫内
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船舶必須停在船塢内
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}飛機必須停在機棚内
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}船舶必須停在船塢内
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}飛機必須停在機棚内
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車只有在停放於機廠內的時候才能變動
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車太長

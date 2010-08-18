@@ -3399,10 +3399,10 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Non se p
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Non se pode construír o depósito de tranvías aquí...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Non se pode construí-lo depósito de barcos aí...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}O tren debe estar parado nun depósito
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}O tren debe estar parado nun depósito
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... debe estar parado dentro dun depósito de vehículos de estrada
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}O barco debe estar parado no depósito
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}O avión debe estar parado no hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}O barco debe estar parado no depósito
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}O avión debe estar parado no hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os trens só se poden alterar cando estean parados nun depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}O tren é demasiado longo

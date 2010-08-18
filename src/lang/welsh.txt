@@ -3302,10 +3302,10 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Methu ad
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Methu adeiladu depo cerbyd tramiau yma...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Methu adeiladu depo llong yma...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Rhaid i'r trên fod wedi'i stopio mewn depo
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Rhaid i'r trên fod wedi'i stopio mewn depo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Rhaid i'r llong fod wedi'i stopio mewn depo
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Rhaid i awyrennau rhaid i awyrennau fod wedi'i stopio mewn awyrendy
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Rhaid i'r llong fod wedi'i stopio mewn depo
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Rhaid i awyrennau rhaid i awyrennau fod wedi'i stopio mewn awyrendy
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Gellir newid trenau yn unig pan fyddan nhw wedi stopio tu mewn i ddepo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Mae'r Trên yn rhy hir

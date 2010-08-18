@@ -3536,10 +3536,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tidak da
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Tidak dapat mengubah nama dipo...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Kereta harus diberhentikan di dalam dipo
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Kereta harus diberhentikan di dalam dipo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... harus dihentikan didalam bengkel kendaraan
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Kapal harus berhenti di galangan
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Pesawat harus berhenti di hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Kapal harus berhenti di galangan
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Pesawat harus berhenti di hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Kereta hanya dapat diubah ketika berhenti di dalam dipo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Kereta terlalu panjang

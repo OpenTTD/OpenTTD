@@ -3440,10 +3440,10 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}لا ي�
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}لا يمكن بناء ورشة ترام هنا ...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}لا يمكن بناء حوض صيانة هنا ...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}يجب ان يتوقف القطار بالكامل داخل مستودع الصيانة
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}يجب ان يتوقف القطار بالكامل داخل مستودع الصيانة
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... يجب ان يوقف داخل ورشة الصيانة.
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}يجب ان تكون السفينة متوقفة في حوض الصيانة
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}يجب ان تكون الطائرة متوقفة في الحظيرة
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}يجب ان تكون السفينة متوقفة في حوض الصيانة
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}يجب ان تكون الطائرة متوقفة في الحظيرة
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}يمكن تعديل القطارعندما يكون متوقف في ورشة الصيانة
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}القطار طويل جدا

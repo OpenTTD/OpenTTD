@@ -3517,10 +3517,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikke
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan ikke endre navn på garasje/stall/hangar/dokk...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget må være stoppet i togstallen
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Toget må være stoppet i togstallen
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... må være stoppet i en garasje
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skipet må være stoppet i skipsdokken
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Luftfartøyet må være stoppet i hangaren
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Skipet må være stoppet i skipsdokken
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Luftfartøyet må være stoppet i hangaren
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tog kan kun endres når det har stoppet i togstallen
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt

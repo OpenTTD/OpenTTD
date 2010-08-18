@@ -3393,10 +3393,10 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ne povas
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ne povas konstrui ŝipgaraĝon ĉi tie...
 
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trajno estu haltita en garaĝo
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Trajno estu haltita en garaĝo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... devas esti halta en stratveturila garaĝo
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Ŝipo devas halti en garaĝo
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Aviadilo devas esti haltigata en la hangaro
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Ŝipo devas halti en garaĝo
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Aviadilo devas esti haltigata en la hangaro
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trajnoj povas esti ŝanĝitaj nur dum halto en garaĝo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trajno tro longas

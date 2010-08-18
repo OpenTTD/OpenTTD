@@ -89,10 +89,10 @@ void SQAIVehicle_Register(Squirrel *engine)
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_SHIP,                                    AIVehicle::ERR_VEHICLE_CANNOT_REFIT);
 	AIError::RegisterErrorMap(STR_ERROR_CAN_T_REFIT_AIRCRAFT,                                AIVehicle::ERR_VEHICLE_CANNOT_REFIT);
 	AIError::RegisterErrorMap(STR_ERROR_VEHICLE_IS_DESTROYED,                                AIVehicle::ERR_VEHICLE_IS_DESTROYED);
-	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED,                            AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
+	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR,              AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT,           AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
-	AIError::RegisterErrorMap(STR_TRAIN_MUST_BE_STOPPED,                                     AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
-	AIError::RegisterErrorMap(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT,                       AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
+	AIError::RegisterErrorMap(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT,                  AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
+	AIError::RegisterErrorMap(STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT,                   AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT);
 	AIError::RegisterErrorMap(STR_ERROR_AIRCRAFT_IS_IN_FLIGHT,                               AIVehicle::ERR_VEHICLE_IN_FLIGHT);
 	AIError::RegisterErrorMap(STR_ERROR_TRAIN_START_NO_CATENARY,                             AIVehicle::ERR_VEHICLE_NO_POWER);
 

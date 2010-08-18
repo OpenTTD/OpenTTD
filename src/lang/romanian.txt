@@ -3553,10 +3553,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nu se po
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nu se poate redenumi depoul...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trenul trebuie oprit într-un depou
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Trenul trebuie oprit într-un depou
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... trebuie oprit într-o autobază
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Nava trebuie să fie staţionată într-un şantier
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Aeronava trebuie să staţioneze într-un hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Nava trebuie să fie staţionată într-un şantier
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Aeronava trebuie să staţioneze într-un hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trenurile pot fi modificate doar când staţionează într-un depou
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren prea lung

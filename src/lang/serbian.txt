@@ -3759,10 +3759,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ovde nij
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ovaj depo se ne može preimenovati...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Voz se mora zaustaviti u nekom depou
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Voz se mora zaustaviti u nekom depou
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora se zaustaviti unutar depoa za drumska vozila
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Brod mora biti zaustavljen u depou
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Letilica se mora zaustaviti u nekom hangaru
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Brod mora biti zaustavljen u depou
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Letilica se mora zaustaviti u nekom hangaru
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vozovi se mogu izmeniti samo kada su zaustavljeni u depou
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Voz je predugačak

@@ -3542,10 +3542,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Không t
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Không thể đổi tên xưởng...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tàu phải dừng lại ở trong xưởng
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Tàu phải dừng lại ở trong xưởng
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... phải dừng trong xưởng ôtô
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Tàu thuỷ phải dừng ở trong xưởng
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Máy bay phải dừng lại trong xưởng
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Tàu thuỷ phải dừng ở trong xưởng
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Máy bay phải dừng lại trong xưởng
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Đoàn tàu chỉ có thể thay đổi khi dừng lại bên trong xưởng
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Đoàn tàu quá dài

@@ -174,7 +174,7 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	if (front->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
 
-	if (!front->IsStoppedInDepot()) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED + front->type);
+	if (!front->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
 
 	if (v->type == VEH_TRAIN) {
 		ret = CmdSellRailWagon(flags, v, GB(p1, 16, 16));

@@ -1985,8 +1985,8 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kin hjir
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Kin hjir gjin auto depot boue...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kin hjir gjin skipdepot boue...
 
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Skip moat stopt wêze yn depot
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Fleantúg moat stopt wêze yn hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Skip moat stopt wêze yn depot
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Fleantúg moat stopt wêze yn hangar
 
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lang
 

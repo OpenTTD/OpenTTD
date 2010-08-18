@@ -3604,10 +3604,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Laevarem
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ei saa muuta depoo nime...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Rong peab olema depoos peatatud
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Rong peab olema depoos peatatud
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... peab garaažis olema
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Laev peab olema sadamas peatatud
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Lennuk peab olema peatatud angaari sees
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Laev peab olema sadamas peatatud
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Lennuk peab olema peatatud angaari sees
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Ainult depoos peatunud ronge saab muuta
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Rong on liiga pikk

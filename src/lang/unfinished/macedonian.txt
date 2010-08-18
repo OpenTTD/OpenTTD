@@ -1252,7 +1252,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Не м�
 
 # Depot related errors
 
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Авионот мора да се сопре во хангар
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Авионот мора да се сопре во хангар
 
 
 

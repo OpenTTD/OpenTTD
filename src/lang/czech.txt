@@ -3610,10 +3610,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Zde nelz
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nelze přejmenovat depo...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musí stát v depu
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Vlak musí stát v depu
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musí být zastaven v garáži
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Loď musí být zastavena v depu
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Letadlo musí být zastaveno v hangáru
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Loď musí být zastavena v depu
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Letadlo musí být zastaveno v hangáru
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaky lze měnit, jen když stojí v depu
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Příliš dlouhý vlak

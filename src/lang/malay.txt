@@ -3253,10 +3253,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Depoh ka
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nama depoh tidak dapat ditukar...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Keretapi mesti dihentikan di dalam depoh
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Keretapi mesti dihentikan di dalam depoh
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mesti dihentikan di dalam depoh kenderaan jalanraya
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Kapal mesti dihentikan di dalam depoh
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Pesawat mesti dihentikan di dalam hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Kapal mesti dihentikan di dalam depoh
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Pesawat mesti dihentikan di dalam hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Keretapi hanya boleh diubah apabila dihentikan di dalam depoh
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Keretapi terlalu panjang

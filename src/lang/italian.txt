@@ -3555,10 +3555,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossib
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Impossibile rinominare il deposito...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Il treno deve essere fermo in un deposito
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Il treno deve essere fermo in un deposito
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve essere fermo nel deposito automezzi
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}La nave deve essere ferma nel deposito
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}L'aeromobile deve essere fermo nell'hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}La nave deve essere ferma nel deposito
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}L'aeromobile deve essere fermo nell'hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Un treno può essere modificato solo quando è fermo in un deposito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Treno troppo lungo

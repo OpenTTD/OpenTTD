@@ -3548,10 +3548,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}不能�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}无法重命名车库...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列车必须停在一个车库中
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}列车必须停在一个车库中
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}……必须完全停在一个车库中
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}船只必须停靠在船坞内。
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}飞机必须在机库中停止
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}船只必须停靠在船坞内。
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}飞机必须在机库中停止
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}只有列车停在车库中时才能更改挂车
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列车过长

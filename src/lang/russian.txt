@@ -3733,10 +3733,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Здес
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Не удалось переименовать депо...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поезд должен быть остановлен в депо
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Поезд должен быть остановлен в депо
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... должен быть остановлен в гараже
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Корабль должен быть остановлен в доке
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Самолёт должен быть остановлен в ангаре
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Корабль должен быть остановлен в доке
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Самолёт должен быть остановлен в ангаре
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Структуру поезда можно менять только в депо
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поезд слишком длинный

@@ -3511,10 +3511,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}לא נ�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}לא ניתן לשנות שם מוסך...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}הרכבת צריכה להיות בעצירה במוסך
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}הרכבת צריכה להיות בעצירה במוסך
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}חייב להיות בעצירה בתוך מוסך לכלי רכב...
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}כלי השייט חייב להמצא בעצירה במבדוק
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}המטוס צריך להמצא בעצירה בסככת מטוסים
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}כלי השייט חייב להמצא בעצירה במבדוק
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}המטוס צריך להמצא בעצירה בסככת מטוסים
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}ניתן לשנות את הרכבת בעת עצירה במוסך בלבד
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}רכבת ארוכה מידי

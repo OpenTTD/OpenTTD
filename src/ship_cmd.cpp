@@ -729,7 +729,7 @@ CommandCost CmdRefitShip(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
 
-	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT);
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
 
 	/* Check cargo */

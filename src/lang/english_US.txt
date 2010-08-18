@@ -3443,10 +3443,10 @@ STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Can't bu
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Can't build ship depot here...
 
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Train must be stopped inside a depot
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Train must be stopped inside a depot
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... must be stopped inside a road vehicle depot
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Ship must be stopped in depot
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Aircraft must be stopped in hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Ship must be stopped in depot
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Aircraft must be stopped in hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trains can only be altered when stopped inside a depot
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Train too long

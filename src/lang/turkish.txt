@@ -3548,10 +3548,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Buraya t
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Depo yeniden adlandırılamıyor
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tren garda durdurulmalı
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Tren garda durdurulmalı
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... bir araba garajında duruyor olmalı
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Gemi tersanede durdurulmalı
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}Uçak hangarda durdurulmalı
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Gemi tersanede durdurulmalı
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Uçak hangarda durdurulmalı
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Sadece garda durdurulmuş trenler üzerinde işlem yapılabilir
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren çok uzun

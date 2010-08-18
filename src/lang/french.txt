@@ -3554,10 +3554,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossib
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Impossible de renommer le dépôt...
 
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Le train doit être stoppé dans un dépôt
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Le train doit être stoppé dans un dépôt
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... doit être à l'arrêt dans un dépôt routier
-STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}Le navire doit être arrêté au dépôt
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}L'aéronef doit être arrêté au hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Le navire doit être arrêté au dépôt
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}L'aéronef doit être arrêté au hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Les trains peuvent être manipulés qu'une fois stoppés au dépôt
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Train trop long
