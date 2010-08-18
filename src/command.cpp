@@ -14,6 +14,7 @@
 #include "landscape.h"
 #include "gui.h"
 #include "command_func.h"
+#include "network/network_type.h"
 #include "network/network.h"
 #include "genworld.h"
 #include "newgrf_storage.h"
@@ -283,7 +284,7 @@ static const Command _command_proc_table[] = {
 
 	DEF_CMD(CmdMoneyCheat,                           CMD_OFFLINE), // CMD_MONEY_CHEAT
 	DEF_CMD(CmdBuildCanal,                              CMD_AUTO), // CMD_BUILD_CANAL
-	DEF_CMD(CmdCompanyCtrl,                        CMD_SPECTATOR), // CMD_COMPANY_CTRL
+	DEF_CMD(CmdCompanyCtrl,        CMD_SPECTATOR | CMD_CLIENT_ID), // CMD_COMPANY_CTRL
 
 	DEF_CMD(CmdLevelLand, CMD_ALL_TILES | CMD_NO_TEST | CMD_AUTO), // CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once
 
@@ -499,6 +500,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	int x = TileX(tile) * TILE_SIZE;
 	int y = TileY(tile) * TILE_SIZE;
 
+#ifdef ENABLE_NETWORK
+	if (only_sending && GetCommandFlags(cmd) & CMD_CLIENT_ID) p2 = CLIENT_ID_SERVER;
+#endif
+
 	CommandCost res = DoCommandPInternal(tile, p1, p2, cmd, callback, text, my_cmd, estimate_only);
 	if (res.Failed()) {
 		/* Only show the error when it's for us. */
@@ -567,6 +572,11 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	uint cmd_flags = GetCommandFlags(cmd);
 	/* Flags get send to the DoCommand */
 	DoCommandFlag flags = CommandFlagsToDCFlags(cmd_flags);
+
+#ifdef ENABLE_NETWORK
+	/* Make sure p2 is properly set to a ClientID. */
+	assert(!(cmd_flags & CMD_CLIENT_ID) || p2 != 0);
+#endif
 
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return_dcpi(CMD_ERROR, false);

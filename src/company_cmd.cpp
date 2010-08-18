@@ -572,7 +572,7 @@ static void MaybeStartNewCompany()
 	if (n < (uint)_settings_game.difficulty.max_no_competitors) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
-		DoCommandP(0, 1, INVALID_COMPANY, CMD_COMPANY_CTRL);
+		DoCommandP(0, 1 | INVALID_COMPANY << 16, 0, CMD_COMPANY_CTRL);
 	}
 }
 #endif /* ENABLE_AI */
@@ -745,46 +745,30 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various functionality
- * - p1 = 0 - create a new company, Which company (network) it will be is in p2
- * - p1 = 1 - create a new AI company
- * - p1 = 2 - delete a company. Company is identified by p2
- * @param p2 various functionality, dictated by p1
- * - p1 = 0 - ClientID of the newly created client
- * - p1 = 1 - CompanyID to start AI (INVALID_COMPANY for first available)
- * - p1 = 2 - CompanyID of the that is getting deleted
+ * - bits 0..15:
+ *        = 0 - create a new company
+ *        = 1 - create a new AI company
+ *        = 2 - delete a company
+ * - bits 16..24: CompanyID
+ * @param p2 ClientID
  * @param text unused
  * @return the cost of this operation or an error
- *
- * @todo In the case of p1=0, create new company, the clientID of the new client is in parameter
- * p2. This parameter is passed in at function DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
- * on the server itself. First of all this is unbelievably ugly; second of all, well,
- * it IS ugly! <b>Someone fix this up :)</b> So where to fix?@n
- * @arg - network_server.c:838 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)@n
- * @arg - network_client.c:536 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP) from where the map has been received
  */
 CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
+	CompanyID company_id = (CompanyID)GB(p1, 16, 8);
+	ClientID client_id = (ClientID)p2;
 
-	switch (p1) {
+	switch (GB(p1, 0, 16)) {
 		case 0: { // Create a new company
 			/* This command is only executed in a multiplayer game */
 			if (!_networking) return CMD_ERROR;
 
 #ifdef ENABLE_NETWORK
-
-			/* Joining Client:
-			 * _local_company: COMPANY_SPECTATOR
-			 * cid = clientid
-			 *
-			 * Other client(s)/server:
-			 * _local_company: what they play as
-			 * cid = requested company/company of joining client */
-			ClientID cid = (ClientID)p2;
-
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
-			NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(cid);
+			NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
 			if (ci == NULL) return CommandCost();
 
 			/* Delete multiplayer progress bar */
@@ -802,7 +786,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			}
 
 			/* This is the client (or non-dedicated server) who wants a new company */
-			if (cid == _network_own_client_id) {
+			if (client_id == _network_own_client_id) {
 				assert(_local_company == COMPANY_SPECTATOR);
 				SetLocalCompany(c->index);
 				if (!StrEmpty(_settings_client.network.default_company_pass)) {
@@ -817,9 +801,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			}
 
 			if (_network_server) {
-				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
-				 * server side in network_server.c:838, function
-				 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 				CompanyID old_playas = ci->client_playas;
 				ci->client_playas = c->index;
 				NetworkUpdateClientInfo(ci->client_id);
@@ -855,12 +836,12 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		case 1: // Make a new AI company
 			if (!(flags & DC_EXEC)) return CommandCost();
 
-			if (p2 != INVALID_COMPANY && (p2 >= MAX_COMPANIES || Company::IsValidID(p2))) return CMD_ERROR;
-			DoStartupNewCompany(true, (CompanyID)p2);
+			if (company_id != INVALID_COMPANY && (company_id >= MAX_COMPANIES || Company::IsValidID(company_id))) return CMD_ERROR;
+			DoStartupNewCompany(true, company_id);
 			break;
 
 		case 2: { // Delete a company
-			Company *c = Company::GetIfValid(p2);
+			Company *c = Company::GetIfValid(company_id);
 			if (c == NULL) return CMD_ERROR;
 
 			if (!(flags & DC_EXEC)) return CommandCost();

@@ -933,12 +933,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
 	}
 
-	/**
-	 * @todo CMD_COMPANY_CTRL with p1 = 0 announces a new company to the server. To give the
-	 * company the correct ID, the server injects p2 and executes the command. Any other p1
-	 * is prohibited. Pretty ugly and should be redone together with its function.
-	 * @see CmdCompanyCtrl()
-	 */
 	if (cp.cmd == CMD_COMPANY_CTRL) {
 		if (cp.p1 != 0 || cp.company != COMPANY_SPECTATOR) {
 			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
@@ -949,9 +943,9 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_CLIENT, ci->client_id, "cannot create new company, server full", CLIENT_ID_SERVER);
 			return NETWORK_RECV_STATUS_OKAY;
 		}
-
-		cp.p2 = cs->client_id;
 	}
+
+	if (GetCommandFlags(cp.cmd) & CMD_CLIENT_ID) cp.p2 = cs->client_id;
 
 	/* The frame can be executed in the same frame as the next frame-packet
 	 *  That frame just before that frame is saved in _frame_counter_max */
@@ -1505,7 +1499,7 @@ static void NetworkAutoCleanCompanies()
 			/* Is the company empty for autoclean_unprotected-months, and is there no protection? */
 			if (_settings_client.network.autoclean_unprotected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_unprotected && StrEmpty(_network_company_states[c->index].password)) {
 				/* Shut the company down */
-				DoCommandP(0, 2, c->index, CMD_COMPANY_CTRL);
+				DoCommandP(0, 2 | c->index << 16, 0, CMD_COMPANY_CTRL);
 				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d with no password", c->index + 1);
 			}
 			/* Is the company empty for autoclean_protected-months, and there is a protection? */
@@ -1519,7 +1513,7 @@ static void NetworkAutoCleanCompanies()
 			/* Is the company empty for autoclean_novehicles-months, and has no vehicles? */
 			if (_settings_client.network.autoclean_novehicles != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_novehicles && vehicles_in_company[c->index] == 0) {
 				/* Shut the company down */
-				DoCommandP(0, 2, c->index, CMD_COMPANY_CTRL);
+				DoCommandP(0, 2 | c->index << 16, 0, CMD_COMPANY_CTRL);
 				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d with no vehicles", c->index + 1);
 			}
 		} else {

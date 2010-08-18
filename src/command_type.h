@@ -332,6 +332,7 @@ enum CommandFlags {
 	CMD_ALL_TILES = 0x10, ///< allow this command also on MP_VOID tiles
 	CMD_NO_TEST   = 0x20, ///< the command's output may differ between test and execute due to town rating changes etc.
 	CMD_NO_WATER  = 0x40, ///< set the DC_NO_WATER flag on this command
+	CMD_CLIENT_ID = 0x80, ///< set p2 with the ClientID of the sending client.
 };
 
 /**
