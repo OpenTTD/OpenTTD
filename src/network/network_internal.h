@@ -160,7 +160,7 @@ struct CommandPacket : CommandContainer {
 	bool my_cmd;         ///< did the command originate from "me"
 };
 
-void NetworkAddCommandQueue(CommandPacket cp, NetworkClientSocket *cs = NULL);
+void NetworkDistributeCommands();
 void NetworkExecuteLocalCommandQueue();
 void NetworkFreeLocalCommandQueue();
 void NetworkSyncCommandQueue(NetworkClientSocket *cs);

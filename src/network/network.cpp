@@ -1181,6 +1181,8 @@ void NetworkGameLoop()
 			f = NULL;
 		}
 #endif /* DEBUG_DUMP_COMMANDS */
+		NetworkDistributeCommands();
+
 		if (_frame_counter >= _frame_counter_max) {
 			/* Only check for active clients just before we're going to send out
 			 * the commands so we don't send multiple pause/unpause commands when

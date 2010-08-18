@@ -122,6 +122,7 @@ public:
 
 	ClientStatus status;      ///< Status of this client
 
+	CommandQueue incoming_queue; ///< The command-queue awaiting handling
 	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery
 
 	NetworkRecvStatus CloseConnection(bool error = true);

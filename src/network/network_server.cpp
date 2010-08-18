@@ -891,8 +891,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
  */
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 {
-	NetworkClientSocket *new_cs;
-
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
 	if (cs->status < STATUS_DONE_MAP || cs->HasClientQuit()) {
@@ -947,28 +945,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	if (GetCommandFlags(cp.cmd) & CMD_CLIENT_ID) cp.p2 = cs->client_id;
 
-	/* The frame can be executed in the same frame as the next frame-packet
-	 *  That frame just before that frame is saved in _frame_counter_max */
-	cp.frame = _frame_counter_max + 1;
-	cp.next  = NULL;
-
-	CommandCallback *callback = cp.callback;
-
-	/* Queue the command for the clients (are send at the end of the frame
-	 *   if they can handle it ;)) */
-	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs->status >= STATUS_MAP) {
-			/* Callbacks are only send back to the client who sent them in the
-			 *  first place. This filters that out. */
-			cp.callback = (new_cs != cs) ? NULL : callback;
-			cp.my_cmd = (new_cs == cs);
-			NetworkAddCommandQueue(cp, new_cs);
-		}
-	}
-
-	cp.callback = NULL;
-	cp.my_cmd = false;
-	NetworkAddCommandQueue(cp);
+	cs->incoming_queue.Append(&cp);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
