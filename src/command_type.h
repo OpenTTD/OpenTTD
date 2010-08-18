@@ -186,6 +186,7 @@ enum Commands {
 	CMD_FORCE_TRAIN_PROCEED,          ///< proceed a train to pass a red signal
 	CMD_REVERSE_TRAIN_DIRECTION,      ///< turn a train around
 
+	CMD_CLEAR_ORDER_BACKUP,           ///< clear the order backup of a given user/tile
 	CMD_MODIFY_ORDER,                 ///< modify an order (like set full-load)
 	CMD_SKIP_TO_ORDER,                ///< skip an order to the next of specific one
 	CMD_DELETE_ORDER,                 ///< delete an order
@@ -242,7 +243,6 @@ enum Commands {
 	CMD_COMPANY_CTRL,                 ///< used in multiplayer to create a new companies etc.
 	CMD_LEVEL_LAND,                   ///< level land
 
-	CMD_RESTORE_ORDER_INDEX,          ///< restore vehicle order-index and service interval
 	CMD_BUILD_LOCK,                   ///< build a lock
 
 	CMD_BUILD_SIGNAL_TRACK,           ///< add signals along a track (by dragging)

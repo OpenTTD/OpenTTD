@@ -976,12 +976,7 @@ struct DepotWindow : Window {
 				this->SetDirty();
 
 				int sell_cmd = (v->type == VEH_TRAIN && (widget == DEPOT_WIDGET_SELL_CHAIN || _ctrl_pressed)) ? 1 : 0;
-
-				bool is_engine = (v->type != VEH_TRAIN || Train::From(v)->IsFrontEngine());
-
-				if (is_engine) OrderBackup::Backup(v);
-
-				if (!DoCommandP(v->tile, v->index | sell_cmd << 16, 0, GetCmdSellVeh(v->type)) && is_engine) OrderBackup::Reset(this->window_number);
+				DoCommandP(v->tile, v->index | sell_cmd << 16 | MAKE_ORDER_BACKUP_FLAG, 0, GetCmdSellVeh(v->type));
 				break;
 			}
 

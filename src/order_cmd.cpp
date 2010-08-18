@@ -1328,45 +1328,6 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	return CommandCost();
 }
 
-/**
- * Restore the current order-index of a vehicle and sets service-interval.
- * @param tile unused
- * @param flags operation to perform
- * @param p1 the ID of the vehicle
- * @param p2 various bistuffed elements
- * - p2 = (bit  0-15) - current order-index (p2 & 0xFFFF)
- * - p2 = (bit 16-31) - service interval (p2 >> 16)
- * @param text unused
- * @return the cost of this operation or an error
- * @todo Unfortunately you cannot safely restore the unitnumber or the old vehicle
- * as far as I can see. We can store it in BackuppedOrders, and restore it, but
- * but we have no way of seeing it has been tampered with or not, as we have no
- * legit way of knowing what that ID was.@n
- * If we do want to backup/restore it, just add UnitID uid to BackuppedOrders, and
- * restore it as parameter 'y' (ugly hack I know) for example. "v->unitnumber = y;"
- */
-CommandCost CmdRestoreOrderIndex(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	VehicleOrderID cur_ord = GB(p2,  0, 16);
-	uint16 serv_int = GB(p2, 16, 16);
-
-	Vehicle *v = Vehicle::GetIfValid(p1);
-	/* Check the vehicle type and ownership, and if the service interval and order are in range */
-	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
-
-	CommandCost ret = CheckOwnership(v->owner);
-	if (ret.Failed()) return ret;
-
-	if (serv_int != GetServiceIntervalClamped(serv_int, v->owner) || cur_ord >= v->GetNumOrders()) return CMD_ERROR;
-
-	if (flags & DC_EXEC) {
-		v->cur_order_index = cur_ord;
-		v->service_interval = serv_int;
-	}
-
-	return CommandCost();
-}
-
 
 /**
  *

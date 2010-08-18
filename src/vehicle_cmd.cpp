@@ -32,6 +32,7 @@
 #include "articulated_vehicles.h"
 #include "autoreplace_gui.h"
 #include "company_base.h"
+#include "order_backup.h"
 
 #include "table/strings.h"
 
@@ -144,12 +145,14 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		}
 
 		Company::Get(_current_company)->num_engines[eid]++;
+
+		if (v->IsPrimaryVehicle()) OrderBackup::Restore(v, p2);
 	}
 
 	return value;
 }
 
-CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *v, uint16 data);
+CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *v, uint16 data, uint32 user);
 
 /**
  * Sell a vehicle.
@@ -157,7 +160,8 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *v, uint16 data);
  * @param flags for command.
  * @param p1 various bitstuffed data.
  *  bits  0-15: vehicle ID being sold.
- *  bits 16-31: vehicle type specific bits passed on to the vehicle build functions.
+ *  bits 16-30: vehicle type specific bits passed on to the vehicle build functions.
+ *  bit     31: make a backup of the vehicle's order (if an engine).
  * @param p2 unused.
  * @param text unused.
  * @return the cost of this operation or an error.
@@ -176,12 +180,23 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	if (!front->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
 
+	/* Can we actually make the order backup, i.e. are there enough orders? */
+	if (p1 & MAKE_ORDER_BACKUP_FLAG &&
+			front->orders.list != NULL &&
+			!front->orders.list->IsShared() &&
+			!Order::CanAllocateItem(front->orders.list->GetNumOrders())) {
+		/* Only happens in exceptional cases when there aren't enough orders anyhow.
+		 * Thus it should be safe to just drop the orders in that case. */
+		p1 &= ~MAKE_ORDER_BACKUP_FLAG;
+	}
+
 	if (v->type == VEH_TRAIN) {
-		ret = CmdSellRailWagon(flags, v, GB(p1, 16, 16));
+		ret = CmdSellRailWagon(flags, v, GB(p1, 16, 16), p2);
 	} else {
 		ret = CommandCost(EXPENSES_NEW_VEHICLES, -front->value);
 
 		if (flags & DC_EXEC) {
+			if (v->IsPrimaryVehicle() && p1 & MAKE_ORDER_BACKUP_FLAG) OrderBackup::Backup(v, p2);
 			delete front;
 		}
 	}

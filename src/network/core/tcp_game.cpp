@@ -18,6 +18,7 @@
 #include "../network.h"
 #include "../network_internal.h"
 #include "../../core/pool_func.hpp"
+#include "../../order_backup.h"
 
 #include "table/strings.h"
 
@@ -37,6 +38,7 @@ NetworkClientSocket::NetworkClientSocket(ClientID client_id)
 NetworkClientSocket::~NetworkClientSocket()
 {
 	if (_redirect_console_to_client == this->client_id) _redirect_console_to_client = INVALID_CLIENT_ID;
+	if (_network_server) OrderBackup::ResetUser(this->client_id);
 	this->client_id = INVALID_CLIENT_ID;
 	this->status = STATUS_INACTIVE;
 }

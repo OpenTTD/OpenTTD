@@ -11,7 +11,9 @@
 
 #include "../stdafx.h"
 #include "../order_base.h"
+#include "../order_backup.h"
 #include "../settings_type.h"
+#include "../network/network.h"
 
 #include "saveload.h"
 
@@ -235,7 +237,65 @@ static void Ptrs_ORDL()
 	}
 }
 
+const SaveLoad *GetOrderBackupDescription()
+{
+	static const SaveLoad _order_backup_desc[] = {
+		SLE_VAR(OrderBackup, user,                  SLE_UINT32),
+		SLE_VAR(OrderBackup, tile,                  SLE_UINT32),
+		SLE_VAR(OrderBackup, group,                 SLE_UINT16),
+		SLE_VAR(OrderBackup, service_interval,      SLE_INT32),
+		SLE_STR(OrderBackup, name,                  SLE_STR, 0),
+		SLE_VAR(OrderBackup, clone,                 SLE_UINT16),
+		SLE_VAR(OrderBackup, orderindex,            SLE_UINT8),
+		SLE_REF(OrderBackup, orders,                REF_ORDER),
+		SLE_END()
+	};
+
+	return _order_backup_desc;
+}
+
+static void Save_BKOR()
+{
+	/* We only save this when we're a network server
+	 * as we want this information on our clients. For
+	 * normal games this information isn't needed. */
+	if (!_networking || !_network_server) return;
+
+	OrderBackup *ob;
+	FOR_ALL_ORDER_BACKUPS(ob) {
+		SlSetArrayIndex(ob->index);
+		SlObject(ob, GetOrderBackupDescription());
+	}
+}
+
+void Load_BKOR()
+{
+	int index;
+
+	while ((index = SlIterateArray()) != -1) {
+		/* set num_orders to 0 so it's a valid OrderList */
+		OrderBackup *ob = new (index) OrderBackup();
+		SlObject(ob, GetOrderBackupDescription());
+	}
+
+	/* If we are a network server, then we just loaded
+	 * a previously saved-by-server savegame. There are
+	 * no clients with a backup anymore, so clear it. */
+	if (_networking && _network_server) {
+		_order_backup_pool.CleanPool();
+	}
+}
+
+static void Ptrs_BKOR()
+{
+	OrderBackup *ob;
+	FOR_ALL_ORDER_BACKUPS(ob) {
+		SlObject(ob, GetOrderBackupDescription());
+	}
+}
+
 extern const ChunkHandler _order_chunk_handlers[] = {
+	{ 'BKOR', Save_BKOR, Load_BKOR, Ptrs_BKOR, NULL, CH_ARRAY},
 	{ 'ORDR', Save_ORDR, Load_ORDR, Ptrs_ORDR, NULL, CH_ARRAY},
 	{ 'ORDL', Save_ORDL, Load_ORDL, Ptrs_ORDL, NULL, CH_ARRAY | CH_LAST},
 };

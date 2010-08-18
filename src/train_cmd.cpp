@@ -41,6 +41,7 @@
 #include "engine_base.h"
 #include "engine_func.h"
 #include "newgrf.h"
+#include "order_backup.h"
 
 #include "table/strings.h"
 #include "table/train_cmd.h"
@@ -1325,9 +1326,10 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  * - data = 0: only sell the single dragged wagon/engine (and any belonging rear-engines)
  * - data = 1: sell the vehicle and all vehicles following it in the chain
  *             if the wagon is dragged, don't delete the possibly belonging rear-engine to some front
+ * @param user  the user for the order backup.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data)
+CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data, uint32 user)
 {
 	/* Check if we deleted a vehicle window */
 	Window *w = NULL;
@@ -1381,6 +1383,8 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data)
 
 			/* If we deleted a window then open a new one for the 'new' train */
 			if (IsLocalCompany() && w != NULL) ShowVehicleViewWindow(new_head);
+		} else if (v->IsPrimaryVehicle() && data & (MAKE_ORDER_BACKUP_FLAG >> 16)) {
+			OrderBackup::Backup(v, user);
 		}
 
 		/* We need to update the information about the train. */

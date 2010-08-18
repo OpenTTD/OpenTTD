@@ -12,6 +12,8 @@
 #include "stdafx.h"
 #include "command_func.h"
 #include "core/pool_func.hpp"
+#include "network/network.h"
+#include "network/network_func.h"
 #include "order_backup.h"
 #include "order_base.h"
 #include "vehicle_base.h"
@@ -23,11 +25,20 @@ INSTANTIATE_POOL_METHODS(OrderBackup)
 OrderBackup::~OrderBackup()
 {
 	free(this->name);
-	free(this->orders);
+
+	if (CleaningPool()) return;
+
+	Order *o = this->orders;
+	while (o != NULL) {
+		Order *next = o->next;
+		delete o;
+		o = next;
+	}
 }
 
-OrderBackup::OrderBackup(const Vehicle *v)
+OrderBackup::OrderBackup(const Vehicle *v, uint32 user)
 {
+	this->user             = user;
 	this->tile             = v->tile;
 	this->orderindex       = v->cur_order_index;
 	this->group            = v->group_id;
@@ -40,99 +51,128 @@ OrderBackup::OrderBackup(const Vehicle *v)
 		this->clone = (v->FirstShared() == v) ? v->NextShared() : v->FirstShared();
 	} else {
 		/* Else copy the orders */
+		Order **tail = &this->orders;
 
 		/* Count the number of orders */
-		uint cnt = 0;
 		const Order *order;
-		FOR_VEHICLE_ORDERS(v, order) cnt++;
-
-		/* Allocate memory for the orders plus an end-of-orders marker */
-		this->orders = MallocT<Order>(cnt + 1);
-
-		Order *dest = this->orders;
-
-		/* Copy the orders */
 		FOR_VEHICLE_ORDERS(v, order) {
-			memcpy(dest, order, sizeof(Order));
-			dest++;
+			Order *copy = new Order();
+			copy->AssignOrder(*order);
+			*tail = copy;
+			tail = &copy->next;
 		}
-		/* End the list with an empty order */
-		dest->Free();
 	}
 }
 
-void OrderBackup::DoRestore(const Vehicle *v)
+void OrderBackup::DoRestore(Vehicle *v)
 {
 	/* If we have a custom name, process that */
-	if (this->name != NULL) DoCommandP(0, v->index, 0, CMD_RENAME_VEHICLE, NULL, this->name);
+	v->name = this->name;
+	this->name = NULL;
 
 	/* If we had shared orders, recover that */
 	if (this->clone != NULL) {
-		DoCommandP(0, v->index | (this->clone->index << 16), CO_SHARE, CMD_CLONE_ORDER);
-	} else if (this->orders != NULL) {
-
-		/* CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
-		 *  order number is one more than the current amount of orders, and because
-		 *  in network the commands are queued before send, the second insert always
-		 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
-		for (uint i = 0; !this->orders[i].IsType(OT_NOTHING); i++) {
-			Order o = this->orders[i];
-			/* Conditional orders need to have their destination to be valid on insertion. */
-			if (o.IsType(OT_CONDITIONAL)) o.SetConditionSkipToOrder(0);
-
-			if (!DoCommandP(0, v->index + (i << 16), o.Pack(),
-					CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
-				break;
-			}
-
-			/* Copy timetable if enabled */
-			if (_settings_game.order.timetabling && !DoCommandP(0, v->index | (i << 16) | (1 << 25),
-					o.wait_time << 16 | o.travel_time,
-					CMD_CHANGE_TIMETABLE | CMD_NO_TEST_IF_IN_NETWORK)) {
-				break;
-			}
-		}
-
-			/* Fix the conditional orders' destination. */
-		for (uint i = 0; !this->orders[i].IsType(OT_NOTHING); i++) {
-			if (!this->orders[i].IsType(OT_CONDITIONAL)) continue;
-
-			if (!DoCommandP(0, v->index + (i << 16), MOF_LOAD | (this->orders[i].GetConditionSkipToOrder() << 4),
-					CMD_MODIFY_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
-				break;
-			}
-		}
+		DoCommand(0, v->index | (this->clone->index << 16), CO_SHARE, DC_EXEC, CMD_CLONE_ORDER);
+	} else if (this->orders != NULL && OrderList::CanAllocateItem()) {
+		v->orders.list = new OrderList(this->orders, v);
+		this->orders = NULL;
 	}
 
-	/* Restore vehicle order-index and service interval */
-	DoCommandP(0, v->index, this->orderindex | (this->service_interval << 16), CMD_RESTORE_ORDER_INDEX);
+	uint num_orders = v->GetNumOrders();
+	if (num_orders != 0) v->cur_order_index = this->orderindex % num_orders;
+	v->service_interval = this->service_interval;
 
 	/* Restore vehicle group */
-	DoCommandP(0, this->group, v->index, CMD_ADD_VEHICLE_GROUP);
+	DoCommand(0, this->group, v->index, DC_EXEC, CMD_ADD_VEHICLE_GROUP);
 }
 
-/* static */ void OrderBackup::Backup(const Vehicle *v)
+/* static */ void OrderBackup::Backup(const Vehicle *v, uint32 user)
 {
-	OrderBackup::Reset();
-	new OrderBackup(v);
+	/* Don't use reset as that broadcasts over the network to reset the variable,
+	 * which is what we are doing at the moment. */
+	OrderBackup *ob;
+	FOR_ALL_ORDER_BACKUPS(ob) {
+		if (ob->user == user) delete ob;
+	}
+	new OrderBackup(v, user);
 }
 
-/* static */ void OrderBackup::Restore(const Vehicle *v)
+/* static */ void OrderBackup::Restore(Vehicle *v, uint32 user)
 {
 	OrderBackup *ob;
 	FOR_ALL_ORDER_BACKUPS(ob) {
-		if (v->tile != ob->tile) continue;
+		if (v->tile != ob->tile || ob->user != user) continue;
 
 		ob->DoRestore(v);
 		delete ob;
 	}
 }
 
-/* static */ void OrderBackup::Reset(TileIndex t)
+/* static */ void OrderBackup::ResetOfUser(TileIndex tile, uint32 user)
 {
 	OrderBackup *ob;
 	FOR_ALL_ORDER_BACKUPS(ob) {
-		if (t == INVALID_TILE || t == ob->tile) delete ob;
+		if (ob->user == user && (ob->tile == tile || tile == INVALID_TILE)) delete ob;
+	}
+}
+
+/**
+ * Clear an OrderBackup
+ * @param tile  Tile related to the to-be-cleared OrderBackup.
+ * @param flags For command.
+ * @param p1    Unused.
+ * @param p2    User that had the OrderBackup.
+ * @param text  Unused.
+ * @return The cost of this operation or an error.
+ */
+CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	/* No need to check anything. If the tile or user don't exist we just ignore it. */
+	if (flags & DC_EXEC) OrderBackup::ResetOfUser(tile == 0 ? INVALID_TILE : tile, p2);
+
+	return CommandCost();
+}
+
+/* static */ void OrderBackup::ResetUser(uint32 user)
+{
+	assert(_network_server);
+
+	OrderBackup *ob;
+	FOR_ALL_ORDER_BACKUPS(ob) {
+		/* If it's not an backup of us, so ignore it. */
+		if (ob->user != user) continue;
+
+		DoCommandP(0, 0, user, CMD_CLEAR_ORDER_BACKUP);
+		return;
+	}
+}
+
+/* static */ void OrderBackup::Reset(TileIndex t, bool from_gui)
+{
+	/* The user has CLIENT_ID_SERVER as default when network play is not active,
+	 * but compiled it. A network client has its own variable for the unique
+	 * client/user identifier. Finally if networking isn't compiled in the
+	 * default is just plain and simple: 0. */
+#ifdef ENABLE_NETWORK
+	uint32 user = _networking && !_network_server ? _network_own_client_id : CLIENT_ID_SERVER;
+#else
+	uint32 user = 0;
+#endif
+
+	OrderBackup *ob;
+	FOR_ALL_ORDER_BACKUPS(ob) {
+		/* If it's not an backup of us, so ignore it. */
+		if (ob->user != user) continue;
+		/* If it's not for our chosen tile either, ignore it. */
+		if (t != INVALID_TILE && t != ob->tile) continue;
+
+		if (from_gui) {
+			DoCommandP(ob->tile, 0, 0, CMD_CLEAR_ORDER_BACKUP);
+		} else {
+			/* The command came from the game logic, i.e. the clearing of a tile.
+			 * In that case we have no need to actually sync this, just do it. */
+			delete ob;
+		}
 	}
 }
 

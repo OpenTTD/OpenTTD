@@ -88,12 +88,12 @@ CommandProc CmdSendTrainToDepot;
 CommandProc CmdForceTrainProceed;
 CommandProc CmdReverseTrainDirection;
 
+CommandProc CmdClearOrderBackup;
 CommandProc CmdModifyOrder;
 CommandProc CmdSkipToOrder;
 CommandProc CmdDeleteOrder;
 CommandProc CmdInsertOrder;
 CommandProc CmdChangeServiceInt;
-CommandProc CmdRestoreOrderIndex;
 
 CommandProc CmdBuildIndustry;
 
@@ -221,8 +221,8 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdBuildBuoy,                               CMD_AUTO), // CMD_BUILD_BUOY
 	DEF_CMD(CmdPlantTree,                               CMD_AUTO), // CMD_PLANT_TREE
 
-	DEF_CMD(CmdBuildVehicle,                                   0), // CMD_BUILD_VEHICLE
-	DEF_CMD(CmdSellVehicle,                                    0), // CMD_SELL_VEHICLE
+	DEF_CMD(CmdBuildVehicle,                       CMD_CLIENT_ID), // CMD_BUILD_VEHICLE
+	DEF_CMD(CmdSellVehicle,                        CMD_CLIENT_ID), // CMD_SELL_VEHICLE
 	DEF_CMD(CmdRefitVehicle,                                   0), // CMD_REFIT_VEHICLE
 
 	DEF_CMD(CmdMoveRailVehicle,                                0), // CMD_MOVE_RAIL_VEHICLE
@@ -230,6 +230,7 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdForceTrainProceed,                              0), // CMD_FORCE_TRAIN_PROCEED
 	DEF_CMD(CmdReverseTrainDirection,                          0), // CMD_REVERSE_TRAIN_DIRECTION
 
+	DEF_CMD(CmdClearOrderBackup,                   CMD_CLIENT_ID), // CMD_CLEAR_ORDER_BACKUP
 	DEF_CMD(CmdModifyOrder,                                    0), // CMD_MODIFY_ORDER
 	DEF_CMD(CmdSkipToOrder,                                    0), // CMD_SKIP_TO_ORDER
 	DEF_CMD(CmdDeleteOrder,                                    0), // CMD_DELETE_ORDER
@@ -288,7 +289,6 @@ static const Command _command_proc_table[] = {
 
 	DEF_CMD(CmdLevelLand, CMD_ALL_TILES | CMD_NO_TEST | CMD_AUTO), // CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once
 
-	DEF_CMD(CmdRestoreOrderIndex,                              0), // CMD_RESTORE_ORDER_INDEX
 	DEF_CMD(CmdBuildLock,                               CMD_AUTO), // CMD_BUILD_LOCK
 
 	DEF_CMD(CmdBuildSignalTrack,                        CMD_AUTO), // CMD_BUILD_SIGNAL_TRACK
@@ -502,7 +502,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 
 #ifdef ENABLE_NETWORK
 	/* Only set p2 when the command does not come from the network. */
-	if (!(cmd & CMD_NETWORK_COMMAND) && GetCommandFlags(cmd) & CMD_CLIENT_ID) p2 = CLIENT_ID_SERVER;
+	if (!(cmd & CMD_NETWORK_COMMAND) && GetCommandFlags(cmd) & CMD_CLIENT_ID && p2 == 0) p2 = CLIENT_ID_SERVER;
 #endif
 
 	CommandCost res = DoCommandPInternal(tile, p1, p2, cmd, callback, text, my_cmd, estimate_only);
