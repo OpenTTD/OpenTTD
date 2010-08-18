@@ -43,34 +43,41 @@ private:
 	VehicleOrderID orderindex; ///< The order-index the vehicle had.
 	Order *orders;             ///< The actual orders if the vehicle was not a clone.
 
-public:
 	/**
 	 * Create an order backup for the given vehicle.
 	 * @param v The vehicle to make a backup of.
 	 */
 	OrderBackup(const Vehicle *v);
 
+	/**
+	 * Restore the data of this order to the given vehicle.
+	 * @param v The vehicle to restore to.
+	 */
+	void DoRestore(const Vehicle *v);
+
+public:
 	/** Free everything that is allocated. */
 	~OrderBackup();
+
+	/**
+	 * Create an order backup for the given vehicle.
+	 * @param v The vehicle to make a backup of.
+	 * @note Will automatically remove any previous backups of this user.
+	 */
+	static void Backup(const Vehicle *v);
 
 	/**
 	 * Restore the data of this order to the given vehicle.
 	 * @param v The vehicle to restore to.
 	 * @note After restoration the backup will automatically be removed.
 	 */
-	void RestoreTo(const Vehicle *v);
-
-	/**
-	 * Get the order backup associated with a given tile.
-	 * @param t The tile to get the order backup for.
-	 * @return The order backup, or NULL if it doesn't exist.
-	 */
-	static OrderBackup *GetByTile(TileIndex t);
+	static void Restore(const Vehicle *v);
 
 	/**
 	 * Reset the OrderBackups.
+	 * @param tile The tile of the order backup.
 	 */
-	static void Reset();
+	static void Reset(TileIndex tile = INVALID_TILE);
 
 	/**
 	 * Clear the group of all backups having this group ID.

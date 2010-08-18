@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "depot_base.h"
+#include "order_backup.h"
 #include "order_func.h"
 #include "window_func.h"
 #include "core/pool_func.hpp"
@@ -31,6 +32,7 @@ Depot::~Depot()
 
 	/* Delete the depot-window */
 	DeleteWindowById(WC_VEHICLE_DEPOT, this->xy);
+	OrderBackup::Reset(this->xy);
 
 	/* Delete the depot list */
 	WindowNumber wno = (this->index << 16) | VLW_DEPOT_LIST | GetTileOwner(this->xy);

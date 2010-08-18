@@ -61,7 +61,7 @@ OrderBackup::OrderBackup(const Vehicle *v)
 	}
 }
 
-void OrderBackup::RestoreTo(const Vehicle *v)
+void OrderBackup::DoRestore(const Vehicle *v)
 {
 	/* If we have a custom name, process that */
 	if (this->name != NULL) DoCommandP(0, v->index, 0, CMD_RENAME_VEHICLE, NULL, this->name);
@@ -109,22 +109,31 @@ void OrderBackup::RestoreTo(const Vehicle *v)
 
 	/* Restore vehicle group */
 	DoCommandP(0, this->group, v->index, CMD_ADD_VEHICLE_GROUP);
-
-	delete this;
 }
 
-/* static */ OrderBackup *OrderBackup::GetByTile(TileIndex t)
+/* static */ void OrderBackup::Backup(const Vehicle *v)
+{
+	OrderBackup::Reset();
+	new OrderBackup(v);
+}
+
+/* static */ void OrderBackup::Restore(const Vehicle *v)
 {
 	OrderBackup *ob;
 	FOR_ALL_ORDER_BACKUPS(ob) {
-		if (ob->tile == t) return ob;
+		if (v->tile != ob->tile) continue;
+
+		ob->DoRestore(v);
+		delete ob;
 	}
-	return NULL;
 }
 
-/* static */ void OrderBackup::Reset()
+/* static */ void OrderBackup::Reset(TileIndex t)
 {
-	_order_backup_pool.CleanPool();
+	OrderBackup *ob;
+	FOR_ALL_ORDER_BACKUPS(ob) {
+		if (t == INVALID_TILE || t == ob->tile) delete ob;
+	}
 }
 
 /* static */ void OrderBackup::ClearGroup(GroupID group)

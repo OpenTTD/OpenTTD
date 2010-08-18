@@ -261,6 +261,7 @@ struct DepotWindow : Window {
 	~DepotWindow()
 	{
 		DeleteWindowById(WC_BUILD_VEHICLE, this->window_number);
+		OrderBackup::Reset(this->window_number);
 	}
 
 	/**
@@ -978,12 +979,9 @@ struct DepotWindow : Window {
 
 				bool is_engine = (v->type != VEH_TRAIN || Train::From(v)->IsFrontEngine());
 
-				if (is_engine) {
-					OrderBackup::Reset();
-					new OrderBackup(v);
-				}
+				if (is_engine) OrderBackup::Backup(v);
 
-				if (!DoCommandP(v->tile, v->index | sell_cmd << 16, 0, GetCmdSellVeh(v->type)) && is_engine) OrderBackup::Reset();
+				if (!DoCommandP(v->tile, v->index | sell_cmd << 16, 0, GetCmdSellVeh(v->type)) && is_engine) OrderBackup::Reset(this->window_number);
 				break;
 			}
 
