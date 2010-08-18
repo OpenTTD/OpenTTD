@@ -39,7 +39,7 @@ private:
 	uint16 service_interval;   ///< The service interval of the vehicle.
 	char *name;                ///< The custom name of the vehicle.
 
-	VehicleID clone;           ///< VehicleID this vehicle was a clone of, or INVALID_VEHICLE.
+	const Vehicle *clone;      ///< Vehicle this vehicle was a clone of.
 	VehicleOrderID orderindex; ///< The order-index the vehicle had.
 	Order *orders;             ///< The actual orders if the vehicle was not a clone.
 
@@ -74,9 +74,18 @@ public:
 
 	/**
 	 * Clear the group of all backups having this group ID.
-	 * @param group The group to clear
+	 * @param group The group to clear.
 	 */
 	static void ClearGroup(GroupID group);
+
+	/**
+	 * Clear/update the (clone) vehicle from an order backup.
+	 * @param v The vehicle to clear.
+	 * @pre v != NULL
+	 * @note If it is not possible to set another vehicle as clone
+	 *       "example", then this backed up order will be removed.
+	 */
+	static void ClearVehicle(const Vehicle *v);
 };
 
 #define FOR_ALL_ORDER_BACKUPS_FROM(var, start) FOR_ALL_ITEMS_FROM(OrderBackup, order_backup_index, var, start)

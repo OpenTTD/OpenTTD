@@ -37,14 +37,9 @@ OrderBackup::OrderBackup(const Vehicle *v)
 
 	/* If we have shared orders, store the vehicle we share the order with. */
 	if (v->IsOrderListShared()) {
-		const Vehicle *u = (v->FirstShared() == v) ? v->NextShared() : v->FirstShared();
-
-		this->clone = u->index;
+		this->clone = (v->FirstShared() == v) ? v->NextShared() : v->FirstShared();
 	} else {
 		/* Else copy the orders */
-
-		/* We do not have shared orders */
-		this->clone = INVALID_VEHICLE;
 
 		/* Count the number of orders */
 		uint cnt = 0;
@@ -72,9 +67,9 @@ void OrderBackup::RestoreTo(const Vehicle *v)
 	if (this->name != NULL) DoCommandP(0, v->index, 0, CMD_RENAME_VEHICLE, NULL, this->name);
 
 	/* If we had shared orders, recover that */
-	if (this->clone != INVALID_VEHICLE) {
-		DoCommandP(0, v->index | (this->clone << 16), CO_SHARE, CMD_CLONE_ORDER);
-	} else {
+	if (this->clone != NULL) {
+		DoCommandP(0, v->index | (this->clone->index << 16), CO_SHARE, CMD_CLONE_ORDER);
+	} else if (this->orders != NULL) {
 
 		/* CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
 		 *  order number is one more than the current amount of orders, and because
@@ -137,6 +132,20 @@ void OrderBackup::RestoreTo(const Vehicle *v)
 	OrderBackup *ob;
 	FOR_ALL_ORDER_BACKUPS(ob) {
 		if (ob->group == group) ob->group = DEFAULT_GROUP;
+	}
+}
+
+/* static */ void OrderBackup::ClearVehicle(const Vehicle *v)
+{
+	assert(v != NULL);
+	OrderBackup *ob;
+	FOR_ALL_ORDER_BACKUPS(ob) {
+		if (ob->clone == v) {
+			/* Get another item in the shared list. */
+			ob->clone = (v->FirstShared() == v) ? v->NextShared() : v->FirstShared();
+			/* But if that isn't there, remove it. */
+			if (ob->clone == NULL) delete ob;
+		}
 	}
 }
 
