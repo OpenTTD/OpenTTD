@@ -1263,6 +1263,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :kvadrataro de 2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :kvadrataro de 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :hazarda
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permesu ke urboj konstruu stratojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Urboj estas permesa konstrui traknivelajn pasejojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permesu urbe kontrolatan laŭtecon por flughavenoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibita
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesita
@@ -2218,6 +2219,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Forviŝu
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Forviŝu la nun elektitan luddosieron
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Konservu
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Konservu la nunan ludon per la elektita nomo
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Ŝarĝu
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ŝarĝu la elektan ludon
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detaloj de la Ludo
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ne haveblas informoj.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Entajpu ludkonservnomon
 
@@ -2291,6 +2298,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparan
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Agordoj
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detalaj informoj de NewGRF
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivaj dosieroj de NewGRF
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Malaktiva dosieroj de NewGRF
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Elektu antaŭaro:
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Aldonu
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Aldonu la elektitan NewGRF-dosieron al viaj agordoj
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Reserĉu dosierojn
@@ -2327,6 +2338,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Enigu Ne
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ŝanĝu parametroj de la NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fermu
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametro {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 
@@ -2366,15 +2378,25 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manka(j)
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manka(j) GRF-dosiero(j)
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Neniu
+STR_NEWGRF_LIST_ALL_FOUND                                       :Ĉiuj dosieroj alestaj
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Trovis kongruajn dosierojn
+STR_NEWGRF_LIST_MISSING                                         :{RED}Mankaj dosieroj
 
 # NewGRF 'it's broken' warnings
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' donas malĝustan informon.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<malvalida ŝarĝo>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <malvalida ŝarĝo>
+STR_NEWGRF_INVALID_ENGINE                                       :<malvalida modelo de veturilo>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<malvalida industrio>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Signolisto - {COMMA} Signo{P "" j}
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Viŝu filtrilo
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ŝanĝu afiŝan tekston
@@ -2720,6 +2742,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Alinomi 
 
 # Depot window
 
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Alinomi tenejon
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3201,6 +3224,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne ŝan�
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametroj de la AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fermi
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reŝargo
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3230,6 +3254,8 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Ludŝar�
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna eraro: {STRING}
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Ne legebla dosiero
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Ne enskribebla dosiero
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ne disponebla>
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Ludon estis konservinta en versio sen subteno por tramveturilo. Ĉiujn tramveturilojn estas formovita.
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Mapkreado haltita...{}... mankas taŭgaj urbejoj
@@ -3328,6 +3354,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... nur 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... nur konstruebla en praarbaraj regionoj
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... konstruebla nur en dezertaj regionoj
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... konstruebla nur en urboj
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... konstruebla nur en malaltaj regionoj
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... lokebla nur ĉe la randoj de la mapo
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... arbaro nur planteblas super neĝa limlinio
 
@@ -3364,6 +3391,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Ne povas
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Ne povas forigi pasaĝerotramstacion...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Ne povas forigi frajttramstacion...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Antaŭe forigu haltejon
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ne jen estas stacidomo ĉi tie
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Antaŭe devas la fervojostacio esti detruita
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Antaŭe devas la bushaltejo esti detruita
@@ -3392,11 +3420,12 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Ne povas
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Ne povas konstrui tramgaraĝon ĉi tie...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ne povas konstrui ŝipgaraĝon ĉi tie...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ne povas alinomi tenejon...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Trajno estu haltita en garaĝo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... devas esti halta en stratveturila garaĝo
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Ŝipo devas halti en garaĝo
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Aviadilo devas esti haltigata en la hangaro
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... devas halti en garaĝo
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... devas esti haltigata en la hangaro
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trajnoj povas esti ŝanĝitaj nur dum halto en garaĝo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trajno tro longas
@@ -3422,21 +3451,26 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Unue vi 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nekonvena fervojtrako
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Antaŭe devas la trako esti detruita
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Strato estas unudirekta aŭ blokita
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Traknivelaj pasejoj ne permesa por ĉi tio fervojtipo
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ne povas konstrui signalojn ĉi tie...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ne povas konstrui trakon ĉi tie...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Ne povas forigi trakon de ĉi tie...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Ne povas forigi signalojn de ĉi tie...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Ne povas konverti signalojn de ĉi tie...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... ne jen estas fervojtrako
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... ne jen estas signaloj
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ne povas transigi reltipon ĉi tie...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Antaŭe forigu straton
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... unudirektaj stratoj ne povas havi kuniĝoj
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ne povas konstrui stratojn ĉi tie...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ne povas konstrui tramvojon ĉi tie...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Ne povas forigi straton de ĉi tie...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Ne povas forigi tramvojon de ĉi tie...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ne jen estas strato
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ne jen estas tramvojo
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ne povas konstrui kanalojn ĉi tie...
@@ -3469,6 +3503,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunelo f
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ne eblas liberigi la landon aliflanke de la tunelo
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... tro da objektoj
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ne povas konstrui objekton...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekto okupas la lokon
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... kompania ĉefkonstruaĵo okupas la lokon
@@ -3532,6 +3567,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aviadilo
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro da veturiloj en la ludo
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ne povas ŝanĝi prizorgintervalon...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... veturilo estas detrua
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Ne povas igi trajnon transiri signalon je danĝero...
@@ -3570,6 +3606,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ne povas
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ne eblas forigi signon...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Imitaĵo de Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -3988,6 +4025,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}

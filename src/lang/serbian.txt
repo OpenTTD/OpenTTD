@@ -629,8 +629,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Podaci o zemlji
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Uključi/isključi konzolu
 STR_ABOUT_MENU_AI_DEBUG                                         :Korekcija veštačke inteligencije
-STR_ABOUT_MENU_SCREENSHOT                                       :Sačuvaj sliku (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Sačuvaj sliku u velikom formatu (Ctrl+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Sačuvaj sliku
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Sačuvaj sliku približenog terena
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Sačuvaj sliku celog terena
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O OpenTTD-u
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Poravnjavanje sprajta
 ############ range ends here
@@ -2662,7 +2663,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Nedostaju 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' može izazvati desinhronizacije i/ili krahove.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Vagon '{1:ENGINE}' je promenio motorno stanje izvan depoa.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Pokušava da promeni dužinu '{1:ENGINE}' dok je van depoa.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Promenio je dužinu vozila '{1:ENGINE}' dok je van depoa.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Voz '{VEHICLE}' preduzeća '{COMPANY}' je neispravne dužine. Verovatno je izazvana nekim problemima sa NewGRF(ovima). Igra može da krahira ili da se desinhronizuje.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' sadrži neispravne podatke.
@@ -2678,6 +2679,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<nevažeća ind
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Spisak Znakova - {COMMA} Znak{P "" a ova}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Podudaranje vel. slova
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Ukloni filter
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Uključuje/isključuje podudaranje malih i velikih slova tokom poređenja naziva znakova sa filter niskom
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Uklanja filter nisku
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Unos teksta znaka

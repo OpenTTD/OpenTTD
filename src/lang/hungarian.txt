@@ -425,7 +425,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Állomásnevek 
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Játék mentése
-STR_FILE_MENU_LOAD_GAME                                         :Jaték betöltése
+STR_FILE_MENU_LOAD_GAME                                         :Játék betöltése
 STR_FILE_MENU_QUIT_GAME                                         :Kilépés a játékból
 STR_FILE_MENU_EXIT                                              :Kilépés
 ############ range ends here
@@ -505,7 +505,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
 STR_ABOUT_MENU_AI_DEBUG                                         :MI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Képmentésben ránagyítva
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Kinagyított képmentés
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Képmentés teljes térképről
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite elhelyező
@@ -2498,8 +2498,8 @@ STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nem 
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} a TTD {STRING} verziójához van.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} úgy lett tervezve, hogy együtt lesz használva ezzel: {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Hibás paraméterérték ehhez: {1:STRING}: paraméter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} muszáj hogy betöltődjön ezelőtt: {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muszáj hogy ezután töltődjön be: {STRING}.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} muszáj, hogy betöltődjön ezelőtt: {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muszáj, hogy ezután töltődjön be: {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} csak a {STRING} vagy nagyobb verziójú OpenTTD-vel működik.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott GRF fájl célja egy másik lefordítása
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Túl sok NewGRF van betöltve.
@@ -2531,7 +2531,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Hiányzó 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}A '{0:STRING}' viselkedése valószínűleg ütközést vagy összeomlást okoz.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztatta '{1:ENGINE}' hajtott jármű állapotát mikor nem volt bent a járműtelepen.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztatta '{1:ENGINE}' meghajtott vagon-állapotát mikor nem volt bent a járműtelepen.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatta '{1:ENGINE}' jármű hosszát mikor nem volt bent a járműtelepen.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:COMPANY}' vállalat '{0:VEHICLE}'-jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat - lefagyhat.
 
@@ -2550,7 +2550,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<érvénytelen 
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Egyezés
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Szűrő törlése
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Egyezés ki/bekapcsolása feliratok szövegei és a szűrő kulcsszó összehasonlítása közben
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Egyezés ki/bekapcsolása a feliratok szövegei és a szűrő kulcsszó összehasonlítása közben
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Szűrő kulcsszó törlése
 
 # Sign window
@@ -3218,7 +3218,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Maradj ott
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Célpont kihagyása, ha javítás szükséges
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk a parancssorban
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Rakodási állapot
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Berakodás százaléka
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Megbízhatóság
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximális sebesség
 STR_ORDER_CONDITIONAL_AGE                                       :Életkor (év)
@@ -3617,10 +3617,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nem ép�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nem nevezheted át a járműtelepet...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}A járműtelepen kellene állnia ehhez
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... járműtelepen kellene állnia ehhez
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... garázsban kellene állnia ehhez
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}A dokkban kellene állnia ehhez
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}A hangárban kellene állnia ehhez
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... dokkban kellene állnia ehhez
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... hangárban kellene állnia ehhez
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a járműtelepen álló vonatokat lehet megváltoztatni
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat

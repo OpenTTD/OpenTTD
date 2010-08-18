@@ -3553,10 +3553,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Telakkaa
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Varikon nimeä ei voi vaihtaa...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Juna täytyy pysäyttää veturitallin sisällä
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... sen pitää olla pysähtyneenä huoltoasemalle
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Laivan pitää olla pysähdyksissä telakalla.
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Lentokoneen pitää olla pysähdyksissä lentokonehallissa.
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... täytyy olla pysähdyksissä veturitallin sisällä
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... täytyy olla pysähtyneenä varikolla
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... täytyy olla pysähdyksissä telakalla
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... täytyy olla pysähdyksissä lentokonehallissa
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Junia voi muunnella vain, kun ne ovat pysähdyksissä veturitallilla.
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Juna on liian pitkä.

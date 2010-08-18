@@ -443,7 +443,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Стро
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Открыть панель ландшафта для изменения рельефа, посадки деревьев и т.д.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Настройка звука и музыки
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показать последнее сообщение; настройки сообщений
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о земле, консоль, отладка ИИ, скриншоты, об игре
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о земле, консоль, отладка ИИ, снимки экрана, об игре
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Переключить панели инструментов
 
 # Extra tooltips for the scenario editor toolbar
@@ -496,7 +496,7 @@ STR_FILE_MENU_EXIT                                              :Выход
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта мира
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Доп. окно просмотра
-STR_MAP_MENU_SIGN_LIST                                          :Список меток
+STR_MAP_MENU_SIGN_LIST                                          :Список знаков
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Список городов
 ############ end of the 'Display map' dropdown
@@ -569,7 +569,7 @@ STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Консоль
 STR_ABOUT_MENU_AI_DEBUG                                         :Отладка ИИ
 STR_ABOUT_MENU_SCREENSHOT                                       :Снимок экрана
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Снимок экрана в обычном масштабе
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Полный снимок экрана
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Снимок всей карты
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Об игре
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Выравнивание спрайтов
 ############ range ends here
@@ -1086,7 +1086,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Вклю
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Разрешение экрана
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Выбор разрешения экрана
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат скриншотов
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат снимков экрана
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Формат, в котором будут сохраняться снимки экрана
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовый набор графики
@@ -2653,18 +2653,18 @@ STR_NEWGRF_INVALID_ENGINE                                       :<неправи
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<неизвестное предприятие>
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Список меток - {COMMA} мет{P ка ки ок}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Список знаков - {COMMA} знак{P а и ов}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Регистр
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Очистить фильтр
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Переключить проверку регистра при сравнении имён меток с фильтром
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Переключить проверку регистра при сравнении названий знаков с фильтром
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Очистить фильтр
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить надпись метки
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}К следующей метке
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}К предыдущей метке
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить текст знака
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}К следующему знаку
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}К предыдущему знаку
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введите название метки
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введите текст знака
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Города
@@ -2967,7 +2967,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вес: 
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ёмкость: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ведущие вагоны: {GOLD}+{POWER}{BLACK} Вес: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переоборуд. для: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переоборудуется для: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Все типы грузов
 STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кроме {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
@@ -3492,7 +3492,7 @@ STR_ERROR_NO_AI                                                 :{WHITE}Подд
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... отсутствуют модули ИИ!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не найдено подходящих модулей ИИ,{}поэтому конкуренты ничего делать не будут.{}Модули ИИ можно скачать через систему онлайн-контента.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один из запущенных ИИ выполнил недопустимую операцию и был закрыт. Пожалуйста, сообщите об этом автору ИИ, приложив скриншот окна отладки.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один из запущенных ИИ выполнил недопустимую операцию и был закрыт. Пожалуйста, сообщите об этом автору ИИ, приложив снимок окна отладки.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Окно отладки ИИ доступно только для сервера
 
 # AI configuration window
@@ -3583,8 +3583,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Изм�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Текущая звуковая схема выбрана системой автоматически. Дополнительные наборы звуков можно загрузить через систему онлайн контента.
 
 # Screenshot related messages
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Скриншот сохранён под именем «{STRING}»
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не удалось сохранить скриншот
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Снимок экрана сохранён под именем «{STRING}»
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не удалось сохранить снимок экрана
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Сообщение
@@ -3733,10 +3733,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Здес
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Не удалось переименовать депо...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Поезд должен быть остановлен в депо
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... должен быть остановлен в депо
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... должен быть остановлен в гараже
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Корабль должен быть остановлен в доке
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Самолёт должен быть остановлен в ангаре
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... должен быть остановлен в доке
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... должен быть остановлен в ангаре
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Структуру поезда можно менять только в депо
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поезд слишком длинный
@@ -3889,7 +3889,7 @@ STR_ERROR_TRAIN_START_NO_CATENARY                               :На этих �
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Невозможно развернуть автомобиль...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Самолёт в полёте
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Самолёт в воздухе
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Список заданий заполнен
@@ -3915,8 +3915,8 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Этот
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... слишком много меток
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не удалось установить метку...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не удалось изменить надпись метки...
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не удалось оставить знак...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не удалось изменить знак...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не удалось удалить метку...
 
 # Translatable comment for OpenTTD's desktop shortcut
@@ -4358,7 +4358,7 @@ STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} #
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар ({STATION})
 
 STR_UNKNOWN_STATION                                             :неизвестная станция
-STR_DEFAULT_SIGN_NAME                                           :Метка
+STR_DEFAULT_SIGN_NAME                                           :Знак
 STR_COMPANY_SOMEONE                                             :кто-то
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}

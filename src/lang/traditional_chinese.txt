@@ -441,8 +441,8 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :土地資訊
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切換主控台
 STR_ABOUT_MENU_AI_DEBUG                                         :AI 除錯
-STR_ABOUT_MENU_SCREENSHOT                                       :擷取畫面 (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :擷取全場景畫面 (Ctrl-G)
+STR_ABOUT_MENU_SCREENSHOT                                       :擷取畫面
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :擷取全場景畫面
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :關於「OpenTTD」
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 定位工具
 ############ range ends here
@@ -2146,7 +2146,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}電車�
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}鐵路所有者：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}地方政府：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :無
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標：{LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標：{LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建於：{LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}車站風格：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}車站種類：{LTBLUE}{STRING}
@@ -2313,7 +2313,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手動
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}高度圖旋轉：
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度圖名稱：
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}大小：
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}輸入亂數種子
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}修改雪線高度
@@ -2395,6 +2395,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}輸入 N
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 NewGRF 參數
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}關閉
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :參數 {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}變數檢查 - {STRING}
@@ -2465,7 +2466,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}缺少檔�
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF「{0:STRING}」的行為可能會造成失去同步或當機
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}「{1:ENGINE}」不在機廠內卻發生列車長度的變動
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}「{1:ENGINE}」不在機廠內卻發生動力車廂列車狀態的變動。
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}「{1:ENGINE}」不在機廠內卻發生列車長度的變動。
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」所擁有的列車「{0:VEHICLE}」長度無效。 這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF「{0:STRING}」提供了錯誤的資訊。
@@ -2481,6 +2483,9 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<無效工業>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標誌清單 - 標誌 {COMMA} 個
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}符合大小寫
+STR_SIGN_LIST_CLEAR                                             :{BLACK}清除過濾條件
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}清除篩選字串
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}編輯標誌文字
@@ -3341,6 +3346,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}不改�
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 參數
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}關閉
 STR_AI_SETTINGS_RESET                                           :{BLACK}重設
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3545,10 +3551,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}無法�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}無法修改機廠名稱...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}列車必須停在機廠内
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... 必須停在機廠内
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 必須停在車庫内
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}船舶必須停在船塢内
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}飛機必須停在機棚内
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... 必須停在船塢内
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... 必須停在機棚内
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車只有在停放於機廠內的時候才能變動
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車太長
@@ -3628,6 +3634,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}隧道�
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}無法挖掘隧道出口
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... 已有太多物件
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}無法建立物件...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}被東西擋住
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 被公司總部擋住
