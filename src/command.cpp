@@ -501,7 +501,8 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	int y = TileY(tile) * TILE_SIZE;
 
 #ifdef ENABLE_NETWORK
-	if (only_sending && GetCommandFlags(cmd) & CMD_CLIENT_ID) p2 = CLIENT_ID_SERVER;
+	/* Only set p2 when the command does not come from the network. */
+	if (!(cmd & CMD_NETWORK_COMMAND) && GetCommandFlags(cmd) & CMD_CLIENT_ID) p2 = CLIENT_ID_SERVER;
 #endif
 
 	CommandCost res = DoCommandPInternal(tile, p1, p2, cmd, callback, text, my_cmd, estimate_only);
