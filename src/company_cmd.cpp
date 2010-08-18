@@ -758,7 +758,9 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 	CompanyID company_id = (CompanyID)GB(p1, 16, 8);
+#ifdef ENABLE_NETWORK
 	ClientID client_id = (ClientID)p2;
+#endif /* ENABLE_NETWORK */
 
 	switch (GB(p1, 0, 16)) {
 		case 0: { // Create a new company
