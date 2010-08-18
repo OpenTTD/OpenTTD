@@ -190,6 +190,99 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 }
 
 /**
+ * Learn the price of refitting a certain engine
+ * @param engine_type Which engine to refit
+ * @return Price for refitting
+ */
+static CommandCost GetRefitCost(EngineID engine_type)
+{
+	ExpensesType expense_type;
+	const Engine *e = Engine::Get(engine_type);
+	Price base_price;
+	uint cost_factor = e->info.refit_cost;
+	switch (e->type) {
+		case VEH_SHIP:
+			base_price = PR_BUILD_VEHICLE_SHIP;
+			expense_type = EXPENSES_SHIP_RUN;
+			break;
+
+		case VEH_ROAD:
+			base_price = PR_BUILD_VEHICLE_ROAD;
+			expense_type = EXPENSES_ROADVEH_RUN;
+			break;
+
+		case VEH_AIRCRAFT:
+			base_price = PR_BUILD_VEHICLE_AIRCRAFT;
+			expense_type = EXPENSES_AIRCRAFT_RUN;
+			break;
+
+		case VEH_TRAIN:
+			base_price = (e->u.rail.railveh_type == RAILVEH_WAGON) ? PR_BUILD_VEHICLE_WAGON : PR_BUILD_VEHICLE_TRAIN;
+			cost_factor <<= 1;
+			expense_type = EXPENSES_TRAIN_RUN;
+			break;
+
+		default: NOT_REACHED();
+	}
+	return CommandCost(expense_type, GetPrice(base_price, cost_factor, e->grf_prop.grffile, -10));
+}
+
+/**
+ * Refits a vehicle (chain).
+ * This is the vehicle-type independent part of the CmdRefitXXX functions.
+ * @param v            The vehicle to refit.
+ * @param only_this    Whether to only refit this vehicle, or the whole chain.
+ * @param new_cid      Cargotype to refit to
+ * @param new_subtype  Cargo subtype to refit to
+ * @param flags        Command flags
+ * @return Refit cost.
+ */
+static CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_subtype, DoCommandFlag flags)
+{
+	CommandCost cost(v->GetExpenseType(false));
+	uint total_capacity = 0;
+
+	v->InvalidateNewGRFCacheOfChain();
+	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
+		const Engine *e = Engine::Get(v->engine_type);
+		if (!e->CanCarryCargo() || !HasBit(e->info.refit_mask, new_cid)) continue;
+
+		/* Back up the vehicle's cargo type */
+		CargoID temp_cid = v->cargo_type;
+		byte temp_subtype = v->cargo_subtype;
+		v->cargo_type = new_cid;
+		v->cargo_subtype = new_subtype;
+
+		uint16 mail_capacity;
+		uint amount = GetVehicleCapacity(v, &mail_capacity);
+		total_capacity += amount;
+
+		/* Restore the original cargo type */
+		v->cargo_type = temp_cid;
+		v->cargo_subtype = temp_subtype;
+
+		if (new_cid != v->cargo_type) {
+			cost.AddCost(GetRefitCost(v->engine_type));
+		}
+
+		if (flags & DC_EXEC) {
+			v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
+			v->cargo_type = new_cid;
+			v->cargo_cap = amount;
+			v->cargo_subtype = new_subtype;
+			if (v->type == VEH_AIRCRAFT) {
+				Vehicle *u = v->Next();
+				u->cargo_cap = mail_capacity;
+				u->cargo.Truncate(mail_capacity);
+			}
+		}
+	}
+
+	_returned_refit_capacity = total_capacity;
+	return cost;
+}
+
+/**
  * Refits a vehicle to the specified cargo type.
  * @param tile unused
  * @param flags type of operation
@@ -441,99 +534,6 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 
 		if (ret.Succeeded()) cost.AddCost(ret);
 	}
-	return cost;
-}
-
-/**
- * Learn the price of refitting a certain engine
- * @param engine_type Which engine to refit
- * @return Price for refitting
- */
-static CommandCost GetRefitCost(EngineID engine_type)
-{
-	ExpensesType expense_type;
-	const Engine *e = Engine::Get(engine_type);
-	Price base_price;
-	uint cost_factor = e->info.refit_cost;
-	switch (e->type) {
-		case VEH_SHIP:
-			base_price = PR_BUILD_VEHICLE_SHIP;
-			expense_type = EXPENSES_SHIP_RUN;
-			break;
-
-		case VEH_ROAD:
-			base_price = PR_BUILD_VEHICLE_ROAD;
-			expense_type = EXPENSES_ROADVEH_RUN;
-			break;
-
-		case VEH_AIRCRAFT:
-			base_price = PR_BUILD_VEHICLE_AIRCRAFT;
-			expense_type = EXPENSES_AIRCRAFT_RUN;
-			break;
-
-		case VEH_TRAIN:
-			base_price = (e->u.rail.railveh_type == RAILVEH_WAGON) ? PR_BUILD_VEHICLE_WAGON : PR_BUILD_VEHICLE_TRAIN;
-			cost_factor <<= 1;
-			expense_type = EXPENSES_TRAIN_RUN;
-			break;
-
-		default: NOT_REACHED();
-	}
-	return CommandCost(expense_type, GetPrice(base_price, cost_factor, e->grf_prop.grffile, -10));
-}
-
-/**
- * Refits a vehicle (chain).
- * This is the vehicle-type independent part of the CmdRefitXXX functions.
- * @param v            The vehicle to refit.
- * @param only_this    Whether to only refit this vehicle, or the whole chain.
- * @param new_cid      Cargotype to refit to
- * @param new_subtype  Cargo subtype to refit to
- * @param flags        Command flags
- * @return Refit cost.
- */
-CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_subtype, DoCommandFlag flags)
-{
-	CommandCost cost(v->GetExpenseType(false));
-	uint total_capacity = 0;
-
-	v->InvalidateNewGRFCacheOfChain();
-	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
-		const Engine *e = Engine::Get(v->engine_type);
-		if (!e->CanCarryCargo() || !HasBit(e->info.refit_mask, new_cid)) continue;
-
-		/* Back up the vehicle's cargo type */
-		CargoID temp_cid = v->cargo_type;
-		byte temp_subtype = v->cargo_subtype;
-		v->cargo_type = new_cid;
-		v->cargo_subtype = new_subtype;
-
-		uint16 mail_capacity;
-		uint amount = GetVehicleCapacity(v, &mail_capacity);
-		total_capacity += amount;
-
-		/* Restore the original cargo type */
-		v->cargo_type = temp_cid;
-		v->cargo_subtype = temp_subtype;
-
-		if (new_cid != v->cargo_type) {
-			cost.AddCost(GetRefitCost(v->engine_type));
-		}
-
-		if (flags & DC_EXEC) {
-			v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
-			v->cargo_type = new_cid;
-			v->cargo_cap = amount;
-			v->cargo_subtype = new_subtype;
-			if (v->type == VEH_AIRCRAFT) {
-				Vehicle *u = v->Next();
-				u->cargo_cap = mail_capacity;
-				u->cargo.Truncate(mail_capacity);
-			}
-		}
-	}
-
-	_returned_refit_capacity = total_capacity;
 	return cost;
 }
 
