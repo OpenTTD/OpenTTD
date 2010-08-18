@@ -1764,7 +1764,7 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 		/* if the population is still 0 at the point, then the
 		 * placement is so bad it couldn't grow at all */
 		if (t->population > 0) return t;
-		delete t;
+		DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
 	} while (--attempts != 0);
 
 	return NULL;
