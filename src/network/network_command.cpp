@@ -97,8 +97,8 @@ void CommandQueue::Free()
 }
 
 
-/** Local queue of packets */
-static CommandQueue _local_command_queue;
+/** Local queue of packets waiting for execution. */
+static CommandQueue _local_execution_queue;
 
 /**
  * Add a command to the local or client socket command queue,
@@ -110,7 +110,7 @@ void NetworkAddCommandQueue(CommandPacket cp, NetworkClientSocket *cs)
 {
 	CommandPacket *new_cp = MallocT<CommandPacket>(1);
 	*new_cp = cp;
-	(cs == NULL ? _local_command_queue : cs->command_queue).Append(new_cp);
+	(cs == NULL ? _local_execution_queue : cs->outgoing_queue).Append(new_cp);
 }
 
 /**
@@ -177,7 +177,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
  */
 void NetworkSyncCommandQueue(NetworkClientSocket *cs)
 {
-	for (CommandPacket *p = _local_command_queue.Peek(); p != NULL; p = p->next) {
+	for (CommandPacket *p = _local_execution_queue.Peek(); p != NULL; p = p->next) {
 		CommandPacket c = *p;
 		c.callback = 0;
 		c.next = NULL;
@@ -193,7 +193,7 @@ void NetworkExecuteLocalCommandQueue()
 	assert(IsLocalCompany());
 
 	CommandPacket *cp;
-	while ((cp = _local_command_queue.Peek()) != NULL) {
+	while ((cp = _local_execution_queue.Peek()) != NULL) {
 		/* The queue is always in order, which means
 		 * that the first element will be executed first. */
 		if (_frame_counter < cp->frame) break;
@@ -209,7 +209,7 @@ void NetworkExecuteLocalCommandQueue()
 		cp->cmd |= CMD_NETWORK_COMMAND;
 		DoCommandP(cp, cp->my_cmd);
 
-		_local_command_queue.Pop();
+		_local_execution_queue.Pop();
 		free(cp);
 	}
 
@@ -222,7 +222,7 @@ void NetworkExecuteLocalCommandQueue()
  */
 void NetworkFreeLocalCommandQueue()
 {
-	_local_command_queue.Free();
+	_local_execution_queue.Free();
 }
 
 /**

@@ -1612,7 +1612,7 @@ void NetworkServer_ReadPackets(NetworkClientSocket *cs)
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs)
 {
 	CommandPacket *cp;
-	while ((cp = cs->command_queue.Pop()) != NULL) {
+	while ((cp = cs->outgoing_queue.Pop()) != NULL) {
 		SEND_COMMAND(PACKET_SERVER_COMMAND)(cs, cp);
 		free(cp);
 	}
