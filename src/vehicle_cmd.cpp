@@ -155,7 +155,9 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *v, uint16 data);
  * Sell a vehicle.
  * @param tile unused.
  * @param flags for command.
- * @param p1 vehicle ID to be sold.
+ * @param p1 various bitstuffed data.
+ *  bits  0-15: vehicle ID being sold.
+ *  bits 16-31: vehicle type specific bits passed on to the vehicle build functions.
  * @param p2 unused.
  * @param text unused.
  * @return the cost of this operation or an error.
@@ -175,7 +177,7 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (!front->IsStoppedInDepot()) return_cmd_error(STR_TRAIN_MUST_BE_STOPPED + front->type);
 
 	if (v->type == VEH_TRAIN) {
-		ret = CmdSellRailWagon(flags, v, GB(p2, 0, 16));
+		ret = CmdSellRailWagon(flags, v, GB(p1, 16, 16));
 	} else {
 		ret = CommandCost(EXPENSES_NEW_VEHICLES, -front->value);
 
@@ -326,7 +328,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 	for (uint i = 0; i < list.Length(); i++) {
-		CommandCost ret = DoCommand(tile, list[i]->index, 1, flags, sell_command);
+		CommandCost ret = DoCommand(tile, list[i]->index | (1 << 16), 0, flags, sell_command);
 		if (ret.Succeeded()) {
 			cost.AddCost(ret);
 			had_success = true;
@@ -597,7 +599,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
-			if (w_front != NULL) DoCommand(w_front->tile, w_front->index, 1, flags, GetCmdSellVeh(w_front));
+			if (w_front != NULL) DoCommand(w_front->tile, w_front->index | (1 << 16), 0, flags, GetCmdSellVeh(w_front));
 			return cost;
 		}
 
@@ -617,8 +619,8 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				if (result.Failed()) {
 					/* The train can't be joined to make the same consist as the original.
 					 * Sell what we already made (clean up) and return an error.           */
-					DoCommand(w_front->tile, w_front->index, 1, flags, GetCmdSellVeh(w_front));
-					DoCommand(w_front->tile, w->index,       1, flags, GetCmdSellVeh(w));
+					DoCommand(w_front->tile, w_front->index | 1 << 16, 0, flags, GetCmdSellVeh(w_front));
+					DoCommand(w_front->tile, w->index       | 1 << 16, 0, flags, GetCmdSellVeh(w));
 					return result; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
 				}
 			} else {
@@ -708,7 +710,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (!CheckCompanyHasMoney(total_cost)) {
 		if (flags & DC_EXEC) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			DoCommand(w_front->tile, w_front->index, 1, flags, GetCmdSellVeh(w_front));
+			DoCommand(w_front->tile, w_front->index | 1 << 16, 0, flags, GetCmdSellVeh(w_front));
 		}
 		return total_cost;
 	}

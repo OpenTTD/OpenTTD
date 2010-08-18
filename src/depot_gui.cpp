@@ -983,7 +983,7 @@ struct DepotWindow : Window {
 					BackupVehicleOrders(v);
 				}
 
-				if (!DoCommandP(v->tile, v->index, sell_cmd, GetCmdSellVeh(v->type)) && is_engine) _backup_orders_tile = 0;
+				if (!DoCommandP(v->tile, v->index | sell_cmd << 16, 0, GetCmdSellVeh(v->type)) && is_engine) _backup_orders_tile = 0;
 				break;
 			}
 
