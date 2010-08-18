@@ -149,7 +149,9 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param tile Not used.
  * @param flags Operation to perform.
  * @param p1 Vehicle id.
- * @param p2 The timetable start date in ticks.
+ * @param p2 The timetable start date.
+ * @param text Not used.
+ * @return The error or cost of the operation.
  */
 CommandCost CmdSetTimetableStart(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
