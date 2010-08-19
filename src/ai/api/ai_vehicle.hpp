@@ -97,7 +97,7 @@ public:
 		VS_INVALID = 0xFF, ///< An invalid vehicle state.
 	};
 
-	static const int VEHICLE_INVALID = -1; ///< Invalid VehicleID.
+	static const VehicleID VEHICLE_INVALID = 0xFFFF; ///< Invalid VehicleID.
 
 	/**
 	 * Checks whether the given vehicle is valid and owned by you.
