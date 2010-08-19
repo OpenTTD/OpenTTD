@@ -452,8 +452,8 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0 - 15) - ID of the vehicle
- * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
+ * - p1 = (bit  0 - 19) - ID of the vehicle
+ * - p1 = (bit 24 - 31) - the selected order (if any). If the last order is given,
  *                        the order will be inserted before that one
  *                        the maximum vehicle order id is 254.
  * @param p2 packed order to insert
@@ -462,8 +462,8 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
  */
 CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	VehicleID veh   = GB(p1,  0, 16);
-	VehicleOrderID sel_ord = GB(p1, 16, 16);
+	VehicleID veh          = GB(p1,  0, 20);
+	VehicleOrderID sel_ord = GB(p1, 20, 8);
 	Order new_order(p2);
 
 	Vehicle *v = Vehicle::GetIfValid(veh);
@@ -742,8 +742,8 @@ static CommandCost DecloneOrder(Vehicle *dst, DoCommandFlag flags)
  */
 CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	VehicleID veh_id = p1;
-	VehicleOrderID sel_ord = p2;
+	VehicleID veh_id = GB(p1, 0, 20);
+	VehicleOrderID sel_ord = GB(p2, 0, 8);
 	Order *order;
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
@@ -811,8 +811,8 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  */
 CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	VehicleID veh_id = p1;
-	VehicleOrderID sel_ord = p2;
+	VehicleID veh_id = GB(p1, 0, 20);
+	VehicleOrderID sel_ord = GB(p2, 0, 8);
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 
@@ -851,7 +851,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  */
 CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	VehicleID veh = p1;
+	VehicleID veh = GB(p1, 0, 20);
 	VehicleOrderID moving_order = GB(p2,  0, 16);
 	VehicleOrderID target_order = GB(p2, 16, 16);
 
@@ -920,10 +920,10 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0 - 15) - ID of the vehicle
- * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
+ * - p1 = (bit  0 - 19) - ID of the vehicle
+ * - p1 = (bit 24 - 31) - the selected order (if any). If the last order is given,
  *                        the order will be inserted before that one
- *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
+ *                        the maximum vehicle order id is 254.
  * @param p2 various bitstuffed elements
  *  - p2 = (bit 0 -  3) - what data to modify (@see ModifyOrderFlags)
  *  - p2 = (bit 4 - 15) - the data to modify
@@ -932,10 +932,10 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  */
 CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	VehicleOrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
-	VehicleID veh          = GB(p1,  0, 16);
+	VehicleOrderID sel_ord = GB(p1, 20,  8);
+	VehicleID veh          = GB(p1,  0, 20);
 	ModifyOrderFlags mof   = Extract<ModifyOrderFlags, 0, 4>(p2);
-	uint16 data            = GB(p2, 4, 11);
+	uint16 data            = GB(p2,  4, 11);
 
 	if (mof >= MOF_END) return CMD_ERROR;
 
@@ -1157,16 +1157,16 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0-15) - destination vehicle to clone orders to (p1 & 0xFFFF)
- * - p1 = (bit 16-31) - source vehicle to clone orders from, if any (none for CO_UNSHARE)
- * @param p2 mode of cloning: CO_SHARE, CO_COPY, or CO_UNSHARE
+ * - p1 = (bit  0-19) - destination vehicle to clone orders to
+ * - p1 = (bit 30-31) - action to perform
+ * @param p2 source vehicle to clone orders from, if any (none for CO_UNSHARE)
  * @param text unused
  * @return the cost of this operation or an error
  */
 CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	VehicleID veh_src = GB(p1, 16, 16);
-	VehicleID veh_dst = GB(p1,  0, 16);
+	VehicleID veh_src = GB(p2, 0, 20);
+	VehicleID veh_dst = GB(p1, 0, 20);
 
 	Vehicle *dst = Vehicle::GetIfValid(veh_dst);
 	if (dst == NULL || !dst->IsPrimaryVehicle()) return CMD_ERROR;
@@ -1174,7 +1174,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	CommandCost ret = CheckOwnership(dst->owner);
 	if (ret.Failed()) return ret;
 
-	switch (p2) {
+	switch (GB(p1, 30, 2)) {
 		case CO_SHARE: {
 			Vehicle *src = Vehicle::GetIfValid(veh_src);
 
@@ -1295,7 +1295,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
  */
 CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	VehicleID veh = GB(p1, 0, 16);
+	VehicleID veh = GB(p1, 0, 20);
 	VehicleOrderID order_number  = GB(p2, 16, 8);
 	CargoID cargo = GB(p2, 0, 8);
 	byte subtype  = GB(p2, 8, 8);
