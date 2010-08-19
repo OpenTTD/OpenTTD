@@ -1383,7 +1383,7 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data, uint3
 
 			/* If we deleted a window then open a new one for the 'new' train */
 			if (IsLocalCompany() && w != NULL) ShowVehicleViewWindow(new_head);
-		} else if (v->IsPrimaryVehicle() && data & (MAKE_ORDER_BACKUP_FLAG >> 16)) {
+		} else if (v->IsPrimaryVehicle() && data & (MAKE_ORDER_BACKUP_FLAG >> 20)) {
 			OrderBackup::Backup(v, user);
 		}
 

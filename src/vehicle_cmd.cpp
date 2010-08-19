@@ -79,7 +79,7 @@ CommandCost CmdBuildAircraft   (TileIndex tile, DoCommandFlag flags, const Engin
  * @param p1 various bitstuffed data
  *  bits  0-15: vehicle type being built.
  *  bits 16-31: vehicle type specific bits passed on to the vehicle build functions.
- * @param p2 unused
+ * @param p2 User
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -159,16 +159,16 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *v, uint16 data, uint3
  * @param tile unused.
  * @param flags for command.
  * @param p1 various bitstuffed data.
- *  bits  0-15: vehicle ID being sold.
- *  bits 16-30: vehicle type specific bits passed on to the vehicle build functions.
+ *  bits  0-19: vehicle ID being sold.
+ *  bits 20-30: vehicle type specific bits passed on to the vehicle build functions.
  *  bit     31: make a backup of the vehicle's order (if an engine).
- * @param p2 unused.
+ * @param p2 User.
  * @param text unused.
  * @return the cost of this operation or an error.
  */
 CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 16));
+	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));
 	if (v == NULL) return CMD_ERROR;
 
 	Vehicle *front = v->First();
@@ -191,7 +191,7 @@ CommandCost CmdSellVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	}
 
 	if (v->type == VEH_TRAIN) {
-		ret = CmdSellRailWagon(flags, v, GB(p1, 16, 16), p2);
+		ret = CmdSellRailWagon(flags, v, GB(p1, 20, 12), p2);
 	} else {
 		ret = CommandCost(EXPENSES_NEW_VEHICLES, -front->value);
 
@@ -301,7 +301,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byt
  * Refits a vehicle to the specified cargo type.
  * @param tile unused
  * @param flags type of operation
- * @param p1 vehicle ID of the train to refit
+ * @param p1 vehicle ID to refit
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to
  * - p2 = (bit 8-15) - the new cargo subtype to refit to
@@ -506,7 +506,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, DoCommandFlag flags, uint32 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 	for (uint i = 0; i < list.Length(); i++) {
-		CommandCost ret = DoCommand(tile, list[i]->index | (1 << 16), 0, flags, sell_command);
+		CommandCost ret = DoCommand(tile, list[i]->index | (1 << 20), 0, flags, sell_command);
 		if (ret.Succeeded()) {
 			cost.AddCost(ret);
 			had_success = true;
@@ -684,7 +684,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		if (cost.Failed()) {
 			/* Can't build a part, then sell the stuff we already made; clear up the mess */
-			if (w_front != NULL) DoCommand(w_front->tile, w_front->index | (1 << 16), 0, flags, GetCmdSellVeh(w_front));
+			if (w_front != NULL) DoCommand(w_front->tile, w_front->index | (1 << 20), 0, flags, GetCmdSellVeh(w_front));
 			return cost;
 		}
 
@@ -704,8 +704,8 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				if (result.Failed()) {
 					/* The train can't be joined to make the same consist as the original.
 					 * Sell what we already made (clean up) and return an error.           */
-					DoCommand(w_front->tile, w_front->index | 1 << 16, 0, flags, GetCmdSellVeh(w_front));
-					DoCommand(w_front->tile, w->index       | 1 << 16, 0, flags, GetCmdSellVeh(w));
+					DoCommand(w_front->tile, w_front->index | 1 << 20, 0, flags, GetCmdSellVeh(w_front));
+					DoCommand(w_front->tile, w->index       | 1 << 20, 0, flags, GetCmdSellVeh(w));
 					return result; // return error and the message returned from CMD_MOVE_RAIL_VEHICLE
 				}
 			} else {
@@ -795,7 +795,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (!CheckCompanyHasMoney(total_cost)) {
 		if (flags & DC_EXEC) {
 			/* The vehicle has already been bought, so now it must be sold again. */
-			DoCommand(w_front->tile, w_front->index | 1 << 16, 0, flags, GetCmdSellVeh(w_front));
+			DoCommand(w_front->tile, w_front->index | 1 << 20, 0, flags, GetCmdSellVeh(w_front));
 		}
 		return total_cost;
 	}
