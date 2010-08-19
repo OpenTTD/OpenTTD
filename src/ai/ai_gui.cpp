@@ -1110,7 +1110,6 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 13), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 14), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Select this company
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(39, 0), SetResize(1, 0),
 		EndContainer(),
