@@ -89,6 +89,12 @@ public:
 	 * Adds a const to the stack. Depending on the current state this means
 	 *  either a const to a class or to the global space.
 	 */
+	void AddConst(const char *var_name, uint value) { this->AddConst(var_name, (int)value); }
+
+	/**
+	 * Adds a const to the stack. Depending on the current state this means
+	 *  either a const to a class or to the global space.
+	 */
 	void AddConst(const char *var_name, bool value);
 
 	/**
@@ -126,6 +132,7 @@ public:
 
 	void InsertResult(bool result);
 	void InsertResult(int result);
+	void InsertResult(uint result) { this->InsertResult((int)result); }
 
 	/**
 	 * Call a method of an instance, in various flavors.

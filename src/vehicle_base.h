@@ -53,7 +53,8 @@ struct VehicleCache {
 	uint32 cached_var43; ///< Cache for NewGRF var 43
 };
 
-typedef Pool<Vehicle, VehicleID, 512, 64000> VehiclePool;
+/** A vehicle pool for a little over 1 million vehicles. */
+typedef Pool<Vehicle, VehicleID, 512, 0xFF000> VehiclePool;
 extern VehiclePool _vehicle_pool;
 
 /* Some declarations of functions, so we can make them friendly */

@@ -14,7 +14,7 @@
 
 #include "core/enum_type.hpp"
 
-typedef uint16 VehicleID;
+typedef uint32 VehicleID;
 
 /** Available vehicle types. */
 enum VehicleType {
@@ -45,7 +45,7 @@ struct BaseVehicle
 	VehicleTypeByte type;    ///< Type of vehicle
 };
 
-static const VehicleID INVALID_VEHICLE = 0xFFFF; ///< Constant representing a non-existing vehicle.
+static const VehicleID INVALID_VEHICLE = 0xFFFFF; ///< Constant representing a non-existing vehicle.
 
 /** Pathfinding option states */
 enum VehiclePathFinders {
