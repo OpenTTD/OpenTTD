@@ -317,3 +317,5 @@ AIIndustry.IsCargoAccepted <- function(industry_id, cargo_id)
 }
 
 AIAbstractList <- AIList;
+
+AIList.ChangeItem <- AIList.SetValue;
