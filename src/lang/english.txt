@@ -559,6 +559,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}View details about this company
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehicles:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stations:
@@ -3309,6 +3310,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Match ca
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toggle matching case when comparing AI log messages against the break string
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continue
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Unpause and continue the AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}View debug output of this AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is built without AI support...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... no AIs are available!

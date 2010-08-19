@@ -1587,7 +1587,7 @@ static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
 		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
 		panel->SetMinimalSize(sprite_size.width, sprite_size.height);
 		panel->SetFill(1, 0);
-		panel->SetDataTip(0x0, STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP);
+		panel->SetDataTip(0x0, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);
 		hor->Add(panel);
 		hor_length++;
 	}
