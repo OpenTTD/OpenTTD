@@ -128,6 +128,8 @@ struct NetworkSettings {
 #ifdef ENABLE_NETWORK
 	uint16 sync_freq;                                     ///< how often do we check whether we are still in-sync
 	uint8  frame_freq;                                    ///< how often do we send commands to the clients
+	uint16 commands_per_frame;                            ///< how many commands may be sent each frame_freq frames?
+	uint16 max_commands_in_queue;                         ///< how many commands may there be in the incoming queue before dropping the connection?
 	uint16 max_join_time;                                 ///< maximum amount of time, in game ticks, a client may take to join
 	bool   pause_on_join;                                 ///< pause the game when people join
 	uint16 server_port;                                   ///< port the server listens on

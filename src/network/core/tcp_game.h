@@ -78,6 +78,7 @@ struct CommandPacket;
 class CommandQueue {
 	CommandPacket *first; ///< The first packet in the queue.
 	CommandPacket *last;  ///< The last packet in the queue; only valid when first != NULL.
+	uint count;           ///< The number of items in the queue.
 
 public:
 	/** Initialise the command queue. */
@@ -88,6 +89,8 @@ public:
 	CommandPacket *Pop();
 	CommandPacket *Peek();
 	void Free();
+	/** Get the number of items in the queue. */
+	uint Count() const { return this->count; }
 };
 
 /** Status of a client */

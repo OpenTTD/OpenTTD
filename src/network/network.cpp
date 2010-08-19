@@ -344,7 +344,8 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err)
 		STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH,
 		STR_NETWORK_ERROR_CLIENT_KICKED,
 		STR_NETWORK_ERROR_CLIENT_CHEATER,
-		STR_NETWORK_ERROR_CLIENT_SERVER_FULL
+		STR_NETWORK_ERROR_CLIENT_SERVER_FULL,
+		STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS
 	};
 
 	if (err >= (ptrdiff_t)lengthof(network_error_strings)) err = NETWORK_ERROR_GENERAL;
@@ -1181,14 +1182,13 @@ void NetworkGameLoop()
 			f = NULL;
 		}
 #endif /* DEBUG_DUMP_COMMANDS */
-		NetworkDistributeCommands();
-
 		if (_frame_counter >= _frame_counter_max) {
 			/* Only check for active clients just before we're going to send out
 			 * the commands so we don't send multiple pause/unpause commands when
-			 * the frame_freq is more than 1 tick. */
+			 * the frame_freq is more than 1 tick. Same with distributing commands. */
 			CheckPauseOnJoin();
 			CheckMinActiveClients();
+			NetworkDistributeCommands();
 		}
 
 		bool send_frame = false;

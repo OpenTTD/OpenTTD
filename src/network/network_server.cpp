@@ -897,6 +897,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
+	if (cs->incoming_queue.Count() >= _settings_client.network.max_commands_in_queue) {
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_TOO_MANY_COMMANDS);
+	}
+
 	CommandPacket cp;
 	const char *err = cs->Recv_Command(p, &cp);
 

@@ -515,6 +515,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 		case NETWORK_ERROR_CHEATER:
 			_switch_mode_errorstr = STR_NETWORK_ERROR_CHEATER;
 			break;
+		case NETWORK_ERROR_TOO_MANY_COMMANDS:
+			_switch_mode_errorstr = STR_NETWORK_ERROR_TOO_MANY_COMMANDS;
+			break;
 		default:
 			_switch_mode_errorstr = STR_NETWORK_ERROR_LOSTCONNECTION;
 	}

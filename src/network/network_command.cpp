@@ -17,6 +17,7 @@
 #include "network.h"
 #include "../command_func.h"
 #include "../company_func.h"
+#include "../settings_type.h"
 
 /** Table with all the callbacks we'll use for conversion*/
 static CommandCallback * const _callback_table[] = {
@@ -68,6 +69,7 @@ void CommandQueue::Append(CommandPacket *p)
 		this->last->next = add;
 	}
 	this->last = add;
+	this->count++;
 }
 
 /**
@@ -77,7 +79,10 @@ void CommandQueue::Append(CommandPacket *p)
 CommandPacket *CommandQueue::Pop()
 {
 	CommandPacket *ret = this->first;
-	if (ret != NULL) this->first = this->first->next;
+	if (ret != NULL) {
+		this->first = this->first->next;
+		this->count--;
+	}
 	return ret;
 }
 
@@ -97,6 +102,7 @@ void CommandQueue::Free()
 	while ((cp = this->Pop()) != NULL) {
 		free(cp);
 	}
+	assert(this->count == 0);
 }
 
 /** Local queue of packets waiting for handling. */
@@ -241,8 +247,10 @@ static void DistributeCommandPacket(CommandPacket cp, const NetworkClientSocket 
  */
 static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owner)
 {
+	int to_go = _settings_client.network.commands_per_frame;
+
 	CommandPacket *cp;
-	while ((cp = queue->Pop()) != NULL) {
+	while (--to_go >= 0 && (cp = queue->Pop()) != NULL) {
 		DistributeCommandPacket(*cp, owner);
 		free(cp);
 	}
