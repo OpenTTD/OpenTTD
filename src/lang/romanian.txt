@@ -1757,6 +1757,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serverul
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Accesul tău este interzis pe acest server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ai fost dat afară din joc
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheat-urile nu sunt permise pe acest server
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Trimiteai prea multe comenzi către server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :eroare generală
@@ -1774,6 +1775,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :Id de companie 
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :dat afară de pe server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :a încercat să folosească un cheat
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server plin
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :trimitea prea multe comenzi
 ############ End of leave-in-this-order
 
 # Network related errors

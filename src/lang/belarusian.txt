@@ -872,6 +872,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Дэта
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Падрабязная інфармацыя аб кампаніі
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Коль-ць ТС:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станцыі:
@@ -2074,6 +2075,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Сэрв
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Доступ на гэты сэрвэр вам забаронены
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас выкінулі з гульні
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Махлярства не дазволена на гэтым сэрвэры
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Вы дасылалi да серверу занадта шмат каманд
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :агульная памылка
@@ -2091,6 +2093,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :няправі�
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :Вас выкінуў сэрвэр
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :паспрабаваў махляваць
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сэрвэр перапоўнены
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :дасылаў занадта шмат каманд
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -3660,6 +3663,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Рэгі
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Пераключыць праверку рэгістра пры параўнаньні радкоў
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Працягнуць
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Працягнуць гульню
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Прагляд зьвестак адладкі модуля ШI
 
 STR_ERROR_NO_AI                                                 :{WHITE}Падтрымка ШI адключана ў гэтай зборцы OpenTTD...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... адсутнічаюць модулі AI/ШI!
@@ -3906,10 +3910,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Тут �
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Не атрымалася перайменаваць дэпо...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Цягнік павінен быць спынены ў дэпо
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... павінен быць спынены ў дэпо
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... павінен быць спынены ў гаражы
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Карабель павінен быць спынены ў доку
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Самалёт павінен быць спынены ў ангары
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... павінен быць спынены ў доку
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... павінен быць спынены ў ангары
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Склад цягніка можна мяняць толькі ў дэпо
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Цягнiк занадта доўгi

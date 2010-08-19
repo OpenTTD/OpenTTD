@@ -601,6 +601,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detajl
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Podrobnosti o podjetju
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozila:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Postaje:
@@ -1799,6 +1800,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Strežni
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Izvrzen/a si iz tega streznika
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Brcnjen/a si bil/a iz igre
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Goljufanje ni dovoljeno na tem strežniku
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Pošiljal si preveč ukazov strežniku
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :splošna napaka
@@ -1816,6 +1818,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :napačna oznaka
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :brcnjen od gostitelja
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :je poskusil/a uporabiti goljufanje
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :gostitelj zaseden
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :je pošiljal preveč ukazov
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -3349,6 +3352,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ujemanje
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Preklopi način ujemanja pri primerjanju dnevnika UI z napako
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nadaljuj
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nadaljuj izvajanje UI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Oglej si razhroščevalni izpis UI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je zgrajen brez podpore za UI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... ni nobene UI na voljo!

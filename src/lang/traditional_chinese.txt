@@ -558,6 +558,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}詳細�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}檢視此公司的詳細資訊
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}交通工具：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}車站：
@@ -1756,6 +1757,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}伺服�
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}您被伺服器封鎖了
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}您被踢出遊戲
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}此伺服器不允許作弊
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}您傳送了太多指令給伺服器了
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般錯誤
@@ -1773,6 +1775,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand 內�
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :被伺服器踢除
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :想試著作弊
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :伺服器已滿
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :已傳送太多指令
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2485,6 +2488,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<無效工業>
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標誌清單 - 標誌 {COMMA} 個
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}符合大小寫
 STR_SIGN_LIST_CLEAR                                             :{BLACK}清除過濾條件
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}切換比對標誌名稱是否與篩選字串相符時是否要符合大小寫
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}清除篩選字串
 
 # Sign window
@@ -3305,6 +3309,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}符合�
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}切換比對 AI 記錄訊息是否與中斷點字串相符時是否要符合大小寫
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}繼續
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暫停並繼續 AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}檢視此 AI 的除錯輸出資訊
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD 編譯時未加入 AI 支援...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... 無 AI 可使用！

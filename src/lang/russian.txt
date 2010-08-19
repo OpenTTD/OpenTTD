@@ -697,6 +697,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Дета
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Подробная информация о компании
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Кол-во ТС:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станции:
@@ -1911,6 +1912,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Серв
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Вас забанили на этом сервере
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас выкинули из игры
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Чит-коды не разрешены на этом сервере
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Вы посылали на сервер слишком много команд
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :общая ошибка
@@ -1928,6 +1930,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :неправи�
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :вас выкинул сервер
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :попытался применить чит
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сервер переполнен
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :посылал слишком много команд
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2653,18 +2656,18 @@ STR_NEWGRF_INVALID_ENGINE                                       :<неправи
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<неизвестное предприятие>
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Список знаков - {COMMA} знак{P а и ов}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Список табличек - {COMMA} таблич{P ка ки ек}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Регистр
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Очистить фильтр
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Переключить проверку регистра при сравнении названий знаков с фильтром
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Переключить проверку регистра при сравнении названий табличек с фильтром
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Очистить фильтр
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить текст знака
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}К следующему знаку
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}К предыдущему знаку
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить текст таблички
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}К следующей табличке
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}К предыдущей табличке
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введите текст знака
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введите название таблички
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Города
@@ -3487,6 +3490,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Реги
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Переключить проверку регистра при сравнении строк
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Продолжить
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Продолжить игру
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Просмотр отладочной информации модуля ИИ
 
 STR_ERROR_NO_AI                                                 :{WHITE}Поддержка ИИ отключена в этой сборке OpenTTD...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... отсутствуют модули ИИ!
@@ -3915,8 +3919,8 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Этот
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... слишком много меток
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не удалось оставить знак...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не удалось изменить знак...
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не удалось поставить табличку...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не удалось изменить табличку...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не удалось удалить метку...
 
 # Translatable comment for OpenTTD's desktop shortcut
@@ -4358,7 +4362,7 @@ STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Док {TOWN} #
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Ангар ({STATION})
 
 STR_UNKNOWN_STATION                                             :неизвестная станция
-STR_DEFAULT_SIGN_NAME                                           :Знак
+STR_DEFAULT_SIGN_NAME                                           :Табличка
 STR_COMPANY_SOMEONE                                             :кто-то
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}

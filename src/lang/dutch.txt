@@ -1757,6 +1757,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De serve
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Je bent verbannen van deze server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Je bent van de server geschopt
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Valsspelen is niet toegestaan op deze server
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Je stuurde teveel commando's naar de server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemene fout
@@ -1774,6 +1775,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :verkeerd bedrij
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :eruit geschopt door server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :probeerde vals te spelen
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server is vol
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :stuurde te veel commando's
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -3553,10 +3555,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan dok 
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan depot niet hernoemen...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Trein moet gestopt zijn in depot
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... moet gestopt zijn in een depot
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... moet gestopt zijn binnen een wegvoertuigdepot
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Schip moet gestopt zijn binnen een dok
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Vliegtuig moet gestopt zijn in een hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... moet gestopt zijn binnen een dok
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... moet gestopt zijn in een hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treinen kunnen alleen aangepast worden als ze gestopt zijn binnen een depot
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lang

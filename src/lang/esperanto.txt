@@ -216,6 +216,8 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entajpu filtrotekston.
@@ -1736,6 +1738,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}La servi
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Oni forbaris vin de la servilo
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Oni forbatis vin el la ludo
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Vi ne rajtas filudi en ĉi tiu servilo
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Vi estis sendanta tro da komandojn al la servilo
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :ĝenerala eraro
@@ -1753,6 +1756,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :malĝusta kompa
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :forbatite de servilo
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :provis uzi filudaĵon
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servilo plenas
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estis sendanta tro da komandojn
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2345,6 +2349,7 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Elektu bildeto
 
 
 # NewGRF (self) generated warnings/errors
@@ -2741,7 +2746,9 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Alinomi 
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Alinomi aviadiltipon
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Ŝanĝi nomon de tenejo
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Alinomi tenejon
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
@@ -2922,7 +2929,11 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Neniu o
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Irante al {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Irante al {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Irante al {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Irante al {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Prizorgo en {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Prizorgo en {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 
@@ -3097,6 +3108,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Trajngaraĝo
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Stratveturila garaĝo
 STR_ORDER_SHIP_DEPOT                                            :Ŝipgaraĝo
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Transformu al {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Transformu al {STRING} kaj haltu)
@@ -3998,6 +4010,9 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Vojpunkto {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Vojpunkto {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Vagonara Tenejo
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Stratveturila Tenejo
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Ŝipa Tenejo
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangaro
 
 STR_UNKNOWN_STATION                                             :nekonata stacio
@@ -4074,6 +4089,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 

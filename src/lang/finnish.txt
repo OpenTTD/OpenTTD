@@ -559,6 +559,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Yksityis
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Näytä tietoja tästä yhtiöstä
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Liikennevälineitä:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Asemia:
@@ -1757,6 +1758,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Palvelin
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sinut on kielletty palvelimelta
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sinut potkittiin pihalle palvelimelta
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Huijaaminen ei ole sallittua tällä palvelimella
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Lähetit liian monta komentoa palvelimelle
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :yleinen virhe
@@ -1774,6 +1776,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :väärä compan
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :palvelin potki pihalle
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :yritti käyttää huijausta
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :palvelin täynnä
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :lähetti liian monta komentoa
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -3307,6 +3310,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Kirjaink
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Kytke kirjainkoon täsmäys kun verrataan tekoälyn viestejä pysäytysmerkkijonoon
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jatka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Jatka tekoälyn suorittamista
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Näytä tämän tekoälyn virheenkorjaustiedot
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD on käännetty ilman AI-tukea...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... tekoälyt eivät ole saatavilla!

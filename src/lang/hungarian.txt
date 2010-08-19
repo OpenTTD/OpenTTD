@@ -3218,7 +3218,7 @@ STR_ORDER_DROP_HALT_DEPOT                                       :Maradj ott
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Célpont kihagyása, ha javítás szükséges
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk a parancssorban
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Berakodás százaléka
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Rakomány százaléka
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Megbízhatóság
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximális sebesség
 STR_ORDER_CONDITIONAL_AGE                                       :Életkor (év)
