@@ -205,7 +205,7 @@ CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  * @param p1   index of array group
  *   - p1 bit 0-15 : GroupID
  * @param p2   vehicle to add to a group
- *   - p2 bit 0-15 : VehicleID
+ *   - p2 bit 0-19 : VehicleID
  * @param text unused
  * @return the cost of this operation or an error
  */

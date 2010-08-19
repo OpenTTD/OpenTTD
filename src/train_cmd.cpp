@@ -583,7 +583,7 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
  * @param ret[out] the vehicle that has been built.
  * @return the cost of this operation or an error.
  */
-CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const Engine *e, Vehicle **ret)
+static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const Engine *e, Vehicle **ret)
 {
 	const RailVehicleInfo *rvi = &e->u.rail;
 
@@ -647,7 +647,7 @@ CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const Engine 
 					w->engine_type == e->index &&   ///< Same type
 					w->First() != v &&              ///< Don't connect to ourself
 					!(w->vehstatus & VS_CRASHED)) { ///< Not crashed/flooded
-				DoCommand(0, v->index | (w->Last()->index << 16), 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				DoCommand(0, v->index | 1 << 20, w->Last()->index, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 				break;
 			}
 		}
@@ -663,7 +663,7 @@ static void NormalizeTrainVehInDepot(const Train *u)
 	FOR_ALL_TRAINS(v) {
 		if (v->IsFreeWagon() && v->tile == u->tile &&
 				v->track == TRACK_BIT_DEPOT) {
-			if (DoCommand(0, v->index | (u->index << 16), 1, DC_EXEC,
+			if (DoCommand(0, v->index | 1 << 20, u->index, DC_EXEC,
 					CMD_MOVE_RAIL_VEHICLE).Failed())
 				break;
 		}
@@ -1143,17 +1143,17 @@ static void NormaliseTrainHead(Train *head)
  * @param flags type of operation
  *              Note: DC_AUTOREPLACE is set when autoreplace tries to undo its modifications or moves vehicles to temporary locations inside the depot.
  * @param p1 various bitstuffed elements
- * - p1 (bit  0 - 15) source vehicle index
- * - p1 (bit 16 - 31) what wagon to put the source wagon AFTER, XXX - INVALID_VEHICLE to make a new line
- * @param p2 (bit 0) move all vehicles following the source vehicle
+ * - p1 (bit  0 - 19) source vehicle index
+ * - p1 (bit      20) move all vehicles following the source vehicle
+ * @param p2 what wagon to put the source wagon AFTER, XXX - INVALID_VEHICLE to make a new line
  * @param text unused
  * @return the cost of this operation or an error
  */
 CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	VehicleID s = GB(p1, 0, 16);
-	VehicleID d = GB(p1, 16, 16);
-	bool move_chain = HasBit(p2, 0);
+	VehicleID s = GB(p1, 0, 20);
+	VehicleID d = GB(p2, 0, 20);
+	bool move_chain = HasBit(p1, 20);
 
 	Train *src = Train::GetIfValid(s);
 	if (src == NULL) return CMD_ERROR;

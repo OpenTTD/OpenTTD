@@ -102,7 +102,7 @@
 		while (dest_wagon-- > 0) w = w->GetNextUnit();
 	}
 
-	return AIObject::DoCommand(0, v->index | ((w == NULL ? ::INVALID_VEHICLE : w->index) << 16), move_attached_wagons ? 1 : 0, CMD_MOVE_RAIL_VEHICLE);
+	return AIObject::DoCommand(0, v->index | (move_attached_wagons ? 1 : 0) << 20, w == NULL ? ::INVALID_VEHICLE : w->index, CMD_MOVE_RAIL_VEHICLE);
 }
 
 /* static */ bool AIVehicle::MoveWagon(VehicleID source_vehicle_id, int source_wagon, int dest_vehicle_id, int dest_wagon)

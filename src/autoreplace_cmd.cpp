@@ -309,7 +309,7 @@ static inline CommandCost StartStopVehicle(const Vehicle *v, bool evaluate_callb
  */
 static inline CommandCost MoveVehicle(const Vehicle *v, const Vehicle *after, DoCommandFlag flags, bool whole_chain)
 {
-	return DoCommand(0, v->index | (after != NULL ? after->index : INVALID_VEHICLE) << 16, whole_chain ? 1 : 0, flags, CMD_MOVE_RAIL_VEHICLE);
+	return DoCommand(0, v->index | (whole_chain ? 1 : 0) << 20, after != NULL ? after->index : INVALID_VEHICLE, flags, CMD_MOVE_RAIL_VEHICLE);
 }
 
 /**
