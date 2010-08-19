@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAITownList_Register(Squirrel *engine)
 {
 	DefSQClass <AITownList> SQAITownList("AITownList");
-	SQAITownList.PreRegister(engine, "AIAbstractList");
+	SQAITownList.PreRegister(engine, "AIList");
 	SQAITownList.AddConstructor<void (AITownList::*)(), 1>(engine, "x");
 
 	SQAITownList.PostRegister(engine);

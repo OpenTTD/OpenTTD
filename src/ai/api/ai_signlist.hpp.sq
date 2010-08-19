@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAISignList_Register(Squirrel *engine)
 {
 	DefSQClass <AISignList> SQAISignList("AISignList");
-	SQAISignList.PreRegister(engine, "AIAbstractList");
+	SQAISignList.PreRegister(engine, "AIList");
 	SQAISignList.AddConstructor<void (AISignList::*)(), 1>(engine, "x");
 
 	SQAISignList.PostRegister(engine);

@@ -12,14 +12,14 @@
 #ifndef AI_VEHICLELIST_HPP
 #define AI_VEHICLELIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 #include "ai_vehicle.hpp"
 
 /**
  * Creates a list of vehicles of which you are the owner.
  * @ingroup AIList
  */
-class AIVehicleList : public AIAbstractList {
+class AIVehicleList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList"; }
@@ -30,7 +30,7 @@ public:
  * Creates a list of vehicles that have orders to a given station.
  * @ingroup AIList
  */
-class AIVehicleList_Station : public AIAbstractList {
+class AIVehicleList_Station : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList_Station"; }
@@ -50,7 +50,7 @@ public:
  * an empty list will be returned.
  * @ingroup AIList
  */
-class AIVehicleList_Depot : public AIAbstractList {
+class AIVehicleList_Depot : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList_Depot"; }
@@ -65,7 +65,7 @@ public:
  * Creates a list of vehicles that share orders.
  * @ingroup AIList
  */
-class AIVehicleList_SharedOrders : public AIAbstractList {
+class AIVehicleList_SharedOrders : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList_SharedOrders"; }
@@ -80,7 +80,7 @@ public:
  * Creates a list of vehicles that are in a group.
  * @ingroup AIList
  */
-class AIVehicleList_Group : public AIAbstractList {
+class AIVehicleList_Group : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList_Group"; }
@@ -95,7 +95,7 @@ public:
  * Creates a list of vehicles that are in the default group.
  * @ingroup AIList
  */
-class AIVehicleList_DefaultGroup : public AIAbstractList {
+class AIVehicleList_DefaultGroup : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIVehicleList_DefaultGroup"; }

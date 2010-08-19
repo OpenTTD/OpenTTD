@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAIVehicleList_Register(Squirrel *engine)
 {
 	DefSQClass <AIVehicleList> SQAIVehicleList("AIVehicleList");
-	SQAIVehicleList.PreRegister(engine, "AIAbstractList");
+	SQAIVehicleList.PreRegister(engine, "AIList");
 	SQAIVehicleList.AddConstructor<void (AIVehicleList::*)(), 1>(engine, "x");
 
 	SQAIVehicleList.PostRegister(engine);
@@ -41,7 +41,7 @@ namespace SQConvert {
 void SQAIVehicleList_Station_Register(Squirrel *engine)
 {
 	DefSQClass <AIVehicleList_Station> SQAIVehicleList_Station("AIVehicleList_Station");
-	SQAIVehicleList_Station.PreRegister(engine, "AIAbstractList");
+	SQAIVehicleList_Station.PreRegister(engine, "AIList");
 	SQAIVehicleList_Station.AddConstructor<void (AIVehicleList_Station::*)(StationID station_id), 2>(engine, "xi");
 
 	SQAIVehicleList_Station.PostRegister(engine);
@@ -59,7 +59,7 @@ namespace SQConvert {
 void SQAIVehicleList_Depot_Register(Squirrel *engine)
 {
 	DefSQClass <AIVehicleList_Depot> SQAIVehicleList_Depot("AIVehicleList_Depot");
-	SQAIVehicleList_Depot.PreRegister(engine, "AIAbstractList");
+	SQAIVehicleList_Depot.PreRegister(engine, "AIList");
 	SQAIVehicleList_Depot.AddConstructor<void (AIVehicleList_Depot::*)(TileIndex tile), 2>(engine, "xi");
 
 	SQAIVehicleList_Depot.PostRegister(engine);
@@ -77,7 +77,7 @@ namespace SQConvert {
 void SQAIVehicleList_SharedOrders_Register(Squirrel *engine)
 {
 	DefSQClass <AIVehicleList_SharedOrders> SQAIVehicleList_SharedOrders("AIVehicleList_SharedOrders");
-	SQAIVehicleList_SharedOrders.PreRegister(engine, "AIAbstractList");
+	SQAIVehicleList_SharedOrders.PreRegister(engine, "AIList");
 	SQAIVehicleList_SharedOrders.AddConstructor<void (AIVehicleList_SharedOrders::*)(VehicleID vehicle_id), 2>(engine, "xi");
 
 	SQAIVehicleList_SharedOrders.PostRegister(engine);
@@ -95,7 +95,7 @@ namespace SQConvert {
 void SQAIVehicleList_Group_Register(Squirrel *engine)
 {
 	DefSQClass <AIVehicleList_Group> SQAIVehicleList_Group("AIVehicleList_Group");
-	SQAIVehicleList_Group.PreRegister(engine, "AIAbstractList");
+	SQAIVehicleList_Group.PreRegister(engine, "AIList");
 	SQAIVehicleList_Group.AddConstructor<void (AIVehicleList_Group::*)(GroupID group_id), 2>(engine, "xi");
 
 	SQAIVehicleList_Group.PostRegister(engine);
@@ -113,7 +113,7 @@ namespace SQConvert {
 void SQAIVehicleList_DefaultGroup_Register(Squirrel *engine)
 {
 	DefSQClass <AIVehicleList_DefaultGroup> SQAIVehicleList_DefaultGroup("AIVehicleList_DefaultGroup");
-	SQAIVehicleList_DefaultGroup.PreRegister(engine, "AIAbstractList");
+	SQAIVehicleList_DefaultGroup.PreRegister(engine, "AIList");
 	SQAIVehicleList_DefaultGroup.AddConstructor<void (AIVehicleList_DefaultGroup::*)(AIVehicle::VehicleType vehicle_type), 2>(engine, "xi");
 
 	SQAIVehicleList_DefaultGroup.PostRegister(engine);

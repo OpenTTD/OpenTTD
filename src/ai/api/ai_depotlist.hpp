@@ -12,14 +12,14 @@
 #ifndef AI_DEPOTLIST_HPP
 #define AI_DEPOTLIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 #include "ai_tile.hpp"
 
 /**
  * Creates a list of the locations of the depots (and hangars) of which you are the owner.
  * @ingroup AIList
  */
-class AIDepotList : public AIAbstractList {
+class AIDepotList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIDepotList"; }

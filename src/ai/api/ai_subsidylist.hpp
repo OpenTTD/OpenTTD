@@ -12,13 +12,13 @@
 #ifndef AI_SUBSIDYLIST_HPP
 #define AI_SUBSIDYLIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 
 /**
  * Creates a list of all current subsidies.
  * @ingroup AIList
  */
-class AISubsidyList : public AIAbstractList {
+class AISubsidyList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AISubsidyList"; }

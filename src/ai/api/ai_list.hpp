@@ -7,25 +7,25 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file ai_abstractlist.hpp A list which can keep item/value pairs, which you can walk. */
+/** @file ai_list.hpp A list which can keep item/value pairs, which you can walk. */
 /** @defgroup AIList Classes that create a list of items. */
 
-#ifndef AI_ABSTRACTLIST_HPP
-#define AI_ABSTRACTLIST_HPP
+#ifndef AI_LIST_HPP
+#define AI_LIST_HPP
 
 #include "ai_object.hpp"
 #include <map>
 #include <set>
 
-class AIAbstractListSorter;
+class AIListSorter;
 
 /**
  * Class that creates a list which can keep item/value pairs, which you can walk.
  */
-class AIAbstractList : public AIObject {
+class AIList : public AIObject {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
-	static const char *GetClassName() { return "AIAbstractList"; }
+	static const char *GetClassName() { return "AIList"; }
 
 	/** Type of sorter */
 	enum SorterType {
@@ -39,22 +39,22 @@ public:
 	static const bool SORT_DESCENDING = false;
 
 private:
-	AIAbstractListSorter *sorter; ///< Sorting algorithm
+	AIListSorter *sorter;         ///< Sorting algorithm
 	SorterType sorter_type;       ///< Sorting type
 	bool sort_ascending;          ///< Whether to sort ascending or descending
 	bool initialized;             ///< Whether an iteration has been started
 	int modifications;            ///< Number of modification that has been done. To prevent changing data while valuating.
 
 public:
-	typedef std::set<int32> AIItemList;                       ///< The list of items inside the bucket
-	typedef std::map<int32, AIItemList> AIAbstractListBucket; ///< The bucket list per value
-	typedef std::map<int32, int32> AIAbstractListMap;         ///< List per item
+	typedef std::set<int32> AIItemList;               ///< The list of items inside the bucket
+	typedef std::map<int32, AIItemList> AIListBucket; ///< The bucket list per value
+	typedef std::map<int32, int32> AIListMap;         ///< List per item
 
-	AIAbstractListMap items;           ///< The items in the list
-	AIAbstractListBucket buckets;      ///< The items in the list, sorted by value
+	AIListMap items;           ///< The items in the list
+	AIListBucket buckets;      ///< The items in the list, sorted by value
 
-	AIAbstractList();
-	~AIAbstractList();
+	AIList();
+	~AIList();
 
 	/**
 	 * Add a single item to the list.
@@ -149,7 +149,7 @@ public:
 	 * @note If the item already exists inside the caller, the value of the
 	 *  list that is added is set on the item.
 	 */
-	void AddList(AIAbstractList *list);
+	void AddList(AIList *list);
 
 	/**
 	 * Removes all items with a higher value than 'value'.
@@ -193,7 +193,7 @@ public:
 	 * @param list the list of items to remove.
 	 * @pre list != NULL
 	 */
-	void RemoveList(AIAbstractList *list);
+	void RemoveList(AIList *list);
 
 	/**
 	 * Keep all items with a higher value than 'value'.
@@ -237,7 +237,7 @@ public:
 	 * @param list the list of items to keep.
 	 * @pre list != NULL
 	 */
-	void KeepList(AIAbstractList *list);
+	void KeepList(AIList *list);
 
 #ifndef DOXYGEN_SKIP
 	/**

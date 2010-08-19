@@ -58,13 +58,13 @@
 	return industrytype_name;
 }
 
-/* static */ AIAbstractList *AIIndustryType::GetProducedCargo(IndustryType industry_type)
+/* static */ AIList *AIIndustryType::GetProducedCargo(IndustryType industry_type)
 {
 	if (!IsValidIndustryType(industry_type)) return NULL;
 
 	const IndustrySpec *ins = ::GetIndustrySpec(industry_type);
 
-	AIAbstractList *list = new AIAbstractList();
+	AIList *list = new AIList();
 	for (size_t i = 0; i < lengthof(ins->produced_cargo); i++) {
 		if (ins->produced_cargo[i] != CT_INVALID) list->AddItem(ins->produced_cargo[i]);
 	}
@@ -72,13 +72,13 @@
 	return list;
 }
 
-/* static */ AIAbstractList *AIIndustryType::GetAcceptedCargo(IndustryType industry_type)
+/* static */ AIList *AIIndustryType::GetAcceptedCargo(IndustryType industry_type)
 {
 	if (!IsValidIndustryType(industry_type)) return NULL;
 
 	const IndustrySpec *ins = ::GetIndustrySpec(industry_type);
 
-	AIAbstractList *list = new AIAbstractList();
+	AIList *list = new AIList();
 	for (size_t i = 0; i < lengthof(ins->accepts_cargo); i++) {
 		if (ins->accepts_cargo[i] != CT_INVALID) list->AddItem(ins->accepts_cargo[i]);
 	}

@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAIStationList_Register(Squirrel *engine)
 {
 	DefSQClass <AIStationList> SQAIStationList("AIStationList");
-	SQAIStationList.PreRegister(engine, "AIAbstractList");
+	SQAIStationList.PreRegister(engine, "AIList");
 	SQAIStationList.AddConstructor<void (AIStationList::*)(AIStation::StationType station_type), 2>(engine, "xi");
 
 	SQAIStationList.PostRegister(engine);
@@ -41,7 +41,7 @@ namespace SQConvert {
 void SQAIStationList_Vehicle_Register(Squirrel *engine)
 {
 	DefSQClass <AIStationList_Vehicle> SQAIStationList_Vehicle("AIStationList_Vehicle");
-	SQAIStationList_Vehicle.PreRegister(engine, "AIAbstractList");
+	SQAIStationList_Vehicle.PreRegister(engine, "AIList");
 	SQAIStationList_Vehicle.AddConstructor<void (AIStationList_Vehicle::*)(VehicleID vehicle_id), 2>(engine, "xi");
 
 	SQAIStationList_Vehicle.PostRegister(engine);

@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAITileList_Register(Squirrel *engine)
 {
 	DefSQClass <AITileList> SQAITileList("AITileList");
-	SQAITileList.PreRegister(engine, "AIAbstractList");
+	SQAITileList.PreRegister(engine, "AIList");
 	SQAITileList.AddConstructor<void (AITileList::*)(), 1>(engine, "x");
 
 	SQAITileList.DefSQMethod(engine, &AITileList::AddRectangle,    "AddRectangle",    3, "xii");

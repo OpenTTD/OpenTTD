@@ -28,6 +28,8 @@
  *
  * API removals:
  * \li HasNext for all lists.
+ * \li AIAbstractList, use AIList instead.
+ * \li AIList::ChangeItem, use AIList::SetValue instead.
  *
  * Other changes:
  * \li AIEngine::GetMaxTractiveEffort can be used for road vehicles.

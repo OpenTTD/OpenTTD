@@ -12,14 +12,14 @@
 #ifndef AI_INDUSTRYTYPELIST_HPP
 #define AI_INDUSTRYTYPELIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 #include "ai_industrytype.hpp"
 
 /**
  * Creates a list of valid industry types.
  * @ingroup AIList
  */
-class AIIndustryTypeList : public AIAbstractList {
+class AIIndustryTypeList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIIndustryTypeList"; }

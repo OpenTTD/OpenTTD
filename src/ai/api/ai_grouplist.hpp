@@ -12,14 +12,14 @@
 #ifndef AI_GROUPLIST_HPP
 #define AI_GROUPLIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 
 /**
  * Creates a list of groups of which you are the owner.
  * @note Neither AIGroup::GROUP_ALL nor AIGroup::GROUP_DEFAULT is in this list.
  * @ingroup AIList
  */
-class AIGroupList : public AIAbstractList {
+class AIGroupList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIGroupList"; }

@@ -1,0 +1,72 @@
+/* $Id$ */
+
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_list.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIList::SorterType GetParam(ForceType<AIList::SorterType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIList::SorterType)tmp; }
+	template <> int Return<AIList::SorterType>(HSQUIRRELVM vm, AIList::SorterType res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AIList to be used as Squirrel parameter */
+	template <> AIList *GetParam(ForceType<AIList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIList *)instance; }
+	template <> AIList &GetParam(ForceType<AIList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIList *)instance; }
+	template <> const AIList *GetParam(ForceType<const AIList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIList *)instance; }
+	template <> const AIList &GetParam(ForceType<const AIList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIList *)instance; }
+	template <> int Return<AIList *>(HSQUIRRELVM vm, AIList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIList", res, NULL, DefSQDestructorCallback<AIList>); return 1; }
+} // namespace SQConvert
+
+void SQAIList_Register(Squirrel *engine)
+{
+	DefSQClass <AIList> SQAIList("AIList");
+	SQAIList.PreRegister(engine);
+	SQAIList.AddConstructor<void (AIList::*)(), 1>(engine, "x");
+
+	SQAIList.DefSQConst(engine, AIList::SORT_BY_VALUE, "SORT_BY_VALUE");
+	SQAIList.DefSQConst(engine, AIList::SORT_BY_ITEM,  "SORT_BY_ITEM");
+
+	SQAIList.DefSQConst(engine, AIList::SORT_ASCENDING,  "SORT_ASCENDING");
+	SQAIList.DefSQConst(engine, AIList::SORT_DESCENDING, "SORT_DESCENDING");
+
+	SQAIList.DefSQMethod(engine, &AIList::AddItem,            "AddItem",            3, "xii");
+	SQAIList.DefSQMethod(engine, &AIList::RemoveItem,         "RemoveItem",         2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::Clear,              "Clear",              1, "x");
+	SQAIList.DefSQMethod(engine, &AIList::HasItem,            "HasItem",            2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::Begin,              "Begin",              1, "x");
+	SQAIList.DefSQMethod(engine, &AIList::Next,               "Next",               1, "x");
+	SQAIList.DefSQMethod(engine, &AIList::IsEmpty,            "IsEmpty",            1, "x");
+	SQAIList.DefSQMethod(engine, &AIList::IsEnd,              "IsEnd",              1, "x");
+	SQAIList.DefSQMethod(engine, &AIList::Count,              "Count",              1, "x");
+	SQAIList.DefSQMethod(engine, &AIList::GetValue,           "GetValue",           2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::SetValue,           "SetValue",           3, "xii");
+	SQAIList.DefSQMethod(engine, &AIList::Sort,               "Sort",               3, "xib");
+	SQAIList.DefSQMethod(engine, &AIList::AddList,            "AddList",            2, "xx");
+	SQAIList.DefSQMethod(engine, &AIList::RemoveAboveValue,   "RemoveAboveValue",   2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::RemoveBelowValue,   "RemoveBelowValue",   2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::RemoveBetweenValue, "RemoveBetweenValue", 3, "xii");
+	SQAIList.DefSQMethod(engine, &AIList::RemoveValue,        "RemoveValue",        2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::RemoveTop,          "RemoveTop",          2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::RemoveBottom,       "RemoveBottom",       2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::RemoveList,         "RemoveList",         2, "xx");
+	SQAIList.DefSQMethod(engine, &AIList::KeepAboveValue,     "KeepAboveValue",     2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::KeepBelowValue,     "KeepBelowValue",     2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::KeepBetweenValue,   "KeepBetweenValue",   3, "xii");
+	SQAIList.DefSQMethod(engine, &AIList::KeepValue,          "KeepValue",          2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::KeepTop,            "KeepTop",            2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::KeepBottom,         "KeepBottom",         2, "xi");
+	SQAIList.DefSQMethod(engine, &AIList::KeepList,           "KeepList",           2, "xx");
+	SQAIList.DefSQAdvancedMethod(engine, &AIList::_get,       "_get");
+	SQAIList.DefSQAdvancedMethod(engine, &AIList::_set,       "_set");
+	SQAIList.DefSQAdvancedMethod(engine, &AIList::_nexti,     "_nexti");
+	SQAIList.DefSQAdvancedMethod(engine, &AIList::Valuate,    "Valuate");
+
+	SQAIList.PostRegister(engine);
+}

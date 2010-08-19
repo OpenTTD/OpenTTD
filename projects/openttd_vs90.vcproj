@@ -2693,10 +2693,6 @@
 			Name="AI API"
 			>
 			<File
-				RelativePath=".\..\src\ai\api\ai_abstractlist.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\ai\api\ai_accounting.hpp"
 				>
 			</File>
@@ -2805,6 +2801,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\ai\api\ai_list.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\ai\api\ai_log.hpp"
 				>
 			</File>
@@ -2909,10 +2909,6 @@
 			Name="AI API Implementation"
 			>
 			<File
-				RelativePath=".\..\src\ai\api\ai_abstractlist.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\ai\api\ai_accounting.cpp"
 				>
 			</File>
@@ -3010,6 +3006,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\ai\api\ai_industrytypelist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_list.cpp"
 				>
 			</File>
 			<File

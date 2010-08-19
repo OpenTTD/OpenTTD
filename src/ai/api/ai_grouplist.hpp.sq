@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAIGroupList_Register(Squirrel *engine)
 {
 	DefSQClass <AIGroupList> SQAIGroupList("AIGroupList");
-	SQAIGroupList.PreRegister(engine, "AIAbstractList");
+	SQAIGroupList.PreRegister(engine, "AIList");
 	SQAIGroupList.AddConstructor<void (AIGroupList::*)(), 1>(engine, "x");
 
 	SQAIGroupList.PostRegister(engine);

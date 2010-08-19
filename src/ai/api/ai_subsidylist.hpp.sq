@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAISubsidyList_Register(Squirrel *engine)
 {
 	DefSQClass <AISubsidyList> SQAISubsidyList("AISubsidyList");
-	SQAISubsidyList.PreRegister(engine, "AIAbstractList");
+	SQAISubsidyList.PreRegister(engine, "AIList");
 	SQAISubsidyList.AddConstructor<void (AISubsidyList::*)(), 1>(engine, "x");
 
 	SQAISubsidyList.PostRegister(engine);

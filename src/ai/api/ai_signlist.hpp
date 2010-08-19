@@ -12,13 +12,13 @@
 #ifndef AI_SIGNLIST_HPP
 #define AI_SIGNLIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 
 /**
  * Create a list of signs your company has created.
  * @ingroup AIList
  */
-class AISignList : public AIAbstractList {
+class AISignList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AISignList"; }

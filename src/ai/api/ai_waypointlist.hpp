@@ -12,14 +12,14 @@
 #ifndef AI_WAYPOINTLIST_HPP
 #define AI_WAYPOINTLIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 #include "ai_waypoint.hpp"
 
 /**
  * Creates a list of waypoints of which you are the owner.
  * @ingroup AIList
  */
-class AIWaypointList : public AIAbstractList {
+class AIWaypointList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIWaypointList"; }
@@ -34,7 +34,7 @@ public:
  * Creates a list of waypoints which the vehicle has in its orders.
  * @ingroup AIList
  */
-class AIWaypointList_Vehicle : public AIAbstractList {
+class AIWaypointList_Vehicle : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIWaypointList_Vehicle"; }

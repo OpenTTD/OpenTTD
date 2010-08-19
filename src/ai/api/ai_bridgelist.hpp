@@ -12,13 +12,13 @@
 #ifndef AI_BRIDGELIST_HPP
 #define AI_BRIDGELIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 
 /**
  * Create a list of bridges.
  * @ingroup AIList
  */
-class AIBridgeList : public AIAbstractList {
+class AIBridgeList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIBridgeList"; }
@@ -29,7 +29,7 @@ public:
  * Create a list of bridges that can be built on a specific length.
  * @ingroup AIList
  */
-class AIBridgeList_Length : public AIAbstractList {
+class AIBridgeList_Length : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIBridgeList_Length"; }

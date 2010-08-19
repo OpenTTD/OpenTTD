@@ -12,14 +12,14 @@
 #ifndef AI_ENGINELIST_HPP
 #define AI_ENGINELIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 #include "ai_vehicle.hpp"
 
 /**
  * Create a list of engines based on a vehicle type.
  * @ingroup AIList
  */
-class AIEngineList : public AIAbstractList {
+class AIEngineList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIEngineList"; }

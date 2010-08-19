@@ -58,7 +58,7 @@ function Regression::TestInit()
 	}
 
 	list = AIList();
-	list.Sort(AIAbstractList.SORT_BY_VALUE, AIAbstractList.SORT_ASCENDING);
+	list.Sort(AIList.SORT_BY_VALUE, AIList.SORT_ASCENDING);
 	print("");
 	print(" Value Ascending");
 	list.AddItem( 5, 10);
@@ -93,7 +93,7 @@ function Regression::TestInit()
 	}
 
 	list = AIList();
-	list.Sort(AIAbstractList.SORT_BY_ITEM, AIAbstractList.SORT_DESCENDING);
+	list.Sort(AIList.SORT_BY_ITEM, AIList.SORT_DESCENDING);
 	print("");
 	print(" Item Descending");
 	list.AddItem( 5, 10);
@@ -128,7 +128,7 @@ function Regression::TestInit()
 	}
 
 	list = AIList();
-	list.Sort(AIAbstractList.SORT_BY_ITEM, AIAbstractList.SORT_ASCENDING);
+	list.Sort(AIList.SORT_BY_ITEM, AIList.SORT_ASCENDING);
 	print("");
 	print(" Item Ascending");
 	list.AddItem( 5, 10);
@@ -585,7 +585,7 @@ function Regression::Industry()
 	print("--Industry--");
 	print("  GetIndustryCount():  " + AIIndustry.GetIndustryCount());
 	local list = AIIndustryList();
-	list.Sort(AIAbstractList.SORT_BY_ITEM, AIAbstractList.SORT_ASCENDING);
+	list.Sort(AIList.SORT_BY_ITEM, AIList.SORT_ASCENDING);
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		if (AIIndustry.IsValidIndustry(i)) j++;
 		print("  Industry " + i);
@@ -704,12 +704,12 @@ function Regression::List()
 	}
 	list.RemoveItem(1050);
 	list.RemoveItem(1150);
-	list.ChangeItem(1051, 12);
+	list.SetValue(1051, 12);
 	print("  Count():       " + list.Count());
 	print("  HasItem(1050): " + list.HasItem(1050));
 	print("  HasItem(1051): " + list.HasItem(1051));
 	print("  IsEmpty():     " + list.IsEmpty());
-	list.Sort(AIAbstractList.SORT_BY_ITEM, AIAbstractList.SORT_ASCENDING);
+	list.Sort(AIList.SORT_BY_ITEM, AIList.SORT_ASCENDING);
 	print("  List Dump:");
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		print("    " + i + " => " + list.GetValue(i));
@@ -1198,7 +1198,7 @@ function Regression::Sign()
 	print("  RemoveSign(" + sign_id + "):                       " + AISign.RemoveSign(sign_id));
 	print("");
 	local list = AISignList();
-	list.Sort(AIAbstractList.SORT_BY_ITEM, AIAbstractList.SORT_ASCENDING);
+	list.Sort(AIList.SORT_BY_ITEM, AIList.SORT_ASCENDING);
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		j++;
 		print("  Sign " + i);
@@ -1467,7 +1467,7 @@ function Regression::Town()
 	print("--Town--");
 	print("  GetTownCount():    " + AITown.GetTownCount());
 	local list = AITownList();
-	list.Sort(AIAbstractList.SORT_BY_ITEM, AIAbstractList.SORT_ASCENDING);
+	list.Sort(AIList.SORT_BY_ITEM, AIList.SORT_ASCENDING);
 	for (local i = list.Begin(); !list.IsEnd(); i = list.Next()) {
 		if (AITown.IsValidTown(i)) j++;
 		print("  Town " + i);

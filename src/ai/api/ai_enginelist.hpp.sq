@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAIEngineList_Register(Squirrel *engine)
 {
 	DefSQClass <AIEngineList> SQAIEngineList("AIEngineList");
-	SQAIEngineList.PreRegister(engine, "AIAbstractList");
+	SQAIEngineList.PreRegister(engine, "AIList");
 	SQAIEngineList.AddConstructor<void (AIEngineList::*)(AIVehicle::VehicleType vehicle_type), 2>(engine, "xi");
 
 	SQAIEngineList.PostRegister(engine);

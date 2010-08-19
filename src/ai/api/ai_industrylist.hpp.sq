@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAIIndustryList_Register(Squirrel *engine)
 {
 	DefSQClass <AIIndustryList> SQAIIndustryList("AIIndustryList");
-	SQAIIndustryList.PreRegister(engine, "AIAbstractList");
+	SQAIIndustryList.PreRegister(engine, "AIList");
 	SQAIIndustryList.AddConstructor<void (AIIndustryList::*)(), 1>(engine, "x");
 
 	SQAIIndustryList.PostRegister(engine);
@@ -41,7 +41,7 @@ namespace SQConvert {
 void SQAIIndustryList_CargoAccepting_Register(Squirrel *engine)
 {
 	DefSQClass <AIIndustryList_CargoAccepting> SQAIIndustryList_CargoAccepting("AIIndustryList_CargoAccepting");
-	SQAIIndustryList_CargoAccepting.PreRegister(engine, "AIAbstractList");
+	SQAIIndustryList_CargoAccepting.PreRegister(engine, "AIList");
 	SQAIIndustryList_CargoAccepting.AddConstructor<void (AIIndustryList_CargoAccepting::*)(CargoID cargo_id), 2>(engine, "xi");
 
 	SQAIIndustryList_CargoAccepting.PostRegister(engine);
@@ -59,7 +59,7 @@ namespace SQConvert {
 void SQAIIndustryList_CargoProducing_Register(Squirrel *engine)
 {
 	DefSQClass <AIIndustryList_CargoProducing> SQAIIndustryList_CargoProducing("AIIndustryList_CargoProducing");
-	SQAIIndustryList_CargoProducing.PreRegister(engine, "AIAbstractList");
+	SQAIIndustryList_CargoProducing.PreRegister(engine, "AIList");
 	SQAIIndustryList_CargoProducing.AddConstructor<void (AIIndustryList_CargoProducing::*)(CargoID cargo_id), 2>(engine, "xi");
 
 	SQAIIndustryList_CargoProducing.PostRegister(engine);

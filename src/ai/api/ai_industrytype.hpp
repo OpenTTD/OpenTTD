@@ -14,7 +14,7 @@
 
 #include "ai_object.hpp"
 #include "ai_error.hpp"
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 
 /**
  * Class that handles all industry-type related functions.
@@ -55,7 +55,7 @@ public:
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return The CargoIDs of all cargotypes this industry could produce.
 	 */
-	static AIAbstractList *GetProducedCargo(IndustryType industry_type);
+	static AIList *GetProducedCargo(IndustryType industry_type);
 
 	/**
 	 * Get a list of CargoID accepted by this industry-type.
@@ -65,7 +65,7 @@ public:
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return The CargoIDs of all cargotypes this industry accepts.
 	 */
-	static AIAbstractList *GetAcceptedCargo(IndustryType industry_type);
+	static AIList *GetAcceptedCargo(IndustryType industry_type);
 
 	/**
 	 * Is this industry type a raw industry?

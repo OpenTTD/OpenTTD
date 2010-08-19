@@ -12,13 +12,13 @@
 #ifndef AI_TOWNLIST_HPP
 #define AI_TOWNLIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 
 /**
  * Creates a list of towns that are currently on the map.
  * @ingroup AIList
  */
-class AITownList : public AIAbstractList {
+class AITownList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AITownList"; }

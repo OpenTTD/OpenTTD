@@ -12,14 +12,14 @@
 #ifndef AI_STATIONLIST_HPP
 #define AI_STATIONLIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 #include "ai_station.hpp"
 
 /**
  * Creates a list of stations of which you are the owner.
  * @ingroup AIList
  */
-class AIStationList : public AIAbstractList {
+class AIStationList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIStationList"; }
@@ -34,7 +34,7 @@ public:
  * Creates a list of stations which the vehicle has in its orders.
  * @ingroup AIList
  */
-class AIStationList_Vehicle : public AIAbstractList {
+class AIStationList_Vehicle : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIStationList_Vehicle"; }

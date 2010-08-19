@@ -845,7 +845,6 @@
     <ClCompile Include="..\src\ai\ai_scanner.cpp" />
     <ClInclude Include="..\src\ai\ai_scanner.hpp" />
     <ClInclude Include="..\src\ai\ai_storage.hpp" />
-    <ClInclude Include="..\src\ai\api\ai_abstractlist.hpp" />
     <ClInclude Include="..\src\ai\api\ai_accounting.hpp" />
     <ClInclude Include="..\src\ai\api\ai_airport.hpp" />
     <ClInclude Include="..\src\ai\api\ai_base.hpp" />
@@ -873,6 +872,7 @@
     <ClInclude Include="..\src\ai\api\ai_industrytype.hpp" />
     <ClInclude Include="..\src\ai\api\ai_industrytypelist.hpp" />
     <ClInclude Include="..\src\ai\api\ai_info_docs.hpp" />
+    <ClInclude Include="..\src\ai\api\ai_list.hpp" />
     <ClInclude Include="..\src\ai\api\ai_log.hpp" />
     <ClInclude Include="..\src\ai\api\ai_map.hpp" />
     <ClInclude Include="..\src\ai\api\ai_marine.hpp" />
@@ -898,7 +898,6 @@
     <ClInclude Include="..\src\ai\api\ai_vehiclelist.hpp" />
     <ClInclude Include="..\src\ai\api\ai_waypoint.hpp" />
     <ClInclude Include="..\src\ai\api\ai_waypointlist.hpp" />
-    <ClCompile Include="..\src\ai\api\ai_abstractlist.cpp" />
     <ClCompile Include="..\src\ai\api\ai_accounting.cpp" />
     <ClCompile Include="..\src\ai\api\ai_airport.cpp" />
     <ClCompile Include="..\src\ai\api\ai_base.cpp" />
@@ -924,6 +923,7 @@
     <ClCompile Include="..\src\ai\api\ai_industrylist.cpp" />
     <ClCompile Include="..\src\ai\api\ai_industrytype.cpp" />
     <ClCompile Include="..\src\ai\api\ai_industrytypelist.cpp" />
+    <ClCompile Include="..\src\ai\api\ai_list.cpp" />
     <ClCompile Include="..\src\ai\api\ai_log.cpp" />
     <ClCompile Include="..\src\ai\api\ai_map.cpp" />
     <ClCompile Include="..\src\ai\api\ai_marine.cpp" />

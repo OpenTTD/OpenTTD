@@ -12,13 +12,13 @@
 #ifndef AI_CARGOLIST_HPP
 #define AI_CARGOLIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 
 /**
  * Creates a list of cargos that can be produced in the current game.
  * @ingroup AIList
  */
-class AICargoList : public AIAbstractList {
+class AICargoList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AICargoList"; }
@@ -31,7 +31,7 @@ public:
  *   by this industry, @see AIIndustry::IsCargoAccepted.
  * @ingroup AIList
  */
-class AICargoList_IndustryAccepting : public AIAbstractList {
+class AICargoList_IndustryAccepting : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AICargoList_IndustryAccepting"; }
@@ -46,7 +46,7 @@ public:
  * Creates a list of cargos that the given industry can produce.
  * @ingroup AIList
  */
-class AICargoList_IndustryProducing : public AIAbstractList {
+class AICargoList_IndustryProducing : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AICargoList_IndustryProducing"; }

@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAIDepotList_Register(Squirrel *engine)
 {
 	DefSQClass <AIDepotList> SQAIDepotList("AIDepotList");
-	SQAIDepotList.PreRegister(engine, "AIAbstractList");
+	SQAIDepotList.PreRegister(engine, "AIList");
 	SQAIDepotList.AddConstructor<void (AIDepotList::*)(AITile::TransportType transport_type), 2>(engine, "xi");
 
 	SQAIDepotList.PostRegister(engine);

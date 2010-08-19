@@ -12,13 +12,13 @@
 #ifndef AI_RAILTYPELIST_HPP
 #define AI_RAILTYPELIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 
 /**
  * Creates a list of all available railtypes.
  * @ingroup AIList
  */
-class AIRailTypeList : public AIAbstractList {
+class AIRailTypeList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIRailTypeList"; }

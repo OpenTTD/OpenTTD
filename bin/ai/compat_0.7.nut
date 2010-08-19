@@ -275,7 +275,6 @@ AIRoad.BuildDriveThroughRoadStation <- function(tile, front, road_veh_type, stat
 	return AIRoad._BuildDriveThroughRoadStation(tile, front, road_veh_type, station_id);
 }
 
-AIAbstractList.HasNext <-
 AIBridgeList.HasNext <-
 AIBridgeList_Length.HasNext <-
 AICargoList.HasNext <-
@@ -316,3 +315,5 @@ AIIndustry.IsCargoAccepted <- function(industry_id, cargo_id)
 {
 	return AIIndustry._IsCargoAccepted(industry_id, cargo_id) != AIIndustry.CAS_NOT_ACCEPTED;
 }
+
+AIAbstractList <- AIList;

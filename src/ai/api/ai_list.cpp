@@ -7,24 +7,24 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file ai_abstractlist.cpp Implementation of AIAbstractList. */
+/** @file ai_list.cpp Implementation of AIList. */
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 #include "../../debug.h"
 #include "../../script/squirrel.hpp"
 
 /**
- * Base class for any AIAbstractList sorter.
+ * Base class for any AIList sorter.
  */
-class AIAbstractListSorter {
+class AIListSorter {
 protected:
-	AIAbstractList *list;
+	AIList *list;
 
 public:
 	/**
 	 * Virtual dtor, needed to mute warnings.
 	 */
-	virtual ~AIAbstractListSorter() { }
+	virtual ~AIListSorter() { }
 
 	/**
 	 * Get the first item of the sorter.
@@ -55,16 +55,16 @@ public:
 /**
  * Sort by value, ascending.
  */
-class AIAbstractListSorterValueAscending : public AIAbstractListSorter {
+class AIListSorterValueAscending : public AIListSorter {
 private:
-	AIAbstractList::AIAbstractListBucket::iterator bucket_iter;
-	AIAbstractList::AIItemList *bucket_list;
-	AIAbstractList::AIItemList::iterator bucket_list_iter;
+	AIList::AIListBucket::iterator bucket_iter;
+	AIList::AIItemList *bucket_list;
+	AIList::AIItemList::iterator bucket_list_iter;
 	bool has_no_more_items;
 	int32 item_next;
 
 public:
-	AIAbstractListSorterValueAscending(AIAbstractList *list)
+	AIListSorterValueAscending(AIList *list)
 	{
 		this->list = list;
 		this->End();
@@ -141,16 +141,16 @@ public:
 /**
  * Sort by value, descending.
  */
-class AIAbstractListSorterValueDescending : public AIAbstractListSorter {
+class AIListSorterValueDescending : public AIListSorter {
 private:
-	AIAbstractList::AIAbstractListBucket::iterator bucket_iter;
-	AIAbstractList::AIItemList *bucket_list;
-	AIAbstractList::AIItemList::iterator bucket_list_iter;
+	AIList::AIListBucket::iterator bucket_iter;
+	AIList::AIItemList *bucket_list;
+	AIList::AIItemList::iterator bucket_list_iter;
 	bool has_no_more_items;
 	int32 item_next;
 
 public:
-	AIAbstractListSorterValueDescending(AIAbstractList *list)
+	AIListSorterValueDescending(AIList *list)
 	{
 		this->list = list;
 		this->End();
@@ -235,14 +235,14 @@ public:
 /**
  * Sort by item, ascending.
  */
-class AIAbstractListSorterItemAscending : public AIAbstractListSorter {
+class AIListSorterItemAscending : public AIListSorter {
 private:
-	AIAbstractList::AIAbstractListMap::iterator item_iter;
+	AIList::AIListMap::iterator item_iter;
 	bool has_no_more_items;
 	int32 item_next;
 
 public:
-	AIAbstractListSorterItemAscending(AIAbstractList *list)
+	AIListSorterItemAscending(AIList *list)
 	{
 		this->list = list;
 		this->End();
@@ -305,14 +305,14 @@ public:
 /**
  * Sort by item, descending.
  */
-class AIAbstractListSorterItemDescending : public AIAbstractListSorter {
+class AIListSorterItemDescending : public AIListSorter {
 private:
-	AIAbstractList::AIAbstractListMap::iterator item_iter;
+	AIList::AIListMap::iterator item_iter;
 	bool has_no_more_items;
 	int32 item_next;
 
 public:
-	AIAbstractListSorterItemDescending(AIAbstractList *list)
+	AIListSorterItemDescending(AIList *list)
 	{
 		this->list = list;
 		this->End();
@@ -375,27 +375,27 @@ public:
 
 
 
-AIAbstractList::AIAbstractList()
+AIList::AIList()
 {
 	/* Default sorter */
-	this->sorter         = new AIAbstractListSorterValueDescending(this);
+	this->sorter         = new AIListSorterValueDescending(this);
 	this->sorter_type    = SORT_BY_VALUE;
 	this->sort_ascending = false;
 	this->initialized    = false;
 	this->modifications  = 0;
 }
 
-AIAbstractList::~AIAbstractList()
+AIList::~AIList()
 {
 	delete this->sorter;
 }
 
-bool AIAbstractList::HasItem(int32 item)
+bool AIList::HasItem(int32 item)
 {
 	return this->items.count(item) == 1;
 }
 
-void AIAbstractList::Clear()
+void AIList::Clear()
 {
 	this->modifications++;
 
@@ -404,7 +404,7 @@ void AIAbstractList::Clear()
 	this->sorter->End();
 }
 
-void AIAbstractList::AddItem(int32 item, int32 value)
+void AIList::AddItem(int32 item, int32 value)
 {
 	this->modifications++;
 
@@ -416,7 +416,7 @@ void AIAbstractList::AddItem(int32 item, int32 value)
 	this->SetValue(item, value);
 }
 
-void AIAbstractList::RemoveItem(int32 item)
+void AIList::RemoveItem(int32 item)
 {
 	this->modifications++;
 
@@ -430,13 +430,13 @@ void AIAbstractList::RemoveItem(int32 item)
 	this->items.erase(item);
 }
 
-int32 AIAbstractList::Begin()
+int32 AIList::Begin()
 {
 	this->initialized = true;
 	return this->sorter->Begin();
 }
 
-int32 AIAbstractList::Next()
+int32 AIList::Next()
 {
 	if (this->initialized == false) {
 		DEBUG(ai, 0, "Next() is invalid as Begin() is never called");
@@ -445,12 +445,12 @@ int32 AIAbstractList::Next()
 	return this->sorter->Next();
 }
 
-bool AIAbstractList::IsEmpty()
+bool AIList::IsEmpty()
 {
 	return this->items.empty();
 }
 
-bool AIAbstractList::IsEnd()
+bool AIList::IsEnd()
 {
 	if (this->initialized == false) {
 		DEBUG(ai, 0, "IsEnd() is invalid as Begin() is never called");
@@ -459,19 +459,19 @@ bool AIAbstractList::IsEnd()
 	return this->sorter->IsEnd();
 }
 
-int32 AIAbstractList::Count()
+int32 AIList::Count()
 {
 	return (int32)this->items.size();
 }
 
-int32 AIAbstractList::GetValue(int32 item)
+int32 AIList::GetValue(int32 item)
 {
 	if (!this->HasItem(item)) return 0;
 
 	return this->items[item];
 }
 
-bool AIAbstractList::SetValue(int32 item, int32 value)
+bool AIList::SetValue(int32 item, int32 value)
 {
 	this->modifications++;
 
@@ -489,7 +489,7 @@ bool AIAbstractList::SetValue(int32 item, int32 value)
 	return true;
 }
 
-void AIAbstractList::Sort(SorterType sorter, bool ascending)
+void AIList::Sort(SorterType sorter, bool ascending)
 {
 	this->modifications++;
 
@@ -500,17 +500,17 @@ void AIAbstractList::Sort(SorterType sorter, bool ascending)
 	switch (sorter) {
 		case SORT_BY_ITEM:
 			if (ascending) {
-				this->sorter = new AIAbstractListSorterItemAscending(this);
+				this->sorter = new AIListSorterItemAscending(this);
 			} else {
-				this->sorter = new AIAbstractListSorterItemDescending(this);
+				this->sorter = new AIListSorterItemDescending(this);
 			}
 			break;
 
 		case SORT_BY_VALUE:
 			if (ascending) {
-				this->sorter = new AIAbstractListSorterValueAscending(this);
+				this->sorter = new AIListSorterValueAscending(this);
 			} else {
-				this->sorter = new AIAbstractListSorterValueDescending(this);
+				this->sorter = new AIListSorterValueDescending(this);
 			}
 			break;
 
@@ -523,56 +523,56 @@ void AIAbstractList::Sort(SorterType sorter, bool ascending)
 	this->initialized    = false;
 }
 
-void AIAbstractList::AddList(AIAbstractList *list)
+void AIList::AddList(AIList *list)
 {
-	AIAbstractListMap *list_items = &list->items;
-	for (AIAbstractListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
+	AIListMap *list_items = &list->items;
+	for (AIListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
 		this->AddItem((*iter).first);
 		this->SetValue((*iter).first, (*iter).second);
 	}
 }
 
-void AIAbstractList::RemoveAboveValue(int32 value)
+void AIList::RemoveAboveValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second > value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIAbstractList::RemoveBelowValue(int32 value)
+void AIList::RemoveBelowValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second < value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIAbstractList::RemoveBetweenValue(int32 start, int32 end)
+void AIList::RemoveBetweenValue(int32 start, int32 end)
 {
 	this->modifications++;
 
-	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second > start && (*iter).second < end) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIAbstractList::RemoveValue(int32 value)
+void AIList::RemoveValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second == value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIAbstractList::RemoveTop(int32 count)
+void AIList::RemoveTop(int32 count)
 {
 	this->modifications++;
 
@@ -586,7 +586,7 @@ void AIAbstractList::RemoveTop(int32 count)
 	switch (this->sorter_type) {
 		default: NOT_REACHED();
 		case SORT_BY_VALUE:
-			for (AIAbstractListBucket::iterator iter = this->buckets.begin(); iter != this->buckets.end(); iter = this->buckets.begin()) {
+			for (AIListBucket::iterator iter = this->buckets.begin(); iter != this->buckets.end(); iter = this->buckets.begin()) {
 				AIItemList *items = &(*iter).second;
 				size_t size = items->size();
 				for (AIItemList::iterator iter = items->begin(); iter != items->end(); iter = items->begin()) {
@@ -601,7 +601,7 @@ void AIAbstractList::RemoveTop(int32 count)
 			break;
 
 		case SORT_BY_ITEM:
-			for (AIAbstractListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter = this->items.begin()) {
+			for (AIListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter = this->items.begin()) {
 				if (--count < 0) return;
 				this->RemoveItem((*iter).first);
 			}
@@ -609,7 +609,7 @@ void AIAbstractList::RemoveTop(int32 count)
 	}
 }
 
-void AIAbstractList::RemoveBottom(int32 count)
+void AIList::RemoveBottom(int32 count)
 {
 	this->modifications++;
 
@@ -623,7 +623,7 @@ void AIAbstractList::RemoveBottom(int32 count)
 	switch (this->sorter_type) {
 		default: NOT_REACHED();
 		case SORT_BY_VALUE:
-			for (AIAbstractListBucket::reverse_iterator iter = this->buckets.rbegin(); iter != this->buckets.rend(); iter = this->buckets.rbegin()) {
+			for (AIListBucket::reverse_iterator iter = this->buckets.rbegin(); iter != this->buckets.rend(); iter = this->buckets.rbegin()) {
 				AIItemList *items = &(*iter).second;
 				size_t size = items->size();
 				for (AIItemList::reverse_iterator iter = items->rbegin(); iter != items->rend(); iter = items->rbegin()) {
@@ -637,7 +637,7 @@ void AIAbstractList::RemoveBottom(int32 count)
 			}
 
 		case SORT_BY_ITEM:
-			for (AIAbstractListMap::reverse_iterator iter = this->items.rbegin(); iter != this->items.rend(); iter = this->items.rbegin()) {
+			for (AIListMap::reverse_iterator iter = this->items.rbegin(); iter != this->items.rend(); iter = this->items.rbegin()) {
 				if (--count < 0) return;
 				this->RemoveItem((*iter).first);
 			}
@@ -645,76 +645,76 @@ void AIAbstractList::RemoveBottom(int32 count)
 	}
 }
 
-void AIAbstractList::RemoveList(AIAbstractList *list)
+void AIList::RemoveList(AIList *list)
 {
 	this->modifications++;
 
-	AIAbstractListMap *list_items = &list->items;
-	for (AIAbstractListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
+	AIListMap *list_items = &list->items;
+	for (AIListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
 		this->RemoveItem((*iter).first);
 	}
 }
 
-void AIAbstractList::KeepAboveValue(int32 value)
+void AIList::KeepAboveValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second <= value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIAbstractList::KeepBelowValue(int32 value)
+void AIList::KeepBelowValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second >= value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIAbstractList::KeepBetweenValue(int32 start, int32 end)
+void AIList::KeepBetweenValue(int32 start, int32 end)
 {
 	this->modifications++;
 
-	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second <= start || (*iter).second >= end) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIAbstractList::KeepValue(int32 value)
+void AIList::KeepValue(int32 value)
 {
 	this->modifications++;
 
-	for (AIAbstractListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
+	for (AIListMap::iterator next_iter, iter = this->items.begin(); iter != this->items.end(); iter = next_iter) {
 		next_iter = iter; next_iter++;
 		if ((*iter).second != value) this->RemoveItem((*iter).first);
 	}
 }
 
-void AIAbstractList::KeepTop(int32 count)
+void AIList::KeepTop(int32 count)
 {
 	this->modifications++;
 
 	this->RemoveBottom(this->Count() - count);
 }
 
-void AIAbstractList::KeepBottom(int32 count)
+void AIList::KeepBottom(int32 count)
 {
 	this->modifications++;
 
 	this->RemoveTop(this->Count() - count);
 }
 
-void AIAbstractList::KeepList(AIAbstractList *list)
+void AIList::KeepList(AIList *list)
 {
 	this->modifications++;
 
-	AIAbstractList tmp;
-	for (AIAbstractListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
+	AIList tmp;
+	for (AIListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
 		tmp.AddItem((*iter).first);
 		tmp.SetValue((*iter).first, (*iter).second);
 	}
@@ -723,7 +723,7 @@ void AIAbstractList::KeepList(AIAbstractList *list)
 	this->RemoveList(&tmp);
 }
 
-SQInteger AIAbstractList::_get(HSQUIRRELVM vm)
+SQInteger AIList::_get(HSQUIRRELVM vm)
 {
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
 
@@ -736,7 +736,7 @@ SQInteger AIAbstractList::_get(HSQUIRRELVM vm)
 	return 1;
 }
 
-SQInteger AIAbstractList::_set(HSQUIRRELVM vm)
+SQInteger AIList::_set(HSQUIRRELVM vm)
 {
 	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
 	if (sq_gettype(vm, 3) != OT_INTEGER || sq_gettype(vm, 3) == OT_NULL) {
@@ -760,7 +760,7 @@ SQInteger AIAbstractList::_set(HSQUIRRELVM vm)
 	return 0;
 }
 
-SQInteger AIAbstractList::_nexti(HSQUIRRELVM vm)
+SQInteger AIList::_nexti(HSQUIRRELVM vm)
 {
 	if (sq_gettype(vm, 2) == OT_NULL) {
 		if (this->IsEmpty()) {
@@ -784,15 +784,15 @@ SQInteger AIAbstractList::_nexti(HSQUIRRELVM vm)
 	return 1;
 }
 
-SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
+SQInteger AIList::Valuate(HSQUIRRELVM vm)
 {
 	this->modifications++;
 
-	/* The first parameter is the instance of AIAbstractList. */
+	/* The first parameter is the instance of AIList. */
 	int nparam = sq_gettop(vm) - 1;
 
 	if (nparam < 1) {
-		return sq_throwerror(vm, _SC("You need to give a least a Valuator as parameter to AIAbstractList::Valuate"));
+		return sq_throwerror(vm, _SC("You need to give a least a Valuator as parameter to AIList::Valuate"));
 	}
 
 	/* Make sure the valuator function is really a function, and not any
@@ -811,7 +811,7 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
 	/* Push the function to call */
 	sq_push(vm, 2);
 
-	for (AIAbstractListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
+	for (AIListMap::iterator iter = this->items.begin(); iter != this->items.end(); iter++) {
 		/* Check for changing of items. */
 		int previous_modification_count = this->modifications;
 
@@ -873,7 +873,7 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm)
 	 * 1. The root stable (as instance object).
 	 * 2. The valuator function.
 	 * 3. The parameters given to this function.
-	 * 4. The AIAbstractList instance object. */
+	 * 4. The AIList instance object. */
 	sq_pop(vm, nparam + 3);
 
 	AIObject::SetAllowDoCommand(backup_allow);

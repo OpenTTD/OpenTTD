@@ -12,13 +12,13 @@
 #ifndef AI_INDUSTRYLIST_HPP
 #define AI_INDUSTRYLIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 
 /**
  * Creates a list of industries that are currently on the map.
  * @ingroup AIList
  */
-class AIIndustryList : public AIAbstractList {
+class AIIndustryList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIIndustryList"; }
@@ -29,7 +29,7 @@ public:
  * Creates a list of industries that accepts a given cargo.
  * @ingroup AIList
  */
-class AIIndustryList_CargoAccepting : public AIAbstractList {
+class AIIndustryList_CargoAccepting : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIIndustryList_CargoAccepting"; }
@@ -45,7 +45,7 @@ public:
  * @note It also contains industries that currently produces 0 units of the cargo.
  * @ingroup AIList
  */
-class AIIndustryList_CargoProducing : public AIAbstractList {
+class AIIndustryList_CargoProducing : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AIIndustryList_CargoProducing"; }

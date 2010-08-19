@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAIRailTypeList_Register(Squirrel *engine)
 {
 	DefSQClass <AIRailTypeList> SQAIRailTypeList("AIRailTypeList");
-	SQAIRailTypeList.PreRegister(engine, "AIAbstractList");
+	SQAIRailTypeList.PreRegister(engine, "AIList");
 	SQAIRailTypeList.AddConstructor<void (AIRailTypeList::*)(), 1>(engine, "x");
 
 	SQAIRailTypeList.PostRegister(engine);

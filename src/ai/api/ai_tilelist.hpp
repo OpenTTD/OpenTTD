@@ -12,14 +12,14 @@
 #ifndef AI_TILELIST_HPP
 #define AI_TILELIST_HPP
 
-#include "ai_abstractlist.hpp"
+#include "ai_list.hpp"
 #include "ai_station.hpp"
 
 /**
  * Creates an empty list, in which you can add tiles.
  * @ingroup AIList
  */
-class AITileList : public AIAbstractList {
+class AITileList : public AIList {
 public:
 	/** Get the name of this class to identify it towards squirrel. */
 	static const char *GetClassName() { return "AITileList"; }

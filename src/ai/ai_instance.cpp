@@ -26,7 +26,6 @@
 
 /* Convert all AI related classes to Squirrel data.
  * Note: this line a marker in squirrel_export.sh. Do not change! */
-#include "api/ai_abstractlist.hpp.sq"
 #include "api/ai_accounting.hpp.sq"
 #include "api/ai_airport.hpp.sq"
 #include "api/ai_base.hpp.sq"
@@ -52,6 +51,7 @@
 #include "api/ai_industrylist.hpp.sq"
 #include "api/ai_industrytype.hpp.sq"
 #include "api/ai_industrytypelist.hpp.sq"
+#include "api/ai_list.hpp.sq"
 #include "api/ai_log.hpp.sq"
 #include "api/ai_map.hpp.sq"
 #include "api/ai_marine.hpp.sq"
@@ -171,7 +171,7 @@ void AIInstance::RegisterAPI()
 {
 /* Register all classes */
 	squirrel_register_std(this->engine);
-	SQAIAbstractList_Register(this->engine);
+	SQAIList_Register(this->engine);
 	SQAIAccounting_Register(this->engine);
 	SQAIAirport_Register(this->engine);
 	SQAIBase_Register(this->engine);

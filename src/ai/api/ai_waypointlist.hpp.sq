@@ -23,7 +23,7 @@ namespace SQConvert {
 void SQAIWaypointList_Register(Squirrel *engine)
 {
 	DefSQClass <AIWaypointList> SQAIWaypointList("AIWaypointList");
-	SQAIWaypointList.PreRegister(engine, "AIAbstractList");
+	SQAIWaypointList.PreRegister(engine, "AIList");
 	SQAIWaypointList.AddConstructor<void (AIWaypointList::*)(AIWaypoint::WaypointType waypoint_type), 2>(engine, "xi");
 
 	SQAIWaypointList.PostRegister(engine);
@@ -41,7 +41,7 @@ namespace SQConvert {
 void SQAIWaypointList_Vehicle_Register(Squirrel *engine)
 {
 	DefSQClass <AIWaypointList_Vehicle> SQAIWaypointList_Vehicle("AIWaypointList_Vehicle");
-	SQAIWaypointList_Vehicle.PreRegister(engine, "AIAbstractList");
+	SQAIWaypointList_Vehicle.PreRegister(engine, "AIList");
 	SQAIWaypointList_Vehicle.AddConstructor<void (AIWaypointList_Vehicle::*)(VehicleID vehicle_id), 2>(engine, "xi");
 
 	SQAIWaypointList_Vehicle.PostRegister(engine);

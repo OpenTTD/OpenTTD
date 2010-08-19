@@ -89,7 +89,9 @@ echo "
 	print \$0
 	gsub(\"^.*/\", \"\")
 	print \"	squirrel_register_std(this->engine);\" \$0
-	split(\"`grep '^void SQAI.*_Register(Squirrel \*engine)$' *.hpp.sq | sed 's/^.*void //;s/Squirrel \*/this->/;s/$/;/;s/_Register/0000Register/g;' | sort | sed 's/0000Register/_Register/g' | tr -d '\r' | tr '\n' ' '`\", regs, \" \")
+	# AIList needs to be registered with squirrel before all AIList subclasses.
+	print \"	SQAIList_Register(this->engine);\" \$0
+	split(\"`grep '^void SQAI.*_Register(Squirrel \*engine)$' *.hpp.sq | grep -v 'SQAIList_Register' | sed 's/^.*void //;s/Squirrel \*/this->/;s/$/;/;s/_Register/0000Register/g;' | sort | sed 's/0000Register/_Register/g' | tr -d '\r' | tr '\n' ' '`\", regs, \" \")
 
 	for (i = 1; regs[i] != \"\"; i++) {
 		if (regs[i] == \"SQAIController_Register(this->engine);\") continue
