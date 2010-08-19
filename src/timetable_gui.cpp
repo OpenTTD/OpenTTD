@@ -497,7 +497,7 @@ struct TimetableWindow : Window {
 
 		if (order_number >= v->GetNumOrders()) order_number = 0;
 
-		return v->index | (order_number << 16) | (is_journey << 24);
+		return v->index | (order_number << 20) | (is_journey << 28);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
