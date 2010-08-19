@@ -890,8 +890,14 @@ struct TooltipsWindow : public Window
 
 	virtual void OnMouseLoop()
 	{
+		/* Always close tooltips when the cursor is not in our window. */
+		if (!_cursor.in_window) {
+			delete this;
+			return;
+		}
+
 		/* We can show tooltips while dragging tools. These are shown as long as
-		 * we are dragging the tool. Normal tooltips work with rmb */
+		 * we are dragging the tool. Normal tooltips work with hover or rmb. */
 		switch (this->close_cond) {
 			case TCC_RIGHT_CLICK: if (!_right_button_down) delete this; break;
 			case TCC_LEFT_CLICK: if (!_left_button_down) delete this; break;
