@@ -53,11 +53,8 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
  * - p1 = (bit 16-23) - Order index to modify.
  * - p1 = (bit    24) - Whether to change the waiting time or the travelling
  *                      time.
- * - p1 = (bit    25) - Whether p2 contains waiting and travelling time.
  * @param p2 The amount of time to wait.
- * - p2 = (bit  0-15) - Waiting or travelling time as specified by p1 bit 24 if p1 bit 25 is not set,
- *                      Travelling time if p1 bit 25 is set.
- * - p2 = (bit 16-31) - Waiting time if p1 bit 25 is set
+ * - p2 = (bit  0-15) - Waiting or travelling time as specified by p1 bit 24
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -77,15 +74,11 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	Order *order = v->GetOrder(order_number);
 	if (order == NULL) return CMD_ERROR;
 
-	bool packed_time = HasBit(p1, 25);
-	bool is_journey = HasBit(p1, 24) || packed_time;
+	bool is_journey = HasBit(p1, 24);
 
 	int wait_time   = order->wait_time;
 	int travel_time = order->travel_time;
-	if (packed_time) {
-		travel_time = GB(p2, 0, 16);
-		wait_time   = GB(p2, 16, 16);
-	} else if (is_journey) {
+	if (is_journey) {
 		travel_time = GB(p2, 0, 16);
 	} else {
 		wait_time   = GB(p2, 0, 16);
