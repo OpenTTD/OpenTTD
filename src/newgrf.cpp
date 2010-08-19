@@ -48,6 +48,7 @@
 #include "core/mem_func.hpp"
 #include "smallmap_gui.h"
 #include "genworld.h"
+#include "gui.h"
 
 #include "table/strings.h"
 #include "table/build_industry.h"
@@ -4349,6 +4350,50 @@ static uint16 SanitizeSpriteOffset(uint16& num, uint16 offset, int max_sprites, 
 	return 0;
 }
 
+
+/** The type of action 5 type. */
+enum Action5BlockType {
+	A5BLOCK_FIXED,                ///< Only allow replacing a whole block of sprites. (TTDP compatible)
+	A5BLOCK_ALLOW_OFFSET,         ///< Allow replacing any subset by specifiing an offset.
+	A5BLOCK_INVALID,              ///< unknown/not-implemented type
+};
+/** Information about a single action 5 type. */
+struct Action5Type {
+	Action5BlockType block_type;  ///< How is this Action5 type processed?
+	SpriteID sprite_base;         ///< Load the sprites starting from this sprite.
+	uint16 min_sprites;           ///< If the Action5 contains less sprites, the whole block will be ignored.
+	uint16 max_sprites;           ///< If the Action5 contains more sprites, only the first max_sprites sprites will be used.
+	const char *name;             ///< Name for error messages.
+};
+
+/** The information about action 5 types. */
+static const Action5Type _action5_types[] = {
+	/* Note: min_sprites should not be changed. Therefore these constants are directly here and not in sprites.h */
+	/* 0x00 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x00"             },
+	/* 0x01 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x01"             },
+	/* 0x02 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x02"             },
+	/* 0x03 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x03"             },
+	/* 0x04 */ { A5BLOCK_FIXED,        SPR_SIGNALS_BASE,            48, PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT,    "Signal graphics"       },
+	/* 0x05 */ { A5BLOCK_FIXED,        SPR_ELRAIL_BASE,             48, ELRAIL_SPRITE_COUNT,                         "Catenary graphics"     },
+	/* 0x06 */ { A5BLOCK_FIXED,        SPR_SLOPES_BASE,             74, NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT, "Foundation graphics"   },
+	/* 0x07 */ { A5BLOCK_INVALID,      0,                           75, 0,                                           "TTDP GUI graphics"     }, // Not used by OTTD.
+	/* 0x08 */ { A5BLOCK_FIXED,        SPR_CANALS_BASE,             65, CANALS_SPRITE_COUNT,                         "Canal graphics"        },
+	/* 0x09 */ { A5BLOCK_FIXED,        SPR_ONEWAY_BASE,              6, ONEWAY_SPRITE_COUNT,                         "One way road graphics" },
+	/* 0x0A */ { A5BLOCK_FIXED,        SPR_2CCMAP_BASE,            256, TWOCCMAP_SPRITE_COUNT,                       "2CC colour maps"       },
+	/* 0x0B */ { A5BLOCK_FIXED,        SPR_TRAMWAY_BASE,           113, TRAMWAY_SPRITE_COUNT,                        "Tramway graphics"      },
+	/* 0x0C */ { A5BLOCK_INVALID,      0,                          133, 0,                                           "Snowy temperate tree"  }, // Not yet used by OTTD.
+	/* 0x0D */ { A5BLOCK_FIXED,        SPR_SHORE_BASE,              16, SPR_SHORE_SPRITE_COUNT,                      "Shore graphics"        },
+	/* 0x0E */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "New Signals graphics"  }, // Not yet used by OTTD.
+	/* 0x0F */ { A5BLOCK_FIXED,        SPR_TRACKS_FOR_SLOPES_BASE,  12, TRACKS_FOR_SLOPES_SPRITE_COUNT,              "Sloped rail track"     },
+	/* 0x10 */ { A5BLOCK_FIXED,        SPR_AIRPORTX_BASE,           15, AIRPORTX_SPRITE_COUNT,                       "Airport graphics"      },
+	/* 0x11 */ { A5BLOCK_FIXED,        SPR_ROADSTOP_BASE,            8, ROADSTOP_SPRITE_COUNT,                       "Road stop graphics"    },
+	/* 0x12 */ { A5BLOCK_FIXED,        SPR_AQUEDUCT_BASE,            8, AQUEDUCT_SPRITE_COUNT,                       "Aqueduct graphics"     },
+	/* 0x13 */ { A5BLOCK_FIXED,        SPR_AUTORAIL_BASE,           55, AUTORAIL_SPRITE_COUNT,                       "Autorail graphics"     },
+	/* 0x14 */ { A5BLOCK_ALLOW_OFFSET, SPR_FLAGS_BASE,               1, FLAGS_SPRITE_COUNT,                          "Flag graphics"         },
+	/* 0x15 */ { A5BLOCK_ALLOW_OFFSET, SPR_OPENTTD_BASE,             1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"  },
+	/* 0x16 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORT_PREVIEW_BASE,     1, SPR_AIRPORT_PREVIEW_COUNT,                   "Airport preview graphics" },
+};
+
 /* Action 0x05 */
 static void GraphicsNew(ByteReader *buf)
 {
@@ -4359,55 +4404,15 @@ static void GraphicsNew(ByteReader *buf)
 	 * V other data    Graphics type specific data.  Currently unused. */
 	/* TODO */
 
-	enum Action5BlockType {
-		A5BLOCK_FIXED,                ///< Only allow replacing a whole block of sprites. (TTDP compatible)
-		A5BLOCK_ALLOW_OFFSET,         ///< Allow replacing any subset by specifiing an offset.
-		A5BLOCK_INVALID,              ///< unknown/not-implemented type
-	};
-	struct Action5Type {
-		Action5BlockType block_type;  ///< How is this Action5 type processed?
-		SpriteID sprite_base;         ///< Load the sprites starting from this sprite.
-		uint16 min_sprites;           ///< If the Action5 contains less sprites, the whole block will be ignored.
-		uint16 max_sprites;           ///< If the Action5 contains more sprites, only the first max_sprites sprites will be used.
-		const char *name;             ///< Name for error messages.
-	};
-
-	static const Action5Type action5_types[] = {
-		/* Note: min_sprites should not be changed. Therefore these constants are directly here and not in sprites.h */
-		/* 0x00 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x00"             },
-		/* 0x01 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x01"             },
-		/* 0x02 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x02"             },
-		/* 0x03 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x03"             },
-		/* 0x04 */ { A5BLOCK_FIXED,        SPR_SIGNALS_BASE,            48, PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT,    "Signal graphics"       },
-		/* 0x05 */ { A5BLOCK_FIXED,        SPR_ELRAIL_BASE,             48, ELRAIL_SPRITE_COUNT,                         "Catenary graphics"     },
-		/* 0x06 */ { A5BLOCK_FIXED,        SPR_SLOPES_BASE,             74, NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT, "Foundation graphics"   },
-		/* 0x07 */ { A5BLOCK_INVALID,      0,                           75, 0,                                           "TTDP GUI graphics"     }, // Not used by OTTD.
-		/* 0x08 */ { A5BLOCK_FIXED,        SPR_CANALS_BASE,             65, CANALS_SPRITE_COUNT,                         "Canal graphics"        },
-		/* 0x09 */ { A5BLOCK_FIXED,        SPR_ONEWAY_BASE,              6, ONEWAY_SPRITE_COUNT,                         "One way road graphics" },
-		/* 0x0A */ { A5BLOCK_FIXED,        SPR_2CCMAP_BASE,            256, TWOCCMAP_SPRITE_COUNT,                       "2CC colour maps"       },
-		/* 0x0B */ { A5BLOCK_FIXED,        SPR_TRAMWAY_BASE,           113, TRAMWAY_SPRITE_COUNT,                        "Tramway graphics"      },
-		/* 0x0C */ { A5BLOCK_INVALID,      0,                          133, 0,                                           "Snowy temperate tree"  }, // Not yet used by OTTD.
-		/* 0x0D */ { A5BLOCK_FIXED,        SPR_SHORE_BASE,              16, SPR_SHORE_SPRITE_COUNT,                      "Shore graphics"        },
-		/* 0x0E */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "New Signals graphics"  }, // Not yet used by OTTD.
-		/* 0x0F */ { A5BLOCK_FIXED,        SPR_TRACKS_FOR_SLOPES_BASE,  12, TRACKS_FOR_SLOPES_SPRITE_COUNT,              "Sloped rail track"     },
-		/* 0x10 */ { A5BLOCK_FIXED,        SPR_AIRPORTX_BASE,           15, AIRPORTX_SPRITE_COUNT,                       "Airport graphics"      },
-		/* 0x11 */ { A5BLOCK_FIXED,        SPR_ROADSTOP_BASE,            8, ROADSTOP_SPRITE_COUNT,                       "Road stop graphics"    },
-		/* 0x12 */ { A5BLOCK_FIXED,        SPR_AQUEDUCT_BASE,            8, AQUEDUCT_SPRITE_COUNT,                       "Aqueduct graphics"     },
-		/* 0x13 */ { A5BLOCK_FIXED,        SPR_AUTORAIL_BASE,           55, AUTORAIL_SPRITE_COUNT,                       "Autorail graphics"     },
-		/* 0x14 */ { A5BLOCK_ALLOW_OFFSET, SPR_FLAGS_BASE,               1, FLAGS_SPRITE_COUNT,                          "Flag graphics"         },
-		/* 0x15 */ { A5BLOCK_ALLOW_OFFSET, SPR_OPENTTD_BASE,             1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"  },
-		/* 0x16 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORT_PREVIEW_BASE,     1, SPR_AIRPORT_PREVIEW_COUNT,                   "Airport preview graphics" },
-	};
-
 	uint8 type = buf->ReadByte();
 	uint16 num = buf->ReadExtendedByte();
 	uint16 offset = HasBit(type, 7) ? buf->ReadExtendedByte() : 0;
 	ClrBit(type, 7); // Clear the high bit as that only indicates whether there is an offset.
 
 	if ((type == 0x0D) && (num == 10) && _cur_grffile->is_ottdfile) {
-		/* Special not-TTDP-compatible case used in openttd(d/w).grf
+		/* Special not-TTDP-compatible case used in openttd.grf
 		 * Missing shore sprites and initialisation of SPR_SHORE_BASE */
-		grfmsg(2, "GraphicsNew: Loading 10 missing shore sprites from openttd(d/w).grf.");
+		grfmsg(2, "GraphicsNew: Loading 10 missing shore sprites from extra grf.");
 		LoadNextSprite(SPR_SHORE_BASE +  0, _file_index, _nfo_line++); // SLOPE_STEEP_S
 		LoadNextSprite(SPR_SHORE_BASE +  5, _file_index, _nfo_line++); // SLOPE_STEEP_W
 		LoadNextSprite(SPR_SHORE_BASE +  7, _file_index, _nfo_line++); // SLOPE_WSE
@@ -4423,13 +4428,13 @@ static void GraphicsNew(ByteReader *buf)
 	}
 
 	/* Supported type? */
-	if ((type >= lengthof(action5_types)) || (action5_types[type].block_type == A5BLOCK_INVALID)) {
+	if ((type >= lengthof(_action5_types)) || (_action5_types[type].block_type == A5BLOCK_INVALID)) {
 		grfmsg(2, "GraphicsNew: Custom graphics (type 0x%02X) sprite block of length %u (unimplemented, ignoring)", type, num);
 		_skip_sprites = num;
 		return;
 	}
 
-	const Action5Type *action5_type = &action5_types[type];
+	const Action5Type *action5_type = &_action5_types[type];
 
 	/* Ignore offset if not allowed */
 	if ((action5_type->block_type != A5BLOCK_ALLOW_OFFSET) && (offset != 0)) {
@@ -4472,6 +4477,35 @@ static void SkipAct5(ByteReader *buf)
 	_skip_sprites = buf->ReadExtendedByte();
 
 	grfmsg(3, "SkipAct5: Skipping %d sprites", _skip_sprites);
+}
+
+/**
+ * Check whether we are (obviously) missing some of the extra
+ * (Action 0x05) sprites that we like to use.
+ * When missing sprites are found a warning will be shown.
+ */
+void CheckForMissingSprites()
+{
+	/* Don't break out quickly, but allow to check the other
+	 * sprites as well, so we can give the best information. */
+	bool missing = false;
+	for (uint8 i = 0; i < lengthof(_action5_types); i++) {
+		const Action5Type *type = &_action5_types[i];
+		if (type->block_type == A5BLOCK_INVALID) continue;
+
+		for (uint j = 0; j < type->max_sprites; j++) {
+			if (!SpriteExists(type->sprite_base + j)) {
+				DEBUG(grf, 0, "%s sprites are missing", type->name);
+				missing = true;
+				/* No need to log more of the same. */
+				break;
+			}
+		}
+	}
+
+	if (missing) {
+		ShowErrorMessage(STR_NEWGRF_ERROR_MISSING_SPRITES, INVALID_STRING_ID, WL_CRITICAL);
+	}
 }
 
 /**
