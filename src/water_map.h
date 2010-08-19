@@ -202,7 +202,7 @@ static inline DiagDirection GetShipDepotDirection(TileIndex t)
  * @param tile One of the tiles of the ship depot.
  * @return The northern tile of the depot.
  */
-static TileIndex GetShipDepotNorthTile(TileIndex t)
+static inline TileIndex GetShipDepotNorthTile(TileIndex t)
 {
 	assert(IsShipDepot(t));
 	TileIndex tile2 = GetOtherShipDepotTile(t);
