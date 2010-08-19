@@ -209,6 +209,19 @@ OpenTTD not properly resizing with SDL on X [FS#3305]
 	and GNOME's. With the XFCE's and LXDE's window managers the resize
 	event is sent when the user releases the mouse.
 
+Train crashes entering same junction from block and path signals [FS#3928]
+	When a train has reserved a path from a path signal to a two way
+	block signal and the reservation passes a path signal through the
+	back another train can enter the reserved path (only) via that same
+	two way block signal.
+	The reason for this has to do with optimisation; to fix this issue
+	the signal update has to pass all path signals until it finds either
+	a train or a backwards facing signal. This is a very expensive task.
+	The (signal) setups that allow these crashes can furthermore be
+	considered incorrectly signalled; one extra safe waiting point for
+	the train entering from path signal just after the backwards facing
+	signal (from the path signal train) resolves the issue.
+
 Crashes when playing music [FS#3941]
 	Mac OS X's QuickTime (default music driver) and Windows' MCI (win32
 	music driver) crash on some songs from OpenMSX. OpenTTD cannot do
