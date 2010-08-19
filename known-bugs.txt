@@ -115,6 +115,14 @@ Clipping problems [FS#119]
 	leave the Transport Tycoon graphics, which in effect means OpenTTD
 	will not be a Transport Tycoon clone anymore.
 
+Mouse scrolling not possible at the edges of the screen [FS#383] [FS#3966]
+	Scrolling the viewport with the mouse cursor at the edges of the screen
+	in the same direction of the edge will fail. If the cursor is near the
+	edge the scrolling will be very slow.
+	OpenTTD only receives cursor position updates when the cursor is inside
+	OpenTTD's window. It is not told how far you have moved the cursor
+	outside of OpenTTD's window.
+
 Lost trains ignore (block) exit signals [FS#1473]
 	If trains are lost they ignore block exit signals, blocking junctions
 	with presignals. This is caused because the path finders cannot tell
