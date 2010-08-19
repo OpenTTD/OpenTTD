@@ -3208,7 +3208,7 @@ showhelp() {
 	echo "  --with-midi-arg=arg            define which args to use for the"
 	echo "                                 midi-player"
 	echo "  --with-libtimidity             enables libtimidity support"
-	echo "  --with-allegrol[=allegro-config]"
+	echo "  --with-allegro[=allegro-config]"
 	echo "                                 enables Allegro video driver support"
 	echo "  --with-cocoa                   enables COCOA video driver (OSX ONLY)"
 	echo "  --with-sdl[=sdl-config]        enables SDL video driver support"
