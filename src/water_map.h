@@ -198,6 +198,19 @@ static inline DiagDirection GetShipDepotDirection(TileIndex t)
 }
 
 /**
+ * Get the most northern tile of a ship depot.
+ * @param tile One of the tiles of the ship depot.
+ * @return The northern tile of the depot.
+ */
+static TileIndex GetShipDepotNorthTile(TileIndex t)
+{
+	assert(IsShipDepot(t));
+	TileIndex tile2 = GetOtherShipDepotTile(t);
+
+	return t < tile2 ? t : tile2;
+}
+
+/**
  * Is it a water lock tile?
  * @param t Water tile to query.
  * @return \c true if it is a water lock tile.

@@ -172,7 +172,6 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
-		/* Kill the depot, which is registered at the northernmost tile. Use that one */
 		delete Depot::GetByTile(tile);
 
 		MakeWaterKeepingClass(tile,  GetTileOwner(tile));
@@ -1180,9 +1179,7 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 static bool ClickTile_Water(TileIndex tile)
 {
 	if (GetWaterTileType(tile) == WATER_TILE_DEPOT) {
-		TileIndex tile2 = GetOtherShipDepotTile(tile);
-
-		ShowDepotWindow(tile < tile2 ? tile : tile2, VEH_SHIP);
+		ShowDepotWindow(GetShipDepotNorthTile(tile), VEH_SHIP);
 		return true;
 	}
 	return false;

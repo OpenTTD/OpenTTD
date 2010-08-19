@@ -225,9 +225,13 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
 {
 	const AircraftVehicleInfo *avi = &e->u.air;
+	const Station *st = Station::GetByTile(tile);
 
 	/* Prevent building aircraft types at places which can't handle them */
-	if (!CanVehicleUseStation(e->index, Station::GetByTile(tile))) return CMD_ERROR;
+	if (!CanVehicleUseStation(e->index, st)) return CMD_ERROR;
+
+	/* Make sure all aircraft end up in the first tile of the hanger. */
+	tile = st->airport.GetHangarTile(st->airport.GetHangarNum(tile));
 
 	if (flags & DC_EXEC) {
 		Aircraft *v = new Aircraft(); // aircraft

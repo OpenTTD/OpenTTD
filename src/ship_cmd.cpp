@@ -613,6 +613,7 @@ bool Ship::Tick()
  */
 CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, uint16 data, Vehicle **ret)
 {
+	tile = GetShipDepotNorthTile(tile);
 	if (flags & DC_EXEC) {
 		int x;
 		int y;

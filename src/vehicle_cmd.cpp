@@ -137,7 +137,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		v->unitnumber = unit_num;
 		v->value      = value.GetCost();
 
-		InvalidateWindowData(WC_VEHICLE_DEPOT, tile);
+		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(GetWindowClassForVehicleType(type), 0);
 		SetWindowDirty(WC_COMPANY, _current_company);
 		if (IsLocalCompany()) {
