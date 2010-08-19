@@ -960,8 +960,8 @@ struct AIDebugWindow : public QueryStringBaseWindow {
 		switch (widget) {
 			case AID_WIDGET_RELOAD_TOGGLE:
 				/* First kill the company of the AI, then start a new one. This should start the current AI again */
-				DoCommandP(0, 2, ai_debug_company, CMD_COMPANY_CTRL);
-				DoCommandP(0, 1, ai_debug_company, CMD_COMPANY_CTRL);
+				DoCommandP(0, 2 | ai_debug_company << 16, 0, CMD_COMPANY_CTRL);
+				DoCommandP(0, 1 | ai_debug_company << 16, 0, CMD_COMPANY_CTRL);
 				break;
 
 			case AID_WIDGET_SETTINGS:
