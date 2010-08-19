@@ -639,7 +639,6 @@ ai/api/ai_industrylist.hpp
 ai/api/ai_industrytype.hpp
 ai/api/ai_industrytypelist.hpp
 ai/api/ai_info_docs.hpp
-ai/api/ai_list.hpp
 ai/api/ai_log.hpp
 ai/api/ai_map.hpp
 ai/api/ai_marine.hpp
@@ -693,7 +692,6 @@ ai/api/ai_industry.cpp
 ai/api/ai_industrylist.cpp
 ai/api/ai_industrytype.cpp
 ai/api/ai_industrytypelist.cpp
-ai/api/ai_list.cpp
 ai/api/ai_log.cpp
 ai/api/ai_map.cpp
 ai/api/ai_marine.cpp

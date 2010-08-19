@@ -2805,10 +2805,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\api\ai_list.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\ai\api\ai_log.hpp"
 				>
 			</File>
@@ -3014,10 +3010,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\ai\api\ai_industrytypelist.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\api\ai_list.cpp"
 				>
 			</File>
 			<File

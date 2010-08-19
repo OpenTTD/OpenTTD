@@ -873,7 +873,6 @@
     <ClInclude Include="..\src\ai\api\ai_industrytype.hpp" />
     <ClInclude Include="..\src\ai\api\ai_industrytypelist.hpp" />
     <ClInclude Include="..\src\ai\api\ai_info_docs.hpp" />
-    <ClInclude Include="..\src\ai\api\ai_list.hpp" />
     <ClInclude Include="..\src\ai\api\ai_log.hpp" />
     <ClInclude Include="..\src\ai\api\ai_map.hpp" />
     <ClInclude Include="..\src\ai\api\ai_marine.hpp" />
@@ -925,7 +924,6 @@
     <ClCompile Include="..\src\ai\api\ai_industrylist.cpp" />
     <ClCompile Include="..\src\ai\api\ai_industrytype.cpp" />
     <ClCompile Include="..\src\ai\api\ai_industrytypelist.cpp" />
-    <ClCompile Include="..\src\ai\api\ai_list.cpp" />
     <ClCompile Include="..\src\ai\api\ai_log.cpp" />
     <ClCompile Include="..\src\ai\api\ai_map.cpp" />
     <ClCompile Include="..\src\ai\api\ai_marine.cpp" />

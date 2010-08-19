@@ -53,24 +53,22 @@ public:
 	AIAbstractListMap items;           ///< The items in the list
 	AIAbstractListBucket buckets;      ///< The items in the list, sorted by value
 
-protected:
+	AIAbstractList();
+	~AIAbstractList();
+
 	/**
 	 * Add a single item to the list.
 	 * @param item the item to add. Should be unique, otherwise it is ignored.
+	 * @param value the value to assign.
 	 * @note the value is set to 0 by default.
 	 */
-	void AddItem(int32 item);
+	void AddItem(int32 item, int32 value = 0);
 
 	/**
 	 * Remove a single item from the list.
 	 * @param item the item to remove. If not existing, it is ignored.
-	 * @note Always use this function for removing items. It keeps the iterator valid!
 	 */
 	void RemoveItem(int32 item);
-
-public:
-	AIAbstractList();
-	~AIAbstractList();
 
 	/**
 	 * Clear the list, making Count() returning 0 and IsEmpty() returning true.
@@ -246,6 +244,11 @@ public:
 	 * Used for 'foreach()' and [] get from Squirrel.
 	 */
 	SQInteger _get(HSQUIRRELVM vm);
+
+	/**
+	 * Used for [] set from Squirrel.
+	 */
+	SQInteger _set(HSQUIRRELVM vm);
 
 	/**
 	 * Used for 'foreach()' from Squirrel.

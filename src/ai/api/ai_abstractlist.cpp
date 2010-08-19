@@ -404,7 +404,7 @@ void AIAbstractList::Clear()
 	this->sorter->End();
 }
 
-void AIAbstractList::AddItem(int32 item)
+void AIAbstractList::AddItem(int32 item, int32 value)
 {
 	this->modifications++;
 
@@ -412,6 +412,8 @@ void AIAbstractList::AddItem(int32 item)
 
 	this->items[item] = 0;
 	this->buckets[0].insert(item);
+
+	this->SetValue(item, value);
 }
 
 void AIAbstractList::RemoveItem(int32 item)
@@ -732,6 +734,30 @@ SQInteger AIAbstractList::_get(HSQUIRRELVM vm)
 
 	sq_pushinteger(vm, this->GetValue(idx));
 	return 1;
+}
+
+SQInteger AIAbstractList::_set(HSQUIRRELVM vm)
+{
+	if (sq_gettype(vm, 2) != OT_INTEGER) return SQ_ERROR;
+	if (sq_gettype(vm, 3) != OT_INTEGER || sq_gettype(vm, 3) == OT_NULL) {
+		return sq_throwerror(vm, _SC("you can only assign integers to this list"));
+	}
+
+	SQInteger idx, val;
+	sq_getinteger(vm, 2, &idx);
+	if (sq_gettype(vm, 3) == OT_NULL) {
+		this->RemoveItem(idx);
+		return 0;
+	}
+
+	sq_getinteger(vm, 3, &val);
+	if (!this->HasItem(idx)) {
+		this->AddItem(idx, val);
+		return 0;
+	}
+
+	this->SetValue(idx, val);
+	return 0;
 }
 
 SQInteger AIAbstractList::_nexti(HSQUIRRELVM vm)

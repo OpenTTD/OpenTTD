@@ -1822,9 +1822,6 @@
     <ClInclude Include="..\src\ai\api\ai_info_docs.hpp">
       <Filter>AI API</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ai\api\ai_list.hpp">
-      <Filter>AI API</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\ai\api\ai_log.hpp">
       <Filter>AI API</Filter>
     </ClInclude>
@@ -1976,9 +1973,6 @@
       <Filter>AI API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ai\api\ai_industrytypelist.cpp">
-      <Filter>AI API Implementation</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ai\api\ai_list.cpp">
       <Filter>AI API Implementation</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ai\api\ai_log.cpp">

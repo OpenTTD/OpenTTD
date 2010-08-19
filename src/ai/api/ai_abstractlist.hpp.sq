@@ -36,6 +36,8 @@ void SQAIAbstractList_Register(Squirrel *engine)
 	SQAIAbstractList.DefSQConst(engine, AIAbstractList::SORT_ASCENDING,  "SORT_ASCENDING");
 	SQAIAbstractList.DefSQConst(engine, AIAbstractList::SORT_DESCENDING, "SORT_DESCENDING");
 
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::AddItem,            "AddItem",            3, "xii");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::RemoveItem,         "RemoveItem",         2, "xi");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Clear,              "Clear",              1, "x");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::HasItem,            "HasItem",            2, "xi");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Begin,              "Begin",              1, "x");
@@ -62,6 +64,7 @@ void SQAIAbstractList_Register(Squirrel *engine)
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::KeepBottom,         "KeepBottom",         2, "xi");
 	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::KeepList,           "KeepList",           2, "xx");
 	SQAIAbstractList.DefSQAdvancedMethod(engine, &AIAbstractList::_get,       "_get");
+	SQAIAbstractList.DefSQAdvancedMethod(engine, &AIAbstractList::_set,       "_set");
 	SQAIAbstractList.DefSQAdvancedMethod(engine, &AIAbstractList::_nexti,     "_nexti");
 	SQAIAbstractList.DefSQAdvancedMethod(engine, &AIAbstractList::Valuate,    "Valuate");
 
