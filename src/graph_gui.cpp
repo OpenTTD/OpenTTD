@@ -1554,55 +1554,10 @@ static NWidgetBase *MakePerformanceDetailPanels(int *biggest_index)
 	return vert;
 }
 
-/**
- * Make a number of rows with button-like graphics, for enabling/disabling each company.
- * @param biggest_index Storage for collecting the biggest index used in the returned tree.
- * @return Panel with rows of company buttons.
- * @post \c *biggest_index contains the largest used index in the tree.
- */
-static NWidgetBase *MakeCompanyButtonRows(int *biggest_index)
+/** Make a number of rows with buttons for each company for the performance rating detail window. */
+NWidgetBase *MakeCompanyButtonRowsGraphGUI(int *biggest_index)
 {
-	static const int MAX_LENGTH = 8; // Maximal number of company buttons in one row.
-	NWidgetVertical *vert = NULL; // Storage for all rows.
-	NWidgetHorizontal *hor = NULL; // Storage for buttons in one row.
-	int hor_length = 0;
-
-	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
-	sprite_size.width  += WD_MATRIX_LEFT + WD_MATRIX_RIGHT;
-	sprite_size.height += WD_MATRIX_TOP + WD_MATRIX_BOTTOM + 1; // 1 for the 'offset' of being pressed
-
-	for (int widnum = PRW_COMPANY_FIRST; widnum <= PRW_COMPANY_LAST; widnum++) {
-		/* Ensure there is room in 'hor' for another button. */
-		if (hor_length == MAX_LENGTH) {
-			if (vert == NULL) vert = new NWidgetVertical();
-			vert->Add(hor);
-			hor = NULL;
-			hor_length = 0;
-		}
-		if (hor == NULL) {
-			hor = new NWidgetHorizontal();
-			hor_length = 0;
-		}
-
-		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
-		panel->SetMinimalSize(sprite_size.width, sprite_size.height);
-		panel->SetFill(1, 0);
-		panel->SetDataTip(0x0, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);
-		hor->Add(panel);
-		hor_length++;
-	}
-	*biggest_index = PRW_COMPANY_LAST;
-	if (vert == NULL) return hor; // All buttons fit in a single row.
-
-	if (hor_length > 0 && hor_length < MAX_LENGTH) {
-		/* Last row is partial, add a spacer at the end to force all buttons to the left. */
-		NWidgetSpacer *spc = new NWidgetSpacer(0, 0);
-		spc->SetMinimalSize(sprite_size.width, sprite_size.height);
-		spc->SetFill(1, 0);
-		hor->Add(spc);
-	}
-	if (hor != NULL) vert->Add(hor);
-	return vert;
+	return MakeCompanyButtonRows(biggest_index, PRW_COMPANY_FIRST, PRW_COMPANY_LAST, 8, STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP);
 }
 
 static const NWidgetPart _nested_performance_rating_detail_widgets[] = {
@@ -1613,7 +1568,7 @@ static const NWidgetPart _nested_performance_rating_detail_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
-		NWidgetFunction(MakeCompanyButtonRows), SetPadding(0, 1, 1, 2),
+		NWidgetFunction(MakeCompanyButtonRowsGraphGUI), SetPadding(0, 1, 1, 2),
 	EndContainer(),
 	NWidgetFunction(MakePerformanceDetailPanels),
 };

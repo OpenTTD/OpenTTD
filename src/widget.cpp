@@ -2404,3 +2404,58 @@ NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *parts, int count, int
 	*biggest_index = max(*biggest_index, biggest2);
 	return root;
 }
+
+/**
+ * Make a number of rows with button-like graphics, for enabling/disabling each company.
+ * @param biggest_index Storage for collecting the biggest index used in the returned tree.
+ * @param widget_first The first widget index to use.
+ * @param widget_last The last widget index to use.
+ * @param max_length Maximal number of company buttons in one row.
+ * @param button_tooltip The tooltip-string of every button.
+ * @return Panel with rows of company buttons.
+ * @post \c *biggest_index contains the largest used index in the tree.
+ */
+NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int widget_last, int max_length, StringID button_tooltip)
+{
+	NWidgetVertical *vert = NULL; // Storage for all rows.
+	NWidgetHorizontal *hor = NULL; // Storage for buttons in one row.
+	int hor_length = 0;
+
+	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
+	sprite_size.width  += WD_MATRIX_LEFT + WD_MATRIX_RIGHT;
+	sprite_size.height += WD_MATRIX_TOP + WD_MATRIX_BOTTOM + 1; // 1 for the 'offset' of being pressed
+
+	for (int widnum = widget_first; widnum <= widget_last; widnum++) {
+		/* Ensure there is room in 'hor' for another button. */
+		if (hor_length == max_length) {
+			if (vert == NULL) vert = new NWidgetVertical();
+			vert->Add(hor);
+			hor = NULL;
+			hor_length = 0;
+		}
+		if (hor == NULL) {
+			hor = new NWidgetHorizontal();
+			hor_length = 0;
+		}
+
+		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
+		panel->SetMinimalSize(sprite_size.width, sprite_size.height);
+		panel->SetFill(1, 0);
+		panel->SetResize(1, 0);
+		panel->SetDataTip(0x0, button_tooltip);
+		hor->Add(panel);
+		hor_length++;
+	}
+	*biggest_index = widget_last;
+	if (vert == NULL) return hor; // All buttons fit in a single row.
+
+	if (hor_length > 0 && hor_length < max_length) {
+		/* Last row is partial, add a spacer at the end to force all buttons to the left. */
+		NWidgetSpacer *spc = new NWidgetSpacer(sprite_size.width, sprite_size.height);
+		spc->SetFill(1, 0);
+		spc->SetResize(1, 0);
+		hor->Add(spc);
+	}
+	if (hor != NULL) vert->Add(hor);
+	return vert;
+}

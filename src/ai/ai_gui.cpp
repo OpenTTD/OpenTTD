@@ -701,7 +701,7 @@ enum AIDebugWindowWidgets {
 	AID_WIDGET_LOG_PANEL,
 	AID_WIDGET_SCROLLBAR,
 	AID_WIDGET_COMPANY_BUTTON_START,
-	AID_WIDGET_COMPANY_BUTTON_END = AID_WIDGET_COMPANY_BUTTON_START + 14,
+	AID_WIDGET_COMPANY_BUTTON_END = AID_WIDGET_COMPANY_BUTTON_START + MAX_COMPANIES - 1,
 	AID_BREAK_STRING_WIDGETS,
 	AID_WIDGET_BREAK_STR_ON_OFF_BTN,
 	AID_WIDGET_BREAK_STR_EDIT_BOX,
@@ -1066,6 +1066,12 @@ char AIDebugWindow::break_string[MAX_BREAK_STR_STRING_LENGTH] = "";
 bool AIDebugWindow::break_check_enabled = true;
 bool AIDebugWindow::case_sensitive_break_check = false;
 
+/** Make a number of rows with buttons for each company for the AI debug window. */
+NWidgetBase *MakeCompanyButtonRowsAIDebug(int *biggest_index)
+{
+	return MakeCompanyButtonRows(biggest_index, AID_WIDGET_COMPANY_BUTTON_START, AID_WIDGET_COMPANY_BUTTON_END, 8, STR_AI_DEBUG_SELECT_AI_TOOLTIP);
+}
+
 /** Widgets for the AI debug window. */
 static const NWidgetPart _nested_ai_debug_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
@@ -1075,45 +1081,7 @@ static const NWidgetPart _nested_ai_debug_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_VIEW),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 1), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 2), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 3), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 4), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 5), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 6), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 7), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-		EndContainer(),
-		NWidget(NWID_HORIZONTAL),
-			NWidget(NWID_SPACER), SetMinimalSize(2, 0),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 8), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 9), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 10), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 11), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 12), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 13), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_GREY, AID_WIDGET_COMPANY_BUTTON_START + 14), SetMinimalSize(37, 13), SetResize(1, 0), SetDataTip(0x0, STR_AI_DEBUG_SELECT_AI_TOOLTIP),
-			EndContainer(),
-			NWidget(NWID_SPACER), SetMinimalSize(39, 0), SetResize(1, 0),
-		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 1), SetResize(1, 0),
+		NWidgetFunction(MakeCompanyButtonRowsAIDebug), SetPadding(0, 2, 1, 2),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_TEXTBTN, COLOUR_GREY, AID_WIDGET_NAME_TEXT), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_JUST_STRING, STR_AI_DEBUG_NAME_TOOLTIP),
