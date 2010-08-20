@@ -748,11 +748,15 @@ STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Серв
 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Сервер туп
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Сервер хуш
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Сервер пуҫ
 
 
 # Start new multiplayer server
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Вӑййи ят:
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырнаҫтар вӑрттӑн сӑмахӗ
 
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :Вырӑнти Тӗвӗлӗх/Тетел
 
 
 

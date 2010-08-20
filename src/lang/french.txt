@@ -2450,6 +2450,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tentative d'uti
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contient un sprite corrompu. Tous les sprites corrompus seront remplacés par un point d'interrogation rouge (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contient plusieurs Action 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lecture après la fin d'un pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Il manque certain sprites dans les graphiques de base actuellement utilisés.{}Veuillez mettre à jour les graphiques de base.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention!
@@ -3548,7 +3549,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossible de retirer point de contrôle ici...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Vous devez d'abord retirer le point de contrôle
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bouée présente
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bouée utilisée{NBSP}!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bouée utilisée par une autre compagnie{NBSP}!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossible de construire un dépôt ferroviaire ici...

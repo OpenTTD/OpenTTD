@@ -1078,6 +1078,7 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permesu
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Kvanto da lokomotivo fumo/fajreroj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Neniu
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originale
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Reala
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de trajnakcelado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originale
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisme
@@ -2089,6 +2090,8 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Akceptan
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domoj
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Montru ĉenon
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Montru ŝarĝoj provizantajn kaj akceptantajn industriojn
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Sinsekvigu al karteto
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Ankaŭ elektu la montrajn industriojn je la karteto
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landregionaj informoj
@@ -2306,6 +2309,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detalaj 
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivaj dosieroj de NewGRF
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Malaktiva dosieroj de NewGRF
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Elektu antaŭaro:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtriloteksto:
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Aldonu
 STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Aldonu la elektitan NewGRF-dosieron al viaj agordoj
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Reserĉu dosierojn
@@ -2346,11 +2350,17 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 
 # NewGRF inspect window
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de relo
 
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sekvanta bildeto
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Iru al bildeto
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Antaŭa bildeto
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X distanco: {NUM}, Y distanco: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Elektu bildeto
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Iru al bildeto
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2936,6 +2946,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Prizorg
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Prizorgo en {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Halta
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Halta
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Komenca
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komenca
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaloj)
@@ -4011,8 +4025,11 @@ STR_FORMAT_WAYPOINT_NAME                                        :Vojpunkto {TOWN
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Vojpunkto {TOWN} #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Vagonara Tenejo
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Vagonara Tenejo #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Stratveturila Tenejo
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Stratveturila Tenejo #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Ŝipa Tenejo
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Ŝipa Tenejo #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangaro
 
 STR_UNKNOWN_STATION                                             :nekonata stacio
