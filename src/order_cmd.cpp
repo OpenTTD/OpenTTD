@@ -1680,11 +1680,15 @@ bool ProcessOrders(Vehicle *v)
 	 */
 	bool may_reverse = v->current_order.IsType(OT_NOTHING);
 
-	/* Check if we've reached a non-stop station.. */
+	/* Check if we've reached a 'via' destination. */
 	if (((v->current_order.IsType(OT_GOTO_STATION) && (v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) || v->current_order.IsType(OT_GOTO_WAYPOINT)) &&
 			IsTileType(v->tile, MP_STATION) &&
 			v->current_order.GetDestination() == GetStationIndex(v->tile)) {
-		if (v->current_order.IsType(OT_GOTO_STATION)) v->last_station_visited = v->current_order.GetDestination();
+		/* We set the last visited station here because we do not want
+		 * the train to stop at this 'via' station if the next order
+		 * is a no-non-stop order; in that case not setting the last
+		 * visited station will cause the vehicle to still stop. */
+		v->last_station_visited = v->current_order.GetDestination();
 		UpdateVehicleTimetable(v, true);
 		v->IncrementOrderIndex();
 	}
