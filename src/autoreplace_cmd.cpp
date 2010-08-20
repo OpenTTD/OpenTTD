@@ -459,6 +459,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 
 			/* Append engines to the new chain
 			 * We do this from back to front, so that the head of the temporary vehicle chain does not change all the time.
+			 * That way we also have less trouble when exceeding the unitnumber limit.
 			 * OTOH the vehicle attach callback is more expensive this way :s */
 			Train *last_engine = NULL; ///< Shall store the last engine unit after this step
 			if (cost.Succeeded()) {
@@ -466,6 +467,13 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 					Train *append = (new_vehs[i] != NULL ? new_vehs[i] : old_vehs[i]);
 
 					if (RailVehInfo(append->engine_type)->railveh_type == RAILVEH_WAGON) continue;
+
+					if (new_vehs[i] != NULL) {
+						/* Move the old engine to a separate row with DC_AUTOREPLACE. Else
+						 * moving the wagon in front may fail later due to unitnumber limit.
+						 * (We have to attach wagons without DC_AUTOREPLACE.) */
+						MoveVehicle(old_vehs[i], NULL, DC_EXEC | DC_AUTOREPLACE, false);
+					}
 
 					if (last_engine == NULL) last_engine = append;
 					cost.AddCost(MoveVehicle(append, new_head, DC_EXEC, false));
