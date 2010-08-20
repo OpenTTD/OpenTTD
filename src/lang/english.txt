@@ -3548,7 +3548,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Can't ch
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Can't remove train waypoint here...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Must remove rail waypoint first
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... buoy in the way
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... buoy is in use!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... buoy is in use by another company!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Can't build train depot here...

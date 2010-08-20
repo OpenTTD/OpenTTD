@@ -333,7 +333,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 
 	Waypoint *wp = Waypoint::GetByTile(tile);
 
-	if (HasStationInUse(wp->index, INVALID_COMPANY)) return_cmd_error(STR_ERROR_BUOY_IS_IN_USE);
+	if (HasStationInUse(wp->index, false, _current_company)) return_cmd_error(STR_ERROR_BUOY_IS_IN_USE);
 	/* remove the buoy if there is a ship on tile when company goes bankrupt... */
 	if (!(flags & DC_BANKRUPT)) {
 		CommandCost ret = EnsureNoVehicleOnGround(tile);

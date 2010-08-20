@@ -2331,15 +2331,15 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 /**
  * Tests whether the company's vehicles have this station in orders
- * When company == INVALID_COMPANY, then check all vehicles
  * @param station station ID
- * @param company company ID, INVALID_COMPANY to disable the check
+ * @param include_company If true only check vehicles of \a company, if false only check vehicles of other companies
+ * @param company company ID
  */
-bool HasStationInUse(StationID station, CompanyID company)
+bool HasStationInUse(StationID station, bool include_company, CompanyID company)
 {
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (company == INVALID_COMPANY || v->owner == company) {
+		if ((v->owner == company) == include_company) {
 			const Order *order;
 			FOR_VEHICLE_ORDERS(v, order) {
 				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station) {

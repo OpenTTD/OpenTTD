@@ -234,7 +234,7 @@ protected:
 
 		const Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, owner))) {
+			if (st->owner == owner || (st->owner == OWNER_NONE && HasStationInUse(st->index, true, owner))) {
 				if (this->facilities & st->facilities) { // only stations with selected facilities
 					int num_waiting_cargo = 0;
 					for (CargoID j = 0; j < NUM_CARGO; j++) {

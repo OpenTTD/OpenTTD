@@ -34,7 +34,7 @@ void UpdateStationAcceptance(Station *st, bool show_msg);
 const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx);
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image);
 
-bool HasStationInUse(StationID station, CompanyID company);
+bool HasStationInUse(StationID station, bool include_company, CompanyID company);
 
 RoadStop *GetRoadStopByTile(TileIndex tile, RoadStopType type);
 uint GetNumRoadStops(const Station *st, RoadStopType type);
