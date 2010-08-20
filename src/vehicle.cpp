@@ -1038,7 +1038,9 @@ uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour)
 	bool loading = false;
 
 	const Vehicle *u = v;
-	const Station *st = v->last_station_visited != INVALID_STATION ? Station::Get(v->last_station_visited) : NULL;
+	/* The station may be NULL when the (colour) string does not need to be set. */
+	const Station *st = Station::GetIfValid(v->last_station_visited);
+	assert(colour == NULL || st != NULL);
 
 	/* Count up max and used */
 	for (; v != NULL; v = v->Next()) {
