@@ -1053,9 +1053,10 @@ static CommandCost CheckTrainAttachment(Train *t)
  * @param dst          The destination chain after constructing the train.
  * @param original_dst The original source chain.
  * @param dst          The source chain after constructing the train.
+ * @param check_limit  Whether to check the vehicle limit.
  * @return possible error of this command.
  */
-static CommandCost ValidateTrains(Train *original_dst, Train *dst, Train *original_src, Train *src)
+static CommandCost ValidateTrains(Train *original_dst, Train *dst, Train *original_src, Train *src, bool check_limit)
 {
 	/* Check whether we may actually construct the trains. */
 	CommandCost ret = CheckTrainAttachment(src);
@@ -1064,7 +1065,7 @@ static CommandCost ValidateTrains(Train *original_dst, Train *dst, Train *origin
 	if (ret.Failed()) return ret;
 
 	/* Check whether we need to build a new train. */
-	return CheckNewTrain(original_dst, dst, original_src, src);
+	return check_limit ? CheckNewTrain(original_dst, dst, original_src, src) : CommandCost();
 }
 
 /**
@@ -1235,7 +1236,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		/* If the autoreplace flag is set we do not need to test for the validity
 		 * because we are going to revert the train to its original state. As we
 		 * assume the original state was correct autoreplace can skip this. */
-		CommandCost ret = ValidateTrains(original_dst_head, dst_head, original_src_head, src_head);
+		CommandCost ret = ValidateTrains(original_dst_head, dst_head, original_src_head, src_head, true);
 		if (ret.Failed()) {
 			/* Restore the train we had. */
 			RestoreTrainBackup(original_src);
@@ -1355,7 +1356,7 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data, uint3
 	ArrangeTrains(&sell_head, NULL, &new_head, v, sell_chain);
 
 	/* We don't need to validate the second train; it's going to be sold. */
-	CommandCost ret = ValidateTrains(NULL, NULL, first, new_head);
+	CommandCost ret = ValidateTrains(NULL, NULL, first, new_head, (flags & DC_AUTOREPLACE) == 0);
 	if (ret.Failed()) {
 		/* Restore the train we had. */
 		RestoreTrainBackup(original);
