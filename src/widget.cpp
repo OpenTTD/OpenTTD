@@ -107,8 +107,8 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 	if (pos <= mi + 9) {
 		/* Pressing the upper button? */
 		w->flags4 |= WF_SCROLL_UP;
-		if (_scroller_click_timeout == 0) {
-			_scroller_click_timeout = 6;
+		if (_scroller_click_timeout <= 1) {
+			_scroller_click_timeout = 3;
 			sb->UpdatePosition(rtl ? 1 : -1);
 		}
 		_left_button_clicked = false;
@@ -116,8 +116,8 @@ static void ScrollbarClickPositioning(Window *w, WidgetType wtp, int x, int y, i
 		/* Pressing the lower button? */
 		w->flags4 |= WF_SCROLL_DOWN;
 
-		if (_scroller_click_timeout == 0) {
-			_scroller_click_timeout = 6;
+		if (_scroller_click_timeout <= 1) {
+			_scroller_click_timeout = 3;
 			sb->UpdatePosition(rtl ? -1 : 1);
 		}
 		_left_button_clicked = false;

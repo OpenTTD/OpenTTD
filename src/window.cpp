@@ -53,7 +53,7 @@ Point _cursorpos_drag_start;
 
 int _scrollbar_start_pos;
 int _scrollbar_size;
-byte _scroller_click_timeout;
+byte _scroller_click_timeout = 0;
 
 bool _scrolling_scrollbar;
 bool _scrolling_viewport;
@@ -1321,7 +1321,7 @@ static void DecreaseWindowCounters()
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		/* Unclick scrollbar buttons if they are pressed. */
-		if (w->flags4 & (WF_SCROLL_DOWN | WF_SCROLL_UP)) {
+		if (_scroller_click_timeout == 0 && w->flags4 & (WF_SCROLL_DOWN | WF_SCROLL_UP)) {
 			w->flags4 &= ~(WF_SCROLL_DOWN | WF_SCROLL_UP);
 			w->SetDirty();
 		}
@@ -2388,11 +2388,7 @@ void InvalidateWindowClassesData(WindowClass cls, int data)
  */
 void CallWindowTickEvent()
 {
-	if (_scroller_click_timeout > 3) {
-		_scroller_click_timeout -= 3;
-	} else {
-		_scroller_click_timeout = 0;
-	}
+	if (_scroller_click_timeout != 0) _scroller_click_timeout--;
 
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
