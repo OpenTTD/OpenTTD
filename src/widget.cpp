@@ -1644,14 +1644,14 @@ NWidgetScrollbar::NWidgetScrollbar(WidgetType tp, Colours colour, int index) : N
 
 	switch (this->type) {
 		case NWID_HSCROLLBAR:
-			this->SetMinimalSize(30, WD_HSCROLLBAR_HEIGHT);
+			this->SetMinimalSize(0, WD_HSCROLLBAR_HEIGHT);
 			this->SetResize(1, 0);
 			this->SetFill(1, 0);
 			this->SetDataTip(0x0, STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST);
 			break;
 
 		case NWID_VSCROLLBAR:
-			this->SetMinimalSize(WD_VSCROLLBAR_WIDTH, 30);
+			this->SetMinimalSize(WD_VSCROLLBAR_WIDTH, 0);
 			this->SetResize(0, 1);
 			this->SetFill(0, 1);
 			this->SetDataTip(0x0, STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST);
