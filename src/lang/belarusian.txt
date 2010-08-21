@@ -3901,7 +3901,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Нема
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Немагчыма выдаліць пункт шляху...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Спачатку выдаліце пункт шляху
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... буй на шляху
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... гэты буй выкарыстоўваецца!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... буй выкарыстоўваецца iншай кампанiяй!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Тут немагчыма пабудаваць дэпо...

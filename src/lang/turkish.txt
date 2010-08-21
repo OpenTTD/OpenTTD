@@ -443,6 +443,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsol aç/kapa
 STR_ABOUT_MENU_AI_DEBUG                                         :YZ hata ayıklama
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekran Görüntüsü (Ctrl-S)
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ekran fotoğrafında yaklaşıldı
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Dev ekran görüntüsü (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' Hakkında
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprayt hizalayıcı
@@ -559,6 +560,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detay
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Bu şirket hakkındaki ayrıntıları göster
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Araçlar:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}İstasyonlar:
@@ -1757,6 +1759,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Sunucu d
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sunucuya girmeniz yasaklandı
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Oyundan atıldınız
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Bu sunucuda hileler kapalı
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Sunucuya çok fazla komut gönderiyordunuz
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :genel hata
@@ -1774,6 +1777,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand için
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :sunucu tarafından atıldı
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :hile yapmaya çalıştı
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :sunucu dolu
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :çok fazla komut gönderiyordu
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2446,6 +2450,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID ku
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir sprayt içeriyor. Tüm bozuk spraytlar kırmızı bir soru işareti (?) olarak görünecektir.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden fazla Action 8 girişi içeriyor.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-sprite bitiminden sonrasını okudu
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı spraytları içermiyor.{}Lütfen temel grafik kümesini güncelleyin.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
@@ -2467,6 +2472,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Eksik dosy
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' davranışı muhtemelen senkron kaybı ve/veya çakılmalara neden olacak.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}' için enerjilendirilmiş wagon durumunu depo dışındayken değiştirdi
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' için hangar içinde değilken araç uzunluğunu değiştirir.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICLE}' adlı tren '{COMPANY}' şirketine ait olup uzunluğu geçersizdir. Muhtemelen NewGRF'lerle ilgili bir problemden kaynaklanıyor. Oyun senkron kaybına uğrayabilir ya da çakılabilir.
 
@@ -2483,6 +2489,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<geçersiz fabr
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Büyük/küçük harf eşleştir
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Süzgeci temizle
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Tabela adlarını süzgeç metniyle karşılaştırırken büyük/küçük harf eşleştirmeyi aç/kapa
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Süzgeç metnini temizle
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Tabelayı değiştir
@@ -3302,6 +3312,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Büyük/
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}YZ log iletilerini durma metni ile karşılaştırırken büyük/küçük harf eşleşmesini aç/kapa
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Devam et
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}YZ'yi devam ettir
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Bu YZ için hata ayıklama çıktısı göster
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD YZ desteği olmadan derlenmiş...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... hiç YZ yok!

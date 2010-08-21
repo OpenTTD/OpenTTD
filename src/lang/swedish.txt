@@ -559,6 +559,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Visa detaljer om detta företag
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vägfordon:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationer:
@@ -1688,7 +1689,7 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hämtar 
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} före oss
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} nerladdat hittills
 
-STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Frånkopplad
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koppla ifrån
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servern är skyddad. Ange lösenord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Företaget är skyddat. Ange lösenord
@@ -1757,6 +1758,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Servern 
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du är bannlyst från den här servern
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du blev utkastad från spelet
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Fusk är inte tillåtet på denna server
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du skickade för många kommandon till servern
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :allmänt fel
@@ -1774,6 +1776,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :fel företags-i
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :utkastad av servern
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :försökte fuska
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servern är full
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :skickade för många kommandon
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2446,6 +2449,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Försök att an
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller en skadad sprite. Alla korrupta sprites kommer att visas som ett rött frågetecken (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller mer än en Action 8 funktion.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läs förbi slutet av pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
@@ -3307,6 +3311,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Matcha V
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Slå på/av matchning av VERSALER/gemener när AI-loggmeddelanden jämförs mot brytsträngen
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortsätt
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Opausa och fortsätt datorspelaren
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Visa debug-utskrifter för denna datorspelare
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD är byggt utan stöd för datorspelare (AI)
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... inga datorspelare är tillgängliga!
@@ -3543,7 +3548,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan inte
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan inte ta bort riktmärke här...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Måste ta bort riktmärke först
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boj i vägen
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bojen används!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bojen används av ett annat företag!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kan inte bygga depå här...

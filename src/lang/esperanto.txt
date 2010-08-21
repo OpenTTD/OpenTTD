@@ -1084,6 +1084,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originale
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisme
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originale
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realisme
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kruteco de deklivo por vagonaroj {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Trajnoj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING} {LTBLUE} (bezonas NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ligu stacidomojn konstruatajn unu apud la alia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permesu ligi staciojn ne rekte najbarajn: {ORANGE}{STRING}
@@ -2357,6 +2358,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de relo
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Sekvanta bildeto
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Iru al bildeto
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Antaŭa bildeto
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Movu ĉirkaŭ la bildeton, ŝanĝante la X kaj Y distancojn
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X distanco: {NUM}, Y distanco: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Elektu bildeto
 
@@ -2380,6 +2382,7 @@ STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tro da novaj gr
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neatendita bildeto.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enhavas rompitan bildeton. Ĉiuj rompitaj bildetoj aspektos kiel ruĝaj demandsignoj (?).
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Legis ekster limo de pseŭdobildeto.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}La nuntempe uza baza grafikaĵaro estas manka nombro da bildetoj.{} Bonvolu renovigu la baza grafikaĵaro.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atentu!
@@ -3199,6 +3202,7 @@ STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}Agordi daton
 STR_DATE_SET_DATE                                               :{BLACK}Agordi daton
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Uzu la elektan daton kiel la komencia dato por la katalogo
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Elekti tagon
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Elekti monaton
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Elekti jaron
@@ -3212,6 +3216,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Agordoj 
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ŝanĝi agordojn de la AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reŝarĝi AI-on
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mortigi la AI-on, reŝarĝi la skripton, kaj restarti la AI-on
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Malpaŭzu kaj daŭrigi la AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD estas kreita sen AI-supteno...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... neniu AI estas disponebla!
@@ -3397,6 +3402,7 @@ STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Alligas 
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacio tro vastas
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... nekonformaj stacioj neebligitaj
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Tro da stacioj/ŝarĝejoj
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Tro da partoj de stacidomo
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Tro da bushaltejoj
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Tro da ŝarĝaŭtaj stacioj
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Tro proksime al alia stacidomo
@@ -3509,12 +3515,14 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ne povas
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... jam estas arbo ĉi tie
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... malprava tereno por tipo de arbo
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ne povas planti arbon ĉi tie...
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Ne povas konstrui ponton ĉi tie...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Antaŭe devas la ponto esti detruita
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ne povas komenci kaj fini en la sama loko
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Finoj de ponto ne estas je la sama nivelo
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponto estas tro malalta por la tereno
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Komenco kaj fino devas esti samliniaj
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambaŭ pontfinoj devas esti sur tero

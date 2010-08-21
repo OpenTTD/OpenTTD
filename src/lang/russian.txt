@@ -1331,7 +1331,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Раз�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Одна или несколько клеток в северном углу не пусты
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна или несколько клеток берега без воды
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. протяжённость: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. размер станции: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолётных площадках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Связать ландшафтную панель с транспортной: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Цвет земли на миникарте: {ORANGE}{STRING}
@@ -2971,7 +2971,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вес: 
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ёмкость: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ведущие вагоны: {GOLD}+{POWER}{BLACK} Вес: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переоборудуется для: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Может перевозить: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Все типы грузов
 STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кроме {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
@@ -3728,7 +3728,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Нево
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Невозможно удалить точку пути...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Сначала удалите точку пути
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... буй на пути
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... этот буй используется!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... этот буй используется другой компанией!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Здесь невозможно построить депо...

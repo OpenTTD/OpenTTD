@@ -561,6 +561,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Dettagli
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Visualizza i dettagli su questa compagnia
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veicoli:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stazioni:
@@ -2450,6 +2451,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativo di ut
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene degli sprite corrotti. Tutti gli sprite corrotti saranno mostrati come punti interrogativi (?) rossi.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene occorrenze multiple dell'azione 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lettura oltre la fine dello pseudo-sprite
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Nello stile grafico di base attualmente in uso mancano alcuni sprite.{}È consigliabile aggiornare lo stile grafico di base.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attenzione!
@@ -3311,6 +3313,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Maiuscol
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Attiva/disattiva la corrispondenza di lettere maiuscole/minuscole nel confronto fra i messaggi di log della IA e la stringa di interruzione
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Esce dalla pausa e continua l'esecuzione della IA
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Visualizza l'output di debug di questa IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD è stato compilato senza supporto IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nessuna IA disponibile!
@@ -3547,7 +3550,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossibile rimuovere il waypoint ferroviario da qui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Bisogna rimuovere il waypoint ferroviario prima
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boa di mezzo
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boa in uso
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... la boa è utilizzata da un'altra compagnia!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossibile costruire il deposito qui...

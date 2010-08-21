@@ -67,7 +67,7 @@ STR_CARGO_SINGULAR_COAL                                         :Kola
 STR_CARGO_SINGULAR_MAIL                                         :Póst
 STR_CARGO_SINGULAR_OIL                                          :Olíu
 STR_CARGO_SINGULAR_LIVESTOCK                                    :Búfé
-STR_CARGO_SINGULAR_GOODS                                        :Vöru
+STR_CARGO_SINGULAR_GOODS                                        :Vörur
 STR_CARGO_SINGULAR_GRAIN                                        :Korn
 STR_CARGO_SINGULAR_WOOD                                         :Timbur
 STR_CARGO_SINGULAR_IRON_ORE                                     :Járngrýtis
@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lítr{P
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Sláðu inn leitarstreng
@@ -438,7 +439,7 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landssvæðisup
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Kveikja á stýriskjá
 STR_ABOUT_MENU_AI_DEBUG                                         :Aflúsun gervigreindar
-STR_ABOUT_MENU_SCREENSHOT                                       :Skjámynd (Ctrl-S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Skjámynd
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Risa skjáskot (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Um 'OpenTTD'
 ############ range ends here
@@ -1366,7 +1367,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Valreitu
 STR_CHEATS_WARNING                                              :{BLACK}Aðvörun! Þú ert í þann mund að svíkja keppinauta þína. Hafðu í huga að þess lags svívirðing mun ætíð höfð í minnum.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Auka pening um {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spila sem fyrirtæki: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Töfrajarðýta (eyða iðnaði og óeyðanlegu): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Töfrajarðýta (eyðir iðnaði, óeyðanlegum hlutum): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Göng mega skerast: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Byggja í bið: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Þotur brotlenda ekki (oft) á litlum flugvöllum: {ORANGE} {STRING}
@@ -2053,6 +2054,8 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Horfur
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Reisa
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fjármagna
 
+# Industry cargoes window
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landsvæðisupplýsingar
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Kostnaður við hreinsun: {LTBLUE}N/A
@@ -2298,6 +2301,15 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Óvirkt
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sláðu inn NewGRF breytur
 
+# NewGRF parameters window
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aðvörun: {SILVER}{STRING}
@@ -2331,6 +2343,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Týndar 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Vantar GRF skrá(r)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD getur hrunið ef leikur er settur af stað. Ekki skrá villufærslur fyrir eftirfarandi hrun.{}Ertu viss um að þú viljir setja leikinn af stað?
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Hegðun NewGRF '{0:STRING}' er líkleg til að valda hnökrum og/eða hruni á kreyslu leiksins.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Breytir lengd á farartæki '{1:ENGINE}' þegar það er ekki í skýli.
@@ -2339,6 +2353,8 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Lest '{V
 STR_NEWGRF_BUGGY                                                :{WHITE}Rangar upplýsingar fylgja '{0:STRING}' NewGRF.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Farm/breytingaupplýsingar fyrir '{1:ENGINE}' stangast á við innkaupalista eftir kaup. Þetta kann að valda því að sjálfvirk uppfærsla/útskipting mistakist.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' olli endalausri lykkju í framleiðsluferlinu.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} merki
@@ -2678,6 +2694,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Endurnef
 
 # Depot window
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} farartæki{P "" s}{STRING}
@@ -2685,7 +2702,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHO
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Lestir - ýttu á lest fyrir uppl., dragðu farartæki til að bæta við/fjarlægja úr lest
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - smelltu á skip fyrir nánari upplýsingar
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - hægrismelltu á skip fyrir nánari upplýsingar
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dragðu lestarvagn hingað til að selja hann
@@ -2856,6 +2873,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Á lei�
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Á leið til {WAYPOINT}, {VELOCITY}
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Upplýsingar)
@@ -3324,7 +3343,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Get ekki
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Get ekki fjarlægt lestarmillistöð héðan...
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bauja fyrir
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bauja í notkun!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... baujan er notuð af öðru fyrirtæki!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Get ekki byggt lestarskýli hér...
@@ -3332,10 +3351,11 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Get ekki reist sporvagnaskýli hér...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Get ekki reist slipp hér...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Lest þarf að vera stöðvuð í skýli
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... verður að stöðvast í bifreiðaskýli
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Skip verður að vera stöðvað í skýli
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Flugvélin verður að vera stöðvuð í flugskýli
+
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... verður að vera stöðvuð í skýli
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... verður að vera stöðvað í bifreiðaskýli
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... verður að vera stöðvað í skýli
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... verður að vera stöðvuð í flugskýli
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Lestin er of löng
@@ -3508,6 +3528,8 @@ STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ekki hæ
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Get ekki breytt nafni skiltis...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ekki hægt að eyða skilti...
 
+# Translatable comment for OpenTTD's desktop shortcut
+
 ##id 0x2000
 # Town building names
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_1                      :Há skrifstofubygging
@@ -3656,7 +3678,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Póst Geymsla
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Kola Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Olíu Tankur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Búfénaðsvagn
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Gæðavöru Geymsla
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vöruflutningabíll
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Hveiti Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Viðar Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Járn Pallur
@@ -3893,6 +3915,7 @@ STR_FORMAT_GROUP_NAME                                           :Hópur {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Millistöð {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Millistöð {TOWN} #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :óþekkt stöð
 STR_DEFAULT_SIGN_NAME                                           :Skilti
