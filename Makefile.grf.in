@@ -35,8 +35,10 @@ else
 endif
 
 # Some configurational settings for your environment.
+# If GRFCodec doesn't know a command, it'll exit with a non-zero exit code.
 GRFCODEC := $(shell grfcodec -s -v >/dev/null 2>/dev/null && echo "grfcodec -s" || echo "grfcodec")
-NFORENUM := $(shell nforenum -s -v >/dev/null 2>/dev/null && echo "nforenum -s" || echo "nforenum")
+# Old NFORenums don't give an error code when a parameter isn't known, so we have to work around that.
+NFORENUM := $(shell [ `nforenum -s -v 2>/dev/null | wc -l ` -eq 1 ] && echo "nforenum -s" || echo "nforenum")
 MD5SUM   := $(shell [ "$(OS)" = "OSX" ] && echo "md5 -r" || echo "md5sum")
 
 # Some "should not be changed" settings.
