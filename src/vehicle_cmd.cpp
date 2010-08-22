@@ -314,13 +314,15 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	Vehicle *v = Vehicle::GetIfValid(p1);
 	if (v == NULL) return CMD_ERROR;
 
+	/* Don't allow disasters and sparks and such to be refitted.
+	 * We cannot check for IsPrimaryVehicle as autoreplace also refits in free wagon chains. */
+	if (!IsCompanyBuildableVehicleType(v->type)) return CMD_ERROR;
+
 	Vehicle *front = v->First();
 
 	CommandCost ret = CheckOwnership(front->owner);
 	if (ret.Failed()) return ret;
 
-	/* Don't allow disasters and sparks and such to be refitted. */
-	if (!front->IsPrimaryVehicle()) return CMD_ERROR;
 	/* Don't allow shadows and such to be refitted. */
 	if (v != front && (v->type == VEH_SHIP || v->type == VEH_AIRCRAFT)) return CMD_ERROR;
 	if (!front->IsStoppedInDepot()) return_cmd_error(STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT + front->type);
