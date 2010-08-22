@@ -442,6 +442,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Bật/tắt bảng lệnh
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Ảnh chụp màn hình
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Phóng to ảnh chụp màn hình
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ảnh màn hình toàn bản đồ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Về 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Trình điều chỉnh sprite
@@ -558,6 +559,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Chi ti�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Hiển thị thông tin chi tiết của công ty này
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Ph.tiện:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Trạm:
@@ -1756,6 +1758,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server b
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Bạn bị từ chối ở server này
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Bạn bị đá khỏi ván chơi
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheat không được phép ở server này
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Bạn vừa gửi lên máy chủ quá nhiều lệnh
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :lỗi chung
@@ -1773,6 +1776,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :sai công ty tr
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :bí đá bởi server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :đã cố sử dụng cheat
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server đầy
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :có quá nhiều lệnh được gởi lên
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2442,6 +2446,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Sử dụng ID 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bị hỏng sprite. Tất cả các sprite sẽ hiện thị với dấu hỏi (?) màu đỏ.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Chứa nhiều mục action 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Đọc tới điểm cuối của sprite-giả
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Gói đồ họa bạn đang dùng thiếu một số mẫu đồ họa.{}Hãy up gói đồ họa lên phiên bản mới.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú ý!
@@ -2479,6 +2484,9 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh sách biển hiệu - {COMMA} Biển hiệu
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Giống nhau
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Xóa bộ lọc
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Xóa chuỗi lọc
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Sửa biển hiệu
@@ -3298,6 +3306,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}So sánh
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Thay đổi việc so sánh hoa/thường với các thông điệp AI log
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Tiếp tục
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cho máy tiếp tục chơi
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Xem thông tin debug của AI này
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD biên dịch không hỗ trợ AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... Không có AI thích hợp!

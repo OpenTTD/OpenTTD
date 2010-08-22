@@ -3549,7 +3549,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No se pu
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}No se puede retirar punto de ruta aquí...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primero se debe retirar punto de ruta para trenes
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boya en medio
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boya en uso!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boya en uso por otra compañía!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}No se puede construir depósito aquí...

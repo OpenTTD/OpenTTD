@@ -205,7 +205,7 @@ STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} quilos
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} quilogramas
 
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
@@ -441,8 +441,8 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações d
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/ocultar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da IA
-STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante (Ctrl+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de gráficos
 ############ range ends here
@@ -1412,7 +1412,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}As caixa
 STR_CHEATS_WARNING                                              :{BLACK}Atenção! Está prestes a trair os seus oponentes. Tenha em conta que isto ficará registado para sempre.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando como empresa: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, etc.): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, objectos amovíveis etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis poderão cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Permitir construção quando em pausa: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aviões a jacto não irão ter acidentes (frequentes) em aeroportos pequenos: {ORANGE}{STRING}
@@ -1420,7 +1420,7 @@ STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Mudar d
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Terreno temperado
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Terreno subárctico
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Terreno subtropical
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Terreno 'terra dos brinquedos'
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Terreno 'Terra dos Brinquedos'
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activar modificação de valores de produção: {ORANGE}{STRING}
 
@@ -2144,7 +2144,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Dono da 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Dono da linha férrea: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoridade local: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nenhum
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordenadas: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordenadas: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construído: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Tipo de Estação: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo de Estação: {LTBLUE}{STRING}
@@ -2311,7 +2311,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação mapa alt.:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome mapa de alt.:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Insira um número aleatório de base
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mudar a altura da linha de neve
@@ -2393,6 +2393,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Insira p
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parâmetro {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspeccionar - {STRING}
@@ -2442,6 +2443,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de us
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um gráfico corrompido. Todos os gráficos corrompidas serão apresentados como um ponto de interrogação (?) vermelho.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém 8 entradas de acção múltipla
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura ultrapassou o fim do pseudo-gráfico.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}O conjunto de gráficos base actual tem sprites em falta.{}Por favor faça a sua actualização.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
@@ -3339,6 +3341,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mud
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parâmetros da IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Repor
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3533,7 +3536,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Não é 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Não é possível remover ponto de passagem de comboio aqui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}É preciso remover o ponto de passagem primeiro
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bóia no caminho
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóia está em uso!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóia está em uso por outra companhia!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Não é possível construir depósito aqui...
@@ -3543,10 +3546,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Não é 
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Não é possível alterar o nome do depósito...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Comboio tem que estar parado dentro do depósito
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... tem que estar parado dentro do depósito
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve estar parado num depósito de veículos de estrada
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}O barco deverá estar parado no depósito
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}A aeronave deverá estar parada no hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... tem que estar parado no depósito
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... tem que estar parado no hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os comboios só podem ser alterados quando parados num depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Comboio muito longo
@@ -3626,6 +3629,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}O túnel
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Não é possível escavar o terreno para o outro lado do túnel
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiado objectos
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Não é possível construir objecto...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objecto no caminho
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede de empresa no caminho

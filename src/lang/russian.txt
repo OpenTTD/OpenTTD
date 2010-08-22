@@ -496,7 +496,7 @@ STR_FILE_MENU_EXIT                                              :Выход
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта мира
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Доп. окно просмотра
-STR_MAP_MENU_SIGN_LIST                                          :Список знаков
+STR_MAP_MENU_SIGN_LIST                                          :Список табличек
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Список городов
 ############ end of the 'Display map' dropdown

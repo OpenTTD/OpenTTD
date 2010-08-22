@@ -3550,7 +3550,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossib
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossibile rimuovere il waypoint ferroviario da qui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Bisogna rimuovere il waypoint ferroviario prima
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boa di mezzo
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... la boa è utilizzata da un'altra compagnia!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boa utilizzata da un'altra compagnia!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossibile costruire il deposito qui...

@@ -2450,6 +2450,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Nedostupn�
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Zadajte NewGRF parametre
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Kontrola - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Rodič
@@ -3585,7 +3587,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Názov s
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tu nie je možné odstrániť železničný smerový bod...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Najprv musí byť odstránený železničný navádzač
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bója v ceste
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bója sa používa!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóju používa iná spoločnosť!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Tu nemôže byť postavené depo...

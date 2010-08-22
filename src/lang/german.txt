@@ -565,8 +565,8 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Einzelhe
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Fahrzeuge:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationen:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. Gewinn:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. Einkom.:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. Einkom.:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. Einkomen:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. Einkomen:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Geliefert:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Fracht:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:

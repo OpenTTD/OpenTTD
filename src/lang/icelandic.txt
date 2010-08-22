@@ -440,7 +440,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Kveikja á stýriskjá
 STR_ABOUT_MENU_AI_DEBUG                                         :Aflúsun gervigreindar
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjámynd
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Risa skjáskot (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Risa skjámynd
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Um 'OpenTTD'
 ############ range ends here
 
@@ -563,8 +563,8 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Reiðuf�
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lán:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Alls:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Fjöldi farartækja; inniheldur fjölda bifreiða, lesta, skipa og flugvéla
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Fjöldi stöðvarhluta. Hver hluti stöðvar (t.d. lestarstöð, strætóstöð, flugvöllur) er talinn, jafnvel þótt þeir séu tengdir sem ein stöð.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Fjöldi farartækja sem skiluðu hagnaði síðasta ár. Inniheldur bifreiðar, lestir, skip og flugvélar
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Fjöldi stöðvarhluta sem hafa nýlega verið þjónustaðir. Hver hluti stöðvar (t.d. lestarstöð, strætóstöð, flugvöllur) er talinn, jafnvel þótt þeir séu tengdir sem ein stöð.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Hagnaður tekjulægsta farartækisins (sem þó er eldra en 2 ára)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Heildar afkoma í ársfjórðungi með lægsta gróða yfir síðastliðna 12 ársfjórðunga
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Heildar afkoma í ársfjórðungi með hæðsta gróða yfir síðastliðnu 12 ársfjórðunga
@@ -1718,7 +1718,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :tenging rofnað
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :samskiptavilla
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF misræmi
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :Ekki leyfilegt
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :tók á móti undarlegum pakka
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :tók á móti undarlegum eða óvæntum pakka
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :röng útgáfa
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nafn nú þegar í notkun
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :rangt leikjalykilorð
@@ -1835,14 +1835,14 @@ STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Einteinungsfram
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :MagLev framkvæmdir
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Leggja lestarteina. Ctrl velur byggja/fjarlægja fyrir lestarframkvæmdir
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Byggja lestarteina í Sjálvirkiteina ham. Ctrl velur byggja/farjlæga fyrir lestarframkvæmdir
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Leggja lestarteina í Sjálvirkiteina ham. Ctrl velur byggja/farjlæga fyrir lestarframkvæmdir
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byggja lestarskýli (til að byggja og þjónusta lestar)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Breyta teini í lestarhlið. Ctrl leyfir samteningu lestarhliða.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byggja lestarstöð. Ctrl leyfir samtengingu stöðva.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byggja lestarljós
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byggja lestarljós. Ctrl velur hreyfiskilti/ljósamerki{} Dragðu til að bygga ljós eftir beinni lestarlínu{}Ctrl+Smella opnar/lokar lestarljósa glugganum
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byggja lestarbrú
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byggja lestargöng
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skipta á milli byggja/fjarlægja lestarteina og lestarljós
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skipta á milli byggja/fjarlægja lestarteina, lestarljós, leiðarsteina og lestarstöðvar. Haltu Ctrl inni til að líka fjarlægja lestarteina úr leiðarsteinum og lestarstöðvum
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Breyta/uppfæra gerð lestarteins
 
 # Rail depot construction window
@@ -1907,11 +1907,11 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Rörabrú, kís
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Vegagerð
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Sporvagnaframkvæmdir
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Leggja veg
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Leggja sporvagnaspor
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Leggja veghluta í sjálfvirkum vegaham
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Leggja sporvagnaspor í sjálfvirkum sporvagnsham
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Byggja bifreiðaskýli (til að byggja og gera við bifreiðir)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Leggja veg. Ctrl velur byggja/fjarlægja fyrir vegavinnu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Leggja sporvagnaspor. Ctrl velur byggja/fjarlæga fyrir sporvagnabyggingu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Leggja veghluta í sjálfvirkum vegaham. Ctrl velur byggja/fjarlægja fyrir vegavinnu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Leggja sporvagnaspor í sjálfvirkum sporvagnsham. Ctrl velur byggja/fjarlægja fyrir sporvagnavinnu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Byggja bifreiðaskýli (til að kaupa og gera við bifreiðar)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Reisa sporvagnaskýli (til að smíða og þjónusta vagna)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Byggja strætóstoppistöð
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Reisa sporvagnastöð fyrir farþega
@@ -2005,7 +2005,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Gróður
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landslagsgerð
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Setja klettasvæði á landið
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Setja vita
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Afmarkaðu eyðimörk.{}Smelltu og haltu CTRL til að fjarlægja hana
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Afmarkaðu eyðimörk.{}Haltu CTRL til að fjarlægja hana
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Setja sendi
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Stækka svæði til að lækka/hækka
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minnka svæði til að lækka/hækka
@@ -2432,7 +2432,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Ýttu á
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nöfn stöðva - ýttu á nafn til að færa miðju sjónarhorns á stöð
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haltu CTRL inni til að velja fleiri en eitt
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haltu CTRL inni til að velja fleiri en einn hlut
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stöðvar
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ekkert -
@@ -2701,7 +2701,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} fa
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Lestir - ýttu á lest fyrir uppl., dragðu farartæki til að bæta við/fjarlægja úr lest
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Bifreið - smelltu á bifreið fyrir nánari upplýsingar
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Bifreið - hægri-smelltu á bifreið fyrir upplýsingar
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - hægrismelltu á skip fyrir nánari upplýsingar
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Flugvélar - smelltu á flugvél fyrir nánari upplýsingar
 
@@ -2848,10 +2848,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Sýna up
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Sýna nánari upplýsingar um skip
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Sýna nánari upplýsingar um skip
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Núverandi aðgerð lestar - smelltu hér til að stöðva/ræsa lestina
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Núverandi aðgerð bifreiðar - smelltu hér til að stöðva/ræsa bifreið
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Núverandi aðgerð skips - smelltu hér til að stöðva/ræsa skipið
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Núverandi aðgerð - smelltu hér til að stöðva/ræsa flugvél
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Núverandi aðgerð lestar - smelltu hér til að stöðva/ræsa lestina. Ctrl+Smella til að fara á áfangastað
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Núverandi aðgerð bifreiðar - smelltu hér til að stöðva/ræsa bifreið. Ctrl+Smella til að fara á áfangastað
+STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Núverandi aðgerð skips - smelltu hér til að stöðva/ræsa skipið. Ctrl+Smella til at fara á áfangastað
+STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Núverandi aðgerð - smelltu hér til að stöðva/ræsa flugvél. Ctrl+Smella til at fara á áfangastað
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Fermandi / Affermandi

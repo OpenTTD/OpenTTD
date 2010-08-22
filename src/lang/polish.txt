@@ -820,9 +820,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacje o te
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Odpluskwianie SI
-STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu (Ctrl+S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zrzut powiększenia bez okien
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Gigantyczny zrzut ekranu (Ctrl+G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zrzut ekranu całej mapy
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite-ów
 ############ range ends here
@@ -3928,7 +3928,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nie moż
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nie można usunąć stąd kolejowego punktu orientacyjnego...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Musisz usunąć najpierw punkt nawigacyjny
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja na drodze
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja w użyciu!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja w użyciu przez inna firmę!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nie można tutaj wybudować zajezdni...
@@ -3938,10 +3938,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nie moż
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nie można zmienić nazwy zajezdni...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Pociąg musi być zatrzymany w zajezdni
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}...musi być zatrzymany w zajezdni
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musi być zatrzymany w zajezdni samochodowej
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Statek musi być zatrzymany w stoczni
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Samolot musi być zatrzymany w hangarze
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... musi być zatrzymany w stoczni
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... musi być zatrzymany w hangarze
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Pociąg może być modyfikowany tylko gdy jest zatrzymany w zajezdni
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Pociąg jest zbyt długi

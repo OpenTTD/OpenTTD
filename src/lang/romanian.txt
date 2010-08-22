@@ -559,6 +559,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalii
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vizualizează detalii despre această companie
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehicule:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Staţii:
@@ -2448,6 +2449,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Încercare de f
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conţine o imagine coruptă. Toate imaginile corupte vor fi afişate ca semne de întrebare (?) roşii.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conţine multiple înregistrări Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Citire dincolo de sfârşitul pseudo-imaginii.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Unele imagini lipsesc din setul grafic de bază.{}Vă rugăm actualizaţi setul grafic de bază.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atenţie!
@@ -3309,6 +3311,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Potrivir
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Comuntă potrivirea pe majuscule/minuscule când se compară fişierele log de la IA cu string-ul de oprire
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuă
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Continuă execuţia modulului de Inteligenţă Artificială
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vizualizează datele de debug ale acestui modul de IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD este compilat fără suport de Inteligenţă Artificială...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nu este disponibil nici un modul de Inteligenţă artificială!
@@ -3545,7 +3548,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nu pot s
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nu se poate desfiinţa halta de aici...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Trebuie îndepărtat punctul de tranzit feroviar mai intai
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... baliză în cale
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... baliza in uz!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... baliza este folosită de o altă companie!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nu se poate construi depou feroviar aici...
@@ -3555,10 +3558,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Nu se po
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nu se poate redenumi depoul...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Trenul trebuie oprit într-un depou
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... trebuie oprit într-un depou
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... trebuie oprit într-o autobază
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Nava trebuie să fie staţionată într-un şantier
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Aeronava trebuie să staţioneze într-un hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... trebuie oprită într-un şantier naval
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... trebuie oprită intr-un hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trenurile pot fi modificate doar când staţionează într-un depou
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren prea lung
