@@ -42,7 +42,7 @@ private:
 	uint32 user;               ///< The user that requested the backup.
 	TileIndex tile;            ///< Tile of the depot where the order was changed.
 	GroupID group;             ///< The group the vehicle was part of.
-	uint16 service_interval;   ///< The service interval of the vehicle.
+	Date service_interval;     ///< The service interval of the vehicle.
 	char *name;                ///< The custom name of the vehicle.
 
 	const Vehicle *clone;      ///< Vehicle this vehicle was a clone of.
