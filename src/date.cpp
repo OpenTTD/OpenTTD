@@ -34,6 +34,8 @@ uint16 _tick_counter;  ///< Ever incrementing (and sometimes wrapping) tick coun
  */
 void SetDate(Date date, DateFract fract)
 {
+	assert(fract < DAY_TICKS);
+
 	YearMonthDay ymd;
 
 	_date = date;

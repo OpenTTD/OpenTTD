@@ -569,6 +569,9 @@ bool AfterLoadGame()
 		default: break;
 	}
 
+	/* The value of _date_fract got divided, so make sure that old games are converted correctly. */
+	if (CheckSavegameVersionOldStyle(11, 1)) _date_fract /= 885;
+
 	/* Update current year
 	 * must be done before loading sprites as some newgrfs check it */
 	SetDate(_date, _date_fract);
