@@ -571,7 +571,7 @@ bool AfterLoadGame()
 
 	/* Update current year
 	 * must be done before loading sprites as some newgrfs check it */
-	SetDate(_date);
+	SetDate(_date, _date_fract);
 
 	/* Force dynamic engines off when loading older savegames */
 	if (CheckSavegameVersion(95)) _settings_game.vehicle.dynamic_engines = 0;

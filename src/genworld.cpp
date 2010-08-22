@@ -296,13 +296,10 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	/* This disables some commands and stuff */
 	SetLocalCompany(COMPANY_SPECTATOR);
 
-	/* Set the date before loading sprites as some newgrfs check it */
-	SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
-
-	InitializeGame(_gw.size_x, _gw.size_y, false, reset_settings);
+	InitializeGame(_gw.size_x, _gw.size_y, true, reset_settings);
 	PrepareGenerateWorldProgress();
 
-	/* Load the right landscape stuff */
+	/* Load the right landscape stuff, and the NewGRFs! */
 	GfxLoadSprites();
 	LoadStringWidthTable();
 

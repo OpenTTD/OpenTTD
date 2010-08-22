@@ -825,7 +825,7 @@ static void ToolbarScenDateBackward(Window *w)
 		w->SetDirty();
 
 		_settings_game.game_creation.starting_year = Clamp(_settings_game.game_creation.starting_year - 1, MIN_YEAR, MAX_YEAR);
-		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
+		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
 	}
 	_left_button_clicked = false;
 }
@@ -838,7 +838,7 @@ static void ToolbarScenDateForward(Window *w)
 		w->SetDirty();
 
 		_settings_game.game_creation.starting_year = Clamp(_settings_game.game_creation.starting_year + 1, MIN_YEAR, MAX_YEAR);
-		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
+		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
 	}
 	_left_button_clicked = false;
 }
