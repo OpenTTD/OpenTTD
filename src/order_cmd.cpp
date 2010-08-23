@@ -773,6 +773,9 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			 * on his order list or not */
 			if (sel_ord == u->cur_order_index && u->current_order.IsType(OT_LOADING)) {
 				u->current_order.SetNonStopType(ONSF_STOP_EVERYWHERE);
+				/* When full loading, "cancel" that order so the vehicle doesn't
+				 * stay indefinitely at this station anymore. */
+				if (u->current_order.GetLoadType() & OLFB_FULL_LOAD) u->current_order.SetLoadType(OLF_LOAD_IF_POSSIBLE);
 			}
 
 			/* Update any possible open window of the vehicle */
