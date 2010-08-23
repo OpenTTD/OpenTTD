@@ -29,6 +29,16 @@
 #include <windows.h>
 #include <signal.h>
 
+static const uint MAX_SYMBOL_LEN = 512;
+static const uint MAX_FRAMES     = 64;
+
+/* printf format specification for 32/64-bit addresses. */
+#ifdef _M_AMD64
+#define PRINTF_PTR "0x%016IX"
+#else
+#define PRINTF_PTR "0x%08X"
+#endif
+
 /**
  * Windows implementation for the crash logger.
  */
@@ -44,6 +54,9 @@ class CrashLogWindows : public CrashLog {
 public:
 #if defined(_MSC_VER)
 	/* virtual */ int WriteCrashDump(char *filename, const char *filename_last) const;
+	char *AppendDecodedStacktrace(char *buffer, const char *last) const;
+#else
+	char *AppendDecodedStacktrace(char *buffer, const char *last) const { return buffer; }
 #endif /* _MSC_VER */
 
 	/** Buffer for the generated crash log */
@@ -314,6 +327,119 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 #if defined(_MSC_VER)
 #include <dbghelp.h>
 
+char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) const
+{
+#define M(x) x "\0"
+	static const char dbg_import[] =
+		M("dbghelp.dll")
+		M("SymInitialize")
+		M("SymSetOptions")
+		M("SymCleanup")
+		M("StackWalk64")
+		M("SymFunctionTableAccess64")
+		M("SymGetModuleBase64")
+		M("SymGetModuleInfo64")
+		M("SymGetSymFromAddr64")
+		M("SymGetLineFromAddr64")
+		M("")
+		;
+#undef M
+
+	struct ProcPtrs {
+		BOOL (WINAPI * pSymInitialize)(HANDLE, PCSTR, BOOL);
+		BOOL (WINAPI * pSymSetOptions)(DWORD);
+		BOOL (WINAPI * pSymCleanup)(HANDLE);
+		BOOL (WINAPI * pStackWalk64)(DWORD, HANDLE, HANDLE, LPSTACKFRAME64, PVOID, PREAD_PROCESS_MEMORY_ROUTINE64, PFUNCTION_TABLE_ACCESS_ROUTINE64, PGET_MODULE_BASE_ROUTINE64, PTRANSLATE_ADDRESS_ROUTINE64);
+		PVOID (WINAPI * pSymFunctionTableAccess64)(HANDLE, DWORD64);
+		DWORD64 (WINAPI * pSymGetModuleBase64)(HANDLE, DWORD64);
+		BOOL (WINAPI * pSymGetModuleInfo64)(HANDLE, DWORD64, PIMAGEHLP_MODULE64);
+		BOOL (WINAPI * pSymGetSymFromAddr64)(HANDLE, DWORD64, PDWORD64, PIMAGEHLP_SYMBOL64);
+		BOOL (WINAPI * pSymGetLineFromAddr64)(HANDLE, DWORD64, PDWORD, PIMAGEHLP_LINE64);
+	} proc;
+
+	buffer += seprintf(buffer, last, "\nDecoded stack trace:\n");
+
+	/* Try to load the functions from the DLL, if that fails because of a too old dbghelp.dll, just skip it. */
+	if (LoadLibraryList((Function*)&proc, dbg_import)) {
+		/* Initialize symbol handler. */
+		HANDLE hCur = GetCurrentProcess();
+		proc.pSymInitialize(hCur, NULL, TRUE);
+		/* Load symbols only when needed, fail silently on errors, demangle symbol names. */
+		proc.pSymSetOptions(SYMOPT_DEFERRED_LOADS | SYMOPT_FAIL_CRITICAL_ERRORS | SYMOPT_UNDNAME);
+
+		/* Initialize starting stack frame from context record. */
+		STACKFRAME64 frame;
+		memset(&frame, 0, sizeof(frame));
+#ifdef _M_AMD64
+		frame.AddrPC.Offset = ep->ContextRecord->Rip;
+		frame.AddrFrame.Offset = ep->ContextRecord->Rbp;
+		frame.AddrStack.Offset = ep->ContextRecord->Rsp;
+#else
+		frame.AddrPC.Offset = ep->ContextRecord->Eip;
+		frame.AddrFrame.Offset = ep->ContextRecord->Ebp;
+		frame.AddrStack.Offset = ep->ContextRecord->Esp;
+#endif
+		frame.AddrPC.Mode = AddrModeFlat;
+		frame.AddrFrame.Mode = AddrModeFlat;
+		frame.AddrStack.Mode = AddrModeFlat;
+
+		/* Copy context record as StackWalk64 may modify it. */
+		CONTEXT ctx;
+		memcpy(&ctx, ep->ContextRecord, sizeof(ctx));
+
+		/* Allocate space for symbol info. */
+		IMAGEHLP_SYMBOL64 *sym_info = (IMAGEHLP_SYMBOL64*)alloca(sizeof(IMAGEHLP_SYMBOL64) + MAX_SYMBOL_LEN - 1);
+		sym_info->SizeOfStruct = sizeof(IMAGEHLP_SYMBOL64);
+		sym_info->MaxNameLength = MAX_SYMBOL_LEN;
+
+		/* Walk stack at most MAX_FRAMES deep in case the stack is corrupt. */
+		for (uint num = 0; num < MAX_FRAMES; num++) {
+			if (!proc.pStackWalk64(
+#ifdef _M_AMD64
+				IMAGE_FILE_MACHINE_AMD64,
+#else
+				IMAGE_FILE_MACHINE_I386,
+#endif
+				hCur, GetCurrentThread(), &frame, &ctx, NULL, proc.pSymFunctionTableAccess64, proc.pSymGetModuleBase64, NULL)) break;
+
+			if (frame.AddrPC.Offset == frame.AddrReturn.Offset) {
+				buffer += seprintf(buffer, last, " <infinite loop>\n");
+				break;
+			}
+
+			/* Get module name. */
+			const char *mod_name = "???";
+
+			IMAGEHLP_MODULE64 module;
+			module.SizeOfStruct = sizeof(module);
+			if (proc.pSymGetModuleInfo64(hCur, frame.AddrPC.Offset, &module)) {
+				mod_name = module.ModuleName;
+			}
+
+			/* Print module and instruction pointer. */
+			buffer += seprintf(buffer, last, "[%02d] %-20s " PRINTF_PTR, num, mod_name, frame.AddrPC.Offset);
+
+			/* Get symbol name and line info if possible. */
+			DWORD64 offset;
+			if (proc.pSymGetSymFromAddr64(hCur, frame.AddrPC.Offset, &offset, sym_info)) {
+				buffer += seprintf(buffer, last, " %s + %I64u", sym_info->Name, offset);
+
+				DWORD line_offs;
+				IMAGEHLP_LINE64 line;
+				line.SizeOfStruct = sizeof(IMAGEHLP_LINE64);
+				if (proc.pSymGetLineFromAddr64(hCur, frame.AddrPC.Offset, &line_offs, &line)) {
+					buffer += seprintf(buffer, last, " (%s:%d)", line.FileName, line.LineNumber);
+				}
+			}
+			buffer += seprintf(buffer, last, "\n");
+		}
+
+		proc.pSymCleanup(hCur);
+	}
+
+	return 	buffer + seprintf(buffer, last, "\n*** End of additional info ***\n");
+}
+
 /* virtual */ int CrashLogWindows::WriteCrashDump(char *filename, const char *filename_last) const
 {
 	int ret = 0;
@@ -391,9 +517,10 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	CrashLogWindows *log = new CrashLogWindows(ep);
 	CrashLogWindows::current = log;
-	log->FillCrashLog(log->crashlog, lastof(log->crashlog));
-	log->WriteCrashLog(log->crashlog, log->crashlog_filename, lastof(log->crashlog_filename));
+	char *buf = log->FillCrashLog(log->crashlog, lastof(log->crashlog));
 	log->WriteCrashDump(log->crashdump_filename, lastof(log->crashdump_filename));
+	log->AppendDecodedStacktrace(buf, lastof(log->crashlog));
+	log->WriteCrashLog(log->crashlog, log->crashlog_filename, lastof(log->crashlog_filename));
 	log->WriteScreenshot(log->screenshot_filename, lastof(log->screenshot_filename));
 
 	/* Close any possible log files */
