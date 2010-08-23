@@ -6183,7 +6183,7 @@ static bool ChangeGRFParamMask(size_t len, ByteReader *buf)
 	return true;
 }
 
-/** Callback function for 'INFO'->'PARAM'->param_num->'DEFA' to set the default value. */
+/** Callback function for 'INFO'->'PARAM'->param_num->'DFLT' to set the default value. */
 static bool ChangeGRFParamDefault(size_t len, ByteReader *buf)
 {
 	if (len != 4) {
@@ -6322,7 +6322,7 @@ AllowedSubtags _tags_parameters[] = {
 	AllowedSubtags('LIMI', ChangeGRFParamLimits),
 	AllowedSubtags('MASK', ChangeGRFParamMask),
 	AllowedSubtags('VALU', ChangeGRFParamValueNames),
-	AllowedSubtags('DEFA', ChangeGRFParamDefault),
+	AllowedSubtags('DFLT', ChangeGRFParamDefault),
 	AllowedSubtags()
 };
 
