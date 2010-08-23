@@ -803,6 +803,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				}
 
 				GRFConfig *c = new GRFConfig(*this->avail_sel); // Copy GRF details from scanned list.
+				c->SetParameterDefaults();
 				*list = c; // Append GRF config to configuration list.
 
 				/* Select next (or previous, if last one) item in the list. */

@@ -46,7 +46,8 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	grf_bugs(config.grf_bugs),
 	num_params(config.num_params),
 	num_valid_params(config.num_valid_params),
-	palette(config.palette)
+	palette(config.palette),
+	has_param_defaults(config.has_param_defaults)
 {
 	MemCpyT<uint8>(this->original_md5sum, config.original_md5sum, lengthof(this->original_md5sum));
 	MemCpyT<uint32>(this->param, config.param, lengthof(this->param));
@@ -95,6 +96,17 @@ const char *GRFConfig::GetName() const
 const char *GRFConfig::GetDescription() const
 {
 	return GetGRFStringFromGRFText(this->info);
+}
+
+/** Set the default value for all parameters as specified by action14. */
+void GRFConfig::SetParameterDefaults()
+{
+	if (!this->has_param_defaults) return;
+
+	for (uint i = 0; i < this->param_info.Length(); i++) {
+		if (this->param_info[i] == NULL) continue;
+		this->param_info[i]->SetValue(this, this->param_info[i]->def_value);
+	}
 }
 
 /**
@@ -162,6 +174,7 @@ GRFParameterInfo::GRFParameterInfo(uint nr) :
 	type(PTYPE_UINT_ENUM),
 	min_value(0),
 	max_value(UINT32_MAX),
+	def_value(0),
 	param_nr(nr),
 	first_bit(0),
 	num_bit(32)
@@ -178,6 +191,7 @@ GRFParameterInfo::GRFParameterInfo(GRFParameterInfo &info) :
 	type(info.type),
 	min_value(info.min_value),
 	max_value(info.max_value),
+	def_value(info.def_value),
 	param_nr(info.param_nr),
 	first_bit(info.first_bit),
 	num_bit(info.num_bit)

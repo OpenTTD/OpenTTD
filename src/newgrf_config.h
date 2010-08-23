@@ -119,6 +119,7 @@ struct GRFParameterInfo {
 	GRFParameterType type; ///< The type of this parameter
 	uint32 min_value;      ///< The minimal value this parameter can have
 	uint32 max_value;      ///< The maximal value of this parameter
+	uint32 def_value;      ///< Default value of this parameter
 	byte param_nr;         ///< GRF parameter to store content in
 	byte first_bit;        ///< First bit to use in the GRF parameter
 	byte num_bit;          ///< Number of bits to use for this parameter
@@ -150,6 +151,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	uint8 num_valid_params;    ///< NOSAVE: Number of valid parameters (action 0x14)
 	uint8 palette;             ///< GRFPalette, bitset
 	SmallVector<GRFParameterInfo *, 4> param_info; ///< NOSAVE: extra information about the parameters
+	bool has_param_defaults;   ///< NOSAVE: did this newgrf specify any defaults for it's parameters
 
 	struct GRFConfig *next;    ///< NOSAVE: Next item in the linked list
 
@@ -158,6 +160,7 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	const char *GetName() const;
 	const char *GetDescription() const;
 
+	void SetParameterDefaults();
 	void SetSuitablePalette();
 };
 

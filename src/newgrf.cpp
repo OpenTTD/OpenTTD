@@ -6183,6 +6183,18 @@ static bool ChangeGRFParamMask(size_t len, ByteReader *buf)
 	return true;
 }
 
+/** Callback function for 'INFO'->'PARAM'->param_num->'DEFA' to set the default value. */
+static bool ChangeGRFParamDefault(size_t len, ByteReader *buf)
+{
+	if (len != 4) {
+		grfmsg(2, "StaticGRFInfo: expected 4 bytes for 'INFO'->'PARA'->'DEFA' but got " PRINTF_SIZE ", ignoring this field", len);
+		buf->Skip(len);
+	} else {
+		_cur_parameter->def_value = buf->ReadDWord();
+	}
+	_cur_grfconfig->has_param_defaults = true;
+	return true;
+}
 
 typedef bool (*DataHandler)(size_t, ByteReader *);  ///< Type of callback function for binary nodes
 typedef bool (*TextHandler)(byte, const char *str); ///< Type of callback function for text nodes
@@ -6310,6 +6322,7 @@ AllowedSubtags _tags_parameters[] = {
 	AllowedSubtags('LIMI', ChangeGRFParamLimits),
 	AllowedSubtags('MASK', ChangeGRFParamMask),
 	AllowedSubtags('VALU', ChangeGRFParamValueNames),
+	AllowedSubtags('DEFA', ChangeGRFParamDefault),
 	AllowedSubtags()
 };
 
