@@ -128,6 +128,7 @@ enum ShowNewGRFParametersWidgets {
 	GRFPAR_WIDGET_BACKGROUND,  ///< Panel to draw the settings on
 	GRFPAR_WIDGET_SCROLLBAR,   ///< Scrollbar to scroll through all settings
 	GRFPAR_WIDGET_ACCEPT,      ///< Accept button
+	GRFPAR_WIDGET_RESET,       ///< Reset button
 	GRFPAR_WIDGET_DESCRIPTION, ///< Multi-line description of a parameter
 };
 
@@ -293,6 +294,10 @@ struct NewGRFParametersWindow : public Window {
 				break;
 			}
 
+			case GRFPAR_WIDGET_RESET:
+				this->grf_config->SetParameterDefaults();
+				break;
+
 			case GRFPAR_WIDGET_ACCEPT:
 				delete this;
 				break;
@@ -340,7 +345,10 @@ static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_MAUVE, GRFPAR_WIDGET_DESCRIPTION), SetResize(1, 0), SetFill(1, 0),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, GRFPAR_WIDGET_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NEWGRF_PARAMETERS_CLOSE, STR_NULL),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, GRFPAR_WIDGET_ACCEPT), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NEWGRF_PARAMETERS_CLOSE, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_MAUVE, GRFPAR_WIDGET_RESET), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NEWGRF_PARAMETERS_RESET, STR_NEWGRF_PARAMETERS_RESET_TOOLTIP),
+		EndContainer(),
 		NWidget(WWT_RESIZEBOX, COLOUR_MAUVE),
 	EndContainer(),
 };

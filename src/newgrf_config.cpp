@@ -101,6 +101,9 @@ const char *GRFConfig::GetDescription() const
 /** Set the default value for all parameters as specified by action14. */
 void GRFConfig::SetParameterDefaults()
 {
+	this->num_params = 0;
+	MemSetT<uint32>(this->param, 0, lengthof(this->param));
+
 	if (!this->has_param_defaults) return;
 
 	for (uint i = 0; i < this->param_info.Length(); i++) {
