@@ -91,10 +91,6 @@
     <Filter Include="Threading">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000029}</UniqueIdentifier>
     </Filter>
-    <Filter Include="64-bit Specific Files">
-      <UniqueIdentifier>{d55d5f1f-aa07-4839-80d7-5ae158609e61}</UniqueIdentifier>
-      <Extensions>asm</Extensions>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\airport.cpp">
@@ -2471,10 +2467,5 @@
   <ItemGroup>
     <None Include="..\media\openttd.ico" />
     <None Include="..\readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="..\src\os\windows\win64.asm">
-      <Filter>64-bit Specific Files</Filter>
-    </MASM>
   </ItemGroup>
 </Project>

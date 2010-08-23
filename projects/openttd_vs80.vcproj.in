@@ -14,11 +14,6 @@
 			Name="x64"
 		/>
 	</Platforms>
-	<ToolFiles>
-		<ToolFile
-			RelativePath="..\src\os\windows\masm64.rules"
-		/>
-	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
@@ -36,9 +31,6 @@
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="MASM AMD64"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
@@ -151,9 +143,6 @@
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
-				Name="MASM AMD64"
-			/>
-			<Tool
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
@@ -248,9 +237,6 @@
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="MASM AMD64"
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
@@ -364,9 +350,6 @@
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
-				Name="MASM AMD64"
-			/>
-			<Tool
 				Name="VCXMLDataGeneratorTool"
 			/>
 			<Tool
@@ -453,49 +436,6 @@
 	</References>
 	<Files>
 !!FILES!!
-		<Filter
-			Name="64-bit Specific Files"
-			Filter="asm"
-			>
-			<File
-				RelativePath=".\..\src\os\windows\win64.asm"
-				>
-				<FileConfiguration
-					Name="Release|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|x64"
-					>
-					<Tool
-						Name="MASM AMD64"
-						PreserveIdentifierCase="true"
-						PreservePublicAndExternSymbolCase="true"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|x64"
-					>
-					<Tool
-						Name="MASM AMD64"
-						PreserveIdentifierCase="true"
-						PreservePublicAndExternSymbolCase="true"
-					/>
-				</FileConfiguration>
-			</File>
-		</Filter>
 		<File
 			RelativePath=".\..\media\openttd.ico"
 			>
