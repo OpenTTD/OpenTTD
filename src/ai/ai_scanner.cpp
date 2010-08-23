@@ -188,10 +188,10 @@ void AIScanner::RegisterLibrary(AILibrary *library)
 			return;
 		}
 
-		DEBUG(ai, 0, "Registering two libraries with the same name and version");
-		DEBUG(ai, 0, "  1: %s", this->library_list[library_name]->GetMainScript());
-		DEBUG(ai, 0, "  2: %s", library->GetMainScript());
-		DEBUG(ai, 0, "The first is taking precedence.");
+		DEBUG(ai, 1, "Registering two libraries with the same name and version");
+		DEBUG(ai, 1, "  1: %s", this->library_list[library_name]->GetMainScript());
+		DEBUG(ai, 1, "  2: %s", library->GetMainScript());
+		DEBUG(ai, 1, "The first is taking precedence.");
 
 		delete library;
 		return;
@@ -225,10 +225,10 @@ void AIScanner::RegisterAI(AIInfo *info)
 			return;
 		}
 
-		DEBUG(ai, 0, "Registering two AIs with the same name and version");
-		DEBUG(ai, 0, "  1: %s", this->info_list[ai_name]->GetMainScript());
-		DEBUG(ai, 0, "  2: %s", info->GetMainScript());
-		DEBUG(ai, 0, "The first is taking precedence.");
+		DEBUG(ai, 1, "Registering two AIs with the same name and version");
+		DEBUG(ai, 1, "  1: %s", this->info_list[ai_name]->GetMainScript());
+		DEBUG(ai, 1, "  2: %s", info->GetMainScript());
+		DEBUG(ai, 1, "The first is taking precedence.");
 
 		delete info;
 		return;
