@@ -1403,9 +1403,10 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
  * @param company Owner of the vehicle
  * @param parent_engine_type EngineID of the front vehicle. INVALID_VEHICLE if vehicle is at front itself.
  * @param v the vehicle. NULL if in purchase list etc.
+ * @param livery_setting The livery settings to use for acquiring the livery information.
  * @return livery to use
  */
-const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v)
+const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, byte livery_setting)
 {
 	const Company *c = Company::Get(company);
 	LiveryScheme scheme = LS_DEFAULT;
@@ -1413,7 +1414,7 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 
 	/* The default livery is always available for use, but its in_use flag determines
 	 * whether any _other_ liveries are in use. */
-	if (c->livery[LS_DEFAULT].in_use && (_settings_client.gui.liveries == 2 || (_settings_client.gui.liveries == 1 && company == _local_company))) {
+	if (c->livery[LS_DEFAULT].in_use && (livery_setting == LIT_ALL || (livery_setting == LIT_COMPANY && company == _local_company))) {
 		/* Determine the livery scheme to use */
 		const Engine *e = Engine::Get(engine_type);
 		switch (e->type) {
@@ -1540,7 +1541,7 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 	/* Spectator has news shown too, but has invalid company ID - as well as dedicated server */
 	if (!Company::IsValidID(company)) return map;
 
-	const Livery *livery = GetEngineLivery(engine_type, company, parent_engine_type, v);
+	const Livery *livery = GetEngineLivery(engine_type, company, parent_engine_type, v, _settings_client.gui.liveries);
 
 	map += livery->colour1;
 	if (twocc) map += livery->colour2 * 16;

@@ -441,13 +441,13 @@ static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
 
 	if (v == NULL) {
 		if (!Company::IsValidID(_current_company)) return 0;
-		l = GetEngineLivery(engine, _current_company, INVALID_ENGINE, NULL);
+		l = GetEngineLivery(engine, _current_company, INVALID_ENGINE, NULL, LIT_ALL);
 	} else if (v->type == VEH_TRAIN) {
-		l = GetEngineLivery(v->engine_type, v->owner, Train::From(v)->tcache.first_engine, v);
+		l = GetEngineLivery(v->engine_type, v->owner, Train::From(v)->tcache.first_engine, v, LIT_ALL);
 	} else if (v->type == VEH_ROAD) {
-		l = GetEngineLivery(v->engine_type, v->owner, RoadVehicle::From(v)->rcache.first_engine, v);
+		l = GetEngineLivery(v->engine_type, v->owner, RoadVehicle::From(v)->rcache.first_engine, v, LIT_ALL);
 	} else {
-		l = GetEngineLivery(v->engine_type, v->owner, INVALID_ENGINE, v);
+		l = GetEngineLivery(v->engine_type, v->owner, INVALID_ENGINE, v, LIT_ALL);
 	}
 
 	return l->colour1 + l->colour2 * 16;

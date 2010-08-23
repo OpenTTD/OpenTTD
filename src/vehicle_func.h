@@ -92,7 +92,7 @@ static inline bool IsCompanyBuildableVehicleType(const BaseVehicle *v)
 	return IsCompanyBuildableVehicleType(v->type);
 }
 
-const struct Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v);
+const struct Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, byte livery_setting);
 
 /**
  * Get the colour map for an engine. This used for unbuilt engines in the user interface.

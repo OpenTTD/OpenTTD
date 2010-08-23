@@ -14,6 +14,10 @@
 
 #include "company_type.h"
 
+static const byte LIT_NONE    = 0; ///< Don't show the liveries at all
+static const byte LIT_COMPANY = 1; ///< Show the liveries of your own company
+static const byte LIT_ALL     = 2; ///< Show the liveries of all companies
+
 /** List of different livery schemes. */
 enum LiveryScheme {
 	LS_BEGIN = 0,
