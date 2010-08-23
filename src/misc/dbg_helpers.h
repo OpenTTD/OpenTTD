@@ -79,7 +79,7 @@ inline CStrA ComposeNameT(E value, T &t, const char *t_unk, E val_inv, const cha
 	} else {
 		for (size_t i = 0; i < ArrayT<T>::length; i++) {
 			if ((value & (1 << i)) == 0) continue;
-			out.AddFormat("%s%s", (out.Size() > 0 ? "+" : ""), t[i]);
+			out.AddFormat("%s%s", (out.Size() > 0 ? "+" : ""), (const char*)t[i]);
 			value &= ~(E)(1 << i);
 		}
 		if (value != 0) out.AddFormat("%s%s", (out.Size() > 0 ? "+" : ""), t_unk);

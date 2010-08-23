@@ -29,7 +29,7 @@ typedef Pool<OrderBackup, OrderBackupID, 1, 256> OrderBackupPool;
 extern OrderBackupPool _order_backup_pool;
 
 /** Flag to pass to the vehicle construction command when an order should be preserved. */
-static const uint32 MAKE_ORDER_BACKUP_FLAG = 1 << 31;
+static const uint32 MAKE_ORDER_BACKUP_FLAG = 1U << 31;
 
 /**
  * Data for backing up an order of a vehicle so it can be
