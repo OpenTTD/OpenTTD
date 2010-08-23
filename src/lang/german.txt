@@ -3549,7 +3549,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Wegpunkt
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Wegpunkt kann hier nicht entfernt werden...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Wegpunkt muss erst abgerissen werden
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... Boje ist im Weg
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Boje ist in Benutzung
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Boje wird von einer anderen Firma benutzt!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Zugdepot kann hier nicht gebaut werden...

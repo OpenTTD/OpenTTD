@@ -551,6 +551,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Upplýsi
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Skoða upplýsingar um þetta fyrirtæki
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Farartæki:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stöðvar:
@@ -1066,6 +1067,9 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leyfa l
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Raunverulegri stærð svæðis sem stöðvar ná yfir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Leyfa meiri eyðingu vega, brúa, gangna o.s.frv. í eigu bæjar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Leyfa mjög langar lestir: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Enginn
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Upphaflegt
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Raunverulegt
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Hröðun lesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Upphafleg
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Raunhæf
@@ -1709,6 +1713,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Þjónni
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Þú ert bannaður/bönnuð á þessum þjóni
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Þér var hent út úr leiknum
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Svindl er ekki leyft á þessum þjóni
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Þú ert að senda of margar skipanir á vefþjóninn
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :almenn villa
@@ -1726,6 +1731,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :vitlaust fyrirt
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :hent út af þjón
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :reyndi að svindla
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :vefþjónn fullur
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :var að senda of margar skipanir
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -1912,11 +1918,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Leggja s
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Leggja veghluta í sjálfvirkum vegaham. Ctrl velur byggja/fjarlægja fyrir vegavinnu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Leggja sporvagnaspor í sjálfvirkum sporvagnsham. Ctrl velur byggja/fjarlægja fyrir sporvagnavinnu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Byggja bifreiðaskýli (til að kaupa og gera við bifreiðar)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Reisa sporvagnaskýli (til að smíða og þjónusta vagna)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Byggja strætóstoppistöð
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Reisa sporvagnastöð fyrir farþega
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Byggja flutningabílastöð
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Reisa sporvagnastöð fyrir farm
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Reisa sporvagnaskýli (til að kaupa og þjónusta vagna)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Byggja strætóstoppistöð. Ctrl leyfir samtengingu stöðva.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Reisa sporvagnastöð fyrir farþega. Ctrl leyfir samtengingu stöðva
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Byggja flutningabílastöð. Ctrl leyfir samtengingu stöðva
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Reisa sporvagnastöð fyrir farm. Ctrl leyfir samtengingu stöðva
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Virkja/afvirkja einstefnugötur
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Byggja vegabrú
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Byggja sporvagnabrú
@@ -1946,8 +1952,8 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Vatnafra
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Skipaskurður
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Grafa skipaskurði.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Grafa skruðgátt
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Reisa slipp (til að smíða og viðhalda skipum)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byggja bryggju
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Reisa slipp (til að kaupa og þjónasta skip)
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byggja bryggju. Ctrl leyfir samtengingu stöðva
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Setja niður bauju sem hægt er að nota sem leiðarvísi fyrir skip
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Byggja vatnsleyðslu
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Skilgreina vantssvæði.{}Grafa skipaskurð, nema CTRL sé haldið niðri við sjávarmál, þá flæðir yfir umhverfið í staðin.
@@ -1962,12 +1968,13 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Höfn
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Flugvellir
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byggja flugvöll
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Byggja flugvöll. Ctrl leyfir samtengingu stöðva
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Flugvallastillingar
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Veldu stærð/tegund flugvallar
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Tegund flugvallar
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Skipulag {NUM}
 
 STR_AIRPORT_SMALL                                               :Lítill flugvöllur
 STR_AIRPORT_CITY                                                :Borgarflugvöllur
@@ -2020,9 +2027,9 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ertu vis
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Bæjargerð
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nýr bær
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Byggja nýjan bæ
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Stofna nýjan bæ
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Handahófskenndur bær
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Byggja bæ á handahófskenndum stað
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Stofna bæ á handahófskenndum stað
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Búa til marga bæi
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Þekja landið með bæjum
 
@@ -2055,6 +2062,10 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Reisa
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fjármagna
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Framleiðandi iðnaðir
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Móttækilegir iðnaðir
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hús
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Tengill á litla kort
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landsvæðisupplýsingar
@@ -2261,7 +2272,7 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Keyri re
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Undirbý leik
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF stillingar
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF Stillingar
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Leitarsía:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Hlaða valdar stillingu
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Vista stillingu
@@ -2291,6 +2302,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Skoða h
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Skráarnafn: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF einkenni: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Útgáfa: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 summa: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Litaskema: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Eiginleikar: {SILVER}{STRING}
@@ -2302,6 +2314,10 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Óvirkt
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sláðu inn NewGRF breytur
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Breyta NewGRF stillingum
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Loka
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Stilling {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 
@@ -2344,6 +2360,8 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Vantar 
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD getur hrunið ef leikur er settur af stað. Ekki skrá villufærslur fyrir eftirfarandi hrun.{}Ertu viss um að þú viljir setja leikinn af stað?
 
 # NewGRF status
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Fann samhæfðar skrár
+STR_NEWGRF_LIST_MISSING                                         :{RED}Vantar skrár
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Hegðun NewGRF '{0:STRING}' er líkleg til að valda hnökrum og/eða hruni á kreyslu leiksins.
@@ -2358,6 +2376,8 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} merki
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Hreinsa síu
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Hreinsa síu
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Breyta texta skiltis
@@ -2412,20 +2432,20 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fjármagna nýj
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kaupa einkarétt á flutningi
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Múta bæjaryfirvöldum
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Hleypa af stokkunum lítilli auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{}  Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Hleypa af stokkunum miðlungs auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{}  Cost: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Hleypa af stokkunum mikilli auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{}  Kostnaður: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Kosta endurbætur á vegakerfi úthverfanna. Veldur töluverðri röskun á umferð í allt að 6 mánuði.{}  Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Hleypa af stokkunum lítilli auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{} Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Hleypa af stokkunum miðlungs auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{} Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Hleypa af stokkunum mikilli auglýsingaherferð til að laða að fleiri farþega og meiri farm til að flytja.{} Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Kosta endurbætur á vegakerfi úthverfanna. Veldur töluverðri röskun á umferð í allt að 6 mánuði.{} Kostnaður: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Byggja styttu til heiðurs fyrirtækinu þínu.{} Kostnaður: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Kosta byggingu verslunarhúsnæðis í bænum.{}  Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Kosta byggingu nýs verslunarhúsnæðis í bænum.{} Kostnaður: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Kaupa 1 árs flutningsrétt í þessum bæ. Bæjaryfirvöld munu aðeins leyfa notkun á þínum flutningsleiðum.{} Kostnaður: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Múta bæjaryfirvöldum til að auka við fylgi þitt, með hættu á þungri refsingu komist það upp.{}  Kostnaður: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Múta bæjaryfirvöldum til að auka við fylgi þitt, með hættu á þungri refsingu komist það upp.{} Kostnaður: {CURRENCY}
 
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Samstarfssamningar
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Samstarfssamningar í boði fyrir eftirfarandi þjónustur:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} frá {STRING} til {STRING}{YELLOW} (til {DATE_SHORT})
-STR_SUBSIDIES_NONE                                              :{ORANGE}Enginn
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Enginn -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Samningar þegar í gildi:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} frá {STRING} til {STRING}{YELLOW} ({COMPANY}{YELLOW}, þangað til {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Ýttu á þjónustu til að færa sýnishorn á tiltekinn iðnað/bæ
@@ -2503,12 +2523,12 @@ STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURREN
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Summa:
 STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Bankainnistæða
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lán
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Hámarkslán:  {BLACK}{CURRENCY}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Hámarkslán: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Taka lán {CURRENCY}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Auka lán
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Auka lán. Ctrl smelltu til að lána eins mikið og hægt er
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Borga lán {CURRENCY}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Borga til baka hluta af láni
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Borga til baka af láni. Ctrl smelltu til að borga eins mikið og hægt er
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -2575,7 +2595,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Framlei�
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Framleiðir: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Breyta framleiðslu
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Breyta framleiðslu (margfeldi af 8, allt að 2040)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Lestir
@@ -2645,7 +2665,7 @@ STR_BUY_VEHICLE_SHIP_CAPTION                                    :Skipaúrval
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Flugvélaúrval
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Þyngd: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK}   Afl: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK} Afl: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hraði: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Burðargeta: {GOLD}{CARGO} {STRING}
@@ -2653,7 +2673,7 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(breytanlegt)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Hönnun: {GOLD}{NUM}{BLACK} Endingartími: {GOLD}{COMMA} ár
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Verð: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Þyngd: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Þyngd: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hámarkshraði: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Burðargeta: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Drifvagnar: {GOLD}+{POWER}{BLACK} Þyngd: {GOLD}+{WEIGHT_S}
@@ -3159,6 +3179,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Hætta v
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Stillingar gervigreindar
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Loka
 STR_AI_SETTINGS_RESET                                           :{BLACK}Frumstilla
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3271,12 +3292,14 @@ STR_ERROR_PROTECTED                                             :{WHITE}Þetta f
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Get ekki stofnað nýja borg
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Get ekki endurskírt bæ...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Get ekki byggt bæ hér...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Get ekki framlengt bæ...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... of nálægt brún kortsins
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... of nálægt öðrum bæ
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... of margir bæir
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... það er ekkert laust svæði á kortinu
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bærinn getur ekki lagt vegi. Því er hægt að breyta í Þróaðri stillingar->Efnahagur->Bæir.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegaframkvæmdir standa yfir
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... það er enginn ákjósanlegur staður fyrir styttu í miðbæ þessa bæjar
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... of margir iðnaðir
@@ -3326,6 +3349,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Get ekki
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Get ekki fjarlægt farþegasporvagnastöð...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Get ekki fjarlægt farmsporvagnastöð...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Verður að fjarlægja strætóstöð fyrst
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... það er engin lestarstöð hér
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Þarf fyrst að rífa lestarstöð
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Verður að eyða strætisvagnastöðinni fyrst
@@ -3386,6 +3410,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Get ekki
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Get ekki fjarlægt lestartein héðan...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Get ekki fjarlægt umferðarljós héðan...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Get ekki breytt ljósum hér...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... það eru enginn lestarteinn
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... það eru engin ljós
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Get ekki breytt lestarteini...
 
@@ -3396,6 +3422,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Get ekki lagt sporvagnaspor hér...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Get ekki fjarlægt veg héðan...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Get ekki fjarlægt sporvagnaspor héðan...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... það er enginn vegur
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... það er ekkert sporvagnaspor
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ekki hægt að grafa skipaskurð hér...
@@ -3428,6 +3456,8 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Göng my
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Get ekki breytt landi fyrir hinn enda gangnanna
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... of margir hlutir
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Get ekki byggt hlut...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Hluturinn er fyrir
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... höfuðstöðvar fyrirtækis eru fyrir
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Þú getur ekki keypt þetta land...

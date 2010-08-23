@@ -747,6 +747,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalji
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Prikazuje detalje o ovom preduzeću
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozila:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stanice:
@@ -1952,6 +1953,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server j
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Vi ste zauvek izbačeni sa ovog servera
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Vi ste izbačeni iz ove partije
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Varanja nisu dozvoljena na ovom serveru
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Slali ste previše naredbi na server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :opšta greška
@@ -1969,6 +1971,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :pogrešan id pr
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :izbačen od strane servera
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :pokušaj korišćenja varanja
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server je pun
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :je slao previše naredbi
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2641,6 +2644,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Pokušano kori�
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sadrži neispravan sprajt. Svi neispravni sprajtovi će biti prikazani kao crveni znakovi pitanja (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sadrži višestruke Action 8 unose.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čitanje posle završetka pseudo-sprajta.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Odabranom skupu osnovnih grafika nedostaje neki broj sprajtova.{}Molimo Vas da ga ažurirate.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!
@@ -3518,6 +3522,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Podudara
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Uključuje/isključuje podudaranje malih i velikih slova tokom poređenja zapisanih VI poruka sa prekidnom niskom
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nastavi
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Nastavlja partiju i VI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Prikazuje podatke radi korekcije ove VI
 
 STR_ERROR_NO_AI                                                 :{WHITE}Ova OpenTTD verzija nema podršku za VI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nijedna VI nije dostupna!
@@ -3754,7 +3759,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Neuspeš
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Odavde se ne može ukloniti putanja za prugu...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Prvo se mora ukloniti putanja za prugu
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bova stoji na putu
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... plovak se koristi!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... plovak koristi drugo preduzeće!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Izgradnja železničkog depoa ovde nije moguća...
@@ -3764,10 +3769,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ovde nij
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ovaj depo se ne može preimenovati...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Voz se mora zaustaviti u nekom depou
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora se zaustaviti unutar depoa za drumska vozila
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Brod mora biti zaustavljen u depou
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Letilica se mora zaustaviti u nekom hangaru
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... mora se zaustaviti u nekom depou
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora se zaustaviti u nekom depou
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... mora se zaustaviti u nekom depou
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... mora se zaustaviti u nekom hangaru
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vozovi se mogu izmeniti samo kada su zaustavljeni u depou
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Voz je predugačak

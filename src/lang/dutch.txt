@@ -559,6 +559,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Toon details van dit bedrijf
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Voertuigen:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stations:
@@ -2448,6 +2449,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Poging tot gebr
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige afbeelding. Alle ongeldige afbeeldingen worden getoond als een rood vraagteken (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere 'Action 8'-elementen.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees voorbij einde van pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}De huidige basis graphics-set mist een aantal sprites..{}Werk de graphics-set bij aub.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!
@@ -3309,6 +3311,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Hoofdlet
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hoofdlettergevoeligheid bij vergelijken van AI logberichten t.o.v. de afbreekstring aan/uitzetten
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Doorgaan
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Het spel vervolgen en de AI voortzetten
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Toon debug gegevens van deze AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is gecompileerd zonder AI ondersteuning...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen AI's beschikbaar!
@@ -3545,7 +3548,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan naam
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan hier treincontrolepost niet weghalen...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Controlepost moet eerst verwijderd worden
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boei in de weg
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boei is in gebruik!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boei is in gebruik door een ander bedrijf!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kan hier geen treindepot bouwen...

@@ -3317,7 +3317,7 @@ STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD 
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... tekoälyt eivät ole saatavilla!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Sopivaa tekoälyä ei löydetty.{}Tämä tekoäly ei tee mitään.{}Voit ladata tekoälyjä 'Online Sisältö' järjestelmällä.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista tekoälyistä kaatui. Ole hyvä ilmoita tästä tekoälyn kehittäjälle, sekä ota kuvankaappaus Tekoälyn Virheenkorjaus ikkunasta.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista tekoälyistä kaatui. Ilmoita tästä tekoälyn kehittäjälle littäen mukaan kuvankaappaus Tekoälyn virheenjäljitys-ikkunasta.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoälyn virheenjäljitysikkuna on vain palvelimen käytettävissä
 
 # AI configuration window
