@@ -2568,6 +2568,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Введ
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Изменить параметры NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрыть
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Сброс
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Сбросить значения всех параметров
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметр {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 

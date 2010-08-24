@@ -2494,6 +2494,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Unesite 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Promijeni NewGRF parametre
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zatvori
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Resetiraj
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Namjesti sve parametre na osnovne vrijednosti
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -3644,7 +3646,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nije mog
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nije moguće ukloniti željezničko čvorište odavde...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Najprije je potrebno ukloniti željezničko čvorište
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... plutača na putu
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... plutača je u uporabi!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... plutača je u uporabi od strane druge kompanije!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ovdje nije moguće izgraditi spremište vlakova...

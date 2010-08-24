@@ -2398,6 +2398,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introdu 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Schimbă parametrii NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Închide
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Resetează
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setează toţii parametrii la valorile implicite
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametru {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 

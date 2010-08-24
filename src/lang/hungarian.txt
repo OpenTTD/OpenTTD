@@ -622,6 +622,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Részlet
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Cég részletes megtekintése
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Járművek:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Állomások:
@@ -1821,6 +1822,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}A szerve
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Ki vagy tiltva erről a szerverről
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ki lettél rúgva a szerverről
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ez a szerver nem engedi a csalást
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Túl sok parancsot küldtél a szervernek
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :általános hiba
@@ -1838,6 +1840,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :hibás vállala
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :a szerver kirúgott
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :csalni próbált
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :a szerver megtelt
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :túl sok parancsot küldött
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2459,6 +2462,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Adj meg 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF paraméterek megváltoztatása
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Bezárás
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Alapértelmezett
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Összes paraméter alapértelmezettre állítása
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paraméter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -2510,6 +2515,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Érvénytelen I
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} hibás sprite-ot tartalmaz. Minden hibás sprite piros kérdőjellel (?) kerül jelölésre.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Túl sok Action 8 bejegyzést tartalmaz.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite távoli végének olvasása.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A jelenleg használt grafikus alapcsomagból hiányzik számos sprite.{}Kérlek frissítsd a grafikus alapcsomagot!
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!
@@ -3371,6 +3377,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Egyezés
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AI naplóbejegyzések a megállítási sorral való összehasonlításnál szóegyezés be/ki
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Folytatás
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Játék folytatása és MI visszakapcsolása
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}A MI kimeneti nyomonkövetésének megtekintése
 
 STR_ERROR_NO_AI                                                 :{WHITE}Az OpenTTD MI támogatás nélül lett fordítva...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nincs elérhető MI!
