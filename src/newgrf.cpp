@@ -7093,6 +7093,13 @@ static void FinaliseHouseArray()
 				continue;
 			}
 
+			/* Substitute type is also used for override, and having an override with a different size causes crashes. */
+			if ((hs->building_flags & BUILDING_HAS_1_TILE) != (HouseSpec::Get(hs->grf_prop.subst_id)->building_flags & BUILDING_HAS_1_TILE)) {
+				hs->enabled = false;
+				DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d with different house size then it's substitute type. Disabling house.", (*file)->filename, hs->grf_prop.local_id);
+				continue;
+			}
+
 			_house_mngr.SetEntitySpec(hs);
 			if (hs->min_year < min_year) min_year = hs->min_year;
 		}
