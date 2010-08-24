@@ -12,6 +12,7 @@
 #include "../stdafx.h"
 #include "../newgrf_house.h"
 #include "../town.h"
+#include "../landscape.h"
 
 #include "saveload.h"
 #include "newgrf_sl.h"
@@ -63,9 +64,9 @@ void UpdateHousesAndTowns()
 				TileIndex tile = t + TileDiffXY(0, 1);
 				if (!IsTileType(tile, MP_HOUSE) || GetCleanHouseType(tile) != house_type + 1) valid_house = false;
 			} else if (hs->building_flags & TILE_SIZE_2x2) {
-				TileIndex tile = t + TileDiffXY(1, 0);
+				TileIndex tile = t + TileDiffXY(0, 1);
 				if (!IsTileType(tile, MP_HOUSE) || GetCleanHouseType(tile) != house_type + 1) valid_house = false;
-				tile = t + TileDiffXY(0, 1);
+				tile = t + TileDiffXY(1, 0);
 				if (!IsTileType(tile, MP_HOUSE) || GetCleanHouseType(tile) != house_type + 2) valid_house = false;
 				tile = t + TileDiffXY(1, 1);
 				if (!IsTileType(tile, MP_HOUSE) || GetCleanHouseType(tile) != house_type + 3) valid_house = false;
