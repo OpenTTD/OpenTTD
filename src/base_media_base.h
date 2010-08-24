@@ -147,6 +147,7 @@ template <class Tbase_set>
 class BaseMedia : FileScanner {
 protected:
 	static Tbase_set *available_sets; ///< All available sets
+	static Tbase_set *duplicate_sets; ///< All sets that aren't available, but needed for not downloading base sets when a newer version than the one on BaNaNaS is loaded.
 	static const Tbase_set *used_set; ///< The currently used set
 
 	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);

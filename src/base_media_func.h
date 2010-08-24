@@ -17,6 +17,7 @@
 template <class Tbase_set> /* static */ const char *BaseMedia<Tbase_set>::ini_set;
 template <class Tbase_set> /* static */ const Tbase_set *BaseMedia<Tbase_set>::used_set;
 template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::available_sets;
+template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplicate_sets;
 
 /**
  * Try to read a single piece of metadata and return false if it doesn't exist.
@@ -169,15 +170,14 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length)
 			if ((duplicate->valid_files == set->valid_files && duplicate->version >= set->version) ||
 					duplicate->valid_files > set->valid_files) {
 				DEBUG(grf, 1, "Not adding %s (%i) as base " SET_TYPE " set (duplicate)", set->name, set->version);
-				delete set;
+				set->next = BaseMedia<Tbase_set>::duplicate_sets;
+				BaseMedia<Tbase_set>::duplicate_sets = set;
 			} else {
 				Tbase_set **prev = &BaseMedia<Tbase_set>::available_sets;
 				while (*prev != duplicate) prev = &(*prev)->next;
 
 				*prev = set;
 				set->next = duplicate->next;
-				/* don't allow recursive delete of all remaining items */
-				duplicate->next = NULL;
 
 				/* If the duplicate set is currently used (due to rescanning this can happen)
 				 * update the currently used set to the new one. This will 'lie' about the
@@ -185,7 +185,8 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length)
 				if (BaseMedia<Tbase_set>::used_set == duplicate) BaseMedia<Tbase_set>::used_set = set;
 
 				DEBUG(grf, 1, "Removing %s (%i) as base " SET_TYPE " set (duplicate)", duplicate->name, duplicate->version);
-				delete duplicate;
+				duplicate->next = BaseMedia<Tbase_set>::duplicate_sets;
+				BaseMedia<Tbase_set>::duplicate_sets = duplicate;
 				ret = true;
 			}
 		} else {
@@ -254,10 +255,9 @@ template <class Tbase_set>
 #if defined(ENABLE_NETWORK)
 #include "network/network_content.h"
 
-template <class Tbase_set>
-/* static */ bool BaseMedia<Tbase_set>::HasSet(const ContentInfo *ci, bool md5sum)
+template <class Tbase_set> bool HasBaseSet(const ContentInfo *ci, bool md5sum, const Tbase_set *s)
 {
-	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != NULL; s = s->next) {
+	for (; s != NULL; s = s->next) {
 		if (s->GetNumMissing() != 0) continue;
 
 		if (s->shortname != ci->unique_id) continue;
@@ -274,6 +274,13 @@ template <class Tbase_set>
 	}
 
 	return false;
+}
+
+template <class Tbase_set>
+/* static */ bool BaseMedia<Tbase_set>::HasSet(const ContentInfo *ci, bool md5sum)
+{
+	return HasBaseSet(ci, md5sum, BaseMedia<Tbase_set>::available_sets) ||
+			HasBaseSet(ci, md5sum, BaseMedia<Tbase_set>::duplicate_sets);
 }
 
 #else

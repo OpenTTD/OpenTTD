@@ -23,6 +23,7 @@ GRF_DIR  = $(ROOT_DIR)/media/extra_grf
 BIN_DIR  = !!BIN_DIR!!/data
 OBJS_DIR = !!GRF_OBJS_DIR!!
 OS       = !!OS!!
+STAGE    = !!STAGE!!
 
 # Check if we want to show what we are doing
 ifdef VERBOSE
@@ -34,8 +35,10 @@ else
 endif
 
 # Some configurational settings for your environment.
-GRFCODEC := grfcodec
-NFORENUM := $(shell [ `which nforenum 2>/dev/null` ] && echo "nforenum" || echo "renum")
+# If GRFCodec doesn't know a command, it'll exit with a non-zero exit code.
+GRFCODEC := $(shell grfcodec -s -v >/dev/null 2>/dev/null && echo "grfcodec -s" || echo "grfcodec")
+# Old NFORenums don't give an error code when a parameter isn't known, so we have to work around that.
+NFORENUM := $(shell [ `nforenum -s -v 2>/dev/null | wc -l ` -eq 1 ] && echo "nforenum -s" || echo "nforenum")
 MD5SUM   := $(shell [ "$(OS)" = "OSX" ] && echo "md5 -r" || echo "md5sum")
 
 # Some "should not be changed" settings.
@@ -55,11 +58,14 @@ $(BIN_DIR)/openttdd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 
 # Yeah, we'd like to use -i in the sed, but Mac OS X's sed and GNU sed just can't agree on the usage of -i. In any case either one of them fails.
 $(OBJS_DIR)/openttdd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
+	$(E) '$(STAGE) Assembling openttdd.nfo'
 	$(Q)-cp $(PCX_FILES) $(OBJS_DIR)/sprites 2> /dev/null
 	$(Q) gcc -DDOS -I$(GRF_DIR) -C -E - < "$(GRF_DIR)/openttd.nfo" | sed -e '/^#/d' -e '/^$$/d' > $(OBJS_DIR)/sprites/openttdd.nfo
 	$(Q) $(NFORENUM) $(OBJS_DIR)/sprites/openttdd.nfo
+	$(E) '$(STAGE) Compiling openttdd.grf'
 	$(Q) $(GRFCODEC) -e -m1 $(OBJS_DIR)/openttdd.grf
 	$(Q) cp $(OBJS_DIR)/openttdd.grf $(BIN_DIR)/openttdd.grf
+	$(E) '$(STAGE) Updating base graphics sets for DOS graphics'
 	$(Q) for grf in $(BIN_DIR)/orig_dos*.obg; do sed 's/^OPENTTDD.GRF = [0-9a-f]*$$/OPENTTDD.GRF = '`$(MD5SUM) $(BIN_DIR)/openttdd.grf | sed 's@ .*@@'`'/' $$grf > $$grf.tmp && mv $$grf.tmp $$grf; done
 
 $(BIN_DIR)/openttdw.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
@@ -67,11 +73,14 @@ $(BIN_DIR)/openttdw.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 	$(Q) ($(NFORENUM) -? > /dev/null 2>&1 && $(MAKE) $(OBJS_DIR)/openttdw.grf && cp $(OBJS_DIR)/openttdw.grf $(BIN_DIR)/openttdw.grf) || ([ -e $(BIN_DIR)/openttdw.grf ] && touch $(BIN_DIR)/openttdw.grf && echo "no NFORenum and GRFCodec found, skipping rebuild of openttdw.grf...") || (echo "no NFORenum and GRFCodec found, but no openttdw.grf either. Install NFORenum and GRFCodec." && exit 1)
 
 $(OBJS_DIR)/openttdw.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
+	$(E) '$(STAGE) Assembling openttdw.nfo'
 	$(Q)-cp $(PCX_FILES) $(OBJS_DIR)/sprites 2> /dev/null
 	$(Q) gcc -I$(GRF_DIR) -C -E - < "$(GRF_DIR)/openttd.nfo" | sed -e '/^#/d' -e '/^$$/d' > $(OBJS_DIR)/sprites/openttdw.nfo
 	$(Q) $(NFORENUM) $(OBJS_DIR)/sprites/openttdw.nfo
+	$(E) '$(STAGE) Compiling openttdw.grf'
 	$(Q) $(GRFCODEC) -e -p2 $(OBJS_DIR)/openttdw.grf
 	$(Q) cp $(OBJS_DIR)/openttdw.grf $(BIN_DIR)/openttdw.grf
+	$(E) '$(STAGE) Updating base graphics sets for Windows graphics'
 	$(Q) for grf in $(BIN_DIR)/orig_win.obg; do sed 's/^OPENTTDW.GRF = [0-9a-f]*$$/OPENTTDW.GRF = '`$(MD5SUM) $(BIN_DIR)/openttdw.grf | sed 's@ .*@@'`'/' $$grf > $$grf.tmp && mv $$grf.tmp $$grf; done
 
 # Clean up temporary files.
