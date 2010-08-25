@@ -3614,7 +3614,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nem lehe
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Nem lehet eltávolítani az ellenőrző pontot...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Előbb le kell rombolnod az ellenőrző pontot
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bója van az útban
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... a bóját használják!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... a bóját más cég használja!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nem építhetsz ide járműtelepet...

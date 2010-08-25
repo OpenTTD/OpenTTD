@@ -2398,6 +2398,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Anna New
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuta NewGRF-parametrejä
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sulje
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Palauta
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Aseta kaikki parametrit oletusarvoihin
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametri {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 

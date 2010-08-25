@@ -759,7 +759,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}¡Desastre de zepelín en {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}¡Vehículo terrestre destruido en colisión con OVNI!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}¡Explosión de refinería cerca de {TOWN}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}¡Explosión de refinería de petróleo cerca de {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}¡Fábrica destruida en sospechosas circunstancias cerca de {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}¡OVNI aterriza cerca de {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}¡Hundimiento de mina de carbón deja ola de destrucción en {TOWN}!
@@ -3792,8 +3792,8 @@ STR_INDUSTRY_NAME_COAL_MINE                                     :Mina de Carbón
 STR_INDUSTRY_NAME_POWER_STATION                                 :Central Eléctrica
 STR_INDUSTRY_NAME_SAWMILL                                       :Aserradero
 STR_INDUSTRY_NAME_FOREST                                        :Bosque
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Refinería
-STR_INDUSTRY_NAME_OIL_RIG                                       :Torre Petrolera
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Refinería de Petróleo
+STR_INDUSTRY_NAME_OIL_RIG                                       :Plataforma Petrolífera
 STR_INDUSTRY_NAME_FACTORY                                       :Fábrica
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Imprenta
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Acería

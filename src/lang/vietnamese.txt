@@ -2033,6 +2033,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Xây sâ
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Chọn loại sân bay
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Chọn kích cỡ và kiểu sân bay
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Hạng sân bay
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Bố trí {NUM}
 
 STR_AIRPORT_SMALL                                               :Cực nhỏ
 STR_AIRPORT_CITY                                                :Đô thị
@@ -2134,6 +2135,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Click v�
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Click vào hàng hoá để xem nhà sản xuất và khách hàng
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Hiển thị chuỗi cung ứng
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Hiển thị khả năng cung ứng và chấp nhận hàng hoá của nhà máy
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Liên kết với bản đồ nhỏ
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Chọn các nhà máy hiển thị ở bản đồ nhỏ luôn thể
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Thông tin về vùng đất
@@ -2395,6 +2398,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Nhập N
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Thay đổi tham số NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Đóng
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Đặt mặc định
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Đặt tất cả các tham số về mặc định
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Tham số {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -2468,6 +2473,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Thiếu fi
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Hoạt động của NewGRF '{0:STRING}' có thể gây mất đồng bộ hoặc bị treo.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Trạng thái đầu kéo '{1:ENGINE}' được thay đổi khi không ở trong xưởng sửa chữa.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Nó cắt ngắn độ dài của đoàn tàu '{1:ENGINE}' nếu không ở trong xưởng.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Đoàn tàu '{VEHICLE}' của '{COMPANY}' có độ dài không hợp lệ. Có thể gây sự cố với NewGRFs. Ván chơi có thể mất đồng bộ hoặc bị treo
 
@@ -2486,6 +2492,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh sách biển hiệu - {COMMA} Biển hiệu
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Giống nhau
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Xóa bộ lọc
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Bật/tắt so sánh hoa thường tên biển hiệu với chuỗi nhập
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Xóa chuỗi lọc
 
 # Sign window
@@ -3511,6 +3518,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Quá sá
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Không thể đổi tên ga, bến,cảng...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... đây là đường của địa phương
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... đường quay mặt sai hướng
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... đi qua điểm dừng không thể đi qua góc
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... đi qua điểm dừng không thể có ngã rẽ
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Không thể xoá bỏ một phần của ga...
@@ -3541,7 +3550,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Không t
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Không thể xoá bỏ điểm mốc tàu hoả...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Phải bỏ điểm mốc trước
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... phao hàng hải nằm cản đường
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... phao hàng hải đã được dùng!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... phao hàng hải đã được dùng bởi công ty khác!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Không thể xây xưởng tàu ở đây...
@@ -3551,10 +3560,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Không t
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Không thể đổi tên xưởng...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Tàu phải dừng lại ở trong xưởng
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... tàu phải dừng lại ở trong xưởng
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... phải dừng trong xưởng ôtô
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Tàu thuỷ phải dừng ở trong xưởng
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Máy bay phải dừng lại trong xưởng
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... tàu thuỷ phải dừng ở trong xưởng
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... máy bay phải dừng lại trong xưởng
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Đoàn tàu chỉ có thể thay đổi khi dừng lại bên trong xưởng
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Đoàn tàu quá dài

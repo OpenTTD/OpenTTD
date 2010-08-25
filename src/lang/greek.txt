@@ -505,7 +505,7 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Πληροφο�
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Εναλλαγή Κονσόλας
 STR_ABOUT_MENU_AI_DEBUG                                         :Αποσφαλμάτωση AI
-STR_ABOUT_MENU_SCREENSHOT                                       :Φωτογραφία Οθόνης (Ctrl-S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Φωτογραφία Οθόνης
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Μεγάλη Φωτογραφία Οθόνης (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά με το 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής Sprite
@@ -3627,7 +3627,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Αδύν
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Αδύνατο να αφαιρεθεί το σημείο καθοδήγησης τρένου από εδώ...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Πρέπει να αφαιρεθεί πρώτα το σημείο καθοδήγησης σιδηρόδρομου
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... σημαδούρα στη μέση
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... σημαδούρα σε χρήση
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... σημαδούρα σε χρήση από άλλη εταιρία!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Αδύνατο να χτιστεί αμαξοστάσιο εδώ...
