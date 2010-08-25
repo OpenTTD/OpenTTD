@@ -249,7 +249,7 @@ struct MainWindow : Window
 		if (_game_mode == GM_MENU) {
 			static const SpriteID title_sprites[] = {SPR_OTTD_O, SPR_OTTD_P, SPR_OTTD_E, SPR_OTTD_N, SPR_OTTD_T, SPR_OTTD_T, SPR_OTTD_D};
 			static const uint LETTER_SPACING = 10;
-			uint name_width = (lengthof(title_sprites) - 1) * LETTER_SPACING;
+			int name_width = (lengthof(title_sprites) - 1) * LETTER_SPACING;
 
 			for (uint i = 0; i < lengthof(title_sprites); i++) {
 				name_width += GetSpriteSize(title_sprites[i]).width;
