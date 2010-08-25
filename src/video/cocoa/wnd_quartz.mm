@@ -456,6 +456,8 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 		[ this->window setMiniwindowTitle:nsscaption ];
 		[ nsscaption release ];
 
+		[ this->window setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
+
 		[ this->window setAcceptsMouseMovedEvents:YES ];
 		[ this->window setViewsNeedDisplay:NO ];
 
