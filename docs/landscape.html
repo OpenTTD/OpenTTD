@@ -669,7 +669,7 @@
        </li>
       </ul>
      <li>m3 bit 6 : bit 8 of house type (m4), allowing 512 different types.</li>
-     <li>m3 bit 5 : bit 6 of current animation frame (see m6)</li>
+     <li>m3 bit 5 : free</li>
      <li>m3 bits 4..0 : triggers activated <a href="#newhouses">(newhouses)</a></li>
      <li>m4 : <a href="landscape_externals.html">town building type</a> (with m3[6] bit)</li>
      <li>m5 : see m3 bit 7</li>
@@ -677,7 +677,7 @@
       <ul>
        <li>If <a href="#newhouses">newhouses</a> is activated
         <ul>
-         <li>bits 7..2 : Current animation frame (bits 5..0); bit 6 in m3</li>
+         <li>bits 7..2 : Periodic processing time remaining</li>
         </ul>
        </li>
        <li>Standard behaviour
@@ -692,7 +692,7 @@
       <ul>
        <li>If <a href="#newhouses">newhouses</a> is activated
         <ul>
-         <li>Periodic processing time remaining</li>
+         <li>Current animation frame</li>
         </ul>
        </li>
        <li>Standard behaviour (only for houses type 04 and 05)
@@ -1090,7 +1090,7 @@
       </ul>
      </li>
      <li>m2: index into the array of industries</li>
-     <li>m3: animation state</li>
+     <li>m3: random bits (NewGRF)</li>
      <li>m4: animation loop</li>
      <li>m5: type (plus m6 bit 2):<br>
       <small>(note: this is not the same as the industry type, which is stored in the array of industries)</small>
@@ -1107,7 +1107,7 @@
           <tr>
            <td nowrap valign=top><tt>01</tt>&nbsp; </td>
            <td align=left>wheel tower when animated<br>
-            animation state in m3 bits 5..0; m3 bit 6 set = sound already generated</td>
+            animation state in m7 bits 5..0; m7 bit 6 set = sound already generated</td>
           </tr>
          </table>
         </td>
@@ -1123,7 +1123,7 @@
           </tr>
           <tr>
            <td nowrap valign=top><tt>0A</tt>&nbsp; </td>
-           <td align=left>transformer; animation progress in m3(valid range <tt>0</tt>..<tt>7</tt>)</td>
+           <td align=left>transformer; animation progress in m7(valid range <tt>0</tt>..<tt>7</tt>)</td>
           </tr>
          </table>
         </td>
@@ -1166,7 +1166,7 @@
           </tr>
           <tr>
            <td nowrap valign=top><tt>1E</tt>..<tt>20</tt>&nbsp; </td>
-           <td align=left>various stages of animation; progress of animation in m3</td>
+           <td align=left>various stages of animation; progress of animation in m7</td>
           </tr>
          </table>
         </td>
@@ -1197,7 +1197,7 @@
           </tr>
           <tr>
            <td nowrap valign=top><tt>30</tt>&nbsp; </td>
-           <td align=left>wheel tower when animated; animation state in m3 bits 5..0; m3 bit 6 set = sound already generated</td>
+           <td align=left>wheel tower when animated; animation state in m7 bits 5..0; m7 bit 6 set = sound already generated</td>
           </tr>
           <tr>
            <td nowrap valign=top><tt>31</tt>&nbsp; </td>
@@ -1237,7 +1237,7 @@
           </tr>
           <tr>
            <td nowrap valign=top><tt>58</tt>&nbsp; </td>
-           <td align=left>wheel tower when animated; animation state in m3 bits 5..0; m3 bit 6 set = sound already generated</td>
+           <td align=left>wheel tower when animated; animation state in m7 bits 5..0; m7 bit 6 set = sound already generated</td>
           </tr>
          </table></td>
        </tr>
@@ -1332,7 +1332,7 @@
          <table>
           <tr>
            <td nowrap valign=top><tt>8F</tt>&nbsp; </td>
-           <td align=left>Animated part; animation state in m3 (valid range <tt>00</tt>..<tt>31</tt>)<br>
+           <td align=left>Animated part; animation state in m7 (valid range <tt>00</tt>..<tt>31</tt>)<br>
                         Tile animation is started (m4 zeroed) on the periodic processing.<br>
                         While the animation is in progress, m4 holds the number
                         of animation cycles that have already taken place.<br>
@@ -1362,7 +1362,7 @@
           </tr>
           <tr>
            <td nowrap valign=top><tt>A2</tt>&nbsp; </td>
-           <td align=left>bubble capture facility; animation state in m3 (valid range <tt>00</tt>..<tt>27</tt>)</td>
+           <td align=left>bubble capture facility; animation state in m7 (valid range <tt>00</tt>..<tt>27</tt>)</td>
           </tr>
          </table>
         </td>
@@ -1400,7 +1400,7 @@
      <li>m6 bits 5..3: random triggers (NewGRF)</li>
      <li>m6 bit 2: bit 8 of type (see m5)</li>
      <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
-     <li>m7: random bits (NewGRF)</li>
+     <li>m7: animation frame</li>
     </ul>
    </td>
   </tr>

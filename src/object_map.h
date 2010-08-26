@@ -115,7 +115,7 @@ static inline bool IsStatueTile(TileIndex t)
 static inline byte GetObjectAnimationStage(TileIndex t)
 {
 	assert(IsTileType(t, MP_OBJECT));
-	return _m[t].m3;
+	return _me[t].m7;
 }
 
 /**
@@ -127,7 +127,7 @@ static inline byte GetObjectAnimationStage(TileIndex t)
 static inline void SetObjectAnimationStage(TileIndex t, uint8 stage)
 {
 	assert(IsTileType(t, MP_OBJECT));
-	_m[t].m3 = stage;
+	_me[t].m7 = stage;
 }
 
 

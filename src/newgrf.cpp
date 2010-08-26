@@ -1684,7 +1684,7 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 			}
 
 			case 0x16: // Periodic refresh multiplier
-				housespec->processing_time = buf->ReadByte();
+				housespec->processing_time = min(buf->ReadByte(), 63);
 				break;
 
 			case 0x17: // Four random colours to use
