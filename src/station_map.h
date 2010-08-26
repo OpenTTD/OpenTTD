@@ -85,30 +85,6 @@ static inline void SetStationGfx(TileIndex t, StationGfx gfx)
 }
 
 /**
- * Get the station's animation frame of this tile
- * @param t the tile to query
- * @pre IsTileType(t, MP_STATION)
- * @return the station's animation frame
- */
-static inline uint8 GetStationAnimationFrame(TileIndex t)
-{
-	assert(IsTileType(t, MP_STATION));
-	return _me[t].m7;
-}
-
-/**
- * Set the station's animation frame of this tile
- * @param t the tile to update
- * @param frame the new frame
- * @pre IsTileType(t, MP_STATION)
- */
-static inline void SetStationAnimationFrame(TileIndex t, uint8 frame)
-{
-	assert(IsTileType(t, MP_STATION));
-	_me[t].m7 = frame;
-}
-
-/**
  * Is this station tile a rail station?
  * @param t the tile to get the information from
  * @pre IsTileType(t, MP_STATION)

@@ -1277,7 +1277,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 
 				SetCustomStationSpecIndex(tile, specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
-				SetStationAnimationFrame(tile, 0);
+				SetAnimationFrame(tile, 0);
 
 				if (statspec != NULL) {
 					/* Use a fixed axis for GetPlatformInfo as our platforms / numtracks are always the right way around */
@@ -2578,19 +2578,19 @@ static void DrawTile_Station(TileInfo *ti)
 		}
 		switch (gfx) {
 			case APT_RADAR_GRASS_FENCE_SW:
-				t = &_station_display_datas_airport_radar_grass_fence_sw[GetStationAnimationFrame(ti->tile)];
+				t = &_station_display_datas_airport_radar_grass_fence_sw[GetAnimationFrame(ti->tile)];
 				break;
 			case APT_GRASS_FENCE_NE_FLAG:
-				t = &_station_display_datas_airport_flag_grass_fence_ne[GetStationAnimationFrame(ti->tile)];
+				t = &_station_display_datas_airport_flag_grass_fence_ne[GetAnimationFrame(ti->tile)];
 				break;
 			case APT_RADAR_FENCE_SW:
-				t = &_station_display_datas_airport_radar_fence_sw[GetStationAnimationFrame(ti->tile)];
+				t = &_station_display_datas_airport_radar_fence_sw[GetAnimationFrame(ti->tile)];
 				break;
 			case APT_RADAR_FENCE_NE:
-				t = &_station_display_datas_airport_radar_fence_ne[GetStationAnimationFrame(ti->tile)];
+				t = &_station_display_datas_airport_radar_fence_ne[GetAnimationFrame(ti->tile)];
 				break;
 			case APT_GRASS_FENCE_NE_FLAG_2:
-				t = &_station_display_datas_airport_flag_grass_fence_ne_2[GetStationAnimationFrame(ti->tile)];
+				t = &_station_display_datas_airport_flag_grass_fence_ne_2[GetAnimationFrame(ti->tile)];
 				break;
 		}
 	}

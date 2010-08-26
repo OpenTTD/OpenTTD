@@ -185,7 +185,7 @@ static uint32 AirportTileGetVariable(const ResolverObject *object, byte variable
 		case 0x43: return GetRelativePosition(tile, st->airport.tile);
 
 		/* Animation frame of tile */
-		case 0x44: return GetStationAnimationFrame(tile);
+		case 0x44: return GetAnimationFrame(tile);
 
 		/* Land info of nearby tiles */
 		case 0x60: return GetNearbyAirportTileInformation(parameter, tile, st->index);
@@ -194,7 +194,7 @@ static uint32 AirportTileGetVariable(const ResolverObject *object, byte variable
 		case 0x61:
 			tile = GetNearbyTile(parameter, tile);
 			if (st->TileBelongsToAirport(tile)) {
-				return GetStationAnimationFrame(tile);
+				return GetAnimationFrame(tile);
 			}
 			return UINT_MAX;
 
@@ -322,7 +322,7 @@ void AnimateAirportTile(TileIndex tile)
 	if ((_tick_counter % (1 << animation_speed)) != 0) return;
 
 	bool frame_set_by_callback = false;
-	uint8 frame      = GetStationAnimationFrame(tile);
+	uint8 frame      = GetAnimationFrame(tile);
 	uint16 num_frames = GB(ats->animation_info, 0, 8);
 
 	if (HasBit(ats->callback_mask, CBM_AIRT_ANIM_NEXT_FRAME)) {
@@ -362,7 +362,7 @@ void AnimateAirportTile(TileIndex tile)
 		}
 	}
 
-	SetStationAnimationFrame(tile, frame);
+	SetAnimationFrame(tile, frame);
 	MarkTileDirtyByTile(tile);
 }
 
@@ -376,7 +376,7 @@ static void ChangeAirportTileAnimationFrame(const AirportTileSpec *ats, TileInde
 		case 0xFE: AddAnimatedTile(tile);    break;
 		case 0xFF: DeleteAnimatedTile(tile); break;
 		default:
-			SetStationAnimationFrame(tile, callback_res & 0xFF);
+			SetAnimationFrame(tile, callback_res & 0xFF);
 			AddAnimatedTile(tile);
 			break;
 	}

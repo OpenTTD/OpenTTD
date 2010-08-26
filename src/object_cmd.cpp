@@ -89,13 +89,13 @@ static void IncreaseAnimationStage(TileIndex tile)
 {
 	TileArea ta = Object::GetByTile(tile)->location;
 	TILE_AREA_LOOP(t, ta) {
-		SetObjectAnimationStage(t, GetObjectAnimationStage(t) + 1);
+		SetAnimationFrame(t, GetAnimationFrame(t) + 1);
 		MarkTileDirtyByTile(t);
 	}
 }
 
 /** We encode the company HQ size in the animation stage. */
-#define GetCompanyHQSize GetObjectAnimationStage
+#define GetCompanyHQSize GetAnimationFrame
 /** We encode the company HQ size in the animation stage. */
 #define IncreaseCompanyHQSize IncreaseAnimationStage
 

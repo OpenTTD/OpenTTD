@@ -202,6 +202,30 @@ static inline TropicZone GetTropicZone(TileIndex tile)
 	return (TropicZone)GB(_m[tile].m6, 0, 2);
 }
 
+/**
+ * Get the current animation frame
+ * @param t the tile
+ * @pre IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION)
+ * @return frame number
+ */
+static inline byte GetAnimationFrame(TileIndex t)
+{
+	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION));
+	return _me[t].m7;
+}
+
+/**
+ * Set a new animation frame
+ * @param t the tile
+ * @param frame the new frame number
+ * @pre IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION)
+ */
+static inline void SetAnimationFrame(TileIndex t, byte frame)
+{
+	assert(IsTileType(t, MP_HOUSE) || IsTileType(t, MP_OBJECT) || IsTileType(t, MP_INDUSTRY) ||IsTileType(t, MP_STATION));
+	_me[t].m7 = frame;
+}
+
 Slope GetTileSlope(TileIndex tile, uint *h);
 uint GetTileZ(TileIndex tile);
 uint GetTileMaxZ(TileIndex tile);

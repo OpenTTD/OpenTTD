@@ -229,29 +229,6 @@ static inline void SetIndustryAnimationLoop(TileIndex tile, byte count)
 }
 
 /**
- * Get the animation state
- * @param tile the tile to get the animation state of
- * @pre IsTileType(tile, MP_INDUSTRY)
- */
-static inline byte GetIndustryAnimationState(TileIndex tile)
-{
-	assert(IsTileType(tile, MP_INDUSTRY));
-	return _me[tile].m7;
-}
-
-/**
- * Set the animation state
- * @param tile the tile to set the animation state of
- * @param state the new animation state
- * @pre IsTileType(tile, MP_INDUSTRY)
- */
-static inline void SetIndustryAnimationState(TileIndex tile, byte state)
-{
-	assert(IsTileType(tile, MP_INDUSTRY));
-	_me[tile].m7 = state;
-}
-
-/**
  * Get the random bits for this tile.
  * Used for grf callbacks
  * @param tile TileIndex of the tile to query

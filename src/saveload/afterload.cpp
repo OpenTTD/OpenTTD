@@ -2176,7 +2176,7 @@ bool AfterLoadGame()
 						break;
 					}
 					if (old_gfx < atc[i].old_start + atc[i].num_frames) {
-						SetStationAnimationFrame(t, old_gfx - atc[i].old_start);
+						SetAnimationFrame(t, old_gfx - atc[i].old_start);
 						SetStationGfx(t, atc[i].old_start - offset);
 						break;
 					}

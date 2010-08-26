@@ -87,7 +87,7 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 		case 0x43: return GetRelativePosition(tile, inds->location.tile);
 
 		/* Animation frame. Like house variable 46 but can contain anything 0..FF. */
-		case 0x44: return (IsTileType(tile, MP_INDUSTRY)) ? GetIndustryAnimationState(tile) : 0;
+		case 0x44: return (IsTileType(tile, MP_INDUSTRY)) ? GetAnimationFrame(tile) : 0;
 
 		/* Land info of nearby tiles */
 		case 0x60: return GetNearbyIndustryTileInformation(parameter, tile, inds == NULL ? (IndustryID)INVALID_INDUSTRY : inds->index);
@@ -96,7 +96,7 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 		case 0x61:
 			tile = GetNearbyTile(parameter, tile);
 			if (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile) == inds) {
-				return GetIndustryAnimationState(tile);
+				return GetAnimationFrame(tile);
 			}
 			return UINT_MAX;
 
@@ -316,7 +316,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 	if ((_tick_counter % (1 << animation_speed)) != 0) return;
 
 	bool frame_set_by_callback = false;
-	byte frame = GetIndustryAnimationState(tile);
+	byte frame = GetAnimationFrame(tile);
 	uint16 num_frames = GB(itspec->animation_info, 0, 8);
 
 	if (HasBit(itspec->callback_mask, CBM_INDT_ANIM_NEXT_FRAME)) {
@@ -357,7 +357,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 		}
 	}
 
-	SetIndustryAnimationState(tile, frame);
+	SetAnimationFrame(tile, frame);
 	MarkTileDirtyByTile(tile);
 }
 
@@ -371,7 +371,7 @@ static void ChangeIndustryTileAnimationFrame(const IndustryTileSpec *itspec, Til
 		case 0xFE: AddAnimatedTile(tile);    break;
 		case 0xFF: DeleteAnimatedTile(tile); break;
 		default:
-			SetIndustryAnimationState(tile, callback_res & 0xFF);
+			SetAnimationFrame(tile, callback_res & 0xFF);
 			AddAnimatedTile(tile);
 			break;
 	}

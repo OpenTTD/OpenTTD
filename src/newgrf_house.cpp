@@ -286,7 +286,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		case 0x45: return _generating_world ? 1 : 0;
 
 		/* Current animation frame. */
-		case 0x46: return IsTileType(tile, MP_HOUSE) ? GetHouseAnimationFrame(tile) : 0;
+		case 0x46: return IsTileType(tile, MP_HOUSE) ? GetAnimationFrame(tile) : 0;
 
 		/* Position of the house */
 		case 0x47: return TileY(tile) << 16 | TileX(tile);
@@ -309,7 +309,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		/* Current animation frame of nearby house tiles */
 		case 0x63: {
 			TileIndex testtile = GetNearbyTile(parameter, tile);
-			return IsTileType(testtile, MP_HOUSE) ? GetHouseAnimationFrame(testtile) : 0;
+			return IsTileType(testtile, MP_HOUSE) ? GetAnimationFrame(testtile) : 0;
 		}
 
 		/* Cargo acceptance history of nearby stations */
@@ -488,7 +488,7 @@ void AnimateNewHouseTile(TileIndex tile)
 	 * maximum, corresponding to around 33 minutes. */
 	if (_tick_counter % (1 << animation_speed) != 0) return;
 
-	byte frame      = GetHouseAnimationFrame(tile);
+	byte frame      = GetAnimationFrame(tile);
 	byte num_frames = GB(hs->animation_frames, 0, 7);
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_ANIMATION_NEXT_FRAME)) {
@@ -529,7 +529,7 @@ void AnimateNewHouseTile(TileIndex tile)
 		}
 	}
 
-	SetHouseAnimationFrame(tile, frame);
+	SetAnimationFrame(tile, frame);
 	MarkTileDirtyByTile(tile);
 }
 
@@ -540,7 +540,7 @@ void ChangeHouseAnimationFrame(const GRFFile *file, TileIndex tile, uint16 callb
 		case 0xFE: AddAnimatedTile(tile);    break;
 		case 0xFF: DeleteAnimatedTile(tile); break;
 		default:
-			SetHouseAnimationFrame(tile, callback_result & 0xFF);
+			SetAnimationFrame(tile, callback_result & 0xFF);
 			AddAnimatedTile(tile);
 			break;
 	}

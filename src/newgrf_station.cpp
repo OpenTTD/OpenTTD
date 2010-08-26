@@ -325,13 +325,13 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			return _svc.v49;
 
 		case 0x4A: // Animation frame of tile
-			return GetStationAnimationFrame(tile);
+			return GetAnimationFrame(tile);
 
 		/* Variables which use the parameter */
 		/* Variables 0x60 to 0x65 are handled separately below */
 		case 0x66: // Animation frame of nearby tile
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile);
-			return st->TileBelongsToRailStation(tile) ? GetStationAnimationFrame(tile) : UINT_MAX;
+			return st->TileBelongsToRailStation(tile) ? GetAnimationFrame(tile) : UINT_MAX;
 
 		case 0x67: { // Land info of nearby tile
 			Axis axis = GetRailStationAxis(tile);
@@ -827,7 +827,7 @@ void AnimateStationTile(TileIndex tile)
 
 	if (_tick_counter % (1 << animation_speed) != 0) return;
 
-	uint8 frame      = GetStationAnimationFrame(tile);
+	uint8 frame      = GetAnimationFrame(tile);
 	uint8 num_frames = ss->anim_frames;
 
 	bool frame_set_by_callback = false;
@@ -871,7 +871,7 @@ void AnimateStationTile(TileIndex tile)
 		}
 	}
 
-	SetStationAnimationFrame(tile, frame);
+	SetAnimationFrame(tile, frame);
 	MarkTileDirtyByTile(tile);
 }
 
@@ -886,7 +886,7 @@ static void ChangeStationAnimationFrame(const StationSpec *ss, const BaseStation
 		case 0xFE: AddAnimatedTile(tile);    break;
 		case 0xFF: DeleteAnimatedTile(tile); break;
 		default:
-			SetStationAnimationFrame(tile, callback);
+			SetAnimationFrame(tile, callback);
 			AddAnimatedTile(tile);
 			break;
 	}

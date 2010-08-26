@@ -106,30 +106,6 @@ static inline bool IsStatueTile(TileIndex t)
 	return IsTileType(t, MP_OBJECT) && IsStatue(t);
 }
 
-/**
- * Get animation stage/counter of this tile.
- * @param t The tile to query.
- * @pre IsTileType(t, MP_OBJECT)
- * @return The animation 'stage' of the tile.
- */
-static inline byte GetObjectAnimationStage(TileIndex t)
-{
-	assert(IsTileType(t, MP_OBJECT));
-	return _me[t].m7;
-}
-
-/**
- * Set animation stage/counter of this tile.
- * @param t     The tile to query.
- * @param stage The stage of this tile.
- * @pre IsTileType(t, MP_OBJECT)
- */
-static inline void SetObjectAnimationStage(TileIndex t, uint8 stage)
-{
-	assert(IsTileType(t, MP_OBJECT));
-	_me[t].m7 = stage;
-}
-
 
 /**
  * Make an Object tile.

@@ -140,30 +140,6 @@ static inline void SetLiftPosition(TileIndex t, byte pos)
 }
 
 /**
- * Get the current animation frame for this house
- * @param t the tile
- * @pre IsTileType(t, MP_HOUSE)
- * @return frame number
- */
-static inline byte GetHouseAnimationFrame(TileIndex t)
-{
-	assert(IsTileType(t, MP_HOUSE));
-	return _me[t].m7;
-}
-
-/**
- * Set a new animation frame for this house
- * @param t the tile
- * @param frame the new frame number
- * @pre IsTileType(t, MP_HOUSE)
- */
-static inline void SetHouseAnimationFrame(TileIndex t, byte frame)
-{
-	assert(IsTileType(t, MP_HOUSE));
-	_me[t].m7 = frame;
-}
-
-/**
  * Get the completion of this house
  * @param t the tile
  * @return true if it is, false if it is not
@@ -386,7 +362,7 @@ static inline void MakeHouseTile(TileIndex t, TownID tid, byte counter, byte sta
 	SetHouseType(t, type);
 	SetHouseCompleted(t, stage == TOWN_HOUSE_COMPLETED);
 	_m[t].m5 = IsHouseCompleted(t) ? 0 : (stage << 3 | counter);
-	SetHouseAnimationFrame(t, 0);
+	SetAnimationFrame(t, 0);
 	SetHouseProcessingTime(t, HouseSpec::Get(type)->processing_time);
 }
 
