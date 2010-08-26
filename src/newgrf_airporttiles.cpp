@@ -48,6 +48,16 @@ AirportTileOverrideManager _airporttile_mngr(NEW_AIRPORTTILE_OFFSET, NUM_AIRPORT
 }
 
 /**
+ * Retrieve airport tile spec for the given airport tile.
+ * @param tile The airport tile.
+ * @return A pointer to the corresponding AirportTileSpec.
+ */
+/* static */ const AirportTileSpec *AirportTileSpec::GetByTile(TileIndex tile)
+{
+	return AirportTileSpec::Get(GetAirportGfx(tile));
+}
+
+/**
  * This function initializes the tile array of AirportTileSpec
  */
 void AirportTileSpec::ResetAirportTiles()

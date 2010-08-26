@@ -2807,7 +2807,7 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 	}
 
 	if (IsAirport(tile)) {
-		const AirportTileSpec *ats = AirportTileSpec::Get(GetAirportGfx(tile));
+		const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
 		td->airport_tile_name = ats->name;
 
 		if (ats->grf_prop.grffile != NULL) {

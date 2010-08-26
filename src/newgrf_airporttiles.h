@@ -29,6 +29,7 @@ struct AirportTileSpec {
 	GRFFileProps grf_prop;                ///< properties related the the grf file
 
 	static const AirportTileSpec *Get(StationGfx gfx);
+	static const AirportTileSpec *GetByTile(TileIndex tile);
 
 	static void ResetAirportTiles();
 
