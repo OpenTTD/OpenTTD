@@ -282,7 +282,7 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const Airport
 
 	if (ti->tileh != SLOPE_FLAT) {
 		bool draw_old_one = true;
-		if (HasBit(airts->callback_flags, CBM_AIRT_DRAW_FOUNDATIONS)) {
+		if (HasBit(airts->callback_mask, CBM_AIRT_DRAW_FOUNDATIONS)) {
 			/* Called to determine the type (if any) of foundation to draw */
 			uint32 callback_res = GetAirportTileCallback(CBID_AIRPTILE_DRAW_FOUNDATIONS, 0, 0, gfx, st, ti->tile);
 			draw_old_one = (callback_res != 0);
@@ -310,7 +310,7 @@ void AnimateAirportTile(TileIndex tile)
 	const AirportTileSpec *ats = AirportTileSpec::Get(gfx);
 	uint8 animation_speed = ats->animation_speed;
 
-	if (HasBit(ats->callback_flags, CBM_AIRT_ANIM_SPEED)) {
+	if (HasBit(ats->callback_mask, CBM_AIRT_ANIM_SPEED)) {
 		uint16 callback_res = GetAirportTileCallback(CBID_AIRPTILE_ANIMATION_SPEED, 0, 0, gfx, st, tile);
 		if (callback_res != CALLBACK_FAILED) animation_speed = Clamp(callback_res & 0xFF, 0, 16);
 	}
@@ -325,7 +325,7 @@ void AnimateAirportTile(TileIndex tile)
 	uint8 frame      = GetStationAnimationFrame(tile);
 	uint16 num_frames = GB(ats->animation_info, 0, 8);
 
-	if (HasBit(ats->callback_flags, CBM_AIRT_ANIM_NEXT_FRAME)) {
+	if (HasBit(ats->callback_mask, CBM_AIRT_ANIM_NEXT_FRAME)) {
 		uint16 callback_res = GetAirportTileCallback(CBID_AIRPTILE_ANIM_NEXT_FRAME, HasBit(ats->animation_special_flags, 0) ? Random() : 0, 0, gfx, st, tile);
 
 		if (callback_res != CALLBACK_FAILED) {

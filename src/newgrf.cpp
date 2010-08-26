@@ -3114,8 +3114,8 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 				break;
 			}
 
-			case 0x0E: // Callback flags
-				tsp->callback_flags = buf->ReadByte();
+			case 0x0E: // Callback mask
+				tsp->callback_mask = buf->ReadByte();
 				break;
 
 			case 0x0F: // Animation information

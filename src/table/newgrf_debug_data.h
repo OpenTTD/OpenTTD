@@ -341,7 +341,7 @@ static const NIFeature _nif_railtype = {
 
 /*** NewGRF airport tiles ***/
 
-#define NICAT(cb_id, bit) NIC(cb_id, AirportTileSpec, callback_flags, bit)
+#define NICAT(cb_id, bit) NIC(cb_id, AirportTileSpec, callback_mask, bit)
 static const NICallback _nic_airporttiles[] = {
 	NICAT(CBID_AIRPTILE_DRAW_FOUNDATIONS, CBM_AIRT_DRAW_FOUNDATIONS),
 	NICAT(CBID_AIRPTILE_ANIM_START_STOP,  CBM_NO_BIT),
