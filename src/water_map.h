@@ -68,6 +68,7 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
 /**
  * Get the water class at a tile.
  * @param t Water tile to query.
+ * @pre IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT)
  * @return Water class at the tile.
  */
 static inline WaterClass GetWaterClass(TileIndex t)
@@ -80,11 +81,23 @@ static inline WaterClass GetWaterClass(TileIndex t)
  * Set the water class at a tile.
  * @param t  Water tile to change.
  * @param wc New water class.
+ * @pre IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT)
  */
 static inline void SetWaterClass(TileIndex t, WaterClass wc)
 {
 	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT));
 	SB(_m[t].m1, 5, 2, wc);
+}
+
+/**
+ * Tests if the tile was built on water.
+ * @param t the tile to check
+ * @pre IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT)
+ * @return true iff on water
+ */
+static inline bool IsTileOnWater(TileIndex t)
+{
+	return (GetWaterClass(t) != WATER_CLASS_INVALID);
 }
 
 /**

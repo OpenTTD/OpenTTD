@@ -497,7 +497,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 			if ((IsTileType(src_tile, MP_STATION) && IsOilRig(src_tile)) ||
 			    (IsTileType(src_tile, MP_INDUSTRY) && GetIndustryIndex(src_tile) == GetIndustryIndex(tile))) return true;
 
-			return IsIndustryTileOnWater(tile);
+			return IsTileOnWater(tile);
 		}
 
 		case MP_TUNNELBRIDGE: return GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER && ReverseDiagDir(GetTunnelBridgeDirection(tile)) == DirToDiagDir(from);
@@ -932,9 +932,11 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 			if (IsCoast(tile)) {
 				Slope tileh = GetTileSlope(tile, NULL);
 				return (IsSlopeWithOneCornerRaised(tileh) ? FLOOD_ACTIVE : FLOOD_DRYUP);
-			} else {
-				return (GetWaterClass(tile) == WATER_CLASS_SEA) ? FLOOD_ACTIVE : FLOOD_NONE;
 			}
+			/* FALL THROUGH */
+		case MP_STATION:
+		case MP_INDUSTRY:
+			return (GetWaterClass(tile) == WATER_CLASS_SEA) ? FLOOD_ACTIVE : FLOOD_NONE;
 
 		case MP_RAILWAY:
 			if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
@@ -944,15 +946,6 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 
 		case MP_TREES:
 			return (GetTreeGround(tile) == TREE_GROUND_SHORE ? FLOOD_DRYUP : FLOOD_NONE);
-
-		case MP_STATION:
-			if (IsBuoy(tile) || (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsOilRig(tile)) {
-				return (GetWaterClass(tile) == WATER_CLASS_SEA ? FLOOD_ACTIVE : FLOOD_NONE);
-			}
-			return FLOOD_NONE;
-
-		case MP_INDUSTRY:
-			return ((IsIndustryTileOnWater(tile) && GetWaterClass(tile) == WATER_CLASS_SEA) ? FLOOD_ACTIVE : FLOOD_NONE);
 
 		default:
 			return FLOOD_NONE;

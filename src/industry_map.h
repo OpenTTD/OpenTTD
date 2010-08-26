@@ -157,17 +157,6 @@ static inline void SetIndustryGfx(TileIndex t, IndustryGfx gfx)
 }
 
 /**
- * Tests if the industry tile was built on water.
- * @param t the industry tile
- * @return true iff on water
- */
-static inline bool IsIndustryTileOnWater(TileIndex t)
-{
-	assert(IsTileType(t, MP_INDUSTRY));
-	return (GetWaterClass(t) != WATER_CLASS_INVALID);
-}
-
-/**
  * Returns this indutry tile's construction counter value
  * @param tile the tile to query
  * @pre IsTileType(tile, MP_INDUSTRY)

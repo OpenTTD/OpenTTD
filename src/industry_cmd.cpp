@@ -338,7 +338,7 @@ static void DrawTile_Industry(TileInfo *ti)
 
 	/* If the ground sprite is the default flat water sprite, draw also canal/river borders.
 	 * Do not do this if the tile's WaterClass is 'land'. */
-	if (image == SPR_FLAT_WATER_TILE && IsIndustryTileOnWater(ti->tile)) {
+	if (image == SPR_FLAT_WATER_TILE && IsTileOnWater(ti->tile)) {
 		DrawWaterClassGround(ti);
 	} else {
 		DrawGroundSprite(image, GroundSpritePaletteTransform(image, dits->ground.pal, GENERAL_SPRITE_COLOUR(ind->random_colour)));
@@ -791,7 +791,7 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 
 static void TileLoop_Industry(TileIndex tile)
 {
-	if (IsIndustryTileOnWater(tile)) TileLoop_Water(tile);
+	if (IsTileOnWater(tile)) TileLoop_Water(tile);
 
 	TriggerIndustryTile(tile, INDTILE_TRIGGER_TILE_LOOP);
 
