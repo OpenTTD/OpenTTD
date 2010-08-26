@@ -29,6 +29,7 @@
 #include "tunnelbridge_map.h"
 #include "newgrf.h"
 #include "core/random_func.hpp"
+#include "newgrf_animation_base.h"
 #include "newgrf_class_func.h"
 
 #include "table/strings.h"
@@ -811,89 +812,21 @@ bool IsStationTileElectrifiable(TileIndex tile)
 		!HasBit(statspec->wires, GetStationGfx(tile));
 }
 
+/** Helper class for animation control. */
+struct StationAnimationBase : public AnimationBase<StationAnimationBase, StationSpec, BaseStation, GetStationCallback> {
+	static const CallbackID cb_animation_speed      = CBID_STATION_ANIMATION_SPEED;
+	static const CallbackID cb_animation_next_frame = CBID_STATION_ANIM_NEXT_FRAME;
+
+	static const StationCallbackMask cbm_animation_speed      = CBM_STATION_ANIMATION_SPEED;
+	static const StationCallbackMask cbm_animation_next_frame = CBM_STATION_ANIMATION_NEXT_FRAME;
+};
+
 void AnimateStationTile(TileIndex tile)
 {
 	const StationSpec *ss = GetStationSpec(tile);
 	if (ss == NULL) return;
 
-	const BaseStation *st = BaseStation::GetByTile(tile);
-
-	uint8 animation_speed = ss->animation.speed;
-
-	if (HasBit(ss->callback_mask, CBM_STATION_ANIMATION_SPEED)) {
-		uint16 callback = GetStationCallback(CBID_STATION_ANIMATION_SPEED, 0, 0, ss, st, tile);
-		if (callback != CALLBACK_FAILED) animation_speed = Clamp(callback & 0xFF, 0, 16);
-	}
-
-	if (_tick_counter % (1 << animation_speed) != 0) return;
-
-	uint8 frame      = GetAnimationFrame(tile);
-	uint8 num_frames = ss->animation.frames;
-
-	bool frame_set_by_callback = false;
-
-	if (HasBit(ss->callback_mask, CBM_STATION_ANIMATION_NEXT_FRAME)) {
-		uint32 param = HasBit(ss->flags, SSF_CB141_RANDOM_BITS) ? Random() : 0;
-		uint16 callback = GetStationCallback(CBID_STATION_ANIM_NEXT_FRAME, param, 0, ss, st, tile);
-
-		if (callback != CALLBACK_FAILED) {
-			frame_set_by_callback = true;
-
-			switch (callback & 0xFF) {
-				case 0xFF:
-					DeleteAnimatedTile(tile);
-					break;
-
-				case 0xFE:
-					frame_set_by_callback = false;
-					break;
-
-				default:
-					frame = callback & 0xFF;
-					break;
-			}
-
-			/* If the lower 7 bits of the upper byte of the callback
-			 * result are not empty, it is a sound effect. */
-			if (GB(callback, 8, 7) != 0) PlayTileSound(ss->grf_prop.grffile, GB(callback, 8, 7), tile);
-		}
-	}
-
-	if (!frame_set_by_callback) {
-		if (frame < num_frames) {
-			frame++;
-		} else if (frame == num_frames && ss->animation.status == ANIM_STATUS_LOOPING) {
-			/* This animation loops, so start again from the beginning */
-			frame = 0;
-		} else {
-			/* This animation doesn't loop, so stay here */
-			DeleteAnimatedTile(tile);
-		}
-	}
-
-	SetAnimationFrame(tile, frame);
-	MarkTileDirtyByTile(tile);
-}
-
-
-static void ChangeStationAnimationFrame(const StationSpec *ss, const BaseStation *st, TileIndex tile, uint16 random_bits, StationAnimationTrigger trigger, CargoID cargo_type)
-{
-	uint16 callback = GetStationCallback(CBID_STATION_ANIM_START_STOP, (random_bits << 16) | Random(), (uint8)trigger | (cargo_type << 8), ss, st, tile);
-	if (callback == CALLBACK_FAILED) return;
-
-	switch (callback & 0xFF) {
-		case 0xFD: /* Do nothing. */         break;
-		case 0xFE: AddAnimatedTile(tile);    break;
-		case 0xFF: DeleteAnimatedTile(tile); break;
-		default:
-			SetAnimationFrame(tile, callback);
-			AddAnimatedTile(tile);
-			break;
-	}
-
-	/* If the lower 7 bits of the upper byte of the callback
-	 * result are not empty, it is a sound effect. */
-	if (GB(callback, 8, 7) != 0) PlayTileSound(ss->grf_prop.grffile, GB(callback, 8, 7), tile);
+	StationAnimationBase::AnimateTile(ss, BaseStation::GetByTile(tile), tile, HasBit(ss->flags, SSF_CB141_RANDOM_BITS));
 }
 
 void TriggerStationAnimation(const BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoID cargo_type)
@@ -924,7 +857,7 @@ void TriggerStationAnimation(const BaseStation *st, TileIndex tile, StationAnima
 				} else {
 					cargo = GetReverseCargoTranslation(cargo_type, ss->grf_prop.grffile);
 				}
-				ChangeStationAnimationFrame(ss, st, tile, random_bits, trigger, cargo);
+				StationAnimationBase::ChangeAnimationFrame(CBID_STATION_ANIM_START_STOP, ss, st, tile, (random_bits << 16) | Random(), (uint8)trigger | (cargo << 8));
 			}
 		}
 	}

@@ -28,6 +28,7 @@
 #include "table/strings.h"
 #include "table/airporttiles.h"
 #include "date_func.h"
+#include "newgrf_animation_base.h"
 
 
 AirportTileSpec AirportTileSpec::tiles[NUM_AIRPORTTILES];
@@ -312,96 +313,29 @@ bool DrawNewAirportTile(TileInfo *ti, Station *st, StationGfx gfx, const Airport
 	return true;
 }
 
+/** Helper class for animation control. */
+struct AirportTileAnimationBase : public AnimationBase<AirportTileAnimationBase, AirportTileSpec, Station, GetAirportTileCallback> {
+	static const CallbackID cb_animation_speed      = CBID_AIRPTILE_ANIMATION_SPEED;
+	static const CallbackID cb_animation_next_frame = CBID_AIRPTILE_ANIM_NEXT_FRAME;
+
+	static const AirportTileCallbackMask cbm_animation_speed      = CBM_AIRT_ANIM_SPEED;
+	static const AirportTileCallbackMask cbm_animation_next_frame = CBM_AIRT_ANIM_NEXT_FRAME;
+};
+
 void AnimateAirportTile(TileIndex tile)
 {
-	Station *st = Station::GetByTile(tile);
 	const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
-	uint8 animation_speed = ats->animation.speed;
+	if (ats == NULL) return;
 
-	if (HasBit(ats->callback_mask, CBM_AIRT_ANIM_SPEED)) {
-		uint16 callback_res = GetAirportTileCallback(CBID_AIRPTILE_ANIMATION_SPEED, 0, 0, ats, st, tile);
-		if (callback_res != CALLBACK_FAILED) animation_speed = Clamp(callback_res & 0xFF, 0, 16);
-	}
-
-	/* An animation speed of 2 means the animation frame changes 4 ticks, and
-	 * increasing this value by one doubles the wait. 0 is the minimum value
-	 * allowed for animation_speed, which corresponds to 30ms, and 16 is the
-	 * maximum, corresponding to around 33 minutes. */
-	if ((_tick_counter % (1 << animation_speed)) != 0) return;
-
-	bool frame_set_by_callback = false;
-	uint8 frame      = GetAnimationFrame(tile);
-	uint16 num_frames = ats->animation.frames;
-
-	if (HasBit(ats->callback_mask, CBM_AIRT_ANIM_NEXT_FRAME)) {
-		uint16 callback_res = GetAirportTileCallback(CBID_AIRPTILE_ANIM_NEXT_FRAME, HasBit(ats->animation_special_flags, 0) ? Random() : 0, 0, ats, st, tile);
-
-		if (callback_res != CALLBACK_FAILED) {
-			frame_set_by_callback = true;
-
-			switch (callback_res & 0xFF) {
-				case 0xFF:
-					DeleteAnimatedTile(tile);
-					break;
-				case 0xFE:
-					/* Carry on as normal. */
-					frame_set_by_callback = false;
-					break;
-				default:
-					frame = callback_res & 0xFF;
-					break;
-			}
-
-			/* If the lower 7 bits of the upper byte of the callback
-			 * result are not empty, it is a sound effect. */
-			if (GB(callback_res, 8, 7) != 0) PlayTileSound(ats->grf_prop.grffile, GB(callback_res, 8, 7), tile);
-		}
-	}
-
-	if (!frame_set_by_callback) {
-		if (frame < num_frames) {
-			frame++;
-		} else if (frame == num_frames && ats->animation.status == ANIM_STATUS_LOOPING) {
-			/* This animation loops, so start again from the beginning */
-			frame = 0;
-		} else {
-			/* This animation doesn't loop, so stay here */
-			DeleteAnimatedTile(tile);
-		}
-	}
-
-	SetAnimationFrame(tile, frame);
-	MarkTileDirtyByTile(tile);
-}
-
-static void ChangeAirportTileAnimationFrame(const AirportTileSpec *ats, TileIndex tile, AirpAnimationTrigger trigger, Station *st)
-{
-	uint16 callback_res = GetAirportTileCallback(CBID_AIRPTILE_ANIM_START_STOP, Random(), trigger, ats, st, tile);
-	if (callback_res == CALLBACK_FAILED) return;
-
-	switch (callback_res & 0xFF) {
-		case 0xFD: /* Do nothing. */         break;
-		case 0xFE: AddAnimatedTile(tile);    break;
-		case 0xFF: DeleteAnimatedTile(tile); break;
-		default:
-			SetAnimationFrame(tile, callback_res & 0xFF);
-			AddAnimatedTile(tile);
-			break;
-	}
-
-	/* If the lower 7 bits of the upper byte of the callback
-	 * result are not empty, it is a sound effect. */
-	if (GB(callback_res, 8, 7) != 0) PlayTileSound(ats->grf_prop.grffile, GB(callback_res, 8, 7), tile);
+	AirportTileAnimationBase::AnimateTile(ats, Station::GetByTile(tile), tile, HasBit(ats->animation_special_flags, 0));
 }
 
 void AirportTileAnimationTrigger(Station *st, TileIndex tile, AirpAnimationTrigger trigger, CargoID cargo_type)
 {
 	const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
-
 	if (!HasBit(ats->animation.triggers, trigger)) return;
 
-	ChangeAirportTileAnimationFrame(ats, tile, trigger, st);
-	return;
+	AirportTileAnimationBase::ChangeAnimationFrame(CBID_AIRPTILE_ANIM_START_STOP, ats, st, tile, Random(), (uint8)trigger | (cargo_type << 8));
 }
 
 void AirportAnimationTrigger(Station *st, AirpAnimationTrigger trigger, CargoID cargo_type)
