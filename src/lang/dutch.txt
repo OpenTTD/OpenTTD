@@ -2398,6 +2398,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-p
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parameters wijzigen
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sluiten
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Zet alle parameters naar de standaard waarde
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
