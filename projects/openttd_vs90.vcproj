@@ -1152,6 +1152,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_animation_base.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_animation_type.h"
 				>
 			</File>
