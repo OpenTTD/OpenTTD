@@ -12,6 +12,8 @@
 #ifndef SQUIRREL_STD_HPP
 #define SQUIRREL_STD_HPP
 
+#include "squirrel.hpp"
+
 #if defined(__APPLE__)
 /* Which idiotic system makes 'require' a macro? :s Oh well.... */
 #undef require

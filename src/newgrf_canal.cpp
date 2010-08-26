@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_canal.h"
 #include "water_map.h"

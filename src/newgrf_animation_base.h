@@ -11,6 +11,13 @@
 
 /* No inclusion guards as this file must only be included from .cpp files. */
 
+#include "animated_tile_func.h"
+#include "core/random_func.hpp"
+#include "date_func.h"
+#include "functions.h"
+#include "newgrf_animation_type.h"
+#include "newgrf_callbacks.h"
+
 /**
  * Helper class for a unified approach to NewGRF animation.
  * @tparam Tbase       Instantiation of this class.

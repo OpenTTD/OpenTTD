@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../map_func.h"
-#include "../core/alloc_type.hpp"
 #include "../core/bitmath_func.hpp"
 #include "../fios.h"
 

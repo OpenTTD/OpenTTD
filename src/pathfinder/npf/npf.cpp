@@ -11,7 +11,6 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
-#include "../../landscape.h"
 #include "../../network/network.h"
 #include "../../functions.h"
 #include "../../ship.h"

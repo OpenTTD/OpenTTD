@@ -11,17 +11,11 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "airport.h"
-#include "newgrf_airport.h"
 #include "date_func.h"
-#include "settings_type.h"
-#include "core/alloc_type.hpp"
 #include "newgrf.h"
-#include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_text.h"
 #include "station_base.h"
-#include "table/strings.h"
 #include "newgrf_class_func.h"
 
 /**

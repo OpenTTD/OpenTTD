@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../gamelog_internal.h"
-#include "../core/alloc_func.hpp"
 
 #include "saveload.h"
 

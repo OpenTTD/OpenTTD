@@ -25,7 +25,6 @@
 
 
 #include "stdafx.h"
-#include "landscape.h"
 
 #include "industry.h"
 #include "station_base.h"
@@ -46,7 +45,6 @@
 #include "core/backup_type.hpp"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 /** Delay counter for considering the next disaster. */
 uint16 _disaster_delay;

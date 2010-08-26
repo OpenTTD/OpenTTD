@@ -12,7 +12,7 @@
 #ifndef SQUIRREL_HELPER_HPP
 #define SQUIRREL_HELPER_HPP
 
-#include <squirrel.h>
+#include "squirrel.hpp"
 #include "../core/math_func.hpp"
 #include "../core/smallvec_type.hpp"
 #include "../economy_type.h"

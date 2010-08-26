@@ -14,7 +14,6 @@
 #include "ai_cargo.hpp"
 #include "ai_error.hpp"
 #include "../../town.h"
-#include "../../town_type.h"
 #include "../../strings_func.h"
 #include "../../company_func.h"
 #include "../../station_base.h"

@@ -14,7 +14,6 @@
 #include "../fileio_func.h"
 #include <sys/stat.h>
 
-#include <squirrel.h>
 #include "../script/squirrel.hpp"
 #include "script_scanner.hpp"
 

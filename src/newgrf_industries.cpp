@@ -14,7 +14,6 @@
 #include "industry.h"
 #include "newgrf.h"
 #include "newgrf_industries.h"
-#include "newgrf_commons.h"
 #include "newgrf_text.h"
 #include "newgrf_town.h"
 #include "newgrf_cargo.h"

@@ -13,7 +13,6 @@
 #include "debug.h"
 #include "3rdparty/md5/md5.h"
 #include "newgrf.h"
-#include "gamelog.h"
 #include "network/network_func.h"
 #include "gfx_func.h"
 #include "newgrf_text.h"

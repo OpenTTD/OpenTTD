@@ -57,18 +57,14 @@
 #include "stdafx.h"
 #include "station_map.h"
 #include "viewport_func.h"
-#include "landscape.h"
 #include "train.h"
 #include "rail_gui.h"
 #include "tunnelbridge_map.h"
 #include "tunnelbridge.h"
 #include "elrail_func.h"
-#include "engine_base.h"
 #include "company_base.h"
-#include "rail.h"
 #include "newgrf_railtype.h"
 
-#include "table/sprites.h"
 #include "table/elrail_data.h"
 
 static inline TLG GetTLG(TileIndex t)

@@ -32,7 +32,6 @@
 #include "viewport_func.h"
 #include "core/geometry_func.hpp"
 #include "ai/ai.hpp"
-#include <map>
 
 #include "table/sprites.h"
 #include "table/strings.h"

@@ -15,9 +15,6 @@
 #include "../network/network.h"
 #include "../core/random_func.hpp"
 
-#include <squirrel.h>
-#include "../script/squirrel.hpp"
-#include "../script/squirrel_helper.hpp"
 #include "../script/squirrel_class.hpp"
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"

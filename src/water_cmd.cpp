@@ -37,7 +37,6 @@
 #include "core/backup_type.hpp"
 #include "date_func.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 /**

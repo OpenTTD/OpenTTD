@@ -12,7 +12,6 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include "gfx_type.h"
 #include "transparency.h"
 
 #include "table/sprites.h"

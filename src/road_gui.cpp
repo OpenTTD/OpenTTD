@@ -17,7 +17,6 @@
 #include "viewport_func.h"
 #include "command_func.h"
 #include "road_cmd.h"
-#include "road_map.h"
 #include "station_func.h"
 #include "functions.h"
 #include "window_func.h"
@@ -30,7 +29,6 @@
 #include "company_base.h"
 #include "hotkeys.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 static void ShowRVStationPicker(Window *parent, RoadStopType rs);

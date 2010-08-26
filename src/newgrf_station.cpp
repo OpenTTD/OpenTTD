@@ -15,24 +15,18 @@
 #include "waypoint_base.h"
 #include "roadstop_base.h"
 #include "newgrf_cargo.h"
-#include "newgrf_commons.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_sound.h"
 #include "newgrf_railtype.h"
 #include "town.h"
 #include "newgrf_town.h"
-#include "date_func.h"
 #include "company_func.h"
-#include "animated_tile_func.h"
-#include "functions.h"
 #include "tunnelbridge_map.h"
 #include "newgrf.h"
-#include "core/random_func.hpp"
 #include "newgrf_animation_base.h"
 #include "newgrf_class_func.h"
 
-#include "table/strings.h"
 
 template <typename Tspec, typename Tid, Tid Tmax>
 /* static */ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()

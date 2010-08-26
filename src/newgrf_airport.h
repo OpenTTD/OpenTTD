@@ -12,6 +12,7 @@
 #ifndef NEWGRF_AIRPORT_H
 #define NEWGRF_AIRPORT_H
 
+#include "airport.h"
 #include "date_type.h"
 #include "map_type.h"
 #include "newgrf_class.h"

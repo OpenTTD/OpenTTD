@@ -10,7 +10,6 @@
 /** @file depot_gui.cpp The GUI for depots. */
 
 #include "stdafx.h"
-#include "engine_base.h"
 #include "train.h"
 #include "ship.h"
 #include "aircraft.h"
@@ -21,7 +20,6 @@
 #include "command_func.h"
 #include "depot_base.h"
 #include "vehicle_gui.h"
-#include "newgrf_engine.h"
 #include "spritecache.h"
 #include "strings_func.h"
 #include "window_func.h"
@@ -33,7 +31,6 @@
 #include "order_backup.h"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 /*
  * Since all depot window sizes aren't the same, we need to modify sizes a little.

@@ -15,14 +15,12 @@
 #include "ai_group.hpp"
 #include "../ai_instance.hpp"
 #include "../../company_func.h"
-#include "../../aircraft.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../command_func.h"
 #include "../../roadveh.h"
 #include "../../train.h"
 #include "../../vehicle_func.h"
-#include "../../engine_base.h"
 #include "table/strings.h"
 
 /* static */ bool AIVehicle::IsValidVehicle(VehicleID vehicle_id)

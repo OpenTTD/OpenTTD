@@ -12,6 +12,8 @@
 #ifndef TRANSPORT_TYPE_H
 #define TRANSPORT_TYPE_H
 
+#include "core/enum_type.hpp"
+
 typedef uint16 UnitID;
 
 /** Available types of transport */

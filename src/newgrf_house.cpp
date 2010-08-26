@@ -18,16 +18,11 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
 #include "newgrf_sound.h"
-#include "newgrf_commons.h"
-#include "functions.h"
 #include "company_func.h"
-#include "animated_tile_func.h"
 #include "company_base.h"
 #include "town.h"
-#include "core/random_func.hpp"
 #include "sprite.h"
 #include "genworld.h"
-#include "date_func.h"
 #include "newgrf_animation_base.h"
 
 static BuildingCounts<uint32> _building_counts;

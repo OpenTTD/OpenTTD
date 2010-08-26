@@ -18,7 +18,6 @@
 #include "../../rev.h"
 #include "../network_func.h"
 
-#include "tcp.h"
 #include "tcp_http.h"
 
 /** List of open HTTP connections. */

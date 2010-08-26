@@ -22,7 +22,6 @@
 #include "aircraft.h"
 #include "train.h"
 #include "newgrf_cargo.h"
-#include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
@@ -46,11 +45,9 @@
 #include "economy_base.h"
 #include "core/pool_func.hpp"
 #include "newgrf.h"
-#include "engine_base.h"
 #include "core/backup_type.hpp"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 #include "table/pricebase.h"
 
 

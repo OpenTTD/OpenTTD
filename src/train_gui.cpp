@@ -17,9 +17,7 @@
 #include "train.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
-#include "engine_base.h"
 #include "window_func.h"
-#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

@@ -14,6 +14,7 @@
 
 #include "core/alloc_type.hpp"
 #include "core/bitmath_func.hpp"
+#include "core/math_func.hpp"
 #include "strings_type.h"
 #include "gfx_type.h"
 #include "window_type.h"

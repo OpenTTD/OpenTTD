@@ -29,7 +29,6 @@
 #include "engine_gui.h"
 #include "cargotype.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 /**

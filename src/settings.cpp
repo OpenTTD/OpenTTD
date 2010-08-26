@@ -61,8 +61,6 @@
 #include "ai/ai.hpp"
 #include "newgrf.h"
 #include "ship.h"
-#include "company_base.h"
-#include "engine_base.h"
 #include "smallmap_gui.h"
 #include "roadveh.h"
 #include "fios.h"

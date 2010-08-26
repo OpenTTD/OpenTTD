@@ -11,12 +11,10 @@
 
 #include "stdafx.h"
 #include "sprite.h"
-#include "tile_cmd.h"
 #include "viewport_func.h"
 #include "landscape.h"
 #include "spritecache.h"
 
-#include "table/sprites.h"
 
 /**
  * Draws a tile sprite sequence.

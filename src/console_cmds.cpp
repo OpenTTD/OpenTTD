@@ -30,7 +30,6 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "company_func.h"
-#include "company_base.h"
 #include "gamelog.h"
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"

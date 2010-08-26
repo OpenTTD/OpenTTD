@@ -17,7 +17,6 @@
 #include "settings_type.h"
 #include "date_func.h"
 #include "vehicle_base.h"
-#include "debug.h"
 #include "rail_gui.h"
 #include "saveload/saveload.h"
 

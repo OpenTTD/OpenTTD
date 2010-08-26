@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "gui.h"
 #include "command_func.h"
-#include "economy_func.h"
 #include "bridge.h"
 #include "rail.h"
 #include "strings_func.h"

@@ -11,23 +11,18 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "airport.h"
 #include "newgrf.h"
 #include "newgrf_airporttiles.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_sound.h"
-#include "animated_tile_func.h"
 #include "station_base.h"
 #include "water.h"
 #include "viewport_func.h"
 #include "landscape.h"
 #include "company_base.h"
 #include "town.h"
-#include "functions.h"
-#include "core/random_func.hpp"
 #include "table/strings.h"
 #include "table/airporttiles.h"
-#include "date_func.h"
 #include "newgrf_animation_base.h"
 
 

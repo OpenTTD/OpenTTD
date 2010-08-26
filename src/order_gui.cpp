@@ -12,11 +12,10 @@
 #include "stdafx.h"
 #include "command_func.h"
 #include "viewport_func.h"
-#include "depot_base.h"
+#include "depot_map.h"
 #include "vehicle_gui.h"
 #include "roadveh.h"
 #include "timetable.h"
-#include "cargotype.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "vehicle_func.h"
@@ -31,7 +30,6 @@
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 /** Widget numbers of the order window. */

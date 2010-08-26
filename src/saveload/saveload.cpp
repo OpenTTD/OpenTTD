@@ -40,7 +40,6 @@
 #include "../gamelog.h"
 #include "../string_func.h"
 #include "../engine_base.h"
-#include "../company_base.h"
 #include "../fios.h"
 
 #include "table/strings.h"

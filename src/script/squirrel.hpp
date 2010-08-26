@@ -12,6 +12,8 @@
 #ifndef SQUIRREL_HPP
 #define SQUIRREL_HPP
 
+#include <squirrel.h>
+
 class Squirrel {
 private:
 	typedef void (SQPrintFunc)(bool error_msg, const SQChar *message);

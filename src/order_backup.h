@@ -13,11 +13,11 @@
 #define ORDER_BACKUP_H
 
 #include "core/pool_type.hpp"
-#include "order_type.h"
-#include "vehicle_type.h"
-#include "tile_type.h"
+#include "date_type.h"
 #include "group_type.h"
-#include "company_type.h"
+#include "order_type.h"
+#include "tile_type.h"
+#include "vehicle_type.h"
 
 /** Unique identifier for an order backup. */
 typedef uint8 OrderBackupID;

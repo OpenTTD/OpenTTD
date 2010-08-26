@@ -35,7 +35,6 @@
 #include "station_map.h"
 #include "tunnelbridge_map.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 static RailType _cur_railtype;               ///< Rail type of the current build-rail toolbar.

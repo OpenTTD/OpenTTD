@@ -9,8 +9,6 @@
 
 /** @file newgrf_class_func.h Implementation of the NewGRF class' functions. */
 
-#include "stdafx.h"
-#include "core/alloc_func.hpp"
 #include "newgrf_class.h"
 
 #include "table/strings.h"

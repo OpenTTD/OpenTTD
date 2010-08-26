@@ -11,8 +11,7 @@
 
 #include "stdafx.h"
 
-#include "tile_map.h"
-#include "core/math_func.hpp"
+#include "map_func.h"
 #include "tilearea_type.h"
 
 /**

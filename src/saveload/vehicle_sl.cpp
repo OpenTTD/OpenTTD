@@ -17,7 +17,6 @@
 #include "../aircraft.h"
 #include "../station_base.h"
 #include "../effectvehicle_base.h"
-#include "../engine_base.h"
 
 #include "saveload.h"
 

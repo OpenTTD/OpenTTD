@@ -12,9 +12,7 @@
 #include "stdafx.h"
 #include "train.h"
 #include "roadveh.h"
-#include "newgrf_engine.h"
 #include "vehicle_func.h"
-#include "engine_base.h"
 #include "engine_func.h"
 
 #include "table/strings.h"

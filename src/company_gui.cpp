@@ -19,7 +19,6 @@
 #include "network/network.h"
 #include "network/network_gui.h"
 #include "network/network_func.h"
-#include "economy_func.h"
 #include "vehicle_func.h"
 #include "newgrf.h"
 #include "company_manager_face.h"
@@ -30,7 +29,8 @@
 #include "sprite.h"
 #include "company_base.h"
 #include "core/geometry_func.hpp"
-#include "object.h"
+#include "economy_func.h"
+#include "object_type.h"
 
 #include "table/strings.h"
 

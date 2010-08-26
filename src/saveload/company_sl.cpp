@@ -10,7 +10,6 @@
 /** @file company_sl.cpp Code handling saving and loading of company data */
 
 #include "../stdafx.h"
-#include "../company_base.h"
 #include "../company_func.h"
 #include "../company_manager_face.h"
 #include "../fios.h"

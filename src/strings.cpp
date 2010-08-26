@@ -34,7 +34,6 @@
 #include "townname_func.h"
 #include "string_func.h"
 #include "company_base.h"
-#include "industrytype.h"
 #include "smallmap_gui.h"
 
 #include "table/strings.h"

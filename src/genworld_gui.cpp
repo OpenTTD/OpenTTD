@@ -15,7 +15,6 @@
 #include "debug.h"
 #include "genworld.h"
 #include "network/network.h"
-#include "newgrf_config.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "date_func.h"

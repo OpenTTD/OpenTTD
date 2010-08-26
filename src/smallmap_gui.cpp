@@ -28,7 +28,6 @@
 #include "company_base.h"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 /** Widget numbers of the small map window. */
 enum SmallMapWindowWidgets {

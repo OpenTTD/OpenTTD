@@ -23,7 +23,6 @@
 #include "functions.h"
 #include "town.h"
 #include "date_func.h"
-#include "debug.h"
 #include "company_func.h"
 #include "company_base.h"
 #include "signal_func.h"

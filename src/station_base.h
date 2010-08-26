@@ -13,7 +13,6 @@
 #define STATION_BASE_H
 
 #include "base_station_base.h"
-#include "airport.h"
 #include "newgrf_airport.h"
 #include "cargopacket.h"
 #include "industry_type.h"

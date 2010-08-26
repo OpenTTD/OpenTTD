@@ -15,7 +15,6 @@
 #include "3rdparty/md5/md5.h"
 #include "fontcache.h"
 #include "gfx_func.h"
-#include "settings_type.h"
 
 /* The type of set we're replacing */
 #define SET_TYPE "graphics"

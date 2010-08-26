@@ -12,13 +12,7 @@
 #ifndef FIOS_H
 #define FIOS_H
 
-#include "strings_type.h"
-#include "core/smallvec_type.hpp"
-#include "core/smallmap_type.hpp"
-#include "core/enum_type.hpp"
 #include "gfx_type.h"
-#include "date_type.h"
-#include "settings_type.h"
 #include "company_base.h"
 #include "newgrf_config.h"
 

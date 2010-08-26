@@ -14,7 +14,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "core/sort_func.hpp"
 #include "fios.h"
 #include "fileio_func.h"
 #include "tar_type.h"

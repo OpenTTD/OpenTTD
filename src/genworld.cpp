@@ -14,7 +14,6 @@
 #include "landscape.h"
 #include "company_func.h"
 #include "thread/thread.h"
-#include "command_func.h"
 #include "genworld.h"
 #include "gfxinit.h"
 #include "window_func.h"

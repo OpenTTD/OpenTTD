@@ -14,7 +14,6 @@
 #include "../core/bitmath_func.hpp"
 #include "../company_base.h"
 #include "../company_func.h"
-#include "../debug.h"
 #include "../network/network.h"
 #include "../window_func.h"
 #include "../command_func.h"

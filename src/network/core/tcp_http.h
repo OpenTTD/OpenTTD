@@ -14,7 +14,7 @@
 #ifndef NETWORK_CORE_TCP_HTTP_H
 #define NETWORK_CORE_TCP_HTTP_H
 
-#include "address.h"
+#include "tcp.h"
 
 #ifdef ENABLE_NETWORK
 

@@ -14,7 +14,6 @@
 #include "command_func.h"
 #include "group.h"
 #include "train.h"
-#include "engine_base.h"
 #include "vehicle_gui.h"
 #include "window_func.h"
 #include "vehicle_func.h"

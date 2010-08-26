@@ -12,7 +12,6 @@
 #ifndef OBJECT_MAP_H
 #define OBJECT_MAP_H
 
-#include "tile_map.h"
 #include "water_map.h"
 #include "object_type.h"
 

@@ -10,7 +10,6 @@
 /** @file misc_gui.cpp GUIs for a number of misc windows. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
 #include "landscape.h"
 #include "newgrf_text.h"

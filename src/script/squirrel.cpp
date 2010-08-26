@@ -9,11 +9,9 @@
 
 /** @file squirrel.cpp the implementation of the Squirrel class. It handles all Squirrel-stuff and gives a nice API back to work with. */
 
-#include <squirrel.h>
 #include <stdarg.h>
 #include "../stdafx.h"
 #include "../debug.h"
-#include "squirrel.hpp"
 #include "squirrel_std.hpp"
 #include "../fileio_func.h"
 #include <sqstdaux.h>

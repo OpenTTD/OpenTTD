@@ -15,9 +15,7 @@
 #include "network/network.h"
 #include "network/network_func.h"
 #include "order_backup.h"
-#include "order_base.h"
 #include "vehicle_base.h"
-#include "settings_type.h"
 
 OrderBackupPool _order_backup_pool("BackupOrder");
 INSTANTIATE_POOL_METHODS(OrderBackup)

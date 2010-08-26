@@ -11,11 +11,9 @@
 
 #include "stdafx.h"
 #include "gui.h"
-#include "debug.h"
 #include "roadveh.h"
 #include "ship.h"
 #include "spritecache.h"
-#include "landscape.h"
 #include "timetable.h"
 #include "viewport_func.h"
 #include "news_func.h"
@@ -25,7 +23,6 @@
 #include "train.h"
 #include "aircraft.h"
 #include "newgrf_debug.h"
-#include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "newgrf_station.h"
 #include "group.h"
@@ -40,7 +37,6 @@
 #include "autoreplace_gui.h"
 #include "station_base.h"
 #include "ai/ai.hpp"
-#include "core/smallmap_type.hpp"
 #include "depot_func.h"
 #include "network/network.h"
 #include "core/pool_func.hpp"
@@ -48,12 +44,9 @@
 #include "articulated_vehicles.h"
 #include "roadstop_base.h"
 #include "core/random_func.hpp"
-#include "engine_base.h"
-#include "newgrf.h"
 #include "core/backup_type.hpp"
 #include "order_backup.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))

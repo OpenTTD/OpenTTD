@@ -26,7 +26,6 @@
 #include "../widgets/dropdown_func.h"
 #include "../querystring_gui.h"
 #include "../sortlist_type.h"
-#include "../company_base.h"
 #include "../company_func.h"
 #include "../core/geometry_func.hpp"
 

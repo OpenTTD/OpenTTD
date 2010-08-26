@@ -12,6 +12,8 @@
 #ifndef SQUIRREL_CLASS_HPP
 #define SQUIRREL_CLASS_HPP
 
+#include "squirrel_helper.hpp"
+
 /**
  * The template to define classes in Squirrel. It takes care of the creation
  *  and calling of such classes, to make the AI Layer cleaner while having a

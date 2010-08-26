@@ -18,7 +18,6 @@
 #include "../window_func.h"
 #include "../viewport_func.h"
 #include "../gfx_func.h"
-#include "../company_base.h"
 #include "../core/random_func.hpp"
 #include "../fios.h"
 

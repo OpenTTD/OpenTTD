@@ -30,7 +30,6 @@
 #include "core/geometry_func.hpp"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 /**
  * Draw a (multi)line of cargos seperated by commas, and prefixed with a string.

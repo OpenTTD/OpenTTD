@@ -10,20 +10,11 @@
 /** @file newgrf_railtype.cpp NewGRF handling of rail types. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
-#include "strings_type.h"
-#include "rail.h"
-#include "road_map.h"
 #include "newgrf.h"
-#include "newgrf_callbacks.h"
-#include "newgrf_commons.h"
-#include "newgrf_railtype.h"
 #include "newgrf_spritegroup.h"
-#include "core/bitmath_func.hpp"
 #include "date_func.h"
 #include "depot_base.h"
-#include "rail_map.h"
 
 static uint32 RailTypeGetRandomBits(const ResolverObject *object)
 {

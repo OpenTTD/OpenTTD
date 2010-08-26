@@ -13,14 +13,12 @@
 #include "ai_map.hpp"
 #include "ai_station.hpp"
 #include "ai_industrytype.hpp"
-#include "../../command_type.h"
 #include "../../debug.h"
 #include "../../station_base.h"
 #include "../../company_func.h"
 #include "../../newgrf.h"
 #include "../../newgrf_generic.h"
 #include "../../newgrf_station.h"
-#include "../../economy_func.h"
 
 /* static */ bool AIRail::IsRailTile(TileIndex tile)
 {

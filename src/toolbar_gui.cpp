@@ -39,7 +39,6 @@
 #include "tilehighlight_func.h"
 #include "rail.h"
 #include "widgets/dropdown_type.h"
-#include "company_base.h"
 #include "smallmap_gui.h"
 #include "graph_gui.h"
 #include "textbuf_gui.h"

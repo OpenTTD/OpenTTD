@@ -14,9 +14,7 @@
 #include "hotkeys.h"
 #include "ini_type.h"
 #include "string_func.h"
-#include "gfx_type.h"
 #include "window_gui.h"
-#include <string.h>
 
 char *_hotkeys_file;
 

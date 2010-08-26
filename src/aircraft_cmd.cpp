@@ -14,7 +14,6 @@
 
 #include "stdafx.h"
 #include "aircraft.h"
-#include "debug.h"
 #include "landscape.h"
 #include "news_func.h"
 #include "vehicle_gui.h"
@@ -30,18 +29,15 @@
 #include "functions.h"
 #include "cheat_type.h"
 #include "company_base.h"
-#include "autoreplace_gui.h"
 #include "ai/ai.hpp"
 #include "company_func.h"
 #include "effectvehicle_func.h"
 #include "station_base.h"
 #include "engine_base.h"
-#include "engine_func.h"
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 void Aircraft::UpdateDeltaXY(Direction direction)
 {

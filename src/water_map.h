@@ -12,7 +12,6 @@
 #ifndef WATER_MAP_H
 #define WATER_MAP_H
 
-#include "core/math_func.hpp"
 #include "depot_type.h"
 #include "tile_map.h"
 

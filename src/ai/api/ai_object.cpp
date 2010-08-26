@@ -10,7 +10,6 @@
 /** @file ai_object.cpp Implementation of AIObject. */
 
 #include "../../stdafx.h"
-#include <squirrel.h>
 #include "../../script/squirrel.hpp"
 #include "../../company_base.h"
 

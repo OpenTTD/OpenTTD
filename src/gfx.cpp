@@ -18,7 +18,6 @@
 #include "video/video_driver.hpp"
 #include "strings_func.h"
 #include "settings_type.h"
-#include "landscape_type.h"
 #include "network/network.h"
 #include "network/network_func.h"
 #include "thread/thread.h"

@@ -11,17 +11,12 @@
 
 #include "stdafx.h"
 #include "cmd_helper.h"
-#include "landscape.h"
 #include "viewport_func.h"
 #include "command_func.h"
-#include "engine_base.h"
 #include "depot_base.h"
 #include "pathfinder/yapf/yapf_cache.h"
-#include "newgrf_engine.h"
-#include "landscape_type.h"
 #include "newgrf_debug.h"
 #include "newgrf_railtype.h"
-#include "newgrf_commons.h"
 #include "train.h"
 #include "autoslope.h"
 #include "water.h"
@@ -39,7 +34,6 @@
 #include "date_func.h"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 #include "table/railtypes.h"
 #include "table/track_land.h"
 

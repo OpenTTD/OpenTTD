@@ -15,7 +15,6 @@
 #include "roadstop_base.h"
 #include "station_base.h"
 #include "vehicle_func.h"
-#include "landscape.h"
 
 RoadStopPool _roadstop_pool("RoadStop");
 INSTANTIATE_POOL_METHODS(RoadStop)

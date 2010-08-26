@@ -13,7 +13,6 @@
 #define  YAPF_H
 
 #include "../../direction_type.h"
-#include "../../station_type.h"
 #include "../../track_type.h"
 #include "../../vehicle_type.h"
 #include "../pathfinder_type.h"

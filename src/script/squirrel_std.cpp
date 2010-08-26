@@ -13,7 +13,6 @@
 #include <sqstdmath.h>
 #include "../stdafx.h"
 #include "../debug.h"
-#include "squirrel.hpp"
 #include "squirrel_std.hpp"
 #include "../core/alloc_func.hpp"
 #include "../core/math_func.hpp"

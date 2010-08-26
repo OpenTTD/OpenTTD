@@ -12,11 +12,11 @@
 #ifndef ROADVEH_H
 #define ROADVEH_H
 
-#include "road_type.h"
 #include "ground_vehicle.hpp"
 #include "engine_base.h"
 #include "cargotype.h"
-#include "road_map.h"
+#include "track_func.h"
+#include "road_type.h"
 
 struct RoadVehicle;
 

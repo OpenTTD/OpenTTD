@@ -18,10 +18,8 @@
 #include "bridge_map.h"
 #include "genworld.h"
 #include "autoslope.h"
-#include "transparency.h"
 #include "functions.h"
 #include "window_func.h"
-#include "vehicle_func.h"
 #include "company_gui.h"
 #include "cheat_type.h"
 #include "landscape_type.h"
@@ -35,7 +33,6 @@
 #include "date_func.h"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 #include "table/object_land.h"
 
 ObjectPool _object_pool("Object");

@@ -18,7 +18,6 @@
 #include "window_gui.h"
 #include "spritecache.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 /**

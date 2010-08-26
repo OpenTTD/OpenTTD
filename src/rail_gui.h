@@ -14,7 +14,7 @@
 
 #include "rail_type.h"
 
-Window *ShowBuildRailToolbar(RailType railtype);
+struct Window *ShowBuildRailToolbar(RailType railtype);
 void ReinitGuiAfterToggleElrail(bool disable);
 bool ResetSignalVariant(int32 = 0);
 void InitializeRailGUI();

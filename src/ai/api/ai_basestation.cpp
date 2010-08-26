@@ -11,7 +11,6 @@
 
 #include "ai_basestation.hpp"
 #include "../../station_base.h"
-#include "../../command_func.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../company_func.h"

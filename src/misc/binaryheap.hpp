@@ -12,6 +12,8 @@
 #ifndef  BINARYHEAP_HPP
 #define  BINARYHEAP_HPP
 
+#include "../core/alloc_func.hpp"
+
 /* Enable it if you suspect binary heap doesn't work well */
 #define BINARYHEAP_CHECK 0
 

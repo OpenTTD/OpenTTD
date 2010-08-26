@@ -13,7 +13,6 @@
 #include "ai_station.hpp"
 #include "../../station_base.h"
 #include "../../tile_cmd.h"
-#include "../../economy_func.h"
 
 
 /* static */ bool AIMarine::IsWaterDepotTile(TileIndex tile)

@@ -11,7 +11,6 @@
 
 #include "ai_industrytype.hpp"
 #include "ai_map.hpp"
-#include "../../command_type.h"
 #include "../../strings_func.h"
 #include "../../industry.h"
 #include "../../newgrf_industries.h"

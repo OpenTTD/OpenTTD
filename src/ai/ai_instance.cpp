@@ -14,9 +14,6 @@
 #include "../saveload/saveload.h"
 #include "../gui.h"
 
-#include <squirrel.h>
-#include "../script/squirrel.hpp"
-#include "../script/squirrel_helper.hpp"
 #include "../script/squirrel_class.hpp"
 
 #include "ai_config.hpp"

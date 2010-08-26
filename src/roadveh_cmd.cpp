@@ -10,7 +10,6 @@
 /** @file roadveh_cmd.cpp Handling of road vehicles. */
 
 #include "stdafx.h"
-#include "landscape.h"
 #include "roadveh.h"
 #include "command_func.h"
 #include "news_func.h"
@@ -29,22 +28,17 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
-#include "autoreplace_gui.h"
 #include "ai/ai.hpp"
 #include "depot_map.h"
 #include "effectvehicle_func.h"
 #include "effectvehicle_base.h"
 #include "roadstop_base.h"
-#include "cargotype.h"
 #include "spritecache.h"
 #include "core/random_func.hpp"
-#include "engine_base.h"
 #include "company_base.h"
-#include "engine_func.h"
 #include "core/backup_type.hpp"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 static const uint16 _roadveh_images[63] = {
 	0xCD4, 0xCDC, 0xCE4, 0xCEC, 0xCF4, 0xCFC, 0xD0C, 0xD14,

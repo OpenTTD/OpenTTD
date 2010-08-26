@@ -17,7 +17,6 @@
 #include "house.h"
 #include "industrytype.h"
 #include "newgrf.h"
-#include "newgrf_commons.h"
 #include "clear_map.h"
 #include "station_map.h"
 #include "tree_map.h"

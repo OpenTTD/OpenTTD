@@ -15,7 +15,7 @@
 #ifndef NEWGRF_COMMONS_H
 #define NEWGRF_COMMONS_H
 
-#include "tile_cmd.h"
+#include "tile_type.h"
 
 /** Contextx for tile accesses */
 enum TileContext {

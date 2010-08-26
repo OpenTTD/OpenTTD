@@ -15,7 +15,6 @@
 #include "town_type.h"
 #include "gfx_type.h"
 #include "engine_type.h"
-#include "tile_type.h"
 #include "core/pool_type.hpp"
 #include "house_type.h"
 

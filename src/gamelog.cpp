@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "saveload/saveload.h"
-#include "core/alloc_func.hpp"
 #include "string_func.h"
 #include "settings_type.h"
 #include "gamelog_internal.h"

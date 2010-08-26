@@ -13,12 +13,10 @@
 #include "window_gui.h"
 #include "station_gui.h"
 #include "terraform_gui.h"
-#include "airport.h"
 #include "sound_func.h"
 #include "window_func.h"
 #include "strings_func.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "company_func.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"
@@ -30,7 +28,6 @@
 #include "hotkeys.h"
 #include "sprite.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 static AirportClassID _selected_airport_class; ///< the currently visible airport class

@@ -23,7 +23,6 @@
 
 #include "base_media_base.h"
 #include "saveload/saveload.h"
-#include "landscape.h"
 #include "company_func.h"
 #include "command_func.h"
 #include "news_func.h"
@@ -55,15 +54,12 @@
 #include "thread/thread.h"
 #include "station_base.h"
 #include "crashlog.h"
-#include "company_base.h"
-#include "engine_base.h"
 #include "engine_func.h"
 #include "core/random_func.hpp"
 #include "rail_gui.h"
 #include "core/backup_type.hpp"
 #include "hotkeys.h"
 
-#include "newgrf_commons.h"
 
 #include "town.h"
 #include "industry.h"

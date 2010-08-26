@@ -12,6 +12,8 @@
 #ifndef  HASHTABLE_HPP
 #define  HASHTABLE_HPP
 
+#include "../core/math_func.hpp"
+
 template <class Titem_>
 struct CHashTableSlotT
 {

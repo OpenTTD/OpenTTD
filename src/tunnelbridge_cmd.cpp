@@ -14,8 +14,6 @@
  */
 
 #include "stdafx.h"
-#include "rail_map.h"
-#include "landscape.h"
 #include "object.h"
 #include "viewport_func.h"
 #include "cmd_helper.h"
@@ -37,10 +35,8 @@
 #include "tunnelbridge.h"
 #include "cheat_type.h"
 #include "elrail_func.h"
-#include "landscape_type.h"
 #include "pbs.h"
 #include "company_base.h"
-#include "engine_base.h"
 #include "newgrf_railtype.h"
 
 #include "table/sprites.h"

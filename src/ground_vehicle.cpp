@@ -12,8 +12,6 @@
 #include "stdafx.h"
 #include "train.h"
 #include "roadveh.h"
-#include "ground_vehicle.hpp"
-#include "window_type.h"
 #include "vehicle_gui.h"
 #include "window_func.h"
 

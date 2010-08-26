@@ -20,7 +20,6 @@
 #include "network/network_content.h"
 #include "landscape_type.h"
 #include "strings_func.h"
-#include "window_func.h"
 #include "fios.h"
 #include "functions.h"
 #include "ai/ai_gui.hpp"

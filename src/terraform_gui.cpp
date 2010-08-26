@@ -22,7 +22,7 @@
 #include "functions.h"
 #include "sound_func.h"
 #include "base_station_base.h"
-#include "object_map.h"
+#include "object_type.h"
 #include "textbuf_gui.h"
 #include "genworld.h"
 #include "tree_map.h"
@@ -31,7 +31,6 @@
 #include "strings_func.h"
 #include "hotkeys.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 void CcTerraform(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)

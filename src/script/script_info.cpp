@@ -11,8 +11,6 @@
 
 #include "../stdafx.h"
 
-#include <squirrel.h>
-#include "squirrel.hpp"
 #include "squirrel_helper.hpp"
 
 #include "script_info.hpp"
