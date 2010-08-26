@@ -1240,7 +1240,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		if (statspec != NULL) {
 			/* Include this station spec's animation trigger bitmask
 			 * in the station's cached copy. */
-			st->cached_anim_triggers |= statspec->anim_triggers;
+			st->cached_anim_triggers |= statspec->animation.triggers;
 		}
 
 		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
@@ -1288,7 +1288,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 					if (callback != CALLBACK_FAILED && callback < 8) SetStationGfx(tile, (callback & ~1) + axis);
 
 					/* Trigger station animation -- after building? */
-					StationAnimationTrigger(st, tile, STAT_ANIM_BUILT);
+					TriggerStationAnimation(st, tile, SAT_BUILT);
 				}
 
 				tile += tile_delta;
@@ -2227,7 +2227,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			SetStationTileRandomBits(cur_tile, GB(Random(), 0, 4));
 			st->airport.Add(cur_tile);
 
-			if (AirportTileSpec::Get(GetTranslatedAirportTileID(it->gfx))->animation_info != 0xFFFF) AddAnimatedTile(cur_tile);
+			if (AirportTileSpec::Get(GetTranslatedAirportTileID(it->gfx))->animation.status != ANIM_STATUS_NO_ANIMATION) AddAnimatedTile(cur_tile);
 		} while ((++it)->ti.x != -0x80);
 
 		/* Only call the animation trigger after all tiles have been built */
@@ -3153,7 +3153,7 @@ void OnTick_Station()
 		if ((_tick_counter + st->index) % 250 == 0) {
 			/* Stop processing this station if it was deleted */
 			if (!StationHandleBigTick(st)) continue;
-			StationAnimationTrigger(st, st->xy, STAT_ANIM_250_TICKS);
+			TriggerStationAnimation(st, st->xy, SAT_250_TICKS);
 			if (Station::IsExpected(st)) AirportAnimationTrigger(Station::From(st), AAT_STATION_250_ticks);
 		}
 	}
@@ -3188,7 +3188,7 @@ static void UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 	st->goods[type].cargo.Append(new CargoPacket(st->index, st->xy, amount, source_type, source_id));
 	SetBit(st->goods[type].acceptance_pickup, GoodsEntry::PICKUP);
 
-	StationAnimationTrigger(st, st->xy, STAT_ANIM_NEW_CARGO, type);
+	TriggerStationAnimation(st, st->xy, SAT_NEW_CARGO, type);
 	AirportAnimationTrigger(st, AAT_STATION_NEW_CARGO, type);
 
 	SetWindowDirty(WC_STATION_VIEW, st->index);

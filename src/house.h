@@ -17,6 +17,7 @@
 #include "economy_type.h"
 #include "date_type.h"
 #include "house_type.h"
+#include "newgrf_animation_type.h"
 #include "newgrf_commons.h"
 
 /**
@@ -115,8 +116,7 @@ struct HouseSpec {
 	byte probability;                  ///< Relative probability of appearing (16 is the standard value)
 	HouseExtraFlags extra_flags;       ///< some more flags
 	HouseClassID class_id;             ///< defines the class this house has (not grf file based)
-	byte animation_frames;             ///< number of animation frames
-	byte animation_speed;              ///< amount of time between each of those frames
+	AnimationInfo animation;           ///< information about the animation.
 	byte processing_time;              ///< Periodic refresh multiplier
 	byte minimum_life;                 ///< The minimum number of years this house will survive before the town rebuilds it
 

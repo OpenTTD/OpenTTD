@@ -1324,16 +1324,16 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				break;
 
 			case 0x16: // Animation info
-				statspec->anim_frames = buf->ReadByte();
-				statspec->anim_status = buf->ReadByte();
+				statspec->animation.frames = buf->ReadByte();
+				statspec->animation.status = buf->ReadByte();
 				break;
 
 			case 0x17: // Animation speed
-				statspec->anim_speed = buf->ReadByte();
+				statspec->animation.speed = buf->ReadByte();
 				break;
 
 			case 0x18: // Animation triggers
-				statspec->anim_triggers = buf->ReadWord();
+				statspec->animation.triggers = buf->ReadWord();
 				break;
 
 			default:
@@ -1700,11 +1700,13 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				break;
 
 			case 0x1A: // Animation frames
-				housespec->animation_frames = buf->ReadByte();
+				housespec->animation.frames = buf->ReadByte();
+				housespec->animation.status = GB(housespec->animation.frames, 7, 1);
+				SB(housespec->animation.frames, 7, 1, 0);
 				break;
 
 			case 0x1B: // Animation speed
-				housespec->animation_speed = Clamp(buf->ReadByte(), 2, 16);
+				housespec->animation.speed = Clamp(buf->ReadByte(), 2, 16);
 				break;
 
 			case 0x1C: // Class of the building type
@@ -2271,15 +2273,16 @@ static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int pr
 				break;
 
 			case 0x0F: // Animation information
-				tsp->animation_info = buf->ReadWord();
+				tsp->animation.frames = buf->ReadByte();
+				tsp->animation.status = buf->ReadByte();
 				break;
 
 			case 0x10: // Animation speed
-				tsp->animation_speed = buf->ReadByte();
+				tsp->animation.speed = buf->ReadByte();
 				break;
 
 			case 0x11: // Triggers for callback 25
-				tsp->animation_triggers = buf->ReadByte();
+				tsp->animation.triggers = buf->ReadByte();
 				break;
 
 			case 0x12: // Special flags
@@ -3091,7 +3094,7 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 					memcpy(tsp, AirportTileSpec::Get(subs_id), sizeof(AirportTileSpec));
 					tsp->enabled = true;
 
-					tsp->animation_info = 0xFFFF;
+					tsp->animation.status = ANIM_STATUS_NO_ANIMATION;
 
 					tsp->grf_prop.local_id = airtid + i;
 					tsp->grf_prop.subst_id = subs_id;
@@ -3119,15 +3122,16 @@ static ChangeInfoResult AirportTilesChangeInfo(uint airtid, int numinfo, int pro
 				break;
 
 			case 0x0F: // Animation information
-				tsp->animation_info = buf->ReadWord();
+				tsp->animation.frames = buf->ReadByte();
+				tsp->animation.status = buf->ReadByte();
 				break;
 
 			case 0x10: // Animation speed
-				tsp->animation_speed = buf->ReadByte();
+				tsp->animation.speed = buf->ReadByte();
 				break;
 
 			case 0x11: // Animation triggers
-				tsp->animation_triggers = buf->ReadByte();
+				tsp->animation.triggers = buf->ReadByte();
 				break;
 
 			default:

@@ -470,6 +470,7 @@
     <ClInclude Include="..\src\newgrf.h" />
     <ClInclude Include="..\src\newgrf_airport.h" />
     <ClInclude Include="..\src\newgrf_airporttiles.h" />
+    <ClInclude Include="..\src\newgrf_animation_type.h" />
     <ClInclude Include="..\src\newgrf_callbacks.h" />
     <ClInclude Include="..\src\newgrf_canal.h" />
     <ClInclude Include="..\src\newgrf_cargo.h" />

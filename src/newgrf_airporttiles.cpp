@@ -308,7 +308,7 @@ void AnimateAirportTile(TileIndex tile)
 	Station *st = Station::GetByTile(tile);
 	StationGfx gfx = GetAirportGfx(tile);
 	const AirportTileSpec *ats = AirportTileSpec::Get(gfx);
-	uint8 animation_speed = ats->animation_speed;
+	uint8 animation_speed = ats->animation.speed;
 
 	if (HasBit(ats->callback_mask, CBM_AIRT_ANIM_SPEED)) {
 		uint16 callback_res = GetAirportTileCallback(CBID_AIRPTILE_ANIMATION_SPEED, 0, 0, gfx, st, tile);
@@ -323,7 +323,7 @@ void AnimateAirportTile(TileIndex tile)
 
 	bool frame_set_by_callback = false;
 	uint8 frame      = GetAnimationFrame(tile);
-	uint16 num_frames = GB(ats->animation_info, 0, 8);
+	uint16 num_frames = ats->animation.frames;
 
 	if (HasBit(ats->callback_mask, CBM_AIRT_ANIM_NEXT_FRAME)) {
 		uint16 callback_res = GetAirportTileCallback(CBID_AIRPTILE_ANIM_NEXT_FRAME, HasBit(ats->animation_special_flags, 0) ? Random() : 0, 0, gfx, st, tile);
@@ -353,7 +353,7 @@ void AnimateAirportTile(TileIndex tile)
 	if (!frame_set_by_callback) {
 		if (frame < num_frames) {
 			frame++;
-		} else if (frame == num_frames && GB(ats->animation_info, 8, 8) == 1) {
+		} else if (frame == num_frames && ats->animation.status == ANIM_STATUS_LOOPING) {
 			/* This animation loops, so start again from the beginning */
 			frame = 0;
 		} else {
@@ -391,7 +391,7 @@ void AirportTileAnimationTrigger(Station *st, TileIndex tile, AirpAnimationTrigg
 	StationGfx gfx = GetAirportGfx(tile);
 	const AirportTileSpec *ats = AirportTileSpec::Get(gfx);
 
-	if (!HasBit(ats->animation_triggers, trigger)) return;
+	if (!HasBit(ats->animation.triggers, trigger)) return;
 
 	ChangeAirportTileAnimationFrame(ats, tile, trigger, gfx, st);
 	return;

@@ -818,7 +818,7 @@ void AnimateStationTile(TileIndex tile)
 
 	const BaseStation *st = BaseStation::GetByTile(tile);
 
-	uint8 animation_speed = ss->anim_speed;
+	uint8 animation_speed = ss->animation.speed;
 
 	if (HasBit(ss->callback_mask, CBM_STATION_ANIMATION_SPEED)) {
 		uint16 callback = GetStationCallback(CBID_STATION_ANIMATION_SPEED, 0, 0, ss, st, tile);
@@ -828,7 +828,7 @@ void AnimateStationTile(TileIndex tile)
 	if (_tick_counter % (1 << animation_speed) != 0) return;
 
 	uint8 frame      = GetAnimationFrame(tile);
-	uint8 num_frames = ss->anim_frames;
+	uint8 num_frames = ss->animation.frames;
 
 	bool frame_set_by_callback = false;
 
@@ -862,7 +862,7 @@ void AnimateStationTile(TileIndex tile)
 	if (!frame_set_by_callback) {
 		if (frame < num_frames) {
 			frame++;
-		} else if (frame == num_frames && HasBit(ss->anim_status, 0)) {
+		} else if (frame == num_frames && ss->animation.status == ANIM_STATUS_LOOPING) {
 			/* This animation loops, so start again from the beginning */
 			frame = 0;
 		} else {
@@ -876,7 +876,7 @@ void AnimateStationTile(TileIndex tile)
 }
 
 
-static void ChangeStationAnimationFrame(const StationSpec *ss, const BaseStation *st, TileIndex tile, uint16 random_bits, StatAnimTrigger trigger, CargoID cargo_type)
+static void ChangeStationAnimationFrame(const StationSpec *ss, const BaseStation *st, TileIndex tile, uint16 random_bits, StationAnimationTrigger trigger, CargoID cargo_type)
 {
 	uint16 callback = GetStationCallback(CBID_STATION_ANIM_START_STOP, (random_bits << 16) | Random(), (uint8)trigger | (cargo_type << 8), ss, st, tile);
 	if (callback == CALLBACK_FAILED) return;
@@ -896,7 +896,7 @@ static void ChangeStationAnimationFrame(const StationSpec *ss, const BaseStation
 	if (GB(callback, 8, 7) != 0) PlayTileSound(ss->grf_prop.grffile, GB(callback, 8, 7), tile);
 }
 
-void StationAnimationTrigger(const BaseStation *st, TileIndex tile, StatAnimTrigger trigger, CargoID cargo_type)
+void TriggerStationAnimation(const BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoID cargo_type)
 {
 	/* List of coverage areas for each animation trigger */
 	static const TriggerArea tas[] = {
@@ -917,7 +917,7 @@ void StationAnimationTrigger(const BaseStation *st, TileIndex tile, StatAnimTrig
 	TILE_AREA_LOOP(tile, area) {
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
-			if (ss != NULL && HasBit(ss->anim_triggers, trigger)) {
+			if (ss != NULL && HasBit(ss->animation.triggers, trigger)) {
 				CargoID cargo;
 				if (cargo_type == CT_INVALID) {
 					cargo = CT_INVALID;
@@ -942,7 +942,7 @@ void StationUpdateAnimTriggers(BaseStation *st)
 	 * of this station. */
 	for (uint i = 0; i < st->num_specs; i++) {
 		const StationSpec *ss = st->speclist[i].spec;
-		if (ss != NULL) st->cached_anim_triggers |= ss->anim_triggers;
+		if (ss != NULL) st->cached_anim_triggers |= ss->animation.triggers;
 	}
 }
 

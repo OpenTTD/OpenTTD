@@ -12,6 +12,7 @@
 #ifndef NEWGRF_STATION_H
 #define NEWGRF_STATION_H
 
+#include "newgrf_animation_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
@@ -96,15 +97,12 @@ struct StationSpec {
 	byte wires;   ///< Bitmask of base tiles (0 - 7) which should contain elrail wires
 	byte blocked; ///< Bitmask of base tiles (0 - 7) which are blocked to trains
 
+	AnimationInfo animation;
+
 	byte lengths;
 	byte *platforms;
 	StationLayout **layouts;
 	bool copied_layouts;
-
-	uint8  anim_frames;
-	uint8  anim_status;
-	uint8  anim_speed;
-	uint16 anim_triggers;
 };
 
 /** Struct containing information relating to station classes. */
@@ -132,18 +130,8 @@ void DeallocateSpecFromStation(BaseStation *st, byte specindex);
 /* Draw representation of a station tile for GUI purposes. */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station);
 
-enum StatAnimTrigger {
-	STAT_ANIM_BUILT,
-	STAT_ANIM_NEW_CARGO,
-	STAT_ANIM_CARGO_TAKEN,
-	STAT_ANIM_TRAIN_ARRIVES,
-	STAT_ANIM_TRAIN_DEPARTS,
-	STAT_ANIM_TRAIN_LOADS,
-	STAT_ANIM_250_TICKS,
-};
-
 void AnimateStationTile(TileIndex tile);
-void StationAnimationTrigger(const BaseStation *st, TileIndex tile, StatAnimTrigger trigger, CargoID cargo_type = CT_INVALID);
+void TriggerStationAnimation(const BaseStation *st, TileIndex tile, StationAnimationTrigger trigger, CargoID cargo_type = CT_INVALID);
 void StationUpdateAnimTriggers(BaseStation *st);
 
 #endif /* NEWGRF_STATION_H */

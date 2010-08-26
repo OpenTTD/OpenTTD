@@ -630,6 +630,9 @@
     <ClInclude Include="..\src\newgrf_airporttiles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\newgrf_animation_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\newgrf_callbacks.h">
       <Filter>Header Files</Filter>
     </ClInclude>

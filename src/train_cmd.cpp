@@ -2864,7 +2864,7 @@ static void TrainEnterStation(Train *v, StationID station)
 
 	v->BeginLoading();
 
-	StationAnimationTrigger(st, v->tile, STAT_ANIM_TRAIN_ARRIVES);
+	TriggerStationAnimation(st, v->tile, SAT_TRAIN_ARRIVES);
 }
 
 /* Check if the vehicle is compatible with the specified tile */

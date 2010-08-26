@@ -14,17 +14,9 @@
 
 #include "tile_cmd.h"
 #include "industry_type.h"
+#include "newgrf_animation_type.h"
 #include "newgrf_callbacks.h"
 #include "core/random_func.hpp"
-
-/** Animation triggers of the industries. */
-enum IndustryAnimationTrigger {
-	IAT_CONSTRUCTION_STATE_CHANGE,
-	IAT_TILELOOP,
-	IAT_INDUSTRY_TICK,
-	IAT_INDUSTRY_RECEIVED_CARGO,
-	IAT_INDUSTRY_DISTRIBUTES_CARGO,
-};
 
 bool DrawNewIndustryTile(TileInfo *ti, Industry *i, IndustryGfx gfx, const IndustryTileSpec *inds);
 uint16 GetIndustryTileCallback(CallbackID callback, uint32 param1, uint32 param2, IndustryGfx gfx_id, Industry *industry, TileIndex tile);

@@ -19,6 +19,7 @@
 #include "landscape_type.h"
 #include "strings_type.h"
 #include "cargo_type.h"
+#include "newgrf_animation_type.h"
 #include "newgrf_commons.h"
 
 enum IndustryCleanupType {
@@ -167,9 +168,7 @@ struct IndustryTileSpec {
 	                                      ///< state instead of the construction state
 	/* Newgrf data */
 	uint8 callback_mask;                  ///< Bitmask of industry tile callbacks that have to be called
-	uint16 animation_info;                ///< Information about the animation (is it looping, how many loops etc)
-	uint8 animation_speed;                ///< The speed of the animation
-	uint8 animation_triggers;             ///< When to start the animation
+	AnimationInfo animation;              ///< Information about the animation (is it looping, how many loops etc)
 	IndustryTileSpecialFlags special_flags; ///< Bitmask of extra flags used by the tile
 	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
 	GRFFileProps grf_prop;                ///< properties related the the grf file

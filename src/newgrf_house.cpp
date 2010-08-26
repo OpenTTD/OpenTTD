@@ -474,7 +474,7 @@ void DrawNewHouseTile(TileInfo *ti, HouseID house_id)
 void AnimateNewHouseTile(TileIndex tile)
 {
 	const HouseSpec *hs = HouseSpec::Get(GetHouseType(tile));
-	byte animation_speed = hs->animation_speed;
+	byte animation_speed = hs->animation.speed;
 	bool frame_set_by_callback = false;
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_ANIMATION_SPEED)) {
@@ -489,7 +489,7 @@ void AnimateNewHouseTile(TileIndex tile)
 	if (_tick_counter % (1 << animation_speed) != 0) return;
 
 	byte frame      = GetAnimationFrame(tile);
-	byte num_frames = GB(hs->animation_frames, 0, 7);
+	byte num_frames = hs->animation.frames;
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_ANIMATION_NEXT_FRAME)) {
 		uint32 param = (hs->extra_flags & CALLBACK_1A_RANDOM_BITS) ? Random() : 0;
@@ -520,7 +520,7 @@ void AnimateNewHouseTile(TileIndex tile)
 	if (!frame_set_by_callback) {
 		if (frame < num_frames) {
 			frame++;
-		} else if (frame == num_frames && HasBit(hs->animation_frames, 7)) {
+		} else if (frame == num_frames && hs->animation.status == ANIM_STATUS_LOOPING) {
 			/* This animation loops, so start again from the beginning */
 			frame = 0;
 		} else {

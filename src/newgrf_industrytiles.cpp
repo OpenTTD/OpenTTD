@@ -302,7 +302,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 	Industry *ind = Industry::GetByTile(tile);
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
-	byte animation_speed = itspec->animation_speed;
+	byte animation_speed = itspec->animation.speed;
 
 	if (HasBit(itspec->callback_mask, CBM_INDT_ANIM_SPEED)) {
 		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIMATION_SPEED, 0, 0, gfx, ind, tile);
@@ -317,7 +317,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 
 	bool frame_set_by_callback = false;
 	byte frame = GetAnimationFrame(tile);
-	uint16 num_frames = GB(itspec->animation_info, 0, 8);
+	uint16 num_frames = itspec->animation.frames;
 
 	if (HasBit(itspec->callback_mask, CBM_INDT_ANIM_NEXT_FRAME)) {
 		uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIM_NEXT_FRAME,
@@ -348,7 +348,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 	if (!frame_set_by_callback) {
 		if (frame < num_frames) {
 			frame++;
-		} else if (frame == num_frames && GB(itspec->animation_info, 8, 8) == 1) {
+		} else if (frame == num_frames && itspec->animation.status == ANIM_STATUS_LOOPING) {
 			/* This animation loops, so start again from the beginning */
 			frame = 0;
 		} else {
@@ -386,7 +386,7 @@ bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 
-	if (!HasBit(itspec->animation_triggers, iat)) return false;
+	if (!HasBit(itspec->animation.triggers, iat)) return false;
 
 	Industry *ind = Industry::GetByTile(tile);
 	ChangeIndustryTileAnimationFrame(itspec, tile, iat, random, gfx, ind);

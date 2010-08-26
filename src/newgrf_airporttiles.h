@@ -14,27 +14,16 @@
 
 #include "airport.h"
 #include "station_map.h"
+#include "newgrf_animation_type.h"
 #include "newgrf_commons.h"
-
-/** Animation triggers for airport tiles */
-enum AirpAnimationTrigger {
-	AAT_BUILT,               ///< Triggered when the airport it build (for all tiles at the same time)
-	AAT_TILELOOP,            ///< Triggered in the periodic tile loop
-	AAT_STATION_NEW_CARGO,   ///< Triggered when new cargo arrives at the station (for all tiles at the same time)
-	AAT_STATION_CARGO_TAKEN, ///< Triggered when a cargo type is completely removed from the station (for all tiles at the same time)
-	AAT_STATION_250_ticks,   ///< Triggered every 250 ticks (for all tiles at the same time)
-};
 
 /**
  * Defines the data structure of each indivudual tile of an airport.
  */
 struct AirportTileSpec {
-	uint16 animation_info;                ///< Information about the animation (is it looping, how many loops etc)
-	uint8 animation_speed;                ///< The speed of the animation
-
+	AnimationInfo animation;              ///< Information about the animation.
 	StringID name;                        ///< Tile Subname string, land information on this tile will give you "AirportName (TileSubname)"
 	uint8 callback_mask;                  ///< Bitmask telling which grf callback is set
-	uint8 animation_triggers;             ///< When to start the animation
 	uint8 animation_special_flags;        ///< Extra flags to influence the animation
 	bool enabled;                         ///< entity still available (by default true). newgrf can disable it, though
 	GRFFileProps grf_prop;                ///< properties related the the grf file

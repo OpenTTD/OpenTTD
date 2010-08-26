@@ -1302,7 +1302,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			st->time_since_load = 0;
 			st->last_vehicle_type = v->type;
 
-			StationAnimationTrigger(st, st->xy, STAT_ANIM_CARGO_TAKEN, v->cargo_type);
+			TriggerStationAnimation(st, st->xy, SAT_CARGO_TAKEN, v->cargo_type);
 			AirportAnimationTrigger(st, AAT_STATION_CARGO_TAKEN, v->cargo_type);
 
 			unloading_time += cap;
