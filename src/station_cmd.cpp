@@ -3154,7 +3154,7 @@ void OnTick_Station()
 			/* Stop processing this station if it was deleted */
 			if (!StationHandleBigTick(st)) continue;
 			TriggerStationAnimation(st, st->xy, SAT_250_TICKS);
-			if (Station::IsExpected(st)) AirportAnimationTrigger(Station::From(st), AAT_STATION_250_ticks);
+			if (Station::IsExpected(st)) AirportAnimationTrigger(Station::From(st), AAT_STATION_250_TICKS);
 		}
 	}
 }
