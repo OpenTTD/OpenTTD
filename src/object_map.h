@@ -105,6 +105,18 @@ static inline bool IsStatueTile(TileIndex t)
 	return IsTileType(t, MP_OBJECT) && IsStatue(t);
 }
 
+/**
+ * Get the random bits of this tile.
+ * @param t The tile to get the bits for.
+ * @pre IsTileType(t, MP_OBJECT)
+ * @return The random bits.
+ */
+static inline byte GetObjectRandomBits(TileIndex t)
+{
+	assert(IsTileType(t, MP_OBJECT));
+	return _m[t].m3;
+}
+
 
 /**
  * Make an Object tile.
@@ -114,14 +126,15 @@ static inline bool IsStatueTile(TileIndex t)
  * @param o      The new owner of the tile.
  * @param index  Index to the object.
  * @param wc     Water class for this obect.
+ * @param random Random data to store on the tile
  */
-static inline void MakeObject(TileIndex t, ObjectType u, Owner o, ObjectID index, WaterClass wc)
+static inline void MakeObject(TileIndex t, ObjectType u, Owner o, ObjectID index, WaterClass wc, byte random)
 {
 	SetTileType(t, MP_OBJECT);
 	SetTileOwner(t, o);
 	SetWaterClass(t, wc);
 	_m[t].m2 = index;
-	_m[t].m3 = 0;
+	_m[t].m3 = random;
 	_m[t].m4 = 0;
 	_m[t].m5 = u;
 	SB(_m[t].m6, 2, 4, 0);

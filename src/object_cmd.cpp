@@ -63,7 +63,8 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town)
 	assert(o->town != NULL);
 
 	TILE_AREA_LOOP(t, ta) {
-		MakeObject(t, type, owner, o->index, WATER_CLASS_INVALID);
+		WaterClass wc = (IsWaterTile(t) ? GetWaterClass(t) : WATER_CLASS_INVALID);
+		MakeObject(t, type, owner, o->index, wc, Random());
 		MarkTileDirtyByTile(t);
 	}
 }
