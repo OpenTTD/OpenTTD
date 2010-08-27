@@ -19,6 +19,7 @@
 #include "genworld.h"
 #include "autoslope.h"
 #include "functions.h"
+#include "water.h"
 #include "window_func.h"
 #include "company_gui.h"
 #include "cheat_type.h"
@@ -316,7 +317,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
-		TILE_AREA_LOOP(tile_cur, ta) DoClearSquare(tile_cur);
+		TILE_AREA_LOOP(tile_cur, ta) MakeWaterKeepingClass(tile_cur, GetTileOwner(tile_cur));
 		delete o;
 	}
 
@@ -356,6 +357,8 @@ static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
 
 static void TileLoop_Object(TileIndex tile)
 {
+	if (IsTileOnWater(tile)) TileLoop_Water(tile);
+
 	if (!IsCompanyHQ(tile)) return;
 
 	/* HQ accepts passenger and mail; but we have to divide the values

@@ -499,6 +499,8 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 			return IsTileOnWater(tile);
 		}
 
+		case MP_OBJECT: return IsTileOnWater(tile);
+
 		case MP_TUNNELBRIDGE: return GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER && ReverseDiagDir(GetTunnelBridgeDirection(tile)) == DirToDiagDir(from);
 
 		default:          return false;
@@ -935,6 +937,7 @@ FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 			/* FALL THROUGH */
 		case MP_STATION:
 		case MP_INDUSTRY:
+		case MP_OBJECT:
 			return (GetWaterClass(tile) == WATER_CLASS_SEA) ? FLOOD_ACTIVE : FLOOD_NONE;
 
 		case MP_RAILWAY:
