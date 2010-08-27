@@ -4,64 +4,90 @@
 <head>
  <meta name="Author" content="Marcin Grzegorczyk">
  <meta name="Description" content="Structure of OpenTTD (OTTD) landscape arrays">
- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <title>OpenTTD Landscape Internals</title>
 </head>
 
 <body>
 
  <h3><a name="Landscape">Landscape</a></h3>
+ <p>
+  For a graphical representation of the tile-layout have a look at
+  <a href="landscape_grid.html">Landscape grid</a> page.
+ </p>
  <p>Eight attributes (counting &quot;<span style="font-weight: bold;">type_height</span>&quot;) hold the informations about a tile.<BR>
   These attributes are referred to as
-  "<span style="font-weight: bold;">type_height</span>",
-  "<span style="font-weight: bold;">m1</span>", "<span style="font-weight: bold;">m2</span>",
-  "<span style="font-weight: bold;">m3</span>", "<span style="font-weight: bold;">m4</span>",
-  "<span style="font-weight: bold;">m5</span>", "<span style="font-weight: bold;">m6</span>"
-  and "<span style="font-weight: bold;">m7</span>".<BR>
+  &quot;<span style="font-weight: bold;">type_height</span>",
+  &quot;<span style="font-weight: bold;">m1</span>&quot;, &quot;<span style="font-weight: bold;">m2</span>&quot;,
+  &quot;<span style="font-weight: bold;">m3</span>&quot;, &quot;<span style="font-weight: bold;">m4</span>&quot;,
+  &quot;<span style="font-weight: bold;">m5</span>&quot;, &quot;<span style="font-weight: bold;">m6</span>&quot;
+  and "<span style="font-weight: bold;">m7</span>".<br>
   The most important value is the class of a tile, stored in the upper 4 bits
   of the <span style="font-weight: bold;">type_height</span> attribute. The lower 4 bits are used to encode the height and
   slope data.
  </p>
 
- Special Attribute : <span style="font-weight: bold;">m6</span>. There are 4 bits of it that are used accross multiple tile classes<br>
+ Frequently repeating patterns:
  <ul>
-  <li>
-   <a name = "bridge_direction">
-   Bits 7..6 :
-   <table border="1">
-    <tr bgcolor="#CCCCCC"><td colspan="2">Presence and direction of bridge above,<br>for tiles that support this.</td></tr>
-    <tr><td><tt>00</tt>&nbsp; </td><td>no bridge</td></tr>
-    <tr><td><tt>01</tt>&nbsp; </td><td>Axis X (North-East)</td></tr>
-    <tr><td><tt>02</tt>&nbsp; </td><td>Axis Y (South-West)</td></tr>
-   </table>
+  <li><span style="font-weight: bold;">m1</span>
+   <ul>
+    <li>
+     <a name="WaterClass"></a>
+      Bits 6..5:
+     <table border="1" style="width: 30em;">
+      <tr bgcolor="#CCCCCC"><td colspan="2">The type of water that is on a tile.
+      <tr><td style="width: 5em;"><tt>00</tt></td><td align=left>Sea</td></tr>
+      <tr><td><tt>01</tt></td><td align=left>Canal</td></tr>
+      <tr><td><tt>02</tt></td><td align=left>River</td></tr>
+      <tr><td><tt>03</tt></td><td align=left>Invalid, i.e. no water on this tile</td></tr>
+     </table>
+     Some tiles, such as houses, reuse these bits of other purposes.
+    </li>
+    <li>
+     <a name="OwnershipInfo"></a>
+     Bits 4..0:
+     <table border="1" style="width: 30em;">
+      <tr bgcolor="#CCCCCC"><td colspan="2">The owner of a tile can be either companies (human or AI) or "Game entities".
+      <tr><td style="width: 5em;"><tt>00..0E</tt></td><td align=left>Normal companies</td></tr>
+      <tr><td><tt>0F</tt></td><td align=left>a town owns the tile</td></tr>
+      <tr><td><tt>10</tt></td><td align=left>nobody owns the tile</td></tr>
+      <tr><td><tt>11</tt></td><td align=left>"water" owns the tile</td></tr>
+      <tr><td><tt>FF</tt></td><td align=left>spectator in MP or in scenario editor</td></tr>
+     </table>
+     Some tiles, such as houses and industries, reuse these bits of other purposes.
+    </li>
+   </ul>
   </li>
-  <li>
-   <a name = "tropic_zone">
-   Bits 1..0 :
-   <table border="1">
-    <tr bgcolor="#CCCCCC"><td colspan="2">Only meaningfull in tropic climate.<br>It contains the definition of the available zones</td></tr>
-    <tr><td><tt>00</tt>&nbsp; </td><td>normal</td></tr>
-    <tr><td><tt>01</tt>&nbsp; </td><td>desert</td></tr>
-    <tr><td><tt>02</tt>&nbsp; </td><td>rain forest</td></tr>
-   </table>
-   In any other climate, those 2 bits are free of use.
+  <li><span style="font-weight: bold;">m6</span>
+   <ul>
+    <li>
+     <a name="bridge_direction"></a>
+     Bits 7..6:
+     <table border="1" style="width: 30em;">
+      <tr bgcolor="#CCCCCC"><td colspan="2">Presence and direction of bridge above, for tiles that support this.</td></tr>
+      <tr><td style="width: 5em;"><tt>00</tt></td><td>no bridge</td></tr>
+      <tr><td><tt>01</tt></td><td>Axis X (North-East)</td></tr>
+      <tr><td><tt>02</tt></td><td>Axis Y (South-West)</td></tr>
+     </table>
+     Some tiles, such as houses do not support bridges over them and use these bits for other purposes.
+    </li>
+    <li>
+     <a name="tropic_zone"></a>
+     Bits 1..0:
+     <table border="1" style="width: 30em;">
+      <tr bgcolor="#CCCCCC"><td colspan="2">Only meaningfull in tropic climate. It contains the definition of the available zones</td></tr>
+      <tr><td style="width: 5em;"><tt>00</tt></td><td>normal</td></tr>
+      <tr><td><tt>01</tt></td><td>desert</td></tr>
+      <tr><td><tt>02</tt></td><td>rain forest</td></tr>
+     </table>
+     In any other climate these 2 bits are theoretically free of use, however using them does not seem useful.
+    </li>
+   </ul>
+  </li>
+  <li><span style="font-weight: bold;">m7:</span><br>
+   Animation frame/state. Used for houses, industries, objects and stations.
   </li>
  </ul>
- <p>
-  For a graphical representation of the tile-layout have a look at
-  <a href="landscape_grid.html">Landscape grid</a> page.
- </p>
-
-  The <a name="OwnershipInfo">owner of a tile</a>, as frequently associated with attribute m1 bits 4..0,
-  can be either companies (human or AI) or "Game entities".
-  They are identified using:
-  <table border="1">
-   <tr><td><tt>00..0E</tt>&nbsp; </td><td align=left>Normal companies</td></tr>
-   <tr><td><tt>0F</tt>&nbsp; </td><td align=left>a town owns the tile</td></tr>
-   <tr><td><tt>10</tt>&nbsp; </td><td align=left>nobody owns the tile</td></tr>
-   <tr><td><tt>11</tt>&nbsp; </td><td align=left>"water" owns the tile</td></tr>
-   <tr><td><tt>FF</tt>&nbsp; </td><td align=left>spectator in MP or in scenario editor</td></tr>
-  </table>
 
  <p>OTTD's class-specific periodic tile processing routine is called once every +256 ticks for each tile.</p>
 
@@ -708,7 +734,7 @@
       </ul>
      </li>
     </ul>
-    <small><a name="newhouses">Newhouses is the name englobing a newGRF feature developped by TTDPatch devs (mainly Csaboka).<br>
+    <small><a name="newhouses"></a>Newhouses is the name englobing a newGRF feature developped by TTDPatch devs (mainly Csaboka).<br>
     It allows the replacement of the properties as well as the graphics of houses in the game.<br>
     To distinguish between the standard behaviour and the newGRF one, HouseID (m4 + m3[6]) is tested for anything above 110.<br>
     110 is the count of standard houses. So above 110 means there is a new definition of at least one house</small>
@@ -1525,6 +1551,7 @@
         <td><tt>2</tt>&nbsp;</td>
         <td>water</td>
        </tr>
+      </table>
      </li>
      <li>m5 bits 1..0: direction onto the bridge / out of the tunnel
       <table>
@@ -1569,7 +1596,6 @@
      <li>m1 bits 6..5 : Water class (sea, canal, river or land)
      <li>m1 bits 4..0: <a href="#OwnershipInfo">owner</a> of the object (for lighthouses and transmitters normally <tt>10</tt>)</li>
      <li>m2: index into the array of objects
-     <li>m3: animation counter
      <li>m5: tile type:
       <table>
        <tr>
@@ -1600,6 +1626,7 @@
      </li>
      <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
      <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
+     <li>m7: animation counter
     </ul>
    </td>
   </tr>
