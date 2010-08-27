@@ -134,18 +134,9 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	int size_y = GB(spec->size, 4, 4);
 	TileArea ta(tile, size_x, size_y);
 
-	if (spec->flags & OBJECT_FLAG_REQUIRE_FLAT) {
-		TILE_AREA_LOOP(tile_cur, ta) {
-			if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
-		}
-	}
-
-	/* If we require flat land, we've already tested that.
-	 * So we only need to check for clear land. */
-	if (spec->flags & (OBJECT_FLAG_HAS_NO_FOUNDATION | OBJECT_FLAG_REQUIRE_FLAT)) {
-		TILE_AREA_LOOP(tile_cur, ta) {
-			cost.AddCost(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
-		}
+	if (type != OBJECT_OWNED_LAND) {
+		/* Owned land is special as it can be placed on any slope. */
+		cost.AddCost(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
 	} else {
 		cost.AddCost(CheckFlatLand(ta, flags));
 	}
@@ -153,6 +144,11 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	int hq_score = 0;
 	switch (type) {
+		case OBJECT_TRANSMITTER:
+		case OBJECT_LIGHTHOUSE:
+			if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_ERROR_FLAT_LAND_REQUIRED);
+			break;
+
 		case OBJECT_OWNED_LAND:
 			if (IsTileType(tile, MP_OBJECT) &&
 					IsTileOwner(tile, _current_company) &&
@@ -522,18 +518,12 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	ObjectType type = GetObjectType(tile);
-	const ObjectSpec *spec = ObjectSpec::Get(type);
 
-	if (spec->flags & OBJECT_FLAG_REQUIRE_FLAT) {
-		/* If a flat tile is required by the object, then terraforming is never good. */
-		return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	}
-
-	if (IsOwnedLand(tile)) {
+	if (type == OBJECT_OWNED_LAND) {
 		/* Owned land remains unsold */
 		CommandCost ret = CheckTileOwnership(tile);
 		if (ret.Succeeded()) return CommandCost();
-	} else if (AutoslopeEnabled()) {
+	} else if (AutoslopeEnabled() && type != OBJECT_TRANSMITTER && type != OBJECT_LIGHTHOUSE) {
 		if (!IsSteepSlope(tileh_new) && (z_new + GetSlopeMaxZ(tileh_new) == GetTileMaxZ(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
 	}
 

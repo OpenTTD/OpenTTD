@@ -31,18 +31,17 @@ enum ObjectFlags {
 	OBJECT_FLAG_NOT_ON_LAND        = 1 <<  9, ///< Object can not be on land, implicitly sets #OBJECT_FLAG_BUILT_ON_WATER.
 	OBJECT_FLAG_DRAW_WATER         = 1 << 10, ///< Object wants to be drawn on water.
 	OBJECT_FLAG_ALLOW_UNDER_BRIDGE = 1 << 11, ///< Object can built under a bridge.
-	OBJECT_FLAG_REQUIRE_FLAT       = 1 << 12, ///< Object can only be build of flat land, i.e. not on foundations!
 };
 DECLARE_ENUM_AS_BIT_SET(ObjectFlags)
 
 
 /** An object that isn't use for transport, industries or houses. */
 struct ObjectSpec {
-	StringID name;               ///< The name for this object.
-	uint8 size;                  ///< The size of this objects; low nibble for X, high nibble for Y.
-	uint8 build_cost_multiplier; ///< Build cost multiplier per tile.
-	uint8 clear_cost_multiplier; ///< Clear cost multiplier per tile.
-	ObjectFlags flags;           ///< Flags/settings related to the object.
+	StringID name;                ///< The name for this object.
+	uint8 size;                   ///< The size of this objects; low nibble for X, high nibble for Y.
+	uint8 build_cost_multiplier;  ///< Build cost multiplier per tile.
+	uint8 clear_cost_multiplier;  ///< Clear cost multiplier per tile.
+	ObjectFlags flags;            ///< Flags/settings related to the object.
 
 	/**
 	 * Get the cost for building a structure of this type.
