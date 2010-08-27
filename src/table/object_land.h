@@ -124,7 +124,7 @@ static const DrawTileSprites _object_hq[] = {
 #undef TILE_SPRITE_LINE
 
 /** Specification of the original object structures. */
-static const ObjectSpec _original_objects[] = {
+extern const ObjectSpec _original_objects[] = {
 	{ STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER,          0x11,   0,   0, OBJECT_FLAG_CANNOT_REMOVE | OBJECT_FLAG_REQUIRE_FLAT | OBJECT_FLAG_ONLY_IN_SCENEDIT },
 	{ STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE,           0x11,   0,   0, OBJECT_FLAG_CANNOT_REMOVE | OBJECT_FLAG_REQUIRE_FLAT | OBJECT_FLAG_ONLY_IN_SCENEDIT },
 	{ STR_TOWN_BUILDING_NAME_STATUE_1,                 0x11,   0,   0, OBJECT_FLAG_CANNOT_REMOVE | OBJECT_FLAG_ONLY_IN_GAME | OBJECT_FLAG_ONLY_IN_SCENEDIT }, // Yes, we disallow building this everywhere. Happens in "special" case!

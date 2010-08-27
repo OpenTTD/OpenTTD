@@ -30,6 +30,7 @@
 #include "core/pool_func.hpp"
 #include "object_map.h"
 #include "object_base.h"
+#include "newgrf_object.h"
 #include "date_func.h"
 
 #include "table/strings.h"
@@ -47,17 +48,6 @@ INSTANTIATE_POOL_METHODS(Object)
 void InitializeObjects()
 {
 	_object_pool.CleanPool();
-}
-
-/* static */ const ObjectSpec *ObjectSpec::Get(ObjectType index)
-{
-	assert(index < OBJECT_MAX);
-	return &_original_objects[index];
-}
-
-/* static */ const ObjectSpec *ObjectSpec::GetByTile(TileIndex tile)
-{
-	return ObjectSpec::Get(GetObjectType(tile));
 }
 
 void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town)

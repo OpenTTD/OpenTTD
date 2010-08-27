@@ -14,7 +14,7 @@
  */
 
 #include "stdafx.h"
-#include "object.h"
+#include "newgrf_object.h"
 #include "viewport_func.h"
 #include "cmd_helper.h"
 #include "command_func.h"

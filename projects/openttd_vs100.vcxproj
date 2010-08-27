@@ -485,6 +485,7 @@
     <ClInclude Include="..\src\newgrf_house.h" />
     <ClInclude Include="..\src\newgrf_industries.h" />
     <ClInclude Include="..\src\newgrf_industrytiles.h" />
+    <ClInclude Include="..\src\newgrf_object.h" />
     <ClInclude Include="..\src\newgrf_properties.h" />
     <ClInclude Include="..\src\newgrf_railtype.h" />
     <ClInclude Include="..\src\newgrf_sound.h" />
@@ -983,6 +984,7 @@
     <ClCompile Include="..\src\newgrf_house.cpp" />
     <ClCompile Include="..\src\newgrf_industries.cpp" />
     <ClCompile Include="..\src\newgrf_industrytiles.cpp" />
+    <ClCompile Include="..\src\newgrf_object.cpp" />
     <ClCompile Include="..\src\newgrf_railtype.cpp" />
     <ClCompile Include="..\src\newgrf_sound.cpp" />
     <ClCompile Include="..\src\newgrf_spritegroup.cpp" />

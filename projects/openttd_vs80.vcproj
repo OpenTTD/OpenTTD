@@ -1215,6 +1215,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_object.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_properties.h"
 				>
 			</File>
@@ -3272,6 +3276,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_industrytiles.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\newgrf_object.cpp"
 				>
 			</File>
 			<File

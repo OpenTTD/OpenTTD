@@ -218,6 +218,7 @@ newgrf_generic.h
 newgrf_house.h
 newgrf_industries.h
 newgrf_industrytiles.h
+newgrf_object.h
 newgrf_properties.h
 newgrf_railtype.h
 newgrf_sound.h
@@ -772,6 +773,7 @@ newgrf_generic.cpp
 newgrf_house.cpp
 newgrf_industries.cpp
 newgrf_industrytiles.cpp
+newgrf_object.cpp
 newgrf_railtype.cpp
 newgrf_sound.cpp
 newgrf_spritegroup.cpp
