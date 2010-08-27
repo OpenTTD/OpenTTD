@@ -349,7 +349,6 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 		 * buoy was placed. Otherwise one could plant a buoy on a canal edge,
 		 * remove it and flood the land (if the canal edge is at level 0) */
 		MakeWaterKeepingClass(tile, GetTileOwner(tile));
-		MarkTileDirtyByTile(tile);
 
 		wp->rect.AfterRemoveTile(wp, tile);
 

@@ -2492,12 +2492,11 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile1);
+		MarkTileDirtyByTile(tile1);
 		MakeWaterKeepingClass(tile2, st->owner);
 
 		st->rect.AfterRemoveTile(st, tile1);
 		st->rect.AfterRemoveTile(st, tile2);
-
-		MarkTileDirtyByTile(tile2);
 
 		st->dock_tile = INVALID_TILE;
 		st->facilities &= ~FACIL_DOCK;
@@ -3398,7 +3397,6 @@ void DeleteOilRig(TileIndex tile)
 	Station *st = Station::GetByTile(tile);
 
 	MakeWaterKeepingClass(tile, OWNER_NONE);
-	MarkTileDirtyByTile(tile);
 
 	st->dock_tile = INVALID_TILE;
 	st->airport.Clear();

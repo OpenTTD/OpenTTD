@@ -136,8 +136,6 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 void MakeWaterKeepingClass(TileIndex tile, Owner o)
 {
-	assert(IsTileType(tile, MP_WATER) || (IsTileType(tile, MP_STATION) && (IsBuoy(tile) || IsDock(tile) || IsOilRig(tile))) || IsTileType(tile, MP_INDUSTRY));
-
 	WaterClass wc = GetWaterClass(tile);
 
 	/* Autoslope might turn an originally canal or river tile into land */
@@ -146,12 +144,18 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 
 	if (wc == WATER_CLASS_SEA && z > 0) wc = WATER_CLASS_CANAL;
 
+	/* Zero map array and terminate animation */
+	DoClearSquare(tile);
+
+	/* Maybe change to water */
 	switch (wc) {
 		case WATER_CLASS_SEA:   MakeSea(tile);                break;
 		case WATER_CLASS_CANAL: MakeCanal(tile, o, Random()); break;
 		case WATER_CLASS_RIVER: MakeRiver(tile, Random());    break;
-		default:                DoClearSquare(tile);          break;
+		default: break;
 	}
+
+	MarkTileDirtyByTile(tile);
 }
 
 static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
@@ -175,8 +179,6 @@ static CommandCost RemoveShipDepot(TileIndex tile, DoCommandFlag flags)
 
 		MakeWaterKeepingClass(tile,  GetTileOwner(tile));
 		MakeWaterKeepingClass(tile2, GetTileOwner(tile2));
-		MarkTileDirtyByTile(tile);
-		MarkTileDirtyByTile(tile2);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_DEPOT_SHIP]);
@@ -269,8 +271,6 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
 		DoClearSquare(tile);
 		MakeWaterKeepingClass(tile + delta, GetTileOwner(tile));
 		MakeWaterKeepingClass(tile - delta, GetTileOwner(tile));
-		MarkTileDirtyByTile(tile - delta);
-		MarkTileDirtyByTile(tile + delta);
 		MarkCanalsAndRiversAroundDirty(tile - delta);
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
