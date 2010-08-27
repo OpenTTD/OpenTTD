@@ -552,6 +552,8 @@ STR_DISASTERS_ON                                                :Ҫут
 STR_CONFIG_SETTING_OFF                                          :Сӳнтер
 STR_CONFIG_SETTING_ON                                           :Ҫут
 STR_CONFIG_SETTING_DISABLED                                     :хастар мар
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ҫук
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Чӑн
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Чӑн
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реаллӑ
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Чӑн
@@ -589,6 +591,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :чӑн
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ҫук {RED}(breaks lumber mill)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :таҫта та
 
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Сулахайра
@@ -611,6 +614,7 @@ STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Хул�
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Чӑн {BLUE}(Recommended)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 
 
@@ -802,6 +806,7 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :Вырӑнти 
 ############ End of leave-in-this-order
 
 # Content downloading window
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Верси: {WHITE}{STRING}
 
 # Order of these is important!
 
@@ -891,6 +896,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Укҫа
 # Industry cargoes window
 
 # Land area window
+STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ҫук
 
 # Description of land area of different tiles
 
@@ -907,8 +913,11 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Укҫа
 
 
 
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Передатчик
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Маяк
 
 # About OpenTTD window
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD верси {REV}
 
 # Save/load game/scenario
 
@@ -930,6 +939,7 @@ STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Объе
 
 
 
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верси: {SILVER}{NUM}
 
 
 
@@ -950,6 +960,7 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Ҫук
 
 # NewGRF 'it's broken' warnings
 
@@ -963,6 +974,7 @@ STR_SIGN_LIST_CLEAR                                             :{BLACK}Филт
 
 
 # Town directory window
+STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ҫук -
 
 # Town view window
 
@@ -973,8 +985,10 @@ STR_SIGN_LIST_CLEAR                                             :{BLACK}Филт
 
 
 # Subsidies window
+STR_SUBSIDIES_NONE                                              :{ORANGE}- Ҫук -
 
 # Station list window
+STR_STATION_LIST_NONE                                           :{YELLOW}- Ҫук -
 
 # Station view window
 
@@ -993,6 +1007,7 @@ STR_SIGN_LIST_CLEAR                                             :{BLACK}Филт
 
 # Company view
 
+STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ҫук
 
 
 
@@ -1000,6 +1015,7 @@ STR_SIGN_LIST_CLEAR                                             :{BLACK}Филт
 
 
 # Industry directory
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ҫук -
 
 # Industry view
 
@@ -1089,6 +1105,7 @@ STR_SIGN_LIST_CLEAR                                             :{BLACK}Филт
 
 
 
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑт: {LTBLUE}Ҫук пул
 
 
 
@@ -1158,6 +1175,7 @@ STR_SIGN_LIST_CLEAR                                             :{BLACK}Филт
 
 # Available AIs window
 
+STR_AI_LIST_VERSION                                             :{BLACK}Верси: {NUM}
 
 
 # AI Parameters
