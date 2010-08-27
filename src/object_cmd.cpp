@@ -134,7 +134,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	int size_y = GB(spec->size, 4, 4);
 	TileArea ta(tile, size_x, size_y);
 
-	if (type != OBJECT_OWNED_LAND) {
+	if (type == OBJECT_OWNED_LAND) {
 		/* Owned land is special as it can be placed on any slope. */
 		cost.AddCost(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
 	} else {
