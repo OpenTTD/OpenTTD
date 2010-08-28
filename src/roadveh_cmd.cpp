@@ -31,7 +31,6 @@
 #include "ai/ai.hpp"
 #include "depot_map.h"
 #include "effectvehicle_func.h"
-#include "effectvehicle_base.h"
 #include "roadstop_base.h"
 #include "spritecache.h"
 #include "core/random_func.hpp"
@@ -530,40 +529,6 @@ static bool RoadVehCheckTrainCrash(RoadVehicle *v)
 	}
 
 	return false;
-}
-
-static void HandleBrokenRoadVeh(RoadVehicle *v)
-{
-	if (v->breakdown_ctr != 1) {
-		v->breakdown_ctr = 1;
-		v->cur_speed = 0;
-
-		if (v->breakdowns_since_last_service != 255) {
-			v->breakdowns_since_last_service++;
-		}
-
-		v->MarkDirty();
-		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-
-		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
-			SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
-				SND_0F_VEHICLE_BREAKDOWN : SND_35_COMEDY_BREAKDOWN, v);
-		}
-
-		if (!(v->vehstatus & VS_HIDDEN)) {
-			EffectVehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
-			if (u != NULL) u->animation_state = v->breakdown_delay * 2;
-		}
-	}
-
-	if ((v->tick_counter & 1) == 0) {
-		if (--v->breakdown_delay == 0) {
-			v->breakdown_ctr = 0;
-			v->MarkDirty();
-			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-		}
-	}
 }
 
 TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
@@ -1522,7 +1487,7 @@ static bool RoadVehController(RoadVehicle *v)
 	/* road vehicle has broken down? */
 	if (v->breakdown_ctr != 0) {
 		if (v->breakdown_ctr <= 2) {
-			HandleBrokenRoadVeh(v);
+			v->HandleBreakdown();
 			return true;
 		}
 		if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;

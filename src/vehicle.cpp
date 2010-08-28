@@ -46,6 +46,9 @@
 #include "core/random_func.hpp"
 #include "core/backup_type.hpp"
 #include "order_backup.h"
+#include "sound_func.h"
+#include "effectvehicle_func.h"
+#include "effectvehicle_base.h"
 
 #include "table/strings.h"
 
@@ -980,6 +983,56 @@ void CheckVehicleBreakdown(Vehicle *v)
 		v->breakdown_ctr    = GB(r, 16, 6) + 0x3F;
 		v->breakdown_delay  = GB(r, 24, 7) + 0x80;
 		v->breakdown_chance = 0;
+	}
+}
+
+void Vehicle::HandleBreakdown()
+{
+	/* Possible states for Vehicle::breakdown_ctr
+	 * 0  - vehicle is running normally
+	 * 1  - vehicle is currently broken down
+	 * 2  - vehicle is going to break down now
+	 * >2 - vehicle is counting down to the actual breakdown event */
+	if (this->breakdown_ctr != 1) {
+		this->breakdown_ctr = 1;
+
+		if (this->breakdowns_since_last_service != 255) {
+			this->breakdowns_since_last_service++;
+		}
+
+		this->MarkDirty();
+		SetWindowDirty(WC_VEHICLE_VIEW, this->index);
+		SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
+
+		if (this->type == VEH_AIRCRAFT) {
+			/* Aircraft just need this flag, the rest is handled elsewhere */
+			this->vehstatus |= VS_AIRCRAFT_BROKEN;
+		} else {
+			this->cur_speed = 0;
+
+			if (!PlayVehicleSound(this, VSE_BREAKDOWN)) {
+				SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
+					(this->type == VEH_TRAIN ? SND_10_TRAIN_BREAKDOWN : SND_0F_VEHICLE_BREAKDOWN) :
+					(this->type == VEH_TRAIN ? SND_3A_COMEDY_BREAKDOWN_2 : SND_35_COMEDY_BREAKDOWN), this);
+			}
+
+			if (!(this->vehstatus & VS_HIDDEN)) {
+				EffectVehicle *u = CreateEffectVehicleRel(this, 4, 4, 5, EV_BREAKDOWN_SMOKE);
+				if (u != NULL) u->animation_state = this->breakdown_delay * 2;
+			}
+		}
+	}
+
+	/* Aircraft breakdowns end only when arriving at the airport */
+	if (this->type == VEH_AIRCRAFT) return;
+
+	/* For trains this function is called twice per tick, so decrease v->breakdown_delay at half the rate */
+	if ((this->tick_counter & (this->type == VEH_TRAIN ? 3 : 1)) == 0) {
+		if (--this->breakdown_delay == 0) {
+			this->breakdown_ctr = 0;
+			this->MarkDirty();
+			SetWindowDirty(WC_VEHICLE_VIEW, this->index);
+		}
 	}
 }
 

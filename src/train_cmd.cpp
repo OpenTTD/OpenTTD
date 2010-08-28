@@ -29,7 +29,6 @@
 #include "ai/ai.hpp"
 #include "newgrf_station.h"
 #include "effectvehicle_func.h"
-#include "effectvehicle_base.h"
 #include "gamelog.h"
 #include "network/network.h"
 #include "spritecache.h"
@@ -3543,40 +3542,6 @@ static bool HandleCrashedTrain(Train *v)
 	return true;
 }
 
-static void HandleBrokenTrain(Train *v)
-{
-	if (v->breakdown_ctr != 1) {
-		v->breakdown_ctr = 1;
-		v->cur_speed = 0;
-
-		if (v->breakdowns_since_last_service != 255) {
-			v->breakdowns_since_last_service++;
-		}
-
-		v->MarkDirty();
-		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-
-		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
-			SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
-				SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
-		}
-
-		if (!(v->vehstatus & VS_HIDDEN)) {
-			EffectVehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
-			if (u != NULL) u->animation_state = v->breakdown_delay * 2;
-		}
-	}
-
-	if (!(v->tick_counter & 3)) {
-		if (!--v->breakdown_delay) {
-			v->breakdown_ctr = 0;
-			v->MarkDirty();
-			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-		}
-	}
-}
-
 /** Maximum speeds for train that is broken down or approaching line end */
 static const uint16 _breakdown_speeds[16] = {
 	225, 210, 195, 180, 165, 150, 135, 120, 105, 90, 75, 60, 45, 30, 15, 15
@@ -3753,7 +3718,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	/* train is broken down? */
 	if (v->breakdown_ctr != 0) {
 		if (v->breakdown_ctr <= 2) {
-			HandleBrokenTrain(v);
+			v->HandleBreakdown();
 			return true;
 		}
 		if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;

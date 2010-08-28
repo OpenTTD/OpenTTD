@@ -523,6 +523,12 @@ public:
 		this->service_interval = src->service_interval;
 	}
 
+	/**
+	 * Handle all of the aspects of a vehicle breakdown.
+	 * This includes adding smoke and sounds, and ending the breakdown when appropriate.
+	 */
+	void HandleBreakdown();
+
 	bool NeedsAutorenewing(const Company *c) const;
 
 	/**

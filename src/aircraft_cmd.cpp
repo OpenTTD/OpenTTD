@@ -1038,20 +1038,6 @@ static bool HandleCrashedAircraft(Aircraft *v)
 	return true;
 }
 
-static void HandleBrokenAircraft(Aircraft *v)
-{
-	if (v->breakdown_ctr != 1) {
-		v->breakdown_ctr = 1;
-		v->vehstatus |= VS_AIRCRAFT_BROKEN;
-
-		if (v->breakdowns_since_last_service != 255) {
-			v->breakdowns_since_last_service++;
-		}
-		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-	}
-}
-
 
 static void HandleAircraftSmoke(Aircraft *v)
 {
@@ -1792,7 +1778,7 @@ static bool AircraftEventHandler(Aircraft *v, int loop)
 	/* aircraft is broken down? */
 	if (v->breakdown_ctr != 0) {
 		if (v->breakdown_ctr <= 2) {
-			HandleBrokenAircraft(v);
+			v->HandleBreakdown();
 		} else {
 			if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;
 		}

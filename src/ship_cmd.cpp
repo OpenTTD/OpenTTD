@@ -30,8 +30,6 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
-#include "effectvehicle_func.h"
-#include "effectvehicle_base.h"
 #include "ai/ai.hpp"
 #include "pathfinder/opf/opf_ship.h"
 #include "landscape_type.h"
@@ -203,40 +201,6 @@ Trackdir Ship::GetVehicleTrackdir() const
 	}
 
 	return TrackDirectionToTrackdir(FindFirstTrack(this->state), this->direction);
-}
-
-static void HandleBrokenShip(Vehicle *v)
-{
-	if (v->breakdown_ctr != 1) {
-		v->breakdown_ctr = 1;
-		v->cur_speed = 0;
-
-		if (v->breakdowns_since_last_service != 255) {
-			v->breakdowns_since_last_service++;
-		}
-
-		v->MarkDirty();
-		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-
-		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
-			SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
-				SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
-		}
-
-		if (!(v->vehstatus & VS_HIDDEN)) {
-			EffectVehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
-			if (u != NULL) u->animation_state = v->breakdown_delay * 2;
-		}
-	}
-
-	if (!(v->tick_counter & 1)) {
-		if (!--v->breakdown_delay) {
-			v->breakdown_ctr = 0;
-			v->MarkDirty();
-			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
-		}
-	}
 }
 
 void Ship::MarkDirty()
@@ -462,7 +426,7 @@ static void ShipController(Ship *v)
 
 	if (v->breakdown_ctr != 0) {
 		if (v->breakdown_ctr <= 2) {
-			HandleBrokenShip(v);
+			v->HandleBreakdown();
 			return;
 		}
 		if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;
