@@ -23,7 +23,6 @@
 #include "window_func.h"
 #include "company_gui.h"
 #include "cheat_type.h"
-#include "landscape_type.h"
 #include "object.h"
 #include "cargopacket.h"
 #include "sprite.h"
@@ -31,6 +30,8 @@
 #include "core/pool_func.hpp"
 #include "object_map.h"
 #include "object_base.h"
+#include "newgrf.h"
+#include "newgrf_config.h"
 #include "newgrf_object.h"
 #include "date_func.h"
 
@@ -373,9 +374,14 @@ static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, uint
 
 static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
 {
-	td->str = ObjectSpec::GetByTile(tile)->name;
+	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
+	td->str = spec->name;
 	td->owner[0] = GetTileOwner(tile);
 	td->build_date = Object::GetByTile(tile)->build_date;
+
+	if (spec->grf_prop.grffile != NULL) {
+		td->grf = GetGRFConfig(spec->grf_prop.grffile->grfid)->GetName();
+	}
 }
 
 static void TileLoop_Object(TileIndex tile)
