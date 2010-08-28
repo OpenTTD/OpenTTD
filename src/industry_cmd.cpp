@@ -1452,9 +1452,10 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 	if (TileX(tile) <= 1 || TileY(tile) <= 1) return false;
 	/* Check that all tiles in area and surrounding are clear
 	 * this determines that there are no obstructing items */
-	TileIndex cur_tile = tile + TileDiffXY(-1, -1);
-	uint size_x = max_x + 4;
-	uint size_y = max_y + 4;
+
+	TileIndex cur_tile = tile + TileDiffXY(-_settings_game.construction.industry_platform, -_settings_game.construction.industry_platform);
+	uint size_x = max_x + 2 + 2 * _settings_game.construction.industry_platform;
+	uint size_y = max_y + 2 + 2 * _settings_game.construction.industry_platform;
 
 	/* Check if we don't leave the map */
 	if (TileX(cur_tile) + size_x >= MapMaxX() || TileY(cur_tile) + size_y >= MapMaxY()) return false;
