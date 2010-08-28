@@ -13,12 +13,11 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "core/mem_func.hpp"
-#include "date_func.h"
 #include "debug.h"
-#include "landscape.h"
 #include "newgrf.h"
 #include "newgrf_class_func.h"
 #include "newgrf_object.h"
+#include "newgrf_sound.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_town.h"
 #include "object_base.h"
@@ -27,6 +26,7 @@
 #include "town.h"
 #include "viewport_func.h"
 #include "water.h"
+#include "newgrf_animation_base.h"
 
 /** The override manager for our objects. */
 ObjectOverrideManager _object_mngr(NEW_OBJECT_OFFSET, NUM_OBJECTS, INVALID_OBJECT_TYPE);
@@ -474,4 +474,54 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec)
 	}
 
 	DrawNewGRFTileSeqInGUI(x, y, dts, 0, palette);
+}
+
+/** Helper class for animation control. */
+struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpec, Object, GetObjectCallback> {
+	static const CallbackID cb_animation_speed      = CBID_OBJECT_ANIMATION_SPEED;
+	static const CallbackID cb_animation_next_frame = CBID_OBJECT_ANIMATION_NEXT_FRAME;
+
+	static const ObjectCallbackMask cbm_animation_speed      = CBM_OBJ_ANIMATION_SPEED;
+	static const ObjectCallbackMask cbm_animation_next_frame = CBM_OBJ_ANIMATION_NEXT_FRAME;
+};
+
+/**
+ * Handle the animation of the object tile.
+ * @param tile The tile to animate.
+ */
+void AnimateNewObjectTile(TileIndex tile)
+{
+	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
+	if (spec == NULL || !(spec->flags & OBJECT_FLAG_ANIMATION)) return;
+
+	ObjectAnimationBase::AnimateTile(spec, Object::GetByTile(tile), tile, (spec->flags & OBJECT_FLAG_ANIM_RANDOM_BITS) != 0);
+}
+
+/**
+ * Trigger the update of animation on a single tile.
+ * @param o       The object that got triggered.
+ * @param tile    The location of the triggered tile.
+ * @param trigger The trigger that is triggered.
+ * @param spec    The spec associated with the object.
+ */
+void TriggerObjectTileAnimation(const Object *o, TileIndex tile, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
+{
+	if (!HasBit(spec->animation.triggers, trigger)) return;
+
+	ObjectAnimationBase::ChangeAnimationFrame(CBID_OBJECT_ANIMATION_START_STOP, spec, o, tile, Random(), trigger);
+}
+
+/**
+ * Trigger the update of animation on a whole object.
+ * @param o       The object that got triggered.
+ * @param trigger The trigger that is triggered.
+ * @param spec    The spec associated with the object.
+ */
+void TriggerObjectAnimation(const Object *o, ObjectAnimationTrigger trigger, const ObjectSpec *spec)
+{
+	if (!HasBit(spec->animation.triggers, trigger)) return;
+
+	TILE_AREA_LOOP(tile, o->location) {
+		TriggerObjectTileAnimation(o, tile, trigger, spec);
+	}
 }

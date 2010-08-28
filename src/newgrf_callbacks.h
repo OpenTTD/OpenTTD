@@ -256,13 +256,13 @@ enum CallbackID {
 	CBID_OBJECT_LAND_SLOPE_CHECK         = 0x157, // 15 bit callback, not implemented
 
 	/** Determine the next animation frame for a house. */
-	CBID_OBJECT_ANIMATION_NEXT_FRAME     = 0x158, // 15 bit callback, not implemented
+	CBID_OBJECT_ANIMATION_NEXT_FRAME     = 0x158, // 15 bit callback
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_OBJECT_ANIMATION_START_STOP     = 0x159, // 15 bit callback, not implemented
+	CBID_OBJECT_ANIMATION_START_STOP     = 0x159, // 15 bit callback
 
 	/** Called to indicate how long the current animation frame should last. */
-	CBID_OBJECT_ANIMATION_SPEED          = 0x15A, // 8 bit callback, not implemented
+	CBID_OBJECT_ANIMATION_SPEED          = 0x15A, // 8 bit callback
 
 	/** Called to determine the colour of a town building. */
 	CBID_OBJECT_COLOUR                   = 0x15B, // 15 bit callback

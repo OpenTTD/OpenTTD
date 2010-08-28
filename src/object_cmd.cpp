@@ -89,6 +89,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town)
 	}
 
 	Object::IncTypeCount(type);
+	if (spec->flags & OBJECT_FLAG_ANIMATION) TriggerObjectAnimation(o, OAT_BUILT, spec);
 }
 
 /**
@@ -379,6 +380,9 @@ static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
 
 static void TileLoop_Object(TileIndex tile)
 {
+	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
+	if (spec->flags & OBJECT_FLAG_ANIMATION) TriggerObjectTileAnimation(Object::GetByTile(tile), tile, OAT_TILELOOP, spec);
+
 	if (IsTileOnWater(tile)) TileLoop_Water(tile);
 
 	if (!IsCompanyHQ(tile)) return;
@@ -424,6 +428,25 @@ static bool ClickTile_Object(TileIndex tile)
 	return true;
 }
 
+static void AnimateTile_Object(TileIndex tile)
+{
+	AnimateNewObjectTile(tile);
+}
+
+/** Call the ticks on the objects. */
+void OnTick_Objects()
+{
+	const Object *o;
+	FOR_ALL_OBJECTS(o) {
+		/* Run 250 tick interval trigger for object animation.
+		 * Object index is included so that triggers are not all done
+		 * at the same time. */
+		if ((_tick_counter + o->index) % 250 == 0) {
+			const ObjectSpec *spec = ObjectSpec::GetByTile(o->location.tile);
+			if (spec->flags & OBJECT_FLAG_ANIMATION) TriggerObjectAnimation(o, OAT_250_TICKS, spec);
+		}
+	}
+}
 
 /* checks, if a radio tower is within a 9x9 tile square around tile */
 static bool IsRadioTowerNearby(TileIndex tile)
@@ -564,7 +587,7 @@ extern const TileTypeProcs _tile_type_object_procs = {
 	GetTileDesc_Object,          // get_tile_desc_proc
 	GetTileTrackStatus_Object,   // get_tile_track_status_proc
 	ClickTile_Object,            // click_tile_proc
-	NULL,                        // animate_tile_proc
+	AnimateTile_Object,          // animate_tile_proc
 	TileLoop_Object,             // tile_loop_clear
 	ChangeTileOwner_Object,      // change_tile_owner_clear
 	NULL,                        // add_produced_cargo_proc
