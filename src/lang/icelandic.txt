@@ -137,8 +137,8 @@ STR_ABBREV_MAIL                                                 :{TINYFONT}ML
 STR_ABBREV_OIL                                                  :{TINYFONT}OL
 STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
 STR_ABBREV_GOODS                                                :{TINYFONT}GD
-STR_ABBREV_GRAIN                                                :{TINYFONT}GR
-STR_ABBREV_WOOD                                                 :{TINYFONT}WD
+STR_ABBREV_GRAIN                                                :{TINYFONT}KR
+STR_ABBREV_WOOD                                                 :{TINYFONT}VI
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
 STR_ABBREV_STEEL                                                :{TINYFONT}ST
 STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
@@ -2060,6 +2060,7 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Lyfta ho
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Jafna land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaupa landssvæði til notkunar síðar
 
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Tré
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Veldu trjátegund sem á að gróðursetja
@@ -2407,6 +2408,7 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Skoða - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Foreldri
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Skoða hlutinn í gildissviði foreldris
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} hjá {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tegund teina
@@ -2416,8 +2418,12 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF b
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Samræmi hreyfimynd{COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Næsta hreyfimynd
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Halda áfram á næstu venjulegu hreyfimynd, sleppir gervi/endurlitun/letur hreyfimyndum og fer aftur á byrjun í lokin.
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Velja hreyfimynd
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Fara í valda hreyfimynd. Ef hreyfimyndin er ekki venjuleg, halda áfram í næstu venjulegu hreyfimynd.
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Fyrri hreyfimynd
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Fara á fyrri venjulegu hreyfimynd, sleppir gervi/endurlitun/letur hreyfimyndum og fer aftast í listen þegar upphafi er náð.
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Framsetning á valinni hreyfimynd. Samstillingu er sleppt við teikningu á þessari hreyfimynd.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Færðu hreyfimyndina, breytir X og Y hliðrun
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X hliðrun: {NUM}, Y hliðrun: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Veldu hreyfimynd
@@ -2446,6 +2452,8 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Óþekktur „A
 STR_NEWGRF_ERROR_INVALID_ID                                     :Reyndi að notast við rangt ID
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inniheldur gallaða mynd. Allar gallaðar myndir munu birtast sem rauð spurningamerki (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inniheldur margar „Action 8“ færslur
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesa eftir lokin á gerfi-hreyfimynd
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Grunnteiknisafnið sem er í notkun vantar hluta af hreyfimyndunum.{}Vinsamlegast uppfærðu grunnteiknisafnið.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varúð!
@@ -2467,6 +2475,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Vantar skr
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Hegðun NewGRF '{0:STRING}' er líkleg til að valda hnökrum og/eða hruni á kreyslu leiksins.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Breytir stöðu á togvagni '{1:ENGINE}' þegar hann er ekki í skýli
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Breytir lengd á farartæki '{1:ENGINE}' þegar það er ekki í skýli.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Lest '{VEHICLE}' sem tilheyrir '{COMPANY}' er ekki af réttri lengd. Þessu valda sennilega NewGRF vandamál. Leikurinn kann að missa samband eða hrynja.
 
@@ -2483,7 +2492,9 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid indust
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} Merki{P "" s}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Stemma há-/lágstafi
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Hreinsa síu
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Skifta á milli há-/lágstafa stemmingu þegar nöfn skilta eru borin saman við síaðan texta
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Hreinsa síu
 
 # Sign window
@@ -2508,6 +2519,7 @@ STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Farþega
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Póstur síðasta mánaðar: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Nauðsynlegur farmur fyrir stækkun bæjarins:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} nauðsynlegt
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} nauðsynlegt á veturnar
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} flutt í síðasta mánuði
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Hávaðamörk í bænum: {ORANGE}{COMMA}{BLACK}  mest: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Færa sjónarhorn á staðsetningu bæjar. Ctrl+Smelltu til að opna sýnisglugga yfir þessum bæ
@@ -2563,6 +2575,7 @@ STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nöfn st
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haltu CTRL inni til að velja fleiri en einn hlut
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stöðvar
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
+STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ekkert -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Velja allar gerðir
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Velja allar tegundir farms (einnig þær sem ekki bíða)
@@ -2605,7 +2618,11 @@ STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Sýna ö
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Endurnefna stöð/lestunarsvæði
 
 # Waypoint/buoy view window
+STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Færa sjónarhorn á staðsetningu millistöðvar. Ctrl+Smelltu til að opna sýniglugg á þessa staðsetningu
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Breyta nafni á vegleiðara
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Færa sjónarhorn á staðsetningu bauju. Ctrl+Smelltu til að opna sýnisglugga á þessa staðsetningu.
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Breyta nafni bauju
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Breyta nafni millistöðvar
 
@@ -2654,7 +2671,9 @@ STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Heildarve
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% í eigu {COMPANY})
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Byggja HS
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Byggja höfðustöðvar fyrirtækisins
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Skoða HS
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Sjá höfuðstöðvar fyrirtækisins
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytja HS
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Endurreisa höfuðstöðvarnar annarsstaðar fyrir 1% af verðmæti fyrirtækis
 
@@ -2679,6 +2698,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Við eru
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Iðnaðir
+STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Enginn -
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% flutt)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% flutt)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
@@ -2821,7 +2841,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Endurnef
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Endurnefna tegund flugvélar
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Breyta nafni skýlis
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Endurnefna skýli
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2903,6 +2926,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :einteinungslest
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :segul lest
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Verð: {CURRENCY} Þyngd: {WEIGHT_S}{}Hraði: {VELOCITY}  Afl: {POWER}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {CARGO}
+STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Verð: {CURRENCY} Þyngd: {WEIGHT_S}{}Hámarskhraði: {VELOCITY}  Afl: {POWER}  Hámarks kraftur: {6:FORCE}{}Running Cost: {4:CURRENCY}/ári{}Burðargeta: {5:CARGO}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_CAPACITY_RUNCOST     :{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO}, {CARGO}{}Rekstrarkostnaður: {CURRENCY} á ári
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAPACITY_RUNCOST              :{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO}{}Rekstrarkostnaður: {CURRENCY} á ári
 
@@ -3000,9 +3024,17 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Engar s
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Á leið til {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Á leið til {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Á leið til {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Á leið til {DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Þjónusta í {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Þjónusta í {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Stöðvuð
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Stöðvuð
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Ræst
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Ræst
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Upplýsingar)
@@ -3026,6 +3058,7 @@ STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Hagnaðu
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Framleiðsluár: {LTBLUE}{NUM}{BLACK} Verðgildi: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Burðargeta: {LTBLUE}Engin
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Burðargeta: {LTBLUE}{CARGO}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Burðargeta: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Burðargeta: {LTBLUE}{CARGO}, {CARGO}{STRING}
@@ -3091,6 +3124,8 @@ STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Áætlun
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Skipta yfir í áætlanasýn
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Áætlun - smelltu til að velja stöð. CTRL + músartakki færir sjónarhorn að stöðinni
+STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
+STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
 STR_ORDERS_END_OF_ORDERS                                        :- - Endi skipana - -
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Endi sameiginlegra skipana - -
@@ -3175,6 +3210,7 @@ STR_ORDER_TRAIN_DEPOT                                           :lestaskýli
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :bifreiðaskýli
 STR_ORDER_SHIP_DEPOT                                            :skipaskýli
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Breyta í {STRING})
 STR_ORDER_REFIT_STOP_ORDER                                      :(Breyta í {STRING} og stöðva)
@@ -3228,7 +3264,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Það mu
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Þetta farartæki er nú þegar á réttum tíma
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Þetta farartæki er {STRING} of seint
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Þetta farartæki er {STRING} of fljótt
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Þessi tímaáætlun er ekki hafin
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tímaáætlunin byrjar {STRING}
 
+STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Byrjunardagsetning
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Veldu dagsetningu til að hefja notkun tímaáætlunar
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Breyta tíma
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Breyta tímanum sem valin skipun ætti að taka
@@ -3242,19 +3282,45 @@ STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Endursti
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Skrifa sjálfvirkt
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Bæta áfangastöðum næstu ferðar sjálfvirkt við áætlunina (Ctrl+smelltu til að reyna að halda biðtímum)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Væntanleg
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Áætluð
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Skifta á milli væntanlegs og áætlaðs
 
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :K:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 
 
 # Date window (for timetable)
+STR_DATE_CAPTION                                                :{WHITE}Velja dagsetningu
+STR_DATE_SET_DATE                                               :{BLACK}Velja dagsetningu
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Nota valda dagsetningu sem upphafsdag fyrir þessa tímaáætlun
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Veldu dag
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Veldu mánuð
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Veldu ár
 
 
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}Aflúsun gervigreindar
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nafn gervigreindar
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Stillingar gerfigreindar
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Breyta stillingunum fyrir þessa gerfigreind
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Endurhlaða gervigreind
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stöðva gervigreindina, endurhlaða skriftunni og ræsa gervigreindina á ný
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Virkja/óvirkja pásu þegar AI skilaboð stemma við pásu texta
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Pása á:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Pása í gangi
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Þegar gerfigreindarskilboð stemmi við textan fer leikurinn í pásu.
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Stemma há-/lágstafi
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Skifta á milli stemmingu á há-/lágstöfum þegar gerfigreindarskilaboð eru borin saman við pásu texta
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Áfram
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Láta gerfigreind halda áfram.
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Skoða ferlisupplýsingar frá þessari gerfigreind
 
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD kemur án gerfigreindar...
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... engar gerfigreindir í boði!
 
+STR_ERROR_AI_NO_AI_FOUND                                        :Engin nothæf gerfigreind fundin.{}Þetta er platgerfigreind sem gerir ekkert.{}Hægt er að ná í gerfigreindir með 'Ná í viðbætur af netinu' valmöguleikanum.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ein af gervigreindunum hrundi. Vinsamlega gerðu höfundi gervigreindarinnar viðvart og sendu inn mynd af aflúsunarglugga gervigreindarinnar.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Aflúsunargluggi gervigreindar er aðeins aðgengilegur á þjóni
 
@@ -3264,6 +3330,10 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Gervigre
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Mennskur leikmaður
 STR_AI_CONFIG_RANDOM_AI                                         :Gervigreind af handahófi
 
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Færa upp
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Færa valda gerfigreind upp listann
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Færa niður
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Færa valda gerfigreind niður listann
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Velja gervigreind
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Velja aðra gervigreind
@@ -3320,6 +3390,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Leikur er vista
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Skrá er ekki lesanleg
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Skrá er ekki skrifanleg
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Könnun gagnaheilinda mistókst
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Leikurinn var vistaður í útgáfu án sporvagna. Allir sporvagnar hafa verið fjarlægðir.
 
 # Map generation messages
@@ -3407,6 +3478,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... of m
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... það er ekkert laust svæði á kortinu
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bærinn getur ekki lagt vegi. Því er hægt að breyta í Þróaðri stillingar->Efnahagur->Bæir.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vegaframkvæmdir standa yfir
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ekki hægt að eyða bæ...{}Stöð eða skýli vísar í þennan bæ eða ekki hægt að fjarlægja reit í eigu bæjarins.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... það er enginn ákjósanlegur staður fyrir styttu í miðbæ þessa bæjar
 
 # Industry related errors
@@ -3448,6 +3520,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Of nál�
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Get ekki endurnefnt stöð...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... vegurinn er í eigu bæjar
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vegurinn snýr í ranga átt
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... gegnumakstursstöðvar geta ekki verið í beygjum
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... gegnumakstursstöðvar geta ekki verið á gatnamótum
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Get ekki fjarlægt hluta af stöð...
@@ -3468,12 +3542,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Verður 
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Þarf fyrst að rífa flugvöll
 
 # Waypoint related errors
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Liggur að fleirri en einni millistöð
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Of nálægt annari millistöð
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Get ekki byggt lestarmillistöð hér...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Get ekki sett bauju hér...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Get ekki breytt nafni millistöðvar...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Get ekki fjarlægt lestarmillistöð héðan...
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Verður að fjarlægja millistöð fyrst
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bauja fyrir
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... baujan er notuð af öðru fyrirtæki!
 
@@ -3483,6 +3560,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Get ekki
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Get ekki reist sporvagnaskýli hér...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Get ekki reist slipp hér...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ekki hægt að endurnefna skýli...
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... verður að vera stöðvuð í skýli
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... verður að vera stöðvað í bifreiðaskýli
@@ -3513,6 +3591,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Verður 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Enginn hentugur lestarteinn
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Verður að fjarlægja lestartein fyrst
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vegurinn er einstefnuvegur eða stíflaður
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Gatnamót ekki leyfð fyrir þessa tegund teina
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Get ekki byggt umferðarljós hér...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Get ekki byggt lestartein hér...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Get ekki fjarlægt lestartein héðan...
@@ -3544,6 +3623,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ekki hæ
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... hér er nú þegar tré
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... vitlaus landslagsgerð fyrir þessa gerð af tré
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ekki hægt að gróðursetja tré hér...
 
 # Bridge related errors
@@ -3554,6 +3634,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brúaren
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Brú er of lág fyrir umhverfið
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Verður að byrja og enda í sömu línu
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... báðir endar brúarinnar verða að vera á landi
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... of löng brú
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Get ekki grafið göng hér...
@@ -3628,6 +3709,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Flugvél
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Of mörg farartæki í leiknum
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Get ekki breytt viðgerðarmillibili...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... ökutæki er eyðilagt
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Get ekki látið lest fara framhjá hættumerki...
@@ -3667,6 +3749,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Get ekki
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ekki hægt að eyða skilti...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe eftirherma
 
 ##id 0x2000
 # Town building names
@@ -3771,6 +3854,8 @@ STR_SV_STNAME_AIRPORT                                           :{STRING} Flugv�
 STR_SV_STNAME_OILFIELD                                          :{STRING} Olíulendi
 STR_SV_STNAME_MINES                                             :{STRING} Náma
 STR_SV_STNAME_DOCKS                                             :{STRING} Höfn
+STR_SV_STNAME_BUOY                                              :{STRING}
+STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
 STR_SV_STNAME_ANNEXE                                            :{STRING} Annáll
 STR_SV_STNAME_SIDINGS                                           :{STRING} Hliðrun
@@ -3817,7 +3902,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Kola Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Olíu Tankur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Búfénaðsvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GOODS_VAN                     :Vöruflutningabíll
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Hveiti Pallur
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_GRAIN_HOPPER                  :Korn Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WOOD_TRUCK                    :Viðar Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_IRON_ORE_HOPPER               :Járn Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :Stál Pallur
@@ -3847,7 +3932,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Kola trukkure
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Olíu Tankur
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Búfénaðsvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Gæðavöru Geymsla
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Hveiti Pallur
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Korn Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Viðar Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Járn Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Stál Pallur
@@ -3879,7 +3964,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Kola Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Olíu Tankur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Búfénaðsvagn
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Gæðavöru Geymsla
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Hveiti Pallur
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Korn Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Viðar Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Járn Pallur
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Stál Pallur
@@ -3925,9 +4010,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_LIVESTOCK_VAN              :Foster búféna
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_GOODS_TRUCK                :Balogh Gæðavörubíll
 STR_VEHICLE_NAME_ROAD_VEHICLE_CRAIGHEAD_GOODS_TRUCK             :Craighead Gæðavörubíll
 STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GOODS_TRUCK                  :Goss Gæðavörubíll
-STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Hveitibíll
-STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Hveitibíll
-STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Hveitibíll
+STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_GRAIN_TRUCK              :Hereford Kornbíll
+STR_VEHICLE_NAME_ROAD_VEHICLE_THOMAS_GRAIN_TRUCK                :Thomas Kornbíll
+STR_VEHICLE_NAME_ROAD_VEHICLE_GOSS_GRAIN_TRUCK                  :Goss Kornbíll
 STR_VEHICLE_NAME_ROAD_VEHICLE_WITCOMBE_WOOD_TRUCK               :Witcombe Viðarbíll
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :Foster Viðarbíll
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland Viðarbíll
@@ -4048,12 +4133,21 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} Bauja
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Bauja #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Fyrirtæki {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Hópur {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Millistöð {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Millistöð {TOWN} #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Lestarskýli
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Lestarskýli #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Bifreiðamiðstöð
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Bifreiðamiðstöð #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Slippur
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Slippur #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Flugskýli
 
 STR_UNKNOWN_STATION                                             :óþekkt stöð
 STR_DEFAULT_SIGN_NAME                                           :Skilti
@@ -4080,6 +4174,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -4101,6 +4196,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -4118,11 +4214,16 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
+STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 

@@ -442,7 +442,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :เปิด/ปิด คอนโซล
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :จับภาพหน้าจอ (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :จับภาพหน้าจอขนาดใหญ่ (Ctrl+G)
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :จับภาพหน้าจอในแบบขยาย
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :จับภาพหน้าจอทั้งหมด (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :เกี่ยวกับ 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ตัวจัดแนว Sprite
 ############ range ends here
@@ -1399,7 +1400,7 @@ STR_CHEATS                                                      :{WHITE}โก�
 STR_CHEATS_TOOLTIP                                              :{BLACK}กล่องตัวเลือกจะแสดงว่าคุณโกงมาก่อนหรือไม่
 STR_CHEAT_MONEY                                                 :{LTBLUE}เพิ่มเงิน {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}เล่นเป็นบริษัท: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}รถไถเวทมนต์ (ทำลายอุตสาหกรรม, ของที่เอาออกไม่ได้): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}รถไถเวทมนต์ (ทำลายส่วนอุตสาหกรรม, ของที่เคลื่อนย้ายไม่ได้): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}อุโมงค์สามารถตัดกันได้: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}สร้างขณะอยู่ในโหมดหยุดชั่วคราว: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}เครื่องบินไอพ่นจะไม่ตก (บ่อย) บนสนามบินขนาดเล็ก: {ORANGE}{STRING}
@@ -1569,6 +1570,7 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}ผล�
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}ขุดส่วนมุมของที่ดินให้ต่ำลง
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}ถมส่วนมุมของที่ดินให้สูงขึ้น
 
+
 # Tree planting window (last two for SE only)
 
 # Land generation window (SE)
@@ -1662,6 +1664,8 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}กร�
 
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}ตั้งค่าใหม่
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}ตั้งค่าพารามิเตอร์ทุกตัวให้เป็นแบบค่าดั้งเดิม
 
 # NewGRF inspect window
 
@@ -1673,6 +1677,7 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}กร�
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}เกิดความผิดพลาดร้ายแรงเกี่ยวกับ NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Read past end of pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}กราฟิกพื้นฐานที่ใช้อยู่นี้ขาดตัวเลขของสไปรท์{}Please update the base graphics set.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}คำเตือน!

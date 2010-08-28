@@ -441,8 +441,8 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Landkvadrataj i
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Baskuligi Konzolon
 STR_ABOUT_MENU_AI_DEBUG                                         :Sencimigo de AI
-STR_ABOUT_MENU_SCREENSHOT                                       :Ekranfoto (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Giganta Ekrankopio (Stir-G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Ekranfoto
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tuta karto ekranfoto
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Pri 'OpenTTD'
 ############ range ends here
 
@@ -779,7 +779,7 @@ STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Eŭropa Mona Unio!{}{}De nun uziĝos la Eŭro kiel monunuo por ĉiutagaj montransskriboj en via lando!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Monda Recesio!{}{}Financaj spertuloj timas ke malpliboniĝas treege! Ekonomio malboniĝadas!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recesio finiĝis!{}{}Komerca pliboniĝos donas konfidon al industrioj! Ekonomio pliboniĝas!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recesio finiĝis!{}{}Komerca pliboniĝos donas konfidon al industrioj!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} pliigas produktadon!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nova karbo trovita ĉe {INDUSTRY}!{}Oni atendas produktan duobligon!
@@ -1086,7 +1086,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisme
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originale
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realisme
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kruteco de deklivo por vagonaroj {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Trajnoj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING} {LTBLUE} (bezonas NPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vagonaroj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING} {LTBLUE} (ne uzu kun NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ligu stacidomojn konstruatajn unu apud la alia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permesu ligi staciojn ne rekte najbarajn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Uzu plibonigitan ŝarĝalgoritmon: {ORANGE}{STRING}
@@ -1887,7 +1887,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Konstrui
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Konstruu signalojn
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Konstruu fervojan ponton
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Konstruu fervojtunelon
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Elekti inter konstruado/forigado de trako, signaliloj, vojpunktoj kaj stacioj. Premu Stir-klavon por forigi relojn de vojpunktoj kaj stacioj.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Elekti inter konstruado/forigado de trako, signaliloj, vojpunktoj kaj stacidomoj. Tenu Stir-klavon por forigi relojn de vojpunktoj kaj stacioj.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Transigu reltipon
 
 # Rail depot construction window
@@ -2018,6 +2018,7 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Altigu l
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ebenigu landon
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Aĉetu landon por onta uzo
 
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arboj
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Elektu arbo-tipon por plant
@@ -2030,7 +2031,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Hazarde 
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landa Generado
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Metu rokecajn lokojn en la lando
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Metu lumturon
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Difinu dezertan regionon.{}Premu kaj tenu CTRL por forigi ĝin
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Difinu dezertan regionon.{}Tenu Ctrl por forigi ĝin
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Metu transmitilon
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Grandigu landparton por (mal)altigi
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Malgrandigu landparton por (mal)altigi

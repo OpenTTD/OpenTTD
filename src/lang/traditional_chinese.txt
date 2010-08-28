@@ -2058,6 +2058,7 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}上昇�
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}整平地面
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}購買土地供將來使用
 
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}樹木
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}選擇要種植的樹種
@@ -2397,6 +2398,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}輸入 N
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 NewGRF 參數
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}關閉
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重設
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :參數 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -3546,7 +3548,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}無法�
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}無法移除列車號誌站...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}必須先移除鐵路號誌站
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... 被浮標擋住
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... 浮標正在使用中！
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... 浮標正被其他公司使用！
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}無法在此興建鐵路機廠...

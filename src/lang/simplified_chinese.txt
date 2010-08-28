@@ -441,8 +441,8 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :查询地块信
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切换到控制台模式
 STR_ABOUT_MENU_AI_DEBUG                                         :AI 调试
-STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图 (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :全地图截图 (Ctrl-G)
+STR_ABOUT_MENU_SCREENSHOT                                       :屏幕截图
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :全地图截图
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :关于 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite 对齐
 ############ range ends here
@@ -558,6 +558,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}详情
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}查看该公司详情
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}车船数量：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}站台数量：
@@ -1412,7 +1413,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}标志�
 STR_CHEATS_WARNING                                              :{BLACK}注意！作弊是不光彩的！所有作弊都将被记录下来！
 STR_CHEAT_MONEY                                                 :{LTBLUE}增加 {CURRENCY} 现金
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}作为{ORANGE}{COMMA}进行游戏
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土机 (清除工业设施或不可移除物)： {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土机 (清除工业设施和其他不可移除物)： {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}隧道可以相交：{ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}可以在暂停模式进行建设：{ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}喷气式飞机不会(经常)在小机场坠毁：{ORANGE}{STRING}
@@ -2055,6 +2056,7 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}升高�
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}拉平地面
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买土地以备将来使用
 
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}树木
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}选择要种植的树木类型
@@ -2067,7 +2069,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}随机�
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}生成土地
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}在地图上设置岩石区域
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}放置灯塔
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}定义沙漠区域{}按住 Ctrl键 可以去掉沙漠区域
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}划出沙漠区域.{}按住 Ctrl键 可以移除沙漠区域
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}放置转播塔
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}增加要升高/降低的土地面积
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}减少要升高/降低的土地面积
@@ -2146,7 +2148,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}有轨�
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}铁路归属：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}地方政府：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :没有
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}坐标： {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}坐标： {LTBLUE}{NUM} × {NUM} × {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建造时间：{LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}车站分类: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}车站类型: {LTBLUE}{STRING}
@@ -2313,7 +2315,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手动
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}高度图旋转：
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度图名称：
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}地图尺寸：
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}请输入随机种子
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}改变雪线高度
@@ -2394,6 +2396,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}输入 N
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}调整 NewGRF 参数
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}关闭
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重置
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :参数 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -2562,7 +2565,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}点击�
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}车站名称{}点击可将屏幕中心移动到车站所在位置. 单击的同时按住Ctrl会在新视点中显示车站位置
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}按住 CTRL 可以选择多个项目
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}按住 CTRL 可以同时选择多项
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} 车站
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2841,10 +2844,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 车辆{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列车 - 点击可以查看列车详细信息{}拖动可以 增加/减少 车厢
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}汽车 - 点击可以查看详细信息
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船只 - 点击可以查看详细信息
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飞机 - 点击可以查看详细信息
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列车 - 左键拖动可调整车厢，右击可查看详情。按Ctrl执行上述操作可同时操作之后车厢。
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}汽车 - 右击可查看详细信息
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船只 - 右击可查看详细信息
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飞机 - 右击可查看详细信息
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}将列车拖到这里以出售
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}将汽车拖到这里以出售
@@ -3520,7 +3523,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}不能�
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}无法移除客运电车车站...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}无法移除货运电车车站...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}必须先拆除汽车站
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...这里没有车站
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... 这里没有车站
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}必须先拆除火车站
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}必须先拆除公共汽车站
@@ -3541,7 +3544,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}不能�
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}不能从这里拆除路点……
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}必须先拆除铁路路点
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}指定的位置有浮标……
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}浮标正在被使用……
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}…… 浮标正在被其他公司使用
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}不能在这里建设列车车库……
@@ -3551,10 +3554,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}不能�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}无法重命名车库...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}列车必须停在一个车库中
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}……必须完全停在一个车库中
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}船只必须停靠在船坞内。
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}飞机必须在机库中停止
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... 列车只能停在车库中
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}…… 必须停在车库中
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... 船只只能在船坞内停下。
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... 飞机只有在机库中才可停止
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}只有列车停在车库中时才能更改挂车
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列车过长
@@ -3586,8 +3589,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}不能�
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}不能从这里拆除铁轨……
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}不能从这里拆除信号灯……
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}无法转换此处的信号灯…
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...这里没有铁路
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...这里没有信号灯
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... 这里没有铁路
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... 这里没有信号灯
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}不能转换铁路的类型……
 
@@ -3598,8 +3601,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}不能�
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}此处无法建造电车道...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}不能拆除这里的公路……
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}无法移除此处的电车道...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...这里没有道路
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...这里没有电车轨
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... 这里没有道路
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... 这里没有电车轨道
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}不能在这里兴建运河……
