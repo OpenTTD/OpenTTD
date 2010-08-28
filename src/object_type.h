@@ -31,4 +31,6 @@ typedef uint16 ObjectID;
 struct Object;
 struct ObjectSpec;
 
+static const ObjectID INVALID_OBJECT = 0xFFFF; ///< An invalid object
+
 #endif /* OBJECT_TYPE_H */

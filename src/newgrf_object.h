@@ -12,9 +12,11 @@
 #ifndef NEWGRF_OBJECT_H
 #define NEWGRF_OBJECT_H
 
+#include "newgrf_callbacks.h"
 #include "date_type.h"
 #include "economy_func.h"
 #include "strings_type.h"
+#include "tile_cmd.h"
 #include "object_type.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_class.h"
@@ -113,5 +115,10 @@ typedef NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX> ObjectClass;
 
 /** Mapping of purchase for objects. */
 static const CargoID CT_PURCHASE_OBJECT = 1;
+
+uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, const Object *o, TileIndex tile);
+
+void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec);
+void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec);
 
 #endif /* NEWGRF_OBJECT_H */
