@@ -253,7 +253,7 @@ enum CallbackID {
 	CBID_AIRPORT_LAYOUT_NAME             = 0x156, // 15 bit callback
 
 	/** Callback done for each tile of an object to check the slope. */
-	CBID_OBJECT_LAND_SLOPE_CHECK         = 0x157, // 15 bit callback, not implemented
+	CBID_OBJECT_LAND_SLOPE_CHECK         = 0x157, // 15 bit callback
 
 	/** Determine the next animation frame for a house. */
 	CBID_OBJECT_ANIMATION_NEXT_FRAME     = 0x158, // 15 bit callback

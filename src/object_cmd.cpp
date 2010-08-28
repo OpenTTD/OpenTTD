@@ -127,7 +127,7 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
 	}
 }
 
-extern CommandCost CheckFlatLand(TileArea tile_area, DoCommandFlag flags);
+extern CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z);
 static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags);
 
 /**
@@ -161,7 +161,37 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		/* Owned land is special as it can be placed on any slope. */
 		cost.AddCost(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
 	} else {
-		cost.AddCost(CheckFlatLand(ta, flags));
+		/* Check the surface to build on. */
+		bool allow_water = (spec->flags & OBJECT_FLAG_BUILT_ON_WATER) != 0;
+		bool allow_ground = (spec->flags & OBJECT_FLAG_NOT_ON_LAND) == 0;
+		TILE_AREA_LOOP(t, ta) {
+			if (IsWaterTile(t)) {
+				if (!allow_water) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
+				/* For water tiles we want to "just" check whether the tile is water and
+				 * can be cleared, i.e. it's not filled. We won't be paying though. */
+				CommandCost ret = DoCommand(t, 0, 0, flags & ~(DC_EXEC | DC_NO_WATER), CMD_LANDSCAPE_CLEAR);
+				if (ret.Failed()) return ret;
+			} else {
+				if (!allow_ground) return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
+				/* For non-water tiles, we'll have to clear it before building. */
+				cost.AddCost(DoCommand(t, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
+			}
+		}
+
+		/* So, now the surface is checked... check the slope of said surface. */
+		if (spec->callback_mask & CBM_OBJ_SLOPE_CHECK) {
+			TILE_AREA_LOOP(t, ta) {
+				TileIndex diff = t - tile;
+				uint16 callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t, NULL), TileY(diff) << 4 | TileX(diff), spec, NULL, t);
+				if (callback != 0) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+			}
+		} else {
+			/* Check whether the ground is flat enough. */
+			int allowed_z = -1;
+			TILE_AREA_LOOP(t, ta) {
+				cost.AddCost(CheckBuildableTile(t, 0, allowed_z));
+			}
+		}
 	}
 	if (cost.Failed()) return cost;
 
@@ -197,7 +227,12 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			break;
 		}
 
-		default: break;
+		case OBJECT_STATUE:
+			/* This may never be constructed using this method. */
+			return CMD_ERROR;
+
+		default: // i.e. NewGRF provided.
+			break;
 	}
 
 	if (flags & DC_EXEC) {
