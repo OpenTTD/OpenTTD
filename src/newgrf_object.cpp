@@ -236,7 +236,6 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 			case 0x61:
 			case 0x62:
 			case 0x64:
-			case 0x65:
 				break;
 
 			/* Allow these, but find the closest town. */
@@ -310,11 +309,8 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 			tile = GetNearbyTile(parameter, tile);
 			return (IsTileType(tile, MP_OBJECT) && Object::GetByTile(tile) == o) ? GetObjectAnimationCounter(tile) : 0;
 
-		/* Distance of nearest object of given type */
-		case 0x64: return GetClosestObject(tile, GetObjectType(tile), o);
-
 		/* Count of object, distance of closest instance */
-		case 0x65: return GetCountAndDistanceOfClosestInstance(parameter, object->grffile->grfid, tile, o);
+		case 0x64: return GetCountAndDistanceOfClosestInstance(parameter, object->grffile->grfid, tile, o);
 	}
 
 	DEBUG(grf, 1, "Unhandled object property 0x%X", variable);
