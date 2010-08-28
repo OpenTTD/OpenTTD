@@ -70,6 +70,12 @@ struct ObjectSpec {
 	bool enabled;                 ///< Is this spec enabled?
 
 	/**
+	 * Check whether the object is available at this time.
+	 * @return true if it is available.
+	 */
+	bool IsAvailable() const;
+
+	/**
 	 * Get the cost for building a structure of this type.
 	 * @return The cost for building.
 	 */

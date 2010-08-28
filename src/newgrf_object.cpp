@@ -11,6 +11,7 @@
 
 #include "stdafx.h"
 #include "core/mem_func.hpp"
+#include "date_func.h"
 #include "newgrf.h"
 #include "newgrf_class_func.h"
 #include "newgrf_object.h"
@@ -33,6 +34,16 @@ ObjectSpec _object_specs[NUM_OBJECTS];
 /* static */ const ObjectSpec *ObjectSpec::GetByTile(TileIndex tile)
 {
 	return ObjectSpec::Get(GetObjectType(tile));
+}
+
+bool ObjectSpec::IsAvailable() const
+{
+	return
+			this->enabled &&
+			_date > this->introduction_date &&
+			(_date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + 365) &&
+			HasBit(this->climate, _settings_game.game_creation.landscape) &&
+			(flags & (_game_mode != GM_EDITOR ? OBJECT_FLAG_ONLY_IN_SCENEDIT : OBJECT_FLAG_ONLY_IN_GAME)) == 0;
 }
 
 /** This function initialize the spec arrays of objects. */
