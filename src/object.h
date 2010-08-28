@@ -34,4 +34,7 @@ void UpdateCompanyHQ(TileIndex tile, uint score);
  */
 void BuildObject(ObjectType type, TileIndex tile, CompanyID owner = OWNER_NONE, struct Town *town = NULL);
 
+void PlaceProc_Object(TileIndex tile);
+void ShowBuildObjectPicker(struct Window *w);
+
 #endif /* OBJECT_H */

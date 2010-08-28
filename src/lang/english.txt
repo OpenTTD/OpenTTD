@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industry
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Road construction
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant trees
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Place sign
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Place object
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Save scenario
@@ -2059,6 +2060,13 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Lower a 
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Raise a corner of land
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Level land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Purchase land for future use
+
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Object Selection
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Select object to build
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Object class
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Preview of the object
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Size: {GOLD}{NUM} x {NUM} tiles
 
 STR_OBJECT_CLASS_LTHS                                           :Lighthouses
 STR_OBJECT_CLASS_TRNS                                           :Transmitters

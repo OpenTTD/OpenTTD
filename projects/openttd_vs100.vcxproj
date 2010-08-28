@@ -653,6 +653,7 @@
     <ClCompile Include="..\src\newgrf_debug_gui.cpp" />
     <ClCompile Include="..\src\newgrf_gui.cpp" />
     <ClCompile Include="..\src\news_gui.cpp" />
+    <ClCompile Include="..\src\object_gui.cpp" />
     <ClCompile Include="..\src\order_gui.cpp" />
     <ClCompile Include="..\src\osk_gui.cpp" />
     <ClCompile Include="..\src\rail_gui.cpp" />

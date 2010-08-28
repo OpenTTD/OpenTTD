@@ -22,13 +22,14 @@
 #include "functions.h"
 #include "sound_func.h"
 #include "base_station_base.h"
-#include "object_type.h"
 #include "textbuf_gui.h"
 #include "genworld.h"
 #include "tree_map.h"
 #include "landscape_type.h"
 #include "tilehighlight_func.h"
 #include "strings_func.h"
+#include "newgrf_object.h"
+#include "object.h"
 #include "hotkeys.h"
 
 #include "table/strings.h"
@@ -159,6 +160,7 @@ static void PlaceProc_LevelLand(TileIndex tile)
 
 /** Enum referring to the widgets of the terraform toolbar */
 enum TerraformToolbarWidgets {
+	TTW_SHOW_PLACE_OBJECT,                ///< Should the place object button be shown?
 	TTW_BUTTONS_START,                    ///< Start of pushable buttons
 	TTW_LOWER_LAND = TTW_BUTTONS_START,   ///< Lower land button
 	TTW_RAISE_LAND,                       ///< Raise land button
@@ -167,6 +169,7 @@ enum TerraformToolbarWidgets {
 	TTW_BUY_LAND,                         ///< Buy land button
 	TTW_PLANT_TREES,                      ///< Plant trees button (note: opens seperate window, no place-push-button)
 	TTW_PLACE_SIGN,                       ///< Place sign button
+	TTW_PLACE_OBJECT,                     ///< Place object button
 };
 
 static void TerraformClick_Lower(Window *w)
@@ -205,6 +208,13 @@ static void TerraformClick_PlaceSign(Window *w)
 	HandlePlacePushButton(w, TTW_PLACE_SIGN, SPR_CURSOR_SIGN, HT_RECT, PlaceProc_Sign);
 }
 
+static void TerraformClick_PlaceObject(Window *w)
+{
+	/* Don't show the place object button when there are no objects to place. */
+	if (ObjectClass::GetCount() == 0) return;
+	if (HandlePlacePushButton(w, TTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Object)) ShowBuildObjectPicker(w);
+}
+
 static OnButtonClick * const _terraform_button_proc[] = {
 	TerraformClick_Lower,
 	TerraformClick_Raise,
@@ -213,17 +223,28 @@ static OnButtonClick * const _terraform_button_proc[] = {
 	TerraformClick_BuyLand,
 	TerraformClick_Trees,
 	TerraformClick_PlaceSign,
+	TerraformClick_PlaceObject,
 };
 
 struct TerraformToolbarWindow : Window {
 	TerraformToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->InitNested(desc, window_number);
+		/* This is needed as we like to have the tree available on OnInit. */
+		this->CreateNestedTree(desc);
+		this->FinishInitNested(desc, window_number);
 	}
 
 	~TerraformToolbarWindow()
 	{
 	}
+
+	virtual void OnInit()
+	{
+		/* Don't show the place object button when there are no objects to place. */
+		NWidgetStacked *show_object = this->GetWidget<NWidgetStacked>(TTW_SHOW_PLACE_OBJECT);
+		show_object->SetDisplayedPlane(ObjectClass::GetCount() != 0 ? 0 : SZSP_NONE);
+	}
+
 
 	virtual void OnPaint()
 	{
@@ -277,6 +298,7 @@ struct TerraformToolbarWindow : Window {
 
 	virtual void OnPlaceObjectAbort()
 	{
+		DeleteWindowById(WC_BUILD_OBJECT, 0);
 		this->RaiseButtons();
 	}
 
@@ -291,6 +313,7 @@ Hotkey<TerraformToolbarWindow> TerraformToolbarWindow::terraform_hotkeys[] = {
 	Hotkey<TerraformToolbarWindow>('U', "buyland", TTW_BUY_LAND),
 	Hotkey<TerraformToolbarWindow>('I', "trees", TTW_PLANT_TREES),
 	Hotkey<TerraformToolbarWindow>('O', "placesign", TTW_PLACE_SIGN),
+	Hotkey<TerraformToolbarWindow>('P', "placeobject", TTW_PLACE_OBJECT),
 	HOTKEY_LIST_END(TerraformToolbarWindow)
 };
 Hotkey<TerraformToolbarWindow> *_terraform_hotkeys = TerraformToolbarWindow::terraform_hotkeys;
@@ -319,6 +342,10 @@ static const NWidgetPart _nested_terraform_widgets[] = {
 								SetFill(0, 1), SetDataTip(SPR_IMG_PLANTTREES, STR_SCENEDIT_TOOLBAR_PLANT_TREES),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_PLACE_SIGN), SetMinimalSize(22, 22),
 								SetFill(0, 1), SetDataTip(SPR_IMG_SIGN, STR_SCENEDIT_TOOLBAR_PLACE_SIGN),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, TTW_SHOW_PLACE_OBJECT),
+			NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, TTW_PLACE_OBJECT), SetMinimalSize(22, 22),
+								SetFill(0, 1), SetDataTip(SPR_IMG_TRANSMITTER, STR_SCENEDIT_TOOLBAR_PLACE_OBJECT),
+		EndContainer(),
 	EndContainer(),
 };
 

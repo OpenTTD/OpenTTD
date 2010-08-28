@@ -268,7 +268,7 @@ enum CallbackID {
 	CBID_OBJECT_COLOUR                   = 0x15B, // 15 bit callback
 
 	/** Called to determine more text in the fund object window */
-	CBID_OBJECT_FUND_MORE_TEXT           = 0x15C, // 15 bit callback, not implemented
+	CBID_OBJECT_FUND_MORE_TEXT           = 0x15C, // 15 bit callback
 
 	/** Called to determine if one can alter the ground below an object tile */
 	CBID_OBJECT_AUTOSLOPE                = 0x15D, // 15 bit callback

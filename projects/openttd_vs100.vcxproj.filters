@@ -1179,6 +1179,9 @@
     <ClCompile Include="..\src\news_gui.cpp">
       <Filter>GUI Source Code</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\object_gui.cpp">
+      <Filter>GUI Source Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\src\order_gui.cpp">
       <Filter>GUI Source Code</Filter>
     </ClCompile>

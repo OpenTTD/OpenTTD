@@ -1530,6 +1530,9 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		nw->avails.ForceRebuild();
 
 		w->InvalidateData();
+
+		ReInitAllWindows();
+		DeleteWindowByClass(WC_BUILD_OBJECT);
 	}
 }
 

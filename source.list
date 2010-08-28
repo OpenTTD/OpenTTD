@@ -405,6 +405,7 @@ network/network_gui.cpp
 newgrf_debug_gui.cpp
 newgrf_gui.cpp
 news_gui.cpp
+object_gui.cpp
 order_gui.cpp
 osk_gui.cpp
 rail_gui.cpp

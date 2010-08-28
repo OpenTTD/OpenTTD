@@ -1895,6 +1895,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\object_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\order_gui.cpp"
 				>
 			</File>
