@@ -12,9 +12,11 @@
 #ifndef NEWGRF_OBJECT_H
 #define NEWGRF_OBJECT_H
 
+#include "date_type.h"
 #include "economy_func.h"
 #include "strings_type.h"
 #include "object_type.h"
+#include "newgrf_animation_type.h"
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 
@@ -55,10 +57,16 @@ struct ObjectSpec {
 	ObjectClassID cls_id;         ///< The class to which this spec belongs.
 	StringID name;                ///< The name for this object.
 
+	uint8 climate;                ///< In which climates is this object available?
 	uint8 size;                   ///< The size of this objects; low nibble for X, high nibble for Y.
 	uint8 build_cost_multiplier;  ///< Build cost multiplier per tile.
 	uint8 clear_cost_multiplier;  ///< Clear cost multiplier per tile.
+	Date introduction_date;       ///< From when can this object be built.
+	Date end_of_life_date;        ///< When can't this object be built anymore.
 	ObjectFlags flags;            ///< Flags/settings related to the object.
+	AnimationInfo animation;      ///< Information about the animation.
+	uint16 callback_mask;         ///< Bitmask of requested/allowed callbacks.
+	uint8 height;                 ///< The height of this structure, in heightlevels; max MAX_TILE_HEIGHT.
 	bool enabled;                 ///< Is this spec enabled?
 
 	/**
