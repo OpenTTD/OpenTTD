@@ -53,4 +53,11 @@ enum AirpAnimationTrigger {
 	AAT_STATION_250_TICKS,   ///< Triggered every 250 ticks (for all tiles at the same time).
 };
 
+/** Animation triggers for objects. */
+enum ObjectAnimationTrigger {
+	OAT_BUILT,     ///< Triggered when the object is built (for all tiles at the same time).
+	OAT_TILELOOP,  ///< Triggered in the periodic tile loop.
+	OAT_250_TICKS, ///< Triggered every 250 ticks (for all tiles at the same time).
+};
+
 #endif /* NEWGRF_ANIMATION_TYPE_H */

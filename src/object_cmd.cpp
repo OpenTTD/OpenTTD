@@ -121,9 +121,9 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	CommandCost cost(EXPENSES_PROPERTY);
 
 	ObjectType type = (ObjectType)GB(p1, 0, 8);
-	if (type >= OBJECT_MAX) return CMD_ERROR;
-
 	const ObjectSpec *spec = ObjectSpec::Get(type);
+	if (!spec->enabled) return CMD_ERROR;
+
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_SCENEDIT && (_game_mode != GM_EDITOR || _current_company != OWNER_NONE)) return CMD_ERROR;
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_GAME && (_game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
 
@@ -195,6 +195,10 @@ static void DrawTile_Object(TileInfo *ti)
 {
 	ObjectType type = GetObjectType(ti->tile);
 	const ObjectSpec *spec = ObjectSpec::Get(type);
+
+	/* Fall back for when the object doesn't exist anymore. */
+	if (!spec->enabled) type = OBJECT_TRANSMITTER;
+
 	if ((spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) == 0) DrawFoundation(ti, GetFoundation_Object(ti->tile, ti->tileh));
 
 	const DrawTileSprites *dts = NULL;

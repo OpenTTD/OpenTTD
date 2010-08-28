@@ -251,6 +251,27 @@ enum CallbackID {
 
 	/** Called to determine text to show as airport layout name. */
 	CBID_AIRPORT_LAYOUT_NAME             = 0x156, // 15 bit callback
+
+	/** Callback done for each tile of an object to check the slope. */
+	CBID_OBJECT_LAND_SLOPE_CHECK         = 0x157, // 15 bit callback, not implemented
+
+	/** Determine the next animation frame for a house. */
+	CBID_OBJECT_ANIMATION_NEXT_FRAME     = 0x158, // 15 bit callback, not implemented
+
+	/** Called for periodically starting or stopping the animation. */
+	CBID_OBJECT_ANIMATION_START_STOP     = 0x159, // 15 bit callback, not implemented
+
+	/** Called to indicate how long the current animation frame should last. */
+	CBID_OBJECT_ANIMATION_SPEED          = 0x15A, // 8 bit callback, not implemented
+
+	/** Called to determine the colour of a town building. */
+	CBID_OBJECT_COLOUR                   = 0x15B, // 15 bit callback, not implemented
+
+	/** Called to determine more text in the fund object window */
+	CBID_OBJECT_FUND_MORE_TEXT           = 0x15C, // 15 bit callback, not implemented
+
+	/** Called to determine if one can alter the ground below an object tile */
+	CBID_OBJECT_AUTOSLOPE                = 0x15D, // 15 bit callback, not implemented
 };
 
 /**
@@ -344,6 +365,18 @@ enum IndustryTileCallbackMask {
 	CBM_INDT_SHAPE_CHECK              = 4,  ///< decides slope suitability
 	CBM_INDT_DRAW_FOUNDATIONS         = 5,  ///< decides if default foundations need to be drawn
 	CBM_INDT_AUTOSLOPE                = 6,  ///< decides allowance of autosloping
+};
+
+/**
+ * Callback masks for objects
+ */
+enum ObjectCallbackMask {
+	CBM_OBJ_SLOPE_CHECK               =  0, ///< decides slope suitability
+	CBM_OBJ_ANIMATION_NEXT_FRAME      =  1, ///< decides next animation frame
+	CBM_OBJ_ANIMATION_SPEED           =  2, ///< decides animation speed
+	CBM_OBJ_COLOUR                    =  3, ///< decide the color of the building
+	CBM_OBJ_FUND_MORE_TEXT            =  4, ///< additional text in fund window
+	CBM_OBJ_AUTOSLOPE                 =  5, ///< decides allowance of autosloping
 };
 
 /**

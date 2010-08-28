@@ -31,9 +31,11 @@ enum ObjectFlags {
 	OBJECT_FLAG_NOT_ON_LAND        = 1 <<  9, ///< Object can not be on land, implicitly sets #OBJECT_FLAG_BUILT_ON_WATER.
 	OBJECT_FLAG_DRAW_WATER         = 1 << 10, ///< Object wants to be drawn on water.
 	OBJECT_FLAG_ALLOW_UNDER_BRIDGE = 1 << 11, ///< Object can built under a bridge.
+	OBJECT_FLAG_ANIM_RANDOM_BITS   = 1 << 12, ///< Object wants random bits in "next animation frame" callback
 };
 DECLARE_ENUM_AS_BIT_SET(ObjectFlags)
 
+void ResetObjects();
 
 /** An object that isn't use for transport, industries or houses. */
 struct ObjectSpec {
@@ -42,6 +44,7 @@ struct ObjectSpec {
 	uint8 build_cost_multiplier;  ///< Build cost multiplier per tile.
 	uint8 clear_cost_multiplier;  ///< Clear cost multiplier per tile.
 	ObjectFlags flags;            ///< Flags/settings related to the object.
+	bool enabled;                 ///< Is this spec enabled?
 
 	/**
 	 * Get the cost for building a structure of this type.

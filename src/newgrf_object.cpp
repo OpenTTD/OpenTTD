@@ -10,19 +10,32 @@
 /** @file newgrf_object.cpp Handling of object NewGRFs. */
 
 #include "stdafx.h"
+#include "core/mem_func.hpp"
 #include "newgrf_object.h"
 #include "object_map.h"
 
-extern const ObjectSpec _original_objects[];
+extern const ObjectSpec _original_objects[NEW_OBJECT_OFFSET];
+/** All the object specifications. */
+static ObjectSpec _object_specs[NUM_OBJECTS];
 
 /* static */ const ObjectSpec *ObjectSpec::Get(ObjectType index)
 {
-	assert(index < OBJECT_MAX);
-	return &_original_objects[index];
+	assert(index < NUM_OBJECTS);
+	return &_object_specs[index];
 }
 
 /* static */ const ObjectSpec *ObjectSpec::GetByTile(TileIndex tile)
 {
 	return ObjectSpec::Get(GetObjectType(tile));
+}
+
+/** This function initialize the spec arrays of objects. */
+void ResetObjects()
+{
+	/* Clean the pool. */
+	MemSetT(_object_specs, 0, lengthof(_object_specs));
+
+	/* And add our originals. */
+	MemCpyT(_object_specs, _original_objects, lengthof(_original_objects));
 }
 

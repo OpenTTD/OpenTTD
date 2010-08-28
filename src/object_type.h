@@ -13,14 +13,17 @@
 #define OBJECT_TYPE_H
 
 /** Types of objects. */
-enum ObjectType {
-	OBJECT_TRANSMITTER = 0,    ///< The large antenna
-	OBJECT_LIGHTHOUSE  = 1,    ///< The nice lighthouse
-	OBJECT_STATUE      = 2,    ///< Statue in towns
-	OBJECT_OWNED_LAND  = 3,    ///< Owned land 'flag'
-	OBJECT_HQ          = 4,    ///< HeadQuarter of a player
-	OBJECT_MAX,
-};
+typedef uint16 ObjectType;
+
+static const ObjectType OBJECT_TRANSMITTER  =   0;    ///< The large antenna
+static const ObjectType OBJECT_LIGHTHOUSE   =   1;    ///< The nice lighthouse
+static const ObjectType OBJECT_STATUE       =   2;    ///< Statue in towns
+static const ObjectType OBJECT_OWNED_LAND   =   3;    ///< Owned land 'flag'
+static const ObjectType OBJECT_HQ           =   4;    ///< HeadQuarter of a player
+
+static const ObjectType NEW_OBJECT_OFFSET   =   5;    ///< Offset for new objects
+static const ObjectType NUM_OBJECTS         = 256;    ///< Number of supported objects
+static const ObjectType INVALID_OBJECT_TYPE = 0xFFFF; ///< An invalid object
 
 /** Unique identifier for an object. */
 typedef uint16 ObjectID;

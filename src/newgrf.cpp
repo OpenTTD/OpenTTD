@@ -35,6 +35,7 @@
 #include "newgrf_industries.h"
 #include "newgrf_airporttiles.h"
 #include "newgrf_airport.h"
+#include "newgrf_object.h"
 #include "rev.h"
 #include "fios.h"
 #include "strings_func.h"
@@ -6793,6 +6794,9 @@ static void ResetNewGRFData()
 	/* Reset the industries structures*/
 	ResetCustomIndustries();
 	ResetIndustries();
+
+	/* Reset the objects. */
+	ResetObjects();
 
 	/* Reset station classes */
 	StationClass::Reset();
