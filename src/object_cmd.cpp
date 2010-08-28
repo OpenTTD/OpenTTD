@@ -259,42 +259,46 @@ static void DrawTile_Object(TileInfo *ti)
 
 	if ((spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) == 0) DrawFoundation(ti, GetFoundation_Object(ti->tile, ti->tileh));
 
-	const DrawTileSprites *dts = NULL;
-	Owner to = GetTileOwner(ti->tile);
-	PaletteID palette = to == OWNER_NONE ? PAL_NONE : COMPANY_SPRITE_COLOUR(to);
+	if (type < NEW_OBJECT_OFFSET) {
+		const DrawTileSprites *dts = NULL;
+		Owner to = GetTileOwner(ti->tile);
+		PaletteID palette = to == OWNER_NONE ? PAL_NONE : COMPANY_SPRITE_COLOUR(to);
 
-	if (type == OBJECT_HQ) {
-		TileIndex diff = ti->tile - Object::GetByTile(ti->tile)->location.tile;
-		dts = &_object_hq[GetCompanyHQSize(ti->tile) << 2 | TileY(diff) << 1 | TileX(diff)];
-	} else {
-		dts = &_objects[type];
-	}
+		if (type == OBJECT_HQ) {
+			TileIndex diff = ti->tile - Object::GetByTile(ti->tile)->location.tile;
+			dts = &_object_hq[GetCompanyHQSize(ti->tile) << 2 | TileY(diff) << 1 | TileX(diff)];
+		} else {
+			dts = &_objects[type];
+		}
 
-	if (spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) {
-		/* If an object has no foundation, but tries to draw a (flat) ground
-		 * type... we have to be nice and convert that for them. */
-		switch (dts->ground.sprite) {
-			case SPR_FLAT_BARE_LAND:          DrawClearLandTile(ti, 0); break;
-			case SPR_FLAT_1_THIRD_GRASS_TILE: DrawClearLandTile(ti, 1); break;
-			case SPR_FLAT_2_THIRD_GRASS_TILE: DrawClearLandTile(ti, 2); break;
-			case SPR_FLAT_GRASS_TILE:         DrawClearLandTile(ti, 3); break;
-			default: DrawGroundSprite(dts->ground.sprite, palette);     break;
+		if (spec->flags & OBJECT_FLAG_HAS_NO_FOUNDATION) {
+			/* If an object has no foundation, but tries to draw a (flat) ground
+			 * type... we have to be nice and convert that for them. */
+			switch (dts->ground.sprite) {
+				case SPR_FLAT_BARE_LAND:          DrawClearLandTile(ti, 0); break;
+				case SPR_FLAT_1_THIRD_GRASS_TILE: DrawClearLandTile(ti, 1); break;
+				case SPR_FLAT_2_THIRD_GRASS_TILE: DrawClearLandTile(ti, 2); break;
+				case SPR_FLAT_GRASS_TILE:         DrawClearLandTile(ti, 3); break;
+				default: DrawGroundSprite(dts->ground.sprite, palette);     break;
+			}
+		} else {
+			DrawGroundSprite(dts->ground.sprite, palette);
+		}
+
+		if (!IsInvisibilitySet(TO_STRUCTURES)) {
+			const DrawTileSeqStruct *dtss;
+			foreach_draw_tile_seq(dtss, dts->seq) {
+				AddSortableSpriteToDraw(
+					dtss->image.sprite, palette,
+					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+					dtss->size_x, dtss->size_y,
+					dtss->size_z, ti->z + dtss->delta_z,
+					IsTransparencySet(TO_STRUCTURES)
+				);
+			}
 		}
 	} else {
-		DrawGroundSprite(dts->ground.sprite, palette);
-	}
-
-	if (!IsInvisibilitySet(TO_STRUCTURES)) {
-		const DrawTileSeqStruct *dtss;
-		foreach_draw_tile_seq(dtss, dts->seq) {
-			AddSortableSpriteToDraw(
-				dtss->image.sprite, palette,
-				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
-				dtss->size_x, dtss->size_y,
-				dtss->size_z, ti->z + dtss->delta_z,
-				IsTransparencySet(TO_STRUCTURES)
-			);
-		}
+		DrawNewObjectTile(ti, spec);
 	}
 
 	if (spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) DrawBridgeMiddle(ti);
