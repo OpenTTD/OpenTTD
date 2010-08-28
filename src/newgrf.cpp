@@ -5685,6 +5685,8 @@ static void ParamSet(ByteReader *buf)
 				src1 = 0;
 			} else if (file == NULL || (c != NULL && c->status == GCS_DISABLED)) {
 				src1 = 0;
+			} else if (src1 == 0xFE) {
+				src1 = c->version;
 			} else {
 				src1 = file->GetParam(src1);
 			}
