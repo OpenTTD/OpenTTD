@@ -439,7 +439,11 @@ static void GetTileDesc_Object(TileIndex tile, TileDesc *td)
 static void TileLoop_Object(TileIndex tile)
 {
 	const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
-	if (spec->flags & OBJECT_FLAG_ANIMATION) TriggerObjectTileAnimation(Object::GetByTile(tile), tile, OAT_TILELOOP, spec);
+	if (spec->flags & OBJECT_FLAG_ANIMATION) {
+		const Object *o = Object::GetByTile(tile);
+		TriggerObjectTileAnimation(o, tile, OAT_TILELOOP, spec);
+		if (o->location.tile == tile) TriggerObjectAnimation(o, OAT_256_TICKS, spec);
+	}
 
 	if (IsTileOnWater(tile)) TileLoop_Water(tile);
 
@@ -489,21 +493,6 @@ static bool ClickTile_Object(TileIndex tile)
 static void AnimateTile_Object(TileIndex tile)
 {
 	AnimateNewObjectTile(tile);
-}
-
-/** Call the ticks on the objects. */
-void OnTick_Objects()
-{
-	const Object *o;
-	FOR_ALL_OBJECTS(o) {
-		/* Run 250 tick interval trigger for object animation.
-		 * Object index is included so that triggers are not all done
-		 * at the same time. */
-		if ((_tick_counter + o->index) % 250 == 0) {
-			const ObjectSpec *spec = ObjectSpec::GetByTile(o->location.tile);
-			if (spec->flags & OBJECT_FLAG_ANIMATION) TriggerObjectAnimation(o, OAT_250_TICKS, spec);
-		}
-	}
 }
 
 /* checks, if a radio tower is within a 9x9 tile square around tile */

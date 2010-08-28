@@ -952,7 +952,6 @@ void GenerateLandscape(byte mode)
 	if (_settings_game.game_creation.landscape == LT_TROPIC) CreateDesertOrRainForest();
 }
 
-void OnTick_Objects();
 void OnTick_Town();
 void OnTick_Trees();
 void OnTick_Station();
@@ -967,6 +966,5 @@ void CallLandscapeTick()
 	OnTick_Station();
 	OnTick_Industry();
 
-	OnTick_Objects();
 	OnTick_Companies();
 }
