@@ -88,6 +88,12 @@ struct ObjectSpec {
 	Money GetClearCost() const { return (_price[PR_CLEAR_OBJECT] * this->clear_cost_multiplier); }
 
 	/**
+	 * Gets the index of this spec.
+	 * @return The index.
+	 */
+	uint Index() const;
+
+	/**
 	 * Get the specification associated with a specific ObjectType.
 	 * @param index The object type to fetch.
 	 * @return The specification.

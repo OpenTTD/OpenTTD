@@ -46,6 +46,11 @@ bool ObjectSpec::IsAvailable() const
 			(flags & (_game_mode != GM_EDITOR ? OBJECT_FLAG_ONLY_IN_SCENEDIT : OBJECT_FLAG_ONLY_IN_GAME)) == 0;
 }
 
+uint ObjectSpec::Index() const
+{
+	return this - _object_specs;
+}
+
 /** This function initialize the spec arrays of objects. */
 void ResetObjects()
 {
