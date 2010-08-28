@@ -271,7 +271,7 @@ enum CallbackID {
 	CBID_OBJECT_FUND_MORE_TEXT           = 0x15C, // 15 bit callback, not implemented
 
 	/** Called to determine if one can alter the ground below an object tile */
-	CBID_OBJECT_AUTOSLOPE                = 0x15D, // 15 bit callback, not implemented
+	CBID_OBJECT_AUTOSLOPE                = 0x15D, // 15 bit callback
 };
 
 /**

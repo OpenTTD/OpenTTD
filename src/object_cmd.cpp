@@ -621,7 +621,27 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, uin
 		CommandCost ret = CheckTileOwnership(tile);
 		if (ret.Succeeded()) return CommandCost();
 	} else if (AutoslopeEnabled() && type != OBJECT_TRANSMITTER && type != OBJECT_LIGHTHOUSE) {
-		if (!IsSteepSlope(tileh_new) && (z_new + GetSlopeMaxZ(tileh_new) == GetTileMaxZ(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+		/* Behaviour:
+		 *  - Both new and old slope must not be steep.
+		 *  - TileMaxZ must not be changed.
+		 *  - Allow autoslope by default.
+		 *  - Disallow autoslope if callback succeeds and returns non-zero.
+		 */
+		Slope tileh_old = GetTileSlope(tile, NULL);
+		/* TileMaxZ must not be changed. Slopes must not be steep. */
+		if (!IsSteepSlope(tileh_old) && !IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) {
+			const ObjectSpec *spec = ObjectSpec::Get(type);
+
+			/* Call callback 'disable autosloping for objects'. */
+			if (HasBit(spec->callback_mask, CBM_OBJ_AUTOSLOPE)) {
+				/* If the callback fails, allow autoslope. */
+				uint16 res = GetObjectCallback(CBID_OBJECT_AUTOSLOPE, 0, 0, spec, Object::GetByTile(tile), tile);
+				if ((res == 0) || (res == CALLBACK_FAILED)) return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+			} else if (spec->enabled) {
+				/* allow autoslope */
+				return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_FOUNDATION]);
+			}
+		}
 	}
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
