@@ -3716,13 +3716,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	}
 
 	/* train is broken down? */
-	if (v->breakdown_ctr != 0) {
-		if (v->breakdown_ctr <= 2) {
-			v->HandleBreakdown();
-			return true;
-		}
-		if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;
-	}
+	if (v->HandleBreakdown()) return true;
 
 	if (HasBit(v->flags, VRF_REVERSING) && v->cur_speed == 0) {
 		ReverseTrainDirection(v);

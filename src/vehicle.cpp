@@ -986,13 +986,18 @@ void CheckVehicleBreakdown(Vehicle *v)
 	}
 }
 
-void Vehicle::HandleBreakdown()
+bool Vehicle::HandleBreakdown()
 {
 	/* Possible states for Vehicle::breakdown_ctr
 	 * 0  - vehicle is running normally
 	 * 1  - vehicle is currently broken down
 	 * 2  - vehicle is going to break down now
 	 * >2 - vehicle is counting down to the actual breakdown event */
+	if (this->breakdown_ctr == 0) return false;
+	if (this->breakdown_ctr > 2) {
+		if (!this->current_order.IsType(OT_LOADING)) this->breakdown_ctr--;
+		return false;
+	}
 	if (this->breakdown_ctr != 1) {
 		this->breakdown_ctr = 1;
 
@@ -1024,7 +1029,7 @@ void Vehicle::HandleBreakdown()
 	}
 
 	/* Aircraft breakdowns end only when arriving at the airport */
-	if (this->type == VEH_AIRCRAFT) return;
+	if (this->type == VEH_AIRCRAFT) return false;
 
 	/* For trains this function is called twice per tick, so decrease v->breakdown_delay at half the rate */
 	if ((this->tick_counter & (this->type == VEH_TRAIN ? 3 : 1)) == 0) {
@@ -1034,6 +1039,7 @@ void Vehicle::HandleBreakdown()
 			SetWindowDirty(WC_VEHICLE_VIEW, this->index);
 		}
 	}
+	return true;
 }
 
 void AgeVehicle(Vehicle *v)

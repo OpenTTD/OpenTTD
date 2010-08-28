@@ -523,11 +523,14 @@ public:
 		this->service_interval = src->service_interval;
 	}
 
+
 	/**
-	 * Handle all of the aspects of a vehicle breakdown.
+	 * Handle all of the aspects of a vehicle breakdown
 	 * This includes adding smoke and sounds, and ending the breakdown when appropriate.
+	 * @return true iff the vehicle is stopped because of a breakdown
+	 * @note This function always returns false for aircraft, since these never stop for breakdowns
 	 */
-	void HandleBreakdown();
+	bool HandleBreakdown();
 
 	bool NeedsAutorenewing(const Company *c) const;
 

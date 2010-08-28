@@ -1775,14 +1775,7 @@ static bool AircraftEventHandler(Aircraft *v, int loop)
 
 	if (v->vehstatus & VS_STOPPED) return true;
 
-	/* aircraft is broken down? */
-	if (v->breakdown_ctr != 0) {
-		if (v->breakdown_ctr <= 2) {
-			v->HandleBreakdown();
-		} else {
-			if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;
-		}
-	}
+	v->HandleBreakdown();
 
 	HandleAircraftSmoke(v);
 	ProcessOrders(v);

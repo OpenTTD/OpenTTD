@@ -424,13 +424,7 @@ static void ShipController(Ship *v)
 	v->tick_counter++;
 	v->current_order_time++;
 
-	if (v->breakdown_ctr != 0) {
-		if (v->breakdown_ctr <= 2) {
-			v->HandleBreakdown();
-			return;
-		}
-		if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;
-	}
+	if (v->HandleBreakdown()) return;
 
 	if (v->vehstatus & VS_STOPPED) return;
 
