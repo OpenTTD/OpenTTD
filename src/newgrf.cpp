@@ -2886,6 +2886,152 @@ static ChangeInfoResult AirportChangeInfo(uint airport, int numinfo, int prop, B
 	return ret;
 }
 
+static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	switch (prop) {
+		case 0x0B:
+		case 0x0C:
+		case 0x0D:
+		case 0x12:
+		case 0x13:
+		case 0x14:
+		case 0x16:
+			buf->ReadByte();
+
+		case 0x09:
+		case 0x0A:
+		case 0x10:
+		case 0x11:
+		case 0x15:
+			buf->ReadWord();
+			break;
+
+		case 0x08:
+		case 0x0E:
+		case 0x0F:
+			buf->ReadDWord();
+			break;
+
+		default:
+			ret = CIR_UNKNOWN;
+			break;
+	}
+
+	return ret;
+}
+
+static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteReader *buf)
+{
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	if (id + numinfo > NUM_OBJECTS) {
+		grfmsg(1, "ObjectChangeInfo: Too many objects loaded (%u), max (%u). Ignoring.", id + numinfo, NUM_OBJECTS);
+		return CIR_INVALID_ID;
+	}
+
+	/* Allocate object specs if they haven't been allocated already. */
+	if (_cur_grffile->objectspec == NULL) {
+		_cur_grffile->objectspec = CallocT<ObjectSpec*>(NUM_OBJECTS);
+	}
+
+	for (int i = 0; i < numinfo; i++) {
+		ObjectSpec *spec = _cur_grffile->objectspec[id + i];
+
+		if (prop != 0x08 && spec == NULL) {
+			/* If the object property 08 is not yet set, ignore this property */
+			ChangeInfoResult cir = IgnoreObjectProperty(prop, buf);
+			if (cir > ret) ret = cir;
+			continue;
+		}
+
+		switch (prop) {
+			case 0x08: { // Class ID
+				ObjectSpec **ospec = &_cur_grffile->objectspec[id + i];
+
+				/* Allocate space for this object. */
+				if (*ospec == NULL) *ospec = CallocT<ObjectSpec>(1);
+
+				/* Swap classid because we read it in BE. */
+				uint32 classid = buf->ReadDWord();
+				(*ospec)->cls_id = ObjectClass::Allocate(BSWAP32(classid));
+				(*ospec)->enabled = true;
+				break;
+			}
+
+			case 0x09: { // Class name
+				StringID class_name = buf->ReadWord();
+				ObjectClass::SetName(spec->cls_id, class_name);
+				_string_to_grf_mapping[&ObjectClass::classes[spec->cls_id].name] = _cur_grffile->grfid;
+				break;
+			}
+
+			case 0x0A: // Object name
+				spec->name = buf->ReadWord();
+				_string_to_grf_mapping[&spec->name] = _cur_grffile->grfid;
+				break;
+
+			case 0x0B: // Climate mask
+				spec->climate = buf->ReadByte();
+				break;
+
+			case 0x0C: // Size
+				spec->size = buf->ReadByte();
+				break;
+
+			case 0x0D: // Build cost multipler
+				spec->build_cost_multiplier = buf->ReadByte();
+				spec->clear_cost_multiplier = spec->build_cost_multiplier;
+				break;
+
+			case 0x0E: // Introduction date
+				spec->introduction_date = buf->ReadDWord();
+				break;
+
+			case 0x0F: // End of life
+				spec->end_of_life_date = buf->ReadDWord();
+				break;
+
+			case 0x10: // Flags
+				spec->flags = (ObjectFlags)buf->ReadWord();
+				_loaded_newgrf_features.has_2CC |= (spec->flags & OBJECT_FLAG_2CC_COLOUR) != 0;
+				break;
+
+			case 0x11: // Animation info
+				spec->animation.frames = buf->ReadByte();
+				spec->animation.status = buf->ReadByte();
+				break;
+
+			case 0x12: // Animation speed
+				spec->animation.speed = buf->ReadByte();
+				break;
+
+			case 0x13: // Animation triggers
+				spec->animation.triggers = buf->ReadWord();
+				break;
+
+			case 0x14: // Removal cost multiplier
+				spec->clear_cost_multiplier = buf->ReadByte();
+				break;
+
+			case 0x15: // Callback mask
+				spec->callback_mask = buf->ReadWord();
+				break;
+
+			case 0x16: // Building height
+				spec->height = buf->ReadByte();
+				break;
+
+			default:
+				ret = CIR_UNKNOWN;
+				break;
+		}
+	}
+
+	return ret;
+}
+
 static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;
@@ -3197,7 +3343,7 @@ static void FeatureChangeInfo(ByteReader *buf)
 		/* GSF_SOUNDFX */       SoundEffectChangeInfo,
 		/* GSF_AIRPORTS */      AirportChangeInfo,
 		/* GSF_SIGNALS */       NULL,
-		/* GSF_OBJECTS */       NULL,
+		/* GSF_OBJECTS */       ObjectChangeInfo,
 		/* GSF_RAILTYPES */     RailTypeChangeInfo,
 		/* GSF_AIRPORTTILES */  AirportTilesChangeInfo,
 	};
@@ -6722,6 +6868,22 @@ static void ResetCustomIndustries()
 	}
 }
 
+static void ResetCustomObjects()
+{
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		ObjectSpec **&objectspec = (*file)->objectspec;
+		if (objectspec == NULL) continue;
+		for (uint i = 0; i < NUM_OBJECTS; i++) {
+			free(objectspec[i]);
+		}
+
+		free(objectspec);
+		objectspec = NULL;
+	}
+}
+
+
 static void ResetNewGRF()
 {
 	const GRFFile * const *end = _grf_files.End();
@@ -6797,6 +6959,7 @@ static void ResetNewGRFData()
 
 	/* Reset the objects. */
 	ObjectClass::Reset();
+	ResetCustomObjects();
 	ResetObjects();
 
 	/* Reset station classes */
@@ -7186,6 +7349,26 @@ static void FinaliseIndustriesArray()
 		}
 		if (!indsp->enabled) {
 			indsp->name = STR_NEWGRF_INVALID_INDUSTRYTYPE;
+		}
+	}
+}
+
+/**
+ * Add all new objects to the object array. Object properties can be set at any
+ * time in the GRF file, so we can only add an object spec to the object array
+ * after the file has finished loading.
+ */
+static void FinaliseObjectsArray()
+{
+	const GRFFile * const *end = _grf_files.End();
+	for (GRFFile **file = _grf_files.Begin(); file != end; file++) {
+		ObjectSpec **&objectspec = (*file)->objectspec;
+		if (objectspec != NULL) {
+			for (int i = 0; i < NUM_OBJECTS; i++) {
+				if (objectspec[i] != NULL && objectspec[i]->enabled) {
+					_object_mngr.SetEntitySpec(objectspec[i]);
+				}
+			}
 		}
 	}
 }
@@ -7585,6 +7768,9 @@ static void AfterLoadGRFs()
 
 	/* Add all new industries to the industry array. */
 	FinaliseIndustriesArray();
+
+	/* Add all new objects to the object array. */
+	FinaliseObjectsArray();
 
 	InitializeSortedCargoSpecs();
 

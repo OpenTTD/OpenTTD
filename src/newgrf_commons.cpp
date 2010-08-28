@@ -317,6 +317,7 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
 
 	/* Now that we know we can use the given id, copy the spec to its final destination. */
 	memcpy(&_object_specs[type], spec, sizeof(*spec));
+	ObjectClass::Assign(&_object_specs[type]);
 }
 
 /**
