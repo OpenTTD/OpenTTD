@@ -127,7 +127,7 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
 	}
 }
 
-extern CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z);
+extern CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z, bool check_bridge);
 static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags);
 
 /**
@@ -189,11 +189,21 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			/* Check whether the ground is flat enough. */
 			int allowed_z = -1;
 			TILE_AREA_LOOP(t, ta) {
-				cost.AddCost(CheckBuildableTile(t, 0, allowed_z));
+				/* We'll do the bridge test later; it's quite custom. */
+				cost.AddCost(CheckBuildableTile(t, 0, allowed_z, false));
 			}
 		}
 	}
 	if (cost.Failed()) return cost;
+
+	/* Finally do a check for bridges. */
+	TILE_AREA_LOOP(t, ta) {
+		if (MayHaveBridgeAbove(t) && IsBridgeAbove(t) && (
+				!(spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) ||
+				(GetTileMaxZ(t) + spec->height * TILE_HEIGHT >= GetBridgeHeight(GetSouthernBridgeEnd(t))))) {
+			return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
+		}
+	}
 
 	int hq_score = 0;
 	switch (type) {

@@ -394,6 +394,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 				case MP_OBJECT: {
 					const ObjectSpec *spec = ObjectSpec::GetByTile(tile);
 					if ((spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) == 0) goto not_valid_below;
+					if (GetTileMaxZ(tile) + spec->height * TILE_HEIGHT > z_start) return_cmd_error(STR_ERROR_OBJECT_IN_THE_WAY);
 					break;
 				}
 
