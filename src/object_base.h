@@ -38,6 +38,48 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	 * @return The object.
 	 */
 	static Object *GetByTile(TileIndex tile);
+
+	/**
+	 * Increment the count of objects for this type.
+	 * @param type ObjectType to increment
+	 * @pre type < NUM_OBJECTS
+	 */
+	static inline void IncTypeCount(ObjectType type)
+	{
+		assert(type < NUM_OBJECTS);
+		counts[type]++;
+	}
+
+	/**
+	 * Decrement the count of objects for this type.
+	 * @param type ObjectType to decrement
+	 * @pre type < NUM_OBJECTS
+	 */
+	static inline void DecTypeCount(ObjectType type)
+	{
+		assert(type < NUM_OBJECTS);
+		counts[type]--;
+	}
+
+	/**
+	 * Get the count of objects for this type.
+	 * @param type ObjectType to query
+	 * @pre type < NUM_OBJECTS
+	 */
+	static inline uint16 GetTypeCount(ObjectType type)
+	{
+		assert(type < NUM_OBJECTS);
+		return counts[type];
+	}
+
+	/** Resets object counts. */
+	static inline void ResetTypeCounts()
+	{
+		memset(&counts, 0, sizeof(counts));
+	}
+
+protected:
+	static uint16 counts[NUM_OBJECTS]; ///< Number of objects per type ingame
 };
 
 #define FOR_ALL_OBJECTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Object, object_index, var, start)

@@ -39,6 +39,7 @@
 
 ObjectPool _object_pool("Object");
 INSTANTIATE_POOL_METHODS(Object)
+uint16 Object::counts[NUM_OBJECTS];
 
 /* static */ Object *Object::GetByTile(TileIndex tile)
 {
@@ -49,6 +50,7 @@ INSTANTIATE_POOL_METHODS(Object)
 void InitializeObjects()
 {
 	_object_pool.CleanPool();
+	Object::ResetTypeCounts();
 }
 
 void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town)
@@ -68,6 +70,8 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town)
 		MakeObject(t, type, owner, o->index, wc, Random());
 		MarkTileDirtyByTile(t);
 	}
+
+	Object::IncTypeCount(type);
 }
 
 /**
@@ -317,6 +321,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
+		Object::DecTypeCount(type);
 		TILE_AREA_LOOP(tile_cur, ta) MakeWaterKeepingClass(tile_cur, GetTileOwner(tile_cur));
 		delete o;
 	}

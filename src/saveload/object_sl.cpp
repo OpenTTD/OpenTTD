@@ -11,6 +11,7 @@
 
 #include "../stdafx.h"
 #include "../object_base.h"
+#include "../object_map.h"
 
 #include "saveload.h"
 #include "newgrf_sl.h"
@@ -50,6 +51,7 @@ static void Ptrs_OBJS()
 	Object *o;
 	FOR_ALL_OBJECTS(o) {
 		SlObject(o, _object_desc);
+		Object::IncTypeCount(GetObjectType(o->location.tile));
 	}
 }
 
