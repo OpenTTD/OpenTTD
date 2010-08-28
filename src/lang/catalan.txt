@@ -2071,9 +2071,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta a
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generador de Terreny
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Situa àrees de roques al paisatge
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Situa un far
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineix àrea de desert.{}Mantingues apretat Ctrl per treure'l
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Situa un repetidor
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenta la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminueix la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genera un terreny aleatori

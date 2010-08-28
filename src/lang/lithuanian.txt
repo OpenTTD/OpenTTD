@@ -2134,9 +2134,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Atsitikt
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Kraštovaidžio kūrimas
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Sukurti uolėtas vietas
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Statyti švyturį
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Nurodyti dykumos plotus{}Laikant nuspaustą VALD (CTRL) galima ją pašalinti
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Statyti siųstuvą
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Padidinkite sausumos plotą norėdami paaukštinti/pažeminti
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Sumažinkite sausumos plotą norėdami paaukštinti/pažeminti
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Kurti atsitiktinę sausumą

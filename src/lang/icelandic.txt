@@ -2072,9 +2072,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Gróður
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landslagsgerð
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Setja klettasvæði á landið
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Setja vita
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Afmarkaðu eyðimörk.{}Haltu CTRL til að fjarlægja hana
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Setja sendi
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Stækka svæði til að lækka/hækka
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minnka svæði til að lækka/hækka
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Mynda til land af handahófi

@@ -2450,9 +2450,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pokryj k
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Tworzenie terenu
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umieść kamieniste tereny
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Umieść latarnię morską
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiuj obszar pustyni.{}Wciśnij i trzymaj Ctrl, aby usunąć
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Umieść nadajnik
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Zwiększ powierzchnie do podwyższenia/obniżenia
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmniejsz powierzchnie do podwyższenia/obniżenia
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Tworzenie przypadkowego lądu

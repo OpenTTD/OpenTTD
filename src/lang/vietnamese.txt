@@ -2070,9 +2070,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Trồng 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}San lấp đất
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Đặt các nền đá trong vùng
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Đặt hải đăng
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Đặt tên hoang mạc.{}ấn Ctrl để xoá bỏ tên
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Đặt trạm phát sóng
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Tăng diện tích vùng đất để nâng/hạ
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Giảm diện tích vùng đất để nâng/hạ
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Tạo vùng đất ngẫu nhiên

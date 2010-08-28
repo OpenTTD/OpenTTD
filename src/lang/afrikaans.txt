@@ -2051,9 +2051,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Beplant 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generasie
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plaas rotse op landskap
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plaas ligtoring
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Bepaal woestyn gebied.{}Hou Ctrl in om te verwyder
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plaas sender
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergroot gebied wat verlaag/verhoog moet word
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verminder gebied wat verlaag/verhoog moet word
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genereer lukraake land

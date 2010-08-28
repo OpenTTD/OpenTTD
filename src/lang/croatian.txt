@@ -2166,9 +2166,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Nasumce 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Stvaranje zemljišta
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Stavi stijenje na krajolik
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Postavi svjetionik
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Odredi pustinjsko područje.{}Pritisni i drži Ctrl za uklanjanje
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Postavi odašiljač
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Povećaj područje koje će biti povišeno/sniženo
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Smanji područje koje će biti povišeno/sniženo
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Napravi nasumično zemljište

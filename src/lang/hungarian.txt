@@ -2134,9 +2134,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Véletle
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Táj szerkesztése
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Sziklás területek elhelyezése a térképen
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Világítótorony építése
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sivatagot hoz létre.{}Nyomj Ctrl-t az eltávolításához
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Adótorony építése
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület növelése
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emelendő/süllyesztendő földterület csökkentése
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Véletlenszerű táj készítése

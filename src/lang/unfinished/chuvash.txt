@@ -861,7 +861,6 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 # Tree planting window (last two for SE only)
 
 # Land generation window (SE)
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Передатчик ларт
 
 
 # Town generation window (SE)

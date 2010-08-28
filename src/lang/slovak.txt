@@ -2128,9 +2128,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadit 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generovanie uzemia
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umiestnit nahodne skaly
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Umiestnit majak
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Vytvorit oblast puste.{}Drzanim CTRL ju odstranite
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Umiestnit vysielac
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvýšenie/zníženie oblasti je potrebné zväčšiť územie
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvýšenie/zníženie oblasti je potrebné zmenšiť územie
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Vygenerovať náhodné územie

@@ -2265,9 +2265,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadi d
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Oblikovanje reljefa
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Postavi stenovita područja na reljef
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Postavi svetionik
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definisanje pustinjske oblasti.{}Držanjem Ctrl se uklanja
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Postavi predajnik
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Uvećaj područje koje treba sniziti/povisiti
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Smanji područje koje treba sniziti/povisiti
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Pravi zemljište nasumičnog reljefa

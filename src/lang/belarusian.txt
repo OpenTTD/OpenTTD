@@ -2403,9 +2403,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Паса
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Стварэньне ляндшафту
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Разьмясціць камяні па мапе
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Пабудаваць маяк
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Разьмясціць пустэльню.{}Націсьніце Ctrl, каб выдаліць яе.
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Пабудаваць перадатчык
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Павялічыць плошчу змяненьня рэльефу
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Паменшыць плошчу змяненьня рэльефу
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Стварыць выпадковую мапу

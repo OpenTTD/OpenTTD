@@ -2060,9 +2060,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plasser 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landgenerering
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plasser steinete felt i landskapet
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plasser fyrtårn
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Klikk og held inne CTRL for å fjerne det
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plasser radiosendar
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Auk landarealet som skal senkast/hevast
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Mink storleiken på landarealet som skal hevast/senkast
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generer tilfeldig landskap

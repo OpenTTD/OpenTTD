@@ -2058,9 +2058,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Beem zou
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landerstellung
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Fielsen iwert d'Landschaft setzen
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Liichttuerm bauen
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Zone fir Wüst défineieren.{}CTRL unhaalen fir se ze leschen
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Sender bauen
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergréisser d'Zone fir d'Land unzehiewen/eroofzesetzen
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verklenger d'Zone fir d'Land unzehiewen/eroofzesetzen
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generéier en Zoufallsland

@@ -2061,9 +2061,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Menanam 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Pertumbuhan Wilayah
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Meletakkan bebatuan pada lansekap
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Menempatkan Mercusuar
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Membuat wilayah gurun.{}Tahan CTRL untuk membatalkannya
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Meletakkan Pemancar
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Tambah ukuran area untuk menurunkan/menaikkan
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Kurangi ukuran area untuk menurunkan/menaikkan
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Buat wilayah secara acak

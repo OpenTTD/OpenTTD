@@ -2067,9 +2067,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}전 지�
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}지형 만들기
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}암석 지역을 위치시킵니다.
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}등대를 놓습니다.
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}사막 지역을 지정합니다.{}CTRL키를 누른채로 지우십시오.
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}송신기를 놓습니다.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}지형 편집툴의 크기를 키움
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}지형 편집툴의 크기를 줄임
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}무작위로 지형 만들기

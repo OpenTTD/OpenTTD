@@ -2049,9 +2049,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant tr
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generation
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Place rocky areas on landscape
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Place lighthouse
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Define desert area.{}Press and hold Ctrl to remove it
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Place transmitter
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Increase area of land to lower/raise
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Decrease area of land to lower/raise
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generate random land

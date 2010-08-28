@@ -2067,9 +2067,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Cuir cra
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Talamh a Chruthú
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Cuir ceantair charraige ar an tírdhreach
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Cuir síos teach solais
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Sainigh limistéar fásaigh.{}Coinnigh síos Ctrl chun é a bhaint
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Cur síos tarchuradóir
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Méadaigh an limistéar talún atá le hardú/le hísliú
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Laghdaigh an limistéar talún atá le hardú/le hísliú
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Cruthaigh talamh randamach

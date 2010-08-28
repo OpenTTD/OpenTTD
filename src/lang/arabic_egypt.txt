@@ -2052,9 +2052,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}زراع
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}بناء المسطحات الأرضية
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}اضافة مناطق صخرية على المنظر
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}وضع منارة ضوئية
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}عرف منطقة صحراوية. {}اضغط بشكل متواصل مفتاح كنترول لأزالتها
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}وضع هوائي لاسلكي
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}زيادة ارتفاع و انخفاض المسطحات الأرضية
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}انقاص ارتفاع و انخفاض المسطحات الأرضية
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}انشاء مسطحات عشوائية

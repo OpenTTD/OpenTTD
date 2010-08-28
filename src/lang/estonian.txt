@@ -2123,9 +2123,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Istutab 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Maastiku loomine
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Loo maastikule kivised alad
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Ehita tuletorn
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Määra kõrbealad.{}Eemalda Ctrl-klahviga
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Paigalda saatjamast
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Suurenda kõrgendatava/madaldatava maa-ala pindala
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Vähenda kõrgendatava/madaldatava maa-ala pindala
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Suvalise kaardi tekitamine

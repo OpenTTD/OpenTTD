@@ -1300,9 +1300,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantsje
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Lân Generaasje
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Set rotsen yn it lânskip
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Bou in fjoertoer
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiearje woastyngebiet.{}Hâld CTRL yndrukt om it fuort te heljen
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Bou in sendmast
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Fergrutsje gebiet om te ferheegjen/ferleegjen
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Ferlyts gebiet om te ferheegjen/ferleegjen
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Meitsje samar wat lân

@@ -2070,9 +2070,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantera
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Skapa mark
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placera stenar i landskapet
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Placera fyrtorn
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definiera ökenområde.{}Tryck och håll Ctrl för att ta bort
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Placera radiosändare
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Öka storlek av yta att höja/sänka
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Minska storlek av yta att höja/sänka
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generera slumpmässig mark

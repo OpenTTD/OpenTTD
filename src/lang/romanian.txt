@@ -2070,9 +2070,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planteaz
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generator suprafaţă uscat
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plasează formaţiuni pietroase
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plasează far
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineşte suprafaţa de deşert.{}Ţine apăsat Ctrl pentru a şterge
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plasează transmiţător
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Măreşte aria de editare a terenului
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Micşorează aria de editare a terenului
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generează teren aleator

@@ -987,7 +987,6 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK} به ش
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}طراحی اتوماتیک سرزمین
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}مکان های سنگی در نقشه ایجاد کن
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}فانوس دریایی بساز
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK} ناحیه ی بیابانی را مشخص کن {} دکمه ی "کنترل" را فشار بده تا حذف کند
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}نقشه ی تصادفی بساز
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}تمام تغییرات را بر گردان

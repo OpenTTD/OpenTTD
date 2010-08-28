@@ -1999,9 +1999,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Stādīt
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Zemes ģenerēšana
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Novietot akmeņainus apgabalus uz kartes
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Būvēt bāku
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Norādīt tuksneša platību.{}Klik+Ctrl, lai to izdzēstu
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Būvēt raidītāju
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Palielināt zemes apgabalu pazemināšanai/paaugstināšanai
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Samazināt zemes apgabalu pazemināšanai/paaugstināšanai
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Ģenerēt nejaušu zemi

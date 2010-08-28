@@ -2045,9 +2045,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}ラン�
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}地形の作成
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}土地に岩石を置きます
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}灯台を建設します
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}砂漠を作成します。{}Control+クリックすると消去します
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}送信機を建設します
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}上げる／下げる地域のサイズを拡大します
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}上げる／下げる地域のサイズを縮小します
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}ランダムな地形を作成します

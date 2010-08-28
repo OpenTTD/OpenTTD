@@ -2072,9 +2072,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pianta a
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generazione terreno
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Piazza terreno roccioso nel paesaggio
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Piazza faro
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definisce un'area desertica.{}Tenere premuto CTRL per rimuoverla
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Piazza trasmettitore
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumenta l'ampiezza del terreno da abbassare/alzare
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Riduce l'ampiezza del terreno da abbassare/alzare
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genera terreno casuale

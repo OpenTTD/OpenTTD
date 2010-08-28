@@ -2019,9 +2019,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Xeración de Terreo
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Colocar áreas rocosas na paisaxe
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Colocar faro
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definir área de deserto.{}Presiona Control para borrala
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Colocar transmisor
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Aumenta-lo tamaño de terreo a baixar/subir
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminuí-lo tamaño de terreo a baixar/subir
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Xerar terreo aleatorio

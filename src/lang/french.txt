@@ -2071,9 +2071,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Semer de
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Création du terrain
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placer des endroits rocheux sur le terrain
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Placer un Phare
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Définir une zone désertique.{}Maintenir Ctrl pour retrait
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Placer un Transmetteur
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenter la quantité de terre à modifier
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminuer la quantité de terre à modifier
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Créer un monde aléatoire

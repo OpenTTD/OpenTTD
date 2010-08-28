@@ -2070,9 +2070,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Versprei
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landontwikkeling
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Plaats rotsachtige gebieden op de kaart
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Plaats vuurtoren
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definieer woestijngebied.{}Hou Ctrl vast om het te verwijderen
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Plaats radiomast
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Vergroot de landoppervlakte om te verhogen/verlagen
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verklein de landoppervlakte om te verhogen/verlagen
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genereer willekeurig land

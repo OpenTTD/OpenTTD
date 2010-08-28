@@ -2068,9 +2068,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}随机�
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}生成土地
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}在地图上设置岩石区域
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}放置灯塔
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}划出沙漠区域.{}按住 Ctrl键 可以移除沙漠区域
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}放置转播塔
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}增加要升高/降低的土地面积
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}减少要升高/降低的土地面积
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}随机生成土地

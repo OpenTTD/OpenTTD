@@ -1980,9 +1980,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plannu c
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Cynhyrchu Tirwedd
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Gosod ardaloedd creigiog ar y tirwedd
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Gosod goleudu
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Pennu ardal anialwch.{}Gwasgwch a dal CTRL i lawr i gael gwared ohono
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Gosod mast darlledu
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Cynyddu'r arwynebedd tir i'w godi neu ostwng
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Lleihau'r arwynebedd tir i'w godi neu ostwng
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Cynhyrchu Tir ar Hap

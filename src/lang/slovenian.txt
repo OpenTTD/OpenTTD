@@ -2112,9 +2112,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Posadi d
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generator terena
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Ustvari kamnita območja naključno po ozemlju
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Postavi svetilnik
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Določi območja puščave.{}Pritisni in drži Ctrl za odstranitev
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Postavi oddajnik
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Povečaj območje za nižanje/višanje terena
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmanjšaj območje za nižanje/višanje terena
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Ustvari naključni teren

@@ -2156,9 +2156,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Φύτε
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Δημιουργία Γης
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Τοποθέτηση πετρώδεις επιφανειών στο τοπίο
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Τοποθέτηση φάρου
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Ορίστε περιοχή ερήμου.{}Πατήστε και κρατήστε το CTRL για αφαίρεση
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Τοποθέτηση αναμεταδότη
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Αύξηση περιοχής για χαμήλωμα/ανύψωση γης
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Μείωση περιοχής για χαμήλωμα/ανύψωση γης
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Δημιουργία τυχαίου εδάφους

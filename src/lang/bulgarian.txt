@@ -2054,9 +2054,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Заса
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Генератор на терен
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Поставяне скалисти области
-STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Поставяне фар
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Избери пустинен терен.{}Задръж CTRL за да го премахнеш.
-STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Постави предавател
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Увеличи площа на терена, за да го понижиш/повишиш
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Намали площа на терена, за да го понижиш/повишиш
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Генерирай случаен терен
