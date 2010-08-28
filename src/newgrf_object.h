@@ -111,4 +111,7 @@ struct ObjectSpec {
 /** Struct containing information relating to station classes. */
 typedef NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX> ObjectClass;
 
+/** Mapping of purchase for objects. */
+static const CargoID CT_PURCHASE_OBJECT = 1;
+
 #endif /* NEWGRF_OBJECT_H */

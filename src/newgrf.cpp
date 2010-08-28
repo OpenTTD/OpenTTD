@@ -3717,6 +3717,7 @@ static void NewSpriteGroup(ByteReader *buf)
 
 				case GSF_HOUSES:
 				case GSF_AIRPORTTILES:
+				case GSF_OBJECTS:
 				case GSF_INDUSTRYTILES: {
 					byte num_spriteset_ents   = _cur_grffile->spriteset_numents;
 					byte num_spritesets       = _cur_grffile->spriteset_numsets;
@@ -3836,6 +3837,15 @@ static void NewSpriteGroup(ByteReader *buf)
 
 static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 {
+	if (feature == GSF_OBJECTS) {
+		switch (ctype) {
+			case 0:    return 0;
+			case 0xFF: return CT_PURCHASE_OBJECT;
+			default:
+				grfmsg(1, "TranslateCargo: Invalid cargo bitnum %d for objects, skipping.", ctype);
+				return CT_INVALID;
+		}
+	}
 	/* Special cargo types for purchase list and stations */
 	if (feature == GSF_STATIONS && ctype == 0xFE) return CT_DEFAULT_NA;
 	if (ctype == 0xFF) return CT_PURCHASE;
@@ -4167,6 +4177,61 @@ static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 	}
 }
 
+static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
+{
+	if (_cur_grffile->objectspec == NULL) {
+		grfmsg(1, "ObjectMapSpriteGroup: No object tiles defined, skipping");
+		return;
+	}
+
+	uint8 *objects = AllocaM(uint8, idcount);
+	for (uint i = 0; i < idcount; i++) {
+		objects[i] = buf->ReadByte();
+	}
+
+	uint8 cidcount = buf->ReadByte();
+	for (uint c = 0; c < cidcount; c++) {
+		uint8 ctype = buf->ReadByte();
+		uint16 groupid = buf->ReadWord();
+		if (!IsValidGroupID(groupid, "ObjectMapSpriteGroup")) continue;
+
+		ctype = TranslateCargo(GSF_OBJECTS, ctype);
+		if (ctype == CT_INVALID) continue;
+
+		for (uint i = 0; i < idcount; i++) {
+			ObjectSpec *spec = _cur_grffile->objectspec[objects[i]];
+
+			if (spec == NULL) {
+				grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X undefined, skipping", objects[i]);
+				continue;
+			}
+
+			spec->grf_prop.spritegroup[ctype] = _cur_grffile->spritegroups[groupid];
+		}
+	}
+
+	uint16 groupid = buf->ReadWord();
+	if (!IsValidGroupID(groupid, "ObjectMapSpriteGroup")) return;
+
+	for (uint i = 0; i < idcount; i++) {
+		ObjectSpec *spec = _cur_grffile->objectspec[objects[i]];
+
+		if (spec == NULL) {
+			grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X undefined, skipping", objects[i]);
+			continue;
+		}
+
+		if (spec->grf_prop.grffile != NULL) {
+			grfmsg(1, "ObjectMapSpriteGroup: Object with ID 0x%02X mapped multiple times, skipping", objects[i]);
+			continue;
+		}
+
+		spec->grf_prop.spritegroup[0] = _cur_grffile->spritegroups[groupid];
+		spec->grf_prop.grffile        = _cur_grffile;
+		spec->grf_prop.local_id       = objects[i];
+	}
+}
+
 static void RailTypeMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
 	uint8 *railtypes = AllocaM(uint8, idcount);
@@ -4336,6 +4401,10 @@ static void FeatureMapSpriteGroup(ByteReader *buf)
 		case GSF_AIRPORTS:
 			AirportMapSpriteGroup(buf, idcount);
 			return;
+
+		case GSF_OBJECTS:
+			ObjectMapSpriteGroup(buf, idcount);
+			break;
 
 		case GSF_RAILTYPES:
 			RailTypeMapSpriteGroup(buf, idcount);
