@@ -23,9 +23,10 @@ extern ObjectPool _object_pool;
 
 /** An object, such as transmitter, on the map. */
 struct Object : ObjectPool::PoolItem<&_object_pool> {
-	Town *town;        ///< Town the object is built in
-	TileArea location; ///< Location of the object
-	Date build_date;   ///< Date of construction
+	Town *town;         ///< Town the object is built in
+	TileArea location;  ///< Location of the object
+	Date build_date;    ///< Date of construction
+	byte colour;        ///< Colour of the object, for display purpose
 
 	/** Make sure the object isn't zeroed. */
 	Object() {}

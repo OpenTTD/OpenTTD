@@ -22,6 +22,7 @@ static const SaveLoad _object_desc[] = {
 	    SLE_VAR(Object, location.h,                 SLE_FILE_U8 | SLE_VAR_U16),
 	    SLE_REF(Object, town,                       REF_TOWN),
 	    SLE_VAR(Object, build_date,                 SLE_UINT32),
+	SLE_CONDVAR(Object, colour,                     SLE_UINT8,                  148, SL_MAX_VERSION),
 
 	SLE_END()
 };

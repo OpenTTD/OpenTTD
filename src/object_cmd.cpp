@@ -59,9 +59,21 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town)
 
 	TileArea ta(tile, GB(spec->size, 0, 4), GB(spec->size, 4, 4));
 	Object *o = new Object();
-	o->location   = ta;
-	o->town       = town == NULL ? CalcClosestTownFromTile(tile) : town;
-	o->build_date = _date;
+	o->location      = ta;
+	o->town          = town == NULL ? CalcClosestTownFromTile(tile) : town;
+	o->build_date    = _date;
+
+	/* If nothing owns the object, the colour will be random. Otherwise
+	 * get the colour from the company's livery settings. */
+	if (owner == OWNER_NONE) {
+		o->colour = Random();
+	} else {
+		const Livery *l = Company::Get(owner)->livery;
+		o->colour = l->colour1 + l->colour2 * 16;
+	}
+
+	/* If the object wants only one colour, then give it that colour. */
+	if ((spec->flags & OBJECT_FLAG_2CC_COLOUR) == 0) o->colour &= 0xF;
 
 	assert(o->town != NULL);
 

@@ -2279,6 +2279,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Add (random) colour to all objects. */
+	if (CheckSavegameVersion(148)) {
+		Object *o;
+		FOR_ALL_OBJECTS(o) {
+			Owner owner = GetTileOwner(o->location.tile);
+			o->colour = (owner == OWNER_NONE) ? Random() & 0xF : Company::Get(owner)->livery->colour1;
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
