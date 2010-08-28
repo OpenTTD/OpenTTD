@@ -165,7 +165,13 @@ public:
 				if (FillDrawPixelInfo(&tmp_dpi, r.left, r.top, r.right - r.left + 1, r.bottom - r.top + 1)) {
 					DrawPixelInfo *old_dpi = _cur_dpi;
 					_cur_dpi = &tmp_dpi;
-					DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, this->object_height + OBJECT_MARGIN, spec);
+					if (spec->grf_prop.grffile == NULL) {
+						extern const DrawTileSprites _objects[];
+						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
+						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, this->object_height + OBJECT_MARGIN, dts, PAL_NONE);
+					} else {
+						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, this->object_height + OBJECT_MARGIN, spec);
+					}
 					_cur_dpi = old_dpi;
 				}
 				break;

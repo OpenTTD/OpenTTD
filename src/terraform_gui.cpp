@@ -457,16 +457,6 @@ static void PlaceProc_RockyArea(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_ROCKS);
 }
 
-static void PlaceProc_LightHouse(TileIndex tile)
-{
-	DoCommandP(tile, OBJECT_LIGHTHOUSE, 0, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
-}
-
-static void PlaceProc_Transmitter(TileIndex tile)
-{
-	DoCommandP(tile, OBJECT_TRANSMITTER, 0, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
-}
-
 static void PlaceProc_DesertArea(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_DESERT);
@@ -485,7 +475,8 @@ static const int8 _multi_terraform_coords[][2] = {
 
 /** Enum referring to the widgets of the editor terraform toolbar */
 enum EditorTerraformToolbarWidgets {
-	ETTW_START = 0,                        ///< Used for iterations
+	ETTW_SHOW_PLACE_DESERT,                ///< Should the place desert button be shown?
+	ETTW_START,                            ///< Used for iterations
 	ETTW_DOTS = ETTW_START,                ///< Invisible widget for rendering the terraform size on.
 	ETTW_BUTTONS_START,                    ///< Start of pushable buttons
 	ETTW_DEMOLISH = ETTW_BUTTONS_START,    ///< Demolish aka dynamite button
@@ -493,8 +484,8 @@ enum EditorTerraformToolbarWidgets {
 	ETTW_RAISE_LAND,                       ///< Raise land button
 	ETTW_LEVEL_LAND,                       ///< Level land button
 	ETTW_PLACE_ROCKS,                      ///< Place rocks button
-	ETTW_PLACE_DESERT_LIGHTHOUSE,          ///< Place desert button (in tropical climate) / place lighthouse button (else)
-	ETTW_PLACE_TRANSMITTER,                ///< Place transmitter button
+	ETTW_PLACE_DESERT,                     ///< Place desert button (in tropical climate)
+	ETTW_PLACE_OBJECT,                     ///< Place transmitter button
 	ETTW_BUTTONS_END,                      ///< End of pushable buttons
 	ETTW_INCREASE_SIZE = ETTW_BUTTONS_END, ///< Upwards arrow button to increase terraforming size
 	ETTW_DECREASE_SIZE,                    ///< Downwards arrow button to decrease terraforming size
@@ -522,10 +513,12 @@ static const NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
 										SetFill(0, 1), SetDataTip(SPR_IMG_LEVEL_LAND, STR_LANDSCAPING_LEVEL_LAND_TOOLTIP),
 			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_ROCKS), SetMinimalSize(22, 22),
 										SetFill(0, 1), SetDataTip(SPR_IMG_ROCKS, STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_DESERT_LIGHTHOUSE), SetMinimalSize(22, 22),
-										SetFill(0, 1), SetDataTip(SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL),
-			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_TRANSMITTER), SetMinimalSize(23, 22),
-										SetFill(0, 1), SetDataTip(SPR_IMG_TRANSMITTER, STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER),
+			NWidget(NWID_SELECTION, INVALID_COLOUR, ETTW_SHOW_PLACE_DESERT),
+				NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_DESERT), SetMinimalSize(22, 22),
+											SetFill(0, 1), SetDataTip(SPR_IMG_DESERT, STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA),
+			EndContainer(),
+			NWidget(WWT_IMGBTN, COLOUR_GREY, ETTW_PLACE_OBJECT), SetMinimalSize(23, 22),
+										SetFill(0, 1), SetDataTip(SPR_IMG_TRANSMITTER, STR_SCENEDIT_TOOLBAR_PLACE_OBJECT),
 			NWidget(NWID_SPACER), SetFill(1, 0),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
@@ -578,14 +571,14 @@ static void EditorTerraformClick_RockyArea(Window *w)
 	HandlePlacePushButton(w, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, HT_RECT, PlaceProc_RockyArea);
 }
 
-static void EditorTerraformClick_DesertLightHouse(Window *w)
+static void EditorTerraformClick_Desert(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_PLACE_DESERT_LIGHTHOUSE, SPR_CURSOR_LIGHTHOUSE, HT_RECT, (_settings_game.game_creation.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
+	HandlePlacePushButton(w, ETTW_PLACE_DESERT, SPR_CURSOR_DESERT, HT_RECT, PlaceProc_DesertArea);
 }
 
-static void EditorTerraformClick_Transmitter(Window *w)
+static void EditorTerraformClick_PlaceObject(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_PLACE_TRANSMITTER, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Transmitter);
+	if (HandlePlacePushButton(w, ETTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Object)) ShowBuildObjectPicker(w);
 }
 
 static OnButtonClick * const _editor_terraform_button_proc[] = {
@@ -594,8 +587,8 @@ static OnButtonClick * const _editor_terraform_button_proc[] = {
 	EditorTerraformClick_RaiseBigLand,
 	EditorTerraformClick_LevelLand,
 	EditorTerraformClick_RockyArea,
-	EditorTerraformClick_DesertLightHouse,
-	EditorTerraformClick_Transmitter
+	EditorTerraformClick_Desert,
+	EditorTerraformClick_PlaceObject
 };
 
 
@@ -635,8 +628,10 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 struct ScenarioEditorLandscapeGenerationWindow : Window {
 	ScenarioEditorLandscapeGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
-		this->InitNested(desc, window_number);
-		this->GetWidget<NWidgetCore>(ETTW_PLACE_DESERT_LIGHTHOUSE)->tool_tip = (_settings_game.game_creation.landscape == LT_TROPIC) ? STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA : STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE;
+		this->CreateNestedTree(desc);
+		NWidgetStacked *show_desert = this->GetWidget<NWidgetStacked>(ETTW_SHOW_PLACE_DESERT);
+		show_desert->SetDisplayedPlane(_settings_game.game_creation.landscape == LT_TROPIC ? 0 : SZSP_NONE);
+		this->FinishInitNested(desc, window_number);
 	}
 
 	virtual void OnPaint()
@@ -749,6 +744,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	{
 		this->RaiseButtons();
 		this->SetDirty();
+		DeleteWindowById(WC_BUILD_OBJECT, 0);
 	}
 
 	static Hotkey<ScenarioEditorLandscapeGenerationWindow> terraform_editor_hotkeys[];
@@ -760,8 +756,8 @@ Hotkey<ScenarioEditorLandscapeGenerationWindow> ScenarioEditorLandscapeGeneratio
 	Hotkey<ScenarioEditorLandscapeGenerationWindow>('W' | WKC_GLOBAL_HOTKEY, "raise", ETTW_RAISE_LAND),
 	Hotkey<ScenarioEditorLandscapeGenerationWindow>('E' | WKC_GLOBAL_HOTKEY, "level", ETTW_LEVEL_LAND),
 	Hotkey<ScenarioEditorLandscapeGenerationWindow>('R', "rocky", ETTW_PLACE_ROCKS),
-	Hotkey<ScenarioEditorLandscapeGenerationWindow>('T', "desertlighthouse", ETTW_PLACE_DESERT_LIGHTHOUSE),
-	Hotkey<ScenarioEditorLandscapeGenerationWindow>('Y', "transmitter", ETTW_PLACE_TRANSMITTER),
+	Hotkey<ScenarioEditorLandscapeGenerationWindow>('T', "desert", ETTW_PLACE_DESERT),
+	Hotkey<ScenarioEditorLandscapeGenerationWindow>('O', "object", ETTW_PLACE_OBJECT),
 	HOTKEY_LIST_END(ScenarioEditorLandscapeGenerationWindow)
 };
 

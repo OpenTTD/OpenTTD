@@ -1036,7 +1036,7 @@ static const SpriteID SPR_IMG_TERRAFORM_UP    = 694;
 static const SpriteID SPR_IMG_TERRAFORM_DOWN  = 695;
 static const SpriteID SPR_IMG_DYNAMITE        = 703;
 static const SpriteID SPR_IMG_ROCKS           = 4084;
-static const SpriteID SPR_IMG_LIGHTHOUSE_DESERT = 4085; // XXX - is Desert image on the desert-climate
+static const SpriteID SPR_IMG_DESERT          = 4085;
 static const SpriteID SPR_IMG_TRANSMITTER     = 4086;
 static const SpriteID SPR_IMG_LEVEL_LAND      = SPR_OPENTTD_BASE + 91;
 static const SpriteID SPR_IMG_BUILD_CANAL     = SPR_OPENTTD_BASE + 88;
@@ -1337,7 +1337,7 @@ static const CursorID SPR_CURSOR_LEVEL_LAND     = SPR_OPENTTD_BASE + 92;
 static const CursorID SPR_CURSOR_TOWN           = 4080;
 static const CursorID SPR_CURSOR_INDUSTRY       = 4081;
 static const CursorID SPR_CURSOR_ROCKY_AREA     = 4087;
-static const CursorID SPR_CURSOR_LIGHTHOUSE     = 4088;
+static const CursorID SPR_CURSOR_DESERT         = 4088;
 static const CursorID SPR_CURSOR_TRANSMITTER    = 4089;
 
 /* airport cursors */

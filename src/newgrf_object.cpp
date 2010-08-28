@@ -69,6 +69,10 @@ void ResetObjects()
 
 	/* And add our originals. */
 	MemCpyT(_object_specs, _original_objects, lengthof(_original_objects));
+
+	for (uint16 i = 0; i < lengthof(_original_objects); i++) {
+		_object_specs[i].grf_prop.local_id = i;
+	}
 }
 
 template <typename Tspec, typename Tid, Tid Tmax>

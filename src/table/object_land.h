@@ -36,7 +36,7 @@ static const DrawTileSeqStruct _object_owned_land_seq[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSprites _objects[] = {
+extern const DrawTileSprites _objects[] = {
 	{ { SPR_FLAT_2_THIRD_GRASS_TILE, PAL_NONE }, _object_transmitter_seq },
 	{ { SPR_FLAT_2_THIRD_GRASS_TILE, PAL_NONE }, _object_lighthouse_seq  },
 	{ { SPR_CONCRETE_GROUND,         PAL_NONE }, _object_statue_seq      },
