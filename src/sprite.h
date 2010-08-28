@@ -107,6 +107,15 @@ static inline void DrawNewGRFTileSeq(const struct TileInfo *ti, const DrawTileSp
 }
 
 /**
+ * Draw NewGRF object in GUI
+ * @param stage Sprite inside the Action1 spritesets to use, i.e. construction stage.
+ */
+static inline void DrawNewGRFTileSeqInGUI(int x, int y, const DrawTileSprites *dts, uint32 stage, PaletteID default_palette)
+{
+	DrawCommonTileSeqInGUI(x, y, dts, 0, stage, default_palette, true);
+}
+
+/**
  * Applies PALETTE_MODIFIER_TRANSPARENT and PALETTE_MODIFIER_COLOUR to a palette entry of a sprite layout entry
  * @Note for ground sprites use #GroundSpritePaletteTransform
  * @Note Not useable for OTTD internal spritelayouts from table/xxx_land.h as PALETTE_MODIFIER_TRANSPARENT is only set
