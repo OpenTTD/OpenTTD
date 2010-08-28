@@ -123,7 +123,7 @@ static const DrawTileSprites _object_hq[] = {
 
 #undef TILE_SPRITE_LINE
 
-#define M(name, size, build_cost_multiplier, clear_cost_multiplier, flags) { GRFFilePropsBase<2>(), name, size, build_cost_multiplier, clear_cost_multiplier, flags, true }
+#define M(name, size, build_cost_multiplier, clear_cost_multiplier, flags) { GRFFilePropsBase<2>(), INVALID_OBJECT_CLASS, name, size, build_cost_multiplier, clear_cost_multiplier, flags, true }
 
 /** Specification of the original object structures. */
 extern const ObjectSpec _original_objects[] = {

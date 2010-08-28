@@ -11,8 +11,11 @@
 
 #include "stdafx.h"
 #include "core/mem_func.hpp"
+#include "newgrf.h"
+#include "newgrf_class_func.h"
 #include "newgrf_object.h"
 #include "object_map.h"
+#include "openttd.h"
 
 /** The override manager for our objects. */
 ObjectOverrideManager _object_mngr(NEW_OBJECT_OFFSET, NUM_OBJECTS, INVALID_OBJECT_TYPE);
@@ -42,3 +45,21 @@ void ResetObjects()
 	MemCpyT(_object_specs, _original_objects, lengthof(_original_objects));
 }
 
+template <typename Tspec, typename Tid, Tid Tmax>
+/* static */ void NewGRFClass<Tspec, Tid, Tmax>::InsertDefaults()
+{
+	/* We only add the transmitters in the scenario editor. */
+	if (_game_mode != GM_EDITOR) return;
+
+	ObjectClassID cls = ObjectClass::Allocate('LTHS');
+	ObjectClass::SetName(cls, STR_OBJECT_CLASS_LTHS);
+	_object_specs[OBJECT_LIGHTHOUSE].cls_id = cls;
+	ObjectClass::Assign(&_object_specs[OBJECT_LIGHTHOUSE]);
+
+	cls = ObjectClass::Allocate('TRNS');
+	ObjectClass::SetName(cls, STR_OBJECT_CLASS_TRNS);
+	_object_specs[OBJECT_TRANSMITTER].cls_id = cls;
+	ObjectClass::Assign(&_object_specs[OBJECT_TRANSMITTER]);
+}
+
+INSTANTIATE_NEWGRF_CLASS_METHODS(ObjectClass, ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX)

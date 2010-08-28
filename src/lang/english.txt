@@ -2059,6 +2059,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Raise a 
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Level land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Purchase land for future use
 
+STR_OBJECT_CLASS_LTHS                                           :Lighthouses
+STR_OBJECT_CLASS_TRNS                                           :Transmitters
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Trees
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Select tree type to plant

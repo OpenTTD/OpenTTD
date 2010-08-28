@@ -15,6 +15,7 @@
 #include "economy_func.h"
 #include "strings_type.h"
 #include "object_type.h"
+#include "newgrf_class.h"
 #include "newgrf_commons.h"
 
 /** Various object behaviours. */
@@ -38,10 +39,20 @@ DECLARE_ENUM_AS_BIT_SET(ObjectFlags)
 
 void ResetObjects();
 
+/** Class IDs for objects. */
+enum ObjectClassID {
+	OBJECT_CLASS_BEGIN   =    0, ///< The lowest valid value
+	OBJECT_CLASS_MAX     =   32, ///< Maximum number of classes.
+	INVALID_OBJECT_CLASS = 0xFF, ///< Class for the less fortunate.
+};
+/** Allow incrementing of ObjectClassID variables */
+DECLARE_POSTFIX_INCREMENT(ObjectClassID)
+
 /** An object that isn't use for transport, industries or houses. */
 struct ObjectSpec {
 	/* 2 because of the "normal" and "buy" sprite stacks. */
 	GRFFilePropsBase<2> grf_prop; ///< Properties related the the grf file
+	ObjectClassID cls_id;         ///< The class to which this spec belongs.
 	StringID name;                ///< The name for this object.
 
 	uint8 size;                   ///< The size of this objects; low nibble for X, high nibble for Y.
@@ -76,5 +87,8 @@ struct ObjectSpec {
 	 */
 	static const ObjectSpec *GetByTile(TileIndex tile);
 };
+
+/** Struct containing information relating to station classes. */
+typedef NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX> ObjectClass;
 
 #endif /* NEWGRF_OBJECT_H */

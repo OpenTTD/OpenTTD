@@ -6796,6 +6796,7 @@ static void ResetNewGRFData()
 	ResetIndustries();
 
 	/* Reset the objects. */
+	ObjectClass::Reset();
 	ResetObjects();
 
 	/* Reset station classes */
