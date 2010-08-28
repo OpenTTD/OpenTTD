@@ -53,7 +53,6 @@ void GamelogGRFCompatible(const GRFIdentifier *newg);
 
 void GamelogTestRevision();
 void GamelogTestMode();
-void GamelogTestGRF();
 
 bool GamelogGRFBugReverse(uint32 grfid, uint16 internal_id);
 

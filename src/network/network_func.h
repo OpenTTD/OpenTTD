@@ -41,7 +41,6 @@ void NetworkReboot();
 void NetworkDisconnect(bool blocking = false);
 void NetworkGameLoop();
 void NetworkUDPGameLoop();
-void NetworkUDPCloseAll();
 void ParseConnectionString(const char **company, const char **port, char *connection_string);
 void NetworkStartDebugLog(NetworkAddress address);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);

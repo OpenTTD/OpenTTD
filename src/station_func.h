@@ -36,9 +36,6 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 
 bool HasStationInUse(StationID station, bool include_company, CompanyID company);
 
-RoadStop *GetRoadStopByTile(TileIndex tile, RoadStopType type);
-uint GetNumRoadStops(const Station *st, RoadStopType type);
-
 void DeleteOilRig(TileIndex t);
 
 /* Check if a rail station tile is traversable. */
