@@ -265,7 +265,7 @@ enum CallbackID {
 	CBID_OBJECT_ANIMATION_SPEED          = 0x15A, // 8 bit callback, not implemented
 
 	/** Called to determine the colour of a town building. */
-	CBID_OBJECT_COLOUR                   = 0x15B, // 15 bit callback, not implemented
+	CBID_OBJECT_COLOUR                   = 0x15B, // 15 bit callback
 
 	/** Called to determine more text in the fund object window */
 	CBID_OBJECT_FUND_MORE_TEXT           = 0x15C, // 15 bit callback, not implemented
