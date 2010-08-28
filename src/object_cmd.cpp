@@ -326,6 +326,9 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	Object *o = Object::GetByTile(tile);
 	TileArea ta = o->location;
 
+	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost() * ta.w * ta.h / 5);
+	if (spec->flags & OBJECT_FLAG_CLEAR_INCOME) cost.MultiplyCost(-1); // They get an income!
+
 	/* Water can remove everything! */
 	if (_current_company != OWNER_WATER) {
 		if ((spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0 && flags & DC_AUTO) {
@@ -339,14 +342,14 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 		} else if (CheckTileOwnership(tile).Failed()) {
 			/* We don't own it!. */
 			return_cmd_error(STR_ERROR_OWNED_BY);
-		} else if ((spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0 && !_cheats.magic_bulldozer.value) {
+		} else if ((spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0 && (spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
-			return CMD_ERROR;
+			if (!_cheats.magic_bulldozer.value) return CMD_ERROR;
+
+			/* Removing with the cheat costs more in TTDPatch / the specs. */
+			cost.MultiplyCost(25);
 		}
 	}
-
-	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost() * ta.w * ta.h);
-	if (spec->flags & OBJECT_FLAG_CLEAR_INCOME) cost.MultiplyCost(-1); // They get an income!
 
 	switch (type) {
 		case OBJECT_HQ: {
