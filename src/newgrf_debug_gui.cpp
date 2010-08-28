@@ -21,12 +21,14 @@
 
 #include "engine_base.h"
 #include "industry.h"
+#include "object_base.h"
 #include "station_base.h"
 #include "town.h"
 #include "vehicle_base.h"
 
 #include "newgrf_airporttiles.h"
 #include "newgrf_debug.h"
+#include "newgrf_object.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_station.h"
 #include "newgrf_town.h"
@@ -515,6 +517,7 @@ GrfSpecFeature GetGrfSpecFeature(TileIndex tile)
 		case MP_ROAD:         return IsLevelCrossing(tile) ? GSF_RAILTYPES : GSF_INVALID;
 		case MP_HOUSE:        return GSF_HOUSES;
 		case MP_INDUSTRY:     return GSF_INDUSTRYTILES;
+		case MP_OBJECT:       return GSF_OBJECTS;
 
 		case MP_STATION:
 			switch (GetStationType(tile)) {

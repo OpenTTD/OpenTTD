@@ -529,3 +529,13 @@ void TriggerObjectAnimation(const Object *o, ObjectAnimationTrigger trigger, con
 		TriggerObjectTileAnimation(o, tile, trigger, spec);
 	}
 }
+
+/**
+ * Resolve an object's spec and such so we can get a variable.
+ * @param ro    The resolver object to fill.
+ * @param index The object tile to get the data from.
+ */
+void GetObjectResolver(ResolverObject *ro, uint index)
+{
+	NewObjectResolver(ro, ObjectSpec::GetByTile(index), Object::GetByTile(index), index);
+}

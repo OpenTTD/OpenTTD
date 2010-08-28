@@ -311,6 +311,56 @@ static const NIFeature _nif_industry = {
 };
 
 
+/*** NewGRF objects ***/
+
+#define NICO(cb_id, bit) NIC(cb_id, ObjectSpec, callback_mask, bit)
+static const NICallback _nic_objects[] = {
+	NICO(CBID_OBJECT_LAND_SLOPE_CHECK,     CBM_OBJ_SLOPE_CHECK),
+	NICO(CBID_OBJECT_ANIMATION_NEXT_FRAME, CBM_OBJ_ANIMATION_NEXT_FRAME),
+	NICO(CBID_OBJECT_ANIMATION_START_STOP, CBM_NO_BIT),
+	NICO(CBID_OBJECT_ANIMATION_SPEED,      CBM_OBJ_ANIMATION_SPEED),
+	NICO(CBID_OBJECT_COLOUR,               CBM_OBJ_COLOUR),
+	NICO(CBID_OBJECT_FUND_MORE_TEXT,       CBM_OBJ_FUND_MORE_TEXT),
+	NICO(CBID_OBJECT_AUTOSLOPE,            CBM_OBJ_AUTOSLOPE),
+	NIC_END()
+};
+
+static const NIVariable _niv_objects[] = {
+	NIV(0x40, "relative position"),
+	NIV(0x41, "tile information"),
+	NIV(0x42, "construction date"),
+	NIV(0x43, "animation counter"),
+	NIV(0x44, "object founder"),
+	NIV(0x45, "get town zone and Manhattan distance of closest town"),
+	NIV(0x46, "get square of Euclidean distance of closes town"),
+	NIV(0x60, "get object ID at offset"),
+	NIV(0x61, "get random tile bits at offset"),
+	NIV(0x62, "land info of nearby tiles"),
+	NIV(0x63, "animation stage of nearby tiles"),
+	NIV(0x64, "distance on nearest object with given type"),
+	NIV(0x65, "count of object and distance of closest instance"),
+	NIV_END()
+};
+
+class NIHObject : public NIHelper {
+	bool IsInspectable(uint index) const                 { return ObjectSpec::GetByTile(index)->grf_prop.grffile != NULL; }
+	uint GetParent(uint index) const                     { return GetInspectWindowNumber(GSF_FAKE_TOWNS, Object::GetByTile(index)->town->index); }
+	const void *GetInstance(uint index)const             { return Object::GetByTile(index); }
+	const void *GetSpec(uint index) const                { return ObjectSpec::GetByTile(index); }
+	void SetStringParameters(uint index) const           { this->SetObjectAtStringParameters(STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT, INVALID_STRING_ID, index); }
+	void Resolve(ResolverObject *ro, uint32 index) const { extern void GetObjectResolver(ResolverObject *ro, uint index); GetObjectResolver(ro, index); }
+};
+
+static const NIFeature _nif_object = {
+	NULL,
+	_nic_objects,
+	_niv_objects,
+	new NIHObject(),
+	0,
+	0
+};
+
+
 /*** NewGRF rail types ***/
 
 static const NIVariable _niv_railtypes[] = {
@@ -419,7 +469,7 @@ static const NIFeature * const _nifeatures[] = {
 	NULL,               // GSF_SOUNDFX (has no "physical" objects)
 	NULL,               // GSF_AIRPORTS (feature not implemented)
 	NULL,               // GSF_SIGNALS (feature not implemented)
-	NULL,               // GSF_OBJECTS (feature not implemented)
+	&_nif_object,       // GSF_OBJECTS
 	&_nif_railtype,     // GSF_RAILTYPES
 	&_nif_airporttile,  // GSF_AIRPORTTILES
 	&_nif_town,         // GSF_FAKE_TOWNS
