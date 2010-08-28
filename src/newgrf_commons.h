@@ -125,11 +125,23 @@ public:
 	void SetEntitySpec(const AirportTileSpec *ats);
 };
 
+struct ObjectSpec;
+class ObjectOverrideManager : public OverrideManagerBase {
+protected:
+	virtual bool CheckValidNewID(uint16 testid) { return testid != 0xFF; }
+public:
+	ObjectOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+			OverrideManagerBase(offset, maximum, invalid) {}
+
+	void SetEntitySpec(ObjectSpec *spec);
+};
+
 extern HouseOverrideManager _house_mngr;
 extern IndustryOverrideManager _industry_mngr;
 extern IndustryTileOverrideManager _industile_mngr;
 extern AirportOverrideManager _airport_mngr;
 extern AirportTileOverrideManager _airporttile_mngr;
+extern ObjectOverrideManager _object_mngr;
 
 uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);

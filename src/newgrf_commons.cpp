@@ -21,6 +21,7 @@
 #include "station_map.h"
 #include "tree_map.h"
 #include "tunnelbridge_map.h"
+#include "newgrf_object.h"
 #include "genworld.h"
 #include "core/mem_func.hpp"
 
@@ -286,6 +287,36 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 		entity_overrides[i] = invalid_ID;
 		grfid_overrides[i] = 0;
 	}
+}
+
+/**
+ * Method to install the new object data in its proper slot
+ * The slot assigment is internal of this method, since it requires
+ * checking what is available
+ * @param spec ObjectSpec that comes from the grf decoding process
+ */
+void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
+{
+	/* First step : We need to find if this object is already specified in the savegame data. */
+	ObjectType type = this->GetID(spec->grf_prop.local_id, spec->grf_prop.grffile->grfid);
+
+	if (type == invalid_ID) {
+		/* Not found.
+		 * Or it has already been overriden, so you've lost your place old boy.
+		 * Or it is a simple substitute.
+		 * We need to find a free available slot */
+		type = this->AddEntityID(spec->grf_prop.local_id, spec->grf_prop.grffile->grfid, OBJECT_TRANSMITTER);
+	}
+
+	if (type == invalid_ID) {
+		grfmsg(1, "Object.SetEntitySpec: Too many objects allocated. Ignoring.");
+		return;
+	}
+
+	extern ObjectSpec _object_specs[NUM_OBJECTS];
+
+	/* Now that we know we can use the given id, copy the spec to its final destination. */
+	memcpy(&_object_specs[type], spec, sizeof(*spec));
 }
 
 /**

@@ -14,9 +14,12 @@
 #include "newgrf_object.h"
 #include "object_map.h"
 
+/** The override manager for our objects. */
+ObjectOverrideManager _object_mngr(NEW_OBJECT_OFFSET, NUM_OBJECTS, INVALID_OBJECT_TYPE);
+
 extern const ObjectSpec _original_objects[NEW_OBJECT_OFFSET];
 /** All the object specifications. */
-static ObjectSpec _object_specs[NUM_OBJECTS];
+ObjectSpec _object_specs[NUM_OBJECTS];
 
 /* static */ const ObjectSpec *ObjectSpec::Get(ObjectType index)
 {

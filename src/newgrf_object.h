@@ -15,6 +15,7 @@
 #include "economy_func.h"
 #include "strings_type.h"
 #include "object_type.h"
+#include "newgrf_commons.h"
 
 /** Various object behaviours. */
 enum ObjectFlags {
@@ -39,7 +40,10 @@ void ResetObjects();
 
 /** An object that isn't use for transport, industries or houses. */
 struct ObjectSpec {
+	/* 2 because of the "normal" and "buy" sprite stacks. */
+	GRFFilePropsBase<2> grf_prop; ///< Properties related the the grf file
 	StringID name;                ///< The name for this object.
+
 	uint8 size;                   ///< The size of this objects; low nibble for X, high nibble for Y.
 	uint8 build_cost_multiplier;  ///< Build cost multiplier per tile.
 	uint8 clear_cost_multiplier;  ///< Clear cost multiplier per tile.

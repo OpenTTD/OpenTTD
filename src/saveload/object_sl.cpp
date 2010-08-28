@@ -13,6 +13,7 @@
 #include "../object_base.h"
 
 #include "saveload.h"
+#include "newgrf_sl.h"
 
 static const SaveLoad _object_desc[] = {
 	    SLE_VAR(Object, location.tile,              SLE_UINT32),
@@ -52,6 +53,17 @@ static void Ptrs_OBJS()
 	}
 }
 
+static void Save_OBID()
+{
+	Save_NewGRFMapping(_object_mngr);
+}
+
+static void Load_OBID()
+{
+	Load_NewGRFMapping(_object_mngr);
+}
+
 extern const ChunkHandler _object_chunk_handlers[] = {
+	{ 'OBID', Save_OBID, Load_OBID, NULL,      NULL, CH_ARRAY },
 	{ 'OBJS', Save_OBJS, Load_OBJS, Ptrs_OBJS, NULL, CH_ARRAY | CH_LAST},
 };
