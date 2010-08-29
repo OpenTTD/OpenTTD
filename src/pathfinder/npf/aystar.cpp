@@ -82,7 +82,7 @@ static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, const AySt
 	Hash_Set(&aystar->OpenListHash, node->tile, node->direction, new_node);
 
 	/* Add it to the queue */
-	aystar->OpenListQueue.push(&aystar->OpenListQueue, new_node, f);
+	aystar->OpenListQueue.Push(new_node, f);
 }
 
 /*
@@ -136,7 +136,7 @@ static int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNod
 			check->path.node.user_data[i] = current->user_data[i];
 		}
 		/* Readd him in the OpenListQueue */
-		aystar->OpenListQueue.push(&aystar->OpenListQueue, check, new_f);
+		aystar->OpenListQueue.Push(check, new_f);
 	} else {
 		/* A new node, add him to the OpenList */
 		AyStarMain_OpenList_Add(aystar, closedlist_parent, current, new_f, new_g);

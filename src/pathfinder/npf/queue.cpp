@@ -27,6 +27,8 @@
  *  and C with array from 0 to n-1, and we don't like typing
  *  q->elements[i - 1] every time, we use this define. */
 #define BIN_HEAP_ARR(i) q->elements[((i) - 1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i) - 1) & BINARY_HEAP_BLOCKSIZE_MASK]
+/** Temporary duplicate of #BIN_HEAP_ARR, except it uses 'this' instead of 'q'. */
+#define THISBIN_HEAP_ARR(i) this->elements[((i) - 1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i) - 1) & BINARY_HEAP_BLOCKSIZE_MASK]
 
 static void BinaryHeap_Clear(Queue *q, bool free_values)
 {
@@ -72,29 +74,33 @@ static void BinaryHeap_Free(Queue *q, bool free_values)
 	free(q->elements);
 }
 
-static bool BinaryHeap_Push(Queue *q, void *item, int priority)
+/**
+ * Pushes an element into the queue, at the appropriate place for the queue.
+ * Requires the queue pointer to be of an appropriate type, of course.
+ */
+bool Queue::Push(void *item, int priority)
 {
 #ifdef QUEUE_DEBUG
-	printf("[BinaryHeap] Pushing an element. There are %d elements left\n", q->size);
+	printf("[BinaryHeap] Pushing an element. There are %d elements left\n", this->size);
 #endif
 
-	if (q->size == q->max_size) return false;
-	assert(q->size < q->max_size);
+	if (this->size == this->max_size) return false;
+	assert(this->size < this->max_size);
 
-	if (q->elements[q->size >> BINARY_HEAP_BLOCKSIZE_BITS] == NULL) {
+	if (this->elements[this->size >> BINARY_HEAP_BLOCKSIZE_BITS] == NULL) {
 		/* The currently allocated blocks are full, allocate a new one */
-		assert((q->size & BINARY_HEAP_BLOCKSIZE_MASK) == 0);
-		q->elements[q->size >> BINARY_HEAP_BLOCKSIZE_BITS] = MallocT<BinaryHeapNode>(BINARY_HEAP_BLOCKSIZE);
-		q->blocks++;
+		assert((this->size & BINARY_HEAP_BLOCKSIZE_MASK) == 0);
+		this->elements[this->size >> BINARY_HEAP_BLOCKSIZE_BITS] = MallocT<BinaryHeapNode>(BINARY_HEAP_BLOCKSIZE);
+		this->blocks++;
 #ifdef QUEUE_DEBUG
-		printf("[BinaryHeap] Increasing size of elements to %d nodes\n", q->blocks *  BINARY_HEAP_BLOCKSIZE);
+		printf("[BinaryHeap] Increasing size of elements to %d nodes\n", this->blocks *  BINARY_HEAP_BLOCKSIZE);
 #endif
 	}
 
 	/* Add the item at the end of the array */
-	BIN_HEAP_ARR(q->size + 1).priority = priority;
-	BIN_HEAP_ARR(q->size + 1).item = item;
-	q->size++;
+	THISBIN_HEAP_ARR(this->size + 1).priority = priority;
+	THISBIN_HEAP_ARR(this->size + 1).item = item;
+	this->size++;
 
 	/* Now we are going to check where it belongs. As long as the parent is
 	 * bigger, we switch with the parent */
@@ -103,15 +109,15 @@ static bool BinaryHeap_Push(Queue *q, void *item, int priority)
 		int i;
 		int j;
 
-		i = q->size;
+		i = this->size;
 		while (i > 1) {
 			/* Get the parent of this object (divide by 2) */
 			j = i / 2;
 			/* Is the parent bigger than the current, switch them */
-			if (BIN_HEAP_ARR(i).priority <= BIN_HEAP_ARR(j).priority) {
-				temp = BIN_HEAP_ARR(j);
-				BIN_HEAP_ARR(j) = BIN_HEAP_ARR(i);
-				BIN_HEAP_ARR(i) = temp;
+			if (THISBIN_HEAP_ARR(i).priority <= THISBIN_HEAP_ARR(j).priority) {
+				temp = THISBIN_HEAP_ARR(j);
+				THISBIN_HEAP_ARR(j) = THISBIN_HEAP_ARR(i);
+				THISBIN_HEAP_ARR(i) = temp;
 				i = j;
 			} else {
 				/* It is not, we're done! */
@@ -203,7 +209,6 @@ static void *BinaryHeap_Pop(Queue *q)
 void init_BinaryHeap(Queue *q, uint max_size)
 {
 	assert(q != NULL);
-	q->push = BinaryHeap_Push;
 	q->pop = BinaryHeap_Pop;
 	q->del = BinaryHeap_Delete;
 	q->clear = BinaryHeap_Clear;

@@ -19,7 +19,6 @@
 
 
 struct Queue;
-typedef bool Queue_PushProc(Queue *q, void *item, int priority);
 typedef void *Queue_PopProc(Queue *q);
 typedef bool Queue_DeleteProc(Queue *q, void *item, int priority);
 typedef void Queue_ClearProc(Queue *q, bool free_values);
@@ -32,11 +31,7 @@ struct BinaryHeapNode {
 
 
 struct Queue {
-	/*
-	 * Pushes an element into the queue, at the appropriate place for the queue.
-	 * Requires the queue pointer to be of an appropriate type, of course.
-	 */
-	Queue_PushProc *push;
+	bool Push(void *item, int priority);
 	/*
 	 * Pops the first element from the queue. What exactly is the first element,
 	 * is defined by the exact type of queue.
