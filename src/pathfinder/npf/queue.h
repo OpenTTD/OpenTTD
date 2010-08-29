@@ -60,14 +60,10 @@ struct Queue {
 	 */
 	Queue_FreeProc *free;
 
-	union {
-		struct {
-			uint max_size;
-			uint size;
-			uint blocks; ///< The amount of blocks for which space is reserved in elements
-			BinaryHeapNode **elements;
-		} binaryheap;
-	} data;
+	uint max_size;
+	uint size;
+	uint blocks; ///< The amount of blocks for which space is reserved in elements
+	BinaryHeapNode **elements;
 };
 
 
