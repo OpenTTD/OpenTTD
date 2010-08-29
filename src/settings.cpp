@@ -161,7 +161,7 @@ static uint32 LookupManyOfMany(const char *many, const char *str)
  * @param maxitems the maximum number of elements the integerlist-array has
  * @return returns the number of items found, or -1 on an error
  */
-int ParseIntList(const char *p, int *items, int maxitems)
+static int ParseIntList(const char *p, int *items, int maxitems)
 {
 	int n = 0; // number of items read so far
 	bool comma = false; // do we accept comma?

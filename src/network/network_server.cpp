@@ -1776,7 +1776,7 @@ void NetworkServerSendRcon(ClientID client_id, ConsoleColour colour_code, const 
 	SEND_COMMAND(PACKET_SERVER_RCON)(NetworkFindClientStateFromClientID(client_id), colour_code, string);
 }
 
-void NetworkServerSendError(ClientID client_id, NetworkErrorCode error)
+static void NetworkServerSendError(ClientID client_id, NetworkErrorCode error)
 {
 	SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromClientID(client_id), error);
 }

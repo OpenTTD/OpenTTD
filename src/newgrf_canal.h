@@ -58,7 +58,6 @@ extern WaterFeature _water_feature[CF_END];
  */
 SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile);
 
-uint16 GetCanalCallback(CallbackID callback, uint32 param1, uint32 param2, CanalFeature feature, TileIndex tile);
 uint GetCanalSpriteOffset(CanalFeature feature, TileIndex tile, uint cur_offset);
 
 #endif /* NEWGRF_CANAL_H */

@@ -138,7 +138,7 @@ void DrawCompanyIcon(CompanyID c, int x, int y)
  * @param cmf the fact to check
  * @return true if and only if the face is valid
  */
-bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
+static bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
 {
 	if (!AreCompanyManagerFaceBitsValid(cmf, CMFV_GEN_ETHN, GE_WM)) return false;
 

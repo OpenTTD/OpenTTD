@@ -237,6 +237,5 @@ static inline SpriteID GetCompanyManagerFaceSprite(CompanyManagerFace cmf, Compa
 }
 
 void DrawCompanyManagerFace(CompanyManagerFace face, int colour, int x, int y);
-bool IsValidCompanyManagerFace(CompanyManagerFace cmf);
 
 #endif /* COMPANY_MANAGER_FACE_H */

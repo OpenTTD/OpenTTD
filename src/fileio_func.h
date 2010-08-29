@@ -25,7 +25,6 @@ void FioCloseAll();
 void FioOpenFile(int slot, const char *filename);
 void FioReadBlock(void *ptr, size_t size);
 void FioSkipBytes(int n);
-void FioCreateDirectory(const char *filename);
 
 /**
  * The searchpaths OpenTTD could search through.

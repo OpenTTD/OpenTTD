@@ -114,7 +114,7 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
  * @param tile     Tile index of canal.
  * @return Callback result or CALLBACK_FAILED if the callback failed.
  */
-uint16 GetCanalCallback(CallbackID callback, uint32 param1, uint32 param2, CanalFeature feature, TileIndex tile)
+static uint16 GetCanalCallback(CallbackID callback, uint32 param1, uint32 param2, CanalFeature feature, TileIndex tile)
 {
 	ResolverObject object;
 	const SpriteGroup *group;

@@ -426,7 +426,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
  * Create a directory with the given name
  * @param name the new name of the directory
  */
-void FioCreateDirectory(const char *name)
+static void FioCreateDirectory(const char *name)
 {
 #if defined(WIN32) || defined(WINCE)
 	CreateDirectory(OTTD2FS(name), NULL);
