@@ -127,7 +127,7 @@ static int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNod
 		uint i;
 		/* Yes, check if this g value is lower.. */
 		if (new_g > check->g) return AYSTAR_DONE;
-		aystar->OpenListQueue.del(&aystar->OpenListQueue, check, 0);
+		aystar->OpenListQueue.Delete(check, 0);
 		/* It is lower, so change it to this item */
 		check->g = new_g;
 		check->path.parent = closedlist_parent;

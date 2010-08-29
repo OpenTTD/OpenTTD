@@ -19,7 +19,6 @@
 
 
 struct Queue;
-typedef bool Queue_DeleteProc(Queue *q, void *item, int priority);
 typedef void Queue_ClearProc(Queue *q, bool free_values);
 typedef void Queue_FreeProc(Queue *q, bool free_values);
 
@@ -32,12 +31,7 @@ struct BinaryHeapNode {
 struct Queue {
 	bool Push(void *item, int priority);
 	void *Pop();
-	/*
-	 * Deletes the item from the queue. priority should be specified if
-	 * known, which speeds up the deleting for some queue's. Should be -1
-	 * if not known.
-	 */
-	Queue_DeleteProc *del;
+	bool Delete(void *item, int priority);
 
 	/* Clears the queue, by removing all values from it. Its state is
 	 * effectively reset. If free_items is true, each of the items cleared

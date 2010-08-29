@@ -129,25 +129,30 @@ bool Queue::Push(void *item, int priority)
 	return true;
 }
 
-static bool BinaryHeap_Delete(Queue *q, void *item, int priority)
+/**
+ * Deletes the item from the queue. priority should be specified if
+ * known, which speeds up the deleting for some queue's. Should be -1
+ * if not known.
+ */
+bool Queue::Delete(void *item, int priority)
 {
 	uint i = 0;
 
 #ifdef QUEUE_DEBUG
-	printf("[BinaryHeap] Deleting an element. There are %d elements left\n", q->size);
+	printf("[BinaryHeap] Deleting an element. There are %d elements left\n", this->size);
 #endif
 
 	/* First, we try to find the item.. */
 	do {
-		if (BIN_HEAP_ARR(i + 1).item == item) break;
+		if (THISBIN_HEAP_ARR(i + 1).item == item) break;
 		i++;
-	} while (i < q->size);
+	} while (i < this->size);
 	/* We did not find the item, so we return false */
-	if (i == q->size) return false;
+	if (i == this->size) return false;
 
 	/* Now we put the last item over the current item while decreasing the size of the elements */
-	q->size--;
-	BIN_HEAP_ARR(i + 1) = BIN_HEAP_ARR(q->size + 1);
+	this->size--;
+	THISBIN_HEAP_ARR(i + 1) = THISBIN_HEAP_ARR(this->size + 1);
 
 	/* Now the only thing we have to do, is resort it..
 	 * On place i there is the item to be sorted.. let's start there */
@@ -162,22 +167,22 @@ static bool BinaryHeap_Delete(Queue *q, void *item, int priority)
 		for (;;) {
 			j = i;
 			/* Check if we have 2 childs */
-			if (2 * j + 1 <= q->size) {
+			if (2 * j + 1 <= this->size) {
 				/* Is this child smaller than the parent? */
-				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2 * j).priority) i = 2 * j;
+				if (THISBIN_HEAP_ARR(j).priority >= THISBIN_HEAP_ARR(2 * j).priority) i = 2 * j;
 				/* Yes, we _need_ to use i here, not j, because we want to have the smallest child
 				 *  This way we get that straight away! */
-				if (BIN_HEAP_ARR(i).priority >= BIN_HEAP_ARR(2 * j + 1).priority) i = 2 * j + 1;
+				if (THISBIN_HEAP_ARR(i).priority >= THISBIN_HEAP_ARR(2 * j + 1).priority) i = 2 * j + 1;
 			/* Do we have one child? */
-			} else if (2 * j <= q->size) {
-				if (BIN_HEAP_ARR(j).priority >= BIN_HEAP_ARR(2 * j).priority) i = 2 * j;
+			} else if (2 * j <= this->size) {
+				if (THISBIN_HEAP_ARR(j).priority >= THISBIN_HEAP_ARR(2 * j).priority) i = 2 * j;
 			}
 
 			/* One of our childs is smaller than we are, switch */
 			if (i != j) {
-				temp = BIN_HEAP_ARR(j);
-				BIN_HEAP_ARR(j) = BIN_HEAP_ARR(i);
-				BIN_HEAP_ARR(i) = temp;
+				temp = THISBIN_HEAP_ARR(j);
+				THISBIN_HEAP_ARR(j) = THISBIN_HEAP_ARR(i);
+				THISBIN_HEAP_ARR(i) = temp;
 			} else {
 				/* None of our childs is smaller, so we stay here.. stop :) */
 				break;
@@ -205,7 +210,7 @@ void *Queue::Pop()
 	/* The best item is always on top, so give that as result */
 	result = THISBIN_HEAP_ARR(1).item;
 	/* And now we should get rid of this item... */
-	BinaryHeap_Delete(this, THISBIN_HEAP_ARR(1).item, THISBIN_HEAP_ARR(1).priority);
+	this->Delete(THISBIN_HEAP_ARR(1).item, THISBIN_HEAP_ARR(1).priority);
 
 	return result;
 }
@@ -213,7 +218,6 @@ void *Queue::Pop()
 void init_BinaryHeap(Queue *q, uint max_size)
 {
 	assert(q != NULL);
-	q->del = BinaryHeap_Delete;
 	q->clear = BinaryHeap_Clear;
 	q->free = BinaryHeap_Free;
 	q->max_size = max_size;
