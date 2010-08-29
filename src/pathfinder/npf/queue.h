@@ -20,7 +20,6 @@
 
 struct Queue;
 typedef void Queue_ClearProc(Queue *q, bool free_values);
-typedef void Queue_FreeProc(Queue *q, bool free_values);
 
 struct BinaryHeapNode {
 	void *item;
@@ -38,11 +37,7 @@ struct Queue {
 	 * in this way are free()'d.
 	 */
 	Queue_ClearProc *clear;
-	/* Frees the queue, by reclaiming all memory allocated by it. After
-	 * this it is no longer usable. If free_items is true, any remaining
-	 * items are free()'d too.
-	 */
-	Queue_FreeProc *free;
+	void Free(bool free_values);
 
 	uint max_size;
 	uint size;

@@ -203,7 +203,7 @@ static int AyStarMain_Loop(AyStar *aystar)
  */
 static void AyStarMain_Free(AyStar *aystar)
 {
-	aystar->OpenListQueue.free(&aystar->OpenListQueue, false);
+	aystar->OpenListQueue.Free(false);
 	/* 2nd argument above is false, below is true, to free the values only
 	 * once */
 	delete_Hash(&aystar->OpenListHash, true);

@@ -62,16 +62,21 @@ static void BinaryHeap_Clear(Queue *q, bool free_values)
 	q->blocks = 1;
 }
 
-static void BinaryHeap_Free(Queue *q, bool free_values)
+/**
+ * Frees the queue, by reclaiming all memory allocated by it. After
+ * this it is no longer usable. If free_items is true, any remaining
+ * items are free()'d too.
+ */
+void Queue::Free(bool free_values)
 {
 	uint i;
 
-	q->clear(q, free_values);
-	for (i = 0; i < q->blocks; i++) {
-		if (q->elements[i] == NULL) break;
-		free(q->elements[i]);
+	this->clear(this, free_values);
+	for (i = 0; i < this->blocks; i++) {
+		if (this->elements[i] == NULL) break;
+		free(this->elements[i]);
 	}
-	free(q->elements);
+	free(this->elements);
 }
 
 /**
@@ -219,7 +224,6 @@ void init_BinaryHeap(Queue *q, uint max_size)
 {
 	assert(q != NULL);
 	q->clear = BinaryHeap_Clear;
-	q->free = BinaryHeap_Free;
 	q->max_size = max_size;
 	q->size = 0;
 	/* We malloc memory in block of BINARY_HEAP_BLOCKSIZE
