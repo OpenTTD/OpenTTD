@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file queue.cpp Implementation of the Queue/Hash. */
+/** @file queue.cpp Implementation of the #BinaryHeap/#Hash. */
 
 #include "../../stdafx.h"
 #include "../../core/alloc_func.hpp"
@@ -19,16 +19,16 @@
  * For information, see: http://www.policyalmanac.org/games/binaryHeaps.htm
  */
 
-const int Queue::BINARY_HEAP_BLOCKSIZE_BITS = 10; ///< The number of elements that will be malloc'd at a time.
-const int Queue::BINARY_HEAP_BLOCKSIZE      = 1 << Queue::BINARY_HEAP_BLOCKSIZE_BITS;
-const int Queue::BINARY_HEAP_BLOCKSIZE_MASK = Queue::BINARY_HEAP_BLOCKSIZE - 1;
+const int BinaryHeap::BINARY_HEAP_BLOCKSIZE_BITS = 10; ///< The number of elements that will be malloc'd at a time.
+const int BinaryHeap::BINARY_HEAP_BLOCKSIZE      = 1 << BinaryHeap::BINARY_HEAP_BLOCKSIZE_BITS;
+const int BinaryHeap::BINARY_HEAP_BLOCKSIZE_MASK = BinaryHeap::BINARY_HEAP_BLOCKSIZE - 1;
 
 /**
  * Clears the queue, by removing all values from it. Its state is
  * effectively reset. If free_items is true, each of the items cleared
  * in this way are free()'d.
  */
-void Queue::Clear(bool free_values)
+void BinaryHeap::Clear(bool free_values)
 {
 	/* Free all items if needed and free all but the first blocks of memory */
 	uint i;
@@ -65,7 +65,7 @@ void Queue::Clear(bool free_values)
  * this it is no longer usable. If free_items is true, any remaining
  * items are free()'d too.
  */
-void Queue::Free(bool free_values)
+void BinaryHeap::Free(bool free_values)
 {
 	uint i;
 
@@ -81,7 +81,7 @@ void Queue::Free(bool free_values)
  * Pushes an element into the queue, at the appropriate place for the queue.
  * Requires the queue pointer to be of an appropriate type, of course.
  */
-bool Queue::Push(void *item, int priority)
+bool BinaryHeap::Push(void *item, int priority)
 {
 #ifdef QUEUE_DEBUG
 	printf("[BinaryHeap] Pushing an element. There are %d elements left\n", this->size);
@@ -137,7 +137,7 @@ bool Queue::Push(void *item, int priority)
  * known, which speeds up the deleting for some queue's. Should be -1
  * if not known.
  */
-bool Queue::Delete(void *item, int priority)
+bool BinaryHeap::Delete(void *item, int priority)
 {
 	uint i = 0;
 
@@ -200,7 +200,7 @@ bool Queue::Delete(void *item, int priority)
  * Pops the first element from the queue. What exactly is the first element,
  * is defined by the exact type of queue.
  */
-void *Queue::Pop()
+void *BinaryHeap::Pop()
 {
 	void *result;
 
@@ -222,7 +222,7 @@ void *Queue::Pop()
  * Initializes a binary heap and allocates internal memory for maximum of
  * max_size elements
  */
-void Queue::Init(uint max_size)
+void BinaryHeap::Init(uint max_size)
 {
 	this->max_size = max_size;
 	this->size = 0;

@@ -7,7 +7,7 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file queue.h Simple Queue/Hash implementations. */
+/** @file queue.h Binary heap implementation, hash implementation. */
 
 #ifndef QUEUE_H
 #define QUEUE_H
@@ -24,12 +24,11 @@ struct BinaryHeapNode {
 };
 
 
-/*
- *  Binary Heap
- *  For information, see:
- *   http://www.policyalmanac.org/games/binaryHeaps.htm
+/**
+ * Binary Heap.
+ * For information, see: http://www.policyalmanac.org/games/binaryHeaps.htm
  */
-struct Queue {
+struct BinaryHeap {
 	static const int BINARY_HEAP_BLOCKSIZE;
 	static const int BINARY_HEAP_BLOCKSIZE_BITS;
 	static const int BINARY_HEAP_BLOCKSIZE_MASK;
