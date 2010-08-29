@@ -30,6 +30,10 @@ struct BinaryHeapNode {
  *   http://www.policyalmanac.org/games/binaryHeaps.htm
  */
 struct Queue {
+	static const int BINARY_HEAP_BLOCKSIZE;
+	static const int BINARY_HEAP_BLOCKSIZE_BITS;
+	static const int BINARY_HEAP_BLOCKSIZE_MASK;
+
 	void Init(uint max_size);
 
 	bool Push(void *item, int priority);
@@ -38,14 +42,22 @@ struct Queue {
 	void Clear(bool free_values);
 	void Free(bool free_values);
 
+	/**
+	 * Get an element from the #elements.
+	 * @param i Element to access (starts at offset \c 1).
+	 * @return Value of the element.
+	 */
+	FORCEINLINE BinaryHeapNode &GetElement(uint i)
+	{
+		assert(i > 0);
+		return this->elements[(i - 1) >> BINARY_HEAP_BLOCKSIZE_BITS][(i - 1) & BINARY_HEAP_BLOCKSIZE_MASK];
+	}
+
 	uint max_size;
 	uint size;
 	uint blocks; ///< The amount of blocks for which space is reserved in elements
 	BinaryHeapNode **elements;
 };
-
-/* The amount of elements that will be malloc'd at a time */
-#define BINARY_HEAP_BLOCKSIZE_BITS 10
 
 
 /*

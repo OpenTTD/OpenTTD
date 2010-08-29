@@ -19,16 +19,9 @@
  * For information, see: http://www.policyalmanac.org/games/binaryHeaps.htm
  */
 
-#define BINARY_HEAP_BLOCKSIZE (1 << BINARY_HEAP_BLOCKSIZE_BITS)
-#define BINARY_HEAP_BLOCKSIZE_MASK (BINARY_HEAP_BLOCKSIZE - 1)
-
-/* To make our life easy, we make the next define
- *  Because Binary Heaps works with array from 1 to n,
- *  and C with array from 0 to n-1, and we don't like typing
- *  q->elements[i - 1] every time, we use this define. */
-#define BIN_HEAP_ARR(i) q->elements[((i) - 1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i) - 1) & BINARY_HEAP_BLOCKSIZE_MASK]
-/** Temporary duplicate of #BIN_HEAP_ARR, except it uses 'this' instead of 'q'. */
-#define THISBIN_HEAP_ARR(i) this->elements[((i) - 1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i) - 1) & BINARY_HEAP_BLOCKSIZE_MASK]
+const int Queue::BINARY_HEAP_BLOCKSIZE_BITS = 10; ///< The number of elements that will be malloc'd at a time.
+const int Queue::BINARY_HEAP_BLOCKSIZE      = 1 << Queue::BINARY_HEAP_BLOCKSIZE_BITS;
+const int Queue::BINARY_HEAP_BLOCKSIZE_MASK = Queue::BINARY_HEAP_BLOCKSIZE - 1;
 
 /**
  * Clears the queue, by removing all values from it. Its state is
@@ -108,8 +101,8 @@ bool Queue::Push(void *item, int priority)
 	}
 
 	/* Add the item at the end of the array */
-	THISBIN_HEAP_ARR(this->size + 1).priority = priority;
-	THISBIN_HEAP_ARR(this->size + 1).item = item;
+	this->GetElement(this->size + 1).priority = priority;
+	this->GetElement(this->size + 1).item = item;
 	this->size++;
 
 	/* Now we are going to check where it belongs. As long as the parent is
@@ -124,10 +117,10 @@ bool Queue::Push(void *item, int priority)
 			/* Get the parent of this object (divide by 2) */
 			j = i / 2;
 			/* Is the parent bigger than the current, switch them */
-			if (THISBIN_HEAP_ARR(i).priority <= THISBIN_HEAP_ARR(j).priority) {
-				temp = THISBIN_HEAP_ARR(j);
-				THISBIN_HEAP_ARR(j) = THISBIN_HEAP_ARR(i);
-				THISBIN_HEAP_ARR(i) = temp;
+			if (this->GetElement(i).priority <= this->GetElement(j).priority) {
+				temp = this->GetElement(j);
+				this->GetElement(j) = this->GetElement(i);
+				this->GetElement(i) = temp;
 				i = j;
 			} else {
 				/* It is not, we're done! */
@@ -154,7 +147,7 @@ bool Queue::Delete(void *item, int priority)
 
 	/* First, we try to find the item.. */
 	do {
-		if (THISBIN_HEAP_ARR(i + 1).item == item) break;
+		if (this->GetElement(i + 1).item == item) break;
 		i++;
 	} while (i < this->size);
 	/* We did not find the item, so we return false */
@@ -162,7 +155,7 @@ bool Queue::Delete(void *item, int priority)
 
 	/* Now we put the last item over the current item while decreasing the size of the elements */
 	this->size--;
-	THISBIN_HEAP_ARR(i + 1) = THISBIN_HEAP_ARR(this->size + 1);
+	this->GetElement(i + 1) = this->GetElement(this->size + 1);
 
 	/* Now the only thing we have to do, is resort it..
 	 * On place i there is the item to be sorted.. let's start there */
@@ -179,20 +172,20 @@ bool Queue::Delete(void *item, int priority)
 			/* Check if we have 2 childs */
 			if (2 * j + 1 <= this->size) {
 				/* Is this child smaller than the parent? */
-				if (THISBIN_HEAP_ARR(j).priority >= THISBIN_HEAP_ARR(2 * j).priority) i = 2 * j;
+				if (this->GetElement(j).priority >= this->GetElement(2 * j).priority) i = 2 * j;
 				/* Yes, we _need_ to use i here, not j, because we want to have the smallest child
 				 *  This way we get that straight away! */
-				if (THISBIN_HEAP_ARR(i).priority >= THISBIN_HEAP_ARR(2 * j + 1).priority) i = 2 * j + 1;
+				if (this->GetElement(i).priority >= this->GetElement(2 * j + 1).priority) i = 2 * j + 1;
 			/* Do we have one child? */
 			} else if (2 * j <= this->size) {
-				if (THISBIN_HEAP_ARR(j).priority >= THISBIN_HEAP_ARR(2 * j).priority) i = 2 * j;
+				if (this->GetElement(j).priority >= this->GetElement(2 * j).priority) i = 2 * j;
 			}
 
 			/* One of our childs is smaller than we are, switch */
 			if (i != j) {
-				temp = THISBIN_HEAP_ARR(j);
-				THISBIN_HEAP_ARR(j) = THISBIN_HEAP_ARR(i);
-				THISBIN_HEAP_ARR(i) = temp;
+				temp = this->GetElement(j);
+				this->GetElement(j) = this->GetElement(i);
+				this->GetElement(i) = temp;
 			} else {
 				/* None of our childs is smaller, so we stay here.. stop :) */
 				break;
@@ -218,9 +211,9 @@ void *Queue::Pop()
 	if (this->size == 0) return NULL;
 
 	/* The best item is always on top, so give that as result */
-	result = THISBIN_HEAP_ARR(1).item;
+	result = this->GetElement(1).item;
 	/* And now we should get rid of this item... */
-	this->Delete(THISBIN_HEAP_ARR(1).item, THISBIN_HEAP_ARR(1).priority);
+	this->Delete(this->GetElement(1).item, this->GetElement(1).priority);
 
 	return result;
 }
