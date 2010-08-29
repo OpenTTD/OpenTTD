@@ -2061,6 +2061,11 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Alza un 
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Livella terreno
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acquista terreno per usi futuri
 
+# Object construction window
+
+STR_OBJECT_CLASS_LTHS                                           :Fari
+STR_OBJECT_CLASS_TRNS                                           :Trasmettitori
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Alberi
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Seleziona il tipo di albero da piantare

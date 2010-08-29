@@ -713,6 +713,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tworzeni
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Konstrukcja dróg
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadź drzewa
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umieść napis
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść objekt
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Zapisz scenariusz
@@ -1491,6 +1492,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Budowa 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :budowa niedostępna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jak inne przedsiębiorstwa
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :przez poszukiwanie
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Płaska powierzchnia wokół przedsiębiorstw: {ORANGE}{STRING} p{P 0:1 ole ola ól}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Pozwól na wiele podobnych przedsiębiorstw w mieście: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Zawsze pokazuj datę w długim formacie w pasku statusu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Pokazuj sygnały po stronie jazdy: {ORANGE}{STRING}
@@ -2439,6 +2441,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podwyżs
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Wyrównaj teren
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup teren do przyszłego użycia
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Wybór obiektu
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Wybierz obiekt do budowy
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Kategoria obiektu
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Podgląd obiektu
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmiar: {GOLD}{NUM} x {NUM} pól
+
+STR_OBJECT_CLASS_LTHS                                           :Latarnie morskie
+STR_OBJECT_CLASS_TRNS                                           :Nadajniki
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drzewa
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wybierz typ drzew do sadzenia
@@ -2787,6 +2799,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Poprzedn
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Zbadaj obiekt z poprzedniego obszaru
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} w {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Typ szyn
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGFR zmienna 60+parametr x (heksadecymalnie)

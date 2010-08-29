@@ -647,6 +647,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Генэ
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Будаўніцтва аўтамабільных дарог
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Пасадзіць дрэвы
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Паставіць метку
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разьмясьцiць аб'ект
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Захаваць сцэнар
@@ -1428,6 +1429,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Мэт�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не ствараць
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як i iншыя
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геолагаразьведка
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Плоскi рэльеф вакол прадпрыемстваў: {ORANGE}{STRING} клет{P ка кi ак}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Дазволіць некалькі прадпрыемстваў аднаго тыпу на горад: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Заўсёды поўная дата ў панэлі стану: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Паказваць сыгналы на баку руху: {ORANGE}{STRING}
@@ -2392,6 +2394,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Падв
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выраўнаваць зямлю
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Выкупіць зямлю для выкарыстаньня ў будучым
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Выбар аб'екта
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Выберыце аб'ект для пабудовы
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Кляса аб'екта
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Прагляд аб'екта
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Памер: {GOLD}{NUM} x {NUM} клетак
+
+STR_OBJECT_CLASS_LTHS                                           :Маякi
+STR_OBJECT_CLASS_TRNS                                           :Перадатчыкi
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дрэвы
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Выберыце від дрэваў для пасадкі
@@ -2740,6 +2752,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Баць
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Прагляд аб'екта ў кантэксце бацькі
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} у {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Аб'ект
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Тып рэйкаў
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Парамэтр зьменнай NewGRF 60+x (шаснаццаткавы)

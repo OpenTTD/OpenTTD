@@ -460,6 +460,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Созд
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Строительство автомобильных дорог
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Посадить деревья
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Поставить метку
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разместить объект
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Сохранить сценарий
@@ -1265,6 +1266,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Спо�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не создавать
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :как и остальные
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геологоразведка
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ровная область вокруг предприятий: {ORANGE}{STRING} клет{P 0:1 ка ки ок}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Разрешить несколько предприятий одного типа на город: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Всегда полная дата в панели состояния: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Показывать сигналы на стороне движения: {ORANGE}{STRING}
@@ -1302,17 +1304,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :у всех
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать, если доход ТС отрицателен: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт не будет выходить из эксплутации: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Автоозамена изношенного транспорта: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Замена через {ORANGE}{STRING}{LTBLUE} месяц{P "" а ев} после истечения срока службы
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Замена через {ORANGE}{STRING} месяц{P 0:1 "" а ев}{LTBLUE} после истечения срока службы
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Сумма, необходимая для автозамены: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Макс. длительность сообщений об ошибке: {ORANGE}{STRING} сек.
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Задержка появления подсказки при наведении курсора: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Задержка появления подсказки при наведении курсора: {ORANGE}отключена
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города в названии: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор земли: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор ландшафта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригинальный
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Нефтезаводы не дальше от края карты (клеток): {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. расстояние от края карты до нефтезавода: {ORANGE}{STRING} клет{P 0:1 ка ки ок}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Высота снежной линии: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Неровность земли (только для TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Очень гладкий
@@ -2229,6 +2231,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Подн
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выровнять землю
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Покупка земли
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Выбор объекта
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Выберите создаваемый объект
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Класс объекта
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Предварительный просмотр объекта
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} x {NUM} клеток
+
+STR_OBJECT_CLASS_LTHS                                           :Маяки
+STR_OBJECT_CLASS_TRNS                                           :Передатчики
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Деревья
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Выбор типа деревьев для посадки
@@ -2462,7 +2474,7 @@ STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Нача
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Ландшафт генерируется псевдослучайно, число - опорная точка в последовательности случайных чисел.
 STR_MAPGEN_RANDOM                                               :{BLACK}Случайное
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Изменить случайный номер, используемый генератором ландшафта
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Генератор ландш.:
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Генератор ландшафта:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Генератор лесов:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Количество морей и озёр:
@@ -2577,6 +2589,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Роди
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Просмотр объекта в контексте родителя
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} в {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Объект
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Тип рельсов
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Параметр переменной NewGRF 60+x (шестнадцатеричный)

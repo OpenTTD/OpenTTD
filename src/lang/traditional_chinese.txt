@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}產生�
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}建造道路
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植樹
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}放置標誌
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}放置物件
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :儲存場景
@@ -1172,9 +1173,9 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}旋轉�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆時針
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :順時針
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}平面地圖高度：{ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}啟用地圖邊緣平整化：{ORANGE}{STRING}
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}北邊的地圖邊緣有一個以上的區塊非空地
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}邊緣有一個以上的區塊非水域
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}啟用地圖邊緣區塊平整化：{ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}北邊的地圖邊緣有一格以上的區塊非空地
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}邊緣有一格以上的區塊非水域
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}車站最長延伸範圍：{ORANGE}{STRING} {RED}注意：過高會使效能下降
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}直升機於直升機坪自動維修：{ORANGE}{STRING}
@@ -2058,6 +2059,15 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}上昇�
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}整平地面
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}購買土地供將來使用
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}選擇物件
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}選擇要建立的物件
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}物件 Class
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}預覽此物件
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小：{GOLD}{NUM} x {NUM} 格
+
+STR_OBJECT_CLASS_LTHS                                           :燈塔
+STR_OBJECT_CLASS_TRNS                                           :天線塔
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}樹木
@@ -2152,7 +2162,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標�
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建於：{LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}車站風格：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}車站種類：{LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}機場區域名稱: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}機場區塊名稱: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接收貨物：{LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2397,6 +2407,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}輸入 N
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}變更 NewGRF 參數
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}關閉
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重設
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}將所有參數設為預設值
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :參數 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -2406,6 +2417,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Parent
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}檢查該物件的 Parent scope
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} 於 {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :物件
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :鐵路種類
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x 參數（16 進位）

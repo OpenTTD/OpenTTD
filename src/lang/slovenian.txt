@@ -376,6 +376,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generato
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Gradnja cest
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadi drevesa
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Postavi znak
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Postavi objekt
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Shrani scenarij
@@ -837,7 +838,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} proizvodnja v {INDUSTRY} narašča za {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} proizvodnja upada za 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Insekti so povzročili opustošenje v {INDUSTRY}!{}Proizvodnja zmanjšana za 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} proizvodnja v {INDUSTRY} upada za {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :Proizvodnja {BIGFONT}{BLACK}{STRING} v {INDUSTRY} upada za {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čaka v garaži
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čaka v garaži
@@ -1153,6 +1154,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Glavni 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :brez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kot ostale industrije
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :obetaven
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Izravnan teren okrog industrij: {ORANGE}{STRING} plošč{P a i e ""}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Dovoli več enakih industrij na mesto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vedno prikaži dolg datum v vrstici stanja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Prikaz signalov na vozni smeri: {ORANGE}{STRING}
@@ -1193,8 +1195,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Samoobn
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Samoobnovi, ko je vozilo {ORANGE}{STRING}{LTBLUE} mesecev pred/po največji starosti
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Samoobnovi najmanj potrebnega denarja za obnovo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje sporočila o napaki: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zamik lebdenja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Zamik lebdenja: {ORANGE}onemogočeno
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zamik lebdečih dogodkov: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Zamik lebdečih dogodkov: {ORANGE}onemogočeno
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikaz števila prebivalcev ob imenu mesta: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Urejevalnik terena: {ORANGE}{STRING}
@@ -1324,7 +1326,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :naključno
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Mesta lahko gradijo ceste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Mestom je dovoljena izgradnja prehodov nivojev: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Mestom je dovoljena izgradnja istonivojnih prehodov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Omogoči mestni nadzor hrupa za letališča: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Ustanavljanje mest v igri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prepovedano
@@ -1937,7 +1939,7 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zgradi 
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Gradnja železnice
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrificirana Železnica
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Gradnja elektrificirane železnica
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Gradnja enotirne železnice
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Gradnja magnetne železnice
 
@@ -2101,6 +2103,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvišaj 
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Zravnaj zemljo
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zemljišče za prihodnjo rabo
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Izbor zgradbe
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Izberi zgradbo za postavitev
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Vrsta zgradbe
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Predogled zgradbe
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM} x {NUM} plošč
+
+STR_OBJECT_CLASS_LTHS                                           :Svetilniki
+STR_OBJECT_CLASS_TRNS                                           :Oddajniki
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drevesa
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izberi vrsto drevesa za sajenje
@@ -2168,7 +2180,7 @@ STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ustanovi
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrijska veriga za industrijo {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrijska veriga za tovor {STRING}
-STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Proizvajajoče industrije
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Proizvajalne industrije
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Sprejemajoče industrije
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hiše
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikni na industrijo za ogled strank in dobaviteljev
@@ -2314,7 +2326,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Shrani t
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Naloži
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Naloži izbrano igro
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Podrobnosti igre
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Na voljo ni nobene informacije.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ni informacij na voljo.
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2383,7 +2395,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% n
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Ustvarjanje sveta
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Ustvarjanje dreves
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nepremično ustvarjanje
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ustvarjanje zgradbe
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generiranje grobih in skalnatih tal
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavljanje igre
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Zagnano ponavljanje kvadratkov
@@ -2395,7 +2407,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Podrobna
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivne NewGRF datoteke
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktivne NewGRF datoteke
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Izberi prednastavitev:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtriraj:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtrirna vrstica:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Naloži izbrano prednastavitev
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Shrani prednastavitev
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Shrani tekoči seznam kot prednastavitev
@@ -2424,7 +2436,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Preveri 
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Ime datoteke: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Verzija: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Različica: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
@@ -2438,6 +2450,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Vnesi Ne
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Spremeni NewGRF parametre
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zapri
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ponastavi
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ponastavi vse nastavitve na privzeto
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -2447,6 +2461,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Staršev
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Preglej starševski objekt
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} na {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Zgradba
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tip železnice
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF spremenljivka 60+x parameter (hexadecimal)
@@ -2489,6 +2504,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Poskus uporabe 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} vsebuje eno poškodovano sličico. Vse poškodovane sličice se bodo prikazale kot rdeči vprašaji (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Vsebuje večkratne Action 8 vnose.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Preberi po koncu navidezne sličice.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V uporabljenem osnovnem setu grafik manjkajo sličice.{}Prosim, posodobi osnovni set grafik.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Pozor!
@@ -2510,8 +2526,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Manjkajoč
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Ozadje NewGRFa '{0:STRING}' lahko povzroči desinhronizacijo in sesutje igre.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Vozilo '{1:ENGINE}' je spremenilo status obratovanja, ko ni bilo znotraj garaže.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremenila se je dolžina vozila za '{1:ENGINE}' ko ni bil v garaži.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Vozilo '{1:ENGINE}' je spremenilo status obratovanja, ko ni znotraj garaže.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremenila se je dolžina vozila za '{1:ENGINE}' ko ni v garaži.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' , ki pripada družbi '{COMPANY}', ima neveljavno dolžino. Najbrž vsebuje probleme povezane z NewGRF. Igra se lahko sesuje.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo.
@@ -2530,7 +2546,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam o
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Ujemanje začetnic
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Počisti filter
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Vključi ujemanje začetnic pri primerjanju imen znakov s filtrom
-STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Počisti filter
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Počisti vrstico filtra
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Uredi znak
@@ -2822,10 +2838,10 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nova električn
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova enotirna vozila
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova magnetna vozila
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Tirna vozila
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nova tirna vozila
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nova cestna vozila
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nove ladje
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Novo letalo
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova letala
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Teža: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hitrost: {GOLD}{VELOCITY}{BLACK} Moč: {GOLD}{POWER}
@@ -3587,7 +3603,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Ni mogo�
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tukaj ni mogoče odstraniti točke poti...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Najprej moraš odstraniti točko poti
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja na poti
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boja je v uporabi!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bojo uporablja drugo podjetje!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nemogoča gradnja žel. garaže...
@@ -3597,10 +3613,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tukaj ni
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ni mogoče preimenovati garaže...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Vlak mora biti ustavljen v garaži
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora biti ustavljen v garaži cestnih vozil
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Ladja mora biti ustavljena in v garaži
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Letalo mora biti ustavljeno v hangarju
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... mora biti ustavljen v garaži
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mora biti ustavljeno v garaži cestnih vozil
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... mora biti ustavljena in v garaži
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... mora biti ustavljeno v hangarju
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaki so lahko spremenjeni šele, ko stojijo v garaži
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vlak je predolg
@@ -3626,7 +3642,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najprej 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ni primernih tračnic
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najprej moraš odstraniti tračnice
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je enosmerna ali blokirana
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Menjava nivojev ni dovoljena za ta tip železnice
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Istonivojna križišča niso dovoljena za ta tip železnice
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nemogoča gradnja signalov...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nemogoča gradnja tirov...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemogoča odstranitev tirov...

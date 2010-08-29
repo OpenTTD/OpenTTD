@@ -335,6 +335,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industri
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Straße bauen
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Bäume pflanzen
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Schild aufstellen
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objekt platzieren
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Szenario speichern
@@ -1112,6 +1113,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuell
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nicht erlaubt
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Wie andere Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Durch Prospektion
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ebenes Gelände um Industrien: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Mehrere gleichartige Industrien pro Stadt erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Lange Datumsanzeige in der Statusleiste (links unten): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Signale auf der Seite der Straßenverkehrsrichtung anzeigen: {ORANGE}{STRING}
@@ -1930,8 +1932,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Bahnstei
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bahnhof durch Klicken, Ziehen und Loslassen bauen
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Wähle eine Stationsart zum anzeigen
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Wähle die Stationsart aus, die gebaut werden soll
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}ine Stationsart zum Anzeigen auswählen
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Die Stationsart auswählen, die gebaut werden soll
 
 STR_STATION_CLASS_DFLT                                          :Standardstation
 STR_STATION_CLASS_WAYP                                          :Wegpunkte
@@ -1958,7 +1960,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Signalab
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Eisenbahnbrücke auswählen
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Straßenbrücke wählen
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brückenauswahl - Klicke auf die gewünschte Brücke, um sie zu bauen
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brückenauswahl - Auf die gewünschte Brücke klicken, um sie zu bauen
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Stahlhängebrücke
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Stahlträgerbrücke
@@ -2059,6 +2061,16 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Land abs
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Land anheben
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Höhe ausgleichen
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land für künftige Nutzung kaufen
+
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektauswahl
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Objektauswahl - Auf das gewünschte Objekt klicken, um es zu bauen
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objektklasse
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vorschau des Objekts
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Größe: {GOLD}{NUM} x {NUM} Felder
+
+STR_OBJECT_CLASS_LTHS                                           :Leuchttürme
+STR_OBJECT_CLASS_TRNS                                           :Sendemasten
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bäume
@@ -2408,6 +2420,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}übergeo
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspiziere das Objekt im übergeordneten Geltungsbereich
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} bei {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Gleisart
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-Variable 60+x Parameter (hexadecimal)

@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generera
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Bygg vägar
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantera träd
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Placera skylt
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placera objekt
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Spara scenario
@@ -1111,6 +1112,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuell
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Inget
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andra industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterande
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Platt område runt industrier: {ORANGE}{STRING} rut{P 0:1 a or}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Tillåt flera industrier av samma typ per stad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Visa alltid långt datum i statusfältet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Visa signaler på körsidan: {ORANGE}{STRING}
@@ -2059,6 +2061,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Höj upp
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Utjämna land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mark för framtida användning
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Val av objekt
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Välj objekt att bygga
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objektklass
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Förhandsvisning av objektet
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Storlek: {GOLD}{NUM} x {NUM} rutor
+
+STR_OBJECT_CLASS_LTHS                                           :Fyrar
+STR_OBJECT_CLASS_TRNS                                           :Sändare
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Träd
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Välj trädtyp att plantera
@@ -2396,6 +2408,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv Ne
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ändra NewGRF parametrar
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Stäng
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Återställ
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Återställ alla parametrar till deras standardvärden
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -2405,6 +2419,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Föräld
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspektera förälderobjektet
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} vid {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Spårtyp
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variabel 60+x parameter (hexadecimal)

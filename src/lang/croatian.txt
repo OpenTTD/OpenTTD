@@ -430,6 +430,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Stvaranj
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Izgradnja ceste
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadi drveće
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Postavi znak
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Postavi objekt
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Spremi scenarij
@@ -1207,6 +1208,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Ručna 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nijedna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kao i druge industrije
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prosperirajuća
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ravna površina oko industrija: {ORANGE}{STRING} polje{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Dopusti više sličnih industrija po gradu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Uvijek pokaži dugi datum u statusnoj traci: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Pokaži signale na vozačkoj strani: {ORANGE}{STRING}
@@ -2155,6 +2157,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Povisi v
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ravnanje površine
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zemlju za buduću uporabu
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Odabir objekta
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Odaberi objekt za izgradnju
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Klasa objekta
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pregled objekta
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Veličina: {GOLD}{NUM} x {NUM} polja
+
+STR_OBJECT_CLASS_LTHS                                           :Svjetionici
+STR_OBJECT_CLASS_TRNS                                           :Odašiljači
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drveće
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Odaberi vrstu drveta za sadnju
@@ -2503,6 +2515,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Matični
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Pregledaj objekt matičnog djelokruga
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} na {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Vrsta željeznice
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF varijabla 60+x parametar (heksadecimalni)
