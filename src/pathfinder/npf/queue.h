@@ -24,7 +24,14 @@ struct BinaryHeapNode {
 };
 
 
+/*
+ *  Binary Heap
+ *  For information, see:
+ *   http://www.policyalmanac.org/games/binaryHeaps.htm
+ */
 struct Queue {
+	void Init(uint max_size);
+
 	bool Push(void *item, int priority);
 	void *Pop();
 	bool Delete(void *item, int priority);
@@ -37,21 +44,8 @@ struct Queue {
 	BinaryHeapNode **elements;
 };
 
-
-/*
- *  Binary Heap
- *  For information, see:
- *   http://www.policyalmanac.org/games/binaryHeaps.htm
- */
-
 /* The amount of elements that will be malloc'd at a time */
 #define BINARY_HEAP_BLOCKSIZE_BITS 10
-
-/**
- * Initializes a binary heap and allocates internal memory for maximum of
- * max_size elements
- */
-void init_BinaryHeap(Queue *q, uint max_size);
 
 
 /*

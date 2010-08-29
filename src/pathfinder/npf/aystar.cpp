@@ -296,7 +296,7 @@ void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
 	 *  BinaryHeap allocates a block of 1024 nodes
 	 *  When that one gets full it reserves another one, till this number
 	 *  That is why it can stay this high */
-	init_BinaryHeap(&aystar->OpenListQueue, 102400);
+	aystar->OpenListQueue.Init(102400);
 
 	aystar->addstart  = AyStarMain_AddStartNode;
 	aystar->main      = AyStarMain_Main;

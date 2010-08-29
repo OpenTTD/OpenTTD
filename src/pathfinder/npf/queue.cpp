@@ -225,16 +225,19 @@ void *Queue::Pop()
 	return result;
 }
 
-void init_BinaryHeap(Queue *q, uint max_size)
+/**
+ * Initializes a binary heap and allocates internal memory for maximum of
+ * max_size elements
+ */
+void Queue::Init(uint max_size)
 {
-	assert(q != NULL);
-	q->max_size = max_size;
-	q->size = 0;
+	this->max_size = max_size;
+	this->size = 0;
 	/* We malloc memory in block of BINARY_HEAP_BLOCKSIZE
 	 *   It autosizes when it runs out of memory */
-	q->elements = CallocT<BinaryHeapNode*>((max_size - 1) / BINARY_HEAP_BLOCKSIZE + 1);
-	q->elements[0] = MallocT<BinaryHeapNode>(BINARY_HEAP_BLOCKSIZE);
-	q->blocks = 1;
+	this->elements = CallocT<BinaryHeapNode*>((max_size - 1) / BINARY_HEAP_BLOCKSIZE + 1);
+	this->elements[0] = MallocT<BinaryHeapNode>(BINARY_HEAP_BLOCKSIZE);
+	this->blocks = 1;
 #ifdef QUEUE_DEBUG
 	printf("[BinaryHeap] Initial size of elements is %d nodes\n", BINARY_HEAP_BLOCKSIZE);
 #endif
