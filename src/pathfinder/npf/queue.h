@@ -19,7 +19,6 @@
 
 
 struct Queue;
-typedef void *Queue_PopProc(Queue *q);
 typedef bool Queue_DeleteProc(Queue *q, void *item, int priority);
 typedef void Queue_ClearProc(Queue *q, bool free_values);
 typedef void Queue_FreeProc(Queue *q, bool free_values);
@@ -32,11 +31,7 @@ struct BinaryHeapNode {
 
 struct Queue {
 	bool Push(void *item, int priority);
-	/*
-	 * Pops the first element from the queue. What exactly is the first element,
-	 * is defined by the exact type of queue.
-	 */
-	Queue_PopProc *pop;
+	void *Pop();
 	/*
 	 * Deletes the item from the queue. priority should be specified if
 	 * known, which speeds up the deleting for some queue's. Should be -1

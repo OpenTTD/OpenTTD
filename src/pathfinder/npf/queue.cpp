@@ -188,20 +188,24 @@ static bool BinaryHeap_Delete(Queue *q, void *item, int priority)
 	return true;
 }
 
-static void *BinaryHeap_Pop(Queue *q)
+/**
+ * Pops the first element from the queue. What exactly is the first element,
+ * is defined by the exact type of queue.
+ */
+void *Queue::Pop()
 {
 	void *result;
 
 #ifdef QUEUE_DEBUG
-	printf("[BinaryHeap] Popping an element. There are %d elements left\n", q->size);
+	printf("[BinaryHeap] Popping an element. There are %d elements left\n", this->size);
 #endif
 
-	if (q->size == 0) return NULL;
+	if (this->size == 0) return NULL;
 
 	/* The best item is always on top, so give that as result */
-	result = BIN_HEAP_ARR(1).item;
+	result = THISBIN_HEAP_ARR(1).item;
 	/* And now we should get rid of this item... */
-	BinaryHeap_Delete(q, BIN_HEAP_ARR(1).item, BIN_HEAP_ARR(1).priority);
+	BinaryHeap_Delete(this, THISBIN_HEAP_ARR(1).item, THISBIN_HEAP_ARR(1).priority);
 
 	return result;
 }
@@ -209,7 +213,6 @@ static void *BinaryHeap_Pop(Queue *q)
 void init_BinaryHeap(Queue *q, uint max_size)
 {
 	assert(q != NULL);
-	q->pop = BinaryHeap_Pop;
 	q->del = BinaryHeap_Delete;
 	q->clear = BinaryHeap_Clear;
 	q->free = BinaryHeap_Free;

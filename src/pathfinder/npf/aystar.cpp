@@ -62,7 +62,7 @@ static OpenListNode *AyStarMain_OpenList_IsInList(AyStar *aystar, const AyStarNo
 static OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar)
 {
 	/* Return the item the Queue returns.. the best next OpenList item. */
-	OpenListNode *res = (OpenListNode*)aystar->OpenListQueue.pop(&aystar->OpenListQueue);
+	OpenListNode *res = (OpenListNode*)aystar->OpenListQueue.Pop();
 	if (res != NULL) {
 		Hash_Delete(&aystar->OpenListHash, res->path.node.tile, res->path.node.direction);
 	}
