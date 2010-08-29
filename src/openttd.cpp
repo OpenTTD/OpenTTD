@@ -1181,7 +1181,7 @@ static void CheckCaches()
 					if (memcmp(&acc_cache[length], &RoadVehicle::From(u)->acc_cache, sizeof(AccelerationCache)) != 0) {
 						DEBUG(desync, 2, "road vehicle acceleration cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
 					}
-					if (memcmp(&tra_cache[length], &RoadVehicle::From(u)->rcache, sizeof(RoadVehicleCache)) != 0) {
+					if (memcmp(&roa_cache[length], &RoadVehicle::From(u)->rcache, sizeof(RoadVehicleCache)) != 0) {
 						DEBUG(desync, 2, "road vehicle cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
 					}
 					break;
