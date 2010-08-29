@@ -30,14 +30,19 @@
 /** Temporary duplicate of #BIN_HEAP_ARR, except it uses 'this' instead of 'q'. */
 #define THISBIN_HEAP_ARR(i) this->elements[((i) - 1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i) - 1) & BINARY_HEAP_BLOCKSIZE_MASK]
 
-static void BinaryHeap_Clear(Queue *q, bool free_values)
+/**
+ * Clears the queue, by removing all values from it. Its state is
+ * effectively reset. If free_items is true, each of the items cleared
+ * in this way are free()'d.
+ */
+void Queue::Clear(bool free_values)
 {
 	/* Free all items if needed and free all but the first blocks of memory */
 	uint i;
 	uint j;
 
-	for (i = 0; i < q->blocks; i++) {
-		if (q->elements[i] == NULL) {
+	for (i = 0; i < this->blocks; i++) {
+		if (this->elements[i] == NULL) {
 			/* No more allocated blocks */
 			break;
 		}
@@ -45,21 +50,21 @@ static void BinaryHeap_Clear(Queue *q, bool free_values)
 		if (free_values) {
 			for (j = 0; j < (1 << BINARY_HEAP_BLOCKSIZE_BITS); j++) {
 				/* For every element in the block */
-				if ((q->size >> BINARY_HEAP_BLOCKSIZE_BITS) == i &&
-						(q->size & BINARY_HEAP_BLOCKSIZE_MASK) == j) {
+				if ((this->size >> BINARY_HEAP_BLOCKSIZE_BITS) == i &&
+						(this->size & BINARY_HEAP_BLOCKSIZE_MASK) == j) {
 					break; // We're past the last element
 				}
-				free(q->elements[i][j].item);
+				free(this->elements[i][j].item);
 			}
 		}
 		if (i != 0) {
 			/* Leave the first block of memory alone */
-			free(q->elements[i]);
-			q->elements[i] = NULL;
+			free(this->elements[i]);
+			this->elements[i] = NULL;
 		}
 	}
-	q->size = 0;
-	q->blocks = 1;
+	this->size = 0;
+	this->blocks = 1;
 }
 
 /**
@@ -71,7 +76,7 @@ void Queue::Free(bool free_values)
 {
 	uint i;
 
-	this->clear(this, free_values);
+	this->Clear(free_values);
 	for (i = 0; i < this->blocks; i++) {
 		if (this->elements[i] == NULL) break;
 		free(this->elements[i]);
@@ -223,7 +228,6 @@ void *Queue::Pop()
 void init_BinaryHeap(Queue *q, uint max_size)
 {
 	assert(q != NULL);
-	q->clear = BinaryHeap_Clear;
 	q->max_size = max_size;
 	q->size = 0;
 	/* We malloc memory in block of BINARY_HEAP_BLOCKSIZE

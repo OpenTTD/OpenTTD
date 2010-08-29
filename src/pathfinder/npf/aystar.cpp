@@ -221,7 +221,7 @@ void AyStarMain_Clear(AyStar *aystar)
 {
 	/* Clean the Queue, but not the elements within. That will be done by
 	 * the hash. */
-	aystar->OpenListQueue.clear(&aystar->OpenListQueue, false);
+	aystar->OpenListQueue.Clear(false);
 	/* Clean the hashes */
 	clear_Hash(&aystar->OpenListHash, true);
 	clear_Hash(&aystar->ClosedListHash, true);

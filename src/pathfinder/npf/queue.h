@@ -18,9 +18,6 @@
 //#define HASH_STATS
 
 
-struct Queue;
-typedef void Queue_ClearProc(Queue *q, bool free_values);
-
 struct BinaryHeapNode {
 	void *item;
 	int priority;
@@ -31,12 +28,7 @@ struct Queue {
 	bool Push(void *item, int priority);
 	void *Pop();
 	bool Delete(void *item, int priority);
-
-	/* Clears the queue, by removing all values from it. Its state is
-	 * effectively reset. If free_items is true, each of the items cleared
-	 * in this way are free()'d.
-	 */
-	Queue_ClearProc *clear;
+	void Clear(bool free_values);
 	void Free(bool free_values);
 
 	uint max_size;
