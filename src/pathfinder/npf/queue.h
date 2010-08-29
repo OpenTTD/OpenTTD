@@ -25,12 +25,6 @@ typedef bool Queue_DeleteProc(Queue *q, void *item, int priority);
 typedef void Queue_ClearProc(Queue *q, bool free_values);
 typedef void Queue_FreeProc(Queue *q, bool free_values);
 
-struct InsSortNode {
-	void *item;
-	int priority;
-	InsSortNode *next;
-};
-
 struct BinaryHeapNode {
 	void *item;
 	int priority;
@@ -68,9 +62,6 @@ struct Queue {
 
 	union {
 		struct {
-			InsSortNode *first;
-		} inssort;
-		struct {
 			uint max_size;
 			uint size;
 			uint blocks; ///< The amount of blocks for which space is reserved in elements
@@ -78,15 +69,6 @@ struct Queue {
 		} binaryheap;
 	} data;
 };
-
-
-/**
- * Insertion Sorter
- */
-
-/* Initializes a inssort and allocates internal memory. There is no maximum
- * size */
-void init_InsSort(Queue *q);
 
 
 /*
