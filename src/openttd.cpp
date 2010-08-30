@@ -1178,7 +1178,7 @@ static void CheckCaches()
 					}
 					break;
 				case VEH_ROAD:
-					if (memcmp(&tra_cache[length], &RoadVehicle::From(u)->rcache, sizeof(RoadVehicleCache)) != 0) {
+					if (memcmp(&roa_cache[length], &RoadVehicle::From(u)->rcache, sizeof(RoadVehicleCache)) != 0) {
 						DEBUG(desync, 2, "road vehicle cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
 					}
 					break;

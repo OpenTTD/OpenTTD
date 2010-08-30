@@ -884,18 +884,15 @@ struct NewGRFWindow : public Window {
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
-		if (index == -1) {
-			ClearGRFConfigList(&this->list);
-			this->preset = -1;
-		} else {
+		ClearGRFConfigList(&this->list);
+		this->preset = index;
+
+		if (index != -1) {
 			GRFConfig *c = LoadGRFPresetFromConfig(_grf_preset_list[index]);
 
-			if (c != NULL) {
-				this->sel = NULL;
-				ClearGRFConfigList(&this->list);
-				this->list = c;
-				this->preset = index;
-			}
+			this->sel = NULL;
+			ClearGRFConfigList(&this->list);
+			this->list = c;
 		}
 
 		this->sel = NULL;

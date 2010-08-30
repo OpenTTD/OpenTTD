@@ -20,7 +20,7 @@
 - Fix: Do not allow building a rail track to the water using a tree-tile [FS#3695] (r20110)
 - Fix: [NoAI] AITown::GetRating() returned wrong values [FS#3934] (r20103)
 - Fix: Reading deleted memory when selecting a NewGRF in the content download window of which the data has not been acquired from the content server. The crash would occur after the content server's reply was processed and the ContentInfo object was replaced with another [FS#3899] (r20089, r20082)
-- Fix: If after loading a savegame (including intro game) one tried to save a game (including autosave) and that failed (very) early on because it could not open the file for writing all pointers would be converted to NULLs which then causes corrupted game states [FS#3876, FS#3887, FS#3920, FS#3923] (r20087)
+- Fix: If after loading a savegame (including intro game) one tried to save a game (including autosave) and that failed (very) early on because it could not open the file for writing all pointers would be converted to NULLs which then causes corrupted game states [FS#3786, FS#3887, FS#3920, FS#3923] (r20087)
 - Fix: gitignore and hgignore had more missing/wrong entries (r20078, r20033, r20031)
 - Fix: Remove the space between 'open' and 'ttd' in the title screen (r20077)
 - Fix: Road vehicles could get crashed twice in a tick [FS#3896] (r20053, r20034)
