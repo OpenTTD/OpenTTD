@@ -188,7 +188,8 @@ void NetworkAfterNewGRFScan()
 				item->info.compatible = false;
 			} else {
 				c->filename  = f->filename;
-				c->name      = f->name;
+				CleanUpGRFText(c->name);
+				c->name      = DuplicateGRFText(f->name);
 				c->info      = f->info;
 				c->status    = GCS_UNKNOWN;
 			}

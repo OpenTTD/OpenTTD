@@ -28,6 +28,7 @@
 #include "../sortlist_type.h"
 #include "../company_func.h"
 #include "../core/geometry_func.hpp"
+#include "../newgrf_text.h"
 
 #include "table/strings.h"
 #include "../table/sprites.h"
@@ -811,7 +812,8 @@ public:
 						}
 
 						c->filename  = f->filename;
-						c->name      = f->name;
+						CleanUpGRFText(c->name);
+						c->name      = DuplicateGRFText(f->name);
 						c->info      = f->info;
 						c->status    = GCS_UNKNOWN;
 					}
