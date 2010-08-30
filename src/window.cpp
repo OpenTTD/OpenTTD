@@ -1549,23 +1549,24 @@ static void EnsureVisibleCaption(Window *w, int nx, int ny)
 	/* Search for the title bar rectangle. */
 	Rect caption_rect;
 	const NWidgetBase *caption = w->nested_root->GetWidgetOfType(WWT_CAPTION);
-	assert(caption != NULL);
-	caption_rect.left   = caption->pos_x;
-	caption_rect.right  = caption->pos_x + caption->current_x;
-	caption_rect.top    = caption->pos_y;
-	caption_rect.bottom = caption->pos_y + caption->current_y;
+	if (caption != NULL) {
+		caption_rect.left   = caption->pos_x;
+		caption_rect.right  = caption->pos_x + caption->current_x;
+		caption_rect.top    = caption->pos_y;
+		caption_rect.bottom = caption->pos_y + caption->current_y;
 
-	/* Make sure the window doesn't leave the screen */
-	nx = Clamp(nx, MIN_VISIBLE_TITLE_BAR - caption_rect.right, _screen.width - MIN_VISIBLE_TITLE_BAR - caption_rect.left);
-	ny = Clamp(ny, 0, _screen.height - MIN_VISIBLE_TITLE_BAR);
+		/* Make sure the window doesn't leave the screen */
+		nx = Clamp(nx, MIN_VISIBLE_TITLE_BAR - caption_rect.right, _screen.width - MIN_VISIBLE_TITLE_BAR - caption_rect.left);
+		ny = Clamp(ny, 0, _screen.height - MIN_VISIBLE_TITLE_BAR);
 
-	/* Make sure the title bar isn't hidden behind the main tool bar or the status bar. */
-	PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_MAIN_TOOLBAR, 0), w->left, PHD_DOWN);
-	PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_STATUS_BAR,   0), w->left, PHD_UP);
+		/* Make sure the title bar isn't hidden behind the main tool bar or the status bar. */
+		PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_MAIN_TOOLBAR, 0), w->left, PHD_DOWN);
+		PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_STATUS_BAR,   0), w->left, PHD_UP);
 
-	if (w->viewport != NULL) {
-		w->viewport->left += nx - w->left;
-		w->viewport->top  += ny - w->top;
+		if (w->viewport != NULL) {
+			w->viewport->left += nx - w->left;
+			w->viewport->top  += ny - w->top;
+		}
 	}
 	w->left = nx;
 	w->top  = ny;
@@ -1594,6 +1595,8 @@ void ResizeWindow(Window *w, int delta_x, int delta_y)
 		w->width  = w->nested_root->current_x;
 		w->height = w->nested_root->current_y;
 	}
+
+	EnsureVisibleCaption(w, w->left, w->top);
 
 	/* Always call OnResize to make sure everything is initialised correctly if it needs to be. */
 	w->OnResize();
