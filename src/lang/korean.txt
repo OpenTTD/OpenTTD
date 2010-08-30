@@ -335,6 +335,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}산업 �
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}도로 건설
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}나무 심기
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}팻말 달기
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}오브젝트 설치
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :시나리오 저장
@@ -2056,6 +2057,14 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}땅의 �
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}땅을 평평하게 고릅니다.
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}나중에 그 땅을 사용하기 위해 소유권을 사 놓습니다
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}오브젝트 선택
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}건설할 오브젝트 선택
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}오브젝트 등급
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}오브젝트 미리보기
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}크기: {GOLD}{NUM} x {NUM} 타일
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}나무
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}심을 나무의 종류 선택
@@ -2400,6 +2409,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}상위 �
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}상위 단계 범위의 오브젝트를 검사합니다.
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING}, {HEX}에서
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :오브젝트
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :철도 종류
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF 변수 60+x 파라미터 (16진법에서)

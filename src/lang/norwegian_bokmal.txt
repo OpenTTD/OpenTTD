@@ -336,6 +336,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industri
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Veibygging
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant trær
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plasser skilt
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plasser objekt
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lagre scenario
@@ -443,8 +444,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om 
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vis/skjul konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI-feilsøking
-STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump (CTRL+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stor skjermdump (CTRL+G)
+STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Innzoomet skjermdump
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stor skjermdump
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
 ############ range ends here
@@ -560,6 +562,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vis detaljer om dette firmaet
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kjøretøy:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjoner:
@@ -1086,6 +1089,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillat 
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Mer realistisk størrelse på oppfangingsområder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillat fjerning av flere veier, broer osv. eid av byene: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tillat bygging av veldig lange tog : {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mengde med lokomotivrøyk/gnister: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ingen
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistisk
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Togakselerasjonstype: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
@@ -1107,6 +1114,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Konstru
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre næringer
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekterer
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Flatt landområde rundt industrier: {ORANGE}{STRING} rute{P "" r}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Tillat flere like industrier i samme by: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vis alltid lang dato på statuslinjen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Vis signaler på kjøresiden: {ORANGE}{STRING}
@@ -1147,6 +1155,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autofor
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny kjøretøy når det er {ORANGE}{STRING}{LTBLUE} mnd. før/etter maks. alder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum formue for autofornyelse av kjøretøy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Varighet for feilmeldinger: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Forsinkelse av svevende hendelser: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Forsinkelse av svevende hendelser: {ORANGE}deaktivert
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Vis byers innbyggertall i tittelfeltet: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landskapsgenerator: {ORANGE}{STRING}
@@ -1408,7 +1418,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Avkrysni
 STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er i ferd med å bedra dine motstandere. Vær klar over at denne skammelige handlingen vil bli husket i all evighet.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Øk pengebeholdningen med {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller som firma: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industrier, uflyttbare ting): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industrier, uflyttbare objekter): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunneler kan krysse hverandre: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tillat bygging i pausemodus: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly vil ikke krasje (regelmessig) på små flyplasser: {ORANGE} {STRING}
@@ -1752,6 +1762,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Tjeneren
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du er bannlyst fra denne tjeneren
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du ble kastet ut av spillet
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Juksing er ikke tillatt på denne tjeneren
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du sendte for mange kommandoer til serveren
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generell feil
@@ -1769,6 +1780,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :feil firma i Do
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :kastet ut av tjeneren
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :prøvde å jukse
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :tjeneren er full
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendte for mange kommandoer
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -1899,7 +1911,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jer
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. CTRL veksler mellom vingesignaler/lyssignaler{}Hold og dra for å bygge signaler langs en rett jernbanestrekning. CTRL bygger signaler til det neste krysset. CTRL+klikk viser/skjuler signalvalgsvinduet.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jernbanebro
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Veksle mellom bygging/fjerning av jernbanespor, signaler, kontrollpunkt og stasjoner. Hold inne CTRL for å fjerne jernbanespor fra kontrollpunkt og stasjoner.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Veksle mellom bygging/fjerning av jernbanespor, signaler, kontrollpunkt og stasjoner. Hold inne CTRL for i tillegg å fjerne jernbanespor fra kontrollpunkt og stasjoner
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konverter/oppgrader jernbanetypen
 
 # Rail depot construction window
@@ -2025,6 +2037,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bygg fly
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Velg flyplasstype
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Velg størrelse/type flyplass
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Flyplasstype
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Planløsning {NUM}
 
 STR_AIRPORT_SMALL                                               :Liten
 STR_AIRPORT_CITY                                                :Storby
@@ -2049,6 +2062,16 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Senk et 
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hev et hjørne av et landstykke
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Jevn ut land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kjøp land for fremtidig bruk
+
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektvalg
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Velg objekt å bygge
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objectklasse
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Forhåndsvisning av objektet
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Størrelse: {GOLD}{NUM} x {NUM} ruter
+
+STR_OBJECT_CLASS_LTHS                                           :Fyrtårn
+STR_OBJECT_CLASS_TRNS                                           :Radiosendere
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Trær
@@ -2114,6 +2137,19 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospekt
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bygg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansier
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikjede for {STRING} industri
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrikjede for {STRING} produksjon
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produserende industrier
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Aksepterende industrier
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Hus
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikk på industrien for å se dens leverandører og kunder
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikk på varen for å se dens leverandører og kunder
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Vis kjede
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Vis vareleverings- og vareaksepterende industrier
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link til oversiktskart
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Velg de viste industriene på oversiktskartet i tillegg
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasjon om landområde
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Ryddingskostnad: {LTBLUE}Ikke tilgjengelig
@@ -2126,7 +2162,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Eier av 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Eier av jernbanespor: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Bystyret: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ingen
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinater: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bygget: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stasjonsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stasjonstype: {LTBLUE}{STRING}
@@ -2224,8 +2260,8 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvedukt
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Radiosender
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Fyrtårn
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Firmahovedkontor
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Feltet eies av et firma
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Firmaets hovedkontor
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Firma-eid landområde
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
@@ -2293,7 +2329,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Høydekartrotering:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høydekartnavn:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriv inn et såtall
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Endre høyden på snøgrensen
@@ -2319,7 +2355,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NB
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generer en verden
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Ikke-flyttbar generering
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Objekt-generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generering av ulendt og steinete område
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargjør spillet
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kjører rute-løkke
@@ -2360,6 +2396,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Sjekk om
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Filnavn: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versjon: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palett: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametre: {SILVER}{STRING}
@@ -2370,12 +2407,21 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivert
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv inn NewGRF-parametre
 
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Forandre NewGRF-parametre
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Nær
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Tilbakestill
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sett alle parametere til standardverdi
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiser - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Eier
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspiser objektet til eiervisningen
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} ved {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Jernbanetype
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF-variabel 60+x parameter (heksadesimal)
@@ -2418,6 +2464,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder ødelagt sprite. Alle ødelagte spriter vil bli vist som røde spørsmålstegn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere "Action 8" oppføringer
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slutten på pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det nåværende grafikksettet mangler en del spriter.{}Vennligst oppdater grafikksettet.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
@@ -2439,7 +2486,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Manglende 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{STRING}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endrer kjøretøyets lengde for '{1:ENGINE}' når ikke i garasje/stall/hangar/dokk
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret lokomotivvogners tilstand for '{1:ENGINE}' når utenfor en togstall.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endret kjøretøylengde for '{1:ENGINE}' når utenfor en togstall.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRFer. Spillet kan bli usynkronisert eller krasje.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir feilaktig informasjon.
@@ -2450,11 +2498,15 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} med <invalid cargo>
-STR_NEWGRF_INVALID_ENGINE                                       :<ugyldig kjøretøymodell>
+STR_NEWGRF_INVALID_ENGINE                                       :<invalid vehicle model>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} skilt
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Skriftformgjenkjennelse
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Rens filter
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Veksle mellom skriftformgjenkjennelse ved sammenligning av skiltnavn mot filterstrengen
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Rens filterstreng
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Skriv inn skilttekst
@@ -2531,7 +2583,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikk fo
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasjonsnavn - klikk på navnet for å gå til stasjonen. CTRL+klikk åpner et nytt tilleggsvindu over stasjonen.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold nede CTRL for å velge flere
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold inne CTRL for å velge flere
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stasjon{P "" er}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2629,11 +2681,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ingen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaverdi: {WHITE}{CURRENCY}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}{NBSP}% eies av {COMPANY})
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg hovedkontor
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg firmahovedkontor
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Se hovedkontor
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vis firmahovedkontor
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytt hovedkontor
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg firmaets hovedkontor
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg firmaets hovedkontor
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Se firmaets hovedkontor
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vis firmaets hovedkontor
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytt firmaets hovedkontor
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppbygg firmaets hovedkontor et annet sted til en kostnad av 1{NBSP}% av firmaverdien
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nytt ansikt
@@ -2810,7 +2862,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kjøretøy{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - dra vogn for å legge til/fjerne fra tog, høyreklikk for mer informasjon. Hold inne CTRL for at begge funksjonene skal gjelde for hele toget
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - dra vogn/tog med venstreklikk for å legge til/fjerne fra tog, høyreklikk for mer informasjon. Hold inne CTRL for å gjøre begge funksjonene gjeldende for hele togkjeden
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kjøretøy - høyreklikk på kjøretøy for mer informasjon
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - høyreklikk på skip for mer informasjon
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Luftfartøy - høyreklikk på luftfartøy for mer informasjon
@@ -3274,6 +3326,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Skriftfo
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Veksle mellom skriftformgjenkjennelse ved sammenligning av AI-loggbeskjeder mot bruddstrengen
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortsett
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Slå av pause og fortsett AIen
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vis feilsøkingsresultater fra denne AIen
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er bygget uten støtte for AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... Ingen AIer tilgjengelige!
@@ -3315,6 +3368,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikke end
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI-parametre
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Lukk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Tilbakestill
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}{NBSP}%{UPARROW}
@@ -3419,7 +3473,7 @@ STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... du t
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan ikke betale tilbake lån...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan ikke gi bort penger som er lånt fra banken...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikke kjøpe firma...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikke bygge firmahovedkontor...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikke bygge firmaets hovedkontor...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan ikke kjøpe 25{NBSP}% av aksjene...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan ikke selge 25{NBSP}% av aksjene...
 STR_ERROR_PROTECTED                                             :{WHITE}Dette firmaet selger ikke aksjer enda...
@@ -3428,6 +3482,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Dette fi
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kan ikke grunnlegge noen byer
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kan ikke endre navn på byen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kan ikke grunnlegge by her...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kan ikke utvide byen...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}...{NBSP}for nær kanten av kartet
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}...{NBSP}for nær en annen by
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}...{NBSP}for mange byer
@@ -3435,6 +3490,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det 
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen kommer ikke til å bygge veier. Du kan aktivere bygging av veier via Avanserte innstillinger->Økonomi->Byer.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Veiarbeid i gang
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke fjerne denne byen...{}En stasjon eller garasje/stall/hangar/dokk henviser til byen eller en by-eid rute som ikke kan fjernes
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det er ingen passende steder for en statue i sentrum av denne byen
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... for mange industrier
@@ -3475,6 +3531,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}For nær
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kan ikke endre stasjonens navn...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... denne veien er eid av en by
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... veien vender i feil retning
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... gjennomkjøringsstopper kan ikke ha hjørner
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... gjennomkjøringsstopper kan ikke ha kryss
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kan ikke fjerne del av stasjonen...
@@ -3484,7 +3542,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan ikke fjerne trikkestasjon for passasjerer...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan ikke fjerne trikkestasjon for varer...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Må fjerne stoppested først
-STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}...det finnes ingen stasjon her
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... det finnes ingen stasjon her
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Må rive jernbanestasjon først
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Må rive bussterminal først
@@ -3505,7 +3563,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikke fjerne kontrollpunkt for tog her...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Må fjerne kontrollpunkt for tog først
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bøyen er i veien
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøyen er i bruk!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøyen er i bruk av et annet firma!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kan ikke bygge togstall her...
@@ -3515,10 +3573,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikke
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan ikke endre navn på garasje/stall/hangar/dokk...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Toget må være stoppet i togstallen
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... må være stoppet i en togstall
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... må være stoppet i en garasje
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Skipet må være stoppet i skipsdokken
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Luftfartøyet må være stoppet i hangaren
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... må være stoppet i en skipsdokk
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... må være stoppet i en hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tog kan kun endres når det har stoppet i togstallen
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt
@@ -3550,8 +3608,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan ikke fjerne jernbanespor herfra...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kan ikke fjerne signaler herfra...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan ikke konvertere signaler her...
-STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...det finnes ingen jernbanespor her
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}...det finnes ingen signaler
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... det finnes ingen jernbanespor
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... det finnes ingen signaler
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan ikke konvertere jernbanetype her...
 
@@ -3562,8 +3620,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kan ikke bygge trikkespor her...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan ikke fjerne vei herfra...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan ikke fjerne trikkespor herfra...
-STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...det finnes ingen vei
-STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...det finnes ingen trikkespor her
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... det finnes ingen vei
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... det finnes ingen trikkespor
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan ikke bygge kanaler her...
@@ -3598,8 +3656,10 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnelen
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan ikke grave ut land til den andre tunnelinngangen
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... for mange objekter
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kan ikke bygge objekt...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt er i veien
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... firmahovedkontor er i veien
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... firmaets hovedkontor er i veien
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikke kjøpe dette landområdet...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du eier det allerede!
 

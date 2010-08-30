@@ -336,6 +336,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generazi
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Costruzione strade
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Pianta alberi
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Posiziona cartello
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Posiziona oggetto
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salva scenario
@@ -1113,6 +1114,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Costruz
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Non permessa
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Come le altre industrie
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Previa prospezione
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Area pianeggiante attorno alle industrie: {ORANGE}{STRING} riquadr{P 0:1 o i}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Consenti più industrie dello stesso tipo nella stessa città: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mostra sempre la data lunga nella barra di stato: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostra i segnali sul lato di guida: {ORANGE}{STRING}
@@ -2062,6 +2064,11 @@ STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Livella 
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acquista terreno per usi futuri
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selezione oggetto
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleziona l'oggetto da costruire
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Categoria oggetto
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Anteprima dell'oggetto
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensione: {GOLD}{NUM} x {NUM} riquadri
 
 STR_OBJECT_CLASS_LTHS                                           :Fari
 STR_OBJECT_CLASS_TRNS                                           :Trasmettitori
@@ -2414,6 +2421,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Padre
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Ispeziona l'oggetto dell'ambito padre
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} a {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Oggetto
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo rotaia
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parametro variabile NewGRF 60+x (esadecimale)

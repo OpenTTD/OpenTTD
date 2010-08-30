@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industri
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Vojkonstruado
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantu arbojn
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Metu signon
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Loku objekton
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Konservu scenaron
@@ -2018,6 +2019,13 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Altigu l
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ebenigu landon
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Aĉetu landon por onta uzo
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Elekto de Objekto
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Eletku objekton por konstrui
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objekta klaso
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Antaŭvido de la objekto
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeco: {GOLD}{NUM} x {NUM} kaheloj
+
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arboj
@@ -2358,6 +2366,7 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 
 # NewGRF inspect window
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekto
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de relo
 
 

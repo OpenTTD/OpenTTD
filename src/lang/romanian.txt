@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generare
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construcţii rutiere
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantează arbori
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plasează semn
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Amplasează obiect
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvează scenariul
@@ -1111,6 +1112,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metoda 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :niciuna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ca alte industrii
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :de prospecţie
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Suprafaţă plană în jurul industriilor: {ORANGE}{STRING} pătrăţel{P 0:1 "" e}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permite mai multe industrii similare în acelaşi oras: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Afişează întotdeauna data în format lung în bara de stare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Afişează semafoarele pe partea de circulaţie: {ORANGE}{STRING}
@@ -2059,6 +2061,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Creşte 
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelează terenul
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Cumpără teren pentru folosire ulterioară
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecţia obiectelor
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selectaţi obiectele pentru construcţie
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Clasa obiectului
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Previzualizarea obiectului
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensiune: {GOLD}{NUM} x {NUM} pătrăţele
+
+STR_OBJECT_CLASS_LTHS                                           :Faruri
+STR_OBJECT_CLASS_TRNS                                           :Transmiţătoare
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbori
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Alege specia de arbori de plantat
@@ -2407,6 +2419,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Părinte
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Analizează obiectul scopului parintelui
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} la {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Obiect
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tip şină
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parametru variabilă 60+x NewGRF (hexadecimal)

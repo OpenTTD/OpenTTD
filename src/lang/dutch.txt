@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industri
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Wegenbouw
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant bomen
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Plaats bord
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Plaats object
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Scenario opslaan
@@ -1111,6 +1112,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Handmat
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :zoals andere industrieën
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :proberen
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Platte omgeving rond industrieën: {ORANGE}{STRING} tegel{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Meerdere vergelijkbare industrieën per stad toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Altijd lange datum in statusbalk weergeven: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Seinen aan rijzijde plaatsen: {ORANGE}{STRING}
@@ -1872,7 +1874,7 @@ STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Schakel 
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Schakel transparantie voor industrieën aan/uit. Ctrl+Klik om vast te zetten.
 STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Schakel transparantie voor gebouwen zoals stations, depots en controleposten aan/uit. Ctrl+Klik om vast te zetten.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Schakel transparantie voor bruggen aan/uit. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Schakel transparantie voor gebouwen zoals voortorens en antennes aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Schakel transparantie voor gebouwen zoals vuurtorens en antennes aan/uit. Ctrl+Klik om vast te zetten.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Schakel transparantie voor bovenleiding aan/uit. Ctrl+klik voor onthouden.
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Schakel transparantie voor laadindicatoren aan/uit. Ctrl+Klik om vast te zetten.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Maak objecten onzichtbaar in plaats van transparant
@@ -2058,6 +2060,16 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag 
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop land voor toekomstig gebruik
+
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Keuze van Object
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Kies het te bouwen object
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Object klasse
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Bekijk het object
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grootte: {GOLD}{NUM} x {NUM} tegels
+
+STR_OBJECT_CLASS_LTHS                                           :Vuurtorens
+STR_OBJECT_CLASS_TRNS                                           :Zender
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bomen
@@ -2407,6 +2419,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Huidig
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecteer het object van het huidige hoofd bestand
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} bij {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Object
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Spoor type
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x parameter (hexadecimaal)

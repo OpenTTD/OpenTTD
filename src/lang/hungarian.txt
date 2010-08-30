@@ -397,6 +397,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gazdasá
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Út építése
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Faültetés
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Felirat lerakása
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektum elhelyezése
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Pálya mentése
@@ -2125,6 +2126,11 @@ STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Talajszi
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Földterület megvétele későbbi használatra
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektum kiválaszás
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Építendő objektum kiválasztása
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objektumosztály
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektum előnézete
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Méret: {GOLD}{NUM} x {NUM} mező
 
 STR_OBJECT_CLASS_LTHS                                           :Világítótornyok
 STR_OBJECT_CLASS_TRNS                                           :Adótornyok
@@ -2477,6 +2483,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Szülő
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Objektum megtekintése szülőterületen
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} {HEX}-ban
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objektum
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Pályatípus
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF változó 60+x paraméter (hexadecimális)
