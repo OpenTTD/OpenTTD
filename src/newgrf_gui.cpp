@@ -896,19 +896,16 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		if (!this->editable) return;
-		if (index == -1) {
-			ClearGRFConfigList(&this->actives);
-			this->preset = -1;
-		} else {
+
+		ClearGRFConfigList(&this->actives);
+		this->preset = index;
+
+		if (index != -1) {
 			GRFConfig *c = LoadGRFPresetFromConfig(_grf_preset_list[index]);
 
-			if (c != NULL) {
-				this->active_sel = NULL;
-				ClearGRFConfigList(&this->actives);
-				this->actives = c;
-				this->preset = index;
-				this->avails.ForceRebuild();
-			}
+			this->active_sel = NULL;
+			this->actives = c;
+			this->avails.ForceRebuild();
 		}
 
 		DeleteWindowByClass(WC_GRF_PARAMETERS);
