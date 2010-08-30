@@ -114,7 +114,7 @@ IniGroup *IniFile::GetGroup(const char *name, size_t len)
 
 	/* does it exist already? */
 	for (IniGroup *group = this->group; group != NULL; group = group->next) {
-		if (!memcmp(group->name, name, len) && group->name[len] == 0) {
+		if (!strncmp(group->name, name, len) && group->name[len] == 0) {
 			return group;
 		}
 	}
@@ -133,7 +133,7 @@ void IniFile::RemoveGroup(const char *name)
 
 	/* does it exist already? */
 	for (group = this->group; group != NULL; prev = group, group = group->next) {
-		if (memcmp(group->name, name, len) == 0) {
+		if (strncmp(group->name, name, len) == 0) {
 			break;
 		}
 	}
