@@ -1487,6 +1487,56 @@ static void HandleMouseOver()
 	}
 }
 
+/** The minimum number of pixels of the title bar must be visible in both the X or Y direction */
+static const int MIN_VISIBLE_TITLE_BAR = 13;
+
+/** Direction for moving the window. */
+enum PreventHideDirection {
+	PHD_UP,   ///< Above v is a safe position.
+	PHD_DOWN, ///< Below v is a safe position.
+};
+
+/**
+ * Do not allow hiding of the rectangle with base coordinates \a nx and \a ny behind window \a v.
+ * If needed, move the window base coordinates to keep it visible.
+ * @param nx   Base horizontal coordinate of the rectangle.
+ * @param ny   Base vertical coordinate of the rectangle.
+ * @param rect Rectangle that must stay visible for #MIN_VISIBLE_TITLE_BAR pixels (horizontally, vertically, or both)
+ * @param v    Window lying in front of the rectangle.
+ * @param px   Previous horizontal base coordinate.
+ * @param dir  If no room horizontally, move the rectangle to the indicated position.
+ */
+static void PreventHiding(int *nx, int *ny, const Rect &rect, const Window *v, int px, PreventHideDirection dir)
+{
+	if (v == NULL) return;
+
+	int v_bottom = v->top + v->height;
+	int v_right = v->left + v->width;
+	int safe_y = (dir == PHD_UP) ? (v->top - MIN_VISIBLE_TITLE_BAR - rect.top) : (v_bottom + MIN_VISIBLE_TITLE_BAR - rect.bottom); // Compute safe vertical position.
+
+	if (*ny + rect.top <= v->top - MIN_VISIBLE_TITLE_BAR) return; // Above v is enough space
+	if (*ny + rect.bottom >= v_bottom + MIN_VISIBLE_TITLE_BAR) return; // Below v is enough space
+
+	/* Vertically, the rectangle is hidden behind v. */
+	if (*nx + rect.left + MIN_VISIBLE_TITLE_BAR < v->left) { // At left of v.
+		if (v->left < MIN_VISIBLE_TITLE_BAR) *ny = safe_y; // But enough room, force it to a safe position.
+		return;
+	}
+	if (*nx + rect.right - MIN_VISIBLE_TITLE_BAR > v_right) { // At right of v.
+		if (v_right > _screen.width - MIN_VISIBLE_TITLE_BAR) *ny = safe_y; // Not enough room, force it to a safe position.
+		return;
+	}
+
+	/* Horizontally also hidden, force movement to a safe area. */
+	if (px + rect.left < v->left && v->left >= MIN_VISIBLE_TITLE_BAR) { // Coming from the left, and enough room there.
+		*nx = v->left - MIN_VISIBLE_TITLE_BAR - rect.left;
+	} else if (px + rect.right > v_right && v_right <= _screen.width - MIN_VISIBLE_TITLE_BAR) { // Coming from the right, and enough room there.
+		*nx = v_right + MIN_VISIBLE_TITLE_BAR - rect.right;
+	} else {
+		*ny = safe_y;
+	}
+}
+
 /**
  * Resize the window.
  * Update all the widgets of a window based on their resize flags
@@ -1536,56 +1586,6 @@ int GetMainViewBottom()
 {
 	Window *w = FindWindowById(WC_STATUS_BAR, 0);
 	return (w == NULL) ? _screen.height : w->top;
-}
-
-/** The minimum number of pixels of the title bar must be visible in both the X or Y direction */
-static const int MIN_VISIBLE_TITLE_BAR = 13;
-
-/** Direction for moving the window. */
-enum PreventHideDirection {
-	PHD_UP,   ///< Above v is a safe position.
-	PHD_DOWN, ///< Below v is a safe position.
-};
-
-/**
- * Do not allow hiding of the rectangle with base coordinates \a nx and \a ny behind window \a v.
- * If needed, move the window base coordinates to keep it visible.
- * @param nx   Base horizontal coordinate of the rectangle.
- * @param ny   Base vertical coordinate of the rectangle.
- * @param rect Rectangle that must stay visible for #MIN_VISIBLE_TITLE_BAR pixels (horizontally, vertically, or both)
- * @param v    Window lying in front of the rectangle.
- * @param px   Previous horizontal base coordinate.
- * @param dir  If no room horizontally, move the rectangle to the indicated position.
- */
-static void PreventHiding(int *nx, int *ny, const Rect &rect, const Window *v, int px, PreventHideDirection dir)
-{
-	if (v == NULL) return;
-
-	int v_bottom = v->top + v->height;
-	int v_right = v->left + v->width;
-	int safe_y = (dir == PHD_UP) ? (v->top - MIN_VISIBLE_TITLE_BAR - rect.top) : (v_bottom + MIN_VISIBLE_TITLE_BAR - rect.bottom); // Compute safe vertical position.
-
-	if (*ny + rect.top <= v->top - MIN_VISIBLE_TITLE_BAR) return; // Above v is enough space
-	if (*ny + rect.bottom >= v_bottom + MIN_VISIBLE_TITLE_BAR) return; // Below v is enough space
-
-	/* Vertically, the rectangle is hidden behind v. */
-	if (*nx + rect.left + MIN_VISIBLE_TITLE_BAR < v->left) { // At left of v.
-		if (v->left < MIN_VISIBLE_TITLE_BAR) *ny = safe_y; // But enough room, force it to a safe position.
-		return;
-	}
-	if (*nx + rect.right - MIN_VISIBLE_TITLE_BAR > v_right) { // At right of v.
-		if (v_right > _screen.width - MIN_VISIBLE_TITLE_BAR) *ny = safe_y; // Not enough room, force it to a safe position.
-		return;
-	}
-
-	/* Horizontally also hidden, force movement to a safe area. */
-	if (px + rect.left < v->left && v->left >= MIN_VISIBLE_TITLE_BAR) { // Coming from the left, and enough room there.
-		*nx = v->left - MIN_VISIBLE_TITLE_BAR - rect.left;
-	} else if (px + rect.right > v_right && v_right <= _screen.width - MIN_VISIBLE_TITLE_BAR) { // Coming from the right, and enough room there.
-		*nx = v_right + MIN_VISIBLE_TITLE_BAR - rect.right;
-	} else {
-		*ny = safe_y;
-	}
 }
 
 static bool _dragging_window; ///< A window is being dragged or resized.
