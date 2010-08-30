@@ -2023,7 +2023,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Hazarde 
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landa Generado
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Metu rokecajn lokojn en la lando
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Metu lumturon
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Difinu dezertan regionon.{}Premu kaj tenu CTRL por forigi ĝin
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Difinu dezertan regionon.{}Tenu Ctrl por forigi ĝin
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Metu transmitilon
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Grandigu landparton por (mal)altigi
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Malgrandigu landparton por (mal)altigi

@@ -14,6 +14,10 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
+ * \b 1.0.4
+ *
+ * No changes
+ *
  * \b 1.0.3
  *
  * API additions:

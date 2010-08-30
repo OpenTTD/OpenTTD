@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2010-08-01
-Release version: 1.0.3
+Last updated:    2010-08-30
+Release version: 1.0.4-RC1
 ------------------------------------------------------------------------
 
 
@@ -34,7 +34,6 @@ that you can find at: http://bugs.openttd.org
 If the bugs are closed but still listed here it means that the bug is fixed
 and that the nightlies and next major release will not have that bug.
 
-- 3938	DirectMusic not properly resetting state causing music to sound wrong
 - 3935	Under some circumstances two road vehicles can leave road stop simultaniously
 - 3816	Console text does not always fit at 640x480
 - 3746	Console output with right-to-left texts in left-to-right texts is not correct
