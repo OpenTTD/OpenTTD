@@ -625,7 +625,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Буда
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Адкрыць панэль ляндшафту для змяненьня рэльефу, пасадкi дрэваў i г.д.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Наладка гуку й музыкі
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Паказаць апошнiя паведамленьнi/навiны, паказаць наладкi паведамленьняў
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Iнфармацыя аб зямлi; кансоль; наладка штучнага інтэлекту (AI/ШI); скрыншоты; аб гульні
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Iнфармацыя аб зямлi; кансоль; наладка штучнага інтэлекту (AI/ШI); здымкi экрана; аб гульні
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Пераключыць панэлі інструмэнтаў
 
 # Extra tooltips for the scenario editor toolbar
@@ -677,7 +677,7 @@ STR_FILE_MENU_EXIT                                              :Выхад
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Мапа сусьвету
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Дадатковае вакно прагляду
-STR_MAP_MENU_SIGN_LIST                                          :Сьпіс метак
+STR_MAP_MENU_SIGN_LIST                                          :Сьпіс таблічак
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Сьпіс гарадоў
 ############ end of the 'Display map' dropdown
@@ -860,6 +860,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Дэта
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Падрабязная інфармацыя аб кампаніі
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Коль-ць ТС:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станцыі:
@@ -987,7 +988,7 @@ STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Дрэвы
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Камяні
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Вада
-STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Няма ўласьніка
+STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Няма ўладальніка
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Гарады
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Прадпрыемствы
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Пустэльня
@@ -1242,7 +1243,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Уклю
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Вырашэньне экрана
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Выбар вырашэньня экрана
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Фармат скрыншотаў
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Фармат здымкаў экрана
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Выбар фармата, у якім будуць захоўвацца здымкі экрана
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Набор базавай графікі
@@ -2364,6 +2365,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Падв
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выраўнаваць зямлю
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Выкупіць зямлю для выкарыстаньня ў будучым
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дрэвы
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Выберыце від дрэваў для пасадкі
@@ -2439,7 +2443,7 @@ STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Каб �
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Выручка ад продажу: {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :няма дадзеных
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Уладальнiк: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}УладальнIк дарогi: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Уладальнiк дарогi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Уладальнiк трамвайных каляінаў: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Уладальнiк чыгункi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Мясцовая адміністрацыя: {LTBLUE}{STRING}
@@ -2704,6 +2708,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Выкарыс�
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} утрымлiвае пашкоджаны спрайт. Усе пашкоджаныя спрайты будуць паказаны чырвоным знакам пытаньня (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Змяшчае некалькі Action 8 дзеяньняў.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Дадзеныя раптоўна скончыліся.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У бягучым наборы базавай графікі адсутнічаюць выявы некаторых аб'ектаў.{}Калі ласка, абнавіце модуль базавай графікі.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Асцярожна!
@@ -2721,6 +2726,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Зьня
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{0:STRING}» можа прывесьці да страты сынхранізацыі й крушэньня гульні.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Мяняецца стан лакаматыва «{1:ENGINE}», які знаходзіцца па-за дэпо.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Мяняецца даўжыня транспарту «{1:ENGINE}», які знаходзіцца па-за дэпо.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Цягнік «{VEHICLE}», які належыць «{COMPANY}», мае няправільную даўжыню. Верагодна, гэта выклікана праблемамі ў файле новай графікі. Гульня можа рассынхранізавацца або «выляцець».
 
@@ -2736,14 +2742,14 @@ STR_NEWGRF_INVALID_ENGINE                                       :<няправі
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<невядомае прадпрыемства>
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Сьпіс знакаў - {COMMA} зна{P к кi каў}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Сьпіс таблічак - {COMMA} табліч{P ка кi ак}
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Зьмяніць надпіс на знаку
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Да наступнага знака
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Да папярэдняга знака
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Зьмяніць надпіс на таблічцы
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Да наступнай таблічкi
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Да папярэдняй таблічкi
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Увядзіце назву знака
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Увядзіце назву таблічкi
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Гарады
@@ -3556,12 +3562,13 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Нала
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Зьмяніць наладкі ШI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перазагрузіць ШI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Выдаліць ШI, перазагрузіць скрыпт і перазапусьціць ШI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Прагляд зьвестак адладкі модуля ШI
 
 STR_ERROR_NO_AI                                                 :{WHITE}Падтрымка ШI адключана ў гэтай зборцы OpenTTD...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... адсутнічаюць модулі AI/ШI!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Ня знойдзена прыдатных модуляў ШI,{}таму канкурэнты нічога рабіць не будуць.{}Модулі ШI можна спампаваць праз сістэму анлайн-кантэнту.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Адзін з запушчаных ШI выканаў недапушчальную аперацыю і быў закрыты. Калі ласка, паведаміце аб гэтым аўтару ШI, прыклаўшы скрыншот вакна адладкі.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Адзін з запушчаных ШI выканаў недапушчальную аперацыю і быў закрыты. Калі ласка, паведаміце аб гэтым аўтару ШI, прыклаўшы здымак вакна адладкі.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Вакно адладкі ШI даступнае толькі для сэрвера
 
 # AI configuration window
@@ -3650,8 +3657,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Змя�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Бягучая гукавая схэма абрана сістэмай аўтаматычна. Дадатковыя наборы гукаў можна загрузіць праз сістэму анлайн-кантэнту.
 
 # Screenshot related messages
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Скрыншот захаваны пад імем «{STRING}»
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не атрымалася захаваць скрыншот
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Здымак экрана захаваны пад імем «{STRING}»
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не атрымалася захаваць здымак экрана
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Паведамленьне
@@ -3968,8 +3975,8 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Гэты
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... занадта шмат знакаў
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не атрымалася ўсталяваць знак...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не атрымалася зьмяніць надпіс на знаку...
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не атрымалася ўсталяваць таблічку...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не атрымалася зьмяніць надпіс на таблічцы...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не атрымалася выдаліць знак...
 
 # Translatable comment for OpenTTD's desktop shortcut
@@ -4487,7 +4494,7 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Пункт шл
 
 
 STR_UNKNOWN_STATION                                             :невядомая станцыя
-STR_DEFAULT_SIGN_NAME                                           :Знак
+STR_DEFAULT_SIGN_NAME                                           :Таблічка
 STR_COMPANY_SOMEONE                                             :хтосьцi
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}

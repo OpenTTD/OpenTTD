@@ -2416,6 +2416,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Nedostupn√
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Zadajte NewGRF parametre
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 

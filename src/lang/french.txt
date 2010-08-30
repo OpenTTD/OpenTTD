@@ -551,6 +551,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Détail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Afficher les détails sur cette compagnie
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Véhicules{NBSP}:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stations{NBSP}:
@@ -2040,6 +2041,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Élever 
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Niveler le terrain
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acheter le terrain pour une utilisation ultérieure
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Choix du type d'arbre
@@ -2386,6 +2390,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tentative d'uti
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contient un sprite corrompu. Tous les sprites corrompus seront remplacés par un point d'interrogation rouge (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contient plusieurs Action 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lecture après la fin d'un pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Il manque certain sprites dans les graphiques de base actuellement utilisés.{}Veuillez mettre à jour les graphiques de base.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention!
@@ -2403,7 +2408,8 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Retirer 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF '{0:STRING}' peut causer des erreurs de synchronisation et/ou des plantages.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il modifie la longueur de véhicule pour '{1:ENGINE}' en dehors du dépôt.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Il a modifié l'état de wagon motorisé pour '{1:ENGINE}' en dehors du dépôt.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il a modifié la longueur de véhicule pour '{1:ENGINE}' en dehors du dépôt.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train '{VEHICLE}' appartenant à '{COMPANY}' a une longueur invalide. Celà est probablement dû à des problèmes avec des NewGRFs. Le jeu peut avoir des erreurs de synchronisation ou planter.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Le NewGRF '{0:STRING}' fournit une information incorrecte.
@@ -3240,6 +3246,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Modifier la configuration de l'IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recharger IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Arrêter l'IA, en recharger le script puis la relancer
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Afficher la sortie de débogage de cette IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD est compilé sans le support des IAs...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... aucune IA disponible{NBSP}!

@@ -2388,6 +2388,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Is féid
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Tá seans maith ann go mbeidh díshioncronú agus/nó tuairteálacha de thoradh ar iompar an NewGRF '{0:STRING}'.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}D'athraigh sé an staid vaigín cumhachtaithe le haghaidh '{1:ENGINE}' nuair nach bhfuil sé in iosta.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Athraíonn sé fad na feithicle le haghaidh '{1:ENGINE}' nuair nach bhfuil sé laistigh d'iosta.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tá fad neamhbhailí ag '{VEHICLE}' le '{COMPANY}'. Is dócha gur fadhbanna le NewGRFanna is cúis leis. Is féidir go ndíshioncronófar an cluiche nó go gclisfidh sé
 

@@ -551,6 +551,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalle
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Mostrar detalles de esta empresa
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estaciones:
@@ -754,7 +755,7 @@ STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}¡Desastre de zepelín en {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}¡Vehículo terrestre destruido en colisión con OVNI!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}¡Explosión de refinería cerca de {TOWN}!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}¡Explosión de refinería de petróleo cerca de {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}¡Fábrica destruida en sospechosas circunstancias cerca de {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}¡OVNI aterriza cerca de {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}¡Hundimiento de mina de carbón deja ola de destrucción en {TOWN}!
@@ -2040,6 +2041,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Subir un
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar terreno
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar tierra para usos futuros
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árboles
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Seleccione el tipo de árboles a plantar
@@ -2386,6 +2390,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Intento de usar
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene un sprite corrupto. Todos los sprites corruptos serán mostrados como un interrogante rojo (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene múltiples entradas Action 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura después del final del pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Al conjunto de gráficos base actualmente en uso le faltan algunos sprites.{}El conjunto de gráficos base debe ser actualizado.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Precaución!
@@ -2403,6 +2408,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar l
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Problema con el NewGRF '{STRING}' puede causar desincronización o cuelgues
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Cambia el estado de vagón con potencia para '{1:ENGINE}' cuando no está dentro de un depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambia la longitud del vehículo para '{1:ENGINE}' cuando no está dentro de un depósito
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar.
 
@@ -3240,6 +3246,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Configur
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Cambiar la configuración de la IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarga la IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Elimina la IA, recarga el código y reinicia la IA
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar salida de depuración de esta IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD está compilado sin soporte para IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... no hay IAs disponibles!
@@ -3703,8 +3710,8 @@ STR_INDUSTRY_NAME_COAL_MINE                                     :Mina de Carbón
 STR_INDUSTRY_NAME_POWER_STATION                                 :Central Eléctrica
 STR_INDUSTRY_NAME_SAWMILL                                       :Aserradero
 STR_INDUSTRY_NAME_FOREST                                        :Bosque
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Refinería
-STR_INDUSTRY_NAME_OIL_RIG                                       :Torre Petrolera
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :Refinería de Petróleo
+STR_INDUSTRY_NAME_OIL_RIG                                       :Plataforma Petrolífera
 STR_INDUSTRY_NAME_FACTORY                                       :Fábrica
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :Imprenta
 STR_INDUSTRY_NAME_STEEL_MILL                                    :Acería

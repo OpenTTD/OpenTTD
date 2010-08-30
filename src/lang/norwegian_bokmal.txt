@@ -552,6 +552,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vis detaljer om dette firmaet
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kjøretøy:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjoner:
@@ -1400,7 +1401,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Avkrysni
 STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er i ferd med å bedra dine motstandere. Vær klar over at denne skammelige handlingen vil bli husket i all evighet.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Øk pengebeholdningen med {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller som firma: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industrier, uflyttbare ting): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industrier, uflyttbare objekter): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunneler kan krysse hverandre: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tillat bygging i pausemodus: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly vil ikke krasje (regelmessig) på små flyplasser: {ORANGE} {STRING}
@@ -1891,7 +1892,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg jer
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg jernbanesignaler. CTRL veksler mellom vingesignaler/lyssignaler{}Hold og dra for å bygge signaler langs en rett jernbanestrekning. CTRL bygger signaler til det neste krysset. CTRL+klikk viser/skjuler signalvalgsvinduet.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg jernbanebro
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg jernbanetunnel
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Veksle mellom bygging/fjerning av jernbanespor, signaler, kontrollpunkt og stasjoner. Hold inne CTRL for å fjerne jernbanespor fra kontrollpunkt og stasjoner.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Veksle mellom bygging/fjerning av jernbanespor, signaler, kontrollpunkt og stasjoner. Hold inne CTRL for i tillegg å fjerne jernbanespor fra kontrollpunkt og stasjoner
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konverter/oppgrader jernbanetypen
 
 # Rail depot construction window
@@ -2041,6 +2042,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hev et h
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Jevn ut land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kjøp land for fremtidig bruk
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Trær
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Velg typen tre som skal plantes
@@ -2107,6 +2111,8 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospekt
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bygg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansier
 
+# Industry cargoes window
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasjon om landområde
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Ryddingskostnad: {LTBLUE}Ikke tilgjengelig
@@ -2119,7 +2125,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Eier av 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Eier av jernbanespor: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Bystyret: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ingen
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinater: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Bygget: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stasjonsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stasjonstype: {LTBLUE}{STRING}
@@ -2216,8 +2222,8 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvedukt
 
 STR_LAI_UNMOVABLE_DESCRIPTION_TRANSMITTER                       :Radiosender
 STR_LAI_UNMOVABLE_DESCRIPTION_LIGHTHOUSE                        :Fyrtårn
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Firmahovedkontor
-STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Feltet eies av et firma
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_HEADQUARTERS              :Firmaets hovedkontor
+STR_LAI_UNMOVABLE_DESCRIPTION_COMPANY_OWNED_LAND                :Firma-eid landområde
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
@@ -2279,7 +2285,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Høydekartrotering:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høydekartnavn:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriv inn et såtall
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Endre høyden på snøgrensen
@@ -2305,7 +2311,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NB
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generer en verden
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tregenerering
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Ikke-flyttbar generering
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Objekt-generering
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generering av ulendt og steinete område
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Klargjør spillet
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Kjører rute-løkke
@@ -2349,6 +2355,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivert
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv inn NewGRF-parametre
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -2383,6 +2391,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneholder ødelagt sprite. Alle ødelagte spriter vil bli vist som røde spørsmålstegn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Inneholder flere "Action 8" oppføringer
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leste forbi slutten på pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det nåværende grafikksettet mangler en del spriter.{}Vennligst oppdater grafikksettet.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
@@ -2400,7 +2409,8 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Atferden til NewGRF '{STRING}' vil trolig forårsake synkroniseringsfeil og/eller krasj.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endrer kjøretøyets lengde for '{1:ENGINE}' når ikke i garasje/stall/hangar/dokk
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Det endret lokomotivvogners tilstand for '{1:ENGINE}' når utenfor en togstall.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endret kjøretøylengde for '{1:ENGINE}' når utenfor en togstall.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhørende '{COMPANY}' har ugyldig lengde. Dette skyldes trolig problemer med NewGRFer. Spillet kan bli usynkronisert eller krasje.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' gir feilaktig informasjon.
@@ -2411,7 +2421,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} med <invalid cargo>
-STR_NEWGRF_INVALID_ENGINE                                       :<ugyldig kjøretøymodell>
+STR_NEWGRF_INVALID_ENGINE                                       :<invalid vehicle model>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid industry>
 
 # Sign list window
@@ -2492,7 +2502,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikk fo
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasjonsnavn - klikk på navnet for å gå til stasjonen. CTRL+klikk åpner et nytt tilleggsvindu over stasjonen.
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold nede CTRL for å velge flere
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold inne CTRL for å velge flere
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stasjon{P "" er}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2590,11 +2600,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ingen
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaverdi: {WHITE}{CURRENCY}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}{NBSP}% eies av {COMPANY})
 
-STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg hovedkontor
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg firmahovedkontor
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Se hovedkontor
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vis firmahovedkontor
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytt hovedkontor
+STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Bygg firmaets hovedkontor
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bygg firmaets hovedkontor
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Se firmaets hovedkontor
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vis firmaets hovedkontor
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytt firmaets hovedkontor
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Gjenoppbygg firmaets hovedkontor et annet sted til en kostnad av 1{NBSP}% av firmaverdien
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nytt ansikt
@@ -2772,7 +2782,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kjøretøy{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - dra vogn for å legge til/fjerne fra tog, høyreklikk for mer informasjon. Hold inne CTRL for at begge funksjonene skal gjelde for hele toget
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - dra vogn/tog med venstreklikk for å legge til/fjerne fra tog, høyreklikk for mer informasjon. Hold inne CTRL for å gjøre begge funksjonene gjeldende for hele togkjeden
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kjøretøy - høyreklikk på kjøretøy for mer informasjon
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - høyreklikk på skip for mer informasjon
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Luftfartøy - høyreklikk på luftfartøy for mer informasjon
@@ -3237,6 +3247,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI-innst
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Endre AI-innstillinger
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last inn AI på nytt
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Slå av AI, last skript på nytt, og start AI på nytt
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vis feilsøkingsresultater fra denne AIen
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er bygget uten støtte for AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... Ingen AIer tilgjengelige!
@@ -3381,7 +3392,7 @@ STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... du t
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan ikke betale tilbake lån...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan ikke gi bort penger som er lånt fra banken...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan ikke kjøpe firma...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikke bygge firmahovedkontor...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan ikke bygge firmaets hovedkontor...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan ikke kjøpe 25{NBSP}% av aksjene...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Kan ikke selge 25{NBSP}% av aksjene...
 STR_ERROR_PROTECTED                                             :{WHITE}Dette firmaet selger ikke aksjer enda...
@@ -3397,6 +3408,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det 
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen kommer ikke til å bygge veier. Du kan aktivere bygging av veier via Avanserte innstillinger->Økonomi->Byer.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Veiarbeid i gang
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke fjerne denne byen...{}En stasjon eller garasje/stall/hangar/dokk henviser til byen eller en by-eid rute som ikke kan fjernes
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det er ingen passende steder for en statue i sentrum av denne byen
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kan ikke generere industrier...
@@ -3553,7 +3565,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan ikke
 
 # Object related errors
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objekt er i veien
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... firmahovedkontor er i veien
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... firmaets hovedkontor er i veien
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikke kjøpe dette landområdet...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... du eier det allerede!
 

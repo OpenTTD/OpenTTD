@@ -550,6 +550,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Chi ti�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Hiển thị thông tin chi tiết của công ty này
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Ph.tiện:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Trạm:
@@ -2385,6 +2386,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Sử dụng ID 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bị hỏng sprite. Tất cả các sprite sẽ hiện thị với dấu hỏi (?) màu đỏ.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Chứa nhiều mục action 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Đọc tới điểm cuối của sprite-giả
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Gói đồ họa bạn đang dùng thiếu một số mẫu đồ họa.{}Hãy up gói đồ họa lên phiên bản mới.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú ý!
@@ -2402,6 +2404,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Tiếp t
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Hoạt động của NewGRF '{0:STRING}' có thể gây mất đồng bộ hoặc bị treo.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Trạng thái đầu kéo '{1:ENGINE}' được thay đổi khi không ở trong xưởng sửa chữa.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Nó cắt ngắn độ dài của đoàn tàu '{1:ENGINE}' nếu không ở trong xưởng.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Đoàn tàu '{VEHICLE}' của '{COMPANY}' có độ dài không hợp lệ. Có thể gây sự cố với NewGRFs. Ván chơi có thể mất đồng bộ hoặc bị treo
 
@@ -3239,6 +3242,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Thiết 
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Thay đổi thiết lập của AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}nạp lại AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Xoá bỏ AI, nạp lại kịch bản, và khởi động lại AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Xem thông tin debug của AI này
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD biên dịch không hỗ trợ AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... Không có AI thích hợp!

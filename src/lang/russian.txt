@@ -441,7 +441,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Стро
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Открыть панель ландшафта для изменения рельефа, посадки деревьев и т.д.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Настройка звука и музыки
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Показать последнее сообщение; настройки сообщений
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о земле, консоль, отладка ИИ, скриншоты, об игре
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Информация о земле, консоль, отладка ИИ, снимки экрана, об игре
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Переключить панели инструментов
 
 # Extra tooltips for the scenario editor toolbar
@@ -493,7 +493,7 @@ STR_FILE_MENU_EXIT                                              :Выход
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта мира
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Доп. окно просмотра
-STR_MAP_MENU_SIGN_LIST                                          :Список меток
+STR_MAP_MENU_SIGN_LIST                                          :Список табличек
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Список городов
 ############ end of the 'Display map' dropdown
@@ -688,6 +688,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Дета
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Подробная информация о компании
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Кол-во ТС:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Станции:
@@ -1082,7 +1083,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Вклю
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Разрешение экрана
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Выбор разрешения экрана
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат скриншотов
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат снимков экрана
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Формат, в котором будут сохраняться снимки экрана
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовый набор графики
@@ -1289,15 +1290,15 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :у всех
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать, если доход ТС отрицателен: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт не будет выходить из эксплутации: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Автоозамена изношенного транспорта: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Замена через {ORANGE}{STRING}{LTBLUE} месяц{P "" а ев} после истечения срока службы
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Замена через {ORANGE}{STRING} месяц{P 0:1 "" а ев}{LTBLUE} после истечения срока службы
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Сумма, необходимая для автозамены: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Макс. длительность сообщений об ошибке: {ORANGE}{STRING} сек.
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города в названии: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор земли: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор ландшафта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригинальный
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Нефтезаводы не дальше от края карты (клеток): {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. расстояние от края карты до нефтезавода: {ORANGE}{STRING} клет{P 0:1 ка ки ок}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Высота снежной линии: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Неровность земли (только для TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Очень гладкий
@@ -1316,7 +1317,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Раз�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Одна или несколько клеток в северном углу не пусты
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна или несколько клеток берега без воды
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. протяжённость: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. размер станции: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолётных площадках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Связать ландшафтную панель с транспортной: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Цвет земли на миникарте: {ORANGE}{STRING}
@@ -2209,6 +2210,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Подн
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выровнять землю
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Покупка земли
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Деревья
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Выбор типа деревьев для посадки
@@ -2426,7 +2430,7 @@ STR_MAPGEN_RANDOM_SEED                                          :{BLACK}Нача
 STR_MAPGEN_RANDOM_SEED_HELP                                     :{BLACK}Ландшафт генерируется псевдослучайно, число - опорная точка в последовательности случайных чисел.
 STR_MAPGEN_RANDOM                                               :{BLACK}Случайное
 STR_MAPGEN_RANDOM_HELP                                          :{BLACK}Изменить случайный номер, используемый генератором ландшафта
-STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Генератор ландш.:
+STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Генератор ландшафта:
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Генератор лесов:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Количество морей и озёр:
@@ -2555,6 +2559,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Использ�
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} содержит повреждённый спрайт. Все повреждённые спрайты будут показаны красным знаком вопроса (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Содержит несколько Action 8 действий.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Данные внезапно закончились.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}В текущем наборе базовой графики отсутствуют изображения некоторых объектов.{}Пожалуйста, обновите модуль базовой графики.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Осторожно!
@@ -2572,6 +2577,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снят
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Файл NewGRF «{0:STRING}» может привести к потере синхронизации и вылету игры.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Меняется состояние локомотива «{1:ENGINE}», находящегося вне депо.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта «{1:ENGINE}», находящегося вне депо.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд «{VEHICLE}», принадлежащий «{COMPANY}», имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики. Игра может рассинхронизироваться или вылететь.
 
@@ -2587,14 +2593,14 @@ STR_NEWGRF_INVALID_ENGINE                                       :<неправи
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<неизвестное предприятие>
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Список меток - {COMMA} мет{P ка ки ок}
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Список табличек - {COMMA} таблич{P ка ки ек}
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить надпись метки
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}К следующей метке
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}К предыдущей метке
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Изменить текст таблички
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}К следующей табличке
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}К предыдущей табличке
 
-STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введите название метки
+STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Введите название таблички
 
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Города
@@ -2897,7 +2903,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вес: 
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ёмкость: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ведущие вагоны: {GOLD}+{POWER}{BLACK} Вес: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переоборуд. для: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Может перевозить: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Все типы грузов
 STR_PURCHASE_INFO_ALL_BUT                                       :Всё, кроме {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
@@ -3419,12 +3425,13 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Наст
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Изменить настройки ИИ
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезагрузить ИИ
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Удалить ИИ, перезагрузить скрипт и перезапустить ИИ
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Просмотр отладочной информации модуля ИИ
 
 STR_ERROR_NO_AI                                                 :{WHITE}Поддержка ИИ отключена в этой сборке OpenTTD...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... отсутствуют модули ИИ!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Не найдено подходящих модулей ИИ,{}поэтому конкуренты ничего делать не будут.{}Модули ИИ можно скачать через систему онлайн-контента.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один из запущенных ИИ выполнил недопустимую операцию и был закрыт. Пожалуйста, сообщите об этом автору ИИ, приложив скриншот окна отладки.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Один из запущенных ИИ выполнил недопустимую операцию и был закрыт. Пожалуйста, сообщите об этом автору ИИ, приложив снимок окна отладки.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Окно отладки ИИ доступно только для сервера
 
 # AI configuration window
@@ -3513,8 +3520,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Изм�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Текущая звуковая схема выбрана системой автоматически. Дополнительные наборы звуков можно загрузить через систему онлайн контента.
 
 # Screenshot related messages
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Скриншот сохранён под именем «{STRING}»
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не удалось сохранить скриншот
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Снимок экрана сохранён под именем «{STRING}»
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Не удалось сохранить снимок экрана
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Сообщение
@@ -3807,7 +3814,7 @@ STR_ERROR_TRAIN_START_NO_CATENARY                               :На этих �
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Невозможно развернуть автомобиль...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Самолёт в полёте
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Самолёт в воздухе
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Список заданий заполнен
@@ -3833,8 +3840,8 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Этот
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... слишком много меток
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не удалось установить метку...
-STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не удалось изменить надпись метки...
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Не удалось поставить табличку...
+STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не удалось изменить табличку...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не удалось удалить метку...
 
 # Translatable comment for OpenTTD's desktop shortcut
@@ -4269,7 +4276,7 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Точка пу
 
 
 STR_UNKNOWN_STATION                                             :неизвестная станция
-STR_DEFAULT_SIGN_NAME                                           :Метка
+STR_DEFAULT_SIGN_NAME                                           :Табличка
 STR_COMPANY_SOMEONE                                             :кто-то
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}

@@ -550,6 +550,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}詳細�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}檢視此公司的詳細資訊
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}交通工具：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}車站：
@@ -1158,9 +1159,9 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}旋轉�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆時針
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :順時針
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}平面地圖高度：{ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}啟用地圖邊緣平整化：{ORANGE}{STRING}
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}北邊的地圖邊緣有一個以上的區塊非空地
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}邊緣有一個以上的區塊非水域
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}啟用地圖邊緣區塊平整化：{ORANGE}{STRING}
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}北邊的地圖邊緣有一格以上的區塊非空地
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}邊緣有一格以上的區塊非水域
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}車站最長延伸範圍：{ORANGE}{STRING} {RED}注意：過高會使效能下降
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}直升機於直升機坪自動維修：{ORANGE}{STRING}
@@ -2039,6 +2040,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}上昇�
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}整平地面
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}購買土地供將來使用
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}樹木
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}選擇要種植的樹種
@@ -2119,7 +2123,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}電車�
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}鐵路所有者：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}地方政府：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :無
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標：{LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標：{LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建於：{LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}車站風格：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}車站種類：{LTBLUE}{STRING}
@@ -2279,7 +2283,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}手動
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}高度圖旋轉：
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度圖名稱：
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}大小：
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}輸入亂數種子
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}修改雪線高度
@@ -2402,7 +2406,8 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}取消�
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF「{0:STRING}」的行為可能會造成失去同步或當機
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}「{1:ENGINE}」不在機廠內卻發生列車長度的變動
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}「{1:ENGINE}」不在機廠內卻發生動力車廂列車狀態的變動。
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}「{1:ENGINE}」不在機廠內卻發生列車長度的變動。
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」所擁有的列車「{0:VEHICLE}」長度無效。 這個錯誤可能是 NewGRFs 有問題所致，遊戲可能會無法同步或當機
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF「{0:STRING}」提供了錯誤的資訊。
@@ -3239,6 +3244,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 設�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}修改 AI 設定
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重新載入 AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}結束 AI、重新載入腳本、重新啟動 AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}檢視此 AI 的除錯輸出資訊
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD 編譯時未加入 AI 支援...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... 無 AI 可使用！

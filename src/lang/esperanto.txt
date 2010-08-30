@@ -551,6 +551,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaloj
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vidu detaloj pri ĉi tio kompanio
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veturiloj:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stacioj:
@@ -781,7 +782,7 @@ STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Eŭropa Mona Unio!{}{}De nun uziĝos la Eŭro kiel monunuo por ĉiutagaj montransskriboj en via lando!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Monda Recesio!{}{}Financaj spertuloj timas ke malpliboniĝas treege! Ekonomio malboniĝadas!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recesio finiĝis!{}{}Komerca pliboniĝos donas konfidon al industrioj! Ekonomio pliboniĝas!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recesio finiĝis!{}{}Komerca pliboniĝos donas konfidon al industrioj!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} pliigas produktadon!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nova karbo trovita ĉe {INDUSTRY}!{}Oni atendas produktan duobligon!
@@ -1081,7 +1082,8 @@ STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permesu
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modelo de trajnakcelado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originale
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisme
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Trajnoj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING} {LTBLUE} (bezonas NPF)
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kruteco de deklivo por vagonaroj {ORANGE}{STRING}%
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vagonaroj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING} {LTBLUE} (ne uzu kun NPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ligu stacidomojn konstruatajn unu apud la alia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permesu ligi staciojn ne rekte najbarajn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Uzu plibonigitan ŝarĝalgoritmon: {ORANGE}{STRING}
@@ -1389,7 +1391,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}La kvadr
 STR_CHEATS_WARNING                                              :{BLACK}Atentu! Vi perfidos viajn kunulajn konkurantojn. Memoru ke io tia rememoriĝos eterne.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Altigu monkvanton per {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ludanta kiel kompanio: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magia forigilo (forviŝu industriojn, nemoveblaĵojn): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magia forigilo (forviŝu industriojn, nemovebla objektoj): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneloj rajtas kruciĝi unu kun la alia: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Konstruado eblas dum paŭzo: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetoj ne kraŝos (ofte) sur malgrandaj flughavenoj: {ORANGE} {STRING}
@@ -1742,7 +1744,7 @@ STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :konekto perdiĝ
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :protokola eraro
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :Miso pri NewGRF
 STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :ne rajtigite
-STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ricevis strangan pakaĵon
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ricevis strangan aŭ neatenditan pakaĵon
 STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :malĝusta revidaĵo
 STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :nomo jam uziĝas
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :malĝusta pasvorto
@@ -1760,7 +1762,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Ludo ankoraŭ p
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Ludo ankoraŭ paŭzas ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Ludo ankoraŭ paŭzas ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Ludo malpaŭzas ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ne sufiĉe da ludantoj
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nombro da ludantoj
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kontektante al klientoj
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manlibro
 ############ End of leave-in-this-order
@@ -1877,7 +1879,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Konstrui
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Konstruu signalojn
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Konstruu fervojan ponton
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Konstruu fervojtunelon
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Elekti inter konstruado/forigado de trako, signaliloj, vojpunktoj kaj stacioj. Premu Stir-klavon por forigi relojn de vojpunktoj kaj stacioj.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Elekti inter konstruado/forigado de trako, signaliloj, vojpunktoj kaj stacidomoj. Tenu Stir-klavon por forigi relojn de vojpunktoj kaj stacioj.
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Transigu reltipon
 
 # Rail depot construction window
@@ -2006,6 +2008,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Altigu l
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ebenigu landon
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Aĉetu landon por onta uzo
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arboj
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Elektu arbo-tipon por plant
@@ -2072,6 +2077,8 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospekt
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Konstruu
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fondi
 
+# Industry cargoes window
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landregionaj informoj
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Forviŝkosto: {LTBLUE}ne eblas
@@ -2084,7 +2091,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Posedant
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Posedanto de fervojo: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokaj estroj: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Neniu
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Troviĝo: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Troviĝo: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Kreite: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stacioklaso: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Staciotipo: {LTBLUE}{STRING}
@@ -2243,7 +2250,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manlibro
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Mapa turniĝo:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Mapa nomo:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grandeco:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Enigu hazardan semon
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ŝanĝu altecon de la neĝlinio
@@ -2277,6 +2284,11 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Preparan
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Agordoj
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Konservu antaŭaron
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Konservu la nunan liston kiel antaŭaro
+STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Enigu nomon por la antaŭaro
+STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Forviŝu antaŭaron
+STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Forviŝu la kurente elektan antaŭaron
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Aldonu
 STR_NEWGRF_SETTINGS_ADD_TOOLTIP                                 :{BLACK}Aldonu NewGRF-dosieron al la listo
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Forviŝu
@@ -2306,6 +2318,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Malaktiva
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Enigu NewGRF-parametrojn
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -2334,8 +2348,10 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} bezo
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :la GRF-dosiero estas farita por traduki
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tro da novaj grafikaĵoj estas ŝarĝataj
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neatendita bildeto.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Atenco uzi nevalida ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enhavas rompitan bildeton. Ĉiuj rompitaj bildetoj aspektos kiel ruĝaj demandsignoj (?).
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Legis ekster limo de pseŭdobildeto.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}La nuntempe uza baza grafikaĵaro estas manka nombro da bildetoj.{} Bonvolu renovigu la baza grafikaĵaro.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atentu!
@@ -2348,9 +2364,18 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Taŭga(j
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manka(j) GRF-dosiero(j) malŝaltiĝis
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manka(j) GRF-dosiero(j)
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' donas malĝustan informon.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<malvalida ŝarĝo>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <malvalida ŝarĝo>
+STR_NEWGRF_INVALID_ENGINE                                       :<malvalida modelo de veturilo>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<malvalida industrio>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Signolisto - {COMMA} Signo{P "" j}
@@ -2710,9 +2735,9 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trajnoj - klaku trajnon por scii pli, tiru veturilon por aldoni aŭ forigi de trajno
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veturiloj - alklaku veturilojn por informoj
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ŝipoj - alklaku ŝipon por informoj
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aviadiloj - alklaku aviadilon por informoj
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Veturiloj - dekstra-alklaku veturilojn por informoj
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Ŝipoj - dekstra-alklaku ŝipon por informoj
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aviadiloj - dekstra-alklaku aviadilon por informoj
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Tiru trajnan veturilon ĉi tien por vendi
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Tiru stratveturilon ĉi tien por vendi
@@ -3151,6 +3176,7 @@ STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :F:
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}Agordi daton
 STR_DATE_SET_DATE                                               :{BLACK}Agordi daton
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Uzu la elektan daton kiel la komencia dato por la katalogo
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Elekti tagon
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Elekti monaton
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Elekti jaron
@@ -3231,6 +3257,7 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Ludŝar�
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna eraro: {STRING}
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Ne legebla dosiero
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Ne enskribebla dosiero
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Ludon estis konservinta en versio sen subteno por tramveturilo. Ĉiujn tramveturilojn estas formovita.
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Mapkreado haltita...{}... mankas taŭgaj urbejoj
@@ -3314,6 +3341,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... tro 
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... spaco mankas sur la mapo
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}La urbo ne konstruos stratojn. Vi povas ebligi stratkonstruadon per Avancitaj Agordoj->Ekonomio->Urboj.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Aktivas vojprilaborado
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ne jen estas konvenan lokon por statuo en la centro de ĉi tiu urbo
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ne povas generi industriojn...
@@ -3326,6 +3354,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... nur 
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... nur konstruebla en praarbaraj regionoj
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... konstruebla nur en dezertaj regionoj
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... konstruebla nur en urboj
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... konstruebla nur en malaltaj regionoj
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... lokebla nur ĉe la randoj de la mapo
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... arbaro nur planteblas super neĝa limlinio
 
@@ -3342,6 +3371,7 @@ STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Alligas 
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacio tro vastas
 STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... nekonformaj stacioj neebligitaj
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Tro da stacioj/ŝarĝejoj
+STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Tro da partoj de stacidomo
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Tro da bushaltejoj
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Tro da ŝarĝaŭtaj stacioj
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Tro proksime al alia stacidomo
@@ -3417,6 +3447,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Unue vi 
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nekonvena fervojtrako
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Antaŭe devas la trako esti detruita
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Strato estas unudirekta aŭ blokita
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Traknivelaj pasejoj ne permesa por ĉi tio fervojtipo
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Ne povas konstrui signalojn ĉi tie...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Ne povas konstrui trakon ĉi tie...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Ne povas forigi trakon de ĉi tie...
@@ -3427,6 +3458,7 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Ne povas
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Antaŭe forigu straton
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... unudirektaj stratoj ne povas havi kuniĝoj
 STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Ne povas konstrui stratojn ĉi tie...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Ne povas konstrui tramvojon ĉi tie...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Ne povas forigi straton de ĉi tie...
@@ -3443,12 +3475,14 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Ne povas
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... jam estas arbo ĉi tie
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... malprava tereno por tipo de arbo
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Ne povas planti arbon ĉi tie...
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}Ne povas konstrui ponton ĉi tie...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Antaŭe devas la ponto esti detruita
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Ne povas komenci kaj fini en la sama loko
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Finoj de ponto ne estas je la sama nivelo
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponto estas tro malalta por la tereno
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Komenco kaj fino devas esti samliniaj
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambaŭ pontfinoj devas esti sur tero
@@ -3555,6 +3589,7 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Ne povas
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... tro for de la antaŭa destino
 
 # Timetable related errors
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ne povas fari katalogon por veturilo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Veturiloj povas atendi nur ĉe stacioj.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Ĉi tiu veturilo ne haltos ĉe tiu ĉi stacio.
 
@@ -3563,6 +3598,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... tro 
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Ne povas meti signon ĉi tie...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ne povas ŝanĝi afiŝan nomon...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ne eblas forigi signon...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Imitaĵo de Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

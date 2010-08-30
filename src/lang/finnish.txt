@@ -217,7 +217,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Syötä suodatin teksti
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Syötä suodatinteksti
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Syötä avainsana suodattaaksesi listan
 STR_LIST_FILTER_TITLE                                           :{BLACK}Suodatinteksti:
 
@@ -550,6 +550,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Yksityis
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Näytä tietoja tästä yhtiöstä
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Liikennevälineitä:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Asemia:
@@ -2039,6 +2040,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nosta ma
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Tasoita maata
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Osta maata tulevaa käyttöä varten.
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Puita
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Valitse istutettava puutyyppi.
@@ -2385,6 +2389,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Virheellisen ID
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisältää korruptoituneen spriten. Kaikki korruptoituneet spritet näkyvät punaisina kysymysmerkkeinä (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisältää useamman Action 8 -kohdan.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Luku pseudo-spriten ohi.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Käytössä olevasta perusgrafiikkapaketista puuttuu spritejä.{}Ole hyvä ja päivitä perusgrafiikkapaketti.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varoitus!
@@ -2402,7 +2407,8 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Taukotil
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF:n '{0:STRING}' käytös aiheuttaa todennäköisesti nykimistä ja/tai kaatumisia.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Se muuttaa kulkuneuvon '{1:ENGINE}' pituutta, kun se ei ole varikolla.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Se muutti vetävän vaunun '{1:ENGINE}' tilaa tallin ulkopuolella.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Se muutti kulkuneuvon '{1:ENGINE}' pituutta varikon ulkopuolella.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiölle '{1:COMPANY}' kuuluvan junan '{0:VEHICLE}' pituus on virheellinen. Tämä johtuu luultavasti NewGRF:ien ongelmista. Peli saattaa nykiä tai kaatua.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' antaa väärää tietoa.
@@ -3239,12 +3245,13 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Tekoäly
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Muuta tekoälyn asetuksia
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Lataa tekoäly uudelleen
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Lopeta tekoäly, lataa skripti uudelleen ja käynnistä tekoäly uudelleen
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Näytä tämän tekoälyn virheenkorjaustiedot
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD on käännetty ilman AI-tukea...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... tekoälyt eivät ole saatavilla!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Sopivaa tekoälyä ei löydetty.{}Tämä tekoäly ei tee mitään.{}Voit ladata tekoälyjä 'Online Sisältö' järjestelmällä.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista tekoälyistä kaatui. Ole hyvä ilmoita tästä tekoälyn kehittäjälle, sekä ota kuvankaappaus Tekoälyn Virheenkorjaus ikkunasta.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Yksi käynnissä olevista tekoälyistä kaatui. Ilmoita tästä tekoälyn kehittäjälle littäen mukaan kuvankaappaus Tekoälyn virheenjäljitys-ikkunasta.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tekoälyn virheenjäljitysikkuna on vain palvelimen käytettävissä
 
 # AI configuration window

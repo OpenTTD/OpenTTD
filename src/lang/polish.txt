@@ -929,6 +929,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Szczegó
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Pokaż szczegóły tej firmy
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Pojazdy:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stacje:
@@ -2419,6 +2420,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podwyżs
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Wyrównaj teren
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup teren do przyszłego użycia
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drzewa
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wybierz typ drzew do sadzenia
@@ -2765,6 +2769,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Próba użycia 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} zawiera uszkodzoną teksturę. Wszystkie uszkodzone tekstury będą pokazane jako czerwony znak zapytania (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Zawiera wiele wpisów Action 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Odczyt poza koniec pseudo obrazków.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aktualnie używany zestaw grafik jest niekompletny.{}Proszę zaktualizować podstawowy zestaw grafik.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!
@@ -2782,6 +2787,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłącz
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF '{0:STRING}' może powodować desynchronizacje i/lub błędy.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Zmienia stan wagonu dla '{1:ENGINE}' gdy nie jest w zajezdni.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmienia długość pojazdu dla '{1:ENGINE}' gdy nie jest w zajezdni.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie spowodowane jest to problemami z NewGRFami. Gra może stracić synchronizację lub się zawiesić.
 
@@ -3625,13 +3631,14 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Ustawien
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Zmień ustawienia SI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Pokaż okno debugowania tej SI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD został zbudowany bez wsparcia dla SI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... żadna SI nie jest dostępna!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nie znaleziono SI do wczytania.{}SI jest nieaktywne i nic nie robi.{}Możesz ściągnąć SI z 'Dodatki Online' w głównym menu gry.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna z działających SI przestała działać. Prosimy o zgłoszenie tego autorowi SI dołączając zrzut ekranu okna odpluskwiania SI.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania AI jest dostępne tylko w serwerze
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno debugowania SI jest dostępne tylko w serwerze
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguracja SI

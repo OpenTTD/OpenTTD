@@ -315,7 +315,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg fly
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Öppna landskapsarkitektursverktygen för att höja/sänka land, plantera träd, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Visa ljud-/musikfönster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsoll, AI debug, skärmdumpar, om OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsoll, AI-felsökning, skärmdumpar, om OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Byt verktygsrad
 
 # Extra tooltips for the scenario editor toolbar
@@ -550,6 +550,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Visa detaljer om detta företag
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vägfordon:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationer:
@@ -1066,7 +1067,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Eftergiven
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Fientlig
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen passande AI tillgänglig...{}Du kan ladda ner ett flertal AIs via 'Online Content'-systemet
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ingen passande datorspelare finns tillgänglig...{}Du kan ladda ner ett flertal datorspelare via 'Online Content'-systemet
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Denna åtgärd ändrade svårighetsgraden till egen-inställd
 
 # Advanced settings window
@@ -1398,7 +1399,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Checkbox
 STR_CHEATS_WARNING                                              :{BLACK}Varning! Du är på väg att förråda dina motståndare. Kom ihåg att detta inte kommer glömmas.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Öka pengar med {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelar som företag:: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk Bulldozer (ta bort industrier, fyrar etc.): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk Bulldozer (ta bort industrier, oflyttbara objekt etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnlar kan korsa varandra: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bygga i pause-läge: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplan kommer inte att störta (frekvent) på små flygplatser: {ORANGE} {STRING}
@@ -1673,7 +1674,7 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hämtar 
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} före oss
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} nerladdat hittills
 
-STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Frånkopplad
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koppla ifrån
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servern är skyddad. Ange lösenord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Företaget är skyddat. Ange lösenord
@@ -2039,6 +2040,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Höj upp
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Utjämna land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mark för framtida användning
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Träd
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Välj trädtyp att plantera
@@ -2119,7 +2123,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Spårvä
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Järnvägens ägare: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokala myndigheter: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ingen
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinater: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Byggt: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklass: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstyp: {LTBLUE}{STRING}
@@ -2279,7 +2283,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotation på höjdkarta:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Namn på höjdkarta:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storlek:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Mata in ett slumpmässigt frö
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ändra snölinjens höjd
@@ -2385,6 +2389,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Försök att an
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} innehåller en skadad sprite. Alla korrupta sprites kommer att visas som ett rött frågetecken (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Innehåller mer än en Action 8 funktion.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Läs förbi slutet av pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det aktiva grafikpaketet saknar ett antal bilder.{}Var vänlig och uppdatera grafikpaketet.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varning!
@@ -2402,7 +2407,8 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausni
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}'Beteendet hos '{STRING}' kommer troligen orsaka desynkronisering och/eller krascher.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter fordonlängd för '{1:ENGINE}' utanför en depå.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Power wagon-tillstånd för '{1:ENGINE}' ändrades utanför en depå.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonlängd för '{1:ENGINE}' ändrades utanför en depå.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NyGRF '{STRING}' ger felaktig information.
@@ -3236,15 +3242,16 @@ STR_AI_DEBUG                                                    :{WHITE}Felsökn
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Namn på datorspelaren
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI-inställningar
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ändra inställningar för AI
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ändra inställningar för datorspelare (AI)
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ladda om datorspelaren
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppa datorspelaren, ladda om scriptet och starta sedan om datorspelaren
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Visa debug-utskrifter för denna datorspelare
 
-STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD är byggt utan AI-support...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... inga AIs tillgängliga!
+STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD är byggt utan stöd för datorspelare (AI)
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... inga datorspelare är tillgängliga!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande AI hittades. {}Denna AI är en test-AI och kommer inte göra någonting.{}Du kan ladda ner nya AI genom spelets system 'Online-innehåll"
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En av AI'erna som körs har krachat. Vänligen raportera detta till AIs skapare med en screenshot på "AI Debug Fönsteret".
+STR_ERROR_AI_NO_AI_FOUND                                        :Ingen passande datorspelare hittades. {}Denna datorspelare är en test-datorspelare och kommer inte göra någonting.{}Du kan ladda ner nya datorspelare genom spelets 'Online-innehåll'-system
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}En av datorspelarna har krachat. Vänligen raportera detta till datorspelarens skapare med en skärmdump på 'AI-felsökning'-fönstret.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Felsökning av datorspelaren är bara tillgänglig för servern
 
 # AI configuration window
@@ -3254,9 +3261,9 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :Mänsklig spela
 STR_AI_CONFIG_RANDOM_AI                                         :Slumpa datorspelare
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Flytta upp
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flytta upp vald AI i listan
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Flytta upp vald datorspelare i listan
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Flytta ner
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flytta ner vald AI i listan
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Flytta ner vald datorspelare i listan
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Välj datorspelare
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Ladda en annan datorspelare

@@ -550,6 +550,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Toon details van dit bedrijf
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Voertuigen:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stations:
@@ -1854,7 +1855,7 @@ STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Schakel 
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Schakel transparantie voor industrieën aan/uit. Ctrl+Klik om vast te zetten.
 STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Schakel transparantie voor gebouwen zoals stations, depots en controleposten aan/uit. Ctrl+Klik om vast te zetten.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Schakel transparantie voor bruggen aan/uit. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Schakel transparantie voor gebouwen zoals voortorens en antennes aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Schakel transparantie voor gebouwen zoals vuurtorens en antennes aan/uit. Ctrl+Klik om vast te zetten.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Schakel transparantie voor bovenleiding aan/uit. Ctrl+klik voor onthouden.
 STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Schakel transparantie voor laadindicatoren aan/uit. Ctrl+Klik om vast te zetten.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Maak objecten onzichtbaar in plaats van transparant
@@ -2038,6 +2039,9 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag 
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop land voor toekomstig gebruik
+
+# Object construction window
+
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bomen
@@ -2385,6 +2389,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Poging tot gebr
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige afbeelding. Alle ongeldige afbeeldingen worden getoond als een rood vraagteken (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere 'Action 8'-elementen.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees voorbij einde van pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}De huidige basis graphics-set mist een aantal sprites..{}Werk de graphics-set bij aub.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!
@@ -2402,6 +2407,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Het spel
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag van NewGRF '{0:STRING}' zal waarschijnlijk desynchronisatiefouten (desyncs) en/of crashes veroorzaken.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Wagon '{1:ENGINE}' gewijzigde status van aandrijfeenheid wanneer niet in een depot
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het verandert de lengte van voertuig '{1:ENGINE}' terwijl het niet in een depot is.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Het is waarschijnlijk veroorzaakt door problemen met NewGRFs. Het spel kan desynchroniseren of vastlopen.
 
@@ -3239,6 +3245,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Instelli
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Wijzig de instellingen van de AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Verwijder computerspeler, herlaad het script en herstart computerspeler
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Toon debug gegevens van deze AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is gecompileerd zonder AI ondersteuning...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen AI's beschikbaar!
