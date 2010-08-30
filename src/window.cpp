@@ -1538,6 +1538,40 @@ static void PreventHiding(int *nx, int *ny, const Rect &rect, const Window *v, i
 }
 
 /**
+ * Make sure at least a part of the caption bar is still visible by moving
+ * the window if necessary.
+ * @param w The window to check.
+ * @param nx The proposed new x-location of the window.
+ * @param ny The proposed new y-location of the window.
+ */
+static void EnsureVisibleCaption(Window *w, int nx, int ny)
+{
+	/* Search for the title bar rectangle. */
+	Rect caption_rect;
+	const NWidgetBase *caption = w->nested_root->GetWidgetOfType(WWT_CAPTION);
+	assert(caption != NULL);
+	caption_rect.left   = caption->pos_x;
+	caption_rect.right  = caption->pos_x + caption->current_x;
+	caption_rect.top    = caption->pos_y;
+	caption_rect.bottom = caption->pos_y + caption->current_y;
+
+	/* Make sure the window doesn't leave the screen */
+	nx = Clamp(nx, MIN_VISIBLE_TITLE_BAR - caption_rect.right, _screen.width - MIN_VISIBLE_TITLE_BAR - caption_rect.left);
+	ny = Clamp(ny, 0, _screen.height - MIN_VISIBLE_TITLE_BAR);
+
+	/* Make sure the title bar isn't hidden behind the main tool bar or the status bar. */
+	PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_MAIN_TOOLBAR, 0), w->left, PHD_DOWN);
+	PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_STATUS_BAR,   0), w->left, PHD_UP);
+
+	if (w->viewport != NULL) {
+		w->viewport->left += nx - w->left;
+		w->viewport->top  += ny - w->top;
+	}
+	w->left = nx;
+	w->top  = ny;
+}
+
+/**
  * Resize the window.
  * Update all the widgets of a window based on their resize flags
  * Both the areas of the old window and the new sized window are set dirty
@@ -1695,29 +1729,7 @@ static EventState HandleWindowDragging()
 				}
 			}
 
-			/* Search for the title bar rectangle. */
-			Rect caption_rect;
-			const NWidgetBase *caption = w->nested_root->GetWidgetOfType(WWT_CAPTION);
-			assert(caption != NULL);
-			caption_rect.left   = caption->pos_x;
-			caption_rect.right  = caption->pos_x + caption->current_x;
-			caption_rect.top    = caption->pos_y;
-			caption_rect.bottom = caption->pos_y + caption->current_y;
-
-			/* Make sure the window doesn't leave the screen */
-			nx = Clamp(nx, MIN_VISIBLE_TITLE_BAR - caption_rect.right, _screen.width - MIN_VISIBLE_TITLE_BAR - caption_rect.left);
-			ny = Clamp(ny, 0, _screen.height - MIN_VISIBLE_TITLE_BAR);
-
-			/* Make sure the title bar isn't hidden behind the main tool bar or the status bar. */
-			PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_MAIN_TOOLBAR, 0), w->left, PHD_DOWN);
-			PreventHiding(&nx, &ny, caption_rect, FindWindowById(WC_STATUS_BAR,   0), w->left, PHD_UP);
-
-			if (w->viewport != NULL) {
-				w->viewport->left += nx - w->left;
-				w->viewport->top  += ny - w->top;
-			}
-			w->left = nx;
-			w->top  = ny;
+			EnsureVisibleCaption(w, nx, ny);
 
 			w->SetDirty();
 			return ES_HANDLED;
