@@ -179,7 +179,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 
 		/* So, now the surface is checked... check the slope of said surface. */
-		if (spec->callback_mask & CBM_OBJ_SLOPE_CHECK) {
+		if (HasBit(spec->callback_mask, CBM_OBJ_SLOPE_CHECK)) {
 			TILE_AREA_LOOP(t, ta) {
 				TileIndex diff = t - tile;
 				uint16 callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t, NULL), TileY(diff) << 4 | TileX(diff), spec, NULL, t);
