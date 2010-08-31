@@ -566,8 +566,8 @@ STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Einzelhe
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Fahrzeuge:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationen:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. Gewinn:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. Einkomen:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. Einkomen:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. Einkommen:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. Einkommen:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Geliefert:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Fracht:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:
@@ -620,7 +620,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Programm
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Zufällige Wiedergabe an/aus
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Zeige Musiktitelauswahl
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Ein Musikset ohne Songs wurde ausgewählt. Es wird keine Musik gespielt werden
+STR_ERROR_NO_SONGS                                              :{WHITE}Ein Musikset ohne Songs wurde ausgewählt. Es wird kann folglich keine Musik abgespielt werden
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musik-Programmauswahl
@@ -1932,7 +1932,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Bahnstei
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Drag & Drop
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Bahnhof durch Klicken, Ziehen und Loslassen bauen
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}ine Stationsart zum Anzeigen auswählen
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Eine Stationsart zum Anzeigen auswählen
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Die Stationsart auswählen, die gebaut werden soll
 
 STR_STATION_CLASS_DFLT                                          :Standardstation
@@ -2463,11 +2463,11 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Es wurde versuc
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält kaputte Sprites. Diese werden als rote Fragezeichen (?) dargestellt.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere "Action 8" Einträge.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesezugriff über das Ende des Pseudosprites hinaus
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Den momentan verwendeten Basisgrafiken fehlen Sprites.{}Bitte update die Basisgrafiken.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Den momentan verwendeten Basisgrafiken fehlen Sprites.{}Durch ein Update der Basisgrafiken kann dieser Fehler behoben werden.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Achtung!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Änderungen während eines laufenden Spiels können zum Absturz von OpenTTD oder sonstigem, unerwünschten Verhalten führen.{}Trotzdem fortfahren?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Änderungen während eines laufenden Spiels können zum Absturz von OpenTTD oder sonstigem unerwünschten Verhalten führen.{}Trotzdem fortfahren?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Datei kann nicht hinzugefügt werden: NewGRF-ID bereits vergeben
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Passende Datei nicht gefunden (kompatible NewGRF geladen)

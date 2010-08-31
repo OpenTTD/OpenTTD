@@ -1212,30 +1212,30 @@ STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ездзіць 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Ездзіць па правым
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Назвы гарадоў
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}У якім стылі будуць назвы населеных пунктаў
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}На якой мове будуць назвы населеных пунктаў
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ангельскі (арыгінальны)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Францускі
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Нямецкі
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ангельскі (дадатковы)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Лацінаамэрыканскі
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Ангельскі (жартоўны)
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Швэдзкі
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Нідэрляндзкі
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Фінскі
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Польскі
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Славацкі
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Нарвэскі
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Вугорскі
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Аўстрыйскі
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румынскі
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чэскі
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швайцарскі
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Дацкі
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турэцкі
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Італьянскі
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталёнскі
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ангельскія (арыгінальныя)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Францускія
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Нямецкія
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ангельскія (дадатковыя)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Лацінаамэрыканскія
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Ангельскія (жартоўныя)
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Швэдзкія
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Нідэрляндзкія
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Фінскія
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Польскія
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Славацкія
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Нарвэскія
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Вугорскія
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Аўстрыйскія
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румынскія
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чэскія
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швайцарскія
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Дацкія
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турэцкія
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Італьянскія
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталёнскія
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Аўтазахаваньне

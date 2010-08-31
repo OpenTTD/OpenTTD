@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}A gerar 
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construir estradas
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar indicações
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objecto
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Guardar cenário
@@ -442,6 +443,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Mostrar/ocultar consola
 STR_ABOUT_MENU_AI_DEBUG                                         :Depuração da IA
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de ecrã
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Captura ampliada
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de gráficos
@@ -558,6 +560,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalhes
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Ver detalhes sobre esta empresa
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estações:
@@ -1109,6 +1112,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Método
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenhum
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como as outras indústrias
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecção
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Terra plana à volta de indústrias: {ORANGE}{STRING} quadrado{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permitir várias indústrias semelhantes por cidade: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mostrar sempre a data completa na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostrar sinais no lado da circulação: {ORANGE}{STRING}
@@ -1756,6 +1760,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Servidor
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Foi banido deste servidor
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Você foi expulso do jogo
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Batotas não são permitidas neste servidor
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Estava a enviar demasiados comandos ao servidor
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erro geral
@@ -1773,6 +1778,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :ID da empresa e
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :avisado pelo servidor
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :estava a tentar usar batota
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor cheio
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estava a enviar demasiados comandos
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2055,6 +2061,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Levantar
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar terreno
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecção de Objecto
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleccionar objecto para construir
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Classe do objecto
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objecto
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} quadrados
+
+STR_OBJECT_CLASS_LTHS                                           :Faróis
+STR_OBJECT_CLASS_TRNS                                           :Transmissores
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolha um tipo de árvore para plantar
@@ -2129,6 +2145,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clique n
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clique na mercadoria para ver os seus fornecedores e clientes
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostrar cadeia
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar indústrias a fornecer e aceitar mercadorias
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ligar ao mapa pequeno
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Também seleccionar as indústrias mostradas no mapa pequeno
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informações do Terreno
@@ -2390,6 +2408,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Insira p
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Repor
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Retorna todos os parâmetros ao seu valor padrão
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parâmetro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -2399,6 +2419,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Pai
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspeccionar o objecto do escopo pai
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} no {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objecto
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de linha
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável NewGRF 60+x (hexadecimal)
@@ -2479,6 +2500,8 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inv
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Sinais - {COMMA} Sina{P l is}
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Apagar filtro
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Apagar frase filtro
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto do sinal
@@ -3298,6 +3321,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Caso de 
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar o caso de igualdade quando se compara o resgisto da IA contra a string de paragem
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sair da pausa e continuar a IA
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver saída de depuração desta IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD é construido sem suporte IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... não há nenhuma IA disponível!

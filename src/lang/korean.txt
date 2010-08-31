@@ -2064,6 +2064,8 @@ STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}오브�
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}오브젝트 미리보기
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}크기: {GOLD}{NUM} x {NUM} 타일
 
+STR_OBJECT_CLASS_LTHS                                           :등대
+STR_OBJECT_CLASS_TRNS                                           :송신기
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}나무
