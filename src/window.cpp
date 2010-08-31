@@ -2619,6 +2619,10 @@ void ReInitAllWindows()
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		w->ReInit();
 	}
+#ifdef ENABLE_NETWORK
+	void NetworkReInitChatBoxSize();
+	NetworkReInitChatBoxSize();
+#endif
 
 	/* Make sure essential parts of all windows are visible */
 	RelocateAllWindows(_cur_resolution.width, _cur_resolution.height);
