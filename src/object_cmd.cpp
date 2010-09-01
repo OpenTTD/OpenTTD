@@ -162,7 +162,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		cost.AddCost(DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR));
 	} else {
 		/* Check the surface to build on. */
-		bool allow_water = (spec->flags & OBJECT_FLAG_BUILT_ON_WATER) != 0;
+		bool allow_water = (spec->flags & (OBJECT_FLAG_BUILT_ON_WATER | OBJECT_FLAG_NOT_ON_LAND)) != 0;
 		bool allow_ground = (spec->flags & OBJECT_FLAG_NOT_ON_LAND) == 0;
 		TILE_AREA_LOOP(t, ta) {
 			if (IsWaterTile(t)) {
