@@ -55,7 +55,7 @@ $(OBJS_DIR)/sprites:
 # Generic
 $(BIN_DIR)/openttd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 	@# Only try; if nforenum isn't available, just retouch the file as they likely didn't need it anyway.
-	$(Q) ($(NFORENUM) -? > /dev/null 2>&1 && $(MAKE) $(OBJS_DIR)/openttd.grf && cp $(OBJS_DIR)/openttd.grf $(BIN_DIR)/openttd.grf) || ([ -e $(BIN_DIR)/openttd.grf ] && touch $(BIN_DIR)/openttd.grf && echo "no NFORenum and GRFCodec found, skipping rebuild of openttd.grf...") || (echo "no NFORenum and GRFCodec found, but no openttd.grf either. Install NFORenum and GRFCodec." && exit 1)
+	$(Q) ($(NFORENUM) --help > /dev/null 2>&1 && $(MAKE) $(OBJS_DIR)/openttd.grf && cp $(OBJS_DIR)/openttd.grf $(BIN_DIR)/openttd.grf) || ([ -e $(BIN_DIR)/openttd.grf ] && touch $(BIN_DIR)/openttd.grf && echo "no NFORenum and GRFCodec found, skipping rebuild of openttd.grf...") || (echo "no NFORenum and GRFCodec found, but no openttd.grf either. Install NFORenum and GRFCodec." && exit 1)
 
 # Yeah, we'd like to use -i in the sed, but Mac OS X's sed and GNU sed just can't agree on the usage of -i. In any case either one of them fails.
 $(OBJS_DIR)/openttd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
