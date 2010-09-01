@@ -2805,10 +2805,17 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 	}
 
 	if (IsAirport(tile)) {
+		const AirportSpec *as = Station::GetByTile(tile)->airport.GetSpec();
+		td->airport_class = AirportClass::GetName(as->cls_id);
+		td->airport_name = as->name;
+
 		const AirportTileSpec *ats = AirportTileSpec::GetByTile(tile);
 		td->airport_tile_name = ats->name;
 
-		if (ats->grf_prop.grffile != NULL) {
+		if (as->grf_prop.grffile != NULL) {
+			const GRFConfig *gc = GetGRFConfig(as->grf_prop.grffile->grfid);
+			td->grf = gc->GetName();
+		} else if (ats->grf_prop.grffile != NULL) {
 			const GRFConfig *gc = GetGRFConfig(ats->grf_prop.grffile->grfid);
 			td->grf = gc->GetName();
 		}

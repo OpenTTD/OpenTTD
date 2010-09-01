@@ -207,7 +207,7 @@ static void NewAirportResolver(ResolverObject *res, TileIndex tile, Station *st,
 	res->count           = 0;
 
 	const AirportSpec *as = AirportSpec::Get(airport_id);
-	res->grffile = (as != NULL ? as->grf_prop.grffile : NULL);
+	res->grffile         = as->grf_prop.grffile;
 }
 
 SpriteID GetCustomAirportSprite(const AirportSpec *as, byte layout)

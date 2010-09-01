@@ -149,6 +149,8 @@ public:
 
 		td.station_class = STR_NULL;
 		td.station_name = STR_NULL;
+		td.airport_class = STR_NULL;
+		td.airport_name = STR_NULL;
 		td.airport_tile_name = STR_NULL;
 		td.rail_speed = 0;
 
@@ -237,7 +239,21 @@ public:
 			line_nr++;
 		}
 
-		/* Station type name */
+		/* Airport class */
+		if (td.airport_class != STR_NULL) {
+			SetDParam(0, td.airport_class);
+			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_AIRPORT_CLASS, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		/* Airport name */
+		if (td.airport_name != STR_NULL) {
+			SetDParam(0, td.airport_name);
+			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_AIRPORT_NAME, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		/* Airport tile name */
 		if (td.airport_tile_name != STR_NULL) {
 			SetDParam(0, td.airport_tile_name);
 			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME, lastof(this->landinfo_data[line_nr]));
