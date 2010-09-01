@@ -52,7 +52,12 @@ static void Ptrs_OBJS()
 	Object *o;
 	FOR_ALL_OBJECTS(o) {
 		SlObject(o, _object_desc);
-		Object::IncTypeCount(GetObjectType(o->location.tile));
+		if (CheckSavegameVersion(148) && !IsTileType(o->location.tile, MP_OBJECT)) {
+			/* Due to a small bug stale objects could remain. */
+			delete o;
+		} else {
+			Object::IncTypeCount(GetObjectType(o->location.tile));
+		}
 	}
 }
 

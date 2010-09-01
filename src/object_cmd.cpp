@@ -331,6 +331,17 @@ static Foundation GetFoundation_Object(TileIndex tile, Slope tileh)
 	return IsOwnedLand(tile) ? FOUNDATION_NONE : FlatteningFoundation(tileh);
 }
 
+/**
+ * Perform the actual removal of the object from the map.
+ * @param o The object to really clear.
+ */
+static void ReallyClearObjectTile(Object *o)
+{
+	Object::DecTypeCount(GetObjectType(o->location.tile));
+	TILE_AREA_LOOP(tile_cur, o->location) MakeWaterKeepingClass(tile_cur, GetTileOwner(tile_cur));
+	delete o;
+}
+
 static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 {
 	ObjectType type = GetObjectType(tile);
@@ -391,11 +402,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 			break;
 	}
 
-	if (flags & DC_EXEC) {
-		Object::DecTypeCount(type);
-		TILE_AREA_LOOP(tile_cur, ta) MakeWaterKeepingClass(tile_cur, GetTileOwner(tile_cur));
-		delete o;
-	}
+	if (flags & DC_EXEC) ReallyClearObjectTile(o);
 
 	return cost;
 }
@@ -602,12 +609,12 @@ static void ChangeTileOwner_Object(TileIndex tile, Owner old_owner, Owner new_ow
 			SetBit(t->statues, new_owner);
 			SetTileOwner(tile, new_owner);
 		} else {
-			DoClearSquare(tile);
+			ReallyClearObjectTile(Object::GetByTile(tile));
 		}
 
 		SetWindowDirty(WC_TOWN_AUTHORITY, t->index);
 	} else {
-		DoClearSquare(tile);
+		ReallyClearObjectTile(Object::GetByTile(tile));
 	}
 }
 
