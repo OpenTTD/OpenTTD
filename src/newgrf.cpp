@@ -2895,7 +2895,6 @@ static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader *buf)
 		case 0x0C:
 		case 0x0D:
 		case 0x12:
-		case 0x13:
 		case 0x14:
 		case 0x16:
 			buf->ReadByte();
@@ -2904,6 +2903,7 @@ static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader *buf)
 		case 0x0A:
 		case 0x10:
 		case 0x11:
+		case 0x13:
 		case 0x15:
 			buf->ReadWord();
 			break;
