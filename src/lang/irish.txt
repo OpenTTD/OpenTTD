@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tionscal
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Bóithre a thógáil
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Crainnte a chur
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Comhartha a chur
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Cuir síos oibiacht
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sábháil scéal
@@ -441,9 +442,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Faisnéis faoin
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Scoránaigh consól
 STR_ABOUT_MENU_AI_DEBUG                                         :Dífhabhtú AI
-STR_ABOUT_MENU_SCREENSHOT                                       :Seat scáileáin (Ctrl+S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Seat scáileáin
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Seat scáileáin zúmáilte isteach
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Seat scáileáin ollmhór (Ctrl+G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Seat scáileáin den léarscáil ar fad
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Maidir le 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ailínóir spriteanna
 ############ range ends here
@@ -559,6 +560,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Sonraí
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Féach ar na sonraí faoin gcuideachta seo
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Feithiclí:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stáisiúin:
@@ -1110,6 +1112,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Modh t�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ceann ar bith
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :cosúil le tionscail eile
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :cuardach
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ceantar réidh thart timpeall na dtionscal: {ORANGE}{STRING} {P 0:1 th th th dt t}íl
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Ceadaigh tionscail cosúla iolracha in aon bhaile amháin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Taispáin an dáta fada i gcónaí sa bharra stádais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Taispeáin comharthaí ar thaobh na tiomána: {ORANGE}{STRING}
@@ -1757,6 +1760,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Tá an f
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Tá cosc ort ón bhfreastalaí seo
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ciceáladh amach as an gcluiche thú
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ní cheadaítear caimiléireacht ar an bhfreastalaí seo
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Bhí tú ag seoladh an iomarca orduithe chuig an bhfreastalaí
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :earráid ghinearálta
@@ -1774,6 +1778,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :cuideachta míc
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :ciceáilte ag an bhfreastalaí
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :ag iarraidh caimiléireacht a úsáid
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :freastalaí lán
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :ag seoladh an iomarca orduithe
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2056,6 +2061,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Ardaigh 
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Cothromaigh talamh
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Ceannaigh talamh le húsáid amach anseo
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Roghnú oibiachta
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Roghnaigh oibiacht le tógáil
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Aicme na hoibiachta
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Réamhamharc ar an oibiacht
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Méid: {GOLD}{NUM} x {NUM} tíl
+
+STR_OBJECT_CLASS_LTHS                                           :Tithe solais
+STR_OBJECT_CLASS_TRNS                                           :Tarchuradóirí
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Crainnte
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Roghnaigh an cineál crainn le cur
@@ -2145,7 +2160,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Úinéir
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Úinéir an iarnróid: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Údarás áitiúil: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ceann ar bith
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Comhordanáidí: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Comhordanáidí: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Tógtha: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Aicme an stáisiúin: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Cineál stáisiúin: {LTBLUE}{STRING}
@@ -2312,7 +2327,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}De láim
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rothlú an mhapa airde:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ainm an mhapa airde:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méid:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Iontráil síol randamach
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Athraigh airde na líne sneachta
@@ -2338,7 +2353,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Domhan a chruthú
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Crainn a chruthú
-STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Nithe nach féidir bogadh a chruthú
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Cruthú oibiachtaí
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Limistear garbh agus carraigeach a chruthú
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Cluiche á chumrú
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lúb tíleanna á rith
@@ -2393,6 +2408,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Iontrái
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Athraigh na paraiméadair NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Dún
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Athshocraigh
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Socraigh go mbeidh a réamhshocrú ag gach paraiméadair
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paraiméadar{NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -2402,6 +2419,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Máthair
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Déan iniúchadh ar an oibiacht de scóip na máthar
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} ag {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Oibiacht
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Cineál iarnróid
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Athróg NewGRF paraiméadar 60+x (heicsidheachúil)
@@ -2444,6 +2462,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Iarracht ID nea
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Tá sprite truaillithe in {STRING}. Taispeánfar gach sprite truaillithe mar chomhartha ceiste (?) dearg.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tá iontrálacha Gníomh 8 iolracha ann.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Léadh thar deireadh an bhréag-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Tá roinnt sprite in easnamh sa tsraith bhunúsach grafaicí atá in úsáid faoi láthair.{}Déan úasghrádú ar an tsraith bhunúsach grafaicí le do thoil
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Rabhadh!
@@ -2466,7 +2485,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Comhaid ar
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Tá seans maith ann go mbeidh díshioncronú agus/nó tuairteálacha de thoradh ar iompar an NewGRF '{0:STRING}'.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}D'athraigh sé an staid vaigín cumhachtaithe le haghaidh '{1:ENGINE}' nuair nach bhfuil sé in iosta.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Athraíonn sé fad na feithicle le haghaidh '{1:ENGINE}' nuair nach bhfuil sé laistigh d'iosta.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}D'athraigh sé fad na feithicle le haghaidh '{1:ENGINE}' nuair nach bhfuil sé laistigh d'iosta.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tá fad neamhbhailí ag '{VEHICLE}' le '{COMPANY}'. Is dócha gur fadhbanna le NewGRFanna is cúis leis. Is féidir go ndíshioncronófar an cluiche nó go gclisfidh sé
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Cuireann an NewGRF '{0:STRING}' faisnéis mícheart ar fáil.
@@ -3305,6 +3324,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Meaitse�
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Déan scoránú idir an cás a mheaitseáil agus teachtaireachtaí loga an AI á gcur i gcomparáid le teaghrán an bhriste
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lean ar aghaidh
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Cuir deireadh leis an sos agus lean leis an AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Amharc ar aschur dífhabhtaithe an AI seo
 
 STR_ERROR_NO_AI                                                 :{WHITE}Tá OpenTTD gan tacaíocht do AIanna...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... níl aon AI ar fáil!
@@ -3541,7 +3561,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Ní féi
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Ní féidir an pointe bealaigh traenach a bhaint anseo...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Ní mór an pointe bealaigh iarnróid a bhait ar dtús
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... tá baoi sa mbealach
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... tá an baoi in úsáid!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... tá an baoi in úsáid ag cuideachta eile!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Ní féidir iosta traenacha a thógáil anseo...
@@ -3551,10 +3571,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Ní féi
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ní féidir an t-iosta a athainmniú...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Ní mór an traein a bheith stoptha in iosta
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... ní mór go mbeadh sé stoptha in iosta feithiclí bóthair
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Ní mór an long a bheith stoptha in iosta
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Ní mór don aerárthach a bheith stoptha i haingear
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... ní mór go mbeadh sé stoptha in iosta
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... ní mór go mbeadh sé stoptha in iosta
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... ní mór dó a bheith stoptha in iosta
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... ní mór dó a bheith stoptha i haingear
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Ní féidir traenacha a athrú ach amháin nuair atá siad in iosta
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tá an traein rófhada
