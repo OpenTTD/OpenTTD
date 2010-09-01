@@ -2288,6 +2288,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(149)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (!IsTileType(t, MP_STATION)) continue;
+			if (!IsBuoy(t) && !IsOilRig(t) && !(IsDock(t) && GetTileSlope(t, NULL) == SLOPE_FLAT)) {
+				SetWaterClass(t, WATER_CLASS_INVALID);
+			}
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

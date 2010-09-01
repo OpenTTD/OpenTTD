@@ -533,6 +533,7 @@ static inline void MakeStation(TileIndex t, Owner o, StationID sid, StationType 
 {
 	SetTileType(t, MP_STATION);
 	SetTileOwner(t, o);
+	SetWaterClass(t, wc);
 	_m[t].m2 = sid;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
