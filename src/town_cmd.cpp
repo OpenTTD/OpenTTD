@@ -1773,12 +1773,12 @@ static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, no
  */
 bool GenerateTowns(TownLayout layout)
 {
-	uint num = 0;
+	uint current_number = 0;
 	uint difficulty = _settings_game.difficulty.number_towns;
-	uint n = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7));
+	uint total = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7));
 	uint32 townnameparts;
 
-	SetGeneratingWorldProgress(GWP_TOWN, n);
+	SetGeneratingWorldProgress(GWP_TOWN, total);
 
 	/* First attempt will be made at creating the suggested number of towns.
 	 * Note that this is really a suggested value, not a required one.
@@ -1789,12 +1789,12 @@ bool GenerateTowns(TownLayout layout)
 		/* Get a unique name for the town. */
 		if (!GenerateTownName(&townnameparts)) continue;
 		/* try 20 times to create a random-sized town for the first loop. */
-		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != NULL) num++; // If creation was successful, raise a flag.
-	} while (--n);
+		if (CreateRandomTown(20, townnameparts, TSZ_RANDOM, city, layout) != NULL) current_number++; // If creation was successful, raise a flag.
+	} while (--total);
 
-	if (num != 0) return true;
+	if (current_number != 0) return true;
 
-	/* If num is still zero at this point, it means that not a single town has been created.
+	/* If current_number is still zero at this point, it means that not a single town has been created.
 	 * So give it a last try, but now more aggressive */
 	if (GenerateTownName(&townnameparts) &&
 			CreateRandomTown(10000, townnameparts, TSZ_RANDOM, _settings_game.economy.larger_towns != 0, layout) != NULL) {
