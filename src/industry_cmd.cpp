@@ -1844,7 +1844,8 @@ static uint32 GetScaledIndustryProbability(IndustryType it, bool *force_at_least
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	uint32 chance = ind_spc->appear_creation[_settings_game.game_creation.landscape] * 16; // * 16 to increase precision
 	if (!ind_spc->enabled || chance == 0 || ind_spc->num_table == 0 ||
-			!CheckIfCallBackAllowsAvailability(it, IACT_MAPGENERATION) || _settings_game.difficulty.number_industries == 0) {
+			!CheckIfCallBackAllowsAvailability(it, IACT_MAPGENERATION) ||
+			(_game_mode != GM_EDITOR && _settings_game.difficulty.number_industries == 0)) {
 		*force_at_least_one = false;
 		return 0;
 	} else {
@@ -1852,7 +1853,7 @@ static uint32 GetScaledIndustryProbability(IndustryType it, bool *force_at_least
 		 * For simplicity we scale in both cases, though scaling the probabilities of all industries has no effect. */
 		chance = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(chance) : ScaleByMapSize(chance);
 
-		*force_at_least_one = (chance > 0) && !(ind_spc->behaviour & INDUSTRYBEH_NOBUILT_MAPCREATION);
+		*force_at_least_one = (chance > 0) && !(ind_spc->behaviour & INDUSTRYBEH_NOBUILT_MAPCREATION) && (_game_mode != GM_EDITOR);
 		return chance;
 	}
 }
@@ -1891,7 +1892,8 @@ static void PlaceInitialIndustry(IndustryType type, bool try_hard)
 void GenerateIndustries()
 {
 	assert(_settings_game.difficulty.number_industries < lengthof(_numof_industry_table));
-	uint total_amount = ScaleByMapSize(_numof_industry_table[_settings_game.difficulty.number_industries]);
+	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_industries : 1;
+	uint total_amount = ScaleByMapSize(_numof_industry_table[difficulty]);
 
 	/* Do not create any industries? */
 	if (total_amount == 0) return;
