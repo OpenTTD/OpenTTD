@@ -1547,10 +1547,18 @@ struct NetworkLobbyWindow : public Window {
 		uint left = r.left + WD_FRAMERECT_LEFT;
 		uint right = r.right - WD_FRAMERECT_RIGHT;
 
-		uint text_left  = left + (rtl ? 20 : 0);
-		uint text_right = right - (rtl ? 0 : 20);
-		uint blob_left  = rtl ? left : right - 10;
-		uint lock_left  = rtl ? left + 10 : right - 20;
+		Dimension lock_size = GetSpriteSize(SPR_LOCK);
+		int lock_width      = lock_size.width;
+		int lock_y_offset   = (this->resize.step_height - WD_MATRIX_TOP - WD_MATRIX_BOTTOM - lock_size.height) / 2;
+
+		Dimension profit_size = GetSpriteSize(SPR_BLOT);
+		int profit_width      = lock_size.width;
+		int profit_y_offset   = (this->resize.step_height - WD_MATRIX_TOP - WD_MATRIX_BOTTOM - profit_size.height) / 2;
+
+		uint text_left   = left  + (rtl ? lock_width + profit_width + 4 : 0);
+		uint text_right  = right - (rtl ? 0 : lock_width + profit_width + 4);
+		uint profit_left = rtl ? left : right - profit_width;
+		uint lock_left   = rtl ? left + profit_width + 2 : right - profit_width - lock_width - 2;
 
 		int y = r.top + WD_MATRIX_TOP;
 		/* Draw company list */
@@ -1563,11 +1571,11 @@ struct NetworkLobbyWindow : public Window {
 			}
 
 			DrawString(text_left, text_right, y, this->company_info[company].company_name, TC_BLACK);
-			if (this->company_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, lock_left, y);
+			if (this->company_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, lock_left, y + lock_y_offset);
 
 			/* If the company's income was positive puts a green dot else a red dot */
 			if (this->company_info[company].income >= 0) income = true;
-			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, blob_left, y + (FONT_HEIGHT_NORMAL - 10) / 2);
+			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, profit_left, y + profit_y_offset);
 
 			pos++;
 			y += this->resize.step_height;

@@ -1023,7 +1023,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	int image_left  = (rtl && show_orderlist) ? orderlist_right : text_left;
 	int image_right = (!rtl && show_orderlist) ? orderlist_left : text_right;
 
-	int vehicle_button_x = rtl ? right - 8 : left;
+	int vehicle_button_x = rtl ? right - GetSpriteSize(SPR_BLOT).width : left;
 
 	int y = r.top;
 	uint max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->vehicles.Length());

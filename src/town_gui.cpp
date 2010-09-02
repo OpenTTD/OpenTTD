@@ -135,20 +135,25 @@ public:
 		DrawString(left, right, y, STR_LOCAL_AUTHORITY_COMPANY_RATINGS);
 		y += FONT_HEIGHT_NORMAL;
 
-		int sprite_y_offset = (FONT_HEIGHT_NORMAL - 10) / 2;
-		uint icon_width = GetSpriteSize(SPR_COMPANY_ICON).width;
-		uint exclusive_width = GetSpriteSize(SPR_BLOT).width;
+		Dimension icon_size = GetSpriteSize(SPR_COMPANY_ICON);
+		int icon_width      = icon_size.width;
+		int icon_y_offset   = (FONT_HEIGHT_NORMAL - icon_size.height) / 2;
+
+		Dimension exclusive_size = GetSpriteSize(SPR_BLOT);
+		int exclusive_width      = exclusive_size.width;
+		int exlusive_y_offset    = (FONT_HEIGHT_NORMAL - exclusive_size.height) / 2;
+
 		bool rtl = _dynlang.text_dir == TD_RTL;
-		uint text_left = left + (rtl ? 0 : icon_width + exclusive_width + 4);
-		uint text_right = right - (rtl ? icon_width + exclusive_width + 4 : 0);
-		uint icon_left = rtl ? right - icon_width : left;
+		uint text_left      = left  + (rtl ? 0 : icon_width + exclusive_width + 4);
+		uint text_right     = right - (rtl ? icon_width + exclusive_width + 4 : 0);
+		uint icon_left      = rtl ? right - icon_width : left;
 		uint exclusive_left = rtl ? right - icon_width - exclusive_width - 2 : left + icon_width + 2;
 
 		/* Draw list of companies */
 		const Company *c;
 		FOR_ALL_COMPANIES(c) {
 			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
-				DrawCompanyIcon(c->index, icon_left, y + sprite_y_offset);
+				DrawCompanyIcon(c->index, icon_left, y + icon_y_offset);
 
 				SetDParam(0, c->index);
 				SetDParam(1, c->index);
@@ -166,7 +171,7 @@ public:
 
 				SetDParam(2, str);
 				if (this->town->exclusivity == c->index) {
-					DrawSprite(SPR_BLOT, PALETTE_TO_RED, exclusive_left, y + sprite_y_offset);
+					DrawSprite(SPR_BLOT, PALETTE_TO_RED, exclusive_left, y + exlusive_y_offset);
 				}
 
 				DrawString(text_left, text_right, y, STR_LOCAL_AUTHORITY_COMPANY_RATING);

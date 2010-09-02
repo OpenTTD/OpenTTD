@@ -180,7 +180,10 @@ struct StatusBarWindow : Window {
 					}
 				}
 
-				if (this->reminder_timeout > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, r.right - WD_FRAMERECT_RIGHT - 10, r.top + WD_FRAMERECT_TOP + 1);
+				if (this->reminder_timeout > 0) {
+					Dimension icon_size = GetSpriteSize(SPR_BLOT);
+					DrawSprite(SPR_BLOT, PALETTE_TO_RED, r.right - WD_FRAMERECT_RIGHT - icon_size.width, r.top + WD_FRAMERECT_TOP + (FONT_HEIGHT_NORMAL - icon_size.height) / 2);
+				}
 				break;
 		}
 	}
