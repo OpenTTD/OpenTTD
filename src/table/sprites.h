@@ -56,7 +56,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /* Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16 OPENTTD_SPRITE_COUNT = 154;
+static const uint16 OPENTTD_SPRITE_COUNT = 160;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -64,7 +64,7 @@ static const SpriteID SPR_HALFTILE_SELECTION_DOWN = SPR_OPENTTD_BASE + 4;
 static const SpriteID SPR_HALFTILE_SELECTION_UP   = SPR_OPENTTD_BASE + 8;
 
 static const SpriteID SPR_SQUARE             = SPR_OPENTTD_BASE + 38;  // coloured square (used for newgrf compatibility)
-static const SpriteID SPR_BLOT               = SPR_OPENTTD_BASE + 39;  // coloured circle (mainly used as vehicle profit marker and for server compatibility)
+static const SpriteID SPR_BLOT               = SPR_OPENTTD_BASE + 39;  // coloured circle (used for server compatibility and installed content)
 static const SpriteID SPR_LOCK               = SPR_OPENTTD_BASE + 40;  // lock icon (for password protected servers)
 static const SpriteID SPR_BOX_EMPTY          = SPR_OPENTTD_BASE + 41;
 static const SpriteID SPR_BOX_CHECKED        = SPR_OPENTTD_BASE + 42;
@@ -115,6 +115,14 @@ static const SpriteID SPR_REPLACE_ROADVEH   = SPR_OPENTTD_BASE + 102;
 static const SpriteID SPR_REPLACE_SHIP      = SPR_OPENTTD_BASE + 103;
 static const SpriteID SPR_REPLACE_AIRCRAFT  = SPR_OPENTTD_BASE + 104;
 static const SpriteID SPR_SELL_CHAIN_TRAIN  = SPR_OPENTTD_BASE + 105;
+
+static const SpriteID SPR_PROFIT_NA         = SPR_OPENTTD_BASE + 154;
+static const SpriteID SPR_PROFIT_NEGATIVE   = SPR_OPENTTD_BASE + 155;
+static const SpriteID SPR_PROFIT_SOME       = SPR_OPENTTD_BASE + 156;
+static const SpriteID SPR_PROFIT_LOT        = SPR_OPENTTD_BASE + 157;
+
+static const SpriteID SPR_UNREAD_NEWS                = SPR_OPENTTD_BASE + 158;
+static const SpriteID SPR_EXCLUSIVE_TRANSPORT        = SPR_OPENTTD_BASE + 159;
 
 static const SpriteID SPR_GROUP_CREATE_TRAIN         = SPR_OPENTTD_BASE + 114;
 static const SpriteID SPR_GROUP_CREATE_ROADVEH       = SPR_OPENTTD_BASE + 115;

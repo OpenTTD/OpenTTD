@@ -34,6 +34,7 @@
 #include "townname_type.h"
 #include "core/geometry_func.hpp"
 #include "genworld.h"
+#include "sprite.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -139,9 +140,9 @@ public:
 		int icon_width      = icon_size.width;
 		int icon_y_offset   = (FONT_HEIGHT_NORMAL - icon_size.height) / 2;
 
-		Dimension exclusive_size = GetSpriteSize(SPR_BLOT);
+		Dimension exclusive_size = GetSpriteSize(SPR_EXCLUSIVE_TRANSPORT);
 		int exclusive_width      = exclusive_size.width;
-		int exlusive_y_offset    = (FONT_HEIGHT_NORMAL - exclusive_size.height) / 2;
+		int exclusive_y_offset   = (FONT_HEIGHT_NORMAL - exclusive_size.height) / 2;
 
 		bool rtl = _dynlang.text_dir == TD_RTL;
 		uint text_left      = left  + (rtl ? 0 : icon_width + exclusive_width + 4);
@@ -171,7 +172,7 @@ public:
 
 				SetDParam(2, str);
 				if (this->town->exclusivity == c->index) {
-					DrawSprite(SPR_BLOT, PALETTE_TO_RED, exclusive_left, y + exlusive_y_offset);
+					DrawSprite(SPR_EXCLUSIVE_TRANSPORT, COMPANY_SPRITE_COLOUR(c->index), exclusive_left, y + exclusive_y_offset);
 				}
 
 				DrawString(text_left, text_right, y, STR_LOCAL_AUTHORITY_COMPANY_RATING);

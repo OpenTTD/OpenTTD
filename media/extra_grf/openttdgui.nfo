@@ -13,7 +13,7 @@
 // -- End of NFO Renum 'settings' --
 //
    -1 * 0	 0C "OpenTTD GUI graphics"
-   -1 * 0	 05 15 9A
+   -1 * 0	 05 15 A0
    -1 sprites/openttdgui.pcx 18 8 09 31 64 -31 7
    -1 sprites/openttdgui.pcx 98 8 09 31 64 -31 7
    -1 sprites/openttdgui.pcx 178 8 09 31 64 -31 7
@@ -168,6 +168,12 @@
    -1 sprites/openttdgui.pcx 38 430 09 8 7 0 0
    -1 sprites/openttdgui.pcx 52 430 09 8 7 0 0
    -1 sprites/openttdgui.pcx 65 430 09 8 7 0 0
+   -1 sprites/openttdgui.pcx  78 430 01 8 8 0 0
+   -1 sprites/openttdgui.pcx  92 430 01 8 8 0 0
+   -1 sprites/openttdgui.pcx 106 430 01 8 8 0 0
+   -1 sprites/openttdgui.pcx 120 430 01 8 8 0 0
+   -1 sprites/openttdgui.pcx 134 430 01 10 8 0 0
+   -1 sprites/openttdgui.pcx 148 430 09 10 13 0 -2
 
 // -- NFO Renum 'settings' --
 // Undo disabling the warning

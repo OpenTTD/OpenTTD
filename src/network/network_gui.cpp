@@ -1551,7 +1551,7 @@ struct NetworkLobbyWindow : public Window {
 		int lock_width      = lock_size.width;
 		int lock_y_offset   = (this->resize.step_height - WD_MATRIX_TOP - WD_MATRIX_BOTTOM - lock_size.height) / 2;
 
-		Dimension profit_size = GetSpriteSize(SPR_BLOT);
+		Dimension profit_size = GetSpriteSize(SPR_PROFIT_LOT);
 		int profit_width      = lock_size.width;
 		int profit_y_offset   = (this->resize.step_height - WD_MATRIX_TOP - WD_MATRIX_BOTTOM - profit_size.height) / 2;
 
@@ -1575,7 +1575,7 @@ struct NetworkLobbyWindow : public Window {
 
 			/* If the company's income was positive puts a green dot else a red dot */
 			if (this->company_info[company].income >= 0) income = true;
-			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, profit_left, y + profit_y_offset);
+			DrawSprite(income ? SPR_PROFIT_LOT : SPR_PROFIT_NEGATIVE, PAL_NONE, profit_left, y + profit_y_offset);
 
 			pos++;
 			y += this->resize.step_height;

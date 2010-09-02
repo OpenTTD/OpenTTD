@@ -190,19 +190,19 @@ void DepotSortList(VehicleList *list)
 /** draw the vehicle profit button in the vehicle list window. */
 static void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 {
-	PaletteID pal;
+	SpriteID spr;
 
 	/* draw profit-based coloured icons */
 	if (v->age <= DAYS_IN_YEAR * 2) {
-		pal = PALETTE_TO_GREY;
+		spr = SPR_PROFIT_NA;
 	} else if (v->GetDisplayProfitLastYear() < 0) {
-		pal = PALETTE_TO_RED;
+		spr = SPR_PROFIT_NEGATIVE;
 	} else if (v->GetDisplayProfitLastYear() < 10000) {
-		pal = PALETTE_TO_YELLOW;
+		spr = SPR_PROFIT_SOME;
 	} else {
-		pal = PALETTE_TO_GREEN;
+		spr = SPR_PROFIT_LOT;
 	}
-	DrawSprite(SPR_BLOT, pal, x, y);
+	DrawSprite(spr, PAL_NONE, x, y);
 }
 
 /** Maximum number of refit cycles we try, to prevent infinite loops. And we store only a byte anyway */
@@ -1023,7 +1023,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	int image_left  = (rtl && show_orderlist) ? orderlist_right : text_left;
 	int image_right = (!rtl && show_orderlist) ? orderlist_left : text_right;
 
-	int vehicle_button_x = rtl ? right - GetSpriteSize(SPR_BLOT).width : left;
+	int vehicle_button_x = rtl ? right - GetSpriteSize(SPR_PROFIT_LOT).width : left;
 
 	int y = r.top;
 	uint max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), this->vehicles.Length());
