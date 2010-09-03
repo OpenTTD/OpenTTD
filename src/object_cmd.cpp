@@ -34,6 +34,7 @@
 #include "newgrf_config.h"
 #include "newgrf_object.h"
 #include "date_func.h"
+#include "newgrf_debug.h"
 
 #include "table/strings.h"
 #include "table/object_land.h"
@@ -338,7 +339,11 @@ static Foundation GetFoundation_Object(TileIndex tile, Slope tileh)
 static void ReallyClearObjectTile(Object *o)
 {
 	Object::DecTypeCount(GetObjectType(o->location.tile));
-	TILE_AREA_LOOP(tile_cur, o->location) MakeWaterKeepingClass(tile_cur, GetTileOwner(tile_cur));
+	TILE_AREA_LOOP(tile_cur, o->location) {
+		DeleteNewGRFInspectWindow(GSF_OBJECTS, tile_cur);
+
+		MakeWaterKeepingClass(tile_cur, GetTileOwner(tile_cur));
+	}
 	delete o;
 }
 
