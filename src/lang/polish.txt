@@ -713,7 +713,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tworzeni
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Konstrukcja dróg
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadź drzewa
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umieść napis
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść objekt
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umieść obiekt
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Zapisz scenariusz
@@ -2542,8 +2542,10 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokalne 
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Brak
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Współrzędne: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Zbudowano: {LTBLUE}{DATE_LONG}
-STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Klasa stacji: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Rodzaj stacji: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Typ stacji: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Rodzaj lotniska: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nazwa lotniska: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nazwa pola lotniska: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Akceptowany ładunek: {LTBLUE}
@@ -2799,7 +2801,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Poprzedn
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Zbadaj obiekt z poprzedniego obszaru
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} w {HEX}
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekt
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Obiekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Typ szyn
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGFR zmienna 60+parametr x (heksadecymalnie)

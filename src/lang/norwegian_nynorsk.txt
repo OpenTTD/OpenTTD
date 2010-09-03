@@ -443,7 +443,7 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informasjon om 
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gøym konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI-feilsøking
-STR_ABOUT_MENU_SCREENSHOT                                       :Skjermfoto (CTRL+S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stort skjermfoto (CTRL+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver

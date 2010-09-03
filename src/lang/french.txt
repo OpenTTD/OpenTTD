@@ -1932,7 +1932,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Choisir 
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Glisser/déposer
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construire une gare avec le glisser/déposer
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Choisir la classe de station à afficher
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Choisir le type de station à afficher
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Choisir le type de station à construire
 
 STR_STATION_CLASS_DFLT                                          :Station par défaut
@@ -2163,8 +2163,10 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Municipa
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Aucune
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordonnées{NBSP}: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construit le{NBSP}: {LTBLUE}{DATE_LONG}
-STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Classe de station{NBSP}: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Type de station{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Type de station{NBSP}: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Type d'aéroport{NBSP}: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nom de l'aéroport{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nom de la case d'aéroport{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF{NBSP}: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Cargaison acceptée{NBSP}: {LTBLUE}

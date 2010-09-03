@@ -2218,9 +2218,13 @@ STR_AIRPORT_HELIDEPOT                                           :Вертолё�
 STR_AIRPORT_HELISTATION                                         :Вертолётная станция
 
 STR_AIRPORT_CLASS_SMALL                                         :Малые аэропорты
+STR_AIRPORT_CLASS_SMALL.nom                                     :Малый
 STR_AIRPORT_CLASS_LARGE                                         :Средние аэропорты
+STR_AIRPORT_CLASS_LARGE.nom                                     :Средний
 STR_AIRPORT_CLASS_HUB                                           :Большие аэропорты
+STR_AIRPORT_CLASS_HUB.nom                                       :Большой
 STR_AIRPORT_CLASS_HELIPORTS                                     :Вертолётные площадки
+STR_AIRPORT_CLASS_HELIPORTS.nom                                 :Вертолётный
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Производимый шум: {GOLD}{COMMA}
 
@@ -2334,8 +2338,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Коор
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Построено: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Класс станции: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Тип станции: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Тип аэропорта: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Название аэропорта: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Класс аэропорта: {LTBLUE}{STRING.nom}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Тип аэропорта: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Зона аэропорта: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Принимает: {LTBLUE}
