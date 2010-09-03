@@ -13,6 +13,7 @@
 #define SMALLVEC_TYPE_HPP
 
 #include "alloc_func.hpp"
+#include "mem_func.hpp"
 #include "math_func.hpp"
 
 /**
@@ -34,6 +35,12 @@ protected:
 
 public:
 	SmallVector() : data(NULL), items(0), capacity(0) { }
+
+	template<uint X>
+	SmallVector(const SmallVector<T, X> &other) : data(NULL), items(0), capacity(0)
+	{
+		MemCpyT<T>(this->Append(other.Length()), other.Begin(), other.Length());
+	}
 
 	~SmallVector()
 	{

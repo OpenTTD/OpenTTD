@@ -29,6 +29,7 @@
 #include "landscape_type.h"
 #include "animated_tile_func.h"
 #include "core/random_func.hpp"
+#include "object_base.h"
 
 #include "table/sprites.h"
 
@@ -603,6 +604,9 @@ void ClearSnowLine()
  */
 CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	for (uint i = 0; i < _cleared_object_areas.Length(); i++) {
+		if (_cleared_object_areas[i].Intersects(TileArea(tile, 1, 1))) return CommandCost();
+	}
 	return _tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags);
 }
 
@@ -634,7 +638,9 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	for (int x = sx; x <= ex; ++x) {
 		for (int y = sy; y <= ey; ++y) {
+			SmallVector<TileArea, 1> object_areas = _cleared_object_areas;
 			CommandCost ret = DoCommand(TileXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			_cleared_object_areas = object_areas;
 			if (ret.Failed()) {
 				last_error = ret;
 				continue;

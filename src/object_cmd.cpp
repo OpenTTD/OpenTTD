@@ -342,6 +342,8 @@ static void ReallyClearObjectTile(Object *o)
 	delete o;
 }
 
+SmallVector<TileArea, 4> _cleared_object_areas;
+
 static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 {
 	ObjectType type = GetObjectType(tile);
@@ -350,6 +352,8 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 	/* Get to the northern most tile. */
 	Object *o = Object::GetByTile(tile);
 	TileArea ta = o->location;
+
+	*_cleared_object_areas.Append() = ta;
 
 	CommandCost cost(EXPENSES_CONSTRUCTION, spec->GetClearCost() * ta.w * ta.h / 5);
 	if (spec->flags & OBJECT_FLAG_CLEAR_INCOME) cost.MultiplyCost(-1); // They get an income!

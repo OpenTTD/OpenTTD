@@ -17,6 +17,7 @@
 #include "tilearea_type.h"
 #include "town_type.h"
 #include "date_type.h"
+#include "core/smallvec_type.hpp"
 
 typedef Pool<Object, ObjectID, 64, 64000> ObjectPool;
 extern ObjectPool _object_pool;
@@ -85,5 +86,7 @@ protected:
 
 #define FOR_ALL_OBJECTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Object, object_index, var, start)
 #define FOR_ALL_OBJECTS(var) FOR_ALL_OBJECTS_FROM(var, 0)
+
+extern SmallVector<TileArea, 4> _cleared_object_areas;
 
 #endif /* OBJECT_BASE_H */

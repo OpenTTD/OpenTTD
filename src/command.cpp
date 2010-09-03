@@ -27,6 +27,7 @@
 #include "company_base.h"
 #include "signal_func.h"
 #include "core/backup_type.hpp"
+#include "object_base.h"
 
 #include "table/strings.h"
 
@@ -402,6 +403,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags,
 
 	/* only execute the test call if it's toplevel, or we're not execing. */
 	if (_docommand_recursive == 1 || !(flags & DC_EXEC) ) {
+		if (_docommand_recursive == 1) _cleared_object_areas.Clear();
 		SetTownRatingTestMode(true);
 		res = proc(tile, flags & ~DC_EXEC, p1, p2, text);
 		SetTownRatingTestMode(false);
@@ -424,6 +426,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags,
 
 	/* Execute the command here. All cost-relevant functions set the expenses type
 	 * themselves to the cost object at some point */
+	if (_docommand_recursive == 1) _cleared_object_areas.Clear();
 	res = proc(tile, flags, p1, p2, text);
 	if (res.Failed()) {
 error:
@@ -610,6 +613,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 	CommandCost res;
 	if (estimate_only || !skip_test) {
 		/* Test the command. */
+		_cleared_object_areas.Clear();
 		SetTownRatingTestMode(true);
 		res = proc(tile, flags, p1, p2, text);
 		SetTownRatingTestMode(false);
@@ -649,6 +653,7 @@ CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd,
 
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */
+	_cleared_object_areas.Clear();
 	CommandCost res2 = proc(tile, flags | DC_EXEC, p1, p2, text);
 
 	if (cmd_id == CMD_COMPANY_CTRL) {
