@@ -476,7 +476,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	Slope tileh = GetTileSlope(tile, NULL);
 
-	bool tile_cleared = false; // Used to remember that the tile was cleared during test run
+	bool need_to_clear = false;
 	switch (GetTileType(tile)) {
 		case MP_ROAD:
 			switch (GetRoadTileType(tile)) {
@@ -614,12 +614,15 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 		default: {
 do_clear:;
-			CommandCost ret = DoCommand(tile, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
-			if (ret.Failed()) return ret;
-			cost.AddCost(ret);
-			tile_cleared = true;
+			need_to_clear = true;
 			break;
 		}
+	}
+
+	if (need_to_clear) {
+		CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+		if (ret.Failed()) return ret;
+		cost.AddCost(ret);
 	}
 
 	if (other_bits != pieces) {
@@ -633,44 +636,41 @@ do_clear:;
 		cost.AddCost(ret);
 	}
 
-	if (!tile_cleared && IsTileType(tile, MP_ROAD)) {
-		/* Don't put the pieces that already exist */
-		pieces &= ComplementRoadBits(existing);
+	if (!need_to_clear) {
+		if (IsTileType(tile, MP_ROAD)) {
+			/* Don't put the pieces that already exist */
+			pieces &= ComplementRoadBits(existing);
 
-		/* Check if new road bits will have the same foundation as other existing road types */
-		if (IsNormalRoad(tile)) {
-			Slope slope = GetTileSlope(tile, NULL);
-			Foundation found_new = GetRoadFoundation(slope, pieces | existing);
+			/* Check if new road bits will have the same foundation as other existing road types */
+			if (IsNormalRoad(tile)) {
+				Slope slope = GetTileSlope(tile, NULL);
+				Foundation found_new = GetRoadFoundation(slope, pieces | existing);
 
-			/* Test if all other roadtypes can be built at that foundation */
-			for (RoadType rtest = ROADTYPE_ROAD; rtest < ROADTYPE_END; rtest++) {
-				if (rtest != rt) { // check only other road types
-					RoadBits bits = GetRoadBits(tile, rtest);
-					/* do not check if there are not road bits of given type */
-					if (bits != ROAD_NONE && GetRoadFoundation(slope, bits) != found_new) {
-						return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+				/* Test if all other roadtypes can be built at that foundation */
+				for (RoadType rtest = ROADTYPE_ROAD; rtest < ROADTYPE_END; rtest++) {
+					if (rtest != rt) { // check only other road types
+						RoadBits bits = GetRoadBits(tile, rtest);
+						/* do not check if there are not road bits of given type */
+						if (bits != ROAD_NONE && GetRoadFoundation(slope, bits) != found_new) {
+							return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
+						}
 					}
 				}
 			}
 		}
-	}
 
-	if (!tile_cleared) {
 		CommandCost ret = EnsureNoVehicleOnGround(tile);
 		if (ret.Failed()) return ret;
-	}
 
+	}
 	cost.AddCost(CountBits(pieces) * _price[PR_BUILD_ROAD]);
-	if (!tile_cleared && IsTileType(tile, MP_TUNNELBRIDGE)) {
+
+	if (!need_to_clear && IsTileType(tile, MP_TUNNELBRIDGE)) {
 		/* Pay for *every* tile of the bridge or tunnel */
 		cost.MultiplyCost(GetTunnelBridgeLength(GetOtherTunnelBridgeEnd(tile), tile) + 2);
 	}
 
 	if (flags & DC_EXEC) {
-		/* CmdBuildLongRoad calls us directly with DC_EXEC, so we may only clear the tile after all
-		 * fail/success tests have been done. */
-		if (tile_cleared) DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-
 		switch (GetTileType(tile)) {
 			case MP_ROAD: {
 				RoadTileType rtt = GetRoadTileType(tile);
