@@ -1116,10 +1116,12 @@ make_compiler_cflags() {
 	# $5 - variable to finally write cxxflags to
 	# $6 - the current ldflags
 	# $7 - variable to finally write ldflags to
+	# $8 - variable to finally write features to
 
 	flags="$2"
 	cxxflags="$4"
 	ldflags="$6"
+	features=""
 
 	if [ `basename $1 | cut -c 1-3` = "icc" ]; then
 		# Enable some things only for certain ICC versions
@@ -1141,11 +1143,13 @@ make_compiler_cflags() {
 			cxxflags="$cxxflags -std=c++0x"
 		fi
 
-		has_ipo=`$1 -help ipo | grep '\-ipo'`
-		if [ "$enable_lto" != "0" ] && [ -n "$has_ipo" ]; then
-			# Use IPO (only if we see IPO exists and is requested)
-			flags="$flags -ipo"
-			ldflags="$ldflags -ipo $CFLAGS"
+		if [ "$enable_lto" != "0" ]; then
+			has_ipo=`$1 -help ipo | grep '\-ipo'`
+			if [ -n "$has_ipo" ]; then
+				# Use IPO (only if we see IPO exists and is requested)
+				flags="$flags -ipo"
+				features="$features lto"
+			fi
 		fi
 	else
 		# Enable some things only for certain GCC versions
@@ -1177,7 +1181,6 @@ make_compiler_cflags() {
 			#  break anything. So disable strict-aliasing to make the
 			#  compiler all happy.
 			flags="$flags -fno-strict-aliasing"
-			ldflags="$ldflags -fno-strict-aliasing"
 			# Warn about casting-out 'const' with regular C-style cast.
 			#  The preferred way is const_cast<>() which doesn't warn.
 			flags="$flags -Wcast-qual"
@@ -1189,7 +1192,6 @@ make_compiler_cflags() {
 			# sure that they will not happen. It furthermore complains
 			# about its own optimized code in some places.
 			flags="$flags -fno-strict-overflow"
-			ldflags="$ldflags -fno-strict-overflow"
 		fi
 
 		if [ $cc_version -ge 43 ]; then
@@ -1198,13 +1200,12 @@ make_compiler_cflags() {
 			cxxflags="$cxxflags -std=gnu++0x"
 		fi
 
-		if [ $cc_version -ge 45 ]; then
-			# Only GCC 4.5+ has (possibly) LTO
+		if [ "$enable_lto" != "0" ]; then
 			has_lto=`$1 -dumpspecs | grep '\%{flto}'`
-			if [ "$enable_lto" != "0" ] && [ -n "$has_lto" ]; then
+			if [ -n "$has_lto" ]; then
 				# Use LTO only if we see LTO exists and is requested
 				flags="$flags -flto"
-				ldflags="$ldflags -flto $2"
+				features="$features lto"
 			fi
 		fi
 
@@ -1219,6 +1220,7 @@ make_compiler_cflags() {
 	eval "$3=\"$flags\""
 	eval "$5=\"$cxxflags\""
 	eval "$7=\"$ldflags\""
+	eval "$8=\"$features\""
 }
 
 make_cflags_and_ldflags() {
@@ -1228,6 +1230,8 @@ make_cflags_and_ldflags() {
 	CXXFLAGS_BUILD=""
 	# LDFLAGS for BUILD
 	LDFLAGS_BUILD=""
+	# FEATURES for BUILD (lto)
+	FEATURES_BUILD=""
 	# General CFlags for HOST
 	CFLAGS="$CFLAGS"
 	# Special CXXFlags for HOST
@@ -1236,13 +1240,15 @@ make_cflags_and_ldflags() {
 	LIBS="-lstdc++"
 	# LDFLAGS used for HOST
 	LDFLAGS="$LDFLAGS"
+	# FEATURES for HOST (lto)
+	FEATURES=""
 
-	make_compiler_cflags "$cc_build" "$CFLAGS_BUILD" "CFLAGS_BUILD" "$CXXFLAGS_BUILD" "CXXFLAGS_BUILD" "$LDFLAGS_BUILD" "LDFLAGS_BUILD"
-	make_compiler_cflags "$cc_host" "$CFLAGS" "CFLAGS" "$CXXFLAGS" "CXXFLAGS" "$LDFLAGS" "LDFLAGS"
+	make_compiler_cflags "$cc_build" "$CFLAGS_BUILD" "CFLAGS_BUILD" "$CXXFLAGS_BUILD" "CXXFLAGS_BUILD" "$LDFLAGS_BUILD" "LDFLAGS_BUILD" "FEATURES_BUILD"
+	make_compiler_cflags "$cc_host" "$CFLAGS" "CFLAGS" "$CXXFLAGS" "CXXFLAGS" "$LDFLAGS" "LDFLAGS" "FEATURES"
 
 	CFLAGS="$CFLAGS -D$os"
 
-	if [ $enable_debug = 0 ]; then
+	if [ "$enable_debug" = "0" ]; then
 		# No debug, add default stuff
 		OBJS_SUBDIR="release"
 		if [ "$os" = "OSX" ]; then
@@ -1255,7 +1261,6 @@ make_cflags_and_ldflags() {
 			fi
 
 			CFLAGS="-O2 -fomit-frame-pointer $CFLAGS"
-			LDFLAGS="-O2 -fomit-frame-pointer $LDFLAGS"
 		fi
 	else
 		OBJS_SUBDIR="debug"
@@ -1275,7 +1280,6 @@ make_cflags_and_ldflags() {
 		fi
 		if [ $enable_debug -ge 2 ]; then
 			CFLAGS="$CFLAGS -fno-inline"
-			LDFLAGS="$LDFLAGS -fno-inline"
 		fi
 		if [ $enable_debug -ge 3 ]; then
 			CFLAGS="$CFLAGS -O0"
@@ -1608,6 +1612,21 @@ make_cflags_and_ldflags() {
 	fi
 
 	CFLAGS="$CFLAGS -DGLOBAL_DATA_DIR=\\\\\"$prefix_dir/$data_dir\\\\\""
+
+	if [ "$enable_lto" != "0" ]; then
+		lto_build=`echo "$FEATURES_BUILD" | grep "lto"`
+		lto_host=`echo "$FEATURES" | grep "lto"`
+		if [ -z "$lto_build$lto_host" ]; then
+			log 1 "WARNING: you enabled LTO/IPO, but neither build nor host compiler supports it"
+			log 1 "WARNING: LTO/IPO has been disabled"
+		fi
+		if [ -n "$lto_build" ]; then
+			LDFLAGS_BUILD="$LDFLAGS_BUILD $CFLAGS_BUILD $CXXFLAGS_BUILD"
+		fi
+		if [ -n "$lto_host" ]; then
+			LDFLAGS="$LDFLAGS $CFLAGS $CXXFLAGS"
+		fi
+	fi
 
 	log 1 "using CFLAGS... $CFLAGS"
 	log 1 "using CXXFLAGS... $CXXFLAGS"
