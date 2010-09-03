@@ -36,10 +36,18 @@ protected:
 public:
 	SmallVector() : data(NULL), items(0), capacity(0) { }
 
-	template<uint X>
+	template <uint X>
 	SmallVector(const SmallVector<T, X> &other) : data(NULL), items(0), capacity(0)
 	{
 		MemCpyT<T>(this->Append(other.Length()), other.Begin(), other.Length());
+	}
+
+	template <uint X>
+	SmallVector &operator=(const SmallVector<T, X> &other)
+	{
+		this->Reset();
+		MemCpyT<T>(this->Append(other.Length()), other.Begin(), other.Length());
+		return *this;
 	}
 
 	~SmallVector()
