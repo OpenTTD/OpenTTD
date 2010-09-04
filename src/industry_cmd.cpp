@@ -1891,6 +1891,24 @@ static const byte _numof_industry_table[] = {
 };
 
 /**
+ * Advertise about a new industry opening.
+ * @param ind Industry being opened.
+ */
+static void AdvertiseIndustryOpening(Industry *ind)
+{
+	const IndustrySpec *ind_spc = GetIndustrySpec(ind->type);
+	SetDParam(0, ind_spc->name);
+	if (ind_spc->new_industry_text > STR_LAST_STRINGID) {
+		SetDParam(1, STR_TOWN_NAME);
+		SetDParam(2, ind->town->index);
+	} else {
+		SetDParam(1, ind->town->index);
+	}
+	AddIndustryNewsItem(ind_spc->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
+	AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
+}
+
+/**
  * Try to place the industry in the game.
  * Since there is no feedback why placement fails, there is no other option
  * than to try a few times before concluding it does not work.
@@ -2041,16 +2059,7 @@ static void MaybeNewIndustry()
 	Industry *ind = PlaceIndustry(cumulative_probs[j].ind, false);
 	if (ind == NULL) return;
 
-	const IndustrySpec *ind_spc = GetIndustrySpec(cumulative_probs[j].ind);
-	SetDParam(0, ind_spc->name);
-	if (ind_spc->new_industry_text > STR_LAST_STRINGID) {
-		SetDParam(1, STR_TOWN_NAME);
-		SetDParam(2, ind->town->index);
-	} else {
-		SetDParam(1, ind->town->index);
-	}
-	AddIndustryNewsItem(ind_spc->new_industry_text, NS_INDUSTRY_OPEN, ind->index);
-	AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
+	AdvertiseIndustryOpening(ind);
 }
 
 /**
