@@ -1840,11 +1840,11 @@ static Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 
 /**
  * Compute the appearance probability for an industry during map creation.
- * @param it Industrytype to compute for
- * @param force_at_least_one Returns whether at least one instance should be forced on map creation
- * @return relative probability for the industry to appear
+ * @param it Industry type to compute.
+ * @param [out] force_at_least_one Returns whether at least one instance should be forced on map creation.
+ * @return Relative probability for the industry to appear.
  */
-static uint32 GetScaledIndustryProbability(IndustryType it, bool *force_at_least_one)
+static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *force_at_least_one)
 {
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	uint32 chance = ind_spc->appear_creation[_settings_game.game_creation.landscape] * 16; // * 16 to increase precision
@@ -1909,7 +1909,7 @@ void GenerateIndustries()
 	uint num_forced = 0;
 
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
-		industry_probs[it] = GetScaledIndustryProbability(it, force_at_least_one + it);
+		industry_probs[it] = GetScaledIndustryGenerationProbability(it, force_at_least_one + it);
 		total_prob += industry_probs[it];
 		if (force_at_least_one[it]) num_forced++;
 	}
