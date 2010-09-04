@@ -1863,6 +1863,24 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
 	}
 }
 
+/**
+ * Compute the probability for constructing a new industry during game play.
+ * @param it Industry type to compute.
+ * @return Relative probability for the industry to appear.
+ */
+static uint16 GetIndustryGamePlayProbability(IndustryType it)
+{
+	const IndustrySpec *ind_spc = GetIndustrySpec(it);
+	byte chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
+	if (!ind_spc->enabled || chance == 0 || ind_spc->num_table == 0 ||
+			((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && _cur_year > 1950) ||
+			((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && _cur_year < 1960) ||
+			!CheckIfCallBackAllowsAvailability(it, IACT_RANDOMCREATION)) {
+		return 0;
+	}
+	return chance;
+}
+
 /** Number of industries on a 256x256 map */
 static const byte _numof_industry_table[] = {
 	0,    // none
@@ -1983,16 +2001,9 @@ static void MaybeNewIndustry()
 	uint16 probability_max = 0;
 
 	/* Generate a list of all possible industries that can be built. */
-	const IndustrySpec *ind_spc;
 	for (IndustryType j = 0; j < NUM_INDUSTRYTYPES; j++) {
-		ind_spc = GetIndustrySpec(j);
-		byte chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
-
-		if (!ind_spc->enabled || chance == 0 || ind_spc->num_table == 0) continue;
-
-		/* If there is no Callback CBID_INDUSTRY_AVAILABLE or if this one did not fail,
-		 * and if appearing chance for this landscape is above 0, this industry can be chosen */
-		if (CheckIfCallBackAllowsAvailability(j, IACT_RANDOMCREATION)) {
+		uint16 chance = GetIndustryGamePlayProbability(j);
+		if (chance > 0) {
 			probability_max += chance;
 			/* adds the result for this industry */
 			cumulative_probs[num].ind = j;
@@ -2011,11 +2022,6 @@ static void MaybeNewIndustry()
 		if (cumulative_probs[j].prob >= rndtype) break;
 	}
 
-	ind_spc = GetIndustrySpec(cumulative_probs[j].ind);
-	/*  Check if it is allowed */
-	if ((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && _cur_year > 1950) return;
-	if ((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && _cur_year < 1960) return;
-
 	/* try to create 2000 times this industry */
 	Industry *ind; // Will receive the industry's creation pointer.
 	num = 2000;
@@ -2025,6 +2031,7 @@ static void MaybeNewIndustry()
 		if (--num == 0) return;
 	}
 
+	const IndustrySpec *ind_spc = GetIndustrySpec(cumulative_probs[j].ind);
 	SetDParam(0, ind_spc->name);
 	if (ind_spc->new_industry_text > STR_LAST_STRINGID) {
 		SetDParam(1, STR_TOWN_NAME);
