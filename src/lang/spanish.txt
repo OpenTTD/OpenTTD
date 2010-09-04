@@ -2788,7 +2788,7 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Borrar e
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renombrar el grupo seleccionado
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click para proteger este grupo del auto reemplazado global
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :Todos los vehículos compartidos
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Añadir vehículos con órdenes compartidas
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Quitar todos los vehículos
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renombrar un grupo

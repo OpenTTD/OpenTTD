@@ -443,6 +443,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Baskuligi Konzolon
 STR_ABOUT_MENU_AI_DEBUG                                         :Sencimigo de AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekranfoto
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pligrandiga ekranfoto
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tuta karto ekranfoto
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Pri 'OpenTTD'
 ############ range ends here
@@ -2026,6 +2027,8 @@ STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objekta 
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Antaŭvido de la objekto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeco: {GOLD}{NUM} x {NUM} kaheloj
 
+STR_OBJECT_CLASS_LTHS                                           :Lumturoj
+STR_OBJECT_CLASS_TRNS                                           :Transigantoj
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arboj
@@ -2097,6 +2100,8 @@ STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ĉeno de
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Provizantaj industrioj
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Akceptantaj industrioj
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domoj
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Alklaku la industrion por vidi ĝia provizanoj kaj klientoj
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Alklaku la ŝarĝon por vidi ĝia provizantoj kaj klientoj
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Montru ĉenon
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Montru ŝarĝoj provizantajn kaj akceptantajn industriojn
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Sinsekvigu al karteto
@@ -2118,6 +2123,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Troviĝo
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Kreite: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stacioklaso: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Staciotipo: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Aerohavena klaso: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Aerohavena nomo: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nomo de flughavena kahelo: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Ŝarĝo akceptata: {LTBLUE}
@@ -2318,7 +2325,7 @@ STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detalaj 
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivaj dosieroj de NewGRF
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Malaktiva dosieroj de NewGRF
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Elektu antaŭaro:
-STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtriloteksto:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtroteksto:
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Konservu antaŭaron
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Konservu la nunan liston kiel antaŭaro
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Enigu nomon por la antaŭaro
@@ -2377,6 +2384,7 @@ STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Antaŭa 
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Movu ĉirkaŭ la bildeton, ŝanĝante la X kaj Y distancojn
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X distanco: {NUM}, Y distanco: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Elektu bildeto
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Elektu bildeton ie el la ekrano
 
 STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Iru al bildeto
 
@@ -2432,6 +2440,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<malvalida indu
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Signolisto - {COMMA} Signo{P "" j}
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Viŝu filtrilo
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Viŝu filtrotekston
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ŝanĝu afiŝan tekston
@@ -3234,6 +3243,7 @@ STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ŝanĝi 
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reŝarĝi AI-on
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mortigi la AI-on, reŝarĝi la skripton, kaj restarti la AI-on
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Malpaŭzu kaj daŭrigi la AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu forigeraran eligon de ĉiu tio AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD estas kreita sen AI-supteno...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... neniu AI estas disponebla!
