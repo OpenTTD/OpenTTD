@@ -40,6 +40,7 @@
 #include "core/pool_func.hpp"
 #include "subsidy_func.h"
 #include "core/backup_type.hpp"
+#include "object_base.h"
 
 #include "table/strings.h"
 #include "table/industry_land.h"
@@ -1694,7 +1695,9 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 
 	*ip = NULL;
 
+	SmallVector<TileArea, 1> object_areas(_cleared_object_areas);
 	CommandCost ret = CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, random_initial_bits, founder, &custom_shape_check);
+	_cleared_object_areas = object_areas;
 	if (ret.Failed()) return ret;
 
 	if (HasBit(GetIndustrySpec(type)->callback_mask, CBM_IND_LOCATION)) {
@@ -1794,10 +1797,12 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		if (num >= count) return CMD_ERROR;
 
 		CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
+		SmallVector<TileArea, 1> object_areas(_cleared_object_areas);
 		do {
 			if (--count < 0) return ret;
 			if (--num < 0) num = indspec->num_table - 1;
 			ret = CheckIfIndustryTilesAreFree(tile, itt[num], num, it, random_initial_bits, _current_company);
+			_cleared_object_areas = object_areas;
 		} while (ret.Failed());
 
 		ret = CreateNewIndustryHelper(tile, it, flags, indspec, num, random_var8f, random_initial_bits, _current_company, &ind);
