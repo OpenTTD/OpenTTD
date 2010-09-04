@@ -1891,6 +1891,24 @@ static const byte _numof_industry_table[] = {
 };
 
 /**
+ * Try to place the industry in the game.
+ * Since there is no feedback why placement fails, there is no other option
+ * than to try a few times before concluding it does not work.
+ * @param type     Industry type of the desired industry.
+ * @param try_hard Try very hard to find a place. (Used to place at least one industry per type.)
+ * @return Pointer to created industry, or \c NULL if creation failed.
+ */
+static Industry *PlaceIndustry(IndustryType type, bool try_hard)
+{
+	uint tries = try_hard ? 10000u : 2000u;
+	for (; tries > 0; tries--) {
+		Industry *ind = CreateNewIndustry(RandomTile(), type);
+		if (ind != NULL) return ind;
+	}
+	return NULL;
+}
+
+/**
  * Try to build a industry on the map.
  * @param type IndustryType of the desired industry
  * @param try_hard Try very hard to find a place. (Used to place at least one industry per type)
@@ -1900,10 +1918,7 @@ static void PlaceInitialIndustry(IndustryType type, bool try_hard)
 	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
 	IncreaseGeneratingWorldProgress(GWP_INDUSTRY);
-
-	for (uint i = 0; i < (try_hard ? 10000u : 2000u); i++) {
-		if (CreateNewIndustry(RandomTile(), type) != NULL) break;
-	}
+	PlaceIndustry(type, try_hard);
 
 	cur_company.Restore();
 }
@@ -2023,13 +2038,8 @@ static void MaybeNewIndustry()
 	}
 
 	/* try to create 2000 times this industry */
-	Industry *ind; // Will receive the industry's creation pointer.
-	num = 2000;
-	for (;;) {
-		ind = CreateNewIndustry(RandomTile(), cumulative_probs[j].ind);
-		if (ind != NULL) break;
-		if (--num == 0) return;
-	}
+	Industry *ind = PlaceIndustry(cumulative_probs[j].ind, false);
+	if (ind == NULL) return;
 
 	const IndustrySpec *ind_spc = GetIndustrySpec(cumulative_probs[j].ind);
 	SetDParam(0, ind_spc->name);
