@@ -1881,14 +1881,25 @@ static uint16 GetIndustryGamePlayProbability(IndustryType it)
 	return chance;
 }
 
-/** Number of industries on a 256x256 map */
-static const byte _numof_industry_table[] = {
-	0,    // none
-	10,   // very low
-	25,   // low
-	55,   // normal
-	80,   // high
-};
+/**
+ * Get wanted number of industries on the map.
+ * @return Wanted number of industries at the map.
+ */
+static uint GetNumberOfIndustries()
+{
+	/* Number of industries on a 256x256 map. */
+	static const uint16 numof_industry_table[] = {
+		0,    // none
+		10,   // very low
+		25,   // low
+		55,   // normal
+		80,   // high
+	};
+
+	assert(_settings_game.difficulty.number_industries < lengthof(numof_industry_table));
+	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_industries : 1;
+	return ScaleByMapSize(numof_industry_table[difficulty]);
+}
 
 /**
  * Advertise about a new industry opening.
@@ -1947,9 +1958,7 @@ static void PlaceInitialIndustry(IndustryType type, bool try_hard)
  */
 void GenerateIndustries()
 {
-	assert(_settings_game.difficulty.number_industries < lengthof(_numof_industry_table));
-	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_industries : 1;
-	uint total_amount = ScaleByMapSize(_numof_industry_table[difficulty]);
+	uint total_amount = GetNumberOfIndustries();
 
 	/* Do not create any industries? */
 	if (total_amount == 0) return;
