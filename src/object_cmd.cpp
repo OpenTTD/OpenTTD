@@ -365,7 +365,10 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 
 	/* Water can remove everything! */
 	if (_current_company != OWNER_WATER) {
-		if ((spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0 && flags & DC_AUTO) {
+		if ((flags & DC_NO_WATER) && IsTileOnWater(tile)) {
+			/* There is water under the object, treat it as water tile. */
+			return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
+		} else if (!(spec->flags & OBJECT_FLAG_AUTOREMOVE) && (flags & DC_AUTO)) {
 			/* No automatic removal by overbuilding stuff. */
 			return_cmd_error(type == OBJECT_HQ ? STR_ERROR_COMPANY_HEADQUARTERS_IN : STR_ERROR_OBJECT_IN_THE_WAY);
 		} else if (_game_mode == GM_EDITOR) {
