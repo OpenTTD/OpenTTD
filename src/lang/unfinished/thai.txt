@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}สร�
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}สร้างถนน
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}ปลูกต้นไม้
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}ปักป้าย
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}วางวัตถุ
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :บันทึกฉาก
@@ -559,6 +560,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}รา�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}ดูรายละเอียดของบริษัทนี้
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}รถยนต์:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}สถานี:
@@ -1082,6 +1084,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}อน�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}อนุญาตให้มีขนาดของพื้นที่เก็บน้ำที่สมเหตุสมผลมากขึ้น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}อนุญาตให้ทำลายถนน, สะพาน, สิ่งก่อสร้างของเมืองได้มากขึ้น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}ยอมให้สร้างขบวนรถไฟที่ยาวมาก: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}จำนวนของหัวจักร ควัน/ประกาย: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :ไม่มี
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :ดั้งเดิม
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :สมจริง
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}ต้นแบบการเร่งความเร็วของรถไฟ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :ดั้งเดิม
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :เหมือนจริง
@@ -1503,8 +1509,10 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}ภู�
 
 
 # Network messages
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}คุณส่งคำสั่งให้เซิฟเวอร์มากเกินไป
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :ส่งคำสั่งมากเกินไป
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -1562,6 +1570,7 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}ผล�
 # Airport toolbar
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}โครงสร้าง {NUM}
 
 
 
@@ -1570,6 +1579,15 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}ผล�
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}ขุดส่วนมุมของที่ดินให้ต่ำลง
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}ถมส่วนมุมของที่ดินให้สูงขึ้น
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}การเลือกวัตถุ
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}เลือกวัตถุเพื่อสร้าง
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}ระดับวัตถุ
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}ตัวอย่างวัตถุ
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}ขนาด: {GOLD}{NUM} x {NUM} ช่อง
+
+STR_OBJECT_CLASS_LTHS                                           :ประภาคาร
+STR_OBJECT_CLASS_TRNS                                           :เครื่องส่งสัญญาณ
 
 # Tree planting window (last two for SE only)
 
@@ -1602,6 +1620,7 @@ STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}สุ�
 # Fund new industry window
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}ไปยังแผนที่เล็ก
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}ข้อมูลพื้นที่
@@ -1614,6 +1633,8 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}เจ�
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}เจ้าของรางรถไฟ: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}อาณาบริเวณ: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :ไม่มี
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}ระดับสนามบิน: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}ชื่อสนามบิน: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}สินค้าที่รับ: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 
@@ -1632,6 +1653,10 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 
 
 
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :เครื่องส่งสัญญาณ
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :ประภาคาร
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :สำนักงานใหญ่บริษัท
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :บริษัทเจ้าของพื้นที่
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}เกี่ยวกับ OpenTTD
@@ -1666,9 +1691,11 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}กร�
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}ตั้งค่าใหม่
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}ตั้งค่าพารามิเตอร์ทุกตัวให้เป็นแบบค่าดั้งเดิม
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :วัตถุ
 
 
 # Sprite aligner window
@@ -1692,6 +1719,7 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}คำ�
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
+STR_SIGN_LIST_CLEAR                                             :{BLACK}ล้างตัวกรอง
 
 # Sign window
 
@@ -1971,6 +1999,7 @@ STR_INVALID_ORDER                                               :{RED} (คำ�
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}ตั้งค่า AI
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}เปลี่ยนการตั้งค่า AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}ดูการผลลัพธ์การดีบักของ AI นี้
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD สร้างขึ้นโดยไม่มี AI สนับสนุน...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... ไม่มี AI ปรากฎ!
@@ -1989,6 +2018,7 @@ STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}ย้�
 
 
 # AI Parameters
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 
@@ -2019,6 +2049,7 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}ไม�
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}ไม่สามารถทำให้พื้นที่นี้โล่งได้...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... พื้นที่นั้นไม่เหมาะสม
 STR_ERROR_OWNED_BY                                              :{WHITE}... เป็นของ {STRING}
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} ในเส้นทาง
 
 # Local authority errors
 
@@ -2055,6 +2086,9 @@ STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}ต้�
 # Depot related errors
 
 
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... ต้องหยุดในโรงซ่อมบำรุง
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... ต้องหยุดในโรงซ่อมบำรุง
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... ต้องหยุดในโรงเก็บ
 
 
 
@@ -2076,6 +2110,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}ต้�
 # Tunnel related errors
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... มีวัตถุมากเกินไป
 
 # Group related errors
 
@@ -2259,3 +2294,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

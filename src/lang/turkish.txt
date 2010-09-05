@@ -335,6 +335,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Fabrika 
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Yol yapımı
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Ağaç dik
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tabela koy
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Nesneyi yerleştirin
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Senaryoyu kaydet
@@ -1112,6 +1113,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Üretim
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :hiçbiri
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :diğer fabrikalar gibi
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :tetkik aramayla
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Fabrikalar etrafındaki düz alan: {ORANGE}{STRING} kare
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Bir şehirde birden fazla aynı fabrika olması izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Durum çubuğunda uzun tarih göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Sinyalizasyon sürüş yönünde olsun: {ORANGE}{STRING}
@@ -2060,6 +2062,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Araziyi 
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Düzleştir
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Gelecekte kullanım için arazi satın al
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Nesne Seçimi
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Yapılacak nesneyi seçin
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Nesne sınıfı
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Nesnenin önizlemesi
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Boyut: {GOLD}{NUM} x {NUM} kare
+
+STR_OBJECT_CLASS_LTHS                                           :Deniz fenerleri
+STR_OBJECT_CLASS_TRNS                                           :Vericiler
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Ağaçlar
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Dikilecek ağaç türünü seçin
@@ -2153,6 +2165,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Yapım: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}İstasyon sınıfı: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}İstasyon türü: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Havalimanı sınıfı: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Havalimanı adı: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Havalimanı karesi adı: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}İstenen: {LTBLUE}
@@ -2397,6 +2411,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF s
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF parametrelerini değiştir
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Kapat
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Sıfırla
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Tüm parametreleri varsayılan değerlerine ata
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametre {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -2406,6 +2422,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Kaynak
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Kaynak kapsamdaki nesneyi incele
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{1:HEX}'deki {0:STRING}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Nesne
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Ray tipi
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF değişkeni 60+x parametresi (onaltılı)
