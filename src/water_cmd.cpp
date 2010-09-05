@@ -100,7 +100,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	TileIndex tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
-	if (!IsWaterTile(tile) || !IsWaterTile(tile2)) {
+	if (!HasTileWaterClass(tile) || !IsTileOnWater(tile) || !HasTileWaterClass(tile2) || !IsTileOnWater(tile2)) {
 		return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 	}
 
@@ -111,14 +111,24 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		return_cmd_error(STR_ERROR_SITE_UNSUITABLE);
 	}
 
+	if (!Depot::CanAllocateItem()) return CMD_ERROR;
+
 	WaterClass wc1 = GetWaterClass(tile);
 	WaterClass wc2 = GetWaterClass(tile2);
-	CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret.Failed()) return ret;
-	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-	if (ret.Failed()) return ret;
+	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_DEPOT_SHIP]);
 
-	if (!Depot::CanAllocateItem()) return CMD_ERROR;
+	bool add_cost = !IsWaterTile(tile);
+	CommandCost ret = DoCommand(tile, 0, 0, flags | DC_AUTO, CMD_LANDSCAPE_CLEAR);
+	if (ret.Failed()) return ret;
+	if (add_cost) {
+		cost.AddCost(ret);
+	}
+	add_cost = !IsWaterTile(tile2);
+	ret = DoCommand(tile2, 0, 0, flags | DC_AUTO, CMD_LANDSCAPE_CLEAR);
+	if (ret.Failed()) return ret;
+	if (add_cost) {
+		cost.AddCost(ret);
+	}
 
 	if (flags & DC_EXEC) {
 		Depot *depot = new Depot(tile);
@@ -131,7 +141,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		MakeDefaultName(depot);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_DEPOT_SHIP]);
+	return cost;
 }
 
 void MakeWaterKeepingClass(TileIndex tile, Owner o)
