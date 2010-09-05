@@ -73,9 +73,8 @@ $(OBJS_DIR)/openttd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 clean:
 	$(Q)rm -f *.bak *.grf
 
-# Clean up temporary files and result of generation, i.e. the grfs.
+# Clean up temporary files
 mrproper: clean
 	$(Q)rm -fr sprites
-	$(Q)rm -f $(BIN_DIR)/openttd.grf
 
 .PHONY: all mrproper depend clean

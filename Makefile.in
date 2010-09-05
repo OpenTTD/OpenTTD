@@ -147,6 +147,9 @@ mrproper:
 	$(Q)rm -rf $(BIN_DIR)/ai/regression/content_download $(BIN_DIR)/ai/regression/save $(BIN_DIR)/ai/regression/scenario
 distclean: mrproper
 
+maintainer-clean: distclean
+	$(Q)rm -f $(BIN_DIR)/data/openttd.grf
+
 depend:
 	@for dir in $(SRC_DIRS); do \
 		$(MAKE) -C $$dir depend; \
