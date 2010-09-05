@@ -1695,7 +1695,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 
 	*ip = NULL;
 
-	SmallVector<TileArea, 1> object_areas(_cleared_object_areas);
+	SmallVector<ClearedObjectArea, 1> object_areas(_cleared_object_areas);
 	CommandCost ret = CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, random_initial_bits, founder, &custom_shape_check);
 	_cleared_object_areas = object_areas;
 	if (ret.Failed()) return ret;
@@ -1797,7 +1797,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		if (num >= count) return CMD_ERROR;
 
 		CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
-		SmallVector<TileArea, 1> object_areas(_cleared_object_areas);
+		SmallVector<ClearedObjectArea, 1> object_areas(_cleared_object_areas);
 		do {
 			if (--count < 0) return ret;
 			if (--num < 0) num = indspec->num_table - 1;

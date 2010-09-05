@@ -30,7 +30,9 @@
 #include "animated_tile_func.h"
 #include "core/random_func.hpp"
 #include "object_base.h"
+#include "water_map.h"
 
+#include "table/strings.h"
 #include "table/sprites.h"
 
 extern const TileTypeProcs
@@ -605,7 +607,20 @@ void ClearSnowLine()
 CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	for (uint i = 0; i < _cleared_object_areas.Length(); i++) {
-		if (_cleared_object_areas[i].Intersects(TileArea(tile, 1, 1))) return CommandCost();
+		/* If this tile was the first tile which caused object destruction, always
+		 * pass it on to the tile_type_proc. That way multiple test runs and the exec run stay consistent. */
+		if (_cleared_object_areas[i].first_tile == tile) break;
+
+		/* If this tile belongs to an object which was already cleared via another tile, pretend it has been
+		 * already removed.
+		 * However, we need to check stuff, which is not the same for all object tiles. (e.g. being on water or not) */
+		if (_cleared_object_areas[i].area.Intersects(TileArea(tile, 1, 1))) {
+			/* If a object is removed, it leaves either bare land or water. */
+			if ((flags & DC_NO_WATER) && HasTileWaterClass(tile) && IsTileOnWater(tile)) {
+				return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
+			}
+			return CommandCost();
+		}
 	}
 	return _tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags);
 }
@@ -638,9 +653,7 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	for (int x = sx; x <= ex; ++x) {
 		for (int y = sy; y <= ey; ++y) {
-			SmallVector<TileArea, 1> object_areas(_cleared_object_areas);
 			CommandCost ret = DoCommand(TileXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
-			_cleared_object_areas = object_areas;
 			if (ret.Failed()) {
 				last_error = ret;
 				continue;
