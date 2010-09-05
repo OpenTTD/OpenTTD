@@ -166,12 +166,13 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		bool allow_water = (spec->flags & (OBJECT_FLAG_BUILT_ON_WATER | OBJECT_FLAG_NOT_ON_LAND)) != 0;
 		bool allow_ground = (spec->flags & OBJECT_FLAG_NOT_ON_LAND) == 0;
 		TILE_AREA_LOOP(t, ta) {
-			if (IsWaterTile(t)) {
+			if (HasTileWaterClass(t) && IsTileOnWater(t)) {
 				if (!allow_water) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
-				/* For water tiles we want to "just" check whether the tile is water and
-				 * can be cleared, i.e. it's not filled. We won't be paying though. */
-				CommandCost ret = DoCommand(t, 0, 0, flags & ~(DC_EXEC | DC_NO_WATER), CMD_LANDSCAPE_CLEAR);
-				if (ret.Failed()) return ret;
+				if (!IsWaterTile(t)) {
+					/* Normal water tiles don't have to be cleared. For all other tile types clear
+					 * the tile but leave the water. */
+					cost.AddCost(DoCommand(t, 0, 0, flags & ~DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
+				}
 			} else {
 				if (!allow_ground) return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 				/* For non-water tiles, we'll have to clear it before building. */
