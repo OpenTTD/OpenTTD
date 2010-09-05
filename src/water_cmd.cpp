@@ -485,7 +485,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 				if ((IsTileType(src_tile, MP_STATION) && IsOilRig(src_tile)) ||
 				    (IsTileType(src_tile, MP_INDUSTRY))) return true;
 
-				return GetWaterClass(tile) != WATER_CLASS_INVALID;
+				return IsTileOnWater(tile);
 			}
 			return (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
 

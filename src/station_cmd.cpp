@@ -2663,7 +2663,7 @@ static void DrawTile_Station(TileInfo *ti)
 		}
 	}
 
-	if (IsBuoy(ti->tile) || IsDock(ti->tile) || (IsOilRig(ti->tile) && GetWaterClass(ti->tile) != WATER_CLASS_INVALID)) {
+	if (IsBuoy(ti->tile) || IsDock(ti->tile) || (IsOilRig(ti->tile) && IsTileOnWater(ti->tile))) {
 		if (ti->tileh == SLOPE_FLAT) {
 			DrawWaterClassGround(ti);
 		} else {

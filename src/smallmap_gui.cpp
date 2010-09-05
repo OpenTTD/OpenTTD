@@ -401,7 +401,7 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
 			return GetIndustrySpec(Industry::GetByTile(tile)->type)->map_colour * 0x01010101;
 		} else {
 			/* Otherwise, return the colour which will make it disappear */
-			t = (GetWaterClass(tile) == WATER_CLASS_INVALID) ? MP_CLEAR : MP_WATER;
+			t = (IsTileOnWater(tile) ? MP_WATER : MP_CLEAR);
 		}
 	}
 
