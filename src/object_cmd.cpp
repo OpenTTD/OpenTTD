@@ -640,8 +640,6 @@ static CommandCost TerraformTile_Object(TileIndex tile, DoCommandFlag flags, uin
 {
 	ObjectType type = GetObjectType(tile);
 
-	if (GetWaterClass(tile) == WATER_CLASS_CANAL) return_cmd_error(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
-
 	if (type == OBJECT_OWNED_LAND) {
 		/* Owned land remains unsold */
 		CommandCost ret = CheckTileOwnership(tile);

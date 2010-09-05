@@ -31,6 +31,7 @@
 #include "core/random_func.hpp"
 #include "object_base.h"
 #include "water_map.h"
+#include "economy_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -606,6 +607,13 @@ void ClearSnowLine()
  */
 CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	bool do_clear = false;
+	if ((flags & DC_FORCE_CLEAR_TILE) && HasTileWaterClass(tile) && IsTileOnWater(tile)) {
+		if ((flags & DC_AUTO) && GetWaterClass(tile) == WATER_CLASS_CANAL) return_cmd_error(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
+		do_clear = true;
+		cost.AddCost(GetWaterClass(tile) == WATER_CLASS_CANAL ? _price[PR_CLEAR_CANAL] : _price[PR_CLEAR_WATER]);
+	}
 	for (uint i = 0; i < _cleared_object_areas.Length(); i++) {
 		/* If this tile was the first tile which caused object destruction, always
 		 * pass it on to the tile_type_proc. That way multiple test runs and the exec run stay consistent. */
@@ -619,10 +627,12 @@ CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 			if ((flags & DC_NO_WATER) && HasTileWaterClass(tile) && IsTileOnWater(tile)) {
 				return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 			}
-			return CommandCost();
+			return cost;
 		}
 	}
-	return _tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags);
+	cost.AddCost(_tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags));
+	if (do_clear && (flags & DC_EXEC)) DoClearSquare(tile);
+	return cost;
 }
 
 /**

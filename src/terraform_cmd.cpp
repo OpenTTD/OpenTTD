@@ -318,7 +318,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			/* Check tiletype-specific things, and add extra-cost */
 			const bool curr_gen = _generating_world;
 			if (_game_mode == GM_EDITOR) _generating_world = true; // used to create green terraformed land
-			CommandCost cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, flags | DC_AUTO, z_min * TILE_HEIGHT, tileh);
+			CommandCost cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, flags | DC_AUTO | DC_FORCE_CLEAR_TILE, z_min * TILE_HEIGHT, tileh);
 			_generating_world = curr_gen;
 			if (cost.Failed()) {
 				_terraform_err_tile = tile;
