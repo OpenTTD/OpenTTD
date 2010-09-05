@@ -2034,12 +2034,20 @@ struct IndustryCargoesWindow : public Window {
 	 */
 	static bool HousesCanAccept(const CargoID *cargoes, uint length)
 	{
+		HouseZones climate_mask;
+		switch (_settings_game.game_creation.landscape) {
+			case LT_TEMPERATE: climate_mask = HZ_TEMP; break;
+			case LT_ARCTIC:    climate_mask = HZ_SUBARTC_ABOVE | HZ_SUBARTC_BELOW; break;
+			case LT_TROPIC:    climate_mask = HZ_SUBTROPIC; break;
+			case LT_TOYLAND:   climate_mask = HZ_TOYLND; break;
+			default: NOT_REACHED();
+		}
 		for (uint i = 0; i < length; i++) {
 			if (cargoes[i] == INVALID_CARGO) continue;
 
 			for (uint h = 0; h < HOUSE_MAX; h++) {
 				HouseSpec *hs = HouseSpec::Get(h);
-				if (!hs->enabled) continue;
+				if (!hs->enabled || !(hs->building_availability & climate_mask)) continue;
 
 				for (uint j = 0; j < lengthof(hs->accepts_cargo); j++) {
 					if (cargoes[i] == hs->accepts_cargo[j]) return true;
