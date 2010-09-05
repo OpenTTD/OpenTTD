@@ -65,6 +65,17 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
 }
 
 /**
+ * Checks whether the tile has an waterclass associated.
+ * You can then subsequently call GetWaterClass().
+ * @param t Tile to query.
+ * @return True if the tiletype has a waterclass.
+ */
+static inline bool HasTileWaterClass(TileIndex t)
+{
+	return IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT);
+}
+
+/**
  * Get the water class at a tile.
  * @param t Water tile to query.
  * @pre IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT)
@@ -72,7 +83,7 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
  */
 static inline WaterClass GetWaterClass(TileIndex t)
 {
-	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT));
+	assert(HasTileWaterClass(t));
 	return (WaterClass)GB(_m[t].m1, 5, 2);
 }
 
@@ -84,7 +95,7 @@ static inline WaterClass GetWaterClass(TileIndex t)
  */
 static inline void SetWaterClass(TileIndex t, WaterClass wc)
 {
-	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY) || IsTileType(t, MP_OBJECT));
+	assert(HasTileWaterClass(t));
 	SB(_m[t].m1, 5, 2, wc);
 }
 
