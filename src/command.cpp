@@ -194,7 +194,7 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdBuildSingleRail,          CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_SINGLE_RAIL
 	DEF_CMD(CmdRemoveSingleRail,                        CMD_AUTO), // CMD_REMOVE_SINGLE_RAIL
 	DEF_CMD(CmdLandscapeClear,                                 0), // CMD_LANDSCAPE_CLEAR
-	DEF_CMD(CmdBuildBridge,                             CMD_AUTO), // CMD_BUILD_BRIDGE
+	DEF_CMD(CmdBuildBridge,              CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_BRIDGE
 	DEF_CMD(CmdBuildRailStation,         CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_RAIL_STATION
 	DEF_CMD(CmdBuildTrainDepot,          CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_TRAIN_DEPOT
 	DEF_CMD(CmdBuildSingleSignal,                       CMD_AUTO), // CMD_BUILD_SIGNALS
