@@ -7108,8 +7108,6 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 
 	newfile = CallocT<GRFFile>(1);
 
-	if (newfile == NULL) error ("Out of memory");
-
 	newfile->filename = strdup(config->filename);
 	newfile->sprite_offset = sprite_offset;
 
