@@ -43,6 +43,14 @@ struct LoadCheckData {
 	}
 
 	/**
+	 * Don't leak memory at program exit
+	 */
+	~LoadCheckData()
+	{
+		this->Clear();
+	}
+
+	/**
 	 * Check whether loading the game resulted in errors.
 	 * @return true if errors were encountered.
 	 */
