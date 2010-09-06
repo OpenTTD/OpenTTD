@@ -6984,7 +6984,7 @@ static void ResetNewGRFErrors()
  * Reset all NewGRF loaded data
  * TODO
  */
-static void ResetNewGRFData()
+void ResetNewGRFData()
 {
 	CleanUpStrings();
 	CleanUpGRFTownNames();

@@ -59,6 +59,7 @@
 #include "rail_gui.h"
 #include "core/backup_type.hpp"
 #include "hotkeys.h"
+#include "newgrf.h"
 
 
 #include "town.h"
@@ -346,6 +347,8 @@ static void ShutdownGame()
 #ifdef ENABLE_NETWORK
 	free(_config_file);
 #endif
+
+	ResetNewGRFData();
 
 	/* Close all and any open filehandles */
 	FioCloseAll();
