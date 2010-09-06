@@ -785,6 +785,12 @@ static void TileLoop_Industry(TileIndex tile)
 {
 	if (IsTileOnWater(tile)) TileLoop_Water(tile);
 
+	/* Normally this doesn't happen, but if an industry NewGRF is removed
+	 * an industry that was previously build on water can now be flooded.
+	 * If this happens the tile is no longer an industry tile after
+	 * returning from TileLoop_Water. */
+	if (!IsTileType(tile, MP_INDUSTRY)) return;
+
 	TriggerIndustryTile(tile, INDTILE_TRIGGER_TILE_LOOP);
 
 	if (!IsIndustryCompleted(tile)) {
