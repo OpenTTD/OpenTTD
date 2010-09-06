@@ -19,14 +19,15 @@
 
 /** Highlighting draw styles */
 enum HighLightStyle {
-	HT_NONE      = 0x00, ///< default
-	HT_RECT      = 0x10, ///< rectangle (stations, depots, ...)
-	HT_POINT     = 0x20, ///< point (lower land, raise land, level land, ...)
-	HT_SPECIAL   = 0x30, ///< special mode used for highlighting while dragging (and for tunnels/docks)
-	HT_DRAG      = 0x40, ///< dragging items in the depot windows
-	HT_LINE      = 0x08, ///< used for autorail highlighting (longer streches), lower bits: direction
-	HT_RAIL      = 0x80, ///< autorail (one piece), lower bits: direction
-	HT_DRAG_MASK = 0xF8, ///< masks the drag-type
+	HT_NONE      = 0x000, ///< default
+	HT_RECT      = 0x010, ///< rectangle (stations, depots, ...)
+	HT_POINT     = 0x020, ///< point (lower land, raise land, level land, ...)
+	HT_SPECIAL   = 0x030, ///< special mode used for highlighting while dragging (and for tunnels/docks)
+	HT_DRAG      = 0x040, ///< dragging items in the depot windows
+	HT_LINE      = 0x008, ///< used for autorail highlighting (longer streches), lower bits: direction
+	HT_RAIL      = 0x080, ///< autorail (one piece), lower bits: direction
+	HT_VEHICLE   = 0x100, ///< vehicle is accepted as target as well (bitmask)
+	HT_DRAG_MASK = 0x0F8, ///< masks the drag-type
 
 	/* lower bits (used with HT_LINE and HT_RAIL):
 	 * (see ASCII art in autorail.h for a visual interpretation) */

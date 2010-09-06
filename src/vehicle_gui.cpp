@@ -39,6 +39,7 @@
 #include "company_base.h"
 #include "engine_func.h"
 #include "station_base.h"
+#include "tilehighlight_func.h"
 
 #include "table/strings.h"
 
@@ -1269,7 +1270,7 @@ public:
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
 				const Vehicle *v = this->vehicles[id_v];
-				ShowVehicleViewWindow(v);
+				if (!VehicleClicked(v)) ShowVehicleViewWindow(v);
 				break;
 			}
 
@@ -2342,6 +2343,23 @@ public:
 void ShowVehicleViewWindow(const Vehicle *v)
 {
 	AllocateWindowDescFront<VehicleViewWindow>((v->type == VEH_TRAIN) ? &_train_view_desc : &_vehicle_view_desc, v->index);
+}
+
+/**
+ * Dispatch a "vehicle selected" event if any window waits for it.
+ * @param v selected vehicle;
+ * @return did any window accept vehicle selection?
+ */
+bool VehicleClicked(const Vehicle *v)
+{
+	assert(v != NULL);
+	if (!(_thd.place_mode & HT_VEHICLE)) return false;
+
+	v = v->First();
+	if (!v->IsPrimaryVehicle()) return false;
+
+	FindWindowById(_thd.window_class, _thd.window_number)->OnVehicleSelect(v);
+	return true;
 }
 
 void StopGlobalFollowVehicle(const Vehicle *v)

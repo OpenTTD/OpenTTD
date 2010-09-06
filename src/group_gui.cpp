@@ -441,6 +441,7 @@ public:
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
 				const Vehicle *v = this->vehicles[id_v];
+				if (VehicleClicked(v)) break;
 
 				this->vehicle_sel = v->index;
 
@@ -531,7 +532,7 @@ public:
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
 				const Vehicle *v = this->vehicles[id_v];
-				if (vindex == v->index) {
+				if (!VehicleClicked(v) && vindex == v->index) {
 					ShowVehicleViewWindow(v);
 				}
 				break;

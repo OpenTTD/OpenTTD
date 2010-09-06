@@ -2204,13 +2204,11 @@ static void MouseLoop(MouseClick click, int mousewheel)
 					return;
 				}
 
-				if (_thd.place_mode == HT_NONE) {
-					if (!HandleViewportClicked(vp, x, y) &&
-							!(w->flags4 & WF_DISABLE_VP_SCROLL) &&
-							_settings_client.gui.left_mouse_btn_scrolling) {
-						_scrolling_viewport = true;
-						_cursor.fix_at = false;
-					}
+				if (!HandleViewportClicked(vp, x, y) &&
+						!(w->flags4 & WF_DISABLE_VP_SCROLL) &&
+						_settings_client.gui.left_mouse_btn_scrolling) {
+					_scrolling_viewport = true;
+					_cursor.fix_at = false;
 				} else {
 					PlaceObject();
 				}

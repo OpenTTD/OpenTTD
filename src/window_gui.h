@@ -636,6 +636,12 @@ public:
 	virtual void OnPlaceObject(Point pt, TileIndex tile) {}
 
 	/**
+	 * The user clicked on a vehicle while HT_VEHICLE has been set.
+	 * @param v clicked vehicle. It is guaranteed to be v->IsPrimaryVehicle() == true
+	 */
+	virtual void OnVehicleSelect(const struct Vehicle *v) {}
+
+	/**
 	 * The user cancelled a tile highlight mode that has been set.
 	 */
 	virtual void OnPlaceObjectAbort() {}

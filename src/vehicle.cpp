@@ -55,7 +55,6 @@
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
 
 VehicleID _vehicle_id_ctr_day;
-const Vehicle *_place_clicked_vehicle;
 VehicleID _new_vehicle_id;
 uint16 _returned_refit_capacity;
 byte _age_cargo_skip_counter; ///< Skip aging of cargo?

@@ -497,28 +497,6 @@ private:
 		return (sel <= vehicle->GetNumOrders() && sel >= 0) ? sel : INVALID_ORDER;
 	}
 
-	bool HandleOrderVehClick(const Vehicle *u)
-	{
-		if (u->type != this->vehicle->type) return false;
-
-		if (!u->IsPrimaryVehicle()) {
-			u = u->First();
-			if (!u->IsPrimaryVehicle()) return false;
-		}
-
-		/* v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet
-		 * obviously if you press CTRL on a non-empty orders vehicle you know what you are doing */
-		if (this->vehicle->GetNumOrders() != 0 && _ctrl_pressed == 0) return false;
-
-		if (DoCommandP(this->vehicle->tile, this->vehicle->index | (_ctrl_pressed ? CO_SHARE : CO_COPY) << 30, u->index,
-				_ctrl_pressed ? CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_COPY_ORDER_LIST))) {
-			this->selected_order = -1;
-			ResetObjectToPlace();
-		}
-
-		return true;
-	}
-
 	/**
 	 * Handle the click on the goto button.
 	 * @param i Dummy parameter.
@@ -528,8 +506,7 @@ private:
 		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
 		this->ToggleWidgetLoweredState(ORDER_WIDGET_GOTO);
 		if (this->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
-			_place_clicked_vehicle = NULL;
-			SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT, this);
+			SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT | HT_VEHICLE, this);
 			this->goto_type = OPOS_GOTO;
 		} else {
 			ResetObjectToPlace();
@@ -1260,10 +1237,6 @@ public:
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
 		if (this->goto_type == OPOS_GOTO) {
-			/* check if we're clicking on a vehicle first.. clone orders in that case. */
-			const Vehicle *v = CheckMouseOverVehicle();
-			if (v != NULL && this->HandleOrderVehClick(v)) return;
-
 			const Order cmd = GetOrderCmdFromTile(this->vehicle, tile);
 			if (cmd.IsType(OT_NOTHING)) return;
 
@@ -1271,6 +1244,20 @@ public:
 				/* With quick goto the Go To button stays active */
 				if (!_settings_client.gui.quick_goto) ResetObjectToPlace();
 			}
+		}
+	}
+
+	virtual void OnVehicleSelect(const Vehicle *v)
+	{
+		/* v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet
+		 * obviously if you press CTRL on a non-empty orders vehicle you know what you are doing
+		 * TODO: give a warning message */
+		if (this->vehicle->GetNumOrders() != 0 && _ctrl_pressed == 0) return;
+
+		if (DoCommandP(this->vehicle->tile, this->vehicle->index | (_ctrl_pressed ? CO_SHARE : CO_COPY) << 30, v->index,
+				_ctrl_pressed ? CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_COPY_ORDER_LIST))) {
+			this->selected_order = -1;
+			ResetObjectToPlace();
 		}
 	}
 
@@ -1298,23 +1285,6 @@ public:
 		if (this->order_over != INVALID_ORDER) {
 			this->order_over = INVALID_ORDER;
 			this->SetWidgetDirty(ORDER_WIDGET_ORDER_LIST);
-		}
-	}
-
-	virtual void OnMouseLoop()
-	{
-		const Vehicle *v = _place_clicked_vehicle;
-		/*
-		 * Check if we clicked on a vehicle
-		 * and if the GOTO button of this window is pressed
-		 * This is because of all open order windows WE_MOUSELOOP is called
-		 * and if you have 3 windows open, and this check is not done
-		 * the order is copied to the last open window instead of the
-		 * one where GOTO is enabled
-		 */
-		if (v != NULL && this->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
-			_place_clicked_vehicle = NULL;
-			this->HandleOrderVehClick(v);
 		}
 	}
 

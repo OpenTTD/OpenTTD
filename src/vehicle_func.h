@@ -162,7 +162,6 @@ CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
 void StopAllVehicles();
 
 extern VehicleID _vehicle_id_ctr_day;
-extern const Vehicle *_place_clicked_vehicle;
 extern VehicleID _new_vehicle_id;
 extern uint16 _returned_refit_capacity;
 extern byte _age_cargo_skip_counter;

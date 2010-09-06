@@ -486,12 +486,6 @@ struct DepotWindow : Window {
 		const Vehicle *v = NULL;
 		DepotGUIAction mode = this->GetVehicleFromDepotWndPt(x, y, &v, &gdvp);
 
-		/* share / copy orders */
-		if (_thd.place_mode != HT_NONE && mode != MODE_ERROR) {
-			_place_clicked_vehicle = (this->type == VEH_TRAIN ? gdvp.head : v);
-			return;
-		}
-
 		if (this->type == VEH_TRAIN) v = gdvp.wagon;
 
 		switch (mode) {
@@ -499,6 +493,8 @@ struct DepotWindow : Window {
 				return;
 
 			case MODE_DRAG_VEHICLE: { // start dragging of vehicle
+				if (v != NULL && VehicleClicked(v)) return;
+
 				VehicleID sel = this->sel;
 
 				if (this->type == VEH_TRAIN && sel != INVALID_VEHICLE) {
@@ -506,10 +502,10 @@ struct DepotWindow : Window {
 					TrainDepotMoveVehicle(v, sel, gdvp.head);
 				} else if (v != NULL) {
 					int image = v->GetImage(DIR_W);
+					SetObjectToPlaceWnd(image, GetVehiclePalette(v), HT_DRAG, this);
 
 					this->sel = v->index;
 					this->SetDirty();
-					SetObjectToPlaceWnd(image, GetVehiclePalette(v), HT_DRAG, this);
 
 					switch (v->type) {
 						case VEH_TRAIN:
@@ -539,25 +535,6 @@ struct DepotWindow : Window {
 
 			default: NOT_REACHED();
 		}
-	}
-
-	/**
-	 * Clones a vehicle
-	 * @param *v is the original vehicle to clone
-	 */
-	void HandleCloneVehClick(const Vehicle *v)
-	{
-		if (v == NULL || !IsCompanyBuildableVehicleType(v)) return;
-
-		if (!v->IsPrimaryVehicle()) {
-			v = v->First();
-			/* Do nothing when clicking on a train in depot with no loc attached */
-			if (v->type == VEH_TRAIN && !Train::From(v)->IsFrontEngine()) return;
-		}
-
-		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN + v->type), CcCloneVehicle);
-
-		ResetObjectToPlace();
 	}
 
 	/* Function to set up vehicle specific widgets (mainly sprites and strings).
@@ -742,8 +719,7 @@ struct DepotWindow : Window {
 						SPR_CURSOR_CLONE_SHIP, SPR_CURSOR_CLONE_AIRPLANE
 					};
 
-					_place_clicked_vehicle = NULL;
-					SetObjectToPlaceWnd(clone_icons[this->type], PAL_NONE, HT_RECT, this);
+					SetObjectToPlaceWnd(clone_icons[this->type], PAL_NONE, HT_VEHICLE, this);
 				} else {
 					ResetObjectToPlace();
 				}
@@ -860,11 +836,15 @@ struct DepotWindow : Window {
 		return true;
 	}
 
-	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	/**
+	 * Clones a vehicle
+	 * @param v the original vehicle to clone
+	 */
+	virtual void OnVehicleSelect(const Vehicle *v)
 	{
-		const Vehicle *v = CheckMouseOverVehicle();
-
-		if (v != NULL) this->HandleCloneVehClick(v);
+		if (DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | CMD_MSG(STR_ERROR_CAN_T_BUY_TRAIN + v->type), CcCloneVehicle)) {
+			ResetObjectToPlace();
+		}
 	}
 
 	virtual void OnPlaceObjectAbort()
@@ -878,18 +858,6 @@ struct DepotWindow : Window {
 		this->vehicle_over = INVALID_VEHICLE;
 		this->SetWidgetDirty(DEPOT_WIDGET_MATRIX);
 	};
-
-	/* check if a vehicle in a depot was clicked.. */
-	virtual void OnMouseLoop()
-	{
-		const Vehicle *v = _place_clicked_vehicle;
-
-		/* since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button */
-		if (v != NULL && this->IsWidgetLowered(DEPOT_WIDGET_CLONE)) {
-			_place_clicked_vehicle = NULL;
-			this->HandleCloneVehClick(v);
-		}
-	}
 
 	virtual void OnMouseDrag(Point pt, int widget)
 	{

@@ -1805,14 +1805,19 @@ static bool CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 
 bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 {
-	const Vehicle *v;
+	const Vehicle *v = CheckClickOnVehicle(vp, x, y);
+
+	if (_thd.place_mode & HT_VEHICLE) {
+		if (v != NULL && VehicleClicked(v)) return true;
+	}
+
+	if (_thd.place_mode & HT_DRAG_MASK) return false;
 
 	if (CheckClickOnTown(vp, x, y)) return true;
 	if (CheckClickOnStation(vp, x, y)) return true;
 	if (CheckClickOnSign(vp, x, y)) return true;
 	CheckClickOnLandscape(vp, x, y);
 
-	v = CheckClickOnVehicle(vp, x, y);
 	if (v != NULL) {
 		DEBUG(misc, 2, "Vehicle %d (index %d) at %p", v->unitnumber, v->index, v);
 		if (IsCompanyBuildableVehicleType(v)) {
@@ -1971,7 +1976,7 @@ void UpdateTileSelection()
 			_thd.new_size.y = y2 - y1 + TILE_SIZE;
 			_thd.new_drawstyle = _thd.next_drawstyle;
 		}
-	} else if (_thd.place_mode != HT_NONE) {
+	} else if ((_thd.place_mode & HT_DRAG_MASK) != HT_NONE) {
 		Point pt = GetTileBelowCursor();
 		x1 = pt.x;
 		y1 = pt.y;
