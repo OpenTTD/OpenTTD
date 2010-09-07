@@ -2209,8 +2209,6 @@ static void MouseLoop(MouseClick click, int mousewheel)
 						_settings_client.gui.left_mouse_btn_scrolling) {
 					_scrolling_viewport = true;
 					_cursor.fix_at = false;
-				} else {
-					PlaceObject();
 				}
 				break;
 

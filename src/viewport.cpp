@@ -1811,7 +1811,10 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 		if (v != NULL && VehicleClicked(v)) return true;
 	}
 
-	if (_thd.place_mode & HT_DRAG_MASK) return false;
+	if (_thd.place_mode & HT_DRAG_MASK) {
+		PlaceObject();
+		return true;
+	}
 
 	if (CheckClickOnTown(vp, x, y)) return true;
 	if (CheckClickOnStation(vp, x, y)) return true;
