@@ -1836,23 +1836,6 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 	return CheckClickOnLandscape(vp, x, y);
 }
 
-Vehicle *CheckMouseOverVehicle()
-{
-	const Window *w;
-	const ViewPort *vp;
-
-	int x = _cursor.pos.x;
-	int y = _cursor.pos.y;
-
-	w = FindWindowFromPt(x, y);
-	if (w == NULL) return NULL;
-
-	vp = IsPtInWindowViewport(w, x, y);
-	return (vp != NULL) ? CheckClickOnVehicle(vp, x, y) : NULL;
-}
-
-
-
 void PlaceObject()
 {
 	Point pt;

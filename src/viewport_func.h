@@ -63,8 +63,6 @@ void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy);
 
-Vehicle *CheckMouseOverVehicle();
-
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom);
 
 bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant = false);
