@@ -119,6 +119,7 @@ STR_COLOUR_WHITE                                                :Blanka
 
 
 
+
 # Common window strings
 
 STR_BUTTON_LOCATION                                             :{BLACK}Loko
@@ -517,6 +518,9 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 
 # Landscaping toolbar
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 
 # Land generation window (SE)
@@ -528,6 +532,8 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 
 
 # Fund new industry window
+
+# Industry cargoes window
 
 # Land area window
 
@@ -573,14 +579,27 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 
 
+# NewGRF parameters window
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 
 # NewGRF related 'general' warnings
 
 
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 
@@ -683,6 +702,7 @@ STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLAC
 
 
 
+
 # Engine preview window
 
 
@@ -713,6 +733,8 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeroplani
 
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 
@@ -808,6 +830,8 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
 
 
 
+# Soundset messages
+
 # Screenshot related messages
 
 # Error message titles
@@ -819,24 +843,29 @@ STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Exter la
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Tro proxim la bordo del mapo
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Ne sat pekunio - requizitas {CURRENCY}
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Plata tereno requizitita
-STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ne povas facas ca...
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas netigas ca areo...
+STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ne povas facar ico...
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas netigar ca areo...
 
 # Local authority errors
 
 # Levelling errors
+STR_ERROR_TOO_HIGH                                              :{WHITE}... tro alta
+STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ja plata
 
 # Company related errors
 
 
 # Town related errors
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... tro proxim la bordo del mapo
 
 # Industry related errors
+STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... tro multa industrii
 
 # Station construction related errors
 
 
 # Station destruction related errors
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ne es staciono hike
 
 
 # Waypoint related errors
@@ -846,6 +875,8 @@ STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne povas
 # Depot related errors
 
 
+
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Treno tro longa
 
 
 
@@ -892,6 +923,8 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro mult
 
 # Sign related errors
 
+# Translatable comment for OpenTTD's desktop shortcut
+
 ##id 0x2000
 # Town building names
 
@@ -914,6 +947,7 @@ STR_FORMAT_DATE_TINY                                            :{STRING}-{STRIN
 STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
+
 
 
 STR_COMPANY_SOMEONE                                             :ulu
@@ -996,3 +1030,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+
