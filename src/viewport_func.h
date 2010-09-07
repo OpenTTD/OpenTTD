@@ -58,7 +58,6 @@ void StartSpriteCombine();
 void EndSpriteCombine();
 
 bool HandleViewportClicked(const ViewPort *vp, int x, int y);
-void PlaceObject();
 void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);
 void SetTileSelectBigSize(int ox, int oy, int sx, int sy);

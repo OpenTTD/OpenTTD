@@ -1802,6 +1802,26 @@ static bool CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 	return true;
 }
 
+static void PlaceObject()
+{
+	Point pt;
+	Window *w;
+
+	pt = GetTileBelowCursor();
+	if (pt.x == -1) return;
+
+	if (_thd.place_mode == HT_POINT) {
+		pt.x += 8;
+		pt.y += 8;
+	}
+
+	_tile_fract_coords.x = pt.x & TILE_UNIT_MASK;
+	_tile_fract_coords.y = pt.y & TILE_UNIT_MASK;
+
+	w = GetCallbackWnd();
+	if (w != NULL) w->OnPlaceObject(pt, TileVirtXY(pt.x, pt.y));
+}
+
 
 bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 {
@@ -1834,26 +1854,6 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 		return true;
 	}
 	return CheckClickOnLandscape(vp, x, y);
-}
-
-void PlaceObject()
-{
-	Point pt;
-	Window *w;
-
-	pt = GetTileBelowCursor();
-	if (pt.x == -1) return;
-
-	if (_thd.place_mode == HT_POINT) {
-		pt.x += 8;
-		pt.y += 8;
-	}
-
-	_tile_fract_coords.x = pt.x & TILE_UNIT_MASK;
-	_tile_fract_coords.y = pt.y & TILE_UNIT_MASK;
-
-	w = GetCallbackWnd();
-	if (w != NULL) w->OnPlaceObject(pt, TileVirtXY(pt.x, pt.y));
 }
 
 
