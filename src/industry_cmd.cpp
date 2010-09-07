@@ -1573,9 +1573,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 
 	/* don't use smooth economy for industries using production related callbacks */
 	if (_settings_game.economy.smooth_economy &&
-	    !(HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
-	    !(HasBit(indspec->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_CHANGE))             // production change callbacks
-	) {
+			!(HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
+			!(HasBit(indspec->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_CHANGE))) {          // production change callbacks
 		i->production_rate[0] = min((RandomRange(256) + 128) * i->production_rate[0] >> 8, 255);
 		i->production_rate[1] = min((RandomRange(256) + 128) * i->production_rate[1] >> 8, 255);
 	}
