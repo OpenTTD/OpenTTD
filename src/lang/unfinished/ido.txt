@@ -119,6 +119,8 @@ STR_COLOUR_WHITE                                                :Blanka
 
 
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
 
@@ -141,6 +143,7 @@ STR_BUTTON_OK                                                   :{BLACK}OK
 # Tooltips for the main toolbar
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Pozez objekto
 
 ############ range for SE file menu starts
 ############ range for SE file menu starts
@@ -236,7 +239,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Montrar 
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Voyi
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Fervoyo
-STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stacioni/Aeroportua/Doko
+STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stacioni/Aeroportui/Doki
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Edifici/Industrii
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Vehili
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Treni
@@ -361,6 +364,8 @@ STR_SEA_LEVEL_HIGH                                              :Alta
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nulo
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plata areo cirkum industrii: {ORANGE}{STRING} karel{P 0:1 o i}
 
 
 
@@ -457,8 +462,10 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 
 
 # Network messages
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Tu sendis tro multa imperi ad la servero
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendinta tro multa imperi
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -519,6 +526,8 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 # Landscaping toolbar
 
 # Object construction window
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Klaso di objekto
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeso: {GOLD}{NUM} x {NUM} kareli
 
 
 # Tree planting window (last two for SE only)
@@ -534,8 +543,17 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 # Fund new industry window
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrio-kateno por {STRING} industrio
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produktanta industrii
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Aceptanta industrii
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domi
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Montras kateno
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ligilo ad mapeto
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selektez la montranta industrii ad la mapeto anke
 
 # Land area window
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Klaso di aeroportuo: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nomo di aeroportuo: {LTBLUE}{STRING}
 
 # Description of land area of different tiles
 
@@ -553,12 +571,16 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 
 
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Faro
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Stabeyo di kompanio
 
 # About OpenTTD window
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versiono {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2010 La kruo OpenTTD
 
 # Save/load game/scenario
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Ludo Detali
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NovaGRF: {WHITE}{STRING}
 
 
 # World generation
@@ -576,13 +598,17 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 
 
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versiono: {SILVER}{NUM}
 
 
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Klozas
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekto
 
 
 # Sprite aligner window
@@ -595,11 +621,13 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Nulo
 
 # NewGRF 'it's broken' warnings
 
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
 # Sign list window
 
@@ -686,7 +714,10 @@ STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLAC
 
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Chanjas nomo di depozeyo
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Rinomizas depozeyo
 
 
 
@@ -733,6 +764,8 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeroplani
 
 
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servado ad {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servado ad {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 
@@ -818,6 +851,7 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
 
 
 # AI Parameters
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 
@@ -856,6 +890,7 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ja p
 
 
 # Town related errors
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Ne povas expansar urbo...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... tro proxim la bordo del mapo
 
 # Industry related errors
@@ -883,9 +918,11 @@ STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Treno tr
 # Autoreplace related errors
 
 # Rail construction errors
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... ne es signali
 
 
 # Road construction errors
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ne esas voyo
 
 # Waterway construction errors
 
@@ -896,6 +933,8 @@ STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Treno tr
 # Tunnel related errors
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... tro multa objekti
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ne povas konstruktar objekto...
 
 # Group related errors
 
@@ -949,6 +988,11 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Treno-Depozeyo
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Treno-Depozeyo #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Navo-Depozeyo
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Navo-Depozeyo #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangaro
 
 STR_COMPANY_SOMEONE                                             :ulu
 
@@ -971,6 +1015,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -1014,6 +1059,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
