@@ -484,6 +484,16 @@ compatible_grf:
 				if (c->name == NULL) c->name = DuplicateGRFText(f->name);
 				if (c->info == NULL) c->info = DuplicateGRFText(f->info);
 				c->error = NULL;
+				c->version = f->version;
+				c->num_valid_params = f->num_valid_params;
+				c->has_param_defaults = f->has_param_defaults;
+				for (uint i = 0; i < f->param_info.Length(); i++) {
+					if (f->param_info[i] == NULL) {
+						*c->param_info.Append() = NULL;
+					} else {
+						*c->param_info.Append() = new GRFParameterInfo(*f->param_info[i]);
+					}
+				}
 			}
 		}
 	}
