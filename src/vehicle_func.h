@@ -59,7 +59,6 @@ void MarkSingleVehicleDirty(const Vehicle *v);
 
 UnitID GetFreeUnitNumber(VehicleType type);
 
-CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool service, Owner owner, uint16 vlw_flag, uint32 id);
 void VehicleEnterDepot(Vehicle *v);
 
 bool CanBuildVehicleInfrastructure(VehicleType type);

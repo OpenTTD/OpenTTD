@@ -83,8 +83,8 @@ CommandProc CmdMoveRailVehicle;
 CommandProc CmdBuildVehicle;
 CommandProc CmdSellVehicle;
 CommandProc CmdRefitVehicle;
+CommandProc CmdSendVehicleToDepot;
 
-CommandProc CmdSendTrainToDepot;
 CommandProc CmdForceTrainProceed;
 CommandProc CmdReverseTrainDirection;
 
@@ -114,12 +114,9 @@ CommandProc CmdRenamePresident;
 CommandProc CmdRenameStation;
 CommandProc CmdRenameDepot;
 
-CommandProc CmdSendAircraftToHangar;
-
 CommandProc CmdPlaceSign;
 CommandProc CmdRenameSign;
 
-CommandProc CmdSendRoadVehToDepot;
 CommandProc CmdTurnRoadVeh;
 
 CommandProc CmdPause;
@@ -136,8 +133,6 @@ CommandProc CmdDeleteTown;
 
 CommandProc CmdChangeSetting;
 CommandProc CmdChangeCompanySetting;
-
-CommandProc CmdSendShipToDepot;
 
 CommandProc CmdOrderRefit;
 CommandProc CmdCloneOrder;
@@ -224,9 +219,9 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdBuildVehicle,                       CMD_CLIENT_ID), // CMD_BUILD_VEHICLE
 	DEF_CMD(CmdSellVehicle,                        CMD_CLIENT_ID), // CMD_SELL_VEHICLE
 	DEF_CMD(CmdRefitVehicle,                                   0), // CMD_REFIT_VEHICLE
+	DEF_CMD(CmdSendVehicleToDepot,                             0), // CMD_SEND_VEHICLE_TO_DEPOT
 
 	DEF_CMD(CmdMoveRailVehicle,                                0), // CMD_MOVE_RAIL_VEHICLE
-	DEF_CMD(CmdSendTrainToDepot,                               0), // CMD_SEND_TRAIN_TO_DEPOT
 	DEF_CMD(CmdForceTrainProceed,                              0), // CMD_FORCE_TRAIN_PROCEED
 	DEF_CMD(CmdReverseTrainDirection,                          0), // CMD_REVERSE_TRAIN_DIRECTION
 
@@ -256,12 +251,9 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdRenameStation,                                  0), // CMD_RENAME_STATION
 	DEF_CMD(CmdRenameDepot,                                    0), // CMD_RENAME_DEPOT
 
-	DEF_CMD(CmdSendAircraftToHangar,                           0), // CMD_SEND_AIRCRAFT_TO_HANGAR
-
 	DEF_CMD(CmdPlaceSign,                                      0), // CMD_PLACE_SIGN
 	DEF_CMD(CmdRenameSign,                                     0), // CMD_RENAME_SIGN
 
-	DEF_CMD(CmdSendRoadVehToDepot,                             0), // CMD_SEND_ROADVEH_TO_DEPOT
 	DEF_CMD(CmdTurnRoadVeh,                                    0), // CMD_TURN_ROADVEH
 
 	DEF_CMD(CmdPause,                                 CMD_SERVER), // CMD_PAUSE
@@ -275,8 +267,6 @@ static const Command _command_proc_table[] = {
 	DEF_CMD(CmdDoTownAction,                                   0), // CMD_DO_TOWN_ACTION
 	DEF_CMD(CmdExpandTown,                           CMD_OFFLINE), // CMD_EXPAND_TOWN
 	DEF_CMD(CmdDeleteTown,                           CMD_OFFLINE), // CMD_DELETE_TOWN
-
-	DEF_CMD(CmdSendShipToDepot,                                0), // CMD_SEND_SHIP_TO_DEPOT
 
 	DEF_CMD(CmdOrderRefit,                                     0), // CMD_ORDER_REFIT
 	DEF_CMD(CmdCloneOrder,                                     0), // CMD_CLONE_ORDER

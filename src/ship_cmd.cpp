@@ -635,28 +635,3 @@ bool Ship::FindClosestDepot(TileIndex *location, DestinationID *destination, boo
 
 	return true;
 }
-
-/**
- * Send a ship to the depot.
- * @param tile unused
- * @param flags type of operation
- * @param p1 vehicle ID to send to the depot
- * @param p2 various bitmasked elements
- * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
- * - p2 bit 8-10 - VLW flag (for mass goto depot)
- * @param text unused
- * @return the cost of this operation or an error
- */
-CommandCost CmdSendShipToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	if (p2 & DEPOT_MASS_SEND) {
-		/* Mass goto depot requested */
-		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_SHIP, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
-	}
-
-	Ship *v = Ship::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
-
-	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
-}

@@ -58,10 +58,10 @@ const uint32 _veh_refit_proc_table[] = {
 
 const uint32 _send_to_depot_proc_table[] = {
 	/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */
-	CMD_SEND_TRAIN_TO_DEPOT     | CMD_MSG(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT) | CMD_NO_TEST_IF_IN_NETWORK,
-	CMD_SEND_ROADVEH_TO_DEPOT   | CMD_MSG(STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT),
-	CMD_SEND_SHIP_TO_DEPOT      | CMD_MSG(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT),
-	CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR),
+	CMD_SEND_VEHICLE_TO_DEPOT | CMD_MSG(STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT) | CMD_NO_TEST_IF_IN_NETWORK,
+	CMD_SEND_VEHICLE_TO_DEPOT | CMD_MSG(STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT),
+	CMD_SEND_VEHICLE_TO_DEPOT | CMD_MSG(STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT),
+	CMD_SEND_VEHICLE_TO_DEPOT | CMD_MSG(STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR),
 };
 
 
@@ -837,6 +837,32 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
 	}
 
 	return had_success ? CommandCost() : CMD_ERROR;
+}
+
+/**
+ * Send a vehicle to the depot.
+ * @param tile unused
+ * @param flags for command type
+ * @param p1 vehicle ID to send to the depot
+ * @param p2 various bitmasked elements
+ * - p2 bit  0-3  - DEPOT_ flags (see vehicle.h)
+ * - p2 bit  8-10 - VLW flag (for mass goto depot)
+ * - p2 bit 10-11 - Vehicle type
+ * @param text unused
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdSendVehicleToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (p2 & DEPOT_MASS_SEND) {
+		/* Mass goto depot requested */
+		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
+		return SendAllVehiclesToDepot((VehicleType)GB(p2, 11, 2), flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
+	}
+
+	Vehicle *v = Vehicle::GetIfValid(p1);
+	if (v == NULL) return CMD_ERROR;
+
+	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
 }
 
 /**

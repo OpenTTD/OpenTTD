@@ -180,9 +180,9 @@ enum Commands {
 	CMD_BUILD_VEHICLE,                ///< build a vehicle
 	CMD_SELL_VEHICLE,                 ///< sell a vehicle
 	CMD_REFIT_VEHICLE,                ///< refit the cargo space of a vehicle
+	CMD_SEND_VEHICLE_TO_DEPOT,        ///< send a vehicle to a depot
 
 	CMD_MOVE_RAIL_VEHICLE,            ///< move a rail vehicle (in the depot)
-	CMD_SEND_TRAIN_TO_DEPOT,          ///< send a train to a depot
 	CMD_FORCE_TRAIN_PROCEED,          ///< proceed a train to pass a red signal
 	CMD_REVERSE_TRAIN_DIRECTION,      ///< turn a train around
 
@@ -211,12 +211,9 @@ enum Commands {
 	CMD_RENAME_STATION,               ///< rename a station
 	CMD_RENAME_DEPOT,                 ///< rename a depot
 
-	CMD_SEND_AIRCRAFT_TO_HANGAR,      ///< send an aircraft to a hanger
-
 	CMD_PLACE_SIGN,                   ///< place a sign
 	CMD_RENAME_SIGN,                  ///< rename a sign
 
-	CMD_SEND_ROADVEH_TO_DEPOT,        ///< send a road vehicle to the depot
 	CMD_TURN_ROADVEH,                 ///< turn a road vehicle around
 
 	CMD_PAUSE,                        ///< pause the game
@@ -230,8 +227,6 @@ enum Commands {
 	CMD_DO_TOWN_ACTION,               ///< do a action from the town detail window (like advertises or bribe)
 	CMD_EXPAND_TOWN,                  ///< expand a town
 	CMD_DELETE_TOWN,                  ///< delete a town
-
-	CMD_SEND_SHIP_TO_DEPOT,           ///< send a ship to a depot
 
 	CMD_ORDER_REFIT,                  ///< change the refit informaction of an order (for "goto depot" )
 	CMD_CLONE_ORDER,                  ///< clone (and share) an order

@@ -311,31 +311,6 @@ bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destinati
 }
 
 /**
- * Send a road vehicle to the depot.
- * @param tile unused
- * @param flags operation to perform
- * @param p1 vehicle ID to send to the depot
- * @param p2 various bitmasked elements
- * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
- * - p2 bit 8-10 - VLW flag (for mass goto depot)
- * @param text unused
- * @return the cost of this operation or an error
- */
-CommandCost CmdSendRoadVehToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
-{
-	if (p2 & DEPOT_MASS_SEND) {
-		/* Mass goto depot requested */
-		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_ROAD, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
-	}
-
-	RoadVehicle *v = RoadVehicle::GetIfValid(p1);
-	if (v == NULL) return CMD_ERROR;
-
-	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
-}
-
-/**
  * Turn a roadvehicle around.
  * @param tile unused
  * @param flags operation to perform

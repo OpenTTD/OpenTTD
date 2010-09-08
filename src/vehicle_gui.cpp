@@ -1307,11 +1307,11 @@ public:
 						break;
 					case ADI_SERVICE: // Send for servicing
 						DoCommandP(0, GB(this->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
-							(this->window_number & VLW_MASK) | DEPOT_MASS_SEND | DEPOT_SERVICE, GetCmdSendToDepot(this->vehicle_type));
+							(this->window_number & VLW_MASK) | this->vehicle_type << 11 | DEPOT_MASS_SEND | DEPOT_SERVICE, GetCmdSendToDepot(this->vehicle_type));
 						break;
 					case ADI_DEPOT: // Send to Depots
 						DoCommandP(0, GB(this->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
-							(this->window_number & VLW_MASK) | DEPOT_MASS_SEND, GetCmdSendToDepot(this->vehicle_type));
+							(this->window_number & VLW_MASK) | this->vehicle_type << 11 | DEPOT_MASS_SEND, GetCmdSendToDepot(this->vehicle_type));
 						break;
 
 					default: NOT_REACHED();
