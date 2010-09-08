@@ -99,13 +99,13 @@ const StringID BaseVehicleListWindow::vehicle_depot_name[] = {
 	STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR
 };
 
-void BaseVehicleListWindow::BuildVehicleList(Owner owner, uint16 index, uint16 window_type)
+void BaseVehicleListWindow::BuildVehicleList(const VehicleListIdentifier &vli)
 {
 	if (!this->vehicles.NeedRebuild()) return;
 
-	DEBUG(misc, 3, "Building vehicle list for company %d at station %d", owner, index);
+	DEBUG(misc, 3, "Building vehicle list for company %d at station %d", vli.company, vli.index);
 
-	GenerateVehicleSortList(&this->vehicles, this->vehicle_type, owner, index, window_type);
+	GenerateVehicleSortList(&this->vehicles, vli);
 
 	uint unitnumber = 0;
 	for (const Vehicle **v = this->vehicles.Begin(); v != this->vehicles.End(); v++) {
@@ -1108,7 +1108,8 @@ public:
 		this->vehicles.SetListing(*this->sorting);
 		this->vehicles.ForceRebuild();
 		this->vehicles.NeedResort();
-		this->BuildVehicleList(company, GB(window_number, 16, 16), window_type);
+		VehicleListIdentifier vli((VehicleListType)(window_type >> 8), this->vehicle_type, owner, GB(window_number, 16, 16));
+		this->BuildVehicleList(vli);
 		this->SortVehicleList();
 
 		/* Set up the window widgets */
@@ -1222,7 +1223,8 @@ public:
 	{
 		const uint16 window_type = this->window_number & VLW_MASK;
 
-		this->BuildVehicleList(this->owner, GB(this->window_number, 16, 16), window_type);
+		VehicleListIdentifier vli((VehicleListType)(window_type >> 8), this->vehicle_type, this->owner, GB(this->window_number, 16, 16));
+		this->BuildVehicleList(vli);
 		this->SortVehicleList();
 
 		if (this->vehicles.Length() == 0 && this->IsWidgetLowered(VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {

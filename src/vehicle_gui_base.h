@@ -13,6 +13,7 @@
 #define VEHICLE_GUI_BASE_H
 
 #include "sortlist_type.h"
+#include "vehiclelist.h"
 #include "window_gui.h"
 #include "widgets/dropdown_type.h"
 
@@ -44,7 +45,7 @@ struct BaseVehicleListWindow : public Window {
 
 	void DrawVehicleListItems(VehicleID selected_vehicle, int line_height, const Rect &r) const;
 	void SortVehicleList();
-	void BuildVehicleList(Owner owner, uint16 index, uint16 window_type);
+	void BuildVehicleList(const VehicleListIdentifier &identifier);
 	Dimension GetActionDropdownSize(bool show_autoreplace, bool show_group);
 	DropDownList *BuildActionDropdownList(bool show_autoreplace, bool show_group);
 };

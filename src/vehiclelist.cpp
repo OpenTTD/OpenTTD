@@ -63,35 +63,25 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
 
 /**
  * Generate a list of vehicles based on window type.
- * @param list        Pointer to list to add vehicles to
- * @param type        Type of vehicle
- * @param owner       Company to generate list for
- * @param index       This parameter has different meanings depending on window_type
- *    <ul>
- *      <li>VLW_STATION_LIST:  index of station/waypoint to generate a list for</li>
- *      <li>VLW_SHARED_ORDERS: index of order to generate a list for<li>
- *      <li>VLW_STANDARD: not used<li>
- *      <li>VLW_DEPOT_LIST: TileIndex of the depot/hangar to make the list for</li>
- *      <li>VLW_GROUP_LIST: index of group to generate a list for</li>
- *    </ul>
- * @param window_type The type of window the list is for, using the VLW_ flags in vehicle_gui.h
+ * @param list Pointer to list to add vehicles to
+ * @param vli  The identifier of this vehicle list.
  * @return false if invalid list is requested
  */
-bool GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, uint32 index, uint16 window_type)
+bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli)
 {
 	list->Clear();
 
 	const Vehicle *v;
 
-	switch (window_type) {
-		case VLW_STATION_LIST:
+	switch (vli.type) {
+		case VL_STATION_LIST:
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && v->IsPrimaryVehicle()) {
+				if (v->type == vli.type && v->IsPrimaryVehicle()) {
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
 						if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT))
-								&& order->GetDestination() == index) {
+								&& order->GetDestination() == vli.index) {
 							*list->Append() = v;
 							break;
 						}
@@ -100,31 +90,31 @@ bool GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, u
 			}
 			break;
 
-		case VLW_SHARED_ORDERS:
+		case VL_SHARED_ORDERS:
 			/* Add all vehicles from this vehicle's shared order list */
-			v = Vehicle::GetIfValid(index);
-			if (v == NULL || v->type != type || !v->IsPrimaryVehicle()) return false;
+			v = Vehicle::GetIfValid(vli.index);
+			if (v == NULL || v->type != vli.type || !v->IsPrimaryVehicle()) return false;
 
 			for (; v != NULL; v = v->NextShared()) {
 				*list->Append() = v;
 			}
 			break;
 
-		case VLW_STANDARD:
+		case VL_STANDARD:
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && v->owner == owner && v->IsPrimaryVehicle()) {
+				if (v->type == vli.type && v->owner == vli.company && v->IsPrimaryVehicle()) {
 					*list->Append() = v;
 				}
 			}
 			break;
 
-		case VLW_DEPOT_LIST:
+		case VL_DEPOT_LIST:
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && v->IsPrimaryVehicle()) {
+				if (v->type == vli.type && v->IsPrimaryVehicle()) {
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
-						if (order->IsType(OT_GOTO_DEPOT) && !(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) && order->GetDestination() == index) {
+						if (order->IsType(OT_GOTO_DEPOT) && !(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) && order->GetDestination() == vli.index) {
 							*list->Append() = v;
 							break;
 						}
@@ -133,10 +123,10 @@ bool GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, u
 			}
 			break;
 
-		case VLW_GROUP_LIST:
+		case VL_GROUP_LIST:
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && v->IsPrimaryVehicle() &&
-						v->owner == owner && v->group_id == index) {
+				if (v->type == vli.type && v->IsPrimaryVehicle() &&
+						v->owner == vli.company && v->group_id == vli.index) {
 					*list->Append() = v;
 				}
 			}
