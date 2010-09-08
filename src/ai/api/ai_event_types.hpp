@@ -379,7 +379,7 @@ public:
 	 * @param value The value/costs of buying the company.
 	 */
 	AIEventCompanyAskMerger(Owner owner, int32 value) :
-		AIEvent(AI_ET_COMPANY_MERGER),
+		AIEvent(AI_ET_COMPANY_ASK_MERGER),
 		owner((AICompany::CompanyID)owner),
 		value(value)
 	{}
