@@ -19,7 +19,7 @@
 #include "command_func.h"
 #include "news_func.h"
 #include "aircraft.h"
-#include "vehicle_gui.h"
+#include "vehiclelist.h"
 #include "core/pool_func.hpp"
 #include "station_base.h"
 #include "roadstop_base.h"
@@ -40,11 +40,10 @@ BaseStation::~BaseStation()
 
 	Owner owner = this->owner;
 	if (!Company::IsValidID(owner)) owner = _local_company;
-	WindowNumber wno = (this->index << 16) | VLW_STATION_LIST | owner;
-	DeleteWindowById(WC_TRAINS_LIST, wno | (VEH_TRAIN << 11));
-	DeleteWindowById(WC_ROADVEH_LIST, wno | (VEH_ROAD << 11));
-	DeleteWindowById(WC_SHIPS_LIST, wno | (VEH_SHIP << 11));
-	DeleteWindowById(WC_AIRCRAFT_LIST, wno | (VEH_AIRCRAFT << 11));
+	DeleteWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    owner, this->index).Pack());
+	DeleteWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD,     owner, this->index).Pack());
+	DeleteWindowById(WC_SHIPS_LIST,    VehicleListIdentifier(VL_STATION_LIST, VEH_SHIP,     owner, this->index).Pack());
+	DeleteWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_AIRCRAFT, owner, this->index).Pack());
 
 	this->sign.MarkDirty();
 }

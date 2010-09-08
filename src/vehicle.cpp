@@ -49,6 +49,7 @@
 #include "sound_func.h"
 #include "effectvehicle_func.h"
 #include "effectvehicle_base.h"
+#include "vehiclelist.h"
 
 #include "table/strings.h"
 
@@ -1888,7 +1889,7 @@ void Vehicle::RemoveFromShared()
 	/* Remember if we were first and the old window number before RemoveVehicle()
 	 * as this changes first if needed. */
 	bool were_first = (this->FirstShared() == this);
-	uint32 old_window_number = (this->FirstShared()->index << 16) | (this->type << 11) | VLW_SHARED_ORDERS | this->owner;
+	VehicleListIdentifier vli(VL_SHARED_ORDERS, this->type, this->owner, this->FirstShared()->index);
 
 	this->orders.list->RemoveVehicle(this);
 
@@ -1902,12 +1903,12 @@ void Vehicle::RemoveFromShared()
 
 	if (this->orders.list->GetNumVehicles() == 1) {
 		/* When there is only one vehicle, remove the shared order list window. */
-		DeleteWindowById(GetWindowClassForVehicleType(this->type), old_window_number);
+		DeleteWindowById(GetWindowClassForVehicleType(this->type), vli.Pack());
 		InvalidateVehicleOrder(this->FirstShared(), 0);
 	} else if (were_first) {
 		/* If we were the first one, update to the new first one.
 		 * Note: FirstShared() is already the new first */
-		InvalidateWindowData(GetWindowClassForVehicleType(this->type), old_window_number, (this->FirstShared()->index << 16) | (1 << 15));
+		InvalidateWindowData(GetWindowClassForVehicleType(this->type), vli.Pack(), this->FirstShared()->index | (1U << 31));
 	}
 
 	this->next_shared     = NULL;

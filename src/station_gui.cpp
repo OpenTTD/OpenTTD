@@ -28,6 +28,7 @@
 #include "company_base.h"
 #include "sortlist_type.h"
 #include "core/geometry_func.hpp"
+#include "vehiclelist.h"
 
 #include "table/strings.h"
 
@@ -903,12 +904,11 @@ struct StationViewWindow : public Window {
 
 	~StationViewWindow()
 	{
-		WindowNumber wno = (this->window_number << 16) | VLW_STATION_LIST | Station::Get(this->window_number)->owner;
-
-		DeleteWindowById(WC_TRAINS_LIST, wno | (VEH_TRAIN << 11), false);
-		DeleteWindowById(WC_ROADVEH_LIST, wno | (VEH_ROAD << 11), false);
-		DeleteWindowById(WC_SHIPS_LIST, wno | (VEH_SHIP << 11), false);
-		DeleteWindowById(WC_AIRCRAFT_LIST, wno | (VEH_AIRCRAFT << 11), false);
+		Owner owner = Station::Get(this->window_number)->owner;
+		DeleteWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    owner, this->window_number).Pack(), false);
+		DeleteWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD,     owner, this->window_number).Pack(), false);
+		DeleteWindowById(WC_SHIPS_LIST,    VehicleListIdentifier(VL_STATION_LIST, VEH_SHIP,     owner, this->window_number).Pack(), false);
+		DeleteWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_AIRCRAFT, owner, this->window_number).Pack(), false);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)

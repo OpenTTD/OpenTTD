@@ -16,6 +16,7 @@
 #include "string_func.h"
 #include "town.h"
 #include "vehicle_gui.h"
+#include "vehiclelist.h"
 #include "window_func.h"
 
 #include "table/strings.h"
@@ -71,13 +72,14 @@ CommandCost CmdRenameDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		SetWindowDirty(WC_VEHICLE_DEPOT, d->xy);
 
 		/* Update the depot list */
-		WindowNumber wno = (d->index << 16) | VLW_DEPOT_LIST | GetTileOwner(d->xy);
+		VehicleType vt;
 		switch (GetTileType(d->xy)) {
-			default: break;
-			case MP_RAILWAY: SetWindowDirty(WC_TRAINS_LIST,  wno | (VEH_TRAIN << 11)); break;
-			case MP_ROAD:    SetWindowDirty(WC_ROADVEH_LIST, wno | (VEH_ROAD  << 11)); break;
-			case MP_WATER:   SetWindowDirty(WC_SHIPS_LIST,   wno | (VEH_SHIP  << 11)); break;
+			default: NOT_REACHED();
+			case MP_RAILWAY: vt = VEH_TRAIN; break;
+			case MP_ROAD:    vt = VEH_ROAD;  break;
+			case MP_WATER:   vt = VEH_SHIP;  break;
 		}
+		SetWindowDirty(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(d->xy), d->index).Pack());
 	}
 	return CommandCost();
 }

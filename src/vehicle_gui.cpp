@@ -1085,10 +1085,8 @@ private:
 public:
 	VehicleListWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow()
 	{
-		uint16 window_type = window_number & VLW_MASK;
-		CompanyID company = (CompanyID)GB(window_number, 0, 8);
-
-		this->vehicle_type = (VehicleType)GB(window_number, 11, 5);
+		VehicleListIdentifier vli(window_number);
+		this->vehicle_type = vli.vtype;
 
 		/* Set up sorting. Make the window-specific _sorting variable
 		 * point to the correct global _sorting struct so we are freed
@@ -1108,21 +1106,20 @@ public:
 		this->vehicles.SetListing(*this->sorting);
 		this->vehicles.ForceRebuild();
 		this->vehicles.NeedResort();
-		VehicleListIdentifier vli((VehicleListType)(window_type >> 8), this->vehicle_type, owner, GB(window_number, 16, 16));
 		this->BuildVehicleList(vli);
 		this->SortVehicleList();
 
 		/* Set up the window widgets */
 		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->tool_tip = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
 
-		if (window_type == VLW_SHARED_ORDERS) {
+		if (vli.type == VL_SHARED_ORDERS) {
 			this->GetWidget<NWidgetCore>(VLW_WIDGET_CAPTION)->widget_data = STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION;
 		} else {
 			this->GetWidget<NWidgetCore>(VLW_WIDGET_CAPTION)->widget_data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vehicle_type;
 		}
 
 		this->FinishInitNested(desc, window_number);
-		this->owner = company;
+		this->owner = vli.company;
 
 		if (this->vehicle_type == VEH_TRAIN) ResizeWindow(this, 65, 0);
 	}
@@ -1152,7 +1149,7 @@ public:
 				break;
 
 			case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
-				Dimension d = this->GetActionDropdownSize((this->window_number & VLW_MASK) == VLW_STANDARD, false);
+				Dimension d = this->GetActionDropdownSize(VehicleListIdentifier(this->window_number).type == VL_STANDARD, false);
 				d.height += padding.height;
 				d.width  += padding.width;
 				*size = maxdim(*size, d);
@@ -1169,9 +1166,9 @@ public:
 				break;
 
 			case VLW_WIDGET_CAPTION: {
-				const uint16 index = GB(this->window_number, 16, 16);
-				switch (this->window_number & VLW_MASK) {
-					case VLW_SHARED_ORDERS: // Shared Orders
+				VehicleListIdentifier vli(this->window_number);
+				switch (vli.type) {
+					case VL_SHARED_ORDERS: // Shared Orders
 						if (this->vehicles.Length() == 0) {
 							/* We can't open this window without vehicles using this order
 							* and we should close the window when deleting the order      */
@@ -1180,22 +1177,22 @@ public:
 						SetDParam(0, this->vscroll->GetCount());
 						break;
 
-					case VLW_STANDARD: // Company Name
+					case VL_STANDARD: // Company Name
 						SetDParam(0, STR_COMPANY_NAME);
-						SetDParam(1, index);
+						SetDParam(1, vli.index);
 						SetDParam(3, this->vscroll->GetCount());
 						break;
 
-					case VLW_STATION_LIST: // Station/Waypoint Name
-						SetDParam(0, Station::IsExpected(BaseStation::Get(index)) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
-						SetDParam(1, index);
+					case VL_STATION_LIST: // Station/Waypoint Name
+						SetDParam(0, Station::IsExpected(BaseStation::Get(vli.index)) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
+						SetDParam(1, vli.index);
 						SetDParam(3, this->vscroll->GetCount());
 						break;
 
-					case VLW_DEPOT_LIST:
+					case VL_DEPOT_LIST:
 						SetDParam(0, STR_DEPOT_CAPTION);
 						SetDParam(1, this->vehicle_type);
-						SetDParam(2, index);
+						SetDParam(2, vli.index);
 						SetDParam(3, this->vscroll->GetCount());
 						break;
 					default: NOT_REACHED();
@@ -1221,9 +1218,8 @@ public:
 
 	virtual void OnPaint()
 	{
-		const uint16 window_type = this->window_number & VLW_MASK;
+		VehicleListIdentifier vli(this->window_number);
 
-		VehicleListIdentifier vli((VehicleListType)(window_type >> 8), this->vehicle_type, this->owner, GB(this->window_number, 16, 16));
 		this->BuildVehicleList(vli);
 		this->SortVehicleList();
 
@@ -1240,7 +1236,7 @@ public:
 			nwi->SetDirty(this);
 		}
 		if (this->owner == _local_company) {
-			this->SetWidgetDisabledState(VLW_WIDGET_AVAILABLE_VEHICLES, window_type != VLW_STANDARD);
+			this->SetWidgetDisabledState(VLW_WIDGET_AVAILABLE_VEHICLES, vli.type != VL_STANDARD);
 			this->SetWidgetsDisabledState(this->vehicles.Length() == 0,
 				VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 				VLW_WIDGET_STOP_ALL,
@@ -1281,7 +1277,7 @@ public:
 				break;
 
 			case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
-				DropDownList *list = this->BuildActionDropdownList((this->window_number & VLW_MASK) == VLW_STANDARD, false);
+				DropDownList *list = this->BuildActionDropdownList(VehicleListIdentifier(this->window_number).type == VL_STANDARD, false);
 				ShowDropDownList(this, list, 0, VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN);
 				break;
 			}
@@ -1327,7 +1323,8 @@ public:
 	{
 		if (_pause_mode != PM_UNPAUSED) return;
 		if (this->vehicles.NeedResort()) {
-			StationID station = ((this->window_number & VLW_MASK) == VLW_STATION_LIST) ? GB(this->window_number, 16, 16) : INVALID_STATION;
+			VehicleListIdentifier vli(this->window_number);
+			StationID station = (vli.type == VL_STATION_LIST) ? vli.index : INVALID_STATION;
 
 			DEBUG(misc, 3, "Periodic resort %d list company %d at station %d", this->vehicle_type, this->owner, station);
 			this->SetDirty();
@@ -1342,8 +1339,10 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
-		if (HasBit(data, 15) && (this->window_number & VLW_MASK) == VLW_SHARED_ORDERS) {
-			SB(this->window_number, 16, 16, GB(data, 16, 16));
+		VehicleListIdentifier vli(this->window_number);
+		if (HasBit(data, 31) && vli.type == VL_SHARED_ORDERS) {
+			vli.index = GB(data, 0, 20);
+			this->window_number = vli.Pack();
 			this->vehicles.ForceRebuild();
 			return;
 		}
@@ -1363,7 +1362,7 @@ static WindowDesc _vehicle_list_desc(
 	_nested_vehicle_list, lengthof(_nested_vehicle_list)
 );
 
-static void ShowVehicleListWindowLocal(CompanyID company, uint16 VLW_flag, VehicleType vehicle_type, uint16 unique_number)
+static void ShowVehicleListWindowLocal(CompanyID company, VehicleListType vlt, VehicleType vehicle_type, uint16 unique_number)
 {
 	if (!Company::IsValidID(company)) {
 		company = _local_company;
@@ -1377,8 +1376,7 @@ static void ShowVehicleListWindowLocal(CompanyID company, uint16 VLW_flag, Vehic
 	}
 
 	_vehicle_list_desc.cls = GetWindowClassForVehicleType(vehicle_type);
-	WindowNumber num = (unique_number << 16) | (vehicle_type << 11) | VLW_flag | company;
-	AllocateWindowDescFront<VehicleListWindow>(&_vehicle_list_desc, num);
+	AllocateWindowDescFront<VehicleListWindow>(&_vehicle_list_desc, VehicleListIdentifier(vlt, vehicle_type, company, unique_number).Pack());
 }
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
@@ -1391,18 +1389,18 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
 	if ((_settings_client.gui.advanced_vehicle_list > (uint)(company != _local_company)) != _ctrl_pressed) {
 		ShowCompanyGroup(company, vehicle_type);
 	} else {
-		ShowVehicleListWindowLocal(company, VLW_STANDARD, vehicle_type, company);
+		ShowVehicleListWindowLocal(company, VL_STANDARD, vehicle_type, company);
 	}
 }
 
 void ShowVehicleListWindow(const Vehicle *v)
 {
-	ShowVehicleListWindowLocal(v->owner, VLW_SHARED_ORDERS, v->type, v->FirstShared()->index);
+	ShowVehicleListWindowLocal(v->owner, VL_SHARED_ORDERS, v->type, v->FirstShared()->index);
 }
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationID station)
 {
-	ShowVehicleListWindowLocal(company, VLW_STATION_LIST, vehicle_type, station);
+	ShowVehicleListWindowLocal(company, VL_STATION_LIST, vehicle_type, station);
 }
 
 void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileIndex depot_tile)
@@ -1414,7 +1412,7 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileInde
 	} else {
 		depot_airport_index = GetDepotIndex(depot_tile);
 	}
-	ShowVehicleListWindowLocal(company, VLW_DEPOT_LIST, vehicle_type, depot_airport_index);
+	ShowVehicleListWindowLocal(company, VL_DEPOT_LIST, vehicle_type, depot_airport_index);
 }
 
 
@@ -2263,7 +2261,7 @@ public:
 			}
 
 			case VVW_WIDGET_GOTO_DEPOT: // goto hangar
-				DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0U, GetCmdSendToDepot(v));
+				DoCommandP(v->tile, v->index | (_ctrl_pressed ? DEPOT_SERVICE : 0U), 0, GetCmdSendToDepot(v));
 				break;
 			case VVW_WIDGET_REFIT_VEH: // refit
 				ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID, this);

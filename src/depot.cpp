@@ -16,6 +16,7 @@
 #include "window_func.h"
 #include "core/pool_func.hpp"
 #include "vehicle_gui.h"
+#include "vehiclelist.h"
 
 DepotPool _depot_pool("Depot");
 INSTANTIATE_POOL_METHODS(Depot)
@@ -37,13 +38,14 @@ Depot::~Depot()
 	DeleteWindowById(WC_VEHICLE_DEPOT, this->xy);
 
 	/* Delete the depot list */
-	WindowNumber wno = (this->index << 16) | VLW_DEPOT_LIST | GetTileOwner(this->xy);
+	VehicleType vt;
 	switch (GetTileType(this->xy)) {
-		default: break; // It can happen there is no depot here anymore (TTO/TTD savegames)
-		case MP_RAILWAY: DeleteWindowById(WC_TRAINS_LIST,  wno | (VEH_TRAIN << 11)); break;
-		case MP_ROAD:    DeleteWindowById(WC_ROADVEH_LIST, wno | (VEH_ROAD  << 11)); break;
-		case MP_WATER:   DeleteWindowById(WC_SHIPS_LIST,   wno | (VEH_SHIP  << 11)); break;
+		default: return; // It can happen there is no depot here anymore (TTO/TTD savegames)
+		case MP_RAILWAY: vt = VEH_TRAIN; break;
+		case MP_ROAD:    vt = VEH_ROAD;  break;
+		case MP_WATER:   vt = VEH_SHIP;  break;
 	}
+	DeleteWindowById(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(this->xy), this->index).Pack());
 }
 
 void InitializeDepots()

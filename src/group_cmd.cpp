@@ -15,6 +15,7 @@
 #include "group.h"
 #include "train.h"
 #include "vehicle_gui.h"
+#include "vehiclelist.h"
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "autoreplace_base.h"
@@ -95,7 +96,7 @@ CommandCost CmdCreateGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 		_new_group_id = g->index;
 
-		InvalidateWindowData(GetWindowClassForVehicleType(vt), (vt << 11) | VLW_GROUP_LIST | _current_company);
+		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, _current_company).Pack());
 	}
 
 	return CommandCost();
@@ -145,7 +146,7 @@ CommandCost CmdDeleteGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		DeleteWindowById(WC_REPLACE_VEHICLE, g->vehicle_type);
 		delete g;
 
-		InvalidateWindowData(GetWindowClassForVehicleType(vt), (vt << 11) | VLW_GROUP_LIST | _current_company);
+		InvalidateWindowData(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, _current_company).Pack());
 	}
 
 	return CommandCost();
@@ -190,7 +191,7 @@ CommandCost CmdRenameGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		/* Assign the new one */
 		g->name = reset ? NULL : strdup(text);
 
-		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_company);
+		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
 	}
 
 	return CommandCost();
@@ -241,7 +242,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 		/* Update the Replace Vehicle Windows */
 		SetWindowDirty(WC_REPLACE_VEHICLE, v->type);
-		InvalidateWindowData(GetWindowClassForVehicleType(v->type), (v->type << 11) | VLW_GROUP_LIST | _current_company);
+		InvalidateWindowData(GetWindowClassForVehicleType(v->type), VehicleListIdentifier(VL_GROUP_LIST, v->type, _current_company).Pack());
 	}
 
 	return CommandCost();
@@ -279,7 +280,7 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32
 			}
 		}
 
-		InvalidateWindowData(GetWindowClassForVehicleType(type), (type << 11) | VLW_GROUP_LIST | _current_company);
+		InvalidateWindowData(GetWindowClassForVehicleType(type), VehicleListIdentifier(VL_GROUP_LIST, type, _current_company).Pack());
 	}
 
 	return CommandCost();
@@ -317,7 +318,7 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, DoCommandFlag flags, uint3
 			}
 		}
 
-		InvalidateWindowData(GetWindowClassForVehicleType(type), (type << 11) | VLW_GROUP_LIST | _current_company);
+		InvalidateWindowData(GetWindowClassForVehicleType(type), VehicleListIdentifier(VL_GROUP_LIST, type, _current_company).Pack());
 	}
 
 	return CommandCost();
@@ -343,7 +344,7 @@ CommandCost CmdSetGroupReplaceProtection(TileIndex tile, DoCommandFlag flags, ui
 	if (flags & DC_EXEC) {
 		g->replace_protection = HasBit(p2, 0);
 
-		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_company);
+		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
 		InvalidateWindowData(WC_REPLACE_VEHICLE, g->vehicle_type);
 	}
 

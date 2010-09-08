@@ -13,6 +13,7 @@
 #include "window_gui.h"
 #include "gui.h"
 #include "textbuf_gui.h"
+#include "vehiclelist.h"
 #include "vehicle_gui.h"
 #include "viewport_func.h"
 #include "strings_func.h"
@@ -65,7 +66,7 @@ public:
 	{
 		Owner owner = this->owner;
 		if (!Company::IsValidID(owner)) owner = _local_company;
-		DeleteWindowById(GetWindowClassForVehicleType(this->vt), (this->window_number << 16) | (this->vt << 11) | VLW_STATION_LIST | owner, false);
+		DeleteWindowById(GetWindowClassForVehicleType(this->vt), VehicleListIdentifier(VL_STATION_LIST, this->vt, owner, this->window_number).Pack(), false);
 	}
 
 	virtual void SetStringParameters(int widget) const

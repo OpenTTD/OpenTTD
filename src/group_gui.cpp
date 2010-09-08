@@ -173,7 +173,8 @@ public:
 		this->vscroll = this->GetScrollbar(GRP_WIDGET_LIST_VEHICLE_SCROLLBAR);
 		this->group_sb = this->GetScrollbar(GRP_WIDGET_LIST_GROUP_SCROLLBAR);
 
-		this->vehicle_type = (VehicleType)GB(window_number, 11, 5);
+		VehicleListIdentifier vli(window_number);
+		this->vehicle_type = vli.vtype;
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN:    this->sorting = &_sorting.train;    break;
@@ -186,11 +187,9 @@ public:
 		this->vehicle_sel = INVALID_VEHICLE;
 		this->group_rename = INVALID_GROUP;
 
-		const Owner owner = (Owner)GB(window_number, 0, 8);
 		this->vehicles.SetListing(*this->sorting);
 		this->vehicles.ForceRebuild();
 		this->vehicles.NeedResort();
-		VehicleListIdentifier vli(IsAllGroupID(this->group_sel) ? VL_STANDARD : VL_GROUP_LIST, this->vehicle_type, owner, this->group_sel);
 		this->BuildVehicleList(vli);
 		this->SortVehicleList();
 
@@ -208,7 +207,7 @@ public:
 		this->GetWidget<NWidgetCore>(GRP_WIDGET_REPLACE_PROTECTION)->widget_data += this->vehicle_type;
 
 		this->FinishInitNested(desc, window_number);
-		this->owner = owner;
+		this->owner = vli.company;
 	}
 
 	~VehicleGroupWindow()
@@ -299,11 +298,11 @@ public:
 
 	virtual void OnPaint()
 	{
-		const Owner owner = (Owner)GB(this->window_number, 0, 8);
+		VehicleListIdentifier vli(this->window_number);
+		const Owner owner = vli.company;
 
 		/* If we select the all vehicles, this->list will contain all vehicles of the owner
 		 * else this->list will contain all vehicles which belong to the selected group */
-		VehicleListIdentifier vli(IsAllGroupID(this->group_sel) ? VL_STANDARD : VL_GROUP_LIST, this->vehicle_type, owner, this->group_sel);
 		this->BuildVehicleList(vli);
 		this->SortVehicleList();
 
@@ -659,7 +658,7 @@ void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type)
 {
 	if (!Company::IsValidID(company)) return;
 
-	WindowNumber num = (vehicle_type << 11) | VLW_GROUP_LIST | company;
+	WindowNumber num = VehicleListIdentifier(VL_GROUP_LIST, vehicle_type, company).Pack();
 	if (vehicle_type == VEH_TRAIN) {
 		AllocateWindowDescFront<VehicleGroupWindow>(&_train_group_desc, num);
 	} else {
@@ -676,7 +675,7 @@ void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type)
  */
 static inline VehicleGroupWindow *FindVehicleGroupWindow(VehicleType vt, Owner owner)
 {
-	return (VehicleGroupWindow *)FindWindowById(GetWindowClassForVehicleType(vt), (vt << 11) | VLW_GROUP_LIST | owner);
+	return (VehicleGroupWindow *)FindWindowById(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_GROUP_LIST, vt, owner).Pack());
 }
 
 /**

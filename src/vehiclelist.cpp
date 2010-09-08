@@ -15,6 +15,45 @@
 #include "vehiclelist.h"
 
 /**
+ * Pack a VehicleListIdentifier in a single uint32.
+ * @return The packed identifier.
+ */
+uint32 VehicleListIdentifier::Pack()
+{
+	assert(this->company < (1 <<  4));
+	assert(this->type    < (1 <<  3));
+	assert(this->vtype   < (1 <<  2));
+	assert(this->index   < (1 << 20));
+
+	return this->company << 28 | this->type << 23 | this->vtype << 26 | this->index;
+}
+
+/**
+ * Unpack a VehicleListIdentifier from a single uint32.
+ * @param data The data to unpack.
+ * @return true iff the data was valid (enough).
+ */
+bool VehicleListIdentifier::Unpack(uint32 data)
+{
+	this->company = (CompanyID)GB(data, 28, 4);
+	this->type    = (VehicleListType)GB(data, 23, 3);
+	this->vtype   = (VehicleType)GB(data, 26, 2);
+	this->index   = GB(data, 0, 20);
+
+	return this->type < VLT_END;
+}
+
+/**
+ * Decode a packed vehicle list identifier into a new one.
+ * @param data The data to unpack.
+ */
+VehicleListIdentifier::VehicleListIdentifier(uint32 data)
+{
+	bool ret = this->Unpack(data);
+	assert(ret);
+}
+
+/**
  * Generate a list of vehicles inside a depot.
  * @param type    Type of vehicle
  * @param tile    The tile the depot is located on
@@ -76,7 +115,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 	switch (vli.type) {
 		case VL_STATION_LIST:
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == vli.type && v->IsPrimaryVehicle()) {
+				if (v->type == vli.vtype && v->IsPrimaryVehicle()) {
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
@@ -93,7 +132,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 		case VL_SHARED_ORDERS:
 			/* Add all vehicles from this vehicle's shared order list */
 			v = Vehicle::GetIfValid(vli.index);
-			if (v == NULL || v->type != vli.type || !v->IsPrimaryVehicle()) return false;
+			if (v == NULL || v->type != vli.vtype || !v->IsPrimaryVehicle()) return false;
 
 			for (; v != NULL; v = v->NextShared()) {
 				*list->Append() = v;
@@ -102,7 +141,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 
 		case VL_STANDARD:
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == vli.type && v->owner == vli.company && v->IsPrimaryVehicle()) {
+				if (v->type == vli.vtype && v->owner == vli.company && v->IsPrimaryVehicle()) {
 					*list->Append() = v;
 				}
 			}
@@ -110,7 +149,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 
 		case VL_DEPOT_LIST:
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == vli.type && v->IsPrimaryVehicle()) {
+				if (v->type == vli.vtype && v->IsPrimaryVehicle()) {
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
@@ -125,7 +164,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 
 		case VL_GROUP_LIST:
 			FOR_ALL_VEHICLES(v) {
-				if (v->type == vli.type && v->IsPrimaryVehicle() &&
+				if (v->type == vli.vtype && v->IsPrimaryVehicle() &&
 						v->owner == vli.company && v->group_id == vli.index) {
 					*list->Append() = v;
 				}

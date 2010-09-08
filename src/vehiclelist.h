@@ -34,6 +34,9 @@ struct VehicleListIdentifier {
 	CompanyID company;    ///< The company associated with this list.
 	uint32 index;         ///< A vehicle list type specific index.
 
+	uint32 Pack();
+	bool Unpack(uint32 data);
+
 	/**
 	 * Create a simple vehicle list.
 	 * @param type    List type.
@@ -43,6 +46,11 @@ struct VehicleListIdentifier {
 	 */
 	VehicleListIdentifier(VehicleListType type, VehicleType vtype, CompanyID company, uint index = 0) :
 		type(type), vtype(vtype), company(company), index(index) {}
+
+	VehicleListIdentifier(uint32 data);
+
+	/** Simple empty constructor. In this case you must set everything! */
+	VehicleListIdentifier() {}
 };
 
 typedef SmallVector<const Vehicle *, 32> VehicleList;
