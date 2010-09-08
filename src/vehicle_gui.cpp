@@ -1284,7 +1284,7 @@ public:
 
 			case VLW_WIDGET_STOP_ALL:
 			case VLW_WIDGET_START_ALL:
-				DoCommandP(0, (1 << 1) | (widget == VLW_WIDGET_START_ALL ? (1 << 0) : 0), GB(this->window_number, 16, 16) << 16 | (this->window_number & VLW_MASK) | this->vehicle_type, CMD_MASS_START_STOP);
+				DoCommandP(0, (1 << 1) | (widget == VLW_WIDGET_START_ALL ? (1 << 0) : 0), this->window_number, CMD_MASS_START_STOP);
 				break;
 		}
 	}
@@ -1303,12 +1303,8 @@ public:
 						ShowReplaceGroupVehicleWindow(DEFAULT_GROUP, this->vehicle_type);
 						break;
 					case ADI_SERVICE: // Send for servicing
-						DoCommandP(0, GB(this->window_number, 16, 16) | DEPOT_MASS_SEND | DEPOT_SERVICE /* StationID or OrderID (depending on VLW) */,
-							(this->window_number & VLW_MASK) | this->vehicle_type << 11, GetCmdSendToDepot(this->vehicle_type));
-						break;
 					case ADI_DEPOT: // Send to Depots
-						DoCommandP(0, GB(this->window_number, 16, 16) | DEPOT_MASS_SEND /* StationID or OrderID (depending on VLW) */,
-							(this->window_number & VLW_MASK) | this->vehicle_type << 11, GetCmdSendToDepot(this->vehicle_type));
+						DoCommandP(0, DEPOT_MASS_SEND | (index == ADI_SERVICE ? DEPOT_SERVICE : (DepotCommand)0), this->window_number, GetCmdSendToDepot(this->vehicle_type));
 						break;
 
 					default: NOT_REACHED();

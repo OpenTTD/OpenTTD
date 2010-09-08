@@ -436,31 +436,25 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param p1 bitmask
  *   - bit 0 false = start vehicles, true = stop vehicles
  *   - bit 1 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
- * @param p2 bitmask
- *   - bit 0-4 Vehicle type
- *   - bit 8-11 Vehicle List Window type (ignored unless bit 6 is set)
- *   - bit 16-31 Station/Order/Depot ID (only used for vehicle list windows)
+ * @param p2 packed VehicleListIdentifier
  * @param text unused
  * @return the cost of this operation or an error
  */
 CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
-	VehicleType vehicle_type = Extract<VehicleType, 0, 3>(p2);
 	bool start_stop = HasBit(p1, 0);
 	bool vehicle_list_window = HasBit(p1, 1);
 
-	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
+	VehicleListIdentifier vli;
+	if (!vli.Unpack(p2)) return CMD_ERROR;
+	if (!IsCompanyBuildableVehicleType(vli.vtype)) return CMD_ERROR;
 
 	if (vehicle_list_window) {
-		uint32 id = GB(p2, 16, 16);
-		uint16 window_type = p2 & VLW_MASK;
-
-		VehicleListIdentifier vli((VehicleListType)(window_type >> 8), vehicle_type, _current_company, id);
 		if (!GenerateVehicleSortList(&list, vli)) return CMD_ERROR;
 	} else {
 		/* Get the list of vehicles in the depot */
-		BuildDepotVehicleList(vehicle_type, tile, &list, NULL);
+		BuildDepotVehicleList(vli.vtype, tile, &list, NULL);
 	}
 
 	for (uint i = 0; i < list.Length(); i++) {
@@ -469,7 +463,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 		if (!!(v->vehstatus & VS_STOPPED) != start_stop) continue;
 
 		if (!vehicle_list_window) {
-			if (vehicle_type == VEH_TRAIN) {
+			if (vli.vtype == VEH_TRAIN) {
 				if (!Train::From(v)->IsInDepot()) continue;
 			} else {
 				if (!(v->vehstatus & VS_HIDDEN)) continue;
@@ -812,7 +806,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
  * @param vli     identifier of the vehicle list
  * @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
  */
-CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, const VehicleListIdentifier &vli)
+static CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, const VehicleListIdentifier &vli)
 {
 	VehicleList list;
 
@@ -845,10 +839,7 @@ CommandCost SendAllVehiclesToDepot(DoCommandFlag flags, bool service, const Vehi
  * @param p1 bitmask
  * - p1 0-20: bitvehicle ID to send to the depot
  * - p1 bits 25-8  - DEPOT_ flags (see vehicle_type.h)
- * @param p2 various bitmasked elements
- * - p2 bit  0-3  - DEPOT_ flags (see vehicle.h)
- * - p2 bit  8-10 - VLW flag (for mass goto depot)
- * - p2 bit 10-11 - Vehicle type
+ * @param p2 packed VehicleListIdentifier.
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -856,9 +847,9 @@ CommandCost CmdSendVehicleToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1
 {
 	if (p1 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
-		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		VehicleListIdentifier vli((VehicleListType)((p2 & VLW_MASK) >> 8), (VehicleType)GB(p2, 11, 2), _current_company, GB(p1, 0, 20));
-		return SendAllVehiclesToDepot(flags, (p2 & DEPOT_SERVICE) != 0, vli);
+		VehicleListIdentifier vli;
+		if (!vli.Unpack(p2)) return CMD_ERROR;
+		return SendAllVehiclesToDepot(flags, (p1 & DEPOT_SERVICE) != 0, vli);
 	}
 
 	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));

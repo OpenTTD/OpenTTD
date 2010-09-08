@@ -46,21 +46,6 @@ enum TrainDetailsWindowTabs {
 	TDW_TAB_TOTALS,    ///< Tab with sum of total cargo transported
 };
 
-/** Vehicle List Window type flags */
-enum VehicleListWindowType {
-	VLW_STANDARD      = 0 << 8,
-	VLW_SHARED_ORDERS = 1 << 8,
-	VLW_STATION_LIST  = 2 << 8,
-	VLW_DEPOT_LIST    = 3 << 8,
-	VLW_GROUP_LIST    = 4 << 8,
-	VLW_MASK          = 0x700,
-};
-
-static inline bool ValidVLWFlags(uint16 flags)
-{
-	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST || flags == VLW_DEPOT_LIST || flags == VLW_GROUP_LIST);
-}
-
 int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number);
 
 void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, int skip, VehicleID drag_dest = INVALID_VEHICLE);

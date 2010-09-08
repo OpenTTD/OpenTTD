@@ -482,10 +482,10 @@ public:
 
 			case GRP_WIDGET_START_ALL:
 			case GRP_WIDGET_STOP_ALL: { // Start/stop all vehicles of the list
-				DoCommandP(0, (1 << 1) | (widget == GRP_WIDGET_START_ALL ? (1 << 0) : 0),
-													((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
-													| (this->group_sel << 16)
-													| this->vehicle_type, CMD_MASS_START_STOP);
+				VehicleListIdentifier vli(this->window_number);
+				vli.type = IsAllGroupID(this->group_sel) ? VL_STANDARD : VL_GROUP_LIST;
+				vli.index = this->group_sel;
+				DoCommandP(0, (1 << 1) | (widget == GRP_WIDGET_START_ALL ? (1 << 0) : 0), vli.Pack(), CMD_MASS_START_STOP);
 				break;
 			}
 
@@ -573,13 +573,14 @@ public:
 						ShowReplaceGroupVehicleWindow(this->group_sel, this->vehicle_type);
 						break;
 					case ADI_SERVICE: // Send for servicing
-						DoCommandP(0, this->group_sel | DEPOT_MASS_SEND | DEPOT_SERVICE, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK) |
-									this->vehicle_type << 11, GetCmdSendToDepot(this->vehicle_type));
+					case ADI_DEPOT: { // Send to Depots
+						VehicleListIdentifier vli(this->window_number);
+						vli.type = IsAllGroupID(this->group_sel) ? VL_STANDARD : VL_GROUP_LIST;
+						vli.index = this->group_sel;
+						DoCommandP(0, DEPOT_MASS_SEND | (index == ADI_SERVICE ? DEPOT_SERVICE : 0U), vli.Pack(), GetCmdSendToDepot(this->vehicle_type));
 						break;
-					case ADI_DEPOT: // Send to Depots
-						DoCommandP(0, this->group_sel | DEPOT_MASS_SEND, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK) |
-									this->vehicle_type << 11, GetCmdSendToDepot(this->vehicle_type));
-						break;
+					}
+
 					case ADI_ADD_SHARED: // Add shared Vehicles
 						assert(Group::IsValidID(this->group_sel));
 
