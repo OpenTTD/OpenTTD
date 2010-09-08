@@ -433,12 +433,13 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * Starts or stops a lot of vehicles
  * @param tile Tile of the depot where the vehicles are started/stopped (only used for depots)
  * @param flags type of operation
- * @param p1 Station/Order/Depot ID (only used for vehicle list windows)
+ * @param p1 bitmask
+ *   - bit 0 false = start vehicles, true = stop vehicles
+ *   - bit 1 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
  * @param p2 bitmask
  *   - bit 0-4 Vehicle type
- *   - bit 5 false = start vehicles, true = stop vehicles
- *   - bit 6 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
  *   - bit 8-11 Vehicle List Window type (ignored unless bit 6 is set)
+ *   - bit 16-31 Station/Order/Depot ID (only used for vehicle list windows)
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -446,13 +447,13 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 {
 	VehicleList list;
 	VehicleType vehicle_type = Extract<VehicleType, 0, 3>(p2);
-	bool start_stop = HasBit(p2, 5);
-	bool vehicle_list_window = HasBit(p2, 6);
+	bool start_stop = HasBit(p1, 0);
+	bool vehicle_list_window = HasBit(p1, 1);
 
 	if (!IsCompanyBuildableVehicleType(vehicle_type)) return CMD_ERROR;
 
 	if (vehicle_list_window) {
-		uint32 id = p1;
+		uint32 id = GB(p2, 16, 16);
 		uint16 window_type = p2 & VLW_MASK;
 
 		if (!GenerateVehicleSortList(&list, vehicle_type, _current_company, id, window_type)) return CMD_ERROR;

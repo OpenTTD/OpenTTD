@@ -741,7 +741,7 @@ struct DepotWindow : Window {
 
 			case DEPOT_WIDGET_STOP_ALL:
 			case DEPOT_WIDGET_START_ALL:
-				DoCommandP(this->window_number, 0, this->type | (widget == DEPOT_WIDGET_START_ALL ? (1 << 5) : 0), CMD_MASS_START_STOP);
+				DoCommandP(this->window_number, (widget == DEPOT_WIDGET_START_ALL ? (1 << 0) : 0), this->type, CMD_MASS_START_STOP);
 				break;
 
 			case DEPOT_WIDGET_SELL_ALL:

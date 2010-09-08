@@ -1286,8 +1286,7 @@ public:
 
 			case VLW_WIDGET_STOP_ALL:
 			case VLW_WIDGET_START_ALL:
-				DoCommandP(0, GB(this->window_number, 16, 16),
-						(this->window_number & VLW_MASK) | (1 << 6) | (widget == VLW_WIDGET_START_ALL ? (1 << 5) : 0) | this->vehicle_type, CMD_MASS_START_STOP);
+				DoCommandP(0, (1 << 1) | (widget == VLW_WIDGET_START_ALL ? (1 << 0) : 0), GB(this->window_number, 16, 16) << 16 | (this->window_number & VLW_MASK) | this->vehicle_type, CMD_MASS_START_STOP);
 				break;
 		}
 	}

@@ -481,11 +481,10 @@ public:
 
 			case GRP_WIDGET_START_ALL:
 			case GRP_WIDGET_STOP_ALL: { // Start/stop all vehicles of the list
-				DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
-													| (1 << 6)
-													| (widget == GRP_WIDGET_START_ALL ? (1 << 5) : 0)
+				DoCommandP(0, (1 << 1) | (widget == GRP_WIDGET_START_ALL ? (1 << 0) : 0),
+													((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
+													| (this->group_sel << 16)
 													| this->vehicle_type, CMD_MASS_START_STOP);
-
 				break;
 			}
 
