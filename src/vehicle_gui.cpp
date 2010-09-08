@@ -1306,12 +1306,12 @@ public:
 						ShowReplaceGroupVehicleWindow(DEFAULT_GROUP, this->vehicle_type);
 						break;
 					case ADI_SERVICE: // Send for servicing
-						DoCommandP(0, GB(this->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
-							(this->window_number & VLW_MASK) | this->vehicle_type << 11 | DEPOT_MASS_SEND | DEPOT_SERVICE, GetCmdSendToDepot(this->vehicle_type));
+						DoCommandP(0, GB(this->window_number, 16, 16) | DEPOT_MASS_SEND | DEPOT_SERVICE /* StationID or OrderID (depending on VLW) */,
+							(this->window_number & VLW_MASK) | this->vehicle_type << 11, GetCmdSendToDepot(this->vehicle_type));
 						break;
 					case ADI_DEPOT: // Send to Depots
-						DoCommandP(0, GB(this->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
-							(this->window_number & VLW_MASK) | this->vehicle_type << 11 | DEPOT_MASS_SEND, GetCmdSendToDepot(this->vehicle_type));
+						DoCommandP(0, GB(this->window_number, 16, 16) | DEPOT_MASS_SEND /* StationID or OrderID (depending on VLW) */,
+							(this->window_number & VLW_MASK) | this->vehicle_type << 11, GetCmdSendToDepot(this->vehicle_type));
 						break;
 
 					default: NOT_REACHED();
@@ -2262,7 +2262,7 @@ public:
 			}
 
 			case VVW_WIDGET_GOTO_DEPOT: // goto hangar
-				DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, GetCmdSendToDepot(v));
+				DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0U, GetCmdSendToDepot(v));
 				break;
 			case VVW_WIDGET_REFIT_VEH: // refit
 				ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID, this);

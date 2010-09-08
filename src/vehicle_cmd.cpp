@@ -823,7 +823,7 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
 	bool had_success = false;
 	for (uint i = 0; i < list.Length(); i++) {
 		const Vehicle *v = list[i];
-		CommandCost ret = DoCommand(v->tile, v->index, (service ? 1 : 0) | DEPOT_DONT_CANCEL, flags, GetCmdSendToDepot(type));
+		CommandCost ret = DoCommand(v->tile, v->index | (service ? DEPOT_SERVICE : 0U) | DEPOT_DONT_CANCEL, 0, flags, GetCmdSendToDepot(type));
 
 		if (ret.Succeeded()) {
 			had_success = true;
@@ -843,7 +843,9 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
  * Send a vehicle to the depot.
  * @param tile unused
  * @param flags for command type
- * @param p1 vehicle ID to send to the depot
+ * @param p1 bitmask
+ * - p1 0-20: bitvehicle ID to send to the depot
+ * - p1 bits 25-8  - DEPOT_ flags (see vehicle_type.h)
  * @param p2 various bitmasked elements
  * - p2 bit  0-3  - DEPOT_ flags (see vehicle.h)
  * - p2 bit  8-10 - VLW flag (for mass goto depot)
@@ -853,16 +855,16 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, DoCommandFlag flags, bool s
  */
 CommandCost CmdSendVehicleToDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	if (p2 & DEPOT_MASS_SEND) {
+	if (p1 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot((VehicleType)GB(p2, 11, 2), flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
+		return SendAllVehiclesToDepot((VehicleType)GB(p2, 11, 2), flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), GB(p1, 0, 20));
 	}
 
-	Vehicle *v = Vehicle::GetIfValid(p1);
+	Vehicle *v = Vehicle::GetIfValid(GB(p1, 0, 20));
 	if (v == NULL) return CMD_ERROR;
 
-	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
+	return v->SendToDepot(flags, (DepotCommand)(p1 & DEPOT_COMMAND_MASK));
 }
 
 /**

@@ -1374,7 +1374,7 @@ static void AircraftEventHandler_HeliTakeOff(Aircraft *v, const AirportFTAClass 
 	/* Send the helicopter to a hangar if needed for replacement */
 	if (v->NeedsAutomaticServicing()) {
 		Backup<CompanyByte> cur_company(_current_company, v->owner, FILE_LINE);
-		DoCommand(v->tile, v->index, DEPOT_SERVICE | DEPOT_LOCATE_HANGAR, DC_EXEC, CMD_SEND_VEHICLE_TO_DEPOT);
+		DoCommand(v->tile, v->index | DEPOT_SERVICE | DEPOT_LOCATE_HANGAR, 0, DC_EXEC, CMD_SEND_VEHICLE_TO_DEPOT);
 		cur_company.Restore();
 	}
 }
@@ -1424,7 +1424,7 @@ static void AircraftEventHandler_Landing(Aircraft *v, const AirportFTAClass *apc
 	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed */
 	if (v->NeedsAutomaticServicing()) {
 		Backup<CompanyByte> cur_company(_current_company, v->owner, FILE_LINE);
-		DoCommand(v->tile, v->index, DEPOT_SERVICE, DC_EXEC, CMD_SEND_VEHICLE_TO_DEPOT);
+		DoCommand(v->tile, v->index | DEPOT_SERVICE, 0, DC_EXEC, CMD_SEND_VEHICLE_TO_DEPOT);
 		cur_company.Restore();
 	}
 }

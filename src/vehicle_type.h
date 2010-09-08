@@ -54,14 +54,13 @@ enum VehiclePathFinders {
 	VPF_YAPF = 2, ///< Yet Another PathFinder
 };
 
-/* Flags to add to p2 for goto depot commands
- * Note: bits 8-10 are used for VLW flags */
+/** Flags to add to p1 for goto depot commands. */
 enum DepotCommand {
-	DEPOT_SERVICE       = (1 << 0), ///< The vehicle will leave the depot right after arrival (serivce only)
-	DEPOT_MASS_SEND     = (1 << 1), ///< Tells that it's a mass send to depot command (type in VLW flag)
-	DEPOT_DONT_CANCEL   = (1 << 2), ///< Don't cancel current goto depot command if any
-	DEPOT_LOCATE_HANGAR = (1 << 3), ///< Find another airport if the target one lacks a hangar
-	DEPOT_COMMAND_MASK  = 0xF,
+	DEPOT_SERVICE       = (1U << 28), ///< The vehicle will leave the depot right after arrival (serivce only)
+	DEPOT_MASS_SEND     = (1U << 29), ///< Tells that it's a mass send to depot command (type in VLW flag)
+	DEPOT_DONT_CANCEL   = (1U << 30), ///< Don't cancel current goto depot command if any
+	DEPOT_LOCATE_HANGAR = (1U << 31), ///< Find another airport if the target one lacks a hangar
+	DEPOT_COMMAND_MASK  = 0xFU << 28,
 };
 
 static const uint MAX_LENGTH_VEHICLE_NAME_BYTES  =  31; ///< The maximum length of a vehicle name in bytes including '\0'

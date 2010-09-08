@@ -573,12 +573,12 @@ public:
 						ShowReplaceGroupVehicleWindow(this->group_sel, this->vehicle_type);
 						break;
 					case ADI_SERVICE: // Send for servicing
-						DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK) |
-									this->vehicle_type << 11 | DEPOT_MASS_SEND | DEPOT_SERVICE, GetCmdSendToDepot(this->vehicle_type));
+						DoCommandP(0, this->group_sel | DEPOT_MASS_SEND | DEPOT_SERVICE, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK) |
+									this->vehicle_type << 11, GetCmdSendToDepot(this->vehicle_type));
 						break;
 					case ADI_DEPOT: // Send to Depots
-						DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK) |
-									this->vehicle_type << 11 | DEPOT_MASS_SEND, GetCmdSendToDepot(this->vehicle_type));
+						DoCommandP(0, this->group_sel | DEPOT_MASS_SEND, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK) |
+									this->vehicle_type << 11, GetCmdSendToDepot(this->vehicle_type));
 						break;
 					case ADI_ADD_SHARED: // Add shared Vehicles
 						assert(Group::IsValidID(this->group_sel));
