@@ -20,10 +20,12 @@
 
 ##id 0x0000
 STR_NULL                                                        :
+STR_EMPTY                                                       :
 STR_JUST_NOTHING                                                :Nulo
 
 # Cargo related strings
 # Plural cargo name
+STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :Pasajero
 STR_CARGO_PLURAL_COAL                                           :Karbono
 STR_CARGO_PLURAL_MAIL                                           :Posto
@@ -56,6 +58,7 @@ STR_CARGO_PLURAL_PLASTIC                                        :Plastiko
 STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Gasoza Drinkaji
 
 # Singular cargo name
+STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Pasajero
 STR_CARGO_SINGULAR_COAL                                         :Karbono
 STR_CARGO_SINGULAR_MAIL                                         :Posto
@@ -88,8 +91,46 @@ STR_CARGO_SINGULAR_PLASTIC                                      :Plastiko
 STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gasoza Drinkajo
 
 # Quantity of cargo
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_OIL                                                :{VOLUME} de oleo
+STR_QUANTITY_WOOD                                               :{WEIGHT} de ligno
+STR_QUANTITY_STEEL                                              :{WEIGHT} de stalo
+STR_QUANTITY_FRUIT                                              :{WEIGHT} de frukto
+STR_QUANTITY_FOOD                                               :{WEIGHT} de manjajo
+STR_QUANTITY_PAPER                                              :{WEIGHT} de papero
+STR_QUANTITY_GOLD                                               :{COMMA} sak{P o i} de oro
+STR_QUANTITY_WATER                                              :{VOLUME} de aquo
+STR_QUANTITY_RUBBER                                             :{VOLUME} de kauchuko
+STR_QUANTITY_SUGAR                                              :{WEIGHT} de sukro
+STR_QUANTITY_TOYS                                               :{COMMA} ludil{P o i}
+STR_QUANTITY_SWEETS                                             :{COMMA} sak{P o i} de dolcaji
 
 # Two letter abbreviation of cargo name
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_COAL                                                 :{TINYFONT}KB
+STR_ABBREV_MAIL                                                 :{TINYFONT}PT
+STR_ABBREV_OIL                                                  :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}BT
+STR_ABBREV_GOODS                                                :{TINYFONT}VR
+STR_ABBREV_GRAIN                                                :{TINYFONT}GN
+STR_ABBREV_WOOD                                                 :{TINYFONT}LG
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}EC
+STR_ABBREV_STEEL                                                :{TINYFONT}ST
+STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KP
+STR_ABBREV_MAIZE                                                :{TINYFONT}MZ
+STR_ABBREV_FRUIT                                                :{TINYFONT}FT
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
+STR_ABBREV_FOOD                                                 :{TINYFONT}MJ
+STR_ABBREV_PAPER                                                :{TINYFONT}PP
+STR_ABBREV_GOLD                                                 :{TINYFONT}OR
+STR_ABBREV_WATER                                                :{TINYFONT}AQ
+STR_ABBREV_WHEAT                                                :{TINYFONT}FM
+STR_ABBREV_RUBBER                                               :{TINYFONT}KK
+STR_ABBREV_SUGAR                                                :{TINYFONT}SK
+STR_ABBREV_TOYS                                                 :{TINYFONT}LD
+STR_ABBREV_SWEETS                                               :{TINYFONT}DC
+STR_ABBREV_NONE                                                 :{TINYFONT}NL
 
 # 'Mode' of transport for cargoes
 
@@ -267,6 +308,9 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Nivo
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Montrar nam-urbi ad la mapo
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Montras alteso
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Montras nula industrii sur la mapo
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Montras omna industrii sur la mapo
 
 # Status bar messages
 
@@ -345,6 +389,12 @@ STR_NUM_LOW                                                     :Basa
 STR_NUM_NORMAL                                                  :Normala
 STR_NUM_HIGH                                                    :Alta
 
+STR_VARIETY_NONE                                                :Nulo
+STR_VARIETY_VERY_LOW                                            :Tre Basa
+STR_VARIETY_LOW                                                 :Basa
+STR_VARIETY_MEDIUM                                              :Mezgrada
+STR_VARIETY_HIGH                                                :Alta
+STR_VARIETY_VERY_HIGH                                           :Tre Alta
 
 STR_AI_SPEED_SLOW                                               :Lenta
 STR_AI_SPEED_MEDIUM                                             :Meza
@@ -365,7 +415,17 @@ STR_SEA_LEVEL_HIGH                                              :Alta
 # Advanced settings window
 
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nulo
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realista
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plata areo cirkum industrii: {ORANGE}{STRING} karel{P 0:1 o i}
+STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :nulo
+STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normala
+
+
+
+
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verda
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Obskur-verda
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
@@ -377,10 +437,7 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plata a
 
 
 
-
-
-
-
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :omnube
 
 
 
@@ -519,8 +576,16 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 # Airport toolbar
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Klaso di aeroportuo
 
+STR_AIRPORT_SMALL                                               :Mikra
+STR_AIRPORT_HELIPORT                                            :Heliportuo
+STR_AIRPORT_HELIDEPOT                                           :Helidepozeyo
+STR_AIRPORT_HELISTATION                                         :Helistaciono
 
+STR_AIRPORT_CLASS_SMALL                                         :Mikra aeroportui
+STR_AIRPORT_CLASS_LARGE                                         :Granda aeroportui
+STR_AIRPORT_CLASS_HELIPORTS                                     :Helikoptero-aeroportui
 
 
 # Landscaping toolbar
@@ -554,6 +619,7 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selektez
 # Land area window
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Klaso di aeroportuo: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nomo di aeroportuo: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nomo di aeroportuo-karelo: {LTBLUE}{STRING}
 
 # Description of land area of different tiles
 
@@ -607,8 +673,12 @@ STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Klozas
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektas - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Genitoro
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} ad {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekto
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Fervoyo-tipo
 
 
 # Sprite aligner window
@@ -768,6 +838,10 @@ STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servado
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servado ad {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}Haltinta
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}Haltinta
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}Komencinta
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Komencinta
 
 # Vehicle details
 
@@ -839,6 +913,7 @@ STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Kapacesi
 
 
 # AI debug window
+STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 
 
 
@@ -929,6 +1004,7 @@ STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ne e
 # Tree related errors
 
 # Bridge related errors
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponto tro longa
 
 # Tunnel related errors
 
@@ -1077,3 +1153,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})
