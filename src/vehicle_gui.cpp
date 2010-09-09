@@ -99,13 +99,13 @@ const StringID BaseVehicleListWindow::vehicle_depot_name[] = {
 	STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR
 };
 
-void BaseVehicleListWindow::BuildVehicleList(const VehicleListIdentifier &vli)
+void BaseVehicleListWindow::BuildVehicleList()
 {
 	if (!this->vehicles.NeedRebuild()) return;
 
-	DEBUG(misc, 3, "Building vehicle list for company %d at station %d", vli.company, vli.index);
+	DEBUG(misc, 3, "Building vehicle list type %d for company %d given index %d", this->vli.type, this->vli.company, this->vli.index);
 
-	GenerateVehicleSortList(&this->vehicles, vli);
+	GenerateVehicleSortList(&this->vehicles, this->vli);
 
 	uint unitnumber = 0;
 	for (const Vehicle **v = this->vehicles.Begin(); v != this->vehicles.End(); v++) {
@@ -139,7 +139,7 @@ Dimension BaseVehicleListWindow::GetActionDropdownSize(bool show_autoreplace, bo
 
 	if (show_autoreplace) d = maxdim(d, GetStringBoundingBox(STR_VEHICLE_LIST_REPLACE_VEHICLES));
 	d = maxdim(d, GetStringBoundingBox(STR_VEHICLE_LIST_SEND_FOR_SERVICING));
-	d = maxdim(d, GetStringBoundingBox(this->vehicle_depot_name[this->vehicle_type]));
+	d = maxdim(d, GetStringBoundingBox(this->vehicle_depot_name[this->vli.vtype]));
 
 	if (show_group) {
 		d = maxdim(d, GetStringBoundingBox(STR_GROUP_ADD_SHARED_VEHICLE));
@@ -161,7 +161,7 @@ DropDownList *BaseVehicleListWindow::BuildActionDropdownList(bool show_autorepla
 
 	if (show_autoreplace) list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_REPLACE_VEHICLES, ADI_REPLACE, false));
 	list->push_back(new DropDownListStringItem(STR_VEHICLE_LIST_SEND_FOR_SERVICING, ADI_SERVICE, false));
-	list->push_back(new DropDownListStringItem(this->vehicle_depot_name[this->vehicle_type], ADI_DEPOT, false));
+	list->push_back(new DropDownListStringItem(this->vehicle_depot_name[this->vli.vtype], ADI_DEPOT, false));
 
 	if (show_group) {
 		list->push_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE, ADI_ADD_SHARED, false));
@@ -1017,7 +1017,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	int text_left  = left  + (rtl ?           0 : text_offset);
 	int text_right = right - (rtl ? text_offset :           0);
 
-	bool show_orderlist = vehicle_type >= VEH_SHIP;
+	bool show_orderlist = this->vli.vtype >= VEH_SHIP;
 	int orderlist_left  = left  + (rtl ? 0 : max(100 + text_offset, width / 2));
 	int orderlist_right = right - (rtl ? max(100 + text_offset, width / 2) : 0);
 
@@ -1083,15 +1083,12 @@ private:
 	};
 
 public:
-	VehicleListWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow()
+	VehicleListWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(window_number)
 	{
-		VehicleListIdentifier vli(window_number);
-		this->vehicle_type = vli.vtype;
-
 		/* Set up sorting. Make the window-specific _sorting variable
 		 * point to the correct global _sorting struct so we are freed
 		 * from having conditionals during window operation */
-		switch (this->vehicle_type) {
+		switch (this->vli.vtype) {
 			case VEH_TRAIN:    this->sorting = &_sorting.train; break;
 			case VEH_ROAD:     this->sorting = &_sorting.roadveh; break;
 			case VEH_SHIP:     this->sorting = &_sorting.ship; break;
@@ -1106,22 +1103,22 @@ public:
 		this->vehicles.SetListing(*this->sorting);
 		this->vehicles.ForceRebuild();
 		this->vehicles.NeedResort();
-		this->BuildVehicleList(vli);
+		this->BuildVehicleList();
 		this->SortVehicleList();
 
 		/* Set up the window widgets */
-		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->tool_tip = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vehicle_type;
+		this->GetWidget<NWidgetCore>(VLW_WIDGET_LIST)->tool_tip = STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP + this->vli.vtype;
 
-		if (vli.type == VL_SHARED_ORDERS) {
+		if (this->vli.type == VL_SHARED_ORDERS) {
 			this->GetWidget<NWidgetCore>(VLW_WIDGET_CAPTION)->widget_data = STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION;
 		} else {
-			this->GetWidget<NWidgetCore>(VLW_WIDGET_CAPTION)->widget_data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vehicle_type;
+			this->GetWidget<NWidgetCore>(VLW_WIDGET_CAPTION)->widget_data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vli.vtype;
 		}
 
 		this->FinishInitNested(desc, window_number);
-		this->owner = vli.company;
+		this->owner = this->vli.company;
 
-		if (this->vehicle_type == VEH_TRAIN) ResizeWindow(this, 65, 0);
+		if (this->vli.vtype == VEH_TRAIN) ResizeWindow(this, 65, 0);
 	}
 
 	~VehicleListWindow()
@@ -1133,9 +1130,9 @@ public:
 	{
 		switch (widget) {
 			case VLW_WIDGET_LIST:
-				resize->height = GetVehicleListHeight(this->vehicle_type, 1);
+				resize->height = GetVehicleListHeight(this->vli.vtype, 1);
 
-				switch (this->vehicle_type) {
+				switch (this->vli.vtype) {
 					case VEH_TRAIN:
 					case VEH_ROAD:
 						size->height = 6 * resize->height;
@@ -1149,7 +1146,7 @@ public:
 				break;
 
 			case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
-				Dimension d = this->GetActionDropdownSize(VehicleListIdentifier(this->window_number).type == VL_STANDARD, false);
+				Dimension d = this->GetActionDropdownSize(this->vli.type == VL_STANDARD, false);
 				d.height += padding.height;
 				d.width  += padding.width;
 				*size = maxdim(*size, d);
@@ -1162,12 +1159,11 @@ public:
 	{
 		switch (widget) {
 			case VLW_WIDGET_AVAILABLE_VEHICLES:
-				SetDParam(0, STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vehicle_type);
+				SetDParam(0, STR_VEHICLE_LIST_AVAILABLE_TRAINS + this->vli.vtype);
 				break;
 
 			case VLW_WIDGET_CAPTION: {
-				VehicleListIdentifier vli(this->window_number);
-				switch (vli.type) {
+				switch (this->vli.type) {
 					case VL_SHARED_ORDERS: // Shared Orders
 						if (this->vehicles.Length() == 0) {
 							/* We can't open this window without vehicles using this order
@@ -1179,20 +1175,20 @@ public:
 
 					case VL_STANDARD: // Company Name
 						SetDParam(0, STR_COMPANY_NAME);
-						SetDParam(1, vli.index);
+						SetDParam(1, this->vli.index);
 						SetDParam(3, this->vscroll->GetCount());
 						break;
 
 					case VL_STATION_LIST: // Station/Waypoint Name
-						SetDParam(0, Station::IsExpected(BaseStation::Get(vli.index)) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
-						SetDParam(1, vli.index);
+						SetDParam(0, Station::IsExpected(BaseStation::Get(this->vli.index)) ? STR_STATION_NAME : STR_WAYPOINT_NAME);
+						SetDParam(1, this->vli.index);
 						SetDParam(3, this->vscroll->GetCount());
 						break;
 
 					case VL_DEPOT_LIST:
 						SetDParam(0, STR_DEPOT_CAPTION);
-						SetDParam(1, this->vehicle_type);
-						SetDParam(2, vli.index);
+						SetDParam(1, this->vli.vtype);
+						SetDParam(2, this->vli.index);
 						SetDParam(3, this->vscroll->GetCount());
 						break;
 					default: NOT_REACHED();
@@ -1218,9 +1214,7 @@ public:
 
 	virtual void OnPaint()
 	{
-		VehicleListIdentifier vli(this->window_number);
-
-		this->BuildVehicleList(vli);
+		this->BuildVehicleList();
 		this->SortVehicleList();
 
 		if (this->vehicles.Length() == 0 && this->IsWidgetLowered(VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
@@ -1236,7 +1230,7 @@ public:
 			nwi->SetDirty(this);
 		}
 		if (this->owner == _local_company) {
-			this->SetWidgetDisabledState(VLW_WIDGET_AVAILABLE_VEHICLES, vli.type != VL_STANDARD);
+			this->SetWidgetDisabledState(VLW_WIDGET_AVAILABLE_VEHICLES, this->vli.type != VL_STANDARD);
 			this->SetWidgetsDisabledState(this->vehicles.Length() == 0,
 				VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 				VLW_WIDGET_STOP_ALL,
@@ -1260,7 +1254,7 @@ public:
 
 			case VLW_WIDGET_SORT_BY_PULLDOWN:// Select sorting criteria dropdown menu
 				ShowDropDownMenu(this, this->vehicle_sorter_names, this->vehicles.SortType(), VLW_WIDGET_SORT_BY_PULLDOWN, 0,
-						(this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
+						(this->vli.vtype == VEH_TRAIN || this->vli.vtype == VEH_ROAD) ? 0 : (1 << 10));
 				return;
 
 			case VLW_WIDGET_LIST: { // Matrix to show vehicles
@@ -1273,7 +1267,7 @@ public:
 			}
 
 			case VLW_WIDGET_AVAILABLE_VEHICLES:
-				ShowBuildVehicleWindow(INVALID_TILE, this->vehicle_type);
+				ShowBuildVehicleWindow(INVALID_TILE, this->vli.vtype);
 				break;
 
 			case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
@@ -1300,11 +1294,11 @@ public:
 
 				switch (index) {
 					case ADI_REPLACE: // Replace window
-						ShowReplaceGroupVehicleWindow(DEFAULT_GROUP, this->vehicle_type);
+						ShowReplaceGroupVehicleWindow(DEFAULT_GROUP, this->vli.vtype);
 						break;
 					case ADI_SERVICE: // Send for servicing
 					case ADI_DEPOT: // Send to Depots
-						DoCommandP(0, DEPOT_MASS_SEND | (index == ADI_SERVICE ? DEPOT_SERVICE : (DepotCommand)0), this->window_number, GetCmdSendToDepot(this->vehicle_type));
+						DoCommandP(0, DEPOT_MASS_SEND | (index == ADI_SERVICE ? DEPOT_SERVICE : (DepotCommand)0), this->window_number, GetCmdSendToDepot(this->vli.vtype));
 						break;
 
 					default: NOT_REACHED();
@@ -1319,10 +1313,9 @@ public:
 	{
 		if (_pause_mode != PM_UNPAUSED) return;
 		if (this->vehicles.NeedResort()) {
-			VehicleListIdentifier vli(this->window_number);
-			StationID station = (vli.type == VL_STATION_LIST) ? vli.index : INVALID_STATION;
+			StationID station = (this->vli.type == VL_STATION_LIST) ? this->vli.index : INVALID_STATION;
 
-			DEBUG(misc, 3, "Periodic resort %d list company %d at station %d", this->vehicle_type, this->owner, station);
+			DEBUG(misc, 3, "Periodic resort %d list company %d at station %d", this->vli.vtype, this->owner, station);
 			this->SetDirty();
 		}
 	}
@@ -1335,10 +1328,9 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
-		VehicleListIdentifier vli(this->window_number);
-		if (HasBit(data, 31) && vli.type == VL_SHARED_ORDERS) {
-			vli.index = GB(data, 0, 20);
-			this->window_number = vli.Pack();
+		if (HasBit(data, 31) && this->vli.type == VL_SHARED_ORDERS) {
+			this->vli.index = GB(data, 0, 20);
+			this->window_number = this->vli.Pack();
 			this->vehicles.ForceRebuild();
 			return;
 		}
