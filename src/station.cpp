@@ -40,6 +40,7 @@ BaseStation::~BaseStation()
 
 	Owner owner = this->owner;
 	if (!Company::IsValidID(owner)) owner = _local_company;
+	if (!Company::IsValidID(owner)) return; // Spectators
 	DeleteWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    owner, this->index).Pack());
 	DeleteWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD,     owner, this->index).Pack());
 	DeleteWindowById(WC_SHIPS_LIST,    VehicleListIdentifier(VL_STATION_LIST, VEH_SHIP,     owner, this->index).Pack());
