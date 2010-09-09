@@ -125,11 +125,17 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 
 /** Enum referring to the widgets of the NewGRF parameters window */
 enum ShowNewGRFParametersWidgets {
-	GRFPAR_WIDGET_BACKGROUND,  ///< Panel to draw the settings on
-	GRFPAR_WIDGET_SCROLLBAR,   ///< Scrollbar to scroll through all settings
-	GRFPAR_WIDGET_ACCEPT,      ///< Accept button
-	GRFPAR_WIDGET_RESET,       ///< Reset button
-	GRFPAR_WIDGET_DESCRIPTION, ///< Multi-line description of a parameter
+	GRFPAR_WIDGET_SHOW_NUMPAR,      ///< #NWID_SELECTION to optionally display #GRFPAR_WIDGET_NUMPAR
+	GRFPAR_WIDGET_NUMPAR_DEC,       ///< Button to decrease number of parameters
+	GRFPAR_WIDGET_NUMPAR_INC,       ///< Button to increase number of parameters
+	GRFPAR_WIDGET_NUMPAR,           ///< Optional number of parameters
+	GRFPAR_WIDGET_NUMPAR_TEXT,      ///< Text description
+	GRFPAR_WIDGET_BACKGROUND,       ///< Panel to draw the settings on
+	GRFPAR_WIDGET_SCROLLBAR,        ///< Scrollbar to scroll through all settings
+	GRFPAR_WIDGET_ACCEPT,           ///< Accept button
+	GRFPAR_WIDGET_RESET,            ///< Reset button
+	GRFPAR_WIDGET_SHOW_DESCRIPTION, ///< #NWID_SELECTION to optionally display parameter descriptions
+	GRFPAR_WIDGET_DESCRIPTION,      ///< Multi-line description of a parameter
 };
 
 /**
@@ -144,6 +150,7 @@ struct NewGRFParametersWindow : public Window {
 	uint clicked_row;      ///< The selected parameter
 	int line_height;       ///< Height of a row in the matrix widget.
 	Scrollbar *vscroll;
+	bool action14present;  ///< True if action14 information is present.
 
 	NewGRFParametersWindow(const WindowDesc *desc, GRFConfig *c) : Window(),
 		grf_config(c),
@@ -151,10 +158,15 @@ struct NewGRFParametersWindow : public Window {
 		timeout(0),
 		clicked_row(UINT_MAX)
 	{
+		this->action14present = (c->num_valid_params != lengthof(c->param) || c->param_info.Length() != 0);
+
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(GRFPAR_WIDGET_SCROLLBAR);
+		this->GetWidget<NWidgetStacked>(GRFPAR_WIDGET_SHOW_NUMPAR)->SetDisplayedPlane(this->action14present ? SZSP_HORIZONTAL : 0);
+		this->GetWidget<NWidgetStacked>(GRFPAR_WIDGET_SHOW_DESCRIPTION)->SetDisplayedPlane(this->action14present ? 0 : SZSP_HORIZONTAL);
 		this->FinishInitNested(desc);  // Initializes 'this->line_height' as side effect.
-		this->vscroll->SetCount(c->num_valid_params);
+
+		this->InvalidateData();
 	}
 
 	/**
@@ -171,6 +183,21 @@ struct NewGRFParametersWindow : public Window {
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
+			case GRFPAR_WIDGET_NUMPAR_DEC:
+			case GRFPAR_WIDGET_NUMPAR_INC: {
+				size->width = size->height = FONT_HEIGHT_NORMAL;
+				break;
+			}
+
+			case GRFPAR_WIDGET_NUMPAR: {
+				SetDParam(0, 999);
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
+				d.width += padding.width;
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+
 			case GRFPAR_WIDGET_BACKGROUND:
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 
@@ -188,6 +215,15 @@ struct NewGRFParametersWindow : public Window {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
+	}
+
+	virtual void SetStringParameters(int widget) const
+	{
+		switch (widget) {
+			case GRFPAR_WIDGET_NUMPAR:
+				SetDParam(0, this->vscroll->GetCount());
+				break;
+		}
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -209,7 +245,7 @@ struct NewGRFParametersWindow : public Window {
 		uint text_right   = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
 
 		int y = r.top;
-		for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->grf_config->num_valid_params; i++) {
+		for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < this->vscroll->GetCount(); i++) {
 			GRFParameterInfo *par_info = (i < this->grf_config->param_info.Length()) ? this->grf_config->param_info[i] : NULL;
 			if (par_info == NULL) par_info = GetDummyParameterInfo(i);
 			uint32 current_value = par_info->GetValue(this->grf_config);
@@ -248,9 +284,27 @@ struct NewGRFParametersWindow : public Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
+			case GRFPAR_WIDGET_NUMPAR_DEC:
+				if (!this->action14present && this->grf_config->num_params > 0) {
+					this->grf_config->num_params--;
+					this->InvalidateData();
+					SetWindowClassesDirty(WC_GAME_OPTIONS); // Is always the newgrf window
+				}
+				break;
+
+			case GRFPAR_WIDGET_NUMPAR_INC: {
+				GRFConfig *c = this->grf_config;
+				if (!this->action14present && c->num_params < c->num_valid_params) {
+					c->param[c->num_params++] = 0;
+					this->InvalidateData();
+					SetWindowClassesDirty(WC_GAME_OPTIONS); // Is always the newgrf window
+				}
+				break;
+			}
+
 			case GRFPAR_WIDGET_BACKGROUND: {
 				uint num = this->vscroll->GetScrolledRowFromWidget(pt.y, this, GRFPAR_WIDGET_BACKGROUND);
-				if (num >= this->grf_config->num_valid_params) break;
+				if (num >= this->vscroll->GetCount()) break;
 				if (this->clicked_row != num) {
 					DeleteChildWindows(WC_QUERY_STRING);
 					this->clicked_row = num;
@@ -296,6 +350,8 @@ struct NewGRFParametersWindow : public Window {
 
 			case GRFPAR_WIDGET_RESET:
 				this->grf_config->SetParameterDefaults();
+				this->InvalidateData();
+				SetWindowClassesDirty(WC_GAME_OPTIONS); // Is always the newgrf window
 				break;
 
 			case GRFPAR_WIDGET_ACCEPT:
@@ -322,6 +378,20 @@ struct NewGRFParametersWindow : public Window {
 		nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
+	virtual void OnInvalidateData(int data)
+	{
+		if (!this->action14present) {
+			this->SetWidgetDisabledState(GRFPAR_WIDGET_NUMPAR_DEC, this->grf_config->num_params == 0);
+			this->SetWidgetDisabledState(GRFPAR_WIDGET_NUMPAR_INC, this->grf_config->num_params >= this->grf_config->num_valid_params);
+		}
+
+		this->vscroll->SetCount(this->action14present ? this->grf_config->num_valid_params : this->grf_config->num_params);
+		if (this->clicked_row != UINT_MAX && this->clicked_row >= this->vscroll->GetCount()) {
+			this->clicked_row = UINT_MAX;
+			DeleteChildWindows(WC_QUERY_STRING);
+		}
+	}
+
 	virtual void OnTick()
 	{
 		if (--this->timeout == 0) {
@@ -338,11 +408,22 @@ static const NWidgetPart _nested_newgrf_parameter_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_MAUVE),
 		NWidget(WWT_CAPTION, COLOUR_MAUVE), SetDataTip(STR_NEWGRF_PARAMETERS_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, GRFPAR_WIDGET_SHOW_NUMPAR),
+		NWidget(WWT_PANEL, COLOUR_MAUVE), SetResize(1, 0), SetFill(1, 0), SetPIP(4, 0, 4),
+			NWidget(NWID_HORIZONTAL), SetPIP(4, 0, 4),
+				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, GRFPAR_WIDGET_NUMPAR_DEC), SetMinimalSize(12, 12), SetDataTip(AWV_DECREASE, STR_NULL),
+				NWidget(WWT_PUSHARROWBTN, COLOUR_YELLOW, GRFPAR_WIDGET_NUMPAR_INC), SetMinimalSize(12, 12), SetDataTip(AWV_INCREASE, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_MAUVE, GRFPAR_WIDGET_NUMPAR), SetResize(1, 0), SetFill(1, 0), SetPadding(0, 0, 0, 4), SetDataTip(STR_NEWGRF_PARAMETERS_NUM_PARAM, STR_NULL),
+			EndContainer(),
+		EndContainer(),
+	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_MATRIX, COLOUR_MAUVE, GRFPAR_WIDGET_BACKGROUND), SetMinimalSize(188, 182), SetResize(1, 1), SetFill(1, 0), SetDataTip(0x501, STR_NULL), SetScrollbar(GRFPAR_WIDGET_SCROLLBAR),
 		NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, GRFPAR_WIDGET_SCROLLBAR),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_MAUVE, GRFPAR_WIDGET_DESCRIPTION), SetResize(1, 0), SetFill(1, 0),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, GRFPAR_WIDGET_SHOW_DESCRIPTION),
+		NWidget(WWT_PANEL, COLOUR_MAUVE, GRFPAR_WIDGET_DESCRIPTION), SetResize(1, 0), SetFill(1, 0),
+		EndContainer(),
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
