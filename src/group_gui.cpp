@@ -190,6 +190,9 @@ public:
 		this->vehicles.SetListing(*this->sorting);
 		this->vehicles.ForceRebuild();
 		this->vehicles.NeedResort();
+
+		vli.type = IsAllGroupID(this->group_sel) ? VL_STANDARD : VL_GROUP_LIST;
+		vli.index = group_sel;
 		this->BuildVehicleList(vli);
 		this->SortVehicleList();
 
@@ -303,6 +306,8 @@ public:
 
 		/* If we select the all vehicles, this->list will contain all vehicles of the owner
 		 * else this->list will contain all vehicles which belong to the selected group */
+		vli.type = IsAllGroupID(this->group_sel) ? VL_STANDARD : VL_GROUP_LIST;
+		vli.index = group_sel;
 		this->BuildVehicleList(vli);
 		this->SortVehicleList();
 
