@@ -139,6 +139,18 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 			}
 			break;
 
+		case VL_GROUP_LIST:
+			if (vli.index != ALL_GROUP) {
+				FOR_ALL_VEHICLES(v) {
+					if (v->type == vli.vtype && v->IsPrimaryVehicle() &&
+							v->owner == vli.company && v->group_id == vli.index) {
+						*list->Append() = v;
+					}
+				}
+				break;
+			}
+			/* FALL THROUGH */
+
 		case VL_STANDARD:
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == vli.vtype && v->owner == vli.company && v->IsPrimaryVehicle()) {
@@ -158,15 +170,6 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 							break;
 						}
 					}
-				}
-			}
-			break;
-
-		case VL_GROUP_LIST:
-			FOR_ALL_VEHICLES(v) {
-				if (v->type == vli.vtype && v->IsPrimaryVehicle() &&
-						v->owner == vli.company && v->group_id == vli.index) {
-					*list->Append() = v;
 				}
 			}
 			break;
