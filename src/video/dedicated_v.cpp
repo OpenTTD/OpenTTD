@@ -23,6 +23,7 @@
 #include "../blitter/factory.hpp"
 #include "../company_func.h"
 #include "../core/random_func.hpp"
+#include "../saveload/saveload.h"
 #include "dedicated_v.h"
 
 #ifdef BEOS_NET_SERVER
@@ -70,6 +71,7 @@ static void OS2_SwitchToConsoleMode()
 /* Signal handlers */
 static void DedicatedSignalHandler(int sig)
 {
+	if (_game_mode == GM_NORMAL && _settings_client.gui.autosave_on_exit) DoExitSave();
 	_exit_game = true;
 	signal(sig, DedicatedSignalHandler);
 }
