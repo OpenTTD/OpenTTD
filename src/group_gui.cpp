@@ -191,9 +191,10 @@ public:
 		this->BuildVehicleList();
 		this->SortVehicleList();
 
+		this->owner = vli.company;
 		this->groups.ForceRebuild();
 		this->groups.NeedResort();
-		this->BuildGroupList(owner);
+		this->BuildGroupList(this->owner);
 		this->groups.Sort(&GroupNameSorter);
 
 		this->GetWidget<NWidgetCore>(GRP_WIDGET_CAPTION)->widget_data = STR_VEHICLE_LIST_TRAIN_CAPTION + this->vli.vtype;
@@ -205,7 +206,6 @@ public:
 		this->GetWidget<NWidgetCore>(GRP_WIDGET_REPLACE_PROTECTION)->widget_data += this->vli.vtype;
 
 		this->FinishInitNested(desc, window_number);
-		this->owner = vli.company;
 	}
 
 	~VehicleGroupWindow()
