@@ -2415,6 +2415,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Réiniti
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Régler tous les paramètres à leur valeur par défaut
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paramètre {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}{NBSP}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombre de paramètres{NBSP}: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspection - {STRING}

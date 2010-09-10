@@ -29,7 +29,7 @@ STR_JUST_NOTHING                                                :ไม่มี
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :ผู้โดยสาร
 STR_CARGO_PLURAL_COAL                                           :ถ่านหิน
-STR_CARGO_PLURAL_MAIL                                           :ไปรษณีย์
+STR_CARGO_PLURAL_MAIL                                           :จดหมาย
 STR_CARGO_PLURAL_OIL                                            :น้ำมัน
 STR_CARGO_PLURAL_LIVESTOCK                                      :ปศุสัตว์
 STR_CARGO_PLURAL_GOODS                                          :สินค้า
@@ -37,7 +37,7 @@ STR_CARGO_PLURAL_GRAIN                                          :ข้าว
 STR_CARGO_PLURAL_WOOD                                           :ไม้
 STR_CARGO_PLURAL_IRON_ORE                                       :แร่เหล็ก
 STR_CARGO_PLURAL_STEEL                                          :เหล็กกล้า
-STR_CARGO_PLURAL_VALUABLES                                      :เงินตรา
+STR_CARGO_PLURAL_VALUABLES                                      :ของมีค่า
 STR_CARGO_PLURAL_COPPER_ORE                                     :แร่ทองแดง
 STR_CARGO_PLURAL_MAIZE                                          :ข้าวโพด
 STR_CARGO_PLURAL_FRUIT                                          :ผลไม้
@@ -105,7 +105,7 @@ STR_QUANTITY_GRAIN                                              :ข้าว {W
 STR_QUANTITY_WOOD                                               :ไม้ {WEIGHT}
 STR_QUANTITY_IRON_ORE                                           :แร่เหล็ก {WEIGHT}
 STR_QUANTITY_STEEL                                              :เหล็กกล้า {WEIGHT}
-STR_QUANTITY_VALUABLES                                          :เงินตรา {COMMA} ถุง
+STR_QUANTITY_VALUABLES                                          :ของมีค่า {COMMA} ถุง
 STR_QUANTITY_COPPER_ORE                                         :แร่ทองแดง {WEIGHT}
 STR_QUANTITY_MAIZE                                              :ข้าวโพด {WEIGHT}
 STR_QUANTITY_FRUIT                                              :ผลไม้ {WEIGHT}
@@ -165,7 +165,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}ว�
 STR_ABBREV_ALL                                                  :{TINYFONT}ทั้งหมด
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :คน
+STR_PASSENGERS                                                  :ผู้โดยสาร
 STR_BAGS                                                        :ถุง
 STR_TONS                                                        :ตัน
 STR_LITERS                                                      :ลิตร
@@ -1109,7 +1109,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}กำ�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ไม่เลย
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ตามอุตสาหกรรมอื่นๆ
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :สำรวจ
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}อนุญาตให้มีหลายอุตสาหกรรมต่อหนึ่งเมือง: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}อนุญาตให้มีหลายอุตสาหกรรมที่เหมือนกันต่อหนึ่งเมือง: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}แสดงวันที่แบบยาวบนแถบสถานะเสมอ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}แสดงสัญญาณในข้างที่ขับ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}แสดงหน้าต่างการเงินเมื่อสิ้นสุดแต่ละปี: {ORANGE}{STRING}
@@ -1119,7 +1119,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :ฝั่งใ
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :ตรงกลาง
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ฝั่งไกล
 STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}การเข้าคิวรถ (มี quantum effects): {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}แพนหน้าต่างเมื่อเม้าส์อยู่ใกล้ขอบ: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}เลื่อนหน้าต่างเมื่อเม้าส์อยู่ใกล้ขอบหน้าจอ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}อนุญาตให้ติดสินบนเจ้าหน้าที่ท้องถิ่น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}อนุญาตให้ซื้อสิทธิ์การขนส่งแต่เพียงผู้เดียว: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}อนุญาตให้ส่งเงินแก่บริษัทอื่นๆ: {ORANGE}{STRING}
@@ -1172,8 +1172,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :ทวนเข
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :ตามเข็มนาฬิกา
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}ระดับความสูงที่ แผนที่ flat scenario ได้: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}ยอมให้เปลี่ยนสภาพพื้นผิวบริเวณช่องริมขอบแผนที่: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}หนึ่งช่องหรือมากกว่านั้นที่ขอบด้านทิศเหนือไม่ว่าง
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}ช่องหนึ่งหรือมากกว่าที่ขอบด้านในด้านหนึ่งไม่ใช่น้ำ
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}ขอบทางเหนือมีอย่างน้อยหนึ่งช่องหรือมากกว่านั้นที่ไม่ว่าง
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}หนึ่งช่องหรือมากกว่านั้นที่ขอบด้านในด้านหนึ่งไม่ใช่น้ำ
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}ระยะแผ่สถานีสูงสุด: {ORANGE}{STRING} {RED}คำเตือน: ยิ่งค่าสูงยิ่งทำให้เกมช้า
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}ซ่อมบำรุง เฮลิคอปเตอร์ ที่ลานจอด ฮ. โดยอัตโนมัติ: {ORANGE}{STRING}
@@ -1261,7 +1261,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}ปี�
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}ยอมให้มีเศรษฐกิจที่ราบรื่น (มากขึ้น, เปลี่ยนแปลงเล็กน้อย): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}อนุญาตให้ซื้อหุ้นจากบริษัทอื่นได้: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}เปอร์เซนต์ของฐานรายได้ที่ถูกส่งเข้าระบบป้อนข้อมูล: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}เมื่อลาก ปักสัญญาณทุก ๆ: {ORANGE}{STRING} ช่อง
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}เมื่อลาก ให้ทำการปักเสาสัญญาณทุก ๆ: {ORANGE}{STRING} ช่อง
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}สร้างสัญญาณธงโดยอัตโนมัติก่อน: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}เปิดใช้งาน GUI สำหรับอานัติสัญญาณ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}ชนิดอานัติสัญญาณปริยายที่จะใช้: {ORANGE}{STRING}
@@ -1692,6 +1692,7 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}กร�
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}ตั้งค่าใหม่
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}ตั้งค่าพารามิเตอร์ทุกตัวให้เป็นแบบค่าดั้งเดิม
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}จำนวนพารามิเตอร์: {ORANGE}{NUM}
 
 # NewGRF inspect window
 
@@ -1720,6 +1721,7 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}คำ�
 
 # Sign list window
 STR_SIGN_LIST_CLEAR                                             :{BLACK}ล้างตัวกรอง
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}ยกเลิกคำกรอง
 
 # Sign window
 

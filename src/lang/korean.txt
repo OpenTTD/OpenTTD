@@ -560,6 +560,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}자세�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}이 회사의 상세정보 보기
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}차량:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}역:
@@ -2404,8 +2405,10 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF �
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 파라미터 바꾸기
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}닫기
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}리셋
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :파라미터 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}파라미터 번호: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}NEWGRF 검사 - {STRING}

@@ -232,6 +232,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Renomear
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Pechar fiestra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da fiestra - arrástrao para move-la fiestra
+STR_TOOLTIP_SHADE                                               :{BLACK}Sombrear fiestra - mostra so a barra de título
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta fiestra coma non pechable pola tecla de 'Pechar tódalas fiestras'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Pincha e arrastra para redimensiona-la fiestra
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Intercambiar entre fiestra grande/pequena
@@ -606,7 +607,7 @@ STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Seleccio
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selecciona-lo programa 'Persoal 1'
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecciona-lo programa 'Persoal 2'
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Activar/desactivar programa aleatorio
-STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostra-la pista musical na fiestra de selección
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Mostrar a fiestra de selección de pista musical
 
 
 # Playlist window
@@ -649,7 +650,7 @@ STR_SMALLMAP_TYPE_OWNERS                                        :Propietarios
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Amosa-los contornos do terreo no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Amosa-los vehículos no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Amosa-las industrias no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Amosa-las rutas de transporte no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Amosar as rutas de transporte no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Amosa-la vexetación no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Amosa-los propietarios do terreo no mapa
 
@@ -693,7 +694,7 @@ STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Non most
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mostrar tódalas industrias no mapa
 
 # Status bar messages
-STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Amosa-la última mesaxe ou noticia
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar a última mensaxe ou noticia
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EN PAUSA  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOGRABADO
@@ -973,7 +974,7 @@ STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Cambiar 
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista previa: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Libras Esterlinas (£) na túa moeda
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambia-lo parámetro de moeda personalizada
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar o parámetro de moeda personalizada
 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Nivel de Dificultade
@@ -1373,12 +1374,12 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Está
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampas
 STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de confirmación indican se usaches esta trampa antes
-STR_CHEATS_WARNING                                              :{BLACK}¡Advertencia! Estás a piques de traizoa-los teus opoñentes. Ten en conta que unha desgraza coma esta lembrarase eternamente.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementa-lo diñeiro en {CURRENCY}
+STR_CHEATS_WARNING                                              :{BLACK}¡Advertencia! Estás a piques de traizoar os teus opoñentes. Ten en conta que unha desgraza coma esta lembrarase eternamente.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementar o diñeiro en {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Xogando coma compañía: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadora máxica (elimina industrias, obx. non eliminables): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os tuneis poden cruzarse entre eles: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Permiti-la construción en modo pausa: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Permitir a construción en modo pausa: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Os avións jet non se estrelarán (frecuentemente) nos aeroportos pequenos: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Cambiar clima: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Escenario temperado
@@ -1386,7 +1387,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Escenario sub-�
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Escenario sub-tropical
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Escenario xoguetelandia
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar data: {ORANGE}{DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permiti-la modificación dos valores de producción: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir a modificación dos valores de producción: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Novo Esquema de Cor
@@ -2006,7 +2007,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Aeroportos para
 STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído xerado: {GOLD}{COMMA}
 
 # Landscaping toolbar
-STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modifica-lo terreo
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modificar o terreo
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Baixar unha esquina de terreo
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar unha esquina de terreo
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar terreo
@@ -2342,6 +2343,7 @@ STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Pechar
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reiniciar
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parámetro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Número de parámetros: {ORANGE}{NUM}
 
 # NewGRF inspect window
 
@@ -2384,7 +2386,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ficheir
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargados para os ficheiros que faltan
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Deshabilitáronse os ficheiros GRF que faltan
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Faltan ficheiro(s) GRF
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quita-la pausa pode pechar OpenTTD. Non notifiques os erros que se produzan.{}¿Estás seguro de querer quita-la pausa?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar a pausa pode pechar OpenTTD. Non notifiques os erros que se produzan.{}¿Está seguro de querer quitar a pausa?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Ningún
@@ -2493,7 +2495,7 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} en ruta dende {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Acepta
-STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostra-la lista da carga aceptada
+STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Mostrar a lista da carga aceptada
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Acepta: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Puntuacións:
@@ -2513,7 +2515,7 @@ STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 ############ range for rating ends
 
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centra a vista principal na situación da estación. Ctrl+Click abre un novo punto de vista da situación da estación
-STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambia-lo nome da estación
+STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambiar o nome da estación
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Mostrar tódolos trens que teñen esta estación nas súas ordes
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Mostrar tódolos vehículos de estrada que teñen esta estación nas súas ordes
@@ -2524,10 +2526,10 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renomear estaci
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambia lo nome do punto de ruta
+STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambiar o nome do punto de ruta
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Cambiar o nome da boia
 
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita-lo nome do punto de control
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar o nome do punto de control
 
 # Finances window
 STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzas {BLACK}{COMPANYNUM}
@@ -2585,9 +2587,9 @@ STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Seleccio
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Esquema de Cor
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Cambia-la cor dos vehículos da compañía
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Nome Compañía
-STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Cambia-lo nome da compañía
+STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Cambiar o nome da compañía
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Nome Presidente
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambia-lo nome do presidente
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambiar o nome do presidente
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Comprar un 25% das accións da compañía
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vender un 25% das accións da compañía
@@ -2611,7 +2613,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes da
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Producción no último mes:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportado)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centra-la vista principal na situación da industria
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar a vista principal na localización da industria. CTRl+Click abre unha nova fiestra na localización da industria
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Require: {YELLOW}{STRING}{STRING}
@@ -2745,6 +2747,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Renomea-
 
 # Depot window
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Cambiar o nome do depósito
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Nomear depósito
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
@@ -2789,8 +2792,8 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonar V
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar Barco
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esto construirá unha copia dun tren incluídos os vagóns. Pincha neste botón e despois nun tren dentro ou fóra do depósito. CTRL+Click comparte as ordes
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esto construirá unha copia do vehículo. Pincha neste botón e despois nun vehículo dentro ou fóra do depósito. CTRL+Click compartirá as ordes
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Isto comprará unha copia dun tren incluídos os vagóns. Pincha neste botón e despois nun tren dentro ou fóra do depósito. CTRL+Pinchar comparte as ordes
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Isto comprará unha copia do vehículo. Pincha neste botón e despois nun vehículo dentro ou fóra do depósito. CTRL+Pinchar compartirá as ordes
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto construíra unha copia do barco. Pincha neste botón e despois nun barco dentro ou fóra do depósito. CTRL+Click compartirá as ordes
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto construirá unha copia do avión. Pincha neste botón e nun avión que estea dentro ou fóra do hangar. CTRL+Click compartirá as ordes
 
@@ -2883,10 +2886,10 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esto con
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Obliga-lo tren a continuar sen esperar a que o sinal o indique
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Reaxusta-lo tren para un tipo de carga diferente
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Modificar o tren para un tipo de carga diferente
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Reaxustar vehículo para levar un tipo diferente de carga
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Reaxustar o barco para levar un tipo diferente de mercadoría
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Reaxusta-lo avión para levar un tipo distinto de carga
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Modificar o avión para levar un tipo distinto de carga
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Invertí-lo sentido do tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forza-lo vehículo a da-la volta
@@ -2985,11 +2988,11 @@ STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO}
 STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO} desde {STATION} (x{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Carga
-STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Mostra-los detalles das mercadorías transportadas
+STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Mostrar detalle das mercadorías transportadas
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Información
-STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Mostra-los detalles dos vehículos do tren
+STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Mostrar detalle dos vehículos do tren
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Capacidades
-STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Mostra-la capacidade de cada vehículo
+STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Mostrar a capacidade de cada vehículo
 STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Carga Total
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Mostra-la capacidade total do tren, dividida por tipos de carga
 
@@ -3010,10 +3013,10 @@ STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Reaxusta
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Reaxustar barco
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Reaxustar avión
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Reaxusta-lo tren para o tipo de carga seleccionado
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Modificar o tren para o tipo de carga seleccionado
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Reaxustar vehículo para levar o tipo de carga seleccionado
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Reaxusta-lo barco para leva-lo tipo de mercacdoría seleccionada
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Reaxusta-lo avión para levar o tipo de carga seleccionada
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Modificar o barco para levar o tipo de mercadoría seleccionada
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Modificar o avión para levar o tipo de carga seleccionada
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ordes)
@@ -3033,21 +3036,21 @@ STR_ORDER_GO_TO                                                 :Ir a
 STR_ORDER_GO_NON_STOP_TO                                        :Ir sen parar a
 STR_ORDER_GO_VIA                                                :Ir vía
 STR_ORDER_GO_NON_STOP_VIA                                       :Ir sen parar vía
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Cambia-lo comportamento de parada da orde seleccionada
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Cambiar o comportamento de parada da orde seleccionada
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carga completa de calquera carga
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Cargar se está dispoñible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carga completa de tódalas cargas
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carga completa de calquera carga
 STR_ORDER_DROP_NO_LOADING                                       :Non cargar
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Cambia-lo comportamento de carga da orde seleccionada
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Cambiar o comportamento de carga da orde seleccionada
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descargar todo
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descargar se se acepta
 STR_ORDER_DROP_UNLOAD                                           :Descargar todo
 STR_ORDER_DROP_TRANSFER                                         :Transferir
 STR_ORDER_DROP_NO_UNLOADING                                     :Non descargar
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambia-lo comportamento de descarga da orde seleccionada
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambiar o comportamento de descarga da orde seleccionada
 
 STR_ORDER_REFIT                                                 :{BLACK}Reaxustar
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Selecciona o tipo de carga para reaxustar nesta orde. CTRL+click para quita la instrución de reaxuste
@@ -3066,7 +3069,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Idade do vehíc
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Require servizo
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como compara-los datos do vehículo co dato proporcionado
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os datos do vehículo co valor proporcionado
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :é distinto a
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :é menor que
@@ -3167,16 +3170,16 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data com
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona unha data como data de inicio de este horario
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Tempo
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia-la cantidade de tempo que debería levar a orde seleccionada
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambiar a cantidade de tempo que debería levar a orde seleccionada
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Borrar Tempo
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Quita-la cantidade de tempo para a orde seleccionada
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Quitar a cantidade de tempo para a orde seleccionada
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar Contador de Retraso
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reinicia-lo contador de retraso, para que o vehículo vaia en punto
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reiniciar o contador de atraso, para que o vehículo vaia en punto
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoencher
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Enche-lo horario automáticamente cos valores da seguinte viaxe (CTRL+Click para intentar mante-los tempos de espera)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Encher o horario automaticamente cos valores da seguinte viaxe (CTRL+Pinchar para intentar manter os tempos de espera)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Programado
@@ -3328,9 +3331,9 @@ STR_ERROR_BRIBE_FAILED                                          :{WHITE}O tento 
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}descuberto por un investigador rexional
 
 # Levelling errors
-STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Non se pode subi-lo terreo aí...
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Non se pode baixa-lo terreo aí...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Non se pode aplana-lo terreo...
+STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Non se pode subir o terreo aí...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Non se pode baixar o terreo aí...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Non se pode aplanar o terreo...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}A excavación danaría un tunel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}Xa está a nivel do mar
 STR_ERROR_TOO_HIGH                                              :{WHITE}Demasiado alto
@@ -3346,7 +3349,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... non 
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... necesitas {CURRENCY}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Non se pode paga-lo préstamo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Non podes da-lo diñeiro prestado do banco...
-STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Non se pode compra-la compañía...
+STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Non se pode comprar a compañía...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Non se pode construí-lo cuartel xeral...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Non se pode comprar un 25% das accións nesta compañía...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Non se pode vender un 25% das accións desta compañía...
@@ -3354,8 +3357,8 @@ STR_ERROR_PROTECTED                                             :{WHITE}Esta com
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Non se pode construír cidades
-STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Non se pode renomea-la cidade...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Non se pode construí-la cidade aí...
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Non se pode renomear a cidade...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Non se pode construír a cidade aí...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... demasiado cerca do borde do mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... demasiado cerca doutra cidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... hai demasiadas cidades
@@ -3379,13 +3382,13 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... só 
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... o bosque só se pode plantar sobre a liña de neve
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Non se pode construí-la estación de ferrorcarril aí...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Non se pode construír a estación de ferrocarril aí...
 STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Non se pode construí-la estación de autobús...
 STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Non se pode construí-la estacion de camións...
 STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Non se pode construír a estación de tranvía de pasaxeiros...
 STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Non se pode construír a estación de tranvía de carga...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Non se pode construí-lo peirao aí...
-STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Non se pode construí-lo aeroporto aí...
+STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Non se pode construír o aeroporto aí...
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Xunta máis dunha estación/área de carga existente
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... a estación ocupa demasiado
@@ -3398,7 +3401,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD                         :{WHITE}Demasiad
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION                          :{WHITE}Demasiado cerca doutra estación ou área de carga
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Demasiado cerca doutro peirao
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Demasiado cerca doutro aeroporto
-STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Non se pode renomea-la estación...
+STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Non se pode renomear a estación...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... esta rúa pertenece á cidade
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... a estrada vai na dirección incorrecta
 
@@ -3433,9 +3436,9 @@ STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... a bo
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Non se pode construír un depósito aí...
-STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Non se pode construí-lo depósito aí...
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Non se pode construír o depósito aí...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Non se pode construír o depósito de tranvías aquí...
-STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Non se pode construí-lo depósito de barcos aí...
+STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Non se pode construír o depósito de barcos aí...
 
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... debe estar parado dentro do depósito
@@ -3449,7 +3452,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Non se p
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Non se poden xira-los vehículos consistentes de múltiples unidades
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipos de vías incompatibles
 
-STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No se pode move-lo vehículo...
+STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No se pode mover o vehículo...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}A máquina traseira sempre seguirá a dianteira
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}No se pode atopar unha ruta a un depósito local
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}No se pode atopar unha ruta ó depósito local
@@ -3467,8 +3470,8 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Debes bo
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Non hay vía de ferrocarril adecuada
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Debes elimina-la pista de ferrocarril primeiro
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}A estrada é dun sentido ou está bloqueada
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Non se poden construí-los sinais aí...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Non se pode construí-la pista do ferrocarril aí...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Non se poden construír os sinais aí...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Non se pode construír a pista de ferrocarril aí...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Non se pode elimina-la pista de ferrocarril de aí...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Non se pode elimina-los sinais de aí...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Non se poden convertí-las sinais aquí...
@@ -3498,7 +3501,7 @@ STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... xa h
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}Non se pode plantar unha árbore aí...
 
 # Bridge related errors
-STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}No se pode construí-la ponte aí...
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}No se pode construír a ponte aí...
 STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Debes demole-la ponte primeiro
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Non pode empezar e rematar na mesma posición
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Os comezos da ponte non están o mesmo nivel
@@ -3508,7 +3511,7 @@ STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... os f
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponte demasiado longa
 
 # Tunnel related errors
-STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Non se pode construí-lo túnel ahí...
+STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Non se pode construír o túnel aí...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Emprazamento inadecuado para a entrada do túnel
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Debes demole-lo túnel primeiro
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Hai outro túnel no camiño
@@ -3537,7 +3540,7 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Haí un 
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Hay un barco no camiño
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Aeronave no camiño
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No se pode reaxusta-lo tren...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}No se pode modificar o tren...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Non se pode reaxusta-lo vehículo
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Non se pode reaxusta-lo barco...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Non se pode reaxusta-lo avión...
@@ -3552,10 +3555,10 @@ STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}No se po
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Non se pode parar/arrancar o barco...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Non se pode parar/arrancar o avión...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}No se pode envia-lo tren o depósito...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Non se pode envia-lo vehículo ó depósito de estrada...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Non se pode envia-lo barco o depósito...
-STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Non se pode envia-lo avión ó hangar...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}No se pode enviar o tren ao depósito...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Non se pode enviar o vehículo ao depósito...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Non se pode enviar o barco ao depósito...
+STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Non se pode enviar o avión ao hangar...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}No se pode construí-la locomotora...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}No se pode construí-lo vehículo...
@@ -3563,12 +3566,12 @@ STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Non se p
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Non se pode comprar o avión...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Non se pode renomea-lo tipo de vehículo de ferrocarril...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Non se pode renomea-lo tipo de vehículo de estrada...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Non se pode renomear o tipo de vehículo de estrada...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Non se pode renomear-lo tipo de barco...
-STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Non se pode renomea-lo tipo de avión...
+STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Non se pode renomear o tipo de avión...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Non se pode vende-lo vehículo de ferrocarril...
-STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Non se pode vende-lo vehículo de estrada...
+STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Non se pode vender o vehículo de estrada...
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}No se pode vende-lo barco...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Non se pode vende-lo avión...
 
@@ -3614,9 +3617,9 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este veh
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... demasiados sinais
-STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Non se pode situa-lo sinal aí...
+STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Non se pode situar o sinal aí...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Non se pode cambia-lo nome do sinal...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Non se pode borra-lo sinal...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Non se pode borrar o sinal...
 
 # Translatable comment for OpenTTD's desktop shortcut
 

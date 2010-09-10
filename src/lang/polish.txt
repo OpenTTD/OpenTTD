@@ -2794,6 +2794,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Resetuj
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Przywróć domyślne wartości parametrów
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametr {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Liczba parametrów: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Zbadaj - {STRING}

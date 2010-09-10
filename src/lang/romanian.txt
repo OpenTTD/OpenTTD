@@ -2414,6 +2414,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reseteaz
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setează toţii parametrii la valorile implicite
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametru {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Număr de parametrii: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspectează - {STRING}

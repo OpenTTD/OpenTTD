@@ -2588,6 +2588,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Сбро
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Сбросить значения всех параметров
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметр {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Количество параметров: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Просмотр - {STRING}
