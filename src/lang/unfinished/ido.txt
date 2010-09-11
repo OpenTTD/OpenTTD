@@ -131,6 +131,7 @@ STR_ABBREV_SUGAR                                                :{TINYFONT}SK
 STR_ABBREV_TOYS                                                 :{TINYFONT}LD
 STR_ABBREV_SWEETS                                               :{TINYFONT}DC
 STR_ABBREV_NONE                                                 :{TINYFONT}NL
+STR_ABBREV_ALL                                                  :{TINYFONT}OMNA
 
 # 'Mode' of transport for cargoes
 

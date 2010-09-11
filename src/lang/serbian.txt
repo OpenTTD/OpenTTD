@@ -2609,6 +2609,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Poništi
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Postavlja parametre na njihove početne vrednosti
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametar {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Broj parametara: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Provera - {STRING}
