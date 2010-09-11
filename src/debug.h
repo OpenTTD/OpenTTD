@@ -29,6 +29,11 @@
 #ifdef NO_DEBUG_MESSAGES
 	#define DEBUG(name, level, ...) { }
 #else /* NO_DEBUG_MESSAGES */
+	/**
+	 * Output a line of debugging information.
+	 * @param name Category
+	 * @param level Debugging level, higher levels means more detailed information.
+	 */
 	#define DEBUG(name, level, ...) if ((level) == 0 || _debug_ ## name ## _level >= (level)) debug(#name, __VA_ARGS__)
 
 	extern int _debug_ai_level;

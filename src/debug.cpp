@@ -69,6 +69,11 @@ struct DebugLevel {
 
 #if !defined(NO_DEBUG_MESSAGES)
 
+/**
+ * Internal function for outputting the debug line.
+ * @param dbg Debug category.
+ * @param buf Text line to output.
+ */
 static void debug_print(const char *dbg, const char *buf)
 {
 #if defined(ENABLE_NETWORK)
@@ -99,6 +104,12 @@ static void debug_print(const char *dbg, const char *buf)
 	}
 }
 
+/**
+ * Output a debug line.
+ * @note Do not call directly, use the #DEBUG macro instead.
+ * @param dbg Debug category.
+ * @param format Text string a la printf, with optional arguments.
+ */
 void CDECL debug(const char *dbg, const char *format, ...)
 {
 	char buf[1024];
@@ -112,6 +123,12 @@ void CDECL debug(const char *dbg, const char *format, ...)
 }
 #endif /* NO_DEBUG_MESSAGES */
 
+/**
+ * Set debugging levels by parsing the text in \a s.
+ * For setting individual levels a string like \c "net=3,grf=6" should be used.
+ * If the string starts with a number, the number is used as global debugging level.
+ * @param s Text describing the wanted debugging levels.
+ */
 void SetDebugString(const char *s)
 {
 	int v;
@@ -162,8 +179,8 @@ void SetDebugString(const char *s)
 }
 
 /**
- * Print out the current debug-level
- * Just return a string with the values of all the debug categorites
+ * Print out the current debug-level.
+ * Just return a string with the values of all the debug categories.
  * @return string with debug-levels
  */
 const char *GetDebugString()
