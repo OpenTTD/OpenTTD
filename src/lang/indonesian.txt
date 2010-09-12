@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Membuat 
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Pembangunan Jalan
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Menanam Pohon
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Memasang pengenal
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Penempatan Obyek
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Simpan Skenario
@@ -442,6 +443,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Hidup/matikan Layar Konsol
 STR_ABOUT_MENU_AI_DEBUG                                         :AI Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Ambil gambar
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ambil gambar dengan diperbesar
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ambil gambar keseluruhan peta
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Tentang 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Penjajar Sprite
@@ -558,6 +560,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Lihat penuh informasi perusahaan ini
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kendaraan:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasiun:
@@ -795,7 +798,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Serangan serangga menyebabkan malapetaka pada {INDUSTRY}!{}Produksi menurun hingga 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produksi {STRING} di {INDUSTRY} turun hingga {COMMA}%!
 
-STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} sedang menunggu di dipo
+STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} sedang menunggu di depo
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} sedang menunggu di bengkel
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} sedang menunggu di galangan
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} sedang menunggu di hangar
@@ -1084,6 +1087,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ijinkan
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ijinkan ukuran jangkauan wilayah lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ijinkan menggusur lebih banyak jalan/jembatan kota, dsb: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Ijinkan membuat rangkaian gerbong yang sangat panjang: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Banyaknya asap / percikan lokomotif: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Tidak ada
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orisinil
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistis
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akselerasi kereta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Asli
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistis
@@ -1100,11 +1107,12 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Angkut 
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Menerima kargo di suatu stasiun hanya jika dibutuhkan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Ijinkan membangun jembatan yang sangat panjang: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Perbolehkan pemberhentian di dipo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Ijinkan pemberhentian di depo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode pembangunan Industri primer : {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :tidak ada
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lainnya
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :lebih prospektif
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Tanah datar di sekitar industri: {ORANGE}{STRING} kotak{P 0:1 ""}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Ijinkan lebih dari satu industri sejenis dalam satu kota: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Selalu tampilkan tgl lengkap pada status bar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Tampilkan sinyal pada lajur kendara: {ORANGE}{STRING}
@@ -1752,6 +1760,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server p
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Anda ditolak memasuki server ini
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Anda diusir dari permainan
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Tidak boleh curang di server ini
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Anda mengirim terlalu banyak perintah ke server
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Kesalahan umum
@@ -1769,6 +1778,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :kesalahan pada 
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :diusir oleh server
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :tadi mencoba curang
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server penuh
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :terlalu banyak mengirim perintah
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -1893,7 +1903,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Pembangunan Mag
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bangun rel. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi rel
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bangun rel kereta menggunakan mode Autorail. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi rel
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bangun dipo lokomotif (untuk pembelian dan perbaikan kereta)
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bangun depo (untuk pembelian dan perbaikan kereta)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ubah rel menjadi waypoint. Ctrl untuk mengaktifkan penggabungan waypoint
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bangun stasiun kereta. Ctrl untuk mengaktifkan penggabungan stasiun
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Membangun sinyal kereta. Ctrl - berganti sinyal bendera-lampu.
@@ -1903,8 +1913,8 @@ STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Membangu
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konversi jenis rel
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Arah Dipo Lokomotif
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Pilih arah dipo kereta
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Pilihan arah depo
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Tentukan arah depo menghadap
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Waypoint
@@ -1969,7 +1979,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bangun j
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bangun jalan menggunakan mode Autoroad. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalan
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bangun jalur trem menggunakan mode Autotram. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalur trem
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bangun bengkel (untuk pembelian dan perbaikan kendaraan)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bangun dipo trem (untuk pembelian dan perbaikan kendaraan)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bangun bengkel (untuk pembelian dan perbaikan trem)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bangun stasiun bus. Ctrl untuk mengaktifkan penggabungan stasiun
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bangun stasion trem penumpang. Ctrl untuk mengaktifkan penggabungan stasiun
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bangun terminal bongkar muat. Ctrl untuk mengaktifkan penggabungan stasiun
@@ -1985,8 +1995,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Membangu
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Arah Bengkel Kendaraan
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Pilih arah bengkel kendaraan
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Arah Dipo Trem
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Pilih arah dipo trem
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Arah bengkel trem
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Tentukan arah bengkel trem menghadap
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Orientasi stasiun Bus
@@ -2025,6 +2035,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bangun b
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Pilih Bandara
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Pilih model bandara
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Kelas bandara
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Tata letak{NUM}
 
 STR_AIRPORT_SMALL                                               :Bandara Kecil
 STR_AIRPORT_CITY                                                :Bandara Kota
@@ -2049,6 +2060,16 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rendahka
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Naikkan sudut dataran tanah
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Permukaan tanah
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tanah untuk digunakan pada masa depan
+
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pemilihan obyek
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih obyek yg akan dibangun
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Kelas obyek
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pra-tayang obyek
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Ukuran: {GOLD}{NUM} x {NUM} kotak
+
+STR_OBJECT_CLASS_LTHS                                           :Mercusuar
+STR_OBJECT_CLASS_TRNS                                           :Pemancar
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pepohonan
@@ -2124,6 +2145,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klik pad
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klik pada kargo untuk melihat pemasok dan pelanggannya
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Tampilkan hubungan
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Menampilkan industri yang menyediakan dan menerima kargo
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Tautkan ke peta
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Pilih agar industri ini diikutkan dalam peta mini
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasi area daratan
@@ -2141,6 +2164,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Dibuat: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Kelas Stasiun: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipe Stasiun: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Kelas Bandara: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nama Bandara: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nama area bandara: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Muatan diterima: {LTBLUE}
@@ -2178,7 +2203,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Rel dengan siny
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Jalur rel kereta dengan sinyal combo dan sinyal jalur
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Rel dengan sinyal campuran dan jalan satu arah
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Rel dengan sinyal jalan dan sinyal jalan satu arah
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Dipo lokomotif
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Depo kereta
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Jalan
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Jalan raya dengan lampu
@@ -2385,7 +2410,11 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tutup
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Kembalikan setelan awal parameter
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Jumlah parameter: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Memeriksa - {STRING}
@@ -2393,6 +2422,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Induk
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Periksa objek dari parent scope
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} pada {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Obyek
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipe rel
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Variabel NewGRF harus 60+x (hexadecimal)
@@ -2435,6 +2465,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Mencoba menggun
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} terdapat sprite yang rusak. Semua sprite rusak akan ditandai dengan tanda tanya merah (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pembacaan pada akhir pseudo-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Beberapa 'sprite' tidak terdapat pada Set Grafik Dasar yang sedang digunakan.{}Silahkan update Set Grafik Dasar.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Peringatan!
@@ -2456,7 +2487,8 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Berkas hil
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Biasanya NewGRF '{0:STRING}' dapat menyebabkan de-sinkron dan atau crash.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ini akan mengubah panjang kereta sebanyak '{1:ENGINE}' ketika tidak berada di dalam dipo lokomotif.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Dapat merubah keadaan gerbong listrik '{1:ENGINE}' saat tidak berada di depo.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ini akan mengubah panjang kereta sebanyak '{1:ENGINE}' ketika tidak berada di dalam depo lokomotif.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin akan rusak atau hang.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' memberikan informasi yang salah.
@@ -2472,6 +2504,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industri tidak
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Daftar tanda - {COMMA} Tanda
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Persis besar-kecil
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Hapus penyaringan
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Hidup matikan pengecekan besar-kecil huruf pada pengenal dengan kotak pencarian
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Hapus penyaringan
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ubah tulisan di tanda pengenal
@@ -2725,7 +2761,7 @@ STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Kirim pe
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Ganti kendaraan
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Perintahkan untuk diperbaiki
 
-STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Perintahkan ke Dipo
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Perintahkan ke bengkel
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Perintahkan ke Bengkel
 STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Perintahkan ke Galangan
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Perintahkan ke Hangar
@@ -2819,8 +2855,8 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ubah nam
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Ubah nama dipo
-STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Ubah nama dipo
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Ganti nama depo ini
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Ubah nama
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -2839,12 +2875,12 @@ STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Drag pes
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Seret lokomotif ke sini untuk menjualnya (termasuk gerbong)
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Jual semua kereta di dipo
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Jual semua kereta di dalam depo ini
 STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Jual semua kendaraan di bengkel
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Jual semua kapal di galangan
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Jual semua pesawat di hangar
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Penggantian secara otomatis semua kereta di dalam dipo
+STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Peremajaan secara otomatis semua kereta di dalam depo ini
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Penggantian secara otomatis semua kendaraan di dalam bengkel
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Penggantian secara otomatis semua kapal di dalam galangan
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Penggantian secara otomatis semua Pesawat di dalam hangar
@@ -2864,32 +2900,32 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Gandakan
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Gandakan
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Gandakan
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ini akan membeli satu unit kereta yang sama termasuk gerbongnya. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar dipo. Ctrl+Click untuk berbagi perintah
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ini akan membeli satu unit kereta yang sama termasuk gerbongnya. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. Ctrl+Click untuk berbagi perintah
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar bengkel.Ctrl+Click untuk berbagi perintah
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ini akan membeli satu unit kapal yang sama . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Ctrl+Click untuk berbagi perintah
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ini akan membeli satu unit pesawat yang sama. Klik tombol ini dan kemudian pada satu pesawat didalam atau diluar hangar. Ctrl+Click untuk berbagi perintah
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi dipo lokomotif. Ctrl+Click akan membuka viewport baru pada lokasi dipo lokomotif
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi depo. Ctrl+Click akan membuka viewport baru pada lokasi depo
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan utama pada lokasi bengkel kendaraan. Ctrl+Click akan membuka viewport baru pada lokasi bengkel kendaraan
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Arahkan pandangan utama pada lokasi galangan kapal. Ctrl+Click akan membuka viewport baru pada lokasi galangan kapal
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Arahkan pandangan utama pada lokasi hangar. Ctrl+Click akan membuka viewport baru pada lokasi hangar
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Mendaftar semua kereta pada dipo ini beserta perintahnya
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Mendaftar semua kereta yang mempunyai jadwal berhenti di depo ini
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Mendaftar semua kendaraan pada bengkel ini beserta perintahnya
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Mendaftar semua kapal pada galangan ini beserta perintahnya
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Mendaftar semua pesawat pada hangar ini beserta perintahnya
 
-STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klik untuk menghentikan semua kereta di dalam dipo
+STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Klik untuk menghentikan semua kereta di depo ini
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Klik untuk menghentikan semua kendaraan di dalam bengkel
 STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Klik untuk menghentikan semua kapal di dalam galangan
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Klik untuk menghentikan semua Pesawat di dalam hangar
 
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klik untuk menjalankan semua kereta di dalam dipo
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Klik untuk menjalankan semua kereta di depo ini
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Klik untuk menjalankan semua kendaraan di dalam bengkel
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Klik untuk menjalankan semua kapal di dalam galangan
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Klik untuk menjalankan semua Pesawat di dalam hangar
 
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda akan menjual semua kendaraan didalam dipo. Anda yakin?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda akan menjual semua kendaraan di dalam depo. Anda yakin?
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Pesan dari pabrik kendaraan
@@ -2946,7 +2982,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arahkan 
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Arahkan pandangan utama pada lokasi kapal. Ctrl+Click akan mengikuti kapal pada pandangan utama
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Arahkan pandangan utama pada lokasi pesawat. Ctrl+Click akan mengikuti pesawat pada pandangan utama
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Perintahkan kereta berhenti di dipo lokomotif. CTRL+klik hanya akan memerintahkan perbaikan di dipo
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Perintahkan kereta berhenti di depo. CTRL+klik untuk memerintahkan perbaikan saja
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Perintahkan kendaraan berhenti di bengkel. CTRL+klik hanya akan memerintahkan perbaikan di bengkel
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Perintahkan kapal berhenti di galangan. CTRL+klik hanya akan memerintahkan perbaikan di galangan
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Perintahkan pesawat berhenti di hangar. CTRL+klik hanya akan memerintahkan perbaikan di hangar
@@ -3165,10 +3201,10 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Hapus
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Hapus perintah terpilih
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Pergi ke
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Pergi ke dipo terdekat
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Pergi ke depo terdekat
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar terdekat
 STR_ORDER_CONDITIONAL                                           :Melompat ke perintah lain
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Masukkan pemberhentian baru sebelum pemberhentian yang terpilih, atau tambahkan pada akhir daftar. Sambil menekan Ctrl akan meminta pemberhetian ke stasiun tersebut menjadi 'muat penuh sembarang', penunjuk jalan menjadi 'non-stop', dan pemberhentian dipo menjadi 'perbaikan'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Masukkan pemberhentian baru sebelum pemberhentian yang terpilih, atau tambahkan pada akhir daftar. Sambil menekan Ctrl, akan membuat : <1>pemberhentian ke stasiun menjadi 'muat penuh sembarang', <2> penunjuk jalan menjadi 'non-stop', dan <3> pemberhentian di bengkel/depo/galangan/hangar menjadi 'perbaikan'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Masukkan perintah berikutnya
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Tampilkan semua kendaraan yang mempunyai perintah bersama.
@@ -3182,7 +3218,7 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Perbaikan non-s
 
 STR_ORDER_NEAREST_DEPOT                                         :terdekat
 STR_ORDER_NEAREST_HANGAR                                        :Hangar terdekat
-STR_ORDER_TRAIN_DEPOT                                           :Dipo Lokomotif
+STR_ORDER_TRAIN_DEPOT                                           :Depo Lokomotif
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Bengkel Kendaraan
 STR_ORDER_SHIP_DEPOT                                            :Galangan Kapal
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{0:STRING} {2:STRING} {1:STRING}
@@ -3291,6 +3327,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Persis B
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hidup matikan pengecekan besar-kecil huruf pada pesan AI dengan kotak pencarian
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lanjutkan
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}lanjutkan proses AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lihat proses yang dilakukan AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD tidak menyertakan AI ...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... tidak ditemukan AI !
@@ -3332,6 +3369,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan m
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parameter AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3494,6 +3532,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Terlalu 
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Tidak dapat mengganti nama stasiun...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... jalan ini milik kota
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... menghadap pada arah yang salah
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... terminal lintas-lalu tak bisa memiliki sudut
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... terminal lintas-lalu tak bisa memiliki simpangan
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Tidak dapat menghapus bagian dari stasiun...
@@ -3524,22 +3564,22 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Tidak da
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tidak dapat menghapus waypoint kereta disini...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Harus membongkar rel waypoint terlebih dahulu
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... terhalang pelampung
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Pelampung sedang digunakan!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... pelampung sedang dipakai oleh perusahaan lain!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Tidak dapat membangun dipo lokomotif disini...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Tidak dapat membangun depo disini...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tidak dapat membangun bengkel disini...
-STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tidak dapat membangun dipo trem disini...
+STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tidak dapat membangun bengkel trem disini...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tidak dapat membangun galangan kapal disini...
 
-STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Tidak dapat mengubah nama dipo...
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Tidak dapat mengubah nama bengkel...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Kereta harus diberhentikan di dalam dipo
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... harus dihentikan didalam bengkel kendaraan
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Kapal harus berhenti di galangan
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Pesawat harus berhenti di hangar
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... harus dihentikan di depo
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... harus dihentikan di bengkel
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... harus dihentikan di galangan
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... harus dihentikan di hangar
 
-STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Kereta hanya dapat diubah ketika berhenti di dalam dipo
+STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Kereta hanya dapat diubah ketika berhenti di dalam depo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Kereta terlalu panjang
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Tidak dapat memutar balik arah kendaraan...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit
@@ -3547,10 +3587,10 @@ STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Jenis rel tidak
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Tidak dapat memindahkan kendaraan...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Bagian belakang mesin akan selalu mengikuti bagian depannya
-STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Tidak menemukan rute menuju dipo terdekat
-STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Tidak dapat menemukan dipo terdekat
+STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}Tidak menemukan rute menuju depo terdekat
+STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}Tidak dapat menemukan bengkel terdekat
 
-STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Jenis dipo salah
+STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Jenis bengkel salah
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} jadi terlalu panjang setelah diganti
@@ -3617,6 +3657,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Terowong
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tidak dapat menyesuaikan kemiringan tanah di ujung terowongan
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... terlalu banyak obyek
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Tidak dapat membuat objek...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}terhalang obyek
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... terhalang kantor pusat perusahaan
@@ -3652,7 +3693,7 @@ STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Tidak da
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Tidak dapat menghentikan / menjalankan kapal...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Tidak dapat menghentikan / menjalankan pesawat...
 
-STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Tidak dapat memerintahkan kereta ke dipo...
+STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Tidak dapat memerintahkan kereta ke depo...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Tidak dapat memerintahkan kendaraan ke bengkel...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Tidak dapat memerintahkan kapal ke galangan...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Tidak dapat memerintahkan pesawat ke hangar...
@@ -4112,8 +4153,8 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:T
 STR_FORMAT_WAYPOINT_NAME                                        :Waypoint {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Waypoint {TOWN} #{COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Dipo Lokomotif
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Dipo Lokomotif #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depo kereta {TOWN}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Depo kereta#{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Bengkel Kendaraan
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Bengkel Kendaraan #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Galangan Kapal

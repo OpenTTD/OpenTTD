@@ -50,6 +50,7 @@ STR_CARGO_PLURAL_RUBBER                                         :Kauchuko
 STR_CARGO_PLURAL_SUGAR                                          :Sukro
 STR_CARGO_PLURAL_TOYS                                           :Ludili
 STR_CARGO_PLURAL_CANDY                                          :Bonboni
+STR_CARGO_PLURAL_COLA                                           :Kolao
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Kandi-lanugo
 STR_CARGO_PLURAL_BUBBLES                                        :Buli
 STR_CARGO_PLURAL_TOFFEE                                         :Karamelo
@@ -63,9 +64,9 @@ STR_CARGO_SINGULAR_PASSENGER                                    :Pasajero
 STR_CARGO_SINGULAR_COAL                                         :Karbono
 STR_CARGO_SINGULAR_MAIL                                         :Posto
 STR_CARGO_SINGULAR_OIL                                          :Petrolo
-STR_CARGO_SINGULAR_LIVESTOCK                                    :Brutaro
-STR_CARGO_SINGULAR_GOODS                                        :Havaji
-STR_CARGO_SINGULAR_GRAIN                                        :Semino
+STR_CARGO_SINGULAR_LIVESTOCK                                    :Brutari
+STR_CARGO_SINGULAR_GOODS                                        :Vari
+STR_CARGO_SINGULAR_GRAIN                                        :Grano
 STR_CARGO_SINGULAR_WOOD                                         :Ligno
 STR_CARGO_SINGULAR_IRON_ORE                                     :Fer-erco
 STR_CARGO_SINGULAR_STEEL                                        :Stalo
@@ -74,7 +75,7 @@ STR_CARGO_SINGULAR_COPPER_ORE                                   :Kupr-erco
 STR_CARGO_SINGULAR_MAIZE                                        :Maizo
 STR_CARGO_SINGULAR_FRUIT                                        :Frukto
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamanto
-STR_CARGO_SINGULAR_FOOD                                         :Nutrajo
+STR_CARGO_SINGULAR_FOOD                                         :Manjajo
 STR_CARGO_SINGULAR_PAPER                                        :Papero
 STR_CARGO_SINGULAR_GOLD                                         :Oro
 STR_CARGO_SINGULAR_WATER                                        :Aquo
@@ -83,6 +84,7 @@ STR_CARGO_SINGULAR_RUBBER                                       :Kauchuko
 STR_CARGO_SINGULAR_SUGAR                                        :Sukro
 STR_CARGO_SINGULAR_TOY                                          :Ludilo
 STR_CARGO_SINGULAR_CANDY                                        :Bonbono
+STR_CARGO_SINGULAR_COLA                                         :Kolao
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kandi-lanugo
 STR_CARGO_SINGULAR_BUBBLE                                       :Bulo
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamelo
@@ -92,21 +94,42 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Gasoza Drinkajo
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} pasajer{P o i}
+STR_QUANTITY_COAL                                               :{WEIGHT} de karbono
+STR_QUANTITY_MAIL                                               :{COMMA} sak{P o i} de posto
 STR_QUANTITY_OIL                                                :{VOLUME} de oleo
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} artikl{P o i} de brutari
+STR_QUANTITY_GOODS                                              :{COMMA} kest{P o i} de vari
+STR_QUANTITY_GRAIN                                              :{WEIGHT} de grano
 STR_QUANTITY_WOOD                                               :{WEIGHT} de ligno
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de fer-erco
 STR_QUANTITY_STEEL                                              :{WEIGHT} de stalo
+STR_QUANTITY_VALUABLES                                          :{COMMA} sak{P o i} de valoraji
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de kupr-erco
+STR_QUANTITY_MAIZE                                              :{WEIGHT} de maizo
 STR_QUANTITY_FRUIT                                              :{WEIGHT} de frukto
+STR_QUANTITY_DIAMONDS                                           :{COMMA} sak{P o i} de diamanti
 STR_QUANTITY_FOOD                                               :{WEIGHT} de manjajo
 STR_QUANTITY_PAPER                                              :{WEIGHT} de papero
 STR_QUANTITY_GOLD                                               :{COMMA} sak{P o i} de oro
 STR_QUANTITY_WATER                                              :{VOLUME} de aquo
+STR_QUANTITY_WHEAT                                              :{WEIGHT} de frumento
 STR_QUANTITY_RUBBER                                             :{VOLUME} de kauchuko
 STR_QUANTITY_SUGAR                                              :{WEIGHT} de sukro
 STR_QUANTITY_TOYS                                               :{COMMA} ludil{P o i}
 STR_QUANTITY_SWEETS                                             :{COMMA} sak{P o i} de dolcaji
+STR_QUANTITY_COLA                                               :{VOLUME} de kolao
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de kandi-lanugo
+STR_QUANTITY_BUBBLES                                            :{COMMA} bul{P o i}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} de karamelo
+STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P o i}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} de plastiko
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} gasoza drinkaj{P o i}
+STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}KB
 STR_ABBREV_MAIL                                                 :{TINYFONT}PT
 STR_ABBREV_OIL                                                  :{TINYFONT}OL
@@ -130,10 +153,25 @@ STR_ABBREV_RUBBER                                               :{TINYFONT}KK
 STR_ABBREV_SUGAR                                                :{TINYFONT}SK
 STR_ABBREV_TOYS                                                 :{TINYFONT}LD
 STR_ABBREV_SWEETS                                               :{TINYFONT}DC
+STR_ABBREV_COLA                                                 :{TINYFONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}KD
+STR_ABBREV_BUBBLES                                              :{TINYFONT}BL
+STR_ABBREV_TOFFEE                                               :{TINYFONT}KR
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BT
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}GD
 STR_ABBREV_NONE                                                 :{TINYFONT}NL
 STR_ABBREV_ALL                                                  :{TINYFONT}OMNA
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :pasajeri
+STR_BAGS                                                        :saki
+STR_TONS                                                        :tuni
+STR_LITERS                                                      :litri
+STR_ITEMS                                                       :artikli
+STR_CRATES                                                      :kesti
+STR_RES_OTHER                                                   :altra
+STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Obskur-blua
@@ -154,14 +192,29 @@ STR_COLOUR_GREY                                                 :Griza
 STR_COLOUR_WHITE                                                :Blanka
 
 # Units used in OpenTTD
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}kp
+STR_UNITS_POWER_METRIC                                          :{COMMA}kp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tun{P o i}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P o i}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
-STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pd
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
@@ -169,34 +222,79 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 STR_BUTTON_LOCATION                                             :{BLACK}Loko
 STR_BUTTON_RENAME                                               :{BLACK}Rinomizar
 
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Klozas fenestro
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Baskulas granda/mikra fenestro grandeso
 
 # Query window
 STR_BUTTON_CANCEL                                               :{BLACK}Anular
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}Longeso: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Areo: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longeso: {NUM}{}Difero di alteso: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Areo: {NUM} x {NUM}{}Difero di alteso: {HEIGHT}
 
 
 # These are used in buttons
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populo
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Nomo
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Dato
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :Populo
+STR_SORT_BY_NAME                                                :Nomo
+STR_SORT_BY_TYPE                                                :Tipo
+STR_SORT_BY_TRANSPORTED                                         :Transportita
+STR_SORT_BY_NUMBER                                              :Numero
+STR_SORT_BY_AGE                                                 :Evo
+STR_SORT_BY_MAX_SPEED                                           :Maximo rapideso
+STR_SORT_BY_LENGTH                                              :Longeso
+STR_SORT_BY_FACILITY                                            :Stacion-tipo
+STR_SORT_BY_POWER                                               :Povo
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzas ludo
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Selekti
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvas ludo, abandonas ludo, ekiras
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Montras listo di stacioni di la kompanio
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Montras grafiki
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Konstruktas fervoy-treko
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Konstruktas voyi
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Konstruktas nav-doki
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Konstruktas aeroportui
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Montras sono/muziko fenestro
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvas cenaro, kargas cenaro, abandonas cenaro-redaktisto, ekiras
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Cenaro-Redaktisto
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Voyo konstruktado
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantacas arbori
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Situas signalo
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Pozez objekto
 
 ############ range for SE file menu starts
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Plene detaloza
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Diafana konstrukturi
 ############ range ends here
 
 ############ range for file menu starts
+STR_FILE_MENU_SAVE_GAME                                         :Salvas ludo
+STR_FILE_MENU_LOAD_GAME                                         :Kargas ludo
+STR_FILE_MENU_QUIT_GAME                                         :Abandonas ludo
+STR_FILE_MENU_EXIT                                              :Ekiras
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :Mapo di mondo
+STR_MAP_MENU_SIGN_LIST                                          :Listo di signi
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 ############ end of the 'Display map' dropdown
 ############ end of the 'Town' dropdown
@@ -282,7 +380,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Montrar 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Voyi
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Fervoyo
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINYFONT}{BLACK}Stacioni/Aeroportui/Doki
-STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Edifici/Industrii
+STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLACK}Konstrukturi/Industrii
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Vehili
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Treni
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Voy-Vehili
@@ -308,7 +406,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Dezerto
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Nivo
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Montrar nam-urbi ad la mapo
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Baskulas urbo-nomi sur/for la mapo
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Montras alteso
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Montras nula industrii sur la mapo
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Montras omna industrii sur la mapo
@@ -672,6 +770,7 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versiono
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Klozas
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombro di parametri: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektas - {STRING}

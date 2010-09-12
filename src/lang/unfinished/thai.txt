@@ -577,7 +577,7 @@ STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}จำ�
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}ตัวเลขแสดงสถานีที่รองรับการซ่อมแซมในปัจจุบัน
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}รายได้จากยานพาหนะนี้รวมกับรายได้ต่ำสุด (แสดงเฉพาะยานพาหนะที่มีอายุมากกว่าสองปีขึ้นไป)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}รายได้รวมทั้งหมดในฟนึ่งไตรมาส กับรายได้ต่ำสุดในรอบ 12 ไตรมาส
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}รายได้รวมทั้งหมดในฟนึ่งไตรมาส กับรายได้สูงสุดในรอบ 12 ไตรมาส
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}รายได้รวมทั้งหมดในหนึ่งไตรมาส กับรายได้สูงสุดในรอบ 12 ไตรมาส
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}หน่วยของสินค้าที่ส่งถึงปลายทางในรอบหนึ่งปี
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}จำนวนประเภทของสินค้าที่ส่งถึงปลายทางในไตรมาสที่ผ่านมา
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}จำนวนเงินของบริษัทที่มีในธนาคาร
@@ -922,6 +922,7 @@ STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :สวิส
 STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :เดนมาร์ค
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :ตุรกี
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :อิตาเลียน
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :คาตาลัน
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}บันทึกเกมอัตโนมัติ
@@ -1418,7 +1419,7 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}เล�
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}รถไถเวทมนต์ (ทำลายส่วนอุตสาหกรรม, ของที่เคลื่อนย้ายไม่ได้): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}อุโมงค์สามารถตัดกันได้: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}สร้างขณะอยู่ในโหมดหยุดชั่วคราว: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}เครื่องบินไอพ่นจะไม่ตก (บ่อย) บนสนามบินขนาดเล็ก: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}เครื่องบินไอพ่นจะไม่ตกบ่อยๆ ในสนามบินขนาดเล็ก: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}เปลี่ยนสภาพอากาศ: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :ภูมิประเทศเขตอบอุ่น
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :ภูมิประเทศเขตกึ่งขั้วโลก
@@ -1484,7 +1485,7 @@ STR_FACE_LOAD_DONE                                              :{WHITE}ใบ�
 STR_FACE_FACECODE                                               :{BLACK}ใบหน้าผู้เล่นเบอร์
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}ดู และ/หรือ ตั้งเบอร์ใบหน้าผู้เล่น
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}ดู และ/หรือ ตั้งเบอร์ใบหน้าผู้เล่น
-STR_FACE_FACECODE_SET                                           :{WHITE}เบอร์ให้หน้าใหม่ได้รับการตั้งแล้ว
+STR_FACE_FACECODE_SET                                           :{WHITE}กำหนดหมายเลขใบหน้าใหม่ให้แล้ว
 STR_FACE_FACECODE_ERR                                           :{WHITE}ไม่สามารถเปลี่ยนหมายเลขหน้าได้ - ช่วงตัวเลขต้องอยู่ระหว่าง 0 และ 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}บันทึก
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}บันทึกใบหน้าโปรด
@@ -1514,19 +1515,83 @@ STR_FACE_CHIN                                                   :คาง:
 STR_FACE_CHIN_TOOLTIP                                           :{BLACK}เปลี่ยนคาง
 STR_FACE_JACKET                                                 :เสื้อ:
 STR_FACE_JACKET_TOOLTIP                                         :{BLACK}เปลี่ยนเสื้อ
+STR_FACE_COLLAR                                                 :คอเสื้อ:
+STR_FACE_COLLAR_TOOLTIP                                         :{BLACK}เปลี่ยนคอเสื้อ
+STR_FACE_TIE                                                    :เนคไท:
+STR_FACE_EARRING                                                :ต่างหู:
+STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}เปลี่ยนเนคไทหรือต่างหู
 
 # Network server list
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}เล่นหลายคน
+STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}การเชื่อมต่อ:
+STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}เลือกเล่นระหว่างอินเตอร์เน็ตหรือ LAN
+STR_NETWORK_SERVER_LIST_LAN                                     :LAN
+STR_NETWORK_SERVER_LIST_INTERNET                                :Internet
+STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}ชื่อผู้เล่น:
+STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}เป็นชื่อที่ผู้เล่นคนอื่นจะมองเห็น
 
+STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}ชื่อ
+STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}ชื่อของเกม
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}ลูกข่าย
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}จำนวนลูกข่ายออนไลน์ / จำนวนลูกข่ายสูงสุด{}จำนวนบริษัทออนไลน์ / จำนวนบริษัทสูงสุด
+STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}ขนาดแผนที่
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}ขนาดแผนที่ของเกม{}คลิกเพื่อเรียงตามขนาดพื้นที่
+STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}วันที่
+STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}วันที่ปัจจุบัน
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}ปี
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}จำนวนปีที่ผ่านไปในเกม{}ตั้งแต่เริ่มเล่น
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}ภาษา, เวอร์ชันของเซิร์ฟเวอร์, และอื่นๆ
 
+STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}คลิกที่เกมจากรายการเพื่อเลือก
+STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}เซิร์ฟเวอร์ที่เข้าร่วมล่าสุด:
+STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}คลิกเพื่อเลือกเซิร์ฟเวอร์ที่เล่นล่าสุด
 
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}ข้อมูลเกม
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}ลูกข่าย: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}ภาษา: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}ภูมิทัศน์: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}ขนาดแผนที่: {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}เวอร์ชันของเซิร์ฟเวอร์: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}ที่อยู่เซิร์ฟเวอร์: {WHITE}{STRING}
+STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}วันที่เริ่ม: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}วันที่ปัจจุบัน: {WHITE}{DATE_SHORT}
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}ป้องกันด้วยรหัสผ่าน!
+STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}เซิร์ฟเวอร์ออฟไลน์
+STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}เซิร์ฟเวอร์เต็ม
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}เวอร์ชันไม่ถูกต้อง
+STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF ไม่ถูกต้อง
 
+STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}เข้าร่วมเกม
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}เรียกดูเซิร์ฟเวอร์ใหม่
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}เรียกดูข้อมูลเซิร์ฟเวอร์ใหม่
 
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}หาเซิร์ฟเวอร์
+STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}ค้นหาเซิร์ฟเวอร์ในเครือข่าย
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}เพิ่มเซิร์ฟเวอร์
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}เพิ่มเซิร์ฟเวอร์เข้าไปในรายการซึ่งจะถูกตรวจสอบเพื่อเข้าเล่นเกม
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}เริ่มเซิร์ฟเวอร์ใหม่
+STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}เริ่มเซิร์ฟเวอร์ใหม่ของคุณ
 
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}ป้อนชื่อของคุณ
+STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}ป้อนที่อยู่ของโฮสต์
 
 # Start new multiplayer server
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}เริ่มเกมผู้เล่นหลายคนใหม่
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}ชื่อเกม:
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}ชื่อเกมจะถูกแสดงให้ผู้เล่นอื่นเห็นในเกมที่มีการเล่นหลายคน
+STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}กำหนดรหัสผ่าน
+STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ป้องกันเกมด้วยรหัสผ่านหากไม่ต้องการให้มีการเข้าร่วมจากบุคคลทั่วไป
+STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}เลือกแผนที่:
+STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}ต้องการเล่นแผนที่ไหน?
+STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :สร้างเกมใหม่แบบสุ่ม
 
+STR_NETWORK_START_SERVER_LAN_INTERNET                           :แลน / อินเตอร์เน็ต
+STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :อินเตอร์เน็ต (มีการประกาศ)
+STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} ลูกข่าย
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}ลูกข่ายสูงสุด:
 
 
 

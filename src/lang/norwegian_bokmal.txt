@@ -2416,6 +2416,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Tilbakes
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sett alle parametere til standardverdi
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Antall parametere: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiser - {STRING}

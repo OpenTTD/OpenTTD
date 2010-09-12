@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tạo nh
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Xây dựng đường
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Trồng cây
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tạo bảng ký hiệu
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Đặt đối tượng
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lưu màn chơi kịch bản
@@ -1111,6 +1112,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Tuỳ c
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :không
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :như nhà máy khác
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :hứa hẹn
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Vùng đất phẳng quanh khu công nghiệp: {ORANGE}{STRING} ô{P 1}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Cho phép nhiều nhà máy tương tự nhau trong mỗi đô thị: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Luôn luôn hiện ngày tháng đầy đủ trên thanh trạng thái: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Hiển thị tín hiệu cùng phía làn đường: {ORANGE}{STRING}
@@ -2059,6 +2061,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nâng ca
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Làm bình địa
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Mua đất dành cho tương lai
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Trình Chọn Đối Tượng
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Chọn đối tượng để xây
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Loại đối tượng
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Xem trước đối tượng
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Kích thước: {GOLD}{NUM} x {NUM} ô
+
+STR_OBJECT_CLASS_LTHS                                           :Đèn biển
+STR_OBJECT_CLASS_TRNS                                           :Tháp tín hiệu
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Cây cối
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Chọn loại cây để trồng
@@ -2152,6 +2164,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Toạ đ
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Xây lúc: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Loại ga,bến: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Kiểu ga,bến: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Loại sân bay: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Tên sân bay: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Tên sân bay vị trí này: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Hàng hoá chấp nhận: {LTBLUE}
@@ -2400,6 +2414,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Đặt m
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Đặt tất cả các tham số về mặc định
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Tham số {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Số các thông số: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Phân tích - {STRING}
@@ -2407,6 +2422,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Đối t
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Phân tích đối tượng này theo đối tượng cha
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} tại {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Đối tượng
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Kiểu ray
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Biến số NewGRF là 60+x (dạng hexa)
