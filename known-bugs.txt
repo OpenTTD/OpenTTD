@@ -235,3 +235,20 @@ Crashes when playing music [FS#3941]
 	music driver) crash on some songs from OpenMSX. OpenTTD cannot do
 	anything about this. Please report these crashes to the authors of
 	OpenMSX so the crash causing songs can be removed or fixed.
+
+OpenTTD hangs when started on 32 bits Windows [FS#4083]
+	Under some circumstances OpenTTD might hang for hours on the
+	initialisation of the music driver. The exact circumstances are
+	unknown except that it is the "dmusic" music driver that has the
+	problem and that the "win32" music driver does not.
+	As a result using the "win32" music driver will work around this
+	issue.
+
+	As the exact circumstances are unknown, and the obvious
+	configuration settings related to the music driver are at their
+	default we are not able to detect this failure, except when Windows'
+	music initialisation function returns after several hours and then
+	there is no point in switching the music driver anymore.
+	The reason we do not use the "win32" music driver as default are
+	described in the "Long delay between switching music/song" section
+	of this document.
