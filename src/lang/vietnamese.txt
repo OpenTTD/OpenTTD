@@ -1112,7 +1112,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Tuỳ c
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :không
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :như nhà máy khác
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :hứa hẹn
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Vùng đất phẳng quanh khu công nghiệp: {ORANGE}{STRING} ô{P 1}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Vùng đất phẳng quanh khu công nghiệp: {ORANGE}{STRING} ô
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Cho phép nhiều nhà máy tương tự nhau trong mỗi đô thị: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Luôn luôn hiện ngày tháng đầy đủ trên thanh trạng thái: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Hiển thị tín hiệu cùng phía làn đường: {ORANGE}{STRING}
