@@ -740,9 +740,11 @@ struct DepotWindow : Window {
 				break;
 
 			case DEPOT_WIDGET_STOP_ALL:
-			case DEPOT_WIDGET_START_ALL:
-				DoCommandP(this->window_number, (widget == DEPOT_WIDGET_START_ALL ? (1 << 0) : 0), this->type, CMD_MASS_START_STOP);
+			case DEPOT_WIDGET_START_ALL: {
+				VehicleListIdentifier vli(VL_DEPOT_LIST, this->type, this->owner);
+				DoCommandP(this->window_number, (widget == DEPOT_WIDGET_START_ALL ? (1 << 0) : 0), vli.Pack(), CMD_MASS_START_STOP);
 				break;
+			}
 
 			case DEPOT_WIDGET_SELL_ALL:
 				/* Only open the confimation window if there are anything to sell */
