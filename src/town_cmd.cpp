@@ -1984,18 +1984,19 @@ static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
 	/* Allow towns everywhere when we don't build roads */
 	if (!_settings_game.economy.allow_town_roads && !_generating_world) return true;
 
-	/* MapSize() is sure dividable by both MapSizeX() and MapSizeY(),
-	 * so to do only one memory access, use MapSize() */
-	uint dx = MapSize() + TileX(t->xy) - TileX(tile);
-	uint dy = MapSize() + TileY(t->xy) - TileY(tile);
+	/* Compute relative position of tile. (Positive offsets are towards north) */
+	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
 
 	switch (t->layout) {
 		case TL_2X2_GRID:
-			if ((dx % 3) != 0 || (dy % 3) != 0) return false;
+			grid_pos.x %= 3;
+			grid_pos.y %= 3;
+			if ((grid_pos.x != 2 && grid_pos.x != -1) ||
+				(grid_pos.y != 2 && grid_pos.y != -1)) return false;
 			break;
 
 		case TL_3X3_GRID:
-			if ((dx % 4) < 2 || (dy % 4) < 2) return false;
+			if ((grid_pos.x & 3) < 2 || (grid_pos.y & 3) < 2) return false;
 			break;
 
 		default:
