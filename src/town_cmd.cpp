@@ -402,9 +402,6 @@ static void MakeSingleHouseBigger(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_HOUSE));
 
-	/* means it is completed, get out. */
-	if (LiftHasDestination(tile)) return;
-
 	/* progress in construction stages */
 	IncHouseConstructionTick(tile);
 	if (GetHouseConstructionTick(tile) != 0) return;
