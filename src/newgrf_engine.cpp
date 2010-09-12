@@ -713,8 +713,12 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x15: return GB(v->service_interval, 8, 8);
 		case 0x16: return v->last_station_visited;
 		case 0x17: return v->tick_counter;
-		case 0x18: return v->max_speed;
-		case 0x19: return GB(v->max_speed, 8, 8);
+		case 0x18:
+		case 0x19: {
+			uint max_speed = v->type == VEH_TRAIN ? Train::From(v)->tcache.cached_max_speed : v->max_speed;
+			if (v->type == VEH_AIRCRAFT) max_speed = max_speed * 10 / 128;
+			return (variable - 0x80) == 0x18 ? max_speed : GB(max_speed, 8, 8);
+		}
 		case 0x1A: return v->x_pos;
 		case 0x1B: return GB(v->x_pos, 8, 8);
 		case 0x1C: return v->y_pos;
@@ -725,8 +729,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x29: return GB(v->cur_image, 8, 8);
 		case 0x32: return v->vehstatus;
 		case 0x33: return 0; // non-existent high byte of vehstatus
-		case 0x34: return v->cur_speed;
-		case 0x35: return GB(v->cur_speed, 8, 8);
+		case 0x34: return v->type == VEH_AIRCRAFT ? (v->cur_speed * 10) / 128 : v->cur_speed;
+		case 0x35: return GB(v->type == VEH_AIRCRAFT ? (v->cur_speed * 10) / 128 : v->cur_speed, 8, 8);
 		case 0x36: return v->subspeed;
 		case 0x37: return v->acceleration;
 		case 0x39: return v->cargo_type;
