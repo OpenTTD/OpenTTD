@@ -298,10 +298,14 @@ public:
 	 * @param tile The tile to check.
 	 * @param transport_type The TransportType to check against.
 	 * @pre AIMap::IsValidTile(tile).
+	 * @pre transport_type != TRANSPORT_AIR.
 	 * @note Returns false on tiles with roadworks and on road tiles with only
 	 *       a single piece of road as these tiles cannot be used to transport
 	 *       anything on. It furthermore returns true on some coast tile for
 	 *       TRANSPORT_WATER because ships can navigate over them.
+	 * @note Use AIAirport.IsAirportTile to check for airport tiles. Aircraft
+	 *       can fly over every tile on the map so using HasTransportType
+	 *       doesn't make sense for TRANSPORT_AIR.
 	 * @return True if and only if the tile has the given TransportType.
 	 */
 	static bool HasTransportType(TileIndex tile, TransportType transport_type);
