@@ -7278,6 +7278,50 @@ static void FinaliseCargoArray()
 }
 
 /**
+ * Check if a given housespec is valid and disable it if it's not.
+ * The housespecs that follow it are used to check the validity of
+ * multitile houses.
+ * @param hs The housespec to check.
+ * @param next1 The housespec that follows \c hs.
+ * @param next2 The housespec that follows \c next1.
+ * @param next3 The housespec that follows \c next2.
+ * @param filename The filename of the newgrf this house was defined in.
+ * @return Whether the given housespec is valid.
+ */
+static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseSpec *next2, const HouseSpec *next3, const char *filename)
+{
+	if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 &&
+				(next1 == NULL || !next1->enabled || (next1->building_flags & BUILDING_HAS_1_TILE) != 0)) ||
+			((hs->building_flags & BUILDING_HAS_4_TILES) != 0 &&
+				(next2 == NULL || !next2->enabled || (next2->building_flags & BUILDING_HAS_1_TILE) != 0 ||
+				next3 == NULL || !next3->enabled || (next3->building_flags & BUILDING_HAS_1_TILE) != 0))) {
+		hs->enabled = false;
+		if (filename != NULL) DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d as multitile, but no suitable tiles follow. Disabling house.", filename, hs->grf_prop.local_id);
+		return false;
+	}
+
+	/* Some places sum population by only counting north tiles. Other places use all tiles causing desyncs.
+	 * As the newgrf specs define population to be zero for non-north tiles, we just disable the offending house.
+	 * If you want to allow non-zero populations somewhen, make sure to sum the population of all tiles in all places. */
+	if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 && next1->population != 0) ||
+			((hs->building_flags & BUILDING_HAS_4_TILES) != 0 && (next2->population != 0 || next3->population != 0))) {
+		hs->enabled = false;
+		if (filename != NULL) DEBUG(grf, 1, "FinaliseHouseArray: %s defines multitile house %d with non-zero population on additional tiles. Disabling house.", filename, hs->grf_prop.local_id);
+		return false;
+	}
+
+	/* Substitute type is also used for override, and having an override with a different size causes crashes.
+	 * This check should only be done for NewGRF houses because grf_prop.subst_id is not set for original houses.*/
+	if (filename != NULL && (hs->building_flags & BUILDING_HAS_1_TILE) != (HouseSpec::Get(hs->grf_prop.subst_id)->building_flags & BUILDING_HAS_1_TILE)) {
+		hs->enabled = false;
+		DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d with different house size then it's substitute type. Disabling house.", filename, hs->grf_prop.local_id);
+		return false;
+	}
+
+	return true;
+}
+
+/**
  * Add all new houses to the house array. House properties can be set at any
  * time in the GRF file, so we can only add a house spec to the house array
  * after the file has finished loading. We also need to check the dates, due to
@@ -7310,36 +7354,22 @@ static void FinaliseHouseArray()
 			const HouseSpec *next2 = (i + 2 < HOUSE_MAX ? housespec[i + 2] : NULL);
 			const HouseSpec *next3 = (i + 3 < HOUSE_MAX ? housespec[i + 3] : NULL);
 
-			if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 &&
-						(next1 == NULL || !next1->enabled || (next1->building_flags & BUILDING_HAS_1_TILE) != 0)) ||
-					((hs->building_flags & BUILDING_HAS_4_TILES) != 0 &&
-						(next2 == NULL || !next2->enabled || (next2->building_flags & BUILDING_HAS_1_TILE) != 0 ||
-						next3 == NULL || !next3->enabled || (next3->building_flags & BUILDING_HAS_1_TILE) != 0))) {
-				hs->enabled = false;
-				DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d as multitile, but no suitable tiles follow. Disabling house.", (*file)->filename, hs->grf_prop.local_id);
-				continue;
-			}
-
-			/* Some places sum population by only counting north tiles. Other places use all tiles causing desyncs.
-			 * As the newgrf specs define population to be zero for non-north tiles, we just disable the offending house.
-			 * If you want to allow non-zero populations somewhen, make sure to sum the population of all tiles in all places. */
-			if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 && next1->population != 0) ||
-					((hs->building_flags & BUILDING_HAS_4_TILES) != 0 && (next2->population != 0 || next3->population != 0))) {
-				hs->enabled = false;
-				DEBUG(grf, 1, "FinaliseHouseArray: %s defines multitile house %d with non-zero population on additional tiles. Disabling house.", (*file)->filename, hs->grf_prop.local_id);
-				continue;
-			}
-
-			/* Substitute type is also used for override, and having an override with a different size causes crashes. */
-			if ((hs->building_flags & BUILDING_HAS_1_TILE) != (HouseSpec::Get(hs->grf_prop.subst_id)->building_flags & BUILDING_HAS_1_TILE)) {
-				hs->enabled = false;
-				DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d with different house size then it's substitute type. Disabling house.", (*file)->filename, hs->grf_prop.local_id);
-				continue;
-			}
+			if (!IsHouseSpecValid(hs, next1, next2, next3, (*file)->filename)) continue;
 
 			_house_mngr.SetEntitySpec(hs);
 			if (hs->min_year < min_year) min_year = hs->min_year;
 		}
+	}
+
+	for (int i = 0; i < HOUSE_MAX; i++) {
+		HouseSpec *hs = HouseSpec::Get(i);
+		const HouseSpec *next1 = (i + 1 < HOUSE_MAX ? HouseSpec::Get(i + 1) : NULL);
+		const HouseSpec *next2 = (i + 2 < HOUSE_MAX ? HouseSpec::Get(i + 2) : NULL);
+		const HouseSpec *next3 = (i + 3 < HOUSE_MAX ? HouseSpec::Get(i + 3) : NULL);
+
+		/* We need to check all houses again to we are sure that multitile houses
+		 * did get consecutive IDs and none of the parts are missing. */
+		IsHouseSpecValid(hs, next1, next2, next3, NULL);
 	}
 
 	if (min_year != 0) {
