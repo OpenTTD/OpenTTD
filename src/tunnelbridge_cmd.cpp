@@ -257,11 +257,6 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		if (bridge_len > (_settings_game.construction.longbridges ? 100U : 16U)) return_cmd_error(STR_ERROR_BRIDGE_TOO_LONG);
 	}
 
-	/* retrieve landscape height and ensure it's on land */
-	if (IsWaterTile(tile_start) || IsWaterTile(tile_end)) {
-		return_cmd_error(STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH);
-	}
-
 	uint z_start;
 	uint z_end;
 	Slope tileh_start = GetTileSlope(tile_start, &z_start);
