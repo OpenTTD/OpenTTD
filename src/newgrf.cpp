@@ -7318,6 +7318,13 @@ static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseS
 		return false;
 	}
 
+	/* Make sure that additional parts of multitile houses are not available. */
+	if ((hs->building_flags & BUILDING_HAS_1_TILE) == 0 && (hs->building_availability & HZ_ZONALL) != 0 && (hs->building_availability & HZ_CLIMALL) != 0) {
+		hs->enabled = false;
+		if (filename != NULL) DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d without a size but marked it as available. Disabling house.", filename, hs->grf_prop.local_id);
+		return false;
+	}
+
 	return true;
 }
 
