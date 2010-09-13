@@ -742,8 +742,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x3F: return v->cargo.DaysInTransit();
 		case 0x40: return ClampToU16(v->age);
 		case 0x41: return GB(ClampToU16(v->age), 8, 8);
-		case 0x42: return v->max_age;
-		case 0x43: return GB(v->max_age, 8, 8);
+		case 0x42: return ClampToU16(v->max_age);
+		case 0x43: return GB(ClampToU16(v->max_age), 8, 8);
 		case 0x44: return Clamp(v->build_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 		case 0x45: return v->unitnumber;
 		case 0x46: return Engine::Get(v->engine_type)->grf_prop.local_id;
