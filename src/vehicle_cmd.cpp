@@ -434,7 +434,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param tile Tile of the depot where the vehicles are started/stopped (only used for depots)
  * @param flags type of operation
  * @param p1 bitmask
- *   - bit 0 false = start vehicles, true = stop vehicles
+ *   - bit 0 set = start vehicles, unset = stop vehicles
  *   - bit 1 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
  * @param p2 packed VehicleListIdentifier
  * @param text unused
@@ -443,7 +443,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
-	bool start_stop = HasBit(p1, 0);
+	bool do_start = HasBit(p1, 0);
 	bool vehicle_list_window = HasBit(p1, 1);
 
 	VehicleListIdentifier vli;
@@ -460,7 +460,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, DoCommandFlag flags, uint32 
 	for (uint i = 0; i < list.Length(); i++) {
 		const Vehicle *v = list[i];
 
-		if (!!(v->vehstatus & VS_STOPPED) != start_stop) continue;
+		if (!!(v->vehstatus & VS_STOPPED) != do_start) continue;
 
 		if (!vehicle_list_window) {
 			if (vli.vtype == VEH_TRAIN) {
