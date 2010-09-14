@@ -1,3 +1,9 @@
+1.0.4 (2010-09-14)
+------------------------------------------------------------------------
+- Change: Move removal of bin/data/opentt[dw].grf from distclean to maintainer-clean (r20752)
+- Fix: Recent NFORenum does not know '-?' (r20715)
+
+
 1.0.4-RC1 (2010-08-30)
 ------------------------------------------------------------------------
 - Change: Merge the extra GRF's sources and make it possible to rebuild them easily (r20490)
