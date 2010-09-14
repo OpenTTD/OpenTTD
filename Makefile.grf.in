@@ -54,7 +54,7 @@ $(OBJS_DIR)/sprites:
 
 $(BIN_DIR)/openttdd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 	@# Only try; if nforenum isn't available, just retouch the file as they likely didn't need it anyway.
-	$(Q) ($(NFORENUM) -? > /dev/null 2>&1 && $(MAKE) $(OBJS_DIR)/openttdd.grf && cp $(OBJS_DIR)/openttdd.grf $(BIN_DIR)/openttdd.grf) || ([ -e $(BIN_DIR)/openttdd.grf ] && touch $(BIN_DIR)/openttdd.grf && echo "no NFORenum and GRFCodec found, skipping rebuild of openttdd.grf...") || (echo "no NFORenum and GRFCodec found, but no openttdd.grf either. Install NFORenum and GRFCodec." && exit 1)
+	$(Q) ($(NFORENUM) --help > /dev/null 2>&1 && $(MAKE) $(OBJS_DIR)/openttdd.grf && cp $(OBJS_DIR)/openttdd.grf $(BIN_DIR)/openttdd.grf) || ([ -e $(BIN_DIR)/openttdd.grf ] && touch $(BIN_DIR)/openttdd.grf && echo "no NFORenum and GRFCodec found, skipping rebuild of openttdd.grf...") || (echo "no NFORenum and GRFCodec found, but no openttdd.grf either. Install NFORenum and GRFCodec." && exit 1)
 
 # Yeah, we'd like to use -i in the sed, but Mac OS X's sed and GNU sed just can't agree on the usage of -i. In any case either one of them fails.
 $(OBJS_DIR)/openttdd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
@@ -70,7 +70,7 @@ $(OBJS_DIR)/openttdd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 
 $(BIN_DIR)/openttdw.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 	@# Only try; if nforenum isn't available, just retouch the file as they likely didn't need it anyway.
-	$(Q) ($(NFORENUM) -? > /dev/null 2>&1 && $(MAKE) $(OBJS_DIR)/openttdw.grf && cp $(OBJS_DIR)/openttdw.grf $(BIN_DIR)/openttdw.grf) || ([ -e $(BIN_DIR)/openttdw.grf ] && touch $(BIN_DIR)/openttdw.grf && echo "no NFORenum and GRFCodec found, skipping rebuild of openttdw.grf...") || (echo "no NFORenum and GRFCodec found, but no openttdw.grf either. Install NFORenum and GRFCodec." && exit 1)
+	$(Q) ($(NFORENUM) --help > /dev/null 2>&1 && $(MAKE) $(OBJS_DIR)/openttdw.grf && cp $(OBJS_DIR)/openttdw.grf $(BIN_DIR)/openttdw.grf) || ([ -e $(BIN_DIR)/openttdw.grf ] && touch $(BIN_DIR)/openttdw.grf && echo "no NFORenum and GRFCodec found, skipping rebuild of openttdw.grf...") || (echo "no NFORenum and GRFCodec found, but no openttdw.grf either. Install NFORenum and GRFCodec." && exit 1)
 
 $(OBJS_DIR)/openttdw.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 	$(E) '$(STAGE) Assembling openttdw.nfo'
@@ -87,9 +87,8 @@ $(OBJS_DIR)/openttdw.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 clean:
 	$(Q)rm -f *.bak *.grf
 
-# Clean up temporary files and result of generation, i.e. the grfs.
+# Clean up temporary files
 mrproper: clean
 	$(Q)rm -fr sprites
-	$(Q)rm -f $(BIN_DIR)/openttdd.grf $(BIN_DIR)/openttdw.grf
 
 .PHONY: all mrproper depend clean
