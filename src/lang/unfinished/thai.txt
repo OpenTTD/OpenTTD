@@ -1592,7 +1592,19 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :แลน / อ
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :อินเตอร์เน็ต (มีการประกาศ)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} ลูกข่าย
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}ลูกข่ายสูงสุด:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}เลือกจำนวนมากสุดของลูกข่าย (ไม่จำเป็นต้องครบตามจำนวนนี้)
+STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} บริษัท
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}จำนวนบริษัทสูงสุด:
+STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}จำกัดจำนวนบริษัทที่อยู่ในเซิร์ฟเวอร์
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} ผู้ชม
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}ผู้ชมสูงสุด:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}จำกัดจำนวนผู้ชมที่อยู่ในเซิร์ฟเวอร์
+STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}ภาษาที่ใช้พูดคุย:
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}ผู้เล่นทุกคนจะสามารถทราบถึงภาษาที่ใช้พูดคุยในเซิร์ฟเวอร์นี้
 
+STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}เริ่มเกม
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}เริ่มเกมใหม่ในเครือข่ายจากแผนที่แบบสุ่มหรือแผนที่ที่สร้างเอง
+STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}โหลดเกม
 
 
 # Network game languages
