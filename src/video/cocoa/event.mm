@@ -412,6 +412,7 @@ static bool QZ_PollEvent()
 
 	NSString *chars;
 	NSPoint  pt;
+	NSText   *fieldEditor;
 	switch ([ event type ]) {
 		case NSMouseMoved:
 		case NSOtherMouseDragged:
@@ -550,8 +551,19 @@ static bool QZ_PollEvent()
 					break;
 			}
 
+			fieldEditor = [[ event window ] fieldEditor:YES forObject:nil ];
+			[ fieldEditor setString:@"" ];
+			[ fieldEditor interpretKeyEvents: [ NSArray arrayWithObject:event ] ];
+
 			chars = [ event characters ];
-			QZ_KeyEvent([ event keyCode ], [ chars length ] ? [ chars characterAtIndex:0 ] : 0, YES);
+			if ([ chars length ] == 0) {
+				QZ_KeyEvent([ event keyCode ], 0, YES);
+			} else {
+				QZ_KeyEvent([ event keyCode ], [ chars characterAtIndex:0 ], YES);
+				for (int i = 1; i < [ chars length ]; i++) {
+					QZ_KeyEvent(0, [ chars characterAtIndex:i ], YES);
+				}
+			}
 			break;
 
 		case NSKeyUp:
