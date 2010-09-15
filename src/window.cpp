@@ -32,6 +32,7 @@
 #include "settings_type.h"
 #include "newgrf_debug.h"
 #include "hotkeys.h"
+#include "toolbar_gui.h"
 
 #include "table/sprites.h"
 
@@ -2690,7 +2691,7 @@ void RelocateAllWindows(int neww, int newh)
 		 * in a 'backup'-desc that the window should always be centered. */
 		switch (w->window_class) {
 			case WC_MAIN_TOOLBAR:
-				if (neww - w->width != 0) ResizeWindow(w, min(neww, 640) - w->width, 0);
+				ResizeWindow(w, min(neww, *_preferred_toolbar_size) - w->width, 0);
 
 				top = w->top;
 				left = PositionMainToolbar(w); // changes toolbar orientation

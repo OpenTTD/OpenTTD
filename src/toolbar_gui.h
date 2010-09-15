@@ -14,4 +14,6 @@
 
 void AllocateToolbar();
 
+extern int16 *_preferred_toolbar_size;
+
 #endif /* TOOLBAR_GUI_H */

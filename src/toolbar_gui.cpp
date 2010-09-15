@@ -929,6 +929,8 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 	MenuClickHelp,        // 26
 };
 
+int16 *_preferred_toolbar_size = NULL; ///< Pointer to the default size for the main toolbar.
+
 /** Full blown container to make it behave exactly as we want :) */
 class NWidgetToolbarContainer : public NWidgetContainer {
 	bool visible[TBN_END]; ///< The visible headers
@@ -960,11 +962,13 @@ public:
 		this->resize_y = 0; // We never resize in this direction
 		this->spacers = 0;
 
+		uint nbuttons = 0;
 		/* First initialise some variables... */
 		for (NWidgetBase *child_wid = this->head; child_wid != NULL; child_wid = child_wid->next) {
 			child_wid->SetupSmallestSize(w, init_array);
 			this->smallest_y = max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
 			if (this->IsButton(child_wid->type)) {
+				nbuttons++;
 				this->smallest_x = max(this->smallest_x, child_wid->smallest_x + child_wid->padding_left + child_wid->padding_right);
 			} else if (child_wid->type == NWID_SPACER) {
 				this->spacers++;
@@ -978,6 +982,7 @@ public:
 				child_wid->current_x = child_wid->smallest_x;
 			}
 		}
+		*_preferred_toolbar_size = nbuttons * this->smallest_x;
 	}
 
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
@@ -1149,6 +1154,7 @@ class NWidgetScenarioToolbarContainer : public NWidgetToolbarContainer {
 
 			assert(i < lengthof(this->panel_widths));
 			this->panel_widths[i++] = child_wid->current_x;
+			*_preferred_toolbar_size += child_wid->current_x;
 		}
 	}
 
@@ -1481,7 +1487,7 @@ static const NWidgetPart _nested_toolbar_normal_widgets[] = {
 	NWidgetFunction(MakeMainToolbar),
 };
 
-static const WindowDesc _toolb_normal_desc(
+static WindowDesc _toolb_normal_desc(
 	WDP_MANUAL, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_NO_FOCUS,
@@ -1764,7 +1770,7 @@ static const NWidgetPart _nested_toolb_scen_widgets[] = {
 	NWidgetFunction(MakeScenarioToolbar),
 };
 
-static const WindowDesc _toolb_scen_desc(
+static WindowDesc _toolb_scen_desc(
 	WDP_MANUAL, 640, 22,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
@@ -1779,8 +1785,10 @@ void AllocateToolbar()
 	_last_built_roadtype = ROADTYPE_ROAD;
 
 	if (_game_mode == GM_EDITOR) {
+		_preferred_toolbar_size = &_toolb_scen_desc.default_width;
 		new ScenarioEditorToolbarWindow(&_toolb_scen_desc);
 	} else {
+		_preferred_toolbar_size = &_toolb_normal_desc.default_width;
 		new MainToolbarWindow(&_toolb_normal_desc);
 	}
 }
