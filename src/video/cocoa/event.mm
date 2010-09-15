@@ -560,7 +560,7 @@ static bool QZ_PollEvent()
 				QZ_KeyEvent([ event keyCode ], 0, YES);
 			} else {
 				QZ_KeyEvent([ event keyCode ], [ chars characterAtIndex:0 ], YES);
-				for (int i = 1; i < [ chars length ]; i++) {
+				for (uint i = 1; i < [ chars length ]; i++) {
 					QZ_KeyEvent(0, [ chars characterAtIndex:i ], YES);
 				}
 			}
