@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2010-08-01
-Release version: 1.0.3
+Last updated:    2010-09-14
+Release version: 1.0.4
 ------------------------------------------------------------------------
 
 
@@ -437,7 +437,7 @@ Tycoon Deluxe graphics you need GRFCodec and NFORenum as well. These can be
 found at respectively: http://dev.openttdcoop.org/projects/grfcodec and
 http://dev.openttdcoop.org/projects/nforenum
 The compilation of these extra does generally not happen, unless you remove
-the graphics file using "make distclean" or "make mrproper".
+the graphics file using "make maintainer-clean".
 
 7.2) Supported compilers:
 ---- -------------------

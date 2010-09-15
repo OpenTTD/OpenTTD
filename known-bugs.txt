@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2010-08-01
-Release version: 1.0.3
+Last updated:    2010-09-14
+Release version: 1.0.4
 ------------------------------------------------------------------------
 
 
@@ -34,6 +34,14 @@ that you can find at: http://bugs.openttd.org
 If the bugs are closed but still listed here it means that the bug is fixed
 and that the nightlies and next major release will not have that bug.
 
+Issues prefixed with [OSX] are required to be fixed before we consider
+officially supporting Mac OS X again. For now it remains unsupported and
+we only apply bug fixes provided by the community but we are unable to fix
+these bugs ourselves.
+
+- 4003	[OSX] Running OpenTTD Parallels causes privileged instructions
+- 4001	[OSX] SETX[Y] not ignored in SetFallbackFont
+- 3952	Console command rescan_ai does not remove AIs
 - 3935	Under some circumstances two road vehicles can leave road stop simultaniously
 - 3746	Console output with right-to-left texts in left-to-right texts is not correct
 - 3714	Some corrupted savegames can cause crashes
