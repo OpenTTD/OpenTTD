@@ -1590,6 +1590,7 @@ static const WindowDesc _newgrf_desc(
 static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
+		DeleteWindowByClass(WC_GRF_PARAMETERS);
 		NewGRFWindow *nw = dynamic_cast<NewGRFWindow*>(w);
 
 		GamelogStartAction(GLAT_GRF);
