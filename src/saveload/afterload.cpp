@@ -336,33 +336,43 @@ static void CDECL HandleSavegameLoadCrash(int signum)
 
 	char buffer[8192];
 	char *p = buffer;
-	p += seprintf(p, lastof(buffer),
-			"Loading your savegame caused OpenTTD to crash.\n"
-			"This is most likely caused by a missing NewGRF or a NewGRF that has been\n"
-			"loaded as replacement for a missing NewGRF. OpenTTD cannot easily\n"
-			"determine whether a replacement NewGRF is of a newer or older version.\n"
-			"It will load a NewGRF with the same GRF ID as the missing NewGRF. This\n"
-			"means that if the author makes incompatible NewGRFs with the same GRF ID\n"
-			"OpenTTD cannot magically do the right thing. In most cases OpenTTD will\n"
-			"load the savegame and not crash, but this is an exception.\n"
-			"Please load the savegame with the appropriate NewGRFs. When loading a\n"
-			"savegame still crashes when all NewGRFs are found you should file a\n"
-			"bug report. The missing NewGRFs are:\n");
+	p += seprintf(p, lastof(buffer), "Loading your savegame caused OpenTTD to crash.\n");
 
-	for (const GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
-		if (HasBit(c->flags, GCF_COMPATIBLE)) {
-			const GRFIdentifier *replaced = GetOverriddenIdentifier(c);
-			char buf[40];
-			md5sumToString(buf, lastof(buf), replaced->md5sum);
-			p += seprintf(p, lastof(buffer), "NewGRF %08X (checksum %s) not found.\n  Loaded NewGRF \"%s\" with same GRF ID instead.\n", BSWAP32(c->ident.grfid), buf, c->filename);
-			_saveload_crash_with_missing_newgrfs = true;
+	for (const GRFConfig *c = _grfconfig; !_saveload_crash_with_missing_newgrfs && c != NULL; c = c->next) {
+		_saveload_crash_with_missing_newgrfs = HasBit(c->flags, GCF_COMPATIBLE) || c->status == GCS_NOT_FOUND;
+	}
+
+	if (_saveload_crash_with_missing_newgrfs) {
+		p += seprintf(p, lastof(buffer),
+			"This is most likely caused by a missing NewGRF or a NewGRF that\n"
+			"has been loaded as replacement for a missing NewGRF. OpenTTD\n"
+			"cannot easily determine whether a replacement NewGRF is of a newer\n"
+			"or older version.\n"
+			"It will load a NewGRF with the same GRF ID as the missing NewGRF.\n"
+			"This means that if the author makes incompatible NewGRFs with the\n"
+			"same GRF ID OpenTTD cannot magically do the right thing. In most\n"
+			"cases OpenTTD will load the savegame and not crash, but this is an\n"
+			"exception.\n"
+			"Please load the savegame with the appropriate NewGRFs installed.\n"
+			"The missing/compatible NewGRFs are:\n");
+
+		for (const GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+			if (HasBit(c->flags, GCF_COMPATIBLE)) {
+				const GRFIdentifier *replaced = GetOverriddenIdentifier(c);
+				char buf[40];
+				md5sumToString(buf, lastof(buf), replaced->md5sum);
+				p += seprintf(p, lastof(buffer), "NewGRF %08X (checksum %s) not found.\n  Loaded NewGRF \"%s\" with same GRF ID instead.\n", BSWAP32(c->ident.grfid), buf, c->filename);
+			}
+			if (c->status == GCS_NOT_FOUND) {
+				char buf[40];
+				md5sumToString(buf, lastof(buf), c->ident.md5sum);
+				p += seprintf(p, lastof(buffer), "NewGRF %08X (%s) not found; checksum %s.\n", BSWAP32(c->ident.grfid), c->filename, buf);
+			}
 		}
-		if (c->status == GCS_NOT_FOUND) {
-			char buf[40];
-			md5sumToString(buf, lastof(buf), c->ident.md5sum);
-			p += seprintf(p, lastof(buffer), "NewGRF %08X (%s) not found; checksum %s.\n", BSWAP32(c->ident.grfid), c->filename, buf);
-			_saveload_crash_with_missing_newgrfs = true;
-		}
+	} else {
+		p += seprintf(p, lastof(buffer),
+			"This is probably caused by a corruption in the savegame.\n"
+			"Please file a bug report and attach this savegame.\n");
 	}
 
 	ShowInfo(buffer);
