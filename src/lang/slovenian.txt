@@ -3943,7 +3943,7 @@ STR_SV_STNAME_WOODS                                             :{STRING} Gozdna
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Ob jezeru
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Izmenjalna
 STR_SV_STNAME_AIRPORT                                           :{STRING} Letališče
-STR_SV_STNAME_OILFIELD                                          :{STRING} Naftna polja
+STR_SV_STNAME_OILFIELD                                          :{STRING} Naftna ploščad
 STR_SV_STNAME_MINES                                             :{STRING} Rudniška
 STR_SV_STNAME_DOCKS                                             :{STRING} Doki
 STR_SV_STNAME_BUOY                                              :{STRING}
