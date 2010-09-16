@@ -110,7 +110,7 @@ public:
 
 		int x = TileX(this->wp->xy) * TILE_SIZE;
 		int y = TileY(this->wp->xy) * TILE_SIZE;
-		ScrollWindowTo(x, y, -1, this);
+		ScrollWindowTo(x, y, -1, this, true);
 	}
 
 	virtual void OnResize()
@@ -118,6 +118,7 @@ public:
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WAYPVW_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
+			this->wp->UpdateVirtCoord();
 		}
 	}
 
