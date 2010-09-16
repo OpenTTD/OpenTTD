@@ -2295,6 +2295,19 @@ bool AfterLoadGame()
 				SetWaterClass(t, WATER_CLASS_INVALID);
 			}
 		}
+
+		/* Waypoints with custom name may have a non-unique town_cn,
+		 * renumber those. First set all affected waypoints to the
+		 * highest possible number to get them numbered in the
+		 * order they have in the pool. */
+		Waypoint *wp;
+		FOR_ALL_WAYPOINTS(wp) {
+			if (wp->name != NULL) wp->town_cn = UINT16_MAX;
+		}
+
+		FOR_ALL_WAYPOINTS(wp) {
+			if (wp->name != NULL) MakeDefaultName(wp);
+		}
 	}
 
 	/* Road stops is 'only' updating some caches */

@@ -240,8 +240,8 @@ extern TownID _new_town_id;
 template <class T>
 void MakeDefaultName(T *obj)
 {
-	/* We only want to set names if it hasn't been set before. */
-	assert(obj->name == NULL);
+	/* We only want to set names if it hasn't been set before, or when we're calling from afterload. */
+	assert(obj->name == NULL || obj->town_cn == UINT16_MAX);
 
 	obj->town = ClosestTownFromTile(obj->xy, UINT_MAX);
 
@@ -266,8 +266,8 @@ void MakeDefaultName(T *obj)
 
 		/* check only valid waypoints... */
 		if (lobj != NULL && obj != lobj) {
-			/* only objects with 'generic' name within the same city and with the same type*/
-			if (lobj->name == NULL && lobj->town == obj->town && lobj->IsOfType(obj)) {
+			/* only objects within the same city and with the same type */
+			if (lobj->town == obj->town && lobj->IsOfType(obj)) {
 				/* if lobj->town_cn < next, uint will overflow to '+inf' */
 				uint i = (uint)lobj->town_cn - next;
 
