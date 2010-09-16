@@ -3190,7 +3190,13 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 
 static void UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceType source_type, SourceID source_id)
 {
-	st->goods[type].cargo.Append(new CargoPacket(st->index, st->xy, amount, source_type, source_id));
+	amount += st->goods[type].amount_fract;
+	st->goods[type].amount_fract = GB(amount, 0, 8);
+
+	/* No new "real" cargo item yet. */
+	if (amount <= UINT8_MAX) return;
+
+	st->goods[type].cargo.Append(new CargoPacket(st->index, st->xy, amount >> 8, source_type, source_id));
 	SetBit(st->goods[type].acceptance_pickup, GoodsEntry::PICKUP);
 
 	TriggerStationAnimation(st, st->xy, SAT_NEW_CARGO, type);
@@ -3328,11 +3334,14 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 	/* no stations around at all? */
 	if (st1 == NULL) return 0;
 
+	/* From now we'll calculate with fractal cargo amounts.
+	 * First determine how much cargo we really have. */
+	amount *= best_rating1 + 1;
+
 	if (st2 == NULL) {
 		/* only one station around */
-		uint moved = amount * best_rating1 / 256 + 1;
-		UpdateStationWaiting(st1, type, moved, source_type, source_id);
-		return moved;
+		UpdateStationWaiting(st1, type, amount, source_type, source_id);
+		return amount >> 8;
 	}
 
 	/* several stations around, the best two (highest rating) are in st1 and st2 */
@@ -3340,26 +3349,19 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 	assert(st2 != NULL);
 	assert(best_rating1 != 0 || best_rating2 != 0);
 
-	/* the 2nd highest one gets a penalty */
-	best_rating2 >>= 1;
+	/* Then determine the amount the worst station gets. We do it this way as the
+	 * best should get a bonus, which in this case is the rounding difference from
+	 * this calculation. In reality that will mean the bonus will be pretty low.
+	 * Nevertheless, the best station should always get the most cargo regardless
+	 * of rounding issues. */
+	uint worst_cargo = amount * best_rating2 / (best_rating1 + best_rating2);
+	assert(worst_cargo < (amount - worst_cargo));
 
-	/* amount given to station 1 */
-	uint t = (best_rating1 * (amount + 1)) / (best_rating1 + best_rating2);
+	/* And then send the cargo to the stations! */
+	UpdateStationWaiting(st1, type, amount - worst_cargo, source_type, source_id);
+	UpdateStationWaiting(st2, type, worst_cargo, source_type, source_id);
 
-	uint moved = 0;
-	if (t != 0) {
-		moved = t * best_rating1 / 256 + 1;
-		amount -= t;
-		UpdateStationWaiting(st1, type, moved, source_type, source_id);
-	}
-
-	if (amount != 0) {
-		amount = amount * best_rating2 / 256 + 1;
-		moved += amount;
-		UpdateStationWaiting(st2, type, amount, source_type, source_id);
-	}
-
-	return moved;
+	return amount >> 8;
 }
 
 void BuildOilRig(TileIndex tile)
