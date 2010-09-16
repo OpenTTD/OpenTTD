@@ -178,7 +178,7 @@ static bool LoadObjects()
 		case SQSL_ARRAY_TABLE_END:
 			return false;
 
-		default: NOT_REACHED();
+		default: SlErrorCorrupt("Invalid AI data type");
 	}
 }
 

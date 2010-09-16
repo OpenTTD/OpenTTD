@@ -150,7 +150,7 @@ void ConvertOldMultiheadToNew()
 						u->SetWagon();
 						u->SetFreeWagon();
 						break;
-					default: NOT_REACHED();
+					default: SlErrorCorrupt("Invalid train subtype");
 				}
 			}
 		}
@@ -714,7 +714,7 @@ void Load_VEHS()
 			case VEH_EFFECT:   v = new (index) EffectVehicle();   break;
 			case VEH_DISASTER: v = new (index) DisasterVehicle(); break;
 			case VEH_INVALID: // Savegame shouldn't contain invalid vehicles
-			default: NOT_REACHED();
+			default: SlErrorCorrupt("Invalid vehicle type");
 		}
 
 		SlObject(v, GetVehicleDescription(vtype));

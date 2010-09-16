@@ -1095,7 +1095,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 		res = LoadChunk(ls, NULL, vehicle_empty_chunk);
 	} else {
 		switch (v->type) {
-			default: NOT_REACHED();
+			default: SlErrorCorrupt("Invalid vehicle type");
 			case VEH_TRAIN   : res = LoadChunk(ls, v, vehicle_train_chunk);    break;
 			case VEH_ROAD    : res = LoadChunk(ls, v, vehicle_road_chunk);     break;
 			case VEH_SHIP    : res = LoadChunk(ls, v, vehicle_ship_chunk);     break;
@@ -1295,7 +1295,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		} else {
 			/* Read the vehicle type and allocate the right vehicle */
 			switch (ReadByte(ls)) {
-				default: NOT_REACHED();
+				default: SlErrorCorrupt("Invalid vehicle type");
 				case 0x00 /* VEH_INVALID */: v = NULL;                                        break;
 				case 0x10 /* VEH_TRAIN   */: v = new (_current_vehicle_id) Train();           break;
 				case 0x11 /* VEH_ROAD    */: v = new (_current_vehicle_id) RoadVehicle();     break;
