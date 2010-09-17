@@ -97,11 +97,14 @@ class ThreadMutex_pthread : public ThreadMutex {
 private:
 	pthread_mutex_t mutex;
 	pthread_cond_t condition;
+	pthread_mutexattr_t attr;
 
 public:
 	ThreadMutex_pthread()
 	{
-		pthread_mutex_init(&this->mutex, NULL);
+		pthread_mutexattr_init(&this->attr);
+		pthread_mutexattr_settype(&this->attr, PTHREAD_MUTEX_ERRORCHECK);
+		pthread_mutex_init(&this->mutex, &this->attr);
 		pthread_cond_init(&this->condition, NULL);
 	}
 
@@ -115,22 +118,26 @@ public:
 
 	/* virtual */ void BeginCritical()
 	{
-		pthread_mutex_lock(&this->mutex);
+		int err = pthread_mutex_lock(&this->mutex);
+		assert(err == 0);
 	}
 
 	/* virtual */ void EndCritical()
 	{
-		pthread_mutex_unlock(&this->mutex);
+		int err = pthread_mutex_unlock(&this->mutex);
+		assert(err == 0);
 	}
 
 	/* virtual */ void WaitForSignal()
 	{
-		pthread_cond_wait(&this->condition, &this->mutex);
+		int err = pthread_cond_wait(&this->condition, &this->mutex);
+		assert(err == 0);
 	}
 
 	/* virtual */ void SendSignal()
 	{
-		pthread_cond_signal(&this->condition);
+		int err = pthread_cond_signal(&this->condition);
+		assert(err == 0);
 	}
 };
 
