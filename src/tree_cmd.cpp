@@ -179,42 +179,29 @@ static void PlaceTree(TileIndex tile, uint32 r)
 }
 
 /**
- * Place some amount of trees around a given tile.
+ * Creates a number of tree groups.
+ * The number of trees in each group depends on how many trees are actually placed around the given tile.
  *
- * This function adds some trees around a given tile. As this function use
- * the Random() call it depends on the random how many trees are actually placed
- * around the given tile.
- *
- * @param tile The center of the trees to add
+ * @param num_groups Number of tree groups to place.
  */
-static void DoPlaceMoreTrees(TileIndex tile)
+static void PlaceTreeGroups(uint num_groups)
 {
-	uint i;
-
-	for (i = 0; i < DEFAULT_TREE_STEPS; i++) {
-		uint32 r = Random();
-		int x = GB(r, 0, 5) - 16;
-		int y = GB(r, 8, 5) - 16;
-		uint dist = abs(x) + abs(y);
-		TileIndex cur_tile = TileAddWrap(tile, x, y);
-
-		if (cur_tile != INVALID_TILE && dist <= 13 && CanPlantTreesOnTile(cur_tile, true)) {
-			PlaceTree(cur_tile, r);
-		}
-	}
-}
-
-/**
- * Place more trees on the map.
- *
- * This function add more trees to the map.
- */
-static void PlaceMoreTrees()
-{
-	uint i = ScaleByMapSize(GB(Random(), 0, 5) + 25);
 	do {
-		DoPlaceMoreTrees(RandomTile());
-	} while (--i);
+		TileIndex center_tile = RandomTile();
+
+		for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
+			uint32 r = Random();
+			int x = GB(r, 0, 5) - 16;
+			int y = GB(r, 8, 5) - 16;
+			uint dist = abs(x) + abs(y);
+			TileIndex cur_tile = TileAddWrap(center_tile, x, y);
+
+			if (cur_tile != INVALID_TILE && dist <= 13 && CanPlantTreesOnTile(cur_tile, true)) {
+				PlaceTree(cur_tile, r);
+			}
+		}
+
+	} while (--num_groups);
 }
 
 /**
@@ -313,7 +300,7 @@ void GenerateTrees()
 
 	if (_settings_game.game_creation.tree_placer == TP_NONE) return;
 
-	if (_settings_game.game_creation.landscape != LT_TOYLAND) PlaceMoreTrees();
+	if (_settings_game.game_creation.landscape != LT_TOYLAND) PlaceTreeGroups(ScaleByMapSize(GB(Random(), 0, 5) + 25));
 
 	switch (_settings_game.game_creation.tree_placer) {
 		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LT_ARCTIC ? 15 : 6; break;
