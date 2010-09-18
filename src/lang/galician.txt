@@ -1863,7 +1863,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Constru�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construír sinais de ferrocaril. Ctrl troca entre semáforos/sináis luminosas{}Arrastrando constrúense sinais ó longo dun tramo recto de ferrocarril. Ctrl construe sináis ata o seguinte cruce{}Ctrl+Click abre a ventana de selección
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construír ponte de ferrocaril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construír túnel de ferocarril
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Conmutar construír/eliminar para vías, sinais e estacións. Pulsando CTRL tamén borra a vía de puntos de ruta e estacións
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Construír/eliminar vías, sinais, puntos de ruta e estacións. Pulsando CTRL tamén borra a vía de puntos de ruta e estacións
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Actualizar tipo de vía
 
 # Rail depot construction window
@@ -2394,7 +2394,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Faltan arq
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento do NewGRF '{0:STRING}' pode causar desincronizacións e/ou colgues.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambia a lonxitude do vehículo a '{1:ENGINE}' cando non está nun depósito
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambiou a lonxitude do vehículo a '{1:ENGINE}' cando non está nun depósito
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O tren '{VEHICLE}' pertencente a '{COMPANY}' ten unha lonxitude incorrecta. Esto está causado probablemente por problemas con NewGRFs. O xogo pode desincronizarse ou colgarse.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' proporciona información incorrecta.
@@ -2607,7 +2607,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ningu
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes das industrias - pincha nun nome para centra-la vista nela
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes das industrias - pincha nun nome para centrar a vista nela. CTRL+Pinchar abre una nova fiestra na situación da industria
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -2755,7 +2755,7 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehículo{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - pincha nun tren para información, arrastra o vehículo para engadilo/quitalo do tren
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trens - arrastra o vehículo para engadilo/quitalo do tren, pincha co botón dereito para información. Pulsa CTRL para aplicar ambas funcións a cadea seguinte
 STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos - pincha co botón dereito no vehículo para máis información
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - pincha co botón dereito no barco para máis información
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Avións - pincha co botón dereito no avión para máis información
@@ -2794,13 +2794,13 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar A
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Isto comprará unha copia dun tren incluídos os vagóns. Pincha neste botón e despois nun tren dentro ou fóra do depósito. CTRL+Pinchar comparte as ordes
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Isto comprará unha copia do vehículo. Pincha neste botón e despois nun vehículo dentro ou fóra do depósito. CTRL+Pinchar compartirá as ordes
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto construíra unha copia do barco. Pincha neste botón e despois nun barco dentro ou fóra do depósito. CTRL+Click compartirá as ordes
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto construirá unha copia do avión. Pincha neste botón e nun avión que estea dentro ou fóra do hangar. CTRL+Click compartirá as ordes
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esto comprará unha copia do barco. Pincha neste botón e despois nun barco dentro ou fóra do depósito. CTRL+Pinchar compartirá as ordes
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esto comprará unha copia do avión. Pincha neste botón e nun avión que estea dentro ou fóra do hangar. CTRL+Pinchar compartirá as ordes
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra-la vista principal na situación do depósito de trens
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra-la vista principal na situación do depósito de vehículos de estrada
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centra-la vista principal na situación do depósito de barcos
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centra-la vista principal na situación do hangar
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar a vista principal na situación do depósito. CTRL+Pinchar abrirá unha nova fiestra na situación do depósito
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar a vista principal na situación do depósito. CTRL+Pinchar abrirá unha nova fiestra na situación do depósito
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar a vista principal na situación do depósito. CTRL+Pinchar abrirá unha nova fiestra na situación do depósito
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar a vista principal na situación do hangar. CTRL+Pinchar abrirá unha nova fiestra na situación do hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obter a lista de tódolos trens co depósito actual nas súas ordes
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obter a lista de tódolos vehículos de estrada co depósito actual nas súas ordes
@@ -2869,9 +2869,9 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facer qu
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centra-al vista principal la situación do tren
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centra-la vista principal na situación do vehículo
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centra-la vista principal na situación do barco
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrar a vista principal na situación do tren. CTRL+Pinchar seguirá ao tran na vista principal
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrar a vista principal na situación do vehículo. CTRL+Pinchar seguirá ao vehículo na vista principal
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrar a vista principal na situación do barco. CTRL+Pinchar seguirá ao barco na vista principal
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centra-la vista principal na situación do avión
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren ó depósito

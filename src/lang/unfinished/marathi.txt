@@ -156,6 +156,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन टीटीडी बद्दल
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -426,6 +427,9 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठे�
 
 
 # Landscaping toolbar
+
+# Object construction window
+
 
 # Tree planting window (last two for SE only)
 
