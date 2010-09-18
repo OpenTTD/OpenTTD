@@ -54,6 +54,9 @@ enum ExtraTreePlacement {
 /** Determines when to consider building more trees. */
 byte _trees_tick_ctr;
 
+static const uint16 DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
+static const uint16 DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
+
 /**
  * Tests if a tile can be converted to MP_TREES
  * This is true for clear ground without farms or rocks.
@@ -188,7 +191,7 @@ static void DoPlaceMoreTrees(TileIndex tile)
 {
 	uint i;
 
-	for (i = 0; i < 1000; i++) {
+	for (i = 0; i < DEFAULT_TREE_STEPS; i++) {
 		uint32 r = Random();
 		int x = GB(r, 0, 5) - 16;
 		int y = GB(r, 8, 5) - 16;
@@ -225,9 +228,7 @@ static void PlaceMoreTrees()
  */
 static void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 {
-	uint i;
-
-	for (i = 0; i < 1000; i++) {
+	for (uint i = 0; i < DEFAULT_TREE_STEPS; i++) {
 		uint32 r = Random();
 		int x = GB(r, 0, 5) - 16;
 		int y = GB(r, 8, 5) - 16;
@@ -258,7 +259,7 @@ void PlaceTreesRandomly()
 {
 	uint i, j, ht;
 
-	i = ScaleByMapSize(1000);
+	i = ScaleByMapSize(DEFAULT_TREE_STEPS);
 	do {
 		uint32 r = Random();
 		TileIndex tile = RandomTileSeed(r);
@@ -289,7 +290,7 @@ void PlaceTreesRandomly()
 
 	/* place extra trees at rainforest area */
 	if (_settings_game.game_creation.landscape == LT_TROPIC) {
-		i = ScaleByMapSize(15000);
+		i = ScaleByMapSize(DEFAULT_RAINFOREST_TREE_STEPS);
 
 		do {
 			uint32 r = Random();
@@ -324,8 +325,8 @@ void GenerateTrees()
 		default: NOT_REACHED();
 	}
 
-	total = ScaleByMapSize(1000);
-	if (_settings_game.game_creation.landscape == LT_TROPIC) total += ScaleByMapSize(15000);
+	total = ScaleByMapSize(DEFAULT_TREE_STEPS);
+	if (_settings_game.game_creation.landscape == LT_TROPIC) total += ScaleByMapSize(DEFAULT_RAINFOREST_TREE_STEPS);
 	total *= i;
 	SetGeneratingWorldProgress(GWP_TREE, total);
 
