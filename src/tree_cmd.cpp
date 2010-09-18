@@ -276,13 +276,9 @@ void PlaceTreesRandomly()
 			ht = GetTileZ(tile);
 			/* The higher we get, the more trees we plant */
 			j = GetTileZ(tile) / TILE_HEIGHT * 2;
+			/* Above snowline more trees! */
+			if (_settings_game.game_creation.landscape == LT_ARCTIC && ht > GetSnowLine()) j *= 3;
 			while (j--) {
-				/* Above snowline more trees! */
-				if (_settings_game.game_creation.landscape == LT_ARCTIC && ht > GetSnowLine()) {
-					PlaceTreeAtSameHeight(tile, ht);
-					PlaceTreeAtSameHeight(tile, ht);
-				};
-
 				PlaceTreeAtSameHeight(tile, ht);
 			}
 		}
