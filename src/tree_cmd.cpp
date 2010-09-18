@@ -56,6 +56,7 @@ byte _trees_tick_ctr;
 
 static const uint16 DEFAULT_TREE_STEPS = 1000;             ///< Default number of attempts for placing trees.
 static const uint16 DEFAULT_RAINFOREST_TREE_STEPS = 15000; ///< Default number of attempts for placing extra trees at rainforest in tropic.
+static const uint16 EDITOR_TREE_DIV = 5;                   ///< Game editor tree generation divisor factor.
 
 /**
  * Tests if a tile can be converted to MP_TREES
@@ -249,6 +250,7 @@ void PlaceTreesRandomly()
 	uint i, j, ht;
 
 	i = ScaleByMapSize(DEFAULT_TREE_STEPS);
+	if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
 	do {
 		uint32 r = Random();
 		TileIndex tile = RandomTileSeed(r);
@@ -276,6 +278,7 @@ void PlaceTreesRandomly()
 	/* place extra trees at rainforest area */
 	if (_settings_game.game_creation.landscape == LT_TROPIC) {
 		i = ScaleByMapSize(DEFAULT_RAINFOREST_TREE_STEPS);
+		if (_game_mode == GM_EDITOR) i /= EDITOR_TREE_DIV;
 
 		do {
 			uint32 r = Random();
