@@ -196,6 +196,8 @@ static void PlaceTreeGroups(uint num_groups)
 			uint dist = abs(x) + abs(y);
 			TileIndex cur_tile = TileAddWrap(center_tile, x, y);
 
+			IncreaseGeneratingWorldProgress(GWP_TREE);
+
 			if (cur_tile != INVALID_TILE && dist <= 13 && CanPlantTreesOnTile(cur_tile, true)) {
 				PlaceTree(cur_tile, r);
 			}
@@ -300,8 +302,6 @@ void GenerateTrees()
 
 	if (_settings_game.game_creation.tree_placer == TP_NONE) return;
 
-	if (_settings_game.game_creation.landscape != LT_TOYLAND) PlaceTreeGroups(ScaleByMapSize(GB(Random(), 0, 5) + 25));
-
 	switch (_settings_game.game_creation.tree_placer) {
 		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LT_ARCTIC ? 15 : 6; break;
 		case TP_IMPROVED: i = _settings_game.game_creation.landscape == LT_ARCTIC ?  4 : 2; break;
@@ -311,7 +311,11 @@ void GenerateTrees()
 	total = ScaleByMapSize(DEFAULT_TREE_STEPS);
 	if (_settings_game.game_creation.landscape == LT_TROPIC) total += ScaleByMapSize(DEFAULT_RAINFOREST_TREE_STEPS);
 	total *= i;
+	uint num_groups = (_settings_game.game_creation.landscape != LT_TOYLAND) ? ScaleByMapSize(GB(Random(), 0, 5) + 25) : 0;
+	total += num_groups * DEFAULT_TREE_STEPS;
 	SetGeneratingWorldProgress(GWP_TREE, total);
+
+	if (num_groups != 0) PlaceTreeGroups(num_groups);
 
 	for (; i != 0; i--) {
 		PlaceTreesRandomly();
