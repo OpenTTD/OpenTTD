@@ -331,7 +331,7 @@ static DropDownList *BuildMapsizeDropDown()
 }
 
 static const StringID _elevations[]  = {STR_TERRAIN_TYPE_VERY_FLAT, STR_TERRAIN_TYPE_FLAT, STR_TERRAIN_TYPE_HILLY, STR_TERRAIN_TYPE_MOUNTAINOUS, INVALID_STRING_ID};
-static const StringID _sea_lakes[]   = {STR_SEA_LEVEL_VERY_LOW, STR_SEA_LEVEL_LOW, STR_SEA_LEVEL_MEDIUM, STR_SEA_LEVEL_HIGH, INVALID_STRING_ID};
+static const StringID _sea_lakes[]   = {STR_SEA_LEVEL_VERY_LOW, STR_SEA_LEVEL_LOW, STR_SEA_LEVEL_MEDIUM, STR_SEA_LEVEL_HIGH, STR_SEA_LEVEL_CUSTOM, INVALID_STRING_ID};
 static const StringID _smoothness[]  = {STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH, INVALID_STRING_ID};
 static const StringID _tree_placer[] = {STR_CONFIG_SETTING_TREE_PLACER_NONE, STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL, STR_CONFIG_SETTING_TREE_PLACER_IMPROVED, INVALID_STRING_ID};
 static const StringID _rotation[]    = {STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
@@ -393,7 +393,16 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_LANDSCAPE_PULLDOWN:  SetDParam(0, _landscape[_settings_newgame.game_creation.land_generator]); break;
 			case GLAND_TREE_PULLDOWN:       SetDParam(0, _tree_placer[_settings_newgame.game_creation.tree_placer]); break;
 			case GLAND_TERRAIN_PULLDOWN:    SetDParam(0, _elevations[_settings_newgame.difficulty.terrain_type]); break;
-			case GLAND_WATER_PULLDOWN:      SetDParam(0, _sea_lakes[_settings_newgame.difficulty.quantity_sea_lakes]); break;
+
+			case GLAND_WATER_PULLDOWN:
+				if (_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
+					SetDParam(0, STR_SEA_LEVEL_CUSTOM_PERCENTAGE);
+					SetDParam(1, _settings_newgame.game_creation.custom_sea_level);
+				} else {
+					SetDParam(0, _sea_lakes[_settings_newgame.difficulty.quantity_sea_lakes]);
+				}
+				break;
+
 			case GLAND_SMOOTHNESS_PULLDOWN: SetDParam(0, _smoothness[_settings_newgame.game_creation.tgen_smoothness]); break;
 			case GLAND_VARIETY_PULLDOWN:    SetDParam(0, _variety[_settings_newgame.game_creation.variety]); break;
 			case GLAND_BORDERS_RANDOM:      SetDParam(0, (_settings_newgame.game_creation.water_borders == BORDERS_RANDOM) ? STR_MAPGEN_BORDER_RANDOMIZE : STR_MAPGEN_BORDER_MANUAL); break;
@@ -488,7 +497,12 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_LANDSCAPE_PULLDOWN:  strs = _landscape; break;
 			case GLAND_TREE_PULLDOWN:       strs = _tree_placer; break;
 			case GLAND_TERRAIN_PULLDOWN:    strs = _elevations; break;
-			case GLAND_WATER_PULLDOWN:      strs = _sea_lakes; break;
+			case GLAND_WATER_PULLDOWN:
+				strs = _sea_lakes;
+				SetDParam(0, CUSTOM_SEA_LEVEL_MAX_PERCENTAGE);
+				*size = GetStringBoundingBox(STR_SEA_LEVEL_CUSTOM_PERCENTAGE);
+				break;
+
 			case GLAND_SMOOTHNESS_PULLDOWN: strs = _smoothness; break;
 			case GLAND_VARIETY_PULLDOWN:    strs = _variety; break;
 			case GLAND_HEIGHTMAP_ROTATION_PULLDOWN: strs = _rotation; break;
@@ -745,6 +759,11 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			}
 
 			case GLAND_WATER_PULLDOWN: {
+				if ((uint)index == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
+					this->widget_id = widget;
+					SetDParam(0, _settings_newgame.game_creation.custom_sea_level);
+					ShowQueryString(STR_JUST_INT, STR_MAPGEN_QUANTITY_OF_SEA_LAKES, 3, 50, this, CS_NUMERAL, QSF_NONE);
+				};
 				GameMode old_gm = _game_mode;
 				_game_mode = GM_MENU;
 				IConsoleSetSetting("difficulty.quantity_sea_lakes", index);
@@ -785,6 +804,10 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 			case GLAND_TOWN_PULLDOWN:
 				_settings_newgame.game_creation.custom_town_number = Clamp(value, 1, CUSTOM_TOWN_MAX_NUMBER);
+				break;
+
+			case GLAND_WATER_PULLDOWN:
+				_settings_newgame.game_creation.custom_sea_level = Clamp(value, CUSTOM_SEA_LEVEL_MIN_PERCENTAGE, CUSTOM_SEA_LEVEL_MAX_PERCENTAGE);
 				break;
 		}
 

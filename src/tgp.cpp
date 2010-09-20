@@ -647,7 +647,7 @@ static void HeightMapCurves(uint level)
 static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_new)
 {
 	height_t h_min, h_max, h_avg, h_water_level;
-	int water_tiles, desired_water_tiles;
+	int64 water_tiles, desired_water_tiles;
 	height_t *h;
 	int *hist;
 
@@ -659,7 +659,7 @@ static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_
 	hist = HeightMapMakeHistogram(h_min, h_max, hist_buf);
 
 	/* How many water tiles do we want? */
-	desired_water_tiles = (int)(((int64)water_percent) * (int64)(_height_map.size_x * _height_map.size_y)) >> amplitude_decimal_bits;
+	desired_water_tiles = A2I(((int64)water_percent) * (int64)(_height_map.size_x * _height_map.size_y));
 
 	/* Raise water_level and accumulate values from histogram until we reach required number of water tiles */
 	for (h_water_level = h_min, water_tiles = 0; h_water_level < h_max; h_water_level++) {
@@ -847,7 +847,8 @@ static void HeightMapSmoothSlopes(height_t dh_max)
  */
 static void HeightMapNormalize()
 {
-	const amplitude_t water_percent = _water_percent[_settings_game.difficulty.quantity_sea_lakes];
+	int sea_level_setting = _settings_game.difficulty.quantity_sea_lakes;
+	const amplitude_t water_percent = sea_level_setting != CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[sea_level_setting] : _settings_game.game_creation.custom_sea_level * 1024 / 100;
 	const height_t h_max_new = I2H(_max_height[_settings_game.difficulty.terrain_type]);
 	const height_t roughness = 7 + 3 * _settings_game.game_creation.tgen_smoothness;
 

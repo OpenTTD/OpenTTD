@@ -352,7 +352,7 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, difficulty.subsidy_multiplier,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,     0,      3,  1, STR_SUBSIDY_X1_5,                          DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.construction_cost,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NS,     0,     0,      2,  1, STR_SEA_LEVEL_LOW,                         DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.terrain_type,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     1,     0,      3,  1, STR_TERRAIN_TYPE_VERY_FLAT,                DifficultyChange),
-	 SDT_CONDVAR(GameSettings, difficulty.quantity_sea_lakes,        SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     0,     0,      3,  1, STR_SEA_LEVEL_VERY_LOW,                    DifficultyChange),
+	 SDT_CONDVAR(GameSettings, difficulty.quantity_sea_lakes,        SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     0,     0,      4,  1, STR_SEA_LEVEL_VERY_LOW,                    DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.economy,                   SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      1,  1, STR_ECONOMY_STEADY,                        DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.line_reverse_mode,         SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      1,  1, STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS,DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.disasters,                 SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      1,  1, STR_DISASTERS_OFF,                         DifficultyChange),
@@ -540,6 +540,7 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, game_creation.water_borders,                   SLE_UINT8,111, SL_MAX_VERSION, 0, 0,    15,                     0,      16, 0, STR_NULL,                                 NULL),
 	 SDT_CONDVAR(GameSettings, game_creation.custom_town_number,             SLE_UINT16,115, SL_MAX_VERSION, 0, 0,     1,                     1,    5000, 0, STR_NULL,                                 NULL),
 	 SDT_CONDVAR(GameSettings, construction.extra_tree_placement,             SLE_UINT8,132, SL_MAX_VERSION, 0,MS,     2,                     0,       2, 0, STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT,  NULL),
+	 SDT_CONDVAR(GameSettings, game_creation.custom_sea_level,                SLE_UINT8,149, SL_MAX_VERSION, 0, 0,     1,                     2,      90, 0, STR_NULL,                                 NULL),
 
  SDT_CONDOMANY(GameSettings, locale.currency,                               SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, _locale_currencies, STR_NULL, RedrawScreen, NULL),
  SDT_CONDOMANY(GameSettings, locale.units,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, _locale_units,                       STR_NULL, RedrawScreen, NULL),

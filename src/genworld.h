@@ -33,6 +33,10 @@ enum GenWorldMode {
 	GWM_HEIGHTMAP = 3, ///< Generate a newgame from a heightmap
 };
 
+static const int CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY = 4; ///< Value for custom sea level in difficulty settings.
+static const int CUSTOM_SEA_LEVEL_MIN_PERCENTAGE = 1;    ///< Minimum percentage a user can specify for custom sea level.
+static const int CUSTOM_SEA_LEVEL_MAX_PERCENTAGE = 90;   ///< Maximum percentage a user can specify for custom sea level.
+
 typedef void GWDoneProc();  ///< Procedure called when the genworld process finishes
 typedef void GWAbortProc(); ///< Called when genworld is aborted
 

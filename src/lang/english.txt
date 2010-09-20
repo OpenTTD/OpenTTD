@@ -1045,6 +1045,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Very Low
 STR_SEA_LEVEL_LOW                                               :Low
 STR_SEA_LEVEL_MEDIUM                                            :Medium
 STR_SEA_LEVEL_HIGH                                              :High
+STR_SEA_LEVEL_CUSTOM                                            :Custom
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 STR_DISASTER_NONE                                               :None
 STR_DISASTER_REDUCED                                            :Reduced
