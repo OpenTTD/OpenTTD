@@ -535,10 +535,10 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} м
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Увядзіце радок фільтра
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Увядзіце ключавое слова для фільтрацыі сьпісу
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Зьмена напрамку сартавання (зьмяньшэньне / ўзрастаньне)
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Зьмена напрамку сартаваньня (зьмяньшэньне / ўзрастаньне)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Зьмена крытэрыю сартаваньня
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выберыце фiльтр
-STR_BUTTON_SORT_BY                                              :{BLACK}Сартаванне
+STR_BUTTON_SORT_BY                                              :{BLACK}Сартаваньне
 STR_BUTTON_LOCATION                                             :{BLACK}Агляд
 STR_BUTTON_RENAME                                               :{BLACK}Перайменаваць
 
@@ -1854,7 +1854,7 @@ STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Кліе
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Клиентаў анлайн/макс. {}Кампаніяў анлайн/макс.
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Памер мапы
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Памер мапы гульні{}Клікніце для сартавання па плошчы
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Памер мапы гульні{}Клікніце для сартаваньня па плошчы
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Бягучая дата
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Гады

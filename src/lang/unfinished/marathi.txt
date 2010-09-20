@@ -67,17 +67,56 @@ STR_CARGO_SINGULAR_MAIL                                         :पत्र
 STR_CARGO_SINGULAR_OIL                                          :तेल
 STR_CARGO_SINGULAR_LIVESTOCK                                    :पशुधन
 STR_CARGO_SINGULAR_GOODS                                        :माल
+STR_CARGO_SINGULAR_GRAIN                                        :धान्य
+STR_CARGO_SINGULAR_WOOD                                         :लाकूड
+STR_CARGO_SINGULAR_STEEL                                        :पोलाद
+STR_CARGO_SINGULAR_MAIZE                                        :मका
+STR_CARGO_SINGULAR_FRUIT                                        :फळ
+STR_CARGO_SINGULAR_DIAMOND                                      :हिरा
+STR_CARGO_SINGULAR_FOOD                                         :अन्न
+STR_CARGO_SINGULAR_PAPER                                        :कागद
+STR_CARGO_SINGULAR_GOLD                                         :सोने
+STR_CARGO_SINGULAR_WATER                                        :पाणी
+STR_CARGO_SINGULAR_WHEAT                                        :गहू
+STR_CARGO_SINGULAR_RUBBER                                       :रबर
+STR_CARGO_SINGULAR_SUGAR                                        :साखर
+STR_CARGO_SINGULAR_TOY                                          :खेळणी
+STR_CARGO_SINGULAR_BUBBLE                                       :बुडबुडा
+STR_CARGO_SINGULAR_TOFFEE                                       :टॉफी
+STR_CARGO_SINGULAR_PLASTIC                                      :प्लॅस्टिक
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} प्रवासी{P "" s}
+STR_QUANTITY_COAL                                               :{WEIGHT} कोळसा
+STR_QUANTITY_OIL                                                :{VOLUME} तेल
+STR_QUANTITY_GRAIN                                              :{WEIGHT} धान्य
+STR_QUANTITY_WOOD                                               :{WEIGHT} लाकूड
+STR_QUANTITY_MAIZE                                              :{WEIGHT} मका
+STR_QUANTITY_FRUIT                                              :{WEIGHT} फळ
+STR_QUANTITY_FOOD                                               :{WEIGHT} अन्न
+STR_QUANTITY_PAPER                                              :{WEIGHT} कागद
+STR_QUANTITY_WATER                                              :{VOLUME} पाणी
+STR_QUANTITY_RUBBER                                             :{VOLUME} रबर
+STR_QUANTITY_SUGAR                                              :{WEIGHT} साखर
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} टॉफी
+STR_QUANTITY_PLASTIC                                            :{VOLUME} प्लॅस्टिक
+STR_QUANTITY_N_A                                                :एन. ए.
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
 
 # 'Mode' of transport for cargoes
+STR_PASSENGERS                                                  :प्रवासी
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle
+STR_COLOUR_YELLOW                                               :पिवळा
+STR_COLOUR_RED                                                  :लाल
+STR_COLOUR_GREEN                                                :हिरवा
+STR_COLOUR_BLUE                                                 :निळा
+STR_COLOUR_PURPLE                                               :जांभळा
+STR_COLOUR_WHITE                                                :पांढरा
 
 # Units used in OpenTTD
 
@@ -90,6 +129,7 @@ STR_NOTHING                                                     :
 
 # Common window strings
 
+STR_BUTTON_LOCATION                                             :{BLACK}जागा
 
 
 # Query window
@@ -99,14 +139,24 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
+STR_MEASURE_LENGTH                                              :{BLACK}लांबी: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}लांबीरुंदी : {NUM} x {NUM}
 
 
 # These are used in buttons
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}लोकसंख्या
+STR_SORT_BY_CAPTION_NAME                                        :{BLACK}नाव
+STR_SORT_BY_CAPTION_DATE                                        :{BLACK}दिनांक
 # These are used in dropdowns
+STR_SORT_BY_POPULATION                                          :लोकसंख्या
+STR_SORT_BY_NAME                                                :नाव
+STR_SORT_BY_LENGTH                                              :लांबी
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}रस्ते बांधा
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}ओपेन टीटीडी
 
 ############ range for SE file menu starts
 ############ range for SE file menu starts
@@ -118,6 +168,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :विश्वाचा नक्षा
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 ############ end of the 'Display map' dropdown
 ############ end of the 'Town' dropdown
@@ -150,6 +201,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ############ range ends here
 
 ############ range for music menu starts
+STR_TOOLBAR_SOUND_MUSIC                                         :ध्वनी/संगीत
 ############ range ends here
 
 ############ range for message menu starts
@@ -167,33 +219,64 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन �
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
 
+STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 
 # Graph key window
 
 # Company league window
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
 # Music window
+STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
+STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
+STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
+STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 
 
 # Playlist window
+STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 
 # Highscore window
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 
 # Smallmap window
+STR_SMALLMAP_CAPTION                                            :{WHITE}नक्षा - {STRING}
 
 
+STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}रस्ते
+STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}विमान
+STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}वन
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}बस स्थानक
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}झाड
+STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}पाणी
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}वाळवंट
+STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}बर्फ
 
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 
 # Status bar messages
+STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 
 # News message history
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
 
@@ -201,6 +284,7 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन �
 
 
 
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Manager)
 
 
 
@@ -212,8 +296,12 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन �
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
 
+STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} जुनी होत आहे
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} खूप जुनी होत आहे
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} हरवली आहे
 
 
+STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 
 
 
@@ -223,6 +311,31 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन �
 # Game options window
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :पौंड (£)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :डोल्लर ($)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :युरो (€)
+STR_GAME_OPTIONS_CURRENCY_YEN                                   :येन (¥)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :ओस्त्रिअन शिल्लिंग (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :बेल्गीअन फ्रांक (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :स्विस फ्रांक (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :झेख कोरुना (CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :दोइश्मार्क (DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :डेनिष क्रोन (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :पेसेटा (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिन्निश मार्क्का (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :फ्रांक (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :ग्रीक द्रक्मा (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :हंगेरियन फोरिन्त (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :आईसलेंडीक क्रोना (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :ईटेलिअन लिरा (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :डच गिल्डर (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :नोर्वेगीअन क्रोन (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :पोलिश झ्लोटी (PLN)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :रशिअन रुबल्स (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :स्लोवेनिअन तोलार (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :स्वीडीश क्रोना (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :तुर्की लिरा (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :स्लोवाक कोरुना (SKK)
 ############ end of currency region
 
 
@@ -232,10 +345,31 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन �
 
 
 ############ start of townname region
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :फ्रेंच
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :जर्मन
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :स्वीडीश
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :डच
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :फिन्निश
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :पोलिश
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :स्लोवाक
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :नोर्वेगीअन
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :हंगेरियन
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :ओस्त्रिअन
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :रोमेनिअन
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :झेख
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :स्विस
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :डेनिष
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :तुर्की
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :ईटेलिअन
 ############ end of townname region
 
 
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :दर महिने
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :दर ३ महिने
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :दर ६ महिने
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :दर १२ महिने
 
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}भाषा
 
 
 
@@ -446,6 +580,7 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठे�
 # Industry cargoes window
 
 # Land area window
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}विमानतळाच नाव: {LTBLUE}{STRING}
 
 # Description of land area of different tiles
 
@@ -487,9 +622,11 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठे�
 
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :वस्तू
 
 
 # Sprite aligner window
@@ -712,6 +849,7 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठे�
 
 
 # AI Parameters
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 
@@ -766,6 +904,7 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठे�
 
 
 # Road construction errors
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}अधी रस्ता काढला पाहिजे
 
 # Waterway construction errors
 
@@ -806,9 +945,18 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठे�
 
 ##id 0x2000
 # Town building names
+STR_TOWN_BUILDING_NAME_HOTEL_1                                  :हॉटेल
+STR_TOWN_BUILDING_NAME_STATUE_1                                 :पुतळा
+STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :गुदाम
+STR_TOWN_BUILDING_NAME_THEATER_1                                :नाट्यगृह
+STR_TOWN_BUILDING_NAME_STADIUM_2                                :क्रीडाभूमी
+STR_TOWN_BUILDING_NAME_OFFICES_1                                :सरकारी खाते
+STR_TOWN_BUILDING_NAME_HOUSES_2                                 :घराणे
+STR_TOWN_BUILDING_NAME_CINEMA_1                                 :सिनेमा
 
 ##id 0x4800
 # industry names
+STR_INDUSTRY_NAME_FARM_2                                        :शेत
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
@@ -816,11 +964,47 @@ STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठे�
 STR_SV_EMPTY                                                    :
 
 STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} उत्तर
+STR_SV_STNAME_SOUTH                                             :{STRING} दक्षिण
+STR_SV_STNAME_EAST                                              :{STRING} पूर्व
+STR_SV_STNAME_WEST                                              :{STRING} पश्चिम
+STR_SV_STNAME_CENTRAL                                           :{STRING} केंद्रीय
 ##id 0x6020
+STR_SV_STNAME_FOREST                                            :{STRING} वन
 ############ end of savegame specific region!
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :सेम्पसन यु ५२
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :कोलमेन कौंट
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :एफ एफ पी डार्ट
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :येट होगन
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :बेकवेल कॉट्स्वल्ड एल बी-३
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :बेकवेल लकेट एल बी-८
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :बेकवेल लकेट एल बी-९
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :बेकवेल लकेट एल बी ८०
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :बेकवेल लकेट एल बी-१०
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :बेकवेल लकेट एल बी-११
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :डार्विन १००
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :डार्विन २००
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :डार्विन ३००
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :डार्विन ४००
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :डार्विन ५००
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :डार्विन ६००
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :डिंगर १००
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :येट झी-शटल
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :केल्लिंग के १
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :केल्लिंग के ६
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :केल्लिंग के ७
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :डार्विन ७००
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :एफ एफ पी हैपरडार्ट २
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :डिंगर २००
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :डिंगर १०००
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :प्लोडीफट १००
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :प्लोडीफट ५००
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :फ्लाश्बंग एकस १
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :जुग्गेर्प्लाने एम १
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :फ्लाश्बंग विझ्झेर
 
 ##id 0x8800
 # Formatting of some strings
@@ -829,6 +1013,8 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_GROUP_NAME                                           :गट्टा {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 
 
