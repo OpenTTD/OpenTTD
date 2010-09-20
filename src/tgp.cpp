@@ -848,7 +848,7 @@ static void HeightMapSmoothSlopes(height_t dh_max)
 static void HeightMapNormalize()
 {
 	int sea_level_setting = _settings_game.difficulty.quantity_sea_lakes;
-	const amplitude_t water_percent = sea_level_setting != CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[sea_level_setting] : _settings_game.game_creation.custom_sea_level * 1024 / 100;
+	const amplitude_t water_percent = sea_level_setting != (int)CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY ? _water_percent[sea_level_setting] : _settings_game.game_creation.custom_sea_level * 1024 / 100;
 	const height_t h_max_new = I2H(_max_height[_settings_game.difficulty.terrain_type]);
 	const height_t roughness = 7 + 3 * _settings_game.game_creation.tgen_smoothness;
 
