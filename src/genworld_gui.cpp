@@ -377,7 +377,18 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_MAPSIZE_X_PULLDOWN:  SetDParam(0, 1 << _settings_newgame.game_creation.map_x); break;
 			case GLAND_MAPSIZE_Y_PULLDOWN:  SetDParam(0, 1 << _settings_newgame.game_creation.map_y); break;
 			case GLAND_SNOW_LEVEL_TEXT:     SetDParam(0, _settings_newgame.game_creation.snow_line_height); break;
-			case GLAND_TOWN_PULLDOWN:       SetDParam(0, _game_mode == GM_EDITOR ? STR_DISASTERS_OFF : _num_towns[_settings_newgame.difficulty.number_towns]); break;
+
+			case GLAND_TOWN_PULLDOWN:
+				if (_game_mode == GM_EDITOR) {
+					SetDParam(0, STR_DISASTERS_OFF);
+				} else if (_settings_newgame.difficulty.number_towns == CUSTOM_TOWN_NUMBER_DIFFICULTY) {
+					SetDParam(0, STR_NUM_CUSTOM_NUMBER);
+					SetDParam(1, _settings_newgame.game_creation.custom_town_number);
+				} else {
+					SetDParam(0, _num_towns[_settings_newgame.difficulty.number_towns]);
+				}
+				break;
+
 			case GLAND_INDUSTRY_PULLDOWN:   SetDParam(0, _game_mode == GM_EDITOR ? STR_DISASTERS_OFF : _num_inds[_settings_newgame.difficulty.number_industries]); break;
 			case GLAND_LANDSCAPE_PULLDOWN:  SetDParam(0, _landscape[_settings_newgame.game_creation.land_generator]); break;
 			case GLAND_TREE_PULLDOWN:       SetDParam(0, _tree_placer[_settings_newgame.game_creation.tree_placer]); break;
@@ -467,7 +478,12 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				*size = GetStringBoundingBox(STR_MAPGEN_HEIGHTMAP_SIZE);
 				break;
 
-			case GLAND_TOWN_PULLDOWN:       strs = _num_towns; break;
+			case GLAND_TOWN_PULLDOWN:
+				strs = _num_towns;
+				SetDParam(0, CUSTOM_TOWN_MAX_NUMBER);
+				*size = GetStringBoundingBox(STR_NUM_CUSTOM_NUMBER);
+				break;
+
 			case GLAND_INDUSTRY_PULLDOWN:   strs = _num_inds; break;
 			case GLAND_LANDSCAPE_PULLDOWN:  strs = _landscape; break;
 			case GLAND_TREE_PULLDOWN:       strs = _tree_placer; break;

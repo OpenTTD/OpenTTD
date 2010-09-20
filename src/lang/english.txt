@@ -1026,6 +1026,7 @@ STR_NUM_LOW                                                     :Low
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :High
 STR_NUM_CUSTOM                                                  :Custom
+STR_NUM_CUSTOM_NUMBER                                           :Custom ({NUM})
 
 STR_VARIETY_NONE                                                :None
 STR_VARIETY_VERY_LOW                                            :Very Low
