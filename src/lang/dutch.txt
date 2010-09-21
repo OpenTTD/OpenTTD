@@ -1026,6 +1026,7 @@ STR_NUM_LOW                                                     :Laag
 STR_NUM_NORMAL                                                  :Normaal
 STR_NUM_HIGH                                                    :Hoog
 STR_NUM_CUSTOM                                                  :Aangepast
+STR_NUM_CUSTOM_NUMBER                                           :Aangepast ({NUM})
 
 STR_VARIETY_NONE                                                :Geen
 STR_VARIETY_VERY_LOW                                            :Heel Laag
@@ -1044,6 +1045,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Erg laag
 STR_SEA_LEVEL_LOW                                               :Laag
 STR_SEA_LEVEL_MEDIUM                                            :Gemiddeld
 STR_SEA_LEVEL_HIGH                                              :Hoog
+STR_SEA_LEVEL_CUSTOM                                            :Aangepast
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Aangepast ({NUM}%)
 
 STR_DISASTER_NONE                                               :Geen
 STR_DISASTER_REDUCED                                            :Verminderd

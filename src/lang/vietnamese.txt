@@ -1026,6 +1026,7 @@ STR_NUM_LOW                                                     :Ít
 STR_NUM_NORMAL                                                  :Trung bình
 STR_NUM_HIGH                                                    :Nhiều
 STR_NUM_CUSTOM                                                  :Tuỳ chọn
+STR_NUM_CUSTOM_NUMBER                                           :Tùy chỉnh ({NUM})
 
 STR_VARIETY_NONE                                                :Không
 STR_VARIETY_VERY_LOW                                            :Rất Thấp
@@ -1044,6 +1045,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Thấp Nhất
 STR_SEA_LEVEL_LOW                                               :Thấp
 STR_SEA_LEVEL_MEDIUM                                            :Trung Bình
 STR_SEA_LEVEL_HIGH                                              :Cao
+STR_SEA_LEVEL_CUSTOM                                            :Tùy chỉnh
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Tùy chỉnh ({NUM}%)
 
 STR_DISASTER_NONE                                               :Không Có
 STR_DISASTER_REDUCED                                            :Giảm

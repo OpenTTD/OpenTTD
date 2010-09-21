@@ -1122,6 +1122,7 @@ STR_NUM_LOW                                                     :Nisko
 STR_NUM_NORMAL                                                  :Normalno
 STR_NUM_HIGH                                                    :Visoko
 STR_NUM_CUSTOM                                                  :Proizvoljno
+STR_NUM_CUSTOM_NUMBER                                           :Proizvoljno ({NUM})
 
 STR_VARIETY_NONE                                                :Ništa
 STR_VARIETY_VERY_LOW                                            :Vrlo nisko
@@ -1140,6 +1141,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Vrlo nisko
 STR_SEA_LEVEL_LOW                                               :Nisko
 STR_SEA_LEVEL_MEDIUM                                            :Umjereno
 STR_SEA_LEVEL_HIGH                                              :Visoko
+STR_SEA_LEVEL_CUSTOM                                            :Proizvoljno
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Proizvoljno ({NUM}%)
 
 STR_DISASTER_NONE                                               :Ništa
 STR_DISASTER_REDUCED                                            :Smanjeno

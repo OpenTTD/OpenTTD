@@ -1221,6 +1221,7 @@ STR_NUM_LOW                                                     :Mali
 STR_NUM_NORMAL                                                  :Normalan
 STR_NUM_HIGH                                                    :Veliki
 STR_NUM_CUSTOM                                                  :Podešen
+STR_NUM_CUSTOM_NUMBER                                           :Prilagođeno ({NUM})
 
 STR_VARIETY_NONE                                                :Neizmenjena
 STR_VARIETY_VERY_LOW                                            :Veoma Mala
@@ -1239,6 +1240,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Vrlo Niska
 STR_SEA_LEVEL_LOW                                               :Niska
 STR_SEA_LEVEL_MEDIUM                                            :Srednja
 STR_SEA_LEVEL_HIGH                                              :Visoka
+STR_SEA_LEVEL_CUSTOM                                            :Prilagođeno
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Prilagođeno ({NUM}%)
 
 STR_DISASTER_NONE                                               :nema
 STR_DISASTER_REDUCED                                            :redukovani

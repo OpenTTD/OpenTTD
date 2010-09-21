@@ -1027,6 +1027,7 @@ STR_NUM_LOW                                                     :Niedrig
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Hoch
 STR_NUM_CUSTOM                                                  :Eigene
+STR_NUM_CUSTOM_NUMBER                                           :Individuell ({NUM})
 
 STR_VARIETY_NONE                                                :Minimal
 STR_VARIETY_VERY_LOW                                            :Sehr klein
@@ -1045,6 +1046,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Sehr niedrig
 STR_SEA_LEVEL_LOW                                               :Niedrig
 STR_SEA_LEVEL_MEDIUM                                            :Mittel
 STR_SEA_LEVEL_HIGH                                              :Hoch
+STR_SEA_LEVEL_CUSTOM                                            :Individuell
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Individuell ({NUM}%)
 
 STR_DISASTER_NONE                                               :Keine
 STR_DISASTER_REDUCED                                            :Verringert
