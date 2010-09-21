@@ -95,6 +95,7 @@ static const NWidgetPart _nested_group_widgets[] = {
 				NWidget(WWT_MATRIX, COLOUR_GREY, GRP_WIDGET_LIST_VEHICLE), SetMinimalSize(248, 0), SetDataTip(0x701, STR_NULL), SetResize(1, 1), SetFill(1, 0), SetScrollbar(GRP_WIDGET_LIST_VEHICLE_SCROLLBAR),
 				NWidget(NWID_VSCROLLBAR, COLOUR_GREY, GRP_WIDGET_LIST_VEHICLE_SCROLLBAR),
 			EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_GREY), SetMinimalSize(1, 0), SetFill(1, 1), EndContainer(),
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, GRP_WIDGET_AVAILABLE_VEHICLES), SetMinimalSize(106, 12), SetFill(0, 1),
 						SetDataTip(STR_BLACK_STRING, STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP),
