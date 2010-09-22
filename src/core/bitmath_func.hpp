@@ -31,7 +31,7 @@
 template <typename T>
 static FORCEINLINE uint GB(const T x, const uint8 s, const uint8 n)
 {
-	return (x >> s) & ((1U << n) - 1);
+	return (x >> s) & (((T)1U << n) - 1);
 }
 
 /**
@@ -55,7 +55,7 @@ static FORCEINLINE uint GB(const T x, const uint8 s, const uint8 n)
 template <typename T, typename U>
 static FORCEINLINE T SB(T &x, const uint8 s, const uint8 n, const U d)
 {
-	x &= (T)(~(((1U << n) - 1) << s));
+	x &= (T)(~((((T)1U << n) - 1) << s));
 	x |= (T)(d << s);
 	return x;
 }
@@ -78,7 +78,7 @@ static FORCEINLINE T SB(T &x, const uint8 s, const uint8 n, const U d)
 template <typename T, typename U>
 static FORCEINLINE T AB(T &x, const uint8 s, const uint8 n, const U i)
 {
-	const T mask = (T)(((1U << n) - 1) << s);
+	const T mask = ((((T)1U << n) - 1) << s);
 	x = (T)((x & ~mask) | ((x + (i << s)) & mask));
 	return x;
 }
@@ -114,7 +114,7 @@ static FORCEINLINE bool HasBit(const T x, const uint8 y)
 template <typename T>
 static FORCEINLINE T SetBit(T &x, const uint8 y)
 {
-	return x = (T)(x | (T)(1U << y));
+	return x = (T)(x | ((T)1U << y));
 }
 
 /**
@@ -172,7 +172,7 @@ static FORCEINLINE T ClrBit(T &x, const uint8 y)
 template <typename T>
 static FORCEINLINE T ToggleBit(T &x, const uint8 y)
 {
-	return x = (T)(x ^ (T)(1U << y));
+	return x = (T)(x ^ ((T)1U << y));
 }
 
 
