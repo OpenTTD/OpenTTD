@@ -1190,6 +1190,7 @@ public:
 					d = maxdim(d, GetStringBoundingBox(this->GetIndustryString(this->industries[i])));
 				}
 				resize->height = d.height;
+				d.height *= 5;
 				d.width += padding.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				d.height += padding.height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				*size = maxdim(*size, d);
