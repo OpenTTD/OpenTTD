@@ -323,7 +323,7 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Chuyển
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Lưu, nạp màn chơi kịch bản, thoát trình chỉnh sửa màn chơi, thoát chương trình
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Trình Biên Tập màn chơi kịch bản
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Biên Tập Màn Chơi Kịch Bản
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Chuyển ngày bắt đầu về phía sau 1 năm
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Chuyển ngày bắt đầu về phía trước 1 năm
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Nháy vào để nhập năm bắt đầu ván chơi
@@ -1355,12 +1355,12 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Thay đ�
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Chơi mới
-STR_INTRO_LOAD_GAME                                             :{BLACK}Nạp ván chơi
-STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Chơi Màn chơi kịch bản
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi bản đồ địa hình
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Trình biên tập màn chơi kịch bản
-STR_INTRO_MULTIPLAYER                                           :{BLACK}Chơi trên mạng
+STR_INTRO_NEW_GAME                                              :{BLACK}Màn Chơi Mới
+STR_INTRO_LOAD_GAME                                             :{BLACK}Nạp Ván Chơi
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Chơi Màn Chơi Kịch Bản
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi Bản Đồ Địa Hình
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Biên Tập Màn Chơi Kịch Bản
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Chơi Trên Mạng
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Tùy chọn trò chơi
 STR_INTRO_DIFFICULTY                                            :{BLACK}Độ khó ({STRING})
@@ -2274,7 +2274,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 
 # Save/load game/scenario
 STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Lưu ván chơi
-STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Nạp ván chơi
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Nạp Ván Chơi
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lưu màn chơi kịch bản
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Nạp màn chơi kịch bản
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Nạp bản đồ địa hình

@@ -1026,6 +1026,7 @@ STR_NUM_LOW                                                     :Scăzut
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Ridicat
 STR_NUM_CUSTOM                                                  :Personalizat
+STR_NUM_CUSTOM_NUMBER                                           :Personalizat ({NUM})
 
 STR_VARIETY_NONE                                                :Nimic
 STR_VARIETY_VERY_LOW                                            :Foarte mic
@@ -1044,6 +1045,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Foarte scăzut
 STR_SEA_LEVEL_LOW                                               :Scăzut
 STR_SEA_LEVEL_MEDIUM                                            :Mediu
 STR_SEA_LEVEL_HIGH                                              :Ridicat
+STR_SEA_LEVEL_CUSTOM                                            :Personalizat
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalizat ({NUM}%)
 
 STR_DISASTER_NONE                                               :Deloc
 STR_DISASTER_REDUCED                                            :Redus

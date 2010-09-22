@@ -1223,6 +1223,8 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 # Income 'floats'
 
 # Saveload messages
+STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Ӑнӑҫсӑр хӑй управ
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<палӑ мар>
 
 # Map generation messages
 
@@ -1232,8 +1234,10 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 # Soundset messages
 
 # Screenshot related messages
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ӑнӑҫсӑр экран сӑнӗ
 
 # Error message titles
+STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Пӗлтерӳ
 
 # Generic construction errors
 
@@ -1266,6 +1270,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 
 # Autoreplace related errors
+STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(укҫа ҫитмест)
 
 # Rail construction errors
 
@@ -1314,6 +1319,9 @@ STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ҫул �
 
 ##id 0x2000
 # Town building names
+STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Чиркӳ
+STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Отел
+STR_TOWN_BUILDING_NAME_STATUE_1                                 :Палӑк
 
 ##id 0x4800
 # industry names

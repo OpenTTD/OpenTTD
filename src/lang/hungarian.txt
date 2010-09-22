@@ -1090,6 +1090,7 @@ STR_NUM_LOW                                                     :Kevés
 STR_NUM_NORMAL                                                  :Normál
 STR_NUM_HIGH                                                    :Sok
 STR_NUM_CUSTOM                                                  :Saját
+STR_NUM_CUSTOM_NUMBER                                           :Egyedi ({NUM})
 
 STR_VARIETY_NONE                                                :Nincs
 STR_VARIETY_VERY_LOW                                            :Nagyon alacsony
@@ -1108,6 +1109,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Nagyon alacsony
 STR_SEA_LEVEL_LOW                                               :Alacsony
 STR_SEA_LEVEL_MEDIUM                                            :Közepes
 STR_SEA_LEVEL_HIGH                                              :Magas
+STR_SEA_LEVEL_CUSTOM                                            :Egyedi
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Egyedi ({NUM}%)
 
 STR_DISASTER_NONE                                               :Nincs
 STR_DISASTER_REDUCED                                            :Ritka

@@ -1028,6 +1028,7 @@ STR_NUM_LOW                                                     :Lavt
 STR_NUM_NORMAL                                                  :Normalt
 STR_NUM_HIGH                                                    :Høyt
 STR_NUM_CUSTOM                                                  :Egendefinert
+STR_NUM_CUSTOM_NUMBER                                           :Egendefinert ({NUM})
 
 STR_VARIETY_NONE                                                :Ingen
 STR_VARIETY_VERY_LOW                                            :Veldig lav
@@ -1046,6 +1047,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Veldig lavt
 STR_SEA_LEVEL_LOW                                               :Lavt
 STR_SEA_LEVEL_MEDIUM                                            :Middels
 STR_SEA_LEVEL_HIGH                                              :Høyt
+STR_SEA_LEVEL_CUSTOM                                            :Egendefinert
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Egendefinert ({NUM}%)
 
 STR_DISASTER_NONE                                               :Ingen
 STR_DISASTER_REDUCED                                            :Redusert

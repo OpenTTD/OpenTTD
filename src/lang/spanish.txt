@@ -53,7 +53,7 @@ STR_CARGO_PLURAL_SUGAR                                          :Azúcar
 STR_CARGO_PLURAL_TOYS                                           :Juguetes
 STR_CARGO_PLURAL_CANDY                                          :Dulces
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Algodón de azúcar
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Algodón dulce
 STR_CARGO_PLURAL_BUBBLES                                        :Burbujas
 STR_CARGO_PLURAL_TOFFEE                                         :Caramelos
 STR_CARGO_PLURAL_BATTERIES                                      :Pilas
@@ -87,7 +87,7 @@ STR_CARGO_SINGULAR_SUGAR                                        :Azúcar
 STR_CARGO_SINGULAR_TOY                                          :Juguete
 STR_CARGO_SINGULAR_CANDY                                        :Dulce
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Algodón de azúcar
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Algodón dulce
 STR_CARGO_SINGULAR_BUBBLE                                       :Burbuja
 STR_CARGO_SINGULAR_TOFFEE                                       :Caramelo
 STR_CARGO_SINGULAR_BATTERY                                      :Pilas
@@ -121,7 +121,7 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT} de az�
 STR_QUANTITY_TOYS                                               :{COMMA} juguete{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA} bolsa{P "" s} de dulces
 STR_QUANTITY_COLA                                               :{VOLUME} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algodón de azúcar
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algodón dulce
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuja{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} de caramelo{P "" s}
 STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P "" s}
@@ -3831,7 +3831,7 @@ STR_INDUSTRY_NAME_WATER_TOWER                                   :Torre de Agua
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fábrica
 STR_INDUSTRY_NAME_FARM_2                                        :Granja
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Aserradero
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Bosque de Algodón de azúcar
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Bosque de Algodón Dulce
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fábrica de Dulces
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Granja de Pilas
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Pozos de Cola
@@ -3930,7 +3930,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Cisterna de Agu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Vagón de Fruta
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Vagón de Caucho
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Vagón de Azúcar
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Vagoneta de Algodón de azúcar
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Vagoneta de Algodón Dulce
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Vagoneta de caramelos
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagón de Burbujas
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Cisterna de Cola
@@ -3960,7 +3960,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Cisterna de Agu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Vagón de Fruta
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Vagón de Caucho
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Vagón de Azúcar
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Vagoneta de Algodón de Azúcar
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Vagoneta de Algodón Dulce
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Vagoneta de Caramelos
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Vagón de Burbujas
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Cisterna de Cola
@@ -3992,7 +3992,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Cisterna de Agu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Vagón de Fruta
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Vagón de Caucho
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Vagón de Azúcar
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Vagoneta de Algodón de azúcar
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Vagoneta de Algodón Dulce
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Vagoneta de Caramelos
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Vagón de Burbujas
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Cisterna de Cola
@@ -4065,9 +4065,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Camión de Azú
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Camión de Cola MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Camión de Cola Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Camión de Cola Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Camión de Algodón de Azúcar MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Camión de Algodón de Azúcar Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Camión de Algodón de Azúcar Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Camión de Algodón Dulce MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Camión de Algodón Dulce Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Camión de Algodón Dulce Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Camión de Caramelos MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Camión de Caramelos Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Camión de Caramelos Wizzowow

@@ -1025,6 +1025,7 @@ STR_NUM_LOW                                                     :低
 STR_NUM_NORMAL                                                  :普通
 STR_NUM_HIGH                                                    :高
 STR_NUM_CUSTOM                                                  :自訂
+STR_NUM_CUSTOM_NUMBER                                           :自訂 ({NUM})
 
 STR_VARIETY_NONE                                                :無
 STR_VARIETY_VERY_LOW                                            :非常低
@@ -1043,6 +1044,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :非常低
 STR_SEA_LEVEL_LOW                                               :低
 STR_SEA_LEVEL_MEDIUM                                            :普通
 STR_SEA_LEVEL_HIGH                                              :高
+STR_SEA_LEVEL_CUSTOM                                            :自訂
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :自訂 ({NUM}%)
 
 STR_DISASTER_NONE                                               :無
 STR_DISASTER_REDUCED                                            :減少
@@ -2463,6 +2466,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :嘗試使用的
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 包含了毀損的 sprite。所有毀損的 sprite 會以紅色問號 (？) 顯示。
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含多個 Action 8 指令。
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :讀取最後的偽 Sprite 結尾。
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}目前使用的基本圖形集少了某些 sprite。{}請更新基本圖形集。
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！

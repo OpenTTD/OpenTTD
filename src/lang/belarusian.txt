@@ -1343,6 +1343,7 @@ STR_NUM_LOW                                                     :Мала
 STR_NUM_NORMAL                                                  :Звычайна
 STR_NUM_HIGH                                                    :Шмат
 STR_NUM_CUSTOM                                                  :Уласная
+STR_NUM_CUSTOM_NUMBER                                           :Зададзены ({NUM})
 
 STR_VARIETY_NONE                                                :Няма
 STR_VARIETY_VERY_LOW                                            :Вельмі нізкае
@@ -1361,6 +1362,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Вельмi м�
 STR_SEA_LEVEL_LOW                                               :Малая
 STR_SEA_LEVEL_MEDIUM                                            :Сярэдняя
 STR_SEA_LEVEL_HIGH                                              :Вялiкая
+STR_SEA_LEVEL_CUSTOM                                            :Зададзены
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Зададзены ({NUM}%)
 
 STR_DISASTER_NONE                                               :Выключаны
 STR_DISASTER_REDUCED                                            :Зьніжаныя

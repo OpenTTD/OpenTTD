@@ -1176,6 +1176,7 @@ STR_NUM_LOW                                                     :Малое
 STR_NUM_NORMAL                                                  :Среднее
 STR_NUM_HIGH                                                    :Большое
 STR_NUM_CUSTOM                                                  :Указанное
+STR_NUM_CUSTOM_NUMBER                                           :Заданный ({NUM})
 
 STR_VARIETY_NONE                                                :Нет
 STR_VARIETY_VERY_LOW                                            :Очень низкое
@@ -1198,6 +1199,8 @@ STR_SEA_LEVEL_MEDIUM                                            :Среднее
 STR_SEA_LEVEL_MEDIUM.p                                          :Средние
 STR_SEA_LEVEL_HIGH                                              :Большое
 STR_SEA_LEVEL_HIGH.p                                            :Высокие
+STR_SEA_LEVEL_CUSTOM                                            :Заданный
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Заданный ({NUM}%)
 
 STR_DISASTER_NONE                                               :Выключено
 STR_DISASTER_REDUCED                                            :Умеренная
@@ -2472,7 +2475,7 @@ STR_MAPGEN_MAPSIZE                                              :{BLACK}Разм
 STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Число городов:
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Число промышл.:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кол-во предпр.:
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Снеговая линия:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Поднять снеговую линию
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Опустить снеговую линию

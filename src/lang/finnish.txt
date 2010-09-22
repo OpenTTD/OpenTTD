@@ -1026,6 +1026,7 @@ STR_NUM_LOW                                                     :Matala
 STR_NUM_NORMAL                                                  :Normaali
 STR_NUM_HIGH                                                    :Korkea
 STR_NUM_CUSTOM                                                  :Oma
+STR_NUM_CUSTOM_NUMBER                                           :Oma ({NUM})
 
 STR_VARIETY_NONE                                                :Ei yhtään
 STR_VARIETY_VERY_LOW                                            :Erittäin vähän
@@ -1044,6 +1045,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Hyvin matala
 STR_SEA_LEVEL_LOW                                               :Matala
 STR_SEA_LEVEL_MEDIUM                                            :Keskitaso
 STR_SEA_LEVEL_HIGH                                              :Korkea
+STR_SEA_LEVEL_CUSTOM                                            :Oma
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Oma ({NUM}%)
 
 STR_DISASTER_NONE                                               :Ei mitään
 STR_DISASTER_REDUCED                                            :Vähennetty
