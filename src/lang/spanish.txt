@@ -2679,8 +2679,8 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurad
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de Color:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" es}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} veh{P "" s}. carret{P er ""}a
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeronaves{P "" s}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} vehículo{P "" s} de carretera
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeronave{P "" s}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} barco{P "" s}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ninguno
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor de la empresa: {WHITE}{CURRENCY}
@@ -3268,11 +3268,11 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horarios
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sin viaje
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
-STR_TIMETABLE_TRAVEL_FOR                                        :Viaje para {STRING}
-STR_TIMETABLE_STAY_FOR                                          :y estancia en {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar por {STRING}
+STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
+STR_TIMETABLE_STAY_FOR                                          :y permanecer durante {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} día{P "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA} señal{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Los horarios tomarán {STRING} para completarse
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Estos horarios tomarán {STRING} para completarse (no todos los horarios)
@@ -3295,7 +3295,7 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpiar 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar Retrasos
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reajustar el contador del retraso, así el vehículo estará en horario
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automático
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Rellenar automáticamente
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (Ctrl+Click para tratar de mantener los tiempos de espera))
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado

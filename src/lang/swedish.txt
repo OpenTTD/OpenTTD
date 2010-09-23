@@ -1026,6 +1026,7 @@ STR_NUM_LOW                                                     :Låg
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Hög
 STR_NUM_CUSTOM                                                  :Egna
+STR_NUM_CUSTOM_NUMBER                                           :Valfri ({NUM})
 
 STR_VARIETY_NONE                                                :Inget
 STR_VARIETY_VERY_LOW                                            :Väldigt låg
@@ -1044,6 +1045,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Väldigt låg
 STR_SEA_LEVEL_LOW                                               :Låg
 STR_SEA_LEVEL_MEDIUM                                            :Mellan
 STR_SEA_LEVEL_HIGH                                              :Hög
+STR_SEA_LEVEL_CUSTOM                                            :Valfri
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Valfri ({NUM}%)
 
 STR_DISASTER_NONE                                               :Ingen
 STR_DISASTER_REDUCED                                            :Reducerad
