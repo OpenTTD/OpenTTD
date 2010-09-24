@@ -95,17 +95,17 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :گیسی مشر
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{P مسافر مسافرﻴﻦ}{COMMA}
+STR_QUANTITY_PASSENGERS                                         :{P 0 مسافر مسافرﻴﻦ}{COMMA}
 STR_QUANTITY_COAL                                               :{WEIGHT} کویلہ
 STR_QUANTITY_MAIL                                               :{COMMA} ڈاک ک{P ا ے} تھیل{P ا ے}
 STR_QUANTITY_OIL                                                :{VOLUME} تیل
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} عدد مویشی
-STR_QUANTITY_GOODS                                              :سامان ک{P ا ے} {COMMA} کریٹ
+STR_QUANTITY_GOODS                                              :سامان ک{P 0 ا ے} {COMMA} کریٹ
 STR_QUANTITY_GRAIN                                              :{WEIGHT} انآج
 STR_QUANTITY_WOOD                                               :{WEIGHT} لکڑی
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} خام لوہا
 STR_QUANTITY_STEEL                                              :{WEIGHT} سٹیل
-STR_QUANTITY_VALUABLES                                          :قیمتی سامان ک{P ا ے} {COMMA} تھیل{P ا ے}
+STR_QUANTITY_VALUABLES                                          :قیمتی سامان ک{P 0 ا ے} {COMMA} تھیل{P ا ے}
 STR_QUANTITY_COPPER_ORE                                         :خام دھات تانبے کا {WEIGHT} وزن
 STR_QUANTITY_MAIZE                                              :مکئی کا {WEIGHT} وزن
 STR_QUANTITY_FRUIT                                              :پھل کا {WEIGHT} وزن
