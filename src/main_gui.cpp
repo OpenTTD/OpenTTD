@@ -308,7 +308,7 @@ struct MainWindow : Window
 			case GHK_REFRESH_SCREEN: MarkWholeScreenDirty(); break;
 
 			case GHK_CRASH: // Crash the game
-				*(byte*)0 = 0;
+				*(volatile byte *)0 = 0;
 				break;
 
 			case GHK_MONEY: // Gimme money
