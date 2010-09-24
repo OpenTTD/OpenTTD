@@ -346,7 +346,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Thoát
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Tùy chọn trò chơi
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Cấu hình trò chơi
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Thiết lập độ khó
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Thiết lập nâng cao
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Thông số NewGRF
@@ -525,7 +525,7 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Số lư
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Đánh giá năng suất công ty (cao nhất=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Giá trị công ty
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng giá cước vận chuyển hàng hoá
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Bảng Giá Cước Vận Chuyển Hàng Hóa
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Số ngày vận chuyển
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Tiền trả khi vận chuyển 10 đơn vị (hay 10,000 lít) hàng hóa trên mỗi 20 ô
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Cho phép toàn bộ
@@ -542,7 +542,7 @@ STR_GRAPH_KEY_CAPTION                                           :{WHITE}Nút b�
 STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Click vào đây để bật/tắt thông tin công ty trên biểu đồ
 
 # Company league window
-STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bảng tầm cỡ công ty
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bảng Tầm Cỡ Công Ty
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Kỹ sư vận tải
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Tổ trưởng vận tải
@@ -585,7 +585,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Số ti�
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Tổng điểm vượt khỏi chỉ tiêu
 
 # Music window
-STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Nghe Nhạc
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Máy Nhạc Jazz
 STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Tất cả
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Kiểu Cũ
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Kiểu Mới
@@ -650,7 +650,7 @@ STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} từ {COMPANY} đã nhận được giải '{STRING}'!
 
 # Smallmap window
-STR_SMALLMAP_CAPTION                                            :{WHITE}Bản đồ - {STRING}
+STR_SMALLMAP_CAPTION                                            :{WHITE}Bản Đồ - {STRING}
 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Địa hình
 STR_SMALLMAP_TYPE_VEHICLES                                      :Phương tiện
@@ -718,7 +718,7 @@ STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Danh sá
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
-STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông điệp
+STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Thông Điệp
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Tùy Chọn Thông Điệp
 STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Đặt tất cả loại thông điệp thành: Tắt/ Giản Lược/ Đủ
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Phát âm thanh khi có thông báo tổng kết
@@ -848,7 +848,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Chuyển
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Chuyển vị trí từ cửa sổ lớn về cửa sổ nhỏ
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Tùy chọn Trò chơi
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Cấu Hình Trò Chơi
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Đơn vị tiền tệ
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Lựa chọn đơn vị tiền tệ
 
@@ -995,7 +995,7 @@ STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Cấp Đ
 STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Dễ
 STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Trung Bình
 STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Khó
-STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Tự chỉnh
+STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Tự Chỉnh
 ############ range for difficulty levels ends
 
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Hiện danh sách điểm cao
@@ -1079,7 +1079,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Không c
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Hành động này thay đổi độ khó về tự tùy chỉnh
 
 # Advanced settings window
-STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết lập nâng cao
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết Lập Nâng Cao
 
 STR_CONFIG_SETTING_OFF                                          :Tắt
 STR_CONFIG_SETTING_ON                                           :Bật
@@ -1362,9 +1362,9 @@ STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Chơi B�
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Biên Tập Màn Chơi Kịch Bản
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Chơi Trên Mạng
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Tùy chọn trò chơi
-STR_INTRO_DIFFICULTY                                            :{BLACK}Độ khó ({STRING})
-STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Thiết lập nâng cao
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Cấu Hình Trò Chơi
+STR_INTRO_DIFFICULTY                                            :{BLACK}Độ Khó ({STRING})
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Thiết Lập Nâng Cao
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Thiết Lập NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Các Nội Dung Trên Mạng
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Thiết Lập AI
@@ -1382,7 +1382,7 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Chọn k
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Chọn kiểu quang cảnh 'nhiệt đới'
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Chọn kiểu quang cảnh 'đồ chơi'
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Hiển thị tùy chọn trò chơi
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Hiển thị cấu hình của trò chơi
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Hiện thỉ tùy chỉnh độ khó
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Hiển thị tùy chỉnh nâng cao
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Hiển thị tùy chỉnh NewGRF
@@ -1525,7 +1525,7 @@ STR_FACE_EARRING                                                :Bông tai:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đổi cà vạt hoặc bông tai
 
 # Network server list
-STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ván chơi mạng
+STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ván Chơi Mạng
 STR_NETWORK_SERVER_LIST_CONNECTION                              :{BLACK}Kết nối:
 STR_NETWORK_SERVER_LIST_CONNECTION_TOOLTIP                      :{BLACK}Lựa chọn chơi game nối mạng internet hặc nối mạng nội bộ (LAN)
 STR_NETWORK_SERVER_LIST_LAN                                     :Mạng nội bộ
@@ -1870,7 +1870,7 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... khô
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Không thể giải nétn file đã tải
 
 # Transparency settings window
-STR_TRANSPARENCY_CAPTION                                        :{WHITE}Tuỳ chọn hiệu ứng trong suốt
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Tuỳ Hiệu Ứng Trong Suốt
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Bật hiệu ứng trong suốt cho đèn tín hiệu. Ctrl+Click để khoá.
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Bật hiệu ứng trong suốt cho cây cối. Ctrl+Click để khoá.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Bật hiệu ứng trong suốt cho nhà cửa. Ctrl+Click để khoá.
@@ -1899,10 +1899,10 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Nối đ
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Tạo một điểm mốc riêng rẽ
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Xây dựng đường ray
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Xây dựng đường ray điện
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Xây dựng đường ray đơn
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Xây dựng ray đệm từ
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Xây Dựng Đường Ray
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Xây Dựng Đường Ray Điện
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Xây Dựng Đường Ray Đơn
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Xây Dựng Ray Đệm Từ
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Xây dựng đường ray. Ctrl để đổi chế độ xây/phá đường ray
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Xây dựng đường ray dùng cơ chế tự xây. Ctrl để đổi chế độ xây/phá đường ray
@@ -1916,7 +1916,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Chuyển
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Chuyển đổi loại đường ray
 
 # Rail depot construction window
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Hướng của xưởng tàu hoả
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Hướng Của Xưởng Tàu Hỏa
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Chọn hướng đặt xưởng tàu hoả
 
 # Rail waypoint construction window
@@ -1924,7 +1924,7 @@ STR_WAYPOINT_CAPTION                                            :{WHITE}Điểm 
 STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Chọn kiểu điểm mốc
 
 # Rail station construction window
-STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Chọn ga tàu hoả
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Chọn Ga Tàu Hỏa
 STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Hướng
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Chọn hướng xây ga tàu hoà
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Số đường ray
@@ -1941,7 +1941,7 @@ STR_STATION_CLASS_DFLT                                          :Ga mặc địn
 STR_STATION_CLASS_WAYP                                          :Điểm mốc
 
 # Signal window
-STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Chọn đèn tín hiệu
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Chọn Đèn Tín Hiệu
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Đèn (cờ) tín hiệu khoá{}Đây là loại tín hiệu cơ bản, chỉ cho phép một đoàn tàu đi vào chỗ khoá cùng một thời điểm.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Đèn (cờ) tín hiệu cửa nhập{}Sẽ xanh nếu một hoặc nhiều đèn tín hiệu cửa thoát ở phía sau màu xanh. Không thì sẽ đỏ.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Đèn (cờ) tín hiệu cửa thoát{}Tương tự đèn tín hiệu khoá, nhưng cần có để đổi trạng thái của đèn tín hiệu loại cửa nhập & kết hợp nằm trước nó.
@@ -1960,8 +1960,8 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Giảm m
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Tăng mật độ kéo chuỗi đèn hiệu
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Chọn loại cầu tàu hoả
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Chọn loại cầu đường bộ
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Chọn Loại Cầu Tàu Hỏa
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Chọn Loại Cầu Đường Bộ
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Chọn cầu - chọn loại cầu bạn muốn xây dựng
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Cầu treo thép
@@ -1975,8 +1975,8 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cầu ống Sil
 
 
 # Road construction toolbar
-STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Xây đường bộ
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Xây đường xe điện
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Xây Đường Bộ
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Xây Đường Xe Điện
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Chọn xây đường bộ. Ctrl đổi chế độ xây/phá đường bộ
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Chọn xây đường xe điện. Ctrl đổi chế độ xây/phá đường xe điện
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Xây đường bộ dùng cơ chế tự xây. Ctrl đổi chế độ xây/phá đường bộ
@@ -1996,9 +1996,9 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bật ch
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Bật chế độ xây/phá đường xe điện
 
 # Road depot construction window
-STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Hướng của xưởng ôtô
+STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Hướng Của Xưởng Ôtô
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Chọn hướng đặt xưởng xe ôtô
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Hướng của xưởng xe điện
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Hướng Của Xưởng Xe Điện
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Chọn hướng đặt xưởng xe điện
 
 # Road vehicle station construction window
@@ -2012,8 +2012,8 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Hướng
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Chọn hướng trạm bốc/dỡ hàng cho xe điện
 
 # Waterways toolbar (last two for SE only)
-STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Xây đường thuỷ
-STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Đường thuỷ
+STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Xây Đường Thủy
+STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Đường Thủy
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Xây kênh đào.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Xây cửa kênh
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Xây xưởng tàu thuỷ (để mua và bảo trì tàu thuỷ)
@@ -2024,18 +2024,18 @@ STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Đặt t
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Đặt sông.
 
 # Ship depot construction window
-STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Hướng xưởng tàu
+STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Hướng Xưởng Tàu
 STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Chọn hướng đặt xưởng tàu
 
 # Dock construction window
-STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Hải cảng
+STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Hải Cảng
 
 # Airport toolbar
-STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Sân bay
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Sân Bay
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Xây sân bay. Ctrl để nối các sân bay
 
 # Airport construction window
-STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Chọn loại sân bay
+STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Chọn Loại Sân Bay
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Chọn kích cỡ và kiểu sân bay
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Hạng sân bay
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Bố trí {NUM}
@@ -2075,7 +2075,7 @@ STR_OBJECT_CLASS_LTHS                                           :Đèn biển
 STR_OBJECT_CLASS_TRNS                                           :Tháp tín hiệu
 
 # Tree planting window (last two for SE only)
-STR_PLANT_TREE_CAPTION                                          :{WHITE}Cây cối
+STR_PLANT_TREE_CAPTION                                          :{WHITE}Cây Cối
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Chọn loại cây để trồng
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Loại cây ngẫu nhiên
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Trồng ngẫu nhiên các loại cây
@@ -2083,7 +2083,7 @@ STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Trồng 
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Trồng cây ngẫu nhiên trên khoảnh đất
 
 # Land generation window (SE)
-STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}San lấp đất
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}San Lấp Đất
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Đặt các nền đá trong vùng
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Đặt tên hoang mạc.{}ấn Ctrl để xoá bỏ tên
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Tăng diện tích vùng đất để nâng/hạ
@@ -2093,11 +2093,11 @@ STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Tạo m�
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Thiết lập lại nền đất
 STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Xoá mọi tài sản của người chơi trên bản đồ
 
-STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Thiết lập lại nền đất
+STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Thiết Lập Lại Nền Đất
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Bạn có chắc là xoá mọi tài sản của người chơi trên bản đồ?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Lập đô thị
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Lập Đô Thị
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Đô thị mới
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Tìm đô thị mới
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tạo đô thị ngẫu nhiên
@@ -2152,7 +2152,7 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Liên k�
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Chọn các nhà máy hiển thị ở bản đồ nhỏ luôn thể
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Thông tin về vùng đất
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Thông Tin Địa Lý
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Chi phí giải toả: {LTBLUE}không
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Chi phí giải toả: {RED}{CURRENCY}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Doanh thu khi giải toả: {LTBLUE}{CURRENCY}
@@ -2273,7 +2273,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2010 Nhóm OpenTTD
 
 # Save/load game/scenario
-STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Lưu ván chơi
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Lưu Ván Chơi
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Nạp Ván Chơi
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Lưu màn chơi kịch bản
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Nạp màn chơi kịch bản
@@ -2296,7 +2296,7 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Nhập tên của ván chơi để lưu
 
 # World generation
-STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Khởi tạo bản đồ
+STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Khởi Tạo Bản Đồ
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kích thước bản đồ:
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Số lượng đô thị:
@@ -2339,7 +2339,7 @@ STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Thay đ�
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Thay đổi năm khởi đầu
 
 # SE Map generation
-STR_SE_MAPGEN_CAPTION                                           :{WHITE}Kiểu màn chơi
+STR_SE_MAPGEN_CAPTION                                           :{WHITE}Kiểu Màn Chơi
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Đất bằng
 STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Tạo ra đất bằng
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Nền đất ngẫu nhiên
@@ -2352,7 +2352,7 @@ STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Thay đ�
 # Map generation progress
 STR_GENERATION_WORLD                                            :{WHITE}Đang tạo màn...
 STR_GENERATION_ABORT                                            :{BLACK}Huỷ bỏ
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Huỷ việc tạo màn
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Huỷ Việc Tạo Màn
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Bạn có chắc là huỷ việc tạo màn chơi?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% hoàn thành
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
@@ -2365,7 +2365,7 @@ STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Đang ch
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Chuẩn bị ván chơi
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Thiết lập NewGRF
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Thiết Lập NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Thông tin chi tiết của NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Các NewGRP đã kích hoạt
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Các NewGRF chưa kích hoạt
@@ -2411,7 +2411,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Tắt
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Nhập NewGRF tham số
 
 # NewGRF parameters window
-STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Thay đổi tham số NewGRF
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Thay Đổi Tham Số NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Đóng
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Đặt mặc định
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Đặt tất cả các tham số về mặc định
@@ -2425,7 +2425,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Đối t
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Phân tích đối tượng này theo đối tượng cha
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} tại {HEX}
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Đối tượng
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Đối Tượng
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Kiểu ray
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Biến số NewGRF là 60+x (dạng hexa)
@@ -2471,7 +2471,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Đọc tới đ
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Gói đồ họa bạn đang dùng thiếu một số mẫu đồ họa.{}Hãy up gói đồ họa lên phiên bản mới.
 
 # NewGRF related 'general' warnings
-STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú ý!
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú Ý!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Bạn định thay đổi cho ván chơi đang chơi; việc này có thể làm treo OpenTTD.{}Bạn có chắc sẽ thực hiện không?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Không thể thêm file: trùng lặp GRF ID
@@ -2506,7 +2506,7 @@ STR_NEWGRF_INVALID_ENGINE                                       :<sai mẫu xe>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<sai nhà máy>
 
 # Sign list window
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh sách biển hiệu - {COMMA} Biển hiệu
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Danh Sách Biển Hiệu - {COMMA} Biển Hiệu
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Giống nhau
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Xóa bộ lọc
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Bật/tắt so sánh hoa thường tên biển hiệu với chuỗi nhập
@@ -2520,7 +2520,7 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Biển h
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Nhập tên của biển hiệu
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Đô thị
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Đô Thị
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Không Có -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Tên đô thị - nháy vào tên để xem trung tâm đô thị. Ctrl+Click mở cửa sổ mới về vị trí đô thị
@@ -2528,7 +2528,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Dân s�
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Thành phố)
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Thành Phố)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Dân số: {ORANGE}{COMMA}{BLACK}  Toà nhà: {ORANGE}{COMMA}
 STR_TOWN_VIEW_PASSENGERS_LAST_MONTH_MAX                         :{BLACK}Du khách tháng trước: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_TOWN_VIEW_MAIL_LAST_MONTH_MAX                               :{BLACK}Bưu kiện tháng trước: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
@@ -2577,7 +2577,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Mua đ�
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Đút lót quan chức địa phương để nâng cao quyền lợi, có một tỉ lệ rủi ro nếu bại lộ và sẽ mất hết quyền lợi lẫn tiền hối lộ.{}Chi phí: {CURRENCY}
 
 # Subsidies window
-STR_SUBSIDIES_CAPTION                                           :{WHITE}Trợ cấp
+STR_SUBSIDIES_CAPTION                                           :{WHITE}Trợ Cấp
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Trợ cấp sẽ có cho dịch vụ sau:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} từ {STRING} đến {STRING}{YELLOW} (đến {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- không -
@@ -2642,7 +2642,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Đổi t
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Sửa tên điểm mốc
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}Tài chính công ty {COMPANY} {BLACK}{COMPANYNUM}
+STR_FINANCES_CAPTION                                            :{WHITE}Tài Chính Công Ty {COMPANY} {BLACK}{COMPANYNUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Thu nhập/Chi phí
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Xây dựng
@@ -2706,8 +2706,8 @@ STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Bán 25%
 STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Mua 25% cổ phần công ty này
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Bán 25% cổ phần công ty này
 
-STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Tên công ty
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Tên giám đốc
+STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Tên Công Ty
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Tên Giám Đốc
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Chúng tôi tìm một công ty để chuyển nhượng công việc kinh doanh và tài sản công ty chúng tôi.{}{}Bạn có muốn mua công ty {COMPANY} của chúng tôi với giá {CURRENCY}?
 
@@ -3340,7 +3340,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Có mộ
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Cửa sổ gỡ lỗi AI chỉ có trên server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Cấu hình AI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Cấu Hình AI
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Tất cả AI sẽ nạp tại ván chơi kế tiếp
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
 STR_AI_CONFIG_RANDOM_AI                                         :AI Ngẫu Nhiên
@@ -3356,7 +3356,7 @@ STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Cấu h�
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cấu hình tham số cho AI
 
 # Available AIs window
-STR_AI_LIST_CAPTION                                             :{WHITE}Các AI sẵn có
+STR_AI_LIST_CAPTION                                             :{WHITE}Các AI Sẵn Có
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Chọn một AI
 
 STR_AI_LIST_AUTHOR                                              :{BLACK}Tác giả: {STRING}
@@ -3369,7 +3369,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Huỷ b�
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không đổi AI
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tham số AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tham Số AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Đóng
 STR_AI_SETTINGS_RESET                                           :{BLACK}Thiết lập lại
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
@@ -3431,7 +3431,7 @@ STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Chụp m
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Chụp màn hình bị lỗi!
 
 # Error message titles
-STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Thông điệp
+STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Thông Điệp
 STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Tin nhắn từ {STRING}
 
 # Generic construction errors

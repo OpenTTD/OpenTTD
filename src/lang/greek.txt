@@ -1118,6 +1118,7 @@ STR_NUM_LOW                                                     :Χαμηλό
 STR_NUM_NORMAL                                                  :Κανονικό
 STR_NUM_HIGH                                                    :Υψηλό
 STR_NUM_CUSTOM                                                  :Προσαρμοσμένος
+STR_NUM_CUSTOM_NUMBER                                           :Προσαρμόσμενο ({NUM})
 
 STR_VARIETY_NONE                                                :Καθόλου
 STR_VARIETY_VERY_LOW                                            :Πολύ Χαμηλό
@@ -1136,6 +1137,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Πολύ Χαμ
 STR_SEA_LEVEL_LOW                                               :Χαμηλό
 STR_SEA_LEVEL_MEDIUM                                            :Μέτριο
 STR_SEA_LEVEL_HIGH                                              :Υψηλό
+STR_SEA_LEVEL_CUSTOM                                            :Προσαρμόσμενο
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Προσαρμόσμενο ({NUM}%)
 
 STR_DISASTER_NONE                                               :Κανένα
 STR_DISASTER_REDUCED                                            :Μειωμένο
@@ -2145,6 +2148,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Ανυψ
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Επιπεδοποίηση γης
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Αγορά γης για μελλοντική χρήση
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Δέντρα
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση
@@ -2236,6 +2242,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Συντ
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Κατασκευή: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Κλάση στάθμου: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Τύπος σταθμού: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Κλάση αεροδρομίου: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Όνομα αεροδρομίου: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Όνομα αεροδρομίου: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Αποδεκτό Εμπόρευμα: {LTBLUE}
@@ -2481,6 +2489,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Εισα
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Κλείσιμο
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Παράμετρος {NUM}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Πλήθος παραμέτρων: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Επιθεώρηση - {STRING}
@@ -2488,6 +2497,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Γονι
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Επιθεώρηση του αντικείμενου του γονικού σκοπού
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} στο {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Αντικείμενο
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Τύπος σιδηροτροχιάς
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Μεταβλητή NewGRF 60+x παράμετρος (δεκαεξαδικό)
@@ -3635,10 +3645,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Δεν �
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Δεν μπορεί να μετανομαστεί το αμαξοστάσιο/ναυπηγείο
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Το τρένο πρέπει να σταματήσει μέσα σε αμαξοστάσιο
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... πρέπει να σταματήσει μέσα σε αμαξοστάσιο
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... πρέπει να σταματήσει μέσα σε αμαξοστάσιο οχημάτων
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Το πλοίο πρέπει να σταματήσει μέσα στο ναυπηγείο
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Το αεροπλάνο πρέπει να σταματήσει μέσα στο υπόστεγο
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... πρέπει να σταματήσει μέσα σε ναυπηγείο
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... πρέπει να σταματήσει μέσα σε υπόστεγο
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Τα τρένα μπόρουν να τροποιηθούν μόνο όταν σταματήσουν μέσα σε αμαξοστάσιο
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Τρένο πολύ μεγάλο
