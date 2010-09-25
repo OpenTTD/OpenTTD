@@ -21,6 +21,7 @@
 #include "newgrf_config.h"
 #include "company_type.h"
 #include "track_type.h"
+#include "livery.h"
 
 #define is_custom_sprite(x) (x >= 0xFD)
 #define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)
@@ -91,6 +92,7 @@ static inline bool IsCompanyBuildableVehicleType(const BaseVehicle *v)
 	return IsCompanyBuildableVehicleType(v->type);
 }
 
+LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_type, const Vehicle *v);
 const struct Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v, byte livery_setting);
 
 /**

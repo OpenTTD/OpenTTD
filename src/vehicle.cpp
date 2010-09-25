@@ -1454,6 +1454,94 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 
 
 /**
+ * Determines the #LiveryScheme for a vehicle.
+ * @param engine_type EngineID of the vehicle
+ * @param parent_engine_type EngineID of the front vehicle. INVALID_VEHICLE if vehicle is at front itself.
+ * @param v the vehicle. NULL if in purchase list etc.
+ * @return livery scheme to use
+ */
+LiveryScheme GetEngineLiveryScheme(EngineID engine_type, EngineID parent_engine_type, const Vehicle *v)
+{
+	CargoID cargo_type = v == NULL ? (CargoID)CT_INVALID : v->cargo_type;
+	const Engine *e = Engine::Get(engine_type);
+	switch (e->type) {
+		default: NOT_REACHED();
+		case VEH_TRAIN:
+			if (v != NULL && parent_engine_type != INVALID_ENGINE && (UsesWagonOverride(v) || (Train::From(v)->IsArticulatedPart() && e->u.rail.railveh_type != RAILVEH_WAGON))) {
+				/* Wagonoverrides use the colour scheme of the front engine.
+				 * Articulated parts use the colour scheme of the first part. (Not supported for articulated wagons) */
+				engine_type = parent_engine_type;
+				e = Engine::Get(engine_type);
+				/* Note: Luckily cargo_type is not needed for engines */
+			}
+
+			if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
+			if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
+			if (e->u.rail.railveh_type == RAILVEH_WAGON) {
+				if (!CargoSpec::Get(cargo_type)->is_freight) {
+					if (parent_engine_type == INVALID_ENGINE) {
+						return LS_PASSENGER_WAGON_STEAM;
+					} else {
+						switch (RailVehInfo(parent_engine_type)->engclass) {
+							default: NOT_REACHED();
+							case EC_STEAM:    return LS_PASSENGER_WAGON_STEAM;
+							case EC_DIESEL:   return LS_PASSENGER_WAGON_DIESEL;
+							case EC_ELECTRIC: return LS_PASSENGER_WAGON_ELECTRIC;
+							case EC_MONORAIL: return LS_PASSENGER_WAGON_MONORAIL;
+							case EC_MAGLEV:   return LS_PASSENGER_WAGON_MAGLEV;
+						}
+					}
+				} else {
+					return LS_FREIGHT_WAGON;
+				}
+			} else {
+				bool is_mu = HasBit(e->info.misc_flags, EF_RAIL_IS_MU);
+
+				switch (e->u.rail.engclass) {
+					default: NOT_REACHED();
+					case EC_STEAM:    return LS_STEAM;
+					case EC_DIESEL:   return is_mu ? LS_DMU : LS_DIESEL;
+					case EC_ELECTRIC: return is_mu ? LS_EMU : LS_ELECTRIC;
+					case EC_MONORAIL: return LS_MONORAIL;
+					case EC_MAGLEV:   return LS_MAGLEV;
+				}
+			}
+
+		case VEH_ROAD:
+			/* Always use the livery of the front */
+			if (v != NULL && parent_engine_type != INVALID_ENGINE) {
+				engine_type = parent_engine_type;
+				e = Engine::Get(engine_type);
+				cargo_type = v->First()->cargo_type;
+			}
+			if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
+			if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
+
+			/* Important: Use Tram Flag of front part. Luckily engine_type refers to the front part here. */
+			if (HasBit(e->info.misc_flags, EF_ROAD_TRAM)) {
+				/* Tram */
+				return IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_TRAM : LS_FREIGHT_TRAM;
+			} else {
+				/* Bus or truck */
+				return IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_BUS : LS_TRUCK;
+			}
+
+		case VEH_SHIP:
+			if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
+			if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
+			return IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
+
+		case VEH_AIRCRAFT:
+			switch (e->u.air.subtype) {
+				case AIR_HELI: return LS_HELICOPTER;
+				case AIR_CTOL: return LS_SMALL_PLANE;
+				case AIR_CTOL | AIR_FAST: return LS_LARGE_PLANE;
+				default: NOT_REACHED();
+			}
+	}
+}
+
+/**
  * Determines the livery for a vehicle.
  * @param engine_type EngineID of the vehicle
  * @param company Owner of the vehicle
@@ -1466,95 +1554,12 @@ const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID 
 {
 	const Company *c = Company::Get(company);
 	LiveryScheme scheme = LS_DEFAULT;
-	CargoID cargo_type = v == NULL ? (CargoID)CT_INVALID : v->cargo_type;
 
 	/* The default livery is always available for use, but its in_use flag determines
 	 * whether any _other_ liveries are in use. */
 	if (c->livery[LS_DEFAULT].in_use && (livery_setting == LIT_ALL || (livery_setting == LIT_COMPANY && company == _local_company))) {
 		/* Determine the livery scheme to use */
-		const Engine *e = Engine::Get(engine_type);
-		switch (e->type) {
-			default: NOT_REACHED();
-			case VEH_TRAIN: {
-				if (v != NULL && parent_engine_type != INVALID_ENGINE && (UsesWagonOverride(v) || (Train::From(v)->IsArticulatedPart() && e->u.rail.railveh_type != RAILVEH_WAGON))) {
-					/* Wagonoverrides use the colour scheme of the front engine.
-					 * Articulated parts use the colour scheme of the first part. (Not supported for articulated wagons) */
-					engine_type = parent_engine_type;
-					e = Engine::Get(engine_type);
-					/* Note: Luckily cargo_type is not needed for engines */
-				}
-
-				if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
-				if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
-				if (e->u.rail.railveh_type == RAILVEH_WAGON) {
-					if (!CargoSpec::Get(cargo_type)->is_freight) {
-						if (parent_engine_type == INVALID_ENGINE) {
-							scheme = LS_PASSENGER_WAGON_STEAM;
-						} else {
-							switch (RailVehInfo(parent_engine_type)->engclass) {
-								default: NOT_REACHED();
-								case EC_STEAM:    scheme = LS_PASSENGER_WAGON_STEAM;    break;
-								case EC_DIESEL:   scheme = LS_PASSENGER_WAGON_DIESEL;   break;
-								case EC_ELECTRIC: scheme = LS_PASSENGER_WAGON_ELECTRIC; break;
-								case EC_MONORAIL: scheme = LS_PASSENGER_WAGON_MONORAIL; break;
-								case EC_MAGLEV:   scheme = LS_PASSENGER_WAGON_MAGLEV;   break;
-							}
-						}
-					} else {
-						scheme = LS_FREIGHT_WAGON;
-					}
-				} else {
-					bool is_mu = HasBit(e->info.misc_flags, EF_RAIL_IS_MU);
-
-					switch (e->u.rail.engclass) {
-						default: NOT_REACHED();
-						case EC_STEAM:    scheme = LS_STEAM; break;
-						case EC_DIESEL:   scheme = is_mu ? LS_DMU : LS_DIESEL;   break;
-						case EC_ELECTRIC: scheme = is_mu ? LS_EMU : LS_ELECTRIC; break;
-						case EC_MONORAIL: scheme = LS_MONORAIL; break;
-						case EC_MAGLEV:   scheme = LS_MAGLEV; break;
-					}
-				}
-				break;
-			}
-
-			case VEH_ROAD: {
-				/* Always use the livery of the front */
-				if (v != NULL && parent_engine_type != INVALID_ENGINE) {
-					engine_type = parent_engine_type;
-					e = Engine::Get(engine_type);
-					cargo_type = v->First()->cargo_type;
-				}
-				if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
-				if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
-
-				/* Important: Use Tram Flag of front part. Luckily engine_type refers to the front part here. */
-				if (HasBit(e->info.misc_flags, EF_ROAD_TRAM)) {
-					/* Tram */
-					scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_TRAM : LS_FREIGHT_TRAM;
-				} else {
-					/* Bus or truck */
-					scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_BUS : LS_TRUCK;
-				}
-				break;
-			}
-
-			case VEH_SHIP: {
-				if (cargo_type == CT_INVALID) cargo_type = e->GetDefaultCargoType();
-				if (cargo_type == CT_INVALID) cargo_type = CT_GOODS; // The vehicle does not carry anything, let's pick some freight cargo
-				scheme = IsCargoInClass(cargo_type, CC_PASSENGERS) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
-				break;
-			}
-
-			case VEH_AIRCRAFT: {
-				switch (e->u.air.subtype) {
-					case AIR_HELI: scheme = LS_HELICOPTER; break;
-					case AIR_CTOL: scheme = LS_SMALL_PLANE; break;
-					case AIR_CTOL | AIR_FAST: scheme = LS_LARGE_PLANE; break;
-				}
-				break;
-			}
-		}
+		scheme = GetEngineLiveryScheme(engine_type, parent_engine_type, v);
 
 		/* Switch back to the default scheme if the resolved scheme is not in use */
 		if (!c->livery[scheme].in_use) scheme = LS_DEFAULT;
