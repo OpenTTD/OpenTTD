@@ -39,6 +39,7 @@ static bool CheckFreeformEdges(int32 p1);
 static bool ChangeDynamicEngines(int32 p1);
 static bool StationCatchmentChanged(int32 p1);
 static bool InvalidateVehTimetableWindow(int32 p1);
+static bool InvalidateCompanyLiveryWindow(int32 p1);
 
 #ifdef ENABLE_NETWORK
 static bool UpdateClientName(int32 p1);
@@ -569,7 +570,7 @@ const SettingDesc _settings[] = {
 	 SDTC_BOOL(gui.population_in_label,                  S,  0,  true,                        STR_CONFIG_SETTING_POPULATION_IN_LABEL,         PopulationInLabelActive),
 	 SDTC_BOOL(gui.link_terraform_toolbar,               S,  0, false,                        STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR,      NULL),
 	  SDTC_VAR(gui.smallmap_land_colour,      SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR,        RedrawSmallmap),
-	  SDTC_VAR(gui.liveries,                  SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_SETTING_LIVERIES,                    RedrawScreen),
+	  SDTC_VAR(gui.liveries,                  SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_SETTING_LIVERIES,                    InvalidateCompanyLiveryWindow),
 	 SDTC_BOOL(gui.prefer_teamchat,                      S,  0, false,                        STR_CONFIG_SETTING_PREFER_TEAMCHAT,             NULL),
 	  SDTC_VAR(gui.scrollwheel_scrolling,     SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING,       NULL),
 	  SDTC_VAR(gui.scrollwheel_multiplier,    SLE_UINT8, S,  0,     5,        1,       15, 1, STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER,      NULL),

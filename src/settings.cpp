@@ -890,6 +890,12 @@ static bool InvalidateVehTimetableWindow(int32 p1)
 	return true;
 }
 
+static bool InvalidateCompanyLiveryWindow(int32 p1)
+{
+	InvalidateWindowClassesData(WC_COMPANY_COLOUR);
+	return RedrawScreen(p1);
+}
+
 /*
  * A: competitors
  * B: competitor start time. Deprecated since savegame version 110.

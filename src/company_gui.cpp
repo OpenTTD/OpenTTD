@@ -613,19 +613,11 @@ public:
 		this->InitNested(desc, company);
 		this->owner = company;
 		this->LowerWidget(SCLW_WIDGET_CLASS_GENERAL);
+		this->InvalidateData(1);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		/* Number of liveries in each class, used to determine the height of the livery matrix widget. */
-		static const byte livery_height[] = {
-			1,
-			13,
-			4,
-			2,
-			3,
-		};
-
 		switch (widget) {
 			case SCLW_WIDGET_SPACER_DROPDOWN: {
 				/* The matrix widget below needs enough room to print all the schemes. */
@@ -637,10 +629,17 @@ public:
 				break;
 			}
 
-			case SCLW_WIDGET_MATRIX:
-				size->height = livery_height[this->livery_class] * (4 + FONT_HEIGHT_NORMAL);
-				this->GetWidget<NWidgetCore>(SCLW_WIDGET_MATRIX)->widget_data = (livery_height[this->livery_class] << MAT_ROW_START) | (1 << MAT_COL_START);
+			case SCLW_WIDGET_MATRIX: {
+				uint livery_height = 0;
+				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+					if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
+						livery_height++;
+					}
+				}
+				size->height = livery_height * (4 + FONT_HEIGHT_NORMAL);
+				this->GetWidget<NWidgetCore>(SCLW_WIDGET_MATRIX)->widget_data = (livery_height << MAT_ROW_START) | (1 << MAT_COL_START);
 				break;
+			}
 
 			case SCLW_WIDGET_SEC_COL_DROPDOWN:
 				if (!_loaded_newgrf_features.has_2CC) {
@@ -711,7 +710,7 @@ public:
 		int y = r.top + 3;
 		const Company *c = Company::Get((CompanyID)this->window_number);
 		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-			if (_livery_class[scheme] == this->livery_class) {
+			if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
 				bool sel = HasBit(this->sel, scheme) != 0;
 
 				/* Optional check box + scheme name. */
@@ -751,7 +750,7 @@ public:
 				/* Select the first item in the list */
 				this->sel = 0;
 				for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-					if (_livery_class[scheme] == this->livery_class) {
+					if (_livery_class[scheme] == this->livery_class && HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
 						this->sel = 1 << scheme;
 						break;
 					}
@@ -773,7 +772,7 @@ public:
 				LiveryScheme j = (LiveryScheme)((pt.y - wid->pos_y) / (4 + FONT_HEIGHT_NORMAL));
 
 				for (LiveryScheme scheme = LS_BEGIN; scheme <= j; scheme++) {
-					if (_livery_class[scheme] != this->livery_class) j++;
+					if (_livery_class[scheme] != this->livery_class || !HasBit(_loaded_newgrf_features.used_liveries, scheme)) j++;
 					if (scheme >= LS_END) return;
 				}
 				if (j >= LS_END) return;
@@ -805,7 +804,26 @@ public:
 
 	virtual void OnInvalidateData(int data = 0)
 	{
-		this->ReInit();
+		this->SetWidgetsDisabledState(true, SCLW_WIDGET_CLASS_RAIL, SCLW_WIDGET_CLASS_ROAD, SCLW_WIDGET_CLASS_SHIP, SCLW_WIDGET_CLASS_AIRCRAFT, WIDGET_LIST_END);
+
+		bool current_class_valid = this->livery_class == LC_OTHER;
+		if (_settings_client.gui.liveries == LIT_ALL || (_settings_client.gui.liveries == LIT_COMPANY && this->window_number == _local_company)) {
+			for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+				if (HasBit(_loaded_newgrf_features.used_liveries, scheme)) {
+					if (_livery_class[scheme] == this->livery_class) current_class_valid = true;
+					this->EnableWidget(SCLW_WIDGET_CLASS_GENERAL + _livery_class[scheme]);
+				} else {
+					ClrBit(this->sel, scheme);
+				}
+			}
+		}
+
+		if (!current_class_valid) {
+			Point pt = {0, 0};
+			this->OnClick(pt, SCLW_WIDGET_CLASS_GENERAL, 1);
+		} else if (data == 0) {
+			this->ReInit();
+		}
 	}
 };
 
