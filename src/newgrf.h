@@ -148,6 +148,7 @@ enum ShoreReplacement {
 
 struct GRFLoadedFeatures {
 	bool has_2CC;             ///< Set if any vehicle is loaded which uses 2cc (two company colours).
+	uint64 used_liveries;     ///< Bitmask of #LiveryScheme used by the defined engines.
 	bool has_newhouses;       ///< Set if there are any newhouses loaded.
 	bool has_newindustries;   ///< Set if there are any newindustries loaded.
 	ShoreReplacement shore;   ///< It which way shore sprites were replaced.

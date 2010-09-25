@@ -46,6 +46,7 @@
 #include "smallmap_gui.h"
 #include "genworld.h"
 #include "gui.h"
+#include "vehicle_func.h"
 
 #include "table/strings.h"
 #include "table/build_industry.h"
@@ -7062,6 +7063,7 @@ void ResetNewGRFData()
 	_misc_grf_features = 0;
 
 	_loaded_newgrf_features.has_2CC           = false;
+	_loaded_newgrf_features.used_liveries     = 1 << LS_DEFAULT;
 	_loaded_newgrf_features.has_newhouses     = false;
 	_loaded_newgrf_features.has_newindustries = false;
 	_loaded_newgrf_features.shore             = SHORE_REPLACE_NONE;
@@ -7259,6 +7261,33 @@ static void FinaliseEngineArray()
 			const EngineIDMapping &eid = _engine_mngr[e->index];
 			if (eid.grfid != INVALID_GRFID || eid.internal_id != eid.substitute_id) {
 				e->info.string_id = STR_NEWGRF_INVALID_ENGINE;
+			}
+		}
+
+		/* Skip wagons, there livery is defined via the engine */
+		if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
+			LiveryScheme ls = GetEngineLiveryScheme(e->index, INVALID_ENGINE, NULL);
+			SetBit(_loaded_newgrf_features.used_liveries, ls);
+			/* Note: For ships and roadvehicles we assume that they cannot be refitted between passenger and freight */
+
+			if (e->type == VEH_TRAIN) {
+				SetBit(_loaded_newgrf_features.used_liveries, LS_FREIGHT_WAGON);
+				switch (ls) {
+					case LS_STEAM:
+					case LS_DIESEL:
+					case LS_ELECTRIC:
+					case LS_MONORAIL:
+					case LS_MAGLEV:
+						SetBit(_loaded_newgrf_features.used_liveries, LS_PASSENGER_WAGON_STEAM + ls - LS_STEAM);
+						break;
+
+					case LS_DMU:
+					case LS_EMU:
+						SetBit(_loaded_newgrf_features.used_liveries, LS_PASSENGER_WAGON_DIESEL + ls - LS_DMU);
+						break;
+
+					default: NOT_REACHED();
+				}
 			}
 		}
 	}
