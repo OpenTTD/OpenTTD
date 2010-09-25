@@ -2193,7 +2193,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Ráille iarnró
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Ráille iarnróid le comharthaí bloic agus teaglama
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Ráille iarnróid le comharthaí bloic agus cosán
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Ráille iarnróid le comharthaí bloic agus cosán aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ráille iarnróid le comharthaí réamh-chomharthaí 	agus comharthaí amach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí amach
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí teaglama
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí cosán
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí cosán aonbhealaigh

@@ -437,7 +437,7 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 		proc.pSymCleanup(hCur);
 	}
 
-	return 	buffer + seprintf(buffer, last, "\n*** End of additional info ***\n");
+	return buffer + seprintf(buffer, last, "\n*** End of additional info ***\n");
 }
 
 /* virtual */ int CrashLogWindows::WriteCrashDump(char *filename, const char *filename_last) const

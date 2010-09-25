@@ -350,7 +350,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	virtual void OnMouseLoop()
 	{
 		this->HandleEditBox(SLW_FILTER_TEXT);
- 	}
+	}
 
 
 	virtual void OnInvalidateData(int data)
