@@ -1027,6 +1027,7 @@ STR_NUM_LOW                                                     :Baix
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Alt
 STR_NUM_CUSTOM                                                  :Personalitzat
+STR_NUM_CUSTOM_NUMBER                                           :Personalitzat ({NUM})
 
 STR_VARIETY_NONE                                                :Cap
 STR_VARIETY_VERY_LOW                                            :Molt Baix
@@ -1045,6 +1046,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Molt Baix
 STR_SEA_LEVEL_LOW                                               :Baix
 STR_SEA_LEVEL_MEDIUM                                            :Mitjà
 STR_SEA_LEVEL_HIGH                                              :Alt
+STR_SEA_LEVEL_CUSTOM                                            :Personalitzat
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalitzat ({NUM}%)
 
 STR_DISASTER_NONE                                               :Cap
 STR_DISASTER_REDUCED                                            :Reduït

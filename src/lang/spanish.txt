@@ -36,10 +36,10 @@ STR_CARGO_PLURAL_LIVESTOCK                                      :Ganado
 STR_CARGO_PLURAL_GOODS                                          :Mercancías
 STR_CARGO_PLURAL_GRAIN                                          :Grano
 STR_CARGO_PLURAL_WOOD                                           :Madera
-STR_CARGO_PLURAL_IRON_ORE                                       :Mineral de hierro
+STR_CARGO_PLURAL_IRON_ORE                                       :Mineral de Hierro
 STR_CARGO_PLURAL_STEEL                                          :Acero
-STR_CARGO_PLURAL_VALUABLES                                      :Objetos de valor
-STR_CARGO_PLURAL_COPPER_ORE                                     :Mineral de cobre
+STR_CARGO_PLURAL_VALUABLES                                      :Objetos de Valor
+STR_CARGO_PLURAL_COPPER_ORE                                     :Mineral de Cobre
 STR_CARGO_PLURAL_MAIZE                                          :Maíz
 STR_CARGO_PLURAL_FRUIT                                          :Frutas
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamantes
@@ -53,7 +53,7 @@ STR_CARGO_PLURAL_SUGAR                                          :Azúcar
 STR_CARGO_PLURAL_TOYS                                           :Juguetes
 STR_CARGO_PLURAL_CANDY                                          :Dulces
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Algodón dulce
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Algodón Dulce
 STR_CARGO_PLURAL_BUBBLES                                        :Burbujas
 STR_CARGO_PLURAL_TOFFEE                                         :Caramelos
 STR_CARGO_PLURAL_BATTERIES                                      :Pilas
@@ -70,10 +70,10 @@ STR_CARGO_SINGULAR_LIVESTOCK                                    :Ganado
 STR_CARGO_SINGULAR_GOODS                                        :Mercancía
 STR_CARGO_SINGULAR_GRAIN                                        :Grano
 STR_CARGO_SINGULAR_WOOD                                         :Madera
-STR_CARGO_SINGULAR_IRON_ORE                                     :Mineral de hierro
+STR_CARGO_SINGULAR_IRON_ORE                                     :Mineral de Hierro
 STR_CARGO_SINGULAR_STEEL                                        :Acero
-STR_CARGO_SINGULAR_VALUABLES                                    :Objetos de valor
-STR_CARGO_SINGULAR_COPPER_ORE                                   :Mineral de cobre
+STR_CARGO_SINGULAR_VALUABLES                                    :Objetos de Valor
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Mineral de Cobre
 STR_CARGO_SINGULAR_MAIZE                                        :Maíz
 STR_CARGO_SINGULAR_FRUIT                                        :Fruta
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamantes
@@ -87,7 +87,7 @@ STR_CARGO_SINGULAR_SUGAR                                        :Azúcar
 STR_CARGO_SINGULAR_TOY                                          :Juguete
 STR_CARGO_SINGULAR_CANDY                                        :Dulce
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Algodón dulce
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Algodón Dulce
 STR_CARGO_SINGULAR_BUBBLE                                       :Burbuja
 STR_CARGO_SINGULAR_TOFFEE                                       :Caramelo
 STR_CARGO_SINGULAR_BATTERY                                      :Pilas

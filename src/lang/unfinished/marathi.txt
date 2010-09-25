@@ -456,6 +456,8 @@ STR_INTRO_CAPTION                                               :{WHITE}ओप�
 # Livery window
 
 
+STR_LIVERY_SMALL_PLANE                                          :छोट विमान
+STR_LIVERY_LARGE_PLANE                                          :मोठ विमान
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}चेहरा निवड
@@ -506,6 +508,7 @@ STR_NETWORK_LANG_ESPERANTO                                      :एस्पर
 STR_NETWORK_LANG_FINNISH                                        :फिन्निश
 STR_NETWORK_LANG_HUNGARIAN                                      :हंगेरियन
 STR_NETWORK_LANG_ICELANDIC                                      :आईसलेंडीक
+STR_NETWORK_LANG_JAPANESE                                       :जपानी
 STR_NETWORK_LANG_POLISH                                         :पोलिश
 STR_NETWORK_LANG_PORTUGUESE                                     :पोर्चुगीस
 STR_NETWORK_LANG_ROMANIAN                                       :रोमेनिअन
@@ -603,11 +606,16 @@ STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}स्�
 # Dock construction window
 
 # Airport toolbar
+STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}विमानतळ
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठेवणी {NUM}
 
+STR_AIRPORT_SMALL                                               :छोट
+STR_AIRPORT_INTERNATIONAL                                       :आंतरराष्ट्रीय
 
+STR_AIRPORT_CLASS_SMALL                                         :छोटे विमानतळ
+STR_AIRPORT_CLASS_LARGE                                         :मोठे विमानतळ
 
 
 # Landscaping toolbar
@@ -649,6 +657,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}वि�
 
 
 # About OpenTTD window
+STR_ABOUT_OPENTTD                                               :{WHITE}ओपेन टीटीडी बद्दल
 
 # Save/load game/scenario
 
@@ -703,6 +712,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :वस्तू
 # Town directory window
 
 # Town view window
+STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 
 
 
