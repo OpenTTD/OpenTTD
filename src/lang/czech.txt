@@ -1184,7 +1184,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Způsob
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žádný
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jako u ostatniho průmyslu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :průzkum
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plochá oblast okolo průmyslu: {ORANGE}{STRING} čtvereček{P 0:1 "" s}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plochá oblast okolo průmyslu: {ORANGE}{STRING} čtvereček
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Povolit více stejného průmyslu kolem jednoho města: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Ukazovat dlouhé datum ve stavové liště: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Ukazovat semafory na straně, kde jezdí silniční vozidla: {ORANGE}{STRING}
