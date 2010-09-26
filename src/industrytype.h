@@ -153,6 +153,12 @@ struct IndustrySpec {
 	 * @return the cost (inflation corrected etc)
 	 */
 	Money GetRemovalCost() const;
+
+	/**
+	 * Determines whether this industrytype uses smooth economy or whether it uses standard/newgrf production changes.
+	 * @return true if smooth economy is used.
+	 */
+	bool UsesSmoothEconomy() const;
 };
 
 /**

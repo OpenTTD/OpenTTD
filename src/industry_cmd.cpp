@@ -1572,9 +1572,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->production_rate[1] = indspec->production_rate[1];
 
 	/* don't use smooth economy for industries using production related callbacks */
-	if (_settings_game.economy.smooth_economy &&
-			!(HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
-			!(HasBit(indspec->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_CHANGE))) {          // production change callbacks
+	if (indspec->UsesSmoothEconomy()) {
 		i->production_rate[0] = min((RandomRange(256) + 128) * i->production_rate[0] >> 8, 255);
 		i->production_rate[1] = min((RandomRange(256) + 128) * i->production_rate[1] >> 8, 255);
 	}
@@ -2232,9 +2230,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	bool suppress_message = false;
 	bool recalculate_multipliers = false; ///< reinitialize production_rate to match prod_level
 	/* don't use smooth economy for industries using production related callbacks */
-	bool smooth_economy = _settings_game.economy.smooth_economy &&
-	                      !(HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
-	                      !(HasBit(indspec->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_mask, CBM_IND_PRODUCTION_CHANGE));            // production change callbacks
+	bool smooth_economy = indspec->UsesSmoothEconomy();
 	byte div = 0;
 	byte mul = 0;
 	int8 increment = 0;
@@ -2513,6 +2509,13 @@ Money IndustrySpec::GetConstructionCost() const
 Money IndustrySpec::GetRemovalCost() const
 {
 	return (_price[PR_CLEAR_INDUSTRY] * this->removal_cost_multiplier) >> 8;
+}
+
+bool IndustrySpec::UsesSmoothEconomy() const
+{
+	return _settings_game.economy.smooth_economy &&
+		!(HasBit(this->callback_mask, CBM_IND_PRODUCTION_256_TICKS) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
+		!(HasBit(this->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CHANGE));            // production change callbacks
 }
 
 static CommandCost TerraformTile_Industry(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
