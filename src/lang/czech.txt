@@ -404,6 +404,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generov�
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Výstavba silniční sítě
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Vysadit stromy
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umístit popisek
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umisťte objekt
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Uložit mapu
@@ -629,6 +630,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Podrobn�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Zobraz detaily o této společnosti
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozidla:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stanice:
@@ -1094,6 +1096,7 @@ STR_NUM_LOW                                                     :nízké
 STR_NUM_NORMAL                                                  :střední
 STR_NUM_HIGH                                                    :vysoké
 STR_NUM_CUSTOM                                                  :vlastní
+STR_NUM_CUSTOM_NUMBER                                           :Uživatelský ({NUM})
 
 STR_VARIETY_NONE                                                :žádná
 STR_VARIETY_VERY_LOW                                            :velmi nízká
@@ -1112,6 +1115,7 @@ STR_SEA_LEVEL_VERY_LOW                                          :velmi nízká
 STR_SEA_LEVEL_LOW                                               :nízká
 STR_SEA_LEVEL_MEDIUM                                            :střední
 STR_SEA_LEVEL_HIGH                                              :vysoká
+STR_SEA_LEVEL_CUSTOM                                            :Uživatelský
 
 STR_DISASTER_NONE                                               :žádné
 STR_DISASTER_REDUCED                                            :snížené
@@ -1155,6 +1159,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Srovná
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Povolit u oblasti pokrytí realističtější velikost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů, tunelů, atp.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Povolit stavbu dlouhých vlaků: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}množství kouře/jisker u lokomotivy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Žádný
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originální
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistický
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akcelerace vlaků: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :původní
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :realistický
@@ -1176,6 +1184,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Způsob
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žádný
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jako u ostatniho průmyslu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :průzkum
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plochá oblast okolo průmyslu: {ORANGE}{STRING} čtvereček{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Povolit více stejného průmyslu kolem jednoho města: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Ukazovat dlouhé datum ve stavové liště: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Ukazovat semafory na straně, kde jezdí silniční vozidla: {ORANGE}{STRING}
@@ -1821,6 +1830,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server j
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Jsi blokován serverem
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Byl jsi vyhozen ze hry
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Používání cheatů není na tomto serveru povoleno
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Posíláte serveru příliš mnoho příkazů
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :všeobecná chyba
@@ -1838,6 +1848,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :špatné ID spo
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :vyhozen serverem
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :se pokoušel podvádět
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :na serveru je plno
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :posílal příliš mnoho příkazů
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2094,6 +2105,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Postavit
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Výběr letiště
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Zvol velikost a typ letiště
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Třída letiště
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Layout {NUM}
 
 STR_AIRPORT_SMALL                                               :Malé
 STR_AIRPORT_CITY                                                :Městské
@@ -2118,6 +2130,16 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Snížit
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvýšit roh země
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Srovnat terén
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakoupit pozemek pro budoucí užití
+
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Výběr objektu
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vyberte objekt, který se má postavit
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Druh objektu
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Náhled objektu
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM} x {NUM}
+
+STR_OBJECT_CLASS_LTHS                                           :Majáky
+STR_OBJECT_CLASS_TRNS                                           :Vysílače
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Stromy
@@ -2191,6 +2213,7 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.dat                        :{BLACK}Odkazu n
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.acc                        :{BLACK}Odkaz na malou mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.loc                        :{BLACK}Odkazu na malou mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.ins                        :{BLACK}Odkazem na malou mapu
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Vyber zobrazený průmysl také na minimapě
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informace o uzemí
@@ -2208,6 +2231,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Souřadn
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Postaveno: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Třída stanice: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Druh stanice: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Druh letiště: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Jméno letiště: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Název dlaždice letiště:{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Přijímané zboží: {LTBLUE}
@@ -2452,8 +2477,11 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Zadej pa
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Úprava nastavení parametrů
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zavřít
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nastav všechny parametry na jejich výchozí hodnotu
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametr {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Počet prametrů: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Zkoumání - {STRING}
@@ -2461,6 +2489,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Rodič
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Vyšetřit objekt patřící do kontextu rodiče
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} na {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Druh kolejí
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Hodnota NewGRF proměnné 60+x (šestnáctkově)
@@ -2503,6 +2532,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použit
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje víc GRF akcí 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení za koncem pseudo-spritu.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě používanému základnímu grafickému setu chybí obrázky.{}Prosím, updatujte ho.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
@@ -2524,6 +2554,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}některé 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Chování grafiky '{0:STRING}' by mohlo způsobit desynchronizaci a/nebo pád hry.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Změnil se stav lokomotivy '{1:ENGINE}' když nebyla v depu.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Změnilo délku vozidla '{1:ENGINE}', když nebylo v depu.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout.
 
@@ -2540,6 +2571,9 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný prů
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Shoda
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Čistý filtr
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Vyčisti filtr
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Upravit text popisku
@@ -3365,6 +3399,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Rozeznat
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Zabývat se velikostí písmen při hledání zastavujícího řetězce v AI logu
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Pokračovat
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Odpauzujte a pokračujte v běhu AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Zobraz debugovací výstup této AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}Hra byla zkompilována bez podpory AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... AI není dostupné!
@@ -3520,6 +3555,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Tato spo
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nelze vygenerovat žádné město
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nelze přejmenovat město...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Zde nelze postavit město...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Město nemůže být rozšířeno...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... moc blízko k okraji mapy
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... moc blízko k jinému městu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... příliš mnoho měst
@@ -3598,7 +3634,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Nelze p�
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Zde nelze zbourat směrování...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Je nutné nejprve zničit směrování
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bójka v cestě
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bójka je používána!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bójka je používána jinou společností!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Zde nelze postavit vlakové depo...
@@ -3608,10 +3644,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Zde nelz
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nelze přejmenovat depo...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Vlak musí stát v depu
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... musí stát v depu
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... musí být zastaven v garáži
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Loď musí být zastavena v depu
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Letadlo musí být zastaveno v hangáru
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... musí být zastavena v depu
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... musí být zastaveno v hangáru
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaky lze měnit, jen když stojí v depu
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Příliš dlouhý vlak
@@ -3699,6 +3735,7 @@ STR_ERROR_TOO_MANY_OBJECTS.acc                                  :{WHITE}... př�
 STR_ERROR_TOO_MANY_OBJECTS.voc                                  :{WHITE}... příliš mnoho objektů!
 STR_ERROR_TOO_MANY_OBJECTS.loc                                  :{WHITE}... příliš mnoha objektech
 STR_ERROR_TOO_MANY_OBJECTS.ins                                  :{WHITE}... příliš mnoha objekty
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Objekt nemůže být postaven...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}V cestě je objekt
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... v cestě je ředitelství společnosti
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nelze zakoupit tento pozemek...

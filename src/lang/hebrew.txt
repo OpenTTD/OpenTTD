@@ -455,8 +455,8 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :מידע על �
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :פתח/סגור קונסולה
 STR_ABOUT_MENU_AI_DEBUG                                         :דיבאג לבינה מלאכותית
-STR_ABOUT_MENU_SCREENSHOT                                       :(Ctrl-S)צילום מסך
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :צילום מסך ענק (Ctrl-G)
+STR_ABOUT_MENU_SCREENSHOT                                       :צילום מסך
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :צילום מסך ענק
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'{NBSP}אודות
 ############ range ends here
 
@@ -2060,6 +2060,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}הגבה
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}שיטוח הקרקע
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}קנה אדמה לשימוש עתידי
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}עצים
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}בחר סוג עץ לנטיעה
@@ -2123,6 +2126,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{YELLOW}{CURREN
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}צפה
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}בנה
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}ממן
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}מידע על שטח קרקע
@@ -2380,6 +2385,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}מושתק
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}הכנס פרמטרים
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}בדוק - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}הורה
@@ -2445,7 +2452,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<מטען לא חוקי>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} של <מטען לא חוקי>
-STR_NEWGRF_INVALID_ENGINE                                       :<מנוע לא תקין>
+STR_NEWGRF_INVALID_ENGINE                                       :<דגם כלי רכב לא תקין>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<תעשייה לא תקינה>
 
 # Sign list window
@@ -3499,7 +3506,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}שינו
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}לא ניתן להסיר תחנת רכבת מאתר זה...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}יש להסיר נקודת ציון של פסי רכבת תחילה
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... מצוף חוסם את הדרך
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... המצוף בשימוש
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... המצוף בשימוש ע"י חברה אחרת!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}לא ניתן לבנות מוסך רכבת כאן...
@@ -3509,10 +3516,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}לא נ�
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}לא ניתן לשנות שם מוסך...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}הרכבת צריכה להיות בעצירה במוסך
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}חייב להיות בעצירה בתוך מוסך לכלי רכב...
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}כלי השייט חייב להמצא בעצירה במבדוק
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}המטוס צריך להמצא בעצירה בסככת מטוסים
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... חייבת להיעצר במוסך
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}חייב להיעצר בתוך מוסך לכלי רכב...
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... חייב להיעצר במבדוק
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... חייב להיעצר בסככת מטוסים
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}ניתן לשנות את הרכבת בעת עצירה במוסך בלבד
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}רכבת ארוכה מידי

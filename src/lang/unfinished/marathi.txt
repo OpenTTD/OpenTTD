@@ -69,7 +69,10 @@ STR_CARGO_SINGULAR_LIVESTOCK                                    :पशुधन
 STR_CARGO_SINGULAR_GOODS                                        :माल
 STR_CARGO_SINGULAR_GRAIN                                        :धान्य
 STR_CARGO_SINGULAR_WOOD                                         :लाकूड
+STR_CARGO_SINGULAR_IRON_ORE                                     :लोह खनिज
 STR_CARGO_SINGULAR_STEEL                                        :पोलाद
+STR_CARGO_SINGULAR_VALUABLES                                    :मौल्यवान वस्तु
+STR_CARGO_SINGULAR_COPPER_ORE                                   :ताम्र खनिज
 STR_CARGO_SINGULAR_MAIZE                                        :मका
 STR_CARGO_SINGULAR_FRUIT                                        :फळ
 STR_CARGO_SINGULAR_DIAMOND                                      :हिरा
@@ -81,6 +84,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :गहू
 STR_CARGO_SINGULAR_RUBBER                                       :रबर
 STR_CARGO_SINGULAR_SUGAR                                        :साखर
 STR_CARGO_SINGULAR_TOY                                          :खेळणी
+STR_CARGO_SINGULAR_CANDY                                        :मिठाई
+STR_CARGO_SINGULAR_COLA                                         :कोला
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :कँडी फ्लास
 STR_CARGO_SINGULAR_BUBBLE                                       :बुडबुडा
 STR_CARGO_SINGULAR_TOFFEE                                       :टॉफी
 STR_CARGO_SINGULAR_PLASTIC                                      :प्लॅस्टिक
