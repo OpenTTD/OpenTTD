@@ -1116,6 +1116,7 @@ STR_SEA_LEVEL_LOW                                               :nízká
 STR_SEA_LEVEL_MEDIUM                                            :střední
 STR_SEA_LEVEL_HIGH                                              :vysoká
 STR_SEA_LEVEL_CUSTOM                                            :Uživatelský
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Uživatelský ({NUM}%)
 
 STR_DISASTER_NONE                                               :žádné
 STR_DISASTER_REDUCED                                            :snížené
@@ -1225,6 +1226,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automat
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíců před nebo po dosažení nejvyššího stáří
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimální částka pro automatické obnovení: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Doba zobrazení chybové zprávy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zpožděné a čekající události: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Zpožděné a čekající události: {ORANGE}zakázány
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazovat populaci města v jeho popisku: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Tvůrce krajiny: {ORANGE}{STRING}
@@ -2206,6 +2209,15 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Postavit
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Financovat
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Průmyslový řetěz pro průmysl {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Průmyslový řetěz pro náklad {STRING}
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produkující průmysl
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Zpracovávající průmysl
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikněte na průmysl, abyste vyděle jeho dodejce a odběratele
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikněte na náklad, abyste viděli jeho producenty a spotřebitele
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zobraz pás
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zobrazí průmysl produkující nebo příjmající surovinu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Odkaz na malou mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.nom                        :{BLACK}Odkaz na malou mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.gen                        :{BLACK}Odkazu na malou mapu
@@ -2573,6 +2585,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný prů
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Shoda
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Čistý filtr
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Vypněte shodu když porovnáváte s filtrem
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Vyčisti filtr
 
 # Sign window
@@ -3604,6 +3617,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Příli�
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nelze přejmenovat stanici...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... tato silnice je ve vlastnictví obce
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... silnice je otočena jiným směrem
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... Průjezdné zastávky nemohou mít rohy
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... průjezdné zastávky nemohou mít křižovatky
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nelze odstranit část stanice...
