@@ -173,6 +173,7 @@ struct BuildDocksToolbarWindow : Window {
 	BuildDocksToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->InitNested(desc, window_number);
+		this->OnInvalidateData();
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
@@ -181,9 +182,17 @@ struct BuildDocksToolbarWindow : Window {
 		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
 	}
 
+	void OnInvalidateData(int data = 0)
+	{
+		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_SHIP),
+			DTW_DEPOT,
+			DTW_STATION,
+			DTW_BUOY,
+			WIDGET_LIST_END);
+	}
+
 	virtual void OnPaint()
 	{
-		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_SHIP), DTW_DEPOT, DTW_STATION, DTW_BUOY, WIDGET_LIST_END);
 		this->DrawWidgets();
 	}
 

@@ -605,6 +605,10 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 	if (company == _local_company) {
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
+
+	/* Update the toolbar. */
+	if (e->type == VEH_ROAD) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_ROAD);
+	if (e->type == VEH_SHIP) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_WATER);
 }
 
 /**
@@ -749,6 +753,10 @@ static void NewVehicleAvailable(Engine *e)
 	SetDParam(0, GetEngineCategoryName(index));
 	SetDParam(1, index);
 	AddNewsItem(STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, NS_NEW_VEHICLES, NR_ENGINE, index);
+
+	/* Update the toolbar. */
+	if (e->type == VEH_ROAD) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_ROAD);
+	if (e->type == VEH_SHIP) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_WATER);
 }
 
 void EnginesMonthlyLoop()

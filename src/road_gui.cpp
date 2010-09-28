@@ -457,11 +457,7 @@ struct BuildRoadToolbarWindow : Window {
 			RTW_ONE_WAY,
 			WIDGET_LIST_END);
 
-		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_ROAD),
-			RTW_DEPOT,
-			RTW_BUS_STATION,
-			RTW_TRUCK_STATION,
-			WIDGET_LIST_END);
+		this->OnInvalidateData();
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
@@ -469,6 +465,15 @@ struct BuildRoadToolbarWindow : Window {
 	~BuildRoadToolbarWindow()
 	{
 		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
+	}
+
+	void OnInvalidateData(int data = 0)
+	{
+		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_ROAD),
+			RTW_DEPOT,
+			RTW_BUS_STATION,
+			RTW_TRUCK_STATION,
+			WIDGET_LIST_END);
 	}
 
 	/**
