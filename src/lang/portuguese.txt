@@ -3660,7 +3660,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}O túnel
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Não é possível escavar o terreno para o outro lado do túnel
 
 # Object related errors
-STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiado objectos
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiados objectos
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Não é possível construir objecto...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objecto no caminho
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede de empresa no caminho

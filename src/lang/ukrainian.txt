@@ -366,7 +366,7 @@ STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Смуг
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Зруйнувати будинки, дороги і т.п.
 
 # Query window
-STR_BUTTON_DEFAULT                                              :{BLACK}За промовчанням
+STR_BUTTON_DEFAULT                                              :{BLACK}Стандартно
 STR_BUTTON_CANCEL                                               :{BLACK}Відміна
 STR_BUTTON_OK                                                   :{BLACK}Так
 
@@ -1353,7 +1353,7 @@ STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Доз�
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Показувати розклад в одиницях, а не в днях: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Показувати прибуття та відправлення у розкладах: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Швидке створення списку завдань: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип колії за промовчанням (при новій грі/завантаженні): {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Стандартний тип колії (при новій грі/завантаженні): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Перша з доступних
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Остання з доступних
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Найчастіше використовувана
@@ -1847,8 +1847,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введ
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не запам'ятовувати введений пароль
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Дати компанії новий пароль
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Пароль компанії
-STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Пароль компанії за промовчанням
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Використовувати цей пароль компанії як пароль за промовчанням для нових компаній
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Використовувати як стандартний
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Використовувати цей пароль для нових компаній
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Приєднатись
