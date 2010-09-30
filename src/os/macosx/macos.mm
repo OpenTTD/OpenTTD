@@ -88,7 +88,7 @@ void ShowOSErrorBox(const char *buf, bool system)
 	if (system) {
 		ShowMacDialog("OpenTTD has encountered an error", buf, "Quit");
 	} else {
-		ShowMacDialog(buf, "See the readme for more info.\nMost likely you are missing files from the original TTD.", "Quit");
+		ShowMacDialog(buf, "See the readme for more info.", "Quit");
 	}
 }
 
