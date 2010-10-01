@@ -215,6 +215,8 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}م3
 
 STR_UNITS_FORCE_SI                                              :{COMMA} كيلو نيوتن
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} قدم
+STR_UNITS_HEIGHT_SI                                             :{COMMA} متر
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK} ادخل فلتر
@@ -230,6 +232,7 @@ STR_BUTTON_RENAME                                               :{BLACK}اعاد
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}اغلاق الاطار
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان الاطار- اسحب لتحريك الاطار
 STR_TOOLTIP_SHADE                                               :{BLACK}نافذة الظل - تعرض العنوان فقط
+STR_TOOLTIP_DEBUG                                               :{BLACK}اظهر معلومات صائد اخطاء الاضافات الجديدة.
 STR_TOOLTIP_STICKY                                              :{BLACK}خصص هذا الاطار بان يبقى مفتوح عند اغلاق كافة الاطارات
 STR_TOOLTIP_RESIZE                                              :{BLACK}اضغط واسحب لتعديل حجم الاطار
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}تبديل حجم الاطار كبير / صغير
@@ -250,6 +253,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ذ1234567890-=�
 STR_MEASURE_LENGTH                                              :{BLACK} الطول: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}المساحة: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}الطول: {NUM}{}فرق الارتفاع: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}المساحة: {NUM} x {NUM}{}فرق الارتفاع: {HEIGHT}
 
 
 # These are used in buttons
@@ -442,6 +446,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :صورة من �
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :صورة للشاشة مصغرة
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :صورة كبيرة لكامل الخريطة -Ctrl-G -
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :حول 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :موائم العفريتات
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -1151,6 +1156,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}جدد 
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}التجديد التلقائي عندما تكون العربة {ORANGE}{STRING}{LTBLUE}شهر قبل / بعد العمر الافتراضي.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}التجديد التلقائي عند توفر السيولة الدنيا للتجديد: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}زمن عرض الرسالة: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}تاخير احداث الهوفر: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}تاخير احداث الهوفر: {ORANGE}معطلة
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}أعرض عدد السكان مع الأسم على العلامه: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}مولد الأرض: {ORANGE}{STRING}
@@ -1280,6 +1287,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :شبكة 2*2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :شبكة 3*3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :عشوائي
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE} السماح للمدن ببناء طرق: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}يسمح للمدن ببناء تقاطعات متعددة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم بضجيج المطارات: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}انشاء المدن اثناء اللعب: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :محذور
@@ -2131,6 +2139,7 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}بناء
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}مول
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}سلسلة مصانع لـ {STRING} مصنع
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}سلسلة مصانع لـ {STRING} بضاعة
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}تكوين مصانع
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}قبول المصانع
@@ -2277,6 +2286,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}حذف
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}حذف اللعبة المحفوظة حاليا
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}حفظ
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}احفظ اللعبة الحالية، بواسطة الاسم المختار
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}تحميل
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}تحميل اللعبة المختارة
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}تفاصيل اللعبة
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}لا توجد معلومات متاحة
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}اضافات جديدة: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}ادخل اسم الحفظ للعبة
 
@@ -2351,6 +2366,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}يتك �
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}اعدادات NewGRF
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}تفاصيل الاضافات الجديدة
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}اضافة جديدة فعالة
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}ملفات غير فعالة لاضافات جديدة
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}اختر مجموعة الخواص المحددة مسبقا:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}نص المرشح
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}فتح مجموعة الاعدادات المسجلة
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}حفظ مجموعة الاعدادات
@@ -2401,12 +2420,31 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}عدد الانماط: {ORANGE}{NUM}
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}نظرة فاحصة - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}الاساس
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}تفحص مجسم المنظور الاساسي
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} على {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :جسم
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :نوع سكة القطار
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}متغير الاضافات الجديدة +60 * نمط (hexadecimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}موائمة صورة العفريتة {COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}العفريتة التالية
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}نابع للعفريتة الطبيعية التالية، تجاوز اي عفريتة موقوفة/ مصبوغة/مخطوطة و انهي المتاعة في النهاية.
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}اذهب الى العفريتة
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}اذهب الى العفريتة المعطاة, اذا لم تكن طبيعية تجاوزها الى العفريتة الطبيعية التالية.
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}العفريتة السابقة.
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}نابع للعفريتة الطبيعية التالية، تجاوز اي عفريتة موقوفة/ مصبوغة/مخطوطة و انهي في البداية.
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}عرض العفريتة المختارة حاليا. يتم تجاهل الموائمة عند رسم هذا العفريت.
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}حرك العفريتة في الجوار، غير الاحداثيات س ، ص.
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}احداث س: {NUM}، احداث ص: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}اختر عفريتة
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}اختر عفريتة من اي مكان في الشاشة.
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}اذهب الى العفريتة.
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2445,6 +2483,10 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}ملف 
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}عدم الايقاف قد يتسبب في تعطل النسخة المفتوحة. لا تنشأ ملف اخطاء لاالخطاء التالية. {} هل تود بالفعل اكمال اللعب؟
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :لا يوجد
+STR_NEWGRF_LIST_ALL_FOUND                                       :كل الملفات موجودة
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}يوجد ملفات متوافقة
+STR_NEWGRF_LIST_MISSING                                         :{RED}ملفات مفقودة
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}حركات NewGFR '{0:STRING}'قد تتسبب في اخطاء او توقف للعبة
@@ -2457,6 +2499,8 @@ STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}التك
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' تسبب بدورة غير منتهية في نداء الانتاج
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<حمولة غير صالحة>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :؟؟
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}قائمة العلامات - {COMMA} علامة
