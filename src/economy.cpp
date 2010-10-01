@@ -71,22 +71,6 @@ static inline int32 BigMulS(const int32 a, const int32 b, const uint8 shift)
 	return (int32)((int64)a * (int64)b >> shift);
 }
 
-/**
- * Multiply two unsigned integers and shift the results to right.
- *
- * This function multiplies two unsigned integers. The result is
- * shifted by the amount of shift to right.
- *
- * @param a The first unsigned integer
- * @param b The second unsigned integer
- * @param shift The amount to shift the value to right.
- * @return The shifted result
- */
-static inline uint32 BigMulSU(const uint32 a, const uint32 b, const uint8 shift)
-{
-	return (uint32)((uint64)a * (uint64)b >> shift);
-}
-
 typedef SmallVector<Industry *, 16> SmallIndustryList;
 
 /**

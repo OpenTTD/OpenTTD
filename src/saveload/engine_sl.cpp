@@ -137,11 +137,9 @@ static void Save_EIDS()
 
 static void Load_EIDS()
 {
-	int index;
-
 	_engine_mngr.Clear();
 
-	while ((index = SlIterateArray()) != -1) {
+	while (SlIterateArray() != -1) {
 		EngineIDMapping *eid = _engine_mngr.Append();
 		SlObject(eid, _engine_id_mapping_desc);
 	}

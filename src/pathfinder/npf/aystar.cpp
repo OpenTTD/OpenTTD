@@ -29,9 +29,6 @@
 #include "../../core/alloc_func.hpp"
 #include "aystar.h"
 
-static int _aystar_stats_open_size;
-static int _aystar_stats_closed_size;
-
 /* This looks in the Hash if a node exists in ClosedList
  *  If so, it returns the PathNode, else NULL */
 static PathNode *AyStarMain_ClosedList_IsInList(AyStar *aystar, const AyStarNode *node)
@@ -257,8 +254,6 @@ int AyStarMain_Main(AyStar *aystar)
 #endif
 	if (r != AYSTAR_STILL_BUSY) {
 		/* We're done, clean up */
-		_aystar_stats_open_size = aystar->OpenListHash.size;
-		_aystar_stats_closed_size = aystar->ClosedListHash.size;
 		aystar->clear(aystar);
 	}
 

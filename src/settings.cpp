@@ -1949,17 +1949,6 @@ static void LoadSettings(const SettingDesc *osd, void *object)
 }
 
 /**
- * Loadhandler for a list of global variables
- * @param sdg pointer for the global variable list SettingDescGlobVarList
- * @note this is actually a stub for LoadSettings with the
- * object pointer set to NULL
- */
-static inline void LoadSettingsGlobList(const SettingDescGlobVarList *sdg)
-{
-	LoadSettings((const SettingDesc*)sdg, NULL);
-}
-
-/**
  * Save and load handler for settings
  * @param sd SettingDesc struct containing all information
  * @param object can be either NULL in which case we load global variables or
@@ -1980,16 +1969,6 @@ static void SaveSettings(const SettingDesc *sd, void *object)
 		void *ptr = GetVariableAddress(object, &i->save);
 		SlObjectMember(ptr, &i->save);
 	}
-}
-
-/**
- * Savehandler for a list of global variables
- * @note this is actually a stub for SaveSettings with the
- * object pointer set to NULL
- */
-static inline void SaveSettingsGlobList(const SettingDescGlobVarList *sdg)
-{
-	SaveSettings((const SettingDesc*)sdg, NULL);
 }
 
 static void Load_OPTS()

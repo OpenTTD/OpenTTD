@@ -51,8 +51,6 @@
 #include "table/strings.h"
 #include "table/town_land.h"
 
-static Town *_cleared_town;
-static int _cleared_town_rating;
 TownID _new_town_id;
 
 /* Initialize the town-pool */
@@ -542,8 +540,7 @@ static CommandCost ClearTile_Town(TileIndex tile, DoCommandFlag flags)
 	cost.AddCost(hs->GetRemovalCost());
 
 	int rating = hs->remove_rating_decrease;
-	_cleared_town_rating += rating;
-	Town *t = _cleared_town = Town::GetByTile(tile);
+	Town *t = Town::GetByTile(tile);
 
 	if (Company::IsValidID(_current_company)) {
 		if (rating > t->ratings[_current_company] && !(flags & DC_NO_TEST_TOWN_RATING) && !_cheats.magic_bulldozer.value) {

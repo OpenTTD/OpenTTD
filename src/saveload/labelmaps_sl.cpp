@@ -109,9 +109,8 @@ static void Load_RAIL()
 	_railtype_list.Clear();
 
 	LabelObject lo;
-	int index;
 
-	while ((index = SlIterateArray()) != -1) {
+	while (SlIterateArray() != -1) {
 		SlObject(&lo, _label_object_desc);
 		*_railtype_list.Append() = (RailTypeLabel)lo.label;
 	}

@@ -71,7 +71,7 @@ private:
 		/* Call the proc of the creator to continue this thread */
 		try {
 			this->proc(this->param);
-		} catch (OTTDThreadExitSignal e) {
+		} catch (OTTDThreadExitSignal) {
 		} catch (...) {
 			NOT_REACHED();
 		}
