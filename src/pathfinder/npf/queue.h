@@ -103,6 +103,11 @@ struct Hash {
 	{
 		return this->size;
 	}
+
+protected:
+#ifdef HASH_STATS
+	void PrintStatistics() const;
+#endif
 };
 
 #endif /* QUEUE_H */

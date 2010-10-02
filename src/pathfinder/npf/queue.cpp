@@ -303,7 +303,7 @@ void Hash::Delete(bool free_values)
 }
 
 #ifdef HASH_STATS
-static void stat_Hash(const Hash *h)
+void Hash::PrintStatistics() const
 {
 	uint used_buckets = 0;
 	uint max_collision = 0;
@@ -312,13 +312,13 @@ static void stat_Hash(const Hash *h)
 	uint i;
 
 	for (i = 0; i < lengthof(usage); i++) usage[i] = 0;
-	for (i = 0; i < h->num_buckets; i++) {
+	for (i = 0; i < this->num_buckets; i++) {
 		uint collision = 0;
-		if (h->buckets_in_use[i]) {
+		if (this->buckets_in_use[i]) {
 			const HashNode *node;
 
 			used_buckets++;
-			for (node = &h->buckets[i]; node != NULL; node = node->next) collision++;
+			for (node = &this->buckets[i]; node != NULL; node = node->next) collision++;
 			if (collision > max_collision) max_collision = collision;
 		}
 		if (collision >= lengthof(usage)) collision = lengthof(usage) - 1;
@@ -333,7 +333,7 @@ static void stat_Hash(const Hash *h)
 		"Nodes used: %d\n"
 		"Non empty buckets: %d\n"
 		"Max collision: %d\n",
-		h->num_buckets, h->size, used_buckets, max_collision
+		this->num_buckets, this->size, used_buckets, max_collision
 	);
 	printf("{ ");
 	for (i = 0; i <= max_collision; i++) {
