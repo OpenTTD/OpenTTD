@@ -731,14 +731,18 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			}
 			return (variable - 0x80) == 0x10 ? ticks : GB(ticks, 8, 8);
 		}
-		case 0x12: return max(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
-		case 0x13: return GB(max(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0), 8, 8);
+		case 0x12: return Clamp(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF);
+		case 0x13: return GB(Clamp(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 0xFFFF), 8, 8);
 		case 0x14: return v->service_interval;
 		case 0x15: return GB(v->service_interval, 8, 8);
 		case 0x16: return v->last_station_visited;
 		case 0x17: return v->tick_counter;
-		case 0x18: return v->max_speed;
-		case 0x19: return GB(v->max_speed, 8, 8);
+		case 0x18:
+		case 0x19: {
+			uint max_speed = v->type == VEH_TRAIN ? Train::From(v)->tcache.cached_max_speed : v->max_speed;
+			if (v->type == VEH_AIRCRAFT) max_speed = max_speed * 10 / 128;
+			return (variable - 0x80) == 0x18 ? max_speed : GB(max_speed, 8, 8);
+		}
 		case 0x1A: return v->x_pos;
 		case 0x1B: return GB(v->x_pos, 8, 8);
 		case 0x1C: return v->y_pos;
@@ -749,21 +753,21 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x29: return GB(v->cur_image, 8, 8);
 		case 0x32: return v->vehstatus;
 		case 0x33: return 0; // non-existent high byte of vehstatus
-		case 0x34: return v->cur_speed;
-		case 0x35: return GB(v->cur_speed, 8, 8);
+		case 0x34: return v->type == VEH_AIRCRAFT ? (v->cur_speed * 10) / 128 : v->cur_speed;
+		case 0x35: return GB(v->type == VEH_AIRCRAFT ? (v->cur_speed * 10) / 128 : v->cur_speed, 8, 8);
 		case 0x36: return v->subspeed;
 		case 0x37: return v->acceleration;
 		case 0x39: return v->cargo_type;
 		case 0x3A: return v->cargo_cap;
 		case 0x3B: return GB(v->cargo_cap, 8, 8);
-		case 0x3C: return v->cargo.Count();
-		case 0x3D: return GB(v->cargo.Count(), 8, 8);
+		case 0x3C: return ClampToU16(v->cargo.Count());
+		case 0x3D: return GB(ClampToU16(v->cargo.Count()), 8, 8);
 		case 0x3E: return v->cargo.Source();
-		case 0x3F: return v->cargo.DaysInTransit();
+		case 0x3F: return ClampU(v->cargo.DaysInTransit(), 0, 0xFF);
 		case 0x40: return v->age;
 		case 0x41: return GB(v->age, 8, 8);
-		case 0x42: return v->max_age;
-		case 0x43: return GB(v->max_age, 8, 8);
+		case 0x42: return ClampToU16(v->max_age);
+		case 0x43: return GB(ClampToU16(v->max_age), 8, 8);
 		case 0x44: return Clamp(v->build_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 		case 0x45: return v->unitnumber;
 		case 0x46: return Engine::Get(v->engine_type)->internal_id;
