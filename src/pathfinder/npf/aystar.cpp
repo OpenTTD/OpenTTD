@@ -48,9 +48,9 @@ static void AyStarMain_ClosedList_Add(AyStar *aystar, const PathNode *node)
 
 /* Checks if a node is in the OpenList
  *   If so, it returns the OpenListNode, else NULL */
-static OpenListNode *AyStarMain_OpenList_IsInList(AyStar *aystar, const AyStarNode *node)
+OpenListNode *AyStar::OpenListIsInList(const AyStarNode *node)
 {
-	return (OpenListNode*)Hash_Get(&aystar->OpenListHash, node->tile, node->direction);
+	return (OpenListNode*)Hash_Get(&this->OpenListHash, node->tile, node->direction);
 }
 
 /* Gets the best node from OpenList
@@ -117,7 +117,7 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 	closedlist_parent = AyStarMain_ClosedList_IsInList(this, &parent->path.node);
 
 	/* Check if this item is already in the OpenList */
-	check = AyStarMain_OpenList_IsInList(this, current);
+	check = this->OpenListIsInList(current);
 	if (check != NULL) {
 		uint i;
 		/* Yes, check if this g value is lower.. */

@@ -161,6 +161,7 @@ struct AyStar {
 	Hash OpenListHash;
 
 	void OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g);
+	OpenListNode *OpenListIsInList(const AyStarNode *node);
 	OpenListNode *OpenListPop();
 };
 
