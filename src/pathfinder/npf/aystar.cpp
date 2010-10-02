@@ -56,12 +56,12 @@ static OpenListNode *AyStarMain_OpenList_IsInList(AyStar *aystar, const AyStarNo
 /* Gets the best node from OpenList
  *  returns the best node, or NULL of none is found
  * Also it deletes the node from the OpenList */
-static OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar)
+OpenListNode *AyStar::OpenListPop()
 {
 	/* Return the item the Queue returns.. the best next OpenList item. */
-	OpenListNode *res = (OpenListNode*)aystar->OpenListQueue.Pop();
+	OpenListNode *res = (OpenListNode*)this->OpenListQueue.Pop();
 	if (res != NULL) {
-		Hash_Delete(&aystar->OpenListHash, res->path.node.tile, res->path.node.direction);
+		Hash_Delete(&this->OpenListHash, res->path.node.tile, res->path.node.direction);
 	}
 
 	return res;
@@ -154,7 +154,7 @@ int AyStar::Loop()
 	int i;
 
 	/* Get the best node from OpenList */
-	OpenListNode *current = AyStarMain_OpenList_Pop(this);
+	OpenListNode *current = this->OpenListPop();
 	/* If empty, drop an error */
 	if (current == NULL) return AYSTAR_EMPTY_OPENLIST;
 
