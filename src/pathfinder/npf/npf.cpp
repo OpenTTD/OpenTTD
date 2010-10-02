@@ -1083,7 +1083,7 @@ void InitializeNPF()
 		first_init = false;
 		init_AyStar(&_npf_aystar, NPFHash, NPF_HASH_SIZE);
 	} else {
-		AyStarMain_Clear(&_npf_aystar);
+		_npf_aystar.Clear();
 	}
 	_npf_aystar.loops_per_tick = 0;
 	_npf_aystar.max_path_cost = 0;

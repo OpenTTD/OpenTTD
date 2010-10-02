@@ -214,14 +214,14 @@ void AyStar::Free()
  * This function make the memory go back to zero
  *  This function should be called when you are using the same instance again.
  */
-void AyStarMain_Clear(AyStar *aystar)
+void AyStar::Clear()
 {
 	/* Clean the Queue, but not the elements within. That will be done by
 	 * the hash. */
-	aystar->OpenListQueue.Clear(false);
+	this->OpenListQueue.Clear(false);
 	/* Clean the hashes */
-	clear_Hash(&aystar->OpenListHash, true);
-	clear_Hash(&aystar->ClosedListHash, true);
+	clear_Hash(&this->OpenListHash, true);
+	clear_Hash(&this->ClosedListHash, true);
 
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Cleared AyStar\n");
@@ -254,7 +254,7 @@ int AyStarMain_Main(AyStar *aystar)
 #endif
 	if (r != AYSTAR_STILL_BUSY) {
 		/* We're done, clean up */
-		aystar->clear(aystar);
+		aystar->Clear();
 	}
 
 	switch (r) {
@@ -295,6 +295,5 @@ void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
 
 	aystar->addstart  = AyStarMain_AddStartNode;
 	aystar->main      = AyStarMain_Main;
-	aystar->clear     = AyStarMain_Clear;
 	aystar->checktile = AyStarMain_CheckTile;
 }
