@@ -165,6 +165,7 @@ struct AyStar {
 	OpenListNode *OpenListPop();
 
 	void ClosedListAdd(const PathNode *node);
+	PathNode *ClosedListIsInList(const AyStarNode *node);
 };
 
 #endif /* AYSTAR_H */

@@ -31,9 +31,9 @@
 
 /* This looks in the Hash if a node exists in ClosedList
  *  If so, it returns the PathNode, else NULL */
-static PathNode *AyStarMain_ClosedList_IsInList(AyStar *aystar, const AyStarNode *node)
+PathNode *AyStar::ClosedListIsInList(const AyStarNode *node)
 {
-	return (PathNode*)Hash_Get(&aystar->ClosedListHash, node->tile, node->direction);
+	return (PathNode*)Hash_Get(&this->ClosedListHash, node->tile, node->direction);
 }
 
 /* This adds a node to the ClosedList
@@ -92,7 +92,7 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 	OpenListNode *check;
 
 	/* Check the new node against the ClosedList */
-	if (AyStarMain_ClosedList_IsInList(this, current) != NULL) return;
+	if (this->ClosedListIsInList(current) != NULL) return;
 
 	/* Calculate the G-value for this node */
 	new_g = this->CalculateG(this, current, parent);
@@ -114,7 +114,7 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 	new_f = new_g + new_h;
 
 	/* Get the pointer to the parent in the ClosedList (the currentone is to a copy of the one in the OpenList) */
-	closedlist_parent = AyStarMain_ClosedList_IsInList(this, &parent->path.node);
+	closedlist_parent = this->ClosedListIsInList(&parent->path.node);
 
 	/* Check if this item is already in the OpenList */
 	check = this->OpenListIsInList(current);
