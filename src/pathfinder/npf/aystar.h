@@ -104,7 +104,6 @@ typedef void AyStar_GetNeighbours(AyStar *aystar, OpenListNode *current);
 typedef void AyStar_FoundEndNode(AyStar *aystar, OpenListNode *current);
 
 /* For internal use, see aystar.cpp */
-typedef void AyStar_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g);
 typedef int AyStar_Main(AyStar *aystar);
 
 struct AyStar {
@@ -145,7 +144,7 @@ struct AyStar {
 
 	/* These will contain the methods for manipulating the AyStar. Only
 	 * main() should be called externally */
-	AyStar_AddStartNode *addstart;
+	void AddStartNode(AyStarNode *start_node, uint g);
 	AyStar_Main *main;
 	int Loop();
 	void Free();

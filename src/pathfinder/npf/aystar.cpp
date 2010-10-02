@@ -268,13 +268,13 @@ int AyStarMain_Main(AyStar *aystar)
  * clear() automatically when the algorithm finishes
  * g is the cost for starting with this node.
  */
-static void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g)
+void AyStar::AddStartNode(AyStarNode *start_node, uint g)
 {
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Starting A* Algorithm from node (%d, %d, %d)\n",
 		TileX(start_node->tile), TileY(start_node->tile), start_node->direction);
 #endif
-	AyStarMain_OpenList_Add(aystar, NULL, start_node, 0, g);
+	AyStarMain_OpenList_Add(this, NULL, start_node, 0, g);
 }
 
 void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
@@ -289,6 +289,5 @@ void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
 	 *  That is why it can stay this high */
 	aystar->OpenListQueue.Init(102400);
 
-	aystar->addstart  = AyStarMain_AddStartNode;
 	aystar->main      = AyStarMain_Main;
 }

@@ -980,13 +980,13 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 	start1->user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
 	start1->user_data[NPF_NODE_FLAGS] = 0;
 	NPFSetFlag(start1, NPF_FLAG_IGNORE_START_TILE, ignore_start_tile1);
-	_npf_aystar.addstart(&_npf_aystar, start1, 0);
+	_npf_aystar.AddStartNode(start1, 0);
 	if (start2) {
 		start2->user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
 		start2->user_data[NPF_NODE_FLAGS] = 0;
 		NPFSetFlag(start2, NPF_FLAG_IGNORE_START_TILE, ignore_start_tile2);
 		NPFSetFlag(start2, NPF_FLAG_REVERSE, true);
-		_npf_aystar.addstart(&_npf_aystar, start2, reverse_penalty);
+		_npf_aystar.AddStartNode(start2, reverse_penalty);
 	}
 
 	/* Initialize result */
