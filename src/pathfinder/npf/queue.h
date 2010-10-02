@@ -92,6 +92,7 @@ struct Hash {
 	void *DeleteValue(uint key1, uint key2);
 
 	void Clear(bool free_values);
+	void Delete(bool free_values);
 
 	/**
 	 * Gets the current size of the hash.
@@ -112,11 +113,5 @@ struct Hash {
  * returns a hash less than num_buckets! Call delete_hash after use
  */
 void init_Hash(Hash *h, Hash_HashProc *hash, uint num_buckets);
-/**
- * Deletes the hash and cleans up. Only cleans up memory allocated by new_Hash
- * & friends. If free is true, it will call free() on all the values that
- * are left in the hash.
- */
-void delete_Hash(Hash *h, bool free_values);
 
 #endif /* QUEUE_H */

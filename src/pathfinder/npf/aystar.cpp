@@ -199,8 +199,8 @@ void AyStar::Free()
 	this->OpenListQueue.Free(false);
 	/* 2nd argument above is false, below is true, to free the values only
 	 * once */
-	delete_Hash(&this->OpenListHash, true);
-	delete_Hash(&this->ClosedListHash, true);
+	this->OpenListHash.Delete(true);
+	this->ClosedListHash.Delete(true);
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Memory free'd\n");
 #endif

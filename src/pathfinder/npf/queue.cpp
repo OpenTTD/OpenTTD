@@ -263,19 +263,23 @@ void init_Hash(Hash *h, Hash_HashProc *hash, uint num_buckets)
 	for (i = 0; i < num_buckets; i++) h->buckets_in_use[i] = false;
 }
 
-
-void delete_Hash(Hash *h, bool free_values)
+/**
+ * Deletes the hash and cleans up. Only cleans up memory allocated by new_Hash
+ * & friends. If free is true, it will call free() on all the values that
+ * are left in the hash.
+ */
+void Hash::Delete(bool free_values)
 {
 	uint i;
 
 	/* Iterate all buckets */
-	for (i = 0; i < h->num_buckets; i++) {
-		if (h->buckets_in_use[i]) {
+	for (i = 0; i < this->num_buckets; i++) {
+		if (this->buckets_in_use[i]) {
 			HashNode *node;
 
 			/* Free the first value */
-			if (free_values) free(h->buckets[i].value);
-			node = h->buckets[i].next;
+			if (free_values) free(this->buckets[i].value);
+			node = this->buckets[i].next;
 			while (node != NULL) {
 				HashNode *prev = node;
 
@@ -287,11 +291,11 @@ void delete_Hash(Hash *h, bool free_values)
 			}
 		}
 	}
-	free(h->buckets);
+	free(this->buckets);
 	/* No need to free buckets_in_use, it is always allocated in one
 	 * malloc with buckets */
 #ifdef HASH_DEBUG
-	debug("Freeing Hash: %p", h);
+	debug("Freeing Hash: %p", this);
 #endif
 }
 
