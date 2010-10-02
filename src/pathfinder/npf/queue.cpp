@@ -243,24 +243,27 @@ void BinaryHeap::Init(uint max_size)
  * Hash
  */
 
-void init_Hash(Hash *h, Hash_HashProc *hash, uint num_buckets)
+/**
+ * Builds a new hash in an existing struct. Make sure that hash() always
+ * returns a hash less than num_buckets! Call delete_hash after use
+ */
+void Hash::Init(Hash_HashProc *hash, uint num_buckets)
 {
 	/* Allocate space for the Hash, the buckets and the bucket flags */
 	uint i;
 
-	assert(h != NULL);
 #ifdef HASH_DEBUG
-	debug("Allocated hash: %p", h);
+	debug("Allocated hash: %p", this);
 #endif
-	h->hash = hash;
-	h->size = 0;
-	h->num_buckets = num_buckets;
-	h->buckets = (HashNode*)MallocT<byte>(num_buckets * (sizeof(*h->buckets) + sizeof(*h->buckets_in_use)));
+	this->hash = hash;
+	this->size = 0;
+	this->num_buckets = num_buckets;
+	this->buckets = (HashNode*)MallocT<byte>(num_buckets * (sizeof(*this->buckets) + sizeof(*this->buckets_in_use)));
 #ifdef HASH_DEBUG
-	debug("Buckets = %p", h->buckets);
+	debug("Buckets = %p", this->buckets);
 #endif
-	h->buckets_in_use = (bool*)(h->buckets + num_buckets);
-	for (i = 0; i < num_buckets; i++) h->buckets_in_use[i] = false;
+	this->buckets_in_use = (bool*)(this->buckets + num_buckets);
+	for (i = 0; i < num_buckets; i++) this->buckets_in_use[i] = false;
 }
 
 /**

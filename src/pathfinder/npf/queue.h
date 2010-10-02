@@ -86,6 +86,8 @@ struct Hash {
 	 * there are any Nodes in the bucket */
 	bool *buckets_in_use;
 
+	void Init(Hash_HashProc *hash, uint num_buckets);
+
 	void *Get(uint key1, uint key2) const;
 	void *Set(uint key1, uint key2, void *value);
 
@@ -102,16 +104,5 @@ struct Hash {
 		return this->size;
 	}
 };
-
-/* Call these function to manipulate a hash */
-
-
-/* Call these function to create/destroy a hash */
-
-/**
- * Builds a new hash in an existing struct. Make sure that hash() always
- * returns a hash less than num_buckets! Call delete_hash after use
- */
-void init_Hash(Hash *h, Hash_HashProc *hash, uint num_buckets);
 
 #endif /* QUEUE_H */

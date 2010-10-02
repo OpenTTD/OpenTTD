@@ -285,8 +285,8 @@ void AyStar::AddStartNode(AyStarNode *start_node, uint g)
 void AyStar::Init(Hash_HashProc hash, uint num_buckets)
 {
 	/* Allocated the Hash for the OpenList and ClosedList */
-	init_Hash(&this->OpenListHash, hash, num_buckets);
-	init_Hash(&this->ClosedListHash, hash, num_buckets);
+	this->OpenListHash.Init(hash, num_buckets);
+	this->ClosedListHash.Init(hash, num_buckets);
 
 	/* Set up our sorting queue
 	 *  BinaryHeap allocates a block of 1024 nodes
