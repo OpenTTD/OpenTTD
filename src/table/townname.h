@@ -2115,7 +2115,7 @@ static const char * const _name_slovak_real[] = {
 	"Turcianske Teplice",
 	"Tvrdosin",
 	"Vrable",
-	"Vranov nad Toplov",
+	"Vranov nad Toplou",
 	"Zahorska Bystrica",
 	"Zdiar",
 	"Ziar nad Hronom",
