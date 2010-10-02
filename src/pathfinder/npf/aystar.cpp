@@ -231,15 +231,15 @@ void AyStar::Clear()
  *   AYSTAR_NO_PATH : indicates that there was no path found.
  *   AYSTAR_STILL_BUSY : indicates we have done some checked, that we did not found the path yet, and that we still have items left to try.
  * When the algorithm is done (when the return value is not AYSTAR_STILL_BUSY)
- * aystar->clear() is called. Note that when you stop the algorithm halfway,
- * you should still call clear() yourself!
+ * this->Clear() is called. Note that when you stop the algorithm halfway,
+ * you should still call Clear() yourself!
  */
-int AyStarMain_Main(AyStar *aystar)
+int AyStar::Main()
 {
 	int r, i = 0;
 	/* Loop through the OpenList
 	 *  Quit if result is no AYSTAR_STILL_BUSY or is more than loops_per_tick */
-	while ((r = aystar->Loop()) == AYSTAR_STILL_BUSY && (aystar->loops_per_tick == 0 || ++i < aystar->loops_per_tick)) { }
+	while ((r = this->Loop()) == AYSTAR_STILL_BUSY && (this->loops_per_tick == 0 || ++i < this->loops_per_tick)) { }
 #ifdef AYSTAR_DEBUG
 	switch (r) {
 		case AYSTAR_FOUND_END_NODE: printf("[AyStar] Found path!\n"); break;
@@ -250,7 +250,7 @@ int AyStarMain_Main(AyStar *aystar)
 #endif
 	if (r != AYSTAR_STILL_BUSY) {
 		/* We're done, clean up */
-		aystar->Clear();
+		this->Clear();
 	}
 
 	switch (r) {
@@ -288,6 +288,4 @@ void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
 	 *  When that one gets full it reserves another one, till this number
 	 *  That is why it can stay this high */
 	aystar->OpenListQueue.Init(102400);
-
-	aystar->main      = AyStarMain_Main;
 }
