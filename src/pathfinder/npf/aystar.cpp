@@ -153,40 +153,40 @@ static int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNod
  *   AYSTAR_FOUND_END_NODE : indicates we found the end. Path_found now is true, and in path is the path found.
  *   AYSTAR_STILL_BUSY : indicates we have done this tile, did not found the path yet, and have items left to try.
  */
-static int AyStarMain_Loop(AyStar *aystar)
+int AyStar::Loop()
 {
 	int i;
 
 	/* Get the best node from OpenList */
-	OpenListNode *current = AyStarMain_OpenList_Pop(aystar);
+	OpenListNode *current = AyStarMain_OpenList_Pop(this);
 	/* If empty, drop an error */
 	if (current == NULL) return AYSTAR_EMPTY_OPENLIST;
 
 	/* Check for end node and if found, return that code */
-	if (aystar->EndNodeCheck(aystar, current) == AYSTAR_FOUND_END_NODE) {
-		if (aystar->FoundEndNode != NULL) {
-			aystar->FoundEndNode(aystar, current);
+	if (this->EndNodeCheck(this, current) == AYSTAR_FOUND_END_NODE) {
+		if (this->FoundEndNode != NULL) {
+			this->FoundEndNode(this, current);
 		}
 		free(current);
 		return AYSTAR_FOUND_END_NODE;
 	}
 
 	/* Add the node to the ClosedList */
-	AyStarMain_ClosedList_Add(aystar, &current->path);
+	AyStarMain_ClosedList_Add(this, &current->path);
 
 	/* Load the neighbours */
-	aystar->GetNeighbours(aystar, current);
+	this->GetNeighbours(this, current);
 
 	/* Go through all neighbours */
-	for (i = 0; i < aystar->num_neighbours; i++) {
+	for (i = 0; i < this->num_neighbours; i++) {
 		/* Check and add them to the OpenList if needed */
-		aystar->checktile(aystar, &aystar->neighbours[i], current);
+		this->checktile(this, &this->neighbours[i], current);
 	}
 
 	/* Free the node */
 	free(current);
 
-	if (aystar->max_search_nodes != 0 && Hash_Size(&aystar->ClosedListHash) >= aystar->max_search_nodes) {
+	if (this->max_search_nodes != 0 && Hash_Size(&this->ClosedListHash) >= this->max_search_nodes) {
 		/* We've expanded enough nodes */
 		return AYSTAR_LIMIT_REACHED;
 	} else {
@@ -243,7 +243,7 @@ int AyStarMain_Main(AyStar *aystar)
 	int r, i = 0;
 	/* Loop through the OpenList
 	 *  Quit if result is no AYSTAR_STILL_BUSY or is more than loops_per_tick */
-	while ((r = aystar->loop(aystar)) == AYSTAR_STILL_BUSY && (aystar->loops_per_tick == 0 || ++i < aystar->loops_per_tick)) { }
+	while ((r = aystar->Loop()) == AYSTAR_STILL_BUSY && (aystar->loops_per_tick == 0 || ++i < aystar->loops_per_tick)) { }
 #ifdef AYSTAR_DEBUG
 	switch (r) {
 		case AYSTAR_FOUND_END_NODE: printf("[AyStar] Found path!\n"); break;
@@ -295,7 +295,6 @@ void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
 
 	aystar->addstart  = AyStarMain_AddStartNode;
 	aystar->main      = AyStarMain_Main;
-	aystar->loop      = AyStarMain_Loop;
 	aystar->clear     = AyStarMain_Clear;
 	aystar->checktile = AyStarMain_CheckTile;
 }

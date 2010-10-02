@@ -106,7 +106,6 @@ typedef void AyStar_FoundEndNode(AyStar *aystar, OpenListNode *current);
 /* For internal use, see aystar.cpp */
 typedef void AyStar_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g);
 typedef int AyStar_Main(AyStar *aystar);
-typedef int AyStar_Loop(AyStar *aystar);
 typedef int AyStar_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent);
 typedef void AyStar_Clear(AyStar *aystar);
 
@@ -150,7 +149,7 @@ struct AyStar {
 	 * main() should be called externally */
 	AyStar_AddStartNode *addstart;
 	AyStar_Main *main;
-	AyStar_Loop *loop;
+	int Loop();
 	void Free();
 	AyStar_Clear *clear;
 	AyStar_CheckTile *checktile;
