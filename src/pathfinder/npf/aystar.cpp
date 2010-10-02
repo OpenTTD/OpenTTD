@@ -7,14 +7,12 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file aystar.cpp Implementation of A*. */
-
-/*
- * This file has the core function for AyStar
- *  AyStar is a fast pathfinding routine and is used for things like
- *  AI_pathfinding and Train_pathfinding.
- *  For more information about AyStar (A* Algorithm), you can look at
- *    http://en.wikipedia.org/wiki/A-star_search_algorithm
+/** @file aystar.cpp Implementation of A*.
+ *
+ * This file has the core function for %AyStar.
+ * %AyStar is a fast path finding routine and is used for things like AI path finding and Train path finding.
+ * For more information about %AyStar (A* Algorithm), you can look at
+ * <A HREF='http://en.wikipedia.org/wiki/A-star_search_algorithm'>http://en.wikipedia.org/wiki/A-star_search_algorithm</A>.
  */
 
 /*
@@ -29,15 +27,21 @@
 #include "../../core/alloc_func.hpp"
 #include "aystar.h"
 
-/* This looks in the Hash if a node exists in ClosedList
- *  If so, it returns the PathNode, else NULL */
+/**
+ * This looks in the hash whether a node exists in the closed list.
+ * @param node Node to search.
+ * @return The #PathNode if it is available, else \c NULL
+ */
 PathNode *AyStar::ClosedListIsInList(const AyStarNode *node)
 {
 	return (PathNode*)this->closedlist_hash.Get(node->tile, node->direction);
 }
 
-/* This adds a node to the ClosedList
- *  It makes a copy of the data */
+/**
+ * This adds a node to the closed list.
+ * It makes a copy of the data.
+ * @param node Node to add to the closed list.
+ */
 void AyStar::ClosedListAdd(const PathNode *node)
 {
 	/* Add a node to the ClosedList */
@@ -46,16 +50,21 @@ void AyStar::ClosedListAdd(const PathNode *node)
 	this->closedlist_hash.Set(node->node.tile, node->node.direction, new_node);
 }
 
-/* Checks if a node is in the OpenList
- *   If so, it returns the OpenListNode, else NULL */
+/**
+ * Check whether a node is in the open list.
+ * @param node Node to search.
+ * @return If the node is available, it is returned, else \c NULL is returned.
+ */
 OpenListNode *AyStar::OpenListIsInList(const AyStarNode *node)
 {
 	return (OpenListNode*)this->openlist_hash.Get(node->tile, node->direction);
 }
 
-/* Gets the best node from OpenList
- *  returns the best node, or NULL of none is found
- * Also it deletes the node from the OpenList */
+/**
+ * Gets the best node from the open list.
+ * It deletes the returned node from the open list.
+ * @returns the best node available, or \c NULL of none is found.
+ */
 OpenListNode *AyStar::OpenListPop()
 {
 	/* Return the item the Queue returns.. the best next OpenList item. */
@@ -67,8 +76,10 @@ OpenListNode *AyStar::OpenListPop()
 	return res;
 }
 
-/* Adds a node to the OpenList
- *  It makes a copy of node, and puts the pointer of parent in the struct */
+/**
+ * Adds a node to the open list.
+ * It makes a copy of node, and puts the pointer of parent in the struct.
+ */
 void AyStar::OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g)
 {
 	/* Add a new Node to the OpenList */
@@ -82,8 +93,8 @@ void AyStar::OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g)
 	this->openlist_queue.Push(new_node, f);
 }
 
-/*
- * Checks one tile and calculate his f-value
+/**
+ * Checks one tile and calculate its f-value
  */
 void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 {
@@ -138,16 +149,14 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 	}
 }
 
-/*
- * This function is the core of AyStar. It handles one item and checks
- *  his neighbour items. If they are valid, they are added to be checked too.
- *  return values:
- *   AYSTAR_EMPTY_OPENLIST : indicates all items are tested, and no path
- *    has been found.
- *   AYSTAR_LIMIT_REACHED : Indicates that the max_nodes limit has been
- *    reached.
- *   AYSTAR_FOUND_END_NODE : indicates we found the end. Path_found now is true, and in path is the path found.
- *   AYSTAR_STILL_BUSY : indicates we have done this tile, did not found the path yet, and have items left to try.
+/**
+ * This function is the core of %AyStar. It handles one item and checks
+ * his neighbour items. If they are valid, they are added to be checked too.
+ * @return Possible values:
+ *  - #AYSTAR_EMPTY_OPENLIST : indicates all items are tested, and no path has been found.
+ *  - #AYSTAR_LIMIT_REACHED : Indicates that the max_nodes limit has been reached.
+ *  - #AYSTAR_FOUND_END_NODE : indicates we found the end. Path_found now is true, and in path is the path found.
+ *  - #AYSTAR_STILL_BUSY : indicates we have done this tile, did not found the path yet, and have items left to try.
  */
 int AyStar::Loop()
 {
@@ -191,7 +200,7 @@ int AyStar::Loop()
 	}
 }
 
-/*
+/**
  * This function frees the memory it allocated
  */
 void AyStar::Free()
@@ -206,9 +215,9 @@ void AyStar::Free()
 #endif
 }
 
-/*
- * This function make the memory go back to zero
- *  This function should be called when you are using the same instance again.
+/**
+ * This function make the memory go back to zero.
+ * This function should be called when you are using the same instance again.
  */
 void AyStar::Clear()
 {
@@ -224,15 +233,14 @@ void AyStar::Clear()
 #endif
 }
 
-/*
+/**
  * This is the function you call to run AyStar.
- *  return values:
- *   AYSTAR_FOUND_END_NODE : indicates we found an end node.
- *   AYSTAR_NO_PATH : indicates that there was no path found.
- *   AYSTAR_STILL_BUSY : indicates we have done some checked, that we did not found the path yet, and that we still have items left to try.
- * When the algorithm is done (when the return value is not AYSTAR_STILL_BUSY)
- * this->Clear() is called. Note that when you stop the algorithm halfway,
- * you should still call Clear() yourself!
+ * @return Possible values:
+ *  - #AYSTAR_FOUND_END_NODE : indicates we found an end node.
+ *  - #AYSTAR_NO_PATH : indicates that there was no path found.
+ *  - #AYSTAR_STILL_BUSY : indicates we have done some checked, that we did not found the path yet, and that we still have items left to try.
+ * @note When the algorithm is done (when the return value is not #AYSTAR_STILL_BUSY) #Clear() is called automatically.
+ *       When you stop the algorithm halfway, you should call #Clear() yourself!
  */
 int AyStar::Main()
 {
@@ -261,12 +269,13 @@ int AyStar::Main()
 	}
 }
 
-/*
+/**
  * Adds a node from where to start an algorithm. Multiple nodes can be added
- * if wanted. You should make sure that clear() is called before adding nodes
- * if the AyStar has been used before (though the normal main loop calls
- * clear() automatically when the algorithm finishes
- * g is the cost for starting with this node.
+ * if wanted. You should make sure that #Clear() is called before adding nodes
+ * if the #AyStar has been used before (though the normal main loop calls
+ * #Clear() automatically when the algorithm finishes.
+ * @param start_node Node to start with.
+ * @param g the cost for starting with this node.
  */
 void AyStar::AddStartNode(AyStarNode *start_node, uint g)
 {
@@ -279,8 +288,7 @@ void AyStar::AddStartNode(AyStarNode *start_node, uint g)
 
 /**
  * Initialize an #AyStar. You should fill all appropriate fields before
- * calling #Init (see the declaration of #AyStar for which fields are
- * internal.
+ * calling #Init (see the declaration of #AyStar for which fields are internal).
  */
 void AyStar::Init(Hash_HashProc hash, uint num_buckets)
 {
