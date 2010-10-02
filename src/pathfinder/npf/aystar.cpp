@@ -182,7 +182,7 @@ int AyStar::Loop()
 	/* Free the node */
 	free(current);
 
-	if (this->max_search_nodes != 0 && Hash_Size(&this->ClosedListHash) >= this->max_search_nodes) {
+	if (this->max_search_nodes != 0 && this->ClosedListHash.GetSize() >= this->max_search_nodes) {
 		/* We've expanded enough nodes */
 		return AYSTAR_LIMIT_REACHED;
 	} else {

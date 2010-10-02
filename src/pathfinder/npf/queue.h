@@ -85,6 +85,14 @@ struct Hash {
 	/* A pointer to an array of numbuckets booleans, which will be true if
 	 * there are any Nodes in the bucket */
 	bool *buckets_in_use;
+
+	/**
+	 * Gets the current size of the hash.
+	 */
+	uint FORCEINLINE GetSize() const
+	{
+		return this->size;
+	}
 };
 
 /* Call these function to manipulate a hash */
@@ -123,9 +131,5 @@ void delete_Hash(Hash *h, bool free_values);
  * Cleans the hash, but keeps the memory allocated
  */
 void clear_Hash(Hash *h, bool free_values);
-/**
- * Gets the current size of the Hash
- */
-uint Hash_Size(const Hash *h);
 
 #endif /* QUEUE_H */

@@ -511,8 +511,3 @@ void *Hash_Get(const Hash *h, uint key1, uint key2)
 #endif
 	return (node != NULL) ? node->value : NULL;
 }
-
-uint Hash_Size(const Hash *h)
-{
-	return h->size;
-}
