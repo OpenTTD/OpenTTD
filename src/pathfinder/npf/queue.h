@@ -87,6 +87,7 @@ struct Hash {
 	bool *buckets_in_use;
 
 	void *Get(uint key1, uint key2) const;
+	void *Set(uint key1, uint key2, void *value);
 
 	/**
 	 * Gets the current size of the hash.
@@ -105,11 +106,6 @@ struct Hash {
  * is _not_ free()'d!
  */
 void *Hash_Delete(Hash *h, uint key1, uint key2);
-/**
- * Sets the value associated with the given key pair to the given value.
- * Returns the old value if the value was replaced, NULL when it was not yet present.
- */
-void *Hash_Set(Hash *h, uint key1, uint key2, void *value);
 
 /* Call these function to create/destroy a hash */
 

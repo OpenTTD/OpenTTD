@@ -43,7 +43,7 @@ void AyStar::ClosedListAdd(const PathNode *node)
 	/* Add a node to the ClosedList */
 	PathNode *new_node = MallocT<PathNode>(1);
 	*new_node = *node;
-	Hash_Set(&this->ClosedListHash, node->node.tile, node->node.direction, new_node);
+	this->ClosedListHash.Set(node->node.tile, node->node.direction, new_node);
 }
 
 /* Checks if a node is in the OpenList
@@ -76,7 +76,7 @@ void AyStar::OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g)
 	new_node->g = g;
 	new_node->path.parent = parent;
 	new_node->path.node = *node;
-	Hash_Set(&this->OpenListHash, node->tile, node->direction, new_node);
+	this->OpenListHash.Set(node->tile, node->direction, new_node);
 
 	/* Add it to the queue */
 	this->OpenListQueue.Push(new_node, f);

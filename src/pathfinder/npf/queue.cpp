@@ -470,11 +470,14 @@ void *Hash_Delete(Hash *h, uint key1, uint key2)
 	return result;
 }
 
-
-void *Hash_Set(Hash *h, uint key1, uint key2, void *value)
+/**
+ * Sets the value associated with the given key pair to the given value.
+ * Returns the old value if the value was replaced, NULL when it was not yet present.
+ */
+void *Hash::Set(uint key1, uint key2, void *value)
 {
 	HashNode *prev;
-	HashNode *node = Hash_FindNode(h, key1, key2, &prev);
+	HashNode *node = Hash_FindNode(this, key1, key2, &prev);
 
 	if (node != NULL) {
 		/* Found it */
@@ -486,9 +489,9 @@ void *Hash_Set(Hash *h, uint key1, uint key2, void *value)
 	/* It is not yet present, let's add it */
 	if (prev == NULL) {
 		/* The bucket is still empty */
-		uint hash = h->hash(key1, key2);
-		h->buckets_in_use[hash] = true;
-		node = h->buckets + hash;
+		uint hash = this->hash(key1, key2);
+		this->buckets_in_use[hash] = true;
+		node = this->buckets + hash;
 	} else {
 		/* Add it after prev */
 		node = MallocT<HashNode>(1);
@@ -498,7 +501,7 @@ void *Hash_Set(Hash *h, uint key1, uint key2, void *value)
 	node->key1 = key1;
 	node->key2 = key2;
 	node->value = value;
-	h->size++;
+	this->size++;
 	return NULL;
 }
 
