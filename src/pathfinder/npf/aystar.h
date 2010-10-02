@@ -108,7 +108,6 @@ typedef void AyStar_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g)
 typedef int AyStar_Main(AyStar *aystar);
 typedef int AyStar_Loop(AyStar *aystar);
 typedef int AyStar_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent);
-typedef void AyStar_Free(AyStar *aystar);
 typedef void AyStar_Clear(AyStar *aystar);
 
 struct AyStar {
@@ -152,7 +151,7 @@ struct AyStar {
 	AyStar_AddStartNode *addstart;
 	AyStar_Main *main;
 	AyStar_Loop *loop;
-	AyStar_Free *free;
+	void Free();
 	AyStar_Clear *clear;
 	AyStar_CheckTile *checktile;
 

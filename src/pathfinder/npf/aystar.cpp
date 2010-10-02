@@ -198,13 +198,13 @@ static int AyStarMain_Loop(AyStar *aystar)
 /*
  * This function frees the memory it allocated
  */
-static void AyStarMain_Free(AyStar *aystar)
+void AyStar::Free()
 {
-	aystar->OpenListQueue.Free(false);
+	this->OpenListQueue.Free(false);
 	/* 2nd argument above is false, below is true, to free the values only
 	 * once */
-	delete_Hash(&aystar->OpenListHash, true);
-	delete_Hash(&aystar->ClosedListHash, true);
+	delete_Hash(&this->OpenListHash, true);
+	delete_Hash(&this->ClosedListHash, true);
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Memory free'd\n");
 #endif
@@ -296,7 +296,6 @@ void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
 	aystar->addstart  = AyStarMain_AddStartNode;
 	aystar->main      = AyStarMain_Main;
 	aystar->loop      = AyStarMain_Loop;
-	aystar->free      = AyStarMain_Free;
 	aystar->clear     = AyStarMain_Clear;
 	aystar->checktile = AyStarMain_CheckTile;
 }
