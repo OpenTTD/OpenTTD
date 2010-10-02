@@ -33,7 +33,7 @@
  *  If so, it returns the PathNode, else NULL */
 PathNode *AyStar::ClosedListIsInList(const AyStarNode *node)
 {
-	return (PathNode*)Hash_Get(&this->ClosedListHash, node->tile, node->direction);
+	return (PathNode*)this->ClosedListHash.Get(node->tile, node->direction);
 }
 
 /* This adds a node to the ClosedList
@@ -50,7 +50,7 @@ void AyStar::ClosedListAdd(const PathNode *node)
  *   If so, it returns the OpenListNode, else NULL */
 OpenListNode *AyStar::OpenListIsInList(const AyStarNode *node)
 {
-	return (OpenListNode*)Hash_Get(&this->OpenListHash, node->tile, node->direction);
+	return (OpenListNode*)this->OpenListHash.Get(node->tile, node->direction);
 }
 
 /* Gets the best node from OpenList

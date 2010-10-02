@@ -502,9 +502,13 @@ void *Hash_Set(Hash *h, uint key1, uint key2, void *value)
 	return NULL;
 }
 
-void *Hash_Get(const Hash *h, uint key1, uint key2)
+/**
+ * Gets the value associated with the given key pair, or NULL when it is not
+ * present.
+ */
+void *Hash::Get(uint key1, uint key2) const
 {
-	HashNode *node = Hash_FindNode(h, key1, key2, NULL);
+	HashNode *node = Hash_FindNode(this, key1, key2, NULL);
 
 #ifdef HASH_DEBUG
 	debug("Found node: %p", node);

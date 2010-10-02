@@ -86,6 +86,8 @@ struct Hash {
 	 * there are any Nodes in the bucket */
 	bool *buckets_in_use;
 
+	void *Get(uint key1, uint key2) const;
+
 	/**
 	 * Gets the current size of the hash.
 	 */
@@ -108,11 +110,6 @@ void *Hash_Delete(Hash *h, uint key1, uint key2);
  * Returns the old value if the value was replaced, NULL when it was not yet present.
  */
 void *Hash_Set(Hash *h, uint key1, uint key2, void *value);
-/**
- * Gets the value associated with the given key pair, or NULL when it is not
- * present.
- */
-void *Hash_Get(const Hash *h, uint key1, uint key2);
 
 /* Call these function to create/destroy a hash */
 
