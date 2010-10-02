@@ -108,6 +108,7 @@ protected:
 #ifdef HASH_STATS
 	void PrintStatistics() const;
 #endif
+	HashNode *FindNode(uint key1, uint key2, HashNode** prev_out) const;
 };
 
 #endif /* QUEUE_H */

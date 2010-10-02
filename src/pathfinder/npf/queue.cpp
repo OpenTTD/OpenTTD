@@ -393,29 +393,29 @@ void Hash::Clear(bool free_values)
  * bucket, or NULL if it is empty. prev can also be NULL, in which case it is
  * not used for output.
  */
-static HashNode *Hash_FindNode(const Hash *h, uint key1, uint key2, HashNode** prev_out)
+HashNode *Hash::FindNode(uint key1, uint key2, HashNode** prev_out) const
 {
-	uint hash = h->hash(key1, key2);
+	uint hash = this->hash(key1, key2);
 	HashNode *result = NULL;
 
 #ifdef HASH_DEBUG
 	debug("Looking for %u, %u", key1, key2);
 #endif
 	/* Check if the bucket is empty */
-	if (!h->buckets_in_use[hash]) {
+	if (!this->buckets_in_use[hash]) {
 		if (prev_out != NULL) *prev_out = NULL;
 		result = NULL;
 	/* Check the first node specially */
-	} else if (h->buckets[hash].key1 == key1 && h->buckets[hash].key2 == key2) {
+	} else if (this->buckets[hash].key1 == key1 && this->buckets[hash].key2 == key2) {
 		/* Save the value */
-		result = h->buckets + hash;
+		result = this->buckets + hash;
 		if (prev_out != NULL) *prev_out = NULL;
 #ifdef HASH_DEBUG
 		debug("Found in first node: %p", result);
 #endif
 	/* Check all other nodes */
 	} else {
-		HashNode *prev = h->buckets + hash;
+		HashNode *prev = this->buckets + hash;
 		HashNode *node;
 
 		for (node = prev->next; node != NULL; node = node->next) {
@@ -446,7 +446,7 @@ void *Hash::DeleteValue(uint key1, uint key2)
 {
 	void *result;
 	HashNode *prev; // Used as output var for below function call
-	HashNode *node = Hash_FindNode(this, key1, key2, &prev);
+	HashNode *node = this->FindNode(key1, key2, &prev);
 
 	if (node == NULL) {
 		/* not found */
@@ -492,7 +492,7 @@ void *Hash::DeleteValue(uint key1, uint key2)
 void *Hash::Set(uint key1, uint key2, void *value)
 {
 	HashNode *prev;
-	HashNode *node = Hash_FindNode(this, key1, key2, &prev);
+	HashNode *node = this->FindNode(key1, key2, &prev);
 
 	if (node != NULL) {
 		/* Found it */
@@ -526,7 +526,7 @@ void *Hash::Set(uint key1, uint key2, void *value)
  */
 void *Hash::Get(uint key1, uint key2) const
 {
-	HashNode *node = Hash_FindNode(this, key1, key2, NULL);
+	HashNode *node = this->FindNode(key1, key2, NULL);
 
 #ifdef HASH_DEBUG
 	debug("Found node: %p", node);
