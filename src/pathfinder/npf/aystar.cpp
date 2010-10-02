@@ -69,17 +69,17 @@ static OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar)
 
 /* Adds a node to the OpenList
  *  It makes a copy of node, and puts the pointer of parent in the struct */
-static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, const AyStarNode *node, int f, int g)
+void AyStar::OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g)
 {
 	/* Add a new Node to the OpenList */
 	OpenListNode *new_node = MallocT<OpenListNode>(1);
 	new_node->g = g;
 	new_node->path.parent = parent;
 	new_node->path.node = *node;
-	Hash_Set(&aystar->OpenListHash, node->tile, node->direction, new_node);
+	Hash_Set(&this->OpenListHash, node->tile, node->direction, new_node);
 
 	/* Add it to the queue */
-	aystar->OpenListQueue.Push(new_node, f);
+	this->OpenListQueue.Push(new_node, f);
 }
 
 /*
@@ -134,7 +134,7 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 		this->OpenListQueue.Push(check, new_f);
 	} else {
 		/* A new node, add him to the OpenList */
-		AyStarMain_OpenList_Add(this, closedlist_parent, current, new_f, new_g);
+		this->OpenListAdd(closedlist_parent, current, new_f, new_g);
 	}
 }
 
@@ -274,7 +274,7 @@ void AyStar::AddStartNode(AyStarNode *start_node, uint g)
 	printf("[AyStar] Starting A* Algorithm from node (%d, %d, %d)\n",
 		TileX(start_node->tile), TileY(start_node->tile), start_node->direction);
 #endif
-	AyStarMain_OpenList_Add(this, NULL, start_node, 0, g);
+	this->OpenListAdd(NULL, start_node, 0, g);
 }
 
 /**

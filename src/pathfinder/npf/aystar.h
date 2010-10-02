@@ -159,6 +159,8 @@ struct AyStar {
 	/* An extra hash to speed up the process of looking up an element in
 	 * the open list */
 	Hash OpenListHash;
+
+	void OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g);
 };
 
 #endif /* AYSTAR_H */
