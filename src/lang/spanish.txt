@@ -2758,7 +2758,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponib
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos disponibles
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos disponibles
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aviones disponibles
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver la lista de los motores disponibles para este tipo de vehículo.
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver la lista de vehículos disponibles para este tipo de vehículo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administrar lista
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Enviar instrucciones a todos los vehículos de la lista
@@ -2965,7 +2965,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemplazando: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambia entre las ventanas de cambio de vagón y locomotora
-STR_REPLACE_ENGINES                                             :Motores
+STR_REPLACE_ENGINES                                             :Vehículos
 STR_REPLACE_WAGONS                                              :Vagones
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccione tipo de raíl para el que desea reemplazar locomotoras

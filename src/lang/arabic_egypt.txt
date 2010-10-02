@@ -2501,6 +2501,9 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
 STR_NEWGRF_INVALID_CARGO                                        :<حمولة غير صالحة>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :؟؟
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} لـ<حمولة غير صالحة>
+STR_NEWGRF_INVALID_ENGINE                                       :<موديل العربة غير صالح>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<المصنع غير صالح>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}قائمة العلامات - {COMMA} علامة
@@ -2853,7 +2856,10 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}اعاد
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}اعادة تسمية نوع الطائرة
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}غير اسم الورشة
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :غير اسم الورشة
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
@@ -3030,12 +3036,20 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}تتو�
 STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}لايوجد اوامر وجهات
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}لا يوجد اوامر وجهات , {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}متو�ه ل{WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}متوجه ل{WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}متوجه ل {WAYPOINT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}يتوجة الى {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}يتوجة الى {DEPOT} , {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}الصيانة في {DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}الصيانة في {DEPOT} , {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}متوقف
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}متوقف
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}ابتدا
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}ابتدا
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} تفاصيل
@@ -3211,6 +3225,7 @@ STR_ORDER_TRAIN_DEPOT                                           :مستودع ق
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :مستودع العربات
 STR_ORDER_SHIP_DEPOT                                            :حوض صيانة السفن
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :هيئة الى {STRING}
 STR_ORDER_REFIT_STOP_ORDER                                      :هيئت الى {STRING} و توقف
@@ -3390,6 +3405,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :اللعبة ح
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :لا يمكن قراءة الملف
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :لايمكن قراءة الملف
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :فشل التحقق من سلامة البيانات
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<غير متاح>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}اللعبة حفظت بنسخة لا تدعم الترام. كل ما يتعلق بالترام حذف.
 
 # Map generation messages
@@ -3530,6 +3546,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}لا ي�
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}لا يمكن ازالة محطة الترام للركاب
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}لا يمكن ازالة محطة الترام للشحن
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}يجب حذف محطة التوقف اولا
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... لا توجد محطة هنا
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}يجب ازالة محطة القطار اولا
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}يجب هدم محطة الباصات اولا
@@ -3558,6 +3575,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}لا ي�
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}لا يمكن بناء ورشة ترام هنا ...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}لا يمكن بناء حوض صيانة هنا ...
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}لا يمكن تسمية الورشة
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}يجب ان يتوقف القطار بالكامل داخل مستودع الصيانة
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... يجب ان يوقف داخل ورشة الصيانة.
@@ -3588,11 +3606,14 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}يجب �
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}... مسار السكة الحديدية غير مناسب
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}يجب ازالة السكة اولا
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}طريق بإتجاه واحد أو مغلق
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}التقاطع المتعدد غير متاح لهذا النوع من السكك
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}لا يمكن بناء اشارة توقف هنا ...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}لا يمكن بناء سكة قطار هنا ...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}لا يمكن ازالة سكة القطار من هنا ...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}لا يمكن ازالة الإشارة من هتا ...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}لا يمكن تحويل الاشارة هنا ...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... لا يوجد سكة قطار هنا
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... لا توجد اشارات هنا
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}لا يمكن تحويل سكة القطار هنا ...
 
@@ -3603,6 +3624,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}لايم
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}لا يمكن بناء سكة ترام هنا ...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}لايمكن ازالة الطريق من هنا ...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}لا يمكن ازالة سكة الترام من هنا ...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... لا يوجد طريق هنا
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... لا يوجد خط ترام هنا
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}لا يمكن بناء قناة مياة هنا ...
@@ -3615,6 +3638,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}لا ي�
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... الاشجار موجودة هنا مسبقا
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... البيئة غير مناسبة لنوع الشجر
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}... لا يمكن زراعة اشجار هنا
 
 # Bridge related errors
@@ -3625,6 +3649,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}نهاي
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}الجسر منخفض جدا للوادي
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}البداية و النهاية يجب ان تكون على استقامة واحدة
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... يجب ان تكون نهايات الجسر على اليابسة
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... الجسر طويل جدا
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}لا يمكن بناء نفق هنا ...
@@ -3699,6 +3724,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}الطا
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}العربات كثيرة جدا في اللعبة
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}لا يمكن تغيير فترات الصيانة
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... العربة تحطمت
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}لا يمكن السماح للقطار بالعبور من الاشارة في وضع الخطر
@@ -3738,6 +3764,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}لا ي�
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}لا يمكن حذف العلامة ...
 
 # Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :نسخة مستنسخة من ترانسبورت تايكون ديلوكس
 
 ##id 0x2000
 # Town building names
@@ -4129,6 +4156,13 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :نقطة عبور {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} نقطة عبور #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} ورشة قطار
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN}ورشة قطار رقم {COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} ورشة عربات
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} ورشة عربات رقم {COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} ورشة سفن
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN}ورشة سفن رقم {COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} حظيرة طائرات
 
 STR_UNKNOWN_STATION                                             :محطة غير معروفة
 STR_DEFAULT_SIGN_NAME                                           :علامة
@@ -4155,6 +4189,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -4203,6 +4238,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 

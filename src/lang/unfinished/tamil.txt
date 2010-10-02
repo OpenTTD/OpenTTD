@@ -439,6 +439,7 @@ STR_SORT_BY_WAITING                                             :Waiting cargo v
 
 
 
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 
 
@@ -599,6 +600,9 @@ STR_SORT_BY_WAITING                                             :Waiting cargo v
 
 # Landscaping toolbar
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 
 # Land generation window (SE)
@@ -610,6 +614,8 @@ STR_SORT_BY_WAITING                                             :Waiting cargo v
 
 
 # Fund new industry window
+
+# Industry cargoes window
 
 # Land area window
 
@@ -651,6 +657,8 @@ STR_SORT_BY_WAITING                                             :Waiting cargo v
 
 
 
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 

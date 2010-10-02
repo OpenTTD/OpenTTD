@@ -53,7 +53,7 @@ STR_CARGO_PLURAL_TOYS                                           :Speelgoed
 STR_CARGO_PLURAL_CANDY                                          :Snoep
 STR_CARGO_PLURAL_COLA                                           :Cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :Suikerspinnen
-STR_CARGO_PLURAL_BUBBLES                                        :Bellen
+STR_CARGO_PLURAL_BUBBLES                                        :Bubbels
 STR_CARGO_PLURAL_TOFFEE                                         :Toffee
 STR_CARGO_PLURAL_BATTERIES                                      :Batterijen
 STR_CARGO_PLURAL_PLASTIC                                        :Plastic
