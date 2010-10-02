@@ -38,12 +38,12 @@ static PathNode *AyStarMain_ClosedList_IsInList(AyStar *aystar, const AyStarNode
 
 /* This adds a node to the ClosedList
  *  It makes a copy of the data */
-static void AyStarMain_ClosedList_Add(AyStar *aystar, const PathNode *node)
+void AyStar::ClosedListAdd(const PathNode *node)
 {
 	/* Add a node to the ClosedList */
 	PathNode *new_node = MallocT<PathNode>(1);
 	*new_node = *node;
-	Hash_Set(&aystar->ClosedListHash, node->node.tile, node->node.direction, new_node);
+	Hash_Set(&this->ClosedListHash, node->node.tile, node->node.direction, new_node);
 }
 
 /* Checks if a node is in the OpenList
@@ -168,7 +168,7 @@ int AyStar::Loop()
 	}
 
 	/* Add the node to the ClosedList */
-	AyStarMain_ClosedList_Add(this, &current->path);
+	this->ClosedListAdd(&current->path);
 
 	/* Load the neighbours */
 	this->GetNeighbours(this, current);

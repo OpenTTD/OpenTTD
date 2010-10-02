@@ -163,6 +163,8 @@ struct AyStar {
 	void OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g);
 	OpenListNode *OpenListIsInList(const AyStarNode *node);
 	OpenListNode *OpenListPop();
+
+	void ClosedListAdd(const PathNode *node);
 };
 
 #endif /* AYSTAR_H */
