@@ -150,7 +150,7 @@ struct AyStar {
 	int Loop();
 	void Free();
 	void Clear();
-	int CheckTile(AyStarNode *current, OpenListNode *parent);
+	void CheckTile(AyStarNode *current, OpenListNode *parent);
 
 	/* These will contain the open and closed lists */
 

@@ -84,28 +84,26 @@ static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, const AySt
 
 /*
  * Checks one tile and calculate his f-value
- *  return values:
- * AYSTAR_DONE : indicates we are done
  */
-int AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
+void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 {
 	int new_f, new_g, new_h;
 	PathNode *closedlist_parent;
 	OpenListNode *check;
 
 	/* Check the new node against the ClosedList */
-	if (AyStarMain_ClosedList_IsInList(this, current) != NULL) return AYSTAR_DONE;
+	if (AyStarMain_ClosedList_IsInList(this, current) != NULL) return;
 
 	/* Calculate the G-value for this node */
 	new_g = this->CalculateG(this, current, parent);
 	/* If the value was INVALID_NODE, we don't do anything with this node */
-	if (new_g == AYSTAR_INVALID_NODE) return AYSTAR_DONE;
+	if (new_g == AYSTAR_INVALID_NODE) return;
 
 	/* There should not be given any other error-code.. */
 	assert(new_g >= 0);
 	/* Add the parent g-value to the new g-value */
 	new_g += parent->g;
-	if (this->max_path_cost != 0 && (uint)new_g > this->max_path_cost) return AYSTAR_DONE;
+	if (this->max_path_cost != 0 && (uint)new_g > this->max_path_cost) return;
 
 	/* Calculate the h-value */
 	new_h = this->CalculateH(this, current, parent);
@@ -123,7 +121,7 @@ int AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 	if (check != NULL) {
 		uint i;
 		/* Yes, check if this g value is lower.. */
-		if (new_g > check->g) return AYSTAR_DONE;
+		if (new_g > check->g) return;
 		this->OpenListQueue.Delete(check, 0);
 		/* It is lower, so change it to this item */
 		check->g = new_g;
@@ -138,8 +136,6 @@ int AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 		/* A new node, add him to the OpenList */
 		AyStarMain_OpenList_Add(this, closedlist_parent, current, new_f, new_g);
 	}
-
-	return AYSTAR_DONE;
 }
 
 /*
