@@ -1081,7 +1081,7 @@ void InitializeNPF()
 	static bool first_init = true;
 	if (first_init) {
 		first_init = false;
-		init_AyStar(&_npf_aystar, NPFHash, NPF_HASH_SIZE);
+		_npf_aystar.Init(NPFHash, NPF_HASH_SIZE);
 	} else {
 		_npf_aystar.Clear();
 	}

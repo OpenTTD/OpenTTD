@@ -277,15 +277,20 @@ void AyStar::AddStartNode(AyStarNode *start_node, uint g)
 	AyStarMain_OpenList_Add(this, NULL, start_node, 0, g);
 }
 
-void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
+/**
+ * Initialize an #AyStar. You should fill all appropriate fields before
+ * calling #Init (see the declaration of #AyStar for which fields are
+ * internal.
+ */
+void AyStar::Init(Hash_HashProc hash, uint num_buckets)
 {
 	/* Allocated the Hash for the OpenList and ClosedList */
-	init_Hash(&aystar->OpenListHash, hash, num_buckets);
-	init_Hash(&aystar->ClosedListHash, hash, num_buckets);
+	init_Hash(&this->OpenListHash, hash, num_buckets);
+	init_Hash(&this->ClosedListHash, hash, num_buckets);
 
 	/* Set up our sorting queue
 	 *  BinaryHeap allocates a block of 1024 nodes
 	 *  When that one gets full it reserves another one, till this number
 	 *  That is why it can stay this high */
-	aystar->OpenListQueue.Init(102400);
+	this->OpenListQueue.Init(102400);
 }

@@ -139,6 +139,8 @@ struct AyStar {
 	AyStarNode neighbours[12];
 	byte num_neighbours;
 
+	void Init(Hash_HashProc hash, uint num_buckets);
+
 	/* These will contain the methods for manipulating the AyStar. Only
 	 * Main() should be called externally */
 	void AddStartNode(AyStarNode *start_node, uint g);
@@ -158,12 +160,5 @@ struct AyStar {
 	 * the open list */
 	Hash OpenListHash;
 };
-
-
-/* Initialize an AyStar. You should fill all appropriate fields before
- * callling init_AyStar (see the declaration of AyStar for which fields are
- * internal */
-void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets);
-
 
 #endif /* AYSTAR_H */
