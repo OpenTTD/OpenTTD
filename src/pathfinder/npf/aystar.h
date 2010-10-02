@@ -106,7 +106,6 @@ typedef void AyStar_FoundEndNode(AyStar *aystar, OpenListNode *current);
 /* For internal use, see aystar.cpp */
 typedef void AyStar_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g);
 typedef int AyStar_Main(AyStar *aystar);
-typedef int AyStar_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent);
 
 struct AyStar {
 /* These fields should be filled before initting the AyStar, but not changed
@@ -151,7 +150,7 @@ struct AyStar {
 	int Loop();
 	void Free();
 	void Clear();
-	AyStar_CheckTile *checktile;
+	int CheckTile(AyStarNode *current, OpenListNode *parent);
 
 	/* These will contain the open and closed lists */
 

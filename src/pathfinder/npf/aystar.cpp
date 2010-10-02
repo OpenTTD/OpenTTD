@@ -87,17 +87,17 @@ static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, const AySt
  *  return values:
  * AYSTAR_DONE : indicates we are done
  */
-static int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
+int AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 {
 	int new_f, new_g, new_h;
 	PathNode *closedlist_parent;
 	OpenListNode *check;
 
 	/* Check the new node against the ClosedList */
-	if (AyStarMain_ClosedList_IsInList(aystar, current) != NULL) return AYSTAR_DONE;
+	if (AyStarMain_ClosedList_IsInList(this, current) != NULL) return AYSTAR_DONE;
 
 	/* Calculate the G-value for this node */
-	new_g = aystar->CalculateG(aystar, current, parent);
+	new_g = this->CalculateG(this, current, parent);
 	/* If the value was INVALID_NODE, we don't do anything with this node */
 	if (new_g == AYSTAR_INVALID_NODE) return AYSTAR_DONE;
 
@@ -105,10 +105,10 @@ static int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNod
 	assert(new_g >= 0);
 	/* Add the parent g-value to the new g-value */
 	new_g += parent->g;
-	if (aystar->max_path_cost != 0 && (uint)new_g > aystar->max_path_cost) return AYSTAR_DONE;
+	if (this->max_path_cost != 0 && (uint)new_g > this->max_path_cost) return AYSTAR_DONE;
 
 	/* Calculate the h-value */
-	new_h = aystar->CalculateH(aystar, current, parent);
+	new_h = this->CalculateH(this, current, parent);
 	/* There should not be given any error-code.. */
 	assert(new_h >= 0);
 
@@ -116,15 +116,15 @@ static int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNod
 	new_f = new_g + new_h;
 
 	/* Get the pointer to the parent in the ClosedList (the currentone is to a copy of the one in the OpenList) */
-	closedlist_parent = AyStarMain_ClosedList_IsInList(aystar, &parent->path.node);
+	closedlist_parent = AyStarMain_ClosedList_IsInList(this, &parent->path.node);
 
 	/* Check if this item is already in the OpenList */
-	check = AyStarMain_OpenList_IsInList(aystar, current);
+	check = AyStarMain_OpenList_IsInList(this, current);
 	if (check != NULL) {
 		uint i;
 		/* Yes, check if this g value is lower.. */
 		if (new_g > check->g) return AYSTAR_DONE;
-		aystar->OpenListQueue.Delete(check, 0);
+		this->OpenListQueue.Delete(check, 0);
 		/* It is lower, so change it to this item */
 		check->g = new_g;
 		check->path.parent = closedlist_parent;
@@ -133,10 +133,10 @@ static int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNod
 			check->path.node.user_data[i] = current->user_data[i];
 		}
 		/* Readd him in the OpenListQueue */
-		aystar->OpenListQueue.Push(check, new_f);
+		this->OpenListQueue.Push(check, new_f);
 	} else {
 		/* A new node, add him to the OpenList */
-		AyStarMain_OpenList_Add(aystar, closedlist_parent, current, new_f, new_g);
+		AyStarMain_OpenList_Add(this, closedlist_parent, current, new_f, new_g);
 	}
 
 	return AYSTAR_DONE;
@@ -180,7 +180,7 @@ int AyStar::Loop()
 	/* Go through all neighbours */
 	for (i = 0; i < this->num_neighbours; i++) {
 		/* Check and add them to the OpenList if needed */
-		this->checktile(this, &this->neighbours[i], current);
+		this->CheckTile(&this->neighbours[i], current);
 	}
 
 	/* Free the node */
@@ -295,5 +295,4 @@ void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
 
 	aystar->addstart  = AyStarMain_AddStartNode;
 	aystar->main      = AyStarMain_Main;
-	aystar->checktile = AyStarMain_CheckTile;
 }
