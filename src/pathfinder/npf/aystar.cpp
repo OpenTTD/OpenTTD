@@ -33,7 +33,7 @@
  *  If so, it returns the PathNode, else NULL */
 PathNode *AyStar::ClosedListIsInList(const AyStarNode *node)
 {
-	return (PathNode*)this->ClosedListHash.Get(node->tile, node->direction);
+	return (PathNode*)this->closedlist_hash.Get(node->tile, node->direction);
 }
 
 /* This adds a node to the ClosedList
@@ -43,14 +43,14 @@ void AyStar::ClosedListAdd(const PathNode *node)
 	/* Add a node to the ClosedList */
 	PathNode *new_node = MallocT<PathNode>(1);
 	*new_node = *node;
-	this->ClosedListHash.Set(node->node.tile, node->node.direction, new_node);
+	this->closedlist_hash.Set(node->node.tile, node->node.direction, new_node);
 }
 
 /* Checks if a node is in the OpenList
  *   If so, it returns the OpenListNode, else NULL */
 OpenListNode *AyStar::OpenListIsInList(const AyStarNode *node)
 {
-	return (OpenListNode*)this->OpenListHash.Get(node->tile, node->direction);
+	return (OpenListNode*)this->openlist_hash.Get(node->tile, node->direction);
 }
 
 /* Gets the best node from OpenList
@@ -59,9 +59,9 @@ OpenListNode *AyStar::OpenListIsInList(const AyStarNode *node)
 OpenListNode *AyStar::OpenListPop()
 {
 	/* Return the item the Queue returns.. the best next OpenList item. */
-	OpenListNode *res = (OpenListNode*)this->OpenListQueue.Pop();
+	OpenListNode *res = (OpenListNode*)this->openlist_queue.Pop();
 	if (res != NULL) {
-		this->OpenListHash.DeleteValue(res->path.node.tile, res->path.node.direction);
+		this->openlist_hash.DeleteValue(res->path.node.tile, res->path.node.direction);
 	}
 
 	return res;
@@ -76,10 +76,10 @@ void AyStar::OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g)
 	new_node->g = g;
 	new_node->path.parent = parent;
 	new_node->path.node = *node;
-	this->OpenListHash.Set(node->tile, node->direction, new_node);
+	this->openlist_hash.Set(node->tile, node->direction, new_node);
 
 	/* Add it to the queue */
-	this->OpenListQueue.Push(new_node, f);
+	this->openlist_queue.Push(new_node, f);
 }
 
 /*
@@ -122,7 +122,7 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 		uint i;
 		/* Yes, check if this g value is lower.. */
 		if (new_g > check->g) return;
-		this->OpenListQueue.Delete(check, 0);
+		this->openlist_queue.Delete(check, 0);
 		/* It is lower, so change it to this item */
 		check->g = new_g;
 		check->path.parent = closedlist_parent;
@@ -130,8 +130,8 @@ void AyStar::CheckTile(AyStarNode *current, OpenListNode *parent)
 		for (i = 0; i < lengthof(current->user_data); i++) {
 			check->path.node.user_data[i] = current->user_data[i];
 		}
-		/* Readd him in the OpenListQueue */
-		this->OpenListQueue.Push(check, new_f);
+		/* Re-add it in the openlist_queue. */
+		this->openlist_queue.Push(check, new_f);
 	} else {
 		/* A new node, add him to the OpenList */
 		this->OpenListAdd(closedlist_parent, current, new_f, new_g);
@@ -182,7 +182,7 @@ int AyStar::Loop()
 	/* Free the node */
 	free(current);
 
-	if (this->max_search_nodes != 0 && this->ClosedListHash.GetSize() >= this->max_search_nodes) {
+	if (this->max_search_nodes != 0 && this->closedlist_hash.GetSize() >= this->max_search_nodes) {
 		/* We've expanded enough nodes */
 		return AYSTAR_LIMIT_REACHED;
 	} else {
@@ -196,11 +196,11 @@ int AyStar::Loop()
  */
 void AyStar::Free()
 {
-	this->OpenListQueue.Free(false);
+	this->openlist_queue.Free(false);
 	/* 2nd argument above is false, below is true, to free the values only
 	 * once */
-	this->OpenListHash.Delete(true);
-	this->ClosedListHash.Delete(true);
+	this->openlist_hash.Delete(true);
+	this->closedlist_hash.Delete(true);
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Memory free'd\n");
 #endif
@@ -214,10 +214,10 @@ void AyStar::Clear()
 {
 	/* Clean the Queue, but not the elements within. That will be done by
 	 * the hash. */
-	this->OpenListQueue.Clear(false);
+	this->openlist_queue.Clear(false);
 	/* Clean the hashes */
-	this->OpenListHash.Clear(true);
-	this->ClosedListHash.Clear(true);
+	this->openlist_hash.Clear(true);
+	this->closedlist_hash.Clear(true);
 
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Cleared AyStar\n");
@@ -285,12 +285,12 @@ void AyStar::AddStartNode(AyStarNode *start_node, uint g)
 void AyStar::Init(Hash_HashProc hash, uint num_buckets)
 {
 	/* Allocated the Hash for the OpenList and ClosedList */
-	this->OpenListHash.Init(hash, num_buckets);
-	this->ClosedListHash.Init(hash, num_buckets);
+	this->openlist_hash.Init(hash, num_buckets);
+	this->closedlist_hash.Init(hash, num_buckets);
 
 	/* Set up our sorting queue
 	 *  BinaryHeap allocates a block of 1024 nodes
 	 *  When that one gets full it reserves another one, till this number
 	 *  That is why it can stay this high */
-	this->OpenListQueue.Init(102400);
+	this->openlist_queue.Init(102400);
 }

@@ -150,15 +150,10 @@ struct AyStar {
 	void Clear();
 	void CheckTile(AyStarNode *current, OpenListNode *parent);
 
-	/* These will contain the open and closed lists */
-
-	/* The actual closed list */
-	Hash ClosedListHash;
-	/* The open queue */
-	BinaryHeap OpenListQueue;
-	/* An extra hash to speed up the process of looking up an element in
-	 * the open list */
-	Hash OpenListHash;
+protected:
+	Hash       closedlist_hash; ///< The actual closed list.
+	BinaryHeap openlist_queue;  ///< The open queue.
+	Hash       openlist_hash;   ///< An extra hash to speed up the process of looking up an element in the open list.
 
 	void OpenListAdd(PathNode *parent, const AyStarNode *node, int f, int g);
 	OpenListNode *OpenListIsInList(const AyStarNode *node);
