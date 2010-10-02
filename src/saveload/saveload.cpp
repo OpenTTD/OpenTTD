@@ -203,6 +203,18 @@ static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
 	throw std::exception();
 }
 
+/**
+ * Error handler for corrupt savegames. Sets everything up to show the
+ * error message and to clean up the mess of a partial savegame load.
+ * @param msg Location the corruption has been spotted.
+ * @note This function does never return as it throws an exception to
+ *       break out of all the saveload code.
+ */
+void NORETURN SlErrorCorrupt(const char *msg)
+{
+	SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, msg);
+}
+
 typedef void (*AsyncSaveFinishProc)();
 static AsyncSaveFinishProc _async_save_finish = NULL;
 static ThreadObject *_save_thread;
@@ -242,7 +254,7 @@ void ProcessAsyncSaveFinish()
 static void SlReadFill()
 {
 	size_t len = _sl.read_bytes();
-	if (len == 0) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected end of chunk");
+	if (len == 0) SlErrorCorrupt("Unexpected end of chunk");
 
 	_sl.bufp = _sl.buf;
 	_sl.bufe = _sl.buf + len;
@@ -390,7 +402,7 @@ static uint SlReadSimpleGamma()
 			if (HasBit(i, 5)) {
 				i &= ~0x20;
 				if (HasBit(i, 4))
-					SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unsupported gamma");
+					SlErrorCorrupt("Unsupported gamma");
 				i = (i << 8) | SlReadByte();
 			}
 			i = (i << 8) | SlReadByte();
@@ -462,7 +474,7 @@ int SlIterateArray()
 
 	/* After reading in the whole array inside the loop
 	 * we must have read in all the data, so we must be at end of current block. */
-	if (_next_offs != 0 && SlGetOffs() != _next_offs) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk size");
+	if (_next_offs != 0 && SlGetOffs() != _next_offs) SlErrorCorrupt("Invalid chunk size");
 
 	while (true) {
 		uint length = SlReadArrayLength();
@@ -1098,7 +1110,7 @@ void SlAutolength(AutolengthProc *proc, void *arg)
 	/* And write the stuff */
 	proc(arg);
 
-	if (offs != SlGetOffs()) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk size");
+	if (offs != SlGetOffs()) SlErrorCorrupt("Invalid chunk size");
 }
 
 /**
@@ -1130,9 +1142,9 @@ static void SlLoadChunk(const ChunkHandler *ch)
 				_sl.obj_len = len;
 				endoffs = SlGetOffs() + len;
 				ch->load_proc();
-				if (SlGetOffs() != endoffs) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk size");
+				if (SlGetOffs() != endoffs) SlErrorCorrupt("Invalid chunk size");
 			} else {
-				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Invalid chunk type");
+				SlErrorCorrupt("Invalid chunk type");
 			}
 			break;
 	}
@@ -1216,7 +1228,7 @@ static void SlLoadChunks()
 		DEBUG(sl, 2, "Loading chunk %c%c%c%c", id >> 24, id >> 16, id >> 8, id);
 
 		ch = SlFindChunkHandler(id);
-		if (ch == NULL) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unknown chunk type");
+		if (ch == NULL) SlErrorCorrupt("Unknown chunk type");
 		SlLoadChunk(ch);
 	}
 }
@@ -1269,13 +1281,13 @@ static size_t ReadLZO()
 		size = TO_BE32(size);
 	}
 
-	if (size >= sizeof(out)) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Inconsistent size");
+	if (size >= sizeof(out)) SlErrorCorrupt("Inconsistent size");
 
 	/* Read block */
 	if (fread(out + sizeof(uint32), size, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 	/* Verify checksum */
-	if (tmp[0] != lzo_adler32(0, out, size + sizeof(uint32))) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Bad checksum");
+	if (tmp[0] != lzo_adler32(0, out, size + sizeof(uint32))) SlErrorCorrupt("Bad checksum");
 
 	/* Decompress */
 	lzo1x_decompress(out + sizeof(uint32) * 1, size, _sl.buf, &len, NULL);
@@ -1564,38 +1576,38 @@ static void *IntToReference(size_t index, SLRefType rt)
 	switch (rt) {
 		case REF_ORDERLIST:
 			if (OrderList::IsValidID(index)) return OrderList::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid OrderList");
+			SlErrorCorrupt("Referencing invalid OrderList");
 
 		case REF_ORDER:
 			if (Order::IsValidID(index)) return Order::Get(index);
 			/* in old versions, invalid order was used to mark end of order list */
 			if (CheckSavegameVersionOldStyle(5, 2)) return NULL;
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Order");
+			SlErrorCorrupt("Referencing invalid Order");
 
 		case REF_VEHICLE_OLD:
 		case REF_VEHICLE:
 			if (Vehicle::IsValidID(index)) return Vehicle::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Vehicle");
+			SlErrorCorrupt("Referencing invalid Vehicle");
 
 		case REF_STATION:
 			if (Station::IsValidID(index)) return Station::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Station");
+			SlErrorCorrupt("Referencing invalid Station");
 
 		case REF_TOWN:
 			if (Town::IsValidID(index)) return Town::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid Town");
+			SlErrorCorrupt("Referencing invalid Town");
 
 		case REF_ROADSTOPS:
 			if (RoadStop::IsValidID(index)) return RoadStop::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid RoadStop");
+			SlErrorCorrupt("Referencing invalid RoadStop");
 
 		case REF_ENGINE_RENEWS:
 			if (EngineRenew::IsValidID(index)) return EngineRenew::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid EngineRenew");
+			SlErrorCorrupt("Referencing invalid EngineRenew");
 
 		case REF_CARGO_PACKET:
 			if (CargoPacket::IsValidID(index)) return CargoPacket::Get(index);
-			SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Referencing invalid CargoPacket");
+			SlErrorCorrupt("Referencing invalid CargoPacket");
 
 		default: NOT_REACHED();
 	}
@@ -1766,7 +1778,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		{
 			uint i;
 
-			if (_ts.count != _sl.offs_base) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected size of chunk");
+			if (_ts.count != _sl.offs_base) SlErrorCorrupt("Unexpected size of chunk");
 			for (i = 0; i != _memory_savegame.Length() - 1; i++) {
 				_sl.buf = _memory_savegame[i];
 				fmt->writer(MEMORY_CHUNK_SIZE);
@@ -1779,7 +1791,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		}
 
 		fmt->uninit_write();
-		if (_ts.count != _sl.offs_base) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected size of chunk");
+		if (_ts.count != _sl.offs_base) SlErrorCorrupt("Unexpected size of chunk");
 		UnInitMem();
 		fclose(_sl.fh);
 

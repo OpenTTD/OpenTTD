@@ -88,7 +88,6 @@ static void CleanupGeneration()
 
 	DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
 	MarkWholeScreenDirty();
-	_genworld_mapgen_mutex->EndCritical();
 }
 
 /**
@@ -172,6 +171,7 @@ static void _GenerateWorld(void *)
 		IncreaseGeneratingWorldProgress(GWP_GAME_START);
 
 		CleanupGeneration();
+		_genworld_mapgen_mutex->EndCritical();
 
 		ShowNewGRFError();
 
