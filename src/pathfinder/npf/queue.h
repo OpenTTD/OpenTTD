@@ -91,6 +91,8 @@ struct Hash {
 
 	void *DeleteValue(uint key1, uint key2);
 
+	void Clear(bool free_values);
+
 	/**
 	 * Gets the current size of the hash.
 	 */
@@ -116,9 +118,5 @@ void init_Hash(Hash *h, Hash_HashProc *hash, uint num_buckets);
  * are left in the hash.
  */
 void delete_Hash(Hash *h, bool free_values);
-/**
- * Cleans the hash, but keeps the memory allocated
- */
-void clear_Hash(Hash *h, bool free_values);
 
 #endif /* QUEUE_H */

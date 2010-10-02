@@ -216,8 +216,8 @@ void AyStar::Clear()
 	 * the hash. */
 	this->OpenListQueue.Clear(false);
 	/* Clean the hashes */
-	clear_Hash(&this->OpenListHash, true);
-	clear_Hash(&this->ClosedListHash, true);
+	this->OpenListHash.Clear(true);
+	this->ClosedListHash.Clear(true);
 
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Cleared AyStar\n");

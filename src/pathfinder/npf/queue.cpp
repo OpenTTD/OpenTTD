@@ -346,23 +346,26 @@ static void stat_Hash(const Hash *h)
 }
 #endif
 
-void clear_Hash(Hash *h, bool free_values)
+/**
+ * Cleans the hash, but keeps the memory allocated
+ */
+void Hash::Clear(bool free_values)
 {
 	uint i;
 
 #ifdef HASH_STATS
-	if (h->size > 2000) stat_Hash(h);
+	if (this->size > 2000) stat_Hash(this);
 #endif
 
 	/* Iterate all buckets */
-	for (i = 0; i < h->num_buckets; i++) {
-		if (h->buckets_in_use[i]) {
+	for (i = 0; i < this->num_buckets; i++) {
+		if (this->buckets_in_use[i]) {
 			HashNode *node;
 
-			h->buckets_in_use[i] = false;
+			this->buckets_in_use[i] = false;
 			/* Free the first value */
-			if (free_values) free(h->buckets[i].value);
-			node = h->buckets[i].next;
+			if (free_values) free(this->buckets[i].value);
+			node = this->buckets[i].next;
 			while (node != NULL) {
 				HashNode *prev = node;
 
@@ -372,7 +375,7 @@ void clear_Hash(Hash *h, bool free_values)
 			}
 		}
 	}
-	h->size = 0;
+	this->size = 0;
 }
 
 /**
