@@ -1775,7 +1775,7 @@ static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, no
 bool GenerateTowns(TownLayout layout)
 {
 	uint num = 0;
-	uint difficulty = _settings_game.difficulty.number_towns;
+	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_towns : 0;
 	uint n = (difficulty == (uint)CUSTOM_TOWN_NUMBER_DIFFICULTY) ? _settings_game.game_creation.custom_town_number : ScaleByMapSize(_num_initial_towns[difficulty] + (Random() & 7));
 	uint32 townnameparts;
 
