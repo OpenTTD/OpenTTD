@@ -61,7 +61,7 @@ OpenListNode *AyStar::OpenListPop()
 	/* Return the item the Queue returns.. the best next OpenList item. */
 	OpenListNode *res = (OpenListNode*)this->OpenListQueue.Pop();
 	if (res != NULL) {
-		Hash_Delete(&this->OpenListHash, res->path.node.tile, res->path.node.direction);
+		this->OpenListHash.DeleteValue(res->path.node.tile, res->path.node.direction);
 	}
 
 	return res;

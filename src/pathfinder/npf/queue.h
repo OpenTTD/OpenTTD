@@ -89,6 +89,8 @@ struct Hash {
 	void *Get(uint key1, uint key2) const;
 	void *Set(uint key1, uint key2, void *value);
 
+	void *DeleteValue(uint key1, uint key2);
+
 	/**
 	 * Gets the current size of the hash.
 	 */
@@ -100,12 +102,6 @@ struct Hash {
 
 /* Call these function to manipulate a hash */
 
-/**
- * Deletes the value with the specified key pair from the hash and returns
- * that value. Returns NULL when the value was not present. The value returned
- * is _not_ free()'d!
- */
-void *Hash_Delete(Hash *h, uint key1, uint key2);
 
 /* Call these function to create/destroy a hash */
 

@@ -427,11 +427,16 @@ static HashNode *Hash_FindNode(const Hash *h, uint key1, uint key2, HashNode** p
 	return result;
 }
 
-void *Hash_Delete(Hash *h, uint key1, uint key2)
+/**
+ * Deletes the value with the specified key pair from the hash and returns
+ * that value. Returns NULL when the value was not present. The value returned
+ * is _not_ free()'d!
+ */
+void *Hash::DeleteValue(uint key1, uint key2)
 {
 	void *result;
 	HashNode *prev; // Used as output var for below function call
-	HashNode *node = Hash_FindNode(h, key1, key2, &prev);
+	HashNode *node = Hash_FindNode(this, key1, key2, &prev);
 
 	if (node == NULL) {
 		/* not found */
@@ -452,8 +457,8 @@ void *Hash_Delete(Hash *h, uint key1, uint key2)
 		} else {
 			/* This was the last in this bucket
 			 * Mark it as empty */
-			uint hash = h->hash(key1, key2);
-			h->buckets_in_use[hash] = false;
+			uint hash = this->hash(key1, key2);
+			this->buckets_in_use[hash] = false;
 		}
 	} else {
 		/* It is in another node
@@ -466,7 +471,7 @@ void *Hash_Delete(Hash *h, uint key1, uint key2)
 		free(node);
 #endif
 	}
-	if (result != NULL) h->size--;
+	if (result != NULL) this->size--;
 	return result;
 }
 
