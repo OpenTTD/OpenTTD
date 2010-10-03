@@ -2034,11 +2034,12 @@ void UpdateTileSelection()
  * @param str String to be displayed
  * @param paramcount number of params to deal with
  * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
+ * @param close_cond Condition for closing this tooltip.
  */
-static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const uint64 params[])
+static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_cond = TCC_LEFT_CLICK)
 {
 	if (!_settings_client.gui.measure_tooltip) return;
-	GuiShowTooltips(str, paramcount, params, TCC_LEFT_CLICK);
+	GuiShowTooltips(str, paramcount, params, close_cond);
 }
 
 /** highlighting tiles while only going over them with the mouse */
@@ -2095,7 +2096,7 @@ void VpSetPresizeRange(TileIndex from, TileIndex to)
 	_thd.next_drawstyle = HT_RECT;
 
 	/* show measurement only if there is any length to speak of */
-	if (distance > 1) ShowMeasurementTooltips(STR_MEASURE_LENGTH, 1, &distance);
+	if (distance > 1) ShowMeasurementTooltips(STR_MEASURE_LENGTH, 1, &distance, TCC_HOVER);
 }
 
 static void VpStartPreSizing()
