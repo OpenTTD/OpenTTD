@@ -280,7 +280,7 @@ public:
 				 * We list all vehicles or ungrouped vehicles */
 				if (IsDefaultGroupID(this->vli.index) || IsAllGroupID(this->vli.index)) {
 					SetDParam(0, STR_COMPANY_NAME);
-					SetDParam(1, GB(this->window_number, 0, 8));
+					SetDParam(1, this->vli.company);
 					SetDParam(2, this->vehicles.Length());
 					SetDParam(3, this->vehicles.Length());
 				} else {
