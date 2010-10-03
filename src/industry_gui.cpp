@@ -642,7 +642,7 @@ class IndustryViewWindow : public Window
 	byte editbox_line;        ///< The line clicked to open the edit box
 	byte clicked_line;        ///< The line of the button that has been clicked
 	byte clicked_button;      ///< The button that has been clicked (to raise)
-	byte production_offset_y; ///< The offset of the production texts/buttons
+	int production_offset_y;  ///< The offset of the production texts/buttons
 	int info_height;          ///< Height needed for the #IVW_INFO panel
 
 public:
