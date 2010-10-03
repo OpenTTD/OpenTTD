@@ -1182,7 +1182,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Salli m
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Yksi tai useampi ruutu pohjoisreunalla ei ole tyhjä
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Yksi tai useampi ruutu jollakin reunalla ei ole vettä
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurin aseman koko: {ORANGE}{STRING} {RED}Huom: korkea asetus hidastaa peliä
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurin aseman koko: {ORANGE}{STRING} {RED}Varoitus: Korkea asetus hidastaa peliä
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Kartassa käytettävä maan väri: {ORANGE}{STRING}
