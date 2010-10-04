@@ -896,6 +896,12 @@ static bool InvalidateCompanyLiveryWindow(int32 p1)
 	return RedrawScreen(p1);
 }
 
+static bool InvalidateIndustryViewWindow(int32 p1)
+{
+	InvalidateWindowClassesData(WC_INDUSTRY_VIEW);
+	return true;
+}
+
 /*
  * A: competitors
  * B: competitor start time. Deprecated since savegame version 110.
