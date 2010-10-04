@@ -639,6 +639,12 @@ enum IndustryViewWidgets {
 
 class IndustryViewWindow : public Window
 {
+	/** Modes for changing production */
+	enum Editability {
+		EA_NONE,              ///< Not alterable
+		EA_RATE,              ///< Allow changing the production rates
+	};
+
 	/** Specific lines in the info panel */
 	enum InfoLine {
 		IL_NONE,              ///< No line
@@ -646,6 +652,7 @@ class IndustryViewWindow : public Window
 		IL_RATE2,             ///< Production rate of cargo 2
 	};
 
+	Editability editable;     ///< Mode for changing production
 	InfoLine editbox_line;    ///< The line clicked to open the edit box
 	InfoLine clicked_line;    ///< The line of the button that has been clicked
 	byte clicked_button;      ///< The button that has been clicked (to raise)
@@ -664,6 +671,8 @@ public:
 		this->InitNested(desc, window_number);
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(IVW_VIEWPORT);
 		nvp->InitializeViewport(this, Industry::Get(window_number)->location.tile + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
+
+		this->InvalidateData();
 	}
 
 	virtual void OnPaint()
@@ -746,10 +755,10 @@ public:
 			SetDParam(1, i->last_month_production[j]);
 			SetDParamStr(2, cargo_suffix[j]);
 			SetDParam(3, ToPercent8(i->last_month_pct_transported[j]));
-			uint x = left + WD_FRAMETEXT_LEFT + (IsProductionAlterable(i) ? 30 : 0);
+			uint x = left + WD_FRAMETEXT_LEFT + (this->editable == EA_RATE ? 30 : 0);
 			DrawString(x, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
-			if (IsProductionAlterable(i)) {
+			if (this->editable == EA_RATE) {
 				DrawArrowButtons(left + WD_FRAMETEXT_LEFT, y, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + j) ? this->clicked_button : 0,
 						i->production_rate[j] > 0, i->production_rate[j] < 255);
 			}
@@ -807,7 +816,7 @@ public:
 				if (line == IL_NONE) return;
 
 				uint x = pt.x;
-				if (IsProductionAlterable(i)) {
+				if (this->editable == EA_RATE) {
 					NWidgetBase *nwi = this->GetWidget<NWidgetBase>(widget);
 					uint left = nwi->pos_x + WD_FRAMETEXT_LEFT;
 					uint right = nwi->pos_x + nwi->current_x - 1 - WD_FRAMERECT_RIGHT;
@@ -880,6 +889,16 @@ public:
 		i->production_rate[this->editbox_line - IL_RATE1] = ClampU(atoi(str) / 8, 0, 255);
 		UpdateIndustryProduction(i);
 		this->SetDirty();
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		const Industry *i = Industry::Get(this->window_number);
+		if (IsProductionAlterable(i)) {
+			this->editable = EA_RATE;
+		} else {
+			this->editable = EA_NONE;
+		}
 	}
 
 	virtual bool IsNewGRFInspectable() const
