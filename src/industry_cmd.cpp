@@ -2030,6 +2030,20 @@ static void UpdateIndustryStatistics(Industry *i)
 	}
 }
 
+/**
+ * Recompute #production_rate for current #prod_level.
+ * This function is only valid when not using smooth economy.
+ */
+void Industry::RecomputeProductionMultipliers()
+{
+	const IndustrySpec *indspec = GetIndustrySpec(this->type);
+	assert(!indspec->UsesSmoothEconomy());
+
+	/* Rates are rounded up, so e.g. oilrig always produces some passengers */
+	this->production_rate[0] = min(CeilDiv(indspec->production_rate[0] * this->prod_level, PRODLEVEL_DEFAULT), 0xFF);
+	this->production_rate[1] = min(CeilDiv(indspec->production_rate[1] * this->prod_level, PRODLEVEL_DEFAULT), 0xFF);
+}
+
 /** Simple helper that will collect data for the generation of industries */
 struct ProbabilityHelper {
 	uint16 prob;      ///< probability
@@ -2371,11 +2385,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	/* Recalculate production_rate
 	 * For non-smooth economy these should always be synchronized with prod_level */
-	if (recalculate_multipliers) {
-		/* Rates are rounded up, so e.g. oilrig always produces some passengers */
-		i->production_rate[0] = min(CeilDiv(indspec->production_rate[0] * i->prod_level, PRODLEVEL_DEFAULT), 0xFF);
-		i->production_rate[1] = min(CeilDiv(indspec->production_rate[1] * i->prod_level, PRODLEVEL_DEFAULT), 0xFF);
-	}
+	if (recalculate_multipliers) i->RecomputeProductionMultipliers();
 
 	/* Close if needed and allowed */
 	if (closeit && !CheckIndustryCloseDownProtection(i->type)) {

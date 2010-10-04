@@ -65,6 +65,8 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	Industry(TileIndex tile = INVALID_TILE) : location(tile, 0, 0) {}
 	~Industry();
 
+	void RecomputeProductionMultipliers();
+
 	/**
 	 * Get the industry of the given tile
 	 * @param tile the tile to get the industry from
