@@ -624,8 +624,9 @@ static void UpdateIndustryProduction(Industry *i);
 
 static inline bool IsProductionAlterable(const Industry *i)
 {
+	const IndustrySpec *is = GetIndustrySpec(i->type);
 	return ((_game_mode == GM_EDITOR || _cheats.setup_prod.value) &&
-			(i->accepts_cargo[0] == CT_INVALID || i->accepts_cargo[0] == CT_VALUABLES));
+			(is->production_rate[0] != 0 || is->production_rate[1] != 0 || is->IsRawIndustry()));
 }
 
 /** Names of the widgets of the view industry gui */
