@@ -639,8 +639,15 @@ enum IndustryViewWidgets {
 
 class IndustryViewWindow : public Window
 {
-	byte editbox_line;        ///< The line clicked to open the edit box
-	byte clicked_line;        ///< The line of the button that has been clicked
+	/** Specific lines in the info panel */
+	enum InfoLine {
+		IL_NONE,              ///< No line
+		IL_RATE1,             ///< Production rate of cargo 1
+		IL_RATE2,             ///< Production rate of cargo 2
+	};
+
+	InfoLine editbox_line;    ///< The line clicked to open the edit box
+	InfoLine clicked_line;    ///< The line of the button that has been clicked
 	byte clicked_button;      ///< The button that has been clicked (to raise)
 	int production_offset_y;  ///< The offset of the production texts/buttons
 	int info_height;          ///< Height needed for the #IVW_INFO panel
@@ -649,8 +656,8 @@ public:
 	IndustryViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
-		this->editbox_line = 0;
-		this->clicked_line = 0;
+		this->editbox_line = IL_NONE;
+		this->clicked_line = IL_NONE;
 		this->clicked_button = 0;
 		this->info_height = WD_FRAMERECT_TOP + 2 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM + 1; // Info panel has at least two lines text.
 
@@ -743,7 +750,7 @@ public:
 			DrawString(x, right - WD_FRAMERECT_RIGHT, y, STR_INDUSTRY_VIEW_TRANSPORTED);
 			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
-				DrawArrowButtons(left + WD_FRAMETEXT_LEFT, y, COLOUR_YELLOW, (this->clicked_line == j + 1) ? this->clicked_button : 0,
+				DrawArrowButtons(left + WD_FRAMETEXT_LEFT, y, COLOUR_YELLOW, (this->clicked_line == IL_RATE1 + j) ? this->clicked_button : 0,
 						i->production_rate[j] > 0, i->production_rate[j] < 255);
 			}
 			y += FONT_HEIGHT_NORMAL;
@@ -784,36 +791,47 @@ public:
 		switch (widget) {
 			case IVW_INFO: {
 				Industry *i = Industry::Get(this->window_number);
+				InfoLine line = IL_NONE;
 
-				/* We should work if needed.. */
-				if (!IsProductionAlterable(i)) return;
+				if (pt.y >= this->production_offset_y) {
+					int row = (pt.y - this->production_offset_y) / FONT_HEIGHT_NORMAL;
+					for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
+						if (i->produced_cargo[j] == CT_INVALID) continue;
+						row--;
+						if (row < 0) {
+							line = (InfoLine)(IL_RATE1 + j);
+							break;
+						}
+					}
+				}
+				if (line == IL_NONE) return;
+
 				uint x = pt.x;
-				int line = (pt.y - this->production_offset_y) / FONT_HEIGHT_NORMAL;
-				if (pt.y >= this->production_offset_y && IsInsideMM(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
+				if (IsProductionAlterable(i)) {
 					NWidgetBase *nwi = this->GetWidget<NWidgetBase>(widget);
 					uint left = nwi->pos_x + WD_FRAMETEXT_LEFT;
 					uint right = nwi->pos_x + nwi->current_x - 1 - WD_FRAMERECT_RIGHT;
 					if (IsInsideMM(x, left, left + 20) ) {
 						/* Clicked buttons, decrease or increase production */
 						if (x < left + 10) {
-							if (i->production_rate[line] <= 0) return;
-							i->production_rate[line] = max(i->production_rate[line] / 2, 0);
+							if (i->production_rate[line - IL_RATE1] <= 0) return;
+							i->production_rate[line - IL_RATE1] = max(i->production_rate[line - IL_RATE1] / 2, 0);
 						} else {
+							if (i->production_rate[line - IL_RATE1] >= 255) return;
 							/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
-							int new_prod = i->production_rate[line] == 0 ? 1 : i->production_rate[line] * 2;
-							if (i->production_rate[line] >= 255) return;
-							i->production_rate[line] = minu(new_prod, 255);
+							int new_prod = i->production_rate[line - IL_RATE1] == 0 ? 1 : i->production_rate[line - IL_RATE1] * 2;
+							i->production_rate[line - IL_RATE1] = minu(new_prod, 255);
 						}
 
 						UpdateIndustryProduction(i);
 						this->SetDirty();
 						this->flags4 |= WF_TIMEOUT_BEGIN;
-						this->clicked_line = line + 1;
+						this->clicked_line = line;
 						this->clicked_button = (x < left + 10 ? 1 : 2);
 					} else if (IsInsideMM(x, left + 30, right)) {
 						/* clicked the text */
 						this->editbox_line = line;
-						SetDParam(0, i->production_rate[line] * 8);
+						SetDParam(0, i->production_rate[line - IL_RATE1] * 8);
 						ShowQueryString(STR_JUST_INT, STR_CONFIG_GAME_PRODUCTION, 10, 100, this, CS_ALPHANUMERAL, QSF_NONE);
 					}
 				}
@@ -840,7 +858,7 @@ public:
 
 	virtual void OnTimeout()
 	{
-		this->clicked_line = 0;
+		this->clicked_line = IL_NONE;
 		this->clicked_button = 0;
 		this->SetDirty();
 	}
@@ -858,9 +876,8 @@ public:
 		if (StrEmpty(str)) return;
 
 		Industry *i = Industry::Get(this->window_number);
-		int line = this->editbox_line;
 
-		i->production_rate[line] = ClampU(atoi(str) / 8, 0, 255);
+		i->production_rate[this->editbox_line - IL_RATE1] = ClampU(atoi(str) / 8, 0, 255);
 		UpdateIndustryProduction(i);
 		this->SetDirty();
 	}
