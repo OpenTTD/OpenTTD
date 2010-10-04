@@ -23,6 +23,18 @@ typedef Pool<Industry, IndustryID, 64, 64000> IndustryPool;
 extern IndustryPool _industry_pool;
 
 /**
+ * Production level maximum, minimum and default values.
+ * It is not a value been really used in order to change, but rather an indicator
+ * of how the industry is behaving.
+ */
+enum ProductionLevels {
+	PRODLEVEL_CLOSURE = 0x00,  ///< signal set to actually close the industry
+	PRODLEVEL_MINIMUM = 0x04,  ///< below this level, the industry is set to be closing
+	PRODLEVEL_DEFAULT = 0x10,  ///< default level set when the industry is created
+	PRODLEVEL_MAXIMUM = 0x80,  ///< the industry is running at full speed
+};
+
+/**
  * Defines the internal data of a functionnal industry
  */
 struct Industry : IndustryPool::PoolItem<&_industry_pool> {
