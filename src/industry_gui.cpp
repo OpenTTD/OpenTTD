@@ -802,46 +802,62 @@ public:
 				Industry *i = Industry::Get(this->window_number);
 				InfoLine line = IL_NONE;
 
-				if (pt.y >= this->production_offset_y) {
-					int row = (pt.y - this->production_offset_y) / FONT_HEIGHT_NORMAL;
-					for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
-						if (i->produced_cargo[j] == CT_INVALID) continue;
-						row--;
-						if (row < 0) {
-							line = (InfoLine)(IL_RATE1 + j);
-							break;
+				switch (this->editable) {
+					case EA_NONE: break;
+
+					case EA_RATE:
+						if (pt.y >= this->production_offset_y) {
+							int row = (pt.y - this->production_offset_y) / FONT_HEIGHT_NORMAL;
+							for (uint j = 0; j < lengthof(i->produced_cargo); j++) {
+								if (i->produced_cargo[j] == CT_INVALID) continue;
+								row--;
+								if (row < 0) {
+									line = (InfoLine)(IL_RATE1 + j);
+									break;
+								}
+							}
 						}
-					}
+						break;
 				}
 				if (line == IL_NONE) return;
 
-				uint x = pt.x;
-				if (this->editable == EA_RATE) {
-					NWidgetBase *nwi = this->GetWidget<NWidgetBase>(widget);
-					uint left = nwi->pos_x + WD_FRAMETEXT_LEFT;
-					uint right = nwi->pos_x + nwi->current_x - 1 - WD_FRAMERECT_RIGHT;
-					if (IsInsideMM(x, left, left + 20) ) {
-						/* Clicked buttons, decrease or increase production */
-						if (x < left + 10) {
-							if (i->production_rate[line - IL_RATE1] <= 0) return;
-							i->production_rate[line - IL_RATE1] = max(i->production_rate[line - IL_RATE1] / 2, 0);
-						} else {
-							if (i->production_rate[line - IL_RATE1] >= 255) return;
-							/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
-							int new_prod = i->production_rate[line - IL_RATE1] == 0 ? 1 : i->production_rate[line - IL_RATE1] * 2;
-							i->production_rate[line - IL_RATE1] = minu(new_prod, 255);
-						}
+				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(widget);
+				int left = nwi->pos_x + WD_FRAMETEXT_LEFT;
+				int right = nwi->pos_x + nwi->current_x - 1 - WD_FRAMERECT_RIGHT;
+				if (IsInsideMM(pt.x, left, left + 20) ) {
+					/* Clicked buttons, decrease or increase production */
+					byte button = (pt.x < left + 10) ? 1 : 2;
+					switch (this->editable) {
+						case EA_RATE:
+							if (button == 1) {
+								if (i->production_rate[line - IL_RATE1] <= 0) return;
+								i->production_rate[line - IL_RATE1] = max(i->production_rate[line - IL_RATE1] / 2, 0);
+							} else {
+								if (i->production_rate[line - IL_RATE1] >= 255) return;
+								/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
+								int new_prod = i->production_rate[line - IL_RATE1] == 0 ? 1 : i->production_rate[line - IL_RATE1] * 2;
+								i->production_rate[line - IL_RATE1] = minu(new_prod, 255);
+							}
+							break;
 
-						UpdateIndustryProduction(i);
-						this->SetDirty();
-						this->flags4 |= WF_TIMEOUT_BEGIN;
-						this->clicked_line = line;
-						this->clicked_button = (x < left + 10 ? 1 : 2);
-					} else if (IsInsideMM(x, left + 30, right)) {
-						/* clicked the text */
-						this->editbox_line = line;
-						SetDParam(0, i->production_rate[line - IL_RATE1] * 8);
-						ShowQueryString(STR_JUST_INT, STR_CONFIG_GAME_PRODUCTION, 10, 100, this, CS_ALPHANUMERAL, QSF_NONE);
+						default: NOT_REACHED();
+					}
+
+					UpdateIndustryProduction(i);
+					this->SetDirty();
+					this->flags4 |= WF_TIMEOUT_BEGIN;
+					this->clicked_line = line;
+					this->clicked_button = button;
+				} else if (IsInsideMM(pt.x, left + 30, right)) {
+					/* clicked the text */
+					this->editbox_line = line;
+					switch (this->editable) {
+						case EA_RATE:
+							SetDParam(0, i->production_rate[line - IL_RATE1] * 8);
+							ShowQueryString(STR_JUST_INT, STR_CONFIG_GAME_PRODUCTION, 10, 100, this, CS_ALPHANUMERAL, QSF_NONE);
+							break;
+
+						default: NOT_REACHED();
 					}
 				}
 				break;
