@@ -885,8 +885,9 @@ public:
 		if (StrEmpty(str)) return;
 
 		Industry *i = Industry::Get(this->window_number);
+		uint value = atoi(str);
 
-		i->production_rate[this->editbox_line - IL_RATE1] = ClampU(atoi(str) / 8, 0, 255);
+		i->production_rate[this->editbox_line - IL_RATE1] = ClampU(RoundDivSU(value, 8), 0, 255);
 		UpdateIndustryProduction(i);
 		this->SetDirty();
 	}
