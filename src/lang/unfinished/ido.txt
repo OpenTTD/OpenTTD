@@ -219,6 +219,7 @@ STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
 
+STR_BUTTON_SORT_BY                                              :{BLACK}Ordinas per
 STR_BUTTON_LOCATION                                             :{BLACK}Loko
 STR_BUTTON_RENAME                                               :{BLACK}Rinomizar
 
@@ -373,7 +374,7 @@ STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrii
 STR_SMALLMAP_TYPE_ROUTES                                        :Voyi
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vejetado
 STR_SMALLMAP_TYPE_OWNERS                                        :Proprietanto
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Montrar transport-voyi ad la mapo
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Montras transport-voyi sur la mapo
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Montrar vejetado ad la mapo
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Montrar proprietanti ad la mapo
 
@@ -384,7 +385,7 @@ STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Vehili
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Treni
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Voy-Vehili
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Bateli
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Navi
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Aeroplani
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Transport-voyi
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Foresto
@@ -487,6 +488,7 @@ STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Dizastr
 STR_NUM_LOW                                                     :Basa
 STR_NUM_NORMAL                                                  :Normala
 STR_NUM_HIGH                                                    :Alta
+STR_NUM_CUSTOM_NUMBER                                           :Kustumigita ({NUM})
 
 STR_VARIETY_NONE                                                :Nulo
 STR_VARIETY_VERY_LOW                                            :Tre Basa
@@ -502,6 +504,8 @@ STR_AI_SPEED_FAST                                               :Rapida
 STR_SEA_LEVEL_LOW                                               :Basa
 STR_SEA_LEVEL_MEDIUM                                            :Meza
 STR_SEA_LEVEL_HIGH                                              :Alta
+STR_SEA_LEVEL_CUSTOM                                            :Kustumigita
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kustumigita ({NUM}%)
 
 
 
@@ -858,17 +862,41 @@ STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehili:
 
 
 # Vehicle lists
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren{P o i}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Voyo-Vehil{P o i}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Nav{P o i}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronavo
 
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Treni - klikigas sur treno por informeso
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Voy-vehili - klikigas sur vehilo por informeso
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Navi - klikigas sur navo por informeso
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronavi - klikigas sur aeronavo por informeso
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Profito to yaro: {CURRENCY} (lasta yaro: {CURRENCY})
 
+STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Disponebla Treni
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Disponebla Vehili
+STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Disponebla Navi
+STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Disponebla Aeronavi
 
 
+STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Sendas ad Depozeyo
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Sendas ad Depozeyo
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Sendas ad Depozeyo
+STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Sendas ad Hangaro
 
 
 
 # Group window
+STR_GROUP_ALL_TRAINS                                            :Omna treni
+STR_GROUP_ALL_ROAD_VEHICLES                                     :Omna voy-vehili
+STR_GROUP_ALL_SHIPS                                             :Omna navi
+STR_GROUP_ALL_AIRCRAFTS                                         :Omna aeronavi
 
+STR_GROUP_DEFAULT_TRAINS                                        :Negrupigita treni
+STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Negrupigita voy-vehili
+STR_GROUP_DEFAULT_SHIPS                                         :Negrupigita navi
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Negrupigita aeronavi
 
 
 
@@ -908,10 +936,10 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Rinomizas depoz
 
 
 # Autoreplace window
-STR_REPLACE_VEHICLE_TRAIN                                       :Treni
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Voy-vehili
-STR_REPLACE_VEHICLE_SHIP                                        :Bateli
-STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeroplani
+STR_REPLACE_VEHICLE_TRAIN                                       :Treno
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Voy-vehilo
+STR_REPLACE_VEHICLE_SHIP                                        :Navo
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronavo
 
 
 

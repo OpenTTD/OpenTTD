@@ -1359,7 +1359,7 @@ STR_INTRO_NEW_GAME                                              :{BLACK}Uusi pel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Lataa peli
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Lataa skenaario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Lataa korkeuskartta
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Maisemaeditori
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Skenaariomuokkain
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Moninpeli
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pelin asetukset
@@ -1821,7 +1821,7 @@ STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Merkitse
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Valitse päivitykset
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Valitse kaikki sisältö, joka on päivitys nykyiseen sisältöön, ladattavaksi
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poista valinnat
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Poista kaikesta sisällöstä valinta ladattavaksi
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merkitse kaikki sisältö ei-ladattavaksi
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Avainsana/nimi suodatus:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lataa
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Aloita valitun sisällön lataaminen
@@ -2724,6 +2724,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Tuotto viime kuussa:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}{NBSP}% kuljetettu)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Keskitä päänäkymä teollisuuden sijaintiin. Ctrl+Klik avaa uuden näkymäikkunan teollisuuden sijaintiin
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tuotantotaso: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}
@@ -2739,6 +2740,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Tuottaa:
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Muokkaa tuotantoa (8:n kerroin, 2040 asti)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuta tuotantotasoa (prosentteina, 800% asti)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} junaa

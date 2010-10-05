@@ -3104,6 +3104,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Wyprodukowano w ostatnim miesiącu:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% przetransportowano)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centruj główny widok na przedsiębiorstwie. Ctrl+klik otwiera nowy podgląd na pozycji przedsiębiorstwa
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Poziom produkcji: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Wymaga: {YELLOW}{STRING}{STRING}
@@ -3119,6 +3120,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produkuj
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana produkcji (wielokrotność 8, do 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Zmiana poziomu produkcji (procentowo, do 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Pociąg{P "" i ów}

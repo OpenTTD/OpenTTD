@@ -290,7 +290,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 
 
 
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Manager)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(व्यवस्थापक)
 
 
 
@@ -597,6 +597,8 @@ STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}स्�
 # Signal window
 
 # Bridge selection window
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_BRIDGE_NAME_WOODEN                                          :लाकडी
 
 
 # Road construction toolbar
@@ -630,6 +632,7 @@ STR_AIRPORT_CLASS_LARGE                                         :मोठे �
 
 
 # Tree planting window (last two for SE only)
+STR_PLANT_TREE_CAPTION                                          :{WHITE}झाड
 
 # Land generation window (SE)
 
@@ -637,23 +640,36 @@ STR_AIRPORT_CLASS_LARGE                                         :मोठे �
 # Town generation window (SE)
 
 
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}छोट
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}मोठ
 
 
 # Fund new industry window
+STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}खर्च: {YELLOW}{CURRENCY}
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}घर
 
 # Land area window
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}विमानतळाच नाव: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/८ {STRING})
 
 # Description of land area of different tiles
+STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :गवत
+STR_LAI_CLEAR_DESCRIPTION_DESERT                                :वाळवंट
 
 
+STR_LAI_ROAD_DESCRIPTION_ROAD                                   :रस्ता
 
 # Houses come directly from their building names
 
+STR_LAI_TREE_NAME_TREES                                         :झाड
 
+STR_LAI_STATION_DESCRIPTION_AIRPORT                             :विमानतळ
+STR_LAI_STATION_DESCRIPTION_BUS_STATION                         :बस स्थानक
 
+STR_LAI_WATER_DESCRIPTION_WATER                                 :पाणी
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :नदी
 
 # Industries come directly from their industry names
 
@@ -666,18 +682,26 @@ STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}वि�
 STR_ABOUT_OPENTTD                                               :{WHITE}ओपेन टीटीडी बद्दल
 
 # Save/load game/scenario
+STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} मोकळ
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 
 
 # World generation
+STR_MAPGEN_BY                                                   :{BLACK}*
+STR_MAPGEN_DATE                                                 :{BLACK}तिथी:
 
 # Strings for map borders at game generation
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}पाणी
 
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 
 # SE Map generation
 
 
 # Map generation progress
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% पूर्ण
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 
 # NewGRF settings
 
@@ -698,6 +722,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :वस्तू
 
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 
 # NewGRF related 'general' warnings
 
@@ -709,6 +734,7 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :वस्तू
 
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
 # Sign list window
 
@@ -716,9 +742,13 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :वस्तू
 
 
 # Town directory window
+STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_POPULATION                                             :{BLACK}विश्व लोकसंख्या: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}लोकसंख्या: {ORANGE}{COMMA}{BLACK}  घर: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} गरज
 
 
 
@@ -741,7 +771,14 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
 STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 
 ############ range for rating starts
+STR_CARGO_RATING_APPALLING                                      :धक्कादायक
+STR_CARGO_RATING_VERY_POOR                                      :अतिशय दरिद्र
+STR_CARGO_RATING_POOR                                           :दरिद्र
 STR_CARGO_RATING_MEDIOCRE                                       :साधारण
+STR_CARGO_RATING_GOOD                                           :चांगल
+STR_CARGO_RATING_VERY_GOOD                                      :अतिशय चांगल
+STR_CARGO_RATING_EXCELLENT                                      :अव्वल
+STR_CARGO_RATING_OUTSTANDING                                    :उत्कृष्ट
 ############ range for rating ends
 
 
@@ -754,9 +791,11 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 # Finances window
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}खर्च/कमाई
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}विमान चालवण्याचा खर्च
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}संपूर्ण:
+STR_FINANCES_LOAN_TITLE                                         :{WHITE}कर्ज
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 
 # Company view
