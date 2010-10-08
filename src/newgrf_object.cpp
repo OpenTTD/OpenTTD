@@ -241,6 +241,7 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 			/* Allow these, but find the closest town. */
 			case 0x45:
 			case 0x46:
+				if (!IsValidTile(tile)) goto unhandled;
 				t = ClosestTownFromTile(tile, UINT_MAX);
 				break;
 
@@ -257,11 +258,11 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 			 * 0x63: Animation counter of nearby tile, see above.
 			 */
 			default:
-				DEBUG(grf, 1, "Unhandled object property 0x%X", variable);
-
-				*available = false;
-				return UINT_MAX;
+				goto unhandled;
 		}
+
+		/* If there's an invalid tile, then we don't have enough information at all. */
+		if (!IsValidTile(tile)) goto unhandled;
 	} else {
 		t = o->town;
 	}
@@ -313,6 +314,7 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 		case 0x64: return GetCountAndDistanceOfClosestInstance(parameter, object->grffile->grfid, tile, o);
 	}
 
+unhandled:
 	DEBUG(grf, 1, "Unhandled object property 0x%X", variable);
 
 	*available = false;
