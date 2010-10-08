@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industri
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Bygning af vej
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant træer
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Placér skilt
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placér objekt
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Gem scenarie
@@ -1022,6 +1023,7 @@ STR_NUM_LOW                                                     :Lav
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Høj
 STR_NUM_CUSTOM                                                  :Brugerdefineret
+STR_NUM_CUSTOM_NUMBER                                           :Brugerdefineret ({NUM})
 
 STR_VARIETY_NONE                                                :Ingen
 STR_VARIETY_VERY_LOW                                            :Meget lav
@@ -1040,6 +1042,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Meget lavt
 STR_SEA_LEVEL_LOW                                               :Lavt
 STR_SEA_LEVEL_MEDIUM                                            :Middel
 STR_SEA_LEVEL_HIGH                                              :Højt
+STR_SEA_LEVEL_CUSTOM                                            :Brugerdefineret
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Brugerdefineret ({NUM}%)
 
 STR_DISASTER_NONE                                               :Ingen
 STR_DISASTER_REDUCED                                            :Reduceret
@@ -1104,6 +1108,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :efterforskning
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Fladt område omkring industri: {ORANGE}{STRING} felt{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Tillad flere af samme slags industri per by: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vis altid lang dato i statusbaren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Vis signaler i kørselssiden: {ORANGE}{STRING}
@@ -2046,6 +2051,16 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hæv pun
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Udjævn land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Køb land til senere brug
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekt valg
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vælg objektet der skal bygges
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objekt klasse
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Forvisning af objektet
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Størrelse: {GOLD}{NUM} x {NUM} felter
+
+STR_OBJECT_CLASS_LTHS                                           :Fyrtårn
+STR_OBJECT_CLASS_TRNS                                           :Sendere
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Træer
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vælg typen af træer der skal plantes
@@ -2110,6 +2125,8 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Efterfor
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Byg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansiér
 
+# Industry cargoes window
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landområde-information
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Pris for at rydde: {LTBLUE}N/A
@@ -2126,6 +2143,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Produceret: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Stationsklasse: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Stationstype: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Lufthavns klasse: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Lufthavns navn: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lufthavn brik navn: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Accepteret last: {LTBLUE}
@@ -2283,7 +2302,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelle
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Højdekortets rotation:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Højdekortets navn:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriv startværdi til tilfældige tal
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ændre snegrænsen
@@ -2360,12 +2379,18 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivere
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Indtast NewGRF-parameter
 
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Nulstil
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sæt alle parameter til deres standart niveau
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Antal parametrer: {ORANGE}{NUM}
+
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspicer - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Forældrer
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspicer objektet fra foregående råderum
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} ved {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Jernbanetype
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variabel 60+x parameter (hexadecimal)
@@ -2416,6 +2441,8 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF fil(er) er blevet slået fra
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglende GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD kan gå ned, når spillet sættes i gang igen. Undlad at indsende fejlrapporter for efterfølgende nedbrud.{}Vil du virkelig sætte spillet i gang igen?
+
+# NewGRF status
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Denne NewGRFs opførsel '{0:STRING}' vil sandsynligvis forårsage at spillet går ned.
@@ -2648,6 +2675,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktion sidste måned:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transporteret)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrer skærmen over industriens lokalitet. Ctrl+Klik åbner et nyt vindue ved industriens lokalitet.
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktions niveauet: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Kræver: {YELLOW}{STRING}{STRING}
@@ -2663,6 +2691,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Producer
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion (multipla af 8, op til 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ændre produktions niveauet (Op til 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tog
@@ -3380,7 +3409,7 @@ STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}opdaget 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan ikke hæve landet her...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan ikke sænke landet her...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan ikke hæve landet her...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan ikke udflade landet her...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Udgravning ville skade en tunnel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... allerede ved havoverfladen
 STR_ERROR_TOO_HIGH                                              :{WHITE}... for højt
@@ -3482,7 +3511,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kan ikke fjerne kontrolsted for tog her...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Jernbane rutepunktet skal fjernes først
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... der er en bøje i vejen
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøjen er i brug!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bøjen er i brug af et andet firma!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kan ikke bygge en remise her...
@@ -3492,10 +3521,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kan ikke
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kan ikke omdøbe depot...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Toget skal være stoppet inde i en remise
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... skal være stoppet inde i et depot
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... skal være stoppet inde i et værksted først
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Skibet skal være stoppet i dok
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Flyet skal være stoppet i en hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... skal være stoppet i et depot
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... skal være stoppet i en hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tog kan kun ændres når de er stoppet i en remise
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt
