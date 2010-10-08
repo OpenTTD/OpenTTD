@@ -57,7 +57,7 @@ class BuildObjectWindow : public PickerWindowBase {
 	}
 
 public:
-	BuildObjectWindow(const WindowDesc *desc, Window *w) : PickerWindowBase(w)
+	BuildObjectWindow(const WindowDesc *desc, Window *w) : PickerWindowBase(w), info_height(1)
 	{
 		this->CreateNestedTree(desc);
 
@@ -191,7 +191,7 @@ public:
 							/* Use all the available space left from where we stand up to the
 							 * end of the window. We ALSO enlarge the window if needed, so we
 							 * can 'go' wild with the bottom of the window. */
-							int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message);
+							int y = DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, message) - r.top;
 							StopTextRefStackUsage();
 							if (y > this->info_height) {
 								BuildObjectWindow *bow = const_cast<BuildObjectWindow *>(this);
@@ -305,7 +305,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_GREY, BOW_OBJECT_SPRITE), SetMinimalSize(130, 0), SetFill(1, 0), SetDataTip(0x0, STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP), EndContainer(),
 		EndContainer(),
 		NWidget(WWT_TEXT, COLOUR_DARK_GREEN, BOW_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL), SetPadding(2, 5, 2, 5),
-		NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BOW_INFO), SetPadding(2, 5, 0, 5),
+		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, BOW_INFO), SetPadding(2, 5, 0, 5),
 	EndContainer(),
 };
 
