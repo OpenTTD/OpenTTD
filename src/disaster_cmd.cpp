@@ -424,7 +424,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 			SndPlayTileFx(SND_12_EXPLOSION, i->location.tile);
 		}
 	} else if (v->current_order.GetDestination() == 0) {
-		int x = v->x_pos - (15 * TILE_SIZE);
+		int x = v->x_pos + ((leave_at_top ? -15 : 15) * TILE_SIZE);
 		int y = v->y_pos;
 
 		if ((uint)x > MapMaxX() * TILE_SIZE - 1) return true;
