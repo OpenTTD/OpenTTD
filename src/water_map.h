@@ -171,6 +171,16 @@ static inline bool IsCoast(TileIndex t)
 }
 
 /**
+ * Is it a coast tile
+ * @param t Tile to query.
+ * @return \c true if it is a coast.
+ */
+static inline bool IsCoastTile(TileIndex t)
+{
+	return IsTileType(t, MP_WATER) && IsCoast(t);
+}
+
+/**
  * Get the other tile of the ship depot.
  * @param t Tile to query, containing one section of a ship depot.
  * @return Tile containing the other section of the depot.
