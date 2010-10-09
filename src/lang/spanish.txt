@@ -1884,11 +1884,11 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Ajustar 
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Poner objetos invisibles en vez de transparentes
 
 # Base for station construction window(s)
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Iluminar área de alcance
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Mostrar área de recogida
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Apagado
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Encendido
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}No iluminar área de alcance del lugar propuesto
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Iluminar área de alcance del lugar propuesto
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}No mostrar área de recogida del lugar propuesto
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Mostrar área de recogida del lugar propuesto
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Acepta: {GOLD}{STRING}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provisiones: {GOLD}{STRING}
 

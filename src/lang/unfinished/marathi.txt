@@ -792,6 +792,8 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}खर्च/कमाई
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}विमान चालवण्याचा खर्च
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}विमानाची कमाई
+STR_FINANCES_SECTION_OTHER                                      :{GOLD}अन्य
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}संपूर्ण:
@@ -800,12 +802,20 @@ STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENC
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(व्यवस्थापक)
 
+STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}समारंभ दिवस: {WHITE}{NUM}
+STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}वाहने:
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} विमान
 
 
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}नवीन चेहरा
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}व्यवस्थापका साठी नवीन चेहरा निवडा
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}व्यवस्थापकाचे नाव
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}व्यवस्थापकाच नाव बदला
 
 
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :व्यवस्थापकाचे नाव
 
 
 # Industry directory
@@ -847,6 +857,7 @@ STR_GROUP_ALL_AIRCRAFTS                                         :सर्व �
 
 
 
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :सगळे वाहने काढा
 
 
 # Build vehicle window
@@ -855,6 +866,12 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :नवीन �
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :नवीन जहाज
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :नवीन विमान
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}किंमत: {GOLD}{CURRENCY}{BLACK} वजन: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}गती: {GOLD}{VELOCITY}{BLACK} शक्ती: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}गती: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST                                          :{BLACK}किंमत: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}वजन: {GOLD}{WEIGHT_S} ({WEIGHT_S})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}किंमत: {GOLD}{CURRENCY}{BLACK} गती: {GOLD}{VELOCITY}
 
 
 
@@ -881,9 +898,13 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :नवीन �
 
 
 # Engine preview window
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :विमान
+STR_ENGINE_PREVIEW_SHIP                                         :जहाज
 
 
 # Autoreplace window
+STR_REPLACE_VEHICLE_SHIP                                        :जहाज
+STR_REPLACE_VEHICLE_AIRCRAFT                                    :विमान
 
 
 
@@ -965,6 +986,7 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :नवीन �
 
 
 
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}वेळ बदला
 
 
 
@@ -991,8 +1013,20 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :नवीन �
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 # Income 'floats'
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}किंमत: {CURRENCY}
+STR_INCOME_FLOAT_COST                                           :{RED}किंमत: {CURRENCY}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}कमाई: {CURRENCY}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}कमाई: {CURRENCY}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}अंदाजी किंमत: {CURRENCY}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}अंदाजी कमाई: {CURRENCY}
 
 # Saveload messages
 
@@ -1130,13 +1164,21 @@ STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :बेकवे
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :बेकवेल लकेट एल बी ८०
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :बेकवेल लकेट एल बी-१०
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :बेकवेल लकेट एल बी-११
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :येट एरोस्पेस वाय ए सी १-११
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :डार्विन १००
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :डार्विन २००
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :डार्विन ३००
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :डार्विन ४००
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :डार्विन ५००
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :डार्विन ६००
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :गुरु गेलेक्सी
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :एरटेक्सी ए२१
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :एरटेक्सी ए३१
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :एरटेक्सी ए३२
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :एरटेक्सी ए३३
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :येट एरोस्पेस वाय ए इ ४६
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :डिंगर १००
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :एरटेक्सी ए३४-१०००
 STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :येट झी-शटल
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :केल्लिंग के १
 STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :केल्लिंग के ६
