@@ -12,7 +12,7 @@ AILog.Info("1.0 API compatability in effect.");
 AIRoad._BuildRoadStation <- AIRoad.BuildRoadStation;
 AIRoad.BuildRoadStation <- function(tile, front, road_veh_type, station_id)
 {
-	if (AIRoad.IsRoadStationTile(tile)) return false;
+	if (AIRoad.IsRoadStationTile(tile) && AICompany.IsMine(AITile.GetOwner(tile))) return false;
 
 	return AIRoad._BuildRoadStation(tile, front, road_veh_type, station_id);
 }
@@ -20,7 +20,7 @@ AIRoad.BuildRoadStation <- function(tile, front, road_veh_type, station_id)
 AIRoad._BuildDriveThroughRoadStation <- AIRoad.BuildDriveThroughRoadStation;
 AIRoad.BuildDriveThroughRoadStation <- function(tile, front, road_veh_type, station_id)
 {
-	if (AIRoad.IsRoadStationTile(tile)) return false;
+	if (AIRoad.IsRoadStationTile(tile) && AICompany.IsMine(AITile.GetOwner(tile))) return false;
 
 	return AIRoad._BuildDriveThroughRoadStation(tile, front, road_veh_type, station_id);
 }
