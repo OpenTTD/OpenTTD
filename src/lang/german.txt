@@ -1018,7 +1018,7 @@ STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Wassera
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Wirtschaft: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Zug umkehren: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Katastrophen: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Toleranz der Stadtverwaltung gegenüber Abrißmaßnahmen: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Toleranz der Stadtverwaltung gegenüber Abrissmaßnahmen: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Keine
