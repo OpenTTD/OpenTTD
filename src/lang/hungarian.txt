@@ -3238,7 +3238,7 @@ STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Válaszd
 
 STR_ORDER_SERVICE                                               :{BLACK}Javítás
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mindig menj javítani
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Ha szükséges javítsd
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Ha javításra szorul
 STR_ORDER_DROP_HALT_DEPOT                                       :Maradj ott
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Célpont kihagyása, ha javítás szükséges
 

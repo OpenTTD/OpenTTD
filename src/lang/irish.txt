@@ -1026,6 +1026,7 @@ STR_NUM_LOW                                                     :Íseal
 STR_NUM_NORMAL                                                  :Gnáth
 STR_NUM_HIGH                                                    :Ard
 STR_NUM_CUSTOM                                                  :Saincheaptha
+STR_NUM_CUSTOM_NUMBER                                           :Saincheaptha ({NUM})
 
 STR_VARIETY_NONE                                                :Gan éagsúlacht
 STR_VARIETY_VERY_LOW                                            :An-íseal
@@ -1044,6 +1045,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :An-íseal
 STR_SEA_LEVEL_LOW                                               :Íseal
 STR_SEA_LEVEL_MEDIUM                                            :Meánach
 STR_SEA_LEVEL_HIGH                                              :Ard
+STR_SEA_LEVEL_CUSTOM                                            :Saincheaptha
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Saincheaptha ({NUM}%)
 
 STR_DISASTER_NONE                                               :Gan tubaistí
 STR_DISASTER_REDUCED                                            :Laghdaithe
@@ -1541,7 +1544,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Méid l�
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dáta
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Dáta reatha
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Blianta
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Achar blianta a{}bhfuil an cluiche ar rith
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Líon blianta a{}bhfuil an cluiche ar rith
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Teanga, leagan an fhreastalaí, srl.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliceáil ar chluiche ón liosta lena roghnú
@@ -2414,6 +2417,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Athshocr
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Socraigh go mbeidh a réamhshocrú ag gach paraiméadair
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Paraiméadar{NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Líon na bparaiméadar: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Déan iniúchadh - {STRING}
@@ -2720,6 +2724,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Táirgeacht an mhí seo caite:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} (iompraíodh {COMMA}%)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Láraigh an príomhamharc ar shuíomh an tionscail. Osclaítear amharc nua ar shuíomh an tionscail le Ctrl+Cliceáil
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Leibhéal táirgeachta: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Teastaíonn: {YELLOW}{STRING}{STRING}
@@ -2735,6 +2740,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Táirgte
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Athraigh táirgeacht (iolra de 8, suas go 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Athraigh an ráta táirgeachta (céatadán, suas go 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} {P Th Th Th dT T}raein
