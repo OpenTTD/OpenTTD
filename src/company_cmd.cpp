@@ -986,6 +986,9 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == _current_company) v->InvalidateNewGRFCache();
 		}
+
+		extern void UpdateObjectColours(const Company *c);
+		UpdateObjectColours(c);
 	}
 	return CommandCost();
 }

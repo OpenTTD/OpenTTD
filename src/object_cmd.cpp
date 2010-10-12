@@ -128,6 +128,27 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
 	}
 }
 
+/**
+ * Updates the colour of the object whenever a company changes.
+ * @param c The company the company colour changed of.
+ */
+void UpdateObjectColours(const Company *c)
+{
+	Object *obj;
+	FOR_ALL_OBJECTS(obj) {
+		Owner owner = GetTileOwner(obj->location.tile);
+		/* Not the current owner, so colour doesn't change. */
+		if (owner != c->index) continue;
+
+		const ObjectSpec *spec = ObjectSpec::GetByTile(obj->location.tile);
+		/* Using the object colour callback, so not using company colour. */
+		if (HasBit(spec->callback_mask, CBM_OBJ_COLOUR)) continue;
+
+		const Livery *l = c->livery;
+		obj->colour = ((spec->flags & OBJECT_FLAG_2CC_COLOUR) ? (l->colour2 * 16) : 0) + l->colour1;
+	}
+}
+
 extern CommandCost CheckBuildableTile(TileIndex tile, uint invalid_dirs, int &allowed_z, bool check_bridge);
 static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags);
 
