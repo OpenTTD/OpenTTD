@@ -1264,7 +1264,7 @@ public:
 		 * the order is copied to the last open window instead of the
 		 * one where GOTO is enabled
 		 */
-		if (v != NULL && this->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
+		if (v != NULL && this->owner == _local_company && this->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
 			_place_clicked_vehicle = NULL;
 			this->HandleOrderVehClick(v);
 		}
