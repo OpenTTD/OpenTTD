@@ -231,6 +231,7 @@ STR_BUTTON_RENAME                                               :{BLACK}Berrizen
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Itxi leihoa
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Leiho izena - Arrastatu hau leihoa mugitzeko
+STR_TOOLTIP_SHADE                                               :{BLACK}Itzal leihoa - titulu barra bakarrik ikusten da
 STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF depurazio informazioa ikusi
 STR_TOOLTIP_STICKY                                              :{BLACK}Markatu leiho hau itxiezina bezala 'Zarratu Leiho Guztiak' gakoarekin
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click eta arrastatu leiho honi tamaina aldatzeko
@@ -304,7 +305,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Grafikoa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Erakutsi konpaniaren elkarte zerrenda
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Eraiki industria berria edo industri guztien zerrenda erakutsi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}erakutsi konpaniako trenen zerrenda. Ctrl+Click taldea zabaltzea/garraioen zerrenda agertzea uzten du
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Erakusti konpaniako errepideko garraioen zerrenda. Ctrl+Click taldeen/garraioen zerrenda zabaltzen uzten du
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Konpaniako errepideko garraioen zerrenda erakutsi. Ctrl+Click taldeen/garraioen zerrenda zabaltzen uzten du
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Erakutsi konpaniako itsasontzien zerrenda. Ctrl+Click taldeen/garraioen zerrenda zabaltzen uzten du
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Erakutsi konpaniako hegazkinen zerrenda. Ctrl+Click taldearen/garraioaren zerrenda zabaltzen uzten du
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ikuspegia handitu
@@ -317,6 +318,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Zabaldu 
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Erakutsi soinu/musika leihoa
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Erakutsi azken mezu/albiste erreportaia, erakutsi mezu aukerak
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lur arearen informazioa, konsola, IA debug, screenshots, OpenTTDri buruz
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Erreminta barra
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Eszenarioa gorde, eszenarioa kargatu, eszenarioaren editorea itxi, irten
@@ -527,6 +529,9 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Ordainketa 10 unitate entregatzeagatik (edo 10,000 litro) 20 karratuko distatziako karga bategatik
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Dena gaitu
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Dena desgaitu
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Karga guztiak ikusi, karga salneurriaren grafikoan
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ez ikusi kargarik karga salneurriaren grafikoan
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Aukeratu zama mota on/off grafikoan
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Erakutsi performantzia balorazioak xehetasunekin
@@ -609,6 +614,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'Pertson
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'Pertsonala 2' (erabiltzaileak aukeratutakoa) programa aukeratu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Erakutsi kanten selekzio leihoa
 
+STR_ERROR_NO_SONGS                                              :{WHITE}Kantarik gabeko musika paketea aukeratua. Ez dago kantarik entzuteko
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Musika Programen Selekzioa
@@ -624,6 +630,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Musika k
 
 # Highscore window
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top companiak {NUM}{}({STRING} Nibela lortu dutenak)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Konpainien Ligaren Tabla {NUM}-tan
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Negozio gizona
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresarioa
@@ -665,6 +672,7 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Garraio-Ibilbideak
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Basoa
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Trenbide Geltokiak
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Kamioi karga badia
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Bus Geltokia
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aireportua/Heliportua
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Kaia
@@ -707,6 +715,7 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mezua
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Mezu Aukerak
 STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Mezu mota guztiak aldatu: Bat ere ez/Sumarioa/Denak-era
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Soinua entzun laburtutako notizi mezuetan
 STR_NEWS_MESSAGES_OFF                                           :Off
 STR_NEWS_MESSAGES_SUMMARY                                       :Sumarioa
 STR_NEWS_MESSAGES_FULL                                          :Betea
@@ -723,6 +732,7 @@ STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Produkz
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Produkzio aldaketak lehiakidearen(en) zerbitzatutako industriatan
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}OBeste indutria produkzio aldaketak
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Garraio berriak
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Aldaketak zama onarpenean
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsidioak
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informazio generala
 
@@ -741,26 +751,40 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Hegazkin Akzidentea!!{}Hegazkina erregai gabe geratu zen, {COMMA} hil dira eztandan
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Zeppelin akzidentea {STATION}-en!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}¡OVNI batekin talka eginda ibilgailua birrindurik dago !
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Petrolio findegi eztanda {TOWN}-(e)tik hurbil!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}¡Fabrika brirrindu da zirkustantzi arraroetan {TOWN} alboan!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'OHE' bat lurreratu da {TOWN}-(e)tik hurbil!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Garraio konpania arazoetan!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Garraio konpania fusionatua!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} saldua izan da {STRING}-(e)ri {CURRENCY}-(r)engatik!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Kiebra!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}¡{STRING} itxi egin da zorrengatik eta aktibo guztia saldu da!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Garraio konpania berri bat agertua!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} eraiketa hasten du {TOWN}-(e)tik hurbil!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}¡{STRING} ,{STRING}-ek erosia izan da!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Managerra)
 
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}¡{STRING}-ek hiri berri baten eraikuntza babestu du {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK} {STRING} berri bat eraikitzen {TOWN}-(e)tik hurbil!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} berria landatzen {TOWN}-(e)tik hurbil!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} itxialdi inminenetea jakinarazten du!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Hornigai arazoak direla eta {STRING}-ak lasterreko itxiera iragarri du!
 
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Munduko ekonomiaren atzeraldia!{}{}Finantza adituak beldurrez, ekonomiaren erortzearekin!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}¡Ekonomia atzeraldia bukatu da!{}{}¡Komertzio igoerak konfiantza eman die industriei!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} produkzioa igo du!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}¡Ikatz-zain berri bat aurkitu da {INDUSTRY}-en!{}¡Produkzioa bikoizteko itxaropena dago!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}¡Petrolio hornidura berri bar aurkitu da {INDUSTRY}-en!{}¡Produkzioa bikoizteko itxaropena dago !
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}¡Lantze metodo berriek {INDUSTRY}-an produkzioa bikoizteko itxaropena dakarte!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING} produkzioa {INDUSTRY}-an %{COMMA} igo da!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} produkzioak behera egin du %50 bat
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}¡Intsektuek eragindako hondamena {INDUSTRY}-an!{}Produkzioa %50 jaitsi da
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{STRING}¡ {INDUSTRY}-an %{COMMA} jaitsi da produkzioa!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} deposituan itxaroten dago
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} deposituan itxaroten dago
@@ -780,6 +804,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} oso zaharra bihurtzen ari da eta premiaz ordeztu behar da
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ezin du biderik aurkitu jarraitzeko.
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} galduta dago.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}-ren irabazia aurreko urtean {CURRENCY} izan da
 
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoberriketak huts egin du {VEHICLE}an{}{STRING}
 
@@ -798,6 +823,8 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Joko Aukerak
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Diru unitateak
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Diru unitatearen aukeraketa
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libra (£)
@@ -841,6 +868,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Errepideko garraioak
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Aukeratu ibilgailuen gidatzeko norabidea
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ezkerrera gidatu
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Eskuinera gidatu
 
@@ -872,6 +900,7 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanak
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-gordea
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Aukeratu jokua automatikoki gordetzeko denbora
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ez
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Hilabetero
@@ -880,6 +909,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6 hilabetero
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12 hilabetero
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Hizkuntza
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Aukeratu interfazean erabiltzeko hizkuntza
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantaila osoa
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Markatu kaxa hau OpenTTD pantaila osoko moduan jolasteko
@@ -891,29 +921,64 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screensh
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Screenshot-aren formatua aukeratu
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafiko basea markatu
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Aukeratu erabili beharreko grafiko paketea
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} galdutako/puskatutako artxiboa{P "" s}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Markatutako grafiko basearen informazio gehiago
 
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Musika pakete basikoa
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Aukeratu erabili beharreko soinu paketea
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Soinu paketearen informazio gehiago
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Base musika konfiguratu
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Aukeratu erabili beharreko musika paketea
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fitxategi hondatua{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Musika paketearen informazio gehiago
 
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Pantaila osoko moduak huts egin du
 
 # Custom currency window
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Diru mota kustomizatua
 
 
 
 
 
 # Difficulty level window
+STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Zailtasun maila
 
 ############ range for difficulty levels starts
+STR_DIFFICULTY_LEVEL_EASY                                       :{BLACK}Erraza
+STR_DIFFICULTY_LEVEL_MEDIUM                                     :{BLACK}Erdikoa
+STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Zaila
+STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Pertsonalizatua
 ############ range for difficulty levels ends
 
+STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Gorde
 
 ############ range for difficulty settings starts
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Konpetitzaile kopuru maximoa: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Hiri kopurua: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Industri kopurua: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Hasteko mailegu maximoa: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Hasteko interes kopurua: {ORANGE}{COMMA}%
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Ibilgailuen mantenimendu kostua: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Lehiakideen eraikuntza abiadura: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Ibilgailuen matxura: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Subentzioen biderkatzailea: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Eraiketzeko kostua: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Lursail mota: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Itsaso/laku kopurua: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomia: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Desastreak: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_NONE                                                        :Ezer ez
+STR_NUM_VERY_LOW                                                :Oso baxua
+STR_NUM_LOW                                                     :Baxua
+STR_NUM_NORMAL                                                  :Normala
+STR_NUM_HIGH                                                    :Altua
+STR_NUM_CUSTOM                                                  :Pertsonalizatua
 STR_NUM_CUSTOM_NUMBER                                           :Pertsonalizatua ({NUM})
 
 STR_VARIETY_NONE                                                :Ezer ez
@@ -923,31 +988,75 @@ STR_VARIETY_MEDIUM                                              :Erdia
 STR_VARIETY_HIGH                                                :Altu
 STR_VARIETY_VERY_HIGH                                           :Oso Altu
 
+STR_AI_SPEED_VERY_SLOW                                          :Oso poliki
+STR_AI_SPEED_SLOW                                               :Poliki
+STR_AI_SPEED_MEDIUM                                             :Erdikoa
+STR_AI_SPEED_FAST                                               :Azkar
+STR_AI_SPEED_VERY_FAST                                          :Oso azkar
 
+STR_SEA_LEVEL_VERY_LOW                                          :Oso baxua
+STR_SEA_LEVEL_LOW                                               :Baxua
+STR_SEA_LEVEL_MEDIUM                                            :Ertaina
+STR_SEA_LEVEL_HIGH                                              :Altua
 STR_SEA_LEVEL_CUSTOM                                            :Pertsonalizatua
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :(%{NUM}) pertsonalizatua
 
+STR_DISASTER_NONE                                               :Ezer ez
+STR_DISASTER_REDUCED                                            :Mugatua
+STR_DISASTER_NORMAL                                             :Normala
 
 STR_SUBSIDY_X1_5                                                :x1.5
 STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
+STR_TERRAIN_TYPE_VERY_FLAT                                      :Oso laua
+STR_TERRAIN_TYPE_FLAT                                           :Laua
+STR_TERRAIN_TYPE_HILLY                                          :Mendixkekin
+STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Menditsua
 
+STR_ECONOMY_STEADY                                              :Etengabea
+STR_ECONOMY_FLUCTUATING                                         :Fluktuazioekin
 
+STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Bidearen bukaeran eta estazioan
+STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Bidearen bukaeran bakarrik
 
+STR_DISASTERS_OFF                                               :Itzalita
+STR_DISASTERS_ON                                                :Piztuta
 
+STR_CITY_APPROVAL_PERMISSIVE                                    :Jasankorra
+STR_CITY_APPROVAL_TOLERANT                                      :Jasanbera
+STR_CITY_APPROVAL_HOSTILE                                       :Kontrakoa
 
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Ez dago IA egokirik aukeratzeko..{}IA asko jaitsi ditzakezu 'Online edukiera' sistemaren bidez
+STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Akzio honek zailtasun maila pertsonalizatura aldatuko du
 
 # Advanced settings window
+STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Konfigurazio aurreratuak
 
+STR_CONFIG_SETTING_OFF                                          :Itzalita
+STR_CONFIG_SETTING_ON                                           :Piztuta
+STR_CONFIG_SETTING_DISABLED                                     :desaktibatua
+STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Ibilgailuaren abiadura estatu barran ikusi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Aldapa eta kostan eraikitzea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tren oso luzeak eraikitzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Trenaren ke/txinparta kantitatea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Bat ere ez
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originala
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Errealista
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trenaren azelerazio modeloa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originala
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Errealista
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ibilgailuen azelerazio modelua: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originala
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Errealista
+STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflazioa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Zubi oso luzeak eraikitzea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ezer ez
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekzioa
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Area laua industrien inguruan: {ORANGE}{STRING} karratu{P 0:1 "" s}
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Indutria berdin asko baimendu hiri bakoitzean: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Data luzea ikusi beti estatu barran: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Hegazkinen akzidente kopurua : {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :bat ere ez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :txikitua

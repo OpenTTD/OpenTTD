@@ -1026,6 +1026,7 @@ STR_NUM_LOW                                                     :ต่ำ
 STR_NUM_NORMAL                                                  :ปกติ
 STR_NUM_HIGH                                                    :สูง
 STR_NUM_CUSTOM                                                  :กำหนดเอง
+STR_NUM_CUSTOM_NUMBER                                           :กำหนดเอง ({NUM})
 
 STR_VARIETY_NONE                                                :ไม่มี
 STR_VARIETY_VERY_LOW                                            :ต่ำมาก
@@ -1044,6 +1045,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :ต่ำมา
 STR_SEA_LEVEL_LOW                                               :ต่ำ
 STR_SEA_LEVEL_MEDIUM                                            :ปานกลาง
 STR_SEA_LEVEL_HIGH                                              :สูง
+STR_SEA_LEVEL_CUSTOM                                            :กำหนดเอง
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :กำหนดเอง ({NUM}%)
 
 STR_DISASTER_NONE                                               :ไม่มี
 STR_DISASTER_REDUCED                                            :ภาวะลดลง
@@ -1606,9 +1609,15 @@ STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}เร�
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}เริ่มเกมใหม่ในเครือข่ายจากแผนที่แบบสุ่มหรือแผนที่ที่สร้างเอง
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}โหลดเกม
 
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}พิมพ์ชื่อสำหรับเล่นในเครือข่าย
 
 # Network game languages
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ENGLISH                                        :ภาษาอังกฤษ
+STR_NETWORK_LANG_GERMAN                                         :ภาษาเยอรมัน
+STR_NETWORK_LANG_FRENCH                                         :ภาษาฝรั่งเศส
+STR_NETWORK_LANG_BRAZILIAN                                      :ภาษาบราซิล
+STR_NETWORK_LANG_BULGARIAN                                      :ภาษาบัลกาเรีย
 ############ End of leave-in-this-order
 
 # Network game lobby
@@ -2343,12 +2352,18 @@ STR_FORMAT_COMPANY_NUM                                          :(บริษ�
 STR_FORMAT_GROUP_NAME                                           :กลุ่ม {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} โรงซ่อมบำรุงรถ
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} โรงซ่อมบำรุงรถ #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} อู่เรือ
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} อู่เรือ #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} โรงเก็บเครื่องบิน
 
 STR_UNKNOWN_STATION                                             :ไม่ทราบสถานี
 STR_DEFAULT_SIGN_NAME                                           :ป้าย
 STR_COMPANY_SOMEONE                                             :บางคน
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :ผู้ชม, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
@@ -2368,6 +2383,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -2416,6 +2432,7 @@ STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 

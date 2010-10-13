@@ -1026,6 +1026,7 @@ STR_NUM_LOW                                                     :Sedikit
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Padat
 STR_NUM_CUSTOM                                                  :Bebas
+STR_NUM_CUSTOM_NUMBER                                           :Custom ({NUM})
 
 STR_VARIETY_NONE                                                :Tidak ada
 STR_VARIETY_VERY_LOW                                            :Sangat rendah
@@ -1044,6 +1045,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Sangat rendah
 STR_SEA_LEVEL_LOW                                               :Rendah
 STR_SEA_LEVEL_MEDIUM                                            :Sedang
 STR_SEA_LEVEL_HIGH                                              :Tinggi
+STR_SEA_LEVEL_CUSTOM                                            :Custom
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 STR_DISASTER_NONE                                               :Tidak pernah
 STR_DISASTER_REDUCED                                            :Dikurangi
@@ -2721,6 +2724,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produksi bulan kemarin
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% terkirim)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Arahkan pandangan utama pada lokasi industri. Ctrl+Click akan membuka viewport baru pada lokasi industri
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tingkat produksi: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Membutuhkan: {YELLOW}{STRING}{STRING}
@@ -2736,6 +2740,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Menghasi
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Perubahan produksi (kelipatan 8, hingga 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ubah tingkat produksi (dalam persen, hingga 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Kereta
