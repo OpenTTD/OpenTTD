@@ -16,6 +16,12 @@
 
 #include "network_internal.h"
 
+/** Class for handling the client side of the game connection. */
+class ClientNetworkGameSocketHandler : public NetworkGameSocketHandler {
+public:
+	ClientNetworkGameSocketHandler(SOCKET s);
+};
+
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GAME_INFO);
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO);
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(const CommandPacket *cp);

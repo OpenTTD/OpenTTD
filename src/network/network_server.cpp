@@ -30,11 +30,39 @@
 #include "../company_gui.h"
 #include "../window_func.h"
 #include "../roadveh.h"
+#include "../order_backup.h"
 #include "../rev.h"
 
 #include "table/strings.h"
 
 /* This file handles all the server-commands */
+
+DECLARE_POSTFIX_INCREMENT(ClientID)
+/** The identifier counter for new clients (is never decreased) */
+static ClientID _network_client_id = CLIENT_ID_FIRST;
+
+/**
+ * Create a new socket for the server side of the game connection.
+ * @param s The socket to connect with.
+ */
+ServerNetworkGameSocketHandler::ServerNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s)
+{
+	this->client_id = _network_client_id++;
+	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
+	this->SetInfo(ci);
+	ci->client_playas = COMPANY_INACTIVE_CLIENT;
+	ci->join_date = _date;
+}
+
+/**
+ * Clear everything related to this client.
+ */
+ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
+{
+	if (_redirect_console_to_client == this->client_id) _redirect_console_to_client = INVALID_CLIENT_ID;
+	OrderBackup::ResetUser(this->client_id);
+}
+
 
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs);
 

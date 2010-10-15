@@ -18,7 +18,6 @@
 #include "../network.h"
 #include "../network_internal.h"
 #include "../../core/pool_func.hpp"
-#include "../../order_backup.h"
 
 #include "table/strings.h"
 
@@ -29,18 +28,16 @@ assert_compile(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENT_SLOTS);
 NetworkClientSocketPool _networkclientsocket_pool("NetworkClientSocket");
 INSTANTIATE_POOL_METHODS(NetworkClientSocket)
 
-NetworkClientSocket::NetworkClientSocket(ClientID client_id)
+/**
+ * Create a new socket for the game connection.
+ * @param s The socket to connect with.
+ */
+NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s)
 {
-	this->client_id         = client_id;
 	this->status            = STATUS_INACTIVE;
-}
-
-NetworkClientSocket::~NetworkClientSocket()
-{
-	if (_redirect_console_to_client == this->client_id) _redirect_console_to_client = INVALID_CLIENT_ID;
-	if (_network_server) OrderBackup::ResetUser(this->client_id);
-	this->client_id = INVALID_CLIENT_ID;
-	this->status = STATUS_INACTIVE;
+	this->sock              = s;
+	this->last_frame        = _frame_counter;
+	this->last_frame_server = _frame_counter;
 }
 
 /**
@@ -51,7 +48,7 @@ NetworkClientSocket::~NetworkClientSocket()
  * @return the new status
  * TODO: needs to be splitted when using client and server socket packets
  */
-NetworkRecvStatus NetworkClientSocket::CloseConnection(bool error)
+NetworkRecvStatus NetworkGameSocketHandler::CloseConnection(bool error)
 {
 	/* Clients drop back to the main menu */
 	if (!_network_server && _networking) {

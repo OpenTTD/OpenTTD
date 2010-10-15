@@ -108,15 +108,18 @@ enum ClientStatus {
 	STATUS_END           ///< Must ALWAYS be on the end of this list!! (period)
 };
 
-class NetworkClientSocket;
+class NetworkGameSocketHandler;
+typedef NetworkGameSocketHandler NetworkClientSocket;
 typedef Pool<NetworkClientSocket, ClientIndex, 8, MAX_CLIENT_SLOTS> NetworkClientSocketPool;
 extern NetworkClientSocketPool _networkclientsocket_pool;
 
 /** Base socket handler for all TCP sockets */
-class NetworkClientSocket : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkTCPSocketHandler {
+class NetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkTCPSocketHandler {
 /* TODO: rewrite into a proper class */
 private:
 	NetworkClientInfo *info;  ///< Client info related to this socket
+protected:
+	NetworkGameSocketHandler(SOCKET s);
 public:
 	ClientID client_id;       ///< Client identifier
 	uint32 last_frame;        ///< Last frame we have executed
@@ -129,9 +132,7 @@ public:
 	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery
 
 	NetworkRecvStatus CloseConnection(bool error = true);
-
-	NetworkClientSocket(ClientID client_id = INVALID_CLIENT_ID);
-	~NetworkClientSocket();
+	virtual ~NetworkGameSocketHandler() {}
 
 	inline void SetInfo(NetworkClientInfo *info) { assert(info != NULL && this->info == NULL); this->info = info; }
 	inline NetworkClientInfo *GetInfo() const { return this->info; }

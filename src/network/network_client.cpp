@@ -28,11 +28,19 @@
 #include "../rev.h"
 #include "network.h"
 #include "network_base.h"
+#include "network_client.h"
 
 #include "table/strings.h"
 
 /* This file handles all the client-commands */
 
+/**
+ * Create a new socket for the client side of the game connection.
+ * @param s The socket to connect with.
+ */
+ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s)
+{
+}
 
 /* So we don't make too much typos ;) */
 #define MY_CLIENT NetworkClientSocket::Get(0)

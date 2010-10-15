@@ -16,6 +16,13 @@
 
 #include "network_internal.h"
 
+/** Class for handling the server side of the game connection. */
+class ServerNetworkGameSocketHandler : public NetworkGameSocketHandler {
+public:
+	ServerNetworkGameSocketHandler(SOCKET s);
+	~ServerNetworkGameSocketHandler();
+};
+
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP);
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientSocket *cs, ClientID client_id, NetworkErrorCode errorno);
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, NetworkErrorCode error);
