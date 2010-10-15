@@ -359,6 +359,7 @@ struct RefitWindow : public Window {
 	RefitOption *cargo;          ///< Refit option selected by \v sel.
 	SubtypeList list[NUM_CARGO]; ///< List of refit subtypes available for each sorted cargo.
 	VehicleOrderID order;        ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
+	uint information_width;      ///< Width required for correctly displaying all cargos in the information panel.
 	Scrollbar *vscroll;
 
 	/**
@@ -524,6 +525,10 @@ struct RefitWindow : public Window {
 				resize->height = WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
 				size->height = resize->height * 8;
 				break;
+
+			case VRW_INFOPANEL:
+				size->width = WD_FRAMERECT_LEFT + this->information_width + WD_FRAMERECT_RIGHT;
+				break;
 		}
 	}
 
@@ -560,6 +565,27 @@ struct RefitWindow : public Window {
 		switch (data) {
 			case 0: { // The consist lenght of the vehicle has changed; rebuild the entire list.
 				this->BuildRefitList();
+				uint max_width = 0;
+				Vehicle *v = Vehicle::Get(this->window_number);
+
+				/* Check the width of all cargo information strings. */
+				for (uint i = 0; i < NUM_CARGO; i++) {
+					for (uint j = 0; j < this->list[i].Length(); j++) {
+						CommandCost cost = DoCommand(v->tile, v->index, list[i][j].cargo | list[i][j].subtype << 8, DC_QUERY_COST, GetCmdRefitVeh(v->type));
+						if (cost.Succeeded()) {
+							SetDParam(0, list[i][j].cargo);
+							SetDParam(1, _returned_refit_capacity);
+							SetDParam(2, cost.GetCost());
+							Dimension dim = GetStringBoundingBox(STR_REFIT_NEW_CAPACITY_COST_OF_REFIT);
+							max_width = max(dim.width, max_width);
+						}
+					}
+				}
+
+				if (this->information_width < max_width) {
+					this->information_width = max_width;
+					this->ReInit();
+				}
 				/* FALL THROUGH */
 			}
 
