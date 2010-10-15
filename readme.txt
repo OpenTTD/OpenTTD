@@ -548,6 +548,7 @@ X.X) Credits:
 ---- --------
 The OpenTTD team (in alphabetical order):
   Albert Hofkamp (Alberth)       - GUI expert
+  Ingo von Borstel (planetmaker) - Support
   Jean-François Claeys (Belugas) - GUI, newindustries and more
   Matthijs Kooijman (blathijs)   - Pathfinder-guru, pool rework
   Christoph Elsenhans (frosch)   - General coding
