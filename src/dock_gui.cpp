@@ -111,46 +111,77 @@ enum DockToolbarWidgets {
 };
 
 
+/**
+  * Handle a click in the build canal widget.
+  * @param w #Window in which the widget was clicked.
+  */
 static void BuildDocksClick_Canal(Window *w)
 {
-
 	HandlePlacePushButton(w, DTW_CANAL, SPR_CURSOR_CANAL, HT_RECT, PlaceDocks_BuildCanal);
 }
 
+/**
+  * Handle a click in the build lock widget.
+  * @param w #Window in which the widget was clicked.
+  */
 static void BuildDocksClick_Lock(Window *w)
 {
 	HandlePlacePushButton(w, DTW_LOCK, SPR_CURSOR_LOCK, HT_RECT, PlaceDocks_BuildLock);
 }
 
+/**
+  * Handle a click in the demolish widget.
+  * @param w #Window in which the widget was clicked.
+  */
 static void BuildDocksClick_Demolish(Window *w)
 {
 	HandlePlacePushButton(w, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
 }
 
+/**
+  * Handle a click in the build ship depot widget.
+  * @param w #Window in which the widget was clicked.
+  */
 static void BuildDocksClick_Depot(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
 	if (HandlePlacePushButton(w, DTW_DEPOT, SPR_CURSOR_SHIP_DEPOT, HT_RECT, PlaceDocks_Depot)) ShowBuildDocksDepotPicker(w);
 }
 
+/**
+  * Handle a click in the build dock widget.
+  * @param w #Window in which the widget was clicked.
+  */
 static void BuildDocksClick_Dock(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
 	if (HandlePlacePushButton(w, DTW_STATION, SPR_CURSOR_DOCK, HT_SPECIAL, PlaceDocks_Dock)) ShowBuildDockStationPicker(w);
 }
 
+/**
+  * Handle a click in the build buoy widget.
+  * @param w #Window in which the widget was clicked.
+  */
 static void BuildDocksClick_Buoy(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
 	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, HT_RECT, PlaceDocks_Buoy);
 }
 
+/**
+  * Handle a click in the create river widget.
+  * @param w #Window in which the widget was clicked.
+  */
 static void BuildDocksClick_River(Window *w)
 {
 	if (_game_mode != GM_EDITOR) return;
 	HandlePlacePushButton(w, DTW_RIVER, SPR_CURSOR_RIVER, HT_RECT, PlaceDocks_BuildRiver);
 }
 
+/**
+  * Handle a click in the build aqueduct widget.
+  * @param w #Window in which the widget was clicked.
+  */
 static void BuildDocksClick_Aqueduct(Window *w)
 {
 	HandlePlacePushButton(w, DTW_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, HT_RECT, PlaceDocks_Aqueduct);
