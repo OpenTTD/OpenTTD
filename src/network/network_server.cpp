@@ -80,7 +80,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
 
-		NetworkGetClientName(client_name, sizeof(client_name), this);
+		this->GetClientName(client_name, sizeof(client_name));
 
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST);
 
@@ -164,7 +164,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	FOR_ALL_CLIENT_SOCKETS(csi) {
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
-		NetworkGetClientName(client_name, sizeof(client_name), csi);
+		((ServerNetworkGameSocketHandler*)csi)->GetClientName(client_name, sizeof(client_name));
 
 		ci = csi->GetInfo();
 		if (ci != NULL && Company::IsValidID(ci->client_playas)) {
@@ -229,7 +229,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 		NetworkClientSocket *new_cs;
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
-		NetworkGetClientName(client_name, sizeof(client_name), cs);
+		((ServerNetworkGameSocketHandler*)cs)->GetClientName(client_name, sizeof(client_name));
 
 		DEBUG(net, 1, "'%s' made an error and has been disconnected. Reason: '%s'", client_name, str);
 
@@ -923,7 +923,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MAP_OK)
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
 
-		NetworkGetClientName(client_name, sizeof(client_name), this);
+		this->GetClientName(client_name, sizeof(client_name));
 
 		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, client_name, NULL, this->client_id);
 
@@ -1039,7 +1039,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ERROR)
 		return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 	}
 
-	NetworkGetClientName(client_name, sizeof(client_name), this);
+	this->GetClientName(client_name, sizeof(client_name));
 
 	StringID strid = GetNetworkErrorMsg(errorno);
 	GetString(str, strid, lastof(str));
@@ -1069,7 +1069,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_QUIT)
 		return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 	}
 
-	NetworkGetClientName(client_name, sizeof(client_name), this);
+	this->GetClientName(client_name, sizeof(client_name));
 
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 
@@ -1808,6 +1808,23 @@ bool NetworkCompanyHasClients(CompanyID company)
 		if (ci->client_playas == company) return true;
 	}
 	return false;
+}
+
+
+/**
+ * Get the name of the client, if the user did not send it yet, Client #<no> is used.
+ * @param client_name The variable to write the name to.
+ * @param size        The amount of bytes we can write.
+ */
+void ServerNetworkGameSocketHandler::GetClientName(char *client_name, size_t size) const
+{
+	const NetworkClientInfo *ci = this->GetInfo();
+
+	if (StrEmpty(ci->client_name)) {
+		snprintf(client_name, size, "Client #%4d", this->client_id);
+	} else {
+		ttd_strlcpy(client_name, ci->client_name, size);
+	}
 }
 
 #endif /* ENABLE_NETWORK */

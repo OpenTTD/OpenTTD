@@ -40,6 +40,7 @@ public:
 	~ServerNetworkGameSocketHandler();
 
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status);
+	void GetClientName(char *client_name, size_t size) const;
 };
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP);

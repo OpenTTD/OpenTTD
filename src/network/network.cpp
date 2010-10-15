@@ -137,19 +137,6 @@ NetworkClientSocket *NetworkFindClientStateFromClientID(ClientID client_id)
 	return NULL;
 }
 
-/* NetworkGetClientName is a server-safe function to get the name of the client
- *  if the user did not send it yet, Client #<no> is used. */
-void NetworkGetClientName(char *client_name, size_t size, const NetworkClientSocket *cs)
-{
-	const NetworkClientInfo *ci = cs->GetInfo();
-
-	if (StrEmpty(ci->client_name)) {
-		snprintf(client_name, size, "Client #%4d", cs->client_id);
-	} else {
-		ttd_strlcpy(client_name, ci->client_name, size);
-	}
-}
-
 byte NetworkSpectatorCount()
 {
 	const NetworkClientInfo *ci;
