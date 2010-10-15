@@ -38,6 +38,8 @@ protected:
 public:
 	ServerNetworkGameSocketHandler(SOCKET s);
 	~ServerNetworkGameSocketHandler();
+
+	NetworkRecvStatus CloseConnection(NetworkRecvStatus status);
 };
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP);

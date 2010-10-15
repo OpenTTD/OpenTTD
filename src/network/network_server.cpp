@@ -63,6 +63,51 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 	OrderBackup::ResetUser(this->client_id);
 }
 
+NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
+{
+	assert(status != NETWORK_RECV_STATUS_OKAY);
+	/*
+	 * Sending a message just before leaving the game calls cs->Send_Packets.
+	 * This might invoke this function, which means that when we close the
+	 * connection after cs->Send_Packets we will close an already closed
+	 * connection. This handles that case gracefully without having to make
+	 * that code any more complex or more aware of the validity of the socket.
+	 */
+	if (this->sock == INVALID_SOCKET) return status;
+
+	if (status != NETWORK_RECV_STATUS_CONN_LOST && !this->HasClientQuit() && this->status >= STATUS_AUTHORIZED) {
+		/* We did not receive a leave message from this client... */
+		char client_name[NETWORK_CLIENT_NAME_LENGTH];
+		NetworkClientSocket *new_cs;
+
+		NetworkGetClientName(client_name, sizeof(client_name), this);
+
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST);
+
+		/* Inform other clients of this... strange leaving ;) */
+		FOR_ALL_CLIENT_SOCKETS(new_cs) {
+			if (new_cs->status > STATUS_AUTHORIZED && this != new_cs) {
+				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, this->client_id, NETWORK_ERROR_CONNECTION_LOST);
+			}
+		}
+	}
+
+	DEBUG(net, 1, "Closed client connection %d", this->client_id);
+
+	/* We just lost one client :( */
+	if (this->status >= STATUS_AUTHORIZED) _network_game_info.clients_on--;
+	extern byte _network_clients_connected;
+	_network_clients_connected--;
+
+	SetWindowDirty(WC_CLIENT_LIST, 0);
+
+	this->Send_Packets(true);
+
+	delete this->GetInfo();
+	delete this;
+
+	return status;
+}
 
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs);
 
@@ -205,7 +250,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, Netw
 	}
 
 	/* The client made a mistake, so drop his connection now! */
-	return NetworkCloseClient(cs, NETWORK_RECV_STATUS_SERVER_ERROR);
+	return cs->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
 }
 
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *cs)
@@ -245,7 +290,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_GAME_PASSWORD)(NetworkClientSoc
 	 */
 
 	/* Invalid packet when status is STATUS_AUTH_GAME or higher */
-	if (cs->status >= STATUS_AUTH_GAME) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	if (cs->status >= STATUS_AUTH_GAME) return cs->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	cs->status = STATUS_AUTH_GAME;
 
@@ -265,7 +310,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_COMPANY_PASSWORD)(NetworkClient
 	 */
 
 	/* Invalid packet when status is STATUS_AUTH_COMPANY or higher */
-	if (cs->status >= STATUS_AUTH_COMPANY) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	if (cs->status >= STATUS_AUTH_COMPANY) return cs->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	cs->status = STATUS_AUTH_COMPANY;
 
@@ -289,7 +334,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	NetworkClientSocket *new_cs;
 
 	/* Invalid packet when status is AUTH or higher */
-	if (cs->status >= STATUS_AUTHORIZED) return NetworkCloseClient(cs, NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	if (cs->status >= STATUS_AUTHORIZED) return cs->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
 	cs->status = STATUS_AUTHORIZED;
 	_network_game_info.clients_on++;
@@ -991,8 +1036,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ERROR)
 
 	/* The client was never joined.. thank the client for the packet, but ignore it */
 	if (this->status < STATUS_DONE_MAP || this->HasClientQuit()) {
-		this->CloseConnection();
-		return NETWORK_RECV_STATUS_CONN_LOST;
+		return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 	}
 
 	NetworkGetClientName(client_name, sizeof(client_name), this);
@@ -1010,8 +1054,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ERROR)
 		}
 	}
 
-	this->CloseConnection(false);
-	return NETWORK_RECV_STATUS_CONN_LOST;
+	return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 }
 
 DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_QUIT)
@@ -1023,8 +1066,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_QUIT)
 
 	/* The client was never joined.. thank the client for the packet, but ignore it */
 	if (this->status < STATUS_DONE_MAP || this->HasClientQuit()) {
-		this->CloseConnection();
-		return NETWORK_RECV_STATUS_CONN_LOST;
+		return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 	}
 
 	NetworkGetClientName(client_name, sizeof(client_name), this);
@@ -1037,8 +1079,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_QUIT)
 		}
 	}
 
-	this->CloseConnection(false);
-	return NETWORK_RECV_STATUS_CONN_LOST;
+	return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 }
 
 DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ACK)
@@ -1579,7 +1620,7 @@ void NetworkServer_Tick(bool send_frame)
 					/* Client did still not report in after 4 game-day, drop him
 					 *  (that is, the 3 of above, + 1 before any lag is counted) */
 					IConsolePrintF(CC_ERROR,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->client_id);
-					NetworkCloseClient(cs, NETWORK_RECV_STATUS_SERVER_ERROR);
+					cs->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
 					continue;
 				}
 
@@ -1595,13 +1636,13 @@ void NetworkServer_Tick(bool send_frame)
 			uint lag = NetworkCalculateLag(cs);
 			if (lag > _settings_client.network.max_join_time) {
 				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->client_id, _settings_client.network.max_join_time);
-				NetworkCloseClient(cs, NETWORK_RECV_STATUS_SERVER_ERROR);
+				cs->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
 			}
 		} else if (cs->status == STATUS_INACTIVE) {
 			uint lag = NetworkCalculateLag(cs);
 			if (lag > 4 * DAY_TICKS) {
 				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->client_id, 4 * DAY_TICKS);
-				NetworkCloseClient(cs, NETWORK_RECV_STATUS_SERVER_ERROR);
+				cs->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
 			}
 		}
 

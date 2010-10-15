@@ -53,6 +53,8 @@ public:
 	ClientNetworkGameSocketHandler(SOCKET s);
 	~ClientNetworkGameSocketHandler();
 
+	NetworkRecvStatus CloseConnection(NetworkRecvStatus status);
+
 	static NetworkRecvStatus SendCompanyInformationQuery();
 
 	static NetworkRecvStatus SendJoin();

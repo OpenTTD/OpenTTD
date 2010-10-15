@@ -91,7 +91,7 @@ extern NetworkUDPSocketHandler *_udp_master_socket; ///< udp master socket
 static SocketList _listensockets;
 
 /* The amount of clients connected */
-static byte _network_clients_connected = 0;
+byte _network_clients_connected = 0;
 
 /* Some externs / forwards */
 extern void StateGameLoop();
@@ -262,7 +262,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 	/* We just want to close the connection.. */
 	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
 		cs->NetworkSocketHandler::CloseConnection();
-		NetworkCloseClient(cs, res);
+		cs->CloseConnection(res);
 		_networking = false;
 
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
@@ -283,7 +283,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 	}
 
 	_switch_mode = SM_MENU;
-	NetworkCloseClient(cs, res);
+	cs->CloseConnection(res);
 	_networking = false;
 }
 
@@ -494,54 +494,6 @@ static NetworkClientSocket *NetworkAllocClient(SOCKET s)
 	return new ServerNetworkGameSocketHandler(s);
 }
 
-/* Close a connection */
-NetworkRecvStatus NetworkCloseClient(NetworkClientSocket *cs, NetworkRecvStatus status)
-{
-	assert(status != NETWORK_RECV_STATUS_OKAY);
-	/*
-	 * Sending a message just before leaving the game calls cs->Send_Packets.
-	 * This might invoke this function, which means that when we close the
-	 * connection after cs->Send_Packets we will close an already closed
-	 * connection. This handles that case gracefully without having to make
-	 * that code any more complex or more aware of the validity of the socket.
-	 */
-	if (cs->sock == INVALID_SOCKET) return status;
-
-	if (status != NETWORK_RECV_STATUS_CONN_LOST && !cs->HasClientQuit() && _network_server && cs->status >= STATUS_AUTHORIZED) {
-		/* We did not receive a leave message from this client... */
-		char client_name[NETWORK_CLIENT_NAME_LENGTH];
-		NetworkClientSocket *new_cs;
-
-		NetworkGetClientName(client_name, sizeof(client_name), cs);
-
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST);
-
-		/* Inform other clients of this... strange leaving ;) */
-		FOR_ALL_CLIENT_SOCKETS(new_cs) {
-			if (new_cs->status > STATUS_AUTHORIZED && cs != new_cs) {
-				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, NETWORK_ERROR_CONNECTION_LOST);
-			}
-		}
-	}
-
-	DEBUG(net, 1, "Closed client connection %d", cs->client_id);
-
-	if (_network_server) {
-		/* We just lost one client :( */
-		if (cs->status >= STATUS_AUTHORIZED) _network_game_info.clients_on--;
-		_network_clients_connected--;
-
-		SetWindowDirty(WC_CLIENT_LIST, 0);
-	}
-
-	cs->Send_Packets(true);
-
-	delete cs->GetInfo();
-	delete cs;
-
-	return status;
-}
-
 /* For the server, to accept new clients */
 static void NetworkAcceptClients(SOCKET ls)
 {
@@ -636,7 +588,7 @@ static void NetworkClose()
 			MyClient::SendQuit();
 			cs->Send_Packets();
 		}
-		NetworkCloseClient(cs, NETWORK_RECV_STATUS_CONN_LOST);
+		cs->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 	}
 
 	if (_network_server) {

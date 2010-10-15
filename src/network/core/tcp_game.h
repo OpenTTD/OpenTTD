@@ -179,6 +179,7 @@ public:
 	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery
 
 	NetworkRecvStatus CloseConnection(bool error = true);
+	virtual NetworkRecvStatus CloseConnection(NetworkRecvStatus status) = 0;
 	virtual ~NetworkGameSocketHandler() {}
 
 	inline void SetInfo(NetworkClientInfo *info) { assert(info != NULL && this->info == NULL); this->info = info; }

@@ -47,7 +47,6 @@ NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s)
  * For clients: close connection and drop back to main-menu
  * For servers: close connection and that is it
  * @return the new status
- * TODO: needs to be splitted when using client and server socket packets
  */
 NetworkRecvStatus NetworkGameSocketHandler::CloseConnection(bool error)
 {
@@ -61,7 +60,7 @@ NetworkRecvStatus NetworkGameSocketHandler::CloseConnection(bool error)
 		return NETWORK_RECV_STATUS_CONN_LOST;
 	}
 
-	return NetworkCloseClient(this, error ? NETWORK_RECV_STATUS_SERVER_ERROR : NETWORK_RECV_STATUS_CONN_LOST);
+	return this->CloseConnection(error ? NETWORK_RECV_STATUS_SERVER_ERROR : NETWORK_RECV_STATUS_CONN_LOST);
 }
 
 

@@ -166,7 +166,6 @@ void NetworkFreeLocalCommandQueue();
 void NetworkSyncCommandQueue(NetworkClientSocket *cs);
 
 /* from network.c */
-NetworkRecvStatus NetworkCloseClient(NetworkClientSocket *cs, NetworkRecvStatus status);
 void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_send, const char *name, const char *str = "", int64 data = 0);
 void NetworkGetClientName(char *clientname, size_t size, const NetworkClientSocket *cs);
 uint NetworkCalculateLag(const NetworkClientSocket *cs);
