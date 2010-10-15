@@ -475,25 +475,6 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 	}
 }
 
-/* Creates a new client from a socket
- *   Used both by the server and the client */
-static NetworkClientSocket *NetworkAllocClient(SOCKET s)
-{
-	if (!_network_server) {
-		return new ClientNetworkGameSocketHandler(s);
-	}
-
-	/* Can we handle a new client? */
-	if (_network_clients_connected >= MAX_CLIENTS) return NULL;
-	if (_network_game_info.clients_on >= _settings_client.network.max_clients) return NULL;
-
-	/* Register the login */
-	_network_clients_connected++;
-
-	SetWindowDirty(WC_CLIENT_LIST, 0);
-	return new ServerNetworkGameSocketHandler(s);
-}
-
 /* For the server, to accept new clients */
 static void NetworkAcceptClients(SOCKET ls)
 {
@@ -529,8 +510,9 @@ static void NetworkAcceptClients(SOCKET ls)
 		/* If this client is banned, continue with next client */
 		if (banned) continue;
 
-		NetworkClientSocket *cs = NetworkAllocClient(s);
-		if (cs == NULL) {
+		/* Can we handle a new client? */
+		if (_network_clients_connected >= MAX_CLIENTS ||
+				_network_game_info.clients_on >= _settings_client.network.max_clients) {
 			/* no more clients allowed?
 			 * Send to the client that we are full! */
 			Packet p(PACKET_SERVER_FULL);
@@ -542,11 +524,11 @@ static void NetworkAcceptClients(SOCKET ls)
 			continue;
 		}
 
-		/* a new client has connected. We set him at inactive for now
-		 *  maybe he is only requesting server-info. Till he has sent a PACKET_CLIENT_MAP_OK
-		 *  the client stays inactive */
-		cs->status = STATUS_INACTIVE;
+		/* Register the login */
+		_network_clients_connected++;
 
+		SetWindowDirty(WC_CLIENT_LIST, 0);
+		ServerNetworkGameSocketHandler *cs = new ServerNetworkGameSocketHandler(s);
 		cs->GetInfo()->client_address = address; // Save the IP of the client
 	}
 }
@@ -638,7 +620,7 @@ public:
 	virtual void OnConnect(SOCKET s)
 	{
 		_networking = true;
-		NetworkAllocClient(s);
+		new ClientNetworkGameSocketHandler(s);
 		MyClient::SendCompanyInformationQuery();
 	}
 };
@@ -721,7 +703,7 @@ public:
 	virtual void OnConnect(SOCKET s)
 	{
 		_networking = true;
-		NetworkAllocClient(s);
+		new ClientNetworkGameSocketHandler(s);
 		IConsoleCmdExec("exec scripts/on_client.scr 0");
 		NetworkClient_Connected();
 	}
