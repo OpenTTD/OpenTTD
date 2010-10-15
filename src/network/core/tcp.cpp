@@ -238,7 +238,7 @@ bool NetworkTCPSocketHandler::CanSendReceive()
 #endif
 
 	this->writable = !!FD_ISSET(this->sock, &write_fd);
-	return FD_ISSET(this->sock, &read_fd);
+	return FD_ISSET(this->sock, &read_fd) != 0;
 }
 
 #endif /* ENABLE_NETWORK */

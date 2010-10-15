@@ -66,7 +66,7 @@ static int32 ClickChangeCompanyCheat(int32 p1, int32 p2)
  */
 static int32 ClickSetProdCheat(int32 p1, int32 p2)
 {
-	_cheats.setup_prod.value = p1;
+	_cheats.setup_prod.value = (p1 != 0);
 	InvalidateWindowClassesData(WC_INDUSTRY_VIEW);
 	return _cheats.setup_prod.value;
 }
