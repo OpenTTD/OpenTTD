@@ -2343,6 +2343,9 @@
     <ClInclude Include="..\src\network\core\tcp_http.h">
       <Filter>Network Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\network\core\tcp_listen.h">
+      <Filter>Network Core</Filter>
+    </ClInclude>
     <ClCompile Include="..\src\network\core\udp.cpp">
       <Filter>Network Core</Filter>
     </ClCompile>

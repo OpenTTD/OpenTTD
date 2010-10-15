@@ -49,6 +49,9 @@ assert_compile(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENT_SLOTS);
 NetworkClientSocketPool _networkclientsocket_pool("NetworkClientSocket");
 INSTANTIATE_POOL_METHODS(NetworkClientSocket)
 
+/** Instantiate the listen sockets. */
+template SocketList TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED>::sockets;
+
 /**
  * Create a new socket for the server side of the game connection.
  * @param s The socket to connect with.
@@ -116,6 +119,32 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	delete this;
 
 	return status;
+}
+
+/**
+ * Whether an connection is allowed or not at this moment.
+ * @return true if the connection is allowed.
+ */
+/* static */ bool ServerNetworkGameSocketHandler::AllowConnection()
+{
+	extern byte _network_clients_connected;
+	return _network_clients_connected < MAX_CLIENTS && _network_game_info.clients_on < _settings_client.network.max_clients;
+}
+
+/** Send the packets for the server sockets. */
+/* static */ void ServerNetworkGameSocketHandler::Send()
+{
+	NetworkClientSocket *cs;
+	FOR_ALL_CLIENT_SOCKETS(cs) {
+		if (cs->writable) {
+			cs->Send_Packets();
+
+			if (cs->status == STATUS_MAP) {
+				/* This client is in the middle of a map-send, call the function for that */
+				cs->SendMap();
+			}
+		}
+	}
 }
 
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs);

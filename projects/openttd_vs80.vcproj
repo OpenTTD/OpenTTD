@@ -3519,6 +3519,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\network\core\tcp_listen.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\network\core\udp.cpp"
 				>
 			</File>

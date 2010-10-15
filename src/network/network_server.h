@@ -15,6 +15,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "network_internal.h"
+#include "core/tcp_listen.h"
 
 class ServerNetworkGameSocketHandler;
 typedef ServerNetworkGameSocketHandler NetworkClientSocket;
@@ -22,7 +23,7 @@ typedef Pool<NetworkClientSocket, ClientIndex, 8, MAX_CLIENT_SLOTS> NetworkClien
 extern NetworkClientSocketPool _networkclientsocket_pool;
 
 /** Class for handling the server side of the game connection. */
-class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkGameSocketHandler {
+class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkGameSocketHandler, public TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED> {
 protected:
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_JOIN);
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO);
@@ -76,6 +77,19 @@ public:
 	NetworkRecvStatus SendCommand(const CommandPacket *cp);
 	NetworkRecvStatus SendCompanyUpdate();
 	NetworkRecvStatus SendConfigUpdate();
+
+	static void Send();
+	static void AcceptConnection(SOCKET s, const NetworkAddress &address);
+	static bool AllowConnection();
+
+	/**
+	 * Get the name used by the listener.
+	 * @return the name to show in debug logs and the like.
+	 */
+	static const char *GetName()
+	{
+		return "server";
+	}
 };
 
 void NetworkServer_Tick(bool send_frame);

@@ -87,9 +87,6 @@ extern NetworkUDPSocketHandler *_udp_client_socket; ///< udp client socket
 extern NetworkUDPSocketHandler *_udp_server_socket; ///< udp server socket
 extern NetworkUDPSocketHandler *_udp_master_socket; ///< udp master socket
 
-/* The listen socket for the server */
-static SocketList _listensockets;
-
 /* The amount of clients connected */
 byte _network_clients_connected = 0;
 
@@ -232,12 +229,6 @@ void NetworkError(StringID error_string)
 	_switch_mode = SM_MENU;
 	extern StringID _switch_mode_errorstr;
 	_switch_mode_errorstr = error_string;
-}
-
-static void ServerStartError(const char *error)
-{
-	DEBUG(net, 0, "[server] could not start network: %s",error);
-	NetworkError(STR_NETWORK_ERROR_SERVER_START);
 }
 
 /**
@@ -428,82 +419,14 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 	}
 }
 
-/* For the server, to accept new clients */
-static void NetworkAcceptClients(SOCKET ls)
+/* static */ void ServerNetworkGameSocketHandler::AcceptConnection(SOCKET s, const NetworkAddress &address)
 {
-	for (;;) {
-		struct sockaddr_storage sin;
-		memset(&sin, 0, sizeof(sin));
-		socklen_t sin_len = sizeof(sin);
-		SOCKET s = accept(ls, (struct sockaddr*)&sin, &sin_len);
-		if (s == INVALID_SOCKET) return;
+	/* Register the login */
+	_network_clients_connected++;
 
-		SetNonBlocking(s); // XXX error handling?
-
-		NetworkAddress address(sin, sin_len);
-		DEBUG(net, 1, "Client connected from %s on frame %d", address.GetHostname(), _frame_counter);
-
-		SetNoDelay(s); // XXX error handling?
-
-		/* Check if the client is banned */
-		bool banned = false;
-		for (char **iter = _network_ban_list.Begin(); iter != _network_ban_list.End(); iter++) {
-			banned = address.IsInNetmask(*iter);
-			if (banned) {
-				Packet p(PACKET_SERVER_BANNED);
-				p.PrepareToSend();
-
-				DEBUG(net, 1, "Banned ip tried to join (%s), refused", *iter);
-
-				send(s, (const char*)p.buffer, p.size, 0);
-				closesocket(s);
-				break;
-			}
-		}
-		/* If this client is banned, continue with next client */
-		if (banned) continue;
-
-		/* Can we handle a new client? */
-		if (_network_clients_connected >= MAX_CLIENTS ||
-				_network_game_info.clients_on >= _settings_client.network.max_clients) {
-			/* no more clients allowed?
-			 * Send to the client that we are full! */
-			Packet p(PACKET_SERVER_FULL);
-			p.PrepareToSend();
-
-			send(s, (const char*)p.buffer, p.size, 0);
-			closesocket(s);
-
-			continue;
-		}
-
-		/* Register the login */
-		_network_clients_connected++;
-
-		SetWindowDirty(WC_CLIENT_LIST, 0);
-		ServerNetworkGameSocketHandler *cs = new ServerNetworkGameSocketHandler(s);
-		cs->GetInfo()->client_address = address; // Save the IP of the client
-	}
-}
-
-/* Set up the listen socket for the server */
-static bool NetworkListen()
-{
-	assert(_listensockets.Length() == 0);
-
-	NetworkAddressList addresses;
-	GetBindAddresses(&addresses, _settings_client.network.server_port);
-
-	for (NetworkAddress *address = addresses.Begin(); address != addresses.End(); address++) {
-		address->Listen(SOCK_STREAM, &_listensockets);
-	}
-
-	if (_listensockets.Length() == 0) {
-		ServerStartError("Could not create listening socket");
-		return false;
-	}
-
-	return true;
+	SetWindowDirty(WC_CLIENT_LIST, 0);
+	ServerNetworkGameSocketHandler *cs = new ServerNetworkGameSocketHandler(s);
+	cs->GetInfo()->client_address = address; // Save the IP of the client
 }
 
 /** Resets both pools used for network clients */
@@ -521,12 +444,7 @@ void NetworkClose()
 		FOR_ALL_CLIENT_SOCKETS(cs) {
 			cs->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 		}
-		/* We are a server, also close the listensocket */
-		for (SocketList::iterator s = _listensockets.Begin(); s != _listensockets.End(); s++) {
-			closesocket(s->second);
-		}
-		_listensockets.Clear();
-		DEBUG(net, 1, "[tcp] closed listeners");
+		ServerNetworkGameSocketHandler::CloseListeners();
 	} else if (MyClient::my_client != NULL) {
 		MyClient::SendQuit();
 		MyClient::my_client->Send_Packets();
@@ -713,7 +631,7 @@ bool NetworkServerStart()
 
 	NetworkDisconnect();
 	NetworkInitialize();
-	if (!NetworkListen()) return false;
+	if (!ServerNetworkGameSocketHandler::Listen(_settings_client.network.server_port)) return false;
 
 	/* Try to start UDP-server */
 	_network_udp_server = _udp_server_socket->Listen();
@@ -789,67 +707,20 @@ void NetworkDisconnect(bool blocking)
  */
 static bool NetworkReceive()
 {
-	if (!_network_server) {
+	if (_network_server) {
+		return ServerNetworkGameSocketHandler::Receive();
+	} else {
 		return ClientNetworkGameSocketHandler::Receive();
 	}
-	NetworkClientSocket *cs;
-	fd_set read_fd, write_fd;
-	struct timeval tv;
-
-	FD_ZERO(&read_fd);
-	FD_ZERO(&write_fd);
-
-	FOR_ALL_CLIENT_SOCKETS(cs) {
-		FD_SET(cs->sock, &read_fd);
-		FD_SET(cs->sock, &write_fd);
-	}
-
-	/* take care of listener port */
-	for (SocketList::iterator s = _listensockets.Begin(); s != _listensockets.End(); s++) {
-		FD_SET(s->second, &read_fd);
-	}
-
-	tv.tv_sec = tv.tv_usec = 0; // don't block at all.
-#if !defined(__MORPHOS__) && !defined(__AMIGA__)
-	int n = select(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv);
-#else
-	int n = WaitSelect(FD_SETSIZE, &read_fd, &write_fd, NULL, &tv, NULL);
-#endif
-	if (n == -1 && !_network_server) NetworkError(STR_NETWORK_ERROR_LOSTCONNECTION);
-
-	/* accept clients.. */
-	for (SocketList::iterator s = _listensockets.Begin(); s != _listensockets.End(); s++) {
-		if (FD_ISSET(s->second, &read_fd)) NetworkAcceptClients(s->second);
-	}
-
-	/* read stuff from clients */
-	FOR_ALL_CLIENT_SOCKETS(cs) {
-		cs->writable = !!FD_ISSET(cs->sock, &write_fd);
-		if (FD_ISSET(cs->sock, &read_fd)) {
-			cs->Recv_Packets();
-		}
-	}
-	return _networking;
 }
 
 /* This sends all buffered commands (if possible) */
 static void NetworkSend()
 {
-	if (!_network_server) {
+	if (_network_server) {
+		ServerNetworkGameSocketHandler::Send();
+	} else {
 		ClientNetworkGameSocketHandler::Send();
-		return;
-	}
-
-	NetworkClientSocket *cs;
-	FOR_ALL_CLIENT_SOCKETS(cs) {
-		if (cs->writable) {
-			cs->Send_Packets();
-
-			if (cs->status == STATUS_MAP) {
-				/* This client is in the middle of a map-send, call the function for that */
-				cs->SendMap();
-			}
-		}
 	}
 }
 
