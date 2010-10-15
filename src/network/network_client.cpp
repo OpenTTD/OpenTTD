@@ -40,10 +40,19 @@
  */
 ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s)
 {
+	assert(ClientNetworkGameSocketHandler::my_client == NULL);
+	ClientNetworkGameSocketHandler::my_client = this;
 }
 
-/* So we don't make too much typos ;) */
-#define MY_CLIENT NetworkClientSocket::Get(0)
+/** Clear whatever we assigned. */
+ClientNetworkGameSocketHandler::~ClientNetworkGameSocketHandler()
+{
+	assert(ClientNetworkGameSocketHandler::my_client == this);
+	ClientNetworkGameSocketHandler::my_client = NULL;
+}
+
+/** Our client's connection. */
+ClientNetworkGameSocketHandler * ClientNetworkGameSocketHandler::my_client = NULL;
 
 static uint32 last_ack_frame;
 
@@ -120,7 +129,7 @@ void HashCurrentCompanyPassword(const char *password)
  *   DEF_CLIENT_SEND_COMMAND has no parameters
  ************/
 
-DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyInformationQuery()
 {
 	/*
 	 * Packet: CLIENT_COMPANY_INFO
@@ -133,11 +142,11 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 	p = new Packet(PACKET_CLIENT_COMPANY_INFO);
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 {
 	/*
 	 * Packet: CLIENT_JOIN
@@ -158,11 +167,11 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	p->Send_string(_settings_client.network.client_name); // Client name
 	p->Send_uint8 (_network_join_as);     // PlayAs
 	p->Send_uint8 (NETLANG_ANY);          // Language
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
 {
 	/*
 	 * Packet: CLIENT_NEWGRFS_CHECKED
@@ -171,11 +180,11 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 	 */
 
 	Packet *p = new Packet(PACKET_CLIENT_NEWGRFS_CHECKED);
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_GAME_PASSWORD)(const char *password)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const char *password)
 {
 	/*
 	 * Packet: CLIENT_GAME_PASSWORD
@@ -186,11 +195,11 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_GAME_PASSWORD)(const char *password)
 	 */
 	Packet *p = new Packet(PACKET_CLIENT_GAME_PASSWORD);
 	p->Send_string(password);
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMPANY_PASSWORD)(const char *password)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyPassword(const char *password)
 {
 	/*
 	 * Packet: CLIENT_COMPANY_PASSWORD
@@ -201,11 +210,11 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMPANY_PASSWORD)(const char *passwo
 	 */
 	Packet *p = new Packet(PACKET_CLIENT_COMPANY_PASSWORD);
 	p->Send_string(GenerateCompanyPasswordHash(password));
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GETMAP)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 {
 	/*
 	 * Packet: CLIENT_GETMAP
@@ -222,11 +231,11 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GETMAP)
 	 * will have the lower bits set to 0. As such they would become
 	 * incompatible, which we would like to prevent by this. */
 	if (HasBit(_openttd_newgrf_version, 19)) p->Send_uint32(_openttd_newgrf_version);
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_MAP_OK)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
 {
 	/*
 	 * Packet: CLIENT_MAP_OK
@@ -236,11 +245,11 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_MAP_OK)
 	 */
 
 	Packet *p = new Packet(PACKET_CLIENT_MAP_OK);
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
 {
 	/*
 	 * Packet: CLIENT_ACK
@@ -252,12 +261,12 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
 	Packet *p = new Packet(PACKET_CLIENT_ACK);
 
 	p->Send_uint32(_frame_counter);
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /* Send a command packet to the server */
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(const CommandPacket *cp)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacket *cp)
 {
 	/*
 	 * Packet: CLIENT_COMMAND
@@ -273,14 +282,14 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(const CommandPacket *cp)
 	 */
 
 	Packet *p = new Packet(PACKET_CLIENT_COMMAND);
-	MY_CLIENT->Send_Command(p, cp);
+	my_client->Send_Command(p, cp);
 
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /* Send a chat-packet over the network */
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
 {
 	/*
 	 * Packet: CLIENT_CHAT
@@ -301,12 +310,12 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	p->Send_string(msg);
 	p->Send_uint64(data);
 
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /* Send an error-packet over the network */
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_ERROR)(NetworkErrorCode errorno)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode errorno)
 {
 	/*
 	 * Packet: CLIENT_ERROR
@@ -317,11 +326,11 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_ERROR)(NetworkErrorCode errorno)
 	Packet *p = new Packet(PACKET_CLIENT_ERROR);
 
 	p->Send_uint8(errorno);
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const char *password)
 {
 	/*
 	 * Packet: PACKET_CLIENT_SET_PASSWORD
@@ -332,11 +341,11 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password)
 	Packet *p = new Packet(PACKET_CLIENT_SET_PASSWORD);
 
 	p->Send_string(GenerateCompanyPasswordHash(password));
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const char *name)
 {
 	/*
 	 * Packet: PACKET_CLIENT_SET_NAME
@@ -347,12 +356,12 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
 	Packet *p = new Packet(PACKET_CLIENT_SET_NAME);
 
 	p->Send_string(name);
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /* Send an quit-packet over the network */
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)()
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
 {
 	/*
 	 * Packet: CLIENT_QUIT
@@ -361,25 +370,25 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)()
 	 */
 	Packet *p = new Packet(PACKET_CLIENT_QUIT);
 
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *command)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const char *pass, const char *command)
 {
 	Packet *p = new Packet(PACKET_CLIENT_RCON);
 	p->Send_string(pass);
 	p->Send_string(command);
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_MOVE)(CompanyID company, const char *pass)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company, const char *pass)
 {
 	Packet *p = new Packet(PACKET_CLIENT_MOVE);
 	p->Send_uint8(company);
 	p->Send_string(GenerateCompanyPasswordHash(pass));
-	MY_CLIENT->Send_Packet(p);
+	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -558,7 +567,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHECK_NEWGRFS)
 
 	if (ret == NETWORK_RECV_STATUS_OKAY) {
 		/* Start receiving the map */
-		return SEND_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)();
+		return SendNewGRFsOk();
 	}
 
 	/* NewGRF mismatch, bail out */
@@ -570,7 +579,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEED_GAME_PASSWORD)
 {
 	const char *password = _network_join_server_password;
 	if (!StrEmpty(password)) {
-		return SEND_COMMAND(PACKET_CLIENT_GAME_PASSWORD)(password);
+		return SendGamePassword(password);
 	}
 
 	ShowNetworkNeedPassword(NETWORK_GAME_PASSWORD);
@@ -586,7 +595,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEED_COMPANY_PASSWORD)
 
 	const char *password = _network_join_company_password;
 	if (!StrEmpty(password)) {
-		return SEND_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)(password);
+		return SendCompanyPassword(password);
 	}
 
 	ShowNetworkNeedPassword(NETWORK_COMPANY_PASSWORD);
@@ -603,7 +612,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WELCOME)
 	p->Recv_string(_password_server_id, sizeof(_password_server_id));
 
 	/* Start receiving the map */
-	return SEND_COMMAND(PACKET_CLIENT_GETMAP)();
+	return SendGetMap();
 }
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WAIT)
@@ -685,7 +694,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP)
 		 * only toolbar/statusbar and gamefield are visible */
 
 		/* Say we received the map and loaded it correctly! */
-		SEND_COMMAND(PACKET_CLIENT_MAP_OK)();
+		SendMapOk();
 
 		/* New company/spectator (invalid company) or company we want to join is not active
 		 * Switch local company to spectator and await the server's judgement */
@@ -730,7 +739,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_FRAME)
 	if (!_network_first_time && last_ack_frame < _frame_counter) {
 		last_ack_frame = _frame_counter + DAY_TICKS;
 		DEBUG(net, 4, "Sent ACK at %d", _frame_counter);
-		SEND_COMMAND(PACKET_CLIENT_ACK)();
+		SendAck();
 	}
 
 	return NETWORK_RECV_STATUS_OKAY;
@@ -944,12 +953,12 @@ void NetworkClient_Connected()
 	_frame_counter_server = 0;
 	last_ack_frame = 0;
 	/* Request the game-info */
-	SEND_COMMAND(PACKET_CLIENT_JOIN)();
+	MyClient::SendJoin();
 }
 
 void NetworkClientSendRcon(const char *password, const char *command)
 {
-	SEND_COMMAND(PACKET_CLIENT_RCON)(password, command);
+	MyClient::SendRCon(password, command);
 }
 
 /**
@@ -960,7 +969,7 @@ void NetworkClientSendRcon(const char *password, const char *command)
  */
 void NetworkClientRequestMove(CompanyID company_id, const char *pass)
 {
-	SEND_COMMAND(PACKET_CLIENT_MOVE)(company_id, pass);
+	MyClient::SendMove(company_id, pass);
 }
 
 void NetworkClientsToSpectators(CompanyID cid)
@@ -985,7 +994,7 @@ void NetworkUpdateClientName()
 	/* Don't change the name if it is the same as the old name */
 	if (strcmp(ci->client_name, _settings_client.network.client_name) != 0) {
 		if (!_network_server) {
-			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_settings_client.network.client_name);
+			MyClient::SendSetName(_settings_client.network.client_name);
 		} else {
 			if (NetworkFindName(_settings_client.network.client_name)) {
 				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, _settings_client.network.client_name);
@@ -998,12 +1007,12 @@ void NetworkUpdateClientName()
 
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
 {
-	SEND_COMMAND(PACKET_CLIENT_CHAT)(action, type, dest, msg, data);
+	MyClient::SendChat(action, type, dest, msg, data);
 }
 
 static void NetworkClientSetPassword(const char *password)
 {
-	SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(password);
+	MyClient::SendSetPassword(password);
 }
 
 /**

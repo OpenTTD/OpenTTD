@@ -175,9 +175,6 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 
 /* Macros to make life a bit more easier */
-#define DEF_CLIENT_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(Packet *p)
-#define DEF_CLIENT_SEND_COMMAND(type) NetworkRecvStatus NetworkPacketSend_ ## type ## _command()
-#define DEF_CLIENT_SEND_COMMAND_PARAM(type) NetworkRecvStatus NetworkPacketSend_ ## type ## _command
 #define DEF_SERVER_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(NetworkClientSocket *cs, Packet *p)
 #define DEF_SERVER_SEND_COMMAND(type) NetworkRecvStatus NetworkPacketSend_ ## type ## _command(NetworkClientSocket *cs)
 #define DEF_SERVER_SEND_COMMAND_PARAM(type) NetworkRecvStatus NetworkPacketSend_ ## type ## _command

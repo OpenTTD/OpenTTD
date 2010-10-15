@@ -2240,8 +2240,8 @@ struct NetworkJoinStatusWindow : Window {
 		}
 
 		switch (this->password_type) {
-			case NETWORK_GAME_PASSWORD:    SEND_COMMAND(PACKET_CLIENT_GAME_PASSWORD)   (str); break;
-			case NETWORK_COMPANY_PASSWORD: SEND_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)(str); break;
+			case NETWORK_GAME_PASSWORD:    MyClient::SendGamePassword   (str); break;
+			case NETWORK_COMPANY_PASSWORD: MyClient::SendCompanyPassword(str); break;
 			default: NOT_REACHED();
 		}
 	}

@@ -19,6 +19,8 @@
 /** Class for handling the client side of the game connection. */
 class ClientNetworkGameSocketHandler : public NetworkGameSocketHandler {
 protected:
+	static ClientNetworkGameSocketHandler *my_client;
+
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_FULL);
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_BANNED);
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_ERROR);
@@ -43,23 +45,33 @@ protected:
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MOVE);
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_UPDATE);
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_CONFIG_UPDATE);
+
+	static NetworkRecvStatus SendNewGRFsOk();
+	static NetworkRecvStatus SendGetMap();
+	static NetworkRecvStatus SendMapOk();
 public:
 	ClientNetworkGameSocketHandler(SOCKET s);
+	~ClientNetworkGameSocketHandler();
+
+	static NetworkRecvStatus SendCompanyInformationQuery();
+
+	static NetworkRecvStatus SendJoin();
+	static NetworkRecvStatus SendCommand(const CommandPacket *cp);
+	static NetworkRecvStatus SendError(NetworkErrorCode errorno);
+	static NetworkRecvStatus SendQuit();
+	static NetworkRecvStatus SendAck();
+
+	static NetworkRecvStatus SendGamePassword(const char *password);
+	static NetworkRecvStatus SendCompanyPassword(const char *password);
+
+	static NetworkRecvStatus SendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data);
+	static NetworkRecvStatus SendSetPassword(const char *password);
+	static NetworkRecvStatus SendSetName(const char *name);
+	static NetworkRecvStatus SendRCon(const char *password, const char *command);
+	static NetworkRecvStatus SendMove(CompanyID company, const char *password);
 };
 
-DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_GAME_INFO);
-DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO);
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(const CommandPacket *cp);
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_ERROR)(NetworkErrorCode errorno);
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)();
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType desttype, int dest, const char *msg, int64 data);
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_GAME_PASSWORD)(const char *password);
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMPANY_PASSWORD)(const char *password);
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password);
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name);
-DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK);
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *command);
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_MOVE)(CompanyID company, const char *pass);
+typedef ClientNetworkGameSocketHandler MyClient;
 
 void NetworkClient_Connected();
 

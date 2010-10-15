@@ -151,7 +151,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 	c.frame = 0; // The client can't tell which frame, so just make it 0
 
 	/* Clients send their command to the server and forget all about the packet */
-	SEND_COMMAND(PACKET_CLIENT_COMMAND)(&c);
+	MyClient::SendCommand(&c);
 }
 
 /**

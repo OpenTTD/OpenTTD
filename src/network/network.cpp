@@ -279,7 +279,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 	/* This means we fucked up and the server closed the connection */
 	if (res != NETWORK_RECV_STATUS_SERVER_ERROR && res != NETWORK_RECV_STATUS_SERVER_FULL &&
 			res != NETWORK_RECV_STATUS_SERVER_BANNED) {
-		SEND_COMMAND(PACKET_CLIENT_ERROR)(errorno);
+		MyClient::SendError(errorno);
 	}
 
 	_switch_mode = SM_MENU;
@@ -633,7 +633,7 @@ static void NetworkClose()
 
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (!_network_server) {
-			SEND_COMMAND(PACKET_CLIENT_QUIT)();
+			MyClient::SendQuit();
 			cs->Send_Packets();
 		}
 		NetworkCloseClient(cs, NETWORK_RECV_STATUS_CONN_LOST);
@@ -687,7 +687,7 @@ public:
 	{
 		_networking = true;
 		NetworkAllocClient(s);
-		SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)();
+		MyClient::SendCompanyInformationQuery();
 	}
 };
 
@@ -1003,7 +1003,7 @@ static bool NetworkDoClientLoop()
 			 *   frame as he is.. so we can start playing! */
 			if (_network_first_time) {
 				_network_first_time = false;
-				SEND_COMMAND(PACKET_CLIENT_ACK)();
+				MyClient::SendAck();
 			}
 
 			_sync_frame = 0;
