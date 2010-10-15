@@ -126,7 +126,7 @@ static void BuildDocksClick_Canal(Window *w)
   */
 static void BuildDocksClick_Lock(Window *w)
 {
-	HandlePlacePushButton(w, DTW_LOCK, SPR_CURSOR_LOCK, HT_RECT, PlaceDocks_BuildLock);
+	HandlePlacePushButton(w, DTW_LOCK, SPR_CURSOR_LOCK, HT_SPECIAL, PlaceDocks_BuildLock);
 }
 
 /**
@@ -201,8 +201,11 @@ static OnButtonClick * const _build_docks_button_proc[] = {
 };
 
 struct BuildDocksToolbarWindow : Window {
+	DockToolbarWidgets last_clicked_widget; ///< Contains the last widget that has been clicked on this toolbar.
+
 	BuildDocksToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
+		this->last_clicked_widget = DTW_END;
 		this->InitNested(desc, window_number);
 		this->OnInvalidateData();
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
@@ -229,6 +232,7 @@ struct BuildDocksToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
+		this->last_clicked_widget = (DockToolbarWidgets)widget;
 		if (widget >= DTW_BUTTONS_BEGIN) _build_docks_button_proc[widget - DTW_BUTTONS_BEGIN](this);
 	}
 
@@ -287,6 +291,7 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, NULL));
 		TileIndex tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile_from, ReverseDiagDir(dir)) : tile_from);
+		tile_from = this->last_clicked_widget == DTW_LOCK && dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile_from, dir) : tile_from;
 
 		VpSetPresizeRange(tile_from, tile_to);
 	}
