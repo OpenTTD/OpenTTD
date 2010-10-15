@@ -27,7 +27,6 @@
  */
 NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s)
 {
-	this->status            = STATUS_INACTIVE;
 	this->sock              = s;
 	this->last_frame        = _frame_counter;
 	this->last_frame_server = _frame_counter;

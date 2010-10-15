@@ -55,6 +55,7 @@ INSTANTIATE_POOL_METHODS(NetworkClientSocket)
  */
 ServerNetworkGameSocketHandler::ServerNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s)
 {
+	this->status = STATUS_INACTIVE;
 	this->client_id = _network_client_id++;
 	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
 	this->SetInfo(ci);

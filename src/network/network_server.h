@@ -47,7 +47,12 @@ protected:
 	NetworkRecvStatus SendWait();
 	NetworkRecvStatus SendNeedGamePassword();
 	NetworkRecvStatus SendNeedCompanyPassword();
+
 public:
+	byte lag_test;               ///< Byte used for lag-testing the client
+	ClientStatus status;         ///< Status of this client
+	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery
+
 	ServerNetworkGameSocketHandler(SOCKET s);
 	~ServerNetworkGameSocketHandler();
 

@@ -163,15 +163,10 @@ protected:
 
 	NetworkGameSocketHandler(SOCKET s);
 public:
-	ClientID client_id;       ///< Client identifier
-	uint32 last_frame;        ///< Last frame we have executed
-	uint32 last_frame_server; ///< Last frame the server has executed
-	byte lag_test;            ///< Byte used for lag-testing the client
-
-	ClientStatus status;      ///< Status of this client
-
+	ClientID client_id;          ///< Client identifier
+	uint32 last_frame;           ///< Last frame we have executed
+	uint32 last_frame_server;    ///< Last frame the server has executed
 	CommandQueue incoming_queue; ///< The command-queue awaiting handling
-	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery
 
 	NetworkRecvStatus CloseConnection(bool error = true);
 	virtual NetworkRecvStatus CloseConnection(NetworkRecvStatus status) = 0;
