@@ -596,6 +596,12 @@ private:
 		}
 
 		DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 20), MOF_UNLOAD | (unload_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
+
+		/* Transfer orders with leave empty as default */
+		if (unload_type == OUFB_TRANSFER) {
+			DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 20), MOF_LOAD | (OLFB_NO_LOAD << 4), CMD_MODIFY_ORDER);
+			this->SetWidgetDirty(ORDER_WIDGET_FULL_LOAD);
+		}
 	}
 
 	/**
