@@ -16,8 +16,13 @@
 
 #include "network_internal.h"
 
+class ServerNetworkGameSocketHandler;
+typedef ServerNetworkGameSocketHandler NetworkClientSocket;
+typedef Pool<NetworkClientSocket, ClientIndex, 8, MAX_CLIENT_SLOTS> NetworkClientSocketPool;
+extern NetworkClientSocketPool _networkclientsocket_pool;
+
 /** Class for handling the server side of the game connection. */
-class ServerNetworkGameSocketHandler : public NetworkGameSocketHandler {
+class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkGameSocketHandler {
 protected:
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_JOIN);
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO);
@@ -53,6 +58,9 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_MOVE)(NetworkClientSocket *cs, uint1
 
 void NetworkServer_ReadPackets(NetworkClientSocket *cs);
 void NetworkServer_Tick(bool send_frame);
+
+#define FOR_ALL_CLIENT_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientSocket, clientsocket_index, var, start)
+#define FOR_ALL_CLIENT_SOCKETS(var) FOR_ALL_CLIENT_SOCKETS_FROM(var, 0)
 
 #else /* ENABLE_NETWORK */
 /* Network function stubs when networking is disabled */

@@ -108,16 +108,11 @@ enum ClientStatus {
 	STATUS_END           ///< Must ALWAYS be on the end of this list!! (period)
 };
 
-class NetworkGameSocketHandler;
-typedef NetworkGameSocketHandler NetworkClientSocket;
-typedef Pool<NetworkClientSocket, ClientIndex, 8, MAX_CLIENT_SLOTS> NetworkClientSocketPool;
-extern NetworkClientSocketPool _networkclientsocket_pool;
-
 #define DECLARE_GAME_RECEIVE_COMMAND(type) virtual NetworkRecvStatus NetworkPacketReceive_## type ##_command(Packet *p)
 #define DEF_GAME_RECEIVE_COMMAND(cls, type) NetworkRecvStatus cls ##NetworkGameSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p)
 
 /** Base socket handler for all TCP sockets */
-class NetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkTCPSocketHandler {
+class NetworkGameSocketHandler : public NetworkTCPSocketHandler {
 /* TODO: rewrite into a proper class */
 private:
 	NetworkClientInfo *info;  ///< Client info related to this socket
@@ -190,9 +185,6 @@ public:
 	const char *Recv_Command(Packet *p, CommandPacket *cp);
 	void Send_Command(Packet *p, const CommandPacket *cp);
 };
-
-#define FOR_ALL_CLIENT_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientSocket, clientsocket_index, var, start)
-#define FOR_ALL_CLIENT_SOCKETS(var) FOR_ALL_CLIENT_SOCKETS_FROM(var, 0)
 
 #endif /* ENABLE_NETWORK */
 

@@ -514,25 +514,23 @@ static void InitializeNetworkPools()
 }
 
 /* Close all current connections */
-static void NetworkClose()
+void NetworkClose()
 {
-	NetworkClientSocket *cs;
-
-	FOR_ALL_CLIENT_SOCKETS(cs) {
-		if (!_network_server) {
-			MyClient::SendQuit();
-			cs->Send_Packets();
-		}
-		cs->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
-	}
-
 	if (_network_server) {
+		NetworkClientSocket *cs;
+		FOR_ALL_CLIENT_SOCKETS(cs) {
+			cs->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
+		}
 		/* We are a server, also close the listensocket */
 		for (SocketList::iterator s = _listensockets.Begin(); s != _listensockets.End(); s++) {
 			closesocket(s->second);
 		}
 		_listensockets.Clear();
 		DEBUG(net, 1, "[tcp] closed listeners");
+	} else if (MyClient::my_client != NULL) {
+		MyClient::SendQuit();
+		MyClient::my_client->Send_Packets();
+		MyClient::my_client->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 	}
 
 	TCPConnecter::KillAll();

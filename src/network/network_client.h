@@ -17,8 +17,10 @@
 #include "network_internal.h"
 
 /** Class for handling the client side of the game connection. */
-class ClientNetworkGameSocketHandler : public NetworkGameSocketHandler {
+class ClientNetworkGameSocketHandler : public ZeroedMemoryAllocator, public NetworkGameSocketHandler {
 protected:
+	friend void NetworkExecuteLocalCommandQueue();
+	friend void NetworkClose();
 	static ClientNetworkGameSocketHandler *my_client;
 
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_FULL);

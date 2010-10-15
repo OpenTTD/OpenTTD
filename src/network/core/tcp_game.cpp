@@ -17,17 +17,9 @@
 
 #include "../network.h"
 #include "../network_internal.h"
-#include "../../core/pool_func.hpp"
 #include "../../debug.h"
 
 #include "table/strings.h"
-
-/** Make very sure the preconditions given in network_type.h are actually followed */
-assert_compile(MAX_CLIENT_SLOTS > MAX_CLIENTS);
-assert_compile(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENT_SLOTS);
-
-NetworkClientSocketPool _networkclientsocket_pool("NetworkClientSocket");
-INSTANTIATE_POOL_METHODS(NetworkClientSocket)
 
 /**
  * Create a new socket for the game connection.
@@ -75,7 +67,7 @@ NetworkRecvStatus NetworkGameSocketHandler::CloseConnection(bool error)
  * @param p the packet to handle
  * @return #NetworkRecvStatus of handling.
  */
-NetworkRecvStatus NetworkClientSocket::HandlePacket(Packet *p)
+NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 {
 	PacketGameType type = (PacketGameType)p->Recv_uint8();
 
@@ -140,7 +132,7 @@ NetworkRecvStatus NetworkClientSocket::HandlePacket(Packet *p)
  * HandlePacket is returned.
  * @return #NetworkRecvStatus of the last handled packet.
  */
-NetworkRecvStatus NetworkClientSocket::Recv_Packets()
+NetworkRecvStatus NetworkGameSocketHandler::Recv_Packets()
 {
 	Packet *p;
 	while ((p = this->Recv_Packet()) != NULL) {
@@ -158,7 +150,7 @@ NetworkRecvStatus NetworkClientSocket::Recv_Packets()
  * @param type the packet type to create the stub for
  */
 #define DEFINE_UNAVAILABLE_GAME_RECEIVE_COMMAND(type) \
-NetworkRecvStatus NetworkClientSocket::NetworkPacketReceive_## type ##_command(Packet *p) \
+NetworkRecvStatus NetworkGameSocketHandler::NetworkPacketReceive_## type ##_command(Packet *p) \
 { \
 	DEBUG(net, 0, "[tcp/game] received illegal packet type %d from client %d", \
 			type, this->client_id); \

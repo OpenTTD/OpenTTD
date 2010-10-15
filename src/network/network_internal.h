@@ -50,6 +50,8 @@ extern bool _ddc_fastforward;
 #define _ddc_fastforward (false)
 #endif /* DEBUG_DUMP_COMMANDS */
 
+typedef class ServerNetworkGameSocketHandler NetworkClientSocket;
+
 enum MapPacket {
 	MAP_PACKET_START,
 	MAP_PACKET_NORMAL,

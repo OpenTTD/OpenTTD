@@ -31,6 +31,7 @@
 #include "../window_func.h"
 #include "../roadveh.h"
 #include "../order_backup.h"
+#include "../core/pool_func.hpp"
 #include "../rev.h"
 
 #include "table/strings.h"
@@ -40,6 +41,13 @@
 DECLARE_POSTFIX_INCREMENT(ClientID)
 /** The identifier counter for new clients (is never decreased) */
 static ClientID _network_client_id = CLIENT_ID_FIRST;
+
+/** Make very sure the preconditions given in network_type.h are actually followed */
+assert_compile(MAX_CLIENT_SLOTS > MAX_CLIENTS);
+assert_compile(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENT_SLOTS);
+
+NetworkClientSocketPool _networkclientsocket_pool("NetworkClientSocket");
+INSTANTIATE_POOL_METHODS(NetworkClientSocket)
 
 /**
  * Create a new socket for the server side of the game connection.

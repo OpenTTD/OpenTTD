@@ -14,6 +14,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "network_client.h"
+#include "network_server.h"
 #include "network.h"
 #include "../command_func.h"
 #include "../company_func.h"
@@ -179,7 +180,7 @@ void NetworkExecuteLocalCommandQueue()
 {
 	assert(IsLocalCompany());
 
-	CommandQueue &queue = (_network_server ? _local_execution_queue : NetworkClientSocket::Get(0)->incoming_queue);
+	CommandQueue &queue = (_network_server ? _local_execution_queue : ClientNetworkGameSocketHandler::my_client->incoming_queue);
 
 	CommandPacket *cp;
 	while ((cp = queue.Peek()) != NULL) {
@@ -274,7 +275,7 @@ void NetworkDistributeCommands()
  * @param cp the struct to write the data to.
  * @return an error message. When NULL there has been no error.
  */
-const char *NetworkClientSocket::Recv_Command(Packet *p, CommandPacket *cp)
+const char *NetworkGameSocketHandler::Recv_Command(Packet *p, CommandPacket *cp)
 {
 	cp->company = (CompanyID)p->Recv_uint8();
 	cp->cmd     = p->Recv_uint32();
@@ -299,7 +300,7 @@ const char *NetworkClientSocket::Recv_Command(Packet *p, CommandPacket *cp)
  * @param p the packet to send it in.
  * @param cp the packet to actually send.
  */
-void NetworkClientSocket::Send_Command(Packet *p, const CommandPacket *cp)
+void NetworkGameSocketHandler::Send_Command(Packet *p, const CommandPacket *cp)
 {
 	p->Send_uint8 (cp->company);
 	p->Send_uint32(cp->cmd);
