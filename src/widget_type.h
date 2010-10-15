@@ -262,6 +262,7 @@ enum NWidgetDisplay {
 	ND_DROPDOWN_ACTIVE = 1 << NDB_DROPDOWN_ACTIVE, ///< Bit value of the 'dropdown active' flag.
 	ND_SCROLLBAR_UP    = 1 << NDB_SCROLLBAR_UP,    ///< Bit value of the 'scrollbar up' flag.
 	ND_SCROLLBAR_DOWN  = 1 << NDB_SCROLLBAR_DOWN,  ///< Bit value of the 'scrollbar down' flag.
+	ND_SCROLLBAR_BTN   = ND_SCROLLBAR_UP | ND_SCROLLBAR_DOWN, ///< Bit value of the 'scrollbar up' or 'scrollbar down' flag.
 };
 DECLARE_ENUM_AS_BIT_SET(NWidgetDisplay)
 

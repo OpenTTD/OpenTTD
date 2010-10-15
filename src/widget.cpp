@@ -89,7 +89,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 			_scroller_click_timeout = 3;
 			sb->UpdatePosition(rtl ? 1 : -1);
 		}
-		_left_button_clicked = false;
+		w->scrolling_scrollbar = sb->index;
 	} else if (pos >= ma - 10) {
 		/* Pressing the lower button? */
 		SetBit(sb->disp_flags, NDB_SCROLLBAR_DOWN);
@@ -98,7 +98,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 			_scroller_click_timeout = 3;
 			sb->UpdatePosition(rtl ? -1 : 1);
 		}
-		_left_button_clicked = false;
+		w->scrolling_scrollbar = sb->index;
 	} else {
 		Point pt = HandleScrollbarHittest(sb, mi, ma, sb->type == NWID_HSCROLLBAR);
 
@@ -1686,7 +1686,7 @@ void NWidgetScrollbar::Draw(const Window *w)
 
 	bool up_lowered = HasBit(this->disp_flags, NDB_SCROLLBAR_UP);
 	bool down_lowered = HasBit(this->disp_flags, NDB_SCROLLBAR_DOWN);
-	bool middle_lowered = (w->scrolling_scrollbar == this->index);
+	bool middle_lowered = !(this->disp_flags & ND_SCROLLBAR_BTN) && w->scrolling_scrollbar == this->index;
 
 	if (this->type == NWID_HSCROLLBAR) {
 		DrawHorizontalScrollbar(r, this->colour, up_lowered, middle_lowered, down_lowered, this);

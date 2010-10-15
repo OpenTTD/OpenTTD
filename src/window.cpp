@@ -1861,6 +1861,15 @@ static EventState HandleScrollbarScrolling()
 				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			}
 
+			if (sb->disp_flags & ND_SCROLLBAR_BTN) {
+				if (_scroller_click_timeout == 1) {
+					_scroller_click_timeout = 3;
+					sb->UpdatePosition(rtl == HasBit(sb->disp_flags, NDB_SCROLLBAR_UP) ? 1 : -1);
+					w->SetDirty();
+				}
+				return ES_HANDLED;
+			}
+
 			/* Find the item we want to move to and make sure it's inside bounds. */
 			int pos = min(max(0, i + _scrollbar_start_pos) * sb->GetCount() / _scrollbar_size, max(0, sb->GetCount() - sb->GetCapacity()));
 			if (rtl) pos = max(0, sb->GetCount() - sb->GetCapacity() - pos);
