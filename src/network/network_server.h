@@ -40,23 +40,39 @@ protected:
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_RCON);
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED);
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_MOVE);
+
+	NetworkRecvStatus SendCompanyInfo();
+	NetworkRecvStatus SendNewGRFCheck();
+	NetworkRecvStatus SendWelcome();
+	NetworkRecvStatus SendWait();
+	NetworkRecvStatus SendNeedGamePassword();
+	NetworkRecvStatus SendNeedCompanyPassword();
 public:
 	ServerNetworkGameSocketHandler(SOCKET s);
 	~ServerNetworkGameSocketHandler();
 
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status);
 	void GetClientName(char *client_name, size_t size) const;
+
+	NetworkRecvStatus SendMap();
+	NetworkRecvStatus SendErrorQuit(ClientID client_id, NetworkErrorCode errorno);
+	NetworkRecvStatus SendQuit(ClientID client_id);
+	NetworkRecvStatus SendShutdown();
+	NetworkRecvStatus SendNewGame();
+	NetworkRecvStatus SendRConResult(uint16 colour, const char *command);
+	NetworkRecvStatus SendMove(ClientID client_id, CompanyID company_id);
+
+	NetworkRecvStatus SendClientInfo(NetworkClientInfo *ci);
+	NetworkRecvStatus SendError(NetworkErrorCode error);
+	NetworkRecvStatus SendChat(NetworkAction action, ClientID client_id, bool self_send, const char *msg, int64 data);
+	NetworkRecvStatus SendJoin(ClientID client_id);
+	NetworkRecvStatus SendFrame();
+	NetworkRecvStatus SendSync();
+	NetworkRecvStatus SendCommand(const CommandPacket *cp);
+	NetworkRecvStatus SendCompanyUpdate();
+	NetworkRecvStatus SendConfigUpdate();
 };
 
-DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP);
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientSocket *cs, ClientID client_id, NetworkErrorCode errorno);
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, NetworkErrorCode error);
-DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN);
-DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME);
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint16 colour, const char *command);
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_MOVE)(NetworkClientSocket *cs, uint16 client_id, CompanyID company_id);
-
-void NetworkServer_ReadPackets(NetworkClientSocket *cs);
 void NetworkServer_Tick(bool send_frame);
 
 #define FOR_ALL_CLIENT_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientSocket, clientsocket_index, var, start)

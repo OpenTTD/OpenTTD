@@ -751,7 +751,7 @@ void NetworkReboot()
 	if (_network_server) {
 		NetworkClientSocket *cs;
 		FOR_ALL_CLIENT_SOCKETS(cs) {
-			SEND_COMMAND(PACKET_SERVER_NEWGAME)(cs);
+			cs->SendNewGame();
 			cs->Send_Packets();
 		}
 	}
@@ -768,7 +768,7 @@ void NetworkDisconnect(bool blocking)
 	if (_network_server) {
 		NetworkClientSocket *cs;
 		FOR_ALL_CLIENT_SOCKETS(cs) {
-			SEND_COMMAND(PACKET_SERVER_SHUTDOWN)(cs);
+			cs->SendShutdown();
 			cs->Send_Packets();
 		}
 	}
@@ -847,7 +847,7 @@ static void NetworkSend()
 
 			if (cs->status == STATUS_MAP) {
 				/* This client is in the middle of a map-send, call the function for that */
-				SEND_COMMAND(PACKET_SERVER_MAP)(cs);
+				cs->SendMap();
 			}
 		}
 	}
