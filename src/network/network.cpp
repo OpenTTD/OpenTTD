@@ -240,7 +240,7 @@ uint NetworkCalculateLag(const NetworkClientSocket *cs)
 
 /* There was a non-recoverable error, drop back to the main menu with a nice
  *  error */
-static void NetworkError(StringID error_string)
+void NetworkError(StringID error_string)
 {
 	_switch_mode = SM_MENU;
 	extern StringID _switch_mode_errorstr;
@@ -251,40 +251,6 @@ static void ServerStartError(const char *error)
 {
 	DEBUG(net, 0, "[server] could not start network: %s",error);
 	NetworkError(STR_NETWORK_ERROR_SERVER_START);
-}
-
-static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
-{
-	/* First, send a CLIENT_ERROR to the server, so he knows we are
-	 *  disconnection (and why!) */
-	NetworkErrorCode errorno;
-
-	/* We just want to close the connection.. */
-	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
-		cs->NetworkSocketHandler::CloseConnection();
-		cs->CloseConnection(res);
-		_networking = false;
-
-		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-		return;
-	}
-
-	switch (res) {
-		case NETWORK_RECV_STATUS_DESYNC:          errorno = NETWORK_ERROR_DESYNC; break;
-		case NETWORK_RECV_STATUS_SAVEGAME:        errorno = NETWORK_ERROR_SAVEGAME_FAILED; break;
-		case NETWORK_RECV_STATUS_NEWGRF_MISMATCH: errorno = NETWORK_ERROR_NEWGRF_MISMATCH; break;
-		default:                                  errorno = NETWORK_ERROR_GENERAL; break;
-	}
-
-	/* This means we fucked up and the server closed the connection */
-	if (res != NETWORK_RECV_STATUS_SERVER_ERROR && res != NETWORK_RECV_STATUS_SERVER_FULL &&
-			res != NETWORK_RECV_STATUS_SERVER_BANNED) {
-		MyClient::SendError(errorno);
-	}
-
-	_switch_mode = SM_MENU;
-	cs->CloseConnection(res);
-	_networking = false;
 }
 
 /**
@@ -838,6 +804,9 @@ void NetworkDisconnect(bool blocking)
  */
 static bool NetworkReceive()
 {
+	if (!_network_server) {
+		return ClientNetworkGameSocketHandler::Receive();
+	}
 	NetworkClientSocket *cs;
 	fd_set read_fd, write_fd;
 	struct timeval tv;
@@ -872,22 +841,7 @@ static bool NetworkReceive()
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		cs->writable = !!FD_ISSET(cs->sock, &write_fd);
 		if (FD_ISSET(cs->sock, &read_fd)) {
-			if (_network_server) {
-				cs->Recv_Packets();
-			} else {
-				NetworkRecvStatus res;
-
-				/* The client already was quiting! */
-				if (cs->HasClientQuit()) return false;
-
-				res = cs->Recv_Packets();
-				if (res != NETWORK_RECV_STATUS_OKAY) {
-					/* The client made an error of which we can not recover
-					 *   close the client and drop back to main menu */
-					NetworkClientError(res, cs);
-					return false;
-				}
-			}
+			cs->Recv_Packets();
 		}
 	}
 	return _networking;
@@ -896,6 +850,11 @@ static bool NetworkReceive()
 /* This sends all buffered commands (if possible) */
 static void NetworkSend()
 {
+	if (!_network_server) {
+		ClientNetworkGameSocketHandler::Send();
+		return;
+	}
+
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (cs->writable) {
@@ -907,47 +866,6 @@ static void NetworkSend()
 			}
 		}
 	}
-}
-
-static bool NetworkDoClientLoop()
-{
-	_frame_counter++;
-
-	NetworkExecuteLocalCommandQueue();
-
-	StateGameLoop();
-
-	/* Check if we are in sync! */
-	if (_sync_frame != 0) {
-		if (_sync_frame == _frame_counter) {
-#ifdef NETWORK_SEND_DOUBLE_SEED
-			if (_sync_seed_1 != _random.state[0] || _sync_seed_2 != _random.state[1]) {
-#else
-			if (_sync_seed_1 != _random.state[0]) {
-#endif
-				NetworkError(STR_NETWORK_ERROR_DESYNC);
-				DEBUG(desync, 1, "sync_err: %08x; %02x", _date, _date_fract);
-				DEBUG(net, 0, "Sync error detected!");
-				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, NetworkClientSocket::Get(0));
-				return false;
-			}
-
-			/* If this is the first time we have a sync-frame, we
-			 *   need to let the server know that we are ready and at the same
-			 *   frame as he is.. so we can start playing! */
-			if (_network_first_time) {
-				_network_first_time = false;
-				MyClient::SendAck();
-			}
-
-			_sync_frame = 0;
-		} else if (_sync_frame < _frame_counter) {
-			DEBUG(net, 1, "Missed frame for sync-test (%d / %d)", _sync_frame, _frame_counter);
-			_sync_frame = 0;
-		}
-	}
-
-	return true;
 }
 
 /* We have to do some UDP checking */
@@ -1107,11 +1025,11 @@ void NetworkGameLoop()
 		/* Make sure we are at the frame were the server is (quick-frames) */
 		if (_frame_counter_server > _frame_counter) {
 			while (_frame_counter_server > _frame_counter) {
-				if (!NetworkDoClientLoop()) break;
+				if (!ClientNetworkGameSocketHandler::GameLoop()) break;
 			}
 		} else {
 			/* Else, keep on going till _frame_counter_max */
-			if (_frame_counter_max > _frame_counter) NetworkDoClientLoop();
+			if (_frame_counter_max > _frame_counter) ClientNetworkGameSocketHandler::GameLoop();
 		}
 	}
 

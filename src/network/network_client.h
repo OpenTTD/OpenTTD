@@ -54,6 +54,7 @@ public:
 	~ClientNetworkGameSocketHandler();
 
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status);
+	void ClientError(NetworkRecvStatus res);
 
 	static NetworkRecvStatus SendCompanyInformationQuery();
 
@@ -71,6 +72,10 @@ public:
 	static NetworkRecvStatus SendSetName(const char *name);
 	static NetworkRecvStatus SendRCon(const char *password, const char *command);
 	static NetworkRecvStatus SendMove(CompanyID company, const char *password);
+
+	static void Send();
+	static bool Receive();
+	static bool GameLoop();
 };
 
 typedef ClientNetworkGameSocketHandler MyClient;

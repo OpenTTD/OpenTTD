@@ -41,6 +41,8 @@ public:
 
 	Packet *Recv_Packet();
 
+	bool CanSendReceive();
+
 	NetworkTCPSocketHandler(SOCKET s = INVALID_SOCKET);
 	~NetworkTCPSocketHandler();
 };

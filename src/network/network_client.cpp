@@ -25,6 +25,8 @@
 #include "../company_func.h"
 #include "../company_base.h"
 #include "../company_gui.h"
+#include "../core/random_func.hpp"
+#include "../date_func.h"
 #include "../rev.h"
 #include "network.h"
 #include "network_base.h"
@@ -72,6 +74,117 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 
 	return status;
 }
+
+/**
+ * Handle an error coming from the client side.
+ * @param res The "error" that happened.
+ */
+void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
+{
+	/* First, send a CLIENT_ERROR to the server, so he knows we are
+	 *  disconnection (and why!) */
+	NetworkErrorCode errorno;
+
+	/* We just want to close the connection.. */
+	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
+		this->NetworkSocketHandler::CloseConnection();
+		this->CloseConnection(res);
+		_networking = false;
+
+		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+		return;
+	}
+
+	switch (res) {
+		case NETWORK_RECV_STATUS_DESYNC:          errorno = NETWORK_ERROR_DESYNC; break;
+		case NETWORK_RECV_STATUS_SAVEGAME:        errorno = NETWORK_ERROR_SAVEGAME_FAILED; break;
+		case NETWORK_RECV_STATUS_NEWGRF_MISMATCH: errorno = NETWORK_ERROR_NEWGRF_MISMATCH; break;
+		default:                                  errorno = NETWORK_ERROR_GENERAL; break;
+	}
+
+	/* This means we fucked up and the server closed the connection */
+	if (res != NETWORK_RECV_STATUS_SERVER_ERROR && res != NETWORK_RECV_STATUS_SERVER_FULL &&
+			res != NETWORK_RECV_STATUS_SERVER_BANNED) {
+		SendError(errorno);
+	}
+
+	_switch_mode = SM_MENU;
+	this->CloseConnection(res);
+	_networking = false;
+}
+
+
+/**
+ * Check whether we received/can send some data from/to the server and
+ * when that's the case handle it appropriately.
+ * @return true when everything went okay.
+ */
+/*static */ bool ClientNetworkGameSocketHandler::Receive()
+{
+	if (my_client->CanSendReceive()) {
+		NetworkRecvStatus res = my_client->Recv_Packets();
+		if (res != NETWORK_RECV_STATUS_OKAY) {
+			/* The client made an error of which we can not recover
+				*   close the client and drop back to main menu */
+			my_client->ClientError(res);
+			return false;
+		}
+	}
+	return _networking;
+}
+
+/** Send the packets of this socket handler. */
+/*static */ void ClientNetworkGameSocketHandler::Send()
+{
+	my_client->Send_Packets();
+}
+
+/**
+ * Actual game loop for the client.
+ * @return Whether everything went okay, or not.
+ */
+/* static */ bool ClientNetworkGameSocketHandler::GameLoop()
+{
+	_frame_counter++;
+
+	NetworkExecuteLocalCommandQueue();
+
+	extern void StateGameLoop();
+	StateGameLoop();
+
+	/* Check if we are in sync! */
+	if (_sync_frame != 0) {
+		if (_sync_frame == _frame_counter) {
+#ifdef NETWORK_SEND_DOUBLE_SEED
+			if (_sync_seed_1 != _random.state[0] || _sync_seed_2 != _random.state[1]) {
+#else
+			if (_sync_seed_1 != _random.state[0]) {
+#endif
+				NetworkError(STR_NETWORK_ERROR_DESYNC);
+				DEBUG(desync, 1, "sync_err: %08x; %02x", _date, _date_fract);
+				DEBUG(net, 0, "Sync error detected!");
+				my_client->ClientError(NETWORK_RECV_STATUS_DESYNC);
+				return false;
+			}
+
+			/* If this is the first time we have a sync-frame, we
+			 *   need to let the server know that we are ready and at the same
+			 *   frame as he is.. so we can start playing! */
+			if (_network_first_time) {
+				_network_first_time = false;
+				SendAck();
+			}
+
+			_sync_frame = 0;
+		} else if (_sync_frame < _frame_counter) {
+			DEBUG(net, 1, "Missed frame for sync-test (%d / %d)", _sync_frame, _frame_counter);
+			_sync_frame = 0;
+		}
+	}
+
+	return true;
+}
+
 
 /** Our client's connection. */
 ClientNetworkGameSocketHandler * ClientNetworkGameSocketHandler::my_client = NULL;
