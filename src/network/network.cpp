@@ -939,14 +939,14 @@ static bool NetworkReceive()
 		cs->writable = !!FD_ISSET(cs->sock, &write_fd);
 		if (FD_ISSET(cs->sock, &read_fd)) {
 			if (_network_server) {
-				NetworkServer_ReadPackets(cs);
+				cs->Recv_Packets();
 			} else {
 				NetworkRecvStatus res;
 
 				/* The client already was quiting! */
 				if (cs->HasClientQuit()) return false;
 
-				res = NetworkClient_ReadPackets(cs);
+				res = cs->Recv_Packets();
 				if (res != NETWORK_RECV_STATUS_OKAY) {
 					/* The client made an error of which we can not recover
 					 *   close the client and drop back to main menu */

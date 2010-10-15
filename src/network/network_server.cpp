@@ -682,37 +682,37 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
  *   DEF_SERVER_RECEIVE_COMMAND has parameter: NetworkClientSocket *cs, Packet *p
  ************/
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMPANY_INFO)
 {
-	return SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)(cs);
+	return SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)(this);
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_NEWGRFS_CHECKED)
 {
-	if (cs->status != STATUS_NEWGRFS_CHECK) {
+	if (this->status != STATUS_NEWGRFS_CHECK) {
 		/* Illegal call, return error and ignore the packet */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	NetworkClientInfo *ci = cs->GetInfo();
+	NetworkClientInfo *ci = this->GetInfo();
 
 	/* We now want a password from the client else we do not allow him in! */
 	if (!StrEmpty(_settings_client.network.server_password)) {
-		return SEND_COMMAND(PACKET_SERVER_NEED_GAME_PASSWORD)(cs);
+		return SEND_COMMAND(PACKET_SERVER_NEED_GAME_PASSWORD)(this);
 	}
 
 	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
-		return SEND_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)(cs);
+		return SEND_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)(this);
 	}
 
-	return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
+	return SEND_COMMAND(PACKET_SERVER_WELCOME)(this);
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_JOIN)
 {
-	if (cs->status != STATUS_INACTIVE) {
+	if (this->status != STATUS_INACTIVE) {
 		/* Illegal call, return error and ignore the packet */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	char name[NETWORK_CLIENT_NAME_LENGTH];
@@ -726,30 +726,30 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	/* Check if the client has revision control enabled */
 	if (!IsNetworkCompatibleVersion(client_revision)) {
 		/* Different revisions!! */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_WRONG_REVISION);
 	}
 
 	p->Recv_string(name, sizeof(name));
 	playas = (Owner)p->Recv_uint8();
 	client_lang = (NetworkLanguage)p->Recv_uint8();
 
-	if (cs->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
+	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
 	/* join another company does not affect these values */
 	switch (playas) {
 		case COMPANY_NEW_COMPANY: // New company
 			if (Company::GetNumItems() >= _settings_client.network.max_companies) {
-				return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
+				return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_FULL);
 			}
 			break;
 		case COMPANY_SPECTATOR: // Spectator
 			if (NetworkSpectatorCount() >= _settings_client.network.max_spectators) {
-				return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
+				return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_FULL);
 			}
 			break;
 		default: // Join another company (companies 1-8 (index 0-7))
 			if (!Company::IsValidHumanID(playas)) {
-				return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
+				return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_COMPANY_MISMATCH);
 			}
 			break;
 	}
@@ -759,10 +759,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	if (!NetworkFindName(name)) { // Change name if duplicate
 		/* We could not create a name for this client */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NAME_IN_USE);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NAME_IN_USE);
 	}
 
-	ci = cs->GetInfo();
+	ci = this->GetInfo();
 
 	strecpy(ci->client_name, name, lastof(ci->client_name));
 	ci->client_playas = playas;
@@ -772,20 +772,20 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	/* Make sure companies to which people try to join are not autocleaned */
 	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
 
-	cs->status = STATUS_NEWGRFS_CHECK;
+	this->status = STATUS_NEWGRFS_CHECK;
 
 	if (_grfconfig == NULL) {
 		/* Behave as if we received PACKET_CLIENT_NEWGRFS_CHECKED */
-		return RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)(cs, NULL);
+		return this->RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)(NULL);
 	}
 
-	return SEND_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)(cs);
+	return SEND_COMMAND(PACKET_SERVER_CHECK_NEWGRFS)(this);
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GAME_PASSWORD)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_GAME_PASSWORD)
 {
-	if (cs->status != STATUS_AUTH_GAME) {
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != STATUS_AUTH_GAME) {
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	char password[NETWORK_PASSWORD_LENGTH];
@@ -795,22 +795,22 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GAME_PASSWORD)
 	if (!StrEmpty(_settings_client.network.server_password) &&
 			strcmp(password, _settings_client.network.server_password) != 0) {
 		/* Password is invalid */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_WRONG_PASSWORD);
 	}
 
-	const NetworkClientInfo *ci = cs->GetInfo();
+	const NetworkClientInfo *ci = this->GetInfo();
 	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
-		return SEND_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)(cs);
+		return SEND_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD)(this);
 	}
 
 	/* Valid password, allow user */
-	return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
+	return SEND_COMMAND(PACKET_SERVER_WELCOME)(this);
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMPANY_PASSWORD)
 {
-	if (cs->status != STATUS_AUTH_COMPANY) {
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != STATUS_AUTH_COMPANY) {
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	char password[NETWORK_PASSWORD_LENGTH];
@@ -819,17 +819,17 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD)
 	/* Check company password. Allow joining if we cleared the password meanwhile.
 	 * Also, check the company is still valid - client could be moved to spectators
 	 * in the middle of the authorization process */
-	CompanyID playas = cs->GetInfo()->client_playas;
+	CompanyID playas = this->GetInfo()->client_playas;
 	if (Company::IsValidID(playas) && !StrEmpty(_network_company_states[playas].password) &&
 			strcmp(password, _network_company_states[playas].password) != 0) {
 		/* Password is invalid */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_WRONG_PASSWORD);
 	}
 
-	return SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
+	return SEND_COMMAND(PACKET_SERVER_WELCOME)(this);
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_GETMAP)
 {
 	NetworkClientSocket *new_cs;
 
@@ -844,112 +844,111 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 		if (_openttd_newgrf_version != p->Recv_uint32()) {
 			/* The version we get from the client differs, it must have the
 			 * wrong version. The client must be wrong. */
-			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+			return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 		}
 	} else if (p->size != 3) {
 		/* We received a packet from a version that claims to be stable.
 		 * That shouldn't happen. The client must be wrong. */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
-	if (cs->status < STATUS_AUTHORIZED || cs->HasClientQuit()) {
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
+	if (this->status < STATUS_AUTHORIZED || this->HasClientQuit()) {
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
 	/* Check if someone else is receiving the map */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status == STATUS_MAP) {
 			/* Tell the new client to wait */
-			cs->status = STATUS_MAP_WAIT;
-			return SEND_COMMAND(PACKET_SERVER_WAIT)(cs);
+			this->status = STATUS_MAP_WAIT;
+			return SEND_COMMAND(PACKET_SERVER_WAIT)(this);
 		}
 	}
 
 	/* We receive a request to upload the map.. give it to the client! */
-	return SEND_COMMAND(PACKET_SERVER_MAP)(cs);
+	return SEND_COMMAND(PACKET_SERVER_MAP)(this);
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MAP_OK)
 {
 	/* Client has the map, now start syncing */
-	if (cs->status == STATUS_DONE_MAP && !cs->HasClientQuit()) {
+	if (this->status == STATUS_DONE_MAP && !this->HasClientQuit()) {
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
 
-		NetworkGetClientName(client_name, sizeof(client_name), cs);
+		NetworkGetClientName(client_name, sizeof(client_name), this);
 
-		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, client_name, NULL, cs->client_id);
+		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, client_name, NULL, this->client_id);
 
 		/* Mark the client as pre-active, and wait for an ACK
 		 *  so we know he is done loading and in sync with us */
-		cs->status = STATUS_PRE_ACTIVE;
-		NetworkHandleCommandQueue(cs);
-		SEND_COMMAND(PACKET_SERVER_FRAME)(cs);
-		SEND_COMMAND(PACKET_SERVER_SYNC)(cs);
+		this->status = STATUS_PRE_ACTIVE;
+		NetworkHandleCommandQueue(this);
+		SEND_COMMAND(PACKET_SERVER_FRAME)(this);
+		SEND_COMMAND(PACKET_SERVER_SYNC)(this);
 
 		/* This is the frame the client receives
 		 *  we need it later on to make sure the client is not too slow */
-		cs->last_frame = _frame_counter;
-		cs->last_frame_server = _frame_counter;
+		this->last_frame = _frame_counter;
+		this->last_frame_server = _frame_counter;
 
 		FOR_ALL_CLIENT_SOCKETS(new_cs) {
 			if (new_cs->status > STATUS_AUTHORIZED) {
-				SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(new_cs, cs->GetInfo());
-				SEND_COMMAND(PACKET_SERVER_JOIN)(new_cs, cs->client_id);
+				SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(new_cs, this->GetInfo());
+				SEND_COMMAND(PACKET_SERVER_JOIN)(new_cs, this->client_id);
 			}
 		}
 
 		/* also update the new client with our max values */
-		SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)(cs);
+		SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)(this);
 
 		/* quickly update the syncing client with company details */
-		return SEND_COMMAND(PACKET_SERVER_COMPANY_UPDATE)(cs);
+		return SEND_COMMAND(PACKET_SERVER_COMPANY_UPDATE)(this);
 	}
 
 	/* Wrong status for this packet, give a warning to client, and close connection */
-	return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+	return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 }
 
 /**
  * The client has done a command and wants us to handle it
- * @param *cs the connected client that has sent the command
- * @param *p the packet in which the command was sent
+ * @param p the packet in which the command was sent
  */
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_COMMAND)
 {
 	/* The client was never joined.. so this is impossible, right?
 	 *  Ignore the packet, give the client a warning, and close his connection */
-	if (cs->status < STATUS_DONE_MAP || cs->HasClientQuit()) {
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status < STATUS_DONE_MAP || this->HasClientQuit()) {
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	if (cs->incoming_queue.Count() >= _settings_client.network.max_commands_in_queue) {
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_TOO_MANY_COMMANDS);
+	if (this->incoming_queue.Count() >= _settings_client.network.max_commands_in_queue) {
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_TOO_MANY_COMMANDS);
 	}
 
 	CommandPacket cp;
-	const char *err = cs->Recv_Command(p, &cp);
+	const char *err = this->Recv_Command(p, &cp);
 
-	if (cs->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
+	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
-	NetworkClientInfo *ci = cs->GetInfo();
+	NetworkClientInfo *ci = this->GetInfo();
 
 	if (err != NULL) {
 		IConsolePrintF(CC_ERROR, "WARNING: %s from client %d (IP: %s).", err, ci->client_id, GetClientIP(ci));
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 
 	if ((GetCommandFlags(cp.cmd) & CMD_SERVER) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrintF(CC_ERROR, "WARNING: server only command from: client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_KICKED);
 	}
 
 	if ((GetCommandFlags(cp.cmd) & CMD_SPECTATOR) == 0 && !Company::IsValidID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_KICKED);
 	}
 
 	/**
@@ -960,12 +959,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	if (!(cp.cmd == CMD_COMPANY_CTRL && cp.p1 == 0 && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
 		IConsolePrintF(CC_ERROR, "WARNING: client %d (IP: %s) tried to execute a command as company %d, kicking...",
 		               ci->client_playas + 1, GetClientIP(ci), cp.company + 1);
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_COMPANY_MISMATCH);
 	}
 
 	if (cp.cmd == CMD_COMPANY_CTRL) {
 		if (cp.p1 != 0 || cp.company != COMPANY_SPECTATOR) {
-			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
+			return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_CHEATER);
 		}
 
 		/* Check if we are full - else it's possible for spectators to send a CMD_COMPANY_CTRL and the company is created regardless of max_companies! */
@@ -975,13 +974,13 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		}
 	}
 
-	if (GetCommandFlags(cp.cmd) & CMD_CLIENT_ID) cp.p2 = cs->client_id;
+	if (GetCommandFlags(cp.cmd) & CMD_CLIENT_ID) cp.p2 = this->client_id;
 
-	cs->incoming_queue.Append(&cp);
+	this->incoming_queue.Append(&cp);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ERROR)
 {
 	/* This packets means a client noticed an error and is reporting this
 	 *  to us. Display the error and report it to the other clients */
@@ -991,12 +990,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	NetworkErrorCode errorno = (NetworkErrorCode)p->Recv_uint8();
 
 	/* The client was never joined.. thank the client for the packet, but ignore it */
-	if (cs->status < STATUS_DONE_MAP || cs->HasClientQuit()) {
-		cs->CloseConnection();
+	if (this->status < STATUS_DONE_MAP || this->HasClientQuit()) {
+		this->CloseConnection();
 		return NETWORK_RECV_STATUS_CONN_LOST;
 	}
 
-	NetworkGetClientName(client_name, sizeof(client_name), cs);
+	NetworkGetClientName(client_name, sizeof(client_name), this);
 
 	StringID strid = GetNetworkErrorMsg(errorno);
 	GetString(str, strid, lastof(str));
@@ -1007,15 +1006,15 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status > STATUS_AUTHORIZED) {
-			SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, errorno);
+			SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, this->client_id, errorno);
 		}
 	}
 
-	cs->CloseConnection(false);
+	this->CloseConnection(false);
 	return NETWORK_RECV_STATUS_CONN_LOST;
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_QUIT)
 {
 	/* The client wants to leave. Display this and report it to the other
 	 *  clients. */
@@ -1023,50 +1022,50 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
 	/* The client was never joined.. thank the client for the packet, but ignore it */
-	if (cs->status < STATUS_DONE_MAP || cs->HasClientQuit()) {
-		cs->CloseConnection();
+	if (this->status < STATUS_DONE_MAP || this->HasClientQuit()) {
+		this->CloseConnection();
 		return NETWORK_RECV_STATUS_CONN_LOST;
 	}
 
-	NetworkGetClientName(client_name, sizeof(client_name), cs);
+	NetworkGetClientName(client_name, sizeof(client_name), this);
 
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status > STATUS_AUTHORIZED) {
-			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, cs->client_id);
+			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, this->client_id);
 		}
 	}
 
-	cs->CloseConnection(false);
+	this->CloseConnection(false);
 	return NETWORK_RECV_STATUS_CONN_LOST;
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ACK)
 {
-	if (cs->status < STATUS_AUTHORIZED) {
+	if (this->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
 	uint32 frame = p->Recv_uint32();
 
 	/* The client is trying to catch up with the server */
-	if (cs->status == STATUS_PRE_ACTIVE) {
+	if (this->status == STATUS_PRE_ACTIVE) {
 		/* The client is not yet catched up? */
 		if (frame + DAY_TICKS < _frame_counter) return NETWORK_RECV_STATUS_OKAY;
 
 		/* Now he is! Unpause the game */
-		cs->status = STATUS_ACTIVE;
+		this->status = STATUS_ACTIVE;
 
 		/* Execute script for, e.g. MOTD */
 		IConsoleCmdExec("exec scripts/on_server_connect.scr 0");
 	}
 
 	/* The client received the frame, make note of it */
-	cs->last_frame = frame;
+	this->last_frame = frame;
 	/* With those 2 values we can calculate the lag realtime */
-	cs->last_frame_server = _frame_counter;
+	this->last_frame_server = _frame_counter;
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -1172,11 +1171,11 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 	}
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_CHAT)
 {
-	if (cs->status < STATUS_AUTHORIZED) {
+	if (this->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_AUTHORIZED);
 	}
 
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
@@ -1187,7 +1186,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
 	int64 data = p->Recv_uint64();
 
-	NetworkClientInfo *ci = cs->GetInfo();
+	NetworkClientInfo *ci = this->GetInfo();
 	switch (action) {
 		case NETWORK_ACTION_GIVE_MONEY:
 			if (!Company::IsValidID(ci->client_playas)) break;
@@ -1195,28 +1194,28 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 		case NETWORK_ACTION_CHAT:
 		case NETWORK_ACTION_CHAT_CLIENT:
 		case NETWORK_ACTION_CHAT_COMPANY:
-			NetworkServerSendChat(action, desttype, dest, msg, cs->client_id, data);
+			NetworkServerSendChat(action, desttype, dest, msg, this->client_id, data);
 			break;
 		default:
 			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_id, GetClientIP(ci));
-			return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+			return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 			break;
 	}
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_SET_PASSWORD)
 {
-	if (cs->status != STATUS_ACTIVE) {
+	if (this->status != STATUS_ACTIVE) {
 		/* Illegal call, return error and ignore the packet */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	char password[NETWORK_PASSWORD_LENGTH];
 	const NetworkClientInfo *ci;
 
 	p->Recv_string(password, sizeof(password));
-	ci = cs->GetInfo();
+	ci = this->GetInfo();
 
 	if (Company::IsValidID(ci->client_playas)) {
 		strecpy(_network_company_states[ci->client_playas].password, password, lastof(_network_company_states[ci->client_playas].password));
@@ -1225,20 +1224,20 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_SET_NAME)
 {
-	if (cs->status != STATUS_ACTIVE) {
+	if (this->status != STATUS_ACTIVE) {
 		/* Illegal call, return error and ignore the packet */
-		return SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return SEND_COMMAND(PACKET_SERVER_ERROR)(this, NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 	NetworkClientInfo *ci;
 
 	p->Recv_string(client_name, sizeof(client_name));
-	ci = cs->GetInfo();
+	ci = this->GetInfo();
 
-	if (cs->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
+	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
 	if (ci != NULL) {
 		/* Display change */
@@ -1251,7 +1250,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_RCON)
 {
 	char pass[NETWORK_PASSWORD_LENGTH];
 	char command[NETWORK_RCONCOMMAND_LENGTH];
@@ -1262,19 +1261,19 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
 	p->Recv_string(command, sizeof(command));
 
 	if (strcmp(pass, _settings_client.network.rcon_password) != 0) {
-		DEBUG(net, 0, "[rcon] wrong password from client-id %d", cs->client_id);
+		DEBUG(net, 0, "[rcon] wrong password from client-id %d", this->client_id);
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
-	DEBUG(net, 0, "[rcon] client-id %d executed: '%s'", cs->client_id, command);
+	DEBUG(net, 0, "[rcon] client-id %d executed: '%s'", this->client_id, command);
 
-	_redirect_console_to_client = cs->client_id;
+	_redirect_console_to_client = this->client_id;
 	IConsoleCmdExec(command);
 	_redirect_console_to_client = INVALID_CLIENT_ID;
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MOVE)
+DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MOVE)
 {
 	CompanyID company_id = (Owner)p->Recv_uint8();
 
@@ -1289,69 +1288,15 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MOVE)
 
 		/* Incorrect password sent, return! */
 		if (strcmp(password, _network_company_states[company_id].password) != 0) {
-			DEBUG(net, 2, "[move] wrong password from client-id #%d for company #%d", cs->client_id, company_id + 1);
+			DEBUG(net, 2, "[move] wrong password from client-id #%d for company #%d", this->client_id, company_id + 1);
 			return NETWORK_RECV_STATUS_OKAY;
 		}
 	}
 
 	/* if we get here we can move the client */
-	NetworkServerDoMove(cs->client_id, company_id);
+	NetworkServerDoMove(this->client_id, company_id);
 	return NETWORK_RECV_STATUS_OKAY;
 }
-
-/* The layout for the receive-functions by the server */
-typedef NetworkRecvStatus NetworkServerPacket(NetworkClientSocket *cs, Packet *p);
-
-
-/* This array matches PacketType. At an incoming
- *  packet it is matches against this array
- *  and that way the right function to handle that
- *  packet is found. */
-static NetworkServerPacket * const _network_server_packet[] = {
-	NULL, // PACKET_SERVER_FULL,
-	NULL, // PACKET_SERVER_BANNED,
-	RECEIVE_COMMAND(PACKET_CLIENT_JOIN),
-	NULL, // PACKET_SERVER_ERROR,
-	RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO),
-	NULL, // PACKET_SERVER_COMPANY_INFO,
-	NULL, // PACKET_SERVER_CLIENT_INFO,
-	NULL, // PACKET_SERVER_NEED_GAME_PASSWORD,
-	NULL, // PACKET_SERVER_NEED_COMPANY_PASSWORD,
-	RECEIVE_COMMAND(PACKET_CLIENT_GAME_PASSWORD),
-	RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD),
-	NULL, // PACKET_SERVER_WELCOME,
-	RECEIVE_COMMAND(PACKET_CLIENT_GETMAP),
-	NULL, // PACKET_SERVER_WAIT,
-	NULL, // PACKET_SERVER_MAP,
-	RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK),
-	NULL, // PACKET_SERVER_JOIN,
-	NULL, // PACKET_SERVER_FRAME,
-	NULL, // PACKET_SERVER_SYNC,
-	RECEIVE_COMMAND(PACKET_CLIENT_ACK),
-	RECEIVE_COMMAND(PACKET_CLIENT_COMMAND),
-	NULL, // PACKET_SERVER_COMMAND,
-	RECEIVE_COMMAND(PACKET_CLIENT_CHAT),
-	NULL, // PACKET_SERVER_CHAT,
-	RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD),
-	RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME),
-	RECEIVE_COMMAND(PACKET_CLIENT_QUIT),
-	RECEIVE_COMMAND(PACKET_CLIENT_ERROR),
-	NULL, // PACKET_SERVER_QUIT,
-	NULL, // PACKET_SERVER_ERROR_QUIT,
-	NULL, // PACKET_SERVER_SHUTDOWN,
-	NULL, // PACKET_SERVER_NEWGAME,
-	NULL, // PACKET_SERVER_RCON,
-	RECEIVE_COMMAND(PACKET_CLIENT_RCON),
-	NULL, // PACKET_CLIENT_CHECK_NEWGRFS,
-	RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED),
-	NULL, // PACKET_SERVER_MOVE,
-	RECEIVE_COMMAND(PACKET_CLIENT_MOVE),
-	NULL, // PACKET_SERVER_COMPANY_UPDATE,
-	NULL, // PACKET_SERVER_CONFIG_UPDATE,
-};
-
-/* If this fails, check the array above with network_data.h */
-assert_compile(lengthof(_network_server_packet) == PACKET_END);
 
 void NetworkSocketHandler::Send_CompanyInformation(Packet *p, const Company *c, const NetworkCompanyStats *stats)
 {
@@ -1595,26 +1540,6 @@ bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
 
 	NetworkUpdateClientInfo(client_id);
 	return true;
-}
-
-/* Reads a packet from the stream */
-void NetworkServer_ReadPackets(NetworkClientSocket *cs)
-{
-	Packet *p;
-	NetworkRecvStatus res = NETWORK_RECV_STATUS_OKAY;
-
-	while (res == NETWORK_RECV_STATUS_OKAY && (p = cs->Recv_Packet()) != NULL) {
-		byte type = p->Recv_uint8();
-		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->HasClientQuit()) {
-			res = _network_server_packet[type](cs, p);
-		} else {
-			cs->CloseConnection();
-			res = NETWORK_RECV_STATUS_MALFORMED_PACKET;
-			DEBUG(net, 0, "[server] received invalid packet type %d", type);
-		}
-
-		delete p;
-	}
 }
 
 /* Handle the local command-queue */

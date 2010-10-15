@@ -115,7 +115,7 @@ bool NetworkContentSocketHandler::HandlePacket(Packet *p)
 }
 
 /**
- * Receive a packet at UDP level
+ * Receive a packet at TCP level
  */
 void NetworkContentSocketHandler::Recv_Packets()
 {
