@@ -1311,11 +1311,12 @@ bool IsSlopeRefused(Slope current, Slope refused)
  * @param itspec_index             The index of the itsepc to build/fund
  * @param type                     Type of the industry.
  * @param initial_random_bits      The random bits the industry is going to have after construction.
- * @param founder Industry founder
+ * @param founder                  Industry founder
+ * @param creation_type            The circumstances the industry is created under.
  * @param [out] custom_shape_check Perform custom check for the site.
  * @return Failed or succeeded command.
  */
-static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, uint itspec_index, int type, uint16 initial_random_bits, Owner founder, bool *custom_shape_check = NULL)
+static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, uint itspec_index, int type, uint16 initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type, bool *custom_shape_check = NULL)
 {
 	bool refused_slope = false;
 	bool custom_shape = false;
@@ -1347,7 +1348,7 @@ static CommandCost CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTil
 
 			if (HasBit(its->callback_mask, CBM_INDT_SHAPE_CHECK)) {
 				custom_shape = true;
-				CommandCost ret = PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index, initial_random_bits, founder);
+				CommandCost ret = PerformIndustryTileSlopeCheck(tile, cur_tile, its, type, gfx, itspec_index, initial_random_bits, founder, creation_type);
 				if (ret.Failed()) return ret;
 			} else {
 				Slope tileh = GetTileSlope(cur_tile, NULL);
@@ -1673,12 +1674,13 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
  * @param seed random seed (possibly) used by industries
  * @param initial_random_bits The random bits the industry is going to have after construction.
  * @param founder Founder of the industry
+ * @param creation_type The circumstances the industry is created under.
  * @param [out] ip Pointer to store newly created industry.
  * @return Succeeded or failed command.
  *
  * @post \c *ip contains the newly created industry if all checks are successful and the \a flags request actual creation, else it contains \c NULL afterwards.
  */
-static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlag flags, const IndustrySpec *indspec, uint itspec_index, uint32 random_var8f, uint16 random_initial_bits, Owner founder, Industry **ip)
+static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, DoCommandFlag flags, const IndustrySpec *indspec, uint itspec_index, uint32 random_var8f, uint16 random_initial_bits, Owner founder, IndustryAvailabilityCallType creation_type, Industry **ip)
 {
 	assert(itspec_index < indspec->num_table);
 	const IndustryTileTable *it = indspec->table[itspec_index];
@@ -1687,12 +1689,12 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
 	*ip = NULL;
 
 	SmallVector<ClearedObjectArea, 1> object_areas(_cleared_object_areas);
-	CommandCost ret = CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, random_initial_bits, founder, &custom_shape_check);
+	CommandCost ret = CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, random_initial_bits, founder, creation_type, &custom_shape_check);
 	_cleared_object_areas = object_areas;
 	if (ret.Failed()) return ret;
 
 	if (HasBit(GetIndustrySpec(type)->callback_mask, CBM_IND_LOCATION)) {
-		ret = CheckIfCallBackAllowsCreation(tile, type, itspec_index, random_var8f, random_initial_bits, founder);
+		ret = CheckIfCallBackAllowsCreation(tile, type, itspec_index, random_var8f, random_initial_bits, founder, creation_type);
 	} else {
 		ret = _check_new_industry_procs[indspec->check_proc](tile);
 	}
@@ -1775,7 +1777,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					 * because parameter evaluation order is not guaranteed in the c++ standard
 					 */
 					tile = RandomTile();
-					CommandCost ret = CreateNewIndustryHelper(tile, it, flags, indspec, RandomRange(indspec->num_table), random_var8f, random_initial_bits, cur_company.GetOriginalValue(), &ind);
+					CommandCost ret = CreateNewIndustryHelper(tile, it, flags, indspec, RandomRange(indspec->num_table), random_var8f, random_initial_bits, cur_company.GetOriginalValue(), IACT_PROSPECTCREATION, &ind);
 					if (ret.Succeeded()) break;
 				}
 			}
@@ -1792,11 +1794,11 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		do {
 			if (--count < 0) return ret;
 			if (--num < 0) num = indspec->num_table - 1;
-			ret = CheckIfIndustryTilesAreFree(tile, itt[num], num, it, random_initial_bits, _current_company);
+			ret = CheckIfIndustryTilesAreFree(tile, itt[num], num, it, random_initial_bits, _current_company, IACT_USERCREATION);
 			_cleared_object_areas = object_areas;
 		} while (ret.Failed());
 
-		ret = CreateNewIndustryHelper(tile, it, flags, indspec, num, random_var8f, random_initial_bits, _current_company, &ind);
+		ret = CreateNewIndustryHelper(tile, it, flags, indspec, num, random_var8f, random_initial_bits, _current_company, IACT_USERCREATION, &ind);
 		if (ret.Failed()) return ret;
 	}
 
@@ -1817,14 +1819,21 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 }
 
 
-static Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
+/**
+ * Create a new industry of random layout.
+ * @param tile The location to build the industry.
+ * @param type The industry type to build.
+ * @param creation_type The circumstances the industry is created under.
+ * @return the created industry or NULL if it failed.
+ */
+static Industry *CreateNewIndustry(TileIndex tile, IndustryType type, IndustryAvailabilityCallType creation_type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	uint32 seed = Random();
 	uint32 seed2 = Random();
 	Industry *i = NULL;
-	CommandCost ret = CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table), seed, GB(seed2, 0, 16), OWNER_NONE, &i);
+	CommandCost ret = CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table), seed, GB(seed2, 0, 16), OWNER_NONE, creation_type, &i);
 	assert(i != NULL || ret.Failed());
 	return i;
 }
@@ -1918,11 +1927,11 @@ static void AdvertiseIndustryOpening(Industry *ind)
  * @param try_hard Try very hard to find a place. (Used to place at least one industry per type.)
  * @return Pointer to created industry, or \c NULL if creation failed.
  */
-static Industry *PlaceIndustry(IndustryType type, bool try_hard)
+static Industry *PlaceIndustry(IndustryType type, IndustryAvailabilityCallType creation_type, bool try_hard)
 {
 	uint tries = try_hard ? 10000u : 2000u;
 	for (; tries > 0; tries--) {
-		Industry *ind = CreateNewIndustry(RandomTile(), type);
+		Industry *ind = CreateNewIndustry(RandomTile(), type, creation_type);
 		if (ind != NULL) return ind;
 	}
 	return NULL;
@@ -1938,7 +1947,7 @@ static void PlaceInitialIndustry(IndustryType type, bool try_hard)
 	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
 	IncreaseGeneratingWorldProgress(GWP_INDUSTRY);
-	PlaceIndustry(type, try_hard);
+	PlaceIndustry(type, IACT_MAPGENERATION, try_hard);
 
 	cur_company.Restore();
 }
@@ -2070,7 +2079,7 @@ static void MaybeNewIndustry()
 	}
 
 	/* try to create 2000 times this industry */
-	Industry *ind = PlaceIndustry(cumulative_probs[j].ind, false);
+	Industry *ind = PlaceIndustry(cumulative_probs[j].ind, IACT_RANDOMCREATION, false);
 	if (ind == NULL) return;
 
 	AdvertiseIndustryOpening(ind);

@@ -28,9 +28,10 @@ enum IndustryTrigger {
 
 /** From where is callback CBID_INDUSTRY_AVAILABLE been called */
 enum IndustryAvailabilityCallType {
-	IACT_MAPGENERATION,   ///< during random map generation
-	IACT_RANDOMCREATION,  ///< during creation of random ingame industry
-	IACT_USERCREATION,    ///< from the Fund/build window
+	IACT_MAPGENERATION,    ///< during random map generation
+	IACT_RANDOMCREATION,   ///< during creation of random ingame industry
+	IACT_USERCREATION,     ///< from the Fund/build window
+	IACT_PROSPECTCREATION, ///< from the Fund/build using prospecting
 };
 
 /* in newgrf_industry.cpp */
@@ -38,7 +39,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile);
 uint32 GetIndustryIDAtOffset(TileIndex new_tile, const Industry *i, uint32 cur_grfid);
 void IndustryProductionCallback(Industry *ind, int reason);
-CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint layout, uint32 seed, uint16 initial_random_bits, Owner founder);
+CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint layout, uint32 seed, uint16 initial_random_bits, Owner founder, IndustryAvailabilityCallType creation_type);
 bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCallType creation_type);
 bool IndustryTemporarilyRefusesCargo(Industry *ind, CargoID cargo_type);
 
