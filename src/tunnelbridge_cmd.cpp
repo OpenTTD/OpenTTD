@@ -832,11 +832,12 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, DoCommandFlag flags)
  * @param z         Pillar Z
  * @param w         Bounding box size in X direction
  * @param h         Bounding box size in Y direction
+ * @param subsprite Optional subsprite for drawing halfpillars
  */
-static inline void DrawPillar(const PalSpriteID *psid, int x, int y, int z, int w, int h)
+static inline void DrawPillar(const PalSpriteID *psid, int x, int y, int z, int w, int h, const SubSprite *subsprite)
 {
 	static const int PILLAR_Z_OFFSET = TILE_HEIGHT - BRIDGE_Z_START; ///< Start offset of pillar wrt. bridge (downwards)
-	AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET);
+	AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET, subsprite);
 }
 
 /**
@@ -854,7 +855,7 @@ static int DrawPillarColumn(int z_bottom, int z_top, const PalSpriteID *psid, in
 {
 	int cur_z;
 	for (cur_z = z_top; cur_z >= z_bottom; cur_z -= TILE_HEIGHT) {
-		DrawPillar(psid, x, y, cur_z, w, h);
+		DrawPillar(psid, x, y, cur_z, w, h, NULL);
 	}
 	return cur_z;
 }
@@ -878,28 +879,26 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 	static const int bounding_box_size[2]  = {16, 2}; ///< bounding box size of pillars along bridge direction
 	static const int back_pillar_offset[2] = { 0, 9}; ///< sprite position offset of back facing pillar
 
-	SpriteID image = psid->sprite;
-	if (image == 0) return;
+	static const int INF = 1000; ///< big number compared to sprite size
+	static const SubSprite half_pillar_sub_sprite[2][2] = {
+		{ {  -14, -INF, INF, INF }, { -INF, -INF, -15, INF } }, // X axis, north and south
+		{ { -INF, -INF,  15, INF }, {   16, -INF, INF, INF } }, // Y axis, north and south
+	};
 
-	/* "side" specifies the side the pillars stand on.
-	 * The length of the pillars is then set to the height of the bridge over the corners of this edge.
-	 *
-	 *                axis==AXIS_X  axis==AXIS_Y
-	 *   side==false      SW            NW
-	 *   side==true       NE            SE
-	 *
-	 * I have no clue, why this was done this way.
-	 */
-	bool side = HasBit(image, 0);
-
-	/* "dir" means the edge the pillars stand on */
-	DiagDirection dir = AxisToDiagDir(axis);
-	if (side != (axis == AXIS_Y)) dir = ReverseDiagDir(dir);
+	if (psid->sprite == 0) return;
 
 	/* Determine ground height under pillars */
-	int front_height = ti->z;
-	int back_height = ti->z;
-	GetSlopeZOnEdge(ti->tileh, dir, &front_height, &back_height);
+	DiagDirection south_dir = AxisToDiagDir(axis);
+	int z_front_north = ti->z;
+	int z_back_north = ti->z;
+	int z_front_south = ti->z;
+	int z_back_south = ti->z;
+	GetSlopeZOnEdge(ti->tileh, south_dir, &z_front_south, &z_back_south);
+	GetSlopeZOnEdge(ti->tileh, ReverseDiagDir(south_dir), &z_front_north, &z_back_north);
+
+	/* Shared height of pillars */
+	int z_front = max(z_front_north, z_front_south);
+	int z_back = max(z_back_north, z_back_south);
 
 	/* x and y size of bounding-box of pillars */
 	int w = bounding_box_size[axis];
@@ -909,11 +908,16 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 	int y_back = y - back_pillar_offset[OtherAxis(axis)];
 
 	/* Draw front pillars */
-	DrawPillarColumn(front_height, z_bridge, psid, x, y, w, h);
+	int bottom_z = DrawPillarColumn(z_front, z_bridge, psid, x, y, w, h);
+	if (z_front_north < z_front) DrawPillar(psid, x, y, bottom_z, w, h, &half_pillar_sub_sprite[axis][0]);
+	if (z_front_south < z_front) DrawPillar(psid, x, y, bottom_z, w, h, &half_pillar_sub_sprite[axis][1]);
 
 	/* Draw back pillars, skip top two parts, which are hidden by the bridge */
-	if (drawfarpillar) {
-		DrawPillarColumn(back_height, z_bridge - 2 * (int)TILE_HEIGHT, psid, x_back, y_back, w, h);
+	int z_bridge_back = z_bridge - 2 * (int)TILE_HEIGHT;
+	if (drawfarpillar && (z_back_north <= z_bridge_back || z_back_south <= z_bridge_back)) {
+		bottom_z = DrawPillarColumn(z_back, z_bridge_back, psid, x_back, y_back, w, h);
+		if (z_back_north < z_back) DrawPillar(psid, x_back, y_back, bottom_z, w, h, &half_pillar_sub_sprite[axis][0]);
+		if (z_back_south < z_back) DrawPillar(psid, x_back, y_back, bottom_z, w, h, &half_pillar_sub_sprite[axis][1]);
 	}
 }
 
