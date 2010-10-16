@@ -261,7 +261,7 @@ void GamelogPrint(GamelogPrintProc *proc)
 					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
 					AddDebugText(buf, "GRF parameter changed: ");
 					PrintGrfInfo(buf, lc->grfparam.grfid, NULL, gm != grf_names.End() ? gm->second : NULL);
-					if (!grf_names.Contains(lc->grfparam.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
+					if (gm == grf_names.End()) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
 					break;
 				}
 
@@ -270,7 +270,7 @@ void GamelogPrint(GamelogPrintProc *proc)
 					AddDebugText(buf, "GRF order changed: %08X moved %d places %s",
 						BSWAP32(lc->grfmove.grfid), abs(lc->grfmove.offset), lc->grfmove.offset >= 0 ? "down" : "up" );
 					PrintGrfInfo(buf, lc->grfmove.grfid, NULL, gm != grf_names.End() ? gm->second : NULL);
-					if (!grf_names.Contains(lc->grfmove.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
+					if (gm == grf_names.End()) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
 					break;
 				}
 
@@ -283,7 +283,7 @@ void GamelogPrint(GamelogPrintProc *proc)
 							break;
 					}
 					PrintGrfInfo(buf, lc->grfbug.grfid, NULL, gm != grf_names.End() ? gm->second : NULL);
-					if (!grf_names.Contains(lc->grfbug.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
+					if (gm == grf_names.End()) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
 					break;
 				}
 
