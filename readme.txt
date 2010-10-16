@@ -315,11 +315,15 @@ features known from TTDPatch (http://www.ttdpatch.net/).
 
 Several important non-standard controls:
 
-* Ctrl makes many commands more powerful. For example Ctrl clicking on signals
-  with the build signal tool changes their behaviour.
+* Ctrl modifies many commands and makes them more powerful. For example Ctrl
+  clicking on signals with the build signal tool changes their behaviour, holding
+  Ctrl while the track build tool is activated changes it to the track removal
+  tool, and so on. See http://wiki.openttd.org/Hidden_features for a non-
+  comprehensive list or look at the tooltips.
 * Ingame console. More information at
   http://wiki.openttd.org/index.php/Console
-* Right clicking shows tooltips
+* Hovering over a GUI element shows tooltips. This can be changed to right click
+  via the advanced settings.
 
 
 5.1) Logging of potentially dangerous actions:
