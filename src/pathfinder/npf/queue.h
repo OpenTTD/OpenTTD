@@ -99,7 +99,7 @@ struct Hash {
 	/**
 	 * Gets the current size of the hash.
 	 */
-	uint FORCEINLINE GetSize() const
+	FORCEINLINE uint GetSize() const
 	{
 		return this->size;
 	}
