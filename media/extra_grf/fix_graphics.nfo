@@ -133,3 +133,16 @@
    -1 * 6	 12 01 00 01 AC E2
    -1 sprites/fix_graphics.pcx 776 250 01 10 9 0 0
 
+// Grahpics for the tubular bridge pillars had incorrect offsets
+   -1 * 5	 0A 01 04 05 0A
+   -1 sprites/fix_graphics_pillar_tubular.pcx  3 11 09 9 4  2 -1
+   -1 sprites/fix_graphics_pillar_tubular.pcx 19 11 09 9 4  2 -1
+   -1 sprites/fix_graphics_pillar_tubular.pcx 35 11 09 9 4 -4  0
+   -1 sprites/fix_graphics_pillar_tubular.pcx 51 11 09 9 4 -4  0
+
+// Grahpics for the cantilever bridge pillars had incorrect offsets
+   -1 * 5	 0A 01 04 DD 09
+   -1 sprites/fix_graphics_pillar_cantilever.pcx  4 10 09 11 10   2 -3
+   -1 sprites/fix_graphics_pillar_cantilever.pcx 20 10 09 12 10   2 -2
+   -1 sprites/fix_graphics_pillar_cantilever.pcx 36 10 09 11 10 -10 -1
+   -1 sprites/fix_graphics_pillar_cantilever.pcx 52 10 09 11 10 -10 -1
