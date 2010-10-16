@@ -825,6 +825,21 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, DoCommandFlag flags)
 }
 
 /**
+ * Draw a single pillar sprite.
+ * @param psid      Pillarsprite
+ * @param x         Pillar X
+ * @param y         Pillar Y
+ * @param z         Pillar Z
+ * @param w         Bounding box size in X direction
+ * @param h         Bounding box size in Y direction
+ */
+static inline void DrawPillar(const PalSpriteID *psid, int x, int y, int z, int w, int h)
+{
+	static const int PILLAR_Z_OFFSET = TILE_HEIGHT - BRIDGE_Z_START; ///< Start offset of pillar wrt. bridge (downwards)
+	AddSortableSpriteToDraw(psid->sprite, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET);
+}
+
+/**
  * Draws the pillars under high bridges.
  *
  * @param psid Image and palette of a bridge pillar.
@@ -840,7 +855,6 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 	/* Do not draw bridge pillars if they are invisible */
 	if (IsInvisibilitySet(TO_BRIDGES)) return;
 
-	static const int PILLAR_Z_OFFSET = TILE_HEIGHT - BRIDGE_Z_START; ///< Start offset of pillar wrt. bridge (downwards)
 	static const int bounding_box_size[2]  = {16, 2}; ///< bounding box size of pillars along bridge direction
 	static const int back_pillar_offset[2] = { 0, 9}; ///< sprite position offset of back facing pillar
 
@@ -877,12 +891,12 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 	for (int cur_z = z_bridge; cur_z >= front_height || cur_z >= back_height; cur_z -= TILE_HEIGHT) {
 		/* Draw front facing pillar */
 		if (cur_z >= front_height) {
-			AddSortableSpriteToDraw(image, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET);
+			DrawPillar(psid, x, y, cur_z, w, h);
 		}
 
 		/* Draw back facing pillar, but not the highest part directly under the bridge-floor */
 		if (drawfarpillar && cur_z >= back_height && cur_z < z_bridge - (int)TILE_HEIGHT) {
-			AddSortableSpriteToDraw(image, psid->pal, x_back, y_back, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET);
+			DrawPillar(psid, x_back, y_back, cur_z, w, h);
 		}
 	}
 }
