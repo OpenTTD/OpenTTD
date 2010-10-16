@@ -17,6 +17,7 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "window_func.h"
+#include "tilehighlight_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -70,7 +71,12 @@ public:
 
 		Point pt;
 		if (tile == INVALID_TILE) {
-			/* the main window with the main view */
+			/* Use tile under mouse as center for new viewport */
+			Point pt = GetTileBelowCursor();
+			if (pt.x != -1) tile = TileVirtXY(pt.x, pt.y);
+		}
+		if (tile == INVALID_TILE) {
+			/* Still no tile? Use center of main viewport. */
 			const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 
 			/* center on same place as main window (zoom is maximum, no adjustment needed) */
