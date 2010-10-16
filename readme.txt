@@ -548,7 +548,6 @@ X.X) Credits:
 ---- --------
 The OpenTTD team (in alphabetical order):
   Albert Hofkamp (Alberth)       - GUI expert
-  Ingo von Borstel (planetmaker) - Support
   Jean-François Claeys (Belugas) - GUI, newindustries and more
   Matthijs Kooijman (blathijs)   - Pathfinder-guru, pool rework
   Christoph Elsenhans (frosch)   - General coding
@@ -556,6 +555,7 @@ The OpenTTD team (in alphabetical order):
   Michael Lutz (michi_cc)        - Path based signals
   Owen Rudge (orudge)            - Forum host, OS/2 port
   Peter Nelson (peter1138)       - Spiritual descendant from newGRF gods
+  Ingo von Borstel (planetmaker) - Support
   Remko Bijker (Rubidium)        - Lead coder and way more
   Zdeněk Sojka (SmatZ)           - Bug finder and fixer
   José Soler (Terkhen)           - General coding
