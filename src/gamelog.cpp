@@ -160,6 +160,8 @@ assert_compile(lengthof(la_text) == GLAT_END);
 void GamelogPrint(GamelogPrintProc *proc)
 {
 	char buf[GAMELOG_BUF_LEN];
+	typedef SmallMap<uint32, const GRFConfig *> GrfIDMapping;
+	GrfIDMapping grf_names;
 
 	proc("---- gamelog start ----");
 
@@ -231,30 +233,41 @@ void GamelogPrint(GamelogPrintProc *proc)
 					AddDebugText(buf, "Setting changed: %s : %d -> %d", lc->setting.name, lc->setting.oldval, lc->setting.newval);
 					break;
 
-				case GLCT_GRFADD:
+				case GLCT_GRFADD: {
+					const GRFConfig *gc = FindGRFConfig(lc->grfadd.grfid, lc->grfadd.md5sum);
 					AddDebugText(buf, "Added NewGRF: ");
 					PrintGrfInfo(buf, lc->grfadd.grfid, lc->grfadd.md5sum);
+					if (grf_names.Contains(lc->grfadd.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was already added!");
+					grf_names[lc->grfadd.grfid] = gc;
 					break;
+				}
 
 				case GLCT_GRFREM:
 					AddDebugText(buf, "Removed NewGRF: %08X", BSWAP32(lc->grfrem.grfid));
 					PrintGrfFilename(buf, lc->grfrem.grfid);
+					if (!grf_names.Erase(lc->grfrem.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
 					break;
 
-				case GLCT_GRFCOMPAT:
+				case GLCT_GRFCOMPAT: {
+					const GRFConfig *gc = FindGRFConfig(lc->grfadd.grfid, lc->grfadd.md5sum);
 					AddDebugText(buf, "Compatible NewGRF loaded: ");
 					PrintGrfInfo(buf, lc->grfcompat.grfid, lc->grfcompat.md5sum);
+					if (!grf_names.Contains(lc->grfcompat.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
+					grf_names[lc->grfcompat.grfid] = gc;
 					break;
+				}
 
 				case GLCT_GRFPARAM:
 					AddDebugText(buf, "GRF parameter changed: %08X", BSWAP32(lc->grfparam.grfid));
 					PrintGrfFilename(buf, lc->grfparam.grfid);
+					if (!grf_names.Contains(lc->grfparam.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
 					break;
 
 				case GLCT_GRFMOVE:
 					AddDebugText(buf, "GRF order changed: %08X moved %d places %s",
 						BSWAP32(lc->grfmove.grfid), abs(lc->grfmove.offset), lc->grfmove.offset >= 0 ? "down" : "up" );
 					PrintGrfFilename(buf, lc->grfmove.grfid);
+					if (!grf_names.Contains(lc->grfmove.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
 					break;
 
 				case GLCT_GRFBUG:
@@ -265,6 +278,8 @@ void GamelogPrint(GamelogPrintProc *proc)
 							PrintGrfFilename(buf, lc->grfbug.grfid);
 							break;
 					}
+					if (!grf_names.Contains(lc->grfbug.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
+					break;
 
 				case GLCT_EMERGENCY:
 					break;
