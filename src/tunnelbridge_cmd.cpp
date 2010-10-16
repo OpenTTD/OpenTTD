@@ -46,6 +46,9 @@
 BridgeSpec _bridge[MAX_BRIDGES];
 TileIndex _build_tunnel_endtile;
 
+/* Z position of the bridge sprites relative to bridge height (downwards) */
+static const int BRIDGE_Z_START = 3;
+
 /** Reset the data been eventually changed by the grf loaded. */
 void ResetBridges()
 {
@@ -837,6 +840,10 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 	/* Do not draw bridge pillars if they are invisible */
 	if (IsInvisibilitySet(TO_BRIDGES)) return;
 
+	static const int PILLAR_Z_OFFSET = TILE_HEIGHT - BRIDGE_Z_START; ///< Start offset of pillar wrt. bridge (downwards)
+	static const int bounding_box_size[2]  = {16, 2}; ///< bounding box size of pillars along bridge direction
+	static const int back_pillar_offset[2] = { 0, 9}; ///< sprite position offset of back facing pillar
+
 	SpriteID image = psid->sprite;
 
 	if (image != 0) {
@@ -861,21 +868,21 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 		GetSlopeZOnEdge(ti->tileh, dir, &front_height, &back_height);
 
 		/* x and y size of bounding-box of pillars */
-		int w = (axis == AXIS_X ? 16 : 2);
-		int h = (axis == AXIS_X ? 2 : 16);
+		int w = bounding_box_size[axis];
+		int h = bounding_box_size[OtherAxis(axis)];
 		/* sprite position of back facing pillar */
-		int x_back = x - (axis == AXIS_X ? 0 : 9);
-		int y_back = y - (axis == AXIS_X ? 9 : 0);
+		int x_back = x - back_pillar_offset[axis];
+		int y_back = y - back_pillar_offset[OtherAxis(axis)];
 
 		for (int cur_z = z_bridge; cur_z >= front_height || cur_z >= back_height; cur_z -= TILE_HEIGHT) {
 			/* Draw front facing pillar */
 			if (cur_z >= front_height) {
-				AddSortableSpriteToDraw(image, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - 5, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -5);
+				AddSortableSpriteToDraw(image, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET);
 			}
 
 			/* Draw back facing pillar, but not the highest part directly under the bridge-floor */
 			if (drawfarpillar && cur_z >= back_height && cur_z < z_bridge - (int)TILE_HEIGHT) {
-				AddSortableSpriteToDraw(image, psid->pal, x_back, y_back, w, h, BB_HEIGHT_UNDER_BRIDGE - 5, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -5);
+				AddSortableSpriteToDraw(image, psid->pal, x_back, y_back, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET);
 			}
 		}
 	}
@@ -1173,9 +1180,6 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	 *    4       5
 	 *
 	 */
-
-	/* Z position of the bridge sprites relative to bridge height (downwards) */
-	static const int BRIDGE_Z_START = 3;
 
 	if (!IsBridgeAbove(ti->tile)) return;
 
