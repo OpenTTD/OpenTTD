@@ -1070,7 +1070,7 @@ STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Al final de la 
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Solo al final de la línea
 
 STR_DISASTERS_OFF                                               :No
-STR_DISASTERS_ON                                                :Si
+STR_DISASTERS_ON                                                :Sí
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
@@ -1149,7 +1149,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeropue
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avisar si el tren se pierde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisar órdenes de los vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :no
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :si, pero excluye los detenidos
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :sí, pero excluye los detenidos
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos los vehículos
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avisar si las ganancias de un vehículo son negativas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Los vehículos nunca caducan: {ORANGE}{STRING}
@@ -1498,7 +1498,7 @@ STR_FACE_EUROPEAN                                               :{BLACK}Europea
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Seleccionar Cara Europea
 STR_FACE_AFRICAN                                                :{BLACK}Africana
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Seleccionar Cara Africana
-STR_FACE_YES                                                    :Si
+STR_FACE_YES                                                    :Sí
 STR_FACE_NO                                                     :No
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activar bigotes o pendientes
 STR_FACE_HAIR                                                   :Pelo:
