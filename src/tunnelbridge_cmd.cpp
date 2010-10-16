@@ -840,6 +840,26 @@ static inline void DrawPillar(const PalSpriteID *psid, int x, int y, int z, int 
 }
 
 /**
+ * Draw two bridge pillars (north and south).
+ * @param z_bottom Bottom Z
+ * @param z_top    Top Z
+ * @param psid     Pillarsprite
+ * @param x        Pillar X
+ * @param y        Pillar Y
+ * @param w        Bounding box size in X direction
+ * @param h        Bounding box size in Y direction
+ * @return Reached Z at the bottom
+ */
+static int DrawPillarColumn(int z_bottom, int z_top, const PalSpriteID *psid, int x, int y, int w, int h)
+{
+	int cur_z;
+	for (cur_z = z_top; cur_z >= z_bottom; cur_z -= TILE_HEIGHT) {
+		DrawPillar(psid, x, y, cur_z, w, h);
+	}
+	return cur_z;
+}
+
+/**
  * Draws the pillars under high bridges.
  *
  * @param psid Image and palette of a bridge pillar.
@@ -888,16 +908,12 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 	int x_back = x - back_pillar_offset[axis];
 	int y_back = y - back_pillar_offset[OtherAxis(axis)];
 
-	for (int cur_z = z_bridge; cur_z >= front_height || cur_z >= back_height; cur_z -= TILE_HEIGHT) {
-		/* Draw front facing pillar */
-		if (cur_z >= front_height) {
-			DrawPillar(psid, x, y, cur_z, w, h);
-		}
+	/* Draw front pillars */
+	DrawPillarColumn(front_height, z_bridge, psid, x, y, w, h);
 
-		/* Draw back facing pillar, but not the highest part directly under the bridge-floor */
-		if (drawfarpillar && cur_z >= back_height && cur_z < z_bridge - (int)TILE_HEIGHT) {
-			DrawPillar(psid, x_back, y_back, cur_z, w, h);
-		}
+	/* Draw back pillars, skip top two parts, which are hidden by the bridge */
+	if (drawfarpillar) {
+		DrawPillarColumn(back_height, z_bridge - 2 * (int)TILE_HEIGHT, psid, x_back, y_back, w, h);
 	}
 }
 
