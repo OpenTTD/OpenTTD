@@ -212,7 +212,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		 * ofcourse totally unneeded ;) */
 		if (sockets != NULL) {
 			NetworkAddress address(runp->ai_addr, (int)runp->ai_addrlen);
-			if (sockets->Find(address) != sockets->End()) continue;
+			if (sockets->Contains(address)) continue;
 		}
 		sock = func(runp);
 		if (sock == INVALID_SOCKET) continue;

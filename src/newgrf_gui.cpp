@@ -258,7 +258,7 @@ struct NewGRFParametersWindow : public Window {
 				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, current_value > par_info->min_value, current_value < par_info->max_value);
 				SetDParam(2, STR_JUST_INT);
 				SetDParam(3, current_value);
-				if (par_info->value_names.Find(current_value) != par_info->value_names.End()) {
+				if (par_info->value_names.Contains(current_value)) {
 					const char *label = GetGRFStringFromGRFText(par_info->value_names.Find(current_value)->second);
 					if (label != NULL) {
 						SetDParam(2, STR_JUST_RAW_STRING);

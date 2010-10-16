@@ -318,7 +318,7 @@ struct AISettingsWindow : public Window {
 				SetDParam(idx++, current_value == 0 ? STR_CONFIG_SETTING_OFF : STR_CONFIG_SETTING_ON);
 			} else {
 				DrawArrowButtons(buttons_left, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + (this->clicked_increase != rtl) : 0, editable && current_value > (*it).min_value, editable && current_value < (*it).max_value);
-				if (it->labels != NULL && it->labels->Find(current_value) != it->labels->End()) {
+				if (it->labels != NULL && it->labels->Contains(current_value)) {
 					SetDParam(idx++, STR_JUST_RAW_STRING);
 					SetDParamStr(idx++, it->labels->Find(current_value)->second);
 				} else {

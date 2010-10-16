@@ -55,6 +55,16 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	}
 
 	/**
+	 * Tests whether a key is assigned in this map.
+	 * @param key key to test
+	 * @return true iff the item is present
+	 */
+	FORCEINLINE bool Contains(const T &key)
+	{
+		return this->Find(key) != this->End();
+	}
+
+	/**
 	 * Removes given pair from this map
 	 * @param pair pair to remove
 	 * @note it has to be pointer to pair in this map. It is overwritten by the last item.
@@ -90,7 +100,7 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 	 */
 	FORCEINLINE bool Insert(const T &key, const U &data)
 	{
-		if (this->Find(key) != this->End()) return false;
+		if (this->Contains(key)) return false;
 		Pair *n = this->Append();
 		n->first = key;
 		n->second = data;

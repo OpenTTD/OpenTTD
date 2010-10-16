@@ -307,7 +307,8 @@ SQInteger AIInfo::AddLabels(HSQUIRRELVM vm)
 		int key = atoi(key_string + 1);
 		const char *label = SQ2OTTD(sq_label);
 
-		if (config->labels->Find(key) == config->labels->End()) config->labels->Insert(key, strdup(label));
+		/* !Contains() prevents strdup from leaking. */
+		if (!config->labels->Contains(key)) config->labels->Insert(key, strdup(label));
 
 		sq_pop(vm, 2);
 	}
