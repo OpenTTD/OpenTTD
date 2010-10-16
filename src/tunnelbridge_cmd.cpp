@@ -845,45 +845,44 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis 
 	static const int back_pillar_offset[2] = { 0, 9}; ///< sprite position offset of back facing pillar
 
 	SpriteID image = psid->sprite;
+	if (image == 0) return;
 
-	if (image != 0) {
-		/* "side" specifies the side the pillars stand on.
-		 * The length of the pillars is then set to the height of the bridge over the corners of this edge.
-		 *
-		 *                axis==AXIS_X  axis==AXIS_Y
-		 *   side==false      SW            NW
-		 *   side==true       NE            SE
-		 *
-		 * I have no clue, why this was done this way.
-		 */
-		bool side = HasBit(image, 0);
+	/* "side" specifies the side the pillars stand on.
+	 * The length of the pillars is then set to the height of the bridge over the corners of this edge.
+	 *
+	 *                axis==AXIS_X  axis==AXIS_Y
+	 *   side==false      SW            NW
+	 *   side==true       NE            SE
+	 *
+	 * I have no clue, why this was done this way.
+	 */
+	bool side = HasBit(image, 0);
 
-		/* "dir" means the edge the pillars stand on */
-		DiagDirection dir = AxisToDiagDir(axis);
-		if (side != (axis == AXIS_Y)) dir = ReverseDiagDir(dir);
+	/* "dir" means the edge the pillars stand on */
+	DiagDirection dir = AxisToDiagDir(axis);
+	if (side != (axis == AXIS_Y)) dir = ReverseDiagDir(dir);
 
-		/* Determine ground height under pillars */
-		int front_height = ti->z;
-		int back_height = ti->z;
-		GetSlopeZOnEdge(ti->tileh, dir, &front_height, &back_height);
+	/* Determine ground height under pillars */
+	int front_height = ti->z;
+	int back_height = ti->z;
+	GetSlopeZOnEdge(ti->tileh, dir, &front_height, &back_height);
 
-		/* x and y size of bounding-box of pillars */
-		int w = bounding_box_size[axis];
-		int h = bounding_box_size[OtherAxis(axis)];
-		/* sprite position of back facing pillar */
-		int x_back = x - back_pillar_offset[axis];
-		int y_back = y - back_pillar_offset[OtherAxis(axis)];
+	/* x and y size of bounding-box of pillars */
+	int w = bounding_box_size[axis];
+	int h = bounding_box_size[OtherAxis(axis)];
+	/* sprite position of back facing pillar */
+	int x_back = x - back_pillar_offset[axis];
+	int y_back = y - back_pillar_offset[OtherAxis(axis)];
 
-		for (int cur_z = z_bridge; cur_z >= front_height || cur_z >= back_height; cur_z -= TILE_HEIGHT) {
-			/* Draw front facing pillar */
-			if (cur_z >= front_height) {
-				AddSortableSpriteToDraw(image, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET);
-			}
+	for (int cur_z = z_bridge; cur_z >= front_height || cur_z >= back_height; cur_z -= TILE_HEIGHT) {
+		/* Draw front facing pillar */
+		if (cur_z >= front_height) {
+			AddSortableSpriteToDraw(image, psid->pal, x, y, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET);
+		}
 
-			/* Draw back facing pillar, but not the highest part directly under the bridge-floor */
-			if (drawfarpillar && cur_z >= back_height && cur_z < z_bridge - (int)TILE_HEIGHT) {
-				AddSortableSpriteToDraw(image, psid->pal, x_back, y_back, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET);
-			}
+		/* Draw back facing pillar, but not the highest part directly under the bridge-floor */
+		if (drawfarpillar && cur_z >= back_height && cur_z < z_bridge - (int)TILE_HEIGHT) {
+			AddSortableSpriteToDraw(image, psid->pal, x_back, y_back, w, h, BB_HEIGHT_UNDER_BRIDGE - PILLAR_Z_OFFSET, cur_z, IsTransparencySet(TO_BRIDGES), 0, 0, -PILLAR_Z_OFFSET);
 		}
 	}
 }
