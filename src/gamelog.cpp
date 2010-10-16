@@ -150,6 +150,20 @@ static const char * const la_text[] = {
 
 assert_compile(lengthof(la_text) == GLAT_END);
 
+/**
+ * Information about the presence of a Grf at a certain point during gamelog history
+ * Note about missing Grfs:
+ * Changes to missing Grfs are not logged including manual removal of the Grf.
+ * So if the gamelog tells a Grf is missing we do not know whether it was readded or completely removed
+ * at some later point.
+ */
+struct GRFPresence{
+	const GRFConfig *gc;  ///< GRFConfig, if known
+	bool was_missing;     ///< Grf was missing during some gameload in the past
+
+	GRFPresence(const GRFConfig *gc) : gc(gc), was_missing(false) {}
+};
+typedef SmallMap<uint32, GRFPresence> GrfIDMapping;
 
 /**
  * Prints active gamelog
@@ -158,7 +172,6 @@ assert_compile(lengthof(la_text) == GLAT_END);
 void GamelogPrint(GamelogPrintProc *proc)
 {
 	char buf[GAMELOG_BUF_LEN];
-	typedef SmallMap<uint32, const GRFConfig *> GrfIDMapping;
 	GrfIDMapping grf_names;
 
 	proc("---- gamelog start ----");
@@ -235,16 +248,26 @@ void GamelogPrint(GamelogPrintProc *proc)
 					const GRFConfig *gc = FindGRFConfig(lc->grfadd.grfid, lc->grfadd.md5sum);
 					AddDebugText(buf, "Added NewGRF: ");
 					PrintGrfInfo(buf, lc->grfadd.grfid, lc->grfadd.md5sum, gc);
-					if (grf_names.Contains(lc->grfadd.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was already added!");
+					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
+					if (gm != grf_names.End() && !gm->second.was_missing) AddDebugText(buf, ". Gamelog inconsistency: GrfID was already added!");
 					grf_names[lc->grfadd.grfid] = gc;
 					break;
 				}
 
 				case GLCT_GRFREM: {
 					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
-					AddDebugText(buf, "Removed NewGRF: ");
-					PrintGrfInfo(buf, lc->grfrem.grfid, NULL, gm != grf_names.End() ? gm->second : NULL);
-					if (!grf_names.Erase(lc->grfrem.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
+					AddDebugText(buf, la->at == GLAT_LOAD ? "Missing NewGRF: " : "Removed NewGRF: ");
+					PrintGrfInfo(buf, lc->grfrem.grfid, NULL, gm != grf_names.End() ? gm->second.gc : NULL);
+					if (gm == grf_names.End()) {
+						AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
+					} else {
+						if (la->at == GLAT_LOAD) {
+							/* Missing grfs on load are not removed from the configuration */
+							gm->second.was_missing = true;
+						} else {
+							grf_names.Erase(gm);
+						}
+					}
 					break;
 				}
 
@@ -260,7 +283,7 @@ void GamelogPrint(GamelogPrintProc *proc)
 				case GLCT_GRFPARAM: {
 					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
 					AddDebugText(buf, "GRF parameter changed: ");
-					PrintGrfInfo(buf, lc->grfparam.grfid, NULL, gm != grf_names.End() ? gm->second : NULL);
+					PrintGrfInfo(buf, lc->grfparam.grfid, NULL, gm != grf_names.End() ? gm->second.gc : NULL);
 					if (gm == grf_names.End()) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
 					break;
 				}
@@ -269,7 +292,7 @@ void GamelogPrint(GamelogPrintProc *proc)
 					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
 					AddDebugText(buf, "GRF order changed: %08X moved %d places %s",
 						BSWAP32(lc->grfmove.grfid), abs(lc->grfmove.offset), lc->grfmove.offset >= 0 ? "down" : "up" );
-					PrintGrfInfo(buf, lc->grfmove.grfid, NULL, gm != grf_names.End() ? gm->second : NULL);
+					PrintGrfInfo(buf, lc->grfmove.grfid, NULL, gm != grf_names.End() ? gm->second.gc : NULL);
 					if (gm == grf_names.End()) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
 					break;
 				}
@@ -282,7 +305,7 @@ void GamelogPrint(GamelogPrintProc *proc)
 							AddDebugText(buf, "Rail vehicle changes length outside a depot: GRF ID %08X, internal ID 0x%X", BSWAP32(lc->grfbug.grfid), (uint)lc->grfbug.data);
 							break;
 					}
-					PrintGrfInfo(buf, lc->grfbug.grfid, NULL, gm != grf_names.End() ? gm->second : NULL);
+					PrintGrfInfo(buf, lc->grfbug.grfid, NULL, gm != grf_names.End() ? gm->second.gc : NULL);
 					if (gm == grf_names.End()) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");
 					break;
 				}
