@@ -636,6 +636,7 @@ const SettingDesc _settings[] = {
 	  SDTC_STR(network.client_name,            SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       UpdateClientName),
 	  SDTC_STR(network.server_password,        SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       UpdateServerPassword),
 	  SDTC_STR(network.rcon_password,          SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       UpdateRconPassword),
+	  SDTC_STR(network.admin_password,         SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       NULL),
 	  SDTC_STR(network.default_company_pass,   SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       NULL),
 	  SDTC_STR(network.server_name,            SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       NULL),
 	  SDTC_STR(network.connect_to_ip,          SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       NULL),

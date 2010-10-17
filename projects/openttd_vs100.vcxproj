@@ -331,6 +331,7 @@
     <ClCompile Include="..\src\mixer.cpp" />
     <ClCompile Include="..\src\music.cpp" />
     <ClCompile Include="..\src\network\network.cpp" />
+    <ClCompile Include="..\src\network\network_admin.cpp" />
     <ClCompile Include="..\src\network\network_client.cpp" />
     <ClCompile Include="..\src\network\network_command.cpp" />
     <ClCompile Include="..\src\network\network_content.cpp" />
@@ -457,6 +458,7 @@
     <ClInclude Include="..\src\map_type.h" />
     <ClInclude Include="..\src\mixer.h" />
     <ClInclude Include="..\src\network\network.h" />
+    <ClInclude Include="..\src\network\network_admin.h" />
     <ClInclude Include="..\src\network\network_base.h" />
     <ClInclude Include="..\src\network\network_client.h" />
     <ClInclude Include="..\src\network\network_content.h" />
@@ -1039,6 +1041,8 @@
     <ClInclude Include="..\src\network\core\tcp_content.h" />
     <ClCompile Include="..\src\network\core\tcp_game.cpp" />
     <ClInclude Include="..\src\network\core\tcp_game.h" />
+    <ClCompile Include="..\src\network\core\tcp_admin.cpp" />
+    <ClInclude Include="..\src\network\core\tcp_admin.h" />
     <ClCompile Include="..\src\network\core\tcp_http.cpp" />
     <ClInclude Include="..\src\network\core\tcp_http.h" />
     <ClInclude Include="..\src\network\core\tcp_listen.h" />

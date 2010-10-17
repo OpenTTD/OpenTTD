@@ -39,6 +39,7 @@ misc.cpp
 mixer.cpp
 music.cpp
 network/network.cpp
+network/network_admin.cpp
 network/network_client.cpp
 network/network_command.cpp
 network/network_content.cpp
@@ -190,6 +191,7 @@ map_func.h
 map_type.h
 mixer.h
 network/network.h
+network/network_admin.h
 network/network_base.h
 network/network_client.h
 network/network_content.h
@@ -834,6 +836,8 @@ network/core/tcp_content.cpp
 network/core/tcp_content.h
 network/core/tcp_game.cpp
 network/core/tcp_game.h
+network/core/tcp_admin.cpp
+network/core/tcp_admin.h
 network/core/tcp_http.cpp
 network/core/tcp_http.h
 network/core/tcp_listen.h

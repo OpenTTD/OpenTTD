@@ -49,6 +49,14 @@ enum ClientID {
 /** Indices into the client tables */
 typedef uint8 ClientIndex;
 
+/** Indices into the admin tables. */
+typedef uint8 AdminIndex;
+
+/** Maximum number of allowed admins. */
+static const AdminIndex MAX_ADMINS = 16;
+/** An invalid admin marker. */
+static const AdminIndex INVALID_ADMIN_ID = UINT8_MAX;
+
 /** Simple calculated statistics of a company */
 struct NetworkCompanyStats {
 	uint16 num_vehicle[NETWORK_VEH_END];            ///< How many vehicles are there of this type?

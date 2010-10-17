@@ -29,10 +29,12 @@ static const uint16 NETWORK_MASTER_SERVER_PORT    = 3978; ///< The default port 
 static const uint16 NETWORK_CONTENT_SERVER_PORT   = 3978; ///< The default port of the content server (TCP)
 static const uint16 NETWORK_CONTENT_MIRROR_PORT   =   80; ///< The default port of the content mirror (TCP)
 static const uint16 NETWORK_DEFAULT_PORT          = 3979; ///< The default port of the game server (TCP & UDP)
+static const uint16 NETWORK_ADMIN_PORT            = 3977; ///< The default port for admin network
 static const uint16 NETWORK_DEFAULT_DEBUGLOG_PORT = 3982; ///< The default port debug-log is sent too (TCP)
 
 static const uint16 SEND_MTU                      = 1460; ///< Number of bytes we can pack in a single packet
 
+static const byte NETWORK_GAME_ADMIN_VERSION      =    1; ///< What version of the admin network do we use?
 static const byte NETWORK_GAME_INFO_VERSION       =    4; ///< What version of game-info do we use?
 static const byte NETWORK_COMPANY_INFO_VERSION    =    6; ///< What version of company info is this?
 static const byte NETWORK_MASTER_SERVER_VERSION   =    2; ///< What version of master-server-protocol do we use?
