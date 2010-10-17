@@ -49,6 +49,10 @@ public:
 	NetworkRecvStatus SendClientUpdate(const NetworkClientInfo *ci);
 	NetworkRecvStatus SendClientQuit(ClientID client_id);
 	NetworkRecvStatus SendClientError(ClientID client_id, NetworkErrorCode error);
+	NetworkRecvStatus SendCompanyNew(CompanyID company_id);
+	NetworkRecvStatus SendCompanyInfo(const Company *c);
+	NetworkRecvStatus SendCompanyUpdate(const Company *c);
+	NetworkRecvStatus SendCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr);
 
 	static void Send();
 	static void AcceptConnection(SOCKET s, const NetworkAddress &address);
@@ -72,6 +76,9 @@ void NetworkAdminClientInfo(const NetworkClientInfo *ci, bool new_client = false
 void NetworkAdminClientUpdate(const NetworkClientInfo *ci);
 void NetworkAdminClientQuit(ClientID client_id);
 void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code);
+void NetworkAdminCompanyInfo(const Company *company, bool new_company);
+void NetworkAdminCompanyUpdate(const Company *company);
+void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
 
 #endif /* ENABLE_NETWORK */

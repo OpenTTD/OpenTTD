@@ -45,6 +45,10 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_CLIENT_UPDATE,   ///< The server gives the admin an information update on a client.
 	ADMIN_PACKET_SERVER_CLIENT_QUIT,     ///< The server tells the admin that a client quit.
 	ADMIN_PACKET_SERVER_CLIENT_ERROR,    ///< The server tells the admin that a client caused an error.
+	ADMIN_PACKET_SERVER_COMPANY_NEW,     ///< The server tells the admin that a new company has started.
+	ADMIN_PACKET_SERVER_COMPANY_INFO,    ///< The server gives the admin information about a company.
+	ADMIN_PACKET_SERVER_COMPANY_UPDATE,  ///< The server gives the admin an information update on a company.
+	ADMIN_PACKET_SERVER_COMPANY_REMOVE,  ///< The server tells the admin that a company was removed.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -60,6 +64,7 @@ enum AdminStatus {
 enum AdminUpdateType {
 	ADMIN_UPDATE_DATE,            ///< Updates about the date of the game.
 	ADMIN_UPDATE_CLIENT_INFO,     ///< Updates about the information of clients.
+	ADMIN_UPDATE_COMPANY_INFO,    ///< Updates about the generic information of companies.
 	ADMIN_UPDATE_END              ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -74,6 +79,13 @@ enum AdminUpdateFrequency {
 	ADMIN_FREQUENCY_AUTOMATIC = 0x40, ///< The admin gets information about this when it changes.
 };
 DECLARE_ENUM_AS_BIT_SET(AdminUpdateFrequency);
+
+/** Reasons for removing a company - communicated to admins. */
+enum AdminCompanyRemoveReason {
+	ADMIN_CRR_MANUAL,    ///< The company is manually removed.
+	ADMIN_CRR_AUTOCLEAN, ///< The company is removed due to autoclean.
+	ADMIN_CRR_BANKRUPT   ///< The company went belly-up.
+};
 
 #define DECLARE_ADMIN_RECEIVE_COMMAND(type) virtual NetworkRecvStatus NetworkPacketReceive_## type ##_command(Packet *p)
 #define DEF_ADMIN_RECEIVE_COMMAND(cls, type) NetworkRecvStatus cls ##NetworkAdminSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p)
@@ -110,6 +122,7 @@ protected:
 	 * uint8   #AdminUpdateType the server should answer for, only if #AdminUpdateFrequency #ADMIN_FREQUENCY_POLL is advertised in the PROTOCOL packet.
 	 * uint32  ID relevant to the packet type, e.g.
 	 *          - the client ID for #ADMIN_UPDATE_CLIENT_INFO. Use UINT32_MAX to show all clients.
+	 *          - the company ID for #ADMIN_UPDATE_COMPANY_INFO. Use UINT32_MAX to show all companies.
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_POLL);
 
@@ -205,6 +218,46 @@ protected:
 	 * uint8   Error the client made (see NetworkErrorCode).
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_ERROR);
+
+	/**
+	 * Notification of a new company:
+	 * uint8   ID of the new company.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_NEW);
+
+	/**
+	 * Company information on a specific company:
+	 * uint8   ID of the company.
+	 * string  Name of the company.
+	 * string  Name of the companies manager.
+	 * uint8   Main company colour.
+	 * bool    Company is password protected.
+	 * uint32  Year the company was inaugurated.
+	 * bool    Company is an AI.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_INFO);
+
+	/**
+	 * Company information of a specific company:
+	 * uint8   ID of the company.
+	 * string  Name of the company.
+	 * string  Name of the companies manager.
+	 * uint8   Main company colour.
+	 * bool    Company is password protected.
+	 * uint8   Quarters of bankruptcy.
+	 * uint8   Owner of share 1.
+	 * uint8   Owner of share 2.
+	 * uint8   Owner of share 3.
+	 * uint8   Owner of share 4.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_UPDATE);
+
+	/**
+	 * Notification about a removed company (e.g. due to banrkuptcy).
+	 * uint8   ID of the company.
+	 * uint8   Reason for being removed (see #AdminCompanyRemoveReason).
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_REMOVE);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:

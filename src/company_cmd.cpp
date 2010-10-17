@@ -21,6 +21,7 @@
 #include "network/network.h"
 #include "network/network_func.h"
 #include "network/network_base.h"
+#include "network/network_admin.h"
 #include "ai/ai.hpp"
 #include "company_manager_face.h"
 #include "window_func.h"
@@ -740,6 +741,28 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
 }
 
 /**
+ * Called whenever company related information changes in order to notify admins.
+ * @param company The company data changed of.
+ */
+void CompanyAdminUpdate(const Company *company)
+{
+#ifdef ENABLE_NETWORK
+	if (_network_server) NetworkAdminCompanyUpdate(company);
+#endif /* ENABLE_NETWORK */
+}
+
+/**
+ * Called whenever a company goes bankrupt in order to notify admins.
+ * @param company_id The company that went bankrupt.
+ */
+void CompanyAdminBankrupt(CompanyID company_id)
+{
+#ifdef ENABLE_NETWORK
+	if (_network_server) NetworkAdminCompanyRemove(company_id, ADMIN_CRR_BANKRUPT);
+#endif /* ENABLE_NETWORK */
+}
+
+/**
  * Control the companies: add, delete, etc.
  * @param tile unused
  * @param flags operation to perform
@@ -827,6 +850,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 				/* Announce new company on network, if the client was a SPECTATOR before */
 				if (old_playas == COMPANY_SPECTATOR) {
+					NetworkAdminCompanyInfo(c, true);
 					NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, ci->client_playas + 1);
 				}
 			}
@@ -865,6 +889,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			CompanyID c_index = c->index;
 			delete c;
 			AI::BroadcastNewEvent(new AIEventCompanyBankrupt(c_index));
+			CompanyAdminBankrupt(c_index);
 			break;
 		}
 
@@ -935,6 +960,7 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 				if (scheme == LS_DEFAULT) {
 					_company_colours[_current_company] = colour;
 					c->colour = colour;
+					CompanyAdminUpdate(c);
 				}
 				break;
 
@@ -1032,6 +1058,7 @@ CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		free(c->name);
 		c->name = reset ? NULL : strdup(text);
 		MarkWholeScreenDirty();
+		CompanyAdminUpdate(c);
 	}
 
 	return CommandCost();
@@ -1089,6 +1116,7 @@ CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		}
 
 		MarkWholeScreenDirty();
+		CompanyAdminUpdate(c);
 	}
 
 	return CommandCost();

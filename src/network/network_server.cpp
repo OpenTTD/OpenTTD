@@ -1544,6 +1544,7 @@ static void NetworkAutoCleanCompanies()
 			if (_settings_client.network.autoclean_unprotected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_unprotected && StrEmpty(_network_company_states[c->index].password)) {
 				/* Shut the company down */
 				DoCommandP(0, 2 | c->index << 16, 0, CMD_COMPANY_CTRL);
+				NetworkAdminCompanyRemove(c->index, ADMIN_CRR_AUTOCLEAN);
 				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d with no password", c->index + 1);
 			}
 			/* Is the company empty for autoclean_protected-months, and there is a protection? */
@@ -1558,6 +1559,7 @@ static void NetworkAutoCleanCompanies()
 			if (_settings_client.network.autoclean_novehicles != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_novehicles && vehicles_in_company[c->index] == 0) {
 				/* Shut the company down */
 				DoCommandP(0, 2 | c->index << 16, 0, CMD_COMPANY_CTRL);
+				NetworkAdminCompanyRemove(c->index, ADMIN_CRR_AUTOCLEAN);
 				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d with no vehicles", c->index + 1);
 			}
 		} else {

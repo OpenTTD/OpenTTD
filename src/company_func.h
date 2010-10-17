@@ -21,6 +21,8 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner);
 void GetNameOfOwner(Owner owner, TileIndex tile);
 void SetLocalCompany(CompanyID new_company);
 void ShowBuyCompanyDialog(CompanyID company);
+void CompanyAdminUpdate(const Company *company);
+void CompanyAdminBankrupt(CompanyID company_id);
 
 extern CompanyByte _local_company;
 extern CompanyByte _current_company;

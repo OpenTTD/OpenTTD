@@ -42,6 +42,7 @@ static const int ADMIN_AUTHORISATION_TIMEOUT = 10000;
 static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
 	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_DAILY | ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_DATE
 	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CLIENT_INFO
+	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_COMPANY_INFO
 };
 assert_compile(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
 
@@ -241,6 +242,83 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientError(ClientID clie
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyNew(CompanyID company_id)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_NEW);
+	p->Send_uint8(company_id);
+
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company *c)
+{
+	char company_name[NETWORK_COMPANY_NAME_LENGTH];
+	char manager_name[NETWORK_COMPANY_NAME_LENGTH];
+
+	SetDParam(0, c->index);
+	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+
+	SetDParam(0, c->index);
+	GetString(manager_name, STR_PRESIDENT_NAME, lastof(manager_name));
+
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_INFO);
+
+	p->Send_uint8 (c->index);
+	p->Send_string(company_name);
+	p->Send_string(manager_name);
+	p->Send_uint8 (c->colour);
+	p->Send_bool  (NetworkCompanyIsPassworded(c->index));
+	p->Send_uint32(c->inaugurated_year);
+	p->Send_bool  (c->is_ai);
+
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Company *c)
+{
+	char company_name[NETWORK_COMPANY_NAME_LENGTH];
+	char manager_name[NETWORK_COMPANY_NAME_LENGTH];
+
+	SetDParam(0, c->index);
+	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+
+	SetDParam(0, c->index);
+	GetString(manager_name, STR_PRESIDENT_NAME, lastof(manager_name));
+
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_UPDATE);
+
+	p->Send_uint8 (c->index);
+	p->Send_string(company_name);
+	p->Send_string(manager_name);
+	p->Send_uint8 (c->colour);
+	p->Send_bool  (NetworkCompanyIsPassworded(c->index));
+	p->Send_uint8 (c->quarters_of_bankruptcy);
+
+	for (size_t i = 0; i < lengthof(c->share_owners); i++) {
+		p->Send_uint8(c->share_owners[i]);
+	}
+
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason acrr)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_REMOVE);
+
+	p->Send_uint8(company_id);
+	p->Send_uint8(acrr);
+
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /***********
  * Receiving functions
  ************/
@@ -321,6 +399,19 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
 			}
 			break;
 
+		case ADMIN_UPDATE_COMPANY_INFO:
+			/* The admin is asking for company info. */
+			const Company *company;
+			if (d1 == UINT32_MAX) {
+				FOR_ALL_COMPANIES(company) {
+					this->SendCompanyInfo(company);
+				}
+			} else {
+				company = Company::GetIfValid(d1);
+				if (company != NULL) this->SendCompanyInfo(company);
+			}
+			break;
+
 		default:
 			/* An unsupported "poll" update type. */
 			DEBUG(net, 3, "[admin] Not supported poll %d (%d) from '%s' (%s).", type, d1, this->admin_name, this->admin_version);
@@ -392,6 +483,58 @@ void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code)
 		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
 			as->SendClientError(client_id, error_code);
 		}
+	}
+}
+
+/**
+ * Notify the admin network of company details.
+ * @param company the company of which details will be sent into the admin network.
+ * @param new_company whether this is a new company or not.
+ */
+void NetworkAdminCompanyInfo(const Company *company, bool new_company)
+{
+	if (company == NULL) {
+		DEBUG(net, 1, "[admin] Empty company given for update");
+		return;
+	}
+
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		if (as->update_frequency[ADMIN_UPDATE_COMPANY_INFO] != ADMIN_FREQUENCY_AUTOMATIC) continue;
+
+		as->SendCompanyInfo(company);
+		if (new_company) {
+			as->SendCompanyNew(company->index);
+		}
+	}
+}
+
+/**
+ * Notify the admin network of company updates.
+ * @param company company of which updates are going to be sent into the admin network.
+ */
+void NetworkAdminCompanyUpdate(const Company *company)
+{
+	if (company == NULL) return;
+
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		if (as->update_frequency[ADMIN_UPDATE_COMPANY_INFO] != ADMIN_FREQUENCY_AUTOMATIC) continue;
+
+		as->SendCompanyUpdate(company);
+	}
+}
+
+/**
+ * Notify the admin network of a company to be removed (including the reason why).
+ * @param company_id ID of the company that got removed.
+ * @param bcrr the reason why the company got removed (e.g. bankruptcy).
+ */
+void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr)
+{
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		as->SendCompanyRemove(company_id, bcrr);
 	}
 }
 
