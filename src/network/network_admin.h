@@ -44,6 +44,11 @@ public:
 	NetworkRecvStatus SendNewGame();
 	NetworkRecvStatus SendShutdown();
 	NetworkRecvStatus SendDate();
+	NetworkRecvStatus SendClientJoin(ClientID client_id);
+	NetworkRecvStatus SendClientInfo(const NetworkClientInfo *ci);
+	NetworkRecvStatus SendClientUpdate(const NetworkClientInfo *ci);
+	NetworkRecvStatus SendClientQuit(ClientID client_id);
+	NetworkRecvStatus SendClientError(ClientID client_id, NetworkErrorCode error);
 
 	static void Send();
 	static void AcceptConnection(SOCKET s, const NetworkAddress &address);
@@ -63,6 +68,10 @@ public:
 #define FOR_ALL_ADMIN_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(ServerNetworkAdminSocketHandler, adminsocket_index, var, start)
 #define FOR_ALL_ADMIN_SOCKETS(var) FOR_ALL_ADMIN_SOCKETS_FROM(var, 0)
 
+void NetworkAdminClientInfo(const NetworkClientInfo *ci, bool new_client = false);
+void NetworkAdminClientUpdate(const NetworkClientInfo *ci);
+void NetworkAdminClientQuit(ClientID client_id);
+void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
 
 #endif /* ENABLE_NETWORK */

@@ -41,6 +41,7 @@ static const int ADMIN_AUTHORISATION_TIMEOUT = 10000;
 /** Frequencies, which may be registered for a certain update type. */
 static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
 	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_DAILY | ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_DATE
+	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CLIENT_INFO
 };
 assert_compile(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
 
@@ -180,6 +181,66 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendDate()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientJoin(ClientID client_id)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_JOIN);
+
+	p->Send_uint32(client_id);
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkClientInfo *ci)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_INFO);
+
+	p->Send_uint32(ci->client_id);
+	p->Send_string(const_cast<NetworkAddress &>(ci->client_address).GetHostname());
+	p->Send_string(ci->client_name);
+	p->Send_uint8 (ci->client_lang);
+	p->Send_uint32(ci->join_date);
+	p->Send_uint8 (ci->client_playas);
+
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientUpdate(const NetworkClientInfo *ci)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_UPDATE);
+
+	p->Send_uint32(ci->client_id);
+	p->Send_string(ci->client_name);
+	p->Send_uint8 (ci->client_playas);
+
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientQuit(ClientID client_id)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_QUIT);
+
+	p->Send_uint32(client_id);
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientError(ClientID client_id, NetworkErrorCode error)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_ERROR);
+
+	p->Send_uint32(client_id);
+	p->Send_uint8 (error);
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /***********
  * Receiving functions
  ************/
@@ -247,6 +308,19 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
 			this->SendDate();
 			break;
 
+		case ADMIN_UPDATE_CLIENT_INFO:
+			/* The admin is requesting client info. */
+			const NetworkClientInfo *ci;
+			if (d1 == UINT32_MAX) {
+				FOR_ALL_CLIENT_INFOS(ci) {
+					this->SendClientInfo(ci);
+				}
+			} else {
+				ci = NetworkFindClientInfoFromClientID((ClientID)d1);
+				if (ci != NULL) this->SendClientInfo(ci);
+			}
+			break;
+
 		default:
 			/* An unsupported "poll" update type. */
 			DEBUG(net, 3, "[admin] Not supported poll %d (%d) from '%s' (%s).", type, d1, this->admin_name, this->admin_version);
@@ -259,6 +333,67 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
 /*
  * Useful wrapper functions
  */
+
+/**
+ * Notify the admin network of a new client (if they did opt in for the respective update).
+ * @param ci the client info.
+ * @param new_client if this is a new client, send the respective packet too.
+ */
+void NetworkAdminClientInfo(const NetworkClientInfo *ci, bool new_client)
+{
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
+			as->SendClientInfo(ci);
+			if (new_client) {
+				as->SendClientJoin(ci->client_id);
+			}
+		}
+	}
+}
+
+/**
+ * Notify the admin network of a client update (if they did opt in for the respective update).
+ * @param ci the client info.
+ */
+void NetworkAdminClientUpdate(const NetworkClientInfo *ci)
+{
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
+			as->SendClientUpdate(ci);
+		}
+	}
+}
+
+/**
+ * Notify the admin network that a client quit (if they have opt in for the respective update).
+ * @param client_id of the client that quit.
+ */
+void NetworkAdminClientQuit(ClientID client_id)
+{
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
+			as->SendClientQuit(client_id);
+		}
+	}
+}
+
+/**
+ * Notify the admin network of a client error (if they have opt in for the respective update).
+ * @param client_id the client that made the error.
+ * @param error_code the error that was caused.
+ */
+void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code)
+{
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		if (as->update_frequency[ADMIN_UPDATE_CLIENT_INFO] & ADMIN_FREQUENCY_AUTOMATIC) {
+			as->SendClientError(client_id, error_code);
+		}
+	}
+}
 
 /**
  * Send a Welcome packet to all connected admins

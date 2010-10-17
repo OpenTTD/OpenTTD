@@ -40,6 +40,11 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_SHUTDOWN,        ///< The server tells the admin its shutting down.
 
 	ADMIN_PACKET_SERVER_DATE,            ///< The server tells the admin what the current game date is.
+	ADMIN_PACKET_SERVER_CLIENT_JOIN,     ///< The server tells the admin that a client has joined.
+	ADMIN_PACKET_SERVER_CLIENT_INFO,     ///< The server gives the admin information about a client.
+	ADMIN_PACKET_SERVER_CLIENT_UPDATE,   ///< The server gives the admin an information update on a client.
+	ADMIN_PACKET_SERVER_CLIENT_QUIT,     ///< The server tells the admin that a client quit.
+	ADMIN_PACKET_SERVER_CLIENT_ERROR,    ///< The server tells the admin that a client caused an error.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -54,6 +59,7 @@ enum AdminStatus {
 /** Update types an admin can register a frequency for */
 enum AdminUpdateType {
 	ADMIN_UPDATE_DATE,            ///< Updates about the date of the game.
+	ADMIN_UPDATE_CLIENT_INFO,     ///< Updates about the information of clients.
 	ADMIN_UPDATE_END              ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -102,7 +108,8 @@ protected:
 	/**
 	 * Poll the server for certain updates, an invalid poll (e.g. not existent id) gets silently dropped:
 	 * uint8   #AdminUpdateType the server should answer for, only if #AdminUpdateFrequency #ADMIN_FREQUENCY_POLL is advertised in the PROTOCOL packet.
-	 * uint32  ID relevant to the packet type.
+	 * uint32  ID relevant to the packet type, e.g.
+	 *          - the client ID for #ADMIN_UPDATE_CLIENT_INFO. Use UINT32_MAX to show all clients.
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_POLL);
 
@@ -160,6 +167,44 @@ protected:
 	 * uint32  Current game date.
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_DATE);
+
+	/**
+	 * Notification of a new client:
+	 * uint32  ID of the new client.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_JOIN);
+
+	/**
+	 * Client information of a specific client:
+	 * uint32  ID of the client.
+	 * string  Network address of the client.
+	 * string  Name of the client.
+	 * uint8   Language of the client.
+	 * uint32  Date the client joined the game.
+	 * uint8   ID of the company the client is playing as (255 for spectators).
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_INFO);
+
+	/**
+	 * Client update details on a specific client (e.g. after rename or move):
+	 * uint32  ID of the client.
+	 * string  Name of the client.
+	 * uint8   ID of the company the client is playing as (255 for spectators).
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_UPDATE);
+
+	/**
+	 * Notification about a client leaving the game.
+	 * uint32  ID of the client that just left.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_QUIT);
+
+	/**
+	 * Notification about a client error (and thus the clients disconnection).
+	 * uint32  ID of the client that made the error.
+	 * uint8   Error the client made (see NetworkErrorCode).
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CLIENT_ERROR);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:

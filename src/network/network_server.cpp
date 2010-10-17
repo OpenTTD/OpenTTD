@@ -284,6 +284,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 				new_cs->SendErrorQuit(this->client_id, error);
 			}
 		}
+
+		NetworkAdminClientError(this->client_id, error);
 	} else {
 		DEBUG(net, 1, "Client %d made an error and has been disconnected. Reason: '%s'", this->client_id, str);
 	}
@@ -985,6 +987,8 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MAP_OK)
 			}
 		}
 
+		NetworkAdminClientInfo(this->GetInfo(), true);
+
 		/* also update the new client with our max values */
 		this->SendConfigUpdate();
 
@@ -1093,6 +1097,8 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ERROR)
 		}
 	}
 
+	NetworkAdminClientError(this->client_id, errorno);
+
 	return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 }
 
@@ -1117,6 +1123,8 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_QUIT)
 			this->SendQuit(this->client_id);
 		}
 	}
+
+	NetworkAdminClientQuit(this->client_id);
 
 	return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 }
@@ -1473,6 +1481,8 @@ void NetworkUpdateClientInfo(ClientID client_id)
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		cs->SendClientInfo(ci);
 	}
+
+	NetworkAdminClientUpdate(ci);
 }
 
 /* Check if we want to restart the map */
