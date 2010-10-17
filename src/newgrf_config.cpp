@@ -448,7 +448,7 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig)
 
 			/* If we have not found the exactly matching GRF try to find one with the
 			 * same grfid, as it most likely is compatible */
-			f = FindGRFConfig(c->ident.grfid, FGCM_COMPATIBLE);
+			f = FindGRFConfig(c->ident.grfid, FGCM_COMPATIBLE, NULL, c->version);
 			if (f != NULL) {
 				md5sumToString(buf, lastof(buf), c->ident.md5sum);
 				DEBUG(grf, 1, "NewGRF %08X (%s) not found; checksum %s. Compatibility mode on", BSWAP32(c->ident.grfid), c->filename, buf);
@@ -485,6 +485,7 @@ compatible_grf:
 				if (c->info == NULL) c->info = DuplicateGRFText(f->info);
 				c->error = NULL;
 				c->version = f->version;
+				c->min_loadable_version = f->min_loadable_version;
 				c->num_valid_params = f->num_valid_params;
 				c->has_param_defaults = f->has_param_defaults;
 				for (uint i = 0; i < f->param_info.Length(); i++) {
@@ -616,9 +617,10 @@ void ScanNewGRFFiles()
  * @param grfid GRFID to look for,
  * @param mode Restrictions for matching grfs
  * @param md5sum Expected MD5 sum
+ * @param desired_version Requested version
  * @return The matching grf, if it exists in #_all_grfs, else \c NULL.
  */
-const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum)
+const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum, uint32 desired_version)
 {
 	assert((mode == FGCM_EXACT) != (md5sum == NULL));
 	const GRFConfig *best = NULL;
@@ -627,6 +629,8 @@ const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8
 		if (!c->ident.HasGrfIdentifier(grfid, md5sum)) continue;
 		/* return it, if the exact same newgrf is found, or if we do not care about finding "the best" */
 		if (md5sum != NULL || mode == FGCM_ANY) return c;
+		/* check version compatibility */
+		if (mode == FGCM_COMPATIBLE && (c->version < desired_version || c->min_loadable_version > desired_version)) continue;
 		/* remember the newest one as "the best" */
 		if (best == NULL || c->version > best->version) best = c;
 	}
