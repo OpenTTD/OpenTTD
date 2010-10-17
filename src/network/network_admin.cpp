@@ -43,6 +43,7 @@ static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
 	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_DAILY | ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_DATE
 	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CLIENT_INFO
 	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_COMPANY_INFO
+	ADMIN_FREQUENCY_POLL |                         ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_COMPANY_ECONOMY
 };
 assert_compile(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
 
@@ -319,6 +320,40 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyRemove(CompanyID c
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyEconomy()
+{
+	const Company *company;
+	FOR_ALL_COMPANIES(company) {
+		/* Get the income. */
+		Money income = 0;
+		for (uint i = 0; i < lengthof(company->yearly_expenses[0]); i++) {
+			income -= company->yearly_expenses[0][i];
+		}
+
+		Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_ECONOMY);
+
+		p->Send_uint8(company->index);
+
+		/* Current information. */
+		p->Send_uint64(company->money);
+		p->Send_uint64(company->current_loan);
+		p->Send_uint64(income);
+		p->Send_uint16(company->cur_economy.delivered_cargo);
+
+		/* Send stats for the last 2 quarters. */
+		for (uint i = 0; i < 2; i++) {
+			p->Send_uint64(company->old_economy[i].company_value);
+			p->Send_uint16(company->old_economy[i].performance_history);
+			p->Send_uint16(company->old_economy[i].delivered_cargo);
+		}
+
+		this->Send_Packet(p);
+	}
+
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /***********
  * Receiving functions
  ************/
@@ -410,6 +445,11 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
 				company = Company::GetIfValid(d1);
 				if (company != NULL) this->SendCompanyInfo(company);
 			}
+			break;
+
+		case ADMIN_UPDATE_COMPANY_ECONOMY:
+			/* The admin is requesting economy info. */
+			this->SendCompanyEconomy();
 			break;
 
 		default:
@@ -563,6 +603,10 @@ void NetworkAdminUpdate(AdminUpdateFrequency freq)
 				switch (i) {
 					case ADMIN_UPDATE_DATE:
 						as->SendDate();
+						break;
+
+					case ADMIN_UPDATE_COMPANY_ECONOMY:
+						as->SendCompanyEconomy();
 						break;
 
 					default: NOT_REACHED();

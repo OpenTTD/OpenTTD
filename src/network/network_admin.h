@@ -53,6 +53,7 @@ public:
 	NetworkRecvStatus SendCompanyInfo(const Company *c);
 	NetworkRecvStatus SendCompanyUpdate(const Company *c);
 	NetworkRecvStatus SendCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr);
+	NetworkRecvStatus SendCompanyEconomy();
 
 	static void Send();
 	static void AcceptConnection(SOCKET s, const NetworkAddress &address);

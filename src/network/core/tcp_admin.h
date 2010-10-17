@@ -49,6 +49,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_COMPANY_INFO,    ///< The server gives the admin information about a company.
 	ADMIN_PACKET_SERVER_COMPANY_UPDATE,  ///< The server gives the admin an information update on a company.
 	ADMIN_PACKET_SERVER_COMPANY_REMOVE,  ///< The server tells the admin that a company was removed.
+	ADMIN_PACKET_SERVER_COMPANY_ECONOMY, ///< The server gives the admin some economy related company information.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -65,6 +66,7 @@ enum AdminUpdateType {
 	ADMIN_UPDATE_DATE,            ///< Updates about the date of the game.
 	ADMIN_UPDATE_CLIENT_INFO,     ///< Updates about the information of clients.
 	ADMIN_UPDATE_COMPANY_INFO,    ///< Updates about the generic information of companies.
+	ADMIN_UPDATE_COMPANY_ECONOMY, ///< Updates about the economy of companies.
 	ADMIN_UPDATE_END              ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -258,6 +260,21 @@ protected:
 	 * uint8   Reason for being removed (see #AdminCompanyRemoveReason).
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_REMOVE);
+
+	/**
+	 * Economy update of a specific company:
+	 * uint8   ID of the company.
+	 * uint64  Money.
+	 * uint64  Loan.
+	 * uint64  Income.
+	 * uint64  Company value (last quarter).
+	 * uint16  Performance (last quarter).
+	 * uint16  Delivered cargo (last quarter).
+	 * uint64  Company value (previous quarter).
+	 * uint16  Performance (previous quarter).
+	 * uint16  Delivered cargo (previous quarter).
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_ECONOMY);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:
