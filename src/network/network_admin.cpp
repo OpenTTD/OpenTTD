@@ -44,6 +44,7 @@ static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
 	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CLIENT_INFO
 	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_COMPANY_INFO
 	ADMIN_FREQUENCY_POLL |                         ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_COMPANY_ECONOMY
+	ADMIN_FREQUENCY_POLL |                         ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_COMPANY_STATS
 };
 assert_compile(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
 
@@ -354,6 +355,35 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyEconomy()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyStats()
+{
+	/* Fetch the latest version of the stats. */
+	NetworkCompanyStats company_stats[MAX_COMPANIES];
+	NetworkPopulateCompanyStats(company_stats);
+
+	const Company *company;
+
+	/* Go through all the companies. */
+	FOR_ALL_COMPANIES(company) {
+		Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_STATS);
+
+		/* Send the information. */
+		p->Send_uint8(company->index);
+
+		for (uint i = 0; i < NETWORK_VEH_END; i++) {
+			p->Send_uint16(company_stats->num_vehicle[i]);
+		}
+
+		for (uint i = 0; i < NETWORK_VEH_END; i++) {
+			p->Send_uint16(company_stats->num_station[i]);
+		}
+
+		this->Send_Packet(p);
+	}
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /***********
  * Receiving functions
  ************/
@@ -450,6 +480,11 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
 		case ADMIN_UPDATE_COMPANY_ECONOMY:
 			/* The admin is requesting economy info. */
 			this->SendCompanyEconomy();
+			break;
+
+		case ADMIN_UPDATE_COMPANY_STATS:
+			/* the admin is requesting company stats. */
+			this->SendCompanyStats();
 			break;
 
 		default:
@@ -607,6 +642,10 @@ void NetworkAdminUpdate(AdminUpdateFrequency freq)
 
 					case ADMIN_UPDATE_COMPANY_ECONOMY:
 						as->SendCompanyEconomy();
+						break;
+
+					case ADMIN_UPDATE_COMPANY_STATS:
+						as->SendCompanyStats();
 						break;
 
 					default: NOT_REACHED();

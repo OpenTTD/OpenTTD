@@ -50,6 +50,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_COMPANY_UPDATE,  ///< The server gives the admin an information update on a company.
 	ADMIN_PACKET_SERVER_COMPANY_REMOVE,  ///< The server tells the admin that a company was removed.
 	ADMIN_PACKET_SERVER_COMPANY_ECONOMY, ///< The server gives the admin some economy related company information.
+	ADMIN_PACKET_SERVER_COMPANY_STATS,   ///< The server gives the admin some statistics about a company.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -67,6 +68,7 @@ enum AdminUpdateType {
 	ADMIN_UPDATE_CLIENT_INFO,     ///< Updates about the information of clients.
 	ADMIN_UPDATE_COMPANY_INFO,    ///< Updates about the generic information of companies.
 	ADMIN_UPDATE_COMPANY_ECONOMY, ///< Updates about the economy of companies.
+	ADMIN_UPDATE_COMPANY_STATS,   ///< Updates about the statistics of companies.
 	ADMIN_UPDATE_END              ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -275,6 +277,22 @@ protected:
 	 * uint16  Delivered cargo (previous quarter).
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_ECONOMY);
+
+	/**
+	 * Company statistics on stations and vehicles:
+	 * uint8   ID of the company.
+	 * uint16  Number of trains.
+	 * uint16  Number of lorries.
+	 * uint16  Number of busses.
+	 * uint16  Number of planes.
+	 * uint16  Number of ships.
+	 * uint16  Number of train stations.
+	 * uint16  Number of lorry stations.
+	 * uint16  Number of bus stops.
+	 * uint16  Number of airports and heliports.
+	 * uint16  Number of harbours.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_STATS);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:
