@@ -49,6 +49,7 @@ static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
 	ADMIN_FREQUENCY_POLL |                         ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_COMPANY_ECONOMY
 	ADMIN_FREQUENCY_POLL |                         ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_COMPANY_STATS
 	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CHAT
+	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CONSOLE
 };
 assert_compile(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
 
@@ -430,6 +431,23 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_RCON)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(const char *origin, const char *string)
+{
+	/* If the length of both strings, plus the 2 '\0' terminations and 3 bytes of the packet
+	 * are bigger than the MTU, just ignore the message. Better safe than sorry. It should
+	 * never occur though as the longest strings are chat messages, which are still 30%
+	 * smaller than SEND_MTU. */
+	if (strlen(origin) + strlen(string) + 2 + 3 >= SEND_MTU) return NETWORK_RECV_STATUS_OKAY;
+
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_CONSOLE);
+
+	p->Send_string(origin);
+	p->Send_string(string);
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /***********
  * Receiving functions
  ************/
@@ -711,6 +729,21 @@ void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_i
 void NetworkServerSendAdminRcon(AdminIndex admin_index, ConsoleColour colour_code, const char *string)
 {
 	ServerNetworkAdminSocketHandler::Get(admin_index)->SendRcon(colour_code, string);
+}
+
+/**
+ * Send console to the admin network (if they did opt in for the respective update).
+ * @param origin the origin of the message.
+ * @param string the message as printed on the console.
+ */
+void NetworkAdminConsole(const char *origin, const char *string)
+{
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		if (as->update_frequency[ADMIN_UPDATE_CONSOLE] & ADMIN_FREQUENCY_AUTOMATIC) {
+			as->SendConsole(origin, string);
+		}
+	}
 }
 
 /**

@@ -55,6 +55,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_COMPANY_STATS,   ///< The server gives the admin some statistics about a company.
 	ADMIN_PACKET_SERVER_CHAT,            ///< The server received a chat message and relays it.
 	ADMIN_PACKET_SERVER_RCON,            ///< The server's reply to a remove console command.
+	ADMIN_PACKET_SERVER_CONSOLE,         ///< The server gives the admin the data that got printed to its console.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -74,6 +75,7 @@ enum AdminUpdateType {
 	ADMIN_UPDATE_COMPANY_ECONOMY, ///< Updates about the economy of companies.
 	ADMIN_UPDATE_COMPANY_STATS,   ///< Updates about the statistics of companies.
 	ADMIN_UPDATE_CHAT,            ///< The admin would like to have chat messages.
+	ADMIN_UPDATE_CONSOLE,         ///< The admin would like to have console messages.
 	ADMIN_UPDATE_END              ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -330,6 +332,13 @@ protected:
 	 * string  Output of the executed command.
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_RCON);
+
+	/**
+	 * Send what would be printed on the server's console also into the admin network.
+	 * string  The origin of the text, e.g. "console" for console, or "net" for network related (debug) messages.
+	 * string  Text as found on the console of the server.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CONSOLE);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:

@@ -20,7 +20,7 @@
 #include <time.h>
 
 #if defined(ENABLE_NETWORK)
-#include "network/core/os_abstraction.h"
+#include "network/network_admin.h"
 SOCKET _debug_socket = INVALID_SOCKET;
 #endif /* ENABLE_NETWORK */
 
@@ -94,6 +94,7 @@ static void debug_print(const char *dbg, const char *buf)
 #else
 		fprintf(stderr, "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
 #endif
+		NetworkAdminConsole(dbg, buf);
 		IConsoleDebug(dbg, buf);
 	} else {
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
