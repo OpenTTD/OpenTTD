@@ -30,6 +30,7 @@ protected:
 
 	NetworkRecvStatus SendProtocol();
 public:
+	uint32 realtime_connect;                                 ///< Time of connection.
 	NetworkAddress address;                                  ///< Address of the admin.
 
 	ServerNetworkAdminSocketHandler(SOCKET s);

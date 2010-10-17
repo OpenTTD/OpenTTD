@@ -34,6 +34,9 @@ byte _network_admins_connected = 0;
 NetworkAdminSocketPool _networkadminsocket_pool("NetworkAdminSocket");
 INSTANTIATE_POOL_METHODS(NetworkAdminSocket)
 
+/** The timeout for authorisation of the client. */
+static const int ADMIN_AUTHORISATION_TIMEOUT = 10000;
+
 /**
  * Create a new socket for the server side of the admin network.
  * @param s The socket to connect with.
@@ -42,6 +45,7 @@ ServerNetworkAdminSocketHandler::ServerNetworkAdminSocketHandler(SOCKET s) : Net
 {
 	_network_admins_connected++;
 	this->status = ADMIN_STATUS_INACTIVE;
+	this->realtime_connect = _realtime_tick;
 }
 
 /**
@@ -67,6 +71,11 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 {
 	ServerNetworkAdminSocketHandler *as;
 	FOR_ALL_ADMIN_SOCKETS(as) {
+		if (as->status == ADMIN_STATUS_INACTIVE && as->realtime_connect + ADMIN_AUTHORISATION_TIMEOUT < _realtime_tick) {
+			DEBUG(net, 1, "[admin] Admin did not send its authorisation within %d seconds", ADMIN_AUTHORISATION_TIMEOUT / 1000);
+			as->CloseConnection(true);
+			continue;
+		}
 		if (as->writable) {
 			as->Send_Packets();
 		}
