@@ -204,9 +204,9 @@ when using other versions of the game.
 ------ -----------------------------
 The free data files, split into OpenGFX for graphics, OpenSFX for sounds and
 OpenMSX for music can be found at:
- - http://bundles.openttdcoop.org/opengfx/releases/ for OpenGFX
- - http://bundles.openttdcoop.org/opensfx/releases/ for OpenSFX
- - http://bundles.openttdcoop.org/openmsx/releases/ for OpenMSX
+ - http://www.openttd.org/download-opengfx for OpenGFX
+ - http://www.openttd.org/download-opensfx for OpenSFX
+ - http://www.openttd.org/download-openmsx for OpenMSX
 Please follow the readme of these packages about the installation procedure.
 The Windows installer can optionally download and install these packages.
 
@@ -437,11 +437,10 @@ Without libSDL/liballegro on non-Windows and non-MacOS X machines you have
 no graphical user interface; you would be building a dedicated server.
 
 To recompile the extra graphics needed to play with the original Transport
-Tycoon Deluxe graphics you need GRFCodec and NFORenum as well. These can be
-found at respectively: http://dev.openttdcoop.org/projects/grfcodec and
-http://dev.openttdcoop.org/projects/nforenum
-The compilation of these extra does generally not happen, unless you remove
-the graphics file using "make maintainer-clean".
+Tycoon Deluxe graphics you need GRFCodec (which includes NFORenum) as well.
+GRFCodec can be found at: http://www.openttd.org/download-grfcodec
+The compilation of these extra graphics does generally not happen, unless
+you remove the graphics file using "make maintainer-clean".
 
 7.2) Supported compilers:
 ---- -------------------
