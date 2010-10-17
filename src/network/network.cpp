@@ -451,7 +451,7 @@ void NetworkClose(bool close_admins)
 		if (close_admins) {
 			ServerNetworkAdminSocketHandler *as;
 			FOR_ALL_ADMIN_SOCKETS(as) {
-				as->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
+				as->CloseConnection(true);
 			}
 		}
 
