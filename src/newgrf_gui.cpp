@@ -85,6 +85,10 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 		SetDParam(0, c->version);
 		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_VERSION);
 	}
+	if (_settings_client.gui.newgrf_show_old_versions && c->min_loadable_version != 0) {
+		SetDParam(0, c->min_loadable_version);
+		y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_MIN_VERSION);
+	}
 
 	/* Prepare and draw MD5 sum */
 	md5sumToString(buff, lastof(buff), c->ident.md5sum);

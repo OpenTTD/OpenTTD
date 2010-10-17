@@ -2400,6 +2400,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Check wh
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Filename: {SILVER}{RAW_STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{RAW_STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Version: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. compatible version: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{RAW_STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{RAW_STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameters: {SILVER}{STRING1}

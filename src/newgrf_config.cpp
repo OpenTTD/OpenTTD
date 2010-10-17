@@ -40,6 +40,7 @@ GRFConfig::GRFConfig(const GRFConfig &config) :
 	ZeroedMemoryAllocator(),
 	ident(config.ident),
 	version(config.version),
+	min_loadable_version(config.min_loadable_version),
 	flags(config.flags & ~GCF_COPY),
 	status(config.status),
 	grf_bugs(config.grf_bugs),
