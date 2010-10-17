@@ -126,7 +126,7 @@ static void PrintGrfInfo(char *buf, uint grfid, const uint8 *md5sum, const GRFCo
 	if (gc != NULL) {
 		AddDebugText(buf, ", filename: %s (md5sum matches)", gc->filename);
 	} else {
-		gc = FindGRFConfig(grfid);
+		gc = FindGRFConfig(grfid, FGCM_ANY);
 		if (gc != NULL) {
 			AddDebugText(buf, ", filename: %s (matches GRFID only)", gc->filename);
 		} else {
@@ -245,7 +245,7 @@ void GamelogPrint(GamelogPrintProc *proc)
 					break;
 
 				case GLCT_GRFADD: {
-					const GRFConfig *gc = FindGRFConfig(lc->grfadd.grfid, lc->grfadd.md5sum);
+					const GRFConfig *gc = FindGRFConfig(lc->grfadd.grfid, FGCM_EXACT, lc->grfadd.md5sum);
 					AddDebugText(buf, "Added NewGRF: ");
 					PrintGrfInfo(buf, lc->grfadd.grfid, lc->grfadd.md5sum, gc);
 					GrfIDMapping::Pair *gm = grf_names.Find(lc->grfrem.grfid);
@@ -272,7 +272,7 @@ void GamelogPrint(GamelogPrintProc *proc)
 				}
 
 				case GLCT_GRFCOMPAT: {
-					const GRFConfig *gc = FindGRFConfig(lc->grfadd.grfid, lc->grfadd.md5sum);
+					const GRFConfig *gc = FindGRFConfig(lc->grfadd.grfid, FGCM_EXACT, lc->grfadd.md5sum);
 					AddDebugText(buf, "Compatible NewGRF loaded: ");
 					PrintGrfInfo(buf, lc->grfcompat.grfid, lc->grfcompat.md5sum, gc);
 					if (!grf_names.Contains(lc->grfcompat.grfid)) AddDebugText(buf, ". Gamelog inconsistency: GrfID was never added!");

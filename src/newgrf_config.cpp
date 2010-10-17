@@ -442,13 +442,13 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig)
 	GRFListCompatibility res = GLC_ALL_GOOD;
 
 	for (GRFConfig *c = grfconfig; c != NULL; c = c->next) {
-		const GRFConfig *f = FindGRFConfig(c->ident.grfid, c->ident.md5sum);
+		const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, c->ident.md5sum);
 		if (f == NULL) {
 			char buf[256];
 
 			/* If we have not found the exactly matching GRF try to find one with the
 			 * same grfid, as it most likely is compatible */
-			f = FindGRFConfig(c->ident.grfid);
+			f = FindGRFConfig(c->ident.grfid, FGCM_COMPATIBLE);
 			if (f != NULL) {
 				md5sumToString(buf, lastof(buf), c->ident.md5sum);
 				DEBUG(grf, 1, "NewGRF %08X (%s) not found; checksum %s. Compatibility mode on", BSWAP32(c->ident.grfid), c->filename, buf);
@@ -614,15 +614,20 @@ void ScanNewGRFFiles()
 /**
  * Find a NewGRF in the scanned list.
  * @param grfid GRFID to look for,
- * @param md5sum Expected MD5 sum (set to \c NULL if not relevant).
+ * @param mode Restrictions for matching grfs
+ * @param md5sum Expected MD5 sum
  * @return The matching grf, if it exists in #_all_grfs, else \c NULL.
  */
-const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum)
+const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum)
 {
+	assert((mode == FGCM_EXACT) != (md5sum == NULL));
 	const GRFConfig *best = NULL;
 	for (const GRFConfig *c = _all_grfs; c != NULL; c = c->next) {
+		/* if md5sum is set, we look for an exact match and continue if not found */
 		if (!c->ident.HasGrfIdentifier(grfid, md5sum)) continue;
-		if (md5sum != NULL) return c;
+		/* return it, if the exact same newgrf is found, or if we do not care about finding "the best" */
+		if (md5sum != NULL || mode == FGCM_ANY) return c;
+		/* remember the newest one as "the best" */
 		if (best == NULL || c->version > best->version) best = c;
 	}
 

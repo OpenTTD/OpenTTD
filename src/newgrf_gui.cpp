@@ -1035,7 +1035,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 					bool compatible = HasBit(c->flags, GCF_COMPATIBLE);
 					if (c->status != GCS_NOT_FOUND && !compatible) continue;
 
-					const GRFConfig *f = FindGRFConfig(c->ident.grfid, compatible ? c->original_md5sum : c->ident.md5sum);
+					const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, compatible ? c->original_md5sum : c->ident.md5sum);
 					if (f == NULL) continue;
 
 					*l = new GRFConfig(*f);
@@ -1211,7 +1211,7 @@ private:
 			if (_settings_client.gui.newgrf_show_old_versions) {
 				*this->avails.Append() = c;
 			} else {
-				const GRFConfig *best = FindGRFConfig(c->ident.grfid, NULL);
+				const GRFConfig *best = FindGRFConfig(c->ident.grfid, FGCM_NEWEST);
 				/*
 				 * If the best version is 0, then all NewGRF with this GRF ID
 				 * have version 0, so for backward compatability reasons we

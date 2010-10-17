@@ -164,6 +164,14 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	void SetSuitablePalette();
 };
 
+/** Method to find GRFs using FindGRFConfig */
+enum FindGRFConfigMode {
+	FGCM_EXACT,       ///< Only find Grfs matching md5sum
+	FGCM_COMPATIBLE,  ///< Find best compatible
+	FGCM_NEWEST,      ///< Find newest Grf
+	FGCM_ANY,         ///< Use first found
+};
+
 extern GRFConfig *_all_grfs;          ///< First item in list of all scanned NewGRFs
 extern GRFConfig *_grfconfig;         ///< First item in list of current GRF set up
 extern GRFConfig *_grfconfig_newgame; ///< First item in list of default GRF set up
@@ -171,7 +179,7 @@ extern GRFConfig *_grfconfig_static;  ///< First item in list of static GRF set 
 
 void ScanNewGRFFiles();
 void CheckForMissingSprites();
-const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum = NULL);
+const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8 *md5sum = NULL);
 GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask = 0xFFFFFFFF);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only);
 void AppendStaticGRFConfigs(GRFConfig **dst);

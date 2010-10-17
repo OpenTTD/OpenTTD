@@ -176,7 +176,7 @@ void NetworkAfterNewGRFScan()
 		for (GRFConfig *c = item->info.grfconfig; c != NULL; c = c->next) {
 			assert(HasBit(c->flags, GCF_COPY));
 
-			const GRFConfig *f = FindGRFConfig(c->ident.grfid, c->ident.md5sum);
+			const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, c->ident.md5sum);
 			if (f == NULL) {
 				/* Don't know the GRF, so mark game incompatible and the (possibly)
 				 * already resolved name for this GRF (another server has sent the

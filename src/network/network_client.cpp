@@ -690,7 +690,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHECK_NEWGRFS)
 		this->Recv_GRFIdentifier(p, &c);
 
 		/* Check whether we know this GRF */
-		const GRFConfig *f = FindGRFConfig(c.grfid, c.md5sum);
+		const GRFConfig *f = FindGRFConfig(c.grfid, FGCM_EXACT, c.md5sum);
 		if (f == NULL) {
 			/* We do not know this GRF, bail out of initialization */
 			char buf[sizeof(c.md5sum) * 2 + 1];

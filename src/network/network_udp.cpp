@@ -182,7 +182,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 		this->Recv_GRFIdentifier(p, &c);
 
 		/* Find the matching GRF file */
-		f = FindGRFConfig(c.grfid, c.md5sum);
+		f = FindGRFConfig(c.grfid, FGCM_EXACT, c.md5sum);
 		if (f == NULL) continue; // The GRF is unknown to this server
 
 		/* If the reply might exceed the size of the packet, only reply
@@ -362,7 +362,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config)
 {
 	/* Find the matching GRF file */
-	const GRFConfig *f = FindGRFConfig(config->ident.grfid, config->ident.md5sum);
+	const GRFConfig *f = FindGRFConfig(config->ident.grfid, FGCM_EXACT, config->ident.md5sum);
 	if (f == NULL) {
 		/* Don't know the GRF, so mark game incompatible and the (possibly)
 		 * already resolved name for this GRF (another server has sent the

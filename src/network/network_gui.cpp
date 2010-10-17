@@ -805,7 +805,7 @@ public:
 					for (GRFConfig *c = item->info.grfconfig; c != NULL; c = c->next) {
 						if (c->status != GCS_NOT_FOUND) continue;
 
-						const GRFConfig *f = FindGRFConfig(c->ident.grfid, c->ident.md5sum);
+						const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, c->ident.md5sum);
 						if (f == NULL) {
 							missing_grfs = true;
 							continue;
