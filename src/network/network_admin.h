@@ -18,6 +18,8 @@
 #include "core/tcp_listen.h"
 #include "core/tcp_admin.h"
 
+extern AdminIndex _redirect_console_to_admin;
+
 class ServerNetworkAdminSocketHandler;
 typedef Pool<ServerNetworkAdminSocketHandler, AdminIndex, 2, MAX_ADMINS> NetworkAdminSocketPool;
 extern NetworkAdminSocketPool _networkadminsocket_pool;
@@ -30,6 +32,7 @@ protected:
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY);
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_POLL);
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_CHAT);
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_RCON);
 
 	NetworkRecvStatus SendProtocol();
 public:
@@ -59,6 +62,7 @@ public:
 	NetworkRecvStatus SendCompanyStats();
 
 	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, const char *msg, int64 data);
+	NetworkRecvStatus SendRcon(uint16 colour, const char *command);
 
 	static void Send();
 	static void AcceptConnection(SOCKET s, const NetworkAddress &address);
@@ -88,6 +92,7 @@ void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bc
 
 void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, const char *msg, int64 data = 0, bool from_admin = false);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
+void NetworkServerSendAdminRcon(AdminIndex admin_index, ConsoleColour colour_code, const char *string);
 
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_ADMIN_H */

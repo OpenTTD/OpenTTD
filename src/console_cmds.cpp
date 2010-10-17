@@ -18,6 +18,7 @@
 #include "network/network.h"
 #include "network/network_func.h"
 #include "network/network_base.h"
+#include "network/network_admin.h"
 #include "command_func.h"
 #include "settings_func.h"
 #include "fios.h"
@@ -1416,7 +1417,8 @@ DEF_CONSOLE_CMD(ConSay)
 	if (!_network_server) {
 		NetworkClientSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0 /* param does not matter */, argv[1]);
 	} else {
-		NetworkServerSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], CLIENT_ID_SERVER);
+		bool from_admin = (_redirect_console_to_admin < INVALID_ADMIN_ID);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], CLIENT_ID_SERVER, from_admin);
 	}
 
 	return true;
@@ -1473,7 +1475,8 @@ DEF_CONSOLE_CMD(ConSayCompany)
 	if (!_network_server) {
 		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id, argv[2]);
 	} else {
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id, argv[2], CLIENT_ID_SERVER);
+		bool from_admin = (_redirect_console_to_admin < INVALID_ADMIN_ID);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id, argv[2], CLIENT_ID_SERVER, from_admin);
 	}
 
 	return true;
@@ -1492,7 +1495,8 @@ DEF_CONSOLE_CMD(ConSayClient)
 	if (!_network_server) {
 		NetworkClientSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2]);
 	} else {
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], CLIENT_ID_SERVER);
+		bool from_admin = (_redirect_console_to_admin < INVALID_ADMIN_ID);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], CLIENT_ID_SERVER, from_admin);
 	}
 
 	return true;

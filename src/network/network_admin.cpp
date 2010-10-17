@@ -28,6 +28,9 @@
 
 /* This file handles all the admin network commands. */
 
+/** Redirection of the (remote) console to the admin. */
+AdminIndex _redirect_console_to_admin = INVALID_ADMIN_ID;
+
 /** The amount of admins connected. */
 byte _network_admins_connected = 0;
 
@@ -67,6 +70,7 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 {
 	_network_admins_connected--;
 	DEBUG(net, 1, "[admin] '%s' (%s) has disconnected", this->admin_name, this->admin_version);
+	if (_redirect_console_to_admin == this->index) _redirect_console_to_admin = INVALID_ADMIN_ID;
 }
 
 /**
@@ -399,6 +403,33 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16 colour, const char *result)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_RCON);
+
+	p->Send_uint16(colour);
+	p->Send_string(result);
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_RCON)
+{
+	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
+	char command[NETWORK_RCONCOMMAND_LENGTH];
+
+	p->Recv_string(command, sizeof(command));
+
+	DEBUG(net, 2, "[admin] Rcon command from '%s' (%s): '%s'", this->admin_name, this->admin_version, command);
+
+	_redirect_console_to_admin = this->index;
+	IConsoleCmdExec(command);
+	_redirect_console_to_admin = INVALID_ADMIN_ID;
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /***********
  * Receiving functions
  ************/
@@ -669,6 +700,17 @@ void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_i
 			as->SendChat(action, desttype, client_id, msg, data);
 		}
 	}
+}
+
+/**
+ * Pass the rcon reply to the admin.
+ * @param admin_index The admin to give the reply.
+ * @param colour_code The colour of the string.
+ * @param string      The string to show.
+ */
+void NetworkServerSendAdminRcon(AdminIndex admin_index, ConsoleColour colour_code, const char *string)
+{
+	ServerNetworkAdminSocketHandler::Get(admin_index)->SendRcon(colour_code, string);
 }
 
 /**

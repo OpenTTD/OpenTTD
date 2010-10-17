@@ -31,6 +31,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY, ///< The admin tells the server the update frequency of a particular piece of information.
 	ADMIN_PACKET_ADMIN_POLL,             ///< The admin explicitly polls for a piece of information.
 	ADMIN_PACKET_ADMIN_CHAT,             ///< The admin sends a chat message to be distributed.
+	ADMIN_PACKET_ADMIN_RCON,             ///< The admin sends a remote console command.
 
 	ADMIN_PACKET_SERVER_FULL = 100,      ///< The server tells the admin it cannot accept the admin.
 	ADMIN_PACKET_SERVER_BANNED,          ///< The server tells the admin it is banned.
@@ -53,6 +54,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_COMPANY_ECONOMY, ///< The server gives the admin some economy related company information.
 	ADMIN_PACKET_SERVER_COMPANY_STATS,   ///< The server gives the admin some statistics about a company.
 	ADMIN_PACKET_SERVER_CHAT,            ///< The server received a chat message and relays it.
+	ADMIN_PACKET_SERVER_RCON,            ///< The server's reply to a remove console command.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -141,6 +143,12 @@ protected:
 	 * string  Message.
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_CHAT);
+
+	/**
+	 * Execute a command on the servers console:
+	 * string  Command to be executed.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_RCON);
 
 	/**
 	 * The server is full (connection gets closed).
@@ -315,6 +323,13 @@ protected:
 	 * uint64  Money (only when it is a 'give money' action).
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CHAT);
+
+	/**
+	 * Result of an rcon command:
+	 * uint16  Colour as it would be used on the server or a client.
+	 * string  Output of the executed command.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_RCON);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:

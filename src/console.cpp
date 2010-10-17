@@ -13,6 +13,7 @@
 #include "console_internal.h"
 #include "network/network.h"
 #include "network/network_func.h"
+#include "network/network_admin.h"
 #include "debug.h"
 #include "console_func.h"
 #include "settings_type.h"
@@ -38,6 +39,7 @@ void IConsoleInit()
 	_iconsole_output_file = NULL;
 #ifdef ENABLE_NETWORK /* Initialize network only variables */
 	_redirect_console_to_client = INVALID_CLIENT_ID;
+	_redirect_console_to_admin  = INVALID_ADMIN_ID;
 #endif
 
 	IConsoleGUIInit();
@@ -94,6 +96,11 @@ void IConsolePrint(ConsoleColour colour_code, const char *string)
 	if (_redirect_console_to_client != INVALID_CLIENT_ID) {
 		/* Redirect the string to the client */
 		NetworkServerSendRcon(_redirect_console_to_client, colour_code, string);
+		return;
+	}
+
+	if (_redirect_console_to_admin != INVALID_ADMIN_ID) {
+		NetworkServerSendAdminRcon(_redirect_console_to_admin, colour_code, string);
 		return;
 	}
 #endif
