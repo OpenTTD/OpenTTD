@@ -71,12 +71,7 @@ public:
 
 		Point pt;
 		if (tile == INVALID_TILE) {
-			/* Use tile under mouse as center for new viewport */
-			Point pt = GetTileBelowCursor();
-			if (pt.x != -1) tile = TileVirtXY(pt.x, pt.y);
-		}
-		if (tile == INVALID_TILE) {
-			/* Still no tile? Use center of main viewport. */
+			/* No tile? Use center of main viewport. */
 			const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 
 			/* center on same place as main window (zoom is maximum, no adjustment needed) */
@@ -175,6 +170,10 @@ static const WindowDesc _extra_view_port_desc(
 	_nested_extra_view_port_widgets, lengthof(_nested_extra_view_port_widgets)
 );
 
+/**
+ * Show a new Extra Viewport window.
+ * @param tile Tile to center the view on. INVALID_TILE means to use the center of main viewport.
+ */
 void ShowExtraViewPortWindow(TileIndex tile)
 {
 	int i = 0;
@@ -183,4 +182,17 @@ void ShowExtraViewPortWindow(TileIndex tile)
 	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != NULL) i++;
 
 	new ExtraViewportWindow(&_extra_view_port_desc, i, tile);
+}
+
+/**
+ * Show a new Extra Viewport window.
+ * Center it on the tile under the cursor, if the cursor is inside a viewport.
+ * If that fails, center it on main viewport center.
+ */
+void ShowExtraViewPortWindowForTileUnderCursor()
+{
+	/* Use tile under mouse as center for new viewport.
+	 * Do this before creating the window, it might appear just below the mouse. */
+	Point pt = GetTileBelowCursor();
+	ShowExtraViewPortWindow(pt.x != -1 ? TileVirtXY(pt.x, pt.y) : INVALID_TILE);
 }

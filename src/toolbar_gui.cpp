@@ -1343,7 +1343,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_GIANT_SCREENSHOT: MenuClickWorldScreenshot(); break;
 			case MTHK_CHEATS: if (!_networking) ShowCheatWindow(); break;
 			case MTHK_TERRAFORM: ShowTerraformToolbar(); break;
-			case MTHK_EXTRA_VIEWPORT: ShowExtraViewPortWindow(); break;
+			case MTHK_EXTRA_VIEWPORT: ShowExtraViewPortWindowForTileUnderCursor(); break;
 #ifdef ENABLE_NETWORK
 			case MTHK_CLIENT_LIST: if (_networking) ShowClientList(); break;
 #endif
@@ -1645,7 +1645,7 @@ public:
 			case MTEHK_ZOOM_OUT: ToolbarZoomOutClick(this); break;
 			case MTEHK_TERRAFORM: ShowEditorTerraformToolbar(); break;
 			case MTEHK_SMALLMAP: ShowSmallMap(); break;
-			case MTEHK_EXTRA_VIEWPORT: ShowExtraViewPortWindow(); break;
+			case MTEHK_EXTRA_VIEWPORT: ShowExtraViewPortWindowForTileUnderCursor(); break;
 			default: return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;

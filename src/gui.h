@@ -66,6 +66,7 @@ enum WarningLevel {
 void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0);
 
 void ShowExtraViewPortWindow(TileIndex tile = INVALID_TILE);
+void ShowExtraViewPortWindowForTileUnderCursor();
 
 /* bridge_gui.cpp */
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte bridge_type);
