@@ -30,6 +30,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_ADMIN_QUIT,             ///< The admin tells the server that it is quitting.
 	ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY, ///< The admin tells the server the update frequency of a particular piece of information.
 	ADMIN_PACKET_ADMIN_POLL,             ///< The admin explicitly polls for a piece of information.
+	ADMIN_PACKET_ADMIN_CHAT,             ///< The admin sends a chat message to be distributed.
 
 	ADMIN_PACKET_SERVER_FULL = 100,      ///< The server tells the admin it cannot accept the admin.
 	ADMIN_PACKET_SERVER_BANNED,          ///< The server tells the admin it is banned.
@@ -51,6 +52,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_COMPANY_REMOVE,  ///< The server tells the admin that a company was removed.
 	ADMIN_PACKET_SERVER_COMPANY_ECONOMY, ///< The server gives the admin some economy related company information.
 	ADMIN_PACKET_SERVER_COMPANY_STATS,   ///< The server gives the admin some statistics about a company.
+	ADMIN_PACKET_SERVER_CHAT,            ///< The server received a chat message and relays it.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -69,6 +71,7 @@ enum AdminUpdateType {
 	ADMIN_UPDATE_COMPANY_INFO,    ///< Updates about the generic information of companies.
 	ADMIN_UPDATE_COMPANY_ECONOMY, ///< Updates about the economy of companies.
 	ADMIN_UPDATE_COMPANY_STATS,   ///< Updates about the statistics of companies.
+	ADMIN_UPDATE_CHAT,            ///< The admin would like to have chat messages.
 	ADMIN_UPDATE_END              ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -129,6 +132,15 @@ protected:
 	 *          - the company ID for #ADMIN_UPDATE_COMPANY_INFO. Use UINT32_MAX to show all companies.
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_POLL);
+
+	/**
+	 * Send chat as the server:
+	 * uint8   Action such as NETWORK_ACTION_CHAT_CLIENT (see #NetworkAction).
+	 * uint8   Destination type such as DESTTYPE_BROADCAST (see #DestType).
+	 * uint32  ID of the destination such as company or client id.
+	 * string  Message.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_CHAT);
 
 	/**
 	 * The server is full (connection gets closed).
@@ -293,6 +305,16 @@ protected:
 	 * uint16  Number of harbours.
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_COMPANY_STATS);
+
+	/**
+	 * Send chat from the game into the admin network:
+	 * uint8   Action such as NETWORK_ACTION_CHAT_CLIENT (see #NetworkAction).
+	 * uint8   Destination type such as DESTTYPE_BROADCAST (see #DestType).
+	 * uint32  ID of the client who sent this message.
+	 * string  Message.
+	 * uint64  Money (only when it is a 'give money' action).
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CHAT);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:

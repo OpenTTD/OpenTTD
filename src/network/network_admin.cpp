@@ -45,6 +45,7 @@ static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
 	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_COMPANY_INFO
 	ADMIN_FREQUENCY_POLL |                         ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_COMPANY_ECONOMY
 	ADMIN_FREQUENCY_POLL |                         ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_COMPANY_STATS
+	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CHAT
 };
 assert_compile(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
 
@@ -384,6 +385,20 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyStats()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action, DestType desttype, ClientID client_id, const char *msg, int64 data)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_CHAT);
+
+	p->Send_uint8 (action);
+	p->Send_uint8 (desttype);
+	p->Send_uint32(client_id);
+	p->Send_string(msg);
+	p->Send_uint64(data);
+
+	this->Send_Packet(p);
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /***********
  * Receiving functions
  ************/
@@ -490,6 +505,33 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
 		default:
 			/* An unsupported "poll" update type. */
 			DEBUG(net, 3, "[admin] Not supported poll %d (%d) from '%s' (%s).", type, d1, this->admin_name, this->admin_version);
+			return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
+	}
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_CHAT)
+{
+	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
+	NetworkAction action = (NetworkAction)p->Recv_uint8();
+	DestType desttype = (DestType)p->Recv_uint8();
+	int dest = p->Recv_uint32();
+
+	char msg[NETWORK_CHAT_LENGTH];
+	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
+
+	switch (action) {
+		case NETWORK_ACTION_CHAT:
+		case NETWORK_ACTION_CHAT_CLIENT:
+		case NETWORK_ACTION_CHAT_COMPANY:
+		case NETWORK_ACTION_SERVER_MESSAGE:
+			NetworkServerSendChat(action, desttype, dest, msg, _network_own_client_id, 0, true);
+			break;
+
+		default:
+			DEBUG(net, 3, "[admin] Invalid chat action %d from admin '%s' (%s).", action, this->admin_name, this->admin_version);
 			return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
 	}
 
@@ -610,6 +652,22 @@ void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bc
 	ServerNetworkAdminSocketHandler *as;
 	FOR_ALL_ADMIN_SOCKETS(as) {
 		as->SendCompanyRemove(company_id, bcrr);
+	}
+}
+
+
+/**
+ * Send chat to the admin network (if they did opt in for the respective update).
+ */
+void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, const char *msg, int64 data, bool from_admin)
+{
+	if (from_admin) return;
+
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		if (as->update_frequency[ADMIN_UPDATE_CHAT] & ADMIN_FREQUENCY_AUTOMATIC) {
+			as->SendChat(action, desttype, client_id, msg, data);
+		}
 	}
 }
 

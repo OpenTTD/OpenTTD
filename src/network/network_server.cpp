@@ -1159,7 +1159,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ACK)
 
 
 
-void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const char *msg, ClientID from_id, int64 data)
+void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const char *msg, ClientID from_id, int64 data, bool from_admin)
 {
 	NetworkClientSocket *cs;
 	const NetworkClientInfo *ci, *ci_own, *ci_to;
@@ -1172,6 +1172,10 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			/* Display the text locally, and that is it */
 			if (ci != NULL) {
 				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
+
+				if (_settings_client.network.server_admin_chat) {
+						NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
+				}
 			}
 		} else {
 			/* Else find the client to send the message to */
@@ -1215,6 +1219,11 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			}
 		}
 
+		/* if the server can read it, let the admin network read it, too. */
+		if (_local_company == (CompanyID)dest && _settings_client.network.server_admin_chat) {
+			NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
+		}
+
 		ci = NetworkFindClientInfoFromClientID(from_id);
 		ci_own = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
 		if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
@@ -1251,6 +1260,9 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		FOR_ALL_CLIENT_SOCKETS(cs) {
 			cs->SendChat(action, from_id, false, msg, data);
 		}
+
+		NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
+
 		ci = NetworkFindClientInfoFromClientID(from_id);
 		if (ci != NULL) {
 			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);

@@ -29,6 +29,7 @@ protected:
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_QUIT);
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY);
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_POLL);
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_CHAT);
 
 	NetworkRecvStatus SendProtocol();
 public:
@@ -43,6 +44,7 @@ public:
 	NetworkRecvStatus SendWelcome();
 	NetworkRecvStatus SendNewGame();
 	NetworkRecvStatus SendShutdown();
+
 	NetworkRecvStatus SendDate();
 	NetworkRecvStatus SendClientJoin(ClientID client_id);
 	NetworkRecvStatus SendClientInfo(const NetworkClientInfo *ci);
@@ -55,6 +57,8 @@ public:
 	NetworkRecvStatus SendCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr);
 	NetworkRecvStatus SendCompanyEconomy();
 	NetworkRecvStatus SendCompanyStats();
+
+	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, const char *msg, int64 data);
 
 	static void Send();
 	static void AcceptConnection(SOCKET s, const NetworkAddress &address);
@@ -81,6 +85,8 @@ void NetworkAdminClientError(ClientID client_id, NetworkErrorCode error_code);
 void NetworkAdminCompanyInfo(const Company *company, bool new_company);
 void NetworkAdminCompanyUpdate(const Company *company);
 void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bcrr);
+
+void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, const char *msg, int64 data = 0, bool from_admin = false);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
 
 #endif /* ENABLE_NETWORK */
