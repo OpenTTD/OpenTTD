@@ -38,7 +38,7 @@ void NetworkUpdateClientName();
 bool NetworkCompanyHasClients(CompanyID company);
 const char *NetworkChangeCompanyPassword(const char *);
 void NetworkReboot();
-void NetworkDisconnect(bool blocking = false);
+void NetworkDisconnect(bool blocking = false, bool close_admins = true);
 void NetworkGameLoop();
 void NetworkUDPGameLoop();
 void ParseConnectionString(const char **company, const char **port, char *connection_string);

@@ -20,7 +20,7 @@
 class ClientNetworkGameSocketHandler : public ZeroedMemoryAllocator, public NetworkGameSocketHandler {
 protected:
 	friend void NetworkExecuteLocalCommandQueue();
-	friend void NetworkClose();
+	friend void NetworkClose(bool close_admins);
 	static ClientNetworkGameSocketHandler *my_client;
 
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_FULL);

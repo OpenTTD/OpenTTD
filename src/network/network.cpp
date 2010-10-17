@@ -16,6 +16,7 @@
 #include "../strings_func.h"
 #include "../command_func.h"
 #include "../date_func.h"
+#include "network_admin.h"
 #include "network_client.h"
 #include "network_server.h"
 #include "network_content.h"
@@ -429,22 +430,37 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 	cs->GetInfo()->client_address = address; // Save the IP of the client
 }
 
-/** Resets both pools used for network clients */
-static void InitializeNetworkPools()
+/**
+ * Resets the pools used for network clients, and the admin pool if needed.
+ * @param close_admins Whether the admin pool has to be cleared as well.
+ */
+static void InitializeNetworkPools(bool close_admins = true)
 {
 	_networkclientsocket_pool.CleanPool();
 	_networkclientinfo_pool.CleanPool();
+	if (close_admins) _networkadminsocket_pool.CleanPool();
 }
 
-/* Close all current connections */
-void NetworkClose()
+/**
+ * Close current connections.
+ * @param close_admins Whether the admin connections have to be closed as well.
+ */
+void NetworkClose(bool close_admins)
 {
 	if (_network_server) {
+		if (close_admins) {
+			ServerNetworkAdminSocketHandler *as;
+			FOR_ALL_ADMIN_SOCKETS(as) {
+				as->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
+			}
+		}
+
 		NetworkClientSocket *cs;
 		FOR_ALL_CLIENT_SOCKETS(cs) {
 			cs->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 		}
 		ServerNetworkGameSocketHandler::CloseListeners();
+		ServerNetworkAdminSocketHandler::CloseListeners();
 	} else if (MyClient::my_client != NULL) {
 		MyClient::SendQuit();
 		MyClient::my_client->Send_Packets();
@@ -461,13 +477,13 @@ void NetworkClose()
 	free(_network_company_states);
 	_network_company_states = NULL;
 
-	InitializeNetworkPools();
+	InitializeNetworkPools(close_admins);
 }
 
 /* Inits the network (cleans sockets and stuff) */
-static void NetworkInitialize()
+static void NetworkInitialize(bool close_admins = true)
 {
-	InitializeNetworkPools();
+	InitializeNetworkPools(close_admins);
 	NetworkUDPInitialize();
 
 	_sync_frame = 0;
@@ -629,9 +645,12 @@ bool NetworkServerStart()
 	IConsoleCmdExec("exec scripts/pre_server.scr 0");
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/pre_dedicated.scr 0");
 
-	NetworkDisconnect();
-	NetworkInitialize();
+	NetworkDisconnect(false, false);
+	NetworkInitialize(false);
 	if (!ServerNetworkGameSocketHandler::Listen(_settings_client.network.server_port)) return false;
+
+	/* Only listen for admins when the password isn't empty. */
+	if (!StrEmpty(_settings_client.network.admin_password) && !ServerNetworkAdminSocketHandler::Listen(_settings_client.network.server_admin_port)) return false;
 
 	/* Try to start UDP-server */
 	_network_udp_server = _udp_server_socket->Listen();
@@ -659,6 +678,10 @@ bool NetworkServerStart()
 	_network_last_advertise_frame = 0;
 	_network_need_advertise = true;
 	NetworkUDPAdvertise();
+
+	/* welcome possibly still connected admins - this can only happen on a dedicated server. */
+	if (_network_dedicated) ServerNetworkAdminSocketHandler::WelcomeAll();
+
 	return true;
 }
 
@@ -672,16 +695,25 @@ void NetworkReboot()
 			cs->SendNewGame();
 			cs->Send_Packets();
 		}
+
+		ServerNetworkAdminSocketHandler *as;
+		FOR_ALL_ADMIN_SOCKETS(as) {
+			as->SendNewGame();
+			as->Send_Packets();
+		}
 	}
 
-	NetworkClose();
+	/* For non-dedicated servers we have to kick the admins as we are not
+	 * certain that we will end up in a new network game. */
+	NetworkClose(!_network_dedicated);
 }
 
 /**
  * We want to disconnect from the host/clients.
- * @param blocking whether to wait till everything has been closed
+ * @param blocking whether to wait till everything has been closed.
+ * @param close_admins Whether the admin sockets need to be closed as well.
  */
-void NetworkDisconnect(bool blocking)
+void NetworkDisconnect(bool blocking, bool close_admins)
 {
 	if (_network_server) {
 		NetworkClientSocket *cs;
@@ -689,13 +721,21 @@ void NetworkDisconnect(bool blocking)
 			cs->SendShutdown();
 			cs->Send_Packets();
 		}
+
+		if (close_admins) {
+			ServerNetworkAdminSocketHandler *as;
+			FOR_ALL_ADMIN_SOCKETS(as) {
+				as->SendShutdown();
+				as->Send_Packets();
+			}
+		}
 	}
 
 	if (_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise(blocking);
 
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
-	NetworkClose();
+	NetworkClose(close_admins);
 
 	/* Reinitialize the UDP stack, i.e. close all existing connections. */
 	NetworkUDPInitialize();
@@ -708,6 +748,7 @@ void NetworkDisconnect(bool blocking)
 static bool NetworkReceive()
 {
 	if (_network_server) {
+		ServerNetworkAdminSocketHandler::Receive();
 		return ServerNetworkGameSocketHandler::Receive();
 	} else {
 		return ClientNetworkGameSocketHandler::Receive();
@@ -718,6 +759,7 @@ static bool NetworkReceive()
 static void NetworkSend()
 {
 	if (_network_server) {
+		ServerNetworkAdminSocketHandler::Send();
 		ServerNetworkGameSocketHandler::Send();
 	} else {
 		ClientNetworkGameSocketHandler::Send();
