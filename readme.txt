@@ -28,9 +28,9 @@ X.X) Credits
 
 1.0) About:
 ---- ------
-OpenTTD is a clone of Transport Tycoon Deluxe, a popular game originally
-written by Chris Sawyer.  It attempts to mimic the original game as closely
-as possible while extending it with new features.
+OpenTTD is a transport simulation game based upon the popular game Transport
+Tycoon Deluxe, written by Chris Sawyer. It attempts to mimic the original
+game as closely as possible while extending it with new features.
 
 OpenTTD is licensed under the GNU General Public License version 2.0. For
 more information, see the file 'COPYING'.
