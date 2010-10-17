@@ -94,7 +94,9 @@ static void debug_print(const char *dbg, const char *buf)
 #else
 		fprintf(stderr, "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
 #endif
+#ifdef ENABLE_NETWORK
 		NetworkAdminConsole(dbg, buf);
+#endif /* ENABLE_NETWORK */
 		IConsoleDebug(dbg, buf);
 	} else {
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);

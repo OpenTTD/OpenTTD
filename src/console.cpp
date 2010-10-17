@@ -112,7 +112,9 @@ void IConsolePrint(ConsoleColour colour_code, const char *string)
 	str_validate(str, str + strlen(str));
 
 	if (_network_dedicated) {
+#ifdef ENABLE_NETWORK
 		NetworkAdminConsole("console", str);
+#endif /* ENABLE_NETWORK */
 		fprintf(stdout, "%s%s\n", GetLogPrefix(), str);
 		fflush(stdout);
 		IConsoleWriteToLogFile(str);
