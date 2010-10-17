@@ -43,6 +43,7 @@ public:
 	NetworkRecvStatus SendWelcome();
 	NetworkRecvStatus SendNewGame();
 	NetworkRecvStatus SendShutdown();
+	NetworkRecvStatus SendDate();
 
 	static void Send();
 	static void AcceptConnection(SOCKET s, const NetworkAddress &address);

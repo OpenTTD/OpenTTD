@@ -40,6 +40,7 @@ static const int ADMIN_AUTHORISATION_TIMEOUT = 10000;
 
 /** Frequencies, which may be registered for a certain update type. */
 static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
+	ADMIN_FREQUENCY_POLL | ADMIN_FREQUENCY_DAILY | ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_DATE
 };
 assert_compile(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
 
@@ -169,6 +170,16 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendShutdown()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendDate()
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_DATE);
+
+	p->Send_uint32(_date);
+	this->Send_Packet(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /***********
  * Receiving functions
  ************/
@@ -231,6 +242,11 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
 	uint32 d1 = p->Recv_uint32();
 
 	switch (type) {
+		case ADMIN_UPDATE_DATE:
+			/* The admin is requesting the current date. */
+			this->SendDate();
+			break;
+
 		default:
 			/* An unsupported "poll" update type. */
 			DEBUG(net, 3, "[admin] Not supported poll %d (%d) from '%s' (%s).", type, d1, this->admin_name, this->admin_version);
@@ -267,6 +283,10 @@ void NetworkAdminUpdate(AdminUpdateFrequency freq)
 			if (as->update_frequency[i] & freq) {
 				/* Update the admin for the required details */
 				switch (i) {
+					case ADMIN_UPDATE_DATE:
+						as->SendDate();
+						break;
+
 					default: NOT_REACHED();
 				}
 			}

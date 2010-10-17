@@ -39,6 +39,8 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_NEWGAME,         ///< The server tells the admin its going to start a new game.
 	ADMIN_PACKET_SERVER_SHUTDOWN,        ///< The server tells the admin its shutting down.
 
+	ADMIN_PACKET_SERVER_DATE,            ///< The server tells the admin what the current game date is.
+
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
 
@@ -51,6 +53,7 @@ enum AdminStatus {
 
 /** Update types an admin can register a frequency for */
 enum AdminUpdateType {
+	ADMIN_UPDATE_DATE,            ///< Updates about the date of the game.
 	ADMIN_UPDATE_END              ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -151,6 +154,12 @@ protected:
 	 * Notification about the server shutting down.
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_SHUTDOWN);
+
+	/**
+	 * Send the current date of the game:
+	 * uint32  Current game date.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_DATE);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:
