@@ -873,9 +873,6 @@ static int DrawPillarColumn(int z_bottom, int z_top, const PalSpriteID *psid, in
  */
 static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis axis, bool drawfarpillar, int x, int y, int z_bridge)
 {
-	/* Do not draw bridge pillars if they are invisible */
-	if (IsInvisibilitySet(TO_BRIDGES)) return;
-
 	static const int bounding_box_size[2]  = {16, 2}; ///< bounding box size of pillars along bridge direction
 	static const int back_pillar_offset[2] = { 0, 9}; ///< sprite position offset of back facing pillar
 
