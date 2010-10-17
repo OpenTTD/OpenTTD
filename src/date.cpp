@@ -250,6 +250,7 @@ static void OnNewDay()
 {
 #ifdef ENABLE_NETWORK
 	NetworkChatMessageDailyLoop();
+	if (_network_server) NetworkServerDailyLoop();
 #endif /* ENABLE_NETWORK */
 
 	DisasterDailyLoop();

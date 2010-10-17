@@ -27,9 +27,12 @@ class ServerNetworkAdminSocketHandler : public NetworkAdminSocketPool::PoolItem<
 protected:
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_JOIN);
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_QUIT);
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY);
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_POLL);
 
 	NetworkRecvStatus SendProtocol();
 public:
+	AdminUpdateFrequency update_frequency[ADMIN_UPDATE_END]; ///< Admin requested update intervals.
 	uint32 realtime_connect;                                 ///< Time of connection.
 	NetworkAddress address;                                  ///< Address of the admin.
 
@@ -58,6 +61,8 @@ public:
 
 #define FOR_ALL_ADMIN_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(ServerNetworkAdminSocketHandler, adminsocket_index, var, start)
 #define FOR_ALL_ADMIN_SOCKETS(var) FOR_ALL_ADMIN_SOCKETS_FROM(var, 0)
+
+void NetworkAdminUpdate(AdminUpdateFrequency freq);
 
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_ADMIN_H */

@@ -28,6 +28,8 @@
 enum PacketAdminType {
 	ADMIN_PACKET_ADMIN_JOIN,             ///< The admin announces and authenticates itself to the server.
 	ADMIN_PACKET_ADMIN_QUIT,             ///< The admin tells the server that it is quitting.
+	ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY, ///< The admin tells the server the update frequency of a particular piece of information.
+	ADMIN_PACKET_ADMIN_POLL,             ///< The admin explicitly polls for a piece of information.
 
 	ADMIN_PACKET_SERVER_FULL = 100,      ///< The server tells the admin it cannot accept the admin.
 	ADMIN_PACKET_SERVER_BANNED,          ///< The server tells the admin it is banned.
@@ -46,6 +48,23 @@ enum AdminStatus {
 	ADMIN_STATUS_ACTIVE,        ///< The admin is active.
 	ADMIN_STATUS_END            ///< Must ALWAYS be on the end of this list!! (period)
 };
+
+/** Update types an admin can register a frequency for */
+enum AdminUpdateType {
+	ADMIN_UPDATE_END              ///< Must ALWAYS be on the end of this list!! (period)
+};
+
+/** Update frequencies an admin can register. */
+enum AdminUpdateFrequency {
+	ADMIN_FREQUENCY_POLL      = 0x01, ///< The admin can poll this.
+	ADMIN_FREQUENCY_DAILY     = 0x02, ///< The admin gets information about this on a daily basis.
+	ADMIN_FREQUENCY_WEEKLY    = 0x04, ///< The admin gets information about this on a weekly basis.
+	ADMIN_FREQUENCY_MONTHLY   = 0x08, ///< The admin gets information about this on a monthly basis.
+	ADMIN_FREQUENCY_QUARTERLY = 0x10, ///< The admin gets information about this on a quarterly basis.
+	ADMIN_FREQUENCY_ANUALLY   = 0x20, ///< The admin gets information about this on a yearly basis.
+	ADMIN_FREQUENCY_AUTOMATIC = 0x40, ///< The admin gets information about this when it changes.
+};
+DECLARE_ENUM_AS_BIT_SET(AdminUpdateFrequency);
 
 #define DECLARE_ADMIN_RECEIVE_COMMAND(type) virtual NetworkRecvStatus NetworkPacketReceive_## type ##_command(Packet *p)
 #define DEF_ADMIN_RECEIVE_COMMAND(cls, type) NetworkRecvStatus cls ##NetworkAdminSocketHandler::NetworkPacketReceive_ ## type ## _command(Packet *p)
@@ -69,6 +88,20 @@ protected:
 	 * Notification to the server that this admin is quitting.
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_QUIT);
+
+	/**
+	 * Register updates to be sent at certain frequencies (as announced in the PROTOCOL packet):
+	 * uint16  Update type (see #AdminUpdateType).
+	 * uint16  Update frequency (see #AdminUpdateFrequency), setting #ADMIN_FREQUENCY_POLL is always ignored.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY);
+
+	/**
+	 * Poll the server for certain updates, an invalid poll (e.g. not existent id) gets silently dropped:
+	 * uint8   #AdminUpdateType the server should answer for, only if #AdminUpdateFrequency #ADMIN_FREQUENCY_POLL is advertised in the PROTOCOL packet.
+	 * uint32  ID relevant to the packet type.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_ADMIN_POLL);
 
 	/**
 	 * The server is full (connection gets closed).

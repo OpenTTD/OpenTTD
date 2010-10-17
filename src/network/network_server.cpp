@@ -15,6 +15,7 @@
 #include "../debug.h"
 #include "../strings_func.h"
 #include "../date_func.h"
+#include "network_admin.h"
 #include "network_server.h"
 #include "network_udp.h"
 #include "network.h"
@@ -1702,14 +1703,26 @@ void NetworkServer_Tick(bool send_frame)
 	NetworkUDPAdvertise();
 }
 
+/** Yearly "callback". Called whenever the year changes. */
 void NetworkServerYearlyLoop()
 {
 	NetworkCheckRestartMap();
+	NetworkAdminUpdate(ADMIN_FREQUENCY_ANUALLY);
 }
 
+/** Monthly "callback". Called whenever the month changes. */
 void NetworkServerMonthlyLoop()
 {
 	NetworkAutoCleanCompanies();
+	NetworkAdminUpdate(ADMIN_FREQUENCY_MONTHLY);
+	if ((_cur_month % 3) == 0) NetworkAdminUpdate(ADMIN_FREQUENCY_QUARTERLY);
+}
+
+/** Daily "callback". Called whenever the date changes. */
+void NetworkServerDailyLoop()
+{
+	NetworkAdminUpdate(ADMIN_FREQUENCY_DAILY);
+	if ((_date % 7) == 3) NetworkAdminUpdate(ADMIN_FREQUENCY_WEEKLY);
 }
 
 const char *GetClientIP(NetworkClientInfo *ci)

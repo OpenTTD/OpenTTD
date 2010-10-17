@@ -37,6 +37,12 @@ INSTANTIATE_POOL_METHODS(NetworkAdminSocket)
 /** The timeout for authorisation of the client. */
 static const int ADMIN_AUTHORISATION_TIMEOUT = 10000;
 
+
+/** Frequencies, which may be registered for a certain update type. */
+static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
+};
+assert_compile(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
+
 /**
  * Create a new socket for the server side of the admin network.
  * @param s The socket to connect with.
@@ -114,6 +120,12 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendProtocol()
 
 	/* announce the protocol version */
 	p->Send_uint8(NETWORK_GAME_ADMIN_VERSION);
+
+	for (int i = 0; i < ADMIN_UPDATE_END; i++) {
+		p->Send_bool  (true);
+		p->Send_uint16(i);
+		p->Send_uint16(_admin_update_type_frequencies[i]);
+	}
 
 	p->Send_bool(false);
 	this->Send_Packet(p);
@@ -193,6 +205,41 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_QUIT)
 	return this->CloseConnection();
 }
 
+DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY)
+{
+	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
+	AdminUpdateType type = (AdminUpdateType)p->Recv_uint16();
+	AdminUpdateFrequency freq = (AdminUpdateFrequency)p->Recv_uint16();
+
+	if (type >= ADMIN_UPDATE_END || (_admin_update_type_frequencies[type] & freq) != freq) {
+		/* The server does not know of this UpdateType. */
+		DEBUG(net, 3, "[admin] Not supported update frequency %d (%d) from '%s' (%s).", type, freq, this->admin_name, this->admin_version);
+		return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
+	}
+
+	this->update_frequency[type] = freq;
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
+{
+	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
+	AdminUpdateType type = (AdminUpdateType)p->Recv_uint8();
+	uint32 d1 = p->Recv_uint32();
+
+	switch (type) {
+		default:
+			/* An unsupported "poll" update type. */
+			DEBUG(net, 3, "[admin] Not supported poll %d (%d) from '%s' (%s).", type, d1, this->admin_name, this->admin_version);
+			return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
+	}
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /*
  * Useful wrapper functions
  */
@@ -205,6 +252,25 @@ void ServerNetworkAdminSocketHandler::WelcomeAll()
 	ServerNetworkAdminSocketHandler *as;
 	FOR_ALL_ADMIN_SOCKETS(as) {
 		as->SendWelcome();
+	}
+}
+
+/**
+ * Send (push) updates to the admin network as they have registered for these updates.
+ * @param freq the frequency to be processd.
+ */
+void NetworkAdminUpdate(AdminUpdateFrequency freq)
+{
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		for (int i = 0; i < ADMIN_UPDATE_END; i++) {
+			if (as->update_frequency[i] & freq) {
+				/* Update the admin for the required details */
+				switch (i) {
+					default: NOT_REACHED();
+				}
+			}
+		}
 	}
 }
 

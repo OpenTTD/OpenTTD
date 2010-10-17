@@ -59,6 +59,7 @@ void NetworkPrintClients();
 void NetworkHandlePauseChange(PauseMode prev_mode, PauseMode changed_mode);
 
 /*** Commands ran by the server ***/
+void NetworkServerDailyLoop();
 void NetworkServerMonthlyLoop();
 void NetworkServerYearlyLoop();
 void NetworkServerSendConfigUpdate();
