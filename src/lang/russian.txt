@@ -2574,6 +2574,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Отме
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Имя файла: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Версия: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Треб. версия игры не ниже {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Сумма MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Палитра: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Параметры: {SILVER}{STRING}
@@ -3950,7 +3951,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не у�
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не удалось удалить метку...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Клон игры «Transport Tycoon Deluxe»
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Экономический симулятор на основе «Transport Tycoon Deluxe»
 
 ##id 0x2000
 # Town building names

@@ -2400,6 +2400,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kiểm t
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Tên file: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Phiên bản: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Phiên bản phù hợp tối thiểu: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Bảng màu: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Tham số: {SILVER}{STRING}
@@ -3766,7 +3767,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Không t
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Không thể xoá biển hiệu...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Một bản sao của Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Một trò chơi mô phỏng dựa trên Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

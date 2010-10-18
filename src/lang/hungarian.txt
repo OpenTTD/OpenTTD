@@ -3561,7 +3561,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ninc
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A település nem fog utakat építeni. Az útépítést a Haladó beállítások->Gazdaság->Városok menüben engedélyezheted.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Útkarbantartás folyamatban
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nem törölheted ezt a várost...{}Egy állomás vagy járműtelep hivatkozik a városra, vagy egy városi tulajdonú mező nem eltávolítható
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nincs megfelelő hely szobrot elhelyezni a város központjában
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nincs megfelelő hely egy szobornak a város központjában
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... túl sok a gazdasági épület
@@ -3831,7 +3831,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nem vál
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}A felirat nem törölhető...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Egy Transport Tycoon Deluxe klón
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe alapokon nyugvó szimulációs játék
 
 ##id 0x2000
 # Town building names

@@ -2400,6 +2400,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kijk of 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Bestandsnaam: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF-ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versie: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Laagste compatibele versie: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameters: {SILVER}{STRING}
@@ -3766,7 +3767,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan de n
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan bord niet verwijderen...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Een kloon van Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Een simulatiespel gebaseerd op Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

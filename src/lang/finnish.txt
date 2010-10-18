@@ -3767,7 +3767,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kyltin n
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kylttiä ei voi poistaa...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Klooni Transport Tycoon Deluxesta
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxeen pohjautuva simulaatiopeli
 
 ##id 0x2000
 # Town building names
