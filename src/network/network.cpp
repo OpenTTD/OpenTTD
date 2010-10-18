@@ -463,7 +463,6 @@ void NetworkClose(bool close_admins)
 		ServerNetworkAdminSocketHandler::CloseListeners();
 	} else if (MyClient::my_client != NULL) {
 		MyClient::SendQuit();
-		MyClient::my_client->Send_Packets();
 		MyClient::my_client->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
 	}
 
