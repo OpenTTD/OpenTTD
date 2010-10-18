@@ -266,12 +266,6 @@ void HashCurrentCompanyPassword(const char *password)
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyInformationQuery()
 {
-	/*
-	 * Packet: CLIENT_COMPANY_INFO
-	 * Function: Request company-info (in detail)
-	 * Data:
-	 *    <none>
-	 */
 	Packet *p;
 	_network_join_status = NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
@@ -283,16 +277,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyInformationQuery()
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 {
-	/*
-	 * Packet: CLIENT_JOIN
-	 * Function: Try to join the server
-	 * Data:
-	 *    String: OpenTTD Revision (norev000 if no revision)
-	 *    String: Client Name (max NETWORK_NAME_LENGTH)
-	 *    uint8:  Play as Company id (1..MAX_COMPANIES)
-	 *    uint8:  Language ID
-	 */
-
 	Packet *p;
 	_network_join_status = NETWORK_JOIN_STATUS_AUTHORIZING;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
@@ -308,12 +292,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
 {
-	/*
-	 * Packet: CLIENT_NEWGRFS_CHECKED
-	 * Function: Tell the server that we have the required GRFs
-	 * Data:
-	 */
-
 	Packet *p = new Packet(PACKET_CLIENT_NEWGRFS_CHECKED);
 	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
@@ -321,13 +299,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const char *password)
 {
-	/*
-	 * Packet: CLIENT_GAME_PASSWORD
-	 * Function: Send a password to the server to authorize
-	 * Data:
-	 *    uint8:  NetworkPasswordType
-	 *    String: Password
-	 */
 	Packet *p = new Packet(PACKET_CLIENT_GAME_PASSWORD);
 	p->Send_string(password);
 	my_client->Send_Packet(p);
@@ -336,13 +307,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const char *p
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyPassword(const char *password)
 {
-	/*
-	 * Packet: CLIENT_COMPANY_PASSWORD
-	 * Function: Send a password to the server to authorize
-	 * Data:
-	 *    uint8:  NetworkPasswordType
-	 *    String: Password
-	 */
 	Packet *p = new Packet(PACKET_CLIENT_COMPANY_PASSWORD);
 	p->Send_string(GenerateCompanyPasswordHash(password));
 	my_client->Send_Packet(p);
@@ -351,13 +315,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyPassword(const char
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 {
-	/*
-	 * Packet: CLIENT_GETMAP
-	 * Function: Request the map from the server
-	 * Data:
-	 *    <none>
-	 */
-
 	Packet *p = new Packet(PACKET_CLIENT_GETMAP);
 	/* Send the OpenTTD version to the server, let it validate it too.
 	 * But only do it for stable releases because of those we are sure
@@ -372,13 +329,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
 {
-	/*
-	 * Packet: CLIENT_MAP_OK
-	 * Function: Tell the server that we are done receiving/loading the map
-	 * Data:
-	 *    <none>
-	 */
-
 	Packet *p = new Packet(PACKET_CLIENT_MAP_OK);
 	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
@@ -386,13 +336,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
 {
-	/*
-	 * Packet: CLIENT_ACK
-	 * Function: Tell the server we are done with this frame
-	 * Data:
-	 *    uint32: current FrameCounter of the client
-	 */
-
 	Packet *p = new Packet(PACKET_CLIENT_ACK);
 
 	p->Send_uint32(_frame_counter);
@@ -403,19 +346,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
 /* Send a command packet to the server */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacket *cp)
 {
-	/*
-	 * Packet: CLIENT_COMMAND
-	 * Function: Send a DoCommand to the Server
-	 * Data:
-	 *    uint8:  CompanyID (0..MAX_COMPANIES-1)
-	 *    uint32: CommandID (see command.h)
-	 *    uint32: P1 (free variables used in DoCommand)
-	 *    uint32: P2
-	 *    uint32: Tile
-	 *    string: text
-	 *    uint8:  CallBackID
-	 */
-
 	Packet *p = new Packet(PACKET_CLIENT_COMMAND);
 	my_client->Send_Command(p, cp);
 
@@ -426,17 +356,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacke
 /* Send a chat-packet over the network */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
 {
-	/*
-	 * Packet: CLIENT_CHAT
-	 * Function: Send a chat-packet to the serve
-	 * Data:
-	 *    uint8:  ActionID (see network_data.h, NetworkAction)
-	 *    uint8:  Destination Type (see network_data.h, DestType);
-	 *    uint32: Destination CompanyID/Client-identifier
-	 *    String: Message (max NETWORK_CHAT_LENGTH)
-	 *    uint64: Some arbitrary number
-	 */
-
 	Packet *p = new Packet(PACKET_CLIENT_CHAT);
 
 	p->Send_uint8 (action);
@@ -452,12 +371,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action,
 /* Send an error-packet over the network */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode errorno)
 {
-	/*
-	 * Packet: CLIENT_ERROR
-	 * Function: The client made an error and is quiting the game
-	 * Data:
-	 *    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
-	 */
 	Packet *p = new Packet(PACKET_CLIENT_ERROR);
 
 	p->Send_uint8(errorno);
@@ -467,12 +380,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const char *password)
 {
-	/*
-	 * Packet: PACKET_CLIENT_SET_PASSWORD
-	 * Function: Set the password for the clients current company
-	 * Data:
-	 *    String: Password
-	 */
 	Packet *p = new Packet(PACKET_CLIENT_SET_PASSWORD);
 
 	p->Send_string(GenerateCompanyPasswordHash(password));
@@ -482,12 +389,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const char *pa
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const char *name)
 {
-	/*
-	 * Packet: PACKET_CLIENT_SET_NAME
-	 * Function: Gives the client a new name
-	 * Data:
-	 *    String: Name
-	 */
 	Packet *p = new Packet(PACKET_CLIENT_SET_NAME);
 
 	p->Send_string(name);
@@ -495,14 +396,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const char *name)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-/* Send an quit-packet over the network */
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
 {
-	/*
-	 * Packet: CLIENT_QUIT
-	 * Function: The client is quiting the game
-	 * Data:
-	 */
 	Packet *p = new Packet(PACKET_CLIENT_QUIT);
 
 	my_client->Send_Packet(p);

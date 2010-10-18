@@ -157,15 +157,6 @@ static void NetworkHandleCommandQueue(NetworkClientSocket *cs);
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendClientInfo(NetworkClientInfo *ci)
 {
-	/*
-	 * Packet: SERVER_CLIENT_INFO
-	 * Function: Sends info about a client
-	 * Data:
-	 *    uint32:  The identifier of the client (always unique on a server. 1 = server, 0 is invalid)
-	 *    uint8:  As which company the client is playing
-	 *    String: The name of the client
-	 */
-
 	if (ci->client_id != INVALID_CLIENT_ID) {
 		Packet *p = new Packet(PACKET_SERVER_CLIENT_INFO);
 		p->Send_uint32(ci->client_id);
@@ -179,12 +170,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendClientInfo(NetworkClientIn
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 {
-	/*
-	 * Packet: SERVER_COMPANY_INFO
-	 * Function: Sends info about the companies
-	 * Data:
-	 */
-
 	/* Fetch the latest version of the stats */
 	NetworkCompanyStats company_stats[MAX_COMPANIES];
 	NetworkPopulateCompanyStats(company_stats);
@@ -247,13 +232,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode error)
 {
-	/*
-	 * Packet: SERVER_ERROR
-	 * Function: The client made an error
-	 * Data:
-	 *    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
-	 */
-
 	char str[100];
 	Packet *p = new Packet(PACKET_SERVER_ERROR);
 
@@ -296,16 +274,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 {
-	/*
-	 * Packet: PACKET_SERVER_CHECK_NEWGRFS
-	 * Function: Sends info about the used GRFs to the client
-	 * Data:
-	 *      uint8:  Amount of GRFs
-	 *    And then for each GRF:
-	 *      uint32: GRF ID
-	 * 16 * uint8:  MD5 checksum of the GRF
-	 */
-
 	Packet *p = new Packet(PACKET_SERVER_CHECK_NEWGRFS);
 	const GRFConfig *c;
 	uint grf_count = 0;
@@ -325,11 +293,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
 {
-	/*
-	 * Packet: PACKET_SERVER_NEED_GAME_PASSWORD
-	 * Function: Indication to the client that the server needs a game password
-	 */
-
 	/* Invalid packet when status is STATUS_AUTH_GAME or higher */
 	if (this->status >= STATUS_AUTH_GAME) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
@@ -342,14 +305,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedCompanyPassword()
 {
-	/*
-	 * Packet: PACKET_SERVER_NEED_COMPANY_PASSWORD
-	 * Function: Indication to the client that the server needs a company password
-	 * Data:
-	 *    uint32:  Generation seed
-	 *    string:  Network ID of the server
-	 */
-
 	/* Invalid packet when status is STATUS_AUTH_COMPANY or higher */
 	if (this->status >= STATUS_AUTH_COMPANY) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
 
@@ -364,13 +319,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedCompanyPassword()
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 {
-	/*
-	 * Packet: SERVER_WELCOME
-	 * Function: The client is joined and ready to receive his map
-	 * Data:
-	 *    uint32:  Own Client identifier
-	 */
-
 	Packet *p;
 	NetworkClientSocket *new_cs;
 
@@ -398,13 +346,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
 {
-	/*
-	 * Packet: PACKET_SERVER_WAIT
-	 * Function: The client can not receive the map at the moment because
-	 *             someone else is already receiving the map
-	 * Data:
-	 *    uint8:  Clients awaiting map
-	 */
 	int waiting = 0;
 	NetworkClientSocket *new_cs;
 	Packet *p;
@@ -423,20 +364,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
 /* This sends the map to the client */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 {
-	/*
-	 * Packet: SERVER_MAP
-	 * Function: Sends the map to the client, or a part of it (it is splitted in
-	 *   a lot of multiple packets)
-	 * Data:
-	 *    uint8:  packet-type (MAP_PACKET_START, MAP_PACKET_NORMAL and MAP_PACKET_END)
-	 *  if MAP_PACKET_START:
-	 *    uint32: The current FrameCounter
-	 *  if MAP_PACKET_NORMAL:
-	 *    piece of the map (till max-size of packet)
-	 *  if MAP_PACKET_END:
-	 *    nothing
-	 */
-
 	static FILE *file_pointer = NULL;
 	static uint sent_packets; // How many packets we did send succecfully last time
 
@@ -541,15 +468,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendJoin(ClientID client_id)
 {
-	/*
-	 * Packet: SERVER_JOIN
-	 * Function: A client is joined (all active clients receive this after a
-	 *     PACKET_CLIENT_MAP_OK) Mostly what directly follows is a
-	 *     PACKET_SERVER_CLIENT_INFO
-	 * Data:
-	 *    uint32:  Client-identifier
-	 */
-
 	Packet *p = new Packet(PACKET_SERVER_JOIN);
 
 	p->Send_uint32(client_id);
@@ -561,17 +479,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendJoin(ClientID client_id)
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendFrame()
 {
-	/*
-	 * Packet: SERVER_FRAME
-	 * Function: Sends the current frame-counter to the client
-	 * Data:
-	 *    uint32: Frame Counter
-	 *    uint32: Frame Counter Max (how far may the client walk before the server?)
-	 *    [uint32: general-seed-1]
-	 *    [uint32: general-seed-2]
-	 *      (last two depends on compile-settings, and are not default settings)
-	 */
-
 	Packet *p = new Packet(PACKET_SERVER_FRAME);
 	p->Send_uint32(_frame_counter);
 	p->Send_uint32(_frame_counter_max);
@@ -587,16 +494,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendFrame()
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendSync()
 {
-	/*
-	 * Packet: SERVER_SYNC
-	 * Function: Sends a sync-check to the client
-	 * Data:
-	 *    uint32: Frame Counter
-	 *    uint32: General-seed-1
-	 *    [uint32: general-seed-2]
-	 *      (last one depends on compile-settings, and are not default settings)
-	 */
-
 	Packet *p = new Packet(PACKET_SERVER_SYNC);
 	p->Send_uint32(_frame_counter);
 	p->Send_uint32(_sync_seed_1);
@@ -610,20 +507,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendSync()
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacket *cp)
 {
-	/*
-	 * Packet: SERVER_COMMAND
-	 * Function: Sends a DoCommand to the client
-	 * Data:
-	 *    uint8:  CompanyID (0..MAX_COMPANIES-1)
-	 *    uint32: CommandID (see command.h)
-	 *    uint32: P1 (free variables used in DoCommand)
-	 *    uint32: P2
-	 *    uint32: Tile
-	 *    string: text
-	 *    uint8:  CallBackID
-	 *    uint32: Frame of execution
-	 */
-
 	Packet *p = new Packet(PACKET_SERVER_COMMAND);
 
 	this->Send_Command(p, cp);
@@ -636,16 +519,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacke
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const char *msg, int64 data)
 {
-	/*
-	 * Packet: SERVER_CHAT
-	 * Function: Sends a chat-packet to the client
-	 * Data:
-	 *    uint8:  ActionID (see network_data.h, NetworkAction)
-	 *    uint32: Client-identifier
-	 *    String: Message (max NETWORK_CHAT_LENGTH)
-	 *    uint64: Arbitrary data
-	 */
-
 	Packet *p = new Packet(PACKET_SERVER_CHAT);
 
 	p->Send_uint8 (action);
@@ -660,15 +533,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action,
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendErrorQuit(ClientID client_id, NetworkErrorCode errorno)
 {
-	/*
-	 * Packet: SERVER_ERROR_QUIT
-	 * Function: One of the clients made an error and is quiting the game
-	 *      This packet informs the other clients of that.
-	 * Data:
-	 *    uint32:  Client-identifier
-	 *    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
-	 */
-
 	Packet *p = new Packet(PACKET_SERVER_ERROR_QUIT);
 
 	p->Send_uint32(client_id);
@@ -680,14 +544,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendErrorQuit(ClientID client_
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendQuit(ClientID client_id)
 {
-	/*
-	 * Packet: SERVER_ERROR_QUIT
-	 * Function: A client left the game, and this packets informs the other clients
-	 *      of that.
-	 * Data:
-	 *    uint32:  Client-identifier
-	 */
-
 	Packet *p = new Packet(PACKET_SERVER_QUIT);
 
 	p->Send_uint32(client_id);
@@ -698,13 +554,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendQuit(ClientID client_id)
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendShutdown()
 {
-	/*
-	 * Packet: SERVER_SHUTDOWN
-	 * Function: Let the clients know that the server is closing
-	 * Data:
-	 *     <none>
-	 */
-
 	Packet *p = new Packet(PACKET_SERVER_SHUTDOWN);
 	this->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
@@ -712,13 +561,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendShutdown()
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGame()
 {
-	/*
-	 * Packet: PACKET_SERVER_NEWGAME
-	 * Function: Let the clients know that the server is loading a new map
-	 * Data:
-	 *     <none>
-	 */
-
 	Packet *p = new Packet(PACKET_SERVER_NEWGAME);
 	this->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;

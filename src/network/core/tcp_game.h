@@ -118,45 +118,307 @@ private:
 	NetworkClientInfo *info;  ///< Client info related to this socket
 
 protected:
+
+	/**
+	 * Notification that the server is full.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_FULL);
+
+	/**
+	 * Notification that the client trying to join is banned.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_BANNED);
+
+	/**
+	 * Try to join the server:
+	 * string  OpenTTD revision (norev000 if no revision).
+	 * string  Name of the client (max NETWORK_NAME_LENGTH).
+	 * uint8   ID of the company to play as (1..MAX_COMPANIES).
+	 * uint8   ID of the clients Language.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_JOIN);
+
+	/**
+	 * The client made an error:
+	 * uint8   Error code caused (see NetworkErrorCode).
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_ERROR);
+
+	/**
+	 * Request company information (in detail).
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO);
+
+	/**
+	 * Sends information about the companies (one packet per company):
+	 * uint8   Version of the structure of this packet (NETWORK_COMPANY_INFO_VERSION).
+	 * bool    Contains data (false marks the end of updates).
+	 * uint8   ID of the company.
+	 * string  Name of the company.
+	 * uint32  Year the company was inaugurated.
+	 * uint64  Value.
+	 * uint64  Money.
+	 * uint64  Income.
+	 * uint16  Performance (last quarter).
+	 * bool    Company is password protected.
+	 * uint16  Number of trains.
+	 * uint16  Number of lorries.
+	 * uint16  Number of busses.
+	 * uint16  Number of planes.
+	 * uint16  Number of ships.
+	 * uint16  Number of train stations.
+	 * uint16  Number of lorry stations.
+	 * uint16  Number of bus stops.
+	 * uint16  Number of airports and heliports.
+	 * uint16  Number of harbours.
+	 * bool    Company is an AI.
+	 * string  Client names (comma separated list)
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO);
+
+	/**
+	 * Send information about a client:
+	 * uint32  ID of the client (always unique on a server. 1 = server, 0 is invalid).
+	 * uint8   ID of the company the client is playing as (255 for spectators).
+	 * string  Name of the client.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO);
+
+	/**
+	 * Indication to the client that the server needs a game password.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_NEED_GAME_PASSWORD);
+
+	/**
+	 * Indication to the client that the server needs a company password:
+	 * uint32  Generation seed.
+	 * string  Network ID of the server.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_NEED_COMPANY_PASSWORD);
+
+	/**
+	 * Send a password to the server to authorize:
+	 * uint8   Password type (see NetworkPasswordType).
+	 * string  The password.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_GAME_PASSWORD);
+
+	/**
+	 * Send a password to the server to authorize
+	 * uint8   Password type (see NetworkPasswordType).
+	 * string  The password.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_PASSWORD);
+
+	/**
+	 * The client is joined and ready to receive his map:
+	 * uint32  Own client ID.
+	 * uint32  Generation seed.
+	 * string  Network ID of the server.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_WELCOME);
+
+	/**
+	 * Request the map from the server.
+	 * uint32  NewGRF version (release versions of OpenTTD only).
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP);
+
+	/**
+	 * Notification that another client is currently receiving the map:
+	 * uint8   Number of clients awaiting the map.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_WAIT);
+
+	/**
+	 * Sends parts of the map to the client:
+	 * uint8   packet type (MAP_PACKET_START, MAP_PACKET_NORMAL, MAP_PACKET_END).
+	 * If MAP_PACKET_START:
+	 *   uint32  Current frame.
+	 *   uint32  Size of the map (in bytes).
+	 * If MAP_PACKET_NORMAL:
+	 *   Part of the map (until max size of packet).
+	 * If MAP_PACKET_END:
+	 *   No further data sent.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MAP);
+
+	/**
+	 * Tell the server that we are done receiving/loading the map.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK);
+
+	/**
+	 * A client joined (PACKET_CLIENT_MAP_OK), what usually directly follows is a PACKET_SERVER_CLIENT_INFO:
+	 * uint32  ID of the client that just joined the game.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_JOIN);
+
+	/**
+	 * Sends the current frame counter to the client:
+	 * uint32  Frame counter
+	 * uint32  Frame counter max (how far may the client walk before the server?)
+	 * uint32  General seed 1 (dependant on compile settings, not default).
+	 * uint32  General seed 2 (dependant on compile settings, not default).
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_FRAME);
+
+	/**
+	 * Sends a sync-check to the client:
+	 * uint32  Frame counter.
+	 * uint32  General seed 1.
+	 * uint32  General seed 2 (dependant on compile settings, not default).
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_SYNC);
+
+	/**
+	 * Tell the server we are done with this frame:
+	 * uint32  Current frame counter of the client.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_ACK);
+
+	/**
+	 * Send a DoCommand to the Server:
+	 * uint8   ID of the company (0..MAX_COMPANIES-1).
+	 * uint32  ID of the command (see command.h).
+	 * uint32  P1 (free variables used in DoCommand).
+	 * uint32  P2
+	 * uint32  Tile where this is taking place.
+	 * string  Text.
+	 * uint8   ID of the callback.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND);
+
+	/**
+	 * Sends a DoCommand to the client:
+	 * uint8   ID of the company (0..MAX_COMPANIES-1).
+	 * uint32  ID of the command (see command.h).
+	 * uint32  P1 (free variable used in DoCommand).
+	 * uint32  P2.
+	 * uint32  Tile where this is taking place.
+	 * string  Text.
+	 * uint8   ID of the callback.
+	 * uint32  Frame of execution.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_COMMAND);
+
+	/**
+	 * Sends a chat-packet to the server:
+	 * uint8   ID of the action (see NetworkAction).
+	 * uint8   ID of the destination type (see DestType).
+	 * uint32  ID of the client or company (destination of the chat).
+	 * string  Message (max NETWORK_CHAT_LENGTH).
+	 * uint64  data (used e.g. for 'give money' actions).
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_CHAT);
+
+	/**
+	 * Sends a chat-packet to the client:
+	 * uint8   ID of the action (see NetworkAction).
+	 * uint32  ID of the client (origin of the chat).
+	 * string  Message (max NETWORK_CHAT_LENGTH).
+	 * uint64  data (used e.g. for 'give money' actions).
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_CHAT);
+
+	/**
+	 * Set the password for the clients current company:
+	 * string  The password.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD);
+
+	/**
+	 * Gives the client a new name:
+	 * string  New name of the client.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME);
+
+	/**
+	 * The client is quiting the game.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_QUIT);
+
+	/**
+	 * The client made an error and is quiting the game.
+	 * uint8   Error of the code caused (see NetworkErrorCode).
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_ERROR);
+
+	/**
+	 * Notification that a client left the game:
+	 * uint32  ID of the client.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_QUIT);
+
+	/**
+	 * Inform all clients that one client made an error and thus has quit/been disconnected:
+	 * uint32  ID of the client that caused the error.
+	 * uint8   Code of the error caused (see NetworkErrorCode).
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT);
+
+	/**
+	 * Let the clients know that the server is closing.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_SHUTDOWN);
+
+	/**
+	 * Let the clients know that the server is loading a new map.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_NEWGAME);
+
+	/**
+	 * Send the result of an issues RCon command back to the client:
+	 * uint16  Colour code.
+	 * string  Output of the RCon command
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_RCON);
+
+	/**
+	 * Send an RCon command to the server:
+	 * string  RCon password.
+	 * string  Command to be executed.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_RCON);
+
+	/**
+	 * Sends information about all used GRFs to the client:
+	 * uint8   Amount of GRFs (the following data is repeated this many times, i.e. per GRF data).
+	 * uint32  GRF ID
+	 * 16 * uint8   MD5 checksum of the GRF
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS);
+
+	/**
+	 * Tell the server that we have the required GRFs
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED);
+
+	/**
+	 * Move a client from one company into another:
+	 * uint32  ID of the client.
+	 * uint8   ID of the new company.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MOVE);
+
+	/**
+	 * Request the server to move this client into another company:
+	 * uint8   ID of the company the client wants to join.
+	 * string  Password, if the company is password protected.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_MOVE);
+
+	/**
+	 * Update the clients knowledge of which company is password protected:
+	 * uint16  Bitwise representation of each company
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_UPDATE);
+
+	/**
+	 * Update the clients knowledge of the max settings:
+	 * uint8   Maximum number of companies allowed.
+	 * uint8   Maximum number of spectators allowed.
+	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_CONFIG_UPDATE);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
