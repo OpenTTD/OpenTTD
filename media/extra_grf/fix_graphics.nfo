@@ -128,21 +128,19 @@
 // Clipped vehicle in the original German DOS graphics
    -1 * 6	 07 83 01 \7! 03 02
    -1 * 5	 0A 01 01 5D 0C
-   -1 sprites/fix_graphics.pcx 776 232 09 16 20 -14 -7
+   -1 sprites/fix_graphics.pcx 18 296 09 16 20 -14 -7
 // Graphics metadata pixel higher than actual graphics
    -1 * 6	 12 01 00 01 AC E2
-   -1 sprites/fix_graphics.pcx 776 250 01 10 9 0 0
-
+   -1 sprites/fix_graphics.pcx 66 296 01 10 9 0 0
 // Grahpics for the tubular bridge pillars had incorrect offsets
    -1 * 5	 0A 01 04 05 0A
-   -1 sprites/fix_graphics_pillar_tubular.pcx  3 11 09 9 4  2 -1
-   -1 sprites/fix_graphics_pillar_tubular.pcx 19 11 09 9 4  2 -1
-   -1 sprites/fix_graphics_pillar_tubular.pcx 35 11 09 9 4 -4  0
-   -1 sprites/fix_graphics_pillar_tubular.pcx 51 11 09 9 4 -4  0
-
+   -1 sprites/fix_graphics.pcx 98 296 09 9 4 2 -1
+   -1 sprites/fix_graphics.pcx 114 296 09 9 4 2 -1
+   -1 sprites/fix_graphics.pcx 130 296 09 9 4 -4 0
+   -1 sprites/fix_graphics.pcx 146 296 09 9 4 -4 0
 // Grahpics for the cantilever bridge pillars had incorrect offsets
    -1 * 5	 0A 01 04 DD 09
-   -1 sprites/fix_graphics_pillar_cantilever.pcx  4 10 09 11 10   2 -3
-   -1 sprites/fix_graphics_pillar_cantilever.pcx 20 10 09 12 10   2 -2
-   -1 sprites/fix_graphics_pillar_cantilever.pcx 36 10 09 11 10 -10 -1
-   -1 sprites/fix_graphics_pillar_cantilever.pcx 52 10 09 11 10 -10 -1
+   -1 sprites/fix_graphics.pcx 178 296 09 11 10 2 -3
+   -1 sprites/fix_graphics.pcx 194 296 09 12 10 2 -2
+   -1 sprites/fix_graphics.pcx 210 296 09 11 10 -10 -1
+   -1 sprites/fix_graphics.pcx 226 296 09 11 10 -10 -1

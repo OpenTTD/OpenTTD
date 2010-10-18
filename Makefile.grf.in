@@ -64,7 +64,7 @@ $(OBJS_DIR)/openttd.grf: $(PCX_FILES) $(NFO_FILES) $(OBJS_DIR)/sprites
 	$(Q) gcc -I$(GRF_DIR) -C -E - < "$(GRF_DIR)/openttd.nfo" | sed -e '/^#/d' -e '/^$$/d' > $(OBJS_DIR)/sprites/openttd.nfo
 	$(Q) $(NFORENUM) $(OBJS_DIR)/sprites/openttd.nfo
 	$(E) '$(STAGE) Compiling openttd.grf'
-	$(Q) $(GRFCODEC) -e -m1 $(OBJS_DIR)/openttd.grf
+	$(Q) $(GRFCODEC) -e -p1 $(OBJS_DIR)/openttd.grf
 	$(Q) cp $(OBJS_DIR)/openttd.grf $(BIN_DIR)/openttd.grf
 	$(E) '$(STAGE) Updating base graphics sets'
 	$(Q) for grf in $(BIN_DIR)/orig*.obg; do sed 's/^OPENTTD.GRF  = [0-9a-f]*$$/OPENTTD.GRF  = '`$(MD5SUM) $(BIN_DIR)/openttd.grf | sed 's@ .*@@'`'/' $$grf > $$grf.tmp && mv $$grf.tmp $$grf; done

@@ -15,22 +15,20 @@
 //
 
    -1 * 6	 07 83 01 \7! 00 0C
-   -1 * 54	 0C "Missing shore tile graphics for "
-	 "the Temperate climate"
+   -1 * 54	 0C "Missing shore tile graphics for the temperate climate"
    -1 * 3	 05 0D 0A
-   -1 sprites/shore.pcx 66 8 09 15 64 -31 0
-   -1 sprites/shore.pcx 146 8 09 31 64 -31 -8
-   -1 sprites/shore.pcx 226 8 09 23 64 -31 0
-   -1 sprites/shore.pcx 306 8 09 47 64 -31 -16
-   -1 sprites/shore.pcx 386 8 09 31 64 -31 -8
-   -1 sprites/shore.pcx 466 8 09 39 64 -31 -8
-   -1 sprites/shore.pcx 546 8 09 31 64 -31 -8
-   -1 sprites/shore.pcx 626 8 09 31 64 -31 -8
-   -1 sprites/shore.pcx 706 7 09 32 64 -31 -1
+   -1 sprites/shore.pcx 82 8 09 15 64 -31 0
+   -1 sprites/shore.pcx 162 8 09 31 64 -31 -8
+   -1 sprites/shore.pcx 242 8 09 23 64 -31 0
+   -1 sprites/shore.pcx 322 8 09 47 64 -31 -16
+   -1 sprites/shore.pcx 402 8 09 31 64 -31 -8
+   -1 sprites/shore.pcx 482 8 09 39 64 -31 -8
+   -1 sprites/shore.pcx 562 8 09 31 64 -31 -8
+   -1 sprites/shore.pcx 642 8 09 31 64 -31 -8
+   -1 sprites/shore.pcx 722 8 09 32 64 -31 -1
    -1 sprites/shore.pcx 2 72 09 31 64 -31 -8
    -1 * 6	 07 83 01 \7! 01 0C
-   -1 * 55	 0C "Missing shore tile graphics for "
-	 "the sub-arctic climate"
+   -1 * 55	 0C "Missing shore tile graphics for the sub-arctic climate"
    -1 * 3	 05 0D 0A
    -1 sprites/shore.pcx 130 72 09 15 64 -31 0
    -1 sprites/shore.pcx 210 72 09 31 64 -31 -8
@@ -40,11 +38,10 @@
    -1 sprites/shore.pcx 530 72 09 39 64 -31 -8
    -1 sprites/shore.pcx 610 72 09 31 64 -31 -8
    -1 sprites/shore.pcx 690 72 09 31 64 -31 -8
-   -1 sprites/shore.pcx 2 135 09 32 64 -31 -1
+   -1 sprites/shore.pcx 2 136 09 32 64 -31 -1
    -1 sprites/shore.pcx 82 136 09 31 64 -31 -8
    -1 * 6	 07 83 01 \7! 02 0C
-   -1 * 57	 0C "Missing shore tile graphics for "
-	 "the sub-tropical climate"
+   -1 * 57	 0C "Missing shore tile graphics for the sub-tropical climate"
    -1 * 3	 05 0D 0A
    -1 sprites/shore.pcx 210 136 09 15 64 -31 0
    -1 sprites/shore.pcx 290 136 09 31 64 -31 -8
@@ -54,11 +51,10 @@
    -1 sprites/shore.pcx 610 136 09 39 64 -31 -8
    -1 sprites/shore.pcx 690 136 09 31 64 -31 -8
    -1 sprites/shore.pcx 2 200 09 31 64 -31 -8
-   -1 sprites/shore.pcx 82 199 09 32 64 -31 -1
+   -1 sprites/shore.pcx 82 200 09 32 64 -31 -1
    -1 sprites/shore.pcx 162 200 09 31 64 -31 -8
    -1 * 6	 07 83 01 \7! 03 0C
-   -1 * 44	 0C "Missing shore tile graphics for "
-	 "the toyland"
+   -1 * 44	 0C "Missing shore tile graphics for the toyland climate"
    -1 * 3	 05 0D 0A
    -1 sprites/shore.pcx 290 200 09 15 64 -31 0
    -1 sprites/shore.pcx 370 200 09 31 64 -31 -8
@@ -68,7 +64,7 @@
    -1 sprites/shore.pcx 690 200 09 39 64 -31 -8
    -1 sprites/shore.pcx 2 264 09 31 64 -31 -8
    -1 sprites/shore.pcx 82 264 09 31 64 -31 -8
-   -1 sprites/shore.pcx 162 263 09 32 64 -31 -1
+   -1 sprites/shore.pcx 162 264 09 32 64 -31 -1
    -1 sprites/shore.pcx 242 264 09 31 64 -31 -8
 
 //

@@ -7,7 +7,7 @@
 // See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 //
    -1 * 0	 0C "Pre-signal, semaphore, and PBS graphics by Michael Blunck"
-   -1 * 0	 05 04 F0
+   -1 * 3	 05 04 F0
    -1 sprites/signals.pcx 66 8 01 21 6 -2 -19
    -1 sprites/signals.pcx 82 8 01 21 6 -2 -19
    -1 sprites/signals.pcx 98 8 01 21 6 -2 -19
@@ -248,9 +248,9 @@
    -1 sprites/signals.pcx 162 232 01 21 9 -4 -19
    -1 sprites/signals.pcx 178 232 01 21 12 0 -19
    -1 sprites/signals.pcx 210 232 01 21 9 0 -19
-   -1 * 0	 07 85 01 \70 3B F2
-   -1 * 0	 07 86 01 \70 04 F1
-   -1 * 0	 05 04 F0
+   -1 * 6	 07 85 01 \70 3B F2
+   -1 * 6	 07 86 01 \70 04 F1
+   -1 * 3	 05 04 F0
    -1 sprites/signals.pcx 274 232 01 21 6 -2 -19
    -1 sprites/signals.pcx 290 232 01 21 6 -2 -19
    -1 sprites/signals.pcx 306 232 01 21 6 -2 -19
