@@ -2402,6 +2402,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Controll
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nome file: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versione: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Versione minima compatibile: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Somma MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Tavolozza: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametri: {SILVER}{STRING}
@@ -3768,7 +3769,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossib
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Impossibile eliminare il cartello...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Un clone di Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Gioco di simulazione basato su Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

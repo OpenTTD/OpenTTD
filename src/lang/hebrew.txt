@@ -1036,6 +1036,7 @@ STR_NUM_LOW                                                     :נמוך
 STR_NUM_NORMAL                                                  :רגיל
 STR_NUM_HIGH                                                    :גבוה
 STR_NUM_CUSTOM                                                  :אחר
+STR_NUM_CUSTOM_NUMBER                                           :אחר ({NUM})
 
 STR_VARIETY_NONE                                                :ללא
 STR_VARIETY_VERY_LOW                                            :נמוך מאוד
@@ -1054,6 +1055,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :נמוך מאו
 STR_SEA_LEVEL_LOW                                               :נמוך
 STR_SEA_LEVEL_MEDIUM                                            :בינוני
 STR_SEA_LEVEL_HIGH                                              :גבוה
+STR_SEA_LEVEL_CUSTOM                                            :אחר
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :אחר ({NUM}%)
 
 STR_DISASTER_NONE                                               :ללא
 STR_DISASTER_REDUCED                                            :מופחת
@@ -1118,6 +1121,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{ORANGE}{STRING
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :בכלל לא
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :כמו שאר התעשיות
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :חיפוש אחר התעשיות
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}אזור שטוח סביב התעשיות: {ORANGE}{STRING} משבצות{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{ORANGE}{STRING}{LTBLUE} :אפשר יצירת מספר תעשיות זהות בשטחה של עיר אחת
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}תמיד תראה תאריך מלא בסגל הסטטוס: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}הראה רמזורים בצד הנהיגה: {ORANGE}{STRING}
@@ -2061,7 +2065,10 @@ STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}שיטו
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}קנה אדמה לשימוש עתידי
 
 # Object construction window
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}גודל: {GOLD}{NUM} x {NUM} משבצת
 
+STR_OBJECT_CLASS_LTHS                                           :מגדלורים
+STR_OBJECT_CLASS_TRNS                                           :אנטנות
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}עצים
@@ -2074,7 +2081,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}פזר �
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}יצירת טופוגרפיה
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}מקם אזורים סלעיים במפה
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}.הגדר אזור מדברי{}{NBSP}.להסרה {NBSP}CRTL לחץ והחזק
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}.הגדר אזור מדברי{}.להסרה לחץ CRTL והחזק
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}הגדל מספר משבצות לעיבוד
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}הקטן מספר משבצות לעיבוד
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}צור קרקע אקראית
@@ -2141,10 +2148,12 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}:בעל�
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}בעלי מסילת הרכבת: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{LTBLUE}{STRING}{BLACK} :רשות מקומית
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :אין
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{LTBLUE}{NUM}x{NUM}x{NUM} ({STRING}) {BLACK} :קואורדינטות
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}קואורדינטות: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{LTBLUE}{DATE_LONG}{BLACK} : תאריך בניה
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}{LTBLUE}{STRING}: אופי התחנה
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK} {LTBLUE}{STRING}: סוג התחנה
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}אופי נמל התעופה: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}שם נמל התעופה: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}שם משבצת נמל תעופה: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}{LTBLUE}{STRING}: שדרוג גראפי
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK} :מקבל {LTBLUE}
@@ -2308,7 +2317,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}ידני
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK} :סיבוב מפת הגבהים
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK} :שם מפת הגבהים
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}גודל:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} על {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}מספר אקראי
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}שנה את גובה קו השלג
@@ -2386,6 +2395,9 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}מושתק
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}הכנס פרמטרים
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}אתחל
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}הגדר את כל הפרמטרים לערך ברירת המחדל שלהם
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}מספר הגדרות: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}בדוק - {STRING}
@@ -2441,7 +2453,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}חסרים
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}התנהגות ה-NewGRF '{STRING}' עלולה לגרום לקריסה ו/או חוסר סנכרון במשחק.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changes vehicle length for '{1:ENGINE}' when not inside a depot.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}זה שינה את אורך הרכב ל'{1:ENGINE}' כאשר לא במוסך.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}רכבת '{VEHICLE}' השייכת לחברת '{COMPANY}' בעלת אורך לא חוקי. דבר זה נגמר ככל הנראה בעקבות בעיות ב-NEWGRF.המשחק עלול לצאת מסנכרון או לקרוס.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' סיפק מידע לא נכון.
@@ -2670,6 +2682,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK} :תפוקה בחודש שעבר
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{BLACK}(הובלו {NBSP}{2:COMMA}%) {YELLOW}{1:STRING}{0:CARGO}
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}מקד את התצוגה הראשית על מיקום התעשייה. Ctrl+לחיצה פותח חלונית תצוגה חדשה על מיקום התעשייה
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}רמת הפקה: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{YELLOW}{1:STRING}{0:STRING}{BLACK} : דורש
@@ -2685,6 +2698,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{YELLOW}{3:STRI
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}שנה תפוקה (כפולות של 8, עד 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}שינוי ברמת ההפקה (עד 800% אחוז)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}רכבות{NBSP} {1:COMMA} - {0:STRING}
@@ -3696,7 +3710,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}... ני
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}לא ניתן למחוק סימניה...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :עותק של Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :משחק סימולציה המבוסס על תחבורה, הון ופאר
 
 ##id 0x2000
 # Town building names

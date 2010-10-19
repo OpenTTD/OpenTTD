@@ -3766,7 +3766,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Não pod
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Não é possível apagar o sinal...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Um clone de Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Um jogo de simulação baseado no Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
