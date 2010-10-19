@@ -236,19 +236,19 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x46: return industry->construction_date; // Date when built - long format - (in days)
 
 		/* Get industry ID at offset param */
-		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->location.tile), industry, object->grffile->grfid);
+		case 0x60: return GetIndustryIDAtOffset(GetNearbyTile(parameter, industry->location.tile, false), industry, object->grffile->grfid);
 
 		/* Get random tile bits at offset param */
 		case 0x61:
-			tile = GetNearbyTile(parameter, tile);
+			tile = GetNearbyTile(parameter, tile, false);
 			return (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile) == industry) ? GetIndustryRandomBits(tile) : 0;
 
 		/* Land info of nearby tiles */
-		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY);
+		case 0x62: return GetNearbyIndustryTileInformation(parameter, tile, INVALID_INDUSTRY, false);
 
 		/* Animation stage of nearby tiles */
 		case 0x63:
-			tile = GetNearbyTile(parameter, tile);
+			tile = GetNearbyTile(parameter, tile, false);
 			if (IsTileType(tile, MP_INDUSTRY) && Industry::GetByTile(tile) == industry) {
 				return GetAnimationFrame(tile);
 			}

@@ -32,11 +32,12 @@
  * @param parameter from callback.  It's in fact a pair of coordinates
  * @param tile TileIndex from which the callback was initiated
  * @param index of the industry been queried for
+ * @param signed_offsets Are the x and y offset encoded in parameter signed?
  * @return a construction of bits obeying the newgrf format
  */
-uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index)
+uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index, bool signed_offsets)
 {
-	if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
+	if (parameter != 0) tile = GetNearbyTile(parameter, tile, signed_offsets); // only perform if it is required
 	bool is_same_industry = (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == index);
 
 	return GetNearbyTileInformation(tile) | (is_same_industry ? 1 : 0) << 8;

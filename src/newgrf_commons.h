@@ -144,7 +144,7 @@ extern AirportTileOverrideManager _airporttile_mngr;
 extern ObjectOverrideManager _object_mngr;
 
 uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
-TileIndex GetNearbyTile(byte parameter, TileIndex tile);
+TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets = true);
 uint32 GetNearbyTileInformation(TileIndex tile);
 
 /**

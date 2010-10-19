@@ -395,13 +395,13 @@ uint32 GetTerrainType(TileIndex tile, TileContext context)
 	}
 }
 
-TileIndex GetNearbyTile(byte parameter, TileIndex tile)
+TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets)
 {
 	int8 x = GB(parameter, 0, 4);
 	int8 y = GB(parameter, 4, 4);
 
-	if (x >= 8) x -= 16;
-	if (y >= 8) y -= 16;
+	if (signed_offsets && x >= 8) x -= 16;
+	if (signed_offsets && y >= 8) y -= 16;
 
 	/* Swap width and height depending on axis for railway stations */
 	if (HasStationTileRail(tile) && GetRailStationAxis(tile) == AXIS_Y) Swap(x, y);
