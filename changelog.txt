@@ -2909,7 +2909,8 @@
 - Fix: A lot of old AI fixed
 - Fix: All scenarios, savegames show up with their correct name
 - Fix: Automatic oil refinery generation in editor
-- Fix: Autosave folder was not created on MorphOS- Fix: Bridge slope fix again, thanks Truelight
+- Fix: Autosave folder was not created on MorphOS
+- Fix: Bridge slope fix again
 - Fix: Bulldozing stuff with cheat magic_dynamite turned on does not lower city ratings
 - Fix: Change SDL_HWSURFACE back to SDL_SWSURFACE (Diablo-3D); better performance
 - Fix: Coast line near edge of map and near oilrigs
