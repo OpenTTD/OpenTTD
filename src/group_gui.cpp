@@ -231,6 +231,14 @@ public:
 				size->width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT + 8 + 8;
 				break;
 
+			case GRP_WIDGET_SORT_BY_ORDER: {
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
+				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the string is centred and it also looks better.
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
+
 			case GRP_WIDGET_LIST_VEHICLE:
 				resize->height = GetVehicleListHeight(this->vli.vtype, FONT_HEIGHT_NORMAL + WD_MATRIX_TOP);
 				size->height = 4 * resize->height;
