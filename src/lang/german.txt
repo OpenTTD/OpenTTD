@@ -3768,7 +3768,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Schildna
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann Schild nicht löschen...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Ein Transport Tycoon Deluxe Klon
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Ein auf Transport Tycoon Deluxe basierendes Spiel
 
 ##id 0x2000
 # Town building names

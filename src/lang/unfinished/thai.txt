@@ -403,7 +403,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :ลงทุน
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :การก่อสร้างทางรถไฟ
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :การก่อสร้างทางรถไฟติดไฟฟ้า
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :การก่อสร้างทางรถไฟพลังไฟฟ้า
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :การก่อสร้างทางรถไฟรางเดี่ยว
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :การก่อสร้างทางรถไฟพลังแม่เหล็ก
 ############ range ends here
@@ -1608,84 +1608,331 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}ผู�
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}เริ่มเกม
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}เริ่มเกมใหม่ในเครือข่ายจากแผนที่แบบสุ่มหรือแผนที่ที่สร้างเอง
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}โหลดเกม
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}กลับสู่เซฟแบบผู้เล่นหลายคนก่อนหน้านี้(ควรดูให้แน่ใจว่าได้ทำการเชื่อมต่อกับชื่อผู้เล่นให้ถูกต้องก่อน)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}พิมพ์ชื่อสำหรับเล่นในเครือข่าย
 
 # Network game languages
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :อะไรก็ได้
 STR_NETWORK_LANG_ENGLISH                                        :ภาษาอังกฤษ
 STR_NETWORK_LANG_GERMAN                                         :ภาษาเยอรมัน
 STR_NETWORK_LANG_FRENCH                                         :ภาษาฝรั่งเศส
 STR_NETWORK_LANG_BRAZILIAN                                      :ภาษาบราซิล
 STR_NETWORK_LANG_BULGARIAN                                      :ภาษาบัลกาเรีย
+STR_NETWORK_LANG_CHINESE                                        :จีน
+STR_NETWORK_LANG_CZECH                                          :เช็ก
+STR_NETWORK_LANG_DANISH                                         :เดนมาร์ก
+STR_NETWORK_LANG_DUTCH                                          :เนเธอร์แลนด์
+STR_NETWORK_LANG_ESPERANTO                                      :ภาษาโลก(Esperanto)
+STR_NETWORK_LANG_FINNISH                                        :ฟินแลนด์
+STR_NETWORK_LANG_HUNGARIAN                                      :ฮังการี
+STR_NETWORK_LANG_ICELANDIC                                      :ไอร์แลนด์
+STR_NETWORK_LANG_ITALIAN                                        :อิตาลี
+STR_NETWORK_LANG_JAPANESE                                       :ญี่ปุ่น
+STR_NETWORK_LANG_KOREAN                                         :เกาหลี
+STR_NETWORK_LANG_LITHUANIAN                                     :ลิทัวเนีย
+STR_NETWORK_LANG_NORWEGIAN                                      :นอร์เวย์
+STR_NETWORK_LANG_POLISH                                         :โปแลนด์
+STR_NETWORK_LANG_PORTUGUESE                                     :โปรตุเกส
+STR_NETWORK_LANG_ROMANIAN                                       :โรมาเนีย
+STR_NETWORK_LANG_RUSSIAN                                        :รัสเซีย
+STR_NETWORK_LANG_SLOVAK                                         :สโลวัก
+STR_NETWORK_LANG_SLOVENIAN                                      :สโลวาเนีย
+STR_NETWORK_LANG_SPANISH                                        :สเปน
+STR_NETWORK_LANG_SWEDISH                                        :สวีเดน
+STR_NETWORK_LANG_TURKISH                                        :ตุรกี
+STR_NETWORK_LANG_UKRAINIAN                                      :ยูเครน
+STR_NETWORK_LANG_AFRIKAANS                                      :อัฟกานิสถาน
+STR_NETWORK_LANG_CROATIAN                                       :โครเอเชีย
+STR_NETWORK_LANG_CATALAN                                        :คาตาลัน
+STR_NETWORK_LANG_ESTONIAN                                       :เอสโตเนีย
+STR_NETWORK_LANG_GALICIAN                                       :กาลีเซีย
+STR_NETWORK_LANG_GREEK                                          :กรีก
+STR_NETWORK_LANG_LATVIAN                                        :ลัทเวีย
 ############ End of leave-in-this-order
 
 # Network game lobby
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}ห้องรับรองโหมดผู้เล่นหลายคน
 
+STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}กำลังเตรียมการเข้าร่วม: {ORANGE}{STRING}
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}รายการของบริษัททั้งหมดที่อยู่ในเกมนี้ คุณสามารถที่จะเข้าร่วมหนึ่งในรายชื่อบริษัทเหล่านี้ได้หรือสามารถที่จะสร้างบริษัทใหม่ได้หากมีช่องว่างให้คุณ
 
+STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}ข้อมูลบริษัท
+STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}ชื่อบริษัท: {WHITE}{STRING}
+STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}วันที่เริ่มเปิด: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}มูลค่าของบริษัท: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}งบดุลปัจจุบัน: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}รายได้ของปีที่แล้ว: {WHITE}{CURRENCY}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}สมรรถภาพ: {WHITE}{NUM}
 
+STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}ภาหนะ: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}สถานี: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
+STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}ผู้เล่น: {WHITE}{STRING}
 
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}บริษัทใหม่
+STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}สร้างบริษัทใหม่
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}เข้าชมเกม
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}ดูเกมในฐานะผู้ชม
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}เข้าร่วมบริษัท
+STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}ช่วยบริหารจัดการบริษัทนี้
 
 # Network connecting window
+STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}กำลังเชื่อมต่อ...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) กำลังเชื่อมต่อ..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) กำลังตรวจสอบการเข้าร่วม..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) รอ..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) ดาวโหลดแผนที่..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) ประมวลผลข้อมูล..
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) ลงทะเบียน..
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}กำลังรวบรวมข้อมูลเกม..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}กำลังรวบรวมข้อมูลบริษัท..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P ""} อยู่ข้างหน้าคุณ
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} ดาวโหลดไปแล้วทั้งสิ้น
 
+STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}ตัดการเชื่อมต่อ
 
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}เซิฟเวอร์มีการป้องกัน กรุณากรอกพาสเวิร์ด
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}บริษัทมีการป้องกัน. กรุณากรอกพาสเวิร์ด
 
 # Network company list added strings
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}รายการลูกข่าย
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}ผู้ชม
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}บริษัทใหม่
 
 # Network client list
+STR_NETWORK_CLIENTLIST_KICK                                     :เตะ
+STR_NETWORK_CLIENTLIST_BAN                                      :แบน
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :ให้เงิน
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :พูดกับผู้เล่นทั้งหมด
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :พูดกับผู้เล่นในบริษัทเดียวกัน
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :ข้อความส่วนตัว
 
+STR_NETWORK_SERVER                                              :เซิฟเวอร์
+STR_NETWORK_CLIENT                                              :ลูกข่าย
+STR_NETWORK_SPECTATORS                                          :ผู้ชม
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}กรอกจำนวนเงินที่ต้องการจะให้
 
 # Network set password
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}ไม่ทำการเก็บพาสเวิร์ดที่กรอกไว้แล้ว
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}ตั้งพาสเวิร์ดของบริษัทใหม่
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}พาสเวิร์ดของบริษัท
+STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}พาสเวิร์ดตั้งต้นของบริษัท
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}ใช้พาสเวิร์ดของบริษัทนี้เป็นพาสเวิร์ดตั้งต้นของบริษัทใหม่
 
 # Network company info join/password
+STR_COMPANY_VIEW_JOIN                                           :{BLACK}เข้าร่วม
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}เข้าร่วมและเล่นเป็นบริษัทนี้
+STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}พาสเวิร์ด
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}พาสเวิร์ด ป้องกันบริษัทของคุณจากผู้เล่นที่ไม่ได้รับอนุญาตให้เข้าร่วม
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}ตั้งพาสเวิร์ดของบริษัท
 
 # Network chat
+STR_NETWORK_CHAT_SEND                                           :{BLACK}ส่ง
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[ทีม] :
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[ส่วนตัว] {STRING}:
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[ทั้งหมด] :
 
+STR_NETWORK_CHAT_COMPANY                                        :[ทีม] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[ทีม] ถึง {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[ส่วนตัว] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[ส่วนตัว] ถึง {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[ทั้งหมด] {STRING}: {WHITE}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}พิมพ์ข้อความสำหรับการพูดคุณในเน็ทเวิร์ก
 
 # Network messages
+STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}ไม่พบอุปกรณ์เน็ทเวิร์กหรือได้ผ่านการคอมไพล์โดยไม่ได้ตัวเลือกนี้ ENABLE_NETWORK
+STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}ไม่พบเกมในระบบเน็ทเวิร์ก
+STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}เซิฟเวอร์ไม่ตอบรับคำขอ
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}ไม่สามารถติดต่อได้เนื่องจาก NewGRF ไม่ตรงกัน
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}การประสานเวลากับเกม ไม่สำเร็จ(synchronisation failed)
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}การเชื่อมต่อกับเกมสูญหาย
+STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}ไม่สามารถโหลดเซฟเกมได้
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}ไม่สามารถเริ่มเซิฟเวอร์ได้
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}ไม่สามารถเชื่อมต่อ
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}เชื่อมต่อครั้งที่ #{NUM} เกินเวลาที่กำหนด
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}ตรวจเจอการขัดข้องของโพรโทคอลและการเชื่อต่อถูกปิดลง
+STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}revision ของลูกข่ายไม่ตรงกับของเซิฟเวอร์
+STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}พาสเวิร์ดผิด
+STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}เซิฟเวอร์เต็ม
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}คุณถูกแบนจากเซิฟเวอร์นี้
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}คุณถูกเตะออกจากเซิฟเวอร์
+STR_NETWORK_ERROR_CHEATER                                       :{WHITE}ไม่อนุญาติให้โกงในเซิฟเวอร์นี้
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}คุณส่งคำสั่งให้เซิฟเวอร์มากเกินไป
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_GENERAL                                :การผิดพลาดทั่วไป
+STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desync ผิดพลาด
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :ไม่สามารถโหลดแผนที่ได้
+STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :การเชื่อมต่อสูญหาย
+STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :โปรโทคอลผิดพลาด
+STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF ไม่ตรง
+STR_NETWORK_ERROR_CLIENT_NOT_AUTHORIZED                         :ไม่ผ่านการตรวจสอบ
+STR_NETWORK_ERROR_CLIENT_NOT_EXPECTED                           :ได้รับแพกเก็ตที่ผิดพลาดหรือไม่คาดหวัง
+STR_NETWORK_ERROR_CLIENT_WRONG_REVISION                         :revistion ผิด
+STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :ชื่อนี้ถูกใช้แล้ว
+STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :พาสเวิร์ดผิด
+STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :บริษัทผิดใน DoCommand
+STR_NETWORK_ERROR_CLIENT_KICKED                                 :ถูกเตะโดยเซิฟเวอร์
+STR_NETWORK_ERROR_CLIENT_CHEATER                                :กำลังพยายามที่จะโกง
+STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :เซิฟเวอร์เต็ม
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :ส่งคำสั่งมากเกินไป
 ############ End of leave-in-this-order
 
 # Network related errors
+STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :เกมหยุด ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :เกมยังหยุดอยู่ ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :เกมยังหยุดอยู่ ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :เกมยังหยุดอยู่ ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :เกมเริ่มต่อแล้ว ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :จำนวนผู้เล่น
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :ลูกข่ายกำลังเชื่อมต่อ
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :กำหนดเอง
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :กำลังออก
+STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ได้เข้าร่วมเกม
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} ได้เข้าร่วมเกม (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} ได้เข้าร่วมบริษัท #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ได้เข้าเป็นผู้ชม
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ได้ทำการสร้างบริษัทใหม่ (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ได้ออกจากเกม ({2:STRING})
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ได้ทำการเปลี่ยนชื่อเป็น {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ยกบริษัทให้คุณ {2:CURRENCY}
+STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** คุณให้ {1:STRING} {2:CURRENCY}
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}เซิฟเวอร์ปืดเซสซั่นนี้
+STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}เซิฟเวอร์กำลังทำการเริ่มต้นใหม่...{}กรุณารอซักครู่...
 
 # Content downloading window
+STR_CONTENT_TITLE                                               :{WHITE}กำลังโหลดเนื้อหา
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}ประเภท
+STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}ประเภทของเนื้อหา
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}ชื่อ
+STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}ชื่อของเนื้อหา
+STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}กดลงบนบรรทัดเพื่อดูรายละเอียด{}ติ๊กบนกล่องเพื่อที่จะเลือกสำหรับการดาวโหลด
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}เลือกทั้งหมด
+STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}ทำการเลือกเนื้อหาทั้งหมดสำหรับดาวโหลด
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}เลือกอัพเกรด
+STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}เลือกเนื้อหาทั้งหมดที่เป็นการอัพเกรดของเนื้อหาเดิมที่มีอยู่แล้ว
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}ยกเลิกการเลือกทั้งหมด
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}เลือกทั้งหมดให้ไม่ทำการดาวโหลด
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name ตัวกรอง:
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}ดาวโหลด
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}เริ่มทำการดาวโหลดเนื้อหาที่ได้เลือกไว้
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}ขนาดทั้งหมด: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}ข้อมูลของเนื้อหา
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}คุณไม่ได้เลือกตัวนี้ให้ทำการดาวโหลด
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}คุณได้ทำการเลือกตัวนี้สำหรับดาวโหลด
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}dependency ตัวนี้ได้ทำการถูกเลือกไว้สำหรับดาวโหลด
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}คุณมีเนื้อหาตัวนี้แล้ว
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}ไม่รู้จักเนื้อหานี้และไม่สามารถดาวโหลดได้ทาง OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}เนื้อหานี้จะทำการติดตั้งทับกับเนื้อหาก่อนหน้านี้ {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}ชื่อ: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}เวอร์ชัน: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}คำบรรยาย: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}ประเภท: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}ขนาดที่ต้องดาวโหลด: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}ถูกเลือกเนื่องจาก: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencies: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD สร้างขึ้นโดยไม่ได้รองรับ "zlib" ...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ไม่สามารถดาวโหลดเนื้อหาได้
 
 # Order of these is important!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :กราฟฟิคพื้นฐาน
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI library
+STR_CONTENT_TYPE_SCENARIO                                       :Scenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :เสียง
 STR_CONTENT_TYPE_BASE_MUSIC                                     :เพลงประกอบพื้นฐาน
 
 # Content downloading progress window
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}กำลังดาวโหลดเนื้อหา
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}ทำการร้องขอไฟล์...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}ตอนนี้กำลังดาวโหลด {STRING} ({NUM} จากทั้งหมด {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}ดาวโหลดเสร็จสิ้น
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} จากทั้งหมด {BYTES} ดาวโหลดไปแล้ว ({NUM} %)
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}ไม่สามารถเชื่อมต่อกับเซิฟเวอร์เนื้อหาเสริมได้..
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}ดาวโหลดผิดพลาด...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... การเชื่อมต่อสูญหาย
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... ไม่สามารถเขียนทับไฟล์ได้
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}ไม่สามารถทำการแตกไฟล์ที่ดาวโหลดมาแล้วได้
 
 # Transparency settings window
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}ตัวเลือกค่าโปร่งใส
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}เปิด/ปิด การโปรงใสของป้ายสถานี กด Ctrl+Click สำหรับการล๊อก
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}เปิด/ปิด การโปรงใสของต้นไม้ กด Ctrl+Click สำหรับการล๊อก
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}เปิด/ปิด การโปรงใสของบ้าน กด Ctrl+Click สำหรับการล๊อก
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}เปิด/ปิด การโปรงใสของอุตสาหกรรม กด Ctrl+Click สำหรับการล๊อก
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}เปิด/ปิด การโปรงใสของสิ่งก่อสร้างที่สามารถสร้างได้เช่น สถานี, อู่ และที่หมาย เป็นต้น กด Ctrl+Click สำหรับการล๊อก
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}เปิด/ปิด การโปรงใสของสะพาน กด Ctrl+Click สำหรับการล๊อก
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}เปิด/ปิด การโปรงใสของสิ่งก่อสร้างอย่างเช่น ประภาคารและเสาส่งสัญญาณวิทยุ กด Ctrl+Click สำหรับการล๊อก
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}เปิด/ปิด การโปรงใสของสายจ่ายไฟรถไฟฟ้า กด Ctrl+Click สำหรับการล๊อก
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}เปิด/ปิด การโปรงใสของตัวบอกการบรรทุกของ กด Ctrl+Click สำหรับการล๊อก
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}ตั้งให้วัตถุมองไม่เห็นแทนการโปร่งใส
 
 # Base for station construction window(s)
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}แสดงพื้นที่ให้บริการ
+STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}ปิด
+STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}เปิด
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}ปิดการแสดงพื้นที่ให้บริการ
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}เปิดการแสดงพื้นที่ให้บริการ
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}กำลังต้องการ: {GOLD}{STRING}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}ผลิต: {GOLD}{STRING}
 
 # Join station window
+STR_JOIN_STATION_CAPTION                                        :{WHITE}รวมสถานี
+STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}สร้างสถานีแยกต่างหาก
 
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}รวมที่หมาย
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}สร้างที่หมายแยกต่างหาก
 
 # Rail construction toolbar
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :การก่อสร้างทางรถไฟ
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :การก่อสร้างทางรถไฟพลังไฟฟ้า
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :การก่อสร้างทางรถไฟรางเดี่ยว
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :การก่อสร้างทางรถไฟพลังแม่เหล็ก
 
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}สร้างทางรถไฟ กด Ctrl เพื่อ สร้าง/รื้อถอน รางรถไฟ
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}สร้างทางรถไฟโดยใช้โหมดการสร้างอัตโนมัติ กด Ctrl เพื่อ สร้าง/รื้อถอน รางรถไฟ
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}สร้างอู่รถไฟ(สำหรับซื้อขายรถไฟประเภทต่างๆ)
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}เปลี่ยนรางรถไฟเป็นที่หมาย. กด Ctrl สามารถรวมที่หมายได้
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}สร้างสถานีรถไฟ กด Ctrl เพื่อทำการรวมสถานี
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}สร้างเสาสัญญาณรถไฟ กด Ctrl เพื่อทำการเปลี่ยนระหว่าง ป้ายบอก/เสาสัญญาณ{}สามารถสร้างโดยลากไปกับรางรถไฟได้. กด Ctrl เพื่อสร้างสัญญาณไปจนถึงจุดตัดด้านหน้า{}กด Ctrl+Click เพื่อ เปิด/ปิด หน้าต่างเลือกเสาสัญญาณ
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}สร้างสะพานรถไฟ
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}สร้างอุโมงรถไฟ
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}เปลี่ยนระหว่าง สร้าง/รื้อถอน รางรถไฟ, เสาสัญญาณ, ที่หมายและสถานี. กด Ctrl ค้างไว้เพื่อทำการถอนรางรถไฟที่เป็นจุดหมายและสถานี
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}เปลี่ยน/อัพเกรด ชนิดของรางรถไฟ
 
 # Rail depot construction window
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}ทิศทางของอู่รถไฟ
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}เลือกทิศทางของอู่รถไฟ
 
 # Rail waypoint construction window
+STR_WAYPOINT_CAPTION                                            :{WHITE}ที่หมาย
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}เลือกชนิดของที่หมาย
 
 # Rail station construction window
+STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}ตัวเลือกของสถานีรถไฟ
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK}ทิศทาง
+STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}เลือกทิศทางของสถานีรถไฟ
+STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}จำนวนชานชาลา
+STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}เลือกจำนวนของชานชาลา
+STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}ความยาวของชานชาลา
+STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}เลือกความยาวของชานชาลา
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}ลากและวาง
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}สร้างสถานีโดยใช้การลากและวาง
 
 
 
@@ -1825,6 +2072,7 @@ STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}กร�
 
 
 
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}เวอร์ชันต่ำสุดที่รองรับ: {SILVER}{NUM}
 
 
 
@@ -1924,6 +2172,7 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}กำ�
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- ไม่มี -
 
 # Industry view
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}ระดับการผลิต: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 ############ range for requires ends
@@ -1931,6 +2180,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- ไ�
 ############ range for produces starts
 ############ range for produces ends
 
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}เปลี่ยนระดับการผลิต (เปอร์เซ็นต์เพิ่มมากสุดถึง 800%)
 
 # Vehicle lists
 
@@ -2351,7 +2601,11 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :ทุ่น {T
 STR_FORMAT_COMPANY_NUM                                          :(บริษัท {COMMA})
 STR_FORMAT_GROUP_NAME                                           :กลุ่ม {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} ที่หมาย
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} ที่หมาย #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} สถานีรถไฟ
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} สถานีรถไฟ #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} โรงซ่อมบำรุงรถ
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} โรงซ่อมบำรุงรถ #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} อู่เรือ

@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}生成�
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}公路建设
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植树
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}放置标志
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}放置物体
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :保存场景
@@ -879,7 +880,7 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :土耳其里拉
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :斯洛伐克克朗 (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :巴西里亚伊 (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :爱沙尼亚克鲁恩 (EEK)
-STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自定义……
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自定义…
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}度量单位
@@ -1024,6 +1025,7 @@ STR_NUM_LOW                                                     :低
 STR_NUM_NORMAL                                                  :一般
 STR_NUM_HIGH                                                    :高
 STR_NUM_CUSTOM                                                  :自定义
+STR_NUM_CUSTOM_NUMBER                                           :自定义 ({NUM})
 
 STR_VARIETY_NONE                                                :无
 STR_VARIETY_VERY_LOW                                            :非常低
@@ -1042,6 +1044,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :非常低
 STR_SEA_LEVEL_LOW                                               :低
 STR_SEA_LEVEL_MEDIUM                                            :适中
 STR_SEA_LEVEL_HIGH                                              :高
+STR_SEA_LEVEL_CUSTOM                                            :自定义
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :自定义 ({NUM}%)
 
 STR_DISASTER_NONE                                               :没有
 STR_DISASTER_REDUCED                                            :较少
@@ -2056,6 +2060,13 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}升高�
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}拉平地面
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买土地以备将来使用
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}物体选单
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}物体的等级
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小: {GOLD}{NUM} x {NUM} 瓦
+
+STR_OBJECT_CLASS_LTHS                                           :灯塔
+STR_OBJECT_CLASS_TRNS                                           :发射机
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}树木
@@ -2150,6 +2161,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}坐标�
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}建造时间：{LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}车站分类: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}车站类型: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}飞机场分类: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}飞机场名字: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}机场区域名称: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}接受货物：{LTBLUE}
@@ -2404,6 +2417,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Parent
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}检查该对象的 Parent scope
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} at {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :物件
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :铁路类型
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variable 60+x 参数 (十六进制)
@@ -2700,6 +2714,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}上月产量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% 已运输)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}将屏幕中心移动到工厂所在的位置. 单击的同时按住Ctrl会在新视点中显示工厂位置
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生产程度: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}需要：{YELLOW}{STRING}{STRING}
