@@ -935,7 +935,7 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ERROR)
 
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status > STATUS_AUTHORIZED) {
-			this->SendErrorQuit(this->client_id, errorno);
+			new_cs->SendErrorQuit(this->client_id, errorno);
 		}
 	}
 
@@ -961,8 +961,8 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_QUIT)
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
-		if (new_cs->status > STATUS_AUTHORIZED) {
-			this->SendQuit(this->client_id);
+		if (new_cs->status > STATUS_AUTHORIZED && new_cs != this) {
+			new_cs->SendQuit(this->client_id);
 		}
 	}
 
