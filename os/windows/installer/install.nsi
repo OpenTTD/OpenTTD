@@ -133,9 +133,6 @@ Section "!OpenTTD" Section1
 
 	; Copy some documention files
 	SetOutPath "$INSTDIR\docs\"
-	File ${PATH_ROOT}docs\obg_format.txt
-	File ${PATH_ROOT}docs\obm_format.txt
-	File ${PATH_ROOT}docs\obs_format.txt
 	File ${PATH_ROOT}docs\multiplayer.txt
 	File ${PATH_ROOT}docs\32bpp.txt
 

@@ -72,9 +72,6 @@ endif
 	$(Q)cp "$(ROOT_DIR)/readme.txt"           "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/COPYING"              "$(BUNDLE_DIR)/"
 	$(Q)cp "$(ROOT_DIR)/known-bugs.txt"       "$(BUNDLE_DIR)/"
-	$(Q)cp "$(ROOT_DIR)/docs/obg_format.txt"  "$(BUNDLE_DIR)/docs/"
-	$(Q)cp "$(ROOT_DIR)/docs/obm_format.txt"  "$(BUNDLE_DIR)/docs/"
-	$(Q)cp "$(ROOT_DIR)/docs/obs_format.txt"  "$(BUNDLE_DIR)/docs/"
 	$(Q)cp "$(ROOT_DIR)/docs/multiplayer.txt" "$(BUNDLE_DIR)/docs/"
 	$(Q)cp "$(ROOT_DIR)/docs/32bpp.txt"       "$(BUNDLE_DIR)/docs/"
 	$(Q)cp "$(ROOT_DIR)/changelog.txt"        "$(BUNDLE_DIR)/"
@@ -174,7 +171,6 @@ install: bundle
 	$(Q)install -d "$(INSTALL_DATA_DIR)/lang"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/gm"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/scripts"
-	$(Q)install -d "$(INSTALL_DOC_DIR)"
 ifeq ($(TTD), openttd.exe)
 	$(Q)install -m 755 "$(BUNDLE_DIR)/$(TTD)" "$(INSTALL_BINARY_DIR)/${BINARY_NAME}.exe"
 else
@@ -185,9 +181,18 @@ endif
 	$(Q)install -m 644 "$(BUNDLE_DIR)/data/"* "$(INSTALL_DATA_DIR)/data"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/gm/"* "$(INSTALL_DATA_DIR)/gm"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/scripts/"* "$(INSTALL_DATA_DIR)/scripts"
-	$(Q)install -m 644 "$(BUNDLE_DIR)/docs/"* "$(INSTALL_DOC_DIR)"
-	$(Q)install -m 644 "$(BUNDLE_DIR)/"*.txt "$(INSTALL_DOC_DIR)"
+ifndef DO_NOT_INSTALL_DOCS
+	$(Q)install -d "$(INSTALL_DOC_DIR)"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/docs/"* "$(BUNDLE_DIR)/readme.txt" "$(BUNDLE_DIR)/known-bugs.txt" "$(INSTALL_DOC_DIR)"
+endif
+ifndef DO_NOT_INSTALL_CHANGELOG
+	$(Q)install -d "$(INSTALL_DOC_DIR)"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/changelog.txt" "$(INSTALL_DOC_DIR)"
+endif
+ifndef DO_NOT_INSTALL_LICENSE
+	$(Q)install -d "$(INSTALL_DOC_DIR)"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/COPYING" "$(INSTALL_DOC_DIR)"
+endif
 	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.32.xpm" "$(INSTALL_ICON_DIR)/${BINARY_NAME}.32.xpm"
 ifdef ICON_THEME_DIR
 	$(Q)install -d "$(INSTALL_ICON_THEME_DIR)"
@@ -207,8 +212,10 @@ else
 	$(Q)install -m 644 "$(BUNDLE_DIR)/media/"*.png "$(INSTALL_ICON_DIR)"
 endif
 ifdef MAN_DIR
+ifndef DO_NOT_INSTALL_MAN
 	$(Q)install -d "$(INSTALL_MAN_DIR)"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/man/openttd.6.gz" "$(INSTALL_MAN_DIR)/${BINARY_NAME}.6.gz"
+endif
 endif
 ifdef MENU_DIR
 	$(Q)install -d "$(INSTALL_MENU_DIR)"
