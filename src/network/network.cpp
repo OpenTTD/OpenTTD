@@ -202,7 +202,13 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_se
 	SetDParamStr(0, name);
 	SetDParamStr(1, str);
 	SetDParam(2, data);
-	GetString(message, strid, lastof(message));
+
+	/* All of these strings start with "***". These characters are interpreted as both left-to-right and
+	 * right-to-left characters depending on the context. As the next text might be an user's name, the
+	 * user name's characters will influence the direction of the "***" instead of the language setting
+	 * of the game. Manually set the direction of the "***" by inserting a text-direction marker. */
+	char *msg_ptr = message + Utf8Encode(message, _dynlang.text_dir == TD_LTR ? CHAR_TD_LRM : CHAR_TD_RLM);
+	GetString(msg_ptr, strid, lastof(message));
 
 	DEBUG(desync, 1, "msg: %08x; %02x; %s", _date, _date_fract, message);
 	IConsolePrintF(colour, "%s", message);

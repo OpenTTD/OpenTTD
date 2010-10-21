@@ -285,7 +285,10 @@ struct IConsoleWindow : Window
 				break;
 
 			case WKC_RETURN: case WKC_NUM_ENTER: {
-				IConsolePrintF(CC_COMMAND, "] %s", _iconsole_cmdline.buf);
+				/* We always want the ] at the left side; we always force these strings to be left
+				 * aligned anyway. So enforce this in all cases by addding a left-to-right marker,
+				 * otherwise it will be drawn at the wrong side with right-to-left texts. */
+				IConsolePrintF(CC_COMMAND, LRM "] %s", _iconsole_cmdline.buf);
 				const char *cmd = IConsoleHistoryAdd(_iconsole_cmdline.buf);
 				IConsoleClearCommand();
 

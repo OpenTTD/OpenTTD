@@ -137,13 +137,13 @@ static const CmdStruct _cmd_structs[] = {
 
 	/* The following are directional formatting codes used to get the RTL strings right:
 	 * http://www.unicode.org/unicode/reports/tr9/#Directional_Formatting_Codes */
-	{"LRM",             EmitSingleChar, 0x200E,                 0, C_DONTCOUNT},
-	{"RLM",             EmitSingleChar, 0x200F,                 0, C_DONTCOUNT},
-	{"LRE",             EmitSingleChar, 0x202A,                 0, C_DONTCOUNT},
-	{"RLE",             EmitSingleChar, 0x202B,                 0, C_DONTCOUNT},
-	{"LRO",             EmitSingleChar, 0x202D,                 0, C_DONTCOUNT},
-	{"RLO",             EmitSingleChar, 0x202E,                 0, C_DONTCOUNT},
-	{"PDF",             EmitSingleChar, 0x202C,                 0, C_DONTCOUNT},
+	{"LRM",             EmitSingleChar, CHAR_TD_LRM,            0, C_DONTCOUNT},
+	{"RLM",             EmitSingleChar, CHAR_TD_RLM,            0, C_DONTCOUNT},
+	{"LRE",             EmitSingleChar, CHAR_TD_LRE,            0, C_DONTCOUNT},
+	{"RLE",             EmitSingleChar, CHAR_TD_RLE,            0, C_DONTCOUNT},
+	{"LRO",             EmitSingleChar, CHAR_TD_LRO,            0, C_DONTCOUNT},
+	{"RLO",             EmitSingleChar, CHAR_TD_RLO,            0, C_DONTCOUNT},
+	{"PDF",             EmitSingleChar, CHAR_TD_PDF,            0, C_DONTCOUNT},
 };
 
 /** Description of a plural form */
