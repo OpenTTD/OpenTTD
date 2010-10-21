@@ -1934,9 +1934,14 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}เล�
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}ลากและวาง
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}สร้างสถานีโดยใช้การลากและวาง
 
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}เลือกชนิดของสถานีที่จะแสดง
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}เลือกชนิดของสถานีที่จะสร้าง
 
+STR_STATION_CLASS_DFLT                                          :Default station
+STR_STATION_CLASS_WAYP                                          :ที่หมาย
 
 # Signal window
+STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}เลือกชนิดสัญญาณ
 
 # Bridge selection window
 

@@ -3768,7 +3768,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}No se pu
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}No se puede borrar el cartel...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Un clon de Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Un juego de simulación basado en Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

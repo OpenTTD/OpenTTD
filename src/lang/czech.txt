@@ -2476,6 +2476,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Pokusit 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Jméno souboru: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Verze: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Minimální kompatibilní verze: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametry: {SILVER}{STRING}
@@ -3578,7 +3579,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... na m
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Město nebude stavět silnice. Můžete to změnit přes Pokročilé nastavení->Ekonomika->Města.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Silnice je v rekonstrukci
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nelze vybourat město...{}Buď k němu patří stanice nebo depo, anebo se nedá odklidit políčko městem vlastněné.
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... není zde žádné vhodné místo pro umístění sochy v centru tohoto města
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... v tomto městě není žádné místo vhodné pro umístění sochy
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... příliš mnoho průmyslu
@@ -3855,7 +3856,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nelze zm
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nelze smazat nápis...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Simulační hra založená na Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
