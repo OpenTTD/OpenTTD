@@ -383,7 +383,7 @@ struct GameOptionsWindow : Window {
 			case GOW_CURRENCY_DROPDOWN: // Currency
 				if (index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
 				this->opt->locale.currency = index;
-				MarkWholeScreenDirty();
+				ReInitAllWindows();
 				break;
 
 			case GOW_DISTANCE_DROPDOWN: // Measuring units

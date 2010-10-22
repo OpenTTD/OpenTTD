@@ -24,6 +24,7 @@
 #include "sortlist_type.h"
 #include "core/geometry_func.hpp"
 #include "math.h"
+#include "currency.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -1354,8 +1355,24 @@ struct PerformanceRatingDetailWindow : Window {
 
 				/* At this number we are roughly at the max; it can become wider,
 				 * but then you need at 1000 times more money. At that time you're
-				 * not that interested anymore in the last few digits anyway. */
-				uint max = 999999999; // nine 9s
+				 * not that interested anymore in the last few digits anyway.
+				 * The 500 is because 999 999 500 to 999 999 999 are rounded to
+				 * 1 000 M, and not 999 999 k. Use negative numbers to account for
+				 * the negative income/amount of money etc. as well. */
+				int max = -(999999999 - 500);
+
+				/* Scale max for the display currency. Prior to rendering the value
+				 * is converted into the display currency, which may cause it to
+				 * raise significantly. We need to compensate for that since {{CURRCOMPACT}}
+				 * is used, which can produce quite short renderings of very large
+				 * values. Otherwise the calculated width could be too narrow.
+				 * Note that it doesn't work if there was a currency with an exchange
+				 * rate greater than max.
+				 * When the currency rate is more than 1000, the 999 999 k becomes at
+				 * least 999 999 M which roughly is equally long. Furthermore if the
+				 * exchange rate is that high, 999 999 k is usually not enough anymore
+				 * to show the different currency numbers. */
+				if (_currency->rate < 1000) max /= _currency->rate;
 				SetDParam(0, max);
 				SetDParam(1, max);
 				uint score_detail_width = GetStringBoundingBox(STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY).width;
