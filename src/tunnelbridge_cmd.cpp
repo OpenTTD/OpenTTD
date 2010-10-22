@@ -1503,17 +1503,16 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 	int z = GetSlopeZ(x, y) - v->z_pos;
 
 	if (abs(z) > 2) return VETSB_CANNOT_ENTER;
+	/* Direction into the wormhole */
 	const DiagDirection dir = GetTunnelBridgeDirection(tile);
+	/* Direction of the vehicle */
+	const DiagDirection vdir = DirToDiagDir(v->direction);
 
 	if (IsTunnel(tile)) {
-		byte fc;
-		DiagDirection vdir;
+		byte fc = (x & 0xF) + (y << 4);
 
 		if (v->type == VEH_TRAIN) {
 			Train *t = Train::From(v);
-			fc = (x & 0xF) + (y << 4);
-
-			vdir = DirToDiagDir(t->direction);
 
 			if (t->track != TRACK_BIT_WORMHOLE && dir == vdir) {
 				if (t->IsFrontEngine() && fc == _tunnel_fractcoord_1[dir]) {
@@ -1540,8 +1539,6 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			}
 		} else if (v->type == VEH_ROAD) {
 			RoadVehicle *rv = RoadVehicle::From(v);
-			fc = (x & 0xF) + (y << 4);
-			vdir = DirToDiagDir(v->direction);
 
 			/* Enter tunnel? */
 			if (rv->state != RVSB_WORMHOLE && dir == vdir) {
@@ -1579,7 +1576,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			if (v->cur_speed > spd) v->cur_speed = spd;
 		}
 
-		if (DirToDiagDir(v->direction) == dir) {
+		if (vdir == dir) {
 			switch (dir) {
 				default: NOT_REACHED();
 				case DIAGDIR_NE: if ((x & 0xF) != 0)             return VETSB_CONTINUE; break;
@@ -1612,7 +1609,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				default: NOT_REACHED();
 			}
 			return VETSB_ENTERED_WORMHOLE;
-		} else if (DirToDiagDir(v->direction) == ReverseDiagDir(dir)) {
+		} else if (vdir == ReverseDiagDir(dir)) {
 			v->tile = tile;
 			switch (v->type) {
 				case VEH_TRAIN: {
