@@ -1485,12 +1485,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 static const byte _tunnel_fractcoord_1[4]    = {0x8E, 0x18, 0x81, 0xE8};
 static const byte _tunnel_fractcoord_2[4]    = {0x81, 0x98, 0x87, 0x38};
 static const byte _tunnel_fractcoord_3[4]    = {0x82, 0x88, 0x86, 0x48};
-static const byte _exit_tunnel_track[4]      = {1, 2, 1, 2};
 
-/** Get the trackdir of the exit of a tunnel */
-static const Trackdir _road_exit_tunnel_state[DIAGDIR_END] = {
-	TRACKDIR_X_SW, TRACKDIR_Y_NW, TRACKDIR_X_NE, TRACKDIR_Y_SE
-};
 static const byte _road_exit_tunnel_frame[4] = {2, 7, 9, 4};
 
 static const byte _tunnel_fractcoord_4[4]    = {0x52, 0x85, 0x98, 0x29};
@@ -1532,7 +1527,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			if (dir == ReverseDiagDir(vdir) && fc == _tunnel_fractcoord_3[dir] && z == 0) {
 				/* We're at the tunnel exit ?? */
 				t->tile = tile;
-				t->track = (TrackBits)_exit_tunnel_track[dir];
+				t->track = DiagDirToDiagTrackBits(vdir);
 				assert(t->track);
 				t->vehstatus &= ~VS_HIDDEN;
 				return VETSB_ENTERED_WORMHOLE;
@@ -1560,7 +1555,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 					) &&
 					z == 0) {
 				rv->tile = tile;
-				rv->state = _road_exit_tunnel_state[dir];
+				rv->state = DiagDirToDiagTrackdir(vdir);
 				rv->frame = _road_exit_tunnel_frame[dir];
 				rv->vehstatus &= ~VS_HIDDEN;
 				return VETSB_ENTERED_WORMHOLE;
@@ -1615,7 +1610,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				case VEH_TRAIN: {
 					Train *t = Train::From(v);
 					if (t->track == TRACK_BIT_WORMHOLE) {
-						t->track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
+						t->track = DiagDirToDiagTrackBits(vdir);
 						return VETSB_ENTERED_WORMHOLE;
 					}
 					break;
@@ -1624,7 +1619,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				case VEH_ROAD: {
 					RoadVehicle *rv = RoadVehicle::From(v);
 					if (rv->state == RVSB_WORMHOLE) {
-						rv->state = _road_exit_tunnel_state[dir];
+						rv->state = DiagDirToDiagTrackdir(vdir);
 						rv->frame = 0;
 						return VETSB_ENTERED_WORMHOLE;
 					}
@@ -1634,7 +1629,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				case VEH_SHIP: {
 					Ship *ship = Ship::From(v);
 					if (ship->state == TRACK_BIT_WORMHOLE) {
-						ship->state = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
+						ship->state = DiagDirToDiagTrackBits(vdir);
 						return VETSB_ENTERED_WORMHOLE;
 					}
 					break;
