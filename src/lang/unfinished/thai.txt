@@ -1942,6 +1942,7 @@ STR_STATION_CLASS_WAYP                                          :ที่หม
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}เลือกชนิดสัญญาณ
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}บล๊อกสัญญาณ (แบบป้าย){}สัญญาณแบบนี้เป็นแบบพื้นฐาน, อนุญาตให้มีรถไฟเพียงคันเดียวเท่านั้นที่อยู่ในช่วงสัญญาณนี้
 
 # Bridge selection window
 

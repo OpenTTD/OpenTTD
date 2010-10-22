@@ -1093,6 +1093,7 @@ STR_NUM_LOW                                                     :Nízky
 STR_NUM_NORMAL                                                  :Normálny
 STR_NUM_HIGH                                                    :Vysoký
 STR_NUM_CUSTOM                                                  :Vlastné
+STR_NUM_CUSTOM_NUMBER                                           :Vlastné ({NUM})
 
 STR_VARIETY_NONE                                                :Žiadna
 STR_VARIETY_VERY_LOW                                            :Veľmi nízka
@@ -1111,6 +1112,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Veľmi nízka
 STR_SEA_LEVEL_LOW                                               :Nízka
 STR_SEA_LEVEL_MEDIUM                                            :Stredná
 STR_SEA_LEVEL_HIGH                                              :Vysoká
+STR_SEA_LEVEL_CUSTOM                                            :Vlastná
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Vlastná ({NUM}%)
 
 STR_DISASTER_NONE                                               :Žiadne
 STR_DISASTER_REDUCED                                            :Obmedzené
@@ -2464,6 +2467,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Skontrol
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Názov súboru: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Verzia: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibilná verzia: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametre: {SILVER}{STRING}
@@ -2481,6 +2485,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Resetova
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nastaviť východiskové hodnoty parametrov
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Počet parametrov: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Kontrola - {STRING}
@@ -2787,6 +2792,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkcia za posledný mesiac
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% prepraven{P é é ých})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vycentrovať pohľad na pozíciu továrne. Ctrl+klik otvorí nové okno s pohľadom na továreň
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Úroveň produkcie: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Potrebuje: {YELLOW}{STRING}{STRING}
@@ -2801,7 +2807,8 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO                                :{BLACK}Produkuj
 STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produkuje: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmeniť produkciu
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmeniť produkciu (násobky 8, až do 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Zmeniť úroveň produkcie (percentuálne, až do 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Vlak{P "" y ov}
@@ -3827,7 +3834,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nemožno
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nemôžem zmazať popis...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon hry Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Simulátor založený na hre Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

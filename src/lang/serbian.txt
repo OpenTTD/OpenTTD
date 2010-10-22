@@ -2341,7 +2341,7 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Potroša
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domaćinstva
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikom na industriju prikazuju se njegovi snadbevači i potrošači
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikom na tovar prikazuju se njegovi snadbevači i potrošači
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Prikaži lanac
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Lanac
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Prikazuje proizvodni lanac industrija
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Obeleži na karti
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Obeležava prikazane industrije i na karti
@@ -3978,7 +3978,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ime znak
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nemoguće je izbrisati znak...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe klon
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Simulacija bazirana na igri Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
