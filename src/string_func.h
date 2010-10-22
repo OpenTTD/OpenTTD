@@ -224,6 +224,28 @@ static inline char *Utf8PrevChar(char *s)
 	return ret;
 }
 
+/**
+ * Is the given character a text direction character.
+ * @param c The character to test.
+ * @return true iff the character is used to influence
+ *         the text direction.
+ */
+static inline bool IsTextDirectionChar(WChar c)
+{
+	switch (c) {
+		case CHAR_TD_LRM:
+		case CHAR_TD_RLM:
+		case CHAR_TD_LRE:
+		case CHAR_TD_RLE:
+		case CHAR_TD_LRO:
+		case CHAR_TD_RLO:
+		case CHAR_TD_PDF:
+			return true;
+
+		default:
+			return false;
+	}
+}
 
 static inline bool IsPrintable(WChar c)
 {
