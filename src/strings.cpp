@@ -1593,7 +1593,7 @@ static bool FindMissingGlyphs(const char **str)
 					text++;
 				} else if (c == SCC_SETXY) {
 					text += 2;
-				} else if (IsPrintable(c) && c != '?' && GetGlyph(FS_NORMAL, c) == question_mark) {
+				} else if (IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(FS_NORMAL, c) == question_mark) {
 					/* The character is printable, but not in the normal font. This is the case we were testing for. */
 					return true;
 				}
