@@ -911,11 +911,10 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_SHUTDOWN)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEWGAME)
 {
-	/* To trottle the reconnects a bit, every clients waits
-	 *  his _local_company value before reconnecting
-	 * COMPANY_SPECTATOR is currently 255, so to avoid long wait periods
-	 *  set the max to 10. */
-	_network_reconnect = min(_local_company + 1, 10);
+	/* To trottle the reconnects a bit, every clients waits its
+	 * Client ID modulo 16. This way reconnects should be spread
+	 * out a bit. */
+	_network_reconnect = _network_own_client_id % 16;
 	_switch_mode_errorstr = STR_NETWORK_MESSAGE_SERVER_REBOOT;
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
