@@ -3712,7 +3712,10 @@ static bool TrainLocoHandler(Train *v, bool mode)
 		/* Try to reserve a path when leaving the station as we
 		 * might not be marked as wanting a reservation, e.g.
 		 * when an overlength train gets turned around in a station. */
-		if (UpdateSignalsOnSegment(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), v->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
+		DiagDirection dir = TrainExitDir(v->direction, v->track);
+		if (IsRailDepotTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE)) dir = INVALID_DIAGDIR;
+
+		if (UpdateSignalsOnSegment(v->tile, dir, v->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
 			TryPathReserve(v, true, true);
 		}
 		ClrBit(v->flags, VRF_LEAVING_STATION);
