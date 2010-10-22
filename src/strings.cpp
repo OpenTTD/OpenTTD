@@ -339,7 +339,9 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 
 	/* for huge numbers, compact the number into k or M */
 	if (compact) {
-		if (number >= 1000000000) {
+		/* Take care of the 'k' rounding. Having 1 000 000 k
+		 * and 1 000 M is inconsistent, so always use 1 000 M. */
+		if (number >= 1000000000 - 500) {
 			number = (number + 500000) / 1000000;
 			multiplier = "M";
 		} else if (number >= 1000000) {
