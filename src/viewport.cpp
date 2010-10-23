@@ -173,7 +173,7 @@ void DeleteWindowViewport(Window *w)
  * @param height Height of the viewport
  * @param follow_flags Flags controlling the viewport.
  *        - If bit 31 is set, the lower 16 bits are the vehicle that the viewport should follow.
- *        - If bit 31 is clear, it is a tile position.
+ *        - If bit 31 is clear, it is a #TileIndex.
  * @param zoom Zoomlevel to display
  */
 void InitializeWindowViewport(Window *w, int x, int y,

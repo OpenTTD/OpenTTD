@@ -1573,7 +1573,7 @@ void NWidgetViewport::Draw(const Window *w)
 /**
  * Initialize the viewport of the window.
  * @param w            Window owning the viewport.
- * @param follow_flags Type of viewport, see #InitializeViewport().
+ * @param follow_flags Type of viewport, see #InitializeWindowViewport().
  * @param zoom         Zoom level.
  */
 void NWidgetViewport::InitializeViewport(Window *w, uint32 follow_flags, ZoomLevel zoom)
