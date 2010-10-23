@@ -51,10 +51,14 @@ struct ViewportSign {
 	void MarkDirty() const;
 };
 
+/**
+ * Directions of zooming.
+ * @see DoZoomInOutWindow
+ */
 enum ZoomStateChange {
-	ZOOM_IN   = 0,
-	ZOOM_OUT  = 1,
-	ZOOM_NONE = 2, // hack, used to update the button status
+	ZOOM_IN   = 0, ///< Zoom in (get more detailed view).
+	ZOOM_OUT  = 1, ///< Zoom out (get helicopter view).
+	ZOOM_NONE = 2, ///< Hack, used to update the button status.
 };
 
 /**

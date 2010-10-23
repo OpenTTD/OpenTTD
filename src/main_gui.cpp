@@ -128,8 +128,13 @@ void ShowNetworkGiveMoneyWindow(CompanyID company)
 #endif /* ENABLE_NETWORK */
 
 
-/* Zooms a viewport in a window in or out
- * No button handling or what so ever */
+/**
+ * Zooms a viewport in a window in or out.
+ * @param how Zooming direction.
+ * @param w   Window owning the viewport.
+ * @return Returns \c true if zooming step could be done, \c false if further zooming is not possible.
+ * @note No button handling or what so ever is done.
+ */
 bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 {
 	ViewPort *vp;
