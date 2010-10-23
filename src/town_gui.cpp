@@ -526,6 +526,8 @@ public:
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(TVW_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
+
+			ScrollWindowToTile(this->town->xy, this, true); // Re-center viewport.
 		}
 	}
 
