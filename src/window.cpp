@@ -1761,6 +1761,11 @@ static EventState HandleWindowDragging()
 			if (w->resize.step_width  == 0) x = 0;
 			if (w->resize.step_height == 0) y = 0;
 
+			/* Check the resize button won't go past the bottom of the screen */
+			if (w->top + w->height + y > _screen.height) {
+				y = _screen.height - w->height - w->top;
+			}
+
 			/* X and Y has to go by step.. calculate it.
 			 * The cast to int is necessary else x/y are implicitly casted to
 			 * unsigned int, which won't work. */
