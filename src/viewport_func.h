@@ -64,6 +64,7 @@ void SetTileSelectBigSize(int ox, int oy, int sx, int sy);
 
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom);
 
+bool ScrollWindowToTile(TileIndex tile, Window *w, bool instant = false);
 bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant = false);
 
 bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);

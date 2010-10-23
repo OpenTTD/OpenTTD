@@ -1887,6 +1887,18 @@ bool ScrollWindowTo(int x, int y, int z, Window *w, bool instant)
 }
 
 /**
+ * Scrolls the viewport in a window to a given location.
+ * @param tile    Desired tile to center on.
+ * @param w       %Window containing the viewport.
+ * @param instant Jump to the location instead of slowly moving to it.
+ * @return Destination of the viewport was changed (to activate other actions when the viewport is already at the desired position).
+ */
+bool ScrollWindowToTile(TileIndex tile, Window *w, bool instant)
+{
+	return ScrollWindowTo(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, -1, w, instant);
+}
+
+/**
  * Scrolls the viewport of the main window to a given location.
  * @param tile    Desired tile to center on.
  * @param instant Jump to the location instead of slowly moving to it.

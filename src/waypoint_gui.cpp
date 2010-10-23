@@ -34,10 +34,20 @@ enum WaypointWindowWidgets {
 	WAYPVW_SHOW_VEHICLES,
 };
 
+/** GUI for accessing waypoints and buoys. */
 struct WaypointWindow : Window {
 private:
-	VehicleType vt;
-	Waypoint *wp;
+	VehicleType vt; ///< Vehicle type using the waypoint.
+	Waypoint *wp;   ///< Waypoint displayed by the window.
+
+	/**
+	 * Get the center tile of the waypoint.
+	 * @return The center tile if the waypoint exists, otherwise the tile with the waypoint name.
+	 */
+	TileIndex GetCenterTile() const
+	{
+		return this->wp->IsInUse() ? this->wp->train_station.GetCenterTile() : this->wp->xy;
+	}
 
 public:
 	WaypointWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
@@ -57,7 +67,7 @@ public:
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WAYPVW_VIEWPORT);
-		nvp->InitializeViewport(this, this->wp->xy, ZOOM_LVL_MIN);
+		nvp->InitializeViewport(this, this->GetCenterTile(), ZOOM_LVL_MIN);
 
 		this->OnInvalidateData(0);
 	}
@@ -84,9 +94,9 @@ public:
 		switch (widget) {
 			case WAYPVW_CENTERVIEW: // scroll to location
 				if (_ctrl_pressed) {
-					ShowExtraViewPortWindow(this->wp->xy);
+					ShowExtraViewPortWindow(this->GetCenterTile());
 				} else {
-					ScrollMainWindowToTile(this->wp->xy);
+					ScrollMainWindowToTile(this->GetCenterTile());
 				}
 				break;
 
@@ -108,9 +118,7 @@ public:
 		/* Disable the widget for waypoints with no use */
 		this->SetWidgetDisabledState(WAYPVW_SHOW_VEHICLES, !this->wp->IsInUse());
 
-		int x = TileX(this->wp->xy) * TILE_SIZE;
-		int y = TileY(this->wp->xy) * TILE_SIZE;
-		ScrollWindowTo(x, y, -1, this, true);
+		ScrollWindowToTile(this->GetCenterTile(), this, true);
 	}
 
 	virtual void OnResize()
