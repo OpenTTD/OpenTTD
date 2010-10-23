@@ -927,6 +927,8 @@ public:
 		if (this->viewport != NULL) {
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(IVW_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
+
+			ScrollWindowToTile(Industry::Get(this->window_number)->location.GetCenterTile(), this, true); // Re-center viewport.
 		}
 	}
 

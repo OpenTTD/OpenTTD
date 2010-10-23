@@ -127,6 +127,8 @@ public:
 			NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WAYPVW_VIEWPORT);
 			nvp->UpdateViewportCoordinates(this);
 			this->wp->UpdateVirtCoord();
+
+			ScrollWindowToTile(this->GetCenterTile(), this, true); // Re-center viewport.
 		}
 	}
 
