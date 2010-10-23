@@ -673,7 +673,7 @@ public:
 
 		this->InitNested(desc, window_number);
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(IVW_VIEWPORT);
-		nvp->InitializeViewport(this, Industry::Get(window_number)->location.tile + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
+		nvp->InitializeViewport(this, Industry::Get(window_number)->location.GetCenterTile(), ZOOM_LVL_INDUSTRY);
 
 		this->InvalidateData();
 	}
@@ -900,9 +900,9 @@ public:
 			case IVW_GOTO: {
 				Industry *i = Industry::Get(this->window_number);
 				if (_ctrl_pressed) {
-					ShowExtraViewPortWindow(i->location.tile + TileDiffXY(1, 1));
+					ShowExtraViewPortWindow(i->location.GetCenterTile());
 				} else {
-					ScrollMainWindowToTile(i->location.tile + TileDiffXY(1, 1));
+					ScrollMainWindowToTile(i->location.GetCenterTile());
 				}
 				break;
 			}

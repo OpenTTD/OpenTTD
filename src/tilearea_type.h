@@ -12,7 +12,7 @@
 #ifndef TILEAREA_TYPE_H
 #define TILEAREA_TYPE_H
 
-#include "tile_type.h"
+#include "map_func.h"
 
 /** Represents the covered area of e.g. a rail station */
 struct TileArea {
@@ -49,6 +49,15 @@ struct TileArea {
 	bool Intersects(const TileArea &ta) const;
 
 	void ClampToMap();
+
+	/**
+	 * Get the center tile.
+	 * @return The tile at the center, or just north of it.
+	 */
+	TileIndex GetCenterTile() const
+	{
+		return TILE_ADDXY(this->tile, this->w / 2, this->h / 2);
+	}
 };
 
 #endif /* TILEAREA_TYPE_H */
