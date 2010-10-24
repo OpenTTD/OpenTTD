@@ -1191,6 +1191,8 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_SET_NAME)
 
 DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_RCON)
 {
+	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
 	char pass[NETWORK_PASSWORD_LENGTH];
 	char command[NETWORK_RCONCOMMAND_LENGTH];
 
@@ -1214,6 +1216,8 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_RCON)
 
 DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MOVE)
 {
+	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
 	CompanyID company_id = (Owner)p->Recv_uint8();
 
 	/* Check if the company is valid, we don't allow moving to AI companies */
@@ -1631,7 +1635,7 @@ void NetworkServerSendConfigUpdate()
 	NetworkClientSocket *cs;
 
 	FOR_ALL_CLIENT_SOCKETS(cs) {
-		cs->SendConfigUpdate();
+		if (cs->status >= NetworkClientSocket::STATUS_PRE_ACTIVE) cs->SendConfigUpdate();
 	}
 }
 
@@ -1644,7 +1648,7 @@ void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded)
 
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
-		cs->SendCompanyUpdate();
+		if (cs->status >= NetworkClientSocket::STATUS_PRE_ACTIVE) cs->SendCompanyUpdate();
 	}
 }
 
@@ -1669,7 +1673,10 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 	if (client_id == CLIENT_ID_SERVER) {
 		SetLocalCompany(company_id);
 	} else {
-		NetworkFindClientStateFromClientID(client_id)->SendMove(client_id, company_id);
+		NetworkClientSocket *cs = NetworkFindClientStateFromClientID(client_id);
+		/* When the company isn't authorized we can't move them yet. */
+		if (cs->status < NetworkClientSocket::STATUS_AUTHORIZED) return;
+		cs->SendMove(client_id, company_id);
 	}
 
 	/* announce the client's move */
