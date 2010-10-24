@@ -244,6 +244,16 @@ Crashes when playing music [FS#3941]
 	anything about this. Please report these crashes to the authors of
 	OpenMSX so the crash causing songs can be removed or fixed.
 
+Crashes when run in a VM using Parallels Desktop [FS#4003]
+	When the Windows version of OpenTTD is executed in a VM under
+	Parallels Desktop a privileged instruction exception may be thrown.
+	As OpenTTD works natively on OSX as well as natively on	Windows and
+	these native builds both don't exhibit this behaviour this crash is
+	most likely due to a bug in the virtual machine, something out of
+	the scope of OpenTTD. Most likely this is due to Parallels Desktop
+	lacking support for RDTSC calls. The problem can be avoided by using
+	other VM-software, Wine, or running natively on OSX.
+
 OpenTTD hangs when started on 32 bits Windows [FS#4083]
 	Under some circumstances OpenTTD might hang for hours on the
 	initialisation of the music driver. The exact circumstances are
