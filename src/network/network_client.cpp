@@ -661,94 +661,91 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WAIT)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP)
+DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_BEGIN)
 {
-	byte maptype;
-
-	maptype = p->Recv_uint8();
-
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
+	if (this->download_file != NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	/* First packet, init some stuff */
-	if (maptype == MAP_PACKET_START) {
-		if (this->download_file != NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-		this->download_file = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);
-		if (this->download_file == NULL) {
-			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
-			return NETWORK_RECV_STATUS_SAVEGAME;
-		}
-
-		_frame_counter = _frame_counter_server = _frame_counter_max = p->Recv_uint32();
-
-		_network_join_bytes = 0;
-		_network_join_bytes_total = p->Recv_uint32();
-
-		/* If the network connection has been closed due to loss of connection
-		 * or when _network_join_kbytes_total is 0, the join status window will
-		 * do a division by zero. When the connection is lost, we just return
-		 * that. If kbytes_total is 0, the packet must be malformed as a
-		 * savegame less than 1 kilobyte is practically impossible. */
-		if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
-		if (_network_join_bytes_total == 0) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-
-		_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
-		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
-
-		/* The first packet does not contain any more data */
-		return NETWORK_RECV_STATUS_OKAY;
+	this->download_file = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);
+	if (this->download_file == NULL) {
+		_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
+		return NETWORK_RECV_STATUS_SAVEGAME;
 	}
 
+	_frame_counter = _frame_counter_server = _frame_counter_max = p->Recv_uint32();
+
+	_network_join_bytes = 0;
+	_network_join_bytes_total = p->Recv_uint32();
+
+	/* If the network connection has been closed due to loss of connection
+	 * or when _network_join_kbytes_total is 0, the join status window will
+	 * do a division by zero. When the connection is lost, we just return
+	 * that. If kbytes_total is 0, the packet must be malformed as a
+	 * savegame less than 1 kilobyte is practically impossible. */
+	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
+	if (_network_join_bytes_total == 0) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
+	_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DATA)
+{
 	if (this->download_file == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	if (maptype == MAP_PACKET_NORMAL) {
-		/* We are still receiving data, put it to the file */
-		if (fwrite(p->buffer + p->pos, 1, p->size - p->pos, this->download_file) != (size_t)(p->size - p->pos)) {
-			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
-			fclose(this->download_file);
-			this->download_file = NULL;
-			return NETWORK_RECV_STATUS_SAVEGAME;
-		}
-
-		_network_join_bytes = ftell(this->download_file);
-		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
-	}
-
-	/* Check if this was the last packet */
-	if (maptype == MAP_PACKET_END) {
+	/* We are still receiving data, put it to the file */
+	if (fwrite(p->buffer + p->pos, 1, p->size - p->pos, this->download_file) != (size_t)(p->size - p->pos)) {
+		_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
 		fclose(this->download_file);
 		this->download_file = NULL;
+		return NETWORK_RECV_STATUS_SAVEGAME;
+	}
 
-		_network_join_status = NETWORK_JOIN_STATUS_PROCESSING;
-		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
+	_network_join_bytes = ftell(this->download_file);
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
-		/* The map is done downloading, load it */
-		if (!SafeSaveOrLoad("network_client.tmp", SL_LOAD, GM_NORMAL, AUTOSAVE_DIR)) {
-			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
-			return NETWORK_RECV_STATUS_SAVEGAME;
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DONE)
+{
+	if (this->download_file == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
+	fclose(this->download_file);
+	this->download_file = NULL;
+
+	_network_join_status = NETWORK_JOIN_STATUS_PROCESSING;
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
+
+	/* The map is done downloading, load it */
+	if (!SafeSaveOrLoad("network_client.tmp", SL_LOAD, GM_NORMAL, AUTOSAVE_DIR)) {
+		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+		_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
+		return NETWORK_RECV_STATUS_SAVEGAME;
+	}
+	/* If the savegame has successfully loaded, ALL windows have been removed,
+	 * only toolbar/statusbar and gamefield are visible */
+
+	/* Say we received the map and loaded it correctly! */
+	SendMapOk();
+
+	/* New company/spectator (invalid company) or company we want to join is not active
+	 * Switch local company to spectator and await the server's judgement */
+	if (_network_join_as == COMPANY_NEW_COMPANY || !Company::IsValidID(_network_join_as)) {
+		SetLocalCompany(COMPANY_SPECTATOR);
+
+		if (_network_join_as != COMPANY_SPECTATOR) {
+			/* We have arrived and ready to start playing; send a command to make a new company;
+			 * the server will give us a client-id and let us in */
+			_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
+			ShowJoinStatusWindow();
+			NetworkSend_Command(0, 0, 0, CMD_COMPANY_CTRL, NULL, NULL, _local_company);
 		}
-		/* If the savegame has successfully loaded, ALL windows have been removed,
-		 * only toolbar/statusbar and gamefield are visible */
-
-		/* Say we received the map and loaded it correctly! */
-		SendMapOk();
-
-		/* New company/spectator (invalid company) or company we want to join is not active
-		 * Switch local company to spectator and await the server's judgement */
-		if (_network_join_as == COMPANY_NEW_COMPANY || !Company::IsValidID(_network_join_as)) {
-			SetLocalCompany(COMPANY_SPECTATOR);
-
-			if (_network_join_as != COMPANY_SPECTATOR) {
-				/* We have arrived and ready to start playing; send a command to make a new company;
-				 * the server will give us a client-id and let us in */
-				_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
-				ShowJoinStatusWindow();
-				NetworkSend_Command(0, 0, 0, CMD_COMPANY_CTRL, NULL, NULL, _local_company);
-			}
-		} else {
-			/* take control over an existing company */
-			SetLocalCompany(_network_join_as);
-		}
+	} else {
+		/* take control over an existing company */
+		SetLocalCompany(_network_join_as);
 	}
 
 	return NETWORK_RECV_STATUS_OKAY;

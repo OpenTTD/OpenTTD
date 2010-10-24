@@ -72,7 +72,9 @@ enum PacketGameType {
 	/* Getting the savegame/map. */
 	PACKET_CLIENT_GETMAP,                ///< Client requests the actual map.
 	PACKET_SERVER_WAIT,                  ///< Server tells the client there are some people waiting for the map as well.
-	PACKET_SERVER_MAP,                   ///< Server sends bits of the map to the client.
+	PACKET_SERVER_MAP_BEGIN,             ///< Server tells the client that it is beginning to send the map.
+	PACKET_SERVER_MAP_DATA,              ///< Server sends bits of the map to the client.
+	PACKET_SERVER_MAP_DONE,              ///< Server tells it has just sent the last bits of the map to the client.
 	PACKET_CLIENT_MAP_OK,                ///< Client tells the server that it received the whole map.
 
 	PACKET_SERVER_JOIN,                  ///< Tells clients that a new client has joined.
@@ -283,17 +285,22 @@ protected:
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_WAIT);
 
 	/**
-	 * Sends parts of the map to the client:
-	 * uint8   packet type (MAP_PACKET_START, MAP_PACKET_NORMAL, MAP_PACKET_END).
-	 * If MAP_PACKET_START:
-	 *   uint32  Current frame.
-	 *   uint32  Size of the map (in bytes).
-	 * If MAP_PACKET_NORMAL:
-	 *   Part of the map (until max size of packet).
-	 * If MAP_PACKET_END:
-	 *   No further data sent.
+	 * Sends that the server will begin with sending the map to the client:
+	 * uint32  Current frame.
+	 * uint32  Size of the map (in bytes).
 	 */
-	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MAP);
+	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MAP_BEGIN);
+
+	/**
+	 * Sends the data of the map to the client:
+	 * Contains a part of the map (until max size of packet).
+	 */
+	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MAP_DATA);
+
+	/**
+	 * Sends that all data of the map are sent to the client:
+	 */
+	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_MAP_DONE);
 
 	/**
 	 * Tell the server that we are done receiving/loading the map.

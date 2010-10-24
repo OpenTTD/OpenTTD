@@ -388,8 +388,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 		if (ftell(file_pointer) == 0) usererror("network savedump failed - zero sized savegame?");
 
 		/* Now send the _frame_counter and how many packets are coming */
-		p = new Packet(PACKET_SERVER_MAP);
-		p->Send_uint8 (MAP_PACKET_START);
+		p = new Packet(PACKET_SERVER_MAP_BEGIN);
 		p->Send_uint32(_frame_counter);
 		p->Send_uint32(ftell(file_pointer));
 		this->Send_Packet(p);
@@ -409,8 +408,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 		uint i;
 		int res;
 		for (i = 0; i < sent_packets; i++) {
-			Packet *p = new Packet(PACKET_SERVER_MAP);
-			p->Send_uint8(MAP_PACKET_NORMAL);
+			Packet *p = new Packet(PACKET_SERVER_MAP_DATA);
 			res = (int)fread(p->buffer + p->size, 1, SEND_MTU - p->size, file_pointer);
 
 			if (ferror(file_pointer)) usererror("Error reading temporary network savegame!");
@@ -419,8 +417,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			this->Send_Packet(p);
 			if (feof(file_pointer)) {
 				/* Done reading! */
-				Packet *p = new Packet(PACKET_SERVER_MAP);
-				p->Send_uint8(MAP_PACKET_END);
+				Packet *p = new Packet(PACKET_SERVER_MAP_DONE);
 				this->Send_Packet(p);
 
 				/* Set the status to DONE_MAP, no we will wait for the client

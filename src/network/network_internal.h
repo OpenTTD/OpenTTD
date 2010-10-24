@@ -52,12 +52,6 @@ extern bool _ddc_fastforward;
 
 typedef class ServerNetworkGameSocketHandler NetworkClientSocket;
 
-enum MapPacket {
-	MAP_PACKET_START,
-	MAP_PACKET_NORMAL,
-	MAP_PACKET_END,
-};
-
 
 enum NetworkJoinStatus {
 	NETWORK_JOIN_STATUS_CONNECTING,
