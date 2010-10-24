@@ -787,6 +787,8 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			switch (this->widget_id) {
 				case GLAND_START_DATE_TEXT: value = DEF_START_YEAR; break;
 				case GLAND_SNOW_LEVEL_TEXT: value = DEF_SNOWLINE_HEIGHT; break;
+				case GLAND_TOWN_PULLDOWN:   value = 1; break;
+				case GLAND_WATER_PULLDOWN:  value = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE; break;
 				default: NOT_REACHED();
 			}
 		}
