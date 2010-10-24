@@ -40,7 +40,7 @@
  * Create a new socket for the client side of the game connection.
  * @param s The socket to connect with.
  */
-ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s)
+ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s), download_file(NULL)
 {
 	assert(ClientNetworkGameSocketHandler::my_client == NULL);
 	ClientNetworkGameSocketHandler::my_client = this;
@@ -51,6 +51,9 @@ ClientNetworkGameSocketHandler::~ClientNetworkGameSocketHandler()
 {
 	assert(ClientNetworkGameSocketHandler::my_client == this);
 	ClientNetworkGameSocketHandler::my_client = NULL;
+
+	/* If for whatever reason the handle isn't closed, do it now. */
+	if (this->download_file != NULL) fclose(this->download_file);
 }
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
@@ -660,8 +663,6 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WAIT)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP)
 {
-	static FILE *file_pointer;
-
 	byte maptype;
 
 	maptype = p->Recv_uint8();
@@ -670,8 +671,9 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP)
 
 	/* First packet, init some stuff */
 	if (maptype == MAP_PACKET_START) {
-		file_pointer = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);
-		if (file_pointer == NULL) {
+		if (this->download_file != NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+		this->download_file = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);
+		if (this->download_file == NULL) {
 			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
@@ -696,20 +698,25 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP)
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
+	if (this->download_file == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	if (maptype == MAP_PACKET_NORMAL) {
 		/* We are still receiving data, put it to the file */
-		if (fwrite(p->buffer + p->pos, 1, p->size - p->pos, file_pointer) != (size_t)(p->size - p->pos)) {
+		if (fwrite(p->buffer + p->pos, 1, p->size - p->pos, this->download_file) != (size_t)(p->size - p->pos)) {
 			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
+			fclose(this->download_file);
+			this->download_file = NULL;
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
 
-		_network_join_bytes = ftell(file_pointer);
+		_network_join_bytes = ftell(this->download_file);
 		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 	}
 
 	/* Check if this was the last packet */
 	if (maptype == MAP_PACKET_END) {
-		fclose(file_pointer);
+		fclose(this->download_file);
+		this->download_file = NULL;
 
 		_network_join_status = NETWORK_JOIN_STATUS_PROCESSING;
 		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
