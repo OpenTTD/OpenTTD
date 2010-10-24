@@ -40,7 +40,7 @@
  * Create a new socket for the client side of the game connection.
  * @param s The socket to connect with.
  */
-ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s), download_file(NULL)
+ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s), download_file(NULL), status(STATUS_INACTIVE)
 {
 	assert(ClientNetworkGameSocketHandler::my_client == NULL);
 	ClientNetworkGameSocketHandler::my_client = this;
@@ -269,22 +269,22 @@ void HashCurrentCompanyPassword(const char *password)
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyInformationQuery()
 {
-	Packet *p;
+	my_client->status = STATUS_COMPANY_INFO;
 	_network_join_status = NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
-	p = new Packet(PACKET_CLIENT_COMPANY_INFO);
+	Packet *p = new Packet(PACKET_CLIENT_COMPANY_INFO);
 	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 {
-	Packet *p;
+	my_client->status = STATUS_JOIN;
 	_network_join_status = NETWORK_JOIN_STATUS_AUTHORIZING;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
-	p = new Packet(PACKET_CLIENT_JOIN);
+	Packet *p = new Packet(PACKET_CLIENT_JOIN);
 	p->Send_string(_openttd_revision);
 	p->Send_string(_settings_client.network.client_name); // Client name
 	p->Send_uint8 (_network_join_as);     // PlayAs
@@ -318,6 +318,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyPassword(const char
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 {
+	my_client->status = STATUS_MAP_WAIT;
+
 	Packet *p = new Packet(PACKET_CLIENT_GETMAP);
 	/* Send the OpenTTD version to the server, let it validate it too.
 	 * But only do it for stable releases because of those we are sure
@@ -332,6 +334,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGetMap()
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendMapOk()
 {
+	my_client->status = STATUS_ACTIVE;
+
 	Packet *p = new Packet(PACKET_CLIENT_MAP_OK);
 	my_client->Send_Packet(p);
 	return NETWORK_RECV_STATUS_OKAY;
@@ -454,6 +458,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_BANNED)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_COMPANY_INFO)
 {
+	if (this->status != STATUS_COMPANY_INFO) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	byte company_info_version = p->Recv_uint8();
 
 	if (!this->HasClientQuit() && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
@@ -503,6 +509,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CLIENT_INFO)
 
 	p->Recv_string(name, sizeof(name));
 
+	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
 	ci = NetworkFindClientInfoFromClientID(client_id);
@@ -579,6 +586,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_ERROR)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHECK_NEWGRFS)
 {
+	if (this->status != STATUS_JOIN) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	uint grf_count = p->Recv_uint8();
 	NetworkRecvStatus ret = NETWORK_RECV_STATUS_OKAY;
 
@@ -610,6 +619,9 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHECK_NEWGRFS)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEED_GAME_PASSWORD)
 {
+	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTH_GAME) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	this->status = STATUS_AUTH_GAME;
+
 	const char *password = _network_join_server_password;
 	if (!StrEmpty(password)) {
 		return SendGamePassword(password);
@@ -622,6 +634,9 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEED_GAME_PASSWORD)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEED_COMPANY_PASSWORD)
 {
+	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTH_COMPANY) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	this->status = STATUS_AUTH_COMPANY;
+
 	_password_game_seed = p->Recv_uint32();
 	p->Recv_string(_password_server_id, sizeof(_password_server_id));
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
@@ -638,6 +653,9 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEED_COMPANY_PASSWORD)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WELCOME)
 {
+	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	this->status = STATUS_AUTHORIZED;
+
 	_network_own_client_id = (ClientID)p->Recv_uint32();
 
 	/* Initialize the password hash salting variables, even if they were previously. */
@@ -650,6 +668,9 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WELCOME)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WAIT)
 {
+	if (this->status != STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	this->status = STATUS_MAP_WAIT;
+
 	_network_join_status = NETWORK_JOIN_STATUS_WAITING;
 	_network_join_waiting = p->Recv_uint8();
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
@@ -663,6 +684,9 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_WAIT)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_BEGIN)
 {
+	if (this->status < STATUS_AUTHORIZED || this->status >= STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	this->status = STATUS_MAP;
+
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 	if (this->download_file != NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
@@ -693,6 +717,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_BEGIN)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DATA)
 {
+	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->download_file == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	/* We are still receiving data, put it to the file */
@@ -711,6 +736,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DATA)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DONE)
 {
+	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->download_file == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	fclose(this->download_file);
@@ -753,6 +779,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DONE)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_FRAME)
 {
+	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	_frame_counter_server = p->Recv_uint32();
 	_frame_counter_max = p->Recv_uint32();
 #ifdef ENABLE_NETWORK_SYNC_EVERY_FRAME
@@ -781,6 +809,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_FRAME)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_SYNC)
 {
+	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	_sync_frame = p->Recv_uint32();
 	_sync_seed_1 = p->Recv_uint32();
 #ifdef NETWORK_SEND_DOUBLE_SEED
@@ -792,6 +822,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_SYNC)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_COMMAND)
 {
+	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	CommandPacket cp;
 	const char *err = this->Recv_Command(p, &cp);
 	cp.frame    = p->Recv_uint32();
@@ -809,6 +841,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_COMMAND)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHAT)
 {
+	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	char name[NETWORK_NAME_LENGTH], msg[NETWORK_CHAT_LENGTH];
 	const NetworkClientInfo *ci = NULL, *ci_to;
 
@@ -859,6 +893,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHAT)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_ERROR_QUIT)
 {
+	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	ClientID client_id = (ClientID)p->Recv_uint32();
 
 	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
@@ -874,11 +910,11 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_ERROR_QUIT)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_QUIT)
 {
-	NetworkClientInfo *ci;
+	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	ClientID client_id = (ClientID)p->Recv_uint32();
 
-	ci = NetworkFindClientInfoFromClientID(client_id);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, NULL, STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 		delete ci;
@@ -894,6 +930,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_QUIT)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_JOIN)
 {
+	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	ClientID client_id = (ClientID)p->Recv_uint32();
 
 	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
@@ -908,24 +946,34 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_JOIN)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_SHUTDOWN)
 {
-	_switch_mode_errorstr = STR_NETWORK_MESSAGE_SERVER_SHUTDOWN;
+	/* Only when we're trying to join we really
+	 * care about the server shutting down. */
+	if (this->status >= STATUS_JOIN) {
+		_switch_mode_errorstr = STR_NETWORK_MESSAGE_SERVER_SHUTDOWN;
+	}
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_NEWGAME)
 {
-	/* To trottle the reconnects a bit, every clients waits its
-	 * Client ID modulo 16. This way reconnects should be spread
-	 * out a bit. */
-	_network_reconnect = _network_own_client_id % 16;
-	_switch_mode_errorstr = STR_NETWORK_MESSAGE_SERVER_REBOOT;
+	/* Only when we're trying to join we really
+	 * care about the server shutting down. */
+	if (this->status >= STATUS_JOIN) {
+		/* To trottle the reconnects a bit, every clients waits its
+		 * Client ID modulo 16. This way reconnects should be spread
+		 * out a bit. */
+		_network_reconnect = _network_own_client_id % 16;
+		_switch_mode_errorstr = STR_NETWORK_MESSAGE_SERVER_REBOOT;
+	}
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
 }
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_RCON)
 {
+	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	char rcon_out[NETWORK_RCONCOMMAND_LENGTH];
 
 	ConsoleColour colour_code = (ConsoleColour)p->Recv_uint16();
@@ -938,6 +986,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_RCON)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MOVE)
 {
+	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	/* Nothing more in this packet... */
 	ClientID client_id   = (ClientID)p->Recv_uint32();
 	CompanyID company_id = (CompanyID)p->Recv_uint8();
@@ -964,6 +1014,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MOVE)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CONFIG_UPDATE)
 {
+	if (this->status < STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	_network_server_max_companies = p->Recv_uint8();
 	_network_server_max_spectators = p->Recv_uint8();
 
@@ -972,6 +1024,8 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CONFIG_UPDATE)
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_COMPANY_UPDATE)
 {
+	if (this->status < STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	_network_company_passworded = p->Recv_uint16();
 	SetWindowClassesDirty(WC_COMPANY);
 

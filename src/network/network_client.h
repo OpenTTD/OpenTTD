@@ -21,6 +21,23 @@ class ClientNetworkGameSocketHandler : public ZeroedMemoryAllocator, public Netw
 private:
 	FILE *download_file; ///< Handle used for downloading the savegame.
 
+	/** Status of the connection with the server. */
+	enum ServerStatus {
+		STATUS_INACTIVE,      ///< The client is not connected nor active.
+		STATUS_COMPANY_INFO,  ///< We are trying to get company information.
+		STATUS_JOIN,          ///< We are trying to join a server.
+		STATUS_NEWGRFS_CHECK, ///< Last action was checking NewGRFs.
+		STATUS_AUTH_GAME,     ///< Last action was requesting game (server) password.
+		STATUS_AUTH_COMPANY,  ///< Last action was requestion company password.
+		STATUS_AUTHORIZED,    ///< The client is authorized at the server.
+		STATUS_MAP_WAIT,      ///< The client is waiting as someone else is downloading the map.
+		STATUS_MAP,           ///< The client is downloading the map.
+		STATUS_ACTIVE,        ///< The client is active within in the game.
+		STATUS_END            ///< Must ALWAYS be on the end of this list!! (period)
+	};
+
+	ServerStatus status; ///< Status of the connection with the server.
+
 protected:
 	friend void NetworkExecuteLocalCommandQueue();
 	friend void NetworkClose(bool close_admins);
