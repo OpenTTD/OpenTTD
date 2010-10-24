@@ -334,7 +334,8 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Gerar ci
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gerar indústrias
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Contruir rodovias
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar placas
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Posicione a placa
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Posicione o objeto
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvar cenário
@@ -443,7 +444,8 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Ativar/desativar console
 STR_ABOUT_MENU_AI_DEBUG                                         :Debug da I.A.
 STR_ABOUT_MENU_SCREENSHOT                                       :Captura de tela (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura gigante (Ctrl+G)
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Foto ampliada
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de tela gigante (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de "sprites"
 ############ range ends here
@@ -559,6 +561,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalhes
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Veja detalhes desta compahia
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estações:
@@ -1024,6 +1027,7 @@ STR_NUM_LOW                                                     :Baixo
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Alto
 STR_NUM_CUSTOM                                                  :Personalizado
+STR_NUM_CUSTOM_NUMBER                                           :Personalizado ({NUM})
 
 STR_VARIETY_NONE                                                :Nenhum
 STR_VARIETY_VERY_LOW                                            :Muito Baixo
@@ -1042,6 +1046,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Muito Baixo
 STR_SEA_LEVEL_LOW                                               :Baixo
 STR_SEA_LEVEL_MEDIUM                                            :Médio
 STR_SEA_LEVEL_HIGH                                              :Alto
+STR_SEA_LEVEL_CUSTOM                                            :Personalizado
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Personalizado ({NUM}%)
 
 STR_DISASTER_NONE                                               :Nenhum
 STR_DISASTER_REDUCED                                            :Reduzido
@@ -1085,6 +1091,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permiti
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permitir dimensionamento mais realista das áreas de abrangência: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permitir a remoção de mais rodovias, pontes, etc. das cidades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permitir a construção de trens muito longos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantidade de fumaça das locomotivas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nenhum
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realístico
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Sistema de aceleração de trens: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realista
@@ -1409,7 +1419,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}As caixa
 STR_CHEATS_WARNING                                              :{BLACK}Atenção! Você está prestes a trair os seus oponentes. Saiba que isto ficará registrado para sempre.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando pela Co.: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, etc.): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadeira mágica (destrói indústrias, objetos estáticos): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis poderão cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Permitir construção quando em pausa: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aeronaves a jato não irão se acidentar (frequentemente) em aeroportos pequenos: {ORANGE} {STRING}
@@ -1753,6 +1763,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}O servid
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Você foi banido deste servidor
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Você foi expulso do jogo
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Trapaceiros não são permitidos neste servidor
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Você enviou comandos demais ao servidor
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erro geral
@@ -1770,6 +1781,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :wrong company-i
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :expulso pelo servidor
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :estava tentando trapacear
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor cheio
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :enviou comandos demais
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2026,6 +2038,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construi
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Seleção de Aeroporto
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Selecionar tamanho/tipo de aeroporto
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Classe do aeroporto
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Layout {NUM}
 
 STR_AIRPORT_SMALL                                               :Pequeno
 STR_AIRPORT_CITY                                                :Cidade
@@ -2050,6 +2063,15 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Baixar u
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar um canto do terreno
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar terreno
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro
+
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Seleção de Objeto
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecione o objeto a ser construído
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Classe do objeto
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objeto
+
+STR_OBJECT_CLASS_LTHS                                           :Faróis
+STR_OBJECT_CLASS_TRNS                                           :Transmissores
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
@@ -2125,6 +2147,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clique n
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clique na carga para ver seus fornecedores e clientes
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Exibir cadeia
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Exibe indústrias que suprem e aceitam carga
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Exiba também no minimapa
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selecione as indústrias exibidas no minimapa também
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informações do Terreno
@@ -2138,10 +2162,12 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Dono da 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Dono da linha ferroviária: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoridade local: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Nenhum
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordenadas: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordenadas: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Construído: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Classe de Estação: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo de Estação: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Classe do aeroporto: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nome do aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nome da área do aeroporto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceita: {LTBLUE}
@@ -2305,7 +2331,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotação do mapa em relevo:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do mapa em relevo:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Coloque uma semente randomica
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mudar linha da neve
@@ -2373,6 +2399,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Checa se
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nome do arquivo: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versão: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Mín. versão compatível: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parâmetros: {SILVER}{STRING}
@@ -2386,7 +2413,11 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Insira n
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Alterar parâmetros NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Fechar
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Redefinir parâmetros
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Redefinir todos os parâmetros para o valor padrão
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parãmetro {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Número de parâmetros: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspecionar - {STRING}
@@ -2394,6 +2425,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Principa
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspeciona o objeto no foco principal
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} em {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objeto
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de ferrovia
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Variável NewGRF 60+ parâmetro x (hexadecimal)
@@ -2436,6 +2468,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de us
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um sprite corrupto. Todos os sprites corruptos serão exibidos como um "?" vermelho.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém 8 entradas de Ação múltipla.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Continuar lendo após o fim do pseudo-sprite
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A base de gráficos em uso não contém alguns "sprites".{}Por favor atualize a base de gráficos.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
@@ -2473,6 +2506,8 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inv
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Limpar filtro
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Limpar filtro
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto da placa
@@ -2686,6 +2721,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produção no mês passado:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportado)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centralizar visualização na localização da indústria.Ctrl+Clique abre uma nova janela de visualização
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nível de produção: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Requer: {YELLOW}{STRING}{STRING}
@@ -2701,6 +2737,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produz: 
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modificar produção (múltiplo de 8, até 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Mudar nível de produção (porcentagem, até 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trens
@@ -3292,6 +3329,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Caso de 
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar o caso de igualdade quando se compara o resgisto da IA contra a string de paragem
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausar e continuar o AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Veja a depuração desta IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD é feito sem suporte para IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... não há IAs disponíveis!
@@ -3333,6 +3371,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mud
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parâmetros da IA
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Fechar
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetar
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3446,6 +3485,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Esta emp
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Impossível construir qualquer cidade
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Impossível renomear cidade...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Impossível construir cidade aqui...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Impossível extender a cidade...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... muito perto da borda do mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... muito perto de outra cidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... existem cidades demais
@@ -3494,6 +3534,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Muito pe
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Impossível renomear a estação...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... é uma rua local
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... rua na direção errada
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... paradas "drive-thru" não podem ter esquinas
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... paradas "drive-thru" não podem ter junções
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Impossível remover parte da estação...
@@ -3524,7 +3566,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Impossí
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Impossível remover ponto de controle de trem aqui...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Remova o ponto de controle antes
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bóia no caminho
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóia está em uso!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóia está em uso por outra compahia!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Impossível construir depósito aqui...
@@ -3534,10 +3576,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Impossí
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Impossível renomear depósito...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}O trem deve estar parado dentro do depósito
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... deve estar parado dentro de uma garagem de trens
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... deve estar parado dentro de uma garagem
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}A embarcação deve estar parado no depósito naval
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}A aeronave deve estar parada no hangar
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... deve ser parada dentro de um deposito naval
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... deve ser parada dentro de um hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os trens só podem ser alterados quando parados num depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trem muito longo
@@ -3617,6 +3659,8 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}O túnel
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Incapaz de escavar o terreno para o outro lado do túnel
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... objetos demais
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Impossível construir objeto...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objeto no caminho
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede de empresa no caminho
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Impossível comprar esta área...
@@ -3719,7 +3763,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Impossí
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Impossível remover placa
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Um clone de Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Um jogo de simulação baseado no Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

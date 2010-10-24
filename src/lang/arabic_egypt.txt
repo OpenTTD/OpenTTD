@@ -1102,7 +1102,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :اصلي
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :واقعي
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}تدرج ميلان سكة القطار {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}نسبة الميلان للعربات {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة : {ORANGE}{STRING} {LTBLUE} (not with NTP)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة : {ORANGE}{STRING} {LTBLUE} (not with OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}ربط محطات القطار المبنيه بجوار بعض: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE} السماح بربط محطتين غير متجاورتين : {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}أستخدام خوارزمية التحميل المحسنه: {ORANGE}{STRING}
@@ -1419,7 +1419,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}علام
 STR_CHEATS_WARNING                                              :{BLACK}تحذير! انت على وشك ان تخون منافسيك. هذا الخيانة ستبقى عار عليك الى الأبد.
 STR_CHEAT_MONEY                                                 :{LTBLUE}زيادة السيولة بـ {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}العب كشركة{ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}الجرافة السحرية - لازالة المصانع, الاشياء الغير متنقلة.{ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}الجرافة السحرية - لازالة المصانع و الاجسام غير القابلة للازالة.{ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}يمكن للانفاق ان تتقاطع: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}البناء خلال توقيف اللعبة: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}الطائرات النفاثة لن تتحطم كثيرا في المطارات الصغيرة {ORANGE} {STRING}
@@ -2400,6 +2400,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK} لتأ�
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}ام الملف: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRFمعرف : {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK} نسخة: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}اقل نسخة متوافقة: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK} : مجموع ام دي 5 {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK} صحيفة : {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}الاعدادات: {SILVER}{STRING}
@@ -2491,7 +2492,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}ملفات
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}حركات NewGFR '{0:STRING}'قد تتسبب في اخطاء او توقف للعبة
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}غير حالة العربات المكهربة ل'{1:ENGINE}' عندما لا تكون داخل ورشة الصيانة.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}يغير طول العربة من '{1:ENGINE}' عندما تكون داخل المستودع
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}يغير طول العربة من '{1:ENGINE}' عندما لا تكون داخل المستودع
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}قطار '{VEHICLE}' المملوك ل'{COMPANY}' لدية طول غير مسرح . غالبا نتج عن مشكلة في NewGRF. اللعبة قد تتوقف او تتعطل .
 
 STR_NEWGRF_BUGGY                                                :{WHITE}الرسوميات الجديدة '{0:STRING}' تعطي معلومات غير صحيحة.
@@ -2724,6 +2725,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}الأنتاج الشهر الماضي:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ) {COMMA}%المنقول)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}وسط الشاشة على المصنع
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}نسبة الانتاج: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}يحتاج: {YELLOW}{STRING} {STRING}
@@ -2739,6 +2741,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}ينتج
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيير الانتاج مضاعف من 8 الى 2040
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}غير مستوى الانتاج {}نسبة مئوية حتى 800%.
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA}قطار
@@ -2866,10 +2869,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM}العربات {STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارات - اضغط على القطار للمعلومات, اسحب العربة لاضافتها / حذفها من القطار
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}العربات - اضغط على المركبة لعرض معلوماتها
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}السفن - اضغط على السفينة للتفاصيل
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}طائرة - اضغط على طائرة ما لتفاصيل
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارات - اضغط بالزر الايسر على القطار اضافةالعربة او حذفها, و الزر الايمن للمعلومات, اضغط مفتاح كنترول لتطبيقها علاى بقية العربات.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}العربات - اضغط على المركبة بالزر الايمن لعرض معلوماتها
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}السفن - اضغط على السفينة بالزر الايمن للتفاصيل
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}طائرة - اضغط على طائرة ما بالزر الايمن لتفاصيل
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}اسحب عربات القطار الى هنا لبيعها
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}اسحب العربة هنا لبيعها
@@ -3082,7 +3085,7 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}مقدا
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فترات الصيانة: {LTBLUE}{COMMA} يوم {BLACK} اخر صيانة: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}فترات الصيانة: {LTBLUE}{COMMA}% {BLACK}    الصيانة الأخيرة: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}زيادة فترات الصيانة
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}زيادة فترات الصيانة بقدر 10. ومع مفتاح كنترول بمقدار 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK} انقاص فترات الصيانة بمعدل 10. Ctrl+ الضغط الانقاص بمعدل 5.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}اسم القطار
@@ -3567,7 +3570,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}لا ي�
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}لا يمكن ازالة نقطة العبور من هنا ...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}يجب ازالة سكة الحديد اولا
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... عوامة في المسار
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... العوامة مستخدمة
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... العوامة مستخدمة بواسطة شركة اخرى!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}لا يمكن بناء ورشة صيانة هنا...

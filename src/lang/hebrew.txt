@@ -348,6 +348,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}יציר
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}סלילת כבישים
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}נטע עצים
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}מקם סימניה
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}מיקום פריט
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :שמור תרחיש
@@ -1422,7 +1423,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}תיבו
 STR_CHEATS_WARNING                                              :{BLACK}אזהרה! אתה עומד לבגוד בחבריך למשחק. קח בחשבון שחרפה כזו תיזכר לנצח.
 STR_CHEAT_MONEY                                                 :{LTBLUE}{CURRENCY}- הגדל את כמות הכסף במאזנך ל
 STR_CHEAT_CHANGE_COMPANY                                        :{ORANGE}{COMMA}{LTBLUE} :שחק כבעלי החברה
-STR_CHEAT_EXTRA_DYNAMITE                                        :{ORANGE}{STRING}{LTBLUE} :בולדוזר קסמים
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}טרקטור אימתני (הסרת מפעלים, רכיבים שאי אפשר להזיז): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{ORANGE}{STRING}{LTBLUE} :מנהרות יכולות לחצות זו את זו
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}בנייה בזמן שהמשחק בהפסקה: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}מטוסי סילון לא יתרסקו (לעיתים קרובות) בשדות תעופה קטנים: {ORANGE}{STRING}
@@ -2065,6 +2066,9 @@ STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}שיטו
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}קנה אדמה לשימוש עתידי
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}פירט נבחר
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}בחר פריט לבנייה
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}צפיה מקדימה של האובייקט
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}גודל: {GOLD}{NUM} x {NUM} משבצת
 
 STR_OBJECT_CLASS_LTHS                                           :מגדלורים
@@ -2384,6 +2388,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK} בדו�
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{SILVER}{STRING}{BLACK}: שם קובץ
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}גירסה מינימלת תואמת: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{SILVER}{STRING}{BLACK}: פלטת צבעים
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{SILVER}{STRING}{BLACK} :פרמטריֿם
@@ -2403,6 +2408,7 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}מספ�
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}בדוק - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}הורה
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :אוביקט
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :סוג מסילה
 
 
@@ -2826,10 +2832,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{0:ENGIN
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} כלי{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}רכבות - לחץ על רכבת לקבלת מידע, גרור קרון להוספתו/הסרתו מהרכבת
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}כלי רכב - לחץ על כלי רכב למידע
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}כלי שייט – בחר כלי לצפיה במידע
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}כלי טייס – לחץ על כלי לצפיה במידע
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}רכבות - לחצן ימני על רכבת לקבלת מידע, גרור עם לחצן שמאלי קרון להוספתו/הסרתו מהרכבת. החזק Ctrl כדי לבצע את הפונקציות על השרשרת הבאה
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}כלי רכב - לחיצה ימנית על כלי רכב למידע
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}כלי שייט – לחיצה ימנית על כלי לצפיה במידע
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}כלי טייס – לחיצה ימנית על הכלי לצפיה במידע
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}גרור קרון/קטר לכאן כדי למכור אותו
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}גרור כלי רכב לכאן על מנת למכור אותו
