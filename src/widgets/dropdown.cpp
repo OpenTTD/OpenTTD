@@ -287,8 +287,10 @@ struct DropdownWindow : Window {
 		}
 
 		if (this->click_delay != 0 && --this->click_delay == 0) {
-			/* Make the dropdown "invisible", so it doesn't affect new window placement. */
+			/* Make the dropdown "invisible", so it doesn't affect new window placement.
+			 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
 			this->window_class = WC_INVALID;
+			this->SetDirty();
 
 			w2->OnDropdownSelect(this->parent_button, this->selected_index);
 			delete this;
@@ -302,8 +304,10 @@ struct DropdownWindow : Window {
 				this->drag_mode = false;
 				if (!this->GetDropDownItem(item)) {
 					if (this->instant_close) {
-						/* Make the dropdown "invisible", so it doesn't affect new window placement. */
+						/* Make the dropdown "invisible", so it doesn't affect new window placement.
+						 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
 						this->window_class = WC_INVALID;
+						this->SetDirty();
 
 						if (GetWidgetFromPos(w2, _cursor.pos.x - w2->left, _cursor.pos.y - w2->top) == this->parent_button) {
 							/* Send event for selected option if we're still
