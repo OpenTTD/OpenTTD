@@ -1514,7 +1514,7 @@ void NetworkServer_Tick(bool send_frame)
 	 *  do their frame! */
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		/* Check if the speed of the client is what we can expect from a client */
-		if (cs->status == STATUS_ACTIVE) {
+		if (cs->status == NetworkClientSocket::STATUS_ACTIVE) {
 			/* 1 lag-point per day */
 			uint lag = NetworkCalculateLag(cs) / DAY_TICKS;
 			if (lag > 0) {
@@ -1534,13 +1534,13 @@ void NetworkServer_Tick(bool send_frame)
 			} else {
 				cs->lag_test = 0;
 			}
-		} else if (cs->status == STATUS_PRE_ACTIVE) {
+		} else if (cs->status == NetworkClientSocket::STATUS_PRE_ACTIVE) {
 			uint lag = NetworkCalculateLag(cs);
 			if (lag > _settings_client.network.max_join_time) {
 				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->client_id, _settings_client.network.max_join_time);
 				cs->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
 			}
-		} else if (cs->status == STATUS_INACTIVE) {
+		} else if (cs->status == NetworkClientSocket::STATUS_INACTIVE) {
 			uint lag = NetworkCalculateLag(cs);
 			if (lag > 4 * DAY_TICKS) {
 				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->client_id, 4 * DAY_TICKS);
@@ -1548,7 +1548,7 @@ void NetworkServer_Tick(bool send_frame)
 			}
 		}
 
-		if (cs->status >= STATUS_PRE_ACTIVE) {
+		if (cs->status >= NetworkClientSocket::STATUS_PRE_ACTIVE) {
 			/* Check if we can send command, and if we have anything in the queue */
 			NetworkHandleCommandQueue(cs);
 
@@ -1607,7 +1607,7 @@ void NetworkServerShowStatusToConsole()
 		"ready",
 		"active"
 	};
-	assert_compile(lengthof(stat_str) == STATUS_END);
+	assert_compile(lengthof(stat_str) == NetworkClientSocket::STATUS_END);
 
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {

@@ -50,6 +50,21 @@ protected:
 	NetworkRecvStatus SendNeedCompanyPassword();
 
 public:
+	/** Status of a client */
+	enum ClientStatus {
+		STATUS_INACTIVE,      ///< The client is not connected nor active.
+		STATUS_NEWGRFS_CHECK, ///< The client is checking NewGRFs.
+		STATUS_AUTH_GAME,     ///< The client is authorizing with game (server) password.
+		STATUS_AUTH_COMPANY,  ///< The client is authorizing with company password.
+		STATUS_AUTHORIZED,    ///< The client is authorized.
+		STATUS_MAP_WAIT,      ///< The client is waiting as someone else is downloading the map.
+		STATUS_MAP,           ///< The client is downloading the map.
+		STATUS_DONE_MAP,      ///< The client has downloaded the map.
+		STATUS_PRE_ACTIVE,    ///< The client is catching up the delayed frames.
+		STATUS_ACTIVE,        ///< The client is active within in the game.
+		STATUS_END            ///< Must ALWAYS be on the end of this list!! (period).
+	};
+
 	byte lag_test;               ///< Byte used for lag-testing the client
 	ClientStatus status;         ///< Status of this client
 	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery

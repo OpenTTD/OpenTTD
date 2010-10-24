@@ -227,7 +227,7 @@ static void DistributeCommandPacket(CommandPacket cp, const NetworkClientSocket 
 
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
-		if (cs->status >= STATUS_MAP) {
+		if (cs->status >= NetworkClientSocket::STATUS_MAP) {
 			/* Callbacks are only send back to the client who sent them in the
 			 *  first place. This filters that out. */
 			cp.callback = (cs != owner) ? NULL : callback;

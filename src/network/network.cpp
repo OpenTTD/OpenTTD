@@ -343,7 +343,7 @@ static uint NetworkCountActiveClients()
 	uint count = 0;
 
 	FOR_ALL_CLIENT_SOCKETS(cs) {
-		if (cs->status != STATUS_ACTIVE) continue;
+		if (cs->status != NetworkClientSocket::STATUS_ACTIVE) continue;
 		if (!Company::IsValidID(cs->GetInfo()->client_playas)) continue;
 		count++;
 	}
@@ -372,7 +372,7 @@ static bool NetworkHasJoiningClient()
 {
 	const NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
-		if (cs->status >= STATUS_AUTHORIZED && cs->status < STATUS_ACTIVE) return true;
+		if (cs->status >= NetworkClientSocket::STATUS_AUTHORIZED && cs->status < NetworkClientSocket::STATUS_ACTIVE) return true;
 	}
 
 	return false;
