@@ -334,7 +334,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 	p->Send_string(_settings_client.network.network_id);
 	this->Send_Packet(p);
 
-		/* Transmit info about all the active clients */
+	/* Transmit info about all the active clients */
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs != this && new_cs->status > STATUS_AUTHORIZED) {
 			this->SendClientInfo(new_cs->GetInfo());
