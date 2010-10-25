@@ -296,6 +296,9 @@ class FullscreenSubdriver: public CocoaSubdriver {
 			CFNumberGetValue(number, kCFNumberSInt32Type, &h);
 		}
 
+		/* Hide mouse in order to avoid glitch in 8bpp */
+		QZ_HideMouse();
+
 		/* Fade display to zero gamma */
 		OTTD_QuartzGammaTable gamma_table;
 		gamma_error = this->FadeGammaOut(&gamma_table);
