@@ -626,6 +626,12 @@ void QZ_GameLoop()
 	_cocoa_subdriver->Draw();
 	CSleep(1);
 
+	/* Set the proper OpenTTD palette which got spoilt by the splash
+	 * image when using 8bpp blitter */
+	GfxInitPalettes();
+	QZ_CheckPaletteAnim();
+	_cocoa_subdriver->Draw(true);
+
 	for (;;) {
 		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 		InteractiveRandom(); // randomness
