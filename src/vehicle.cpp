@@ -1581,9 +1581,9 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 	/* Check if we should use the colour map callback */
 	if (HasBit(e->info.callback_mask, CBM_VEHICLE_COLOUR_REMAP)) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_COLOUR_MAPPING, 0, 0, engine_type, v);
-		/* A return value of 0xC000 is stated to "use the default two-colour
-		 * maps" which happens to be the failure action too... */
-		if (callback != CALLBACK_FAILED && callback != 0xC000) {
+		/* Failure means "use the default two-colour" */
+		if (callback != CALLBACK_FAILED) {
+			assert_compile(PAL_NONE == 0); // Returning 0x4000 (resp. 0xC000) conincidences with default value (PAL_NONE)
 			map = GB(callback, 0, 14);
 			/* If bit 14 is set, then the company colours are applied to the
 			 * map else it's returned as-is. */
