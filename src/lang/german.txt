@@ -302,14 +302,14 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subventi
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Liste der Firmenbahnhöfe anzeigen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Firmenfinanzen anzeigen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Allgemeine Firmeninformationen anzeigen
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Diagramme anzeigen
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Statistiken anzeigen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Firmentabelle oder Punktestand anzeigen
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Liste aller Industrien oder Errichtung und Finanzierung einer neuen Industrie
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Zuglisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Fahrzeuglisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Schiffslisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Flugzeuglisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ansicht vergrößern (hereinzoomen)
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ansicht vergrössern (hereinzoomen)
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Ansicht verkleinern (herauszoomen)
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Gleise legen
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Straßen bauen

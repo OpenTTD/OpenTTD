@@ -444,6 +444,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :콘솔 켜기/끄기
 STR_ABOUT_MENU_AI_DEBUG                                         :AI 디버그
 STR_ABOUT_MENU_SCREENSHOT                                       :스크린샷 찍기
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :확대된 스크린샷 찍기
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :맵 전체 스크린샷
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD'에 대해서
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :스프라이트 정렬도구
@@ -2142,6 +2143,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}이 산�
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}이 화물의 공급자와 고객을 보려면 클릭하세요.
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}산업망 표시
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}이 산업시설에서 생산되고 소비되는 화물을 보여줍니다.
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}소형맵 열기
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}산업망에 표시된 산업을 소형맵에서 볼 수 있게 합니다.
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지역의 지형 정보
@@ -3644,6 +3647,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}터널�
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}지형 문제로 터널의 반대쪽 출구를 만들 수 없습니다
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... 오브젝트가 너무 많습니다.
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}오브젝트를 건설할 수 없습니다...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}중간에 오브젝트가 있습니다
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... 중간에 회사 HQ가 있습니다.
