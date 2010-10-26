@@ -236,7 +236,7 @@ STR_TOOLTIP_SHADE                                               :{BLACK}Fenster 
 STR_TOOLTIP_DEBUG                                               :{BLACK}Zeige Daten für NewGRF-Fehlerbeseitigung
 STR_TOOLTIP_STICKY                                              :{BLACK}Fenster wird nicht durch die "schließe alle Fenster"-Taste geschlossen
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicken und Ziehen zum Ändern der Größe des Fensters
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Zwischen Fenstergrössen umschalten
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Zwischen Fenstergrößen umschalten
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: Liste auf- und abwärts blättern
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: Liste nach links und rechts blättern
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Gebäude etc. von einem Planquadrat abreißen
@@ -309,7 +309,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Zugliste
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Fahrzeuglisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Schiffslisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Flugzeuglisten der Firmen anzeigen. Strg+Klick wechselt zwischen einfacher und erweiterter Liste
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ansicht vergrössern (hereinzoomen)
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ansicht vergrößern (hereinzoomen)
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Ansicht verkleinern (herauszoomen)
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Gleise legen
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Straßen bauen
@@ -1864,10 +1864,10 @@ STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Herunter
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} von {BYTES} heruntergeladen ({NUM} %)
 
 # Content downloading error messages
-STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kann keine Verbindung mit dem Inhalts-Server verbinden...
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kann keine Verbindung mit dem Inhalts-Server herstellen...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Herunterladen fehlgeschlagen...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Verbindung verloren
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kann Datei nicht auf Festplatte schreiben
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... kann Datei nicht schreiben
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kann heruntergeladene Datei nicht entpacken
 
 # Transparency settings window
