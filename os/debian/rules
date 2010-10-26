@@ -30,7 +30,6 @@ override_dh_auto_install:
 	# Since 0.7.0, upstream Makefile installs some unwanted stuff.
 	-rm $(CURDIR)/debian/openttd/usr/share/doc/openttd/COPYING
 	-rm $(CURDIR)/debian/openttd/usr/share/doc/openttd/changelog.txt
-	-rm $(CURDIR)/debian/openttd/usr/share/doc/openttd/ob*_format.txt
 
 # Don't do testing. Because the OpenTTD Makefile always does dependency
 # generation (even on invalid targets), dh_auto_test thinks there is a
