@@ -111,17 +111,14 @@ static void ObjectSetTriggers(const ResolverObject *object, int triggers)
 
 
 /**
- * Make an analysis of a tile and check for its belonging to the same
- * object, and/or the same grf file
+ * Make an analysis of a tile and get the object type.
  * @param tile TileIndex of the tile to query
- * @param index Object to which to compare the tile to
  * @param cur_grfid GRFID of the current callback chain
  * @return value encoded as per NFO specs
  */
-static uint32 GetObjectIDAtOffset(TileIndex tile, ObjectID oid, uint32 cur_grfid)
+static uint32 GetObjectIDAtOffset(TileIndex tile, uint32 cur_grfid)
 {
-	if (!IsTileType(tile, MP_OBJECT) || GetObjectIndex(tile) != oid) {
-		/* No object and/or the tile does not have the same object as the one we match it with */
+	if (!IsTileType(tile, MP_OBJECT)) {
 		return 0xFFFF;
 	}
 
@@ -295,7 +292,7 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 		case 0x46: return GetTownRadiusGroup(t, tile) << 16 | min(DistanceSquare(tile, t->xy), 0xFFFF);
 
 		/* Get object ID at offset param */
-		case 0x60: return GetObjectIDAtOffset(GetNearbyTile(parameter, tile), o == NULL ? INVALID_OBJECT : o->index, object->grffile->grfid);
+		case 0x60: return GetObjectIDAtOffset(GetNearbyTile(parameter, tile), object->grffile->grfid);
 
 		/* Get random tile bits at offset param */
 		case 0x61:
