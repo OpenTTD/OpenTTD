@@ -17,19 +17,15 @@ endif
 # to be explicit about the dependencies, in case we're not running in a
 # clean build root.
 override_dh_auto_configure:
-	./configure $(CROSS) --prefix-dir=/usr --install-dir=debian/openttd --without-allegro --with-zlib --with-sdl --with-png --with-freetype --with-fontconfig --with-icu --with-liblzo2 --with-lzma --without-iconv --disable-strip CFLAGS="$(CFLAGS) -g"
+	./configure $(CROSS) --prefix-dir=/usr --install-dir=debian/openttd --without-allegro --with-zlib --with-sdl --with-png --with-freetype --with-fontconfig --with-icu --with-liblzo2 --with-lzma --without-iconv --disable-strip CFLAGS="$(CFLAGS) -g" LDFLAGS="$(LDFLAGS) -Wl,-as-needed"
 
 # Do some extra installation
 override_dh_auto_install:
-	$(MAKE) install
+	$(MAKE) install DO_NOT_INSTALL_CHANGELOG=1 DO_NOT_INSTALL_LICENSE=1
 
 	# Install the wrapper and make it executable
 	install -d debian/openttd/usr/share/games/openttd/
 	install -m755 debian/openttd-wrapper debian/openttd/usr/share/games/openttd/
-
-	# Since 0.7.0, upstream Makefile installs some unwanted stuff.
-	-rm $(CURDIR)/debian/openttd/usr/share/doc/openttd/COPYING
-	-rm $(CURDIR)/debian/openttd/usr/share/doc/openttd/changelog.txt
 
 # Don't do testing. Because the OpenTTD Makefile always does dependency
 # generation (even on invalid targets), dh_auto_test thinks there is a
