@@ -83,5 +83,6 @@ bool GetArgumentInteger(uint32 *value, const char *arg);
 void IConsoleGUIInit();
 void IConsoleGUIFree();
 void IConsoleGUIPrint(ConsoleColour colour_code, char *string);
+char *RemoveUnderscores(char *name);
 
 #endif /* CONSOLE_INTERNAL_H */

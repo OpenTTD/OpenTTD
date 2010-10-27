@@ -1338,6 +1338,7 @@ DEF_CONSOLE_CMD(ConHelp)
 		const IConsoleCmd *cmd;
 		const IConsoleAlias *alias;
 
+		RemoveUnderscores(argv[1]);
 		cmd = IConsoleCmdGet(argv[1]);
 		if (cmd != NULL) {
 			cmd->proc(0, NULL);
