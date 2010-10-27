@@ -42,6 +42,6 @@ bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCa
 IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id);
 
 /* in newgrf_industrytiles.cpp*/
-uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index);
+uint32 GetNearbyIndustryTileInformation(byte parameter, TileIndex tile, IndustryID index, bool signed_offsets = true);
 
 #endif /* NEWGRF_INDUSTRIES_H */

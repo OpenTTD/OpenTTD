@@ -1643,6 +1643,7 @@ static const SaveLoadFormat _saveload_formats[] = {
 #else
 	{"zlib",   TO_BE32X('OTTZ'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL,            0, 0, 0},
 #endif
+	{"lzma",   TO_BE32X('OTTX'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL,            0, 0, 0},
 };
 
 /**

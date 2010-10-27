@@ -345,7 +345,7 @@ static int TruncateString(char *str, int maxw, bool ignore_setxy)
 	ddd_w = ddd = GetCharacterWidth(size, '.') * 3;
 
 	for (ddd_pos = str; (c = Utf8Consume(const_cast<const char **>(&str))) != '\0'; ) {
-		if (IsPrintable(c)) {
+		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
 			w += GetCharacterWidth(size, c);
 
 			if (w > maxw) {
@@ -401,7 +401,7 @@ static int GetStringWidth(const UChar *str)
 	for (;;) {
 		c = *str++;
 		if (c == 0) break;
-		if (IsPrintable(c)) {
+		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
 			width += GetCharacterWidth(size, c);
 		} else {
 			switch (c) {
@@ -654,7 +654,7 @@ uint32 FormatStringLinebreaks(char *str, const char *last, int maxw)
 			/* whitespace is where we will insert the line-break */
 			if (IsWhitespace(c)) last_space = str;
 
-			if (IsPrintable(c)) {
+			if (IsPrintable(c) && !IsTextDirectionChar(c)) {
 				int char_w = GetCharacterWidth(size, c);
 				w += char_w;
 				if (w > maxw) {
@@ -869,7 +869,7 @@ Dimension GetStringBoundingBox(const char *str)
 	for (;;) {
 		c = Utf8Consume(&str);
 		if (c == 0) break;
-		if (IsPrintable(c)) {
+		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
 			br.width += GetCharacterWidth(size, c);
 		} else {
 			switch (c) {
@@ -974,7 +974,7 @@ skip_cont:;
 			_last_fontsize = size;
 			return x;  // Nothing more to draw, get out. And here is the new x position
 		}
-		if (IsPrintable(c)) {
+		if (IsPrintable(c) && !IsTextDirectionChar(c)) {
 			if (x >= dpi->left + dpi->width) goto skip_char;
 			if (x + _max_char_width >= dpi->left) {
 				GfxMainBlitter(GetGlyph(size, c), x, y, BM_COLOUR_REMAP);
@@ -998,7 +998,7 @@ skip_cont:;
 			size = FS_SMALL;
 		} else if (c == SCC_BIGFONT) { // {BIGFONT}
 			size = FS_LARGE;
-		} else {
+		} else if (!IsTextDirectionChar(c)) {
 			DEBUG(misc, 0, "[utf8] unknown string command character %d", c);
 		}
 	}

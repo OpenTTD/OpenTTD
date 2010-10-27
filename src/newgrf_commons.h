@@ -109,7 +109,7 @@ extern IndustryOverrideManager _industry_mngr;
 extern IndustryTileOverrideManager _industile_mngr;
 
 uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
-TileIndex GetNearbyTile(byte parameter, TileIndex tile);
+TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets = true);
 uint32 GetNearbyTileInformation(TileIndex tile);
 
 #endif /* NEWGRF_COMMONS_H */

@@ -999,20 +999,30 @@ public:
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		if (widget != VLW_WIDGET_LIST) return;
+		switch (widget) {
+			case VLW_WIDGET_LIST:
+				resize->height = GetVehicleListHeight(this->vehicle_type, 1);
+				switch (this->vehicle_type) {
+					case VEH_TRAIN:
+					case VEH_ROAD:
+						size->height = 6 * resize->height;
 
-		resize->height = GetVehicleListHeight(this->vehicle_type, 1);
+						break;
+					case VEH_SHIP:
+					case VEH_AIRCRAFT:
+						size->height = 4 * resize->height;
+						break;
+					default: NOT_REACHED();
+				}
+				break;
 
-		switch (this->vehicle_type) {
-			case VEH_TRAIN:
-			case VEH_ROAD:
-				size->height = 6 * resize->height;
+			case VLW_WIDGET_SORT_ORDER: {
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
+				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the string is centred and it also looks better.
+				d.height += padding.height;
+				*size = maxdim(*size, d);
 				break;
-			case VEH_SHIP:
-			case VEH_AIRCRAFT:
-				size->height = 4 * resize->height;
-				break;
-			default: NOT_REACHED();
+			}
 		}
 	}
 
