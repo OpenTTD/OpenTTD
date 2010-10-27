@@ -333,7 +333,9 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 
 	/* for huge numbers, compact the number into k or M */
 	if (compact) {
-		if (number >= 1000000000) {
+		/* Take care of the 'k' rounding. Having 1 000 000 k
+		 * and 1 000 M is inconsistent, so always use 1 000 M. */
+		if (number >= 1000000000 - 500) {
 			number = (number + 500000) / 1000000;
 			multiplier = "M";
 		} else if (number >= 1000000) {
@@ -1549,7 +1551,7 @@ static bool FindMissingGlyphs(const char **str)
 					text++;
 				} else if (c == SCC_SETXY) {
 					text += 2;
-				} else if (IsPrintable(c) && c != '?' && GetGlyph(FS_NORMAL, c) == question_mark) {
+				} else if (IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(FS_NORMAL, c) == question_mark) {
 					/* The character is printable, but not in the normal font. This is the case we were testing for. */
 					return true;
 				}
