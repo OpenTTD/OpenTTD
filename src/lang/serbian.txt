@@ -294,7 +294,7 @@ STR_QUANTITY_WOOD                                               :{WEIGHT} drva
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} rude gvožđa
 STR_QUANTITY_STEEL                                              :{WEIGHT} čelika
 STR_QUANTITY_VALUABLES                                          :{COMMA} džak{P "" a ova} dragocenosti
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bakarne rude
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} rude bakra
 STR_QUANTITY_MAIZE                                              :{WEIGHT} kukuruza
 STR_QUANTITY_FRUIT                                              :{WEIGHT} voća
 STR_QUANTITY_DIAMONDS                                           :{COMMA} džak{P "" a ova} dijamanata
