@@ -3406,7 +3406,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ther
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}The town will not build roads. You can enable building of roads via Advanced Settings->Economy->Towns.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Road works in progress
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Can't delete this town...{}A station or depot is referring to the town or a town owned tile can't be removed
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... there is no suitable place for a statue in the center of this town
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... there is no suitable place for a statue in the centre of this town
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Can't generate industries...
@@ -3665,7 +3665,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Can't ch
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Can't delete sign...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :A clone of Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :A simulation game based on Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

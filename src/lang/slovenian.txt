@@ -918,7 +918,7 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turška lira (T
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovaška krona (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilski Real (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :estonske krone (EEK)
-STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Poljubno...
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Po meri...
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Merske enote
@@ -1314,7 +1314,7 @@ STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Omogoč
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Ustanavljanje mest v igri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prepovedano
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :dovoljeno
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dovoljeno, poljubna oblika mesta
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dovoljeno, oblika mesta po meri
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}Sajenje dreves znotraj igre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :brez {RED}(onemogoči gozdarski obrat)
@@ -1396,7 +1396,7 @@ STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Začni n
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Naloži shranjeno igro
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Začni novo igro z uporabo višinske karte za pokrajino
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Začni novo igro po scenariju
-STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Ustvari poljubni svet/scenarij
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Ustvari svet/scenarij po meri
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Poženi večigralsko igro
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Izberi zmeren tip podnebja
@@ -3847,7 +3847,7 @@ STR_SV_STNAME_WOODS                                             :{STRING} Gozdna
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Ob jezeru
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Izmenjalna
 STR_SV_STNAME_AIRPORT                                           :{STRING} Letališče
-STR_SV_STNAME_OILFIELD                                          :{STRING} Naftna polja
+STR_SV_STNAME_OILFIELD                                          :{STRING} Naftna ploščad
 STR_SV_STNAME_MINES                                             :{STRING} Rudniška
 STR_SV_STNAME_DOCKS                                             :{STRING} Doki
 STR_SV_STNAME_BUOY                                              :{STRING}

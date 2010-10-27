@@ -33,11 +33,11 @@ STR_CARGO_PLURAL_MAIL                                           :ڈاک
 STR_CARGO_PLURAL_OIL                                            :تیل
 STR_CARGO_PLURAL_LIVESTOCK                                      :مویشی
 STR_CARGO_PLURAL_GOODS                                          :سامان تجارت
-STR_CARGO_PLURAL_GRAIN                                          :گیہوں
+STR_CARGO_PLURAL_GRAIN                                          :اناج
 STR_CARGO_PLURAL_WOOD                                           :لکڑی
 STR_CARGO_PLURAL_IRON_ORE                                       :خام لوہا
-STR_CARGO_PLURAL_STEEL                                          :فولاد
-STR_CARGO_PLURAL_VALUABLES                                      :قیمتی اشیا
+STR_CARGO_PLURAL_STEEL                                          :سٹیل
+STR_CARGO_PLURAL_VALUABLES                                      :قیمتی سامان
 STR_CARGO_PLURAL_COPPER_ORE                                     :خام تانبا
 STR_CARGO_PLURAL_MAIZE                                          :مکی
 STR_CARGO_PLURAL_FRUIT                                          :پھل
@@ -47,12 +47,12 @@ STR_CARGO_PLURAL_PAPER                                          :کاغذ
 STR_CARGO_PLURAL_GOLD                                           :سونا
 STR_CARGO_PLURAL_WATER                                          :پانی
 STR_CARGO_PLURAL_WHEAT                                          :گندم
-STR_CARGO_PLURAL_RUBBER                                         :ربر
+STR_CARGO_PLURAL_RUBBER                                         :ربڑ
 STR_CARGO_PLURAL_SUGAR                                          :چینی
 STR_CARGO_PLURAL_TOYS                                           :کھلونے
 STR_CARGO_PLURAL_CANDY                                          :مٹھایاں
-STR_CARGO_PLURAL_COLA                                           :کولا
-STR_CARGO_PLURAL_COTTON_CANDY                                   :لچھا
+STR_CARGO_PLURAL_COLA                                           :کوئلہ
+STR_CARGO_PLURAL_COTTON_CANDY                                   :کینڈی فلاس
 STR_CARGO_PLURAL_BUBBLES                                        :بلبلے
 STR_CARGO_PLURAL_TOFFEE                                         :ٹافی
 STR_CARGO_PLURAL_BATTERIES                                      :بیٹریاں
@@ -67,26 +67,26 @@ STR_CARGO_SINGULAR_MAIL                                         :ڈاک
 STR_CARGO_SINGULAR_OIL                                          :تیل
 STR_CARGO_SINGULAR_LIVESTOCK                                    :مویشی
 STR_CARGO_SINGULAR_GOODS                                        :سامان
-STR_CARGO_SINGULAR_GRAIN                                        :گیہوں
+STR_CARGO_SINGULAR_GRAIN                                        :اناج
 STR_CARGO_SINGULAR_WOOD                                         :لکڑی
 STR_CARGO_SINGULAR_IRON_ORE                                     :خام لوہا
 STR_CARGO_SINGULAR_STEEL                                        :فولاد
-STR_CARGO_SINGULAR_VALUABLES                                    :نوادرات
+STR_CARGO_SINGULAR_VALUABLES                                    :قیمتی سامان
 STR_CARGO_SINGULAR_COPPER_ORE                                   :خام تانبا
 STR_CARGO_SINGULAR_MAIZE                                        :مکیی
-STR_CARGO_SINGULAR_FRUIT                                        :بھل
+STR_CARGO_SINGULAR_FRUIT                                        :پھل
 STR_CARGO_SINGULAR_DIAMOND                                      :ہیرا
 STR_CARGO_SINGULAR_FOOD                                         :کھانا
 STR_CARGO_SINGULAR_PAPER                                        :کاغذ
 STR_CARGO_SINGULAR_GOLD                                         :سونا
 STR_CARGO_SINGULAR_WATER                                        :پانی
 STR_CARGO_SINGULAR_WHEAT                                        :گندم
-STR_CARGO_SINGULAR_RUBBER                                       :ربر
+STR_CARGO_SINGULAR_RUBBER                                       :ربڑ
 STR_CARGO_SINGULAR_SUGAR                                        :چینی
 STR_CARGO_SINGULAR_TOY                                          :کھلونا
-STR_CARGO_SINGULAR_CANDY                                        :مٹھایی
+STR_CARGO_SINGULAR_CANDY                                        :مٹھائی
 STR_CARGO_SINGULAR_COLA                                         :کولا
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :لچھا
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :کینڈی فلاس
 STR_CARGO_SINGULAR_BUBBLE                                       :بلبلہ
 STR_CARGO_SINGULAR_TOFFEE                                       :ٹافی
 STR_CARGO_SINGULAR_BATTERY                                      :بیٹری
@@ -95,16 +95,16 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :گیسی مشر
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{P 0 مسافر مسافرﻴﻦ}{COMMA}
 STR_QUANTITY_COAL                                               :{WEIGHT} کویلہ
 STR_QUANTITY_MAIL                                               :{COMMA} ڈاک ک{P ا ے} تھیل{P ا ے}
-STR_QUANTITY_OIL                                                :{VOLUME}خام تیل
+STR_QUANTITY_OIL                                                :{VOLUME} تیل
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} عدد مویشی
 STR_QUANTITY_GOODS                                              :سامان ک{P 0 ا ے} {COMMA} کریٹ
-STR_QUANTITY_GRAIN                                              :انآج کا {WEIGHT} وزن
-STR_QUANTITY_WOOD                                               :لکڑی کا {WEIGHT} وزن
-STR_QUANTITY_IRON_ORE                                           :خام دھات لوھے کا {WEIGHT} وزن
-STR_QUANTITY_STEEL                                              :اسٹیل کا {WEIGHT} وزن
+STR_QUANTITY_GRAIN                                              :{WEIGHT} انآج
+STR_QUANTITY_WOOD                                               :{WEIGHT} لکڑی
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} خام لوہا
+STR_QUANTITY_STEEL                                              :{WEIGHT} سٹیل
 STR_QUANTITY_VALUABLES                                          :قیمتی سامان ک{P 0 ا ے} {COMMA} تھیل{P ا ے}
 STR_QUANTITY_COPPER_ORE                                         :خام دھات تانبے کا {WEIGHT} وزن
 STR_QUANTITY_MAIZE                                              :مکئی کا {WEIGHT} وزن
@@ -804,6 +804,9 @@ STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}دریا
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ نیچے کرو
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}زمین کا ایک کنارہ اونچا کرو
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 
 # Land generation window (SE)
@@ -827,6 +830,8 @@ STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}بہتر
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{G=f}{BLACK}کوئٰ سی
 
 # Fund new industry window
+
+# Industry cargoes window
 
 # Land area window
 
@@ -870,6 +875,8 @@ STR_ABOUT_OPENTTD                                               :{WHITE}اوپن
 
 
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -883,13 +890,15 @@ STR_ABOUT_OPENTTD                                               :{WHITE}اوپن
 
 
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
 STR_NEWGRF_INVALID_CARGO                                        :<غلط سامان>
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :<غلط سامان> کا {COMMA}
-STR_NEWGRF_INVALID_ENGINE                                       :<غلط اِنجن>
+STR_NEWGRF_INVALID_ENGINE                                       :<غلط انجن ماڈل>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<غلط صنعت>
 
 # Sign list window

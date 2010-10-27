@@ -550,6 +550,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalhes
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Ver detalhes sobre esta empresa
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estações:
@@ -2039,6 +2040,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Levantar
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar terreno
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolha um tipo de árvore para plantar
@@ -2403,11 +2407,12 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da 
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Os ficheiros NewGRF '{0:STRING}' podem causar erros e/ou perda de sincronismo da aplicação.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Mudou o estado de energia para '{1:ENGINE}' quando fora de um depósito.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica o comprimento do veículo para '{1:ENGINE}' quando fora do depósito.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O Comboio '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido. Possivelmente devido a problemas com os novos NewGRFs. Podem ocorrer erros de sincronização e a aplicação pode terminar.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' fornece informação incorrecta.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informação de carga para '{1:ENGINE}', é diferente da que consta na lista de veículos. Isto poderá causar problemas ao ser automaticamente renovado/substituído.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informação de carga para '{1:ENGINE}' é diferente da que consta na lista de veículos. Isto poderá causar problemas ao ser automaticamente renovado/substituído.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no callback de produção.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
@@ -3240,6 +3245,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Definiç
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Alterar as definições da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Terminar a IA, recarrega o script e reinicia a IA
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver saída de depuração desta IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD é construido sem suporte IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... não há nenhuma IA disponível!
@@ -3659,7 +3665,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Não pod
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Não é possível apagar o sinal...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Um clone de Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Um jogo de simulação baseado no Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

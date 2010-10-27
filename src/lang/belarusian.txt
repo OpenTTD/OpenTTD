@@ -533,10 +533,10 @@ STR_UNITS_FORCE_SI                                              :{COMMA} кН
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Увядзіце радок фільтра
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Увядзіце ключавое слова для фільтрацыі сьпісу
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Зьмена напрамку сартавання (зьмяньшэньне / ўзрастаньне)
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Зьмена напрамку сартаваньня (зьмяньшэньне / ўзрастаньне)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Зьмена крытэрыю сартаваньня
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выберыце фiльтр
-STR_BUTTON_SORT_BY                                              :{BLACK}Сартаванне
+STR_BUTTON_SORT_BY                                              :{BLACK}Сартаваньне
 STR_BUTTON_LOCATION                                             :{BLACK}Агляд
 STR_BUTTON_RENAME                                               :{BLACK}Перайменаваць
 
@@ -1199,30 +1199,30 @@ STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ездзіць 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Ездзіць па правым
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Назвы гарадоў
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}У якім стылі будуць назвы населеных пунктаў
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}На якой мове будуць назвы населеных пунктаў
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ангельскі (арыгінальны)
-STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Францускі
-STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Нямецкі
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ангельскі (дадатковы)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Лацінаамэрыканскі
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Ангельскі (жартоўны)
-STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Швэдзкі
-STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Нідэрляндзкі
-STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Фінскі
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Польскі
-STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Славацкі
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Нарвэскі
-STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Вугорскі
-STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Аўстрыйскі
-STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румынскі
-STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чэскі
-STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швайцарскі
-STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Дацкі
-STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турэцкі
-STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Італьянскі
-STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталёнскі
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ангельскія (арыгінальныя)
+STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Францускія
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Нямецкія
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ангельскія (дадатковыя)
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Лацінаамэрыканскія
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Ангельскія (жартоўныя)
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Швэдзкія
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Нідэрляндзкія
+STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Фінскія
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Польскія
+STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Славацкія
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Нарвэскія
+STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Вугорскія
+STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Аўстрыйскія
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Румынскія
+STR_GAME_OPTIONS_TOWN_NAME_CZECH                                :Чэскія
+STR_GAME_OPTIONS_TOWN_NAME_SWISS                                :Швайцарскія
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Дацкія
+STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Турэцкія
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Італьянскія
+STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Каталёнскія
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Аўтазахаваньне
@@ -1829,7 +1829,7 @@ STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Кліе
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Клиентаў анлайн/макс. {}Кампаніяў анлайн/макс.
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Памер мапы
-STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Памер мапы гульні{}Клікніце для сартавання па плошчы
+STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Памер мапы гульні{}Клікніце для сартаваньня па плошчы
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Бягучая дата
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Гады
@@ -2352,8 +2352,8 @@ STR_STATION_BUILD_AIRPORT_HELIDEPOT                             :{BLACK}Верт
 STR_STATION_BUILD_AIRPORT_HELISTATION                           :{BLACK}Верталётная база
 
 STR_STATION_BUILD_AIRPORT_SMALL_AIRPORTS                        :{BLACK}Малыя аэрапорты
-STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Вялікія аэрапорты
-STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Хабы (вузлавыя аэрапорты)
+STR_STATION_BUILD_AIRPORT_LARGE_AIRPORTS                        :{BLACK}Сярэднiя аэрапорты
+STR_STATION_BUILD_AIRPORT_HUB_AIRPORTS                          :{BLACK}Вялiкiя аэрапорты
 STR_STATION_BUILD_AIRPORT_HELIPORTS                             :{BLACK}Верталётныя пляцоўкі
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Узровень шуму: {GOLD}{COMMA}
@@ -3980,7 +3980,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не а�
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не атрымалася выдаліць знак...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Клён гульні Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Эканамічны сімулятар на аснове «Transport Tycoon Deluxe»
 
 ##id 0x2000
 # Town building names

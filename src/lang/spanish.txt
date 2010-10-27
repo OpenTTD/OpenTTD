@@ -36,10 +36,10 @@ STR_CARGO_PLURAL_LIVESTOCK                                      :Ganado
 STR_CARGO_PLURAL_GOODS                                          :Mercancías
 STR_CARGO_PLURAL_GRAIN                                          :Grano
 STR_CARGO_PLURAL_WOOD                                           :Madera
-STR_CARGO_PLURAL_IRON_ORE                                       :Mineral de hierro
+STR_CARGO_PLURAL_IRON_ORE                                       :Mineral de Hierro
 STR_CARGO_PLURAL_STEEL                                          :Acero
-STR_CARGO_PLURAL_VALUABLES                                      :Objetos de valor
-STR_CARGO_PLURAL_COPPER_ORE                                     :Mineral de cobre
+STR_CARGO_PLURAL_VALUABLES                                      :Objetos de Valor
+STR_CARGO_PLURAL_COPPER_ORE                                     :Mineral de Cobre
 STR_CARGO_PLURAL_MAIZE                                          :Maíz
 STR_CARGO_PLURAL_FRUIT                                          :Frutas
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamantes
@@ -53,7 +53,7 @@ STR_CARGO_PLURAL_SUGAR                                          :Azúcar
 STR_CARGO_PLURAL_TOYS                                           :Juguetes
 STR_CARGO_PLURAL_CANDY                                          :Dulces
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Algodón de azúcar
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Algodón Dulce
 STR_CARGO_PLURAL_BUBBLES                                        :Burbujas
 STR_CARGO_PLURAL_TOFFEE                                         :Caramelos
 STR_CARGO_PLURAL_BATTERIES                                      :Pilas
@@ -70,10 +70,10 @@ STR_CARGO_SINGULAR_LIVESTOCK                                    :Ganado
 STR_CARGO_SINGULAR_GOODS                                        :Mercancía
 STR_CARGO_SINGULAR_GRAIN                                        :Grano
 STR_CARGO_SINGULAR_WOOD                                         :Madera
-STR_CARGO_SINGULAR_IRON_ORE                                     :Mineral de hierro
+STR_CARGO_SINGULAR_IRON_ORE                                     :Mineral de Hierro
 STR_CARGO_SINGULAR_STEEL                                        :Acero
-STR_CARGO_SINGULAR_VALUABLES                                    :Objetos de valor
-STR_CARGO_SINGULAR_COPPER_ORE                                   :Mineral de cobre
+STR_CARGO_SINGULAR_VALUABLES                                    :Objetos de Valor
+STR_CARGO_SINGULAR_COPPER_ORE                                   :Mineral de Cobre
 STR_CARGO_SINGULAR_MAIZE                                        :Maíz
 STR_CARGO_SINGULAR_FRUIT                                        :Fruta
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamantes
@@ -87,7 +87,7 @@ STR_CARGO_SINGULAR_SUGAR                                        :Azúcar
 STR_CARGO_SINGULAR_TOY                                          :Juguete
 STR_CARGO_SINGULAR_CANDY                                        :Dulce
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Algodón de azúcar
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :Algodón Dulce
 STR_CARGO_SINGULAR_BUBBLE                                       :Burbuja
 STR_CARGO_SINGULAR_TOFFEE                                       :Caramelo
 STR_CARGO_SINGULAR_BATTERY                                      :Pilas
@@ -121,7 +121,7 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT} de az�
 STR_QUANTITY_TOYS                                               :{COMMA} juguete{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA} bolsa{P "" s} de dulces
 STR_QUANTITY_COLA                                               :{VOLUME} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algodón de azúcar
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algodón dulce
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuja{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} de caramelo{P "" s}
 STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P "" s}
@@ -309,7 +309,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostrar 
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostrar lista de aeronaves de la empresa. Ctrl+Click hace que no aparezca la lista de grupos
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Acercar vista
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Alejar vista
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir raíles
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir ferrocarril
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construir carreteras
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construir muelles para barcos
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construir aeropuertos
@@ -1018,9 +1018,9 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Actitud
 
 STR_NONE                                                        :Ninguno
 STR_NUM_VERY_LOW                                                :Muy Bajo
-STR_NUM_LOW                                                     :Baja
+STR_NUM_LOW                                                     :Bajo
 STR_NUM_NORMAL                                                  :Normal
-STR_NUM_HIGH                                                    :Alta
+STR_NUM_HIGH                                                    :Alto
 STR_NUM_CUSTOM                                                  :Personalizado
 
 STR_VARIETY_NONE                                                :Ninguna
@@ -1037,9 +1037,9 @@ STR_AI_SPEED_FAST                                               :Rápida
 STR_AI_SPEED_VERY_FAST                                          :Muy rápida
 
 STR_SEA_LEVEL_VERY_LOW                                          :Muy bajo
-STR_SEA_LEVEL_LOW                                               :Baja
-STR_SEA_LEVEL_MEDIUM                                            :Media
-STR_SEA_LEVEL_HIGH                                              :Alta
+STR_SEA_LEVEL_LOW                                               :Bajo
+STR_SEA_LEVEL_MEDIUM                                            :Medio
+STR_SEA_LEVEL_HIGH                                              :Alto
 
 STR_DISASTER_NONE                                               :Ninguna
 STR_DISASTER_REDUCED                                            :Reducidas
@@ -1062,7 +1062,7 @@ STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS                      :Al final de la 
 STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Solo al final de la línea
 
 STR_DISASTERS_OFF                                               :No
-STR_DISASTERS_ON                                                :Si
+STR_DISASTERS_ON                                                :Sí
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
@@ -1119,7 +1119,7 @@ STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Carga e
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor velocidad avión: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Cantidad de aviones estrellados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :ninguno
-STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducidos
+STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :reducida
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite construir paradas sobre carreteras de pueblo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permitir pasar a través de las paradas de carretera de los competidores: {ORANGE}{STRING}
@@ -1132,7 +1132,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeropue
 STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avisar si el tren se pierde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisar órdenes de los vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :no
-STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :si, pero excluye los detenidos
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :sí, pero excluye los detenidos
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos los vehículos
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avisar si las ganancias de un vehículo son negativas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Los vehículos nunca caducan: {ORANGE}{STRING}
@@ -1243,7 +1243,7 @@ STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Interva
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de mantenimiento por defecto para barcos: {ORANGE}desactivado
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Desactivar mantenimiento cuando las averías están desactivadas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activar límites de velocidad en vagones: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Desactivar raíles eléctricos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISABLE_ELRAILS                              :{LTBLUE}Desactivar ferrocarriles eléctricos: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{LTBLUE}Noticias en color aparecen en: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Fecha de inicio: {ORANGE}{STRING}
@@ -1478,7 +1478,7 @@ STR_FACE_EUROPEAN                                               :{BLACK}Europea
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Seleccionar Cara Europea
 STR_FACE_AFRICAN                                                :{BLACK}Africana
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Seleccionar Cara Africana
-STR_FACE_YES                                                    :Si
+STR_FACE_YES                                                    :Sí
 STR_FACE_NO                                                     :No
 STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}Activar bigotes o pendientes
 STR_FACE_HAIR                                                   :Pelo:
@@ -1862,11 +1862,11 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Ajustar 
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Poner objetos invisibles en vez de transparentes
 
 # Base for station construction window(s)
-STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Iluminar área de alcance
+STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}Mostrar área de recogida
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}Apagado
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}Encendido
-STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}No iluminar área de alcance del lugar propuesto
-STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Iluminar área de alcance del lugar propuesto
+STR_STATION_BUILD_COVERAGE_AREA_OFF_TOOLTIP                     :{BLACK}No mostrar área de recogida del lugar propuesto
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}Mostrar área de recogida del lugar propuesto
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Acepta: {GOLD}{STRING}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Provisiones: {GOLD}{STRING}
 
@@ -1880,8 +1880,8 @@ STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Constru
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcción de ferrocarril
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcción Línea Eléctrica de Ferrocarril
-STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcción de monorraíl
-STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcción de tren de levitación magnética
+STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcción de Monorraíl
+STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcción de Maglev
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir tramo de ferrocarril. Ctrl permite retirar ferrocarriles
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir tramos de ferrocarril usando modo Autorraíl. Ctrl permite retirar ferrocarriles
@@ -1891,12 +1891,12 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construi
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir señales de ferrocarril. Ctrl cambia entre señales mecánicas y eléctricas{}Arrastrar construye señales en el trozo de ferrocarril recorrido. Arrastrar+Ctrl construye señales hasta el próximo cruce{}Ctrl+Click no abre la ventana de selección de señales
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir puente de ferrocarril
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviario
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Cambiar entre construir/retirar raíles, señales, estaciones y puntos de ruta de ferrocarril. Mantener pulsado Ctrl retirará también la vía al retirar estaciones y puntos de ruta
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Actualizar tipo de raíl
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Cambiar entre construir/retirar ferrocarriles, señales, estaciones y puntos de ruta de ferrocarril. Mantener pulsado Ctrl retirará también el ferrocarril al retirar estaciones y puntos de ruta
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Convertir/Actualizar tipo de ferrocarril
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientación del depósito
-STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccione la orientación del depósito de trenes
+STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Seleccione orientación del depósito de trenes
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Punto de ruta
@@ -1939,7 +1939,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Reducir 
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Incrementar arrastre de intensidad de señales
 
 # Bridge selection window
-STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Seleccione puente de raíl
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Seleccione Puente de Ferrocarril
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Elige puente de carretera
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selección de puente - Click en el puente elegido para construirlo
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2121,7 +2121,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/D
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Propietario: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Propietario de la carretera: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Propietario del tranvía: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propietario de la vía de tren: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Propietario del ferrocarril: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Autoridad local: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ninguna
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordenadas: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
@@ -2131,7 +2131,7 @@ STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Tipo de 
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceptada: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
-STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Límite de velocidad del raíl: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Límite de velocidad del ferrocarril: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rocas
@@ -2201,13 +2201,13 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Astillero
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Túnel ferroviario
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Túnel de carretera
 
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Puente de tren de acero suspendido
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Puente de tren de acero con tirantes
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Puente de tren colgante de acero
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Puente de tren de hormigón suspendido reforzado
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Puente de tren de madera
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Puente de tren de hormigón
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Puente de tren tubular
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Puente de ferrocarril de acero suspendido
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :Puente de ferrocarril de acero con tirantes
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Puente de ferrocarril colgante de acero
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Puente de ferrocarril de hormigón suspendido reforzado
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Puente de ferrocarril de madera
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Puente de ferrocarril de hormigón
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Puente de ferrocarril tubular
 
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Puente de carretera de acero suspendido
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Puente de carretera de acero con tirantes
@@ -2592,8 +2592,8 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Inaugurad
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Esquema de Color:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehículos:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" es}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} veh{P "" s}. carret{P er ""}a
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeronaves{P "" s}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} vehículo{P "" s} de carretera
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeronave{P "" s}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} barco{P "" s}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Ninguno
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valor de la empresa: {WHITE}{CURRENCY}
@@ -2671,7 +2671,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponib
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos disponibles
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos disponibles
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aviones disponibles
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver la lista de los motores disponibles para este tipo de vehículo.
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver la lista de vehículos disponibles para este tipo de vehículo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Administrar lista
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Enviar instrucciones a todos los vehículos de la lista
@@ -2705,20 +2705,20 @@ STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Borrar e
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renombrar el grupo seleccionado
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click para proteger este grupo del auto reemplazado global
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :Todos los vehículos compartidos
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Añadir vehículos con órdenes compartidas
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Quitar todos los vehículos
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renombrar un grupo
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nuevos vehículos de raíl
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuevo Vehículo Eléctrico de Raíles
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuevos vehículos de monorraíl
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nuevos Vehículos de Ferrocarril
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuevos Vehículos de Ferrocarril Eléctrico
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuevos Vehículos de Monorraíl
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuevos Vehículos Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehículos de Rail
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehículos de Ferrocarril
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuevos vehículos
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuevos barcos
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuevos Barcos
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nueva Aeronave
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Peso: {GOLD}{WEIGHT_S}
@@ -2879,14 +2879,14 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Presiona
 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemplazando: {ORANGE}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Cambia entre las ventanas de cambio de vagón y locomotora
-STR_REPLACE_ENGINES                                             :Motores
+STR_REPLACE_ENGINES                                             :Locomotoras
 STR_REPLACE_WAGONS                                              :Vagones
 
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccione tipo de raíl para el que desea reemplazar locomotoras
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccione tipo de ferrocarril para el que desea reemplazar locomotoras
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Muestra con qué vehículo está siendo reemplazado el vehículo de la izquierda
-STR_REPLACE_RAIL_VEHICLES                                       :Vehículos de Raíl
-STR_REPLACE_ELRAIL_VEHICLES                                     :Vehículos de Rail Eléctrico
-STR_REPLACE_MONORAIL_VEHICLES                                   :Vehículos Monorraíl
+STR_REPLACE_RAIL_VEHICLES                                       :Vehículos de Ferrocarril
+STR_REPLACE_ELRAIL_VEHICLES                                     :Vehículos de Ferrocarril Eléctrico
+STR_REPLACE_MONORAIL_VEHICLES                                   :Vehículos de Monorraíl
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehículos Maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retirar vagón: {ORANGE}{STRING}
@@ -3191,11 +3191,11 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horarios
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sin viaje
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
-STR_TIMETABLE_TRAVEL_FOR                                        :Viaje para {STRING}
-STR_TIMETABLE_STAY_FOR                                          :y estancia en {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar por {STRING}
+STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
+STR_TIMETABLE_STAY_FOR                                          :y permanecer durante {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} día{P "" s}
-STR_TIMETABLE_TICKS                                             :{COMMA} señal{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Los horarios tomarán {STRING} para completarse
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Estos horarios tomarán {STRING} para completarse (no todos los horarios)
@@ -3218,7 +3218,7 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpiar 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar Retrasos
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reajustar el contador del retraso, así el vehículo estará en horario
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automático
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Rellenar automáticamente
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (Ctrl+Click para tratar de mantener los tiempos de espera))
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
@@ -3492,8 +3492,8 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}La aeron
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Los trenes únicamente pueden ser modificarse estando detenidos dentro de un depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren demasiado largo
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}No se puede invertir dirección del vehículo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No se pude dar la vuelta a un vehículo compuesto por múltiples unidades
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipo de vía incompatible
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No se pude dar la vuelta a un vehículo compuesto por múltiples unidades...
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipo de ferrocarril incompatible
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No se puede mover vehículo...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}El motor posterior seguirá siempre su contraparte delantera
@@ -3511,16 +3511,16 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(límite de din
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinación de tramos imposible
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Primero debe retirar señales
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tramo de ferrocarril no apropiado
-STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Se debe retirar primero tramo de vía
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Primero se debe retirar tramo de ferrocarril
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Carretera de un solo sentido o bloqueada
-STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}No se permiten pasos a nivel para este tipo de raíl
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}No se permiten pasos a nivel para este tipo de ferrocarril
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}No se pueden construir señales aquí...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}No se pueden construir raíles aquí...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}No se pueden retirar raíles aquí...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}No se pueden construir ferrocarriles aquí...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}No se pueden retirar ferrocarriles aquí...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}No se pueden retirar señales de aquí...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}No se pueden convertir las señales aquí...
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}No se puede convertir tipo de raíl aquí...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}No se puede convertir tipo de ferrocarril aquí...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Ha de retirar carretera primero
@@ -3666,7 +3666,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}No se pu
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}No se puede borrar el cartel...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Un clon de Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Un juego de simulación basado en Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
@@ -3732,7 +3732,7 @@ STR_INDUSTRY_NAME_WATER_TOWER                                   :Torre de Agua
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fábrica
 STR_INDUSTRY_NAME_FARM_2                                        :Granja
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Aserradero
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Bosque de Algodón de azúcar
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Bosque de Algodón Dulce
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fábrica de Dulces
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Granja de Pilas
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Pozos de Cola
@@ -3831,7 +3831,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_WATER_TANKER                  :Cisterna de Agu
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Vagón de Fruta
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Vagón de Caucho
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Vagón de Azúcar
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Vagoneta de Algodón de azúcar
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Vagoneta de Algodón Dulce
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Vagoneta de caramelos
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagón de Burbujas
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Cisterna de Cola
@@ -3861,7 +3861,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Cisterna de Agu
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Vagón de Fruta
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Vagón de Caucho
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Vagón de Azúcar
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Vagoneta de Algodón de Azúcar
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Vagoneta de Algodón Dulce
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Vagoneta de Caramelos
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Vagón de Burbujas
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Cisterna de Cola
@@ -3893,7 +3893,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Cisterna de Agu
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Vagón de Fruta
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Vagón de Caucho
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Vagón de Azúcar
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Vagoneta de Algodón de azúcar
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Vagoneta de Algodón Dulce
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Vagoneta de Caramelos
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Vagón de Burbujas
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Cisterna de Cola
@@ -3966,9 +3966,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Camión de Azú
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :Camión de Cola MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Camión de Cola Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Camión de Cola Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Camión de Algodón de Azúcar MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Camión de Algodón de Azúcar Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Camión de Algodón de Azúcar Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :Camión de Algodón Dulce MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Camión de Algodón Dulce Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Camión de Algodón Dulce Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :Camión de Caramelos MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Camión de Caramelos Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Camión de Caramelos Wizzowow

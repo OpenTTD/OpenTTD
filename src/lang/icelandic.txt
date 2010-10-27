@@ -539,9 +539,9 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Verkfræðingur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Umferðarstjórnandi
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Flutningaskipuleggjandi
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Leiðarumsjónarmaður
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Farmstjóri
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Höfuðákvarðanarmaður
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Sætisherra
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Stjórnandi
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Framkvæmdarstjóri
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Stjórnarformaður
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Forseti
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Auðkýfingur
 
@@ -811,7 +811,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er tekinn að eldast mikið
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er tekinn að eldast mikið og nauðsynlegt er að skipta honum út
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ratar ekki á áfangastað
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} er týndur
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} er týnd.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Hagnaður síðasta árs af {VEHICLE} nam {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stöðvaði vegna þess að umbeðin endursetning klikkaði
@@ -1012,7 +1012,7 @@ STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Gerð l
 STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Magn sjávar/lækja: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Efnahagur: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Snúningur lestar: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Hrakföll: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Hamfarir: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Afstaða borgaryfirvalda til landmótunar: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 

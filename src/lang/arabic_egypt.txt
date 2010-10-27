@@ -215,6 +215,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}م3
 
 STR_UNITS_FORCE_SI                                              :{COMMA} كيلو نيوتن
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK} ادخل فلتر
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK} اختر كلمة اساسية لفلترة القائمة
@@ -549,6 +550,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}تفاص
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}عرض التفاصيل عن هذه الشركة
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}العربات:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}المحطات:
@@ -1084,7 +1086,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE} مود
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :الاصلي
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :واقعي
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}تدرج ميلان سكة القطار {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة : {ORANGE}{STRING} {LTBLUE} (not with NTP)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة : {ORANGE}{STRING} {LTBLUE} (not with OPF)
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}ربط محطات القطار المبنيه بجوار بعض: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE} السماح بربط محطتين غير متجاورتين : {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}أستخدام خوارزمية التحميل المحسنه: {ORANGE}{STRING}
@@ -1397,7 +1399,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}علام
 STR_CHEATS_WARNING                                              :{BLACK}تحذير! انت على وشك ان تخون منافسيك. هذا الخيانة ستبقى عار عليك الى الأبد.
 STR_CHEAT_MONEY                                                 :{LTBLUE}زيادة السيولة بـ {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}العب كشركة{ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}الجرافة السحرية - لازالة المصانع, الاشياء الغير متنقلة.{ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}الجرافة السحرية - لازالة المصانع و الاجسام غير القابلة للازالة.{ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}يمكن للانفاق ان تتقاطع: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}البناء خلال توقيف اللعبة: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}الطائرات النفاثة لن تتحطم كثيرا في المطارات الصغيرة {ORANGE} {STRING}
@@ -2038,6 +2040,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}رفع �
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}مستوى الارض
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}شاء ارض للأستخدام المستقبلي
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}اشجار
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK} اختر نوع الشجر لزراعتة
@@ -2103,6 +2108,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}التك
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK} الاحتمالية
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}بناء
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}مول
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}معلومات ارض
@@ -2302,7 +2309,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% �
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK} مولد الخريطة
 STR_GENERATION_TREE_GENERATION                                  :{BLACK} مولد الشجر
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK} غير قابل لتحريك
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}صانع الخامات
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}مولد المناطق الخشنة والصخرية
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}تجهيز لعبة
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK} تشغيل المتكررة
@@ -2351,6 +2358,15 @@ STR_NEWGRF_ADD_FILE_TOOLTIP                                     :{BLACK}اضف �
 STR_NEWGRF_ADD_RESCAN_FILES                                     :{BLACK}اعادة كشف للملفات
 STR_NEWGRF_ADD_RESCAN_FILES_TOOLTIP                             :{BLACK}تحديث قائمة NewGRF المتاحة
 
+# NewGRF parameters window
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED} تحذير: {SILVER}{STRING}
@@ -2373,6 +2389,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :محاولة ا
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} يحتوي على خصائص غير صالحة. جميع الخصائص الغير صالحة سوف يشار لها بعلامة استفهام حمراء.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :يحتوي على اوامر متعددة - 8 مدخلات
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :خطأ في قرائة البرمجة
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}ملف الرسوم المستخدم حاليا يفتقد لبعض الرسوم الاساسية.{}الرجاء حدث ملف الرسوم.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}تحذير!
@@ -2386,14 +2403,24 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}تم ت�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}ملف NewGRF مفقود
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}عدم الايقاف قد يتسبب في تعطل النسخة المفتوحة. لا تنشأ ملف اخطاء لاالخطاء التالية. {} هل تود بالفعل اكمال اللعب؟
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}حركات NewGFR '{0:STRING}'قد تتسبب في اخطاء او توقف للعبة
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}يغير طول العربة من '{1:ENGINE}' عندما تكون داخل المستودع
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}غير حالة العربات المكهربة ل'{1:ENGINE}' عندما لا تكون داخل ورشة الصيانة.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}يغير طول العربة من '{1:ENGINE}' عندما لا تكون داخل المستودع
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}قطار '{VEHICLE}' المملوك ل'{COMPANY}' لدية طول غير مسرح . غالبا نتج عن مشكلة في NewGRF. اللعبة قد تتوقف او تتعطل .
 
 STR_NEWGRF_BUGGY                                                :{WHITE}الرسوميات الجديدة '{0:STRING}' تعطي معلومات غير صحيحة.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}التكلفة \ السعة ل '{1:ENGINE}' تختلف ما بين قائمة الشراء و مابعد البناء. قد يتسبب هذا في فشل التبديل الذاتي.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' تسبب بدورة غير منتهية في نداء الانتاج
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<حمولة غير صالحة>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :؟؟
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} لـ<حمولة غير صالحة>
+STR_NEWGRF_INVALID_ENGINE                                       :<موديل العربة غير صالح>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<المصنع غير صالح>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}قائمة العلامات - {COMMA} علامة
@@ -2747,15 +2774,16 @@ STR_DEPOT_ROAD_VEHICLE_CAPTION                                  :{WHITE}{TOWN} �
 STR_DEPOT_SHIP_CAPTION                                          :{WHITE}{TOWN}حوض صيانة السفن
 STR_DEPOT_AIRCRAFT_CAPTION                                      :{WHITE}{STATION} حظيرة طائرات
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM}العربات {STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارات - اضغط على القطار للمعلومات, اسحب العربة لاضافتها / حذفها من القطار
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}العربات - اضغط على المركبة لعرض معلوماتها
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}السفن - اضغط على السفينة للتفاصيل
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}طائرة - اضغط على طائرة ما لتفاصيل
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارات - اضغط بالزر الايسر على القطار اضافةالعربة او حذفها, و الزر الايمن للمعلومات, اضغط مفتاح كنترول لتطبيقها علاى بقية العربات.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}العربات - اضغط على المركبة بالزر الايمن لعرض معلوماتها
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}السفن - اضغط على السفينة بالزر الايمن للتفاصيل
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}طائرة - اضغط على طائرة ما بالزر الايمن لتفاصيل
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}اسحب عربات القطار الى هنا لبيعها
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}اسحب العربة هنا لبيعها
@@ -2922,7 +2950,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}تتو�
 STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}لايوجد اوامر وجهات
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}لا يوجد اوامر وجهات , {VELOCITY}
 
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}متو�ه ل{WAYPOINT}
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}متوجه ل{WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}متوجه ل {WAYPOINT}, {VELOCITY}
 
 STR_VEHICLE_STATUS_HEADING_FOR_TRAIN_DEPOT                      :{ORANGE}متوجه لورشة قطارات {TOWN}
@@ -2942,6 +2970,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE               :{LTBLUE}صيا�
 STR_VEHICLE_STATUS_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL           :{LTBLUE}صيانة في حوض{TOWN}للسفن, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE                   :{LTBLUE}صيانه في حظيرة {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_HANGAR_SERVICE_VEL               :{LTBLUE}الصيانة في حظيرة {STATION}, {VELOCITY}
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} تفاصيل
@@ -2974,7 +3004,7 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}مقدا
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}فترات الصيانة: {LTBLUE}{COMMA} يوم {BLACK} اخر صيانة: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}فترات الصيانة: {LTBLUE}{COMMA}% {BLACK}    الصيانة الأخيرة: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}زيادة فترات الصيانة
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}زيادة فترات الصيانة بقدر 10. ومع مفتاح كنترول بمقدار 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK} انقاص فترات الصيانة بمعدل 10. Ctrl+ الضغط الانقاص بمعدل 5.
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}اسم القطار
@@ -3215,6 +3245,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}اعدا
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}غير اعدادات الذكاء الاصطناعي
 STR_AI_DEBUG_RELOAD                                             :{BLACK} اعادة تحميل الذكاء الصناعي
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK} حذف الذكاء الصناعي - اعادة تحميل الذكاء الصناعي و بدء تشغيلة من جديد
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}عرض صائد الاخطاء لهذه الاضافة
 
 STR_ERROR_NO_AI                                                 :{WHITE}تم بناء اللعبة بدون دعم للذكاء الاصطناعي
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... لا يوجد ذكاء اصطناعي متاح!
@@ -3375,6 +3406,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... لا
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}لن تبني البلدية طرق جديدة. بامكانك تمكين البلدية من بناء الطرق الجديدة عن طريق الاعدادات المتقدمة --> الاقتصاد --> المدن
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}اعمال الطرق قيد التنفيذ
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}لا يمكن ازالة هذه المدينة {}محطة او ورشة مرتبطة بالمدينة او هناك مربع مملوك للمدينة لا يمكن لزالته
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... لا يوجد مكان مناسب للمجسم بداخل هذة المدينة/البلدة
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}لا يمكن انشاء مصانع ...
@@ -3455,6 +3487,7 @@ STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... يج
 STR_ERROR_SHIP_MUST_BE_STOPPED_IN_DEPOT                         :{WHITE}يجب ان تكون السفينة متوقفة في حوض الصيانة
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED                              :{WHITE}يجب ان تكون الطائرة متوقفة في الحظيرة
 
+
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}يمكن تعديل القطارعندما يكون متوقف في ورشة الصيانة
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}القطار طويل جدا
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}لا يمكن تغيير اتجاة العربة ...
@@ -3479,6 +3512,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}يجب �
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}... مسار السكة الحديدية غير مناسب
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}يجب ازالة السكة اولا
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}طريق بإتجاه واحد أو مغلق
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}التقاطع المتعدد غير متاح لهذا النوع من السكك
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}لا يمكن بناء اشارة توقف هنا ...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}لا يمكن بناء سكة قطار هنا ...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}لا يمكن ازالة سكة القطار من هنا ...
@@ -3506,6 +3540,7 @@ STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}لا ي�
 
 # Tree related errors
 STR_ERROR_TREE_ALREADY_HERE                                     :{WHITE}... الاشجار موجودة هنا مسبقا
+STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... البيئة غير مناسبة لنوع الشجر
 STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :{WHITE}... لا يمكن زراعة اشجار هنا
 
 # Bridge related errors
@@ -3516,6 +3551,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}نهاي
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}الجسر منخفض جدا للوادي
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}البداية و النهاية يجب ان تكون على استقامة واحدة
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... يجب ان تكون نهايات الجسر على اليابسة
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... الجسر طويل جدا
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}لا يمكن بناء نفق هنا ...
@@ -3627,6 +3663,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... ال
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}لايمكن وضع علامة هنا...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}لا يمكن تعديل اسم العلامة ...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}لا يمكن حذف العلامة ...
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :نسخة مستنسخة من ترانسبورت تايكون ديلوكس
 
 ##id 0x2000
 # Town building names
@@ -4017,6 +4056,7 @@ STR_FORMAT_GROUP_NAME                                           :مجموعة{CO
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :نقطة عبور {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} نقطة عبور #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :محطة غير معروفة
 STR_DEFAULT_SIGN_NAME                                           :علامة

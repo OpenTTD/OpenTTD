@@ -1163,7 +1163,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Salli m
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Yksi tai useampi ruutu pohjoisreunalla ei ole tyhjä
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Yksi tai useampi ruutu jollakin reunalla ei ole vettä
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurin aseman koko: {ORANGE}{STRING} {RED}Huom: korkea asetus hidastaa peliä
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurin aseman koko: {ORANGE}{STRING} {RED}Varoitus: Korkea asetus hidastaa peliä
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Kartassa käytettävä maan väri: {ORANGE}{STRING}
@@ -1339,7 +1339,7 @@ STR_INTRO_NEW_GAME                                              :{BLACK}Uusi pel
 STR_INTRO_LOAD_GAME                                             :{BLACK}Lataa peli
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Lataa skenaario
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Lataa korkeuskartta
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Maisemaeditori
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Skenaariomuokkain
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Moninpeli
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Pelin asetukset
@@ -1799,7 +1799,7 @@ STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Merkitse
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Valitse päivitykset
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Valitse kaikki sisältö, joka on päivitys nykyiseen sisältöön, ladattavaksi
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poista valinnat
-STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Poista kaikesta sisällöstä valinta ladattavaksi
+STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Merkitse kaikki sisältö ei-ladattavaksi
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Avainsana/nimi suodatus:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lataa
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Aloita valitun sisällön lataaminen
@@ -3665,7 +3665,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kyltin n
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kylttiä ei voi poistaa...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Klooni Transport Tycoon Deluxesta
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxeen pohjautuva simulaatiopeli
 
 ##id 0x2000
 # Town building names

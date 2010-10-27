@@ -547,6 +547,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Sonraí
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Féach ar na sonraí faoin gcuideachta seo
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Feithiclí:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stáisiúin:
@@ -1515,7 +1516,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Méid l�
 STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Dáta
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Dáta reatha
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Blianta
-STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Achar blianta a{}bhfuil an cluiche ar rith
+STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Líon blianta a{}bhfuil an cluiche ar rith
 STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Teanga, leagan an fhreastalaí, srl.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Cliceáil ar chluiche ón liosta lena roghnú
@@ -2031,6 +2032,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Ardaigh 
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Cothromaigh talamh
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Ceannaigh talamh le húsáid amach anseo
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Crainnte
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Roghnaigh an cineál crainn le cur
@@ -2111,7 +2115,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Úinéir
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Úinéir an iarnróid: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Údarás áitiúil: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ceann ar bith
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Comhordanáidí: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Comhordanáidí: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Tógtha: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Aicme an stáisiúin: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Cineál stáisiúin: {LTBLUE}{STRING}
@@ -2141,7 +2145,7 @@ STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Ráille iarnró
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Ráille iarnróid le comharthaí bloic agus teaglama
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Ráille iarnróid le comharthaí bloic agus cosán
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Ráille iarnróid le comharthaí bloic agus cosán aonbhealaigh
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ráille iarnróid le comharthaí réamh-chomharthaí 	agus comharthaí amach
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí amach
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí teaglama
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí cosán
 STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Ráille iarnróid le comharthaí réamh-chomharthaí agus comharthaí cosán aonbhealaigh
@@ -2271,7 +2275,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}De láim
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rothlú an mhapa airde:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ainm an mhapa airde:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méid:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Iontráil síol randamach
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Athraigh airde na líne sneachta
@@ -2297,7 +2301,7 @@ STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% c
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Domhan a chruthú
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Crainn a chruthú
-STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Nithe nach féidir bogadh a chruthú
+STR_GENERATION_UNMOVABLE_GENERATION                             :{BLACK}Cruthú oibiachtaí
 STR_GENERATION_CLEARING_TILES                                   :{BLACK}Limistear garbh agus carraigeach a chruthú
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Cluiche á chumrú
 STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Lúb tíleanna á rith
@@ -2371,6 +2375,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Iarracht ID nea
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}Tá sprite truaillithe in {STRING}. Taispeánfar gach sprite truaillithe mar chomhartha ceiste (?) dearg.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Tá iontrálacha Gníomh 8 iolracha ann.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Léadh thar deireadh an bhréag-sprite.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Tá roinnt sprite in easnamh sa tsraith bhunúsach grafaicí atá in úsáid faoi láthair.{}Déan úasghrádú ar an tsraith bhunúsach grafaicí le do thoil
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Rabhadh!
@@ -2389,7 +2394,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Is féid
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Tá seans maith ann go mbeidh díshioncronú agus/nó tuairteálacha de thoradh ar iompar an NewGRF '{0:STRING}'.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}D'athraigh sé an staid vaigín cumhachtaithe le haghaidh '{1:ENGINE}' nuair nach bhfuil sé in iosta.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Athraíonn sé fad na feithicle le haghaidh '{1:ENGINE}' nuair nach bhfuil sé laistigh d'iosta.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}D'athraigh sé fad na feithicle le haghaidh '{1:ENGINE}' nuair nach bhfuil sé laistigh d'iosta.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tá fad neamhbhailí ag '{VEHICLE}' le '{COMPANY}'. Is dócha gur fadhbanna le NewGRFanna is cúis leis. Is féidir go ndíshioncronófar an cluiche nó go gclisfidh sé
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Cuireann an NewGRF '{0:STRING}' faisnéis mícheart ar fáil.
@@ -3204,6 +3209,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Socruith
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Athraigh socruithe an AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Athlódáil an AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Maraigh an AI, athlódáil an script agus atosaigh an AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Amharc ar aschur dífhabhtaithe an AI seo
 
 STR_ERROR_NO_AI                                                 :{WHITE}Tá OpenTTD gan tacaíocht do AIanna...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... níl aon AI ar fáil!

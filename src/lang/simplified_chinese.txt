@@ -876,7 +876,7 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :土耳其里拉
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :斯洛伐克克朗 (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :巴西里亚伊 (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :爱沙尼亚克鲁恩 (EEK)
-STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自定义……
+STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自定义…
 ############ end of currency region
 
 STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}度量单位
@@ -2039,6 +2039,8 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}降低�
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}升高地块的一角
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}拉平地面
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买土地以备将来使用
+
+# Object construction window
 
 
 # Tree planting window (last two for SE only)

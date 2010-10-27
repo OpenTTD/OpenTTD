@@ -620,6 +620,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Podrobn�
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Zobraz detaily o této společnosti
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozidla:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stanice:
@@ -2109,6 +2110,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvýšit
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Srovnat terén
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakoupit pozemek pro budoucí užití
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Stromy
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Zvol typ stromu na vysazení
@@ -2455,6 +2459,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použit
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje víc GRF akcí 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení za koncem pseudo-spritu.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě používanému základnímu grafickému setu chybí obrázky.{}Prosím, updatujte ho.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
@@ -2472,6 +2477,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuště
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Chování grafiky '{0:STRING}' by mohlo způsobit desynchronizaci a/nebo pád hry.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Změnil se stav lokomotivy '{1:ENGINE}' když nebyla v depu.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Změnilo délku vozidla '{1:ENGINE}', když nebylo v depu.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout.
 
@@ -3315,6 +3321,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastaven
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Změnit nastavení AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Obnovit AI
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zničit AI, znovu nahrát jeho skript a restartovat AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Zobraz debugovací výstup této AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}Hra byla zkompilována bez podpory AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... AI není dostupné!
@@ -3475,7 +3482,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... na m
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Město nebude stavět silnice. Můžete to změnit přes Pokročilé nastavení->Ekonomika->Města.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Silnice je v rekonstrukci
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nelze vybourat město...{}Buď k němu patří stanice nebo depo, anebo se nedá odklidit políčko městem vlastněné.
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... není zde žádné vhodné místo pro umístění sochy v centru tohoto města
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... v tomto městě není žádné místo vhodné pro umístění sochy
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nelze vygenerovat žádný průmysl...
@@ -3734,7 +3741,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nelze zm
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nelze smazat nápis...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Simulační hra založená na Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

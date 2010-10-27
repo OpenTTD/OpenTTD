@@ -3190,6 +3190,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Agordoj 
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ŝanĝi agordojn de la AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reŝarĝi AI-on
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mortigi la AI-on, reŝarĝi la skripton, kaj restarti la AI-on
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu forigeraran eligon de ĉiu tio AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD estas kreita sen AI-supteno...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... neniu AI estas disponebla!

@@ -2039,6 +2039,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hæv pun
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Udjævn land
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Køb land til senere brug
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Træer
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vælg typen af træer der skal plantes
@@ -2104,6 +2107,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Pris: {Y
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Efterforsk
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Byg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansiér
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landområde-information
@@ -2277,7 +2282,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuelle
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Højdekortets rotation:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Højdekortets navn:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Skriv startværdi til tilfældige tal
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ændre snegrænsen
@@ -2347,6 +2352,8 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivere
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Indtast NewGRF-parameter
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -2393,6 +2400,8 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manglende GRF fil(er) er blevet slået fra
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglende GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD kan gå ned, når spillet sættes i gang igen. Undlad at indsende fejlrapporter for efterfølgende nedbrud.{}Vil du virkelig sætte spillet i gang igen?
+
+# NewGRF status
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Denne NewGRFs opførsel '{0:STRING}' vil sandsynligvis forårsage at spillet går ned.
@@ -3360,7 +3369,7 @@ STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}opdaget 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Kan ikke hæve landet her...
 STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Kan ikke sænke landet her...
-STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan ikke hæve landet her...
+STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Kan ikke udflade landet her...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Udgravning ville skade en tunnel
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... allerede ved havoverfladen
 STR_ERROR_TOO_HIGH                                              :{WHITE}... for højt
