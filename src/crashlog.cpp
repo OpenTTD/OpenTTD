@@ -166,6 +166,9 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 #ifdef WITH_ICU
 #	include <unicode/uversion.h>
 #endif /* WITH_ICU */
+#ifdef WITH_LZMA
+#	include <lzma.h>
+#endif
 #ifdef WITH_LZO
 #include <lzo/lzo1x.h>
 #endif
@@ -207,6 +210,10 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 	u_versionToString(ver, buf);
 	buffer += seprintf(buffer, last, " ICU:        %s\n", buf);
 #endif /* WITH_ICU */
+
+#ifdef WITH_LZMA
+	buffer += seprintf(buffer, last, " LZMA:       %s\n", lzma_version_string());
+#endif
 
 #ifdef WITH_LZO
 	buffer += seprintf(buffer, last, " LZO:        %s\n", lzo_version_string());

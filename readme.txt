@@ -424,15 +424,17 @@ DOS:
 ---- -------------------
 The following libraries are used by OpenTTD for:
   - libSDL/liballegro: hardware access (video, sound, mouse)
-  - zlib: (de)compressing of savegames
+  - zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads, heightmaps
   - liblzo2: (de)compressing of old (pre 0.3.0) savegames
+  - liblzma: (de)compressing of savegames (1.1.0 and later)
   - libpng: making screenshots and loading heightmaps
   - libfreetype: loading generic fonts and rendering them
   - libfontconfig: searching for fonts, resolving font names to actual fonts
   - libicu: handling of right-to-left scripts (e.g. Arabic and Persian)
 
 OpenTTD does not require any of the libraries to be present, but without
-zlib you cannot open most savegames or use the content downloading system.
+liblzma you cannot open most recent savegames and without zlib you cannot
+open most older savegames or use the content downloading system.
 Without libSDL/liballegro on non-Windows and non-MacOS X machines you have
 no graphical user interface; you would be building a dedicated server.
 

@@ -68,6 +68,7 @@ set_default() {
 	with_sdl="1"
 	with_cocoa="1"
 	with_zlib="1"
+	with_lzma="1"
 	with_lzo2="1"
 	with_png="1"
 	enable_builtin_depend="1"
@@ -139,6 +140,7 @@ set_default() {
 		with_sdl
 		with_cocoa
 		with_zlib
+		with_lzma
 		with_lzo2
 		with_png
 		enable_builtin_depend
@@ -326,6 +328,13 @@ detect_params() {
 			--with-zlib)                  with_zlib="2";;
 			--without-zlib)               with_zlib="0";;
 			--with-zlib=*)                with_zlib="$optarg";;
+
+			--with-lzma)                  with_lzma="2";;
+			--without-lzma)               with_lzma="0";;
+			--with-lzma=*)                with_lzma="$optarg";;
+			--with-liblzma)               with_lzma="2";;
+			--without-liblzma)            with_lzma="0";;
+			--with-liblzma=*)             with_lzma="$optarg";;
 
 			--with-lzo2)                  with_lzo2="2";;
 			--without-lzo2)               with_lzo2="0";;
@@ -746,14 +755,31 @@ check_params() {
 
 	if [ "$with_zlib" = "0" ] || [ -z "$zlib" ]; then
 		log 1 "WARNING: zlib was not detected or disabled"
-		log 1 "WARNING: OpenTTD doesn't require zlib, but it does mean many features (like"
-		log 1 "WARNING: loading most savegames/scenarios, joining most servers, loading"
-		log 1 "WARNING: heightmaps, using PNG or using fonts, ...) will be disabled."
+		log 1 "WARNING: OpenTTD doesn't require zlib, but it does mean that many features"
+		log 1 "WARNING: (like loading most old savegames/scenarios, loading heightmaps,"
+		log 1 "WARNING: using PNG, or using fonts, ...) will be disabled."
 		if [ "$pre_detect_with_zlib" = "0" ]; then
 			log 1 "WARNING: We strongly suggest you to install zlib."
 		else
 			log 1 "configure: error: no zlib detected"
 			log 1 " If you want to compile without zlib use --without-zlib as parameter"
+			exit
+		fi
+	fi
+
+	pre_detect_with_lzma=$with_lzma
+	detect_lzma
+
+	if [ "$with_lzma" = "0" ] || [ -z "$lzma_config" ]; then
+		log 1 "WARNING: lzma was not detected or disabled"
+		log 1 "WARNING: OpenTTD doesn't require lzma, but it does mean that many features"
+		log 1 "WARNING: (like loading most savegames/scenarios and joining most servers)"
+		log 1 "WARNING: will be disabled."
+		if [ "$pre_detect_with_lzma" = "0" ]; then
+			log 1 "WARNING: We strongly suggest you to install liblzma."
+			log 1 "configure: error: no liblzma detected"
+		else
+			log 1 " If you want to compile without lzma use --without-lzma as parameter"
 			exit
 		fi
 	fi
@@ -1435,6 +1461,18 @@ make_cflags_and_ldflags() {
 			LIBS="$LIBS -lz"
 		fi
 		CFLAGS="$CFLAGS -DWITH_ZLIB"
+	fi
+
+	if [ -n "$lzma_config" ]; then
+		CFLAGS="$CFLAGS -DWITH_LZMA"
+		CFLAGS="$CFLAGS `$lzma_config --cflags | tr '\n\r' '  '`"
+
+		if [ "$enable_static" != "0" ]; then
+			CFLAGS="$CFLAGS -DLZMA_API_STATIC"
+			LIBS="$LIBS `$lzma_config --libs --static | tr '\n\r' '  '`"
+		else
+			LIBS="$LIBS `$lzma_config --libs | tr '\n\r' '  '`"
+		fi
 	fi
 
 	if [ "$with_lzo2" != "0" ]; then
@@ -2437,6 +2475,44 @@ detect_libtimidity() {
 	detect_library "$with_libtimidity" "libtimidity" "libtimidity.a" "" "timidity.h"
 }
 
+detect_lzma() {
+	# 0 means no, 1 is auto-detect, 2 is force
+	if [ "$with_lzma" = "0" ]; then
+		log 1 "checking liblzma... disabled"
+
+		lzma_config=""
+		return 0
+	fi
+
+	if [ "$with_lzma" = "1" ] || [ "$with_lzma" = "" ] || [ "$with_lzma" = "2" ]; then
+		lzma_config="pkg-config liblzma"
+	else
+		lzma_config="$with_lzma"
+	fi
+
+	version=`$lzma_config --modversion 2>/dev/null`
+	ret=$?
+	log 2 "executing $lzma_config --modversion"
+	log 2 "  returned $version"
+	log 2 "  exit code $ret"
+
+	if [ -z "$version" ] || [ "$ret" != "0" ]; then
+		log 1 "checking liblzma... not found"
+
+		# It was forced, so it should be found.
+		if [ "$with_lzma" != "1" ]; then
+			log 1 "configure: error: pkg-config liblzma couldn't be found"
+			log 1 "configure: error: you supplied '$with_lzma', but it seems invalid"
+			exit 1
+		fi
+
+		lzma_config=""
+		return 0
+	fi
+
+	log 1 "checking liblzma... found"
+}
+
 detect_png() {
 	# 0 means no, 1 is auto-detect, 2 is force
 	if [ "$with_png" = "0" ]; then
@@ -3236,6 +3312,7 @@ showhelp() {
 	echo "  --with-cocoa                   enables COCOA video driver (OSX ONLY)"
 	echo "  --with-sdl[=sdl-config]        enables SDL video driver support"
 	echo "  --with-zlib[=zlib.a]           enables zlib support"
+	echo "  --with-liblzma[=liblzma.a]     enables liblzma support"
 	echo "  --with-liblzo2[=liblzo2.a]     enables liblzo2 support"
 	echo "  --with-png[=libpng-config]     enables libpng support"
 	echo "  --with-freetype[=freetype-config]"

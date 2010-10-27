@@ -1944,6 +1944,106 @@ static void UninitWriteZlib()
 
 #endif /* WITH_ZLIB */
 
+/********************************************
+ ********** START OF LZMA CODE **************
+ ********************************************/
+
+#if defined(WITH_LZMA)
+#include <lzma.h>
+
+/**
+ * Have a copy of an initialised LZMA stream. We need this as it's
+ * impossible to "re"-assign LZMA_STREAM_INIT to a variable, i.e.
+ * LZMA_STREAM_INIT can't be used to reset something. This var can.
+ */
+static const lzma_stream _lzma_init = LZMA_STREAM_INIT;
+/** The current LZMA stream we're processing. */
+static lzma_stream _lzma;
+
+static bool InitReadLZMA(byte compression)
+{
+	_lzma = _lzma_init;
+	/* Allow saves up to 256 MB uncompressed */
+	if (lzma_auto_decoder(&_lzma, 1 << 28, 0) != LZMA_OK) return false;
+
+	_sl.bufsize = MEMORY_CHUNK_SIZE;
+	_sl.buf = _sl.buf_ori = MallocT<byte>(MEMORY_CHUNK_SIZE + MEMORY_CHUNK_SIZE); // also contains fread buffer
+	return true;
+}
+
+static size_t ReadLZMA()
+{
+	_lzma.next_out = _sl.buf;
+	_lzma.avail_out = MEMORY_CHUNK_SIZE;
+
+	do {
+		/* read more bytes from the file? */
+		if (_lzma.avail_in == 0) {
+			_lzma.next_in = _sl.buf + MEMORY_CHUNK_SIZE;
+			_lzma.avail_in = fread(_sl.buf + MEMORY_CHUNK_SIZE, 1, MEMORY_CHUNK_SIZE, _sl.fh);
+		}
+
+		/* inflate the data */
+		lzma_ret r = lzma_code(&_lzma, LZMA_RUN);
+		if (r == LZMA_STREAM_END) break;
+		if (r != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "liblzma returned error code");
+	} while (_lzma.avail_out != 0);
+
+	return MEMORY_CHUNK_SIZE - _lzma.avail_out;
+}
+
+static void UninitReadLZMA()
+{
+	lzma_end(&_lzma);
+	free(_sl.buf_ori);
+}
+
+static bool InitWriteLZMA(byte compression)
+{
+	_lzma = _lzma_init;
+	if (lzma_easy_encoder(&_lzma, compression, LZMA_CHECK_CRC32) != LZMA_OK) return false;
+
+	_sl.bufsize = MEMORY_CHUNK_SIZE;
+	_sl.buf = _sl.buf_ori = MallocT<byte>(MEMORY_CHUNK_SIZE);
+	return true;
+}
+
+static void WriteLZMALoop(lzma_stream *lzma, byte *p, size_t len, lzma_action action)
+{
+	byte buf[MEMORY_CHUNK_SIZE]; // output buffer
+	size_t n;
+	lzma->next_in = p;
+	lzma->avail_in = len;
+	do {
+		lzma->next_out = buf;
+		lzma->avail_out = sizeof(buf);
+
+		lzma_ret r = lzma_code(&_lzma, action);
+
+		/* bytes were emitted? */
+		if ((n = sizeof(buf) - lzma->avail_out) != 0) {
+			if (fwrite(buf, n, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
+		}
+		if (r == LZMA_STREAM_END) break;
+		if (r != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "liblzma returned error code");
+	} while (lzma->avail_in || !lzma->avail_out);
+}
+
+static void WriteLZMA(size_t len)
+{
+	WriteLZMALoop(&_lzma, _sl.buf, len, LZMA_RUN);
+}
+
+static void UninitWriteLZMA()
+{
+	/* flush any pending output. */
+	if (_sl.fh) WriteLZMALoop(&_lzma, NULL, 0, LZMA_FINISH);
+	lzma_end(&_lzma);
+	free(_sl.buf_ori);
+}
+
+#endif /* WITH_LZMA */
+
 /*******************************************
  ************* END OF CODE *****************
  *******************************************/
@@ -1966,17 +2066,33 @@ struct SaveLoadFormat {
 	byte max_compression;                 ///< the maximum compression level of this format
 };
 
+/** The different saveload formats known/understood by OpenTTD. */
 static const SaveLoadFormat _saveload_formats[] = {
 #if defined(WITH_LZO)
+	/* Roughly 75% larger than zlib level 6 at only ~7% of the CPU usage. */
 	{"lzo",    TO_BE32X('OTTD'), InitLZO,      ReadLZO,    UninitLZO,      InitLZO,       WriteLZO,    UninitLZO,       0, 0, 0},
 #else
 	{"lzo",    TO_BE32X('OTTD'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL,            0, 0, 0},
 #endif
+	/* Roughly 5 times larger at only 1% of the CPU usage over zlib level 6. */
 	{"none",   TO_BE32X('OTTN'), InitNoComp,   ReadNoComp, UninitNoComp,   InitNoComp,    WriteNoComp, UninitNoComp,    0, 0, 0},
 #if defined(WITH_ZLIB)
+	/* After level 6 the speed reduction is significant (1.5x to 2.5x slower per level), but the reduction in filesize is
+	 * fairly insignificant (~1% for each step). Lower levels become ~5-10% bigger by each level than level 6 while level
+	 * 1 is "only" 3 times as fast. Level 0 results in uncompressed savegames at about 8 times the cost of "none". */
 	{"zlib",   TO_BE32X('OTTZ'), InitReadZlib, ReadZlib,   UninitReadZlib, InitWriteZlib, WriteZlib,   UninitWriteZlib, 0, 6, 9},
 #else
 	{"zlib",   TO_BE32X('OTTZ'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL,            0, 0, 0},
+#endif
+#if defined(WITH_LZMA)
+	/* Level 2 compression is speed wise as fast as zlib level 6 compression (old default), but results in ~10% smaller saves.
+	 * Higher compression levels are possible, and might improve savegame size by up to 25%, but are also up to 10 times slower.
+	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%
+	 * slower while not improving the filesize, while level 0 and 1 are faster, but don't reduce savegame size much.
+	 * It's OTTX and not e.g. OTTL because liblzma is part of xz-utils and .tar.xz is prefered over .tar.lzma. */
+	{"lzma",   TO_BE32X('OTTX'), InitReadLZMA, ReadLZMA,   UninitReadLZMA, InitWriteLZMA, WriteLZMA,   UninitWriteLZMA, 0, 2, 9},
+#else
+	{"lzma",   TO_BE32X('OTTX'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL,            0, 0, 0},
 #endif
 };
 
