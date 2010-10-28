@@ -155,7 +155,7 @@ static uint32 GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint32
 		}
 	}
 	/* Not an 'old type' tile */
-	if (ats->grf_prop.spritegroup != NULL) { // tile has a spritegroup ?
+	if (ats->grf_prop.spritegroup[0] != NULL) { // tile has a spritegroup ?
 		if (ats->grf_prop.grffile->grfid == cur_grfid) { // same airport, same grf ?
 			return ats->grf_prop.local_id;
 		} else {

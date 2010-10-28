@@ -355,7 +355,7 @@ static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, I
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 
-	if (itspec->grf_prop.spritegroup == NULL) return;
+	if (itspec->grf_prop.spritegroup[0] == NULL) return;
 
 	NewIndustryTileResolver(&object, gfx, tile, ind);
 

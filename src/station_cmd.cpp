@@ -2568,7 +2568,7 @@ static void DrawTile_Station(TileInfo *ti)
 		StationGfx gfx = GetAirportGfx(ti->tile);
 		if (gfx >= NEW_AIRPORTTILE_OFFSET) {
 			const AirportTileSpec *ats = AirportTileSpec::Get(gfx);
-			if (ats->grf_prop.spritegroup != NULL && DrawNewAirportTile(ti, Station::GetByTile(ti->tile), gfx, ats)) {
+			if (ats->grf_prop.spritegroup[0] != NULL && DrawNewAirportTile(ti, Station::GetByTile(ti->tile), gfx, ats)) {
 				return;
 			}
 			/* No sprite group (or no valid one) found, meaning no graphics associated.

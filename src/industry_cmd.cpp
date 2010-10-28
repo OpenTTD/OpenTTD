@@ -306,7 +306,7 @@ static void DrawTile_Industry(TileInfo *ti)
 		 * DrawNewIndustry will return false if ever the resolver could not
 		 * find any sprite to display.  So in this case, we will jump on the
 		 * substitute gfx instead. */
-		if (indts->grf_prop.spritegroup != NULL && DrawNewIndustryTile(ti, ind, gfx, indts)) {
+		if (indts->grf_prop.spritegroup[0] != NULL && DrawNewIndustryTile(ti, ind, gfx, indts)) {
 			return;
 		} else {
 			/* No sprite group (or no valid one) found, meaning no graphics associated.
@@ -375,7 +375,7 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 	 */
 	if (gfx >= NEW_INDUSTRYTILEOFFSET) {
 		const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
-		if (indts->grf_prop.spritegroup != NULL && HasBit(indts->callback_mask, CBM_INDT_DRAW_FOUNDATIONS)) {
+		if (indts->grf_prop.spritegroup[0] != NULL && HasBit(indts->callback_mask, CBM_INDT_DRAW_FOUNDATIONS)) {
 			uint32 callback_res = GetIndustryTileCallback(CBID_INDTILE_DRAW_FOUNDATIONS, 0, 0, gfx, Industry::GetByTile(tile), tile);
 			if (callback_res == 0) return FOUNDATION_NONE;
 		}
