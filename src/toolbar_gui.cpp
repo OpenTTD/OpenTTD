@@ -811,7 +811,7 @@ static void ToolbarSwitchClick(Window *w)
  */
 static void ToolbarScenDatePanel(Window *w)
 {
-	SetDParam(0, _settings_newgame.game_creation.starting_year);
+	SetDParam(0, _settings_game.game_creation.starting_year);
 	ShowQueryString(STR_JUST_INT, STR_MAPGEN_START_DATE_QUERY_CAPT, 8, 100, w, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 	_left_button_clicked = false;
 }
@@ -1694,6 +1694,7 @@ public:
 			value = DEF_START_YEAR;
 		}
 		_settings_game.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
+		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1), 0);
 
 		this->SetDirty();
 	}
