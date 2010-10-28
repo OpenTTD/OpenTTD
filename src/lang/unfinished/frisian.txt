@@ -269,6 +269,7 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :Fertsjinste lê
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Fertsjinste dit jier
 STR_SORT_BY_AGE                                                 :Âldens
 STR_SORT_BY_RELIABILITY                                         :Fertroudens
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Totaal oan kapasiteit per fracht soart
 STR_SORT_BY_MAX_SPEED                                           :Maksimale gong
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wearde
@@ -317,6 +318,7 @@ STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Lânskipferbouer
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Set it startjier 1 jier efterút
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Set it startjier 1 jier foarút
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik om it startjier yn te fieren
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Lit de kaart en de stêdenlist sjen
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Lânskip generaasje
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stêd generaasje
@@ -856,10 +858,12 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automaty
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selektear tiid tusken automatyske spulopslach
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Ut
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Eltse moanne
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Eltse 3 moannen
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Eltse 6 moannen
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Eltse 12 moannen
 
+STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
 
 
 
@@ -2281,6 +2285,7 @@ STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Kin dizz
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Kin dizze opdracht net verpleatse...
 STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Kin disse opdracht net oerslaan...
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kin de selektjere opdracht net oerslaan...
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... wein kin net alle stasjons berikke
 
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te fier fan lêste bestimming
 

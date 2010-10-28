@@ -4164,8 +4164,8 @@ STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Zugdepot
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Zugdepot #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Straßenfahrzeug - Depot
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Straßenfahrzeug - Depot #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Schiffsdock
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Schiffsdock #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Werft
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Werft #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar
 
 STR_UNKNOWN_STATION                                             :unbekannte Station
