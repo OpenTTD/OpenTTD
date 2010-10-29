@@ -1027,6 +1027,7 @@ STR_NUM_LOW                                                     :Düşük
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Yüksek
 STR_NUM_CUSTOM                                                  :Özel
+STR_NUM_CUSTOM_NUMBER                                           :Özel ({NUM})
 
 STR_VARIETY_NONE                                                :Hiç
 STR_VARIETY_VERY_LOW                                            :Çok Az
@@ -1045,6 +1046,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Çok Düşük
 STR_SEA_LEVEL_LOW                                               :Düşük
 STR_SEA_LEVEL_MEDIUM                                            :Orta
 STR_SEA_LEVEL_HIGH                                              :Yüksek
+STR_SEA_LEVEL_CUSTOM                                            :Özel
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Özel (%{NUM})
 
 STR_DISASTER_NONE                                               :Hiç
 STR_DISASTER_REDUCED                                            :Azaltılmış
@@ -2398,6 +2401,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Eksik i�
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Dosya adı: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Sürüm: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}En düşük uyumlu sürüm: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Seçenekler: {SILVER}{STRING}
@@ -2415,6 +2419,7 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Sıfırl
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Tüm parametreleri varsayılan değerlerine ata
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametre {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Parametre sayısı: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}İncele - {STRING}
@@ -2721,6 +2726,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Geçen ayki üretim:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} (%{COMMA} taşındı)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Fabrikaya git
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Üretim seviyesi: %{YELLOW}{COMMA}
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}İstenen: {YELLOW}{STRING}{STRING}
@@ -2736,6 +2742,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Üretir:
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Üretimi değiştir
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Üretim seviyesini değiştir (yüzde olarak, %800'e kadar)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren
