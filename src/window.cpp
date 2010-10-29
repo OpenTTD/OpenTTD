@@ -2406,6 +2406,7 @@ void InputLoop()
 		free(w);
 	}
 
+	if (_scroller_click_timeout != 0) _scroller_click_timeout--;
 	DecreaseWindowCounters();
 
 	if (_input_events_this_tick != 0) {
@@ -2530,8 +2531,6 @@ void InvalidateWindowClassesData(WindowClass cls, int data)
  */
 void CallWindowTickEvent()
 {
-	if (_scroller_click_timeout != 0) _scroller_click_timeout--;
-
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_FRONT(w) {
 		w->OnTick();
