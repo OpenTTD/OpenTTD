@@ -42,8 +42,9 @@ void AllocateMap(uint size_x, uint size_y)
 	if (!IsInsideMM(size_x, MIN_MAP_SIZE, MAX_MAP_SIZE + 1) ||
 			!IsInsideMM(size_y, MIN_MAP_SIZE, MAX_MAP_SIZE + 1) ||
 			(size_x & (size_x - 1)) != 0 ||
-			(size_y & (size_y - 1)) != 0)
+			(size_y & (size_y - 1)) != 0) {
 		error("Invalid map size");
+	}
 
 	DEBUG(map, 1, "Allocating map of size %dx%d", size_x, size_y);
 
