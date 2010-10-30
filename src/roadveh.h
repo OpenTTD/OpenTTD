@@ -17,6 +17,8 @@
 #include "cargotype.h"
 #include "track_func.h"
 #include "road_type.h"
+#include "newgrf_properties.h"
+#include "newgrf_engine.h"
 
 struct RoadVehicle;
 
@@ -171,7 +173,8 @@ protected: // These functions should not be called outside acceleration code.
 	{
 		/* Power is not added for articulated parts */
 		if (!this->IsArticulatedPart()) {
-			return 10 * RoadVehInfo(this->engine_type)->power; // Road vehicle power is in units of 10 HP.
+			/* Road vehicle power is in units of 10 HP. */
+			return 10 * GetVehicleProperty(this, PROP_ROADVEH_POWER, RoadVehInfo(this->engine_type)->power);
 		}
 		return 0;
 	}
@@ -195,7 +198,8 @@ protected: // These functions should not be called outside acceleration code.
 
 		/* Vehicle weight is not added for articulated parts. */
 		if (!this->IsArticulatedPart()) {
-			weight += RoadVehInfo(this->engine_type)->weight / 4; // Road vehicle weight is in units of 1/4 t.
+			/* Road vehicle weight is in units of 1/4 t. */
+			weight += GetVehicleProperty(this, PROP_ROADVEH_WEIGHT, RoadVehInfo(this->engine_type)->weight) / 4;
 		}
 
 		return weight;
@@ -207,7 +211,8 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	FORCEINLINE byte GetTractiveEffort() const
 	{
-		return RoadVehInfo(this->engine_type)->tractive_effort;
+		/* The tractive effort coefficient is in units of 1/256.  */
+		return GetVehicleProperty(this, PROP_ROADVEH_TRACTIVE_EFFORT, RoadVehInfo(this->engine_type)->tractive_effort);
 	}
 
 	/**

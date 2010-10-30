@@ -824,11 +824,11 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				rvi->sfx = buf->ReadByte();
 				break;
 
-			case 0x13: // Power in 10hp
+			case PROP_ROADVEH_POWER: // Power in units of 10 HP.
 				rvi->power = buf->ReadByte();
 				break;
 
-			case 0x14: // Weight in 1/4 tons
+			case PROP_ROADVEH_WEIGHT: // Weight in units of 1/4 tons.
 				rvi->weight = buf->ReadByte();
 				break;
 
@@ -845,7 +845,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				ei->callback_mask = buf->ReadByte();
 				break;
 
-			case 0x18: // Tractive effort
+			case PROP_ROADVEH_TRACTIVE_EFFORT: // Tractive effort coefficient in 1/256.
 				rvi->tractive_effort = buf->ReadByte();
 				break;
 

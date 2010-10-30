@@ -30,6 +30,9 @@ enum PropertyID {
 	PROP_ROADVEH_RUNNING_COST_FACTOR            = 0x09, ///< Yearly runningcost
 	PROP_ROADVEH_CARGO_CAPACITY                 = 0x0F, ///< Capacity
 	PROP_ROADVEH_COST_FACTOR                    = 0x11, ///< Purchase cost
+	PROP_ROADVEH_POWER                          = 0x13, ///< Power in 10 HP
+	PROP_ROADVEH_WEIGHT                         = 0x14, ///< Weight in 1/4 t
+	PROP_ROADVEH_TRACTIVE_EFFORT                = 0x18, ///< Tractive effort coefficient in 1/256
 
 	PROP_SHIP_COST_FACTOR                       = 0x0A, ///< Purchase cost
 	PROP_SHIP_SPEED                             = 0x0B, ///< Max. speed: 1 unit = 1/3.2 mph = 0.5 km-ish/h

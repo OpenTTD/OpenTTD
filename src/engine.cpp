@@ -319,7 +319,7 @@ uint Engine::GetPower() const
 		case VEH_TRAIN:
 			return GetEngineProperty(this->index, PROP_TRAIN_POWER, this->u.rail.power);
 		case VEH_ROAD:
-			return this->u.road.power * 10;
+			return GetEngineProperty(this->index, PROP_ROADVEH_POWER, this->u.road.power) * 10;
 
 		default: NOT_REACHED();
 	}
@@ -337,7 +337,7 @@ uint Engine::GetDisplayWeight() const
 		case VEH_TRAIN:
 			return GetEngineProperty(this->index, PROP_TRAIN_WEIGHT, this->u.rail.weight) << (this->u.rail.railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
 		case VEH_ROAD:
-			return this->u.road.weight / 4;
+			return GetEngineProperty(this->index, PROP_ROADVEH_WEIGHT, this->u.road.weight) / 4;
 
 		default: NOT_REACHED();
 	}
@@ -355,7 +355,7 @@ uint Engine::GetDisplayMaxTractiveEffort() const
 		case VEH_TRAIN:
 			return (10 * this->GetDisplayWeight() * GetEngineProperty(this->index, PROP_TRAIN_TRACTIVE_EFFORT, this->u.rail.tractive_effort)) / 256;
 		case VEH_ROAD:
-			return (10 * this->GetDisplayWeight() * this->u.road.tractive_effort) / 256;
+			return (10 * this->GetDisplayWeight() * GetEngineProperty(this->index, PROP_ROADVEH_TRACTIVE_EFFORT, this->u.road.tractive_effort)) / 256;
 
 		default: NOT_REACHED();
 	}
