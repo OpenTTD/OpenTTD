@@ -787,6 +787,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} wurdt tige âld
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} wurdt tige âld en is nedich oan ferfaning ta
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} is de wei kwyt.
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}winst wie it lêste jier{CURRENCY}
 
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Neie {STRING} is no beskikber!
@@ -852,6 +853,15 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Stêd na
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selektear stijl fan 'e nammen
 
 ############ start of townname region
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Ingelsk (Orisjineel)
+STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Dúts
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Ingelsk
+STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sweedsk
+STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Hollâns
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Poals
+STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romeensk
+STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Deensk
+STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italjaansk
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatysk opslaan
@@ -866,7 +876,9 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Eltse 12 moanne
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
 
 
+STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm resolusje
 
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skermfoto formaat
 
 
 
@@ -877,6 +889,11 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
 
 
 
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Gea oer nij de Euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Gea oer nij de euro: {ORANGE}nea
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Stel it earste jier fan de Euro yn
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Gea earder ny de Euro
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Gea letter ny de Euro
 
 
 # Difficulty level window
@@ -890,6 +907,7 @@ STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Selsmakk
 ############ range for difficulty levels ends
 
 STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Lit hi-scorekaart sjen
+STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Opslaan
 
 ############ range for difficulty settings starts
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksimum oantal tsjinstanders: {ORANGE}{COMMA}
@@ -910,6 +928,7 @@ STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Rampen:
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Gjin
+STR_NUM_VERY_LOW                                                :Hiel leech
 STR_NUM_LOW                                                     :Leech
 STR_NUM_NORMAL                                                  :Gewoan
 STR_NUM_HIGH                                                    :Heech
@@ -928,6 +947,7 @@ STR_AI_SPEED_MEDIUM                                             :Gewoan
 STR_AI_SPEED_FAST                                               :Hurd
 STR_AI_SPEED_VERY_FAST                                          :Hiel hurd
 
+STR_SEA_LEVEL_VERY_LOW                                          :Hiel leech
 STR_SEA_LEVEL_LOW                                               :Leech
 STR_SEA_LEVEL_MEDIUM                                            :Gewoan
 STR_SEA_LEVEL_HIGH                                              :Heech
@@ -960,17 +980,29 @@ STR_DISASTERS_ON                                                :Oan
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_OFF                                          :út
+STR_CONFIG_SETTING_ON                                           :oan
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Stea it bouen op in helling ta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Stea ekstra lange treinen ta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Utjefte fan steam/fonken by treinen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Gjin
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orizjiniel
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistysk
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Orizjiniel
+STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Stea ekstra lange brêgen ta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Stea gea nij depot opdrachten ta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :neat
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :lyk as oare yndustrieën
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Meitsje Lân om de yndustry hinne flak: {ORANGE}{STRING} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :begjin
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :midden
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :ein
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :gjin
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :minder
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :gewoan
 
 
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimale ôfstân fan râne oant Oaljefjild {ORANGE}{STRING}
 
