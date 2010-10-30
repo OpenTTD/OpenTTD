@@ -178,7 +178,7 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 		return_cmd_error(STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP);
 	}
 
-	/* Mark incident tiles, that are involved in the terraforming */
+	/* Mark incident tiles that are involved in the terraforming. */
 	TerraformAddDirtyTileAround(ts, tile);
 
 	/* Store the height modification */

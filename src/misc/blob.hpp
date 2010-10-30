@@ -41,10 +41,10 @@
  *       which is good for performance (assuming that data are accessed most often).
  *     - sizeof(blob) is the same as the size of any other pointer
  *  6. Drawbacks of this layout:
- *     - the fact, that pointer to the alocated block is adjusted by sizeof(BlobHeader) before
+ *     - the fact that a pointer to the allocated block is adjusted by sizeof(BlobHeader) before
  *       it is stored can lead to several confusions:
- *         - it is not common pattern so the implementation code is bit harder to read
- *         - valgrind can generate warning that allocated block is lost (not accessible)
+ *         - it is not a common pattern so the implementation code is bit harder to read.
+ *         - valgrind may generate a warning that the allocated block is lost (not accessible).
  */
 class ByteBlob {
 protected:

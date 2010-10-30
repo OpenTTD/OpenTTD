@@ -2019,7 +2019,7 @@ next_cargo: ;
  *
  * When displaying the cargoes around an industry type, five columns are needed (supplying industries, accepted cargoes, the industry,
  * produced cargoes, customer industries). Displaying the industries around a cargo needs three columns (supplying industries, the cargo,
- * customer industries). The remaining two columns are set to #CFT_EMPTY, that has a width equal to the average of a cargo and an industry column.
+ * customer industries). The remaining two columns are set to #CFT_EMPTY with a width equal to the average of a cargo and an industry column.
  */
 struct IndustryCargoesWindow : public Window {
 	static const int HOR_TEXT_PADDING, VERT_TEXT_PADDING;

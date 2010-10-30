@@ -62,7 +62,7 @@ static inline TrackBits AxisToTrackBits(Axis a)
 }
 
 /**
- * Returns a single horizontal/vertical trackbit, that is in a specific tile corner.
+ * Returns a single horizontal/vertical trackbit that is in a specific tile corner.
  *
  * @param corner The corner of a tile.
  * @return The TrackBits of the track in the corner.

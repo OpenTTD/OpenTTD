@@ -1634,7 +1634,7 @@ static CommandCost ClearTile_Track(TileIndex tile, DoCommandFlag flags)
 		case RAIL_TILE_SIGNALS:
 		case RAIL_TILE_NORMAL: {
 			Slope tileh = GetTileSlope(tile, NULL);
-			/* Is there flat water on the lower halftile, that gets cleared expensively? */
+			/* Is there flat water on the lower halftile that gets cleared expensively? */
 			bool water_ground = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh));
 
 			TrackBits tracks = GetTrackBits(tile);
@@ -2830,7 +2830,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, DoCommandFlag flags, uint
 	Slope tileh_old = GetTileSlope(tile, &z_old);
 	if (IsPlainRail(tile)) {
 		TrackBits rail_bits = GetTrackBits(tile);
-		/* Is there flat water on the lower halftile, that must be cleared expensively? */
+		/* Is there flat water on the lower halftile that must be cleared expensively? */
 		bool was_water = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh_old));
 
 		/* First test autoslope. However if it succeeds we still have to test the rest, because non-autoslope terraforming is cheaper. */

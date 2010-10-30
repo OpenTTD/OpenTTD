@@ -636,7 +636,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	/*
 	 * v_front is the front engine in the original vehicle
-	 * v is the car/vehicle of the original vehicle, that is currently being copied
+	 * v is the car/vehicle of the original vehicle that is currently being copied
 	 * w_front is the front engine of the cloned vehicle
 	 * w is the car/vehicle currently being cloned
 	 * w_rear is the rear end of the cloned train. It's used to add more cars and is only used by trains

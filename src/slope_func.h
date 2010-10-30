@@ -239,7 +239,7 @@ static inline DiagDirection GetInclinedSlopeDirection(Slope s)
 }
 
 /**
- * Returns the slope, that is inclined in a specific direction.
+ * Returns the slope that is inclined in a specific direction.
  *
  * @param dir A #DiagDirection
  * @return The #Slope that goes up in direction dir.

@@ -704,7 +704,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length)
 							}
 
 							/* Truncate 'dest' after last PATHSEPCHAR.
-							 * This assumes, that the truncated part is a real directory and not a link */
+							 * This assumes that the truncated part is a real directory and not a link. */
 							destpos = strrchr(dest, PATHSEPCHAR);
 							if (destpos == NULL) destpos = dest;
 						} else {

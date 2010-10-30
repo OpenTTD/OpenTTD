@@ -80,7 +80,7 @@ public:
 		return m_new_node;
 	}
 
-	/** notify the nodelist, that we don't want to discard the given node */
+	/** Notify the nodelist that we don't want to discard the given node. */
 	FORCEINLINE void FoundBestNode(Titem_& item)
 	{
 		/* for now it is enough to invalidate m_new_node if it is our given node */

@@ -2139,7 +2139,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	CommandCost cost = CheckFlatLand(TileArea(tile, w, h), flags);
 	if (cost.Failed()) return cost;
 
-	/* Go get the final noise level, that is base noise minus factor from distance to town center */
+	/* The noise level is the noise from the airport and reduce it to account for the distance to the town center. */
 	Town *nearest = AirportGetNearestTown(as, tile);
 	uint newnoise_level = GetAirportNoiseLevelForTown(as, nearest->xy, tile);
 
@@ -2304,7 +2304,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 			);
 		}
 
-		/* Go get the final noise level, that is base noise minus factor from distance to town center.
+		/* The noise level is the noise from the airport and reduce it to account for the distance to the town center.
 		 * And as for construction, always remove it, even if the setting is not set, in order to avoid the
 		 * need of recalculation */
 		Town *nearest = AirportGetNearestTown(as, tile);

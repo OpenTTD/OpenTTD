@@ -78,7 +78,7 @@ extern const byte _slope_to_sprite_offset[32] = {
  * Description of the snow line throughout the year.
  *
  * If it is \c NULL, a static snowline height is used, as set by \c _settings_game.game_creation.snow_line.
- * Otherwise it points to a table loaded from a newGRF file, that describes the variable snowline
+ * Otherwise it points to a table loaded from a newGRF file that describes the variable snowline.
  * @ingroup SnowLineGroup
  * @see GetSnowLine() GameCreationSettings
  */

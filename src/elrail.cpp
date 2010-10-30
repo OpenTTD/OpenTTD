@@ -465,7 +465,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		/*
 		 * The "wire"-sprite position is inside the tile, i.e. 0 <= sss->?_offset < TILE_SIZE.
 		 * Therefore it is safe to use GetSlopeZ() for the elevation.
-		 * Also note, that the result of GetSlopeZ() is very special for bridge-ramps.
+		 * Also note that the result of GetSlopeZ() is very special for bridge-ramps.
 		 */
 		AddSortableSpriteToDraw(wire_base + sss->image_offset, PAL_NONE, ti->x + sss->x_offset, ti->y + sss->y_offset,
 			sss->x_size, sss->y_size, sss->z_size, GetSlopeZ(ti->x + sss->x_offset, ti->y + sss->y_offset) + sss->z_offset,

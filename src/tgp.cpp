@@ -22,8 +22,8 @@
  *
  * Quickie guide to Perlin Noise
  * Perlin noise is a predictable pseudo random number sequence. By generating
- * it in 2 dimensions, it becomes a useful random map, that for a given seed
- * and starting X & Y is entirely predictable. On the face of it, that may not
+ * it in 2 dimensions, it becomes a useful random map that, for a given seed
+ * and starting X & Y, is entirely predictable. On the face of it, that may not
  * be useful. However, it means that if you want to replay a map in a different
  * terrain, or just vary the sea level, you just re-run the generator with the
  * same seed. The seed is an int32, and is randomised on each run of New Game.

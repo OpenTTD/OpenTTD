@@ -356,7 +356,7 @@ struct DepotWindow : Window {
 
 		maxval = min(this->vehicle_list.Length() + this->wagon_list.Length(), (this->vscroll->GetPosition() * boxes_in_each_row) + (rows_in_display * boxes_in_each_row));
 
-		/* draw the train wagons, that do not have an engine in front */
+		/* Draw the train wagons without an engine in front. */
 		for (; num < maxval; num++, y += this->resize.step_height) {
 			const Vehicle *v = this->wagon_list[num - this->vehicle_list.Length()];
 			this->DrawVehicleInDepot(v, r.left, r.right, y);
@@ -537,9 +537,11 @@ struct DepotWindow : Window {
 		}
 	}
 
-	/* Function to set up vehicle specific widgets (mainly sprites and strings).
-	 * Only use this if it's the same widget, that's used for more than one vehicle type and it needs different text/sprites
-	 * Vehicle specific text/sprites, that's in a widget, that's only shown for one vehicle type (like sell whole train) is set in the nested widget array
+	/**
+	 * Function to set up vehicle specific widgets (mainly sprites and strings).
+	 * Only use this function to if the widget is used for several vehicle types and each has
+	 * different text/sprites. If the widget is only used for a single vehicle type, or the same
+	 * text/sprites are used every time, use the nested widget array to initialize the widget.
 	 */
 	void SetupWidgetData(VehicleType type)
 	{

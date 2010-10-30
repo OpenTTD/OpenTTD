@@ -155,7 +155,7 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, EngineID engine_ty
 
 /**
  * Function to find what type of cargo to refit to when autoreplacing
- * @param *v Original vehicle, that is being replaced
+ * @param *v Original vehicle that is being replaced.
  * @param engine_type The EngineID of the vehicle that is being replaced to
  * @param part_of_chain The vehicle is part of a train
  * @return The cargo type to replace to

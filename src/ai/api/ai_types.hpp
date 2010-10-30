@@ -12,7 +12,7 @@
  *
  * IDs are used to identify certain objects. They are only unique within the object type, so for example a vehicle may have VehicleID 2009,
  * while a station has StationID 2009 at the same time. Also IDs are assigned arbitrary, you cannot assume them to be consecutive.
- * Also note, that some IDs are static and never change, while others are allocated dynamically and might be
+ * Also note that some IDs are static and never change, while others are allocated dynamically and might be
  * reused for other objects once they are released. So be careful, which IDs you store for which purpose and whether they stay valid all the time.
  *
  * <table>

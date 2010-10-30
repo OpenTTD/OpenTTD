@@ -706,7 +706,7 @@ Vehicle::~Vehicle()
 }
 
 /**
- * Adds a vehicle to the list of vehicles, that visited a depot this tick
+ * Adds a vehicle to the list of vehicles that visited a depot this tick
  * @param *v vehicle to add
  */
 void VehicleEnteredDepotThisTick(Vehicle *v)

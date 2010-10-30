@@ -1247,19 +1247,19 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 		/* There are 14 different cases:
 		 *  1) front engine gets moved to a new train, it stays a front engine.
-		 *     a) the 'next' part is a wagon, that becomes a free wagon chain.
-		 *     b) the 'next' part is an engine, that becomes a front engine.
+		 *     a) the 'next' part is a wagon that becomes a free wagon chain.
+		 *     b) the 'next' part is an engine that becomes a front engine.
 		 *     c) there is no 'next' part, nothing else happens
 		 *  2) front engine gets moved to another train, it is not a front engine anymore
-		 *     a) the 'next' part is a wagon, that becomes a free wagon chain.
-		 *     b) the 'next' part is an engine, that becomes a front engine.
+		 *     a) the 'next' part is a wagon that becomes a free wagon chain.
+		 *     b) the 'next' part is an engine that becomes a front engine.
 		 *     c) there is no 'next' part, nothing else happens
 		 *  3) front engine gets moved to later in the current train, it is not an engine anymore.
-		 *     a) the 'next' part is a wagon, that becomes a free wagon chain.
-		 *     b) the 'next' part is an engine, that becomes a front engine.
+		 *     a) the 'next' part is a wagon that becomes a free wagon chain.
+		 *     b) the 'next' part is an engine that becomes a front engine.
 		 *  4) free wagon gets moved
-		 *     a) the 'next' part is a wagon, that becomes a free wagon chain.
-		 *     b) the 'next' part is an engine, that becomes a front engine.
+		 *     a) the 'next' part is a wagon that becomes a free wagon chain.
+		 *     b) the 'next' part is an engine that becomes a front engine.
 		 *     c) there is no 'next' part, nothing else happens
 		 *  5) non front engine gets moved and becomes a new train, nothing else happens
 		 *  6) non front engine gets moved within a train / to another train, nothing hapens

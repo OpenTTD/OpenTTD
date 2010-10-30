@@ -162,7 +162,7 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 		TS_FRONT             = 0, ///< Leading engine of a train
 		TS_ARTICULATED_PART  = 1, ///< Articulated part of an engine
 		TS_WAGON             = 2, ///< Wagon
-		TS_ENGINE            = 3, ///< Engine, that can be front engine, but might be placed behind another engine
+		TS_ENGINE            = 3, ///< Engine that can be front engine, but might be placed behind another engine.
 		TS_FREE_WAGON        = 4, ///< First in a wagon chain (in depot)
 		TS_MULTIHEADED       = 5, ///< Engine is multiheaded
 	};

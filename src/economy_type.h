@@ -175,7 +175,7 @@ enum PriceCategory {
 struct PriceBaseSpec {
 	Money start_price;      ///< Default value at game start, before adding multipliers.
 	PriceCategory category; ///< Price is affected by certain difficulty settings.
-	uint grf_feature;       ///< GRF Feature, that decides whether price multipliers apply locally or globally. GSF_END if none.
+	uint grf_feature;       ///< GRF Feature that decides whether price multipliers apply locally or globally, #GSF_END if none.
 	Price fallback_price;   ///< Fallback price multiplier for new prices but old grfs.
 };
 
@@ -187,7 +187,7 @@ static const int LOAN_INTERVAL = 10000;
  * This allows for 32 bit base prices (21 are currently needed).
  * Considering the sign bit and 16 fractional bits, there are 15 bits left.
  * 170 years of 4% inflation result in a inflation of about 822, so 10 bits are actually enough.
- * Note, that NewGRF multipliers share the 16 fractional bits.
+ * Note that NewGRF multipliers share the 16 fractional bits.
  * @see MAX_PRICE_MODIFIER
  */
 static const uint64 MAX_INFLATION = (1ull << (63 - 32)) - 1;

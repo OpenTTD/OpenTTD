@@ -689,7 +689,7 @@ int DrawVehiclePurchaseInfo(int left, int right, int y, EngineID engine_number)
 		}
 	}
 
-	/* Draw details, that applies to all types except rail wagons */
+	/* Draw details that apply to all types except rail wagons. */
 	if (e->type != VEH_TRAIN || e->u.rail.railveh_type != RAILVEH_WAGON) {
 		/* Design date - Life length */
 		SetDParam(0, ymd.year);

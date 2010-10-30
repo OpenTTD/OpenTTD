@@ -764,7 +764,7 @@ restart_search:
 		}
 	}
 
-	/* Also delete the company specific windows, that don't have a company-colour */
+	/* Also delete the company specific windows that don't have a company-colour. */
 	DeleteWindowById(WC_BUY_COMPANY, id);
 }
 

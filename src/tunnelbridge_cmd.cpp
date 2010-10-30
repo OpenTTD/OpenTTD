@@ -1060,7 +1060,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		if (catenary) EndSpriteCombine();
 
-		/* Add helper BB for sprite sorting, that separate the tunnel from things beside of it */
+		/* Add helper BB for sprite sorting that separates the tunnel from things beside of it. */
 		AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, ti->x,              ti->y,              BB_data[6], BB_data[7], TILE_HEIGHT, ti->z);
 		AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, ti->x + BB_data[4], ti->y + BB_data[5], BB_data[6], BB_data[7], TILE_HEIGHT, ti->z);
 
@@ -1249,7 +1249,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	uint bridge_z = GetBridgeHeight(rampsouth);
 	uint z = bridge_z - BRIDGE_Z_START;
 
-	/* Add a bounding box, that separates the bridge from things below it. */
+	/* Add a bounding box that separates the bridge from things below it. */
 	AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, x, y, 16, 16, 1, bridge_z - TILE_HEIGHT + BB_Z_SEPARATOR);
 
 	/* Draw Trambits as SpriteCombine */
