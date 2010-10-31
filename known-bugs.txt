@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2010-09-14
-Release version: 1.0.4
+Last updated:    2010-10-31
+Release version: 1.0.5-RC1
 ------------------------------------------------------------------------
 
 
@@ -39,12 +39,12 @@ officially supporting Mac OS X again. For now it remains unsupported and
 we only apply bug fixes provided by the community but we are unable to fix
 these bugs ourselves.
 
-- 4003	[OSX] Running OpenTTD Parallels causes privileged instructions
+- 4189	Idle clients are not notified of connection loss
+- 4130	Road vehicle cannot find a nearest depot skips that order
 - 4001	[OSX] SETX[Y] not ignored in SetFallbackFont
 - 3952	Console command rescan_ai does not remove AIs
 - 3935	Under some circumstances two road vehicles can leave road stop simultaniously
 - 3816	Console text does not always fit at 640x480
-- 3746	Console output with right-to-left texts in left-to-right texts is not correct
 - 3714	Some corrupted savegames can cause crashes
 - 3651	[OSX] Crash when selecting full screen
 - 3648	[OSX] Crash when selecting music
@@ -244,6 +244,16 @@ Crashes when playing music [FS#3941]
 	music driver) crash on some songs from OpenMSX. OpenTTD cannot do
 	anything about this. Please report these crashes to the authors of
 	OpenMSX so the crash causing songs can be removed or fixed.
+
+Crashes when run in a VM using Parallels Desktop [FS#4003]
+	When the Windows version of OpenTTD is executed in a VM under
+	Parallels Desktop a privileged instruction exception may be thrown.
+	As OpenTTD works natively on OSX as well as natively on	Windows and
+	these native builds both don't exhibit this behaviour this crash is
+	most likely due to a bug in the virtual machine, something out of
+	the scope of OpenTTD. Most likely this is due to Parallels Desktop
+	lacking support for RDTSC calls. The problem can be avoided by using
+	other VM-software, Wine, or running natively on OSX.
 
 OpenTTD hangs when started on 32 bits Windows [FS#4083]
 	Under some circumstances OpenTTD might hang for hours on the

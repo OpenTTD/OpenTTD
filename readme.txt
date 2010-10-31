@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2010-09-14
-Release version: 1.0.4
+Last updated:    2010-10-31
+Release version: 1.0.5-RC1
 ------------------------------------------------------------------------
 
 
@@ -28,9 +28,9 @@ X.X) Credits
 
 1.0) About:
 ---- ------
-OpenTTD is a clone of Transport Tycoon Deluxe, a popular game originally
-written by Chris Sawyer.  It attempts to mimic the original game as closely
-as possible while extending it with new features.
+OpenTTD is a transport simulation game based upon the popular game Transport
+Tycoon Deluxe, written by Chris Sawyer. It attempts to mimic the original
+game as closely as possible while extending it with new features.
 
 OpenTTD is licensed under the GNU General Public License version 2.0. For
 more information, see the file 'COPYING'.
@@ -204,9 +204,9 @@ when using other versions of the game.
 ------ -----------------------------
 The free data files, split into OpenGFX for graphics, OpenSFX for sounds and
 OpenMSX for music can be found at:
- - http://bundles.openttdcoop.org/opengfx/releases/ for OpenGFX
- - http://bundles.openttdcoop.org/opensfx/releases/ for OpenSFX
- - http://bundles.openttdcoop.org/openmsx/releases/ for OpenMSX
+ - http://www.openttd.org/download-opengfx for OpenGFX
+ - http://www.openttd.org/download-opensfx for OpenSFX
+ - http://www.openttd.org/download-openmsx for OpenMSX
 Please follow the readme of these packages about the installation procedure.
 The Windows installer can optionally download and install these packages.
 
@@ -315,8 +315,11 @@ features known from TTDPatch (http://www.ttdpatch.net/).
 
 Several important non-standard controls:
 
-* Ctrl makes many commands more powerful. For example Ctrl clicking on signals
-  with the build signal tool changes their behaviour.
+* Ctrl modifies many commands and makes them more powerful. For example Ctrl
+  clicking on signals with the build signal tool changes their behaviour, holding
+  Ctrl while the track build tool is activated changes it to the track removal
+  tool, and so on. See http://wiki.openttd.org/Hidden_features for a non-
+  comprehensive list or look at the tooltips.
 * Ingame console. More information at
   http://wiki.openttd.org/index.php/Console
 * Right clicking shows tooltips
@@ -433,11 +436,10 @@ Without libSDL/liballegro on non-Windows and non-MacOS X machines you have
 no graphical user interface; you would be building a dedicated server.
 
 To recompile the extra graphics needed to play with the original Transport
-Tycoon Deluxe graphics you need GRFCodec and NFORenum as well. These can be
-found at respectively: http://dev.openttdcoop.org/projects/grfcodec and
-http://dev.openttdcoop.org/projects/nforenum
-The compilation of these extra does generally not happen, unless you remove
-the graphics file using "make maintainer-clean".
+Tycoon Deluxe graphics you need GRFCodec (which includes NFORenum) as well.
+GRFCodec can be found at: http://www.openttd.org/download-grfcodec
+The compilation of these extra graphics does generally not happen, unless
+you remove the graphics file using "make maintainer-clean".
 
 7.2) Supported compilers:
 ---- -------------------
@@ -555,6 +557,7 @@ The OpenTTD team (in alphabetical order):
   Michael Lutz (michi_cc)        - Path based signals
   Owen Rudge (orudge)            - Forum host, OS/2 port
   Peter Nelson (peter1138)       - Spiritual descendant from newGRF gods
+  Ingo von Borstel (planetmaker) - Support
   Remko Bijker (Rubidium)        - Lead coder and way more
   Zdeněk Sojka (SmatZ)           - Bug finder and fixer
   José Soler (Terkhen)           - General coding
