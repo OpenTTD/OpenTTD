@@ -206,13 +206,23 @@ struct NIFeature {
 #include "table/newgrf_debug_data.h"
 
 /**
+ * Get the feature number related to the window number.
+ * @param window_number The window to get the feature number for.
+ * @return The feature number.
+ */
+static inline GrfSpecFeature GetFeatureNum(uint window_number)
+{
+	return (GrfSpecFeature)GB(window_number, 24, 8);
+}
+
+/**
  * Get the NIFeature related to the window number.
  * @param window_number The window to get the NIFeature for.
  * @return the NIFeature, or NULL is there isn't one.
  */
 static inline const NIFeature *GetFeature(uint window_number)
 {
-	byte idx = GB(window_number, 24, 8);
+	GrfSpecFeature idx = GetFeatureNum(window_number);
 	return idx < GSF_FAKE_END ? _nifeatures[idx] : NULL;
 }
 
@@ -324,7 +334,7 @@ struct NewGRFInspectWindow : Window {
 			this->DrawString(r, i++, "Variables:");
 			for (const NIVariable *niv = nif->variables; niv->name != NULL; niv++) {
 				bool avail = true;
-				uint param = HasVariableParameter(niv->var) ? NewGRFInspectWindow::var60params[index][niv->var - 0x60] : 0;
+				uint param = HasVariableParameter(niv->var) ? NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][niv->var - 0x60] : 0;
 				uint value = nih->Resolve(index, niv->var, param, &avail);
 
 				if (!avail) continue;
@@ -446,7 +456,7 @@ struct NewGRFInspectWindow : Window {
 	{
 		if (StrEmpty(str)) return;
 
-		NewGRFInspectWindow::var60params[GetFeatureIndex(this->window_number)][this->current_edit_param - 0x60] = strtol(str, NULL, 16);
+		NewGRFInspectWindow::var60params[GetFeatureNum(this->window_number)][this->current_edit_param - 0x60] = strtol(str, NULL, 16);
 		this->SetDirty();
 	}
 
