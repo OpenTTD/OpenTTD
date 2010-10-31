@@ -1198,6 +1198,12 @@ make_compiler_cflags() {
 			fi
 		fi
 
+		if [ $cc_version -ge 34 ]; then
+			# Warn when a variable is used to initialise itself:
+			# int a = a;
+			flags="$flags -Winit-self"
+		fi
+
 		if [ $cc_version -ge 40 ]; then
 			# GCC 4.0+ complains about that we break strict-aliasing.
 			#  On most places we don't see how to fix it, and it doesn't
