@@ -442,7 +442,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole un/aus
 STR_ABOUT_MENU_AI_DEBUG                                         :KI Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Riesen Screenshot (Ctrl+G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot vun der ganzer Kaart (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Iwwert 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite Alignéirer
 ############ range ends here
@@ -2047,6 +2047,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}En Eck v
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Land planéiren
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaaf Land fir zukünftëg Benotzung
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Beem
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wielt den Baamtyp
@@ -2110,6 +2113,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Käschte
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Biergbau
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bauen
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Grënnen
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Informatiounen
@@ -2366,6 +2371,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Datei net 
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ausgeschalt
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF Parameter agin
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspzéier - {STRING}
@@ -3501,7 +3508,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Kann den
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Kann den Wee-Punkt hei net ofrappen...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Zuchweepunkt muss fir d'éischt ofgerappt ginn
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... Boje am Wee
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Boje ass am Gebrauch!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... Boje ass am Gebrauch vun enger anerer Firma!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Kann den Zuchdepot hei net bauen...
@@ -3511,10 +3518,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Kann de 
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Kann den Depot net ëmbenennen
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Zuch muss am Depot sinn
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... muss an engem Depot gestoppt gin
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Schëff muss am Depot stoen
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Fliger muss am Hangar sinn
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... muss an engem Depot gestoppt ginn
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... muss an engem Depot gestoppt ginn
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... muss an engem Schëffdepot gestoppt ginn
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... muss an engem Hangar gestoppt ginn
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Zich kënnen nëmmen an engem Depot verännert ginn
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Zuch ze laang
@@ -3691,7 +3698,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kann den
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann d'Schëld net läschen...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :En Transport Tycoon Deluxe Klon
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Eng Simulatioun déi op Transport Tycoon Deluxe baséiert
 
 ##id 0x2000
 # Town building names

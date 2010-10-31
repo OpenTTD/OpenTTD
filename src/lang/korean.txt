@@ -1027,6 +1027,7 @@ STR_NUM_LOW                                                     :낮음
 STR_NUM_NORMAL                                                  :보통
 STR_NUM_HIGH                                                    :높음
 STR_NUM_CUSTOM                                                  :사용자
+STR_NUM_CUSTOM_NUMBER                                           :사용자 설정 ({NUM})
 
 STR_VARIETY_NONE                                                :없음(미설정)
 STR_VARIETY_VERY_LOW                                            :매우 낮음
@@ -1045,6 +1046,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :매우 낮음
 STR_SEA_LEVEL_LOW                                               :낮음
 STR_SEA_LEVEL_MEDIUM                                            :보통
 STR_SEA_LEVEL_HIGH                                              :높음
+STR_SEA_LEVEL_CUSTOM                                            :사용자 설정
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :사용자 설정 ({NUM}%)
 
 STR_DISASTER_NONE                                               :고장 안남
 STR_DISASTER_REDUCED                                            :적음
@@ -1760,6 +1763,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}서버�
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}당신은 서버에서 영구 접속 차단되었습니다.
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}당신은 서버에서 강제 추방 되었습니다.
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}이 서버에서 치트를 사용할 수 없습니다!
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}당신은 서버에 너무 많은 명령을 보냈습니다.
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :일반 오류
@@ -1777,6 +1781,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :DoCommand에서
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :강제추방
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :치트 사용 시도
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :서버 꽉참
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :너무 많은 명령 전송
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2409,6 +2414,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF �
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF 파라미터 바꾸기
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}닫기
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}리셋
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}모든 파라미터를 기본값으로 설정
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :파라미터 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}파라미터 번호: {ORANGE}{NUM}
@@ -2483,6 +2489,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}파일 없
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'는 비동기화 혹은 충돌을 일으킬 수 있습니다.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 동력차량의 상태가 바뀝니다.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 차량 길이가 바뀝니다.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'{P "은" "는"} 잘못된 길이값을 가지고 있습니다. NewGRF에 의한 문제일 것입니다. 게임이 비동기화/충돌을 일으킬 수 있습니다.
 
@@ -3318,6 +3325,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}일치 �
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AI 로그 메세지를 중단 문자열과 비교할때 일치 케이스 검색으로 전환.
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}계속
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}AI 재개 및 계속됨
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}이 AI의 디버그된 출력물을 봅니다.
 
 STR_ERROR_NO_AI                                                 :{WHITE}AI 지원 없이 OpenTTD를 빌드합니다...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... 사용 가능한 AI가 없습니다!

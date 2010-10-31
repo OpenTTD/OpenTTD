@@ -139,7 +139,7 @@ STR_ABBREV_GOODS                                                :{TINYFONT}ส�
 STR_ABBREV_GRAIN                                                :{TINYFONT}ข้าว
 STR_ABBREV_WOOD                                                 :{TINYFONT}ไม้
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}แร่
-STR_ABBREV_STEEL                                                :{TINYFONT}เหล็ก
+STR_ABBREV_STEEL                                                :{TINYFONT}เหล็กกล้า
 STR_ABBREV_VALUABLES                                            :{TINYFONT}เงิน
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}ทองแดง
 STR_ABBREV_MAIZE                                                :{TINYFONT}ข้าวโพด
@@ -1356,7 +1356,7 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}เป�
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
 STR_INTRO_NEW_GAME                                              :{BLACK}เริ่มเกมใหม่
-STR_INTRO_LOAD_GAME                                             :{BLACK}เปิดเกมเดิม
+STR_INTRO_LOAD_GAME                                             :{BLACK}โหลดเกม
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}เล่นฉาก
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}เลนแผนที่ความสูง
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}โปรแกรมแก้ฉาก
@@ -1911,7 +1911,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}เป�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}สร้างสถานีรถไฟ กด Ctrl เพื่อทำการรวมสถานี
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}สร้างเสาสัญญาณรถไฟ กด Ctrl เพื่อทำการเปลี่ยนระหว่าง ป้ายบอก/เสาสัญญาณ{}สามารถสร้างโดยลากไปกับรางรถไฟได้. กด Ctrl เพื่อสร้างสัญญาณไปจนถึงจุดตัดด้านหน้า{}กด Ctrl+Click เพื่อ เปิด/ปิด หน้าต่างเลือกเสาสัญญาณ
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}สร้างสะพานรถไฟ
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}สร้างอุโมงรถไฟ
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}สร้างอุโมงค์รถไฟ
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}เปลี่ยนระหว่าง สร้าง/รื้อถอน รางรถไฟ, เสาสัญญาณ, ที่หมายและสถานี. กด Ctrl ค้างไว้เพื่อทำการถอนรางรถไฟที่เป็นจุดหมายและสถานี
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}เปลี่ยน/อัพเกรด ชนิดของรางรถไฟ
 
@@ -1945,9 +1945,26 @@ STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}เล�
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}บล๊อกสัญญาณ (แบบป้าย){}สัญญาณแบบนี้เป็นแบบพื้นฐาน, อนุญาตให้มีรถไฟเพียงคันเดียวเท่านั้นที่อยู่ในช่วงสัญญาณนี้
 
 # Bridge selection window
+STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}เลือกสะพานรถไฟ
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}เลือกสะพานสำหรับรถยนต์
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}เลือกสะพาน - คลิกสะพานที่ท่านชื่นชอบเพื่อก่อสร้าง
+STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_BRIDGE_NAME_SUSPENSION_STEEL                                :สะพานแขวนแบบคอนกรีต
+STR_BRIDGE_NAME_GIRDER_STEEL                                    :สะพานนั่งร้านแบบเหล็กกล้า
+STR_BRIDGE_NAME_CANTILEVER_STEEL                                :สะพานคานแบบเหล็กกล้า
+STR_BRIDGE_NAME_SUSPENSION_CONCRETE                             :สะพานแขวนแบบคอนกรีต
+STR_BRIDGE_NAME_WOODEN                                          :สะพานไม้
+STR_BRIDGE_NAME_CONCRETE                                        :สะพานคอนกรีต
+STR_BRIDGE_NAME_TUBULAR_STEEL                                   :สะพานท่อแบบเหล็กกล้า
+STR_BRIDGE_TUBULAR_SILICON                                      :สะพานท่อแบบซิลิคอน
 
 
 # Road construction toolbar
+STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}สร้างถนน
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}การก่อสร้างรถราง
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}สร้างถนน กด Ctrl เพื่อสร้าง/รื้อถอน ถนน
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}สร้างสะพานสำหรับรถยนต์
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}สร้างสะพานสำหรับรถราง
 
 # Road depot construction window
 
@@ -2042,8 +2059,23 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 # Industries come directly from their industry names
 
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :สะพานแขวนแบบเหล็กสำหรับรถไฟ
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEELE                   :สะพานนั่งร้านแบบเหล็กสำหรับรถไฟ
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :สะพานคานแบบเหล็กกล้าสำหรับรถไฟ
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :สะพานแขวนแบบคอนกรีตเสริมเหล็กสำหรับรถไฟ
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :สะพานแบบไม้สำหรับรถไฟ
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :สะพานแบบคอนกรีตสำหรับรถไฟ
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :สะพานแบบท่อสำหรับรถไฟ
 
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :สะพานแขวนแบบเหล็กสำหรับรถยนต์
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :สะพานนั่งร้านแบบเหล็กสำหรับรถยนต์
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :สะพานคานแบบเหล็กกล้าสำหรับรถยนต์
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :สะพานแขวนแบบคอนกรีตเสริมเหล็กสำหรับรถยนต์
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :สะพานเแบบไม้สำหรับรถยนต์
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :สะพานแบบคอนกรีตสำหรับรถยนต์
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :สะพานแบบท่อสำหรับรถยนต์
 
+STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :ทางระบายน้ำ
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :เครื่องส่งสัญญาณ
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :ประภาคาร
@@ -2057,6 +2089,12 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}ลิขสิทธิ์ OpenTTD {COPYRIGHT}2002-2010 ของ The OpenTTD team
 
 # Save/load game/scenario
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}บันทึกเกม
+STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}โหลดเกม
+STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}บันทึกฉาก
+STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}โหลดฉากเดิม
+STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}โหลดแผนที่ระดับสูง
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}กดที่นี่เพื่อเข้าสู่ตำแหน่งบันทึกเกม/โหลดเกมที่ใช้อยู่
 
 
 # World generation
@@ -2399,6 +2437,7 @@ STR_INVALID_ORDER                                               :{RED} (คำ�
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}ตั้งค่า AI
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}เปลี่ยนการตั้งค่า AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}โหลด AI อีกครั้งหนึ่ง
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}ดูการผลลัพธ์การดีบักของ AI นี้
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD สร้างขึ้นโดยไม่มี AI สนับสนุน...
@@ -2426,6 +2465,9 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}ขณะนี้กำลังบันทึก,{}โปรดรอจนกว่าจะเสร็จ!
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :ข้อผิดพลาดจากภายใน: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :เกมที่บันทึกไว้ เสีย - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :เกมที่บันทึกไว้ สำหรับเวอร์ชันใหม่
 
 # Map generation messages
 
@@ -2474,6 +2516,7 @@ STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... ต�
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}สามารถสร้างได้เฉพาะพื้นที่ต่ำกว่าเท่านั้น
 
 # Station construction related errors
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}ตรงนี้ไม่สามารถสร้างสถานีรถไฟได้
 
 
 # Station destruction related errors
@@ -2485,6 +2528,7 @@ STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}ต้�
 
 
 # Depot related errors
+STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}ตรงนี้ไม่สามารถสร้างอู่รถได้
 
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... ต้องหยุดในโรงซ่อมบำรุง
@@ -2498,15 +2542,39 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... ต�
 
 # Rail construction errors
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}ต้องถอดสัญญาณออกก่อน
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}ไม่มีรางรถไฟที่เหมาะสม
+STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}ต้องทำลายทางรถไฟทิ้งเสียก่อน
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}ตรงนี้ไม่สามารถสร้างรางรถไฟได้...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}ตรงนี้ไม่สามารถลบรางรถไฟออกไปได้
 
 
 # Road construction errors
+STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}ต้องทำลายถนนเสียก่อน
+STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... ทางเดินรถทางเดียวไม่สามารถมีทางเชื่อมได้
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}ตรงนี้ไม่สามารถสร้างถนนได้
+STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}ตรงนี้ไม่สามารถสร้างรถรางได้
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}ตรงนี้ไม่สามารถลบถนนออกไปได้
+STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}ตรงนี้ไม่สามารถลบทางรถรางออกไปได้
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ไม่มีถนน
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ไม่มีทางรถราง
 
 # Waterway construction errors
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}ตรงนี้ไม่สามารถสร้างคลองได้
+STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}ตรงนี้ไม่สามารถสร้างประตูน้ำได้
+STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}ตรงนี้ไม่สามารถวางแม่น้ำได้
+STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... สร้างได้เฉพาะบนน้ำเท่านั้น
+STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... สร้างบนน้ำไม่ได้
 
 # Tree related errors
 
 # Bridge related errors
+STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :{WHITE}ตรงนี้ไม่สามารถสร้างสะพานได้...
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}ต้องทำลายสะพานทิ้งเสียก่อน
+STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}จุดเริ่มต้นและจุดสิ้นสุดไม่สามารถเป็นจุดเดียวกันได้
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}หัวสะพานไม่อยู่ในระดับเดียวกัน
+STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}สะพานอยู่ในตำแหน่งที่ต่ำเกินไป
+STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... จุดเริ่มต้นและจุดสิ้นสุดของสะพานต้องอยู่บนพื้นดิน
+STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... สะพานมีความยาวมากเกินไป
 
 # Tunnel related errors
 
@@ -2572,6 +2640,7 @@ STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :บ้านโ
 
 ##id 0x4800
 # industry names
+STR_INDUSTRY_NAME_STEEL_MILL                                    :โรงงานเหล็กกล้า
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
@@ -2582,6 +2651,9 @@ STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :บ้านโ
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_STEEL_TRUCK                   :รถบรรทุกเหล็กกล้า
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :รถบรรทุกเหล็กกล้า
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :รถบรรทุกเหล็กกล้า
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_WOOD_TRUCK                 :รถบรรทุกไม้รุ่นฟอสเตอร์
 STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :รถบรรทุกไม้รุ่นมัวร์แลนด์
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :รถบรรทุกแร่เหล็กรุ่นเอ็มพีเอส
@@ -2592,8 +2664,73 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :รถบรร
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :รถบรรทุกเหล็กกล้ารุ่นเคลลิ่ง
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :รถหุ้มเกราะรุ่นบัลล๊อก
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :รถหุ้มเกราะรุ่นยูเอชแอล
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :MightyMover Sweet Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :Powernaught Sweet Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Wizzowow Sweet Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :MightyMover Battery Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Powernaught Battery Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Wizzowow Battery Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :MightyMover Fizzy Drink Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Powernaught Fizzy Drink Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Wizzowow Fizzy Drink Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :MightyMover Plastic Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Powernaught Plastic Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Wizzowow Plastic Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :MightyMover Bubble Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :Powernaught Bubble Truck
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :Wizzowow Bubble Truck
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS Oil Tanker
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. Oil Tanker
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS Passenger Ferry
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP Passenger Ferry
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :Bakewell 300 Hovercraft
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :Chugger-Chug Passenger Ferry
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :Shivershake Passenger Ferry
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :Yate Cargo ship
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :Bakewell Cargo ship
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :Mightymover Cargo ship
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :Powernaut Cargo ship
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :Sampson U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :Coleman Count
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP Dart
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :Yate Haugan
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :Bakewell Cotswald LB-3
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :Bakewell Luckett LB-8
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :Bakewell Luckett LB-9
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :Bakewell Luckett LB80
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :Bakewell Luckett LB-10
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :Bakewell Luckett LB-11
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :Yate Aerospace YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :Darwin 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :Darwin 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :Darwin 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :Darwin 400
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :Darwin 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :Darwin 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :Guru Galaxy
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :Airtaxi A21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :Airtaxi A31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :Airtaxi A32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :Airtaxi A33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :Yate Aerospace YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :Dinger 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :AirTaxi A34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :Yate Z-Shuttle
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :Kelling K1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :Kelling K6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :Kelling K7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :Darwin 700
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :FFP Hyperdart 2
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :Dinger 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :Dinger 1000
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :Ploddyphut 100
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :Ploddyphut 500
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :Flashbang X1
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :Juggerplane M1
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :Flashbang Wizzer
 STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :Tricario Helicopter
 STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :Guru X2 Helicopter
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :Powernaut Helicopter
 
 ##id 0x8800
 # Formatting of some strings
