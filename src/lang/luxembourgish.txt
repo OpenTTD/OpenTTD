@@ -1405,7 +1405,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Checkbox
 STR_CHEATS_WARNING                                              :{BLACK}Warnung! Dir sidd um Wee är Géigner ze verroden. Sou eng Ongnod gëtt bis an all Éiwegkeet behalen.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Suen ëm {CURRENCY} erhéijen
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Als Firma spillen: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magëschen Bulldozer (Industrien ofrappen, onzerstéierbar Saachen): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magëschen Bulldozer (Industrien ofrappen, onzerstéierbar Objekter): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnellen kënnen sech kräizen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}An dem Pausmodus bauen: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet'en maachen net regelméisseg en Accident op klengen Fluchhäfen: {ORANGE} {STRING}
@@ -2128,7 +2128,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Trambunn
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Schinnenbesëtzer: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokal Autoritéit: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Keng
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaten: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaten: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Gebaut: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Statiounsklass: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Statiounstyp: {LTBLUE}{STRING}
@@ -2295,7 +2295,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handbuch
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Héichtekaart rotatioun:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Héichtekaart Numm:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Gréisst:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Gidd eng zoufälleg Zuel an
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ännert d'Schnéilinnhéicht
@@ -2454,7 +2454,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<invalid Wuer>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vunn <invalider Wuer>
-STR_NEWGRF_INVALID_ENGINE                                       :<invalid Maschinn>
+STR_NEWGRF_INVALID_ENGINE                                       :<invaliden Gefier-Modell>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid Industrie>
 
 # Sign list window
@@ -2535,7 +2535,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick op
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Statiounennimm - klick op den Numm fir d'Siicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Statioun
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haalt CTRL un fir méi wéi 1 Objet auszewielen
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haalt Ctrl un fir méi wéi 1 Objekt auszewielen
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Statioun{P "" en}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2814,10 +2814,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Gefier{P t er}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zich - klickt op den Zuch fir Info., zidd d'Gefiert fir en unzehänken/wechzehuelen
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Gefierer - klickt op en Gefier fir Informatiounen
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schëffer - klickt op d'Schëff fir Informatiounen
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fliger - Klickt op den Fliger fir Informatiounen
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zich - zidd d'Gefiert fir en unzehänken/wechzehuelen, Rietsklick fir Informatiounen. Ctrl unhalen dass béid Fonktiounen fir déi nächst Ketten gëllen
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Gefierer - Rietsklick op en Gefier fir Informatiounen
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schëffer - Rietsklick op d'Schëff fir Informatiounen
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fliger - Rietsklick op den Fliger fir Informatiounen
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Zitt den Zuch heihin fir en ze verkafen
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Zitt d'Stroossengefier heihin fir et ze verkafen
