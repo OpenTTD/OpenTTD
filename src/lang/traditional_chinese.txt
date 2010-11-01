@@ -2398,6 +2398,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}檢查�
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}檔名：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF 編號：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}版本: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最低相容版本：{SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 雜湊值：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}色盤: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}參數：{SILVER}{STRING}
@@ -3762,7 +3763,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}不能�
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}無法刪除標誌...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :《運輸大亨豪華版》的全新重寫版本
+STR_DESKTOP_SHORTCUT_COMMENT                                    :基於《運輸大亨豪華版》的運輸模擬遊戲
 
 ##id 0x2000
 # Town building names
