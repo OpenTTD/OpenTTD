@@ -8,7 +8,7 @@
  */
 
 /**
- * @file tcp.h Basic functions to listen for TCP connections.
+ * @file tcp_listen.h Basic functions to listen for TCP connections.
  */
 
 #ifndef NETWORK_CORE_TCP_LISTEN_H
