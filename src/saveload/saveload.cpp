@@ -1095,7 +1095,7 @@ void SlArray(void *array, size_t length, VarType conv)
  * the index of the item, and if not available, it hussles with
  * pointers (looks really bad :()
  * Remember that a NULL item has value 0, and all
- * indeces have +1, so vehicle 0 is saved as index 1.
+ * indices have +1, so vehicle 0 is saved as index 1.
  * @param obj The object that we want to get the index of
  * @param rt SLRefType type of the object the index is being sought of
  * @return Return the pointer converted to an index of the type pointed to
@@ -1124,7 +1124,7 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
  * Pointers cannot be loaded from a savegame, so this function
  * gets the index from the savegame and returns the appropiate
  * pointer from the already loaded base.
- * Remember that an index of 0 is a NULL pointer so all indeces
+ * Remember that an index of 0 is a NULL pointer so all indices
  * are +1 so vehicle 0 is saved as 1.
  * @param index The index that is being converted to a pointer
  * @param rt SLRefType type of the object the pointer is sought of
