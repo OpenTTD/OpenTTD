@@ -190,6 +190,15 @@ static void Ptrs_WAYP()
 			wp->town = ClosestTownFromTile(wp->xy, UINT_MAX);
 		} else if (CheckSavegameVersion(122)) {
 			/* Only for versions 12 .. 122 */
+			if (!Town::IsValidID(wp->town_index)) {
+				/* Upon a corrupted waypoint we'll likely get here. The next step will be to
+				 * loop over all Ptrs procs to NULL the pointers. However, we don't know
+				 * whether we're in the NULL or "normal" Ptrs proc. So just clear the list
+				 * of old waypoints we constructed and then this waypoint (and the other
+				 * possibly corrupt ones) will not be queried in the NULL Ptrs proc run. */
+				_old_waypoints.Clear();
+				SlErrorCorrupt("Referencing invalid Town");
+			}
 			wp->town = Town::Get(wp->town_index);
 		}
 		if (CheckSavegameVersion(84)) {
