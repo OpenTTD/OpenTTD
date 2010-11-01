@@ -1,4 +1,4 @@
-/* $Id: tcp.h 20933 2010-10-15 19:33:08Z rubidium $ */
+/* $Id$ */
 
 /*
  * This file is part of OpenTTD.
