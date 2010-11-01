@@ -1901,10 +1901,10 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 		if (sd->desc.cmd == SDT_BOOLX) {
 			snprintf(value, sizeof(value), (*(bool*)ptr == 1) ? "on" : "off");
 		} else {
-			snprintf(value, sizeof(value), "%d", (int32)ReadValue(ptr, sd->save.conv));
+			snprintf(value, sizeof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}
 
-		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %d)",
+		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %u)",
 			name, value, (sd->desc.flags & SGF_0ISDISABLED) ? "(0) " : "", sd->desc.min, sd->desc.max);
 	}
 }
@@ -1929,7 +1929,7 @@ void IConsoleListSettings(const char *prefilter)
 		} else if (sd->desc.cmd == SDT_STRING) {
 			snprintf(value, sizeof(value), "%s", (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char **)ptr : (const char *)ptr);
 		} else {
-			snprintf(value, lengthof(value), "%d", (uint32)ReadValue(ptr, sd->save.conv));
+			snprintf(value, lengthof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}
 		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->desc.name, value);
 	}
