@@ -334,6 +334,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industri
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Stroossenbau
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Beem setzen
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Schëld opstellen
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objekt plazéiren
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Szenario späicheren
@@ -442,6 +443,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Konsole un/aus
 STR_ABOUT_MENU_AI_DEBUG                                         :KI Debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot (Ctrl+S)
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ragezoomten Screenshot
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Screenshot vun der ganzer Kaart (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Iwwert 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite Alignéirer
@@ -558,6 +560,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Detailler fir des Firma uweisen
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Gefierter:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Statiounen:
@@ -697,7 +700,7 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}All ausschalten
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}All unschalten
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}D'Héigt uweisen
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}D'Héicht uweisen
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Keng Industrien op der Kaart uweisen
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}All Industrien op der Kaart uweisen
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Wiessel d'Usiicht vun der Héigtenkaart
@@ -1023,6 +1026,7 @@ STR_NUM_LOW                                                     :Wéineg
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Vill
 STR_NUM_CUSTOM                                                  :Benotzerdéfineiert
+STR_NUM_CUSTOM_NUMBER                                           :Eegen ({NUM})
 
 STR_VARIETY_NONE                                                :Keng
 STR_VARIETY_VERY_LOW                                            :Ganz niddreg
@@ -1041,6 +1045,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Ganz Wéineg
 STR_SEA_LEVEL_LOW                                               :Wéineg
 STR_SEA_LEVEL_MEDIUM                                            :Mëttel
 STR_SEA_LEVEL_HIGH                                              :Vill
+STR_SEA_LEVEL_CUSTOM                                            :Eegen
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Eegen ({NUM}%)
 
 STR_DISASTER_NONE                                               :Keng
 STR_DISASTER_REDUCED                                            :Manner
@@ -1084,6 +1090,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Erlaabt
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Erlaabt méi realistësch Staugréisstplazen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Erlaabt d'Ewechhuelen vun méi Stroosen, Brécken, etc. vun der Stad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bau vun ganz groussen Zich aschalten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Unzuel vun Lokomotivdamp/partikel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Keen
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistësch
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Zuchbeschleunegung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistesch
@@ -1105,6 +1115,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuel 
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keng
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wei aaner Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Erkundung
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Flaach Areal ronderem Industrien: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Erlaabt méi der selwecht Industrien pro Stad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Emmer den laangen Datum an der Statusbar uweisen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Weis d'Signaler op der Fuerersäit: {ORANGE}{STRING}
@@ -1145,6 +1156,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Gefiert
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoerneiren wann Gefiert méi wéi {ORANGE}{STRING}{LTBLUE} Méint firum/nom maixmalen Alter ass
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimalen Budget fir d'automatesch Erneierung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dauer vun Feelermeldungen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Verzögerung vun hover events: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Verzögerung vun hover events: {ORANGE}aus
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Weist Bewunnerzuel am Numm vun der Stadt: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerator: {ORANGE}{STRING}
@@ -1161,10 +1174,10 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Baampla
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Keen
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Verbessert
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap Rotatioun: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Héichtenkaartrotatioun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Géint d'Auer
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Matt der Auer
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Héigtenintervall den eng flaach Szenariokaart kritt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Héichtenintervall den eng flaach Szenariokaart kritt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Erdumformung vun Felder um Kaartenrand erlaaben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een oder méi Felder um nördlechsten Bord sin net eidel
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een oder méi Felder op engem Eck sin keen Waasser
@@ -1274,6 +1287,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 Gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Zoufälleg
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Stied därfen Stroossen bauen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Stied dierfen héich Kräizungen bauen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Erlaab stadkontrolléiert Kaméidisniveau fir Fluchhäfen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Stiedgrënnung am Spill: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :verbueden
@@ -1344,7 +1358,7 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Neit Spill
 STR_INTRO_LOAD_GAME                                             :{BLACK}Spill lueden
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Szenario spillen
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Spillt Héichtenkaart
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Héichtenkaart spillen
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Szenarien Editor
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
@@ -1749,6 +1763,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Den Serv
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Dir sidd vun dësem Server gebannt
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Dir sidd aus dem Spill gekickt ginn
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheaten ass op dësem Server net erlaabt
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du hues zevill Befehler un den Server geschéckt
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generellen Fehler
@@ -1766,6 +1781,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :falsch Firmen-I
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :vum Server gekickt
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :huet probéiert ze cheaten
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Server voll
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :huet zevill Befehler geschéckt
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2022,6 +2038,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Fluchhaf
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Fluchhafen Selectioun
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Wielt Gréisst/Typ vum Fluchhafen
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Fluchhafenklass
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Layout {NUM}
 
 STR_AIRPORT_SMALL                                               :Kleng
 STR_AIRPORT_CITY                                                :City
@@ -2048,7 +2065,14 @@ STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Land pla
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaaf Land fir zukünftëg Benotzung
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selektioun vum Objekt
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Wiel d'Objekt dat gebaut gëtt
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objektklass
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Preview vum Objekt
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Gréisst: {GOLD}{NUM} x {NUM} Felder
 
+STR_OBJECT_CLASS_LTHS                                           :Liichttierm
+STR_OBJECT_CLASS_TRNS                                           :Transmitter
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Beem
@@ -2115,6 +2139,17 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bauen
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Grënnen
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrieketten fir {STRING} Industrie
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrieketten fir {STRING} Wueren
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Produzéirent Industrien
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Akzeptéirend Industrien
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Heiser
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klick op d'Industrie fir d'Liwweranten an Verbraucher ze gesinn
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klick op d'Wueren fir d'Liwweranten an Verbraucher ze gesinn
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Weis "Ketten"
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Weis Industrien un déi Wueren liwweren an akzeptéiren
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Link op déi kleng Kaart
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Selektéiert déi ugewisen Industrien och op der klenger Kaart
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Informatiounen
@@ -2132,6 +2167,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Gebaut: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Statiounsklass: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Statiounstyp: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Fluchhafenklass: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Fluchhafennumm: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Fluchhafenfeldnumm: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Akzeptéiert Luedung: {LTBLUE}
@@ -2362,6 +2399,8 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Check op
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Dateinumm: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versioun: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibel Versioun: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
@@ -2370,9 +2409,16 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Keng Inf
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Datei net fonnt.
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ausgeschalt
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF Parameter agin
+STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF Parameter aginn
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRF Parameter änneren
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zouman
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reset
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Setzt all Paramater op den Standard zréck
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Unzuel Parameter: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspzéier - {STRING}
@@ -2380,6 +2426,7 @@ STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Parent
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspizéier den Objet vun der "parent scope"
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} op {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekt
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Schinnentyp
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF Variabel 60+x Parameter (hexadezimal)
@@ -2422,6 +2469,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Probéiert eng 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} huet eng korrupt Sprite. All korrupt Sprites gin als Fragezeichen (?) duergestalt.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Huet e puer Action 8 Einträg
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Iwwert d'Enn vum pseudo-sprite liesen
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}D'momentan benotzten Grafikset huet e puer Sprites ze mann. {}W.e.g d'Basisgrafikset updaten.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Opgepasst!
@@ -2443,6 +2491,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Dateien fe
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Verhalen vun der NewGRF '{0:STRING}' kann Desyncs oder Crashen verursachen.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Changéiert Zoustand fir '{1:ENGINE}' wann net an engem Depot.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Changéiert Gefierlengt fir '{1:ENGINE}' wann net an engem Depot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zuch'{VEHICLE}' vun der Firma '{COMPANY}' huet eng falsch Längt. Et kënnt wahrscheinlech wéinst den NewGRFs. Spill kann desyncroniséiren oder ofstierzen.
 
@@ -2459,6 +2508,10 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid Indust
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schëlderlëscht - {COMMA} Schëld{P "" er}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Zoutreffenden Fall
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Filter läschen
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Zoutreffend Fäll wiesselen wann Schëldernimm mam String-Filter verglach ginn
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Filter string läschen
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schëldtext änneren
@@ -2672,6 +2725,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktioun läschten Mount:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportéiert)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Zentréiert d'Siicht op d'Industrie. Ctrl+Klick erstellt eng nei Usiicht op d'Industrie
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktiounslevel: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Brauch: {YELLOW}{STRING}{STRING}
@@ -2687,6 +2741,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produzé
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}D'Produktioun änneren (Multipel vun 8, bis op 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Änner den Produktiounslevel (Prozenter, bis zu 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Z{P uch ich}
@@ -3278,6 +3333,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Passende
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Wiessel tëscht passenden Fäll beim vergläichen vun KI Log Messagen mam Break-String
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Weider
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Entpaus an fuer weider mat der KI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-output fir dës KI uweisen
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD as ouni KI support kompiléiert gin...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... keng KI verfügbar!
@@ -3319,6 +3375,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}KI net w
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Astellungen
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zoumaachen
 STR_AI_SETTINGS_RESET                                           :{BLACK}Reset
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3432,6 +3489,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Dës Fir
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Kann keng Stiedt bauen
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Kann d'Stad net ëmbënennen...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Kann d'Stad hei net bauen...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Kann d'Stad net vergréissern...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... ze noo um Enn vun der Kaart
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... ze noo un enger aanerer Stadt
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... ze vill Stied
@@ -3439,6 +3497,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... et a
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Stied bauen keng Stroossen. Dir kënnt den Bau iwwert Erweidert Astellungen->Economie->Stied anschalten
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Stroossenarbeschten umgaangen
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kann des Stad net leschen...{}Eng Statioun oder Depot huet den Numm vun dëser Stad oder en Stéck dat der Stad gehéiert kann net ewechgeholl ginn
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... et gëtt keng Gëeegent Plaz fir eng Statue am Stadzentrum
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... zevill Industrien
@@ -3479,6 +3538,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Ze noo u
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Kann d'Statioun net ëmbenennen...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... d'Strooss ass am Besëtz vun der Stad
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... Strooss geet an dei falsch Richtung
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... Duerchfahrtstops kënnen keng Kéiren hunn
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... Duerchfahrtstops kënnen keng Kräizungen hunn
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Kann den Deel vun der Gare net ofrappen...
@@ -3488,6 +3549,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kann d'C
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kann d'Tramstatioun net ofrappen...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kann d'Wueren-Tramstatioun net ofrappen...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Stroossenstop muss fir d'éischt wechgeholl ginn
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... et ass keng Statioun do
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Musst d'Gare fir d'éischt ofrappen
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Busgare muss fir d'éischt ofgerapt ginn
@@ -3547,11 +3609,14 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Signaler
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Keng gëeegent Schinnen
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}D'Schinnen mussen fir d'éischt ewech
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}D'Strooss ass eng Richtung oder blockéiert
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Héich Kräizungen sinn fir dësen Schinnentyp net erlabt
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kann d'Signaler hei net bauen...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kann d'Schinnen hei net bauen...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kann d'Schinnen hei net ewech huelen...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kann d'Signaler hei net ewech huelen...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kann d'Signal hei net convertéieren...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... et sinn keng Schinnen do
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... et sinn keng Signaler do
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kann Schinnentyp hei net convertéiren...
 
@@ -3562,6 +3627,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kann d'S
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kann den Tram heinet bauen...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kann d'Strooss hei net ewech huelen...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kann den Tram net wech huelen...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... et ass keng Strooss do
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... et ass keen Tram do
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kann hei keen Kanal bauen...
@@ -3596,6 +3663,8 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel g
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kann d'Land net fir dei aaner Säit vum Tunnel fräi leen
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... zevill Objekter
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Kann Objekt net bauen...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objet am Wee
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... Firmen Haaptgebai am Wee
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kann daat Land net kafen...
