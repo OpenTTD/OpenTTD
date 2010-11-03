@@ -558,6 +558,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalje
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vis detaljer om dette firma
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Køretøjer:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationer:
@@ -1087,6 +1088,9 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillad 
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Tillad mere realistisk størrelse på stationernes opland: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillad nedriving af industribygninger, flere veje, osv: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Aktiver bygning af meget lange tog: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ingen
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistisk
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Accelerationsmodel for tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
@@ -1753,6 +1757,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveren
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du har forbud mod at bruge denne server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du blev smidt ud af spillet
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Snyderi er ikke tilladt på denne server
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du sendte for mange kommandoer til serveren
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generel fejl
@@ -1770,6 +1775,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :forkert firma-i
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :smidt ud af serveren
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :prøvede at snyde
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveren er fuld
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendte for mange kommandoer
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2382,6 +2388,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Indtast 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Nulstil
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sæt alle parameter til deres standart niveau
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Antal parametrer: {ORANGE}{NUM}
 
 # NewGRF inspect window
@@ -3323,6 +3330,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skift ik
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Computerspiller-parametre
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Luk
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulstil
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
