@@ -1482,16 +1482,16 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 }
 
 
-static const byte _tunnel_fractcoord_1[4]    = {0x8E, 0x18, 0x81, 0xE8};
-static const byte _tunnel_fractcoord_2[4]    = {0x81, 0x98, 0x87, 0x38};
-static const byte _tunnel_fractcoord_3[4]    = {0x82, 0x88, 0x86, 0x48};
+static const byte _tunnel_fractcoord_1[DIAGDIR_END]    = {0x8E, 0x18, 0x81, 0xE8};
+static const byte _tunnel_fractcoord_2[DIAGDIR_END]    = {0x81, 0x98, 0x87, 0x38};
+static const byte _tunnel_fractcoord_3[DIAGDIR_END]    = {0x82, 0x88, 0x86, 0x48};
 
-static const byte _road_exit_tunnel_frame[4] = {2, 7, 9, 4};
+static const byte _road_exit_tunnel_frame[DIAGDIR_END] = {2, 7, 9, 4};
 
-static const byte _tunnel_fractcoord_4[4]    = {0x52, 0x85, 0x98, 0x29};
-static const byte _tunnel_fractcoord_5[4]    = {0x92, 0x89, 0x58, 0x25};
-static const byte _tunnel_fractcoord_6[4]    = {0x92, 0x89, 0x56, 0x45};
-static const byte _tunnel_fractcoord_7[4]    = {0x52, 0x85, 0x96, 0x49};
+static const byte _tunnel_fractcoord_4[DIAGDIR_END]    = {0x52, 0x85, 0x98, 0x29};
+static const byte _tunnel_fractcoord_5[DIAGDIR_END]    = {0x92, 0x89, 0x58, 0x25};
+static const byte _tunnel_fractcoord_6[DIAGDIR_END]    = {0x92, 0x89, 0x56, 0x45};
+static const byte _tunnel_fractcoord_7[DIAGDIR_END]    = {0x52, 0x85, 0x96, 0x49};
 
 static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
