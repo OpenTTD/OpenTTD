@@ -459,6 +459,13 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		this->SetWidgetDisabledState(GLAND_START_DATE_UP,   _settings_newgame.game_creation.starting_year >= MAX_YEAR);
 		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_DOWN, _settings_newgame.game_creation.snow_line_height <= MIN_SNOWLINE_HEIGHT || _settings_newgame.game_creation.landscape != LT_ARCTIC);
 		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_UP,   _settings_newgame.game_creation.snow_line_height >= MAX_SNOWLINE_HEIGHT || _settings_newgame.game_creation.landscape != LT_ARCTIC);
+
+		/* Do not allow a custom sea level with the original land generator. */
+		if (_settings_newgame.game_creation.land_generator == 0 &&
+				_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
+			_settings_newgame.difficulty.quantity_sea_lakes = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE;
+		}
+
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -658,9 +665,15 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				ShowDropDownMenu(this, _elevations, _settings_newgame.difficulty.terrain_type, GLAND_TERRAIN_PULLDOWN, 0, 0);
 				break;
 
-			case GLAND_WATER_PULLDOWN: // Water quantity
-				ShowDropDownMenu(this, _sea_lakes, _settings_newgame.difficulty.quantity_sea_lakes, GLAND_WATER_PULLDOWN, 0, 0);
+			case GLAND_WATER_PULLDOWN: { // Water quantity
+				uint32 hidden_mask = 0;
+				/* Disable custom water level when the original map generator is active. */
+				if (_settings_newgame.game_creation.land_generator == 0) {
+					SetBit(hidden_mask, CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY);
+				}
+				ShowDropDownMenu(this, _sea_lakes, _settings_newgame.difficulty.quantity_sea_lakes, GLAND_WATER_PULLDOWN, 0, hidden_mask);
 				break;
+			}
 
 			case GLAND_SMOOTHNESS_PULLDOWN: // Map smoothness
 				ShowDropDownMenu(this, _smoothness, _settings_newgame.game_creation.tgen_smoothness, GLAND_SMOOTHNESS_PULLDOWN, 0, 0);

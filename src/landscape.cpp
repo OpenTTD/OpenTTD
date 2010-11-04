@@ -963,6 +963,7 @@ void GenerateLandscape(byte mode)
 			default: {
 				uint32 r = Random();
 
+				assert(_settings_game.difficulty.quantity_sea_lakes != CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY);
 				uint i = ScaleByMapSize(GB(r, 0, 7) + (3 - _settings_game.difficulty.quantity_sea_lakes) * 256 + 100);
 				for (; i != 0; --i) {
 					GenerateTerrain(_settings_game.difficulty.terrain_type, 0);
