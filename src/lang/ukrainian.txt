@@ -3210,8 +3210,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Плат
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA} днів{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}%{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Збільшити інтервал техогляду на 10. Ctrl+Click збільшує інтервал техогляду на 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Зменшити період техогляду. Ctrl+Click зменшує інтервал техогляду на 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Збільшити інтервал техогляду на 10. Ctrl+клік збільшує інтервал техогляду на 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Зменшити період техогляду на 10. Ctrl+клік зменшує інтервал техогляду на 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Назвати поїзд
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Назвати авто
@@ -3622,7 +3622,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... на
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Місто не буде будувати дороги. ВИ можете дозволити будівництво доріг у вікні Розширені налаштування->Економіка->Міста.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Дорога ремонтується
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Не можна видалити це місто...{}Станція або депо, що відносяться до міста або знаходяться на землі у власності міста, не можуть бути видалені
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... немає підходящого місця для статуї в центрі цього міста
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... немає придатного місця для статуї в центрі цього міста
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... забагато промисловості
@@ -3892,7 +3892,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Немо
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не можна видалити позначку...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Клон гри "Transport Tycoon Deluxe"
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Гра-симулятор, заснована на Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
