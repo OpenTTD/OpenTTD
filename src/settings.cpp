@@ -902,21 +902,6 @@ static bool InvalidateIndustryViewWindow(int32 p1)
 	return true;
 }
 
-/** Checks if any settings are set to incorrect values, and sets them to correct values in that case. */
-static void ValidateSettings()
-{
-	/* Force the difficulty levels to correct values if they are invalid. */
-	if (_settings_newgame.difficulty.diff_level != 3) {
-		SetDifficultyLevel(_settings_newgame.difficulty.diff_level, &_settings_newgame.difficulty);
-	}
-
-	/* Do not allow a custom sea level with the original land generator. */
-	if (_settings_newgame.game_creation.land_generator == 0 &&
-			_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
-		_settings_newgame.difficulty.quantity_sea_lakes = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE;
-	}
-}
-
 /*
  * A: competitors
  * B: competitor start time. Deprecated since savegame version 110.
@@ -953,6 +938,21 @@ void SetDifficultyLevel(int mode, DifficultySettings *gm_opt)
 		*gm_opt = _default_game_diff[mode];
 	} else {
 		gm_opt->diff_level = 3;
+	}
+}
+
+/** Checks if any settings are set to incorrect values, and sets them to correct values in that case. */
+static void ValidateSettings()
+{
+	/* Force the difficulty levels to correct values if they are invalid. */
+	if (_settings_newgame.difficulty.diff_level != 3) {
+		SetDifficultyLevel(_settings_newgame.difficulty.diff_level, &_settings_newgame.difficulty);
+	}
+
+	/* Do not allow a custom sea level with the original land generator. */
+	if (_settings_newgame.game_creation.land_generator == 0 &&
+			_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
+		_settings_newgame.difficulty.quantity_sea_lakes = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE;
 	}
 }
 
