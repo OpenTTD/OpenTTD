@@ -686,7 +686,7 @@ uint ShowRefitOptionsList(int left, int right, int y, EngineID engine)
 	} else {
 		/* Check if we are able to refit to more cargo types and unable to. If
 		 * so, invert the cargo types to list those that we can't refit to. */
-		if (CountBits(cmask ^ lmask) < CountBits(cmask)) {
+		if (CountBits(cmask ^ lmask) < CountBits(cmask) && CountBits(cmask ^ lmask) <= 7) {
 			cmask ^= lmask;
 			b = InlineString(b, STR_PURCHASE_INFO_ALL_BUT);
 		}
