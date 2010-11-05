@@ -2810,6 +2810,11 @@ int Train::UpdateSpeed()
 	return scaled_spd;
 }
 
+/**
+ * Trains enters a station, send out a news item if it is the first train, and start loading.
+ * @param v Train that entered the station.
+ * @param station Station visited.
+ */
 static void TrainEnterStation(Train *v, StationID station)
 {
 	v->last_station_visited = station;

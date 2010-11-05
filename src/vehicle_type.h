@@ -40,6 +40,7 @@ struct Aircraft;
 struct EffectVehicle;
 struct DisasterVehicle;
 
+/** Base vehicle class. */
 struct BaseVehicle
 {
 	VehicleTypeByte type;    ///< Type of vehicle

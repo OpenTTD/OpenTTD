@@ -461,6 +461,13 @@ static void HelicopterTickHandler(Aircraft *v)
 	VehicleMove(u, true);
 }
 
+/**
+ * Set aircraft position.
+ * @param v Aircraft to position.
+ * @param x New X position.
+ * @param y New y position.
+ * @param z New z position.
+ */
 void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 {
 	v->x_pos = x;
@@ -494,7 +501,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 }
 
 /**
- * Handle Aircraft specific tasks when a an Aircraft enters a hangar
+ * Handle Aircraft specific tasks when an Aircraft enters a hangar
  * @param *v Vehicle that enters the hangar
  */
 void HandleAircraftEnterHangar(Aircraft *v)
@@ -959,7 +966,10 @@ static bool AircraftController(Aircraft *v)
 	return false;
 }
 
-
+/**
+ * Handle crashed aircraft \a v.
+ * @param v Crashed aircraft.
+ */
 static bool HandleCrashedAircraft(Aircraft *v)
 {
 	v->crashed_counter += 3;
@@ -1103,6 +1113,10 @@ uint Aircraft::Crash(bool flooded)
 	return pass;
 }
 
+/**
+ * Bring the aircraft in a crashed state, create the explosion animation, and create a news item about the crash.
+ * @param v Aircraft that crashed.
+ */
 static void CrashAirplane(Aircraft *v)
 {
 	CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
@@ -1131,6 +1145,10 @@ static void CrashAirplane(Aircraft *v)
 	SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
 
+/**
+ * Decide whether aircraft \a v should crash.
+ * @param v Aircraft to test.
+ */
 static void MaybeCrashAirplane(Aircraft *v)
 {
 	if (_settings_game.vehicle.plane_crashes == 0) return;
@@ -1158,7 +1176,11 @@ static void MaybeCrashAirplane(Aircraft *v)
 	CrashAirplane(v);
 }
 
-/** we've landed and just arrived at a terminal */
+/**
+ * Aircraft arrives at a terminal. If it is the first aircraft, throw a party.
+ * Start loading cargo.
+ * @param v Aircraft that arrived.
+ */
 static void AircraftEntersTerminal(Aircraft *v)
 {
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) return;
@@ -1183,6 +1205,10 @@ static void AircraftEntersTerminal(Aircraft *v)
 	v->BeginLoading();
 }
 
+/**
+ * Aircraft touched down at the landing strip.
+ * @param v Aircraft that landed.
+ */
 static void AircraftLandAirplane(Aircraft *v)
 {
 	v->UpdateDeltaXY(INVALID_DIR);
@@ -1240,13 +1266,22 @@ static void AircraftEventHandler_EnterTerminal(Aircraft *v, const AirportFTAClas
 	v->state = apc->layout[v->pos].heading;
 }
 
+/**
+ * Aircraft arrived in an airport hangar.
+ * @param v Aircraft in the hangar.
+ * @param apc Airport description containing the hangar.
+ */
 static void AircraftEventHandler_EnterHangar(Aircraft *v, const AirportFTAClass *apc)
 {
 	VehicleEnterDepot(v);
 	v->state = apc->layout[v->pos].heading;
 }
 
-/** In an Airport Hangar */
+/**
+ * Handle aircraft movement/decision making in an airport hangar.
+ * @param v Aircraft in the hangar.
+ * @param apc Airport description containing the hangar.
+ */
 static void AircraftEventHandler_InHangar(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* if we just arrived, execute EnterHangar first */
@@ -1469,7 +1504,13 @@ static void AircraftEventHandler_HeliEndLanding(Aircraft *v, const AirportFTACla
 	v->state = Station::Get(v->targetairport)->airport.HasHangar() ? HANGAR : HELITAKEOFF;
 }
 
+/**
+ * Signature of the aircraft handler function.
+ * @param v Aircraft to handle.
+ * @param apc Airport state machine.
+ */
 typedef void AircraftStateHandler(Aircraft *v, const AirportFTAClass *apc);
+/** Array of handler functions for each target of the aircraft. */
 static AircraftStateHandler * const _aircraft_state_handlers[] = {
 	AircraftEventHandler_General,        // TO_ALL         =  0
 	AircraftEventHandler_InHangar,       // HANGAR         =  1
@@ -1564,7 +1605,7 @@ static bool AirportMove(Aircraft *v, const AirportFTAClass *apc)
 	NOT_REACHED();
 }
 
-/*  returns true if the road ahead is busy, eg. you must wait before proceeding */
+/** returns true if the road ahead is busy, eg. you must wait before proceeding. */
 static bool AirportHasBlock(Aircraft *v, const AirportFTA *current_pos, const AirportFTAClass *apc)
 {
 	const AirportFTA *reference = &apc->layout[v->pos];
@@ -1658,6 +1699,13 @@ static const MovementTerminalMapping _airport_terminal_mapping[] = {
 	{HELIPAD3, HELIPAD3_block},
 };
 
+/**
+ * Find a free terminal or helipad, and if available, assign it.
+ * @param v Aircraft looking for a free terminal or helipad.
+ * @param i First terminal to examine.
+ * @param last_terminal Terminal number to stop examining.
+ * @return A terminal or helipad has been found, and has been assigned to the aircraft.
+ */
 static bool FreeTerminal(Aircraft *v, byte i, byte last_terminal)
 {
 	assert(last_terminal <= lengthof(_airport_terminal_mapping));
@@ -1673,6 +1721,11 @@ static bool FreeTerminal(Aircraft *v, byte i, byte last_terminal)
 	return false;
 }
 
+/**
+ * Get the number of terminals at the airport.
+ * @param afc Airport description.
+ * @return Number of terminals.
+ */
 static uint GetNumTerminals(const AirportFTAClass *apc)
 {
 	uint num = 0;
@@ -1682,6 +1735,12 @@ static uint GetNumTerminals(const AirportFTAClass *apc)
 	return num;
 }
 
+/**
+ * Find a free terminal, and assign it if available.
+ * @param v Aircraft to handle.
+ * @param apc Airport state machine.
+ * @return Found a free terminal and assigned it.
+ */
 static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* example of more terminalgroups
@@ -1729,6 +1788,12 @@ static bool AirportFindFreeTerminal(Aircraft *v, const AirportFTAClass *apc)
 	return FreeTerminal(v, 0, GetNumTerminals(apc));
 }
 
+/**
+ * Find a free helipad, and assign it if available.
+ * @param v Aircraft to handle.
+ * @param apc Airport state machine.
+ * @return Found a free helipad and assigned it.
+ */
 static bool AirportFindFreeHelipad(Aircraft *v, const AirportFTAClass *apc)
 {
 	/* if an airport doesn't have helipads, use terminals */

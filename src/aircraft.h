@@ -17,7 +17,7 @@
 
 struct Aircraft;
 
-/** An aircraft can be one ot those types */
+/** An aircraft can be one of those types. */
 enum AircraftSubType {
 	AIR_HELICOPTER = 0, ///< an helicopter
 	AIR_AIRCRAFT   = 2, ///< an airplane
@@ -27,7 +27,7 @@ enum AircraftSubType {
 
 
 /**
- * Handle Aircraft specific tasks when a an Aircraft enters a hangar
+ * Handle Aircraft specific tasks when an Aircraft enters a hangar
  * @param *v Vehicle that enters the hangar
  */
 void HandleAircraftEnterHangar(Aircraft *v);
@@ -67,18 +67,16 @@ struct AircraftCache {
  * Aircraft, helicopters, rotors and their shadows belong to this class.
  */
 struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
-	AircraftCache acache; ///< Cache of often used calculated values
+	AircraftCache acache;          ///< Cache of often used calculated values
 
-	uint16 crashed_counter;
-	byte pos;
-	byte previous_pos;
-	StationID targetairport;
-	byte state;
+	uint16 crashed_counter;        ///< Timer for handling crash animations.
+	byte pos;                      ///< Next desired position of the aircraft.
+	byte previous_pos;             ///< Previous desired position of the aircraft.
+	StationID targetairport;       ///< Airport to go to next.
+	byte state;                    ///< State of the airport. @see AirportMovementStates
 	DirectionByte last_direction;
-	byte number_consecutive_turns;
-
-	/** Ticks between each turn to prevent > 45 degree turns. */
-	byte turn_counter;
+	byte number_consecutive_turns; ///< Protection to prevent the aircraft of making a lot of turns in order to reach a specific point.
+	byte turn_counter;             ///< Ticks between each turn to prevent > 45 degree turns.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
 	Aircraft() : SpecializedVehicle<Aircraft, VEH_AIRCRAFT>() {}
@@ -116,6 +114,9 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	}
 };
 
+/**
+ * Macro for iterating over all aircrafts.
+ */
 #define FOR_ALL_AIRCRAFT(var) FOR_ALL_VEHICLES_OF_TYPE(Aircraft, var)
 
 SpriteID GetRotorImage(const Aircraft *v);

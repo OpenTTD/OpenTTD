@@ -74,6 +74,11 @@ struct GetNewVehiclePosResult {
 GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v);
 Direction GetDirectionTowards(const Vehicle *v, int x, int y);
 
+/**
+ * Is the given vehicle type buildable by a company?
+ * @param type Vehicle type being queried.
+ * @return Vehicle type is buildable by a company.
+ */
 static inline bool IsCompanyBuildableVehicleType(VehicleType type)
 {
 	switch (type) {
@@ -87,6 +92,11 @@ static inline bool IsCompanyBuildableVehicleType(VehicleType type)
 	}
 }
 
+/**
+ * Is the given vehicle buildable by a company?
+ * @param v Vehicle being queried.
+ * @return Vehicle is buildable by a company.
+ */
 static inline bool IsCompanyBuildableVehicleType(const BaseVehicle *v)
 {
 	return IsCompanyBuildableVehicleType(v->type);

@@ -20,9 +20,21 @@
 	static AirportFTAClass _airportfta_ ## name(_airport_moving_data_ ## name, terminals, \
 			num_helipads, _airport_entries_ ## name, flags, _airport_fta_ ## name, delta_z);
 
+/**
+ * Define an airport.
+ * @param name Suffix of the names of the airport data.
+ * @param num_helipads Number of heli pads.
+ * @param short_strip Airport has a short land/take-off strip.
+ */
 #define AIRPORT(name, num_helipads, short_strip) \
 	AIRPORT_GENERIC(name, _airport_terminal_ ## name, num_helipads, AirportFTAClass::ALL | (short_strip ? AirportFTAClass::SHORT_STRIP : (AirportFTAClass::Flags)0), 0)
 
+/**
+ * Define a heliport.
+ * @param name Suffix of the names of the helipad data.
+ * @param num_helipads Number of heli pads.
+ * @param delta_z Height of the arport above the land.
+ */
 #define HELIPORT(name, num_helipads, delta_z) \
 	AIRPORT_GENERIC(name, NULL, num_helipads, AirportFTAClass::HELICOPTERS, delta_z)
 
@@ -53,6 +65,8 @@ static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildu
  * Rotate the airport moving data to another rotation.
  * @param orig Pointer to the moving data to rotate.
  * @param rotation How to rotate the moving data.
+ * @param num_tiles_x Number of tiles in x direction.
+ * @param num_tiles_y Number of tiles in y direction.
  * @return The rotated moving data.
  */
 AirportMovingData RotateAirportMovingData(const AirportMovingData *orig, Direction rotation, uint num_tiles_x, uint num_tiles_y)
@@ -172,6 +186,11 @@ static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildu
 	return FAutomata;
 }
 
+/**
+ * Get the finite state machine of an airport type.
+ * @param airport_type Airport type to query FTA from. @see AirportTypes
+ * @return Finite state machine of the airport.
+ */
 const AirportFTAClass *GetAirport(const byte airport_type)
 {
 	if (airport_type == AT_DUMMY) return &_airportfta_dummy;

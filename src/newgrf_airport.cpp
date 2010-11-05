@@ -37,7 +37,7 @@ INSTANTIATE_NEWGRF_CLASS_METHODS(AirportClass, AirportSpec, AirportClassID, APC_
 
 AirportOverrideManager _airport_mngr(NEW_AIRPORT_OFFSET, NUM_AIRPORTS, AT_INVALID);
 
-AirportSpec AirportSpec::specs[NUM_AIRPORTS];
+AirportSpec AirportSpec::specs[NUM_AIRPORTS]; ///< Airport specifications.
 
 /**
  * Retrieve airport spec for the given airport. If an override is available
@@ -70,7 +70,7 @@ AirportSpec AirportSpec::specs[NUM_AIRPORTS];
 	return &AirportSpec::specs[type];
 }
 
-/** Check if this airport is available to build. */
+/** Check whether this airport is available to build. */
 bool AirportSpec::IsAvailable() const
 {
 	if (!this->enabled) return false;

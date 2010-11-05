@@ -13,20 +13,30 @@
 #define AIRPORT_MOVEMENT_H
 
 
-/* state machine input struct (from external file, etc.)
- * Finite sTate mAchine --> FTA */
+/**
+ * State machine input struct (from external file, etc.)
+ * Finite sTate mAchine --> FTA
+ */
 struct AirportFTAbuildup {
-	byte position; // the position that an airplane is at
-	byte heading;  // the current orders (eg. TAKEOFF, HANGAR, ENDLANDING, etc.)
-	uint64 block;  // the block this position is on on the airport (st->airport.flags)
-	byte next;     // next position from this position
+	byte position; ///< The position that an airplane is at.
+	byte heading;  ///< The current orders (eg. TAKEOFF, HANGAR, ENDLANDING, etc.).
+	uint64 block;  ///< The block this position is on on the airport (st->airport.flags).
+	byte next;     ///< Next position from this position.
 };
 
 ///////////////////////////////////////////////////////////////////////
 /////*********Movement Positions on Airports********************///////
 
+/**
+ * Airport movement data creation macro.
+ * @param x     X position.
+ * @param y     Y position.
+ * @param flags Movement flags.
+ * @param dir   Direction.
+ */
 #define AMD(x, y, flags, dir) { x, y, flags, {dir} }
 
+/** Dummy airport. */
 static const AirportMovingData _airport_moving_data_dummy[] = {
 	AMD(    0,    0, AMED_NOSPDCLAMP | AMED_SLOWTURN,     DIR_N ),
 	AMD(    0,   96, AMED_NOSPDCLAMP | AMED_SLOWTURN,     DIR_N ),
@@ -34,7 +44,7 @@ static const AirportMovingData _airport_moving_data_dummy[] = {
 	AMD(   96,    0, AMED_NOSPDCLAMP | AMED_SLOWTURN,     DIR_N ),
 };
 
-/* Country Airfield (small) 4x3 */
+/** Country Airfield (small) 4x3. */
 static const AirportMovingData _airport_moving_data_country[22] = {
 	AMD(   53,    3, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar
 	AMD(   53,   27, 0,                               DIR_N ), // 01 Taxi to right outside depot
@@ -60,7 +70,7 @@ static const AirportMovingData _airport_moving_data_country[22] = {
 	AMD(   44,   40, AMED_HELI_LOWER,                 DIR_N ), // 21 Helicopter landing
 };
 
-/* Commuter Airfield (small) 5x4 */
+/** Commuter Airfield (small) 5x4. */
 static const AirportMovingData _airport_moving_data_commuter[37] = {
 	AMD(   69,    3, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar
 	AMD(   72,   22, 0,                               DIR_N ), // 01 Taxi to right outside depot
@@ -102,7 +112,7 @@ static const AirportMovingData _airport_moving_data_commuter[37] = {
 	AMD(   56,    8, AMED_EXACTPOS,                   DIR_N ), // pre-helitakeoff helipad 2
 };
 
-/* City Airport (large) 6x6 */
+/** City Airport (large) 6x6. */
 static const AirportMovingData _airport_moving_data_city[] = {
 	AMD(   85,    3, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar
 	AMD(   85,   22, 0,                               DIR_N ), // 01 Taxi to right outside depot
@@ -132,11 +142,11 @@ static const AirportMovingData _airport_moving_data_city[] = {
 	AMD(  145,    1, AMED_HOLD       | AMED_SLOWTURN, DIR_N ), // 25 Fly around waiting for a landing spot (north-west)
 	AMD(  -32,    1, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 26 Initial approach fix (north)
 	AMD(  300,  -48, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 27 Initial approach fix (south)
-	AMD(  140,  -48, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 28 Intermediadate Approach fix (south), IAF (west)
+	AMD(  140,  -48, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 28 Intermediate Approach fix (south), IAF (west)
 	AMD(  -32,  120, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 29 Initial approach fix (east)
 };
 
-/* Metropolitan Airport (metropolitan) - 2 runways */
+/** Metropolitan Airport (metropolitan) - 2 runways. */
 static const AirportMovingData _airport_moving_data_metropolitan[28] = {
 	AMD(   85,    3, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar
 	AMD(   85,   22, 0,                               DIR_N ), // 01 Taxi to right outside depot
@@ -168,7 +178,7 @@ static const AirportMovingData _airport_moving_data_metropolitan[28] = {
 	AMD(   21,   58, AMED_EXACTPOS,                   DIR_SW), // 27 Transitions after landing to on-ground movement
 };
 
-/* International Airport (international) - 2 runways, 6 terminals, dedicated helipod */
+/** International Airport (international) - 2 runways, 6 terminals, dedicated helipad. */
 static const AirportMovingData _airport_moving_data_international[51] = {
 	AMD(    7,   55, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar 1
 	AMD(  100,   21, AMED_EXACTPOS,                   DIR_SE), // 01 In Hangar 2
@@ -224,7 +234,7 @@ static const AirportMovingData _airport_moving_data_international[51] = {
 	AMD(  104,   32, AMED_HELI_LOWER,                 DIR_N ), // 50 Land in HANGAR2_AREA to go to hangar
 };
 
-/* Intercontinental Airport - 4 runways, 8 terminals, 2 dedicated helipads */
+/** Intercontinental Airport - 4 runways, 8 terminals, 2 dedicated helipads. */
 static const AirportMovingData _airport_moving_data_intercontinental[77] = {
 	AMD(    8,   87, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar 1
 	AMD(  136,   72, AMED_EXACTPOS,                   DIR_SE), // 01 In Hangar 2
@@ -307,7 +317,7 @@ static const AirportMovingData _airport_moving_data_intercontinental[77] = {
 };
 
 
-/* Heliport (heliport) */
+/** Heliport (heliport). */
 static const AirportMovingData _airport_moving_data_heliport[9] = {
 	AMD(    5,    9, AMED_EXACTPOS,                   DIR_NE), // 0 - At heliport terminal
 	AMD(    2,    9, AMED_HELI_RAISE,                 DIR_N ), // 1 - Take off (play sound)
@@ -320,7 +330,7 @@ static const AirportMovingData _airport_moving_data_heliport[9] = {
 	AMD(   70,    9, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 8 - Circle #4 (south)
 };
 
-/* HeliDepot 2x2 (heliport) */
+/** HeliDepot 2x2 (heliport). */
 static const AirportMovingData _airport_moving_data_helidepot[18] = {
 	AMD(   24,    4, AMED_EXACTPOS,                   DIR_NE), // 0 - At depot
 	AMD(   24,   28, 0,                               DIR_N ), // 1 Taxi to right outside depot
@@ -342,7 +352,7 @@ static const AirportMovingData _airport_moving_data_helidepot[18] = {
 	AMD(    8,   24, AMED_SLOWTURN | AMED_EXACTPOS,   DIR_E ), // 17 - turn on helipad1 for takeoff
 };
 
-/* HeliDepot 2x2 (heliport) */
+/** HeliDepot 2x2 (heliport). */
 static const AirportMovingData _airport_moving_data_helistation[33] = {
 	AMD(    8,    3, AMED_EXACTPOS,                   DIR_SE), // 00 In Hangar2
 	AMD(    8,   22, 0,                               DIR_N ), // 01 outside hangar 2
@@ -379,7 +389,7 @@ static const AirportMovingData _airport_moving_data_helistation[33] = {
 	AMD(  132,  -24, AMED_NOSPDCLAMP | AMED_SLOWTURN, DIR_N ), // 32 Fly around waiting for a landing spot (north-east)
 };
 
-/* Oilrig */
+/** Oilrig. */
 static const AirportMovingData _airport_moving_data_oilrig[9] = {
 	AMD(   31,    9, AMED_EXACTPOS,                   DIR_NE), // 0 - At oilrig terminal
 	AMD(   28,    9, AMED_HELI_RAISE,                 DIR_N ), // 1 - Take off (play sound)

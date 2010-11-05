@@ -317,6 +317,11 @@ static bool ShipAccelerate(Vehicle *v)
 	return (t < v->progress);
 }
 
+/**
+ * Ship arrives at a dock. If it is the first time, send out a news item.
+ * @param v  Ship that arrived.
+ * @param st Station being visited.
+ */
 static void ShipArrivesAt(const Vehicle *v, Station *st)
 {
 	/* Check if station was ever visited before */

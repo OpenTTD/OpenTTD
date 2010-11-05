@@ -604,6 +604,11 @@ static RoadVehicle *RoadVehFindCloseTo(RoadVehicle *v, int x, int y, Direction d
 	return RoadVehicle::From(rvf.best);
 }
 
+/**
+ * A road vehicle arrives at a station. If it is the first time, create a news item.
+ * @param v  Road vehicle that arrived.
+ * @param st Station where the road vehicle arrived.
+ */
 static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
 {
 	if (v->IsBus()) {

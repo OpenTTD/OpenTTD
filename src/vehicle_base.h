@@ -23,21 +23,23 @@
 #include "transport_type.h"
 #include "group_type.h"
 
+/** Vehicle status bits in #Vehicle::vehstatus. */
 enum VehStatus {
-	VS_HIDDEN          = 0x01,
-	VS_STOPPED         = 0x02,
-	VS_UNCLICKABLE     = 0x04,
-	VS_DEFPAL          = 0x08,
-	VS_TRAIN_SLOWING   = 0x10,
-	VS_SHADOW          = 0x20,
-	VS_AIRCRAFT_BROKEN = 0x40,
-	VS_CRASHED         = 0x80,
+	VS_HIDDEN          = 0x01, ///< Vehicle is not visible.
+	VS_STOPPED         = 0x02, ///< Vehicle is stopped by the player.
+	VS_UNCLICKABLE     = 0x04, ///< Vehicle is not clickable by the user (shadow vehicles).
+	VS_DEFPAL          = 0x08, ///< Use default vehicle palette. @see DoDrawVehicle
+	VS_TRAIN_SLOWING   = 0x10, ///< Train is slowing down.
+	VS_SHADOW          = 0x20, ///< Vehicle is a shadow vehicle.
+	VS_AIRCRAFT_BROKEN = 0x40, ///< Aircraft is broken down.
+	VS_CRASHED         = 0x80, ///< Vehicle is crashed.
 };
 
+/** Bit numbers in #Vehicle::vehicle_flags. */
 enum VehicleFlags {
-	VF_LOADING_FINISHED,
-	VF_CARGO_UNLOADING,
-	VF_BUILT_AS_PROTOTYPE,
+	VF_LOADING_FINISHED,        ///< Vehicle has finished loading.
+	VF_CARGO_UNLOADING,         ///< Vehicle is unloading cargo.
+	VF_BUILT_AS_PROTOTYPE,      ///< Vehicle is a prototype (accepted as exclusive preview).
 	VF_TIMETABLE_STARTED,       ///< Whether the vehicle has started running on the timetable yet.
 	VF_AUTOFILL_TIMETABLE,      ///< Whether the vehicle should fill in the timetable automatically.
 	VF_AUTOFILL_PRES_WAIT_TIME, ///< Whether non-destructive auto-fill should preserve waiting times
@@ -65,6 +67,7 @@ extern bool LoadOldVehicle(LoadgameState *ls, int num);
 extern bool AfterLoadGame();
 extern void FixOldVehicles();
 
+/** Vehicle data structure. */
 struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle {
 private:
 	Vehicle *next;                      ///< pointer to the next vehicle in the chain
@@ -117,10 +120,10 @@ public:
 	Date max_age;                       ///< Maximum age
 	Date date_of_last_service;
 	Date service_interval;
-	uint16 reliability;
-	uint16 reliability_spd_dec;
-	byte breakdown_ctr;
-	byte breakdown_delay;
+	uint16 reliability;                 ///< Reliability.
+	uint16 reliability_spd_dec;         ///< Reliability decrease speed.
+	byte breakdown_ctr;                 ///< Counter for managing breakdown events. @see Vehicle::HandleBreakdown
+	byte breakdown_delay;               ///< Counter for managing breakdown length.
 	byte breakdowns_since_last_service;
 	byte breakdown_chance;
 

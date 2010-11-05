@@ -26,72 +26,72 @@ static const uint INVALID_AIRPORTTILE    = NUM_AIRPORTTILES; ///< id for an inva
 
 /** Airport types */
 enum AirportTypes {
-	AT_SMALL         =   0,
-	AT_LARGE         =   1,
-	AT_HELIPORT      =   2,
-	AT_METROPOLITAN  =   3,
-	AT_INTERNATIONAL =   4,
-	AT_COMMUTER      =   5,
-	AT_HELIDEPOT     =   6,
-	AT_INTERCON      =   7,
-	AT_HELISTATION   =   8,
-	AT_OILRIG        =   9,
-	NEW_AIRPORT_OFFSET = 10,
-	NUM_AIRPORTS     =  128,
-	AT_INVALID       = 254,
-	AT_DUMMY         = 255
+	AT_SMALL           =   0, ///< Small airport.
+	AT_LARGE           =   1, ///< Large airport.
+	AT_HELIPORT        =   2, ///< Heli port.
+	AT_METROPOLITAN    =   3, ///< Metropolitan airport.
+	AT_INTERNATIONAL   =   4, ///< International airport.
+	AT_COMMUTER        =   5, ///< Commuter airport.
+	AT_HELIDEPOT       =   6, ///< Heli depot.
+	AT_INTERCON        =   7, ///< Intercontinental airport.
+	AT_HELISTATION     =   8, ///< Heli station airport.
+	AT_OILRIG          =   9, ///< Oilrig airport.
+	NEW_AIRPORT_OFFSET =  10, ///< Number of the first newgrf airport.
+	NUM_AIRPORTS       = 128, ///< Maximal number of airports.
+	AT_INVALID         = 254, ///< Invalid airport.
+	AT_DUMMY           = 255, ///< Dummy airport.
 };
 
+/** Flags for airport movement data. */
 enum AirportMovingDataFlags {
-	AMED_NOSPDCLAMP = 1 << 0,
-	AMED_TAKEOFF    = 1 << 1,
-	AMED_SLOWTURN   = 1 << 2,
-	AMED_LAND       = 1 << 3,
-	AMED_EXACTPOS   = 1 << 4,
-	AMED_BRAKE      = 1 << 5,
-	AMED_HELI_RAISE = 1 << 6,
-	AMED_HELI_LOWER = 1 << 7,
-	AMED_HOLD       = 1 << 8
+	AMED_NOSPDCLAMP = 1 << 0, ///< No speed restrictions.
+	AMED_TAKEOFF    = 1 << 1, ///< Takeoff movement.
+	AMED_SLOWTURN   = 1 << 2, ///< Turn slowly (mostly used in the air).
+	AMED_LAND       = 1 << 3, ///< Landing onto landing strip.
+	AMED_EXACTPOS   = 1 << 4, ///< Go exactly to the destination coordinates.
+	AMED_BRAKE      = 1 << 5, ///< Taxiing at the airport.
+	AMED_HELI_RAISE = 1 << 6, ///< Helicopter take-off.
+	AMED_HELI_LOWER = 1 << 7, ///< Helicopter landing.
+	AMED_HOLD       = 1 << 8  ///< Holding pattern movement (above the airport).
 };
 
-/* Movement States on Airports (headings target) */
+/** Movement States on Airports (headings target) */
 enum AirportMovementStates {
-	TO_ALL         =  0,
-	HANGAR         =  1,
-	TERM1          =  2,
-	TERM2          =  3,
-	TERM3          =  4,
-	TERM4          =  5,
-	TERM5          =  6,
-	TERM6          =  7,
-	HELIPAD1       =  8,
-	HELIPAD2       =  9,
-	TAKEOFF        = 10,
-	STARTTAKEOFF   = 11,
-	ENDTAKEOFF     = 12,
-	HELITAKEOFF    = 13,
-	FLYING         = 14,
-	LANDING        = 15,
-	ENDLANDING     = 16,
-	HELILANDING    = 17,
-	HELIENDLANDING = 18,
-	TERM7          = 19,
-	TERM8          = 20,
-	HELIPAD3       = 21,
-	MAX_HEADINGS   = 21,
+	TO_ALL         =  0, ///< Go in this direction for every target.
+	HANGAR         =  1, ///< Heading for hangar.
+	TERM1          =  2, ///< Heading for terminal 1.
+	TERM2          =  3, ///< Heading for terminal 2.
+	TERM3          =  4, ///< Heading for terminal 3.
+	TERM4          =  5, ///< Heading for terminal 4.
+	TERM5          =  6, ///< Heading for terminal 5.
+	TERM6          =  7, ///< Heading for terminal 6.
+	HELIPAD1       =  8, ///< Heading for helipad 1.
+	HELIPAD2       =  9, ///< Heading for helipad 2.
+	TAKEOFF        = 10, ///< Airplane wants to leave the airport.
+	STARTTAKEOFF   = 11, ///< Airplane has arrived at a runway for take-off.
+	ENDTAKEOFF     = 12, ///< Airplane has reached end-point of the take-off runway.
+	HELITAKEOFF    = 13, ///< Helicopter wants to leave the airport.
+	FLYING         = 14, ///< Vehicle is flying in the air.
+	LANDING        = 15, ///< Airplane wants to land.
+	ENDLANDING     = 16, ///< Airplane wants to finish landing.
+	HELILANDING    = 17, ///< Helicopter wants to land.
+	HELIENDLANDING = 18, ///< Helicopter wants to finish landing.
+	TERM7          = 19, ///< Heading for terminal 7.
+	TERM8          = 20, ///< Heading for terminal 8.
+	HELIPAD3       = 21, ///< Heading for helipad 3.
+	MAX_HEADINGS   = 21, ///< Last valid target to head for.
 };
 
-/* Movement Blocks on Airports
- * blocks (eg_airport_flags) */
+/** Movement Blocks on Airports blocks (eg_airport_flags). */
 static const uint64
-	TERM1_block              = 1ULL <<  0,
-	TERM2_block              = 1ULL <<  1,
-	TERM3_block              = 1ULL <<  2,
-	TERM4_block              = 1ULL <<  3,
-	TERM5_block              = 1ULL <<  4,
-	TERM6_block              = 1ULL <<  5,
-	HELIPAD1_block           = 1ULL <<  6,
-	HELIPAD2_block           = 1ULL <<  7,
+	TERM1_block              = 1ULL <<  0, ///< Block belonging to terminal 1.
+	TERM2_block              = 1ULL <<  1, ///< Block belonging to terminal 2.
+	TERM3_block              = 1ULL <<  2, ///< Block belonging to terminal 3.
+	TERM4_block              = 1ULL <<  3, ///< Block belonging to terminal 4.
+	TERM5_block              = 1ULL <<  4, ///< Block belonging to terminal 5.
+	TERM6_block              = 1ULL <<  5, ///< Block belonging to terminal 6.
+	HELIPAD1_block           = 1ULL <<  6, ///< Block belonging to helipad 1.
+	HELIPAD2_block           = 1ULL <<  7, ///< Block belonging to helipad 2.
 	RUNWAY_IN_OUT_block      = 1ULL <<  8,
 	RUNWAY_IN_block          = 1ULL <<  8,
 	AIRPORT_BUSY_block       = 1ULL <<  8,
@@ -110,15 +110,15 @@ static const uint64
 	PRE_HELIPAD_block        = 1ULL << 21,
 
 	/* blocks for new airports */
-	TERM7_block              = 1ULL << 22,
-	TERM8_block              = 1ULL << 23,
-	HELIPAD3_block           = 1ULL << 24,
+	TERM7_block              = 1ULL << 22, ///< Block belonging to terminal 7.
+	TERM8_block              = 1ULL << 23, ///< Block belonging to terminal 8.
+	HELIPAD3_block           = 1ULL << 24, ///< Block belonging to helipad 3.
 	HANGAR1_AREA_block       = 1ULL << 26,
 	OUT_WAY2_block           = 1ULL << 27,
 	IN_WAY2_block            = 1ULL << 28,
 	RUNWAY_IN2_block         = 1ULL << 29,
-	RUNWAY_OUT2_block        = 1ULL << 10,   ///< note re-uses TAXIWAY_BUSY
-	HELIPAD_GROUP_block      = 1ULL << 13,   ///< note re-uses AIRPORT_ENTRANCE
+	RUNWAY_OUT2_block        = 1ULL << 10, ///< @note re-uses #TAXIWAY_BUSY_block
+	HELIPAD_GROUP_block      = 1ULL << 13, ///< @note re-uses #AIRPORT_ENTRANCE_block
 	OUT_WAY_block2           = 1ULL << 31,
 	/* end of new blocks */
 
@@ -126,17 +126,17 @@ static const uint64
 
 /** A single location on an airport where aircraft can move to. */
 struct AirportMovingData {
-	int16 x;                 ///< x-coordinate of this position
-	int16 y;                 ///< y-coordinate of this position
-	uint16 flag;             ///< special flags when moving towards this position
-	DirectionByte direction; ///< Direction to turn the aircraft after reaching this position.
+	int16 x;                 ///< x-coordinate of the destination.
+	int16 y;                 ///< y-coordinate of the destination.
+	uint16 flag;             ///< special flags when moving towards the destination.
+	DirectionByte direction; ///< Direction to turn the aircraft after reaching the destination.
 };
 
 AirportMovingData RotateAirportMovingData(const AirportMovingData *orig, Direction rotation, uint num_tiles_x, uint num_tiles_y);
 
 struct AirportFTAbuildup;
 
-/** Finite sTate mAchine --> FTA */
+/** Finite sTate mAchine (FTA) of an airport. */
 struct AirportFTAClass {
 public:
 	/** Bitmask of airport flags. */
@@ -159,17 +159,22 @@ public:
 
 	~AirportFTAClass();
 
+	/**
+	 * Get movement data at a position.
+	 * @param position Element number to get movement data about.
+	 * @return Pointer to the movement data.
+	 */
 	const AirportMovingData *MovingData(byte position) const
 	{
 		assert(position < nofelements);
 		return &moving_data[position];
 	}
 
-	const AirportMovingData *moving_data;
+	const AirportMovingData *moving_data; ///< Movement data.
 	struct AirportFTA *layout;            ///< state machine for airport
-	const byte *terminals;
+	const byte *terminals;                ///< Array with the number of terminal groups, followed by the number of terminals in each group.
 	const byte num_helipads;              ///< Number of helipads on this airport. When 0 helicopters will go to normal terminals.
-	Flags flags;
+	Flags flags;                          ///< Flags for this airport type.
 	byte nofelements;                     ///< number of positions the airport consists of
 	const byte *entry_points;             ///< when an airplane arrives at this airport, enter it at position entry_point, index depends on direction
 	byte delta_z;                         ///< Z adjustment for helicopter pads

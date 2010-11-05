@@ -841,6 +841,10 @@ void CallVehicleTicks()
 	cur_company.Restore();
 }
 
+/**
+ * Add vehicle sprite for drawing to the screen.
+ * @param v Vehicle to draw.
+ */
 static void DoDrawVehicle(const Vehicle *v)
 {
 	SpriteID image = v->cur_image;
@@ -1046,6 +1050,10 @@ bool Vehicle::HandleBreakdown()
 	}
 }
 
+/**
+ * Update age of a vehicle.
+ * @param v Vehicle to update.
+ */
 void AgeVehicle(Vehicle *v)
 {
 	if (v->age < MAX_DAY) v->age++;
