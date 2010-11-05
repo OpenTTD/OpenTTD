@@ -306,6 +306,9 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 					case 0x0B:
 						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_QWORD);
 						break;
+					case 0x0C:
+						d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_STATION_NAME);
+						break;
 
 					default:
 						grfmsg(1, "missing handler for extended format code");
@@ -717,6 +720,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			case SCC_NEWGRF_PRINT_HEX_WORD:
 			case SCC_NEWGRF_PRINT_WORD_SPEED:
 			case SCC_NEWGRF_PRINT_WORD_VOLUME:
+			case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 			case SCC_NEWGRF_PRINT_UNSIGNED_WORD:  *argv = _newgrf_textrefstack->PopUnsignedWord();  break;
 
 			case SCC_NEWGRF_PRINT_DATE:
@@ -766,6 +770,9 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 		case SCC_NEWGRF_PRINT_WORD_VOLUME:
 			return SCC_VOLUME;
+
+		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
+			return SCC_STATION_NAME;
 
 		case SCC_NEWGRF_DISCARD_WORD:
 		case SCC_NEWGRF_ROTATE_TOP_4_WORDS:
