@@ -294,7 +294,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Luedungskapazit
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Spill pausen
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Spill schnell laafen loosen
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Optiounen
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spill späicheren, Spill opginn, Eraus
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spill späicheren, Spill ophalen, Eraus
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Weis d'Kaart, extra Usiicht oder d'Lëscht vun den Zeeschen
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Weis d'Stiedverzeeschnëss
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subventiounen weisen
@@ -364,7 +364,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent Sta
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Spill späicheren
 STR_FILE_MENU_LOAD_GAME                                         :Spill lueden
-STR_FILE_MENU_QUIT_GAME                                         :Spill opginn
+STR_FILE_MENU_QUIT_GAME                                         :Spill ophalen
 STR_FILE_MENU_EXIT                                              :Eraus
 ############ range ends here
 
@@ -1392,7 +1392,7 @@ STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Aus 'Ope
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Eraus
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Sidd der slcher dass dir aus dem OpenTTD eraus wëllt , an op {STRING} zeréck?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Sidd der sécher dass dir aus dem OpenTTD eraus wëllt , an an den {STRING} zréck?
 STR_QUIT_YES                                                    :{BLACK}Jo
 STR_QUIT_NO                                                     :{BLACK}Nee
 
@@ -1409,8 +1409,8 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spill opginn
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sidd dir sécher dass dir dës Partie opginn wëllt?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spill ophalen
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sidd dir sécher dass dir dës Partie ophalen wëllt?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Sëcher dass der aus dësem Szenario raus wëllt ?
 
 # Cheat window
