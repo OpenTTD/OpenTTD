@@ -44,7 +44,7 @@ enum VehicleFlags {
 	VF_STOP_LOADING,            ///< Don't load anymore during the next load cycle.
 };
 
-/** Cached oftenly queried (NewGRF) values */
+/** Cached often queried (NewGRF) values */
 struct VehicleCache {
 	uint8 cache_valid;   ///< Whether the caches are valid
 	uint32 cached_var40; ///< Cache for NewGRF var 40
@@ -67,12 +67,12 @@ extern void FixOldVehicles();
 
 struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle {
 private:
-	Vehicle *next;           ///< pointer to the next vehicle in the chain
-	Vehicle *previous;       ///< NOSAVE: pointer to the previous vehicle in the chain
-	Vehicle *first;          ///< NOSAVE: pointer to the first vehicle in the chain
+	Vehicle *next;                      ///< pointer to the next vehicle in the chain
+	Vehicle *previous;                  ///< NOSAVE: pointer to the previous vehicle in the chain
+	Vehicle *first;                     ///< NOSAVE: pointer to the first vehicle in the chain
 
-	Vehicle *next_shared;     ///< pointer to the next vehicle that shares the order
-	Vehicle *previous_shared; ///< NOSAVE: pointer to the previous vehicle in the shared order chain
+	Vehicle *next_shared;               ///< pointer to the next vehicle that shares the order
+	Vehicle *previous_shared;           ///< NOSAVE: pointer to the previous vehicle in the shared order chain
 public:
 	friend const SaveLoad *GetVehicleDescription(VehicleType vt); ///< So we can use private/protected variables in the saveload code
 	friend bool AfterLoadGame();
@@ -80,9 +80,9 @@ public:
 	friend void AfterLoadVehicles(bool part_of_load);             ///< So we can set the previous and first pointers while loading
 	friend bool LoadOldVehicle(LoadgameState *ls, int num);       ///< So we can set the proper next pointer while loading
 
-	char *name;              ///< Name of vehicle
+	char *name;                         ///< Name of vehicle
 
-	TileIndex tile;          ///< Current tile index
+	TileIndex tile;                     ///< Current tile index
 
 	/**
 	 * Heading for this tile.
@@ -91,16 +91,16 @@ public:
 	 */
 	TileIndex dest_tile;
 
-	Money profit_this_year;        ///< Profit this year << 8, low 8 bits are fract
-	Money profit_last_year;        ///< Profit last year << 8, low 8 bits are fract
-	Money value;                   ///< Value of the vehicle
+	Money profit_this_year;             ///< Profit this year << 8, low 8 bits are fract
+	Money profit_last_year;             ///< Profit last year << 8, low 8 bits are fract
+	Money value;                        ///< Value of the vehicle
 
-	CargoPayment *cargo_payment;   ///< The cargo payment we're currently in
+	CargoPayment *cargo_payment;        ///< The cargo payment we're currently in
 
 	/* Used for timetabling. */
-	uint32 current_order_time;     ///< How many ticks have passed since this order started.
-	int32 lateness_counter;        ///< How many ticks late (or early if negative) this vehicle is.
-	Date timetable_start;          ///< When the vehicle is supposed to start the timetable.
+	uint32 current_order_time;          ///< How many ticks have passed since this order started.
+	int32 lateness_counter;             ///< How many ticks late (or early if negative) this vehicle is.
+	Date timetable_start;               ///< When the vehicle is supposed to start the timetable.
 
 	/* Boundaries for the current position in the world and a next hash link.
 	 * NOSAVE: All of those can be updated with VehiclePositionChanged() */
@@ -109,12 +109,12 @@ public:
 	Vehicle *next_new_hash, **prev_new_hash;
 	Vehicle **old_new_hash;
 
-	SpriteID colourmap; // NOSAVE: cached colour mapping
+	SpriteID colourmap;                 ///< NOSAVE: cached colour mapping
 
 	/* Related to age and service time */
 	Year build_year;
-	Date age;     // Age in days
-	Date max_age; // Maximum age
+	Date age;                           ///< Age in days
+	Date max_age;                       ///< Maximum age
 	Date date_of_last_service;
 	Date service_interval;
 	uint16 reliability;
@@ -124,30 +124,30 @@ public:
 	byte breakdowns_since_last_service;
 	byte breakdown_chance;
 
-	int32 x_pos;             // coordinates
-	int32 y_pos;
-	byte z_pos;
-	DirectionByte direction; // facing
+	int32 x_pos;                        ///< x coordinate.
+	int32 y_pos;                        ///< y coordinate.
+	byte z_pos;                         ///< z coordinate.
+	DirectionByte direction;            ///< facing
 
-	OwnerByte owner;         // which company owns the vehicle?
-	byte spritenum;          // currently displayed sprite index
-	                         // 0xfd == custom sprite, 0xfe == custom second head sprite
-	                         // 0xff == reserved for another custom sprite
-	uint16 cur_image;        // sprite number for this vehicle
-	byte x_extent;           // x-extent of vehicle bounding box
-	byte y_extent;           // y-extent of vehicle bounding box
-	byte z_extent;           // z-extent of vehicle bounding box
-	int8 x_offs;             // x offset for vehicle sprite
-	int8 y_offs;             // y offset for vehicle sprite
+	OwnerByte owner;                    ///< Which company owns the vehicle?
+	byte spritenum;                     ///< currently displayed sprite index
+	                                    ///< 0xfd == custom sprite, 0xfe == custom second head sprite
+	                                    ///< 0xff == reserved for another custom sprite
+	uint16 cur_image;                   ///< sprite number for this vehicle
+	byte x_extent;                      ///< x-extent of vehicle bounding box
+	byte y_extent;                      ///< y-extent of vehicle bounding box
+	byte z_extent;                      ///< z-extent of vehicle bounding box
+	int8 x_offs;                        ///< x offset for vehicle sprite
+	int8 y_offs;                        ///< y offset for vehicle sprite
 	EngineID engine_type;
 
-	TextEffectID fill_percent_te_id; // a text-effect id to a loading indicator object
-	UnitID unitnumber;       // unit number, for display purposes only
+	TextEffectID fill_percent_te_id;    ///< a text-effect id to a loading indicator object
+	UnitID unitnumber;                  ///< unit number, for display purposes only
 
-	uint16 max_speed;        ///< maximum speed
-	uint16 cur_speed;        ///< current speed
-	byte subspeed;           ///< fractional speed
-	byte acceleration;       ///< used by train & aircraft
+	uint16 max_speed;                   ///< maximum speed
+	uint16 cur_speed;                   ///< current speed
+	byte subspeed;                      ///< fractional speed
+	byte acceleration;                  ///< used by train & aircraft
 	uint32 motion_counter;
 	byte progress;
 
@@ -155,38 +155,38 @@ public:
 	 * bitmask used to resolve them; parts of it get reseeded when triggers
 	 * of corresponding spritegroups get matched */
 	byte random_bits;
-	byte waiting_triggers;   ///< triggers to be yet matched
+	byte waiting_triggers;              ///< triggers to be yet matched
 
 	StationID last_station_visited;
 
-	CargoID cargo_type;      ///< type of cargo this vehicle is carrying
-	byte cargo_subtype;      ///< Used for livery refits (NewGRF variations)
-	uint16 cargo_cap;        ///< total capacity
-	VehicleCargoList cargo;  ///< The cargo this vehicle is carrying
+	CargoID cargo_type;                 ///< type of cargo this vehicle is carrying
+	byte cargo_subtype;                 ///< Used for livery refits (NewGRF variations)
+	uint16 cargo_cap;                   ///< total capacity
+	VehicleCargoList cargo;             ///< The cargo this vehicle is carrying
 
-	byte day_counter;        ///< Increased by one for each day
-	byte tick_counter;       ///< Increased by one for each tick
-	byte running_ticks;      ///< Number of ticks this vehicle was not stopped this day
+	byte day_counter;                   ///< Increased by one for each day
+	byte tick_counter;                  ///< Increased by one for each tick
+	byte running_ticks;                 ///< Number of ticks this vehicle was not stopped this day
 
-	byte vehstatus;                 ///< Status
-	Order current_order;            ///< The current order (+ status, like: loading)
-	VehicleOrderID cur_order_index; ///< The index to the current order
+	byte vehstatus;                     ///< Status
+	Order current_order;                ///< The current order (+ status, like: loading)
+	VehicleOrderID cur_order_index;     ///< The index to the current order
 
 	union {
-		OrderList *list;              ///< Pointer to the order list for this vehicle
-		Order     *old;               ///< Only used during conversion of old save games
+		OrderList *list;            ///< Pointer to the order list for this vehicle
+		Order     *old;             ///< Only used during conversion of old save games
 	} orders;
 
-	byte vehicle_flags;             ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
+	byte vehicle_flags;                 ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
 	/** Ticks to wait before starting next cycle. */
 	uint16 load_unload_ticks;
 
-	GroupID group_id;               ///< Index of group Pool array
+	GroupID group_id;                   ///< Index of group Pool array
 
-	byte subtype;                   ///< subtype (Filled with values from EffectVehicles/TrainSubTypes/AircraftSubTypes)
+	byte subtype;                       ///< subtype (Filled with values from #EffectVehicles/#TrainSubTypes/#AircraftSubTypes)
 
-	VehicleCache vcache;            ///< Cache of often used calculated values
+	VehicleCache vcache;                ///< Cache of often used calculated values
 
 	/** Create a new vehicle */
 	Vehicle(VehicleType type = VEH_INVALID);
