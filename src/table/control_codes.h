@@ -120,7 +120,7 @@ enum StringControlCode {
 	SCC_NEWGRF_PRINT_DATE,                     ///< Read 2 bytes from the stack as base 1920 date
 	SCC_NEWGRF_PRINT_MONTH_YEAR,               ///< Read 2 bytes from the stack as base 1920 date
 	SCC_NEWGRF_PRINT_WORD_SPEED,               ///< Read 2 bytes from the stack as signed speed
-	SCC_NEWGRF_PRINT_WORD_LITRES,              ///< Read 2 bytes from the stack as signed litres
+	SCC_NEWGRF_PRINT_WORD_VOLUME,              ///< Read 2 bytes from the stack as signed volume
 	SCC_NEWGRF_PRINT_QWORD_CURRENCY,           ///< Read 8 bytes from the stack as currency
 	SCC_NEWGRF_PRINT_HEX_BYTE,                 ///< Read 1 byte from the stack and print it as hex
 	SCC_NEWGRF_PRINT_HEX_WORD,                 ///< Read 2 bytes from the stack and print it as hex
