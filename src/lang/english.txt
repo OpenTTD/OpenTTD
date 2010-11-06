@@ -285,6 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :Lowest cargo ra
 STR_SORT_BY_ENGINE_ID                                           :EngineID (classic sort)
 STR_SORT_BY_COST                                                :Cost
 STR_SORT_BY_POWER                                               :Power
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Tractive effort
 STR_SORT_BY_INTRO_DATE                                          :Introduction Date
 STR_SORT_BY_RUNNING_COST                                        :Running Cost
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Power/Running Cost

@@ -232,6 +232,23 @@ static int CDECL EnginePowerSorter(const EngineID *a, const EngineID *b)
 }
 
 /**
+ * Determines order of engines by tractive effort
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
+static int CDECL EngineTractiveEffortSorter(const EngineID *a, const EngineID *b)
+{
+	int va = Engine::Get(*a)->GetDisplayMaxTractiveEffort();
+	int vb = Engine::Get(*b)->GetDisplayMaxTractiveEffort();
+	int r = va - vb;
+
+	/* Use EngineID to sort instead since we want consistent sorting */
+	if (r == 0) return EngineNumberSorter(a, b);
+	return _internal_sort_order ? -r : r;
+}
+
+/**
  * Determines order of engines by running costs
  * @param *a first engine to compare
  * @param *b second engine to compare
@@ -384,12 +401,13 @@ static int CDECL AircraftEngineCargoSorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static EngList_SortTypeFunction * const _sorter[][10] = {{
+static EngList_SortTypeFunction * const _sorter[][11] = {{
 	/* Trains */
 	&EngineNumberSorter,
 	&EngineCostSorter,
 	&EngineSpeedSorter,
 	&EnginePowerSorter,
+	&EngineTractiveEffortSorter,
 	&EngineIntroDateSorter,
 	&EngineNameSorter,
 	&EngineRunningCostSorter,
@@ -402,6 +420,7 @@ static EngList_SortTypeFunction * const _sorter[][10] = {{
 	&EngineCostSorter,
 	&EngineSpeedSorter,
 	&EnginePowerSorter,
+	&EngineTractiveEffortSorter,
 	&EngineIntroDateSorter,
 	&EngineNameSorter,
 	&EngineRunningCostSorter,
@@ -430,12 +449,13 @@ static EngList_SortTypeFunction * const _sorter[][10] = {{
 	&AircraftEngineCargoSorter,
 }};
 
-static const StringID _sort_listing[][11] = {{
+static const StringID _sort_listing[][12] = {{
 	/* Trains */
 	STR_SORT_BY_ENGINE_ID,
 	STR_SORT_BY_COST,
 	STR_SORT_BY_MAX_SPEED,
 	STR_SORT_BY_POWER,
+	STR_SORT_BY_TRACTIVE_EFFORT,
 	STR_SORT_BY_INTRO_DATE,
 	STR_SORT_BY_NAME,
 	STR_SORT_BY_RUNNING_COST,
@@ -449,6 +469,7 @@ static const StringID _sort_listing[][11] = {{
 	STR_SORT_BY_COST,
 	STR_SORT_BY_MAX_SPEED,
 	STR_SORT_BY_POWER,
+	STR_SORT_BY_TRACTIVE_EFFORT,
 	STR_SORT_BY_INTRO_DATE,
 	STR_SORT_BY_NAME,
 	STR_SORT_BY_RUNNING_COST,
@@ -1155,11 +1176,17 @@ struct BuildVehicleWindow : Window {
 
 			case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN: { // Select sorting criteria dropdown menu
 				uint32 hidden_mask = 0;
-				/* Disable sorting by power when the original acceleration model for road vehicles is being used. */
+				/* Disable sorting by power or tractive effort when the original acceleration model for road vehicles is being used. */
 				if (this->vehicle_type == VEH_ROAD &&
 						_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) {
-					SetBit(hidden_mask, 3);
-					SetBit(hidden_mask, 7);
+					SetBit(hidden_mask, 3); // power
+					SetBit(hidden_mask, 4); // tractive effort
+					SetBit(hidden_mask, 8); // power by running costs
+				}
+				/* Disable sorting by tractive effort when the original acceleration model for trains is being used. */
+				if (this->vehicle_type == VEH_TRAIN &&
+						_settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) {
+					SetBit(hidden_mask, 4); // tractive effort
 				}
 				ShowDropDownMenu(this, _sort_listing[this->vehicle_type], this->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, hidden_mask);
 				break;
