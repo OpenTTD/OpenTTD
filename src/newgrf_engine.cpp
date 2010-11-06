@@ -717,17 +717,12 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x19: {
 			uint max_speed;
 			switch (v->type) {
-				case VEH_TRAIN: /* FALL THROUGH */
-				case VEH_SHIP:
-					max_speed = v->vcache.cached_max_speed;
-					break;
-
 				case VEH_AIRCRAFT:
 					max_speed = Aircraft::From(v)->GetSpeedOldUnits(); // Convert to old units.
 					break;
 
 				default:
-					max_speed = v->max_speed;
+					max_speed = v->vcache.cached_max_speed;
 					break;
 			}
 			return (variable - 0x80) == 0x18 ? max_speed : GB(max_speed, 8, 8);

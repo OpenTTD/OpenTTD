@@ -806,12 +806,7 @@ static int CDECL VehicleReliabilitySorter(const Vehicle * const *a, const Vehicl
 /** Sort vehicles by their max speed */
 static int CDECL VehicleMaxSpeedSorter(const Vehicle * const *a, const Vehicle * const *b)
 {
-	int r = 0;
-	if ((*a)->type != VEH_ROAD && (*b)->type != VEH_ROAD) {
-		r = (*a)->vcache.cached_max_speed - (*b)->vcache.cached_max_speed;
-	} else {
-		r = (*a)->max_speed - (*b)->max_speed;
-	}
+	int r = (*a)->vcache.cached_max_speed - (*b)->vcache.cached_max_speed;
 	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 

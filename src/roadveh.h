@@ -119,7 +119,7 @@ struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	bool IsPrimaryVehicle() const { return this->IsRoadVehFront(); }
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed / 2; }
-	int GetDisplayMaxSpeed() const { return this->max_speed / 2; }
+	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed / 2; }
 	Money GetRunningCost() const;
 	int GetDisplayImageWidth(Point *offset = NULL) const;
 	bool IsInDepot() const { return this->state == RVSB_IN_DEPOT; }
