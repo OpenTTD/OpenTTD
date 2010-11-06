@@ -314,13 +314,13 @@ static EngList_SortTypeFunction * const _sorter[][10] = {{
 	&EngineNumberSorter,
 	&EngineCostSorter,
 	&EngineSpeedSorter,
+	&EnginePowerSorter,
 	&EngineIntroDateSorter,
 	&EngineNameSorter,
 	&EngineRunningCostSorter,
+	&EnginePowerVsRunningCostSorter,
 	&EngineReliabilitySorter,
 	&RoadVehEngineCapacitySorter,
-	&EnginePowerSorter,
-	&EnginePowerVsRunningCostSorter,
 }, {
 	/* Ships */
 	&EngineNumberSorter,
@@ -361,13 +361,13 @@ static const StringID _sort_listing[][11] = {{
 	STR_SORT_BY_ENGINE_ID,
 	STR_SORT_BY_COST,
 	STR_SORT_BY_MAX_SPEED,
+	STR_SORT_BY_POWER,
 	STR_SORT_BY_INTRO_DATE,
 	STR_SORT_BY_NAME,
 	STR_SORT_BY_RUNNING_COST,
+	STR_SORT_BY_POWER_VS_RUNNING_COST,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_CARGO_CAPACITY,
-	STR_SORT_BY_POWER,
-	STR_SORT_BY_POWER_VS_RUNNING_COST,
 	INVALID_STRING_ID
 }, {
 	/* Ships */
@@ -1071,8 +1071,8 @@ struct BuildVehicleWindow : Window {
 				/* Disable sorting by power when the original acceleration model for road vehicles is being used. */
 				if (this->vehicle_type == VEH_ROAD &&
 						_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) {
-					SetBit(hidden_mask, 8);
-					SetBit(hidden_mask, 9);
+					SetBit(hidden_mask, 3);
+					SetBit(hidden_mask, 7);
 				}
 				ShowDropDownMenu(this, _sort_listing[this->vehicle_type], this->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, hidden_mask);
 				break;
