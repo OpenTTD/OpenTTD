@@ -832,7 +832,7 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				rvi->weight = buf->ReadByte();
 				break;
 
-			case 0x15: // Speed in mph/0.8
+			case PROP_ROADVEH_SPEED: // Speed in mph/0.8
 				_gted[e->index].rv_max_speed = buf->ReadByte();
 				break;
 

@@ -294,8 +294,10 @@ uint Engine::GetDisplayMaxSpeed() const
 		case VEH_TRAIN:
 			return GetEngineProperty(this->index, PROP_TRAIN_SPEED, this->u.rail.max_speed);
 
-		case VEH_ROAD:
-			return this->u.road.max_speed / 2;
+		case VEH_ROAD: {
+			uint max_speed = GetEngineProperty(this->index, PROP_ROADVEH_SPEED, 0);
+			return (max_speed != 0) ? max_speed * 2 : this->u.road.max_speed / 2;
+		}
 
 		case VEH_SHIP:
 			return GetEngineProperty(this->index, PROP_SHIP_SPEED, this->u.ship.max_speed) / 2;

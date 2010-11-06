@@ -192,7 +192,8 @@ void RoadVehUpdateCache(RoadVehicle *v)
 		u->colourmap = PAL_NONE;
 	}
 
-	v->vcache.cached_max_speed = RoadVehInfo(v->engine_type)->max_speed;
+	uint max_speed = GetVehicleProperty(v, PROP_ROADVEH_SPEED, 0);
+	v->vcache.cached_max_speed = (max_speed != 0) ? max_speed * 4 : RoadVehInfo(v->engine_type)->max_speed;
 }
 
 /**
