@@ -537,7 +537,8 @@ void UpdateAircraftCache(Aircraft *v)
 
 		v->acache.cached_max_speed = max_speed;
 	} else {
-		v->acache.cached_max_speed = 0xFFFF;
+		/* Use the default max speed of the vehicle. */
+		v->acache.cached_max_speed = v->max_speed;
 	}
 }
 
@@ -639,7 +640,7 @@ byte GetAircraftFlyingAltitude(const Aircraft *v)
 	}
 
 	/* Make faster planes fly higher so that they can overtake slower ones */
-	base_altitude += min(20 * (v->max_speed / 200), 90);
+	base_altitude += min(20 * (v->acache.cached_max_speed / 200), 90);
 
 	return base_altitude;
 }

@@ -809,6 +809,8 @@ static int CDECL VehicleMaxSpeedSorter(const Vehicle * const *a, const Vehicle *
 	int r = 0;
 	if ((*a)->type == VEH_TRAIN && (*b)->type == VEH_TRAIN) {
 		r = Train::From(*a)->tcache.cached_max_speed - Train::From(*b)->tcache.cached_max_speed;
+	} if ((*a)->type == VEH_AIRCRAFT && (*b)->type == VEH_AIRCRAFT) {
+		r = Aircraft::From(*a)->acache.cached_max_speed - Aircraft::From(*b)->acache.cached_max_speed;
 	} else {
 		r = (*a)->max_speed - (*b)->max_speed;
 	}
