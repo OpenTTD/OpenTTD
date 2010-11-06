@@ -313,20 +313,32 @@ void AfterLoadVehicles(bool part_of_load)
 	FOR_ALL_VEHICLES(v) {
 		assert(v->first != NULL);
 
-		if (v->type == VEH_TRAIN) {
-			Train *t = Train::From(v);
-			if (t->IsFrontEngine() || t->IsFreeWagon()) {
-				t->tcache.last_speed = t->cur_speed; // update displayed train speed
-				t->ConsistChanged(false);
-			}
-		} else if (v->type == VEH_ROAD) {
-			RoadVehicle *rv = RoadVehicle::From(v);
-			if (rv->IsRoadVehFront()) {
-				RoadVehUpdateCache(rv);
-				if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
-					rv->CargoChanged();
+		switch (v->type) {
+			case VEH_TRAIN: {
+				Train *t = Train::From(v);
+				if (t->IsFrontEngine() || t->IsFreeWagon()) {
+					t->tcache.last_speed = t->cur_speed; // update displayed train speed
+					t->ConsistChanged(false);
 				}
+				break;
 			}
+
+			case VEH_ROAD: {
+				RoadVehicle *rv = RoadVehicle::From(v);
+				if (rv->IsRoadVehFront()) {
+					RoadVehUpdateCache(rv);
+					if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
+						rv->CargoChanged();
+					}
+				}
+				break;
+			}
+
+			case VEH_SHIP:
+				Ship::From(v)->UpdateCache();
+				break;
+
+			default: break;
 		}
 	}
 

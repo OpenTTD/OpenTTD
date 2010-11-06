@@ -717,7 +717,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x19: {
 			uint max_speed;
 			switch (v->type) {
-				case VEH_TRAIN:
+				case VEH_TRAIN: /* FALL THROUGH */
+				case VEH_SHIP:
 					max_speed = v->vcache.cached_max_speed;
 					break;
 

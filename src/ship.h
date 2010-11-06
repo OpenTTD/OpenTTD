@@ -35,7 +35,7 @@ struct Ship: public SpecializedVehicle<Ship, VEH_SHIP> {
 	bool IsPrimaryVehicle() const { return true; }
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed / 2; }
-	int GetDisplayMaxSpeed() const { return this->max_speed / 2; }
+	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed / 2; }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return this->state == TRACK_BIT_DEPOT; }
 	bool Tick();
@@ -43,6 +43,7 @@ struct Ship: public SpecializedVehicle<Ship, VEH_SHIP> {
 	Trackdir GetVehicleTrackdir() const;
 	TileIndex GetOrderStationLocation(StationID station);
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
+	void UpdateCache();
 };
 
 #define FOR_ALL_SHIPS(var) FOR_ALL_VEHICLES_OF_TYPE(Ship, var)

@@ -1163,6 +1163,7 @@ void VehicleEnterDepot(Vehicle *v)
 			SetWindowClassesDirty(WC_SHIPS_LIST);
 			Ship *ship = Ship::From(v);
 			ship->state = TRACK_BIT_DEPOT;
+			ship->UpdateCache();
 			ship->UpdateViewport(true, true);
 			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 			break;
