@@ -91,6 +91,7 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const    { return this->cur_speed; }
 	int GetDisplayMaxSpeed() const { return this->max_speed; }
+	int GetSpeedOldUnits() const   { return this->max_speed * 10 / 128; }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile); }
 	bool Tick();

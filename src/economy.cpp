@@ -1231,7 +1231,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			case VEH_TRAIN:    t = Train::From(u)->tcache.cached_max_speed; break;
 			case VEH_ROAD:     t = u->max_speed / 2;        break;
 			case VEH_SHIP:     t = u->max_speed;            break;
-			case VEH_AIRCRAFT: t = u->max_speed * 10 / 128; break; // convert to old units
+			case VEH_AIRCRAFT: t = Aircraft::From(u)->GetSpeedOldUnits(); break; // Convert to old units.
 			default: NOT_REACHED();
 		}
 
