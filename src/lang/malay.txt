@@ -553,6 +553,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Terperin
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Lihat perincian tentang syarikat ini
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kenderaan:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stesen-stesen:
@@ -1018,6 +1019,7 @@ STR_NUM_LOW                                                     :Rendah
 STR_NUM_NORMAL                                                  :Biasa
 STR_NUM_HIGH                                                    :Tinggi
 STR_NUM_CUSTOM                                                  :Custom
+STR_NUM_CUSTOM_NUMBER                                           :Pilihan Diri ({NUM})
 
 STR_VARIETY_NONE                                                :Tiada
 STR_VARIETY_VERY_LOW                                            :Sangat Rendah
@@ -1036,6 +1038,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Sangat Rendah
 STR_SEA_LEVEL_LOW                                               :Rendah
 STR_SEA_LEVEL_MEDIUM                                            :Biasa
 STR_SEA_LEVEL_HIGH                                              :Tinggi
+STR_SEA_LEVEL_CUSTOM                                            :Pilihan Diri
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Pilihan ({NUM}%)
 
 STR_DISASTER_NONE                                               :Tiada
 STR_DISASTER_REDUCED                                            :Dikurangkan
@@ -1394,7 +1398,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Kotak be
 STR_CHEATS_WARNING                                              :{BLACK}Amaran! Anda akan mengkhianati rakan-rakan pesaing anda. Perbuatan yang mengaibkan ini tidak akan dilupakan selama-lamanya.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambahkan wang sebanyak {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai syarikat: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Jentolak ajaib (industri dan objek lain yang biasanya tidak boleh dibuang, kini boleh dibuang): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Jentolak ajaib (buang industri dan objek lain yang biasanya tidak boleh dibuang): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowong boleh bersilang: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bina sewaktu dalam permainan dihentikan: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat jet tidak akan (sentiasa) terhempas di lapangan terbang kecil: {ORANGE}{STRING}
@@ -1738,6 +1742,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Pelayan 
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Anda telah dilarang daripada main di pelayan ini
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Anda telah ditendang keluar daripada permainan ini
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Penipuan (Cheats) tidak dibenarkan di pelayan ini
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Anda menghantar terlalu banyak arahan ke pelayan ini
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :kesilapan am
@@ -1755,6 +1760,7 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :salah syarikat 
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :ditendang oleh pelayan
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :cuba menggunakan penipuan (cheats)
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :pelayan penuh
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :menghantar terlalu banyak arahan
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -2035,6 +2041,15 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Meninggi
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ratakan tanah
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tanah untuk kegunaan masa hadapan
 
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pilihan Objek
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih objek untuk dibina
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Kelas objek
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Saiz: {GOLD}{NUM} x {NUM} petak
+
+STR_OBJECT_CLASS_LTHS                                           :Rumah Api
+STR_OBJECT_CLASS_TRNS                                           :Pemancar
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pokok-pokok
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pilih jenis pokok untuk ditanam
@@ -2046,7 +2061,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Tanam po
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Pembentukan Tanah
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Letakkan kawasan berbatu atas lanskap
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Pilih kawasan gurun {}Tekan dan kekalkan Ctrl untuk membuangkannya
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Pilih kawasan gurun {}Tekan Ctrl untuk membuangkannya
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Meningkatan penyebaran kawasan tanah untuk dinaikkan/diturunkan
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Menurunkan penyebaran kawasan tanah untuk dinaikkan/diturunkan
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Janakan tanah secara rambang
@@ -2099,6 +2114,8 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospek
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bina
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Biaya
 
+# Industry cargoes window
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maklumat Kawasan Tanah
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Kos untuk lapangkan: {LTBLUE}N/A
@@ -2111,10 +2128,12 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Pemilik 
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Pemilik landasan keretapi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Pihak berkuasa: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Tiada
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinat: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinat: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Dibina: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Kelas stesen: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Jenis stesen: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Kelas lapangan terbang: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nama lapangan terbang: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Kargo yang diterima: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
@@ -2276,7 +2295,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manual
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Putaran heightmap:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nama heightmap:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Saiz:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Masukkan benih rambang
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Tukarkan paras garis salji
@@ -2343,6 +2362,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Periksa 
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nama fail: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. versi serasi: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
@@ -2353,12 +2373,18 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dinyahakti
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan parameter NewGRF
 
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Tetapan semula
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Bilangan parameter: {ORANGE}{NUM}
+
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Periksa - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Ibu
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Periksa objek itu yang dalam skop ibu
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} di {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objek
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Jenis landasan
 
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Pemboleh ubah NewGRF, parameter 60+x (hexadecimal)
@@ -2433,11 +2459,13 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<kargo tidak sah>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} dari <kargo tidak benar>
-STR_NEWGRF_INVALID_ENGINE                                       :<enjin tidak sah>
+STR_NEWGRF_INVALID_ENGINE                                       :<model kenderaan tidak sah>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industry tidak sah>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Senarai Papan Tanda - {COMMA} Papan Tanda
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Padankan kes
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Padamkan saringan
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Tukarkan teks papan tanda
@@ -2514,7 +2542,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik di 
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama stesen - klik pada nama untuk memusatkan pemandangan di stesen. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi stesen
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tekan dan kekalkan Ctrl untuk memilih lebih daripada satu butiran
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tekan Ctrl untuk memilih lebih daripada satu butiran
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stesen
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2651,6 +2679,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Pengeluaran bulan lepas:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% dihantar)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Pusatkan pemandangan utama ke lokasi industri. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi industri
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tahap produksi: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Memerlukan: {YELLOW}{STRING}{STRING}
@@ -2666,6 +2695,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Mengelua
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ubah pengeluaran (gandaan 8, sehingga 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ubah tahap produksi (peratus, hingga 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Keretapi
@@ -2794,9 +2824,9 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ke
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Keretapi - klik atas keretapi untuk maklumat, seret gerabak untuk tambah/buang daripada keretapi
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kenderaan - klik atas kenderaan untuk maklumat
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kapal - klik atas kapal untuk maklumat
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pesawat - klik atas pesawat untuk maklumat
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kenderaan - klik kanan pada kenderaan untuk maklumat
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Kapal - klik kanan pada kapal untuk maklumat
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Pesawat - klik kanan pada pesawat untuk maklumat
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Seret gerabak keretapi ke sini untuk menjualkannya
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Seret kenderaan jalanraya ke sini untuk menjualkannya
@@ -3055,6 +3085,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Jangan u
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parameter AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Tutup
 STR_AI_SETTINGS_RESET                                           :{BLACK}Semula
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3251,10 +3282,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Depoh ka
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Nama depoh tidak dapat ditukar...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Keretapi mesti dihentikan di dalam depoh
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mesti dihentikan di dalam depoh kenderaan jalanraya
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Kapal mesti dihentikan di dalam depoh
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Pesawat mesti dihentikan di dalam hangar
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... mesti dihentikan di dalam depot
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... mesti dihentikan di dalam depot
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... mesti dihentikan di dalam depoh
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... mesti dihentikan di dalam hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Keretapi hanya boleh diubah apabila dihentikan di dalam depoh
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Keretapi terlalu panjang
@@ -3329,6 +3360,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Hujung t
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tanah tidak dapat dikorek untuk pembinaan hujung terowong
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... terlalu banyak objek
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objek sedang menghalang
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... ibu pejabat syarikat menghalang
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kawasan ini tidak dapat dibeli...
@@ -3431,7 +3463,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nama pap
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Papan tanda tidak dapat dibuang...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Sebuah permainan simulasi berasaskan Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
