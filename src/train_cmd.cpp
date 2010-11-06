@@ -285,7 +285,7 @@ void Train::ConsistChanged(bool same_length)
 	}
 
 	/* store consist weight/max speed in cache */
-	this->tcache.cached_max_speed = max_speed;
+	this->vcache.cached_max_speed = max_speed;
 	this->tcache.cached_tilt = train_can_tilt;
 	this->tcache.cached_max_curve_speed = this->GetCurveSpeedLimit();
 
@@ -1984,7 +1984,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 				 * third of its maximum speed spectrum. Steam emission finally normalises at very close to train's maximum speed.
 				 * REGULATION:
 				 * - instead of 1, 4 / 2^smoke_amount (max. 2) is used to provide sufficient regulation to steam puffs' amount. */
-				if (GB(v->tick_counter, 0, ((4 >> _settings_game.vehicle.smoke_amount) + ((u->cur_speed * 3) / u->tcache.cached_max_speed))) == 0) {
+				if (GB(v->tick_counter, 0, ((4 >> _settings_game.vehicle.smoke_amount) + ((u->cur_speed * 3) / u->vcache.cached_max_speed))) == 0) {
 					CreateEffectVehicleRel(v, x, y, 10, EV_STEAM_SMOKE);
 					sound = true;
 				}
@@ -2002,8 +2002,8 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 				 * REGULATION:
 				 * - up to which speed a diesel train is emitting smoke (with reduced/small setting only until 1/2 of max_speed),
 				 * - in Chance16 - the last value is 512 / 2^smoke_amount (max. smoke when 128 = smoke_amount of 2). */
-				if (u->cur_speed < (u->tcache.cached_max_speed >> (2 >> _settings_game.vehicle.smoke_amount)) &&
-						Chance16((64 - ((u->cur_speed << 5) / u->tcache.cached_max_speed) + (32 >> (u->acc_cache.cached_power >> 10)) - (32 >> (u->acc_cache.cached_weight >> 9))), (512 >> _settings_game.vehicle.smoke_amount))) {
+				if (u->cur_speed < (u->vcache.cached_max_speed >> (2 >> _settings_game.vehicle.smoke_amount)) &&
+						Chance16((64 - ((u->cur_speed << 5) / u->vcache.cached_max_speed) + (32 >> (u->acc_cache.cached_power >> 10)) - (32 >> (u->acc_cache.cached_weight >> 9))), (512 >> _settings_game.vehicle.smoke_amount))) {
 					CreateEffectVehicleRel(v, 0, 0, 10, EV_DIESEL_SMOKE);
 					sound = true;
 				}
@@ -2017,7 +2017,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 				 * REGULATION:
 				 * - in Chance16 the last value is 360 / 2^smoke_amount (max. sparks when 90 = smoke_amount of 2). */
 				if (GB(v->tick_counter, 0, 2) == 0 &&
-						Chance16((6 - ((u->cur_speed << 2) / u->tcache.cached_max_speed)), (360 >> _settings_game.vehicle.smoke_amount))) {
+						Chance16((6 - ((u->cur_speed << 2) / u->vcache.cached_max_speed)), (360 >> _settings_game.vehicle.smoke_amount))) {
 					CreateEffectVehicleRel(v, 0, 0, 10, EV_ELECTRIC_SPARK);
 					sound = true;
 				}

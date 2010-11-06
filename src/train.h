@@ -76,7 +76,6 @@ struct TrainCache {
 	bool cached_tilt;           ///< train can tilt; feature provides a bonus in curves
 
 	/* cached max. speed / acceleration data */
-	uint16 cached_max_speed;    ///< max speed of the consist. (minimum of the max speed of all vehicles in the consist)
 	int cached_max_curve_speed; ///< max consist speed limited by curves
 
 	/**
@@ -127,7 +126,7 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 	bool IsPrimaryVehicle() const { return this->IsFrontEngine(); }
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->tcache.last_speed; }
-	int GetDisplayMaxSpeed() const { return this->tcache.cached_max_speed; }
+	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed; }
 	Money GetRunningCost() const;
 	int GetDisplayImageWidth(Point *offset = NULL) const;
 	bool IsInDepot() const;

@@ -1134,14 +1134,15 @@ static void CheckCaches()
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) length++;
 
 		NewGRFCache       *grf_cache = CallocT<NewGRFCache>(length);
+		VehicleCache      *veh_cache = CallocT<VehicleCache>(length);
 		AccelerationCache *acc_cache = CallocT<AccelerationCache>(length);
 		TrainCache        *tra_cache = CallocT<TrainCache>(length);
 		RoadVehicleCache  *roa_cache = CallocT<RoadVehicleCache>(length);
-		AircraftCache     *air_cache = CallocT<AircraftCache>(length);
 
 		length = 0;
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 			grf_cache[length] = u->grf_cache;
+			veh_cache[length] = u->vcache;
 			switch (u->type) {
 				case VEH_TRAIN:
 					acc_cache[length] = Train::From(u)->acc_cache;
@@ -1151,8 +1152,6 @@ static void CheckCaches()
 					acc_cache[length] = RoadVehicle::From(u)->acc_cache;
 					roa_cache[length] = RoadVehicle::From(u)->rcache;
 					break;
-				case VEH_AIRCRAFT:
-					air_cache[length] = Aircraft::From(u)->acache;
 				default:
 					break;
 			}
@@ -1171,6 +1170,9 @@ static void CheckCaches()
 			if (memcmp(&grf_cache[length], &u->grf_cache, sizeof(NewGRFCache)) != 0) {
 				DEBUG(desync, 2, "newgrf cache mismatch: type %i, vehicle %i, company %i, unit number %i, wagon %i", (int)v->type, v->index, (int)v->owner, v->unitnumber, length);
 			}
+			if (memcmp(&veh_cache[length], &u->vcache, sizeof(VehicleCache)) != 0) {
+				DEBUG(desync, 2, "vehicle cache mismatch: type %i, vehicle %i, company %i, unit number %i, wagon %i", (int)v->type, v->index, (int)v->owner, v->unitnumber, length);
+			}
 			switch (u->type) {
 				case VEH_TRAIN:
 					if (memcmp(&acc_cache[length], &Train::From(u)->acc_cache, sizeof(AccelerationCache)) != 0) {
@@ -1188,11 +1190,6 @@ static void CheckCaches()
 						DEBUG(desync, 2, "road vehicle cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
 					}
 					break;
-				case VEH_AIRCRAFT:
-					if (memcmp(&air_cache[length], &Aircraft::From(u)->acache, sizeof(AircraftCache)) != 0) {
-						DEBUG(desync, 2, "aircraft cache mismatch: vehicle %i, company %i, unit number %i", v->index, (int)v->owner, v->unitnumber);
-					}
-					break;
 				default:
 					break;
 			}
@@ -1200,10 +1197,10 @@ static void CheckCaches()
 		}
 
 		free(grf_cache);
+		free(veh_cache);
 		free(acc_cache);
 		free(tra_cache);
 		free(roa_cache);
-		free(air_cache);
 	}
 
 	/* Check whether the caches are still valid */

@@ -535,10 +535,10 @@ void UpdateAircraftCache(Aircraft *v)
 		/* Convert from original units to km-ish/h */
 		max_speed = (max_speed * 128) / 10;
 
-		v->acache.cached_max_speed = max_speed;
+		v->vcache.cached_max_speed = max_speed;
 	} else {
 		/* Use the default max speed of the vehicle. */
-		v->acache.cached_max_speed = v->max_speed;
+		v->vcache.cached_max_speed = v->max_speed;
 	}
 }
 
@@ -570,9 +570,9 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 	 * and take-off speeds being too low. */
 	speed_limit *= _settings_game.vehicle.plane_speed;
 
-	if (v->acache.cached_max_speed < speed_limit) {
+	if (v->vcache.cached_max_speed < speed_limit) {
 		if (v->cur_speed < speed_limit) hard_limit = false;
-		speed_limit = v->acache.cached_max_speed;
+		speed_limit = v->vcache.cached_max_speed;
 	}
 
 	v->subspeed = (t = v->subspeed) + (byte)spd;
@@ -640,7 +640,7 @@ byte GetAircraftFlyingAltitude(const Aircraft *v)
 	}
 
 	/* Make faster planes fly higher so that they can overtake slower ones */
-	base_altitude += min(20 * (v->acache.cached_max_speed / 200), 90);
+	base_altitude += min(20 * (v->vcache.cached_max_speed / 200), 90);
 
 	return base_altitude;
 }

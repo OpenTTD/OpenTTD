@@ -64,6 +64,11 @@ struct NewGRFCache {
 	uint8  cache_valid;               ///< Bitset that indicates which cache values are valid.
 };
 
+/** Cached often queried values common to all vehicles. */
+struct VehicleCache {
+	uint16 cached_max_speed; ///< Maximum speed of the consist (minimum of the max speed of all vehicles in the consist).
+};
+
 /** A vehicle pool for a little over 1 million vehicles. */
 typedef Pool<Vehicle, VehicleID, 512, 0xFF000> VehiclePool;
 extern VehiclePool _vehicle_pool;
@@ -199,6 +204,7 @@ public:
 	byte subtype;                       ///< subtype (Filled with values from #EffectVehicles/#TrainSubTypes/#AircraftSubTypes)
 
 	NewGRFCache grf_cache;              ///< Cache of often used calculated NewGRF values
+	VehicleCache vcache;                ///< Cache of often used vehicle values.
 
 	/** Create a new vehicle */
 	Vehicle(VehicleType type = VEH_INVALID);

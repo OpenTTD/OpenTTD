@@ -58,17 +58,10 @@ void AircraftNextAirportPos_and_Order(Aircraft *v);
 void SetAircraftPosition(Aircraft *v, int x, int y, int z);
 byte GetAircraftFlyingAltitude(const Aircraft *v);
 
-/** Cached oftenly queried (NewGRF) values */
-struct AircraftCache {
-	uint16 cached_max_speed; ///< Cached maximum speed of the aircraft.
-};
-
 /**
  * Aircraft, helicopters, rotors and their shadows belong to this class.
  */
 struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
-	AircraftCache acache;          ///< Cache of often used calculated values
-
 	uint16 crashed_counter;        ///< Timer for handling crash animations.
 	byte pos;                      ///< Next desired position of the aircraft.
 	byte previous_pos;             ///< Previous desired position of the aircraft.
@@ -90,8 +83,8 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	bool IsPrimaryVehicle() const                  { return this->IsNormalAircraft(); }
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const    { return this->cur_speed; }
-	int GetDisplayMaxSpeed() const { return this->acache.cached_max_speed; }
-	int GetSpeedOldUnits() const   { return this->acache.cached_max_speed * 10 / 128; }
+	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed; }
+	int GetSpeedOldUnits() const   { return this->vcache.cached_max_speed * 10 / 128; }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile); }
 	bool Tick();

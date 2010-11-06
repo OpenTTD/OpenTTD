@@ -718,7 +718,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			uint max_speed;
 			switch (v->type) {
 				case VEH_TRAIN:
-					max_speed = Train::From(v)->tcache.cached_max_speed;
+					max_speed = v->vcache.cached_max_speed;
 					break;
 
 				case VEH_AIRCRAFT:

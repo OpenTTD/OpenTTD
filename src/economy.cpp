@@ -1228,7 +1228,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		/* update stats */
 		int t;
 		switch (u->type) {
-			case VEH_TRAIN:    t = Train::From(u)->tcache.cached_max_speed; break;
+			case VEH_TRAIN:    t = u->vcache.cached_max_speed; break;
 			case VEH_ROAD:     t = u->max_speed / 2;        break;
 			case VEH_SHIP:     t = u->max_speed;            break;
 			case VEH_AIRCRAFT: t = Aircraft::From(u)->GetSpeedOldUnits(); break; // Convert to old units.
