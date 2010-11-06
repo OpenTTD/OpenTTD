@@ -87,9 +87,9 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_AIRCRAFT_INC : EXPENSES_AIRCRAFT_RUN; }
-	bool IsPrimaryVehicle() const { return this->IsNormalAircraft(); }
+	bool IsPrimaryVehicle() const                  { return this->IsNormalAircraft(); }
 	SpriteID GetImage(Direction direction) const;
-	int GetDisplaySpeed() const { return this->cur_speed; }
+	int GetDisplaySpeed() const    { return this->cur_speed; }
 	int GetDisplayMaxSpeed() const { return this->max_speed; }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile); }
