@@ -1133,7 +1133,7 @@ static void CheckCaches()
 		uint length = 0;
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) length++;
 
-		VehicleCache      *veh_cache = CallocT<VehicleCache>(length);
+		NewGRFCache       *grf_cache = CallocT<NewGRFCache>(length);
 		AccelerationCache *acc_cache = CallocT<AccelerationCache>(length);
 		TrainCache        *tra_cache = CallocT<TrainCache>(length);
 		RoadVehicleCache  *roa_cache = CallocT<RoadVehicleCache>(length);
@@ -1141,7 +1141,7 @@ static void CheckCaches()
 
 		length = 0;
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-			veh_cache[length] = u->vcache;
+			grf_cache[length] = u->grf_cache;
 			switch (u->type) {
 				case VEH_TRAIN:
 					acc_cache[length] = Train::From(u)->acc_cache;
@@ -1168,8 +1168,8 @@ static void CheckCaches()
 
 		length = 0;
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-			if (memcmp(&veh_cache[length], &u->vcache, sizeof(VehicleCache)) != 0) {
-				DEBUG(desync, 2, "vehicle cache mismatch: type %i, vehicle %i, company %i, unit number %i, wagon %i", (int)v->type, v->index, (int)v->owner, v->unitnumber, length);
+			if (memcmp(&grf_cache[length], &u->grf_cache, sizeof(NewGRFCache)) != 0) {
+				DEBUG(desync, 2, "newgrf cache mismatch: type %i, vehicle %i, company %i, unit number %i, wagon %i", (int)v->type, v->index, (int)v->owner, v->unitnumber, length);
 			}
 			switch (u->type) {
 				case VEH_TRAIN:
@@ -1199,7 +1199,7 @@ static void CheckCaches()
 			length++;
 		}
 
-		free(veh_cache);
+		free(grf_cache);
 		free(acc_cache);
 		free(tra_cache);
 		free(roa_cache);

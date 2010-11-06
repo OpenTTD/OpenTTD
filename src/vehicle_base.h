@@ -47,12 +47,13 @@ enum VehicleFlags {
 };
 
 /** Cached often queried (NewGRF) values */
-struct VehicleCache {
-	uint8 cache_valid;   ///< Whether the caches are valid
-	uint32 cached_var40; ///< Cache for NewGRF var 40
-	uint32 cached_var41; ///< Cache for NewGRF var 41
-	uint32 cached_var42; ///< Cache for NewGRF var 42
-	uint32 cached_var43; ///< Cache for NewGRF var 43
+struct NewGRFCache {
+	/* Values calculated when they are requested for the first time after invalidating the NewGRF cache. */
+	uint32 position_consist_length;   ///< Cache for NewGRF var 40.
+	uint32 position_same_id_length;   ///< Cache for NewGRF var 41.
+	uint32 consist_cargo_information; ///< Cache for NewGRF var 42.
+	uint32 company_information;       ///< Cache for NewGRF var 43.
+	uint8  cache_valid;               ///< Bitset that indicates which cache values are valid.
 };
 
 /** A vehicle pool for a little over 1 million vehicles. */
@@ -189,7 +190,7 @@ public:
 
 	byte subtype;                       ///< subtype (Filled with values from #EffectVehicles/#TrainSubTypes/#AircraftSubTypes)
 
-	VehicleCache vcache;                ///< Cache of often used calculated values
+	NewGRFCache grf_cache;              ///< Cache of often used calculated NewGRF values
 
 	/** Create a new vehicle */
 	Vehicle(VehicleType type = VEH_INVALID);
@@ -308,7 +309,7 @@ public:
 	 */
 	FORCEINLINE void InvalidateNewGRFCache()
 	{
-		this->vcache.cache_valid = 0;
+		this->grf_cache.cache_valid = 0;
 	}
 
 	/**
