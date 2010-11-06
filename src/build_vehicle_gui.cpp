@@ -95,11 +95,17 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 static const CargoID CF_ANY  = CT_NO_REFIT; ///< Show all vehicles independent of carried cargo (i.e. no filtering)
 static const CargoID CF_NONE = CT_INVALID;  ///< Show only vehicles which do not carry cargo (e.g. train engines)
 
-static bool _internal_sort_order; // descending/ascending
+static bool _internal_sort_order;           ///< false = descending, true = ascending
 static byte _last_sort_criteria[]      = {0, 0, 0, 0};
 static bool _last_sort_order[]         = {false, false, false, false};
 static CargoID _last_filter_criteria[] = {CF_ANY, CF_ANY, CF_ANY, CF_ANY};
 
+/**
+ * Determines order of engines by engineID
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
 {
 	int r = ListPositionOfEngine(*a) - ListPositionOfEngine(*b);
@@ -107,6 +113,12 @@ static int CDECL EngineNumberSorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
+/**
+ * Determines order of engines by introduction date
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL EngineIntroDateSorter(const EngineID *a, const EngineID *b)
 {
 	const int va = Engine::Get(*a)->intro_date;
@@ -118,6 +130,12 @@ static int CDECL EngineIntroDateSorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
+/**
+ * Determines order of engines by name
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL EngineNameSorter(const EngineID *a, const EngineID *b)
 {
 	static EngineID last_engine[2] = { INVALID_ENGINE, INVALID_ENGINE };
@@ -145,6 +163,12 @@ static int CDECL EngineNameSorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
+/**
+ * Determines order of engines by reliability
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL EngineReliabilitySorter(const EngineID *a, const EngineID *b)
 {
 	const int va = Engine::Get(*a)->reliability;
@@ -156,6 +180,12 @@ static int CDECL EngineReliabilitySorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
+/**
+ * Determines order of engines by purchase cost
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL EngineCostSorter(const EngineID *a, const EngineID *b)
 {
 	Money va = Engine::Get(*a)->GetCost();
@@ -167,6 +197,12 @@ static int CDECL EngineCostSorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
+/**
+ * Determines order of engines by speed
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL EngineSpeedSorter(const EngineID *a, const EngineID *b)
 {
 	int va = Engine::Get(*a)->GetDisplayMaxSpeed();
@@ -178,6 +214,12 @@ static int CDECL EngineSpeedSorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
+/**
+ * Determines order of engines by power
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL EnginePowerSorter(const EngineID *a, const EngineID *b)
 {
 	int va = Engine::Get(*a)->GetPower();
@@ -189,6 +231,12 @@ static int CDECL EnginePowerSorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
+/**
+ * Determines order of engines by running costs
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL EngineRunningCostSorter(const EngineID *a, const EngineID *b)
 {
 	Money va = Engine::Get(*a)->GetRunningCost();
@@ -200,6 +248,12 @@ static int CDECL EngineRunningCostSorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
+/**
+ * Determines order of engines by running costs
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL EnginePowerVsRunningCostSorter(const EngineID *a, const EngineID *b)
 {
 	const Engine *e_a = Engine::Get(*a);
@@ -222,6 +276,12 @@ static int CDECL EnginePowerVsRunningCostSorter(const EngineID *a, const EngineI
 
 /* Train sorting functions */
 
+/**
+ * Determines order of train engines by capacity
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL TrainEngineCapacitySorter(const EngineID *a, const EngineID *b)
 {
 	const RailVehicleInfo *rvi_a = RailVehInfo(*a);
@@ -236,6 +296,12 @@ static int CDECL TrainEngineCapacitySorter(const EngineID *a, const EngineID *b)
 	return _internal_sort_order ? -r : r;
 }
 
+/**
+ * Determines order of train engines by engine / wagon
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL TrainEnginesThenWagonsSorter(const EngineID *a, const EngineID *b)
 {
 	int val_a = (RailVehInfo(*a)->railveh_type == RAILVEH_WAGON ? 1 : 0);
@@ -248,6 +314,13 @@ static int CDECL TrainEnginesThenWagonsSorter(const EngineID *a, const EngineID 
 }
 
 /* Road vehicle sorting functions */
+
+/**
+ * Determines order of road vehicles by capacity
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL RoadVehEngineCapacitySorter(const EngineID *a, const EngineID *b)
 {
 	int va = GetTotalCapacityOfArticulatedParts(*a);
@@ -260,6 +333,13 @@ static int CDECL RoadVehEngineCapacitySorter(const EngineID *a, const EngineID *
 }
 
 /* Ship vehicle sorting functions */
+
+/**
+ * Determines order of ships by capacity
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL ShipEngineCapacitySorter(const EngineID *a, const EngineID *b)
 {
 	const Engine *e_a = Engine::Get(*a);
@@ -275,6 +355,13 @@ static int CDECL ShipEngineCapacitySorter(const EngineID *a, const EngineID *b)
 }
 
 /* Aircraft sorting functions */
+
+/**
+ * Determines order of aircraft by cargo
+ * @param *a first engine to compare
+ * @param *b second engine to compare
+ * @return for descending order: returns < 0 if a < b and > 0 for a > b. Vice versa for ascending order and 0 for equal
+ */
 static int CDECL AircraftEngineCargoSorter(const EngineID *a, const EngineID *b)
 {
 	const Engine *e_a = Engine::Get(*a);
