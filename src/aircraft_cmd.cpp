@@ -574,8 +574,6 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
 		speed_limit = v->acache.cached_max_speed;
 	}
 
-	speed_limit = min(speed_limit, v->max_speed);
-
 	v->subspeed = (t = v->subspeed) + (byte)spd;
 
 	/* Aircraft's current speed is used twice so that very fast planes are
