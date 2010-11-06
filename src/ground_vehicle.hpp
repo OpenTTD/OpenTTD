@@ -61,7 +61,7 @@ enum GroundVehicleFlags {
  * virtual uint32      GetRollingFriction() const = 0;
  * virtual int         GetAccelerationType() const = 0;
  * virtual int32       GetSlopeSteepness() const = 0;
- * virtual uint16      GetInitialMaxSpeed() const = 0;
+ * virtual int         GetDisplayMaxSpeed() const = 0;
  * virtual uint16      GetMaxTrackSpeed() const = 0;
  * virtual bool        TileMayHaveSlopedTrack() const = 0;
  */

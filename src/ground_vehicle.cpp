@@ -27,7 +27,7 @@ void GroundVehicle<T, Type>::PowerChanged()
 	uint32 total_power = 0;
 	uint32 max_te = 0;
 	uint32 number_of_parts = 0;
-	uint16 max_track_speed = v->GetInitialMaxSpeed();
+	uint16 max_track_speed = v->GetDisplayMaxSpeed();
 
 	for (const T *u = v; u != NULL; u = u->Next()) {
 		uint32 current_power = u->GetPower();

@@ -501,15 +501,6 @@ protected: // These functions should not be called outside acceleration code.
 	}
 
 	/**
-	 * Gets the maximum speed of the vehicle, ignoring the limitations of the kind of track the vehicle is on.
-	 * @return Maximum speed of the vehicle.
-	 */
-	FORCEINLINE uint16 GetInitialMaxSpeed() const
-	{
-		return this->tcache.cached_max_speed;
-	}
-
-	/**
 	 * Gets the maximum speed allowed by the track for this vehicle.
 	 * @return Maximum speed allowed.
 	 */

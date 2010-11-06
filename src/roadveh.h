@@ -280,16 +280,6 @@ protected: // These functions should not be called outside acceleration code.
 	}
 
 	/**
-	 * Gets the maximum speed of the vehicle, ignoring the limitations of the kind of track the vehicle is on.
-	 * @return Maximum speed of the vehicle.
-	 */
-	FORCEINLINE uint16 GetInitialMaxSpeed() const
-	{
-		/* Road vehicles use a *2 conversion factor. */
-		return this->max_speed / 2;
-	}
-
-	/**
 	 * Gets the maximum speed allowed by the track for this vehicle.
 	 * @return Since roads don't limit road vehicle speed, it returns always zero.
 	 */
