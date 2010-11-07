@@ -493,7 +493,10 @@ enum ShowNewGRFStateWidgets {
 	SNGRFS_TOGGLE_PALETTE,
 	SNGRFS_APPLY_CHANGES,
 	SNGRFS_RESCAN_FILES,
+	SNGRFS_RESCAN_FILES2,
 	SNGRFS_CONTENT_DOWNLOAD,
+	SNGRFS_CONTENT_DOWNLOAD2,
+	SNGRFS_SHOW_REMOVE, ///< Select active list buttons (0 = normal, 1 = simple layout).
 };
 
 /**
@@ -544,6 +547,8 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(SNGRFS_SCROLLBAR);
 		this->vscroll2 = this->GetScrollbar(SNGRFS_SCROLL2BAR);
+
+		this->GetWidget<NWidgetStacked>(SNGRFS_SHOW_REMOVE)->SetDisplayedPlane(this->editable ? 0 : 1);
 		this->FinishInitNested(desc);
 
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, EDITBOX_MAX_LENGTH);
@@ -610,7 +615,8 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				break;
 			}
 
-			case SNGRFS_CONTENT_DOWNLOAD: {
+			case SNGRFS_CONTENT_DOWNLOAD:
+			case SNGRFS_CONTENT_DOWNLOAD2: {
 				Dimension d = GetStringBoundingBox(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON);
 				*size = maxdim(d, GetStringBoundingBox(STR_INTRO_ONLINE_CONTENT));
 				size->width  += padding.width;
@@ -942,6 +948,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				break;
 
 			case SNGRFS_CONTENT_DOWNLOAD:
+			case SNGRFS_CONTENT_DOWNLOAD2:
 				if (!_network_available) {
 					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
 				} else {
@@ -967,6 +974,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				break;
 
 			case SNGRFS_RESCAN_FILES:
+			case SNGRFS_RESCAN_FILES2:
 				ScanNewGRFFiles();
 				this->avail_sel = NULL;
 				this->avail_pos = -1;
@@ -1104,13 +1112,20 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			has_missing    |= c->status == GCS_NOT_FOUND;
 			has_compatible |= HasBit(c->flags, GCF_COMPATIBLE);
 		}
+		uint16 widget_data;
+		StringID tool_tip;
 		if (has_missing || has_compatible) {
-			this->GetWidget<NWidgetCore>(SNGRFS_CONTENT_DOWNLOAD)->widget_data = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON;
-			this->GetWidget<NWidgetCore>(SNGRFS_CONTENT_DOWNLOAD)->tool_tip    = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP;
+			widget_data = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON;
+			tool_tip    = STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP;
 		} else {
-			this->GetWidget<NWidgetCore>(SNGRFS_CONTENT_DOWNLOAD)->widget_data = STR_INTRO_ONLINE_CONTENT;
-			this->GetWidget<NWidgetCore>(SNGRFS_CONTENT_DOWNLOAD)->tool_tip    = STR_INTRO_TOOLTIP_ONLINE_CONTENT;
+			widget_data = STR_INTRO_ONLINE_CONTENT;
+			tool_tip    = STR_INTRO_TOOLTIP_ONLINE_CONTENT;
 		}
+		this->GetWidget<NWidgetCore>(SNGRFS_CONTENT_DOWNLOAD)->widget_data  = widget_data;
+		this->GetWidget<NWidgetCore>(SNGRFS_CONTENT_DOWNLOAD)->tool_tip     = tool_tip;
+		this->GetWidget<NWidgetCore>(SNGRFS_CONTENT_DOWNLOAD2)->widget_data = widget_data;
+		this->GetWidget<NWidgetCore>(SNGRFS_CONTENT_DOWNLOAD2)->tool_tip    = tool_tip;
+
 		this->SetWidgetDisabledState(SNGRFS_PRESET_SAVE, has_missing);
 	}
 
@@ -1502,14 +1517,23 @@ static const NWidgetPart _nested_newgrf_actives_widgets[] = {
 			NWidget(NWID_VSCROLLBAR, COLOUR_MAUVE, SNGRFS_SCROLLBAR),
 		EndContainer(),
 		/* Buttons. */
-		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_REMOVE), SetFill(1, 0), SetResize(1, 0),
-					SetDataTip(STR_NEWGRF_SETTINGS_REMOVE, STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP),
-			NWidget(NWID_VERTICAL),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_MOVE_UP), SetFill(1, 0), SetResize(1, 0),
-						SetDataTip(STR_NEWGRF_SETTINGS_MOVEUP, STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP),
-				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_MOVE_DOWN), SetFill(1, 0), SetResize(1, 0),
-						SetDataTip(STR_NEWGRF_SETTINGS_MOVEDOWN, STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, SNGRFS_SHOW_REMOVE),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_REMOVE), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_REMOVE, STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP),
+				NWidget(NWID_VERTICAL),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_MOVE_UP), SetFill(1, 0), SetResize(1, 0),
+							SetDataTip(STR_NEWGRF_SETTINGS_MOVEUP, STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP),
+					NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_MOVE_DOWN), SetFill(1, 0), SetResize(1, 0),
+							SetDataTip(STR_NEWGRF_SETTINGS_MOVEDOWN, STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP),
+				EndContainer(),
+			EndContainer(),
+
+			NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPadding(2, 2, 2, 2),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_RESCAN_FILES2), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_RESCAN_FILES, STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_CONTENT_DOWNLOAD2), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_INTRO_ONLINE_CONTENT, STR_INTRO_TOOLTIP_ONLINE_CONTENT),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
