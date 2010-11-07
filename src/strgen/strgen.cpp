@@ -63,7 +63,6 @@ struct LangString {
 	uint16 hash_next;      // next hash entry
 	uint16 index;
 	int line;              // line of string in source-file
-	Case *english_case;    // cases for english
 	Case *translated_case; // cases for foreign
 };
 
@@ -506,7 +505,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 }
 
 
-static void HandlePragma(char *str)
+static void HandlePragma(char *str, bool master)
 {
 	if (!memcmp(str, "id ", 3)) {
 		_next_string_id = strtoul(str + 3, NULL, 0);
@@ -553,6 +552,7 @@ static void HandlePragma(char *str)
 		}
 		_lang.newgrflangid = (uint8)langid;
 	} else if (!memcmp(str, "gender ", 7)) {
+		if (master) error("Genders are not allowed in the base translation.");
 		char *buf = str + 7;
 
 		for (;;) {
@@ -564,6 +564,7 @@ static void HandlePragma(char *str)
 			_numgenders++;
 		}
 	} else if (!memcmp(str, "case ", 5)) {
+		if (master) error("Cases are not allowed in the base translation.");
 		char *buf = str + 5;
 
 		for (;;) {
@@ -687,7 +688,7 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 static void HandleString(char *str, bool master)
 {
 	if (*str == '#') {
-		if (str[1] == '#' && str[2] != '#') HandlePragma(str + 2);
+		if (str[1] == '#' && str[2] != '#') HandlePragma(str + 2, master);
 		return;
 	}
 
@@ -724,13 +725,13 @@ static void HandleString(char *str, bool master)
 	LangString *ent = HashFind(str);
 
 	if (master) {
-		if (ent != NULL && casep == NULL) {
-			strgen_error("String name '%s' is used multiple times", str);
+		if (casep != NULL) {
+			strgen_error("Cases in the base translation are not supported.");
 			return;
 		}
 
-		if (ent == NULL && casep != NULL) {
-			strgen_error("Base string name '%s' doesn't exist yet. Define it before defining a case.", str);
+		if (ent != NULL) {
+			strgen_error("String name '%s' is used multiple times", str);
 			return;
 		}
 
@@ -750,17 +751,7 @@ static void HandleString(char *str, bool master)
 			HashAdd(str, ent);
 		}
 
-		if (casep != NULL) {
-			Case *c = MallocT<Case>(1);
-
-			c->caseidx = ResolveCaseName(casep, strlen(casep));
-			c->string = strdup(s);
-			c->next = ent->english_case;
-			ent->english_case = c;
-		} else {
-			ent->english = strdup(s);
-		}
-
+		ent->english = strdup(s);
 	} else {
 		if (ent == NULL) {
 			strgen_warning("String name '%s' does not exist in master file", str);
@@ -823,8 +814,6 @@ static void ParseFile(const char *file, bool english)
 	strecpy(_lang.digit_group_separator, ",", lastof(_lang.digit_group_separator));
 	strecpy(_lang.digit_group_separator_currency, ",", lastof(_lang.digit_group_separator_currency));
 	strecpy(_lang.digit_decimal_separator, ".", lastof(_lang.digit_decimal_separator));
-	/* TODO:!! We can't reset the cases. In case the translated strings
-	 * derive some strings from english.... */
 
 	in = fopen(file, "r");
 	if (in == NULL) error("Cannot open file");
@@ -1107,7 +1096,7 @@ static void WriteLangfile(const char *filename)
 				casep = ls->translated_case;
 				cmdp = ls->translated;
 			} else {
-				casep = ls->english_case;
+				casep = NULL;
 				cmdp = ls->english;
 			}
 
