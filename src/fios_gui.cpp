@@ -516,7 +516,7 @@ public:
 				break;
 
 			case SLWW_LOAD_BUTTON:
-				if (this->selected != NULL && !_load_check_data.HasErrors()) {
+				if (this->selected != NULL && !_load_check_data.HasErrors() && (_load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs())) {
 					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;
 
 					const char *name = FiosBrowseTo(this->selected);
@@ -665,7 +665,7 @@ public:
 				/* Selection changes */
 				if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
 					this->SetWidgetDisabledState(SLWW_LOAD_BUTTON,
-							this->selected == NULL || _load_check_data.HasErrors());
+							this->selected == NULL || _load_check_data.HasErrors() || !(_load_check_data.grf_compatibility != GLC_NOT_FOUND || _settings_client.gui.UserIsAllowedToChangeNewGRFs()));
 					this->SetWidgetDisabledState(SLWW_NEWGRF_INFO,
 							!_load_check_data.HasNewGrfs());
 				}

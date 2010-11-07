@@ -319,7 +319,7 @@ static void MenuClickSettings(int index)
 		case OME_GAMEOPTIONS:          ShowGameOptions();                               return;
 		case OME_DIFFICULTIES:         ShowGameDifficulty();                            return;
 		case OME_SETTINGS:             ShowGameSettings();                              return;
-		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
+		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, &_grfconfig);   return;
 		case OME_TRANSPARENCIES:       ShowTransparencyToolbar();                       break;
 
 		case OME_SHOW_TOWNNAMES:       ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);     break;

@@ -109,9 +109,19 @@ struct GUISettings {
 
 	uint8  developer;                        ///< print non-fatal warnings in console (>= 1), copy debug output to console (== 2)
 	bool   show_date_in_logs;                ///< whether to show dates in console logs
-	bool   newgrf_developer_tools;           ///< activate NewGRF developer tools
+	bool   newgrf_developer_tools;           ///< activate NewGRF developer tools and allow modifying NewGRFs in an existing game
 	bool   ai_developer_tools;               ///< activate AI developer tools
+	bool   scenario_developer;               ///< activate scenario developer: allow modifying NewGRFs in an existing game
 	bool   newgrf_show_old_versions;         ///< whether to show old versions in the NewGRF list
+
+	/**
+	 * Returns true when the user has sufficient privileges to edit newgrfs on a running game
+	 * @return whether the user has sufficient privileges to edit newgrfs in an existing game
+	 */
+	bool UserIsAllowedToChangeNewGRFs() const
+	{
+		return this->scenario_developer || this->newgrf_developer_tools;
+	}
 };
 
 /** Settings related to currency/unit systems. */

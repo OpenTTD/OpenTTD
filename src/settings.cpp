@@ -702,18 +702,6 @@ static bool RedrawScreen(int32 p1)
 }
 
 /**
- * Reinitalise all windows, i.e. construct their windows
- * from the begin. For example to show a particular button
- * that was previously hidden.
- * @param p1 ignored
- */
-static bool ReinitWindows(int32 p1)
-{
-	ReInitAllWindows();
-	return true;
-}
-
-/**
  * Redraw the smallmap after a colour scheme change.
  * @param p1 Callback parameter.
  * @return Always true.
@@ -887,6 +875,21 @@ static bool TownFoundingChanged(int32 p1)
 static bool InvalidateVehTimetableWindow(int32 p1)
 {
 	InvalidateWindowClassesData(WC_VEHICLE_TIMETABLE, -2);
+	return true;
+}
+
+/**
+ * Update any possible saveload window and delete any newgrf dialogue as
+ * its widget parts might change. Reinit all windows as it allows access to the
+ * newgrf debug button.
+ * @param p1 unused.
+ * @return Always true.
+ */
+static bool InvalidateNewGRFChangeWindows(int32 p1)
+{
+	InvalidateWindowClassesData(WC_SAVELOAD);
+	DeleteWindowByClass(WC_GAME_OPTIONS);
+	ReInitAllWindows();
 	return true;
 }
 
