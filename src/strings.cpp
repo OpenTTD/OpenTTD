@@ -1314,7 +1314,7 @@ bool ReadLanguagePack(int lang_index)
 
 	/* We need at least one byte of lang_pack->data */
 	if (end <= lang_pack->data ||
-			lang_pack->ident != TO_LE32(LANGUAGE_PACK_IDENT) ||
+			lang_pack->ident != TO_LE32(LanguagePackHeader::IDENT) ||
 			lang_pack->version != TO_LE32(LANGUAGE_PACK_VERSION)) {
 		free(lang_pack);
 		return false;
@@ -1453,7 +1453,7 @@ static bool GetLanguageFileHeader(const char *file, LanguagePack *hdr)
 	fclose(f);
 
 	bool ret = read == 1 &&
-			hdr->ident == TO_LE32(LANGUAGE_PACK_IDENT) &&
+			hdr->ident == TO_LE32(LanguagePackHeader::IDENT) &&
 			hdr->version == TO_LE32(LANGUAGE_PACK_VERSION);
 
 	/* Convert endianness for the windows language ID */

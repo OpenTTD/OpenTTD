@@ -14,6 +14,8 @@
 
 /** Header of a language file. */
 struct LanguagePackHeader {
+	static const uint32 IDENT = 0x474E414C; ///< Identifier for OpenTTD language files, big endian for "LANG"
+
 	uint32 ident;       ///< 32-bits identifier
 	uint32 version;     ///< 32-bits of auto generated version info which is basically a hash of strings.h
 	char name[32];      ///< the international name of this language

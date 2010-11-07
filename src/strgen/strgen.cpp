@@ -946,7 +946,6 @@ static void WriteStringsH(const char *filename)
 	fprintf(_output_file, "\nstatic const StringID STR_LAST_STRINGID = 0x%X;\n\n", next - 1);
 
 	fprintf(_output_file,
-		"static const uint LANGUAGE_PACK_IDENT = 0x474E414C; // Big Endian value for 'LANG' (LE is 0x 4C 41 4E 47)\n"
 		"static const uint LANGUAGE_PACK_VERSION = 0x%X;\n\n", (uint)_hash
 	);
 
@@ -1069,8 +1068,7 @@ static void WriteLangfile(const char *filename)
 		_lang.offsets[i] = TO_LE16(n);
 	}
 
-	/* see line 655: fprintf(..."\tLANGUAGE_PACK_IDENT = 0x474E414C,...) */
-	_lang.ident = TO_LE32(0x474E414C); // Big Endian value for 'LANG'
+	_lang.ident = TO_LE32(LanguagePackHeader::IDENT);
 	_lang.version = TO_LE32(_hash);
 	_lang.winlangid = TO_LE16(_lang.winlangid);
 
