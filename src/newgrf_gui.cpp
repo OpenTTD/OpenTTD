@@ -643,7 +643,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
-		this->DrawEditBox(SNGRFS_FILTER);
+		if (this->editable) this->DrawEditBox(SNGRFS_FILTER);
 	}
 
 	/**
@@ -1116,11 +1116,13 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 	virtual void OnMouseLoop()
 	{
-		this->HandleEditBox(SNGRFS_FILTER);
+		if (this->editable) this->HandleEditBox(SNGRFS_FILTER);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
+		if (!this->editable) return ES_NOT_HANDLED;
+
 		switch (keycode) {
 			case WKC_UP:
 				/* scroll up by one */
@@ -1174,6 +1176,8 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 	virtual void OnOSKInput(int wid)
 	{
+		if (!this->editable) return;
+
 		this->avails.SetFilterState(!StrEmpty(this->edit_str_buf));
 		this->avails.ForceRebuild();
 		this->InvalidateData(0);
@@ -1340,7 +1344,7 @@ public:
 		/* Use 2 or 3 colmuns? */
 		uint min_three_columns = min_avs_width + min_acs_width + min_inf_width + 2 * INTER_COLUMN_SPACING;
 		uint min_two_columns   = min_list_width + min_inf_width + INTER_COLUMN_SPACING;
-		bool use_three_columns = (min_three_columns + MIN_EXTRA_FOR_3_COLUMNS <= given_width);
+		bool use_three_columns = this->editable && (min_three_columns + MIN_EXTRA_FOR_3_COLUMNS <= given_width);
 
 		/* Info panel is a seperate column in both modes. Compute its width first. */
 		uint extra_width, inf_width;
@@ -1405,12 +1409,12 @@ public:
 			uint acs_width = ComputeMaxSize(this->acs->smallest_x, this->acs->smallest_x + acs_extra_width + extra_width,
 					this->acs->GetHorizontalStepSize(sizing));
 
-			uint min_avs_height = this->avs->smallest_y + this->avs->padding_top + this->avs->padding_bottom;
+			uint min_avs_height = (!this->editable) ? 0 : this->avs->smallest_y + this->avs->padding_top + this->avs->padding_bottom + INTER_LIST_SPACING;
 			uint min_acs_height = this->acs->smallest_y + this->acs->padding_top + this->acs->padding_bottom;
-			uint extra_height = given_height - min_acs_height - min_avs_height - INTER_LIST_SPACING;
+			uint extra_height = given_height - min_acs_height - min_avs_height;
 
 			uint avs_height = ComputeMaxSize(this->avs->smallest_y, this->avs->smallest_y + extra_height / 2, this->avs->GetVerticalStepSize(sizing));
-			extra_height -= avs_height - this->avs->smallest_y;
+			if (this->editable) extra_height -= avs_height - this->avs->smallest_y;
 			uint acs_height = ComputeMaxSize(this->acs->smallest_y, this->acs->smallest_y + extra_height, this->acs->GetVerticalStepSize(sizing));
 
 			/* Assign size and position to the childs. */
@@ -1421,17 +1425,26 @@ public:
 
 				uint ypos = y + this->acs->padding_top;
 				this->acs->AssignSizePosition(sizing, x + this->acs->padding_left, ypos, acs_width, acs_height, rtl);
-				ypos += acs_height + this->acs->padding_bottom + INTER_LIST_SPACING + this->avs->padding_top;
-				this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, ypos, avs_width, avs_height, rtl);
+				if (this->editable) {
+					ypos += acs_height + this->acs->padding_bottom + INTER_LIST_SPACING + this->avs->padding_top;
+					this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, ypos, avs_width, avs_height, rtl);
+				} else {
+					this->avs->AssignSizePosition(sizing, 0, 0, this->avs->smallest_x, this->avs->smallest_y, rtl);
+				}
 			} else {
 				uint ypos = y + this->acs->padding_top;
 				this->acs->AssignSizePosition(sizing, x + this->acs->padding_left, ypos, acs_width, acs_height, rtl);
-				ypos += acs_height + this->acs->padding_bottom + INTER_LIST_SPACING + this->avs->padding_top;
-				this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, ypos, avs_width, avs_height, rtl);
-				x += max(this->acs->current_x + this->acs->padding_left + this->acs->padding_right,
-						this->avs->current_x + this->avs->padding_left + this->avs->padding_right) + INTER_COLUMN_SPACING;
-
-				x += this->inf->padding_left;
+				if (this->editable) {
+					ypos += acs_height + this->acs->padding_bottom + INTER_LIST_SPACING + this->avs->padding_top;
+					this->avs->AssignSizePosition(sizing, x + this->avs->padding_left, ypos, avs_width, avs_height, rtl);
+				} else {
+					this->avs->AssignSizePosition(sizing, 0, 0, this->avs->smallest_x, this->avs->smallest_y, rtl);
+				}
+				uint dx = this->acs->current_x + this->acs->padding_left + this->acs->padding_right;
+				if (this->editable) {
+					dx = max(dx, this->avs->current_x + this->avs->padding_left + this->avs->padding_right);
+				}
+				x += dx + INTER_COLUMN_SPACING + this->inf->padding_left;
 				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
 			}
 		}
@@ -1441,7 +1454,7 @@ public:
 	{
 		if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
 
-		NWidgetCore *nw = this->avs->GetWidgetFromPos(x, y);
+		NWidgetCore *nw = (this->editable) ? this->avs->GetWidgetFromPos(x, y) : NULL;
 		if (nw == NULL) nw = this->acs->GetWidgetFromPos(x, y);
 		if (nw == NULL) nw = this->inf->GetWidgetFromPos(x, y);
 		return nw;
@@ -1449,7 +1462,7 @@ public:
 
 	virtual void Draw(const Window *w)
 	{
-		this->avs->Draw(w);
+		if (this->editable) this->avs->Draw(w);
 		this->acs->Draw(w);
 		this->inf->Draw(w);
 	}
