@@ -30,20 +30,17 @@ void GroundVehicle<T, Type>::PowerChanged()
 	uint16 max_track_speed = v->GetDisplayMaxSpeed();
 
 	for (const T *u = v; u != NULL; u = u->Next()) {
-		uint32 current_power = u->GetPower();
+		uint32 current_power = u->GetPower() + u->GetPoweredPartPower(u);
 		total_power += current_power;
 
 		/* Only powered parts add tractive effort. */
 		if (current_power > 0) max_te += u->GetWeight() * u->GetTractiveEffort();
-		total_power += u->GetPoweredPartPower(v);
 		number_of_parts++;
 
 		/* Get minimum max speed for this track. */
 		uint16 track_speed = u->GetMaxTrackSpeed();
 		if (track_speed > 0) max_track_speed = min(max_track_speed, track_speed);
 	}
-
-	this->acc_cache.cached_axle_resistance = 60 * number_of_parts;
 
 	byte air_drag;
 	byte air_drag_value = v->GetAirDrag();
@@ -87,11 +84,14 @@ void GroundVehicle<T, Type>::CargoChanged()
 	for (T *u = T::From(this); u != NULL; u = u->Next()) {
 		uint32 current_weight = u->GetWeight();
 		weight += current_weight;
-		u->acc_cache.cached_slope_resistance = current_weight * u->GetSlopeSteepness();
+		/* Slope steepness is in percent, result in N. */
+		u->acc_cache.cached_slope_resistance = current_weight * u->GetSlopeSteepness() * 100;
 	}
 
 	/* Store consist weight in cache. */
 	this->acc_cache.cached_weight = max<uint32>(1, weight);
+	/* Friction in bearings and other mechanical parts is 0.1% of the weight (result in N). */
+	this->acc_cache.cached_axle_resistance = 10 * weight;
 
 	/* Now update vehicle power (tractive effort is dependent on weight). */
 	this->PowerChanged();
@@ -106,7 +106,7 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 {
 	/* Templated class used for function calls for performance reasons. */
 	const T *v = T::From(this);
-	int32 speed = v->GetCurrentSpeed();
+	int32 speed = v->GetCurrentSpeed(); // [km/h-ish]
 
 	/* Weight is stored in tonnes. */
 	int32 mass = this->acc_cache.cached_weight;
@@ -120,16 +120,15 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 
 	const int area = v->GetAirDragArea();
 	if (!maglev) {
-		resistance = (13 * mass) / 10;
-		resistance += this->acc_cache.cached_axle_resistance;
-		resistance += (v->GetRollingFriction() * mass * speed) / 1000;
-		resistance += (area * this->acc_cache.cached_air_drag * speed * speed) / 10000;
-	} else {
-		resistance += (area * this->acc_cache.cached_air_drag * speed * speed) / 20000;
+		/* Static resistance plus rolling friction. */
+		resistance = this->acc_cache.cached_axle_resistance;
+		resistance += mass * v->GetRollingFriction();
 	}
+	/* Air drag; the air drag coefficient is in an arbitrary NewGRF-unit,
+	 * so we need some magic conversion factor. */
+	resistance += (area * this->acc_cache.cached_air_drag * speed * speed) / 500;
 
 	resistance += this->GetSlopeResistance();
-	resistance *= 4; //[N]
 
 	/* This value allows to know if the vehicle is accelerating or braking. */
 	AccelStatus mode = v->GetAccelerationStatus();
@@ -138,9 +137,8 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	int force;
 	if (speed > 0) {
 		if (!maglev) {
-			force = power / speed; //[N]
-			force *= 22;
-			force /= 10;
+			/* Conversion factor from km/h to m/s is 5/18 to get [N] in the end. */
+			force = power * 18 / (speed * 5);
 			if (mode == AS_ACCEL && force > max_te) force = max_te;
 		} else {
 			force = power / 25;

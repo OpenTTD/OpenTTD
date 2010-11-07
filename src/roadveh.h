@@ -217,11 +217,11 @@ protected: // These functions should not be called outside acceleration code.
 
 	/**
 	 * Gets the area used for calculating air drag.
-	 * @return Area of the engine.
+	 * @return Area of the engine in m^2.
 	 */
 	FORCEINLINE byte GetAirDragArea() const
 	{
-		return 60;
+		return 6;
 	}
 
 	/**
@@ -244,21 +244,25 @@ protected: // These functions should not be called outside acceleration code.
 
 	/**
 	 * Calculates the current speed of this vehicle.
-	 * @return Current speed in mph.
+	 * @return Current speed in km/h-ish.
 	 */
 	FORCEINLINE uint16 GetCurrentSpeed() const
 	{
-		return this->cur_speed * 10 / 32;
+		return this->cur_speed / 2;
 	}
 
 	/**
 	 * Returns the rolling friction coefficient of this vehicle.
-	 * @return Rolling friction coefficient in [1e-3].
+	 * @return Rolling friction coefficient in [1e-4].
 	 */
 	FORCEINLINE uint32 GetRollingFriction() const
 	{
-		/* Trams have a slightly greater friction coefficient than trains. The rest of road vehicles have bigger values. */
-		return (this->roadtype == ROADTYPE_TRAM) ? 50 : 75;
+		/* Trams have a slightly greater friction coefficient than trains.
+		 * The rest of road vehicles have bigger values. */
+		uint32 coeff = (this->roadtype == ROADTYPE_TRAM) ? 40 : 75;
+		/* The friction coefficient increases with speed in a way that
+		 * it doubles at 128 km/h, triples at 256 km/h and so on. */
+		return coeff * (128 + this->GetCurrentSpeed()) / 128;
 	}
 
 	/**
@@ -276,7 +280,7 @@ protected: // These functions should not be called outside acceleration code.
 	 */
 	FORCEINLINE uint32 GetSlopeSteepness() const
 	{
-		return 20 * _settings_game.vehicle.roadveh_slope_steepness; // 1% slope * slope steepness
+		return _settings_game.vehicle.roadveh_slope_steepness;
 	}
 
 	/**

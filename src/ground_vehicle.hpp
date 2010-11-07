@@ -30,12 +30,12 @@ struct AccelerationCache {
 	uint32 cached_weight;           ///< Total weight of the consist.
 	uint32 cached_slope_resistance; ///< Resistance caused by weight when this vehicle part is at a slope.
 	uint32 cached_max_te;           ///< Maximum tractive effort of consist.
+	uint16 cached_axle_resistance;  ///< Resistance caused by the axles of the vehicle.
 
 	/* Cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
+	uint16 cached_max_track_speed;  ///< Maximum consist speed limited by track type.
 	uint32 cached_power;            ///< Total power of the consist.
 	uint32 cached_air_drag;         ///< Air drag coefficient of the vehicle.
-	uint16 cached_axle_resistance;  ///< Resistance caused by the axles of the vehicle.
-	uint16 cached_max_track_speed;  ///< Maximum consist speed limited by track type.
 };
 
 /** Ground vehicle flags. */
