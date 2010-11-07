@@ -285,6 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :Đánh giá m�
 STR_SORT_BY_ENGINE_ID                                           :ID Máy (sắp xếp thông thường)
 STR_SORT_BY_COST                                                :Chi phí
 STR_SORT_BY_POWER                                               :Lực
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Lực kéo
 STR_SORT_BY_INTRO_DATE                                          :Ngày giới thiệu
 STR_SORT_BY_RUNNING_COST                                        :Chi phí chạy
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Chi phí Năng lượng/Chạy

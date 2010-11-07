@@ -286,6 +286,7 @@ STR_SORT_BY_RATING_MIN                                          :Clasificación 
 STR_SORT_BY_ENGINE_ID                                           :ID Motor (ordenación clásica)
 STR_SORT_BY_COST                                                :Coste
 STR_SORT_BY_POWER                                               :Potencia
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Fuerza de tracción
 STR_SORT_BY_INTRO_DATE                                          :Fecha Introducción
 STR_SORT_BY_RUNNING_COST                                        :Coste Operación
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potencia/Coste Operación

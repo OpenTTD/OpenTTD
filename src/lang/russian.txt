@@ -411,6 +411,7 @@ STR_SORT_BY_RATING_MIN                                          :Низший р
 STR_SORT_BY_ENGINE_ID                                           :Название
 STR_SORT_BY_COST                                                :Цена
 STR_SORT_BY_POWER                                               :Мощность
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Тяговое усилие
 STR_SORT_BY_INTRO_DATE                                          :Время начала производства
 STR_SORT_BY_RUNNING_COST                                        :Стоимость обслуживания
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Мощность/стоимость обслуж.
@@ -3951,7 +3952,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не у�
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не удалось удалить метку...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Экономический симулятор на основе «Transport Tycoon Deluxe»
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Экономический симулятор на основе игры «Transport Tycoon Deluxe»
 
 ##id 0x2000
 # Town building names

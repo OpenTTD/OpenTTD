@@ -285,6 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :Matalin rahtilu
 STR_SORT_BY_ENGINE_ID                                           :EngineID (perinteinen lajittelu)
 STR_SORT_BY_COST                                                :Hinta
 STR_SORT_BY_POWER                                               :Teho
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Vääntömomentti
 STR_SORT_BY_INTRO_DATE                                          :Julkaisupäivä
 STR_SORT_BY_RUNNING_COST                                        :Käyttökustannukset
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Teho-hyötysuhde

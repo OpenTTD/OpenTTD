@@ -286,6 +286,7 @@ STR_SORT_BY_RATING_MIN                                          :Schlechteste Be
 STR_SORT_BY_ENGINE_ID                                           :Baureihe
 STR_SORT_BY_COST                                                :Kosten
 STR_SORT_BY_POWER                                               :Leistung
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Zugkraft
 STR_SORT_BY_INTRO_DATE                                          :Einführungsdatum
 STR_SORT_BY_RUNNING_COST                                        :Betriebskosten
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Leistung/Betriebskosten

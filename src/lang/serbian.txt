@@ -473,6 +473,7 @@ STR_SORT_BY_RATING_MIN                                          :Najnižoj oceni
 STR_SORT_BY_ENGINE_ID                                           :ID mašine (standardno)
 STR_SORT_BY_COST                                                :Ceni
 STR_SORT_BY_POWER                                               :Snazi
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Vučnoj snazi
 STR_SORT_BY_INTRO_DATE                                          :Datumu uvođenja
 STR_SORT_BY_RUNNING_COST                                        :Troškovima održavanja
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snazi/Troškovima održavanja

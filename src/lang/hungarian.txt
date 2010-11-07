@@ -348,6 +348,7 @@ STR_SORT_BY_RATING_MIN                                          :Legkevesebb rak
 STR_SORT_BY_ENGINE_ID                                           :JárműID
 STR_SORT_BY_COST                                                :Ár
 STR_SORT_BY_POWER                                               :Telj.
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Vonóerő
 STR_SORT_BY_INTRO_DATE                                          :Bevezetési dátum
 STR_SORT_BY_RUNNING_COST                                        :Üzemeltetési ktsg.
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Telj./Üzemeltetési ktsg.

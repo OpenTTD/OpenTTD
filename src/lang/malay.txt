@@ -1083,6 +1083,9 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Benarka
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Benarkan kawasan tangkapan yang lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Benarkan lebih pemusnahan jalanraya, jambatan, dan sbgnya yang dimiliki bandar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Benarkan pembinaan keretapi yang sangat panjang: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Tiada
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Asli
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistik
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model pecutan keretapi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Asal
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistik
@@ -2016,6 +2019,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bina lap
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Pilihan Lapangan Terbang
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Pilih saiz/jenis lapangan terbang
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Susun atur {NUM}
 
 STR_AIRPORT_SMALL                                               :Kecil
 STR_AIRPORT_CITY                                                :Bandar
@@ -2115,6 +2119,8 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bina
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Biaya
 
 # Industry cargoes window
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Pautan ke peta kecil
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Pautan ke peta kecil
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maklumat Kawasan Tanah
@@ -2362,6 +2368,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Periksa 
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nama fail: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versi: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. versi serasi: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet: {SILVER}{STRING}
@@ -2374,7 +2381,10 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Dinyahakti
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Masukkan parameter NewGRF
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Ubah parameter NewGRF
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Tutup
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Tetapan semula
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Bilangan parameter: {ORANGE}{NUM}
 
@@ -3198,12 +3208,14 @@ STR_ERROR_PROTECTED                                             :{WHITE}Syarikat
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Tidak boleh bina bandar
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nama bandar tidak dapat ditukar...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tidak boleh membina bandar di sini...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Tidak boleh besarkan bandar...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terlalu hampir ke hujung peta
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu hampir ke bandar lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... bandar terlalu banyak
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ruang tidak mencukupi di dalam peta
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Bandar ini tidak akan membina jalan. Anda boleh membenarkan pembinaan jalan melalui Advanced Settings->Economy->Towns.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Kerja-kerja jalanraya sedang berjalan
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tiada lokasi sesuai untuk arca di tengah bandar
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... terlalu banyak kilang
@@ -3244,6 +3256,7 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Terlalu 
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nama stesen tidak dapat ditukar...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... jalanraya ini dimiliki oleh bandar
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... jalanraya menghala ke arah yang salah
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... hentian pandu lalu tidak boleh mempunyai selekoh
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Bahagian stesen ini tidak dapat dibuang...
@@ -3361,6 +3374,7 @@ STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tanah ti
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... terlalu banyak objek
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Tidak dapat bina objek...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objek sedang menghalang
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... ibu pejabat syarikat menghalang
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kawasan ini tidak dapat dibeli...
