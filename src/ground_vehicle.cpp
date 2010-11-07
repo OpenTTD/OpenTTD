@@ -47,8 +47,9 @@ void GroundVehicle<T, Type>::PowerChanged()
 
 	/* If air drag is set to zero (default), the resulting air drag coefficient is dependent on max speed. */
 	if (air_drag_value == 0) {
+		uint16 max_speed = v->GetDisplayMaxSpeed();
 		/* Simplification of the method used in TTDPatch. It uses <= 10 to change more steadily from 128 to 196. */
-		air_drag = (max_track_speed <= 10) ? 192 : max(2048 / max_track_speed, 1);
+		air_drag = (max_speed <= 10) ? 192 : max(2048 / max_speed, 1);
 	} else {
 		/* According to the specs, a value of 0x01 in the air drag property means "no air drag". */
 		air_drag = (air_drag_value == 1) ? 0 : air_drag_value;

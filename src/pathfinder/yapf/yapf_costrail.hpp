@@ -466,11 +466,12 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			{
 				int min_speed = 0;
 				int max_speed = tf->GetSpeedLimit(&min_speed);
-				if (max_speed < v->max_speed) {
-					extra_cost += YAPF_TILE_LENGTH * (v->max_speed - max_speed) * (4 + tf->m_tiles_skipped) / v->max_speed;
+				int max_veh_speed = v->GetDisplayMaxSpeed();
+				if (max_speed < max_veh_speed) {
+					extra_cost += YAPF_TILE_LENGTH * (max_veh_speed - max_speed) * (4 + tf->m_tiles_skipped) / max_veh_speed;
 				}
-				if (min_speed > v->max_speed) {
-					extra_cost += YAPF_TILE_LENGTH * (min_speed - v->max_speed);
+				if (min_speed > max_veh_speed) {
+					extra_cost += YAPF_TILE_LENGTH * (min_speed - max_veh_speed);
 				}
 			}
 
