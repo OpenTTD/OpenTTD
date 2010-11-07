@@ -1270,6 +1270,7 @@ public:
 	NWidgetBase *avs; ///< Widget with the available grfs list and buttons.
 	NWidgetBase *acs; ///< Widget with the active grfs list and buttons.
 	NWidgetBase *inf; ///< Info panel.
+	bool editable;    ///< Editable status of the parent NewGRF window (if \c false, drop all widgets that make the window editable).
 
 	NWidgetNewGRFDisplay(NWidgetBase *avs, NWidgetBase *acs, NWidgetBase *inf) : NWidgetContainer(NWID_HORIZONTAL)
 	{
@@ -1280,10 +1281,17 @@ public:
 		this->Add(this->avs);
 		this->Add(this->acs);
 		this->Add(this->inf);
+
+		this->editable = true; // Temporary setting, 'real' value is set in SetupSmallestSize().
 	}
 
 	virtual void SetupSmallestSize(Window *w, bool init_array)
 	{
+		/* Copy state flag from the window. */
+		assert(dynamic_cast<NewGRFWindow *>(w) != NULL);
+		NewGRFWindow *ngw = (NewGRFWindow *)w;
+		this->editable = ngw->editable;
+
 		this->avs->SetupSmallestSize(w, init_array);
 		this->acs->SetupSmallestSize(w, init_array);
 		this->inf->SetupSmallestSize(w, init_array);
