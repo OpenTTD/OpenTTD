@@ -497,6 +497,7 @@ enum ShowNewGRFStateWidgets {
 	SNGRFS_CONTENT_DOWNLOAD,
 	SNGRFS_CONTENT_DOWNLOAD2,
 	SNGRFS_SHOW_REMOVE, ///< Select active list buttons (0 = normal, 1 = simple layout).
+	SNGRFS_SHOW_APPLY,  ///< Select display of the buttons below the 'details'.
 };
 
 /**
@@ -549,6 +550,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 		this->vscroll2 = this->GetScrollbar(SNGRFS_SCROLL2BAR);
 
 		this->GetWidget<NWidgetStacked>(SNGRFS_SHOW_REMOVE)->SetDisplayedPlane(this->editable ? 0 : 1);
+		this->GetWidget<NWidgetStacked>(SNGRFS_SHOW_APPLY)->SetDisplayedPlane(this->editable ? 0 : SZSP_HORIZONTAL);
 		this->FinishInitNested(desc);
 
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, EDITBOX_MAX_LENGTH);
@@ -1579,16 +1581,18 @@ static const NWidgetPart _nested_newgrf_infopanel_widgets[] = {
 		NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO_TITLE), SetFill(1, 0), SetResize(1, 0),
 		NWidget(WWT_EMPTY, COLOUR_MAUVE, SNGRFS_NEWGRF_INFO), SetFill(1, 1), SetResize(1, 1), SetMinimalSize(150, 100),
 	EndContainer(),
-	/* Right side, buttons. */
-	NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
-		NWidget(NWID_VERTICAL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_SET_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
-					SetDataTip(STR_NEWGRF_SETTINGS_SET_PARAMETERS, STR_NULL),
-			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_TOGGLE_PALETTE), SetFill(1, 0), SetResize(1, 0),
-					SetDataTip(STR_NEWGRF_SETTINGS_TOGGLE_PALETTE, STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP),
+	NWidget(NWID_SELECTION, INVALID_COLOUR, SNGRFS_SHOW_APPLY),
+		/* Right side, buttons. */
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(0, WD_RESIZEBOX_WIDTH, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_SET_PARAMETERS), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_SET_PARAMETERS, STR_NULL),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_TOGGLE_PALETTE), SetFill(1, 0), SetResize(1, 0),
+						SetDataTip(STR_NEWGRF_SETTINGS_TOGGLE_PALETTE, STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP),
+			EndContainer(),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
+					SetDataTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES, STR_NULL),
 		EndContainer(),
-		NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, SNGRFS_APPLY_CHANGES), SetFill(1, 0), SetResize(1, 0),
-				SetDataTip(STR_NEWGRF_SETTINGS_APPLY_CHANGES, STR_NULL),
 	EndContainer(),
 };
 
