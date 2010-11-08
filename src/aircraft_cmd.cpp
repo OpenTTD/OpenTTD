@@ -626,6 +626,8 @@ static int UpdateAircraftSpeed(Aircraft *v, uint speed_limit = SPEED_LIMIT_NONE,
  */
 byte GetAircraftFlyingAltitude(const Aircraft *v)
 {
+	if (v->subtype == AIR_HELICOPTER) return HELI_FLIGHT_ALTITUDE;
+
 	/* Make sure Aircraft fly no lower so that they don't conduct
 	 * CFITs (controlled flight into terrain)
 	 */
@@ -768,7 +770,7 @@ static bool AircraftController(Aircraft *v)
 			count = UpdateAircraftSpeed(v);
 			if (count > 0) {
 				v->tile = 0;
-				byte z_dest = HELI_FLIGHT_ALTITUDE;
+				byte z_dest = GetAircraftFlyingAltitude(v);
 
 				/* Reached altitude? */
 				if (v->z_pos >= z_dest) {
