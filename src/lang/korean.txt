@@ -286,6 +286,7 @@ STR_SORT_BY_RATING_MIN                                          :낮은 화물 �
 STR_SORT_BY_ENGINE_ID                                           :기관차ID
 STR_SORT_BY_COST                                                :가격
 STR_SORT_BY_POWER                                               :힘
+STR_SORT_BY_TRACTIVE_EFFORT                                     :견인 효과
 STR_SORT_BY_INTRO_DATE                                          :도입 날짜
 STR_SORT_BY_RUNNING_COST                                        :운행비용
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :힘/운행비용

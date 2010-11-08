@@ -3935,7 +3935,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :Vagón de Fruta
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_RUBBER_TRUCK                  :Vagón de Caucho
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_SUGAR_TRUCK                   :Vagón de Azúcar
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COTTON_CANDY_HOPPER           :Vagoneta de Algodón Dulce
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Vagoneta de caramelos
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOFFEE_HOPPER                 :Vagoneta de Caramelos
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BUBBLE_VAN                    :Vagón de Burbujas
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Cisterna de Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Vagón de Dulces

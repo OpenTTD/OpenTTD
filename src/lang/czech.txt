@@ -355,6 +355,7 @@ STR_SORT_BY_RATING_MIN                                          :nejhoršího ho
 STR_SORT_BY_ENGINE_ID                                           :ID vozu (klasické pořadí)
 STR_SORT_BY_COST                                                :ceny
 STR_SORT_BY_POWER                                               :výkonu
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Tah
 STR_SORT_BY_INTRO_DATE                                          :data uvedení na trh
 STR_SORT_BY_RUNNING_COST                                        :provozních nákladů
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :výkonu/provozních nákladů

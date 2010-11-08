@@ -598,6 +598,7 @@ STR_SORT_BY_RATING_MIN                                          :Ніжэйшы 
 STR_SORT_BY_ENGINE_ID                                           :Назва, серыя
 STR_SORT_BY_COST                                                :Кошт
 STR_SORT_BY_POWER                                               :Магутнасьць
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Цягавае намаганьне
 STR_SORT_BY_INTRO_DATE                                          :Пачатак вытворчасьцi
 STR_SORT_BY_RUNNING_COST                                        :Кошт абслугоўваньня
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Магутнасць/кошт абслуг.

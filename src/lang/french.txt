@@ -286,6 +286,7 @@ STR_SORT_BY_RATING_MIN                                          :Plus petite not
 STR_SORT_BY_ENGINE_ID                                           :ID Engin (tri classique)
 STR_SORT_BY_COST                                                :Prix
 STR_SORT_BY_POWER                                               :Puissance
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Effort de traction
 STR_SORT_BY_INTRO_DATE                                          :Date d'introduction
 STR_SORT_BY_RUNNING_COST                                        :Coût d'entretien
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Puissance/Coût d'entretien
