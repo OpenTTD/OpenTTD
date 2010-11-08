@@ -39,6 +39,12 @@
 
 #include "table/strings.h"
 
+static const uint ROTOR_Z_OFFSET         = 5;    ///< Z Offset between helicopter- and rotorsprite.
+
+static const uint PLANE_HOLDING_ALTITUDE = 150;  ///< Altitude of planes in holding pattern (= lowest flight altitude).
+static const uint HELI_FLIGHT_ALTITUDE   = 184;  ///< Normal flight altitude of helicopters.
+
+
 void Aircraft::UpdateDeltaXY(Direction direction)
 {
 	this->x_offs = -1;
@@ -319,7 +325,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 			w->owner = _current_company;
 			w->x_pos = v->x_pos;
 			w->y_pos = v->y_pos;
-			w->z_pos = v->z_pos + 5;
+			w->z_pos = v->z_pos + ROTOR_Z_OFFSET;
 			w->vehstatus = VS_HIDDEN | VS_UNCLICKABLE;
 			w->spritenum = 0xFF;
 			w->subtype = AIR_ROTOR;
@@ -494,7 +500,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 	if (u != NULL) {
 		u->x_pos = x;
 		u->y_pos = y;
-		u->z_pos = z + 5;
+		u->z_pos = z + ROTOR_Z_OFFSET;
 
 		VehicleMove(u, true);
 	}
@@ -623,7 +629,7 @@ byte GetAircraftFlyingAltitude(const Aircraft *v)
 	/* Make sure Aircraft fly no lower so that they don't conduct
 	 * CFITs (controlled flight into terrain)
 	 */
-	byte base_altitude = 150;
+	byte base_altitude = PLANE_HOLDING_ALTITUDE;
 
 	/* Make sure eastbound and westbound planes do not "crash" into each
 	 * other by providing them with vertical seperation
@@ -762,13 +768,14 @@ static bool AircraftController(Aircraft *v)
 			count = UpdateAircraftSpeed(v);
 			if (count > 0) {
 				v->tile = 0;
+				byte z_dest = HELI_FLIGHT_ALTITUDE;
 
 				/* Reached altitude? */
-				if (v->z_pos >= 184) {
+				if (v->z_pos >= z_dest) {
 					v->cur_speed = 0;
 					return true;
 				}
-				SetAircraftPosition(v, v->x_pos, v->y_pos, min(v->z_pos + count, 184));
+				SetAircraftPosition(v, v->x_pos, v->y_pos, min(v->z_pos + count, z_dest));
 			}
 		}
 		return false;
@@ -921,7 +928,8 @@ static bool AircraftController(Aircraft *v)
 			z = min(z + 2, GetAircraftFlyingAltitude(v));
 		}
 
-		if ((amd.flag & AMED_HOLD) && (z > 150)) z--;
+		/* Let the plane drop from normal flight altitude to holding pattern altitude */
+		if ((amd.flag & AMED_HOLD) && (z > PLANE_HOLDING_ALTITUDE)) z--;
 
 		if (amd.flag & AMED_LAND) {
 			if (st->airport.tile == INVALID_TILE) {
