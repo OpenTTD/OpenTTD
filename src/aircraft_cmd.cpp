@@ -544,7 +544,7 @@ void UpdateAircraftCache(Aircraft *v)
 		v->vcache.cached_max_speed = max_speed;
 	} else {
 		/* Use the default max speed of the vehicle. */
-		v->vcache.cached_max_speed = v->max_speed;
+		v->vcache.cached_max_speed = AircraftVehInfo(v->engine_type)->max_speed;
 	}
 }
 
