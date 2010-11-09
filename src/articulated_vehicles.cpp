@@ -380,7 +380,6 @@ void AddArticulatedParts(Vehicle *first)
 		v->vehstatus = first->vehstatus & ~VS_STOPPED;
 
 		v->cargo_subtype = 0;
-		v->max_speed = 0;
 		v->max_age = 0;
 		v->engine_type = engine_type;
 		v->value = 0;

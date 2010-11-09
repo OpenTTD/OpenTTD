@@ -1340,7 +1340,6 @@ bool AfterLoadGame()
 				const AircraftVehicleInfo *avi = AircraftVehInfo(v->engine_type);
 				v->cur_speed *= 128;
 				v->cur_speed /= 10;
-				v->max_speed = avi->max_speed;
 				v->acceleration = avi->acceleration;
 			}
 		}

@@ -232,7 +232,6 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->cargo_cap = rvi->capacity;
 
 		v->last_station_visited = INVALID_STATION;
-		v->max_speed = rvi->max_speed;
 		v->engine_type = e->index;
 		v->rcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
 

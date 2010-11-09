@@ -155,7 +155,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 void Ship::UpdateCache()
 {
-	this->vcache.cached_max_speed = GetVehicleProperty(this, PROP_SHIP_SPEED, this->max_speed);
+	this->vcache.cached_max_speed = GetVehicleProperty(this, PROP_SHIP_SPEED, ShipVehInfo(this->engine_type)->max_speed);
 }
 
 Money Ship::GetRunningCost() const
@@ -604,7 +604,6 @@ CommandCost CmdBuildShip(TileIndex tile, DoCommandFlag flags, const Engine *e, u
 		v->cargo_cap = svi->capacity;
 
 		v->last_station_visited = INVALID_STATION;
-		v->max_speed = svi->max_speed;
 		v->engine_type = e->index;
 
 		v->reliability = e->reliability;

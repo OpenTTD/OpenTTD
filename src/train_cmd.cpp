@@ -466,8 +466,6 @@ void Train::UpdateAcceleration()
 {
 	assert(this->IsFrontEngine());
 
-	this->max_speed = this->acc_cache.cached_max_track_speed;
-
 	uint power = this->acc_cache.cached_power;
 	uint weight = this->acc_cache.cached_weight;
 	assert(weight != 0);
@@ -733,7 +731,6 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->spritenum = rvi->image_index;
 		v->cargo_type = e->GetDefaultCargoType();
 		v->cargo_cap = rvi->capacity;
-		v->max_speed = rvi->max_speed;
 		v->last_station_visited = INVALID_STATION;
 
 		v->engine_type = e->index;
@@ -2781,14 +2778,16 @@ void Train::MarkDirty()
 int Train::UpdateSpeed()
 {
 	uint accel;
+	uint16 max_speed;
 
 	switch (_settings_game.vehicle.train_acceleration_model) {
 		default: NOT_REACHED();
 		case AM_ORIGINAL:
+			max_speed = this->acc_cache.cached_max_track_speed;
 			accel = this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2);
 			break;
 		case AM_REALISTIC:
-			this->max_speed = this->GetCurrentMaxSpeed();
+			max_speed = this->GetCurrentMaxSpeed();
 			accel = this->GetAcceleration();
 			break;
 	}
@@ -2796,8 +2795,8 @@ int Train::UpdateSpeed()
 	uint spd = this->subspeed + accel;
 	this->subspeed = (byte)spd;
 	{
-		int tempmax = this->max_speed;
-		if (this->cur_speed > this->max_speed) {
+		int tempmax = max_speed;
+		if (this->cur_speed > max_speed) {
 			tempmax = this->cur_speed - (this->cur_speed / 10) - 1;
 		}
 		this->cur_speed = spd = Clamp(this->cur_speed + ((int)spd >> 8), 0, tempmax);
@@ -2876,7 +2875,7 @@ static inline void AffectSpeedByZChange(Train *v, byte old_z)
 		v->cur_speed -= (v->cur_speed * rsp->z_up >> 8);
 	} else {
 		uint16 spd = v->cur_speed + rsp->z_down;
-		if (spd <= v->max_speed) v->cur_speed = spd;
+		if (spd <= v->acc_cache.cached_max_track_speed) v->cur_speed = spd;
 	}
 }
 

@@ -180,7 +180,8 @@ void UpdateOldAircraft()
 
 			AircraftLeaveHangar(a); // make airplane visible if it was in a depot for example
 			a->vehstatus &= ~VS_STOPPED; // make airplane moving
-			a->cur_speed = a->max_speed; // so aircraft don't have zero speed while in air
+			UpdateAircraftCache(a);
+			a->cur_speed = a->vcache.cached_max_speed; // so aircraft don't have zero speed while in air
 			if (!a->current_order.IsType(OT_GOTO_STATION) && !a->current_order.IsType(OT_GOTO_DEPOT)) {
 				/* reset current order so aircraft doesn't have invalid "station-only" order */
 				a->current_order.MakeDummy();
@@ -443,7 +444,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		SLE_CONDNULL(5,                                                            0,  57),
 		     SLE_VAR(Vehicle, engine_type,           SLE_UINT16),
 
-		     SLE_VAR(Vehicle, max_speed,             SLE_UINT16),
+		SLE_CONDNULL(2,                                                            0,  151),
 		     SLE_VAR(Vehicle, cur_speed,             SLE_UINT16),
 		     SLE_VAR(Vehicle, subspeed,              SLE_UINT8),
 		     SLE_VAR(Vehicle, acceleration,          SLE_UINT8),

@@ -1133,8 +1133,8 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR( OC_UINT16, Vehicle, service_interval ),
 	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Vehicle, last_station_visited ),
 	OCL_SVAR( OC_TTD | OC_UINT8, Vehicle, tick_counter ),
-	OCL_SVAR( OC_TTD | OC_UINT16, Vehicle, max_speed ),
-	OCL_SVAR( OC_TTO | OC_FILE_U8 | OC_VAR_U16, Vehicle, max_speed ),
+	OCL_CNULL( OC_TTD, 2 ), ///< max_speed, now it is calculated.
+	OCL_CNULL( OC_TTO, 1 ), ///< max_speed, now it is calculated.
 
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Vehicle, x_pos ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Vehicle, y_pos ),
