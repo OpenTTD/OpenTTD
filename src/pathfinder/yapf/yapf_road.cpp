@@ -140,9 +140,10 @@ public:
 
 			/* add min/max speed penalties */
 			int min_speed = 0;
+			int max_veh_speed = v->GetDisplayMaxSpeed();
 			int max_speed = F.GetSpeedLimit(&min_speed);
-			if (max_speed < v->max_speed) segment_cost += 1 * (v->max_speed - max_speed);
-			if (min_speed > v->max_speed) segment_cost += 10 * (min_speed - v->max_speed);
+			if (max_speed < max_veh_speed) segment_cost += 1 * (max_veh_speed - max_speed);
+			if (min_speed > max_veh_speed) segment_cost += 10 * (min_speed - max_veh_speed);
 
 			/* move to the next tile */
 			tile = F.m_new_tile;
