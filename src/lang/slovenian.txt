@@ -327,6 +327,7 @@ STR_SORT_BY_RATING_MIN                                          :Najni탑ja ocena
 STR_SORT_BY_ENGINE_ID                                           :ID motorja (klasi훾no urejanje)
 STR_SORT_BY_COST                                                :Cena
 STR_SORT_BY_POWER                                               :Mo훾
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Vle훾na mo훾
 STR_SORT_BY_INTRO_DATE                                          :Datum uvedbe
 STR_SORT_BY_RUNNING_COST                                        :Cena delovanja
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Mo훾/Cena delovanja
@@ -3809,7 +3810,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ne more�
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nemogo훾e brisanje znaka...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Klon Transport Tycoona Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Simulacija, temelje훾a na Transport Tycoonu Deluxe
 
 ##id 0x2000
 # Town building names

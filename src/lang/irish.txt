@@ -285,6 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :Rátáil lastai
 STR_SORT_BY_ENGINE_ID                                           :ID an Innill (sórtáil chlaisiceach)
 STR_SORT_BY_COST                                                :Costas
 STR_SORT_BY_POWER                                               :Cumhacht
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Iarracht tarraingthe
 STR_SORT_BY_INTRO_DATE                                          :Dáta a tugadh isteach é
 STR_SORT_BY_RUNNING_COST                                        :Costas le Rith
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Cumhacht/Costas le Rith
@@ -3497,7 +3498,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... níl
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Ní thógfaidh an baile seo bóithre. Is féidir leat tógáil bóithre a chumasú in Ardsocruithe->Geilleagar->Bailte.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Tá oibreacha bóthair ar bun
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ní féidir an baile seo a scriosadh...{}Ní féidir stáisiún nó iosta atá ag tagairt don bhaile nó do thíle atá faoi úinéireacht an bhaile a bhaint
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... níl aon suíomh oiriúnach don dealbh i lár an bhaile seo
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... níl aon suíomh oiriúnach do dhealbh i lár an bhaile seo
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... an iomarca tionscal
@@ -3767,7 +3768,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ní féi
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ní féidir an comhartha a scriosadh...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Clón de Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Cluiche ionsamhlúcháin bunaithe ar Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

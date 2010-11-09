@@ -285,6 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :Cel mai mic rat
 STR_SORT_BY_ENGINE_ID                                           :IDMotor (model clasic)
 STR_SORT_BY_COST                                                :Cost
 STR_SORT_BY_POWER                                               :Putere
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Efort tractor
 STR_SORT_BY_INTRO_DATE                                          :Data lansării
 STR_SORT_BY_RUNNING_COST                                        :Cost exploatare
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Cost exploatare/putere

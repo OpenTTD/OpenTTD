@@ -285,6 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :Laagste vrachtw
 STR_SORT_BY_ENGINE_ID                                           :Voertuig-ID (klassieke sortering)
 STR_SORT_BY_COST                                                :Kosten
 STR_SORT_BY_POWER                                               :Vermogen
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Trekkracht
 STR_SORT_BY_INTRO_DATE                                          :Introductiedatum
 STR_SORT_BY_RUNNING_COST                                        :Operationele kosten
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Vermogen/Operationele kosten
