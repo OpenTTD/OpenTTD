@@ -756,7 +756,7 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	od.v = v;
 	od.u = u;
 
-	if (u->max_speed >= v->vcache.cached_max_speed &&
+	if (u->vcache.cached_max_speed >= v->vcache.cached_max_speed &&
 			!(u->vehstatus & VS_STOPPED) &&
 			u->cur_speed != 0) {
 		return;
