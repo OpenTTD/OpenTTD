@@ -2539,7 +2539,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} mus�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :grafika, která se měla přeložit
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {STRING} jako statické grafiky spolu s {STRING} může způsobit chybu synchronizace.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {2:STRING} jako statické grafiky spolu s {4:STRING} může způsobit chybu synchronizace.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepředpokládaný sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznámá vlastnost Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použití neplatného ID.

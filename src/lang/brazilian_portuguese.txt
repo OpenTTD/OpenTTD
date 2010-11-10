@@ -2461,7 +2461,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requer versão {STRING} ou maior do OpenTTD.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Muitos NewGRFs foram carregados.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {STRING} como um NewGRF estático em conjunto com {STRING} pode causar desincronias.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {2:STRING} como um NewGRF estático em conjunto com {4:STRING} pode causar desincronias.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite não esperado
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade Ação Desconhecida 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.

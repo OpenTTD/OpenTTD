@@ -2463,7 +2463,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :Ní mór {1:STR
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}: Tá an leagan {STRING} nó níos fearr de OpenTTD de dhíth uaidh
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :an comhad GRF a bhí sé deartha a aistriú
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Tá an iomarca NewGRF lódáilte.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :D'fhéadfaí go mbeidh díshioncronú ann má dhéantar {STRING} a lódáil mar NewGRF statach le {STRING}.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :D'fhéadfaí go mbeidh díshioncronú ann má dhéantar {2:STRING} a lódáil mar NewGRF statach le {4:STRING}.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite gan choinne.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Airí Gníomh 0 anaithnid.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Iarracht ID neamhbhailí a úsáid.

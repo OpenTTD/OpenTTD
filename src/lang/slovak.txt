@@ -2529,7 +2529,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} mus�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} vyžaduje verziu OpenTTD {STRING} alebo vyššiu.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Nahraných príliš veľa NewGRF súborov.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Načítanie {STRING} ako statického NewGRF s {STRING} by mohlo spôsobiť desynchronizáciu.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Načítanie {2:STRING} ako statického NewGRF s {4:STRING} by mohlo spôsobiť desynchronizáciu.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočakávaný sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznáma Akcia 0 nehnuteľnosti.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Požiadavka na neplatného ID.

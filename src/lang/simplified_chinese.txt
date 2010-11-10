@@ -2453,7 +2453,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} 必�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} 需要OpenTTD V {STRING} 或更高版本
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 被设计为可平移
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :加载的NewGRF太多
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :使用 {STRING} 为静态 NewGRF 与 {STRING} 可能造成同步错误
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :使用 {2:STRING} 为静态 NewGRF 与 {4:STRING} 可能造成同步错误
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :未可预料的 sprite 错误。
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的动作属性值： 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用无效配置值

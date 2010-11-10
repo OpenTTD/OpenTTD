@@ -2463,7 +2463,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} ph�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} yêu cầu phiên bản OpenTTD {STRING} hoặc cao hơn.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF file được thiết kế để phiên dịch
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Quá nhiều NewGRFs đã nạp.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nạp {STRING} như là NewGRF tĩnh với {STRING} có thể gây mất đồng bộ
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nạp {2:STRING} như là NewGRF tĩnh với {4:STRING} có thể gây mất đồng bộ
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite không mong muốn
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Không biết về thuộc tích action 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Sử dụng ID không hợp lệ.

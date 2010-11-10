@@ -2383,7 +2383,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} тр
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} поискай OpenTTD версиа {STRING} или по-добра.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF файлат беше предназначен да преведе
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Прекалено много графики (NewGRF) са заредени.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Зареждане на {STRING} като статичен NewGRF заедно с {STRING} може да доведе до проблеми.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Зареждане на {2:STRING} като статичен NewGRF заедно с {4:STRING} може да доведе до проблеми.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.

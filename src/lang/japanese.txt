@@ -2358,7 +2358,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}は{S
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} は OpenTTD バージョン {STRING} もしくはそれ以降のバージョンが必要です。
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :訳しにデザインされたGRFファイル
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :読み込んだ NewGRF が多すぎます。
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{0:STRING} を {STRING} を含む固定的な NewGRF として開くと、desync が行う可能性があります。
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{4:STRING} を {2:STRING} を含む固定的な NewGRF として開くと、desync が行う可能性があります。
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :予期しないスプライトを見つけました。
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :不明な Action 0 プロパティ。
 STR_NEWGRF_ERROR_INVALID_ID                                     :無効な ID が含む

@@ -2462,7 +2462,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} mås
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} kräver OpenTTD version {STRING} eller bättre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laddar {STRING} som statisk NewGRF med {STRING} kan orsaka osynk.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laddar {2:STRING} som statisk NewGRF med {4:STRING} kan orsaka osynk.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Oförväntad sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Okänd egenskap för Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Försök att använda ogiltig ID.

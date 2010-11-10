@@ -2533,7 +2533,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} πρ
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} απαιτεί έκδοση OpenTTD {STRING} ή μεγαλύτερη.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Το αρχείο GRF είναι σχεδιασμένο για να μεταφράζει
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Έχουν φορτωθεί πολλά NewGRF.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Η φόρτωση του {STRING} ως στατικό NewGRF με {STRING} μπόρει να προκαλέσει αποσυγχρονισμούς.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Η φόρτωση του {2:STRING} ως στατικό NewGRF με {4:STRING} μπόρει να προκαλέσει αποσυγχρονισμούς.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Αναπάντεχο sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Άγνωστη ιδιότητα Action 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Προσπάθεια να χρησιμοποιήθει λάθος ID.

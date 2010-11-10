@@ -2458,7 +2458,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} ver�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} þarf OpenTTD útgáfu {STRING} eða nýrri.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF skránni sem það var hannað til að þýða
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Of mörg NewGRF eru hlaðin.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ef {STRING} er hlaðið sem kyrrstæðu NewGRF ásamt {STRING} gætu orðið hnökrar á keyrslu leiksins.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ef {2:STRING} er hlaðið sem kyrrstæðu NewGRF ásamt {4:STRING} gætu orðið hnökrar á keyrslu leiksins.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Óviðbúin hreyfimynd.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Óþekktur „Action 0“ eiginleiki
 STR_NEWGRF_ERROR_INVALID_ID                                     :Reyndi að notast við rangt ID

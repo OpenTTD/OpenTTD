@@ -2429,7 +2429,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} skal
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} kræver OpenTTD version {STRING} eller højere.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen, som den er lavet til at oversætte,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF sæt er indlæst.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Indlæsning af {STRING} som statisk NewGRF med {STRING} kan forårsage de-sykronisering.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Indlæsning af {2:STRING} som statisk NewGRF med {4:STRING} kan forårsage de-sykronisering.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet grafikelement.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukendt Action 0 egenskab.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøg på brug af ugyldig ID.

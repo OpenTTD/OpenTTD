@@ -2462,7 +2462,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muss
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} brauch OpenTTD Versioun {STRING} oder méi nei.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF Datei déi designed gouf fir ze iwwersetzen
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ze vill NewGRFen gelueden.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{STRING} als statesch NewGRF lueden mat {STRING} kann Desyncs efiirrufen.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING} als statesch NewGRF lueden mat {4:STRING} kann Desyncs efiirrufen.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onerwaard Sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekannt Action 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Probéiert eng invalid ID ze benotzen.

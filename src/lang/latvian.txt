@@ -2304,7 +2304,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} jāb
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nepieciešama Open TTD versija {STRING} vai labāka.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fails radīts tulkošanai
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Pārāk daudz NewGRF ir ielādēti.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ielādē {STRING} kā statisks NewGRF {STRING} var radīt desinhronizāciju.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ielādē {2:STRING} kā statisks NewGRF {4:STRING} var radīt desinhronizāciju.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Negaidīts sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nezināma darbība 0 īpašumu
 STR_NEWGRF_ERROR_INVALID_ID                                     :Mēģina lietot neesošu ID.

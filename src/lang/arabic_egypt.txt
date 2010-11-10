@@ -2462,7 +2462,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} يج
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} يتطلب نسخة {STRING} من النسخة المفتوحة او احدث .
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :تم تصميم ملف GRF بغرض الترجمة
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :العديد من NewGRF تم تحميلها
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :تحميل {STRING}كملف ثابت مع NewGRF {STRING}قد يتسبب بمشكلة توافق.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :تحميل {2:STRING}كملف ثابت مع NewGRF {4:STRING}قد يتسبب بمشكلة توافق.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :خطأ غير متوقع
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :طلب غير معروف 0 بدون خصائص
 STR_NEWGRF_ERROR_INVALID_ID                                     :محاولة استخدام ID معرف غير معروف .

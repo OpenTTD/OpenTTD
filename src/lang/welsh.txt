@@ -2284,7 +2284,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :Rhad i {1:STRIN
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :Mae {1:STRING} angen OpenTTD fersiwn {STRING} neu'n hwyrach.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Cofodd y ffeil GRF hwn ei gynllunio i gyfieithu
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :mae gormod o NewGRFs wedi'u llwytho
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Gallai llwytho {STRING} fel NewGRF statig gyda {STRING} achosi dadsyncroneiddio.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Gallai llwytho {2:STRING} fel NewGRF statig gyda {4:STRING} achosi dadsyncroneiddio.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Corlun Annisgwyliedig
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Priodwedd Gweithred 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Ceisio defnyddio ID annilys.

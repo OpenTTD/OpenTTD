@@ -2460,7 +2460,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} 必�
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} 需要 {STRING} 或更新的 OpenTTD 版本
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 檔案翻譯後出現錯誤
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :已載入太多 NewGRF
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :將 {STRING} 載入為靜態 NewGRF：{STRING} 可能會讓遊戲失去同步
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :將 {2:STRING} 載入為靜態 NewGRF：{4:STRING} 可能會讓遊戲失去同步
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :未預期的 sprite
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的動作 0 屬性
 STR_NEWGRF_ERROR_INVALID_ID                                     :嘗試使用的 ID 無效

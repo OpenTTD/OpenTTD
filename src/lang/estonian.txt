@@ -2493,7 +2493,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} peab
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nõuab OpenTTD osa {STRING} või uuemat.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liiga palju NewGRF-e on laaditud.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {STRING} staatilise NewGRF-na koos {STRING} võib põhjustada sünkrooni katkemist.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {2:STRING} staatilise NewGRF-na koos {4:STRING} võib põhjustada sünkrooni katkemist.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Ootamatu sprait.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Tundmatu Action 0 omadus.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Vale tunnuse kasutamise proov.

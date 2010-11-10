@@ -2463,7 +2463,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} sonr
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} OpenTTD {STRING} veya daha yüksek bir sürüm gerektirir.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{STRING} adlı NewGRF'yi {STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING} adlı NewGRF'yi {4:STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmeyen sprayt.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Bilinmeyen Action 0 özelliği.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID kullanımı denemesi

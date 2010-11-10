@@ -2484,7 +2484,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} turi
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} reikalauja OpenTTD versijos {STRING} ar naujesnės.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF failas, kurį turėjo išversti
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Per daug NewGRF'ų įkelta.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Įkėlimas {STRING} kaip statinio NewGRF su {STRING} gali sukelti desinchronizacija.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Įkėlimas {2:STRING} kaip statinio NewGRF su {4:STRING} gali sukelti desinchronizacija.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nenumatytas spraitas.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nežinomas veiksmo (Action 0) nustatymas.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Bandymas naudoti netinkamą ID.

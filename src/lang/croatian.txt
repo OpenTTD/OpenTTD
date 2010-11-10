@@ -2559,7 +2559,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} se m
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} zahtijeva OpenTTD verziju {STRING} ili bolju.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je dizajnirana za prijevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Previše je učitanih NewGRF-ova.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Učitavanjem {STRING} kao statičnog NewGRF s {STRING} može uzrokovati deharmonizaciju.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Učitavanjem {2:STRING} kao statičnog NewGRF s {4:STRING} može uzrokovati deharmonizaciju.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočekivani grafički znak.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nepoznato svojstvo Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pokušaj uporabe neispravnog ID-a.
