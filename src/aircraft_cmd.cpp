@@ -1150,6 +1150,7 @@ static void CrashAirplane(Aircraft *v)
 		v->index,
 		st != NULL ? st->index : INVALID_STATION);
 
+	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
 	SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
 
