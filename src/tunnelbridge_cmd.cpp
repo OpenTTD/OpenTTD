@@ -1592,13 +1592,8 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 		}
 
 		if (vdir == dir) {
-			switch (dir) {
-				default: NOT_REACHED();
-				case DIAGDIR_NE: if ((x & 0xF) != 0)             return VETSB_CONTINUE; break;
-				case DIAGDIR_SE: if ((y & 0xF) != TILE_SIZE - 1) return VETSB_CONTINUE; break;
-				case DIAGDIR_SW: if ((x & 0xF) != TILE_SIZE - 1) return VETSB_CONTINUE; break;
-				case DIAGDIR_NW: if ((y & 0xF) != 0)             return VETSB_CONTINUE; break;
-			}
+			/* Vehicle enters bridge at the last frame inside this tile. */
+			if (frame != TILE_SIZE - 1) return VETSB_CONTINUE;
 			switch (v->type) {
 				case VEH_TRAIN: {
 					Train *t = Train::From(v);
