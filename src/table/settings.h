@@ -93,7 +93,7 @@ static bool UpdateClientConfigValues(int32 p1);
  */
 
 #define NSD_GENERAL(name, def, cmd, guiflags, min, max, interval, many, str, proc, load)\
-	{name, (const void*)(ptrdiff_t)(def), {(byte)cmd}, {(uint16)guiflags}, min, max, interval, many, str, proc, load}
+	{name, (const void*)(size_t)(def), {(byte)cmd}, {(uint16)guiflags}, min, max, interval, many, str, proc, load}
 
 /* Macros for various objects to go in the configuration file.
  * This section is for global variables */
