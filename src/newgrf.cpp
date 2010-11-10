@@ -7134,6 +7134,7 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 
 	newfile->filename = strdup(config->filename);
 	newfile->sprite_offset = sprite_offset;
+	newfile->grfid = config->ident.grfid;
 
 	/* Initialise local settings to defaults */
 	newfile->traininfo_vehicle_pitch = 0;
