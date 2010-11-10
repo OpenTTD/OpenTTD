@@ -1498,12 +1498,21 @@ static const byte TUNNEL_SOUND_FRAME = 1;
  */
 static const byte _train_tunnel_frame[DIAGDIR_END] = {14, 9, 7, 12};
 
-static const byte _road_exit_tunnel_frame[DIAGDIR_END] = {2, 7, 9, 4};
+/**
+ * Frame when a road vehicle enters a tunnel with a certain direction.
+ * This differs per direction, like for trains. To make it even more fun,
+ * the entry and exit frames are not consistent. This is the entry frame,
+ * the road vehicle should be hidden when it reaches this frame.
+ */
+static const byte _road_enter_tunnel_frame[DIAGDIR_END] = {13, 8, 8, 13};
 
-static const byte _tunnel_fractcoord_4[DIAGDIR_END]    = {0x52, 0x85, 0x98, 0x29};
-static const byte _tunnel_fractcoord_5[DIAGDIR_END]    = {0x92, 0x89, 0x58, 0x25};
-static const byte _tunnel_fractcoord_6[DIAGDIR_END]    = {0x92, 0x89, 0x56, 0x45};
-static const byte _tunnel_fractcoord_7[DIAGDIR_END]    = {0x52, 0x85, 0x96, 0x49};
+/**
+ * Frame when a road vehicle exits a tunnel with a certain direction.
+ * Note that 'direction' refers to the tunnel direction, not the
+ * vehicle direction. As stated above, this frame is not the same as the
+ * entry frame, for unclear (historical?) reasons.
+ */
+static const byte _road_exit_tunnel_frame[DIAGDIR_END] = {2, 7, 9, 4};
 
 static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
@@ -1520,8 +1529,6 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 	byte frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
 
 	if (IsTunnel(tile)) {
-		byte fc = (x & 0xF) + (y << 4);
-
 		if (v->type == VEH_TRAIN) {
 			Train *t = Train::From(v);
 
@@ -1553,8 +1560,9 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 
 			/* Enter tunnel? */
 			if (rv->state != RVSB_WORMHOLE && dir == vdir) {
-				if (fc == _tunnel_fractcoord_4[dir] ||
-						fc == _tunnel_fractcoord_5[dir]) {
+				if (frame == _road_enter_tunnel_frame[dir]) {
+					/* Frame should be equal to the next frame number in the RV's movement */
+					assert(frame == rv->frame + 1);
 					rv->tile = tile;
 					rv->state = RVSB_WORMHOLE;
 					rv->vehstatus |= VS_HIDDEN;
@@ -1564,15 +1572,11 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				}
 			}
 
-			if (dir == ReverseDiagDir(vdir) && (
-						/* We're at the tunnel exit ?? */
-						fc == _tunnel_fractcoord_6[dir] ||
-						fc == _tunnel_fractcoord_7[dir]
-					) &&
-					z == 0) {
+			/* We're at the tunnel exit ?? */
+			if (dir == ReverseDiagDir(vdir) && frame == _road_exit_tunnel_frame[dir] && z == 0) {
 				rv->tile = tile;
 				rv->state = DiagDirToDiagTrackdir(vdir);
-				rv->frame = _road_exit_tunnel_frame[dir];
+				rv->frame = frame;
 				rv->vehstatus &= ~VS_HIDDEN;
 				return VETSB_ENTERED_WORMHOLE;
 			}
