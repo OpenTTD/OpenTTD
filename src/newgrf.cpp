@@ -5230,7 +5230,11 @@ static void GRFInfo(ByteReader *buf)
 		return;
 	}
 
-	_cur_grffile->grfid = grfid;
+	if (_cur_grffile->grfid != grfid) {
+		DEBUG(grf, 0, "GRFInfo: GRFID %08X in FILESCAN stage does not match GRFID %08X in INIT/RESERVE/ACTIVATION stage", BSWAP32(_cur_grffile->grfid), BSWAP32(grfid));
+		_cur_grffile->grfid = grfid;
+	}
+
 	_cur_grffile->grf_version = version;
 	_cur_grfconfig->status = _cur_stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
 
