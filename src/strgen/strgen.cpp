@@ -78,8 +78,8 @@ static int _put_pos;
 static int _next_string_id;
 
 static uint32 _hash;
-#define MAX_NUM_GENDER 8
-static char _genders[MAX_NUM_GENDER][16];
+#define MAX_NUM_GENDERS 8
+static char _genders[MAX_NUM_GENDERS][16];
 static uint _numgenders;
 
 /* contains the name of all cases. */
@@ -378,14 +378,14 @@ static void EmitGender(char *buf, int value)
 
 		/* This is a {G=DER} command */
 		for (nw = 0; ; nw++) {
-			if (nw >= MAX_NUM_GENDER) error("G argument '%s' invalid", buf);
+			if (nw >= MAX_NUM_GENDERS) error("G argument '%s' invalid", buf);
 			if (strcmp(buf, _genders[nw]) == 0) break;
 		}
 		/* now nw contains the gender index */
 		PutUtf8(SCC_GENDER_INDEX);
 		PutByte(nw);
 	} else {
-		const char *words[MAX_NUM_GENDER];
+		const char *words[MAX_NUM_GENDERS];
 
 		/* This is a {G 0 foo bar two} command.
 		 * If no relative number exists, default to +0 */
@@ -396,7 +396,7 @@ static void EmitGender(char *buf, int value)
 			error("Command '%s' can't have a gender", cmd == NULL ? "<empty>" : cmd->cmd);
 		}
 
-		for (nw = 0; nw < MAX_NUM_GENDER; nw++) {
+		for (nw = 0; nw < MAX_NUM_GENDERS; nw++) {
 			words[nw] = ParseWord(&buf);
 			if (words[nw] == NULL) break;
 		}
@@ -559,7 +559,7 @@ static void HandlePragma(char *str, bool master)
 			const char *s = ParseWord(&buf);
 
 			if (s == NULL) break;
-			if (_numgenders >= MAX_NUM_GENDER) error("Too many genders, max %d", MAX_NUM_GENDER);
+			if (_numgenders >= MAX_NUM_GENDERS) error("Too many genders, max %d", MAX_NUM_GENDERS);
 			strecpy(_genders[_numgenders], s, lastof(_genders[_numgenders]));
 			_numgenders++;
 		}
