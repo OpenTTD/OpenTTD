@@ -42,6 +42,12 @@ struct LanguagePackHeader {
 	uint16 winlangid;   ///< windows language id
 	uint8 newgrflangid; ///< newgrf language id
 	byte pad[3];        ///< pad header to be a multiple of 4
+
+	/**
+	 * Check whether the header is a valid header for OpenTTD.
+	 * @return true iff the header is deemed valid.
+	 */
+	bool IsValid() const;
 };
 
 assert_compile(sizeof(LanguagePackHeader) % 4 == 0);
