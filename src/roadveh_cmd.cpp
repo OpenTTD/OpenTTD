@@ -669,7 +669,8 @@ static int RoadVehAccelerate(RoadVehicle *v)
 
 	/* Apply bridge speed limit */
 	if (v->state == RVSB_WORMHOLE && !(v->vehstatus & VS_HIDDEN)) {
-		v->cur_speed = min(v->cur_speed, GetBridgeSpec(GetBridgeType(v->tile))->speed * 2);
+		RoadVehicle *first = v->First();
+		first->cur_speed = min(first->cur_speed, GetBridgeSpec(GetBridgeType(v->tile))->speed * 2);
 	}
 
 	/* Update statusbar only if speed has changed to save CPU time */

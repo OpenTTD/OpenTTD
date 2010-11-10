@@ -1562,13 +1562,13 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			}
 		}
 	} else { // IsBridge(tile)
-
-		if (v->IsPrimaryVehicle() && v->type != VEH_SHIP) {
+		if (v->type != VEH_SHIP) {
 			/* modify speed of vehicle */
 			uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
 
 			if (v->type == VEH_ROAD) spd *= 2;
-			if (v->cur_speed > spd) v->cur_speed = spd;
+			Vehicle *first = v->First();
+			first->cur_speed = min(first->cur_speed, spd);
 		}
 
 		if (vdir == dir) {
