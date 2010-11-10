@@ -72,4 +72,7 @@ int CalcBridgeLenCostFactor(int x);
 
 void ResetBridges();
 
+static const uint MAX_BRIDGE_LENGTH             =  16; ///< Maximum length of the bridge
+static const uint MAX_BRIDGE_LENGTH_LONGBRIDGES = 100; ///< Maximum length of the bridge with longbridges enabled
+
 #endif /* BRIDGE_H */

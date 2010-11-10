@@ -152,7 +152,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 	if (!IsValidBridge(bridge_id)) return -1;
 
 	uint max = ::GetBridgeSpec(bridge_id)->max_length;
-	if (max >= 16 && _settings_game.construction.longbridges) max = 100;
+	if (max >= MAX_BRIDGE_LENGTH && _settings_game.construction.longbridges) max = MAX_BRIDGE_LENGTH_LONGBRIDGES;
 	return max + 2;
 }
 
