@@ -18,7 +18,7 @@
 typedef uint16 StringID;
 static const StringID INVALID_STRING_ID = 0xFFFF; ///< Constant representing an invalid string
 static const int MAX_CHAR_LENGTH        = 4;      ///< Max. length of UTF-8 encoded unicode character
-static const uint MAX_LANG              = 64;     ///< Maximum number of languages supported by the game
+static const uint MAX_LANG              = 0x7F;   ///< Maximum number of languages supported by the game, and the NewGRF specs
 
 /** Directions a text can go to */
 enum TextDirection {
