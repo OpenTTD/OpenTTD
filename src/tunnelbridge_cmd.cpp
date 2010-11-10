@@ -1502,6 +1502,10 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 	const DiagDirection dir = GetTunnelBridgeDirection(tile);
 	/* Direction of the vehicle */
 	const DiagDirection vdir = DirToDiagDir(v->direction);
+	/* New position of the vehicle on the tile */
+	byte pos = (DiagDirToAxis(vdir) == AXIS_X ? x : y) & TILE_UNIT_MASK;
+	/* Number of units moved by the vehicle since entering the tile */
+	byte frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
 
 	if (IsTunnel(tile)) {
 		byte fc = (x & 0xF) + (y << 4);
