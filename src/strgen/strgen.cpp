@@ -935,7 +935,8 @@ static void WriteStringsH(const char *filename)
 	fprintf(_output_file, "\nstatic const StringID STR_LAST_STRINGID = 0x%X;\n\n", next - 1);
 
 	fprintf(_output_file,
-		"static const uint LANGUAGE_PACK_VERSION = 0x%X;\n\n", (uint)_hash
+		"static const uint LANGUAGE_PACK_VERSION = 0x%X;\n"
+		"static const uint LANGUAGE_MAX_PLURAL = %d;\n\n", (uint)_hash, (uint)lengthof(_plural_forms)
 	);
 
 	fprintf(_output_file, "#endif /* TABLE_STRINGS_H */\n");

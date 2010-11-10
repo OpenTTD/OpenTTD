@@ -1307,7 +1307,16 @@ bool LanguagePackHeader::IsValid() const
 {
 	return
 			this->ident        == TO_LE32(LanguagePackHeader::IDENT) &&
-			this->version      == TO_LE32(LANGUAGE_PACK_VERSION);
+			this->version      == TO_LE32(LANGUAGE_PACK_VERSION) &&
+			this->plural_form  <  LANGUAGE_MAX_PLURAL &&
+			this->text_dir     <= 1 &&
+			this->newgrflangid < MAX_LANG &&
+			StrValid(this->name,                           lastof(this->name)) &&
+			StrValid(this->own_name,                       lastof(this->own_name)) &&
+			StrValid(this->isocode,                        lastof(this->isocode)) &&
+			StrValid(this->digit_group_separator,          lastof(this->digit_group_separator)) &&
+			StrValid(this->digit_group_separator_currency, lastof(this->digit_group_separator_currency)) &&
+			StrValid(this->digit_decimal_separator,        lastof(this->digit_decimal_separator));
 }
 
 bool ReadLanguagePack(int lang_index)
