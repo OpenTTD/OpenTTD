@@ -118,6 +118,15 @@ void str_strip_colours(char *str);
 void strtolower(char *str);
 
 /**
+ * Checks whether the given string is valid, i.e. contains only
+ * valid (printable) characters and is properly terminated.
+ * @param str  The string to validate.
+ * @param last The last character of the string, i.e. the string
+ *             must be terminated here or earlier.
+ */
+bool StrValid(const char *str, const char *last);
+
+/**
  * Check if a string buffer is empty.
  *
  * @param s The pointer to the firste element of the buffer

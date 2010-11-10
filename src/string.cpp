@@ -162,6 +162,29 @@ void str_validate(char *str, const char *last, bool allow_newlines, bool ignore)
 	*dst = '\0';
 }
 
+bool StrValid(const char *str, const char *last)
+{
+	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
+
+	while (str <= last && *str != '\0') {
+		size_t len = Utf8EncodedCharLen(*str);
+		/* Encoded length is 0 if the character isn't known.
+		 * The length check is needed to prevent Utf8Decode to read
+		 * over the terminating '\0' if that happens to be placed
+		 * within the encoding of an UTF8 character. */
+		if (len == 0 || str + len > last) return false;
+
+		WChar c;
+		len = Utf8Decode(&c, str);
+		if (!IsPrintable(c) || (c >= SCC_SPRITE_START && c <= SCC_SPRITE_END)) {
+			return false;
+		}
+
+		str += len;
+	}
+
+	return *str == '\0';
+}
 
 void str_strip_colours(char *str)
 {
