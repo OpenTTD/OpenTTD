@@ -1481,10 +1481,22 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 	}
 }
 
+/**
+ * Frame when the 'enter tunnel' sound should be played. This is the second
+ * frame on a tile, so the sound is played shortly after entering the tunnel
+ * tile, while the vehicle is still visible.
+ */
+static const byte TUNNEL_SOUND_FRAME = 1;
 
-static const byte _tunnel_fractcoord_1[DIAGDIR_END]    = {0x8E, 0x18, 0x81, 0xE8};
-static const byte _tunnel_fractcoord_2[DIAGDIR_END]    = {0x81, 0x98, 0x87, 0x38};
-static const byte _tunnel_fractcoord_3[DIAGDIR_END]    = {0x82, 0x88, 0x86, 0x48};
+/**
+ * Frame when a train should be hidden in a tunnel with a certain direction.
+ * This differs per direction, because of visibility / bounding box issues.
+ * Note that direction, in this case, is the direction leading into the tunnel.
+ * When entering a tunnel, hide the train when it reaches the given frame.
+ * When leaving a tunnel, show the train when it is one frame further
+ * to the 'outside', i.e. at (TILE_SIZE-1) - (frame) + 1
+ */
+static const byte _train_tunnel_frame[DIAGDIR_END] = {14, 9, 7, 12};
 
 static const byte _road_exit_tunnel_frame[DIAGDIR_END] = {2, 7, 9, 4};
 
@@ -1514,13 +1526,13 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			Train *t = Train::From(v);
 
 			if (t->track != TRACK_BIT_WORMHOLE && dir == vdir) {
-				if (t->IsFrontEngine() && fc == _tunnel_fractcoord_1[dir]) {
+				if (t->IsFrontEngine() && frame == TUNNEL_SOUND_FRAME) {
 					if (!PlayVehicleSound(t, VSE_TUNNEL) && RailVehInfo(t->engine_type)->engclass == 0) {
 						SndPlayVehicleFx(SND_05_TRAIN_THROUGH_TUNNEL, v);
 					}
 					return VETSB_CONTINUE;
 				}
-				if (fc == _tunnel_fractcoord_2[dir]) {
+				if (frame == _train_tunnel_frame[dir]) {
 					t->tile = tile;
 					t->track = TRACK_BIT_WORMHOLE;
 					t->vehstatus |= VS_HIDDEN;
@@ -1528,7 +1540,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				}
 			}
 
-			if (dir == ReverseDiagDir(vdir) && fc == _tunnel_fractcoord_3[dir] && z == 0) {
+			if (dir == ReverseDiagDir(vdir) && frame == TILE_SIZE - _train_tunnel_frame[dir] && z == 0) {
 				/* We're at the tunnel exit ?? */
 				t->tile = tile;
 				t->track = DiagDirToDiagTrackBits(vdir);
