@@ -3192,15 +3192,16 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 
 static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceType source_type, SourceID source_id)
 {
-	amount += st->goods[type].amount_fract;
-	st->goods[type].amount_fract = GB(amount, 0, 8);
+	GoodsEntry &ge = st->goods[type];
+	amount += ge.amount_fract;
+	ge.amount_fract = GB(amount, 0, 8);
 
 	amount >>= 8;
 	/* No new "real" cargo item yet. */
 	if (amount == 0) return 0;
 
-	st->goods[type].cargo.Append(new CargoPacket(st->index, st->xy, amount, source_type, source_id));
-	SetBit(st->goods[type].acceptance_pickup, GoodsEntry::PICKUP);
+	ge.cargo.Append(new CargoPacket(st->index, st->xy, amount, source_type, source_id));
+	SetBit(ge.acceptance_pickup, GoodsEntry::PICKUP);
 
 	TriggerStationAnimation(st, st->xy, SAT_NEW_CARGO, type);
 	AirportAnimationTrigger(st, AAT_STATION_NEW_CARGO, type);
