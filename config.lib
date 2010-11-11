@@ -1280,17 +1280,12 @@ make_cflags_and_ldflags() {
 	if [ "$enable_debug" = "0" ]; then
 		# No debug, add default stuff
 		OBJS_SUBDIR="release"
-		if [ "$os" = "OSX" ]; then
-			# these compilerflags makes the app run as fast as possible without making the app unstable. It works on G3 or newer
-			CFLAGS="-O3 -funroll-loops -fsched-interblock -falign-loops=16 -falign-jumps=16 -falign-functions=16 -falign-jumps-max-skip=15 -falign-loops-max-skip=15 -mdynamic-no-pic $CFLAGS"
-		else
-			if [ "$os" = "MORPHOS" ]; then
-				CFLAGS="-I/gg/os-include -noixemul -fstrict-aliasing -fexpensive-optimizations -mcpu=604 -fno-inline -mstring -mmultiple $CFLAGS"
-				LDFLAGS="$LDFLAGS -noixemul"
-			fi
-
-			CFLAGS="-O2 -fomit-frame-pointer $CFLAGS"
+		if [ "$os" = "MORPHOS" ]; then
+			CFLAGS="-I/gg/os-include -noixemul -fstrict-aliasing -fexpensive-optimizations -mcpu=604 -fno-inline -mstring -mmultiple $CFLAGS"
+			LDFLAGS="$LDFLAGS -noixemul"
 		fi
+
+		CFLAGS="-O2 -fomit-frame-pointer $CFLAGS"
 	else
 		OBJS_SUBDIR="debug"
 
@@ -1315,6 +1310,12 @@ make_cflags_and_ldflags() {
 		else
 			CFLAGS="$CFLAGS -O2"
 		fi
+	fi
+
+	if [ "$os" = "OSX" ] && [ $cc_version -eq 40 ]; then
+		# Apple's GCC 4.0 has a compiler bug for x86_64 with (higher) optimization,
+		# wrongly optimizing ^= in loops. This disables the failing optimisation.
+		CFLAGS="$CFLAGS -fno-expensive-optimizations"
 	fi
 
 	if [ "$enable_profiling" != "0" ]; then
