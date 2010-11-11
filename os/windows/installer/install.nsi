@@ -102,6 +102,9 @@ Page custom SelectCDEnter SelectCDExit ": TTD folder"
 ;--------------------------------------------------------------
 ; (Core) OpenTTD install section. Copies all internal game data
 Section "!OpenTTD" Section1
+	; Make sure to be upgraded OpenTTD is not running
+	Call CheckOpenTTDRunning
+
 	; Overwrite files by default, but don't complain on failure
 	SetOverwrite try
 
@@ -517,7 +520,6 @@ Abort:
 Done:
 FunctionEnd
 
-
 ;-------------------------------------------------------------------------------
 ; Check whether we're not running an installer for NT on 9x and vice versa
 Function CheckWindowsVersion
@@ -534,6 +536,23 @@ WinNT:
 	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "You are trying to install the Windows 95, 98 and ME version on Windows 2000, XP or Vista. This is not advised, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
 Abort:
 	Quit
+Done:
+FunctionEnd
+
+;-------------------------------------------------------------------------------
+; Check whether OpenTTD is running
+Function CheckOpenTTDRunning
+	IfFileExists "$INSTDIR\openttd.exe" 0 Done
+Retry:
+	FindProcDLL::FindProc "openttd.exe"
+	Pop $R0
+	IntCmp $R0 1 0 Done
+	ClearErrors
+	Delete "$INSTDIR\openttd.exe"
+	IfErrors 0 Done
+	ClearErrors
+	MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION "OpenTTD is running. Please close it and retry." IDRETRY Retry
+	Abort
 Done:
 FunctionEnd
 
