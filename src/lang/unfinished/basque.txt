@@ -285,6 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :Karga balorazio
 STR_SORT_BY_ENGINE_ID                                           :MotoreID (ordenatze klasikoa)
 STR_SORT_BY_COST                                                :Kostua
 STR_SORT_BY_POWER                                               :Potentzia
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Trakzio indarra
 STR_SORT_BY_INTRO_DATE                                          :Introdukzio Data
 STR_SORT_BY_RUNNING_COST                                        :Operazio Kostak
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potentzia/Operazio Kostak
@@ -616,6 +617,7 @@ STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}'Estilo 
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street musika estiloa' programa aukeratu
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}'Pertsonala 1' (erabiltzaileak aukeratutakoa) programa aukeratu
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}'Pertsonala 2' (erabiltzaileak aukeratutakoa) programa aukeratu
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Programa zorizko moduan jarri/kendu
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Erakutsi kanten selekzio leihoa
 
 STR_ERROR_NO_SONGS                                              :{WHITE}Kantarik gabeko musika paketea aukeratua. Ez dago kantarik entzuteko
@@ -760,8 +762,11 @@ STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Petrolio findegi eztanda {TOWN}-(e)tik hurbil!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}¡Fabrika brirrindu da zirkustantzi arraroetan {TOWN} alboan!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'OHE' bat lurreratu da {TOWN}-(e)tik hurbil!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Ikatz meatzaren hondoraketak arazoak sortzen ditu {TOWN}tik hurbil!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Urak gainezka egin!{}Gutxienez {COMMA} desagertuta, hilda uste da hain ekaitz indartsu baten ostean!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Garraio konpania arazoetan!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING}saldu egingo da edo porrot egingo du salmentak laster gora egiten ez badute!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Garraio konpania fusionatua!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} saldua izan da {STRING}-(e)ri {CURRENCY}-(r)engatik!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Kiebra!
@@ -778,7 +783,9 @@ STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} itxialdi inminenetea jakinarazten du!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Hornigai arazoak direla eta {STRING}-ak lasterreko itxiera iragarri du!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK} Zuhaitzak hurbil ez baitituelako itxi egingo du {STRING}k oso laster!
 
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europar batasun ekonomikoa!!{}{} Euroa ezarri da eguneroko salerosketerako dibisa bakarra bezala zure herrialdean!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Munduko ekonomiaren atzeraldia!{}{}Finantza adituak beldurrez, ekonomiaren erortzearekin!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}¡Ekonomia atzeraldia bukatu da!{}{}¡Komertzio igoerak konfiantza eman die industriei!
 
@@ -811,6 +818,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} galduta dago.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}-ren irabazia aurreko urtean {CURRENCY} izan da
 
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} gelditua izan da agindutako eraldaketa tronpatu eta gero
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoberriketak huts egin du {VEHICLE}an{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}{STRING} berri bat orain erabilgarri!
@@ -822,7 +830,15 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} orain {STRING} onartzen du
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}{STRING} eta {STRING} orain onartzen ditu
 
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Diru-laguntza eskaintza agortu egin da:{}{}{STRING} {STRING}tik {STRING}ra doanarentzat ez dago diru-laguntzarik orain.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Diru-laguntza kenduta:{}{}{STRING} Ez dago diru-laguntzarik {STRING}tik {STRING}ra garraiatzeagatik.
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Diru-laguntza eskaintza:{}{} {STRING} {STRING}tik {STRING}ra doan lehenengoari bertako udalak diru-laguntza emango dio urte batetan zehar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Diru-laguntza{STRING}entzako!{}{}{STRING} {STRING}tik {STRING}ra egindako serbitzuak %50-a gehiago irabaziko dute hurrengo urtean zehar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra egiten duen serbitzuak bikoitza irabaziko du hurrengo urtean zehar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan serbitzuak hirukoitza irabaziko du hurrengo urtean zehar!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra doan zerbitzuak laukoitza irabaziko du hurrengo urtean zehar!
 
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK} Trafiko nahaste-borrastea {TOWN}en!{}{} {STRING}k ordaindutako errepideen konponketa plana sei hilabeterako arazoak esanguratzen die gidariei!
 
 # Extra view window
 
@@ -944,10 +960,27 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Pantaila
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Diru mota kustomizatua
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Trukearen zenbatekoa : {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zure dibisaren balioa libra (£) bat jaitsi
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Zure dibisaren balioa libra (£) bat igo
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Zure dibisaren balioa trukatzerakoan libra (£) batetan jarri
 
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Banatzailea: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Zure dibisarentzako banatzailea ezarri
 
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Aurrizkia: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Zure dibisaren sinboloa finkatu
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Atzizkia: {ORANGE}{STRING}
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Zure dibisaren sinbolo-atzizkia finkatu
 
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Eurotara aldatu: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Eurotara aldatu: {ORANGE}inoiz
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Euroetara aldatzeko urtea finkatu
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Euroetara lehenago aldatu
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Euroetara beranduago aldatu
 
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libra (£) zure dibisan
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Dibisa pertsonalaren ezaugarriak aldatu
 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :{WHITE}Zailtasun maila
@@ -959,6 +992,7 @@ STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Zaila
 STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Pertsonalizatua
 ############ range for difficulty levels ends
 
+STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Puntuazio altuenen taula erakutsi
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Gorde
 
 ############ range for difficulty settings starts
@@ -975,7 +1009,9 @@ STR_DIFFICULTY_LEVEL_SETTING_COST_OF_CONSTRUCTION               :{LTBLUE}Eraiket
 STR_DIFFICULTY_LEVEL_SETTING_TERRAIN_TYPE                       :{LTBLUE}Lursail mota: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_QUANTITY_OF_SEA_LAKES              :{LTBLUE}Itsaso/laku kopurua: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_ECONOMY                            :{LTBLUE}Ekonomia: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_TRAIN_REVERSING                    :{LTBLUE}Trenei buelta ematea: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Desastreak: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Udaletxearen jarrera udala aldatu nahi duzunean: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Ezer ez
@@ -1044,6 +1080,9 @@ STR_CONFIG_SETTING_ON                                           :Piztuta
 STR_CONFIG_SETTING_DISABLED                                     :desaktibatua
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Ibilgailuaren abiadura estatu barran ikusi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Aldapa eta kostan eraikitzea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Eraikinen, trenbideen etabarren azpian paisaia aldatzeabaimendu. (autoaldapak): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Bilketa guneen tamaina errealago egitea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Udalarenak diren errepide, zubi, etabar gehiago kentzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tren oso luzeak eraikitzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Trenaren ke/txinparta kantitatea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Bat ere ez
@@ -1055,9 +1094,19 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Errealista
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ibilgailuen azelerazio modelua: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originala
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Errealista
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Aldapen zailtasuna trenentzako {ORANGE}{STRING}%
+STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Aldapen zailtasuna errepide garraioetarako{ORANGE}{STRING}%
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Itsasontzi eta trenei 90 graduko biraketak debekatu: {ORANGE}{STRING} {LTBLUE} (ezin da OPF-kin)
+STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Elkar-ondoan dauden geltokiak bateratu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Elkarren ondoan ez baina oso hurbil dauden geltokiak bateratu : {ORANGE}{STRING}
+STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Zamatzeko algoritmo hobetua erabili: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Ibilgailuak mailaka zamatu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflazioa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Geltoki batetan bakarrik bertan hartzen duten zama baino ez utzi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Zubi oso luzeak eraikitzea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Grajera joateko aginduak baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ezer ez
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :beste industriak bezala
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekzioa
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Area laua industrien inguruan: {ORANGE}{STRING} karratu{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Indutria berdin asko baimendu hiri bakoitzean: {ORANGE}{STRING}

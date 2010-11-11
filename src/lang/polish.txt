@@ -664,6 +664,7 @@ STR_SORT_BY_RATING_MIN                                          :Towar najniższ
 STR_SORT_BY_ENGINE_ID                                           :ID pojazdu
 STR_SORT_BY_COST                                                :Cena
 STR_SORT_BY_POWER                                               :Moc
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Siła pociągowa
 STR_SORT_BY_INTRO_DATE                                          :Data wprowadzenia
 STR_SORT_BY_RUNNING_COST                                        :Koszty użytkowania
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Moc/Koszty użytkowania

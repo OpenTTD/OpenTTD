@@ -285,6 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :Menor carga
 STR_SORT_BY_ENGINE_ID                                           :EngineID (ordem clássica)
 STR_SORT_BY_COST                                                :Custo
 STR_SORT_BY_POWER                                               :Potência
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Força de Tracção
 STR_SORT_BY_INTRO_DATE                                          :Data de Introdução
 STR_SORT_BY_RUNNING_COST                                        :Custo de circulação
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potência/Custo de circulação
