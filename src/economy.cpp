@@ -1190,7 +1190,10 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			 * accept cargo that was loaded at the same station. */
 			if ((u->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) && (!accepted || v->cargo.Count() == cargo_count)) {
 				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded, u->current_order.GetUnloadType() & OUFB_TRANSFER ? VehicleCargoList::MTA_TRANSFER : VehicleCargoList::MTA_UNLOAD, payment);
-				SetBit(ge->acceptance_pickup, GoodsEntry::PICKUP);
+				if (!HasBit(ge->acceptance_pickup, GoodsEntry::PICKUP)) {
+					InvalidateWindowData(WC_STATION_LIST, last_visited);
+					SetBit(ge->acceptance_pickup, GoodsEntry::PICKUP);
+				}
 
 				dirty_vehicle = dirty_station = true;
 			} else if (!accepted) {

@@ -3201,7 +3201,11 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 	if (amount == 0) return 0;
 
 	ge.cargo.Append(new CargoPacket(st->index, st->xy, amount, source_type, source_id));
-	SetBit(ge.acceptance_pickup, GoodsEntry::PICKUP);
+
+	if (!HasBit(ge.acceptance_pickup, GoodsEntry::PICKUP)) {
+		InvalidateWindowData(WC_STATION_LIST, st->index);
+		SetBit(ge.acceptance_pickup, GoodsEntry::PICKUP);
+	}
 
 	TriggerStationAnimation(st, st->xy, SAT_NEW_CARGO, type);
 	AirportAnimationTrigger(st, AAT_STATION_NEW_CARGO, type);
