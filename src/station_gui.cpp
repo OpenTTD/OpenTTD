@@ -238,7 +238,7 @@ protected:
 				if (this->facilities & st->facilities) { // only stations with selected facilities
 					int num_waiting_cargo = 0;
 					for (CargoID j = 0; j < NUM_CARGO; j++) {
-						if (!st->goods[j].cargo.Empty()) {
+						if (HasBit(st->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) {
 							num_waiting_cargo++; // count number of waiting cargo
 							if (HasBit(this->cargo_filter, j)) {
 								*this->stations.Append() = st;
