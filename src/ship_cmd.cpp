@@ -211,6 +211,7 @@ Trackdir Ship::GetVehicleTrackdir() const
 void Ship::MarkDirty()
 {
 	this->UpdateViewport(false, false);
+	this->UpdateCache();
 }
 
 static void PlayShipSound(const Vehicle *v)
