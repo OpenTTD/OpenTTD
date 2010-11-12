@@ -286,6 +286,7 @@ STR_SORT_BY_RATING_MIN                                          :Rati de càrreg
 STR_SORT_BY_ENGINE_ID                                           :IDMotor (ordre clàssic)
 STR_SORT_BY_COST                                                :Cost
 STR_SORT_BY_POWER                                               :Potència
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Esforç de tracció
 STR_SORT_BY_INTRO_DATE                                          :Data de llançament
 STR_SORT_BY_RUNNING_COST                                        :Cost d'utilització
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potència/Cost d'utilització
