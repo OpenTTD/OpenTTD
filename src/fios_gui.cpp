@@ -26,6 +26,7 @@
 #include "engine_func.h"
 #include "landscape_type.h"
 #include "date_func.h"
+#include "core/geometry_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -475,6 +476,14 @@ public:
 				resize->height = FONT_HEIGHT_NORMAL;
 				size->height = resize->height * 10 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				break;
+			case SLWW_SORT_BYNAME:
+			case SLWW_SORT_BYDATE: {
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
+				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the string is centred and it also looks better.
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
 		}
 	}
 
