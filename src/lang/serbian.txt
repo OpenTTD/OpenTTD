@@ -1298,7 +1298,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Originalan
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realističan
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmost kosina za železnicu {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Strmost kosina za drumska vozila {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabranjeno okretanje brodova i vozova za 90 stepeni: {ORANGE}{STRING} {LTBLUE} (ne uz OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabranjeno okretanje brodova i vozova za 90 stepeni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Spajanje železničkih stanica sagrađenih jedna do druge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dozvoljeno sjedninjavanje udaljenih stanica: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Koristiti poboljšan algoritam utovara: {ORANGE}{STRING}

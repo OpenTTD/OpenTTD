@@ -1420,7 +1420,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :арыгіна�
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :рэалістычная
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Крутасьць сьхілаў для цягнікоў: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Крутасьць сьхілаў для аўтатранспарту: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забараніць цягнікам і караблям 90-градусныя павароты: {ORANGE}{STRING} {LTBLUE} (не для OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забараніць цягнікам і караблям 90-градусныя павароты: {ORANGE}{STRING}
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Аб'ядноўваць пабудаваныя побач чыгуначныя станцыі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Дазволіць аб'яднаньне станцыяў, не прымыкаючых адна да адной: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Выкарыстоўваць палепшаны алгарытм загрузкі: {ORANGE}{STRING}

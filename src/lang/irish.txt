@@ -1103,7 +1103,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Bunaidh
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Réalaíoch
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Géire na fána do thraenacha {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Géire na fána d'fheithiclí bóthair {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Cuir cosc ar thraenacha agus ar longa casadh 90° a dhéanamh: {ORANGE}{STRING} {LTBLUE} (not with OPF)
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Cuir cosc ar thraenacha agus ar longa casadh 90° a dhéanamh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ceangail stáisiúin traenach a thógtar in aice lena chéile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Ceadaigh stáisiúin a changal nach bhfuil taobh lena gcéile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Úsáid an algartam lódála feabhsaithe: {ORANGE}{STRING}
