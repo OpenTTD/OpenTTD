@@ -2319,6 +2319,58 @@ bool AfterLoadGame()
 		}
 	}
 
+
+	if (CheckSavegameVersion(152)) {
+		/* The moment vehicles go from hidden to visible changed. This means
+		 * that vehicles don't always get visible anymore causing things to
+		 * get messed up just after loading the savegame. This fixes that. */
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			/* Is the vehicle in a tunnel? */
+			if (!IsTunnelTile(v->tile)) continue;
+
+			/* Is the vehicle actually at a tunnel entrance/exit? */
+			TileIndex vtile = TileVirtXY(v->x_pos, v->y_pos);
+			if (!IsTunnelTile(vtile)) continue;
+
+			/* Are we actually in this tunnel? Or maybe a lower tunnel? */
+			if (GetSlopeZ(v->x_pos, v->y_pos) != v->z_pos) continue;
+
+			/* What way are we going? */
+			const DiagDirection dir = GetTunnelBridgeDirection(vtile);
+			const DiagDirection vdir = DirToDiagDir(v->direction);
+
+			/* Have we passed the visibility "switch" state already? */
+			byte pos = (DiagDirToAxis(vdir) == AXIS_X ? v->x_pos : v->y_pos) & TILE_UNIT_MASK;
+			byte frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
+			extern const byte _tunnel_visibility_frame[DIAGDIR_END];
+
+			if (dir == vdir && !(v->vehstatus & VS_HIDDEN)) {
+				if (frame < _tunnel_visibility_frame[dir]) continue;
+				/* Tunnel entrance, make us invisible. */
+				v->tile = vtile;
+				v->vehstatus |= VS_HIDDEN;
+
+				switch (v->type) {
+					case VEH_TRAIN: Train::From(v)->track       = TRACK_BIT_WORMHOLE; break;
+					case VEH_ROAD:  RoadVehicle::From(v)->state = RVSB_WORMHOLE;      break;
+					default: NOT_REACHED();
+				}
+			} else if (dir == ReverseDiagDir(vdir) && (v->vehstatus & VS_HIDDEN)) {
+				if (frame < TILE_SIZE - _tunnel_visibility_frame[dir]) continue;
+				/* Tunnel exit, make us visible again. */
+				v->tile = vtile;
+				v->vehstatus &= ~VS_HIDDEN;
+
+				switch (v->type) {
+					case VEH_TRAIN: Train::From(v)->track       = DiagDirToDiagTrackBits(vdir); break;
+					case VEH_ROAD:  RoadVehicle::From(v)->state = DiagDirToDiagTrackdir(vdir);  break;
+					default: NOT_REACHED();
+				}
+			}
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
