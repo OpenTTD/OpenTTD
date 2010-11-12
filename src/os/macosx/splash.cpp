@@ -26,7 +26,7 @@
 static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
 {
 	DEBUG(misc, 0, "[libpng] error: %s - %s", message, (char *)png_get_error_ptr(png_ptr));
-	longjmp(png_ptr->jmpbuf, 1);
+	longjmp(png_jmpbuf(png_ptr), 1);
 }
 
 static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
