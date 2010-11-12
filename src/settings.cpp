@@ -779,8 +779,8 @@ static bool CheckInterval(int32 p1)
 	} else {
 		vds->servint_trains   = 150;
 		vds->servint_roadveh  = 150;
-		vds->servint_aircraft = 360;
-		vds->servint_ships    = 100;
+		vds->servint_aircraft = 100;
+		vds->servint_ships    = 360;
 	}
 
 	InvalidateDetailsWindow(0);
