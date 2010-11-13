@@ -1994,11 +1994,12 @@ void GenerateIndustries()
 	for (uint i = 0; i < total_amount; i++) {
 		uint32 r = RandomRange(total_prob);
 		IndustryType it = 0;
-		while (it < NUM_INDUSTRYTYPES && r >= industry_probs[it]) {
+		while (r >= industry_probs[it]) {
 			r -= industry_probs[it];
 			it++;
+			assert(it < NUM_INDUSTRYTYPES);
 		}
-		assert(it < NUM_INDUSTRYTYPES && industry_probs[it] > 0);
+		assert(industry_probs[it] > 0);
 		PlaceInitialIndustry(it, false);
 	}
 }
