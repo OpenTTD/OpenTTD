@@ -32,6 +32,7 @@
 #include "viewport_func.h"
 #include "core/geometry_func.hpp"
 #include "ai/ai.hpp"
+#include "language.h"
 #include <map>
 
 #include "table/sprites.h"
@@ -190,7 +191,7 @@ struct GameOptionsWindow : Window {
 			case GOW_ROADSIDE_DROPDOWN:   SetDParam(0, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT + this->opt->vehicle.road_side); break;
 			case GOW_TOWNNAME_DROPDOWN:   SetDParam(0, TownName(this->opt->game_creation.town_name)); break;
 			case GOW_AUTOSAVE_DROPDOWN:   SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
-			case GOW_LANG_DROPDOWN:       SetDParam(0, SPECSTR_LANGUAGE_START + _dynlang.curr); break;
+			case GOW_LANG_DROPDOWN:       SetDParamStr(0, _current_language->own_name); break;
 			case GOW_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
 			case GOW_SCREENSHOT_DROPDOWN: SetDParam(0, SPECSTR_SCREENSHOT_START + _cur_screenshot_format); break;
 			case GOW_BASE_GRF_DROPDOWN:   SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
@@ -315,14 +316,18 @@ struct GameOptionsWindow : Window {
 
 				/* Sort language names */
 				LangList langs;
-				for (int i = 0; i < _dynlang.num; i++) langs[SPECSTR_LANGUAGE_START + i] = i;
+				int current_lang;
+				for (int i = 0; i < _dynlang.num; i++) {
+					if (&_dynlang.ent[i] == _current_language) current_lang = i;
+					langs[SPECSTR_LANGUAGE_START + i] = i;
+				}
 
 				DropDownList *list = new DropDownList();
 				for (LangList::iterator it = langs.begin(); it != langs.end(); it++) {
 					list->push_back(new DropDownListStringItem((*it).first, (*it).second, false));
 				}
 
-				ShowDropDownList(this, list, _dynlang.curr, GOW_LANG_DROPDOWN);
+				ShowDropDownList(this, list, current_lang, GOW_LANG_DROPDOWN);
 				break;
 			}
 

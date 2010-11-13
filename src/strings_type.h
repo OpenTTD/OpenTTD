@@ -31,7 +31,6 @@ enum TextDirection {
 /** Used for dynamic language support */
 struct DynamicLanguages {
 	int num;                  ///< Number of languages
-	int curr;                 ///< Currently selected language index
 	char curr_file[MAX_PATH]; ///< Currently selected language file name without path (needed for saving the filename of the loaded language).
 	LanguageMetadata ent[MAX_LANG]; ///< Information about the languages
 };

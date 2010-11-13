@@ -40,6 +40,8 @@
 #include "table/strings.h"
 #include "table/control_codes.h"
 
+const LanguageMetadata *_current_language = NULL; ///< The currently loaded language.
+
 DynamicLanguages _dynlang;       ///< Language information of the program.
 TextDirection _current_text_dir; ///< Text direction of the currently selected language
 uint64 _decode_parameters[20];   ///< Global array of string parameters. To access, use #SetDParam.
@@ -1277,7 +1279,7 @@ static char *GetSpecialNameString(char *buff, int ind, int64 *argv, const char *
 	if (IsInsideMM(ind, (SPECSTR_LANGUAGE_START - 0x70E4), (SPECSTR_LANGUAGE_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_LANGUAGE_START - 0x70E4);
 		return strecpy(buff,
-			i == _dynlang.curr ? _langpack->own_name : _dynlang.ent[i].name, last);
+			&_dynlang.ent[i] == _current_language ? _current_language->own_name : _dynlang.ent[i].name, last);
 	}
 
 	/* resolution size? */
@@ -1382,12 +1384,12 @@ bool ReadLanguagePack(int lang_index)
 	free(_langpack_offs);
 	_langpack_offs = langpack_offs;
 
-	const char *c_file = strrchr(_dynlang.ent[lang_index].file, PATHSEPCHAR) + 1;
+	_current_language = &_dynlang.ent[lang_index];
+	_current_text_dir = (TextDirection)_current_language->text_dir;
+	const char *c_file = strrchr(_current_language->file, PATHSEPCHAR) + 1;
 	strecpy(_dynlang.curr_file, c_file, lastof(_dynlang.curr_file));
+	SetCurrentGrfLangID(_current_language->newgrflangid);
 
-	_dynlang.curr = lang_index;
-	_current_text_dir = (TextDirection)lang_pack->text_dir;
-	SetCurrentGrfLangID(_langpack->newgrflangid);
 	InitializeSortedCargoSpecs();
 	SortIndustryTypes();
 	BuildIndustriesLegend();

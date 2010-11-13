@@ -56,4 +56,7 @@ struct LanguageMetadata : public LanguagePackHeader {
 	char file[MAX_PATH]; ///< Name of the file we read this data from.
 };
 
+/** The currently loaded language. */
+extern const LanguageMetadata *_current_language;
+
 #endif /* LANGUAGE_H */

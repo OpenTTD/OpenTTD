@@ -25,6 +25,7 @@
 #include "screenshot.h"
 #include "gfx_func.h"
 #include "network/network.h"
+#include "language.h"
 
 #include "ai/ai_info.hpp"
 #include "company_base.h"
@@ -120,7 +121,7 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 			BlitterFactoryBase::GetCurrentBlitter() == NULL ? "none" : BlitterFactoryBase::GetCurrentBlitter()->GetName(),
 			BaseGraphics::GetUsedSet() == NULL ? "none" : BaseGraphics::GetUsedSet()->name,
 			BaseGraphics::GetUsedSet() == NULL ? UINT32_MAX : BaseGraphics::GetUsedSet()->version,
-			StrEmpty(_dynlang.curr_file) ? "none" : _dynlang.curr_file,
+			_current_language == NULL ? "none" : _current_language->file,
 			_music_driver == NULL ? "none" : _music_driver->GetName(),
 			BaseMusic::GetUsedSet() == NULL ? "none" : BaseMusic::GetUsedSet()->name,
 			BaseMusic::GetUsedSet() == NULL ? UINT32_MAX : BaseMusic::GetUsedSet()->version,
