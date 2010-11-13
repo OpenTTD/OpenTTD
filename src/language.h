@@ -59,4 +59,6 @@ struct LanguageMetadata : public LanguagePackHeader {
 /** The currently loaded language. */
 extern const LanguageMetadata *_current_language;
 
+bool ReadLanguagePack(const LanguageMetadata *lang);
+
 #endif /* LANGUAGE_H */

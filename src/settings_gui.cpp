@@ -418,7 +418,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case GOW_LANG_DROPDOWN: // Change interface language
-				ReadLanguagePack(index);
+				ReadLanguagePack(&_dynlang.ent[index]);
 				CheckForMissingGlyphsInLoadedLanguagePack();
 				UpdateAllVirtCoords();
 				ReInitAllWindows();

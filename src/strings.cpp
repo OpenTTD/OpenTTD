@@ -1323,11 +1323,11 @@ bool LanguagePackHeader::IsValid() const
 			StrValid(this->digit_decimal_separator,        lastof(this->digit_decimal_separator));
 }
 
-bool ReadLanguagePack(int lang_index)
+bool ReadLanguagePack(const LanguageMetadata *lang)
 {
 	/* Current language pack */
 	size_t len;
-	LanguagePack *lang_pack = (LanguagePack *)ReadFileToMem(_dynlang.ent[lang_index].file, &len, 200000);
+	LanguagePack *lang_pack = (LanguagePack *)ReadFileToMem(lang->file, &len, 200000);
 	if (lang_pack == NULL) return false;
 
 	/* End of read data (+ terminating zero added in ReadFileToMem()) */
@@ -1385,7 +1385,7 @@ bool ReadLanguagePack(int lang_index)
 	free(_langpack_offs);
 	_langpack_offs = langpack_offs;
 
-	_current_language = &_dynlang.ent[lang_index];
+	_current_language = lang;
 	_current_text_dir = (TextDirection)_current_language->text_dir;
 	const char *c_file = strrchr(_current_language->file, PATHSEPCHAR) + 1;
 	strecpy(_config_language_file, c_file, lastof(_config_language_file));
@@ -1538,33 +1538,35 @@ void InitializeLanguagePacks()
 	const char *lang = GetCurrentLocale("LC_MESSAGES");
 	if (lang == NULL) lang = "en_GB";
 
-	int chosen_language   = -1; ///< Matching the language in the configuartion file or the current locale
-	int language_fallback = -1; ///< Using pt_PT for pt_BR locale when pt_BR is not available
-	int en_GB_fallback    =  0; ///< Fallback when no locale-matching language has been found
+	const LanguageMetadata *chosen_language   = NULL; ///< Matching the language in the configuartion file or the current locale
+	const LanguageMetadata *language_fallback = NULL; ///< Using pt_PT for pt_BR locale when pt_BR is not available
+	const LanguageMetadata *en_GB_fallback    =  _dynlang.ent; ///< Fallback when no locale-matching language has been found
 
 	_dynlang.num = language_count;
 	/* Fill the dynamic languages structures */
 	for (uint i = 0; i < language_count; i++) {
+		const LanguageMetadata *lng = &_dynlang.ent[i];
 		/* We are trying to find a default language. The priority is by
 		 * configuration file, local environment and last, if nothing found,
-		 * english. If def equals -1, we have not picked a default language */
-		const char *lang_file = strrchr(_dynlang.ent[i].file, PATHSEPCHAR) + 1;
-		if (strcmp(lang_file, _config_language_file) == 0) chosen_language = i;
-
-		if (chosen_language == -1) {
-			if (strcmp (_dynlang.ent[i].isocode, "en_GB") == 0) en_GB_fallback    = i;
-			if (strncmp(_dynlang.ent[i].isocode, lang, 5) == 0) chosen_language   = i;
-			if (strncmp(_dynlang.ent[i].isocode, lang, 2) == 0) language_fallback = i;
+		 * english. */
+		const char *lang_file = strrchr(lang, PATHSEPCHAR) + 1;
+		if (strcmp(lang_file, _config_language_file) == 0) {
+			chosen_language = lng;
+			break;
 		}
+
+		if (strcmp (lng->isocode, "en_GB") == 0) en_GB_fallback    = lng;
+		if (strncmp(lng->isocode, lang, 5) == 0) chosen_language   = lng;
+		if (strncmp(lng->isocode, lang, 2) == 0) language_fallback = lng;
 	}
 
 	/* We haven't found the language in the config nor the one in the locale.
 	 * Now we set it to one of the fallback languages */
-	if (chosen_language == -1) {
-		chosen_language = (language_fallback != -1) ? language_fallback : en_GB_fallback;
+	if (chosen_language == NULL) {
+		chosen_language = (language_fallback != NULL) ? language_fallback : en_GB_fallback;
 	}
 
-	if (!ReadLanguagePack(chosen_language)) usererror("Can't read language pack '%s'", _dynlang.ent[chosen_language].file);
+	if (!ReadLanguagePack(chosen_language)) usererror("Can't read language pack '%s'", chosen_language->file);
 }
 
 /**
