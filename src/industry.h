@@ -153,7 +153,7 @@ struct IndustryTypeBuildData {
 
 	void Reset();
 
-	void GetIndustryTypeData(IndustryType it);
+	bool GetIndustryTypeData(IndustryType it);
 };
 
 /**

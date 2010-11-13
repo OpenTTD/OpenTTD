@@ -2093,20 +2093,29 @@ void Industry::RecomputeProductionMultipliers()
 /**
  * Set the #probability field for the industry type \a it for a running game.
  * @param it Industry type.
+ * @return The field has changed value.
  */
-void IndustryTypeBuildData::GetIndustryTypeData(IndustryType it)
+bool IndustryTypeBuildData::GetIndustryTypeData(IndustryType it)
 {
-	this->probability = GetIndustryGamePlayProbability(it);
+	uint32 probability = GetIndustryGamePlayProbability(it);
+	bool changed = probability != this->probability;
+	this->probability = probability;
+	return changed;
 }
 
 /** Decide how many industries of each type are needed. */
 void IndustryBuildData::SetupTargetCount()
 {
+	bool changed = false;
+	uint num_planned = 0; // Number of industries planned in the industry build data.
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
-		this->builddata[it].GetIndustryTypeData(it);
+		changed |= this->builddata[it].GetIndustryTypeData(it);
+		num_planned += this->builddata[it].target_count;
 	}
-
 	uint total_amount = this->wanted_inds >> 16; // Desired total number of industries.
+	changed |= num_planned != total_amount;
+	if (!changed) return; // All industries are still the same, no need to re-randomize.
+
 	uint32 total_prob = 0; // Sum of probabilities.
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 		this->builddata[it].target_count = 0;
