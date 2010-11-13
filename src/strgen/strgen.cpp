@@ -78,14 +78,6 @@ static int _put_pos;
 static int _next_string_id;
 
 static uint32 _hash;
-#define MAX_NUM_GENDERS 8
-static char _genders[MAX_NUM_GENDERS][16];
-static uint _numgenders;
-
-/* contains the name of all cases. */
-#define MAX_NUM_CASES 50
-static char _cases[MAX_NUM_CASES][16];
-static uint _numcases;
 
 static const char *_cur_ident;
 
@@ -377,10 +369,9 @@ static void EmitGender(char *buf, int value)
 		buf++;
 
 		/* This is a {G=DER} command */
-		for (nw = 0; ; nw++) {
-			if (nw >= MAX_NUM_GENDERS) error("G argument '%s' invalid", buf);
-			if (strcmp(buf, _genders[nw]) == 0) break;
-		}
+		nw = _lang.GetGenderIndex(buf);
+		if (nw >= MAX_NUM_GENDERS) error("G argument '%s' invalid", buf);
+
 		/* now nw contains the gender index */
 		PutUtf8(SCC_GENDER_INDEX);
 		PutByte(nw);
@@ -400,7 +391,7 @@ static void EmitGender(char *buf, int value)
 			words[nw] = ParseWord(&buf);
 			if (words[nw] == NULL) break;
 		}
-		if (nw != _numgenders) error("Bad # of arguments for gender command");
+		if (nw != _lang.num_genders) error("Bad # of arguments for gender command");
 
 		assert(IsInsideBS(cmd->value, SCC_CONTROL_START, UINT8_MAX));
 		PutUtf8(SCC_GENDER_LIST);
@@ -420,10 +411,14 @@ static const CmdStruct *FindCmd(const char *s, int len)
 
 static uint ResolveCaseName(const char *str, uint len)
 {
-	for (uint i = 0; i < MAX_NUM_CASES; i++) {
-		if (memcmp(_cases[i], str, len) == 0 && _cases[i][len] == 0) return i + 1;
-	}
-	error("Invalid case-name '%s'", str);
+	/* First get a clean copy of only the case name, then resolve it. */
+	char case_str[CASE_GENDER_LEN];
+	memcpy(case_str, str, len);
+	case_str[len] = '\0';
+
+	uint8 case_idx = _lang.GetCaseIndex(case_str);
+	if (case_idx >= MAX_NUM_CASES) error("Invalid case-name '%s'", case_str);
+	return case_idx + 1;
 }
 
 
@@ -559,9 +554,9 @@ static void HandlePragma(char *str, bool master)
 			const char *s = ParseWord(&buf);
 
 			if (s == NULL) break;
-			if (_numgenders >= MAX_NUM_GENDERS) error("Too many genders, max %d", MAX_NUM_GENDERS);
-			strecpy(_genders[_numgenders], s, lastof(_genders[_numgenders]));
-			_numgenders++;
+			if (_lang.num_genders >= MAX_NUM_GENDERS) error("Too many genders, max %d", MAX_NUM_GENDERS);
+			strecpy(_lang.genders[_lang.num_genders], s, lastof(_lang.genders[_lang.num_genders]));
+			_lang.num_genders++;
 		}
 	} else if (!memcmp(str, "case ", 5)) {
 		if (master) error("Cases are not allowed in the base translation.");
@@ -571,9 +566,9 @@ static void HandlePragma(char *str, bool master)
 			const char *s = ParseWord(&buf);
 
 			if (s == NULL) break;
-			if (_numcases >= MAX_NUM_CASES) error("Too many cases, max %d", MAX_NUM_CASES);
-			strecpy(_cases[_numcases], s, lastof(_cases[_numcases]));
-			_numcases++;
+			if (_lang.num_cases >= MAX_NUM_CASES) error("Too many cases, max %d", MAX_NUM_CASES);
+			strecpy(_lang.cases[_lang.num_cases], s, lastof(_lang.cases[_lang.num_cases]));
+			_lang.num_cases++;
 		}
 	} else {
 		error("unknown pragma '%s'", str);
@@ -810,7 +805,6 @@ static void ParseFile(const char *file, bool english)
 
 	/* For each new file we parse, reset the genders, and language codes */
 	MemSetT(&_lang, 0);
-	_numgenders = 0;
 	strecpy(_lang.digit_group_separator, ",", lastof(_lang.digit_group_separator));
 	strecpy(_lang.digit_group_separator_currency, ",", lastof(_lang.digit_group_separator_currency));
 	strecpy(_lang.digit_decimal_separator, ".", lastof(_lang.digit_decimal_separator));

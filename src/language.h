@@ -14,6 +14,10 @@
 
 #include "core/smallvec_type.hpp"
 
+static const uint8 CASE_GENDER_LEN = 16; ///< The (maximum) length of a case/gender string.
+static const uint8 MAX_NUM_GENDERS =  8; ///< Maximum number of supported genders.
+static const uint8 MAX_NUM_CASES   = 16; ///< Maximum number of supported cases.
+
 /** Header of a language file. */
 struct LanguagePackHeader {
 	static const uint32 IDENT = 0x474E414C; ///< Identifier for OpenTTD language files, big endian for "LANG"
@@ -43,13 +47,44 @@ struct LanguagePackHeader {
 	 */
 	uint16 winlangid;   ///< windows language id
 	uint8 newgrflangid; ///< newgrf language id
-	byte pad[3];        ///< pad header to be a multiple of 4
+	uint8 num_genders;  ///< the number of genders of this language
+	uint8 num_cases;    ///< the number of cases of this language
+	byte pad[1];        ///< pad header to be a multiple of 4
+
+	char genders[MAX_NUM_GENDERS][CASE_GENDER_LEN]; ///< the genders used by this translation
+	char cases[MAX_NUM_CASES][CASE_GENDER_LEN];     ///< the cases used by this translation
 
 	/**
 	 * Check whether the header is a valid header for OpenTTD.
 	 * @return true iff the header is deemed valid.
 	 */
 	bool IsValid() const;
+
+	/**
+	 * Get the index for the given gender.
+	 * @param gender_str The string representation of the gender.
+	 * @return The index of the gender, or MAX_NUM_GENDERS when the gender is unknown.
+	 */
+	uint8 GetGenderIndex(const char *gender_str) const
+	{
+		for (uint8 i = 0; i < MAX_NUM_GENDERS; i++) {
+			if (strcmp(gender_str, this->genders[i]) == 0) return i;
+		}
+		return MAX_NUM_GENDERS;
+	}
+
+	/**
+	 * Get the index for the given case.
+	 * @param case_str The string representation of the case.
+	 * @return The index of the case, or MAX_NUM_CASES when the case is unknown.
+	 */
+	uint8 GetCaseIndex(const char *case_str) const
+	{
+		for (uint8 i = 0; i < MAX_NUM_CASES; i++) {
+			if (strcmp(case_str, this->cases[i]) == 0) return i;
+		}
+		return MAX_NUM_CASES;
+	}
 };
 assert_compile(sizeof(LanguagePackHeader) % 4 == 0);
 

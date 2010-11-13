@@ -1315,6 +1315,8 @@ bool LanguagePackHeader::IsValid() const
 			this->plural_form  <  LANGUAGE_MAX_PLURAL &&
 			this->text_dir     <= 1 &&
 			this->newgrflangid < MAX_LANG &&
+			this->num_genders  < MAX_NUM_GENDERS &&
+			this->num_cases    < MAX_NUM_CASES &&
 			StrValid(this->name,                           lastof(this->name)) &&
 			StrValid(this->own_name,                       lastof(this->own_name)) &&
 			StrValid(this->isocode,                        lastof(this->isocode)) &&
