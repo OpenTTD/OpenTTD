@@ -1905,7 +1905,7 @@ static uint GetNumberOfIndustries()
  * Advertise about a new industry opening.
  * @param ind Industry being opened.
  */
-static void AdvertiseIndustryOpening(Industry *ind)
+static void AdvertiseIndustryOpening(const Industry *ind)
 {
 	const IndustrySpec *ind_spc = GetIndustrySpec(ind->type);
 	SetDParam(0, ind_spc->name);
@@ -2080,7 +2080,7 @@ static void MaybeNewIndustry()
 	}
 
 	/* try to create 2000 times this industry */
-	Industry *ind = PlaceIndustry(cumulative_probs[j].ind, IACT_RANDOMCREATION, false);
+	const Industry *ind = PlaceIndustry(cumulative_probs[j].ind, IACT_RANDOMCREATION, false);
 	if (ind == NULL) return;
 
 	AdvertiseIndustryOpening(ind);
