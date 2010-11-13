@@ -33,6 +33,7 @@
 #include "newgrf_debug.h"
 #include "hotkeys.h"
 #include "toolbar_gui.h"
+#include "statusbar_gui.h"
 
 #include "table/sprites.h"
 
@@ -2642,25 +2643,47 @@ void ReInitAllWindows()
 }
 
 /**
- * (Re)position main toolbar window at the screen
- * @param w Window structure of the main toolbar window, may also be \c NULL
- * @return X coordinate of left edge of the repositioned toolbar window
+ * (Re)position a window at the screen.
+ * @param w       Window structure of the window, may also be \c NULL.
+ * @param clss    The class of the window to position.
+ * @param setting The actual setting used for the window's position.
+ * @return X coordinate of left edge of the repositioned window.
+ */
+static int PositionWindow(Window *w, WindowClass clss, int setting)
+{
+	if (w == NULL || w->window_class != clss) {
+		w = FindWindowById(clss, 0);
+	}
+
+	switch (setting) {
+		case 1:  w->left = (_screen.width - w->width) / 2; break;
+		case 2:  w->left = _screen.width - w->width; break;
+		default: w->left = 0; break;
+	}
+	SetDirtyBlocks(0, w->top, _screen.width, w->top + w->height); // invalidate the whole row
+	return w->left;
+}
+
+/**
+ * (Re)position main toolbar window at the screen.
+ * @param w Window structure of the main toolbar window, may also be \c NULL.
+ * @return X coordinate of left edge of the repositioned toolbar window.
  */
 int PositionMainToolbar(Window *w)
 {
 	DEBUG(misc, 5, "Repositioning Main Toolbar...");
+	return PositionWindow(w, WC_MAIN_TOOLBAR, _settings_client.gui.toolbar_pos);
+}
 
-	if (w == NULL || w->window_class != WC_MAIN_TOOLBAR) {
-		w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-	}
-
-	switch (_settings_client.gui.toolbar_pos) {
-		case 1:  w->left = (_screen.width - w->width) / 2; break;
-		case 2:  w->left = _screen.width - w->width; break;
-		default: w->left = 0;
-	}
-	SetDirtyBlocks(0, 0, _screen.width, w->height); // invalidate the whole top part
-	return w->left;
+/**
+ * (Re)position statusbar window at the screen.
+ * @param w Window structure of the statusbar window, may also be \c NULL.
+ * @return X coordinate of left edge of the repositioned statusbar.
+ */
+int PositionStatusbar(Window *w)
+{
+	DEBUG(misc, 5, "Repositioning statusbar...");
+	return PositionWindow(w, WC_STATUS_BAR, _settings_client.gui.statusbar_pos);
 }
 
 
@@ -2718,9 +2741,10 @@ void RelocateAllWindows(int neww, int newh)
 				break;
 
 			case WC_STATUS_BAR:
-				ResizeWindow(w, Clamp(neww, 320, 640) - w->width, 0);
+				ResizeWindow(w, min(neww, *_preferred_statusbar_size) - w->width, 0);
+
 				top = newh - w->height;
-				left = (neww - w->width) >> 1;
+				left = PositionStatusbar(w);
 				break;
 
 			case WC_SEND_NETWORK_MSG:

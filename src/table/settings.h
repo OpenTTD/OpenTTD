@@ -11,6 +11,7 @@
 
 /* Begin - Callback Functions for the various settings */
 static bool v_PositionMainToolbar(int32 p1);
+static bool v_PositionStatusbar(int32 p1);
 static bool PopulationInLabelActive(int32 p1);
 static bool RedrawScreen(int32 p1);
 static bool RedrawSmallmap(int32 p1);
@@ -568,6 +569,7 @@ const SettingDesc _settings[] = {
 	  SDTC_VAR(gui.errmsg_duration,           SLE_UINT8, S,  0,     5,        0,       20, 0, STR_CONFIG_SETTING_ERRMSG_DURATION,             NULL),
 	  SDTC_VAR(gui.hover_delay,               SLE_UINT8, S, D0,     2,        1,        5, 0, STR_CONFIG_SETTING_HOVER_DELAY,                 NULL),
 	  SDTC_VAR(gui.toolbar_pos,               SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_SETTING_TOOLBAR_POS,                 v_PositionMainToolbar),
+	  SDTC_VAR(gui.statusbar_pos,             SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_SETTING_STATUSBAR_POS,               v_PositionStatusbar),
 	  SDTC_VAR(gui.window_snap_radius,        SLE_UINT8, S, D0,    10,        1,       32, 0, STR_CONFIG_SETTING_SNAP_RADIUS,                 NULL),
 	  SDTC_VAR(gui.window_soft_limit,         SLE_UINT8, S, D0,    20,        5,      255, 1, STR_CONFIG_SETTING_SOFT_LIMIT,                  NULL),
 	 SDTC_BOOL(gui.population_in_label,                  S,  0,  true,                        STR_CONFIG_SETTING_POPULATION_IN_LABEL,         PopulationInLabelActive),

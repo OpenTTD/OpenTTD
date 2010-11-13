@@ -1300,6 +1300,7 @@ static SettingEntry _settings_ui[] = {
 	SettingEntry("gui.errmsg_duration"),
 	SettingEntry("gui.hover_delay"),
 	SettingEntry("gui.toolbar_pos"),
+	SettingEntry("gui.statusbar_pos"),
 	SettingEntry("gui.pause_on_newgame"),
 	SettingEntry("gui.advanced_vehicle_list"),
 	SettingEntry("gui.timetable_in_ticks"),

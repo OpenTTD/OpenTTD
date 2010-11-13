@@ -95,11 +95,12 @@ struct StatusBarWindow : Window {
 		this->reminder_timeout = REMINDER_STOP;
 
 		this->InitNested(desc);
+		PositionStatusbar(this);
 	}
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
-		Point pt = { (_screen.width - max(sm_width, desc->default_width)) / 2, _screen.height - sm_height };
+		Point pt = { 0, _screen.height - sm_height };
 		return pt;
 	}
 
@@ -238,7 +239,7 @@ static const NWidgetPart _nested_main_status_widgets[] = {
 	EndContainer(),
 };
 
-static const WindowDesc _main_status_desc(
+static WindowDesc _main_status_desc(
 	WDP_MANUAL, 640, 12,
 	WC_STATUS_BAR, WC_NONE,
 	WDF_UNCLICK_BUTTONS | WDF_NO_FOCUS,
@@ -253,6 +254,8 @@ bool IsNewsTickerShown()
 	const StatusBarWindow *w = dynamic_cast<StatusBarWindow*>(FindWindowById(WC_STATUS_BAR, 0));
 	return w != NULL && w->ticker_scroll < StatusBarWindow::TICKER_STOP;
 }
+
+int16 *_preferred_statusbar_size = &_main_status_desc.default_width; ///< Pointer to the default size for the status toolbar.
 
 void ShowStatusBar()
 {

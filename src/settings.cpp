@@ -681,11 +681,19 @@ static void IniSaveSettingList(IniFile *ini, const char *grpname, StringList *li
 	}
 }
 
-/* Begin - Callback Functions for the various settings
- * virtual PositionMainToolbar function, calls the right one.*/
+/* Begin - Callback Functions for the various settings. */
+
+/** Reposition the main toolbar as the setting changed. */
 static bool v_PositionMainToolbar(int32 p1)
 {
 	if (_game_mode != GM_MENU) PositionMainToolbar(NULL);
+	return true;
+}
+
+/** Reposition the statusbar as the setting changed. */
+static bool v_PositionStatusbar(int32 p1)
+{
+	if (_game_mode != GM_MENU) PositionStatusbar(NULL);
 	return true;
 }
 
