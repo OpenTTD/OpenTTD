@@ -59,6 +59,7 @@ uint16 Industry::counts[NUM_INDUSTRYTYPES];
 
 IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
+IndustryBuildData _industry_builder; ///< In-game manager of industries.
 
 /**
  * This function initialize the spec arrays of both
@@ -2051,7 +2052,7 @@ struct ProbabilityHelper {
 /**
  * Try to create a random industry, during gameplay
  */
-static void MaybeNewIndustry()
+void IndustryBuildData::TryBuildNewIndustry()
 {
 	uint num = 0;
 	ProbabilityHelper cumulative_probs[NUM_INDUSTRYTYPES]; // probability collector
@@ -2454,7 +2455,7 @@ void IndustryDailyLoop()
 	for (uint16 j = 0; j < change_loop; j++) {
 		/* 3% chance that we start a new industry */
 		if (Chance16(3, 100)) {
-			MaybeNewIndustry();
+			_industry_builder.TryBuildNewIndustry();
 		} else {
 			Industry *i = Industry::GetRandom();
 			if (i != NULL) {
