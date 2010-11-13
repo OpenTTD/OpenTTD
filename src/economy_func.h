@@ -42,4 +42,13 @@ void InitializeEconomy();
 void RecomputePrices();
 void AddInflation(bool check_year = true);
 
+/**
+ * Is the economy in recession?
+ * @return \c True if economy is in recession, \c false otherwise.
+ */
+static inline bool EconomyIsInRecession()
+{
+	return _economy.fluct <= 0;
+}
+
 #endif /* ECONOMY_FUNC_H */

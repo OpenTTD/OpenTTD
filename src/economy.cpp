@@ -710,7 +710,7 @@ static void HandleEconomyFluctuations()
 	if (_settings_game.difficulty.economy != 0) {
 		/* When economy is Fluctuating, decrease counter */
 		_economy.fluct--;
-	} else if (_economy.fluct <= 0) {
+	} else if (EconomyIsInRecession()) {
 		/* When it's Steady and we are in recession, end it now */
 		_economy.fluct = -12;
 	} else {

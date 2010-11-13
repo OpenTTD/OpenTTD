@@ -497,7 +497,7 @@ static void TransportIndustryGoods(TileIndex tile)
 			i->produced_cargo_waiting[j] -= cw;
 
 			/* fluctuating economy? */
-			if (_economy.fluct <= 0) cw = (cw + 1) / 2;
+			if (EconomyIsInRecession()) cw = (cw + 1) / 2;
 
 			i->this_month_production[j] += cw;
 
