@@ -143,10 +143,19 @@ void ReleaseDisastersTargetingIndustry(IndustryID);
 #define FOR_ALL_INDUSTRIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Industry, industry_index, var, start)
 #define FOR_ALL_INDUSTRIES(var) FOR_ALL_INDUSTRIES_FROM(var, 0)
 
+/** Data for managing the number of industries of a single industry type. */
+struct IndustryTypeBuildData {
+	uint32 probability;  ///< Relative probability of building this industry.
+
+	void GetIndustryTypeData(IndustryType it);
+};
+
 /**
  * Data for managing the number and type of industries in the game.
  */
 struct IndustryBuildData {
+	IndustryTypeBuildData builddata[NUM_INDUSTRYTYPES]; ///< Industry build data for every industry type.
+
 	void TryBuildNewIndustry();
 };
 

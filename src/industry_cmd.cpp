@@ -1871,6 +1871,8 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
  */
 static uint16 GetIndustryGamePlayProbability(IndustryType it)
 {
+	if (_settings_game.difficulty.number_industries == 0) return 0;
+
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	byte chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
 	if (!ind_spc->enabled || chance == 0 || ind_spc->num_table == 0 ||
@@ -2043,48 +2045,58 @@ void Industry::RecomputeProductionMultipliers()
 	this->production_rate[1] = min(CeilDiv(indspec->production_rate[1] * this->prod_level, PRODLEVEL_DEFAULT), 0xFF);
 }
 
-/** Simple helper that will collect data for the generation of industries */
-struct ProbabilityHelper {
-	uint16 prob;      ///< probability
-	IndustryType ind; ///< Industry id.
-};
+
+/**
+ * Set the #probability field for the industry type \a it for a running game.
+ * @param it Industry type.
+ */
+void IndustryTypeBuildData::GetIndustryTypeData(IndustryType it)
+{
+	this->probability = GetIndustryGamePlayProbability(it);
+}
 
 /**
  * Try to create a random industry, during gameplay
  */
 void IndustryBuildData::TryBuildNewIndustry()
 {
-	uint num = 0;
-	ProbabilityHelper cumulative_probs[NUM_INDUSTRYTYPES]; // probability collector
-	uint16 probability_max = 0;
-
 	/* Generate a list of all possible industries that can be built. */
 	for (IndustryType j = 0; j < NUM_INDUSTRYTYPES; j++) {
-		uint16 chance = GetIndustryGamePlayProbability(j);
+		this->builddata[j].GetIndustryTypeData(j);
+	}
+
+	uint count = 0;        // Number of industry types eligible for build.
+	uint32 total_prob = 0; // Sum of probabilities.
+	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+		uint32 chance = this->builddata[it].probability;
 		if (chance > 0) {
-			probability_max += chance;
-			/* adds the result for this industry */
-			cumulative_probs[num].ind = j;
-			cumulative_probs[num++].prob = probability_max;
+			total_prob += chance;
+			count++;
 		}
 	}
 
-	/* Abort if there is no industry buildable */
-	if (probability_max == 0) return;
+	if (count >= 1) {
+		/* Pick a weighted random industry to build.
+		 * For the case that count == 1, there is no need to draw a random number. */
+		IndustryType it;
+		/* Select an industry type to build (weighted random). */
+		uint32 r = 0; // Initialized to silence the compiler.
+		if (count > 1) r = RandomRange(total_prob);
+		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			uint32 chance = this->builddata[it].probability;
+			if (chance == 0) continue;
+			if (count == 1) break;
+			if (r < chance) break;
+			r -= chance;
+		}
+		assert(it < NUM_INDUSTRYTYPES);
 
-	/* Find a random type, with maximum being what has been evaluate above*/
-	IndustryType rndtype = RandomRange(probability_max);
-	IndustryType j;
-	for (j = 0; j < NUM_INDUSTRYTYPES; j++) {
-		/* and choose the index of the industry that matches as close as possible this random type */
-		if (cumulative_probs[j].prob >= rndtype) break;
+		/* Try to create the industry. */
+		const Industry *ind = PlaceIndustry(it, IACT_RANDOMCREATION, false);
+		if (ind != NULL) {
+			AdvertiseIndustryOpening(ind);
+		}
 	}
-
-	/* try to create 2000 times this industry */
-	const Industry *ind = PlaceIndustry(cumulative_probs[j].ind, IACT_RANDOMCREATION, false);
-	if (ind == NULL) return;
-
-	AdvertiseIndustryOpening(ind);
 }
 
 /**
