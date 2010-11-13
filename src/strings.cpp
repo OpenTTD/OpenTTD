@@ -1443,17 +1443,17 @@ int CDECL StringIDSorter(const StringID *a, const StringID *b)
 }
 
 /**
- * Checks whether the given language is already found.
- * @param newgrflangid NewGRF languages ID to check
- * @return true if and only if a language file with the same language ID has not been found
+ * Get the language with the given NewGRF language ID.
+ * @param newgrflangid NewGRF languages ID to check.
+ * @return The language's metadata, or NULL if it is not known.
  */
-static bool UniqueLanguageFile(byte newgrflangid)
+const LanguageMetadata *GetLanguage(byte newgrflangid)
 {
 	for (const LanguageMetadata *lang = _languages.Begin(); lang != _languages.End(); lang++) {
-		if (newgrflangid == lang->newgrflangid) return false;
+		if (newgrflangid == lang->newgrflangid) return lang;
 	}
 
-	return true;
+	return NULL;
 }
 
 /**
@@ -1499,7 +1499,7 @@ static void GetLanguageList(const char *path)
 			/* Check whether the file is of the correct version */
 			if (!GetLanguageFileHeader(lmd.file, &lmd)) {
 				DEBUG(misc, 3, "%s is not a valid language file", lmd.file);
-			} else if (!UniqueLanguageFile(lmd.newgrflangid)) {
+			} else if (GetLanguage(lmd.newgrflangid) != NULL) {
 				DEBUG(misc, 3, "%s's language ID is already known", lmd.file);
 			} else {
 				*_languages.Append() = lmd;

@@ -103,5 +103,6 @@ extern LanguageList _languages;
 extern const LanguageMetadata *_current_language;
 
 bool ReadLanguagePack(const LanguageMetadata *lang);
+const LanguageMetadata *GetLanguage(byte newgrflangid);
 
 #endif /* LANGUAGE_H */
