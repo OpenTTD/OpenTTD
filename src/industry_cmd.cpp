@@ -2055,25 +2055,55 @@ void IndustryTypeBuildData::GetIndustryTypeData(IndustryType it)
 	this->probability = GetIndustryGamePlayProbability(it);
 }
 
+/** Decide how many industries of each type are needed. */
+void IndustryBuildData::SetupTargetCount()
+{
+	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+		this->builddata[it].GetIndustryTypeData(it);
+	}
+
+	uint total_amount = GetNumberOfIndustries(); // Desired number of industries.
+	uint32 total_prob = 0; // Sum of probabilities.
+	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+		this->builddata[it].target_count = 0;
+		total_prob += this->builddata[it].probability;
+	}
+
+	/* Assign number of industries that should be aimed for, by using the probability as a weight. */
+	while (total_amount > 0) {
+		uint32 r = RandomRange(total_prob);
+		IndustryType it = 0;
+		while (r >= this->builddata[it].probability) {
+			r -= this->builddata[it].probability;
+			it++;
+			assert(it < NUM_INDUSTRYTYPES);
+		}
+		assert(this->builddata[it].probability > 0);
+		this->builddata[it].target_count++;
+		total_amount--;
+	}
+}
+
 /**
  * Try to create a random industry, during gameplay
  */
 void IndustryBuildData::TryBuildNewIndustry()
 {
-	/* Generate a list of all possible industries that can be built. */
-	for (IndustryType j = 0; j < NUM_INDUSTRYTYPES; j++) {
-		this->builddata[j].GetIndustryTypeData(j);
-	}
+	this->SetupTargetCount();
 
+	int missing = 0;       // Number of industries that need to be build.
 	uint count = 0;        // Number of industry types eligible for build.
 	uint32 total_prob = 0; // Sum of probabilities.
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
-		uint32 chance = this->builddata[it].probability;
-		if (chance > 0) {
-			total_prob += chance;
+		int difference = this->builddata[it].target_count - Industry::GetIndustryTypeCount(it);
+		missing += difference;
+		if (difference > 0) {
+			total_prob += difference;
 			count++;
 		}
 	}
+
+	if (missing <= 0 || total_prob == 0) count = 0; // Skip creation of an industry.
 
 	if (count >= 1) {
 		/* Pick a weighted random industry to build.
@@ -2083,13 +2113,13 @@ void IndustryBuildData::TryBuildNewIndustry()
 		uint32 r = 0; // Initialized to silence the compiler.
 		if (count > 1) r = RandomRange(total_prob);
 		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
-			uint32 chance = this->builddata[it].probability;
-			if (chance == 0) continue;
+			int difference = this->builddata[it].target_count - Industry::GetIndustryTypeCount(it);
+			if (difference <= 0) continue; // Too many of this kind.
 			if (count == 1) break;
-			if (r < chance) break;
-			r -= chance;
+			if (r < (uint)difference) break;
+			r -= difference;
 		}
-		assert(it < NUM_INDUSTRYTYPES);
+		assert(it < NUM_INDUSTRYTYPES && this->builddata[it].target_count > Industry::GetIndustryTypeCount(it));
 
 		/* Try to create the industry. */
 		const Industry *ind = PlaceIndustry(it, IACT_RANDOMCREATION, false);

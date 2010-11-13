@@ -146,6 +146,7 @@ void ReleaseDisastersTargetingIndustry(IndustryID);
 /** Data for managing the number of industries of a single industry type. */
 struct IndustryTypeBuildData {
 	uint32 probability;  ///< Relative probability of building this industry.
+	uint16 target_count; ///< Desired number of industries of this type.
 
 	void GetIndustryTypeData(IndustryType it);
 };
@@ -156,6 +157,7 @@ struct IndustryTypeBuildData {
 struct IndustryBuildData {
 	IndustryTypeBuildData builddata[NUM_INDUSTRYTYPES]; ///< Industry build data for every industry type.
 
+	void SetupTargetCount();
 	void TryBuildNewIndustry();
 };
 
