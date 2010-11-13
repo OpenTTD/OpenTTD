@@ -1972,6 +1972,8 @@ void IndustryTypeBuildData::Reset()
 {
 	this->probability  = 0;
 	this->target_count = 0;
+	this->max_wait     = 1;
+	this->wait_count   = 0;
 }
 
 /** Completely reset the industry build data. */
@@ -2150,6 +2152,7 @@ void IndustryBuildData::TryBuildNewIndustry()
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 		int difference = this->builddata[it].target_count - Industry::GetIndustryTypeCount(it);
 		missing += difference;
+		if (this->builddata[it].wait_count > 0) continue; // This type may not be built now.
 		if (difference > 0) {
 			total_prob += difference;
 			count++;
@@ -2166,6 +2169,7 @@ void IndustryBuildData::TryBuildNewIndustry()
 		uint32 r = 0; // Initialized to silence the compiler.
 		if (count > 1) r = RandomRange(total_prob);
 		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			if (this->builddata[it].wait_count > 0) continue; // Type may not be built now.
 			int difference = this->builddata[it].target_count - Industry::GetIndustryTypeCount(it);
 			if (difference <= 0) continue; // Too many of this kind.
 			if (count == 1) break;
@@ -2176,9 +2180,18 @@ void IndustryBuildData::TryBuildNewIndustry()
 
 		/* Try to create the industry. */
 		const Industry *ind = PlaceIndustry(it, IACT_RANDOMCREATION, false);
-		if (ind != NULL) {
+		if (ind == NULL) {
+			this->builddata[it].wait_count = this->builddata[it].max_wait + 1; // Compensate for decrementing below.
+			this->builddata[it].max_wait = min(1000, this->builddata[it].max_wait + 2);
+		} else {
 			AdvertiseIndustryOpening(ind);
+			this->builddata[it].max_wait = max(this->builddata[it].max_wait / 2, 1); // Reduce waiting time of the industry type.
 		}
+	}
+
+	/* Decrement wait counters. */
+	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+		if (this->builddata[it].wait_count > 0) this->builddata[it].wait_count--;
 	}
 }
 
