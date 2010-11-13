@@ -1955,6 +1955,17 @@ static void PlaceInitialIndustry(IndustryType type, bool try_hard)
 	cur_company.Restore();
 }
 
+/**
+ * Get total number of industries existing in the game.
+ * @return Number of industries currently in the game.
+ */
+static uint GetCurrentTotalNumberOfIndustries()
+{
+	int total = 0;
+	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) total += Industry::GetIndustryTypeCount(it);
+	return total;
+}
+
 
 /** Reset the entry. */
 void IndustryTypeBuildData::Reset()
@@ -1966,8 +1977,24 @@ void IndustryTypeBuildData::Reset()
 /** Completely reset the industry build data. */
 void IndustryBuildData::Reset()
 {
+	this->wanted_inds = GetCurrentTotalNumberOfIndustries() << 16;
+
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 		this->builddata[it].Reset();
+	}
+}
+
+/** Monthly update of industry build data. */
+void IndustryBuildData::MonthlyLoop()
+{
+	static const int NEWINDS_PER_MONTH = 0x38000 / (10 * 12); // lower 16 bits is a float fraction, 3.5 industries per decade, divided by 10 * 12 months.
+	if (_settings_game.difficulty.number_industries == 0) return; // 'no industries' setting,
+
+	/* To prevent running out of unused industries for the player to connect,
+	 * add a fraction of new industries each month, but only if the manager can keep up. */
+	uint max_behind = 1 + min(99u, ScaleByMapSize(3)); // At most 2 industries for small maps, and 100 at the biggest map (about 6 months industry build attempts).
+	if (GetCurrentTotalNumberOfIndustries() + max_behind >= (this->wanted_inds >> 16)) {
+		this->wanted_inds += ScaleByMapSize(NEWINDS_PER_MONTH);
 	}
 }
 
@@ -2079,7 +2106,7 @@ void IndustryBuildData::SetupTargetCount()
 		this->builddata[it].GetIndustryTypeData(it);
 	}
 
-	uint total_amount = GetNumberOfIndustries(); // Desired number of industries.
+	uint total_amount = this->wanted_inds >> 16; // Desired total number of industries.
 	uint32 total_prob = 0; // Sum of probabilities.
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 		this->builddata[it].target_count = 0;
@@ -2511,9 +2538,13 @@ void IndustryDailyLoop()
 	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
 	/* perform the required industry changes for the day */
+
+	uint perc = 3; // Between 3% and 9% chance of creating a new industry.
+	if ((_industry_builder.wanted_inds >> 16) > GetCurrentTotalNumberOfIndustries()) {
+		perc = min(9u, perc + (_industry_builder.wanted_inds >> 16) - GetCurrentTotalNumberOfIndustries());
+	}
 	for (uint16 j = 0; j < change_loop; j++) {
-		/* 3% chance that we start a new industry */
-		if (Chance16(3, 100)) {
+		if (Chance16(perc, 100)) {
 			_industry_builder.TryBuildNewIndustry();
 		} else {
 			Industry *i = Industry::GetRandom();
@@ -2533,6 +2564,8 @@ void IndustryDailyLoop()
 void IndustryMonthlyLoop()
 {
 	Backup<CompanyByte> cur_company(_current_company, OWNER_NONE, FILE_LINE);
+
+	_industry_builder.MonthlyLoop();
 
 	Industry *i;
 	FOR_ALL_INDUSTRIES(i) {
