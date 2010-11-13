@@ -286,6 +286,7 @@ STR_SORT_BY_RATING_MIN                                          :Menor avaliaç�
 STR_SORT_BY_ENGINE_ID                                           :No de Reg (padrão)
 STR_SORT_BY_COST                                                :Custo
 STR_SORT_BY_POWER                                               :Potência
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Tração
 STR_SORT_BY_INTRO_DATE                                          :Data de Introdução
 STR_SORT_BY_RUNNING_COST                                        :Custo de Manutenção
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potência por Custo
@@ -1116,6 +1117,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Método
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenhum
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como as outras indústrias
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :em prospecção
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Área plana ao redor das insústrias: {ORANGE}{STRING} ladrilho{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permitir várias indústrias semelhantes por cidade: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Sempre exibir a data completa na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Exibir sinais no lado da circulação: {ORANGE}{STRING}
@@ -1251,13 +1253,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes antes da IA ser suspensa: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}{STRING} dias
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}{STRING} dias/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}desativado
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de serviço predefinido para automóveis: {ORANGE}{STRING} dias/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalo de serviço predefinido para automóveis: {ORANGE}desativado
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}{STRING} dias
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}{STRING} dias/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}desativado
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de serviço predefinido para embarcações: {ORANGE}{STRING} dias
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de serviço predefinido para embarcações: {ORANGE}{STRING} dias/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de serviço predefinido para embarcações: {ORANGE}desativado
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Desativar manutenção quando as quebras estão desativadas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Ativar limite de velocidade dos vagões: {ORANGE}{STRING}
@@ -2069,6 +2071,7 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Seleçã
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecione o objeto a ser construído
 STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Classe do objeto
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objeto
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} ladrilhos
 
 STR_OBJECT_CLASS_LTHS                                           :Faróis
 STR_OBJECT_CLASS_TRNS                                           :Transmissores
@@ -2490,6 +2493,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Arquivos f
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' tem altas chances de causar desincronias e/ou travamentos.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Alterou o estado do vagão motorizado para '{1:ENGINE}' estando fora do depósito.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Muda o tamanho de um veículo para '{1:ENGINE}' apesar de não estar em um depósito.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{VEHICLE}' de '{COMPANY}' tem um tamanho inválido. Provavelmente causado por um NewGRF. O jogo pode travar ou sair de sincronia.
 
@@ -2506,7 +2510,9 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<indústria inv
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Diferenciar caixa alta
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Limpar filtro
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Ativa/Desativa a diferenciação de caixa alta na comparação dos nomes pelo filtro
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Limpar filtro
 
 # Sign window
