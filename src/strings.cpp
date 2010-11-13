@@ -40,10 +40,11 @@
 #include "table/strings.h"
 #include "table/control_codes.h"
 
+char _config_language_file[MAX_PATH];             ///< The file (name) stored in the configuration.
 const LanguageMetadata *_current_language = NULL; ///< The currently loaded language.
 
 DynamicLanguages _dynlang;       ///< Language information of the program.
-TextDirection _current_text_dir; ///< Text direction of the currently selected language
+TextDirection _current_text_dir; ///< Text direction of the currently selected language.
 uint64 _decode_parameters[20];   ///< Global array of string parameters. To access, use #SetDParam.
 
 static char *StationGetSpecialString(char *buff, int x, const char *last);
@@ -1387,7 +1388,7 @@ bool ReadLanguagePack(int lang_index)
 	_current_language = &_dynlang.ent[lang_index];
 	_current_text_dir = (TextDirection)_current_language->text_dir;
 	const char *c_file = strrchr(_current_language->file, PATHSEPCHAR) + 1;
-	strecpy(_dynlang.curr_file, c_file, lastof(_dynlang.curr_file));
+	strecpy(_config_language_file, c_file, lastof(_config_language_file));
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 
 	InitializeSortedCargoSpecs();
@@ -1548,7 +1549,7 @@ void InitializeLanguagePacks()
 		 * configuration file, local environment and last, if nothing found,
 		 * english. If def equals -1, we have not picked a default language */
 		const char *lang_file = strrchr(_dynlang.ent[i].file, PATHSEPCHAR) + 1;
-		if (strcmp(lang_file, _dynlang.curr_file) == 0) chosen_language = i;
+		if (strcmp(lang_file, _config_language_file) == 0) chosen_language = i;
 
 		if (chosen_language == -1) {
 			if (strcmp (_dynlang.ent[i].isocode, "en_GB") == 0) en_GB_fallback    = i;

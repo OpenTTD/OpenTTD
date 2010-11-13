@@ -249,6 +249,8 @@ static const SettingDescGlobVarList _win32_settings[] = {
 };
 #endif /* WIN32 */
 
+extern char _config_language_file[MAX_PATH];
+
 static const SettingDescGlobVarList _misc_settings[] = {
 	SDTG_MMANY("display_opt",     SLE_UINT8, S, 0, _display_opt,       (1 << DO_SHOW_TOWN_NAMES | 1 << DO_SHOW_STATION_NAMES | 1 << DO_SHOW_SIGNS | 1 << DO_FULL_ANIMATION | 1 << DO_FULL_DETAIL | 1 << DO_SHOW_WAYPOINT_NAMES), "SHOW_TOWN_NAMES|SHOW_STATION_NAMES|SHOW_SIGNS|FULL_ANIMATION||FULL_DETAIL|WAYPOINTS", STR_NULL, NULL),
 	 SDTG_BOOL("news_ticker_sound",          S, 0, _news_ticker_sound,     true,    STR_NULL, NULL),
@@ -260,7 +262,7 @@ static const SettingDescGlobVarList _misc_settings[] = {
 	  SDTG_STR("musicdriver",      SLE_STRQ, S, 0, _ini_musicdriver,       NULL,    STR_NULL, NULL),
 	  SDTG_STR("sounddriver",      SLE_STRQ, S, 0, _ini_sounddriver,       NULL,    STR_NULL, NULL),
 	  SDTG_STR("blitter",          SLE_STRQ, S, 0, _ini_blitter,           NULL,    STR_NULL, NULL),
-	  SDTG_STR("language",         SLE_STRB, S, 0, _dynlang.curr_file,     NULL,    STR_NULL, NULL),
+	  SDTG_STR("language",         SLE_STRB, S, 0, _config_language_file,  NULL,    STR_NULL, NULL),
 	SDTG_CONDLIST("resolution",  SLE_INT, 2, S, 0, _cur_resolution,   "640,480",    STR_NULL, NULL, 0, SL_MAX_VERSION), // workaround for implicit lengthof() in SDTG_LIST
 	  SDTG_STR("screenshot_format",SLE_STRB, S, 0, _screenshot_format_name,NULL,    STR_NULL, NULL),
 	  SDTG_STR("savegame_format",  SLE_STRB, S, 0, _savegame_format,       NULL,    STR_NULL, NULL),
