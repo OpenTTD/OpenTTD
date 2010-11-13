@@ -316,9 +316,9 @@ struct GameOptionsWindow : Window {
 
 				/* Sort language names */
 				LangList langs;
-				int current_lang;
-				for (int i = 0; i < _dynlang.num; i++) {
-					if (&_dynlang.ent[i] == _current_language) current_lang = i;
+				int current_lang = 0;
+				for (size_t i = 0; i < _languages.Length(); i++) {
+					if (&_languages[i] == _current_language) current_lang = i;
 					langs[SPECSTR_LANGUAGE_START + i] = i;
 				}
 
@@ -418,7 +418,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case GOW_LANG_DROPDOWN: // Change interface language
-				ReadLanguagePack(&_dynlang.ent[index]);
+				ReadLanguagePack(&_languages[index]);
 				CheckForMissingGlyphsInLoadedLanguagePack();
 				UpdateAllVirtCoords();
 				ReInitAllWindows();
@@ -495,7 +495,7 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_TOWNNAME_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_LANGUAGE, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetFill(1, 0),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_SCREENSHOT_FORMAT, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, GOW_SCREENSHOT_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP), SetFill(1, 0),

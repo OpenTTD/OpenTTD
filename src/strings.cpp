@@ -41,9 +41,9 @@
 #include "table/control_codes.h"
 
 char _config_language_file[MAX_PATH];             ///< The file (name) stored in the configuration.
+LanguageList _languages;                          ///< The actual list of language meta data.
 const LanguageMetadata *_current_language = NULL; ///< The currently loaded language.
 
-DynamicLanguages _dynlang;       ///< Language information of the program.
 TextDirection _current_text_dir; ///< Text direction of the currently selected language.
 uint64 _decode_parameters[20];   ///< Global array of string parameters. To access, use #SetDParam.
 
@@ -1280,7 +1280,7 @@ static char *GetSpecialNameString(char *buff, int ind, int64 *argv, const char *
 	if (IsInsideMM(ind, (SPECSTR_LANGUAGE_START - 0x70E4), (SPECSTR_LANGUAGE_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_LANGUAGE_START - 0x70E4);
 		return strecpy(buff,
-			&_dynlang.ent[i] == _current_language ? _current_language->own_name : _dynlang.ent[i].name, last);
+			&_languages[i] == _current_language ? _current_language->own_name : _languages[i].name, last);
 	}
 
 	/* resolution size? */
@@ -1442,16 +1442,13 @@ int CDECL StringIDSorter(const StringID *a, const StringID *b)
 
 /**
  * Checks whether the given language is already found.
- * @param langs    languages we've found so far
- * @param max      the length of the language list
- * @param language name of the language to check
- * @return true if and only if a language file with the same name has not been found
+ * @param newgrflangid NewGRF languages ID to check
+ * @return true if and only if a language file with the same language ID has not been found
  */
-static bool UniqueLanguageFile(const LanguageMetadata *langs, uint max, const char *language)
+static bool UniqueLanguageFile(byte newgrflangid)
 {
-	for (uint i = 0; i < max; i++) {
-		const char *f_name = strrchr(langs[i].file, PATHSEPCHAR) + 1;
-		if (strcmp(f_name, language) == 0) return false; // duplicates
+	for (const LanguageMetadata *lang = _languages.Begin(); lang != _languages.End(); lang++) {
+		if (newgrflangid == lang->newgrflangid) return false;
 	}
 
 	return true;
@@ -1480,42 +1477,34 @@ static bool GetLanguageFileHeader(const char *file, LanguagePackHeader *hdr)
 
 /**
  * Gets a list of languages from the given directory.
- * @param langs the list to write to
- * @param start the initial offset in the list
- * @param max   the length of the language list
  * @param path  the base directory to search in
- * @return the number of added languages
  */
-static int GetLanguageList(LanguageMetadata *langs, int start, int max, const char *path)
+static void GetLanguageList(const char *path)
 {
-	int i = start;
-
 	DIR *dir = ttd_opendir(path);
 	if (dir != NULL) {
 		struct dirent *dirent;
-		while ((dirent = readdir(dir)) != NULL && i < max) {
+		while ((dirent = readdir(dir)) != NULL) {
 			const char *d_name    = FS2OTTD(dirent->d_name);
 			const char *extension = strrchr(d_name, '.');
 
 			/* Not a language file */
 			if (extension == NULL || strcmp(extension, ".lng") != 0) continue;
 
-			/* Filter any duplicate language-files, first-come first-serve */
-			if (!UniqueLanguageFile(langs, i, d_name)) continue;
-
-			seprintf(langs[i].file, lastof(langs[i].file), "%s%s", path, d_name);
+			LanguageMetadata lmd;
+			seprintf(lmd.file, lastof(lmd.file), "%s%s", path, d_name);
 
 			/* Check whether the file is of the correct version */
-			if (!GetLanguageFileHeader(langs[i].file, &langs[i])) {
-				DEBUG(misc, 3, "%s is not a valid language file", langs[i].file);
-				continue;
+			if (!GetLanguageFileHeader(lmd.file, &lmd)) {
+				DEBUG(misc, 3, "%s is not a valid language file", lmd.file);
+			} else if (!UniqueLanguageFile(lmd.newgrflangid)) {
+				DEBUG(misc, 3, "%s's language ID is already known", lmd.file);
+			} else {
+				*_languages.Append() = lmd;
 			}
-
-			i++;
 		}
 		closedir(dir);
 	}
-	return i - start;
 }
 
 /**
@@ -1525,14 +1514,13 @@ static int GetLanguageList(LanguageMetadata *langs, int start, int max, const ch
 void InitializeLanguagePacks()
 {
 	Searchpath sp;
-	uint language_count = 0;
 
 	FOR_ALL_SEARCHPATHS(sp) {
 		char path[MAX_PATH];
 		FioAppendDirectory(path, lengthof(path), sp, LANG_DIR);
-		language_count += GetLanguageList(_dynlang.ent, language_count, lengthof(_dynlang.ent), path);
+		GetLanguageList(path);
 	}
-	if (language_count == 0) usererror("No available language packs (invalid versions?)");
+	if (_languages.Length() == 0) usererror("No available language packs (invalid versions?)");
 
 	/* Acquire the locale of the current system */
 	const char *lang = GetCurrentLocale("LC_MESSAGES");
@@ -1540,16 +1528,14 @@ void InitializeLanguagePacks()
 
 	const LanguageMetadata *chosen_language   = NULL; ///< Matching the language in the configuartion file or the current locale
 	const LanguageMetadata *language_fallback = NULL; ///< Using pt_PT for pt_BR locale when pt_BR is not available
-	const LanguageMetadata *en_GB_fallback    =  _dynlang.ent; ///< Fallback when no locale-matching language has been found
+	const LanguageMetadata *en_GB_fallback    = _languages.Begin(); ///< Fallback when no locale-matching language has been found
 
-	_dynlang.num = language_count;
-	/* Fill the dynamic languages structures */
-	for (uint i = 0; i < language_count; i++) {
-		const LanguageMetadata *lng = &_dynlang.ent[i];
+	/* Find a proper language. */
+	for (const LanguageMetadata *lng = _languages.Begin(); lng != _languages.End(); lng++) {
 		/* We are trying to find a default language. The priority is by
 		 * configuration file, local environment and last, if nothing found,
 		 * english. */
-		const char *lang_file = strrchr(lang, PATHSEPCHAR) + 1;
+		const char *lang_file = strrchr(lng->file, PATHSEPCHAR) + 1;
 		if (strcmp(lang_file, _config_language_file) == 0) {
 			chosen_language = lng;
 			break;

@@ -12,6 +12,8 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 
+#include "core/smallvec_type.hpp"
+
 /** Header of a language file. */
 struct LanguagePackHeader {
 	static const uint32 IDENT = 0x474E414C; ///< Identifier for OpenTTD language files, big endian for "LANG"
@@ -55,6 +57,12 @@ assert_compile(sizeof(LanguagePackHeader) % 4 == 0);
 struct LanguageMetadata : public LanguagePackHeader {
 	char file[MAX_PATH]; ///< Name of the file we read this data from.
 };
+
+/** Type for the list of language meta data. */
+typedef SmallVector<LanguageMetadata, 4> LanguageList;
+
+/** The actual list of language meta data. */
+extern LanguageList _languages;
 
 /** The currently loaded language. */
 extern const LanguageMetadata *_current_language;

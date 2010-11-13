@@ -95,7 +95,6 @@ static inline void CopyOutDParam(uint64 *dst, int offs, int num)
 	memcpy(dst, _decode_parameters + offs, sizeof(uint64) * (num));
 }
 
-extern DynamicLanguages _dynlang; // defined in strings.cpp
 extern TextDirection _current_text_dir; ///< Text direction of the currently selected language
 
 void InitializeLanguagePacks();

@@ -12,8 +12,6 @@
 #ifndef STRINGS_TYPE_H
 #define STRINGS_TYPE_H
 
-#include "language.h"
-
 /**
  * Numeric value that represents a string, independent of the selected language.
  */
@@ -26,13 +24,6 @@ static const uint MAX_LANG              = 0x7F;   ///< Maximum number of languag
 enum TextDirection {
 	TD_LTR, ///< Text is written left-to-right by default
 	TD_RTL, ///< Text is written right-to-left by default
-};
-
-/** Used for dynamic language support */
-struct DynamicLanguages {
-	int num;                  ///< Number of languages
-	char curr_file[MAX_PATH]; ///< Currently selected language file name without path (needed for saving the filename of the loaded language).
-	LanguageMetadata ent[MAX_LANG]; ///< Information about the languages
 };
 
 /** Special string constants */
