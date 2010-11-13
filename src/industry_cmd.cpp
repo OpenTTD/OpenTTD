@@ -1955,6 +1955,22 @@ static void PlaceInitialIndustry(IndustryType type, bool try_hard)
 	cur_company.Restore();
 }
 
+
+/** Reset the entry. */
+void IndustryTypeBuildData::Reset()
+{
+	this->probability  = 0;
+	this->target_count = 0;
+}
+
+/** Completely reset the industry build data. */
+void IndustryBuildData::Reset()
+{
+	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+		this->builddata[it].Reset();
+	}
+}
+
 /**
  * This function will create random industries during game creation.
  * It will scale the amount of industries by mapsize and difficulty level.
@@ -2005,6 +2021,7 @@ void GenerateIndustries()
 		assert(industry_probs[it] > 0);
 		PlaceInitialIndustry(it, false);
 	}
+	_industry_builder.Reset();
 }
 
 /**
@@ -2541,6 +2558,8 @@ void InitializeIndustries()
 
 	Industry::ResetIndustryCounts();
 	_industry_sound_tile = 0;
+
+	_industry_builder.Reset();
 }
 
 bool IndustrySpec::IsRawIndustry() const

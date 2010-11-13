@@ -151,6 +151,8 @@ struct IndustryTypeBuildData {
 	uint16 max_wait;     ///< Starting number of turns to wait (copied to #wait_count).
 	uint16 wait_count;   ///< Number of turns to wait before trying to build again.
 
+	void Reset();
+
 	void GetIndustryTypeData(IndustryType it);
 };
 
@@ -160,6 +162,8 @@ struct IndustryTypeBuildData {
 struct IndustryBuildData {
 	IndustryTypeBuildData builddata[NUM_INDUSTRYTYPES]; ///< Industry build data for every industry type.
 	uint32 wanted_inds; ///< Number of wanted industries (bits 31-16), and a fraction (bits 15-0).
+
+	void Reset();
 
 	void SetupTargetCount();
 	void TryBuildNewIndustry();

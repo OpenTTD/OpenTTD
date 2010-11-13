@@ -2319,8 +2319,9 @@ bool AfterLoadGame()
 		}
 	}
 
-
 	if (CheckSavegameVersion(152)) {
+		_industry_builder.Reset(); // Initialize industry build data.
+
 		/* The moment vehicles go from hidden to visible changed. This means
 		 * that vehicles don't always get visible anymore causing things to
 		 * get messed up just after loading the savegame. This fixes that. */
