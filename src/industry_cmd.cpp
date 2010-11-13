@@ -1867,11 +1867,15 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
 /**
  * Compute the probability for constructing a new industry during game play.
  * @param it Industry type to compute.
+ * @param [out] min_number Minimal number of industries that should exist at the map.
  * @return Relative probability for the industry to appear.
  */
-static uint16 GetIndustryGamePlayProbability(IndustryType it)
+static uint16 GetIndustryGamePlayProbability(IndustryType it, byte *min_number)
 {
-	if (_settings_game.difficulty.number_industries == 0) return 0;
+	if (_settings_game.difficulty.number_industries == 0) {
+		*min_number = 0;
+		return 0;
+	}
 
 	const IndustrySpec *ind_spc = GetIndustrySpec(it);
 	byte chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
@@ -1879,8 +1883,10 @@ static uint16 GetIndustryGamePlayProbability(IndustryType it)
 			((ind_spc->behaviour & INDUSTRYBEH_BEFORE_1950) && _cur_year > 1950) ||
 			((ind_spc->behaviour & INDUSTRYBEH_AFTER_1960) && _cur_year < 1960) ||
 			!CheckIfCallBackAllowsAvailability(it, IACT_RANDOMCREATION)) {
+		*min_number = 0;
 		return 0;
 	}
+	*min_number = (ind_spc->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) ? 1 : 0;
 	return chance;
 }
 
@@ -1971,6 +1977,7 @@ static uint GetCurrentTotalNumberOfIndustries()
 void IndustryTypeBuildData::Reset()
 {
 	this->probability  = 0;
+	this->min_number   = 0;
 	this->target_count = 0;
 	this->max_wait     = 1;
 	this->wait_count   = 0;
@@ -2093,14 +2100,16 @@ void Industry::RecomputeProductionMultipliers()
 
 
 /**
- * Set the #probability field for the industry type \a it for a running game.
+ * Set the #probability and #min_number fields for the industry type \a it for a running game.
  * @param it Industry type.
- * @return The field has changed value.
+ * @return At least one of the fields has changed value.
  */
 bool IndustryTypeBuildData::GetIndustryTypeData(IndustryType it)
 {
-	uint32 probability = GetIndustryGamePlayProbability(it);
-	bool changed = probability != this->probability;
+	byte min_number;
+	uint32 probability = GetIndustryGamePlayProbability(it, &min_number);
+	bool changed = min_number != this->min_number || probability != this->probability;
+	this->min_number = min_number;
 	this->probability = probability;
 	return changed;
 }
@@ -2118,11 +2127,18 @@ void IndustryBuildData::SetupTargetCount()
 	changed |= num_planned != total_amount;
 	if (!changed) return; // All industries are still the same, no need to re-randomize.
 
+	/* Initialize the target counts. */
+	uint force_build = 0;  // Number of industries that should always be available.
 	uint32 total_prob = 0; // Sum of probabilities.
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
-		this->builddata[it].target_count = 0;
-		total_prob += this->builddata[it].probability;
+		IndustryTypeBuildData *ibd = this->builddata + it;
+		force_build += ibd->min_number;
+		ibd->target_count = ibd->min_number;
+		total_prob += ibd->probability;
 	}
+
+	/* Subtract forced industries from the number of industries available for construction. */
+	total_amount = (total_amount <= force_build) ? 0 : total_amount - force_build;
 
 	/* Assign number of industries that should be aimed for, by using the probability as a weight. */
 	while (total_amount > 0) {
@@ -2149,34 +2165,46 @@ void IndustryBuildData::TryBuildNewIndustry()
 	int missing = 0;       // Number of industries that need to be build.
 	uint count = 0;        // Number of industry types eligible for build.
 	uint32 total_prob = 0; // Sum of probabilities.
+	IndustryType forced_build = NUM_INDUSTRYTYPES; // Industry type that should be forcibly build.
 	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
 		int difference = this->builddata[it].target_count - Industry::GetIndustryTypeCount(it);
 		missing += difference;
 		if (this->builddata[it].wait_count > 0) continue; // This type may not be built now.
 		if (difference > 0) {
+			if (Industry::GetIndustryTypeCount(it) == 0 && this->builddata[it].min_number > 0) {
+				/* An industry that should exist at least once, is not available. Force it, trying the most needed one first. */
+				if (forced_build == NUM_INDUSTRYTYPES ||
+						difference > this->builddata[forced_build].target_count - Industry::GetIndustryTypeCount(forced_build)) {
+					forced_build = it;
+				}
+			}
 			total_prob += difference;
 			count++;
 		}
 	}
 
-	if (EconomyIsInRecession() || missing <= 0 || total_prob == 0) count = 0; // Skip creation of an industry.
+	if (EconomyIsInRecession() || (forced_build == NUM_INDUSTRYTYPES && (missing <= 0 || total_prob == 0))) count = 0; // Skip creation of an industry.
 
 	if (count >= 1) {
-		/* Pick a weighted random industry to build.
+		/* If not forced, pick a weighted random industry to build.
 		 * For the case that count == 1, there is no need to draw a random number. */
 		IndustryType it;
-		/* Select an industry type to build (weighted random). */
-		uint32 r = 0; // Initialized to silence the compiler.
-		if (count > 1) r = RandomRange(total_prob);
-		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
-			if (this->builddata[it].wait_count > 0) continue; // Type may not be built now.
-			int difference = this->builddata[it].target_count - Industry::GetIndustryTypeCount(it);
-			if (difference <= 0) continue; // Too many of this kind.
-			if (count == 1) break;
-			if (r < (uint)difference) break;
-			r -= difference;
+		if (forced_build != NUM_INDUSTRYTYPES) {
+			it = forced_build;
+		} else {
+			/* Non-forced, select an industry type to build (weighted random). */
+			uint32 r = 0; // Initialized to silence the compiler.
+			if (count > 1) r = RandomRange(total_prob);
+			for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
+				if (this->builddata[it].wait_count > 0) continue; // Type may not be built now.
+				int difference = this->builddata[it].target_count - Industry::GetIndustryTypeCount(it);
+				if (difference <= 0) continue; // Too many of this kind.
+				if (count == 1) break;
+				if (r < (uint)difference) break;
+				r -= difference;
+			}
+			assert(it < NUM_INDUSTRYTYPES && this->builddata[it].target_count > Industry::GetIndustryTypeCount(it));
 		}
-		assert(it < NUM_INDUSTRYTYPES && this->builddata[it].target_count > Industry::GetIndustryTypeCount(it));
 
 		/* Try to create the industry. */
 		const Industry *ind = PlaceIndustry(it, IACT_RANDOMCREATION, false);
