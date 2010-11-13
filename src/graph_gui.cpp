@@ -74,7 +74,7 @@ struct GraphLegendWindow : Window {
 
 		if (!Company::IsValidID(cid)) return;
 
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 
 		DrawCompanyIcon(cid, rtl ? r.right - 16 : r.left + 2, r.top + 2 + (FONT_HEIGHT_NORMAL - 10) / 2);
 
@@ -964,7 +964,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		}
 
 		const CargoSpec *cs = _sorted_cargo_specs[widget - CPW_CARGO_FIRST];
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 
 		/* Since the buttons have no text, no images,
 		 * both the text and the coloured box have to be manually painted.
@@ -1196,7 +1196,7 @@ public:
 		uint y = r.top + WD_FRAMERECT_TOP;
 		int icon_y_offset = 1 + (FONT_HEIGHT_NORMAL - 10) / 2;
 
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		uint ordinal_left  = rtl ? r.right - WD_FRAMERECT_LEFT - this->ordinal_width : r.left + WD_FRAMERECT_LEFT;
 		uint ordinal_right = rtl ? r.right - WD_FRAMERECT_LEFT : r.left + WD_FRAMERECT_LEFT + this->ordinal_width;
 		uint icon_left     = r.left + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT + (rtl ? this->text_width : this->ordinal_width);
@@ -1381,7 +1381,7 @@ struct PerformanceRatingDetailWindow : Window {
 				uint left  = 7;
 				uint right = size->width - 7;
 
-				bool rtl = _dynlang.text_dir == TD_RTL;
+				bool rtl = _current_text_dir == TD_RTL;
 				this->score_info_left  = rtl ? right - score_info_width : left;
 				this->score_info_right = rtl ? right : left + score_info_width;
 
@@ -1444,7 +1444,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 		/* Calculate the %-bar */
 		uint x = Clamp(val, 0, needed) * this->bar_width / needed;
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		if (rtl) {
 			x = this->bar_right - x;
 		} else {

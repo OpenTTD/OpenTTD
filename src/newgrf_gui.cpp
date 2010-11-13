@@ -243,7 +243,7 @@ struct NewGRFParametersWindow : public Window {
 			return;
 		}
 
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		uint buttons_left = rtl ? r.right - 23 : r.left + 4;
 		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : 28);
 		uint text_right   = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
@@ -316,7 +316,7 @@ struct NewGRFParametersWindow : public Window {
 
 				const NWidgetBase *wid = this->GetWidget<NWidgetBase>(GRFPAR_WIDGET_BACKGROUND);
 				int x = pt.x - wid->pos_x;
-				if (_dynlang.text_dir == TD_RTL) x = wid->current_x - x;
+				if (_current_text_dir == TD_RTL) x = wid->current_x - x;
 				x -= 4;
 
 				GRFParameterInfo *par_info = (num < this->grf_config->param_info.Length()) ? this->grf_config->param_info[num] : NULL;
@@ -700,7 +700,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 				int sprite_offset_y = (step_height - 10) / 2;
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 
-				bool rtl = _dynlang.text_dir == TD_RTL;
+				bool rtl = _current_text_dir == TD_RTL;
 				uint text_left    = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + 25;
 				uint text_right   = rtl ? r.right - 25 : r.right - WD_FRAMERECT_RIGHT;
 				uint square_left  = rtl ? r.right - 15 : r.left + 5;

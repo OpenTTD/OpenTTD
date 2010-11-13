@@ -842,7 +842,7 @@ void DrawEngineList(VehicleType type, int l, int r, int y, const GUIEngineList *
 	assert_compile(lengthof(sprite_y_offsets) == lengthof(sprite_widths));
 	assert(max <= eng_list->Length());
 
-	bool rtl = _dynlang.text_dir == TD_RTL;
+	bool rtl = _current_text_dir == TD_RTL;
 	int step_size = GetEngineListHeight(type);
 	int sprite_width = sprite_widths[type];
 

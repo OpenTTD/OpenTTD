@@ -547,7 +547,7 @@ public:
 
 	void Draw(int left, int right, int top, int bottom, bool sel, int bg_colour) const
 	{
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + this->result, rtl ? right - 16 : left + 16, top + 7);
 		DrawString(rtl ? left + 2 : left + 32, rtl ? right - 32 : right - 2, top + max(0, 13 - FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
@@ -687,7 +687,7 @@ public:
 	{
 		if (widget != SCLW_WIDGET_MATRIX) return;
 
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 
 		/* Horizontal coordinates of scheme name column. */
 		const NWidgetBase *nwi = this->GetWidget<NWidgetBase>(SCLW_WIDGET_SPACER_DROPDOWN);
@@ -776,7 +776,7 @@ public:
 				if (j >= LS_END) return;
 
 				/* If clicking on the left edge, toggle using the livery */
-				if (_dynlang.text_dir == TD_RTL ? pt.x - wid->pos_x > wid->current_x - TEXT_INDENT : pt.x - wid->pos_x < TEXT_INDENT) {
+				if (_current_text_dir == TD_RTL ? pt.x - wid->pos_x > wid->current_x - TEXT_INDENT : pt.x - wid->pos_x < TEXT_INDENT) {
 					DoCommandP(0, j | (2 << 8), !Company::Get((CompanyID)this->window_number)->livery[j].in_use, CMD_SET_COMPANY_COLOUR);
 				}
 

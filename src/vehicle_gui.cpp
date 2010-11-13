@@ -1032,7 +1032,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	int left = r.left + WD_MATRIX_LEFT;
 	int right = r.right - WD_MATRIX_RIGHT;
 	int width = right - left;
-	bool rtl = _dynlang.text_dir == TD_RTL;
+	bool rtl = _current_text_dir == TD_RTL;
 
 	int text_offset = GetDigitWidth() * this->unitnumber_digits + WD_FRAMERECT_RIGHT;
 	int text_left  = left  + (rtl ?           0 : text_offset);
@@ -1739,7 +1739,7 @@ struct VehicleDetailsWindow : Window {
 
 			case VLD_WIDGET_MIDDLE_DETAILS: {
 				/* For other vehicles, at the place of the matrix. */
-				bool rtl = _dynlang.text_dir == TD_RTL;
+				bool rtl = _current_text_dir == TD_RTL;
 				uint sprite_width = max<uint>(GetSprite(v->GetImage(rtl ? DIR_E : DIR_W), ST_NORMAL)->width, 70U) + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 
 				uint text_left  = r.left  + (rtl ? 0 : sprite_width);

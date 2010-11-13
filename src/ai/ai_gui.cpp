@@ -290,7 +290,7 @@ struct AISettingsWindow : public Window {
 		int i = 0;
 		for (; !this->vscroll->IsVisible(i); i++) it++;
 
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		uint buttons_left = rtl ? r.right - 23 : r.left + 4;
 		uint text_left    = r.left + (rtl ? WD_FRAMERECT_LEFT : 28);
 		uint text_right   = r.right - (rtl ? 28 : WD_FRAMERECT_RIGHT);
@@ -360,7 +360,7 @@ struct AISettingsWindow : public Window {
 				bool bool_item = (config_item.flags & AICONFIG_BOOLEAN) != 0;
 
 				int x = pt.x - wid->pos_x;
-				if (_dynlang.text_dir == TD_RTL) x = wid->current_x - x;
+				if (_current_text_dir == TD_RTL) x = wid->current_x - x;
 				x -= 4;
 				/* One of the arrows is clicked (or green/red rect in case of bool value) */
 				if (IsInsideMM(x, 0, 21)) {

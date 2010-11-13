@@ -413,7 +413,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 	if (auto_width) width = max(width, max_item_width);
 
-	Point dw_pos = { w->left + (_dynlang.text_dir == TD_RTL ? wi_rect.right + 1 - width : wi_rect.left), top};
+	Point dw_pos = { w->left + (_current_text_dir == TD_RTL ? wi_rect.right + 1 - width : wi_rect.left), top};
 	Dimension dw_size = {width, height};
 	new DropdownWindow(w, list, selected, button, instant_close, dw_pos, dw_size, wi_colour, scroll);
 }

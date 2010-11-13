@@ -144,7 +144,7 @@ public:
 		int exclusive_width      = exclusive_size.width;
 		int exclusive_y_offset   = (FONT_HEIGHT_NORMAL - exclusive_size.height) / 2;
 
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		uint text_left      = left  + (rtl ? 0 : icon_width + exclusive_width + 4);
 		uint text_right     = right - (rtl ? icon_width + exclusive_width + 4 : 0);
 		uint icon_left      = rtl ? right - icon_width : left;
@@ -398,7 +398,7 @@ public:
 		if (cargo_needed_for_growth > 0) {
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH);
 
-			bool rtl = _dynlang.text_dir == TD_RTL;
+			bool rtl = _current_text_dir == TD_RTL;
 			uint cargo_text_left = r.left + WD_FRAMERECT_LEFT + (rtl ? 0 : 20);
 			uint cargo_text_right = r.right - WD_FRAMERECT_RIGHT - (rtl ? 20 : 0);
 

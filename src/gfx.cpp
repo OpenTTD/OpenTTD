@@ -346,7 +346,7 @@ static UChar *HandleBiDiAndArabicShapes(UChar *buffer)
 	UBiDi *para = ubidi_openSized((int32_t)length, 0, &err);
 	if (para == NULL) return buffer;
 
-	ubidi_setPara(para, input_output, (int32_t)length, _dynlang.text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, NULL, &err);
+	ubidi_setPara(para, input_output, (int32_t)length, _current_text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, NULL, &err);
 	ubidi_writeReordered(para, intermediate, (int32_t)length, UBIDI_REMOVE_BIDI_CONTROLS, &err);
 	length = u_shapeArabic(intermediate, (int32_t)length, input_output, lengthof(input_output), U_SHAPE_TEXT_DIRECTION_VISUAL_LTR | U_SHAPE_LETTERS_SHAPE, &err);
 	ubidi_close(para);
@@ -555,7 +555,7 @@ static int DrawString(int left, int right, int top, char *str, const char *last,
 	}
 
 	/* In case we have a RTL language we swap the alignment. */
-	if (!(align & SA_FORCE) && _dynlang.text_dir == TD_RTL && !(align & SA_STRIP) && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
+	if (!(align & SA_FORCE) && _current_text_dir == TD_RTL && !(align & SA_STRIP) && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
 
 	for (UChar **iter = setx_offsets.Begin(); iter != setx_offsets.End(); iter++) {
 		UChar *to_draw = *iter;

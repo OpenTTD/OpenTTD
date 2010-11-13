@@ -55,7 +55,7 @@ void CcBuildWagon(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p
  */
 static int HighlightDragPosition(int px, int max_width, VehicleID selection)
 {
-	bool rtl = _dynlang.text_dir == TD_RTL;
+	bool rtl = _current_text_dir == TD_RTL;
 
 	assert(selection != INVALID_VEHICLE);
 	Point offset;
@@ -85,7 +85,7 @@ static int HighlightDragPosition(int px, int max_width, VehicleID selection)
  */
 void DrawTrainImage(const Train *v, int left, int right, int y, VehicleID selection, int skip, VehicleID drag_dest)
 {
-	bool rtl = _dynlang.text_dir == TD_RTL;
+	bool rtl = _current_text_dir == TD_RTL;
 	Direction dir = rtl ? DIR_E : DIR_W;
 
 	DrawPixelInfo tmp_dpi, *old_dpi;
@@ -335,7 +335,7 @@ void DrawTrainDetails(const Train *v, int left, int right, int y, int vscroll_po
 {
 	/* draw the first 3 details tabs */
 	if (det_tab != TDW_TAB_TOTALS) {
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		Direction dir = rtl ? DIR_E : DIR_W;
 		int x = rtl ? right : left;
 		int sprite_y_offset = 4 + (FONT_HEIGHT_NORMAL - 10) / 2;

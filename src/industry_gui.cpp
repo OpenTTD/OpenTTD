@@ -1654,7 +1654,7 @@ struct CargoesField {
 
 					/* Draw the industry legend. */
 					int blob_left, blob_right;
-					if (_dynlang.text_dir == TD_RTL) {
+					if (_current_text_dir == TD_RTL) {
 						blob_right = xpos2 - BLOB_DISTANCE;
 						blob_left  = blob_right - BLOB_WIDTH;
 					} else {
@@ -1669,7 +1669,7 @@ struct CargoesField {
 
 				/* Draw the other_produced/other_accepted cargoes. */
 				const CargoID *other_right, *other_left;
-				if (_dynlang.text_dir == TD_RTL) {
+				if (_current_text_dir == TD_RTL) {
 					other_right = this->u.industry.other_accepted;
 					other_left  = this->u.industry.other_produced;
 				} else {
@@ -1713,7 +1713,7 @@ struct CargoesField {
 				}
 
 				const CargoID *hor_left, *hor_right;
-				if (_dynlang.text_dir == TD_RTL) {
+				if (_current_text_dir == TD_RTL) {
 					hor_left  = this->u.cargo.cust_cargoes;
 					hor_right = this->u.cargo.supp_cargoes;
 				} else {
@@ -2434,7 +2434,7 @@ struct IndustryCargoesWindow : public Window {
 			if (vpos + row_height >= 0) {
 				int xpos = left_pos;
 				int col, dir;
-				if (_dynlang.text_dir == TD_RTL) {
+				if (_current_text_dir == TD_RTL) {
 					col = last_column;
 					dir = -1;
 				} else {
@@ -2490,7 +2490,7 @@ struct IndustryCargoesWindow : public Window {
 		/* Return both positions, compensating for RTL languages (which works due to the equal symmetry in both displays). */
 		fieldxy->y = row;
 		xy->y = vpos;
-		if (_dynlang.text_dir == TD_RTL) {
+		if (_current_text_dir == TD_RTL) {
 			fieldxy->x = num_columns - column;
 			xy->x = ((column & 1) ? CargoesField::CARGO_FIELD_WIDTH : CargoesField::industry_width) - xpos;
 		} else {

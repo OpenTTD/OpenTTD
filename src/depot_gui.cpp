@@ -273,7 +273,7 @@ struct DepotWindow : Window {
 		bool free_wagon = false;
 		int sprite_y = y + (this->resize.step_height - GetVehicleHeight(v->type)) / 2;
 
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		int image_left  = rtl ? left  + this->count_width  : left  + this->header_width;
 		int image_right = rtl ? right - this->header_width : right - this->count_width;
 
@@ -331,7 +331,7 @@ struct DepotWindow : Window {
 	{
 		if (widget != DEPOT_WIDGET_MATRIX) return;
 
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 
 		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
 		uint16 mat_data = this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX)->widget_data;
@@ -389,7 +389,7 @@ struct DepotWindow : Window {
 	{
 		const NWidgetCore *matrix_widget = this->GetWidget<NWidgetCore>(DEPOT_WIDGET_MATRIX);
 		/* In case of RTL the widgets are swapped as a whole */
-		if (_dynlang.text_dir == TD_RTL) x = matrix_widget->current_x - x;
+		if (_current_text_dir == TD_RTL) x = matrix_widget->current_x - x;
 
 		uint xt = 0, xm = 0, ym = 0;
 		if (this->type == VEH_TRAIN) {

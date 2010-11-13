@@ -1046,7 +1046,7 @@ uint SettingEntry::Draw(GameSettings *settings_ptr, int left, int right, int bas
 {
 	if (cur_row >= max_row) return cur_row;
 
-	bool rtl = _dynlang.text_dir == TD_RTL;
+	bool rtl = _current_text_dir == TD_RTL;
 	int offset = rtl ? -4 : 4;
 	int level_width = rtl ? -LEVEL_WIDTH : LEVEL_WIDTH;
 
@@ -1126,7 +1126,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 	bool editable = true;
 	bool disabled = false;
 
-	bool rtl = _dynlang.text_dir == TD_RTL;
+	bool rtl = _current_text_dir == TD_RTL;
 	uint buttons_left = rtl ? right - 19 : left;
 	uint text_left  = left + (rtl ? 0 : 25);
 	uint text_right = right - (rtl ? 25 : 0);
@@ -1566,7 +1566,7 @@ struct GameSettingsWindow : Window {
 
 		if (pe == NULL) return;  // Clicked below the last setting of the page
 
-		int x = (_dynlang.text_dir == TD_RTL ? this->width - pt.x : pt.x) - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
+		int x = (_current_text_dir == TD_RTL ? this->width - pt.x : pt.x) - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
 		if (x < 0) return;  // Clicked left of the entry
 
 		if ((pe->flags & SEF_KIND_MASK) == SEF_SUBTREE_KIND) {
@@ -1631,7 +1631,7 @@ struct GameSettingsWindow : Window {
 							this->clicked_entry->SetButtons(0);
 						}
 						this->clicked_entry = pe;
-						this->clicked_entry->SetButtons((x >= 10) != (_dynlang.text_dir == TD_RTL) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
+						this->clicked_entry->SetButtons((x >= 10) != (_current_text_dir == TD_RTL) ? SEF_RIGHT_DEPRESSED : SEF_LEFT_DEPRESSED);
 						this->flags4 |= WF_TIMEOUT_BEGIN;
 						_left_button_clicked = false;
 					}
@@ -1753,7 +1753,7 @@ void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clic
 	DrawSprite(SPR_ARROW_RIGHT, PAL_NONE, x + WD_IMGBTN_LEFT + 10, y + WD_IMGBTN_TOP);
 
 	/* Grey out the buttons that aren't clickable */
-	bool rtl = _dynlang.text_dir == TD_RTL;
+	bool rtl = _current_text_dir == TD_RTL;
 	if (rtl ? !clickable_right : !clickable_left) {
 		GfxFillRect(x +  1, y + 1, x +  1 + 8, y + 8, colour, FILLRECT_CHECKER);
 	}

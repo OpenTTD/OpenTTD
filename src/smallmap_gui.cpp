@@ -1081,7 +1081,7 @@ public:
 			case SM_WIDGET_LEGEND: {
 				uint columns = this->GetNumberColumnsLegend(r.right - r.left + 1);
 				uint number_of_rows = max(this->map_type == SMT_INDUSTRY ? CeilDiv(_smallmap_industry_count, columns) : 0, this->min_number_of_fixed_rows);
-				bool rtl = _dynlang.text_dir == TD_RTL;
+				bool rtl = _current_text_dir == TD_RTL;
 				uint y_org = r.top + WD_FRAMERECT_TOP;
 				uint x = rtl ? r.right - this->column_width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT;
 				uint y = y_org;
@@ -1226,7 +1226,7 @@ public:
 					uint number_of_rows = max(CeilDiv(_smallmap_industry_count, columns), this->min_number_of_fixed_rows);
 					if (line >= number_of_rows) break;
 
-					bool rtl = _dynlang.text_dir == TD_RTL;
+					bool rtl = _current_text_dir == TD_RTL;
 					int x = pt.x - wi->pos_x;
 					if (rtl) x = wi->current_x - x;
 					uint column = (x - WD_FRAMERECT_LEFT) / this->column_width;

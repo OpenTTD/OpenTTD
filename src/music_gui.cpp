@@ -580,9 +580,9 @@ struct MusicWindow : public Window {
 
 			/* Hack-ish: set the proper widget data; only needs to be done once
 			 * per (Re)Init as that's the only time the language changes. */
-			case MW_PREV: this->GetWidget<NWidgetCore>(MW_PREV)->widget_data = _dynlang.text_dir == TD_RTL ? SPR_IMG_SKIP_TO_NEXT : SPR_IMG_SKIP_TO_PREV; break;
-			case MW_NEXT: this->GetWidget<NWidgetCore>(MW_NEXT)->widget_data = _dynlang.text_dir == TD_RTL ? SPR_IMG_SKIP_TO_PREV : SPR_IMG_SKIP_TO_NEXT; break;
-			case MW_PLAY: this->GetWidget<NWidgetCore>(MW_PLAY)->widget_data = _dynlang.text_dir == TD_RTL ? SPR_IMG_PLAY_MUSIC_RTL : SPR_IMG_PLAY_MUSIC; break;
+			case MW_PREV: this->GetWidget<NWidgetCore>(MW_PREV)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_NEXT : SPR_IMG_SKIP_TO_PREV; break;
+			case MW_NEXT: this->GetWidget<NWidgetCore>(MW_NEXT)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_SKIP_TO_PREV : SPR_IMG_SKIP_TO_NEXT; break;
+			case MW_PLAY: this->GetWidget<NWidgetCore>(MW_PLAY)->widget_data = _current_text_dir == TD_RTL ? SPR_IMG_PLAY_MUSIC_RTL : SPR_IMG_PLAY_MUSIC; break;
 		}
 	}
 
@@ -631,7 +631,7 @@ struct MusicWindow : public Window {
 				DrawFrameRect(r.left, r.top + 2, r.right, r.bottom - 2, COLOUR_GREY, FR_LOWERED);
 				byte volume = (widget == MW_MUSIC_VOL) ? msf.music_vol : msf.effect_vol;
 				int x = (volume * (r.right - r.left) / 127);
-				if (_dynlang.text_dir == TD_RTL) {
+				if (_current_text_dir == TD_RTL) {
 					x = r.right - x;
 				} else {
 					x += r.left;
@@ -684,7 +684,7 @@ struct MusicWindow : public Window {
 				byte *vol = (widget == MW_MUSIC_VOL) ? &msf.music_vol : &msf.effect_vol;
 
 				byte new_vol = x * 127 / this->GetWidget<NWidgetBase>(widget)->current_x;
-				if (_dynlang.text_dir == TD_RTL) new_vol = 127 - new_vol;
+				if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
 				if (new_vol != *vol) {
 					*vol = new_vol;
 					if (widget == MW_MUSIC_VOL) MusicVolumeChanged(new_vol);

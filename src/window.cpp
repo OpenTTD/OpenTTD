@@ -573,7 +573,7 @@ void Window::ReInit(int rx, int ry)
 	this->OnInit();
 	/* Re-initialize the window from the ground up. No need to change the nested_array, as all widgets stay where they are. */
 	this->nested_root->SetupSmallestSize(this, false);
-	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _dynlang.text_dir == TD_RTL);
+	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _current_text_dir == TD_RTL);
 	this->width  = this->nested_root->smallest_x;
 	this->height = this->nested_root->smallest_y;
 	this->resize.step_width  = this->nested_root->resize_x;
@@ -907,7 +907,7 @@ void Window::InitializeData(const WindowDesc *desc, WindowNumber window_number)
 		this->nested_root->SetupSmallestSize(this, false);
 	}
 	/* Initialize to smallest size. */
-	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _dynlang.text_dir == TD_RTL);
+	this->nested_root->AssignSizePosition(ST_SMALLEST, 0, 0, this->nested_root->smallest_x, this->nested_root->smallest_y, _current_text_dir == TD_RTL);
 
 	/* Further set up window properties,
 	 * this->left, this->top, this->width, this->height, this->resize.width, and this->resize.height are initialized later. */
@@ -1186,7 +1186,7 @@ Point GetToolbarAlignedWindowPosition(int window_width)
 {
 	const Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 	assert(w != NULL);
-	Point pt = { _dynlang.text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, w->top + w->height };
+	Point pt = { _current_text_dir == TD_RTL ? w->left : (w->left + w->width) - window_width, w->top + w->height };
 	return pt;
 }
 
@@ -1594,7 +1594,7 @@ void ResizeWindow(Window *w, int delta_x, int delta_y)
 		assert(w->nested_root->resize_x == 0 || new_xinc % w->nested_root->resize_x == 0);
 		assert(w->nested_root->resize_y == 0 || new_yinc % w->nested_root->resize_y == 0);
 
-		w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, _dynlang.text_dir == TD_RTL);
+		w->nested_root->AssignSizePosition(ST_RESIZE, 0, 0, w->nested_root->smallest_x + new_xinc, w->nested_root->smallest_y + new_yinc, _current_text_dir == TD_RTL);
 		w->width  = w->nested_root->current_x;
 		w->height = w->nested_root->current_y;
 	}
@@ -1861,7 +1861,7 @@ static EventState HandleScrollbarScrolling()
 
 			if (sb->type == NWID_HSCROLLBAR) {
 				i = _cursor.pos.x - _cursorpos_drag_start.x;
-				rtl = _dynlang.text_dir == TD_RTL;
+				rtl = _current_text_dir == TD_RTL;
 			} else {
 				i = _cursor.pos.y - _cursorpos_drag_start.y;
 			}

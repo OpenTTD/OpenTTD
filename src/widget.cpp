@@ -52,7 +52,7 @@ static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom, bo
 	if (count != 0) bottom -= (count - pos - cap) * height / count;
 
 	Point pt;
-	if (horizontal && _dynlang.text_dir == TD_RTL) {
+	if (horizontal && _current_text_dir == TD_RTL) {
 		pt.x = rev_base - (bottom - 1);
 		pt.y = rev_base - top;
 	} else {
@@ -78,7 +78,7 @@ static void ScrollbarClickPositioning(Window *w, NWidgetScrollbar *sb, int x, in
 
 	if (sb->type == NWID_HSCROLLBAR) {
 		pos = x;
-		rtl = _dynlang.text_dir == TD_RTL;
+		rtl = _current_text_dir == TD_RTL;
 	} else {
 		pos = y;
 	}
@@ -387,7 +387,7 @@ static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
 	if (str != STR_NULL) dy1 = FONT_HEIGHT_NORMAL / 2 - 1;
 	int dy2 = dy1 + 1;
 
-	if (_dynlang.text_dir == TD_LTR) {
+	if (_current_text_dir == TD_LTR) {
 		/* Line from upper left corner to start of text */
 		GfxFillRect(r.left, r.top + dy1, r.left + 4, r.top + dy1, c1);
 		GfxFillRect(r.left + 1, r.top + dy2, r.left + 4, r.top + dy2, c2);
@@ -514,7 +514,7 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
  */
 static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, StringID str)
 {
-	if (_dynlang.text_dir == TD_LTR) {
+	if (_current_text_dir == TD_LTR) {
 		DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
 		DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
 		DrawString(r.right - (clicked_dropdown ? 10 : 11), r.right, r.top + (clicked_dropdown ? 2 : 1), DOWNARROW, TC_BLACK, SA_HOR_CENTER);
@@ -564,7 +564,7 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
 	const NWidgetBase *nwid = this->GetWidget<NWidgetBase>(widget);
 
 	int offset = this->IsWidgetLowered(widget) ? 1 : 0;
-	int base = offset + nwid->pos_x + (_dynlang.text_dir == TD_LTR ? nwid->current_x - WD_SORTBUTTON_ARROW_WIDTH : 0);
+	int base = offset + nwid->pos_x + (_current_text_dir == TD_LTR ? nwid->current_x - WD_SORTBUTTON_ARROW_WIDTH : 0);
 	int top = nwid->pos_y;
 
 	DrawString(base, base + WD_SORTBUTTON_ARROW_WIDTH, top + 1 + offset, state == SBS_DOWN ? DOWNARROW : UPARROW, TC_BLACK, SA_HOR_CENTER);
@@ -2014,8 +2014,8 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_PUSHARROWBTN: {
 			SpriteID sprite;
 			switch (this->widget_data) {
-				case AWV_DECREASE: sprite = _dynlang.text_dir != TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
-				case AWV_INCREASE: sprite = _dynlang.text_dir == TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
+				case AWV_DECREASE: sprite = _current_text_dir != TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
+				case AWV_INCREASE: sprite = _current_text_dir == TD_RTL ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT; break;
 				case AWV_LEFT:     sprite = SPR_ARROW_LEFT;  break;
 				case AWV_RIGHT:    sprite = SPR_ARROW_RIGHT; break;
 				default: NOT_REACHED();
@@ -2098,7 +2098,7 @@ void NWidgetLeaf::Draw(const Window *w)
  */
 bool NWidgetLeaf::ButtonHit(const Point &pt)
 {
-	if (_dynlang.text_dir == TD_LTR) {
+	if (_current_text_dir == TD_LTR) {
 		int button_width = this->pos_x + this->current_x - 12;
 		return pt.x < button_width;
 	} else {

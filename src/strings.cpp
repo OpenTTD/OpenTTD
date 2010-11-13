@@ -40,8 +40,9 @@
 #include "table/strings.h"
 #include "table/control_codes.h"
 
-DynamicLanguages _dynlang;     ///< Language information of the program.
-uint64 _decode_parameters[20]; ///< Global array of string parameters. To access, use #SetDParam.
+DynamicLanguages _dynlang;       ///< Language information of the program.
+TextDirection _current_text_dir; ///< Text direction of the currently selected language
+uint64 _decode_parameters[20];   ///< Global array of string parameters. To access, use #SetDParam.
 
 static char *StationGetSpecialString(char *buff, int x, const char *last);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last);
@@ -1385,7 +1386,7 @@ bool ReadLanguagePack(int lang_index)
 	strecpy(_dynlang.curr_file, c_file, lastof(_dynlang.curr_file));
 
 	_dynlang.curr = lang_index;
-	_dynlang.text_dir = (TextDirection)lang_pack->text_dir;
+	_current_text_dir = (TextDirection)lang_pack->text_dir;
 	SetCurrentGrfLangID(_langpack->newgrflangid);
 	InitializeSortedCargoSpecs();
 	SortIndustryTypes();
@@ -1701,7 +1702,7 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 	 * exactly three characters, so it replaces the "XXX" with
 	 * the colour marker.
 	 */
-	if (_dynlang.text_dir != TD_LTR) {
+	if (_current_text_dir != TD_LTR) {
 		static char *err_str = strdup("XXXThis version of OpenTTD does not support right-to-left languages. Recompile with icu enabled.");
 		Utf8Encode(err_str, SCC_YELLOW);
 		SetDParamStr(0, err_str);

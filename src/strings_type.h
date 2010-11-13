@@ -37,7 +37,6 @@ struct DynamicLanguages {
 	int num;                  ///< Number of languages
 	int curr;                 ///< Currently selected language index
 	char curr_file[MAX_PATH]; ///< Currently selected language file name without path (needed for saving the filename of the loaded language).
-	TextDirection text_dir;   ///< Text direction of the currently selected language
 	Language ent[MAX_LANG];   ///< Information about the languages
 };
 

@@ -373,7 +373,7 @@ Window *ShowTerraformToolbar(Window *link)
 	w->top -= w->height;
 	w->SetDirty();
 	/* Put the linked toolbar to the left / right of it. */
-	link->left = w->left + (_dynlang.text_dir == TD_RTL ? w->width : -link->width);
+	link->left = w->left + (_current_text_dir == TD_RTL ? w->width : -link->width);
 	link->top  = w->top;
 	link->SetDirty();
 

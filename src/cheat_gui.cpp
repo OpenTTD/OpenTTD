@@ -163,7 +163,7 @@ struct CheatWindow : Window {
 		int y = r.top + WD_FRAMERECT_TOP + this->header_height;
 		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, y, STR_CHEATS_WARNING, TC_FROMSTRING, SA_CENTER);
 
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		uint box_left    = rtl ? r.right - 12 : r.left + 5;
 		uint button_left = rtl ? r.right - 40 : r.left + 20;
 		uint text_left   = r.left + (rtl ? WD_FRAMERECT_LEFT: 50);
@@ -280,7 +280,7 @@ struct CheatWindow : Window {
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(CW_PANEL);
 		uint btn = (pt.y - wid->pos_y - WD_FRAMERECT_TOP - this->header_height) / (FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL);
 		uint x = pt.x - wid->pos_x;
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		if (rtl) x = wid->current_x - x;
 
 		/* Not clicking a button? */

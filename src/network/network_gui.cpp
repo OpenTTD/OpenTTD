@@ -1543,7 +1543,7 @@ struct NetworkLobbyWindow : public Window {
 
 	void DrawMatrix(const Rect &r) const
 	{
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		uint left = r.left + WD_FRAMERECT_LEFT;
 		uint right = r.right - WD_FRAMERECT_RIGHT;
 
@@ -2064,7 +2064,7 @@ struct NetworkClientListWindow : Window {
 	{
 		if (widget != CLW_PANEL) return;
 
-		bool rtl = _dynlang.text_dir == TD_RTL;
+		bool rtl = _current_text_dir == TD_RTL;
 		int icon_y_offset = 1 + (FONT_HEIGHT_NORMAL - 10) / 2;
 		uint y = r.top + WD_FRAMERECT_TOP;
 		uint left = r.left + WD_FRAMERECT_LEFT;

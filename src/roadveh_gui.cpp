@@ -131,7 +131,7 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
  */
 void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID selection)
 {
-	bool rtl = _dynlang.text_dir == TD_RTL;
+	bool rtl = _current_text_dir == TD_RTL;
 	Direction dir = rtl ? DIR_E : DIR_W;
 	const RoadVehicle *u = RoadVehicle::From(v);
 

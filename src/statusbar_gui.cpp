@@ -62,14 +62,14 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int scroll_pos, int left
 	if (!FillDrawPixelInfo(&tmp_dpi, left, top, right - left, bottom)) return true;
 
 	int width = GetStringBoundingBox(buffer).width;
-	int pos = (_dynlang.text_dir == TD_RTL) ? (scroll_pos - width) : (right - scroll_pos - left);
+	int pos = (_current_text_dir == TD_RTL) ? (scroll_pos - width) : (right - scroll_pos - left);
 
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
 	DrawString(pos, INT16_MAX, 0, buffer, TC_LIGHT_BLUE, SA_LEFT | SA_FORCE);
 	_cur_dpi = old_dpi;
 
-	return (_dynlang.text_dir == TD_RTL) ? (pos < right - left) : (pos + width > 0);
+	return (_current_text_dir == TD_RTL) ? (pos < right - left) : (pos + width > 0);
 }
 
 enum StatusbarWidget {

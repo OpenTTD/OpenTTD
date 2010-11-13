@@ -229,7 +229,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 					return;
 				}
 
-				bool rtl = _dynlang.text_dir == TD_RTL;
+				bool rtl = _current_text_dir == TD_RTL;
 				int sprite_offset_y = (FONT_HEIGHT_NORMAL - 10) / 2 + 1;
 				uint icon_left  = 4 + (rtl ? r.right - this->text_offset : r.left);
 				uint text_left  = r.left + (rtl ? WD_FRAMERECT_LEFT : this->text_offset);
