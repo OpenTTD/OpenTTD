@@ -113,8 +113,54 @@ static void Ptrs_INDY()
 	}
 }
 
+/** Description of the data to save and load in #IndustryBuildData. */
+static const SaveLoad _industry_builder_desc[] = {
+	SLEG_VAR(_industry_builder.wanted_inds, SLE_UINT32),
+	SLEG_END()
+};
+
+/** Load/save industry builder. */
+static void LoadSave_IBLD()
+{
+	SlGlobList(_industry_builder_desc);
+}
+
+/** Description of the data to save and load in #IndustryTypeBuildData. */
+static const SaveLoad _industrytype_builder_desc[] = {
+	SLE_VAR(IndustryTypeBuildData, probability,  SLE_UINT32),
+	SLE_VAR(IndustryTypeBuildData, min_number,   SLE_UINT8),
+	SLE_VAR(IndustryTypeBuildData, target_count, SLE_UINT16),
+	SLE_VAR(IndustryTypeBuildData, max_wait,     SLE_UINT16),
+	SLE_VAR(IndustryTypeBuildData, wait_count,   SLE_UINT16),
+	SLE_END()
+};
+
+/** Save industry-type build data. */
+static void Save_ITBL()
+{
+	for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {
+		SlSetArrayIndex(i);
+		SlObject(_industry_builder.builddata + i, _industrytype_builder_desc);
+	}
+}
+
+/** Load industry-type build data. */
+static void Load_ITBL()
+{
+	int index;
+	for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {
+		index = SlIterateArray();
+		assert(index == i);
+		SlObject(_industry_builder.builddata + i, _industrytype_builder_desc);
+	}
+	index = SlIterateArray();
+	assert(index == -1);
+}
+
 extern const ChunkHandler _industry_chunk_handlers[] = {
-	{ 'INDY', Save_INDY, Load_INDY, Ptrs_INDY, NULL, CH_ARRAY},
-	{ 'IIDS', Save_IIDS, Load_IIDS,      NULL, NULL, CH_ARRAY},
-	{ 'TIDS', Save_TIDS, Load_TIDS,      NULL, NULL, CH_ARRAY | CH_LAST},
+	{ 'INDY', Save_INDY,     Load_INDY,     Ptrs_INDY, NULL, CH_ARRAY},
+	{ 'IIDS', Save_IIDS,     Load_IIDS,     NULL,      NULL, CH_ARRAY},
+	{ 'TIDS', Save_TIDS,     Load_TIDS,     NULL,      NULL, CH_ARRAY},
+	{ 'IBLD', LoadSave_IBLD, LoadSave_IBLD, NULL,      NULL, CH_RIFF},
+	{ 'ITBL', Save_ITBL,     Load_ITBL,     NULL,      NULL, CH_ARRAY | CH_LAST},
 };

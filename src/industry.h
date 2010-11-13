@@ -146,7 +146,10 @@ void ReleaseDisastersTargetingIndustry(IndustryID);
 /** Data for managing the number of industries of a single industry type. */
 struct IndustryTypeBuildData {
 	uint32 probability;  ///< Relative probability of building this industry.
+	byte   min_number;   ///< Smallest number of industries that should exist (either \c 0 or \c 1).
 	uint16 target_count; ///< Desired number of industries of this type.
+	uint16 max_wait;     ///< Starting number of turns to wait (copied to #wait_count).
+	uint16 wait_count;   ///< Number of turns to wait before trying to build again.
 
 	void GetIndustryTypeData(IndustryType it);
 };
@@ -156,6 +159,7 @@ struct IndustryTypeBuildData {
  */
 struct IndustryBuildData {
 	IndustryTypeBuildData builddata[NUM_INDUSTRYTYPES]; ///< Industry build data for every industry type.
+	uint32 wanted_inds; ///< Number of wanted industries (bits 31-16), and a fraction (bits 15-0).
 
 	void SetupTargetCount();
 	void TryBuildNewIndustry();
