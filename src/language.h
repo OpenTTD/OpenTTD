@@ -7,10 +7,10 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file strgen.h Language pack header for strgen (needs to match). */
+/** @file language.h Information about languages and their files. */
 
-#ifndef STRGEN_H
-#define STRGEN_H
+#ifndef LANGUAGE_H
+#define LANGUAGE_H
 
 /** Header of a language file. */
 struct LanguagePackHeader {
@@ -49,7 +49,11 @@ struct LanguagePackHeader {
 	 */
 	bool IsValid() const;
 };
-
 assert_compile(sizeof(LanguagePackHeader) % 4 == 0);
 
-#endif /* STRGEN_H */
+/** Metadata about a single language. */
+struct LanguageMetadata : public LanguagePackHeader {
+	char file[MAX_PATH]; ///< Name of the file we read this data from.
+};
+
+#endif /* LANGUAGE_H */

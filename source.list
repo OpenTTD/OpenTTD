@@ -186,6 +186,7 @@ industrytype.h
 ini_type.h
 landscape.h
 landscape_type.h
+language.h
 livery.h
 map_func.h
 map_type.h
@@ -284,7 +285,6 @@ station_gui.h
 station_type.h
 statusbar_gui.h
 stdafx.h
-strgen/strgen.h
 string_func.h
 string_type.h
 strings_func.h

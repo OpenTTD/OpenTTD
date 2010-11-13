@@ -16,7 +16,7 @@
 #include "../core/mem_func.hpp"
 #include "../string_func.h"
 #include "../strings_type.h"
-#include "strgen.h"
+#include "../language.h"
 #include "../table/control_codes.h"
 
 #include <stdarg.h>

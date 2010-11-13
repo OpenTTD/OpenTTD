@@ -12,6 +12,8 @@
 #ifndef STRINGS_TYPE_H
 #define STRINGS_TYPE_H
 
+#include "language.h"
+
 /**
  * Numeric value that represents a string, independent of the selected language.
  */
@@ -26,18 +28,12 @@ enum TextDirection {
 	TD_RTL, ///< Text is written right-to-left by default
 };
 
-/** Information about a language */
-struct Language {
-	char *name; ///< The internal name of the language
-	char *file; ///< The name of the language as it appears on disk
-};
-
 /** Used for dynamic language support */
 struct DynamicLanguages {
 	int num;                  ///< Number of languages
 	int curr;                 ///< Currently selected language index
 	char curr_file[MAX_PATH]; ///< Currently selected language file name without path (needed for saving the filename of the loaded language).
-	Language ent[MAX_LANG];   ///< Information about the languages
+	LanguageMetadata ent[MAX_LANG]; ///< Information about the languages
 };
 
 /** Special string constants */

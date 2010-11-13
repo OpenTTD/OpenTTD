@@ -453,6 +453,7 @@
     <ClInclude Include="..\src\ini_type.h" />
     <ClInclude Include="..\src\landscape.h" />
     <ClInclude Include="..\src\landscape_type.h" />
+    <ClInclude Include="..\src\language.h" />
     <ClInclude Include="..\src\livery.h" />
     <ClInclude Include="..\src\map_func.h" />
     <ClInclude Include="..\src\map_type.h" />
@@ -551,7 +552,6 @@
     <ClInclude Include="..\src\station_type.h" />
     <ClInclude Include="..\src\statusbar_gui.h" />
     <ClInclude Include="..\src\stdafx.h" />
-    <ClInclude Include="..\src\strgen\strgen.h" />
     <ClInclude Include="..\src\string_func.h" />
     <ClInclude Include="..\src\string_type.h" />
     <ClInclude Include="..\src\strings_func.h" />
