@@ -196,7 +196,14 @@ static GRFTextEntry _grf_text[(1 << TABSIZE) * 3];
 static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
 
 
-char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
+/**
+ * Translate TTDPatch string codes into something OpenTTD can handle (better).
+ * @param grfid       The (NewGRF) ID associated with this string
+ * @param language_id The (NewGRF) language ID associated with this string.
+ * @param str         The string to translate.
+ * @return The translated string.
+ */
+char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str)
 {
 	char *tmp = MallocT<char>(strlen(str) * 10 + 1); // Allocate space to allow for expansion
 	char *d = tmp;
@@ -380,7 +387,7 @@ void AddGRFTextToList(GRFText **list, GRFText *text_to_add)
  */
 void AddGRFTextToList(struct GRFText **list, byte langid, uint32 grfid, const char *text_to_add)
 {
-	char *translatedtext = TranslateTTDPatchCodes(grfid, text_to_add);
+	char *translatedtext = TranslateTTDPatchCodes(grfid, langid, text_to_add);
 	GRFText *newtext = GRFText::New(langid, translatedtext);
 	free(translatedtext);
 
@@ -449,7 +456,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	/* Too many strings allocated, return empty */
 	if (id == lengthof(_grf_text)) return STR_EMPTY;
 
-	translatedtext = TranslateTTDPatchCodes(grfid, text_to_add);
+	translatedtext = TranslateTTDPatchCodes(grfid, langid_to_add, text_to_add);
 
 	GRFText *newtext = GRFText::New(langid_to_add, translatedtext);
 

@@ -5373,7 +5373,7 @@ static void GRFLoadError(ByteReader *buf)
 		if (buf->HasData()) {
 			const char *message = buf->ReadString();
 
-			error->custom_message = TranslateTTDPatchCodes(_cur_grffile->grfid, message);
+			error->custom_message = TranslateTTDPatchCodes(_cur_grffile->grfid, lang, message);
 		} else {
 			grfmsg(7, "GRFLoadError: No custom message supplied.");
 			error->custom_message = strdup("");
@@ -5385,7 +5385,7 @@ static void GRFLoadError(ByteReader *buf)
 	if (buf->HasData()) {
 		const char *data = buf->ReadString();
 
-		error->data = TranslateTTDPatchCodes(_cur_grffile->grfid, data);
+		error->data = TranslateTTDPatchCodes(_cur_grffile->grfid, lang, data);
 	} else {
 		grfmsg(7, "GRFLoadError: No message data supplied.");
 		error->data = strdup("");
@@ -5926,7 +5926,7 @@ static void FeatureTownName(ByteReader *buf)
 
 			const char *name = buf->ReadString();
 
-			char *lang_name = TranslateTTDPatchCodes(grfid, name);
+			char *lang_name = TranslateTTDPatchCodes(grfid, lang, name);
 			grfmsg(6, "FeatureTownName: lang 0x%X -> '%s'", lang, lang_name);
 			free(lang_name);
 
@@ -5972,7 +5972,7 @@ static void FeatureTownName(ByteReader *buf)
 				townname->partlist[id][i].parts[j].data.id = ref_id;
 			} else {
 				const char *text = buf->ReadString();
-				townname->partlist[id][i].parts[j].data.text = TranslateTTDPatchCodes(grfid, text);
+				townname->partlist[id][i].parts[j].data.text = TranslateTTDPatchCodes(grfid, 0, text);
 				grfmsg(6, "FeatureTownName: part %d, text %d, '%s' (with probability %d)", i, j, townname->partlist[id][i].parts[j].data.text, prob);
 			}
 			townname->partlist[id][i].parts[j].prob = prob;
