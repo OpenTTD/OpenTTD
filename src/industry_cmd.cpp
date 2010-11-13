@@ -2103,7 +2103,7 @@ void IndustryBuildData::TryBuildNewIndustry()
 		}
 	}
 
-	if (missing <= 0 || total_prob == 0) count = 0; // Skip creation of an industry.
+	if (EconomyIsInRecession() || missing <= 0 || total_prob == 0) count = 0; // Skip creation of an industry.
 
 	if (count >= 1) {
 		/* Pick a weighted random industry to build.
