@@ -16,6 +16,7 @@
 #include "core/alloc_func.hpp"
 #include "strings_func.h"
 #include "core/random_func.hpp"
+#include "genworld.h"
 
 #include "table/townname.h"
 
@@ -118,7 +119,7 @@ bool GenerateTownName(uint32 *townnameparts)
 	TownNameParams par(_settings_game.game_creation.town_name);
 
 	for (int i = 1000; i != 0; i--) {
-		uint32 r = InteractiveRandom();
+		uint32 r = _generating_world ? Random() : InteractiveRandom();
 		if (!VerifyTownName(r, &par)) continue;
 
 		*townnameparts = r;
