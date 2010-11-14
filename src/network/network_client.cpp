@@ -33,6 +33,7 @@
 
 /* This file handles all the client-commands */
 
+static FILE *_network_client_download_file = NULL; ///< Handle used for downloading the savegame.
 
 /* So we don't make too much typos ;) */
 #define MY_CLIENT NetworkClientSocket::Get(0)
@@ -608,8 +609,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WAIT)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 {
-	static FILE *file_pointer;
-
 	byte maptype;
 
 	maptype = p->Recv_uint8();
@@ -618,8 +617,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 	/* First packet, init some stuff */
 	if (maptype == MAP_PACKET_START) {
-		file_pointer = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);
-		if (file_pointer == NULL) {
+		if (_network_client_download_file != NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+		_network_client_download_file = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);
+		if (_network_client_download_file == NULL) {
 			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
@@ -644,20 +644,25 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
+	if (_network_client_download_file == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	if (maptype == MAP_PACKET_NORMAL) {
 		/* We are still receiving data, put it to the file */
-		if (fwrite(p->buffer + p->pos, 1, p->size - p->pos, file_pointer) != (size_t)(p->size - p->pos)) {
+		if (fwrite(p->buffer + p->pos, 1, p->size - p->pos, _network_client_download_file) != (size_t)(p->size - p->pos)) {
 			_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
+			fclose(_network_client_download_file);
+			_network_client_download_file = NULL;
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
 
-		_network_join_bytes = ftell(file_pointer);
+		_network_join_bytes = ftell(_network_client_download_file);
 		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 	}
 
 	/* Check if this was the last packet */
 	if (maptype == MAP_PACKET_END) {
-		fclose(file_pointer);
+		fclose(_network_client_download_file);
+		_network_client_download_file = NULL;
 
 		_network_join_status = NETWORK_JOIN_STATUS_PROCESSING;
 		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
@@ -986,6 +991,14 @@ void NetworkClient_Connected()
 	_frame_counter = 0;
 	_frame_counter_server = 0;
 	last_ack_frame = 0;
+
+	/* If we're joining a new server, we definitely don't
+	 * need the old download file handle anymore. */
+	if (_network_client_download_file != NULL) {
+		fclose(_network_client_download_file);
+		_network_client_download_file = NULL;
+	}
+
 	/* Request the game-info */
 	SEND_COMMAND(PACKET_CLIENT_JOIN)();
 }
