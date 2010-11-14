@@ -1513,7 +1513,7 @@ static bool IsUniqueTownName(const char *name)
  *            3..5 town road layout (@see TownLayout)
  *               6 use random location (randomize \c tile )
  * @param p2 town name parts
- * @param text unused
+ * @param text Custom name for the town. If empty, the town name parts will be used.
  * @return the cost of this operation or an error
  */
 CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
