@@ -28,6 +28,7 @@
 #include "widgets/dropdown_func.h"
 #include "engine_gui.h"
 #include "cargotype.h"
+#include "core/geometry_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1087,6 +1088,14 @@ struct BuildVehicleWindow : Window {
 			case BUILD_VEHICLE_WIDGET_PANEL:
 				size->height = this->details_height;
 				break;
+
+			case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING: {
+				Dimension d = GetStringBoundingBox(this->GetWidget<NWidgetCore>(widget)->widget_data);
+				d.width += padding.width + WD_SORTBUTTON_ARROW_WIDTH * 2; // Doubled since the string is centred and it also looks better.
+				d.height += padding.height;
+				*size = maxdim(*size, d);
+				break;
+			}
 		}
 	}
 
