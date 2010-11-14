@@ -2346,10 +2346,18 @@ bool AfterLoadGame()
 			byte frame = (vdir == DIAGDIR_NE || vdir == DIAGDIR_NW) ? TILE_SIZE - 1 - pos : pos;
 			extern const byte _tunnel_visibility_frame[DIAGDIR_END];
 
-			if (dir == vdir && !(v->vehstatus & VS_HIDDEN)) {
-				if (frame < _tunnel_visibility_frame[dir]) continue;
-				/* Tunnel entrance, make us invisible. */
-				v->tile = vtile;
+			/* Should the vehicle be hidden or not? */
+			bool hidden;
+			if (dir == vdir) { // Entering tunnel
+				hidden = frame >= _tunnel_visibility_frame[dir];
+			} else if (dir == ReverseDiagDir(vdir)) { // Leaving tunnel
+				hidden = frame < TILE_SIZE - _tunnel_visibility_frame[dir];
+			} else { // Something freaky going on?
+				NOT_REACHED();
+			}
+			v->tile = vtile;
+
+			if (hidden) {
 				v->vehstatus |= VS_HIDDEN;
 
 				switch (v->type) {
@@ -2357,10 +2365,7 @@ bool AfterLoadGame()
 					case VEH_ROAD:  RoadVehicle::From(v)->state = RVSB_WORMHOLE;      break;
 					default: NOT_REACHED();
 				}
-			} else if (dir == ReverseDiagDir(vdir) && (v->vehstatus & VS_HIDDEN)) {
-				if (frame < TILE_SIZE - _tunnel_visibility_frame[dir]) continue;
-				/* Tunnel exit, make us visible again. */
-				v->tile = vtile;
+			} else {
 				v->vehstatus &= ~VS_HIDDEN;
 
 				switch (v->type) {
