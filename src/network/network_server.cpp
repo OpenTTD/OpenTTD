@@ -138,9 +138,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (cs->writable) {
-			cs->Send_Packets();
-
-			if (cs->status == STATUS_MAP) {
+			if (cs->Send_Packets() && cs->status == STATUS_MAP) {
 				/* This client is in the middle of a map-send, call the function for that */
 				cs->SendMap();
 			}
@@ -451,8 +449,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 		}
 
 		/* Send all packets (forced) and check if we have send it all */
-		this->Send_Packets();
-		if (this->IsPacketQueueEmpty()) {
+		if (this->Send_Packets() && this->IsPacketQueueEmpty()) {
 			/* All are sent, increase the sent_packets */
 			sent_packets *= 2;
 		} else {

@@ -82,6 +82,8 @@ void NetworkTCPSocketHandler::Send_Packet(Packet *packet)
  *      data right now (full network-buffer, it happens ;))
  *   3) sending took too long
  * @param closing_down Whether we are closing down the connection.
+ * @return \c true if a (part of a) packet could be sent and
+ *         the connection is not closed yet.
  */
 bool NetworkTCPSocketHandler::Send_Packets(bool closing_down)
 {
