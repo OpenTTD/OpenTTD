@@ -285,6 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :Nidregsten Lued
 STR_SORT_BY_ENGINE_ID                                           :ID (klassësch Sortéierung)
 STR_SORT_BY_COST                                                :Käschten
 STR_SORT_BY_POWER                                               :Kraaft
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Zéikraaft
 STR_SORT_BY_INTRO_DATE                                          :Aféirungsdatum
 STR_SORT_BY_RUNNING_COST                                        :Betriebskäschten
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraaft/Betriebskäschten
@@ -1303,6 +1304,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Positio
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Lénks
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Zentréiert
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Riets
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Positioun vun der Statusbar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Lenks
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Mëtt
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Riets
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fënsteren rasten bei: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fënsteren rasten bei: {ORANGE}ausgeschalt
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Fënster soft limit (non-sticky): {ORANGE}{STRING}

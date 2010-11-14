@@ -1304,6 +1304,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Vị tr
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Trái
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Giữa
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Phải
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Vị trí thanh trạng thái: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Bên trái
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Ở giữa
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Bên phải
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Phạm vi neo cửa sổ: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Phạm vi neo cửa sổ: {ORANGE}tắt
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Giới hạn số lượng cửa sổ (không-neo): {ORANGE}{STRING}

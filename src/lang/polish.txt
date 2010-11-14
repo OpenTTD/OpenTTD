@@ -1684,6 +1684,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozycja
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :z lewej strony
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :wyśrodkowany
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :z prawej strony
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozycja paska stanu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Lewo
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Środek
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Prawo
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Strefa przyciągania okien: {ORANGE}{STRING} pkt
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Strefa przyciągania okien: {ORANGE}niedostępne
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Miękkie ograniczenie okna: {ORANGE}{STRING}
@@ -4154,7 +4158,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Nie moż
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nie można usunąć napisu...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Symulator gry oparty na Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Gra symulacyjna oparta na Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

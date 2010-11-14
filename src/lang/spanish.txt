@@ -1305,6 +1305,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posici�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Izquierda
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Derecha
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posición de la barra de estado: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Izquierda
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centro
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Derecha
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radio de snap de ventana: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radio de snap de ventana: {ORANGE}desactivado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Límite de ventanas abiertas (no-ancladas): {ORANGE}{STRING}

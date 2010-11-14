@@ -349,6 +349,7 @@ STR_SORT_BY_RATING_MIN                                          :Hodnotenie najh
 STR_SORT_BY_ENGINE_ID                                           :EngineID (netriedené)
 STR_SORT_BY_COST                                                :Cena
 STR_SORT_BY_POWER                                               :Výkon
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Trakcna sila
 STR_SORT_BY_INTRO_DATE                                          :Uvedenie na trh
 STR_SORT_BY_RUNNING_COST                                        :Náklady na prevádzku
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Výkon/Náklady na prevádzku
@@ -1370,6 +1371,9 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozíci
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vlavo
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :v strede
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :vpravo
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Vľavo
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Stred
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Doprava
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Vzdialenosť pre prichytenie okna: {ORANGE}{STRING} bod{P "" y ov}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vzdialenosť pre prichytenie okna: {ORANGE}vypnuté
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Jemný limit okna (nie je dôležitý): {ORANGE}{STRING}

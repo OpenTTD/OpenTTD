@@ -285,6 +285,7 @@ STR_SORT_BY_RATING_MIN                                          :最低運輸評
 STR_SORT_BY_ENGINE_ID                                           :引擎編號
 STR_SORT_BY_COST                                                :價值
 STR_SORT_BY_POWER                                               :功率
+STR_SORT_BY_TRACTIVE_EFFORT                                     :牽引力
 STR_SORT_BY_INTRO_DATE                                          :登場日期
 STR_SORT_BY_RUNNING_COST                                        :營運成本
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :功率／營運成本
@@ -1301,6 +1302,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :靠左
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :置中
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :靠右
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}狀態列顯示位置：{ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :左側
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :中間
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :右側
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}視窗吸附距離：{ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}視窗吸附距離：{ORANGE}關閉
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}視窗軟性限制 (不貼齊)：{ORANGE}{STRING}
