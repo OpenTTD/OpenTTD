@@ -2552,7 +2552,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} до
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} требует OpenTTD версии {STRING} или выше.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, который им переводится.
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Загружено слишком много новой графики
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {2:STRING} в качестве статического NewGRF с {4:STRING} Может вызвать ошибку синхронизации.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {2:STRING} в качестве статического NewGRF с {4:STRING} может вызвать ошибку синхронизации.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неожиданный спрайт.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Неизвестное свойство для Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Используется неправильный ID.
@@ -3845,7 +3845,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Не у�
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Не удалось удалить метку...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Экономический симулятор на основе «Transport Tycoon Deluxe»
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Экономический симулятор на основе игры «Transport Tycoon Deluxe»
 
 ##id 0x2000
 # Town building names

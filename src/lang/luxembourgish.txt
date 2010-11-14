@@ -292,7 +292,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Luedungskapazit
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Spill pausen
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Spill schnell laafen loosen
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Optiounen
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spill späicheren, Spill opginn, Eraus
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Spill späicheren, Spill ophalen, Eraus
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Weis d'Kaart, extra Usiicht oder d'Lëscht vun den Zeeschen
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Weis d'Stiedverzeeschnëss
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Subventiounen weisen
@@ -360,7 +360,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Transparent Sta
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Spill späicheren
 STR_FILE_MENU_LOAD_GAME                                         :Spill lueden
-STR_FILE_MENU_QUIT_GAME                                         :Spill opginn
+STR_FILE_MENU_QUIT_GAME                                         :Spill ophalen
 STR_FILE_MENU_EXIT                                              :Eraus
 ############ range ends here
 
@@ -550,6 +550,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Detailler fir des Firma uweisen
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Gefierter:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Statiounen:
@@ -694,7 +695,7 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}All ausschalten
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}All unschalten
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}D'Héigt uweisen
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}D'Héicht uweisen
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Keng Industrien op der Kaart uweisen
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}All Industrien op der Kaart uweisen
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Wiessel d'Usiicht vun der Héigtenkaart
@@ -1154,10 +1155,10 @@ STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Baampla
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Keen
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Verbessert
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap Rotatioun: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Héichtenkaartrotatioun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Géint d'Auer
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Matt der Auer
-STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Héigtenintervall den eng flaach Szenariokaart kritt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Héichtenintervall den eng flaach Szenariokaart kritt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Erdumformung vun Felder um Kaartenrand erlaaben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een oder méi Felder um nördlechsten Bord sin net eidel
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een oder méi Felder op engem Eck sin keen Waasser
@@ -1337,7 +1338,7 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Neit Spill
 STR_INTRO_LOAD_GAME                                             :{BLACK}Spill lueden
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Szenario spillen
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Spillt Héichtenkaart
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Héichtenkaart spillen
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Szenarien Editor
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Multiplayer
 
@@ -1371,7 +1372,7 @@ STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Aus 'Ope
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Eraus
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Sidd der slcher dass dir aus dem OpenTTD eraus wëllt , an op {STRING} zeréck?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Sidd der sécher dass dir aus dem OpenTTD eraus wëllt , an an den {STRING} zréck?
 STR_QUIT_YES                                                    :{BLACK}Jo
 STR_QUIT_NO                                                     :{BLACK}Nee
 
@@ -1388,8 +1389,8 @@ STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
-STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spill opginn
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sidd dir sécher dass dir dës Partie opginn wëllt?
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}Spill ophalen
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sidd dir sécher dass dir dës Partie ophalen wëllt?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Sëcher dass der aus dësem Szenario raus wëllt ?
 
 # Cheat window
@@ -1398,7 +1399,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Checkbox
 STR_CHEATS_WARNING                                              :{BLACK}Warnung! Dir sidd um Wee är Géigner ze verroden. Sou eng Ongnod gëtt bis an all Éiwegkeet behalen.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Suen ëm {CURRENCY} erhéijen
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Als Firma spillen: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magëschen Bulldozer (Industrien ofrappen, onzerstéierbar Saachen): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magëschen Bulldozer (Industrien ofrappen, onzerstéierbar Objekter): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnellen kënnen sech kräizen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}An dem Pausmodus bauen: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet'en maachen net regelméisseg en Accident op klengen Fluchhäfen: {ORANGE} {STRING}
@@ -2039,6 +2040,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}En Eck v
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Land planéiren
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaaf Land fir zukünftëg Benotzung
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Beem
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wielt den Baamtyp
@@ -2105,6 +2109,8 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Biergbau
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bauen
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Grënnen
 
+# Industry cargoes window
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Informatiounen
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Käschten fir ze raumen: {LTBLUE}N/A
@@ -2117,7 +2123,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Trambunn
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Schinnenbesëtzer: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokal Autoritéit: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Keng
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaten: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaten: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Gebaut: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Statiounsklass: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Statiounstyp: {LTBLUE}{STRING}
@@ -2277,7 +2283,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Handbuch
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Héichtekaart rotatioun:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Héichtekaart Numm:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Gréisst:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Gidd eng zoufälleg Zuel an
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ännert d'Schnéilinnhéicht
@@ -2345,7 +2351,9 @@ STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Keng Inf
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Datei net fonnt.
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ausgeschalt
 
-STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF Parameter agin
+STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF Parameter aginn
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 
@@ -2381,6 +2389,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Probéiert eng 
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} huet eng korrupt Sprite. All korrupt Sprites gin als Fragezeichen (?) duergestalt.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Huet e puer Action 8 Einträg
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Iwwert d'Enn vum pseudo-sprite liesen
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}D'momentan benotzten Grafikset huet e puer Sprites ze mann. {}W.e.g d'Basisgrafikset updaten.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Opgepasst!
@@ -2398,6 +2407,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Entpause
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Verhalen vun der NewGRF '{0:STRING}' kann Desyncs oder Crashen verursachen.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Changéiert Zoustand fir '{1:ENGINE}' wann net an engem Depot.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Changéiert Gefierlengt fir '{1:ENGINE}' wann net an engem Depot.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zuch'{VEHICLE}' vun der Firma '{COMPANY}' huet eng falsch Längt. Et kënnt wahrscheinlech wéinst den NewGRFs. Spill kann desyncroniséiren oder ofstierzen.
 
@@ -2409,7 +2419,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<invalid Wuer>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vunn <invalider Wuer>
-STR_NEWGRF_INVALID_ENGINE                                       :<invalid Maschinn>
+STR_NEWGRF_INVALID_ENGINE                                       :<invaliden Gefier-Modell>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<invalid Industrie>
 
 # Sign list window
@@ -2490,7 +2500,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klick op
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Statiounennimm - klick op den Numm fir d'Siicht drop ze zentréieren. Ctrl+Klick erstellt eng nei Usiicht op d'Statioun
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haalt CTRL un fir méi wéi 1 Objet auszewielen
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Haalt Ctrl un fir méi wéi 1 Objekt auszewielen
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Statioun{P "" en}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2770,10 +2780,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Gefier{P t er}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zich - klickt op den Zuch fir Info., zidd d'Gefiert fir en unzehänken/wechzehuelen
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Gefierer - klickt op en Gefier fir Informatiounen
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schëffer - klickt op d'Schëff fir Informatiounen
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fliger - Klickt op den Fliger fir Informatiounen
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zich - zidd d'Gefiert fir en unzehänken/wechzehuelen, Rietsklick fir Informatiounen. Ctrl unhalen dass béid Fonktiounen fir déi nächst Ketten gëllen
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Gefierer - Rietsklick op en Gefier fir Informatiounen
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Schëffer - Rietsklick op d'Schëff fir Informatiounen
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Fliger - Rietsklick op den Fliger fir Informatiounen
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Zitt den Zuch heihin fir en ze verkafen
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Zitt d'Stroossengefier heihin fir et ze verkafen
@@ -3235,6 +3245,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}KI Astel
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}KI Astellungen änneren
 STR_AI_DEBUG_RELOAD                                             :{BLACK}KI nei lueden
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}KI stoppen, Skript nei lueden, KI nei starten
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-output fir dës KI uweisen
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD as ouni KI support kompiléiert gin...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... keng KI verfügbar!
@@ -3395,6 +3406,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... et a
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Stied bauen keng Stroossen. Dir kënnt den Bau iwwert Erweidert Astellungen->Economie->Stied anschalten
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Stroossenarbeschten umgaangen
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kann des Stad net leschen...{}Eng Statioun oder Depot huet den Numm vun dëser Stad oder en Stéck dat der Stad gehéiert kann net ewechgeholl ginn
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... et gëtt keng Gëeegent Plaz fir eng Statue am Stadzentrum
 
 # Industry related errors
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Kann keng Industrien bauen...
@@ -3500,6 +3512,7 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Signaler
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Keng gëeegent Schinnen
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}D'Schinnen mussen fir d'éischt ewech
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}D'Strooss ass eng Richtung oder blockéiert
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Héich Kräizungen sinn fir dësen Schinnentyp net erlabt
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kann d'Signaler hei net bauen...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kann d'Schinnen hei net bauen...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kann d'Schinnen hei net ewech huelen...
@@ -3652,7 +3665,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kann den
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann d'Schëld net läschen...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :En Transport Tycoon Deluxe Klon
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Eng Simulatioun déi op Transport Tycoon Deluxe baséiert
 
 ##id 0x2000
 # Town building names

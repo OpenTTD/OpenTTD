@@ -1400,7 +1400,7 @@ STR_CHEATS_TOOLTIP                                              :{BLACK}Onay kut
 STR_CHEATS_WARNING                                              :{BLACK}Uyarı! Rakiplerine ihanet etmek üzeresin. Böyle bir davranışı sonsuza dek unutmayacaklarını akılda tut.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Parayı {CURRENCY} kadar arttır
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Oynanan şirket: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli buldözer (normalde silinemeyen binaları siler): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli buldozer (fabrikaları, silinemeyen nesneleri siler): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tüneller kesişebilir: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Duraklama zamanında inşaat yap: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetler küçük havalimanlarında (sıklıkla) düşmesin: {ORANGE}{STRING}
@@ -1884,14 +1884,14 @@ STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monoray Yapım�
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev Yapımı
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Demiryolu yap. Ctrl demiryolu inşa ederken silmeyi açar/kapatır
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Otoray modunda ray yap
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tren garı yap (tren yapımı ve bakımı için)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rayı yerimine çevir
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Tren istasyonu yap
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Demiryolu sinyali yap
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Otoray modunda ray yap. Ctrl ray yap/kaldır seçimini değiştirir
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tren deposu yap (tren yapımı ve bakımı için)
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rayı yerimine çevir. Ctrl yerimlerini birleştirmeyi mümkün kılar
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Tren istasyonu yap. Ctrl istasyonları birleştirmeyi mümkün kılar
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Demiryolu sinyali yap. Ctrl semafor/ışıklı işaret seçimi yapar{}Sürükleme düz bir ray boyunca işaretleri koyar. Ctrl sonraki kavşağa kadar işaretleri koyar{}Ctrl+tık işaret seçim penceresini açar/kapatır
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Demiryolu köprüsü yap
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Demiryolu tüneli yap
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Trenyolu yapımında sil/yap arasında geçiş
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Trenyolu, işaret, yerimi ve istasyon yapımında sil/yap arasında geçiş. Yerimi ve istasyon raylarını da silmek için Ctrl'yi basılı tutun
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Ray türünü dönüştür/geliştir
 
 # Rail depot construction window
@@ -1956,9 +1956,9 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Silikon, Tüpl�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Yol Yapımı
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvay Yapımı
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Yol bölmesi yap
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvay yolu yap
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Otoyol modunu kullanarak yol yap
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Yol bölmesi yap. Ctrl yol için yap/kaldır geçişi sağlar
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvay yolu yap. Ctrl tramvay yolu için yap/kaldır geçişi sağlar
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Otoyol modunu kullanarak yol yap. Ctrl yol yapımı için yap/kaldır geçişi sağlar
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Otoray modunu kullanarak tramvay yolu yap
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garaj yap (araç alımı ve bakımı için)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramvay garı yap (araç alımı ve tamiri için)
@@ -2056,7 +2056,7 @@ STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Haritaya
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Arazi Yapımı
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Haritaya kayalik koy
 STR_TERRAFORM_TOOLTIP_PLACE_LIGHTHOUSE                          :{BLACK}Deniz feneri koy
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Çöl yap.{}Kaldırmak için CTRL'ye basılı tut
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Çöl alanı tanımla.{}Kaldırmak için CTRL'yi basılı tut
 STR_TERRAFORM_TOOLTIP_PLACE_TRANSMITTER                         :{BLACK}Verici koy
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}yükseltme/alçaltma alanını arttır
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Yükseltme/alçaltma alanını arttır
@@ -2124,7 +2124,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Tramvay�
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Demiryolu sahibi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Belediyesi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Hiçbiri
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinatlar: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinatlar: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Yapım: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}İstasyon sınıfı: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}İstasyon türü: {LTBLUE}{STRING}
@@ -2284,7 +2284,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}El ile
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Yükseklik haritası döndür:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Yükseklik haritası adı:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Boyut:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_RANDOM_SEED_OSKTITLE                                 :{BLACK}Rastgele bir tohum girin
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Kar yüksekliğini değiştir
@@ -2409,7 +2409,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Devam et
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' davranışı muhtemelen senkron kaybı ve/veya çakılmalara neden olacak.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}' için enerjilendirilmiş wagon durumunu depo dışındayken değiştirdi
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' için hangar içinde değilken araç uzunluğunu değiştirir.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' hangar içinde değilken araç uzunluğunu değiştirdi.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICLE}' adlı tren '{COMPANY}' şirketine ait olup uzunluğu geçersizdir. Muhtemelen NewGRF'lerle ilgili bir problemden kaynaklanıyor. Oyun senkron kaybına uğrayabilir ya da çakılabilir.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geçersiz bilgi vermektedir.
@@ -2420,7 +2420,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<geçersiz kargo>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <geçersiz kargo>
-STR_NEWGRF_INVALID_ENGINE                                       :<geçersiz motor>
+STR_NEWGRF_INVALID_ENGINE                                       :<geçersiz araç modeli>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<geçersiz fabrika>
 
 # Sign list window
@@ -2501,7 +2501,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Görünt
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}İstasyon isimleri - gitmek için istasyon ismini tıklayın
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Birden fazla şey seçmek için Ctrl'yi basılı tutun
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Birden fazla nesne seçmek için Ctrl'yi basılı tutun
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} istasyonları
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2782,9 +2782,9 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ar
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenlar - bilgi için trene tıklayın., trene vagon eklemek/kaldırmak için sürükleyin
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Arabalar - ayrıntılı bilgi için araca tıklayın
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Gemiler - bilgi için gemiye tıkla
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Uçak - bilgi için uçaga tıkla
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Arabalar - ayrıntılı bilgi için araca sağ tıkla
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Gemiler - bilgi için gemiye sağ tıkla
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Uçak - bilgi için uçağa sağ tıkla
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Satmak için aracı buraya sürükleyin
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Satmak için arabayı buraya sürükle
@@ -3666,7 +3666,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Tabela a
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Tabelayı silemezsiniz...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe'ün bir klonu
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe'ü temel alan bir simülasyon oyunu
 
 ##id 0x2000
 # Town building names

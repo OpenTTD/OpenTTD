@@ -2407,6 +2407,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시�
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'는 비동기화 혹은 충돌을 일으킬 수 있습니다.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 동력차량의 상태가 바뀝니다.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고 안에 있지 않으면 차량 길이가 바뀝니다.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'{P "은" "는"} 잘못된 길이값을 가지고 있습니다. NewGRF에 의한 문제일 것입니다. 게임이 비동기화/충돌을 일으킬 수 있습니다.
 
@@ -3244,6 +3245,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI 설�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}AI의 설정 변경
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI 재시작
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI를 종료시키고, 스크립트를 다시 불러와, AI를 재시작합니다
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}이 AI의 디버그된 출력물을 봅니다.
 
 STR_ERROR_NO_AI                                                 :{WHITE}AI 지원 없이 OpenTTD를 빌드합니다...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... 사용 가능한 AI가 없습니다!

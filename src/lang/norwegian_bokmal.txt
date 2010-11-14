@@ -3667,7 +3667,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Kan ikke
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kan ikke slette skilt...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :En Transport Tycoon Deluxe-klone
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Et simuleringsspill basert på Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names
