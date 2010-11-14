@@ -4462,7 +4462,7 @@ static void SkipIf(ByteReader *buf)
 
 		GRFConfig *c = GetGRFConfig(cond_val, mask);
 
-		if (c != NULL && HasBit(c->flags, GCF_STATIC) && !HasBit(_cur_grfconfig->flags, GCF_STATIC) && c->status != GCS_DISABLED && _networking) {
+		if (c != NULL && HasBit(c->flags, GCF_STATIC) && !HasBit(_cur_grfconfig->flags, GCF_STATIC) && _networking) {
 			DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);
 			c = NULL;
 		}
@@ -6029,6 +6029,7 @@ static void InitNewGRFFile(const GRFConfig *config, int sprite_offset)
 
 	newfile->filename = strdup(config->filename);
 	newfile->sprite_offset = sprite_offset;
+	newfile->grfid = config->grfid;
 
 	/* Initialise local settings to defaults */
 	newfile->traininfo_vehicle_pitch = 0;
