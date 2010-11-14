@@ -58,7 +58,7 @@ set_default() {
 	enable_console="1";
 	enable_assert="1"
 	enable_strip="0"
-	enable_universal="1"
+	enable_universal="0"
 	enable_osx_g5="0"
 	enable_cocoa_quartz="1"
 	enable_cocoa_quickdraw="1"
@@ -299,7 +299,7 @@ detect_params() {
 			--enable-strip)               enable_strip="2";;
 			--enable-strip=*)             enable_strip="$optarg";;
 			--disable-universal)          enable_universal="0";;
-			--enable-universal)           enable_universal="2";;
+			--enable-universal)           enable_universal="i386 ppc";;
 			--enable-universal=*)         enable_universal="$optarg";;
 			--disable-osx-g5)             enable_osx_g5="0";;
 			--enable-osx-g5)              enable_osx_g5="2";;
@@ -533,23 +533,15 @@ check_params() {
 	check_build
 	check_host
 
-# We might enable universal builds always on OSX targets.. but currently we don't
-#	if [ "$enable_universal" = "1" ]  && [ "$os" != "OSX" ]; then
-	if [ "$enable_universal" = "1" ]; then
-		enable_universal="0"
-	fi
-	if [ "$enable_universal" = "2" ]  && [ "$os" != "OSX" ]; then
-		log 1 "configure: error: --enable-universal only works on OSX"
-		exit 1
-	fi
+# Check for universal builds; they only make sense for OSX, so fail if enabled for another OS
 	if [ "$enable_universal" = "0" ]; then
 		log 1 "checking universal build... no"
 	else
-		if [ "$enable_universal" = "64" ]; then
-			log 1 "checking universal build... yes (including 64 bits)"
-		else
-			log 1 "checking universal build... yes (without 64 bits)"
+		if [ "$os" != "OSX" ]; then
+			log 1 "configure: error: --enable-universal only works on OSX"
+			exit 1
 		fi
+		log 1 "checking universal build... yes, for: $enable_universal"
 	fi
 
 	# Already detected by check_build
@@ -961,10 +953,10 @@ check_params() {
 	fi
 
 	if [ "$os" = "OSX" ]; then
-		# Test on G5
+		# Test on ppc970 (G5) - we can optimize there
 
 		if [ "$enable_osx_g5" != "0" ]; then
-			log 1 "detecting G5... yes (forced)"
+			log 1 "detecting ppc970 (G5)... yes (forced)"
 		else
 			# First, are we a real OSX system, else we can't detect it
 			native=`LC_ALL=C uname | tr '[A-Z]' '[a-z]' | grep darwin`
@@ -977,22 +969,22 @@ check_params() {
 					# This is G5, add flags for it
 					enable_osx_g5="2"
 
-					log 1 "detecting G5... yes"
+					log 1 "detecting ppc970 (G5)... yes"
 				else
 					enable_osx_g5="0"
 
-					log 1 "detecting G5... no"
+					log 1 "detecting ppc970 (G5)... no"
 				fi
 			else
 				enable_osx_g5="0"
 
-				log 1 "detecting G5... no (cross-compiling)"
+				log 1 "detecting ppc970 (G5)... no (cross-compiling)"
 			fi
 		fi
 	else
 		if [ "$enable_osx_g5" != "0" ]; then
-			log 1 "configure: error: OSX G5 selected, but not compiling for OSX"
-			log 1 "configure: error: either select OSX as OS, or deselect OSX G5"
+			log 1 "configure: error: ppc970 (OSX G5) selected, but not compiling for OSX"
+			log 1 "configure: error: either select OSX as OS, or deselect ppc970"
 
 			exit 1
 		fi
@@ -3196,47 +3188,55 @@ generate_src_osx() {
 	CFLAGS_orig="$CFLAGS"
 	LDFLAGS_orig="$LDFLAGS"
 
-	if [ -n "$osx_sdk_104_path" ]; then
-		# Use 10.4 SDK for 32-bit targets
-		CFLAGS="-isysroot $osx_sdk_104_path $CFLAGS_orig"
-		LDFLAGS="-Wl,-syslibroot,$osx_sdk_104_path $LDFLAGS_orig"
-	fi
+	for type in $enable_universal; do
 
-	BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc"
-	cc_host="$cc_host_orig -arch ppc -mmacosx-version-min=10.3"
-	cxx_host="$cxx_host_orig -arch ppc -mmacosx-version-min=10.3"
-	generate_src_normal "[PowerPC]" "objs/ppc"
-
-	BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc970"
-	cc_host="$cc_host_orig -arch ppc970 -mmacosx-version-min=10.3 -mcpu=G5 -mpowerpc64 -mtune=970 -mcpu=970 -mpowerpc-gpopt"
-	cxx_host="$cxx_host_orig -arch ppc970 -mmacosx-version-min=10.3 -mcpu=G5 -mpowerpc64 -mtune=970 -mcpu=970 -mpowerpc-gpopt"
-	generate_src_normal "[PowerPC G5]" "objs/ppc970"
-
-	BASE_SRC_OBJS_DIR="$OBJS_DIR/intel"
-	cc_host="$cc_host_orig -arch i386 -mmacosx-version-min=10.4"
-	cxx_host="$cxx_host_orig -arch i386 -mmacosx-version-min=10.4"
-	generate_src_normal "[Intel]" "objs/intel"
-
-	if [ "$enable_universal" = "64" ]; then
-		# 64 bits is always 10.5 or higher. Furthermore it has a broken ICONV
-		# and they also removed support for QuickTime/QuickDraw
-		if [ -n "$osx_sdk_path" ]; then
-			CFLAGS="-isysroot $osx_sdk_path $CFLAGS_orig"
-			LDFLAGS="-Wl,-syslibroot,$osx_sdk_path $LDFLAGS_orig"
+		if [ -n "$osx_sdk_104_path" ]; then
+			# Use 10.4 SDK for 32-bit targets
+			CFLAGS="-isysroot $osx_sdk_104_path $CFLAGS_orig"
+			LDFLAGS="-Wl,-syslibroot,$osx_sdk_104_path $LDFLAGS_orig"
 		fi
-		CFLAGS="$CFLAGS -D_SQ64 -DHAVE_BROKEN_ICONV -DNO_QUICKTIME -UENABLE_COCOA_QUICKDRAW"
-		LIBS="`echo $LIBS | sed 's/-framework QuickTime//'`"
 
-		BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc64"
-		cc_host="$cc_host_orig -arch ppc64 -mmacosx-version-min=10.5"
-		cxx_host="$cxx_host_orig -arch ppc64 -mmacosx-version-min=10.5"
-		generate_src_normal "[PowerPC 64 bits]" "objs/ppc64"
+		# We don't want to duplicate the x86_64 stuff for each target, so do it once here
+		if [ "$type" = "ppc64" ] || [ "$type" = "x86_64" ]; then
+			# 64 bits is always 10.5 or higher. Furthermore it has a broken ICONV
+			# and they also removed support for QuickTime/QuickDraw
+			if [ -n "$osx_sdk_path" ]; then
+				CFLAGS="-isysroot $osx_sdk_path $CFLAGS_orig"
+				LDFLAGS="-Wl,-syslibroot,$osx_sdk_path $LDFLAGS_orig"
+			fi
+			CFLAGS="$CFLAGS -D_SQ64 -DHAVE_BROKEN_ICONV -DNO_QUICKTIME -UENABLE_COCOA_QUICKDRAW"
+			LIBS="`echo $LIBS | sed 's/-framework QuickTime//'`"
+		fi
 
-		BASE_SRC_OBJS_DIR="$OBJS_DIR/intel64"
-		cc_host="$cc_host_orig -arch x86_64 -mmacosx-version-min=10.5"
-		cxx_host="$cxx_host_orig -arch x86_64 -mmacosx-version-min=10.5"
-		generate_src_normal "[Intel 64 bits]" "objs/intel64"
-	fi
+		case $type in
+			ppc)
+				BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc"
+				cc_host="$cc_host_orig -arch ppc -mmacosx-version-min=10.3"
+				cxx_host="$cxx_host_orig -arch ppc -mmacosx-version-min=10.3"
+				generate_src_normal "[ppc]" "objs/ppc";;
+			ppc970)
+				BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc970"
+				cc_host="$cc_host_orig -arch ppc970 -mmacosx-version-min=10.3 -mcpu=G5 -mpowerpc64 -mtune=970 -mcpu=970 -mpowerpc-gpopt"
+				cxx_host="$cxx_host_orig -arch ppc970 -mmacosx-version-min=10.3 -mcpu=G5 -mpowerpc64 -mtune=970 -mcpu=970 -mpowerpc-gpopt"
+				generate_src_normal "[ppc970]" "objs/ppc970";;
+			i386)
+				BASE_SRC_OBJS_DIR="$OBJS_DIR/i386"
+				cc_host="$cc_host_orig -arch i386 -mmacosx-version-min=10.4"
+				cxx_host="$cxx_host_orig -arch i386 -mmacosx-version-min=10.4"
+				generate_src_normal "[i386]" "objs/i386";;
+			ppc64)
+				BASE_SRC_OBJS_DIR="$OBJS_DIR/ppc64"
+				cc_host="$cc_host_orig -arch ppc64 -mmacosx-version-min=10.5"
+				cxx_host="$cxx_host_orig -arch ppc64 -mmacosx-version-min=10.5"
+				generate_src_normal "[ppc64]" "objs/ppc64";;
+			x86_64)
+				BASE_SRC_OBJS_DIR="$OBJS_DIR/x86_64"
+				cc_host="$cc_host_orig -arch x86_64 -mmacosx-version-min=10.5"
+				cxx_host="$cxx_host_orig -arch x86_64 -mmacosx-version-min=10.5"
+				generate_src_normal "[x86_64]" "objs/x86_64";;
+			*) log 1 "Unknown architecture requested for universal build: $type";;
+		esac
+	done
 }
 
 generate_src() {
@@ -3317,8 +3317,10 @@ showhelp() {
 	echo "  --enable-static                enable static compile (doesn't work for"
 	echo "                                 all HOSTs)"
 	echo "  --enable-translator            enable extra output for translators"
-	echo "  --enable-universal             enable universal builds (OSX ONLY)"
-	echo "  --enable-osx-g5                enables optimizations for G5 (OSX ONLY)"
+	echo "  --enable-universal[=ARCH]      enable universal builds (OSX ONLY). Allowed is any combination"
+	echo "                                 of architectures: i386 ppc ppc970 ppc64 x86_64"
+	echo "                                 Default architectures are: i386 ppc"
+	echo "  --enable-osx-g5                enables optimizations for ppc970 (G5) (OSX ONLY)"
 	echo "  --disable-cocoa-quartz         disable the quartz window mode driver for Cocoa (OSX ONLY)"
 	echo "  --disable-cocoa-quickdraw      disable the quickdraw window mode driver for Cocoa (OSX ONLY)"
 	echo "  --disable-unicode              disable unicode support to build win9x"
