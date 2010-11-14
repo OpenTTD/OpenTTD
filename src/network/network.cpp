@@ -681,7 +681,7 @@ static void NetworkClose()
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (!_network_server) {
 			SEND_COMMAND(PACKET_CLIENT_QUIT)();
-			cs->Send_Packets();
+			cs->Send_Packets(true);
 		}
 		NetworkCloseClient(cs, NETWORK_RECV_STATUS_CONN_LOST);
 	}
@@ -1012,9 +1012,7 @@ static void NetworkSend()
 	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (cs->writable) {
-			cs->Send_Packets();
-
-			if (cs->status == STATUS_MAP) {
+			if (cs->Send_Packets() && cs->status == STATUS_MAP) {
 				/* This client is in the middle of a map-send, call the function for that */
 				SEND_COMMAND(PACKET_SERVER_MAP)(cs);
 			}

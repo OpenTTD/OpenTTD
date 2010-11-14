@@ -412,8 +412,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		}
 
 		/* Send all packets (forced) and check if we have send it all */
-		cs->Send_Packets();
-		if (cs->IsPacketQueueEmpty()) {
+		if (cs->Send_Packets() && cs->IsPacketQueueEmpty()) {
 			/* All are sent, increase the sent_packets */
 			sent_packets *= 2;
 		} else {
