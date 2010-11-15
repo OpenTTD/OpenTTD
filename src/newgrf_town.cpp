@@ -101,7 +101,7 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 		case 0xD5: return t->fund_buildings_months;
 	}
 
-	DEBUG(grf, 1, "Unhandled town property 0x%X", variable);
+	DEBUG(grf, 1, "Unhandled town variable 0x%X", variable);
 
 	*available = false;
 	return UINT_MAX;

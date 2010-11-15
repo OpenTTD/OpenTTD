@@ -208,7 +208,7 @@ static uint32 AirportTileGetVariable(const ResolverObject *object, byte variable
 		case 0x62: return GetAirportTileIDAtOffset(GetNearbyTile(parameter, tile), st, object->grffile->grfid);
 	}
 
-	DEBUG(grf, 1, "Unhandled airport tile property 0x%X", variable);
+	DEBUG(grf, 1, "Unhandled airport tile variable 0x%X", variable);
 
 	*available = false;
 	return UINT_MAX;

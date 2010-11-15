@@ -160,7 +160,7 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 		}
 
 		if (!available) {
-			/* Unsupported property: skip further processing and return either
+			/* Unsupported variable: skip further processing and return either
 			 * the group from the first range or the default group. */
 			return SpriteGroup::Resolve(this->num_ranges > 0 ? this->ranges[0].group : this->default_group, object);
 		}

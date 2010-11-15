@@ -35,7 +35,7 @@ static void CargoSetTriggers(const ResolverObject *object, int triggers)
 
 static uint32 CargoGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
-	DEBUG(grf, 1, "Unhandled cargo property 0x%X", variable);
+	DEBUG(grf, 1, "Unhandled cargo variable 0x%X", variable);
 
 	*available = false;
 	return UINT_MAX;

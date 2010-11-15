@@ -348,7 +348,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		}
 	}
 
-	DEBUG(grf, 1, "Unhandled house property 0x%X", variable);
+	DEBUG(grf, 1, "Unhandled house variable 0x%X", variable);
 
 	*available = false;
 	return UINT_MAX;

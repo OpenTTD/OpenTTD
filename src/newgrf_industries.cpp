@@ -188,7 +188,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 	}
 
 	if (industry == NULL) {
-		DEBUG(grf, 1, "Unhandled property 0x%X (no available industry) in callback 0x%x", variable, object->callback);
+		DEBUG(grf, 1, "Unhandled variable 0x%X (no available industry) in callback 0x%x", variable, object->callback);
 
 		*available = false;
 		return UINT_MAX;
@@ -329,7 +329,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0xB4: return Clamp(industry->last_cargo_accepted_at - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Date last cargo accepted since 1920 (in days)
 	}
 
-	DEBUG(grf, 1, "Unhandled industry property 0x%X", variable);
+	DEBUG(grf, 1, "Unhandled industry variable 0x%X", variable);
 
 	*available = false;
 	return UINT_MAX;

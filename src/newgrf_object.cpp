@@ -312,7 +312,7 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 	}
 
 unhandled:
-	DEBUG(grf, 1, "Unhandled object property 0x%X", variable);
+	DEBUG(grf, 1, "Unhandled object variable 0x%X", variable);
 
 	*available = false;
 	return UINT_MAX;

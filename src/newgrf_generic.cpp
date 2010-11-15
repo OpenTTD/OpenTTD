@@ -100,7 +100,7 @@ static uint32 GenericCallbackGetVariable(const ResolverObject *object, byte vari
 		default: break;
 	}
 
-	DEBUG(grf, 1, "Unhandled generic feature property 0x%02X", variable);
+	DEBUG(grf, 1, "Unhandled generic feature variable 0x%02X", variable);
 
 	*available = false;
 	return UINT_MAX;

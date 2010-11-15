@@ -54,7 +54,7 @@ static uint32 RailTypeGetVariable(const ResolverObject *object, byte variable, b
 			return _date;
 	}
 
-	DEBUG(grf, 1, "Unhandled rail type tile property 0x%X", variable);
+	DEBUG(grf, 1, "Unhandled rail type tile variable 0x%X", variable);
 
 	*available = false;
 	return UINT_MAX;

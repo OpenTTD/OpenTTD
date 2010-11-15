@@ -56,7 +56,7 @@ static uint32 CanalGetVariable(const ResolverObject *object, byte variable, byte
 		case 0x83: return GetWaterTileRandomBits(tile);
 	}
 
-	DEBUG(grf, 1, "Unhandled canal property 0x%02X", variable);
+	DEBUG(grf, 1, "Unhandled canal variable 0x%02X", variable);
 
 	*available = false;
 	return UINT_MAX;
