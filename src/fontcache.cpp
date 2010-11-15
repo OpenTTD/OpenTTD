@@ -46,6 +46,11 @@ static const byte SHADOW_COLOUR = 2;
  * Get the font loaded into a Freetype face by using a font-name.
  * If no appropiate font is found, the function returns an error
  */
+
+/* ========================================================================================
+ * Windows support
+ * ======================================================================================== */
+
 #ifdef WIN32
 #include <windows.h>
 #include <shlobj.h> /* SHGetFolderPath */
@@ -371,7 +376,10 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 	return ret == 0;
 }
 
-#elif defined(__APPLE__)
+#elif defined(__APPLE__) /* end ifdef Win32 */
+/* ========================================================================================
+ * OSX support
+ * ======================================================================================== */
 
 #include "os/macosx/macos.h"
 #include <ApplicationServices/ApplicationServices.h>
@@ -497,8 +505,15 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		 * ATSUI was deprecated with 10.6 and is only partially available in
 		 * 64-bit mode. */
 
+		/* Remove all control characters in the range from SCC_CONTROL_START to
+		 * SCC_CONTROL_END as well as all ASCII < 0x20 from the string as it will
+		 * mess with the automatic font detection */
+		char buff[256]; // This length is enough to find a suitable replacement font
+		strecpy(buff, str, lastof(buff));
+		str_validate(buff, lastof(buff), true, false);
+
 		/* Extract a UniChar represenation of the sample string. */
-		CFStringRef cf_str = CFStringCreateWithCString(kCFAllocatorDefault, str, kCFStringEncodingUTF8);
+		CFStringRef cf_str = CFStringCreateWithCString(kCFAllocatorDefault, buff, kCFStringEncodingUTF8);
 		if (cf_str == NULL) {
 			/* Something went wrong. Corrupt/invalid sample string? */
 			return false;
@@ -592,7 +607,10 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 	return result;
 }
 
-#elif defined(WITH_FONTCONFIG)
+#elif defined(WITH_FONTCONFIG) /* end ifdef __APPLE__ */
+/* ========================================================================================
+ * FontConfig (unix) support
+ * ======================================================================================== */
 static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 {
 	FT_Error err = FT_Err_Cannot_Open_Resource;
