@@ -266,7 +266,6 @@ class FullscreenSubdriver: public CocoaSubdriver {
 		/* Define this variables at the top (against coding style) because
 		 * otherwise GCC barfs at the goto's jumping over variable initialization. */
 		NSRect screen_rect;
-		NSPoint pt;
 		int gamma_error;
 
 		/* Destroy any previous mode */
@@ -295,6 +294,14 @@ class FullscreenSubdriver: public CocoaSubdriver {
 			number = (const __CFNumber*)CFDictionaryGetValue(this->cur_mode, kCGDisplayHeight);
 			CFNumberGetValue(number, kCFNumberSInt32Type, &h);
 		}
+
+		/* Capture the main screen */
+		CGDisplayCapture(this->display_id);
+
+		/* Store the mouse coordinates relative to the total screen */
+		NSPoint mouseLocation = [ NSEvent mouseLocation ];
+		mouseLocation.x /= this->display_width;
+		mouseLocation.y /= this->display_height;
 
 		/* Hide mouse in order to avoid glitch in 8bpp */
 		QZ_HideMouse();
@@ -348,11 +355,14 @@ class FullscreenSubdriver: public CocoaSubdriver {
 		screen_rect = NSMakeRect(0, 0, this->display_width, this->display_height);
 		[ [ NSScreen mainScreen ] setFrame:screen_rect ];
 
-		pt = [ NSEvent mouseLocation ];
-		pt.y = this->display_height - pt.y;
-		if (this->MouseIsInsideView(&pt)) QZ_HideMouse();
-
 		this->UpdatePalette(0, 256);
+
+		/* Move the mouse cursor to approx the same location */
+		CGPoint display_mouseLocation;
+		display_mouseLocation.x = mouseLocation.x * this->display_width;
+		display_mouseLocation.y = this->display_height - (mouseLocation.y * this->display_height);
+
+		CGDisplayMoveCursorToPoint(this->display_id, display_mouseLocation);
 
 		return true;
 
@@ -381,7 +391,9 @@ ERR_NO_MATCH:
 
 		/* Restore original screen resolution/bpp */
 		CGDisplaySwitchToMode(this->display_id, this->save_mode);
+
 		CGReleaseAllDisplays();
+
 		ShowMenuBar();
 
 		/* Reset the main screen's rectangle
@@ -399,8 +411,8 @@ ERR_NO_MATCH:
 
 		if (!gamma_error) this->FadeGammaIn(&gamma_table);
 
-		this->display_width = 0;
-		this->display_height = 0;
+		this->display_width  = CGDisplayPixelsWide(this->display_id);
+		this->display_height = CGDisplayPixelsHigh(this->display_id);
 	}
 
 public:
@@ -416,8 +428,8 @@ public:
 
 		if (bpp == 8) this->palette = CGPaletteCreateDefaultColorPalette();
 
-		this->display_width  = 0;
-		this->display_height = 0;
+		this->display_width  = CGDisplayPixelsWide(this->display_id);
+		this->display_height = CGDisplayPixelsHigh(this->display_id);
 		this->display_depth  = bpp;
 		this->pixel_buffer   = NULL;
 
