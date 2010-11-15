@@ -1621,6 +1621,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Раз�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :леваруч
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :ў цэнтры
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :праваруч
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Размяшчэньне радка стану: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Злева
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Пасярэдзiне
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Зправа
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радыюс прыліпаньня вокнаў: {ORANGE}{STRING} піксэляў
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радыюс прыліпаньня вокнаў: {ORANGE}адключана
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Макс. колькасьць адкрытых вокнаў (не «прылепленых»): {ORANGE}{STRING}

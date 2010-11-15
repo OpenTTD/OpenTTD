@@ -1306,6 +1306,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Plasser
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Venstre
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Midtstilt
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Høyre
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusbarens posisjon: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Venstrestilt
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Midtstilt
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Høyrestilt
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Festeradius for vindu: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Festeradius for vindu: {ORANGE}deaktivert
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Flytende vinduer (ikke fest til andre): {ORANGE}{STRING}
