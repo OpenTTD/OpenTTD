@@ -1911,7 +1911,8 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				break;
 
 			case 0x13:   // Gender translation table
-			case 0x14: { // Case translation table
+			case 0x14:   // Case translation table
+			case 0x15: { // Plural form translation
 				uint curidx = gvid + i; // The current index, i.e. language.
 				const LanguageMetadata *lang = curidx < MAX_LANG ? GetLanguage(curidx) : NULL;
 				if (lang == NULL) {
@@ -1924,6 +1925,16 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				}
 
 				if (_cur_grffile->language_map == NULL) _cur_grffile->language_map = new LanguageMap[MAX_LANG];
+
+				if (prop == 0x15) {
+					uint plural_form = buf->ReadByte();
+					if (plural_form >= LANGUAGE_MAX_PLURAL) {
+						grfmsg(1, "GlobalVarChanceInfo: Plural form %d is out of range, ignoring", plural_form);
+					} else {
+						_cur_grffile->language_map[curidx].plural_form = plural_form;
+					}
+					break;
+				}
 
 				byte newgrf_id = buf->ReadByte(); // The NewGRF (custom) identifier.
 				while (newgrf_id != 0) {
@@ -1975,6 +1986,7 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 	for (int i = 0; i < numinfo; i++) {
 		switch (prop) {
 			case 0x08: // Cost base factor
+			case 0x15: // Plural form translation
 				buf->ReadByte();
 				break;
 

@@ -59,6 +59,7 @@ struct LanguageMap {
 	 * both cases. Thus we are basically implementing a multi-map. */
 	SmallVector<Mapping, 1> gender_map; ///< Mapping of NewGRF and OpenTTD IDs for genders.
 	SmallVector<Mapping, 1> case_map;   ///< Mapping of NewGRF and OpenTTD IDs for cases.
+	int plural_form;                    ///< The plural form used for this language.
 
 	int GetMapping(int newgrf_id, bool gender) const;
 	int GetReverseMapping(int openttd_id, bool gender) const;

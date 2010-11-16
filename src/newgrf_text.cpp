@@ -263,7 +263,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 	 * Initialise the mapping.
 	 * @param type   The type of mapping.
 	 * @param old_d  The old begin of the string, i.e. from where to start writing again.
-	 * @param offset The offset to get the gender from.
+	 * @param offset The offset to get the plural/gender from.
 	 */
 	UnmappedChoiceList(StringControlCode type, char *old_d, int offset) :
 		type(type), old_d(old_d), offset(offset)
@@ -272,7 +272,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 
 	StringControlCode type; ///< The type of choice list.
 	char *old_d;            ///< The old/original location of the "d" local variable.
-	int offset;             ///< The offset for the gender form.
+	int offset;             ///< The offset for the plural/gender form.
 
 	/** Mapping of NewGRF supplied ID to the different strings in the choice list. */
 	SmallMap<byte, char *> strings;
@@ -292,7 +292,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 		}
 
 		char *d = old_d;
-		if (lm == NULL) {
+		if (lm == NULL && this->type != SCC_PLURAL_LIST) {
 			NOT_REACHED();
 			/* In case there is no mapping, just ignore everything but the default. */
 			int len = strlen(this->strings[0]);
@@ -343,6 +343,10 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 			d += len;
 			*d++ = '\0';
 		} else {
+			if (this->type == SCC_PLURAL_LIST) {
+				*d++ = lm->plural_form;
+			}
+
 			/*
 			 * Format for choice list:
 			 * <OFFSET> <NUM CHOICES> <LENs> <STRINGs>
@@ -352,12 +356,12 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 			*d++ = this->offset - 0x80;
 
 			/* "<NUM CHOICES>" */
-			int count = _current_language->num_genders;
+			int count = (this->type == SCC_GENDER_LIST ? _current_language->num_genders : LANGUAGE_MAX_PLURAL_FORMS);
 			*d++ = count;
 
 			/* "<LENs>" */
 			for (int i = 0; i < count; i++) {
-				int idx = lm->GetReverseMapping(i, true);
+				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
 				const char *str = this->strings[this->strings.Contains(idx) ? idx : 0];
 				int len = strlen(str) + 1;
 				if (len > 0xFF) grfmsg(1, "choice list string is too long");
@@ -366,7 +370,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 
 			/* "<STRINGs>" */
 			for (int i = 0; i < count; i++) {
-				int idx = lm->GetReverseMapping(i, true);
+				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
 				const char *str = this->strings[this->strings.Contains(idx) ? idx : 0];
 				int len = strlen(str);
 				memcpy(d, str, len);
@@ -546,11 +550,12 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 
 					case 0x13:
 					case 0x14:
+					case 0x15:
 						if (mapping != NULL) {
 							grfmsg(1, "choice lists can't be stacked, it's going to get messy now...");
 							if (code != 0x14) str++;
 						} else {
-							static const StringControlCode mp[] = { SCC_GENDER_LIST, SCC_SWITCH_CASE };
+							static const StringControlCode mp[] = { SCC_GENDER_LIST, SCC_SWITCH_CASE, SCC_PLURAL_LIST };
 							mapping = new UnmappedChoiceList(mp[code - 0x13], d, code == 0x14 ? 0 : *str++);
 						}
 						break;
