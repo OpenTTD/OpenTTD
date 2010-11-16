@@ -254,6 +254,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byt
 {
 	CommandCost cost(v->GetExpenseType(false));
 	uint total_capacity = 0;
+	uint total_mail_capacity = 0;
 
 	v->InvalidateNewGRFCacheOfChain();
 	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
@@ -266,9 +267,11 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byt
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
 
-		uint16 mail_capacity;
+		uint16 mail_capacity = 0;
 		uint amount = GetVehicleCapacity(v, &mail_capacity);
 		total_capacity += amount;
+		/* mail_capacity will always be zero if the vehicle is not an aircraft. */
+		total_mail_capacity += mail_capacity;
 
 		/* Restore the original cargo type */
 		v->cargo_type = temp_cid;
@@ -292,6 +295,7 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byt
 	}
 
 	_returned_refit_capacity = total_capacity;
+	_returned_mail_refit_capacity = total_mail_capacity;
 	return cost;
 }
 

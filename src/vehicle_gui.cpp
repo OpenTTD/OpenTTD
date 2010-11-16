@@ -537,6 +537,33 @@ struct RefitWindow : public Window {
 		if (widget == VRW_CAPTION) SetDParam(0, Vehicle::Get(this->window_number)->index);
 	}
 
+	/**
+	 * Gets the #StringID to use for displaying capacity.
+	 * @param Cargo and cargo subtype to check for capacity.
+	 * @return INVALID_STRING_ID if there is no capacity. StringID to use in any other case.
+	 * @post String parameters have been set.
+	 */
+	StringID GetCapacityString(RefitOption *option) const
+	{
+		Vehicle *v = Vehicle::Get(this->window_number);
+		CommandCost cost = DoCommand(v->tile, v->index, option->cargo | option->subtype << 8, DC_QUERY_COST, GetCmdRefitVeh(v->type));
+
+		if (cost.Failed()) return INVALID_STRING_ID;
+
+		SetDParam(0, option->cargo);
+		SetDParam(1, _returned_refit_capacity);
+
+		if (_returned_mail_refit_capacity > 0) {
+			SetDParam(2, CT_MAIL);
+			SetDParam(3, _returned_mail_refit_capacity);
+			SetDParam(4, cost.GetCost());
+			return STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT;
+		} else {
+			SetDParam(2, cost.GetCost());
+			return STR_REFIT_NEW_CAPACITY_COST_OF_REFIT;
+		}
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
@@ -546,14 +573,10 @@ struct RefitWindow : public Window {
 
 			case VRW_INFOPANEL:
 				if (this->cargo != NULL) {
-					Vehicle *v = Vehicle::Get(this->window_number);
-					CommandCost cost = DoCommand(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, DC_QUERY_COST, GetCmdRefitVeh(v->type));
-					if (cost.Succeeded()) {
-						SetDParam(0, this->cargo->cargo);
-						SetDParam(1, _returned_refit_capacity);
-						SetDParam(2, cost.GetCost());
+					StringID string = this->GetCapacityString(this->cargo);
+					if (string != INVALID_STRING_ID) {
 						DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT,
-								r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, STR_REFIT_NEW_CAPACITY_COST_OF_REFIT);
+								r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, string);
 					}
 				}
 				break;
@@ -566,17 +589,13 @@ struct RefitWindow : public Window {
 			case 0: { // The consist lenght of the vehicle has changed; rebuild the entire list.
 				this->BuildRefitList();
 				uint max_width = 0;
-				Vehicle *v = Vehicle::Get(this->window_number);
 
 				/* Check the width of all cargo information strings. */
 				for (uint i = 0; i < NUM_CARGO; i++) {
 					for (uint j = 0; j < this->list[i].Length(); j++) {
-						CommandCost cost = DoCommand(v->tile, v->index, list[i][j].cargo | list[i][j].subtype << 8, DC_QUERY_COST, GetCmdRefitVeh(v->type));
-						if (cost.Succeeded()) {
-							SetDParam(0, list[i][j].cargo);
-							SetDParam(1, _returned_refit_capacity);
-							SetDParam(2, cost.GetCost());
-							Dimension dim = GetStringBoundingBox(STR_REFIT_NEW_CAPACITY_COST_OF_REFIT);
+						StringID string = this->GetCapacityString(&list[i][j]);
+						if (string != INVALID_STRING_ID) {
+							Dimension dim = GetStringBoundingBox(string);
 							max_width = max(dim.width, max_width);
 						}
 					}

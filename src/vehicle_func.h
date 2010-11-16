@@ -175,6 +175,7 @@ void StopAllVehicles();
 extern VehicleID _vehicle_id_ctr_day;
 extern VehicleID _new_vehicle_id;
 extern uint16 _returned_refit_capacity;
+extern uint16 _returned_mail_refit_capacity;
 extern byte _age_cargo_skip_counter;
 
 bool CanVehicleUseStation(EngineID engine_type, const struct Station *st);

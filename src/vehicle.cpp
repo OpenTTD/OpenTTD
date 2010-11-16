@@ -57,8 +57,9 @@
 
 VehicleID _vehicle_id_ctr_day;
 VehicleID _new_vehicle_id;
-uint16 _returned_refit_capacity;
-byte _age_cargo_skip_counter; ///< Skip aging of cargo?
+uint16 _returned_refit_capacity;      ///< Stores the capacity after a refit operation.
+uint16 _returned_mail_refit_capacity; ///< Stores the mail capacity after a refit operation (Aircraft only).
+byte _age_cargo_skip_counter;         ///< Skip aging of cargo?
 
 
 /* Initialize the vehicle-pool */
