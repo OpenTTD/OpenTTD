@@ -47,6 +47,7 @@
 #include "genworld.h"
 #include "gui.h"
 #include "vehicle_func.h"
+#include "language.h"
 
 #include "table/strings.h"
 #include "table/build_industry.h"
@@ -1896,6 +1897,55 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 				buf->Skip(4);
 				break;
 
+			case 0x13:   // Gender translation table
+			case 0x14: { // Case translation table
+				uint curidx = gvid + i; // The current index, i.e. language.
+				const LanguageMetadata *lang = curidx < MAX_LANG ? GetLanguage(curidx) : NULL;
+				if (lang == NULL) {
+					grfmsg(1, "GlobalVarChangeInfo: Language %d is not known, ignoring", curidx);
+					/* Skip over the data. */
+					while (buf->ReadByte() != 0) {
+						buf->ReadString();
+					}
+					break;
+				}
+
+				if (_cur_grffile->language_map == NULL) _cur_grffile->language_map = new LanguageMap[MAX_LANG];
+
+				byte newgrf_id = buf->ReadByte(); // The NewGRF (custom) identifier.
+				while (newgrf_id != 0) {
+					const char *name = buf->ReadString(); // The name for the OpenTTD identifier.
+
+					/* We'll just ignore the UTF8 identifier character. This is (fairly)
+					 * safe as OpenTTD's strings gender/cases are usually in ASCII which
+					 * is just a subset of UTF8, or they need the bigger UTF8 characters
+					 * such as Cyrillic. Thus we will simply assume they're all UTF8. */
+					WChar c;
+					size_t len = Utf8Decode(&c, name);
+					if (c == NFO_UTF8_IDENTIFIER) name += len;
+
+					LanguageMap::Mapping map;
+					map.newgrf_id = newgrf_id;
+					if (prop == 0x13) {
+						map.openttd_id = lang->GetGenderIndex(name);
+						if (map.openttd_id >= MAX_NUM_GENDERS) {
+							grfmsg(1, "GlobalVarChangeInfo: Gender name %s is not known, ignoring", name);
+						} else {
+							*_cur_grffile->language_map[curidx].gender_map.Append() = map;
+						}
+					} else {
+						map.openttd_id = lang->GetCaseIndex(name);
+						if (map.openttd_id >= MAX_NUM_CASES) {
+							grfmsg(1, "GlobalVarChangeInfo: Case name %s is not known, ignoring", name);
+						} else {
+							*_cur_grffile->language_map[curidx].case_map.Append() = map;
+						}
+					}
+					newgrf_id = buf->ReadByte();
+				}
+				break;
+			}
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -1971,6 +2021,13 @@ static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, B
 				_cur_grffile->railtype_list[i] = BSWAP32(rtl);
 				break;
 			}
+
+			case 0x13: // Gender translation table
+			case 0x14: // Case translation table
+				while (buf->ReadByte() != 0) {
+					buf->ReadString();
+				}
+				break;
 
 			default:
 				ret = CIR_UNKNOWN;
@@ -6990,6 +7047,7 @@ static void ResetNewGRF()
 		free(f->filename);
 		free(f->cargo_list);
 		free(f->railtype_list);
+		delete [] f->language_map;
 		free(f);
 	}
 

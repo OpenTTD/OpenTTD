@@ -123,6 +123,8 @@ struct GRFFile {
 	RailTypeLabel *railtype_list;
 	RailType railtype_map[RAILTYPE_END];
 
+	struct LanguageMap *language_map; ///< Mappings related to the languages.
+
 	int traininfo_vehicle_pitch;  ///< Vertical offset for draing train images in depot GUI and vehicle details
 	uint traininfo_vehicle_width; ///< Width (in pixels) of a 8/8 train vehicle in depot GUI and vehicle details
 

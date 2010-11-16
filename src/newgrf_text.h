@@ -14,6 +14,7 @@
 
 #include "string_type.h"
 #include "strings_type.h"
+#include "core/smallvec_type.hpp"
 
 /** This character, the thorn ('þ'), indicates a unicode string to NFO. */
 static const WChar NFO_UTF8_IDENTIFIER = 0x00DE;
@@ -41,5 +42,23 @@ void RewindTextRefStack();
 uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const char **str, int64 *argv);
 
 StringID TTDPStringIDToOTTDStringIDMapping(StringID string);
+
+/** Mapping of language data between a NewGRF and OpenTTD. */
+struct LanguageMap {
+	/** Mapping between NewGRF and OpenTTD IDs. */
+	struct Mapping {
+		byte newgrf_id;  ///< NewGRF's internal ID for a case/gender.
+		byte openttd_id; ///< OpenTTD's internal ID for a case/gender.
+	};
+
+	/* We need a vector and can't use SmallMap due to the fact that for "setting" a
+	 * gender of a string or requesting a case for a substring we want to map from
+	 * the NewGRF's internal ID to OpenTTD's ID whereas for the choice lists we map
+	 * the genders/cases/plural OpenTTD IDs to the NewGRF's internal IDs. In this
+	 * case a NewGRF developer/translator might want a different translation for
+	 * both cases. Thus we are basically implementing a multi-map. */
+	SmallVector<Mapping, 1> gender_map; ///< Mapping of NewGRF and OpenTTD IDs for genders.
+	SmallVector<Mapping, 1> case_map;   ///< Mapping of NewGRF and OpenTTD IDs for cases.
+};
 
 #endif /* NEWGRF_TEXT_H */
