@@ -20,7 +20,7 @@ const char *GetGRFStringFromGRFText(const struct GRFText *text);
 const char *GetGRFStringPtr(uint16 stringid);
 void CleanUpStrings();
 void SetCurrentGrfLangID(byte language_id);
-char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str);
+char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, int *olen = NULL);
 struct GRFText *DuplicateGRFText(struct GRFText *orig);
 void AddGRFTextToList(struct GRFText **list, struct GRFText *text_to_add);
 void AddGRFTextToList(struct GRFText **list, byte langid, uint32 grfid, const char *text_to_add);

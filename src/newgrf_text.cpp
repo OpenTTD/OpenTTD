@@ -123,12 +123,17 @@ struct GRFText {
 public:
 	/**
 	 * Allocate, and assign a new GRFText with the given text.
+	 * As these strings can have string terminations in them, e.g.
+	 * due to "choice lists" we (sometimes) cannot rely on detecting
+	 * the length by means of strlen. Also, if the length of already
+	 * known not scanning the whole string is more efficient.
 	 * @param langid The language of the text.
 	 * @param text   The text to store in the new GRFText.
+	 * @param len    The length of the text.
 	 */
-	static GRFText *New(byte langid, const char *text)
+	static GRFText *New(byte langid, const char *text, int len)
 	{
-		return new (strlen(text) + 1) GRFText(langid, text);
+		return new (len) GRFText(langid, text, len);
 	}
 
 	/**
@@ -138,7 +143,7 @@ public:
 	 */
 	static GRFText *Copy(GRFText *orig)
 	{
-		return GRFText::New(orig->langid, orig->text);
+		return GRFText::New(orig->langid, orig->text, orig->len);
 	}
 
 	/**
@@ -164,10 +169,14 @@ private:
 	 * Actually construct the GRFText.
 	 * @param langid_ The language of the text.
 	 * @param text_   The text to store in this GRFText.
+	 * @param len_    The length of the text to store.
 	 */
-	GRFText(byte langid_, const char *text_) : next(NULL), langid(langid_)
+	GRFText(byte langid_, const char *text_, int len_) : next(NULL), len(len_), langid(langid_)
 	{
-		strcpy(text, text_);
+		/* We need to use memcpy instead of strcpy due to
+		 * the possibility of "choice lists" and therefor
+		 * intermediate string terminators. */
+		memcpy(this->text, text_, len);
 	}
 
 	/**
@@ -183,6 +192,7 @@ private:
 
 public:
 	GRFText *next; ///< The next GRFText in this chain.
+	int len;       ///< The length of the stored string, used for copying.
 	byte langid;   ///< The language associated with this GRFText.
 	char text[];   ///< The actual (translated) text.
 };
@@ -211,9 +221,10 @@ static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
  * @param grfid       The (NewGRF) ID associated with this string
  * @param language_id The (NewGRF) language ID associated with this string.
  * @param str         The string to translate.
+ * @param [out] olen  The length of the final string.
  * @return The translated string.
  */
-char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str)
+char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, int *olen)
 {
 	char *tmp = MallocT<char>(strlen(str) * 10 + 1); // Allocate space to allow for expansion
 	char *d = tmp;
@@ -360,7 +371,8 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str)
 	}
 
 	*d = '\0';
-	tmp = ReallocT(tmp, strlen(tmp) + 1);
+	if (olen != NULL) *olen = d - tmp + 1;
+	tmp = ReallocT(tmp, d - tmp + 1);
 	return tmp;
 }
 
@@ -397,8 +409,9 @@ void AddGRFTextToList(GRFText **list, GRFText *text_to_add)
  */
 void AddGRFTextToList(struct GRFText **list, byte langid, uint32 grfid, const char *text_to_add)
 {
-	char *translatedtext = TranslateTTDPatchCodes(grfid, langid, text_to_add);
-	GRFText *newtext = GRFText::New(langid, translatedtext);
+	int len;
+	char *translatedtext = TranslateTTDPatchCodes(grfid, langid, text_to_add, &len);
+	GRFText *newtext = GRFText::New(langid, translatedtext, len);
 	free(translatedtext);
 
 	AddGRFTextToList(list, newtext);
@@ -412,7 +425,7 @@ void AddGRFTextToList(struct GRFText **list, byte langid, uint32 grfid, const ch
  */
 void AddGRFTextToList(struct GRFText **list, const char *text_to_add)
 {
-	AddGRFTextToList(list, GRFText::New(0x7F, text_to_add));
+	AddGRFTextToList(list, GRFText::New(0x7F, text_to_add, strlen(text_to_add) + 1));
 }
 
 /**
@@ -466,9 +479,10 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	/* Too many strings allocated, return empty */
 	if (id == lengthof(_grf_text)) return STR_EMPTY;
 
-	translatedtext = TranslateTTDPatchCodes(grfid, langid_to_add, text_to_add);
+	int len;
+	translatedtext = TranslateTTDPatchCodes(grfid, langid_to_add, text_to_add, &len);
 
-	GRFText *newtext = GRFText::New(langid_to_add, translatedtext);
+	GRFText *newtext = GRFText::New(langid_to_add, translatedtext, len);
 
 	free(translatedtext);
 
