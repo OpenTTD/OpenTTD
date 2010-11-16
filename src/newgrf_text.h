@@ -61,6 +61,7 @@ struct LanguageMap {
 	SmallVector<Mapping, 1> case_map;   ///< Mapping of NewGRF and OpenTTD IDs for cases.
 
 	int GetMapping(int newgrf_id, bool gender) const;
+	int GetReverseMapping(int openttd_id, bool gender) const;
 	static const LanguageMap *GetLanguageMap(uint32 grfid, uint8 language_id);
 };
 
