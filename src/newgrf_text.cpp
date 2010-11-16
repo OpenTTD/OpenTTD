@@ -121,6 +121,11 @@ enum GRFExtendedLanguages {
  */
 struct GRFText {
 public:
+	/**
+	 * Allocate, and assign a new GRFText with the given text.
+	 * @param langid The language of the text.
+	 * @param text   The text to store in the new GRFText.
+	 */
 	static GRFText *New(byte langid, const char *text)
 	{
 		return new (strlen(text) + 1) GRFText(langid, text);
@@ -128,8 +133,8 @@ public:
 
 	/**
 	 * Create a copy of this GRFText.
-	 * @param orig the grftext to copy
-	 * @return an exact copy of the given text
+	 * @param orig the grftext to copy.
+	 * @return an exact copy of the given text.
 	 */
 	static GRFText *Copy(GRFText *orig)
 	{
@@ -139,7 +144,7 @@ public:
 	/**
 	 * Helper allocation function to disallow something.
 	 * Don't allow simple 'news'; they wouldn't have enough memory.
-	 * @param size the amount of space not to allocate
+	 * @param size the amount of space not to allocate.
 	 */
 	void *operator new(size_t size)
 	{
@@ -147,14 +152,19 @@ public:
 	}
 
 	/**
-	 * Free the memory we allocated
-	 * @param p memory to free
+	 * Free the memory we allocated.
+	 * @param p memory to free.
 	 */
 	void operator delete(void *p)
 	{
 		free(p);
 	}
 private:
+	/**
+	 * Actually construct the GRFText.
+	 * @param langid_ The language of the text.
+	 * @param text_   The text to store in this GRFText.
+	 */
 	GRFText(byte langid_, const char *text_) : next(NULL), langid(langid_)
 	{
 		strcpy(text, text_);
@@ -172,9 +182,9 @@ private:
 	}
 
 public:
-	GRFText *next;
-	byte langid;
-	char text[];
+	GRFText *next; ///< The next GRFText in this chain.
+	byte langid;   ///< The language associated with this GRFText.
+	char text[];   ///< The actual (translated) text.
 };
 
 
