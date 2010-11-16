@@ -307,39 +307,26 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 			case 0x98: d += Utf8Encode(d, SCC_BLACK);   break;
 			case 0x9A:
 				switch (*str++) {
-					case 0: // FALL THROUGH
-					case 1:
-						d += Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY);
-						break;
-					case 3: {
+					case 0x00: // FALL THROUGH
+					case 0x01: d += Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
+					case 0x03: {
 						uint16 tmp  = ((uint8)*str++);
 						tmp        |= ((uint8)*str++) << 8;
 						d += Utf8Encode(d, SCC_NEWGRF_PUSH_WORD);
 						d += Utf8Encode(d, tmp);
 						break;
 					}
-					case 4:
+					case 0x04:
 						d += Utf8Encode(d, SCC_NEWGRF_UNPRINT);
 						d += Utf8Encode(d, *str++);
 						break;
-					case 6:
-						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_BYTE);
-						break;
-					case 7:
-						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_WORD);
-						break;
-					case 8:
-						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_DWORD);
-						break;
-					case 0x0B:
-						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_QWORD);
-						break;
-					case 0x0C:
-						d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_STATION_NAME);
-						break;
-					case 0x0D:
-						d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_WEIGHT);
-						break;
+					case 0x06: d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_BYTE);          break;
+					case 0x07: d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_WORD);          break;
+					case 0x08: d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_DWORD);         break;
+					/* 0x09, 0x0A are TTDPatch internal use only string codes. */
+					case 0x0B: d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_QWORD);         break;
+					case 0x0C: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_STATION_NAME); break;
+					case 0x0D: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_WEIGHT);       break;
 
 					default:
 						grfmsg(1, "missing handler for extended format code");
@@ -347,20 +334,20 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 				}
 				break;
 
-			case 0x9E: d += Utf8Encode(d, 0x20AC); break; // Euro
-			case 0x9F: d += Utf8Encode(d, 0x0178); break; // Y with diaeresis
-			case 0xA0: d += Utf8Encode(d, SCC_UPARROW); break;
-			case 0xAA: d += Utf8Encode(d, SCC_DOWNARROW); break;
-			case 0xAC: d += Utf8Encode(d, SCC_CHECKMARK); break;
-			case 0xAD: d += Utf8Encode(d, SCC_CROSS); break;
-			case 0xAF: d += Utf8Encode(d, SCC_RIGHTARROW); break;
-			case 0xB4: d += Utf8Encode(d, SCC_TRAIN); break;
-			case 0xB5: d += Utf8Encode(d, SCC_LORRY); break;
-			case 0xB6: d += Utf8Encode(d, SCC_BUS); break;
-			case 0xB7: d += Utf8Encode(d, SCC_PLANE); break;
-			case 0xB8: d += Utf8Encode(d, SCC_SHIP); break;
+			case 0x9E: d += Utf8Encode(d, 0x20AC);             break; // Euro
+			case 0x9F: d += Utf8Encode(d, 0x0178);             break; // Y with diaeresis
+			case 0xA0: d += Utf8Encode(d, SCC_UPARROW);        break;
+			case 0xAA: d += Utf8Encode(d, SCC_DOWNARROW);      break;
+			case 0xAC: d += Utf8Encode(d, SCC_CHECKMARK);      break;
+			case 0xAD: d += Utf8Encode(d, SCC_CROSS);          break;
+			case 0xAF: d += Utf8Encode(d, SCC_RIGHTARROW);     break;
+			case 0xB4: d += Utf8Encode(d, SCC_TRAIN);          break;
+			case 0xB5: d += Utf8Encode(d, SCC_LORRY);          break;
+			case 0xB6: d += Utf8Encode(d, SCC_BUS);            break;
+			case 0xB7: d += Utf8Encode(d, SCC_PLANE);          break;
+			case 0xB8: d += Utf8Encode(d, SCC_SHIP);           break;
 			case 0xB9: d += Utf8Encode(d, SCC_SUPERSCRIPT_M1); break;
-			case 0xBC: d += Utf8Encode(d, SCC_SMALLUPARROW); break;
+			case 0xBC: d += Utf8Encode(d, SCC_SMALLUPARROW);   break;
 			case 0xBD: d += Utf8Encode(d, SCC_SMALLDOWNARROW); break;
 			default:
 				/* Validate any unhandled character */
