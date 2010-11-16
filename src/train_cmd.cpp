@@ -1251,7 +1251,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		 *     a) the 'next' part is a wagon that becomes a free wagon chain.
 		 *     b) the 'next' part is an engine that becomes a front engine.
 		 *     c) there is no 'next' part, nothing else happens
-		 *  3) front engine gets moved to later in the current train, it is not an engine anymore.
+		 *  3) front engine gets moved to later in the current train, it is not a front engine anymore.
 		 *     a) the 'next' part is a wagon that becomes a free wagon chain.
 		 *     b) the 'next' part is an engine that becomes a front engine.
 		 *  4) free wagon gets moved
@@ -1270,14 +1270,15 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			DeleteWindowById(WC_VEHICLE_DETAILS, src->index);
 			DeleteWindowById(WC_VEHICLE_TIMETABLE, src->index);
 
-			/* We are going to be move to another train. So we
-			 * are no part of this group anymore. In case we
-			 * are not moving group... well, then we do not need
-			 * to move.
-			 * Or we are moving to later in the train and our
-			 * new head isn't a front engine anymore.
-			 */
-			if (dst_head != NULL ? dst_head != src : !src_head->IsFrontEngine()) {
+			/* We are going to be moved to a different train, and
+			 * we were the front engine of the original train. */
+			if (dst_head != NULL && dst_head != src && (src_head == NULL || !src_head->IsFrontEngine())) {
+				DecreaseGroupNumVehicle(src->group_id);
+			}
+
+			/* The front engine is going to be moved later in the
+			 * current train, and it will not be a train anymore. */
+			if (dst_head == NULL && !src_head->IsFrontEngine()) {
 				DecreaseGroupNumVehicle(src->group_id);
 			}
 
@@ -1286,6 +1287,12 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 			DeleteVehicleOrders(src);
 			RemoveVehicleFromGroup(src);
 			src->unitnumber = 0;
+		}
+
+		/* We were a front engine and we are becoming one for a different train.
+		 * Increase the group counter accordingly. */
+		if (original_src_head == src && dst_head == src) {
+			IncreaseGroupNumVehicle(src->group_id);
 		}
 
 		/* We weren't a front engine but are becoming one. So
