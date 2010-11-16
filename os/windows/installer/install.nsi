@@ -49,6 +49,8 @@ CRCCheck force
 ShowInstDetails show
 ShowUninstDetails show
 
+RequestExecutionLevel admin
+
 Var SHORTCUTS
 Var CDDRIVE
 
@@ -108,6 +110,8 @@ Section "!OpenTTD" Section1
 	; Overwrite files by default, but don't complain on failure
 	SetOverwrite try
 
+	SetShellVarContext all
+
 	; Define root variable relative to installer
 	!define PATH_ROOT "..\..\..\"
 
@@ -133,20 +137,34 @@ Section "!OpenTTD" Section1
 	; Copy the scripts
 	SetOutPath "$INSTDIR\scripts\"
 	File ${PATH_ROOT}bin\scripts\*.*
+	Push "$INSTDIR\scripts\readme.txt"
+	Call unix2dos
 
 	; Copy some documention files
 	SetOutPath "$INSTDIR\docs\"
 	File ${PATH_ROOT}docs\multiplayer.txt
+	Push "$INSTDIR\docs\multiplayer.txt"
+	Call unix2dos
 	File ${PATH_ROOT}docs\32bpp.txt
+	Push "$INSTDIR\docs\32bpp.txt"
+	Call unix2dos
 
 	; Copy the rest of the stuff
 	SetOutPath "$INSTDIR\"
 
 	; Copy text files
 	File ${PATH_ROOT}changelog.txt
+	Push "$INSTDIR\changelog.txt"
+	Call unix2dos
 	File ${PATH_ROOT}COPYING
+	Push "$INSTDIR\COPYING"
+	Call unix2dos
 	File ${PATH_ROOT}readme.txt
+	Push "$INSTDIR\readme.txt"
+	Call unix2dos
 	File ${PATH_ROOT}known-bugs.txt
+	Push "$INSTDIR\known-bugs.txt"
+	Call unix2dos
 
 	; Copy executable
 	File /oname=openttd.exe ${BINARY_DIR}\openttd.exe
@@ -181,6 +199,11 @@ Section "!OpenTTD" Section1
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Readme.lnk" "$INSTDIR\Readme.txt"
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Changelog.lnk" "$INSTDIR\Changelog.txt"
 	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Known-bugs.lnk" "$INSTDIR\known-bugs.txt"
+	CreateDirectory "$SMPROGRAMS\$SHORTCUTS\Docs"
+	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Docs\Multiplayer.lnk" "$INSTDIR\docs\multiplayer.txt"
+	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Docs\32bpp.lnk" "$INSTDIR\docs\32bpp.txt"
+	CreateDirectory "$SMPROGRAMS\$SHORTCUTS\Scripts"
+	CreateShortCut "$SMPROGRAMS\$SHORTCUTS\Scripts\Readme.lnk" "$INSTDIR\scripts\readme.txt"
 	!insertmacro MUI_STARTMENU_WRITE_END
 SectionEnd
 
@@ -301,6 +324,8 @@ SectionEnd
 ;-----------------------------------------------
 ; Uninstall section, deletes all installed files
 Section "Uninstall"
+	SetShellVarContext all
+
 	MessageBox MB_YESNO|MB_ICONQUESTION \
 		"Remove the save game folders located at $\"$INSTDIR\save?$\"$\n \
 		If you choose Yes, your saved games will be deleted." \
@@ -339,6 +364,9 @@ Section "Uninstall"
 	Delete "$SMPROGRAMS\$SHORTCUTS\Readme.lnk"
 	Delete "$SMPROGRAMS\$SHORTCUTS\Changelog.lnk"
 	Delete "$SMPROGRAMS\$SHORTCUTS\Known-bugs.lnk"
+	Delete "$SMPROGRAMS\$SHORTCUTS\Docs\Multiplayer.lnk"
+	Delete "$SMPROGRAMS\$SHORTCUTS\Docs\32bpp.lnk"
+	Delete "$SMPROGRAMS\$SHORTCUTS\Scripts\Readme.lnk"
 
 	; Clean up OpenTTD dir
 	Delete "$INSTDIR\changelog.txt"
@@ -419,6 +447,8 @@ Section "Uninstall"
 
 	; Remove remaining directories
 	RMDir "$SMPROGRAMS\$SHORTCUTS\Extras\"
+	RMDir "$SMPROGRAMS\$SHORTCUTS\Scripts\"
+	RMDir "$SMPROGRAMS\$SHORTCUTS\Docs\"
 	RMDir "$SMPROGRAMS\$SHORTCUTS"
 	RMDir "$INSTDIR\ai"
 	RMDir "$INSTDIR\data"
@@ -555,6 +585,62 @@ Retry:
 	Abort
 Done:
 FunctionEnd
+
+;-------------------------------------------------------------------------------
+; strips all CRs
+; and then converts all LFs into CRLFs
+; (this is roughly equivalent to "cat file | dos2unix | unix2dos")
+;
+; usage:
+;    Push "infile"
+;    Call unix2dos
+;
+; beware that this function destroys $0 $1 $2
+Function unix2dos
+	ClearErrors
+
+	Pop $2
+	Rename $2 $2.U2D
+	FileOpen $1 $2 w
+
+	FileOpen $0 $2.U2D r
+
+	Push $2 ; save name for deleting
+
+	IfErrors unix2dos_done
+
+	; $0 = file input (opened for reading)
+	; $1 = file output (opened for writing)
+
+unix2dos_loop:
+	; read a byte (stored in $2)
+	FileReadByte $0 $2
+	IfErrors unix2dos_done ; EOL
+	; skip CR
+	StrCmp $2 13 unix2dos_loop
+	; if LF write an extra CR
+	StrCmp $2 10 unix2dos_cr unix2dos_write
+
+unix2dos_cr:
+	FileWriteByte $1 13
+
+unix2dos_write:
+	; write byte
+	FileWriteByte $1 $2
+	; read next byte
+	Goto unix2dos_loop
+
+unix2dos_done:
+	; close files
+	FileClose $0
+	FileClose $1
+
+	; delete original
+	Pop $0
+	Delete $0.U2D
+
+FunctionEnd
+
 
 Var OLDVERSION
 Var UninstallString
