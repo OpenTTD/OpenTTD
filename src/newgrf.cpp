@@ -1765,6 +1765,19 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 	return ret;
 }
 
+/**
+ * Get the language map associated with a given NewGRF and language.
+ * @param grfid       The NewGRF to get the map for.
+ * @param language_id The (NewGRF) language ID to get the map for.
+ * @return the LanguageMap, or NULL if it couldn't be found.
+ */
+/* static */ const LanguageMap *LanguageMap::GetLanguageMap(uint32 grfid, uint8 language_id)
+{
+	/* LanguageID "MAX_LANG", i.e. 7F is any. This language can't have a gender/case mapping, but has to be handled gracefully. */
+	const GRFFile *grffile = GetFileByGRFID(grfid);
+	return (grffile != NULL && grffile->language_map != NULL && language_id < MAX_LANG) ? &grffile->language_map[language_id] : NULL;
+}
+
 static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, ByteReader *buf)
 {
 	ChangeInfoResult ret = CIR_SUCCESS;

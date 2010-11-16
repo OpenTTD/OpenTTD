@@ -25,6 +25,7 @@
 #include "string_func.h"
 #include "date_type.h"
 #include "debug.h"
+#include "language.h"
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -216,6 +217,20 @@ static uint _num_grf_texts = 0;
 static GRFTextEntry _grf_text[(1 << TABSIZE) * 3];
 static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
 
+/**
+ * Get the mapping from the NewGRF supplied ID to OpenTTD's internal ID.
+ * @param newgrf_id The NewGRF ID to map.
+ * @param gender    Whether to map genders or cases.
+ * @return The, to OpenTTD's internal ID, mapped index, or -1 if there is no mapping.
+ */
+int LanguageMap::GetMapping(int newgrf_id, bool gender) const
+{
+	const SmallVector<Mapping, 1> &map = gender ? this->gender_map : this->case_map;
+	for (const Mapping *m = map.Begin(); m != map.End(); m++) {
+		if (m->newgrf_id == newgrf_id) return m->openttd_id;
+	}
+	return -1;
+}
 
 /**
  * Translate TTDPatch string codes into something OpenTTD can handle (better).
@@ -305,8 +320,9 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 			case 0x96: d += Utf8Encode(d, SCC_GRAY);    break;
 			case 0x97: d += Utf8Encode(d, SCC_DKBLUE);  break;
 			case 0x98: d += Utf8Encode(d, SCC_BLACK);   break;
-			case 0x9A:
-				switch (*str++) {
+			case 0x9A: {
+				int code = *str++;
+				switch (code) {
 					case 0x00: // FALL THROUGH
 					case 0x01: d += Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
 					/* 0x02: ignore next colour byte is not supported. It works on the final
@@ -334,12 +350,24 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 					case 0x0B: d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_QWORD);         break;
 					case 0x0C: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_STATION_NAME); break;
 					case 0x0D: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_WEIGHT);       break;
+					case 0x0E:
+					case 0x0F: {
+						const LanguageMap *lm = LanguageMap::GetLanguageMap(grfid, language_id);
+						int index = *str++;
+						int mapped = lm != NULL ? lm->GetMapping(index, code == 0x0E) : -1;
+						if (mapped >= 0) {
+							d += Utf8Encode(d, code == 0x0E ? SCC_GENDER_INDEX : SCC_SETCASE);
+							d += Utf8Encode(d, mapped);
+						}
+						break;
+					}
 
 					default:
 						grfmsg(1, "missing handler for extended format code");
 						break;
 				}
 				break;
+			}
 
 			case 0x9E: d += Utf8Encode(d, 0x20AC);             break; // Euro
 			case 0x9F: d += Utf8Encode(d, 0x0178);             break; // Y with diaeresis
