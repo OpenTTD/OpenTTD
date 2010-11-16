@@ -354,6 +354,7 @@ static void EmitPlural(char *buf, int value)
 	}
 
 	PutUtf8(SCC_PLURAL_LIST);
+	PutByte(_lang.plural_form);
 	PutByte(TranslateArgumentIdx(argidx, offset));
 	EmitWordList(words, nw);
 }

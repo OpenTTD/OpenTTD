@@ -375,12 +375,18 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	return buff;
 }
 
-static int DeterminePluralForm(int64 count)
+/**
+ * Determine the "plural" index given a plural form and a number.
+ * @param count       The number to get the plural index of.
+ * @param plural_form The plural form we want an index for.
+ * @return The plural index for the given form.
+ */
+static int DeterminePluralForm(int64 count, int plural_form)
 {
 	/* The absolute value determines plurality */
 	uint64 n = abs(count);
 
-	switch (_langpack->plural_form) {
+	switch (plural_form) {
 		default:
 			NOT_REACHED();
 
@@ -875,8 +881,9 @@ static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, 
 				break;
 
 			case SCC_PLURAL_LIST: { // {P}
+				int plural_form = *str++;          // contains the plural form for this string
 				int64 v = argv_orig[(byte)*str++]; // contains the number that determines plural
-				str = ParseStringChoice(str, DeterminePluralForm(v), &buff, last);
+				str = ParseStringChoice(str, DeterminePluralForm(v, plural_form), &buff, last);
 				break;
 			}
 
