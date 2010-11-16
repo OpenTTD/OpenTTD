@@ -21,6 +21,7 @@
 #include "newgrf.h"
 #include "strings_func.h"
 #include "newgrf_storage.h"
+#include "newgrf_text.h"
 #include "string_func.h"
 #include "date_type.h"
 #include "debug.h"
@@ -232,8 +233,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 	WChar c;
 	size_t len = Utf8Decode(&c, str);
 
-	if (c == 0x00DE) {
-		/* The thorn ('þ') indicates a unicode string to TTDPatch */
+	if (c == NFO_UTF8_IDENTIFIER) {
 		unicode = true;
 		str += len;
 	}

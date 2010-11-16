@@ -12,7 +12,11 @@
 #ifndef NEWGRF_TEXT_H
 #define NEWGRF_TEXT_H
 
+#include "string_type.h"
 #include "strings_type.h"
+
+/** This character, the thorn ('þ'), indicates a unicode string to NFO. */
+static const WChar NFO_UTF8_IDENTIFIER = 0x00DE;
 
 StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid, bool new_scheme, const char *text_to_add, StringID def_string);
 StringID GetGRFStringID(uint32 grfid, uint16 stringid);
