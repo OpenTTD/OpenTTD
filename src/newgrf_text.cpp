@@ -309,6 +309,13 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 				switch (*str++) {
 					case 0x00: // FALL THROUGH
 					case 0x01: d += Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
+					/* 0x02: ignore next colour byte is not supported. It works on the final
+					 * string and as such hooks into the string drawing routine. At that
+					 * point many things already happened, such as splitting up of strings
+					 * when drawn over multiple lines or right-to-left translations, which
+					 * make the behaviour peculiar, e.g. only happening at specific width
+					 * of windows. Or we need to add another pass over the string to just
+					 * support this. As such it is not implemented in OpenTTD. */
 					case 0x03: {
 						uint16 tmp  = ((uint8)*str++);
 						tmp        |= ((uint8)*str++) << 8;
