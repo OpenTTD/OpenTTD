@@ -2806,8 +2806,8 @@ int Train::UpdateSpeed()
 		if (this->cur_speed > max_speed) {
 			tempmax = this->cur_speed - (this->cur_speed / 10) - 1;
 		}
-		/* Force a minimum speed of 1 km/h when realistic acceleration is on. */
-		int min_speed = (_settings_game.vehicle.train_acceleration_model == AM_ORIGINAL) ? 0 : 2;
+		/* Force a minimum speed of 1 km/h when realistic acceleration is on and the train is not braking. */
+		int min_speed = (_settings_game.vehicle.train_acceleration_model == AM_ORIGINAL || this->GetAccelerationStatus() == AS_BRAKE) ? 0 : 2;
 		this->cur_speed = spd = Clamp(this->cur_speed + ((int)spd >> 8), min_speed, tempmax);
 	}
 
