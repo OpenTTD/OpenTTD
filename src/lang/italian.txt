@@ -173,7 +173,6 @@ STR_TONS                                                        :{COMMA} tonnell
 STR_LITERS                                                      :{COMMA} litri
 STR_ITEMS                                                       :{COMMA} oggetti
 STR_CRATES                                                      :{COMMA} casse
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Altra
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Blu scuro
@@ -944,6 +943,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Attiva q
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Risoluzione schermo
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleziona la risoluzione dello schermo da utilizzare
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Altra
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato screenshot
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selezionare il formato da usare per gli screenshot
@@ -1155,17 +1155,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Sì, per tutti 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avvisa se il profitto di un veicolo è in negativo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}I veicoli non diventano mai obsoleti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Rinnova un veicolo quando diventa vecchio: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova un veicolo quando è {ORANGE}{STRING}{LTBLUE} mesi fuori età massima
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova un veicolo {ORANGE}{STRING}{LTBLUE} mes{P 0:1 e i) prima/dopo l'età massima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Rinnova solo se disponibile il fondo minimo di {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata dei messaggi d'errore: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Ritardo eventi mouse: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata dei messaggi d'errore: {ORANGE}{STRING} second{P 0:1 o i}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Ritardo eventi mouse: {ORANGE}{STRING} second{P 0:1 o i}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Ritardo eventi mouse: {ORANGE}eventi disabilitati
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mostra la popolazione di una città nell'etichetta del nome: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generatore terreno: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originale
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distanza delle raffinerie dal bordo della mappa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distanza delle raffinerie dal bordo della mappa: {ORANGE}{STRING} riquadr{P 0:1 o i}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Altezza delle nevi perenni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Irregolarità del terreno (solo TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molto morbido
@@ -1270,7 +1270,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Anno di
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Abilita economia fluida (cambiamenti piccoli e frequenti): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permetti l'acquisto di azioni di altre compagnie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentuale profitto da pagare per una tappa di trasferimento: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Trascinando il cursore, piazza i segnali ogni: {ORANGE}{STRING} quadrato/i
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Trascinando il cursore, piazza i segnali ogni: {ORANGE}{STRING} riquadr{P 0:1 o i}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Costruisci segnali semaforici prima del: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Abilita l'interfaccia di selezione segnali: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo di segnale predefinito: {ORANGE}{STRING}
@@ -1305,6 +1305,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posizio
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Sinistra
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Destra
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posizione barra di stato: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Sinistra
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centro
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Destra
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Raggio di aggancio delle finestre: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raggio di aggancio delle finestre: {ORANGE}Disabilitato
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limite finestre non persistenti: {ORANGE}{STRING}
@@ -2818,7 +2822,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocit�
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Costo d'esercizio: {GOLD}{CURRENCY}/anno
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacità: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(riadattabile)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Progettato nel: {GOLD}{NUM}{BLACK} Vita: {GOLD}{COMMA} anni
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Progettato nel: {GOLD}{NUM}{BLACK} Vita: {GOLD}{COMMA} ann{P o i}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Affidabilità massima: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Costo: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -3122,6 +3126,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacit�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Riadatta)
 STR_REFIT_TITLE                                                 :{GOLD}Selezionare il tipo di carico da trasportare:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nuova capacità: {GOLD}{CARGO}{}{BLACK}Costo riadattamento: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nuova capacità: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Costo riadattamento: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selezionare il tipo di carico da far trasportare al treno
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selezionare il tipo di carico da far trasportare all'automezzo

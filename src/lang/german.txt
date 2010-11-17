@@ -166,13 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}KEINE
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} Passagiere
-STR_BAGS                                                        :{COMMA} Säcke
-STR_TONS                                                        :{COMMA} Tonnen
-STR_LITERS                                                      :{COMMA} Liter
-STR_ITEMS                                                       :{COMMA} Stück
-STR_CRATES                                                      :{COMMA} Kisten
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Andere
+STR_PASSENGERS                                                  :{COMMA} Passagier{P "" s}
+STR_BAGS                                                        :{COMMA} S{P ack äcke}
+STR_TONS                                                        :{COMMA} Tonne{P "" n}
+STR_LITERS                                                      :{COMMA} Liter{P "" ""}
+STR_ITEMS                                                       :{COMMA} Stück{P "" ""}
+STR_CRATES                                                      :{COMMA} Kiste{P "" n}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Dunkelblau
@@ -943,6 +942,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD 
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Bildschirmauflösung
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Bildschirmauflösung auswählen
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Andere
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshotformat
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Format auswählen, in dem Screenshots abgespeichert werden sollen
@@ -1154,17 +1154,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Für alle Fahrz
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Warnen, wenn Einnahmen eines Fahrzeuges negativ sind: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Fahrzeuge veralten nie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Fahrzeuge automatisch erneuern, wenn sie alt werden: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Erneuere Fahrzeug {ORANGE}{STRING}{LTBLUE} Monate vor/nach Maximalalter
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Erneuere Fahrzeug {ORANGE}{STRING}{LTBLUE} Monat{P 0:1 "" e} vor/nach Maximalalter
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimaler Kontostand für automatisches Erneuern: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dauer der Fehlermeldungen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Verzögerung von Hilfstexten: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dauer der Fehlermeldungen: {ORANGE}{STRING} Sekunde{P 0:1 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Verzögerung von Hilfstexten: {ORANGE}{STRING} Sekunde{P 0:1 "" n}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Verzögerung von Hilfstexten {ORANGE}nicht aktiviert
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zeige die Einwohnerzahl von Städten neben ihrem Namen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Algorithmus zur Landschaftserzeugung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximaler Abstand der Ölraffinerien vom Spielfeldrand: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximaler Abstand der Ölraffinerien vom Spielfeldrand: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Schneegrenze auf: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rauheit (nur TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr eben
@@ -1269,7 +1269,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Startda
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Feinere Wirtschaft aktivieren (mehrere, kleinere Veränderungen): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Handel mit Firmenanteilen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Prozentsatz des Profits, der Zubringern gezahlt wird: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale alle {ORANGE}{STRING} Felder beim Ziehen mit der Maus
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale jedes {ORANGE}{STRING}. Feld beim Ziehen mit der Maus
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatischer Bau von Formsignalen bis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktiviere Signal-Menü: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standard-Signaltyp: {ORANGE}{STRING}
@@ -3125,6 +3125,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapazit�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Umrüsten)
 STR_REFIT_TITLE                                                 :{GOLD}Neue Fracht wählen:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Neue Kapazität: {GOLD}{CARGO}{}{BLACK}Kosten der Umrüstung: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Neue Kapazität: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kosten für Umrüstung: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Die Fracht auswählen, die der Zug befördern soll
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Die Fracht auswählen, die das Straßenfahrzeug befördern soll

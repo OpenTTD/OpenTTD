@@ -206,6 +206,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
+
 # Common window strings
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Изберете начин на сортирање (намалувачки/зголемувачки)
@@ -253,6 +254,7 @@ STR_SORT_BY_WAITING                                             :Вреднос�
 STR_SORT_BY_ENGINE_ID                                           :Идентификација на моторот (класично сортирање)
 STR_SORT_BY_COST                                                :Цена
 STR_SORT_BY_POWER                                               :Моќност
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Влечни напор
 STR_SORT_BY_INTRO_DATE                                          :Датум на претставување
 STR_SORT_BY_RUNNING_COST                                        :Потрошувачка
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Моќност/Потрошувачка
@@ -291,6 +293,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Гене
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Генерирање на градови
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Генерирање на индустрии
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Конструирање на патишта
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Место објект
 
 ############ range for SE file menu starts
 ############ range for SE file menu starts
@@ -355,6 +358,7 @@ STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Поставк�
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Зумира екранот
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -421,6 +425,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMM
 # Company league window
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Погледнете ги деталите за оваа компанија
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
@@ -623,9 +628,12 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends
 
+STR_NUM_CUSTOM_NUMBER                                           :Прилагодено ({NUM})
 
 
 
+STR_SEA_LEVEL_CUSTOM                                            :Прилагодено
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Прилагодено ({NUM}%)
 
 
 
@@ -637,6 +645,15 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Износ на локомотива чад / искри: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Никој
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Авторски
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Реален
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Рамна површина околу индустрии: {ORANGE}{STRING} плочка{P 0:1 "" s}
+
+
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Одложување на поставете настани: {ORANGE}{STRING} втора{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Одложување на поставете настани: {ORANGE}забрането
 
 
 
@@ -649,10 +666,13 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 
 
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Градови смеете да изгради ниво премини: {ORANGE}{STRING}
 
 
-
-
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Позиција на статусната лента: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Лево
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Центар
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Право
 
 
 
@@ -746,8 +766,10 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Дал�
 
 
 # Network messages
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Ти беше испраќање премногу команди на серверот
 
 ############ Leave those lines in this order!!
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :испраќа премногу команди
 ############ End of leave-in-this-order
 
 # Network related errors
@@ -818,6 +840,7 @@ STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Аеро
 STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Изгради аеродром
 
 # Airport construction window
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Распоред {NUM}
 
 
 
@@ -825,6 +848,16 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Изгр
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Снижи агол на земјата
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Подигни агол на земјата
+
+# Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Избор на објект
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Одберете објект да се изгради
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Класата на објектот
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Преглед на објектот
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Големина: {GOLD}{NUM} x {NUM} плочки
+
+STR_OBJECT_CLASS_LTHS                                           :Светилници
+STR_OBJECT_CLASS_TRNS                                           :Предаватели
 
 # Tree planting window (last two for SE only)
 
@@ -850,6 +883,19 @@ STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Игра
 # Fund new industry window
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Изгради
 
+# Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Индустрија Верига за {STRING} индустрија
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Индустрија Верига за {STRING} товар
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Производство индустрии
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Прифаќањето индустрии
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Имотот
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Кликни на индустрија за да ја видите неговите добавувачи и клиенти
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Кликни на товар да се види неговите добавувачи и клиенти
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Прикажи синџир
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Прикажи карго снабдување и прифаќање на индустрии
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Линк кон мали сајтот
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Изберете го прикажува индустрии во мали сајтот како и
+
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Информации за земјишна област
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Цена за чистење: {LTBLUE}N/A
@@ -859,6 +905,8 @@ STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Сопс
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Локална власт: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ништо
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Изградба: {LTBLUE}{DATE_LONG}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Аеродромот класа: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Името на аеродромот: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Прифатен товар: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 
@@ -878,6 +926,10 @@ STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STR
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Водовод
 
+STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Предавател
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Светилникот
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Седиштето на компанијата
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Компанија во сопственост на земјиштето
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}За OpenTTD
@@ -886,6 +938,12 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2010 OpenTTD тимот
 
 # Save/load game/scenario
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Оптоварување
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Оптоварување на избраната игра
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Детали за играта
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Нема достапни информации.
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}НоваGRF: {WHITE}{STRING}
 
 
 # World generation
@@ -900,26 +958,73 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 
 
 # Map generation progress
+STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Цел на генерација
 
 # NewGRF settings
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE} Детални НовGRF информации
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Активни НовGRF датотеки
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Неактивен НовGRF датотеки
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Изберете дефиниција:
+STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Филтер стринг:
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Додај го избраниот НовGRF датотека за вашата конфигурација
+STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}повторно да го скенира додадени фајлови
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Ажурирање на листата на НоваGRF датотеки
 
 
 
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верзија за: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Мин. компатибилна верзија: {SILVER}{NUM}
 
+
+
+# NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Промена НовGRF параметри
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Затвори
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Ресетирај
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Наместете ги сите параметри на нивните стандардни вредности
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметар {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Број на параметри: {ORANGE}{NUM}
+
+# NewGRF inspect window
+
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Објектот
+
+
+# Sprite aligner window
 
 
 # NewGRF (self) generated warnings/errors
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Во моментов се користат база графики поставени недостасува голем број на sprites.{}Надградете ја основата графика во собата.
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Внимание!
 
 
 
+# NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Никој
+STR_NEWGRF_LIST_ALL_FOUND                                       :Сите датотеки моментов
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Најдов компатибилен датотеки
+STR_NEWGRF_LIST_MISSING                                         :{RED}Недостасуваат датотеки
+
 # NewGRF 'it's broken' warnings
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Тоа е изменета напојува-вагон државата за '{1:ENGINE}' кога не е во внатрешноста на депо.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Возот '{VEHICLE}' сопстевеност на '{COMPANY}' има невалидна должина. Проблемот е веројатно предизвикан од нови графички фајлови. Играта може да се десинхронизира или да падне.
 
 
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+STR_NEWGRF_INVALID_CARGO                                        :<валиден товар>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} на <неважечки товар>
+STR_NEWGRF_INVALID_ENGINE                                       :<валиден возило модел>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<валиден индустрија>
+
 # Sign list window
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Совпаѓање на
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Исчисти филтер
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Вклучи појавување случај кога се споредуваат знак имиња против низа филтер
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Исчисти филтер низа
 
 # Sign window
 
@@ -975,6 +1080,7 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 # Industry directory
 
 # Industry view
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Производство ниво: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 ############ range for requires ends
@@ -982,6 +1088,7 @@ STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} 
 ############ range for produces starts
 ############ range for produces ends
 
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Промена на производство на ниво (процент, до 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Авион
@@ -1031,6 +1138,9 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Преи
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Преименувај го типот на авиони
 
 # Depot window
+
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Промена на името на депо
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Преименувај депо
 
 
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авион - кликни на авионот за информации
@@ -1089,6 +1199,8 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Моме
 
 
 
+# Vehicle stopped/started animations
+
 # Vehicle details
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Име
 
@@ -1122,6 +1234,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Капа
 # Vehicle refit
 STR_REFIT_TITLE                                                 :{GOLD}Одбери тип на товар за носење:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нов капацитет: {GOLD}{CARGO}{}{BLACK}Пренамената чини: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нов капацитет: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK} Цена на ремонтирам: {GOLD}{CURRENCY}
 
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Одбери тип на товар што ќе го носи бродот
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Одбери тип на товар за авионот
@@ -1177,6 +1290,7 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 
 
 # AI debug window
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Преглед на излезот од овој Пи
 
 
 
@@ -1189,6 +1303,7 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 
 
 # AI Parameters
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 
@@ -1196,6 +1311,7 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 
 # Saveload messages
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Автоматското снимање неуспешно
+STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<не се достапни>
 
 # Map generation messages
 
@@ -1203,6 +1319,8 @@ STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Авто
 STR_ERROR_BMPMAP                                                :{WHITE}Не може да се вчита пејсажот од BMP...
 STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... не може да се конвертира типот на слика.
 
+
+# Soundset messages
 
 # Screenshot related messages
 
@@ -1219,6 +1337,7 @@ STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ова �
 STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Не може да се исчисти оваа област...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... несоодветно место
 STR_ERROR_OWNED_BY                                              :{WHITE}... во сопственост на {STRING}
+STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} во начинот на
 
 # Local authority errors
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Твојот обид за поткуп беше
@@ -1233,17 +1352,22 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... ве
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Не може да се направи град
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Овде не може да се изгради град...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Не може да се прошири градот...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... премногу блиску до крајот на мапата
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... премногу блиску до друг град
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... премногу градови
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... не постои такво место за статуа во центарот на градот
 
 # Industry related errors
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Не може да се изгради аеродром на оваа локација...
 
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... возење низ запира не можат да имаат агли
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... возење низ запира не може да има крстосници
 
 # Station destruction related errors
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... нема место тука
 
 
 # Waypoint related errors
@@ -1252,6 +1376,10 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Не м�
 
 # Depot related errors
 
+STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Не можам да креирам депо ...
+
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... мора да се запре внатре во депо
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... мора да се запре внатре во депо
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Авионот мора да се сопре во хангар
 
 
@@ -1262,9 +1390,14 @@ STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ниту
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(лимит на пари)
 
 # Rail construction errors
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Ниво, нема премини се дозволени за овој вид железнички
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... не постои железничка пруга
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... постојат никакви сигнали
 
 
 # Road construction errors
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... не постои патот
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... не постои трамвајски
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Не може да се направи канал овде...
@@ -1272,12 +1405,14 @@ STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Не м�
 # Tree related errors
 
 # Bridge related errors
-STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Краевите на мостот не се на иста висина
+STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Мостот не шефовите на исто ниво
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Мостот е пренизок за теренот
 
 # Tunnel related errors
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... премногу објекти
+STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Не може да се изгради објект ...
 
 # Group related errors
 
@@ -1304,6 +1439,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Авио
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Има премногу возила во играта
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Не може да се смени интервалот за сервисирање...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... возилото е уништено
 
 # Specific vehicle errors
 
@@ -1317,6 +1453,9 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}..пре
 # Timetable related errors
 
 # Sign related errors
+
+# Translatable comment for OpenTTD's desktop shortcut
+STR_DESKTOP_SHORTCUT_COMMENT                                    :А симулација игра базирана на транспорт Тајкун Делукс
 
 ##id 0x2000
 # Town building names
@@ -1342,6 +1481,9 @@ STR_FORMAT_DATE_LONG                                            :{STRING} {STRIN
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Друмско возило депото #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Бродот депото #{COMMA}
+
 STR_COMPANY_SOMEONE                                             :некој
 
 
@@ -1363,6 +1505,7 @@ STR_VIEWPORT_WAYPOINT_TINY                                      :{TINYFONT}{WAYP
 # Simple strings to get specific types of data
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANYNUM}
+STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
@@ -1422,3 +1565,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+

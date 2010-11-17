@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} ton
 STR_LITERS                                                      :{COMMA} liter
 STR_ITEMS                                                       :{COMMA} stuks
 STR_CRATES                                                      :{COMMA} pallets
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anders
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Donkerblauw
@@ -942,6 +941,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Vink dit
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Schermresolutie
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecteer de schermresolutie
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anders
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshotformaat
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecteer het bestandsformaat van screenshots
@@ -1153,7 +1153,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :van alle voertu
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Waarschuw als inkomsten van een voertuig negatief zijn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Voertuigen verlopen nooit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vernieuw voertuig automatisch wanneer deze oud wordt: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Vernieuw voertuig automatisch {ORANGE}{STRING}{LTBLUE} maanden voor/na max. leeftijd
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Vernieuw voertuig automatisch {ORANGE}{STRING}{LTBLUE} maand{P 0:1 "" en} voor/na max. leeftijd
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum benodigd geld voor automatisch vernieuwen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Vertraging muis-over: {ORANGE}{STRING}
@@ -3124,6 +3124,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ombouwen)
 STR_REFIT_TITLE                                                 :{GOLD}Selecteer goederentype om te vervoeren:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kosten van ombouwen: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies goederentype dat deze trein moet vervoeren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecteer goederentype dat dit wegvoertuig moet vervoeren

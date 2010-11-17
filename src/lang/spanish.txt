@@ -172,7 +172,6 @@ STR_TONS                                                        :{COMMA} tonelad
 STR_LITERS                                                      :{COMMA} litros
 STR_ITEMS                                                       :{COMMA} artículos
 STR_CRATES                                                      :{COMMA} cajones
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otras
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Azul oscuro
@@ -943,6 +942,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marca es
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolución de pantalla
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleccione la resolución de pantalla a usar
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otras
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato de captura de pantalla
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Seleccione el formato de captura de pantalla a utilizar
@@ -1154,17 +1154,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos los ve
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avisar si las ganancias de un vehículo son negativas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Los vehículos nunca caducan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Renovación automática de vehículos cuando se vuelven viejos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Renovación automática si tiene {ORANGE}{STRING}{LTBLUE} meses antes/después edad máxima
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Renovar automáticamente vehículos que estén a {ORANGE}{STRING}{LTBLUE} mes{P 0:1 "" es} antes/después de su edad máxima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Mínimo de dinero requerido para renovación automática: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duración del mensaje de error: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Retraso requerido al mantener ratón: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duración del mensaje de error: {ORANGE}{STRING} segundo{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Retraso requerido al mantener ratón: {ORANGE}{STRING} segundo{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Retraso requerido al mantener ratón: {ORANGE}desactivado
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Muestra la población de un pueblo en su etiqueta: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generador terreno: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Máxima distancia desde los bordes para las Refinerías de Petróleo {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Máxima distancia desde los bordes para las Refinerías de Petróleo {ORANGE}{STRING} casilla{P 0:1 "" s}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Altura línea nieve: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Aspereza del terreno (Solo TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
@@ -1269,7 +1269,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Fecha d
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Activar economía suave (cambios más pequeños): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permitir comprar acciones de otras empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Porcentaje del beneficio total a pagar en transferencias: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cuando arrastre colocar señales cada: {ORANGE}{STRING} casilla(s)
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Al arrastrar, colocar señales cada: {ORANGE}{STRING} casilla{P 0:1 "" s}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Señales mecánicas por defecto antes de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar la GUI de señales: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de señal a construir por defecto: {ORANGE}{STRING}
@@ -2598,7 +2598,7 @@ STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Ninguna -
-STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar todas las facilidades
+STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Seleccionar todos los tipos de estación
 STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Seleccionar todos los tipos de carga (incluidas las que no están en espera)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ningún tipo de carga está esperando
 
@@ -2821,7 +2821,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocida
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coste de operación: {GOLD}{CURRENCY}/año
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidad: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(reformable)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Diseñado: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} años
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Diseñado: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} año{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilidad máxima: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Coste: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -3125,6 +3125,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacida
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Reformar)
 STR_REFIT_TITLE                                                 :{GOLD}Seleccione tipo de carga a llevar:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nueva capacidad: {GOLD}{CARGO}{}{BLACK}Coste de reforma: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nueva capacidad: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Coste de reforma: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elegir tipo de carga transportable para el tren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecciona tipo de carga que transportará el vehículo de carretera

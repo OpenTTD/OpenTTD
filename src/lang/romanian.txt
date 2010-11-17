@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} tone
 STR_LITERS                                                      :{COMMA} litri
 STR_ITEMS                                                       :{COMMA} bucăţi
 STR_CRATES                                                      :{COMMA} pachete
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecificată)
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Albastru închis
@@ -942,6 +941,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Bifează
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rezoluţia ecranului
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Alege rezoluţia dorită pentru joc
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecificată)
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formatul capturii de ecran
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Alege tipul fişierului în care se salvează captura de ecran (screenshot)
@@ -1102,7 +1102,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realist
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Înclinarea pantelor pentru trenuri {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Înclinarea pantei (pentru vehicule) {ORANGE}{STRING}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor şi navelor să facă intoarceri de 90°: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor şi navelor să facă întoarceri la 90°: {ORANGE}{STRING}
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Uneşte gările alăturate: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permite unirea staţiilor neînvecinate: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Foloseşte algoritm de încărcare îmbunătăţit: {ORANGE}{STRING}
@@ -1153,9 +1153,9 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :pentru toate ve
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avertisment dacă profitul unui vehicul este negativ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehiculele nu expiră niciodată: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Înnoire automată pentru vehiculele învechite: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Înnoire automată cu {ORANGE}{STRING}{LTBLUE} luni înainte de/după atingerea vechimii max.
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Înnoire automată cu {ORANGE}{STRING}{LTBLUE} luni înainte de/după atingerea vechimii maxime
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Fonduri minime pentru înnoire automată: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata mesajelor de eroare: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata mesajelor de eroare: {ORANGE}{STRING} secunde
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Întârzierea evenimentelor de hover: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Întârzierea evenimentelor de hover: {ORANGE}dezactivat
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Afişează populaţia unui oras lângă nume: {ORANGE}{STRING}
@@ -1303,6 +1303,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Poziţi
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :stânga
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :centru
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :dreapta
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Poziţia barei de stare: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Stânga
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centru
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Dreapta
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Distanţa de 'snap' pentru ferestre: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Distanţa de 'snap' pentru ferestre: {ORANGE}dezactivată
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limita ferestrelor (non-lipicioase): {ORANGE}{STRING}
@@ -2462,7 +2466,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} treb
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} necesită OpenTTD versiunea {STRING} sau mai nouă.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fişierul GRF conceput pentru traducere
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Prea multe NewGRF-uri încărcate.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Încărcarea {2:STRING} ca şi un NewGRF static cu {4:STRING} ar putea cauza desincronizări.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Încărcarea {2:STRING} ca un NewGRF static cu {4:STRING} ar putea cauza desincronizări.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Imagine neaşteptată/eronată.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Proprietate Action 0 necunoscută.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Încercare de folosire a unui ID invalid.
@@ -3120,6 +3124,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacita
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Schimbă marfa)
 STR_REFIT_TITLE                                                 :{GOLD}Alege tipul încărcăturii:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Noua capacitate: {GOLD}{CARGO}{}{BLACK}Costul transformării: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Capacitate nouă: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Costul schimbării: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Alege tipul de marfă transportat de tren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Alege tipul de marfă pe care o transportă autovehiculul

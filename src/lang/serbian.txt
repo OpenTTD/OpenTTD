@@ -359,7 +359,6 @@ STR_TONS                                                        :{COMMA} tona
 STR_LITERS                                                      :{COMMA} litara
 STR_ITEMS                                                       :{COMMA} komada
 STR_CRATES                                                      :{COMMA} sanduka
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tamno plava
@@ -476,7 +475,7 @@ STR_SORT_BY_TRACTIVE_EFFORT                                     :Vučnoj snazi
 STR_SORT_BY_INTRO_DATE                                          :Datumu uvođenja
 STR_SORT_BY_RUNNING_COST                                        :Troškovima održavanja
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Snazi/Troškovima održavanja
-STR_SORT_BY_CARGO_CAPACITY                                      :Kapacitetu tovara
+STR_SORT_BY_CARGO_CAPACITY                                      :Nosivosti tovara
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauziranje partije
@@ -1137,6 +1136,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Pritisni
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Veličina ekrana
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Odaberite željenu veličinu ekrana
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format slike ekrana
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Odaberite željeni format slike ekrana

@@ -172,7 +172,6 @@ STR_TONS                                                        :{COMMA} tonnes
 STR_LITERS                                                      :{COMMA} litres
 STR_ITEMS                                                       :{COMMA} unités
 STR_CRATES                                                      :{COMMA} caisses
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :autre
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Bleu foncé
@@ -943,6 +942,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Cocher c
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Résolution
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Sélectionner la résolution d'écran à utiliser
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :autre
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format de la copie d'écran
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Choisir le format de la copie d'écran
@@ -1156,15 +1156,15 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Les vé
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Renouveler automatiquement les véhicules quand ils sont vieux{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renouveler les véhicules {ORANGE}{STRING}{LTBLUE} mois avant/après l'âge maximum
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Argent minimum avant auto-renouvellement{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Temps d'affichage des messages d'erreur{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Délai avant les événements de survol{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Temps d'affichage des messages d'erreur{NBSP}: {ORANGE}{STRING} seconde{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Délai avant les événements de survol{NBSP}: {ORANGE}{STRING} seconde{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Délai avant les événements de survol{NBSP}: {ORANGE}désactivé
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Afficher la population d'une ville dans son label{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Générateur de terrain{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distances max depuis les bords pour les Raffineries {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distances max depuis les bords pour les Raffineries{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Altitude d'enneigement{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rugosité du terrain (TerraGenesis seulement){NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Très lisse
@@ -1269,7 +1269,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Année 
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Permettre une économie stable (plus de petits changements){NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permettre d'acheter des actions d'autres compagnies{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Pourcentage du profit de branche à payer dans les systèmes multi-modaux{NBSP}: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Espacements des signaux en mode drag & drop{NBSP}: {ORANGE}{STRING} case(s)
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Espacements des signaux en mode drag & drop{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construire automatiquement des sémaphores avant{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activer le GUI des signaux{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Type de signaux construit par défaut{NBSP}: {ORANGE}{STRING}
@@ -2821,7 +2821,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Vitesse{
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coût d'entretien{NBSP}: {GOLD}{CURRENCY}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité{NBSP}: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(réaménageable)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Conçu en{NBSP}: {GOLD}{NUM}{BLACK}Durée de vie{NBSP}: {GOLD}{COMMA} ans
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Conçu en{NBSP}: {GOLD}{NUM}{BLACK}Durée de vie{NBSP}: {GOLD}{COMMA} an{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilité max.{NBSP}: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Prix{NBSP}: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids{NBSP}: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -3125,6 +3125,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacit�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Réaménager)
 STR_REFIT_TITLE                                                 :{GOLD}Choisir le type de cargaison à transporter{NBSP}:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO}{}{BLACK}Prix du réaménagement{NBSP}: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nouvelle capacité{NBSP}: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Prix du réaménagement{NBSP}: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Choisir le type de cargaison à transporter
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Choisir le type de cargaison à transporter

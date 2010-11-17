@@ -235,13 +235,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NIC
 STR_ABBREV_ALL                                                  :{TINYFONT}VŠE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} cestujících
-STR_BAGS                                                        :{COMMA} balíků
-STR_TONS                                                        :{COMMA} tun
-STR_LITERS                                                      :{COMMA} litrů
-STR_ITEMS                                                       :{COMMA} kusů
-STR_CRATES                                                      :{COMMA} krabic
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :jiné
+STR_PASSENGERS                                                  :{COMMA} cestující{P "" "" ch}
+STR_BAGS                                                        :{COMMA} balík{P "" y ů}
+STR_TONS                                                        :{COMMA} tun{P a y ""}
+STR_LITERS                                                      :{COMMA} litr{P "" y ů}
+STR_ITEMS                                                       :{COMMA} kus{P "" y ů}
+STR_CRATES                                                      :{COMMA} krabic{P e e ""}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tmavomodrá
@@ -1012,6 +1011,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Zaškrtn
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozlišení obrazovky
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Zvolit rozlišení obrazovky
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :jiné
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formát screenshotů
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Zvolit formát screenshotů
@@ -1223,17 +1223,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ano, u všech v
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Varovat, pokud vozidlo prodělává: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozidlům se nikdy nezastaví výroba ('nezastarají'): {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticky nahradit dopravní prostředek, když zestárne: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíců před nebo po dosažení nejvyššího stáří
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíc{P 0:1 "" e ů} před nebo po dosažení nejvyššího stáří
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimální částka pro automatické obnovení: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Doba zobrazení chybové zprávy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zpožděné a čekající události: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Doba zobrazení chybové zprávy: {ORANGE}{STRING} sekund{P 0:1 a y ""}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zpoždění zobrazení kontextové nápovědy: {ORANGE}{STRING} sekund{P 0:1 a y ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Zpožděné a čekající události: {ORANGE}zakázány
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazovat populaci města v jeho popisku: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Tvůrce krajiny: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :původní
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximální vzdálenost ropných rafinerií od okraje mapy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximální vzdálenost ropných rafinerií od okraje mapy: {ORANGE}{STRING} díl{P ek ky ků}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Výška sněhové čáry: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Členitost krajiny (jen TerraGenesis): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :velmi rovná
@@ -2216,8 +2216,8 @@ STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Zpracov�
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Domy
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Klikněte na průmysl, abyste vyděle jeho dodejce a odběratele
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Klikněte na náklad, abyste viděli jeho producenty a spotřebitele
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zobraz pás
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zobrazí průmysl produkující nebo příjmající surovinu
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Zobrazit řetězec
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Zobrazit průmysl produkující nebo příjmající surovinu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Odkaz na malou mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.nom                        :{BLACK}Odkaz na malou mapu
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP.gen                        :{BLACK}Odkazu na malou mapu
@@ -3620,8 +3620,8 @@ STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Příli�
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Nelze přejmenovat stanici...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... tato silnice je ve vlastnictví obce
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... silnice je otočena jiným směrem
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... Průjezdné zastávky nemohou mít rohy
-STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... průjezdné zastávky nemohou mít křižovatky
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... průjezdné zastávky nemohou být v zatáčce
+STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... průjezdné zastávky nemohou být na křižovatce
 
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Nelze odstranit část stanice...

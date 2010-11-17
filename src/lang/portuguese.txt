@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} tonelad
 STR_LITERS                                                      :{COMMA} litros
 STR_ITEMS                                                       :{COMMA} itens
 STR_CRATES                                                      :{COMMA} caixas
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outros
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Azul Escuro
@@ -942,6 +941,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Seleccio
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolução do ecrã
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleccione a resolução do ecrã que deseja utilizar
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outros
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato da captura de ecrã
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Seleccione o formato de captura de ecrã que deseja utilizar
@@ -1303,6 +1303,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posiç�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Direita
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posição da barra de estado: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Esquerda
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centro
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Direita
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Raio de atracção de janelas: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raio de atracção de janelas: {ORANGE}desactivado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limite visual da janela (não-pegajoso): {ORANGE}{STRING}

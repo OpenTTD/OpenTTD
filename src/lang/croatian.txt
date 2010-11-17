@@ -267,7 +267,6 @@ STR_TONS                                                        :{COMMA} tone
 STR_LITERS                                                      :{COMMA} litre
 STR_ITEMS                                                       :{COMMA} jedinice
 STR_CRATES                                                      :{COMMA} sanduci
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ostalo
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tamnoplava
@@ -1038,6 +1037,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Označi 
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Razlučivost ekrana
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Izaberi razlučivost ekrana
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ostalo
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format za sliku ekrana
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Izaberi format za sliku ekrana
@@ -1249,17 +1249,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :od svih vozila
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Upozori ako prihod vozila postane negativan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozila ne zastarjevaju: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatski obnovi vozilo kada postane staro: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatski obnovi vozilo {ORANGE}{STRING}{LTBLUE} mjeseci prije/poslije maksimalne starosti
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatski obnovi vozilo {ORANGE}{STRING}{LTBLUE} mjeseci{P 0:1 "" s} prije/poslije maksimalne starosti
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum novca potrebnih za automatsko obnavljanje: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje poruke s greškom: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Odgoda lebdjećih događaja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje poruke s greškom: {ORANGE}{STRING} sekundi{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Odgoda lebdjećih događaja: {ORANGE}{STRING} sekundi{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Odgoda lebdjećih dođađaja: {ORANGE}isključen
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Pokaži broj stanovnika u oznaci imena grada: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator zemlje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Izvorni
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimalna udaljenost naftnih rafinerija od ruba {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimalna udaljenost Naftnih Rafinerija od ruba: {ORANGE}{STRING} polja{P 0:1 "" s}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Visina linije snijega: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Grubost terena (samo TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Vrlo glatko
@@ -1364,7 +1364,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Početn
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Uključi tečnu ekonomiju (više manjih izazova): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Dopusti kupovanje udjela u drugim tvrtkama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Postotak legalne dobiti koju ćete platiti u sustavima za posluživanje: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Kod povlačenja, postavi signale svakih; {ORANGE}{STRING} pločica
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Kod povlačenja, postavi signale svakih: {ORANGE}{STRING} polja{P 0:1 "" s}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatski izgradi semafore prije: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Omogući signalni GUI: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Predodređeni signal za izgradnju: {ORANGE}{STRING}
@@ -2916,7 +2916,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Brzina: 
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Trošak uporabe: {GOLD}{CURRENCY}/god
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Nosivost: {GOLD}{CARGO}{STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(prenamjenjiv)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Dizajnirana: {GOLD}{NUM}{BLACK} Životni vijek: {GOLD}{COMMA} godina
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Dizajnirano: {GOLD}{NUM}{BLACK} Životni vijek: {GOLD}{COMMA} godina{P 0:1 "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. pouzdanost: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cijena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Težina: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -3220,6 +3220,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Nosivost
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prenamijeni)
 STR_REFIT_TITLE                                                 :{GOLD}Odaberi vrstu tereta za prijevoz:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO}{}{BLACK}Cijena prenamjene: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Novi kapacitet: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Trošak remonta: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Odaberi vrstu tereta koju će vlak prevoziti
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Odaberi vrstu tereta koje će cestovno vozilo prevoziti
