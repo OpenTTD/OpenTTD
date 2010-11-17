@@ -173,7 +173,6 @@ STR_LITERS                                                      :litre
 STR_ITEMS                                                       :tane
 STR_CRATES                                                      :kasa
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Koyu Mavi

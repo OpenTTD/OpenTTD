@@ -173,7 +173,6 @@ STR_LITERS                                                      :lítrar
 STR_ITEMS                                                       :hlutir
 STR_CRATES                                                      :kassar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Dökkblár

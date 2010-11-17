@@ -172,7 +172,6 @@ STR_LITERS                                                      :liters
 STR_ITEMS                                                       :items
 STR_CRATES                                                      :crates
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :other
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Dark Blue

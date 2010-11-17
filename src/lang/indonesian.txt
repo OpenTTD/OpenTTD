@@ -172,7 +172,6 @@ STR_LITERS                                                      :liter
 STR_ITEMS                                                       :unit
 STR_CRATES                                                      :peti
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Biru tua

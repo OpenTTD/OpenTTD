@@ -173,7 +173,6 @@ STR_LITERS                                                      :litroj
 STR_ITEMS                                                       :pecoj
 STR_CRATES                                                      :kestoj
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Malhelblua

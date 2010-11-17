@@ -242,7 +242,6 @@ STR_LITERS                                                      :litrů
 STR_ITEMS                                                       :kusů
 STR_CRATES                                                      :krabic
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :jiné
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tmavomodrá

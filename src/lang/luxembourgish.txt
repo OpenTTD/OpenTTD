@@ -172,7 +172,6 @@ STR_LITERS                                                      :Liter
 STR_ITEMS                                                       :Objeten
 STR_CRATES                                                      :Këschten
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Aaneres
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Donkelblo

@@ -172,7 +172,6 @@ STR_LITERS                                                      :リットル
 STR_ITEMS                                                       :件
 STR_CRATES                                                      :箱
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :その他
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :紺青色

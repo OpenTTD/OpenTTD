@@ -214,7 +214,6 @@ STR_LITERS                                                      :litrov
 STR_ITEMS                                                       :glav
 STR_CRATES                                                      :palet
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Temno modra

@@ -247,7 +247,6 @@ STR_LITERS                                                      :litrų
 STR_ITEMS                                                       :vienetų
 STR_CRATES                                                      :dežių
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Kita
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tamsiai mėlyna

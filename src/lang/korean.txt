@@ -173,7 +173,6 @@ STR_LITERS                                                      :{G=f}리터
 STR_ITEMS                                                       :{G=m}품목
 STR_CRATES                                                      :{G=f}상자
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :{G=f}기타
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :짙은 파랑

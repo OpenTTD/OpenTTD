@@ -172,7 +172,6 @@ STR_LITERS                                                      :லிட்ட
 STR_ITEMS                                                       :பொருட்கள்
 STR_CRATES                                                      :பேட்டிகள்
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவை
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :கருநீலம்

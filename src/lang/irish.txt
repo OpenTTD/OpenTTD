@@ -172,7 +172,6 @@ STR_LITERS                                                      :lítear
 STR_ITEMS                                                       :míreanna
 STR_CRATES                                                      :crátaí
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :eile
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Gorm Dorcha

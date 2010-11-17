@@ -297,7 +297,6 @@ STR_LITERS                                                      :літрів
 STR_ITEMS                                                       :штук
 STR_CRATES                                                      :ящики
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Темно-синій

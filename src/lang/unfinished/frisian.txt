@@ -171,7 +171,6 @@ STR_TONS                                                        :Ton
 STR_LITERS                                                      :liters
 STR_CRATES                                                      :kratten
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oars
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tsjuster Blauw

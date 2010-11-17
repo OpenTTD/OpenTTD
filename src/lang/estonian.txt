@@ -229,7 +229,6 @@ STR_LITERS                                                      :liitrit
 STR_ITEMS                                                       :ühikut
 STR_CRATES                                                      :kasti
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tumesinine

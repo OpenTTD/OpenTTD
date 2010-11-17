@@ -172,7 +172,6 @@ STR_LITERS                                                      :liter
 STR_ITEMS                                                       :stykker
 STR_CRATES                                                      :kasser
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mørkeblå

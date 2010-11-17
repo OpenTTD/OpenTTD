@@ -124,7 +124,6 @@ STR_LITERS                                                      :litri
 STR_ITEMS                                                       :oġġetti
 STR_CRATES                                                      :kaxxi
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Blu Skur

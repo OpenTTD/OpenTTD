@@ -236,7 +236,6 @@ STR_LITERS                                                      :litrov
 STR_ITEMS                                                       :kusov
 STR_CRATES                                                      :debien
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :iné
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tmavomodrá

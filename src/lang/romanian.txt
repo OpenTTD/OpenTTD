@@ -172,7 +172,6 @@ STR_LITERS                                                      :litri
 STR_ITEMS                                                       :bucăţi
 STR_CRATES                                                      :pachete
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecificată)
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Albastru închis

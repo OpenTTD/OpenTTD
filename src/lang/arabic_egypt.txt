@@ -172,7 +172,6 @@ STR_LITERS                                                      :لتر
 STR_ITEMS                                                       :وحدة
 STR_CRATES                                                      :صناديق
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :ازرق غامق

@@ -172,7 +172,6 @@ STR_LITERS                                                      :liter
 STR_ITEMS                                                       :barangan
 STR_CRATES                                                      :kotak
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Biru Gelap

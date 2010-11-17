@@ -236,7 +236,6 @@ STR_LITERS                                                      :Λίτρα
 STR_ITEMS                                                       :αντικείμενα
 STR_CRATES                                                      :Κουτιά
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Σκούρο Μπλε

@@ -485,7 +485,6 @@ STR_LITERS                                                      :лiтраў
 STR_ITEMS                                                       :штук
 STR_CRATES                                                      :скрыняў
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Iншае
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Цёмна-сiнi

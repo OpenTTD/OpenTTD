@@ -171,7 +171,6 @@ STR_TONS                                                        :tonnes
 STR_LITERS                                                      :litres
 STR_ITEMS                                                       :items
 STR_CRATES                                                      :crates
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Dark Blue

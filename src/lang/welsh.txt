@@ -172,7 +172,6 @@ STR_LITERS                                                      :litr
 STR_ITEMS                                                       :eitem
 STR_CRATES                                                      :crât
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Glas Tywyll

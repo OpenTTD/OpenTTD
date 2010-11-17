@@ -173,7 +173,6 @@ STR_LITERS                                                      :litres
 STR_ITEMS                                                       :caps
 STR_CRATES                                                      :palets
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Blau Fosc

@@ -174,7 +174,6 @@ STR_LITERS                                                      :liter
 STR_ITEMS                                                       :einingar
 STR_CRATES                                                      :kasser
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anna
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mørkeblå

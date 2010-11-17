@@ -173,7 +173,6 @@ STR_LITERS                                                      :Liter
 STR_ITEMS                                                       :Stück
 STR_CRATES                                                      :Kisten
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Andere
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Dunkelblau

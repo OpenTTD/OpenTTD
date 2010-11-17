@@ -46,14 +46,14 @@ StringID TTDPStringIDToOTTDStringIDMapping(StringID str)
 {
 	/* StringID table for TextIDs 0x4E->0x6D */
 	static const StringID units_volume[] = {
-		STR_NOTHING,    STR_PASSENGERS, STR_TONS,       STR_BAGS,
+		STR_ITEMS,      STR_PASSENGERS, STR_TONS,       STR_BAGS,
 		STR_LITERS,     STR_ITEMS,      STR_CRATES,     STR_TONS,
 		STR_TONS,       STR_TONS,       STR_TONS,       STR_BAGS,
 		STR_TONS,       STR_TONS,       STR_TONS,       STR_BAGS,
 		STR_TONS,       STR_TONS,       STR_BAGS,       STR_LITERS,
-		STR_TONS,       STR_LITERS,     STR_TONS,       STR_NOTHING,
-		STR_BAGS,       STR_LITERS,     STR_TONS,       STR_NOTHING,
-		STR_TONS,       STR_NOTHING,    STR_LITERS,     STR_NOTHING
+		STR_TONS,       STR_LITERS,     STR_TONS,       STR_ITEMS,
+		STR_BAGS,       STR_LITERS,     STR_TONS,       STR_ITEMS,
+		STR_TONS,       STR_ITEMS,      STR_LITERS,     STR_ITEMS
 	};
 
 	/* A string straight from a NewGRF; no need to remap this as it's already mapped. */

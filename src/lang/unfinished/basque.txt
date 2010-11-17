@@ -172,7 +172,6 @@ STR_LITERS                                                      :litroak
 STR_ITEMS                                                       :elementuak
 STR_CRATES                                                      :kaxak
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Urdin Iluna

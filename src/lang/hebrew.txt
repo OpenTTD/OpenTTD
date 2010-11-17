@@ -186,7 +186,6 @@ STR_LITERS                                                      :ליטרים
 STR_ITEMS                                                       :פריטים
 STR_CRATES                                                      :ארגזים
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :כחול כהה

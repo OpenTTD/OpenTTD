@@ -136,7 +136,6 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ПӖ�
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :пассажирсем
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_PINK                                                 :Кӗрен

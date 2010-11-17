@@ -172,7 +172,6 @@ STR_LITERS                                                      :liter
 STR_ITEMS                                                       :stuks
 STR_CRATES                                                      :pallets
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anders
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Donkerblauw

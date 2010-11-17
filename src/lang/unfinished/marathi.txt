@@ -114,7 +114,6 @@ STR_ABBREV_NOTHING                                              :
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :प्रवासी
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_YELLOW                                               :पिवळा

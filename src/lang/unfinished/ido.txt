@@ -171,7 +171,6 @@ STR_LITERS                                                      :litri
 STR_ITEMS                                                       :artikli
 STR_CRATES                                                      :kesti
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Obskur-blua

@@ -268,7 +268,6 @@ STR_LITERS                                                      :litre
 STR_ITEMS                                                       :jedinice
 STR_CRATES                                                      :sanduci
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ostalo
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tamnoplava

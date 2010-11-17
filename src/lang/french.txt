@@ -173,7 +173,6 @@ STR_LITERS                                                      :litres
 STR_ITEMS                                                       :unités
 STR_CRATES                                                      :caisses
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :autre
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Bleu foncé

@@ -172,7 +172,6 @@ STR_LITERS                                                      :ลิตร
 STR_ITEMS                                                       :ชิ้น
 STR_CRATES                                                      :ลัง
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :สีกรมท่า

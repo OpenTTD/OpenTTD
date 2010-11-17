@@ -174,7 +174,6 @@ STR_LITERS                                                      :litri
 STR_ITEMS                                                       :oggetti
 STR_CRATES                                                      :casse
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Altra
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Blu scuro

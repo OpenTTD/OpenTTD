@@ -173,7 +173,6 @@ STR_LITERS                                                      :litros
 STR_ITEMS                                                       :artículos
 STR_CRATES                                                      :cajones
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otras
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Azul oscuro

@@ -172,7 +172,6 @@ STR_LITERS                                                      :litraa
 STR_ITEMS                                                       :erää
 STR_CRATES                                                      :laatikkoa
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
-STR_NOTHING                                                     :
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tummansininen
