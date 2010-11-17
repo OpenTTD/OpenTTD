@@ -172,7 +172,7 @@ STR_TONS                                                        :toneladas
 STR_LITERS                                                      :litros
 STR_ITEMS                                                       :artículos
 STR_CRATES                                                      :cajones
-STR_RES_OTHER                                                   :Otras
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otras
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

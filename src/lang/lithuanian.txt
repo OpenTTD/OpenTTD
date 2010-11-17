@@ -246,7 +246,7 @@ STR_TONS                                                        :tonos
 STR_LITERS                                                      :litrų
 STR_ITEMS                                                       :vienetų
 STR_CRATES                                                      :dežių
-STR_RES_OTHER                                                   :Kita
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Kita
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

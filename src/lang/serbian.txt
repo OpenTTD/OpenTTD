@@ -359,7 +359,7 @@ STR_TONS                                                        :tona
 STR_LITERS                                                      :litara
 STR_ITEMS                                                       :komada
 STR_CRATES                                                      :sanduka
-STR_RES_OTHER                                                   :drugo
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

@@ -171,7 +171,7 @@ STR_TONS                                                        :tunnell
 STR_LITERS                                                      :litr
 STR_ITEMS                                                       :eitem
 STR_CRATES                                                      :crât
-STR_RES_OTHER                                                   :arall
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

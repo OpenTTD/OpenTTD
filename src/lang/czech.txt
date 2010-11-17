@@ -241,7 +241,7 @@ STR_TONS                                                        :tun
 STR_LITERS                                                      :litrů
 STR_ITEMS                                                       :kusů
 STR_CRATES                                                      :krabic
-STR_RES_OTHER                                                   :jiné
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :jiné
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

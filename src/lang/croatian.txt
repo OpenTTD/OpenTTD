@@ -267,7 +267,7 @@ STR_TONS                                                        :tone
 STR_LITERS                                                      :litre
 STR_ITEMS                                                       :jedinice
 STR_CRATES                                                      :sanduci
-STR_RES_OTHER                                                   :ostalo
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ostalo
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

@@ -171,7 +171,7 @@ STR_TONS                                                        :tan
 STR_LITERS                                                      :liter
 STR_ITEMS                                                       :barangan
 STR_CRATES                                                      :kotak
-STR_RES_OTHER                                                   :lain
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

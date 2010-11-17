@@ -171,7 +171,7 @@ STR_TONS                                                        :tone
 STR_LITERS                                                      :litri
 STR_ITEMS                                                       :bucăţi
 STR_CRATES                                                      :pachete
-STR_RES_OTHER                                                   :(alta/nespecificată)
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecificată)
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

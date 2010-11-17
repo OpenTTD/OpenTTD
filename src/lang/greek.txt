@@ -235,7 +235,7 @@ STR_TONS                                                        :Τόνοι
 STR_LITERS                                                      :Λίτρα
 STR_ITEMS                                                       :αντικείμενα
 STR_CRATES                                                      :Κουτιά
-STR_RES_OTHER                                                   :άλλη
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

@@ -213,7 +213,7 @@ STR_TONS                                                        :ton
 STR_LITERS                                                      :litrov
 STR_ITEMS                                                       :glav
 STR_CRATES                                                      :palet
-STR_RES_OTHER                                                   :drugo
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

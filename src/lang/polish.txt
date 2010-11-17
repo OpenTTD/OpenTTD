@@ -550,7 +550,7 @@ STR_TONS                                                        :ton
 STR_LITERS                                                      :litrów
 STR_ITEMS                                                       :sztuk
 STR_CRATES                                                      :skrzyń
-STR_RES_OTHER                                                   :inna
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :inna
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

@@ -171,7 +171,7 @@ STR_TONS                                                        :டன்
 STR_LITERS                                                      :லிட்டர்
 STR_ITEMS                                                       :பொருட்கள்
 STR_CRATES                                                      :பேட்டிகள்
-STR_RES_OTHER                                                   :மற்றவை
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவை
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

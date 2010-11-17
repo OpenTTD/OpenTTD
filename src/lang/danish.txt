@@ -171,7 +171,7 @@ STR_TONS                                                        :tons
 STR_LITERS                                                      :liter
 STR_ITEMS                                                       :stykker
 STR_CRATES                                                      :kasser
-STR_RES_OTHER                                                   :andet
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

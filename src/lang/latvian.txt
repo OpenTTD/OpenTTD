@@ -173,7 +173,7 @@ STR_TONS                                                        :tonnu
 STR_LITERS                                                      :litri
 STR_ITEMS                                                       :lietas
 STR_CRATES                                                      :kastes
-STR_RES_OTHER                                                   :cita
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :cita
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

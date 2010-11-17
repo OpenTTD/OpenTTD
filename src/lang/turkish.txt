@@ -172,7 +172,7 @@ STR_TONS                                                        :ton
 STR_LITERS                                                      :litre
 STR_ITEMS                                                       :tane
 STR_CRATES                                                      :kasa
-STR_RES_OTHER                                                   :diğer
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

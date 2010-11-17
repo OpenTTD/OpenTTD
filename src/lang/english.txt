@@ -171,7 +171,6 @@ STR_TONS                                                        :tonnes
 STR_LITERS                                                      :litres
 STR_ITEMS                                                       :items
 STR_CRATES                                                      :crates
-STR_RES_OTHER                                                   :other
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle
@@ -943,6 +942,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Check th
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Screen resolution
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Select the screen resolution to use
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :other
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Screenshot format
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Select the screenshot format to use

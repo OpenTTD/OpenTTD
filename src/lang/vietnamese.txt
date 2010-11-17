@@ -171,7 +171,7 @@ STR_TONS                                                        :tấn
 STR_LITERS                                                      :lít
 STR_ITEMS                                                       :cái
 STR_CRATES                                                      :thùng
-STR_RES_OTHER                                                   :khác
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :khác
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

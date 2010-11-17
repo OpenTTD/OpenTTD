@@ -142,7 +142,7 @@ STR_TONS                                                        :من
 STR_LITERS                                                      :لیٹر
 STR_ITEMS                                                       :اشیاء
 STR_CRATES                                                      :کریٹ
-STR_RES_OTHER                                                   :دیگر
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

@@ -171,7 +171,7 @@ STR_TONS                                                        :tonak
 STR_LITERS                                                      :litroak
 STR_ITEMS                                                       :elementuak
 STR_CRATES                                                      :kaxak
-STR_RES_OTHER                                                   :besteak
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

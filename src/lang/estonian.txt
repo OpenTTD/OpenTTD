@@ -228,7 +228,7 @@ STR_TONS                                                        :tonni
 STR_LITERS                                                      :liitrit
 STR_ITEMS                                                       :ühikut
 STR_CRATES                                                      :kasti
-STR_RES_OTHER                                                   :muu
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

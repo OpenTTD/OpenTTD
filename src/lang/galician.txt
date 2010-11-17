@@ -172,7 +172,7 @@ STR_TONS                                                        :tons
 STR_LITERS                                                      :litros
 STR_ITEMS                                                       :ítems
 STR_CRATES                                                      :caixóns
-STR_RES_OTHER                                                   :outro
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outro
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

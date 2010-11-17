@@ -170,7 +170,7 @@ STR_BAGS                                                        :sekken
 STR_TONS                                                        :Ton
 STR_LITERS                                                      :liters
 STR_CRATES                                                      :kratten
-STR_RES_OTHER                                                   :oars
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oars
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

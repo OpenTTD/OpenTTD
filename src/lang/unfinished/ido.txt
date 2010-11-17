@@ -170,7 +170,7 @@ STR_TONS                                                        :tuni
 STR_LITERS                                                      :litri
 STR_ITEMS                                                       :artikli
 STR_CRATES                                                      :kesti
-STR_RES_OTHER                                                   :altra
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

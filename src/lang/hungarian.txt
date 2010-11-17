@@ -234,7 +234,7 @@ STR_TONS                                                        :tonna
 STR_LITERS                                                      :liter
 STR_ITEMS                                                       :darab
 STR_CRATES                                                      :láda
-STR_RES_OTHER                                                   :egyéb
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :egyéb
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

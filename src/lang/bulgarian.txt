@@ -173,7 +173,7 @@ STR_TONS                                                        :тона
 STR_LITERS                                                      :литри
 STR_ITEMS                                                       :елемента
 STR_CRATES                                                      :кашони
-STR_RES_OTHER                                                   :друго
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

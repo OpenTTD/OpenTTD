@@ -171,7 +171,7 @@ STR_TONS                                                        :tonaí
 STR_LITERS                                                      :lítear
 STR_ITEMS                                                       :míreanna
 STR_CRATES                                                      :crátaí
-STR_RES_OTHER                                                   :eile
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :eile
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

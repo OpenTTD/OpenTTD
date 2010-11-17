@@ -171,7 +171,7 @@ STR_TONS                                                        :ton
 STR_LITERS                                                      :liter
 STR_ITEMS                                                       :unit
 STR_CRATES                                                      :peti
-STR_RES_OTHER                                                   :lainnya
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

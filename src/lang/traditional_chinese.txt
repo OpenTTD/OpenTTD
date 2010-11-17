@@ -171,7 +171,7 @@ STR_TONS                                                        :噸
 STR_LITERS                                                      :公升
 STR_ITEMS                                                       :件
 STR_CRATES                                                      :箱
-STR_RES_OTHER                                                   :其它
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其它
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

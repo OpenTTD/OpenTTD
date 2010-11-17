@@ -297,7 +297,7 @@ STR_TONS                                                        :тонн
 STR_LITERS                                                      :литров
 STR_ITEMS                                                       :штук
 STR_CRATES                                                      :ящиков
-STR_RES_OTHER                                                   :Другое
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Другое
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

@@ -171,7 +171,7 @@ STR_TONS                                                        :ton
 STR_LITERS                                                      :liter
 STR_ITEMS                                                       :föremål
 STR_CRATES                                                      :lådor
-STR_RES_OTHER                                                   :annan
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

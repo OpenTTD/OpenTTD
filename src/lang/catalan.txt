@@ -172,7 +172,7 @@ STR_TONS                                                        :tones
 STR_LITERS                                                      :litres
 STR_ITEMS                                                       :caps
 STR_CRATES                                                      :palets
-STR_RES_OTHER                                                   :altres
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

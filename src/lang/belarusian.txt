@@ -484,7 +484,7 @@ STR_TONS                                                        :тон
 STR_LITERS                                                      :лiтраў
 STR_ITEMS                                                       :штук
 STR_CRATES                                                      :скрыняў
-STR_RES_OTHER                                                   :Iншае
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Iншае
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle

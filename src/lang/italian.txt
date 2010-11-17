@@ -173,7 +173,7 @@ STR_TONS                                                        :tonnellate
 STR_LITERS                                                      :litri
 STR_ITEMS                                                       :oggetti
 STR_CRATES                                                      :casse
-STR_RES_OTHER                                                   :Altra
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Altra
 STR_NOTHING                                                     :
 
 # Colours, do not shuffle
