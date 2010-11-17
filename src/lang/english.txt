@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passengers
-STR_BAGS                                                        :{COMMA} bags
-STR_TONS                                                        :{COMMA} tonnes
-STR_LITERS                                                      :{COMMA} litres
-STR_ITEMS                                                       :{COMMA} items
-STR_CRATES                                                      :{COMMA} crates
+STR_PASSENGERS                                                  :{COMMA} passenger{P "" s}
+STR_BAGS                                                        :{COMMA} bag{P "" s}
+STR_TONS                                                        :{COMMA} tonne{P "" s}
+STR_LITERS                                                      :{COMMA} litre{P "" s}
+STR_ITEMS                                                       :{COMMA} item{P "" s}
+STR_CRATES                                                      :{COMMA} crate{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Dark Blue
