@@ -540,12 +540,12 @@ STR_ABBREV_ALL                                                  :{TINYFONT}+
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} pasażerów
 STR_BAGS                                                        :{COMMA} worki
-STR_BAGS.d                                                      :worków
-STR_BAGS.c                                                      :workom
-STR_BAGS.b                                                      :worki
-STR_BAGS.n                                                      :workami
-STR_BAGS.m                                                      :workach
-STR_BAGS.w                                                      :worki
+STR_BAGS.d                                                      :{COMMA} worków
+STR_BAGS.c                                                      :{COMMA} workom
+STR_BAGS.b                                                      :{COMMA} worki
+STR_BAGS.n                                                      :{COMMA} workami
+STR_BAGS.m                                                      :{COMMA} workach
+STR_BAGS.w                                                      :{COMMA} worki
 STR_TONS                                                        :{COMMA} ton
 STR_LITERS                                                      :{COMMA} litrów
 STR_ITEMS                                                       :{COMMA} sztuk
