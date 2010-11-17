@@ -1155,7 +1155,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Sì, per tutti 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avvisa se il profitto di un veicolo è in negativo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}I veicoli non diventano mai obsoleti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Rinnova un veicolo quando diventa vecchio: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova un veicolo {ORANGE}{STRING}{LTBLUE} mes{P 0:1 e i) prima/dopo l'età massima
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova un veicolo {ORANGE}{STRING}{LTBLUE} mes{P 0:1 e i} prima/dopo l'età massima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Rinnova solo se disponibile il fondo minimo di {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata dei messaggi d'errore: {ORANGE}{STRING} second{P 0:1 o i}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Ritardo eventi mouse: {ORANGE}{STRING} second{P 0:1 o i}
