@@ -2097,14 +2097,20 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				_string_to_grf_mapping[&cs->name_single] = _cur_grffile->grfid;
 				break;
 
-			case 0x0B:
-				/* String for units of cargo. This is different in OpenTTD to TTDPatch
-				 * (e.g. 10 tonnes of coal) */
+			case 0x0B: // String for singular quantity of cargo (e.g. 1 tonne of coal)
+			case 0x1B: // String for cargo units
+				/* String for units of cargo. This is different in OpenTTD
+				 * (e.g. tonnes) to TTDPatch (e.g. {COMMA} tonne of coal).
+				 * Property 1B is used to set OpenTTD's behaviour. */
 				cs->units_volume = buf->ReadWord();
 				_string_to_grf_mapping[&cs->units_volume] = _cur_grffile->grfid;
 				break;
 
-			case 0x0C: // String for quantity of cargo (e.g. 10 tonnes of coal)
+			case 0x0C: // String for plural quantity of cargo (e.g. 10 tonnes of coal)
+			case 0x1C: // String for any amount of cargo
+				/* Strings for an amount of cargo. This is different in OpenTTD
+				 * (e.g. {WEIGHT} of coal) to TTDPatch (e.g. {COMMA} tonnes of coal).
+				 * Property 1C is used to set OpenTTD's behaviour. */
 				cs->quantifier = buf->ReadWord();
 				_string_to_grf_mapping[&cs->quantifier] = _cur_grffile->grfid;
 				break;
