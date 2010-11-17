@@ -131,6 +131,18 @@ struct CFollowTrackT
 		if (!CanEnterNewTile()) return false;
 		m_new_td_bits &= DiagdirReachesTrackdirs(m_exitdir);
 		if (m_new_td_bits == TRACKDIR_BIT_NONE) {
+			/* In case we can't enter the next tile, but are
+			 * a normal road vehicle, then we can actually
+			 * try to reverse as this is the end of the road.
+			 * Trams can only turn on the appropriate bits in
+			 * which case reaching this would mean a dead end
+			 * near a building and in that case there would
+			 * a "false" QueryNewTileTrackStatus result and
+			 * as such reversing is already tried. The fact
+			 * that function failed can have to do with a
+			 * missing road bit, or inability to connect the
+			 * different bits due to slopes. */
+			if (IsRoadTT() && !IsTram() && TryReverse()) return true;
 			m_err = EC_NO_WAY;
 			return false;
 		}
