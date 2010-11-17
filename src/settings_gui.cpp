@@ -317,7 +317,7 @@ struct GameOptionsWindow : Window {
 				/* Sort language names */
 				LangList langs;
 				int current_lang = 0;
-				for (size_t i = 0; i < _languages.Length(); i++) {
+				for (int i = 0; i < (int)_languages.Length(); i++) {
 					if (&_languages[i] == _current_language) current_lang = i;
 					langs[SPECSTR_LANGUAGE_START + i] = i;
 				}

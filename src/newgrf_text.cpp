@@ -135,7 +135,7 @@ public:
 	 * @param text   The text to store in the new GRFText.
 	 * @param len    The length of the text.
 	 */
-	static GRFText *New(byte langid, const char *text, int len)
+	static GRFText *New(byte langid, const char *text, size_t len)
 	{
 		return new (len) GRFText(langid, text, len);
 	}
@@ -175,7 +175,7 @@ private:
 	 * @param text_   The text to store in this GRFText.
 	 * @param len_    The length of the text to store.
 	 */
-	GRFText(byte langid_, const char *text_, int len_) : next(NULL), len(len_), langid(langid_)
+	GRFText(byte langid_, const char *text_, size_t len_) : next(NULL), len(len_), langid(langid_)
 	{
 		/* We need to use memcpy instead of strcpy due to
 		 * the possibility of "choice lists" and therefor
@@ -196,7 +196,7 @@ private:
 
 public:
 	GRFText *next; ///< The next GRFText in this chain.
-	int len;       ///< The length of the stored string, used for copying.
+	size_t len;    ///< The length of the stored string, used for copying.
 	byte langid;   ///< The language associated with this GRFText.
 	char text[];   ///< The actual (translated) text.
 };
@@ -295,7 +295,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 		if (lm == NULL && this->type != SCC_PLURAL_LIST) {
 			NOT_REACHED();
 			/* In case there is no mapping, just ignore everything but the default. */
-			int len = strlen(this->strings[0]);
+			size_t len = strlen(this->strings[0]);
 			memcpy(d, this->strings[0], len);
 			return d + len;
 		}
@@ -327,7 +327,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 				*d++ = i;
 
 				/* "<LENn>" */
-				int len = strlen(str);
+				size_t len = strlen(str);
 				*d++ = GB(len, 8, 8);
 				*d++ = GB(len, 0, 8);
 
@@ -338,7 +338,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 			}
 
 			/* "<STRINGDEFAULT>" */
-			int len = strlen(this->strings[0]);
+			size_t len = strlen(this->strings[0]);
 			memcpy(d, this->strings[0], len);
 			d += len;
 			*d++ = '\0';
@@ -363,16 +363,16 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 			for (int i = 0; i < count; i++) {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
 				const char *str = this->strings[this->strings.Contains(idx) ? idx : 0];
-				int len = strlen(str) + 1;
+				size_t len = strlen(str) + 1;
 				if (len > 0xFF) grfmsg(1, "choice list string is too long");
-				*d++ = len;
+				*d++ = GB(len, 0, 8);
 			}
 
 			/* "<STRINGs>" */
 			for (int i = 0; i < count; i++) {
 				int idx = (this->type == SCC_GENDER_LIST ? lm->GetReverseMapping(i, true) : i + 1);
 				const char *str = this->strings[this->strings.Contains(idx) ? idx : 0];
-				int len = strlen(str);
+				size_t len = strlen(str);
 				memcpy(d, str, len);
 				d += len;
 				*d++ = '\0';
