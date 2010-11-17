@@ -113,7 +113,7 @@ STR_QUANTITY_N_A                                                :एन. ए.
 STR_ABBREV_NOTHING                                              :
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :प्रवासी
+STR_PASSENGERS                                                  :{COMMA} प्रवासी
 
 # Colours, do not shuffle
 STR_COLOUR_YELLOW                                               :पिवळा

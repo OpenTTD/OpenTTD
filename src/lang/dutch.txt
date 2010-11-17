@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}GEEN
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLES
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :passagiers
-STR_BAGS                                                        :zakken
-STR_TONS                                                        :ton
-STR_LITERS                                                      :liter
-STR_ITEMS                                                       :stuks
-STR_CRATES                                                      :pallets
+STR_PASSENGERS                                                  :{COMMA} passagiers
+STR_BAGS                                                        :{COMMA} zakken
+STR_TONS                                                        :{COMMA} ton
+STR_LITERS                                                      :{COMMA} liter
+STR_ITEMS                                                       :{COMMA} stuks
+STR_CRATES                                                      :{COMMA} pallets
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anders
 
 # Colours, do not shuffle

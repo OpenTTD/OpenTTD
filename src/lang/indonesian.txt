@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}TANPA
 STR_ABBREV_ALL                                                  :{TINYFONT}SMA
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :penumpang
-STR_BAGS                                                        :kantong
-STR_TONS                                                        :ton
-STR_LITERS                                                      :liter
-STR_ITEMS                                                       :unit
-STR_CRATES                                                      :peti
+STR_PASSENGERS                                                  :{COMMA} penumpang
+STR_BAGS                                                        :{COMMA} kantong
+STR_TONS                                                        :{COMMA} ton
+STR_LITERS                                                      :{COMMA} liter
+STR_ITEMS                                                       :{COMMA} unit
+STR_CRATES                                                      :{COMMA} peti
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
 
 # Colours, do not shuffle

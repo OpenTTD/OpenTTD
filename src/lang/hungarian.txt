@@ -228,12 +228,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}SÁ
 STR_ABBREV_ALL                                                  :{TINYFONT}ÖS
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :utas
-STR_BAGS                                                        :csomag
-STR_TONS                                                        :tonna
-STR_LITERS                                                      :liter
-STR_ITEMS                                                       :darab
-STR_CRATES                                                      :láda
+STR_PASSENGERS                                                  :{COMMA} utas
+STR_BAGS                                                        :{COMMA} csomag
+STR_TONS                                                        :{COMMA} tonna
+STR_LITERS                                                      :{COMMA} liter
+STR_ITEMS                                                       :{COMMA} darab
+STR_CRATES                                                      :{COMMA} láda
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :egyéb
 
 # Colours, do not shuffle

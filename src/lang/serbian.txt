@@ -353,12 +353,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NŠT
 STR_ABBREV_ALL                                                  :{TINYFONT}SVE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :putnika
-STR_BAGS                                                        :džakova
-STR_TONS                                                        :tona
-STR_LITERS                                                      :litara
-STR_ITEMS                                                       :komada
-STR_CRATES                                                      :sanduka
+STR_PASSENGERS                                                  :{COMMA} putnika
+STR_BAGS                                                        :{COMMA} džakova
+STR_TONS                                                        :{COMMA} tona
+STR_LITERS                                                      :{COMMA} litara
+STR_ITEMS                                                       :{COMMA} komada
+STR_CRATES                                                      :{COMMA} sanduka
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 # Colours, do not shuffle

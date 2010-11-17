@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :பயணிகள்
-STR_BAGS                                                        :பைகள்
-STR_TONS                                                        :டன்
-STR_LITERS                                                      :லிட்டர்
-STR_ITEMS                                                       :பொருட்கள்
-STR_CRATES                                                      :பேட்டிகள்
+STR_PASSENGERS                                                  :{COMMA} பயணிகள்
+STR_BAGS                                                        :{COMMA} பைகள்
+STR_TONS                                                        :{COMMA} டன்
+STR_LITERS                                                      :{COMMA} லிட்டர்
+STR_ITEMS                                                       :{COMMA} பொருட்கள்
+STR_CRATES                                                      :{COMMA} பேட்டிகள்
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவை
 
 # Colours, do not shuffle

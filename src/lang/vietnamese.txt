@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}K0
 STR_ABBREV_ALL                                                  :{TINYFONT}Tất
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :hành khách
-STR_BAGS                                                        :túi
-STR_TONS                                                        :tấn
-STR_LITERS                                                      :lít
-STR_ITEMS                                                       :cái
-STR_CRATES                                                      :thùng
+STR_PASSENGERS                                                  :{COMMA} hành khách
+STR_BAGS                                                        :{COMMA} túi
+STR_TONS                                                        :{COMMA} tấn
+STR_LITERS                                                      :{COMMA} lít
+STR_ITEMS                                                       :{COMMA} cái
+STR_CRATES                                                      :{COMMA} thùng
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :khác
 
 # Colours, do not shuffle

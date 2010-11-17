@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :penumpang
-STR_BAGS                                                        :beg
-STR_TONS                                                        :tan
-STR_LITERS                                                      :liter
-STR_ITEMS                                                       :barangan
-STR_CRATES                                                      :kotak
+STR_PASSENGERS                                                  :{COMMA} penumpang
+STR_BAGS                                                        :{COMMA} beg
+STR_TONS                                                        :{COMMA} tan
+STR_LITERS                                                      :{COMMA} liter
+STR_ITEMS                                                       :{COMMA} barangan
+STR_CRATES                                                      :{COMMA} kotak
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
 # Colours, do not shuffle

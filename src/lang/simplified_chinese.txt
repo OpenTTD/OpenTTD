@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}无
 STR_ABBREV_ALL                                                  :{TINYFONT}全
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :旅客
-STR_BAGS                                                        :邮件
-STR_TONS                                                        :英吨
-STR_LITERS                                                      :升
-STR_ITEMS                                                       :件
-STR_CRATES                                                      :件
+STR_PASSENGERS                                                  :{COMMA} 旅客
+STR_BAGS                                                        :{COMMA} 邮件
+STR_TONS                                                        :{COMMA} 英吨
+STR_LITERS                                                      :{COMMA} 升
+STR_ITEMS                                                       :{COMMA} 件
+STR_CRATES                                                      :{COMMA} 件
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其他
 
 # Colours, do not shuffle

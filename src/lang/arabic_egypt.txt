@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}لا 
 STR_ABBREV_ALL                                                  :{TINYFONT}الكل
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :ركاب
-STR_BAGS                                                        :صناديق
-STR_TONS                                                        :اطنان/طن
-STR_LITERS                                                      :لتر
-STR_ITEMS                                                       :وحدة
-STR_CRATES                                                      :صناديق
+STR_PASSENGERS                                                  :{COMMA} ركاب
+STR_BAGS                                                        :{COMMA} صناديق
+STR_TONS                                                        :{COMMA} اطنان/طن
+STR_LITERS                                                      :{COMMA} لتر
+STR_ITEMS                                                       :{COMMA} وحدة
+STR_CRATES                                                      :{COMMA} صناديق
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
 
 # Colours, do not shuffle

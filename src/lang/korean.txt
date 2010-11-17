@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{G=m}승객
-STR_BAGS                                                        :{G=f}자루
-STR_TONS                                                        :{G=m}톤
-STR_LITERS                                                      :{G=f}리터
-STR_ITEMS                                                       :{G=m}품목
-STR_CRATES                                                      :{G=f}상자
+STR_PASSENGERS                                                  :{G=m}{COMMA} 승객
+STR_BAGS                                                        :{G=f}{COMMA} 자루
+STR_TONS                                                        :{G=m}{COMMA} 톤
+STR_LITERS                                                      :{G=f}{COMMA} 리터
+STR_ITEMS                                                       :{G=m}{COMMA} 품목
+STR_CRATES                                                      :{G=f}{COMMA} 상자
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :{G=f}기타
 
 # Colours, do not shuffle

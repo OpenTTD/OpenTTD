@@ -207,12 +207,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}VSE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :potniki
-STR_BAGS                                                        :vreč
-STR_TONS                                                        :ton
-STR_LITERS                                                      :litrov
-STR_ITEMS                                                       :glav
-STR_CRATES                                                      :palet
+STR_PASSENGERS                                                  :{COMMA} potniki
+STR_BAGS                                                        :{COMMA} vreč
+STR_TONS                                                        :{COMMA} ton
+STR_LITERS                                                      :{COMMA} litrov
+STR_ITEMS                                                       :{COMMA} glav
+STR_CRATES                                                      :{COMMA} palet
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 # Colours, do not shuffle

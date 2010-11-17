@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NON
 STR_ABBREV_ALL                                                  :{TINYFONT}TODO
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :pasaxeiros
-STR_BAGS                                                        :sacos
-STR_TONS                                                        :tons
-STR_LITERS                                                      :litros
-STR_ITEMS                                                       :ítems
-STR_CRATES                                                      :caixóns
+STR_PASSENGERS                                                  :{COMMA} pasaxeiros
+STR_BAGS                                                        :{COMMA} sacos
+STR_TONS                                                        :{COMMA} tons
+STR_LITERS                                                      :{COMMA} litros
+STR_ITEMS                                                       :{COMMA} ítems
+STR_CRATES                                                      :{COMMA} caixóns
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outro
 
 # Colours, do not shuffle

@@ -229,12 +229,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NIC
 STR_ABBREV_ALL                                                  :{TINYFONT}VS.
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :cestujucich
-STR_BAGS                                                        :vriec
-STR_TONS                                                        :ton
-STR_LITERS                                                      :litrov
-STR_ITEMS                                                       :kusov
-STR_CRATES                                                      :debien
+STR_PASSENGERS                                                  :{COMMA} cestujucich
+STR_BAGS                                                        :{COMMA} vriec
+STR_TONS                                                        :{COMMA} ton
+STR_LITERS                                                      :{COMMA} litrov
+STR_ITEMS                                                       :{COMMA} kusov
+STR_CRATES                                                      :{COMMA} debien
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :iné
 
 # Colours, do not shuffle

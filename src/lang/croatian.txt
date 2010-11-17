@@ -260,13 +260,13 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NI
 STR_ABBREV_ALL                                                  :{TINYFONT}SVE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :putnici
+STR_PASSENGERS                                                  :{COMMA} putnici
 STR_PASSENGERS.gen                                              :putnika
-STR_BAGS                                                        :vreće
-STR_TONS                                                        :tone
-STR_LITERS                                                      :litre
-STR_ITEMS                                                       :jedinice
-STR_CRATES                                                      :sanduci
+STR_BAGS                                                        :{COMMA} vreće
+STR_TONS                                                        :{COMMA} tone
+STR_LITERS                                                      :{COMMA} litre
+STR_ITEMS                                                       :{COMMA} jedinice
+STR_CRATES                                                      :{COMMA} sanduci
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ostalo
 
 # Colours, do not shuffle

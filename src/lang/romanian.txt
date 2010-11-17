@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NU
 STR_ABBREV_ALL                                                  :{TINYFONT}TOT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :călători
-STR_BAGS                                                        :saci
-STR_TONS                                                        :tone
-STR_LITERS                                                      :litri
-STR_ITEMS                                                       :bucăţi
-STR_CRATES                                                      :pachete
+STR_PASSENGERS                                                  :{COMMA} călători
+STR_BAGS                                                        :{COMMA} saci
+STR_TONS                                                        :{COMMA} tone
+STR_LITERS                                                      :{COMMA} litri
+STR_ITEMS                                                       :{COMMA} bucăţi
+STR_CRATES                                                      :{COMMA} pachete
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecificată)
 
 # Colours, do not shuffle

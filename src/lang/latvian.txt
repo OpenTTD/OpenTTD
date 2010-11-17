@@ -167,12 +167,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NAV
 STR_ABBREV_ALL                                                  :{TINYFONT}VISI
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :pasažieri
-STR_BAGS                                                        :maisi
-STR_TONS                                                        :tonnu
-STR_LITERS                                                      :litri
-STR_ITEMS                                                       :lietas
-STR_CRATES                                                      :kastes
+STR_PASSENGERS                                                  :{COMMA} pasažieri
+STR_BAGS                                                        :{COMMA} maisi
+STR_TONS                                                        :{COMMA} tonnu
+STR_LITERS                                                      :{COMMA} litri
+STR_ITEMS                                                       :{COMMA} lietas
+STR_CRATES                                                      :{COMMA} kastes
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :cita
 
 # Colours, do not shuffle

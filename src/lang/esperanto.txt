@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NENIU
 STR_ABBREV_ALL                                                  :{TINYFONT}ĈIU
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :pasaĝeroj
-STR_BAGS                                                        :sakoj
-STR_TONS                                                        :tunoj
-STR_LITERS                                                      :litroj
-STR_ITEMS                                                       :pecoj
-STR_CRATES                                                      :kestoj
+STR_PASSENGERS                                                  :{COMMA} pasaĝeroj
+STR_BAGS                                                        :{COMMA} sakoj
+STR_TONS                                                        :{COMMA} tunoj
+STR_LITERS                                                      :{COMMA} litroj
+STR_ITEMS                                                       :{COMMA} pecoj
+STR_CRATES                                                      :{COMMA} kestoj
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 # Colours, do not shuffle

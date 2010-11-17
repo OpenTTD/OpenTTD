@@ -291,12 +291,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}НЕ�
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :пассажиров
-STR_BAGS                                                        :багажа
-STR_TONS                                                        :тонн
-STR_LITERS                                                      :литров
-STR_ITEMS                                                       :штук
-STR_CRATES                                                      :ящиков
+STR_PASSENGERS                                                  :{COMMA} пассажиров
+STR_BAGS                                                        :{COMMA} багажа
+STR_TONS                                                        :{COMMA} тонн
+STR_LITERS                                                      :{COMMA} литров
+STR_ITEMS                                                       :{COMMA} штук
+STR_CRATES                                                      :{COMMA} ящиков
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Другое
 
 # Colours, do not shuffle

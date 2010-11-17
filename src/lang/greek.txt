@@ -229,12 +229,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}ΤΠ
 STR_ABBREV_ALL                                                  :{TINYFONT}ΟΛΑ
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :Επιβάτες
-STR_BAGS                                                        :Σάκκοι
-STR_TONS                                                        :Τόνοι
-STR_LITERS                                                      :Λίτρα
-STR_ITEMS                                                       :αντικείμενα
-STR_CRATES                                                      :Κουτιά
+STR_PASSENGERS                                                  :{COMMA} Επιβάτες
+STR_BAGS                                                        :{COMMA} Σάκκοι
+STR_TONS                                                        :{COMMA} Τόνοι
+STR_LITERS                                                      :{COMMA} Λίτρα
+STR_ITEMS                                                       :{COMMA} αντικείμενα
+STR_CRATES                                                      :{COMMA} Κουτιά
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
 
 # Colours, do not shuffle

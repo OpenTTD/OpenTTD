@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :Passagéier
-STR_BAGS                                                        :Säck
-STR_TONS                                                        :Tonnen
-STR_LITERS                                                      :Liter
-STR_ITEMS                                                       :Objeten
-STR_CRATES                                                      :Këschten
+STR_PASSENGERS                                                  :{COMMA} Passagéier
+STR_BAGS                                                        :{COMMA} Säck
+STR_TONS                                                        :{COMMA} Tonnen
+STR_LITERS                                                      :{COMMA} Liter
+STR_ITEMS                                                       :{COMMA} Objeten
+STR_CRATES                                                      :{COMMA} Këschten
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Aaneres
 
 # Colours, do not shuffle

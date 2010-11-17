@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NEJ
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLA
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :passagerare
-STR_BAGS                                                        :väskor
-STR_TONS                                                        :ton
-STR_LITERS                                                      :liter
-STR_ITEMS                                                       :föremål
-STR_CRATES                                                      :lådor
+STR_PASSENGERS                                                  :{COMMA} passagerare
+STR_BAGS                                                        :{COMMA} väskor
+STR_TONS                                                        :{COMMA} ton
+STR_LITERS                                                      :{COMMA} liter
+STR_ITEMS                                                       :{COMMA} föremål
+STR_CRATES                                                      :{COMMA} lådor
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
 
 # Colours, do not shuffle

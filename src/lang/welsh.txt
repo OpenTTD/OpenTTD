@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :teithiwr
-STR_BAGS                                                        :bag
-STR_TONS                                                        :tunnell
-STR_LITERS                                                      :litr
-STR_ITEMS                                                       :eitem
-STR_CRATES                                                      :crât
+STR_PASSENGERS                                                  :{COMMA} teithiwr
+STR_BAGS                                                        :{COMMA} bag
+STR_TONS                                                        :{COMMA} tunnell
+STR_LITERS                                                      :{COMMA} litr
+STR_ITEMS                                                       :{COMMA} eitem
+STR_CRATES                                                      :{COMMA} crât
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
 
 # Colours, do not shuffle

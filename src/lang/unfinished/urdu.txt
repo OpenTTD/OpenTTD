@@ -136,12 +136,12 @@ STR_ABBREV_LIVESTOCK                                            :{TINYFONT} م �
 STR_ABBREV_GOODS                                                :{TINYFONT} س م
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :مسافرین
-STR_BAGS                                                        :تھیلے
-STR_TONS                                                        :من
-STR_LITERS                                                      :لیٹر
-STR_ITEMS                                                       :اشیاء
-STR_CRATES                                                      :کریٹ
+STR_PASSENGERS                                                  :{COMMA} مسافرین
+STR_BAGS                                                        :{COMMA} تھیلے
+STR_TONS                                                        :{COMMA} من
+STR_LITERS                                                      :{COMMA} لیٹر
+STR_ITEMS                                                       :{COMMA} اشیاء
+STR_CRATES                                                      :{COMMA} کریٹ
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 # Colours, do not shuffle

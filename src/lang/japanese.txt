@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}無
 STR_ABBREV_ALL                                                  :{TINYFONT}全
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :人の乗客
-STR_BAGS                                                        :袋
-STR_TONS                                                        :トン
-STR_LITERS                                                      :リットル
-STR_ITEMS                                                       :件
-STR_CRATES                                                      :箱
+STR_PASSENGERS                                                  :{COMMA} 人の乗客
+STR_BAGS                                                        :{COMMA} 袋
+STR_TONS                                                        :{COMMA} トン
+STR_LITERS                                                      :{COMMA} リットル
+STR_ITEMS                                                       :{COMMA} 件
+STR_CRATES                                                      :{COMMA} 箱
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :その他
 
 # Colours, do not shuffle

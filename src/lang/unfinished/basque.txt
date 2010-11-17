@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}EZ
 STR_ABBREV_ALL                                                  :{TINYFONT}DEN
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :bidaiariak
-STR_BAGS                                                        :zakuak
-STR_TONS                                                        :tonak
-STR_LITERS                                                      :litroak
-STR_ITEMS                                                       :elementuak
-STR_CRATES                                                      :kaxak
+STR_PASSENGERS                                                  :{COMMA} bidaiariak
+STR_BAGS                                                        :{COMMA} zakuak
+STR_TONS                                                        :{COMMA} tonak
+STR_LITERS                                                      :{COMMA} litroak
+STR_ITEMS                                                       :{COMMA} elementuak
+STR_CRATES                                                      :{COMMA} kaxak
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
 # Colours, do not shuffle

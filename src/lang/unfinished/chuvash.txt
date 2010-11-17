@@ -134,7 +134,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}ҪУ�
 STR_ABBREV_ALL                                                  :{TINYFONT}ПӖРМАЙ
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :пассажирсем
+STR_PASSENGERS                                                  :{COMMA} пассажирсем
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 
 # Colours, do not shuffle

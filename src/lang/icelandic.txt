@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}EKKER
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :farþegar
-STR_BAGS                                                        :pokar
-STR_TONS                                                        :tonn
-STR_LITERS                                                      :lítrar
-STR_ITEMS                                                       :hlutir
-STR_CRATES                                                      :kassar
+STR_PASSENGERS                                                  :{COMMA} farþegar
+STR_BAGS                                                        :{COMMA} pokar
+STR_TONS                                                        :{COMMA} tonn
+STR_LITERS                                                      :{COMMA} lítrar
+STR_ITEMS                                                       :{COMMA} hlutir
+STR_CRATES                                                      :{COMMA} kassar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 # Colours, do not shuffle

@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}ว�
 STR_ABBREV_ALL                                                  :{TINYFONT}ทั้งหมด
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :ผู้โดยสาร
-STR_BAGS                                                        :ถุง
-STR_TONS                                                        :ตัน
-STR_LITERS                                                      :ลิตร
-STR_ITEMS                                                       :ชิ้น
-STR_CRATES                                                      :ลัง
+STR_PASSENGERS                                                  :{COMMA} ผู้โดยสาร
+STR_BAGS                                                        :{COMMA} ถุง
+STR_TONS                                                        :{COMMA} ตัน
+STR_LITERS                                                      :{COMMA} ลิตร
+STR_ITEMS                                                       :{COMMA} ชิ้น
+STR_CRATES                                                      :{COMMA} ลัง
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
 # Colours, do not shuffle

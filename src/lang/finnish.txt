@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}EI
 STR_ABBREV_ALL                                                  :{TINYFONT}KAIKKI
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :matkustajaa
-STR_BAGS                                                        :säkkiä
-STR_TONS                                                        :tonnia
-STR_LITERS                                                      :litraa
-STR_ITEMS                                                       :erää
-STR_CRATES                                                      :laatikkoa
+STR_PASSENGERS                                                  :{COMMA} matkustajaa
+STR_BAGS                                                        :{COMMA} säkkiä
+STR_TONS                                                        :{COMMA} tonnia
+STR_LITERS                                                      :{COMMA} litraa
+STR_ITEMS                                                       :{COMMA} erää
+STR_CRATES                                                      :{COMMA} laatikkoa
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 
 # Colours, do not shuffle

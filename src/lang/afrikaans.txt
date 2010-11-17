@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NS
 STR_ABBREV_ALL                                                  :{TINYFONT}ALMAL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :passasiers
-STR_BAGS                                                        :sakke
-STR_TONS                                                        :ton
-STR_LITERS                                                      :liters
-STR_ITEMS                                                       :items
-STR_CRATES                                                      :kratte
+STR_PASSENGERS                                                  :{COMMA} passasiers
+STR_BAGS                                                        :{COMMA} sakke
+STR_TONS                                                        :{COMMA} ton
+STR_LITERS                                                      :{COMMA} liters
+STR_ITEMS                                                       :{COMMA} items
+STR_CRATES                                                      :{COMMA} kratte
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
 # Colours, do not shuffle

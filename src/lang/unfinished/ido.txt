@@ -164,12 +164,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NL
 STR_ABBREV_ALL                                                  :{TINYFONT}OMNA
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :pasajeri
-STR_BAGS                                                        :saki
-STR_TONS                                                        :tuni
-STR_LITERS                                                      :litri
-STR_ITEMS                                                       :artikli
-STR_CRATES                                                      :kesti
+STR_PASSENGERS                                                  :{COMMA} pasajeri
+STR_BAGS                                                        :{COMMA} saki
+STR_TONS                                                        :{COMMA} tuni
+STR_LITERS                                                      :{COMMA} litri
+STR_ITEMS                                                       :{COMMA} artikli
+STR_CRATES                                                      :{COMMA} kesti
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 # Colours, do not shuffle

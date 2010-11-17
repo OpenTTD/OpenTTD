@@ -538,18 +538,18 @@ STR_ABBREV_NONE                                                 :{TINYFONT}0
 STR_ABBREV_ALL                                                  :{TINYFONT}+
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :pasażerów
-STR_BAGS                                                        :worki
+STR_PASSENGERS                                                  :{COMMA} pasażerów
+STR_BAGS                                                        :{COMMA} worki
 STR_BAGS.d                                                      :worków
 STR_BAGS.c                                                      :workom
 STR_BAGS.b                                                      :worki
 STR_BAGS.n                                                      :workami
 STR_BAGS.m                                                      :workach
 STR_BAGS.w                                                      :worki
-STR_TONS                                                        :ton
-STR_LITERS                                                      :litrów
-STR_ITEMS                                                       :sztuk
-STR_CRATES                                                      :skrzyń
+STR_TONS                                                        :{COMMA} ton
+STR_LITERS                                                      :{COMMA} litrów
+STR_ITEMS                                                       :{COMMA} sztuk
+STR_CRATES                                                      :{COMMA} skrzyń
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :inna
 
 # Colours, do not shuffle

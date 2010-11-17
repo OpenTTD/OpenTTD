@@ -478,12 +478,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}НЯ�
 STR_ABBREV_ALL                                                  :{TINYFONT}Усё
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :пасажыраў
-STR_BAGS                                                        :мяшкоў
-STR_TONS                                                        :тон
-STR_LITERS                                                      :лiтраў
-STR_ITEMS                                                       :штук
-STR_CRATES                                                      :скрыняў
+STR_PASSENGERS                                                  :{COMMA} пасажыраў
+STR_BAGS                                                        :{COMMA} мяшкоў
+STR_TONS                                                        :{COMMA} тон
+STR_LITERS                                                      :{COMMA} лiтраў
+STR_ITEMS                                                       :{COMMA} штук
+STR_CRATES                                                      :{COMMA} скрыняў
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Iншае
 
 # Colours, do not shuffle

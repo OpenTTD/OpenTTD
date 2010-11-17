@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}YOK
 STR_ABBREV_ALL                                                  :{TINYFONT}HEPSI
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :yolcu
-STR_BAGS                                                        :çanta
-STR_TONS                                                        :ton
-STR_LITERS                                                      :litre
-STR_ITEMS                                                       :tane
-STR_CRATES                                                      :kasa
+STR_PASSENGERS                                                  :{COMMA} yolcu
+STR_BAGS                                                        :{COMMA} çanta
+STR_TONS                                                        :{COMMA} ton
+STR_LITERS                                                      :{COMMA} litre
+STR_ITEMS                                                       :{COMMA} tane
+STR_CRATES                                                      :{COMMA} kasa
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 
 # Colours, do not shuffle

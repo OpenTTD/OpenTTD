@@ -290,12 +290,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}Ні
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :пасажирів
-STR_BAGS                                                        :мішків
-STR_TONS                                                        :тони
-STR_LITERS                                                      :літрів
-STR_ITEMS                                                       :штук
-STR_CRATES                                                      :ящики
+STR_PASSENGERS                                                  :{COMMA} пасажирів
+STR_BAGS                                                        :{COMMA} мішків
+STR_TONS                                                        :{COMMA} тони
+STR_LITERS                                                      :{COMMA} літрів
+STR_ITEMS                                                       :{COMMA} штук
+STR_CRATES                                                      :{COMMA} ящики
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 
 # Colours, do not shuffle

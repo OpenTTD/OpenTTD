@@ -240,12 +240,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}-
 STR_ABBREV_ALL                                                  :{TINYFONT}VISI
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :keleiviai
-STR_BAGS                                                        :maišai
-STR_TONS                                                        :tonos
-STR_LITERS                                                      :litrų
-STR_ITEMS                                                       :vienetų
-STR_CRATES                                                      :dežių
+STR_PASSENGERS                                                  :{COMMA} keleiviai
+STR_BAGS                                                        :{COMMA} maišai
+STR_TONS                                                        :{COMMA} tonos
+STR_LITERS                                                      :{COMMA} litrų
+STR_ITEMS                                                       :{COMMA} vienetų
+STR_CRATES                                                      :{COMMA} dežių
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Kita
 
 # Colours, do not shuffle

@@ -167,12 +167,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}НЩ
 STR_ABBREV_ALL                                                  :{TINYFONT}ВЧ
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :пътници
-STR_BAGS                                                        :торби
-STR_TONS                                                        :тона
-STR_LITERS                                                      :литри
-STR_ITEMS                                                       :елемента
-STR_CRATES                                                      :кашони
+STR_PASSENGERS                                                  :{COMMA} пътници
+STR_BAGS                                                        :{COMMA} торби
+STR_TONS                                                        :{COMMA} тона
+STR_LITERS                                                      :{COMMA} литри
+STR_ITEMS                                                       :{COMMA} елемента
+STR_CRATES                                                      :{COMMA} кашони
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 
 # Colours, do not shuffle

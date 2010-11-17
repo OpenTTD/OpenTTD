@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}TD
 STR_ABBREV_ALL                                                  :{TINYFONT}GACH
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :paisinéirí
-STR_BAGS                                                        :málaí
-STR_TONS                                                        :tonaí
-STR_LITERS                                                      :lítear
-STR_ITEMS                                                       :míreanna
-STR_CRATES                                                      :crátaí
+STR_PASSENGERS                                                  :{COMMA} paisinéirí
+STR_BAGS                                                        :{COMMA} málaí
+STR_TONS                                                        :{COMMA} tonaí
+STR_LITERS                                                      :{COMMA} lítear
+STR_ITEMS                                                       :{COMMA} míreanna
+STR_CRATES                                                      :{COMMA} crátaí
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :eile
 
 # Colours, do not shuffle

@@ -163,7 +163,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}НТ
 STR_ABBREV_ALL                                                  :{TINYFONT}Се`
 
 # 'Mode' of transport for cargoes
-STR_BAGS                                                        :вреќи
+STR_BAGS                                                        :{COMMA} вреќи
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Темоно Сина

@@ -235,12 +235,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NIC
 STR_ABBREV_ALL                                                  :{TINYFONT}VŠE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :cestujících
-STR_BAGS                                                        :balíků
-STR_TONS                                                        :tun
-STR_LITERS                                                      :litrů
-STR_ITEMS                                                       :kusů
-STR_CRATES                                                      :krabic
+STR_PASSENGERS                                                  :{COMMA} cestujících
+STR_BAGS                                                        :{COMMA} balíků
+STR_TONS                                                        :{COMMA} tun
+STR_LITERS                                                      :{COMMA} litrů
+STR_ITEMS                                                       :{COMMA} kusů
+STR_CRATES                                                      :{COMMA} krabic
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :jiné
 
 # Colours, do not shuffle

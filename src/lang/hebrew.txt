@@ -179,12 +179,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}כל
 STR_ABBREV_ALL                                                  :{TINYFONT}הכל
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :נוסעים
-STR_BAGS                                                        :שקים
-STR_TONS                                                        :טונות
-STR_LITERS                                                      :ליטרים
-STR_ITEMS                                                       :פריטים
-STR_CRATES                                                      :ארגזים
+STR_PASSENGERS                                                  :{COMMA} נוסעים
+STR_BAGS                                                        :{COMMA} שקים
+STR_TONS                                                        :{COMMA} טונות
+STR_LITERS                                                      :{COMMA} ליטרים
+STR_ITEMS                                                       :{COMMA} פריטים
+STR_CRATES                                                      :{COMMA} ארגזים
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
 
 # Colours, do not shuffle

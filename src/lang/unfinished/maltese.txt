@@ -117,12 +117,12 @@ STR_QUANTITY_PLASTIC                                            :{VOLUME} ta' pl
 # Two letter abbreviation of cargo name
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :passiġġieri
-STR_BAGS                                                        :boroż
-STR_TONS                                                        :tunnellati
-STR_LITERS                                                      :litri
-STR_ITEMS                                                       :oġġetti
-STR_CRATES                                                      :kaxxi
+STR_PASSENGERS                                                  :{COMMA} passiġġieri
+STR_BAGS                                                        :{COMMA} boroż
+STR_TONS                                                        :{COMMA} tunnellati
+STR_LITERS                                                      :{COMMA} litri
+STR_ITEMS                                                       :{COMMA} oġġetti
+STR_CRATES                                                      :{COMMA} kaxxi
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 # Colours, do not shuffle

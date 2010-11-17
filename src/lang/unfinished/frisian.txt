@@ -165,11 +165,11 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NE
 STR_ABBREV_ALL                                                  :{TINYFONT}AL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :passazjiers
-STR_BAGS                                                        :sekken
-STR_TONS                                                        :Ton
-STR_LITERS                                                      :liters
-STR_CRATES                                                      :kratten
+STR_PASSENGERS                                                  :{COMMA} passazjiers
+STR_BAGS                                                        :{COMMA} sekken
+STR_TONS                                                        :{COMMA} Ton
+STR_LITERS                                                      :{COMMA} liters
+STR_CRATES                                                      :{COMMA} kratten
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oars
 
 # Colours, do not shuffle
