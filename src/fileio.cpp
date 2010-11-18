@@ -543,7 +543,11 @@ static void SimplifyFileName(char *name)
 #endif
 }
 
-/* static */ uint TarScanner::DoScan() {
+/* static */ uint TarScanner::DoScan()
+{
+	_tar_filelist.clear();
+	_tar_list.clear();
+
 	DEBUG(misc, 1, "Scanning for tars");
 	TarScanner fs;
 	uint num = fs.Scan(".tar", DATA_DIR, false);
