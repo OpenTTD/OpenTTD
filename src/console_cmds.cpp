@@ -1158,6 +1158,7 @@ DEF_CONSOLE_CMD(ConRescanAI)
 	}
 
 	AI::Rescan();
+	InvalidateWindowData(WC_AI_LIST, 0, 1);
 
 	return true;
 }

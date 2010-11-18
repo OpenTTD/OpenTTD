@@ -94,6 +94,7 @@ public:
 				case CONTENT_TYPE_AI_LIBRARY:
 					AI::Rescan();
 					SetWindowClassesDirty(WC_AI_DEBUG);
+					InvalidateWindowData(WC_AI_LIST, 0, 1);
 					break;
 
 				case CONTENT_TYPE_BASE_GRAPHICS:

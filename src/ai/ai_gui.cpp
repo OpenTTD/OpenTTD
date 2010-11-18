@@ -187,6 +187,11 @@ struct AIListWindow : public Window {
 		this->vscroll->SetCapacity(nwi->current_y / this->line_height);
 		nwi->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		this->vscroll->SetCount((int)this->ai_info_list->size() + 1);
+	}
 };
 
 /** Widgets for the AI list window. */
