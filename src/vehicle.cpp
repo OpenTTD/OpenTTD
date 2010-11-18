@@ -50,6 +50,8 @@
 #include "effectvehicle_func.h"
 #include "effectvehicle_base.h"
 #include "vehiclelist.h"
+#include "tunnel_map.h"
+#include "depot_map.h"
 
 #include "table/strings.h"
 
@@ -1895,6 +1897,136 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 	}
 }
 
+static const int8 _vehicle_smoke_pos[8] = {
+	1, 1, 1, 0, -1, -1, -1, 0
+};
+
+void Vehicle::ShowVisualEffect() const
+{
+	assert(this->IsPrimaryVehicle());
+	bool sound = false;
+
+	/* Do not show any smoke when:
+	 * - vehicle smoke is disabled by the player
+	 * - the vehicle is slowing down or stopped (by the player)
+	 * - the vehicle is moving very slowly
+	 */
+	if (_settings_game.vehicle.smoke_amount == 0 ||
+			this->vehstatus & (VS_TRAIN_SLOWING | VS_STOPPED) ||
+			this->cur_speed < 2) {
+		return;
+	}
+	if (this->type == VEH_TRAIN) {
+		const Train *t = Train::From(this);
+		/* For trains, do not show any smoke when:
+		 * - the train is reversing
+		 * - is entering a station with an order to stop there and its speed is equal to maximum station entering speed
+		 */
+		if (HasBit(t->flags, VRF_REVERSING) ||
+				(IsRailStationTile(t->tile) && t->IsFrontEngine() && t->current_order.ShouldStopAtStation(t, GetStationIndex(t->tile)) &&
+				t->cur_speed >= t->Train::GetCurrentMaxSpeed())) {
+			return;
+		}
+	}
+
+	const Vehicle *v = this;
+
+	do {
+		int effect_offset = GB(v->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT) - VE_OFFSET_CENTRE;
+		byte effect_type = GB(v->vcache.cached_vis_effect, VE_TYPE_START, VE_TYPE_COUNT);
+		bool disable_effect = HasBit(v->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
+
+		/* Show no smoke when:
+		 * - Smoke has been disabled for this vehicle
+		 * - The vehicle is not visible
+		 * - The vehicle is on a depot tile
+		 * - The vehicle is on a tunnel tile
+		 * - The vehicle is a train engine that is currently unpowered */
+		if (disable_effect ||
+				v->vehstatus & VS_HIDDEN ||
+				IsDepotTile(v->tile) ||
+				IsTunnelTile(v->tile) ||
+				(v->type == VEH_TRAIN &&
+				!HasPowerOnRail(Train::From(v)->railtype, GetTileRailType(v->tile)))) {
+			continue;
+		}
+
+		if (effect_type == VE_TYPE_DEFAULT) {
+			if (v->type == VEH_TRAIN && Train::From(v)->IsEngine()) {
+				/* Use default effect type for engine class. */
+				effect_type = RailVehInfo(v->engine_type)->engclass + 1;
+			} else {
+				/* No default effect exists, so continue */
+				continue;
+			}
+		}
+
+		int x = _vehicle_smoke_pos[v->direction] * effect_offset;
+		int y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
+
+		if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) {
+			x = -x;
+			y = -y;
+		}
+
+		switch (effect_type) {
+			case VE_TYPE_STEAM:
+				/* Steam smoke - amount is gradually falling until vehicle reaches its maximum speed, after that it's normal.
+				 * Details: while vehicle's current speed is gradually increasing, steam plumes' density decreases by one third each
+				 * third of its maximum speed spectrum. Steam emission finally normalises at very close to vehicle's maximum speed.
+				 * REGULATION:
+				 * - instead of 1, 4 / 2^smoke_amount (max. 2) is used to provide sufficient regulation to steam puffs' amount. */
+				if (GB(v->tick_counter, 0, ((4 >> _settings_game.vehicle.smoke_amount) + ((this->cur_speed * 3) / this->vcache.cached_max_speed))) == 0) {
+					CreateEffectVehicleRel(v, x, y, 10, EV_STEAM_SMOKE);
+					sound = true;
+				}
+				break;
+
+			case VE_TYPE_DIESEL: {
+				/* Diesel smoke - thicker when vehicle is starting, gradually subsiding till it reaches its maximum speed
+				 * when smoke emission stops.
+				 * Details: Vehicle's (max.) speed spectrum is divided into 32 parts. When max. speed is reached, chance for smoke
+				 * emission erodes by 32 (1/4). For trains, power and weight come in handy too to either increase smoke emission in
+				 * 6 steps (1000HP each) if the power is low or decrease smoke emission in 6 steps (512 tonnes each) if the train
+				 * isn't overweight. Power and weight contributions are expressed in a way that neither extreme power, nor
+				 * extreme weight can ruin the balance (e.g. FreightWagonMultiplier) in the formula. When the vehicle reaches
+				 * maximum speed no diesel_smoke is emitted.
+				 * REGULATION:
+				 * - up to which speed a diesel vehicle is emitting smoke (with reduced/small setting only until 1/2 of max_speed),
+				 * - in Chance16 - the last value is 512 / 2^smoke_amount (max. smoke when 128 = smoke_amount of 2). */
+				int power_weight_effect = 0;
+				if (v->type == VEH_TRAIN) {
+					power_weight_effect = (32 >> (Train::From(this)->acc_cache.cached_power >> 10)) - (32 >> (Train::From(this)->acc_cache.cached_weight >> 9));
+				}
+				if (this->cur_speed < (this->vcache.cached_max_speed >> (2 >> _settings_game.vehicle.smoke_amount)) &&
+						Chance16((64 - ((this->cur_speed << 5) / this->vcache.cached_max_speed) + power_weight_effect), (512 >> _settings_game.vehicle.smoke_amount))) {
+					CreateEffectVehicleRel(v, x, y, 10, EV_DIESEL_SMOKE);
+					sound = true;
+				}
+				break;
+			}
+
+			case VE_TYPE_ELECTRIC:
+				/* Electric train's spark - more often occurs when train is departing (more load)
+				 * Details: Electric locomotives are usually at least twice as powerful as their diesel counterparts, so spark
+				 * emissions are kept simple. Only when starting, creating huge force are sparks more likely to happen, but when
+				 * reaching its max. speed, quarter by quarter of it, chance decreases untill the usuall 2,22% at train's top speed.
+				 * REGULATION:
+				 * - in Chance16 the last value is 360 / 2^smoke_amount (max. sparks when 90 = smoke_amount of 2). */
+				if (GB(v->tick_counter, 0, 2) == 0 &&
+						Chance16((6 - ((this->cur_speed << 2) / this->vcache.cached_max_speed)), (360 >> _settings_game.vehicle.smoke_amount))) {
+					CreateEffectVehicleRel(v, x, y, 10, EV_ELECTRIC_SPARK);
+					sound = true;
+				}
+				break;
+
+			default:
+				break;
+		}
+	} while ((v = v->Next()) != NULL);
+
+	if (sound) PlayVehicleSound(this, VSE_VISUAL_EFFECT);
+}
 
 void Vehicle::SetNext(Vehicle *next)
 {

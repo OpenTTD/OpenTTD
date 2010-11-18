@@ -618,6 +618,12 @@ public:
 	 */
 	void UpdateVisualEffect(bool allow_power_change = true);
 
+	/*
+	 * Draw visual effects (smoke and/or sparks) for a vehicle chain.
+	 * @pre this->IsPrimaryVehicle()
+	 */
+	void ShowVisualEffect() const;
+
 	/**
 	 * Increments cur_order_index, keeps care of the wrap-around and invalidates the GUI.
 	 * Note: current_order is not invalidated.
