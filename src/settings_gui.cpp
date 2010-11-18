@@ -1448,7 +1448,6 @@ static SettingEntry _settings_vehicles_trains[] = {
 	SettingEntry("vehicle.train_acceleration_model"),
 	SettingEntry("vehicle.train_slope_steepness"),
 	SettingEntry("vehicle.mammoth_trains"),
-	SettingEntry("vehicle.smoke_amount"),
 	SettingEntry("gui.lost_train_warn"),
 	SettingEntry("vehicle.wagon_speed_limits"),
 	SettingEntry("vehicle.disable_elrails"),
@@ -1478,6 +1477,7 @@ static SettingEntry _settings_vehicles[] = {
 	SettingEntry("vehicle.dynamic_engines"),
 	SettingEntry("vehicle.roadveh_acceleration_model"),
 	SettingEntry("vehicle.roadveh_slope_steepness"),
+	SettingEntry("vehicle.smoke_amount"),
 };
 /** Vehicles sub-page */
 static SettingsPage _settings_vehicles_page = {_settings_vehicles, lengthof(_settings_vehicles)};

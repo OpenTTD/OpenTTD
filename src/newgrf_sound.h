@@ -16,16 +16,17 @@
 #include "tile_type.h"
 #include "vehicle_type.h"
 
+/** Events at which a sound might be played. */
 enum VehicleSoundEvent {
-	VSE_START        = 1,
-	VSE_TUNNEL       = 2,
-	VSE_BREAKDOWN    = 3,
-	VSE_RUNNING      = 4,
-	VSE_TOUCHDOWN    = 5,
-	VSE_TRAIN_EFFECT = 6,
-	VSE_RUNNING_16   = 7,
-	VSE_STOPPED_16   = 8,
-	VSE_LOAD_UNLOAD  = 9,
+	VSE_START         = 1, ///< Vehicle starting, i.e. leaving, the station.
+	VSE_TUNNEL        = 2, ///< Train entering a tunnel.
+	VSE_BREAKDOWN     = 3, ///< Vehicle breaking down.
+	VSE_RUNNING       = 4, ///< Vehicle running normally.
+	VSE_TOUCHDOWN     = 5, ///< Whenever a plane touches down.
+	VSE_VISUAL_EFFECT = 6, ///< Vehicle visual effect (steam, diesel smoke or electric spark) is shown.
+	VSE_RUNNING_16    = 7, ///< Every 16 ticks while the vehicle is running (speed > 0).
+	VSE_STOPPED_16    = 8, ///< Every 16 ticks while the vehicle is stopped (speed == 0).
+	VSE_LOAD_UNLOAD   = 9, ///< Whenever cargo payment is made for a vehicle.
 };
 
 

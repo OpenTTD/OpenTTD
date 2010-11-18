@@ -28,8 +28,8 @@ enum CallbackID {
 
 	/* There are no callbacks 0x02 - 0x0F. */
 
-	/** Powered wagons and visual effects. */
-	CBID_TRAIN_WAGON_POWER               = 0x10, // 8 bit callback
+	/** Visual effects and wagon power. */
+	CBID_VEHICLE_VISUAL_EFFECT           = 0x10, // 8 bit callback
 
 	/** Vehicle length, returns the amount of 1/8's the vehicle is shorter for trains and RVs. */
 	CBID_VEHICLE_LENGTH                  = 0x11,
@@ -279,7 +279,7 @@ enum CallbackID {
  * Some callbacks are always used and don't have a mask.
  */
 enum VehicleCallbackMask {
-	CBM_TRAIN_WAGON_POWER      = 0, ///< Powered wagons (trains only)
+	CBM_VEHICLE_VISUAL_EFFECT  = 0, ///< Visual effects and wagon power (trains only)
 	CBM_VEHICLE_LENGTH         = 1, ///< Vehicle length (trains and road vehicles)
 	CBM_VEHICLE_LOAD_AMOUNT    = 2, ///< Load amount
 	CBM_VEHICLE_REFIT_CAPACITY = 3, ///< Cargo capacity after refit

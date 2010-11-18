@@ -163,8 +163,8 @@ void Train::UpdateVisualEffect(bool allow_power_change)
 	}
 
 	/* Check powered wagon / visual effect callback */
-	if (HasBit(e->info.callback_mask, CBM_TRAIN_WAGON_POWER)) {
-		uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, this->engine_type, this);
+	if (HasBit(e->info.callback_mask, CBM_VEHICLE_VISUAL_EFFECT)) {
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_VISUAL_EFFECT, 0, 0, this->engine_type, this);
 
 		if (callback != CALLBACK_FAILED) this->tcache.cached_vis_effect = GB(callback, 0, 8);
 	}
@@ -2032,7 +2032,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 		}
 	} while ((v = v->Next()) != NULL);
 
-	if (sound) PlayVehicleSound(u, VSE_TRAIN_EFFECT);
+	if (sound) PlayVehicleSound(u, VSE_VISUAL_EFFECT);
 }
 
 void Train::PlayLeaveStationSound() const
