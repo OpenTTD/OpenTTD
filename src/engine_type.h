@@ -67,6 +67,7 @@ struct ShipVehicleInfo {
 	byte running_cost;
 	SoundID sfx;
 	bool old_refittable;   ///< Is ship refittable; only used during initialisation. Later use EngineInfo::refit_mask.
+	byte visual_effect;    ///< Bitstuffed NewGRF visual effect data
 };
 
 /* AircraftVehicleInfo subtypes, bitmask type.
@@ -102,6 +103,7 @@ struct RoadVehicleInfo {
 	uint8 power;             ///< Power in 10hp units
 	uint8 tractive_effort;   ///< Coefficient of tractive effort
 	uint8 air_drag;          ///< Coefficient of air drag
+	byte visual_effect;      ///< Bitstuffed NewGRF visual effect data
 };
 
 /**

@@ -891,6 +891,16 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				AlterVehicleListOrder(e->index, buf->ReadExtendedByte());
 				break;
 
+			case 0x21: // Visual effect
+				rvi->visual_effect = buf->ReadByte();
+				/* Avoid accidentally setting visual_effect to the default value
+				 * Since bit 6 (disable effects) is set anyways, we can safely erase some bits. */
+				if (rvi->visual_effect == VE_DEFAULT) {
+					assert(HasBit(rvi->visual_effect, VE_DISABLE_EFFECT));
+					SB(rvi->visual_effect, VE_TYPE_START, VE_TYPE_COUNT, 0);
+				}
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
@@ -1005,6 +1015,16 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x1B: // Alter purchase list sort order
 				AlterVehicleListOrder(e->index, buf->ReadExtendedByte());
+				break;
+
+			case 0x1C: // Visual effect
+				svi->visual_effect = buf->ReadByte();
+				/* Avoid accidentally setting visual_effect to the default value
+				 * Since bit 6 (disable effects) is set anyways, we can safely erase some bits. */
+				if (svi->visual_effect == VE_DEFAULT) {
+					assert(HasBit(svi->visual_effect, VE_DISABLE_EFFECT));
+					SB(svi->visual_effect, VE_TYPE_START, VE_TYPE_COUNT, 0);
+				}
 				break;
 
 			default:

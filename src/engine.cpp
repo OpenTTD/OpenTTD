@@ -86,7 +86,12 @@ Engine::Engine(VehicleType type, EngineID base)
 		/* Set road vehicle tractive effort to the default value */
 		if (type == VEH_ROAD) this->u.road.tractive_effort = 0x4C;
 		/* Set visual effect to the default value */
-		if (type == VEH_TRAIN) this->u.rail.visual_effect = VE_DEFAULT;
+		switch (type) {
+			case VEH_TRAIN: this->u.rail.visual_effect = VE_DEFAULT; break;
+			case VEH_ROAD:  this->u.road.visual_effect = VE_DEFAULT; break;
+			case VEH_SHIP:  this->u.ship.visual_effect = VE_DEFAULT; break;
+			default: break; // The aircraft, disasters and especially visual effects have no NewGRF configured visual effects
+		}
 		return;
 	}
 
