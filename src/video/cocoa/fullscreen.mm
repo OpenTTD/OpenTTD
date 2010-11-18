@@ -264,9 +264,10 @@ class FullscreenSubdriver: public CocoaSubdriver {
 	bool SetVideoMode(int w, int h)
 	{
 		/* Define this variables at the top (against coding style) because
-		 * otherwise GCC barfs at the goto's jumping over variable initialization. */
+		 * otherwise GCC 4.2 barfs at the goto's jumping over variable initialization. */
 		NSRect screen_rect;
 		int gamma_error;
+		NSPoint mouseLocation;
 
 		/* Destroy any previous mode */
 		if (this->pixel_buffer != NULL) {
@@ -299,7 +300,7 @@ class FullscreenSubdriver: public CocoaSubdriver {
 		CGDisplayCapture(this->display_id);
 
 		/* Store the mouse coordinates relative to the total screen */
-		NSPoint mouseLocation = [ NSEvent mouseLocation ];
+		mouseLocation = [ NSEvent mouseLocation ];
 		mouseLocation.x /= this->display_width;
 		mouseLocation.y /= this->display_height;
 
