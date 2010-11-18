@@ -613,6 +613,12 @@ public:
 	CommandCost SendToDepot(DoCommandFlag flags, DepotCommand command);
 
 	/**
+	 * Update the cached visual effect.
+	 * @param allow_power_change true if the wagon-is-powered-state may change.
+	 */
+	void UpdateVisualEffect(bool allow_power_change = true);
+
+	/**
 	 * Increments cur_order_index, keeps care of the wrap-around and invalidates the GUI.
 	 * Note: current_order is not invalidated.
 	 */

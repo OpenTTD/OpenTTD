@@ -365,8 +365,6 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 
 protected: // These functions should not be called outside acceleration code.
 
-	void UpdateVisualEffect(bool allow_power_change);
-
 	/**
 	 * Allows to know the power value that this vehicle will use.
 	 * @return Power value from the engine in HP, or zero if the vehicle is not powered.

@@ -1855,6 +1855,47 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 
 }
 
+void Vehicle::UpdateVisualEffect(bool allow_power_change)
+{
+	bool powered_before = HasBit(this->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER);
+	this->vcache.cached_vis_effect = 0;
+
+	const Engine *e = Engine::Get(this->engine_type);
+	if (this->type == VEH_TRAIN) {
+		if (e->u.rail.visual_effect != 0) {
+			this->vcache.cached_vis_effect = e->u.rail.visual_effect;
+		} else {
+			Train *t = Train::From(this);
+			if (t->IsWagon() || t->IsArticulatedPart()) {
+				/* Wagons and articulated parts have no effect by default */
+				SetBit(this->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
+			} else if (e->u.rail.engclass == 0) {
+				/* Steam is offset by -4 units */
+				SB(this->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT, VE_OFFSET_CENTRE - 4);
+			} else {
+				/* Diesel fumes and sparks come from the centre */
+				SB(this->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT, VE_OFFSET_CENTRE);
+			}
+		}
+	} else {
+		/* Non-trains do not have a visual effect by default. */
+		SetBit(this->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
+	}
+
+	/* Check powered wagon / visual effect callback */
+	if (HasBit(e->info.callback_mask, CBM_VEHICLE_VISUAL_EFFECT)) {
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_VISUAL_EFFECT, 0, 0, this->engine_type, this);
+
+		if (callback != CALLBACK_FAILED) this->vcache.cached_vis_effect = GB(callback, 0, 8);
+	}
+
+	if (!allow_power_change && powered_before != HasBit(this->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER)) {
+		ToggleBit(this->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER);
+		ShowNewGrfVehicleError(this->engine_type, STR_NEWGRF_BROKEN, STR_NEWGRF_BROKEN_POWERED_WAGON, GBUG_VEH_POWERED_WAGON, false);
+	}
+}
+
+
 void Vehicle::SetNext(Vehicle *next)
 {
 	assert(this != next);
