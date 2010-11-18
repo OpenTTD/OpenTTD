@@ -85,6 +85,8 @@ Engine::Engine(VehicleType type, EngineID base)
 		this->info.base_life = 0xFF;
 		/* Set road vehicle tractive effort to the default value */
 		if (type == VEH_ROAD) this->u.road.tractive_effort = 0x4C;
+		/* Set visual effect to the default value */
+		if (type == VEH_TRAIN) this->u.rail.visual_effect = VE_DEFAULT;
 		return;
 	}
 

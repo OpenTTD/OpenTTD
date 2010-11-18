@@ -79,6 +79,8 @@ enum VisualEffect {
 
 	VE_DISABLE_EFFECT      = 6, ///< Flag to disable visual effect
 	VE_DISABLE_WAGON_POWER = 7, ///< Flag to disable wagon power
+
+	VE_DEFAULT = 0xFF,          ///< Default value to indicate that visual effect should be based on engine class
 };
 
 /** Cached often queried values common to all vehicles. */

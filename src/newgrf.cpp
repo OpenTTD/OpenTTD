@@ -48,6 +48,7 @@
 #include "gui.h"
 #include "vehicle_func.h"
 #include "language.h"
+#include "vehicle_base.h"
 
 #include "table/strings.h"
 #include "table/build_industry.h"
@@ -710,8 +711,13 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x22: // Visual effect
-				/** @see note in engine.h about rvi->visual_effect */
 				rvi->visual_effect = buf->ReadByte();
+				/* Avoid accidentally setting visual_effect to the default value
+				 * Since bit 6 (disable effects) is set anyways, we can safely erase some bits. */
+				if (rvi->visual_effect == VE_DEFAULT) {
+					assert(HasBit(rvi->visual_effect, VE_DISABLE_EFFECT));
+					SB(rvi->visual_effect, VE_TYPE_START, VE_TYPE_COUNT, 0);
+				}
 				break;
 
 			case 0x23: // Powered wagons weight bonus

@@ -1864,7 +1864,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 
 	const Engine *e = Engine::Get(this->engine_type);
 	if (this->type == VEH_TRAIN) {
-		if (e->u.rail.visual_effect != 0) {
+		if (e->u.rail.visual_effect != VE_DEFAULT) {
 			this->vcache.cached_vis_effect = e->u.rail.visual_effect;
 		} else {
 			Train *t = Train::From(this);
