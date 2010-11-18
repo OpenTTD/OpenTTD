@@ -1890,63 +1890,79 @@ static const int8 _vehicle_smoke_pos[8] = {
 	1, 1, 1, 0, -1, -1, -1, 0
 };
 
-static void HandleLocomotiveSmokeCloud(const Train *v)
+static void HandleLocomotiveSmokeCloud(const Vehicle *v)
 {
+	assert(v->IsPrimaryVehicle());
 	bool sound = false;
 
-	/* Do not show any locomotive smoke/sparks when smoke_amount is set to none (0) or train is:
-	 * slowing down or stopped (by the player) or
-	 * it is ordered to reverse direction (by player) so it is slowing down to do it or
-	 * its current speed is less than 2 km-ish/h or
-	 * it is entering station with an order to stop there and its speed is equal to maximum station entering speed. */
+	/* Do not show any smoke when:
+	 * - vehicle smoke is disabled by the player
+	 * - the vehicle is slowing down or stopped (by the player)
+	 * - the vehicle is moving very slowly
+	 */
 	if (_settings_game.vehicle.smoke_amount == 0 ||
 			v->vehstatus & (VS_TRAIN_SLOWING | VS_STOPPED) ||
-			HasBit(v->flags, VRF_REVERSING) ||
-			v->cur_speed < 2 ||
-			(IsRailStationTile(v->tile) && v->IsFrontEngine() && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile)) &&
-			v->cur_speed >= v->Train::GetCurrentMaxSpeed())) {
+			v->cur_speed < 2) {
 		return;
 	}
+	if (v->type == VEH_TRAIN) {
+		const Train *t = Train::From(v);
+		/* For trains, do not show any smoke when:
+		 * - the train is reversing
+		 * - is entering a station with an order to stop there and its speed is equal to maximum station entering speed
+		 */
+		if (HasBit(t->flags, VRF_REVERSING) ||
+				(IsRailStationTile(t->tile) && t->IsFrontEngine() && t->current_order.ShouldStopAtStation(t, GetStationIndex(t->tile)) &&
+				t->cur_speed >= t->Train::GetCurrentMaxSpeed())) {
+			return;
+		}
+	}
 
-	const Train *u = v;
+	const Vehicle *u = v;
 
 	do {
-		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 		int effect_offset = GB(v->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT) - VE_OFFSET_CENTRE;
 		byte effect_type = GB(v->vcache.cached_vis_effect, VE_TYPE_START, VE_TYPE_COUNT);
 		bool disable_effect = HasBit(v->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
 
-		/* no smoke? */
-		if ((rvi->railveh_type == RAILVEH_WAGON && effect_type == 0) ||
-				disable_effect ||
-				v->vehstatus & VS_HIDDEN) {
+		/* Show no smoke when:
+		 * - Smoke has been disabled for this vehicle
+		 * - The vehicle is not visible
+		 * - The vehicle is on a depot tile
+		 * - The vehicle is on a tunnel tile
+		 * - The vehicle is a train engine that is currently unpowered */
+		if (disable_effect ||
+				v->vehstatus & VS_HIDDEN ||
+				IsDepotTile(v->tile) ||
+				IsTunnelTile(v->tile) ||
+				(v->type == VEH_TRAIN &&
+				!HasPowerOnRail(Train::From(v)->railtype, GetTileRailType(v->tile)))) {
 			continue;
 		}
 
-		/* No smoke in depots or tunnels */
-		if (IsRailDepotTile(v->tile) || IsTunnelTile(v->tile)) continue;
-
-		/* No sparks for electric vehicles on non-electrified tracks. */
-		if (!HasPowerOnRail(v->railtype, GetTileRailType(v->tile))) continue;
-
 		if (effect_type == VE_TYPE_DEFAULT) {
-			/* Use default effect type for engine class. */
-			effect_type = rvi->engclass + 1;
+			if (v->type == VEH_TRAIN && Train::From(v)->IsEngine()) {
+				/* Use default effect type for engine class. */
+				effect_type = RailVehInfo(v->engine_type)->engclass + 1;
+			} else {
+				/* No default effect exists, so continue */
+				continue;
+			}
 		}
 
 		int x = _vehicle_smoke_pos[v->direction] * effect_offset;
 		int y = _vehicle_smoke_pos[(v->direction + 2) % 8] * effect_offset;
 
-		if (HasBit(v->flags, VRF_REVERSE_DIRECTION)) {
+		if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_REVERSE_DIRECTION)) {
 			x = -x;
 			y = -y;
 		}
 
 		switch (effect_type) {
 			case VE_TYPE_STEAM:
-				/* Steam smoke - amount is gradually falling until train reaches its maximum speed, after that it's normal.
-				 * Details: while train's current speed is gradually increasing, steam plumes' density decreases by one third each
-				 * third of its maximum speed spectrum. Steam emission finally normalises at very close to train's maximum speed.
+				/* Steam smoke - amount is gradually falling until vehicle reaches its maximum speed, after that it's normal.
+				 * Details: while vehicle's current speed is gradually increasing, steam plumes' density decreases by one third each
+				 * third of its maximum speed spectrum. Steam emission finally normalises at very close to vehicle's maximum speed.
 				 * REGULATION:
 				 * - instead of 1, 4 / 2^smoke_amount (max. 2) is used to provide sufficient regulation to steam puffs' amount. */
 				if (GB(v->tick_counter, 0, ((4 >> _settings_game.vehicle.smoke_amount) + ((u->cur_speed * 3) / u->vcache.cached_max_speed))) == 0) {
@@ -1955,24 +1971,29 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 				}
 				break;
 
-			case VE_TYPE_DIESEL:
-				/* Diesel smoke - thicker when train is starting, gradually subsiding till locomotive reaches its maximum speed
-				 * when it stops.
-				 * Details: Train's (max.) speed spectrum is divided into 32 parts. When max. speed is reached, chance for smoke
-				 * emission erodes by 32 (1/4). Power and train's weight come in handy too to either increase smoke emission in
+			case VE_TYPE_DIESEL: {
+				/* Diesel smoke - thicker when vehicle is starting, gradually subsiding till it reaches its maximum speed
+				 * when smoke emission stops.
+				 * Details: Vehicle's (max.) speed spectrum is divided into 32 parts. When max. speed is reached, chance for smoke
+				 * emission erodes by 32 (1/4). For trains, power and weight come in handy too to either increase smoke emission in
 				 * 6 steps (1000HP each) if the power is low or decrease smoke emission in 6 steps (512 tonnes each) if the train
 				 * isn't overweight. Power and weight contributions are expressed in a way that neither extreme power, nor
-				 * extreme weight can ruin the balance (e.g. FreightWagonMultiplier) in the formula. When the train reaches
-				 * maximum speed no diesel_smoke is emitted as train has enough traction to keep locomotive running optimally.
+				 * extreme weight can ruin the balance (e.g. FreightWagonMultiplier) in the formula. When the vehicle reaches
+				 * maximum speed no diesel_smoke is emitted.
 				 * REGULATION:
-				 * - up to which speed a diesel train is emitting smoke (with reduced/small setting only until 1/2 of max_speed),
+				 * - up to which speed a diesel vehicle is emitting smoke (with reduced/small setting only until 1/2 of max_speed),
 				 * - in Chance16 - the last value is 512 / 2^smoke_amount (max. smoke when 128 = smoke_amount of 2). */
+				int power_weight_effect = 0;
+				if (v->type == VEH_TRAIN) {
+					power_weight_effect = (32 >> (Train::From(u)->acc_cache.cached_power >> 10)) - (32 >> (Train::From(u)->acc_cache.cached_weight >> 9));
+				}
 				if (u->cur_speed < (u->vcache.cached_max_speed >> (2 >> _settings_game.vehicle.smoke_amount)) &&
-						Chance16((64 - ((u->cur_speed << 5) / u->vcache.cached_max_speed) + (32 >> (u->acc_cache.cached_power >> 10)) - (32 >> (u->acc_cache.cached_weight >> 9))), (512 >> _settings_game.vehicle.smoke_amount))) {
+						Chance16((64 - ((u->cur_speed << 5) / u->vcache.cached_max_speed) + power_weight_effect), (512 >> _settings_game.vehicle.smoke_amount))) {
 					CreateEffectVehicleRel(v, x, y, 10, EV_DIESEL_SMOKE);
 					sound = true;
 				}
 				break;
+			}
 
 			case VE_TYPE_ELECTRIC:
 				/* Electric train's spark - more often occurs when train is departing (more load)
