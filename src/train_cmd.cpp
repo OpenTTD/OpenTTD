@@ -2008,7 +2008,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 				 * - in Chance16 - the last value is 512 / 2^smoke_amount (max. smoke when 128 = smoke_amount of 2). */
 				if (u->cur_speed < (u->vcache.cached_max_speed >> (2 >> _settings_game.vehicle.smoke_amount)) &&
 						Chance16((64 - ((u->cur_speed << 5) / u->vcache.cached_max_speed) + (32 >> (u->acc_cache.cached_power >> 10)) - (32 >> (u->acc_cache.cached_weight >> 9))), (512 >> _settings_game.vehicle.smoke_amount))) {
-					CreateEffectVehicleRel(v, 0, 0, 10, EV_DIESEL_SMOKE);
+					CreateEffectVehicleRel(v, x, y, 10, EV_DIESEL_SMOKE);
 					sound = true;
 				}
 				break;
@@ -2022,7 +2022,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 				 * - in Chance16 the last value is 360 / 2^smoke_amount (max. sparks when 90 = smoke_amount of 2). */
 				if (GB(v->tick_counter, 0, 2) == 0 &&
 						Chance16((6 - ((u->cur_speed << 2) / u->vcache.cached_max_speed)), (360 >> _settings_game.vehicle.smoke_amount))) {
-					CreateEffectVehicleRel(v, 0, 0, 10, EV_ELECTRIC_SPARK);
+					CreateEffectVehicleRel(v, x, y, 10, EV_ELECTRIC_SPARK);
 					sound = true;
 				}
 				break;
