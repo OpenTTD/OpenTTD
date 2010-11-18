@@ -501,7 +501,7 @@ struct DepotWindow : Window {
 					this->sel = INVALID_VEHICLE;
 					TrainDepotMoveVehicle(v, sel, gdvp.head);
 				} else if (v != NULL) {
-					int image = v->GetImage(DIR_W);
+					int image = v->GetImage(_current_text_dir == TD_RTL ? DIR_E : DIR_W);
 					SetObjectToPlaceWnd(image, GetVehiclePalette(v), HT_DRAG, this);
 
 					this->sel = v->index;
