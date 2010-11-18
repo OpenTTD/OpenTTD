@@ -78,14 +78,6 @@ struct TrainCache {
 	/* cached max. speed / acceleration data */
 	int cached_max_curve_speed; ///< max consist speed limited by curves
 
-	/**
-	 * Position/type of visual effect.
-	 * bit 0 - 3 = position of effect relative to vehicle. (0 = front, 8 = centre, 15 = rear)
-	 * bit 4 - 5 = type of effect. (0 = default for engine class, 1 = steam, 2 = diesel, 3 = electric)
-	 * bit     6 = disable visual effect.
-	 * bit     7 = disable powered wagons.
-	 */
-	byte cached_vis_effect;
 	byte user_def_data;
 
 	EngineID first_engine;  ///< cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.

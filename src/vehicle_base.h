@@ -67,6 +67,14 @@ struct NewGRFCache {
 /** Cached often queried values common to all vehicles. */
 struct VehicleCache {
 	uint16 cached_max_speed; ///< Maximum speed of the consist (minimum of the max speed of all vehicles in the consist).
+	/**
+	 * Position/type of visual effect.
+	 * bit 0 - 3 = position of effect relative to vehicle. (0 = front, 8 = centre, 15 = rear)
+	 * bit 4 - 5 = type of effect. (0 = default for engine class, 1 = steam, 2 = diesel, 3 = electric)
+	 * bit     6 = disable visual effect.
+	 * bit     7 = disable powered wagons (trains only).
+	 */
+	byte cached_vis_effect;
 };
 
 /** A vehicle pool for a little over 1 million vehicles. */

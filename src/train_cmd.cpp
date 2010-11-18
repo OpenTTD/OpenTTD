@@ -144,21 +144,21 @@ void Train::RailtypeChanged()
  */
 void Train::UpdateVisualEffect(bool allow_power_change)
 {
-	byte powered_before = this->tcache.cached_vis_effect & 0x80;
+	byte powered_before = this->vcache.cached_vis_effect & 0x80;
 
 	const Engine *e = Engine::Get(this->engine_type);
 	if (e->u.rail.visual_effect != 0) {
-		this->tcache.cached_vis_effect = e->u.rail.visual_effect;
+		this->vcache.cached_vis_effect = e->u.rail.visual_effect;
 	} else {
 		if (this->IsWagon() || this->IsArticulatedPart()) {
 			/* Wagons and articulated parts have no effect by default */
-			this->tcache.cached_vis_effect = 0x40;
+			this->vcache.cached_vis_effect = 0x40;
 		} else if (e->u.rail.engclass == 0) {
 			/* Steam is offset by -4 units */
-			this->tcache.cached_vis_effect = 4;
+			this->vcache.cached_vis_effect = 4;
 		} else {
 			/* Diesel fumes and sparks come from the centre */
-			this->tcache.cached_vis_effect = 8;
+			this->vcache.cached_vis_effect = 8;
 		}
 	}
 
@@ -166,11 +166,11 @@ void Train::UpdateVisualEffect(bool allow_power_change)
 	if (HasBit(e->info.callback_mask, CBM_VEHICLE_VISUAL_EFFECT)) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_VISUAL_EFFECT, 0, 0, this->engine_type, this);
 
-		if (callback != CALLBACK_FAILED) this->tcache.cached_vis_effect = GB(callback, 0, 8);
+		if (callback != CALLBACK_FAILED) this->vcache.cached_vis_effect = GB(callback, 0, 8);
 	}
 
-	if (!allow_power_change && powered_before != (this->tcache.cached_vis_effect & 0x80)) {
-		this->tcache.cached_vis_effect ^= 0x80;
+	if (!allow_power_change && powered_before != (this->vcache.cached_vis_effect & 0x80)) {
+		this->vcache.cached_vis_effect ^= 0x80;
 		ShowNewGrfVehicleError(this->engine_type, STR_NEWGRF_BROKEN, STR_NEWGRF_BROKEN_POWERED_WAGON, GBUG_VEH_POWERED_WAGON, false);
 	}
 }
@@ -235,7 +235,7 @@ void Train::ConsistChanged(bool same_length)
 		u->UpdateVisualEffect(true);
 
 		if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
-				UsesWagonOverride(u) && !HasBit(u->tcache.cached_vis_effect, 7)) {
+				UsesWagonOverride(u) && !HasBit(u->vcache.cached_vis_effect, 7)) {
 			/* wagon is powered */
 			SetBit(u->flags, VRF_POWEREDWAGON); // cache 'powered' status
 		} else {
@@ -1949,9 +1949,9 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 
 	do {
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-		int effect_offset = GB(v->tcache.cached_vis_effect, 0, 4) - 8;
-		byte effect_type = GB(v->tcache.cached_vis_effect, 4, 2);
-		bool disable_effect = HasBit(v->tcache.cached_vis_effect, 6);
+		int effect_offset = GB(v->vcache.cached_vis_effect, 0, 4) - 8;
+		byte effect_type = GB(v->vcache.cached_vis_effect, 4, 2);
+		bool disable_effect = HasBit(v->vcache.cached_vis_effect, 6);
 
 		/* no smoke? */
 		if ((rvi->railveh_type == RAILVEH_WAGON && effect_type == 0) ||
