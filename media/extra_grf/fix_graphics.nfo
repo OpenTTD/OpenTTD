@@ -132,6 +132,9 @@
 // Graphics metadata pixel higher than actual graphics
    -1 * 6	 12 01 00 01 AC E2
    -1 sprites/fix_graphics.png 66 296 01 10 9 0 0
+
+// Non-toyland specific
+   -1 * 6	 07 83 01 \7= 03 0A
 // Grahpics for the tubular bridge pillars had incorrect offsets
    -1 * 5	 0A 01 04 05 0A
    -1 sprites/fix_graphics.png 98 296 09 9 4 2 -1
@@ -144,3 +147,18 @@
    -1 sprites/fix_graphics.png 194 296 09 12 10 2 -2
    -1 sprites/fix_graphics.png 210 296 09 11 10 -10 -1
    -1 sprites/fix_graphics.png 226 296 09 11 10 -10 -1
+
+// Toyland specific
+   -1 * 6	 07 83 01 \7! 03 0A
+// Grahpics for the toyland tubular bridge pillars had incorrect offsets
+   -1 * 5	 0A 01 04 05 0A
+   -1 sprites/fix_graphics.png 248 296 09 9 4 2 -1
+   -1 sprites/fix_graphics.png 264 296 09 9 4 2 -1
+   -1 sprites/fix_graphics.png 280 296 09 9 4 -4 0
+   -1 sprites/fix_graphics.png 296 296 09 9 4 -4 0
+// Grahpics for the toyland cantilever bridge pillars had incorrect offsets
+   -1 * 5	 0A 01 04 DD 09
+   -1 sprites/fix_graphics.png 328 296 09 11 10 2 -3
+   -1 sprites/fix_graphics.png 344 296 09 12 10 2 -2
+   -1 sprites/fix_graphics.png 360 296 09 11 10 -10 -1
+   -1 sprites/fix_graphics.png 376 296 09 11 10 -10 -1
