@@ -279,7 +279,7 @@ enum CallbackID {
  * Some callbacks are always used and don't have a mask.
  */
 enum VehicleCallbackMask {
-	CBM_VEHICLE_VISUAL_EFFECT  = 0, ///< Visual effects and wagon power (trains only)
+	CBM_VEHICLE_VISUAL_EFFECT  = 0, ///< Visual effects and wagon power (trains, road vehicles and ships)
 	CBM_VEHICLE_LENGTH         = 1, ///< Vehicle length (trains and road vehicles)
 	CBM_VEHICLE_LOAD_AMOUNT    = 2, ///< Load amount
 	CBM_VEHICLE_REFIT_CAPACITY = 3, ///< Cargo capacity after refit

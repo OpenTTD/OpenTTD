@@ -188,6 +188,9 @@ void RoadVehUpdateCache(RoadVehicle *v)
 		u->rcache.cached_veh_length = GetRoadVehLength(u);
 		v->rcache.cached_total_length += u->rcache.cached_veh_length;
 
+		/* Update visual effect */
+		v->UpdateVisualEffect();
+
 		/* Invalidate the vehicle colour map */
 		u->colourmap = PAL_NONE;
 	}
@@ -1476,6 +1479,8 @@ static bool RoadVehController(RoadVehicle *v)
 	if (v->current_order.IsType(OT_LOADING)) return true;
 
 	if (v->IsInDepot() && RoadVehLeaveDepot(v, true)) return true;
+
+	v->ShowVisualEffect();
 
 	/* Check how far the vehicle needs to proceed */
 	int j = RoadVehAccelerate(v);

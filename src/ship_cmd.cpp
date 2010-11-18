@@ -156,6 +156,8 @@ static void CheckIfShipNeedsService(Vehicle *v)
 void Ship::UpdateCache()
 {
 	this->vcache.cached_max_speed = GetVehicleProperty(this, PROP_SHIP_SPEED, ShipVehInfo(this->engine_type)->max_speed);
+
+	this->UpdateVisualEffect();
 }
 
 Money Ship::GetRunningCost() const
@@ -445,6 +447,8 @@ static void ShipController(Ship *v)
 	if (v->current_order.IsType(OT_LOADING)) return;
 
 	CheckShipLeaveDepot(v);
+
+	v->ShowVisualEffect();
 
 	if (!ShipAccelerate(v)) return;
 
