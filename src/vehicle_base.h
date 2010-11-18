@@ -64,17 +64,28 @@ struct NewGRFCache {
 	uint8  cache_valid;               ///< Bitset that indicates which cache values are valid.
 };
 
+/** Meaning of the various bits of the visual effect. */
+enum VisualEffect {
+	VE_OFFSET_START        = 0, ///< First bit that contains the offset (0 = front, 8 = centre, 15 = rear)
+	VE_OFFSET_COUNT        = 4, ///< Number of bits used for the offset
+	VE_OFFSET_CENTRE       = 8, ///< Value of offset corresponding to a position above the centre of the vehicle
+
+	VE_TYPE_START          = 4, ///< First bit used for the type of effect
+	VE_TYPE_COUNT          = 2, ///< Number of bits used for the effect type
+	VE_TYPE_DEFAULT        = 0, ///< Use default from engine class
+	VE_TYPE_STEAM          = 1, ///< Steam plumes
+	VE_TYPE_DIESEL         = 2, ///< Diesel fumes
+	VE_TYPE_ELECTRIC       = 3, ///< Electric sparks
+
+	VE_DISABLE_EFFECT      = 6, ///< Flag to disable visual effect
+	VE_DISABLE_WAGON_POWER = 7, ///< Flag to disable wagon power
+};
+
 /** Cached often queried values common to all vehicles. */
 struct VehicleCache {
 	uint16 cached_max_speed; ///< Maximum speed of the consist (minimum of the max speed of all vehicles in the consist).
-	/**
-	 * Position/type of visual effect.
-	 * bit 0 - 3 = position of effect relative to vehicle. (0 = front, 8 = centre, 15 = rear)
-	 * bit 4 - 5 = type of effect. (0 = default for engine class, 1 = steam, 2 = diesel, 3 = electric)
-	 * bit     6 = disable visual effect.
-	 * bit     7 = disable powered wagons (trains only).
-	 */
-	byte cached_vis_effect;
+
+	byte cached_vis_effect;  ///< Visual effect to show (see #VisualEffect)
 };
 
 /** A vehicle pool for a little over 1 million vehicles. */

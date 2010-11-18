@@ -144,7 +144,8 @@ void Train::RailtypeChanged()
  */
 void Train::UpdateVisualEffect(bool allow_power_change)
 {
-	byte powered_before = this->vcache.cached_vis_effect & 0x80;
+	bool powered_before = HasBit(this->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER);
+	this->vcache.cached_vis_effect = 0;
 
 	const Engine *e = Engine::Get(this->engine_type);
 	if (e->u.rail.visual_effect != 0) {
@@ -152,13 +153,13 @@ void Train::UpdateVisualEffect(bool allow_power_change)
 	} else {
 		if (this->IsWagon() || this->IsArticulatedPart()) {
 			/* Wagons and articulated parts have no effect by default */
-			this->vcache.cached_vis_effect = 0x40;
+			SetBit(this->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
 		} else if (e->u.rail.engclass == 0) {
 			/* Steam is offset by -4 units */
-			this->vcache.cached_vis_effect = 4;
+			SB(this->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT, VE_OFFSET_CENTRE - 4);
 		} else {
 			/* Diesel fumes and sparks come from the centre */
-			this->vcache.cached_vis_effect = 8;
+			SB(this->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT, VE_OFFSET_CENTRE);
 		}
 	}
 
@@ -169,8 +170,8 @@ void Train::UpdateVisualEffect(bool allow_power_change)
 		if (callback != CALLBACK_FAILED) this->vcache.cached_vis_effect = GB(callback, 0, 8);
 	}
 
-	if (!allow_power_change && powered_before != (this->vcache.cached_vis_effect & 0x80)) {
-		this->vcache.cached_vis_effect ^= 0x80;
+	if (!allow_power_change && powered_before != HasBit(this->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER)) {
+		ToggleBit(this->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER);
 		ShowNewGrfVehicleError(this->engine_type, STR_NEWGRF_BROKEN, STR_NEWGRF_BROKEN_POWERED_WAGON, GBUG_VEH_POWERED_WAGON, false);
 	}
 }
@@ -235,7 +236,7 @@ void Train::ConsistChanged(bool same_length)
 		u->UpdateVisualEffect(true);
 
 		if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
-				UsesWagonOverride(u) && !HasBit(u->vcache.cached_vis_effect, 7)) {
+				UsesWagonOverride(u) && !HasBit(u->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER)) {
 			/* wagon is powered */
 			SetBit(u->flags, VRF_POWEREDWAGON); // cache 'powered' status
 		} else {
@@ -1949,9 +1950,9 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 
 	do {
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-		int effect_offset = GB(v->vcache.cached_vis_effect, 0, 4) - 8;
-		byte effect_type = GB(v->vcache.cached_vis_effect, 4, 2);
-		bool disable_effect = HasBit(v->vcache.cached_vis_effect, 6);
+		int effect_offset = GB(v->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT) - VE_OFFSET_CENTRE;
+		byte effect_type = GB(v->vcache.cached_vis_effect, VE_TYPE_START, VE_TYPE_COUNT);
+		bool disable_effect = HasBit(v->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
 
 		/* no smoke? */
 		if ((rvi->railveh_type == RAILVEH_WAGON && effect_type == 0) ||
@@ -1966,11 +1967,9 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 		/* No sparks for electric vehicles on non-electrified tracks. */
 		if (!HasPowerOnRail(v->railtype, GetTileRailType(v->tile))) continue;
 
-		if (effect_type == 0) {
+		if (effect_type == VE_TYPE_DEFAULT) {
 			/* Use default effect type for engine class. */
-			effect_type = rvi->engclass;
-		} else {
-			effect_type--;
+			effect_type = rvi->engclass + 1;
 		}
 
 		int x = _vehicle_smoke_pos[v->direction] * effect_offset;
@@ -1982,7 +1981,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 		}
 
 		switch (effect_type) {
-			case 0:
+			case VE_TYPE_STEAM:
 				/* Steam smoke - amount is gradually falling until train reaches its maximum speed, after that it's normal.
 				 * Details: while train's current speed is gradually increasing, steam plumes' density decreases by one third each
 				 * third of its maximum speed spectrum. Steam emission finally normalises at very close to train's maximum speed.
@@ -1994,7 +1993,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 				}
 				break;
 
-			case 1:
+			case VE_TYPE_DIESEL:
 				/* Diesel smoke - thicker when train is starting, gradually subsiding till locomotive reaches its maximum speed
 				 * when it stops.
 				 * Details: Train's (max.) speed spectrum is divided into 32 parts. When max. speed is reached, chance for smoke
@@ -2013,7 +2012,7 @@ static void HandleLocomotiveSmokeCloud(const Train *v)
 				}
 				break;
 
-			case 2:
+			case VE_TYPE_ELECTRIC:
 				/* Electric train's spark - more often occurs when train is departing (more load)
 				 * Details: Electric locomotives are usually at least twice as powerful as their diesel counterparts, so spark
 				 * emissions are kept simple. Only when starting, creating huge force are sparks more likely to happen, but when
