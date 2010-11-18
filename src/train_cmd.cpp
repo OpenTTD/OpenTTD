@@ -148,19 +148,25 @@ void Train::UpdateVisualEffect(bool allow_power_change)
 	this->vcache.cached_vis_effect = 0;
 
 	const Engine *e = Engine::Get(this->engine_type);
-	if (e->u.rail.visual_effect != 0) {
-		this->vcache.cached_vis_effect = e->u.rail.visual_effect;
-	} else {
-		if (this->IsWagon() || this->IsArticulatedPart()) {
-			/* Wagons and articulated parts have no effect by default */
-			SetBit(this->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
-		} else if (e->u.rail.engclass == 0) {
-			/* Steam is offset by -4 units */
-			SB(this->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT, VE_OFFSET_CENTRE - 4);
+	if (this->type == VEH_TRAIN) {
+		if (e->u.rail.visual_effect != 0) {
+			this->vcache.cached_vis_effect = e->u.rail.visual_effect;
 		} else {
-			/* Diesel fumes and sparks come from the centre */
-			SB(this->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT, VE_OFFSET_CENTRE);
+			Train *t = Train::From(this);
+			if (t->IsWagon() || t->IsArticulatedPart()) {
+				/* Wagons and articulated parts have no effect by default */
+				SetBit(this->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
+			} else if (e->u.rail.engclass == 0) {
+				/* Steam is offset by -4 units */
+				SB(this->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT, VE_OFFSET_CENTRE - 4);
+			} else {
+				/* Diesel fumes and sparks come from the centre */
+				SB(this->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT, VE_OFFSET_CENTRE);
+			}
 		}
+	} else {
+		/* Non-trains do not have a visual effect by default. */
+		SetBit(this->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
 	}
 
 	/* Check powered wagon / visual effect callback */
