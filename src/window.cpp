@@ -2654,12 +2654,15 @@ static int PositionWindow(Window *w, WindowClass clss, int setting)
 	if (w == NULL || w->window_class != clss) {
 		w = FindWindowById(clss, 0);
 	}
+	if (w == NULL) return 0;
 
+	int old_left = w->left;
 	switch (setting) {
 		case 1:  w->left = (_screen.width - w->width) / 2; break;
 		case 2:  w->left = _screen.width - w->width; break;
 		default: w->left = 0; break;
 	}
+	if (w->viewport != NULL) w->viewport->left += w->left - old_left;
 	SetDirtyBlocks(0, w->top, _screen.width, w->top + w->height); // invalidate the whole row
 	return w->left;
 }
@@ -2684,6 +2687,17 @@ int PositionStatusbar(Window *w)
 {
 	DEBUG(misc, 5, "Repositioning statusbar...");
 	return PositionWindow(w, WC_STATUS_BAR, _settings_client.gui.statusbar_pos);
+}
+
+/**
+ * (Re)position news message window at the screen.
+ * @param w Window structure of the news message window, may also be \c NULL.
+ * @return X coordinate of left edge of the repositioned news message.
+ */
+int PositionNewsMessage(Window *w)
+{
+	DEBUG(misc, 5, "Repositioning news message...");
+	return PositionWindow(w, WC_NEWS_WINDOW, _settings_client.gui.statusbar_pos);
 }
 
 
@@ -2737,7 +2751,7 @@ void RelocateAllWindows(int neww, int newh)
 
 			case WC_NEWS_WINDOW:
 				top = newh - w->height;
-				left = (neww - w->width) >> 1;
+				left = PositionNewsMessage(w);
 				break;
 
 			case WC_STATUS_BAR:

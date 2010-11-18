@@ -328,6 +328,8 @@ struct NewsWindow : Window {
 				nvp->disp_flags |= ND_SHADE_DIMMED;
 			}
 		}
+
+		PositionNewsMessage(this);
 	}
 
 	void DrawNewsBorder(const Rect &r) const
@@ -342,7 +344,7 @@ struct NewsWindow : Window {
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
-		Point pt = { (_screen.width - max(sm_width, desc->default_width)) / 2, _screen.height };
+		Point pt = { 0, _screen.height };
 		return pt;
 	}
 

@@ -22,6 +22,7 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner);
 void ResizeWindow(Window *w, int x, int y);
 int PositionMainToolbar(Window *w);
 int PositionStatusbar(Window *w);
+int PositionNewsMessage(Window *w);
 
 int GetMainViewTop();
 int GetMainViewBottom();

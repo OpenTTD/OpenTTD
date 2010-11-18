@@ -693,7 +693,10 @@ static bool v_PositionMainToolbar(int32 p1)
 /** Reposition the statusbar as the setting changed. */
 static bool v_PositionStatusbar(int32 p1)
 {
-	if (_game_mode != GM_MENU) PositionStatusbar(NULL);
+	if (_game_mode != GM_MENU) {
+		PositionStatusbar(NULL);
+		PositionNewsMessage(NULL);
+	}
 	return true;
 }
 
