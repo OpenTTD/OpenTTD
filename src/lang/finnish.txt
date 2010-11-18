@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}EI
 STR_ABBREV_ALL                                                  :{TINYFONT}KAIKKI
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} matkustajaa
-STR_BAGS                                                        :{COMMA} säkkiä
-STR_TONS                                                        :{COMMA} tonnia
-STR_LITERS                                                      :{COMMA} litraa
-STR_ITEMS                                                       :{COMMA} erää
-STR_CRATES                                                      :{COMMA} laatikkoa
+STR_PASSENGERS                                                  :{COMMA} matkustaja{P "" a}
+STR_BAGS                                                        :{COMMA} säkki{P "" ä}
+STR_TONS                                                        :{COMMA} tonni{P "" a}
+STR_LITERS                                                      :{COMMA} litra{P "" a}
+STR_ITEMS                                                       :{COMMA} erä{P "" ä}
+STR_CRATES                                                      :{COMMA} laatikko{P "" a}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tummansininen
@@ -1090,7 +1090,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Salli m
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Kaupungin omistamien teiden, siltojen, jne. raivaaminen sallittu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Erittäin pitkien junien rakentaminen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Veturin savun/kipinöiden määrä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Kulkuneuvon savun/kipinöiden määrä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ei yhtään
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Alkuperäinen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistinen

@@ -2586,7 +2586,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<neplatný prů
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}
 STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Shoda
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Čistý filtr
-STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Vypněte shodu když porovnáváte s filtrem
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Přepne rozlišování velikosti písmen při filtrování popisků
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Vyčisti filtr
 
 # Sign window

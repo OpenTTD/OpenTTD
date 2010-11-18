@@ -234,7 +234,6 @@ STR_TONS                                                        :{COMMA} tonna
 STR_LITERS                                                      :{COMMA} liter
 STR_ITEMS                                                       :{COMMA} darab
 STR_CRATES                                                      :{COMMA} láda
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :egyéb
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Sötétkék
@@ -883,7 +882,7 @@ STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} elmúlt évi profitja {CURRENCY} volt
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Hibás átalakítási utasítás miatt {VEHICLE} megállt
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Az automata felújítás sikertelen volt {VEHICLE}{}{STRING}
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Az automatikus járműfelújítás sikertelen volt {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Új {STRING} elérhető!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
@@ -1006,6 +1005,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Jelöld 
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Képernyő felbontás
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Válaszd ki, milyen felbontást szeretnél a játékhoz
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :egyéb
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Képmentés formátuma
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Válaszd ki milyen formátumú képmentést szeretnél
@@ -1217,17 +1217,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :minden járműr
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Figyelmeztetés veszteséges jármű esetén: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Járművek sosem avulnak el: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatikusan felújítja a járművet ha elöregedik: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autom. járműfelújítás {ORANGE}{STRING}{LTBLUE} hónappal a max. életkora előtt/után
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Autom. felújításhoz szükséges min. pénz: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Lebegési események késése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatikus járműfelújítás {ORANGE}{STRING}{LTBLUE} hónappal a max. életkora előtt/után
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Automatikus járműfelújításhoz szükséges min. pénz: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING} másodperc
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Lebegési események késése: {ORANGE}{STRING} másodperc
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Lebegési események késése: {ORANGE}kikapcsolva
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mutassa a település lakosságát a feliratban: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Terep generálás: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Eredeti
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Olajfinomítók max. távolsága a szélektől: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Olajfinomítók max. távolsága a térkép határaitól: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Hóhatár magassága: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}A terep durvasága (csak TerraGenesisnél) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Nagyon sima
@@ -2386,7 +2386,7 @@ STR_MAPGEN_VARIETY                                              :{BLACK}Változa
 STR_MAPGEN_GENERATE                                             :{WHITE}Generál
 
 # Strings for map borders at game generation
-STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Térkép szélei:
+STR_MAPGEN_BORDER_TYPE                                          :{BLACK}Térkép határai:
 STR_MAPGEN_NORTHWEST                                            :{BLACK}Északnyugat
 STR_MAPGEN_NORTHEAST                                            :{BLACK}Északkelet
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}Délkelet
@@ -3188,6 +3188,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacit�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} átalakítása
 STR_REFIT_TITLE                                                 :{GOLD}Átalakítás, hogy szállíthasson:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Új kapacitás: {GOLD}{CARGO}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Új kapacitás: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Válaszd ki a vonat által szállítandó rakományt
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Válaszd ki a közúti jármű által szállítandó rakományt
@@ -3507,7 +3508,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}{STRING
 
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Kilóg a térképről
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Túl közel van a térkép széléhez
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Túl közel van a térkép határához
 STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nincs elég pénzed - {CURRENCY} kellene
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Sima talaj szükséges
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Rossz irányba lejt a föld
@@ -3558,7 +3559,7 @@ STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nem lehe
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nem nevezheted át a várost...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nem építhetsz ide várost...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Nem növelhető város...
-STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... túl közel van a térkép széléhez
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... túl közel van a térkép határához
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... túl közel van egy másik településhez
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... túl sok a település
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nincs több hely a térképen
@@ -3580,7 +3581,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... csak
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... csak sivatagban építhető
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... csak településen építhető
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... csak alacsony terepen építhető
-STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... csak a térkép széléhez közel építhető
+STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... csak a térkép határaihoz közel építhető
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... erdő csak a hóhatár fölé ültethető
 
 # Station construction related errors
@@ -3668,7 +3669,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Rossz járműte
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} túl hosszú a csere után
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nincsenek automata járműfelújítási szabályok alkalmazva.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nincsenek automatikus járműfelújítási szabályok alkalmazva.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pénzlimit)
 
 # Rail construction errors

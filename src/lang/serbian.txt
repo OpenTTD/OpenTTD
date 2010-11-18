@@ -353,12 +353,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NŠT
 STR_ABBREV_ALL                                                  :{TINYFONT}SVE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} putnika
-STR_BAGS                                                        :{COMMA} džakova
-STR_TONS                                                        :{COMMA} tona
-STR_LITERS                                                      :{COMMA} litara
-STR_ITEMS                                                       :{COMMA} komada
-STR_CRATES                                                      :{COMMA} sanduka
+STR_PASSENGERS                                                  :{COMMA} putnik{P "" a a}
+STR_BAGS                                                        :{COMMA} džak{P "" a ova}
+STR_TONS                                                        :{COMMA} ton{P a e a}
+STR_LITERS                                                      :{COMMA} lit{P ra e ara}
+STR_ITEMS                                                       :{COMMA} komad{P "" a a}
+STR_CRATES                                                      :{COMMA} sanduk{P "" a a}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tamno plava
@@ -1348,17 +1348,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :sva
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Upozorenje ukoliko vozilo pravi gubitke: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozila su uvek dostupna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatksa zamena kada vozilo ostari: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatska zamena nakon {ORANGE}{STRING}{LTBLUE} meseci po ostarenju
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatska zamena nakon {ORANGE}{STRING}{LTBLUE} mesec{P 0:1 "" a i} pre/posle zastarenja
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Najmanja potrebna količina novca za zamenu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje ispisa poruka o grešci: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Odlaganje događaja pri zadržavanju pokazivača: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje ispisa poruka o grešci: {ORANGE}{STRING} sekund{P 0:1 a e i}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Odlaganje događaja pri zadržavanju pokazivača: {ORANGE}{STRING} sekund{P a e i}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Odlaganje događaja pri zadržavanju pokazivača: {ORANGE}isključeno
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikazivanje broja populacije pored naziva naselja: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Oblikovanje reljefa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originalno
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Neveća udaljenost Naftnih Rafinerija od ivica terena {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Neveća udaljenost Naftnih Rafinerija od ivica terena: {ORANGE}{STRING} pločic{P 0:1 a e a}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Nivo snežnog pokrivača: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Vrste terena (samo za TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ravnomerana
@@ -1463,7 +1463,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Početn
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Uključena glatka ekonomija (više, manjih promena): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Dozvoljena kupovina deonica drugih preduzeća: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Procenat konačne zarade koji se isplaćuje posrednicima: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tokom povlačenja, signalizacija se postavljaja na svakih: {ORANGE}{STRING} pločoca
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tokom povlačenja, signalizacija se postavljaja na svakih: {ORANGE}{STRING} pločic{P 0:1 e e a}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatsko postavljanje semafora do: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Omogućena traka za signalizaciju:{ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Uobičajna vrsta signalizacije za izgradnju: {ORANGE}{STRING}
@@ -3015,7 +3015,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Brzina: 
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena održavanja: {GOLD}{CURRENCY}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Nosivost: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(prepravljiv)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektovan: {GOLD}{NUM}{BLACK} Životni vek: {GOLD}{COMMA} godina
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Projektovan: {GOLD}{NUM}{BLACK} Životni vek: {GOLD}{COMMA} godin{P a e a}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Najviša pouzdanost: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Težina: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -3312,7 +3312,7 @@ STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Naziv le
 STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Ukupan kapacitet ovog voza:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Ukupana nosivost ovog voza:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 
@@ -3335,6 +3335,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Nosivost
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prepravljanje)
 STR_REFIT_TITLE                                                 :{GOLD}Izaberite vrstu tereta za prevoz:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova nosivost: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Označite vrstu tovara za prepravljanje voza
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Označite vrstu tovara za prepravljanje drumskog vozila

@@ -291,12 +291,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}НЕ�
 STR_ABBREV_ALL                                                  :{TINYFONT}Все
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} пассажиров
-STR_BAGS                                                        :{COMMA} багажа
-STR_TONS                                                        :{COMMA} тонн
-STR_LITERS                                                      :{COMMA} литров
-STR_ITEMS                                                       :{COMMA} штук
-STR_CRATES                                                      :{COMMA} ящиков
+STR_PASSENGERS                                                  :{COMMA} пассажир{P "" а ов}
+STR_BAGS                                                        :{COMMA} меш{P ок ка ков}
+STR_TONS                                                        :{COMMA} тонн{P а ы ""}
+STR_LITERS                                                      :{COMMA} литр{P "" а ов}
+STR_ITEMS                                                       :{COMMA} штук{P а и ""}
+STR_CRATES                                                      :{COMMA} ящик{P "" а ов}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Тёмно-синий
@@ -1310,7 +1310,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Авт�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Замена через {ORANGE}{STRING} месяц{P 0:1 "" а ев}{LTBLUE} после истечения срока службы
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Сумма, необходимая для автозамены: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Макс. длительность сообщений об ошибке: {ORANGE}{STRING} сек.
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Задержка появления подсказки при наведении курсора: {ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Задержка появления подсказки при наведении курсора: {ORANGE}{STRING} секунд{P 0:1 а ы ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Задержка появления подсказки при наведении курсора: {ORANGE}отключена
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показывать количество жителей города в названии: {ORANGE}{STRING}
 

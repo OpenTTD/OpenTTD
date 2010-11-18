@@ -1323,8 +1323,8 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Hệ s�
 STR_CONFIG_SETTING_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Bỏ đi những khúc đường ngớ ngẩn khi xây dựng đường: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_GUI                                          :{ORANGE}Giao Diện
-STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Xây Đựng
-STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Ph.Tiện
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Xây Dựng
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Phương Tiện
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Ga, bến, cảng
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Kinh Tế
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Đối Thủ
@@ -3353,14 +3353,14 @@ STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Tất c�
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Nhân vật người
 STR_AI_CONFIG_RANDOM_AI                                         :AI Ngẫu Nhiên
 
-STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Di chuyển lên trên
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Di Chuyển Lên Trên
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Di chuyển AI lên trên danh sách
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Di chuyển xuống
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Di Chuyển Xuống
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Di chuyển AI xuống dưới danh sách
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Chọn AI
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Nạp một AI khác
-STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Cấu hình
+STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Cấu Hình
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Cấu hình tham số cho AI
 
 # Available AIs window

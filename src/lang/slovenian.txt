@@ -207,13 +207,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}VSE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} potniki
-STR_BAGS                                                        :{COMMA} vreč
-STR_TONS                                                        :{COMMA} ton
-STR_LITERS                                                      :{COMMA} litrov
-STR_ITEMS                                                       :{COMMA} glav
-STR_CRATES                                                      :{COMMA} palet
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
+STR_PASSENGERS                                                  :{COMMA} potnik{P "" a i ov}
+STR_BAGS                                                        :{COMMA} vreč{P a i e ""}
+STR_TONS                                                        :{COMMA} ton{P a i e ""}
+STR_LITERS                                                      :{COMMA} lit{P er ra ri rov}
+STR_ITEMS                                                       :{COMMA} glav{P a i e ""}
+STR_CRATES                                                      :{COMMA} palet{P a i e ""}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Temno modra
@@ -860,7 +859,7 @@ STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} je izgubljen.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} povzroča izgubo. Lanski dobiček je bil {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} je ustavljen zaradi neuspelega ukaza za predelavo
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} je ustavljen zaradi neuspele preureditve
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Samoobnova ni uspela na {VEHICLE}{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Novo! {STRING} sedaj na razpolago!
@@ -984,13 +983,14 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Označi 
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ločljivost
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Izberi ločljivost zaslona
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format zajema slike
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Izberi format zajema slike
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni komplet grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Izberi osnovni komplet grafik za uporabo
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manjkajoč{P a i e e} /okvarjen{P a i e e} datotek{P a i e e}
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manjkajoč{P a i e ih}/okvarjen{P a i e ih} datotek{P a i e ""}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Dodatne informacije o osnovnem kompletu grafik
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Osnovni komplet zvokov
@@ -1132,7 +1132,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dovoli 
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnični območni zajem postaj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest, mostov, itd.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Omogoči gradnjo zelo dolgih vlakov: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/isker lokomotiv: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/isker vozil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Brez
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originalno
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistično
@@ -1195,17 +1195,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :vseh vozil
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Opozori, če je prihodek vozila negativen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozila nikoli ne dotrajajo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Samoobnovi vozila, ko se postarajo: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Samoobnovi, ko je vozilo {ORANGE}{STRING}{LTBLUE} mesecev pred/po največji starosti
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Samoobnovi, ko je vozilo {ORANGE}{STRING}{LTBLUE} mesec{P "" a e ev} pred/po največji starosti
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Samoobnovi najmanj potrebnega denarja za obnovo: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje sporočila o napaki: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zamik lebdečih dogodkov: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje sporočila o napaki: {ORANGE}{STRING} sekund{P a i e ""}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zamik lebdečih dogodkov: {ORANGE}{STRING} sekund{P a i e ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Zamik lebdečih dogodkov: {ORANGE}onemogočeno
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikaz števila prebivalcev ob imenu mesta: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Urejevalnik terena: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Največja oddaljenost od roba za naftne rafinerije {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Največja oddaljenost od roba za naftne rafinerije: {ORANGE}{STRING} plošč{P a i e ""}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Nadmorska višina snežne odeje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Valovitost terena (samo TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Zelo zglajen
@@ -1310,7 +1310,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Začetn
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Omogoči gladko ekonomijo (več manjših sprememb): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Dovoli kupovanje delnic od drugih podjetij: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Odstotek profita, ki se plača na prestopnih prevozih: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Med vlečenjem postavi signale vsakih: {ORANGE}{STRING} ploščic
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Med vlečenjem postavi signale vsak{P o i e ih}: {ORANGE}{STRING} ploščic{P o i e ""}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Samodejno postavi semaforje pred: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Omogoči vmesnik signalov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Privzet tip signalov za gradnjo: {ORANGE}{STRING}
@@ -1535,7 +1535,7 @@ STR_FACE_FACECODE                                               :{BLACK}Obraz ig
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Prikaži in/ali nastavi številko obraza igralca
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Prikaži in/ali nastavi številko obraza igralca
 STR_FACE_FACECODE_SET                                           :{WHITE}Nova koda številke obraza je nastavljena.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Nemogoča nastavitev številke obraza igralca - izbor mogoč med 0 in 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Ni mogoče nastaviti številke obraza igralca - izbor mogoč med 0 in 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Shrani
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Shrani priljubljen obraz
 STR_FACE_SAVE_DONE                                              :{WHITE}Ta obraz bo shranjen kot tvoj priljubljen v konfiguracijo OpenTTD
@@ -1795,12 +1795,12 @@ STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Vpiši t
 STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Ni najdenih mrežnih naprav ali ni aktiviran ENABLE_NETWORK
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Ni mogoče najti mrežnih iger
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Strežnik ni odgovoril zahtevi
-STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nemogoča povezava zaradi neskladja datotek NewGRF
+STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Povezava ni mogoča zaradi neskladja datotek NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Sinhronizacija mrežne igre ni uspela
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Povezava mrežne igre je padla
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Ni mogoče naložiti shranjene igre
-STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nemogoč zagon strežnika
-STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nemogoča povezava
+STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Strežnika ni mogoče zagnati
+STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Povezava ni mogoča
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Povezava #{NUM} je potekla
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Narejena je bila napaka protokola in povezava je bila prekinjena
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Različica tega gosta je neskladna s strežnikovo razlicico
@@ -1814,7 +1814,7 @@ STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Pošilja
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :splošna napaka
 STR_NETWORK_ERROR_CLIENT_DESYNC                                 :desinhronizacijska napaka
-STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :nemogoče nalaganje zemljevida
+STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :ni mogoče naložiti zemljevida
 STR_NETWORK_ERROR_CLIENT_CONNECTION_LOST                        :povezava prekinjena
 STR_NETWORK_ERROR_CLIENT_PROTOCOL_ERROR                         :napaka protokola
 STR_NETWORK_ERROR_CLIENT_NEWGRF_MISMATCH                        :NewGRF neskladje
@@ -2542,7 +2542,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremeni
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' , ki pripada družbi '{COMPANY}', ima neveljavno dolžino. Najbrž vsebuje probleme povezane z NewGRF. Igra se lahko sesuje.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o predelavi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o preureditvi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' hrošč je povzročil neskončen povratni ciklus proizvodnje.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
@@ -2862,14 +2862,14 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hitrost:
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena delovanja: {GOLD}{CURRENCY}/leto
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Zmogljivost: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(spremenljivo)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zasnova: {GOLD}{NUM}{BLACK} Življ. doba: {GOLD}{COMMA} let
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zasnova: {GOLD}{NUM}{BLACK} Življ. doba: {GOLD}{COMMA} let{P o i a ""}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. zanesljivost: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Teža: {GOLD}{WEIGHT_S} ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hitrost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Zmogljivost: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pogonski vagoni: {GOLD}+{POWER}{BLACK} Teža: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Nadgradljivo za: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Preureditve za: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Vse vrste tovora
 STR_PURCHASE_INFO_ALL_BUT                                       :Vse, razen {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Največja vlečna moč: {GOLD}{FORCE}
@@ -3046,10 +3046,10 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}To bo ku
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Prisili vlak, naj nadaljuje brez čakanja signalov
 
-STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Predelaj vlak za tovor druge vrste
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Predelaj vozilo za prevoz druge vrste tovora
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Predelaj ladjo, da bo lahko sprejela drugačen tip tovora
-STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Predelaj tovorni prostor letala za drugačen tovor
+STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Preuredi tovorni prostor vlaka za prevoz druge vrste tovora
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Preuredi cestno vozilo za prevoz druge vrste tovora
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Preuredi tovorni prostor ladje za prevoz druge vrste tovora
+STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Preuredi tovorni prostor letala za prevoz druge vrste tovora
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Obrni smer vlaka
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Prisilno obrni vozilo
@@ -3163,24 +3163,25 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Prikaži
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Zmogljivost: {LTBLUE}
 
 # Vehicle refit
-STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Predelaj)
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Preuredi)
 STR_REFIT_TITLE                                                 :{GOLD}Izberi tip tovora:
-STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova zmogljivost: {GOLD}{CARGO}{}{BLACK}Cena predelave: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova zmogljivost: {GOLD}{CARGO}{}{BLACK}Cena preureditve: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova zmogljivost: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cena preureditve: {GOLD}{CURRENCY}
 
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Izberi predelavo za tip tovora
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Izberi nov tip tovora za prevoz z vlakom
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Izberi tip tovora, ki ga bo vozilo prevažalo
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Izberi tip tovora
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Izberi tip tovora
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Predelaj vlak
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Predelaj cestno vozilo
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Preuredi vlak
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Preuredi cestno vozilo
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Preuredi ladjo
-STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Predelaj letalo
+STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Preuredi letalo
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Predelaj vlak za označen tip tovora
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Predelaj cestno vozilo za prevoz označenega tipa tovora
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Preuredi tovorni prostor vlaka za označen tip tovora
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Preuredi cestno vozilo za prevoz označenega tipa tovora
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Preuredi tovorni prostor ladje za izbrani tovor
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Predelaj letalo za izbran tovor
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Preuredi tovorni prostor letala za izbran tovor
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Ukazi)
@@ -3216,8 +3217,8 @@ STR_ORDER_DROP_TRANSFER                                         :Pretovori
 STR_ORDER_DROP_NO_UNLOADING                                     :Ne razloži
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Spremeni način praznjenja označenega ukaza
 
-STR_ORDER_REFIT                                                 :{BLACK}Predelaj
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Izberi predelavo za vrsto tovora, ki ga želiš. Ctrl+Klik za odstranitev ukaza predelave
+STR_ORDER_REFIT                                                 :{BLACK}Preuredi
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Izberi preureditev za vrsto tovora, ki ga želiš. Ctrl+Klik za odstranitev ukaza preureditve
 
 STR_ORDER_SERVICE                                               :{BLACK}Servis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vedno pojdi
@@ -3276,8 +3277,8 @@ STR_ORDER_SHIP_DEPOT                                            :Ladijska garaž
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Predelaj za {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Predelava v {STRING} in zaustavitev)
+STR_ORDER_REFIT_ORDER                                           :(Preuredi za {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :(Preuredi v {STRING} in zaustavi)
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -3319,7 +3320,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez
 STR_TIMETABLE_TRAVEL_FOR                                        :Potuj za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :in ostani za {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :s potovanjem za {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} d{P an neva i i}
+STR_TIMETABLE_DAYS                                              :{COMMA} d{P an neva nevi ni}
 STR_TIMETABLE_TICKS                                             :{COMMA} pik{P a i e ""}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Ta urnik bo potreboval {STRING} do zaključka
@@ -3444,15 +3445,15 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Predvide
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Shranjevanje poteka,{}Prosim počakaj, da se zaključi!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Samodejno shranjevanje spodletelo
-STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Nemogoče branje pogona
+STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Pogona ni mogoče prebrati
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Shranjevanje igre ni uspelo{}{STRING}
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Nemogoče brisanje datoteke
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Datoteke ni mogoče zbrisati
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Nalaganje igre ni uspelo{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna napaka: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Napaka v shranjeni igri - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Igra je bila shranjena z novejso razlicico
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datoteke ni mozno brati
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :V datoteko ni mozno pisati
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datoteke ni mogoče brati
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :V datoteko ni mogoče pisati
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Preverba podatkov ni uspela
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ni na voljo>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni.
@@ -3463,7 +3464,7 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... ni m
 
 STR_ERROR_PNGMAP                                                :{WHITE}Ni mogoče naložiti ozemlja iz PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... datoteke ni.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nemogoča pretvorba vrste slike. Potrebuješ 8 ali 24-bit PNG sliko.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... ni mogoče pretvoriti vrste slike. Potrebna je 8 ali 24-bit PNG slika.
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... nekaj je narobe. (najbrž nepopolna datoteka)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Ni mogoče naložiti pokrajine iz formata BMP...
@@ -3491,7 +3492,7 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Potrebno
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Teren nagnjen v napačno smer
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Ni izvedljivo...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Najprej mora biti stavba porušena
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Nemogoče čiščenje tega področja...
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ni mogoče očistiti tega področja...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... neprimerna lokacija
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... že zgrajeno
 STR_ERROR_OWNED_BY                                              :{WHITE}... v lasti {STRING}
@@ -3508,7 +3509,7 @@ STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}odkrit s
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Tukaj ni možen dvig terena...
-STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Tukaj ni možno nižanje terena...
+STR_ERROR_CAN_T_LOWER_LAND_HERE                                 :{WHITE}Tukaj ni mogoče nižanje terena...
 STR_ERROR_CAN_T_LEVEL_LAND_HERE                                 :{WHITE}Tukaj ni mogoče izravnati zemlje...
 STR_ERROR_EXCAVATION_WOULD_DAMAGE                               :{WHITE}Izkop bi lahko poškodoval predor...
 STR_ERROR_ALREADY_AT_SEA_LEVEL                                  :{WHITE}... že na morski gladini
@@ -3526,7 +3527,7 @@ STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... potr
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Ni mogoče odplačati posojila...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Ni mogoča oddaja denarja, ki je izposojen od banke...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Ne moreš kupiti podjetja...
-STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nemogoča gradnja sedeža podjetja...
+STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Ni mogoče zgraditi sedeža podjetja...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Ni mogoče kupiti 25% delnic tega podjetja...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Ni mogoče prodati 25% delnic tega podjetja...
 STR_ERROR_PROTECTED                                             :{WHITE}Podjetje še ni dovolj staro, da bi lahko trgovalo z lastnimi delnicami...
@@ -3535,7 +3536,7 @@ STR_ERROR_PROTECTED                                             :{WHITE}Podjetje
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ni mogoče zgraditi mest
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ne moreš preimenovati mesta...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Tukaj ni mogoče zgraditi mesta...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Nemogoče širjenje mesta...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Ni mogoče širiti mesta...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... preblizu roba zemljevida
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... preblizu drugemu mestu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... preveliko število mest
@@ -3548,7 +3549,7 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ni p
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... preveliko število industrij
 STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Ni mogoče zgraditi industrij...
-STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tukaj ni možno zgraditi {STRING}...
+STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}Tukaj ni mogoče zgraditi {STRING}...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Tukaj ni mogoče zgraditi tega tipa industrije...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... preblizu drugi industriji
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... najprej je potrebno zgraditi mesto
@@ -3562,11 +3563,11 @@ STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... mogo
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... gozd je mogoče posaditi samo nad nivojem snežne odeje
 
 # Station construction related errors
-STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Nemogoča gradnja žel. postaje...
-STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Nemogoča gradnja avtobusne postaje...
-STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Nemogoča gradnja tovorne postaje...
-STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Nemogoča gradnja potniške tramvaj postaje...
-STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nemogoča gradnja tovorne tramvaj postaje...
+STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Tukaj ni mogoče zgraditi železniške postaje...
+STR_ERROR_CAN_T_BUILD_BUS_STATION                               :{WHITE}Tukaj ni mogoče zgraditi avtobusne postaje...
+STR_ERROR_CAN_T_BUILD_TRUCK_STATION                             :{WHITE}Tukaj ni mogoče zgraditi tovorne postaje...
+STR_ERROR_CAN_T_BUILD_PASSENGER_TRAM_STATION                    :{WHITE}Tukaj ni mogoče zgraditi potniške tramvaj postaje...
+STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Tukaj ni mogoče zgraditi tovorne tramvaj postaje...
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Tukaj ni mogoče zgraditi pomola...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Tukaj ni mogoče zgraditi letališča...
 
@@ -3590,10 +3591,10 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... post
 # Station destruction related errors
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}Ni mogoče odstraniti dela postaje...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Najprej moraš odstraniti železniško postajo
-STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Ni mogoča odstranitev avtobusne postaje...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Ni mogoča odstranitev tovorne postaje...
-STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Nemogoča odstranitev potniške tramvaj postaje...
-STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Nemogoča odstranitev tovorne tramvaj postaje...
+STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}Tukaj ni mogoče odstraniti avtobusne postaje...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Tukaj ni mogoče odstraniti tovorne postaje...
+STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Tukaj ni mogoče odstraniti potniške tramvaj postaje...
+STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Tukaj ni mogoče odstraniti tovorne tramvaj postaje...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Najprej moraš odstraniti cestno postajo
 STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... ni postaje
 
@@ -3619,7 +3620,7 @@ STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boja
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bojo uporablja drugo podjetje!
 
 # Depot related errors
-STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Nemogoča gradnja žel. garaže...
+STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Tukaj ni mogoče zgraditi železniške garaže...
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Tukaj ni mogoče zgraditi garaže...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Tukaj ni mogoče zgraditi tramvaj garaže...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Tukaj ni mogoče zgraditi ladjedelnice...
@@ -3656,10 +3657,10 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ni prime
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Najprej moraš odstraniti tračnice
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je enosmerna ali blokirana
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Istonivojna križišča niso dovoljena za ta tip železnice
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nemogoča gradnja signalov...
-STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nemogoča gradnja tirov...
-STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemogoča odstranitev tirov...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nemogoča odstranitev signalov...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Tukaj ni mogoče zgraditi signalov...
+STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Tukaj ni mogoče zgraditi železniških tirov...
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Tukaj ni mogoče odstraniti železniških tirov...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Tukaj ni mogoče odstraniti signalov...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Tukaj ni mogoče spremeniti vrste signalov...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... ni železniške proge
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... ni signalov
@@ -3669,9 +3670,9 @@ STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Tukaj ni
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Najprej moraš odstraniti cesto
 STR_ERROR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                      :{WHITE}... enosmerne poti ne morejo imeti odcepov
-STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Nemogoča gradnja ceste...
+STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Tukaj ni mogoče zgraditi ceste...
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Tukaj ni mogoče zgraditi tramvaja...
-STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nemogoča odstranitev ceste...
+STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Tukaj ni mogoče odstraniti ceste...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tukaj ni mogoče odstraniti tramvaja...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ni ceste
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ni tramvaj proge
@@ -3706,23 +3707,23 @@ STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Lokacija
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Najprej moraš porušiti predor
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Obstoječi predor v napoto
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Predor se konča izven ozemlja
-STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nemogoč izkop zaključka predora na drugi strani
+STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ni mogoče izkopati zaključka predora na drugi strani
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... preveč objektov
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Ni mogoče zgraditi objekta...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Ovira na poti
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sedež podjetja na poti
-STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Nemogoč nakup tega zemljišča...
+STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Ni mogoče kupiti tega zemljišča...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... imaš ga že v lasti!
 
 # Group related errors
-STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nemogoče ustvariti skupino...
-STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nemogoče brisanje te skupine...
-STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nemogoče preimenovanje skupine...
-STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nemogoča odstranitev vseh vozil iz te skupine...
-STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nemogoče dodati vozilo v to skupino...
-STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nemogoče dodati izmenljivo vozilo v to skupino...
+STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Ni mogoče ustvariti skupine...
+STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Ni mogoče zbrisati te skupine...
+STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Ni mogoče preimenovati skupine...
+STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Ni mogoče odstraniti vseh vozil iz te skupine...
+STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Ni mogoče dodati vozila v to skupino...
+STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Ni mogoče dodati izmenljivega vozila v skupino...
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vlak v napoto
@@ -3730,10 +3731,10 @@ STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Cestno v
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Ladja v napoto
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Letalo v napoto
 
-STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Nemogoča predelava vlaka...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ni možna predelava cestnega vozila...
+STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Ni mogoče preurediti vlaka...
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ni možna preureditev cestnega vozila...
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Ni mogoče preurediti ladje...
-STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Ni mogoča predelava letala...
+STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Ni mogoča preureditev letala...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Ni mogoče poimenovati vlaka...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Ni mogoče poimenovati cestnega vozila...
@@ -3771,7 +3772,7 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Ladja ni
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Letalo ni na voljo
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Preveč vozil v igri
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ni mogoča sprememba obdobja servisiranja...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Ni mogoče spremeniti obdobja servisiranja...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vozilo je uničeno
 
@@ -3791,8 +3792,8 @@ STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ni mogo�
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Ni mogoče izbrisati ukaza...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Ni mogoče spreminjati ukaza...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Ni možen premik tega ukaza...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nemogoč preskok trenutnega ukaza...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nemogoč preskok na izbran ukaz...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Ni mogoče preskočiti trenutnega ukaza...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Ni mogoče preskočiti na izbran ukaz...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... vozilo ne more do vseh postaj
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vozilo ne more do tiste postaje
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... vozilo, ki ima skupni ukaz, ne more do tiste postaje
@@ -3802,7 +3803,7 @@ STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Ni mogo�
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... predaleč od prejšnjega cilja
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Nemogoče določiti časa vozilu...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ni mogoče določiti časa vozilu...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vozila lahko čakajo le na postajah.
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}To vozilo se ne ustavlja na tej postaji.
 
@@ -3810,7 +3811,7 @@ STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}To vozil
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... preveč znakov
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Tukaj ne moreš postaviti znaka...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Ne moreš spremeniti imena znaka...
-STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Nemogoče brisanje znaka...
+STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Ni mogoče zbrisati znaka...
 
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Simulacija, temelječa na Transport Tycoonu Deluxe

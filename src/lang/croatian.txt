@@ -260,13 +260,13 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NI
 STR_ABBREV_ALL                                                  :{TINYFONT}SVE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} putnici
+STR_PASSENGERS                                                  :{COMMA} putnici{P 0:1 "" s}
 STR_PASSENGERS.gen                                              :{COMMA} putnika
-STR_BAGS                                                        :{COMMA} vreće
-STR_TONS                                                        :{COMMA} tone
-STR_LITERS                                                      :{COMMA} litre
-STR_ITEMS                                                       :{COMMA} jedinice
-STR_CRATES                                                      :{COMMA} sanduci
+STR_BAGS                                                        :{COMMA} vreća{P 0:1 "" s}
+STR_TONS                                                        :{COMMA} tona{P 0:1 "" s}
+STR_LITERS                                                      :{COMMA} litra{P 0:1 "" s}
+STR_ITEMS                                                       :{COMMA} predmet{P 0:1 "" s}
+STR_CRATES                                                      :{COMMA} sanduk{P 0:1 "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tamnoplava

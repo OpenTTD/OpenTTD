@@ -167,12 +167,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}TUT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passeggeri
-STR_BAGS                                                        :{COMMA} borse
-STR_TONS                                                        :{COMMA} tonnellate
-STR_LITERS                                                      :{COMMA} litri
-STR_ITEMS                                                       :{COMMA} oggetti
-STR_CRATES                                                      :{COMMA} casse
+STR_PASSENGERS                                                  :{COMMA} passegger{P o i}
+STR_BAGS                                                        :{COMMA} sacc{P o hi}
+STR_TONS                                                        :{COMMA} tonnellat{P a e}
+STR_LITERS                                                      :{COMMA} litr{P o i}
+STR_ITEMS                                                       :{COMMA} oggett{P o i}
+STR_CRATES                                                      :{COMMA} cass{P a e}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Blu scuro

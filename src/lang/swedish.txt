@@ -166,12 +166,11 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ALLA
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passagerare
-STR_BAGS                                                        :{COMMA} väskor
+STR_BAGS                                                        :{COMMA} väsk{P a or}
 STR_TONS                                                        :{COMMA} ton
 STR_LITERS                                                      :{COMMA} liter
 STR_ITEMS                                                       :{COMMA} föremål
-STR_CRATES                                                      :{COMMA} lådor
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
+STR_CRATES                                                      :{COMMA} låd{P a or}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mörkblå
@@ -284,6 +283,7 @@ STR_SORT_BY_RATING_MIN                                          :Lägsta rating 
 STR_SORT_BY_ENGINE_ID                                           :MotorID (klassisk sortering)
 STR_SORT_BY_COST                                                :Kostnad
 STR_SORT_BY_POWER                                               :Kraft
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Dragkraft
 STR_SORT_BY_INTRO_DATE                                          :Introduktionsdatum
 STR_SORT_BY_RUNNING_COST                                        :Driftskostnad
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Kraft/Driftkostnad
@@ -941,6 +941,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Kryssa i
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skärmupplösning
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Välj skärmupplösning att använda
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annan
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skärmdumpsformat
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Välj filformat för skärmdump
@@ -1152,17 +1153,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :ja, på alla fo
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Varna om ett fordons inkomst är negativ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Fordon blir aldrig gamla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Förnya fordon automatiskt när dom blir gamla: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Förnya automatiskt fordon {ORANGE}{STRING}{LTBLUE} månader före/efter maximal ålder
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Förnya automatiskt fordon {ORANGE}{STRING}{LTBLUE} månad{P 0:1 "" er} före/efter maximal ålder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minst mängd pengar för auto-förnyelse av fordon: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Fördröjning av hover event: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING} sekund{P 0:1 "" er}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Fördröjning av hover event: {ORANGE}{STRING} sekund{P 0:1 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Fördröjning av hover event: {ORANGE}avstängd
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Visa invånarantal i stadsnamnet: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max avstånd ifrån kanten för oljeraffinaderier {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max avstånd ifrån kanten för oljeraffinaderier: {ORANGE}{STRING} rut{P 0:1 a or}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Snölinjeshöjd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Terrängens svårhetsgrad (TerraGenesis endast) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väldigt lätt
@@ -1302,6 +1303,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Positio
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Vänster
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centrerad
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Höger
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Statusradens position: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Vänster
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Mitten
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Höger
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fönstersnäppsradie: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fönstersnäppsradie: {ORANGE}avaktiverad
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Fönstrens mjuka gräns (Inte Klistrade): {ORANGE}{STRING}
@@ -3119,6 +3124,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Anpassa)
 STR_REFIT_TITLE                                                 :{GOLD}Välj godstyp att frakta:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Anpassningens kostnad: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapacitet: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kostnad för anpassning: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Välj godstyp för tåget att bära
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Välj lasttyp för fordon
