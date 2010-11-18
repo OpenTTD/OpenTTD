@@ -84,6 +84,11 @@ private:
 	 */
 	void ScanAIDir();
 
+	/**
+	 * Reset all allocated lists.
+	 */
+	void Reset();
+
 	AIInfo *info_dummy;
 	AIInfoList info_list;
 	AIInfoList info_single_list;

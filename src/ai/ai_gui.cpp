@@ -191,6 +191,9 @@ struct AIListWindow : public Window {
 	virtual void OnInvalidateData(int data)
 	{
 		this->vscroll->SetCount((int)this->ai_info_list->size() + 1);
+
+		/* selected goes from -1 .. length of ai list - 1. */
+		this->selected = min(this->selected, this->vscroll->GetCount() - 2);
 	}
 };
 

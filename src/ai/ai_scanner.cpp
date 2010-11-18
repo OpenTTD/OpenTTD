@@ -22,6 +22,8 @@
 
 void AIScanner::RescanAIDir()
 {
+	/* Get rid of information of old AIs. */
+	this->Reset();
 	this->ScanScriptDir("info.nut", AI_DIR);
 	this->ScanScriptDir("library.nut", AI_LIBRARY_DIR);
 }
@@ -59,7 +61,7 @@ AIScanner::AIScanner() :
 	AI_CreateAIInfoDummy(this->engine->GetVM());
 }
 
-AIScanner::~AIScanner()
+void AIScanner::Reset()
 {
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
@@ -75,6 +77,15 @@ AIScanner::~AIScanner()
 		free((void *)(*lit).first);
 		delete (*lit).second;
 	}
+
+	this->info_list.clear();
+	this->info_single_list.clear();
+	this->library_list.clear();
+}
+
+AIScanner::~AIScanner()
+{
+	this->Reset();
 
 	delete this->info_dummy;
 }
