@@ -87,6 +87,8 @@ public:
 	/** Free whatever we've allocated */
 	~NetworkContentDownloadStatusWindow()
 	{
+		TarScanner::DoScan();
+
 		/* Tell all the backends about what we've downloaded */
 		for (ContentType *iter = this->receivedTypes.Begin(); iter != this->receivedTypes.End(); iter++) {
 			switch (*iter) {

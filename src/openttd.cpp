@@ -202,6 +202,7 @@ static void ShowHelp()
 	p = BlitterFactoryBase::GetBlittersInfo(p, lastof(buf));
 
 	/* We need to initialize the AI, so it finds the AIs */
+	TarScanner::DoScan();
 	AI::Initialize();
 	p = AI::GetConsoleList(p, lastof(buf));
 	AI::Uninitialize(true);
@@ -572,6 +573,7 @@ int ttd_main(int argc, char *argv[])
 	if (_dedicated_forks) DedicatedFork();
 #endif
 
+	TarScanner::DoScan();
 	AI::Initialize();
 	LoadFromConfig();
 	AI::Uninitialize(true);

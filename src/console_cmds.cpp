@@ -1157,6 +1157,7 @@ DEF_CONSOLE_CMD(ConRescanAI)
 		return true;
 	}
 
+	TarScanner::DoScan();
 	AI::Rescan();
 	InvalidateWindowData(WC_AI_LIST, 0, 1);
 
@@ -1171,6 +1172,7 @@ DEF_CONSOLE_CMD(ConRescanNewGRF)
 		return true;
 	}
 
+	TarScanner::DoScan();
 	ScanNewGRFFiles();
 	InvalidateWindowData(WC_GAME_OPTIONS, 0, 1);
 

@@ -24,6 +24,7 @@
 #include "querystring_gui.h"
 #include "core/geometry_func.hpp"
 #include "newgrf_text.h"
+#include "fileio_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -977,6 +978,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 
 			case SNGRFS_RESCAN_FILES:
 			case SNGRFS_RESCAN_FILES2:
+				TarScanner::DoScan();
 				ScanNewGRFFiles();
 				this->avail_sel = NULL;
 				this->avail_pos = -1;
