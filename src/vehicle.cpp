@@ -1871,7 +1871,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 		default: break;
 	}
 	if (default_effect == VE_DEFAULT) {
-		if (this->type == VEH_TRAIN && Train::From(this)->IsEngine()) {
+		if (this->type == VEH_TRAIN && !(Train::From(this)->IsWagon() || Train::From(this)->IsArticulatedPart())) {
 			if (e->u.rail.engclass == 0) {
 				/* Steam is offset by -4 units */
 				SB(this->vcache.cached_vis_effect, VE_OFFSET_START, VE_OFFSET_COUNT, VE_OFFSET_CENTRE - 4);
@@ -1955,7 +1955,7 @@ void Vehicle::ShowVisualEffect() const
 		}
 
 		if (effect_type == VE_TYPE_DEFAULT) {
-			if (v->type == VEH_TRAIN && Train::From(v)->IsEngine()) {
+			if (v->type == VEH_TRAIN) {
 				/* Use default effect type for engine class. */
 				effect_type = RailVehInfo(v->engine_type)->engclass + 1;
 			} else {
