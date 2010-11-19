@@ -27,6 +27,7 @@
 #include "../company_gui.h"
 #include "../core/random_func.hpp"
 #include "../date_func.h"
+#include "../gui.h"
 #include "../rev.h"
 #include "network.h"
 #include "network_base.h"
@@ -140,6 +141,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 /*static */ void ClientNetworkGameSocketHandler::Send()
 {
 	my_client->Send_Packets();
+	my_client->CheckConnection();
 }
 
 /**
@@ -1031,6 +1033,40 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_COMPANY_UPDATE)
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
+
+/**
+ * Check the connection's state, i.e. is the connection still up?
+ */
+void ClientNetworkGameSocketHandler::CheckConnection()
+{
+	/* Only once we're authorized we can expect a steady stream of packets. */
+	if (this->status < STATUS_AUTHORIZED) return;
+
+	/* It might... sometimes occur that the realtime ticker overflows. */
+	if (_realtime_tick < this->last_packet) this->last_packet = _realtime_tick;
+
+	/* Lag is in milliseconds; 2 seconds are roughly the server's
+	 * "you're slow" threshold (1 game day). */
+	uint lag = (_realtime_tick - this->last_packet) / 1000;
+	if (lag < 2) return;
+
+	/* 10 seconds are (way) more than 4 game days after which
+	 * the server will forcefully disconnect you. */
+	if (lag > 10) {
+		this->NetworkGameSocketHandler::CloseConnection();
+		_switch_mode_errorstr = STR_NETWORK_ERROR_LOSTCONNECTION;
+		return;
+	}
+
+	/* Prevent showing the lag message every tick; just update it when needed. */
+	static uint last_lag = 0;
+	if (last_lag == lag) return;
+
+	last_lag = lag;
+	SetDParam(0, lag);
+	ShowErrorMessage(STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION, STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION, WL_INFO);
+}
+
 
 /* Is called after a client is connected to the server */
 void NetworkClient_Connected()
