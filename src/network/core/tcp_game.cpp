@@ -30,6 +30,7 @@ NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s)
 	this->sock              = s;
 	this->last_frame        = _frame_counter;
 	this->last_frame_server = _frame_counter;
+	this->last_packet       = _realtime_tick;
 }
 
 /**
@@ -69,6 +70,8 @@ NetworkRecvStatus NetworkGameSocketHandler::CloseConnection(bool error)
 NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 {
 	PacketGameType type = (PacketGameType)p->Recv_uint8();
+
+	this->last_packet = _realtime_tick;
 
 	switch (this->HasClientQuit() ? PACKET_END : type) {
 		GAME_COMMAND(PACKET_SERVER_FULL)

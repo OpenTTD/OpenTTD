@@ -1522,14 +1522,23 @@ void NetworkServer_Tick(bool send_frame)
 				if (lag > 3) {
 					/* Client did still not report in after 4 game-day, drop him
 					 *  (that is, the 3 of above, + 1 before any lag is counted) */
-					IConsolePrintF(CC_ERROR,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->client_id);
+					IConsolePrintF(CC_ERROR, cs->last_packet + 3 * DAY_TICKS * MILLISECONDS_PER_TICK > _realtime_tick ?
+							/* A packet was received in the last three game days, so the client is likely lagging behind. */
+								"Client #%d is dropped because the client's game state is more than 4 game-days behind" :
+							/* No packet was received in the last three game days; sounds like a lost connection. */
+								"Client #%d is dropped because the client did not respond for more than 4 game-days",
+							cs->client_id);
 					cs->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
 					continue;
 				}
 
-				/* Report once per time we detect the lag */
-				if (cs->lag_test == 0) {
-					IConsolePrintF(CC_WARNING,"[%d] Client #%d is slow, try increasing *net_frame_freq to a higher value!", _frame_counter, cs->client_id);
+				/* Report once per time we detect the lag, and only when we
+				 * received a packet in the last 2000 milliseconds. If we
+				 * did not receive a packet, then the client is not just
+				 * slow, but the connection is likely severed. Mentioning
+				 * frame_freq is not useful in this case. */
+				if (cs->lag_test == 0 && cs->last_packet + DAY_TICKS * MILLISECONDS_PER_TICK > _realtime_tick) {
+					IConsolePrintF(CC_WARNING,"[%d] Client #%d is slow, try increasing [network.]frame_freq to a higher value!", _frame_counter, cs->client_id);
 					cs->lag_test = 1;
 				}
 			} else {
