@@ -709,6 +709,15 @@ static void HandleString(char *str, bool master)
 	for (tmp = s; *tmp != '\0';) {
 		size_t len = Utf8Validate(tmp);
 		if (len == 0) error("Invalid UTF-8 sequence in '%s'", s);
+
+		WChar c;
+		Utf8Decode(&c, tmp);
+		if (c <= 0x001F || // ASCII control character range
+				(c >= 0xE000 && c <= 0xF8FF) || // Private range
+				(c >= 0xFFF0 && c <= 0xFFFF)) { // Specials range
+			error("Unwanted UTF-8 character U+%04X in sequence '%s'", c, s);
+		}
+
 		tmp += len;
 	}
 
