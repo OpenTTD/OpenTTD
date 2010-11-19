@@ -713,8 +713,6 @@ public:
 	~ErrmsgWindow()
 	{
 		SetRedErrorSquare(INVALID_TILE);
-		extern StringID _switch_mode_errorstr;
-		_switch_mode_errorstr = INVALID_STRING_ID;
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
