@@ -832,7 +832,7 @@ void VideoDriver_Win32::MainLoop()
 	MSG mesg;
 	uint32 cur_ticks = GetTickCount();
 	uint32 last_cur_ticks = cur_ticks;
-	uint32 next_tick = cur_ticks + 30;
+	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
 	_wnd.running = true;
 
@@ -862,7 +862,7 @@ void VideoDriver_Win32::MainLoop()
 		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
 			_realtime_tick += cur_ticks - last_cur_ticks;
 			last_cur_ticks = cur_ticks;
-			next_tick = cur_ticks + 30;
+			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
 			bool old_ctrl_pressed = _ctrl_pressed;
 

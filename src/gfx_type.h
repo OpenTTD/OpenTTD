@@ -259,4 +259,7 @@ enum SpriteType {
 	ST_INVALID  = 4,      ///< Pseudosprite or other unusable sprite, used only internally
 };
 
+/** The number of milliseconds per game tick. */
+static const uint MILLISECONDS_PER_TICK = 30;
+
 #endif /* GFX_TYPE_H */

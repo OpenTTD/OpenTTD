@@ -474,7 +474,7 @@ void VideoDriver_Allegro::MainLoop()
 {
 	uint32 cur_ticks = GetTime();
 	uint32 last_cur_ticks = cur_ticks;
-	uint32 next_tick = cur_ticks + 30;
+	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 	uint32 pal_tick = 0;
 
 	for (;;) {
@@ -501,7 +501,7 @@ void VideoDriver_Allegro::MainLoop()
 		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
 			_realtime_tick += cur_ticks - last_cur_ticks;
 			last_cur_ticks = cur_ticks;
-			next_tick = cur_ticks + 30;
+			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
 			bool old_ctrl_pressed = _ctrl_pressed;
 

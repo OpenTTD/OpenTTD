@@ -256,7 +256,7 @@ static void DedicatedHandleKeyInput()
 void VideoDriver_Dedicated::MainLoop()
 {
 	uint32 cur_ticks = GetTime();
-	uint32 next_tick = cur_ticks + 30;
+	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
 	/* Signal handlers */
 #if defined(UNIX) || defined(PSP)
@@ -305,7 +305,7 @@ void VideoDriver_Dedicated::MainLoop()
 		cur_ticks = GetTime();
 		_realtime_tick += cur_ticks - prev_cur_ticks;
 		if (cur_ticks >= next_tick || cur_ticks < prev_cur_ticks || _ddc_fastforward) {
-			next_tick = cur_ticks + 30;
+			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
 			GameLoop();
 			UpdateWindows();
