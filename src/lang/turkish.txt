@@ -172,7 +172,6 @@ STR_TONS                                                        :{COMMA} ton
 STR_LITERS                                                      :{COMMA} litre
 STR_ITEMS                                                       :{COMMA} tane
 STR_CRATES                                                      :{COMMA} kasa
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Koyu Mavi
@@ -943,6 +942,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Tam ekra
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekran Çözünürlüğü
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kullanılacak ekran çözünürlüğünü seçin
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekran görüntüsü biçimi
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Kullanılacak ekran görüntüsü biçimini seçin
@@ -1304,6 +1304,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Ana ara
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Sol
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Orta
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Sağ
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Durum çubuğunun konumu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Sol
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Orta
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Sağ
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}{STRING} piksel
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}kapalı
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Pencere soft sınırı (yapşkan olmayan): {ORANGE}{STRING}
@@ -1784,6 +1788,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :hile yapmaya ç
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :sunucu dolu
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :çok fazla komut gönderiyordu
 ############ End of leave-in-this-order
+
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -3121,6 +3126,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Modifiye)
 STR_REFIT_TITLE                                                 :{GOLD}Tasinacak kargo türünü seçin:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Yeni kapasite: {GOLD}{CARGO}{}{BLACK}Modifiye fiyatı: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Yeni kapasite: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Modifiye bedeli: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenin taşıyacağı kargo türünü seçin
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kamyonun taşıyacağı kargo türünü seçin

@@ -1156,7 +1156,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Los veh
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Renovación automática de vehículos cuando se vuelven viejos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Renovar automáticamente vehículos que estén a {ORANGE}{STRING}{LTBLUE} mes{P 0:1 "" es} antes/después de su edad máxima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Mínimo de dinero requerido para renovación automática: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duración del mensaje de error: {ORANGE}{STRING} segundo{P 0:1 "" s}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duración de mensajes de error: {ORANGE}{STRING} segundo{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Retraso requerido al mantener ratón: {ORANGE}{STRING} segundo{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Retraso requerido al mantener ratón: {ORANGE}desactivado
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Muestra la población de un pueblo en su etiqueta: {ORANGE}{STRING}
@@ -1211,7 +1211,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Scroll con botón izquierdo: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Usar el formato de fecha {ORANGE}{STRING}{LTBLUE} para los nombres de partidas guardadas.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Usar formato de fecha {ORANGE}{STRING}{LTBLUE} para las partidas guardadas.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :largo (31 Dic 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :corto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1788,6 +1788,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :ha intentado us
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor lleno
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estaba enviando demasiados comandos
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Posible pérdida de conexión
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}No se han recibido datos del servidor desde hace {NUM} segundo{P "" s}
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}

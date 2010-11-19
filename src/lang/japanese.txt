@@ -2460,7 +2460,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}町／産業を見るためにサービスをクリックして下さい
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}複数の項目を選択するにはcontrolを押します
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA}軒の駅
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}

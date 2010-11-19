@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} اطن�
 STR_LITERS                                                      :{COMMA} لتر
 STR_ITEMS                                                       :{COMMA} وحدة
 STR_CRATES                                                      :{COMMA} صناديق
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :ازرق غامق
@@ -284,6 +283,7 @@ STR_SORT_BY_RATING_MIN                                          :اقل نسبة
 STR_SORT_BY_ENGINE_ID                                           :نوع المحرك (قياسي(
 STR_SORT_BY_COST                                                :التكلفة
 STR_SORT_BY_POWER                                               :الطاقة
+STR_SORT_BY_TRACTIVE_EFFORT                                     :قوة الجذب
 STR_SORT_BY_INTRO_DATE                                          :بداية التشغيل
 STR_SORT_BY_RUNNING_COST                                        :تكلفة التشغيل
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :القوة/تكلفة التشغيل
@@ -941,6 +941,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}اختر
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}دقة الشاشة
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}اختر دقة الشاشة
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :اخرى
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}صيغة حفظ الشاشة
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}اختر صيغة حفظ الشاشة
@@ -1302,6 +1303,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}موق�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :يسار
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :متوسط
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :يمين
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}موقع شريط المعلومات: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :يسار
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :وسط
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :يمين
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}قطر اللقطة للاطار: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}قطر اللقطة للاطار: {ORANGE}غير مفعل
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة - :{ORANGE}{STRING}
@@ -1782,6 +1787,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :كان يحاو
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :خادم ممتلئ
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :كان يرسل الكثير من الاوامر
 ############ End of leave-in-this-order
+
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -3119,6 +3125,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}السع
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} )تغيير(
 STR_REFIT_TITLE                                                 :{GOLD}اختر نوع الحمولة ...
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}السعة الجديدة: {GOLD}{CARGO}{}{BLACK}تكلفة التغيير: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}السعة الجديدة: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}تكلفة اعادة التهيئة: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}أختر نوع البضاعة لينقلها القطار
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK} اختر نوع حمولة العربة
