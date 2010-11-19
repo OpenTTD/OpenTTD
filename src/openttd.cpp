@@ -594,6 +594,7 @@ int ttd_main(int argc, char *argv[])
 	_cur_resolution.height = ClampU(_cur_resolution.height, 1, UINT16_MAX);
 
 #if defined(ENABLE_NETWORK)
+	if (dedicated) DEBUG(net, 0, "Starting dedicated version %s", _openttd_revision);
 	if (dedicated_host) {
 		_network_bind_list.Clear();
 		*_network_bind_list.Append() = strdup(dedicated_host);
