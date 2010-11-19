@@ -147,16 +147,6 @@ static uint32 GetNearbyObjectTileInformation(byte parameter, TileIndex tile, Obj
 }
 
 /**
- * Get the object's animation counter data.
- * @param tile The tile to query.
- * @return The object's data.
- */
-static uint32 GetObjectAnimationCounter(TileIndex tile)
-{
-	return Object::GetByTile(tile)->colour << 8 | GetAnimationFrame(tile);
-}
-
-/**
  * Get the closest object of a given type.
  * @param tile    The tile to start searching from.
  * @param type    The type of the object to search for.
@@ -252,6 +242,7 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 			 * Disallow the rest:
 			 * 0x40: Relative position is passed as parameter during construction.
 			 * 0x43: Animation counter is only for actual tiles.
+			 * 0x47: Object colour is only valid when its built.
 			 * 0x63: Animation counter of nearby tile, see above.
 			 */
 			default:
@@ -280,7 +271,7 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 		case 0x42: return o->build_date;
 
 		/* Animation counter */
-		case 0x43: return GetObjectAnimationCounter(tile);
+		case 0x43: return GetAnimationFrame(tile);
 
 		/* Object founder information */
 		case 0x44: return GetTileOwner(tile);
@@ -290,6 +281,9 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 
 		/* Get square of Euclidian distance of closes town */
 		case 0x46: return GetTownRadiusGroup(t, tile) << 16 | min(DistanceSquare(tile, t->xy), 0xFFFF);
+
+		/* Object colour */
+		case 0x47: return o->colour;
 
 		/* Get object ID at offset param */
 		case 0x60: return GetObjectIDAtOffset(GetNearbyTile(parameter, tile), object->grffile->grfid);
@@ -305,7 +299,7 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 		/* Animation counter of nearby tile */
 		case 0x63:
 			tile = GetNearbyTile(parameter, tile);
-			return (IsTileType(tile, MP_OBJECT) && Object::GetByTile(tile) == o) ? GetObjectAnimationCounter(tile) : 0;
+			return (IsTileType(tile, MP_OBJECT) && Object::GetByTile(tile) == o) ? GetAnimationFrame(tile) : 0;
 
 		/* Count of object, distance of closest instance */
 		case 0x64: return GetCountAndDistanceOfClosestInstance(parameter, object->grffile->grfid, tile, o);
