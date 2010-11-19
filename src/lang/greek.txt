@@ -2608,7 +2608,6 @@ STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Εμφά
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή ονόματος πόλης
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Επέκταση
-STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Αύξηση με�έθους πόλης
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Διαγραφή
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Διαγράφη της πόλης ολοκληρωτικά
 

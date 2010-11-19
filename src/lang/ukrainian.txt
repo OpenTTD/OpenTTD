@@ -4219,7 +4219,6 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS цисте�
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh вантажівка для фруктів
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl вантажівка для фруктів
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling вантажівка для фруктів
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh вантажі�ка для каучука
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl вантажівка для каучука
 STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMTвантажівка для каучука
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover вантажівка для цукру
