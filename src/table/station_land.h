@@ -19,7 +19,8 @@
  * @param sz  Size in z direction
  * @param img Sprite to draw
  */
-#define TILE_SEQ_LINE(dx, dy, dz, sx, sy, sz, img) { dx, dy, dz, sx, sy, sz, {img, PAL_NONE} },
+#define TILE_SEQ_LINE(dx, dy, dz, sx, sy, sz, img) TILE_SEQ_LINE_PAL(dx, dy, dz, sx, sy, sz, img, PAL_NONE)
+
 /**
  * Constructor macro for an image with a palette in a DrawTileSeqStruct array.
  * @param dx  Offset in x direction
@@ -29,9 +30,19 @@
  * @param sy  Size in y direction
  * @param sz  Size in z direction
  * @param img Sprite to draw
- * @param pal Paleltte sprite
+ * @param pal Palette sprite
  */
 #define TILE_SEQ_LINE_PAL(dx, dy, dz, sx, sy, sz, img, pal) { dx, dy, dz, sx, sy, sz, {img, pal} },
+
+/**
+ * Constructor macro for an image without bounding box.
+ * @param dx  Screen X offset from parent sprite
+ * @param dy  Screen Y offset from parent sprite
+ * @param img Sprite to draw
+ * @param pal Palette sprite
+ */
+#define TILE_SEQ_CHILD(dx, dy, img, pal) TILE_SEQ_LINE_PAL(dx, dy, (int8)0x80, 0, 0, 0, img, pal)
+
 /** Constructor macro for a terminating DrawTileSeqStruct entry in an array */
 #define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
@@ -67,7 +78,7 @@ static const DrawTileSeqStruct _station_display_datas_4[] = {
 	TILE_SEQ_LINE( 0,  0,  0, 16,  5,  7, SPR_RAIL_PLATFORM_PILLARS_X_REAR | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE( 0, 11,  0, 16,  5,  2, SPR_RAIL_PLATFORM_X_FRONT        | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE( 0,  0, 16, 16, 16, 10, SPR_RAIL_ROOF_STRUCTURE_X_TILE_A | (1U << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_LINE_PAL( 0,  0, (int8)0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_X_TILE_A     | (1U << PALETTE_MODIFIER_TRANSPARENT), PALETTE_TO_TRANSPARENT)
+	TILE_SEQ_CHILD( 0,  0,                SPR_RAIL_ROOF_GLASS_X_TILE_A     | (1U << PALETTE_MODIFIER_TRANSPARENT), PALETTE_TO_TRANSPARENT)
 	TILE_SEQ_END()
 };
 
@@ -75,7 +86,7 @@ static const DrawTileSeqStruct _station_display_datas_5[] = {
 	TILE_SEQ_LINE( 0,  0,  0,  5, 16,  2, SPR_RAIL_PLATFORM_PILLARS_Y_REAR | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE(11,  0,  0,  5, 16,  2, SPR_RAIL_PLATFORM_Y_FRONT        | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE( 0,  0, 16, 16, 16, 10, SPR_RAIL_ROOF_STRUCTURE_Y_TILE_A | (1U << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_LINE_PAL( 0,  0, (int8)0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_Y_TILE_A     | (1U << PALETTE_MODIFIER_TRANSPARENT), PALETTE_TO_TRANSPARENT)
+	TILE_SEQ_CHILD( 0,  0,                SPR_RAIL_ROOF_GLASS_Y_TILE_A     | (1U << PALETTE_MODIFIER_TRANSPARENT), PALETTE_TO_TRANSPARENT)
 	TILE_SEQ_END()
 };
 
@@ -83,7 +94,7 @@ static const DrawTileSeqStruct _station_display_datas_6[] = {
 	TILE_SEQ_LINE( 0,  0,  0, 16,  5,  2, SPR_RAIL_PLATFORM_X_REAR          | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE( 0, 11,  0, 16,  5,  2, SPR_RAIL_PLATFORM_PILLARS_X_FRONT | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE( 0,  0, 16, 16, 16, 10, SPR_RAIL_ROOF_STRUCTURE_X_TILE_B  | (1U << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_LINE_PAL( 0,  0, (int8)0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_X_TILE_B      | (1U << PALETTE_MODIFIER_TRANSPARENT), PALETTE_TO_TRANSPARENT)
+	TILE_SEQ_CHILD( 0,  0,                SPR_RAIL_ROOF_GLASS_X_TILE_B      | (1U << PALETTE_MODIFIER_TRANSPARENT), PALETTE_TO_TRANSPARENT)
 	TILE_SEQ_END()
 };
 
@@ -91,7 +102,7 @@ static const DrawTileSeqStruct _station_display_datas_7[] = {
 	TILE_SEQ_LINE( 0,  0,  0,  5, 16,  2, SPR_RAIL_PLATFORM_Y_REAR          | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE(11,  0,  0,  5, 16,  2, SPR_RAIL_PLATFORM_PILLARS_Y_FRONT | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE( 0,  0, 16, 16, 16, 10, SPR_RAIL_ROOF_STRUCTURE_Y_TILE_B  | (1U << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_LINE_PAL( 0,  0, (int8)0x80, 0,  0,  0, SPR_RAIL_ROOF_GLASS_Y_TILE_B      | (1U << PALETTE_MODIFIER_TRANSPARENT), PALETTE_TO_TRANSPARENT)
+	TILE_SEQ_CHILD( 0,  0,                SPR_RAIL_ROOF_GLASS_Y_TILE_B      | (1U << PALETTE_MODIFIER_TRANSPARENT), PALETTE_TO_TRANSPARENT)
 	TILE_SEQ_END()
 };
 
