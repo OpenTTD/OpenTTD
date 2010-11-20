@@ -163,8 +163,8 @@ static const DrawTileSeqStruct _station_display_datas_terminal_c[] = {
 };
 
 static const DrawTileSeqStruct _station_display_hangar_se[] = {
-	TILE_SEQ_LINE(14,  0,  0,  2, 16, 28, SPR_AIRPORT_HANGAR_FRONT | (1U << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_LINE( 0,  0,  0,  2, 16, 28, SPR_AIRPORT_HANGAR_REAR | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE(14,  0,  0,  2, 17, 28, SPR_AIRPORT_HANGAR_FRONT | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0,  0,  0,  2, 17, 28, SPR_AIRPORT_HANGAR_REAR | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
@@ -297,8 +297,8 @@ static const DrawTileSeqStruct _station_display_flag_4_fence_ne[] = {
 };
 
 static const DrawTileSeqStruct _station_display_small_depot_se[] = {
-	TILE_SEQ_LINE(14,  0,  0,  2, 16, 28, SPR_AIRFIELD_HANGAR_FRONT | (1U << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_LINE( 0,  0,  0,  2, 16, 28, SPR_AIRFIELD_HANGAR_REAR | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE(14,  0,  0,  2, 17, 28, SPR_AIRFIELD_HANGAR_FRONT | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0,  0,  0,  2, 17, 28, SPR_AIRFIELD_HANGAR_REAR | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
@@ -553,8 +553,8 @@ static const DrawTileSeqStruct _station_display_low_building_fence_ne_nw[] = {
 
 /* West facing hangar */
 static const DrawTileSeqStruct _station_display_hangar_sw[] = {
-	TILE_SEQ_LINE(14,  0,  0,  2, 16, 28, SPR_NEWHANGAR_W | (1U << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_LINE( 0,  0,  0,  2, 16, 28, SPR_NEWHANGAR_W_WALL | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE(14,  0,  0,  2, 17, 28, SPR_NEWHANGAR_W | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0,  0,  0,  2, 17, 28, SPR_NEWHANGAR_W_WALL | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
