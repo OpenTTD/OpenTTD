@@ -1,6 +1,11 @@
+1.0.5 (2010-11-20)
+------------------------------------------------------------------------
+(None)
+
+
 1.0.5-RC2 (2010-11-14)
 ------------------------------------------------------------------------
-- Fix: Reading (very) recently freed memory (r21182)
+- Fix: Reading (very) recently freed memory [CVE-2010-4168] (r21182)
 - Fix: Default service interval for ships/aircraft got switched [FS#4222] (r21155)
 - Fix: Size of sort buttons for save/load and build vehicle list gui could be too small [FS#4221] (r21151)
 - Fix: [NewGRF] Crash when disabling static NewGRFs (when joining/starting a server) [FS#4208] (r21130, r21129, r21128)
