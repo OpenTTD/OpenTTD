@@ -509,8 +509,8 @@ static const DrawTileSeqStruct _station_display_fence_ne_sw[] = {
 
 /* runway tiles with 2 corner fences */
 static const DrawTileSeqStruct _station_display_fence_nw_sw[] = {
-	TILE_SEQ_GROUND(15,  0,  0, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences west
 	TILE_SEQ_GROUND( 0,  0,  0, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences north
+	TILE_SEQ_GROUND(15,  0,  0, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences west
 	TILE_SEQ_END()
 };
 
