@@ -1546,7 +1546,7 @@ CommandCost CmdRemoveFromRailWaypoint(TileIndex start, DoCommandFlag flags, uint
 
 
 /**
- * Remove a rail road station/waypoint
+ * Remove a rail station/waypoint
  * @param st The station/waypoint to remove the rail part from
  * @param flags operation to perform
  * @tparam T the type of station to remove
@@ -1614,7 +1614,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 }
 
 /**
- * Remove a rail road station
+ * Remove a rail station
  * @param tile TileIndex been queried
  * @param flags operation to perform
  * @return cost or failure of operation

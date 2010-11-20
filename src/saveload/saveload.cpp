@@ -13,8 +13,8 @@
  * are as follows for saving a game (loading is analogous):
  * <ol>
  * <li>initialize the writer by creating a temporary memory-buffer for it
- * <li>go through all to-be saved elements, each 'chunk' (ChunkHandler) prefixed by a label
- * <li>use their description array (SaveLoad) to know what elements to save and in what version
+ * <li>go through all to-be saved elements, each 'chunk' (#ChunkHandler) prefixed by a label
+ * <li>use their description array (#SaveLoad) to know what elements to save and in what version
  *    of the game it was active (used when loading)
  * <li>write all data byte-by-byte to the temporary buffer so it is endian-safe
  * <li>when the buffer is full; flush it to the output (eg save to file) (_sl.buf, _sl.bufp, _sl.bufe)

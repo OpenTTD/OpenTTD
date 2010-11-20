@@ -506,6 +506,12 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uin
 	NOT_REACHED();
 }
 
+/**
+ * Check with callback #CBM_IND_AVAILABLE whether the industry can be built.
+ * @param type Industry type to check.
+ * @param creation_type Reason to construct a new industry.
+ * @return If the industry has no callback or allows building, \c true is returned. Otherwise, \c false is returned.
+ */
 bool CheckIfCallBackAllowsAvailability(IndustryType type, IndustryAvailabilityCallType creation_type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);

@@ -89,12 +89,17 @@ struct ETileArea : TileArea {
 };
 
 
-/* Evaluate a tile's position within a station, and return the result a bit-stuffed format.
+/**
+ * Evaluate a tile's position within a station, and return the result in a bit-stuffed format.
  * if not centered: .TNLcCpP, if centered: .TNL..CP
- * T = Tile layout number (#GetStationGfx), N = Number of platforms, L = Length of platforms
- * C = Current platform number from start, c = from end
- * P = Position along platform from start, p = from end
+ * - T = Tile layout number (#GetStationGfx)
+ * - N = Number of platforms
+ * - L = Length of platforms
+ * - C = Current platform number from start, c = from end
+ * - P = Position along platform from start, p = from end
+ * .
  * if centered, C/P start from the centre and c/p are not available.
+ * @return Platform information in bit-stuffed format.
  */
 uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, int y, bool centred)
 {
@@ -129,9 +134,13 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
 }
 
 
-/* Find the end of a railway station, from the tile, in the direction of delta.
- * If check_type is set, we stop if the custom station type changes.
- * If check_axis is set, we stop if the station direction changes.
+/**
+ * Find the end of a railway station, from the \a tile, in the direction of \a delta.
+ * @param tile Start tile.
+ * @param delta Movement direction.
+ * @param check_type Stop when the custom station type changes.
+ * @param check_axis Stop when the station direction changes.
+ * @return Found end of the railway station.
  */
 static TileIndex FindRailStationEnd(TileIndex tile, TileIndexDiff delta, bool check_type, bool check_axis)
 {
@@ -785,8 +794,12 @@ const StationSpec *GetStationSpec(TileIndex t)
 }
 
 
-/* Check if a rail station tile is traversable.
- * XXX This could be cached (during build) in the map array to save on all the dereferencing */
+/**
+ * Check whether a rail station tile is NOT traversable.
+ * @param tile %Tile to test.
+ * @return Station tile is blocked.
+ * @note This could be cached (during build) in the map array to save on all the dereferencing.
+ */
 bool IsStationTileBlocked(TileIndex tile)
 {
 	const StationSpec *statspec = GetStationSpec(tile);
@@ -794,8 +807,12 @@ bool IsStationTileBlocked(TileIndex tile)
 	return statspec != NULL && HasBit(statspec->blocked, GetStationGfx(tile));
 }
 
-/* Check if a rail station tile is electrifiable.
- * XXX This could be cached (during build) in the map array to save on all the dereferencing */
+/**
+ * Check if a rail station tile can be electrified.
+ * @param tile %Tile to test.
+ * @return Tile can be electrified.
+ * @note This could be cached (during build) in the map array to save on all the dereferencing.
+ */
 bool IsStationTileElectrifiable(TileIndex tile)
 {
 	const StationSpec *statspec = GetStationSpec(tile);

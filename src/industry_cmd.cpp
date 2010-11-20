@@ -1043,10 +1043,10 @@ static void ChopLumberMillTrees(Industry *i)
 {
 	TileIndex tile = i->location.tile;
 
-	if (!IsIndustryCompleted(tile)) return;  ///< Can't proceed if not completed
+	if (!IsIndustryCompleted(tile)) return;  // Can't proceed if not completed.
 
-	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, NULL)) { ///< 40x40 tiles  to search
-		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + 45); ///< Found a tree, add according value to waiting cargo
+	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, NULL)) { // 40x40 tiles  to search.
+		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + 45); // Found a tree, add according value to waiting cargo.
 	}
 }
 

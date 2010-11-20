@@ -27,7 +27,7 @@ static const VehicleOrderID MAX_VEH_ORDER_ID     = INVALID_VEH_ORDER_ID - 1;
 /** Invalid order (sentinel) */
 static const OrderID INVALID_ORDER = 0xFFFF;
 
-/* Order types */
+/** Order types */
 enum OrderType {
 	OT_BEGIN         = 0,
 	OT_NOTHING       = 0,
