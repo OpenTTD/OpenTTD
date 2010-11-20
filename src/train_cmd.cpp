@@ -2703,11 +2703,8 @@ static void TrainEnterStation(Train *v, StationID station)
 /* Check if the vehicle is compatible with the specified tile */
 static inline bool CheckCompatibleRail(const Train *v, TileIndex tile)
 {
-	return
-		IsTileOwner(tile, v->owner) && (
-			!v->IsFrontEngine() ||
-			HasBit(v->compatible_railtypes, GetRailType(tile))
-		);
+	return IsTileOwner(tile, v->owner) &&
+			(!v->IsFrontEngine() || HasBit(v->compatible_railtypes, GetRailType(tile)));
 }
 
 struct RailtypeSlowdownParams {

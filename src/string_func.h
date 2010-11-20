@@ -273,10 +273,7 @@ static inline bool IsPrintable(WChar c)
  */
 static inline bool IsWhitespace(WChar c)
 {
-	return
-	  c == 0x0020 /* SPACE */ ||
-	  c == 0x3000 /* IDEOGRAPHIC SPACE */
-	;
+	return c == 0x0020 /* SPACE */ || c == 0x3000; /* IDEOGRAPHIC SPACE */
 }
 
 /* Needed for NetBSD version (so feature) testing */

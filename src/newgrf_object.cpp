@@ -48,9 +48,7 @@ ObjectSpec _object_specs[NUM_OBJECTS];
 
 bool ObjectSpec::IsAvailable() const
 {
-	return
-			this->enabled &&
-			_date > this->introduction_date &&
+	return this->enabled && _date > this->introduction_date &&
 			(_date < this->end_of_life_date || this->end_of_life_date < this->introduction_date + 365) &&
 			HasBit(this->climate, _settings_game.game_creation.landscape) &&
 			(flags & (_game_mode != GM_EDITOR ? OBJECT_FLAG_ONLY_IN_SCENEDIT : OBJECT_FLAG_ONLY_IN_GAME)) == 0;

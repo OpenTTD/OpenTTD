@@ -541,10 +541,9 @@ static int32 NPFFindSafeTile(AyStar *as, OpenListNode *current)
 {
 	const Train *v = Train::From(((NPFFindStationOrTileData *)as->user_target)->v);
 
-	return
-		IsSafeWaitingPosition(v, current->path.node.tile, current->path.node.direction, true, _settings_game.pf.forbid_90_deg) &&
-		IsWaitingPositionFree(v, current->path.node.tile, current->path.node.direction, _settings_game.pf.forbid_90_deg) ?
-			AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
+	return (IsSafeWaitingPosition(v, current->path.node.tile, current->path.node.direction, true, _settings_game.pf.forbid_90_deg) &&
+			IsWaitingPositionFree(v, current->path.node.tile, current->path.node.direction, _settings_game.pf.forbid_90_deg)) ?
+				AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
 }
 
 /* Will find a station identified using the NPFFindStationOrTileData */

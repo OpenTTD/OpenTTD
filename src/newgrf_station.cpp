@@ -817,10 +817,9 @@ bool IsStationTileElectrifiable(TileIndex tile)
 {
 	const StationSpec *statspec = GetStationSpec(tile);
 
-	return
-		statspec == NULL ||
-		HasBit(statspec->pylons, GetStationGfx(tile)) ||
-		!HasBit(statspec->wires, GetStationGfx(tile));
+	return statspec == NULL ||
+			HasBit(statspec->pylons, GetStationGfx(tile)) ||
+			!HasBit(statspec->wires, GetStationGfx(tile));
 }
 
 /** Helper class for animation control. */

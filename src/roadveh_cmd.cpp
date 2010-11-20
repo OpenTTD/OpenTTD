@@ -452,12 +452,10 @@ static Vehicle *EnumCheckRoadVehCrashTrain(Vehicle *v, void *data)
 {
 	const Vehicle *u = (Vehicle*)data;
 
-	return
-		v->type == VEH_TRAIN &&
-		abs(v->z_pos - u->z_pos) <= 6 &&
-		abs(v->x_pos - u->x_pos) <= 4 &&
-		abs(v->y_pos - u->y_pos) <= 4 ?
-			v : NULL;
+	return (v->type == VEH_TRAIN &&
+			abs(v->z_pos - u->z_pos) <= 6 &&
+			abs(v->x_pos - u->x_pos) <= 4 &&
+			abs(v->y_pos - u->y_pos) <= 4) ? v : NULL;
 }
 
 uint RoadVehicle::Crash(bool flooded)
@@ -727,9 +725,7 @@ static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
 {
 	const OvertakeData *od = (OvertakeData*)data;
 
-	return
-		v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v ?
-			v : NULL;
+	return (v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v) ? v : NULL;
 }
 
 /**

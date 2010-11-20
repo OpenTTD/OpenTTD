@@ -56,10 +56,7 @@ bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir)
 		height = GetTileZ(tile);
 	} while (z < height);
 
-	return
-		z == height &&
-		IsTunnelTile(tile) &&
-		GetTunnelBridgeDirection(tile) == dir;
+	return z == height && IsTunnelTile(tile) && GetTunnelBridgeDirection(tile) == dir;
 }
 
 /**
@@ -70,7 +67,6 @@ bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir)
  */
 bool IsTunnelInWay(TileIndex tile, uint z)
 {
-	return
-		IsTunnelInWayDir(tile, z, (TileX(tile) > (MapMaxX() / 2)) ? DIAGDIR_NE : DIAGDIR_SW) ||
-		IsTunnelInWayDir(tile, z, (TileY(tile) > (MapMaxY() / 2)) ? DIAGDIR_NW : DIAGDIR_SE);
+	return IsTunnelInWayDir(tile, z, (TileX(tile) > (MapMaxX() / 2)) ? DIAGDIR_NE : DIAGDIR_SW) ||
+			IsTunnelInWayDir(tile, z, (TileY(tile) > (MapMaxY() / 2)) ? DIAGDIR_NW : DIAGDIR_SE);
 }

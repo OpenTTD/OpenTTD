@@ -318,9 +318,7 @@ bool IsValidCommand(uint32 cmd)
 {
 	cmd &= CMD_ID_MASK;
 
-	return
-		cmd < lengthof(_command_proc_table) &&
-		_command_proc_table[cmd].proc != NULL;
+	return cmd < lengthof(_command_proc_table) && _command_proc_table[cmd].proc != NULL;
 }
 
 /*!

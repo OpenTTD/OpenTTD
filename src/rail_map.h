@@ -424,9 +424,7 @@ static inline bool IsSignalPresent(TileIndex t, byte signalbit)
 static inline bool HasSignalOnTrack(TileIndex tile, Track track)
 {
 	assert(IsValidTrack(track));
-	return
-		GetRailTileType(tile) == RAIL_TILE_SIGNALS &&
-		(GetPresentSignals(tile) & SignalOnTrack(track)) != 0;
+	return GetRailTileType(tile) == RAIL_TILE_SIGNALS && (GetPresentSignals(tile) & SignalOnTrack(track)) != 0;
 }
 
 /**
@@ -439,9 +437,7 @@ static inline bool HasSignalOnTrack(TileIndex tile, Track track)
 static inline bool HasSignalOnTrackdir(TileIndex tile, Trackdir trackdir)
 {
 	assert (IsValidTrackdir(trackdir));
-	return
-		GetRailTileType(tile) == RAIL_TILE_SIGNALS &&
-		GetPresentSignals(tile) & SignalAlongTrackdir(trackdir);
+	return GetRailTileType(tile) == RAIL_TILE_SIGNALS && GetPresentSignals(tile) & SignalAlongTrackdir(trackdir);
 }
 
 /**
@@ -477,10 +473,8 @@ static inline void SetSignalStateByTrackdir(TileIndex tile, Trackdir trackdir, S
  */
 static inline bool HasPbsSignalOnTrackdir(TileIndex tile, Trackdir td)
 {
-	return
-		IsTileType(tile, MP_RAILWAY) &&
-		HasSignalOnTrackdir(tile, td) &&
-		IsPbsSignal(GetSignalType(tile, TrackdirToTrack(td)));
+	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, td) &&
+			IsPbsSignal(GetSignalType(tile, TrackdirToTrack(td)));
 }
 
 /**
@@ -491,11 +485,8 @@ static inline bool HasPbsSignalOnTrackdir(TileIndex tile, Trackdir td)
  */
 static inline bool HasOnewaySignalBlockingTrackdir(TileIndex tile, Trackdir td)
 {
-	return
-		IsTileType(tile, MP_RAILWAY) &&
-		HasSignalOnTrackdir(tile, ReverseTrackdir(td)) &&
-		!HasSignalOnTrackdir(tile, td) &&
-		IsOnewaySignal(tile, TrackdirToTrack(td));
+	return IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, ReverseTrackdir(td)) &&
+			!HasSignalOnTrackdir(tile, td) && IsOnewaySignal(tile, TrackdirToTrack(td));
 }
 
 

@@ -363,11 +363,8 @@ void StationRect::MakeEmpty()
  */
 bool StationRect::PtInExtendedRect(int x, int y, int distance) const
 {
-	return
-			this->left - distance <= x &&
-			x <= this->right + distance &&
-			this->top - distance <= y &&
-			y <= this->bottom + distance;
+	return this->left - distance <= x && x <= this->right + distance &&
+			this->top - distance <= y && y <= this->bottom + distance;
 }
 
 bool StationRect::IsEmpty() const
