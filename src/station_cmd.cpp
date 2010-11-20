@@ -2649,6 +2649,13 @@ static void DrawTile_Station(TileInfo *ti)
 				if (!HasFoundationNW(ti->tile, slope, z)) ClrBit(parts, 6);
 				if (!HasFoundationNE(ti->tile, slope, z)) ClrBit(parts, 7);
 
+				if (parts == 0) {
+					/* We always have to draw at least one sprite to make sure there is a boundingbox and a sprite with the
+					 * correct offset for the childsprites.
+					 * So, draw the (completely empty) sprite of the default foundations. */
+					goto draw_default_foundation;
+				}
+
 				StartSpriteCombine();
 				for (int i = 0; i < 8; i++) {
 					if (HasBit(parts, i)) {
@@ -2661,6 +2668,7 @@ static void DrawTile_Station(TileInfo *ti)
 			OffsetGroundSprite(31, 1);
 			ti->z += ApplyFoundationToSlope(FOUNDATION_LEVELED, &ti->tileh);
 		} else {
+draw_default_foundation:
 			DrawFoundation(ti, FOUNDATION_LEVELED);
 		}
 	}
