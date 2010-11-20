@@ -2377,6 +2377,19 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(153)) {
+		RoadVehicle *rv;
+		FOR_ALL_ROADVEHICLES(rv) {
+			bool loading = rv->current_order.IsType(OT_LOADING) || rv->current_order.IsType(OT_LEAVESTATION);
+			if (HasBit(rv->state, RVS_IN_ROAD_STOP)) {
+				extern const byte _road_stop_stop_frame[];
+				SB(rv->state, RVS_ENTERED_STOP, 1, loading || rv->frame > _road_stop_stop_frame[rv->state - RVSB_IN_ROAD_STOP + (_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)]);
+			} else if (HasBit(rv->state, RVS_IN_DT_ROAD_STOP)) {
+				SB(rv->state, RVS_ENTERED_STOP, 1, loading || rv->frame > RVC_DRIVE_THROUGH_STOP_FRAME);
+			}
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

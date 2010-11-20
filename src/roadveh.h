@@ -42,6 +42,7 @@ enum RoadVehicleStates {
 
 	/* Bit numbers */
 	RVS_USING_SECOND_BAY         =    1,                      ///< Only used while in a road stop
+	RVS_ENTERED_STOP             =    2,                      ///< Only set when a vehicle has entered the stop
 	RVS_DRIVE_SIDE               =    4,                      ///< Only used when retrieving move data
 	RVS_IN_ROAD_STOP             =    5,                      ///< The vehicle is in a road stop
 	RVS_IN_DT_ROAD_STOP          =    6,                      ///< The vehicle is in a drive-through road stop
