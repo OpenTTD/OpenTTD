@@ -2137,6 +2137,8 @@ void IndustryBuildData::SetupTargetCount()
 		total_prob += ibd->probability;
 	}
 
+	if (total_prob == 0) return; // No buildable industries.
+
 	/* Subtract forced industries from the number of industries available for construction. */
 	total_amount = (total_amount <= force_build) ? 0 : total_amount - force_build;
 
