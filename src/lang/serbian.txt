@@ -1285,7 +1285,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dozvolj
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realističnije veličine prihvatnih površina: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dozvoljeno uklanjanje više gradskih kolovoza, zgrada, itd.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Moguća gradnja veoma dugačkih vozova: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/varnica lokomotiva: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/varnica vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nema
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originalna
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistična
@@ -1982,6 +1982,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :pokušaj koriš
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server je pun
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :je slao previše naredbi
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Moguć gubitak veze
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}U poslednj{P 0 oj e ih} {NUM} sekund{P i e i} nije primljen nijedan podatak sa servera
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}

@@ -1160,7 +1160,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Srovná
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Povolit u oblasti pokrytí realističtější velikost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů, tunelů, atp.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Povolit stavbu dlouhých vlaků: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}množství kouře/jisker u lokomotivy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}množství kouře/jisker u stroje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Žádný
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originální
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistický
@@ -1373,6 +1373,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Umíst�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vlevo
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :uprostřed
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :vpravo
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozice statusbaru: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Vlevo
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Uprostřed
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Vpravo
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Okno se přichytí k druhému, když je blíž než: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Okno se přichytí k druhému, když je blíž než: {ORANGE}vypnuto
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Omezit počet zavíratelných oken na: {ORANGE}{STRING}
@@ -1853,6 +1857,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :se pokoušel po
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :na serveru je plno
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :posílal příliš mnoho příkazů
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Pravděpodobná ztráta spojení
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Poslední {NUM}. sekundu{P "" "" s} nepřišla ze serveru žádná data
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -3202,6 +3209,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacita
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Přestavět)
 STR_REFIT_TITLE                                                 :{GOLD}Zvolit druh nákladu:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nová kapacita: {GOLD}{CARGO}{}{BLACK}Cena přestavby: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nová kapacita: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cena za předělání: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Zvolit typ nákladu, na který vlak přestavět
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vyber typ nákladu, který má vozidlo převážet

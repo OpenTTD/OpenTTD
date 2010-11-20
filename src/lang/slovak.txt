@@ -235,7 +235,6 @@ STR_TONS                                                        :{COMMA} ton
 STR_LITERS                                                      :{COMMA} litrov
 STR_ITEMS                                                       :{COMMA} kusov
 STR_CRATES                                                      :{COMMA} debien
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :iné
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tmavomodrá
@@ -1009,6 +1008,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Zaskrtni
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozlíšenie obrazovky
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vyber rozlisenia obrazovky
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :iné
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formát screenshotov
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vyber format screenshotov
@@ -1370,6 +1370,7 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Pozíci
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :vlavo
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :v strede
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :vpravo
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozícia statusbaru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Vľavo
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Stred
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Doprava
@@ -1853,6 +1854,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :sa pokusal chea
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server je plny
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :posielal priveľa príkazov
 ############ End of leave-in-this-order
+
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
