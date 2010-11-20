@@ -43,6 +43,16 @@
  */
 #define TILE_SEQ_CHILD(dx, dy, img, pal) TILE_SEQ_LINE_PAL(dx, dy, (int8)0x80, 0, 0, 0, img, pal)
 
+/**
+ * Constructor macro for additional ground sprites.
+ * These need to be at the front of a DrawTileSeqStruct sequence.
+ * @param dx  Offset in x direction
+ * @param dy  Offset in y direction
+ * @param dz  Offset in z direction
+ * @param img Sprite to draw
+ */
+#define TILE_SEQ_GROUND(dx, dy, dz, img) TILE_SEQ_CHILD(2 * (dy - dx), dx + dy - dz, img, PAL_NONE)
+
 /** Constructor macro for a terminating DrawTileSeqStruct entry in an array */
 #define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
@@ -107,17 +117,22 @@ static const DrawTileSeqStruct _station_display_datas_7[] = {
 };
 
 static const DrawTileSeqStruct _station_display_fence_nw[] = {
-	TILE_SEQ_LINE( 0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences north
+	TILE_SEQ_GROUND( 0,  0,  0, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences north
+	TILE_SEQ_END()
+};
+
+static const DrawTileSeqStruct _station_display_fence_ne[] = {
+	TILE_SEQ_GROUND( 0,  0,  0, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_fence_sw[] = {
-	TILE_SEQ_LINE(15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences west
+	TILE_SEQ_GROUND(15,  0,  0, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences west
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_fence_se[] = {
-	TILE_SEQ_LINE( 0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_GROUND( 0, 15,  0, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
@@ -171,11 +186,6 @@ static const DrawTileSeqStruct _station_display_jetway_3[] = {
 
 static const DrawTileSeqStruct _station_display_passenger_tunnel[] = {
 	TILE_SEQ_LINE( 0,  8,  0, 14,  3, 14, SPR_AIRPORT_PASSENGER_TUNNEL)
-	TILE_SEQ_END()
-};
-
-static const DrawTileSeqStruct _station_display_fence_ne[] = {
-	TILE_SEQ_LINE( 0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
@@ -492,36 +502,36 @@ static const DrawTileSeqStruct _station_display_helipad[] = {
 
 /* asphalt tile with fences in north and south */
 static const DrawTileSeqStruct _station_display_fence_ne_sw[] = {
-	TILE_SEQ_LINE( 0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR))
-	TILE_SEQ_LINE(15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_GROUND( 0,  0,  0,  SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_GROUND(15,  0,  0,  SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 /* runway tiles with 2 corner fences */
 static const DrawTileSeqStruct _station_display_fence_nw_sw[] = {
-	TILE_SEQ_LINE(15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences west
-	TILE_SEQ_LINE( 0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences north
+	TILE_SEQ_GROUND(15,  0,  0, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences west
+	TILE_SEQ_GROUND( 0,  0,  0, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences north
 	TILE_SEQ_END()
 };
 
 /* runway tiles with 2 corner fences */
 static const DrawTileSeqStruct _station_display_fence_se_sw[] = {
-	TILE_SEQ_LINE(15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences west
-	TILE_SEQ_LINE( 0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences south
+	TILE_SEQ_GROUND(15,  0,  0, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences west
+	TILE_SEQ_GROUND( 0, 15,  0, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences south
 	TILE_SEQ_END()
 };
 
 /* runway tiles with 2 corner fences */
 static const DrawTileSeqStruct _station_display_fence_ne_nw[] = {
-	TILE_SEQ_LINE( 0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences north
-	TILE_SEQ_LINE( 0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences east
+	TILE_SEQ_GROUND( 0,  0,  0, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences north
+	TILE_SEQ_GROUND( 0,  0,  0, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences east
 	TILE_SEQ_END()
 };
 
 /* runway tiles with 2 corner fences */
 static const DrawTileSeqStruct _station_display_fence_ne_se[] = {
-	TILE_SEQ_LINE( 0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences east
-	TILE_SEQ_LINE( 0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences south
+	TILE_SEQ_GROUND( 0,  0,  0, SPR_AIRPORT_FENCE_Y | (1U << PALETTE_MODIFIER_COLOUR)) // fences east
+	TILE_SEQ_GROUND( 0, 15,  0, SPR_AIRPORT_FENCE_X | (1U << PALETTE_MODIFIER_COLOUR)) // fences south
 	TILE_SEQ_END()
 };
 
