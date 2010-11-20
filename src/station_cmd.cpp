@@ -1413,6 +1413,12 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 		/* If we reached here, the tile is valid so increase the quantity of tiles we will remove */
 		quantity++;
 
+		if (keep_rail || IsStationTileBlocked(tile)) {
+			/* Don't refund the 'steel' of the track when we keep the
+			 *  rail, or when the tile didn't have any rail at all. */
+			total_cost.AddCost(-_price[PR_CLEAR_RAIL]);
+		}
+
 		if (flags & DC_EXEC) {
 			/* read variables before the station tile is removed */
 			uint specindex = GetCustomStationSpecIndex(tile);
@@ -1454,11 +1460,6 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 				for (; v->Next() != NULL; v = v->Next()) { }
 				if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
 			}
-		}
-		if (keep_rail || IsStationTileBlocked(tile)) {
-			/* Don't refund the 'steel' of the track when we keep the
-			 *  rail, or when the tile didn't have any rail at all. */
-			total_cost.AddCost(-_price[PR_CLEAR_RAIL]);
 		}
 	}
 
