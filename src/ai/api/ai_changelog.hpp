@@ -40,6 +40,10 @@
  * \li AIRoad::BuildDriveThroughRoadStation now allows overbuilding.
  * \li AIRoad::BuildRoadStation now allows overbuilding.
  *
+ * \b 1.0.5
+ *
+ * No changes
+ *
  * \b 1.0.4
  *
  * No changes

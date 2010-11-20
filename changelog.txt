@@ -1,3 +1,58 @@
+1.0.5 (2010-11-20)
+------------------------------------------------------------------------
+(None)
+
+
+1.0.5-RC2 (2010-11-14)
+------------------------------------------------------------------------
+- Fix: Reading (very) recently freed memory [CVE-2010-4168] (r21182)
+- Fix: Default service interval for ships/aircraft got switched [FS#4222] (r21155)
+- Fix: Size of sort buttons for save/load and build vehicle list gui could be too small [FS#4221] (r21151)
+- Fix: [NewGRF] Crash when disabling static NewGRFs (when joining/starting a server) [FS#4208] (r21130, r21129, r21128)
+- Fix: Upper limit for snowline was too low [FS#4203] (r21078)
+- Fix: Wrong (maximum) value shown for generation seed in the in-game console [FS#4192] (r21075)
+- Fix: [Windows] Make sure to be upgraded openttd is not running when installing [FS#4212] (r21146)
+- Fix: Under some circumstances the file handle of the downloaded savegame would not be closed, and validity of the handled was not checked in all cases (r21027)
+- Fix: [NewGRF] Crash when getting an industry ID at an offset that uses some 'old' style industry tile [FS#4157] (r20912)
+
+
+1.0.5-RC1 (2010-10-31)
+------------------------------------------------------------------------
+- Change: Make OpenTTD aware of XZ/LZMA compressed savegames so loading those gives a proper error message (r21047)
+- Change: Make it possible to make .tar.xz bundles (r21042)
+- Fix: Missing default values for the custom town number in the world generation options (r21034)
+- Fix: Dropdown menu glitched in small screenshots, when issueing them from the menu (r21031)
+- Fix: Do not let the resize button go past the bottom of the screen [FS#4176] (r21015)
+- Fix: The detailed performance rating window could be too narrow [FS#4102] (r21010)
+- Fix: For the compact notation 1.000.000k and 1.000M would be shown depending on the initial (and later rounded) value. Make everything that would round to 1.000.000k be drawn as 1.000M as well (r21009)
+- Fix: Do not consider the text direction character when searching for missing glyphs (r21007)
+- Fix: Chat/console messages got sometimes messed up due to LTR names in RTL translations and vice-versa [FS#3746] (r21006, r21004)
+- Fix: Size of sort buttons for order and vehicle list gui could be too small (r20997)
+- Fix: [NewGRF] The X and Y offsets in the parameter for industry vars 60, 61, 62, 63 are unsigned instead of signed (r20996)
+- Fix: When removing a rail station, do not leave track under non-station tiles (r20990)
+- Fix: [NewGRF] Ignore the variable for Action7/9 condition type 0x0D and 0x0E as documented (r20979)
+- Fix: Crash when, while the 'go to' cursor is active, you open the order list of a vehicle of another company and then select a 'go to' destination [FS#4159] (r20916)
+- Fix: Helicopters fired a bit too late [FS#4155] (r20910)
+- Fix: Road/water toolbars did not get updated when the first vehicle of their type becomes available [FS#4141] (r20856)
+- Fix: Smallmap legend buttons must all be equal in size, even if their contents is not (r20851)
+- Fix: Deadlock when aborting map generation on Windows [FS#3707] (r20822)
+- Fix: Be a bit more lenient with invalid savegames; do not crash on saveload related NOT_REACHEDs, just show the user an error that the savegame is corrupted [FS#3714] (r20819)
+- Fix: Make the crash-on-saveload message clearer and more correct [FS#3791] (r20818)
+- Fix: [NewGRF] Clamp/convert some vehicle variables so NewGRFs get their specified range (r20800, r20799, r20792)
+- Fix: [NoAI] Document that AITile::HasTransportType does not work for TRANSPORT_AIR [FS#4117] (r20798)
+- Fix: [NewGRF] Disable houses without a size that are available according to their building flags (r20797)
+- Fix: [NewGRF] Make sure all houses in the house spec array are valid. It was possible that part of a multitile house was not copied because the array was full (r20796)
+- Fix: Building 2x2 houses did not work for 2x2 road layouts on all map sizes (r20791)
+- Fix: [NewGRF] Remove a check which is wrong for NewGRF houses and serves no use for original houses [FS#4118] (r20790)
+- Fix: Spelling mistake in Slovak real town names (r20787)
+- Fix: Do autosave-on-exit as well when using kill/CTRL-C to terminate a dedicated OpenTTD (r20783)
+- Fix: [NoAI] AIEventCompanyAskMerger was disguised as AIEventCompanyMerger (r20765)
+- Fix: [NewGRF] Assert when an industry previously build on water was flooded because its NewGRF changed/is missing [FS#4112] (r20754)
+- Fix: Do not use new game settings when creating many random towns/industries in the scenario editor [FS#4094] (r20712, r20711)
+- Fix: Graphics glitch when switching to a different-sized font while the chat message box was visible (r20705)
+- Fix: Vehicle lists of non-trains could not resize horizontally causing truncation of texts [FS#4123, FS#3955] (r20174)
+
+
 1.0.4 (2010-09-14)
 ------------------------------------------------------------------------
 - Change: Move removal of bin/data/opentt[dw].grf from distclean to maintainer-clean (r20752)
@@ -116,6 +171,7 @@
 1.0.2-RC1 (2010-06-05)
 ------------------------------------------------------------------------
 - Feature: Translated desktop shortcut comments (r19884)
+- Change: Name invalid engines, cargos and industries 'invalid', if the player removed the supplying NewGRFs, hide invalid engines from the purchase list (r19879, r19877)
 - Fix: When 'pause on new game' is set, pause the game before CleanupGeneration() to avoid conflicts with concurrent GUI code [FS#3857] (r19934)
 - Fix: Pay for the rail/road when constructing tunnels, bridges, depots and stations [FS#3859, FS#3827] (r19925, r19887, r19881)
 - Fix: Closing chatbox could cause glitches when news message was shown [FS#3865] (r19921)
@@ -155,7 +211,6 @@
 - Fix: Under some circumstances the player's name could be empty (r19693)
 - Fix: Do not show an error message when trying to give another client an amount of 0 money [FS#3779] (r19684)
 - Fix: Do not display an error message when double clicking on a vehicle in the 'available vehicles'-window (r19669)
-- Change: Name invalid engines, cargos and industries 'invalid', if the player removed the supplying NewGRFs, hide invalid engines from the purchase list (r19879, r19877)
 
 
 1.0.1 (2010-05-01)
@@ -2909,7 +2964,8 @@
 - Fix: A lot of old AI fixed
 - Fix: All scenarios, savegames show up with their correct name
 - Fix: Automatic oil refinery generation in editor
-- Fix: Autosave folder was not created on MorphOS- Fix: Bridge slope fix again, thanks Truelight
+- Fix: Autosave folder was not created on MorphOS
+- Fix: Bridge slope fix again
 - Fix: Bulldozing stuff with cheat magic_dynamite turned on does not lower city ratings
 - Fix: Change SDL_HWSURFACE back to SDL_SWSURFACE (Diablo-3D); better performance
 - Fix: Coast line near edge of map and near oilrigs
