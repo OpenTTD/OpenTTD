@@ -35,7 +35,7 @@ enum ProductionLevels {
 };
 
 /**
- * Defines the internal data of a functionnal industry
+ * Defines the internal data of a functional industry.
  */
 struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	typedef PersistentStorageArray<int32, 16> PersistentStorage;

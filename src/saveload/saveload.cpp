@@ -245,7 +245,7 @@ enum NeedLength {
 	NL_CALCLENGTH = 2, ///< need to calculate the length
 };
 
-/** The saveload struct, containing reader-writer functions, bufffer, version, etc. */
+/** The saveload struct, containing reader-writer functions, buffer, version, etc. */
 struct SaveLoadParams {
 	SaveLoadAction action;               ///< are we doing a save or a load atm.
 	NeedLength need_length;              ///< working in NeedLength (Autolength) mode?
@@ -271,7 +271,7 @@ struct SaveLoadParams {
 	FILE *fh;                            ///< the file from which is read or written to
 
 	void (*excpt_uninit)();              ///< the function to execute on any encountered error
-	StringID error_str;                  ///< the translateable error message to show
+	StringID error_str;                  ///< the translatable error message to show
 	char *extra_msg;                     ///< the error message
 };
 

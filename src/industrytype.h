@@ -55,15 +55,15 @@ enum CheckProc {
 /** How was the industry created */
 enum IndustryConstructionType {
 	ICT_UNKNOWN,          ///< in previous game version or without newindustries activated
-	ICT_NORMAL_GAMEPLAY,  ///< either by user or random creation proccess
+	ICT_NORMAL_GAMEPLAY,  ///< either by user or random creation process
 	ICT_MAP_GENERATION,   ///< during random map creation
-	ICT_SCENARIO_EDITOR   ///< while scenarion edition
+	ICT_SCENARIO_EDITOR   ///< while editing a scenario
 };
 
 /** Various industry behaviours mostly to represent original TTD specialities */
 enum IndustryBehaviour {
 	INDUSTRYBEH_NONE                  =      0,
-	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fileds around itself (temp and artic farms)
+	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fields around itself (temp and arctic farms)
 	INDUSTRYBEH_CUT_TREES             = 1 << 1,  ///< cuts trees and produce first output cargo from them (lumber mill)
 	INDUSTRYBEH_BUILT_ONWATER         = 1 << 2,  ///< is built on water (oil rig)
 	INDUSTRYBEH_TOWN1200_MORE         = 1 << 3,  ///< can only be built in towns larger than 1200 inhabitants (temperate bank)
@@ -131,8 +131,8 @@ struct IndustrySpec {
 	/* Newgrf data */
 	uint16 callback_mask;                 ///< Bitmask of industry callbacks that have to be called
 	uint8 cleanup_flag;                   ///< flags indicating which data should be freed upon cleaning up
-	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
-	GRFFileProps grf_prop;                ///< properties related the the grf file
+	bool enabled;                         ///< entity still available (by default true).newgrf can disable it, though
+	GRFFileProps grf_prop;                ///< properties related to the grf file
 
 	/**
 	 * Is an industry with the spec a raw industry?
@@ -166,7 +166,7 @@ struct IndustrySpec {
  */
 struct IndustryTileSpec {
 	CargoID accepts_cargo[3];             ///< Cargo accepted by this tile
-	uint8 acceptance[3];                  ///< Level of aceptance per cargo type
+	uint8 acceptance[3];                  ///< Level of acceptance per cargo type
 	Slope slopes_refused;                 ///< slope pattern on which this tile cannot be built
 	byte anim_production;                 ///< Animation frame to start when goods are produced
 	byte anim_next;                       ///< Next frame in an animation
@@ -176,8 +176,8 @@ struct IndustryTileSpec {
 	uint8 callback_mask;                  ///< Bitmask of industry tile callbacks that have to be called
 	AnimationInfo animation;              ///< Information about the animation (is it looping, how many loops etc)
 	IndustryTileSpecialFlags special_flags; ///< Bitmask of extra flags used by the tile
-	bool enabled;                         ///< entity still avaible (by default true).newgrf can disable it, though
-	GRFFileProps grf_prop;                ///< properties related the the grf file
+	bool enabled;                         ///< entity still available (by default true).newgrf can disable it, though
+	GRFFileProps grf_prop;                ///< properties related to the grf file
 };
 
 /* industry_cmd.cpp*/
