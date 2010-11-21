@@ -448,16 +448,16 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLEG_END() {true, SL_END, 0, 0, 0, 0, NULL}
 
 /**
- * Checks if the savegame is below \a major.\a minor.
+ * Checks whether the savegame is below \a major.\a minor.
  * @param major Major number of the version to check against.
- * @param minor Minor number of the version to check against.
- * @return Savegame version is less than the \a major version, or has equal \a major version and a smaller \a minor version.
+ * @param minor Minor number of the version to check against. If \a minor is 0 or not specified, only the major number is checked.
+ * @return Savegame version is earlier than the specified version.
  */
-static inline bool IsSavegameVersionBefore(uint16 major, byte minor)
+static inline bool IsSavegameVersionBefore(uint16 major, byte minor = 0)
 {
 	extern uint16 _sl_version;
 	extern byte   _sl_minor_version;
-	return (_sl_version < major) || (_sl_version == major && _sl_minor_version < minor);
+	return _sl_version < major || (minor > 0 && _sl_version == major && _sl_minor_version < minor);
 }
 
 /**
