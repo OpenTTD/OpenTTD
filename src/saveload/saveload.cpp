@@ -1141,7 +1141,7 @@ static void *IntToReference(size_t index, SLRefType rt)
 
 	/* After version 4.3 REF_VEHICLE_OLD is saved as REF_VEHICLE,
 	 * and should be loaded like that */
-	if (rt == REF_VEHICLE_OLD && !CheckSavegameVersionOldStyle(4, 4)) {
+	if (rt == REF_VEHICLE_OLD && !IsSavegameVersionBefore(4, 4)) {
 		rt = REF_VEHICLE;
 	}
 
@@ -1160,7 +1160,7 @@ static void *IntToReference(size_t index, SLRefType rt)
 		case REF_ORDER:
 			if (Order::IsValidID(index)) return Order::Get(index);
 			/* in old versions, invalid order was used to mark end of order list */
-			if (CheckSavegameVersionOldStyle(5, 2)) return NULL;
+			if (IsSavegameVersionBefore(5, 2)) return NULL;
 			SlErrorCorrupt("Referencing invalid Order");
 
 		case REF_VEHICLE_OLD:

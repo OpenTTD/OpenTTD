@@ -485,19 +485,19 @@ bool AfterLoadGame()
 	}
 
 	/* in version 2.1 of the savegame, town owner was unified. */
-	if (CheckSavegameVersionOldStyle(2, 1)) ConvertTownOwner();
+	if (IsSavegameVersionBefore(2, 1)) ConvertTownOwner();
 
 	/* from version 4.1 of the savegame, exclusive rights are stored at towns */
-	if (CheckSavegameVersionOldStyle(4, 1)) UpdateExclusiveRights();
+	if (IsSavegameVersionBefore(4, 1)) UpdateExclusiveRights();
 
 	/* from version 4.2 of the savegame, currencies are in a different order */
-	if (CheckSavegameVersionOldStyle(4, 2)) UpdateCurrencies();
+	if (IsSavegameVersionBefore(4, 2)) UpdateCurrencies();
 
 	/* In old version there seems to be a problem that water is owned by
 	 * OWNER_NONE, not OWNER_WATER.. I can't replicate it for the current
 	 * (4.3) version, so I just check when versions are older, and then
 	 * walk through the whole map.. */
-	if (CheckSavegameVersionOldStyle(4, 3)) {
+	if (IsSavegameVersionBefore(4, 3)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_WATER) && GetTileOwner(t) >= MAX_COMPANIES) {
 				SetTileOwner(t, OWNER_WATER);
@@ -576,7 +576,7 @@ bool AfterLoadGame()
 	}
 
 	/* The value of _date_fract got divided, so make sure that old games are converted correctly. */
-	if (CheckSavegameVersionOldStyle(11, 1) || (CheckSavegameVersion(147) && _date_fract > DAY_TICKS)) _date_fract /= 885;
+	if (IsSavegameVersionBefore(11, 1) || (CheckSavegameVersion(147) && _date_fract > DAY_TICKS)) _date_fract /= 885;
 
 	/* Update current year
 	 * must be done before loading sprites as some newgrfs check it */
@@ -594,7 +594,7 @@ bool AfterLoadGame()
 
 	/* Connect front and rear engines of multiheaded trains and converts
 	 * subtype to the new format */
-	if (CheckSavegameVersionOldStyle(17, 1)) ConvertOldMultiheadToNew();
+	if (IsSavegameVersionBefore(17, 1)) ConvertOldMultiheadToNew();
 
 	/* Connect front and rear engines of multiheaded trains */
 	ConnectMultiheadedTrains();
@@ -773,12 +773,12 @@ bool AfterLoadGame()
 
 	/* In version 2.2 of the savegame, we have new airports, so status of all aircraft is reset.
 	 * This has to be called after the oilrig airport_type update above ^^^ ! */
-	if (CheckSavegameVersionOldStyle(2, 2)) UpdateOldAircraft();
+	if (IsSavegameVersionBefore(2, 2)) UpdateOldAircraft();
 
 	/* In version 6.1 we put the town index in the map-array. To do this, we need
 	 *  to use m2 (16bit big), so we need to clean m2, and that is where this is
 	 *  all about ;) */
-	if (CheckSavegameVersionOldStyle(6, 1)) {
+	if (IsSavegameVersionBefore(6, 1)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			switch (GetTileType(t)) {
 				case MP_HOUSE:
@@ -1101,7 +1101,7 @@ bool AfterLoadGame()
 	/* In version 16.1 of the savegame a company can decide if trains, which get
 	 * replaced, shall keep their old length. In all prior versions, just default
 	 * to false */
-	if (CheckSavegameVersionOldStyle(16, 1)) {
+	if (IsSavegameVersionBefore(16, 1)) {
 		Company *c;
 		FOR_ALL_COMPANIES(c) c->settings.renew_keep_length = false;
 	}

@@ -50,7 +50,7 @@ static void Load_SIGN()
 		 *  - we can't use IsValidCompany() now, so this is fixed in AfterLoadGame()
 		 * All signs that were saved are valid (including those with just 'Sign' and INVALID_OWNER).
 		 *  - so set owner to OWNER_NONE if needed (signs from pre-version 6.1 would be lost) */
-		if (CheckSavegameVersionOldStyle(6, 1) || (CheckSavegameVersion(83) && si->owner == INVALID_OWNER)) {
+		if (IsSavegameVersionBefore(6, 1) || (CheckSavegameVersion(83) && si->owner == INVALID_OWNER)) {
 			si->owner = OWNER_NONE;
 		}
 	}

@@ -129,7 +129,7 @@ static void Save_ORDR()
 
 static void Load_ORDR()
 {
-	if (CheckSavegameVersionOldStyle(5, 2)) {
+	if (IsSavegameVersionBefore(5, 2)) {
 		/* Version older than 5.2 did not have a ->next pointer. Convert them
 		 * (in the old days, the orderlist was 5000 items big) */
 		size_t len = SlGetFieldLength();
@@ -148,7 +148,7 @@ static void Load_ORDR()
 			}
 
 			free(orders);
-		} else if (CheckSavegameVersionOldStyle(5, 2)) {
+		} else if (IsSavegameVersionBefore(5, 2)) {
 			len /= sizeof(uint32);
 			uint32 *orders = MallocT<uint32>(len + 1);
 
@@ -187,7 +187,7 @@ static void Load_ORDR()
 static void Ptrs_ORDR()
 {
 	/* Orders from old savegames have pointers corrected in Load_ORDR */
-	if (CheckSavegameVersionOldStyle(5, 2)) return;
+	if (IsSavegameVersionBefore(5, 2)) return;
 
 	Order *o;
 

@@ -453,7 +453,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param minor Minor number of the version to check against.
  * @return Savegame version is less than the \a major version, or has equal \a major version and a smaller \a minor version.
  */
-static inline bool CheckSavegameVersionOldStyle(uint16 major, byte minor)
+static inline bool IsSavegameVersionBefore(uint16 major, byte minor)
 {
 	extern uint16 _sl_version;
 	extern byte   _sl_minor_version;
