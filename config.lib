@@ -1164,15 +1164,74 @@ make_compiler_cflags() {
 		flags="$flags -rdynamic"
 		ldflags="$ldflags -rdynamic"
 
-		if [ $cc_version -ge 101 ]; then
-			flags="$flags -Wno-multichar"
+		if [ -z "$first_time_icc_check" ]; then
+			first_time_icc_check=no
+			if [ $cc_version -lt 90 ]; then
+				log 1 "WARNING: you seem to be using very old version of ICC"
+				log 1 "WARNING: OpenTTD hasn't been tested with this version"
+				sleep 5
+			elif [ $cc_version -lt 120 ]; then
+				log 1 "WARNING: you seem to be using unsupported ICC version"
+				log 1 "WARNING: ICC older than 12.0 is known to fail to compile OpenTTD"
+				sleep 5
+			fi
+		fi
+
+		flags="$flags -Wall"
+		# remark #111: statement is unreachable
+		flags="$flags -wd111"
+		# remark #181: argument is incompatible with corresponding format string conversion
+		# ICC is very picky about signedness of operands, warnings provided by GCC are enough
+		flags="$flags -wd181"
+		# remark #271: trailing comma is nonstandard
+		flags="$flags -wd271"
+		# remark #280: selector expression is constant
+		flags="$flags -wd280"
+		# remark #304: access control not specified ("public" by default)
+		flags="$flags -wd304"
+		# remark #383: value copied to temporary, reference to temporary used
+		flags="$flags -wd383"
+		# remark #444: destructor for base class ... is not virtual
+		flags="$flags -wd444"
+		# remark #593: variable ... was set but never used
+		flags="$flags -wd593"
+		# warning #654: overloaded virtual function ... is only partially overridden in class ...
+		flags="$flags -wd654"
+		# remark #810: conversion from ... to ... may lose significant bits
+		flags="$flags -wd810"
+		# remark #869: parameter ... was never referenced
+		flags="$flags -wd869"
+		# warning #873: function ... ::operator new ... has no corresponding operator delete ...
+		flags="$flags -wd873"
+		# remark #981: operands are evaluated in unspecified order
+		flags="$flags -wd981"
+		# remark #1418: external function definition with no prior declaration
+		flags="$flags -wd1418"
+		# remark #1419: external declaration in primary source file
+		flags="$flags -wd1419"
+		# remark #1572: floating-point equality and inequality
+		flags="$flags -wd1572"
+		# remark #1599: declaration hides variable/parameter ...
+		flags="$flags -wd1599"
+		# remark #1720: function ... ::operator new ... has no corresponding member operator delete ...
+		flags="$flags -wd1720"
+
+		if [ $cc_version -lt 110 ]; then
+			# warns about system headers with recent glibc:
+			# warning #1292: attribute "__nonnull__" ignored
+			flags="$flags -wd1292"
+		fi
+
+		if [ $cc_version -ge 100 ]; then
+			# warning #1899: multicharacter character literal (potential portability problem)
+			flags="$flags -wd1899"
+			# vec report defaults to telling where it did loop vectorisation, which is not very important
+			flags="$flags -vec-report=0 "
 		fi
 
 		if [ $cc_version -ge 110 ]; then
-			# vec report defaults to telling where it did loop vectorisation, which is not very important
-			# it also complains about not fully overriding virtual function
-			flags="$flags -vec-report=0 -wd873 -wd654"
-
+			# remark #2259: non-pointer conversion from ... to ... may lose significant bits
+			flags="$flags -wd2259"
 			# Use c++0x mode so static_assert() is available
 			cxxflags="$cxxflags -std=c++0x"
 		fi
