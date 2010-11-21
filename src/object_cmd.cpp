@@ -371,6 +371,23 @@ static void ReallyClearObjectTile(Object *o)
 
 SmallVector<ClearedObjectArea, 4> _cleared_object_areas;
 
+/**
+ * Find the entry in _cleared_object_areas which occupies a certain tile.
+ * @param tile Tile of interest
+ * @return Occupying entry, or NULL if none
+ */
+ClearedObjectArea *FindClearedObject(TileIndex tile)
+{
+	TileArea ta = TileArea(tile, 1, 1);
+
+	const ClearedObjectArea *end = _cleared_object_areas.End();
+	for (ClearedObjectArea *coa = _cleared_object_areas.Begin(); coa != end; coa++) {
+		if (coa->area.Intersects(ta)) return coa;
+	}
+
+	return NULL;
+}
+
 static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 {
 	ObjectType type = GetObjectType(tile);

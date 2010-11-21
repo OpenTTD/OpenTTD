@@ -614,22 +614,22 @@ CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		do_clear = true;
 		cost.AddCost(GetWaterClass(tile) == WATER_CLASS_CANAL ? _price[PR_CLEAR_CANAL] : _price[PR_CLEAR_WATER]);
 	}
-	for (uint i = 0; i < _cleared_object_areas.Length(); i++) {
-		/* If this tile was the first tile which caused object destruction, always
-		 * pass it on to the tile_type_proc. That way multiple test runs and the exec run stay consistent. */
-		if (_cleared_object_areas[i].first_tile == tile) break;
 
+	const ClearedObjectArea *coa = FindClearedObject(tile);
+
+	/* If this tile was the first tile which caused object destruction, always
+	 * pass it on to the tile_type_proc. That way multiple test runs and the exec run stay consistent. */
+	if (coa != NULL && coa->first_tile != tile) {
 		/* If this tile belongs to an object which was already cleared via another tile, pretend it has been
 		 * already removed.
 		 * However, we need to check stuff, which is not the same for all object tiles. (e.g. being on water or not) */
-		if (_cleared_object_areas[i].area.Intersects(TileArea(tile, 1, 1))) {
-			/* If a object is removed, it leaves either bare land or water. */
-			if ((flags & DC_NO_WATER) && HasTileWaterClass(tile) && IsTileOnWater(tile)) {
-				return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
-			}
-			if (do_clear && (flags & DC_EXEC)) DoClearSquare(tile);
-			return cost;
+
+		/* If a object is removed, it leaves either bare land or water. */
+		if ((flags & DC_NO_WATER) && HasTileWaterClass(tile) && IsTileOnWater(tile)) {
+			return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 		}
+		if (do_clear && (flags & DC_EXEC)) DoClearSquare(tile);
+		return cost;
 	}
 	cost.AddCost(_tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags));
 	if (do_clear && (flags & DC_EXEC)) DoClearSquare(tile);

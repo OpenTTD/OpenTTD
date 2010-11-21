@@ -95,6 +95,7 @@ struct ClearedObjectArea {
 	TileArea area;         ///< The area of the object.
 };
 
+ClearedObjectArea *FindClearedObject(TileIndex tile);
 extern SmallVector<ClearedObjectArea, 4> _cleared_object_areas;
 
 #endif /* OBJECT_BASE_H */
