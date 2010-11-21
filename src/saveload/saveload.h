@@ -27,14 +27,15 @@ enum SaveOrLoadResult {
 	SL_REINIT = 2, ///< error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
 };
 
+/** Save or load mode. @see SaveOrLoad */
 enum SaveOrLoadMode {
-	SL_INVALID    = -1,
-	SL_LOAD       =  0,
-	SL_SAVE       =  1,
-	SL_OLD_LOAD   =  2,
-	SL_PNG        =  3,
-	SL_BMP        =  4,
-	SL_LOAD_CHECK =  5,
+	SL_INVALID    = -1, ///< Invalid mode.
+	SL_LOAD       =  0, ///< Load game.
+	SL_SAVE       =  1, ///< Save game.
+	SL_OLD_LOAD   =  2, ///< Load old game.
+	SL_PNG        =  3, ///< Load PNG file (height map).
+	SL_BMP        =  4, ///< Load BMP file (height map).
+	SL_LOAD_CHECK =  5, ///< Load for game preview.
 };
 
 /** Types of save games. */
@@ -58,39 +59,43 @@ void DoExitSave();
 typedef void ChunkSaveLoadProc();
 typedef void AutolengthProc(void *arg);
 
+/** Handlers and description of chunk. */
 struct ChunkHandler {
-	uint32 id;
-	ChunkSaveLoadProc *save_proc;
-	ChunkSaveLoadProc *load_proc;
-	ChunkSaveLoadProc *ptrs_proc;
-	ChunkSaveLoadProc *load_check_proc;
-	uint32 flags;
+	uint32 id;                          ///< Unique ID (4 letters).
+	ChunkSaveLoadProc *save_proc;       ///< Save procedure of the chunk.
+	ChunkSaveLoadProc *load_proc;       ///< Load procedure of the chunk.
+	ChunkSaveLoadProc *ptrs_proc;       ///< Manipulate pointers in the chunk.
+	ChunkSaveLoadProc *load_check_proc; ///< Load procedure for game preview.
+	uint32 flags;                       ///< Flags of the chunk. @see ChunkType
 };
 
 struct NullStruct {
 	byte null;
 };
 
+/** Type of reference (#SLE_REF, #SLE_CONDREF). */
 enum SLRefType {
-	REF_ORDER         = 0,
-	REF_VEHICLE       = 1,
-	REF_STATION       = 2,
-	REF_TOWN          = 3,
-	REF_VEHICLE_OLD   = 4,
-	REF_ROADSTOPS     = 5,
-	REF_ENGINE_RENEWS = 6,
-	REF_CARGO_PACKET  = 7,
-	REF_ORDERLIST     = 8,
+	REF_ORDER         = 0, ///< Load/save a reference to an order.
+	REF_VEHICLE       = 1, ///< Load/save a reference to a vehicle.
+	REF_STATION       = 2, ///< Load/save a reference to a station.
+	REF_TOWN          = 3, ///< Load/save a reference to a town.
+	REF_VEHICLE_OLD   = 4, ///< Load/save an old-style reference to a vehicle (for pre-4.4 savegames).
+	REF_ROADSTOPS     = 5, ///< Load/save a reference to a bus/truck stop.
+	REF_ENGINE_RENEWS = 6, ///< Load/save a reference to an engine renewal (autoreplace).
+	REF_CARGO_PACKET  = 7, ///< Load/save a reference to a cargo packet.
+	REF_ORDERLIST     = 8, ///< Load/save a reference to an orderlist.
 };
 
+/** Highest possible savegame version. */
 #define SL_MAX_VERSION 255
 
+/** Flags of a chunk. */
 enum ChunkType {
 	CH_RIFF         =  0,
 	CH_ARRAY        =  1,
 	CH_SPARSE_ARRAY =  2,
 	CH_TYPE_MASK    =  3,
-	CH_LAST         =  8,
+	CH_LAST         =  8, ///< Last chunk in this array.
 	CH_AUTO_LENGTH  = 16,
 };
 
@@ -175,12 +180,13 @@ enum VarTypes {
 
 typedef uint32 VarType;
 
+/** Type of data saved. */
 enum SaveLoadTypes {
-	SL_VAR         =  0,
-	SL_REF         =  1,
-	SL_ARR         =  2,
-	SL_STR         =  3,
-	SL_LST         =  4,
+	SL_VAR         =  0, ///< Save/load a variable.
+	SL_REF         =  1, ///< Save/load a reference.
+	SL_ARR         =  2, ///< Save/load an array.
+	SL_STR         =  3, ///< Save/load a string.
+	SL_LST         =  4, ///< Save/load a list.
 	/* non-normal save-load types */
 	SL_WRITEBYTE   =  8,
 	SL_VEH_INCLUDE =  9,
@@ -188,7 +194,7 @@ enum SaveLoadTypes {
 	SL_END         = 15
 };
 
-typedef byte SaveLoadType;
+typedef byte SaveLoadType; ///< Save/load type. @see SaveLoadTypes
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 struct SaveLoad {
@@ -205,56 +211,247 @@ struct SaveLoad {
 	void *address;       ///< address of variable OR offset of variable in the struct (max offset is 65536)
 };
 
-/* Same as SaveLoad but global variables are used (for better readability); */
+/** Same as #SaveLoad but global variables are used (for better readability); */
 typedef SaveLoad SaveLoadGlobVarList;
 
-/* Simple variables, references (pointers) and arrays */
+/**
+ * Storage of simple variables, references (pointers), and arrays.
+ * @param cmd      Load/save type. @see SaveLoadType
+ * @param base     Name of the class or struct containing the variable.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the field.
+ * @param to       Last savegame version that has the field.
+ * @note In general, it is better to use one of the SLE_* macros below.
+ */
 #define SLE_GENERAL(cmd, base, variable, type, length, from, to) {false, cmd, type, length, from, to, (void*)cpp_offsetof(base, variable)}
+
+/**
+ * Storage of a variable in some savegame versions.
+ * @param base     Name of the class or struct containing the variable.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the field.
+ * @param to       Last savegame version that has the field.
+ */
 #define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SL_VAR, base, variable, type, 0, from, to)
+
+/**
+ * Storage of a reference in some savegame versions.
+ * @param base     Name of the class or struct containing the variable.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Type of the reference, a value from #SLRefType.
+ * @param from     First savegame version that has the field.
+ * @param to       Last savegame version that has the field.
+ */
 #define SLE_CONDREF(base, variable, type, from, to) SLE_GENERAL(SL_REF, base, variable, type, 0, from, to)
+
+/**
+ * Storage of an array in some savegame versions.
+ * @param base     Name of the class or struct containing the array.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the array.
+ * @param from     First savegame version that has the array.
+ * @param to       Last savegame version that has the array.
+ */
 #define SLE_CONDARR(base, variable, type, length, from, to) SLE_GENERAL(SL_ARR, base, variable, type, length, from, to)
+
+/**
+ * Storage of a string in some savegame versions.
+ * @param base     Name of the class or struct containing the string.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the string (only used for fixed size buffers).
+ * @param from     First savegame version that has the string.
+ * @param to       Last savegame version that has the string.
+ */
 #define SLE_CONDSTR(base, variable, type, length, from, to) SLE_GENERAL(SL_STR, base, variable, type, length, from, to)
+
+/**
+ * Storage of a list in some savegame versions.
+ * @param base     Name of the class or struct containing the list.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the list.
+ * @param to       Last savegame version that has the list.
+ */
 #define SLE_CONDLST(base, variable, type, from, to) SLE_GENERAL(SL_LST, base, variable, type, 0, from, to)
 
+/**
+ * Storage of a variable in every version of a savegame.
+ * @param base     Name of the class or struct containing the variable.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
 #define SLE_VAR(base, variable, type) SLE_CONDVAR(base, variable, type, 0, SL_MAX_VERSION)
+
+/**
+ * Storage of a reference in every version of a savegame.
+ * @param base     Name of the class or struct containing the variable.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Type of the reference, a value from #SLRefType.
+ */
 #define SLE_REF(base, variable, type) SLE_CONDREF(base, variable, type, 0, SL_MAX_VERSION)
+
+/**
+ * Storage of an array in every version of a savegame.
+ * @param base     Name of the class or struct containing the array.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the array.
+ */
 #define SLE_ARR(base, variable, type, length) SLE_CONDARR(base, variable, type, length, 0, SL_MAX_VERSION)
+
+/**
+ * Storage of a string in every savegame version.
+ * @param base     Name of the class or struct containing the string.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the string (only used for fixed size buffers).
+ */
 #define SLE_STR(base, variable, type, length) SLE_CONDSTR(base, variable, type, length, 0, SL_MAX_VERSION)
+
+/**
+ * Storage of a list in every savegame version.
+ * @param base     Name of the class or struct containing the list.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
 #define SLE_LST(base, variable, type) SLE_CONDLST(base, variable, type, 0, SL_MAX_VERSION)
+
+/**
+ * Empty space in every savegame version.
+ * @param length Length of the empty space.
+ */
 #define SLE_NULL(length) SLE_CONDNULL(length, 0, SL_MAX_VERSION)
 
+/**
+ * Empty space in some savegame versions.
+ * @param length Length of the empty space.
+ * @param from   First savegame version that has the empty space.
+ * @param to     Last savegame version that has the empty space.
+ */
 #define SLE_CONDNULL(length, from, to) SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL | SLF_CONFIG_NO, length, from, to)
 
-/* Translate values ingame to different values in the savegame and vv */
+/** Translate values ingame to different values in the savegame and vv. */
 #define SLE_WRITEBYTE(base, variable, value) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, value, value)
 
 #define SLE_VEH_INCLUDE() {false, SL_VEH_INCLUDE, 0, 0, 0, SL_MAX_VERSION, NULL}
 #define SLE_ST_INCLUDE() {false, SL_ST_INCLUDE, 0, 0, 0, SL_MAX_VERSION, NULL}
 
-/* End marker */
+/** End marker of a struct/class save or load. */
 #define SLE_END() {false, SL_END, 0, 0, 0, 0, NULL}
 
-/* Simple variables, references (pointers) and arrays, but for global variables */
+/**
+ * Storage of global simple variables, references (pointers), and arrays.
+ * @param cmd      Load/save type. @see SaveLoadType
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the field.
+ * @param to       Last savegame version that has the field.
+ * @note In general, it is better to use one of the SLEG_* macros below.
+ */
 #define SLEG_GENERAL(cmd, variable, type, length, from, to) {true, cmd, type, length, from, to, (void*)&variable}
 
+/**
+ * Storage of a global variable in some savegame versions.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the field.
+ * @param to       Last savegame version that has the field.
+ */
 #define SLEG_CONDVAR(variable, type, from, to) SLEG_GENERAL(SL_VAR, variable, type, 0, from, to)
+
+/**
+ * Storage of a global reference in some savegame versions.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the field.
+ * @param to       Last savegame version that has the field.
+ */
 #define SLEG_CONDREF(variable, type, from, to) SLEG_GENERAL(SL_REF, variable, type, 0, from, to)
+
+/**
+ * Storage of a global array in some savegame versions.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the array.
+ * @param from     First savegame version that has the array.
+ * @param to       Last savegame version that has the array.
+ */
 #define SLEG_CONDARR(variable, type, length, from, to) SLEG_GENERAL(SL_ARR, variable, type, length, from, to)
+
+/**
+ * Storage of a global string in some savegame versions.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param length   Number of elements in the string (only used for fixed size buffers).
+ * @param from     First savegame version that has the string.
+ * @param to       Last savegame version that has the string.
+ */
 #define SLEG_CONDSTR(variable, type, length, from, to) SLEG_GENERAL(SL_STR, variable, type, length, from, to)
+
+/**
+ * Storage of a global list in some savegame versions.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the list.
+ * @param to       Last savegame version that has the list.
+ */
 #define SLEG_CONDLST(variable, type, from, to) SLEG_GENERAL(SL_LST, variable, type, 0, from, to)
 
+/**
+ * Storage of a global variable in every savegame version.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
 #define SLEG_VAR(variable, type) SLEG_CONDVAR(variable, type, 0, SL_MAX_VERSION)
+
+/**
+ * Storage of a global reference in every savegame version.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
 #define SLEG_REF(variable, type) SLEG_CONDREF(variable, type, 0, SL_MAX_VERSION)
+
+/**
+ * Storage of a global array in every savegame version.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
 #define SLEG_ARR(variable, type) SLEG_CONDARR(variable, type, lengthof(variable), 0, SL_MAX_VERSION)
+
+/**
+ * Storage of a global string in every savegame version.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
 #define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, lengthof(variable), 0, SL_MAX_VERSION)
+
+/**
+ * Storage of a global list in every savegame version.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
 #define SLEG_LST(variable, type) SLEG_CONDLST(variable, type, 0, SL_MAX_VERSION)
 
+/**
+ * Empty global space in some savegame versions.
+ * @param length Length of the empty space.
+ * @param from   First savegame version that has the empty space.
+ * @param to     Last savegame version that has the empty space.
+ */
 #define SLEG_CONDNULL(length, from, to) {true, SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_CONFIG_NO, length, from, to, (void*)NULL}
 
+/** End marker of global variables save or load. */
 #define SLEG_END() {true, SL_END, 0, 0, 0, 0, NULL}
 
 /**
- * Checks if the savegame is below major.minor.
+ * Checks if the savegame is below \a major.\a minor.
+ * @param major Major number of the version to check against.
+ * @param minor Minor number of the version to check against.
+ * @return Savegame version is less than the \a major version, or has equal \a major version and a smaller \a minor version.
  */
 static inline bool CheckSavegameVersionOldStyle(uint16 major, byte minor)
 {
@@ -264,7 +461,9 @@ static inline bool CheckSavegameVersionOldStyle(uint16 major, byte minor)
 }
 
 /**
- * Checks if the savegame is below version.
+ * Checks if the savegame is below \a version.
+ * @param version First version that is too large.
+ * @return Savegame version equal or larger than \a version.
  */
 static inline bool CheckSavegameVersion(uint16 version)
 {
@@ -274,7 +473,10 @@ static inline bool CheckSavegameVersion(uint16 version)
 
 /**
  * Checks if some version from/to combination falls within the range of the
- * active savegame version
+ * active savegame version.
+ * @param version_from Lowest version number that falls within the range.
+ * @param version_to   Highest version number that falls within the range.
+ * @return Active savegame version falls within the given range.
  */
 static inline bool SlIsObjectCurrentlyValid(uint16 version_from, uint16 version_to)
 {
@@ -296,9 +498,9 @@ static inline VarType GetVarMemType(VarType type)
 }
 
 /**
- * Get the FileType of a setting. This describes the integer type
+ * Get the #FileType of a setting. This describes the integer type
  * as it is represented in a savegame/file
- * @param type VarType holding information about the variable-type
+ * @param type VarType holding information about the file-type
  * @param return the SLE_FILE_* part of a variable-type description
  */
 static inline VarType GetVarFileType(VarType type)

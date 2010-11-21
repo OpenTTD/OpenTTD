@@ -304,6 +304,7 @@ extern const ChunkHandler _labelmaps_chunk_handlers[];
 extern const ChunkHandler _airport_chunk_handlers[];
 extern const ChunkHandler _object_chunk_handlers[];
 
+/** Array of all chunks in a savegame, \c NULL terminated. */
 static const ChunkHandler * const _chunk_handlers[] = {
 	_gamelog_chunk_handlers,
 	_map_chunk_handlers,
@@ -2273,6 +2274,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 	}
 }
 
+/** Thread run function for saving the file to disk. */
 static void SaveFileToDiskThread(void *arg)
 {
 	SaveFileToDisk(true);
@@ -2291,10 +2293,10 @@ void WaitTillSaved()
  * Main Save or Load function where the high-level saveload functions are
  * handled. It opens the savegame, selects format and checks versions
  * @param filename The name of the savegame being created/loaded
- * @param mode Save or load. Load can also be a TTD(Patch) game. Use SL_LOAD, SL_OLD_LOAD or SL_SAVE
+ * @param mode Save or load mode. Load can also be a TTD(Patch) game. Use #SL_LOAD, #SL_OLD_LOAD, #SL_LOAD_CHECK, or #SL_SAVE.
  * @param sb The sub directory to save the savegame in
  * @param threaded True when threaded saving is allowed
- * @return Return the results of the action. SL_OK, SL_ERROR or SL_REINIT ("unload" the game)
+ * @return Return the result of the action. #SL_OK, #SL_ERROR, or #SL_REINIT ("unload" the game)
  */
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, bool threaded)
 {
