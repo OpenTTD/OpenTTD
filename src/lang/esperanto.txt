@@ -166,13 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NENIU
 STR_ABBREV_ALL                                                  :{TINYFONT}ĈIU
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} pasaĝeroj
-STR_BAGS                                                        :{COMMA} sakoj
-STR_TONS                                                        :{COMMA} tunoj
-STR_LITERS                                                      :{COMMA} litroj
-STR_ITEMS                                                       :{COMMA} pecoj
-STR_CRATES                                                      :{COMMA} kestoj
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
+STR_PASSENGERS                                                  :{COMMA} pasaĝero{P "" j}
+STR_BAGS                                                        :{COMMA} sako{P "" j}
+STR_TONS                                                        :{COMMA} tuno{P "" j}
+STR_LITERS                                                      :{COMMA} litro{P "" j}
+STR_ITEMS                                                       :{COMMA} peco{P "" j}
+STR_CRATES                                                      :{COMMA} kesto{P "" j}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Malhelblua
@@ -935,6 +934,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Ŝaltu �
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrana montrogrando
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Elektu uzotan ekranan montrograndon
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekranfota formato
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Elektu uzotan ekranfotan formaton
@@ -1762,6 +1762,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :provis uzi filu
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servilo plenas
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estis sendanta tro da komandojn
 ############ End of leave-in-this-order
+
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2741,7 +2742,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rapido: 
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Irkosto: {GOLD}po {CURRENCY} jare
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapablo: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(transformebla)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Pripensite: {GOLD}{NUM}{BLACK} Vivlongo: {GOLD}{COMMA} jaroj
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Pripensite: {GOLD}{NUM}{BLACK} Vivlongo: {GOLD}{COMMA} jaro{P "" j}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Pleja Fidebleco: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosto: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pezo: {GOLD}{WEIGHT_S} ({WEIGHT_S})

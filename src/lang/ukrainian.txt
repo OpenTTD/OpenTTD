@@ -296,7 +296,6 @@ STR_TONS                                                        :{COMMA} тон�
 STR_LITERS                                                      :{COMMA} літрів
 STR_ITEMS                                                       :{COMMA} штук
 STR_CRATES                                                      :{COMMA} ящики
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Темно-синій
@@ -409,6 +408,7 @@ STR_SORT_BY_RATING_MIN                                          :Найнижч�
 STR_SORT_BY_ENGINE_ID                                           :за ID (класичне)
 STR_SORT_BY_COST                                                :за ціною
 STR_SORT_BY_POWER                                               :за потужністю
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Тягова сила
 STR_SORT_BY_INTRO_DATE                                          :за датою випуску
 STR_SORT_BY_RUNNING_COST                                        :за вартістю експлуатації
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :за потужністю/вартістю експлуатації
@@ -1066,6 +1066,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Нати
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Роздільна здатність
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть роздільну здатність екрану
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат копій екрану
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Виберіть формат для створення копій екрану
@@ -1427,6 +1428,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Пол�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Ліворуч
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :По центру
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Праворуч
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Позиція панелі статусу: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Ліворуч
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Посередині
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Праворуч
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радіус прилипання вікон: {ORANGE}{STRING} пікс.
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилипання вікон {ORANGE}вимкнено
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}М'який ліміт вікна (не прилипає): {ORANGE}{STRING}
@@ -1907,6 +1912,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :спроба г
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сервер переповнений
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :посилав забагато команд
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Можлива втрата з'єднання
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}На протязі {NUM} секунд{P и "" ""} не надійшло жодної інформації від сервера
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2950,7 +2958,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Поту
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Переобладнати на: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
 STR_PURCHASE_INFO_ALL_BUT                                       :Всі крім {GOLD}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тяглова сила: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тягова сила: {GOLD}{FORCE}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список поїздів - клікніть на поїзді для інформації
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список авто - натисніть на авто для інформації
@@ -3244,6 +3252,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Міст
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Переобладнання)
 STR_REFIT_TITLE                                                 :{GOLD}Виберіть вид вантажу для перевезення:-
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нова місткість: {GOLD}{CARGO}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нова місткість: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Виберіть вид вантажу для перевезення
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Оберіть тип вантажу для перевезення
@@ -4219,6 +4228,7 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS цисте�
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh вантажівка для фруктів
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl вантажівка для фруктів
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling вантажівка для фруктів
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh вантажівка для каучуку
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl вантажівка для каучука
 STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMTвантажівка для каучука
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover вантажівка для цукру
