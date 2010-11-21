@@ -89,7 +89,7 @@ enum AdminUpdateFrequency {
 	ADMIN_FREQUENCY_ANUALLY   = 0x20, ///< The admin gets information about this on a yearly basis.
 	ADMIN_FREQUENCY_AUTOMATIC = 0x40, ///< The admin gets information about this when it changes.
 };
-DECLARE_ENUM_AS_BIT_SET(AdminUpdateFrequency);
+DECLARE_ENUM_AS_BIT_SET(AdminUpdateFrequency)
 
 /** Reasons for removing a company - communicated to admins. */
 enum AdminCompanyRemoveReason {
