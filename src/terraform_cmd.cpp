@@ -17,6 +17,7 @@
 #include "functions.h"
 #include "economy_func.h"
 #include "genworld.h"
+#include "object_base.h"
 
 #include "table/strings.h"
 
@@ -275,8 +276,10 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		total_cost.AddCost(cost);
 	}
 
-	/* Check if the terraforming is valid wrt. tunnels, bridges and objects on the surface */
-	{
+	/* Check if the terraforming is valid wrt. tunnels, bridges and objects on the surface
+	 * Pass == 0: Collect tileareas which are caused to be auto-cleared.
+	 * Pass == 1: Collect the actual cost. */
+	for (int pass = 0; pass < 2; pass++) {
 		TileIndex *ti = ts.tile_table;
 
 		for (int count = ts.tile_table_count; count != 0; count--, ti++) {
@@ -315,16 +318,31 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 				_terraform_err_tile = tile; // highlight the tile above the tunnel
 				return_cmd_error(STR_ERROR_EXCAVATION_WOULD_DAMAGE);
 			}
+
+			/* Is the tile already cleared? */
+			const ClearedObjectArea *coa = FindClearedObject(tile);
+			bool indirectly_cleared = coa != NULL && coa->first_tile != tile;
+
 			/* Check tiletype-specific things, and add extra-cost */
 			const bool curr_gen = _generating_world;
 			if (_game_mode == GM_EDITOR) _generating_world = true; // used to create green terraformed land
-			CommandCost cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, flags | DC_AUTO | DC_FORCE_CLEAR_TILE, z_min * TILE_HEIGHT, tileh);
+			DoCommandFlag tile_flags = flags | DC_AUTO | DC_FORCE_CLEAR_TILE;
+			if (pass == 0) {
+				tile_flags &= ~DC_EXEC;
+				tile_flags |= DC_NO_MODIFY_TOWN_RATING;
+			}
+			CommandCost cost;
+			if (indirectly_cleared) {
+				cost = DoCommand(tile, 0, 0, tile_flags, CMD_LANDSCAPE_CLEAR);
+			} else {
+				cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, tile_flags, z_min * TILE_HEIGHT, tileh);
+			}
 			_generating_world = curr_gen;
 			if (cost.Failed()) {
 				_terraform_err_tile = tile;
 				return cost;
 			}
-			total_cost.AddCost(cost);
+			if (pass == 1) total_cost.AddCost(cost);
 		}
 	}
 

@@ -38,6 +38,7 @@
 #include "pbs.h"
 #include "company_base.h"
 #include "newgrf_railtype.h"
+#include "object_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -583,23 +584,31 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 	if (IsWaterTile(end_tile)) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 
+	/* Clear the tile in any case */
+	ret = DoCommand(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	if (ret.Failed()) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
+	cost.AddCost(ret);
+
 	/* slope of end tile must be complementary to the slope of the start tile */
 	if (end_tileh != ComplementSlope(start_tileh)) {
-		/* Check if there is a structure on the terraformed tile. Do not add the cost, that will be done by the terraforming
-		 * Note: Currently the town rating is also affected by this clearing-test. So effectivly the player is punished twice for clearing
-		 *       the tree on end_tile.
-		 */
-		ret = DoCommand(end_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR);
-		if (ret.Failed()) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
+		/* Mark the tile as already cleared for the terraform command.
+		 * Do this for all tiles (like trees), not only objects. */
+		ClearedObjectArea *coa = FindClearedObject(end_tile);
+		if (coa == NULL) {
+			coa = _cleared_object_areas.Append();
+			coa->first_tile = end_tile;
+			coa->area = TileArea(end_tile, 1, 1);
+		}
 
+		/* Hide the tile from the terraforming command */
+		TileIndex old_first_tile = coa->first_tile;
+		coa->first_tile = INVALID_TILE;
 		ret = DoCommand(end_tile, end_tileh & start_tileh, 0, flags, CMD_TERRAFORM_LAND);
+		coa->first_tile = old_first_tile;
 		if (ret.Failed()) return_cmd_error(STR_ERROR_UNABLE_TO_EXCAVATE_LAND);
-	} else {
-		ret = DoCommand(end_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-		if (ret.Failed()) return ret;
+		cost.AddCost(ret);
 	}
 	cost.AddCost(_price[PR_BUILD_TUNNEL]);
-	cost.AddCost(ret);
 
 	/* Pay for the rail/road in the tunnel including entrances */
 	switch (transport_type) {
