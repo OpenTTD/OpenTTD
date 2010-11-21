@@ -34,9 +34,9 @@ static void Save_ANIT()
 static void Load_ANIT()
 {
 	/* Before version 80 we did NOT have a variable length animated tile table */
-	if (CheckSavegameVersion(80)) {
+	if (IsSavegameVersionBefore(80)) {
 		/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
-		SlArray(_animated_tile_list, 256, CheckSavegameVersion(6) ? (SLE_FILE_U16 | SLE_VAR_U32) : SLE_UINT32);
+		SlArray(_animated_tile_list, 256, IsSavegameVersionBefore(6) ? (SLE_FILE_U16 | SLE_VAR_U32) : SLE_UINT32);
 
 		for (_animated_tile_count = 0; _animated_tile_count < 256; _animated_tile_count++) {
 			if (_animated_tile_list[_animated_tile_count] == 0) break;

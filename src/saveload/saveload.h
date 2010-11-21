@@ -461,17 +461,6 @@ static inline bool IsSavegameVersionBefore(uint16 major, byte minor = 0)
 }
 
 /**
- * Checks if the savegame is below \a version.
- * @param version First version that is too large.
- * @return Savegame version equal or larger than \a version.
- */
-static inline bool CheckSavegameVersion(uint16 version)
-{
-	extern uint16 _sl_version;
-	return _sl_version < version;
-}
-
-/**
  * Checks if some version from/to combination falls within the range of the
  * active savegame version.
  * @param version_from Lowest version number that falls within the range.

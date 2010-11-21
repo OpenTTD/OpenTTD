@@ -1189,7 +1189,7 @@ static void PrepareOldDiffCustom()
  */
 static void HandleOldDiffCustom(bool savegame)
 {
-	uint options_to_load = GAME_DIFFICULTY_NUM - ((savegame && CheckSavegameVersion(4)) ? 1 : 0);
+	uint options_to_load = GAME_DIFFICULTY_NUM - ((savegame && IsSavegameVersionBefore(4)) ? 1 : 0);
 
 	if (!savegame) {
 		/* If we did read to old_diff_custom, then at least one value must be non 0. */

@@ -686,7 +686,7 @@ static inline byte SlCalcConvFileLen(VarType conv)
 /** Return the size in bytes of a reference (pointer) */
 static inline size_t SlCalcRefLen()
 {
-	return CheckSavegameVersion(69) ? 2 : 4;
+	return IsSavegameVersionBefore(69) ? 2 : 4;
 }
 
 void SlSetArrayIndex(uint index)
@@ -1200,7 +1200,7 @@ static inline size_t SlCalcListLen(const void *list)
 {
 	std::list<void *> *l = (std::list<void *> *) list;
 
-	int type_size = CheckSavegameVersion(69) ? 2 : 4;
+	int type_size = IsSavegameVersionBefore(69) ? 2 : 4;
 	/* Each entry is saved as type_size bytes, plus type_size bytes are used for the length
 	 * of the list */
 	return l->size() * type_size + type_size;
@@ -1237,11 +1237,11 @@ static void SlList(void *list, SLRefType conv)
 		}
 		case SLA_LOAD_CHECK:
 		case SLA_LOAD: {
-			size_t length = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
+			size_t length = IsSavegameVersionBefore(69) ? SlReadUint16() : SlReadUint32();
 
 			/* Load each reference and push to the end of the list */
 			for (size_t i = 0; i < length; i++) {
-				size_t data = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
+				size_t data = IsSavegameVersionBefore(69) ? SlReadUint16() : SlReadUint32();
 				l->push_back((void *)data);
 			}
 			break;
@@ -1359,7 +1359,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 							break;
 						case SLA_LOAD_CHECK:
 						case SLA_LOAD:
-							*(size_t *)ptr = CheckSavegameVersion(69) ? SlReadUint16() : SlReadUint32();
+							*(size_t *)ptr = IsSavegameVersionBefore(69) ? SlReadUint16() : SlReadUint32();
 							break;
 						case SLA_PTRS:
 							*(void **)ptr = IntToReference(*(size_t *)ptr, (SLRefType)conv);
@@ -2463,7 +2463,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 
 				GamelogReset();
 
-				if (CheckSavegameVersion(4)) {
+				if (IsSavegameVersionBefore(4)) {
 					/*
 					 * NewGRFs were introduced between 0.3,4 and 0.3.5, which both
 					 * shared savegame version 4. Anything before that 'obviously'

@@ -23,7 +23,7 @@ void Order::ConvertFromOldSavegame()
 	this->flags = 0;
 
 	/* First handle non-stop - use value from savegame if possible, else use value from config file */
-	if (_settings_client.gui.sg_new_nonstop || (CheckSavegameVersion(22) && _settings_client.gui.new_nonstop)) {
+	if (_settings_client.gui.sg_new_nonstop || (IsSavegameVersionBefore(22) && _settings_client.gui.new_nonstop)) {
 		/* OFB_NON_STOP */
 		this->SetNonStopType((old_flags & 8) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 	} else {
@@ -44,7 +44,7 @@ void Order::ConvertFromOldSavegame()
 			this->SetLoadType(OLF_LOAD_IF_POSSIBLE);
 		} else {
 			/* old OTTD versions stored full_load_any in config file - assume it was enabled when loading */
-			this->SetLoadType(_settings_client.gui.sg_full_load_any || CheckSavegameVersion(22) ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
+			this->SetLoadType(_settings_client.gui.sg_full_load_any || IsSavegameVersionBefore(22) ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
 		}
 
 		if (this->IsType(OT_GOTO_STATION)) this->SetStopLocation(OSL_PLATFORM_FAR_END);
@@ -134,7 +134,7 @@ static void Load_ORDR()
 		 * (in the old days, the orderlist was 5000 items big) */
 		size_t len = SlGetFieldLength();
 
-		if (CheckSavegameVersion(5)) {
+		if (IsSavegameVersionBefore(5)) {
 			/* Pre-version 5 had another layout for orders
 			 * (uint16 instead of uint32) */
 			len /= sizeof(uint16);

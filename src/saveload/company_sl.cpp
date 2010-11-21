@@ -266,7 +266,7 @@ static void SaveLoad_PLYR_common(Company *c, CompanyProperties *cprops)
 	}
 
 	/* Keep backwards compatible for savegames, so load the old AI block */
-	if (CheckSavegameVersion(107) && cprops->is_ai) {
+	if (IsSavegameVersionBefore(107) && cprops->is_ai) {
 		CompanyOldAI old_ai;
 		char nothing;
 
@@ -285,7 +285,7 @@ static void SaveLoad_PLYR_common(Company *c, CompanyProperties *cprops)
 	}
 
 	/* Write each livery entry. */
-	int num_liveries = CheckSavegameVersion(63) ? LS_END - 4 : (CheckSavegameVersion(85) ? LS_END - 2: LS_END);
+	int num_liveries = IsSavegameVersionBefore(63) ? LS_END - 4 : (IsSavegameVersionBefore(85) ? LS_END - 2: LS_END);
 	if (c != NULL) {
 		for (i = 0; i < num_liveries; i++) {
 			SlObject(&c->livery[i], _company_livery_desc);
@@ -345,7 +345,7 @@ static void Check_PLYR()
 		SaveLoad_PLYR_common(NULL, cprops);
 
 		/* We do not load old custom names */
-		if (CheckSavegameVersion(84))
+		if (IsSavegameVersionBefore(84))
 		{
 			if (GB(cprops->name_1, 11, 5) == 15) {
 				cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;

@@ -122,7 +122,7 @@ static void SaveLoad_DATE()
 static void Check_DATE()
 {
 	SlGlobList(_date_check_desc);
-	if (CheckSavegameVersion(31)) {
+	if (IsSavegameVersionBefore(31)) {
 		_load_check_data.current_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
 	}
 }

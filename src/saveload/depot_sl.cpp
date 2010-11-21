@@ -47,7 +47,7 @@ static void Load_DEPT()
 		SlObject(depot, _depot_desc);
 
 		/* Set the town 'pointer' so we can restore it later. */
-		if (CheckSavegameVersion(141)) depot->town = (Town *)(size_t)_town_index;
+		if (IsSavegameVersionBefore(141)) depot->town = (Town *)(size_t)_town_index;
 	}
 }
 
@@ -57,7 +57,7 @@ static void Ptrs_DEPT()
 
 	FOR_ALL_DEPOTS(depot) {
 		SlObject(depot, _depot_desc);
-		if (CheckSavegameVersion(141)) depot->town = Town::Get((size_t)depot->town);
+		if (IsSavegameVersionBefore(141)) depot->town = Town::Get((size_t)depot->town);
 	}
 }
 

@@ -56,7 +56,7 @@ char *CopyFromOldName(StringID id)
 	/* Is this name an (old) custom name? */
 	if (GB(id, 11, 5) != 15) return NULL;
 
-	if (CheckSavegameVersion(37)) {
+	if (IsSavegameVersionBefore(37)) {
 		/* Old names were 24/32 characters long, so 128 characters should be
 		 * plenty to allow for expansion when converted to UTF-8. */
 		char tmp[128];

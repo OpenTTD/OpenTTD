@@ -258,15 +258,15 @@ static void Load_STNS()
 
 		_waiting_acceptance = 0;
 
-		uint num_cargo = CheckSavegameVersion(55) ? 12 : NUM_CARGO;
+		uint num_cargo = IsSavegameVersionBefore(55) ? 12 : NUM_CARGO;
 		for (CargoID i = 0; i < num_cargo; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			SlObject(ge, GetGoodsDesc());
-			if (CheckSavegameVersion(68)) {
+			if (IsSavegameVersionBefore(68)) {
 				SB(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE, 1, HasBit(_waiting_acceptance, 15));
 				if (GB(_waiting_acceptance, 0, 12) != 0) {
 					/* In old versions, enroute_from used 0xFF as INVALID_STATION */
-					StationID source = (CheckSavegameVersion(7) && _cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
+					StationID source = (IsSavegameVersionBefore(7) && _cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
 
 					/* Don't construct the packet with station here, because that'll fail with old savegames */
 					ge->cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_days, source, _cargo_source_xy, _cargo_source_xy, _cargo_feeder_share));
@@ -288,11 +288,11 @@ static void Load_STNS()
 static void Ptrs_STNS()
 {
 	/* Don't run when savegame version is higher than or equal to 123. */
-	if (!CheckSavegameVersion(123)) return;
+	if (!IsSavegameVersionBefore(123)) return;
 
 	Station *st;
 	FOR_ALL_STATIONS(st) {
-		if (!CheckSavegameVersion(68)) {
+		if (!IsSavegameVersionBefore(68)) {
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				GoodsEntry *ge = &st->goods[i];
 				SlObject(ge, GetGoodsDesc());
@@ -432,7 +432,7 @@ static void Load_STNN()
 static void Ptrs_STNN()
 {
 	/* Don't run when savegame version lower than 123. */
-	if (CheckSavegameVersion(123)) return;
+	if (IsSavegameVersionBefore(123)) return;
 
 	Station *st;
 	FOR_ALL_STATIONS(st) {

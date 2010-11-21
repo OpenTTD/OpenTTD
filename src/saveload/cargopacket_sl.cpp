@@ -17,7 +17,7 @@
 
 /* static */ void CargoPacket::AfterLoad()
 {
-	if (CheckSavegameVersion(44)) {
+	if (IsSavegameVersionBefore(44)) {
 		Vehicle *v;
 		/* If we remove a station while cargo from it is still enroute, payment calculation will assume
 		 * 0, 0 to be the source of the cargo, resulting in very high payments usually. v->source_xy
@@ -54,7 +54,7 @@
 		}
 	}
 
-	if (CheckSavegameVersion(120)) {
+	if (IsSavegameVersionBefore(120)) {
 		/* CargoPacket's source should be either INVALID_STATION or a valid station */
 		CargoPacket *cp;
 		FOR_ALL_CARGOPACKETS(cp) {
@@ -62,7 +62,7 @@
 		}
 	}
 
-	if (!CheckSavegameVersion(68)) {
+	if (!IsSavegameVersionBefore(68)) {
 		/* Only since version 68 we have cargo packets. Savegames from before used
 		 * 'new CargoPacket' + cargolist.Append so their caches are already
 		 * correct and do not need rebuilding. */

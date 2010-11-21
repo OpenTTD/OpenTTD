@@ -42,9 +42,9 @@ static void Load_ERNW()
 		SlObject(er, _engine_renew_desc);
 
 		/* Advanced vehicle lists, ungrouped vehicles got added */
-		if (CheckSavegameVersion(60)) {
+		if (IsSavegameVersionBefore(60)) {
 			er->group_id = ALL_GROUP;
-		} else if (CheckSavegameVersion(71)) {
+		} else if (IsSavegameVersionBefore(71)) {
 			if (er->group_id == DEFAULT_GROUP) er->group_id = ALL_GROUP;
 		}
 	}

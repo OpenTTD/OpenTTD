@@ -19,7 +19,7 @@
 static void Load_PRIC()
 {
 	/* Old games store 49 base prices, very old games store them as int32 */
-	int vt = CheckSavegameVersion(65) ? SLE_FILE_I32 : SLE_FILE_I64;
+	int vt = IsSavegameVersionBefore(65) ? SLE_FILE_I32 : SLE_FILE_I64;
 	SlArray(NULL, 49, vt | SLE_VAR_NULL);
 	SlArray(NULL, 49, SLE_FILE_U16 | SLE_VAR_NULL);
 }
@@ -27,8 +27,8 @@ static void Load_PRIC()
 /** Cargo payment rates in pre 126 savegames */
 static void Load_CAPR()
 {
-	uint num_cargo = CheckSavegameVersion(55) ? 12 : NUM_CARGO;
-	int vt = CheckSavegameVersion(65) ? SLE_FILE_I32 : SLE_FILE_I64;
+	uint num_cargo = IsSavegameVersionBefore(55) ? 12 : NUM_CARGO;
+	int vt = IsSavegameVersionBefore(65) ? SLE_FILE_I32 : SLE_FILE_I64;
 	SlArray(NULL, num_cargo, vt | SLE_VAR_NULL);
 	SlArray(NULL, num_cargo, SLE_FILE_U16 | SLE_VAR_NULL);
 }
@@ -59,7 +59,7 @@ static void Save_ECMY()
 static void Load_ECMY()
 {
 	SlObject(&_economy, _economy_desc);
-	StartupIndustryDailyChanges(CheckSavegameVersion(102));  // old savegames will need to be initialized
+	StartupIndustryDailyChanges(IsSavegameVersionBefore(102));  // old savegames will need to be initialized
 }
 
 static const SaveLoad _cargopayment_desc[] = {
