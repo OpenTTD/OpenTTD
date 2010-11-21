@@ -100,7 +100,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	TileIndex tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
-	if (!HasTileWaterClass(tile) || !IsTileOnWater(tile) || !HasTileWaterClass(tile2) || !IsTileOnWater(tile2)) {
+	if (!HasTileWaterGround(tile) || !HasTileWaterGround(tile2)) {
 		return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 	}
 

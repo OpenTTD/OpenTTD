@@ -187,7 +187,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		bool allow_water = (spec->flags & (OBJECT_FLAG_BUILT_ON_WATER | OBJECT_FLAG_NOT_ON_LAND)) != 0;
 		bool allow_ground = (spec->flags & OBJECT_FLAG_NOT_ON_LAND) == 0;
 		TILE_AREA_LOOP(t, ta) {
-			if (HasTileWaterClass(t) && IsTileOnWater(t) && !IsCoastTile(t)) {
+			if (HasTileWaterGround(t)) {
 				if (!allow_water) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 				if (!IsWaterTile(t)) {
 					/* Normal water tiles don't have to be cleared. For all other tile types clear

@@ -284,6 +284,17 @@ static inline byte GetWaterTileRandomBits(TileIndex t)
 	return _m[t].m4;
 }
 
+/**
+ * Checks whether the tile has water at the ground.
+ * That is, it is either some plain water tile, or a object/industry/station/... with water under it.
+ * @return true iff the tile has water at the ground.
+ * @note Coast tiles are not considered waterish, even if there is water on a halftile.
+ */
+static inline bool HasTileWaterGround(TileIndex t)
+{
+	return HasTileWaterClass(t) && IsTileOnWater(t) && !IsCoastTile(t);
+}
+
 
 /**
  * Helper function to make a coast tile.
