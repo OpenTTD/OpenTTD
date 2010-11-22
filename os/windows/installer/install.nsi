@@ -326,8 +326,9 @@ SectionEnd
 Section "Uninstall"
 	SetShellVarContext all
 
+	IfFileExists "$INSTDIR\save" 0 NoRemoveSavedGames
 	MessageBox MB_YESNO|MB_ICONQUESTION \
-		"Remove the save game folders located at $\"$INSTDIR\save?$\"$\n \
+		"Remove the save game folders located at $\"$INSTDIR\save$\"?$\n \
 		If you choose Yes, your saved games will be deleted." \
 		IDYES RemoveSavedGames IDNO NoRemoveSavedGames
 	RemoveSavedGames:
@@ -337,8 +338,9 @@ Section "Uninstall"
 		RMDir "$INSTDIR\save"
 	NoRemoveSavedGames:
 
+	IfFileExists "$INSTDIR\scenario" 0 NoRemoveScen
 	MessageBox MB_YESNO|MB_ICONQUESTION \
-		"Remove the scenario folders located at $\"$INSTDIR\scenario?$\"$\n \
+		"Remove the scenario folders located at $\"$INSTDIR\scenario$\"?$\n \
 		If you choose Yes, your scenarios will be deleted." \
 		IDYES RemoveScen IDNO NoRemoveScen
 	RemoveScen:
