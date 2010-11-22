@@ -1222,15 +1222,15 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Nikdy n
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatická obnova dopravných prostriedkov, keď sú staré: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Obnoviť vozidlo {ORANGE}{STRING}{LTBLUE} mesiac{P "" e ov} pred/po dosiahnutí max. veku.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Potrebné financie pre automatickú obnovu vozidiel: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dĺžka zobrazenia chybovej správy: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Oneskorenie udalosti po ukázaní myšou: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dĺžka zobrazenia chybovej správy: {ORANGE}{STRING} sekund{P 1:0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Oneskorenie udalosti po ukázaní myšou: {ORANGE}{STRING} sekund{P 1:0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Oneskorenie udalosti po ukázaní myšou: {ORANGE}vypnuté
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zobraziť počet obyvateľov mesta v jeho názve: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generátor uzemia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Pôvodný
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximálna vzdialenosť ropných rafinérií od okraja mapy: {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximálna vzdialenosť ropných rafinérií od okraja mapy: {ORANGE}{STRING} pol{P 0:1 "" s}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Členitosť terénu (len pre TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Veľmi rovný
@@ -2888,7 +2888,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rýchlos
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Náklady na prevádzku: {GOLD}{CURRENCY}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(mozna prestavba)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyrobene: {GOLD}{NUM}{BLACK} Zivotnost: {GOLD}{COMMA} rokov
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyrobene: {GOLD}{NUM}{BLACK} Zivotnost: {GOLD}{COMMA} rok{P "" "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolahlivost: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnosť: {GOLD}{WEIGHT_S} ({WEIGHT_S})

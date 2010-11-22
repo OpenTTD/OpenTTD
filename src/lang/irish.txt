@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} tonaí
 STR_LITERS                                                      :{COMMA} lítear
 STR_ITEMS                                                       :{COMMA} míreanna
 STR_CRATES                                                      :{COMMA} crátaí
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :eile
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Gorm Dorcha
@@ -942,6 +941,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Cuir tic
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Taifeach scáileáin
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Roghnaigh an taifeach scáileáin le húsáid
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :eile
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formáid seatanna scáileáin
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Roghnaigh an formáid le húsáid do sheatanna scáileáin
@@ -1303,6 +1303,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Suíomh
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Ar chlé
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Sa lár
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Ar dheis
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Suíomh an bharra stádais: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Ar chlé
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Sa lár
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Ar dheis
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}díchumasaithe
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Teorainn bhog fuinneoige (neamh-ghreamaitheach): {ORANGE}{STRING}
@@ -1783,6 +1787,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :ag iarraidh cai
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :freastalaí lán
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :ag seoladh an iomarca orduithe
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Seans gur cailleadh an nasc
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Le {NUM} {P sh sh s s s} ní bhfuarthas aon sonraí ón bhfreastalaí
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -3120,6 +3127,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Toillead
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Athfeistigh)
 STR_REFIT_TITLE                                                 :{GOLD}Roghnaigh an lastas le hiompar:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Toilleadh nua: {GOLD}{CARGO}{}{BLACK}Costas an aisfheistithe: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Toilleadh nua: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Costas athfheistithe: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Roghnaigh an cineál lastais a iompróidh an traein
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Roghnaigh an cineál lastais a iompróidh an fheithicil bóthair

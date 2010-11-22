@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}GEEN
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLES
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passagiers
-STR_BAGS                                                        :{COMMA} zakken
+STR_PASSENGERS                                                  :{COMMA} passagier{P "" s}
+STR_BAGS                                                        :{COMMA} zak{P "" ken}
 STR_TONS                                                        :{COMMA} ton
 STR_LITERS                                                      :{COMMA} liter
-STR_ITEMS                                                       :{COMMA} stuks
-STR_CRATES                                                      :{COMMA} pallets
+STR_ITEMS                                                       :{COMMA} stuk{P "" s}
+STR_CRATES                                                      :{COMMA} pallet{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Donkerblauw
@@ -1090,7 +1090,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Omgevin
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Gebruik meer realistische handelsgebieden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Sta verwijderen van meer stedelijke wegen, bruggen, enz. toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Zeer lange treinen toestaan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Hoeveelheid stoom/rook/vonken: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Hoeveelheid rook/vonken: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Geen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Origineel
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistisch
@@ -1155,15 +1155,15 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Voertui
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vernieuw voertuig automatisch wanneer deze oud wordt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Vernieuw voertuig automatisch {ORANGE}{STRING}{LTBLUE} maand{P 0:1 "" en} voor/na max. leeftijd
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum benodigd geld voor automatisch vernieuwen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Vertraging muis-over: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING} second{P 0:1 "" en}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Vertraging muis-over: {ORANGE}{STRING} second{P 0:1 "" en}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Vertraging muis-over: {ORANGE}uit
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Geef het inwoneraantal bij een stad weer: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origineel
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max afstand van de rand voor olierafinaderijen {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max afstand van de rand voor olierafinaderijen {ORANGE}{STRING} getel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Ruwheid van het terrein (alleen TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg glad
@@ -1268,7 +1268,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Beginja
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Vloeiende economie inschakelen (meer, kleinere veranderingen): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Sta het kopen van aandelen van andere bedrijven toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentage van de winst die wordt betaald bij overslag van vracht: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Bij slepen, plaats seinen elke: {ORANGE}{STRING} tegel(s)
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Bij slepen, plaats seinen elke: {ORANGE}{STRING} tegel{P 0:1 "" s}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Plaats automatisch armseinen voor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activeer sein-GUI: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Seintype dat standaard moet worden gebouwd: {ORANGE}{STRING}
@@ -1787,6 +1787,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :probeerde vals 
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server is vol
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :stuurde te veel commando's
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mogelijk verbinding verbroken
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}In de afgelopen {NUM} second{P "" en} is er geen data ontvangen van de server
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}

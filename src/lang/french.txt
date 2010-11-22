@@ -166,12 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passagers
-STR_BAGS                                                        :{COMMA} sacs
-STR_TONS                                                        :{COMMA} tonnes
-STR_LITERS                                                      :{COMMA} litres
-STR_ITEMS                                                       :{COMMA} unités
-STR_CRATES                                                      :{COMMA} caisses
+STR_PASSENGERS                                                  :{COMMA} passager{P "" s}
+STR_BAGS                                                        :{COMMA} sac{P "" s}
+STR_TONS                                                        :{COMMA} tonne{P "" s}
+STR_LITERS                                                      :{COMMA} litre{P "" s}
+STR_ITEMS                                                       :{COMMA} unité{P "" s}
+STR_CRATES                                                      :{COMMA} caisse{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Bleu foncé
@@ -1091,7 +1091,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Terrass
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Autoriser des zones de desserte plus réalistes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permettre le retrait de plus d'éléments possédés par une ville{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permettre les trains plus longs{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantité de fumée/étincelles des locomotives{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantité de fumée/étincelles des véhicules{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Aucune
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Réaliste

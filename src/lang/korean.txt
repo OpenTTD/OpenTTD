@@ -172,7 +172,6 @@ STR_TONS                                                        :{G=m}{COMMA} �
 STR_LITERS                                                      :{G=f}{COMMA} 리터
 STR_ITEMS                                                       :{G=m}{COMMA} 품목
 STR_CRATES                                                      :{G=f}{COMMA} 상자
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :{G=f}기타
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :짙은 파랑
@@ -943,6 +942,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD�
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}화면 해상도
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용하실 화면 해상도를 선택하세요
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :{G=f}기타
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}스크린샷 형식
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}사용하실 스크린샷의 형식을 선택하세요
@@ -1303,6 +1303,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}주메�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :왼쪽
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :가운데
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :오른쪽
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}상태 바의 위치: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :왼쪽
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :가운데
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :오른쪽
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}윈도우 자동 결합(가까이 옮기면 자석처럼 붙는 기능) : {ORANGE}{STRING} 픽셀
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}윈도우 자동 결합 : {ORANGE}사용불가
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}부드러운 윈도우 경계: {ORANGE}{STRING}
@@ -1783,6 +1787,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :치트 사용 �
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :서버 꽉참
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :너무 많은 명령 전송
 ############ End of leave-in-this-order
+
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}

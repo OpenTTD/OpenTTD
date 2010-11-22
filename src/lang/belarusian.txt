@@ -2105,6 +2105,9 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сэрвэр п
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :дасылаў занадта шмат каманд
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Падключэньне згублена
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}У працягу {NUM} секунд{P ы "" ""} не атрымана ніякіх дадзеных з боку сервера
+
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!

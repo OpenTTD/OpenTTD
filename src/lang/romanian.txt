@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NU
 STR_ABBREV_ALL                                                  :{TINYFONT}TOT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} călători
-STR_BAGS                                                        :{COMMA} saci
+STR_PASSENGERS                                                  :{COMMA} călător{P "" i}
+STR_BAGS                                                        :{COMMA} sac{P "" i}
 STR_TONS                                                        :{COMMA} tone
 STR_LITERS                                                      :{COMMA} litri
 STR_ITEMS                                                       :{COMMA} bucăţi
-STR_CRATES                                                      :{COMMA} pachete
+STR_CRATES                                                      :{COMMA} pachet{P "" e}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Albastru închis
@@ -1787,6 +1787,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :a încercat să
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server plin
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :trimitea prea multe comenzi
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Posibilă pierdere a conexiunii
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}În ultimele {NUM} secunde nu s-au mai primit date de la server
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
