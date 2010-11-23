@@ -46,6 +46,7 @@ void UninitFreeType();
 const Sprite *GetGlyph(FontSize size, uint32 key);
 uint GetGlyphWidth(FontSize size, uint32 key);
 
+typedef bool (SetFallbackFontCallback)(const char **);
 /**
  * We would like to have a fallback font as the current one
  * doesn't contain all characters we need.
@@ -53,10 +54,10 @@ uint GetGlyphWidth(FontSize size, uint32 key);
  * @param settings the settings to overwrite the fontname of.
  * @param language_isocode the language, e.g. en_GB.
  * @param winlangid the language ID windows style.
- * @param str Sample string.
+ * @param callback The function to call to check for missing glyphs.
  * @return true if a font has been set, false otherwise.
  */
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, const char *str);
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback);
 
 #else
 

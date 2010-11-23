@@ -290,6 +290,7 @@ err1:
 struct EFCParam {
 	FreeTypeSettings *settings;
 	LOCALESIGNATURE  locale;
+	SetFallbackFontCallback *callback;
 };
 
 static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXTMETRICEX *metric, DWORD type, LPARAM lParam)
@@ -346,14 +347,15 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 
 	if (!found) return 1;
 
-	DEBUG(freetype, 1, "Fallback font: %s (%s)", font_name, english_name);
 	strecpy(info->settings->small_font,  font_name, lastof(info->settings->small_font));
 	strecpy(info->settings->medium_font, font_name, lastof(info->settings->medium_font));
 	strecpy(info->settings->large_font,  font_name, lastof(info->settings->large_font));
+	if (info->callback(NULL)) return 1;
+	DEBUG(freetype, 1, "Fallback font: %s (%s)", font_name, english_name);
 	return 0; // stop enumerating
 }
 
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, const char *str)
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback)
 {
 	DEBUG(freetype, 1, "Trying fallback fonts");
 	EFCParam langInfo;
@@ -363,6 +365,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		return false;
 	}
 	langInfo.settings = settings;
+	langInfo.callback = callback;
 
 	LOGFONT font;
 	/* Enumerate all fonts. */
@@ -426,9 +429,12 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	return err;
 }
 
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, const char *str)
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback)
 {
+	const char *str;
 	bool result = false;
+
+	callback(&str);
 
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
 	if (MacOSVersionIsAtLeast(10, 5, 0)) {
@@ -604,6 +610,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		}
 	 }
 
+	callback(NULL);
 	return result;
 }
 
@@ -677,7 +684,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	return err;
 }
 
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, const char *str)
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback)
 {
 	if (!FcInit()) return false;
 
@@ -687,63 +694,55 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 	 * before the _ of e.g. en_GB is used, so "remove" everything after
 	 * the _. */
 	char lang[16];
-	strecpy(lang, language_isocode, lastof(lang));
+	seprintf(lang, lastof(lang), ":lang=%s", language_isocode);
 	char *split = strchr(lang, '_');
 	if (split != NULL) *split = '\0';
 
-	FcPattern *pat;
-	FcPattern *match;
-	FcResult result;
-	FcChar8 *file;
-	FcFontSet *fs;
-	FcValue val;
-	val.type = FcTypeString;
-	val.u.s = (FcChar8*)lang;
+	/* First create a pattern to match the wanted language. */
+	FcPattern *pat = FcNameParse((FcChar8*)lang);
+	/* We only want to know the filename. */
+	FcObjectSet *os = FcObjectSetBuild(FC_FILE, NULL);
+	/* Get the list of filenames matching the wanted language. */
+	FcFontSet *fs = FcFontList(NULL, pat, os);
 
-	/* First create a pattern to match the wanted language */
-	pat = FcPatternCreate();
-	/* And fill it with the language and other defaults */
-	if (pat == NULL ||
-			!FcPatternAdd(pat, "lang", val, false) ||
-			!FcConfigSubstitute(0, pat, FcMatchPattern)) {
-		goto error_pattern;
+	/* We don't need these anymore. */
+	FcObjectSetDestroy(os);
+	FcPatternDestroy(pat);
+
+	if (fs != NULL) {
+		for (int i = 0; i < fs->nfont; i++) {
+			FcPattern *font = fs->fonts[i];
+
+			FcChar8 *file = NULL;
+			FcResult res = FcPatternGetString(font, FC_FILE, 0, &file);
+			if (res != FcResultMatch || file == NULL) {
+				continue;
+			}
+
+			strecpy(settings->small_font,  (const char*)file, lastof(settings->small_font));
+			strecpy(settings->medium_font, (const char*)file, lastof(settings->medium_font));
+			strecpy(settings->large_font,  (const char*)file, lastof(settings->large_font));
+
+			bool missing = callback(NULL);
+			DEBUG(freetype, 1, "Font \"%s\" misses%s glyphs", file, missing ? "" : " no");
+
+			if (!missing) {
+				ret = true;
+				break;
+			}
+		}
+
+		/* Clean up the list of filenames. */
+		FcFontSetDestroy(fs);
 	}
 
-	FcDefaultSubstitute(pat);
-
-	/* Then create a font set and match that */
-	match = FcFontMatch(0, pat, &result);
-
-	if (match == NULL) {
-		goto error_pattern;
-	}
-
-	/* Find all fonts that do match */
-	fs = FcFontSetCreate();
-	FcFontSetAdd(fs, match);
-
-	/* And take the first, if it exists */
-	if (fs->nfont <= 0 || FcPatternGetString(fs->fonts[0], FC_FILE, 0, &file)) {
-		goto error_fontset;
-	}
-
-	strecpy(settings->small_font,  (const char*)file, lastof(settings->small_font));
-	strecpy(settings->medium_font, (const char*)file, lastof(settings->medium_font));
-	strecpy(settings->large_font,  (const char*)file, lastof(settings->large_font));
-
-	ret = true;
-
-error_fontset:
-	FcFontSetDestroy(fs);
-error_pattern:
-	if (pat != NULL) FcPatternDestroy(pat);
 	FcFini();
 	return ret;
 }
 
 #else /* without WITH_FONTCONFIG */
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) {return FT_Err_Cannot_Open_Resource;}
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, const char *str) { return false; }
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback) { return false }
 #endif /* WITH_FONTCONFIG */
 
 static void SetFontGeometry(FT_Face face, FontSize size, int pixels)
@@ -891,6 +890,7 @@ static FT_Face GetFontFace(FontSize size)
 struct GlyphEntry {
 	Sprite *sprite;
 	byte width;
+	bool duplicate;
 };
 
 
@@ -918,6 +918,7 @@ static void ResetGlyphCache()
 			if (_glyph_ptr[i][j] == NULL) continue;
 
 			for (int k = 0; k < 256; k++) {
+				if (_glyph_ptr[i][j][k].duplicate) continue;
 				free(_glyph_ptr[i][j][k].sprite);
 			}
 
@@ -937,7 +938,7 @@ static GlyphEntry *GetGlyphPtr(FontSize size, WChar key)
 }
 
 
-static void SetGlyphPtr(FontSize size, WChar key, const GlyphEntry *glyph)
+static void SetGlyphPtr(FontSize size, WChar key, const GlyphEntry *glyph, bool duplicate = false)
 {
 	if (_glyph_ptr[size] == NULL) {
 		DEBUG(freetype, 3, "Allocating root glyph cache for size %u", size);
@@ -950,8 +951,9 @@ static void SetGlyphPtr(FontSize size, WChar key, const GlyphEntry *glyph)
 	}
 
 	DEBUG(freetype, 4, "Set glyph for unicode character 0x%04X, size %u", key, size);
-	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].sprite = glyph->sprite;
-	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].width  = glyph->width;
+	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].sprite    = glyph->sprite;
+	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].width     = glyph->width;
+	_glyph_ptr[size][GB(key, 8, 8)][GB(key, 0, 8)].duplicate = duplicate;
 }
 
 static void *AllocateFont(size_t size)
@@ -1004,7 +1006,14 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 
 	bool aa = GetFontAAState(size);
 
-	FT_Load_Char(face, key, FT_LOAD_DEFAULT);
+	FT_UInt glyph_index = FT_Get_Char_Index(face, key);
+	if (glyph_index == 0) {
+		GetGlyph(size, '?');
+		glyph = GetGlyphPtr(size, '?');
+		SetGlyphPtr(size, key, glyph, true);
+		return glyph->sprite;
+	}
+	FT_Load_Glyph(face, glyph_index, FT_LOAD_DEFAULT);
 	FT_Render_Glyph(face->glyph, aa ? FT_RENDER_MODE_NORMAL : FT_RENDER_MODE_MONO);
 
 	/* Despite requesting a normal glyph, FreeType may have returned a bitmap */
