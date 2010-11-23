@@ -59,7 +59,7 @@ Admin Network
   Once you have received ADMIN_PACKET_SERVER_WELCOME you are connected and
   authorized to do your thing.
   The server will not provide any game related updates unless you ask for them.
-  There are four packets the serve will none the less send, if applicable:
+  There are four packets the server will none the less send, if applicable:
     - ADMIN_PACKET_SERVER_ERROR
     - ADMIN_PACKET_SERVER_WELCOME
     - ADMIN_PACKET_SERVER_NEWGAME
@@ -143,8 +143,8 @@ Admin Network
 
   Note: No additional authentication is required for rcon commands.
 
-  The server will reply with a ADMIN_PACIKET_SERVER_RCON packet. Applications
-  will not receive the answer twice if they ave asked for the AdminUpdateType
+  The server will reply with a ADMIN_PACKET_SERVER_RCON packet. Applications
+  will not receive the answer twice if they have asked for the AdminUpdateType
   ADMIN_UPDATE_CONSOLE, as the result is not printed on the servers console
   (just like clients rcon commands).
 
@@ -183,7 +183,7 @@ Admin Network
 7. Disconnecting
 ----------------
 
-  It is a kind thing to say good bye before leaving. Do this sending the
+  It is a kind thing to say good bye before leaving. Do this by sending the
   ADMIN_PACKET_ADMIN_QUIT packet.
 
 
@@ -193,7 +193,7 @@ Admin Network
   All ADMIN_PACKET_SERVER_* packets have an enum value greater 100.
 
   ADMIN_PACKET_SERVER_WELCOME
-    Either directly follows ADMIN_PACKET_SERVER_PROTOCOL or is send
+    Either directly follows ADMIN_PACKET_SERVER_PROTOCOL or is sent
     after a new game has been started or a map loaded, i.e. also
     after ADMIN_PACKET_SERVER_NEWGAME.
 
