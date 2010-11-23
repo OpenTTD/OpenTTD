@@ -550,7 +550,6 @@ STR_TONS                                                        :{COMMA} ton
 STR_LITERS                                                      :{COMMA} litrów
 STR_ITEMS                                                       :{COMMA} sztuk
 STR_CRATES                                                      :{COMMA} skrzyń
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :inna
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Ciemnoniebieski
@@ -1322,6 +1321,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Zaznacz,
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozdzielczość ekranu
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Wybierz rozdzielczość ekranu
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :inna
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format zrzutu ekranu
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Wybierz format zrzutu ekranu
@@ -2167,6 +2167,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :próbował uży
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serwer jest pełny
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :wysyłał zbyt wiele komend
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Możliwa utrata połączenia
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Przez ostatni{P ą e e} {NUM} sekund{P ę y ""} nie otrzymano żadnych danych z serwera
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -3510,6 +3513,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Pojemno�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Przebudowa)
 STR_REFIT_TITLE                                                 :{GOLD}Wybierz typ ładunku do przewozu:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa pojemność: {GOLD}{CARGO}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa pojemność: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Koszt przekształcenia: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wybierz ładunek jaki ma przewozić ten samochód

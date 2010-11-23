@@ -134,14 +134,17 @@ STR_ABBREV_NONE                                                 :{TINYFONT}ҪУ�
 STR_ABBREV_ALL                                                  :{TINYFONT}ПӖРМАЙ
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} пассажирсем
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
+STR_PASSENGERS                                                  :{COMMA} пассажир{P "" сем}
 
 # Colours, do not shuffle
+STR_COLOUR_DARK_BLUE                                            :Тӗттӗм кӑвак
+STR_COLOUR_PALE_GREEN                                           :Шупка симӗс
 STR_COLOUR_PINK                                                 :Кӗрен
 STR_COLOUR_YELLOW                                               :Сарӑ
 STR_COLOUR_RED                                                  :Хӗрлӗ
+STR_COLOUR_LIGHT_BLUE                                           :Ҫутӑ кӑвак
 STR_COLOUR_GREEN                                                :Симĕс
+STR_COLOUR_DARK_GREEN                                           :Тӗттӗм симӗс
 STR_COLOUR_BLUE                                                 :Кăвак
 STR_COLOUR_CREAM                                                :Ҫутӑ хӑмӑр
 STR_COLOUR_ORANGE                                               :Хӗрлӗрех сарӑ
@@ -150,7 +153,11 @@ STR_COLOUR_GREY                                                 :Сӑрӑ
 STR_COLOUR_WHITE                                                :Шурӑ
 
 # Units used in OpenTTD
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} мил/с
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/с
+STR_UNITS_VELOCITY_SI                                           :{COMMA} м/ҫ
 
+STR_UNITS_POWER_SI                                              :{COMMA}кВт
 
 
 
@@ -263,7 +270,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Сасӑ/Юрӑ
 
 ############ range for about menu starts
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_SCREENSHOT                                       :Экран сӑнӗ (Ctrl+S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Экран сӑнӗ
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Яланхилле экран сӑнӗ
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' çинчен
 ############ range ends here
@@ -496,6 +503,7 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Чӗлх
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Тулли экран
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Экрана сӑнарлама пултарни
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :расна
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат экран сӑнӗ
 
@@ -531,10 +539,13 @@ STR_DIFFICULTY_LEVEL_SETTING_DISASTERS                          :{LTBLUE}Инк�
 
 STR_NONE                                                        :Ҫук
 STR_NUM_CUSTOM                                                  :Харпӑр хӑй
+STR_NUM_CUSTOM_NUMBER                                           :Харпӑр хӑй ({NUM})
 
 STR_VARIETY_NONE                                                :Ҫук
 
 
+STR_SEA_LEVEL_CUSTOM                                            :Харпӑр хӑй
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Харпӑр хӑй ({NUM}%)
 
 STR_DISASTER_NONE                                               :Ҫук
 
@@ -558,6 +569,7 @@ STR_CONFIG_SETTING_ON                                           :Ҫут
 STR_CONFIG_SETTING_DISABLED                                     :хастар мар
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ҫук
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Чӑн
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Реалисмлӑ
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Чӑн
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Реаллӑ
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Чӑн
@@ -602,6 +614,9 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :таҫта та
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Сулахайра
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Варринче
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Сылтӑмра
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Сулахай
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Варӑ
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Сылтӑм
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ҫук
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Вӑрах
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Виҫеллӗ
@@ -806,6 +821,7 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :Вырӑнти 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
+
 # Network related errors
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -924,6 +940,7 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Ларт
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Укҫа сап(Fund)
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Ҫуртсем
 
 # Land area window
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ҫук
@@ -978,6 +995,9 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Верс
 
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Хуп
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Сикӗ
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Ӗнерленӳ {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
 # NewGRF inspect window
