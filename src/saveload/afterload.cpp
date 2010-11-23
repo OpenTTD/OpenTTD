@@ -2380,6 +2380,8 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(153)) {
 		RoadVehicle *rv;
 		FOR_ALL_ROADVEHICLES(rv) {
+			if (rv->state == RVSB_IN_DEPOT || rv->state == RVSB_WORMHOLE) continue;
+
 			bool loading = rv->current_order.IsType(OT_LOADING) || rv->current_order.IsType(OT_LEAVESTATION);
 			if (HasBit(rv->state, RVS_IN_ROAD_STOP)) {
 				extern const byte _road_stop_stop_frame[];
