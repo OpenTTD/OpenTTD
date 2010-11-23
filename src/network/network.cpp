@@ -927,12 +927,16 @@ void NetworkGameLoop()
 
 		/* Make sure we are at the frame were the server is (quick-frames) */
 		if (_frame_counter_server > _frame_counter) {
+			/* Run a number of frames; when things go bad, get out. */
 			while (_frame_counter_server > _frame_counter) {
-				if (!ClientNetworkGameSocketHandler::GameLoop()) break;
+				if (!ClientNetworkGameSocketHandler::GameLoop()) return;
 			}
 		} else {
 			/* Else, keep on going till _frame_counter_max */
-			if (_frame_counter_max > _frame_counter) ClientNetworkGameSocketHandler::GameLoop();
+			if (_frame_counter_max > _frame_counter) {
+				/* Run one frame; if things went bad, get out. */
+				if (!ClientNetworkGameSocketHandler::GameLoop()) return;
+			}
 		}
 	}
 
