@@ -39,18 +39,8 @@ officially supporting Mac OS X again. For now it remains unsupported and
 we only apply bug fixes provided by the community but we are unable to fix
 these bugs ourselves.
 
-- 4003	[OSX] Running OpenTTD Parallels causes privileged instructions
-- 4001	[OSX] SETX[Y] not ignored in SetFallbackFont
-- 3952	Console command rescan_ai does not remove AIs
-- 3935	Under some circumstances two road vehicles can leave road stop simultaniously
-- 3746	Console output with right-to-left texts in left-to-right texts is not correct
-- 3714	Some corrupted savegames can cause crashes
 - 3651	[OSX] Crash when selecting full screen
-- 3648	[OSX] Crash when selecting music
-- 3637	Second highest competing station gets penalised twice
-- 3546	Ignoring signals might crash trains
 - 3447	[OSX] SDL port is unuseable
-- 2782	[OSX] Port hopelessly outdated
 - 2585	[OSX] OS' mouse pointer showing
 - 2484	[OSX] Cannot enter CJK characters
 

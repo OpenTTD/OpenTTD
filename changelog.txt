@@ -8,10 +8,10 @@
 - Fix: Reading (very) recently freed memory [CVE-2010-4168] (r21182)
 - Fix: Default service interval for ships/aircraft got switched [FS#4222] (r21155)
 - Fix: Size of sort buttons for save/load and build vehicle list gui could be too small [FS#4221] (r21151)
+- Fix: [Windows] Make sure to be upgraded openttd is not running when installing [FS#4212] (r21146)
 - Fix: [NewGRF] Crash when disabling static NewGRFs (when joining/starting a server) [FS#4208] (r21130, r21129, r21128)
 - Fix: Upper limit for snowline was too low [FS#4203] (r21078)
 - Fix: Wrong (maximum) value shown for generation seed in the in-game console [FS#4192] (r21075)
-- Fix: [Windows] Make sure to be upgraded openttd is not running when installing [FS#4212] (r21146)
 - Fix: Under some circumstances the file handle of the downloaded savegame would not be closed, and validity of the handled was not checked in all cases (r21027)
 - Fix: [NewGRF] Crash when getting an industry ID at an offset that uses some 'old' style industry tile [FS#4157] (r20912)
 
