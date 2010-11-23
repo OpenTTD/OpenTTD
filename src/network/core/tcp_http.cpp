@@ -51,6 +51,7 @@ NetworkHTTPSocketHandler::NetworkHTTPSocketHandler(SOCKET s,
 		 * of information? Just fall back to the old system! */
 		this->callback->OnFailure();
 		delete this;
+		return;
 	}
 
 	*_http_connections.Append() = this;
