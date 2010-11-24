@@ -539,8 +539,8 @@ const SettingDesc _settings[] = {
 	     SDT_VAR(GameSettings, game_creation.heightmap_rotation,              SLE_UINT8,                     S,MS,     0,                     0,       1, 0, STR_CONFIG_SETTING_HEIGHTMAP_ROTATION,    NULL),
 	     SDT_VAR(GameSettings, game_creation.se_flat_world_height,            SLE_UINT8,                     S, 0,     1,                     0,      15, 0, STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT,  NULL),
 
-	     SDT_VAR(GameSettings, game_creation.map_x,                           SLE_UINT8,                     S, 0,     8, MIN_MAP_SIZE_BITS, MAX_MAP_SIZE_BITS, 0, STR_CONFIG_SETTING_MAP_X,           NULL),
-	     SDT_VAR(GameSettings, game_creation.map_y,                           SLE_UINT8,                     S, 0,     8, MIN_MAP_SIZE_BITS, MAX_MAP_SIZE_BITS, 0, STR_CONFIG_SETTING_MAP_Y,           NULL),
+	     SDT_VAR(GameSettings, game_creation.map_x,                           SLE_UINT8,                     S, 0,     8, MIN_MAP_SIZE_BITS, MAX_MAP_SIZE_BITS, 0, STR_NULL,                           NULL),
+	     SDT_VAR(GameSettings, game_creation.map_y,                           SLE_UINT8,                     S, 0,     8, MIN_MAP_SIZE_BITS, MAX_MAP_SIZE_BITS, 0, STR_NULL,                           NULL),
 	SDT_CONDBOOL(GameSettings, construction.freeform_edges,                             111, SL_MAX_VERSION, 0, 0,  true,                                    STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES, CheckFreeformEdges),
 	 SDT_CONDVAR(GameSettings, game_creation.water_borders,                   SLE_UINT8,111, SL_MAX_VERSION, 0, 0,    15,                     0,      16, 0, STR_NULL,                                 NULL),
 	 SDT_CONDVAR(GameSettings, game_creation.custom_town_number,             SLE_UINT16,115, SL_MAX_VERSION, 0, 0,     1,                     1,    5000, 0, STR_NULL,                                 NULL),

@@ -1351,9 +1351,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recommended)
 
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-size of map: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-size of map: {ORANGE}{STRING1}
-
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Change setting value
 
 # Intro window

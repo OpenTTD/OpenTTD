@@ -1351,8 +1351,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :أصلي{BLUE}(
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(غير مفضل)
 
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}عرض الخريطة س: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}طول الخريطة ص: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}عدل قيمة التغيير
 

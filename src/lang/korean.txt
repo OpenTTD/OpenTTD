@@ -1351,8 +1351,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :오리지널 {B
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(비추천)
 
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}맵의 가로 크기: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}맵의 세로 크기: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}설정값 변경
 

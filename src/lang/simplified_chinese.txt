@@ -1344,8 +1344,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :原始 {BLUE}(�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(不推荐)
 
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}地图的 X 方向大小：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}地图的 Y 方向大小：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}改变设置值
 

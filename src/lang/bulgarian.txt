@@ -1328,8 +1328,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :оригина�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(не се препоръчва)
 
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}X-размер на карта: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}Y-размер на карта: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Промяна стойноста на настройка
 

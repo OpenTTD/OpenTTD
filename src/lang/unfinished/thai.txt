@@ -1346,8 +1346,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :ดั้งเ
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(ไม่แนะนำ)
 
-STR_CONFIG_SETTING_MAP_X                                        :{LTBLUE}ขนาดด้าน X ของแผนที่: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAP_Y                                        :{LTBLUE}ขนาดด้าน Y ของแผนที่: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}เปลี่ยนค่าการตั้งค่า
 
