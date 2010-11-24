@@ -1155,15 +1155,15 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Voertui
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vernieuw voertuig automatisch wanneer deze oud wordt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Vernieuw voertuig automatisch {ORANGE}{STRING}{LTBLUE} maand{P 0:1 "" en} voor/na max. leeftijd
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum benodigd geld voor automatisch vernieuwen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING} second{P 0:1 "" en}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Vertraging muis-over: {ORANGE}{STRING} second{P 0:1 "" en}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING} seconde{P 0:1 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Vertraging muis-over: {ORANGE}{STRING} seconde{P 0:1 "" n}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Vertraging muis-over: {ORANGE}uit
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Geef het inwoneraantal bij een stad weer: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Origineel
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max afstand van de rand voor olierafinaderijen {ORANGE}{STRING} getel{P 0:1 "" s}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max afstand van de rand voor olierafinaderijen {ORANGE}{STRING} tegel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Ruwheid van het terrein (alleen TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg glad
@@ -1789,7 +1789,7 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :stuurde te veel
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mogelijk verbinding verbroken
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}In de afgelopen {NUM} second{P "" en} is er geen data ontvangen van de server
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}In de afgelopen {NUM} seconde{P "" n} is er geen data ontvangen van de server
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}

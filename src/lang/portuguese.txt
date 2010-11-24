@@ -62,7 +62,7 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Bebidas Gasosas
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :Passageiro
+STR_CARGO_SINGULAR_PASSENGER                                    :Passageiros
 STR_CARGO_SINGULAR_COAL                                         :Carvão
 STR_CARGO_SINGULAR_MAIL                                         :Correio
 STR_CARGO_SINGULAR_OIL                                          :Petróleo
@@ -245,8 +245,8 @@ STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :\1234567890'«qwertyuiop+´asdfghjklçº~<zxcvbnm,.-
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :|!"#$%&/()=?»QWERTYUIOP*`ASDFGHJKLÇª^>ZXCVBNM;:_
+STR_OSK_KEYBOARD_LAYOUT                                         :\1234567890'« qwertyuiop+´asdfghjklçº~<zxcvbnm,.-
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :|!"#$%&/()=?» QWERTYUIOP*`ASDFGHJKLÇª^>ZXCVBNM;:_
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Tamanho: {NUM}
@@ -942,7 +942,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Seleccio
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolução do ecrã
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleccione a resolução do ecrã que deseja utilizar
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outros
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato da captura de ecrã
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Seleccione o formato de captura de ecrã que deseja utilizar
@@ -1311,7 +1311,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Direita
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Raio de atracção de janelas: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raio de atracção de janelas: {ORANGE}desactivado
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limite visual da janela (não-pegajoso): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limite visual da janela (não-pegajoso):{ORANGE}desactivado
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limite visual da janela (não-pegajoso): {ORANGE}desactivado
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ritmo de crescimento de cidades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nenhum
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lento
@@ -1710,7 +1710,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Assistir
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova empresa
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Banir
+STR_NETWORK_CLIENTLIST_KICK                                     :Expulsar
 STR_NETWORK_CLIENTLIST_BAN                                      :Banir
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar dinheiro
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Falar com todos
@@ -3813,43 +3813,43 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Mealheiro
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Mina de Carvão
-STR_INDUSTRY_NAME_POWER_STATION                                 :Central Eléctrica
-STR_INDUSTRY_NAME_SAWMILL                                       :Oficina de Carpintaria
-STR_INDUSTRY_NAME_FOREST                                        :Floresta
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Refinaria de Petróleo
-STR_INDUSTRY_NAME_OIL_RIG                                       :Plataforma Petrolífera
-STR_INDUSTRY_NAME_FACTORY                                       :Fábrica
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tipografia
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Siderurgia
-STR_INDUSTRY_NAME_FARM                                          :Quinta
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Mina de Cobre
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Poços de Petróleo
-STR_INDUSTRY_NAME_BANK                                          :Banco
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Companhia Alimentar
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Fábrica de Papel
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Mina de Ouro
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banco
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mina de Diamantes
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mina de Ferro
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Plantação de Fruta
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantação de Árvores-da-borracha
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Abastecimento de Água
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Depósito de Água
-STR_INDUSTRY_NAME_FACTORY_2                                     :Fábrica
-STR_INDUSTRY_NAME_FARM_2                                        :Quinta
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Serração
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Floresta de Algodão Doce
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fábrica de Doces
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Campo de Baterias
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Poços de Cola
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Loja de Brinquedos
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fábrica de Brinquedos
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Fontes de Plástico
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fábrica de Bebidas Gasosas
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Produtor de Bolhas
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Extracção de Caramelo
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mina de Açúcar
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Mina de Carvão
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Central Eléctrica
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Oficina de Carpintaria
+STR_INDUSTRY_NAME_FOREST                                        :{G=f}Floresta
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Refinaria de Petróleo
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Plataforma Petrolífera
+STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Fábrica
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Tipografia
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Siderurgia
+STR_INDUSTRY_NAME_FARM                                          :{G=f}Quinta
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Mina de Cobre
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=mp}Poços de Petróleo
+STR_INDUSTRY_NAME_BANK                                          :{G=m}Banco
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Companhia Alimentar
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Fábrica de Papel
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Mina de Ouro
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Banco
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Mina de Diamantes
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Mina de Ferro
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantação de Fruta
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantação de Árvores-da-borracha
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Abastecimento de Água
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=m}Depósito de Água
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Fábrica
+STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Quinta
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Serração
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=f}Floresta de Algodão Doce
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Fábrica de Doces
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=m}Campo de Baterias
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=mp}Poços de Cola
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}Loja de Brinquedos
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fábrica de Brinquedos
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=fp}Fontes de Plástico
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fábrica de Bebidas Gasosas
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Produtor de Bolhas
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Extracção de Caramelo
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mina de Açúcar
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!

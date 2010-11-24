@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} 噸
 STR_LITERS                                                      :{COMMA} 公升
 STR_ITEMS                                                       :{COMMA} 件
 STR_CRATES                                                      :{COMMA} 箱
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其它
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :暗藍
@@ -941,6 +940,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}勾選�
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}螢幕解析度
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}選擇螢幕解析度
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其它
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}畫面擷取檔案格式
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}選擇畫面擷取檔案格式
@@ -1785,6 +1785,8 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :想試著作弊
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :伺服器已滿
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :已傳送太多指令
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}可能發生連線中斷
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
