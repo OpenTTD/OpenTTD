@@ -1237,10 +1237,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Keep bu
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Group expenses in company finance window: {ORANGE}{STRING1}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Show building tools when no suitable vehicles are available: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max aircraft per player: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max ships per player: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max trains per company: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max road vehicles per company: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max aircraft per company: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max ships per company: {ORANGE}{STRING1}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Disable trains for computer: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Disable road vehicles for computer: {ORANGE}{STRING1}
