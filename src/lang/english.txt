@@ -1487,10 +1487,10 @@ STR_FACE_LOAD                                                   :{BLACK}Load
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Load favourite face
 STR_FACE_LOAD_DONE                                              :{WHITE}Your favourite face has been loaded from the OpenTTD configuration file
 STR_FACE_FACECODE                                               :{BLACK}Player face no.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}View and/or set player face number
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}View and/or set player face number
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}View and/or set face number of the company president
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}View and/or set president face number
 STR_FACE_FACECODE_SET                                           :{WHITE}New face number code has been set.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Couldn't set player face number - must be numeric between 0 and 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Couldn't set president face number - must be a number between 0 and 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Save
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Save favourite face
 STR_FACE_SAVE_DONE                                              :{WHITE}This face will be saved as your favourite in the OpenTTD configuration file
@@ -1607,9 +1607,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Language
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Other players will know which language is spoken on the server
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start Game
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start a new network game from a random map, or scenario
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start a new network game from a random map, or the selected scenario
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Load Game
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Resume an earlier saved multiplayer game (be sure to connect as the correct player)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Resume an earlier saved multiplayer game (be sure to connect to the correct company)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Enter a name for the network game
 
@@ -2095,10 +2095,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Decrease
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generate random land
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Create new scenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Reset landscape
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Remove all player-owned property from the map
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Remove all company-owned property from the map
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Reset Landscape
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Are you sure you want to remove all player-owned property?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Are you sure you want to remove all company-owned property?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Town Generation
