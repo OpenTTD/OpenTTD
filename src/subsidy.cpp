@@ -45,7 +45,7 @@ void Subsidy::AwardTo(CompanyID company)
 	GetString(company_name, STR_COMPANY_NAME, company_name + MAX_LENGTH_COMPANY_NAME_BYTES - 1);
 
 	/* Add a news item */
-	Pair reftype = SetupSubsidyDecodeParam(this, 0);
+	Pair reftype = SetupSubsidyDecodeParam(this, false);
 	InjectDParam(1);
 
 	SetDParamStr(0, company_name);
@@ -278,12 +278,12 @@ void SubsidyMonthlyLoop()
 	FOR_ALL_SUBSIDIES(s) {
 		if (--s->remaining == 0) {
 			if (!s->IsAwarded()) {
-				Pair reftype = SetupSubsidyDecodeParam(s, 1);
+				Pair reftype = SetupSubsidyDecodeParam(s, true);
 				AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 				AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s->index));
 			} else {
 				if (s->awarded == _local_company) {
-					Pair reftype = SetupSubsidyDecodeParam(s, 1);
+					Pair reftype = SetupSubsidyDecodeParam(s, true);
 					AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 				}
 				AI::BroadcastNewEvent(new AIEventSubsidyExpired(s->index));
@@ -304,7 +304,7 @@ void SubsidyMonthlyLoop()
 			if (s != NULL) {
 				s->remaining = SUBSIDY_OFFER_MONTHS;
 				s->awarded = INVALID_COMPANY;
-				Pair reftype = SetupSubsidyDecodeParam(s, 0);
+				Pair reftype = SetupSubsidyDecodeParam(s, false);
 				AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
 				SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
 				SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
