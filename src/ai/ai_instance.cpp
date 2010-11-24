@@ -76,6 +76,11 @@
 #include "../company_base.h"
 #include "../fileio_func.h"
 
+/** The maximum number of operations for saving or loading the data of an AI. */
+static const int MAX_SL_OPS          = 100000;
+/** The maximum number of operations for initial start of an AI. */
+static const int MAX_CONSTRUCTOR_OPS = 100000;
+
 AIStorage::~AIStorage()
 {
 	/* Free our pointers */
@@ -344,7 +349,7 @@ void AIInstance::GameLoop()
 			AIObject::SetAllowDoCommand(false);
 			/* Run the constructor if it exists. Don't allow any DoCommands in it. */
 			if (this->engine->MethodExists(*this->instance, "constructor")) {
-				if (!this->engine->CallMethod(*this->instance, "constructor", 100000) || this->engine->IsSuspended()) {
+				if (!this->engine->CallMethod(*this->instance, "constructor", MAX_CONSTRUCTOR_OPS) || this->engine->IsSuspended()) {
 					if (this->engine->IsSuspended()) AILog::Error("This AI took too long to initialize. AI is not started.");
 					this->Died();
 					return;
@@ -611,7 +616,7 @@ void AIInstance::Save()
 		bool backup_allow = AIObject::GetAllowDoCommand();
 		AIObject::SetAllowDoCommand(false);
 		try {
-			if (!this->engine->CallMethod(*this->instance, "Save", &savedata)) {
+			if (!this->engine->CallMethod(*this->instance, "Save", &savedata, MAX_SL_OPS)) {
 				/* The script crashed in the Save function. We can't kill
 				 * it here, but do so in the next AI tick. */
 				SaveEmpty();
@@ -634,7 +639,7 @@ void AIInstance::Save()
 		AIObject::SetAllowDoCommand(backup_allow);
 
 		if (!sq_istable(savedata)) {
-			AILog::Error("Save function should return a table.");
+			AILog::Error(this->engine->IsSuspended() ? "This AI took too long to Save." : "Save function should return a table.");
 			SaveEmpty();
 			this->engine->CrashOccurred();
 			return;
@@ -776,7 +781,7 @@ bool AIInstance::CallLoad()
 
 	/* Call the AI load function. sq_call removes the arguments (but not the
 	 * function pointer) from the stack. */
-	if (SQ_FAILED(sq_call(vm, 3, SQFalse, SQFalse, 100000))) return false;
+	if (SQ_FAILED(sq_call(vm, 3, SQFalse, SQFalse, MAX_SL_OPS))) return false;
 
 	/* Pop 1) The version, 2) the savegame data, 3) the object instance, 4) the function pointer. */
 	sq_pop(vm, 4);

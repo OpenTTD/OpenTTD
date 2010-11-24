@@ -16,6 +16,11 @@
 #include "script_info.hpp"
 #include "script_scanner.hpp"
 
+/** Number of operations to get the author and similar information. */
+static const int MAX_GET_OPS            =   1000;
+/** Number of operations to create an instance of an AI. */
+static const int MAX_CREATEINSTANCE_OPS = 100000;
+
 ScriptFileInfo::~ScriptFileInfo()
 {
 	free((void *)this->author);
@@ -66,17 +71,17 @@ bool ScriptFileInfo::CheckMethod(const char *name) const
 	info->main_script = strdup(scanner->GetMainScript());
 
 	/* Cache the data the info file gives us. */
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor", &info->author)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetName", &info->name)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetShortName", &info->short_name)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDescription", &info->description)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDate", &info->date)) return SQ_ERROR;
-	if (!info->engine->CallIntegerMethod(*info->SQ_instance, "GetVersion", &info->version)) return SQ_ERROR;
-	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "CreateInstance", &info->instance_name)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor", &info->author, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetName", &info->name, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetShortName", &info->short_name, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDescription", &info->description, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetDate", &info->date, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallIntegerMethod(*info->SQ_instance, "GetVersion", &info->version, MAX_GET_OPS)) return SQ_ERROR;
+	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "CreateInstance", &info->instance_name, MAX_CREATEINSTANCE_OPS)) return SQ_ERROR;
 
 	/* The GetURL function is optional. */
 	if (info->engine->MethodExists(*info->SQ_instance, "GetURL")) {
-		if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetURL", &info->url)) return SQ_ERROR;
+		if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetURL", &info->url, MAX_GET_OPS)) return SQ_ERROR;
 	}
 
 	return 0;

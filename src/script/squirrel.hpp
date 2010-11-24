@@ -140,11 +140,11 @@ public:
 	 * Call a method of an instance, in various flavors.
 	 * @return False if the script crashed or returned a wrong type.
 	 */
-	bool CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend = -1);
-	bool CallMethod(HSQOBJECT instance, const char *method_name, int suspend = -1) { return this->CallMethod(instance, method_name, NULL, suspend); }
-	bool CallStringMethodStrdup(HSQOBJECT instance, const char *method_name, const char **res, int suspend = -1);
-	bool CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend = -1);
-	bool CallBoolMethod(HSQOBJECT instance, const char *method_name, bool *res, int suspend = -1);
+	bool CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend);
+	bool CallMethod(HSQOBJECT instance, const char *method_name, int suspend) { return this->CallMethod(instance, method_name, NULL, suspend); }
+	bool CallStringMethodStrdup(HSQOBJECT instance, const char *method_name, const char **res, int suspend);
+	bool CallIntegerMethod(HSQOBJECT instance, const char *method_name, int *res, int suspend);
+	bool CallBoolMethod(HSQOBJECT instance, const char *method_name, bool *res, int suspend);
 
 	/**
 	 * Check if a method exists in an instance.
