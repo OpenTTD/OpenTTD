@@ -1182,7 +1182,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enable 
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING1} {RED}Warning: High setting slows game
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING1} tile{P 0:1 "" s} {RED}Warning: High value slows game
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Land colour used at the smallmap: {ORANGE}{STRING1}
@@ -1251,13 +1251,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow A
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING1}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Service intervals are in percents: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING1} days/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING1} day{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Default service interval for trains: {ORANGE}disabled
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING1} days/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING1} day{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING1} days/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING1} day{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Default service interval for ships: {ORANGE}{STRING1} days/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Default service interval for ships: {ORANGE}{STRING1} day{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Default service interval for ships: {ORANGE}disabled
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Enable wagon speed limits: {ORANGE}{STRING1}
@@ -1307,10 +1307,10 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Positio
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Left
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centre
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Right
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING1} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING1} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Window snap radius: {ORANGE}disabled
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Window soft limit (non-sticky): {ORANGE}{STRING1}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Window soft limit (non-sticky): {ORANGE}disabled
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximum number of non-sticky windows: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximum number of non-sticky windows: {ORANGE}disabled
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Town growth speed: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :None
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Slow
