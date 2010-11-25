@@ -324,7 +324,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 				char *str = this->strings[idx];
 
 				/* "<CASEn>" */
-				*d++ = i;
+				*d++ = i + 1;
 
 				/* "<LENn>" */
 				size_t len = strlen(str) + 1;
