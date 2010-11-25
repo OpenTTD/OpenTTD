@@ -1576,9 +1576,16 @@ static bool FindMissingGlyphs(const char **str)
 	UninitFreeType();
 	InitFreeType();
 #endif
-	const Sprite *question_mark = GetGlyph(FS_NORMAL, '?');
+	const Sprite *question_mark[FS_END];
+	FontSize size;
+
+	for (size = FS_BEGIN; size < FS_END; size++) {
+		question_mark[size] = GetGlyph(size, '?');
+	}
+
 	for (uint i = 0; i != 32; i++) {
 		for (uint j = 0; j < _langtab_num[i]; j++) {
+			size = FS_NORMAL;
 			const char *text = _langpack_offs[_langtab_start[i] + j];
 			if (str != NULL) *str = text;
 			for (WChar c = Utf8Consume(&text); c != '\0'; c = Utf8Consume(&text)) {
@@ -1589,7 +1596,11 @@ static bool FindMissingGlyphs(const char **str)
 					text++;
 				} else if (c == SCC_SETXY) {
 					text += 2;
-				} else if (IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(FS_NORMAL, c) == question_mark) {
+				} else if (c == SCC_TINYFONT) {
+					size = FS_SMALL;
+				} else if (c == SCC_BIGFONT) {
+					size = FS_LARGE;
+				} else if (IsPrintable(c) && !IsTextDirectionChar(c) && c != '?' && GetGlyph(size, c) == question_mark[size]) {
 					/* The character is printable, but not in the normal font. This is the case we were testing for. */
 					return true;
 				}
