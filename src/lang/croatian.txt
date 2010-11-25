@@ -1278,7 +1278,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Omoguć
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedna ili više pločica na sjevernom rubu nisu prazne
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedna ili više pločica na jednom od rubova nije voda
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maksimalna raširenost postaje: {ORANGE}{STRING} polja{P 0:1 "" s} {RED}Pozor: visoka vrijednost usporava igru
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maksimalna raširenost postaje: {ORANGE}{STRING} polja {RED}Pozor: visoka vrijednost usporava igru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatski servisiraj helikoptere na heliodromima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Poveži alatnu traku za krajolik s alatnim trakama za željeznicu/ceste/vodu/zračne luke: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Boja polja korištena na maloj karti: {ORANGE}{STRING}
@@ -1347,13 +1347,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dopusti
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#operativnih zahvata prije suspendiranja UI: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servisni su intervali u postotcima: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Osnovni servisni period za vlakove: {ORANGE}{STRING} dana{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Osnovni servisni period za vlakove: {ORANGE}{STRING} dana/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Inicijalni servisni period za vlakove: {ORANGE}onemogućeno
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Osnovni servisni interval za cestovna vozila: {ORANGE}{STRING} dana{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Osnovni servisni interval za cestovna vozila: {ORANGE}{STRING} dana/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Inicijalni servisni interval za cestovna vozila: {ORANGE}onemogućeno
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Osnovni servisni interval za zrakoplove: {ORANGE}{STRING} dana{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Osnovni servisni interval za zrakoplove: {ORANGE}{STRING} dana/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Inicijalni servisni interval za zrakoplove: {ORANGE}onemogućeno
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Osnovni servisni interval za brodove: {ORANGE}{STRING} dana{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Osnovni servisni interval za brodove: {ORANGE}{STRING} dana/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Inicijalni servisni interval za brodove: {ORANGE}onemogućeno
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Isključi servisiranje kada su kvarovi postavljeni na nula: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Omogući ograničenje brzine za vagone: {ORANGE}{STRING}
@@ -1403,7 +1403,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozicij
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Lijevo
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Sredina
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Desno
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus hvatanja prozora: {ORANGE}{STRING} piksela{P 0:1 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus hvatanja prozora: {ORANGE}{STRING} piksela
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radijus hvatanja prozora: {ORANGE}isključen
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Najveći broj neljepljivih prozora: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Najveći broj neljepljivih prozora: {ORANGE}onemogućeno
