@@ -141,6 +141,7 @@ NetworkRecvStatus NetworkGameSocketHandler::Recv_Packets()
 	Packet *p;
 	while ((p = this->Recv_Packet()) != NULL) {
 		NetworkRecvStatus res = HandlePacket(p);
+		delete p;
 		if (res != NETWORK_RECV_STATUS_OKAY) return res;
 	}
 
