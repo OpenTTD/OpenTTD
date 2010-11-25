@@ -445,7 +445,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
 		size_t toRead = (size_t)(p->size - p->pos);
 		if (fwrite(p->buffer + p->pos, 1, toRead, this->curFile) != toRead) {
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, WL_ERROR);
+			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			this->Close();
 			fclose(this->curFile);
 			this->curFile = NULL;
@@ -479,7 +479,7 @@ bool ClientNetworkContentSocketHandler::BeforeDownload()
 		if (filename == NULL) {
 			/* Unless that fails ofcourse... */
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, WL_ERROR);
+			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			return false;
 		}
 
