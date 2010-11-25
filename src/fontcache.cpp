@@ -742,7 +742,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 
 #else /* without WITH_FONTCONFIG */
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) {return FT_Err_Cannot_Open_Resource;}
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback) { return false }
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, SetFallbackFontCallback *callback) { return false; }
 #endif /* WITH_FONTCONFIG */
 
 static void SetFontGeometry(FT_Face face, FontSize size, int pixels)
