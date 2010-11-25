@@ -142,13 +142,13 @@ char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const char *last)
 			break;
 
 		case 28:
-			return FormatString(buffr, GetGRFStringPtr(index), argv, 0, last);
+			return FormatString(buffr, GetGRFStringPtr(index), argv, GB(string, 24, 8), last);
 
 		case 29:
-			return FormatString(buffr, GetGRFStringPtr(index + 0x0800), argv, 0, last);
+			return FormatString(buffr, GetGRFStringPtr(index + 0x0800), argv, GB(string, 24, 8), last);
 
 		case 30:
-			return FormatString(buffr, GetGRFStringPtr(index + 0x1000), argv, 0, last);
+			return FormatString(buffr, GetGRFStringPtr(index + 0x1000), argv, GB(string, 24, 8), last);
 
 		case 31:
 			NOT_REACHED();
