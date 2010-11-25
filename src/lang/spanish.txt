@@ -1183,7 +1183,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Habilit
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Uno o más cuadrados del borde más al norte no están vacios
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Uno o más cuadrados en uno de los bordes no son agua
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Expansión máxima de estaciones.: {ORANGE}{STRING} {RED}Atención: Valores altos ralentizan
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Expansión máxima de estaciones: {ORANGE}{STRING} casilla{P 0:1 "" s}{RED}Advertencia: Valores altos ralentizan
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Mantener los helicópteros en helipuertos automáticamente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Une la barra de paisaje a la barra de construcción: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Color de terreno usado en el minimapa: {ORANGE}{STRING}
@@ -1238,10 +1238,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Mantene
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupar costes en la ventana de finanzas: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Herramientas de construcción aún sin vehículos apropiados: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Máximo de trenes por jugador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Máximo de vehículos de carretera por jugador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por jugador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Máximo de barcos por jugador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Número máximo de trenes por compañía: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Número máximo de vehículos por compañía: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Número máximo de aeronaves por compañía: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Número máximo de barcos por compañía: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Desactivar trenes para el ordenador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Desactivar vehículos de carretera para el ordenador: {ORANGE}{STRING}
@@ -1252,13 +1252,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Número de instrucciones antes de pausar la IA: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervalo de mantenimiento en porcentajes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de mantenimiento por defecto para trenes: {ORANGE}{STRING} días/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de mantenimiento por defecto para trenes: {ORANGE}{STRING} dia{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de mantenimiento por defecto para trenes: {ORANGE}desactivado
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de mantenimiento por defecto para vehículos: {ORANGE}{STRING} días/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de mantenimiento por defecto para vehículos: {ORANGE}{STRING} dia{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalo de mantenimiento por defecto para vehículos: {ORANGE}desactivado
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de mantenimiento por defecto para aeronaves: {ORANGE}{STRING} días/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de mantenimiento por defecto para aeronaves: {ORANGE}{STRING} dia{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de mantenimiento por defecto para aeronaves: {ORANGE}desactivado
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de mantenimiento por defecto para barcos: {ORANGE}{STRING} días/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de mantenimiento por defecto para barcos: {ORANGE}{STRING} dia{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de mantenimiento por defecto para barcos: {ORANGE}desactivado
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Desactivar mantenimiento cuando las averías están desactivadas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activar límites de velocidad en vagones: {ORANGE}{STRING}
@@ -1308,10 +1308,10 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posici�
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Izquierda
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centro
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Derecha
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radio de snap de ventana: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radio de snap de ventana: {ORANGE}{STRING} pixel{P 0:1 "" es}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radio de snap de ventana: {ORANGE}desactivado
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Límite de ventanas abiertas (no-ancladas): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Límite de ventanas abiertas (no-ancladas): {ORANGE}desactivado
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Máximo número de ventanas no-ancladas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Máximo número de ventanas no-ancladas: {ORANGE}desactivado
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Velocidad crecimiento pueblo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ninguna
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
@@ -1351,7 +1351,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(No recomendado)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Cambiar valor de la opción
 
@@ -1489,10 +1488,10 @@ STR_FACE_LOAD                                                   :{BLACK}Cargar
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Cargar cara favorita
 STR_FACE_LOAD_DONE                                              :{WHITE}Tu cara favorita ha sido cargada del fichero de configuración de OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Cara del jugador no.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver y/o asignar número de cara del jugador
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver y/o asignar número de cara del jugador
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver y/o asignar número de cara de presidente
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver y/o asignar número de cara de presidente
 STR_FACE_FACECODE_SET                                           :{WHITE}Nuevo código de cara ha sido asignado.
-STR_FACE_FACECODE_ERR                                           :{WHITE}No se puede asignar código de cara - debe ser un valor numérico de 0 a 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}No se puede asignar número de cara de presidente - debe ser un numéro entre 0 y 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Guardar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Guardar cara favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Esta cara ha sido guardada como tu favorita en el fichero de configuración.
@@ -1609,9 +1608,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma h
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Otros jugadores sabrán cual es el idioma hablado en este servidor.
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Empezar Juego
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Empezar un nuevo juego en red desde un mapa al azar o escenario
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Comenzar nuevo juego en red con un mapa al azar o el escenario seleccionado
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Cargar Juego
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continúa un juego multijugador guardado (asegúrese de conectar con el jugador correcto)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continúa una partida multijugador guardada (asegúrese de conectar con la compañía correcta)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Introduce un nombre para el juego en red
 
@@ -2097,10 +2096,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Reducir 
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generar terreno al azar
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Crear nuevo escenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Reiniciar el paisaje
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Eliminar todas las propiedades de jugadores del mapa
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Eliminar todas las propiedades de compañías del mapa
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Reiniciar el Paisaje
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Estás seguro de querer eliminar todas las propiedades de jugadores?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Está seguro de querer eliminar todas las propiedades de compañías?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Creación de Pueblos

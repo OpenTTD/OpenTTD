@@ -1183,7 +1183,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Autoris
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Une ou plusieurs cases sur le bord nord ne sont pas vides
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Une ou plusieurs cases sur l'un des bords ne sont pas de l'eau
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Étendue max. des stations{NBSP}: {ORANGE}{STRING} {RED}Attention{NBSP}: Valeur élevée = jeu lent
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Étendue max. des stations{NBSP}: {ORANGE}{STRING} case{P 0:1 "" s} {RED}Attention{NBSP}: Valeur élevée = jeu lent
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'héliport{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils paysage avec celle des rails/routes/eau et aéroport{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Couleur utilisée pour le terrain sur la carte{NBSP}: {ORANGE}{STRING}
@@ -1238,10 +1238,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Conserv
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Regrouper les dépenses dans la fenêtre des finances{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Afficher les outils de construction quand aucun véhicule approprié n'est disponible{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Nombre de véhicules routiers max. par joueur{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Nombre d'aéronefs max. par joueur{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Nombre de navires max. par joueur{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Nombre maximum de trains par compagnie{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Nombre maximum de véhicules routiers par compagnie{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Nombre maximum d'aéronefs par compagnie{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Nombre maximum de navires par compagnie{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Désactiver les trains pour l'ordinateur{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Désactiver les véhicules routiers pour l'ordinateur{NBSP}: {ORANGE}{STRING}
@@ -1252,13 +1252,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permett
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Nombre d'opcodes avant de suspendre l'IA{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Les intervalles de service sont en pourcentage{NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalle d'entretien par défaut pour les trains{NBSP}: {ORANGE}{STRING} jours/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalle d'entretien par défaut pour les trains{NBSP}: {ORANGE}{STRING} jour{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalle d'entretien par défaut pour les trains{NBSP}: {ORANGE}inactif
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalle d'entretien par défaut pour les véhicules routiers{NBSP}: {ORANGE}{STRING} jours/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalle d'entretien par défaut pour les véhicules routiers{NBSP}: {ORANGE}{STRING} jour{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalle d'entretien par défaut pour les véhicules routiers{NBSP}: {ORANGE}inactif
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalle d'entretien par défaut pour les aéronefs{NBSP}: {ORANGE}{STRING} jours/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalle d'entretien par défaut pour les aéronefs{NBSP}: {ORANGE}{STRING} jour{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalle d'entretien par défaut pour les aéronefs{NBSP}: {ORANGE}inactif
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalle d'entretien par défaut pour les navires{NBSP}: {ORANGE}{STRING} jours/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalle d'entretien par défaut pour les navires{NBSP}: {ORANGE}{STRING} jour{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalle d'entretien par défaut pour les navires{NBSP}: {ORANGE}inactif
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Désactiver l'entretien quand les pannes sont inactives{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activer vitesse limite des wagons{NBSP}: {ORANGE}{STRING}
@@ -1308,10 +1308,10 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Positio
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :À gauche
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centrée
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :À droite
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Rayon d'attraction des fenêtres{NBSP}: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Rayon d'attraction des fenêtres{NBSP}: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Rayon d'attraction des fenêtres{NBSP}: {ORANGE}inactif
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limite du nombre de fenêtres (non-ineffaçables){NBSP}: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limite du nombre de fenêtres (non-ineffaçables){NBSP}: {ORANGE}désactivée
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Nombre maximum de fenêtres non-ineffaçables{NBSP}: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Nombre maximum de fenêtres non-ineffaçables{NBSP}: {ORANGE}désactivé
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Vitesse de croissance des villes{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Aucune
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lente
@@ -1351,7 +1351,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Recherc
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommandé)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Non recommandé)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Changer valeur du paramètre
 
@@ -1609,9 +1608,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Langue u
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur.
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Démarrer la partie
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Démarrer une nouvelle partie réseau à partir d'une carte aléatoire ou d'un scénario
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Démarrer une nouvelle partie réseau à partir d'une carte aléatoire, ou d'un scénario
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Charger une partie
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continuer une partie multijoueur sauvée précédemment (attention à reprendre le même joueur)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continuer une partie multijoueur sauvée précédemment (attention à reprendre la même compagnie)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Entrer un nom pour la partie en réseau
 
@@ -2097,10 +2096,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminuer
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Créer un monde aléatoire
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Nouveau scénario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Réinitialiser le terrain
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Ôter toutes les propriétés des joueurs de la carte
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Ôter toutes les propriétés des compagnies de la carte
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Réinitialiser le terrain
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Êtes-vous sûr de vouloir ôter toutes les propriétés des joueurs{NBSP}?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Êtes-vous sûr de vouloir ôter toutes les propriétés des compagnies{NBSP}?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Créer les villes

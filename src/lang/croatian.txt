@@ -1278,7 +1278,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Omoguć
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedna ili više pločica na sjevernom rubu nisu prazne
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedna ili više pločica na jednom od rubova nije voda
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maksimalna raširenost postaje: {ORANGE}{STRING} {RED}Pozor: visoka vrijednost usporava igru
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maksimalna raširenost postaje: {ORANGE}{STRING} polja{P 0:1 "" s} {RED}Pozor: visoka vrijednost usporava igru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatski servisiraj helikoptere na heliodromima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Poveži alatnu traku za krajolik s alatnim trakama za željeznicu/ceste/vodu/zračne luke: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Boja polja korištena na maloj karti: {ORANGE}{STRING}
@@ -1333,10 +1333,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Zadrži
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupiraj troškove u financijskom prozoru tvrtke: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Pokaži alate za izgradnju kada su odgovarajuća vozila nedostupna: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maksimalan broj vlakova po igraču: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maksimalan broj cestovnih vozila po igraču: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maksimalan broj zrakoplova po igraču: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maksimalan broj brodova po igraču: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maksimalan broj vlakova po kompaniji: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maksimalan broj cestovnih vozila po kompaniji: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maksimalan broj zrakoplova po kompaniji: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maksimalan broj brodova po kompaniji: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Isključi vlakove za računalo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Isključi cestovna vozila za računalo: {ORANGE}{STRING}
@@ -1347,13 +1347,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dopusti
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#operativnih zahvata prije suspendiranja UI: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servisni su intervali u postotcima: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Inicijalni servisni period za vlakove: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Osnovni servisni period za vlakove: {ORANGE}{STRING} dana{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Inicijalni servisni period za vlakove: {ORANGE}onemogućeno
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Inicijalni servisni interval za cestovna vozila: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Osnovni servisni interval za cestovna vozila: {ORANGE}{STRING} dana{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Inicijalni servisni interval za cestovna vozila: {ORANGE}onemogućeno
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Inicijalni servisni interval za zrakoplove: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Osnovni servisni interval za zrakoplove: {ORANGE}{STRING} dana{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Inicijalni servisni interval za zrakoplove: {ORANGE}onemogućeno
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Inicijalni servisni interval za brodove: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Osnovni servisni interval za brodove: {ORANGE}{STRING} dana{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Inicijalni servisni interval za brodove: {ORANGE}onemogućeno
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Isključi servisiranje kada su kvarovi postavljeni na nula: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Omogući ograničenje brzine za vagone: {ORANGE}{STRING}
@@ -1403,10 +1403,10 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozicij
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Lijevo
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Sredina
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Desno
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus hvatanja prozora: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus hvatanja prozora: {ORANGE}{STRING} piksela{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radijus hvatanja prozora: {ORANGE}isključen
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Mekana granica prozora (neljepljiva): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Mekana granica prozora (neljepljiva): {ORANGE}onemogućeno
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Najveći broj neljepljivih prozora: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Najveći broj neljepljivih prozora: {ORANGE}onemogućeno
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Brzina rasta gradova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nema
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sporo
@@ -1446,7 +1446,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pronala
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Preporučljivo)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nije preporučljivo)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Promijeni vrijednost postavke
 
@@ -1584,10 +1583,10 @@ STR_FACE_LOAD                                                   :{BLACK}Učitaj
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Učitaj omiljeno lice
 STR_FACE_LOAD_DONE                                              :{WHITE}Tvoje omiljeno lice je učitano iz OpenTTD konfiguracijske datoteke.
 STR_FACE_FACECODE                                               :{BLACK}Broj igračevog lica
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Pogledaj i/ili postavi broj igračevog lica
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Pogledaj i/ili postavi broj igračevog lica
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Pogledaj i/ili postavi broj lica predsjednika kompanije
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Pogledaj i/ili postavi broj predsjednikovog lica
 STR_FACE_FACECODE_SET                                           :{WHITE}Novi kod za broj igračevog lica je postavljen.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Ne mogu postaviti broj igračevog lica - mora biti numerička vrijednost između 0 i 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nemoguće namjestiti broj predsjednikovog lica - mora biti broj između 0 and 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Spremi
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Izaberi omiljeno lice
 STR_FACE_SAVE_DONE                                              :{WHITE}Ovo lice bit će spremljeno kao tvoje omiljeno u OpenTTD konfiguracijsku datoteku.
@@ -1704,9 +1703,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jezik ko
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igrači znat će kojim se jezikom govori na poslužitelju
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Započni igru
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Započni novu igru u mreži na nasumičnoj mapi ili iz scenarija
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Započni novu igru u mreži na nasumičnoj mapi ili iz odabranog scenarija
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Učitaj igru
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Nastavi ranije snimljenu igru za više igrača (pazite da se spojite pod svojim imenom)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Nastavi ranije snimljenu igru za više igrača (pazite da se spojite pod točnim imenom kompanije)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Upišite ime mrežne igre
 
@@ -2192,10 +2191,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Smanji p
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Napravi nasumično zemljište
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Kreiraj novi scenarij
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Poništi krajolik
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Obriši sa mape sve u vlasništvu igrača
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Obriši sa mape sve u vlasništvu kompanije
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Poništi krajolik
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Jeste li sigurni da želite obrisati sve u vlasništvu igrača?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Jeste li sigurni da želite obrisati sve u vlasništvu kompanije?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stvaranje gradova

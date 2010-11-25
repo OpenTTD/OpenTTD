@@ -1183,7 +1183,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Landsch
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Ein oder mehrere Felder am nördlichen Spielfeldrand sind nicht leer
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eines oder mehrere Felder am Spielfeldrand sind nicht Wasser
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}(Hoher Wert verlangsamt das Spiel)
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} Feld{P 0:1 "" er}{RED} (Hoher Wert verlangsamt das Spiel)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Landeplatz automatisch warten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Werkzeugleiste für Landschaftsbau an die Bauwerkzeuge binden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Farbe für Land auf der Weltkarte: {ORANGE}{STRING}
@@ -1238,10 +1238,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Belasse
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Zwischensummen für Kategorien bei Firmenausgaben:{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Bauwerkzeuge auch anzeigen, wenn keine passenden Fahrzeuge verfügbar sind: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximale Anzahl der Straßenfahrzeuge pro Spieler: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximale Anzahl der Flugzeuge pro Spieler: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximale Anzahl der Schiffe pro Spieler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Firma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximale Anzahl der Straßenfahrzeuge pro Firma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximale Anzahl der Flugzeuge pro Firma: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximale Anzahl der Schiffe pro Firma: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Züge für den Computer abschalten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Straßenfahrzeuge für den Computer abschalten: {ORANGE}{STRING}
@@ -1252,13 +1252,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}KI im M
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Anzahl Rechenschritte bevor KI unterbrochen wird: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Wartungsintervalle in Prozent: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}{STRING} Tage/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}{STRING} Tag{P 0:1 "" e}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}abgeschaltet
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Vorgegebenes Wartungsintervall für Fahrzeuge: {ORANGE}{STRING} Tage/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Vorgegebenes Wartungsintervall für Fahrzeuge: {ORANGE}{STRING} Tag{P 0:1 "" e}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Vorgegebenes Wartungsintervall für Fahrzeuge: {ORANGE}abgeschaltet
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Vorgegebenes Wartungsintervall für Flugzeuge: {ORANGE}{STRING} Tage/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Vorgegebenes Wartungsintervall für Flugzeuge: {ORANGE}{STRING} Tag{P 0:1 "" e}e/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Vorgegebenes Wartungsintervall für Flugzeuge: {ORANGE}abgeschaltet
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Vorgegebenes Wartungsintervall für Schiffe: {ORANGE}{STRING} Tage/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Vorgegebenes Wartungsintervall für Schiffe: {ORANGE}{STRING} Tag{P 0:1 "" e}e/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Vorgegebenes Wartungsintervall für Schiffe: {ORANGE}abgeschaltet
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Wartung deaktivieren, wenn Pannen abgeschaltet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Berücksichtige Waggonhöchstgeschwindigkeit: {ORANGE}{STRING}
@@ -1308,7 +1308,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Positio
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Links
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Mitte
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Rechts
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fenster schnappen aneinander, wenn näher als: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fenster schnappen aneinander, wenn näher als: {ORANGE}{STRING} Pixel
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenster schnappen aneinander, wenn näher als: {ORANGE}ausgeschaltet
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximale Fensteranzahl (nicht angepinnte): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximale Fensteranzahl (nicht angepinnte): {ORANGE}deaktiviert
@@ -1351,7 +1351,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :OPF {BLUE}(empfohlen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(nicht empfohlen)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Wert der Einstellung ändern
 
@@ -1492,7 +1491,7 @@ STR_FACE_FACECODE                                               :{BLACK}Gesichts
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Nummer des Gesichts anschauen / setzen
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Nummer des Gesichts anschauen / setzen
 STR_FACE_FACECODE_SET                                           :{WHITE}Neue Nummer wurde für das Gesicht registriert.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Konnte keine Nummer für das Gesicht registrieren, sie muss zwischen 0 und 4.294.967.295 liegen!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Konnte keine Nummer für das Gesicht setzen, sie muss zwischen 0 und 4.294.967.295 liegen!
 STR_FACE_SAVE                                                   :{BLACK}Speichern
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Speichere bevorzugtes Gesicht
 STR_FACE_SAVE_DONE                                              :{WHITE}Dieses Gesicht wird als bevorzugtes Gesicht in der OpenTTD-Konfigurationsdatei gespeichert.
@@ -1609,9 +1608,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Gesproch
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Damit andere Spieler wissen, welche Sprache auf diesem Server gesprochen wird.
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Spiel beginnen
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Startet ein neues Mehrspielerspiel auf einem zufällig generierten Spielfeld oder einem Szenario
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Startet ein neues Mehrspielerspiel auf einem zufällig generierten Spielfeld oder dem ausgewählten Szenario
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Spiel Laden
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Lädt ein gespeichertes Spiel
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Lädt ein gespeichertes Spiel (Darauf achten, anschließend der richtigen Firma anschließend beizutreten)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Namen für das Netzwerkspiel eingeben
 
@@ -2097,10 +2096,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Landflä
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Erzeuge Land durch Zufall
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Neues Szenario erzeugen
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Landfläche wiederherstellen
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Das gesamte Spielereigentum vom Spielfeld entfernen
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Das gesamte Firmeneigentum vom Spielfeld entfernen
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Landfläche wiederherstellen
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Soll wirklich das gesamte Spielereigentum entfernt werden?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Soll wirklich das gesamte Firmeneigentum entfernt werden?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stadt gründen

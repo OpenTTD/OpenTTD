@@ -1182,7 +1182,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Có th�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Một hoặc nhiều ô đất ở mép bản đồ phía bắc không được trống
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Một hoặc nhiều ô đất ở mép bản không phải là biển
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Vùng nhận hàng tối đa của ga, bến, cảng: {ORANGE}{STRING} {RED}Cảnh báo: giá trị cao làm chậm game
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Vùng nhận hàng tối đa của ga, bến, cảng: {ORANGE}{STRING}ô {RED}Cảnh báo: giá trị cao làm chậm game
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Bảo trì trực thăng ở sân bay trực thăng một cách tự động: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Neo c.cụ tôn tạo nền đất vào c.cụ tàu hoả/xe/tàu thủy/máy bay: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Màu đất hiển thị tại bản đồ nhỏ: {ORANGE}{STRING}
@@ -1307,7 +1307,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Vị tr
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Bên trái
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Ở giữa
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Bên phải
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Phạm vi neo cửa sổ: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Phạm vi neo cửa sổ: {ORANGE}{STRING} pixel
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Phạm vi neo cửa sổ: {ORANGE}tắt
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Giới hạn số lượng cửa sổ (không-neo): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Giới hạn số lượng cửa sổ (không-neo): {ORANGE}tắt
@@ -1350,7 +1350,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Cơ ch�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Nguyên bản {BLUE}(Nên dùng)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Không nên dùng)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Thay đổi giá trị
 
@@ -1488,10 +1487,10 @@ STR_FACE_LOAD                                                   :{BLACK}Nạp
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Chọn vẻ mặt ưa thích
 STR_FACE_LOAD_DONE                                              :{WHITE}Vẻ mặt ưa thích đã được nạp từ file thiết lập của OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Vẻ mặt thứ.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Xem và/hoặc sửa số vẻ mặt
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Xem và/hoặc sửa số vẻ mặt của chủ tịch công ty
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Xem và/hoặc chọn số bộ mặt người chơi
 STR_FACE_FACECODE_SET                                           :{WHITE}Mã số gương mặt mới được thiết lập.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Không thể thiết lập mã số gương mặt - mã số phải được 0 và 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Không thể thiết lập mã số gương mặt - mã số phải trong khoảng từ 0 đến 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Lưu
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Lưu gương mặt yêu thích
 STR_FACE_SAVE_DONE                                              :{WHITE}Gương mặt yêu thích này sẽ được lưu lại trong tập tin cấu hình OpenTTD .

@@ -1182,7 +1182,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Salli m
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Yksi tai useampi ruutu pohjoisreunalla ei ole tyhjä
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Yksi tai useampi ruutu jollakin reunalla ei ole vettä
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurin aseman koko: {ORANGE}{STRING} {RED}Varoitus: Korkea asetus hidastaa peliä
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Suurin sallittu aseman koko: {ORANGE}{STRING} ruutu{P 0:1 "" a} {RED}Varoitus: korkea arvo hidastaa peliä
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Kartassa käytettävä maan väri: {ORANGE}{STRING}
@@ -1237,10 +1237,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Pidä r
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ryhmitä kulut yhtiön rahoitusikkunassa: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Näytä rakennustyökalut, vaikka sopivia ajoneuvoja ei ole saatavilla: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Junia/pelaaja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Ajoneuvoja/pelaaja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Lentokoneita/pelaaja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Laivoja/pelaaja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Suurin sallittu junien määrä yhtiötä kohden: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Suurin sallittu ajoneuvojen määrä yhtiötä kohden: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Suurin sallittu lentokoneiden määrä yhtiötä kohden: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Suurin sallittu laivojen määrä yhtiötä kohden: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Tietokoneella ei ole junia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Tietokoneella ei ole ajoneuvoja: {ORANGE}{STRING}
@@ -1251,13 +1251,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Salli t
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodet ennen tekoälyn pysäyttämistä: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Huoltovälit ovat prosentteina: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Oletushuoltoväli junille: {ORANGE}{STRING} päivää
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Oletushuoltoväli junille: {ORANGE}{STRING} päivä{P 0:1 "" ä}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Oletushuoltoväli junille: {ORANGE}pois päältä
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Oletushuoltoväli ajoneuvoille: {ORANGE}{STRING} päivää
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Oletushuoltoväli ajoneuvoille: {ORANGE}{STRING} päivä{P 0:1 "" ä}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Oletushuoltoväli ajoneuvoille: {ORANGE}pois päältä
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Oletushuoltoväli lentokoneille: {ORANGE}{STRING} päivää
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Oletushuoltoväli lentokoneille: {ORANGE}{STRING} päivä{P 0:1 "" ä}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Oletushuoltoväli lentokoneille: {ORANGE}pois päältä
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Oletushuoltoväli laivoille: {ORANGE}{STRING} päivää
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Oletushuoltoväli laivoille: {ORANGE}{STRING} päivä{P 0:1 "" ä}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Oletushuoltoväli laivoille: {ORANGE}pois päältä
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Huollot pois käytöstä, kun rikkoutumiset on pois: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Ota käyttöön vaunujen nopeusrajoitukset: {ORANGE}{STRING}
@@ -1307,10 +1307,10 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Tilariv
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :vasemmalla
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :keskellä
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :oikealla
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}{STRING} pikseliä
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ikkunoiden kiinniottosäde: {ORANGE}{STRING} pikseli{P 0:1 "" ä}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}pois päältä
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnitetyt): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnitetyt): {ORANGE}pois käytöstä
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Suurin sallittu ei-kiinnitettyjen ikkunoiden lukumäärä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Suurin sallittu ei-kiinnitettyjen ikkunoiden lukumäärä: {ORANGE}pois käytöstä
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Kaupunkien kasvunopeus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ei kasvua
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Hidas
@@ -1350,7 +1350,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laivoje
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Alkuperäinen {BLUE}(Suositeltu)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ei suositeltu)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Muuta asetusarvo
 
@@ -1488,10 +1487,10 @@ STR_FACE_LOAD                                                   :{BLACK}Lataa
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Lataa suosikkikasvot
 STR_FACE_LOAD_DONE                                              :{WHITE}Suosikkikasvosi on ladattu OpenTTD:n kokoonpanotiedostosta.
 STR_FACE_FACECODE                                               :{BLACK}Pelaajan kasvot no.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Tarkastele ja/tai aseta pelaajan kasvojen numero
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Tarkastele ja/tai aseta pelaajan kasvojen numero
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Tarkastele ja/tai aseta johtajan kasvojen numero
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Tarkastele ja/tai aseta johtajan kasvojen numero
 STR_FACE_FACECODE_SET                                           :{WHITE}Uusi kasvojen numerokoodi on asetettu.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Pelaajan kasvojen numeroa ei voitu asettaa - arvon on oltaa numeerinen arvo väliltä 0-4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Johtajan kasvojen numeroa ei voitu asettaa - arvon on oltaa numeerinen arvo väliltä 0-4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Tallenna
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tallenna suosikkikasvot
 STR_FACE_SAVE_DONE                                              :{WHITE}Nämä kasvot tallennetaan suosikkikasvoiksesi OpenTTD:n kokoonpanotiedostoon.
@@ -1608,9 +1607,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Puhuttu 
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Aloita peli
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Aloita uusi verkkopeli skenaariolla tai satunnaisella kartalla.
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Aloita uusi verkkopeli satunnaisella kartalla tai valitulla skenaariolla
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Lataa peli
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Jatka aiemmin tallennettua moninpeliä (muista liittyä oikeana pelaajana).
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Jatka aiemmin tallennettua moninpeliä (muista liittyä oikeaan yhtiöön)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Syötä nimi verkkopelille
 
@@ -2096,10 +2095,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Pienenn�
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Luo satunnainen maa
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Luo uusi skenaario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Nollaa maasto
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Poista kaikki pelaajien omistamat tontit kartalta
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Poista kaikki yhtiöiden omistamat tontit kartalta
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Nollaa maasto
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Haluatko varmasti poistaa kaikki pelaaja-omisteiset tontit?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Haluatko varmasti poistaa kaikki yhtiön omistamat tontit?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Luo kaupunkeja
