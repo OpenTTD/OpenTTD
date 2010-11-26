@@ -1,6 +1,6 @@
 ##name Estonian
 ##ownname Eesti keel
-##isocode et_ET
+##isocode et_EE
 ##plural 0
 ##textdir ltr
 ##digitsep .

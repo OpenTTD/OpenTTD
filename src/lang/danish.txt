@@ -1,6 +1,6 @@
 ##name Danish
 ##ownname Dansk
-##isocode da_DA
+##isocode da_DK
 ##plural 0
 ##textdir ltr
 ##digitsep .
