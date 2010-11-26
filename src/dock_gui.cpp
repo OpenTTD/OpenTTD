@@ -225,11 +225,6 @@ struct BuildDocksToolbarWindow : Window {
 			WIDGET_LIST_END);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		this->last_clicked_widget = (DockToolbarWidgets)widget;

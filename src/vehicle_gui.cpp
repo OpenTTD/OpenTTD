@@ -513,11 +513,6 @@ struct RefitWindow : public Window {
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {

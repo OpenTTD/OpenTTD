@@ -470,11 +470,6 @@ public:
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
@@ -1232,11 +1227,6 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		if (widget == IDW_DROPDOWN_CRITERIA) SetDParam(0, IndustryDirectoryWindow::sorter_names[this->industries.SortType()]);
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
@@ -2583,11 +2573,6 @@ struct IndustryCargoesWindow : public Window {
 			params[0] = csp->name;
 			GuiShowTooltips(STR_INDUSTRY_CARGOES_CARGO_TOOLTIP, 1, params, TCC_HOVER);
 		}
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void OnResize()

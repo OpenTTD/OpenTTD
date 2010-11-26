@@ -138,11 +138,6 @@ public:
 		_network_content_client.RemoveCallback(this);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != NCDSWW_BACKGROUND) return;

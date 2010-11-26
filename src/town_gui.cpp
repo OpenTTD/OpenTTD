@@ -338,11 +338,6 @@ public:
 		this->SetWidgetDisabledState(TVW_CHANGENAME, _networking && !_network_server);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void SetStringParameters(int widget) const
 	{
 		if (widget == TVW_CAPTION) SetDParam(0, this->town->index);
@@ -732,11 +727,6 @@ public:
 	~TownDirectoryWindow()
 	{
 		this->last_sorting = this->towns.GetListing();
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void SetStringParameters(int widget) const

@@ -106,11 +106,6 @@ struct SubsidyListWindow : Window {
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	/**
 	 * Count the number of lines in this window.
 	 * @return the number of lines

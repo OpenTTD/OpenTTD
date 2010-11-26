@@ -65,11 +65,6 @@ struct SelectGameWindow : public Window {
 		this->SetWidgetLoweredState(SGI_TOYLAND_LANDSCAPE,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void SetStringParameters(int widget) const
 	{
 		if (widget == SGI_DIFFICULTIES) SetDParam(0, STR_DIFFICULTY_LEVEL_EASY + _settings_newgame.difficulty.diff_level);

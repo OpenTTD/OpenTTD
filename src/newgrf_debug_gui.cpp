@@ -416,11 +416,6 @@ struct NewGRFInspectWindow : Window {
 		const_cast<NewGRFInspectWindow*>(this)->vscroll->SetCount(i);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
@@ -655,11 +650,6 @@ struct SpriteAlignerWindow : Window {
 				break;
 			}
 		}
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

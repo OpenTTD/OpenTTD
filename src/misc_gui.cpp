@@ -79,11 +79,6 @@ public:
 	char landinfo_data[LAND_INFO_LINE_END][LAND_INFO_LINE_BUFF_SIZE];
 	TileIndex tile;
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != LIW_BACKGROUND) return;
@@ -473,11 +468,6 @@ struct AboutWindow : public Window {
 		*size = maxdim(*size, d);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != AW_SCROLLING_TEXT) return;
@@ -639,11 +629,6 @@ public:
 			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (sm_height / 2), scr_top, scr_bot - sm_height);
 		}
 		return pt;
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -894,12 +879,6 @@ struct TooltipsWindow : public Window
 			SetDParam(arg, this->params[arg]);
 		}
 		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, r.bottom - WD_FRAMERECT_BOTTOM, this->string_id, TC_FROMSTRING, SA_CENTER);
-	}
-
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void OnMouseLoop()
@@ -1518,11 +1497,6 @@ struct QueryWindow : public Window {
 		if (widget != QUERY_WIDGET_TEXT) return;
 
 		DrawStringMultiLine(r.left, r.right, r.top, r.bottom, this->message, TC_FROMSTRING, SA_CENTER);
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

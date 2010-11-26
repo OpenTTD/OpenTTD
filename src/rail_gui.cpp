@@ -717,11 +717,6 @@ struct BuildRailToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget >= RTW_BUILD_NS) {
@@ -1544,11 +1539,6 @@ public:
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (IsInsideMM(widget, BSW_SEMAPHORE_NORM, BSW_ELECTRIC_PBS_OWAY + 1)) {
@@ -1687,11 +1677,6 @@ struct BuildRailDepotWindow : public PickerWindowBase {
 	{
 		this->InitNested(desc, TRANSPORT_RAIL);
 		this->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const

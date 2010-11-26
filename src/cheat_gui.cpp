@@ -270,11 +270,6 @@ struct CheatWindow : Window {
 		size->height = this->header_height + WD_FRAMERECT_TOP + WD_PAR_VSEP_NORMAL + WD_FRAMERECT_BOTTOM + (FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL) * lengthof(_cheats_ui);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(CW_PANEL);

@@ -245,12 +245,6 @@ struct TerraformToolbarWindow : Window {
 		show_object->SetDisplayedPlane(ObjectClass::GetCount() != 0 ? 0 : SZSP_NONE);
 	}
 
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget >= TTW_BUTTONS_START) _terraform_button_proc[widget - TTW_BUTTONS_START](this);

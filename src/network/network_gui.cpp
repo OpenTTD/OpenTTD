@@ -1937,11 +1937,6 @@ struct NetworkClientListPopupWindow : Window {
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnMouseLoop()
 	{
 		/* We selected an action */
@@ -2161,11 +2156,6 @@ struct NetworkJoinStatusWindow : Window {
 	{
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, 0);
 		this->InitNested(desc, 0);
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const

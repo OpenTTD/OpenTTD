@@ -205,11 +205,6 @@ public:
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	void SelectOtherObject(int object_index)
 	{
 		_selected_object_index = object_index;

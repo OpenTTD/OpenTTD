@@ -1130,11 +1130,6 @@ public:
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	/**
 	 * Select a new map type.
 	 * @param map_type New map type.

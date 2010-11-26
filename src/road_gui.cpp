@@ -527,11 +527,6 @@ struct BuildRoadToolbarWindow : Window {
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget >= RTW_ROAD_X) {
@@ -878,11 +873,6 @@ struct BuildRoadDepotWindow : public PickerWindowBase {
 		}
 
 		this->FinishInitNested(desc, TRANSPORT_ROAD);
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const

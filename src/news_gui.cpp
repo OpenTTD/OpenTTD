@@ -348,11 +348,6 @@ struct NewsWindow : Window {
 		return pt;
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		StringID str = STR_NULL;
@@ -1134,11 +1129,6 @@ struct MessageOptionsWindow : Window {
 
 		this->SetWidgetDisabledState(element + WIDGET_NEWSOPT_START_OPTION, value == 0);
 		this->SetWidgetDisabledState(element + WIDGET_NEWSOPT_START_OPTION + 2, value == 2);
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const

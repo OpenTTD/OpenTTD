@@ -2084,11 +2084,6 @@ struct BuyCompanyWindow : Window {
 		this->InitNested(desc, window_number);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {

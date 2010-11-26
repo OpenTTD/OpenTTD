@@ -202,11 +202,6 @@ struct GameOptionsWindow : Window {
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
@@ -625,11 +620,6 @@ public:
 			SetDParam(0, sdb->str + value);
 			*size = maxdim(*size, GetStringBoundingBox(str));
 		}
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -1555,11 +1545,6 @@ struct GameSettingsWindow : Window {
 				this->vscroll->GetPosition(), this->vscroll->GetPosition() + this->vscroll->GetCapacity());
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget != SETTINGSEL_OPTIONSPANEL) return;
@@ -1838,11 +1823,6 @@ struct CustomCurrencyWindow : Window {
 				*size = GetStringBoundingBox(STR_CURRENCY_EXCHANGE_RATE);
 				break;
 		}
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)

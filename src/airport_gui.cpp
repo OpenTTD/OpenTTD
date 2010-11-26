@@ -94,11 +94,6 @@ struct BuildAirToolbarWindow : Window {
 		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (!IsInsideBS(widget, ATW_AIRPORT, lengthof(_build_air_button_proc))) return;

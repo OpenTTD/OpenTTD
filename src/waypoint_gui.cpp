@@ -88,11 +88,6 @@ public:
 		if (widget == WAYPVW_CAPTION) SetDParam(0, this->wp->index);
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {

@@ -217,11 +217,6 @@ struct NewGRFParametersWindow : public Window {
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {

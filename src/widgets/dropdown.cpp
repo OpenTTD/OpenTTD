@@ -219,11 +219,6 @@ struct DropdownWindow : Window {
 		return false;
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (widget != DDM_ITEMS) return;

@@ -396,11 +396,6 @@ struct MusicTrackSelectionWindow : public Window {
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
@@ -640,11 +635,6 @@ struct MusicWindow : public Window {
 				break;
 			}
 		}
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
 	}
 
 	virtual void OnInvalidateData(int data = 0)

@@ -61,11 +61,6 @@ struct GraphLegendWindow : Window {
 		}
 	}
 
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		if (!IsInsideMM(widget, GLW_FIRST_COMPANY, MAX_COMPANIES + GLW_FIRST_COMPANY)) return;
@@ -490,11 +485,6 @@ protected:
 	}
 
 public:
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-	}
-
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		if (widget != this->graph_widget) return;
@@ -1392,12 +1382,6 @@ struct PerformanceRatingDetailWindow : Window {
 				this->bar_right = this->bar_left + this->bar_width;
 				break;
 		}
-	}
-
-	virtual void OnPaint()
-	{
-		/* Draw standard stuff */
-		this->DrawWidgets();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
