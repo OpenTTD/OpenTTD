@@ -371,22 +371,23 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 	}
 
 	if (this->status == STATUS_AUTHORIZED) {
-		const char *filename = "network_server.tmp";
-		Packet *p;
+		char filename[MAX_PATH];
+		FioGetDirectory(filename, lengthof(filename), AUTOSAVE_DIR);
+		strecat(filename, "network_server.tmp", lastof(filename));
 
 		/* Make a dump of the current game */
-		if (SaveOrLoad(filename, SL_SAVE, AUTOSAVE_DIR) != SL_OK) usererror("network savedump failed");
+		if (SaveOrLoad(filename, SL_SAVE, NO_DIRECTORY) != SL_OK) usererror("network savedump failed");
 
 		if (file_pointer != NULL) fclose(file_pointer);
 
-		file_pointer = FioFOpenFile(filename, "rb", AUTOSAVE_DIR);
+		file_pointer = FioFOpenFile(filename, "rb", NO_DIRECTORY);
 		if (file_pointer == NULL) usererror("network savedump failed - could not open just saved dump");
 
 		fseek(file_pointer, 0, SEEK_END);
 		if (ftell(file_pointer) == 0) usererror("network savedump failed - zero sized savegame?");
 
 		/* Now send the _frame_counter and how many packets are coming */
-		p = new Packet(PACKET_SERVER_MAP_BEGIN);
+		Packet *p = new Packet(PACKET_SERVER_MAP_BEGIN);
 		p->Send_uint32(_frame_counter);
 		p->Send_uint32(ftell(file_pointer));
 		this->Send_Packet(p);

@@ -55,6 +55,7 @@ ClientNetworkGameSocketHandler::~ClientNetworkGameSocketHandler()
 
 	/* If for whatever reason the handle isn't closed, do it now. */
 	if (this->download_file != NULL) fclose(this->download_file);
+	free(this->download_filename);
 }
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
@@ -692,11 +693,16 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_BEGIN)
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 	if (this->download_file != NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	this->download_file = FioFOpenFile("network_client.tmp", "wb", AUTOSAVE_DIR);
+	char filename[MAX_PATH];
+	FioGetDirectory(filename, lengthof(filename), AUTOSAVE_DIR);
+	strecat(filename, "network_client.tmp", lastof(filename));
+
+	this->download_file = FioFOpenFile(filename, "wb", NO_DIRECTORY);
 	if (this->download_file == NULL) {
 		_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
 		return NETWORK_RECV_STATUS_SAVEGAME;
 	}
+	this->download_filename = strdup(filename);
 
 	_frame_counter = _frame_counter_server = _frame_counter_max = p->Recv_uint32();
 
@@ -748,7 +754,11 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DONE)
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 	/* The map is done downloading, load it */
-	if (!SafeSaveOrLoad("network_client.tmp", SL_LOAD, GM_NORMAL, AUTOSAVE_DIR)) {
+	bool load_success = SafeSaveOrLoad(this->download_filename, SL_LOAD, GM_NORMAL, NO_DIRECTORY);
+	free(this->download_filename);
+	this->download_filename = NULL;
+
+	if (!load_success) {
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 		_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
 		return NETWORK_RECV_STATUS_SAVEGAME;

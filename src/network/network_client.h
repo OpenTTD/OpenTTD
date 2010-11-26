@@ -19,7 +19,8 @@
 /** Class for handling the client side of the game connection. */
 class ClientNetworkGameSocketHandler : public ZeroedMemoryAllocator, public NetworkGameSocketHandler {
 private:
-	FILE *download_file; ///< Handle used for downloading the savegame.
+	FILE *download_file;     ///< Handle used for downloading the savegame.
+	char *download_filename; ///< File name of the downloading savegame, so we open the right one.
 
 	/** Status of the connection with the server. */
 	enum ServerStatus {
