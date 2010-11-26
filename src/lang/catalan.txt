@@ -166,13 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}TOT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passatgers
-STR_BAGS                                                        :{COMMA} sacs
-STR_TONS                                                        :{COMMA} tones
-STR_LITERS                                                      :{COMMA} litres
-STR_ITEMS                                                       :{COMMA} caps
-STR_CRATES                                                      :{COMMA} palets
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
+STR_PASSENGERS                                                  :{COMMA} passatger{P "" s}
+STR_BAGS                                                        :{COMMA} sac{P "" s}
+STR_TONS                                                        :{COMMA} ton{P a es}
+STR_LITERS                                                      :{COMMA} litre{P "" s}
+STR_ITEMS                                                       :{COMMA} cap{P "" s}
+STR_CRATES                                                      :{COMMA} palet{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Blau Fosc
@@ -943,6 +942,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marca la
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolució de Pantalla
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecciona la resolució de pantalla
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format de captures de pantalla
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecciona el format per les captures de pantalla
@@ -1091,7 +1091,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permet 
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permet una mida més real de l'àrea d'influència: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permet l'esborrat de propietats de les poblacions: carreteres, ponts, túnels, etc: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Activa la construcció de trens molt llargs: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantitat de fum/xispes de la locomotora: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantitat de fum/xispes del vehicle: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Cap
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realístic
@@ -1154,17 +1154,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :per a tots els 
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avisa si el benefici del vehicle és negatiu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Els vehicles mai caduquen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenova el vehicle quan sigui vell: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autorenova el vehicle quan tingui {ORANGE}{STRING}{LTBLUE} mesos abans/després antig. max.
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autorenova el vehicle quan tingui {ORANGE}{STRING}{LTBLUE} mes{P 0:1 "" os} abans/després antig. max.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Autorenovació: mínim de diners per renovar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duració del missatge d'error: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Retràs al mantenir el ratolí:: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duració del missatge d'error: {ORANGE}{STRING} segon{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Retràs al mantenir el ratolí: {ORANGE}{STRING} segon{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Retràs al mantenir el ratolí: {ORANGE}desactivat
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mostra els habitants a la etiqueta del nom de població: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generador de terrenys: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distància des de la vora per Refineries de Petroli{ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distància des de la vora per Refineries de Petroli: {ORANGE}{STRING} cel·l{P 0:1 a es}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Alçada de la cota de neu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Geografia del terreny (TerraGenesis només) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molt suau
@@ -1183,7 +1183,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Activa 
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o més cel·les al vèrtex nord no està buit
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o més cel·les en una de les vores no és aigua
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Màx extensió de les estacions: {ORANGE}{STRING}{RED}Avís: Un valor alt alenteix el joc
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Màx extensió de les estacions: {ORANGE}{STRING} cel·l{P 0:1 a es} {RED}Avís: Un valor alt alenteix el joc
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Revisions automàtiques dels helicòpters als heliports: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Color del terra utilitzat al mapa petit: {ORANGE}{STRING}
@@ -1238,10 +1238,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Manté 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupa les despeses a la finestra de finances de la companyia: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostra les eines de construcció quan no hi hagi disponibles vehicles adequats: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max avions per jugador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max vaixells per jugador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max trens per companyia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max automòbils per companyia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max avions per companyia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Max vaixells per companyia: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Desactiva trens per l'ordinador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Desactiva automòbils per a l'ordinador: {ORANGE}{STRING}
@@ -1252,13 +1252,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permet 
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes abans de suspendre la IA: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Els intervals de revisions es mostren en percentatges: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Interval de les revisions dels trens per defecte: {ORANGE}{STRING} dies/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Interval de les revisions dels trens per defecte: {ORANGE}{STRING} di{P 0:1 a es}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interval de les revisions dels trens per defecte: {ORANGE}desactivat
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Interval de les revisions dels automòbils per defecte: {ORANGE}{STRING} dies/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Interval de les revisions dels automòbils per defecte: {ORANGE}{STRING} di{P 0:1 a es}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Interval de les revisions dels automòbils per defecte: {ORANGE}desactivat
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Interval de les revisions dels avions per defecte: {ORANGE}{STRING} dies/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Interval de les revisions dels avions per defecte: {ORANGE}{STRING} di{P 0:1 a es}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interval de les revisions dels avions per defecte: {ORANGE}desactivat
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Interval de les revisions dels vaixells per defecte: {ORANGE}{STRING} dies/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Interval de les revisions dels vaixells per defecte: {ORANGE}{STRING} di{P 0:1 a es}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Interval de les revisions dels vaixells per defecte: {ORANGE}desactivat
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Desactiva les revisions quan les avaries s'estableixen a cap: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activa limit de velocitat per al vagó: {ORANGE}{STRING}
@@ -1269,7 +1269,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Any d'i
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Activa economia suau (més canvis però més petits): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permet comprar participacions d'altres empreses: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Percentatge del benefici total a pagar en les transferències: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Arrossegant, situa senyals cada: {ORANGE}{STRING} quadre(s)
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Arrossegant, situa senyals cada: {ORANGE}{STRING} cel·l{P 0:1 a es}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir semàfors automàticament abans de: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activa la interfície de les senyals: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipus de senyal a construir predeterminada: {ORANGE}{STRING}
@@ -1304,10 +1304,14 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posici�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerra
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centre
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Dreta
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radi de tall de la finestra: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posició de la barra d'estat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Esquerra
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centre
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Dreta
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radi de tall de la finestra: {ORANGE}{STRING} píxel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radi de tall de la finestra: {ORANGE}desactivat
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limit tou de les finestres (no-enganxoses): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limit tou de les finestres (no-enganxoses): {ORANGE}desactivat
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Nombre màxim de finestres no-enganxoses: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Nombre màxim de finestres no-enganxoses: {ORANGE}desactivat
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Velocitat de creixement de les ciutats: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Cap
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lenta
@@ -1347,7 +1351,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Cerca d
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomanat)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recomanat)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Canvia el valor de l'ajustament
 
@@ -1485,10 +1488,10 @@ STR_FACE_LOAD                                                   :{BLACK}Carrega
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carrega la cara preferida
 STR_FACE_LOAD_DONE                                              :{WHITE}La teva cara preferida ha estat carregada des de l'arxiu de configuració d'OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Cara jugador nu.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Veure i/o assigna la cara del jugador número
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Veure i/o assigna la cara del jugador número
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Veure i/o assigna el número de la cara del president
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Veure i/o assigna el número de la cara del president
 STR_FACE_FACECODE_SET                                           :{WHITE}El número de la nova cara ha estat assignat.
-STR_FACE_FACECODE_ERR                                           :{WHITE}No s'ha pogut assignar el número de cara del jugador - ha de ser un nombre entre 0 i 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}No s'ha pogut assignar el número de cara del president - ha de ser un nombre entre 0 i 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Desa
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Desa la cara preferida
 STR_FACE_SAVE_DONE                                              :{WHITE}Aquesta cara serà desada com la preferida a l'arxiu de configuració d'OpenTTD.
@@ -1605,9 +1608,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma p
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Els altres jugadors sabran quin idioma es parla en aquest servidor.
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Inicia el Joc
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Inicia un nou joc de xarxa des de un mapa aleatori, o escenari
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Inicia un nou joc de xarxa des d'un mapa aleatori, o l'escenari seleccionat
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Carrega Joc
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continua amb un joc multijugador desat prèviament (comprova que estàs connectat amb el jugador correcte)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continua amb un joc multijugador desat prèviament (comprova que estàs connectat amb la companyia correcta)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Posa el nom del joc per xarxa
 
@@ -1782,6 +1785,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :s'ha intentat u
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor ple
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :estava enviant massa ordres
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possible pèrdua de connexió
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Durant el darrer {NUM} segon{P "" s} no han arribat dades del servidor
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2090,10 +2096,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminue
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genera un terreny aleatori
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Crear nou escenari
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Restableix paisatge
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Treure totes les propietats pertanyents a jugadors del mapa
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Treure totes les propietats pertanyents a companyies del mapa
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Restablir Paisatge
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estàs segur que vols treure totes les propietats pertanyents a jugadors?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estàs segur que vols treure totes les propietats pertanyents a companyies?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generació de Poblacions
@@ -2815,7 +2821,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocita
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost d'utilització: {GOLD}{CURRENCY}/any
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitat: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(remodelable)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Dissenyat: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} anys
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Dissenyat: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} any{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Rendiment: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pes: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -3119,6 +3125,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacita
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Remodela)
 STR_REFIT_TITLE                                                 :{GOLD}Selecciona el tipus de càrrega a transportar:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacitat: {GOLD}{CARGO}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacitat: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cost de remodelació: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecciona tipus de càrrega a transportar
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecciona el tipus de càrrega a transportar pel vehicle

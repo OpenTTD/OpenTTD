@@ -1252,7 +1252,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Umožni
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Největší rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoké nastavení zpomalí hru
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Největší rozsah stanice: {ORANGE}{STRING} pol{P 0:1 e í} {RED}Pozor: Vysoké nastavení zpomalí hru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Údržba vrtulníků na heliportech: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otevírat lištu na úpravy terénu s lištami na výstavbu tratí/silnic atd.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Barva země v mapě: {ORANGE}{STRING}
@@ -1308,9 +1308,9 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Zobrazo
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Zobrazit nástroje pro budování i bez dostupných vozidel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximum vlaků na hráče: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximum silničních vozidel na hráče: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximum letadel na hráče: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximum lodí na hráče: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximum silničních vozidel na společnost: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximum letadel na společnost: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximum lodí na společnost: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Zakázat počítači vlaky: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Zakázat počítači silniční vozidla: {ORANGE}{STRING}
@@ -1321,13 +1321,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Počet opkódů než se vypne AI: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervaly servisů v procentech: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}{STRING} dní
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}{STRING} d{P 0:1 "en" "ní"}
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}vypnuto
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Základní servisní interval pro silniční vozidla: {ORANGE}{STRING} dní
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Základní servisní interval pro silniční vozidla: {ORANGE}{STRING} d{P 0:1 "en" "ní"}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Základní servisní interval pro silniční vozidla: {ORANGE}vypnuto
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Základní servisní interval pro letadla: {ORANGE}{STRING} dní
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Základní servisní interval pro letadla: {ORANGE}{STRING} d{P 0:1 "en" "ní"}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Základní servisní interval pro letadla: {ORANGE}vypnuto
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Základní servisní interval pro lodě: {ORANGE}{STRING} dní
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Základní servisní interval pro lodě: {ORANGE}{STRING} d{P 0:1 "en" "ní"}
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Základní servisní interval pro lodě: {ORANGE}vypnuto
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Vypnout servisy, když jsou vypnuty poruchy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Zapnout omezení rychlosti vagonů: {ORANGE}{STRING}
@@ -1420,7 +1420,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Hledač
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :původní {BLUE}(doporučený)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(nedoporučuje se)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Změnit hodnotu nastavení
 
@@ -1558,10 +1557,10 @@ STR_FACE_LOAD                                                   :{BLACK}Nahrát
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Nahrát oblíbený obličej
 STR_FACE_LOAD_DONE                                              :{WHITE}Tvůj oblíbený obličej se nahrál z konfiguračního souboru.
 STR_FACE_FACECODE                                               :{BLACK}Číslo tváře
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Zobrazit a/nebo nastavit číslo tváře
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Zobrazit a/nebo nastavit číslo tváře
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Zobrazit a/nebo nastavit číslo tváře prezidenta
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Zobrazit a/nebo nastavit číslo tváře prezidenta
 STR_FACE_FACECODE_SET                                           :{WHITE}Nové číslo obličeje bylo nastaveno.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Nešlo nastavit číslo tváře - musí jít o číslo mezi 0 a 4 294 967 295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nelze nastavit číslo tváře prezidenta - musí jít o číslo mezi 0 a 4 294 967 295!
 STR_FACE_SAVE                                                   :{BLACK}Uložit
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložit oblíbený obličej
 STR_FACE_SAVE_DONE                                              :{WHITE}Tato tvář bude uložena do konfiguračního souboru jako tvá oblíbená.
@@ -1678,9 +1677,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jazyk ve
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby ostatní hráči věděli, jakým jazykem se bude ve hře mluvit.
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Začít hru
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Hru po síti začít s náhodnou mapou nebo se scénářem
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Začít novou hru po síti s náhodnou mapou nebo se scénářem
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Nahrát hru
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Pokračovat ve dříve uložené hře pro více hráčů (ujisti se, že se připojuješ na správného hráče)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Pokračovat ve dříve uložené hře pro více hráčů (ujisti se, že se připojuješ na správnou společnost)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Zadej jméno této síťové hry
 
@@ -2166,10 +2165,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmenšit
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generovat náhodnou zemi
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Vytvořit nový scénář
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Smazat krajinu
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Odstranit z mapy všechny objekty vlastněné hráči
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Odstranit z mapy všechny objekty vlastněné společností
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Smazat krajinu
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Opravdu chceš odstranit všechny objekty vlastněné hráči?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Opravdu chceš odstranit všechny objekty vlastněné společností?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generování měst

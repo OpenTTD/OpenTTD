@@ -772,8 +772,8 @@ STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Banqueroute{NBSP}!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} a été dissolue par ses créanciers et tous ses actifs vendus{NBSP}!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nouvelle compagnie de transport{NBSP}!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} commence à construire près de {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} a été rachetée par {STRING}!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} commence à construire près de {TOWN}{NBSP}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} a été rachetée par {STRING}{NBSP}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Président)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} a sponsorisé la construction de la nouvelle ville {TOWN}{NBSP}!
@@ -832,7 +832,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Offre de subvention expirée{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est désormais plus subventionné.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Abandon de la subvention{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est plus subventionné.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Offre de subvention{NBSP}:{}{}Le premier service de {STRING} entre {STRING} et {STRING} sera subventionné pendant un an!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Offre de subvention{NBSP}:{}{}Le premier service de {STRING} entre {STRING} et {STRING} sera subventionné pendant un an{NBSP}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera 50% de plus l'année prochaine{NBSP}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera double l'année prochaine{NBSP}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera triple l'année prochaine{NBSP}!
@@ -2477,7 +2477,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lecture après 
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Il manque certain sprites dans les graphiques de base actuellement utilisés.{}Veuillez mettre à jour les graphiques de base.
 
 # NewGRF related 'general' warnings
-STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention!
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention{NBSP}!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vous êtes sur le point de faire des changements dans une partie en cours. Cela peut faire planter OpenTTD.{}Êtes-vous absolument sûr{NBSP}?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ajout impossible{NBSP}: GRF ID en double
@@ -3402,7 +3402,7 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Coût es
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Revenu estimé{NBSP}: {CURRENCY}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Sauvegarde en cours...{}Veuillez attendre la fin du processus!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Sauvegarde en cours...{}Veuillez attendre la fin du processus{NBSP}!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Enregistrement automatique échoué
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Impossible d'accéder au disque
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}La sauvegarde a échoué{}{STRING}

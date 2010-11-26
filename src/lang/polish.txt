@@ -1689,8 +1689,8 @@ STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Środek
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Prawo
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Strefa przyciągania okien: {ORANGE}{STRING} pkt
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Strefa przyciągania okien: {ORANGE}niedostępne
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Miękkie ograniczenie okna: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Miękkie ograniczenie okna: {ORANGE} wyłączone
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksymalna liczba nie przyszpilonych okien: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maksymalna liczba nie przyszpilonych okien: {ORANGE} wyłączone
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Szybkość rozwoju miast: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :brak
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :mała
@@ -1730,7 +1730,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Wytycza
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Oryginalne {BLUE}(Zalecane)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nie zalecane)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmiana wartości
 

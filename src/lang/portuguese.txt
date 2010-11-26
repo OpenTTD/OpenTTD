@@ -347,9 +347,9 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do Jogo
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Configurações de dificuldade
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nível de Dificuldade
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Opções Avançadas
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições Newgrf
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nomes de cidades
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Mostrar nomes de estações
@@ -751,18 +751,18 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Cidadãos celebram . . .{}Primeiro barco chega a {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega a {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Acidente Ferroviário!{}{COMMA} mortos numa explosão após a colisão
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Acidente de Veículo de Estrada!{}Condutor morre na explosão após a colisão com um comboio
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Acidente de Veículo de Estrada!{}{COMMA} morrem na explosão após a colisão com um comboio
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Acidente de Avião!{}{COMMA} morrem na explosão em {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Desastre de Avião!{}Avião ficou sem combustível, {COMMA} morreram no incêndio
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Acidente de Comboios!{}{COMMA} mortem numa explosão após a colisão!
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Acidente de Veículo de Estrada!{}Condutor morre na explosão após a colisão com um comboio!
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Acidente de Veículo de Estrada!{}{COMMA} morrem na explosão após a colisão com um comboio!
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Acidente de Aeronave!{}{COMMA} morrem na explosão em {STATION}!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Acidente de Aeronave!{}Avião ficou sem combustível, {COMMA} morrem no incêndio!
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Acidente de Zepelim em {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Veículo de estrada destruído em colisão com OVNI!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Explosão na refinaria de petróleo em {TOWN}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Veículo de Estrada destruído em colisão com OVNI!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Explosão da Refinaria de Petróleo em {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fábrica destruída em circunstâncias suspeitas em {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}OVNI pousa em {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Afundamento de mina de carvão deixa um rasto de destruição em {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Subsidência da Mina de Carvão deixa um rasto de destruição em {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Inundações!{}Pelo menos {COMMA} perdidos ou mortos após terríveis inundações!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Empresa de transportes em dificuldades!
@@ -778,25 +778,25 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} subsidiou a construção da nova cidade de {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} em construção em {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}{STRING} está a ser plantada em {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G 0 o o a os as} {STRING} em construção em {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G 0 o o a os as} {STRING} est{G 0 á á á ão ão} a ser plantad{G 0 o o a os as} em {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} anuncia fecho iminente!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Problemas no abastecimento levam {STRING} a anunciar fecho iminente!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Escassez de árvores nas proximidades leva {STRING} a anunciar fecho iminente!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{G 0 "" "O " "A " "Os " "As "}{STRING} anuncia{G 0 "" "" "" m m} fecho iminente!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Problemas de abastecimento levam{G 0 "" " o" " a" " os" " as"} {STRING} a anunciar{G 0 "" "" "" em em} fecho iminente!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Escassez de árvores nas proximidades leva{G 0 "" " o" " a" " os" " as"} {STRING} a anunciar{G 0 "" "" "" em em} fecho iminente!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para todas as transacções no seu país!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Recessão Mundial!{}{}Especialistas financeiros temem crise económica!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Fim da recessão!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} aumenta a produção
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Novo filão de carvão encontrado em {INDUSTRY}!{}Produção deverá duplicar!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Novas reservas de petróleo encontradas em {INDUSTRY}!{}Produção deverá duplicar!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Prática de agricultura inovadora duplica a produção em {INDUSTRY}!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produção de {STRING} em {INDUSTRY} aumenta {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Produção de {INDUSTRY} reduzida em 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Praga de insectos em {INDUSTRY}!{}Produção diminui 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produção de {STRING} em {INDUSTRY} diminui {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{G 0 "" "O " "A " "Os " "As "}{INDUSTRY} aumenta{G 0 "" "" "" m m} a produção!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nova camada de Carvão encontrada {G 0 em no na nos nas} {INDUSTRY}!{}Produção deverá duplicar!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Novas reservas de Petróleo encontradas {G 0 em no na nos nas} {INDUSTRY}!{}Produção deverá duplicar!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Nova prática de agricultura duplica a produção {G 0 em no na nos nas} {INDUSTRY}!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}Produção de {STRING} {G 1 em no na nos nas} {INDUSTRY} aumenta {COMMA}%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Produção d{G 0 e o a os as} {INDUSTRY} reduzida em 50%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Praga de insectos {G 0 em no na nos nas} {INDUSTRY}!{}Produção diminui 50%!
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}Produção de {STRING} {G 1 em no na nos nas} {INDUSTRY} diminui {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} está a aguardar no depósito
 STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} está a aguardar no depósito
@@ -814,12 +814,12 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} está a ficar velho
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} está a ficar muito velho
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} está a ficar muito velho e urgentemente necessita de substituição
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} não consegue encontrar um caminho para continuar.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} está perdido.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}O lucro de {VEHICLE} foi de {CURRENCY}
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} não consegue encontrar um caminho para continuar
+STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} está perdido
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} teve um lucro de {CURRENCY} no ano passado
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parado porque a ordem de ajuste não foi bem sucedida
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Auto-renovação falhou em {VEHICLE}{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou porque a ordem de adaptação falhou
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE} falhou na Auto-renovação{}{STRING}
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Novo modelo de {STRING} agora disponível!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
@@ -830,13 +830,13 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} agora aceita {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} agora aceita {STRING} e {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} já não será subsidiado.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsídio retirado:{}{}Serviço de transporte de {STRING} de {STRING} para {STRING} já não é subsidiado.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Oferta de subsídio expirou:{}{}Ligação de {STRING} d{G 1 e o a os as} {STRING} para{G 2 "" " o" " a" " os" " as"} {STRING} já não será subsidiada.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsídio retirado:{}{}Ligação de {STRING} d{G 1 e o a os as} {STRING} para{G 2 "" " o" " a" " os" " as"} {STRING} já não é subsidiada.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsídio de ligação oferecido:{}{}Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá o subsídio de um ano da autoridade local!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsídio de ligação concedido a {STRING}!{}{}{STRING} ligação de {STRING} para {STRING} pagará 50% extra durante o próximo ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsídio de ligação concedido a {STRING}!{}{}{STRING} ligação de {STRING} para {STRING} pagará a dobrar durante o próximo ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsídio de ligação concedido a {STRING}!{}{}{STRING} ligação de {STRING} para {STRING} pagará a triplicar durante o próximo ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsídio de ligação concedido a {STRING}!{}{}{STRING} ligação de {STRING} para {STRING} pagará a quadruplicar durante o próximo ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}Ligação de {STRING} d{G 2 e o a os as} {STRING} para{G 3 "" " o" " a" " os" " as"} {STRING} pagará 50% extra durante o próximo ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}Ligação de {STRING} d{G 2 e o a os as} {STRING} para{G 3 "" " o" " a" " os" " as"} {STRING} pagará a dobrar durante o próximo ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}Ligação de {STRING} d{G 2 e o a os as} {STRING} para{G 3 "" " o" " a" " os" " as"} {STRING} pagará a triplicar durante o próximo ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsídio de serviço concedido a {STRING}!{}{}Ligação de {STRING} d{G 2 e o a os as} {STRING} para{G 3 "" " o" " a" " os" " as"} {STRING} pagará a quadruplicar durante o próximo ano!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Tráfego caótico em {TOWN}!{}{}Programa de reconstrução de estradas financiado por {STRING} provoca 6 meses de miséria aos condutores!
 
@@ -2030,7 +2030,7 @@ STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar 
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientação do Depósito
-STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Seleccione a orientação do depósito de barcos
+STR_DEPOT_BUILD_SHIP_ORIENTATION_TOOLTIP                        :{BLACK}Seleccione a orientação do depósito naval
 
 # Dock construction window
 STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Doca
@@ -2372,31 +2372,31 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}A prepar
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Informação detalhada do NewGRF
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Ficheiros NewGRF Activos
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Ficheiros NewGRF activos
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Ficheiros NewGRF inactivos
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Seleccionar predefinição:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Frase filtro:
-STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carregar a predefinição seleccionada
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Carrega a predefinição seleccionada
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Guardar
-STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Guarde a lista como predefinição
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Guarda a lista numa predefinição
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introduza nome para a predefinição
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Eliminar
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Elimina a predefinição seleccionada
 STR_NEWGRF_SETTINGS_ADD                                         :{BLACK}Adicionar
-STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adicionar o ficheiro NewGRF seleccionado à configuração
+STR_NEWGRF_SETTINGS_ADD_FILE_TOOLTIP                            :{BLACK}Adiciona o ficheiro NewGRF seleccionado à configuração
 STR_NEWGRF_SETTINGS_RESCAN_FILES                                :{BLACK}Reler ficheiros
-STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualizar a lista de ficheiros NewGRF disponíveis
+STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Actualiza a lista de ficheiros NewGRF disponíveis
 STR_NEWGRF_SETTINGS_REMOVE                                      :{BLACK}Remover
-STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Remover o ficheiro NewGRF seleccionado da lista
+STR_NEWGRF_SETTINGS_REMOVE_TOOLTIP                              :{BLACK}Remove o ficheiro NewGRF seleccionado da lista
 STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Para Cima
-STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Mover o ficheiro NewGRF seleccionado para cima na lista
+STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Move o ficheiro NewGRF seleccionado para cima na lista
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Para Baixo
-STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Mover o ficheiro NewGRF seleccionado para baixo na lista
+STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Move o ficheiro NewGRF seleccionado para baixo na lista
 STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Lista dos ficheiros NewGRF instalados. Clique num ficheiro para alterar os seus parâmetros
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Definir parâmetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Alternar palete
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Alternar a palete do NewGRF seleccionado.{}Alternar quando os gráficos deste NewGRF aparecerem cor-de-rosa no jogo
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Alterna a palete do NewGRF seleccionado.{}Alterne quando os gráficos deste NewGRF aparecerem a cor-de-rosa no jogo
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar alterações
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Encontrar conteúdo em falta online
@@ -2428,13 +2428,13 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Número
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspeccionar - {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Pai
-STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspeccionar o objecto do escopo pai
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspecciona o objecto do escopo pai
 
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} no {HEX}
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} em {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objecto
-STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de linha
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de ferrovia
 
-STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável NewGRF 60+x (hexadecimal)
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Parâmetro da variável 60+x do NewGRF (hexadecimal)
 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}A alinhar gráfico {COMMA} ({STRING})
@@ -2460,48 +2460,48 @@ STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SI
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ocorreu um erro fatal no NewGRF: {}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} não funciona com a versão do TTDPatch reportada pelo OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} é para a versão {STRING} do TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} foi feito para ser usado com {STRING}
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} foi concebido para ser usado com {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parâmetro inválido para {1:STRING}: parâmetro {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve ser carregado antes de {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve ser carregado antes de {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} necessita da versão {STRING} ou superior do OpenTTD.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :O ficheiro GRF foi desenhado para traduzir
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve ser carregado antes do {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve ser carregado depois do {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requer a versão {STRING} ou superior do OpenTTD.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :ficheiro GRF concebido para o traduzir
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs carregados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {2:STRING} como NewGRF estático com {4:STRING} pode causar dessincronização.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Gráfico inesperado.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade da Acção 0 desconhecida.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Objecto gráfico inesperado.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade de Action 0 desconhecida.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um gráfico corrompido. Todos os gráficos corrompidas serão apresentados como um ponto de interrogação (?) vermelho.
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém 8 entradas de acção múltipla
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um objecto gráfico corrompido. Todos os objectos gráficos corrompidos serão apresentados como um ponto de interrogação (?) vermelho.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Action 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura ultrapassou o fim do pseudo-gráfico.
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}O conjunto de gráficos base actual tem sprites em falta.{}Por favor faça a sua actualização.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}O conjunto de gráficos base actual tem objectos gráficos em falta.{}Por favor faça a sua actualização.
 
 # NewGRF related 'general' warnings
-STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vai alterar um jogo em andamento. O OpenTTD pode terminar abruptamente.{}Tem a certeza que quer continuar?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar ficheiro: GRF ID duplicado
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ficheiro correspondente não encontrado (carregado GRF compatível)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ficheiro correspondente não encontrado (GRF compatível carregado)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatíveis carregados para ficheiros ausentes
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ficheiro(s) GRF ausentes foram desactivados
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatíveis carregados para ficheiros em falta
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ficheiro(s) GRF em falta foram desactivados
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ficheiro(s) GRF em falta
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode causar problemas ao OpenTTD. Não envie informações sobre este tipo de problemas.{}Deseja realmente sair da pausa?
 
 # NewGRF status
 STR_NEWGRF_LIST_NONE                                            :Nenhum
-STR_NEWGRF_LIST_ALL_FOUND                                       :Todos os ficheiros presentes
-STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Encontrar ficheiros compatíveis
-STR_NEWGRF_LIST_MISSING                                         :{RED}Ficheiros em falta
+STR_NEWGRF_LIST_ALL_FOUND                                       :Todos os ficheiros estão presentes
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Foram encontrados ficheiros compatíveis
+STR_NEWGRF_LIST_MISSING                                         :{RED}Faltam ficheiros
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Os ficheiros NewGRF '{0:STRING}' podem causar erros e/ou perda de sincronismo da aplicação.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Mudou o estado de energia para '{1:ENGINE}' quando fora de um depósito.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica o comprimento do veículo para '{1:ENGINE}' quando fora do depósito.
+STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento do NewGRF '{0:STRING}' pode causar dessincronizações e/ou outros problemas.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Mudou o estado electrificado do modelo de vagão '{1:ENGINE}' quando fora do depósito.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Mudou o comprimento do modelo de veículo '{1:ENGINE}' quando fora do depósito.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O Comboio '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido. Possivelmente devido a problemas com os novos NewGRFs. Podem ocorrer erros de sincronização e a aplicação pode terminar.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' fornece informação incorrecta.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informação de carga para '{1:ENGINE}' é diferente da que consta na lista de veículos. Isto poderá causar problemas ao ser automaticamente renovado/substituído.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de carga/adaptação do modelo de veículo '{1:ENGINE}' difere da que consta na lista de veículos depois de adquirido. Isto poderá causar problemas ao adaptar quando automaticamente renovado/substituído.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no callback de produção.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs.
@@ -2585,10 +2585,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna
 # Subsidies window
 STR_SUBSIDIES_CAPTION                                           :{WHITE}Subsídios
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}Oferta de subsídios para os serviços:
-STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} de {STRING} para {STRING}{YELLOW} (por {DATE_SHORT})
+STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING} d{G 1 e o a os as} {STRING} para{G 2 "" " o" " a" " os" " as"} {STRING}{YELLOW} (por {DATE_SHORT})
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Nenhum -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Serviços já subsidiados:
-STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} para {STRING}{YELLOW} ({COMPANY}{YELLOW}, até {DATE_SHORT})
+STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} d{G 1 e o a os as} {STRING} para{G 2 "" " o" " a" " os" " as"} {STRING}{YELLOW} ({COMPANY}{YELLOW}, até {DATE_SHORT})
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique num serviço para centrar a visualização numa indústria/cidade. Ctrl+Clique abre um novo visualizador na localização da indústria/cidade
 
 # Station list window
@@ -2894,7 +2894,7 @@ STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Vender t
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Autosubstituir todos os comboios no depósito
 STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Autosubstituir todos os veículos de estrada no depósito
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Autosubstituir todos os barcos no depósito
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autosubstituir todas as aeronaves no depósito
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autosubstituir todas as aeronaves no hangar
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Novos Veículos
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Novos Veículos
@@ -3176,8 +3176,8 @@ STR_ORDER_DROP_TRANSFER                                         :Transferir
 STR_ORDER_DROP_NO_UNLOADING                                     :Sem descarga
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Mudar o comportamento de descarga da ordem seleccionada
 
-STR_ORDER_REFIT                                                 :{BLACK}Converter
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Seleccionar o tipo de carga a converter nesta ordem. Pressionar Ctrl e botão-esquerdo do rato para remover a instrução de conversão
+STR_ORDER_REFIT                                                 :{BLACK}Adaptar
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Seleccionar o tipo de carga a adaptar nesta ordem. Pressionar Ctrl e botão-esquerdo do rato para remover a instrução de adaptação
 
 STR_ORDER_SERVICE                                               :{BLACK}Manutenção
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vai sempre
@@ -3230,14 +3230,14 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Serviço sem pa
 
 STR_ORDER_NEAREST_DEPOT                                         :o mais próximo
 STR_ORDER_NEAREST_HANGAR                                        :o hangar mais próximo
-STR_ORDER_TRAIN_DEPOT                                           :Depósito de comboios
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito para veículos de estrada
-STR_ORDER_SHIP_DEPOT                                            :Depósito de barcos
+STR_ORDER_TRAIN_DEPOT                                           :Depósito ferroviário
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Depósito de veículos de estrada
+STR_ORDER_SHIP_DEPOT                                            :Depósito naval
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
-STR_ORDER_REFIT_ORDER                                           :(Converter para {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Mudar para {STRING} e parar)
+STR_ORDER_REFIT_ORDER                                           :(Adaptar para {STRING})
+STR_ORDER_REFIT_STOP_ORDER                                      :(Adaptar para {STRING} e parar)
 STR_ORDER_STOP_ORDER                                            :(Parar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -3261,9 +3261,9 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[extremo perto]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[no meio]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[extremo longe]
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Pula para ordem {COMMA}
-STR_ORDER_CONDITIONAL_NUM                                       :Pula para ordem {COMMA} quando {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Pula para ordem {COMMA} quando {STRING} {STRING}
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Saltar para ordem {COMMA}
+STR_ORDER_CONDITIONAL_NUM                                       :Saltar para ordem {COMMA} quando {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Saltar para ordem {COMMA} quando {STRING} {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Ordem Inválida)
 
@@ -4169,8 +4169,8 @@ STR_FORMAT_DEPOT_NAME_TRAIN                                     :Depósito de Co
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Depósito de Comboios de {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Depósito de Veículos de Estrada de {TOWN}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Depósito de Veículos de Estrada de {TOWN} #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :Depósito de Barcos de {TOWN}
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Depósito de Barcos de {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :Depósito naval de {TOWN}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :Depósito naval de {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :Hangar de {STATION}
 
 STR_UNKNOWN_STATION                                             :estação desconhecida
