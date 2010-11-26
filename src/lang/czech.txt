@@ -1252,7 +1252,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Umožni
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Největší rozsah stanice: {ORANGE}{STRING} pol{P 0:1 e í} {RED}Pozor: Vysoké nastavení zpomalí hru
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Největší rozsah stanice: {ORANGE}{STRING} pol{P 0:1 e e í} {RED}Pozor: Vysoké nastavení zpomalí hru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Údržba vrtulníků na heliportech: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otevírat lištu na úpravy terénu s lištami na výstavbu tratí/silnic atd.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Barva země v mapě: {ORANGE}{STRING}
@@ -1321,13 +1321,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Počet opkódů než se vypne AI: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervaly servisů v procentech: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}{STRING} d{P 0:1 "en" "ní"}
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}{STRING} d{P 0:1 en ny ní}
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}vypnuto
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Základní servisní interval pro silniční vozidla: {ORANGE}{STRING} d{P 0:1 "en" "ní"}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Základní servisní interval pro silniční vozidla: {ORANGE}{STRING} d{P 0:1 en ny ní}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Základní servisní interval pro silniční vozidla: {ORANGE}vypnuto
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Základní servisní interval pro letadla: {ORANGE}{STRING} d{P 0:1 "en" "ní"}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Základní servisní interval pro letadla: {ORANGE}{STRING} d{P 0:1 en ny ní}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Základní servisní interval pro letadla: {ORANGE}vypnuto
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Základní servisní interval pro lodě: {ORANGE}{STRING} d{P 0:1 "en" "ní"}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Základní servisní interval pro lodě: {ORANGE}{STRING} d{P 0:1 en ny ní}
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Základní servisní interval pro lodě: {ORANGE}vypnuto
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Vypnout servisy, když jsou vypnuty poruchy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Zapnout omezení rychlosti vagonů: {ORANGE}{STRING}
