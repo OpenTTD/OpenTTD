@@ -2803,9 +2803,9 @@ detect_icu() {
 	log 2 "  returned $version"
 	log 2 "  exit code $ret"
 
-	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$shortversion" -lt "22" ]; then
-		if [ -n "$shortversion" ] && [ "$shortversion" -lt "22" ]; then
-			log 1 "checking libicu... needs at least version 2.2.0, icu NOT enabled"
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$shortversion" -lt "36" ]; then
+		if [ -n "$shortversion" ] && [ "$shortversion" -lt "36" ]; then
+			log 1 "checking libicu... needs at least version 3.6.0, icu NOT enabled"
 		else
 			log 1 "checking libicu... not found"
 		fi

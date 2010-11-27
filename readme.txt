@@ -431,7 +431,8 @@ The following libraries are used by OpenTTD for:
   - libpng: making screenshots and loading heightmaps
   - libfreetype: loading generic fonts and rendering them
   - libfontconfig: searching for fonts, resolving font names to actual fonts
-  - libicu: handling of right-to-left scripts (e.g. Arabic and Persian)
+  - libicu: handling of right-to-left scripts (e.g. Arabic and Persian) and
+    natural sorting of strings.
 
 OpenTTD does not require any of the libraries to be present, but without
 liblzma you cannot open most recent savegames and without zlib you cannot
