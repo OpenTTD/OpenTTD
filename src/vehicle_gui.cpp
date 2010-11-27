@@ -766,7 +766,7 @@ static int CDECL VehicleNameSorter(const Vehicle * const *a, const Vehicle * con
 		GetString(last_name[1], STR_VEHICLE_NAME, lastof(last_name[1]));
 	}
 
-	int r = strcmp(last_name[0], last_name[1]);
+	int r = strnatcmp(last_name[0], last_name[1]); // Sort by name (natural sorting).
 	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 

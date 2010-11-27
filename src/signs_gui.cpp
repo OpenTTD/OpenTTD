@@ -92,7 +92,7 @@ struct SignList {
 			GetString(buf_cache, STR_SIGN_NAME, lastof(buf_cache));
 		}
 
-		int r = strcasecmp(buf, buf_cache);
+		int r = strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
 
 		return r != 0 ? r : ((*a)->index - (*b)->index);
 	}

@@ -157,7 +157,7 @@ static int CDECL EngineNameSorter(const EngineID *a, const EngineID *b)
 		GetString(last_name[1], STR_ENGINE_NAME, lastof(last_name[1]));
 	}
 
-	int r = strcmp(last_name[0], last_name[1]); // sort by name
+	int r = strnatcmp(last_name[0], last_name[1]); // Sort by name (natural sorting).
 
 	/* Use EngineID to sort instead since we want consistent sorting */
 	if (r == 0) return EngineNumberSorter(a, b);

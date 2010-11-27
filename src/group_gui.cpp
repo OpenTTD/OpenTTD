@@ -160,7 +160,7 @@ private:
 			GetString(last_name[1], STR_GROUP_NAME, lastof(last_name[1]));
 		}
 
-		int r = strcmp(last_name[0], last_name[1]); // sort by name
+		int r = strnatcmp(last_name[0], last_name[1]); // Sort by name (natural sorting).
 		if (r == 0) return (*a)->index - (*b)->index;
 		return r;
 	}

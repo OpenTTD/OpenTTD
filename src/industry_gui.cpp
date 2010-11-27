@@ -120,7 +120,7 @@ static int CDECL IndustryTypeNameSorter(const IndustryType *a, const IndustryTyp
 	SetDParam(0, indsp2->name);
 	GetString(industry_name[1], STR_JUST_STRING, lastof(industry_name[1]));
 
-	int r = strcmp(industry_name[0], industry_name[1]);
+	int r = strnatcmp(industry_name[0], industry_name[1]); // Sort by name (natural sorting).
 
 	/* If the names are equal, sort by industry type. */
 	return (r != 0) ? r : (*a - *b);
@@ -1137,7 +1137,7 @@ protected:
 			GetString(buf_cache, STR_INDUSTRY_NAME, lastof(buf_cache));
 		}
 
-		return strcmp(buf, buf_cache);
+		return strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
 	}
 
 	/** Sort industries by type and name */

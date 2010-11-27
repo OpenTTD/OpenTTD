@@ -266,7 +266,7 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	/** Sort content by name. */
 	static int CDECL NameSorter(const ContentInfo * const *a, const ContentInfo * const *b)
 	{
-		return strcasecmp((*a)->name, (*b)->name);
+		return strnatcmp((*a)->name, (*b)->name); // Sort by name (natural sorting).
 	}
 
 	/** Sort content by type. */
@@ -278,7 +278,7 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 			char b_str[64];
 			GetString(a_str, STR_CONTENT_TYPE_BASE_GRAPHICS + (*a)->type - CONTENT_TYPE_BASE_GRAPHICS, lastof(a_str));
 			GetString(b_str, STR_CONTENT_TYPE_BASE_GRAPHICS + (*b)->type - CONTENT_TYPE_BASE_GRAPHICS, lastof(b_str));
-			r = strcasecmp(a_str, b_str);
+			r = strnatcmp(a_str, b_str);
 		}
 		if (r == 0) r = NameSorter(a, b);
 		return r;

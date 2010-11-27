@@ -279,7 +279,7 @@ protected:
 	/** Sort servers by name. */
 	static int CDECL NGameNameSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
-		return strcasecmp((*a)->info.server_name, (*b)->info.server_name);
+		return strnatcmp((*a)->info.server_name, (*b)->info.server_name); // Sort by name (natural sorting).
 	}
 
 	/**

@@ -700,7 +700,7 @@ private:
 			GetString(buf_cache, STR_TOWN_NAME, lastof(buf_cache));
 		}
 
-		return strcmp(buf, buf_cache);
+		return strnatcmp(buf, buf_cache); // Sort by name (natural sorting).
 	}
 
 	/** Sort by population */

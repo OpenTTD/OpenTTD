@@ -134,7 +134,7 @@ static int CDECL CargoSpecNameSorter(const CargoSpec * const *a, const CargoSpec
 	GetString(a_name, (*a)->name, lastof(a_name));
 	GetString(b_name, (*b)->name, lastof(b_name));
 
-	int res = strcmp(a_name, b_name);
+	int res = strnatcmp(a_name, b_name); // Sort by name (natural sorting).
 
 	/* If the names are equal, sort by cargo bitnum. */
 	return (res != 0) ? res : ((*a)->bitnum - (*b)->bitnum);
