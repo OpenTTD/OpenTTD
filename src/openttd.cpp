@@ -30,6 +30,7 @@
 #include "aircraft.h"
 #include "roadveh.h"
 #include "train.h"
+#include "ship.h"
 #include "console_func.h"
 #include "screenshot.h"
 #include "network/network.h"
@@ -1168,6 +1169,7 @@ static void CheckCaches()
 			case VEH_TRAIN:    Train::From(v)->ConsistChanged(true);     break;
 			case VEH_ROAD:     RoadVehUpdateCache(RoadVehicle::From(v)); break;
 			case VEH_AIRCRAFT: UpdateAircraftCache(Aircraft::From(v));   break;
+			case VEH_SHIP:     Ship::From(v)->UpdateCache();             break;
 			default: break;
 		}
 
