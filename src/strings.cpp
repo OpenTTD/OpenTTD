@@ -35,6 +35,7 @@
 #include "string_func.h"
 #include "company_base.h"
 #include "smallmap_gui.h"
+#include "window_func.h"
 #include "debug.h"
 
 #include "table/strings.h"
@@ -1391,10 +1392,19 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	strecpy(_config_language_file, c_file, lastof(_config_language_file));
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 
+	/* Some lists need to be sorted again after a language change. */
 	InitializeSortedCargoSpecs();
 	SortIndustryTypes();
 	BuildIndustriesLegend();
 	SortNetworkLanguages();
+	InvalidateWindowClassesData(WC_BUILD_VEHICLE);      // Build vehicle window.
+	InvalidateWindowClassesData(WC_TRAINS_LIST);        // Train group window.
+	InvalidateWindowClassesData(WC_ROADVEH_LIST);       // Road vehicle group window.
+	InvalidateWindowClassesData(WC_SHIPS_LIST);         // Ship group window.
+	InvalidateWindowClassesData(WC_AIRCRAFT_LIST);      // Aircraft group window.
+	InvalidateWindowClassesData(WC_INDUSTRY_DIRECTORY); // Industry directory window.
+	InvalidateWindowClassesData(WC_STATION_LIST);       // Station list window.
+
 	return true;
 }
 
