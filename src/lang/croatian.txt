@@ -2573,7 +2573,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Baznom g
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Spremaš se napraviti izmjene u tekućoj igri. Ovo može srušiti OpenTTD.{}Jesi li potpuno siguran?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Spremate se napraviti izmjene u pokrenutoj igri. To može srušiti OpenTTD ili uništiti status same igre. Nemojte prijavljivati moguće smetnje kao bugove.{}Jeste li potpuno sigurni da želite nastaviti?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne mogu dodati datoteku: dupli GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odgovarajuća datoteka nije pronađena (kompatibilni GRF podignut)

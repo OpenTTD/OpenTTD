@@ -1246,7 +1246,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}A térk
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Az északi határnál egy vagy több mező nem üres
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Az egyik határnál egy vagy több mező nem víz
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: magas érték lelassítja a játékot
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} mező {RED}Figyelem: magas érték lelassítja a játékot
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendező eszköztár megnyitása az építési eszköztárakkal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Föld színe a térképen: {ORANGE}{STRING}
@@ -1301,10 +1301,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Épít�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Kiadási/bevételi adatok csoportosítása a pénzügyi ablakban: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Eszköztár mutatása, még ha nem is építhető semmi róla: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximum közúti jármű játékosonként: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximum repülőgép játékosonként: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximum hajó játékosonként: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximum vonat cégenként: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximum közúti jármű cégenként: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximum repülőgép cégenként: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximum hajó cégenként: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Vonatok tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Közúti járművek tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
@@ -1315,13 +1315,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Számí
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}MI felfüggesztéséhez szükséges opcode mennyiség: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Szervízintervallumok százalékban: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}{STRING} nap/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Alapértelmezett javítási időköz vonatoknak: {ORANGE}{STRING} nap/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}kikapcsolva
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Alapértelmezett szervízelés közúti járműveknek: {ORANGE}{STRING} nap/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Alapértelmezett javítási időköz járműveknek: {ORANGE}{STRING} nap/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Alapértelmezett szervízelés közúti járműveknek: {ORANGE}kikapcsolva
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Alapértelmezett szervízelés repülőgépeknek: {ORANGE}{STRING} nap/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Alapértelmezett javítási időköz repülőgépeknek: {ORANGE}{STRING} nap/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Alapértelmezett szervízelés repülőgépeknek: {ORANGE}kikapcsolva
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Alapértelmezett szervízelés hajóknak: {ORANGE}{STRING} nap/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Alapértelmezett javítási időköz hajóknak: {ORANGE}{STRING} nap/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Alapértelmezett szervízelés hajóknak: {ORANGE}kikapcsolva
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Ne legyen szervízelés ha lerobbanások sincsenek: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}A vagonok sebessége korlátozható: {ORANGE}{STRING}
@@ -1414,7 +1414,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Útvona
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Eredeti (OPF) {BLUE}(Ajánlott)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ellenjavallt)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Válassz beállítási értéket
 
@@ -1552,10 +1551,10 @@ STR_FACE_LOAD                                                   :{BLACK}Betölt
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Kedvenc arcod betöltése
 STR_FACE_LOAD_DONE                                              :{WHITE}A kedvenc arcod az OpenTTD konfig-fájlból be lett töltve.
 STR_FACE_FACECODE                                               :{BLACK}Játékos arcszám
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Játékos arcszámának megtekintése/módosítása
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Játékos arcszámának megtekintése/módosítása
-STR_FACE_FACECODE_SET                                           :{WHITE}Az új arcszám-kód beállítása megtörtént.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Játékos arcszám beállítás sikertelen - A megadott értéknek 0 és 4.294.967.295 közé eső számnak kell lennie!
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Az elnök portréjának kódjánakmegtekintése, módosítása
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Elnöki portré kód megtekintése, módosítása
+STR_FACE_FACECODE_SET                                           :{WHITE}Az új portré kód beállítása megtörtént.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Elnöki portré kód beállítás sikertelen - a megadott értéknek 0 és 4.294.967.295 között kell lennie!
 STR_FACE_SAVE                                                   :{BLACK}Mentés
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Kedvenc arc elmentése
 STR_FACE_SAVE_DONE                                              :{WHITE}Ez az arc mint a kedvenc arcod kerül az OpenTTD konfig-fájlba mentésre.
@@ -1672,9 +1671,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Beszélt
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Játék elindítása
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Új hálózati játék kezdése véletlen vagy saját pályával
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Új hálózati játék indítása véletlen vagy egy kiválasztott pályával
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Játék betöltése
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Korábban elmentett többfelhasználós játék folytatása (győződj meg, hogy megfelelő játékosként kapcsolódtál)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Korábban elmentett többjátékos játék folytatása (győződj meg, hogy a megfelelő céghez kapcsolódtál)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Add meg a hálózati játékhoz a neved
 
@@ -2160,10 +2159,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Az emele
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Véletlenszerű táj készítése
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Új pálya létrehozása
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}A táj törlése
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Eltávolít minden, játékos által birtokolt elemet a térképről
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Eltávolít minden, a cég által birtokolt elemet a térképről
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Táj törlése
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Biztos vagy benne, hogy el akarsz távolítani minden játékos által birtolokt elemet?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Biztos vagy benne, hogy el akarsz távolítani minden, a cég által birtokolt elemet?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Városkészítés
@@ -2542,7 +2541,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A jelenl
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te éppen egy jelenleg futó játékon akarsz változtatni; ettől elszállhat az OpenTTD.{}Teljesen biztos vagy ebben?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te éppen egy jelenleg futó játékon akarsz változtatni; ettől elszállhat az OpenTTD. Ezekről ne tegyél hibajelentést.{}Teljesen biztos vagy ebben?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nem lehetséges a fájl hozzáadása: duplikált GRF azonosító
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Pontosan megegyező fájlt nem találtam (kompatibilis GRF-fel helyettesítve)
