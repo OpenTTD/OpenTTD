@@ -1222,3 +1222,34 @@ void GetVehicleResolver(ResolverObject *ro, uint index)
 	Vehicle *v = Vehicle::Get(index);
 	NewVehicleResolver(ro, v->engine_type, v);
 }
+
+/**
+ * Fill the grf_cache of the given vehicle.
+ * @param v The vehicle to fill the cache for.
+ */
+void FillNewGRFVehicleCache(const Vehicle *v)
+{
+	ResolverObject ro;
+	memset(&ro, 0, sizeof(ro));
+	GetVehicleResolver(&ro, v->index);
+
+	/* These variables we have to check; these are the ones with a cache. */
+	static const int cache_entries[][2] = {
+		{ 0x40, NCVV_POSITION_CONSIST_LENGTH },
+		{ 0x41, NCVV_POSITION_SAME_ID_LENGTH },
+		{ 0x42, NCVV_CONSIST_CARGO_INFORMATION },
+		{ 0x43, NCVV_COMPANY_INFORMATION },
+	};
+	assert_compile(NCVV_END == lengthof(cache_entries));
+
+	/* Resolve all the variables, so their caches are set. */
+	for (size_t i = 0; i < lengthof(cache_entries); i++) {
+		/* Only resolve when the cache isn't valid. */
+		if (HasBit(v->grf_cache.cache_valid, cache_entries[i][1])) continue;
+		bool stub;
+		ro.GetVariable(&ro, cache_entries[i][0], 0, &stub);
+	}
+
+	/* Make sure really all bits are set. */
+	assert(v->grf_cache.cache_valid == (1 << NCVV_END) - 1);
+}

@@ -52,6 +52,7 @@ enum NewGRFCacheValidValues {
 	NCVV_POSITION_SAME_ID_LENGTH   = 1, ///< This bit will be set if the NewGRF var 41 currently stored is valid.
 	NCVV_CONSIST_CARGO_INFORMATION = 2, ///< This bit will be set if the NewGRF var 42 currently stored is valid.
 	NCVV_COMPANY_INFORMATION       = 3, ///< This bit will be set if the NewGRF var 43 currently stored is valid.
+	NCVV_END,                           ///< End of the bits.
 };
 
 /** Cached often queried (NewGRF) values */
