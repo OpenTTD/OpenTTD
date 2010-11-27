@@ -43,12 +43,13 @@ void SetRandomSeed(uint32 seed)
 
 #ifdef RANDOM_DEBUG
 #include "../network/network.h"
+#include "../network/network_server.h"
 #include "../network/network_internal.h"
 #include "../company_func.h"
 
 uint32 DoRandom(int line, const char *file)
 {
-	if (_networking && (!_network_server || (NetworkClientSocket::IsValidID(0) && NetworkClientSocket::Get(0)->status != STATUS_INACTIVE))) {
+	if (_networking && (!_network_server || (NetworkClientSocket::IsValidID(0) && NetworkClientSocket::Get(0)->status != NetworkClientSocket::STATUS_INACTIVE))) {
 		printf("Random [%d/%d] %s:%d\n", _frame_counter, (byte)_current_company, file, line);
 	}
 
