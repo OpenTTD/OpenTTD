@@ -2477,7 +2477,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Gói đ�
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Chú Ý!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Bạn định thay đổi cho ván chơi đang chơi; việc này có thể làm treo OpenTTD.{}Bạn có chắc sẽ thực hiện không?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Bạn định tiến hành thay đổi cho ván chơi đang chơi; việc này có thể làm lỗi hoặc treo OpenTTD. Đừng thông báo vễ những lỗi dạng này.{}Bạn có chắc sẽ thực hiện không?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Không thể thêm file: trùng lặp GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}File hợp lệ không tìm thấy (GRF tương thích được nạp thay)
