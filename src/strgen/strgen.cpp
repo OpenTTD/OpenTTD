@@ -56,7 +56,7 @@ static const char *_output_filename = NULL;  ///< The filename of the output, so
 static int _cur_line;                        ///< The current line we're parsing in the input file
 static int _errors, _warnings, _show_todo;
 
-static const size_t MAX_COMMAND_PARAM_SIZE = 100; ///< Maximum size of every command block, not counting the name of the command itself
+static const ptrdiff_t MAX_COMMAND_PARAM_SIZE = 100; ///< Maximum size of every command block, not counting the name of the command itself
 
 struct LangString {
 	char *name;            // Name of the string
