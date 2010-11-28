@@ -56,6 +56,8 @@ static const char *_output_filename = NULL;  ///< The filename of the output, so
 static int _cur_line;                        ///< The current line we're parsing in the input file
 static int _errors, _warnings, _show_todo;
 
+static const size_t MAX_COMMAND_PARAM_SIZE = 100; ///< Maximum size of every command block, not counting the name of the command itself
+
 struct LangString {
 	char *name;            // Name of the string
 	char *english;         // English text
@@ -489,7 +491,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 				strgen_error("Missing } from command '%s'", start);
 				return NULL;
 			}
-			if (s - start == 250) error("param command too long");
+			if (s - start == MAX_COMMAND_PARAM_SIZE) error("param command too long");
 			*param++ = c;
 		}
 	}
@@ -578,7 +580,7 @@ static void HandlePragma(char *str, bool master)
 
 static void ExtractCommandString(ParsedCommandStruct *p, const char *s, bool warnings)
 {
-	char param[100];
+	char param[MAX_COMMAND_PARAM_SIZE];
 	int argno;
 	int argidx = 0;
 	int casei;
@@ -857,7 +859,7 @@ static void MakeHashOfStrings()
 		if (ls != NULL) {
 			const CmdStruct *cs;
 			const char *s;
-			char buf[256];
+			char buf[MAX_COMMAND_PARAM_SIZE];
 			int argno;
 			int casei;
 
@@ -1012,7 +1014,7 @@ static void PutCommandString(const char *str)
 			continue;
 		}
 
-		char param[256];
+		char param[MAX_COMMAND_PARAM_SIZE];
 		int argno;
 		int casei;
 		const CmdStruct *cs = ParseCommandString(&str, param, &argno, &casei);
