@@ -742,21 +742,19 @@ static void HandleString(char *str, bool master)
 			return;
 		}
 
-		if (ent == NULL) {
-			if (_strings[_next_string_id]) {
-				strgen_error("String ID 0x%X for '%s' already in use by '%s'", _next_string_id, str, _strings[_next_string_id]->name);
-				return;
-			}
-
-			/* Allocate a new LangString */
-			ent = CallocT<LangString>(1);
-			_strings[_next_string_id] = ent;
-			ent->index = _next_string_id++;
-			ent->name = strdup(str);
-			ent->line = _cur_line;
-
-			HashAdd(str, ent);
+		if (_strings[_next_string_id]) {
+			strgen_error("String ID 0x%X for '%s' already in use by '%s'", _next_string_id, str, _strings[_next_string_id]->name);
+			return;
 		}
+
+		/* Allocate a new LangString */
+		ent = CallocT<LangString>(1);
+		_strings[_next_string_id] = ent;
+		ent->index = _next_string_id++;
+		ent->name = strdup(str);
+		ent->line = _cur_line;
+
+		HashAdd(str, ent);
 
 		ent->english = strdup(s);
 	} else {
@@ -770,27 +768,22 @@ static void HandleString(char *str, bool master)
 			return;
 		}
 
-		if (s[0] == ':' && s[1] == '\0' && casep == NULL) {
-			/* Special syntax :: means we should just inherit the master string */
-			ent->translated = strdup(ent->english);
+		/* make sure that the commands match */
+		if (!CheckCommandsMatch(s, ent->english, str)) return;
+
+		if (casep != NULL) {
+			Case *c = MallocT<Case>(1);
+
+			c->caseidx = ResolveCaseName(casep, strlen(casep));
+			c->string = strdup(s);
+			c->next = ent->translated_case;
+			ent->translated_case = c;
 		} else {
-			/* make sure that the commands match */
-			if (!CheckCommandsMatch(s, ent->english, str)) return;
-
-			if (casep != NULL) {
-				Case *c = MallocT<Case>(1);
-
-				c->caseidx = ResolveCaseName(casep, strlen(casep));
-				c->string = strdup(s);
-				c->next = ent->translated_case;
-				ent->translated_case = c;
-			} else {
-				ent->translated = strdup(s);
-				/* If the string was translated, use the line from the
-				 * translated language so errors in the translated file
-				 * are properly referenced to. */
-				ent->line = _cur_line;
-			}
+			ent->translated = strdup(s);
+			/* If the string was translated, use the line from the
+			 * translated language so errors in the translated file
+			 * are properly referenced to. */
+			ent->line = _cur_line;
 		}
 	}
 }
