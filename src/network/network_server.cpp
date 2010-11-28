@@ -1002,109 +1002,109 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 	const NetworkClientInfo *ci, *ci_own, *ci_to;
 
 	switch (desttype) {
-	case DESTTYPE_CLIENT:
-		/* Are we sending to the server? */
-		if ((ClientID)dest == CLIENT_ID_SERVER) {
-			ci = NetworkFindClientInfoFromClientID(from_id);
-			/* Display the text locally, and that is it */
-			if (ci != NULL) {
-				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
-
-				if (_settings_client.network.server_admin_chat) {
-						NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
-				}
-			}
-		} else {
-			/* Else find the client to send the message to */
-			FOR_ALL_CLIENT_SOCKETS(cs) {
-				if (cs->client_id == (ClientID)dest) {
-					cs->SendChat(action, from_id, false, msg, data);
-					break;
-				}
-			}
-		}
-
-		/* Display the message locally (so you know you have sent it) */
-		if (from_id != (ClientID)dest) {
-			if (from_id == CLIENT_ID_SERVER) {
+		case DESTTYPE_CLIENT:
+			/* Are we sending to the server? */
+			if ((ClientID)dest == CLIENT_ID_SERVER) {
 				ci = NetworkFindClientInfoFromClientID(from_id);
-				ci_to = NetworkFindClientInfoFromClientID((ClientID)dest);
-				if (ci != NULL && ci_to != NULL) {
-					NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), true, ci_to->client_name, msg, data);
+				/* Display the text locally, and that is it */
+				if (ci != NULL) {
+					NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
+
+					if (_settings_client.network.server_admin_chat) {
+						NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
+					}
 				}
 			} else {
+				/* Else find the client to send the message to */
 				FOR_ALL_CLIENT_SOCKETS(cs) {
-					if (cs->client_id == from_id) {
-						cs->SendChat(action, (ClientID)dest, true, msg, data);
+					if (cs->client_id == (ClientID)dest) {
+						cs->SendChat(action, from_id, false, msg, data);
 						break;
 					}
 				}
 			}
-		}
-		break;
-	case DESTTYPE_TEAM: {
-		/* If this is false, the message is already displayed on the client who sent it. */
-		bool show_local = true;
-		/* Find all clients that belong to this company */
-		ci_to = NULL;
-		FOR_ALL_CLIENT_SOCKETS(cs) {
-			ci = cs->GetInfo();
-			if (ci->client_playas == (CompanyID)dest) {
-				cs->SendChat(action, from_id, false, msg, data);
-				if (cs->client_id == from_id) show_local = false;
-				ci_to = ci; // Remember a client that is in the company for company-name
-			}
-		}
 
-		/* if the server can read it, let the admin network read it, too. */
-		if (_local_company == (CompanyID)dest && _settings_client.network.server_admin_chat) {
-			NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
-		}
-
-		ci = NetworkFindClientInfoFromClientID(from_id);
-		ci_own = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
-		if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
-			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
-			if (from_id == CLIENT_ID_SERVER) show_local = false;
-			ci_to = ci_own;
-		}
-
-		/* There is no such client */
-		if (ci_to == NULL) break;
-
-		/* Display the message locally (so you know you have sent it) */
-		if (ci != NULL && show_local) {
-			if (from_id == CLIENT_ID_SERVER) {
-				char name[NETWORK_NAME_LENGTH];
-				StringID str = Company::IsValidID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
-				SetDParam(0, ci_to->client_playas);
-				GetString(name, str, lastof(name));
-				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci_own->client_playas), true, name, msg, data);
-			} else {
-				FOR_ALL_CLIENT_SOCKETS(cs) {
-					if (cs->client_id == from_id) {
-						cs->SendChat(action, ci_to->client_id, true, msg, data);
+			/* Display the message locally (so you know you have sent it) */
+			if (from_id != (ClientID)dest) {
+				if (from_id == CLIENT_ID_SERVER) {
+					ci = NetworkFindClientInfoFromClientID(from_id);
+					ci_to = NetworkFindClientInfoFromClientID((ClientID)dest);
+					if (ci != NULL && ci_to != NULL) {
+						NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), true, ci_to->client_name, msg, data);
+					}
+				} else {
+					FOR_ALL_CLIENT_SOCKETS(cs) {
+						if (cs->client_id == from_id) {
+							cs->SendChat(action, (ClientID)dest, true, msg, data);
+							break;
+						}
 					}
 				}
 			}
-		}
-		break;
-	}
-	default:
-		DEBUG(net, 0, "[server] received unknown chat destination type %d. Doing broadcast instead", desttype);
-		/* FALL THROUGH */
-	case DESTTYPE_BROADCAST:
-		FOR_ALL_CLIENT_SOCKETS(cs) {
-			cs->SendChat(action, from_id, false, msg, data);
-		}
+			break;
+		case DESTTYPE_TEAM: {
+			/* If this is false, the message is already displayed on the client who sent it. */
+			bool show_local = true;
+			/* Find all clients that belong to this company */
+			ci_to = NULL;
+			FOR_ALL_CLIENT_SOCKETS(cs) {
+				ci = cs->GetInfo();
+				if (ci->client_playas == (CompanyID)dest) {
+					cs->SendChat(action, from_id, false, msg, data);
+					if (cs->client_id == from_id) show_local = false;
+					ci_to = ci; // Remember a client that is in the company for company-name
+				}
+			}
 
-		NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
+			/* if the server can read it, let the admin network read it, too. */
+			if (_local_company == (CompanyID)dest && _settings_client.network.server_admin_chat) {
+				NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
+			}
 
-		ci = NetworkFindClientInfoFromClientID(from_id);
-		if (ci != NULL) {
-			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
+			ci = NetworkFindClientInfoFromClientID(from_id);
+			ci_own = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
+			if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
+				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
+				if (from_id == CLIENT_ID_SERVER) show_local = false;
+				ci_to = ci_own;
+			}
+
+			/* There is no such client */
+			if (ci_to == NULL) break;
+
+			/* Display the message locally (so you know you have sent it) */
+			if (ci != NULL && show_local) {
+				if (from_id == CLIENT_ID_SERVER) {
+					char name[NETWORK_NAME_LENGTH];
+					StringID str = Company::IsValidID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
+					SetDParam(0, ci_to->client_playas);
+					GetString(name, str, lastof(name));
+					NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci_own->client_playas), true, name, msg, data);
+				} else {
+					FOR_ALL_CLIENT_SOCKETS(cs) {
+						if (cs->client_id == from_id) {
+							cs->SendChat(action, ci_to->client_id, true, msg, data);
+						}
+					}
+				}
+			}
+			break;
 		}
-		break;
+		default:
+			DEBUG(net, 0, "[server] received unknown chat destination type %d. Doing broadcast instead", desttype);
+			/* FALL THROUGH */
+		case DESTTYPE_BROADCAST:
+			FOR_ALL_CLIENT_SOCKETS(cs) {
+				cs->SendChat(action, from_id, false, msg, data);
+			}
+
+			NetworkAdminChat(action, desttype, from_id, msg, data, from_admin);
+
+			ci = NetworkFindClientInfoFromClientID(from_id);
+			if (ci != NULL) {
+				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), false, ci->client_name, msg, data);
+			}
+			break;
 	}
 }
 
