@@ -2478,7 +2478,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Il manqu
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attention{NBSP}!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vous êtes sur le point de faire des changements dans une partie en cours. Cela peut faire planter OpenTTD.{}Êtes-vous absolument sûr{NBSP}?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vous êtes sur le point de faire des changements dans une partie en cours. Cela peut faire planter OpenTTD ou corrompre l'état de la partie. Ne rapportez pas de bogues pour ces problèmes.{}Êtes-vous absolument sûr{NBSP}?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ajout impossible{NBSP}: GRF ID en double
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichier exact non trouvé (GRF compatible chargé)

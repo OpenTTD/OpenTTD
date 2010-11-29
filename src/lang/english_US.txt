@@ -2477,7 +2477,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}The curr
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Caution!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are about to make changes to a running game. This can crash OpenTTD.{}Are you absolutely sure about this?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are about to make changes to a running game. This can crash OpenTTD or break the game state. Do not file bug reports about these issues.{}Are you absolutely sure about this?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't add file: duplicate GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matching file not found (compatible GRF loaded)

@@ -2479,7 +2479,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Nello st
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attenzione!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Si stanno per apportare cambiamenti a una partita in corso. Questo potrebbe causare un crash di OpenTTD.{}Si è assolutamente sicuri?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Si stanno per apportare cambiamenti a una partita in corso. Questa operazione potrebbe causare un crash di OpenTTD o corrompere lo stato della partita. Si prega di non inviare segnalazioni di bug al verificarsi di tali problemi.{}Si è assolutamente sicuri di voler procedere?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossibile aggiungere il file: GRF ID duplicato
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}File corrispondente non trovato (caricato file GRF compatibile)
