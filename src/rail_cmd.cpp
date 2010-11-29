@@ -1878,10 +1878,12 @@ static void DrawTrackBitsOverlay(TileInfo *ti, TrackBits track, const RailtypeIn
 	/* DrawFoundation modifies ti */
 
 	/* Draw ground */
-	if (track == TRACK_BIT_NONE && rgt == RAIL_GROUND_WATER) {
-		if (IsSteepSlope(ti->tileh)) {
+	if (rgt == RAIL_GROUND_WATER) {
+		if (track != TRACK_BIT_NONE || IsSteepSlope(ti->tileh)) {
+			/* three-corner-raised slope or steep slope with track on upper part */
 			DrawShoreTile(ti->tileh);
 		} else {
+			/* single-corner-raised slope with track on upper part */
 			DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
 		}
 	} else {
