@@ -11,8 +11,6 @@ log() {
 }
 
 set_default() {
-	released_version=""
-
 	ignore_extra_parameters="0"
 	# We set all kinds of defaults for params. Later on the user can override
 	# most of them; but if they don't, this default is used.
@@ -990,51 +988,40 @@ check_params() {
 		fi
 	fi
 
-	if [ -n "$released_version" ]; then
-		log 1 "checking revision... release ($released_version)"
-		if [ -n "$revision" ] && [ "$revision" != "$released_version" ]; then
-			log 1 "WARNING: overriding of the revision is NOT possible for releases"
-			log 1 "WARNING: the given revision is IGNORED"
+	if [ -n "$revision" ]; then
+		log 1 "checking revision... $revision"
+		log 1 "WARNING: we do not advise you to use this setting"
+		log 1 "WARNING: in most cases it is not safe for network use"
+		log 1 "WARNING: USE WITH CAUTION!"
 
-			sleep 5
-		fi
-		revision=$released_version
+		sleep 5
+	elif [ -f "$ROOT_DIR/version" ]; then
+		revision="`cat $ROOT_DIR/version`"
+
+		log 1 "checking revision... $revision"
+	elif [ -d "$ROOT_DIR/.svn" ] && [ -n "`svn help 2>/dev/null`" ]; then
+		revision=""
+		log 1 "checking revision... svn detection"
+	elif [ -d "$ROOT_DIR/.git" ] && [ -n "`git help 2>/dev/null`" ]; then
+		revision=""
+		log 1 "checking revision... git detection"
+	elif [ -d "$ROOT_DIR/.hg" ] && [ -n "`hg help 2>/dev/null`" ]; then
+		revision=""
+		log 1 "checking revision... hg detection"
+	elif [ -f "$ROOT_DIR/.ottdrev" ]; then
+		revision=""
+		log 1 "checking revision... source tarball"
 	else
-		if [ -n "$revision" ]; then
-			log 1 "checking revision... $revision"
-			log 1 "WARNING: we do not advise you to use this setting"
-			log 1 "WARNING: in most cases it is not safe for network use"
-			log 1 "WARNING: USE WITH CAUTION!"
+		revision=""
+		log 1 "checking revision... no detection"
+		log 1 "WARNING: there is no means to determine the version."
+		log 1 "WARNING: please use a subversion, mercurial, or git checkout of OpenTTD."
+		log 1 "WARNING: you can only join game servers that have been compiled without"
+		log 1 "WARNING:   version detection."
+		log 1 "WARNING: there is a great chance you desync."
+		log 1 "WARNING: USE WITH CAUTION!"
 
-			sleep 5
-		elif [ -f "$ROOT_DIR/version" ]; then
-			revision="`cat $ROOT_DIR/version`"
-
-			log 1 "checking revision... $revision"
-		elif [ -d "$ROOT_DIR/.svn" ] && [ -n "`svn help 2>/dev/null`" ]; then
-			revision=""
-			log 1 "checking revision... svn detection"
-		elif [ -d "$ROOT_DIR/.git" ] && [ -n "`git help 2>/dev/null`" ]; then
-			revision=""
-			log 1 "checking revision... git detection"
-		elif [ -d "$ROOT_DIR/.hg" ] && [ -n "`hg help 2>/dev/null`" ]; then
-			revision=""
-			log 1 "checking revision... hg detection"
-		elif [ -f "$ROOT_DIR/.rev" ]; then
-			revision=""
-			log 1 "checking revision... source tarball"
-		else
-			revision=""
-			log 1 "checking revision... no detection"
-			log 1 "WARNING: there is no means to determine the version."
-			log 1 "WARNING: please use a subversion, mercurial, or git checkout of OpenTTD."
-			log 1 "WARNING: you can only join game servers that have been compiled without"
-			log 1 "WARNING:   version detection."
-			log 1 "WARNING: there is a great chance you desync."
-			log 1 "WARNING: USE WITH CAUTION!"
-
-			sleep 5
-		fi
+		sleep 5
 	fi
 
 	if [ "$doc_dir" = "1" ]; then
