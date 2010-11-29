@@ -108,6 +108,10 @@ elif [ -d "$ROOT_DIR/.hg" ]; then
 	REV="h`echo $HASH | cut -c1-8`"
 	BRANCH=`hg branch | sed 's@^default$@@'`
 	REV_NR=`LC_ALL=C hg log -f -k "(svn r" -l 1 --template "{desc}\n" | head -n 1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
+elif [ -f "$ROOT_DIR/.ottdrev" ]; then
+	# We are an exported source bundle
+	cat $ROOT_DIR/.ottdrev
+	exit
 else
 	# We don't know
 	MODIFIED="1"

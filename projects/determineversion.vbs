@@ -35,8 +35,9 @@ Sub UpdateFiles(version)
 
 	If InStr(version, Chr(9)) Then
 		revision = Mid(version, InStr(version, Chr(9)) + 1)
+		modified = Mid(revision, InStr(revision, Chr(9)) + 1)
 		revision = Mid(revision, 1, InStr(revision, Chr(9)) - 1)
-		modified = Mid(version, InStrRev(version, Chr(9)) + 1)
+		modified = Mid(modified, 1, InStr(modified, Chr(9)) - 1)
 		version  = Mid(version, 1, InStr(version, Chr(9)) - 1)
 	Else
 		revision = 0
@@ -260,19 +261,27 @@ Function DetermineSVNVersion()
 		End If ' version = "norev000"
 	End If ' version <> "norev000"
 
-	If modified = 2 Then
-		version = version & "M"
-	End If
-
-	If branch <> "" Then
-		version = version & "-" & branch
-	End If
-
-	If version <> "norev000" Then
-		DetermineSVNVersion = version & Chr(9) & revision & Chr(9) & modified
+	Dim rev_file
+	Set rev_file = FSO.OpenTextFile("../.ottdrev", 1, True, 0)
+	If Not rev_file.atEndOfStream Then
+		DetermineSVNVersion = rev_file.ReadLine()
 	Else
-		DetermineSVNVersion = version
+		If modified = 2 Then
+			version = version & "M"
+		End If
+
+		clean_rev = version
+		If branch <> "" Then
+			version = version & "-" & branch
+		End If
+
+		If version <> "norev000" Then
+			DetermineSVNVersion = version & Chr(9) & revision & Chr(9) & modified & Chr(9) & clean_rev
+		Else
+			DetermineSVNVersion = version
+		End If
 	End If
+	rev_file.close
 End Function
 
 Function IsCachedVersion(ByVal version)

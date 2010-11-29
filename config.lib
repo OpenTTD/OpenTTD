@@ -1020,6 +1020,9 @@ check_params() {
 		elif [ -d "$ROOT_DIR/.hg" ] && [ -n "`hg help 2>/dev/null`" ]; then
 			revision=""
 			log 1 "checking revision... hg detection"
+		elif [ -f "$ROOT_DIR/.rev" ]; then
+			revision=""
+			log 1 "checking revision... source tarball"
 		else
 			revision=""
 			log 1 "checking revision... no detection"
