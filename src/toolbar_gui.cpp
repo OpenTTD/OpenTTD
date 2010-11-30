@@ -1262,6 +1262,7 @@ enum MainToolbarHotkeys {
 	MTHK_BUILD_AIRPORT,
 	MTHK_BUILD_TREES,
 	MTHK_MUSIC,
+	MTHK_AI_DEBUG,
 	MTHK_SMALL_SCREENSHOT,
 	MTHK_ZOOMEDIN_SCREENSHOT,
 	MTHK_GIANT_SCREENSHOT,
@@ -1338,6 +1339,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_BUILD_AIRPORT: if (CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) ShowBuildAirToolbar(); break;
 			case MTHK_BUILD_TREES: ShowBuildTreesToolbar(); break;
 			case MTHK_MUSIC: ShowMusicWindow(); break;
+			case MTHK_AI_DEBUG: ShowAIDebugWindow(); break;
 			case MTHK_SMALL_SCREENSHOT: MenuClickSmallScreenshot(); break;
 			case MTHK_ZOOMEDIN_SCREENSHOT: MenuClickZoomedInScreenshot(); break;
 			case MTHK_GIANT_SCREENSHOT: MenuClickWorldScreenshot(); break;
@@ -1423,6 +1425,7 @@ Hotkey<MainToolbarWindow> MainToolbarWindow::maintoolbar_hotkeys[] = {
 	Hotkey<MainToolbarWindow>(WKC_SHIFT | WKC_F10, "build_airport", MTHK_BUILD_AIRPORT),
 	Hotkey<MainToolbarWindow>(WKC_SHIFT | WKC_F11, "build_trees", MTHK_BUILD_TREES),
 	Hotkey<MainToolbarWindow>(WKC_SHIFT | WKC_F12, "music", MTHK_MUSIC),
+	Hotkey<MainToolbarWindow>((uint16)0, "ai_debug", MTHK_AI_DEBUG),
 	Hotkey<MainToolbarWindow>(WKC_CTRL  | 'S', "small_screenshot", MTHK_SMALL_SCREENSHOT),
 	Hotkey<MainToolbarWindow>(WKC_CTRL  | 'P', "zoomedin_screenshot", MTHK_ZOOMEDIN_SCREENSHOT),
 	Hotkey<MainToolbarWindow>((uint16)0, "giant_screenshot", MTHK_GIANT_SCREENSHOT),
