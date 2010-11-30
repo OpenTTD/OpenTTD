@@ -151,7 +151,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
  * @param p    the packet to write the data to
  * @param info the NetworkGameInfo struct to serialize
  */
-void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameInfo *info)
+void NetworkUDPSocketHandler::SendNetworkGameInfo(Packet *p, const NetworkGameInfo *info)
 {
 	p->Send_uint8 (NETWORK_GAME_INFO_VERSION);
 
@@ -180,7 +180,7 @@ void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameI
 
 		/* Send actual GRF Identifications */
 		for (c = info->grfconfig; c != NULL; c = c->next) {
-			if (!HasBit(c->flags, GCF_STATIC)) this->Send_GRFIdentifier(p, &c->ident);
+			if (!HasBit(c->flags, GCF_STATIC)) this->SendGRFIdentifier(p, &c->ident);
 		}
 	}
 
@@ -213,7 +213,7 @@ void NetworkUDPSocketHandler::Send_NetworkGameInfo(Packet *p, const NetworkGameI
  * @param p    the packet to read the data from
  * @param info the NetworkGameInfo to deserialize into
  */
-void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *info)
+void NetworkUDPSocketHandler::ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 {
 	static const Date MAX_DATE = ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
 
@@ -238,7 +238,7 @@ void NetworkUDPSocketHandler::Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *i
 
 			for (i = 0; i < num_grfs; i++) {
 				GRFConfig *c = new GRFConfig();
-				this->Recv_GRFIdentifier(p, &c->ident);
+				this->ReceiveGRFIdentifier(p, &c->ident);
 				this->HandleIncomingNetworkGameInfoGRFConfig(c);
 
 				/* Append GRFConfig to the list */

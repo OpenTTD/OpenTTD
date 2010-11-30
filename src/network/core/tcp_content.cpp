@@ -117,11 +117,11 @@ bool NetworkContentSocketHandler::HandlePacket(Packet *p)
 /**
  * Receive a packet at TCP level
  */
-void NetworkContentSocketHandler::Recv_Packets()
+void NetworkContentSocketHandler::ReceivePackets()
 {
 	Packet *p;
-	while ((p = this->Recv_Packet()) != NULL) {
-		bool cont = HandlePacket(p);
+	while ((p = this->ReceivePacket()) != NULL) {
+		bool cont = this->HandlePacket(p);
 		delete p;
 		if (!cont) return;
 	}

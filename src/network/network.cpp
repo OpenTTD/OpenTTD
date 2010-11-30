@@ -698,13 +698,13 @@ void NetworkReboot()
 		NetworkClientSocket *cs;
 		FOR_ALL_CLIENT_SOCKETS(cs) {
 			cs->SendNewGame();
-			cs->Send_Packets();
+			cs->SendPackets();
 		}
 
 		ServerNetworkAdminSocketHandler *as;
 		FOR_ALL_ADMIN_SOCKETS(as) {
 			as->SendNewGame();
-			as->Send_Packets();
+			as->SendPackets();
 		}
 	}
 
@@ -724,14 +724,14 @@ void NetworkDisconnect(bool blocking, bool close_admins)
 		NetworkClientSocket *cs;
 		FOR_ALL_CLIENT_SOCKETS(cs) {
 			cs->SendShutdown();
-			cs->Send_Packets();
+			cs->SendPackets();
 		}
 
 		if (close_admins) {
 			ServerNetworkAdminSocketHandler *as;
 			FOR_ALL_ADMIN_SOCKETS(as) {
 				as->SendShutdown();
-				as->Send_Packets();
+				as->SendPackets();
 			}
 		}
 	}
@@ -823,7 +823,7 @@ void NetworkGameLoop()
 		while (f != NULL && !feof(f)) {
 			if (_date == next_date && _date_fract == next_date_fract) {
 				if (cp != NULL) {
-					NetworkSend_Command(cp->tile, cp->p1, cp->p2, cp->cmd & ~CMD_FLAGS_MASK, NULL, cp->text, cp->company);
+					NetworkSendCommand(cp->tile, cp->p1, cp->p2, cp->cmd & ~CMD_FLAGS_MASK, NULL, cp->text, cp->company);
 					DEBUG(net, 0, "injecting: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" (%s)", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text, GetCommandName(cp->cmd));
 					free(cp);
 					cp = NULL;

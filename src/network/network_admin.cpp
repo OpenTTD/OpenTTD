@@ -94,7 +94,7 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 			continue;
 		}
 		if (as->writable) {
-			as->Send_Packets();
+			as->SendPackets();
 		}
 	}
 }
@@ -114,7 +114,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendError(NetworkErrorCode er
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_ERROR);
 
 	p->Send_uint8(error);
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	char str[100];
 	StringID strid = GetNetworkErrorMsg(error);
@@ -139,7 +139,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendProtocol()
 	}
 
 	p->Send_bool(false);
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return this->SendWelcome();
 }
@@ -161,7 +161,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendWelcome()
 	p->Send_uint16(MapSizeX());
 	p->Send_uint16(MapSizeY());
 
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -169,14 +169,14 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendWelcome()
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendNewGame()
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_NEWGAME);
-	this->Send_Packet(p);
+	this->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendShutdown()
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_SHUTDOWN);
-	this->Send_Packet(p);
+	this->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -185,7 +185,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendDate()
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_DATE);
 
 	p->Send_uint32(_date);
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -195,7 +195,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientJoin(ClientID clien
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_JOIN);
 
 	p->Send_uint32(client_id);
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -211,7 +211,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkC
 	p->Send_uint32(ci->join_date);
 	p->Send_uint8 (ci->client_playas);
 
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -224,7 +224,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientUpdate(const Networ
 	p->Send_string(ci->client_name);
 	p->Send_uint8 (ci->client_playas);
 
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -234,7 +234,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientQuit(ClientID clien
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_CLIENT_QUIT);
 
 	p->Send_uint32(client_id);
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -245,7 +245,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientError(ClientID clie
 
 	p->Send_uint32(client_id);
 	p->Send_uint8 (error);
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -255,7 +255,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyNew(CompanyID comp
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_NEW);
 	p->Send_uint8(company_id);
 
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -281,7 +281,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
 	p->Send_uint32(c->inaugurated_year);
 	p->Send_bool  (c->is_ai);
 
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -310,7 +310,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Compa
 		p->Send_uint8(c->share_owners[i]);
 	}
 
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -322,7 +322,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyRemove(CompanyID c
 	p->Send_uint8(company_id);
 	p->Send_uint8(acrr);
 
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -354,7 +354,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyEconomy()
 			p->Send_uint16(company->old_economy[i].delivered_cargo);
 		}
 
-		this->Send_Packet(p);
+		this->SendPacket(p);
 	}
 
 
@@ -384,7 +384,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyStats()
 			p->Send_uint16(company_stats->num_station[i]);
 		}
 
-		this->Send_Packet(p);
+		this->SendPacket(p);
 	}
 
 	return NETWORK_RECV_STATUS_OKAY;
@@ -400,7 +400,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action
 	p->Send_string(msg);
 	p->Send_uint64(data);
 
-	this->Send_Packet(p);
+	this->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -410,7 +410,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16 colour, const
 
 	p->Send_uint16(colour);
 	p->Send_string(result);
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -443,7 +443,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(const char *origi
 
 	p->Send_string(origin);
 	p->Send_string(string);
-	this->Send_Packet(p);
+	this->SendPacket(p);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }

@@ -103,7 +103,7 @@ void NetworkCoreShutdown()
  * @param p   the packet to write the data to
  * @param grf the GRFIdentifier to serialize
  */
-void NetworkSocketHandler::Send_GRFIdentifier(Packet *p, const GRFIdentifier *grf)
+void NetworkSocketHandler::SendGRFIdentifier(Packet *p, const GRFIdentifier *grf)
 {
 	uint j;
 	p->Send_uint32(grf->grfid);
@@ -117,7 +117,7 @@ void NetworkSocketHandler::Send_GRFIdentifier(Packet *p, const GRFIdentifier *gr
  * @param p   the packet to read the data from
  * @param grf the GRFIdentifier to deserialize
  */
-void NetworkSocketHandler::Recv_GRFIdentifier(Packet *p, GRFIdentifier *grf)
+void NetworkSocketHandler::ReceiveGRFIdentifier(Packet *p, GRFIdentifier *grf)
 {
 	uint j;
 	grf->grfid = p->Recv_uint32();

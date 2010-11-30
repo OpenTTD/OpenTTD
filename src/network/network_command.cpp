@@ -121,7 +121,7 @@ static CommandQueue _local_execution_queue;
  * @param text The text to pass
  * @param company The company that wants to send the command
  */
-void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, CompanyID company)
+void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, CompanyID company)
 {
 	assert((cmd & CMD_FLAGS_MASK) == 0);
 
@@ -275,7 +275,7 @@ void NetworkDistributeCommands()
  * @param cp the struct to write the data to.
  * @return an error message. When NULL there has been no error.
  */
-const char *NetworkGameSocketHandler::Recv_Command(Packet *p, CommandPacket *cp)
+const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *cp)
 {
 	cp->company = (CompanyID)p->Recv_uint8();
 	cp->cmd     = p->Recv_uint32();
@@ -300,7 +300,7 @@ const char *NetworkGameSocketHandler::Recv_Command(Packet *p, CommandPacket *cp)
  * @param p the packet to send it in.
  * @param cp the packet to actually send.
  */
-void NetworkGameSocketHandler::Send_Command(Packet *p, const CommandPacket *cp)
+void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 {
 	p->Send_uint8 (cp->company);
 	p->Send_uint32(cp->cmd);

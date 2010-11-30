@@ -129,7 +129,7 @@ public:
 		FOR_ALL_ITEMS_FROM(Tsocket, idx, cs, 0) {
 			cs->writable = !!FD_ISSET(cs->sock, &write_fd);
 			if (FD_ISSET(cs->sock, &read_fd)) {
-				cs->Recv_Packets();
+				cs->ReceivePackets();
 			}
 		}
 		return _networking;

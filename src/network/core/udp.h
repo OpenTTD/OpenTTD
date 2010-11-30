@@ -153,8 +153,8 @@ public:
 	void SendPacket(Packet *p, NetworkAddress *recv, bool all = false, bool broadcast = false);
 	void ReceivePackets();
 
-	void Send_NetworkGameInfo(Packet *p, const NetworkGameInfo *info);
-	void Recv_NetworkGameInfo(Packet *p, NetworkGameInfo *info);
+	void SendNetworkGameInfo(Packet *p, const NetworkGameInfo *info);
+	void ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo *info);
 };
 
 #endif /* ENABLE_NETWORK */

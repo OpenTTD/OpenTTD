@@ -347,10 +347,10 @@ public:
 	NetworkAdminSocketHandler(SOCKET s);
 	~NetworkAdminSocketHandler();
 
-	NetworkRecvStatus Recv_Packets();
+	NetworkRecvStatus ReceivePackets();
 
-	const char *Recv_Command(Packet *p, CommandPacket *cp);
-	void Send_Command(Packet *p, const CommandPacket *cp);
+	const char *ReceiveCommand(Packet *p, CommandPacket *cp);
+	void SendCommand(Packet *p, const CommandPacket *cp);
 };
 
 #endif /* ENABLE_NETWORK */

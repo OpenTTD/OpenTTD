@@ -845,7 +845,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 					 * TODO: Perhaps this could be improved by when the client is ready
 					 * with joining to let it send itself the command, and not the server?
 					 * For example in network_client.c:534? */
-					NetworkSend_Command(0, 0, 0, CMD_RENAME_PRESIDENT, NULL, ci->client_name, ci->client_playas);
+					NetworkSendCommand(0, 0, 0, CMD_RENAME_PRESIDENT, NULL, ci->client_name, ci->client_playas);
 				}
 
 				/* Announce new company on network, if the client was a SPECTATOR before */

@@ -115,7 +115,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 	strecpy(ngi.server_revision, _openttd_revision, lastof(ngi.server_revision));
 
 	Packet packet(PACKET_UDP_SERVER_RESPONSE);
-	this->Send_NetworkGameInfo(&packet, &ngi);
+	this->SendNetworkGameInfo(&packet, &ngi);
 
 	/* Let the client know that we are here */
 	this->SendPacket(&packet, client_addr);
@@ -142,7 +142,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	/* Go through all the companies */
 	FOR_ALL_COMPANIES(company) {
 		/* Send the information */
-		this->Send_CompanyInformation(&packet, company, &company_stats[company->index]);
+		this->SendCompanyInformation(&packet, company, &company_stats[company->index]);
 	}
 
 	this->SendPacket(&packet, client_addr);
@@ -179,7 +179,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 		GRFIdentifier c;
 		const GRFConfig *f;
 
-		this->Recv_GRFIdentifier(p, &c);
+		this->ReceiveGRFIdentifier(p, &c);
 
 		/* Find the matching GRF file */
 		f = FindGRFConfig(c.grfid, FGCM_EXACT, c.md5sum);
@@ -206,7 +206,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 
 		/* The name could be an empty string, if so take the filename */
 		strecpy(name, in_reply[i]->GetName(), lastof(name));
-		this->Send_GRFIdentifier(&packet, &in_reply[i]->ident);
+		this->SendGRFIdentifier(&packet, &in_reply[i]->ident);
 		packet.Send_string(name);
 	}
 
@@ -238,7 +238,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 	item = NetworkGameListAddItem(*client_addr);
 
 	ClearGRFConfigList(&item->info.grfconfig);
-	this->Recv_NetworkGameInfo(p, &item->info);
+	this->ReceiveNetworkGameInfo(p, &item->info);
 
 	item->info.compatible = true;
 	{
@@ -267,7 +267,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 
 			packet.Send_uint8(in_request_count);
 			for (i = 0; i < in_request_count; i++) {
-				this->Send_GRFIdentifier(&packet, &in_request[i]->ident);
+				this->SendGRFIdentifier(&packet, &in_request[i]->ident);
 			}
 
 			this->SendPacket(&packet, &item->address);
@@ -342,7 +342,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_NEWGRFS)
 		char name[NETWORK_GRF_NAME_LENGTH];
 		GRFIdentifier c;
 
-		this->Recv_GRFIdentifier(p, &c);
+		this->ReceiveGRFIdentifier(p, &c);
 		p->Recv_string(name, sizeof(name));
 
 		/* An empty name is not possible under normal circumstances

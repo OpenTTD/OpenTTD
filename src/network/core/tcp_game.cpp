@@ -34,7 +34,7 @@ NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s)
 }
 
 /**
- * Functions to help NetworkRecv_Packet/NetworkSend_Packet a bit
+ * Functions to help ReceivePacket/SendPacket a bit
  *  A socket can make errors. When that happens this handles what to do.
  * For clients: close connection and drop back to main-menu
  * For servers: close connection and that is it
@@ -136,10 +136,10 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
  * HandlePacket is returned.
  * @return #NetworkRecvStatus of the last handled packet.
  */
-NetworkRecvStatus NetworkGameSocketHandler::Recv_Packets()
+NetworkRecvStatus NetworkGameSocketHandler::ReceivePackets()
 {
 	Packet *p;
-	while ((p = this->Recv_Packet()) != NULL) {
+	while ((p = this->ReceivePacket()) != NULL) {
 		NetworkRecvStatus res = HandlePacket(p);
 		delete p;
 		if (res != NETWORK_RECV_STATUS_OKAY) return res;

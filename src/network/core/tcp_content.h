@@ -210,7 +210,7 @@ public:
 	virtual ~NetworkContentSocketHandler() { this->Close(); }
 
 	/** Do the actual receiving of packets. */
-	void Recv_Packets();
+	void ReceivePackets();
 };
 
 #endif /* ENABLE_NETWORK */

@@ -100,11 +100,11 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
  * HandlePacket is returned.
  * @return #NetworkRecvStatus of the last handled packet.
  */
-NetworkRecvStatus NetworkAdminSocketHandler::Recv_Packets()
+NetworkRecvStatus NetworkAdminSocketHandler::ReceivePackets()
 {
 	Packet *p;
-	while ((p = this->Recv_Packet()) != NULL) {
-		NetworkRecvStatus res = HandlePacket(p);
+	while ((p = this->ReceivePacket()) != NULL) {
+		NetworkRecvStatus res = this->HandlePacket(p);
 		if (res != NETWORK_RECV_STATUS_OKAY) return res;
 	}
 
