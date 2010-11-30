@@ -86,7 +86,7 @@ Function ReadRegistryKey(shive, subkey, valuename, architecture)
 End Function
 
 Function DetermineSVNVersion()
-	Dim WshShell, version, branch, modified, revision, url, oExec, line, hash
+	Dim WshShell, version, branch, modified, revision, clean_rev, url, oExec, line, hash
 	Set WshShell = CreateObject("WScript.Shell")
 	On Error Resume Next
 
@@ -261,10 +261,11 @@ Function DetermineSVNVersion()
 		End If ' version = "norev000"
 	End If ' version <> "norev000"
 
-	Dim rev_file
-	Set rev_file = FSO.OpenTextFile("../.ottdrev", 1, True, 0)
-	If Not rev_file.atEndOfStream Then
+	If version = "norev000" And FSO.FileExists("../.ottdrev") Then
+		Dim rev_file
+		Set rev_file = FSO.OpenTextFile("../.ottdrev", 1, True, 0)
 		DetermineSVNVersion = rev_file.ReadLine()
+		rev_file.Close()
 	Else
 		If modified = 2 Then
 			version = version & "M"
@@ -281,7 +282,6 @@ Function DetermineSVNVersion()
 			DetermineSVNVersion = version
 		End If
 	End If
-	rev_file.close
 End Function
 
 Function IsCachedVersion(ByVal version)
