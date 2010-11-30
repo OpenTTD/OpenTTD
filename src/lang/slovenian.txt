@@ -592,7 +592,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Nadzornik poti
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Direktor
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Izvršni direktor
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Vrhovni direktor
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Predsednik
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Direktor
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Velekapitalist
 
 # Performance detail window
@@ -815,7 +815,7 @@ STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Ustanovljeno novo podjetje!
 STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} začenja z gradnjo blizu mesta {TOWN}!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} je bilo prevzeto s strani {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Lastnik)
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Direktor)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} sponzorirana gradnja novega mesta {TOWN}!
 
@@ -1224,7 +1224,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Omogoč
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Eno ali več polj na severnem robu ni praznih
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Eno ali več polj na robu ni vodnatih
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Največja razširitev postaje: {ORANGE}{STRING} {RED}Pozor: Visoka vrednost upočasnjuje igro
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Največja razširitev postaje: {ORANGE}{STRING} polj{P e i a ""} {RED}Pozor: Visoka vrednost upočasnjuje igro
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Avtomatski servis helikopterjev na pristajališču: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Pripni orodje za teren k orodju za gradnjo cest/železnic itd.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Barva zemlje uporabljena na zemljevidu: {ORANGE}{STRING}
@@ -1279,10 +1279,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Ohrani 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Prikaži stroške v tabeli financ po skupinah: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Prikaz gradbenih orodij, ko ni primernih vozil na izbiro: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Največ vlakov na igralca: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Največ cestnih vozil na igralca: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Največ letal na igralca: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Največ ladij na igralca: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Največ vlakov na podjetje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Največ cestnih vozil na podjetje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Največ letal na podjetje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Največ ladij na podjetje: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Onemogoči vlake za računalnik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Onemogoči cestna vozila za računalnik: {ORANGE}{STRING}
@@ -1293,13 +1293,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dovoli 
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#op-kode pred blokado UI: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Obdobja servisiranja so v procentih: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}{STRING} dni/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}{STRING} d{P an neva nevi ni}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}onemogočeno
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Privzeto obdobje servisiranja za cestna vozila: {ORANGE}{STRING} dni/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Privzeto obdobje servisiranja za cestna vozila: {ORANGE}{STRING} d{P an neva nevi ni}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Privzeto obdobje servisiranja za cestna vozila: {ORANGE}onemogočeno
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Privzeto obdobje servisiranja za letala: {ORANGE}{STRING} dni/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Privzeto obdobje servisiranja za letala: {ORANGE}{STRING} d{P an neva nevi ni}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Privzeto obdobje servisiranja za letala: {ORANGE}onemogočeno
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Privzeto obdobje servisiranja za ladje: {ORANGE}{STRING} dni/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Privzeto obdobje servisiranja za ladje: {ORANGE}{STRING} d{P an neva nevi ni}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Privzeto obdobje servisiranja za ladje: {ORANGE}onemogočeno
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Onemogoči servisiranje, če so onemogočene okvare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Omogoči omejitve hitrosti vagonov: {ORANGE}{STRING}
@@ -1349,10 +1349,10 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Položa
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Levo
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Sredina
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Desno
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radij lepljenja oken: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radij lepljenja oken: {ORANGE}{STRING} piks{P el la li ov}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radij lepljenja oken: {ORANGE}onemogočeno
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Mehki mejnik oken (nelepljiva): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Mehki mejnik oken (nelepljiva): {ORANGE}izklopljen
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Največje število nelepljivih oken: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Največje število nelepljivih oken: {ORANGE}izklopljen
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Hitrost rasti mesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Brez
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Počasi
@@ -1392,7 +1392,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Logarit
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Priporočen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ni priporočen)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Spremeni vrednost
 
@@ -1530,10 +1529,10 @@ STR_FACE_LOAD                                                   :{BLACK}Naloži
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Naloži piljubljen obraz
 STR_FACE_LOAD_DONE                                              :{WHITE}Tvoj priljubljen obraz je bil naložen iz OpenTTD konfiguracije
 STR_FACE_FACECODE                                               :{BLACK}Obraz igralca št.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Prikaži in/ali nastavi številko obraza igralca
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Prikaži in/ali nastavi številko obraza igralca
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Prikaži in/ali nastavi številko direktorjevega obraza
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Prikaži in/ali nastavi številko direktorjevega obraza
 STR_FACE_FACECODE_SET                                           :{WHITE}Nova koda številke obraza je nastavljena.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Ni mogoče nastaviti številke obraza igralca - izbor mogoč med 0 in 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Ni mogoče nastaviti številke direktorjevega obraza - izbor mogoč med 0 in 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Shrani
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Shrani priljubljen obraz
 STR_FACE_SAVE_DONE                                              :{WHITE}Ta obraz bo shranjen kot tvoj priljubljen v konfiguracijo OpenTTD
@@ -1650,9 +1649,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Govorni 
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igralci bodo lahko vedeli, kateri jezik se govori na strežniku
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Začni igro
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Poženi novo večigralsko igro na naključnem ozemlju
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Poženi novo večigralsko igro na naključnem ozemlju ali v izbranem scenariju
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Naloži igro
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Nadaljuj prej shranjeno večigralsko igro (pazi, da se povežeš kot pravilen igralec)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Nadaljuj prej shranjeno večigralsko igro (pazi, da se povežeš v pravilno podjetje)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Vpiši ime za mrežno igro
 
@@ -2138,10 +2137,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Zmanjša
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Ustvari naključni teren
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Ustvari novo ozemlje
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Zbriši pokrajino
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Odstrani vso igralčevo lastnino z ozemlja
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Odstrani vso lastnino podjetja z ozemlja
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Zbriši pokrajino
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Zagotovo želiš odstraniti vso igralčevo lastnino?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Zagotovo želiš odstraniti vso lastnino podjetja?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generator mest
@@ -2520,7 +2519,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V uporab
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Pozor!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Pripravljaš se narediti spremembe na zagnani igri. To lahko sesuje OpenTTD.{}Si zagotovo želiš tega?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Pripravljaš se narediti spremembe na zagnani igri. To lahko sesuje OpenTTD ali okvari trenutno igro. Ne prijavljajte hroščev v zvezi s temi napakami.{}Si zagotovo želiš tega?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ne morem dodati datoteke: podvojen GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ustrezna datoteka ni najdena (naložen je kompatibilni GRF)
@@ -2720,7 +2719,7 @@ STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Odplača
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Lastnik)
+STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDENTNAME}{}{GOLD}(Direktor)
 
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Ustanovljeno: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Barvna shema:
@@ -2741,13 +2740,13 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Preseli 
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Preseli sedež podjetja drugam za ceno 1% vrednosti podjetja
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nov obraz
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Izberi nov obraz za lastnika
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Izberi nov obraz za direktorja
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Barvna shema
 STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Spremeni barvo vozil podjetja
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Ime podjetja
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Spremeni ime podjetja
-STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Ime lastnika
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Spremeni ime lastnika
+STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Direktorjevo ime
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Spremeni direktorjevo ime
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kupi 25% delnic podjetja
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Prodaj 25% delnic podjetja
@@ -2755,7 +2754,7 @@ STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kupi 25%
 STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodaj 25% delnic tega podjetja
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ime podjetja
-STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ime lastnika
+STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktorjevo ime
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Iščemo novega lastnika, ki bi prevzel naše podjetje.{}{}Ali želiš odkupiti podjetje {COMPANY} za ceno {CURRENCY}?
 
@@ -3519,7 +3518,7 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... je �
 
 # Company related errors
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Ni mogoče spremeniti imena podjetja...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ni mogoče spremeniti imena lastnika...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Ni mogoče spremeniti direktorjevega imena...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... najvišje dovoljeno posojilo je {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Ni mogoča izposoja več denarja...

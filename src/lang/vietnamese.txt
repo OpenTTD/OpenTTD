@@ -22,7 +22,7 @@
 STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :(chuỗi không xác định)
-STR_JUST_NOTHING                                                :Trống rỗng
+STR_JUST_NOTHING                                                :Rỗng
 
 # Cargo related strings
 # Plural cargo name

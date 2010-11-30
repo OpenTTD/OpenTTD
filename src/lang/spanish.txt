@@ -2478,7 +2478,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Al conju
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Precaución!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Se van a realizar cambios a un juego en ejecución. Esto puede provocar un error fatal en OpenTTD.{}¿Estás completamente seguro de realizar esto?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Se va a modificar una partida ya comenzada. Esto puede provocar un error fatal en OpenTTD o romper la partida.{}No se deben crear reportes de bugs por problemas causados por esta acción.{}¿Está completamente seguro de esto?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No se puede añadir: GRF ID duplicado
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichero no encontrado (GRF compatible cargado)
