@@ -33,6 +33,7 @@
 #include "../roadveh.h"
 #include "../order_backup.h"
 #include "../core/pool_func.hpp"
+#include "../core/random_func.hpp"
 #include "../rev.h"
 
 #include "table/strings.h"
@@ -483,6 +484,13 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendFrame()
 	p->Send_uint32(_sync_seed_2);
 #endif
 #endif
+
+	/* If token equals 0, we need to make a new token and send that. */
+	if (this->last_token == 0) {
+		this->last_token = InteractiveRandomRange(UINT8_MAX - 1) + 1;
+		p->Send_uint8(this->last_token);
+	}
+
 	this->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -982,9 +990,26 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_ACK)
 
 		/* Now he is! Unpause the game */
 		this->status = STATUS_ACTIVE;
+		this->last_token_frame = _frame_counter;
 
 		/* Execute script for, e.g. MOTD */
 		IConsoleCmdExec("exec scripts/on_server_connect.scr 0");
+	}
+
+	/* Get, and validate the token. */
+	uint8 token = p->Recv_uint8();
+	if (token == this->last_token) {
+		/* We differentiate between last_token_frame and last_frame so the lag
+		 * test uses the actual lag of the client instead of the lag for getting
+		 * the token back and forth; after all, the token is only sent every
+		 * time we receive a PACKET_CLIENT_ACK, after which we will send a new
+		 * token to the client. If the lag would be one day, then we would not
+		 * be sending the new token soon enough for the new daily scheduled
+		 * PACKET_CLIENT_ACK. This would then register the lag of the client as
+		 * two days, even when it's only a single day. */
+		this->last_token_frame = _frame_counter;
+		/* Request a new token. */
+		this->last_token = 0;
 	}
 
 	/* The client received the frame, make note of it */
@@ -1544,6 +1569,12 @@ void NetworkServer_Tick(bool send_frame)
 				}
 			} else {
 				cs->lag_test = 0;
+			}
+			if (cs->last_frame_server - cs->last_token_frame >= 5 * DAY_TICKS) {
+				/* This is a bad client! It didn't send the right token back. */
+				IConsolePrintF(CC_ERROR, "Client #%d is dropped because it fails to send valid acks", cs->client_id);
+				cs->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
+				continue;
 			}
 		} else if (cs->status == NetworkClientSocket::STATUS_PRE_ACTIVE) {
 			uint lag = NetworkCalculateLag(cs);

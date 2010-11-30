@@ -349,6 +349,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendAck()
 	Packet *p = new Packet(PACKET_CLIENT_ACK);
 
 	p->Send_uint32(_frame_counter);
+	p->Send_uint8 (my_client->token);
 	my_client->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -798,7 +799,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_FRAME)
 #ifdef ENABLE_NETWORK_SYNC_EVERY_FRAME
 	/* Test if the server supports this option
 	 *  and if we are at the frame the server is */
-	if (p->pos < p->size) {
+	if (p->pos + 1 < p->size) {
 		_sync_frame = _frame_counter_server;
 		_sync_seed_1 = p->Recv_uint32();
 #ifdef NETWORK_SEND_DOUBLE_SEED
@@ -806,6 +807,9 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_FRAME)
 #endif
 	}
 #endif
+	/* Receive the token. */
+	if (p->pos != p->size) this->token = p->Recv_uint8();
+
 	DEBUG(net, 5, "Received FRAME %d", _frame_counter_server);
 
 	/* Let the server know that we received this frame correctly

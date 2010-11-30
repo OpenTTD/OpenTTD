@@ -66,6 +66,8 @@ public:
 	};
 
 	byte lag_test;               ///< Byte used for lag-testing the client
+	byte last_token;             ///< The last random token we did send to verify the client is listening
+	uint32 last_token_frame;     ///< The last frame we received the right token
 	ClientStatus status;         ///< Status of this client
 	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery
 

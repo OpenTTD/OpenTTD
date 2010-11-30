@@ -304,6 +304,7 @@ protected:
 	 * uint32  Frame counter max (how far may the client walk before the server?)
 	 * uint32  General seed 1 (dependant on compile settings, not default).
 	 * uint32  General seed 2 (dependant on compile settings, not default).
+	 * uint8   Random token to validate the client is actually listening (only occasionally present).
 	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_SERVER_FRAME);
 
@@ -318,6 +319,7 @@ protected:
 	/**
 	 * Tell the server we are done with this frame:
 	 * uint32  Current frame counter of the client.
+	 * uint8   The random token that the server sent in the PACKET_SERVER_FRAME packet.
 	 */
 	DECLARE_GAME_RECEIVE_COMMAND(PACKET_CLIENT_ACK);
 

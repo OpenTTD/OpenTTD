@@ -21,6 +21,7 @@ class ClientNetworkGameSocketHandler : public ZeroedMemoryAllocator, public Netw
 private:
 	FILE *download_file;     ///< Handle used for downloading the savegame.
 	char *download_filename; ///< File name of the downloading savegame, so we open the right one.
+	byte token;              ///< The token we need to send back to the server to prove we're the right client.
 
 	/** Status of the connection with the server. */
 	enum ServerStatus {
