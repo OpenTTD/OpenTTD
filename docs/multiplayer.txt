@@ -114,6 +114,33 @@ Multiplayer Manual for OpenTTD
    about 1.5 kilobytes per second up and down. To decrease this amount, setting
    'frame_freq' to 1 will reduce it to roughly 1 kilobyte per second per client.
 
+ - OpenTTD's default settings for maximum number of clients, and amount of data
+   from clients to process are chosen to not influence the normal playing of
+   people, but to prevent or at least make it less likely that someone can
+   perform a (distributed) denial-of-service attack on your server by causing
+   an out-of-memory event by flooding the server with data to send to all
+   clients. The major factor in this is the maximum number of clients; with
+   32 clients "only" sending one chat message causes 1024 messages to be
+   distributed in total, with 64 clients that already quadruples to 4096. Given
+   that upstream bandwidth is usually the limiting factor, a queue of packets
+   that need to be sent will be created.
+   To prevent clients from exploiting this "explosion" of packets to send we
+   limit the number of incoming data, resulting in effectively limiting the
+   amount of data that OpenTTD will send to the clients. Even with the default
+   limits it is possible to generate about 70.000 packets per second, or about
+   7 megabit per second of traffic.
+   Given that OpenTTD kicks clients after they have not reacted within about 9
+   seconds from sending a frame update packet it would be possible that OpenTTD
+   keeps about 600.000 packets in memory, using about 50 megabytes of memory.
+   Given that OpenTTD allows short bursts of packets, you can have slightly
+   more packets in memory in case of a distributed denial of service attack.
+   When increasing the amount of incoming data, or the maximum number of
+   clients the amount of memory OpenTTD needs in case of a distributed denial
+   of service attack is linearly related to the amount of incoming data and
+   quadratic to the amount of clients. In short, a rule of thumb for, the
+   maximum memory usage for packets is:
+       #max_clients * #max_clients * bytes_per_frame * 10 KiB.
+
 
 6. Some useful things
 ----------------------
