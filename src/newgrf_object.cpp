@@ -95,7 +95,8 @@ INSTANTIATE_NEWGRF_CLASS_METHODS(ObjectClass, ObjectSpec, ObjectClassID, OBJECT_
 
 static uint32 ObjectGetRandomBits(const ResolverObject *object)
 {
-	return IsTileType(object->u.object.tile, MP_OBJECT) ? GetObjectRandomBits(object->u.object.tile) : 0;
+	TileIndex t = object->u.object.tile;
+	return IsValidTile(t) && IsTileType(t, MP_OBJECT) ? GetObjectRandomBits(t) : 0;
 }
 
 static uint32 ObjectGetTriggers(const ResolverObject *object)
