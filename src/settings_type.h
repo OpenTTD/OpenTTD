@@ -141,6 +141,8 @@ struct NetworkSettings {
 	uint8  frame_freq;                                    ///< how often do we send commands to the clients
 	uint16 commands_per_frame;                            ///< how many commands may be sent each frame_freq frames?
 	uint16 max_commands_in_queue;                         ///< how many commands may there be in the incoming queue before dropping the connection?
+	uint16 bytes_per_frame;                               ///< how many bytes may, over a long period, be received per frame?
+	uint16 bytes_per_frame_burst;                         ///< how many bytes may, over a short period, be received?
 	uint16 max_join_time;                                 ///< maximum amount of time, in game ticks, a client may take to join
 	bool   pause_on_join;                                 ///< pause the game when people join
 	uint16 server_port;                                   ///< port the server listens on

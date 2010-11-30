@@ -62,6 +62,7 @@ ServerNetworkGameSocketHandler::ServerNetworkGameSocketHandler(SOCKET s) : Netwo
 {
 	this->status = STATUS_INACTIVE;
 	this->client_id = _network_client_id++;
+	this->receive_limit = _settings_client.network.bytes_per_frame_burst;
 	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
 	this->SetInfo(ci);
 	ci->client_playas = COMPANY_INACTIVE_CLIENT;
@@ -75,6 +76,19 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 {
 	if (_redirect_console_to_client == this->client_id) _redirect_console_to_client = INVALID_CLIENT_ID;
 	OrderBackup::ResetUser(this->client_id);
+}
+
+Packet *ServerNetworkGameSocketHandler::ReceivePacket()
+{
+	/* Only allow receiving when we have some buffer free; this value
+	 * can go negative, but eventually it will become positive again. */
+	if (this->receive_limit <= 0) return NULL;
+
+	/* We can receive a packet, so try that and if needed account for
+	 * the amount of received data. */
+	Packet *p = this->NetworkTCPSocketHandler::ReceivePacket();
+	if (p != NULL) this->receive_limit -= p->size;
+	return p;
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
@@ -1540,6 +1554,11 @@ void NetworkServer_Tick(bool send_frame)
 	/* Now we are done with the frame, inform the clients that they can
 	 *  do their frame! */
 	FOR_ALL_CLIENT_SOCKETS(cs) {
+		/* We allow a number of bytes per frame, but only to the burst amount
+		 * to be available for packet receiving at any particular time. */
+		cs->receive_limit = min(cs->receive_limit + _settings_client.network.bytes_per_frame,
+				_settings_client.network.bytes_per_frame_burst);
+
 		/* Check if the speed of the client is what we can expect from a client */
 		if (cs->status == NetworkClientSocket::STATUS_ACTIVE) {
 			/* 1 lag-point per day */

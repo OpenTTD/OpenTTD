@@ -39,7 +39,7 @@ public:
 	bool SendPackets(bool closing_down = false);
 	bool IsPacketQueueEmpty();
 
-	Packet *ReceivePacket();
+	virtual Packet *ReceivePacket();
 
 	bool CanSendReceive();
 
