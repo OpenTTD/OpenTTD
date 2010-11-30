@@ -121,12 +121,11 @@ void NetworkUDPSocketHandler::ReceivePackets()
 		memset(&client_addr, 0, sizeof(client_addr));
 
 		Packet p(this);
-		int packet_len = sizeof(p.buffer);
 		socklen_t client_len = sizeof(client_addr);
 
 		/* Try to receive anything */
 		SetNonBlocking(s->second); // Some OSes seem to lose the non-blocking status of the socket
-		int nbytes = recvfrom(s->second, (char*)p.buffer, packet_len, 0, (struct sockaddr *)&client_addr, &client_len);
+		int nbytes = recvfrom(s->second, (char*)p.buffer, SEND_MTU, 0, (struct sockaddr *)&client_addr, &client_len);
 
 		/* We got some bytes for the base header of the packet. */
 		if (nbytes > 2) {

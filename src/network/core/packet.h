@@ -42,14 +42,17 @@ struct Packet {
 	PacketSize size;
 	/** The current read/write position in the packet */
 	PacketSize pos;
-	/** The buffer of this packet */
-	byte buffer[SEND_MTU];
+	/** The buffer of this packet, of basically variable length up to SEND_MTU. */
+	byte *buffer;
+
 private:
+	/** Socket we're associated with. */
 	NetworkSocketHandler *cs;
 
 public:
 	Packet(NetworkSocketHandler *cs);
 	Packet(PacketType type);
+	~Packet();
 
 	/* Sending/writing of packets */
 	void PrepareToSend();

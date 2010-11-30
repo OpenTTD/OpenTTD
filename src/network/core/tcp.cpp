@@ -63,6 +63,11 @@ void NetworkTCPSocketHandler::Send_Packet(Packet *packet)
 
 	packet->PrepareToSend();
 
+	/* Reallocate the packet as in 99+% of the times we send at most 25 bytes and
+	 * keeping the other 1400+ bytes wastes memory, especially when someone tries
+	 * to do a denial of service attack! */
+	packet->buffer = ReallocT(packet->buffer, packet->size);
+
 	/* Locate last packet buffered for the client */
 	p = this->packet_queue;
 	if (p == NULL) {

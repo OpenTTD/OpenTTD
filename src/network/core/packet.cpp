@@ -26,10 +26,11 @@ Packet::Packet(NetworkSocketHandler *cs)
 {
 	assert(cs != NULL);
 
-	this->cs   = cs;
-	this->next = NULL;
-	this->pos  = 0; // We start reading from here
-	this->size = 0;
+	this->cs     = cs;
+	this->next   = NULL;
+	this->pos    = 0; // We start reading from here
+	this->size   = 0;
+	this->buffer = MallocT<byte>(SEND_MTU);
 }
 
 /**
@@ -44,7 +45,16 @@ Packet::Packet(PacketType type)
 	/* Skip the size so we can write that in before sending the packet */
 	this->pos                  = 0;
 	this->size                 = sizeof(PacketSize);
+	this->buffer               = MallocT<byte>(SEND_MTU);
 	this->buffer[this->size++] = type;
+}
+
+/**
+ * Free the buffer of this packet.
+ */
+Packet::~Packet()
+{
+	free(this->buffer);
 }
 
 /**
@@ -79,20 +89,20 @@ void Packet::Send_bool(bool data)
 
 void Packet::Send_uint8(uint8 data)
 {
-	assert(this->size < sizeof(this->buffer) - sizeof(data));
+	assert(this->size < SEND_MTU - sizeof(data));
 	this->buffer[this->size++] = data;
 }
 
 void Packet::Send_uint16(uint16 data)
 {
-	assert(this->size < sizeof(this->buffer) - sizeof(data));
+	assert(this->size < SEND_MTU - sizeof(data));
 	this->buffer[this->size++] = GB(data, 0, 8);
 	this->buffer[this->size++] = GB(data, 8, 8);
 }
 
 void Packet::Send_uint32(uint32 data)
 {
-	assert(this->size < sizeof(this->buffer) - sizeof(data));
+	assert(this->size < SEND_MTU - sizeof(data));
 	this->buffer[this->size++] = GB(data,  0, 8);
 	this->buffer[this->size++] = GB(data,  8, 8);
 	this->buffer[this->size++] = GB(data, 16, 8);
@@ -101,7 +111,7 @@ void Packet::Send_uint32(uint32 data)
 
 void Packet::Send_uint64(uint64 data)
 {
-	assert(this->size < sizeof(this->buffer) - sizeof(data));
+	assert(this->size < SEND_MTU - sizeof(data));
 	this->buffer[this->size++] = GB(data,  0, 8);
 	this->buffer[this->size++] = GB(data,  8, 8);
 	this->buffer[this->size++] = GB(data, 16, 8);
@@ -121,7 +131,7 @@ void Packet::Send_string(const char *data)
 {
 	assert(data != NULL);
 	/* The <= *is* valid due to the fact that we are comparing sizes and not the index. */
-	assert(this->size + strlen(data) + 1 <= sizeof(this->buffer));
+	assert(this->size + strlen(data) + 1 <= SEND_MTU);
 	while ((this->buffer[this->size++] = *data++) != '\0') {}
 }
 
