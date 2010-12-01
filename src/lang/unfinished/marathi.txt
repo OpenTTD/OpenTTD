@@ -377,6 +377,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :दर १२ �
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}भाषा
 
 
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
@@ -437,7 +438,9 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :खरेखु
 
 
 
-
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :डावीकडे
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :मधे
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :उजवीकडे
 
 
 
@@ -562,6 +565,7 @@ STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}स्�
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+
 
 # Network related errors
 ############ Leave those lines in this order!!

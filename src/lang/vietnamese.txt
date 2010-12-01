@@ -396,7 +396,7 @@ STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Chi tiết hệ
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Thư mục các ngành
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Danh mục các ngành
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Góp vốn xây nhà máy mới
 ############ range ends here
 
@@ -561,7 +561,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Hiển thị thông tin chi tiết của công ty này
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Ph.tiện:
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Phương tiện:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Trạm:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Lợi nhuận thấp nhất:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Thu nhập thấp nhất:

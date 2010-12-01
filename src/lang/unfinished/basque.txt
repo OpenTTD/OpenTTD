@@ -165,13 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}EZ
 STR_ABBREV_ALL                                                  :{TINYFONT}DEN
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} bidaiariak
-STR_BAGS                                                        :{COMMA} zakuak
-STR_TONS                                                        :{COMMA} tonak
-STR_LITERS                                                      :{COMMA} litroak
-STR_ITEMS                                                       :{COMMA} elementuak
-STR_CRATES                                                      :{COMMA} kaxak
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
+STR_PASSENGERS                                                  :{COMMA} bidaiaria{P "" k}
+STR_BAGS                                                        :{COMMA} zakua{P "" k}
+STR_TONS                                                        :{COMMA} tona{P "" k}
+STR_LITERS                                                      :{COMMA} litroa{P "" k}
+STR_ITEMS                                                       :{COMMA} elementua{P "" k}
+STR_CRATES                                                      :{COMMA} kaxa{P "" k}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Urdin Iluna
@@ -936,6 +935,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Markatu 
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Pantailaren resoluzioa
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pantailaren resulozioa aukeratu
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :besteak
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Argazkiaren ezaugarriak
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Screenshot-aren formatua aukeratu
@@ -978,6 +978,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Euroetar
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Euroetara lehenago aldatu
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Euroetara beranduago aldatu
 
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Aurreikuspena: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 libra (£) zure dibisan
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Dibisa pertsonalaren ezaugarriak aldatu
 
@@ -1110,39 +1111,108 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekzioa
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Area laua industrien inguruan: {ORANGE}{STRING} karratu{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Indutria berdin asko baimendu hiri bakoitzean: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Data luzea ikusi beti estatu barran: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :amaieratik gertu
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :erdian
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :amaieratik urrun
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Hegazkinen akzidente kopurua : {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :bat ere ez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :txikitua
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 
 
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Gertakariak azaltzearen atzerapena: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ez
+STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :bai, baina geldi dauden garraioak baztertu
+STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :garraio guztiena
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Gertakariak azaltzearen atzerapena: {ORANGE}{STRING} segundu{P 0:1 "" ak}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Gertakariak azaltzearen atzerapena: {ORANGE}desaktibatua
 
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originala
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Oso Leuna
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Leuna
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zakarra
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Oso Zakarra
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Ezer ez
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Originala
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Hobetua
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Erlojuko orratzen kontrara
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Erlojuko orratzen erara
 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Mapa txikian erabiltzeko lur kolorea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Berdea
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Berde iluna
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Bioleta
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Ezer ez
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Enpresa propioa
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Enpresa guztiak
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Mapari zoom egin
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Mapa korritu
+STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Itzalita
+
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Komandoa+Klik
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Klik
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Itzalita
+
+
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :luzea (2008ko Abe 31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :laburra (2008-12-31)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Itzalita
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Enpresa propioa
+STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Enpresa guztiak
+STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Itzalita
+STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Enpresa propioa
+STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Enpresa guztiak
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Lehena eskuragarri
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Azkena eskuragarri
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Gehien erabilia
 
 
 
 
 
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Seinaleak blokeatu
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Bide-seinaleak
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Joaneko bide-seinaleak
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Seinaleak bakarrik blokeatu
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Bide-seinaleak bakarrik
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Denak
 
-
-
-
-
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :originala
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :bide hobeak
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 sareta
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 sareta
+STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ausazko
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Hirietan egin daitezke maila bereko pasaguneak: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :debekatua
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :onartua
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ezer ez {RED}(egur fabrika gelditzen du)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :bakarrik euri basoetan
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :leku guztietan
 
+STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Ezkerra
+STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Erdia
+STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Eskuina
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Egoera posizioa {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Ezkerra
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Erdia
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Eskuina
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ezer ez
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Motel
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normala
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Arina
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Oso arina
 
+STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinaleak
 
-
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Gomendatua)
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Gomendatua)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Gomendatua)
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 
 
 # Intro window
@@ -1233,6 +1303,8 @@ STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Komandu 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :komandu gehiegi bidali dira
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Konexio galera posiblea
 
 # Network related errors
 ############ Leave those lines in this order!!
@@ -1756,7 +1828,7 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 
 # Town related errors
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Ezin da hiria haunditu...
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ez dago leku egokirik giza irudiarentzat hiri honen erdian
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ez dago leku egokirik estatua batentzat hiri honen erdian
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... industria gehiegi
@@ -1841,7 +1913,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... garr
 # Sign related errors
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe-ren klon bat
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Transport Tycoon Deluxe-ren simulazio bat
 
 ##id 0x2000
 # Town building names
