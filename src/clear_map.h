@@ -316,7 +316,7 @@ static inline void MakeSnow(TileIndex t, uint density = 0)
 {
 	assert(GetClearGround(t) != CLEAR_SNOW);
 	SetBit(_m[t].m3, 4);
-	if (GetClearGround(t) == CLEAR_FIELDS) {
+	if (GetRawClearGround(t) == CLEAR_FIELDS) {
 		SetClearGroundDensity(t, CLEAR_GRASS, density);
 	} else {
 		SetClearDensity(t, density);
