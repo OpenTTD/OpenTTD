@@ -167,13 +167,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}IN
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passasjerer
+STR_PASSENGERS                                                  :{COMMA} passasjer{P "" er}
 STR_BAGS                                                        :{COMMA} sekker
 STR_TONS                                                        :{COMMA} tonn
 STR_LITERS                                                      :{COMMA} liter
 STR_ITEMS                                                       :{COMMA} enheter
 STR_CRATES                                                      :{COMMA} kasser
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annet
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mørkeblå
@@ -944,6 +943,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Kryss av
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjermoppløsning
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Velg skjermoppløsningen som skal brukes
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annet
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Filformat for skjermdump
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Velg hvilket format skjermdumpen skal lagres i
@@ -1311,8 +1311,8 @@ STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Midtstilt
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Høyrestilt
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Festeradius for vindu: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Festeradius for vindu: {ORANGE}deaktivert
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Flytende vinduer (ikke fest til andre): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Flytende vinduer (ikke fest til andre): {ORANGE}deaktivert
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksimalt antall flytende vinduer: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maksimalt antall flytende vinduer: {ORANGE}deaktivert
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Hastighet for byenes vekst: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sakte
@@ -1352,7 +1352,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Veifinn
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikke anbefalt)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Endre verdi
 
@@ -1788,6 +1787,9 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :tjeneren er ful
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendte for mange kommandoer
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mulig tap av tilkobling
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE} Siste {NUM} sekund{P "" er} har ingen data ankommet fra serveren
+
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
@@ -2095,7 +2097,7 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Reduser 
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generer tilfeldig landskap
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Opprett et nytt scenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Tilbakestill landskap
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Fjern all eiendom som er eid av spilleren(e) fra kartet
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Fjern all spiller-eid eiendom fra kartet
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Tilbakestill landskap
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Er du sikker på at du vil fjerne all spiller-eid eiendom?
@@ -2477,7 +2479,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det nåv
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjøre forandringer i et kjørende spill. Dette kan krasje OpenTTD.{}Er du helt sikker på at du vil gjøre dette?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjøre forandringer i et kjørende spill. Dette kan krasje OpenTTD. Ikke send inn bug-rapporter om slike feil.{}Er du helt sikker på at du vil gjøre dette?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan ikke legge til fil: GRF ID finnes allerede
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchende fil ble ikke funnet (kompatibel GRF-fil lastet inn)
@@ -3124,6 +3126,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapasite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Bygg om)
 STR_REFIT_TITLE                                                 :{GOLD}Velg varetype:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapasitet: {GOLD}{CARGO}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapasitet: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Velg hvilken varetype toget skal frakte
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Velg hvilken varetype kjøretøyet skal frakte

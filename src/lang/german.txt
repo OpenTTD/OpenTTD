@@ -1382,7 +1382,7 @@ STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Mehrspie
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Landschaft mit gemäßigtem Klima auswählen
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Landschaft mit subarktischem Klima auswählen
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Landschaft mit subtropischem Klima auswählen
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}'fantastische' Landschaft auswählen
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Spielzeugland auswählen
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Spieleinstellungen anzeigen und / oder ändern
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Schwierigkeitsgrad anzeigen und / oder ändern
