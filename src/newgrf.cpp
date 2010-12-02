@@ -6697,7 +6697,7 @@ static bool HandleParameterInfo(ByteReader *buf)
 		uint32 id = buf->ReadDWord();
 		if (type != 'C' || id >= _cur_grfconfig->num_valid_params) {
 			grfmsg(2, "StaticGRFInfo: all child nodes of 'INFO'->'PARA' should have type 'C' and their parameter number as id");
-			if (!SkipUnknownInfo(buf, type)) return false;
+			return SkipUnknownInfo(buf, type);
 		}
 
 		if (id >= _cur_grfconfig->param_info.Length()) {
