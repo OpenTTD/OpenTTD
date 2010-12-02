@@ -227,7 +227,8 @@ byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 char _savegame_format[8]; ///< how to compress savegames
 bool _do_autosave;        ///< are we doing an autosave at the moment?
 
-typedef void WriterProc(size_t len);
+typedef void DumperProc(size_t len);
+typedef void WriterProc(byte *buf, size_t len);
 typedef size_t ReaderProc();
 
 /** What are we currently doing? */
@@ -257,7 +258,7 @@ struct SaveLoadParams {
 
 	size_t offs_base;                    ///< the offset in number of bytes since we started writing data (eg uncompressed savegame size)
 
-	WriterProc *write_bytes;             ///< savegame writer function
+	DumperProc *dump_bytes;              ///< savegame dumper function
 	ReaderProc *read_bytes;              ///< savegame loader function
 
 	/* When saving/loading savegames, they are always saved to a temporary memory-place
@@ -469,7 +470,7 @@ static void SlWriteFill()
 	if (_sl.bufp != NULL) {
 		uint len = _sl.bufp - _sl.buf;
 		_sl.offs_base += len;
-		if (len) _sl.write_bytes(len);
+		if (len) _sl.dump_bytes(len);
 	}
 
 	/* All the data from the buffer has been written away, rewind to the beginning
@@ -1732,9 +1733,9 @@ static size_t ReadLZO()
 	return len;
 }
 
-static void WriteLZO(size_t size)
+static void WriteLZO(byte *p, size_t size)
 {
-	const lzo_bytep in = _sl.buf;
+	const lzo_bytep in = p;
 	/* Buffer size is from the LZO docs plus the chunk header size. */
 	byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 16 + 64 + 3 + sizeof(uint32) * 2];
 	byte wrkmem[LZO1X_1_MEM_COMPRESS];
@@ -1781,9 +1782,9 @@ static size_t ReadNoComp()
 	return fread(_sl.buf, 1, NOCOMP_BUFFER_SIZE, _sl.fh);
 }
 
-static void WriteNoComp(size_t size)
+static void WriteNoComp(byte *buf, size_t size)
 {
-	if (fwrite(_sl.buf, 1, size, _sl.fh) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
+	if (fwrite(buf, 1, size, _sl.fh) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 }
 
 static bool InitNoComp(byte compression)
@@ -1932,9 +1933,9 @@ static void WriteZlibLoop(z_streamp z, byte *p, size_t len, int mode)
 	} while (z->avail_in || !z->avail_out);
 }
 
-static void WriteZlib(size_t len)
+static void WriteZlib(byte *buf, size_t len)
 {
-	WriteZlibLoop(&_z, _sl.buf, len, 0);
+	WriteZlibLoop(&_z, buf, len, 0);
 }
 
 static void UninitWriteZlib()
@@ -2032,9 +2033,9 @@ static void WriteLZMALoop(lzma_stream *lzma, byte *p, size_t len, lzma_action ac
 	} while (lzma->avail_in || !lzma->avail_out);
 }
 
-static void WriteLZMA(size_t len)
+static void WriteLZMA(byte *buf, size_t len)
 {
-	WriteLZMALoop(&_lzma, _sl.buf, len, LZMA_RUN);
+	WriteLZMALoop(&_lzma, buf, len, LZMA_RUN);
 }
 
 static void UninitWriteLZMA()
@@ -2236,18 +2237,15 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 
 		if (_ts.count != _sl.offs_base) SlErrorCorrupt("Unexpected size of chunk");
 		while (t >= MEMORY_CHUNK_SIZE) {
-			_sl.buf = _memory_savegame[i++];
-			fmt->writer(MEMORY_CHUNK_SIZE);
+			fmt->writer(_memory_savegame[i++], MEMORY_CHUNK_SIZE);
 			t -= MEMORY_CHUNK_SIZE;
 		}
 
 		if (t != 0) {
 			/* The last block is (almost) always not fully filled, so only write away
 			 * as much data as it is in there */
-			_sl.buf = _memory_savegame[i];
-
 			assert(t == _ts.count % MEMORY_CHUNK_SIZE);
-			fmt->writer(t);
+			fmt->writer(_memory_savegame[i], t);
 		}
 
 		fmt->uninit_write();
@@ -2366,7 +2364,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		if (mode == SL_SAVE) { // SAVE game
 			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
 
-			_sl.write_bytes = WriteMem;
+			_sl.dump_bytes = WriteMem;
 			_sl.excpt_uninit = UnInitMem;
 			InitMem();
 
