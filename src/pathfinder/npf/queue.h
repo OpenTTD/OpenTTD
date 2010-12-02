@@ -12,9 +12,6 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-//#define NOFREE
-//#define QUEUE_DEBUG
-//#define HASH_DEBUG
 //#define HASH_STATS
 
 

@@ -83,10 +83,6 @@ void BinaryHeap::Free(bool free_values)
  */
 bool BinaryHeap::Push(void *item, int priority)
 {
-#ifdef QUEUE_DEBUG
-	printf("[BinaryHeap] Pushing an element. There are %d elements left\n", this->size);
-#endif
-
 	if (this->size == this->max_size) return false;
 	assert(this->size < this->max_size);
 
@@ -95,9 +91,6 @@ bool BinaryHeap::Push(void *item, int priority)
 		assert((this->size & BINARY_HEAP_BLOCKSIZE_MASK) == 0);
 		this->elements[this->size >> BINARY_HEAP_BLOCKSIZE_BITS] = MallocT<BinaryHeapNode>(BINARY_HEAP_BLOCKSIZE);
 		this->blocks++;
-#ifdef QUEUE_DEBUG
-		printf("[BinaryHeap] Increasing size of elements to %d nodes\n", this->blocks *  BINARY_HEAP_BLOCKSIZE);
-#endif
 	}
 
 	/* Add the item at the end of the array */
@@ -140,10 +133,6 @@ bool BinaryHeap::Push(void *item, int priority)
 bool BinaryHeap::Delete(void *item, int priority)
 {
 	uint i = 0;
-
-#ifdef QUEUE_DEBUG
-	printf("[BinaryHeap] Deleting an element. There are %d elements left\n", this->size);
-#endif
 
 	/* First, we try to find the item.. */
 	do {
@@ -204,10 +193,6 @@ void *BinaryHeap::Pop()
 {
 	void *result;
 
-#ifdef QUEUE_DEBUG
-	printf("[BinaryHeap] Popping an element. There are %d elements left\n", this->size);
-#endif
-
 	if (this->size == 0) return NULL;
 
 	/* The best item is always on top, so give that as result */
@@ -231,9 +216,6 @@ void BinaryHeap::Init(uint max_size)
 	this->elements = CallocT<BinaryHeapNode*>((max_size - 1) / BINARY_HEAP_BLOCKSIZE + 1);
 	this->elements[0] = MallocT<BinaryHeapNode>(BINARY_HEAP_BLOCKSIZE);
 	this->blocks = 1;
-#ifdef QUEUE_DEBUG
-	printf("[BinaryHeap] Initial size of elements is %d nodes\n", BINARY_HEAP_BLOCKSIZE);
-#endif
 }
 
 /* Because we don't want anyone else to bother with our defines */
@@ -252,16 +234,10 @@ void Hash::Init(Hash_HashProc *hash, uint num_buckets)
 	/* Allocate space for the Hash, the buckets and the bucket flags */
 	uint i;
 
-#ifdef HASH_DEBUG
-	debug("Allocated hash: %p", this);
-#endif
 	this->hash = hash;
 	this->size = 0;
 	this->num_buckets = num_buckets;
 	this->buckets = (HashNode*)MallocT<byte>(num_buckets * (sizeof(*this->buckets) + sizeof(*this->buckets_in_use)));
-#ifdef HASH_DEBUG
-	debug("Buckets = %p", this->buckets);
-#endif
 	this->buckets_in_use = (bool*)(this->buckets + num_buckets);
 	for (i = 0; i < num_buckets; i++) this->buckets_in_use[i] = false;
 }
@@ -297,9 +273,6 @@ void Hash::Delete(bool free_values)
 	free(this->buckets);
 	/* No need to free buckets_in_use, it is always allocated in one
 	 * malloc with buckets */
-#ifdef HASH_DEBUG
-	debug("Freeing Hash: %p", this);
-#endif
 }
 
 #ifdef HASH_STATS
@@ -361,7 +334,7 @@ void Hash::Clear(bool free_values)
 	uint i;
 
 #ifdef HASH_STATS
-	if (this->size > 2000) stat_Hash(this);
+	if (this->size > 2000) this->PrintStatistics();
 #endif
 
 	/* Iterate all buckets */
@@ -398,9 +371,6 @@ HashNode *Hash::FindNode(uint key1, uint key2, HashNode** prev_out) const
 	uint hash = this->hash(key1, key2);
 	HashNode *result = NULL;
 
-#ifdef HASH_DEBUG
-	debug("Looking for %u, %u", key1, key2);
-#endif
 	/* Check if the bucket is empty */
 	if (!this->buckets_in_use[hash]) {
 		if (prev_out != NULL) *prev_out = NULL;
@@ -410,9 +380,6 @@ HashNode *Hash::FindNode(uint key1, uint key2, HashNode** prev_out) const
 		/* Save the value */
 		result = this->buckets + hash;
 		if (prev_out != NULL) *prev_out = NULL;
-#ifdef HASH_DEBUG
-		debug("Found in first node: %p", result);
-#endif
 	/* Check all other nodes */
 	} else {
 		HashNode *prev = this->buckets + hash;
@@ -422,18 +389,12 @@ HashNode *Hash::FindNode(uint key1, uint key2, HashNode** prev_out) const
 			if (node->key1 == key1 && node->key2 == key2) {
 				/* Found it */
 				result = node;
-#ifdef HASH_DEBUG
-				debug("Found in other node: %p", result);
-#endif
 				break;
 			}
 			prev = node;
 		}
 		if (prev_out != NULL) *prev_out = prev;
 	}
-#ifdef HASH_DEBUG
-	if (result == NULL) debug("Not found");
-#endif
 	return result;
 }
 
@@ -461,9 +422,7 @@ void *Hash::DeleteValue(uint key1, uint key2)
 			/* Copy the second to the first */
 			*node = *next;
 			/* Free the second */
-#ifndef NOFREE
 			free(next);
-#endif
 		} else {
 			/* This was the last in this bucket
 			 * Mark it as empty */
@@ -477,9 +436,7 @@ void *Hash::DeleteValue(uint key1, uint key2)
 		/* Link previous and next nodes */
 		prev->next = node->next;
 		/* Free the node */
-#ifndef NOFREE
 		free(node);
-#endif
 	}
 	if (result != NULL) this->size--;
 	return result;
@@ -528,8 +485,5 @@ void *Hash::Get(uint key1, uint key2) const
 {
 	HashNode *node = this->FindNode(key1, key2, NULL);
 
-#ifdef HASH_DEBUG
-	debug("Found node: %p", node);
-#endif
 	return (node != NULL) ? node->value : NULL;
 }
