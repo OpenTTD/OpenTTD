@@ -7642,7 +7642,7 @@ static void FinaliseObjectsArray()
 		ObjectSpec **&objectspec = (*file)->objectspec;
 		if (objectspec != NULL) {
 			for (int i = 0; i < NUM_OBJECTS; i++) {
-				if (objectspec[i] != NULL && objectspec[i]->enabled) {
+				if (objectspec[i] != NULL && objectspec[i]->grf_prop.grffile != NULL && objectspec[i]->enabled) {
 					_object_mngr.SetEntitySpec(objectspec[i]);
 				}
 			}
