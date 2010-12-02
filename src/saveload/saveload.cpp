@@ -227,7 +227,6 @@ byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 char _savegame_format[8]; ///< how to compress savegames
 bool _do_autosave;        ///< are we doing an autosave at the moment?
 
-typedef void DumperProc(size_t len);
 typedef void WriterProc(byte *buf, size_t len);
 typedef size_t ReaderProc();
 
@@ -246,6 +245,63 @@ enum NeedLength {
 	NL_CALCLENGTH = 2, ///< need to calculate the length
 };
 
+/** Save in chunks of 128 KiB. */
+static const size_t MEMORY_CHUNK_SIZE = 128 * 1024;
+
+/** Container for dumping the savegame (quickly) to memory. */
+struct MemoryDumper {
+	AutoFreeSmallVector<byte *, 16> blocks; ///< Buffer with blocks of allocated memory.
+	byte *buf;                              ///< Buffer we're going to write to.
+	byte *bufe;                             ///< End of the buffer we write to.
+
+	/** Initialise our variables. */
+	MemoryDumper() : buf(NULL), bufe(NULL)
+	{
+	}
+
+	/**
+	 * Write a single byte into the dumper.
+	 * @param b The byte to write.
+	 */
+	FORCEINLINE void WriteByte(byte b)
+	{
+		/* Are we at the end of this chunk? */
+		if (this->buf == this->bufe) {
+			this->buf = CallocT<byte>(MEMORY_CHUNK_SIZE);
+			*this->blocks.Append() = this->buf;
+			this->bufe = this->buf + MEMORY_CHUNK_SIZE;
+		}
+
+		*this->buf++ = b;
+	}
+
+	/**
+	 * Flush this dumper into a writer.
+	 * @param writer The writer we want to use.
+	 */
+	void Flush(WriterProc writer)
+	{
+		uint i = 0;
+		size_t t = this->GetSize();
+
+		while (t > 0) {
+			size_t to_write = min(MEMORY_CHUNK_SIZE, t);
+
+			writer(this->blocks[i++], to_write);
+			t -= to_write;
+		}
+	}
+
+	/**
+	 * Get the size of the memory dump made so far.
+	 * @return The size.
+	 */
+	size_t GetSize()
+	{
+		return this->blocks.Length() * MEMORY_CHUNK_SIZE - (this->bufe - this->buf);
+	}
+};
+
 /** The saveload struct, containing reader-writer functions, buffer, version, etc. */
 struct SaveLoadParams {
 	SaveLoadAction action;               ///< are we doing a save or a load atm.
@@ -258,7 +314,7 @@ struct SaveLoadParams {
 
 	size_t offs_base;                    ///< the offset in number of bytes since we started writing data (eg uncompressed savegame size)
 
-	DumperProc *dump_bytes;              ///< savegame dumper function
+	MemoryDumper *dumper;                ///< Memory dumper to write the savegame to.
 	ReaderProc *read_bytes;              ///< savegame loader function
 
 	/* When saving/loading savegames, they are always saved to a temporary memory-place
@@ -460,26 +516,6 @@ static inline size_t SlGetOffs()
 }
 
 /**
- * Flush the output buffer by writing to disk with the given reader.
- * If the buffer pointer has not yet been set up, set it up now. Usually
- * only called when the buffer is full, or there is no more data to be processed
- */
-static void SlWriteFill()
-{
-	/* flush the buffer to disk (the writer) */
-	if (_sl.bufp != NULL) {
-		uint len = _sl.bufp - _sl.buf;
-		_sl.offs_base += len;
-		if (len) _sl.dump_bytes(len);
-	}
-
-	/* All the data from the buffer has been written away, rewind to the beginning
-	 * to start reading in more data */
-	_sl.bufp = _sl.buf;
-	_sl.bufe = _sl.buf + _sl.bufsize;
-}
-
-/**
  * Read in a single byte from file. If the temporary buffer is full,
  * flush it to its final destination
  * @return return the read byte from file
@@ -494,18 +530,13 @@ static inline byte SlReadByteInternal()
 byte SlReadByte() {return SlReadByteInternal();}
 
 /**
- * Write away a single byte from memory. If the temporary buffer is full,
- * flush it to its destination (file)
- * @param b the byte that is currently written
+ * Wrapper for writing a byte to the dumper.
+ * @param b The byte to write.
  */
-static inline void SlWriteByteInternal(byte b)
+void SlWriteByte(byte b)
 {
-	if (_sl.bufp == _sl.bufe) SlWriteFill();
-	*_sl.bufp++ = b;
+	_sl.dumper->WriteByte(b);
 }
-
-/** Wrapper for SlWriteByteInternal */
-void SlWriteByte(byte b) {SlWriteByteInternal(b);}
 
 static inline int SlReadUint16()
 {
@@ -801,7 +832,7 @@ static void SlCopyBytes(void *ptr, size_t length)
 			for (; length != 0; length--) *p++ = SlReadByteInternal();
 			break;
 		case SLA_SAVE:
-			for (; length != 0; length--) SlWriteByteInternal(*p++);
+			for (; length != 0; length--) SlWriteByte(*p++);
 			break;
 		default: NOT_REACHED();
 	}
@@ -1456,12 +1487,12 @@ void SlAutolength(AutolengthProc *proc, void *arg)
 	_sl.need_length = NL_WANTLENGTH;
 	SlSetLength(_sl.obj_len);
 
-	offs = SlGetOffs() + _sl.obj_len;
+	offs = _sl.dumper->GetSize() + _sl.obj_len;
 
 	/* And write the stuff */
 	proc(arg);
 
-	if (offs != SlGetOffs()) SlErrorCorrupt("Invalid chunk size");
+	if (offs != _sl.dumper->GetSize()) SlErrorCorrupt("Invalid chunk size");
 }
 
 /**
@@ -1799,48 +1830,16 @@ static void UninitNoComp()
 	free(_sl.buf_ori);
 }
 
-/********************************************
- ********** START OF MEMORY CODE (in ram)****
- ********************************************/
-
 #include "../gui.h"
 
 struct ThreadedSave {
-	uint count;
 	byte ff_state;
 	bool saveinprogress;
 	CursorID cursor;
 };
 
-/** Save in chunks of 128 KiB. */
-static const size_t MEMORY_CHUNK_SIZE = 128 * 1024;
-/** Memory allocation for storing savegames in memory. */
-static AutoFreeSmallVector<byte *, 16> _memory_savegame;
-
 static ThreadedSave _ts;
 
-static void WriteMem(size_t size)
-{
-	_ts.count += (uint)size;
-
-	_sl.buf = CallocT<byte>(MEMORY_CHUNK_SIZE);
-	*_memory_savegame.Append() = _sl.buf;
-}
-
-static void UnInitMem()
-{
-	_memory_savegame.Clear();
-}
-
-static bool InitMem()
-{
-	_ts.count = 0;
-	_sl.bufsize = MEMORY_CHUNK_SIZE;
-
-	UnInitMem();
-	WriteMem(0);
-	return true;
-}
 
 /********************************************
  ********** START OF ZLIB CODE **************
@@ -2156,6 +2155,15 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 extern bool AfterLoadGame();
 extern bool LoadOldSaveGame(const char *file);
 
+/**
+ * Clear/free the memory dumper.
+ */
+static inline void ClearMemoryDumper()
+{
+	delete _sl.dumper;
+	_sl.dumper = NULL;
+}
+
 /** Small helper function to close the to be loaded savegame and signal error */
 static inline SaveOrLoadResult AbortSaveLoad()
 {
@@ -2232,25 +2240,10 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 
 		if (!fmt->init_write(compression)) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 
-		uint i = 0;
-		size_t t = _ts.count;
-
-		if (_ts.count != _sl.offs_base) SlErrorCorrupt("Unexpected size of chunk");
-		while (t >= MEMORY_CHUNK_SIZE) {
-			fmt->writer(_memory_savegame[i++], MEMORY_CHUNK_SIZE);
-			t -= MEMORY_CHUNK_SIZE;
-		}
-
-		if (t != 0) {
-			/* The last block is (almost) always not fully filled, so only write away
-			 * as much data as it is in there */
-			assert(t == _ts.count % MEMORY_CHUNK_SIZE);
-			fmt->writer(_memory_savegame[i], t);
-		}
+		_sl.dumper->Flush(fmt->writer);
+		ClearMemoryDumper();
 
 		fmt->uninit_write();
-		if (_ts.count != _sl.offs_base) SlErrorCorrupt("Unexpected size of chunk");
-		UnInitMem();
 		fclose(_sl.fh);
 
 		if (threaded) SetAsyncSaveFinish(SaveFileDone);
@@ -2364,15 +2357,13 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		if (mode == SL_SAVE) { // SAVE game
 			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
 
-			_sl.dump_bytes = WriteMem;
-			_sl.excpt_uninit = UnInitMem;
-			InitMem();
+			_sl.dumper = new MemoryDumper();
+			_sl.excpt_uninit = ClearMemoryDumper;
 
 			_sl_version = SAVEGAME_VERSION;
 
 			SaveViewportBeforeSaveGame();
 			SlSaveChunks();
-			SlWriteFill(); // flush the save buffer
 
 			SaveFileStart();
 			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
