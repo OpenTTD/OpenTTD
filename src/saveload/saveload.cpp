@@ -227,8 +227,6 @@ byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 char _savegame_format[8]; ///< how to compress savegames
 bool _do_autosave;        ///< are we doing an autosave at the moment?
 
-typedef size_t ReaderProc();
-
 /** What are we currently doing? */
 enum SaveLoadAction {
 	SLA_LOAD,        ///< loading
@@ -246,6 +244,44 @@ enum NeedLength {
 
 /** Save in chunks of 128 KiB. */
 static const size_t MEMORY_CHUNK_SIZE = 128 * 1024;
+
+/** Interface for filtering a savegame till it is loaded. */
+struct LoadFilter {
+	/** Chained to the (savegame) filters. */
+	LoadFilter *chain;
+
+	/**
+	 * Initialise this filter.
+	 * @param chain The next filter in this chain.
+	 */
+	LoadFilter(LoadFilter *chain) : chain(chain)
+	{
+	}
+
+	/** Make sure the writers are properly closed. */
+	virtual ~LoadFilter()
+	{
+		delete this->chain;
+	}
+
+	/**
+	 * Read a given number of bytes from the savegame.
+	 * @param buf The bytes to read.
+	 * @param len The number of bytes to read.
+	 * @return The number of actually read bytes.
+	 */
+	virtual size_t Read(byte *buf, size_t len) = 0;
+};
+
+/**
+ * Instantiator for a load filter.
+ * @param chain The next filter in this chain.
+ * @tparam T    The type of load filter to create.
+ */
+template <typename T> LoadFilter *CreateLoadFilter(LoadFilter *chain)
+{
+	return new T(chain);
+}
 
 /** Interface for filtering a savegame till it is written. */
 struct SaveFilter {
@@ -363,20 +399,14 @@ struct SaveLoadParams {
 
 	MemoryDumper *dumper;                ///< Memory dumper to write the savegame to.
 	SaveFilter *sf;                      ///< Filter to write the savegame to.
-
-	ReaderProc *read_bytes;              ///< savegame loader function
+	LoadFilter *lf;                      ///< Filter to read the savegame from.
 
 	/* When saving/loading savegames, they are always saved to a temporary memory-place
 	 * to be flushed to file (save) or to final place (load) when full. */
 	byte *bufp, *bufe;                   ///< bufp(ointer) gives the current position in the buffer bufe(nd) gives the end of the buffer
 
-	/* these 3 may be used by compressor/decompressors. */
-	byte *buf;                           ///< pointer to temporary memory to read/write, initialized by SaveLoadFormat->initread/write
-	byte *buf_ori;                       ///< pointer to the original memory location of buf, used to free it afterwards
-	uint bufsize;                        ///< the size of the temporary memory *buf
-	FILE *fh;                            ///< the file from which is read or written to
+	byte buf[MEMORY_CHUNK_SIZE];         ///< memory for reading savegame data
 
-	void (*excpt_uninit)();              ///< the function to execute on any encountered error
 	StringID error_str;                  ///< the translatable error message to show
 	char *extra_msg;                     ///< the error message
 };
@@ -551,7 +581,7 @@ void ProcessAsyncSaveFinish()
  */
 static void SlReadFill()
 {
-	size_t len = _sl.read_bytes();
+	size_t len = _sl.lf->Read(_sl.buf, sizeof(_sl.buf));
 	if (len == 0) SlErrorCorrupt("Unexpected end of chunk");
 
 	_sl.bufp = _sl.buf;
@@ -1771,6 +1801,38 @@ static void SlFixPointers()
 	assert(_sl.action == SLA_PTRS);
 }
 
+
+/** Yes, simply reading from a file. */
+struct FileReader : LoadFilter {
+	FILE *file; ///< The file to read from.
+
+	/**
+	 * Create the file reader, so it reads from a specific file.
+	 * @param file The file to read from.
+	 */
+	FileReader(FILE *file) : LoadFilter(NULL), file(file)
+	{
+	}
+
+	/** Make sure everything is cleaned up. */
+	~FileReader()
+	{
+		if (this->file != NULL) fclose(this->file);
+		this->file = NULL;
+
+		/* Make sure we don't double free. */
+		_sl.sf = NULL;
+	}
+
+	/* virtual */ size_t Read(byte *buf, size_t size)
+	{
+		/* We're in the process of shutting down, i.e. in "failure" mode. */
+		if (this->file == NULL) return 0;
+
+		return fread(buf, 1, size, this->file);
+	}
+};
+
 /** Yes, simply writing to a file. */
 struct FileWriter : SaveFilter {
 	FILE *file; ///< The file to write to.
@@ -1817,37 +1879,51 @@ struct FileWriter : SaveFilter {
 /** Buffer size for the LZO compressor */
 static const uint LZO_BUFFER_SIZE = 8192;
 
-static size_t ReadLZO()
-{
-	/* Buffer size is from the LZO docs plus the chunk header size. */
-	byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 16 + 64 + 3 + sizeof(uint32) * 2];
-	uint32 tmp[2];
-	uint32 size;
-	lzo_uint len;
-
-	/* Read header*/
-	if (fread(tmp, sizeof(tmp), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE, "File read failed");
-
-	/* Check if size is bad */
-	((uint32*)out)[0] = size = tmp[1];
-
-	if (_sl_version != 0) {
-		tmp[0] = TO_BE32(tmp[0]);
-		size = TO_BE32(size);
+/** Filter using LZO compression. */
+struct LZOLoadFilter : LoadFilter {
+	/**
+	 * Initialise this filter.
+	 * @param chain The next filter in this chain.
+	 */
+	LZOLoadFilter(LoadFilter *chain) : LoadFilter(chain)
+	{
+		if (lzo_init() != LZO_E_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
 	}
 
-	if (size >= sizeof(out)) SlErrorCorrupt("Inconsistent size");
+	/* virtual */ size_t Read(byte *buf, size_t ssize)
+	{
+		assert(ssize >= LZO_BUFFER_SIZE);
 
-	/* Read block */
-	if (fread(out + sizeof(uint32), size, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+		/* Buffer size is from the LZO docs plus the chunk header size. */
+		byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 16 + 64 + 3 + sizeof(uint32) * 2];
+		uint32 tmp[2];
+		uint32 size;
+		lzo_uint len;
 
-	/* Verify checksum */
-	if (tmp[0] != lzo_adler32(0, out, size + sizeof(uint32))) SlErrorCorrupt("Bad checksum");
+		/* Read header*/
+		if (this->chain->Read((byte*)tmp, sizeof(tmp)) != sizeof(tmp)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE, "File read failed");
 
-	/* Decompress */
-	lzo1x_decompress(out + sizeof(uint32) * 1, size, _sl.buf, &len, NULL);
-	return len;
-}
+		/* Check if size is bad */
+		((uint32*)out)[0] = size = tmp[1];
+
+		if (_sl_version != 0) {
+			tmp[0] = TO_BE32(tmp[0]);
+			size = TO_BE32(size);
+		}
+
+		if (size >= sizeof(out)) SlErrorCorrupt("Inconsistent size");
+
+		/* Read block */
+		if (this->chain->Read(out + sizeof(uint32), size) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+
+		/* Verify checksum */
+		if (tmp[0] != lzo_adler32(0, out, size + sizeof(uint32))) SlErrorCorrupt("Bad checksum");
+
+		/* Decompress */
+		lzo1x_decompress(out + sizeof(uint32) * 1, size, buf, &len, NULL);
+		return len;
+	}
+};
 
 /** Filter using LZO compression. */
 struct LZOSaveFilter : SaveFilter {
@@ -1884,44 +1960,27 @@ struct LZOSaveFilter : SaveFilter {
 	}
 };
 
-static bool InitLZO(byte compression)
-{
-	if (lzo_init() != LZO_E_OK) return false;
-	_sl.bufsize = LZO_BUFFER_SIZE;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(LZO_BUFFER_SIZE);
-	return true;
-}
-
-static void UninitLZO()
-{
-	free(_sl.buf_ori);
-}
-
 #endif /* WITH_LZO */
 
 /*********************************************
  ******** START OF NOCOMP CODE (uncompressed)*
  *********************************************/
 
-/** Buffer size used for the uncompressing 'compressor' */
-static const uint NOCOMP_BUFFER_SIZE = 8192;
+/** Filter without any compression. */
+struct NoCompLoadFilter : LoadFilter {
+	/**
+	 * Initialise this filter.
+	 * @param chain The next filter in this chain.
+	 */
+	NoCompLoadFilter(LoadFilter *chain) : LoadFilter(chain)
+	{
+	}
 
-static size_t ReadNoComp()
-{
-	return fread(_sl.buf, 1, NOCOMP_BUFFER_SIZE, _sl.fh);
-}
-
-static bool InitNoComp(byte compression)
-{
-	_sl.bufsize = NOCOMP_BUFFER_SIZE;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(NOCOMP_BUFFER_SIZE);
-	return true;
-}
-
-static void UninitNoComp()
-{
-	free(_sl.buf_ori);
-}
+	/* virtual */ size_t Read(byte *buf, size_t size)
+	{
+		return this->chain->Read(buf, size);
+	}
+};
 
 /** Filter without any compression. */
 struct NoCompSaveFilter : SaveFilter {
@@ -1958,49 +2017,49 @@ static ThreadedSave _ts;
 #if defined(WITH_ZLIB)
 #include <zlib.h>
 
-/** Buffer size for the LZO compressor */
-static const uint ZLIB_BUFFER_SIZE = 8192;
+/** Filter using Zlib compression. */
+struct ZlibLoadFilter : LoadFilter {
+	z_stream z;                        ///< Stream state we are reading from.
+	byte fread_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for reading from the file.
 
-static z_stream _z;
+	/**
+	 * Initialise this filter.
+	 * @param chain The next filter in this chain.
+	 */
+	ZlibLoadFilter(LoadFilter *chain) : LoadFilter(chain)
+	{
+		memset(&this->z, 0, sizeof(this->z));
+		if (inflateInit(&this->z) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
+	}
 
-static bool InitReadZlib(byte compression)
-{
-	memset(&_z, 0, sizeof(_z));
-	if (inflateInit(&_z) != Z_OK) return false;
+	/** Clean everything up. */
+	~ZlibLoadFilter()
+	{
+		inflateEnd(&this->z);
+	}
 
-	_sl.bufsize = ZLIB_BUFFER_SIZE;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(ZLIB_BUFFER_SIZE + ZLIB_BUFFER_SIZE); // also contains fread buffer
-	return true;
-}
+	/* virtual */ size_t Read(byte *buf, size_t size)
+	{
+		this->z.next_out  = buf;
+		this->z.avail_out = size;
 
-static size_t ReadZlib()
-{
-	int r;
+		do {
+			/* read more bytes from the file? */
+			if (this->z.avail_in == 0) {
+				this->z.next_in = this->fread_buf;
+				this->z.avail_in = (uint)this->chain->Read(this->fread_buf, sizeof(this->fread_buf));
+			}
 
-	_z.next_out = _sl.buf;
-	_z.avail_out = ZLIB_BUFFER_SIZE;
+			/* inflate the data */
+			int r = inflate(&this->z, 0);
+			if (r == Z_STREAM_END) break;
 
-	do {
-		/* read more bytes from the file? */
-		if (_z.avail_in == 0) {
-			_z.avail_in = (uint)fread(_z.next_in = _sl.buf + ZLIB_BUFFER_SIZE, 1, ZLIB_BUFFER_SIZE, _sl.fh);
-		}
+			if (r != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "inflate() failed");
+		} while (this->z.avail_out != 0);
 
-		/* inflate the data */
-		r = inflate(&_z, 0);
-		if (r == Z_STREAM_END) break;
-
-		if (r != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "inflate() failed");
-	} while (_z.avail_out);
-
-	return ZLIB_BUFFER_SIZE - _z.avail_out;
-}
-
-static void UninitReadZlib()
-{
-	inflateEnd(&_z);
-	free(_sl.buf_ori);
-}
+		return size - this->z.avail_out;
+	}
+};
 
 /** Filter using Zlib compression. */
 struct ZlibSaveFilter : SaveFilter {
@@ -2074,52 +2133,49 @@ struct ZlibSaveFilter : SaveFilter {
 #if defined(WITH_LZMA)
 #include <lzma.h>
 
-/**
- * Have a copy of an initialised LZMA stream. We need this as it's
- * impossible to "re"-assign LZMA_STREAM_INIT to a variable, i.e.
- * LZMA_STREAM_INIT can't be used to reset something. This var can.
- */
-static const lzma_stream _lzma_init = LZMA_STREAM_INIT;
-/** The current LZMA stream we're processing. */
-static lzma_stream _lzma;
+/** Filter without any compression. */
+struct LZMALoadFilter : LoadFilter {
+	lzma_stream lzma;                  ///< Stream state that we are reading from.
+	byte fread_buf[MEMORY_CHUNK_SIZE]; ///< Buffer for reading from the file.
 
-static bool InitReadLZMA(byte compression)
-{
-	_lzma = _lzma_init;
-	/* Allow saves up to 256 MB uncompressed */
-	if (lzma_auto_decoder(&_lzma, 1 << 28, 0) != LZMA_OK) return false;
+	/**
+	 * Initialise this filter.
+	 * @param chain The next filter in this chain.
+	 */
+	LZMALoadFilter(LoadFilter *chain) : LoadFilter(chain)
+	{
+		this->lzma = LZMA_STREAM_INIT;
+		/* Allow saves up to 256 MB uncompressed */
+		if (lzma_auto_decoder(&this->lzma, 1 << 28, 0) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
+	}
 
-	_sl.bufsize = MEMORY_CHUNK_SIZE;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(MEMORY_CHUNK_SIZE + MEMORY_CHUNK_SIZE); // also contains fread buffer
-	return true;
-}
+	/** Clean everything up. */
+	~LZMALoadFilter()
+	{
+		lzma_end(&this->lzma);
+	}
 
-static size_t ReadLZMA()
-{
-	_lzma.next_out = _sl.buf;
-	_lzma.avail_out = MEMORY_CHUNK_SIZE;
+	/* virtual */ size_t Read(byte *buf, size_t size)
+	{
+		this->lzma.next_out  = buf;
+		this->lzma.avail_out = size;
 
-	do {
-		/* read more bytes from the file? */
-		if (_lzma.avail_in == 0) {
-			_lzma.next_in = _sl.buf + MEMORY_CHUNK_SIZE;
-			_lzma.avail_in = fread(_sl.buf + MEMORY_CHUNK_SIZE, 1, MEMORY_CHUNK_SIZE, _sl.fh);
-		}
+		do {
+			/* read more bytes from the file? */
+			if (this->lzma.avail_in == 0) {
+				this->lzma.next_in  = this->fread_buf;
+				this->lzma.avail_in = this->chain->Read(this->fread_buf, sizeof(this->fread_buf));
+			}
 
-		/* inflate the data */
-		lzma_ret r = lzma_code(&_lzma, LZMA_RUN);
-		if (r == LZMA_STREAM_END) break;
-		if (r != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "liblzma returned error code");
-	} while (_lzma.avail_out != 0);
+			/* inflate the data */
+			lzma_ret r = lzma_code(&this->lzma, LZMA_RUN);
+			if (r == LZMA_STREAM_END) break;
+			if (r != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "liblzma returned error code");
+		} while (this->lzma.avail_out != 0);
 
-	return MEMORY_CHUNK_SIZE - _lzma.avail_out;
-}
-
-static void UninitReadLZMA()
-{
-	lzma_end(&_lzma);
-	free(_sl.buf_ori);
-}
+		return size - this->lzma.avail_out;
+	}
+};
 
 /** Filter using LZMA compression. */
 struct LZMASaveFilter : SaveFilter {
@@ -2187,10 +2243,7 @@ struct SaveLoadFormat {
 	const char *name;                     ///< name of the compressor/decompressor (debug-only)
 	uint32 tag;                           ///< the 4-letter tag by which it is identified in the savegame
 
-	bool (*init_read)(byte compression);  ///< function executed upon initalization of the loader
-	ReaderProc *reader;                   ///< function that loads the data from the file
-	void (*uninit_read)();                ///< function executed when reading is finished
-
+	LoadFilter *(*init_load)(LoadFilter *chain);                    ///< Constructor for the load filter.
 	SaveFilter *(*init_write)(SaveFilter *chain, byte compression); ///< Constructor for the save filter.
 
 	byte min_compression;                 ///< the minimum compression level of this format
@@ -2202,19 +2255,19 @@ struct SaveLoadFormat {
 static const SaveLoadFormat _saveload_formats[] = {
 #if defined(WITH_LZO)
 	/* Roughly 75% larger than zlib level 6 at only ~7% of the CPU usage. */
-	{"lzo",    TO_BE32X('OTTD'), InitLZO,      ReadLZO,    UninitLZO,      CreateSaveFilter<LZOSaveFilter>,    0, 0, 0},
+	{"lzo",    TO_BE32X('OTTD'), CreateLoadFilter<LZOLoadFilter>,    CreateSaveFilter<LZOSaveFilter>,    0, 0, 0},
 #else
-	{"lzo",    TO_BE32X('OTTD'), NULL,         NULL,       NULL,           NULL,                               0, 0, 0},
+	{"lzo",    TO_BE32X('OTTD'), NULL,                               NULL,                               0, 0, 0},
 #endif
 	/* Roughly 5 times larger at only 1% of the CPU usage over zlib level 6. */
-	{"none",   TO_BE32X('OTTN'), InitNoComp,   ReadNoComp, UninitNoComp,   CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0},
+	{"none",   TO_BE32X('OTTN'), CreateLoadFilter<NoCompLoadFilter>, CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0},
 #if defined(WITH_ZLIB)
 	/* After level 6 the speed reduction is significant (1.5x to 2.5x slower per level), but the reduction in filesize is
 	 * fairly insignificant (~1% for each step). Lower levels become ~5-10% bigger by each level than level 6 while level
 	 * 1 is "only" 3 times as fast. Level 0 results in uncompressed savegames at about 8 times the cost of "none". */
-	{"zlib",   TO_BE32X('OTTZ'), InitReadZlib, ReadZlib,   UninitReadZlib, CreateSaveFilter<ZlibSaveFilter>,   0, 6, 9},
+	{"zlib",   TO_BE32X('OTTZ'), CreateLoadFilter<ZlibLoadFilter>,   CreateSaveFilter<ZlibSaveFilter>,   0, 6, 9},
 #else
-	{"zlib",   TO_BE32X('OTTZ'), NULL,         NULL,       NULL,           NULL,                               0, 0, 0},
+	{"zlib",   TO_BE32X('OTTZ'), NULL,                               NULL,                               0, 0, 0},
 #endif
 #if defined(WITH_LZMA)
 	/* Level 2 compression is speed wise as fast as zlib level 6 compression (old default), but results in ~10% smaller saves.
@@ -2222,9 +2275,9 @@ static const SaveLoadFormat _saveload_formats[] = {
 	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%
 	 * slower while not improving the filesize, while level 0 and 1 are faster, but don't reduce savegame size much.
 	 * It's OTTX and not e.g. OTTL because liblzma is part of xz-utils and .tar.xz is prefered over .tar.lzma. */
-	{"lzma",   TO_BE32X('OTTX'), InitReadLZMA, ReadLZMA,   UninitReadLZMA, CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
+	{"lzma",   TO_BE32X('OTTX'), CreateLoadFilter<LZMALoadFilter>,   CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
 #else
-	{"lzma",   TO_BE32X('OTTX'), NULL,         NULL,       NULL,           NULL,                               0, 0, 0},
+	{"lzma",   TO_BE32X('OTTX'), NULL,                               NULL,                               0, 0, 0},
 #endif
 };
 
@@ -2294,15 +2347,9 @@ static inline void ClearSaveLoadState()
 
 	delete _sl.sf;
 	_sl.sf = NULL;
-}
 
-/** Small helper function to close the to be loaded savegame and signal error */
-static inline SaveOrLoadResult AbortSaveLoad()
-{
-	if (_sl.fh != NULL) fclose(_sl.fh);
-
-	_sl.fh = NULL;
-	return SL_ERROR;
+	delete _sl.lf;
+	_sl.lf = NULL;
 }
 
 /**
@@ -2361,7 +2408,6 @@ static void SaveFileError()
  */
 static SaveOrLoadResult SaveFileToDisk(bool threaded)
 {
-	_sl.excpt_uninit = NULL;
 	try {
 		byte compression;
 		const SaveLoadFormat *fmt = GetSavegameFormat(_savegame_format, &compression);
@@ -2379,8 +2425,6 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 
 		return SL_OK;
 	} catch (...) {
-		AbortSaveLoad();
-		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 		ClearSaveLoadState();
 
 		/* Skip the "colour" character */
@@ -2461,7 +2505,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 	/* Mark SL_LOAD_CHECK as supported for this savegame. */
 	if (mode == SL_LOAD_CHECK) _load_check_data.checkable = true;
 
-	_sl.excpt_uninit = NULL;
 	_sl.bufe = _sl.bufp = NULL;
 	_sl.offs_base = 0;
 	switch (mode) {
@@ -2472,13 +2515,13 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 	}
 
 	try {
-		_sl.fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
+		FILE *fh = (mode == SL_SAVE) ? FioFOpenFile(filename, "wb", sb) : FioFOpenFile(filename, "rb", sb);
 
 		/* Make it a little easier to load savegames from the console */
-		if (_sl.fh == NULL && mode != SL_SAVE) _sl.fh = FioFOpenFile(filename, "rb", SAVE_DIR);
-		if (_sl.fh == NULL && mode != SL_SAVE) _sl.fh = FioFOpenFile(filename, "rb", BASE_DIR);
+		if (fh == NULL && mode != SL_SAVE) fh = FioFOpenFile(filename, "rb", SAVE_DIR);
+		if (fh == NULL && mode != SL_SAVE) fh = FioFOpenFile(filename, "rb", BASE_DIR);
 
-		if (_sl.fh == NULL) {
+		if (fh == NULL) {
 			SlError(mode == SL_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 		}
 
@@ -2488,8 +2531,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
 
 			_sl.dumper = new MemoryDumper();
-			_sl.sf = new FileWriter(_sl.fh);
-			_sl.fh = NULL; // This shouldn't be closed; goes via _sl.sf now.
+			_sl.sf = new FileWriter(fh);
 
 			_sl_version = SAVEGAME_VERSION;
 
@@ -2510,9 +2552,11 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			assert(mode == SL_LOAD || mode == SL_LOAD_CHECK);
 			DEBUG(desync, 1, "load: %s", filename);
 
+			_sl.lf = new FileReader(fh);
+
 			/* Can't fseek to 0 as in tar files that is not correct */
-			long pos = ftell(_sl.fh);
-			if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+			long pos = ftell(fh);
+			if (fread(hdr, sizeof(hdr), 1, fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 			/* see if we have any loader for this type. */
 			const SaveLoadFormat *fmt = _saveload_formats;
@@ -2520,8 +2564,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 				/* No loader found, treat as version 0 and use LZO format */
 				if (fmt == endof(_saveload_formats)) {
 					DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
-					clearerr(_sl.fh);
-					fseek(_sl.fh, pos, SEEK_SET);
+					clearerr(fh);
+					fseek(fh, pos, SEEK_SET);
 					_sl_version = 0;
 					_sl_minor_version = 0;
 
@@ -2557,21 +2601,14 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 				fmt++;
 			}
 
-			_sl.read_bytes = fmt->reader;
-			_sl.excpt_uninit = fmt->uninit_read;
-
 			/* loader for this savegame type is not implemented? */
-			if (fmt->init_read == NULL) {
+			if (fmt->init_load == NULL) {
 				char err_str[64];
 				snprintf(err_str, lengthof(err_str), "Loader for '%s' is not available.", fmt->name);
 				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
 			}
 
-			if (!fmt->init_read(0)) {
-				char err_str[64];
-				snprintf(err_str, lengthof(err_str), "Initializing loader '%s' failed", fmt->name);
-				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
-			}
+			_sl.lf = fmt->init_load(_sl.lf);
 
 			if (mode != SL_LOAD_CHECK) {
 				_engine_mngr.ResetToDefaultMapping();
@@ -2618,8 +2655,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 				SlLoadChunks();
 				SlFixPointers();
 			}
-			fmt->uninit_read();
-			fclose(_sl.fh);
 
 			ClearSaveLoadState();
 
@@ -2644,10 +2679,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 
 		return SL_OK;
 	} catch (...) {
-		AbortSaveLoad();
-
-		/* deinitialize compressor. */
-		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 		ClearSaveLoadState();
 
 		/* Skip the "colour" character */
