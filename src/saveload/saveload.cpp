@@ -273,6 +273,48 @@ struct LoadFilter {
 	virtual size_t Read(byte *buf, size_t len) = 0;
 };
 
+
+/** A buffer for reading (and buffering) savegame data. */
+struct ReadBuffer {
+	byte buf[MEMORY_CHUNK_SIZE]; ///< Buffer we're going to read from.
+	byte *bufp;                  ///< Location we're at reading the buffer.
+	byte *bufe;                  ///< End of the buffer we can read from.
+	LoadFilter *reader;          ///< The filter used to actually read.
+	size_t read;                 ///< The amount of read bytes so far from the filter.
+
+	/**
+	 * Initialise our variables.
+	 * @param reader The filter to actually read data.
+	 */
+	ReadBuffer(LoadFilter *reader) : bufp(NULL), bufe(NULL), reader(reader), read(0)
+	{
+	}
+
+	FORCEINLINE byte ReadByte()
+	{
+		if (this->bufp == this->bufe) {
+			size_t len = this->reader->Read(this->buf, lengthof(this->buf));
+			if (len == 0) SlErrorCorrupt("Unexpected end of chunk");
+
+			this->read += len;
+			this->bufp = this->buf;
+			this->bufe = this->buf + len;
+		}
+
+		return *this->bufp++;
+	}
+
+	/**
+	 * Get the size of the memory dump made so far.
+	 * @return The size.
+	 */
+	size_t GetSize() const
+	{
+		return this->read - (this->bufe - this->bufp);
+	}
+};
+
+
 /**
  * Instantiator for a load filter.
  * @param chain The next filter in this chain.
@@ -379,7 +421,7 @@ struct MemoryDumper {
 	 * Get the size of the memory dump made so far.
 	 * @return The size.
 	 */
-	size_t GetSize()
+	size_t GetSize() const
 	{
 		return this->blocks.Length() * MEMORY_CHUNK_SIZE - (this->bufe - this->buf);
 	}
@@ -395,17 +437,11 @@ struct SaveLoadParams {
 	size_t obj_len;                      ///< the length of the current object we are busy with
 	int array_index, last_array_index;   ///< in the case of an array, the current and last positions
 
-	size_t offs_base;                    ///< the offset in number of bytes since we started writing data (eg uncompressed savegame size)
-
 	MemoryDumper *dumper;                ///< Memory dumper to write the savegame to.
 	SaveFilter *sf;                      ///< Filter to write the savegame to.
+
+	ReadBuffer *reader;                  ///< Savegame reading buffer.
 	LoadFilter *lf;                      ///< Filter to read the savegame from.
-
-	/* When saving/loading savegames, they are always saved to a temporary memory-place
-	 * to be flushed to file (save) or to final place (load) when full. */
-	byte *bufp, *bufe;                   ///< bufp(ointer) gives the current position in the buffer bufe(nd) gives the end of the buffer
-
-	byte buf[MEMORY_CHUNK_SIZE];         ///< memory for reading savegame data
 
 	StringID error_str;                  ///< the translatable error message to show
 	char *extra_msg;                     ///< the error message
@@ -577,36 +613,13 @@ void ProcessAsyncSaveFinish()
 }
 
 /**
- * Fill the input buffer by reading from the file with the given reader
+ * Wrapper for reading a byte from the buffer.
+ * @return The read byte.
  */
-static void SlReadFill()
+byte SlReadByte()
 {
-	size_t len = _sl.lf->Read(_sl.buf, sizeof(_sl.buf));
-	if (len == 0) SlErrorCorrupt("Unexpected end of chunk");
-
-	_sl.bufp = _sl.buf;
-	_sl.bufe = _sl.buf + len;
-	_sl.offs_base += len;
+	return _sl.reader->ReadByte();
 }
-
-static inline size_t SlGetOffs()
-{
-	return _sl.offs_base - (_sl.bufe - _sl.bufp);
-}
-
-/**
- * Read in a single byte from file. If the temporary buffer is full,
- * flush it to its final destination
- * @return return the read byte from file
- */
-static inline byte SlReadByteInternal()
-{
-	if (_sl.bufp == _sl.bufe) SlReadFill();
-	return *_sl.bufp++;
-}
-
-/** Wrapper for SlReadByteInternal */
-byte SlReadByte() {return SlReadByteInternal();}
 
 /**
  * Wrapper for writing a byte to the dumper.
@@ -818,7 +831,7 @@ int SlIterateArray()
 
 	/* After reading in the whole array inside the loop
 	 * we must have read in all the data, so we must be at end of current block. */
-	if (_next_offs != 0 && SlGetOffs() != _next_offs) SlErrorCorrupt("Invalid chunk size");
+	if (_next_offs != 0 && _sl.reader->GetSize() != _next_offs) SlErrorCorrupt("Invalid chunk size");
 
 	while (true) {
 		uint length = SlReadArrayLength();
@@ -828,7 +841,7 @@ int SlIterateArray()
 		}
 
 		_sl.obj_len = --length;
-		_next_offs = SlGetOffs() + length;
+		_next_offs = _sl.reader->GetSize() + length;
 
 		switch (_sl.block_mode) {
 			case CH_SPARSE_ARRAY: index = (int)SlReadSparseIndex(); break;
@@ -848,7 +861,7 @@ int SlIterateArray()
 void SlSkipArray()
 {
 	while (SlIterateArray() != -1) {
-		SlSkipBytes(_next_offs - SlGetOffs());
+		SlSkipBytes(_next_offs - _sl.reader->GetSize());
 	}
 }
 
@@ -908,7 +921,7 @@ static void SlCopyBytes(void *ptr, size_t length)
 	switch (_sl.action) {
 		case SLA_LOAD_CHECK:
 		case SLA_LOAD:
-			for (; length != 0; length--) *p++ = SlReadByteInternal();
+			for (; length != 0; length--) *p++ = SlReadByte();
 			break;
 		case SLA_SAVE:
 			for (; length != 0; length--) SlWriteByte(*p++);
@@ -1601,9 +1614,9 @@ static void SlLoadChunk(const ChunkHandler *ch)
 				len = (SlReadByte() << 16) | ((m >> 4) << 24);
 				len += SlReadUint16();
 				_sl.obj_len = len;
-				endoffs = SlGetOffs() + len;
+				endoffs = _sl.reader->GetSize() + len;
 				ch->load_proc();
-				if (SlGetOffs() != endoffs) SlErrorCorrupt("Invalid chunk size");
+				if (_sl.reader->GetSize() != endoffs) SlErrorCorrupt("Invalid chunk size");
 			} else {
 				SlErrorCorrupt("Invalid chunk type");
 			}
@@ -1647,13 +1660,13 @@ static void SlLoadCheckChunk(const ChunkHandler *ch)
 				len = (SlReadByte() << 16) | ((m >> 4) << 24);
 				len += SlReadUint16();
 				_sl.obj_len = len;
-				endoffs = SlGetOffs() + len;
+				endoffs = _sl.reader->GetSize() + len;
 				if (ch->load_check_proc) {
 					ch->load_check_proc();
 				} else {
 					SlSkipBytes(len);
 				}
-				if (SlGetOffs() != endoffs) SlErrorCorrupt("Invalid chunk size");
+				if (_sl.reader->GetSize() != endoffs) SlErrorCorrupt("Invalid chunk size");
 			} else {
 				SlErrorCorrupt("Invalid chunk type");
 			}
@@ -2348,6 +2361,9 @@ static inline void ClearSaveLoadState()
 	delete _sl.sf;
 	_sl.sf = NULL;
 
+	delete _sl.reader;
+	_sl.reader = NULL;
+
 	delete _sl.lf;
 	_sl.lf = NULL;
 }
@@ -2505,8 +2521,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 	/* Mark SL_LOAD_CHECK as supported for this savegame. */
 	if (mode == SL_LOAD_CHECK) _load_check_data.checkable = true;
 
-	_sl.bufe = _sl.bufp = NULL;
-	_sl.offs_base = 0;
 	switch (mode) {
 		case SL_LOAD_CHECK: _sl.action = SLA_LOAD_CHECK; break;
 		case SL_LOAD: _sl.action = SLA_LOAD; break;
@@ -2609,6 +2623,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			}
 
 			_sl.lf = fmt->init_load(_sl.lf);
+			_sl.reader = new ReadBuffer(_sl.lf);
 
 			if (mode != SL_LOAD_CHECK) {
 				_engine_mngr.ResetToDefaultMapping();
