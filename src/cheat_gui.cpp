@@ -18,7 +18,9 @@
 #include "date_func.h"
 #include "saveload/saveload.h"
 #include "window_gui.h"
+#include "querystring_gui.h"
 #include "newgrf.h"
+#include "string_func.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "rail_gui.h"
@@ -325,12 +327,21 @@ struct CheatWindow : Window {
 		bool rtl = _current_text_dir == TD_RTL;
 		if (rtl) x = wid->current_x - x;
 
-		/* Not clicking a button? */
-		if (!IsInsideMM(x, 20, 40) || btn >= lengthof(_cheats_ui)) return;
+		if (btn >= lengthof(_cheats_ui)) return;
 
 		const CheatEntry *ce = &_cheats_ui[btn];
 		int value = (int32)ReadValue(ce->variable, ce->type);
 		int oldvalue = value;
+
+		if (btn == CHT_CHANGE_DATE && x >= 40) {
+			/* Click at the date text directly. */
+			SetDParam(0, value);
+			ShowQueryString(STR_JUST_INT, STR_CHEAT_CHANGE_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_ACCEPT_UNCHANGED);
+			return;
+		}
+
+		/* Not clicking a button? */
+		if (!IsInsideMM(x, 20, 40)) return;
 
 		*ce->been_used = true;
 
@@ -359,6 +370,21 @@ struct CheatWindow : Window {
 	virtual void OnTimeout()
 	{
 		this->clicked = 0;
+		this->SetDirty();
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		/* Was 'cancel' pressed or nothing entered? */
+		if (str == NULL || StrEmpty(str)) return;
+
+		const CheatEntry *ce = &_cheats_ui[CHT_CHANGE_DATE];
+		int oldvalue = (int32)ReadValue(ce->variable, ce->type);
+		int value = atoi(str);
+		*ce->been_used = true;
+		value = ce->proc(value, value - oldvalue);
+
+		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64)value);
 		this->SetDirty();
 	}
 };
