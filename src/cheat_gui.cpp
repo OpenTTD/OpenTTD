@@ -37,6 +37,15 @@
  */
 static int32 _money_cheat_amount = 10000000;
 
+/**
+ * Handle cheating of money.
+ * Note that the amount of money of a company must be changed through a command
+ * rather than by setting a variable. Since the cheat data structure expects a
+ * variable, the amount of given/taken money is used for this purpose.
+ * @param p1 not used.
+ * @param p2 is -1 or +1 (down/up)
+ * @return Amount of money cheat.
+ */
 static int32 ClickMoneyCheat(int32 p1, int32 p2)
 {
 	DoCommandP(0, (uint32)(p2 * _money_cheat_amount), 0, CMD_MONEY_CHEAT);
@@ -44,8 +53,10 @@ static int32 ClickMoneyCheat(int32 p1, int32 p2)
 }
 
 /**
+ * Handle changing of company.
  * @param p1 company to set to
  * @param p2 is -1 or +1 (down/up)
+ * @return The new company.
  */
 static int32 ClickChangeCompanyCheat(int32 p1, int32 p2)
 {
@@ -61,8 +72,10 @@ static int32 ClickChangeCompanyCheat(int32 p1, int32 p2)
 }
 
 /**
+ * Allow (or disallow) changing production of all industries.
  * @param p1 new value
  * @param p2 unused
+ * @return New value allwing change of industry production.
  */
 static int32 ClickSetProdCheat(int32 p1, int32 p2)
 {
@@ -72,8 +85,10 @@ static int32 ClickSetProdCheat(int32 p1, int32 p2)
 }
 
 /**
- * @param p1 new climate
- * @param p2 unused
+ * Handle changing of climate.
+ * @param p1 New climate.
+ * @param p2 Unused.
+ * @return New climate.
  */
 static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 {
@@ -92,8 +107,10 @@ static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 extern void EnginesMonthlyLoop();
 
 /**
- * @param p1 unused
- * @param p2 1 (increase) or -1 (decrease)
+ * Handle changing of the current year.
+ * @param p1 Unused.
+ * @param p2 +1 (increase) or -1 (decrease).
+ * @return New year.
  */
 static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 {
@@ -110,8 +127,14 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	return _cur_year;
 }
 
-typedef int32 CheckButtonClick(int32, int32);
+/**
+ * Signature of handler function when user clicks at a cheat.
+ * @param p1 The new value.
+ * @param p2 Change direction (+1, +1), \c 0 for boolean settings.
+ */
+typedef int32 CheckButtonClick(int32 p1, int32 p2);
 
+/** Information of a cheat. */
 struct CheatEntry {
 	VarType type;          ///< type of selector
 	StringID str;          ///< string with descriptive text
@@ -120,6 +143,9 @@ struct CheatEntry {
 	CheckButtonClick *proc;///< procedure
 };
 
+/**
+ * The available cheats.
+ */
 static const CheatEntry _cheats_ui[] = {
 	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,                    &_cheats.money.been_used,            &ClickMoneyCheat         },
 	{SLE_UINT8, STR_CHEAT_CHANGE_COMPANY,  &_local_company,                         &_cheats.switch_company.been_used,   &ClickChangeCompanyCheat },
@@ -132,11 +158,12 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                              &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };
 
-/* Names of the cheat window widgets. */
+/** Names of the cheat window widgets. */
 enum CheatWidgets {
 	CW_PANEL,
 };
 
+/** Widget definitions of the cheat GUI. */
 static const NWidgetPart _nested_cheat_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -147,6 +174,7 @@ static const NWidgetPart _nested_cheat_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_GREY, CW_PANEL), SetDataTip(0x0, STR_CHEATS_TOOLTIP), EndContainer(),
 };
 
+/** GUI for the cheats. */
 struct CheatWindow : Window {
 	int clicked;
 	int header_height;
@@ -306,7 +334,7 @@ struct CheatWindow : Window {
 
 		this->flags4 |= WF_TIMEOUT_BEGIN;
 
-		SetDirty();
+		this->SetDirty();
 	}
 
 	virtual void OnTimeout()
@@ -316,6 +344,7 @@ struct CheatWindow : Window {
 	}
 };
 
+/** Window description of the cheats GUI. */
 static const WindowDesc _cheats_desc(
 	WDP_AUTO, 0, 0,
 	WC_CHEATS, WC_NONE,
@@ -323,7 +352,7 @@ static const WindowDesc _cheats_desc(
 	_nested_cheat_widgets, lengthof(_nested_cheat_widgets)
 );
 
-
+/** Open cheat window. */
 void ShowCheatWindow()
 {
 	DeleteWindowById(WC_CHEATS, 0);
