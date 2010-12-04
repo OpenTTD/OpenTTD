@@ -2285,9 +2285,9 @@ extern bool AfterLoadGame();
 extern bool LoadOldSaveGame(const char *file);
 
 /**
- * Clear/free the memory dumper.
+ * Clear/free saveload state.
  */
-static inline void ClearMemoryDumper()
+static inline void ClearSaveLoadState()
 {
 	delete _sl.dumper;
 	_sl.dumper = NULL;
@@ -2373,7 +2373,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		_sl.sf = fmt->init_write(_sl.sf, compression);
 		_sl.dumper->Flush(_sl.sf);
 
-		ClearMemoryDumper();
+		ClearSaveLoadState();
 
 		if (threaded) SetAsyncSaveFinish(SaveFileDone);
 
@@ -2381,6 +2381,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 	} catch (...) {
 		AbortSaveLoad();
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
+		ClearSaveLoadState();
 
 		/* Skip the "colour" character */
 		DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
@@ -2489,7 +2490,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			_sl.dumper = new MemoryDumper();
 			_sl.sf = new FileWriter(_sl.fh);
 			_sl.fh = NULL; // This shouldn't be closed; goes via _sl.sf now.
-			_sl.excpt_uninit = ClearMemoryDumper;
 
 			_sl_version = SAVEGAME_VERSION;
 
@@ -2621,6 +2621,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			fmt->uninit_read();
 			fclose(_sl.fh);
 
+			ClearSaveLoadState();
+
 			_savegame_type = SGT_OTTD;
 
 			if (mode == SL_LOAD_CHECK) {
@@ -2646,6 +2648,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 
 		/* deinitialize compressor. */
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
+		ClearSaveLoadState();
 
 		/* Skip the "colour" character */
 		if (mode != SL_LOAD_CHECK) DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
