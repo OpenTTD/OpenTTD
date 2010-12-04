@@ -227,7 +227,6 @@ byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 char _savegame_format[8]; ///< how to compress savegames
 bool _do_autosave;        ///< are we doing an autosave at the moment?
 
-typedef void WriterProc(byte *buf, size_t len);
 typedef size_t ReaderProc();
 
 /** What are we currently doing? */
@@ -247,6 +246,52 @@ enum NeedLength {
 
 /** Save in chunks of 128 KiB. */
 static const size_t MEMORY_CHUNK_SIZE = 128 * 1024;
+
+/** Interface for filtering a savegame till it is written. */
+struct SaveFilter {
+	/** Chained to the (savegame) filters. */
+	SaveFilter *chain;
+
+	/**
+	 * Initialise this filter.
+	 * @param chain The next filter in this chain.
+	 */
+	SaveFilter(SaveFilter *chain) : chain(chain)
+	{
+	}
+
+	/** Make sure the writers are properly closed. */
+	virtual ~SaveFilter()
+	{
+		delete this->chain;
+	}
+
+	/**
+	 * Write a given number of bytes into the savegame.
+	 * @param buf The bytes to write.
+	 * @param len The number of bytes to write.
+	 */
+	virtual void Write(byte *buf, size_t len) = 0;
+
+	/**
+	 * Prepare everything to finish writing the savegame.
+	 */
+	virtual void Finish()
+	{
+		if (this->chain != NULL) this->chain->Finish();
+	}
+};
+
+/**
+ * Instantiator for a save filter.
+ * @param chain             The next filter in this chain.
+ * @param compression_level The requested level of compression.
+ * @tparam T                The type of save filter to create.
+ */
+template <typename T> SaveFilter *CreateSaveFilter(SaveFilter *chain, byte compression_level)
+{
+	return new T(chain, compression_level);
+}
 
 /** Container for dumping the savegame (quickly) to memory. */
 struct MemoryDumper {
@@ -277,9 +322,9 @@ struct MemoryDumper {
 
 	/**
 	 * Flush this dumper into a writer.
-	 * @param writer The writer we want to use.
+	 * @param writer The filter we want to use.
 	 */
-	void Flush(WriterProc writer)
+	void Flush(SaveFilter *writer)
 	{
 		uint i = 0;
 		size_t t = this->GetSize();
@@ -287,9 +332,11 @@ struct MemoryDumper {
 		while (t > 0) {
 			size_t to_write = min(MEMORY_CHUNK_SIZE, t);
 
-			writer(this->blocks[i++], to_write);
+			writer->Write(this->blocks[i++], to_write);
 			t -= to_write;
 		}
+
+		writer->Finish();
 	}
 
 	/**
@@ -315,6 +362,8 @@ struct SaveLoadParams {
 	size_t offs_base;                    ///< the offset in number of bytes since we started writing data (eg uncompressed savegame size)
 
 	MemoryDumper *dumper;                ///< Memory dumper to write the savegame to.
+	SaveFilter *sf;                      ///< Filter to write the savegame to.
+
 	ReaderProc *read_bytes;              ///< savegame loader function
 
 	/* When saving/loading savegames, they are always saved to a temporary memory-place
@@ -1722,6 +1771,42 @@ static void SlFixPointers()
 	assert(_sl.action == SLA_PTRS);
 }
 
+/** Yes, simply writing to a file. */
+struct FileWriter : SaveFilter {
+	FILE *file; ///< The file to write to.
+
+	/**
+	 * Create the file writer, so it writes to a specific file.
+	 * @param file The file to write to.
+	 */
+	FileWriter(FILE *file) : SaveFilter(NULL), file(file)
+	{
+	}
+
+	/** Make sure everything is cleaned up. */
+	~FileWriter()
+	{
+		this->Finish();
+
+		/* Make sure we don't double free. */
+		_sl.sf = NULL;
+	}
+
+	/* virtual */ void Write(byte *buf, size_t size)
+	{
+		/* We're in the process of shutting down, i.e. in "failure" mode. */
+		if (this->file == NULL) return;
+
+		if (fwrite(buf, 1, size, this->file) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
+	}
+
+	/* virtual */ void Finish()
+	{
+		if (this->file != NULL) fclose(this->file);
+		this->file = NULL;
+	}
+};
+
 /*******************************************
  ********** START OF LZO CODE **************
  *******************************************/
@@ -1764,27 +1849,40 @@ static size_t ReadLZO()
 	return len;
 }
 
-static void WriteLZO(byte *p, size_t size)
-{
-	const lzo_bytep in = p;
-	/* Buffer size is from the LZO docs plus the chunk header size. */
-	byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 16 + 64 + 3 + sizeof(uint32) * 2];
-	byte wrkmem[LZO1X_1_MEM_COMPRESS];
-	lzo_uint outlen;
+/** Filter using LZO compression. */
+struct LZOSaveFilter : SaveFilter {
+	/**
+	 * Initialise this filter.
+	 * @param chain             The next filter in this chain.
+	 * @param compression_level The requested level of compression.
+	 */
+	LZOSaveFilter(SaveFilter *chain, byte compression_level) : SaveFilter(chain)
+	{
+		if (lzo_init() != LZO_E_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
+	}
 
-	do {
-		/* Compress up to LZO_BUFFER_SIZE bytes at once. */
-		lzo_uint len = size > LZO_BUFFER_SIZE ? LZO_BUFFER_SIZE : (lzo_uint)size;
-		lzo1x_1_compress(in, len, out + sizeof(uint32) * 2, &outlen, wrkmem);
-		((uint32*)out)[1] = TO_BE32((uint32)outlen);
-		((uint32*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32), outlen + sizeof(uint32)));
-		if (fwrite(out, outlen + sizeof(uint32) * 2, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
+	/* virtual */ void Write(byte *buf, size_t size)
+	{
+		const lzo_bytep in = buf;
+		/* Buffer size is from the LZO docs plus the chunk header size. */
+		byte out[LZO_BUFFER_SIZE + LZO_BUFFER_SIZE / 16 + 64 + 3 + sizeof(uint32) * 2];
+		byte wrkmem[LZO1X_1_MEM_COMPRESS];
+		lzo_uint outlen;
 
-		/* Move to next data chunk. */
-		size -= len;
-		in += len;
-	} while (size > 0);
-}
+		do {
+			/* Compress up to LZO_BUFFER_SIZE bytes at once. */
+			lzo_uint len = size > LZO_BUFFER_SIZE ? LZO_BUFFER_SIZE : (lzo_uint)size;
+			lzo1x_1_compress(in, len, out + sizeof(uint32) * 2, &outlen, wrkmem);
+			((uint32*)out)[1] = TO_BE32((uint32)outlen);
+			((uint32*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32), outlen + sizeof(uint32)));
+			this->chain->Write(out, outlen + sizeof(uint32) * 2);
+
+			/* Move to next data chunk. */
+			size -= len;
+			in += len;
+		} while (size > 0);
+	}
+};
 
 static bool InitLZO(byte compression)
 {
@@ -1813,11 +1911,6 @@ static size_t ReadNoComp()
 	return fread(_sl.buf, 1, NOCOMP_BUFFER_SIZE, _sl.fh);
 }
 
-static void WriteNoComp(byte *buf, size_t size)
-{
-	if (fwrite(buf, 1, size, _sl.fh) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
-}
-
 static bool InitNoComp(byte compression)
 {
 	_sl.bufsize = NOCOMP_BUFFER_SIZE;
@@ -1829,6 +1922,23 @@ static void UninitNoComp()
 {
 	free(_sl.buf_ori);
 }
+
+/** Filter without any compression. */
+struct NoCompSaveFilter : SaveFilter {
+	/**
+	 * Initialise this filter.
+	 * @param chain             The next filter in this chain.
+	 * @param compression_level The requested level of compression.
+	 */
+	NoCompSaveFilter(SaveFilter *chain, byte compression_level) : SaveFilter(chain)
+	{
+	}
+
+	/* virtual */ void Write(byte *buf, size_t size)
+	{
+		this->chain->Write(buf, size);
+	}
+};
 
 #include "../gui.h"
 
@@ -1892,58 +2002,68 @@ static void UninitReadZlib()
 	free(_sl.buf_ori);
 }
 
-static bool InitWriteZlib(byte compression)
-{
-	memset(&_z, 0, sizeof(_z));
-	if (deflateInit(&_z, compression) != Z_OK) return false;
+/** Filter using Zlib compression. */
+struct ZlibSaveFilter : SaveFilter {
+	z_stream z; ///< Stream state we are writing to.
 
-	_sl.bufsize = ZLIB_BUFFER_SIZE;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(ZLIB_BUFFER_SIZE);
-	return true;
-}
+	/**
+	 * Initialise this filter.
+	 * @param chain             The next filter in this chain.
+	 * @param compression_level The requested level of compression.
+	 */
+	ZlibSaveFilter(SaveFilter *chain, byte compression_level) : SaveFilter(chain)
+	{
+		memset(&this->z, 0, sizeof(this->z));
+		if (deflateInit(&this->z, compression_level) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
+	}
 
-static void WriteZlibLoop(z_streamp z, byte *p, size_t len, int mode)
-{
-	byte buf[ZLIB_BUFFER_SIZE]; // output buffer
-	int r;
-	uint n;
-	z->next_in = p;
-	z->avail_in = (uInt)len;
-	do {
-		z->next_out = buf;
-		z->avail_out = sizeof(buf);
+	/**
+	 * Helper loop for writing the data.
+	 * @param p    The bytes to write.
+	 * @param len  Amount of bytes to write.
+	 * @param mode Mode for deflate.
+	 */
+	void WriteLoop(byte *p, size_t len, int mode)
+	{
+		byte buf[MEMORY_CHUNK_SIZE]; // output buffer
+		uint n;
+		this->z.next_in = p;
+		this->z.avail_in = (uInt)len;
+		do {
+			this->z.next_out = buf;
+			this->z.avail_out = sizeof(buf);
 
-		/**
-		 * For the poor next soul who sees many valgrind warnings of the
-		 * "Conditional jump or move depends on uninitialised value(s)" kind:
-		 * According to the author of zlib it is not a bug and it won't be fixed.
-		 * http://groups.google.com/group/comp.compression/browse_thread/thread/b154b8def8c2a3ef/cdf9b8729ce17ee2
-		 * [Mark Adler, Feb 24 2004, 'zlib-1.2.1 valgrind warnings' in the newgroup comp.compression]
-		 */
-		r = deflate(z, mode);
+			/**
+			* For the poor next soul who sees many valgrind warnings of the
+			* "Conditional jump or move depends on uninitialised value(s)" kind:
+			* According to the author of zlib it is not a bug and it won't be fixed.
+			* http://groups.google.com/group/comp.compression/browse_thread/thread/b154b8def8c2a3ef/cdf9b8729ce17ee2
+			* [Mark Adler, Feb 24 2004, 'zlib-1.2.1 valgrind warnings' in the newgroup comp.compression]
+			*/
+			int r = deflate(&this->z, mode);
 
-		/* bytes were emitted? */
-		if ((n = sizeof(buf) - z->avail_out) != 0) {
-			if (fwrite(buf, n, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
-		}
-		if (r == Z_STREAM_END) break;
+			/* bytes were emitted? */
+			if ((n = sizeof(buf) - this->z.avail_out) != 0) {
+				this->chain->Write(buf, n);
+			}
+			if (r == Z_STREAM_END) break;
 
-		if (r != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "zlib returned error code");
-	} while (z->avail_in || !z->avail_out);
-}
+			if (r != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "zlib returned error code");
+		} while (this->z.avail_in || !this->z.avail_out);
+	}
 
-static void WriteZlib(byte *buf, size_t len)
-{
-	WriteZlibLoop(&_z, buf, len, 0);
-}
+	/* virtual */ void Write(byte *buf, size_t size)
+	{
+		this->WriteLoop(buf, size, 0);
+	}
 
-static void UninitWriteZlib()
-{
-	/* flush any pending output. */
-	if (_sl.fh) WriteZlibLoop(&_z, NULL, 0, Z_FINISH);
-	deflateEnd(&_z);
-	free(_sl.buf_ori);
-}
+	/* virtual */ void Finish()
+	{
+		this->WriteLoop(NULL, 0, Z_FINISH);
+		this->chain->Finish();
+		deflateEnd(&this->z);
+	}
+};
 
 #endif /* WITH_ZLIB */
 
@@ -2001,49 +2121,60 @@ static void UninitReadLZMA()
 	free(_sl.buf_ori);
 }
 
-static bool InitWriteLZMA(byte compression)
-{
-	_lzma = _lzma_init;
-	if (lzma_easy_encoder(&_lzma, compression, LZMA_CHECK_CRC32) != LZMA_OK) return false;
+/** Filter using LZMA compression. */
+struct LZMASaveFilter : SaveFilter {
+	lzma_stream lzma; ///< Stream state that we are writing to.
 
-	_sl.bufsize = MEMORY_CHUNK_SIZE;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(MEMORY_CHUNK_SIZE);
-	return true;
-}
+	/**
+	 * Initialise this filter.
+	 * @param chain             The next filter in this chain.
+	 * @param compression_level The requested level of compression.
+	 */
+	LZMASaveFilter(SaveFilter *chain, byte compression_level) : SaveFilter(chain)
+	{
+		this->lzma = LZMA_STREAM_INIT;
+		if (lzma_easy_encoder(&this->lzma, compression_level, LZMA_CHECK_CRC32) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
+	}
 
-static void WriteLZMALoop(lzma_stream *lzma, byte *p, size_t len, lzma_action action)
-{
-	byte buf[MEMORY_CHUNK_SIZE]; // output buffer
-	size_t n;
-	lzma->next_in = p;
-	lzma->avail_in = len;
-	do {
-		lzma->next_out = buf;
-		lzma->avail_out = sizeof(buf);
+	/**
+	 * Helper loop for writing the data.
+	 * @param p      The bytes to write.
+	 * @param len    Amount of bytes to write.
+	 * @param action Action for lzma_code.
+	 */
+	void WriteLoop(byte *p, size_t len, lzma_action action)
+	{
+		byte buf[MEMORY_CHUNK_SIZE]; // output buffer
+		size_t n;
+		this->lzma.next_in = p;
+		this->lzma.avail_in = len;
+		do {
+			this->lzma.next_out = buf;
+			this->lzma.avail_out = sizeof(buf);
 
-		lzma_ret r = lzma_code(&_lzma, action);
+			lzma_ret r = lzma_code(&this->lzma, action);
 
-		/* bytes were emitted? */
-		if ((n = sizeof(buf) - lzma->avail_out) != 0) {
-			if (fwrite(buf, n, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
-		}
-		if (r == LZMA_STREAM_END) break;
-		if (r != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "liblzma returned error code");
-	} while (lzma->avail_in || !lzma->avail_out);
-}
+			/* bytes were emitted? */
+			if ((n = sizeof(buf) - this->lzma.avail_out) != 0) {
+				this->chain->Write(buf, n);
+			}
+			if (r == LZMA_STREAM_END) break;
+			if (r != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "liblzma returned error code");
+		} while (this->lzma.avail_in || !this->lzma.avail_out);
+	}
 
-static void WriteLZMA(byte *buf, size_t len)
-{
-	WriteLZMALoop(&_lzma, buf, len, LZMA_RUN);
-}
+	/* virtual */ void Write(byte *buf, size_t size)
+	{
+		this->WriteLoop(buf, size, LZMA_RUN);
+	}
 
-static void UninitWriteLZMA()
-{
-	/* flush any pending output. */
-	if (_sl.fh) WriteLZMALoop(&_lzma, NULL, 0, LZMA_FINISH);
-	lzma_end(&_lzma);
-	free(_sl.buf_ori);
-}
+	/* virtual */ void Finish()
+	{
+		this->WriteLoop(NULL, 0, LZMA_FINISH);
+		this->chain->Finish();
+		lzma_end(&this->lzma);
+	}
+};
 
 #endif /* WITH_LZMA */
 
@@ -2060,9 +2191,7 @@ struct SaveLoadFormat {
 	ReaderProc *reader;                   ///< function that loads the data from the file
 	void (*uninit_read)();                ///< function executed when reading is finished
 
-	bool (*init_write)(byte compression); ///< function executed upon intialization of the saver
-	WriterProc *writer;                   ///< function that saves the data to the file
-	void (*uninit_write)();               ///< function executed when writing is done
+	SaveFilter *(*init_write)(SaveFilter *chain, byte compression); ///< Constructor for the save filter.
 
 	byte min_compression;                 ///< the minimum compression level of this format
 	byte default_compression;             ///< the default compression level of this format
@@ -2073,19 +2202,19 @@ struct SaveLoadFormat {
 static const SaveLoadFormat _saveload_formats[] = {
 #if defined(WITH_LZO)
 	/* Roughly 75% larger than zlib level 6 at only ~7% of the CPU usage. */
-	{"lzo",    TO_BE32X('OTTD'), InitLZO,      ReadLZO,    UninitLZO,      InitLZO,       WriteLZO,    UninitLZO,       0, 0, 0},
+	{"lzo",    TO_BE32X('OTTD'), InitLZO,      ReadLZO,    UninitLZO,      CreateSaveFilter<LZOSaveFilter>,    0, 0, 0},
 #else
-	{"lzo",    TO_BE32X('OTTD'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL,            0, 0, 0},
+	{"lzo",    TO_BE32X('OTTD'), NULL,         NULL,       NULL,           NULL,                               0, 0, 0},
 #endif
 	/* Roughly 5 times larger at only 1% of the CPU usage over zlib level 6. */
-	{"none",   TO_BE32X('OTTN'), InitNoComp,   ReadNoComp, UninitNoComp,   InitNoComp,    WriteNoComp, UninitNoComp,    0, 0, 0},
+	{"none",   TO_BE32X('OTTN'), InitNoComp,   ReadNoComp, UninitNoComp,   CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0},
 #if defined(WITH_ZLIB)
 	/* After level 6 the speed reduction is significant (1.5x to 2.5x slower per level), but the reduction in filesize is
 	 * fairly insignificant (~1% for each step). Lower levels become ~5-10% bigger by each level than level 6 while level
 	 * 1 is "only" 3 times as fast. Level 0 results in uncompressed savegames at about 8 times the cost of "none". */
-	{"zlib",   TO_BE32X('OTTZ'), InitReadZlib, ReadZlib,   UninitReadZlib, InitWriteZlib, WriteZlib,   UninitWriteZlib, 0, 6, 9},
+	{"zlib",   TO_BE32X('OTTZ'), InitReadZlib, ReadZlib,   UninitReadZlib, CreateSaveFilter<ZlibSaveFilter>,   0, 6, 9},
 #else
-	{"zlib",   TO_BE32X('OTTZ'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL,            0, 0, 0},
+	{"zlib",   TO_BE32X('OTTZ'), NULL,         NULL,       NULL,           NULL,                               0, 0, 0},
 #endif
 #if defined(WITH_LZMA)
 	/* Level 2 compression is speed wise as fast as zlib level 6 compression (old default), but results in ~10% smaller saves.
@@ -2093,9 +2222,9 @@ static const SaveLoadFormat _saveload_formats[] = {
 	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%
 	 * slower while not improving the filesize, while level 0 and 1 are faster, but don't reduce savegame size much.
 	 * It's OTTX and not e.g. OTTL because liblzma is part of xz-utils and .tar.xz is prefered over .tar.lzma. */
-	{"lzma",   TO_BE32X('OTTX'), InitReadLZMA, ReadLZMA,   UninitReadLZMA, InitWriteLZMA, WriteLZMA,   UninitWriteLZMA, 0, 2, 9},
+	{"lzma",   TO_BE32X('OTTX'), InitReadLZMA, ReadLZMA,   UninitReadLZMA, CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
 #else
-	{"lzma",   TO_BE32X('OTTX'), NULL,         NULL,       NULL,           NULL,          NULL,        NULL,            0, 0, 0},
+	{"lzma",   TO_BE32X('OTTX'), NULL,         NULL,       NULL,           NULL,                               0, 0, 0},
 #endif
 };
 
@@ -2162,6 +2291,9 @@ static inline void ClearMemoryDumper()
 {
 	delete _sl.dumper;
 	_sl.dumper = NULL;
+
+	delete _sl.sf;
+	_sl.sf = NULL;
 }
 
 /** Small helper function to close the to be loaded savegame and signal error */
@@ -2236,15 +2368,12 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 
 		/* We have written our stuff to memory, now write it to file! */
 		uint32 hdr[2] = { fmt->tag, TO_BE32(SAVEGAME_VERSION << 16) };
-		if (fwrite(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
+		_sl.sf->Write((byte*)hdr, sizeof(hdr));
 
-		if (!fmt->init_write(compression)) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
+		_sl.sf = fmt->init_write(_sl.sf, compression);
+		_sl.dumper->Flush(_sl.sf);
 
-		_sl.dumper->Flush(fmt->writer);
 		ClearMemoryDumper();
-
-		fmt->uninit_write();
-		fclose(_sl.fh);
 
 		if (threaded) SetAsyncSaveFinish(SaveFileDone);
 
@@ -2358,6 +2487,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
 
 			_sl.dumper = new MemoryDumper();
+			_sl.sf = new FileWriter(_sl.fh);
+			_sl.fh = NULL; // This shouldn't be closed; goes via _sl.sf now.
 			_sl.excpt_uninit = ClearMemoryDumper;
 
 			_sl_version = SAVEGAME_VERSION;
