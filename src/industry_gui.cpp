@@ -1143,7 +1143,11 @@ protected:
 	/** Sort industries by type and name */
 	static int CDECL IndustryTypeSorter(const Industry * const *a, const Industry * const *b)
 	{
-		int r = (*a)->type - (*b)->type;
+		int it_a = 0;
+		while (it_a != NUM_INDUSTRYTYPES && (*a)->type != _sorted_industry_types[it_a]) it_a++;
+		int it_b = 0;
+		while (it_b != NUM_INDUSTRYTYPES && (*b)->type != _sorted_industry_types[it_b]) it_b++;
+		int r = it_a - it_b;
 		return (r == 0) ? IndustryNameSorter(a, b) : r;
 	}
 
