@@ -2471,6 +2471,38 @@ void WaitTillSaved()
 }
 
 /**
+ * Actually perform the saving of the savegame.
+ * General tactic is to first save the game to memory, then write it to file
+ * using the writer, either in threaded mode if possible, or single-threaded.
+ * @param writer   The filter to write the savegame to.
+ * @param threaded Whether to try to perform the saving asynchroniously.
+ */
+static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
+{
+	assert(!_ts.saveinprogress);
+
+	_sl.dumper = new MemoryDumper();
+	_sl.sf = writer;
+
+	_sl_version = SAVEGAME_VERSION;
+
+	SaveViewportBeforeSaveGame();
+	SlSaveChunks();
+
+	SaveFileStart();
+	if (!threaded || !ThreadObject::New(&SaveFileToDiskThread, NULL, &_save_thread)) {
+		if (threaded) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
+
+		SaveOrLoadResult result = SaveFileToDisk(false);
+		SaveFileDone();
+
+		return result;
+	}
+
+	return SL_OK;
+}
+
+/**
  * Main Save or Load function where the high-level saveload functions are
  * handled. It opens the savegame, selects format and checks versions
  * @param filename The name of the savegame being created/loaded
@@ -2539,29 +2571,11 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			SlError(mode == SL_SAVE ? STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE : STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 		}
 
-		/* General tactic is to first save the game to memory, then use an available writer
-		 * to write it to file, either in threaded mode if possible, or single-threaded */
 		if (mode == SL_SAVE) { // SAVE game
 			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
-
-			_sl.dumper = new MemoryDumper();
-			_sl.sf = new FileWriter(fh);
-
-			_sl_version = SAVEGAME_VERSION;
-
-			SaveViewportBeforeSaveGame();
-			SlSaveChunks();
-
-			SaveFileStart();
 			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
-			if (!threaded || !ThreadObject::New(&SaveFileToDiskThread, NULL, &_save_thread)) {
-				if (threaded) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
-				SaveOrLoadResult result = SaveFileToDisk(false);
-				SaveFileDone();
-
-				return result;
-			}
+			return DoSave(new FileWriter(fh), threaded);
 		} else { // LOAD game
 			assert(mode == SL_LOAD || mode == SL_LOAD_CHECK);
 			DEBUG(desync, 1, "load: %s", filename);
