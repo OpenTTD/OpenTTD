@@ -128,6 +128,21 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	return _cur_year;
 }
 
+/** Available cheats. */
+enum CheatNumbers {
+	CHT_MONEY,           ///< Change amount of money.
+	CHT_CHANGE_COMPANY,  ///< Switch company.
+	CHT_EXTRA_DYNAMITE,  ///< Dynamite anything.
+	CHT_CROSSINGTUNNELS, ///< Allow tunnels to cross each other.
+	CHT_BUILD_IN_PAUSE,  ///< Allow building while paused.
+	CHT_NO_JETCRASH,     ///< Disable jet-airplane crashes.
+	CHT_SETUP_PROD,      ///< Allow manually editing of industry production.
+	CHT_SWITCH_CLIMATE,  ///< Switch climate.
+	CHT_CHANGE_DATE,     ///< Do time traveling.
+
+	CHT_NUM_CHEATS,      ///< Number of cheats.
+};
+
 /**
  * Signature of handler function when user clicks at a cheat.
  * @param p1 The new value.
@@ -146,6 +161,7 @@ struct CheatEntry {
 
 /**
  * The available cheats.
+ * Order matches with the values of #CheatNumbers
  */
 static const CheatEntry _cheats_ui[] = {
 	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,                    &_cheats.money.been_used,            &ClickMoneyCheat         },
@@ -158,6 +174,8 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_UINT8, STR_CHEAT_SWITCH_CLIMATE,  &_settings_game.game_creation.landscape, &_cheats.switch_climate.been_used,   &ClickChangeClimateCheat },
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                              &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };
+
+assert_compile(CHT_NUM_CHEATS == lengthof(_cheats_ui));
 
 /** Names of the cheat window widgets. */
 enum CheatWidgets {
@@ -327,7 +345,7 @@ struct CheatWindow : Window {
 				value = ce->proc(value + ((x >= 30) ? 1 : -1), (x >= 30) ? 1 : -1);
 
 				/* The first cheat (money), doesn't return a different value. */
-				if (value != oldvalue || btn == 0) this->clicked = btn * 2 + 1 + ((x >= 30) != rtl ? 1 : 0);
+				if (value != oldvalue || btn == CHT_MONEY) this->clicked = btn * 2 + 1 + ((x >= 30) != rtl ? 1 : 0);
 				break;
 		}
 
