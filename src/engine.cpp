@@ -601,6 +601,9 @@ void StartupEngines()
 		c->avail_railtypes = GetCompanyRailtypes(c->index);
 		c->avail_roadtypes = GetCompanyRoadtypes(c->index);
 	}
+
+	/* Invalidate any open purchase lists */
+	InvalidateWindowClassesData(WC_BUILD_VEHICLE);
 }
 
 static void AcceptEnginePreview(EngineID eid, CompanyID company)
