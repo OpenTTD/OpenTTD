@@ -41,6 +41,7 @@
 #include "../string_func.h"
 #include "../engine_base.h"
 #include "../fios.h"
+#include "../gui.h"
 
 #include "table/strings.h"
 
@@ -445,7 +446,12 @@ struct SaveLoadParams {
 
 	StringID error_str;                  ///< the translatable error message to show
 	char *extra_msg;                     ///< the error message
+
+	byte ff_state;                       ///< The state of fast-forward when saving started.
+	bool saveinprogress;                 ///< Whether there is currently a save in progress.
 };
+
+static SaveLoadParams _sl; ///< Parameters used for/at saveload.
 
 /* these define the chunks */
 extern const ChunkHandler _gamelog_chunk_handlers[];
@@ -515,8 +521,6 @@ static const ChunkHandler * const _chunk_handlers[] = {
 #define FOR_ALL_CHUNK_HANDLERS(ch) \
 	for (const ChunkHandler * const *chsc = _chunk_handlers; *chsc != NULL; chsc++) \
 		for (const ChunkHandler *ch = *chsc; ch != NULL; ch = (ch->flags & CH_LAST) ? NULL : ch + 1)
-
-static SaveLoadParams _sl;
 
 /** Null all pointers (convert index -> NULL) */
 static void SlNullPointers()
@@ -2012,17 +2016,6 @@ struct NoCompSaveFilter : SaveFilter {
 	}
 };
 
-#include "../gui.h"
-
-struct ThreadedSave {
-	byte ff_state;
-	bool saveinprogress;
-	CursorID cursor;
-};
-
-static ThreadedSave _ts;
-
-
 /********************************************
  ********** START OF ZLIB CODE **************
  ********************************************/
@@ -2375,22 +2368,22 @@ static inline void ClearSaveLoadState()
  */
 static void SaveFileStart()
 {
-	_ts.ff_state = _fast_forward;
+	_sl.ff_state = _fast_forward;
 	_fast_forward = 0;
 	if (_cursor.sprite == SPR_CURSOR_MOUSE) SetMouseCursor(SPR_CURSOR_ZZZ, PAL_NONE);
 
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_START);
-	_ts.saveinprogress = true;
+	_sl.saveinprogress = true;
 }
 
 /** Update the gui accordingly when saving is done and release locks on saveload. */
 static void SaveFileDone()
 {
-	if (_game_mode != GM_MENU) _fast_forward = _ts.ff_state;
+	if (_game_mode != GM_MENU) _fast_forward = _sl.ff_state;
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
 
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_FINISH);
-	_ts.saveinprogress = false;
+	_sl.saveinprogress = false;
 }
 
 /** Set the error message from outside of the actual loading/saving of the game (AfterLoadGame and friends) */
@@ -2479,7 +2472,7 @@ void WaitTillSaved()
  */
 static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
 {
-	assert(!_ts.saveinprogress);
+	assert(!_sl.saveinprogress);
 
 	_sl.dumper = new MemoryDumper();
 	_sl.sf = writer;
@@ -2516,7 +2509,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 	uint32 hdr[2];
 
 	/* An instance of saving is already active, so don't go saving again */
-	if (_ts.saveinprogress && mode == SL_SAVE) {
+	if (_sl.saveinprogress && mode == SL_SAVE) {
 		/* if not an autosave, but a user action, show error message */
 		if (!_do_autosave) ShowErrorMessage(STR_ERROR_SAVE_STILL_IN_PROGRESS, INVALID_STRING_ID, WL_ERROR);
 		return SL_OK;
