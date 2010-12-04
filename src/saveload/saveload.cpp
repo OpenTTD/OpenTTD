@@ -2047,7 +2047,7 @@ struct ZlibLoadFilter : LoadFilter {
 	/* virtual */ size_t Read(byte *buf, size_t size)
 	{
 		this->z.next_out  = buf;
-		this->z.avail_out = size;
+		this->z.avail_out = (uint)size;
 
 		do {
 			/* read more bytes from the file? */
@@ -2139,6 +2139,14 @@ struct ZlibSaveFilter : SaveFilter {
 #if defined(WITH_LZMA)
 #include <lzma.h>
 
+/**
+ * Have a copy of an initialised LZMA stream. We need this as it's
+ * impossible to "re"-assign LZMA_STREAM_INIT to a variable in some
+ * compilers, i.e. LZMA_STREAM_INIT can't be used to set something.
+ * This var has to be used instead.
+ */
+static const lzma_stream _lzma_init = LZMA_STREAM_INIT;
+
 /** Filter without any compression. */
 struct LZMALoadFilter : LoadFilter {
 	lzma_stream lzma;                  ///< Stream state that we are reading from.
@@ -2148,9 +2156,8 @@ struct LZMALoadFilter : LoadFilter {
 	 * Initialise this filter.
 	 * @param chain The next filter in this chain.
 	 */
-	LZMALoadFilter(LoadFilter *chain) : LoadFilter(chain)
+	LZMALoadFilter(LoadFilter *chain) : LoadFilter(chain), lzma(_lzma_init)
 	{
-		this->lzma = LZMA_STREAM_INIT;
 		/* Allow saves up to 256 MB uncompressed */
 		if (lzma_auto_decoder(&this->lzma, 1 << 28, 0) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize decompressor");
 	}
@@ -2192,9 +2199,8 @@ struct LZMASaveFilter : SaveFilter {
 	 * @param chain             The next filter in this chain.
 	 * @param compression_level The requested level of compression.
 	 */
-	LZMASaveFilter(SaveFilter *chain, byte compression_level) : SaveFilter(chain)
+	LZMASaveFilter(SaveFilter *chain, byte compression_level) : SaveFilter(chain), lzma(_lzma_init)
 	{
-		this->lzma = LZMA_STREAM_INIT;
 		if (lzma_easy_encoder(&this->lzma, compression_level, LZMA_CHECK_CRC32) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
 
