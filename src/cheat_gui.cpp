@@ -117,9 +117,10 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);
 
-	if ((ymd.year == MIN_YEAR && p2 == -1) || (ymd.year == MAX_YEAR && p2 == 1)) return _cur_year;
+	p1 = Clamp(p1, MIN_YEAR, MAX_YEAR);
+	if (p1 == _cur_year) return _cur_year;
 
-	SetDate(ConvertYMDToDate(_cur_year + p2, ymd.month, ymd.day), _date_fract);
+	SetDate(ConvertYMDToDate(p1, ymd.month, ymd.day), _date_fract);
 	EnginesMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);
 	InvalidateWindowClassesData(WC_BUILD_STATION, 0);
