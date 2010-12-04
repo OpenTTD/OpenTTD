@@ -2553,7 +2553,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě 
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Právě se chystáš změnit nastavení grafik za běžící hry; může to shodit OpenTTD.{}Jsi si tím opravdu jist(a)?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Právě se chystáš změnit nastavení za běžící hry. To může to shodit OpenTTD nebo způsobit zaseknutí hry. Neupozorňujte na to jako na bug.{}Jste si tím opravdu jisti?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nelze přidat soubor: duplicitní GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpovídající soubor nebyl nalezen (načetl se kompatibilní GRF)

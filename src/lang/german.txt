@@ -1429,7 +1429,7 @@ STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Wechsle
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Gemäßigt
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktisch
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropisch
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Fantastisch
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Spielzeugland
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ändere Datum: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiviere Veränderung der Produktionswerte: {ORANGE}{STRING}
 

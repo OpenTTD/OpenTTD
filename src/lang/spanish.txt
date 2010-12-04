@@ -1382,7 +1382,7 @@ STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Empezar 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Elegir estilo de escenario 'templado'
 STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Elegir estilo de escenario 'subártico'
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Elegir estilo de escenario 'subtropical'
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir estilo de escenario 'fantasía'
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Elegir estilo de escenario 'juguetelandia'
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Muestra las opciones del juego
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Muestra las opciones de dificultad
@@ -1429,7 +1429,7 @@ STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Cambiar
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Paisaje templado
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Paisaje subártico
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Paisaje subtropical
-STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Paisaje fantasía
+STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Paisaje juguetelandia
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar fecha: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activar modificación de los valores de producción: {ORANGE}{STRING}
 

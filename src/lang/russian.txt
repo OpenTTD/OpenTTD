@@ -1336,7 +1336,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Раз�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Одна или несколько клеток в северном углу не пусты
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна или несколько клеток берега без воды
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. размер станции: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. размер станции: {ORANGE}{STRING} клет{P 0:1 ка ки ок} {RED}(большие значения замедляют игру)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолётных площадках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Связать ландшафтную панель с транспортной: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Цвет земли на миникарте: {ORANGE}{STRING}
@@ -1405,13 +1405,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Раз�
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Число тактов перед остановкой ИИ: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Интервал обслуживания в процентах: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Интервал обслуживания поездов: {ORANGE}{STRING} дней/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Интервал обслуживания поездов: {ORANGE}{STRING} д{P 0:1 ень ня ней}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Обслуживание поездов по умолчанию: {ORANGE}не обслуживаются
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Интервал обслуживания автотранспорта: {ORANGE}{STRING} дней/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Интервал обслуживания автотранспорта: {ORANGE}{STRING} д{P 0:1 ень ня ней}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Обслуживание автотранспорта: {ORANGE}отключено
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Интервал обслуживания авиатранспорта: {ORANGE}{STRING} дней/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Интервал обслуживания авиатранспорта: {ORANGE}{STRING} д{P 0:1 ень ня ней}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Обслуживание авиатранспорта: {ORANGE}отключено
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Интервал обслуживания кораблей: {ORANGE}{STRING} дней/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Интервал обслуживания кораблей: {ORANGE}{STRING} д{P 0:1 ень ня ней}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Обслуживание кораблей: {ORANGE}не обслуживаются
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Не обслуживать транспорт, если отключены поломки: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Учитывать ограничение скорости у вагонов: {ORANGE}{STRING}
@@ -1504,7 +1504,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Алг�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Оригинальный {BLUE}(Рекомендуется)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Не рекомендуется)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Изменить значение
 
@@ -2652,7 +2651,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}В те�
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Осторожно!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы модифицируете запущенную игру - это может привести к нестабильной работе.{}Вы действительно хотите это сделать?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы модифицируете запущенную игру - это может закрыть OpenTTD или привести к нестабильной работе. Не присылайте отчёты с ошибками в этом случае.{}Вы действительно хотите это сделать?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Невозможно добавить файл: дублируются GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Соответствующий файл не найден (загружен совместимый GRF)

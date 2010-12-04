@@ -1499,7 +1499,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Даз�
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Адна ці некалькі клетак ў паўночным куце мапы не пустыя
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Адна ці некалькі клетак берага без вады
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. працялегласьць станцыі: {ORANGE}{STRING} {RED}(вялікія значэньні запавольваюць гульню)
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Макс. працялегласьць станцыі: {ORANGE}{STRING} клет{P 0:1 ка кi ак} {RED}(вялікія значэньні запавольваюць гульню)
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Уключыць абслугоўваньне на верталётных пляцоўках: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Зьвязаць ляндшафтную панэль з транспартнай: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Колер зямлі на мінімапе: {ORANGE}{STRING}
@@ -1568,13 +1568,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Даз�
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Колькасьць тактаў перад спыненьнем ШІ: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Інтэрвал абслугоўваньня ў адсотках (%): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Інтэрвал абслугоўваньня цягнікоў: {ORANGE}{STRING} дзён/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Інтэрвал абслугоўваньня цягнікоў: {ORANGE}{STRING} д{P 0:1 зень нi зён}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Абслугоўваньне цягнікоў па змоўчаньні: {ORANGE} адключана
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Інтэрвал абслугоўваньня аўтатранспарту: {ORANGE}{STRING} дзён/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Інтэрвал абслугоўваньня аўтатранспарту: {ORANGE}{STRING} д{P 0:1 зень нi зён}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Абслугоўваньне аўтатранспарту: {ORANGE}адключана
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Інтэрвал абслугоўваньня самалётаў: {ORANGE}{STRING} дзён/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Інтэрвал абслугоўваньня самалётаў: {ORANGE}{STRING} д{P 0:1 зень нi зён}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Абслугоўваньне самалётаў: {ORANGE}адключана
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Інтэрвал абслугоўваньня караблёў: {ORANGE}{STRING} дзён/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Інтэрвал абслугоўваньня караблёў: {ORANGE}{STRING} д{P 0:1 зень нi зён}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Абслугоўваньне караблёў: {ORANGE}адключана
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Адключыць абслугоўваньне, калі скасаваны паломкі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Уключыць абмежаваньне хуткасьці вагонаў: {ORANGE}{STRING}
@@ -1624,7 +1624,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Раз�
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Злева
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Пасярэдзiне
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Зправа
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радыюс прыліпаньня вокнаў: {ORANGE}{STRING} піксэляў
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Радыюс прыліпаньня вокнаў: {ORANGE}{STRING} пікс.
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радыюс прыліпаньня вокнаў: {ORANGE}адключана
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Макс. колькасьць адкрытых вокнаў (не «прылепленых»): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Макс. колькасьць адкрытых вокнаў (не «прылепленых»): {ORANGE}не абмежавана
@@ -1667,7 +1667,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Аль�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :арыгінальны {BLUE}(рэкамендуецца)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(не рэкамэндуецца)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Зьмяніць значэньне
 
@@ -2815,7 +2814,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}У бя�
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Асцярожна!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы мадыфікуеце запушчаную гульню - гэта можа прывесьці да нестабільнай працы.{}Вы сапраўды жадаеце гэта зрабіць?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы мадыфікуеце запушчаную гульню - гэта можа закрыць OpenTTD цi прывесьці да нестабільнай працы. Не прысылайце справаздачу з памылкамi ў гэтым выпадку.{}Вы сапраўды жадаеце гэта зрабіць?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Немагчыма дадаць файл: дублююцца GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Адпаведны файл ня знойдзены (загружаны сумяшчальны GRF)
