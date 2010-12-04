@@ -229,7 +229,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NIC
 STR_ABBREV_ALL                                                  :{TINYFONT}VS.
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} cestujuci{P 0:1 "" "ch"}
+STR_PASSENGERS                                                  :{COMMA} cestujuci{P "" "" ch}
 STR_BAGS                                                        :{COMMA} vriec
 STR_TONS                                                        :{COMMA} ton
 STR_LITERS                                                      :{COMMA} litrov
