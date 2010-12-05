@@ -16,6 +16,7 @@
 #include "network_internal.h"
 #include "network_gui.h"
 #include "../saveload/saveload.h"
+#include "../saveload/saveload_filter.h"
 #include "../command_func.h"
 #include "../console_func.h"
 #include "../fileio_func.h"
@@ -37,11 +38,92 @@
 
 /* This file handles all the client-commands */
 
+
+/** Read some packets, and when do use that data as initial load filter. */
+struct PacketReader : LoadFilter {
+	static const size_t CHUNK = 32 * 1024;  ///< 32 KiB chunks of memory.
+
+	AutoFreeSmallVector<byte *, 16> blocks; ///< Buffer with blocks of allocated memory.
+	byte *buf;                              ///< Buffer we're going to write to/read from.
+	byte *bufe;                             ///< End of the buffer we write to/read from.
+	byte **block;                           ///< The block we're reading from/writing to.
+	size_t written_bytes;                   ///< The total number of bytes we've written.
+	size_t read_bytes;                      ///< The total number of read bytes.
+
+	/** Initialise everything. */
+	PacketReader() : LoadFilter(NULL), buf(NULL), bufe(NULL), block(NULL), written_bytes(0), read_bytes(0)
+	{
+	}
+
+	/**
+	 * Add a packet to this buffer.
+	 * @param p The packet to add.
+	 */
+	void AddPacket(const Packet *p)
+	{
+		assert(this->read_bytes == 0);
+
+		size_t in_packet = p->size - p->pos;
+		size_t to_write  = min(this->bufe - this->buf, in_packet);
+		const byte *pbuf = p->buffer + p->pos;
+
+		this->written_bytes += in_packet;
+		if (to_write != 0) {
+			memcpy(this->buf, pbuf, to_write);
+			this->buf += to_write;
+		}
+
+		/* Did everything fit in the current chunk, then we're done. */
+		if (to_write == in_packet) return;
+
+		/* Allocate a new chunk and add the remaining data. */
+		pbuf += to_write;
+		to_write   = in_packet - to_write;
+		this->buf  = *this->blocks.Append() = CallocT<byte>(CHUNK);
+		this->bufe = this->buf + CHUNK;
+
+		memcpy(this->buf, pbuf, to_write);
+		this->buf += to_write;
+	}
+
+	/* virtual */ size_t Read(byte *rbuf, size_t size)
+	{
+		/* Limit the amount to read to whatever we still have. */
+		size_t ret_size = size = min(this->written_bytes - this->read_bytes, size);
+		this->read_bytes += ret_size;
+		const byte *rbufe = rbuf + ret_size;
+
+		while (rbuf != rbufe) {
+			if (this->buf == this->bufe) {
+				this->buf = *this->block++;
+				this->bufe = this->buf + CHUNK;
+			}
+
+			size_t to_write = min(this->bufe - this->buf, rbufe - rbuf);
+			memcpy(rbuf, this->buf, to_write);
+			rbuf += to_write;
+			this->buf += to_write;
+		}
+
+		return ret_size;
+	}
+
+	/* virtual */ void Reset()
+	{
+		this->read_bytes = 0;
+
+		this->block = this->blocks.Begin();
+		this->buf   = *this->block++;
+		this->bufe  = this->buf + CHUNK;
+	}
+};
+
+
 /**
  * Create a new socket for the client side of the game connection.
  * @param s The socket to connect with.
  */
-ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s), download_file(NULL), status(STATUS_INACTIVE)
+ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s), savegame(NULL), status(STATUS_INACTIVE)
 {
 	assert(ClientNetworkGameSocketHandler::my_client == NULL);
 	ClientNetworkGameSocketHandler::my_client = this;
@@ -53,9 +135,7 @@ ClientNetworkGameSocketHandler::~ClientNetworkGameSocketHandler()
 	assert(ClientNetworkGameSocketHandler::my_client == this);
 	ClientNetworkGameSocketHandler::my_client = NULL;
 
-	/* If for whatever reason the handle isn't closed, do it now. */
-	if (this->download_file != NULL) fclose(this->download_file);
-	free(this->download_filename);
+	delete this->savegame;
 }
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
@@ -691,18 +771,9 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_BEGIN)
 	if (this->status < STATUS_AUTHORIZED || this->status >= STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	this->status = STATUS_MAP;
 
-	if (this->download_file != NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->savegame != NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	char filename[MAX_PATH];
-	FioGetDirectory(filename, lengthof(filename), AUTOSAVE_DIR);
-	strecat(filename, "network_client.tmp", lastof(filename));
-
-	this->download_file = FioFOpenFile(filename, "wb", NO_DIRECTORY);
-	if (this->download_file == NULL) {
-		_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
-		return NETWORK_RECV_STATUS_SAVEGAME;
-	}
-	this->download_filename = strdup(filename);
+	this->savegame = new PacketReader();
 
 	_frame_counter = _frame_counter_server = _frame_counter_max = p->Recv_uint32();
 
@@ -718,7 +789,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_BEGIN)
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_SIZE)
 {
 	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	if (this->download_file == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->savegame == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	_network_join_bytes_total = p->Recv_uint32();
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
@@ -729,17 +800,12 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_SIZE)
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DATA)
 {
 	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	if (this->download_file == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->savegame == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	/* We are still receiving data, put it to the file */
-	if (fwrite(p->buffer + p->pos, 1, p->size - p->pos, this->download_file) != (size_t)(p->size - p->pos)) {
-		_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
-		fclose(this->download_file);
-		this->download_file = NULL;
-		return NETWORK_RECV_STATUS_SAVEGAME;
-	}
+	this->savegame->AddPacket(p);
 
-	_network_join_bytes = ftell(this->download_file);
+	_network_join_bytes = this->savegame->written_bytes;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 	return NETWORK_RECV_STATUS_OKAY;
@@ -748,18 +814,24 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DATA)
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DONE)
 {
 	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	if (this->download_file == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-
-	fclose(this->download_file);
-	this->download_file = NULL;
+	if (this->savegame == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	_network_join_status = NETWORK_JOIN_STATUS_PROCESSING;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
+	/*
+	 * Make sure everything is set for reading.
+	 *
+	 * We need the local copy and reset this->savegame because when
+	 * loading fails the network gets reset upon loading the intro
+	 * game, which would cause us to free this->savegame twice.
+	 */
+	LoadFilter *lf = this->savegame;
+	this->savegame = NULL;
+	lf->Reset();
+
 	/* The map is done downloading, load it */
-	bool load_success = SafeLoad(this->download_filename, SL_LOAD, GM_NORMAL, NO_DIRECTORY);
-	free(this->download_filename);
-	this->download_filename = NULL;
+	bool load_success = SafeLoad(NULL, SL_LOAD, GM_NORMAL, NO_DIRECTORY, lf);
 
 	if (!load_success) {
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
