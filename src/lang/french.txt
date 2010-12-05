@@ -1431,6 +1431,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Environnement '
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Environnement 'Tropical'
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Environnement 'Jouets'
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Changer la date{NBSP}: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Modifier l'année courante
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permettre la modification des valeurs de production{NBSP}: {ORANGE}{STRING}
 
 # Livery window
@@ -1694,6 +1695,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Rapatrie
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Rapatriement des infos sur la compagnie...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} avant vous
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} téléchargés jusqu'à maintenant
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} téléchargés
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Déconnecter

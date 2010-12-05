@@ -1182,7 +1182,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Permite
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una sau mai multe suprafeţe din marginea nordică nu sunt goale
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una sau mai multe suprafeţe din marginea hărţii nu contin apă
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Dimensiunea maximă a staţiilor: {ORANGE}{STRING} {RED}Atenţie: Valorile mari încetinesc jocul!
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Întinderea maximă a staţiilor: {ORANGE}{STRING} tile{P 0:1 "" s} {RED}Atenţie: Valorile mari încetinesc jocul!
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Service automat pentru elicoptere la helipaduri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Conectează bara de instrumente pentru peisaj cu cea de construcţii feroviare/auto/aeriane: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Culoarea terenului folosită pentru harta mică: {ORANGE}{STRING}
@@ -1237,7 +1237,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Pastrea
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Cheltuielile întregului grup de jucători în raportul financiar al companiei: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Arată uneltele de constructie când nu sunt disponibile vehicule potrivite: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri pentru un jucător: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri per companie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Nr. max. de autovehicule pentru un jucător: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Nr. max. de aeronave pentru un jucător: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Nr. max. de nave pentru un jucător: {ORANGE}{STRING}
@@ -1251,13 +1251,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permite
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}# de operaţii după care IA este suspendată: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervaluri de service în procente: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service implicit pentru trenuri: {ORANGE}{STRING} zile/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service implicit pentru trenuri: {ORANGE}{STRING} zi{P 0:1 "" le}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalul de service implicit pentru trenuri: {ORANGE}dezactivat
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalul de service implicit pentru autovehicule: {ORANGE}{STRING} zile/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalul de service implicit pentru autovehicule: {ORANGE}{STRING} zi{P 0:1 "" le}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalul de service implicit pentru autovehicule: {ORANGE}dezactivat
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalul de service implicit pentru aeronave: {ORANGE}{STRING} zile/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalul de service implicit pentru aeronave: {ORANGE}{STRING} zi{P 0:1 "" le}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalul de service implicit pentru aeronave: {ORANGE}dezactivat
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalul de service implicit pentru nave: {ORANGE}{STRING} zile/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalul de service implicit pentru nave: {ORANGE}{STRING} zi{P 0:1 "" le}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalul de service implicit pentru nave: {ORANGE}dezactivat
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Deactivare service când defecţiunile nu sunt active: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Activează limite de viteză pentru vagoane: {ORANGE}{STRING}
@@ -1307,10 +1307,10 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Poziţi
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Stânga
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centru
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Dreapta
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Distanţa de 'snap' pentru ferestre: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Distanţa de lipire pentru ferestre: {ORANGE}{STRING} pixel{P 0:1 "" i}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Distanţa de 'snap' pentru ferestre: {ORANGE}dezactivată
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limita ferestrelor (non-lipicioase): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limita ferestrelor (non-lipicioase): {ORANGE}dezactivată
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Numărul maxim de ferestre nefixate: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Numărul maxim de ferestre nefixate: {ORANGE}dezactivat
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Viteza de dezvoltare a oraşului: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Deloc
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lentă
@@ -1350,7 +1350,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algorit
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomandat)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nerecomandat)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Schimbă valoarea setării
 
@@ -2096,10 +2095,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Micşore
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generează teren aleator
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Creează o hartă nouă
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Resetează peisajul
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Elimină de pe hartă toate proprietăţile deţinute de jucători
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Elimină de pe hartă toate proprietăţile deţinute de companii
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Resetare peisaj
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Eşti sigur că vrei să elimini toate proprietăţile deţinute de jucători?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Eşti sigur că vrei să elimini toate proprietăţile deţinute de companii?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generare oraş
@@ -2478,7 +2477,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Unele im
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Atenţie!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Eşti pe cale să faci modificari într-un joc activ. Aceasta poate destabiliza OpenTTD.{}Eşti absolut sigur că vrei să faci asta?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Eşti pe cale să faci modificari într-un joc activ. Aceasta poate destabiliza OpenTTD. Nu raporta probleme de acest gen.{}Eşti absolut sigur că vrei să faci asta?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nu pot adăuga fişierul: ID GRF duplicat
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nu am găsit niciun fişier corespunzător (am încărcat un GRF compatibil)

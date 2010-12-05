@@ -1431,6 +1431,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Paisaje subárt
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Paisaje subtropical
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Paisaje juguetelandia
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar fecha: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar año actual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activar modificación de los valores de producción: {ORANGE}{STRING}
 
 # Livery window
@@ -1694,6 +1695,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Recibien
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Recibiendo información empresa..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} delante de usted
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} descargados por el momento
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} descargados
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconectar

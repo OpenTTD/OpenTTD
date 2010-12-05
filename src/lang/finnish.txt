@@ -1430,6 +1430,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :pohjoinen maast
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :subtrooppinen maasto
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Lelumaan maasto
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuta päiväystä: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Muuta nykyistä vuotta
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Muuntuvat tuotantoarvot: {ORANGE}{STRING}
 
 # Livery window
@@ -1693,6 +1694,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Haetaan 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Haetaan yhtiötiedot...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} pelaaja{P "" a} jonossa
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} ladattu
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} ladattu
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Pura yhteys
