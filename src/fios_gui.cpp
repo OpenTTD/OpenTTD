@@ -565,7 +565,7 @@ public:
 						}
 						if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
 							/* Copy clicked name to editbox */
-							ttd_strlcpy(this->text.buf, file->title, this->text.maxsize);
+							ttd_strlcpy(this->text.buf, file->title, this->text.max_bytes);
 							UpdateTextBufferSize(&this->text);
 							this->SetWidgetDirty(SLWW_SAVE_OSK_TITLE);
 						}

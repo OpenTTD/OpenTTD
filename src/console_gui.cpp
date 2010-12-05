@@ -136,8 +136,8 @@ IConsoleModes _iconsole_mode;
 static void IConsoleClearCommand()
 {
 	memset(_iconsole_cmdline.buf, 0, ICON_CMDLN_SIZE);
-	_iconsole_cmdline.size = 1; // only terminating zero
-	_iconsole_cmdline.width = 0;
+	_iconsole_cmdline.bytes = 1; // only terminating zero
+	_iconsole_cmdline.pixels = 0;
 	_iconsole_cmdline.caretpos = 0;
 	_iconsole_cmdline.caretxoffs = 0;
 	SetWindowDirty(WC_CONSOLE, 0);
@@ -201,7 +201,7 @@ struct IConsoleWindow : Window
 			if (ypos <= top) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
-		int delta = this->width - this->line_offset - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
+		int delta = this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
 			DrawString(5, right, this->height - this->line_height, "]", (TextColour)CC_COMMAND, SA_LEFT | SA_FORCE);
 			delta = 0;
@@ -364,7 +364,7 @@ void IConsoleGUIInit()
 	memset(_iconsole_history, 0, sizeof(_iconsole_history));
 
 	_iconsole_cmdline.buf = CallocT<char>(ICON_CMDLN_SIZE); // create buffer and zero it
-	_iconsole_cmdline.maxsize = ICON_CMDLN_SIZE;
+	_iconsole_cmdline.max_bytes = ICON_CMDLN_SIZE;
 
 	IConsolePrintF(CC_WARNING, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
 	IConsolePrint(CC_WHITE,  "------------------------------------");
@@ -475,7 +475,7 @@ static void IConsoleHistoryNavigate(int direction)
 	IConsoleClearCommand();
 	/* copy history to 'command prompt / bash' */
 	assert(_iconsole_history[i] != NULL && IsInsideMM(i, 0, ICON_HISTORY_SIZE));
-	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_history[i], _iconsole_cmdline.maxsize);
+	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_history[i], _iconsole_cmdline.max_bytes);
 	UpdateTextBufferSize(&_iconsole_cmdline);
 }
 

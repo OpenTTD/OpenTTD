@@ -17,10 +17,13 @@
 #include "strings_type.h"
 #include "core/enum_type.hpp"
 
+/** Helper/buffer for input fields. */
 struct Textbuf {
 	char *buf;                ///< buffer in which text is saved
-	uint16 maxsize, maxwidth; ///< the maximum size of the buffer. Maxwidth specifies screensize in pixels, maxsize is in bytes (including terminating '\0')
-	uint16 size, width;       ///< the current size of the string. Width specifies screensize in pixels, size is in bytes
+	uint16 max_bytes;         ///< the maximum size of the buffer in bytes (including terminating '\0')
+	uint16 max_pixels;        ///< the maximum size of the buffer in pixels
+	uint16 bytes;             ///< the current size of the string in bytes (including terminating '\0')
+	uint16 pixels;            ///< the current size of the string in pixels
 	bool caret;               ///< is the caret ("_") visible or not
 	uint16 caretpos;          ///< the current position of the caret in the buffer, in bytes
 	uint16 caretxoffs;        ///< the current position of the caret in pixels
@@ -33,7 +36,7 @@ bool DeleteTextBufferChar(Textbuf *tb, int delmode);
 bool InsertTextBufferChar(Textbuf *tb, uint32 key);
 bool InsertTextBufferClipboard(Textbuf *tb);
 bool MoveTextBufferPos(Textbuf *tb, int navmode);
-void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 maxsize, uint16 maxwidth);
+void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_pixels);
 void UpdateTextBufferSize(Textbuf *tb);
 
 /** Flags used in ShowQueryString() call */
@@ -48,7 +51,7 @@ DECLARE_ENUM_AS_BIT_SET(QueryStringFlags)
 
 typedef void QueryCallbackProc(Window*, bool);
 
-void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter, QueryStringFlags flags);
+void ShowQueryString(StringID str, StringID caption, uint max_len, uint max_pixels, Window *parent, CharSetFilter afilter, QueryStringFlags flags);
 void ShowQuery(StringID caption, StringID message, Window *w, QueryCallbackProc *callback);
 
 /** The number of 'characters' on the on-screen keyboard. */
