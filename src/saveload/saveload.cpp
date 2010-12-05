@@ -272,6 +272,14 @@ struct LoadFilter {
 	 * @return The number of actually read bytes.
 	 */
 	virtual size_t Read(byte *buf, size_t len) = 0;
+
+	/**
+	 * Reset this filter to read from the beginning of the file.
+	 */
+	virtual void Reset()
+	{
+		this->chain->Reset();
+	}
 };
 
 
@@ -1822,12 +1830,13 @@ static void SlFixPointers()
 /** Yes, simply reading from a file. */
 struct FileReader : LoadFilter {
 	FILE *file; ///< The file to read from.
+	long begin; ///< The begin of the file.
 
 	/**
 	 * Create the file reader, so it reads from a specific file.
 	 * @param file The file to read from.
 	 */
-	FileReader(FILE *file) : LoadFilter(NULL), file(file)
+	FileReader(FILE *file) : LoadFilter(NULL), file(file), begin(ftell(file))
 	{
 	}
 
@@ -1847,6 +1856,12 @@ struct FileReader : LoadFilter {
 		if (this->file == NULL) return 0;
 
 		return fread(buf, 1, size, this->file);
+	}
+
+	/* virtual */ void Reset()
+	{
+		clearerr(this->file);
+		fseek(this->file, this->begin, SEEK_SET);
 	}
 };
 
@@ -2581,9 +2596,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 
 			_sl.lf = new FileReader(fh);
 
-			/* Can't fseek to 0 as in tar files that is not correct */
-			long pos = ftell(fh);
-			if (fread(hdr, sizeof(hdr), 1, fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+			if (_sl.lf->Read((byte*)hdr, sizeof(hdr)) != sizeof(hdr)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 
 			/* see if we have any loader for this type. */
 			const SaveLoadFormat *fmt = _saveload_formats;
@@ -2591,8 +2604,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 				/* No loader found, treat as version 0 and use LZO format */
 				if (fmt == endof(_saveload_formats)) {
 					DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
-					clearerr(fh);
-					fseek(fh, pos, SEEK_SET);
+					_sl.lf->Reset();
 					_sl_version = 0;
 					_sl_minor_version = 0;
 
