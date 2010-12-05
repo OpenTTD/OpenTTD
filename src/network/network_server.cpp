@@ -113,7 +113,7 @@ struct PacketWriter : SaveFilter {
 		while (buf != bufe) {
 			size_t to_write = min(SEND_MTU - this->current->size, bufe - buf);
 			memcpy(this->current->buffer + this->current->size, buf, to_write);
-			this->current->size += to_write;
+			this->current->size += (PacketSize)to_write;
 			buf += to_write;
 
 			if (this->current->size == SEND_MTU) {
@@ -142,7 +142,7 @@ struct PacketWriter : SaveFilter {
 
 		/* Fast-track the size to the client. */
 		Packet *p = new Packet(PACKET_SERVER_MAP_SIZE);
-		p->Send_uint32(this->total_size);
+		p->Send_uint32((uint32)this->total_size);
 		this->cs->NetworkTCPSocketHandler::SendPacket(p);
 
 		if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->EndCritical();

@@ -64,7 +64,7 @@ struct PacketReader : LoadFilter {
 		assert(this->read_bytes == 0);
 
 		size_t in_packet = p->size - p->pos;
-		size_t to_write  = min(this->bufe - this->buf, in_packet);
+		size_t to_write  = min((size_t)(this->bufe - this->buf), in_packet);
 		const byte *pbuf = p->buffer + p->pos;
 
 		this->written_bytes += in_packet;
@@ -805,7 +805,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DATA)
 	/* We are still receiving data, put it to the file */
 	this->savegame->AddPacket(p);
 
-	_network_join_bytes = this->savegame->written_bytes;
+	_network_join_bytes = (uint32)this->savegame->written_bytes;
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 	return NETWORK_RECV_STATUS_OKAY;
