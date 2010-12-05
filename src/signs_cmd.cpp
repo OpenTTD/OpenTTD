@@ -40,7 +40,7 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	if (!Sign::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_SIGNS);
 
 	/* Check sign text length if any */
-	if (!StrEmpty(text) && strlen(text) >= MAX_LENGTH_SIGN_NAME_BYTES) return CMD_ERROR;
+	if (!StrEmpty(text) && Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return CMD_ERROR;
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
@@ -80,7 +80,7 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 	/* Rename the signs when empty, otherwise remove it */
 	if (!StrEmpty(text)) {
-		if (strlen(text) >= MAX_LENGTH_SIGN_NAME_BYTES) return CMD_ERROR;
+		if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
 			/* Delete the old name */

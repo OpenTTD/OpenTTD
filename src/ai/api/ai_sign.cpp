@@ -30,7 +30,7 @@
 {
 	EnforcePrecondition(false, IsValidSign(sign_id));
 	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::strlen(name) < MAX_LENGTH_SIGN_NAME_BYTES, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_SIGN_NAME_CHARS, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return AIObject::DoCommand(0, sign_id, 0, CMD_RENAME_SIGN, name);
 }
@@ -66,7 +66,7 @@
 {
 	EnforcePrecondition(INVALID_SIGN, ::IsValidTile(location));
 	EnforcePrecondition(INVALID_SIGN, !::StrEmpty(text));
-	EnforcePreconditionCustomError(false, ::strlen(text) < MAX_LENGTH_SIGN_NAME_BYTES, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(text) < MAX_LENGTH_SIGN_NAME_CHARS, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	if (!AIObject::DoCommand(location, 0, 0, CMD_PLACE_SIGN, text, &AIInstance::DoCommandReturnSignID)) return INVALID_SIGN;
 

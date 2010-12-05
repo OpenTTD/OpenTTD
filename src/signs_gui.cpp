@@ -50,8 +50,8 @@ struct SignList {
 	static const Sign *last_sign;
 	GUISignList signs;
 
-	char filter_string[MAX_LENGTH_SIGN_NAME_BYTES]; ///< The match string to be used when the GUIList is (re)-sorted.
-	static bool match_case;                         ///< Should case sensitive matching be used?
+	char filter_string[MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH]; ///< The match string to be used when the GUIList is (re)-sorted.
+	static bool match_case;                                           ///< Should case sensitive matching be used?
 
 	/**
 	 * Creates a SignList with filtering disabled by default.
@@ -109,7 +109,7 @@ struct SignList {
 	static bool CDECL SignNameFilter(const Sign * const *a, FilterInfo filter_info)
 	{
 		/* Get sign string */
-		char buf1[MAX_LENGTH_SIGN_NAME_BYTES];
+		char buf1[MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH];
 		SetDParam(0, (*a)->index);
 		GetString(buf1, STR_SIGN_NAME, lastof(buf1));
 
@@ -146,7 +146,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 	int text_offset; ///< Offset of the sign text relative to the left edge of the SLW_LIST widget.
 	Scrollbar *vscroll;
 
-	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_BYTES)
+	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
 	{
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(SLW_SCROLLBAR);
@@ -155,7 +155,7 @@ struct SignListWindow : QueryStringBaseWindow, SignList {
 
 		/* Initialize the text edit widget */
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, MAX_LENGTH_SIGN_NAME_BYTES, MAX_LENGTH_SIGN_NAME_PIXELS); // Allow MAX_LENGTH_SIGN_NAME_BYTES characters (including \0)
+		InitializeTextBuffer(&this->text, this->edit_str_buf, MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS, MAX_LENGTH_SIGN_NAME_PIXELS);
 		ClearFilterTextWidget();
 
 		/* Initialize the filtering variables */
@@ -462,7 +462,7 @@ enum QueryEditSignWidgets {
 struct SignWindow : QueryStringBaseWindow, SignList {
 	SignID cur_sign;
 
-	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_BYTES)
+	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_SIGN_NAME_CHARS)
 	{
 		this->caption = STR_EDIT_SIGN_CAPTION;
 		this->afilter = CS_ALPHANUMERAL;
@@ -488,7 +488,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		*last_of = '\0';
 
 		this->cur_sign = si->index;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_SIGN_NAME_PIXELS);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, this->max_chars, MAX_LENGTH_SIGN_NAME_PIXELS);
 
 		this->SetWidgetDirty(QUERY_EDIT_SIGN_WIDGET_TEXT);
 		this->SetFocusedWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
