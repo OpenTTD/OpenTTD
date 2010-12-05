@@ -866,18 +866,20 @@ extern void StartupEconomy();
  * Load the specified savegame but on error do different things.
  * If loading fails due to corrupt savegame, bad version, etc. go back to
  * a previous correct state. In the menu for example load the intro game again.
- * @param filename file to be loaded
  * @param mode mode of loading, either SL_LOAD or SL_OLD_LOAD
  * @param newgm switch to this mode of loading fails due to some unknown error
+ * @param filename file to be loaded
  * @param subdir default directory to look for filename, set to 0 if not needed
+ * @param lf Load filter to use, if NULL: use filename + subdir.
  */
-bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir)
+bool SafeLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = NULL)
 {
+	assert(mode == SL_LOAD || (lf == NULL && mode == SL_OLD_LOAD));
 	GameMode ogm = _game_mode;
 
 	_game_mode = newgm;
-	assert(mode == SL_LOAD || mode == SL_OLD_LOAD);
-	switch (SaveOrLoad(filename, mode, subdir)) {
+
+	switch (lf == NULL ? SaveOrLoad(filename, mode, subdir) : LoadWithFilter(lf)) {
 		case SL_OK: return true;
 
 		case SL_REINIT:
@@ -938,7 +940,7 @@ static void StartScenario()
 	ResetGRFConfig(true);
 
 	/* Load game */
-	if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, SCENARIO_DIR)) {
+	if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, SCENARIO_DIR)) {
 		SetDParamStr(0, GetSaveLoadErrorString());
 		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 		return;
@@ -1022,7 +1024,7 @@ void SwitchToMode(SwitchMode new_mode)
 			ResetGRFConfig(true);
 			ResetWindowSystem();
 
-			if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
+			if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 			} else {
@@ -1062,7 +1064,7 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_LOAD_SCENARIO: { // Load scenario from scenario editor
-			if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
+			if (SafeLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
 				SetLocalCompany(OWNER_NONE);
 				_settings_newgame.game_creation.starting_year = _cur_year;
 				/* Cancel the saveload pausing */

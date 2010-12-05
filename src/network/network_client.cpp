@@ -439,7 +439,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company, co
  *   DEF_CLIENT_RECEIVE_COMMAND has parameter: Packet *p
  ************/
 
-extern bool SafeSaveOrLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir);
+extern bool SafeLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = NULL);
 extern StringID _switch_mode_errorstr;
 
 DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_FULL)
@@ -757,7 +757,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DONE)
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 	/* The map is done downloading, load it */
-	bool load_success = SafeSaveOrLoad(this->download_filename, SL_LOAD, GM_NORMAL, NO_DIRECTORY);
+	bool load_success = SafeLoad(this->download_filename, SL_LOAD, GM_NORMAL, NO_DIRECTORY);
 	free(this->download_filename);
 	this->download_filename = NULL;
 
