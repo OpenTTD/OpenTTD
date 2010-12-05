@@ -2177,7 +2177,11 @@ struct NetworkJoinStatusWindow : Window {
 			case NETWORK_JOIN_STATUS_DOWNLOADING:
 				SetDParam(0, _network_join_bytes);
 				SetDParam(1, _network_join_bytes_total);
-				DrawString(r.left + 2, r.right - 2, r.top + 20 + FONT_HEIGHT_NORMAL, STR_NETWORK_CONNECTING_DOWNLOADING, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left + 2, r.right - 2, r.top + 20 + FONT_HEIGHT_NORMAL, _network_join_bytes_total == 0 ? STR_NETWORK_CONNECTING_DOWNLOADING_1 : STR_NETWORK_CONNECTING_DOWNLOADING_2, TC_FROMSTRING, SA_HOR_CENTER);
+				if (_network_join_bytes_total == 0) {
+					progress = 15; // We don't have the final size yet; the server is still compressing!
+					break;
+				}
 				/* FALL THROUGH */
 			default: // Waiting is 15%, so the resting receivement of map is maximum 70%
 				progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
@@ -2206,7 +2210,8 @@ struct NetworkJoinStatusWindow : Window {
 		/* Account for downloading ~ 10 MiB */
 		SetDParam(0, 10000000);
 		SetDParam(1, 10000000);
-		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING).width);
+		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_1).width);
+		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_2).width);
 
 		/* Give a bit more clearing for the widest strings than strictly needed */
 		size->width = width + WD_FRAMERECT_LEFT + WD_FRAMERECT_BOTTOM + 10;
