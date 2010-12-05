@@ -325,7 +325,7 @@ static void GenerateCompanyName(Company *c)
 {
 	/* Reserve space for extra unicode character. We need to do this to be able
 	 * to detect too long company name. */
-	char buffer[MAX_LENGTH_COMPANY_NAME_BYTES + MAX_CHAR_LENGTH];
+	char buffer[(MAX_LENGTH_COMPANY_NAME_CHARS + 1) * MAX_CHAR_LENGTH];
 
 	if (c->name_1 != STR_SV_UNNAMED) return;
 	if (c->last_build_coordinate == 0) return;
@@ -346,7 +346,7 @@ verify_name:;
 		}
 
 		GetString(buffer, str, lastof(buffer));
-		if (strlen(buffer) >= MAX_LENGTH_COMPANY_NAME_BYTES) goto bad_town_name;
+		if (Utf8StringLength(buffer) >= MAX_LENGTH_COMPANY_NAME_CHARS) goto bad_town_name;
 
 set_name:;
 		c->name_1 = str;
@@ -1049,7 +1049,7 @@ CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	bool reset = StrEmpty(text);
 
 	if (!reset) {
-		if (strlen(text) >= MAX_LENGTH_COMPANY_NAME_BYTES) return CMD_ERROR;
+		if (Utf8StringLength(text) >= MAX_LENGTH_COMPANY_NAME_CHARS) return CMD_ERROR;
 		if (!IsUniqueCompanyName(text)) return_cmd_error(STR_ERROR_NAME_MUST_BE_UNIQUE);
 	}
 

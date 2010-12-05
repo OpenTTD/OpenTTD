@@ -82,7 +82,7 @@ CompanyMask _network_company_passworded; ///< Bitmask of the password status of 
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
-assert_compile((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_BYTES);
+assert_compile((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH);
 
 extern NetworkUDPSocketHandler *_udp_client_socket; ///< udp client socket
 extern NetworkUDPSocketHandler *_udp_server_socket; ///< udp server socket

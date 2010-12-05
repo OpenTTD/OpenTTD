@@ -40,7 +40,7 @@ static const byte NETWORK_COMPANY_INFO_VERSION    =    6; ///< What version of c
 static const byte NETWORK_MASTER_SERVER_VERSION   =    2; ///< What version of master-server-protocol do we use?
 
 static const uint NETWORK_NAME_LENGTH             =   80; ///< The maximum length of the server name and map name, in bytes including '\0'
-static const uint NETWORK_COMPANY_NAME_LENGTH     =   31; ///< The maximum length of the company name, in bytes including '\0'
+static const uint NETWORK_COMPANY_NAME_LENGTH     =  128; ///< The maximum length of the company name, in bytes including '\0'
 static const uint NETWORK_HOSTNAME_LENGTH         =   80; ///< The maximum length of the host name, in bytes including '\0'
 static const uint NETWORK_SERVER_ID_LENGTH        =   33; ///< The maximum length of the network id of the servers, in bytes including '\0'
 static const uint NETWORK_REVISION_LENGTH         =   15; ///< The maximum length of the revision, in bytes including '\0'

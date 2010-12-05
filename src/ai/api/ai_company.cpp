@@ -38,7 +38,7 @@
 /* static */ bool AICompany::SetName(const char *name)
 {
 	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::strlen(name) < MAX_LENGTH_COMPANY_NAME_BYTES, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_COMPANY_NAME_CHARS, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return AIObject::DoCommand(0, 0, 0, CMD_RENAME_COMPANY, name);
 }

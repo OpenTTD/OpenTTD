@@ -40,20 +40,22 @@ void Subsidy::AwardTo(CompanyID company)
 	this->awarded = company;
 	this->remaining = SUBSIDY_CONTRACT_MONTHS;
 
-	char *company_name = MallocT<char>(MAX_LENGTH_COMPANY_NAME_BYTES);
-	SetDParam(0, company);
-	GetString(company_name, STR_COMPANY_NAME, company_name + MAX_LENGTH_COMPANY_NAME_BYTES - 1);
+	char company_name[MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH];
+	SetDParam(0, _current_company);
+	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+
+	char *cn = strdup(company_name);
 
 	/* Add a news item */
 	Pair reftype = SetupSubsidyDecodeParam(this, false);
 	InjectDParam(1);
 
-	SetDParamStr(0, company_name);
+	SetDParamStr(0, cn);
 	AddNewsItem(
 		STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier,
 		NS_SUBSIDIES,
 		(NewsReferenceType)reftype.a, this->src, (NewsReferenceType)reftype.b, this->dst,
-		company_name
+		cn
 	);
 	AI::BroadcastNewEvent(new AIEventSubsidyAwarded(this->index));
 
