@@ -492,6 +492,7 @@ saveload/oldloader_sl.cpp
 saveload/order_sl.cpp
 saveload/saveload.cpp
 saveload/saveload.h
+saveload/saveload_filter.h
 saveload/saveload_internal.h
 saveload/signs_sl.cpp
 saveload/station_sl.cpp

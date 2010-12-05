@@ -734,6 +734,7 @@
     <ClCompile Include="..\src\saveload\order_sl.cpp" />
     <ClCompile Include="..\src\saveload\saveload.cpp" />
     <ClInclude Include="..\src\saveload\saveload.h" />
+    <ClInclude Include="..\src\saveload\saveload_filter.h" />
     <ClInclude Include="..\src\saveload\saveload_internal.h" />
     <ClCompile Include="..\src\saveload\signs_sl.cpp" />
     <ClCompile Include="..\src\saveload\station_sl.cpp" />

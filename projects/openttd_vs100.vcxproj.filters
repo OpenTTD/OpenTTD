@@ -1422,6 +1422,9 @@
     <ClInclude Include="..\src\saveload\saveload.h">
       <Filter>Save/Load handlers</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\saveload\saveload_filter.h">
+      <Filter>Save/Load handlers</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\saveload\saveload_internal.h">
       <Filter>Save/Load handlers</Filter>
     </ClInclude>

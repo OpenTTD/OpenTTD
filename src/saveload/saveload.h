@@ -55,6 +55,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 void WaitTillSaved();
 void DoExitSave();
 
+SaveOrLoadResult SaveWithFilter(struct SaveFilter *writer, bool threaded);
+SaveOrLoadResult LoadWithFilter(struct LoadFilter *reader);
 
 typedef void ChunkSaveLoadProc();
 typedef void AutolengthProc(void *arg);

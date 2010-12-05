@@ -46,6 +46,7 @@
 #include "table/strings.h"
 
 #include "saveload_internal.h"
+#include "saveload_filter.h"
 
 /*
  * Previous savegame versions, the trunk revision where they were
@@ -246,43 +247,6 @@ enum NeedLength {
 /** Save in chunks of 128 KiB. */
 static const size_t MEMORY_CHUNK_SIZE = 128 * 1024;
 
-/** Interface for filtering a savegame till it is loaded. */
-struct LoadFilter {
-	/** Chained to the (savegame) filters. */
-	LoadFilter *chain;
-
-	/**
-	 * Initialise this filter.
-	 * @param chain The next filter in this chain.
-	 */
-	LoadFilter(LoadFilter *chain) : chain(chain)
-	{
-	}
-
-	/** Make sure the writers are properly closed. */
-	virtual ~LoadFilter()
-	{
-		delete this->chain;
-	}
-
-	/**
-	 * Read a given number of bytes from the savegame.
-	 * @param buf The bytes to read.
-	 * @param len The number of bytes to read.
-	 * @return The number of actually read bytes.
-	 */
-	virtual size_t Read(byte *buf, size_t len) = 0;
-
-	/**
-	 * Reset this filter to read from the beginning of the file.
-	 */
-	virtual void Reset()
-	{
-		this->chain->Reset();
-	}
-};
-
-
 /** A buffer for reading (and buffering) savegame data. */
 struct ReadBuffer {
 	byte buf[MEMORY_CHUNK_SIZE]; ///< Buffer we're going to read from.
@@ -323,62 +287,6 @@ struct ReadBuffer {
 	}
 };
 
-
-/**
- * Instantiator for a load filter.
- * @param chain The next filter in this chain.
- * @tparam T    The type of load filter to create.
- */
-template <typename T> LoadFilter *CreateLoadFilter(LoadFilter *chain)
-{
-	return new T(chain);
-}
-
-/** Interface for filtering a savegame till it is written. */
-struct SaveFilter {
-	/** Chained to the (savegame) filters. */
-	SaveFilter *chain;
-
-	/**
-	 * Initialise this filter.
-	 * @param chain The next filter in this chain.
-	 */
-	SaveFilter(SaveFilter *chain) : chain(chain)
-	{
-	}
-
-	/** Make sure the writers are properly closed. */
-	virtual ~SaveFilter()
-	{
-		delete this->chain;
-	}
-
-	/**
-	 * Write a given number of bytes into the savegame.
-	 * @param buf The bytes to write.
-	 * @param len The number of bytes to write.
-	 */
-	virtual void Write(byte *buf, size_t len) = 0;
-
-	/**
-	 * Prepare everything to finish writing the savegame.
-	 */
-	virtual void Finish()
-	{
-		if (this->chain != NULL) this->chain->Finish();
-	}
-};
-
-/**
- * Instantiator for a save filter.
- * @param chain             The next filter in this chain.
- * @param compression_level The requested level of compression.
- * @tparam T                The type of save filter to create.
- */
-template <typename T> SaveFilter *CreateSaveFilter(SaveFilter *chain, byte compression_level)
-{
-	return new T(chain, compression_level);
-}
 
 /** Container for dumping the savegame (quickly) to memory. */
 struct MemoryDumper {
@@ -2518,6 +2426,23 @@ static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
 }
 
 /**
+ * Save the game using a (writer) filter.
+ * @param writer   The filter to write the savegame to.
+ * @param threaded Whether to try to perform the saving asynchroniously.
+ * @return Return the result of the action. #SL_OK or #SL_ERROR
+ */
+SaveOrLoadResult SaveWithFilter(SaveFilter *writer, bool threaded)
+{
+	try {
+		_sl.action = SLA_SAVE;
+		return DoSave(writer, threaded);
+	} catch (...) {
+		ClearSaveLoadState();
+		return SL_ERROR;
+	}
+}
+
+/**
  * Actually perform the loading of a "non-old" savegame.
  * @param reader     The filter to read the savegame from.
  * @param load_check Whether to perform the checking ("preview") or actually load the game.
@@ -2657,6 +2582,22 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 	}
 
 	return SL_OK;
+}
+
+/**
+ * Load the game using a (reader) filter.
+ * @param reader   The filter to read the savegame from.
+ * @return Return the result of the action. #SL_OK or #SL_REINIT ("unload" the game)
+ */
+SaveOrLoadResult LoadWithFilter(LoadFilter *reader)
+{
+	try {
+		_sl.action = SLA_LOAD;
+		return DoLoad(reader, false);
+	} catch (...) {
+		ClearSaveLoadState();
+		return SL_REINIT;
+	}
 }
 
 /**
