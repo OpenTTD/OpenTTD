@@ -159,7 +159,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 				SetDParam(0, company->index);
 				GetString(company_name, STR_COMPANY_NAME, company_name + max_cname_length - 1);
 				free -= MIN_CI_SIZE;
-				free -= strlen(company_name);
+				free -= (int)strlen(company_name);
 			}
 			if (free >= 0) break;
 
