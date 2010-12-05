@@ -833,6 +833,9 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_DONE)
 	/* The map is done downloading, load it */
 	bool load_success = SafeLoad(NULL, SL_LOAD, GM_NORMAL, NO_DIRECTORY, lf);
 
+	/* Long savegame loads shouldn't affect the lag calculation! */
+	this->last_packet = _realtime_tick;
+
 	if (!load_success) {
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 		_switch_mode_errorstr = STR_NETWORK_ERROR_SAVEGAMEERROR;
@@ -1133,14 +1136,14 @@ void ClientNetworkGameSocketHandler::CheckConnection()
 	/* It might... sometimes occur that the realtime ticker overflows. */
 	if (_realtime_tick < this->last_packet) this->last_packet = _realtime_tick;
 
-	/* Lag is in milliseconds; 2 seconds are roughly the server's
-	 * "you're slow" threshold (1 game day). */
+	/* Lag is in milliseconds; 5 seconds are roughly twice the
+	 * server's "you're slow" threshold (1 game day). */
 	uint lag = (_realtime_tick - this->last_packet) / 1000;
-	if (lag < 2) return;
+	if (lag < 5) return;
 
-	/* 10 seconds are (way) more than 4 game days after which
+	/* 20 seconds are (way) more than 4 game days after which
 	 * the server will forcefully disconnect you. */
-	if (lag > 10) {
+	if (lag > 20) {
 		this->NetworkGameSocketHandler::CloseConnection();
 		_switch_mode_errorstr = STR_NETWORK_ERROR_LOSTCONNECTION;
 		return;
