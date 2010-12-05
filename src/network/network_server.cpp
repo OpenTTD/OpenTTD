@@ -67,13 +67,22 @@ struct PacketWriter : SaveFilter {
 	 */
 	PacketWriter(ServerNetworkGameSocketHandler *cs) : SaveFilter(NULL), cs(cs), current(NULL), total_size(0)
 	{
+		this->cs->savegame_mutex = ThreadMutex::New();
 	}
 
 	/** Make sure everything is cleaned up. */
 	~PacketWriter()
 	{
+
 		/* Prevent double frees. */
-		this->cs->savegame = NULL;
+		if (this->cs != NULL) {
+			if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->BeginCritical();
+			this->cs->savegame = NULL;
+			if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->EndCritical();
+
+			delete this->cs->savegame_mutex;
+			this->cs->savegame_mutex = NULL;
+		}
 
 		delete this->current;
 	}
@@ -94,9 +103,11 @@ struct PacketWriter : SaveFilter {
 
 	/* virtual */ void Write(byte *buf, size_t size)
 	{
-		if (cs == NULL) return;
+		if (this->cs == NULL) return;
 
 		if (this->current == NULL) this->current = new Packet(PACKET_SERVER_MAP_DATA);
+
+		if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->BeginCritical();
 
 		byte *bufe = buf + size;
 		while (buf != bufe) {
@@ -111,11 +122,17 @@ struct PacketWriter : SaveFilter {
 			}
 		}
 
+		if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->EndCritical();
+
 		this->total_size += size;
 	}
 
 	/* virtual */ void Finish()
 	{
+		if (this->cs == NULL) return;
+
+		if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->BeginCritical();
+
 		/* Make sure the last packet is flushed. */
 		this->AppendQueue();
 
@@ -126,7 +143,9 @@ struct PacketWriter : SaveFilter {
 		/* Fast-track the size to the client. */
 		Packet *p = new Packet(PACKET_SERVER_MAP_SIZE);
 		p->Send_uint32(this->total_size);
-		this->cs->SendPacket(p);
+		this->cs->NetworkTCPSocketHandler::SendPacket(p);
+
+		if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->EndCritical();
 	}
 };
 
@@ -153,7 +172,13 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 {
 	if (_redirect_console_to_client == this->client_id) _redirect_console_to_client = INVALID_CLIENT_ID;
 	OrderBackup::ResetUser(this->client_id);
+
+	if (this->savegame_mutex != NULL) this->savegame_mutex->BeginCritical();
 	delete this->savegame_packets;
+	if (this->savegame != NULL) this->savegame->cs = NULL;
+
+	if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
+	delete this->savegame_mutex;
 }
 
 Packet *ServerNetworkGameSocketHandler::ReceivePacket()
@@ -167,6 +192,13 @@ Packet *ServerNetworkGameSocketHandler::ReceivePacket()
 	Packet *p = this->NetworkTCPSocketHandler::ReceivePacket();
 	if (p != NULL) this->receive_limit -= p->size;
 	return p;
+}
+
+void ServerNetworkGameSocketHandler::SendPacket(Packet *packet)
+{
+	if (this->savegame_mutex != NULL) this->savegame_mutex->BeginCritical();
+	this->NetworkTCPSocketHandler::SendPacket(packet);
+	if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
@@ -479,10 +511,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 		sent_packets = 4; // We start with trying 4 packets
 
 		/* Make a dump of the current game */
-		if (SaveWithFilter(this->savegame, false) != SL_OK) usererror("network savedump failed");
+		if (SaveWithFilter(this->savegame, true) != SL_OK) usererror("network savedump failed");
 	}
 
 	if (this->status == STATUS_MAP) {
+		if (this->savegame_mutex != NULL) this->savegame_mutex->BeginCritical();
+
 		for (uint i = 0; i < sent_packets && this->savegame_packets != NULL; i++) {
 			Packet *p = this->savegame_packets;
 			bool last_packet = p->buffer[2] == PACKET_SERVER_MAP_DONE;
@@ -490,7 +524,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			/* Remove the packet from the savegame queue and put it in the real queue. */
 			this->savegame_packets = p->next;
 			p->next = NULL;
-			this->SendPacket(p);
+			this->NetworkTCPSocketHandler::SendPacket(p);
 
 			if (last_packet) {
 				/* Done reading! */
@@ -531,6 +565,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			/* Not everything is sent, decrease the sent_packets */
 			if (sent_packets > 1) sent_packets /= 2;
 		}
+
+		if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
 	}
 	return NETWORK_RECV_STATUS_OKAY;
 }
