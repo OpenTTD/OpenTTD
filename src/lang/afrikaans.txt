@@ -1668,7 +1668,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Haal spe
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Haal maatskappy informasie...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Klient{P "" e} voor jou
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} afgelaai dusver
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} afgelaai dusver
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Loskoppel
 

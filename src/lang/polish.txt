@@ -2073,7 +2073,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Uzyskiwa
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Uzyskiwanie informacji o firmach..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ów ów} chce się przyłączyć
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} dotąd pobranych
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} dotąd pobranych
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Rozłącz
 

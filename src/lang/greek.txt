@@ -1776,7 +1776,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ανεύ
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ανεύρεση πληροφοριών της εταρίας...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} συμπαίκτ{P ης ες} είναι πριν από σας
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} κατέβηκαν μέχρι τώρα
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} κατέβηκαν μέχρι τώρα
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Αποσύνδεση
 

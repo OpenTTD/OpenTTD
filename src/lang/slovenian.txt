@@ -1735,7 +1735,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Iščem 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Iščem informacije o podjetju...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} gost{P "" a i ov} je pred tabo
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} prenesenih
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} prenesenih
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odklopi
 

@@ -1671,7 +1671,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Свал
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Сваляне инфо за компанията..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} играч{P "" и} преди вас
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} изтеглени
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} изтеглени
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Изключване
 

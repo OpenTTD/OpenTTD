@@ -1614,7 +1614,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Estyn gw
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Estyn gwybodaeth cwmnïau..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cleient{P "" iau}o'ch blaen
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} wedi eu llwytho i lawr hyd yn hyn
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} wedi eu llwytho i lawr hyd yn hyn
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Datgysylltu
 

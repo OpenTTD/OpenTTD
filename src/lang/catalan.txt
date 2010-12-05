@@ -1694,7 +1694,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtenint
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtenint informació de la companyia..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} rivals
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} descarregats fins ara
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} descarregats fins ara
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconnecta
 

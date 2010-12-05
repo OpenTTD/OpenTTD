@@ -1692,7 +1692,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}取得�
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}取得公司資訊中..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}在您之前有 {NUM} 個用戶端
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} 已下載
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} 已下載
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}斷線
 

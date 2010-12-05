@@ -1889,7 +1889,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Tražim 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Tražim podatke o preduzećima..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} igrač{P "" a a} je ispred Vas
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} skinuto do sada
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} skinuto do sada
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Isključenje
 

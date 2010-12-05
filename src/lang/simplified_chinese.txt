@@ -1687,7 +1687,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}获取�
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}获取公司信息
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}您前面还有 {NUM} 个客户端
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} 已下载
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} 已下载
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}断开
 

@@ -1683,7 +1683,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Henter s
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Henter selskabsinfo..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} foran dig
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} hentet indtil videre
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} hentet indtil videre
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Afbryd forbindelse
 

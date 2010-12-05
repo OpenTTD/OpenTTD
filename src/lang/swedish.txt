@@ -1693,7 +1693,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hämtar 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hämtar företagsinfo..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} före oss
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} nerladdat hittills
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} nerladdat hittills
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koppla ifrån
 

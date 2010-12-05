@@ -1199,7 +1199,7 @@ STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Fe
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Lân delhelje...
 
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} delhelle
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} delhelle
 
 
 

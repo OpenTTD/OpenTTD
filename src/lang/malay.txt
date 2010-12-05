@@ -1671,7 +1671,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Sedang m
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Sedang memperolehi maklumat syarikat..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klien dihadapan anda
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} dimuat turun setakat ini
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} dimuat turun setakat ini
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Terputus
 

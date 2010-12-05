@@ -1689,7 +1689,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}กำ�
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}กำลังรวบรวมข้อมูลบริษัท..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P ""} อยู่ข้างหน้าคุณ
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} ดาวโหลดไปแล้วทั้งสิ้น
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} ดาวโหลดไปแล้วทั้งสิ้น
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}ตัดการเชื่อมต่อ
 

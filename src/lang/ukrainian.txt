@@ -1819,7 +1819,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Запи
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Запит інформації про компанію..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} клієнт{P "" и ів} перед вами
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} вже завантажено
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} вже завантажено
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Роз'єднання
 

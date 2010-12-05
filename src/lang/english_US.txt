@@ -1693,7 +1693,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Fetching
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Fetching company info..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} in front of us
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} downloaded so far
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} downloaded so far
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disconnect
 

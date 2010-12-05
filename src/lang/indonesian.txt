@@ -1689,7 +1689,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Mengambi
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Mengambil informasi perusahaan..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klien di depanmu
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} terunduh
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} terunduh
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Putuskan
 

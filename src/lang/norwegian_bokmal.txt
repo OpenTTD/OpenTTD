@@ -1695,7 +1695,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Henter s
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Henter firmainformasjon..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} foran deg
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} lastet ned hittil
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} lastet ned hittil
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koble fra
 

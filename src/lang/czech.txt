@@ -1763,7 +1763,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Přijím
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Přijímání informací o společnosti...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i ů} před námi
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} staženo
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} staženo
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odpojit se
 

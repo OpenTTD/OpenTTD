@@ -1760,7 +1760,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Prijíma
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Prijímam informácie o spoločnosti..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i i} pred nami
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} stiahnuté
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} stiahnuté
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odpojiť sa
 

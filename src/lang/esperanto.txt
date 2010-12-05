@@ -1669,7 +1669,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Kaptante
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Kaptante kompaniajn informojn..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kliento{P "" j} antaŭ vi
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} ĝis nun elŝutiĝis
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} ĝis nun elŝutiĝis
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Malkonektu
 

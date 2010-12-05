@@ -1682,7 +1682,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hentar s
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hentar firmaoversikt..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ar} føre deg
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} lasta ned så langt
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} lasta ned så langt
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koble frå
 

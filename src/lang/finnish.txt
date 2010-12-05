@@ -1693,7 +1693,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Haetaan 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Haetaan yhtiötiedot...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} pelaaja{P "" a} jonossa
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} ladattu
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} ladattu
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Pura yhteys
 

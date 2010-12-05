@@ -1739,7 +1739,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hangin m
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hangin ettevõtte infot...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i} sinu ees
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} allalaaditud
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} allalaaditud
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Katkesta
 

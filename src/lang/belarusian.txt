@@ -2010,7 +2010,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Здаб
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Збадываньне зьвестак аб кампаніі...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} кліент{P "" ы аў} рыхтуецца далучыцца
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}Запампована {BYTES} / {BYTES}
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}Запампована {BYTES} / {BYTES}
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Адлучыцца
 

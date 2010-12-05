@@ -1628,7 +1628,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Pieņemu
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Pieņemu kompānijas informāciju..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P s i u} tavā priekšā
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} lejuplādēti līdz šim
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} lejuplādēti līdz šim
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Atvienoties
 

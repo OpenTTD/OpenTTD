@@ -1763,7 +1763,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Gaunama 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Gaunama kompanijos informacija..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} vartotoj{P as ai ų} prieš tave
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} parsiųsta
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} parsiųsta
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Atsijungti
 

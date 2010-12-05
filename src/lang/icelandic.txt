@@ -1687,7 +1687,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Næ í u
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Næ í upplýsingar um fyrirtæki..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} þjónar fyrir framan þig
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} niðurhöluð hingaðtil
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} niðurhöluð hingaðtil
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Aftengjast
 

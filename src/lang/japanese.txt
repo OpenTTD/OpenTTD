@@ -1665,7 +1665,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}ゲー�
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}会社情報を読み込み中...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}先に {NUM} 人のプレヤーがいる
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES}／{BYTES} がダウンロードした
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES}／{BYTES} がダウンロードした
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}接続を解除
 
