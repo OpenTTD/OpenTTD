@@ -208,7 +208,7 @@
 {
 	EnforcePrecondition(false, IsValidVehicle(vehicle_id));
 	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::strlen(name) < MAX_LENGTH_VEHICLE_NAME_BYTES, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_VEHICLE_NAME_CHARS, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return AIObject::DoCommand(0, vehicle_id, 0, CMD_RENAME_VEHICLE, name);
 }
