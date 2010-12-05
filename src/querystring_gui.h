@@ -62,8 +62,9 @@ public:
 struct QueryStringBaseWindow : public Window, public QueryString {
 	char *edit_str_buf;         ///< Buffer for string.
 	const uint16 edit_str_size; ///< Maximum length of string (in bytes), including terminating '\0'.
+	const uint16 max_chars;     ///< Maximum length of string (in characters), including terminating '\0'.
 
-	QueryStringBaseWindow(uint16 size) : Window(), edit_str_size(size)
+	QueryStringBaseWindow(uint16 size, uint16 chars = UINT16_MAX) : Window(), edit_str_size(size), max_chars(chars == UINT16_MAX ? size : chars)
 	{
 		assert(size != 0);
 		this->edit_str_buf = CallocT<char>(size);

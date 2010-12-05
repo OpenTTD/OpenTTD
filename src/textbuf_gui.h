@@ -21,8 +21,10 @@
 struct Textbuf {
 	char *buf;                ///< buffer in which text is saved
 	uint16 max_bytes;         ///< the maximum size of the buffer in bytes (including terminating '\0')
+	uint16 max_chars;         ///< the maximum size of the buffer in characters (including terminating '\0')
 	uint16 max_pixels;        ///< the maximum size of the buffer in pixels
 	uint16 bytes;             ///< the current size of the string in bytes (including terminating '\0')
+	uint16 chars;             ///< the current size of the string in characters (including terminating '\0')
 	uint16 pixels;            ///< the current size of the string in pixels
 	bool caret;               ///< is the caret ("_") visible or not
 	uint16 caretpos;          ///< the current position of the caret in the buffer, in bytes
@@ -37,6 +39,7 @@ bool InsertTextBufferChar(Textbuf *tb, uint32 key);
 bool InsertTextBufferClipboard(Textbuf *tb);
 bool MoveTextBufferPos(Textbuf *tb, int navmode);
 void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_pixels);
+void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_chars, uint16 max_pixels);
 void UpdateTextBufferSize(Textbuf *tb);
 
 /** Flags used in ShowQueryString() call */
@@ -44,6 +47,7 @@ enum QueryStringFlags {
 	QSF_NONE             =    0,
 	QSF_ACCEPT_UNCHANGED = 0x01, ///< return success even when the text didn't change
 	QSF_ENABLE_DEFAULT   = 0x02, ///< enable the 'Default' button ("\0" is returned)
+	QSF_LEN_IN_CHARS     = 0x04, ///< the length of the string is counted in characters
 };
 
 DECLARE_ENUM_AS_BIT_SET(QueryStringFlags)

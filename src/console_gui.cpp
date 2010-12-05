@@ -136,7 +136,7 @@ IConsoleModes _iconsole_mode;
 static void IConsoleClearCommand()
 {
 	memset(_iconsole_cmdline.buf, 0, ICON_CMDLN_SIZE);
-	_iconsole_cmdline.bytes = 1; // only terminating zero
+	_iconsole_cmdline.chars = _iconsole_cmdline.bytes = 1; // only terminating zero
 	_iconsole_cmdline.pixels = 0;
 	_iconsole_cmdline.caretpos = 0;
 	_iconsole_cmdline.caretxoffs = 0;
@@ -365,6 +365,7 @@ void IConsoleGUIInit()
 
 	_iconsole_cmdline.buf = CallocT<char>(ICON_CMDLN_SIZE); // create buffer and zero it
 	_iconsole_cmdline.max_bytes = ICON_CMDLN_SIZE;
+	_iconsole_cmdline.max_chars = ICON_CMDLN_SIZE;
 
 	IConsolePrintF(CC_WARNING, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
 	IConsolePrint(CC_WHITE,  "------------------------------------");

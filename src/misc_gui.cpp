@@ -937,6 +937,7 @@ static void DelChar(Textbuf *tb, bool backspace)
 	/* Move the remaining characters over the marker */
 	memmove(s, s + len, tb->bytes - (s - tb->buf) - len);
 	tb->bytes -= len;
+	tb->chars--;
 }
 
 /**
@@ -966,7 +967,7 @@ bool DeleteTextBufferChar(Textbuf *tb, int delmode)
 void DeleteTextBufferAll(Textbuf *tb)
 {
 	memset(tb->buf, 0, tb->max_bytes);
-	tb->bytes = 1;
+	tb->bytes = tb->chars = 1;
 	tb->pixels = tb->caretpos = tb->caretxoffs = 0;
 }
 
@@ -982,9 +983,10 @@ bool InsertTextBufferChar(Textbuf *tb, WChar key)
 {
 	const byte charwidth = GetCharacterWidth(FS_NORMAL, key);
 	uint16 len = (uint16)Utf8CharLen(key);
-	if (tb->bytes + len <= tb->max_bytes && (tb->max_pixels == 0 || tb->pixels + charwidth <= tb->max_pixels)) {
+	if (tb->bytes + len <= tb->max_bytes && tb->chars + 1 <= tb->max_chars && (tb->max_pixels == 0 || tb->pixels + charwidth <= tb->max_pixels)) {
 		memmove(tb->buf + tb->caretpos + len, tb->buf + tb->caretpos, tb->bytes - tb->caretpos);
 		Utf8Encode(tb->buf + tb->caretpos, key);
+		tb->chars++;
 		tb->bytes  += len;
 		tb->pixels += charwidth;
 
@@ -1008,19 +1010,21 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 
 	if (!GetClipboardContents(utf8_buf, lengthof(utf8_buf))) return false;
 
-	uint16 pixels = 0, bytes = 0;
+	uint16 pixels = 0, bytes = 0, chars = 0;
 	WChar c;
 	for (const char *ptr = utf8_buf; (c = Utf8Consume(&ptr)) != '\0';) {
 		if (!IsPrintable(c)) break;
 
 		byte len = Utf8CharLen(c);
 		if (tb->bytes + bytes + len > tb->max_bytes) break;
+		if (tb->chars + chars + 1   > tb->max_chars) break;
 
 		byte char_pixels = GetCharacterWidth(FS_NORMAL, c);
 		if (tb->max_pixels != 0 && pixels + tb->pixels + char_pixels > tb->max_pixels) break;
 
 		pixels += char_pixels;
 		bytes += len;
+		chars++;
 	}
 
 	if (bytes == 0) return false;
@@ -1031,8 +1035,10 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 	tb->caretxoffs += pixels;
 
 	tb->bytes += bytes;
+	tb->chars += chars;
 	tb->caretpos += bytes;
 	assert(tb->bytes <= tb->max_bytes);
+	assert(tb->chars <= tb->max_chars);
 	tb->buf[tb->bytes - 1] = '\0'; // terminating zero
 
 	return true;
@@ -1100,10 +1106,28 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
  */
 void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_pixels)
 {
+	InitializeTextBuffer(tb, buf, max_bytes, max_bytes, max_pixels);
+}
+
+/**
+ * Initialize the textbuffer by supplying it the buffer to write into
+ * and the maximum length of this buffer
+ * @param tb Textbuf type which is getting initialized
+ * @param buf the buffer that will be holding the data for input
+ * @param max_bytes maximum size in bytes, including terminating '\0'
+ * @param max_chars maximum size in chars, including terminating '\0'
+ * @param max_pixels maximum length in pixels of this buffer. If reached, buffer
+ * cannot grow, even if maxsize would allow because there is space. Width
+ * of zero '0' means the buffer is only restricted by maxsize
+ */
+void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 max_bytes, uint16 max_chars, uint16 max_pixels)
+{
 	assert(max_bytes != 0);
+	assert(max_chars != 0);
 
 	tb->buf        = buf;
 	tb->max_bytes  = max_bytes;
+	tb->max_chars  = max_chars;
 	tb->max_pixels = max_pixels;
 	tb->caret      = true;
 	UpdateTextBufferSize(tb);
@@ -1120,15 +1144,17 @@ void UpdateTextBufferSize(Textbuf *tb)
 	const char *buf = tb->buf;
 
 	tb->pixels = 0;
-	tb->bytes = 1; // terminating zero
+	tb->chars = tb->bytes = 1; // terminating zero
 
 	WChar c;
 	while ((c = Utf8Consume(&buf)) != '\0') {
 		tb->pixels += GetCharacterWidth(FS_NORMAL, c);
 		tb->bytes += Utf8CharLen(c);
+		tb->chars++;
 	}
 
 	assert(tb->bytes <= tb->max_bytes);
+	assert(tb->chars <= tb->max_chars);
 
 	tb->caretpos = tb->bytes - 1;
 	tb->caretxoffs = tb->pixels;
@@ -1280,8 +1306,8 @@ struct QueryStringWindow : public QueryStringBaseWindow
 {
 	QueryStringFlags flags; ///< Flags controlling behaviour of the window.
 
-	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_pixels, const WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
-			QueryStringBaseWindow(max_bytes)
+	QueryStringWindow(StringID str, StringID caption, uint max_bytes, uint max_chars, uint max_pixels, const WindowDesc *desc, Window *parent, CharSetFilter afilter, QueryStringFlags flags) :
+			QueryStringBaseWindow(max_bytes, max_chars)
 	{
 		GetString(this->edit_str_buf, str, &this->edit_str_buf[max_bytes - 1]);
 		str_validate(this->edit_str_buf, &this->edit_str_buf[max_bytes - 1], false, true);
@@ -1291,7 +1317,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		this->caption = caption;
 		this->afilter = afilter;
 		this->flags = flags;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, max_bytes, max_pixels);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, max_bytes, max_chars, max_pixels);
 
 		this->InitNested(desc);
 
@@ -1416,7 +1442,7 @@ static const WindowDesc _query_string_desc(
  * Show a query popup window with a textbox in it.
  * @param str StringID for the text shown in the textbox
  * @param caption StringID of text shown in caption of querywindow
- * @param maxsize maximum size in bytes (including terminating '\0')
+ * @param maxsize maximum size in bytes or characters (including terminating '\0') depending on flags
  * @param maxwidth maximum width in pixels allowed
  * @param parent pointer to a Window that will handle the events (ok/cancel) of this
  *        window. If NULL, results are handled by global function HandleOnEditText
@@ -1426,7 +1452,7 @@ static const WindowDesc _query_string_desc(
 void ShowQueryString(StringID str, StringID caption, uint maxsize, uint maxwidth, Window *parent, CharSetFilter afilter, QueryStringFlags flags)
 {
 	DeleteWindowById(WC_QUERY_STRING, 0);
-	new QueryStringWindow(str, caption, maxsize, maxwidth, &_query_string_desc, parent, afilter, flags);
+	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, maxwidth, &_query_string_desc, parent, afilter, flags);
 }
 
 
