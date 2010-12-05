@@ -691,7 +691,6 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_BEGIN)
 	if (this->status < STATUS_AUTHORIZED || this->status >= STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	this->status = STATUS_MAP;
 
-	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 	if (this->download_file != NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	char filename[MAX_PATH];
@@ -708,17 +707,20 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_BEGIN)
 	_frame_counter = _frame_counter_server = _frame_counter_max = p->Recv_uint32();
 
 	_network_join_bytes = 0;
-	_network_join_bytes_total = p->Recv_uint32();
-
-	/* If the network connection has been closed due to loss of connection
-	 * or when _network_join_kbytes_total is 0, the join status window will
-	 * do a division by zero. When the connection is lost, we just return
-	 * that. If kbytes_total is 0, the packet must be malformed as a
-	 * savegame less than 1 kilobyte is practically impossible. */
-	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
-	if (_network_join_bytes_total == 0) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	_network_join_bytes_total = 0;
 
 	_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
+	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_MAP_SIZE)
+{
+	if (this->status != STATUS_MAP) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->download_file == NULL) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
+	_network_join_bytes_total = p->Recv_uint32();
 	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, 0);
 
 	return NETWORK_RECV_STATUS_OKAY;

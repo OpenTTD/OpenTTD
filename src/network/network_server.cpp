@@ -404,6 +404,9 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 		/* Now send the _frame_counter and how many packets are coming */
 		Packet *p = new Packet(PACKET_SERVER_MAP_BEGIN);
 		p->Send_uint32(_frame_counter);
+		this->SendPacket(p);
+
+		p = new Packet(PACKET_SERVER_MAP_SIZE);
 		p->Send_uint32(ftell(file_pointer));
 		this->SendPacket(p);
 
