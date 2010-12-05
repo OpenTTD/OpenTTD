@@ -451,7 +451,7 @@ public:
 
 			case TVW_CHANGENAME: // rename
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_TOWN_NAME, STR_TOWN_VIEW_RENAME_TOWN_BUTTON, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
+				ShowQueryString(STR_TOWN_NAME, STR_TOWN_VIEW_RENAME_TOWN_BUTTON, MAX_LENGTH_TOWN_NAME_CHARS, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT | QSF_LEN_IN_CHARS);
 				break;
 
 			case TVW_EXPAND: { // expand town - only available on Scenario editor
@@ -1007,13 +1007,13 @@ private:
 
 public:
 	FoundTownWindow(const WindowDesc *desc, WindowNumber window_number) :
-			QueryStringBaseWindow(MAX_LENGTH_TOWN_NAME_BYTES),
+			QueryStringBaseWindow(MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_TOWN_NAME_CHARS),
 			town_size(TSZ_MEDIUM),
 			town_layout(_settings_game.economy.town_layout),
 			params(_settings_game.game_creation.town_name)
 	{
 		this->InitNested(desc, window_number);
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_TOWN_NAME_PIXELS);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, this->max_chars, MAX_LENGTH_TOWN_NAME_PIXELS);
 		this->RandomTownName();
 		this->UpdateButtons(true);
 	}
@@ -1063,7 +1063,7 @@ public:
 			name = this->edit_str_buf;
 		} else {
 			/* If user changed the name, send it */
-			char buf[MAX_LENGTH_TOWN_NAME_BYTES];
+			char buf[MAX_LENGTH_TOWN_NAME_CHARS * MAX_CHAR_LENGTH];
 			GetTownName(buf, &this->params, this->townnameparts, lastof(buf));
 			if (strcmp(buf, this->edit_str_buf) != 0) name = this->edit_str_buf;
 		}

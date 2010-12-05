@@ -80,13 +80,13 @@ char *GetTownName(char *buff, const Town *t, const char *last)
 bool VerifyTownName(uint32 r, const TownNameParams *par)
 {
 	/* reserve space for extra unicode character and terminating '\0' */
-	char buf1[MAX_LENGTH_TOWN_NAME_BYTES + MAX_CHAR_LENGTH];
-	char buf2[MAX_LENGTH_TOWN_NAME_BYTES + MAX_CHAR_LENGTH];
+	char buf1[(MAX_LENGTH_TOWN_NAME_CHARS + 1) * MAX_CHAR_LENGTH];
+	char buf2[(MAX_LENGTH_TOWN_NAME_CHARS + 1) * MAX_CHAR_LENGTH];
 
 	GetTownName(buf1, par, r, lastof(buf1));
 
 	/* Check size and width */
-	if (strlen(buf1) >= MAX_LENGTH_TOWN_NAME_BYTES) return false;
+	if (Utf8StringLength(buf1) >= MAX_LENGTH_TOWN_NAME_CHARS) return false;
 
 	const Town *t;
 	FOR_ALL_TOWNS(t) {
