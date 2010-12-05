@@ -2490,6 +2490,7 @@ void WaitTillSaved()
  * using the writer, either in threaded mode if possible, or single-threaded.
  * @param writer   The filter to write the savegame to.
  * @param threaded Whether to try to perform the saving asynchroniously.
+ * @return Return the result of the action. #SL_OK or #SL_ERROR
  */
 static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
 {
@@ -2517,6 +2518,148 @@ static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
 }
 
 /**
+ * Actually perform the loading of a "non-old" savegame.
+ * @param reader     The filter to read the savegame from.
+ * @param load_check Whether to perform the checking ("preview") or actually load the game.
+ * @return Return the result of the action. #SL_OK or #SL_REINIT ("unload" the game)
+ */
+static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
+{
+	_sl.lf = reader;
+
+	if (load_check) {
+		/* Clear previous check data */
+		_load_check_data.Clear();
+		/* Mark SL_LOAD_CHECK as supported for this savegame. */
+		_load_check_data.checkable = true;
+	}
+
+	uint32 hdr[2];
+	if (_sl.lf->Read((byte*)hdr, sizeof(hdr)) != sizeof(hdr)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
+
+	/* see if we have any loader for this type. */
+	const SaveLoadFormat *fmt = _saveload_formats;
+	for (;;) {
+		/* No loader found, treat as version 0 and use LZO format */
+		if (fmt == endof(_saveload_formats)) {
+			DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
+			_sl.lf->Reset();
+			_sl_version = 0;
+			_sl_minor_version = 0;
+
+			/* Try to find the LZO savegame format; it uses 'OTTD' as tag. */
+			fmt = _saveload_formats;
+			for (;;) {
+				if (fmt == endof(_saveload_formats)) {
+					/* Who removed LZO support? Bad bad boy! */
+					NOT_REACHED();
+				}
+				if (fmt->tag == TO_BE32X('OTTD')) break;
+				fmt++;
+			}
+			break;
+		}
+
+		if (fmt->tag == hdr[0]) {
+			/* check version number */
+			_sl_version = TO_BE32(hdr[1]) >> 16;
+			/* Minor is not used anymore from version 18.0, but it is still needed
+			 * in versions before that (4 cases) which can't be removed easy.
+			 * Therefor it is loaded, but never saved (or, it saves a 0 in any scenario).
+			 * So never EVER use this minor version again. -- TrueLight -- 22-11-2005 */
+			_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
+
+			DEBUG(sl, 1, "Loading savegame version %d", _sl_version);
+
+			/* Is the version higher than the current? */
+			if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
+			break;
+		}
+
+		fmt++;
+	}
+
+	/* loader for this savegame type is not implemented? */
+	if (fmt->init_load == NULL) {
+		char err_str[64];
+		snprintf(err_str, lengthof(err_str), "Loader for '%s' is not available.", fmt->name);
+		SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
+	}
+
+	_sl.lf = fmt->init_load(_sl.lf);
+	_sl.reader = new ReadBuffer(_sl.lf);
+	_next_offs = 0;
+
+	if (!load_check) {
+		_engine_mngr.ResetToDefaultMapping();
+
+		/* Old maps were hardcoded to 256x256 and thus did not contain
+		 * any mapsize information. Pre-initialize to 256x256 to not to
+		 * confuse old games */
+		InitializeGame(256, 256, true, true);
+
+		GamelogReset();
+
+		if (IsSavegameVersionBefore(4)) {
+			/*
+			 * NewGRFs were introduced between 0.3,4 and 0.3.5, which both
+			 * shared savegame version 4. Anything before that 'obviously'
+			 * does not have any NewGRFs. Between the introduction and
+			 * savegame version 41 (just before 0.5) the NewGRF settings
+			 * were not stored in the savegame and they were loaded by
+			 * using the settings from the main menu.
+			 * So, to recap:
+			 * - savegame version  <  4:  do not load any NewGRFs.
+			 * - savegame version >= 41:  load NewGRFs from savegame, which is
+			 *                            already done at this stage by
+			 *                            overwriting the main menu settings.
+			 * - other savegame versions: use main menu settings.
+			 *
+			 * This means that users *can* crash savegame version 4..40
+			 * savegames if they set incompatible NewGRFs in the main menu,
+			 * but can't crash anymore for savegame version < 4 savegames.
+			 *
+			 * Note: this is done here because AfterLoadGame is also called
+			 * for TTO/TTD/TTDP savegames which have their own NewGRF logic.
+			 */
+			ClearGRFConfigList(&_grfconfig);
+		}
+	}
+
+	if (load_check) {
+		/* Load chunks into _load_check_data.
+		 * No pools are loaded. References are not possible, and thus do not need resolving. */
+		SlLoadCheckChunks();
+	} else {
+		/* Load chunks and resolve references */
+		SlLoadChunks();
+		SlFixPointers();
+	}
+
+	ClearSaveLoadState();
+
+	_savegame_type = SGT_OTTD;
+
+	if (load_check) {
+		/* The only part from AfterLoadGame() we need */
+		_load_check_data.grf_compatibility = IsGoodGRFConfigList(_load_check_data.grfconfig);
+	} else {
+		GamelogStartAction(GLAT_LOAD);
+
+		/* After loading fix up savegame for any internal changes that
+		 * might have occurred since then. If it fails, load back the old game. */
+		if (!AfterLoadGame()) {
+			GamelogStopAction();
+			return SL_REINIT;
+		}
+
+		GamelogStopAction();
+	}
+
+	return SL_OK;
+}
+
+/**
  * Main Save or Load function where the high-level saveload functions are
  * handled. It opens the savegame, selects format and checks versions
  * @param filename The name of the savegame being created/loaded
@@ -2527,8 +2670,6 @@ static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
  */
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, bool threaded)
 {
-	uint32 hdr[2];
-
 	/* An instance of saving is already active, so don't go saving again */
 	if (_sl.saveinprogress && mode == SL_SAVE) {
 		/* if not an autosave, but a user action, show error message */
@@ -2536,10 +2677,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		return SL_OK;
 	}
 	WaitTillSaved();
-
-	/* Clear previous check data */
-	if (mode == SL_LOAD_CHECK) _load_check_data.Clear();
-	_next_offs = 0;
 
 	/* Load a TTDLX or TTDPatch game */
 	if (mode == SL_OLD_LOAD) {
@@ -2564,9 +2701,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 		return SL_OK;
 	}
 
-	/* Mark SL_LOAD_CHECK as supported for this savegame. */
-	if (mode == SL_LOAD_CHECK) _load_check_data.checkable = true;
-
 	switch (mode) {
 		case SL_LOAD_CHECK: _sl.action = SLA_LOAD_CHECK; break;
 		case SL_LOAD: _sl.action = SLA_LOAD; break;
@@ -2590,134 +2724,12 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, boo
 			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
 
 			return DoSave(new FileWriter(fh), threaded);
-		} else { // LOAD game
-			assert(mode == SL_LOAD || mode == SL_LOAD_CHECK);
-			DEBUG(desync, 1, "load: %s", filename);
-
-			_sl.lf = new FileReader(fh);
-
-			if (_sl.lf->Read((byte*)hdr, sizeof(hdr)) != sizeof(hdr)) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
-
-			/* see if we have any loader for this type. */
-			const SaveLoadFormat *fmt = _saveload_formats;
-			for (;;) {
-				/* No loader found, treat as version 0 and use LZO format */
-				if (fmt == endof(_saveload_formats)) {
-					DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
-					_sl.lf->Reset();
-					_sl_version = 0;
-					_sl_minor_version = 0;
-
-					/* Try to find the LZO savegame format; it uses 'OTTD' as tag. */
-					fmt = _saveload_formats;
-					for (;;) {
-						if (fmt == endof(_saveload_formats)) {
-							/* Who removed LZO support? Bad bad boy! */
-							NOT_REACHED();
-						}
-						if (fmt->tag == TO_BE32X('OTTD')) break;
-						fmt++;
-					}
-					break;
-				}
-
-				if (fmt->tag == hdr[0]) {
-					/* check version number */
-					_sl_version = TO_BE32(hdr[1]) >> 16;
-					/* Minor is not used anymore from version 18.0, but it is still needed
-					 * in versions before that (4 cases) which can't be removed easy.
-					 * Therefor it is loaded, but never saved (or, it saves a 0 in any scenario).
-					 * So never EVER use this minor version again. -- TrueLight -- 22-11-2005 */
-					_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
-
-					DEBUG(sl, 1, "Loading savegame version %d", _sl_version);
-
-					/* Is the version higher than the current? */
-					if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
-					break;
-				}
-
-				fmt++;
-			}
-
-			/* loader for this savegame type is not implemented? */
-			if (fmt->init_load == NULL) {
-				char err_str[64];
-				snprintf(err_str, lengthof(err_str), "Loader for '%s' is not available.", fmt->name);
-				SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, err_str);
-			}
-
-			_sl.lf = fmt->init_load(_sl.lf);
-			_sl.reader = new ReadBuffer(_sl.lf);
-
-			if (mode != SL_LOAD_CHECK) {
-				_engine_mngr.ResetToDefaultMapping();
-
-				/* Old maps were hardcoded to 256x256 and thus did not contain
-				 * any mapsize information. Pre-initialize to 256x256 to not to
-				 * confuse old games */
-				InitializeGame(256, 256, true, true);
-
-				GamelogReset();
-
-				if (IsSavegameVersionBefore(4)) {
-					/*
-					 * NewGRFs were introduced between 0.3,4 and 0.3.5, which both
-					 * shared savegame version 4. Anything before that 'obviously'
-					 * does not have any NewGRFs. Between the introduction and
-					 * savegame version 41 (just before 0.5) the NewGRF settings
-					 * were not stored in the savegame and they were loaded by
-					 * using the settings from the main menu.
-					 * So, to recap:
-					 * - savegame version  <  4:  do not load any NewGRFs.
-					 * - savegame version >= 41:  load NewGRFs from savegame, which is
-					 *                            already done at this stage by
-					 *                            overwriting the main menu settings.
-					 * - other savegame versions: use main menu settings.
-					 *
-					 * This means that users *can* crash savegame version 4..40
-					 * savegames if they set incompatible NewGRFs in the main menu,
-					 * but can't crash anymore for savegame version < 4 savegames.
-					 *
-					 * Note: this is done here because AfterLoadGame is also called
-					 * for TTO/TTD/TTDP savegames which have their own NewGRF logic.
-					 */
-					ClearGRFConfigList(&_grfconfig);
-				}
-			}
-
-			if (mode == SL_LOAD_CHECK) {
-				/* Load chunks into _load_check_data.
-				 * No pools are loaded. References are not possible, and thus do not need resolving. */
-				SlLoadCheckChunks();
-			} else {
-				/* Load chunks and resolve references */
-				SlLoadChunks();
-				SlFixPointers();
-			}
-
-			ClearSaveLoadState();
-
-			_savegame_type = SGT_OTTD;
-
-			if (mode == SL_LOAD_CHECK) {
-				/* The only part from AfterLoadGame() we need */
-				_load_check_data.grf_compatibility = IsGoodGRFConfigList(_load_check_data.grfconfig);
-			} else {
-				GamelogStartAction(GLAT_LOAD);
-
-				/* After loading fix up savegame for any internal changes that
-				 * might have occurred since then. If it fails, load back the old game. */
-				if (!AfterLoadGame()) {
-					GamelogStopAction();
-					return SL_REINIT;
-				}
-
-				GamelogStopAction();
-			}
 		}
 
-		return SL_OK;
+		/* LOAD game */
+		assert(mode == SL_LOAD || mode == SL_LOAD_CHECK);
+		DEBUG(desync, 1, "load: %s", filename);
+		return DoLoad(new FileReader(fh), mode == SL_LOAD_CHECK);
 	} catch (...) {
 		ClearSaveLoadState();
 
