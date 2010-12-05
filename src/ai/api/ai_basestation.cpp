@@ -38,7 +38,7 @@
 {
 	EnforcePrecondition(false, IsValidBaseStation(station_id));
 	EnforcePrecondition(false, !::StrEmpty(name));
-	EnforcePreconditionCustomError(false, ::strlen(name) < MAX_LENGTH_STATION_NAME_BYTES, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
+	EnforcePreconditionCustomError(false, ::Utf8StringLength(name) < MAX_LENGTH_STATION_NAME_CHARS, AIError::ERR_PRECONDITION_STRING_TOO_LONG);
 
 	return AIObject::DoCommand(0, station_id, 0, ::Station::IsValidID(station_id) ? CMD_RENAME_STATION : CMD_RENAME_WAYPOINT, name);
 }
