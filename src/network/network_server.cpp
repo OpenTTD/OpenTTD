@@ -1373,12 +1373,21 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_MOVE)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-void NetworkSocketHandler::SendCompanyInformation(Packet *p, const Company *c, const NetworkCompanyStats *stats)
+/**
+ * Package some generic company information into a packet.
+ * @param p       The packet that will contain the data.
+ * @param c       The company to put the of into the packet.
+ * @param stats   The statistics to put in the packet.
+ * @param max_len The maximum length of the company name.
+ */
+void NetworkSocketHandler::SendCompanyInformation(Packet *p, const Company *c, const NetworkCompanyStats *stats, uint max_len)
 {
 	/* Grab the company name */
 	char company_name[NETWORK_COMPANY_NAME_LENGTH];
 	SetDParam(0, c->index);
-	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+
+	assert(max_len <= lengthof(company_name));
+	GetString(company_name, STR_COMPANY_NAME, company_name + max_len - 1);
 
 	/* Get the income */
 	Money income = 0;

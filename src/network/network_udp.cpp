@@ -29,6 +29,8 @@
 #include "../thread/thread.h"
 #include "../rev.h"
 #include "../newgrf_text.h"
+#include "../strings_func.h"
+#include "table/strings.h"
 
 #include "core/udp.h"
 
@@ -138,11 +140,40 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	NetworkCompanyStats company_stats[MAX_COMPANIES];
 	NetworkPopulateCompanyStats(company_stats);
 
+	/* The minimum company information "blob" size. */
+	static const uint MIN_CI_SIZE = 54;
+	uint max_cname_length = NETWORK_COMPANY_NAME_LENGTH;
+
+	if (Company::GetNumItems() * (MIN_CI_SIZE + NETWORK_COMPANY_NAME_LENGTH) >= (uint)packet.size - packet.pos) {
+		/* Assume we can at least put the company information in the packets. */
+		assert(Company::GetNumItems() * MIN_CI_SIZE < (uint)packet.size - packet.pos);
+
+		/* At this moment the company names might not fit in the
+		 * packet. Check whether that is really the case. */
+
+		for (;;) {
+			int free = packet.size - packet.pos;
+			Company *company;
+			FOR_ALL_COMPANIES(company) {
+				char company_name[NETWORK_COMPANY_NAME_LENGTH];
+				SetDParam(0, company->index);
+				GetString(company_name, STR_COMPANY_NAME, company_name + max_cname_length - 1);
+				free -= MIN_CI_SIZE;
+				free -= strlen(company_name);
+			}
+			if (free >= 0) break;
+
+			/* Try again, with slightly shorter strings. */
+			assert(max_cname_length > 0);
+			max_cname_length--;
+		}
+	}
+
 	Company *company;
 	/* Go through all the companies */
 	FOR_ALL_COMPANIES(company) {
 		/* Send the information */
-		this->SendCompanyInformation(&packet, company, &company_stats[company->index]);
+		this->SendCompanyInformation(&packet, company, &company_stats[company->index], max_cname_length);
 	}
 
 	this->SendPacket(&packet, client_addr);
