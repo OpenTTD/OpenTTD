@@ -24,6 +24,7 @@
 #include "../company_base.h"
 #include "../command_func.h"
 #include "../saveload/saveload.h"
+#include "../saveload/saveload_filter.h"
 #include "../station_base.h"
 #include "../genworld.h"
 #include "../fileio_func.h"
@@ -54,6 +55,82 @@ INSTANTIATE_POOL_METHODS(NetworkClientSocket)
 /** Instantiate the listen sockets. */
 template SocketList TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED>::sockets;
 
+/** Writing a savegame directly to a number of packets. */
+struct PacketWriter : SaveFilter {
+	ServerNetworkGameSocketHandler *cs; ///< Socket we are associated with.
+	Packet *current;                    ///< The packet we're currently writing to.
+	size_t total_size;                  ///< Total size of the compressed savegame.
+
+	/**
+	 * Create the packet writer.
+	 * @param cs The socket handler we're making the packets for.
+	 */
+	PacketWriter(ServerNetworkGameSocketHandler *cs) : SaveFilter(NULL), cs(cs), current(NULL), total_size(0)
+	{
+	}
+
+	/** Make sure everything is cleaned up. */
+	~PacketWriter()
+	{
+		/* Prevent double frees. */
+		this->cs->savegame = NULL;
+
+		delete this->current;
+	}
+
+	/** Append the current packet to the queue. */
+	void AppendQueue()
+	{
+		if (this->current == NULL) return;
+
+		Packet **p = &this->cs->savegame_packets;
+		while (*p != NULL) {
+			p = &(*p)->next;
+		}
+		*p = this->current;
+
+		this->current = NULL;
+	}
+
+	/* virtual */ void Write(byte *buf, size_t size)
+	{
+		if (cs == NULL) return;
+
+		if (this->current == NULL) this->current = new Packet(PACKET_SERVER_MAP_DATA);
+
+		byte *bufe = buf + size;
+		while (buf != bufe) {
+			size_t to_write = min(SEND_MTU - this->current->size, bufe - buf);
+			memcpy(this->current->buffer + this->current->size, buf, to_write);
+			this->current->size += to_write;
+			buf += to_write;
+
+			if (this->current->size == SEND_MTU) {
+				this->AppendQueue();
+				if (buf != bufe) this->current = new Packet(PACKET_SERVER_MAP_DATA);
+			}
+		}
+
+		this->total_size += size;
+	}
+
+	/* virtual */ void Finish()
+	{
+		/* Make sure the last packet is flushed. */
+		this->AppendQueue();
+
+		/* Add a packet stating that this is the end to the queue. */
+		this->current = new Packet(PACKET_SERVER_MAP_DONE);
+		this->AppendQueue();
+
+		/* Fast-track the size to the client. */
+		Packet *p = new Packet(PACKET_SERVER_MAP_SIZE);
+		p->Send_uint32(this->total_size);
+		this->cs->SendPacket(p);
+	}
+};
+
+
 /**
  * Create a new socket for the server side of the game connection.
  * @param s The socket to connect with.
@@ -76,6 +153,7 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 {
 	if (_redirect_console_to_client == this->client_id) _redirect_console_to_client = INVALID_CLIENT_ID;
 	OrderBackup::ResetUser(this->client_id);
+	delete this->savegame_packets;
 }
 
 Packet *ServerNetworkGameSocketHandler::ReceivePacket()
@@ -377,7 +455,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
 /* This sends the map to the client */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 {
-	static FILE *file_pointer = NULL;
 	static uint sent_packets; // How many packets we did send succecfully last time
 
 	if (this->status < STATUS_AUTHORIZED) {
@@ -386,62 +463,41 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 	}
 
 	if (this->status == STATUS_AUTHORIZED) {
-		char filename[MAX_PATH];
-		FioGetDirectory(filename, lengthof(filename), AUTOSAVE_DIR);
-		strecat(filename, "network_server.tmp", lastof(filename));
-
-		/* Make a dump of the current game */
-		if (SaveOrLoad(filename, SL_SAVE, NO_DIRECTORY) != SL_OK) usererror("network savedump failed");
-
-		if (file_pointer != NULL) fclose(file_pointer);
-
-		file_pointer = FioFOpenFile(filename, "rb", NO_DIRECTORY);
-		if (file_pointer == NULL) usererror("network savedump failed - could not open just saved dump");
-
-		fseek(file_pointer, 0, SEEK_END);
-		if (ftell(file_pointer) == 0) usererror("network savedump failed - zero sized savegame?");
+		this->savegame = new PacketWriter(this);
 
 		/* Now send the _frame_counter and how many packets are coming */
 		Packet *p = new Packet(PACKET_SERVER_MAP_BEGIN);
 		p->Send_uint32(_frame_counter);
 		this->SendPacket(p);
 
-		p = new Packet(PACKET_SERVER_MAP_SIZE);
-		p->Send_uint32(ftell(file_pointer));
-		this->SendPacket(p);
-
-		fseek(file_pointer, 0, SEEK_SET);
-
-		sent_packets = 4; // We start with trying 4 packets
-
 		NetworkSyncCommandQueue(this);
 		this->status = STATUS_MAP;
 		/* Mark the start of download */
 		this->last_frame = _frame_counter;
 		this->last_frame_server = _frame_counter;
+
+		sent_packets = 4; // We start with trying 4 packets
+
+		/* Make a dump of the current game */
+		if (SaveWithFilter(this->savegame, false) != SL_OK) usererror("network savedump failed");
 	}
 
 	if (this->status == STATUS_MAP) {
-		uint i;
-		int res;
-		for (i = 0; i < sent_packets; i++) {
-			Packet *p = new Packet(PACKET_SERVER_MAP_DATA);
-			res = (int)fread(p->buffer + p->size, 1, SEND_MTU - p->size, file_pointer);
+		for (uint i = 0; i < sent_packets && this->savegame_packets != NULL; i++) {
+			Packet *p = this->savegame_packets;
+			bool last_packet = p->buffer[2] == PACKET_SERVER_MAP_DONE;
 
-			if (ferror(file_pointer)) usererror("Error reading temporary network savegame!");
-
-			p->size += res;
+			/* Remove the packet from the savegame queue and put it in the real queue. */
+			this->savegame_packets = p->next;
+			p->next = NULL;
 			this->SendPacket(p);
-			if (feof(file_pointer)) {
+
+			if (last_packet) {
 				/* Done reading! */
-				Packet *p = new Packet(PACKET_SERVER_MAP_DONE);
-				this->SendPacket(p);
 
 				/* Set the status to DONE_MAP, no we will wait for the client
 				 *  to send it is ready (maybe that happens like never ;)) */
 				this->status = STATUS_DONE_MAP;
-				fclose(file_pointer);
-				file_pointer = NULL;
 
 				NetworkClientSocket *new_cs;
 				bool new_map_client = false;
@@ -470,7 +526,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 		/* Send all packets (forced) and check if we have send it all */
 		if (this->SendPackets() && this->IsPacketQueueEmpty()) {
 			/* All are sent, increase the sent_packets */
-			sent_packets *= 2;
+			if (this->savegame_packets != NULL) sent_packets *= 2;
 		} else {
 			/* Not everything is sent, decrease the sent_packets */
 			if (sent_packets > 1) sent_packets /= 2;

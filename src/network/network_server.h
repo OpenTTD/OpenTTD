@@ -72,6 +72,9 @@ public:
 	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery
 	int receive_limit;           ///< Amount of bytes that we can receive at this moment
 
+	Packet *savegame_packets;      ///< Packet queue of the savegame; send these "slowly" to the client.
+	struct PacketWriter *savegame; ///< Writer used to write the savegame.
+
 	ServerNetworkGameSocketHandler(SOCKET s);
 	~ServerNetworkGameSocketHandler();
 
