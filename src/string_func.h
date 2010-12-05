@@ -233,6 +233,8 @@ static inline char *Utf8PrevChar(char *s)
 	return ret;
 }
 
+size_t Utf8StringLength(const char *s);
+
 /**
  * Is the given character a text direction character.
  * @param c The character to test.

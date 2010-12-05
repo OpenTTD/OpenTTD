@@ -216,6 +216,21 @@ void str_strip_colours(char *str)
 }
 
 /**
+ * Get the length of an UTF-8 encoded string in number of characters
+ * and thus not the number of bytes that the encoded string contains.
+ * @param s The string to get the length for.
+ * @return The length of the string in characters.
+ */
+size_t Utf8StringLength(const char *s)
+{
+	size_t len = 0;
+	const char *t = s;
+	while (Utf8Consume(&t) != 0) len++;
+	return len;
+}
+
+
+/**
  * Convert a given ASCII string to lowercase.
  * NOTE: only support ASCII characters, no UTF8 fancy. As currently
  * the function is only used to lowercase data-filenames if they are
