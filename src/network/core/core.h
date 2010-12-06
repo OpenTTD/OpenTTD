@@ -15,6 +15,7 @@
 #define NETWORK_CORE_H
 
 #include "../../newgrf_config.h"
+#include "config.h"
 
 #ifdef ENABLE_NETWORK
 
