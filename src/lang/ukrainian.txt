@@ -1476,7 +1476,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Оригіна�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(не рекомендовано)
 
-
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Змініть значення
 
 # Intro window
@@ -1556,6 +1555,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Субаркт�
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Субтропічний ландшафт
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Іграшковий ландшафт
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Змінити дату: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Змінити поточний рік
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дозволити зміну рівня виробництва: {ORANGE}{STRING}
 
 # Livery window
@@ -1819,6 +1819,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Запи
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Запит інформації про компанію..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} клієнт{P "" и ів} перед вами
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} завантажено
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} вже завантажено
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Роз'єднання

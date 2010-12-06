@@ -1695,7 +1695,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Rapatrie
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Rapatriement des infos sur la compagnie...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} avant vous
-STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} téléchargés jusqu'à maintenant
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} téléchargés
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} téléchargés
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Déconnecter

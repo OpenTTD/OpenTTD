@@ -1270,7 +1270,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Popustljiv
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantan
 STR_CITY_APPROVAL_HOSTILE                                       :Neprijateljski
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dostupne odgovarajuće VI...{}Možete skinuti nekoliko VI preko sistema za preuzimanje dodataka
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Nisu dostupne odgovarajuće VI...{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Ova izmena je prebacila nivo težine na sopstven
 
 # Advanced settings window
@@ -1377,7 +1377,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Dozvolj
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Jedan ili više sektora na severnoj ivici nije prazan
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Jedn ili više sektora na jednoj od ivica nije voda
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Nejveća površina stanica: {ORANGE}{STRING} {RED}Upozorenje: Visoka vrednost usporava igru
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Nejveća površina stanica: {ORANGE}{STRING} pločic{P 0:1 a e a} {RED}Upozorenje: Visoka vrednost usporava igru
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Automatsko servisiranje helikoptera na heliodromima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Poveži traku alatki za reljef sa železničkim/drumskim/brodskim/avionskim trakama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Boja tla na karti: {ORANGE}{STRING}
@@ -1432,10 +1432,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Zadrža
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Grupisati troškove u finansijskom prozoru preduzeća: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Dozvoliti izgradnju infrastrukture iako ne postoje vozila za njih: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Najviše vozova po igraču: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Najviše drumskih vozila po igraču: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Najviše letilica po igraču: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Najviše brodova po igraču: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Najviše vozova po preduzeću: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Najviše drumskih vozila po preduzeću: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Najviše letilica po preduzeću: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Najviše brodova po preduzeću: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Računar ne može da koristi železnički prevoz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Računar ne može da koristi drumski prevoz: {ORANGE}{STRING}
@@ -1446,13 +1446,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Dozvolj
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}Najviše operacija pre suspenzije VI: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Intervali servisiranja u procentima: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}{STRING} dan{P 0:1 "" a a}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Uobičajni servisni interval vozova: {ORANGE}nema
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}{STRING} dan{P 0:1 "" a a}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Uobičajni servisni interval drumskih vozila: {ORANGE}nema
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Uobičajni servisni interval letilica: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Uobičajni servisni interval letilica: {ORANGE}{STRING} dan{P 0:1 "" a a}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Uobičajni servisni interval letilica: {ORANGE}nema
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Uobičajni servisni interval brodova: {ORANGE}{STRING} dana/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Uobičajni servisni interval brodova: {ORANGE}{STRING} dan{P 0:1 "" a a}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Uobičajni servisni interval brodova: {ORANGE}nema
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Isključeno servisiranje kada nepostoje kvarovi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Uključeno ograničenje brzine kod vagona: {ORANGE}{STRING}
@@ -1502,10 +1502,10 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Položa
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Levo
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Sredina
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Desno
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus prijanjanja prozora: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Radijus prijanjanja prozora: {ORANGE}{STRING} piksel{P 0:1 "" a a}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radijus prijanjanja prozora: {ORANGE}isključen
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Najviše otvorenih prozora (nepridenutih): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Najviše otvorenih prozora (nepridenutih): {ORANGE}isključeno
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Najviše nepridenutih prozora: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Najviše nepridenutih prozora: {ORANGE}isključeno
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Brzina razvoja naselja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nimalo
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Sporo
@@ -1545,7 +1545,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pretra�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originalno {BLUE}(Preporučuje se)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nepreporučuje se)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Promena vrednosti
 
@@ -1626,6 +1625,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subpolarni klim
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Suptropski klimatski pojas
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Zemlja igračaka
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Promena datuma: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Promena trenutne godine
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Dozvoliti promenu količine proizvodnje: {ORANGE}{STRING}
 
 # Livery window
@@ -1683,10 +1683,10 @@ STR_FACE_LOAD                                                   :{BLACK}Učitaj
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Učitavanje omiljenog lica
 STR_FACE_LOAD_DONE                                              :{WHITE}Vaše omiljeno lice je učitano iz OpenTTD datoteke podešavanja.
 STR_FACE_FACECODE                                               :{BLACK}Redni broj lica
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Pregled i/ili postavljanje rednog broja lica
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Pregled i/ili postavljanje rednog broja lica igrača
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Pregled i/ili postavljanje rednog broja lica vlasnika preduzeća
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Pregled i/ili postavljanje rednog broja lica vlasnika
 STR_FACE_FACECODE_SET                                           :{WHITE}Novi redni broj lica je postavljen.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Broj lica se ne može postaviti - vrednost mora biti broj između 0 i 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Redni broj lica se ne može postaviti - vrednost mora biti broj između 0 i 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Sačuvaj
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Čuvanje omiljenog lica
 STR_FACE_SAVE_DONE                                              :{WHITE}Ovo lice će biti sačuvano kao omiljeno u OpenTTD datoteci podešavanja.
@@ -1803,9 +1803,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Govorni 
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igrači će znati sa kojim jezikom se razgovara na serveru
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Pokreni partiju
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Pokreće novu mrežnu partiju sa proizvoljnim terenom, ili scenarijom
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Pokreće novu mrežnu partiju sa proizvoljnim terenom, ili odabranim scenarijom
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Učitaj Partiju
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Nastavlja ranije sačuvanu mrežnu partiju (proverite da li ste postavljeni igrač kao ranije)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Nastavlja ranije sačuvanu mrežnu partiju (proverite da li ste postavljeni na odgovarajuće preduzeće)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Unos naziva mrežne partije
 
@@ -1889,7 +1889,8 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Tražim 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Tražim podatke o preduzećima..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} igrač{P "" a a} je ispred Vas
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} skinuto do sada
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} preuzeto do sada
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} preuzeto do sada
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Isključenje
 
@@ -2291,10 +2292,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Smanji p
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Pravi zemljište nasumičnog reljefa
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Napravi novi scenario
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Obnovi reljef
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Uklanja sve objekte u vlasništvu igrača sa terena
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Uklanja sve objekte u vlasništvu preduzeća sa terena
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Obnovi reljef
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Da li sigurno želite da uklonite sve objekte u vlasništvu igrača?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Da li sigurno želite da uklonite sve objekte u vlasništvu preduzeća?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stvaranje naselja
@@ -2673,7 +2674,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Odabrano
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Oprez!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Upravo ćete načiniti izmene na tekuću partiju. To može srušiti igru.{}Da li ste apsolutno sigurni da ovo želite?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Upravo ćete načiniti izmene na tekućoj partiji. To može srušiti OpenTTD ili narušiti stanje partije. Oko ovog problema nemojte prijavljivati greške.{}Da li ste apsolutno sigurni da ovo želite?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nemoguće dodati: duplicirani GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odabrana datoteka nije nađena (kompatibilan GRF učitan)
@@ -3555,7 +3556,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Prikazuj
 STR_ERROR_NO_AI                                                 :{WHITE}Ova OpenTTD verzija nema podršku za VI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nijedna VI nije dostupna!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete skinuti nekoliko VI preko sistema za preuzimanje dodataka.
+STR_ERROR_AI_NO_AI_FOUND                                        :Nije pronađena nijadna prikladna VI.{}Učitana zamena neće raditi ništa.{}Možete preuzeti nekoliko VI preko sistema za preuzimanje dodataka.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jedna od VI je krahirala. Molimo vas da prijavite grešku autoru VI-e sa slikom prozora VI Korekcije .
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Prozor VI Korekcije je dostupna samo na serveru
 

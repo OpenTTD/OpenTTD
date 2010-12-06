@@ -1694,7 +1694,8 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Tải th
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Tải thông tin công ty..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} máy trạm phía trước bạn
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} đã tải xong
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}đã tải được {BYTES}
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}đã tải xong {BYTES} / {BYTES}
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Ngắt kết nối
 

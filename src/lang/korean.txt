@@ -1351,7 +1351,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :오리지널 {B
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(비추천)
 
-
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}설정값 변경
 
 # Intro window
@@ -1431,6 +1430,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :냉대 기후
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :아열대 기후
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :장난감 나라
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}날짜 변경: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}현재의 연도를 변경
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업시설의 생산량 조절 허가 : {ORANGE}{STRING}
 
 # Livery window

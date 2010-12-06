@@ -165,7 +165,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}TD
 STR_ABBREV_ALL                                                  :{TINYFONT}GACH
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} paisinéirí
+STR_PASSENGERS                                                  :{COMMA} {P ph ph ph bp p}aisinéir
 STR_BAGS                                                        :{COMMA} málaí
 STR_TONS                                                        :{COMMA} tonaí
 STR_LITERS                                                      :{COMMA} lítear
@@ -1310,7 +1310,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Ar dheis
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ga léime na bhfuinneog: {ORANGE}díchumasaithe
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Teorainn bhog fuinneoige (neamh-ghreamaitheach): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Teorainn bhog fuinneoige (neamh-ghreamaitheach): {ORANGE}díchumasaithe
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Uaslíon na bhfuinneoig neamh-ghreamaitheach: {ORANGE}díchumasaithe
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ráta fáis na mbailte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ceann ar bith
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Mall
@@ -1350,7 +1350,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Aimsith
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Bunaidh {BLUE}(Molta)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ní mholtar é seo)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Athraigh luach an tsocraithe
 

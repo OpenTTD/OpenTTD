@@ -1790,6 +1790,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Dohvaća
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Dohvaćanje podataka o tvrtki..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klijen{P t ta ata} {P je su je} prije Vas
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} preuzeto do sada
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} preuzeto do sada
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odspoji

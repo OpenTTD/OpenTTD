@@ -1472,6 +1472,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub arktično p
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub tropsko podnebje
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Pokrajina v deželi igrač
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Spremeni datum: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Spremeni trenutno leto
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Omogoči spreminjanje proizvodnih vrednosti: {ORANGE}{STRING}
 
 # Livery window
@@ -1735,7 +1736,8 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Iščem 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Iščem informacije o podjetju...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} gost{P "" a i ov} je pred tabo
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} prenesenih
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} prenešenih
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} prenešenih
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Odklopi
 

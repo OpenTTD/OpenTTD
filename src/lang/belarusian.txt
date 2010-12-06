@@ -1747,6 +1747,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :субаркт�
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :субтрапічны ляндшафт
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :цацачны ляндшафт
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Зьмяненьне даты: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Змянiць бягучы год
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дазволіць зьмяненьне прадукцыйнасьці: {ORANGE}{STRING}
 
 # Livery window
@@ -2010,6 +2011,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Здаб
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Збадываньне зьвестак аб кампаніі...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} кліент{P "" ы аў} рыхтуецца далучыцца
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} скачана
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}Запампована {BYTES} / {BYTES}
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Адлучыцца

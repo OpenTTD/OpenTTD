@@ -1182,7 +1182,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Aanpass
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Een of meer vakjes aan de noordelijke rand zijn niet leeg
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Een of meer vakjes aan de rand zijn geen water
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} tegel{P 0:1 "" s} {RED}Pas op: Hoge waarde vertraagt spel
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Verbind de knoppenbalk voor terreinvorming met die voor spoor/weg/water/vliegveld: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Gebruiker land kleur op de kleine kaart: {ORANGE}{STRING}
@@ -1237,10 +1237,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hou bou
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Groepeer uitgaven in bedrijfsfinanciënscherm: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Geef bouwgereedschap weer wanneer geen geschikte voertuigen beschikbaar zijn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximaal aantal vliegtuigen per speler: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximaal aantal schepen per speler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per bedrijf: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximaal aantal wegvoertuigen per bedrijf: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximaal aantal vliegtuigen per bedrijf: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maximaal aantal schepen per bedrijf: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Treinen voor de computer uitschakelen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Wegvoertuigen voor de computer uitschakelen: {ORANGE}{STRING}
@@ -1251,13 +1251,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Laat co
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}aantal opcodes voordat computerspeler tijdelijk wordt gestopt: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Interval tussen onderhoud is een percentage: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standaard interval tussen onderhoud voor treinen: {ORANGE}{STRING} dagen/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Standaard interval tussen onderhoud voor treinen: {ORANGE}{STRING} dag{P 0:1 "" en}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standaard interval tussen onderhoud voor treinen: {ORANGE}uit
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Standaard interval tussen onderhoud voor wegvoertuigen: {ORANGE}{STRING} dagen/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Standaard interval tussen onderhoud voor wegvoertuigen: {ORANGE}{STRING} dag{P 0:1 "" en}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Standaard interval tussen onderhoud voor wegvoertuigen: {ORANGE}uit
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standaard interval tussen onderhoud voor vliegtuigen: {ORANGE}{STRING} dagen/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Standaard interval tussen onderhoud voor vliegtuigen: {ORANGE}{STRING} dag{P 0:1 "" en}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standaard interval tussen onderhoud voor vliegtuigen: {ORANGE}uit
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standaard interval tussen onderhoud voor schepen: {ORANGE}{STRING} dagen/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Standaard interval tussen onderhoud voor schepen: {ORANGE}{STRING} dag{P 0:1 "" en}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standaard interval tussen onderhoud voor schepen: {ORANGE}uit
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Schakel onderhoud uit wanneer defecten uit staan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Schakel snelheidslimieten voor wagons aan: {ORANGE}{STRING}
@@ -1307,10 +1307,10 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Positie
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Links
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Midden
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Rechts
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Vensterklikradius: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Vensterklikradius: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vensterklikradius: {ORANGE}uit
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximum aantal vensters (niet-sticky): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximum aantal vensters (niet-sticky): {ORANGE}uit
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maximum aantal (niet-sticky) vensters: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximum aantal (niet-sticky) vensters: {ORANGE}uit
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Groeisnelheid steden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Niet
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Langzaam
@@ -1350,7 +1350,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Routezo
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Aanbevolen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Niet aanbevolen)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Verander waarde
 
@@ -1431,6 +1430,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarctisch lan
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropisch landschap
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Speelgoedlandschap
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Verander datum: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Wijzig huidig jaar
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sta aanpassen productiewaarden toe: {ORANGE}{STRING}
 
 # Livery window
@@ -1488,8 +1488,8 @@ STR_FACE_LOAD                                                   :{BLACK}Laden
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Laad favoriet gezicht
 STR_FACE_LOAD_DONE                                              :{WHITE}Je favoriete gezicht is geladen uit het OpenTTD-configuratiebestand.
 STR_FACE_FACECODE                                               :{BLACK}Gezichtsnummer
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Bekijk en/of bewaar gezichtsnummer
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Bekijk en/of bewaar gezichtsnummer
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Bekijk en/of bewaar gezichtsnummer van de bedrijfspresident
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Bekijk en/of bewaar huidig gezichtsnummer
 STR_FACE_FACECODE_SET                                           :{WHITE}Nieuwe gezichtsnummercode is opgeslagen.
 STR_FACE_FACECODE_ERR                                           :{WHITE}Kon gezichtsnummer niet bewaren - het moet een getal zijn tussen 0 en 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Opslaan
@@ -1608,9 +1608,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Gesproke
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server.
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start spel
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of scenario
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of geselecteerd scenario
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Laad spel
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Hervat een eerder opgeslagen netwerkspel (wees er zeker van dat je verbindt als de juiste speler)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Hervat een eerder opgeslagen netwerkspel (wees er zeker van dat je verbindt met het juiste bedrijf)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Geef de naam van het netwerk spel
 
@@ -1694,6 +1694,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ophalen 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ophalen bedrijfsinformatie...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} speler{P "" s} voor je
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} tot dusver gedownload
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} opgehaald
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Verbreek verbinding
@@ -2096,10 +2097,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Verklein
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genereer willekeurig land
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Maak nieuw scenario aan
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Verwijder landschap
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Verwijder alle eigendommen van een speler van de kaart
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Verwijder alle eigendommen van een bedrijf van de kaart
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Verwijder landschap
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Weet je zeker dat je alle eigendommen van een speler van de kaart wilt verwijderen?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Weet je zeker dat je alle eigendommen van een bedrijf van de kaart wilt verwijderen?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stadsontwikkeling
@@ -2478,7 +2479,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}De huidi
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Je staat op het punt om wijzigingen te maken aan een lopend spel; dit kan OpenTTD laten vastlopen.{}Weet je het heel zeker?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Je staat op het punt om wijzigingen te maken aan een lopend spel; dit kan OpenTTD laten vastlopen. Meld geen fouten hierover.{}Weet je het heel zeker?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan bestand niet toevoegen: identieke GRF-ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Bijbehorend bestand niet gevonden (compatibele GRF geladen)

@@ -1431,6 +1431,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :paisatge subàr
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :paisatge subtropical
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :paisatge de joguines
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canvia la data: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Canvia l'any actual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activa la modificació de valors de producció: {ORANGE}{STRING}
 
 # Livery window
@@ -1694,6 +1695,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtenint
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtenint informació de la companyia..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} rivals
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} descarregats fins ara
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} descarregats fins ara
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconnecta
@@ -2478,7 +2480,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}al joc d
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Estàs a punt de fer canvis en un joc actiu. Això pot fer que OpenTTD es pengi.{}Estàs completament segur que vols fer-los?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Estàs a punt de fer canvis en un joc actiu. Això pot fer que OpenTTD es pengi. No enviis cap informe d'error sobre això.{}Estàs completament segur que vols fer-los?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No es pot afegir l'arxiu: ID GRF duplicada
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}No s'ha trobat un arxiu coincident (els GRF compatibles s'han carregat)

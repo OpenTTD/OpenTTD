@@ -1810,6 +1810,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Krajobraz arkty
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Krajobraz tropikalny
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Krajobraz zabawkowy
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmień datę: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Zmiana obecnego roku
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwól modyfikować wielkość produkcji przedsiębiorstw: {ORANGE}{STRING}
 
 # Livery window
@@ -2073,6 +2074,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Uzyskiwa
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Uzyskiwanie informacji o firmach..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ów ów} chce się przyłączyć
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}Dotychczas pobrano {BYTES}
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} dotąd pobranych
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Rozłącz

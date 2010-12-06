@@ -21,16 +21,16 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(şir nedefinit)
+STR_UNDEFINED                                                   :(șir nedefinit)
 STR_JUST_NOTHING                                                :Nimic
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :călători
-STR_CARGO_PLURAL_COAL                                           :cărbune
-STR_CARGO_PLURAL_MAIL                                           :colete poştale
-STR_CARGO_PLURAL_OIL                                            :petrol
+STR_CARGO_PLURAL_PASSENGERS                                     :Călători
+STR_CARGO_PLURAL_COAL                                           :Cărbune
+STR_CARGO_PLURAL_MAIL                                           :Colete poştale
+STR_CARGO_PLURAL_OIL                                            :Petrol
 STR_CARGO_PLURAL_LIVESTOCK                                      :animale
 STR_CARGO_PLURAL_GOODS                                          :bunuri
 STR_CARGO_PLURAL_GRAIN                                          :cereale
@@ -1430,6 +1430,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :peisajul sub-ar
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :peisajul sub-tropical
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :peisajul 'ţara jucăriilor'
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Schimbă data: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Schimbă anul curent
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activează accesul la valorile de producţie: {ORANGE}{STRING}
 
 # Livery window
@@ -1693,6 +1694,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Preluare
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Preluare informaţii companie..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} clien{P t ţi} înaintea noastră
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} descărcat până acum
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} descărcaţi până acum
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Deconectare
