@@ -377,11 +377,11 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyStats()
 		p->Send_uint8(company->index);
 
 		for (uint i = 0; i < NETWORK_VEH_END; i++) {
-			p->Send_uint16(company_stats->num_vehicle[i]);
+			p->Send_uint16(company_stats[company->index].num_vehicle[i]);
 		}
 
 		for (uint i = 0; i < NETWORK_VEH_END; i++) {
-			p->Send_uint16(company_stats->num_station[i]);
+			p->Send_uint16(company_stats[company->index].num_station[i]);
 		}
 
 		this->SendPacket(p);
