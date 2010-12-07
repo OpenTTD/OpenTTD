@@ -349,6 +349,31 @@ const char *GetCommandName(uint32 cmd)
 	return _command_proc_table[cmd & CMD_ID_MASK].name;
 }
 
+/**
+ * Returns whether the command is allowed while the game is paused.
+ * @param cmd The command to check.
+ * @return True if the command is allowed while paused, false otherwise.
+ */
+bool IsCommandAllowedWhilePaused(uint32 cmd)
+{
+	/* Lookup table for the command types that are allowed for a given pause level setting. */
+	static const int command_type_lookup[] = {
+		CMDPL_ALL_ACTIONS,     ///< CMDT_LANDSCAPE_CONSTRUCTION
+		CMDPL_NO_LANDSCAPING,  ///< CMDT_VEHICLE_CONSTRUCTION
+		CMDPL_NO_LANDSCAPING,  ///< CMDT_MONEY_MANAGEMENT
+		CMDPL_NO_CONSTRUCTION, ///< CMDT_VEHICLE_MANAGEMENT
+		CMDPL_NO_CONSTRUCTION, ///< CMDT_ROUTE_MANAGEMENT
+		CMDPL_NO_CONSTRUCTION, ///< CMDT_OTHER_MANAGEMENT
+		CMDPL_NO_CONSTRUCTION, ///< CMDT_COMPANY_SETTING
+		CMDPL_NO_ACTIONS,      ///< CMDT_SERVER_SETTING
+	};
+	assert_compile(lengthof(command_type_lookup) == CMDT_END);
+
+	assert(IsValidCommand(cmd));
+	return command_type_lookup[_command_proc_table[cmd & CMD_ID_MASK].type] <= _settings_game.construction.command_pause_level;
+}
+
+
 static int _docommand_recursive = 0;
 
 /**

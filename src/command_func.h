@@ -75,6 +75,8 @@ const char *GetCommandName(uint32 cmd);
  */
 Money GetAvailableMoneyForCommand();
 
+bool IsCommandAllowedWhilePaused(uint32 cmd);
+
 /**
  * Extracts the DC flags needed for DoCommand from the flags returned by GetCommandFlags
  * @param cmd_flags Flags from GetCommandFlags
