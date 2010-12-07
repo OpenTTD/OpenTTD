@@ -174,7 +174,7 @@ CommandProc CmdSetVehicleOnTime;
 CommandProc CmdAutofillTimetable;
 CommandProc CmdSetTimetableStart;
 
-#define DEF_CMD(proc, flags) {proc, #proc, flags}
+#define DEF_CMD(proc, flags, type) {proc, #proc, flags, type}
 
 /**
  * The master command table
@@ -184,128 +184,128 @@ CommandProc CmdSetTimetableStart;
  * as the value from the CMD_* enums.
  */
 static const Command _command_proc_table[] = {
-	DEF_CMD(CmdBuildRailroadTrack,       CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_RAILROAD_TRACK
-	DEF_CMD(CmdRemoveRailroadTrack,                     CMD_AUTO), // CMD_REMOVE_RAILROAD_TRACK
-	DEF_CMD(CmdBuildSingleRail,          CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_SINGLE_RAIL
-	DEF_CMD(CmdRemoveSingleRail,                        CMD_AUTO), // CMD_REMOVE_SINGLE_RAIL
-	DEF_CMD(CmdLandscapeClear,                                 0), // CMD_LANDSCAPE_CLEAR
-	DEF_CMD(CmdBuildBridge,              CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_BRIDGE
-	DEF_CMD(CmdBuildRailStation,         CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_RAIL_STATION
-	DEF_CMD(CmdBuildTrainDepot,          CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_TRAIN_DEPOT
-	DEF_CMD(CmdBuildSingleSignal,                       CMD_AUTO), // CMD_BUILD_SIGNALS
-	DEF_CMD(CmdRemoveSingleSignal,                      CMD_AUTO), // CMD_REMOVE_SIGNALS
-	DEF_CMD(CmdTerraformLand,           CMD_ALL_TILES | CMD_AUTO), // CMD_TERRAFORM_LAND
-	DEF_CMD(CmdBuildObject,              CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_OBJECT
-	DEF_CMD(CmdBuildTunnel,                             CMD_AUTO), // CMD_BUILD_TUNNEL
-	DEF_CMD(CmdRemoveFromRailStation,                          0), // CMD_REMOVE_FROM_RAIL_STATION
-	DEF_CMD(CmdConvertRail,                                    0), // CMD_CONVERT_RAILD
-	DEF_CMD(CmdBuildRailWaypoint,                              0), // CMD_BUILD_RAIL_WAYPOINT
-	DEF_CMD(CmdRenameWaypoint,                                 0), // CMD_RENAME_WAYPOINT
-	DEF_CMD(CmdRemoveFromRailWaypoint,                         0), // CMD_REMOVE_FROM_RAIL_WAYPOINT
+	DEF_CMD(CmdBuildRailroadTrack,       CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_RAILROAD_TRACK
+	DEF_CMD(CmdRemoveRailroadTrack,                     CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_REMOVE_RAILROAD_TRACK
+	DEF_CMD(CmdBuildSingleRail,          CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_SINGLE_RAIL
+	DEF_CMD(CmdRemoveSingleRail,                        CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_REMOVE_SINGLE_RAIL
+	DEF_CMD(CmdLandscapeClear,                                 0, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_LANDSCAPE_CLEAR
+	DEF_CMD(CmdBuildBridge,              CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_BRIDGE
+	DEF_CMD(CmdBuildRailStation,         CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_RAIL_STATION
+	DEF_CMD(CmdBuildTrainDepot,          CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_TRAIN_DEPOT
+	DEF_CMD(CmdBuildSingleSignal,                       CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_SIGNALS
+	DEF_CMD(CmdRemoveSingleSignal,                      CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_REMOVE_SIGNALS
+	DEF_CMD(CmdTerraformLand,           CMD_ALL_TILES | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_TERRAFORM_LAND
+	DEF_CMD(CmdBuildObject,              CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_OBJECT
+	DEF_CMD(CmdBuildTunnel,                             CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_TUNNEL
+	DEF_CMD(CmdRemoveFromRailStation,                          0, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_REMOVE_FROM_RAIL_STATION
+	DEF_CMD(CmdConvertRail,                                    0, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_CONVERT_RAILD
+	DEF_CMD(CmdBuildRailWaypoint,                              0, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_RAIL_WAYPOINT
+	DEF_CMD(CmdRenameWaypoint,                                 0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_WAYPOINT
+	DEF_CMD(CmdRemoveFromRailWaypoint,                         0, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_REMOVE_FROM_RAIL_WAYPOINT
 
-	DEF_CMD(CmdBuildRoadStop,            CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_ROAD_STOP
-	DEF_CMD(CmdRemoveRoadStop,                                 0), // CMD_REMOVE_ROAD_STOP
-	DEF_CMD(CmdBuildLongRoad,            CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_LONG_ROAD
-	DEF_CMD(CmdRemoveLongRoad,            CMD_NO_TEST | CMD_AUTO), // CMD_REMOVE_LONG_ROAD; towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
-	DEF_CMD(CmdBuildRoad,                CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_ROAD
-	DEF_CMD(CmdBuildRoadDepot,           CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_ROAD_DEPOT
+	DEF_CMD(CmdBuildRoadStop,            CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_ROAD_STOP
+	DEF_CMD(CmdRemoveRoadStop,                                 0, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_REMOVE_ROAD_STOP
+	DEF_CMD(CmdBuildLongRoad,            CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_LONG_ROAD
+	DEF_CMD(CmdRemoveLongRoad,            CMD_NO_TEST | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_REMOVE_LONG_ROAD; towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed.
+	DEF_CMD(CmdBuildRoad,                CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_ROAD
+	DEF_CMD(CmdBuildRoadDepot,           CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_ROAD_DEPOT
 
-	DEF_CMD(CmdBuildAirport,             CMD_NO_WATER | CMD_AUTO), // CMD_BUILD_AIRPORT
-	DEF_CMD(CmdBuildDock,                               CMD_AUTO), // CMD_BUILD_DOCK
-	DEF_CMD(CmdBuildShipDepot,                          CMD_AUTO), // CMD_BUILD_SHIP_DEPOT
-	DEF_CMD(CmdBuildBuoy,                               CMD_AUTO), // CMD_BUILD_BUOY
-	DEF_CMD(CmdPlantTree,                               CMD_AUTO), // CMD_PLANT_TREE
+	DEF_CMD(CmdBuildAirport,             CMD_NO_WATER | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_AIRPORT
+	DEF_CMD(CmdBuildDock,                               CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_DOCK
+	DEF_CMD(CmdBuildShipDepot,                          CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_SHIP_DEPOT
+	DEF_CMD(CmdBuildBuoy,                               CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_BUOY
+	DEF_CMD(CmdPlantTree,                               CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_PLANT_TREE
 
-	DEF_CMD(CmdBuildVehicle,                       CMD_CLIENT_ID), // CMD_BUILD_VEHICLE
-	DEF_CMD(CmdSellVehicle,                        CMD_CLIENT_ID), // CMD_SELL_VEHICLE
-	DEF_CMD(CmdRefitVehicle,                                   0), // CMD_REFIT_VEHICLE
-	DEF_CMD(CmdSendVehicleToDepot,                             0), // CMD_SEND_VEHICLE_TO_DEPOT
+	DEF_CMD(CmdBuildVehicle,                       CMD_CLIENT_ID, CMDT_VEHICLE_CONSTRUCTION  ), // CMD_BUILD_VEHICLE
+	DEF_CMD(CmdSellVehicle,                        CMD_CLIENT_ID, CMDT_VEHICLE_CONSTRUCTION  ), // CMD_SELL_VEHICLE
+	DEF_CMD(CmdRefitVehicle,                                   0, CMDT_VEHICLE_CONSTRUCTION  ), // CMD_REFIT_VEHICLE
+	DEF_CMD(CmdSendVehicleToDepot,                             0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_SEND_VEHICLE_TO_DEPOT
 
-	DEF_CMD(CmdMoveRailVehicle,                                0), // CMD_MOVE_RAIL_VEHICLE
-	DEF_CMD(CmdForceTrainProceed,                              0), // CMD_FORCE_TRAIN_PROCEED
-	DEF_CMD(CmdReverseTrainDirection,                          0), // CMD_REVERSE_TRAIN_DIRECTION
+	DEF_CMD(CmdMoveRailVehicle,                                0, CMDT_VEHICLE_CONSTRUCTION  ), // CMD_MOVE_RAIL_VEHICLE
+	DEF_CMD(CmdForceTrainProceed,                              0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_FORCE_TRAIN_PROCEED
+	DEF_CMD(CmdReverseTrainDirection,                          0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_REVERSE_TRAIN_DIRECTION
 
-	DEF_CMD(CmdClearOrderBackup,                   CMD_CLIENT_ID), // CMD_CLEAR_ORDER_BACKUP
-	DEF_CMD(CmdModifyOrder,                                    0), // CMD_MODIFY_ORDER
-	DEF_CMD(CmdSkipToOrder,                                    0), // CMD_SKIP_TO_ORDER
-	DEF_CMD(CmdDeleteOrder,                                    0), // CMD_DELETE_ORDER
-	DEF_CMD(CmdInsertOrder,                                    0), // CMD_INSERT_ORDER
+	DEF_CMD(CmdClearOrderBackup,                   CMD_CLIENT_ID, CMDT_ROUTE_MANAGEMENT      ), // CMD_CLEAR_ORDER_BACKUP
+	DEF_CMD(CmdModifyOrder,                                    0, CMDT_ROUTE_MANAGEMENT      ), // CMD_MODIFY_ORDER
+	DEF_CMD(CmdSkipToOrder,                                    0, CMDT_ROUTE_MANAGEMENT      ), // CMD_SKIP_TO_ORDER
+	DEF_CMD(CmdDeleteOrder,                                    0, CMDT_ROUTE_MANAGEMENT      ), // CMD_DELETE_ORDER
+	DEF_CMD(CmdInsertOrder,                                    0, CMDT_ROUTE_MANAGEMENT      ), // CMD_INSERT_ORDER
 
-	DEF_CMD(CmdChangeServiceInt,                               0), // CMD_CHANGE_SERVICE_INT
+	DEF_CMD(CmdChangeServiceInt,                               0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_CHANGE_SERVICE_INT
 
-	DEF_CMD(CmdBuildIndustry,                                  0), // CMD_BUILD_INDUSTRY
-	DEF_CMD(CmdSetCompanyManagerFace,                          0), // CMD_SET_COMPANY_MANAGER_FACE
-	DEF_CMD(CmdSetCompanyColour,                               0), // CMD_SET_COMPANY_COLOUR
+	DEF_CMD(CmdBuildIndustry,                                  0, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_INDUSTRY
+	DEF_CMD(CmdSetCompanyManagerFace,                          0, CMDT_OTHER_MANAGEMENT      ), // CMD_SET_COMPANY_MANAGER_FACE
+	DEF_CMD(CmdSetCompanyColour,                               0, CMDT_OTHER_MANAGEMENT      ), // CMD_SET_COMPANY_COLOUR
 
-	DEF_CMD(CmdIncreaseLoan,                                   0), // CMD_INCREASE_LOAN
-	DEF_CMD(CmdDecreaseLoan,                                   0), // CMD_DECREASE_LOAN
+	DEF_CMD(CmdIncreaseLoan,                                   0, CMDT_MONEY_MANAGEMENT      ), // CMD_INCREASE_LOAN
+	DEF_CMD(CmdDecreaseLoan,                                   0, CMDT_MONEY_MANAGEMENT      ), // CMD_DECREASE_LOAN
 
-	DEF_CMD(CmdWantEnginePreview,                              0), // CMD_WANT_ENGINE_PREVIEW
+	DEF_CMD(CmdWantEnginePreview,                              0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_WANT_ENGINE_PREVIEW
 
-	DEF_CMD(CmdRenameVehicle,                                  0), // CMD_RENAME_VEHICLE
-	DEF_CMD(CmdRenameEngine,                                   0), // CMD_RENAME_ENGINE
+	DEF_CMD(CmdRenameVehicle,                                  0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_VEHICLE
+	DEF_CMD(CmdRenameEngine,                                   0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_ENGINE
 
-	DEF_CMD(CmdRenameCompany,                                  0), // CMD_RENAME_COMPANY
-	DEF_CMD(CmdRenamePresident,                                0), // CMD_RENAME_PRESIDENT
+	DEF_CMD(CmdRenameCompany,                                  0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_COMPANY
+	DEF_CMD(CmdRenamePresident,                                0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_PRESIDENT
 
-	DEF_CMD(CmdRenameStation,                                  0), // CMD_RENAME_STATION
-	DEF_CMD(CmdRenameDepot,                                    0), // CMD_RENAME_DEPOT
+	DEF_CMD(CmdRenameStation,                                  0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_STATION
+	DEF_CMD(CmdRenameDepot,                                    0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_DEPOT
 
-	DEF_CMD(CmdPlaceSign,                                      0), // CMD_PLACE_SIGN
-	DEF_CMD(CmdRenameSign,                                     0), // CMD_RENAME_SIGN
+	DEF_CMD(CmdPlaceSign,                                      0, CMDT_OTHER_MANAGEMENT      ), // CMD_PLACE_SIGN
+	DEF_CMD(CmdRenameSign,                                     0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_SIGN
 
-	DEF_CMD(CmdTurnRoadVeh,                                    0), // CMD_TURN_ROADVEH
+	DEF_CMD(CmdTurnRoadVeh,                                    0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_TURN_ROADVEH
 
-	DEF_CMD(CmdPause,                                 CMD_SERVER), // CMD_PAUSE
+	DEF_CMD(CmdPause,                                 CMD_SERVER, CMDT_SERVER_SETTING        ), // CMD_PAUSE
 
-	DEF_CMD(CmdBuyShareInCompany,                              0), // CMD_BUY_SHARE_IN_COMPANY
-	DEF_CMD(CmdSellShareInCompany,                             0), // CMD_SELL_SHARE_IN_COMPANY
-	DEF_CMD(CmdBuyCompany,                                     0), // CMD_BUY_COMANY
+	DEF_CMD(CmdBuyShareInCompany,                              0, CMDT_MONEY_MANAGEMENT      ), // CMD_BUY_SHARE_IN_COMPANY
+	DEF_CMD(CmdSellShareInCompany,                             0, CMDT_MONEY_MANAGEMENT      ), // CMD_SELL_SHARE_IN_COMPANY
+	DEF_CMD(CmdBuyCompany,                                     0, CMDT_MONEY_MANAGEMENT      ), // CMD_BUY_COMANY
 
-	DEF_CMD(CmdFoundTown,                            CMD_NO_TEST), // CMD_FOUND_TOWN; founding random town can fail only in exec run
-	DEF_CMD(CmdRenameTown,                            CMD_SERVER), // CMD_RENAME_TOWN
-	DEF_CMD(CmdDoTownAction,                                   0), // CMD_DO_TOWN_ACTION
-	DEF_CMD(CmdExpandTown,                           CMD_OFFLINE), // CMD_EXPAND_TOWN
-	DEF_CMD(CmdDeleteTown,                           CMD_OFFLINE), // CMD_DELETE_TOWN
+	DEF_CMD(CmdFoundTown,                            CMD_NO_TEST, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_FOUND_TOWN; founding random town can fail only in exec run
+	DEF_CMD(CmdRenameTown,                            CMD_SERVER, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_TOWN
+	DEF_CMD(CmdDoTownAction,                                   0, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_DO_TOWN_ACTION
+	DEF_CMD(CmdExpandTown,                           CMD_OFFLINE, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_EXPAND_TOWN
+	DEF_CMD(CmdDeleteTown,                           CMD_OFFLINE, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_DELETE_TOWN
 
-	DEF_CMD(CmdOrderRefit,                                     0), // CMD_ORDER_REFIT
-	DEF_CMD(CmdCloneOrder,                                     0), // CMD_CLONE_ORDER
+	DEF_CMD(CmdOrderRefit,                                     0, CMDT_ROUTE_MANAGEMENT      ), // CMD_ORDER_REFIT
+	DEF_CMD(CmdCloneOrder,                                     0, CMDT_ROUTE_MANAGEMENT      ), // CMD_CLONE_ORDER
 
-	DEF_CMD(CmdClearArea,                            CMD_NO_TEST), // CMD_CLEAR_AREA; destroying multi-tile houses makes town rating differ between test and execution
+	DEF_CMD(CmdClearArea,                            CMD_NO_TEST, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_CLEAR_AREA; destroying multi-tile houses makes town rating differ between test and execution
 
-	DEF_CMD(CmdMoneyCheat,                           CMD_OFFLINE), // CMD_MONEY_CHEAT
-	DEF_CMD(CmdBuildCanal,                              CMD_AUTO), // CMD_BUILD_CANAL
-	DEF_CMD(CmdCompanyCtrl,        CMD_SPECTATOR | CMD_CLIENT_ID), // CMD_COMPANY_CTRL
+	DEF_CMD(CmdMoneyCheat,                           CMD_OFFLINE, CMDT_MONEY_MANAGEMENT      ), // CMD_MONEY_CHEAT
+	DEF_CMD(CmdBuildCanal,                              CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_CANAL
+	DEF_CMD(CmdCompanyCtrl,        CMD_SPECTATOR | CMD_CLIENT_ID, CMDT_SERVER_SETTING        ), // CMD_COMPANY_CTRL
 
-	DEF_CMD(CmdLevelLand, CMD_ALL_TILES | CMD_NO_TEST | CMD_AUTO), // CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once
+	DEF_CMD(CmdLevelLand, CMD_ALL_TILES | CMD_NO_TEST | CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once
 
-	DEF_CMD(CmdBuildLock,                               CMD_AUTO), // CMD_BUILD_LOCK
+	DEF_CMD(CmdBuildLock,                               CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_LOCK
 
-	DEF_CMD(CmdBuildSignalTrack,                        CMD_AUTO), // CMD_BUILD_SIGNAL_TRACK
-	DEF_CMD(CmdRemoveSignalTrack,                       CMD_AUTO), // CMD_REMOVE_SIGNAL_TRACK
+	DEF_CMD(CmdBuildSignalTrack,                        CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_BUILD_SIGNAL_TRACK
+	DEF_CMD(CmdRemoveSignalTrack,                       CMD_AUTO, CMDT_LANDSCAPE_CONSTRUCTION), // CMD_REMOVE_SIGNAL_TRACK
 
-	DEF_CMD(CmdGiveMoney,                                      0), // CMD_GIVE_MONEY
-	DEF_CMD(CmdChangeSetting,                         CMD_SERVER), // CMD_CHANGE_SETTING
-	DEF_CMD(CmdChangeCompanySetting,                           0), // CMD_CHANGE_COMPANY_SETTING
-	DEF_CMD(CmdSetAutoReplace,                                 0), // CMD_SET_AUTOREPLACE
-	DEF_CMD(CmdCloneVehicle,                         CMD_NO_TEST), // CMD_CLONE_VEHICLE; NewGRF callbacks influence building and refitting making it impossible to correctly estimate the cost
-	DEF_CMD(CmdStartStopVehicle,                               0), // CMD_START_STOP_VEHICLE
-	DEF_CMD(CmdMassStartStopVehicle,                           0), // CMD_MASS_START_STOP
-	DEF_CMD(CmdAutoreplaceVehicle,                             0), // CMD_AUTOREPLACE_VEHICLE
-	DEF_CMD(CmdDepotSellAllVehicles,                           0), // CMD_DEPOT_SELL_ALL_VEHICLES
-	DEF_CMD(CmdDepotMassAutoReplace,                           0), // CMD_DEPOT_MASS_AUTOREPLACE
-	DEF_CMD(CmdCreateGroup,                                    0), // CMD_CREATE_GROUP
-	DEF_CMD(CmdDeleteGroup,                                    0), // CMD_DELETE_GROUP
-	DEF_CMD(CmdRenameGroup,                                    0), // CMD_RENAME_GROUP
-	DEF_CMD(CmdAddVehicleGroup,                                0), // CMD_ADD_VEHICLE_GROUP
-	DEF_CMD(CmdAddSharedVehicleGroup,                          0), // CMD_ADD_SHARE_VEHICLE_GROUP
-	DEF_CMD(CmdRemoveAllVehiclesGroup,                         0), // CMD_REMOVE_ALL_VEHICLES_GROUP
-	DEF_CMD(CmdSetGroupReplaceProtection,                      0), // CMD_SET_GROUP_REPLACE_PROTECTION
-	DEF_CMD(CmdMoveOrder,                                      0), // CMD_MOVE_ORDER
-	DEF_CMD(CmdChangeTimetable,                                0), // CMD_CHANGE_TIMETABLE
-	DEF_CMD(CmdSetVehicleOnTime,                               0), // CMD_SET_VEHICLE_ON_TIME
-	DEF_CMD(CmdAutofillTimetable,                              0), // CMD_AUTOFILL_TIMETABLE
-	DEF_CMD(CmdSetTimetableStart,                              0), // CMD_SET_TIMETABLE_START
+	DEF_CMD(CmdGiveMoney,                                      0, CMDT_MONEY_MANAGEMENT      ), // CMD_GIVE_MONEY
+	DEF_CMD(CmdChangeSetting,                         CMD_SERVER, CMDT_SERVER_SETTING        ), // CMD_CHANGE_SETTING
+	DEF_CMD(CmdChangeCompanySetting,                           0, CMDT_COMPANY_SETTING       ), // CMD_CHANGE_COMPANY_SETTING
+	DEF_CMD(CmdSetAutoReplace,                                 0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_SET_AUTOREPLACE
+	DEF_CMD(CmdCloneVehicle,                         CMD_NO_TEST, CMDT_VEHICLE_CONSTRUCTION  ), // CMD_CLONE_VEHICLE; NewGRF callbacks influence building and refitting making it impossible to correctly estimate the cost
+	DEF_CMD(CmdStartStopVehicle,                               0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_START_STOP_VEHICLE
+	DEF_CMD(CmdMassStartStopVehicle,                           0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_MASS_START_STOP
+	DEF_CMD(CmdAutoreplaceVehicle,                             0, CMDT_VEHICLE_MANAGEMENT    ), // CMD_AUTOREPLACE_VEHICLE
+	DEF_CMD(CmdDepotSellAllVehicles,                           0, CMDT_VEHICLE_CONSTRUCTION  ), // CMD_DEPOT_SELL_ALL_VEHICLES
+	DEF_CMD(CmdDepotMassAutoReplace,                           0, CMDT_VEHICLE_CONSTRUCTION  ), // CMD_DEPOT_MASS_AUTOREPLACE
+	DEF_CMD(CmdCreateGroup,                                    0, CMDT_ROUTE_MANAGEMENT      ), // CMD_CREATE_GROUP
+	DEF_CMD(CmdDeleteGroup,                                    0, CMDT_ROUTE_MANAGEMENT      ), // CMD_DELETE_GROUP
+	DEF_CMD(CmdRenameGroup,                                    0, CMDT_OTHER_MANAGEMENT      ), // CMD_RENAME_GROUP
+	DEF_CMD(CmdAddVehicleGroup,                                0, CMDT_ROUTE_MANAGEMENT      ), // CMD_ADD_VEHICLE_GROUP
+	DEF_CMD(CmdAddSharedVehicleGroup,                          0, CMDT_ROUTE_MANAGEMENT      ), // CMD_ADD_SHARE_VEHICLE_GROUP
+	DEF_CMD(CmdRemoveAllVehiclesGroup,                         0, CMDT_ROUTE_MANAGEMENT      ), // CMD_REMOVE_ALL_VEHICLES_GROUP
+	DEF_CMD(CmdSetGroupReplaceProtection,                      0, CMDT_ROUTE_MANAGEMENT      ), // CMD_SET_GROUP_REPLACE_PROTECTION
+	DEF_CMD(CmdMoveOrder,                                      0, CMDT_ROUTE_MANAGEMENT      ), // CMD_MOVE_ORDER
+	DEF_CMD(CmdChangeTimetable,                                0, CMDT_ROUTE_MANAGEMENT      ), // CMD_CHANGE_TIMETABLE
+	DEF_CMD(CmdSetVehicleOnTime,                               0, CMDT_ROUTE_MANAGEMENT      ), // CMD_SET_VEHICLE_ON_TIME
+	DEF_CMD(CmdAutofillTimetable,                              0, CMDT_ROUTE_MANAGEMENT      ), // CMD_AUTOFILL_TIMETABLE
+	DEF_CMD(CmdSetTimetableStart,                              0, CMDT_ROUTE_MANAGEMENT      ), // CMD_SET_TIMETABLE_START
 };
 
 /*!
