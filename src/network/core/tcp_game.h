@@ -141,8 +141,8 @@ public:
 	/** Clear the command queue. */
 	~CommandQueue() { this->Free(); }
 	void Append(CommandPacket *p);
-	CommandPacket *Pop();
-	CommandPacket *Peek();
+	CommandPacket *Pop(bool ignore_paused = false);
+	CommandPacket *Peek(bool ignore_paused = false);
 	void Free();
 	/** Get the number of items in the queue. */
 	uint Count() const { return this->count; }

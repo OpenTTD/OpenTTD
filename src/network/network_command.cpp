@@ -75,13 +75,21 @@ void CommandQueue::Append(CommandPacket *p)
 
 /**
  * Return the first item in the queue and remove it from the queue.
+ * @param ignore_paused Whether to ignore commands that may not be executed while paused.
  * @return the first item in the queue.
  */
-CommandPacket *CommandQueue::Pop()
+CommandPacket *CommandQueue::Pop(bool ignore_paused)
 {
+	CommandPacket **prev = &this->first;
 	CommandPacket *ret = this->first;
+	if (ignore_paused && _pause_mode != PM_UNPAUSED) {
+		while (ret != NULL && !IsCommandAllowedWhilePaused(ret->cmd)) {
+			prev = &ret->next;
+			ret = ret->next;
+		}
+	}
 	if (ret != NULL) {
-		this->first = this->first->next;
+		*prev = ret->next;
 		this->count--;
 	}
 	return ret;
@@ -89,11 +97,17 @@ CommandPacket *CommandQueue::Pop()
 
 /**
  * Return the first item in the queue, but don't remove it.
+ * @param ignore_paused Whether to ignore commands that may not be executed while paused.
  * @return the first item in the queue.
  */
-CommandPacket *CommandQueue::Peek()
+CommandPacket *CommandQueue::Peek(bool ignore_paused)
 {
-	return this->first;
+	if (!ignore_paused || _pause_mode == PM_UNPAUSED) return this->first;
+
+	for (CommandPacket *p = this->first; p != NULL; p = p->next) {
+		if (IsCommandAllowedWhilePaused(p->cmd)) return p;
+	}
+	return NULL;
 }
 
 /** Free everything that is in the queue. */
@@ -251,7 +265,7 @@ static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owne
 	int to_go = _settings_client.network.commands_per_frame;
 
 	CommandPacket *cp;
-	while (--to_go >= 0 && (cp = queue->Pop()) != NULL) {
+	while (--to_go >= 0 && (cp = queue->Pop(true)) != NULL) {
 		DistributeCommandPacket(*cp, owner);
 		free(cp);
 	}
