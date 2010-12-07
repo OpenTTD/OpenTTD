@@ -2213,7 +2213,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			case MC_DOUBLE_LEFT:
 			case MC_LEFT:
 				DEBUG(misc, 2, "Cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
-				if (_thd.place_mode != HT_NONE && _pause_mode != PM_UNPAUSED) {
+				if (_thd.place_mode != HT_NONE && _pause_mode != PM_UNPAUSED && _game_mode != GM_EDITOR) {
 					switch (_settings_game.construction.command_pause_level) {
 						case CMDPL_ALL_ACTIONS:
 							/* We allow all actions. */
