@@ -1426,6 +1426,26 @@ static const CursorID SPR_CURSOR_CLONE_AIRPLANE = SPR_OPENTTD_BASE + 113;
 
 /** Animation macro in table/animcursors.h (_animcursors[]) */
 
+static const CursorID SPR_CURSOR_DEMOLISH_FIRST = 704;
+static const CursorID SPR_CURSOR_DEMOLISH_1     = 705;
+static const CursorID SPR_CURSOR_DEMOLISH_2     = 706;
+static const CursorID SPR_CURSOR_DEMOLISH_LAST  = 707;
+
+static const CursorID SPR_CURSOR_LOWERLAND_FIRST = 699;
+static const CursorID SPR_CURSOR_LOWERLAND_1     = 700;
+static const CursorID SPR_CURSOR_LOWERLAND_LAST  = 701;
+
+static const CursorID SPR_CURSOR_RAISELAND_FIRST = 696;
+static const CursorID SPR_CURSOR_RAISELAND_1     = 697;
+static const CursorID SPR_CURSOR_RAISELAND_LAST  = 698;
+
+static const CursorID SPR_CURSOR_PICKSTATION_FIRST = 716;
+static const CursorID SPR_CURSOR_PICKSTATION_1     = 717;
+static const CursorID SPR_CURSOR_PICKSTATION_LAST  = 718;
+
+static const CursorID SPR_CURSOR_BUILDSIGNALS_FIRST = 1292;
+static const CursorID SPR_CURSOR_BUILDSIGNALS_LAST  = 1293;
+
 /** Flag for saying a cursor sprite is an animated cursor. */
 static const CursorID ANIMCURSOR_FLAG         = 1U << 31;
 static const CursorID ANIMCURSOR_DEMOLISH     = ANIMCURSOR_FLAG | 0; ///<  704 -  707 - demolish dynamite

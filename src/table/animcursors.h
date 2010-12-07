@@ -33,10 +33,10 @@
  * Animated cursor elements for demolishion
  */
 static const AnimCursor _demolish_animcursor[] = {
-	ANIM_CURSOR_LINE(0x2C0, 8)
-	ANIM_CURSOR_LINE(0x2C1, 8)
-	ANIM_CURSOR_LINE(0x2C2, 8)
-	ANIM_CURSOR_LINE(0x2C3, 8)
+	ANIM_CURSOR_LINE(SPR_CURSOR_DEMOLISH_FIRST, 8)
+	ANIM_CURSOR_LINE(SPR_CURSOR_DEMOLISH_1,     8)
+	ANIM_CURSOR_LINE(SPR_CURSOR_DEMOLISH_2,     8)
+	ANIM_CURSOR_LINE(SPR_CURSOR_DEMOLISH_LAST,  8)
 	ANIM_CURSOR_END()
 };
 
@@ -44,9 +44,9 @@ static const AnimCursor _demolish_animcursor[] = {
  * Animated cursor elements for lower land
  */
 static const AnimCursor _lower_land_animcursor[] = {
-	ANIM_CURSOR_LINE(0x2BB, 10)
-	ANIM_CURSOR_LINE(0x2BC, 10)
-	ANIM_CURSOR_LINE(0x2BD, 29)
+	ANIM_CURSOR_LINE(SPR_CURSOR_LOWERLAND_FIRST, 10)
+	ANIM_CURSOR_LINE(SPR_CURSOR_LOWERLAND_1,     10)
+	ANIM_CURSOR_LINE(SPR_CURSOR_LOWERLAND_LAST,  29)
 	ANIM_CURSOR_END()
 };
 
@@ -54,9 +54,9 @@ static const AnimCursor _lower_land_animcursor[] = {
  * Animated cursor elements for raise land
  */
 static const AnimCursor _raise_land_animcursor[] = {
-	ANIM_CURSOR_LINE(0x2B8, 10)
-	ANIM_CURSOR_LINE(0x2B9, 10)
-	ANIM_CURSOR_LINE(0x2BA, 29)
+	ANIM_CURSOR_LINE(SPR_CURSOR_RAISELAND_FIRST, 10)
+	ANIM_CURSOR_LINE(SPR_CURSOR_RAISELAND_1,     10)
+	ANIM_CURSOR_LINE(SPR_CURSOR_RAISELAND_LAST,  29)
 	ANIM_CURSOR_END()
 };
 
@@ -64,9 +64,9 @@ static const AnimCursor _raise_land_animcursor[] = {
  * Animated cursor elements for the goto icon
  */
 static const AnimCursor _order_goto_animcursor[] = {
-	ANIM_CURSOR_LINE(0x2CC, 10)
-	ANIM_CURSOR_LINE(0x2CD, 10)
-	ANIM_CURSOR_LINE(0x2CE, 29)
+	ANIM_CURSOR_LINE(SPR_CURSOR_PICKSTATION_FIRST, 10)
+	ANIM_CURSOR_LINE(SPR_CURSOR_PICKSTATION_1,     10)
+	ANIM_CURSOR_LINE(SPR_CURSOR_PICKSTATION_LAST,  29)
 	ANIM_CURSOR_END()
 };
 
@@ -74,8 +74,8 @@ static const AnimCursor _order_goto_animcursor[] = {
  * Animated cursor elements for the build signal icon
  */
 static const AnimCursor _build_signals_animcursor[] = {
-	ANIM_CURSOR_LINE(0x50C, 20)
-	ANIM_CURSOR_LINE(0x50D, 20)
+	ANIM_CURSOR_LINE(SPR_CURSOR_BUILDSIGNALS_FIRST, 20)
+	ANIM_CURSOR_LINE(SPR_CURSOR_BUILDSIGNALS_LAST,  20)
 	ANIM_CURSOR_END()
 };
 
