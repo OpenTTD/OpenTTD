@@ -30,12 +30,12 @@ struct Cheats {
 	Cheat switch_company;   ///< change to another company
 	Cheat money;            ///< get rich or poor
 	Cheat crossing_tunnels; ///< allow tunnels that cross each other
-	Cheat build_in_pause;   ///< build while in pause mode
+	Cheat dummy1;           ///< empty cheat (build while in pause mode)
 	Cheat no_jetcrash;      ///< no jet will crash on small airports anymore
 	Cheat switch_climate;   ///< change the climate of the map
 	Cheat change_date;      ///< changes date ingame
 	Cheat setup_prod;       ///< setup raw-material production in game
-	Cheat dummy;            ///< empty cheat (enable running el-engines on normal rail)
+	Cheat dummy2;           ///< empty cheat (enable running el-engines on normal rail)
 };
 
 extern Cheats _cheats;

@@ -136,7 +136,6 @@ enum CheatNumbers {
 	CHT_CHANGE_COMPANY,  ///< Switch company.
 	CHT_EXTRA_DYNAMITE,  ///< Dynamite anything.
 	CHT_CROSSINGTUNNELS, ///< Allow tunnels to cross each other.
-	CHT_BUILD_IN_PAUSE,  ///< Allow building while paused.
 	CHT_NO_JETCRASH,     ///< Disable jet-airplane crashes.
 	CHT_SETUP_PROD,      ///< Allow manually editing of industry production.
 	CHT_SWITCH_CLIMATE,  ///< Switch climate.
@@ -170,7 +169,6 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_UINT8, STR_CHEAT_CHANGE_COMPANY,  &_local_company,                         &_cheats.switch_company.been_used,   &ClickChangeCompanyCheat },
 	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,          &_cheats.magic_bulldozer.been_used,  NULL                     },
 	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,         &_cheats.crossing_tunnels.been_used, NULL                     },
-	{SLE_BOOL,  STR_CHEAT_BUILD_IN_PAUSE,  &_cheats.build_in_pause.value,           &_cheats.build_in_pause.been_used,   NULL                     },
 	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,              &_cheats.no_jetcrash.been_used,      NULL                     },
 	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,               &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
 	{SLE_UINT8, STR_CHEAT_SWITCH_CLIMATE,  &_settings_game.game_creation.landscape, &_cheats.switch_climate.been_used,   &ClickChangeClimateCheat },
