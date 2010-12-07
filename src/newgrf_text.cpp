@@ -418,10 +418,11 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 		} else {
 			c = (byte)*str++;
 		}
-		if (c == 0) break;
+		if (c == '\0') break;
 
 		switch (c) {
 			case 0x01:
+				if (str[0] == '\0') goto string_end;
 				d += Utf8Encode(d, SCC_SETX);
 				*d++ = *str++;
 				break;
@@ -430,6 +431,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 			case 0x0E: d += Utf8Encode(d, SCC_TINYFONT); break;
 			case 0x0F: d += Utf8Encode(d, SCC_BIGFONT); break;
 			case 0x1F:
+				if (str[0] == '\0' || str[1] == '\0') goto string_end;
 				d += Utf8Encode(d, SCC_SETXY);
 				*d++ = *str++;
 				*d++ = *str++;
@@ -441,6 +443,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 			case 0x7F:
 			case 0x80: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD + c - 0x7B); break;
 			case 0x81: {
+				if (str[0] == '\0' || str[1] == '\0') goto string_end;
 				StringID string;
 				string  = ((uint8)*str++);
 				string |= ((uint8)*str++) << 8;
@@ -474,7 +477,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 			case 0x9A: {
 				int code = *str++;
 				switch (code) {
-					case 0x00: // FALL THROUGH
+					case 0x00: goto string_end;
 					case 0x01: d += Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
 					/* 0x02: ignore next colour byte is not supported. It works on the final
 					 * string and as such hooks into the string drawing routine. At that
@@ -484,6 +487,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 					 * of windows. Or we need to add another pass over the string to just
 					 * support this. As such it is not implemented in OpenTTD. */
 					case 0x03: {
+						if (str[0] == '\0' || str[1] == '\0') goto string_end;
 						uint16 tmp  = ((uint8)*str++);
 						tmp        |= ((uint8)*str++) << 8;
 						d += Utf8Encode(d, SCC_NEWGRF_PUSH_WORD);
@@ -491,6 +495,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 						break;
 					}
 					case 0x04:
+						if (str[0] == '\0') goto string_end;
 						d += Utf8Encode(d, SCC_NEWGRF_UNPRINT);
 						d += Utf8Encode(d, *str++);
 						break;
@@ -503,6 +508,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 					case 0x0D: d += Utf8Encode(d, SCC_NEWGRF_PRINT_WORD_WEIGHT);       break;
 					case 0x0E:
 					case 0x0F: {
+						if (str[0] == '\0') goto string_end;
 						const LanguageMap *lm = LanguageMap::GetLanguageMap(grfid, language_id);
 						int index = *str++;
 						int mapped = lm != NULL ? lm->GetMapping(index, code == 0x0E) : -1;
@@ -515,6 +521,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 
 					case 0x10:
 					case 0x11:
+						if (str[0] == '\0') goto string_end;
 						if (mapping == NULL) {
 							if (code == 0x10) str++; // Skip the index
 							grfmsg(1, "choice list %s marker found when not expected", code == 0x10 ? "next" : "default");
@@ -549,6 +556,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 					case 0x13:
 					case 0x14:
 					case 0x15:
+						if (str[0] == '\0') goto string_end;
 						if (mapping != NULL) {
 							grfmsg(1, "choice lists can't be stacked, it's going to get messy now...");
 							if (code != 0x14) str++;
@@ -588,6 +596,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 		}
 	}
 
+string_end:
 	if (mapping != NULL) {
 		grfmsg(1, "choice list was incomplete, the whole list is ignored");
 		delete mapping;
