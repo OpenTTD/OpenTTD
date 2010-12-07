@@ -2213,13 +2213,34 @@ static void MouseLoop(MouseClick click, int mousewheel)
 			case MC_DOUBLE_LEFT:
 			case MC_LEFT:
 				DEBUG(misc, 2, "Cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
-				if (_thd.place_mode != HT_NONE &&
-						/* query button and place sign button work in pause mode */
-						_cursor.sprite != SPR_CURSOR_QUERY &&
-						_cursor.sprite != SPR_CURSOR_SIGN &&
-						_pause_mode != PM_UNPAUSED &&
-						!_cheats.build_in_pause.value) {
-					return;
+				if (_thd.place_mode != HT_NONE && _pause_mode != PM_UNPAUSED) {
+					switch (_settings_game.construction.command_pause_level) {
+						case CMDPL_ALL_ACTIONS:
+							/* We allow all actions. */
+							break;
+
+						case CMDPL_NO_LANDSCAPING:
+							if (_cursor.sprite == SPR_CURSOR_CLONE_TRAIN ||
+									_cursor.sprite == SPR_CURSOR_CLONE_ROADVEH ||
+									_cursor.sprite == SPR_CURSOR_CLONE_SHIP ||
+									_cursor.sprite == SPR_CURSOR_CLONE_AIRPLANE) {
+								/* Cloning is allowed. */
+								break;
+							}
+							/* FALL THROUGH */
+						case CMDPL_NO_CONSTRUCTION:
+							if (_cursor.sprite == SPR_CURSOR_SIGN ||
+									(_cursor.sprite >= SPR_CURSOR_PICKSTATION_FIRST && _cursor.sprite <= SPR_CURSOR_PICKSTATION_LAST)) {
+								/* Building signs or making orders is allowed. */
+								break;
+							}
+							/* FALL THROUGH */
+						case CMDPL_NO_ACTIONS:
+							if (_cursor.sprite == SPR_CURSOR_QUERY) break;
+
+							/* All other ones are not allowed to build. */
+							return;
+					}
 				}
 
 				if (!HandleViewportClicked(vp, x, y) &&

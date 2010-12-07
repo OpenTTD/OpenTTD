@@ -1365,7 +1365,7 @@ void GameLoop()
 
 	if (!_pause_mode && HasBit(_display_opt, DO_FULL_ANIMATION)) DoPaletteAnimations();
 
-	if (!_pause_mode || _cheats.build_in_pause.value) MoveAllTextEffects();
+	if (!_pause_mode || _settings_game.construction.command_pause_level > CMDPL_NO_CONSTRUCTION) MoveAllTextEffects();
 
 	InputLoop();
 
