@@ -222,13 +222,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}EI
 STR_ABBREV_ALL                                                  :{TINYFONT}KÕIK
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} reisijad
+STR_PASSENGERS                                                  :{COMMA} reisija{P "" s}
 STR_BAGS                                                        :{COMMA} kotti
 STR_TONS                                                        :{COMMA} tonni
 STR_LITERS                                                      :{COMMA} liitrit
 STR_ITEMS                                                       :{COMMA} ühikut
 STR_CRATES                                                      :{COMMA} kasti
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tumesinine
@@ -498,7 +497,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja
 STR_ABOUT_MENU_AI_DEBUG                                         :Tehismõistuse silumine
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekraanitõmmis (Ctrl-S)
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Hiiglaslik ekraanitõmmis (Ctrl+G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Terve kaardi ekraanitõmmis
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' kohta
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
 ############ range ends here
@@ -995,6 +994,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Märgi s
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekraanilahutus
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekraanilahutuse valimine
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Ekraanipildi vorming
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vali kasutatav ekraanipildi vorming
@@ -1395,7 +1395,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laevade
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Algne {BLUE}(soovitatud)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(ebasoovitatav)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Muuda seadete väärtusi
 
@@ -1829,6 +1828,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :üritas pettust
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server on täis
 ############ End of leave-in-this-order
 
+
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
@@ -2108,6 +2108,9 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Maapinna
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Maapinna kõrgendamine
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Maapinna kõrgus
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Maa ostmine tulevaseks kasutamiseks
+
+# Object construction window
+
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Puud
@@ -2518,7 +2521,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Puuduvad f
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}' käitumine põhjustab tõenäoliselt sünkrooni katkemisi ja/või mängu kokkujooksmiseid.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Depoost väljas asudes muudab sõiduki '{1:ENGINE}' pikkust.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Depoost väljas asudes on sõiduki '{1:ENGINE}' pikkus muudetud.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Ettevõtte '{1:COMPANY}' rongil '{0:VEHICLE}' on ebasobiv pikkus. See on tõenäoliselt põhjustatud problemaatilistest NewGRF-dest. Mäng võib kokku joosta või
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' sisaldab väära teavet.
@@ -3599,9 +3602,9 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Laevarem
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ei saa muuta depoo nime...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Rong peab olema depoos peatatud
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... peab garaažis olema
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}Laev peab olema sadamas peatatud
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... peab olema depoos peatatud
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... peab garaažis peatatud olema
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... peab olema sadamas peatatud
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Lennuk peab olema peatatud angaari sees
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Ainult depoos peatunud ronge saab muuta

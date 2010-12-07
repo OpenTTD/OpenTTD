@@ -1848,8 +1848,8 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Полу
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Получение информации о компании...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}Готовится присоединиться {NUM} клиент{P "" а ов}
-STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} скачано
-STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK} загружено {BYTES} / {BYTES}
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} загружено
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}Загружено {BYTES} / {BYTES}
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Отключиться
 
@@ -1862,7 +1862,7 @@ STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Набл
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Новая компания
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Выкинуть
+STR_NETWORK_CLIENTLIST_KICK                                     :Отключить
 STR_NETWORK_CLIENTLIST_BAN                                      :Бан
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Передать деньги
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Сказать всем

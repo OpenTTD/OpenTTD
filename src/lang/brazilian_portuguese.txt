@@ -166,13 +166,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NADA
 STR_ABBREV_ALL                                                  :{TINYFONT}TUDO
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passageiros
-STR_BAGS                                                        :{COMMA} sacos
-STR_TONS                                                        :{COMMA} toneladas
-STR_LITERS                                                      :{COMMA} litros
-STR_ITEMS                                                       :{COMMA} itens
-STR_CRATES                                                      :{COMMA} caixas
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
+STR_PASSENGERS                                                  :{COMMA} passageiros{P "" s}
+STR_BAGS                                                        :{COMMA} saco{P "" s}
+STR_TONS                                                        :{COMMA} tonelada{P "" s}
+STR_LITERS                                                      :{COMMA} litro{P "" s}
+STR_ITEMS                                                       :{COMMA} ite{P m ns}
+STR_CRATES                                                      :{COMMA} caixa{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Azul Escuro
@@ -943,6 +942,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Selecion
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolução da tela
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecionar a resolução da tela que deseja utilizar
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato da foto
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecionar o formato de foto que deseja utilizar
@@ -1091,7 +1091,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permiti
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permitir dimensionamento mais realista das áreas de abrangência: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permitir a remoção de mais rodovias, pontes, etc. das cidades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permitir a construção de trens muito longos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantidade de fumaça das locomotivas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantidade de fumaça/fagulhas das locomotivas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nenhum
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realístico
@@ -1154,17 +1154,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :de todos os ve�
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Avisar se o lucro de um veículo se torna negativo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Veículos nunca expiram: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Auto-renovação de veículos quando ficam velhos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} meses antes/depois da idade máx.
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} m{P 0:1 ês eses} antes/depois da idade máx.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Dinheiro mínimo para fazer auto-renovação: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Intervalo para eventos mouse-sobre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING} segundo{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Intervalo para eventos mouse-sobre: {ORANGE}{STRING} segundo{P 0:1 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Intervalo para eventos mouse-sobre: {ORANGE}desativado
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Exibir população da cidade na janela da cidade: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Gerador de Terreno: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distância máxima da borda para Refinarias de Petróleo {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distância máxima da borda para Refinarias de Petróleo {ORANGE}{STRING} quadrado{P 0:1 "" s}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Altitude da linha de neve: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Irregularidade do terreno (TerraGenesis apenas) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muito Regular
@@ -1183,7 +1183,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Permiti
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Há construções na borda norte do mapa
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Há bordas acima da nível do mar
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} quadrado{P 0:1 "" s} {RED}Valores altos tornam o jogo lento!
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de transportes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Cor da terra usado no minimapa: {ORANGE}{STRING}
@@ -1238,10 +1238,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Manter 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupar despesas na janela de financas da companhia: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Exibe ferramentas de construção na falta de veículos adequados: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Máximo de automóveis por jogador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por jogador: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Máximo de embarcações por jogador: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por companhia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Máximo de automóveis por companhia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por companhia: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Máximo de embarcações por companhia: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Desativar trens para o computador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Desativar automóveis para o computador: {ORANGE}{STRING}
@@ -1252,13 +1252,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes antes da IA ser suspensa: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}{STRING} dias/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}{STRING} day{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}desativado
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de serviço predefinido para automóveis: {ORANGE}{STRING} dias/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Intervalo de serviço predefinido para automóveis: {ORANGE}{STRING} day{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Intervalo de serviço predefinido para automóveis: {ORANGE}desativado
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}{STRING} dias/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}desativado
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de serviço predefinido para embarcações: {ORANGE}{STRING} dias/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Intervalo de serviço predefinido para embarcações: {ORANGE}{STRING} dia{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de serviço predefinido para embarcações: {ORANGE}desativado
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Desativar manutenção quando as quebras estão desativadas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Ativar limite de velocidade dos vagões: {ORANGE}{STRING}
@@ -1269,7 +1269,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Data de
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Ativar economia regular (alterações menores): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Permite comprar ações de outras empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Porcentagem do lucro da viagem a ser pago em sist. de baldeação: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado{P 0:1 "" s}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir sinaleiros até: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ativar interface de sinais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de sinal a ser construído: {ORANGE}{STRING}
@@ -1304,10 +1304,14 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Posiç�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Esquerda
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Direita
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Raio de atração de janelas: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posição da barra de status: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Esquerda
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centro
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Direita
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Raio de atração de janelas: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raio de atração de janelas: {ORANGE}desativado
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limitar a janela (soft limit): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limitar a janela (soft limit): {ORANGE}desativado
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Limite de janelas não presas: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limite de janelas não presas: {ORANGE}desativado
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Velocidade de crescimento de cidade: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nenhum
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Devagar
@@ -1347,7 +1351,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Não recomendado)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Alterar valor
 
@@ -1428,6 +1431,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :terreno subárt
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :terreno subtropical
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :terreno 'toyland'
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mudar ano atual
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ativar modificação de valores de produção: {ORANGE}{STRING}
 
 # Livery window
@@ -1485,10 +1489,10 @@ STR_FACE_LOAD                                                   :{BLACK}Carregar
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carregar face favorita
 STR_FACE_LOAD_DONE                                              :{WHITE}Seu rosto favorito foi carregado do arquivo de configuração do OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Número da face do jogador.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou alterar número da face do jogador
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou alterar número da face do jogador
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou alterar número da face do presidente da companhia
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou alterar número da face do presidente
 STR_FACE_FACECODE_SET                                           :{WHITE}Novo código de número da face face foi alterado
-STR_FACE_FACECODE_ERR                                           :{WHITE}Não pôde alterar o número de face do jogador - precisa ser um número entre 0 e 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Não pôde alterar o número de face do presidente - precisa ser um número entre 0 e 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Salvar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvar face favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Este rosto irá ser salvo como seu rosto favorito no arquivo de configuração do OpenTTD
@@ -1605,9 +1609,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma f
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Outros jogadores saberão o idioma utilizado no servidor.
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Iniciar Jogo
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Iniciar um novo jogo em rede com mapa ou cenário aleatórios
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Iniciar um novo jogo em rede com mapa aleatório, ou cenário escolhido
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Abrir Jogo
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continuar um jogo multi-jogador anteriormente gravado (assegure-se de conectar com o jogador correto)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continuar um jogo multi-jogador anteriormente gravado (assegure-se de conectar à companhia correta)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Coloque o nome para o jogo em rede
 
@@ -1691,6 +1695,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtendo 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtendo informações da empresa..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} à sua frente
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} baixado até agora
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} obtidos até agora
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconectar
@@ -1782,6 +1787,9 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :estava tentando
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servidor cheio
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :enviou comandos demais
 ############ End of leave-in-this-order
+
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possível perda de conexão
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Nos últimos {NUM} segundo{P "" s} nenhum dado chegou do servidor
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2090,10 +2098,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminui 
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Gera terreno aleatório
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Criar novo cenário
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Limpar terreno
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Remover todas as propriedades do jogador no mapa
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Remover todas as propriedades da companhia do mapa
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Limpar Terreno
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Tem certeza que deseja remover todas as propriedades do jogador?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Tem certeza que deseja remover todas as propriedades da companhia?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Gerar Cidades
@@ -2472,7 +2480,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A base d
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual. Isto pode travar o OpenTTD. {}Tem absoluta certeza que deseja fazer isto?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual. Isto pode travar o OpenTTD. Não envie relatórios de erro sobre esses travamentos.{}Tem absoluta certeza que deseja fazer isto?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar: registro de GRF já existe
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo procurado não encontrado (carregado compatível com GRF)
@@ -2815,7 +2823,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocida
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Manutenção: {GOLD}{CURRENCY}/ano
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(adaptável)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Desenvolvida: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} anos
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Desenvolvida: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} ano{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Confiabilidade Máx.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Custo: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -3119,6 +3127,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacida
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Adaptar)
 STR_REFIT_TITLE                                                 :{GOLD}Selecionar tipo de carga:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacidade: {GOLD}{CARGO}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecionar tipo de carga para o trem
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecionar tipo de carga para o automóvel
