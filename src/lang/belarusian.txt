@@ -1739,7 +1739,6 @@ STR_CHEAT_MONEY                                                 :{LTBLUE}Дад�
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Гульня за кампанію: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Чароўны дынамiт (знос УСЯГО): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Тунэлi могуць перасякацца: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Будаваць у рэжыме паўзы: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Вялікія самалёты радзей разьбіваюцца ў малых аэрапортах: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Зьмяніць ляндшафт на: {ORANGE}{STRING}
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :умераны ляндшафт
