@@ -1324,6 +1324,7 @@ static SettingEntry _settings_construction[] = {
 	SettingEntry("station.never_expire_airports"),
 	SettingEntry("construction.freeform_edges"),
 	SettingEntry("construction.extra_tree_placement"),
+	SettingEntry("construction.command_pause_level"),
 };
 /** Construction sub-page */
 static SettingsPage _settings_construction_page = {_settings_construction, lengthof(_settings_construction)};

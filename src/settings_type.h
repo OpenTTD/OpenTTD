@@ -211,6 +211,7 @@ struct ConstructionSettings {
 	uint8  industry_platform;                ///< the amount of flat land around an industry
 	bool   freeform_edges;                   ///< allow terraforming the tiles at the map edges
 	uint8  extra_tree_placement;             ///< (dis)allow building extra trees in-game
+	uint8  command_pause_level;              ///< level/amount of commands that can't be executed while paused
 };
 
 /** Settings related to the AI. */
