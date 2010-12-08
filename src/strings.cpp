@@ -56,7 +56,7 @@ static char *StationGetSpecialString(char *buff, int x, const char *last);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last);
 static char *GetSpecialNameString(char *buff, int ind, int64 *argv, const char *last);
 
-static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, const char *last);
+static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, const char *last, bool dry_run = false);
 
 struct LanguagePack : public LanguagePackHeader {
 	char data[]; // list of strings
@@ -583,8 +583,19 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
 	return ((speed << units[_settings_game.locale.units].s_s) + units[_settings_game.locale.units].s_m / 2) / units[_settings_game.locale.units].s_m;
 }
 
-static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, const char *last)
+static char *FormatString(char *buff, const char *str, int64 *argv, uint casei, const char *last, bool dry_run)
 {
+	if (UsingNewGRFTextStack() && !dry_run) {
+		/* Values from the NewGRF text stack are only copied to the normal
+		 * argv array at the time they are encountered. That means that if
+		 * another string command references a value later in the string it
+		 * would fail. We solve that by running FormatString twice. The first
+		 * pass makes sure the argv array is correctly filled and the second
+		 * pass can reference later values without problems. */
+		struct TextRefStack *backup = CreateTextRefStackBackup();
+		FormatString(buff, str, argv, casei, last, true);
+		RestoreTextRefStackBackup(backup);
+	}
 	WChar b;
 	int64 *argv_orig = argv;
 	uint modifier = 0;

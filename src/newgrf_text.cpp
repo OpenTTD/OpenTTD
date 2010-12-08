@@ -863,6 +863,13 @@ struct TextRefStack {
 
 	TextRefStack() : used(false) {}
 
+	TextRefStack(const TextRefStack &stack) :
+		position(stack.position),
+		used(stack.used)
+	{
+		memcpy(this->stack, stack.stack, sizeof(this->stack));
+	}
+
 	uint8  PopUnsignedByte()  { assert(this->position < lengthof(this->stack)); return this->stack[this->position++]; }
 	int8   PopSignedByte()    { return (int8)this->PopUnsignedByte(); }
 
@@ -918,6 +925,34 @@ static TextRefStack _newgrf_error_textrefstack;
 
 /** The stack that is used for TTDP compatible string code parsing */
 static TextRefStack *_newgrf_textrefstack = &_newgrf_normal_textrefstack;
+
+/**
+ * Check whether the NewGRF text stack is in use.
+ * @return True iff the NewGRF text stack is used.
+ */
+bool UsingNewGRFTextStack()
+{
+	return _newgrf_textrefstack->used;
+}
+
+/**
+ * Create a backup of the current NewGRF text stack.
+ * @return A copy of the current text stack.
+ */
+struct TextRefStack *CreateTextRefStackBackup()
+{
+	return new TextRefStack(*_newgrf_textrefstack);
+}
+
+/**
+ * Restore a copy of the text stack to the used stack.
+ * @param backup The copy to restore.
+ */
+void RestoreTextRefStackBackup(struct TextRefStack *backup)
+{
+	*_newgrf_textrefstack = *backup;
+	delete backup;
+}
 
 /**
  * Prepare the TTDP compatible string code parsing
