@@ -1216,6 +1216,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisch pauzeren als je een nieuw spel start: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Toestaan wanneer gepauzeerd: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :geen mogelijkheden
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :allle niet-constructie mogelijkheden
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alles behalve landschapsaanpassingen
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alle mogelijkheden
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebruik de geavanceerde voertuigenlijst: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Uit
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eigen bedrijf
@@ -3458,6 +3463,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... is e
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is van ander bedrijf
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naam moet uniek zijn
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} in de weg
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niet toegestaan wanneer gepauzeerd
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}De gemeenteraad van {TOWN} staat dit niet toe

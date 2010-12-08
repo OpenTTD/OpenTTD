@@ -1280,6 +1280,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :rövid (31-12-2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatikus szünettel kezdés új játék esetén: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Szünetben engedélyezett: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :semmilyen cselekvés
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :minden ami nem építés
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :minden ami nem tájrendezés
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :minden cselekvés
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Továbbfejlesztett járműlista használata: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Kikapcsolva
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Saját vállalat
@@ -1757,6 +1762,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Játéki
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Vállalat infó lekérése..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kliensre várunk, hogy befejezze
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} lett eddig letöltve
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} lett eddig letöltve
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Megszakít
@@ -3521,6 +3527,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... {STR
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a terület más vállalaté
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}A névnek egyedinek kell lennie
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}...{1:STRING} van az útban
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Szünet közben nem megengedett
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} önkormányzata nem engedélyezi

@@ -1258,6 +1258,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kratek (31-12-2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Avtomatsko pavziraj ob zagonu nove igre: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Med pavzo dovoli: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nič dejanj
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :vsa dejanja, ki niso povezana z gradnjo
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :vsa dejanja razen urejanja ozemlja
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :vsa dejanja
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uporabi napreden seznam vozil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Izklop
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Lastno podjetje
@@ -3500,6 +3505,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... v la
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemljišče je last drugega podjetja
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Ime mora biti edinstveno
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} na poti
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni dovoljeno med pavzo
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} mestna oblast tega ne dovoli

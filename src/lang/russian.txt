@@ -1370,6 +1370,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :коротки�
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автопауза в начале игры: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Во время паузы разрешить: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ничего
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :все действия, кроме строительства
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :все действия, кроме изменения ландшафта
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :все действия
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Использовать расширенный список транспорта: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :нет
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :для своей компании
@@ -3642,6 +3647,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... пр
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... участок принадлежит другой компании
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Имя должно быть уникальным
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} на пути
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Запрещено во время паузы
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}... администрация города {TOWN} запрещает вам это делать

@@ -1217,6 +1217,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :corto (31-12-20
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausar automáticamente al comenzar un juego nuevo: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Al pausar el juego, permitir: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ninguna acción
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :todas las acciones salvo las de construcción
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :todas salvo acciones que modifiquen el terreno
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :todas las acciones
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar lista avanzada de vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Apagado
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Propia empresa
@@ -3459,6 +3464,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... prop
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... otra empresa posee esta área
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}El nombre debe ser único
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} en medio
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No permitido en pausa
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Las autoridades locales de {TOWN} rechazan esto

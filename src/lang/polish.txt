@@ -1596,6 +1596,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krótkiego (31-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Zezwól w czasie wstrzymania gry na: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :brak działań
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :wszystkie działania niezwiązane z konstrukcją
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :wszystkie oprócz działań modyfikujących krajobraz
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :wszystkie działania
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Używaj zaawansowanej listy pojazdów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :wył.
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :dla własnej firmy
@@ -3844,6 +3849,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... w po
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... teren jest własnością innej firmy
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nazwa nie może się powtarzać
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} na drodze
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niedozwolone w trakcie pauzy
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Lokalne władze {TOWN} nie pozwalają na to
