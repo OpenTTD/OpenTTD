@@ -622,7 +622,8 @@ check_params() {
 	fi
 
 	if [ "$enable_lto" != "0" ]; then
-		has_lto=`($cxx_build -dumpspecs 2>&1 | grep '\%{flto}') || ($cxx_build -help ipo 2>&1 | grep '\-ipo')`
+		# GCC 4.5 outputs '%{flto}', GCC 4.6 outputs '%{flto*}'
+		has_lto=`($cxx_build -dumpspecs 2>&1 | grep '\%{flto') || ($cxx_build -help ipo 2>&1 | grep '\-ipo')`
 		if [ -n "$has_lto" ]; then
 			log 1 "using link time optimization... yes"
 		else
@@ -1290,7 +1291,8 @@ make_compiler_cflags() {
 		fi
 
 		if [ "$enable_lto" != "0" ]; then
-			has_lto=`$1 -dumpspecs | grep '\%{flto}'`
+			# GCC 4.5 outputs '%{flto}', GCC 4.6 outputs '%{flto*}'
+			has_lto=`$1 -dumpspecs | grep '\%{flto'`
 			if [ -n "$has_lto" ]; then
 				# Use LTO only if we see LTO exists and is requested
 				flags="$flags -flto"
