@@ -333,12 +333,12 @@ static const NIVariable _niv_objects[] = {
 	NIV(0x44, "object founder"),
 	NIV(0x45, "get town zone and Manhattan distance of closest town"),
 	NIV(0x46, "get square of Euclidean distance of closes town"),
+	NIV(0x47, "colour"),
 	NIV(0x60, "get object ID at offset"),
 	NIV(0x61, "get random tile bits at offset"),
 	NIV(0x62, "land info of nearby tiles"),
 	NIV(0x63, "animation stage of nearby tiles"),
 	NIV(0x64, "distance on nearest object with given type"),
-	NIV(0x65, "count of object and distance of closest instance"),
 	NIV_END()
 };
 
