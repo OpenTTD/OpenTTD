@@ -70,7 +70,16 @@ static uint _langtab_start[32]; ///< Offset into langpack offs
 static bool _keep_gender_data = false;  ///< Should we retain the gender data in the current string?
 
 
-/** Read an int64 from the argv array. */
+/**
+ * Read an int64 from the argv array. The argv and argt arrays are incremented
+ * so the next time GetInt64 is called the next value is read.
+ * @param argv  Pointer to a position in the argv array.
+ * @param argve Pointer just past the end of the argv array.
+ * @param argt  Pointer to a position in the argument type array, or pointer to NULL.
+ * @param type  Type of the argument to get. Must be equal to **argt if *argt is
+ *              not NULL and **argt != 0.
+ * @return The value from the current position in the argv array.
+ */
 static inline int64 GetInt64(int64 **argv, const int64 *argve, WChar **argt, WChar type = 0)
 {
 	assert(*argv != NULL);
@@ -83,13 +92,20 @@ static inline int64 GetInt64(int64 **argv, const int64 *argve, WChar **argt, WCh
 	return *(*argv)++;
 }
 
-/** Read an int32 from the argv array. */
+/** Read an int32 from the argv array. @see GetInt64 */
 static inline int32 GetInt32(int64 **argv, const int64 *argve, WChar **argt, WChar type = 0)
 {
 	return (int32)GetInt64(argv, argve, argt, type);
 }
 
-/** Read an array from the argv array. */
+/**
+ * Read an array from the argv array. This is done by increasing *argv and *argt
+ * by n and returning the original values.
+ * @param argv  Pointer to a position in the argv array.
+ * @param n     Number of parameters to skip.
+ * @param argve Pointer just past the end of the argv array.
+ * @param argt  Pointer to a position in the argument type array, or pointer to NULL.
+ */
 static inline int64 *GetArgvPtr(int64 **argv, int n, const int64 *argve, WChar **argt)
 {
 	int64 *result;
@@ -117,11 +133,13 @@ const char *GetStringPtr(StringID string)
  * These 8 bits will only be set when FormatString wants to print
  * the string in a different case. No one else except FormatString
  * should set those bits, therefore string CANNOT be StringID, but uint32.
- * @param buffr
+ * @param buffr  Pointer to a string buffer where the formatted string should be written to.
  * @param string
- * @param argv
- * @param last
- * @return a formatted string of char
+ * @param argv   Array with arguments for the string.
+ * @param argve  Pointer just past the end of argv.
+ * @param last   Pointer just past the end of buffr.
+ * @param argt   Array to be filled with the type of parameters.
+ * @return       Pointer to the final zero byte of the formatted string.
  */
 char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const int64 *argve, const char *last, WChar *argt)
 {
@@ -593,8 +611,21 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
 	return ((speed << units[_settings_game.locale.units].s_s) + units[_settings_game.locale.units].s_m / 2) / units[_settings_game.locale.units].s_m;
 }
 
+/**
+ * Parse most format codes within a string and write the result to a buffer.
+ * @param buff  The buffer to write the final string to.
+ * @param str   The original string with format codes.
+ * @param argv  Pointer to an array with extra arguments used by various string codes.
+ * @param argve Pointer to just past the end of the argv array.
+ * @param casei
+ * @param last  Pointer to just past the end of the buff array.
+ * @param argt  Pointer to an array with the string codes used to parse the argv array.
+ * @param dry_run True when the argt array is not yet initialized.
+ */
 static char *FormatString(char *buff, const char *str, int64 *argv, const int64 *argve, uint casei, const char *last, WChar *argt, bool dry_run)
 {
+	/* When there is no array with types there is no need to do a dry run. */
+	if (argt == NULL) dry_run = true;
 	if (UsingNewGRFTextStack() && !dry_run) {
 		/* Values from the NewGRF text stack are only copied to the normal
 		 * argv array at the time they are encountered. That means that if
