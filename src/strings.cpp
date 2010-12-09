@@ -70,23 +70,25 @@ static bool _keep_gender_data = false;  ///< Should we retain the gender data in
 
 
 /** Read an int64 from the argv array. */
-static inline int64 GetInt64(int64 **argv)
+static inline int64 GetInt64(int64 **argv, const int64 *argve)
 {
-	assert(argv);
+	assert(*argv != NULL);
+	assert(*argv < argve);
 	return *(*argv)++;
 }
 
 /** Read an int32 from the argv array. */
-static inline int32 GetInt32(int64 **argv)
+static inline int32 GetInt32(int64 **argv, const int64 *argve)
 {
-	return (int32)GetInt64(argv);
+	return (int32)GetInt64(argv, argve);
 }
 
 /** Read an array from the argv array. */
-static inline int64 *GetArgvPtr(int64 **argv, int n)
+static inline int64 *GetArgvPtr(int64 **argv, int n, const int64 *argve)
 {
 	int64 *result;
-	assert(*argv);
+	assert(*argv != NULL);
+	assert((*argv + n) <= argve);
 	result = *argv;
 	(*argv) += n;
 	return result;
@@ -124,7 +126,7 @@ char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const int64 *argv
 	switch (tab) {
 		case 4:
 			if (index >= 0xC0) {
-				return GetSpecialTownNameString(buffr, index - 0xC0, GetInt32(&argv), last);
+				return GetSpecialTownNameString(buffr, index - 0xC0, GetInt32(&argv, argve), last);
 			}
 			break;
 
@@ -630,37 +632,37 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 				break;
 
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
-				const char *str = (const char*)(size_t)GetInt64(&argv);
+				const char *str = (const char*)(size_t)GetInt64(&argv, argve);
 				buff = FormatString(buff, str, argv, argve, casei, last);
 				break;
 			}
 
 			case SCC_DATE_LONG: // {DATE_LONG}
-				buff = FormatYmdString(buff, GetInt32(&argv), last);
+				buff = FormatYmdString(buff, GetInt32(&argv, argve), last);
 				break;
 
 			case SCC_DATE_SHORT: // {DATE_SHORT}
-				buff = FormatMonthAndYear(buff, GetInt32(&argv), last);
+				buff = FormatMonthAndYear(buff, GetInt32(&argv, argve), last);
 				break;
 
 			case SCC_VELOCITY: { // {VELOCITY}
 				int64 args[1];
 				assert(_settings_game.locale.units < lengthof(units));
-				args[0] = ConvertSpeedToDisplaySpeed(GetInt32(&argv) * 10 / 16);
+				args[0] = ConvertSpeedToDisplaySpeed(GetInt32(&argv, argve) * 10 / 16);
 				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].velocity), args, endof(args), modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_HEIGHT: { // {HEIGHT}
-				int64 args[1] = {GetInt32(&argv) * units[_settings_game.locale.units].h_m >> units[_settings_game.locale.units].h_s};
+				int64 args[1] = {GetInt32(&argv, argve) * units[_settings_game.locale.units].h_m >> units[_settings_game.locale.units].h_s};
 				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].height), args, endof(args), modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_CURRENCY_COMPACT: // {CURRCOMPACT}
-				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), true, last);
+				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv, argve), true, last);
 				break;
 
 			case SCC_REVISION: // {REV}
@@ -671,12 +673,12 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 				/* Short description of cargotypes. Layout:
 				 * 8-bit = cargo type
 				 * 16-bit = cargo count */
-				StringID cargo_str = CargoSpec::Get(GetInt32(&argv))->units_volume;
+				StringID cargo_str = CargoSpec::Get(GetInt32(&argv, argve))->units_volume;
 				switch (cargo_str) {
 					case STR_TONS: {
 						int64 args[1];
 						assert(_settings_game.locale.units < lengthof(units));
-						args[0] = GetInt32(&argv) * units[_settings_game.locale.units].w_m >> units[_settings_game.locale.units].w_s;
+						args[0] = GetInt32(&argv, argve) * units[_settings_game.locale.units].w_m >> units[_settings_game.locale.units].w_s;
 						buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].l_weight), args, endof(args), modifier >> 24, last);
 						modifier = 0;
 						break;
@@ -685,7 +687,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 					case STR_LITERS: {
 						int64 args[1];
 						assert(_settings_game.locale.units < lengthof(units));
-						args[0] = GetInt32(&argv) * units[_settings_game.locale.units].v_m >> units[_settings_game.locale.units].v_s;
+						args[0] = GetInt32(&argv, argve) * units[_settings_game.locale.units].v_m >> units[_settings_game.locale.units].v_s;
 						buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].l_volume), args, endof(args), modifier >> 24, last);
 						modifier = 0;
 						break;
@@ -700,51 +702,51 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 
 			case SCC_STRING1: { // {STRING1}
 				/* String that consumes ONE argument */
-				uint str = modifier + GetInt32(&argv);
-				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 1), argve, last);
+				uint str = modifier + GetInt32(&argv, argve);
+				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 1, argve), argve, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_STRING2: { // {STRING2}
 				/* String that consumes TWO arguments */
-				uint str = modifier + GetInt32(&argv);
-				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 2), argve, last);
+				uint str = modifier + GetInt32(&argv, argve);
+				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 2, argve), argve, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_STRING3: { // {STRING3}
 				/* String that consumes THREE arguments */
-				uint str = modifier + GetInt32(&argv);
-				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 3), argve, last);
+				uint str = modifier + GetInt32(&argv, argve);
+				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 3, argve), argve, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_STRING4: { // {STRING4}
 				/* String that consumes FOUR arguments */
-				uint str = modifier + GetInt32(&argv);
-				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 4), argve, last);
+				uint str = modifier + GetInt32(&argv, argve);
+				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 4, argve), argve, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_STRING5: { // {STRING5}
 				/* String that consumes FIVE arguments */
-				uint str = modifier + GetInt32(&argv);
-				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 5), argve, last);
+				uint str = modifier + GetInt32(&argv, argve);
+				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 5, argve), argve, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_STATION_FEATURES: { // {STATIONFEATURES}
-				buff = StationGetSpecialString(buff, GetInt32(&argv), last);
+				buff = StationGetSpecialString(buff, GetInt32(&argv, argve), last);
 				break;
 			}
 
 			case SCC_INDUSTRY_NAME: { // {INDUSTRY}
-				const Industry *i = Industry::Get(GetInt32(&argv));
+				const Industry *i = Industry::Get(GetInt32(&argv, argve));
 				int64 args[2];
 
 				/* industry not valid anymore? */
@@ -761,7 +763,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			case SCC_VOLUME: { // {VOLUME}
 				int64 args[1];
 				assert(_settings_game.locale.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_settings_game.locale.units].v_m >> units[_settings_game.locale.units].v_s;
+				args[0] = GetInt32(&argv, argve) * units[_settings_game.locale.units].v_m >> units[_settings_game.locale.units].v_s;
 				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].l_volume), args, endof(args), modifier >> 24, last);
 				modifier = 0;
 				break;
@@ -798,18 +800,18 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_DATE_TINY: { // {DATE_TINY}
-				buff = FormatTinyOrISODate(buff, GetInt32(&argv), STR_FORMAT_DATE_TINY, last);
+				buff = FormatTinyOrISODate(buff, GetInt32(&argv, argve), STR_FORMAT_DATE_TINY, last);
 				break;
 			}
 
 			case SCC_DATE_ISO: { // {DATE_ISO}
-				buff = FormatTinyOrISODate(buff, GetInt32(&argv), STR_FORMAT_DATE_ISO, last);
+				buff = FormatTinyOrISODate(buff, GetInt32(&argv, argve), STR_FORMAT_DATE_ISO, last);
 				break;
 			}
 
 			case SCC_CARGO: { // {CARGO}
 				/* First parameter is cargo type, second parameter is cargo count */
-				CargoID cargo = GetInt32(&argv);
+				CargoID cargo = GetInt32(&argv, argve);
 				StringID cargo_str = (cargo == CT_INVALID) ? STR_QUANTITY_N_A : CargoSpec::Get(cargo)->quantifier;
 				buff = GetStringWithArgs(buff, cargo_str, argv++, argve, last);
 				break;
@@ -818,7 +820,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			case SCC_POWER: { // {POWER}
 				int64 args[1];
 				assert(_settings_game.locale.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_settings_game.locale.units].p_m >> units[_settings_game.locale.units].p_s;
+				args[0] = GetInt32(&argv, argve) * units[_settings_game.locale.units].p_m >> units[_settings_game.locale.units].p_s;
 				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].power), args, endof(args), modifier >> 24, last);
 				modifier = 0;
 				break;
@@ -827,7 +829,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			case SCC_VOLUME_SHORT: { // {VOLUME_S}
 				int64 args[1];
 				assert(_settings_game.locale.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_settings_game.locale.units].v_m >> units[_settings_game.locale.units].v_s;
+				args[0] = GetInt32(&argv, argve) * units[_settings_game.locale.units].v_m >> units[_settings_game.locale.units].v_s;
 				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].s_volume), args, endof(args), modifier >> 24, last);
 				modifier = 0;
 				break;
@@ -836,7 +838,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			case SCC_WEIGHT: { // {WEIGHT}
 				int64 args[1];
 				assert(_settings_game.locale.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_settings_game.locale.units].w_m >> units[_settings_game.locale.units].w_s;
+				args[0] = GetInt32(&argv, argve) * units[_settings_game.locale.units].w_m >> units[_settings_game.locale.units].w_s;
 				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].l_weight), args, endof(args), modifier >> 24, last);
 				modifier = 0;
 				break;
@@ -845,7 +847,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			case SCC_WEIGHT_SHORT: { // {WEIGHT_S}
 				int64 args[1];
 				assert(_settings_game.locale.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_settings_game.locale.units].w_m >> units[_settings_game.locale.units].w_s;
+				args[0] = GetInt32(&argv, argve) * units[_settings_game.locale.units].w_m >> units[_settings_game.locale.units].w_s;
 				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].s_weight), args, endof(args), modifier >> 24, last);
 				modifier = 0;
 				break;
@@ -854,7 +856,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			case SCC_FORCE: { // {FORCE}
 				int64 args[1];
 				assert(_settings_game.locale.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_settings_game.locale.units].f_m >> units[_settings_game.locale.units].f_s;
+				args[0] = GetInt32(&argv, argve) * units[_settings_game.locale.units].f_m >> units[_settings_game.locale.units].f_s;
 				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].force), args, endof(args), modifier >> 24, last);
 				modifier = 0;
 				break;
@@ -872,7 +874,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 				break;
 
 			case SCC_STRING: {// {STRING}
-				uint str = modifier + GetInt32(&argv);
+				uint str = modifier + GetInt32(&argv, argve);
 				/* WARNING. It's prohibited for the included string to consume any arguments.
 				 * For included strings that consume argument, you should use STRING1, STRING2 etc.
 				 * To debug stuff you can set argv to NULL and it will tell you */
@@ -882,7 +884,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_COMMA: // {COMMA}
-				buff = FormatCommaNumber(buff, GetInt64(&argv), last);
+				buff = FormatCommaNumber(buff, GetInt64(&argv, argve), last);
 				break;
 
 			case SCC_ARG_INDEX: // Move argument pointer
@@ -891,35 +893,37 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 
 			case SCC_PLURAL_LIST: { // {P}
 				int plural_form = *str++;          // contains the plural form for this string
-				int64 v = argv_orig[(byte)*str++]; // contains the number that determines plural
+				byte idx = *str++;
+				assert(argv_orig + idx < argve);
+				int64 v = argv_orig[idx]; // contains the number that determines plural
 				str = ParseStringChoice(str, DeterminePluralForm(v, plural_form), &buff, last);
 				break;
 			}
 
 			case SCC_NUM: // {NUM}
-				buff = FormatNoCommaNumber(buff, GetInt64(&argv), last);
+				buff = FormatNoCommaNumber(buff, GetInt64(&argv, argve), last);
 				break;
 
 			case SCC_ZEROFILL_NUM: { // {ZEROFILL_NUM}
-				int64 num = GetInt64(&argv);
-				buff = FormatZerofillNumber(buff, num, GetInt64(&argv), last);
+				int64 num = GetInt64(&argv, argve);
+				buff = FormatZerofillNumber(buff, num, GetInt64(&argv, argve), last);
 				break;
 			}
 
 			case SCC_HEX: // {HEX}
-				buff = FormatHexNumber(buff, (uint64)GetInt64(&argv), last);
+				buff = FormatHexNumber(buff, (uint64)GetInt64(&argv, argve), last);
 				break;
 
 			case SCC_BYTES: // {BYTES}
-				buff = FormatBytes(buff, GetInt64(&argv), last);
+				buff = FormatBytes(buff, GetInt64(&argv, argve), last);
 				break;
 
 			case SCC_CURRENCY: // {CURRENCY}
-				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), false, last);
+				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv, argve), false, last);
 				break;
 
 			case SCC_WAYPOINT_NAME: { // {WAYPOINT}
-				Waypoint *wp = Waypoint::Get(GetInt32(&argv));
+				Waypoint *wp = Waypoint::Get(GetInt32(&argv, argve));
 
 				assert(wp != NULL);
 
@@ -937,7 +941,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_STATION_NAME: { // {STATION}
-				StationID sid = GetInt32(&argv);
+				StationID sid = GetInt32(&argv, argve);
 				const Station *st = Station::GetIfValid(sid);
 
 				if (st == NULL) {
@@ -974,14 +978,14 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_DEPOT_NAME: { // {DEPOT}
-				VehicleType vt = (VehicleType)GetInt32(&argv);
+				VehicleType vt = (VehicleType)GetInt32(&argv, argve);
 				if (vt == VEH_AIRCRAFT) {
-					int64 args[] = { GetInt32(&argv) };
+					int64 args[] = { GetInt32(&argv, argve) };
 					buff = GetStringWithArgs(buff, STR_FORMAT_DEPOT_NAME_AIRCRAFT, args, endof(args), last);
 					break;
 				}
 
-				const Depot *d = Depot::Get(GetInt32(&argv));
+				const Depot *d = Depot::Get(GetInt32(&argv, argve));
 				if (d->name != NULL) {
 					buff = strecpy(buff, d->name, last);
 				} else {
@@ -992,7 +996,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_TOWN_NAME: { // {TOWN}
-				const Town *t = Town::Get(GetInt32(&argv));
+				const Town *t = Town::Get(GetInt32(&argv, argve));
 
 				assert(t != NULL);
 
@@ -1005,7 +1009,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_GROUP_NAME: { // {GROUP}
-				const Group *g = Group::Get(GetInt32(&argv));
+				const Group *g = Group::Get(GetInt32(&argv, argve));
 
 				assert(g != NULL);
 
@@ -1021,7 +1025,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_ENGINE_NAME: { // {ENGINE}
-				EngineID engine = (EngineID)GetInt32(&argv);
+				EngineID engine = (EngineID)GetInt32(&argv, argve);
 				const Engine *e = Engine::Get(engine);
 
 				assert(e != NULL);
@@ -1035,7 +1039,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_VEHICLE_NAME: { // {VEHICLE}
-				const Vehicle *v = Vehicle::Get(GetInt32(&argv));
+				const Vehicle *v = Vehicle::Get(GetInt32(&argv, argve));
 
 				assert(v != NULL);
 
@@ -1060,7 +1064,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_SIGN_NAME: { // {SIGN}
-				const Sign *si = Sign::Get(GetInt32(&argv));
+				const Sign *si = Sign::Get(GetInt32(&argv, argve));
 				if (si->name != NULL) {
 					buff = strecpy(buff, si->name, last);
 				} else {
@@ -1070,7 +1074,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_COMPANY_NAME: { // {COMPANY}
-				const Company *c = Company::Get((CompanyID)GetInt32(&argv));
+				const Company *c = Company::Get((CompanyID)GetInt32(&argv, argve));
 
 				if (c->name != NULL) {
 					buff = strecpy(buff, c->name, last);
@@ -1083,7 +1087,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_COMPANY_NUM: { // {COMPANYNUM}
-				CompanyID company = (CompanyID)GetInt32(&argv);
+				CompanyID company = (CompanyID)GetInt32(&argv, argve);
 
 				/* Nothing is added for AI or inactive companies */
 				if (Company::IsValidHumanID(company)) {
@@ -1095,7 +1099,7 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_PRESIDENT_NAME: { // {PRESIDENTNAME}
-				const Company *c = Company::Get((CompanyID)GetInt32(&argv));
+				const Company *c = Company::Get((CompanyID)GetInt32(&argv, argve));
 
 				if (c->president_name != NULL) {
 					buff = strecpy(buff, c->president_name, last);
@@ -1277,18 +1281,18 @@ static char *GetSpecialNameString(char *buff, int ind, int64 *argv, const int64 
 {
 	switch (ind) {
 		case 1: // not used
-			return strecpy(buff, _silly_company_names[GetInt32(&argv) & 0xFFFF], last);
+			return strecpy(buff, _silly_company_names[GetInt32(&argv, argve) & 0xFFFF], last);
 
 		case 2: // used for Foobar & Co company names
-			return GenAndCoName(buff, GetInt32(&argv), last);
+			return GenAndCoName(buff, GetInt32(&argv, argve), last);
 
 		case 3: // President name
-			return GenPresidentName(buff, GetInt32(&argv), last);
+			return GenPresidentName(buff, GetInt32(&argv, argve), last);
 	}
 
 	/* town name? */
 	if (IsInsideMM(ind - 6, 0, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1)) {
-		buff = GetSpecialTownNameString(buff, ind - 6, GetInt32(&argv), last);
+		buff = GetSpecialTownNameString(buff, ind - 6, GetInt32(&argv, argve), last);
 		return strecpy(buff, " Transport", last);
 	}
 
