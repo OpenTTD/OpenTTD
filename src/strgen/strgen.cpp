@@ -398,7 +398,6 @@ static void EmitGender(char *buf, int value)
 
 		assert(IsInsideBS(cmd->value, SCC_CONTROL_START, UINT8_MAX));
 		PutUtf8(SCC_GENDER_LIST);
-		PutByte(cmd->value - SCC_CONTROL_START);
 		PutByte(TranslateArgumentIdx(argidx, offset));
 		EmitWordList(words, nw);
 	}

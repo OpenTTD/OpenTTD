@@ -792,32 +792,31 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 
 			case SCC_GENDER_LIST: { // {G 0 Der Die Das}
 				/* First read the meta data from the language file. */
-				WChar fmt = SCC_CONTROL_START + (byte)*str++;
 				byte offset = (byte)*str++;
 				assert(argv_orig + offset < argve);
-				assert(dry_run || argt == NULL || argt_orig[offset] == fmt);
-
-				/* Now we need to figure out what text to resolve, i.e.
-				 * what do we need to draw? So get the actual raw string
-				 * first using the control code to get said string. */
-				char input[4 + 1];
-				char *p = input + Utf8Encode(input, fmt);
-				*p = '\0';
-
-				/* Now do the string formatting. */
-				char buf[256];
-				bool old_kgd = _keep_gender_data;
-				_keep_gender_data = true;
-				p = FormatString(buf, input, argv_orig + offset, argve, 0, lastof(buf));
-				_keep_gender_data = old_kgd;
-				*p = '\0';
-
-				/* And determine the string. */
 				int gender = 0;
-				const char *s = buf;
-				WChar c = Utf8Consume(&s);
-				/* Does this string have a gender, if so, set it */
-				if (c == SCC_GENDER_INDEX) gender = (byte)s[0];
+				if (!dry_run && argt != NULL && argt_orig[offset] != 0) {
+					/* Now we need to figure out what text to resolve, i.e.
+					 * what do we need to draw? So get the actual raw string
+					 * first using the control code to get said string. */
+					char input[4 + 1];
+					char *p = input + Utf8Encode(input, argt_orig[offset]);
+					*p = '\0';
+
+					/* Now do the string formatting. */
+					char buf[256];
+					bool old_kgd = _keep_gender_data;
+					_keep_gender_data = true;
+					p = FormatString(buf, input, argv_orig + offset, argve, 0, lastof(buf));
+					_keep_gender_data = old_kgd;
+					*p = '\0';
+
+					/* And determine the string. */
+					const char *s = buf;
+					WChar c = Utf8Consume(&s);
+					/* Does this string have a gender, if so, set it */
+					if (c == SCC_GENDER_INDEX) gender = (byte)s[0];
+				}
 				str = ParseStringChoice(str, gender, &buff, last);
 				break;
 			}
