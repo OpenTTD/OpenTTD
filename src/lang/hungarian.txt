@@ -1089,7 +1089,7 @@ STR_NUM_VERY_LOW                                                :Nagyon kevés
 STR_NUM_LOW                                                     :Kevés
 STR_NUM_NORMAL                                                  :Normál
 STR_NUM_HIGH                                                    :Sok
-STR_NUM_CUSTOM                                                  :Saját
+STR_NUM_CUSTOM                                                  :Egyedi
 STR_NUM_CUSTOM_NUMBER                                           :Egyedi ({NUM})
 
 STR_VARIETY_NONE                                                :Nincs
