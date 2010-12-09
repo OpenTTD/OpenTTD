@@ -16,7 +16,7 @@
 
 char *InlineString(char *buf, StringID string);
 char *GetString(char *buffr, StringID string, const char *last);
-char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const char *last);
+char *GetStringWithArgs(char *buffr, uint string, int64 *argv, const int64 *argve, const char *last);
 const char *GetStringPtr(StringID string);
 
 void InjectDParam(uint amount);
