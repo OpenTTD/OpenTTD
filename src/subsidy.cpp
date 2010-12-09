@@ -41,7 +41,7 @@ void Subsidy::AwardTo(CompanyID company)
 	this->remaining = SUBSIDY_CONTRACT_MONTHS;
 
 	char company_name[MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH];
-	SetDParam(0, _current_company);
+	SetDParam(0, company);
 	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
 
 	char *cn = strdup(company_name);
