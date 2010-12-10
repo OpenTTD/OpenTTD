@@ -1748,45 +1748,51 @@ static void ShowBuildTrainDepotPicker(Window *parent)
 
 /** Enum referring to the widgets of the build NewGRF rail waypoint window */
 enum BuildRailWaypointWidgets {
-	BRWW_WAYPOINT_1,
-	BRWW_WAYPOINT_2,
-	BRWW_WAYPOINT_3,
-	BRWW_WAYPOINT_4,
-	BRWW_WAYPOINT_5,
+	BRWW_WAYPOINT_MATRIX,
+	BRWW_WAYPOINT,
 	BRWW_SCROLL,
 };
 
 struct BuildRailWaypointWindow : PickerWindowBase {
-	Scrollbar *hscroll;
-
 	BuildRailWaypointWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(parent)
 	{
-		this->InitNested(desc, TRANSPORT_RAIL);
-		this->hscroll = this->GetScrollbar(BRWW_SCROLL);
-		this->hscroll->SetCapacity(5);
-		this->hscroll->SetCount(_waypoint_count);
+		this->CreateNestedTree(desc);
+
+		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(BRWW_WAYPOINT_MATRIX);
+		matrix->SetScrollbar(this->GetScrollbar(BRWW_SCROLL));
+
+		this->FinishInitNested(desc, TRANSPORT_RAIL);
+
+		matrix->SetCount(_waypoint_count);
+		matrix->SetClicked(_cur_waypoint_type);
 	};
 
-	virtual void OnPaint()
+	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
-		for (uint i = 0; i < this->hscroll->GetCapacity(); i++) {
-			this->SetWidgetLoweredState(i + BRWW_WAYPOINT_1, (this->hscroll->GetPosition() + i) == _cur_waypoint_type);
+		switch (widget) {
+			case BRWW_WAYPOINT_MATRIX:
+				/* Three blobs high and wide. */
+				size->width  += resize->width  * 2;
+				size->height += resize->height * 2;
+
+				/* Resizing in X direction only at blob size, but at pixel level in Y. */
+				resize->height = 1;
+				break;
 		}
+	}
 
-		this->DrawWidgets();
-
-		for (uint i = 0; i < this->hscroll->GetCapacity(); i++) {
-			if (this->hscroll->GetPosition() + i < this->hscroll->GetCount()) {
-				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, this->hscroll->GetPosition() + i);
-				NWidgetBase *nw = this->GetWidget<NWidgetBase>(BRWW_WAYPOINT_1 + i);
-
-				int bottom = nw->pos_y + nw->current_y;
-				DrawWaypointSprite(nw->pos_x + TILE_PIXELS, bottom - TILE_PIXELS, this->hscroll->GetPosition() + i, _cur_railtype);
+	virtual void DrawWidget(const Rect &r, int widget) const
+	{
+		switch (GB(widget, 0, 16)) {
+			case BRWW_WAYPOINT: {
+				byte type = GB(widget, 16, 16);
+				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, type);
+				DrawWaypointSprite(r.left + TILE_PIXELS, r.bottom - TILE_PIXELS, type, _cur_railtype);
 
 				if (statspec != NULL &&
 						HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
 						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
-					GfxFillRect(nw->pos_x + 1, nw->pos_y + 1, nw->pos_x + nw->current_x - 2, bottom - 2, 0, FILLRECT_CHECKER);
+					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0, FILLRECT_CHECKER);
 				}
 			}
 		}
@@ -1794,13 +1800,10 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		switch (widget) {
-			case BRWW_WAYPOINT_1:
-			case BRWW_WAYPOINT_2:
-			case BRWW_WAYPOINT_3:
-			case BRWW_WAYPOINT_4:
-			case BRWW_WAYPOINT_5: {
-				byte type = widget - BRWW_WAYPOINT_1 + this->hscroll->GetPosition();
+		switch (GB(widget, 0, 16)) {
+			case BRWW_WAYPOINT: {
+				byte type = GB(widget, 16, 16);
+				this->GetWidget<NWidgetMatrix>(BRWW_WAYPOINT_MATRIX)->SetClicked(_cur_waypoint_type);
 
 				/* Check station availability callback */
 				const StationSpec *statspec = StationClass::Get(STAT_CLASS_WAYP, type);
@@ -1809,6 +1812,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
 
 				_cur_waypoint_type = type;
+				this->GetWidget<NWidgetMatrix>(BRWW_WAYPOINT_MATRIX)->SetClicked(_cur_waypoint_type);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;
@@ -1823,17 +1827,14 @@ static const NWidgetPart _nested_build_waypoint_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_WAYPOINT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-		NWidget(NWID_HORIZONTAL), SetPIP(3, 2, 3),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_1), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_2), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_3), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_4), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
-			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT_5), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, BRWW_WAYPOINT_MATRIX), SetPIP(3, 2, 3), SetScrollbar(BRWW_SCROLL),
+			NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRWW_WAYPOINT), SetMinimalSize(66, 60), SetDataTip(0x0, STR_WAYPOINT_GRAPHICS_TOOLTIP), EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 3),
-		NWidget(NWID_HSCROLLBAR, COLOUR_DARK_GREEN, BRWW_SCROLL),
+		NWidget(NWID_VERTICAL),
+			NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, BRWW_SCROLL),
+			NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
+		EndContainer(),
 	EndContainer(),
 };
 
