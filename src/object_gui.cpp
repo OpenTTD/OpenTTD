@@ -25,12 +25,14 @@
 
 static ObjectClassID _selected_object_class; ///< the currently visible object class
 static int _selected_object_index;           ///< the index of the selected object in the current class or -1
+static uint8 _selected_object_view;          ///< the view of the selected object
 
 /** Object widgets in the object picker window. */
 enum BuildObjectWidgets {
 	BOW_CLASS_DROPDOWN, ///< The dropdown with classes.
 	BOW_OBJECT_LIST,    ///< The list with objects of a given class.
 	BOW_SCROLLBAR,      ///< The scrollbar associated with the list.
+	BOW_OBJECT_MATRIX,  ///< The matrix with preview sprites.
 	BOW_OBJECT_SPRITE,  ///< A preview sprite of the object.
 	BOW_OBJECT_SIZE,    ///< The size of an object.
 	BOW_INFO,           ///< Other information about the object (from the NewGRF).
@@ -69,6 +71,7 @@ public:
 
 		this->vscroll->SetCount(ObjectClass::GetCount(_selected_object_class));
 		this->SelectFirstAvailableObject(true);
+		this->GetWidget<NWidgetMatrix>(BOW_OBJECT_MATRIX)->SetCount(4);
 	}
 
 	virtual ~BuildObjectWindow()
@@ -85,8 +88,8 @@ public:
 			case BOW_OBJECT_SIZE: {
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
 				int size = spec == NULL ? 0 : spec->size;
-				SetDParam(0, GB(size, 0, 4));
-				SetDParam(1, GB(size, 4, 4));
+				SetDParam(0, GB(size, HasBit(_selected_object_view, 0) ? 4 : 0, 4));
+				SetDParam(1, GB(size, HasBit(_selected_object_view, 0) ? 0 : 4, 4));
 				break;
 			}
 
@@ -122,13 +125,51 @@ public:
 				break;
 			}
 
-			case BOW_OBJECT_SPRITE: {
-				byte height = 0;
-				for (int i = 0; i < NUM_OBJECTS; i++) {
-					height = max(ObjectSpec::Get(i)->height, height);
+			case BOW_OBJECT_MATRIX: {
+				/* Get the right amount of buttons based on the current spec. */
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
+				if (spec != NULL) {
+					if (spec->views >= 2) size->width  += resize->width;
+					if (spec->views >= 4) size->height += resize->height;
 				}
-				this->object_height = height * TILE_HEIGHT;
-				size->height = TILE_PIXELS + this->object_height + 2 * OBJECT_MARGIN;
+				break;
+			}
+
+			case BOW_OBJECT_SPRITE: {
+				bool two_wide = false;  // Whether there will be two widgets next to eachother in the matrix or not.
+				int height[2] = {0, 0}; // The height for the different views; in this case views 1/2 and 4.
+
+				/* Get the height and view information. */
+				for (int i = 0; i < NUM_OBJECTS; i++) {
+					const ObjectSpec *spec = ObjectSpec::Get(i);
+					if (!spec->enabled) continue;
+					two_wide |= spec->views >= 2;
+					height[spec->views / 4] = max<int>(ObjectSpec::Get(i)->height, height[spec->views / 4]);
+				}
+
+				/* Determine the pixel heights. */
+				for (size_t i = 0; i < lengthof(height); i++) {
+					height[i] *= TILE_HEIGHT;
+					height[i] += TILE_PIXELS + 2 * OBJECT_MARGIN;
+				}
+
+				/* Now determine the size of the minimum widgets. When there are two columns, then
+				 * we want these columns to be slightly less wide. When there are two rows, then
+				 * determine the size of the widgets based on the maximum size for a single row
+				 * of widgets, or just the twice the widget height of the two row ones. */
+				size->height = max(height[0], height[1] * 2 + 2);
+				if (two_wide) {
+					size->width  = (3 * TILE_PIXELS + 2 * OBJECT_MARGIN) * 2 + 2;
+				} else {
+					size->width  = 4 * TILE_PIXELS + 2 * OBJECT_MARGIN;
+				}
+
+				/* Get the right size for the single widget based on the current spec. */
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
+				if (spec != NULL) {
+					if (spec->views >= 2) size->width  = size->width  / 2 - 1;
+					if (spec->views >= 4) size->height = size->height / 2 - 1;
+				}
 				break;
 			}
 
@@ -142,7 +183,7 @@ public:
 
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
-		switch (widget) {
+		switch (GB(widget, 0, 16)) {
 			case BOW_OBJECT_LIST: {
 				int y = r.top;
 				for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < ObjectClass::GetCount(_selected_object_class); i++) {
@@ -168,9 +209,9 @@ public:
 					if (spec->grf_prop.grffile == NULL) {
 						extern const DrawTileSprites _objects[];
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
-						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, this->object_height + OBJECT_MARGIN, dts, PAL_NONE);
+						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - TILE_PIXELS, dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, this->object_height + OBJECT_MARGIN, spec, 0);
+						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - TILE_PIXELS, spec, GB(widget, 16, 16));
 					}
 					_cur_dpi = old_dpi;
 				}
@@ -208,7 +249,15 @@ public:
 	void SelectOtherObject(int object_index)
 	{
 		_selected_object_index = object_index;
+		if (_selected_object_index != -1) {
+			const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
+			_selected_object_view = min(_selected_object_view, spec->views - 1);
+			this->ReInit();
+		} else {
+			_selected_object_view = 0;
+		}
 
+		this->GetWidget<NWidgetMatrix>(BOW_OBJECT_MATRIX)->SetClicked(_selected_object_view);
 		this->UpdateSelectSize();
 		this->SetDirty();
 	}
@@ -219,15 +268,15 @@ public:
 			SetTileSelectSize(1, 1);
 		} else {
 			const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
-			int w = GB(spec->size, 0, 4);
-			int h = GB(spec->size, 4, 4);
+			int w = GB(spec->size, HasBit(_selected_object_view, 0) ? 4 : 0, 4);
+			int h = GB(spec->size, HasBit(_selected_object_view, 0) ? 0 : 4, 4);
 			SetTileSelectSize(w, h);
 		}
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		switch (widget) {
+		switch (GB(widget, 0, 16)) {
 			case BOW_CLASS_DROPDOWN:
 				ShowDropDownList(this, BuildObjectClassDropDown(), _selected_object_class, BOW_CLASS_DROPDOWN);
 				break;
@@ -239,6 +288,15 @@ public:
 				if (spec->IsAvailable()) this->SelectOtherObject(num_clicked);
 				break;
 			}
+
+			case BOW_OBJECT_SPRITE:
+				if (_selected_object_index != -1) {
+					_selected_object_view = GB(widget, 16, 16);
+					this->GetWidget<NWidgetMatrix>(BOW_OBJECT_MATRIX)->SetClicked(_selected_object_view);
+					this->UpdateSelectSize();
+					this->SetDirty();
+				}
+				break;
 		}
 	}
 
@@ -297,7 +355,9 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, BOW_SCROLLBAR),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 0, 5),
-			NWidget(WWT_PANEL, COLOUR_GREY, BOW_OBJECT_SPRITE), SetMinimalSize(130, 0), SetFill(1, 0), SetDataTip(0x0, STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP), EndContainer(),
+			NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, BOW_OBJECT_MATRIX), SetPIP(0, 2, 0),
+				NWidget(WWT_PANEL, COLOUR_GREY, BOW_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
+			EndContainer(),
 		EndContainer(),
 		NWidget(WWT_TEXT, COLOUR_DARK_GREEN, BOW_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL), SetPadding(2, 5, 2, 5),
 		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, BOW_INFO), SetPadding(2, 5, 0, 5),
@@ -333,5 +393,5 @@ void InitializeObjectGui()
  */
 void PlaceProc_Object(TileIndex tile)
 {
-	DoCommandP(tile, ObjectClass::Get(_selected_object_class, _selected_object_index)->Index(), 0, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
+	DoCommandP(tile, ObjectClass::Get(_selected_object_class, _selected_object_index)->Index(), _selected_object_view, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
 }
