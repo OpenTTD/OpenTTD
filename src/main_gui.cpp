@@ -32,6 +32,8 @@
 #include "tilehighlight_func.h"
 #include "hotkeys.h"
 
+#include "saveload/saveload.h"
+
 #include "network/network.h"
 #include "network/network_func.h"
 #include "network/network_gui.h"
@@ -217,6 +219,7 @@ static const WindowDesc _main_window_desc(
 
 enum {
 	GHK_QUIT,
+	GHK_ABANDON,
 	GHK_CONSOLE,
 	GHK_BOUNDING_BOXES,
 	GHK_CENTER,
@@ -283,16 +286,27 @@ struct MainWindow : Window
 		 * assertions that are hard to trigger and debug */
 		if (IsGeneratingWorld()) return ES_NOT_HANDLED;
 
-		if (num == GHK_CONSOLE) {
-			IConsoleSwitch();
-			return ES_HANDLED;
-		}
+		switch (num) {
+			case GHK_ABANDON:
+				/* No point returning from the main menu to itself */
+				if (_game_mode == GM_MENU) return ES_HANDLED;
+				if (_settings_client.gui.autosave_on_exit) {
+					DoExitSave();
+					_switch_mode = SM_MENU;
+				} else {
+					AskExitToGameMenu();
+				}
+				return ES_HANDLED;
 
-		if (num == GHK_BOUNDING_BOXES) {
-			extern bool _draw_bounding_boxes;
-			_draw_bounding_boxes = !_draw_bounding_boxes;
-			MarkWholeScreenDirty();
-			return ES_HANDLED;
+			case GHK_CONSOLE:
+				IConsoleSwitch();
+				return ES_HANDLED;
+
+			case GHK_BOUNDING_BOXES:
+				extern bool _draw_bounding_boxes;
+				_draw_bounding_boxes = !_draw_bounding_boxes;
+				MarkWholeScreenDirty();
+				return ES_HANDLED;
 		}
 
 		if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
@@ -437,6 +451,7 @@ struct MainWindow : Window
 };
 
 const uint16 _ghk_quit_keys[] = {'Q' | WKC_CTRL, 'Q' | WKC_META, 0};
+const uint16 _ghk_abandon_keys[] = {'W' | WKC_CTRL, 'W' | WKC_META, 0};
 const uint16 _ghk_chat_keys[] = {WKC_RETURN, 'T', 0};
 const uint16 _ghk_chat_all_keys[] = {WKC_SHIFT | WKC_RETURN, WKC_SHIFT | 'T', 0};
 const uint16 _ghk_chat_company_keys[] = {WKC_CTRL | WKC_RETURN, WKC_CTRL | 'T', 0};
@@ -444,6 +459,7 @@ const uint16 _ghk_chat_server_keys[] = {WKC_CTRL | WKC_SHIFT | WKC_RETURN, WKC_C
 
 Hotkey<MainWindow> MainWindow::global_hotkeys[] = {
 	Hotkey<MainWindow>(_ghk_quit_keys, "quit", GHK_QUIT),
+	Hotkey<MainWindow>(_ghk_abandon_keys, "abandon", GHK_ABANDON),
 	Hotkey<MainWindow>(WKC_BACKQUOTE, "console", GHK_CONSOLE),
 	Hotkey<MainWindow>('B' | WKC_CTRL, "bounding_boxes", GHK_BOUNDING_BOXES),
 	Hotkey<MainWindow>('C', "center", GHK_CENTER),
