@@ -560,6 +560,15 @@ public:
 	}
 
 	/**
+	 * Is the scrollbar vertical or not?
+	 * @return True iff the scrollbar is vertical.
+	 */
+	FORCEINLINE bool IsVertical() const
+	{
+		return this->is_vertical;
+	}
+
+	/**
 	 * Sets the number of elements in the list
 	 * @param num the number of elements in the list
 	 * @note updates the position if needed

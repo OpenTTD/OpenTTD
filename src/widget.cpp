@@ -1624,7 +1624,7 @@ int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, in
 void Scrollbar::SetCapacityFromWidget(Window *w, int widget, int padding)
 {
 	NWidgetBase *nwid = w->GetWidget<NWidgetBase>(widget);
-	if (this->is_vertical) {
+	if (this->IsVertical()) {
 		this->SetCapacity(((int)nwid->current_y - padding) / (int)nwid->resize_y);
 	} else {
 		this->SetCapacity(((int)nwid->current_x - padding) / (int)nwid->resize_x);
