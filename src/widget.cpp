@@ -1418,6 +1418,8 @@ void NWidgetMatrix::SetupSmallestSize(Window *w, bool init_array)
 		w->nested_array[this->index] = this;
 	}
 
+	/* Reset the widget number. */
+	SB(dynamic_cast<NWidgetCore *>(this->head)->index, 16, 16, 0);
 	this->head->SetupSmallestSize(w, init_array);
 
 	Dimension padding = {this->pip_pre + this->pip_post, this->pip_pre + this->pip_post};
