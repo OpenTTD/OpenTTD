@@ -591,6 +591,7 @@ void Window::DrawSortButtonState(int widget, SortButtonState state) const
  * <li> #NWidgetHorizontalLTR for organizing child widgets in a (horizontal) row, always in the same order. All childs below this container will also
  *      never swap order.
  * <li> #NWidgetVertical for organizing child widgets underneath each other.
+ * <li> #NWidgetMatrix for organizing child widgets in a matrix form.
  * <li> #NWidgetBackground for adding a background behind its child widget.
  * <li> #NWidgetStacked for stacking child widgets on top of each other.
  * </ul>
@@ -1350,6 +1351,226 @@ void NWidgetSpacer::SetDirty(const Window *w) const
 NWidgetCore *NWidgetSpacer::GetWidgetFromPos(int x, int y)
 {
 	return NULL;
+}
+
+NWidgetMatrix::NWidgetMatrix() : NWidgetPIPContainer(NWID_MATRIX, NC_EQUALSIZE), index(-1), clicked(-1), count(-1)
+{
+}
+
+void NWidgetMatrix::SetIndex(int index)
+{
+	this->index = index;
+}
+
+void NWidgetMatrix::SetColour(Colours colour)
+{
+	this->colour = colour;
+}
+
+/**
+ * Sets the clicked widget in the matrix.
+ * @param clicked The clicked widget.
+ */
+void NWidgetMatrix::SetClicked(int clicked)
+{
+	this->clicked = clicked;
+}
+
+/**
+ * Set the number of elements in this matrix.
+ * @note Updates the number of elements/capacity of the real scrollbar.
+ * @param count The number of elements.
+ */
+void NWidgetMatrix::SetCount(int count)
+{
+	this->count = count;
+
+	if (this->sb == NULL || this->widgets_x == 0) return;
+
+	/* We need to get the number of pixels the matrix is high/wide.
+	 * So, determine the number of rows/columns based on the number of
+	 * columns/rows (one is constant/unscrollable).
+	 * Then multiply that by the height of a widget, and add the pre
+	 * and post spacing "offsets". */
+	count = CeilDiv(count, this->sb->IsVertical() ? this->widgets_x : this->widgets_y);
+	count *= (this->sb->IsVertical() ? this->head->smallest_y : this->head->smallest_x) + this->pip_inter;
+	count += -this->pip_inter + this->pip_pre + this->pip_post; // We counted an inter too much in the multiplication above
+	this->sb->SetCount(count);
+	this->sb->SetCapacity(this->sb->IsVertical() ? this->current_y : this->current_x);
+}
+
+/**
+ * Assign a scrollbar to this matrix.
+ * @param sb The scrollbar to assign to us.
+ */
+void NWidgetMatrix::SetScrollbar(Scrollbar *sb)
+{
+	this->sb = sb;
+}
+
+void NWidgetMatrix::SetupSmallestSize(Window *w, bool init_array)
+{
+	assert(this->head != NULL);
+	assert(this->head->next == NULL);
+
+	if (this->index >= 0 && init_array) { // Fill w->nested_array[]
+		assert(w->nested_array_size > (uint)this->index);
+		w->nested_array[this->index] = this;
+	}
+
+	this->head->SetupSmallestSize(w, init_array);
+
+	Dimension padding = {this->pip_pre + this->pip_post, this->pip_pre + this->pip_post};
+	Dimension size    = {this->head->smallest_x + padding.width, this->head->smallest_y + padding.height};
+	Dimension fill    = {0, 0};
+	Dimension resize  = {this->pip_inter + this->head->smallest_x, this->pip_inter + this->head->smallest_y};
+
+	if (this->index >= 0) w->UpdateWidgetSize(this->index, &size, padding, &fill, &resize);
+
+	this->smallest_x = size.width;
+	this->smallest_y = size.height;
+	this->fill_x = fill.width;
+	this->fill_y = fill.height;
+	this->resize_x = resize.width;
+	this->resize_y = resize.height;
+}
+
+void NWidgetMatrix::AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl)
+{
+	assert(given_width >= this->smallest_x && given_height >= this->smallest_y);
+
+	this->pos_x = x;
+	this->pos_y = y;
+	this->current_x = given_width;
+	this->current_y = given_height;
+
+	/* Determine the size of the widgets, and the number of visible widgets on each of the axis. */
+	this->widget_w = this->head->smallest_x + this->pip_inter;
+	this->widget_h = this->head->smallest_y + this->pip_inter;
+
+	/* Account for the pip_inter is between widgets, so we need to account for that when
+	 * the division assumes pip_inter is used for all widgets. */
+	this->widgets_x = CeilDiv(this->current_x - this->pip_pre - this->pip_post + this->pip_inter, this->widget_w);
+	this->widgets_y = CeilDiv(this->current_y - this->pip_pre - this->pip_post + this->pip_inter, this->widget_h);
+
+	/* When resizing, update the scrollbar's count. E.g. with a vertical
+	 * scrollbar becoming wider or narrower means the amount of rows in
+	 * the scrollbar becomes respectively smaller or higher. */
+	if (sizing == ST_RESIZE) {
+		this->SetCount(this->count);
+	}
+}
+
+void NWidgetMatrix::FillNestedArray(NWidgetBase **array, uint length)
+{
+	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
+	NWidgetContainer::FillNestedArray(array, length);
+}
+
+NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
+{
+	/* Falls outside of the matrix widget. */
+	if (!IsInsideBS(x, this->pos_x, this->current_x) || !IsInsideBS(y, this->pos_y, this->current_y)) return NULL;
+
+	int start_x, start_y, base_offs_x, base_offs_y;
+	this->GetScrollOffsets(start_x, start_y, base_offs_x, base_offs_y);
+
+	/* Swap the x offset around for RTL, so it'll behave like LTR for RTL as well. */
+	bool rtl = _current_text_dir == TD_RTL;
+	if (rtl) base_offs_x -= (this->widgets_x - 1) * this->widget_w;
+
+	int widget_col = (x - base_offs_x - (int)this->pip_pre - (int)this->pos_x) / this->widget_w;
+	int widget_row = (y - base_offs_y - (int)this->pip_pre - (int)this->pos_y) / this->widget_h;
+
+	if (widget_row * this->widgets_x + widget_col >= this->count) return NULL;
+
+	NWidgetCore *child = dynamic_cast<NWidgetCore *>(this->head);
+	child->AssignSizePosition(ST_RESIZE,
+			this->pos_x + this->pip_pre + widget_col * this->widget_w + base_offs_x,
+			this->pos_y + this->pip_pre + widget_row * this->widget_h + base_offs_y,
+			child->smallest_x, child->smallest_y, rtl);
+
+	/* "Undo" the RTL swap here to get the right widget index. */
+	if (rtl) widget_col = this->widgets_x - widget_col - 1;
+	SB(child->index, 16, 16, (widget_row + start_y) * this->widgets_x + widget_col + start_x);
+
+	return child->GetWidgetFromPos(x, y);
+}
+
+/* virtual */ void NWidgetMatrix::Draw(const Window *w)
+{
+	/* Fill the background. */
+	GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1, _colour_gradient[this->colour & 0xF][5]);
+
+	/* Set up a clipping area for the previews. */
+	DrawPixelInfo tmp_dpi;
+	if (!FillDrawPixelInfo(&tmp_dpi, this->pos_x + this->pip_pre, this->pos_y + this->pip_pre, this->current_x - this->pip_pre - this->pip_post, this->current_y - this->pip_pre - this->pip_post)) return;
+	DrawPixelInfo *old_dpi = _cur_dpi;
+	_cur_dpi = &tmp_dpi;
+
+	/* Get the appropriate offsets so we can draw the right widgets. */
+	NWidgetCore *child = dynamic_cast<NWidgetCore *>(this->head);
+	bool rtl = _current_text_dir == TD_RTL;
+	int start_x, start_y, base_offs_x, base_offs_y;
+	this->GetScrollOffsets(start_x, start_y, base_offs_x, base_offs_y);
+
+	int offs_y = base_offs_y;
+	for (int y = start_y; y < start_y + this->widgets_y + 1; y++, offs_y += this->widget_h) {
+		/* Are we within bounds? */
+		if (offs_y + child->smallest_y <= 0) continue;
+		if (offs_y >= (int)this->current_y) break;
+
+		/* We've passed our amount of widgets. */
+		if (y * this->widgets_x >= this->count) break;
+
+		int offs_x = base_offs_x;
+		for (int x = start_x; x < start_x + this->widgets_x + 1; x++, offs_x += rtl ? -this->widget_w : this->widget_w) {
+			/* Are we within bounds? */
+			if (offs_x + child->smallest_x <= 0) continue;
+			if (offs_x >= (int)this->current_x) continue;
+
+			/* Do we have this many widgets? */
+			int sub_wid = y * this->widgets_x + x;
+			if (sub_wid >= this->count) break;
+
+			child->AssignSizePosition(ST_RESIZE, offs_x, offs_y, child->smallest_x, child->smallest_y, rtl);
+			child->SetLowered(this->clicked == sub_wid);
+			SB(child->index, 16, 16, sub_wid);
+			child->Draw(w);
+		}
+	}
+
+	/* Restore the clipping area. */
+	_cur_dpi = old_dpi;
+}
+
+/**
+ * Get the different offsets that are influenced by scrolling.
+ * @param [out] start_x     The start position in columns,
+ * @param [out] start_y     The start position in rows.
+ * @param [out] base_offs_x The base horizontal offset in pixels.
+ * @param [out] base_offs_y The base vertical offset in pixels.
+ */
+void NWidgetMatrix::GetScrollOffsets(int &start_x, int &start_y, int &base_offs_x, int &base_offs_y)
+{
+	base_offs_x = 0;
+	base_offs_y = 0;
+	start_x = 0;
+	start_y = 0;
+	if (this->sb != NULL) {
+		if (this->sb->IsVertical()) {
+			start_y = this->sb->GetPosition() / this->widget_h;
+			base_offs_y = -this->sb->GetPosition() + start_y * this->widget_h;
+			if (_current_text_dir == TD_RTL) base_offs_x = this->pip_pre + this->widget_w * (this->widgets_x - 1) - this->pip_inter;
+		} else {
+			start_x = this->sb->GetPosition() / this->widget_w;
+			if (_current_text_dir == TD_RTL) {
+				base_offs_x = this->sb->GetCapacity() + this->sb->GetPosition() - (start_x + 1) * this->widget_w + this->pip_inter - this->pip_post - this->pip_pre;
+			} else {
+				base_offs_x = -this->sb->GetPosition() + start_x * this->widget_w;
+			}
+		}
+	}
 }
 
 /**
@@ -2165,6 +2386,17 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				*fill_dest = true;
 				break;
 
+			case NWID_MATRIX: {
+				if (*dest != NULL) return num_used;
+				NWidgetMatrix *nwm = new NWidgetMatrix();
+				*dest = nwm;
+				*fill_dest = true;
+				nwm->SetIndex(parts->u.widget.index);
+				nwm->SetColour(parts->u.widget.colour);
+				*biggest_index = max(*biggest_index, (int)parts->u.widget.index);
+				break;
+			}
+
 			case WPT_FUNCTION: {
 				if (*dest != NULL) return num_used;
 				/* Ensure proper functioning even when the called code simply writes its largest index. */
@@ -2308,7 +2540,7 @@ static int MakeWidgetTree(const NWidgetPart *parts, int count, NWidgetBase **par
 
 		/* If sub-widget is a container, recursively fill that container. */
 		WidgetType tp = sub_widget->type;
-		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL
+		if (fill_sub && (tp == NWID_HORIZONTAL || tp == NWID_HORIZONTAL_LTR || tp == NWID_VERTICAL || tp == NWID_MATRIX
 							|| tp == WWT_PANEL || tp == WWT_FRAME || tp == WWT_INSET || tp == NWID_SELECTION)) {
 			NWidgetBase *sub_ptr = sub_widget;
 			int num_used = MakeWidgetTree(parts, count - total_used, &sub_ptr, biggest_index);

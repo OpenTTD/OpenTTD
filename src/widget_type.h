@@ -73,6 +73,7 @@ enum WidgetType {
 	NWID_HORIZONTAL,      ///< Horizontal container.
 	NWID_HORIZONTAL_LTR,  ///< Horizontal container that doesn't change the order of the widgets for RTL languages.
 	NWID_VERTICAL,        ///< Vertical container.
+	NWID_MATRIX,          ///< Matrix container.
 	NWID_SPACER,          ///< Invisible widget that takes some space.
 	NWID_SELECTION,       ///< Stacked widgets, only one visible at a time (eg in a panel with tabs).
 	NWID_VIEWPORT,        ///< Nested widget containing a viewport.
@@ -445,6 +446,45 @@ public:
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
 };
 
+/**
+ * Matrix container with implicitly equal sized (virtual) sub-widgets.
+ * This widget must have exactly one sub-widget. After that this sub-widget
+ * is used to draw all of the data within the matrix piece by piece.
+ * DrawWidget and OnClick calls will be done to that sub-widget, where the
+ * 16 high bits are used to encode the index into the matrix.
+ * @ingroup NestedWidgets
+ */
+class NWidgetMatrix : public NWidgetPIPContainer {
+public:
+	NWidgetMatrix();
+
+	void SetIndex(int index);
+	void SetColour(Colours colour);
+	void SetClicked(int clicked);
+	void SetCount(int count);
+	void SetScrollbar(Scrollbar *sb);
+
+	void SetupSmallestSize(Window *w, bool init_array);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
+	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
+
+	/* virtual */ NWidgetCore *GetWidgetFromPos(int x, int y);
+	/* virtual */ void Draw(const Window *w);
+protected:
+	int index;      ///< If non-negative, index in the #Window::nested_array.
+	Colours colour; ///< Colour of this widget.
+	int clicked;    ///< The currently clicked widget.
+	int count;      ///< Amount of valid widgets.
+	Scrollbar *sb;  ///< The scrollbar we're associated with.
+private:
+	int widget_w;   ///< The width of the child widget including inter spacing.
+	int widget_h;   ///< The height of the child widget including inter spacing.
+	int widgets_x;  ///< The number of visible widgets in horizontal direction.
+	int widgets_y;  ///< The number of visible widgets in vertical direction.
+
+	void GetScrollOffsets(int &start_x, int &start_y, int &base_offs_x, int &base_offs_y);
+};
+
 
 /**
  * Spacer widget.
@@ -714,7 +754,7 @@ static FORCEINLINE uint ComputeMaxSize(uint base, uint max_space, uint step)
  *   - #SetResize Define how the widget may resize.
  *   - #SetPadding Create additional space around the widget.
  *
- * - Container widgets #NWidgetHorizontal, #NWidgetHorizontalLTR, and #NWidgetVertical, start with a #NWidget(WidgetType tp) part.
+ * - Container widgets #NWidgetHorizontal, #NWidgetHorizontalLTR, #NWidgetVertical, and #NWidgetMatrix, start with a #NWidget(WidgetType tp) part.
  *   Their properties are derived from the child widgets so they cannot be specified.
  *   You can however use
  *   - #SetPadding Define additional padding around the container.
@@ -1001,7 +1041,7 @@ static inline NWidgetPart NWidget(WidgetType tp, Colours col, int16 idx = -1)
 
 /**
  * Widget part function for starting a new horizontal container, vertical container, or spacer widget.
- * @param tp         Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, #NWID_SPACER, or #NWID_SELECTION.
+ * @param tp         Type of the new nested widget, #NWID_HORIZONTAL(_LTR), #NWID_VERTICAL, #NWID_SPACER, #NWID_SELECTION, and #NWID_MATRIX.
  * @param cont_flags Flags for the containers (#NWID_HORIZONTAL(_LTR) and #NWID_VERTICAL).
  * @ingroup NestedWidgetParts
  */
