@@ -751,6 +751,9 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
+		VehicleOrderID from = GB(data, 0, 8);
+		VehicleOrderID to   = GB(data, 8, 8);
+
 		switch (data) {
 			case 0:
 				/* Autoreplace replaced the vehicle */
@@ -770,13 +773,10 @@ public:
 				/* Some other order changes */
 				break;
 
-			default: {
+			default:
 				/* Moving an order. If one of these is INVALID_VEH_ORDER_ID, then
 				 * the order is being created / removed */
 				if (this->selected_order == -1) break;
-
-				VehicleOrderID from = GB(data, 0, 8);
-				VehicleOrderID to   = GB(data, 8, 8);
 
 				if (from == to) break; // no need to change anything
 
@@ -800,11 +800,15 @@ public:
 				/* Moving selected order */
 				this->selected_order = to;
 				break;
-			}
 		}
 
 		this->vscroll->SetCount(this->vehicle->GetNumOrders() + 1);
 		this->UpdateButtonState();
+
+		/* Scroll to the new order. */
+		if (from == INVALID_VEH_ORDER_ID && to != INVALID_VEH_ORDER_ID && !this->vscroll->IsVisible(to)) {
+			this->vscroll->ScrollTowards(to);
+		}
 	}
 
 	void UpdateButtonState()
