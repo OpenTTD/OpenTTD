@@ -722,14 +722,7 @@ void AddNewsItem(StringID string, NewsSubtype subtype, NewsReferenceType reftype
 /** Delete a news item from the queue */
 static void DeleteNewsItem(NewsItem *ni)
 {
-	if (_forced_news == ni || _current_news == ni) {
-		/* about to remove the currently forced item (shown as newspapers) ||
-		 * about to remove the currently displayed item (newspapers, ticker, or just a reminder) */
-		MoveToNextItem();
-	}
-
-	/* delete item */
-
+	/* Delete the news from the news queue. */
 	if (ni->prev != NULL) {
 		ni->prev->next = ni->next;
 	} else {
@@ -744,8 +737,18 @@ static void DeleteNewsItem(NewsItem *ni)
 		_latest_news = ni->prev;
 	}
 
-	if (_current_news == ni) _current_news = ni->prev;
 	_total_news--;
+
+	if (_forced_news == ni || _current_news == ni || _statusbar_news_item == ni) {
+		/* When we're the current news, go to the previous item first;
+		 * we just possibly made that the last news item. */
+		if (_current_news == ni) _current_news = ni->prev;
+
+		/* About to remove the currently forced item (shown as newspapers) ||
+		 * about to remove the currently displayed item (newspapers, ticker, or just a reminder) */
+		MoveToNextItem();
+	}
+
 	delete ni;
 
 	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
