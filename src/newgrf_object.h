@@ -117,10 +117,10 @@ typedef NewGRFClass<ObjectSpec, ObjectClassID, OBJECT_CLASS_MAX> ObjectClass;
 /** Mapping of purchase for objects. */
 static const CargoID CT_PURCHASE_OBJECT = 1;
 
-uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, const Object *o, TileIndex tile);
+uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, const Object *o, TileIndex tile, uint8 view = 0);
 
 void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec);
-void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec);
+void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8 view);
 void AnimateNewObjectTile(TileIndex tile);
 void TriggerObjectTileAnimation(const Object *o, TileIndex tile, ObjectAnimationTrigger trigger, const ObjectSpec *spec);
 void TriggerObjectAnimation(const Object *o, ObjectAnimationTrigger trigger, const ObjectSpec *spec);

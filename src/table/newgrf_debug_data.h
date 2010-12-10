@@ -334,6 +334,7 @@ static const NIVariable _niv_objects[] = {
 	NIV(0x45, "get town zone and Manhattan distance of closest town"),
 	NIV(0x46, "get square of Euclidean distance of closes town"),
 	NIV(0x47, "colour"),
+	NIV(0x48, "view"),
 	NIV(0x60, "get object ID at offset"),
 	NIV(0x61, "get random tile bits at offset"),
 	NIV(0x62, "land info of nearby tiles"),

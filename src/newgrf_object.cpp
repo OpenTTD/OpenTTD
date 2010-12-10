@@ -237,6 +237,9 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 			/* Object founder information */
 			case 0x44: return _current_company;
 
+			/* Object view */
+			case 0x48: return object->u.object.view;
+
 			/*
 			 * Disallow the rest:
 			 * 0x40: Relative position is passed as parameter during construction.
@@ -283,6 +286,9 @@ static uint32 ObjectGetVariable(const ResolverObject *object, byte variable, byt
 
 		/* Object colour */
 		case 0x47: return o->colour;
+
+		/* Object view */
+		case 0x48: return o->view;
 
 		/* Get object ID at offset param */
 		case 0x60: return GetObjectIDAtOffset(GetNearbyTile(parameter, tile), object->grffile->grfid);
@@ -338,7 +344,7 @@ static const SpriteGroup *GetObjectSpriteGroup(const ObjectSpec *spec, const Obj
 /**
  * Returns a resolver object to be used with feature 0F spritegroups.
  */
-static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, const Object *o, TileIndex tile)
+static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, const Object *o, TileIndex tile, uint8 view = 0)
 {
 	res->GetRandomBits = ObjectGetRandomBits;
 	res->GetTriggers   = ObjectGetTriggers;
@@ -348,6 +354,7 @@ static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, const
 
 	res->u.object.o    = o;
 	res->u.object.tile = tile;
+	res->u.object.view = view;
 
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
@@ -368,12 +375,13 @@ static void NewObjectResolver(ResolverObject *res, const ObjectSpec *spec, const
  * @param spec     The specification of the object / the entry point.
  * @param o        The object to call the callback for.
  * @param tile     The tile the callback is called for.
+ * @param view     The view of the object (only used when o == NULL).
  * @return The result of the callback.
  */
-uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, const Object *o, TileIndex tile)
+uint16 GetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, const Object *o, TileIndex tile, uint8 view)
 {
 	ResolverObject object;
-	NewObjectResolver(&object, spec, o, tile);
+	NewObjectResolver(&object, spec, o, tile, view);
 	object.callback = callback;
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
@@ -433,11 +441,12 @@ void DrawNewObjectTile(TileInfo *ti, const ObjectSpec *spec)
  * @param x    Position x of image.
  * @param y    Position y of image.
  * @param spec Object spec to draw.
+ * @param view The object's view.
  */
-void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec)
+void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec, uint8 view)
 {
 	ResolverObject object;
-	NewObjectResolver(&object, spec, NULL, INVALID_TILE);
+	NewObjectResolver(&object, spec, NULL, INVALID_TILE, view);
 
 	const SpriteGroup *group = SpriteGroup::Resolve(GetObjectSpriteGroup(spec, NULL), &object);
 	if (group == NULL || group->type != SGT_TILELAYOUT) return;
@@ -468,8 +477,23 @@ void DrawNewObjectTileInGUI(int x, int y, const ObjectSpec *spec)
 	DrawNewGRFTileSeqInGUI(x, y, dts, 0, palette);
 }
 
+/**
+ * Perform a callback for an object.
+ * @param callback The callback to perform.
+ * @param param1   The first parameter to pass to the NewGRF.
+ * @param param2   The second parameter to pass to the NewGRF.
+ * @param spec     The specification of the object / the entry point.
+ * @param o        The object to call the callback for.
+ * @param tile     The tile the callback is called for.
+ * @return The result of the callback.
+ */
+uint16 StubGetObjectCallback(CallbackID callback, uint32 param1, uint32 param2, const ObjectSpec *spec, const Object *o, TileIndex tile)
+{
+	return GetObjectCallback(callback, param1, param2, spec, o, tile);
+}
+
 /** Helper class for animation control. */
-struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpec, Object, GetObjectCallback> {
+struct ObjectAnimationBase : public AnimationBase<ObjectAnimationBase, ObjectSpec, Object, StubGetObjectCallback> {
 	static const CallbackID cb_animation_speed      = CBID_OBJECT_ANIMATION_SPEED;
 	static const CallbackID cb_animation_next_frame = CBID_OBJECT_ANIMATION_NEXT_FRAME;
 

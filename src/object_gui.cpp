@@ -170,7 +170,7 @@ public:
 						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
 						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, this->object_height + OBJECT_MARGIN, dts, PAL_NONE);
 					} else {
-						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, this->object_height + OBJECT_MARGIN, spec);
+						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, this->object_height + OBJECT_MARGIN, spec, 0);
 					}
 					_cur_dpi = old_dpi;
 				}

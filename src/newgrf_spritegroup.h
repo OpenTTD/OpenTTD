@@ -357,6 +357,7 @@ struct ResolverObject {
 		struct {
 			const struct Object *o;        ///< The object the callback is ran for.
 			TileIndex tile;                ///< The tile related to the object.
+			uint8 view;                    ///< The view of the object.
 		} object;
 	} u;
 

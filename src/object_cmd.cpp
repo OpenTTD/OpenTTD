@@ -212,7 +212,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			uint16 callback = CALLBACK_FAILED;
 			if (HasBit(spec->callback_mask, CBM_OBJ_SLOPE_CHECK)) {
 				TileIndex diff = t - tile;
-				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t, NULL), TileY(diff) << 4 | TileX(diff), spec, NULL, t);
+				callback = GetObjectCallback(CBID_OBJECT_LAND_SLOPE_CHECK, GetTileSlope(t, NULL), TileY(diff) << 4 | TileX(diff), spec, NULL, t, view);
 			}
 
 			if (callback == CALLBACK_FAILED) {
