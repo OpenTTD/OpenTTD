@@ -1349,7 +1349,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :原版 {BLUE}(�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(不建議)
 
-
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}修改設定值
 
 # Intro window

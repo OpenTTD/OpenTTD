@@ -638,7 +638,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Чӑн {BLUE}(R
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 
 
-
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 

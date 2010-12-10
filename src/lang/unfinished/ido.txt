@@ -170,7 +170,6 @@ STR_TONS                                                        :{COMMA} tuni
 STR_LITERS                                                      :{COMMA} litri
 STR_ITEMS                                                       :{COMMA} artikli
 STR_CRATES                                                      :{COMMA} kesti
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Obskur-blua
@@ -460,6 +459,7 @@ STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Ludo Sel
 
 
 
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altra
 
 
 
@@ -545,7 +545,6 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :omnube
 
 
 
-
 # Intro window
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Nova Ludo
@@ -626,6 +625,7 @@ STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Tu sendi
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendinta tro multa imperi
 ############ End of leave-in-this-order
+
 
 # Network related errors
 ############ Leave those lines in this order!!

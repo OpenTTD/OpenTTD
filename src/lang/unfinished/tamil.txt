@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} டன�
 STR_LITERS                                                      :{COMMA} லிட்டர்
 STR_ITEMS                                                       :{COMMA} பொருட்கள்
 STR_CRATES                                                      :{COMMA} பேட்டிகள்
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவை
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :கருநீலம்
@@ -413,6 +412,7 @@ STR_SORT_BY_WAITING                                             :Waiting cargo v
 
 
 
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவை
 
 
 
@@ -449,7 +449,6 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 
 # Advanced settings window
-
 
 
 
@@ -542,6 +541,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+
 
 # Network related errors
 ############ Leave those lines in this order!!

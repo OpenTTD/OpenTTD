@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} tunnell
 STR_LITERS                                                      :{COMMA} litr
 STR_ITEMS                                                       :{COMMA} eitem
 STR_CRATES                                                      :{COMMA} crât
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Glas Tywyll
@@ -213,6 +212,7 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Rhowch linyn hidlydd
@@ -913,6 +913,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marciwch
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Cydraniad Sgrin
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Dewiswch y cydraniad sgrin i'w defnyddio
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Fformat Ciplun
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Dewiswch y fformat ciplun i'w ddefnyddio
@@ -1271,7 +1272,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Llwybrw
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Gwreiddiol{BLUE}(Argymhelliad)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nid yw'n cael ei argymell)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Newid gwerth gosodiad
 
@@ -1701,6 +1701,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :yn ceisio twyll
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :gweinydd llawn
 ############ End of leave-in-this-order
 
+
 # Network related errors
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -1965,6 +1966,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Codi cor
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Gwastatáu Tir
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Prynu tir ar gyfer defnydd yn y dyfodol
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Coed
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Dewiswch y math o goeden i'w phlannu
@@ -2023,6 +2027,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Côst: {
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Archwilio
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Adeiladu
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ariannu
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Gwybodath Ardal Tir
@@ -2266,6 +2272,15 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Analluogwy
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Rhoi paramedrau NewGRF newydd
 
+# NewGRF parameters window
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Rhybudd: {SILVER}{STRING}
@@ -2300,6 +2315,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Analluog
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ffeil(iau) GRF coll
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Gall dadseibio beri i OpenTTD grasio. Peidiwch ag anfon adroddiadau am fygiau ar gyfer crasiau pellach.{}Ydych chi wir eisiau dadseibio?
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Mae ymddygiad NewGRF '{0:STRING}' yn debygol o beri dadsyncroneiddio ac/neu crasio.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Bydd yn newid hyd cerbyd i '{1:ENGINE}' pan na fyddd o fewn y depo.
@@ -2308,6 +2325,8 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Mae gan 
 STR_NEWGRF_BUGGY                                                :{WHITE}Mae NewGRF '{0:STRING}' yn darparu gwybodaeth anghywir.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Mae'r wybodaeth cargo/ailffitio ar gyfer '{1:ENGINE}' yn wahanol i'r rhestr brynu wedi'r adeiladu. Gall hyn beri i awtoadnewyddy/-ddisodli fethu ag ailfitio'n gywir.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' creu lwp anorffen yn y production callback.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Rhestr Arwyddion - {COMMA} Arwydd{P "" ion}
@@ -2647,6 +2666,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Ailenwi'
 
 # Depot window
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} cerbyd{P "" au}{STRING}
@@ -2825,6 +2845,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Mynd am
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Mynd am {WAYPOINT}, {VELOCITY}
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Manylion)
@@ -3159,6 +3181,8 @@ STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nid 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Rhybudd Graddfa
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ni argymhellir newid gormod ar faint y map gwreiddiol. Parhau gyda'r cynhyrchu?
 
+# Soundset messages
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Cadwyd y ciplun yn llwyddiannus fel '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Methodd y ciplun!
@@ -3295,6 +3319,7 @@ STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}Methu ad
 STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}Methu adeiladu depo cerbydau ffordd yma...
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}Methu adeiladu depo cerbyd tramiau yma...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}Methu adeiladu depo llong yma...
+
 
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}Rhaid i'r trên fod wedi'i stopio mewn depo
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
@@ -3470,6 +3495,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... gorm
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Methu gosod arwydd yma...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Methu newid enw arwydd...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Methu dileu arwydd...
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names
@@ -3857,6 +3884,7 @@ STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:T
 STR_FORMAT_WAYPOINT_NAME                                        :Pwynt Llwybr {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pwynt Llwybr {TOWN} #{COMMA}
 
+
 STR_UNKNOWN_STATION                                             :gorsaf anhysbys
 STR_DEFAULT_SIGN_NAME                                           :Arwydd
 STR_COMPANY_SOMEONE                                             :rhywun
@@ -3941,3 +3969,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+

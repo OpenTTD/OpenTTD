@@ -206,6 +206,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} متر 
 
 STR_UNITS_FORCE_SI                                              :{COMMA} کیلو نیوتن
 
+
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}وارد کردن رشته پایش
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}وارد کردن واژه کلیدی برای پایش لیست
@@ -721,7 +722,6 @@ STR_NUM_CUSTOM                                                  :انتخابی
 
 
 
-
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -825,6 +825,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}آیا 
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+
 
 # Network related errors
 ############ Leave those lines in this order!!
@@ -978,6 +979,9 @@ STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}پایی
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}بال آوردن گوشه ی نقشه
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}خرید زمین برای استفاده های بعدی
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}درختان
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}نوع درخت را مشخص کنید تا کاشته شود
@@ -1011,6 +1015,8 @@ STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}انتخ
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}ساخت کارخانه جدید
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}خرج: {YELLOW}{CURRENCY}
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}اطلاعات زمین
@@ -1104,6 +1110,15 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK} برر�
 
 
 
+# NewGRF parameters window
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 
 # NewGRF related 'general' warnings
@@ -1111,8 +1126,12 @@ STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}اخطا
 
 
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 
@@ -1304,6 +1323,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}نامگ
 
 # Depot window
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}قطارها-برای اطلاعات بیشتر روی قطار کلیک کنید. وسیله را بکشید تا آن را از قطار خارج/وارد کنید
@@ -1396,6 +1416,8 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}متوقف
 
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (جزئیات)
@@ -1569,6 +1591,8 @@ STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}بازی
 
 
 
+# Soundset messages
+
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}تصویر با موفقیت در {STRING} ذخیره شد
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}تصئیر ذخیره نشد
@@ -1650,6 +1674,7 @@ STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}نمیت
 
 
 # Depot related errors
+
 
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}هواپیما باید در آشیانه متوقف شود
 
@@ -1768,6 +1793,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}از ه�
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}تعداد لامات بسیار زیاد شده
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}اینجا نمی شود علامت ساخت
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}نمی شود اسم علامت را عوض کرد
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names
@@ -2107,6 +2134,7 @@ STR_FORMAT_COMPANY_NUM                                          :(شرکت {COMM
 STR_FORMAT_GROUP_NAME                                           :گروه {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
+
 STR_DEFAULT_SIGN_NAME                                           :علامت
 STR_COMPANY_SOMEONE                                             :یک نفر
 
@@ -2188,3 +2216,4 @@ STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
+

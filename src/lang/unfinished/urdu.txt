@@ -142,7 +142,6 @@ STR_TONS                                                        :{COMMA} من
 STR_LITERS                                                      :{COMMA} لیٹر
 STR_ITEMS                                                       :{COMMA} اشیاء
 STR_CRATES                                                      :{COMMA} کریٹ
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :گہرا نیلا
@@ -612,6 +611,7 @@ STR_NEWS_MESSAGES_FULL                                          :مکمل
 
 
 
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
 
@@ -647,7 +647,6 @@ STR_NEWS_MESSAGES_FULL                                          :مکمل
 
 
 # Advanced settings window
-
 
 
 
@@ -747,6 +746,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا 
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+
 
 # Network related errors
 ############ Leave those lines in this order!!

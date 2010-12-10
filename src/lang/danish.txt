@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} tons
 STR_LITERS                                                      :{COMMA} liter
 STR_ITEMS                                                       :{COMMA} stykker
 STR_CRATES                                                      :{COMMA} kasser
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mørkeblå
@@ -939,6 +938,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Afkryds 
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skærmopløsning
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vælg ønsket skærmopløsning
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skærmbillede-format
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vælg skærmbillede-format
@@ -1339,7 +1339,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Stifind
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Anbefalet)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikke anbefalet)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Skift indstillingsværdi
 
@@ -1773,6 +1772,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :prøvede at sny
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveren er fuld
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendte for mange kommandoer
 ############ End of leave-in-this-order
+
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}

@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} tan
 STR_LITERS                                                      :{COMMA} liter
 STR_ITEMS                                                       :{COMMA} barangan
 STR_CRATES                                                      :{COMMA} kotak
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Biru Gelap
@@ -934,6 +933,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Tanda ko
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi Skrin
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi skrin untuk digunakan
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lain
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format tangkapan skrin
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Pilih format tangkapan skrin untuk digunakan
@@ -1327,7 +1327,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pencari
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Asal {BLUE}(Disyorkan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Tidak disyorkan)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Tukar nilai tetapan
 
@@ -1761,6 +1760,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :cuba menggunaka
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :pelayan penuh
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :menghantar terlalu banyak arahan
 ############ End of leave-in-this-order
+
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}

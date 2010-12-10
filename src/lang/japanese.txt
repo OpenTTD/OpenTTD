@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} トン
 STR_LITERS                                                      :{COMMA} リットル
 STR_ITEMS                                                       :{COMMA} 件
 STR_CRATES                                                      :{COMMA} 箱
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :その他
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :紺青色
@@ -213,6 +212,7 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}リッ�
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィルターを入力
@@ -929,6 +929,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD 
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}画面の解像度
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}画面の解像度を選択します
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :その他
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}スクリーンショットフォーマット
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}スクリーンショットのファイルフォーマットを選択します
@@ -1321,7 +1322,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船舶�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :本来{BLUE}（おすすめ）
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF{RED}（すすめない）
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}設定を変更します
 
@@ -1754,6 +1754,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :チートして
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :サーバ満員
 ############ End of leave-in-this-order
 
+
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
@@ -2030,6 +2031,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}土地�
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}土地をならす
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来用に土地を購入
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}木
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}植林する木の種類を選択
@@ -2093,6 +2097,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}価格�
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}調査
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}建設
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}出資
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地域情報
@@ -2339,6 +2345,15 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}切
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF設定を入力
 
+# NewGRF parameters window
+
+# NewGRF inspect window
+
+
+
+# Sprite aligner window
+
+
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
@@ -2374,11 +2389,15 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}見つ�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF ファイルが見つかりません
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}ポーズを解除した場合は、OpenTTD の安定性に悪影響を与える可能性があります。この後クラッシュが行った場合は、バグレポートの報告をご遠慮ください。{}ポーズを解除してもよろしいですか？
 
+# NewGRF status
+
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' のビヘービアは desync もしくはクラッシュを行わせる可能性があります！
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」が所有している「{0:VEHICLE}」という電車は無効な長さがあります。使用している NewGRF が原因であるかもしれません。desync もしくはクラッシュが行う可能性があります！
 
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' は生産コールバック内で無限ループを起こしました.
+
+# 'User removed essential NewGRFs'-placeholders for stuff without specs.
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標示のリスト - {COMMA}つの標示
@@ -2725,6 +2744,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}飛行�
 
 # Depot window
 
+
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
@@ -2903,6 +2923,8 @@ STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}{WAYPOI
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}へ行く、{VELOCITY}
 
 
+
+# Vehicle stopped/started animations
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE}（詳細）
@@ -3383,6 +3405,7 @@ STR_ERROR_CAN_T_BUILD_ROAD_DEPOT                                :{WHITE}ここ�
 STR_ERROR_CAN_T_BUILD_TRAM_DEPOT                                :{WHITE}ここに路面電車庫を建設できません...
 STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}ここに造船所を建設できません...
 
+
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}列車は車庫に止めなければなりません
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... 車庫内に停止しなければなりません
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}船舶は造船所内で停止しなければなりません
@@ -3556,6 +3579,8 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... 標�
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}ここに標示を設置できません...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}標示のテキストを変更できません...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}標示を削除できません
+
+# Translatable comment for OpenTTD's desktop shortcut
 
 ##id 0x2000
 # Town building names
@@ -3943,6 +3968,7 @@ STR_FORMAT_GROUP_NAME                                           :グループ {C
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}{STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN}の通過点
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN}の通過点 #{COMMA}
+
 
 STR_UNKNOWN_STATION                                             :不明な駅
 STR_DEFAULT_SIGN_NAME                                           :標示

@@ -171,7 +171,6 @@ STR_TONS                                                        :{COMMA} ton
 STR_LITERS                                                      :{COMMA} liter
 STR_ITEMS                                                       :{COMMA} unit
 STR_CRATES                                                      :{COMMA} peti
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Biru tua
@@ -941,6 +940,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Klik cek
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi Layar
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi layar yang diinginkan
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Format tangkapan layar
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Pilih format hasil tangkapan layar
@@ -1345,7 +1345,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pencari
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orisinil {BLUE}(Dianjurkan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Tdk dianjurkan)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ganti nilai tetapan
 
@@ -1779,6 +1778,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :tadi mencoba cu
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server penuh
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :terlalu banyak mengirim perintah
 ############ End of leave-in-this-order
+
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}

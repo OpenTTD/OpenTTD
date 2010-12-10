@@ -173,7 +173,6 @@ STR_TONS                                                        :{COMMA} tonn
 STR_LITERS                                                      :{COMMA} liter
 STR_ITEMS                                                       :{COMMA} einingar
 STR_CRATES                                                      :{COMMA} kasser
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anna
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Mørkeblå
@@ -942,6 +941,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Kryss av
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjermoppløysing
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel skjermoppløysinga som skal nyttast
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anna
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Filformat for skjermdump
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Vel kva format skjermdumpen skal lagrast i
@@ -1338,7 +1338,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Vegfinn
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikkje anbefalt)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Byt innstillingsverdi
 
@@ -1772,6 +1771,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :freista å juks
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :tenaren er full
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sende for mange kommandoar
 ############ End of leave-in-this-order
+
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}

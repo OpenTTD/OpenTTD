@@ -170,7 +170,6 @@ STR_BAGS                                                        :{COMMA} sekken
 STR_TONS                                                        :{COMMA} Ton
 STR_LITERS                                                      :{COMMA} liters
 STR_CRATES                                                      :{COMMA} kratten
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oars
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Tsjuster Blauw
@@ -876,6 +875,7 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
 
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm resolusje
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oars
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Skermfoto formaat
 
@@ -1021,7 +1021,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Stêden meie spoaroergongen boue: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :gjin {RED}(brekt houtseachmûne)
-
 
 
 
@@ -1233,6 +1232,7 @@ STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemiene flate
 STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :koe it lân net lade
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :joech tevolle opdrachten
 ############ End of leave-in-this-order
+
 
 # Network related errors
 ############ Leave those lines in this order!!

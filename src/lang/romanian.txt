@@ -1216,6 +1216,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :scurt (31-12-20
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}La pornirea unui joc nou, pune-l pe pauză: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Când jocul este in pauză permite: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :nici o actiune
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :toate actiunile non-construcție
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :toate exceptând modificarea terenului
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :toate acțiunile
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Foloseşte lista avansată de vehicule: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Oprit
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Propria companie
@@ -1238,9 +1243,9 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Cheltui
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Arată uneltele de constructie când nu sunt disponibile vehicule potrivite: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri per companie: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Nr. max. de autovehicule pentru un jucător: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Nr. max. de aeronave pentru un jucător: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Nr. max. de nave pentru un jucător: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Nr. max. de autovehicule per companie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Nr. max. de aeronave per companie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Nr. max. de nave per companie: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Dezactivează trenurile pentru jucătorii controlaţi de calculator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Dezactivează autovehiculele pentru jucătorii controlaţi de calculator: {ORANGE}{STRING}
@@ -1487,10 +1492,10 @@ STR_FACE_LOAD                                                   :{BLACK}Încărc
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Încarcă o faţă preferată
 STR_FACE_LOAD_DONE                                              :{WHITE}Faţa dvs. preferată a fost încărcată din fişierul de configurare al OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Nr. faţă jucător
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vizualizează şi/sau setează numărul feţei pentru jucător
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vizualizează şi/sau setează numărul feţei pentru jucător
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Vizualizează şi/sau setează numărul feţei pentru președintele companiei
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Vizualizează şi/sau setează numărul feţei pentru președinte
 STR_FACE_FACECODE_SET                                           :{WHITE}Noul cod numeric pentru faţă a fost stabilit.
-STR_FACE_FACECODE_ERR                                           :{WHITE}Nu am putut stabili numărul de faţă al jucătorului - trebuie să fie un număr între 0 şi 4.294.967.295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nu am putut seta numărul de faţă al președintelui - trebuie să fie un număr între 0 şi 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Salvează
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvează faţa preferată
 STR_FACE_SAVE_DONE                                              :{WHITE}Această faţă va fi salvată ca faţa preferată în fişierul de configurare al OpenTTD.
@@ -1607,9 +1612,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Limba vo
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ceilalţi jucători vor şti în ce limbă se discută pe server.
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Începe jocul
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Începe un joc nou în reţea cu o hartă aleatoare sau într-un scenariu
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Începe un joc nou în reţea cu o hartă aleatoare sau scenariul selectat
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Încarcă joc
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Reia un joc multiplayer salvat anterior (asigură-te că te-ai conectat cu jucătorul corespunzător)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Reia un joc multiplayer salvat anterior (asigură-te că te-ai conectat la compania corespunzătoare)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Introduceţi un nume pentru joc
 
@@ -3458,6 +3463,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... apar
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... terenul se află în proprietatea altei companii
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Numele trebuie să fie unic
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} în cale
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nepermis când jocul este în pauză
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Autorităţile locale din {TOWN} refuză să permită această acţiune

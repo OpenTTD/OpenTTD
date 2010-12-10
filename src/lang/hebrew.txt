@@ -185,7 +185,6 @@ STR_TONS                                                        :{COMMA} טונ�
 STR_LITERS                                                      :{COMMA} ליטרים
 STR_ITEMS                                                       :{COMMA} פריטים
 STR_CRATES                                                      :{COMMA} ארגזים
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :כחול כהה
@@ -952,6 +951,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}סמן �
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}רזלוציית המסך
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}בחר את רזולוציית המסך
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}פורמט צילום המסך
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}בחר את הפורמט של צילום המסך
@@ -1349,7 +1349,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{ORANGE}{STRING
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :{BLUE}(מקורי (מומלץ
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(לא מומלץ)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}שנה ערך
 
@@ -1781,6 +1780,7 @@ STR_NETWORK_ERROR_CLIENT_KICKED                                 :נזרקת על
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :ניסית להשתמש בקודים
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :השרת מלא
 ############ End of leave-in-this-order
+
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}

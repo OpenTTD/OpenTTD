@@ -173,7 +173,6 @@ STR_TONS                                                        :{COMMA} тон�
 STR_LITERS                                                      :{COMMA} литри
 STR_ITEMS                                                       :{COMMA} елемента
 STR_CRATES                                                      :{COMMA} кашони
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Тъмно синьо
@@ -934,6 +933,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Избе
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Размер на екрана
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Избор размера на екран
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Формат на снимките
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Избор на файловия форма в който ще се записват екранните снимки
@@ -1327,7 +1327,6 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Път�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :оригинален {BLUE}(препоръчва се)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(не се препоръчва)
-
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Промяна стойноста на настройка
 
@@ -1760,6 +1759,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :се опита
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :сървърът е пълен
 ############ End of leave-in-this-order
 
+
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
@@ -2039,6 +2039,9 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Пови
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Подравняване на земя
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купи земя за бъдещо ползване
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дървета
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Избор тип на дърво за засаждане
@@ -2102,6 +2105,8 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Цена
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Перспектива
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Построи
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Фонд
+
+# Industry cargoes window
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Информация за земята
@@ -2356,6 +2361,8 @@ STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Не е н
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Изключен
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Въвеждане на NewGRF параметри
+
+# NewGRF parameters window
 
 # NewGRF inspect window
 

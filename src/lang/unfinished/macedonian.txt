@@ -677,7 +677,6 @@ STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Право
 
 
 
-
 # Intro window
 
 STR_INTRO_NEW_GAME                                              :{BLACK}Нова Игра
@@ -771,6 +770,7 @@ STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Ти б�
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :испраќа премногу команди
 ############ End of leave-in-this-order
+
 
 # Network related errors
 ############ Leave those lines in this order!!

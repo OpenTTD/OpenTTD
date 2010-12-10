@@ -123,7 +123,6 @@ STR_TONS                                                        :{COMMA} tunnell
 STR_LITERS                                                      :{COMMA} litri
 STR_ITEMS                                                       :{COMMA} oġġetti
 STR_CRATES                                                      :{COMMA} kaxxi
-STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Blu Skur
@@ -333,6 +332,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 
 
 
+STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
@@ -368,7 +368,6 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 
 
 # Advanced settings window
-
 
 
 
@@ -465,6 +464,7 @@ STR_NETWORK_ERROR_CLIENT_NAME_IN_USE                            :isem diġa qed 
 STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażin
 ############ End of leave-in-this-order
 
+
 # Network related errors
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -521,6 +521,9 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 # Landscaping toolbar
 
+# Object construction window
+
+
 # Tree planting window (last two for SE only)
 
 # Land generation window (SE)
@@ -532,6 +535,8 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 
 
 # Fund new industry window
+
+# Industry cargoes window
 
 # Land area window
 
@@ -580,6 +585,8 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Aġġorn
 
 
 
+# NewGRF parameters window
+
 # NewGRF inspect window
 
 
@@ -592,6 +599,8 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Aġġorn
 # NewGRF related 'general' warnings
 
 
+
+# NewGRF status
 
 # NewGRF 'it's broken' warnings
 
