@@ -288,7 +288,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		case 0x47: return TileY(tile) << 16 | TileX(tile);
 
 		/* Building counts for old houses with id = parameter. */
-		case 0x60: return GetNumHouses(parameter, town);
+		case 0x60: return parameter < NEW_HOUSE_OFFSET ? GetNumHouses(parameter, town) : 0;
 
 		/* Building counts for new houses with id = parameter. */
 		case 0x61: {
