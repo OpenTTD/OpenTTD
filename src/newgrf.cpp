@@ -3012,6 +3012,7 @@ static ChangeInfoResult IgnoreObjectProperty(uint prop, ByteReader *buf)
 		case 0x12:
 		case 0x14:
 		case 0x16:
+		case 0x17:
 			buf->ReadByte();
 
 		case 0x09:
@@ -3066,7 +3067,10 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 				ObjectSpec **ospec = &_cur_grffile->objectspec[id + i];
 
 				/* Allocate space for this object. */
-				if (*ospec == NULL) *ospec = CallocT<ObjectSpec>(1);
+				if (*ospec == NULL) {
+					*ospec = CallocT<ObjectSpec>(1);
+					(*ospec)->views = 1; // Default for NewGRFs that don't set it.
+				}
 
 				/* Swap classid because we read it in BE. */
 				uint32 classid = buf->ReadDWord();
@@ -3136,6 +3140,14 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 
 			case 0x16: // Building height
 				spec->height = buf->ReadByte();
+				break;
+
+			case 0x17: // Views
+				spec->views = buf->ReadByte();
+				if (spec->views != 1 && spec->views != 2 && spec->views != 4) {
+					grfmsg(2, "ObjectChangeInfo: Invalid number of views (%u) for object id %u. Ignoring.", spec->views, id + i);
+					spec->views = 1;
+				}
 				break;
 
 			default:
