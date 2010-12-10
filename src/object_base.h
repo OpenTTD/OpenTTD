@@ -28,6 +28,7 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	TileArea location;  ///< Location of the object
 	Date build_date;    ///< Date of construction
 	byte colour;        ///< Colour of the object, for display purpose
+	byte view;          ///< The view setting for this object
 
 	/** Make sure the object isn't zeroed. */
 	Object() {}

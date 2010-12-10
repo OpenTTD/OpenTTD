@@ -55,15 +55,16 @@ void InitializeObjects()
 	Object::ResetTypeCounts();
 }
 
-void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town)
+void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, uint8 view)
 {
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 
-	TileArea ta(tile, GB(spec->size, 0, 4), GB(spec->size, 4, 4));
+	TileArea ta(tile, GB(spec->size, HasBit(view, 0) ? 4 : 0, 4), GB(spec->size, HasBit(view, 0) ? 0 : 4, 4));
 	Object *o = new Object();
 	o->location      = ta;
 	o->town          = town == NULL ? CalcClosestTownFromTile(tile) : town;
 	o->build_date    = _date;
+	o->view          = view;
 
 	/* If nothing owns the object, the colour will be random. Otherwise
 	 * get the colour from the company's livery settings. */
@@ -157,7 +158,7 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags);
  * @param tile tile where the object will be located
  * @param flags type of operation
  * @param p1 the object type to build
- * @param p2 unused
+ * @param p2 the view for the object
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -166,17 +167,19 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	CommandCost cost(EXPENSES_PROPERTY);
 
 	ObjectType type = (ObjectType)GB(p1, 0, 8);
+	uint8 view = GB(p2, 0, 2);
 	const ObjectSpec *spec = ObjectSpec::Get(type);
 	if (!spec->IsAvailable()) return CMD_ERROR;
 
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_SCENEDIT && (_game_mode != GM_EDITOR || _current_company != OWNER_NONE)) return CMD_ERROR;
 	if (spec->flags & OBJECT_FLAG_ONLY_IN_GAME && (_game_mode != GM_NORMAL || _current_company > MAX_COMPANIES)) return CMD_ERROR;
+	if (view >= spec->views) return CMD_ERROR;
 
 	if (!Object::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_OBJECTS);
 	if (Town::GetNumItems() == 0) return_cmd_error(STR_ERROR_MUST_FOUND_TOWN_FIRST);
 
-	int size_x = GB(spec->size, 0, 4);
-	int size_y = GB(spec->size, 4, 4);
+	int size_x = GB(spec->size, HasBit(view, 0) ? 4 : 0, 4);
+	int size_y = GB(spec->size, HasBit(view, 0) ? 0 : 4, 4);
 	TileArea ta(tile, size_x, size_y);
 
 	if (type == OBJECT_OWNED_LAND) {
@@ -271,7 +274,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	}
 
 	if (flags & DC_EXEC) {
-		BuildObject(type, tile, _current_company);
+		BuildObject(type, tile, _current_company, NULL, view);
 
 		/* Make sure the HQ starts at the right size. */
 		if (type == OBJECT_HQ) UpdateCompanyHQ(tile, hq_score);
