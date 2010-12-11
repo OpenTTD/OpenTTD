@@ -233,7 +233,7 @@ STR_TOOLTIP_SHADE                                               :{BLACK}Itzal le
 STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRF depurazio informazioa ikusi
 STR_TOOLTIP_STICKY                                              :{BLACK}Markatu leiho hau itxiezina bezala 'Zarratu Leiho Guztiak' gakoarekin
 STR_TOOLTIP_RESIZE                                              :{BLACK}Click eta arrastatu leiho honi tamaina aldatzeko
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Ukondotu handi/txiki leiho tamaina
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Aldatu handia/txikia leihoaren tamaina
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Korritu barra - korrituz zerrenda gora/behera
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Korritu Barra - korrituz zerrenda ezkerra/eskuma
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Eraikinak etab desegin lurreko karratu batean
@@ -706,7 +706,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mapan da
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Erakutsi azken mezu edo albiste erreportaia
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUSATUA  *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  GELDITUTA  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTO-GORDEA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  JOKOA GORDETZEN  *  *
 
@@ -1105,15 +1105,28 @@ STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflazi
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Geltoki batetan bakarrik bertan hartzen duten zama baino ez utzi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Zubi oso luzeak eraikitzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Grajera joateko aginduak baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Industria primarioa eraikitzeko era: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ezer ez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :beste industriak bezala
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekzioa
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Area laua industrien inguruan: {ORANGE}{STRING} karratu{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Indutria berdin asko baimendu hiri bakoitzean: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Data luzea ikusi beti estatu barran: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}seinaleak gidatzen den aldean jarri: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Finantzien informazio taula urtearen bukaeran agertu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Agindu berriak "ez gelditu" dira beti: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Trenen agindu berriak beti nasaren {ORANGE}{STRING}{LTBLUE} n gelditzea dira
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :amaieratik gertu
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :erdian
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :amaieratik urrun
+STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Errepide ibilgailuen lerroketak(quantum efektuekin): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Leioa mugitu kurtsorea ertzean dagoenean: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Udaletxeko agintariak erostea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Garraiatzeko eskubide esklusiboen erosketa baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Beste empresei dirua bidaltzea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Era berekoak ez diren geltokiak bateratzea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Zamaren pisuaren biderkatzailea tren astunagoak simulatzeko: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}hegazkinen: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Hegazkinen akzidente kopurua : {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :bat ere ez
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :txikitua
@@ -1158,6 +1171,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :luzea (2008ko A
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :laburra (2008-12-31)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Jokoa geldituta dagoenean baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :egintzarik ez
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :eraikitzeko ez diren egintza guztiak
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :guztiak paisaia eraldatzeko egintzak baino
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :egintza guztiak
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Itzalita
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Enpresa propioa
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_ALL                   :Enpresa guztiak
@@ -1241,6 +1259,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Seguru al zaude eszenario hau utzi nahi duzula?
 
 # Cheat window
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Aurtengo urtea aldatu
 
 # Livery window
 
@@ -1281,6 +1300,8 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Paisaia
 ############ Leave those lines in this order!!
 
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} orain arte deskargatuta
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} orain arte deskargatuta
 
 
 
@@ -1818,6 +1839,7 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ez dago baliag
 
 # Generic construction errors
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} bidean
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ezin da jokoa geldituta dagoenean
 
 # Local authority errors
 
@@ -1952,8 +1974,12 @@ STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Ontziteg
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Ontzitegia #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangarra
 
+STR_UNKNOWN_STATION                                             :Geltoki ezezaguna
+STR_DEFAULT_SIGN_NAME                                           :Seinale
+STR_COMPANY_SOMEONE                                             :norbait
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Ikuslea, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
@@ -1995,6 +2021,7 @@ STR_JUST_DATE_SHORT                                             :{DATE_SHORT}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
 STR_JUST_DATE_ISO                                               :{DATE_ISO}
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_STRING_SPACE_STRING                                    :{STRING} {STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 
 # Slightly 'raw' stringcodes with colour or size
@@ -2012,11 +2039,14 @@ STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LO
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
 STR_TINY_GROUP                                                  :{TINYFONT}{GROUP}
+STR_BLACK_INT                                                   :{BLACK}{NUM}
 STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
+STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}

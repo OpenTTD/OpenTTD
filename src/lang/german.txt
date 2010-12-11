@@ -3217,13 +3217,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Den aktu
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Löschen
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Lösche den markierten Auftrag
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Gemeinsame Aufträge aufheben
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Gemeinsame Auftragliste aufheben. Ctrl+Klick löscht die Auftragliste
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Fahre zu
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Nächstes Depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Nächster Hangar
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg halten, um für Stationen 'Vollladen einer Fracht', für Wegpunkte 'ohne Halt' und für Depots 'Wartung' auszuwählen
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Erweiterten Befehl einfügen
+STR_ORDER_SHARE                                                 :Gemeinsame Aufträge
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg halten, um für Stationen 'Vollladen einer Fracht', für Wegpunkte 'ohne Halt' und für Depots 'Wartung' auszuwählen. 'Gemeinsame Aufträge' erlauben ein Fahrzeug auszuwählen mit dem dieses die Aufträge teilt.
+STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Erweiterten Auftrag einfügen
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle Fahrzeuge mit demselben Fahrplan anzeigen
 
@@ -3765,6 +3768,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... Fahr
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ein Fahrzeug, welches diesen gemeinsamen Fahrplan nutzt, kann die Station nicht erreichen
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Fehler beim Erstellen eines gemeinsam genutzten Fahrplans...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Gemeinsame Aufträge können nicht aufgehoben werden...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Fahrplan kann nicht kopiert werden...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zu weit vom vorherigen Bestimmungsort entfernt
 

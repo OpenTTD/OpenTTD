@@ -3218,12 +3218,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Salta l'
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Elimina
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Elimina l'ordine selezionato
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Termina condivisione
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Termina la condivisione degli ordini. CTRL+clic elimina l'intera lista ordini
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Vai a
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Deposito più vicino
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar più vicino
 STR_ORDER_CONDITIONAL                                           :Salto condizionale
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserisce un nuovo ordine prima di quello selezionato, o lo aggiunge alla fine della lista. Facendo clic con CTRL gli ordini verso le stazioni diventano 'attendi carico', quelli verso waypoint 'no-stop' e quelli verso depositi 'manutenzione'.
+STR_ORDER_SHARE                                                 :Condividi ordini
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserisce un nuovo ordine prima di quello selezionato, o lo aggiunge alla fine della lista. Facendo clic con CTRL gli ordini verso le stazioni diventano 'attendi carico', quelli verso waypoint 'no-stop' e quelli verso depositi 'manutenzione'. L'opzione 'Condividi ordini' consente a questo veicolo di condividere gli ordini con un veicolo selezionato.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Inserisce un ordine avanzato
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra tutti i veicoli che condividono questa lista ordini
@@ -3766,6 +3769,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... il v
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un veicolo che condivide l'ordine non può utilizzare questa stazione
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Impossibile condividere la lista degli ordini...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Impossibile terminare la condivisione degli ordini...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Impossibile copiare la lista degli ordini...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... troppo lontano dalla destinazione precedente
 

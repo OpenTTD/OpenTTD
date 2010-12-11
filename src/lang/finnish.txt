@@ -3216,12 +3216,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Ohita ny
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Poista
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Poista korostettu määräys.
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Lopeta jakaminen
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Lopeta määräysten jakaminen. Ctrl+Klik poistaa kaikki määräykset
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mene
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mene lähimmälle varikolle
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimmälle varikolle
 STR_ORDER_CONDITIONAL                                           :Ehdollinen hyppymääräys
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uusi käsky ennen valittua, tai lisää listan viimeiseksi. Ctrl tekee asemakäskyistä 'lastaa täyteen kaikki rahti', reittipistekäskyistä 'non-stop' ja veturitallikäskyistä 'huolto'
+STR_ORDER_SHARE                                                 :Jaa määräykset
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uusi käsky ennen valittua, tai lisää listan viimeiseksi. Ctrl tekee asemakäskyistä 'lastaa täyteen kaikki rahti', reittipistekäskyistä 'non-stop' ja veturitallikäskyistä 'huolto'. 'Jaa määräykset' jakaa määräykset valitun kulkuneuvon kanssa..
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Lisää kehittynyt määräys
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä kaikki ajoneuvot, joilla on sama aikataulu
@@ -3764,6 +3767,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... kulk
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... kulkuneuvo, jonka kanssa aikataulu on jaettu, ei pääse tälle asemalle
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Aikataulua ei voi jakaa...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Määräysten jakamista ei voitu lopettaa...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Aikataulua ei voi kopioida...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liian kaukana edellisestä määränpäästä
 
