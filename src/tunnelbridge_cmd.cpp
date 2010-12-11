@@ -211,7 +211,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	/* unpack parameters */
 	BridgeType bridge_type = GB(p2, 0, 8);
 
-	if (p1 >= MapSize()) return CMD_ERROR;
+	if (!IsValidTile(p1)) return CMD_ERROR;
 
 	TransportType transport_type = Extract<TransportType, 15, 2>(p2);
 
@@ -270,6 +270,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	CommandCost terraform_cost_north = CheckBridgeSlopeNorth(direction, &tileh_start, &z_start);
 	CommandCost terraform_cost_south = CheckBridgeSlopeSouth(direction, &tileh_end,   &z_end);
 
+	/* Aqueducts can't be built of flat land. */
+	if (transport_type == TRANSPORT_WATER && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 	if (z_start != z_end) return_cmd_error(STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT);
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
@@ -344,8 +346,6 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		/* false - end tile slope check */
 		if (terraform_cost_south.Failed() || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 		cost.AddCost(terraform_cost_south);
-
-		if (transport_type == TRANSPORT_WATER && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 		const TileIndex heads[] = {tile_start, tile_end};
 		for (int i = 0; i < 2; i++) {
