@@ -144,15 +144,15 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	static const uint MIN_CI_SIZE = 54;
 	uint max_cname_length = NETWORK_COMPANY_NAME_LENGTH;
 
-	if (Company::GetNumItems() * (MIN_CI_SIZE + NETWORK_COMPANY_NAME_LENGTH) >= (uint)packet.size - packet.pos) {
+	if (Company::GetNumItems() * (MIN_CI_SIZE + NETWORK_COMPANY_NAME_LENGTH) >= (uint)SEND_MTU - packet.size) {
 		/* Assume we can at least put the company information in the packets. */
-		assert(Company::GetNumItems() * MIN_CI_SIZE < (uint)packet.size - packet.pos);
+		assert(Company::GetNumItems() * MIN_CI_SIZE < (uint)SEND_MTU - packet.size);
 
 		/* At this moment the company names might not fit in the
 		 * packet. Check whether that is really the case. */
 
 		for (;;) {
-			int free = packet.size - packet.pos;
+			int free = SEND_MTU - packet.size;
 			Company *company;
 			FOR_ALL_COMPANIES(company) {
 				char company_name[NETWORK_COMPANY_NAME_LENGTH];
