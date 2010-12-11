@@ -204,6 +204,16 @@ public:
 		}
 	}
 
+	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
+	{
+		/* Position the window so hopefully the first bridge from the list is under the mouse pointer. */
+		NWidgetBase *list = this->GetWidget<NWidgetBase>(BBSW_BRIDGE_LIST);
+		Point corner; // point of the top left corner of the window.
+		corner.y = Clamp(_cursor.pos.y - list->pos_y - 5, GetMainViewTop(), GetMainViewBottom() - sm_height);
+		corner.x = Clamp(_cursor.pos.x - list->pos_x - 5, 0, _screen.width - sm_width);
+		return corner;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
@@ -286,7 +296,7 @@ public:
 /** Set the default size of the Build Bridge Window. */
 uint16 BuildBridgeWindow::last_size = 4;
 /** Set the default sorting for the bridges */
-Listing BuildBridgeWindow::last_sorting = {false, 0};
+Listing BuildBridgeWindow::last_sorting = {true, 2};
 
 /** Available bridge sorting functions. */
 GUIBridgeList::SortFunction * const BuildBridgeWindow::sorter_funcs[] = {
