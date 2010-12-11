@@ -3216,6 +3216,8 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Skip the
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Delete
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Delete the highlighted order
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stop sharing
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop sharing the order list. Ctrl+Click deletes the complete order list
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Go To
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Go to nearest depot
@@ -3764,6 +3766,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vehi
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... a vehicle sharing this order can't go to that station
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Can't share order list...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Can't stop sharing order list...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Can't copy order list...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... too far from previous destination
 
