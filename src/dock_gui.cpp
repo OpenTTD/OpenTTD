@@ -28,6 +28,7 @@
 #include "company_base.h"
 #include "station_type.h"
 #include "hotkeys.h"
+#include "bridge.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -90,9 +91,46 @@ static void PlaceDocks_BuildRiver(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_RIVER);
 }
 
+/**
+ * Gets the other end of the aqueduct, if possible.
+ * @param tile_from     The begin tile for the aqueduct.
+ * @param [out] tile_to The tile till where to show a selection for the aqueduct.
+ * @return The other end of the aqueduct, or otherwise a tile in line with the aqueduct to cause the right error message.
+ */
+static TileIndex GetOtherAqueductEnd(TileIndex tile_from, TileIndex *tile_to = NULL)
+{
+	uint z;
+	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, &z));
+
+	/* If the direction isn't right, just return the next tile so the command
+	 * complains about the wrong slope instead of the ends not matching up.
+	 * Make sure the coordinate is always a valid tile within the map, so we
+	 * don't go "off" the map. That would cause the wrong error message. */
+	if (!IsValidDiagDirection(dir)) return TILE_ADDXY(tile_from, TileX(tile_from) > 2 ? -1 : 1, 0);
+
+	/* Direction the aqueduct is built to. */
+	TileIndexDiff offset = TileOffsByDiagDir(ReverseDiagDir(dir));
+	/* The maximum length of the aqueduct. */
+	int max_length = min(_settings_game.construction.longbridges ? MAX_BRIDGE_LENGTH_LONGBRIDGES : MAX_BRIDGE_LENGTH, DistanceFromEdgeDir(tile_from, ReverseDiagDir(dir)) - 1);
+
+	TileIndex endtile = tile_from;
+	for (int length = 0; IsValidTile(endtile) && TileX(endtile) != 0 && TileY(endtile) != 0; length++) {
+		endtile = TILE_ADD(endtile, offset);
+
+		if (length > max_length) break;
+
+		if (GetTileMaxZ(endtile) > z) {
+			if (tile_to != NULL) *tile_to = endtile;
+			break;
+		}
+	}
+
+	return endtile;
+}
+
 static void PlaceDocks_Aqueduct(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
+	DoCommandP(tile, GetOtherAqueductEnd(tile), TRANSPORT_WATER << 15, CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE), CcBuildBridge);
 }
 
 
@@ -184,7 +222,7 @@ static void BuildDocksClick_River(Window *w)
   */
 static void BuildDocksClick_Aqueduct(Window *w)
 {
-	HandlePlacePushButton(w, DTW_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, HT_RECT, PlaceDocks_Aqueduct);
+	HandlePlacePushButton(w, DTW_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, HT_SPECIAL, PlaceDocks_Aqueduct);
 }
 
 
@@ -253,10 +291,6 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
-				case DDSP_BUILD_BRIDGE:
-					if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-					DoCommandP(end_tile, start_tile, TRANSPORT_WATER << 15, CMD_BUILD_BRIDGE | CMD_MSG(STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE), CcBuildBridge);
-
 				case DDSP_DEMOLISH_AREA:
 					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 					break;
@@ -284,9 +318,19 @@ struct BuildDocksToolbarWindow : Window {
 
 	virtual void OnPlacePresize(Point pt, TileIndex tile_from)
 	{
-		DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, NULL));
-		TileIndex tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile_from, ReverseDiagDir(dir)) : tile_from);
-		tile_from = this->last_clicked_widget == DTW_LOCK && dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile_from, dir) : tile_from;
+		TileIndex tile_to = tile_from;
+
+		if (this->last_clicked_widget == DTW_BUILD_AQUEDUCT) {
+			GetOtherAqueductEnd(tile_from, &tile_to);
+		} else {
+			DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, NULL));
+			if (IsValidDiagDirection(dir)) {
+				/* Locks and docks always select the tile "down" the slope. */
+				tile_to = TileAddByDiagDir(tile_from, ReverseDiagDir(dir));
+				/* Locks also select the tile "up" the slope. */
+				if (this->last_clicked_widget == DTW_LOCK) tile_from = TileAddByDiagDir(tile_from, dir);
+			}
+		}
 
 		VpSetPresizeRange(tile_from, tile_to);
 	}

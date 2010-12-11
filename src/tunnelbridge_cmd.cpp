@@ -211,7 +211,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 	/* unpack parameters */
 	BridgeType bridge_type = GB(p2, 0, 8);
 
-	if (!IsValidTile(p1)) return CMD_ERROR;
+	if (!IsValidTile(p1)) return_cmd_error(STR_ERROR_BRIDGE_THROUGH_MAP_BORDER);
 
 	TransportType transport_type = Extract<TransportType, 15, 2>(p2);
 
