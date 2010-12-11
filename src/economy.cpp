@@ -1110,10 +1110,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 {
 	assert(v->current_order.IsType(OT_LOADING));
 
-	assert(v->load_unload_ticks != 0);
-
 	/* We have not waited enough time till the next round of loading/unloading */
-	if (--v->load_unload_ticks != 0) {
+	if (v->load_unload_ticks != 0) {
 		if (_settings_game.order.improved_load && (v->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
 			/* 'Reserve' this cargo for this vehicle, because we were first. */
 			for (; v != NULL; v = v->Next()) {
@@ -1423,14 +1421,36 @@ void LoadUnloadStation(Station *st)
 	/* No vehicle is here... */
 	if (st->loading_vehicles.empty()) return;
 
+	Vehicle *last_loading = NULL;
+	std::list<Vehicle *>::iterator iter;
+
+	/* Check if anything will be loaded at all. Otherwise we don't need to reserve either. */
+	for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
+		Vehicle *v = *iter;
+
+		if ((v->vehstatus & (VS_STOPPED | VS_CRASHED))) continue;
+
+		assert(v->load_unload_ticks != 0);
+		if (--v->load_unload_ticks == 0) last_loading = v;
+	}
+
+	/* We only need to reserve and load/unload up to the last loading vehicle.
+	 * Anything else will be forgotten anyway after returning from this function.
+	 *
+	 * Especially this means we do _not_ need to reserve cargo for a single
+	 * consist in a station which is not allowed to load yet because its
+	 * load_unload_ticks is still not 0.
+	 */
+	if (last_loading == NULL) return;
+
 	int cargo_left[NUM_CARGO];
 
 	for (uint i = 0; i < NUM_CARGO; i++) cargo_left[i] = st->goods[i].cargo.Count();
 
-	std::list<Vehicle *>::iterator iter;
 	for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
 		Vehicle *v = *iter;
 		if (!(v->vehstatus & (VS_STOPPED | VS_CRASHED))) LoadUnloadVehicle(v, cargo_left);
+		if (v == last_loading) break;
 	}
 
 	/* Call the production machinery of industries */
