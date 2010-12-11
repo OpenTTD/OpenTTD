@@ -2280,8 +2280,8 @@ static void DrawTile_Track(TileInfo *ti)
 				}
 			}
 
-			relocation  = GetCustomRailSprite(rti, ti->tile, RTSG_DEPOT);
-			relocation -= SPR_RAIL_DEPOT_SE_1;
+			int depot_sprite = GetCustomRailSprite(rti, ti->tile, RTSG_DEPOT);
+			relocation = depot_sprite != 0 ? depot_sprite - SPR_RAIL_DEPOT_SE_1 : rti->total_offset;
 		} else {
 			/* PBS debugging, draw reserved tracks darker */
 			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasDepotReservation(ti->tile)) {
@@ -2328,8 +2328,8 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 			default: break;
 		}
 
-		offset  = GetCustomRailSprite(rti, INVALID_TILE, RTSG_DEPOT);
-		offset -= SPR_RAIL_DEPOT_SE_1;
+		int depot_sprite = GetCustomRailSprite(rti, INVALID_TILE, RTSG_DEPOT);
+		if (depot_sprite != 0) offset = depot_sprite - SPR_RAIL_DEPOT_SE_1;
 	}
 
 	DrawRailTileSeqInGUI(x, y, dts, offset, 0, palette);
