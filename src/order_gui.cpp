@@ -123,6 +123,7 @@ static const StringID _order_goto_dropdown[] = {
 	STR_ORDER_GO_TO,
 	STR_ORDER_GO_TO_NEAREST_DEPOT,
 	STR_ORDER_CONDITIONAL,
+	STR_ORDER_SHARE,
 	INVALID_STRING_ID
 };
 
@@ -130,6 +131,7 @@ static const StringID _order_goto_dropdown_aircraft[] = {
 	STR_ORDER_GO_TO,
 	STR_ORDER_GO_TO_NEAREST_HANGAR,
 	STR_ORDER_CONDITIONAL,
+	STR_ORDER_SHARE,
 	INVALID_STRING_ID
 };
 
@@ -438,6 +440,7 @@ private:
 	enum OrderPlaceObjectState {
 		OPOS_GOTO,
 		OPOS_CONDITIONAL,
+		OPOS_SHARE,
 	};
 
 	/** Displayed planes of the #NWID_SELECTION widgets. */
@@ -581,10 +584,22 @@ private:
 	 */
 	void OrderClick_Conditional(int i)
 	{
-		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
 		this->LowerWidget(ORDER_WIDGET_GOTO);
+		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
 		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT, this);
 		this->goto_type = OPOS_CONDITIONAL;
+	}
+
+	/**
+	 * Handle the click on the share button.
+	 * @param i Dummy parameter.
+	 */
+	void OrderClick_Share(int i)
+	{
+		this->LowerWidget(ORDER_WIDGET_GOTO);
+		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
+		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT | HT_VEHICLE, this);
+		this->goto_type = OPOS_SHARE;
 	}
 
 	/**
@@ -1232,6 +1247,7 @@ public:
 					case 0: this->OrderClick_Goto(0); break;
 					case 1: this->OrderClick_NearestDepot(0); break;
 					case 2: this->OrderClick_Conditional(0); break;
+					case 3: this->OrderClick_Share(0); break;
 					default: NOT_REACHED();
 				}
 				break;
@@ -1306,13 +1322,16 @@ public:
 
 	virtual void OnVehicleSelect(const Vehicle *v)
 	{
-		/* v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet
-		 * obviously if you press CTRL on a non-empty orders vehicle you know what you are doing
+		/* v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet.
+		 * We disallow copying orders of other vehicles if we already have at least one order entry
+		 * ourself as it easily copies orders of vehicles within a station when we mean the station.
+		 * Obviously if you press CTRL on a non-empty orders vehicle you know what you are doing
 		 * TODO: give a warning message */
-		if (this->vehicle->GetNumOrders() != 0 && _ctrl_pressed == 0) return;
+		bool share_order = _ctrl_pressed || this->goto_type == OPOS_SHARE;
+		if (this->vehicle->GetNumOrders() != 0 && !share_order) return;
 
-		if (DoCommandP(this->vehicle->tile, this->vehicle->index | (_ctrl_pressed ? CO_SHARE : CO_COPY) << 30, v->index,
-				_ctrl_pressed ? CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_COPY_ORDER_LIST))) {
+		if (DoCommandP(this->vehicle->tile, this->vehicle->index | (share_order ? CO_SHARE : CO_COPY) << 30, v->index,
+				share_order ? CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_ERROR_CAN_T_COPY_ORDER_LIST))) {
 			this->selected_order = -1;
 			ResetObjectToPlace();
 		}
