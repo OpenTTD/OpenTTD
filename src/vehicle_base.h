@@ -658,6 +658,7 @@ public:
 	}
 
 	bool IsEngineCountable() const;
+	bool HasDepotOrder() const;
 };
 
 #define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)

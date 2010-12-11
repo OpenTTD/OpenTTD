@@ -1445,17 +1445,14 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 }
 
 /**
- *
- * Checks if a vehicle has a GOTO_DEPOT in his order list
- *
- * @return True if this is true (lol ;))
- *
+ * Checks if a vehicle has a depot in its order list.
+ * @return True iff at least one order is a depot order.
  */
-bool VehicleHasDepotOrders(const Vehicle *v)
+bool Vehicle::HasDepotOrder() const
 {
 	const Order *order;
 
-	FOR_VEHICLE_ORDERS(v, order) {
+	FOR_VEHICLE_ORDERS(this, order) {
 		if (order->IsType(OT_GOTO_DEPOT)) return true;
 	}
 
