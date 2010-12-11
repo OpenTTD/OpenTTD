@@ -1483,7 +1483,6 @@ struct QueryWindow : public Window {
 
 		this->InitNested(desc);
 
-		if (parent == NULL) parent = FindWindowById(WC_MAIN_WINDOW, 0);
 		this->parent = parent;
 		this->left = parent->left + (parent->width / 2) - (this->width / 2);
 		this->top = parent->top + (parent->height / 2) - (this->height / 2);
@@ -1599,5 +1598,18 @@ static const WindowDesc _query_desc(
  */
 void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallbackProc *callback)
 {
+	if (parent == NULL) parent = FindWindowById(WC_MAIN_WINDOW, 0);
+
+	const Window *w;
+	FOR_ALL_WINDOWS_FROM_BACK(w) {
+		if (w->window_class != WC_CONFIRM_POPUP_QUERY) continue;
+
+		const QueryWindow *qw = (const QueryWindow *)w;
+		if (qw->parent != parent || qw->proc != callback) continue;
+
+		delete qw;
+		break;
+	}
+
 	new QueryWindow(&_query_desc, caption, message, parent, callback);
 }
