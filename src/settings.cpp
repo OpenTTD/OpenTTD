@@ -72,8 +72,8 @@
 #include "table/settings.h"
 
 ClientSettings _settings_client;
-GameSettings _settings_game;
-GameSettings _settings_newgame;
+GameSettings _settings_game;     ///< Game settings of a running game or the scenario editor.
+GameSettings _settings_newgame;  ///< Game settings for new games (updated from the intro screen).
 VehicleDefaultSettings _old_vds; ///< Used for loading default vehicles settings from old savegames
 char *_config_file; ///< Configuration file of OpenTTD
 
@@ -1237,6 +1237,11 @@ static bool ConvertOldNewsSetting(const char *name, const char *value)
 	return false;
 }
 
+/**
+ * Load newstype settings from a configuration file.
+ * @param ini the configuration to read from.
+ * @param grpname Name of the group containing the news type settings.
+ */
 static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 {
 	IniGroup *group = ini->GetGroup(grpname);
@@ -1310,7 +1315,12 @@ static void AILoadConfig(IniFile *ini, const char *grpname)
 #endif /* ENABLE_AI */
 }
 
-/* Load a GRF configuration from the given group name */
+/**
+ * Load a GRF configuration
+ * @param ini       The configuration to read from.
+ * @param grpname   Group name containing the configuration of the GRF.
+ * @param is_static GRF is static.
+ */
 static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_static)
 {
 	IniGroup *group = ini->GetGroup(grpname);
@@ -1376,6 +1386,11 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 	return first;
 }
 
+/**
+ * Write newstype settings to a configuration file.
+ * @param ini     The configuration to write to.
+ * @param grpname Name of the group containing the news type settings.
+ */
 static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 {
 	IniGroup *group = ini->GetGroup(grpname);

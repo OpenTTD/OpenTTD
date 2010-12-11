@@ -58,6 +58,7 @@ typedef SimpleTinyEnumT<SettingGuiFlagLong, uint16> SettingGuiFlag;
 typedef bool OnChange(int32 var);           ///< callback prototype on data modification
 typedef int32 OnConvert(const char *value); ///< callback prototype for convertion error
 
+/** Properties of config file settings. */
 struct SettingDescBase {
 	const char *name;       ///< name of the setting. Used in configuration file and for console
 	const void *def;        ///< default value given when none is present
