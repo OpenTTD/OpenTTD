@@ -3427,12 +3427,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Preskač
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Izbriši
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Uklanja obeleženu naredbu
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Uklanja sva naređenja
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Prekini deljenje
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Prekida deljenje liste naredbi. Sa Ctrl+Klik se i briše cela lista naredbi.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idi do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idi do najbližeg depoa
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Idi do najbližeg hangara
 STR_ORDER_CONDITIONAL                                           :Uslovna naredba skoka
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ubacuje novu naredbu pre obeležene, ili je dodaje na kraju spiska. Ctrl čini da stanica naredi "pun bilo koji tovar", putna tačka naredi "non-stop" i depo naredi "servis"
+STR_ORDER_SHARE                                                 :Deli naredbe
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ubacuje novu naredbu pre obeležene, ili je dodaje na kraju spiska. Ctrl čini da stanica naredi "pun bilo koji tovar", putna tačka naredi "non-stop" i depo naredi "servis". "Deli naredbe" ili Ctrl omogućava da vozilo deli naredbe sa drugim odabranim vozilom. Klikom na drugo vozilo kopiraju se njegove naredbe.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Dodavanje složene naredbe
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Prikazuje sva vozila koja dele ovaj red vožnje
@@ -3876,6 +3880,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Početak i kraj moraju biti u istoj liniji
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba kraja mosta moraju biti na čvrstom tlu
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... most je previše dugačak
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Most bi završio van okvira terena
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nije moguće ovde izgraditi tunel...
@@ -3975,6 +3980,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}vozilo n
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}vozilo koje takođe ima ovu naredbu ne može da ide na tu stanicu
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Lista naredbi se ne može deliti...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Deljenje naredbi se ne može prekinuti...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Lista naredbi se ne može kopirati...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... previše udaljeno od prethodne destinacije
 

@@ -3217,15 +3217,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Den aktu
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Löschen
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Lösche den markierten Auftrag
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Lösche alle Aufträge
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Gemeinsame Aufträge aufheben
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Gemeinsame Auftragliste aufheben. Ctrl+Klick löscht die Auftragliste
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Gemeinsame Auftragliste aufheben. Ctrl+Klick löscht zusätzlich die Auftragliste für dieses Fahrzeug
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Fahre zu
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Nächstes Depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Nächster Hangar
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
 STR_ORDER_SHARE                                                 :Gemeinsame Aufträge
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg halten, um für Stationen 'Vollladen einer Fracht', für Wegpunkte 'ohne Halt' und für Depots 'Wartung' auszuwählen. 'Gemeinsame Aufträge' erlauben ein Fahrzeug auszuwählen mit dem dieses die Aufträge teilt.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg halten, um für Stationen 'Vollladen einer Fracht', für Wegpunkte 'ohne Halt' und für Depots 'Wartung' auszuwählen. 'Gemeinsame Aufträge' erlauben ein Fahrzeug auszuwählen mit dem dieses die Aufträge teilt. Klicken auf ein Fahrzeug kopiert die Aufträge von diesem
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Erweiterten Auftrag einfügen
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle Fahrzeuge mit demselben Fahrplan anzeigen
@@ -3669,6 +3670,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Die Brü
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Anfang und Ende müssen auf einer Linie liegen
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... Brücke muss an beiden Seiten auf Land enden
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... Brücke zu lang
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Die Brücke würde außerhalb der Karte enden
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tunnel kann hier nicht gebaut werden...

@@ -3194,7 +3194,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Urnik
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Preklop na pogled urnikov
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Seznam navodil - klikni na ukaz, da ga izbereš. CTRL+klik prikaže postajo
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Seznam navodil - klikni na ukaz, da ga izbereš. CTRL+Klik premakne na destinacijo
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3258,12 +3258,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Preskoč
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Izbriši
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Zbriši izbran ukaz
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Izbriši vse ukaze
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Prenehaj deljenje
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Prenehaj z deljenjem ukazov. Ctrl+Klik dodatno izbriše vse ukaze tega vozila.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Pojdi do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Pojdi v najbližjo garažo
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Pojdi v najbližji hangar
 STR_ORDER_CONDITIONAL                                           :Pogojni preskok ukaza
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Vstavi nov ukaz pred izbranega ali pa ga dodaj na konec seznama. Ctrl naredi ukaze postaj 'napolni kakršenkoli tovor', ukaze točk poti 'non-stop' in ukaze garaž 'servis'
+STR_ORDER_SHARE                                                 :Deli ukaze
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Vstavi nov ukaz pred izbranega ali pa ga dodaj na konec seznama. Ctrl naredi ukaze postaj 'napolni kakršenkoli tovor', ukaze točk poti 'non-stop' in ukaze garaž 'servis'. 'Deli ukaze' ali Ctrl deli ukaze z drugim izbranim vozilom. Klik na vozilo kopira ukaze
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Vstavi napreden ukaz
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Prikaz vseh vozil, ki si delijo ta urnik
@@ -3707,13 +3711,14 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Začetek in konec morata biti na isti višini
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba priključka mostu morata biti na kopnem
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... predolg most
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Most bi se končal izven ozemlja
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tukaj ni mogoče zgraditi predora...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Lokacija neprimerna za vhod v predor
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Najprej moraš porušiti predor
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Obstoječi predor v napoto
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Predor se konča izven ozemlja
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Predor bi se končal izven ozemlja
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ni mogoče izkopati zaključka predora na drugi strani
 
 # Object related errors
@@ -3806,6 +3811,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vozi
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... vozilo, ki ima skupni ukaz, ne more do tiste postaje
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Ni mogoče deliti navodil...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Ni mogoče prenehati deljenja ukazov...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Ni mogoče skopirati urnika...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... predaleč od prejšnjega cilja
 

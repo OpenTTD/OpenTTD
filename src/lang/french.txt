@@ -3153,7 +3153,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horaire
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Basculer vers la vue horaire
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liste des ordres - Cliquer sur un ordre pour le sélectionner. Ctrl-clic pour déplacer la vue sur la station
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Liste d'ordres - cliquer sur un ordre pour le sélectionner. Ctrl-clic pour déplacer la vue sur la destination de l'ordre
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3217,15 +3217,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Sauter l
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Supprimer
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Supprime l'ordre sélectionné
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Supprimer tous les ordres
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Arrêter le partage
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Arrêter le partage des ordres. Ctrl-clic pour supprimer les ordres
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Arrêter le partage des ordres. Ctrl-clic pour supprimer tous les ordres de ce véhicule.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Aller à
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Aller au dépôt le plus proche
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Aller au hangar le plus proche
 STR_ORDER_CONDITIONAL                                           :Saut conditionnel d'ordre
 STR_ORDER_SHARE                                                 :Partager les ordres
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insérer un nouvel ordre avant l'ordre sélectionné, ou l'ajouter à la fin. Avec Ctrl, les ordres de station sont 'Chargement complet par un seul type', les ordres de point de contrôle sont 'sans-arrêt' et les ordres de dépôt sont 'entretien'. 'Partager les ordres' fait que ce véhicule partage ses ordres avec le véhicule sélectionné.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Insérer un nouvel ordre avant l'ordre sélectionné, ou l'ajouter à la fin. Avec Ctrl, les ordres de station sont 'Chargement complet par un seul type', les ordres de point de contrôle sont 'sans-arrêt' et les ordres de dépôt sont 'entretien'. 'Partager les ordres' ou Ctrl fait que ce véhicule partage ses ordres avec le véhicule sélectionné. Cliquer sur un véhicule copie les ordres de ce véhicule
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Insérer un ordre avancé
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Afficher tous les véhicules partageant ce programme
@@ -3669,6 +3670,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Le pont 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Le début et la fin doivent être alignés
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... les deux extrémités du pont doivent être sur la terre ferme
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... pont trop long
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Le pont finirait en dehors de la carte
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Impossible de construire un tunnel ici...

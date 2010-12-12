@@ -1217,6 +1217,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kısa (31-12-20
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Yeni bir oyun başlatırken zamanı duraklat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Oyun durakladığında izin verilenler: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :hiçbir hareket
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :inşa içermeyen tüm hareketler
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :yer şekillendirme hareketleri dışında tüm hareketler
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :tüm hareketler
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gelişmiş araç listesini kullan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Kapalı
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Kendi şirketim
@@ -1430,6 +1435,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Soğuk iklim
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropik iklim
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Oyun bahçesi
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Tarihi değiştir: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Yılı değiştir
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Üretim değerlerini değiştir: {ORANGE}{STRING}
 
 # Livery window
@@ -1693,6 +1699,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Oyun bil
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Şirket bilgisi aliniyor..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} -> önünde olan oyuncular
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}Şu ana kadar {BYTES} indirildi
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} indirildi
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Bağlantıyı kes
@@ -3210,11 +3217,14 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Şimdiki
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Sil
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Seçili talimatı sil
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Paylaşmaktan vazgeç
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Emir listesini paylaşmaktan vazgeç. Ctrl+Tık tüm emir listesini siler
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Git
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :En yakın gara git
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :En yakın hangara git
 STR_ORDER_CONDITIONAL                                           :Duruma göre dallan
+STR_ORDER_SHARE                                                 :Emirleri paylaştır
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Seçili emrin önüne ya da listenin sonuna yeni emir ekle. Ctrl; istasyon emirlerini 'bir kargo tipini tam yükle', yol imi emirlerini 'durmaksızın', garaj emirlerini 'bakıma gir' olarak değiştirir
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Gelişmiş talimat ekle
 
@@ -3457,6 +3467,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... sahi
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... alan başka bir şirkete ait
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}İsim daha önce kullanılmamış olmalı
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}yolda {1:STRING} var
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Oyun duraklatılmışken izin verilmiyor
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} belediyesi buna izin vermiyor
@@ -3658,6 +3669,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Köprü 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Başlangıç ve bitiş aynı çizgi üzerinde olmalı
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... köprünün her iki ucu da karada olmalı
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... köprü çok uzun
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Köprü haritanın dışında sonlanacaktı
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Buraya tünel yapılamaz...
@@ -3757,6 +3769,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ara�
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... bu emri paylaşan bir araç bu istasyona gidemiyor
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Talimat listesi paylasilamiyor...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Paylaşılan emir listesini durduramazsınız...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Talimat listesi kopyalanamiyor...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... önceki hedeften çok uzak
 

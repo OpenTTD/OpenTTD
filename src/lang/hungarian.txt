@@ -3216,7 +3216,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Menetrend
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Átkapcsolás menetrendi nézetre
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Menetrend - kattints egy célpontra a kijelöléséhez
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Menetrend - kattints egy célpontra a kijelöléséhez. Ctrl+Kattintással az utasítás helyszínére görget
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3252,7 +3252,7 @@ STR_ORDER_SERVICE                                               :{BLACK}Javítá
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mindig menj javítani
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Ha javításra szorul
 STR_ORDER_DROP_HALT_DEPOT                                       :Maradj ott
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Célpont kihagyása, ha javítás szükséges
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Utasítás kihagyása, ha javítás szükséges
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk a parancssorban
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Rakomány százaléka
@@ -3280,12 +3280,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Jelenleg
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Töröl
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}A kijelölt célpont törlése
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Összes utasítás törlése
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Megosztás vége
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Menetrend megosztásának befejezése. Ctrl+Kattintással törli a teljes menetrendet.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Új cél
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi járműtelepre
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Legközelebbi hangárba
 STR_ORDER_CONDITIONAL                                           :Feltételes ugrás
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Új célpont beillesztése a kijelölt elé vagy a lista végére. Ctrl+Kattintás állomásoknál 'bármiből teljes rakományra vár'-t, ellenőrző pontoknál 'Non-stop'-ot, járműtelepeknél 'Javításra menj' parancsot ad a célponthoz
+STR_ORDER_SHARE                                                 :Menetrend megosztása
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Új utasítás beillesztése a kijelölt utasítás elé vagy a lista végére. Ctrl+Kattintás állomásoknál 'bármiből teljes rakományra vár'-t, ellenőrző pontoknál 'Non-stop'-ot, járműtelepeknél 'Javításra menj' parancsot ad a célponthoz. 'Menetrend megosztása' esetén a jármű megosztja az utasításait a kiválasztott járművel.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Fejlett utasítás elhelyezése
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Megmutatja az összes járművet, amik megosztják ezt a menetrendet
@@ -3364,7 +3368,7 @@ STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Indulás
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Válaszd ki a menetrend kezdetének dátumát
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Idő megváltoztatása
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijelölt menetrend-sor végrehajtási idejét változtatja meg
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijelölt utasítás végrehajtási idejét változtatja meg
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Idő törlése
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}A kijelölt menetrendi sorhoz tartozó végrehajtási idő törlése
@@ -3729,6 +3733,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}A híd t
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}A kezdetének és a végének egy vonalban kell lennie
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... a híd mindkét végének szárazföldön kell lennie
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... a híd túl hosszú
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}A híd a térképen túl végződne
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nem áshatsz ide alagutat...
@@ -3828,6 +3833,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... a j�
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... egy jármű, amivel meg van osztva ez az utasítás, nem tud a megadott állomásra eljutni
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nem lehet megosztani a menetrendet...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nem lehet befejezni a menetrend megosztását...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nem lehet másolni a menetrendet...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... túl távol van az előző céltól
 

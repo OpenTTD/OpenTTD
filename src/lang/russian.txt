@@ -3400,12 +3400,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Пере
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Удалить
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Удалить выделенное задание
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Индивидуальный список
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Сделать общий список заданий индивидуальным. Ctrl+щелчок очистит список заданий.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Следовать
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Идти к ближайшему депо
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Идти к ближайшему ангару
 STR_ORDER_CONDITIONAL                                           :Условный переход к заданию
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставить новое задание перед выделенным, или в конец списка. Ctrl добавляет на станциях «полная погрузка любым грузом», на точках - «без остановки», на депо - «обслуживание».
+STR_ORDER_SHARE                                                 :Общий список заданий
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставить новое задание перед выделенным, или в конец списка. Ctrl добавляет на станциях «полная погрузка любым грузом», на точках - «без остановки», на депо - «обслуживание». «Общий список» создаст общий список заданий с тем т/с, на которое вы укажете.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Добавить расширенное задание
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Показать весь транспорт с общими заданиями
@@ -3849,6 +3852,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Слиш
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Начало и конец должны быть на одной линии
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... оба конца моста должны опираться на землю
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост слишком длинный
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Мост выходит за пределы карты
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Здесь невозможно построить туннель...
@@ -3948,6 +3952,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ТС
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ТС с общим заданием не может достигнуть этой станции
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Невозможно использовать общий список заданий
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Невозможно создать индивидуальный список заданий...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Невозможно скопировать список заданий
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... слишком далеко от предыдущей точки
 
