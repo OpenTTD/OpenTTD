@@ -1779,7 +1779,7 @@ void NWidgetViewport::Draw(const Window *w)
 {
 	if (this->disp_flags & ND_NO_TRANSPARENCY) {
 		TransparencyOptionBits to_backup = _transparency_opt;
-		_transparency_opt = 0; // Disable all transparency
+		_transparency_opt &= (1 << TO_SIGNS) | (1 << TO_LOADING); // Disable all transparency, except textual stuff
 		w->DrawViewport();
 		_transparency_opt = to_backup;
 	} else {
