@@ -650,46 +650,38 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 {
 	if (p1 >= MapSize()) return CMD_ERROR;
 
-	/* make sure sx,sy are smaller than ex,ey */
-	int ex = TileX(tile);
-	int ey = TileY(tile);
-	int sx = TileX(p1);
-	int sy = TileY(p1);
-	if (ex < sx) Swap(ex, sx);
-	if (ey < sy) Swap(ey, sy);
-
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 
-	for (int x = sx; x <= ex; ++x) {
-		for (int y = sy; y <= ey; ++y) {
-			CommandCost ret = DoCommand(TileXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
-			if (ret.Failed()) {
-				last_error = ret;
-				continue;
-			}
-
-			had_success = true;
-			if (flags & DC_EXEC) {
-				money -= ret.GetCost();
-				if (ret.GetCost() > 0 && money < 0) {
-					_additional_cash_required = ret.GetCost();
-					return cost;
-				}
-				DoCommand(TileXY(x, y), 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-
-				/* draw explosion animation... */
-				if ((x == sx || x == ex) && (y == sy || y == ey)) {
-					/* big explosion in each corner, or small explosion for single tiles */
-					CreateEffectVehicleAbove(x * TILE_SIZE + TILE_SIZE / 2, y * TILE_SIZE + TILE_SIZE / 2, 2,
-						sy == ey && sx == ex ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
-					);
-				}
-			}
-			cost.AddCost(ret);
+	TileArea ta(tile, p1);
+	TILE_AREA_LOOP(t, ta) {
+		CommandCost ret = DoCommand(t, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		if (ret.Failed()) {
+			last_error = ret;
+			continue;
 		}
+
+		had_success = true;
+		if (flags & DC_EXEC) {
+			money -= ret.GetCost();
+			if (ret.GetCost() > 0 && money < 0) {
+				_additional_cash_required = ret.GetCost();
+				return cost;
+			}
+			DoCommand(t, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+
+			/* draw explosion animation... */
+			TileIndex off = t - ta.tile;
+			if ((TileX(off) == 0 || TileX(off) == ta.w - 1U) && (TileY(off) == 0 || TileY(off) == ta.h - 1U)) {
+				/* big explosion in each corner, or small explosion for single tiles */
+				CreateEffectVehicleAbove(TileX(t) * TILE_SIZE + TILE_SIZE / 2, TileY(t) * TILE_SIZE + TILE_SIZE / 2, 2,
+					ta.w == 1 && ta.h == 1 ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
+				);
+			}
+		}
+		cost.AddCost(ret);
 	}
 
 	return had_success ? cost : last_error;
