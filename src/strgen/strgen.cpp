@@ -76,7 +76,7 @@ static LanguagePackHeader _lang; ///< Header information about a language.
 static uint16 _hash_head[HASH_SIZE];
 
 static byte _put_buf[4096];
-static int _put_pos;
+static uint _put_pos;
 static int _next_string_id;
 
 static uint32 _hash;
@@ -178,7 +178,7 @@ void NORETURN CDECL error(const char *s, ...)
 
 static void PutByte(byte c)
 {
-	if (_put_pos == lengthof(_put_buf)) error("Put buffer too small");
+	if (_put_pos >= lengthof(_put_buf)) error("Put buffer too small");
 	_put_buf[_put_pos++] = c;
 }
 
@@ -415,6 +415,7 @@ static uint ResolveCaseName(const char *str, uint len)
 {
 	/* First get a clean copy of only the case name, then resolve it. */
 	char case_str[CASE_GENDER_LEN];
+	len = min(lengthof(case_str) - 1, len);
 	memcpy(case_str, str, len);
 	case_str[len] = '\0';
 
@@ -1124,7 +1125,7 @@ static void WriteLangfile(const char *filename)
 
 				/* Write each case */
 				for (c = casep; c != NULL; c = c->next) {
-					int pos;
+					uint pos;
 
 					PutByte(c->caseidx);
 					/* Make some space for the 16-bit length */
