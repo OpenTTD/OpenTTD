@@ -159,7 +159,6 @@ Industry::~Industry()
 
 		/* Remove the farmland and convert it to regular tiles over time. */
 		TILE_AREA_LOOP(tile_cur, ta) {
-			tile_cur = TILE_MASK(tile_cur);
 			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
 					GetIndustryIndexOfField(tile_cur) == this->index) {
 				SetIndustryIndexOfField(tile_cur, INVALID_INDUSTRY);

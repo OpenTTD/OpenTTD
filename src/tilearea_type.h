@@ -60,4 +60,58 @@ struct TileArea {
 	}
 };
 
+/** Iterator to iterate over a tile area (rectangle) of the map. */
+class TileIterator {
+private:
+	TileIndex tile; ///< The current tile we are at.
+	int w;          ///< The width of the iterated area.
+	int x;          ///< The current 'x' position in the rectangle.
+	int y;          ///< The current 'y' position in the rectangle.
+
+public:
+	/**
+	 * Construct the iterator.
+	 * @param ta Area, i.e. begin point and width/height of to-be-iterated area.
+	 */
+	TileIterator(const TileArea &ta) : tile(ta.tile), w(ta.w), x(ta.w), y(ta.h)
+	{
+		if (ta.w == 0 || ta.h == 0) this->tile = INVALID_TILE;
+	}
+
+	/**
+	 * Get the tile we are currently at.
+	 * @return The tile we are at, or INVALID_TILE when we're done.
+	 */
+	FORCEINLINE operator TileIndex () const
+	{
+		return this->tile;
+	}
+
+	/**
+	 * Move ourselves to the next tile in the rectange on the map.
+	 */
+	FORCEINLINE TileIterator& operator ++()
+	{
+		assert(this->tile != INVALID_TILE);
+
+		if (--this->x > 0) {
+			this->tile++;
+		} else if (--this->y > 0) {
+			this->x = this->w;
+			this->tile += TileDiffXY(1, 1) - this->w;
+		} else {
+			this->tile = INVALID_TILE;
+		}
+		return *this;
+	}
+};
+
+/**
+ * A loop which iterates over the tiles of a TileArea.
+ * @param var The name of the variable which contains the current tile.
+ *            This variable will be allocated in this \c for of this loop.
+ * @param ta  The tile area to search over.
+ */
+#define TILE_AREA_LOOP(var, ta) for (TileIterator var(ta); var != INVALID_TILE; ++var)
+
 #endif /* TILEAREA_TYPE_H */
