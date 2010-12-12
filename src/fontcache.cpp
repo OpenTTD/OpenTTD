@@ -281,9 +281,8 @@ err3:
 err2:
 	SelectObject(dc, oldfont);
 	ReleaseDC(NULL, dc);
-err1:
 	DeleteObject(font);
-
+err1:
 	return ret_font_name == NULL ? WIDE_TO_MB((const TCHAR*)logfont->elfFullName) : ret_font_name;
 }
 
