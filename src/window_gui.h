@@ -792,7 +792,7 @@ enum TooltipCloseCondition {
 	TCC_HOVER,
 };
 
-void GuiShowTooltips(StringID str, uint paramcount = 0, const uint64 params[] = NULL, TooltipCloseCondition close_tooltip = TCC_HOVER);
+void GuiShowTooltips(Window *parent, StringID str, uint paramcount = 0, const uint64 params[] = NULL, TooltipCloseCondition close_tooltip = TCC_HOVER);
 
 /* widget.cpp */
 int GetWidgetFromPos(const Window *w, int x, int y);

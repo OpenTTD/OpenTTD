@@ -2058,7 +2058,7 @@ void UpdateTileSelection()
 static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_cond = TCC_LEFT_CLICK)
 {
 	if (!_settings_client.gui.measure_tooltip) return;
-	GuiShowTooltips(str, paramcount, params, close_cond);
+	GuiShowTooltips(FindWindowById(_thd.window_class, _thd.window_number), str, paramcount, params, close_cond);
 }
 
 /** highlighting tiles while only going over them with the mouse */

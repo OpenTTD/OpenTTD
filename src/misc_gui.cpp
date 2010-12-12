@@ -822,8 +822,9 @@ struct TooltipsWindow : public Window
 	uint64 params[5];                 ///< The string parameters.
 	TooltipCloseCondition close_cond; ///< Condition for closing the window.
 
-	TooltipsWindow(StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip) : Window()
+	TooltipsWindow(Window *parent, StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip) : Window()
 	{
+		this->parent = parent;
 		this->string_id = str;
 		assert_compile(sizeof(this->params[0]) == sizeof(params[0]));
 		assert(paramcount <= lengthof(this->params));
@@ -901,18 +902,19 @@ struct TooltipsWindow : public Window
 
 /**
  * Shows a tooltip
+ * @param parent The window this tooltip is related to.
  * @param str String to be displayed
  * @param paramcount number of params to deal with
  * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
  * @param use_left_mouse_button close the tooltip when the left (true) or right (false) mousebutton is released
  */
-void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip)
+void GuiShowTooltips(Window *parent, StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_tooltip)
 {
 	DeleteWindowById(WC_TOOLTIPS, 0);
 
 	if (str == STR_NULL) return;
 
-	new TooltipsWindow(str, paramcount, params, close_tooltip);
+	new TooltipsWindow(parent, str, paramcount, params, close_tooltip);
 }
 
 /* Delete a character at the caret position in a text buf.

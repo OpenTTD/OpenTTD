@@ -406,7 +406,7 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 		if (w->OnRightClick(pt, wid->index)) return;
 	}
 
-	if (_settings_client.gui.hover_delay == 0 && wid->tool_tip != 0) GuiShowTooltips(wid->tool_tip, 0, NULL, TCC_RIGHT_CLICK);
+	if (_settings_client.gui.hover_delay == 0 && wid->tool_tip != 0) GuiShowTooltips(w, wid->tool_tip, 0, NULL, TCC_RIGHT_CLICK);
 }
 
 /**
@@ -424,7 +424,7 @@ static void DispatchHoverEvent(Window *w, int x, int y)
 
 	/* Show the tooltip if there is any */
 	if (wid->tool_tip != 0) {
-		GuiShowTooltips(wid->tool_tip);
+		GuiShowTooltips(w, wid->tool_tip);
 		return;
 	}
 
