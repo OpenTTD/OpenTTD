@@ -706,7 +706,7 @@ private:
 		if (!this->vehicle->IsOrderListShared() || this->selected_order != this->vehicle->GetNumOrders()) return;
 		/* If Ctrl is pressed, delete the order list as if we clicked the 'Delete' button. */
 		if (_ctrl_pressed) {
-			this->OrderClick_Delete(i);
+			this->OrderClick_Delete(0);
 			return;
 		}
 
@@ -879,6 +879,15 @@ public:
 			delete_sel->SetDisplayedPlane(DP_BOTTOM_MIDDLE_DELETE);
 			this->SetWidgetDisabledState(ORDER_WIDGET_DELETE,
 				(uint)this->vehicle->GetNumOrders() + ((shared_orders || this->vehicle->GetNumOrders() != 0) ? 1 : 0) <= (uint)this->selected_order);
+
+			/* Set the tooltip of the 'delete' button depending on whether the
+			 * 'End of Orders' order or a regular order is selected. */
+			NWidgetCore *nwi = this->GetWidget<NWidgetCore>(ORDER_WIDGET_DELETE);
+			if (this->selected_order == this->vehicle->GetNumOrders()) {
+				nwi->SetDataTip(STR_ORDERS_DELETE_BUTTON, STR_ORDERS_DELETE_ALL_TOOLTIP);
+			} else {
+				nwi->SetDataTip(STR_ORDERS_DELETE_BUTTON, STR_ORDERS_DELETE_TOOLTIP);
+			}
 		}
 
 		/* First row. */
