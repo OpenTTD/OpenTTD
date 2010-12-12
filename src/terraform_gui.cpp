@@ -396,9 +396,6 @@ static byte _terraform_size = 1;
  */
 static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 {
-	int sizex, sizey;
-	uint h;
-
 	if (_terraform_size == 1) {
 		StringID msg =
 			mode ? STR_ERROR_CAN_T_RAISE_LAND_HERE : STR_ERROR_CAN_T_LOWER_LAND_HERE;
@@ -406,29 +403,29 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 		DoCommandP(tile, SLOPE_N, (uint32)mode, CMD_TERRAFORM_LAND | CMD_MSG(msg), CcTerraform);
 	} else {
 		assert(_terraform_size != 0);
-		/* check out for map overflows */
-		sizex = min(MapSizeX() - TileX(tile), _terraform_size);
-		sizey = min(MapSizeY() - TileY(tile), _terraform_size);
+		TileArea ta(tile, _terraform_size, _terraform_size);
+		ta.ClampToMap();
 
-		if (sizex == 0 || sizey == 0) return;
+		if (ta.w == 0 || ta.h == 0) return;
 
 		SndPlayTileFx(SND_1F_SPLAT, tile);
 
+		uint h;
 		if (mode != 0) {
 			/* Raise land */
-			h = 15; // XXX - max height
-			TILE_LOOP(tile2, sizex, sizey, tile) {
+			h = MAX_TILE_HEIGHT;
+			TILE_AREA_LOOP(tile2, ta) {
 				h = min(h, TileHeight(tile2));
 			}
 		} else {
 			/* Lower land */
 			h = 0;
-			TILE_LOOP(tile2, sizex, sizey, tile) {
+			TILE_AREA_LOOP(tile2, ta) {
 				h = max(h, TileHeight(tile2));
 			}
 		}
 
-		TILE_LOOP(tile2, sizex, sizey, tile) {
+		TILE_AREA_LOOP(tile2, ta) {
 			if (TileHeight(tile2) == h) {
 				DoCommandP(tile2, SLOPE_N, (uint32)mode, CMD_TERRAFORM_LAND);
 			}
