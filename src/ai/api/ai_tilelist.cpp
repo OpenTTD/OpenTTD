@@ -63,7 +63,8 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
-	TILE_LOOP(cur_tile, i->location.w + radius * 2, i->location.h + radius * 2, i->location.tile - ::TileDiffXY(radius, radius)) {
+	TileArea ta(i->location.tile - ::TileDiffXY(radius, radius), i->location.w + radius * 2, i->location.h + radius * 2);
+	TILE_AREA_LOOP(cur_tile, ta) {
 		if (!::IsValidTile(cur_tile)) continue;
 		/* Exclude all tiles that belong to this industry */
 		if (::IsTileType(cur_tile, MP_INDUSTRY) && ::GetIndustryIndex(cur_tile) == industry_id) continue;
@@ -98,7 +99,8 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 
 	if (!_settings_game.station.modified_catchment) radius = CA_UNMODIFIED;
 
-	TILE_LOOP(cur_tile, i->location.w + radius * 2, i->location.h + radius * 2, i->location.tile - ::TileDiffXY(radius, radius)) {
+	TileArea ta(i->location.tile - ::TileDiffXY(radius, radius), i->location.w + radius * 2, i->location.h + radius * 2);
+	TILE_AREA_LOOP(cur_tile, ta) {
 		if (!::IsValidTile(cur_tile)) continue;
 		/* Exclude all tiles that belong to this industry */
 		if (::IsTileType(cur_tile, MP_INDUSTRY) && ::GetIndustryIndex(cur_tile) == industry_id) continue;
@@ -122,7 +124,8 @@ AITileList_StationType::AITileList_StationType(StationID station_id, AIStation::
 	if ((station_type & AIStation::STATION_AIRPORT) != 0)    station_type_value |= (1 << ::STATION_AIRPORT) | (1 << ::STATION_OILRIG);
 	if ((station_type & AIStation::STATION_DOCK) != 0)       station_type_value |= (1 << ::STATION_DOCK)    | (1 << ::STATION_OILRIG);
 
-	TILE_LOOP(cur_tile, rect->right - rect->left + 1, rect->bottom - rect->top + 1, ::TileXY(rect->left, rect->top)) {
+	TileArea ta(::TileXY(rect->left, rect->top), rect->right - rect->left + 1, rect->bottom - rect->top + 1);
+	TILE_AREA_LOOP(cur_tile, ta) {
 		if (!::IsTileType(cur_tile, MP_STATION)) continue;
 		if (::GetStationIndex(cur_tile) != station_id) continue;
 		if (!HasBit(station_type_value, ::GetStationType(cur_tile))) continue;
