@@ -563,18 +563,15 @@ static void AnimateTile_Object(TileIndex tile)
 	AnimateNewObjectTile(tile);
 }
 
-/* checks, if a radio tower is within a 9x9 tile square around tile */
-static bool IsRadioTowerNearby(TileIndex tile)
+/**
+ * Helper function for \c CircularTileSearch.
+ * @param tile The tile to check.
+ * @param user Ignored.
+ * @return True iff the tile has a radio tower.
+ */
+static bool HasTransmitter(TileIndex tile, void *user)
 {
-	TileIndex tile_s = tile - TileDiffXY(min(TileX(tile), 4U), min(TileY(tile), 4U));
-	uint w = min(TileX(tile), 4U) + 1 + min(MapMaxX() - TileX(tile), 4U);
-	uint h = min(TileY(tile), 4U) + 1 + min(MapMaxY() - TileY(tile), 4U);
-
-	TILE_LOOP(tile, w, h, tile_s) {
-		if (IsTransmitterTile(tile)) return true;
-	}
-
-	return false;
+	return IsTransmitterTile(tile);
 }
 
 void GenerateObjects()
@@ -608,7 +605,8 @@ void GenerateObjects()
 
 		uint h;
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4 && !IsBridgeAbove(tile)) {
-			if (IsRadioTowerNearby(tile)) continue;
+			TileIndex t = tile;
+			if (CircularTileSearch(&t, 9, HasTransmitter, NULL)) continue;
 
 			BuildObject(OBJECT_TRANSMITTER, tile);
 			IncreaseGeneratingWorldProgress(GWP_OBJECT);
