@@ -154,8 +154,11 @@ Industry::~Industry()
 	}
 
 	if (GetIndustrySpec(this->type)->behaviour & INDUSTRYBEH_PLANT_FIELDS) {
+		TileArea ta(this->location.tile - TileDiffXY(min(TileX(this->location.tile), 21), min(TileY(this->location.tile), 21)), 42, 42);
+		ta.ClampToMap();
+
 		/* Remove the farmland and convert it to regular tiles over time. */
-		TILE_LOOP(tile_cur, 42, 42, this->location.tile - TileDiffXY(21, 21)) {
+		TILE_AREA_LOOP(tile_cur, ta) {
 			tile_cur = TILE_MASK(tile_cur);
 			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
 					GetIndustryIndexOfField(tile_cur) == this->index) {
@@ -961,18 +964,18 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	uint size_x = GB(r, 0, 8);
 	uint size_y = GB(r, 8, 8);
 
-	/* offset tile to match size */
-	tile -= TileDiffXY(size_x / 2, size_y / 2);
+	TileArea ta(tile - TileDiffXY(min(TileX(tile), size_x / 2), min(TileY(tile), size_y / 2)), size_x, size_y);
+	ta.ClampToMap();
 
-	if (TileX(tile) + size_x >= MapSizeX() || TileY(tile) + size_y >= MapSizeY()) return;
+	if (ta.w == 0 || ta.h == 0) return;
 
 	/* check the amount of bad tiles */
-	uint count = 0;
-	TILE_LOOP(cur_tile, size_x, size_y, tile) {
+	int count = 0;
+	TILE_AREA_LOOP(cur_tile, ta) {
 		assert(cur_tile < MapSize());
 		count += IsBadFarmFieldTile(cur_tile);
 	}
-	if (count * 2 >= size_x * size_y) return;
+	if (count * 2 >= ta.w * ta.h) return;
 
 	/* determine type of field */
 	r = Random();
@@ -980,7 +983,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	uint field_type = GB(r, 8, 8) * 9 >> 8;
 
 	/* make field */
-	TILE_LOOP(cur_tile, size_x, size_y, tile) {
+	TILE_AREA_LOOP(cur_tile, ta) {
 		assert(cur_tile < MapSize());
 		if (!IsBadFarmFieldTile2(cur_tile)) {
 			MakeField(cur_tile, field_type, industry);
@@ -994,10 +997,10 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 		type = _plantfarmfield_type[Random() & 0xF];
 	}
 
-	SetupFarmFieldFence(tile - TileDiffXY(1, 0), size_y, type, AXIS_Y);
-	SetupFarmFieldFence(tile - TileDiffXY(0, 1), size_x, type, AXIS_X);
-	SetupFarmFieldFence(tile + TileDiffXY(size_x - 1, 0), size_y, type, AXIS_Y);
-	SetupFarmFieldFence(tile + TileDiffXY(0, size_y - 1), size_x, type, AXIS_X);
+	SetupFarmFieldFence(ta.tile - TileDiffXY(1, 0), ta.h, type, AXIS_Y);
+	SetupFarmFieldFence(ta.tile - TileDiffXY(0, 1), ta.w, type, AXIS_X);
+	SetupFarmFieldFence(ta.tile + TileDiffXY(ta.w - 1, 0), ta.h, type, AXIS_Y);
+	SetupFarmFieldFence(ta.tile + TileDiffXY(0, ta.h - 1), ta.w, type, AXIS_X);
 }
 
 void PlantRandomFarmField(const Industry *i)
@@ -1410,14 +1413,11 @@ static CommandCost CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town
 
 static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int internal)
 {
-	int size_x = 2;
-	int size_y = 2;
-
 	/* Check if we don't leave the map */
 	if (TileX(tile) == 0 || TileY(tile) == 0 || GetTileType(tile) == MP_VOID) return false;
 
-	tile += TileDiffXY(-1, -1);
-	TILE_LOOP(tile_walk, size_x, size_y, tile) {
+	TileArea ta(tile - TileDiffXY(1, 1), 2, 2);
+	TILE_AREA_LOOP(tile_walk, ta) {
 		uint curh = TileHeight(tile_walk);
 		/* Is the tile clear? */
 		if ((GetTileType(tile_walk) != MP_CLEAR) && (GetTileType(tile_walk) != MP_TREES)) return false;
@@ -1458,22 +1458,20 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 	/* Remember level height */
 	uint h = TileHeight(tile);
 
-	if (TileX(tile) <= 1 || TileY(tile) <= 1) return false;
+	if (TileX(tile) <= _settings_game.construction.industry_platform + 1U || TileY(tile) <= _settings_game.construction.industry_platform + 1U) return false;
 	/* Check that all tiles in area and surrounding are clear
 	 * this determines that there are no obstructing items */
 
-	TileIndex cur_tile = tile + TileDiffXY(-_settings_game.construction.industry_platform, -_settings_game.construction.industry_platform);
-	uint size_x = max_x + 2 + 2 * _settings_game.construction.industry_platform;
-	uint size_y = max_y + 2 + 2 * _settings_game.construction.industry_platform;
+	TileArea ta(tile + TileDiffXY(-_settings_game.construction.industry_platform, -_settings_game.construction.industry_platform),
+			max_x + 2 + 2 * _settings_game.construction.industry_platform, max_y + 2 + 2 * _settings_game.construction.industry_platform);
 
-	/* Check if we don't leave the map */
-	if (TileX(cur_tile) + size_x >= MapMaxX() || TileY(cur_tile) + size_y >= MapMaxY()) return false;
+	if (TileX(ta.tile) + ta.w >= MapMaxX() || TileY(ta.tile) + ta.h >= MapMaxY()) return false;
 
 	/* _current_company is OWNER_NONE for randomly generated industries and in editor, or the company who funded or prospected the industry.
 	 * Perform terraforming as OWNER_TOWN to disable autoslope and town ratings. */
 	Backup<CompanyByte> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 
-	TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
+	TILE_AREA_LOOP(tile_walk, ta) {
 		uint curh = TileHeight(tile_walk);
 		if (curh != h) {
 			/* This tile needs terraforming. Check if we can do that without
@@ -1493,7 +1491,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, DoCommandFlag flags,
 
 	if (flags & DC_EXEC) {
 		/* Terraform the land under the industry */
-		TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
+		TILE_AREA_LOOP(tile_walk, ta) {
 			uint curh = TileHeight(tile_walk);
 			while (curh != h) {
 				/* We give the terraforming for free here, because we can't calculate
