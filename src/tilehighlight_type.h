@@ -43,34 +43,35 @@ enum HighLightStyle {
 DECLARE_ENUM_AS_BIT_SET(HighLightStyle)
 
 
+/** Metadata about the current highlighting. */
 struct TileHighlightData {
-	Point size;
-	Point outersize;
-	Point pos;
-	Point offs;
+	Point pos;           ///< Location, in tile "units", of the northern tile of the selected area.
+	Point size;          ///< Size, in tile "units", of the white/red selection area.
+	Point offs;          ///< Offset, in tile "units", for the blue coverage area from the selected area's northern tile.
+	Point outersize;     ///< Size, in tile "units", of the blue coverage area excluding the side of the selected area.
 
-	Point new_pos;
-	Point new_size;
-	Point new_outersize;
+	Point new_pos;       ///< New value for \a pos; used to determine whether to redraw the selection.
+	Point new_size;      ///< New value for \a size; used to determine whether to redraw the selection.
+	Point new_outersize; ///< New value for \a outersize; used to determine whether to redraw the selection.
+	byte dirty;          ///< Whether the build station window needs to redraw due to the changed selection.
 
-	Point selend, selstart;
+	Point selstart;      ///< The location where the dragging started.
+	Point selend;        ///< The location where the drag currently ends.
+	byte sizelimit;      ///< Whether the selection is limited in length, and what the maximum length is.
 
-	byte dirty;
-	byte sizelimit;
+	HighLightStyle drawstyle;      ///< Lower bits 0-3 are reserved for detailed highlight information.
+	HighLightStyle new_drawstyle;  ///< New value for \a drawstyle; used to determine whether to redraw the selection.
+	HighLightStyle next_drawstyle; ///< Queued, but not yet drawn style.
 
-	HighLightStyle drawstyle;      // lower bits 0-3 are reserved for detailed highlight information information
-	HighLightStyle new_drawstyle;  // only used in UpdateTileSelection() to as a buffer to compare if there was a change between old and new
-	HighLightStyle next_drawstyle; // queued, but not yet drawn style
+	HighLightStyle place_mode;     ///< Method which is used to place the selection.
+	WindowClass window_class;      ///< The \c WindowClass of the window that is responsible for the selection mode.
+	WindowNumber window_number;    ///< The \c WindowNumber of the window that is responsible for the selection mode.
 
-	HighLightStyle place_mode;
-	bool make_square_red;
-	WindowClass window_class;
-	WindowNumber window_number;
+	bool make_square_red;          ///< Whether to give a tile a red selection.
+	TileIndex redsq;               ///< The tile that has to get a red selection.
 
-	ViewportPlaceMethod select_method;
-	ViewportDragDropSelectionProcess select_proc;
-
-	TileIndex redsq;
+	ViewportPlaceMethod select_method;            ///< The method which governs how tiles are selected.
+	ViewportDragDropSelectionProcess select_proc; ///< The procedure that has to be called when the selection is done.
 };
 
 #endif /* TILEHIGHLIGHT_TYPE_H */
