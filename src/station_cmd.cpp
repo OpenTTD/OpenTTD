@@ -84,8 +84,12 @@ bool IsHangar(TileIndex t)
 template <class T>
 CommandCost GetStationAround(TileArea ta, StationID closest_station, T **st)
 {
+	ta.tile -= TileDiffXY(1, 1);
+	ta.w    += 2;
+	ta.h    += 2;
+
 	/* check around to see if there's any stations there */
-	TILE_LOOP(tile_cur, ta.w + 2, ta.h + 2, ta.tile - TileDiffXY(1, 1)) {
+	TILE_AREA_LOOP(tile_cur, ta) {
 		if (IsTileType(tile_cur, MP_STATION)) {
 			StationID t = GetStationIndex(tile_cur);
 
@@ -940,7 +944,7 @@ CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis a
 	} else {
 		/* do not allow modifying non-uniform stations,
 		 * the uniform-stations code wouldn't handle it well */
-		TILE_LOOP(t, cur_ta.w, cur_ta.h, cur_ta.tile) {
+		TILE_AREA_LOOP(t, cur_ta) {
 			if (!st->TileBelongsToRailStation(t)) { // there may be adjoined station
 				return_cmd_error(STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED);
 			}
