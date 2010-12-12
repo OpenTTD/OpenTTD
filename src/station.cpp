@@ -428,11 +428,8 @@ CommandCost StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRect
  */
 /* static */ bool StationRect::ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a)
 {
-	TileIndex top_left = TileXY(left_a, top_a);
-	int width = right_a - left_a + 1;
-	int height = bottom_a - top_a + 1;
-
-	TILE_LOOP(tile, width, height, top_left) {
+	TileArea ta(TileXY(left_a, top_a), TileXY(right_a, bottom_a));
+	TILE_AREA_LOOP(tile, ta) {
 		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st_id) return true;
 	}
 
