@@ -3248,7 +3248,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Vozni red
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Promijeni na pogled voznog reda
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Popis naredbi - klikni na naredbu kako bi ju označio. CTRL + klik klizi na postaju
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista naredbi - klikni na naredbu kako bi je označio. Ctrl+Klik klizi na odredište naredbe
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3317,7 +3317,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idi do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idi do najbližeg spremišta
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Idi do najbližeg hangara
 STR_ORDER_CONDITIONAL                                           :Uvjetovani skok na naredbu
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Umetni novu naredbu prije odabrane naredbe, ili dodaj na kraj liste. Ctrl će zadati naredbe za postaju 'puni ukrcaj bilo kojeg tereta', za čvorište 'neprekidno' i za spremište 'servisiraj'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Umetni novu naredbu prije označene naredbe, ili dodaj na kraj liste. Ctrl određuje naredbe stanice 'napuni do kraja bilo koji teret', naredbe prolazni točki 'non-stop', a naredbe depoa 'servisiraj'. 'Dijeli naredbe' ili Ctrl dozvoljava da ovo vozilo dijeli naredbe sa odabranim vozilom. Klik na vozilo kopira naredbe tog vozila.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Ubaci naprednu naredbu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaži sva vozila koja dijele ovaj raspored.

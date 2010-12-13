@@ -237,7 +237,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Cliquer 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bascule entre grande et petite fenêtre
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barre de défilement - Défile la liste de bas en haut
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barre de défilement - Défile la liste de gauche à droite
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Démolir les constructions sur un carré de terrain
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Démolir les constructions sur un carré de terrain. Ctrl pour sélectionner en diagonale
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Défaut
@@ -2070,9 +2070,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Bruit g�
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Manipulation du paysage
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abaisser le terrain
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Élever le terrain
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Niveler le terrain
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abaisser le terrain. Glisser abaisse le premier coin sélectionné et nivelle la zone sélectionnée à cette nouvelle hauteur. Ctrl pour sélectionner en diagonale
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Élever le terrain. Glisser élève le premier coin sélectionné et nivelle la zone sélectionnée à cette nouvelle hauteur. Ctrl pour sélectionner en diagonale
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Niveler le terrain. Ctrl pour sélectionner en diagonale
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acheter le terrain pour une utilisation ultérieure
 
 # Object construction window
@@ -2887,7 +2887,7 @@ STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aéronef
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Glisser le véhicule ici pour le vendre
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Glisser un véhicule jusqu'ici pour le vendre
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Glisse le navire jusqu'ici pour le vendre
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Glisser le navire jusqu'ici pour le vendre
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Glisser l'aéronef jusqu'ici ici pour le vendre
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Faire glisser la locomotive ici pour vendre tout le train

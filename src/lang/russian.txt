@@ -3336,7 +3336,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Расписание
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Просмотр расписания
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Показ списка заданий - щёлкните для выделения. Если зажать Ctrl - обзор станции.
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Список заданий - щёлкните задание для выделения. Ctrl+щелчок - обзор станции назначения.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3400,6 +3400,7 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Пере
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Удалить
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Удалить выделенное задание
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Удалить все задания
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Индивидуальный список
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Сделать общий список заданий индивидуальным. Ctrl+щелчок очистит список заданий.
 

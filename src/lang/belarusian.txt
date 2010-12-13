@@ -3509,7 +3509,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Расклад
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Прагляд раскладу руху
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Паказ сьпісу заданьняў - пстрыкніце для вылучэньня. Калі заціснуць Ctrl - агляд станцыі.
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Сьпіс заданьняў - пстрыкніце заданьне для вылучэньня. Ctrl+пстрычка - агляд станцыі прызначэння.
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3573,12 +3573,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Пера
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Выдалiць
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Выдаліць вылучанае заданьне
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Выдалiць усе заданьнi
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Індывідуальны сьпіс
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Зрабіць агульны сьпіс заданьняў індывідуальным. Ctrl+пстрычка ачысьціць сьпіс заданьняў.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Iсьцi
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ісьці да бліжэйшага дэпо
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ісьці да бліжэйшага ангара
 STR_ORDER_CONDITIONAL                                           :Умоўны пераход да заданьня
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Уставіць новае заданьне перад вылучаным, або ў канец сьпісу. Ctrl дадае на станцыях «поўная пагрузка любым грузам», на пунктах шляху - «без прыпынку», на дэпо - «абслугоўваньне».
+STR_ORDER_SHARE                                                 :Агульныя заданьнi
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Уставіць новае заданьне перад вылучаным, або ў канец сьпісу. Ctrl дадае на станцыях «поўная пагрузка любым грузам», на пунктах шляху - «без прыпынку», на дэпо - «абслугоўваньне». «Агульныя заданьнi» або Ctrl дазваляюць гэтаму транспарту мець агульныя заданьнi з вылучаным транспартам. Пстрычка па транспарце капiруе заданьнi гэтага транспарту.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Дадаць пашыранае заданьне
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Паказаць ўвесь транспарт з агульнымі заданьнямі
@@ -4022,6 +4026,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Зана
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Пачатак і канец павінны быць на адной лініі
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... абодва канца моста павінны абапірацца на зямлю
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... мост занадта доўгі
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Мост выходзіць за межы мапы
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Тут немагчыма пабудаваць тунэль...
@@ -4121,6 +4126,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ТС
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ТС з агульным заданьнем ня можа дасягнуць гэтай станцыі
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Немагчыма выкарыстоўваць агульны сьпіс заданьняў
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Немагчыма стварыць індывідуальны сьпіс заданьняў...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Немагчыма скапіяаваць сьпіс заданьняў
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... занадта далёка ад папярэдняй кропкі
 

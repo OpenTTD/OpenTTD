@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Napsauta
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Suurenna/pienennä ikkuna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys ylös/alas
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Vierityspalkki - luettelon vieritys vasemmalle/oikealle.
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia, puita, jne.
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tuhoa rakennuksia jne. ruudulta. Ctrl valitsee alueen vinottain
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Oletus
@@ -2069,9 +2069,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Aiheutet
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Maastonmuokkaus
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Laske maanpintaa.
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nosta maanpintaa.
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Tasoita maata
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Laske ruudun kulmaa. Vetäminen laskee ensimmäistä valittua kulmaa ja tasoittaa valitun alueen kulman korkeudelle. Ctrl valitsee alueen vinottain
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Nosta ruudun kulmaa. Vetäminen nostaa ensimmäistä valittua kulmaa ja tasoittaa valitun alueen kulman korkeudelle. Ctrl valitsee alueen vinottain
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Tasoita maata ensimmäisen valitun kulman korkeudelle. Ctrl valitsee alueen vinottain
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Osta maata tulevaa käyttöä varten.
 
 # Object construction window
@@ -3152,7 +3152,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Aikataulu
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Näytä aikataulu
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Aikataulu - napsauta määräystä korostaaksesi sen. Ctrl+Klik näyttää aseman
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Aikataulu - napsauta määräystä korostaaksesi sen. Ctrl+Klik siirtää näkymän kohteeseen
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3216,15 +3216,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Ohita ny
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Poista
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Poista korostettu määräys.
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Poista kaikki määräykset
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Lopeta jakaminen
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Lopeta määräysten jakaminen. Ctrl+Klik poistaa kaikki määräykset
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Lopeta määräysten jakaminen. Ctrl+Klik poistaa lisäksi kaikki tämän kulkuneuvon määräykset
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mene
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mene lähimmälle varikolle
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimmälle varikolle
 STR_ORDER_CONDITIONAL                                           :Ehdollinen hyppymääräys
 STR_ORDER_SHARE                                                 :Jaa määräykset
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uusi käsky ennen valittua, tai lisää listan viimeiseksi. Ctrl tekee asemakäskyistä 'lastaa täyteen kaikki rahti', reittipistekäskyistä 'non-stop' ja veturitallikäskyistä 'huolto'. 'Jaa määräykset' jakaa määräykset valitun kulkuneuvon kanssa..
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uusi käsky ennen valittua, tai lisää listan viimeiseksi. Ctrl tekee asemakäskyistä 'lastaa täyteen kaikki rahti', reittipistekäskyistä 'non-stop' ja veturitallikäskyistä 'huolto'. 'Jaa määräykset' jakaa määräykset valitun kulkuneuvon kanssa. Kulkuneuvon klikkaaminen kopioi määräykset siitä kulkuneuvosta
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Lisää kehittynyt määräys
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä kaikki ajoneuvot, joilla on sama aikataulu

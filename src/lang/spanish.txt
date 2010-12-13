@@ -237,7 +237,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Pulse y 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Cambiar entre tamaño de ventana grande/pequeño
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de scroll - mueve la lista arriba/abajo
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de scroll - mueve la lista izquierda/derecha
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demoler edificios, etc. en un bloque de terreno
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demoler edificios, etc. en un área de terreno. Ctrl permite seleccionar un área diagonalmente
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Por defecto
@@ -2070,9 +2070,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Ruido ge
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Paisaje
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Bajar una esquina del terreno
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Subir una esquina del terreno
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar terreno
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Bajar una esquina del terreno. Arrastrar reduce la esquina seleccionada y nivela el resto del terreno seleccionado a dicha altura. Ctrl permite seleccionar un área diagonalmente
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Subir una esquina del terreno. Arrastrar eleva la esquina seleccionada y nivela el resto del terreno seleccionado a dicha altura. Ctrl permite seleccionar un área diagonalmente
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivela un área de terreno a la altura de la primera esquina seleccionada. Ctrl permite seleccionar un área diagonalmente
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar tierra para usos futuros
 
 # Object construction window
@@ -3153,7 +3153,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horarios
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Cambiar a la vista de horarios
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de órdenes - Click en orden para resaltarla. Ctrl+Click para ir a la estación de la orden
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de órdenes - Click en una orden para resaltarla. Ctrl+Click para ir a la estación de la orden
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3217,15 +3217,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Saltar o
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Borrar
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Borrar orden resaltada
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Borrar todas las órdenes
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Parar de compartir
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Parar de compartir la lista de órdenes. Ctrl+Click borra la lista de órdenes completa
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Parar de compartir la lista de órdenes. Adicionalmente, Ctrl+Click borra la lista de órdenes completa
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ir a
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir al depósito más cercano
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir al hangar más cercano
 STR_ORDER_CONDITIONAL                                           :Salto de orden condicional
 STR_ORDER_SHARE                                                 :Compartir órdenes
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista. Ctrl sobre estaciones ordena 'Carga completa cualquier carga', sobre puntos de ruta ordena 'sin paradas' y sobre depósitos ordena 'mantenimiento'. Compartir órdenes permite a este vehículo compartir órdenes con el vehículo seleccionado.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista. Ctrl sobre estaciones ordena 'Carga completa cualquier carga', sobre puntos de ruta ordena 'sin paradas' y sobre depósitos ordena 'mantenimiento'. Ctrl o Compartir órdenes permite a este vehículo compartir órdenes con el vehículo seleccionado. Click sobre un vehículo copia las órdenes
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Introducir una orden avanzada
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Ver todos los vehículos con el mismo calendario
@@ -3669,13 +3670,14 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}El puent
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Comienzo y final deben estar en línea
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... los dos extremos de un puente han de estar sobre tierra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... puente demasiado largo
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}El puente terminaría fuera del mapa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}No se puede construir túnel aquí...
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Lugar inapropiado para entrada de túnel
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Primero debe demolerse el túnel
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Otro túnel en el camino
-STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}El túnel acabaría fuera del mapa
+STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}El túnel terminaría fuera del mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}No se puede excavar en la tierra al otro lado del túnel
 
 # Object related errors

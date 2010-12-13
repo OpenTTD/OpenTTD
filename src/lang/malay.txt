@@ -165,7 +165,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} penumpang
+STR_PASSENGERS                                                  :{COMMA} penumpang{P "" s}
 STR_BAGS                                                        :{COMMA} beg
 STR_TONS                                                        :{COMMA} tan
 STR_LITERS                                                      :{COMMA} liter
@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klik dan
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tukar di antara tetingkap bersaiz besar/kecil
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - gerakkan senarai ke atas/bawah
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - gerakkan senarai ke kiri/kanan
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Roboh atau musnahkan bangunan dan sebagainya di atas satu petak tanah
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Musnahkan bangunan dll. di atas satu petak tanah. Ctrl memilih kawasan secara diagonal
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Lazim
@@ -2038,7 +2038,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Kebising
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Lanskap
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rendahkan hujung tanah
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Meninggikan hujung tanah
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ratakan tanah
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ratakan tanah ke tinggi kawasan pertama dipilih. Ctrl memilih kawasan secara diagonal
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tanah untuk kegunaan masa hadapan
 
 # Object construction window
@@ -2436,7 +2436,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pembacaan meleb
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Amaran!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda akan melakukan perubahan kepada permainan yang sedang berjalan. Ini boleh menyebabkan crash OpenTTD.{}Pastikah anda ingin lakukan tersebut?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda akan melakukan perubahan kepada permainan yang sedang berjalan. Ini boleh merosakkan OpenTTD atau keadaan permainan. TJangan membuat laporan pepijat tentang isu ini.{}Adakah anda pasti tentang ini?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tidak boleh menambah fail: GRF ID berduplikat
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fail berpadanan tidak dijumpai (GRF yang secocok telah dimuat)

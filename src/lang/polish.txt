@@ -538,7 +538,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}0
 STR_ABBREV_ALL                                                  :{TINYFONT}+
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} pasażerów
+STR_PASSENGERS                                                  :{COMMA} pasażer{P "" ów ów}
 STR_BAGS                                                        :{COMMA} worki
 STR_BAGS.d                                                      :{COMMA} worków
 STR_BAGS.c                                                      :{COMMA} workom
@@ -3538,7 +3538,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Rozkład
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Otwórz widok rozkładu jazdy
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista poleceń - klik na poleceniu, aby zaznaczyć. Ctrl+klik przenosi do stacji
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista poleceń - kliknij na poleceniu, aby zaznaczyć. Ctrl+kliknięcie przenosi do stacji docelowej
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3602,12 +3602,14 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pomiń o
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Usuń
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Usuń podświetlone polecenie
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Usuń wszystkie polecenia
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idź do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jedź do najbliższej zajezdni
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Lec do najblizszego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawia polecenia stacji na 'pełen załadunek dowolnego towaru', polecenia pkt. orientacyjnych na 'bez zatrzymywania się', a polecenia zajezdni na 'serwisuj'
+STR_ORDER_SHARE                                                 :Współdzielenie poleceń
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawia polecenia stacji na 'pełen załadunek dowolnego towaru', polecenia pkt. orientacyjnych na 'bez zatrzymywania się', a polecenia zajezdni na 'serwisuj'. 'Współdzielenie poleceń' lub Ctrl pozwala na dzielenie poleceń z wybranym pojazdem. Kliknięcie pojazdu kopiuje jego polecenia
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Dodaj zaawansowany rozkaz
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
@@ -4051,6 +4053,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most jes
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Początek i koniec muszą być w jednej linii
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... końce mostu muszą znajdować się na lądzie
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... za długi most
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Koniec mostu poza mapą
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nie można tutaj wybudować tunelu...
@@ -4150,6 +4153,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... poja
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... pojazd dzielący ten rozkaz nie może jechać do tej stacji
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nie można współdzielić listy poleceń...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nie można zaprzestać współdzielenia listy poleceń...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nie można skopiować listy poleceń...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zbyt daleko od poprzedniego celu
 
