@@ -2723,7 +2723,36 @@ calc_heightdiff_single_direction:;
 				/* If dragging an area (eg dynamite tool) and it is actually a single
 				 * row/column, change the type to 'line' to get proper calculation for height */
 				style = (HighLightStyle)_thd.next_drawstyle;
-				if (style & HT_RECT) {
+				if (IsDraggingDiagonal()) {
+					/* Determine the "area" of the diagonal dragged selection.
+					 * We assume the area is the number of tiles along the X
+					 * edge and the number of tiles along the Y edge. However,
+					 * multiplying these two numbers does not give the exact
+					 * number of tiles; basically we are counting the black
+					 * squares on a chess board and ignore the white ones to
+					 * make the tile counts at the edges match up. There is no
+					 * other way to make a proper count though.
+					 *
+					 * First convert to the rotated coordinate system. */
+					int dist_x = TileX(t0) - TileX(t1);
+					int dist_y = TileY(t0) - TileY(t1);
+					int a_max = dist_x + dist_y;
+					int b_max = dist_y - dist_x;
+
+					/* Now determine the size along the edge, but due to the
+					 * chess board principle this counts double. */
+					a_max = abs(a_max + (a_max > 0 ? 2 : -2)) / 2;
+					b_max = abs(b_max + (b_max > 0 ? 2 : -2)) / 2;
+
+					/* We get a 1x1 on normal 2x1 rectangles, due to it being
+					 * a seen as two sides. As the result for actual building
+					 * will be the same as non-diagonal dragging revert to that
+					 * behaviour to give it a more normally looking size. */
+					if (a_max != 1 || b_max != 1) {
+						dx = a_max;
+						dy = b_max;
+					}
+				} else if (style & HT_RECT) {
 					if (dx == 1) {
 						style = HT_LINE | HT_DIR_Y;
 					} else if (dy == 1) {
@@ -2731,7 +2760,7 @@ calc_heightdiff_single_direction:;
 					}
 				}
 
-				if (dx != 1 || dy != 1) {
+				if (t0 != 1 || t1 != 1) {
 					int heightdiff = CalcHeightdiff(style, 0, t0, t1);
 
 					params[index++] = dx;
