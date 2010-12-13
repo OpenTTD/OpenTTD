@@ -45,6 +45,7 @@
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "window_gui.h"
+#include "terraform_gui.h"
 
 #include "table/strings.h"
 
@@ -754,6 +755,38 @@ void EndSpriteCombine()
 }
 
 /**
+ * Check if the parameter "check" is inside the interval between
+ * begin and end, including both begin and end.
+ * @note Whether \c begin or \c end is the biggest does not matter.
+ *       This method will account for that.
+ * @param begin The begin of the interval.
+ * @param end   The end of the interval.
+ * @param check The value to check.
+ */
+static bool IsInRangeInclusive(int begin, int end, int check)
+{
+	if (begin > end) Swap(begin, end);
+	return begin <= check && check <= end;
+}
+
+/**
+ * Checks whether a point is inside the selected a diagonal rectangle given by _thd.size and _thd.pos
+ * @param x The x coordinate of the point to be checked.
+ * @param y The y coordinate of the point to be checked.
+ * @return True if the point is inside the rectangle, else false.
+ */
+bool IsInsideRotatedRectangle(int x, int y)
+{
+	int dist_a = (_thd.size.x + _thd.size.y);      // Rotated coordinate system for selected rectangle.
+	int dist_b = (_thd.size.x - _thd.size.y);      // We don't have to divide by 2. It's all relative!
+	int a = ((x - _thd.pos.x) + (y - _thd.pos.y)); // Rotated coordinate system for the point under scrutiny.
+	int b = ((x - _thd.pos.x) - (y - _thd.pos.y));
+
+	/* Check if a and b are between 0 and dist_a or dist_b respectively. */
+	return IsInRangeInclusive(dist_a, 0, a) && IsInRangeInclusive(dist_b, 0, b);
+}
+
+/**
  * Add a child sprite to a parent sprite.
  *
  * @param image the image to draw.
@@ -939,6 +972,29 @@ static void DrawTileSelection(const TileInfo *ti)
 
 	/* no selection active? */
 	if (_thd.drawstyle == 0) return;
+
+	if (_thd.diagonal) { // We're drawing a 45 degrees rotated (diagonal) rectangle
+		if (IsInsideRotatedRectangle((int)ti->x, (int)ti->y)) {
+			if (_thd.drawstyle & HT_RECT) { // Highlighting a square (clear land)
+				/* Don't mark tiles outside the map. */
+				if (!IsValidTile(ti->tile)) return;
+
+				SpriteID image = SPR_SELECT_TILE + SlopeToSpriteOffset(ti->tileh);
+				DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE, ti, 7, FOUNDATION_PART_NORMAL);
+			} else { // Highlighting a dot (level land)
+				/* Figure out the Z coordinate for the single dot. */
+				byte z = ti->z;
+				if (ti->tileh & SLOPE_N) {
+					z += TILE_HEIGHT;
+					if (!(ti->tileh & SLOPE_S) && (ti->tileh & SLOPE_STEEP)) {
+						z += TILE_HEIGHT;
+					}
+				}
+				AddTileSpriteToDraw(_cur_dpi->zoom != 2 ? SPR_DOT : SPR_DOT_SMALL, PAL_NONE, ti->x, ti->y, z);
+			}
+		}
+		return;
+	}
 
 	/* Inside the inner area? */
 	if (IsInsideBS(ti->x, _thd.pos.x, _thd.size.x) &&
@@ -1621,88 +1677,107 @@ void MarkTileDirtyByTile(TileIndex tile)
  */
 static void SetSelectionTilesDirty()
 {
-	int x_start = _thd.pos.x;
-	int y_start = _thd.pos.y;
-
 	int x_size = _thd.size.x;
 	int y_size = _thd.size.y;
 
-	if (_thd.outersize.x != 0) {
-		x_size  += _thd.outersize.x;
-		x_start += _thd.offs.x;
-		y_size  += _thd.outersize.y;
-		y_start += _thd.offs.y;
+	if (!_thd.diagonal) { // Selecting in a straigth rectangle (or a single square)
+		int x_start = _thd.pos.x;
+		int y_start = _thd.pos.y;
+
+		if (_thd.outersize.x != 0) {
+			x_size  += _thd.outersize.x;
+			x_start += _thd.offs.x;
+			y_size  += _thd.outersize.y;
+			y_start += _thd.offs.y;
+		}
+
+		x_size -= TILE_SIZE;
+		y_size -= TILE_SIZE;
+
+		assert(x_size >= 0);
+		assert(y_size >= 0);
+
+		int x_end = Clamp(x_start + x_size, 0, MapSizeX() * TILE_SIZE - TILE_SIZE);
+		int y_end = Clamp(y_start + y_size, 0, MapSizeY() * TILE_SIZE - TILE_SIZE);
+
+		x_start = Clamp(x_start, 0, MapSizeX() * TILE_SIZE - TILE_SIZE);
+		y_start = Clamp(y_start, 0, MapSizeY() * TILE_SIZE - TILE_SIZE);
+
+		/* make sure everything is multiple of TILE_SIZE */
+		assert((x_end | y_end | x_start | y_start) % TILE_SIZE == 0);
+
+		/* How it works:
+		 * Suppose we have to mark dirty rectangle of 3x4 tiles:
+		 *   x
+		 *  xxx
+		 * xxxxx
+		 *  xxxxx
+		 *   xxx
+		 *    x
+		 * This algorithm marks dirty columns of tiles, so it is done in 3+4-1 steps:
+		 * 1)  x     2)  x
+		 *    xxx       Oxx
+		 *   Oxxxx     xOxxx
+		 *    xxxxx     Oxxxx
+		 *     xxx       xxx
+		 *      x         x
+		 * And so forth...
+		 */
+
+		int top_x = x_end; // coordinates of top dirty tile
+		int top_y = y_start;
+		int bot_x = top_x; // coordinates of bottom dirty tile
+		int bot_y = top_y;
+
+		do {
+			Point top = RemapCoords2(top_x, top_y); // topmost dirty point
+			Point bot = RemapCoords2(bot_x + TILE_SIZE - 1, bot_y + TILE_SIZE - 1); // bottommost point
+
+			/* the 'x' coordinate of 'top' and 'bot' is the same (and always in the same distance from tile middle),
+			 * tile height/slope affects only the 'y' on-screen coordinate! */
+
+			int l = top.x - (TILE_PIXELS - 2); // 'x' coordinate of left side of dirty rectangle
+			int t = top.y;                     // 'y' coordinate of top side -//-
+			int r = top.x + (TILE_PIXELS - 2); // right side of dirty rectangle
+			int b = bot.y;                     // bottom -//-
+
+			static const int OVERLAY_WIDTH = 4; // part of selection sprites is drawn outside the selected area
+
+			/* For halftile foundations on SLOPE_STEEP_S the sprite extents some more towards the top */
+			MarkAllViewportsDirty(l - OVERLAY_WIDTH, t - OVERLAY_WIDTH - TILE_HEIGHT, r + OVERLAY_WIDTH, b + OVERLAY_WIDTH);
+
+			/* haven't we reached the topmost tile yet? */
+			if (top_x != x_start) {
+				top_x -= TILE_SIZE;
+			} else {
+				top_y += TILE_SIZE;
+			}
+
+			/* the way the bottom tile changes is different when we reach the bottommost tile */
+			if (bot_y != y_end) {
+				bot_y += TILE_SIZE;
+			} else {
+				bot_x -= TILE_SIZE;
+			}
+		} while (bot_x >= top_x);
+	} else { // Selecting in a 45 degrees rotated (diagonal) rectangle.
+		/* a_size, b_size describe a rectangle with rotated coordinates */
+		int a_size = x_size + y_size, b_size = x_size - y_size;
+
+		int interval_a = a_size < 0 ? -TILE_SIZE : TILE_SIZE;
+		int interval_b = b_size < 0 ? -TILE_SIZE : TILE_SIZE;
+
+		for (int a = -interval_a; a != a_size + interval_a; a += interval_a) {
+			for (int b = -interval_b; b != b_size + interval_b; b += interval_b) {
+				uint x = (_thd.pos.x + (a + b) / 2) / TILE_SIZE;
+				uint y = (_thd.pos.y + (a - b) / 2) / TILE_SIZE;
+
+				if (x < MapMaxX() && y < MapMaxY()) {
+					MarkTileDirtyByTile(TileXY(x, y));
+				}
+			}
+		}
 	}
-
-	x_size -= TILE_SIZE;
-	y_size -= TILE_SIZE;
-
-	assert(x_size >= 0);
-	assert(y_size >= 0);
-
-	int x_end = Clamp(x_start + x_size, 0, MapSizeX() * TILE_SIZE - TILE_SIZE);
-	int y_end = Clamp(y_start + y_size, 0, MapSizeY() * TILE_SIZE - TILE_SIZE);
-
-	x_start = Clamp(x_start, 0, MapSizeX() * TILE_SIZE - TILE_SIZE);
-	y_start = Clamp(y_start, 0, MapSizeY() * TILE_SIZE - TILE_SIZE);
-
-	/* make sure everything is multiple of TILE_SIZE */
-	assert((x_end | y_end | x_start | y_start) % TILE_SIZE == 0);
-
-	/* How it works:
-	 * Suppose we have to mark dirty rectangle of 3x4 tiles:
-	 *   x
-	 *  xxx
-	 * xxxxx
-	 *  xxxxx
-	 *   xxx
-	 *    x
-	 * This algorithm marks dirty columns of tiles, so it is done in 3+4-1 steps:
-	 * 1)  x     2)  x
-	 *    xxx       Oxx
-	 *   Oxxxx     xOxxx
-	 *    xxxxx     Oxxxx
-	 *     xxx       xxx
-	 *      x         x
-	 * And so forth...
-	 */
-
-	int top_x = x_end; // coordinates of top dirty tile
-	int top_y = y_start;
-	int bot_x = top_x; // coordinates of bottom dirty tile
-	int bot_y = top_y;
-
-	do {
-		Point top = RemapCoords2(top_x, top_y); // topmost dirty point
-		Point bot = RemapCoords2(bot_x + TILE_SIZE - 1, bot_y + TILE_SIZE - 1); // bottommost point
-
-		/* the 'x' coordinate of 'top' and 'bot' is the same (and always in the same distance from tile middle),
-		 * tile height/slope affects only the 'y' on-screen coordinate! */
-
-		int l = top.x - (TILE_PIXELS - 2); // 'x' coordinate of left side of dirty rectangle
-		int t = top.y;                     // 'y' coordinate of top side -//-
-		int r = top.x + (TILE_PIXELS - 2); // right side of dirty rectangle
-		int b = bot.y;                     // bottom -//-
-
-		static const int OVERLAY_WIDTH = 4; // part of selection sprites is drawn outside the selected area
-
-		/* For halftile foundations on SLOPE_STEEP_S the sprite extents some more towards the top */
-		MarkAllViewportsDirty(l - OVERLAY_WIDTH, t - OVERLAY_WIDTH - TILE_HEIGHT, r + OVERLAY_WIDTH, b + OVERLAY_WIDTH);
-
-		/* haven't we reached the topmost tile yet? */
-		if (top_x != x_start) {
-			top_x -= TILE_SIZE;
-		} else {
-			top_y += TILE_SIZE;
-		}
-
-		/* the way the bottom tile changes is different when we reach the bottommost tile */
-		if (bot_y != y_end) {
-			bot_y += TILE_SIZE;
-		} else {
-			bot_x -= TILE_SIZE;
-		}
-	} while (bot_x >= top_x);
 }
 
 
@@ -1963,6 +2038,7 @@ void UpdateTileSelection()
 	int y1;
 
 	_thd.new_drawstyle = HT_NONE;
+	_thd.new_diagonal = false;
 
 	if (_thd.place_mode == HT_SPECIAL) {
 		x1 = _thd.selend.x;
@@ -1973,12 +2049,20 @@ void UpdateTileSelection()
 			x1 &= ~TILE_UNIT_MASK;
 			y1 &= ~TILE_UNIT_MASK;
 
-			if (x1 >= x2) Swap(x1, x2);
-			if (y1 >= y2) Swap(y1, y2);
+			if (IsDraggingDiagonal()) {
+				_thd.new_diagonal = true;
+			} else {
+				if (x1 >= x2) Swap(x1, x2);
+				if (y1 >= y2) Swap(y1, y2);
+			}
 			_thd.new_pos.x = x1;
 			_thd.new_pos.y = y1;
-			_thd.new_size.x = x2 - x1 + TILE_SIZE;
-			_thd.new_size.y = y2 - y1 + TILE_SIZE;
+			_thd.new_size.x = x2 - x1;
+			_thd.new_size.y = y2 - y1;
+			if (!_thd.new_diagonal) {
+				_thd.new_size.x += TILE_SIZE;
+				_thd.new_size.y += TILE_SIZE;
+			}
 			_thd.new_drawstyle = _thd.next_drawstyle;
 		}
 	} else if ((_thd.place_mode & HT_DRAG_MASK) != HT_NONE) {
@@ -2033,7 +2117,8 @@ void UpdateTileSelection()
 			_thd.pos.x != _thd.new_pos.x || _thd.pos.y != _thd.new_pos.y ||
 			_thd.size.x != _thd.new_size.x || _thd.size.y != _thd.new_size.y ||
 			_thd.outersize.x != _thd.new_outersize.x ||
-			_thd.outersize.y != _thd.new_outersize.y) {
+			_thd.outersize.y != _thd.new_outersize.y ||
+			_thd.diagonal    != _thd.new_diagonal) {
 		/* clear the old selection? */
 		if (_thd.drawstyle) SetSelectionTilesDirty();
 
@@ -2041,6 +2126,7 @@ void UpdateTileSelection()
 		_thd.pos = _thd.new_pos;
 		_thd.size = _thd.new_size;
 		_thd.outersize = _thd.new_outersize;
+		_thd.diagonal = _thd.new_diagonal;
 		_thd.dirty = 0xff;
 
 		/* draw the new selection? */

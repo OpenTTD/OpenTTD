@@ -14,6 +14,8 @@
 
 #include "window_type.h"
 
+bool IsDraggingDiagonal();
+
 Window *ShowTerraformToolbar(Window *link = NULL);
 Window *ShowEditorTerraformToolbar();
 

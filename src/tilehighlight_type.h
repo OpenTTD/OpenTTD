@@ -49,10 +49,12 @@ struct TileHighlightData {
 	Point size;          ///< Size, in tile "units", of the white/red selection area.
 	Point offs;          ///< Offset, in tile "units", for the blue coverage area from the selected area's northern tile.
 	Point outersize;     ///< Size, in tile "units", of the blue coverage area excluding the side of the selected area.
+	bool diagonal;       ///< Whether the dragged area is a 45 degrees rotated rectangle.
 
 	Point new_pos;       ///< New value for \a pos; used to determine whether to redraw the selection.
 	Point new_size;      ///< New value for \a size; used to determine whether to redraw the selection.
 	Point new_outersize; ///< New value for \a outersize; used to determine whether to redraw the selection.
+	bool new_diagonal;   ///< New value for \a diagonal; used to determine whether to redraw the selection.
 	byte dirty;          ///< Whether the build station window needs to redraw due to the changed selection.
 
 	Point selstart;      ///< The location where the dragging started.

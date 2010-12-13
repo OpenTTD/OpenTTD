@@ -616,6 +616,15 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 	}
 }
 
+/**
+ * Checks whether we are currently dragging diagonally.
+ * @returns True iff we are selecting a diagonal rectangle for an action that supports it, otherwise false.
+ */
+bool IsDraggingDiagonal()
+{
+	return false;
+}
+
 struct ScenarioEditorLandscapeGenerationWindow : Window {
 	ScenarioEditorLandscapeGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
