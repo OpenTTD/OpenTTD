@@ -104,3 +104,64 @@ void TileArea::ClampToMap()
 	this->h = min(this->h, MapSizeY() - TileY(this->tile));
 }
 
+DiagonalTileIterator::DiagonalTileIterator(TileIndex corner1, TileIndex corner2) : TileIterator(corner2), base_x(TileX(corner2)), base_y(TileY(corner2)), a_cur(0), b_cur(0)
+{
+	assert(corner1 < MapSize());
+	assert(corner2 < MapSize());
+
+	int dist_x = TileX(corner1) - TileX(corner2);
+	int dist_y = TileY(corner1) - TileY(corner2);
+	this->a_max = dist_x + dist_y;
+	this->b_max = dist_y - dist_x;
+
+	/* Unfortunately we can't find a new base and make all a and b positive because
+	 * the new base might be a "flattened" corner where there actually is no single
+	 * tile. If we try anyway the result is either inaccurate ("one off" half of the
+	 * time) or the code gets much more complex;
+	 *
+	 * We also need to increment here to have equality as marker for the end of a row or
+	 * column. Like that it's shorter than having another if/else in operator++
+	 */
+	if (this->a_max > 0) {
+		this->a_max++;
+	} else {
+		this->a_max--;
+	}
+
+	if (this->b_max > 0) {
+		this->b_max++;
+	} else {
+		this->b_max--;
+	}
+}
+
+TileIterator &DiagonalTileIterator::operator++()
+{
+	assert(this->tile != INVALID_TILE);
+
+	do {
+		/* Iterate using the rotated coordinates. */
+		if (this->a_max > 0) {
+			++this->a_cur;
+		} else {
+			--this->a_cur;
+		}
+		if (this->a_cur == this->a_max) {
+			this->a_cur = 0;
+			if (this->b_max > 0) {
+				++this->b_cur;
+			} else {
+				--this->b_cur;
+			}
+		}
+
+		/* And convert the coordinates back once we've gone to the next tile. */
+		uint x = this->base_x + (this->a_cur - this->b_cur) / 2;
+		uint y = this->base_y + (this->b_cur + this->a_cur) / 2;
+		/* Prevent wrapping around the map's borders. */
+		this->tile = x >= MapSizeX() || y >= MapSizeY() ? INVALID_TILE : TileXY(x, y);
+	} while (this->tile > MapSize() && this->b_max != this->b_cur);
+
+	if (this->b_max == this->b_cur) this->tile = INVALID_TILE;
+	return *this;
+}

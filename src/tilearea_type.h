@@ -73,11 +73,12 @@ protected:
 	{
 	}
 
+public:
 	/** Some compilers really like this. */
 	virtual ~TileIterator()
 	{
 	}
-public:
+
 	/**
 	 * Get the tile we are currently at.
 	 * @return The tile we are at, or INVALID_TILE when we're done.
@@ -126,6 +127,27 @@ public:
 		}
 		return *this;
 	}
+};
+
+/** Iterator to iterate over a diagonal area of the map. */
+class DiagonalTileIterator : public TileIterator {
+private:
+	uint base_x, base_y; ///< The base tile x and y coordinates from where the iterating happens.
+	int a_cur, b_cur;    ///< The current (rotated) x and y coordinates of the iteration.
+	int a_max, b_max;    ///< The (rotated) x and y coordinates of the end of the iteration.
+
+public:
+	/**
+	 * Construct the iterator.
+	 * @param begin Tile from where to begin iterating.
+	 * @param end   Tile where to end the iterating.
+	 */
+	DiagonalTileIterator(TileIndex begin, TileIndex end);
+
+	/**
+	 * Move ourselves to the next tile in the rectange on the map.
+	 */
+	TileIterator& operator ++();
 };
 
 /**
