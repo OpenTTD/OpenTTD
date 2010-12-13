@@ -353,16 +353,21 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
  * reverse. The tile given is the tile we are about to enter, enterdir is the
  * direction in which we are entering the tile
  */
-static Track ChooseShipTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+static Track ChooseShipTrack(Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
 	assert(IsValidDiagDirection(enterdir));
 
+	bool path_found = true;
+	Track track;
 	switch (_settings_game.pf.pathfinder_for_ships) {
-		case VPF_OPF: return OPFShipChooseTrack(v, tile, enterdir, tracks);
-		case VPF_NPF: return NPFShipChooseTrack(v, tile, enterdir, tracks);
-		case VPF_YAPF: return YapfShipChooseTrack(v, tile, enterdir, tracks);
+		case VPF_OPF: track = OPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
+		case VPF_NPF: track = NPFShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
+		case VPF_YAPF: track = YapfShipChooseTrack(v, tile, enterdir, tracks, path_found); break;
 		default: NOT_REACHED();
 	}
+
+	v->HandlePathfindingResult(path_found);
+	return track;
 }
 
 static const Direction _new_vehicle_direction_table[] = {

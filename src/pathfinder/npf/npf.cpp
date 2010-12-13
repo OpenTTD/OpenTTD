@@ -1159,7 +1159,7 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 
 /*** Ships ***/
 
-Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found)
 {
 	NPFFindStationOrTileData fstd;
 	Trackdir trackdir = v->GetVehicleTrackdir();
@@ -1173,6 +1173,7 @@ Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
 	 * we did not find our target, but ftd.best_trackdir contains the direction leading
 	 * to the tile closest to our target. */
+	path_found = (ftd.best_bird_dist == 0);
 	if (ftd.best_trackdir == 0xff) return INVALID_TRACK;
 	return TrackdirToTrack(ftd.best_trackdir);
 }

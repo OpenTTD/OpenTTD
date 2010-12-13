@@ -44,9 +44,10 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
  * @param tile     the tile to find the path from (should be next tile the ship is about to enter)
  * @param enterdir diagonal direction which the ship will enter this new tile from
  * @param tracks   available tracks on the new tile (to choose from)
+ * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
  * @return         the best trackdir for next turn or INVALID_TRACK if the path could not be found
  */
-Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
+Track NPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found);
 
 /**
  * Used when user sends train to the nearest depot or if train needs servicing using NPF

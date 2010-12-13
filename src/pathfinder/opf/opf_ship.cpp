@@ -183,7 +183,7 @@ bad:;
  * reverse. The tile given is the tile we are about to enter, enterdir is the
  * direction in which we are entering the tile
  */
-Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool &path_found)
 {
 	assert(IsValidDiagDirection(enterdir));
 
@@ -202,6 +202,9 @@ Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	/* And if we would not reverse? */
 	uint dist = FindShipTrack(v, tile, enterdir, tracks, 0, &track);
 
+	/* If the dist equals zero, or distr equals one (the extra reversing penalty),
+	 * then we found our destination and we are not lost. */
+	path_found = (dist == 0 || distr == 1);
 	if (dist <= distr) return track;
 	return INVALID_TRACK; // We could better reverse
 }
