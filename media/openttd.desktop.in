@@ -1,10 +1,10 @@
 # $Id$
-# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.1.html
+# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.0.html
 [Desktop Entry]
 Type=Application
-Version=1.1
+Version=1.0
 Name=!!MENU_NAME!!
-Icon=openttd
+Icon=!!TTD!!
 Exec=!!TTD!!
 Terminal=false
 Categories=!!MENU_GROUP!!
