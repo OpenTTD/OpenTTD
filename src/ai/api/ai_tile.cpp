@@ -234,7 +234,7 @@
 	EnforcePrecondition(false, start_tile < ::MapSize());
 	EnforcePrecondition(false, end_tile < ::MapSize());
 
-	return AIObject::DoCommand(end_tile, start_tile, 0, CMD_LEVEL_LAND);
+	return AIObject::DoCommand(end_tile, start_tile, LM_LEVEL << 1, CMD_LEVEL_LAND);
 }
 
 /* static */ bool AITile::DemolishTile(TileIndex tile)
