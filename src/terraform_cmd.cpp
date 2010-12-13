@@ -411,10 +411,10 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	bool had_success = false;
 
 	TileArea ta(tile, p1);
-	TILE_AREA_LOOP(tile, ta) {
-		uint curh = TileHeight(tile);
+	TILE_AREA_LOOP(t, ta) {
+		uint curh = TileHeight(t);
 		while (curh != h) {
-			CommandCost ret = DoCommand(tile, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
+			CommandCost ret = DoCommand(t, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
 			if (ret.Failed()) {
 				last_error = ret;
 				break;
@@ -426,7 +426,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					_additional_cash_required = ret.GetCost();
 					return cost;
 				}
-				DoCommand(tile, SLOPE_N, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
+				DoCommand(t, SLOPE_N, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
 			}
 
 			cost.AddCost(ret);
