@@ -72,6 +72,11 @@ protected:
 	TileIterator(TileIndex tile) : tile(tile)
 	{
 	}
+
+	/** Some compilers really like this. */
+	virtual ~TileIterator()
+	{
+	}
 public:
 	/**
 	 * Get the tile we are currently at.
