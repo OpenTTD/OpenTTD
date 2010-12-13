@@ -2773,7 +2773,7 @@ uint Train::Crash(bool flooded)
 {
 	uint pass = 0;
 	if (this->IsFrontEngine()) {
-		pass += 4; // driver
+		pass += 2; // driver
 
 		/* Remove the reserved path in front of the train if it is not stuck.
 		 * Also clear all reserved tracks the train is currently on. */
