@@ -2420,7 +2420,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 				if (_settings_client.gui.lost_vehicle_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					AddVehicleNewsItem(
-						STR_NEWS_TRAIN_IS_LOST,
+						STR_NEWS_VEHICLE_IS_LOST,
 						NS_ADVICE,
 						v->index
 					);

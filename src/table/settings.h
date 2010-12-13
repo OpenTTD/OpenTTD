@@ -593,7 +593,7 @@ const SettingDesc _settings[] = {
 	  SDTC_VAR(gui.semaphore_build_before,    SLE_INT32, S, NC,  1950, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE, ResetSignalVariant),
 	 SDTC_BOOL(gui.vehicle_income_warn,                  S,  0,  true,                        STR_CONFIG_SETTING_WARN_INCOME_LESS,            NULL),
 	  SDTC_VAR(gui.order_review_system,       SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_SETTING_ORDER_REVIEW,                NULL),
-	 SDTC_BOOL(gui.lost_vehicle_warn,                    S,  0,  true,                        STR_CONFIG_SETTING_WARN_LOST_TRAIN,             NULL),
+	 SDTC_BOOL(gui.lost_vehicle_warn,                    S,  0,  true,                        STR_CONFIG_SETTING_WARN_LOST_VEHICLE,           NULL),
 	 SDTC_BOOL(gui.always_build_infrastructure,          S,  0, false,                        STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE, RedrawScreen),
 	 SDTC_BOOL(gui.new_nonstop,                          S,  0, false,                        STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT,          NULL),
 	  SDTC_VAR(gui.stop_location,             SLE_UINT8, S, MS,     2,        0,        2, 1, STR_CONFIG_SETTING_STOP_LOCATION,               NULL),
