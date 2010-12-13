@@ -624,6 +624,39 @@ bool Vehicle::IsEngineCountable() const
 	}
 }
 
+/**
+ * Handle the pathfinding result, especially the lost status.
+ * If the vehicle is now lost and wasn't previously fire an
+ * event to the AIs and a news message to the user. If the
+ * vehicle is not lost anymore remove the news message.
+ * @param path_found Whether the vehicle has a path to its destination.
+ */
+void Vehicle::HandlePathfindingResult(bool path_found)
+{
+	if (path_found) {
+		/* Route found, is the vehicle marked with "lost" flag? */
+		if (!HasBit(this->vehicle_flags, VF_PATHFINDER_LOST)) return;
+
+		/* Clear the flag as the PF's problem was solved. */
+		ClrBit(this->vehicle_flags, VF_PATHFINDER_LOST);
+		/* Delete the news item. */
+		DeleteVehicleNews(this->index, STR_NEWS_VEHICLE_IS_LOST);
+		return;
+	}
+
+	/* Were we already lost? */
+	if (HasBit(this->vehicle_flags, VF_PATHFINDER_LOST)) return;
+
+	/* It is first time the problem occurred, set the "lost" flag. */
+	SetBit(this->vehicle_flags, VF_PATHFINDER_LOST);
+	/* Notify user about the event. */
+	AI::NewEvent(this->owner, new AIEventVehicleLost(this->index));
+	if (_settings_client.gui.lost_vehicle_warn && this->owner == _local_company) {
+		SetDParam(0, this->index);
+		AddVehicleNewsItem(STR_NEWS_VEHICLE_IS_LOST, NS_ADVICE, this->index);
+	}
+}
+
 void Vehicle::PreDestructor()
 {
 	if (CleaningPool()) return;

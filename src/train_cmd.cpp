@@ -2408,32 +2408,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 
 		Track next_track = DoTrainPathfind(v, new_tile, dest_enterdir, tracks, &path_not_found, do_track_reservation, &res_dest);
 		if (new_tile == tile) best_track = next_track;
-
-		/* handle "path not found" state */
-		if (path_not_found) {
-			/* PF didn't find the route */
-			if (!HasBit(v->vehicle_flags, VF_PATHFINDER_LOST)) {
-				/* It is first time the problem occurred, set the "lost" flag. */
-				SetBit(v->vehicle_flags, VF_PATHFINDER_LOST);
-				/* and notify user about the event */
-				AI::NewEvent(v->owner, new AIEventVehicleLost(v->index));
-				if (_settings_client.gui.lost_vehicle_warn && v->owner == _local_company) {
-					SetDParam(0, v->index);
-					AddVehicleNewsItem(
-						STR_NEWS_VEHICLE_IS_LOST,
-						NS_ADVICE,
-						v->index
-					);
-				}
-			}
-		} else {
-			/* route found, is the train marked with "path not found" flag? */
-			if (HasBit(v->vehicle_flags, VF_PATHFINDER_LOST)) {
-				/* clear the flag as the PF's problem was solved */
-				ClrBit(v->vehicle_flags, VF_PATHFINDER_LOST);
-				/* can we also delete the "News" item somehow? */
-			}
-		}
+		v->HandlePathfindingResult(!path_not_found);
 	}
 
 	/* No track reservation requested -> finished. */
