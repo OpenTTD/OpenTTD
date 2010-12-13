@@ -379,6 +379,7 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param flags for this command type
  * @param p1 start tile of area drag
  * @param p2 various bitstuffed data.
+ *  bit      0: Whether to use the Orthogonal (0) or Diagonal (1) iterator.
  *  bits 1 - 2: Mode of leveling \c LevelMode.
  * @param text unused
  * @return the cost of this operation or an error
@@ -411,7 +412,9 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	bool had_success = false;
 
 	TileArea ta(tile, p1);
-	TILE_AREA_LOOP(t, ta) {
+	TileIterator *iter = HasBit(p2, 0) ? (TileIterator *)new DiagonalTileIterator(tile, p1) : new OrthogonalTileIterator(ta);
+	for (; *iter != INVALID_TILE; ++(*iter)) {
+		TileIndex t = *iter;
 		uint curh = TileHeight(t);
 		while (curh != h) {
 			CommandCost ret = DoCommand(t, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
@@ -424,6 +427,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				money -= ret.GetCost();
 				if (money < 0) {
 					_additional_cash_required = ret.GetCost();
+					delete iter;
 					return cost;
 				}
 				DoCommand(t, SLOPE_N, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
@@ -435,5 +439,6 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		}
 	}
 
+	delete iter;
 	return had_success ? cost : last_error;
 }
