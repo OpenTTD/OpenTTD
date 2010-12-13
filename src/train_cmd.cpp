@@ -2412,9 +2412,9 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 		/* handle "path not found" state */
 		if (path_not_found) {
 			/* PF didn't find the route */
-			if (!HasBit(v->flags, VRF_NO_PATH_TO_DESTINATION)) {
-				/* it is first time the problem occurred, set the "path not found" flag */
-				SetBit(v->flags, VRF_NO_PATH_TO_DESTINATION);
+			if (!HasBit(v->vehicle_flags, VF_PATHFINDER_LOST)) {
+				/* It is first time the problem occurred, set the "lost" flag. */
+				SetBit(v->vehicle_flags, VF_PATHFINDER_LOST);
 				/* and notify user about the event */
 				AI::NewEvent(v->owner, new AIEventVehicleLost(v->index));
 				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
@@ -2428,9 +2428,9 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 			}
 		} else {
 			/* route found, is the train marked with "path not found" flag? */
-			if (HasBit(v->flags, VRF_NO_PATH_TO_DESTINATION)) {
+			if (HasBit(v->vehicle_flags, VF_PATHFINDER_LOST)) {
 				/* clear the flag as the PF's problem was solved */
-				ClrBit(v->flags, VRF_NO_PATH_TO_DESTINATION);
+				ClrBit(v->vehicle_flags, VF_PATHFINDER_LOST);
 				/* can we also delete the "News" item somehow? */
 			}
 		}

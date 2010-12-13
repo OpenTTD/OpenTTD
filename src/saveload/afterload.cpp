@@ -2392,6 +2392,17 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(156)) {
+		/* The train's pathfinder lost flag got moved. */
+		Train *t;
+		FOR_ALL_TRAINS(t) {
+			if (!HasBit(t->flags, 5)) continue;
+
+			ClrBit(t->flags, 5);
+			SetBit(t->vehicle_flags, VF_PATHFINDER_LOST);
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();
