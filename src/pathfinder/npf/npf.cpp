@@ -1133,7 +1133,7 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
 	return FindDepotData(ftd.node.tile, ftd.best_path_dist);
 }
 
-Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs)
+Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found)
 {
 	NPFFindStationOrTileData fstd;
 
@@ -1145,6 +1145,7 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 		/* We are already at our target. Just do something
 		 * @todo: maybe display error?
 		 * @todo: go straight ahead if possible? */
+		path_found = true;
 		return (Trackdir)FindFirstBit2x64(trackdirs);
 	}
 
@@ -1152,6 +1153,7 @@ Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDir
 	 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
 	 * we did not find our target, but ftd.best_trackdir contains the direction leading
 	 * to the tile closest to our target. */
+	path_found = (ftd.best_bird_dist == 0);
 	return ftd.best_trackdir;
 }
 

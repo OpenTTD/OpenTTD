@@ -328,13 +328,13 @@ public:
 		return 'r';
 	}
 
-	static Trackdir stChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir)
+	static Trackdir stChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found)
 	{
 		Tpf pf;
-		return pf.ChooseRoadTrack(v, tile, enterdir);
+		return pf.ChooseRoadTrack(v, tile, enterdir, path_found);
 	}
 
-	FORCEINLINE Trackdir ChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir)
+	FORCEINLINE Trackdir ChooseRoadTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, bool &path_found)
 	{
 		/* Handle special case - when next tile is destination tile.
 		 * However, when going to a station the (initial) destination
@@ -356,7 +356,7 @@ public:
 		Yapf().SetDestination(v);
 
 		/* find the best path */
-		Yapf().FindPath(v);
+		path_found = Yapf().FindPath(v);
 
 		/* if path not found - return INVALID_TRACKDIR */
 		Trackdir next_trackdir = INVALID_TRACKDIR;
@@ -475,10 +475,10 @@ struct CYapfRoadAnyDepot1 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot1, CRoadNod
 struct CYapfRoadAnyDepot2 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot2, CRoadNodeListExitDir , CYapfDestinationAnyDepotRoadT> > {};
 
 
-Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs)
+Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found)
 {
 	/* default is YAPF type 2 */
-	typedef Trackdir (*PfnChooseRoadTrack)(const RoadVehicle*, TileIndex, DiagDirection);
+	typedef Trackdir (*PfnChooseRoadTrack)(const RoadVehicle*, TileIndex, DiagDirection, bool &path_found);
 	PfnChooseRoadTrack pfnChooseRoadTrack = &CYapfRoad2::stChooseRoadTrack; // default: ExitDir, allow 90-deg
 
 	/* check if non-default YAPF type should be used */
@@ -486,7 +486,7 @@ Trackdir YapfRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDi
 		pfnChooseRoadTrack = &CYapfRoad1::stChooseRoadTrack; // Trackdir, allow 90-deg
 	}
 
-	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir);
+	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir, path_found);
 	return (td_ret != INVALID_TRACKDIR) ? td_ret : (Trackdir)FindFirstBit2x64(trackdirs);
 }
 

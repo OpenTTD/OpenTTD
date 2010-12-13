@@ -835,6 +835,7 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 
 	TileIndex desttile;
 	Trackdir best_track;
+	bool path_found = true;
 
 	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_ROAD, v->compatible_roadtypes);
 	TrackdirBits red_signals = TrackStatusToRedSignals(ts); // crossing
@@ -910,11 +911,12 @@ static Trackdir RoadFindPathToDest(RoadVehicle *v, TileIndex tile, DiagDirection
 	}
 
 	switch (_settings_game.pf.pathfinder_for_roadvehs) {
-		case VPF_NPF: return_track(NPFRoadVehicleChooseTrack(v, tile, enterdir, trackdirs));
-		case VPF_YAPF: return_track(YapfRoadVehicleChooseTrack(v, tile, enterdir, trackdirs));
+		case VPF_NPF:  best_track = NPFRoadVehicleChooseTrack(v, tile, enterdir, trackdirs, path_found); break;
+		case VPF_YAPF: best_track = YapfRoadVehicleChooseTrack(v, tile, enterdir, trackdirs, path_found); break;
 
 		default: NOT_REACHED();
 	}
+	v->HandlePathfindingResult(path_found);
 
 found_best_track:;
 

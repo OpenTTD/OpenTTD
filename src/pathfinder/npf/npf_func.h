@@ -33,9 +33,10 @@ FindDepotData NPFRoadVehicleFindNearestDepot(const RoadVehicle *v, int max_penal
  * @param tile      the tile to find the path from (should be next tile the RV is about to enter)
  * @param enterdir  diagonal direction which the RV will enter this new tile from
  * @param trackdirs available trackdirs on the new tile (to choose from)
+ * @param path_found [out] Whether a path has been found (true) or has been guessed (false)
  * @return          the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
  */
-Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs);
+Trackdir NPFRoadVehicleChooseTrack(const RoadVehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool &path_found);
 
 /**
  * Finds the best path for given ship using NPF.
