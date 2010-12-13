@@ -784,7 +784,7 @@ STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} wurdt âld
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} wurdt tige âld
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} wurdt tige âld en is nedich oan ferfaning ta
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} is de wei kwyt.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is de wei kwyt.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}winst wie it lêste jier{CURRENCY}
 
 

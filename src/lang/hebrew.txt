@@ -824,7 +824,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}מתיי
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}מתיישן מאוד {VEHICLE}
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}מתיישן מאוד, וזקוק להחלפה בדחיפות {VEHICLE}
 STR_NEWS_TRAIN_IS_STUCK                                         :איננה יכולה למצוא נתיב המשכה {WHITE}{VEHICLE}
-STR_NEWS_TRAIN_IS_LOST                                          :הלכה לאיבוד {WHITE}{VEHICLE}
+STR_NEWS_VEHICLE_IS_LOST                                        :הלכה לאיבוד {WHITE}{VEHICLE}
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :ריווחי {WHITE}{VEHICLE} שנה שעברה הם {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :כשלון בהתאמה מחדש הביא לעצירה של {WHITE}{VEHICLE}
@@ -1151,7 +1151,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}החלפ
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}בטל התיישנות נמלי תעופה: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{ORANGE}{STRING}{LTBLUE} :התרע על רכבות אבודות
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{ORANGE}{STRING}{LTBLUE} :בדוק מסלולי נסיעה
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :לא
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :כן,למעט עבור רכבים שבעצירה

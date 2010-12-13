@@ -813,7 +813,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} sudah sangat tua
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} sudah sangat tua dan perlu segera diganti
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} tidak menemukan arah selanjutnya.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} kehilangan arah.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} kehilangan arah.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Tahun lalu {VEHICLE} merugi sebanyak {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} berhenti karena proses ubah kargonya gagal
@@ -1144,7 +1144,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tidak di
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Bandara tidak kedaluarsa: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Ingatkan jika kereta tersesat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Tinjau pemberhentian kendaraan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :tidak
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ya, tetapi selain kendaraan yang berhenti

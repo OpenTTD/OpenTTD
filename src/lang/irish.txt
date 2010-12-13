@@ -814,7 +814,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Tá {VEH
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Tá {VEHICLE} ag fáil an-sean
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Tá {VEHICLE} ag fáil an-sean agus ní mór é a ionadú go práinneach
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Ní féidir le {VEHICLE} bealach a aimsiú le leanúint ar aghaidh.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}Tá {VEHICLE} caillte.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}Tá {VEHICLE} caillte.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Rinne {VEHICLE} brabús de {CURRENCY} anuraidh
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stop {VEHICLE} mar gheall gur theip ar athfheistiú a ordaíodh
@@ -1145,7 +1145,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ní féi
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Ní imíonn aerfoirt as dáta riamh: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Tabhair rabhadh má tá traein caillte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Féach ar orduithe feithicile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :níl
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :déan é, ach ná tóg feiticlí stoptha san áireamh

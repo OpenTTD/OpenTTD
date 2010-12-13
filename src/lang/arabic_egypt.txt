@@ -814,7 +814,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} اصبحت قديمة جدا
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} قديمة جدا وتحتاج الى استبدال فوري
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} لا يستطيع ايجاد طريق للمواصلة
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} تائه
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} تائه
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} دخل العربة السنة السابقة {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}امرالاستبدال توقف {VEHICLE}
@@ -1145,7 +1145,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغير
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE} المطارات لا تنتهي صلاحيتها {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}عرض تحذير عندما يضيع قطار: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}استعراض اوامر العربات: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :لا
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :نعم, بستثناء العربات المتوقفة

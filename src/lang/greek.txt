@@ -905,7 +905,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Το {VE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Το {VEHICLE} ξεπερνά το όριο ηλικίας
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Το {VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Το {VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{G Ο Η Το} {VEHICLE} χάθηκε
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{G Ο Η Το} {VEHICLE} χάθηκε
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Το {VEHICLE} σταμάτησε γιατί μια εντολή μετατροπής απέτυχε
@@ -1231,7 +1231,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν �
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Τα αεροδρόμια δεν λήγουν ποτέ: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Προειδοποίηση αν χαθεί τρένο: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Επανεξέταση οδηγιών τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :όχι
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ναι, αλλά εξαιρούνται τα σταματημένα οχήματα

@@ -815,7 +815,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE}{P "가" "이"} 매우 오래되었습니다
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE}{P "가" "이"} 너무 오래되어 교체가 시급합니다
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE}{P "가" "이"} 진행할 경로를 찾지 못했습니다.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE}{P "가" "이"} 길을 잃었습니다.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE}{P "가" "이"} 길을 잃었습니다.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY} 입니다.
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 수리에 실패하여 {VEHICLE}{P "가" "이"} 멈췄습니다
@@ -1145,7 +1145,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}이미 �
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}공항이 사라지지 않게 함: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}열차가 길을 잃으면 경고 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}차량의 경로 검사 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :아니요
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :예 (정지된 차량 제외)

@@ -812,7 +812,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} 已经达到报废年限
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} 已经达到报废年限，必须马上更新！
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 无法找到道路
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} 迷路了.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} 迷路了.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的利润为 {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}适配调度计划失败，已终止 {VEHICLE}
@@ -1142,7 +1142,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}当有�
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}总允许建设小型机场： {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}当列车迷路时发出警告：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}检查车辆的调度计划：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :不检查
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :检查 不包括停运的车辆

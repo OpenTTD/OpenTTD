@@ -813,7 +813,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} 應當馬上退役
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} 應馬上退役並替換新車
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 找不到路徑繼續前進
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} 迷路了
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} 迷路了
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的盈利是 {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} 因改裝失敗而停止
@@ -1143,7 +1143,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}當此�
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}機場永不過期：{ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}列車迷路時警告：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}檢查交通工具指令：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :否
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :是，不過停止的交通工具除外

@@ -814,7 +814,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} börjar bli mycket gammal
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} börjar bli mycket gammal och bör bytas ut omgående
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan inte hitta en rutt för att fortsätta
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} är vilse.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} är vilse.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}s vinst förra året var {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppades för att en beställd anpassning av frakttyp misslyckades
@@ -1145,7 +1145,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flygplatser blir aldrig gamla: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Varna om tåg åker vilse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Granska fordonens destinationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nej
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon

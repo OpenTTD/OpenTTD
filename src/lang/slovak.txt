@@ -881,7 +881,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} je veľmi zastaralé
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} je veľmi zastaralé a urgentne potrebuje výmenu
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nemôže nájsť cestu pre pokračovanie.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} sa stratilo.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} sa stratilo.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} zisk vozidla v minulom roku bol {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Príkaz zmeňiť tovar po zlyhaní zastavil {VEHICLE}
@@ -1212,7 +1212,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmena to
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Letiská nikdy neexiprujú: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Upozorniť, ak vlak nedokáže nájsť cestu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Obnovenie príkazov vozidla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nie
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :áno, okrem zastavených vozidiel

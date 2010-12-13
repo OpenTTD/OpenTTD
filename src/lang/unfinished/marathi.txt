@@ -303,7 +303,7 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} जुनी होत आहे
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} खूप जुनी होत आहे
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} हरवली आहे
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} हरवली आहे
 
 
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}

@@ -878,7 +878,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} nagyon elöregedett
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} nagyon elöregedett, sürgősen le kell cserélni
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nem talál utat a célpontjához.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} eltévedt.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} eltévedt.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} elmúlt évi profitja {CURRENCY} volt
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Hibás átalakítási utasítás miatt {VEHICLE} megállt
@@ -1209,7 +1209,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beáll
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Repülőterek nem avulnak el: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Figyelmeztet ha a vonat eltévedt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Menetrend-ellenőrzés: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nincs
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :csak mozgó járművekre

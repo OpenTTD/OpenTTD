@@ -814,7 +814,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} este foarte vechi
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} este foarte vechi şi trebuie înlocuit
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nu găseşte calea către destinaţie.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} s-a rătăcit.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} s-a rătăcit.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Profitul {VEHICLE} pe anul precedent a fost de {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} s-a oprit deoarece recondiţionarea programată a eşuat
@@ -1145,7 +1145,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Schimbar
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeroporturile nu expiră niciodată: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avertizează dacă trenul s-a pierdut: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Verificarea ordinelor vehiculelor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nu
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, dar exclude vehiculele oprite

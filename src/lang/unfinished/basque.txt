@@ -813,7 +813,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} oso zaharra bihurtzen ari da
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} oso zaharra bihurtzen ari da eta premiaz ordeztu behar da
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ezin du biderik aurkitu jarraitzeko.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} galduta dago.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} galduta dago.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}-ren irabazia aurreko urtean {CURRENCY} izan da
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} gelditua izan da agindutako eraldaketa tronpatu eta gero

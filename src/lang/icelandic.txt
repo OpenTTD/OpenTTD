@@ -814,7 +814,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er tekinn að eldast mikið
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er tekinn að eldast mikið og nauðsynlegt er að skipta honum út
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ratar ekki á áfangastað
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} er týnd.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} er týnd.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Hagnaður síðasta árs af {VEHICLE} nam {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stöðvaði vegna þess að umbeðin endursetning klikkaði
@@ -1142,7 +1142,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ekki er 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Alltaf hægt að byggja allar gerðir flugvalla: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Gera viðvart ef lest týnist: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Fara yfir áætlanir farartækja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :allra nema kyrrstæðra farartækja

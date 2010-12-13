@@ -814,7 +814,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} đang xuống cấp
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} đang xuống cấp trầm trọng và cần được thay thế ngay lập tức
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} không thể tìm đường đi tiếp.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} bị mất phương hướng.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} bị mất phương hướng.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Lợi nhuận của {VEHICLE} năm trước là {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} đã dừng lại do yêu cầu cải biến thất bại
@@ -1145,7 +1145,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Không t
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Sân bay không bao giờ thành đồ cổ: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Cảnh báo nếu tàu mất phương hướng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kiểm soát lộ trình của các phương tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :không
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng trừ các ph.tiện đang dừng

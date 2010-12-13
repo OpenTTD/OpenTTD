@@ -939,7 +939,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} дуже зістарився
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} зістарився і негайно потребує заміни
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не може знайти шлях.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} загубився.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} загубився.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}: торішній прибуток склав {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} зупинився внаслідок збою запланованого переобладнання
@@ -1270,7 +1270,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Цю н�
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Аеропорти ніколи не старіють: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Повідомляти, якщо поїзд загубився {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Показ транспортних наказів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ні
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :так, крім зупиненого транспорту

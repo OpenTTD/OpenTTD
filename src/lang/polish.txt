@@ -1194,7 +1194,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} bardzo się starzeje
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} bardzo się starzeje i potrzebuje natychmiastowej wymiany
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nie potrafi znaleźć trasy, aby kontynuować.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} zgubił się.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} zgubił się.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Dochód {VEHICLE} w zeszłym roku to {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Zaplanowane przeładowanie zatrzymane {VEHICLE}
@@ -1525,7 +1525,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Zmiana t
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Pozwól budować stare lotniska: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Ostrzegaj jeśli pociąg się zgubi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kontroluj polecenia pojazdów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nie
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :tak, ale wyklucz zatrzymane

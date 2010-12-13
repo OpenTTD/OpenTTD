@@ -856,7 +856,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} podlega iztrošenosti
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} nima več zanesljivosti in nujno potrebuje zamenjavo
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne najde poti za nadaljevanje.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} je izgubljen.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} je izgubljen.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} povzroča izgubo. Lanski dobiček je bil {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} je ustavljen zaradi neuspele preureditve
@@ -1187,7 +1187,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sprememb
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Letališča nikoli ne potečejo: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Opozori, če se vlak izgubi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pregled ukazov vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, toda izloči ustavljena vozila

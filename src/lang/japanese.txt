@@ -802,7 +802,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} はとても古くなっています
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} はとても古くなっていて、すばやく取り替えなければなりません。
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} は目的地への経路を見つけられません。
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} が迷っています。
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} が迷っています。
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}昨年 {VEHICLE} の利益は {CURRENCY}。
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE}が命令された改装の失敗のため、止めました
@@ -1125,7 +1125,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}車両�
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}空港の購入可能期限がない： {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}列車が行方不明となった場合は通告：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}列車の指令をレビュー：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :切
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :入（停止中の車両を取り除く）

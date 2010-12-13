@@ -806,7 +806,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} terlalu usang
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} terlalu usang dan memerlukan penggantian segera
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} tidak dapat mencari jalan untuk meneruskan perjalanan.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} telah sesat.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} telah sesat.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :Keuntungan {WHITE}{VEHICLE} pada tahun lepas ialah {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} berhenti kerana arahan arahan pengubahsuian gagal
@@ -1130,7 +1130,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Menukar 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lapangan terbang tidak akan tamat tempohnya: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Beri amaran jika keretapi sesat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kaji semula arahan kenderaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :tidak
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ya, tetapi kecuali kenderaan rencat

@@ -811,7 +811,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} er meget gammel
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} er meget gammel, og må udskiftes omgående
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan ikke finde en rute at fortsætte ad.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} er faret vild.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} er faret vild.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}s indtjening sidste år var {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stoppet fordi en ombygnings ordre fejlede
@@ -1141,7 +1141,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Denne in
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lufthavnenes levealder udløber aldrig: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Advar hvis tog er faret vild: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kontroller køretøjers ordreliste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nej
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, men udelad stoppede køretøjer

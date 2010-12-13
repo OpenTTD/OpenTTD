@@ -1009,7 +1009,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} previše zastareva
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} previše zastareva i hitno bi ga/je trebalo zameniti
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne može da nađe put za dalje.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} se izgubio.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se izgubio.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} je prošle godine imao dobit od {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Neuspešna primena naredbe preuređivanja {VEHICLE}
@@ -1340,7 +1340,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Promena 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Nezastarevanje aerodroma: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Upozorenje ako se voz izgubi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Provera naredbi vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nijedno
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :samo aktivna

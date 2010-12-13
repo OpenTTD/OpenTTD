@@ -889,7 +889,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} labai paseno
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} labai paseno ir skubiai reikalauja pakeitimo
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} negali rasti kelio
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} pasimetė
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} pasimetė
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} pelnas pernai buvo {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} sustojo nes nepavyko nurodytas remontas
@@ -1216,7 +1216,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Neįmano
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Oro uostai niekada nepasensta: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Perspėti apie traukinio praradimą: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Peržiūrėti tr. pr. užduotis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :taip, bet išskyrus sustabdytas tr. pr.

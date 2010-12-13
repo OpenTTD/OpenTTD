@@ -959,7 +959,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Тран
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Транспортное средство «{VEHICLE}» сильно устарело
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Транспортное средство «{VEHICLE}» очень сильно устарело и требует срочной замены
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не может найти путь для продолжения движения.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}Транспортное средство «{VEHICLE}» заблудилось.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}Транспортное средство «{VEHICLE}» заблудилось.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Доход ТС «{VEHICLE}» в прошлом году составил {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Не удалось переоборудовать {VEHICLE}
@@ -1299,7 +1299,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Изме
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Аэропорты не устаревают: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Предупреждать, если поезд заблудился: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Проверять маршруты на правильность: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :не проверять
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :у всех запущенных

@@ -793,7 +793,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} ir kļuvis ļoti vecs
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} ir kļuvis ļoti vecs un tam steidzami nepieciešama nomaiņa
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nevar atrast ceļu, lai turpinātu
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} ir apmaldījies
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} ir apmaldījies
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} iepriekšējā gada ienākumi bija {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} ir apstājies, jo tā pārkonfigurācijas rīkojums izgāzās
@@ -1100,7 +1100,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo para
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lidostas darbosies mūžīgi: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Brīdināt, ja vilciens apmaldās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pārskatīt transportu rīkojumus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nē
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apstādinātos transportus

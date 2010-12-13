@@ -807,7 +807,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} tre malnoviĝis
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} tro malnoviĝis kaj postulas anstataŭiĝon
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne povas trovi padon por daŭrigi.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} estas perdita.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} estas perdita.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} pasintjare gajnis {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} haltis ĉar komanda transformo fiaskis
@@ -1129,7 +1129,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ne eblas
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flughavenoj neniam antikviĝas: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avertu se trajno perdiĝas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revui veturilajn ordonojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jes, escepte de haltigitaj veturiloj

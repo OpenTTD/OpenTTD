@@ -815,7 +815,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} е много остаряло
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} е прекалено остаряло и спешно има нужда от замяна
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} не може да намери път за да продължи.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} се е загубил.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} се е загубил.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} миналата година е направил печалба от {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} спря поради провалена задача за преоборудване
@@ -1154,7 +1154,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Пром
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Летишата не губят валидност: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Предупреждение при загубен влак: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Преглед на заповеди: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :изключен
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :включен, но без спрените ПС

@@ -815,7 +815,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} wird sehr alt
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} wird sehr alt und sollte dringend ersetzt werden
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} findet keinen Weg zum Vorankommen.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} hat sich verirrt.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} hat sich verirrt.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Der Ertrag von {VEHICLE} lag im letzten Jahr bei {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Umrüstungsauftag fehlgeschlagen bei {VEHICLE}
@@ -1146,7 +1146,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Diese Ei
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flughäfen veralten nie: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Warnen, wenn sich ein Zug verirrt hat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Fahrpläne prüfen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nein
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ja, außer gestoppte Fahrzeuge

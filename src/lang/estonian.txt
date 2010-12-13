@@ -867,7 +867,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} on väga vanaks saamas
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} on väga vanaks saamas ja vajab kiiret väljavahetamist
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ei leia jätkamiseks rada.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} on eksinud.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} on eksinud.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} tulud eelmisel aastal olid {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} - Sõiduk peatus, sest ümberseadistamine ebaõnnestus
@@ -1194,7 +1194,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõiduki
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aegumatud lennuväljad: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Hoiatamine rongide eksimisel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Sõidukite sihtpunktide ülevaade: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jah, kuid jäta välja seisatud veovahendid

@@ -786,7 +786,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}Mae {VEH
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}Mae {VEHICLE} yn hynod o hen
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}Mae {VEHICLE} yn hynod o hen ac angen ei ddisodli
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}Mae {VEHICLE} yn methu dod o hyd i lwybr er mwyn parhau.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}Mae {VEHICLE} ar goll.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}Mae {VEHICLE} ar goll.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Elw {VEHICLE} y flwyddyn diwethaf oedd {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Stopiodd achos methiant hefo trefnu ailffitio {VEHICLE}
@@ -1088,7 +1088,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Nid yw h
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Maes awyr ddim yn dibennu: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Rhybuddio os yw'r trên ar goll: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Adolygu gorchmynion y cerbyd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :na
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :iawn, ond hepgor cerbydau sydd wedi'i stopio

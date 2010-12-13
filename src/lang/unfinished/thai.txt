@@ -813,7 +813,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} เก่ามากแล้ว
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} เก่ามากแล้ว และควรเปลี่ยนใหม่ในทันที
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ไม่สามารถหาทางไปต่อได้.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} กำลังหลงทาง.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} กำลังหลงทาง.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}กำไรของ {VEHICLE} เมื่อปีที่ผ่านมา {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} หยุดเนื่องจากการเปลี่ยนชนิดบรรทุกไม่สำเร็จ
@@ -1144,7 +1144,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}เป�
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}สนามบินไม่มีวันหมดอายุ: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}เตือนเมื่อรถไฟหลงทาง: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}ทบทวนดูคำสั่งของยานพาหนะ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ไม่
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ใช่ แต่ยกเว้นยานพาหนะที่หยุดวิ่ง

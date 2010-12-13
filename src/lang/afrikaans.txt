@@ -803,7 +803,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} raak baie oud.
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} raak baie oud en benodig dringende vervanging.
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan nie 'n roete vind om aan te gaan nie.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} is verlore.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is verlore.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} se wins was verlede jaar {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} het gestop omdat 'n herstel opdrag gefaal
@@ -1126,7 +1126,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Die vera
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lughawes verval nooit nie: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Waarsku as trein verloor is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Bespreek voertuig se opdrae: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, maar sluit uit gestop voertuie

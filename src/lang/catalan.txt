@@ -815,7 +815,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} s'està fent molt vell
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} s'està fent molt vell i necessita ser substituït urgentment
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no pot trobar un camí per on continuar.
-STR_NEWS_TRAIN_IS_LOST                                          :{WHITE}{VEHICLE} està perdut.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} està perdut.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}El benefici del {VEHICLE} l'any passat va ser de {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}El {VEHICLE} s'ha parat perquè l'ordre de remodelació ha fallat
@@ -1146,7 +1146,6 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es po
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Els aeroports mai caduquen: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_WARN_LOST_TRAIN                              :{LTBLUE}Avisa si un tren es perd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisa ordres dels vehicles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :si, excepte vehicles parats
