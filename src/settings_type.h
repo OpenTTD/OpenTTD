@@ -43,7 +43,7 @@ struct DifficultySettings {
 struct GUISettings {
 	bool   vehicle_speed;                    ///< show vehicle speed
 	bool   sg_full_load_any;                 ///< new full load calculation, any cargo must be full read from pre v93 savegames
-	bool   lost_train_warn;                  ///< if a train can't find its destination, show a warning
+	bool   lost_vehicle_warn;                ///< if a vehicle can't find its destination, show a warning
 	uint8  order_review_system;              ///< perform order reviews on vehicles
 	bool   vehicle_income_warn;              ///< if a vehicle isn't generating income, show a warning
 	bool   status_long_date;                 ///< always show long date in status bar

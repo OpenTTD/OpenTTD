@@ -2417,7 +2417,7 @@ static Track ChooseTrainTrack(Train *v, TileIndex tile, DiagDirection enterdir, 
 				SetBit(v->vehicle_flags, VF_PATHFINDER_LOST);
 				/* and notify user about the event */
 				AI::NewEvent(v->owner, new AIEventVehicleLost(v->index));
-				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
+				if (_settings_client.gui.lost_vehicle_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					AddVehicleNewsItem(
 						STR_NEWS_TRAIN_IS_LOST,
@@ -3609,7 +3609,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 
 			if (HasBit(v->flags, VRF_TRAIN_STUCK) && v->wait_counter > 2 * _settings_game.pf.wait_for_pbs_path * DAY_TICKS) {
 				/* Show message to player. */
-				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
+				if (_settings_client.gui.lost_vehicle_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					AddVehicleNewsItem(
 						STR_NEWS_TRAIN_IS_STUCK,
