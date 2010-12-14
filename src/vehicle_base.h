@@ -360,6 +360,15 @@ public:
 	}
 
 	/**
+	 * Check if the vehicle is a ground vehicle.
+	 * @return True iff the vehicle is a train or a road vehicle.
+	 */
+	FORCEINLINE bool IsGroundVehicle() const
+	{
+		return this->type == VEH_TRAIN || this->type == VEH_ROAD;
+	}
+
+	/**
 	 * Gets the speed in km-ish/h that can be sent into SetDParam for string processing.
 	 * @return the vehicle's speed
 	 */

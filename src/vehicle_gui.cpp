@@ -435,7 +435,7 @@ struct RefitWindow : public Window {
 				}
 				current_index++;
 			}
-		} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (v = v->Next()) != NULL);
+		} while (v->IsGroundVehicle() && (v = v->Next()) != NULL);
 
 		int scroll_size = 0;
 		for (uint i = 0; i < NUM_CARGO; i++) {
@@ -2033,7 +2033,7 @@ static bool IsVehicleRefitable(const Vehicle *v)
 
 	do {
 		if (IsEngineRefittable(v->engine_type)) return true;
-	} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (v = v->Next()) != NULL);
+	} while (v->IsGroundVehicle() && (v = v->Next()) != NULL);
 
 	return false;
 }
@@ -2311,7 +2311,7 @@ public:
 										CcCloneVehicle);
 				break;
 			case VVW_WIDGET_TURN_AROUND: // turn around
-				assert(v->type == VEH_TRAIN || v->type == VEH_ROAD);
+				assert(v->IsGroundVehicle());
 				DoCommandP(v->tile, v->index, 0,
 										_vehicle_command_translation_table[VCT_CMD_TURN_AROUND][v->type]);
 				break;
@@ -2345,7 +2345,7 @@ public:
 			this->SetWidgetDirty(VVW_WIDGET_SELECT_DEPOT_CLONE);
 		}
 		/* The same system applies to widget VVW_WIDGET_REFIT_VEH and VVW_WIDGET_TURN_AROUND.*/
-		if (v->type == VEH_ROAD || v->type == VEH_TRAIN) {
+		if (v->IsGroundVehicle()) {
 			PlaneSelections plane = veh_stopped ? SEL_RT_REFIT : SEL_RT_TURN_AROUND;
 			NWidgetStacked *nwi = this->GetWidget<NWidgetStacked>(VVW_WIDGET_SELECT_REFIT_TURN);
 			if (nwi->shown_plane + SEL_RT_BASEPLANE != plane) {

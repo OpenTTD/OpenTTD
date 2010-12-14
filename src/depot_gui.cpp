@@ -305,7 +305,7 @@ struct DepotWindow : Window {
 		}
 
 		uint diff_x, diff_y;
-		if (v->type == VEH_TRAIN || v->type == VEH_ROAD) {
+		if (v->IsGroundVehicle()) {
 			/* Arrange unitnumber and flag horizontally */
 			diff_x = this->flag_width + WD_FRAMERECT_LEFT;
 			diff_y = (this->resize.step_height - this->flag_height) / 2 - 2;

@@ -506,7 +506,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 
 		Vehicle *target;
 		FOR_ALL_VEHICLES(target) {
-			if (target->type == VEH_TRAIN || target->type == VEH_ROAD) {
+			if (target->IsGroundVehicle()) {
 				if (Delta(target->x_pos, v->x_pos) + Delta(target->y_pos, v->y_pos) <= 12 * (int)TILE_SIZE) {
 					target->breakdown_ctr = 5;
 					target->breakdown_delay = 0xF0;
