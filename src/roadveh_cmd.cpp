@@ -102,7 +102,7 @@ int RoadVehicle::GetDisplayImageWidth(Point *offset) const
 		offset->x = reference_width / 2;
 		offset->y = 0;
 	}
-	return this->rcache.cached_veh_length * reference_width / 8;
+	return this->gcache.cached_veh_length * reference_width / 8;
 }
 
 static SpriteID GetRoadVehIcon(EngineID engine)
@@ -175,18 +175,18 @@ void RoadVehUpdateCache(RoadVehicle *v)
 
 	v->InvalidateNewGRFCacheOfChain();
 
-	v->rcache.cached_total_length = 0;
+	v->gcache.cached_total_length = 0;
 
 	for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
 		/* Check the v->first cache. */
 		assert(u->First() == v);
 
 		/* Update the 'first engine' */
-		u->rcache.first_engine = (v == u) ? INVALID_ENGINE : v->engine_type;
+		u->gcache.first_engine = (v == u) ? INVALID_ENGINE : v->engine_type;
 
 		/* Update the length of the vehicle. */
-		u->rcache.cached_veh_length = GetRoadVehLength(u);
-		v->rcache.cached_total_length += u->rcache.cached_veh_length;
+		u->gcache.cached_veh_length = GetRoadVehLength(u);
+		v->gcache.cached_total_length += u->gcache.cached_veh_length;
 
 		/* Update visual effect */
 		v->UpdateVisualEffect();
@@ -236,7 +236,7 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 
 		v->last_station_visited = INVALID_STATION;
 		v->engine_type = e->index;
-		v->rcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
+		v->gcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
@@ -254,7 +254,7 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 
 		v->roadtype = HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 		v->compatible_roadtypes = RoadTypeToRoadTypes(v->roadtype);
-		v->rcache.cached_veh_length = 8;
+		v->gcache.cached_veh_length = 8;
 
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
@@ -1317,7 +1317,7 @@ again:
 	 * it's on a depot tile, check if it's time to activate the next vehicle in
 	 * the chain yet. */
 	if (v->Next() != NULL && IsRoadDepotTile(v->tile)) {
-		if (v->frame == v->rcache.cached_veh_length + RVC_DEPOT_START_FRAME) {
+		if (v->frame == v->gcache.cached_veh_length + RVC_DEPOT_START_FRAME) {
 			RoadVehLeaveDepot(v->Next(), false);
 		}
 	}

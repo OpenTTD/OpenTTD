@@ -847,19 +847,7 @@ static int CDECL VehicleValueSorter(const Vehicle * const *a, const Vehicle * co
 /** Sort vehicles by their length */
 static int CDECL VehicleLengthSorter(const Vehicle * const *a, const Vehicle * const *b)
 {
-	int r = 0;
-	switch ((*a)->type) {
-		case VEH_TRAIN:
-			r = Train::From(*a)->tcache.cached_total_length - Train::From(*b)->tcache.cached_total_length;
-			break;
-
-		case VEH_ROAD: {
-			r = RoadVehicle::From(*a)->rcache.cached_total_length - RoadVehicle::From(*b)->rcache.cached_total_length;
-			break;
-		}
-
-		default: NOT_REACHED();
-	}
+	int r = (*a)->GetGroundVehicleCache()->cached_total_length - (*b)->GetGroundVehicleCache()->cached_total_length;
 	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 

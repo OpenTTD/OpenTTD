@@ -68,16 +68,12 @@ struct TrainCache {
 	uint16 last_speed; // NOSAVE: only used in UI
 
 	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
-	uint16 cached_total_length; ///< Length of the whole train, valid only for first engine.
-	uint8 cached_veh_length;    ///< length of this vehicle in units of 1/8 of normal length, cached because this can be set by a callback
 	bool cached_tilt;           ///< train can tilt; feature provides a bonus in curves
+
+	byte user_def_data;         ///< Cached property 0x25. Can be set by Callback 0x36.
 
 	/* cached max. speed / acceleration data */
 	int cached_max_curve_speed; ///< max consist speed limited by curves
-
-	byte user_def_data;
-
-	EngineID first_engine;  ///< cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.
 };
 
 /**
@@ -387,7 +383,7 @@ protected: // These functions should not be called outside acceleration code.
 	{
 		/* For powered wagons the engine defines the type of engine (i.e. railtype) */
 		if (HasBit(this->flags, VRF_POWEREDWAGON) && HasPowerOnRail(head->railtype, GetRailType(this->tile))) {
-			return RailVehInfo(this->tcache.first_engine)->pow_wag_power;
+			return RailVehInfo(this->gcache.first_engine)->pow_wag_power;
 		}
 
 		return 0;
@@ -408,7 +404,7 @@ protected: // These functions should not be called outside acceleration code.
 
 		/* Powered wagons have extra weight added. */
 		if (HasBit(this->flags, VRF_POWEREDWAGON)) {
-			weight += RailVehInfo(this->tcache.first_engine)->pow_wag_weight;
+			weight += RailVehInfo(this->gcache.first_engine)->pow_wag_weight;
 		}
 
 		return weight;

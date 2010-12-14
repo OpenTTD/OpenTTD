@@ -421,7 +421,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 
 	if (old_head->type == VEH_TRAIN) {
 		/* Store the length of the old vehicle chain, rounded up to whole tiles */
-		uint16 old_total_length = CeilDiv(Train::From(old_head)->tcache.cached_total_length, TILE_SIZE) * TILE_SIZE;
+		uint16 old_total_length = CeilDiv(Train::From(old_head)->gcache.cached_total_length, TILE_SIZE) * TILE_SIZE;
 
 		int num_units = 0; ///< Number of units in the chain
 		for (Train *w = Train::From(old_head); w != NULL; w = w->GetNextUnit()) num_units++;
@@ -481,7 +481,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 			}
 
 			/* When wagon removal is enabled and the new engines without any wagons are already longer than the old, we have to fail */
-			if (cost.Succeeded() && wagon_removal && new_head->tcache.cached_total_length > old_total_length) cost = CommandCost(STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT);
+			if (cost.Succeeded() && wagon_removal && new_head->gcache.cached_total_length > old_total_length) cost = CommandCost(STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT);
 
 			/* Append/insert wagons into the new vehicle chain
 			 * We do this from back to front, so we can stop when wagon removal or maximum train length (i.e. from mammoth-train setting) is triggered.
@@ -495,7 +495,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 						/* Insert wagon after 'last_engine' */
 						CommandCost res = MoveVehicle(append, last_engine, DC_EXEC, false);
 
-						if (res.Succeeded() && wagon_removal && new_head->tcache.cached_total_length > old_total_length) {
+						if (res.Succeeded() && wagon_removal && new_head->gcache.cached_total_length > old_total_length) {
 							MoveVehicle(append, NULL, DC_EXEC | DC_AUTOREPLACE, false);
 							break;
 						}

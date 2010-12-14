@@ -110,7 +110,7 @@ void CheckTrainsLengths()
 			for (const Train *u = v, *w = v->Next(); w != NULL; u = w, w = w->Next()) {
 				if (u->track != TRACK_BIT_DEPOT) {
 					if ((w->track != TRACK_BIT_DEPOT &&
-							max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->tcache.cached_veh_length) ||
+							max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->gcache.cached_veh_length) ||
 							(w->track == TRACK_BIT_DEPOT && TicksToLeaveDepot(u) <= 0)) {
 						SetDParam(0, v->index);
 						SetDParam(1, v->owner);
@@ -152,7 +152,7 @@ void Train::ConsistChanged(bool same_length)
 
 	const RailVehicleInfo *rvi_v = RailVehInfo(this->engine_type);
 	EngineID first_engine = this->IsFrontEngine() ? this->engine_type : INVALID_ENGINE;
-	this->tcache.cached_total_length = 0;
+	this->gcache.cached_total_length = 0;
 	this->compatible_railtypes = RAILTYPES_NONE;
 
 	bool train_can_tilt = true;
@@ -164,7 +164,7 @@ void Train::ConsistChanged(bool same_length)
 		assert(u->First() == this);
 
 		/* update the 'first engine' */
-		u->tcache.first_engine = this == u ? INVALID_ENGINE : first_engine;
+		u->gcache.first_engine = this == u ? INVALID_ENGINE : first_engine;
 		u->railtype = rvi_u->railtype;
 
 		if (u->IsEngine()) first_engine = u->engine_type;
@@ -189,7 +189,7 @@ void Train::ConsistChanged(bool same_length)
 		if (!HasBit(e_u->info.misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
 
 		/* Cache wagon override sprite group. NULL is returned if there is none */
-		u->tcache.cached_override = GetWagonOverrideSpriteSet(u->engine_type, u->cargo_type, u->tcache.first_engine);
+		u->tcache.cached_override = GetWagonOverrideSpriteSet(u->engine_type, u->cargo_type, u->gcache.first_engine);
 
 		/* Reset colour map */
 		u->colourmap = PAL_NONE;
@@ -237,12 +237,12 @@ void Train::ConsistChanged(bool same_length)
 		veh_len = 8 - Clamp(veh_len, 0, 7);
 
 		/* verify length hasn't changed */
-		if (same_length && veh_len != u->tcache.cached_veh_length) RailVehicleLengthChanged(u);
+		if (same_length && veh_len != u->gcache.cached_veh_length) RailVehicleLengthChanged(u);
 
 		/* update vehicle length? */
-		if (!same_length) u->tcache.cached_veh_length = veh_len;
+		if (!same_length) u->gcache.cached_veh_length = veh_len;
 
-		this->tcache.cached_total_length += u->tcache.cached_veh_length;
+		this->gcache.cached_total_length += u->gcache.cached_veh_length;
 		this->InvalidateNewGRFCache();
 		u->InvalidateNewGRFCache();
 	}
@@ -281,7 +281,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 	/* Default to the middle of the station for stations stops that are not in
 	 * the order list like intermediate stations when non-stop is disabled */
 	OrderStopLocation osl = OSL_PLATFORM_MIDDLE;
-	if (v->tcache.cached_total_length >= *station_length) {
+	if (v->gcache.cached_total_length >= *station_length) {
 		/* The train is longer than the station, make it stop at the far end of the platform */
 		osl = OSL_PLATFORM_FAR_END;
 	} else if (v->current_order.IsType(OT_GOTO_STATION) && v->current_order.GetDestination() == station_id) {
@@ -294,11 +294,11 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 		default: NOT_REACHED();
 
 		case OSL_PLATFORM_NEAR_END:
-			stop = v->tcache.cached_total_length;
+			stop = v->gcache.cached_total_length;
 			break;
 
 		case OSL_PLATFORM_MIDDLE:
-			stop = *station_length - (*station_length - v->tcache.cached_total_length) / 2;
+			stop = *station_length - (*station_length - v->gcache.cached_total_length) / 2;
 			break;
 
 		case OSL_PLATFORM_FAR_END:
@@ -308,7 +308,7 @@ int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, i
 
 	/* Subtract half the front vehicle length of the train so we get the real
 	 * stop location of the train. */
-	return stop - (v->tcache.cached_veh_length + 1) / 2;
+	return stop - (v->gcache.cached_veh_length + 1) / 2;
 }
 
 
@@ -455,7 +455,7 @@ int Train::GetDisplayImageWidth(Point *offset) const
 		offset->x = reference_width / 2;
 		offset->y = vehicle_pitch;
 	}
-	return this->tcache.cached_veh_length * reference_width / 8;
+	return this->gcache.cached_veh_length * reference_width / 8;
 }
 
 static SpriteID GetDefaultTrainSprite(uint8 spritenum, Direction direction)
@@ -551,7 +551,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 		v->spritenum = rvi->image_index;
 
 		v->engine_type = e->index;
-		v->tcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
+		v->gcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
 
 		DiagDirection dir = GetRailDepotDirection(tile);
 
@@ -697,7 +697,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->last_station_visited = INVALID_STATION;
 
 		v->engine_type = e->index;
-		v->tcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
+		v->gcache.first_engine = INVALID_ENGINE; // needs to be set before first callback
 
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
@@ -963,8 +963,8 @@ static CommandCost CheckTrainAttachment(Train *t)
 			allowed_len--; // We do not count articulated parts and rear heads either.
 
 			/* Back up and clear the first_engine data to avoid using wagon override group */
-			EngineID first_engine = t->tcache.first_engine;
-			t->tcache.first_engine = INVALID_ENGINE;
+			EngineID first_engine = t->gcache.first_engine;
+			t->gcache.first_engine = INVALID_ENGINE;
 
 			/* We don't want the cache to interfere. head's cache is cleared before
 			 * the loop and after each callback does not need to be cleared here. */
@@ -973,7 +973,7 @@ static CommandCost CheckTrainAttachment(Train *t)
 			uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, head->engine_type, t, head);
 
 			/* Restore original first_engine data */
-			t->tcache.first_engine = first_engine;
+			t->gcache.first_engine = first_engine;
 
 			/* We do not want to remember any cached variables from the test run */
 			t->InvalidateNewGRFCache();
@@ -1599,7 +1599,7 @@ static void AdvanceWagonsBeforeSwap(Train *v)
 		last = last->Previous();
 		first = first->Next();
 
-		int differential = base->tcache.cached_veh_length - last->tcache.cached_veh_length;
+		int differential = base->gcache.cached_veh_length - last->gcache.cached_veh_length;
 
 		/* do not update images now
 		 * negative differential will be handled in AdvanceWagonsAfterSwap() */
@@ -1659,7 +1659,7 @@ static void AdvanceWagonsAfterSwap(Train *v)
 		last = last->Previous();
 		first = first->Next();
 
-		int differential = last->tcache.cached_veh_length - base->tcache.cached_veh_length;
+		int differential = last->gcache.cached_veh_length - base->gcache.cached_veh_length;
 
 		/* do not update images now */
 		for (int i = 0; i < differential; i++) TrainController(first, (nomove ? last->Next() : NULL));
@@ -3387,7 +3387,7 @@ static bool TrainApproachingLineEnd(Train *v, bool signal)
 	}
 
 	/* do not reverse when approaching red signal */
-	if (!signal && x + (v->tcache.cached_veh_length + 1) / 2 >= TILE_SIZE) {
+	if (!signal && x + (v->gcache.cached_veh_length + 1) / 2 >= TILE_SIZE) {
 		/* we are too near the tile end, reverse now */
 		v->cur_speed = 0;
 		ReverseTrainDirection(v);

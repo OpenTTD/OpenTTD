@@ -1145,7 +1145,6 @@ static void CheckCaches()
 		VehicleCache       *veh_cache = CallocT<VehicleCache>(length);
 		GroundVehicleCache *gro_cache = CallocT<GroundVehicleCache>(length);
 		TrainCache         *tra_cache = CallocT<TrainCache>(length);
-		RoadVehicleCache   *roa_cache = CallocT<RoadVehicleCache>(length);
 
 		length = 0;
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
@@ -1159,7 +1158,6 @@ static void CheckCaches()
 					break;
 				case VEH_ROAD:
 					gro_cache[length] = RoadVehicle::From(u)->gcache;
-					roa_cache[length] = RoadVehicle::From(u)->rcache;
 					break;
 				default:
 					break;
@@ -1197,9 +1195,6 @@ static void CheckCaches()
 					if (memcmp(&gro_cache[length], &RoadVehicle::From(u)->gcache, sizeof(GroundVehicleCache)) != 0) {
 						DEBUG(desync, 2, "road vehicle ground vehicle cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
 					}
-					if (memcmp(&roa_cache[length], &RoadVehicle::From(u)->rcache, sizeof(RoadVehicleCache)) != 0) {
-						DEBUG(desync, 2, "road vehicle cache mismatch: vehicle %i, company %i, unit number %i, wagon %i", v->index, (int)v->owner, v->unitnumber, length);
-					}
 					break;
 				default:
 					break;
@@ -1211,7 +1206,6 @@ static void CheckCaches()
 		free(veh_cache);
 		free(gro_cache);
 		free(tra_cache);
-		free(roa_cache);
 	}
 
 	/* Check whether the caches are still valid */

@@ -313,6 +313,9 @@ void AddArticulatedParts(Vehicle *first)
 		 * and we run out of available vehicles, bail out. */
 		if (!Vehicle::CanAllocateItem()) return;
 
+		GroundVehicleCache *gcache = v->GetGroundVehicleCache();
+		gcache->first_engine = v->engine_type; // Needs to be set before first callback
+
 		const Engine *e_artic = Engine::Get(engine_type);
 		switch (type) {
 			default: NOT_REACHED();
@@ -326,7 +329,6 @@ void AddArticulatedParts(Vehicle *first)
 				t->subtype = 0;
 				t->track = front->track;
 				t->railtype = front->railtype;
-				t->tcache.first_engine = front->engine_type; // needs to be set before first callback
 
 				t->spritenum = e_artic->u.rail.image_index;
 				if (e_artic->CanCarryCargo()) {
@@ -348,8 +350,7 @@ void AddArticulatedParts(Vehicle *first)
 				v = rv;
 
 				rv->subtype = 0;
-				rv->rcache.first_engine = front->engine_type; // needs to be set before first callback
-				rv->rcache.cached_veh_length = 8; // Callback is called when the consist is finished
+				gcache->cached_veh_length = 8; // Callback is called when the consist is finished
 				rv->state = RVSB_IN_DEPOT;
 
 				rv->roadtype = front->roadtype;

@@ -83,18 +83,10 @@ enum RoadVehicleSubType {
 
 void RoadVehUpdateCache(RoadVehicle *v);
 
-/** Cached oftenly queried (NewGRF) values */
-struct RoadVehicleCache {
-	uint16 cached_total_length; ///< Length of the whole train, valid only for first engine.
-	byte cached_veh_length;     ///< length of this vehicle in units of 1/8 of normal length, cached because this can be set by a callback
-	EngineID first_engine;      ///< Cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.
-};
-
 /**
  * Buses, trucks and trams belong to this class.
  */
 struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
-	RoadVehicleCache rcache; ///< Cache of often used calculated values
 	byte state;             ///< @see RoadVehicleStates
 	byte frame;
 	uint16 blocked_ctr;

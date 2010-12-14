@@ -287,7 +287,7 @@ struct DepotWindow : Window {
 						this->sel, free_wagon ? 0 : this->hscroll->GetPosition(), this->vehicle_over);
 
 				/* Number of wagons relative to a standard length wagon (rounded up) */
-				SetDParam(0, CeilDiv(u->tcache.cached_total_length, 8));
+				SetDParam(0, CeilDiv(u->gcache.cached_total_length, 8));
 				DrawString(rtl ? left + WD_FRAMERECT_LEFT : right - this->count_width, rtl ? left + this->count_width : right - WD_FRAMERECT_RIGHT, y + (this->resize.step_height - FONT_HEIGHT_SMALL) / 2, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 				break;
 			}
@@ -507,19 +507,7 @@ struct DepotWindow : Window {
 					this->sel = v->index;
 					this->SetDirty();
 
-					switch (v->type) {
-						case VEH_TRAIN:
-							_cursor.short_vehicle_offset = 16 - Train::From(v)->tcache.cached_veh_length * 2;
-							break;
-
-						case VEH_ROAD:
-							_cursor.short_vehicle_offset = 16 - RoadVehicle::From(v)->rcache.cached_veh_length * 2;
-							break;
-
-						default:
-							_cursor.short_vehicle_offset = 0;
-							break;
-					}
+					_cursor.short_vehicle_offset = v->IsGroundVehicle() ? 16 - v->GetGroundVehicleCache()->cached_veh_length * 2 : 0;
 					_cursor.vehchain = _ctrl_pressed;
 				}
 				break;

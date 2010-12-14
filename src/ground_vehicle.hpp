@@ -36,6 +36,11 @@ struct GroundVehicleCache {
 	uint16 cached_max_track_speed;  ///< Maximum consist speed limited by track type (valid only for the first engine).
 	uint32 cached_power;            ///< Total power of the consist (valid only for the first engine).
 	uint32 cached_air_drag;         ///< Air drag coefficient of the vehicle (valid only for the first engine).
+
+	/* Cached NewGRF values, recalculated on load and each time a vehicle is added to/removed from the consist. */
+	uint16 cached_total_length;     ///< Length of the whole vehicle (valid only for the first engine).
+	EngineID first_engine;          ///< Cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.
+	uint8 cached_veh_length;        ///< Length of this vehicle in units of 1/8 of normal length. It is cached because this can be set by a callback.
 };
 
 /** Ground vehicle flags. */
