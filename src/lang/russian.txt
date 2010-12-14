@@ -362,7 +362,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Нажм
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Большое/маленькое окно
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прокрутка вверх/вниз
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Прокрутка влево/вправо
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Полная очистка прямоугольного участка земли
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Полная очистка прямоугольного участка земли. Ctrl выбирает область по диагонали
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}По умолчанию
@@ -1299,6 +1299,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Изме
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Аэропорты не устаревают: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Предупреждать, если ТС потерялось: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Проверять маршруты на правильность: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :не проверять
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :у всех запущенных
@@ -2242,9 +2243,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Прои
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Ландшафт
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Опустить угол земли
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Поднять угол земли
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выровнять землю
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Опустить угол земли. Перетаскивание опускает первый выбранный угол и выравнивает выбранную область до новой высоты угла. Ctrl выбирает область по диагонали
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Поднять угол земли. Перетаскивание поднимает первый выбранный угол и выравнивает выбранную область до новой высоты угла. Ctrl выбирает область по диагонали
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выровнять землю до высоты первого выбранного угла. Ctrl выбирает область по диагонали
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Покупка земли
 
 # Object construction window

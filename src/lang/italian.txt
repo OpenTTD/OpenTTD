@@ -238,7 +238,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Fare cli
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Seleziona dimensione grande/piccola della finestra
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra di scorrimento - scorre l'elenco su/giù
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra di scorrimento - scorre l'elenco a sinistra/destra
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolisce edifici etc. su un area di terra
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolisce edifici etc. su un riquadro di terra. CTRL seleziona l'area diagonalmente
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Predefinito
@@ -2070,9 +2070,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Rumore g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modellazione terreno
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abbassa un angolo del terreno
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Alza un angolo del terreno
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Livella terreno
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abbassa un angolo di terreno. Trascinando, l'area selezionata viene livellata alla nuova quota del primo angolo. CTRL seleziona l'area diagonalmente
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Alza un angolo di terreno. Trascinando, l'area selezionata viene livellata alla nuova quota del primo angolo. CTRL seleziona l'area diagonalmente
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Livella un'area di terreno alla quota del primo angolo selezionato. CTRL seleziona l'area diagonalmente
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acquista terreno per usi futuri
 
 # Object construction window

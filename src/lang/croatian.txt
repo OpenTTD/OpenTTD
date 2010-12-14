@@ -332,7 +332,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klikni i
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Namjesti veliku/malu veličinu prozora
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Klizna traka - lista gore/dolje
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Klizna traka - lista lijevo/desno
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sruši građevine itd. na kvadratu zemlje
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sruši građevine itd. na kvadratu zemlje. Ctrl selektira područje dijagonalno
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Zadano
@@ -2164,9 +2164,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Proizved
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Uređivanje krajolika
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Snizi vrh kvadrata zemlje
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Povisi vrh kvadrata zemlje
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ravnanje površine
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Snizi jedan kut zemlje. Povlačenje snižava prvi odabrani kut i poravnava selektirano područje na novu visinu prvog kuta. Ctrl selektira područje dijagonalno
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podigni jedan kut zemlje. Povlačenje podiže prvi odabrani kut i poravnava selektirano područje na novu visinu prvog kuta. Ctrl selektira područje dijagonalno
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Poravnaj područje zemlje na visinu prvog odabranog kuta. Ctrl selektira područje dijagonalno
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zemlju za buduću uporabu
 
 # Object construction window

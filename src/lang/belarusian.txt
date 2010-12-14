@@ -549,7 +549,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Наці
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Вялікае/маленькае вакно
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка ўверх/уніз
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Пракрутка налева/направа
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Поўная ачыстка квадрата зямлі
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Поўная ачыстка прамавугольнага ўчастка зямлі. Ctrl выбірае вобласьць па дыяганалі
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Па змоўчаньнi
@@ -1462,6 +1462,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Зьме
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Малыя аэрапорты ніколі не састарэюць: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Папярэджваць, калі ТС згубiўся: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Праверка заданьняў транспарту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :не правяраць
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :правяраць, акрамя тых, што стаяць
@@ -2405,9 +2406,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Узро
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Земляныя работы
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Панізіць вугал зямлі
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Падвысіць вугал зямлі
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выраўнаваць зямлю
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Апусціць кут зямлі. Перацягванне апускае першы абраны кут і выраўноўвае выбраную вобласьць да новай вышыні кута. Ctrl выбірае вобласьць па дыяганалі
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Падняць кут зямлі. Перацягванне падымае першы абраны кут і выраўноўвае выбраную вобласьць да новай вышыні кута. Ctrl выбірае вобласьць па дыяганалі
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Выраўнаваць зямлю да вышыні першага абранага кута. Ctrl выбірае вобласьць па дыяганалі
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Выкупіць зямлю для выкарыстаньня ў будучым
 
 # Object construction window

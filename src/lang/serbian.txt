@@ -424,7 +424,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Pritisni
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Izbor velikog/malog prozora
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skrol - pomera spisak gore/dole
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Klizač - pomera spisak levo/desno
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sruši građevinu i sl. na kvadratu tla
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Uklanja građevinu i dr. na kvadratu tla. Ctrl obeležava dijagonalno područje
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Prvobitno
@@ -1340,6 +1340,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Promena 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Nezastarevanje aerodroma: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Upozorenje ukoliko se vozilo izgubi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Provera naredbi vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nijedno
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :samo aktivna
@@ -2263,9 +2264,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Proizved
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Oblikovanje terena
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Spusti ugao tla
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podigni ugao tla
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Izjednači nivo tla
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Spušta ugao tla. Povlačenjem spušta prvi obeleženi ugao i izjednačava ostatk područja na nov nivo. Ctrl obeležava dijagonalno područje
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Podiže ugao tla. Povlačenjem podiže prvi obeleženi ugao i izjednačava ostatk područja na nov nivo. Ctrl obeležava dijagonalno područje
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Izjednačava nivo tla. Ctrl obeležava dijagonalno područje
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupovina zemljišta za kasnije korišćenje
 
 # Object construction window
