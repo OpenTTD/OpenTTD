@@ -854,9 +854,7 @@ static int CDECL VehicleLengthSorter(const Vehicle * const *a, const Vehicle * c
 			break;
 
 		case VEH_ROAD: {
-			const RoadVehicle *u;
-			for (u = RoadVehicle::From(*a); u != NULL; u = u->Next()) r += u->rcache.cached_veh_length;
-			for (u = RoadVehicle::From(*b); u != NULL; u = u->Next()) r -= u->rcache.cached_veh_length;
+			r = RoadVehicle::From(*a)->rcache.cached_total_length - RoadVehicle::From(*b)->rcache.cached_total_length;
 			break;
 		}
 
