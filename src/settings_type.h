@@ -106,6 +106,7 @@ struct GUISettings {
 #ifdef ENABLE_NETWORK
 	uint16 network_chat_box_width;           ///< width of the chat box in pixels
 	uint8  network_chat_box_height;          ///< height of the chat box in lines
+	uint16 network_chat_timeout;             ///< timeout of chat messages in seconds
 #endif
 
 	uint8  developer;                        ///< print non-fatal warnings in console (>= 1), copy debug output to console (== 2)

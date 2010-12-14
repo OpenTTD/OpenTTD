@@ -629,6 +629,7 @@ const SettingDesc _settings[] = {
 #ifdef ENABLE_NETWORK
 	  SDTC_VAR(gui.network_chat_box_width,   SLE_UINT16, S,  0,   620,      200,    65535, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(gui.network_chat_box_height,   SLE_UINT8, S,  0,    25,        5,      255, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(gui.network_chat_timeout,     SLE_UINT16, S,  0,    20,        1,    65535, 0, STR_NULL,                                       NULL),
 
 	  SDTC_VAR(network.sync_freq,            SLE_UINT16,C|S,NO,   100,        0,      100, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.frame_freq,            SLE_UINT8,C|S,NO,     0,        0,      100, 0, STR_NULL,                                       NULL),

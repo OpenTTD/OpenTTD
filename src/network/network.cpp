@@ -165,8 +165,6 @@ bool NetworkCompanyIsPassworded(CompanyID company_id)
  * If 'self_send' is true, this is the client who is sending the message */
 void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_send, const char *name, const char *str, int64 data)
 {
-	const int duration = 20; // Seconds the messages stay visible
-
 	StringID strid;
 	switch (action) {
 		case NETWORK_ACTION_SERVER_MESSAGE:
@@ -212,7 +210,7 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_se
 
 	DEBUG(desync, 1, "msg: %08x; %02x; %s", _date, _date_fract, message);
 	IConsolePrintF(colour, "%s", message);
-	NetworkAddChatMessage((TextColour)colour, duration, "%s", message);
+	NetworkAddChatMessage((TextColour)colour, _settings_client.gui.network_chat_timeout, "%s", message);
 }
 
 /* Calculate the frame-lag of a client */
