@@ -1359,6 +1359,13 @@ void GameLoop()
 		/* Singleplayer */
 		StateGameLoop();
 	}
+
+	/* Check chat messages roughly once a second. */
+	static uint check_message = 0;
+	if (++check_message > 1000 / MILLISECONDS_PER_TICK) {
+		check_message = 0;
+		NetworkChatMessageLoop();
+	}
 #else
 	StateGameLoop();
 #endif /* ENABLE_NETWORK */

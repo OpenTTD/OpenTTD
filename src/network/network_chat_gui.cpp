@@ -40,7 +40,7 @@ static const uint NETWORK_CHAT_LINE_SPACING = 3;
 struct ChatMessage {
 	char message[DRAW_STRING_BUFFER];
 	TextColour colour;
-	Date end_date;
+	uint32 remove_time;
 };
 
 /* used for chat window */
@@ -68,10 +68,10 @@ static inline uint GetChatMessageCount()
 /**
  * Add a text message to the 'chat window' to be shown
  * @param colour The colour this message is to be shown in
- * @param duration The duration of the chat message in game-days
+ * @param duration The duration of the chat message in seconds
  * @param message message itself in printf() style
  */
-void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *message, ...)
+void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const char *message, ...)
 {
 	char buf[DRAW_STRING_BUFFER];
 	const char *bufp;
@@ -104,7 +104,7 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *
 		/* The default colour for a message is company colour. Replace this with
 		 * white for any additional lines */
 		cmsg->colour = (bufp == buf && (colour & IS_PALETTE_COLOUR)) ? colour : TC_WHITE;
-		cmsg->end_date = _date + duration;
+		cmsg->remove_time = _realtime_tick + duration * 1000;
 
 		bufp += strlen(bufp) + 1; // jump to 'next line' in the formatted string
 	}
@@ -181,15 +181,15 @@ void NetworkUndrawChatMessage()
 	}
 }
 
-/** Check if a message is expired every day */
-void NetworkChatMessageDailyLoop()
+/** Check if a message is expired. */
+void NetworkChatMessageLoop()
 {
 	for (uint i = 0; i < MAX_CHAT_MESSAGES; i++) {
 		ChatMessage *cmsg = &_chatmsg_list[i];
 		if (cmsg->message[0] == '\0') continue;
 
 		/* Message has expired, remove from the list */
-		if (cmsg->end_date < _date) {
+		if (cmsg->remove_time < _realtime_tick) {
 			/* Move the remaining messages over the current message */
 			if (i != MAX_CHAT_MESSAGES - 1) memmove(cmsg, cmsg + 1, sizeof(*cmsg) * (MAX_CHAT_MESSAGES - i - 1));
 

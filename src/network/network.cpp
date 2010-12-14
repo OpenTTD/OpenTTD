@@ -165,7 +165,7 @@ bool NetworkCompanyIsPassworded(CompanyID company_id)
  * If 'self_send' is true, this is the client who is sending the message */
 void NetworkTextMessage(NetworkAction action, ConsoleColour colour, bool self_send, const char *name, const char *str, int64 data)
 {
-	const int duration = 10; // Game days the messages stay visible
+	const int duration = 20; // Seconds the messages stay visible
 
 	StringID strid;
 	switch (action) {

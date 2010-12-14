@@ -79,9 +79,9 @@ void NetworkServerKickClient(ClientID client_id);
 uint NetworkServerKickOrBanIP(const char *ip, bool ban);
 
 void NetworkInitChatMessage();
-void CDECL NetworkAddChatMessage(TextColour colour, uint8 duration, const char *message, ...) WARN_FORMAT(3, 4);
+void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const char *message, ...) WARN_FORMAT(3, 4);
 void NetworkUndrawChatMessage();
-void NetworkChatMessageDailyLoop();
+void NetworkChatMessageLoop();
 
 void NetworkAfterNewGRFScan();
 
