@@ -108,7 +108,7 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine)
 	uint16 cargo_capacity = GetVehicleDefaultCapacity(engine, &cargo_type);
 	if (cargo_type < NUM_CARGO) capacity[cargo_type] = cargo_capacity;
 
-	if (e->type != VEH_TRAIN && e->type != VEH_ROAD) return capacity;
+	if (!e->IsGroundVehicle()) return capacity;
 
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return capacity;
 
@@ -133,7 +133,7 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
 	if (IsEngineRefittable(engine)) return true;
 
 	const Engine *e = Engine::Get(engine);
-	if (e->type != VEH_TRAIN && e->type != VEH_ROAD) return false;
+	if (!e->IsGroundVehicle()) return false;
 
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return false;
 
@@ -161,7 +161,7 @@ void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, 
 	*union_mask = veh_cargos;
 	*intersection_mask = (veh_cargos != 0) ? veh_cargos : UINT32_MAX;
 
-	if (e->type != VEH_TRAIN && e->type != VEH_ROAD) return;
+	if (!e->IsGroundVehicle()) return;
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
