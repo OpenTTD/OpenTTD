@@ -55,21 +55,21 @@ void GroundVehicle<T, Type>::PowerChanged()
 		air_drag = (air_drag_value == 1) ? 0 : air_drag_value;
 	}
 
-	this->acc_cache.cached_air_drag = air_drag + 3 * air_drag * number_of_parts / 20;
+	this->gcache.cached_air_drag = air_drag + 3 * air_drag * number_of_parts / 20;
 
 	max_te *= 10000; // Tractive effort in (tonnes * 1000 * 10 =) N.
 	max_te /= 256;   // Tractive effort is a [0-255] coefficient.
-	if (this->acc_cache.cached_power != total_power || this->acc_cache.cached_max_te != max_te) {
+	if (this->gcache.cached_power != total_power || this->gcache.cached_max_te != max_te) {
 		/* Stop the vehicle if it has no power. */
 		if (total_power == 0) this->vehstatus |= VS_STOPPED;
 
-		this->acc_cache.cached_power = total_power;
-		this->acc_cache.cached_max_te = max_te;
+		this->gcache.cached_power = total_power;
+		this->gcache.cached_max_te = max_te;
 		SetWindowDirty(WC_VEHICLE_DETAILS, this->index);
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
-	this->acc_cache.cached_max_track_speed = max_track_speed;
+	this->gcache.cached_max_track_speed = max_track_speed;
 }
 
 /**
@@ -86,13 +86,13 @@ void GroundVehicle<T, Type>::CargoChanged()
 		uint32 current_weight = u->GetWeight();
 		weight += current_weight;
 		/* Slope steepness is in percent, result in N. */
-		u->acc_cache.cached_slope_resistance = current_weight * u->GetSlopeSteepness() * 100;
+		u->gcache.cached_slope_resistance = current_weight * u->GetSlopeSteepness() * 100;
 	}
 
 	/* Store consist weight in cache. */
-	this->acc_cache.cached_weight = max<uint32>(1, weight);
+	this->gcache.cached_weight = max<uint32>(1, weight);
 	/* Friction in bearings and other mechanical parts is 0.1% of the weight (result in N). */
-	this->acc_cache.cached_axle_resistance = 10 * weight;
+	this->gcache.cached_axle_resistance = 10 * weight;
 
 	/* Now update vehicle power (tractive effort is dependent on weight). */
 	this->PowerChanged();
@@ -110,10 +110,10 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	int32 speed = v->GetCurrentSpeed(); // [km/h-ish]
 
 	/* Weight is stored in tonnes. */
-	int32 mass = this->acc_cache.cached_weight;
+	int32 mass = this->gcache.cached_weight;
 
 	/* Power is stored in HP, we need it in watts. */
-	int32 power = this->acc_cache.cached_power * 746;
+	int32 power = this->gcache.cached_power * 746;
 
 	int32 resistance = 0;
 
@@ -122,19 +122,19 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	const int area = v->GetAirDragArea();
 	if (!maglev) {
 		/* Static resistance plus rolling friction. */
-		resistance = this->acc_cache.cached_axle_resistance;
+		resistance = this->gcache.cached_axle_resistance;
 		resistance += mass * v->GetRollingFriction();
 	}
 	/* Air drag; the air drag coefficient is in an arbitrary NewGRF-unit,
 	 * so we need some magic conversion factor. */
-	resistance += (area * this->acc_cache.cached_air_drag * speed * speed) / 500;
+	resistance += (area * this->gcache.cached_air_drag * speed * speed) / 500;
 
 	resistance += this->GetSlopeResistance();
 
 	/* This value allows to know if the vehicle is accelerating or braking. */
 	AccelStatus mode = v->GetAccelerationStatus();
 
-	const int max_te = this->acc_cache.cached_max_te; // [N]
+	const int max_te = this->gcache.cached_max_te; // [N]
 	int force;
 	if (speed > 0) {
 		if (!maglev) {

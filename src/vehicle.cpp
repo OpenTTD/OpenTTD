@@ -2032,7 +2032,7 @@ void Vehicle::ShowVisualEffect() const
 				 * - in Chance16 - the last value is 512 / 2^smoke_amount (max. smoke when 128 = smoke_amount of 2). */
 				int power_weight_effect = 0;
 				if (v->type == VEH_TRAIN) {
-					power_weight_effect = (32 >> (Train::From(this)->acc_cache.cached_power >> 10)) - (32 >> (Train::From(this)->acc_cache.cached_weight >> 9));
+					power_weight_effect = (32 >> (Train::From(this)->gcache.cached_power >> 10)) - (32 >> (Train::From(this)->gcache.cached_weight >> 9));
 				}
 				if (this->cur_speed < (this->vcache.cached_max_speed >> (2 >> _settings_game.vehicle.smoke_amount)) &&
 						Chance16((64 - ((this->cur_speed << 5) / this->vcache.cached_max_speed) + power_weight_effect), (512 >> _settings_game.vehicle.smoke_amount))) {

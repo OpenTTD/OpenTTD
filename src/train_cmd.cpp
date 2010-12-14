@@ -422,15 +422,15 @@ int Train::GetCurrentMaxSpeed() const
 		}
 	}
 
-	return min(max_speed, this->acc_cache.cached_max_track_speed);
+	return min(max_speed, this->gcache.cached_max_track_speed);
 }
 
 void Train::UpdateAcceleration()
 {
 	assert(this->IsFrontEngine());
 
-	uint power = this->acc_cache.cached_power;
-	uint weight = this->acc_cache.cached_weight;
+	uint power = this->gcache.cached_power;
+	uint weight = this->gcache.cached_weight;
 	assert(weight != 0);
 	this->acceleration = Clamp(power / weight * 4, 1, 255);
 }
@@ -1968,7 +1968,7 @@ static bool CheckTrainStayInDepot(Train *v)
 	}
 
 	/* if the train got no power, then keep it in the depot */
-	if (v->acc_cache.cached_power == 0) {
+	if (v->gcache.cached_power == 0) {
 		v->vehstatus |= VS_STOPPED;
 		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
 		return true;
@@ -2617,7 +2617,7 @@ int Train::UpdateSpeed()
 	switch (_settings_game.vehicle.train_acceleration_model) {
 		default: NOT_REACHED();
 		case AM_ORIGINAL:
-			max_speed = this->acc_cache.cached_max_track_speed;
+			max_speed = this->gcache.cached_max_track_speed;
 			accel = this->acceleration * (this->GetAccelerationStatus() == AS_BRAKE ? -4 : 2);
 			break;
 		case AM_REALISTIC:
@@ -2708,7 +2708,7 @@ static inline void AffectSpeedByZChange(Train *v, byte old_z)
 		v->cur_speed -= (v->cur_speed * rsp->z_up >> 8);
 	} else {
 		uint16 spd = v->cur_speed + rsp->z_down;
-		if (spd <= v->acc_cache.cached_max_track_speed) v->cur_speed = spd;
+		if (spd <= v->gcache.cached_max_track_speed) v->cur_speed = spd;
 	}
 }
 

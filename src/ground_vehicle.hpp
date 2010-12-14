@@ -22,17 +22,17 @@ enum AccelStatus {
 };
 
 /**
- * Cached acceleration values.
+ * Cached values.
  * All of these values except cached_slope_resistance are set only for the first part of a vehicle.
  */
-struct AccelerationCache {
-	/* Cached values, recalculated when the cargo on a vehicle changes (in addition to the conditions below) */
+struct GroundVehicleCache {
+	/* Cached acceleration values, recalculated when the cargo on a vehicle changes (in addition to the conditions below) */
 	uint32 cached_weight;           ///< Total weight of the consist.
 	uint32 cached_slope_resistance; ///< Resistance caused by weight when this vehicle part is at a slope.
 	uint32 cached_max_te;           ///< Maximum tractive effort of consist.
 	uint16 cached_axle_resistance;  ///< Resistance caused by the axles of the vehicle.
 
-	/* Cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
+	/* Cached acceleration values, recalculated on load and each time a vehicle is added to/removed from the consist. */
 	uint16 cached_max_track_speed;  ///< Maximum consist speed limited by track type.
 	uint32 cached_power;            ///< Total power of the consist.
 	uint32 cached_air_drag;         ///< Air drag coefficient of the vehicle.
@@ -67,8 +67,8 @@ enum GroundVehicleFlags {
  */
 template <class T, VehicleType Type>
 struct GroundVehicle : public SpecializedVehicle<T, Type> {
-	AccelerationCache acc_cache;
-	uint16 gv_flags; ///< @see GroundVehicleFlags
+	GroundVehicleCache gcache; ///< Cache of often calculated values.
+	uint16 gv_flags;           ///< @see GroundVehicleFlags.
 
 	/**
 	 * The constructor at SpecializedVehicle must be called.
@@ -89,9 +89,9 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 
 		for (const T *u = T::From(this); u != NULL; u = u->Next()) {
 			if (HasBit(u->gv_flags, GVF_GOINGUP_BIT)) {
-				incl += u->acc_cache.cached_slope_resistance;
+				incl += u->gcache.cached_slope_resistance;
 			} else if (HasBit(u->gv_flags, GVF_GOINGDOWN_BIT)) {
-				incl -= u->acc_cache.cached_slope_resistance;
+				incl -= u->gcache.cached_slope_resistance;
 			}
 		}
 
