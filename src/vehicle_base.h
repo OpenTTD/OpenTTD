@@ -98,6 +98,7 @@ extern VehiclePool _vehicle_pool;
 
 /* Some declarations of functions, so we can make them friendly */
 struct SaveLoad;
+struct GroundVehicleCache;
 extern const SaveLoad *GetVehicleDescription(VehicleType vt);
 struct LoadgameState;
 extern bool LoadOldVehicle(LoadgameState *ls, int num);
@@ -238,6 +239,9 @@ public:
 
 	void BeginLoading();
 	void LeaveStation();
+
+	GroundVehicleCache *GetGroundVehicleCache();
+	const GroundVehicleCache *GetGroundVehicleCache() const;
 
 	/**
 	 * Handle the loading of the vehicle; when not it skips through dummy

@@ -1701,34 +1701,25 @@ struct VehicleDetailsWindow : Window {
 				y += FONT_HEIGHT_NORMAL;
 
 				/* Draw max speed */
-				switch (v->type) {
-					case VEH_TRAIN:
-						SetDParam(2, v->GetDisplayMaxSpeed());
-						SetDParam(1, Train::From(v)->gcache.cached_power);
-						SetDParam(0, Train::From(v)->gcache.cached_weight);
-						SetDParam(3, Train::From(v)->gcache.cached_max_te / 1000);
-						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, (_settings_game.vehicle.train_acceleration_model != AM_ORIGINAL && GetRailTypeInfo(Train::From(v)->railtype)->acceleration_type != 2) ?
-								STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE : STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED);
-						break;
-
-					case VEH_ROAD:
-						if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
-							SetDParam(2, v->GetDisplayMaxSpeed());
-							SetDParam(1, RoadVehicle::From(v)->gcache.cached_power);
-							SetDParam(0, RoadVehicle::From(v)->gcache.cached_weight);
-							SetDParam(3, RoadVehicle::From(v)->gcache.cached_max_te / 1000);
-							DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE);
-							break;
-						}
-						/* FALL THROUGH */
-					case VEH_SHIP:
-					case VEH_AIRCRAFT:
-						SetDParam(0, v->GetDisplayMaxSpeed());
-						DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_MAX_SPEED);
-						break;
-
-					default: NOT_REACHED();
+				StringID string;
+				if (v->type == VEH_TRAIN ||
+						(v->type == VEH_ROAD && _settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL)) {
+					const GroundVehicleCache *gcache = v->GetGroundVehicleCache();
+					SetDParam(2, v->GetDisplayMaxSpeed());
+					SetDParam(1, gcache->cached_power);
+					SetDParam(0, gcache->cached_weight);
+					SetDParam(3, gcache->cached_max_te / 1000);
+					if (v->type == VEH_TRAIN && (_settings_game.vehicle.train_acceleration_model == AM_ORIGINAL ||
+							GetRailTypeInfo(Train::From(v)->railtype)->acceleration_type == 2)) {
+						string = STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED;
+					} else {
+						string = STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE;
+					}
+				} else {
+					SetDParam(0, v->GetDisplayMaxSpeed());
+					string = STR_VEHICLE_INFO_MAX_SPEED;
 				}
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, string);
 				y += FONT_HEIGHT_NORMAL;
 
 				/* Draw profit */
