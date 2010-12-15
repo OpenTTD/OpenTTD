@@ -809,6 +809,11 @@ static bool TrainAccelerationModelChanged(int32 p1)
 		}
 	}
 
+	/* These windows show acceleration values only when realistic acceleration is on. They must be redrawn after a setting change. */
+	SetWindowClassesDirty(WC_ENGINE_PREVIEW);
+	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
+	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
+
 	return true;
 }
 
