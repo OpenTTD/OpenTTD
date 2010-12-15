@@ -1001,6 +1001,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :minder
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :gewoan
 
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Warskôgje as in fehikel it paad bjuster is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nee
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksimale ôfstân fan râne oant Oaljefjild {ORANGE}{STRING}
@@ -1012,6 +1013,9 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 
 
 
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Stea ta by pausseare: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :gjin aksjes
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Eltse Aksje
 
 
 
@@ -1022,6 +1026,10 @@ STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Stêden
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :gjin {RED}(brekt houtseachmûne)
 
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Posysje fan statusbar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Lofts
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Midden
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Rjochts
 
 
 
@@ -1080,6 +1088,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Wolsto 
 
 # Cheat window
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Boartersguodlânskip
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Wizigje dit jier
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Nei Kleurenskema
@@ -1198,6 +1207,7 @@ STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Fe
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Lân delhelje...
 
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} Delhelle oant
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} delhelle
 
 
@@ -1233,6 +1243,8 @@ STR_NETWORK_ERROR_CLIENT_SAVEGAME                               :koe it lân net
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :joech tevolle opdrachten
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mooglik ferbinning kwyt
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De lêste{NUM} secondes {P "" s} is gjin data oankom fan e server
 
 # Network related errors
 ############ Leave those lines in this order!!
@@ -1973,7 +1985,11 @@ STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Totale F
 
 
 
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Verwiderje alle bestimmingen
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stop dielde bestimmingen
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stopje mei dielde bestimmingen
 
+STR_ORDER_SHARE                                                 :Dielde Bestimmingen
 
 
 # String parts to build the order string
@@ -2078,6 +2094,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... is a
 STR_ERROR_OWNED_BY                                              :{WHITE}... is fan {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebiet is fan in oar bedriuw
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} yn it paad
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Net tastean. Pausearre
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} gemiente stiet dit net ta
@@ -2233,6 +2250,7 @@ STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Begjin e
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Begjin en ein moatte op ien lijn wêze
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... beide úteinden fan'e brêge moatte op lân lizze
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... brêge te lang
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Brêge einiget bûten e râne fan e map
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kin hjir gjin tunnel boue...
@@ -2318,6 +2336,7 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Kin diss
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Kin de selektjere opdracht net oerslaan...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... wein kin net alle stasjons berikke
 
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kin net stopje my dielde bestimmingen
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te fier fan lêste bestimming
 
 # Timetable related errors

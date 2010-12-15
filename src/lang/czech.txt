@@ -883,8 +883,8 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} zastarává
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} silně zastarává
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} silně zastarává a nutně potřebuje nahradit
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nemůže najít cestu.
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se ztratil.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nemůže najít cestu
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} se ztratil{G 0:0 "" a o}
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} - loňský zisk {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} stojí kvůli selhání příkazu na změnu nákladu
@@ -3928,7 +3928,7 @@ STR_INDUSTRY_NAME_FARM_2                                        :Farma
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :Pila
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Les cukrové vaty
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Továrna na sladkosti
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Farma na baterie
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Farma na baterie
 STR_INDUSTRY_NAME_COLA_WELLS                                    :Kolové studny
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Hračkářství
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Továrna na hračky

@@ -299,7 +299,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Fogd és
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Kicsi/nagy ablakméret közötti váltás
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Görgetősáv - fel/le görgeti a listát
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Görgetősáv - jobbra/balra görgeti a listát
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Tárgyak lerombolása egy mezőről
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Építmények lerombolása egy mezőről. Ctrl lenyomásával átlós terület jelölhető ki
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Alapértelmezett
@@ -1209,6 +1209,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beáll
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Repülőterek nem avulnak el: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Figyelmeztessen, ha egy jármű eltévedt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Menetrend-ellenőrzés: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nincs
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :csak mozgó járművekre
@@ -2132,9 +2133,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Zajterme
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Tájrendezés
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Egy pont lesüllyesztése
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Egy pont megemelése
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Talajszintezés
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Egy pont lesüllyesztése. Húzással az első kiválasztott sarkot lesüllyeszti, majd a kiválasztott területet vele szintbe hozza. Ctrl lenyomásával átlós terület jelölhető ki
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Egy sarokpont megemelése. Húzással az első kiválasztott sarkot megemeli, majd a kiválasztott területet vele szintbe hozza. Ctrl lenyomásával átlós terület jelölhető ki
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Talaj szintre hozása a kijelölt saroknál fogva. Ctrl lenyomásával átlós terület jelölhető ki
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Földterület megvétele későbbi használatra
 
 # Object construction window

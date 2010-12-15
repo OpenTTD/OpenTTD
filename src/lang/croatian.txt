@@ -1241,6 +1241,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Mijenjan
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Zračne luke nikad ne ističu: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Upozori ako je vozilo izgubljeno: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pregledaj naredbe vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, ali isključi zaustavljena vozila
@@ -3311,11 +3312,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Preskoč
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Obriši
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Obriši označenu naredbu
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Izbriši sve naredbe
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Prekini dijeljenje
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Prekini dijeljenje liste naredbi. Ctrl+Klik dodatno briše sve naredbe za ovo vozilo.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Idi do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idi do najbližeg spremišta
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Idi do najbližeg hangara
 STR_ORDER_CONDITIONAL                                           :Uvjetovani skok na naredbu
+STR_ORDER_SHARE                                                 :Dijeli naredbe
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Umetni novu naredbu prije označene naredbe, ili dodaj na kraj liste. Ctrl određuje naredbe stanice 'napuni do kraja bilo koji teret', naredbe prolazni točki 'non-stop', a naredbe depoa 'servisiraj'. 'Dijeli naredbe' ili Ctrl dozvoljava da ovo vozilo dijeli naredbe sa odabranim vozilom. Klik na vozilo kopira naredbe tog vozila.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Ubaci naprednu naredbu
 
@@ -3760,6 +3765,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Početak i kraj moraju biti u ravnini
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba kraja mosta moraju biti na zemlji
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... predugačak most
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Most bi završio izvan mape
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Ovdje nije moguće izgraditi tunel...
@@ -3859,6 +3865,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vozi
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... vozilo koje dijeli ovu naredbu ne može doći do te postaje
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nije moguće dijeliti popis naredbi...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nemoguće prekinuti dijeljenje liste naredbi...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nije moguće kopirati popis naredbi...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... predaleko od prethodnog odredišta
 

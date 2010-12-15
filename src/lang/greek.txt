@@ -229,7 +229,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}ΤΠ
 STR_ABBREV_ALL                                                  :{TINYFONT}ΟΛΑ
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} Επιβάτες
+STR_PASSENGERS                                                  :{COMMA} επιβάτ{P ης ες}
 STR_BAGS                                                        :{COMMA} Σάκκοι
 STR_TONS                                                        :{COMMA} Τόνοι
 STR_LITERS                                                      :{COMMA} Λίτρα
@@ -300,7 +300,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Κάντ
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα κίνησης - κινεί τη λίστα αριστερά/δεξιά
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κ.λπ. σε συγκεκριμένο τετράγωνο
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κ.λπ. σε συγκεκριμένο τετράγωνο. Με Ctrl επιλέγετε την επιφάνεια διαγώνια.
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Προεπιλογή
@@ -2138,9 +2138,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Παρα
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Μορφοποίηση εδάφους
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Χαμηλώστε μια γωνία του εδάφους
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Ανυψώστε μια γωνία του εδάφους
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Επιπεδοποίηση γης
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Χαμηλώστε μια γωνία του εδάφους. Με drag υποβαθμίζετε την πρώτη επιλεγμένη γωνία και ισοπεδώνει την επιφάνεια στο νέο ύψος. Με Ctrl επιλέγετε την επιφάνεια διαγώνια.
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Ανυψώστε μια γωνία του εδάφους. Με drag ανυψώνεται η πρώτη επιλεγμένη γωνία και ισοπεδώνεται η επιφάνεια στο νέο ύψος. Με Ctrl επιλέγετε την επιφάνεια διαγώνια.
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ισοπέδωση της γης στο ύψος της πρώτης γωνίας. Με Ctrl επιλέγετε την επιφάνεια διαγώνια.
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Αγορά γης για μελλοντική χρήση
 
 # Object construction window
@@ -3204,7 +3204,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Δρομολόγια
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Αλλαγή στην προβολή δρομολογίων
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Λίστα εντολών - κλικ σε μια εντολή για να την επιλέξετε. Ctrl+κλικ μετακινεί σε σταθμό
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Λίστα εντολών - κλικ σε μια εντολή για να την επιλέξετε. Ctrl+κλικ μετακινεί στον προορισμό της οδηγίας
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 

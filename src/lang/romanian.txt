@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Apasă �
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Comutator pentru dimensiunea ferestrei
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de defilare - defilează în listă sus/jos
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de defilare - stânga/dreapta
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolează clădiri, străzi, etc. pe un pătrăţel de teren
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolează clădiri, străzi, etc. pe un pătrăţel de teren. Ctrl. pentru selectare pe diagonală
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Prestabilit(e)
@@ -1145,6 +1145,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Schimbar
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeroporturile nu expiră niciodată: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Avertisment dacă vehicolul s-a pierdut: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Verificarea ordinelor vehiculelor: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nu
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, dar exclude vehiculele oprite
@@ -2068,9 +2069,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Zgomot g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modificare peisaj
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Scade altitudinea unui punct de teren
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Creşte altitudinea unui punct de teren
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelează terenul
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Scade altitudinea unui punct de teren. Trage cu mouse-ul pentru a coborî primul punct de teren și a nivela restul zonei la noua înălțime a acestuia. Ctrl. pentru selectie pe diagonală.
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Creşte altitudinea unui punct de teren. Trage cu mouse-ul pentru a ridica primul punct de teren și a nivela restul zonei la noua înălțime a acestuia. Ctrl. pentru selectie pe diagonală.
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelează terenul la înălțimea primului colț selectat. Ctrl. pentru selecție pe diagonală
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Cumpără teren pentru folosire ulterioară
 
 # Object construction window
@@ -3151,7 +3152,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Orar
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Comuta in modul de vizualizare orar
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de comenzi - clic pe o comandă pentru a o selecta. Ctrl+clic poziţionează ecranul pe staţie
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de comenzi - clic pe o comandă pentru a o selecta. Ctrl+clic poziţionează ecranul pe staţia destinație
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3215,11 +3216,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Renunţ�
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Şterge
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Şterge comanda selectată
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Sterge toate ordinele
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Opreste sincronizarea
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Opreste sincronizare ordinelor. Ctrl-Click sterge toate ordinele pentru acest vehicul
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mergi la
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Du-te la cel mai apropiat depou
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Du-te la cel mai apropiat hangar
 STR_ORDER_CONDITIONAL                                           :Salt in ordine conditionata
+STR_ORDER_SHARE                                                 :Sincronizează ordinele
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Adaugă o comandă înaintea celei selectate, sau la sfârşitul listei. Ctrl-Click transformă comenzile pentru staţii în 'încarcă orice tip de marfă', pentru punctele de tranzit în 'non-stop' şi pentru depouri în 'service'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Adaugă o comandă avansată
 
@@ -3664,6 +3669,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Podul es
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Cele două capete trebuie să se situeze în linie
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambele capete ale podului trebuie să se situeze pe uscat
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... podul este prea lung
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Podul s-ar termina în afara hărții
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Nu se poate construi tunel aici...
@@ -3763,6 +3769,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vehi
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un vehicul care are acest ordin nu poate ajunge la acea staţie
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nu se poate trece la comenzi sincronizate...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nu pot opri sincronizarea listei de ordine...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nu pot copia lista de comenzi...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... prea departe de destinaţia precedentă
 
