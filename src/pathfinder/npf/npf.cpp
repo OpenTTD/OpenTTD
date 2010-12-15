@@ -469,8 +469,9 @@ static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *pare
 						}
 					}
 				}
-				/* Record the state of this signal */
-				NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_RED, true);
+				/* Record the state of this signal. Path signals are assumed to
+				 * be green as the signal state of them has no meaning for this. */
+				NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_RED, !IsPbsSignal(sigtype));
 			} else {
 				/* Record the state of this signal */
 				NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_RED, false);

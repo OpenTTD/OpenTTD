@@ -587,8 +587,8 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 				if (n.m_last_red_signal_type == SIGTYPE_EXIT) {
 					/* last signal was red pre-signal-exit */
 					extra_cost += Yapf().PfGetSettings().rail_lastred_exit_penalty;
-				} else {
-					/* last signal was red, but not exit */
+				} else if (!IsPbsSignal(n.m_last_red_signal_type)) {
+					/* Last signal was red, but not exit or path signal. */
 					extra_cost += Yapf().PfGetSettings().rail_lastred_penalty;
 				}
 			}
