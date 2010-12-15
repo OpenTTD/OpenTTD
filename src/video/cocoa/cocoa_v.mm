@@ -204,7 +204,9 @@ void QZ_GameSizeChanged()
 
 static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
 {
+#if defined(ENABLE_COCOA_QUARTZ) || defined(ENABLE_COCOA_QUICKDRAW)
 	CocoaSubdriver *ret;
+#endif
 
 #ifdef ENABLE_COCOA_QUARTZ
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
