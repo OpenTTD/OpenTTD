@@ -1636,13 +1636,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Pozwól
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes przed zawieszeniem SI: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Okres między serwisowaniami w procentach: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Domyślny okres między serwis. dla pociągów: {ORANGE}{STRING} dni{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Domyślny okres między serwis. dla pociągów: {ORANGE}{STRING} dni/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Domyślny okres między serwis. dla pociągów: {ORANGE}niedostępne
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Domyślny okres między serwis. dla samochodów: {ORANGE}{STRING} dni{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Domyślny okres między serwis. dla samochodów: {ORANGE}{STRING} dni/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Domyślny okres między serwis. dla samochodów: {ORANGE}niedostępne
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Domyślny okres między serwis. dla samolotów: {ORANGE}{STRING} dni{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Domyślny okres między serwis. dla samolotów: {ORANGE}{STRING} dni/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Domyślny okres między serwis. dla samolotów: {ORANGE}niedostępne
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Domyślny okres między serwis. dla statków: {ORANGE}{STRING} dni{P 0:1 "" s}/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Domyślny okres między serwis. dla statków: {ORANGE}{STRING} dni/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Domyślny okres między serwis. dla statków: {ORANGE}niedostępne
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Wyłącz serwisowanie jeśli awarie pojazdów są wyłączone: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Włącz limity prędkości wagonów: {ORANGE}{STRING}
@@ -1653,7 +1653,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Data ro
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Pozwól na łagodną ekonomię (więcej małych zmian): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Pozwól kupować udziały w innych firmach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Udział w zyskach w przypadku częściowego transportu (przeładunku): {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} kratk{P 0:1 "" s}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} kratk
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatycznie buduj semafory przed: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Uaktywnij okno budowania sygnałów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Domyślny typ sygnalizatorów: {ORANGE}{STRING}
@@ -1692,7 +1692,7 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Pozycja
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Lewo
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Środek
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Prawo
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Strefa przyciągania okien: {ORANGE}{STRING} pkt{P 0:1 "" s}
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Strefa przyciągania okien: {ORANGE}{STRING} pkt
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Strefa przyciągania okien: {ORANGE}niedostępne
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Maksymalna liczba nie przyszpilonych okien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maksymalna liczba nie przyszpilonych okien: {ORANGE} wyłączone
