@@ -2795,7 +2795,7 @@ static uint TrainCrashed(Train *v)
 	}
 
 	/* Try to re-reserve track under already crashed train too.
-	 * SetVehicleCrashed() clears the reservation! */
+	 * Crash() clears the reservation! */
 	v->ReserveTrackUnderConsist();
 
 	return num;
