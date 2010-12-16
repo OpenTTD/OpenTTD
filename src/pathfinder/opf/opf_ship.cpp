@@ -118,16 +118,18 @@ static void OPFShipFollowTrack(TileIndex tile, DiagDirection direction, TrackPat
 	TPFModeShip(tpf, tile, direction);
 }
 
-static const byte _ship_search_directions[6][4] = {
-	{ 0, 9, 2, 9 },
-	{ 9, 1, 9, 3 },
-	{ 9, 0, 3, 9 },
-	{ 1, 9, 9, 2 },
-	{ 3, 2, 9, 9 },
-	{ 9, 9, 1, 0 },
+/** Directions to search towards given track bits and the ship's enter direction. */
+static const DiagDirection _ship_search_directions[6][4] = {
+	{ DIAGDIR_NE,      INVALID_DIAGDIR, DIAGDIR_SW,      INVALID_DIAGDIR },
+	{ INVALID_DIAGDIR, DIAGDIR_SE,      INVALID_DIAGDIR, DIAGDIR_NW      },
+	{ INVALID_DIAGDIR, DIAGDIR_NE,      DIAGDIR_NW,      INVALID_DIAGDIR },
+	{ DIAGDIR_SE,      INVALID_DIAGDIR, INVALID_DIAGDIR, DIAGDIR_SW      },
+	{ DIAGDIR_NW,      DIAGDIR_SW,      INVALID_DIAGDIR, INVALID_DIAGDIR },
+	{ INVALID_DIAGDIR, INVALID_DIAGDIR, DIAGDIR_SE,      DIAGDIR_NE      },
 };
 
-static const byte _pick_shiptrack_table[6] = {1, 3, 2, 2, 0, 0};
+/** Track to "direction (& 3)" mapping. */
+static const byte _pick_shiptrack_table[6] = {DIR_NE, DIR_SE, DIR_E, DIR_E, DIR_N, DIR_N};
 
 static uint FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, TrackBits bits, TileIndex skiptile, Track *track)
 {
@@ -147,7 +149,7 @@ static uint FindShipTrack(const Ship *v, TileIndex tile, DiagDirection dir, Trac
 		pfs.best_bird_dist = UINT_MAX;
 		pfs.best_length = UINT_MAX;
 
-		OPFShipFollowTrack(tile, (DiagDirection)_ship_search_directions[i][dir], &pfs);
+		OPFShipFollowTrack(tile, _ship_search_directions[i][dir], &pfs);
 
 		if (best_track != INVALID_TRACK) {
 			if (pfs.best_bird_dist != 0) {
