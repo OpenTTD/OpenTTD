@@ -927,7 +927,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} чекає в депо
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} чекає в ангарі
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} має замало пунктів у розкладі
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} немає завдань
@@ -1270,6 +1270,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Цю н�
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Аеропорти ніколи не старіють: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Повідомити у разі втрати транспорту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Показ транспортних наказів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ні
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :так, крім зупиненого транспорту
@@ -1356,7 +1357,7 @@ STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Усі комп
 STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Дозволити розклад руху для транспорту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Показувати розклад в одиницях, а не в днях: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Показувати прибуття та відправлення у розкладах: {ORANGE}{STRING}
-STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Швидке створення списку завдань: {ORANGE}{STRING}
+STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Швидке створення переліку наказів: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Стандартний тип колії (при новій грі/завантаженні): {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Перша з доступних
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Остання з доступних
@@ -2633,7 +2634,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Інформація про вантаж/переобладнання для '{1:ENGINE}' відрізняється від списку покупки після побудови. Це може спричинити невідповідності під час автооновлення/заміни.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' спричинив нескінченний цикл у виклику виробництва
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<невідомий вантаж>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} <невідомого вантажу>
@@ -3340,11 +3341,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Проп
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Видалити
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Видалити виділене завдання
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Видалити всі накази
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Відмінити спільні накази
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Перестати використовути спільні накази. Ctrl+клік мишкою видаляє всі накази для цього транспорту.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Прямувати
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Прямувати до найближчого депо
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Прямувати до найближчого ангару
 STR_ORDER_CONDITIONAL                                           :Зміна наказу з умовою
+STR_ORDER_SHARE                                                 :Спільні накази
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Вставити новий пункт перед вибраним або додати в кінець списку. Ctrl робить для станцій "повну загрузку будь-якого вантажу", для пунктів призначення "без зупинок", і для депо "обслуговування"
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Додати складний наказ
 
@@ -3789,6 +3794,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Міст
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Початок та кінець мають бути на одній лінії
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... обидва кінці мосту мають бути на землі
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... міст надто довгий
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Мост закінчиться поза картою
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Неможливо збудувати тунель...
@@ -3888,6 +3894,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... тр
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... транспорт, що має спільний з цим розклад, не може йти на цю станцію
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Неможливо розділити список завдань...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Неможливо відмінити спільні накази...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Неможливо скопіювати список завдань...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... дуже далеко від попереднього пункту призначення
 

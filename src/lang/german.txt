@@ -237,7 +237,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klicken 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Zwischen Fenstergrößen umschalten
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: Liste auf- und abwärts blättern
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: Liste nach links und rechts blättern
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Gebäude etc. von einem Planquadrat abreißen
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Gebäude etc. von einem Planquadrat abreißen. Strg wählt ein diagonales Gebiet aus
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standard
@@ -803,7 +803,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} wartet im Depot
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} wartet im Hangar
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} hat zu wenige Aufträge
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} hat einen ungültigen Auftrag
@@ -814,7 +814,7 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} wird alt
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} wird sehr alt
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} wird sehr alt und sollte dringend ersetzt werden
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} findet keinen Weg zum Vorankommen.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} findet keinen Weg zum Vorankommen
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} hat sich verirrt.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Der Ertrag von {VEHICLE} lag im letzten Jahr bei {CURRENCY}
 
@@ -830,8 +830,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} akzeptiert jetzt auch {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} akzeptiert jetzt auch {STRING} und {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subventionsangebot abgelaufen:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subventionsende:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subventionsangebot abgelaufen:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subventionsende:{}{}{STRING}transport von {STRING} nach {STRING} wird nicht mehr subventioniert
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subventionsangebot:{}{}Erster {STRING}transport von {STRING} nach {STRING} wird ein Jahr von den örtlichen Behörden subventioniert!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING}transport von {STRING} nach {STRING} erhält im nächsten Jahr einen 50% höheren Preis!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvention vergeben an {STRING}!{}{}{STRING}transport von {STRING} nach {STRING} erhält im nächsten Jahr den doppelten Preis!
@@ -1142,7 +1142,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Bus- un
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Bus- und Lkw-Haltestellen auf Straßen von Wettbewerbern erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bau angrenzender Stationen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Mehrere NewGRF-Fahrzeugsets erlauben: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Diese Einstellung kann nicht geändert werden solange Fahrzeuge im Spiel sind.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Diese Einstellung kann nicht geändert werden solange Fahrzeuge im Spiel sind
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flughäfen veralten nie: {ORANGE}{STRING}
 
@@ -1422,7 +1422,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Soll da
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TOOLTIP                                              :{BLACK}Die Kontrollkästchen zeigen an, ob dieser Cheat schonmal verwendet worden ist.
-STR_CHEATS_WARNING                                              :{BLACK}Achtung! Hiermit betrügt man seine Mitspieler. Man sollte bedenken, dass sie das niemals verzeihen werden.
+STR_CHEATS_WARNING                                              :{BLACK}Achtung! Hiermit betrügt man seine Mitspieler. Man sollte bedenken, dass sie das niemals verzeihen werden
 STR_CHEAT_MONEY                                                 :{LTBLUE}Kontostand um {CURRENCY} erhöhen
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiele die Firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Mächtigeres Abrisswerkzeug (entfernt Industrien und unbewegliche Objekte): {ORANGE}{STRING}
@@ -1494,7 +1494,7 @@ STR_FACE_LOAD_DONE                                              :{WHITE}Das bevo
 STR_FACE_FACECODE                                               :{BLACK}Gesichtsnummer
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Nummer des Gesichts anschauen / setzen
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Nummer des Gesichts anschauen / setzen
-STR_FACE_FACECODE_SET                                           :{WHITE}Neue Nummer wurde für das Gesicht registriert.
+STR_FACE_FACECODE_SET                                           :{WHITE}Neue Nummer wurde für das Gesicht registriert
 STR_FACE_FACECODE_ERR                                           :{WHITE}Konnte keine Nummer für das Gesicht setzen, sie muss zwischen 0 und 4.294.967.295 liegen!
 STR_FACE_SAVE                                                   :{BLACK}Speichern
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Speichere bevorzugtes Gesicht
@@ -1579,7 +1579,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Aktualis
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Server suchen
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Netzwerk nach einem Server durchsuchen
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Server hinzufügen
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Fügt einen Server zu der Liste von Servern hinzu, die immer nach laufenden Spielen kontrolliert werden.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Fügt einen Server zu der Liste von Servern hinzu, die immer nach laufenden Spielen kontrolliert werden
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Server starten
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Einen eigenen Server starten
 
@@ -1736,7 +1736,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Benutze 
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Beitreten
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Dieser Firma beitreten und sie unterstützen
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Passwort
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Die Firma durch ein Passwort schützen, sodass nur ausgewählte Spieler beitreten können.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Die Firma durch ein Passwort schützen, sodass nur ausgewählte Spieler beitreten können
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Firmenpasswort setzen
 
 # Network chat
@@ -1881,15 +1881,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kann her
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparenzeinstellungen
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparenz für Stationsschilder einstellen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparenz für Bäume einstellen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparenz für Häuser einstellen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparenz für Industrien einstellen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots und Wegpunkte einstellen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparenz für Oberleitungen. Strg+Klick, um Umschalten zu verhindern.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparenz für Ladestandsanzeige einstellen. Strg+Klick, um Umschalten zu verhindern.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Transparenz für Stationsschilder einstellen. Strg+Klick, um Umschalten zu verhindern
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Transparenz für Bäume einstellen. Strg+Klick, um Umschalten zu verhindern
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Transparenz für Häuser einstellen. Strg+Klick, um Umschalten zu verhindern
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Transparenz für Industrien einstellen. Strg+Klick, um Umschalten zu verhindern
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots und Wegpunkte einstellen. Strg+Klick, um Umschalten zu verhindern
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Transparenz für Brücken einstellen. Strg+Klick, um Umschalten zu verhindern
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Transparenz für Bauten wie Leuchttürme und Sendemasten einstellen. Strg+Klick, um Umschalten zu verhindern
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Transparenz für Oberleitungen. Strg+Klick, um Umschalten zu verhindern
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparenz für Ladestandsanzeige einstellen. Strg+Klick, um Umschalten zu verhindern
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objekte unsichtbar statt transparent machen
 
 # Base for station construction window(s)
@@ -1952,19 +1952,19 @@ STR_STATION_CLASS_WAYP                                          :Wegpunkte
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalauswahl
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blocksignal (Formsignal){}Dieses ist der einfachste Signaltyp. Er erlaubt nur einem Zug zu einem gegebenen Zeitpunkt den Signalabschnitt zu durchfahren.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im nächsten Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein Blocksignal, wird jedoch benötigt, um den Einfahr- oder Kombinationssignalen des Blockes "frei" zu melden.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (Formsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Pfadsignale können von hinten durchfahren werden.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blocksignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Gleissystem.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein Blocksignal, gibt jedoch das Signal an Einfahr- und Kombinationssignale im vorherliegenden Block weiter.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Normale Pfadsignale können von hinten durchfahren werden.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klick ändert die bestehende Bauform.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blocksignal (Formsignal){}Dieses ist der einfachste Signaltyp. Er erlaubt nur einem Zug zu einem gegebenen Zeitpunkt den Signalabschnitt zu durchfahren
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im nächsten Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein Blocksignal, wird jedoch benötigt, um den Einfahr- oder Kombinationssignalen des Blockes "frei" zu melden
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (Formsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Pfadsignale können von hinten durchfahren werden
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blocksignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Gleissystem
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein Blocksignal, gibt jedoch das Signal an Einfahr- und Kombinationssignale im vorherliegenden Block weiter
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinationssignal (Lichtsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Normale Pfadsignale können von hinten durchfahren werden
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalbereich zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klick ändert die bestehende Bauform
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Signalabstand beim automatischen Bau durch Ziehen
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Signalabstand verringern
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Signalabstand erhöhen
@@ -2299,7 +2299,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Speicher
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Laden
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Ausgewählten Spielstand laden
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spielstand-Details
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keine Informationen verfügbar.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Keine Informationen verfügbar
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2463,23 +2463,23 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fehler: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Schwerer Fehler: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ein schwerer NewGRF Fehler ist aufgetreten: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} funktioniert nicht im Zusammenhang mit der von OpenTTD ermittelten TTDPatch-Version.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ist für die {STRING}-Version von TTD.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} funktioniert nicht im Zusammenhang mit der von OpenTTD ermittelten TTDPatch-Version
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} ist für die {STRING}-Version von TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} ist für die Nutzung mit {STRING} vorgesehen
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Falscher Parameter für {1:STRING}: Parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} muss vor {STRING} geladen werden.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muss nach {STRING} geladen werden.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} Benötigt OpenTTD-Version {STRING} oder höher.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} muss vor {STRING} geladen werden
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muss nach {STRING} geladen werden
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} Benötigt OpenTTD-Version {STRING} oder höher
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der NewGRF-Datei, die es übersetzen soll,
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {2:STRING} als statisches NewGRF mit {4:STRING} könnte Synchronisationsfehler hervorrufen.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {2:STRING} als statisches NewGRF mit {4:STRING} könnte Synchronisationsfehler hervorrufen
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sprite.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :NewGRF Fehler: 'Unknown Action 0 property.'
-STR_NEWGRF_ERROR_INVALID_ID                                     :Es wurde versucht, eine ungültige ID zu verwenden.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält kaputte Sprites. Diese werden als rote Fragezeichen (?) dargestellt.
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere "Action 8" Einträge.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :NewGRF Fehler: 'Unknown Action 0 property'
+STR_NEWGRF_ERROR_INVALID_ID                                     :Es wurde versucht, eine ungültige ID zu verwenden
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält kaputte Sprites. Diese werden als Fragezeichen (?) dargestellt
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere "Action 8" Einträge
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesezugriff über das Ende des Pseudosprites hinaus
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Den momentan verwendeten Basisgrafiken fehlen Sprites.{}Durch ein Update der Basisgrafiken kann dieser Fehler behoben werden.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Den momentan verwendeten Basisgrafiken fehlen Sprites.{}Durch ein Update der Basisgrafiken kann dieser Fehler behoben werden
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Achtung!
@@ -2500,16 +2500,16 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Kompati
 STR_NEWGRF_LIST_MISSING                                         :{RED}Fehlende Dateien
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs '{STRING}' wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen.
+STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs '{STRING}' wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ändert die Antriebseigenschaften für '{1:ENGINE}' außerhalb von Depots
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von '{1:ENGINE}' außerhalb eines Depots.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VEHICLE}' der Firma '{COMPANY}' hat eine ungültige Länge. Vermutlich ein NewGRF Problem. Spiel kann desynchronisieren oder abstürzen.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von '{1:ENGINE}' außerhalb eines Depots
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VEHICLE}' der Firma '{COMPANY}' hat eine ungültige Länge. Vermutlich ein NewGRF Problem. Spiel kann desynchronisieren oder abstürzen
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' liefert falsche Informationen
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fracht / Ersetzungs - Informationen für '{1:ENGINE}' weichen von der Einkaufsliste nach dem Kauf ab. Das kann dazu führen, dass das Umrüsten beim autmatisches Ersetzen oder Erneuern nicht korrekt funktioniert
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' verursachte eine Endlosschleife im 'Production callback'.
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' verursachte eine Endlosschleife im 'Production callback'
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ungültige Frachtart>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <ungültige Frachtart>
@@ -2988,7 +2988,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Einschienenbahn
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetschwebebahn
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ursprüngliche Länge des Zugs beibehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ursprüngliche Länge des Zugs beibehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3281,7 +3281,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Aufträge
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Zur Auftragsanzeige wechseln
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan - Einträge anklicken, um sie zu markieren.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan - Einträge anklicken, um sie zu markieren
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nicht unterwegs
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Unterwegs (ohne Fahrplan)
@@ -3343,7 +3343,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stoppe d
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}An/Ausschalten des Unterbrechens, wenn eine KI Log-Nachricht dem Unterbrechungs-Text entspricht
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Unterbrechung bei:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Unterbrechung an
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Wenn eine KI Log-Nachricht auf diesen Text paßt, wird das Spiel pausiert.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Wenn eine KI Log-Nachricht auf diesen Text paßt, wird das Spiel pausiert
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Groß/Klein beachten
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Für den Vergleich der KI Log-Nachrichten mit dem Unterbrechungs-Text den passenden Fall umschalten.
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortfahren
@@ -3353,8 +3353,8 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Debug-Au
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD wurde ohne KI-Unterstützung kompiliert...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... keine KI verfügbar!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD und AI-Versionsnummer zu melden.
+STR_ERROR_AI_NO_AI_FOUND                                        :Keine passende KI gefunden.{}Diese KI ist ein Platzhalter und wird nichts tun.{}KIs können im Hauptmenü als Erweiterung heruntergeladen werden
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Eine der laufenden KIs ist abgestürzt. Es ist nett, den Fehler dem Autor der KI mittels eines Screenshots vom KI-Debug-Fenster unter Angabe der OpenTTD und AI-Versionsnummer zu melden
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}KI Debug-Fenster ist nur auf dem Server verfügbar
 
 # AI configuration window
@@ -3424,25 +3424,25 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei kann nich
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Datei kann nicht geschrieben werden
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Prüfung der Datenintegrität fehlgeschlagen
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nicht verfügbar>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spiel wurde in einer Version ohne Straßenbahnunterstützung gespeichert. Alle Straßenbahnen wurden entfernt.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spiel wurde in einer Version ohne Straßenbahnunterstützung gespeichert. Alle Straßenbahnen wurden entfernt
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Spielfeldgenerierung wurde abgebrochen...{}... kein geeigneter Platz für eine Stadt gefunden
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... in diesem Szenario gibt es keine Stadt
 
 STR_ERROR_PNGMAP                                                :{WHITE}Landschaft kann nicht aus PNG-Datei geladen werden...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... Datei nicht gefunden.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... Bildtyp kann nicht umgewandelt werden. 8- oder 24-bit-PNG-Datei erforderlich.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... irgendetwas ging schief. Sorry. (Vielleicht eine kaputte Datei?)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... Datei nicht gefunden
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... Bildtyp kann nicht umgewandelt werden. 8- oder 24-bit-PNG-Datei erforderlich
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... irgendetwas ging schief. (Vielleicht eine kaputte Datei?)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Landschaft kann nicht aus BMP-Datei geladen werden...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... Bildtyp kann nicht umgewandelt werden.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... Bildtyp kann nicht umgewandelt werden
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Skalierungswarnung
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Zu starke Skalierung des Spielfeldes wird nicht empfohlen. Generierung dennoch fortsetzen?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Nur ein Notbehelfs-Soundset wurde gefunden. Sounds können bei Bedarf als Erweiterung heruntergeladen werden (siehe Hauptmenü).
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Nur ein Notbehelfs-Soundset wurde gefunden. Sounds können bei Bedarf als Erweiterung heruntergeladen werden (siehe Hauptmenü)
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespeichert als '{STRING}'
@@ -3510,7 +3510,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... zu d
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... zu dicht an einer anderen Stadt
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... zu viele Städte
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... es ist kein Platz mehr auf dem Spielfeld.
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Städte bauen im Moment keine Straßen. Städtischer Straßenbau kann mittels Erweiterte Einstellungen->Wirtschaft->Städte eingestellt werden.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Städte bauen im Moment keine Straßen. Städtischer Straßenbau kann mittels Erweiterte Einstellungen->Wirtschaft->Städte eingestellt werden
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Straßenarbeiten sind im Gange
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Stadt kann nicht gelöscht werden...{}Ein Bahnhof oder Depot bezieht sich auf diese Stadt oder ein Feld im städtischen Besitz kann nicht entfernt werden.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... es gibt keinen geeigneten Standort für die Statue im Zentrum dieser Stadt
@@ -3616,7 +3616,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Falsche Art von
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} ist nach Ersetzung zu lang
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Keine Ersetzungs-/Erneuerungsregeln angewandt.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Es treffen keine Ersetzungs-/Erneuerungsregeln zu
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(Geld fehlt)
 
 # Rail construction errors
@@ -3775,8 +3775,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... zu w
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kein Fahrplan für das Fahrzeug...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Fahrzeuge halten nur an Stationen.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Das Fahrzeug hält nicht an dieser Station.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Fahrzeuge halten nur an Stationen
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Das Fahrzeug hält nicht an dieser Station
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... zu viele Schilder

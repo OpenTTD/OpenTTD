@@ -306,7 +306,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Velikost
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Přepnout velké/malé okno
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Posuvník - posouvá výpisem nahoru nebo dolů
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Posuvník - posouvá výpisem doleva nebo doprava
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolice budov, atd.
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolice budov, atd. na čtverečku. Ctrl vybírá diagonální oblast
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Původní
@@ -872,7 +872,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} čeká v depu
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} čeká v hangáru
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} má příliš málo příkazů
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} nemá žádné příkazy
@@ -899,8 +899,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} nyní přijímá {STRING.acc}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} nyní přijímá {STRING.acc} a {STRING.acc}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING} do {STRING} nebude dále nabízena.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STRING} do {STRING} již nebude dále poskytována.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING} do {STRING} nebude dále nabízena
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STRING} do {STRING} již nebude dále poskytována
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Nabídka dotace:{}{}Doprava {STRING.gen} z{NBSP}{STRING} do {STRING} bude jeden rok dotována místní správou!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STRING} do {STRING} bude po jeden rok vynášet 150 % normální ceny.
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STRING} do {STRING} bude po jeden rok vynášet dvojnásobek normální ceny!
@@ -1158,7 +1158,7 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Ukazova
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Povolit výstavbu na svazích kopců a na pobřežích: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Srovnání terénu pod budovami, kolejemi atd. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Povolit u oblasti pokrytí realističtější velikost: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů, tunelů, atp.: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů a tunelů: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Povolit stavbu dlouhých vlaků: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}množství kouře/jisker u stroje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Žádný
@@ -1211,10 +1211,11 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Stavba 
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Stavba průjezdných zastávek na silnicích vlastněných konkurencí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavění přilehlých stanic: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Více grafických setů s vozidly vedle sebe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Toto nastavení nemůže být změněno, když jsou ve hře již nějaká vozidla.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Toto nastavení nemůže být změněno, když jsou ve hře již nějaká vozidla
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Žádný druh letiště nezastará: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Varovat pokud se ztratí vozidlo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kontrolovat příkazy vozidel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ano, kromě zastavených vozidel
@@ -1279,12 +1280,17 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :vypnutá
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Posouvání levým tlačítkem: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Pro jméno uložené hry použít {ORANGE}{STRING}{LTBLUE} formát.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Pro jméno uložené hry použít {ORANGE}{STRING}{LTBLUE} formát
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dlouhý (31. pro 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krátký (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Zastavit automaticky hru při začínání nové hry: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}V pozastavené hře povolit: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :žádné akce
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :všechny akce kromě stavebních
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :všechny akce kromě úprav terénu
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :všechny akce
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Používat pokročilý seznam vozidel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :ne
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :u vlastní společnosti
@@ -1498,6 +1504,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :subarktická kr
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :subtropická kraina
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Země hraček
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Změnit datum: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Změnit rok
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povolit změnu produkce průmyslu: {ORANGE}{STRING}
 
 # Livery window
@@ -1548,16 +1555,16 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Zvolit �
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nový obličej
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Vytvořit náhodnou novou tvář
 STR_FACE_ADVANCED                                               :{BLACK}Podrobně
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Pokročilý výběr tváře.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Pokročilý výběr tváře
 STR_FACE_SIMPLE                                                 :{BLACK}Jednodušše
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Základní výběr tváře.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Základní výběr tváře
 STR_FACE_LOAD                                                   :{BLACK}Nahrát
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Nahrát oblíbený obličej
 STR_FACE_LOAD_DONE                                              :{WHITE}Tvůj oblíbený obličej se nahrál z konfiguračního souboru.
 STR_FACE_FACECODE                                               :{BLACK}Číslo tváře
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Zobrazit a/nebo nastavit číslo tváře prezidenta
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Zobrazit a/nebo nastavit číslo tváře prezidenta
-STR_FACE_FACECODE_SET                                           :{WHITE}Nové číslo obličeje bylo nastaveno.
+STR_FACE_FACECODE_SET                                           :{WHITE}Nové číslo obličeje bylo nastaveno
 STR_FACE_FACECODE_ERR                                           :{WHITE}Nelze nastavit číslo tváře prezidenta - musí jít o číslo mezi 0 a 4 294 967 295!
 STR_FACE_SAVE                                                   :{BLACK}Uložit
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložit oblíbený obličej
@@ -1642,7 +1649,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Znovu na
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Najít server
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Hledat server v síti
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Přidat server
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Přidá server do seznamu, ve kterém se budou hledat běžící hry.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Přidá server do seznamu, ve kterém se budou hledat běžící hry
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Spustit server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Spustit vlastní server
 
@@ -1799,7 +1806,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Použít
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Přidat se
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Připojit se a hrát za tuto společnost
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Heslo
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Heslo - zabrání neautorizovaným uživatelům v připojení se k tvé společnosti.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Heslo - zabrání neautorizovaným uživatelům v připojení se k tvé společnosti
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Nastav heslo společnosti.
 
 # Network chat
@@ -1944,15 +1951,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nešlo r
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavení průhlednosti
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Změna průhlednosti jmen stanic. Nastavení se zamkne Ctrl+kliknutím.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Změna průhlednosti stromů. Nastavení se zamkne Ctrl+kliknutím.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Změna průhlednosti domů. Nastavení se zamkne Ctrl+kliknutím.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Změna průhlednosti továren. Nastavení se zamkne Ctrl+kliknutím.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Změna průhlednosti postavitelných objektů, jako stanic, dep a směrování. Nastavení se zamkne Ctrl+kliknutím.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Změna průhlednosti mostů. Nastavení se zamkne Ctrl+kliknutím.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Změna průhlednosti staveb jako majáků a vysílačů. Nastavení se zamkne Ctrl+kliknutím.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Změna průhlednosti elektrifikace. Nastavení se zamkne Ctrl+kliknutím.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Přepnout zobrazení ukazatelů naložení. Nastavení se zamkne Ctrl+kliknutím.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Změna průhlednosti jmen stanic. Nastavení se zamkne Ctrl+kliknutím
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Změna průhlednosti stromů. Nastavení se zamkne Ctrl+kliknutím
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Změna průhlednosti domů. Nastavení se zamkne Ctrl+kliknutím
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Změna průhlednosti továren. Nastavení se zamkne Ctrl+kliknutím
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Změna průhlednosti postavitelných objektů, jako stanic, dep a směrování. Nastavení se zamkne Ctrl+kliknutím
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Změna průhlednosti mostů. Nastavení se zamkne Ctrl+kliknutím
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Změna průhlednosti staveb jako majáků a vysílačů. Nastavení se zamkne Ctrl+kliknutím
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Změna průhlednosti elektrifikace. Nastavení se zamkne Ctrl+kliknutím
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Přepnout zobrazení ukazatelů naložení. Nastavení se zamkne Ctrl+kliknutím
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Objekty budou neviditelné, ne průhledné
 
 # Base for station construction window(s)
@@ -2015,19 +2022,19 @@ STR_STATION_CLASS_WAYP                                          :Směrování
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Výběr návěstidel
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Obyčejné návěstidlo (semafor){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vjezdové návěstidlo (semafor){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Cestové návěstidlo (semafor){}Cestové (kombinované) slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" presignálů.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Dokonalejší (PBS) návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Obyčejné návěstidlo (elektrické){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vjezdové návěstidlo (elektrické){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výjezdové návěstidlo (elektrické){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Cestové návěstidlo (elektrické){}Cestové (kombinované) návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" návěstidel.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Dokonalejší (PBS) návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Přeměna návěstidel{}Když je přeměna zapnuta, návěstidlo se změní kliknutím. Kliknutím s Ctrl se přepne mezi variantami návěstidla.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Obyčejné návěstidlo (semafor){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vjezdové návěstidlo (semafor){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Cestové návěstidlo (semafor){}Cestové (kombinované) slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" presignálů
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Dokonalejší (PBS) návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Obyčejné návěstidlo (elektrické){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vjezdové návěstidlo (elektrické){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výjezdové návěstidlo (elektrické){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Cestové návěstidlo (elektrické){}Cestové (kombinované) návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" návěstidel
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Dokonalejší (PBS) návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Přeměna návěstidel{}Když je přeměna zapnuta, návěstidlo se změní kliknutím. Kliknutím s Ctrl se přepne mezi variantami návěstidla
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Rozestup při stavbě návěstidel tažením
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Snížit rozestup mezi návěstidly
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zvýšit rozestup mezi návěstidly
@@ -2094,7 +2101,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Postavit
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Umístit bójku použitelnou pro navádění
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Postavit akvadukt
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Vytvořit vodní plochu.{}Pokud není držen CTRL, vytvoří se na úrovni moře průplav; v opačném případě se zaplaví ostatní dílky
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Vytvořit řeky.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Vytvořit řeky
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientace lodního depa
@@ -2132,9 +2139,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Vytvář
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Úpravy krajiny
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Snížit roh země
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvýšit roh země
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Srovnat terén
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Snížit roh země. Tažení sníží první vybraný roh a vybranou oblast na jeho novou výšku. Ctrl vybírá diagonální oblast.
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvýšit roh země. Tažení zvyšuje první vybraný roh a vybranou oblast na jeho novou výšku. Ctrl vybírá diagonální oblast.
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Srovnat terén na výšku prvního vybraného rohu. Ctrl vybírá diagonální oblast
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakoupit pozemek pro budoucí užití
 
 # Object construction window
@@ -2532,23 +2539,23 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varování
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Závažná chyba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Vyskytla se kritická chyba v NewGRF: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovat s verzí TTDPatche, kterou OpenTTD hlásí.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pro TTD verzi {STRING}.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nebude fungovat s verzí TTDPatche, kterou OpenTTD hlásí
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je pro TTD verzi {STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je navržen pro práci s {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný parametr pro {1:STRING}: parametr {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} musí být nahráván před {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musí být nahráván po {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} musí být nahráván před {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} musí být nahráván po {STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :grafika, která se měla přeložit
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {2:STRING} jako statické grafiky spolu s {4:STRING} může způsobit chybu synchronizace.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepředpokládaný sprite.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznámá vlastnost Action 0.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použití neplatného ID.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje víc GRF akcí 8.
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení za koncem pseudo-spritu.
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě používanému základnímu grafickému setu chybí obrázky.{}Prosím, updatujte ho.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {2:STRING} jako statické grafiky spolu s {4:STRING} může způsobit chybu synchronizace
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepředpokládaný sprite
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznámá vlastnost Action 0
+STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použití neplatného ID
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje víc GRF akcí 8
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Čtení za koncem pseudo-spritu
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Právě používanému základnímu grafickému setu chybí obrázky.{}Prosím, updatujte ho
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
@@ -2569,16 +2576,16 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}jsou do
 STR_NEWGRF_LIST_MISSING                                         :{RED}některé chybějí
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Chování grafiky '{0:STRING}' by mohlo způsobit desynchronizaci a/nebo pád hry.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Změnil se stav lokomotivy '{1:ENGINE}' když nebyla v depu.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Změnilo délku vozidla '{1:ENGINE}', když nebylo v depu.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout.
+STR_NEWGRF_BROKEN                                               :{WHITE}Chování grafiky '{0:STRING}' by mohlo způsobit desynchronizaci a/nebo pád hry
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Změnil se stav lokomotivy '{1:ENGINE}', když nebyla v depu
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Změnilo délku vozidla '{1:ENGINE}', když nebylo v depu
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout
 
-STR_NEWGRF_BUGGY                                                :{WHITE}Grafika '{0:STRING}' poskytuje neplatné informace.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informace o nákladu/možnosti přestavby pro '{1:ENGINE}' se po nákupu změnily. To může způsobit problémy při automatické výměně vozidel.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' způsobil(a) nekonečnou smyčku v callbacku produkce průmyslu.
+STR_NEWGRF_BUGGY                                                :{WHITE}Grafika '{0:STRING}' poskytuje neplatné informace
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informace o nákladu/možnosti přestavby pro '{1:ENGINE}' se po nákupu změnily. To může způsobit problémy při automatické výměně vozidel
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}Grafika '{1:STRING}' způsobila nekonečnou smyčku v callbacku produkce průmyslu
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<neplatný náklad>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} jednot{P ka ky ek} <neplatného nákladu>
@@ -2839,7 +2846,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Dostupné vlaky
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Dostupná vozidla
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Dostupné lodě
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Dostupná letadla
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ukázat seznam dostupných variant pro tento typ vozidla.
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ukázat seznam dostupných variant pro tento typ vozidla
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Upravit seznam
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Poslat příkazy všem vozidlům v tomto seznamu
@@ -3063,7 +3070,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Lokomotivy pro 
 STR_REPLACE_MAGLEV_VEHICLES                                     :Lokomotivy Maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonů: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylepšování vlaků může udržovat stejnou délku vlaku odstraňovaním vagonů (od začátku vlaku), pokud by změna mašiny vlak prodloužila.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylepšování vlaků může udržovat stejnou délku vlaku odstraňovaním vagonů (od začátku vlaku), pokud by změna mašiny vlak prodloužila
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3227,7 +3234,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Jízdní řád
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Přepnout na jízdní řád
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Seznam příkazů - stiskni příkaz pro označení. Kliknutím na příkaz se stisknutým CTRL se nastaví pohled na stanici
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Seznam příkazů - stiskni příkaz pro označení. Kliknutím na příkaz se stisknutým CTRL se nastaví pohled na cíl seznamu
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3291,12 +3298,16 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Přesko�
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Smazat
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Smazat označený příkaz
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Smazat všechny příkazy
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Zastavit sdílení
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Zastavit sdílení seznamu příkazů. Ctrl+Click ještě smaže všechny příkazy pro toto vozidlo
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Jet do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jet do nejbližšího depa
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Jet do nejbližšího hangáru
 STR_ORDER_CONDITIONAL                                           :Podmíněné přeskočení příkazu
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Vložit nový příkaz před označený příkaz, nebo přidat na konec seznamu. Ctrl přidá příkaz pro stanici jako 'plně naložit cokoliv', pro směrování na trati jako 'bez zastavení' a pro depo jako 'údržba'.
+STR_ORDER_SHARE                                                 :Sdílet příkazy
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Vložit nový příkaz před označený příkaz, nebo přidat na konec seznamu. Ctrl přidá příkaz pro stanici jako 'plně naložit cokoliv', pro směrování na trati jako 'bez zastavení' a pro depo jako 'údržba'. 'Sdílet příkazy' nebo Ctrl nechá vozidlo sdílet příkazy s vybraným vozidlem. Kliknutí na vozidlo zkopíruje jeho příkazy
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Vložit složitější příkaz
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Zobrazit všechny prostředky se stejným jízdním řádem
@@ -3352,7 +3363,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Příkazy
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Přepnout na zobrazení příkazů
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní řád - příkaz vybereš kliknutím.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní řád - příkaz vybereš kliknutím
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nikam nejet
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
@@ -3414,7 +3425,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Zničit 
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Povolit zastavení AI skriptu, když se v AI logu objeví daný řetězec
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Zastavit při:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Zastavit při
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Když se v AI logu vyskytne tento řetězec, hra se pozastaví.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Když se v AI logu vyskytne tento řetězec, hra se pozastaví
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Rozeznat malá/velká písmena
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Zabývat se velikostí písmen při hledání zastavujícího řetězce v AI logu
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Pokračovat
@@ -3424,8 +3435,8 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Zobraz d
 STR_ERROR_NO_AI                                                 :{WHITE}Hra byla zkompilována bez podpory AI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... AI není dostupné!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nebyla nalezena žádná AI.{}Tato AI je výchozí a nedělá vůbec nic.{}Spoustu AI ale můžeš stáhnout v "Stahování součástí".
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI.
+STR_ERROR_AI_NO_AI_FOUND                                        :Nebyla nalezena žádná AI.{}Tato AI je výchozí a nedělá vůbec nic.{}Spoustu AI ale můžeš stáhnout v "Stahování součástí"
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Některá z bežících AI skončila s chybou. Prosím oznamte toto autorovi AI spolu se screenshotem okna Ladění AI
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno na ladění AI je dostupné pouze na serveru
 
 # AI configuration window
@@ -3495,19 +3506,19 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Soubor je neči
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Do souboru nelze zapisovat
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Kontrola integrity dat selhala
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nedostupné>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generování mapy zrušeno...{}... nebylo možné založit žádné město
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... v tomto scénáři není ani jedno město
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nebylo možné nahrát krajinu z PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... soubor nenalezen.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nelze převést formát obrázku. Je nutno použít 8- nebo 24bitové barvy.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... něco se prostě pokazilo. Škoda. (Asi poškozený nebo nestandardní soubor.)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... soubor nenalezen
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nelze převést formát obrázku. Je nutno použít 8- nebo 24bitové barvy
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... něco se prostě pokazilo (soubor je asi poškozený)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nebylo možné nahrát krajinu z BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nelze převést formát obrázku.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nelze převést formát obrázku
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Varování kvůli velikosti
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Tak velká zmena velikosti zdrojové mapy není doporučena. Pokračovat s generováním?
@@ -3538,6 +3549,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... vlas
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... území vlastní jiná společnost
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Jméno musí být jedinečné
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} v cestě
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nelze v pozastavené hře
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Místní správa města {TOWN} odmítla vydat povolení.
@@ -3580,7 +3592,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... moc 
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... moc blízko k jinému městu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... příliš mnoho měst
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... na mapě už není místo.
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Město nebude stavět silnice. Můžete to změnit přes Pokročilé nastavení->Ekonomika->Města.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Město nebude stavět silnice. Můžete to změnit přes Pokročilé nastavení->Ekonomika->Města
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Silnice je v rekonstrukci
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nelze vybourat město...{}Buď k němu patří stanice nebo depo, anebo se nedá odklidit políčko městem vlastněné.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... v tomto městě není žádné místo vhodné pro umístění sochy
@@ -3686,7 +3698,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Nevhodný druh 
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je po výměně moc dlouhý
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Žádné pravidlo pro výměnu vozidel se nepoužilo.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Žádné pravidlo pro výměnu vozidel se nepoužilo
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(finanční limit)
 
 # Rail construction errors
@@ -3739,6 +3751,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Most je 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Začátek a konec musí být ve stejné výšce
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... oba konce mostu musí být na zemi
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... most je příliš dlouhý
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Most by končil mimo mapu
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Zde nelze postavit tunel...
@@ -3845,13 +3858,14 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... do t
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... do této stanice se prostředek sdílející tento příkaz nedostane
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nelze sdílet seznam příkazů...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nelze zastavit sdílení seznamu příkazů...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nelze kopírovat seznam příkazů...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... příliš daleko od předcházejícího cíle
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tomuto vozidlu nejde nastavit jízdní řád...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vozidla mohou čekat jen ve stanicích.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Toto vozidlo v této stanici nestaví.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vozidla mohou čekat jen ve stanicích
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Toto vozidlo v této stanici nestaví
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... příliš mnoho popisků
@@ -3894,49 +3908,49 @@ STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Domy
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Kino
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Nákupní středisko
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglů
-STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Teepee
-STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Dům konvička
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banka prasátko
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :{G=n}Teepee
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :{G=m}Dům konvička
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :{G=f}Banka prasátko
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Uhelný důl
-STR_INDUSTRY_NAME_POWER_STATION                                 :Elektrárna
-STR_INDUSTRY_NAME_SAWMILL                                       :Pila
-STR_INDUSTRY_NAME_FOREST                                        :Les
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Rafinerie
-STR_INDUSTRY_NAME_OIL_RIG                                       :Ropná plošina
-STR_INDUSTRY_NAME_FACTORY                                       :Továrna
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :Tiskárna
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Ocelárna
-STR_INDUSTRY_NAME_FARM                                          :Farma
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Důl na měděnou rudu
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Ropný vrt
-STR_INDUSTRY_NAME_BANK                                          :Banka
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Potravinářský závod
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Papírna
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Zlatý důl
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banka
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Diamantový důl
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Důl na železnou rudu
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Ovocný sad
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Kaučuková plantáž
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Zdroj vody
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Vodojem
-STR_INDUSTRY_NAME_FACTORY_2                                     :Továrna
-STR_INDUSTRY_NAME_FARM_2                                        :Farma
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Pila
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Les cukrové vaty
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Továrna na sladkosti
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=m}Uhelný důl
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Elektrárna
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Pila
+STR_INDUSTRY_NAME_FOREST                                        :{G=m}Les
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Rafinerie
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Ropná plošina
+STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Továrna
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Tiskárna
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Ocelárna
+STR_INDUSTRY_NAME_FARM                                          :{G=f}Farma
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=m}Důl na měděnou rudu
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Ropný vrt
+STR_INDUSTRY_NAME_BANK                                          :{G=f}Banka
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}Potravinářský závod
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Papírna
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=m}Zlatý důl
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=f}Banka
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=m}Diamantový důl
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=m}Důl na železnou rudu
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=m}Ovocný sad
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Kaučuková plantáž
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Zdroj vody
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=m}Vodojem
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Továrna
+STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Farma
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Pila
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Les cukrové vaty
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Továrna na sladkosti
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Farma na baterie
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Kolové studny
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Hračkářství
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Továrna na hračky
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Plastové fontány
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Sodovkárna
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Generátor bublin
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Karamelolom
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Cukerný důl
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=fp}Kolové studny
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=n}Hračkářství
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Továrna na hračky
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=fp}Plastové fontány
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Sodovkárna
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generátor bublin
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}Karamelolom
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=m}Cukerný důl
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!

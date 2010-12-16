@@ -274,6 +274,9 @@ STR_SORT_BY_VALUE                                               :Wearde
 STR_SORT_BY_LENGTH                                              :Lingte
 STR_SORT_BY_TIMETABLE_DELAY                                     :Vertraging
 STR_SORT_BY_FACILITY                                            :Stasjonstype
+STR_SORT_BY_WAITING                                             :Wearde fan fracht
+STR_SORT_BY_RATING_MAX                                          :Heechste fracht foldwaning
+STR_SORT_BY_RATING_MIN                                          :Minste fracht foldwanning
 STR_SORT_BY_ENGINE_ID                                           :Treintype
 STR_SORT_BY_COST                                                :Kosten
 STR_SORT_BY_POWER                                               :Krêft
@@ -306,9 +309,11 @@ STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bou in s
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bou in autodyk
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bou havens
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bou fleanfjilden
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Iepenje de lânskips ark
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Lit lûd/musyk finster sjen
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Lit lêste (neis)berjocht sjen / lit berjocht ynstellings sjen
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lân ynformaasje
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skeakelje tusken ark
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sla scenario op, laad scenario, slût ôf
@@ -340,6 +345,7 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spul Opsjes
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Swierrichheid ynstellings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :oantal ynstellings útwreidje
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ynstellings
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Trochsjoch opsjes
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stêd nammen sjen litte
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stasjon nammen sjen litte
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Nammen fan kontrôleposten sjen litte
@@ -347,6 +353,7 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Buordsjes sjen 
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Folle animaasje
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Folle detail
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Trochsichtige gebouwen
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Trochsjoch statjons nammen
 ############ range ends here
 
 ############ range for file menu starts
@@ -432,6 +439,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Skermfoto (Ctrl
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :tichtby helje skermfoto
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :skermfoto fan de hiele wrald (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Oer 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Flakken rjochtsje
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -515,9 +523,12 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betelling foar levering fan 10 ienheiden (of 10,000 liter) fracht oer in ôfstân fan 20 hokskes
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Alles oansette
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Alles ûtsette
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Lit alle type fracht sjen yn de opbringsten grafyk
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Lit gjin fan de typen fracht sjen yn de opbringsten grafyk
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Set grafyk foar frachttype oan/út
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Lit detail prestaasje sjen
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Kaai foar bedriuwsgrafiken
@@ -537,6 +548,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
 # Performance detail window
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Prestaasje detail
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -554,6 +566,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Jild:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lean:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}oantal vehikels dy't winst makke hawwe yn it lêste jier
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Stikken guod ôflevere yn de lêste 12 moanne
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Oantal soarten guod ôlevere yn de lêste trije moanne
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Jild dat dit beriuw op de bank stean hat
@@ -774,7 +787,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} wacht yn depot
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} wacht yn hangar
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} hat net genôch opdrachten op e list stean
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} hat in leeche opdracht
@@ -1648,7 +1661,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Dêr misse
 # NewGRF 'it's broken' warnings
 
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<unjildiche fracht>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_ENGINE                                       :<unjildiche wein>

@@ -802,7 +802,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} väntar i depån
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} väntar i hangaren
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} har för få ordrar i schemat
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en ogiltig order
@@ -2499,7 +2499,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NyGRF '{
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att den automatiska förnyelsen slår fel
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en ändlös loop i produktions-systemet
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<invalid cargo>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} av <invalid cargo>
@@ -3495,7 +3495,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... för
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... för nära en annan stad
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... för många städer
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... det finns ingen plats kvar på kartan
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Staden kommer inte bygga vägar. Du kan tillåta att staden bygger vägar via Avancerade Inställningar -> Ekonomi -> Städer.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Staden kommer inte bygga vägar. Du kan tillåta att staden bygger vägar via Avancerade Inställningar -> Ekonomi -> Städer
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vägarbete pågår
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan inte ta bort den här staden...{}En station eller depå refererar till staden eller så kan inte en stadsägd ruta tas bort.
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... det finns ingen lämplig plats för en staty i stadens centrum
@@ -3758,8 +3758,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... för
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan inte lägga till fordonet i en tidtabell...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Fordon kan enbart vänta vid stationer.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Detta fordon stannar inte vid denna station.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Fordon kan enbart vänta vid stationer
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Detta fordon stannar inte vid denna station
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... för många skyltar

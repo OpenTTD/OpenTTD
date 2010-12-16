@@ -278,7 +278,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klikni i
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Preklopi veliko/majhno velikost okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Drsnik - premakne seznam gor/dol
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Drsni trak - premika seznam levo/desno
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Poruši zgradbe itd. na kvadratku zemlje
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Poruši zgradbe itd. na kvadratku zemlje. Ctrl izbere diagonalno območje
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Privzeto
@@ -844,7 +844,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} čaka v ladjedelnici
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} čaka v letališkem hangarju
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} ima premalo ukazov na urniku
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ima prazen ukaz
@@ -1187,6 +1187,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sprememb
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Letališča nikoli ne potečejo: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Opozori, če se vozilo izgubi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pregled ukazov vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :da, toda izloči ustavljena vozila
@@ -2110,9 +2111,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Efektivn
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Izdelava terena
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Znižaj rob terena
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvišaj rob terena
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Zravnaj zemljo
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Znižaj rob terena. Vlečenje zniža izbrani kot in izravna višino. Ctrl izbere diagonalno območje
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvišaj rob terena. Vlečenje zviša izbrani kot in poravna na enako višino. Ctrl izbere diagonalno območje
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Zravnaj zemljo na višino prvega izbranega kota. Ctrl izbere diagonalno območje
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zemljišče za prihodnjo rabo
 
 # Object construction window
@@ -2550,7 +2551,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o preureditvi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' hrošč je povzročil neskončen povratni ciklus proizvodnje.
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<neveljaven tovor>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} od <neveljaven tovor>
