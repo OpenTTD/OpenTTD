@@ -1764,8 +1764,8 @@ static void SetSelectionTilesDirty()
 		/* a_size, b_size describe a rectangle with rotated coordinates */
 		int a_size = x_size + y_size, b_size = x_size - y_size;
 
-		int interval_a = a_size < 0 ? -(int)TILE_SIZE : TILE_SIZE;
-		int interval_b = b_size < 0 ? -(int)TILE_SIZE : TILE_SIZE;
+		int interval_a = a_size < 0 ? -(int)TILE_SIZE : (int)TILE_SIZE;
+		int interval_b = b_size < 0 ? -(int)TILE_SIZE : (int)TILE_SIZE;
 
 		for (int a = -interval_a; a != a_size + interval_a; a += interval_a) {
 			for (int b = -interval_b; b != b_size + interval_b; b += interval_b) {
