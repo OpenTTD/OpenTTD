@@ -804,7 +804,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} ha raggiunto il deposito
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} ha raggiunto l'hangar
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} non ha abbastanza ordini pianificati
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ha un ordine vuoto
@@ -831,8 +831,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} adesso accetta {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} adesso accetta {STRING} e {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Offerta di sussidio scaduta:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non darà più diritto a sovvenzioni.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Sussidio terminato:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non è più sovvenzionato.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Offerta di sussidio scaduta:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non darà più diritto a sovvenzioni
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Sussidio terminato:{}{}Il trasporto di {STRING} da {STRING} a {STRING} non è più sovvenzionato
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Offerta di sussidio:{}{}Il primo servizio {STRING} da {STRING} a {STRING} riceverà un anno di sovvenzioni dall'autorità locale!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il 50% in più per il prossimo anno!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Sussidio aggiudicato alla {STRING}!{}{}Il trasporto di {STRING} da {STRING} a {STRING} verrà pagato il doppio per il prossimo anno!
@@ -1143,7 +1143,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Consent
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Consenti fermate passanti sulle strade di proprietà degli avversari: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Consenti la costruzione di stazioni adiacenti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Abilita pacchetti di locomotive NewGRF multipli: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non è possibile modificare questa impostazione quando esistono veicoli.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Non è possibile modificare questa impostazione quando esistono veicoli
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Non rendere mai obsoleti i tipi di aeroporto: {ORANGE}{STRING}
 
@@ -1424,7 +1424,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si è s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trucchi
 STR_CHEATS_TOOLTIP                                              :{BLACK}Le caselle indicano se un trucco è già stato usato una volta
-STR_CHEATS_WARNING                                              :{BLACK}Attenzione! Stai per tradire i tuoi avversari. Ricordati che un così grande disonore sarà ricordato per l'eternità.
+STR_CHEATS_WARNING                                              :{BLACK}Attenzione! Stai per tradire i tuoi avversari. Ricordati che un così grande disonore sarà ricordato per l'eternità
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumenta denaro di {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Compagnia controllata: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magico (rimuove industrie e oggetti fissi): {ORANGE}{STRING}
@@ -1581,7 +1581,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Aggiorna
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Trova server
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cerca un server sulla rete
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Aggiungi server
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Aggiunge all'elenco un server che verrà sempre controllato in cerca di partite attive
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Aggiunge un server alla lista di server in cui cercare sempre partite in corso
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Avvia server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Avvia il proprio server
 
@@ -1689,14 +1689,14 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Aiuta a 
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Connessione...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Connessione..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizzazione..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) In attesa..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Download della mappa..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Elaborazione dei dati..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrazione..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Connessione...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizzazione...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) In attesa...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Download della mappa...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Elaborazione dei dati...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrazione...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Recupero informazioni partita..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Recupero informazioni partita...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Recupero informazioni compagnie..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client in attesa
@@ -1883,15 +1883,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossib
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opzioni trasparenza
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Attiva/disattiva la trasparenza dei nomi delle stazioni. CTRL+clic per bloccare.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Attiva/disattiva la trasparenza degli alberi. CTRL+clic per bloccare.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Attiva/disattiva la trasparenza degli edifici. CTRL+clic per bloccare.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Attiva/disattiva la trasparenza delle industrie. CTRL+clic per bloccare.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Attiva/disattiva la trasparenza delle strutture edificabili come stazioni, depositi e waypoint. CTRL+clic per bloccare.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Attiva/disattiva la trasparenza dei ponti. CTRL+clic per bloccare.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Attiva/disattiva la trasparenza di strutture come fari e antenne. CTRL+clic per bloccare.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Attiva/disattiva la trasparenza delle catenarie. CTRL+clic per bloccare.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Attiva/disattiva la trasparenza degli indicatori di caricamento. CTRL+clic per bloccare.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Attiva/disattiva la trasparenza dei nomi delle stazioni. CTRL+clic per bloccare
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Attiva/disattiva la trasparenza degli alberi. CTRL+clic per bloccare
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Attiva/disattiva la trasparenza degli edifici. CTRL+clic per bloccare
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Attiva/disattiva la trasparenza delle industrie. CTRL+clic per bloccare
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Attiva/disattiva la trasparenza delle strutture edificabili come stazioni, depositi e waypoint. CTRL+clic per bloccare
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Attiva/disattiva la trasparenza dei ponti. CTRL+clic per bloccare
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Attiva/disattiva la trasparenza di strutture come fari e antenne. CTRL+clic per bloccare
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Attiva/disattiva la trasparenza delle catenarie. CTRL+clic per bloccare
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Attiva/disattiva la trasparenza degli indicatori di caricamento. CTRL+clic per bloccare
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Rendi gli oggetti invisibili invece che trasparenti
 
 # Base for station construction window(s)
@@ -1954,19 +1954,19 @@ STR_STATION_CLASS_WAYP                                          :Waypoint
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selezione segnale
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Segnale di blocco (semaforico){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia più di un treno.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Pre-segnale (semaforico){}Via libera se è presente almeno un segnale di uscita su via libera al termine della sezione di blocco successiva. Altrimenti presenta via impedita.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Segnale di uscita (semaforico){}Si comporta come un segnale di blocco, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Segnale combinato (semaforico){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Segnale a percorso (semaforico){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Può essere superato al contrario.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Segnale a percorso s. u. (semaforico){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Segnale di blocco (luminoso){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia più di un treno.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Pre-segnale (luminoso){}Via libera se è presente almeno un segnale di uscita su via libera al termine della sezione di blocco successiva. Altrimenti presenta via impedita.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Segnale di uscita (luminoso){}Si comporta come un segnale di blocco, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Segnale combinato (luminoso){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Segnale a percorso (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Può essere superato al contrario.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Segnale a percorso s. u. (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversione segnali - Se attivato, facendo clic su un segnale esistente lo si converte nel tipo selezionato, mentre con CTRL+clic se ne modifica la variante.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Segnale di blocco (semaforico){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia più di un treno
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Pre-segnale (semaforico){}Via libera se è presente almeno un segnale di uscita su via libera al termine della sezione di blocco successiva. Altrimenti presenta via impedita
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Segnale di uscita (semaforico){}Si comporta come un segnale di blocco, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Segnale combinato (semaforico){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Segnale a percorso (semaforico){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Può essere superato al contrario
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Segnale a percorso s. u. (semaforico){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Segnale di blocco (luminoso){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia più di un treno
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Pre-segnale (luminoso){}Via libera se è presente almeno un segnale di uscita su via libera al termine della sezione di blocco successiva. Altrimenti presenta via impedita
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Segnale di uscita (luminoso){}Si comporta come un segnale di blocco, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Segnale combinato (luminoso){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Segnale a percorso (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Può essere superato al contrario
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Segnale a percorso s. u. (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversione segnali - Se attivato, facendo clic su un segnale esistente lo si converte nel tipo selezionato, mentre con CTRL+clic se ne modifica la variante
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distanza fra i segnali costruiti automaticamente trascinando il cursore
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Riduce la distanza fra i segnali costruiti
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumenta la distanza fra i segnali costruiti
@@ -2033,7 +2033,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Costruis
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Posiziona una boa che può essere usata come waypoint
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Costruisce un acquedotto
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definisce una zona d'acqua.{}Costruisce un canale, a meno che non si tenga premuto CTRL mentre si fa clic al livello del mare, provocando l'allagamento dei dintorni
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Crea un fiume
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Crea fiumi
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientamento deposito navale
@@ -2301,7 +2301,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salva la
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carica
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carica la partita selezionata
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Dettagli partita
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Informazioni non disponibili.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Informazioni non disponibili
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2465,23 +2465,23 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Attenzione
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Errore: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Errore fatale: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Si è verificato un errore fatale NewGRF: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} non funziona con la versione di TTDPatch riferita da OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} è per la versione {STRING} di TTD.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} non funziona con la versione di TTDPatch riferita da OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} è per la versione {STRING} di TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} è progettato per essere usato con {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametro non valido per {1:STRING}: parametro {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve essere caricato prima di {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve essere caricato dopo {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} richiede OpenTTD versione {STRING} o superiore.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve essere caricato prima di {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve essere caricato dopo {STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} richiede OpenTTD versione {STRING} o superiore
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :il file GRF che era progettato per tradurre
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Troppi file NewGRF caricati.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Troppi NewGRF caricati
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Caricare {2:STRING} come NewGRF statico insieme a {4:STRING} può causare errori di sincronizzazione
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inatteso.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Proprietà sconosciuta per l'azione 0.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativo di utilizzare un ID non valido.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene degli sprite corrotti. Tutti gli sprite corrotti saranno mostrati come punti interrogativi (?) rossi.
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene occorrenze multiple dell'azione 8.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inatteso
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Proprietà sconosciuta per l'azione 0
+STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativo di utilizzare un ID non valido
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene degli sprite corrotti. Tutti gli sprite corrotti saranno mostrati come punti interrogativi (?) rossi
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene occorrenze multiple dell'azione 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lettura oltre la fine dello pseudo-sprite
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Nello stile grafico di base attualmente in uso mancano alcuni sprite.{}È consigliabile aggiornare lo stile grafico di base.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Nello stile grafico di base attualmente in uso mancano alcuni sprite.{}È consigliabile aggiornare lo stile grafico di base
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Attenzione!
@@ -2502,16 +2502,16 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Trovati
 STR_NEWGRF_LIST_MISSING                                         :{RED}File mancanti
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Le caratteristiche del NewGRF '{0:STRING}' possono causare errori di sincronizzazione e/o crash.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha modificato lo stato di vagone alimentato di '{1:ENGINE}' al di fuori del deposito.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha modificato la lunghezza vericolo di '{1:ENGINE}' al di fuori del deposito.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno '{VEHICLE}' della '{COMPANY}' ha una lunghezza non valida, probabilmente a causa di problemi con un NewGRF. È possibile che si verifichino errori di sincronizzazione o crash.
+STR_NEWGRF_BROKEN                                               :{WHITE}Il comportamento del NewGRF '{0:STRING}' può causare errori di sincronizzazione e/o crash
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ha modificato lo stato di vagone alimentato di '{1:ENGINE}' al di fuori del deposito
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ha modificato la lunghezza vericolo di '{1:ENGINE}' al di fuori del deposito
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno '{VEHICLE}' della '{COMPANY}' ha una lunghezza non valida, probabilmente a causa di problemi con un NewGRF. È possibile che si verifichino errori di sincronizzazione o crash
 
 STR_NEWGRF_BUGGY                                                :{WHITE}Informazioni scorrette fornite dal NewGRF '{0:STRING}'
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}I dati su carico e riadattamento di '{1:ENGINE}' sono diversi da quelli indicati prima della costruzione. Il rinnovo/rimpiazzo automatico potrebbe fallire.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causato un ciclo infinito nel callback di produzione.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}I dati su carico e riadattamento di '{1:ENGINE}' sono diversi da quelli indicati prima della costruzione. Il rinnovo/rimpiazzo automatico potrebbe fallire
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causato un ciclo infinito nel callback di produzione
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<carico non valido>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} di <carico non valido>
@@ -3355,8 +3355,8 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Visualiz
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD è stato compilato senza supporto IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nessuna IA disponibile!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Impossibile trovare una IA adatta da caricare.{}La IA caricata è solo un abbozzo e resterà semplicemente passiva.{}È possibile scaricare numerose IA tramite il sistema 'Contenuti online'.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una delle IA in funzione è andata in crash. Si prega di inviare una segnalazione all'autore della IA con uno screenshot della finestra Debug IA.
+STR_ERROR_AI_NO_AI_FOUND                                        :Impossibile trovare una IA adatta da caricare.{}La IA caricata è solo un abbozzo e resterà semplicemente passiva.{}È possibile scaricare numerose IA tramite il sistema 'Contenuti online'
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una delle IA in funzione è andata in crash. Si prega di inviare una segnalazione all'autore della IA con uno screenshot della finestra Debug IA
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra di debug IA è disponibile soltanto per il server
 
 # AI configuration window
@@ -3426,15 +3426,15 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :File non leggib
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :File non scrivibile
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Controllo integrità dati fallito
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<non disponibile>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La partita è stata salvata in una versione senza il supporto per i tram. Tutte le tranvie sono state rimosse.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La partita è stata salvata in una versione senza il supporto per i tram. Tutti i tram sono stati rimossi
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generazione mondo interrotta...{}... nessuna posizione adatta per le città
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... non ci sono città in questo scenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossibile caricare il terreno dal file PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... file non trovato.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... impossibile convertire il tipo di immagine. È richiesta un'immagine PNG a 8 o 24 bit.
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... file non trovato
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... impossibile convertire il tipo di immagine. È richiesta un'immagine PNG a 8 o 24 bit
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... qualcosa non ha funzionato (probabilmente il file è corrotto)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Impossibile caricare il terreno dal file BMP...
@@ -3444,7 +3444,7 @@ STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Avviso s
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ridimensionare di molto l'heightmap sorgente non è consigliabile. Continuare con la generazione?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}È stato trovato soltanto il pacchetto sonoro predefinito. Per i suoni, installare un pacchetto sonoro tramite il sistema di download contenuti.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}È stato trovato soltanto il pacchetto sonoro predefinito. Per i suoni, installare un pacchetto sonoro tramite il sistema di download contenuti
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot salvato con successo come '{STRING}'
@@ -3512,7 +3512,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... trop
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... troppo vicino ad un'altra città
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... troppe città
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... non c'è altro spazio sulla mappa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Alla città non è permesso costruire strade. È possibile abilitare la costruzione di strade in Impostazioni avanzate -> Economia -> Città.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Alla città non è permesso costruire strade. È possibile abilitare la costruzione di strade in Impostazioni avanzate -> Economia -> Città
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Lavori stradali in corso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Impossibile eliminare la città...{}Una stazione o un deposito fa ancora riferimento alla città o un riquadro di proprietà della città non può essere rimosso
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... non ci sono spazi adeguati per una statua nel centro di questa città
@@ -3618,7 +3618,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipo di deposit
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} è diventato troppo lungo dopo la sostituzione
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nessuna regola di rimpiazzo/rinnovo automatico applicata.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nessuna regola di rimpiazzo/rinnovo automatico applicata
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite denaro)
 
 # Rail construction errors
@@ -3777,8 +3777,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... trop
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossibile dare un orario al veicolo...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}I veicoli possono attendere solo alle stazioni.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Il veicolo non ferma a questa stazione.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}I veicoli possono attendere solo alle stazioni
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Il veicolo non ferma a questa stazione
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... troppi cartelli

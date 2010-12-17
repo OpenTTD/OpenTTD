@@ -577,8 +577,8 @@ STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Number o
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}The profit of the vehicle with the lowest income (only vehicles older than two years are considered)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the lowest profit of the past 12 quarters
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Amount of cash made in the quarter with the highest profit of the past 12 quarters
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Units of cargo delivered in the past four quarters.
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Number of types of cargo delivered in the past quarter.
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Units of cargo delivered in the past four quarters
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Number of types of cargo delivered in the past quarter
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Amount of money this company has in the bank
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}The amount of money this company has taken on loan
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total points out of possible points
@@ -1601,7 +1601,7 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (advertize)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Max clients:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choose a maximum number of clients. Not all slots need to be filled.
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choose a maximum number of clients. Not all slots need to be filled
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compan{P y ies}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max companies:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limit the server to a certain number of companies
@@ -1609,7 +1609,7 @@ STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} sp
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spectators:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limit the server to a certain number of spectators
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Language spoken:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Other players will know which language is spoken on the server.
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Other players will know which language is spoken on the server
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start Game
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start a new network game from a random map, or the selected scenario
@@ -1757,13 +1757,13 @@ STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}No netwo
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Could not find any network games
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}The server didn't answer the request
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Could not connect due to NewGRF mismatch
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Network-Game synchronization failed.
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Network-Game connection lost.
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Network-Game synchronization failed
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Network-Game connection lost
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Could not load savegame
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Could not start the server
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Could not connect
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Connection #{NUM} timed out
-STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}We made a protocol-error and our connection is closed.
+STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}We made a protocol-error and our connection is closed
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}The revision of this client does not match the server's revision
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Wrong password
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}The server is full
@@ -2014,7 +2014,7 @@ STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Select s
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Bus Station Orientation
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Select bus station orientation
-STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Truck Station Orient.
+STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Truck Station Orientation
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Select truck loading bay orientation
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Passenger Streetcar Orientation
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Select passenger streetcar station orientation

@@ -283,6 +283,7 @@ STR_SORT_BY_RATING_MIN                                          :Rating kargo te
 STR_SORT_BY_ENGINE_ID                                           :IDMesin (klasik)
 STR_SORT_BY_COST                                                :Biaya
 STR_SORT_BY_POWER                                               :Daya
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Gaya traksi
 STR_SORT_BY_INTRO_DATE                                          :Tanggal Peluncuran
 STR_SORT_BY_RUNNING_COST                                        :Biaya Operasional
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Daya/Biaya Ops.
@@ -801,7 +802,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} sedang menunggu di galangan
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} sedang menunggu di hangar
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Daftar perintah {VEHICLE} terlalu sedikit
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} memiliki perintah yang terabaikan
@@ -1074,7 +1075,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu boleh
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran
 STR_CITY_APPROVAL_HOSTILE                                       :Bermusuhan
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tidak terdapat pemain AI ...{}anda dapat mengunduh beberapa versi AI lewat "Online Content"
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Tidak terdapat pemain AI ...{}anda dapat mengunduh beberapa macam AI lewat "Cari Konten"
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Tindakan ini menyebabkan tingkat kesulitan menjadi bebas
 
 # Advanced settings window
@@ -1144,6 +1145,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Tidak di
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Bandara tidak kedaluarsa: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Ingatkan saat kendaraan tersesat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Tinjau pemberhentian kendaraan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :tidak
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Ya, tetapi selain kendaraan yang berhenti
@@ -1214,6 +1216,8 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :pendek (31-12-2
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Selalu hentikan sementara permainan saat memulai : {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :semua kecuali mengubah dataran
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :semua tindakan
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gunakan daftar kendaraan tingkat lanjut: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Non-aktifkan
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Perusahaan sendiri
@@ -2395,6 +2399,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Memeriks
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nama File: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versi: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Versi kompatibel min.: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palet/warna: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
@@ -2493,7 +2498,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informasi muat ulang untuk '{1:ENGINE}' berbeda dengan daftar beli setelah konstruksi. Ini menyebabkan pembaruan otomatis gagal memuat ulang dengan benar..
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' menyebabkan perulangan tanpa akhir di tingkat produksi.
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<kargo tidak valid>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} dari <kargo tidak valid>
@@ -3199,11 +3204,14 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Lewati p
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Hapus
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Hapus perintah terpilih
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Hapus semua perintah
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Berhenti berbagi
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Pergi ke
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Pergi ke depo terdekat
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar terdekat
 STR_ORDER_CONDITIONAL                                           :Melompat ke perintah lain
+STR_ORDER_SHARE                                                 :Berbagi perintah
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Masukkan pemberhentian baru sebelum pemberhentian yang terpilih, atau tambahkan pada akhir daftar. Sambil menekan Ctrl, akan membuat : <1>pemberhentian ke stasiun menjadi 'muat penuh sembarang', <2> penunjuk jalan menjadi 'non-stop', dan <3> pemberhentian di bengkel/depo/galangan/hangar menjadi 'perbaikan'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Masukkan perintah berikutnya
 
@@ -3260,7 +3268,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Perintah
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Tampilkan daftar Perintah
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Daftar Jadwal Keberangkatan - Klik salah satu tujuan untuk memilihnya.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Daftar Jadwal Keberangkatan - Klik salah satu tujuan untuk memilihnya
 
 STR_TIMETABLE_NO_TRAVEL                                         :Tidak berjalan
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Perjalanan belum terjadwal
@@ -3322,7 +3330,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Matikan 
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}mengaktifkan/mematikan peristirahatan ketika pesan AI sesuai dengan string istirahat
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Berhenti saat:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Berhenti pada
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ketika pesan log AI sesuai dengan isi kotak, permainan diberhentikan.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ketika pesan log AI sesuai dengan isi kotak, permainan dihentikan
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Persis Besar-Kecil
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hidup matikan pengecekan besar-kecil huruf pada pesan AI dengan kotak pencarian
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Lanjutkan
@@ -3332,8 +3340,8 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Lihat pr
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD tidak menyertakan AI ...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... tidak ditemukan AI !
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Tidak ada AI yang cocok untuk digunakan.{}Ini adalah dummy AI yang tidak akan melakukan apapun.{}Anda dapat download beberapa AI melalui sistem 'Konten Online'.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Salah satu AI gagal. Laporkan ini kepada AI Author dengan potongan layar dari Jendela Debug AI.
+STR_ERROR_AI_NO_AI_FOUND                                        :Tidak ada AI yang cocok digunakan.{}Ini adalah dummy AI yang tidak akan melakukan apapun.{}Anda bisa mengunduh AI melalui sistem 'Konten Online'.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Salah satu AI gagal. Laporkan ini kepada pembuat AI dengan potongan layar dari Jendela Debug AI
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI Jendela "Debug" hanya tersedia untuk server
 
 # AI configuration window
@@ -3403,7 +3411,7 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Berkas tidak te
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Berkas tidak dapat ditulisi
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Pemeriksaan integritas data gagal
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game telah disimpan pada versi terdahulu tanpa dukungan alat transportasi trem. Semua Trem telah dihilangkan.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game telah disimpan pada versi tanpa dukungan trem. Semua Trem telah dihilangkan
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Pebuatan peta dibatalkan...{}... tak ada lokasi kota yang cocok
@@ -3411,17 +3419,17 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... disa
 
 STR_ERROR_PNGMAP                                                :{WHITE}Tidak dapat memuat lansekap dari PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... berkas tidak ada
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi. PNG 8 atau 24-bit diperlukan.
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi. Diperlukan PNG 8 atau 24-bit
 STR_ERROR_PNGMAP_MISC                                           :{WHITE}... sepertinya ada yang salah. Maaf. (mungkin berkasnya rusak)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Tidak dapat memuat lansekap dari BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi jenis gambar.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... tak dapat mengkonversi jenis gambar
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Peringatan Skala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Ukuran peta terlalu besar dan tidak direkomendasikan. Lanjutkan?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Hanya efek suara standar yang ditemukan. Jika anda ingin efek suara, unduhlah dari "Online Content"
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Hanya efek suara standar yang ditemukan. Jika anda ingin efek suara, unduhlah dari "Cari Konten"
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Pengambilan gambar telah berhasil disimpan sebagai '{STRING}'
@@ -3446,6 +3454,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... dimi
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... area ini dimiliki oleh perusahaan lain
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nama haruslah unik
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :terhalang {WHITE}{1:STRING}
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Tidak diijinkan saat berhenti
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Pemkot {TOWN} tidak mengijinkan anda melakukan ini
@@ -3488,7 +3497,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... terl
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... terlalu dekat dengan kota lain
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... terlalu banyak kota
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... tidak ada lagi ruang tersisa dalam peta
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kota tidak akan membangun jalan. Anda dapat mengaktifkan pembangunan jalan pada menu Pengaturan Lanjutan->Ekonomi->Kota.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Kota tidak akan membangun jalan. Anda dapat mengaktifkan pembangunan jalan pada menu Pengaturan Lanjutan->Ekonomi->Kota
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Jalan sedang dikerjakan
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Tidak dapat menghancurkan kota ini...{}Suatu stasiun atau depo tergantung pada kota ini atau kotak milik kota tidak dapat dihapus
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... tidak ada tempat yang cocok untuk patung di tengah kota ini
@@ -3594,7 +3603,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Jenis bengkel s
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} jadi terlalu panjang setelah diganti
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Tidak ada aturan peremajaan otomatis yang digunakan
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Tidak ada aturan peremajaan otomatis yang berlaku
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(batas min. uang)
 
 # Rail construction errors
@@ -3647,6 +3656,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Jembatan
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Awal dan akhir harus segaris
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... kedua ujung jembatan harus berada di daratan
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... jembatan terlalu panjang
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Jembatan akan berakhir di luar peta
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Tidak dapat membangun terowongan disini...
@@ -3752,7 +3762,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... terl
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Tidak dapat membuat jadwal keberangkatan kendaraan...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Kendaran hanya dapat menunggu di stasiun
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Kendaraan ini tidak berhenti pada stasiun ini.
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Kendaraan tidak berhenti pada stasiun ini
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... terlalu banyak tanda

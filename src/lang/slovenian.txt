@@ -358,7 +358,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Zgradi l
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Odpre orodje za teren in sajenje dreves, itd.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Prikaži okno za zvok/glasbo
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Prikaži zadnje sporočilo/novico, prikaži možnosti sporočil
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacije o terenu, konzola, UI razhroščevanje, zaslonske slike, o OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informacije o terenu, konzola, razhroščevanje UI, zaslonske slike, o OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Preklopi orodne vrstice
 
 # Extra tooltips for the scenario editor toolbar
@@ -482,7 +482,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Zgodovina sporo
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informacije o terenu
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Vklopi/Izklopi konzolo
-STR_ABOUT_MENU_AI_DEBUG                                         :UI razhroščevanje
+STR_ABOUT_MENU_AI_DEBUG                                         :Razhroščevanje UI
 STR_ABOUT_MENU_SCREENSHOT                                       :Zajemi sliko
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zajemi približano sliko
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Zajemi celostno sliko
@@ -855,8 +855,8 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} se stara
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} podlega iztrošenosti
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} nima več zanesljivosti in nujno potrebuje zamenjavo
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne najde poti za nadaljevanje.
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} je izgubljen.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ne najde poti za nadaljevanje
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} je izgubljen
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} povzroča izgubo. Lanski dobiček je bil {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} je ustavljen zaradi neuspele preureditve
@@ -871,8 +871,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} sedaj sprejema {STRING.t}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} sedaj sprejema {STRING.t} in {STRING.t}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Ponudba subvencije potekla: {}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvencija zaključena:{}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Ponudba subvencije potekla: {}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvencija zaključena:{}{}Prevoz {STRING.r} od {STRING} do {STRING} ni več subvencioniran
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Nova ponujena subvencija:{}{}Prvi prevoz {STRING.r} od {STRING} do {STRING} bo{}subvencioniran s strani mestnega sveta!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvencija podeljena podjetju {STRING}!{}{}Prevoz {STRING.r} od {STRING} do {STRING} bo prinesel 50% večji prihodek{}za naslednje leto!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Podjetje {STRING} je prejelo subvencijo!{}{}Prevoz {STRING.r} od {STRING} do {STRING} bo prinesel dvakratni prihodek{}za naslednje leto!
@@ -1130,7 +1130,7 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Prikaz 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dovoli gradnjo hiš na nagibih ali obali: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dovoli oblikovanje terena pod objekti (tiri, hiše) (samonaklon): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnični območni zajem postaj: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest, mostov, itd.: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest in mostov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Omogoči gradnjo zelo dolgih vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/isker vozil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Brez
@@ -1183,7 +1183,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dovoli 
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Dovoli prevoženja postaj na tekmečevih cestah: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Dovoli gradnjo združljivih postaj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Omogoči večkratni set NewGRF pogona: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sprememba teh nastavitev ni mogoča, ko so tam vozila.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sprememba teh nastavitev ni mogoča, ko so tam vozila
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Letališča nikoli ne potečejo: {ORANGE}{STRING}
 
@@ -1252,7 +1252,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Izklop
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Premik slike z levim klikom: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Uporabi {ORANGE}{STRING}{LTBLUE} format datuma za imena shranjevanja igre.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Uporabi {ORANGE}{STRING}{LTBLUE} format datuma za imena shranjevanja igre
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dolg (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kratek (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1464,7 +1464,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Zagotov
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Goljufije
 STR_CHEATS_TOOLTIP                                              :{BLACK}Kljukice kažejo, če so bile goljufije že kdaj uporabljene
-STR_CHEATS_WARNING                                              :{BLACK}Pozor! Nameravaš izdati svoje tekmece. Tako sramotno dejanje bo zabeleženo za vselej.
+STR_CHEATS_WARNING                                              :{BLACK}Pozor! Nameravaš izdati svoje tekmece. Tako sramotno dejanje bo zabeleženo za vselej
 STR_CHEAT_MONEY                                                 :{LTBLUE}Povečaj denar za {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Igra kot podjetje: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Čarobni buldožer (odstrani industrije, neodstranljive objekte): {ORANGE}{STRING}
@@ -1527,16 +1527,16 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Izberi �
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nov obraz
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Naredi naključno novo sliko
 STR_FACE_ADVANCED                                               :{BLACK}Napredno
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Napredna izbira obraza.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Napredna izbira obraza
 STR_FACE_SIMPLE                                                 :{BLACK}Enostavno
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Enostavna izbira obraza.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Enostavna izbira obraza
 STR_FACE_LOAD                                                   :{BLACK}Naloži
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Naloži piljubljen obraz
 STR_FACE_LOAD_DONE                                              :{WHITE}Tvoj priljubljen obraz je bil naložen iz OpenTTD konfiguracije
 STR_FACE_FACECODE                                               :{BLACK}Obraz igralca št.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Prikaži in/ali nastavi številko direktorjevega obraza
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Prikaži in/ali nastavi številko direktorjevega obraza
-STR_FACE_FACECODE_SET                                           :{WHITE}Nova koda številke obraza je nastavljena.
+STR_FACE_FACECODE_SET                                           :{WHITE}Nova koda številke obraza je nastavljena
 STR_FACE_FACECODE_ERR                                           :{WHITE}Ni mogoče nastaviti številke direktorjevega obraza - izbor mogoč med 0 in 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Shrani
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Shrani priljubljen obraz
@@ -1621,7 +1621,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Osveži 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Najdi strežnik
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Poišči strežnik na mreži
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj strežnik
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Doda strežnik na seznam, ki bo vedno preverjen za pognane igre.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Doda strežnik na seznam, ki bo vedno preverjen za pognane igre
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Poženi strežnik
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Poženi lasten streznik
 
@@ -1729,14 +1729,14 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Pomagaj 
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Povezujem...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Povezujem..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Pooblaščam..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Čakam..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Prenašam zemljevid..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Obdelujem podatke..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registriram..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Povezujem...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Pooblaščam...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Čakam...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Prenašam zemljevid...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Obdelujem podatke...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registriram...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Iščem informacije o igri..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Iščem informacije o igri...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Iščem informacije o podjetju...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} gost{P "" a i ov} je pred tabo
@@ -1778,7 +1778,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Uporabi 
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Pridruži se
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Pridruži se in igraj kot to podjetje
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Geslo
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Zaščiti svoje podjetje z geslom, da preprečiš priključitev drugih uporabnikov k podjetju.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Zaščiti svoje podjetje z geslom, da preprečiš priključitev drugih uporabnikov k podjetju
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Nastavi geslo podjetja
 
 # Network chat
@@ -1923,15 +1923,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No mogo�
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavitve prozornega pogleda
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Prozoren ali poln pogled imen postaj
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Prozoren ali poln pogled dreves
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Prozoren ali navaden pogled hiš
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Prozoren ali navaden pogled industrij
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Prozoren ali navaden pogled ostalih objektov kot so postaje, garaže...
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Prozoren ali navaden pogled mostov
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Prozoren ali navaden pogled struktur kot so antene, svetilniki...
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Preklop prosojnosti za pogone. Ctrl+Klik za zaklepanje.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Preklop na prosojnost za prikaz polnenja
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Prozoren ali poln pogled imen postaj. Ctrl+Klik za zaklepanje
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Prozoren ali poln pogled dreves. Ctrl+Klik za zaklepanje
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Prozoren ali navaden pogled hiš. Ctrl+Klik za zaklepanje
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Prozoren ali navaden pogled industrij. Ctrl+Klik za zaklepanje
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Prozoren ali navaden pogled ostalih objektov kot so postaje, garaže... Ctrl+Klik za zaklepanje
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Prozoren ali navaden pogled mostov. Ctrl+Klik za zaklepanje
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Prozoren ali navaden pogled struktur kot so antene, svetilniki... Ctrl+Klik za zaklepanje
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Preklop prosojnosti za pogone. Ctrl+Klik za zaklepanje
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Preklop na prosojnost za prikaz polnenja. Ctrl+Klik za zaklepanje
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nastavi predmete nevidne namesto prosojne
 
 # Base for station construction window(s)
@@ -1994,19 +1994,19 @@ STR_STATION_CLASS_WAYP                                          :Točke poti
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Izbor signalov
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardni signal (semafor){}Signali so potrebni, da preprečijo vlaku trčenje na progi z več vlaki.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vhodni signal (semafor){}Zelen v kolikor je vsaj en ali več izhodnih signalov v nadaljevanju proge. Če ne, je rdeč.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Izhodni signal (semafor){}Deluje kot normalen semafor, le da mora biti povezan z ustreznim vhodnim ali kombiniranim signalom.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinirani signal (semafor){}Kombinirani signal deluje kot vhodni in izhodni. To omogoča gradnjo velikih vej signalizacije.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Napredni signal (semafor){}Napredni signal omogoča vstop več kot enemu vlaku v odsek proge, če ima na voljo prostor za varno ustavitev. Napredni signali se lahko prevozijo s hrbtne strani.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Napredni enosmerni signal (semafor){}Napredni signal omogoča vstop več kot enemu vlaku v odsek proge, če ima na voljo prostor za varno ustavitev. Napredni signali se lahko prevozijo s hrbtne strani.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standardni signal (električni){}Signali so potrebni, da preprečijo vlaku trčenje na progi z več vlaki.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vhodni signal (električni){}Zelen v kolikor je vsaj en ali več izhodnih signalov v nadaljevanju proge. Če ne, je rdeč.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Izhodni signal (električni){}Deluje kot normalen semafor, le da mora biti povezan z ustreznim vhodnim ali kombiniranim signalom.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinirani signal (električni){}Kombinirani signal deluje kot vhodni in izhodni. To omogoča gradnjo velikih vej signalizacije.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Napredni signal (električni){}Napredni signal omogoča vstop več kot enemu vlaku v odsek proge, če ima na voljo prostor za varno ustavitev. Napredni signali se lahko prevozijo s hrbtne strani.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Napredni enosmerni signal (električni){}Napredni signal omogoča vstop več kot enemu vlaku v odsek proge, če ima na voljo prostor za varno ustavitev. Napredni signali se lahko prevozijo s hrbtne strani.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamenjava signala{}Ko je možnost izbrana, se ob kliku na obstoječi signal le ta spremeni v izbrano vrsto. Ctrl-Klik preklaplja obstoječo vrsto.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardni signal (semafor){}Signali so potrebni, da preprečijo vlaku trčenje na progi z več vlaki
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vhodni signal (semafor){}Zelen v kolikor je vsaj en ali več izhodnih signalov v nadaljevanju proge. Če ne, je rdeč
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Izhodni signal (semafor){}Deluje kot normalen semafor, le da mora biti povezan z ustreznim vhodnim ali kombiniranim signalom
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinirani signal (semafor){}Kombinirani signal deluje kot vhodni in izhodni. To omogoča gradnjo velikih vej signalizacije
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Napredni signal (semafor){}Napredni signal omogoča vstop več kot enemu vlaku v odsek proge, če ima na voljo prostor za varno ustavitev. Napredni signali se lahko prevozijo s hrbtne strani
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Napredni enosmerni signal (semafor){}Napredni signal omogoča vstop več kot enemu vlaku v odsek proge, če ima na voljo prostor za varno ustavitev. Napredni signali se lahko prevozijo s hrbtne strani
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standardni signal (električni){}Signali so potrebni, da preprečijo vlaku trčenje na progi z več vlaki
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vhodni signal (električni){}Zelen v kolikor je vsaj en ali več izhodnih signalov v nadaljevanju proge. Če ne, je rdeč
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Izhodni signal (električni){}Deluje kot normalen semafor, le da mora biti povezan z ustreznim vhodnim ali kombiniranim signalom
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinirani signal (električni){}Kombinirani signal deluje kot vhodni in izhodni. To omogoča gradnjo velikih vej signalizacije
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Napredni signal (električni){}Napredni signal omogoča vstop več kot enemu vlaku v odsek proge, če ima na voljo prostor za varno ustavitev. Napredni signali se lahko prevozijo s hrbtne strani
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Napredni enosmerni signal (električni){}Napredni signal omogoča vstop več kot enemu vlaku v odsek proge, če ima na voljo prostor za varno ustavitev. Napredni signali se lahko prevozijo s hrbtne strani
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamenjava signala{}Ko je možnost izbrana, se ob kliku na obstoječi signal le ta spremeni v izbrano vrsto. Ctrl-Klik preklaplja obstoječo vrsto
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gostota vlečnih signalov
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmanjšaj gostoto signala za vlečenje
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Povečaj gostoto signala za vlečenjeIncrease dragging signal density
@@ -2066,14 +2066,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Izbor or
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Gradnja vodnih poti
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vodne poti
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Zgradi kanale.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Zgradi kanale
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Gradnja zapornic
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Zgradi ladjedelnico (za izgradnjo in servisiranje ladij)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Zgradi ladijski dok. Ctrl omogoči združevanje postaj
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavi bojo, ki je lahko uporabljena kot točka poti
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Gradnja akvedukta
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Določi področje vode.{}Naredi kanal, razen če je pritisnjen Ctrl na morski gladini, ko bo poplavilo okolico.
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Položi reke.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Položi reke
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientacija ladjedelnice
@@ -2341,7 +2341,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Shrani t
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Naloži
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Naloži izbrano igro
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Podrobnosti igre
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ni informacij na voljo.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ni informacij na voljo
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2505,23 +2505,23 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Pozor: {SI
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Napaka: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Usodno: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Zgodila se je usodna NewGRF napaka: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne deluje s TTDPatch različico prijavljeno v OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je za {STRING} različico TTD-ja.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} ne deluje s TTDPatch različico prijavljeno v OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} je za {STRING} različico TTD-ja
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} je izdelano za uporabo v {STRING} kombinaciji
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neveljavna nastavitev za {1:STRING}: nastavitev {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} je potrebno naložiti pred {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} je potrebno naložiti po {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} potrebuje OpenTTD različico {STRING} ali boljšo.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} je potrebno naložiti pred {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} je potrebno naložiti po {STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} potrebuje OpenTTD različico {STRING} ali boljšo
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je bila narejena za prevod
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {2:STRING} kot statični NewGRF z/s {4:STRING} lahko povzroči desinhronizacijo.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepričakovana sličica.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznan ukaz 0 lastnosti.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Poskus uporabe neveljavnega ID-ja.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} vsebuje eno poškodovano sličico. Vse poškodovane sličice se bodo prikazale kot rdeči vprašaji (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Vsebuje večkratne Action 8 vnose.
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Preberi po koncu navidezne sličice.
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V uporabljenem osnovnem setu grafik manjkajo sličice.{}Prosim, posodobi osnovni set grafik.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {2:STRING} kot statični NewGRF z/s {4:STRING} lahko povzroči desinhronizacijo
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepričakovana sličica
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznan ukaz 0 lastnosti
+STR_NEWGRF_ERROR_INVALID_ID                                     :Poskus uporabe neveljavnega ID-ja
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} vsebuje eno poškodovano sličico. Vse poškodovane sličice se bodo prikazale kot rdeči vprašaji (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Vsebuje večkratne Action 8 vnose
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Preberi po koncu navidezne sličice
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}V uporabljenem osnovnem setu grafik manjkajo sličice.{}Prosim, posodobi osnovni set grafik
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Pozor!
@@ -2542,14 +2542,14 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Najdene
 STR_NEWGRF_LIST_MISSING                                         :{RED}Manjkajoče datoteke
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Ozadje NewGRFa '{0:STRING}' lahko povzroči desinhronizacijo in sesutje igre.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Vozilo '{1:ENGINE}' je spremenilo status obratovanja, ko ni znotraj garaže.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremenila se je dolžina vozila za '{1:ENGINE}' ko ni v garaži.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' , ki pripada družbi '{COMPANY}', ima neveljavno dolžino. Najbrž vsebuje probleme povezane z NewGRF. Igra se lahko sesuje.
+STR_NEWGRF_BROKEN                                               :{WHITE}Ozadje NewGRFa '{0:STRING}' lahko povzroči desinhronizacijo in sesutje igre
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Vozilo '{1:ENGINE}' je spremenilo status obratovanja, ko ni znotraj garaže
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremenila se je dolžina vozila za '{1:ENGINE}' ko ni v garaži
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' , ki pripada družbi '{COMPANY}', ima neveljavno dolžino. Najbrž vsebuje probleme povezane z NewGRF. Igra se lahko sesuje
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o preureditvi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' hrošč je povzročil neskončen povratni ciklus proizvodnje.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{STRING}' javlja napačno informacijo
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacija o preureditvi tovornih zmogljivosti za '{1:ENGINE}' je različna od seznama nakupa po konstrukciji. To lahko povzroči, da bi samoobnova ne uspela pravilno
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' hrošč je povzročil neskončen povratni ciklus proizvodnje
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<neveljaven tovor>
@@ -2812,7 +2812,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Vlaki na voljo
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vozila na voljo
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Ladje na voljo
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Letala na voljo
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Prikaži seznam motorjev na voljo za ta tip vozila.
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Prikaži seznam motorjev na voljo za ta tip vozila
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Uredi seznam
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Pošlji navodila vsem vozilom na seznamu
@@ -3030,7 +3030,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Enotirna vozila
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetna tirna vozila
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranitev vagonov: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Dovoli samozamenjavi, da z odstranitvijo vagonov, začenši na začetku, ohrani isto dolžino vlaka, če bi ga menjava lokomotive podaljšala.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Dovoli samozamenjavi, da z odstranitvijo vagonov, začenši na začetku, ohrani isto dolžino vlaka, če bi ga menjava lokomotive podaljšala
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3260,7 +3260,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Izbriši
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Zbriši izbran ukaz
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Izbriši vse ukaze
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Prenehaj deljenje
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Prenehaj z deljenjem ukazov. Ctrl+Klik dodatno izbriše vse ukaze tega vozila.
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Prenehaj z deljenjem ukazov. Ctrl+Klik dodatno izbriše vse ukaze tega vozila
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Pojdi do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Pojdi v najbližjo garažo
@@ -3323,7 +3323,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ukazi
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Preklop na pogled ukazov
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Urnik - klikni na ukaz, da ga označiš.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Urnik - klikni na ukaz, da ga označiš
 
 STR_TIMETABLE_NO_TRAVEL                                         :Brez potovanja
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez urnika)
@@ -3375,7 +3375,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Izbeir l
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}UI Čiščenje
+STR_AI_DEBUG                                                    :{WHITE}Razhroščevanje UI
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Ime UI
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastavitve UI
@@ -3385,7 +3385,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Uniči U
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Vključi/izključi prelom, ko se sporočilo UI ujema z besedilom preloma
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Prelomi na:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Prelomi na
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Če se sporočilo v dnevniku UI ujema z besedilom, se igra prekine.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Če se sporočilo v dnevniku UI ujema z besedilom, se igra prekine
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ujemanje začetnic
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Preklopi način ujemanja pri primerjanju dnevnika UI z napako
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Nadaljuj
@@ -3395,9 +3395,9 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Oglej si
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD je zgrajen brez podpore za UI...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... ni nobene UI na voljo!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so na voljo preko 'Prenosa vsebin'.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za čiščenje UI.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}okno UI čiščenja je na voljo samo za strežnik
+STR_ERROR_AI_NO_AI_FOUND                                        :Ni na voljo nobene uporabne UI.{}Ta UI je navidezen in ne bo storil ničesar. UI so na voljo preko 'Prenosa vsebin'
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Ena izmed zagnanih UI se je sesula. Prosim, javi to avtorju UI s priloženo sliko zaslona v orodju za razhroščevanje UI
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno razhroščevanja UI je na voljo samo za strežnik
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavljanje UI
@@ -3466,25 +3466,25 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datoteke ni mog
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :V datoteko ni mogoče pisati
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Preverba podatkov ni uspela
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ni na voljo>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Ustvarjanje ozemlja prekinjeno...{}... ni primernih lokacij za mesta
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... ni mest na ozemlju
 
 STR_ERROR_PNGMAP                                                :{WHITE}Ni mogoče naložiti ozemlja iz PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... datoteke ni.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... ni mogoče pretvoriti vrste slike. Potrebna je 8 ali 24-bit PNG slika.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... nekaj je narobe. (najbrž nepopolna datoteka)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... datoteke ni mogoče najti
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... ni mogoče pretvoriti vrste slike. Potrebna je 8 ali 24-bit PNG slika
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... nekaj je narobe (najbrž nepopolna datoteka)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Ni mogoče naložiti pokrajine iz formata BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ni mogoče spremeniti tipa slike.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... ni mogoče spremeniti tipa slike
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Opozorilo za merilo
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Prevelika sprememba velikosti ozemlja ni priporočena. Nadaljujem?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Samo rezerven zvočni komplet je bil najden. Če želiš zvok, namesti zvočni komplet preko sistema prenosov.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Samo rezerven zvočni komplet je bil najden. Če želiš zvok, namesti zvočni komplet preko sistema prenosov
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Slika je uspešno zajeta kot {} '{STRING}'
@@ -3552,7 +3552,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... preb
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... preblizu drugemu mestu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... preveliko število mest
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ni več prostora na zemljevidu
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Mesta ne bodo gradila cest. Lahko omogočiš gradnjo cest v Napredne nastavitve->Ekonomija->Mesta.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Mesta ne bodo gradila cest. Lahko omogočiš gradnjo cest v Napredne nastavitve->Ekonomija->Mesta
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Cestna dela napredujejo
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Ni mogoče zbrisati mesta...{}Postaja ali garaža se nanaša na to mesto ali pa področje v lastnini mesta ne more biti odstranjeno
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... ni primernega mesta za kip v centru tega mesta
@@ -3658,7 +3658,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Napačna vrsta 
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je predolgo po zamenjavi
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ni samoobnovitvenih pravil.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ni samoobnovitvenih pravil
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(denarna meja)
 
 # Rail construction errors
@@ -3817,8 +3817,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... pred
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Ni mogoče določiti časa vozilu...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vozila lahko čakajo le na postajah.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}To vozilo se ne ustavlja na tej postaji.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Vozila lahko čakajo le na postajah
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}To vozilo se ne ustavlja na tej postaji
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... preveč znakov

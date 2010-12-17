@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klik en 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Schakel tussen groot/klein venster
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - verschuift de lijst verticaal
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - verschuift de lijst naar links/rechts
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sloop gebouwen etc. op een stuk land
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sloop gebouwen etc. op een stuk land. Ctrl selecteerd het gebeied diagonaal
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standaard
@@ -802,7 +802,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} wacht in dok
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} wacht in hangar
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} heeft te weinig orders
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} heeft een lege order
@@ -813,8 +813,8 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} is oud aan het worden
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} is erg oud aan het worden
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} is erg oud aan het worden en moet nodig vervangen worden
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan geen route vinden om verder te gaan.
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is verdwaald.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} kan geen route vinden om verder te gaan
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} is verdwaald
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Winst van {VEHICLE} was vorig jaar {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} is gestopt omdat een ombouworder is mislukt
@@ -829,8 +829,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} accepteert voortaan {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} accepteert voortaan {STRING} en {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subsidieaanbod is verlopen:{}{}{STRING} van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidie teruggetrokken:{}{}{STRING}route van {STRING} naar {STRING} is nu niet meer gesubsidieerd.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subsidieaanbod is verlopen:{}{}{STRING} van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidie teruggetrokken:{}{}{STRING}route van {STRING} naar {STRING} is nu niet meer gesubsidieerd
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsidie aangeboden:{}{}Eerste {STRING}route van {STRING} naar {STRING} krijgt een jaar lang subsidie van de gemeente!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt volgend jaar 50% extra betaald!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsidie uitgereikt aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt volgend jaar dubbel betaald!
@@ -1088,7 +1088,7 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Geef vo
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Bouwen op hellingen en kusten toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Gebruik meer realistische handelsgebieden: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Sta verwijderen van meer stedelijke wegen, bruggen, enz. toe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Sta verwijderen van meer stedelijke wegen, bruggen en tunnels toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Zeer lange treinen toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Hoeveelheid rook/vonken: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Geen
@@ -1141,7 +1141,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Sta toe
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Sta doorrijhaltes op wegen van tegenstanders toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bouwen van aangrenzende stations toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Maak het mogelijk om meerdere NewGRF-voertuigsets te gebruiken: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Deze instelling kan niet gewijzigd worden als er voertuigen zijn.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Deze instelling kan niet gewijzigd worden als er voertuigen zijn
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Vliegvelden verlopen niet: {ORANGE}{STRING}
 
@@ -1210,7 +1210,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Scrollen met linkermuisknop: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Gebruik {ORANGE}{STRING}{LTBLUE} datumformaat voor naamgeving van opgeslagen spellen.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Gebruik {ORANGE}{STRING}{LTBLUE} datumformaat voor naamgeving van opgeslagen spellen
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lang (31e dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1422,7 +1422,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Weet je
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TOOLTIP                                              :{BLACK}Keuzevakjes geven aan of je deze cheat eerder hebt gebruikt
-STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je medespelers te verraden. Bedenk dat zo'n schande eeuwig wordt onthouden.
+STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je medespelers te verraden. Bedenk dat zo'n schande eeuwig wordt onthouden
 STR_CHEAT_MONEY                                                 :{LTBLUE}Verhoog geld met {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelen als bedrijf: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
@@ -1487,14 +1487,14 @@ STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Genereer
 STR_FACE_ADVANCED                                               :{BLACK}Geavanceerd
 STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Geavanceerde gezichtskeuze
 STR_FACE_SIMPLE                                                 :{BLACK}Eenvoudig
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Eenvoudige gezichtskeuze.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Eenvoudige gezichtskeuze
 STR_FACE_LOAD                                                   :{BLACK}Laden
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Laad favoriet gezicht
 STR_FACE_LOAD_DONE                                              :{WHITE}Je favoriete gezicht is geladen uit het OpenTTD-configuratiebestand.
 STR_FACE_FACECODE                                               :{BLACK}Gezichtsnummer
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Bekijk en/of bewaar gezichtsnummer van de bedrijfspresident
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Bekijk en/of bewaar huidig gezichtsnummer
-STR_FACE_FACECODE_SET                                           :{WHITE}Nieuwe gezichtsnummercode is opgeslagen.
+STR_FACE_FACECODE_SET                                           :{WHITE}Nieuwe gezichtsnummercode is opgeslagen
 STR_FACE_FACECODE_ERR                                           :{WHITE}Kon gezichtsnummer niet bewaren - het moet een getal zijn tussen 0 en 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Opslaan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Sla favoriet gezicht op
@@ -1579,7 +1579,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Ververs 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Server zoeken
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Zoek op het netwerk naar een server
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Voeg server toe
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voegt een server toe aan de lijst die altijd gecontroleerd zal worden op draaiende spellen.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voegt een server toe aan de lijst die altijd gecontroleerd zal worden op draaiende spellen
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start server
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start eigen server
 
@@ -1694,8 +1694,8 @@ STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Do
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Verwerken gegevens...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registreren...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ophalen spelinformatie...
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ophalen bedrijfsinformatie...
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Spelinformatie ophalen...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Bedrijfsinformatie ophalen...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} speler{P "" s} voor je
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} tot dusver gedownload
@@ -1736,7 +1736,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Gebruik 
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Doe mee
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Doe mee en speel als dit bedrijf
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Wachtwoord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Bescherm het bedrijf met een wachtwoord zodat niet-geautoriseerde personen niet mee kunnen doen.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Bescherm het bedrijf met een wachtwoord zodat niet-geautoriseerde personen niet mee kunnen doen
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Geef bedrijfswachtwoord op
 
 # Network chat
@@ -1881,15 +1881,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon gedo
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Doorzichtigheidsopties
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Schakel transparantie voor stationsnamen aan/uit. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Schakel transparantie voor bomen aan/uit. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Schakel transparantie voor huizen aan/uit. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Schakel transparantie voor industrieën aan/uit. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Schakel transparantie voor gebouwen zoals stations, depots en controleposten aan/uit. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Schakel transparantie voor bruggen aan/uit. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Schakel transparantie voor gebouwen zoals vuurtorens en antennes aan/uit. Ctrl+Klik om vast te zetten.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Schakel transparantie voor bovenleiding aan/uit. Ctrl+klik voor onthouden.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Schakel transparantie voor laadindicatoren aan/uit. Ctrl+Klik om vast te zetten.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Schakel transparantie voor stationsnamen aan/uit. Ctrl+Klik om vast te zetten
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Schakel transparantie voor bomen aan/uit. Ctrl+Klik om vast te zetten
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Schakel transparantie voor huizen aan/uit. Ctrl+Klik om vast te zetten
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Schakel transparantie voor industrieën aan/uit. Ctrl+Klik om vast te zetten
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Schakel transparantie voor gebouwen zoals stations, depots en controleposten aan/uit. Ctrl+Klik om vast te zetten
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Schakel transparantie voor bruggen aan/uit. Ctrl+Klik om vast te zetten
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Schakel transparantie voor gebouwen zoals vuurtorens en antennes aan/uit. Ctrl+Klik om vast te zetten
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Schakel transparantie voor bovenleiding aan/uit. Ctrl+klik voor onthouden
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Schakel transparantie voor laadindicatoren aan/uit. Ctrl+Klik om vast te zetten
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Maak objecten onzichtbaar in plaats van transparant
 
 # Base for station construction window(s)
@@ -1952,19 +1952,19 @@ STR_STATION_CLASS_WAYP                                          :Controleposten
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seinkeuze
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloksein (armsein){}Dit is het simpelste soort sein, dat slechts een trein tegelijk in hetzelfde blok toelaat.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangssein (semafoor){}Groen zolang als er een of meer groene uitgangsseinen zijn volgend na dit sein. Anders is deze rood.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgangssein (armsein){}Gedraagt zich hetzelfde als een gewoon bloksein, maar is nodig om ingangs- en combinatieseinen te sturen.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinatiesein (armsein){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangssein. Zo kun je grote netwerken van beginseinen maken.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Routesein (armsein){}Een routesein laat meer dan één trein tegelijk in een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Eenrichtingsrouteseinen (armsein){}Een routesein laat meer dan één trein tegelijk in een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standaard sein (elektrisch){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan een trein.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingangssein (electrisch){}Groen als er meer dan één groen uitgangssein is in het volgende traject. Anders is deze rood.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Uitgangssein (elektrisch){}Gedraagt zich hetzelfde als een standaard sein, maar is nodig om ingangs- & combinatie-seinen aan te sturen.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combinatiesein (electric){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangs-sein. Zo kun je grote netwerken van beginseinen maken.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Routeseinen (elektrisch){}en routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Eenrichtingsrouteseinen (elektrisch){}en routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein ombouwen{}Indien geselecteerd, zal door te klikken op een bestaand sein deze worden omgebouwd naar het geselecteerde seintype en variant, Ctrl+klik verandert de bestaande variant (armsein/elektrisch).
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Bloksein (armsein){}Dit is het simpelste soort sein, dat slechts een trein tegelijk in hetzelfde blok toelaat
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Ingangssein (semafoor){}Groen zolang als er een of meer groene uitgangsseinen zijn volgend na dit sein. Anders is deze rood
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Uitgangssein (armsein){}Gedraagt zich hetzelfde als een gewoon bloksein, maar is nodig om ingangs- en combinatieseinen te sturen
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Combinatiesein (armsein){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangssein. Zo kun je grote netwerken van beginseinen maken
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Routesein (armsein){}Een routesein laat meer dan één trein tegelijk in een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Eenrichtingsrouteseinen (armsein){}Een routesein laat meer dan één trein tegelijk in een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standaard sein (elektrisch){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan een trein
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Ingangssein (electrisch){}Groen als er meer dan één groen uitgangssein is in het volgende traject. Anders is deze rood
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Uitgangssein (elektrisch){}Gedraagt zich hetzelfde als een standaard sein, maar is nodig om ingangs- & combinatie-seinen aan te sturen
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Combinatiesein (electric){}Het combinatiesein gedraagt zicht als zowel ingangs- als uitgangs-sein. Zo kun je grote netwerken van beginseinen maken
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Routeseinen (elektrisch){}en routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Routeseinen kunnen van achteren worden gepasseerd
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Eenrichtingsrouteseinen (elektrisch){}en routesein laat meer dan één trein tegelijk op een seinblok toe, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtingsrouteseinen kunnen niet van achteren worden gepasseerd
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sein ombouwen{}Indien geselecteerd, zal door te klikken op een bestaand sein deze worden omgebouwd naar het geselecteerde seintype en variant, Ctrl+klik verandert de bestaande variant (armsein/elektrisch)
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Dichtheid van seinen bij het slepen
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Verklein dichtheid van seinen bij het slepen
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Vergroot dichtheid van seinen bij het slepen
@@ -2024,14 +2024,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selectee
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Bouw van waterwegen
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Waterwegen
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bouw kanalen.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Bouw kanalen
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Bouw sluis
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bouw dok (voor het kopen en onderhoud van schepen)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bouw haven. Houd Ctrl ingedrukt om samen te voegen met ander station
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Plaats boei, kan gebruikt worden voor extra tussenstops
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Bouw aquaduct
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definieer watergebied.{}Maak een kanaal, tenzij Ctrl wordt vastgehouden op zeeniveau, dan zal de omgeving overstromen
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Leg rivieren aan.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Leg rivieren aan
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Richting van dok
@@ -2069,9 +2069,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Geluidso
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreinvorming
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag een hoek van het land
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag een hoek van het land. Slepen verlaagd de eerst gekozen hoek en egaliseerd het geselecteerde gebied naar de nieuwe hoekhoogte. Ctrl selecteerd het gebied diagonaal
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land. Slepen verhoogd de eerste geselecteerde hoek en egaliseerd het geselecteerd gebied naar de nieuwe hoekhoogte. Ctrl selecteerd het gebied diagonaal
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land naar de hoogte van de eerst geselecteerde hoek. Ctrl selecteerd een diagonaal gebied
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop land voor toekomstig gebruik
 
 # Object construction window
@@ -2299,7 +2299,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Sla het 
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Laad
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Laad het geselecteerde spel
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spel details
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Geen informatie beschikbaar.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Geen informatie beschikbaar
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2463,23 +2463,23 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarschuwi
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatale fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Een fatale NewGRF-fout is ontstaan: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} werkt niet met de TTDPatch-versie die is opgegeven door OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is voor de {STRING} versie van TTD.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} werkt niet met de TTDPatch-versie die is opgegeven door OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is voor de {STRING} versie van TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} is ontwikkeld voor {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ongeldige parameter voor {1:STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} moet geladen zijn voor {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} moet geladen zijn na {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} heeft OpenTTD versie {STRING} of beter nodig.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} moet geladen zijn voor {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} moet geladen zijn na {STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} heeft OpenTTD versie {STRING} of beter nodig
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF-bestand die het probeert te vertalen
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Er zijn te veel NewGRFs geladen.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden van {2:STRING} als statische NewGRF met {4:STRING} kan desynchronisatiefouten (desyncs) veroorzaken.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Er zijn te veel NewGRFs geladen
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden van {2:STRING} als statische NewGRF met {4:STRING} kan desynchronisatiefouten (desyncs) veroorzaken
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwachte afbeelding
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende 'Action 0'-eigenschap.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Poging tot gebruik ongeldig ID.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige afbeelding. Alle ongeldige afbeeldingen worden getoond als een rood vraagteken (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere 'Action 8'-elementen.
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees voorbij einde van pseudo-sprite.
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}De huidige basis graphics-set mist een aantal sprites..{}Werk de graphics-set bij aub.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende 'Action 0'-eigenschap
+STR_NEWGRF_ERROR_INVALID_ID                                     :Poging tot gebruik ongeldig ID
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige afbeelding. Alle ongeldige afbeeldingen worden getoond als een rood vraagteken (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere 'Action 8'-elementen
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lees voorbij einde van pseudo-sprite
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}De huidige basis graphics-set mist een aantal sprites..{}Werk de graphics-set bij aub
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Waarschuwing!
@@ -2500,16 +2500,16 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Compati
 STR_NEWGRF_LIST_MISSING                                         :{RED}Ontbrekende bestanden
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag van NewGRF '{0:STRING}' zal waarschijnlijk desynchronisatiefouten (desyncs) en/of crashes veroorzaken.
+STR_NEWGRF_BROKEN                                               :{WHITE}Gedrag van NewGRF '{0:STRING}' zal waarschijnlijk desynchronisatiefouten (desyncs) en/of crashes veroorzaken
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Wagon '{1:ENGINE}' gewijzigde status van aandrijfeenheid wanneer niet in een depot
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het verandert de lengte van voertuig '{1:ENGINE}' terwijl het niet in een depot is.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Het is waarschijnlijk veroorzaakt door problemen met NewGRFs. Het spel kan desynchroniseren of vastlopen.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Het verandert de lengte van voertuig '{1:ENGINE}' terwijl het niet in een depot is
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' behorend bij '{COMPANY}' heeft een ongeldige lengte. Het is waarschijnlijk veroorzaakt door problemen met NewGRFs. Het spel kan desynchroniseren of vastlopen
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geeft onjuiste informatie.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht-/ombouwinformatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door automatisch vernieuwen/vervangen.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' Een eindeloze loop gevonden in de productie-callback.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geeft onjuiste informatie
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Vracht-/ombouwinformatie voor '{1:ENGINE}' wijkt af van aanschaflijst na het bouwen. Dit kan resulteren in problemen bij ombouwen door automatisch vernieuwen/vervangen
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' Een eindeloze loop gevonden in de productie-callback
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ongeldige vracht>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} van <ongeldige vracht>
@@ -2770,7 +2770,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Beschikbare rai
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Beschikbare wegvoertuigen
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Beschikbare schepen
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Beschikbare vliegtuigen
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Bekijk een lijst van beschikbare ontwerpen voor dit type voertuig.
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Bekijk een lijst van beschikbare ontwerpen voor dit type voertuig
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Beheer lijst
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Stuur instructies naar alle voertuigen in de lijst
@@ -3218,7 +3218,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Verwijde
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Verwijder de geselecteerde order
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Verwijder alle orders
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stop met delen
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop met delen van de order lijst. Ctrl+Klik verwijderd verder ook alle order van dit voertuig.
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop met delen van de order lijst. Ctrl+Klik verwijderd verder ook alle order van dit voertuig
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ga naar
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtstbijzijnde depot
@@ -3343,7 +3343,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Verwijde
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Afbreken als een AI logbericht overeenstemt met de afbreektekst aan/uitschakelen
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Afbreken op:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Afbreken aan
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Als een AI logbericht overeenstemt met deze string wordt het spel gepauseerd.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Als een AI logbericht overeenstemt met deze string wordt het spel gepauseerd
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Hoofdlettergevoelig
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Hoofdlettergevoeligheid bij vergelijken van AI logberichten t.o.v. de afbreekstring aan/uitzetten
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Doorgaan
@@ -3353,7 +3353,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Toon deb
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD is gecompileerd zonder AI ondersteuning...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... geen AI's beschikbaar!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem.
+STR_ERROR_AI_NO_AI_FOUND                                        :Geen geschikte AI gevonden. {} Deze AI is een 'dummy' en voert niets uit.{}Verschillende AI's kunnen worden gedownload via het 'Online Content' systeem
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Een van de actieve AI's is vastgelopen. Meld dit a.u.b. bij de auteur van deze AI met een schermprint van het AI Debugscherm
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Computerspeler Debugvenster is alleen beschikbaar voor de server
 
@@ -3424,25 +3424,25 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Bestand is niet
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Bestand is niet schrijfbaar
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data-integriteitscontrole mislukt
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<niet beschikbaar>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spel was opgeslagen in een versie zonder tram-ondersteuning. Alle trams zijn verwijderd.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spel was opgeslagen in een versie zonder tram-ondersteuning. Alle trams zijn verwijderd
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaartmaken afgebroken...{}... geen geschikte dorpslokaties
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... er is geen stad in dit scenario
 
 STR_ERROR_PNGMAP                                                :{WHITE}Kan landschap uit PNG niet laden...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... bestand niet gevonden.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kon afbeelding niet omzetten. 8 óf 24-bit PNG afbeelding nodig.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... er ging iets fout. Sorry (bestand waarschijnlijk corrupt).
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... bestand niet gevonden
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... kon afbeelding niet omzetten. 8 óf 24-bit PNG afbeelding nodig
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... er ging iets fout. Sorry (bestand waarschijnlijk corrupt)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Kan het landschap uit BMP niet laden...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan dit type afbeelding niet omzetten.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... kan dit type afbeelding niet omzetten
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Schaalwaarschuwing
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaart is niet aan te bevelen. Toch doorgaan?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Alleen backup geluid is gevonden. Als je geluid wilt, installeer dan een geluiddsset via het downloadsysteem.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Alleen backup geluid is gevonden. Als je geluid wilt, installeer dan een geluiddsset via het downloadsysteem
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Schermprint succesvol opgeslagen als '{STRING}'
@@ -3510,7 +3510,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... te d
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... te dicht bij een andere plaats
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... te veel plaatsen
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... er is geen ruimte meer op de kaart
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}De plaats bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Geavanceerde Instellingen->Economie->Plaatsen.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}De plaats bouwt geen wegen. Het bouwen van wegen kan aangezet worden via Geavanceerde Instellingen->Economie->Plaatsen
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Wegwerkzaamheden in uitvoering
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan deze plaats niet verwijderen...{}Een station of depot verwijst naar deze plaats of een door de plaats beheerde tegel kan niet worden verwijderd
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... er is geen geschikte plaats voor een standbeeld in het centrum van dit dorp
@@ -3616,7 +3616,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Verkeerd depot-
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is te lang na het vervangen
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Geen automatisch vervang/vernieuw regels opgegeven.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Geen automatisch vervang/vernieuw regels opgegeven
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(onvoldoende geld)
 
 # Rail construction errors
@@ -3775,7 +3775,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... te v
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Kan geen dienstregeling opzetten voor dit voertuig...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Voertuigen kunnen alleen wachten op stations.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Voertuigen kunnen alleen wachten op stations
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Dit voertuig stopt niet op dit station
 
 # Sign related errors

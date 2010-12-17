@@ -165,7 +165,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}INT
 STR_ABBREV_ALL                                                  :{TINYFONT}ALT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passagerer
+STR_PASSENGERS                                                  :{COMMA} passagerer{P "" s}
 STR_BAGS                                                        :{COMMA} sække
 STR_TONS                                                        :{COMMA} tons
 STR_LITERS                                                      :{COMMA} liter
@@ -799,7 +799,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} venter i skibsdokken
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} venter i hangaren
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} har for få ordrer i ordrelisten
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} har en ugyldig ordre
@@ -2455,7 +2455,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fragt-/ombygningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsagede en uendelig løkke i produktions-callback'en.
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ikke gyldigt gods>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} af <ikke gyldigt gods>
@@ -3280,7 +3280,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Stop com
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK} Aktiver / deaktiver breakpoint funktionen, når en AI logmeddelelsen er lig breakpoint tekststrengen
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Breakpiont slået til:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Breakpoint slået til
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Når en kunstig inteligens log besked er lig denne tekststreng, vil spillet gå på standby.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Når en computerspillers log besked er lig denne tekststreng, vil spillet gå på standby.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Match store og små bogstaver
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortsæt
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sæt spillet i gang, og start den kunstige intelligens igen

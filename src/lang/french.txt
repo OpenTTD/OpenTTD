@@ -573,16 +573,16 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Argent{N
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprunt{NBSP}:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total{NBSP}:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombre de véhicules ayant fait du profit l'an passé. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est comptée, même si elles sont connectées à une seule station.
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Nombre de véhicules ayant fait du profit l'an passé. Ceci inclut les véhicules routiers, les trains, les navires et les aéronefs
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Nombre de parties de stations utilisées récemment. Chaque partie d'une station (i.e. gare, arrêt de bus, [aéro]port) est comptée, même si elles sont connectées à une seule station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Le profit du véhicule ayant le revenu le plus bas (de tous les véhicules ayant plus de 2 années d'existence)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus bas profit des 12 derniers.
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus haut profit des 12 derniers.
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unités de cargo livrées durant les 4 derniers trimestres.
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus bas profit des 12 derniers
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantité d'argent fait dans le trimestre ayant le plus haut profit des 12 derniers
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unités de cargo livrées durant les 4 derniers trimestres
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Types de cargo livrés durant le dernier trimestre.
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantité d'argent disponible.
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantité d'argent disponible
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Le montant emprunté par cette compagnie
-STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total des points par rapport aux points possibles.
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total des points par rapport aux points possibles
 
 # Music window
 STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jukebox Jazz
@@ -619,7 +619,7 @@ STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Choisir 
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Active/Désactive le mode aléatoire
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Afficher la fenêtre de sélection de pistes
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Un ensemble de musique vide a été choisis. Aucune musique ne sera jouée.
+STR_ERROR_NO_SONGS                                              :{WHITE}Un ensemble de musique vide a été choisis. Aucune musique ne sera jouée
 
 # Playlist window
 STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Sélection du Programme Musical
@@ -1602,7 +1602,7 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (publier)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Nombre de clients max.{NBSP}:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choisir un nombre maximum de clients. Tous les emplacements n'auront pas besoin d'être remplis.
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Choisir un nombre maximum de clients. Tous les emplacements n'auront pas besoin d'être remplis
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compagnie{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max compagnies{NBSP}:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limiter le serveur à un certain nombre de compagnies
@@ -1610,7 +1610,7 @@ STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} sp
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spectateurs{NBSP}:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limiter le serveur à un certain nombre de spectateurs
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Langue utilisée{NBSP}:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur.
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Démarrer la partie
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Démarrer une nouvelle partie réseau à partir d'une carte aléatoire, ou d'un scénario
@@ -1663,7 +1663,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Letton
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Préparation de la partie
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Se prépare à rejoindre{NBSP}: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Liste des compagnies présentes dans le jeu. Vous pouvez soit en rejoindre une, soit en créer une.
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Liste des compagnies présentes dans le jeu. Vous pouvez soit en rejoindre une, soit en créer une si il reste un emplacement libre
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFOS SUR LA COMPAGNIE
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nom de la compagnie{NBSP}: {WHITE}{STRING}
@@ -1758,7 +1758,7 @@ STR_NETWORK_ERROR_NOTAVAILABLE                                  :{WHITE}Aucun p�
 STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Aucune partie réseau n'a été trouvée
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Le serveur n'a pas répondu à la requête
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Échec de la connexion{NBSP}: NewGRF requis
-STR_NETWORK_ERROR_DESYNC                                        :{WHITE}La synchronisation de la partie réseau a échouée.
+STR_NETWORK_ERROR_DESYNC                                        :{WHITE}La synchronisation de la partie réseau a échoué
 STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}La connection de la partie réseau a été perdue
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}La sauvegarde serveur n'a pas pu être chargée
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Le serveur n'a pas pu être démarré
@@ -3029,7 +3029,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Affiche 
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Afficher les détails du navire
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Afficher les détails de l'aéronef
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Action courante du train - cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur la destination.
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Action courante du train - cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur la destination
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Action courante du véhicule routier - cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur la destination
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Action courante du navire - cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur la destination
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Action courante de l'aéronef - cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur la destination
@@ -3475,7 +3475,7 @@ STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}La munic
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}La municipalité de {TOWN} refuse la construction d'un autre aéroport dans la ville
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}La municipalité de {TOWN} refuse la permission pour cet aéroport, en raison de nuisances sonores
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Votre tentative de corruption à été
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}révélée à la presse par un journaliste régional.
+STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}révélée à la presse par un journaliste régional
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Impossible d'élever le terrain ici...
