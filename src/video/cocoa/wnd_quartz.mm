@@ -470,7 +470,7 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 		/* We already have a window, just change its size */
 		[ this->window setContentSize:contentRect.size ];
 
-		// Ensure frame height - title bar height >= view height
+		/* Ensure frame height - title bar height >= view height */
 		contentRect.size.height = Clamp(height, 0, [ this->window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
 
 		if (this->qzview != nil) {
@@ -592,8 +592,6 @@ void WindowQuartzSubdriver::Draw(bool force_update)
 		[ this->qzview setNeedsDisplayInRect:dirtyrect ];
 		if (force_update) [ this->qzview displayIfNeeded ];
 	}
-
-	//DrawResizeIcon();
 
 	this->num_dirty_rects = 0;
 }

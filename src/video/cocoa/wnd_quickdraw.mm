@@ -166,7 +166,6 @@ public:
 
 	virtual bool IsActive() { return active; }
 
-
 	void SetPortAlphaOpaque();
 	bool WindowResized();
 };
@@ -397,13 +396,14 @@ bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height)
 	} else {
 		/* We already have a window, just change its size */
 		[ this->window setContentSize:contentRect.size ];
-		/* Ensure frame height - title bar height >= view height */
-		contentRect.size.height = Clamp(height, 0, [ this->window frame ].size.height - 22); // 22 is the height of title bar of window
+		/* Ensure frame height - title bar height >= view height
+		 * The height of title bar of the window is 22 pixels */
+		contentRect.size.height = Clamp(height, 0, [ this->window frame ].size.height - 22);
 		height = contentRect.size.height;
 		[ this->qdview setFrameSize:contentRect.size ];
 	}
 
-	// Update again
+	/* Update again */
 	this->window_width = width;
 	this->window_height = height;
 
