@@ -863,8 +863,8 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nové zásoby ropy nalezené v {INDUSTRY}!{}Zdvojnásobí se produkce!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Lepší metody pěstování {INDUSTRY} zdvojnásobí produkci!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY} zvyšuje produkci {0:STRING.gen} o{NBSP}{2:COMMA}{NBSP}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} produkce poklesla o 50 %.
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Zamoření škůdci v {INDUSTRY}!{}Produkce poklesla o 50 %.
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} produkce poklesla o 50 %
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} j{G 0:0 e e e sou sou sou sou} zamořen{G 0:0 "" a o i y y a} škůdci!{}Produkce poklesla o 50 %
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY} snižuje produkci {0:STRING.gen} o{NBSP}{2:COMMA}{NBSP}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čeká v depu
