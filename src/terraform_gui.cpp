@@ -200,6 +200,7 @@ static void TerraformClick_BuyLand(Window *w)
 static void TerraformClick_Trees(Window *w)
 {
 	/* This button is NOT a place-push-button, so don't treat it as such */
+	w->HandleButtonClick(TTW_PLANT_TREES);
 	ShowBuildTreesToolbar();
 }
 
@@ -248,6 +249,12 @@ struct TerraformToolbarWindow : Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (widget >= TTW_BUTTONS_START) _terraform_button_proc[widget - TTW_BUTTONS_START](this);
+	}
+
+	virtual void OnTimeout()
+	{
+		this->RaiseWidget(TTW_PLANT_TREES);
+		this->SetWidgetDirty(TTW_PLANT_TREES);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
