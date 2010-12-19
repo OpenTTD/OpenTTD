@@ -320,22 +320,22 @@ static char *FormatBytes(char *buff, int64 number, const char *last)
 	return buff;
 }
 
-static char *FormatYmdString(char *buff, Date date, const char *last)
+static char *FormatYmdString(char *buff, Date date, uint modifier, const char *last)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
 
 	int64 args[3] = { ymd.day + STR_ORDINAL_NUMBER_1ST - 1, STR_MONTH_ABBREV_JAN + ymd.month, ymd.year };
-	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_LONG), args, endof(args), 0, last);
+	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_LONG), args, endof(args), modifier >> 24, last);
 }
 
-static char *FormatMonthAndYear(char *buff, Date date, const char *last)
+static char *FormatMonthAndYear(char *buff, Date date, uint modifier, const char *last)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
 
 	int64 args[2] = { STR_MONTH_JAN + ymd.month, ymd.year };
-	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_SHORT), args, endof(args), 0, last);
+	return FormatString(buff, GetStringPtr(STR_FORMAT_DATE_SHORT), args, endof(args), modifier >> 24, last);
 }
 
 static char *FormatTinyOrISODate(char *buff, Date date, StringID str, const char *last)
@@ -680,11 +680,11 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 			}
 
 			case SCC_DATE_LONG: // {DATE_LONG}
-				buff = FormatYmdString(buff, GetInt32(&argv, argve, &argt, SCC_DATE_LONG), last);
+				buff = FormatYmdString(buff, GetInt32(&argv, argve, &argt, SCC_DATE_LONG), modifier, last);
 				break;
 
 			case SCC_DATE_SHORT: // {DATE_SHORT}
-				buff = FormatMonthAndYear(buff, GetInt32(&argv, argve, &argt, SCC_DATE_SHORT), last);
+				buff = FormatMonthAndYear(buff, GetInt32(&argv, argve, &argt, SCC_DATE_SHORT), modifier, last);
 				break;
 
 			case SCC_VELOCITY: { // {VELOCITY}

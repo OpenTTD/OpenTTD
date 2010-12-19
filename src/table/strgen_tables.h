@@ -68,8 +68,8 @@ static const CmdStruct _cmd_structs[] = {
 	{"STRING5",         EmitSingleChar, SCC_STRING5,            6, C_CASE | C_GENDER}, // included string that consumes the string id and FIVE arguments
 
 	{"STATIONFEATURES", EmitSingleChar, SCC_STATION_FEATURES,   1, C_NONE}, // station features string, icons of the features
-	{"INDUSTRY",        EmitSingleChar, SCC_INDUSTRY_NAME,      1, C_GENDER | C_CASE}, // industry, takes an industry #, can have cases
-	{"CARGO",           EmitSingleChar, SCC_CARGO,              2, C_GENDER},
+	{"INDUSTRY",        EmitSingleChar, SCC_INDUSTRY_NAME,      1, C_CASE | C_GENDER}, // industry, takes an industry #, can have cases
+	{"CARGO",           EmitSingleChar, SCC_CARGO,              2, C_NONE | C_GENDER},
 	{"POWER",           EmitSingleChar, SCC_POWER,              1, C_NONE},
 	{"VOLUME",          EmitSingleChar, SCC_VOLUME,             1, C_NONE},
 	{"VOLUME_S",        EmitSingleChar, SCC_VOLUME_SHORT,       1, C_NONE},
@@ -83,8 +83,8 @@ static const CmdStruct _cmd_structs[] = {
 	{"G",               EmitGender,     0,                      0, C_DONTCOUNT}, // gender specifier
 
 	{"DATE_TINY",       EmitSingleChar, SCC_DATE_TINY,          1, C_NONE},
-	{"DATE_SHORT",      EmitSingleChar, SCC_DATE_SHORT,         1, C_NONE},
-	{"DATE_LONG",       EmitSingleChar, SCC_DATE_LONG,          1, C_NONE},
+	{"DATE_SHORT",      EmitSingleChar, SCC_DATE_SHORT,         1, C_CASE},
+	{"DATE_LONG",       EmitSingleChar, SCC_DATE_LONG,          1, C_CASE},
 	{"DATE_ISO",        EmitSingleChar, SCC_DATE_ISO,           1, C_NONE},
 
 	{"STRING",          EmitSingleChar, SCC_STRING,             1, C_CASE | C_GENDER},
