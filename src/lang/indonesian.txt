@@ -1956,15 +1956,15 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinyal B
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinyal Masuk(semaphore){}Akan berwarna hijau jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada jalur berikutnya. Jika tidak, akan berwarna merah
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinyal Keluar (semaphore){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaanya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinyal Kombo (semaphore){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinyal Jalur (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard bisa di lewati dari arah belakang.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinyal Jalur Searah (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak bisa di lewati dari arah belakangnya.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinyal Blok (elektris){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinyal Jalur (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard bisa di lewati dari arah belakang
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinyal Jalur Searah (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak bisa di lewati dari arah belakangnya
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinyal Blok (elektris){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinyal Masuk (elektris){}Akan berwarna hijau jika, dan hanya jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada bagian jalur berikutnya. Jika tidak, akan berwarna merah
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinyal Keluar (elektris){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaannya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinyal Kombo (elektris){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinyal Jalur (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard bisa di lewati dari arah belakang.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinyal Jalur Searah (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak bisa di lewati dari arah belakangnya.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konversi Sinyal{}Jika terpilih, klik pada sinyal yang telah ada akan mengakibatkan sinyal berubah jenisnya, CTRL-click untuk mengubah secara berturut-turut.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinyal Kombo (elektris){}Sinyal Kombo berfungsi ganda, sebagai Sinyal masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinyal Jalur (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard bisa di lewati dari arah belakang
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinyal Jalur Searah (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak bisa di lewati dari arah belakangnya
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konversi Sinyal{}Jika terpilih, klik pada sinyal yang telah ada akan mengakibatkan sinyal berubah jenisnya, CTRL-click untuk mengubah secara berturut-turut
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Kerapatan Sinyal
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Kurangi kerapatan sinyal
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Tambah kerapatan sinyal
@@ -2024,14 +2024,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Pilih ar
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Konstruksi Perairan.
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Perairan
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Membangun kanal.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Membangun kanal
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Membangun pengunci
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bangun galangan kapal (untuk pembelian dan perbaikan kapal)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bangun pelabuhan. Ctrl untuk mengaktifkan penggabungan stasiun
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Tempatkan pelampung yang dapat digunakan sebagai petunjuk arah
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Membangun jembatan air
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Membuat area perairan .{}Membuat kanal, kecuali jika CTRL ditekan pada level yang sejajar dengan laut, maka air akan memenuhi permukaan
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Membuat Sungai
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Membuat sungai
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientasi Galangan
@@ -2299,7 +2299,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Simpan p
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Muat
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Membuka permainan yang telah dipilih
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detil Permainan
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tidak ada informasi yang tersedia.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Tidak ada informasi yang tersedia
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2463,23 +2463,23 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Peringatan
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Kesalahan: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Kesalahan fatal NewGRF telah terjadi: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} tidak akan bekerja dengan versi TTDPatch yang telah dilaporkan oleh OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} untuk TTD versi {STRING}.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} tidak akan bekerja dengan versi TTDPatch yang telah dilaporkan oleh OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} untuk TTD versi {STRING}
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} didesain untuk digunakan dengan {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parameter yang salah untuk {1:STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} harus dimuat sebelum {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} harus dimuat sesudah {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} membutuhkan OpenTTD versi {STRING} atau yang lebih tinggi.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} harus dimuat sebelum {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} harus dimuat sesudah {STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} membutuhkan OpenTTD versi {STRING} atau yang lebih tinggi
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :Berkas NewGRF telah didesain untuk diterjemahkan
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Terlalu banyak berkas NewGRF yang dimuat.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuat NewGRF {2:STRING} secara statis dengan {4:STRING} dapat menyebabkan de-sinkronisasi.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite tidak diharapkan.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Aksi tidak diketahui properti 0.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Mencoba menggunakan ID yang tidak sah.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} terdapat sprite yang rusak. Semua sprite rusak akan ditandai dengan tanda tanya merah (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries.
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pembacaan pada akhir pseudo-sprite.
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Beberapa 'sprite' tidak terdapat pada Set Grafik Dasar yang sedang digunakan.{}Silahkan update Set Grafik Dasar.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Terlalu banyak berkas NewGRF yang dimuat
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuat NewGRF {2:STRING} secara statis dengan {4:STRING} dapat menyebabkan de-sinkronisasi
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite tidak diharapkan
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Properti 'Action 0' tidak diketahui
+STR_NEWGRF_ERROR_INVALID_ID                                     :Mencoba menggunakan ID yang tidak sah
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} terdapat sprite yang rusak. Semua sprite rusak akan ditandai dengan tanda tanya merah (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Memiliki banyak entri untuk 'Action 8'
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Batas akhir pseudo-sprite tercapai
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Beberapa 'sprite' tidak terdapat pada Set Grafik Dasar yang sedang digunakan.{}Silahkan update Set Grafik Dasar
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Peringatan!
@@ -2500,14 +2500,14 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Berkas 
 STR_NEWGRF_LIST_MISSING                                         :{RED}Berkas hilang
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Biasanya NewGRF '{0:STRING}' dapat menyebabkan de-sinkron dan atau crash.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Dapat merubah keadaan gerbong listrik '{1:ENGINE}' saat tidak berada di depo.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ini akan mengubah panjang kereta sebanyak '{1:ENGINE}' ketika tidak berada di dalam depo lokomotif.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin akan rusak atau hang.
+STR_NEWGRF_BROKEN                                               :{WHITE}Biasanya NewGRF '{0:STRING}' dapat menyebabkan de-sinkron dan atau crash
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ini akan mengubah keadaan gerbong listrik '{1:ENGINE}' saat tidak berada di depo
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Ini akan mengubah panjang kereta sebanyak '{1:ENGINE}' ketika tidak berada di dalam depo
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRF. Permainan mungkin akan rusak atau macet
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' memberikan informasi yang salah.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informasi muat ulang untuk '{1:ENGINE}' berbeda dengan daftar beli setelah konstruksi. Ini menyebabkan pembaruan otomatis gagal memuat ulang dengan benar..
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' menyebabkan perulangan tanpa akhir di tingkat produksi.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' memberikan informasi yang salah
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informasi muat ulang untuk '{1:ENGINE}' berbeda dengan daftar beli setelah konstruksi. Ini menyebabkan pembaruan otomatis gagal memuat ulang dengan benar
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' menyebabkan perulangan tanpa akhir di tingkat produksi
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<kargo tidak valid>
@@ -2770,7 +2770,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Kereta tersedia
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Kendaraan tersedia
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Kapal tersedia
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Pesawat tersedia
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Lihat daftar desain mesin yang tersedia untuk kendaraan tipe ini
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Lihat daftar desain mesin yang tersedia untuk jenis kendaraan ini
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Atur Daftar
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Kirim perintah untuk semua kendaraan dalam daftar ini.
@@ -2988,7 +2988,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Kereta Monorel
 STR_REPLACE_MAGLEV_VEHICLES                                     :Kereta Maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Membuang gerbong: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat panjang kereta tetap sama saat penggantian secara otomatis dengan cara membuang gerbong(dihitung dari bagian depan), jika penggantian lokomotif membuat kereta lebih panjang.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat panjang kereta tetap sama saat penggantian secara otomatis dengan cara membuang gerbong(dihitung dari bagian depan), jika penggantian lokomotif membuat kereta lebih panjang
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

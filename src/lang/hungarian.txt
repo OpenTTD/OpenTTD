@@ -546,18 +546,18 @@ STR_ORDINAL_NUMBER_31ST                                         :31.
 ############ range for days ends
 
 ############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :jan.
-STR_MONTH_ABBREV_FEB                                            :febr.
-STR_MONTH_ABBREV_MAR                                            :márc.
-STR_MONTH_ABBREV_APR                                            :ápr.
-STR_MONTH_ABBREV_MAY                                            :máj.
-STR_MONTH_ABBREV_JUN                                            :jún.
-STR_MONTH_ABBREV_JUL                                            :júl.
-STR_MONTH_ABBREV_AUG                                            :aug.
-STR_MONTH_ABBREV_SEP                                            :szept.
-STR_MONTH_ABBREV_OCT                                            :okt.
-STR_MONTH_ABBREV_NOV                                            :nov.
-STR_MONTH_ABBREV_DEC                                            :dec.
+STR_MONTH_ABBREV_JAN                                            :Jan
+STR_MONTH_ABBREV_FEB                                            :Feb
+STR_MONTH_ABBREV_MAR                                            :Már
+STR_MONTH_ABBREV_APR                                            :Ápr
+STR_MONTH_ABBREV_MAY                                            :Máj
+STR_MONTH_ABBREV_JUN                                            :Jún
+STR_MONTH_ABBREV_JUL                                            :Júl
+STR_MONTH_ABBREV_AUG                                            :Aug
+STR_MONTH_ABBREV_SEP                                            :Szp
+STR_MONTH_ABBREV_OCT                                            :Okt
+STR_MONTH_ABBREV_NOV                                            :Nov
+STR_MONTH_ABBREV_DEC                                            :Dec
 
 STR_MONTH_JAN                                                   :január
 STR_MONTH_FEB                                                   :február
@@ -866,7 +866,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} a dokkban vár
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} a hangárban vár
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} menetrendje túl kevés utasításból áll
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} érvénytelen utasítással rendelkezik
@@ -877,8 +877,8 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} elöregedett
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} nagyon elöregedett
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} nagyon elöregedett, sürgősen le kell cserélni
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nem talál utat a célpontjához.
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} eltévedt.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nem talál utat a célpontjához
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} eltévedt
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} elmúlt évi profitja {CURRENCY} volt
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Hibás átalakítási utasítás miatt {VEHICLE} megállt
@@ -893,8 +893,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} most már elfogad {STRING.t}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} most már elfogad {STRING.t} és {STRING.t}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}A támogatás határideje lejárt:{}{}{STRING} szállításáért {STRING} és {STRING} között már nem jár támogatás.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Támogatás visszavonva:{}{}{STRING} szállítása {STRING} és {STRING} között már nem támogatott.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}A támogatás határideje lejárt:{}{}{STRING} szállításáért {STRING} és {STRING} között már nem jár támogatás
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Támogatás visszavonva:{}{}{STRING} szállítása {STRING} és {STRING} között már nem támogatott
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Támogatási ajánlat:{}{}Az első {STRING} szállító {STRING} és {STRING} között egy éves támogatást kap a helyi önkormányzattól!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}{STRING} támogatást kapott!{}{}Így {STRING} szállítása {STRING} és {STRING} között másfélszeres hasznot hoz neki!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{STRING} támogatást kapott!{}{}Így {STRING} szállítása {STRING} és {STRING} között kétszeres hasznot hoz neki!
@@ -1205,7 +1205,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthala
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Áthaladó megállóhelyek engedélyezése vetélytárs tulajdonában lévő utakon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Érintkező állomások építésének engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Több NewGRF járműgarnitúra engedélyezése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beállítást nem lehet megváltoztatni, ha van használatban jármű.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}A beállítást nem lehet megváltoztatni, ha van használatban jármű
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Repülőterek nem avulnak el: {ORANGE}{STRING}
 
@@ -1486,7 +1486,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Biztosa
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Csalások
 STR_CHEATS_TOOLTIP                                              :{BLACK}A kijelölőnégyzetek jelzik a csalások eddigi használatát
-STR_CHEATS_WARNING                                              :{BLACK}Figyelem! Te épp a versenytársaidat készülöd elárulni. Sose felejtsd el, hogy egy ilyen szégyenletes tett sose merül feledésbe.
+STR_CHEATS_WARNING                                              :{BLACK}Figyelem! Te épp a versenytársaidat készülöd elárulni. Sose felejtsd el, hogy egy ilyen szégyenletes tett sose merül feledésbe
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tőkeemelés {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Irányított vállalat: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, mozgathatatlan objektumokat): {ORANGE}{STRING}
@@ -1549,16 +1549,16 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Női arc
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Új arc
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Véletlenszerű új arc létrehozása
 STR_FACE_ADVANCED                                               :{BLACK}Fejlett
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Fejlett arcválasztó.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Fejlett arcválasztó
 STR_FACE_SIMPLE                                                 :{BLACK}Egyszerű
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Egyszerű arcválasztó.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Egyszerű arcválasztó
 STR_FACE_LOAD                                                   :{BLACK}Betölt
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Kedvenc arcod betöltése
 STR_FACE_LOAD_DONE                                              :{WHITE}A kedvenc arcod az OpenTTD konfig-fájlból be lett töltve.
 STR_FACE_FACECODE                                               :{BLACK}Játékos arcszám
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Az elnök portréjának kódjánakmegtekintése, módosítása
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Elnöki portré kód megtekintése, módosítása
-STR_FACE_FACECODE_SET                                           :{WHITE}Az új portré kód beállítása megtörtént.
+STR_FACE_FACECODE_SET                                           :{WHITE}Az új portré kód beállítása megtörtént
 STR_FACE_FACECODE_ERR                                           :{WHITE}Elnöki portré kód beállítás sikertelen - a megadott értéknek 0 és 4.294.967.295 között kell lennie!
 STR_FACE_SAVE                                                   :{BLACK}Mentés
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Kedvenc arc elmentése
@@ -1643,7 +1643,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Szerver 
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Szerver keresése
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Szerver keresése a hálózaton
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Szerver hozzáadása
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Hozzáadja a szervert a listához, így később gyorsabban tudsz hozzá csatlakozni.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Hozzáadja a szervert a listához, így később gyorsabban tudsz hozzá csatlakozni
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Szerver indítása
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Saját szervert indít
 
@@ -1751,15 +1751,15 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Segítes
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Kapcsolódás...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Kapcsolódás..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Engedélyezés..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Várakozás..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Térkép letöltése..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Adatfeldolgozás..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Regisztrálás..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Kapcsolódás...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Engedélyezés...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Várakozás...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Térkép letöltése...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Adatfeldolgozás...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Regisztrálás...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Játékinfó lekérése..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Vállalat infó lekérése..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Játékinfó lekérése...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Vállalat infó lekérése...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kliensre várunk, hogy befejezze
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} lett eddig letöltve
@@ -1800,7 +1800,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Ez a jel
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Csatlakozás
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Csatlakozz és vezetsd a vállalatot
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Jelszó
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Védd le a vállalatodat jelszóval ha nem akarod hogy mások csatlakozzanak hozzá.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Védd le a vállalatodat jelszóval ha nem akarod hogy mások csatlakozzanak hozzá
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Vállalati jelszó beállítása
 
 # Network chat
@@ -1945,15 +1945,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nem sike
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Átlátszósági beállítások
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Keret nélküli állomásnevek bekapcsolása. Ctrl+Kattintással zárolható.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Fák átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Épületek átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Gazdasági létesítmények átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Építhető elemek (állomások, járműtelepek, ellenőrző pontok) átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidak átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tereptárgyak (adótornyok, világítótornyok, stb.) átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Átlátszó rakodásjelző bekapcsolása. Ctrl+Kattintással zárolható.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Keret nélküli állomásnevek bekapcsolása. Ctrl+Kattintással zárolható
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Fák átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Épületek átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Gazdasági létesítmények átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Építhető elemek (állomások, járműtelepek, ellenőrző pontok) átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidak átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Tereptárgyak (adótornyok, világítótornyok, stb.) átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. Ctrl+Kattintással zárolható
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Átlátszó rakodásjelző bekapcsolása. Ctrl+Kattintással zárolható
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Az objektum ne átlátszó legyen, hanem láthatatlan
 
 # Base for station construction window(s)
@@ -2016,19 +2016,19 @@ STR_STATION_CLASS_WAYP                                          :Ellenőrző pon
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Jelző választó
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Normál jelző (alak){}A legegyszerűbb jelzőtípus, az előtte lévő jelzőblokkba egyszerre csak egy vonatot enged tartózkodni.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Bejárati jelző (alak){}Mindaddig szabad, amíg van legalább egy szabad kijárati jelző az utána következő szakaszon. Egyébként Megálljt jelez.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Kijárati jelző (alak){}Ugyanúgy viselkedik mint a normál jelző, de megléte elengedhetetlenül szükséges a bejárati- és a kombinált jelzők működéséhez.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinált jelző (alak){}A kombinált jelző voltaképpen egy kijárati- és egy bejárati jelző egybeépítve. Segítségével komoly váltókörzetek építhetőek bejárati jelzőkből.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Irányjelző (alak){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az irányjelzők mellett hátulról is el lehet haladni.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Egyirányú irányjelző (alak){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az egyirányú jelzők mellett nem lehet hátulról elhaladni.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Normál jelző (fény){}A legegyszerűbb jelzőtípus, az előtte lévő jelzőblokkba egyszerre csak egy vonatot enged tartózkodni.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Bejárati jelző (fény){}Mindaddig szabad, amíg van legalább egy szabad kijárati jelző az utána következő szakaszon. Egyébként Megálljt jelez.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Kijárati jelző (fény){}Ugyanúgy viselkedik mint a normál jelző, de megléte elengedhetetlenül szükséges a bejárati- és a kombinált jelzők működéséhez.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinált jelző (fény){}A kombinált jelző voltaképpen egy kijárati- és egy bejárati jelző egybeépítve. Segítségével komoly váltókörzetek építhetőek bejárati jelzőkből.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az irányjelzők mellett hátulról is el lehet haladni.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Egyirányú irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az egyirányú jelzők mellett nem lehet hátulról elhaladni.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Jelző átalakítás{}Amikor ki van jelölve, egy meglévő jelzőre való kattintással átkonvertálja a kiválasztott jelzőtípusra és -variációra, CTRL+kattintás a variációt fogja változtatni.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Normál jelző (alak){}A legegyszerűbb jelzőtípus, az előtte lévő jelzőblokkba egyszerre csak egy vonatot enged tartózkodni
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Bejárati jelző (alak){}Mindaddig szabad, amíg van legalább egy szabad kijárati jelző az utána következő szakaszon. Egyébként Megálljt jelez
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Kijárati jelző (alak){}Ugyanúgy viselkedik mint a normál jelző, de megléte elengedhetetlenül szükséges a bejárati- és a kombinált jelzők működéséhez
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinált jelző (alak){}A kombinált jelző voltaképpen egy kijárati- és egy bejárati jelző egybeépítve. Segítségével komoly váltókörzetek építhetőek bejárati jelzőkből
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Irányjelző (alak){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az irányjelzők mellett hátulról is el lehet haladni
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Egyirányú irányjelző (alak){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az egyirányú jelzők mellett nem lehet hátulról elhaladni
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Normál jelző (fény){}A legegyszerűbb jelzőtípus, az előtte lévő jelzőblokkba egyszerre csak egy vonatot enged tartózkodni
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Bejárati jelző (fény){}Mindaddig szabad, amíg van legalább egy szabad kijárati jelző az utána következő szakaszon. Egyébként Megálljt jelez
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Kijárati jelző (fény){}Ugyanúgy viselkedik mint a normál jelző, de megléte elengedhetetlenül szükséges a bejárati- és a kombinált jelzők működéséhez
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinált jelző (fény){}A kombinált jelző voltaképpen egy kijárati- és egy bejárati jelző egybeépítve. Segítségével komoly váltókörzetek építhetőek bejárati jelzőkből
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az irányjelzők mellett hátulról is el lehet haladni
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Egyirányú irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az egyirányú jelzők mellett nem lehet hátulról elhaladni
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Jelző átalakítás{}Amikor ki van jelölve, egy meglévő jelzőre való kattintással átkonvertálja a kiválasztott jelzőtípusra és -variációra, CTRL+kattintás a variációt fogja változtatni
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Automata jelzőtelepítés sűrűsége
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Automata jelzőtelepítés-sűrűség csökkentése
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Automata jelzőltelepítés-sűrűség növelése
@@ -2363,7 +2363,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}A játé
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Betölt
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Betölti a kiválasztott játékmentést
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Részletek
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nincs elérhető információ.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nincs elérhető információ
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2527,23 +2527,23 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Figyelmezt
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Végzetes hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Végzetes NewGRF hiba történt: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} a TTD {STRING} verziójához van.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} a TTD {STRING} verziójához van
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} úgy lett tervezve, hogy együtt lesz használva ezzel: {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Hibás paraméterérték ehhez: {1:STRING}: paraméter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} muszáj, hogy betöltődjön ezelőtt: {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muszáj, hogy ezután töltődjön be: {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} csak a {STRING} vagy nagyobb verziójú OpenTTD-vel működik.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} muszáj, hogy betöltődjön ezelőtt: {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} muszáj, hogy ezután töltődjön be: {STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} csak a {STRING} vagy újabb verziójú OpenTTD-vel működik
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott GRF fájl célja egy másik lefordítása
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Túl sok NewGRF van betöltve.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING} betöltése mint statikus NewGRF {4:STRING} mellett ütközést okozhat.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Váratlan sprite.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ismeretlen "Action 0" tulajdonság.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Érvénytelen ID-használati kisérlet.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} hibás sprite-ot tartalmaz. Minden hibás sprite piros kérdőjellel (?) kerül jelölésre.
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Túl sok Action 8 bejegyzést tartalmaz.
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite távoli végének olvasása.
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A jelenleg használt grafikus alapcsomagból hiányzik számos sprite.{}Kérlek frissítsd a grafikus alapcsomagot!
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Túl sok NewGRF van betöltve
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING} betöltése mint statikus NewGRF {4:STRING} mellett ütközést okozhat
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Váratlan sprite
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ismeretlen Action 0 tulajdonság
+STR_NEWGRF_ERROR_INVALID_ID                                     :Érvénytelen ID-használati kisérlet
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} hibás sprite-ot tartalmaz. Minden hibás sprite piros kérdőjellel (?) kerül jelölésre
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Többszörös Action 8 bejegyzést tartalmaz
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Ál-sprite távoli végének olvasása
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A jelenleg használt grafikus alapcsomagból hiányzik számos sprite.{}Kérlek frissítsd a grafikus alapcsomagot
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Figyelem!
@@ -2564,16 +2564,16 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Talált
 STR_NEWGRF_LIST_MISSING                                         :{RED}Hiányzó fájlok
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}A '{0:STRING}' viselkedése valószínűleg ütközést vagy összeomlást okoz.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztatta '{1:ENGINE}' meghajtott vagon-állapotát mikor nem volt bent a járműtelepen.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatta '{1:ENGINE}' jármű hosszát mikor nem volt bent a járműtelepen.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:COMPANY}' vállalat '{0:VEHICLE}'-jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat - lefagyhat.
+STR_NEWGRF_BROKEN                                               :{WHITE}A '{0:STRING}' viselkedése valószínűleg ütközést vagy összeomlást okoz
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Megváltoztatta '{1:ENGINE}' meghajtott vagon-állapotát mikor nem volt bent a járműtelepen
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatta '{1:ENGINE}' jármű hosszát mikor nem volt bent a járműtelepen
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:COMPANY}' vállalat '{0:VEHICLE}' jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat vagy lefagyhat
 
-STR_NEWGRF_BUGGY                                                :{WHITE}A(z) '{0:STRING}' NewGRF helytelen információt tartalmaz.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{1:ENGINE}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' végtelen ciklust okozott a termelés folyamatnál.
+STR_NEWGRF_BUGGY                                                :{WHITE}A(z) '{0:STRING}' NewGRF helytelen információt tartalmaz
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A(z) '{1:ENGINE}' rakomány/átalakítás információja a gyártás után különbözik a vételi listán találhatótól. Ez hibát okozhat az automatikus felújítás/lecserélés során az átalakításban
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' végtelen ciklust okozott a termelés folyamatnál
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<érvénytelen rakomány>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <érvénytelen rakomány>
@@ -2834,7 +2834,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Elérhető vona
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Elérhető közúti járművek
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Elérhető hajók
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Elérhető repülők
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Tekintsd meg az ehhez a járműtípushoz választható mozdonyok listáját
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Nézd meg az ehhez a járműtípushoz választható mozdonyok listáját
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Lista kezelése
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}A listán szereplő járműveknek utasítás küldése
@@ -3052,7 +3052,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Egysínű Vasut
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Járművek
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása kocsik lekapcsolásával (mozdony utántól kezdve), ha a csere után a szerelvény hosszabb lenne.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása kocsik eltávolításával (mozdony utántól kezdve), ha a csere után a szerelvény hosszabb lenne
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3282,7 +3282,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Töröl
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}A kijelölt célpont törlése
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Összes utasítás törlése
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Megosztás vége
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Menetrend megosztásának befejezése. Ctrl+Kattintással törli a teljes menetrendet.
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Menetrend megosztásának befejezése. Ctrl+Kattintással törli a teljes menetrendet
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Új cél
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi járműtelepre
@@ -3345,7 +3345,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Menetrend
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Átkapcsolás a menetrend utasítástáblájára
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Menetrend - kijelöléshez kattints egy elemére
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Menetrend - egy utasítás kijelöléshez kattints rá
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nincs utazás
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Következő célpontig a menetidő időzítetlen
@@ -3407,7 +3407,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}MI kilö
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Megállítás be/kikapcsolása, ha az AI naplóbejegyzés megegyezik a megállítási sorral
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Megállítás:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Megállítás
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ha egy MI naplóbejegyzés megegyezik ezzel a sorral, a játék szünet módba kapcsol.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Ha egy MI naplóbejegyzés megegyezik ezzel a sorral, a játék szünet módba kapcsol
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Egyezés
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AI naplóbejegyzések a megállítási sorral való összehasonlításnál szóegyezés be/ki
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Folytatás
@@ -3417,8 +3417,8 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}A MI kim
 STR_ERROR_NO_AI                                                 :{WHITE}Az OpenTTD MI támogatás nélül lett fordítva...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... nincs elérhető MI!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nincs MI, amit be lehetne tölteni.{}A jelenlegi MI nem fog semmit csinálni.{}MI-k letöltéséhez használd a főmenüből elérhető tartalomletöltő rendszert.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Az egyik futó MI futása közben hiba történt. Kérjük jelezd ezt az MI készítőjének az MI nyomkövetés ablakról készített képpel.
+STR_ERROR_AI_NO_AI_FOUND                                        :Nincs MI, amit be lehetne tölteni.{}A jelenlegi MI csak dísz és nem fog semmit csinálni.{}MI-k letöltéséhez használd a tartalomletöltő rendszert
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Az egyik futó MI futása közben hiba történt. Kérjük jelezd ezt az MI készítőjének az MI nyomkövetés ablakról készített képernyőmentéssel
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Az MI nyomkövetés ablak csak a szerver számára elérhető
 
 # AI configuration window
@@ -3488,25 +3488,25 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :A fájl nem olv
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :A fájl nem írható
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Adat integritás hiba
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nem elérhető>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat. Az összes villamos törölve lett.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat. Az összes villamos el lett távolítva
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}A térkép generálása meghiúsult...{}... nincs városépítésre alkalmas hely
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... nincs település ezen a pályán
 
 STR_ERROR_PNGMAP                                                :{WHITE}Nem tudom a térképet betölteni a PNG-ből...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fájl nem található.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... nem tudtam konverálni a kép típusát. 8 vagy 24-bites PNG kép kell.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... valami nem igazán sikerült. Bocs. (talán sérült a fájl)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fájl nem található
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... a képtípus nem konvertálható. 8 vagy 24-bites PNG kép szükséges
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... valami félresikeredett (talán sérült a fájl)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Nem sikerült a térkép betöltése a BMP-ből...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nem sikerült a képtípust konvertálni.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... nem sikerült a képtípust konvertálni
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Átméretezési figyelmeztetés
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}A forrás térkép túlságosan nagy mértékű átméretezése nem javasolt. Folytatod mégis?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Csak egy elavult hang alapcsomagot találtam. Ha szeretnél hangokat, telepíts egy hang alapcsomagot a tartalomletöltő rendszeren keresztül!
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Csak egy elavult hang alapcsomagot találtam. Ha szeretnél hangokat, telepíts egy hang alapcsomagot a tartalomletöltő rendszeren keresztül
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}A képernyő elmentve '{STRING}' néven
@@ -3574,7 +3574,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... túl
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... túl közel van egy másik településhez
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... túl sok a település
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... nincs több hely a térképen
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A település nem fog utakat építeni. Az útépítést a Haladó beállítások->Gazdaság->Városok menüben engedélyezheted.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A település nem fog utakat építeni. Az útépítést a Haladó beállítások->Gazdaság->Városok menüben engedélyezheted
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Útkarbantartás folyamatban
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nem törölheted ezt a várost...{}Egy állomás vagy járműtelep hivatkozik a városra, vagy egy városi tulajdonú mező nem eltávolítható
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... nincs megfelelő hely egy szobornak a város központjában
@@ -3680,7 +3680,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Rossz járműte
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} túl hosszú a csere után
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nincsenek automatikus járműfelújítási szabályok alkalmazva.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nincsenek automatikus járműfelújítási szabályok alkalmazva
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pénzlimit)
 
 # Rail construction errors

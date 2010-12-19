@@ -238,7 +238,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Прем
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Активирай голям/малък размер на прозореца
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Лента за позициониране - превърта списъка нагоре/надолу
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Превъртаща ивица - превърта списъка на ляво/дясно
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Разруши постройки и др. върху квадрат от картата
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Разруши постройки и др. върху квадрат от картата. Ctrl маркира по диагонал
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}По подразбиране
@@ -803,7 +803,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} чака в депото
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} чака в хангара
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} има прекалено малко задачи
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} има празна задача
@@ -1150,7 +1150,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Пре�
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Преминаване през спирки на пътища, собственост на конкуренти: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Позвалявай допрени гари: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Няколко NewGRF алгоритъма едновременно: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Промяната не е възможна, когато има преовцни средства.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Промяната не е възможна, когато има превозни средства.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Летишата не губят валидност: {ORANGE}{STRING}
 
@@ -1491,9 +1491,9 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Избе
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Ново лице
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Генерирай произволно ново лице
 STR_FACE_ADVANCED                                               :{BLACK}Hапреднат
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Напредната лице селекциа.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Напредната лице селекция.
 STR_FACE_SIMPLE                                                 :{BLACK}Прост
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Проста лице селекциа.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Проста лице селекция.
 STR_FACE_LOAD                                                   :{BLACK}Отваряне
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Отваряне на любимо лице
 STR_FACE_LOAD_DONE                                              :{WHITE}Твоето любимо лице е заредено от OpenTTD config файлът.
@@ -1887,15 +1887,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не м�
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки на прозрачност
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Използвай прозрачност за знаци на гара
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Използвай прозрачност за дървета
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Използвай прозрачност за къщи
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Използвай прозрачност за промишленост
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Използвай прозрачност за сгради като гари, депа, пътни точки и висящи жици
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Използвай прозрачност за мостове
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Използвай прозрачност за знаци на гара. Ctrl+Click за заключване
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Използвай прозрачност за дървета. Ctrl+Click за заключване
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Използвай прозрачност за къщи. Ctrl+Click за заключване
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Използвай прозрачност за промишленост. Ctrl+Click за заключване
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Използвай прозрачност за сгради като гари, депа, пътни точки и висящи жици. Ctrl+Click за заключване
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Използвай прозрачност за мостове. Ctrl+Click за заключване
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Използвай прозрачност за сгради като фарове и антени, може би в бъдеще за украси
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Активирай прозрачност за висящите. CTRL+клик за фиксиране.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Вклучи прозрачност за товарещи указатели
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Вклучи прозрачност за товарещи указатели. Ctrl+Click за заключване
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Направи обектите невидими вместо прозрачни
 
 # Base for station construction window(s)
@@ -2075,7 +2075,7 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Прои
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Тераформиране
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Понижи ъгъл от земята
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Понижи ъгъл от земята. Влаченето понижава първия маркиран ъгъл и изравнява останалия терен към вече понижения терен. Ctrl за маркиране по диагонал
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Повиши ъгъл от земята
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Подравняване на земя
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купи земя за бъдещо ползване
@@ -2474,13 +2474,13 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} е �
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Невалиден параметър за {1:STRING}: параметър {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} трябва да бъде зареден преди {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} трябва да бъде зареден след {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} поискай OpenTTD версиа {STRING} или по-добра.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} изисква OpenTTD версия {STRING} или по-нова.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF файлат беше предназначен да преведе
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Прекалено много графики (NewGRF) са заредени.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Зареждане на {2:STRING} като статичен NewGRF заедно с {4:STRING} може да доведе до проблеми.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неочакван обект.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Неизвестна Action 0 собственост.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Опит да се използва невалидно ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} съдържа повреден обект. Вскички повредени обекти ще бъдат показани като червена въпросителна (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Съдържа множество Действие 8 вписвания.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Прочети след края на псевдо sprite
@@ -2514,7 +2514,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Информация за товар/преобразувания на '{1:ENGINE}' се различава от листа с покупките. Това може да доведе до грешка при подновяване/преустройване
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' предизвика вечен цикъл в callback на производството
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<невалиден товар>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} на <невалиден товар>
@@ -3430,10 +3430,10 @@ STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... ня
 STR_ERROR_PNGMAP                                                :{WHITE}Не може да зареди терена от PNG...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... файла не е намерен.
 STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... преобразуване типа на картинката е невъзможно. Трябва 8 или 24-битова PNG картинка.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... нещо лошо слочи. Извинения. (вероятно повреден файл)
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... нещо лошо слочи. (вероятно повреден файл)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Не може да отвориш пейзаж от BMP..
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... не може да се промени бида на снимката.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... не може да се промени вида на снимката.
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Мащаб предупреждение
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Прекаленото оразмеряване не е препорачително. Продължаване с генерацията?
@@ -3762,7 +3762,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... пр
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Не може да добави разписание на превозно средство...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Превозни средства могат да чакат само на гари.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Това превознот средство не спира на тази гара.
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Това превозно средство не спира на тази гара.
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... твърде много знаци
@@ -4263,3 +4263,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

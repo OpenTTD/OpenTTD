@@ -628,7 +628,7 @@ STR_PERFORMANCE_DETAIL                                          :{WHITE}Podrobn�
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Podrobně
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
-STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}{NBSP}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Zobraz detaily o této společnosti
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozidla:
@@ -645,7 +645,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Celkem:
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Počet dopravních prostředků, které vykázaly poslední rok zisk; zahrnuje silniční vozidla, vlaky, lodě a letadla
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Počet součástí obsluhovaných stanic. Každá součást stanice (napr. nádraží, autobusová zastávka, letiště) se započítává, i když patří jediné stanici
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Minimální hrubý zisk (= s provoz. náklady) vozidla s nejnižším příjmem (staršího 2 let)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Čistý zisk (= bez provoz. nakladu) v nejslabším čtvrtletí za posledních 12 čtvrtletí
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Čistý zisk (= bez provoz. nakladů) v nejslabším čtvrtletí za posledních 12 čtvrtletí
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Čistý zisk ve čtvrtletí s největším příjmem za posledních 12 čtvrtletí
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Počet doručených jednotek nákladu za poslední rok (4Q)
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Počet doručených druhu nákladu za poslední 3 měsíce (1Q)
@@ -847,8 +847,8 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}Společnost {STRING} zaplatila výstavbu nového města {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}{STRING} se staví poblíž města {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nový {STRING} se vysazuje poblíž města {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G ý á é í é é á} {STRING.small} se staví poblíž města {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G ý á é í é é á} {STRING.small} se vysazuje poblíž města {TOWN}!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} ohlašuje okamžité uzavření!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Zásobovací problémy způsobily uzavření {STRING.gen}!
@@ -859,12 +859,12 @@ STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Konec hospodářského úpadku!{}{}Posílení trhu zvýšilo u průmyslu důvěru!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} zvyšuje produkci!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nové ložisko uhlí nalezené v {INDUSTRY}!{}Zdvojnásobí se produkce!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nové zásoby ropy nalezené v {INDUSTRY}!{}Zdvojnásobí se produkce!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Lepší metody pěstování {INDUSTRY} zdvojnásobí produkci!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nové ložisko uhlí nalezeno {INDUSTRY.loc}!{}Zdvojnásobí se produkce!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Nové zásoby ropy nalezeny {INDUSTRY.loc}!{}Zdvojnásobí se produkce!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Lepší metody pěstování {INDUSTRY.loc} zdvojnásobí produkci!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY} zvyšuje produkci {0:STRING.gen} o{NBSP}{2:COMMA}{NBSP}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} produkce poklesla o 50 %
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} j{G 0:0 e e e sou sou sou sou} zamořen{G 0:0 "" a o i y y a} škůdci!{}Produkce poklesla o 50 %
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}Produkce {INDUSTRY.gen} poklesla o 50{NBSP}%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY} j{G 0:0 e e e sou sou sou sou} zamořen{G 0:0 "" a o i y y a} škůdci!{}Produkce poklesla o 50{NBSP}%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}{1:INDUSTRY} snižuje produkci {0:STRING.gen} o{NBSP}{2:COMMA}{NBSP}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} čeká v depu
@@ -895,14 +895,14 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G ý á é í é é á} {STRING} k dispozici!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} už dále nepřijímá {STRING.acc}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} už dále nepřijímá {STRING.acc} nebo {STRING.acc}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} už dále nepřijímá {STRING.acc} ani {STRING.acc}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} nyní přijímá {STRING.acc}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} nyní přijímá {STRING.acc} a {STRING.acc}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Nabídka dotace přepravy vypršela:{}{}Dotace dopravy {STRING.gen} z{NBSP}{STRING} do {STRING} nebude dále nabízena
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Ukončení dotování dopravy:{}{}Dotace pro {STRING} z{NBSP}{STRING} do {STRING} již nebude dále poskytována
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Nabídka dotace:{}{}Doprava {STRING.gen} z{NBSP}{STRING} do {STRING} bude jeden rok dotována místní správou!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STRING} do {STRING} bude po jeden rok vynášet 150 % normální ceny.
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STRING} do {STRING} bude po jeden rok vynášet 150{NBSP}% normální ceny
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STRING} do {STRING} bude po jeden rok vynášet dvojnásobek normální ceny!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STRING} do {STRING} bude po jeden rok vynášet trojnásobek normální ceny!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Dotace přidělena společnosti {STRING}.{}{}Doprava {STRING.gen} z {STRING} do {STRING} bude po jeden rok vynášet čtyřnásobek normální ceny!
@@ -1017,12 +1017,12 @@ STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formát 
 STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Zvolit formát screenshotů
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základní sada grafiky
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvol základní sadu grafiky.
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvol základní sadu grafiky
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chybějící{P "" "" ch}/poškozen{P ý é ých} soubor{P "" y ů}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Další informace o základní sadě grafiky
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Základní sada zvuků
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Zvol základní sadu zvuků.
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Zvol základní sadu zvuků
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Další informace o základní sadě zvuků
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Základní hudební set
@@ -1446,7 +1446,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Stahovat
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Nastavení AI
 STR_INTRO_QUIT                                                  :{BLACK}Ukončit
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hrát novou hru. Pomocí Ctrl přeskočíš nastavení mapy.
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Hrát novou hru. Pomocí Ctrl přeskočíš nastavení mapy
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Nahrát hru
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Začít novou hru s krajinou vytvořenou z výškové mapy
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Hrát novou hru ze scénáře
@@ -1491,7 +1491,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Určite
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
-STR_CHEATS_TOOLTIP                                              :{BLACK}Zaškrtávací políčka ukazují, jestli jsi tento cheat už použil.
+STR_CHEATS_TOOLTIP                                              :{BLACK}Zaškrtávací políčka ukazují, jestli jsi tento cheat už použil
 STR_CHEATS_WARNING                                              :{BLACK}Varování! Chystáš se podvést ostatní hráče. Pamatuj si, že tento podlý čin nebude nikdy zapomenut!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Navýšit peníze o {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hrát jako společnost: {ORANGE}{COMMA}
@@ -1560,15 +1560,15 @@ STR_FACE_SIMPLE                                                 :{BLACK}Jednodu�
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Základní výběr tváře
 STR_FACE_LOAD                                                   :{BLACK}Nahrát
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Nahrát oblíbený obličej
-STR_FACE_LOAD_DONE                                              :{WHITE}Tvůj oblíbený obličej se nahrál z konfiguračního souboru.
+STR_FACE_LOAD_DONE                                              :{WHITE}Tvůj oblíbený obličej se nahrál z konfiguračního souboru
 STR_FACE_FACECODE                                               :{BLACK}Číslo tváře
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Zobrazit a/nebo nastavit číslo tváře prezidenta
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Zobrazit a/nebo nastavit číslo tváře prezidenta
 STR_FACE_FACECODE_SET                                           :{WHITE}Nové číslo obličeje bylo nastaveno
-STR_FACE_FACECODE_ERR                                           :{WHITE}Nelze nastavit číslo tváře prezidenta - musí jít o číslo mezi 0 a 4 294 967 295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Nelze nastavit číslo tváře prezidenta - musí jít o číslo mezi 0 a 4{NBSP}294{NBSP}967{NBSP}295!
 STR_FACE_SAVE                                                   :{BLACK}Uložit
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Uložit oblíbený obličej
-STR_FACE_SAVE_DONE                                              :{WHITE}Tato tvář bude uložena do konfiguračního souboru jako tvá oblíbená.
+STR_FACE_SAVE_DONE                                              :{WHITE}Tato tvář bude uložena do konfiguračního souboru jako tvá oblíbená
 STR_FACE_EUROPEAN                                               :{BLACK}Europoidní
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Vybrat europoidní tváře
 STR_FACE_AFRICAN                                                :{BLACK}Africká
@@ -1671,7 +1671,7 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :internet (zveřejnit)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i ů}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Nejvyšší počet hráčů:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Zvol nejvyšší počet hráčů. Může se jich připojit i méně.
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Zvol nejvyšší počet hráčů. Může se jich připojit i méně
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} společnost{P "" i í}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Maximální počet společností:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Omezit serverem počet společností
@@ -1679,7 +1679,7 @@ STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} po
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maximální počet pozorovatelů:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Omezit serverem pocet pozorovatelů
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jazyk ve hře:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby ostatní hráči věděli, jakým jazykem se bude ve hře mluvit.
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby ostatní hráči věděli, jakým jazykem se bude ve hře mluvit
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Začít hru
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Začít novou hru po síti s náhodnou mapou nebo se scénářem
@@ -1732,7 +1732,7 @@ STR_NETWORK_LANG_LATVIAN                                        :lotyština
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Vstupní místnost do hry více hráčů
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Připravuji se na vstoupení: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Současný seznam všech společností v této hře. Buď můžeš do jedné vstoupit, nebo můžeš založit novou.
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Současný seznam všech společností v této hře. Buď můžeš do jedné vstoupit, nebo můžeš založit novou
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFO O SPOLEČNOSTI
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Jméno společnosti: {WHITE}{STRING}
@@ -1807,7 +1807,7 @@ STR_COMPANY_VIEW_JOIN                                           :{BLACK}Přidat 
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Připojit se a hrát za tuto společnost
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Heslo
 STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Heslo - zabrání neautorizovaným uživatelům v připojení se k tvé společnosti
-STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Nastav heslo společnosti.
+STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Nastav heslo společnosti
 
 # Network chat
 STR_NETWORK_CHAT_SEND                                           :{BLACK}Poslat
@@ -1940,7 +1940,7 @@ STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Obsah se
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Žádá se o soubory...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Právě se stahuje {STRING} ({NUM} z {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Stahování dokončeno
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} z {BYTES} staženo ({NUM} %)
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} z{NBSP}{BYTES} staženo ({NUM}{NBSP}%)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nešlo se připojit k serveru s obsahem...
@@ -2440,7 +2440,7 @@ STR_GENERATION_WORLD                                            :{WHITE}Vytvář
 STR_GENERATION_ABORT                                            :{BLACK}Přerušit
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Přerušit generování krajiny
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Opravdu chceš přerušit tento proces?
-STR_GENERATION_PROGRESS                                         :{WHITE}Z {NUM} % hotovo
+STR_GENERATION_PROGRESS                                         :{WHITE}Z{NBSP}{NUM}{NBSP}% hotovo
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tvorba krajiny
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Výsadba stromů
@@ -2473,11 +2473,11 @@ STR_NEWGRF_SETTINGS_MOVEUP                                      :{BLACK}Nahoru
 STR_NEWGRF_SETTINGS_MOVEUP_TOOLTIP                              :{BLACK}Posunout označenou grafiku nahoru
 STR_NEWGRF_SETTINGS_MOVEDOWN                                    :{BLACK}Dolů
 STR_NEWGRF_SETTINGS_MOVEDOWN_TOOLTIP                            :{BLACK}Posunout označenou grafiku dolů
-STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam grafik, které jsou nainstalovány. Kliknutím na jméno souboru můžeš nastavit parametry.
+STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Seznam grafik, které jsou nainstalovány. Kliknutím na jméno souboru můžeš nastavit parametry
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Nastavit parametry
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Přepnout paletu
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}U vybrané grafiky přepne paletu.{}Je to užitečné, když se ti ve hře zobrazuje růžově.
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}U vybrané grafiky přepne paletu.{}Je to užitečné, když se ti ve hře zobrazuje růžově
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Potvrdit změny
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Hledat chybějící obsah on-line
@@ -2520,12 +2520,12 @@ STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}Hodnota 
 # Sprite aligner window
 STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Zarovávání spritu {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Další sprite
-STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Jít na další normální sprite (s grafikou), přičemž se přeskakují pseudo-/barvící/znakové sprity a při dosažení konce se jde zase na začátek.
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Jít na další normální sprite (s grafikou), přičemž se přeskakují pseudo-/barvící/znakové sprity a při dosažení konce se jde zase na začátek
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Jít na sprite
-STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Jít na daný sprite. Negrafické (pseudo-) sprity se přeskakují.
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Jít na daný sprite. Negrafické (pseudo-) sprity se přeskakují
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Předchozí sprite
-STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Jít na předchozí normální sprite (s grafikou), přičemž se přeskakují pseudo-/barvící/znakové sprity a při dosažení začátku se jde na konec.
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Zobrazení vybraného spritu. Posun se při jeho vykreslení neuvažoval.
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Jít na předchozí normální sprite (s grafikou), přičemž se přeskakují pseudo-/barvící/znakové sprity a při dosažení začátku se jde na konec
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Zobrazení vybraného spritu. Posun se při jeho vykreslení neuvažoval
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Posouvání spritu změnou souřadnic X a Y
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Posun X: {NUM}, posun Y: {NUM}
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vybrat sprite
@@ -2610,7 +2610,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Zadej n�
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Města
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nic -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Jména měst - pohled na město zaměříš kliknutím na jeho jméno. Při stisknutém Ctrl otevřeš nový pohled.
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Jména měst - pohled na město zaměříš kliknutím na jeho jméno. Při stisknutém Ctrl otevřeš nový pohled
 STR_TOWN_POPULATION                                             :{BLACK}Populace světa: {COMMA}
 
 # Town view window
@@ -2643,7 +2643,7 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Možné činnosti:
 STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Seznam všech věcí, které lze dělat v tomto městě - označ činnost pro více detailů:
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Provést
-STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Proveď označenou činnost ze seznamu.
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Proveď označenou činnost ze seznamu
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Malá reklamní kampaň
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Střední reklamní kampaň
@@ -2777,7 +2777,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Postavit
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ředitelství
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Zobrazit sídlo společnosti
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Přesídlit
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sídlo společnosti můžeš vystavit jinde za 1 % její hodnoty
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sídlo společnosti můžeš vystavit jinde za 1{NBSP}% její hodnoty
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nový obličej
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Zvol nový obličej prezidenta
@@ -3085,12 +3085,12 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošli v
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslat loď do doku
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Poslat letadlo do hangáru
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Vytvoří se kopie vlaku se všemi vagony. Se stisknutým Ctrl se budou sdílet příkazy.
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Vytvoří se kopie silničního vozidla. Se stisknutým Ctrl se budou sdílet příkazy.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Vytvoří se kopie lodě. Se stisknutým Ctrl se budou sdílet příkazy.
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Vytvoří se kopie letadla. Se stisknutým Ctrl se budou sdílet příkazy.
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Vytvoří se kopie vlaku se všemi vagony. Se stisknutým Ctrl se budou sdílet příkazy
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Vytvoří se kopie silničního vozidla. Se stisknutým Ctrl se budou sdílet příkazy
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Vytvoří se kopie lodě. Se stisknutým Ctrl se budou sdílet příkazy
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Vytvoří se kopie letadla. Se stisknutým Ctrl se budou sdílet příkazy
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Donuť vlak prokračovat bez čekání na povolení od semaforu
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Donuť vlak pokračovat bez čekání na povolení od semaforu
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Přestavět vlak pro převoz jiného typu nákladu
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Přestavět silniční vozidlo, aby mohlo vozit jiný druh nákladu
@@ -3110,8 +3110,8 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Ukaž de
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Ukázat detaily lodi
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Ukázat detaily letadla
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Současná činnost vlaku - když sem klikneš, vlak se zastaví nebo rozjede. Když ještě podržíš Ctrl, pohled se posune na cílovou stanici.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Současná činnost vozidla - klikni sem pro zastavení/rozjetí.
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Současná činnost vlaku - když sem klikneš, vlak se zastaví nebo rozjede. Když ještě podržíš Ctrl, pohled se posune na cílovou stanici
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Současná činnost vozidla - klikni sem pro zastavení/rozjetí
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Současná činnost plavidla - pro zastavení či rozjetí, klikni sem
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Činnost letadla - stiskni pro rozjetí/zastavení letadla
 
@@ -3151,9 +3151,9 @@ STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Jméno
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pojmenovat vlak
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Přejmenovat silniční vozidlo
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Přejmenovat loď
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Přejmenovat letadlo
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Pojmenovat silniční vozidlo
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Pojmenovat loď
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Pojmenovat letadlo
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} ročně
 # The next two need to stay in this order
@@ -3264,7 +3264,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Nevykládat
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ovlivnit vykládání u vybraného příkazu
 
 STR_ORDER_REFIT                                                 :{BLACK}Přestavět
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyber, na který druh nákladu přestavět. Ctrl+klik odstraní přestavbu z příkazu.
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyber, na který druh nákladu přestavět. Ctrl+klik odstraní přestavbu z příkazu
 
 STR_ORDER_SERVICE                                               :{BLACK}Údržba
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Jeď vždy
@@ -3552,11 +3552,11 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nelze v pozastavené hře
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Místní správa města {TOWN} odmítla vydat povolení.
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Místní správa města {TOWN} zakazuje stavbu dalšího letiště v tomto městě.
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Místní správa města {TOWN} odmítla vydat povolení
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Místní správa města {TOWN} zakazuje stavbu dalšího letiště v tomto městě
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Zastupitelstvo města {TOWN} odmítá vydat povolení na stavbu letiště kvůli hlukovým limitům
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Tvůj pokus o úplatek byl
-STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}odhalen místním vyšetřovatelem.
+STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}odhalen místním vyšetřovatelem
 
 # Levelling errors
 STR_ERROR_CAN_T_RAISE_LAND_HERE                                 :{WHITE}Zde nelze zvednout terén...
@@ -3571,7 +3571,7 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... už 
 STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Nelze přejmenovat společnost...
 STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Nelze přejmenovat prezidenta...
 
-STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... nejvyšší možná výše půjčky je {CURRENCY}.
+STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... nejvyšší možná výše půjčky je {CURRENCY}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nelze půjčit více peněz...
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... žádný dluh ke splacení
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... je potřeba {CURRENCY}
@@ -3591,10 +3591,10 @@ STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Město n
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... moc blízko k okraji mapy
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... moc blízko k jinému městu
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... příliš mnoho měst
-STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... na mapě už není místo.
+STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... na mapě už není místo
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Město nebude stavět silnice. Můžete to změnit přes Pokročilé nastavení->Ekonomika->Města
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Silnice je v rekonstrukci
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nelze vybourat město...{}Buď k němu patří stanice nebo depo, anebo se nedá odklidit políčko městem vlastněné.
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Nelze vybourat město...{}Buď k němu patří stanice nebo depo, anebo se nedá odklidit políčko městem vlastněné
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... v tomto městě není žádné místo vhodné pro umístění sochy
 
 # Industry related errors
@@ -3908,49 +3908,160 @@ STR_TOWN_BUILDING_NAME_HOUSES_2                                 :Domy
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :Kino
 STR_TOWN_BUILDING_NAME_SHOPPING_MALL_1                          :Nákupní středisko
 STR_TOWN_BUILDING_NAME_IGLOO_1                                  :Iglů
-STR_TOWN_BUILDING_NAME_TEPEES_1                                 :{G=n}Teepee
-STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :{G=m}Dům konvička
-STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :{G=f}Banka prasátko
+STR_TOWN_BUILDING_NAME_TEPEES_1                                 :Teepee
+STR_TOWN_BUILDING_NAME_TEAPOT_HOUSE_1                           :Dům konvička
+STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banka prasátko
 
 ##id 0x4800
 # industry names
 STR_INDUSTRY_NAME_COAL_MINE                                     :{G=m}Uhelný důl
+STR_INDUSTRY_NAME_COAL_MINE.gen                                 :{G=m}uhelného dolu
+STR_INDUSTRY_NAME_COAL_MINE.loc                                 :{G=m}v uhelném dole
+STR_INDUSTRY_NAME_COAL_MINE.small                               :{G=m}uhelný důl
 STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Elektrárna
+STR_INDUSTRY_NAME_POWER_STATION.gen                             :{G=f}elektrárny
+STR_INDUSTRY_NAME_POWER_STATION.loc                             :{G=f}v elektrárně
+STR_INDUSTRY_NAME_POWER_STATION.small                           :{G=f}elektrárna
 STR_INDUSTRY_NAME_SAWMILL                                       :{G=f}Pila
+STR_INDUSTRY_NAME_SAWMILL.gen                                   :{G=f}pily
+STR_INDUSTRY_NAME_SAWMILL.loc                                   :{G=f}na pile
+STR_INDUSTRY_NAME_SAWMILL.small                                 :{G=f}pila
 STR_INDUSTRY_NAME_FOREST                                        :{G=m}Les
+STR_INDUSTRY_NAME_FOREST.gen                                    :{G=m}lesa
+STR_INDUSTRY_NAME_FOREST.loc                                    :{G=m}v lese
+STR_INDUSTRY_NAME_FOREST.small                                  :{G=m}les
 STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Rafinerie
+STR_INDUSTRY_NAME_OIL_REFINERY.gen                              :{G=f}rafinerie
+STR_INDUSTRY_NAME_OIL_REFINERY.loc                              :{G=f}v rafinerii
+STR_INDUSTRY_NAME_OIL_REFINERY.small                            :{G=f}rafinerie
 STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Ropná plošina
+STR_INDUSTRY_NAME_OIL_RIG.gen                                   :{G=f}ropné plošiny
+STR_INDUSTRY_NAME_OIL_RIG.loc                                   :{G=f}na ropné plošině
+STR_INDUSTRY_NAME_OIL_RIG.small                                 :{G=f}ropná plošina
 STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Továrna
+STR_INDUSTRY_NAME_FACTORY.gen                                   :{G=f}továrny
+STR_INDUSTRY_NAME_FACTORY.loc                                   :{G=f}v továrně
+STR_INDUSTRY_NAME_FACTORY.small                                 :{G=f}továrna
 STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Tiskárna
+STR_INDUSTRY_NAME_PRINTING_WORKS.gen                            :{G=f}tiskárny
+STR_INDUSTRY_NAME_PRINTING_WORKS.loc                            :{G=f}v tiskárně
+STR_INDUSTRY_NAME_PRINTING_WORKS.small                          :{G=f}tiskárna
 STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Ocelárna
+STR_INDUSTRY_NAME_STEEL_MILL.gen                                :{G=f}ocelárny
+STR_INDUSTRY_NAME_STEEL_MILL.loc                                :{G=f}v ocelárně
+STR_INDUSTRY_NAME_STEEL_MILL.small                              :{G=f}ocelárna
 STR_INDUSTRY_NAME_FARM                                          :{G=f}Farma
+STR_INDUSTRY_NAME_FARM.gen                                      :{G=f}farmy
+STR_INDUSTRY_NAME_FARM.loc                                      :{G=f}na farmě
+STR_INDUSTRY_NAME_FARM.small                                    :{G=f}farma
 STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=m}Důl na měděnou rudu
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.gen                           :{G=m}dolu na měděnou rudu
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.loc                           :{G=m}v dole na měděnou rudu
+STR_INDUSTRY_NAME_COPPER_ORE_MINE.small                         :{G=m}důl na měděnou rudu
 STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Ropný vrt
+STR_INDUSTRY_NAME_OIL_WELLS.gen                                 :{G=m}ropného vrtu
+STR_INDUSTRY_NAME_OIL_WELLS.loc                                 :{G=m}v ropném vrtu
+STR_INDUSTRY_NAME_OIL_WELLS.small                               :{G=m}ropný vrt
 STR_INDUSTRY_NAME_BANK                                          :{G=f}Banka
+STR_INDUSTRY_NAME_BANK.gen                                      :{G=f}banky
+STR_INDUSTRY_NAME_BANK.loc                                      :{G=f}v bance
+STR_INDUSTRY_NAME_BANK.small                                    :{G=f}banka
 STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=m}Potravinářský závod
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.gen                     :{G=m}potravinářského závodu
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.loc                     :{G=m}v potravinářském závodu
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT.small                   :{G=m}potravinářský závod
 STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Papírna
+STR_INDUSTRY_NAME_PAPER_MILL.gen                                :{G=f}papírny
+STR_INDUSTRY_NAME_PAPER_MILL.loc                                :{G=f}v papírně
+STR_INDUSTRY_NAME_PAPER_MILL.small                              :{G=f}papírna
 STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=m}Zlatý důl
+STR_INDUSTRY_NAME_GOLD_MINE.gen                                 :{G=m}zlatého dolu
+STR_INDUSTRY_NAME_GOLD_MINE.loc                                 :{G=m}ve zlatém dole
+STR_INDUSTRY_NAME_GOLD_MINE.small                               :{G=m}zlatý důl
 STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=f}Banka
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.gen                        :{G=f}banky
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.loc                        :{G=f}v bance
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC.small                      :{G=f}banka
 STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=m}Diamantový důl
+STR_INDUSTRY_NAME_DIAMOND_MINE.gen                              :{G=m}diamantového dolu
+STR_INDUSTRY_NAME_DIAMOND_MINE.loc                              :{G=m}v diamantovém dole
+STR_INDUSTRY_NAME_DIAMOND_MINE.small                            :{G=m}diamantový důl
 STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=m}Důl na železnou rudu
+STR_INDUSTRY_NAME_IRON_ORE_MINE.gen                             :{G=m}dolu na železnou rudu
+STR_INDUSTRY_NAME_IRON_ORE_MINE.loc                             :{G=m}v dole na železnou rudu
+STR_INDUSTRY_NAME_IRON_ORE_MINE.small                           :{G=m}důl na železnou rudu
 STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=m}Ovocný sad
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.gen                          :{G=m}ovocného sadu
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.loc                          :{G=m}v ovocném sadě
+STR_INDUSTRY_NAME_FRUIT_PLANTATION.small                        :{G=m}ovocný sad
 STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Kaučuková plantáž
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.gen                         :{G=f}kaučukové plantáže
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.loc                         :{G=f}na kaučukové plantáži
+STR_INDUSTRY_NAME_RUBBER_PLANTATION.small                       :{G=f}kaučuková plantáž
 STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Zdroj vody
+STR_INDUSTRY_NAME_WATER_SUPPLY.gen                              :{G=m}zdroje vody
+STR_INDUSTRY_NAME_WATER_SUPPLY.loc                              :{G=m}ve zdroji vody
+STR_INDUSTRY_NAME_WATER_SUPPLY.small                            :{G=m}zdroj vody
 STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=m}Vodojem
+STR_INDUSTRY_NAME_WATER_TOWER.gen                               :{G=m}vodojemu
+STR_INDUSTRY_NAME_WATER_TOWER.loc                               :{G=m}ve vodojemu
+STR_INDUSTRY_NAME_WATER_TOWER.small                             :{G=m}vodojem
 STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Továrna
+STR_INDUSTRY_NAME_FACTORY_2.gen                                 :{G=f}továrny
+STR_INDUSTRY_NAME_FACTORY_2.loc                                 :{G=f}v továrně
+STR_INDUSTRY_NAME_FACTORY_2.small                               :{G=f}továrna
 STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Farma
+STR_INDUSTRY_NAME_FARM_2.gen                                    :{G=f}farmy
+STR_INDUSTRY_NAME_FARM_2.loc                                    :{G=f}na farmě
+STR_INDUSTRY_NAME_FARM_2.small                                  :{G=f}farma
 STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=f}Pila
+STR_INDUSTRY_NAME_LUMBER_MILL.gen                               :{G=f}pily
+STR_INDUSTRY_NAME_LUMBER_MILL.loc                               :{G=f}na pile
+STR_INDUSTRY_NAME_LUMBER_MILL.small                             :{G=f}pila
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Les cukrové vaty
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.gen                       :{G=m}lesa cukrové vaty
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.loc                       :{G=m}v lese cukrové vaty
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST.small                     :{G=m}les cukrové vaty
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Továrna na sladkosti
+STR_INDUSTRY_NAME_CANDY_FACTORY.gen                             :{G=f}továrny na sladkosti
+STR_INDUSTRY_NAME_CANDY_FACTORY.loc                             :{G=f}továrně na sladkosti
+STR_INDUSTRY_NAME_CANDY_FACTORY.small                           :{G=f}továrna na sladkosti
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Farma na baterie
+STR_INDUSTRY_NAME_BATTERY_FARM.gen                              :{G=f}farmy na baterie
+STR_INDUSTRY_NAME_BATTERY_FARM.loc                              :{G=f}na farmě na baterie
+STR_INDUSTRY_NAME_BATTERY_FARM.small                            :{G=f}farma na baterie
 STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=fp}Kolové studny
+STR_INDUSTRY_NAME_COLA_WELLS.gen                                :{G=fp}kolových studen
+STR_INDUSTRY_NAME_COLA_WELLS.loc                                :{G=fp}v kolových studnách
+STR_INDUSTRY_NAME_COLA_WELLS.small                              :{G=fp}kolové studny
 STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=n}Hračkářství
+STR_INDUSTRY_NAME_TOY_SHOP.gen                                  :{G=n}hračkářství
+STR_INDUSTRY_NAME_TOY_SHOP.loc                                  :{G=n}v hračkářství
+STR_INDUSTRY_NAME_TOY_SHOP.small                                :{G=n}hračkářství
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Továrna na hračky
+STR_INDUSTRY_NAME_TOY_FACTORY.gen                               :{G=f}továrny na hračky
+STR_INDUSTRY_NAME_TOY_FACTORY.loc                               :{G=f}v továrně na hračky
+STR_INDUSTRY_NAME_TOY_FACTORY.small                             :{G=f}továrna na hračky
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=fp}Plastové fontány
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.gen                         :{G=fp}plastových fontán
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.loc                         :{G=fp}v plastových fontánách
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS.small                       :{G=fp}plastové fontány
 STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Sodovkárna
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.gen                       :{G=f}sodovkárny
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.loc                       :{G=f}v sodovkárně
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY.small                     :{G=f}sodovkárna
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generátor bublin
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.gen                          :{G=m}generátoru bublin
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.loc                          :{G=m}v generátoru bublin
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR.small                        :{G=m}generátor bublin
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=m}Karamelolom
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.gen                             :{G=m}karamelolomu
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.loc                             :{G=m}v karamelolomu
+STR_INDUSTRY_NAME_TOFFEE_QUARRY.small                           :{G=m}karamelolom
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=m}Cukerný důl
+STR_INDUSTRY_NAME_SUGAR_MINE.gen                                :{G=m}cukerného dolu
+STR_INDUSTRY_NAME_SUGAR_MINE.loc                                :{G=m}v cukerném dole
+STR_INDUSTRY_NAME_SUGAR_MINE.small                              :{G=m}cukerný důl
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
@@ -4263,6 +4374,9 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :Bójka {TOWN} �
 STR_FORMAT_COMPANY_NUM                                          :(společnost {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
+STR_FORMAT_INDUSTRY_NAME.gen                                    :{1:STRING.gen} {0:TOWN}
+STR_FORMAT_INDUSTRY_NAME.loc                                    :{1:STRING.loc} {0:TOWN}
+STR_FORMAT_INDUSTRY_NAME.small                                  :{1:STRING.small} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Směrování {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Směrování {TOWN} č. {COMMA}
 
