@@ -345,6 +345,8 @@ static bool RoadToolbar_CtrlChanged(Window *w)
 
 /** Road toolbar window handler. */
 struct BuildRoadToolbarWindow : Window {
+	int last_started_action; ///< Last started user action.
+
 	BuildRoadToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->InitNested(desc, window_number);
@@ -354,6 +356,7 @@ struct BuildRoadToolbarWindow : Window {
 				WIDGET_LIST_END);
 
 		this->OnInvalidateData();
+		this->last_started_action = WIDGET_LIST_END;
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
@@ -430,33 +433,46 @@ struct BuildRoadToolbarWindow : Window {
 		switch (widget) {
 			case RTW_ROAD_X:
 				HandlePlacePushButton(this, RTW_ROAD_X, _road_type_infos[_cur_roadtype].cursor_nwse, HT_RECT, PlaceRoad_X_Dir);
+				this->last_started_action = widget;
 				break;
 
 			case RTW_ROAD_Y:
 				HandlePlacePushButton(this, RTW_ROAD_Y, _road_type_infos[_cur_roadtype].cursor_nesw, HT_RECT, PlaceRoad_Y_Dir);
+				this->last_started_action = widget;
 				break;
 
 			case RTW_AUTOROAD:
 				HandlePlacePushButton(this, RTW_AUTOROAD, _road_type_infos[_cur_roadtype].cursor_autoroad, HT_RECT, PlaceRoad_AutoRoad);
+				this->last_started_action = widget;
 				break;
 
 			case RTW_DEMOLISH:
 				HandlePlacePushButton(this, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
+				this->last_started_action = widget;
 				break;
 
 			case RTW_DEPOT:
 				if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-				if (HandlePlacePushButton(this, RTW_DEPOT, SPR_CURSOR_ROAD_DEPOT, HT_RECT, PlaceRoad_Depot)) ShowRoadDepotPicker(this);
+				if (HandlePlacePushButton(this, RTW_DEPOT, SPR_CURSOR_ROAD_DEPOT, HT_RECT, PlaceRoad_Depot)) {
+					ShowRoadDepotPicker(this);
+					this->last_started_action = widget;
+				}
 				break;
 
 			case RTW_BUS_STATION:
 				if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-				if (HandlePlacePushButton(this, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, HT_RECT, PlaceRoad_BusStation)) ShowRVStationPicker(this, ROADSTOP_BUS);
+				if (HandlePlacePushButton(this, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, HT_RECT, PlaceRoad_BusStation)) {
+					ShowRVStationPicker(this, ROADSTOP_BUS);
+					this->last_started_action = widget;
+				}
 				break;
 
 			case RTW_TRUCK_STATION:
 				if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-				if (HandlePlacePushButton(this, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, HT_RECT, PlaceRoad_TruckStation)) ShowRVStationPicker(this, ROADSTOP_TRUCK);
+				if (HandlePlacePushButton(this, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, HT_RECT, PlaceRoad_TruckStation)) {
+					ShowRVStationPicker(this, ROADSTOP_TRUCK);
+					this->last_started_action = widget;
+				}
 				break;
 
 			case RTW_ONE_WAY:
@@ -468,10 +484,12 @@ struct BuildRoadToolbarWindow : Window {
 
 			case RTW_BUILD_BRIDGE:
 				HandlePlacePushButton(this, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT, PlaceRoad_Bridge);
+				this->last_started_action = widget;
 				break;
 
 			case RTW_BUILD_TUNNEL:
 				HandlePlacePushButton(this, RTW_BUILD_TUNNEL, SPR_CURSOR_ROAD_TUNNEL, HT_SPECIAL, PlaceRoad_Tunnel);
+				this->last_started_action = widget;
 				break;
 
 			case RTW_REMOVE:
@@ -501,7 +519,45 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		_remove_button_clicked = this->IsWidgetLowered(RTW_REMOVE);
 		_one_way_button_clicked = this->IsWidgetLowered(RTW_ONE_WAY);
-		_place_proc(tile);
+		switch (this->last_started_action) {
+			case RTW_ROAD_X:
+				PlaceRoad_X_Dir(tile);
+				break;
+
+			case RTW_ROAD_Y:
+				PlaceRoad_Y_Dir(tile);
+				break;
+
+			case RTW_AUTOROAD:
+				PlaceRoad_AutoRoad(tile);
+				break;
+
+			case RTW_DEMOLISH:
+				PlaceProc_DemolishArea(tile);
+				break;
+
+			case RTW_DEPOT:
+				PlaceRoad_Depot(tile);
+				break;
+
+			case RTW_BUS_STATION:
+				PlaceRoad_BusStation(tile);
+				break;
+
+			case RTW_TRUCK_STATION:
+				PlaceRoad_TruckStation(tile);
+				break;
+
+			case RTW_BUILD_BRIDGE:
+				PlaceRoad_Bridge(tile);
+				break;
+
+			case RTW_BUILD_TUNNEL:
+				PlaceRoad_Tunnel(tile);
+				break;
+
+			default: NOT_REACHED();
+		}
 	}
 
 	virtual void OnPlaceObjectAbort()
