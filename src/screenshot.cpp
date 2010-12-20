@@ -206,6 +206,13 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 #if defined(WITH_PNG)
 #include <png.h>
 
+#ifdef PNG_TEXT_SUPPORTED
+#include "rev.h"
+#include "newgrf_config.h"
+#include "ai/ai_info.hpp"
+#include "company_base.h"
+#endif /* PNG_TEXT_SUPPORTED */
+
 static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
 {
 	DEBUG(misc, 0, "[libpng] error: %s - %s", message, (const char *)png_get_error_ptr(png_ptr));
@@ -259,6 +266,42 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 
 	png_set_IHDR(png_ptr, info_ptr, w, h, 8, pixelformat == 8 ? PNG_COLOR_TYPE_PALETTE : PNG_COLOR_TYPE_RGB,
 		PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_DEFAULT, PNG_FILTER_TYPE_DEFAULT);
+
+#ifdef PNG_TEXT_SUPPORTED
+	/* Try to add some game metadata to the PNG screenshot so
+	 * it's more useful for debugging and archival purposes. */
+	png_text_struct text[2];
+	memset(text, 0, sizeof(text));
+	text[0].key = const_cast<char *>("Software");
+	text[0].text = const_cast<char *>(_openttd_revision);
+	text[0].text_length = strlen(_openttd_revision);
+	text[0].compression = PNG_TEXT_COMPRESSION_NONE;
+
+	char buf[2048];
+	char *p = buf;
+	p = strecpy(p, "NewGRFS:\n", lastof(buf));
+	for (const GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+		p += seprintf(p, lastof(buf), "%08X ", BSWAP32(c->ident.grfid));
+		p = md5sumToString(p, lastof(buf), c->ident.md5sum);
+		p += seprintf(p, lastof(buf), " %s\n", c->filename);
+	}
+	p = strecpy(p, "\nCompanies:\n", lastof(buf));
+	const Company *c;
+	FOR_ALL_COMPANIES(c) {
+		if (c->ai_info == NULL) {
+			p += seprintf(p, lastof(buf), "%2i: Human\n", (int)c->index);
+		} else {
+#ifdef ENABLE_AI
+			p += seprintf(p, lastof(buf), "%2i: %s (v%d)\n", (int)c->index, c->ai_info->GetName(), c->ai_info->GetVersion());
+#endif /* ENABLE_AI */
+		}
+	}
+	text[1].key = const_cast<char *>("Description");
+	text[1].text = buf;
+	text[1].text_length = p - buf;
+	text[1].compression = PNG_TEXT_COMPRESSION_zTXt;
+	png_set_text(png_ptr, info_ptr, text, 2);
+#endif /* PNG_TEXT_SUPPORTED */
 
 	if (pixelformat == 8) {
 		/* convert the palette to the .PNG format. */
