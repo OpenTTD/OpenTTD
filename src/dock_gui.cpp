@@ -225,19 +225,6 @@ static void BuildDocksClick_Aqueduct(Window *w)
 	HandlePlacePushButton(w, DTW_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, HT_SPECIAL, PlaceDocks_Aqueduct);
 }
 
-
-typedef void OnButtonClick(Window *w);
-static OnButtonClick * const _build_docks_button_proc[] = {
-	BuildDocksClick_Canal,
-	BuildDocksClick_Lock,
-	BuildDocksClick_Demolish,
-	BuildDocksClick_Depot,
-	BuildDocksClick_Dock,
-	BuildDocksClick_Buoy,
-	BuildDocksClick_River,
-	BuildDocksClick_Aqueduct
-};
-
 struct BuildDocksToolbarWindow : Window {
 	DockToolbarWidgets last_clicked_widget; ///< Contains the last widget that has been clicked on this toolbar.
 
@@ -266,7 +253,41 @@ struct BuildDocksToolbarWindow : Window {
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		this->last_clicked_widget = (DockToolbarWidgets)widget;
-		if (widget >= DTW_BUTTONS_BEGIN) _build_docks_button_proc[widget - DTW_BUTTONS_BEGIN](this);
+		switch (widget) {
+			case DTW_CANAL: // Build canal button
+				BuildDocksClick_Canal(this);
+				break;
+
+			case DTW_LOCK: // Build lock button
+				BuildDocksClick_Lock(this);
+				break;
+
+			case DTW_DEMOLISH: // Demolish aka dynamite button
+				BuildDocksClick_Demolish(this);
+				break;
+
+			case DTW_DEPOT: // Build depot button
+				BuildDocksClick_Depot(this);
+				break;
+
+			case DTW_STATION: // Build station button
+				BuildDocksClick_Dock(this);
+				break;
+
+			case DTW_BUOY: // Build buoy button
+				BuildDocksClick_Buoy(this);
+				break;
+
+			case DTW_RIVER: // Build river button (in scenario editor)
+				BuildDocksClick_River(this);
+				break;
+
+			case DTW_BUILD_AQUEDUCT: // Build aqueduct button
+				BuildDocksClick_Aqueduct(this);
+				break;
+
+			default: break;
+		}
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
