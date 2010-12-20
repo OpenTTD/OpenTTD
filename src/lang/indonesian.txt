@@ -1485,16 +1485,16 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Pilih wa
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Ganti Wajah
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Buat wajah baru secara acak
 STR_FACE_ADVANCED                                               :{BLACK}Lebih Lanjut
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Pengaturan Wajah lebih lanjut.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Pengaturan wajah lebih lanjut
 STR_FACE_SIMPLE                                                 :{BLACK}Sederhana
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Memilih wajah secara sederhana.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Memilih wajah secara sederhana
 STR_FACE_LOAD                                                   :{BLACK}Ambil simpanan
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Baca simpanan wajah terpilih
 STR_FACE_LOAD_DONE                                              :{WHITE}Wajah favorit anda telah dimuat kembali dari berkas config OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Wajah pemain no.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Lihat/ubah nomor wajah pemain
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Lihat/ubah nomer wajah pemain
-STR_FACE_FACECODE_SET                                           :{WHITE}Kode jumlah wajah baru telah diatur.
+STR_FACE_FACECODE_SET                                           :{WHITE}Nomer kode wajah baru telah diatur
 STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat mengubah nomer wajah pemain - haruslah angka antara 0 dan 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Simpan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Simpan wajah kesukaanmu
@@ -1687,15 +1687,15 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Membantu
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Menghubungkan...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Mencoba menghubungkan..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Meminta kewenangan..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Menunggu..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Mengunduh Peta..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Memroses data..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Mendaftarkan..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Menghubungkan...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Meminta kewenangan...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Menunggu...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Mengunduh peta...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Memroses data...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Mendaftarkan...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Mengambil informasi permainan..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Mengambil informasi perusahaan..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Mengambil informasi permainan...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Mengambil informasi perusahaan...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klien di depanmu
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} sudah terunduh
@@ -1736,7 +1736,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Pergunak
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Gabung
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Gabung dan bermain sebagai perush. ini
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Kata Sandi
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Kata Sandi-Melindungi perusahaanmu dari pemakai yang tidak bewenang untuk bergabung.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Kata Sandi-Melindungi perusahaanmu dari pemakai yang tidak bewenang untuk bergabung
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Atur Kata Sandi Perusahaan
 
 # Network chat
@@ -1881,15 +1881,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Tak dapa
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Pengaturan Transparasi
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Hidup/matikan transparansi sinyal stasiun. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Hidup/matikan transparansi pepohonan. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Hidup/matikan transparansi perumahan. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Hidup/matikan transparansi industri. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Hidup/matikan transparansi bangunan seperti stasiun, depo dan waypoint. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidup/matikan transparansi jembatan. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Hidup/matikan transparansi struktur bangunan semacam mercusuar dan antena. CTRL+klik untuk mengunci.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Hidup/matikan transparansi katenari CTRL+klik untuk mengunci.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Hidup/matikan indikator proses pemuatan kargo. CTRL+klik untuk mengunci.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Hidup/matikan transparansi sinyal stasiun. CTRL+klik untuk mengunci
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Hidup/matikan transparansi pepohonan. CTRL+klik untuk mengunci
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Hidup/matikan transparansi perumahan. CTRL+klik untuk mengunci
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Hidup/matikan transparansi industri. CTRL+klik untuk mengunci
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Hidup/matikan transparansi bangunan seperti stasiun, depo dan waypoint. CTRL+klik untuk mengunci
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Hidup/matikan transparansi jembatan. CTRL+klik untuk mengunci
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Hidup/matikan transparansi struktur bangunan semacam mercusuar dan antena. CTRL+klik untuk mengunci
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Hidup/matikan transparansi katenari CTRL+klik untuk mengunci
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Hidup/matikan indikator proses pemuatan kargo. CTRL+klik untuk mengunci
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Atur obyek menjadi sama sekali tidak nampak daripada transparan.
 
 # Base for station construction window(s)
@@ -1952,7 +1952,7 @@ STR_STATION_CLASS_WAYP                                          :Waypoint
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Pemilihan Sinyal
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinyal Blok (semaphore){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinyal Blok (semaphore){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinyal Masuk(semaphore){}Akan berwarna hijau jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada jalur berikutnya. Jika tidak, akan berwarna merah
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinyal Keluar (semaphore){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaanya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinyal Kombo (semaphore){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal

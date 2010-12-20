@@ -311,7 +311,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Spragtel
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pakeisti lango dydį
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Slinkjuostė - paslenka sąrašą aukštyn/žemyn
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Slinkjuostė - paslenka sąrašą į kairę/dešinę
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nugriauti pastatus ir kitą pasirinktame žemės plote
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Nugriauti pastatus ir pan. pasirinktame žemės plote. Ctrl pažymi vietą įstrižai
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Nutylint
@@ -877,7 +877,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} laukia doke
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} laukia angare
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} turi per mažai užduočių tvarkaraštyje
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} turi blogas užduotis
@@ -1216,6 +1216,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Neįmano
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Oro uostai niekada nepasensta: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Pranešti, kai transporto priemonė pasikyls: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Peržiūrėti tr. pr. užduotis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :taip, bet išskyrus sustabdytas tr. pr.
@@ -2550,7 +2551,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' variklio krovinio/pertvarkymo informacija skiriasi nuo pirkinių sąrašo po pastatymo. Tai gali sukelti neteisingus automatiško atnaujinimo arba pertvarkymo rezultatus.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' sukėle begalinį cikla produkcijos kvietime atgal.
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<netinkamas krovinys>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} vnt. <netinkamo krovinio>
@@ -3261,11 +3262,13 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Praleist
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Ištrinti
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Ištrinti pažymėta užduotį
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Ištrinti visas užduotis
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Važiuoti
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Grįžti į artimiausią depą
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Skristi į artimiausią angarą
 STR_ORDER_CONDITIONAL                                           :Sąlyginis užsakymo šuolis
+STR_ORDER_SHARE                                                 :Dalintis užduotimis
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Iterpti nauja uzduoti pries pazymeta, arba iterpti saraso pabaigoje. Ctrl+Paspaudimas verčia stotelių nurodymus į 'pilnai pasikrauti bet kokio krovinio', kontrolės punktų į 'praleisti' ir garažų - 'aptarnauti'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Įterpti užsakymą
 
@@ -3699,6 +3702,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Tiltas p
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Pradžia ir pabaiga turi būti vienoje linijoje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... abu tilto galai turi būti ant žemės
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... tiltas per ilgas
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Tiltas pasibaigtų už žemėlapio
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Negalima čia statyti tunelio...
@@ -3796,6 +3800,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... auto
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... automobilis dalinantis šį grafiką negali nukakti iki tos stotelės
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Užduočių sąrašu dalintis negalima...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Negalima nebesidalinti užduotimis...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Užduočių sąrašo kopijuoti negalima...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... per toli buvusio kelionės tikslo
 
