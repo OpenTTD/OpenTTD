@@ -65,63 +65,19 @@ void CcPlaySound1D(const CommandCost &result, TileIndex tile, uint32 p1, uint32 
 }
 
 /**
- * Set the initial flags for the road constuction.
- * The flags are:
- * @li The direction is the X-dir
- * @li The first tile has a partitial RoadBit (true or false)
- *
- * @param tile The start tile
+ * Callback to start placing a bridge.
+ * @param tile Start tile of the bridge.
  */
-static void PlaceRoad_X_Dir(TileIndex tile)
-{
-	_place_road_flag = RF_DIR_X;
-	if (_tile_fract_coords.x >= 8) _place_road_flag |= RF_START_HALFROAD_X;
-	VpStartPlaceSizing(tile, VPM_FIX_Y, DDSP_PLACE_ROAD_X_DIR);
-}
-
-/**
- * Set the initial flags for the road constuction.
- * The flags are:
- * @li The direction is the Y-dir
- * @li The first tile has a partitial RoadBit (true or false)
- *
- * @param tile The start tile
- */
-static void PlaceRoad_Y_Dir(TileIndex tile)
-{
-	_place_road_flag = RF_DIR_Y;
-	if (_tile_fract_coords.y >= 8) _place_road_flag |= RF_START_HALFROAD_Y;
-	VpStartPlaceSizing(tile, VPM_FIX_X, DDSP_PLACE_ROAD_Y_DIR);
-}
-
-/**
- * Set the initial flags for the road constuction.
- * The flags are:
- * @li The direction is not set.
- * @li The first tile has a partitial RoadBit (true or false)
- *
- * @param tile The start tile
- */
-static void PlaceRoad_AutoRoad(TileIndex tile)
-{
-	_place_road_flag = RF_NONE;
-	if (_tile_fract_coords.x >= 8) _place_road_flag |= RF_START_HALFROAD_X;
-	if (_tile_fract_coords.y >= 8) _place_road_flag |= RF_START_HALFROAD_Y;
-	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_PLACE_AUTOROAD);
-}
-
-static void PlaceRoad_Bridge(TileIndex tile)
+static void PlaceRoad_Bridge(TileIndex tile, Window *w)
 {
 	if (IsBridgeTile(tile)) {
 		TileIndex other_tile = GetOtherTunnelBridgeEnd(tile);
-		Window *w = GetCallbackWnd();
 		Point pt = {0, 0};
-		if (w != NULL) w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, tile, other_tile);
+		w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, tile, other_tile);
 	} else {
 		VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
 	}
 }
-
 
 void CcBuildRoadTunnel(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -179,11 +135,6 @@ static const RoadTypeInfo _road_type_infos[] = {
 	},
 };
 
-static void PlaceRoad_Tunnel(TileIndex tile)
-{
-	DoCommandP(tile, RoadTypeToRoadTypes(_cur_roadtype) | (TRANSPORT_ROAD << 8), 0, CMD_BUILD_TUNNEL | CMD_MSG(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE), CcBuildRoadTunnel);
-}
-
 static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
 {
 	tile += TileOffsByDiagDir(direction);
@@ -203,11 +154,6 @@ void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	BuildRoadOutsideStation(tile, dir);
-}
-
-static void PlaceRoad_Depot(TileIndex tile)
-{
-	DoCommandP(tile, _cur_roadtype << 2 | _road_depot_orientation, 0, CMD_BUILD_ROAD_DEPOT | CMD_MSG(_road_type_infos[_cur_roadtype].err_depot), CcRoadDepot);
 }
 
 /**
@@ -265,6 +211,10 @@ static void PlaceRoadStop(TileIndex start_tile, TileIndex end_tile, uint32 p2, u
 	ShowSelectStationIfNeeded(cmdcont, ta);
 }
 
+/**
+ * Callback for placing a bus station.
+ * @param tile Position to place the station.
+ */
 static void PlaceRoad_BusStation(TileIndex tile)
 {
 	if (_remove_button_clicked) {
@@ -279,6 +229,10 @@ static void PlaceRoad_BusStation(TileIndex tile)
 	}
 }
 
+/**
+ * Callback for placing a truck station.
+ * @param tile Position to place the station.
+ */
 static void PlaceRoad_TruckStation(TileIndex tile)
 {
 	if (_remove_button_clicked) {
@@ -432,28 +386,28 @@ struct BuildRoadToolbarWindow : Window {
 		_one_way_button_clicked = false;
 		switch (widget) {
 			case RTW_ROAD_X:
-				HandlePlacePushButton(this, RTW_ROAD_X, _road_type_infos[_cur_roadtype].cursor_nwse, HT_RECT, PlaceRoad_X_Dir);
+				HandlePlacePushButton(this, RTW_ROAD_X, _road_type_infos[_cur_roadtype].cursor_nwse, HT_RECT, NULL);
 				this->last_started_action = widget;
 				break;
 
 			case RTW_ROAD_Y:
-				HandlePlacePushButton(this, RTW_ROAD_Y, _road_type_infos[_cur_roadtype].cursor_nesw, HT_RECT, PlaceRoad_Y_Dir);
+				HandlePlacePushButton(this, RTW_ROAD_Y, _road_type_infos[_cur_roadtype].cursor_nesw, HT_RECT, NULL);
 				this->last_started_action = widget;
 				break;
 
 			case RTW_AUTOROAD:
-				HandlePlacePushButton(this, RTW_AUTOROAD, _road_type_infos[_cur_roadtype].cursor_autoroad, HT_RECT, PlaceRoad_AutoRoad);
+				HandlePlacePushButton(this, RTW_AUTOROAD, _road_type_infos[_cur_roadtype].cursor_autoroad, HT_RECT, NULL);
 				this->last_started_action = widget;
 				break;
 
 			case RTW_DEMOLISH:
-				HandlePlacePushButton(this, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
+				HandlePlacePushButton(this, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, NULL);
 				this->last_started_action = widget;
 				break;
 
 			case RTW_DEPOT:
 				if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-				if (HandlePlacePushButton(this, RTW_DEPOT, SPR_CURSOR_ROAD_DEPOT, HT_RECT, PlaceRoad_Depot)) {
+				if (HandlePlacePushButton(this, RTW_DEPOT, SPR_CURSOR_ROAD_DEPOT, HT_RECT, NULL)) {
 					ShowRoadDepotPicker(this);
 					this->last_started_action = widget;
 				}
@@ -461,7 +415,7 @@ struct BuildRoadToolbarWindow : Window {
 
 			case RTW_BUS_STATION:
 				if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-				if (HandlePlacePushButton(this, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, HT_RECT, PlaceRoad_BusStation)) {
+				if (HandlePlacePushButton(this, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, HT_RECT, NULL)) {
 					ShowRVStationPicker(this, ROADSTOP_BUS);
 					this->last_started_action = widget;
 				}
@@ -469,7 +423,7 @@ struct BuildRoadToolbarWindow : Window {
 
 			case RTW_TRUCK_STATION:
 				if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-				if (HandlePlacePushButton(this, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, HT_RECT, PlaceRoad_TruckStation)) {
+				if (HandlePlacePushButton(this, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, HT_RECT, NULL)) {
 					ShowRVStationPicker(this, ROADSTOP_TRUCK);
 					this->last_started_action = widget;
 				}
@@ -483,12 +437,12 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case RTW_BUILD_BRIDGE:
-				HandlePlacePushButton(this, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT, PlaceRoad_Bridge);
+				HandlePlacePushButton(this, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT, NULL);
 				this->last_started_action = widget;
 				break;
 
 			case RTW_BUILD_TUNNEL:
-				HandlePlacePushButton(this, RTW_BUILD_TUNNEL, SPR_CURSOR_ROAD_TUNNEL, HT_SPECIAL, PlaceRoad_Tunnel);
+				HandlePlacePushButton(this, RTW_BUILD_TUNNEL, SPR_CURSOR_ROAD_TUNNEL, HT_SPECIAL, NULL);
 				this->last_started_action = widget;
 				break;
 
@@ -521,15 +475,22 @@ struct BuildRoadToolbarWindow : Window {
 		_one_way_button_clicked = this->IsWidgetLowered(RTW_ONE_WAY);
 		switch (this->last_started_action) {
 			case RTW_ROAD_X:
-				PlaceRoad_X_Dir(tile);
+				_place_road_flag = RF_DIR_X;
+				if (_tile_fract_coords.x >= 8) _place_road_flag |= RF_START_HALFROAD_X;
+				VpStartPlaceSizing(tile, VPM_FIX_Y, DDSP_PLACE_ROAD_X_DIR);
 				break;
 
 			case RTW_ROAD_Y:
-				PlaceRoad_Y_Dir(tile);
+				_place_road_flag = RF_DIR_Y;
+				if (_tile_fract_coords.y >= 8) _place_road_flag |= RF_START_HALFROAD_Y;
+				VpStartPlaceSizing(tile, VPM_FIX_X, DDSP_PLACE_ROAD_Y_DIR);
 				break;
 
 			case RTW_AUTOROAD:
-				PlaceRoad_AutoRoad(tile);
+				_place_road_flag = RF_NONE;
+				if (_tile_fract_coords.x >= 8) _place_road_flag |= RF_START_HALFROAD_X;
+				if (_tile_fract_coords.y >= 8) _place_road_flag |= RF_START_HALFROAD_Y;
+				VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_PLACE_AUTOROAD);
 				break;
 
 			case RTW_DEMOLISH:
@@ -537,7 +498,8 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case RTW_DEPOT:
-				PlaceRoad_Depot(tile);
+				DoCommandP(tile, _cur_roadtype << 2 | _road_depot_orientation, 0,
+						CMD_BUILD_ROAD_DEPOT | CMD_MSG(_road_type_infos[_cur_roadtype].err_depot), CcRoadDepot);
 				break;
 
 			case RTW_BUS_STATION:
@@ -549,11 +511,12 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case RTW_BUILD_BRIDGE:
-				PlaceRoad_Bridge(tile);
+				PlaceRoad_Bridge(tile, this);
 				break;
 
 			case RTW_BUILD_TUNNEL:
-				PlaceRoad_Tunnel(tile);
+				DoCommandP(tile, RoadTypeToRoadTypes(_cur_roadtype) | (TRANSPORT_ROAD << 8), 0,
+						CMD_BUILD_TUNNEL | CMD_MSG(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE), CcBuildRoadTunnel);
 				break;
 
 			default: NOT_REACHED();
