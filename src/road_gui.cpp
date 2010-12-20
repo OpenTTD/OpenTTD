@@ -453,9 +453,9 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		this->InitNested(desc, window_number);
 		this->SetWidgetsDisabledState(true,
-			RTW_REMOVE,
-			RTW_ONE_WAY,
-			WIDGET_LIST_END);
+				RTW_REMOVE,
+				RTW_ONE_WAY,
+				WIDGET_LIST_END);
 
 		this->OnInvalidateData();
 
@@ -470,10 +470,10 @@ struct BuildRoadToolbarWindow : Window {
 	void OnInvalidateData(int data = 0)
 	{
 		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_ROAD),
-			RTW_DEPOT,
-			RTW_BUS_STATION,
-			RTW_TRUCK_STATION,
-			WIDGET_LIST_END);
+				RTW_DEPOT,
+				RTW_BUS_STATION,
+				RTW_TRUCK_STATION,
+				WIDGET_LIST_END);
 	}
 
 	/**
@@ -507,22 +507,22 @@ struct BuildRoadToolbarWindow : Window {
 			case RTW_ROAD_Y:
 			case RTW_AUTOROAD:
 				this->SetWidgetsDisabledState(!this->IsWidgetLowered(clicked_widget),
-					RTW_REMOVE,
-					RTW_ONE_WAY,
-					WIDGET_LIST_END);
+						RTW_REMOVE,
+						RTW_ONE_WAY,
+						WIDGET_LIST_END);
 				break;
 
 			default:
 				/* When any other buttons than road/station, raise and
 				 * disable the removal button */
 				this->SetWidgetsDisabledState(true,
-					RTW_REMOVE,
-					RTW_ONE_WAY,
-					WIDGET_LIST_END);
+						RTW_REMOVE,
+						RTW_ONE_WAY,
+						WIDGET_LIST_END);
 				this->SetWidgetsLoweredState(false,
-					RTW_REMOVE,
-					RTW_ONE_WAY,
-					WIDGET_LIST_END);
+						RTW_REMOVE,
+						RTW_ONE_WAY,
+						WIDGET_LIST_END);
 				break;
 		}
 	}
@@ -558,9 +558,9 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		this->RaiseButtons();
 		this->SetWidgetsDisabledState(true,
-			RTW_REMOVE,
-			RTW_ONE_WAY,
-			WIDGET_LIST_END);
+				RTW_REMOVE,
+				RTW_ONE_WAY,
+				WIDGET_LIST_END);
 		this->SetWidgetDirty(RTW_REMOVE);
 		this->SetWidgetDirty(RTW_ONE_WAY);
 
@@ -638,9 +638,9 @@ struct BuildRoadToolbarWindow : Window {
 					_place_road_flag = (RoadFlags)((_place_road_flag & RF_DIR_Y) ? (_place_road_flag & 0x07) : (_place_road_flag >> 3));
 
 					DoCommandP(start_tile, end_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 5),
-						_remove_button_clicked ?
-						CMD_REMOVE_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
-						CMD_BUILD_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road), CcPlaySound1D);
+							_remove_button_clicked ?
+							CMD_REMOVE_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
+							CMD_BUILD_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road), CcPlaySound1D);
 					break;
 
 				case DDSP_BUILD_BUSSTOP:
@@ -969,11 +969,11 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 			_road_station_picker_orientation = DIAGDIR_END;
 		}
 		this->SetWidgetsDisabledState(_cur_roadtype == ROADTYPE_TRAM,
-			BRSW_STATION_NE,
-			BRSW_STATION_SE,
-			BRSW_STATION_SW,
-			BRSW_STATION_NW,
-			WIDGET_LIST_END);
+				BRSW_STATION_NE,
+				BRSW_STATION_SE,
+				BRSW_STATION_SW,
+				BRSW_STATION_NW,
+				WIDGET_LIST_END);
 
 		this->GetWidget<NWidgetCore>(BRSW_CAPTION)->widget_data = _road_type_infos[_cur_roadtype].picker_title[rs];
 		for (uint i = BRSW_STATION_NE; i < BRSW_LT_OFF; i++) this->GetWidget<NWidgetCore>(i)->tool_tip = _road_type_infos[_cur_roadtype].picker_tooltip[rs];
