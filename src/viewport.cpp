@@ -1911,7 +1911,7 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 	if (CheckClickOnTown(vp, x, y)) return true;
 	if (CheckClickOnStation(vp, x, y)) return true;
 	if (CheckClickOnSign(vp, x, y)) return true;
-	CheckClickOnLandscape(vp, x, y);
+	bool result = CheckClickOnLandscape(vp, x, y);
 
 	if (v != NULL) {
 		DEBUG(misc, 2, "Vehicle %d (index %d) at %p", v->unitnumber, v->index, v);
@@ -1925,7 +1925,7 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 		}
 		return true;
 	}
-	return CheckClickOnLandscape(vp, x, y);
+	return result;
 }
 
 
