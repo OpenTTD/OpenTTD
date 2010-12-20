@@ -433,21 +433,7 @@ static void BuildRoadClick_Remove(Window *w)
 	SndPlayFx(SND_15_BEEP);
 }
 
-/** Array with the handlers of the button-clicks for the road-toolbar */
-static OnButtonClick * const _build_road_button_proc[] = {
-	BuildRoadClick_X_Dir,
-	BuildRoadClick_Y_Dir,
-	BuildRoadClick_AutoRoad,
-	BuildRoadClick_Demolish,
-	BuildRoadClick_Depot,
-	BuildRoadClick_BusStation,
-	BuildRoadClick_TruckStation,
-	BuildRoadClick_OneWay,
-	BuildRoadClick_Bridge,
-	BuildRoadClick_Tunnel,
-	BuildRoadClick_Remove
-};
-
+/** Road toolbar window handler. */
 struct BuildRoadToolbarWindow : Window {
 	BuildRoadToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
@@ -529,10 +515,54 @@ struct BuildRoadToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget >= RTW_ROAD_X) {
-			_remove_button_clicked = false;
-			_one_way_button_clicked = false;
-			_build_road_button_proc[widget - RTW_ROAD_X](this);
+		_remove_button_clicked = false;
+		_one_way_button_clicked = false;
+		switch (widget) {
+			case RTW_ROAD_X:
+				BuildRoadClick_X_Dir(this);
+				break;
+
+			case RTW_ROAD_Y:
+				BuildRoadClick_Y_Dir(this);
+				break;
+
+			case RTW_AUTOROAD:
+				BuildRoadClick_AutoRoad(this);
+				break;
+
+			case RTW_DEMOLISH:
+				BuildRoadClick_Demolish(this);
+				break;
+
+			case RTW_DEPOT:
+				BuildRoadClick_Depot(this);
+				break;
+
+			case RTW_BUS_STATION:
+				BuildRoadClick_BusStation(this);
+				break;
+
+			case RTW_TRUCK_STATION:
+				BuildRoadClick_TruckStation(this);
+				break;
+
+			case RTW_ONE_WAY:
+				BuildRoadClick_OneWay(this);
+				break;
+
+			case RTW_BUILD_BRIDGE:
+				BuildRoadClick_Bridge(this);
+				break;
+
+			case RTW_BUILD_TUNNEL:
+				BuildRoadClick_Tunnel(this);
+				break;
+
+			case RTW_REMOVE:
+				BuildRoadClick_Remove(this);
+				break;
+
+			default: NOT_REACHED();
 		}
 		this->UpdateOptionWidgetStatus((RoadToolbarWidgets)widget);
 		if (_ctrl_pressed) RoadToolbar_CtrlChanged(this);
