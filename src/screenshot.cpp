@@ -211,6 +211,7 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 #include "newgrf_config.h"
 #include "ai/ai_info.hpp"
 #include "company_base.h"
+#include "base_media_base.h"
 #endif /* PNG_TEXT_SUPPORTED */
 
 static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
@@ -279,7 +280,8 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 
 	char buf[2048];
 	char *p = buf;
-	p = strecpy(p, "NewGRFS:\n", lastof(buf));
+	p += seprintf(p, lastof(buf), "Graphics set: %s (%u)\n", BaseGraphics::GetUsedSet()->name, BaseGraphics::GetUsedSet()->version);
+	p = strecpy(p, "NewGRFs:\n", lastof(buf));
 	for (const GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 		p += seprintf(p, lastof(buf), "%08X ", BSWAP32(c->ident.grfid));
 		p = md5sumToString(p, lastof(buf), c->ident.md5sum);
