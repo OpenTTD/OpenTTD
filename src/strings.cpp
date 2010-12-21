@@ -940,9 +940,12 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 				buff = FormatCommaNumber(buff, GetInt64(&argv, argve, &argt, SCC_COMMA), last);
 				break;
 
-			case SCC_ARG_INDEX: // Move argument pointer
-				argv = argv_orig + (byte)*str++;
+			case SCC_ARG_INDEX: { // Move argument pointer
+				byte offset = (byte)*str++;
+				argv = argv_orig + offset;
+				if (argt_orig != NULL) argt = argt_orig + offset;
 				break;
+			}
 
 			case SCC_PLURAL_LIST: { // {P}
 				int plural_form = *str++;          // contains the plural form for this string
