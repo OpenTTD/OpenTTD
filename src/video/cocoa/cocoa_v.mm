@@ -407,6 +407,36 @@ void cocoaReleaseAutoreleasePool()
 	[ _ottd_autorelease_pool release ];
 }
 
+
+
+@implementation OTTD_CocoaView
+/**
+ * Initialize the driver
+ */
+- (void)setDriver:(CocoaSubdriver*)drv
+{
+	driver = drv;
+}
+/**
+ * Define the opaqueness of the window / screen
+ * @return opaqueness of window / screen
+ */
+- (BOOL)isOpaque
+{
+	return YES;
+}
+/**
+ * Draws a rectangle on the screen.
+ * It's overwritten by the individual drivers but must be defined
+ */
+- (void)drawRect:(NSRect)invalidRect
+{
+	return;
+}
+@end
+
+
+
 @implementation OTTD_CocoaWindowDelegate
 /** Initialize the video driver */
 - (void)setDriver:(CocoaSubdriver*)drv

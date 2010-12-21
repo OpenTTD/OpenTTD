@@ -124,6 +124,15 @@ void QZ_HideMouse();
 
 uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int display_depth);
 
+/* Subclass of NSView to fix Quartz rendering */
+@interface OTTD_CocoaView : NSView {
+	CocoaSubdriver *driver;
+}
+- (void)setDriver:(CocoaSubdriver*)drv;
+- (void)drawRect:(NSRect)rect;
+- (BOOL)isOpaque;
+@end
+
 /** Delegate for our NSWindow to send ask for quit on close */
 @interface OTTD_CocoaWindowDelegate : NSObject {
 	CocoaSubdriver *driver;
