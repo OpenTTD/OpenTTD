@@ -93,9 +93,9 @@ class WindowQuartzSubdriver: public CocoaSubdriver {
 	int buffer_depth;
 
 	void *pixel_buffer;
-	void *image_buffer;
+	void *window_buffer;
 
-	OTTD_QuartzWindow *window;
+	id window;
 
 	#define MAX_DIRTY_RECTS 100
 	Rect dirty_rects[MAX_DIRTY_RECTS];
@@ -107,7 +107,7 @@ public:
 	bool active;
 	bool setup;
 
-	OTTD_QuartzView *qzview;
+	id cocoaview;
 	CGContextRef cgcontext;
 
 private:
@@ -141,7 +141,7 @@ public:
 
 	virtual int GetWidth() { return window_width; }
 	virtual int GetHeight() { return window_height; }
-	virtual void *GetPixelBuffer() { return buffer_depth == 8 ? pixel_buffer : image_buffer; }
+	virtual void *GetPixelBuffer() { return buffer_depth == 8 ? pixel_buffer : window_buffer; }
 
 	/* Convert local coordinate to window server (CoreGraphics) coordinate */
 	virtual CGPoint PrivateLocalToCG(NSPoint *p);
@@ -211,7 +211,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 	driver->SetPortAlphaOpaque();
 
 	/* save current visible surface */
-	[ self cacheImageInRect:[ driver->qzview frame ] ];
+	[ self cacheImageInRect:[ driver->cocoaview frame ] ];
 
 	/* let the window manager redraw controls, border, etc */
 	[ super display ];
@@ -244,7 +244,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 	driver->SetPortAlphaOpaque ();
 
 	/* save current visible surface */
-	[ self cacheImageInRect:[ driver->qzview frame ] ];
+	[ self cacheImageInRect:[ driver->cocoaview frame ] ];
 }
 
 - (void)appDidUnhide:(NSNotification*)note
@@ -473,9 +473,9 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 		/* Ensure frame height - title bar height >= view height */
 		contentRect.size.height = Clamp(height, 0, [ this->window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
 
-		if (this->qzview != nil) {
+		if (this->cocoaview != nil) {
 			height = contentRect.size.height;
-			[ this->qzview setFrameSize:contentRect.size ];
+			[ this->cocoaview setFrameSize:contentRect.size ];
 		}
 	}
 
@@ -485,19 +485,19 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 	[ this->window center ];
 
 	/* Only recreate the view if it doesn't already exist */
-	if (this->qzview == nil) {
-		this->qzview = [ [ OTTD_QuartzView alloc ] initWithFrame:contentRect ];
-		if (this->qzview == nil) {
+	if (this->cocoaview == nil) {
+		this->cocoaview = [ [ OTTD_QuartzView alloc ] initWithFrame:contentRect ];
+		if (this->cocoaview == nil) {
 			DEBUG(driver, 0, "Could not create the Quickdraw view.");
 			this->setup = false;
 			return false;
 		}
 
-		[ this->qzview setDriver:this ];
+		[ this->cocoaview setDriver:this ];
 
-		[ this->qzview setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
-		[ this->window setContentView:qzview ];
-		[ this->qzview release ];
+		[ this->cocoaview setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
+		[ this->window setContentView:cocoaview ];
+		[ this->cocoaview release ];
 		[ this->window makeKeyAndOrderFront:nil ];
 	}
 
@@ -513,7 +513,7 @@ void WindowQuartzSubdriver::BlitIndexedToView32(int left, int top, int right, in
 {
 	const uint32 *pal   = this->palette;
 	const uint8  *src   = (uint8*)this->pixel_buffer;
-	uint32       *dst   = (uint32*)this->image_buffer;
+	uint32       *dst   = (uint32*)this->window_buffer;
 	uint          width = this->window_width;
 	uint          pitch = this->window_width;
 
@@ -530,13 +530,13 @@ WindowQuartzSubdriver::WindowQuartzSubdriver(int bpp)
 	this->window_width  = 0;
 	this->window_height = 0;
 	this->buffer_depth  = bpp;
-	this->image_buffer  = NULL;
+	this->window_buffer  = NULL;
 	this->pixel_buffer  = NULL;
 	this->active        = false;
 	this->setup         = false;
 
 	this->window = nil;
-	this->qzview = nil;
+	this->cocoaview = nil;
 
 	this->cgcontext = NULL;
 
@@ -552,7 +552,7 @@ WindowQuartzSubdriver::~WindowQuartzSubdriver()
 
 	CGContextRelease(this->cgcontext);
 
-	free(this->image_buffer);
+	free(this->window_buffer);
 	free(this->pixel_buffer);
 }
 
@@ -589,8 +589,8 @@ void WindowQuartzSubdriver::Draw(bool force_update)
 
 		/* Normally drawRect will be automatically called by Mac OS X during next update cycle,
 		 * and then blitting will occur. If force_update is true, it will be done right now. */
-		[ this->qzview setNeedsDisplayInRect:dirtyrect ];
-		if (force_update) [ this->qzview displayIfNeeded ];
+		[ this->cocoaview setNeedsDisplayInRect:dirtyrect ];
+		if (force_update) [ this->cocoaview displayIfNeeded ];
 	}
 
 	this->num_dirty_rects = 0;
@@ -643,7 +643,7 @@ CGPoint WindowQuartzSubdriver::PrivateLocalToCG(NSPoint *p)
 {
 
 	p->y = this->window_height - p->y;
-	*p = [ this->qzview convertPoint:*p toView:nil ];
+	*p = [ this->cocoaview convertPoint:*p toView:nil ];
 
 	*p = [ this->window convertBaseToScreen:*p ];
 	p->y = this->device_height - p->y;
@@ -658,7 +658,7 @@ CGPoint WindowQuartzSubdriver::PrivateLocalToCG(NSPoint *p)
 NSPoint WindowQuartzSubdriver::GetMouseLocation(NSEvent *event)
 {
 	NSPoint pt = [ event locationInWindow ];
-	pt = [ this->qzview convertPoint:pt fromView:nil ];
+	pt = [ this->cocoaview convertPoint:pt fromView:nil ];
 
 	pt.y = this->window_height - pt.y;
 
@@ -667,7 +667,7 @@ NSPoint WindowQuartzSubdriver::GetMouseLocation(NSEvent *event)
 
 bool WindowQuartzSubdriver::MouseIsInsideView(NSPoint *pt)
 {
-	return [ qzview mouse:*pt inRect:[ this->qzview bounds ] ];
+	return [ cocoaview mouse:*pt inRect:[ this->cocoaview bounds ] ];
 }
 
 
@@ -677,7 +677,7 @@ bool WindowQuartzSubdriver::MouseIsInsideView(NSPoint *pt)
  */
 void WindowQuartzSubdriver::SetPortAlphaOpaque()
 {
-	uint32 *pixels = (uint32*)this->image_buffer;
+	uint32 *pixels = (uint32*)this->window_buffer;
 	uint32  pitch  = this->window_width;
 
 	for (int y = 0; y < this->window_height; y++)
@@ -688,20 +688,20 @@ void WindowQuartzSubdriver::SetPortAlphaOpaque()
 
 bool WindowQuartzSubdriver::WindowResized()
 {
-	if (this->window == nil || this->qzview == nil) return true;
+	if (this->window == nil || this->cocoaview == nil) return true;
 
-	NSRect newframe = [ this->qzview frame ];
+	NSRect newframe = [ this->cocoaview frame ];
 
 	this->window_width = newframe.size.width;
 	this->window_height = newframe.size.height;
 
 	/* Create Core Graphics Context */
-	free(this->image_buffer);
-	this->image_buffer = (uint32*)malloc(this->window_width * this->window_height * 4);
+	free(this->window_buffer);
+	this->window_buffer = (uint32*)malloc(this->window_width * this->window_height * 4);
 
 	CGContextRelease(this->cgcontext);
 	this->cgcontext = CGBitmapContextCreate(
-		this->image_buffer,        // data
+		this->window_buffer,        // data
 		this->window_width,        // width
 		this->window_height,       // height
 		8,                         // bits per component
