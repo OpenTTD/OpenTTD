@@ -592,29 +592,6 @@ static void HandleAutoSignalPlacement()
 }
 
 
-typedef void OnButtonClick(Window *w);
-
-/**
- * Procedure to call when button in rail toolbar is clicked.
- * Offsets match widget order, starting at RTW_BUILD_NS
- */
-static OnButtonClick *_rail_build_button[] = {
-	BuildRailClick_N,
-	BuildRailClick_NE,
-	BuildRailClick_E,
-	BuildRailClick_NW,
-	BuildRailClick_AutoRail,
-	BuildRailClick_Demolish,
-	BuildRailClick_Depot,
-	BuildRailClick_Waypoint,
-	BuildRailClick_Station,
-	BuildRailClick_AutoSignals,
-	BuildRailClick_Bridge,
-	BuildRailClick_Tunnel,
-	BuildRailClick_Remove,
-	BuildRailClick_Convert
-};
-
 /**
  * Based on the widget clicked, update the status of the 'remove' button.
  * @param w              Rail toolbar window
@@ -713,9 +690,67 @@ struct BuildRailToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget >= RTW_BUILD_NS) {
-			_remove_button_clicked = false;
-			_rail_build_button[widget - RTW_BUILD_NS](this);
+		if (widget < RTW_BUILD_NS) return;
+
+		_remove_button_clicked = false;
+		switch (widget) {
+			case RTW_BUILD_NS:
+				BuildRailClick_N(this);
+				break;
+
+			case RTW_BUILD_X:
+				BuildRailClick_NE(this);
+				break;
+
+			case RTW_BUILD_EW:
+				BuildRailClick_E(this);
+				break;
+
+			case RTW_BUILD_Y:
+				BuildRailClick_NW(this);
+				break;
+
+			case RTW_AUTORAIL:
+				BuildRailClick_AutoRail(this);
+				break;
+
+			case RTW_DEMOLISH:
+				BuildRailClick_Demolish(this);
+				break;
+
+			case RTW_BUILD_DEPOT:
+				BuildRailClick_Depot(this);
+				break;
+
+			case RTW_BUILD_WAYPOINT:
+				BuildRailClick_Waypoint(this);
+				break;
+
+			case RTW_BUILD_STATION:
+				BuildRailClick_Station(this);
+				break;
+
+			case RTW_BUILD_SIGNALS:
+				BuildRailClick_AutoSignals(this);
+				break;
+
+			case RTW_BUILD_BRIDGE:
+				BuildRailClick_Bridge(this);
+				break;
+
+			case RTW_BUILD_TUNNEL:
+				BuildRailClick_Tunnel(this);
+				break;
+
+			case RTW_REMOVE:
+				BuildRailClick_Remove(this);
+				break;
+
+			case RTW_CONVERT_RAIL:
+				BuildRailClick_Convert(this);
+				break;
+
+			default: NOT_REACHED();
 		}
 		this->UpdateRemoveWidgetStatus(widget);
 		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
