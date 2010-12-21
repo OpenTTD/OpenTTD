@@ -456,10 +456,9 @@ static void BuildRailClick_Station(Window *w)
  */
 static void BuildRailClick_AutoSignals(Window *w)
 {
-	if (_settings_client.gui.enable_signal_gui != _ctrl_pressed) {
-		if (HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT, PlaceRail_AutoSignals)) ShowSignalBuilder(w);
-	} else {
-		HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT, PlaceRail_AutoSignals);
+	bool started = HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT, PlaceRail_AutoSignals);
+	if (started && _settings_client.gui.enable_signal_gui != _ctrl_pressed) {
+		ShowSignalBuilder(w);
 	}
 }
 
