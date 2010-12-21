@@ -92,8 +92,7 @@ class WindowQuickdrawSubdriver: public CocoaSubdriver {
 	Rect dirty_rects[MAX_DIRTY_RECTS];
 	int num_dirty_rects;
 
-	uint16 palette16[256];
-	uint32 palette32[256];
+	uint32 palette[256];
 
 public:
 	bool active;
@@ -448,7 +447,7 @@ void WindowQuickdrawSubdriver::Blit32ToView32(int left, int top, int right, int 
 
 void WindowQuickdrawSubdriver::BlitIndexedToView32(int left, int top, int right, int bottom)
 {
-	const uint32 *pal   = this->palette32;
+	const uint32 *pal   = this->palette;
 	const uint8  *src   = (uint8*)this->pixel_buffer;
 	uint32       *dst   = (uint32*)this->window_buffer;
 	uint          width = this->window_width;
@@ -463,7 +462,7 @@ void WindowQuickdrawSubdriver::BlitIndexedToView32(int left, int top, int right,
 
 void WindowQuickdrawSubdriver::BlitIndexedToView16(int left, int top, int right, int bottom)
 {
-	const uint16 *pal   = this->palette16;
+	const uint32 *pal   = this->palette;
 	const uint8  *src   = (uint8*)this->pixel_buffer;
 	uint16       *dst   = (uint16*)this->window_buffer;
 	uint          width = this->window_width;
@@ -609,7 +608,7 @@ void WindowQuickdrawSubdriver::UpdatePalette(uint first_color, uint num_colors)
 				clr32 |= (uint32)_cur_palette[i].r << 16;
 				clr32 |= (uint32)_cur_palette[i].g << 8;
 				clr32 |= (uint32)_cur_palette[i].b;
-				this->palette32[i] = clr32;
+				this->palette[i] = clr32;
 			}
 			break;
 		case 16:
@@ -618,7 +617,7 @@ void WindowQuickdrawSubdriver::UpdatePalette(uint first_color, uint num_colors)
 				clr16 |= (uint16)((_cur_palette[i].r >> 3) & 0x1f) << 10;
 				clr16 |= (uint16)((_cur_palette[i].g >> 3) & 0x1f) << 5;
 				clr16 |= (uint16)((_cur_palette[i].b >> 3) & 0x1f);
-				this->palette16[i] = clr16;
+				this->palette[i] = clr16;
 			}
 			break;
 	}
