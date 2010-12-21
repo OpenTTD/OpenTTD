@@ -100,7 +100,6 @@
 		case VEH_SHIP:
 		case VEH_AIRCRAFT:
 			return e->GetDisplayDefaultCapacity();
-			break;
 
 		default: NOT_REACHED();
 	}

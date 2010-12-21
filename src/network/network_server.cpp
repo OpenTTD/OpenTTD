@@ -1270,7 +1270,6 @@ DEF_GAME_RECEIVE_COMMAND(Server, PACKET_CLIENT_CHAT)
 		default:
 			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_id, GetClientIP(ci));
 			return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
-			break;
 	}
 	return NETWORK_RECV_STATUS_OKAY;
 }

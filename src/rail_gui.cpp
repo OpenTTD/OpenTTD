@@ -680,7 +680,7 @@ struct BuildRailToolbarWindow : Window {
 				/* If it is the removal button that has been clicked, do nothing,
 				 * as it is up to the other buttons to drive removal status */
 				return;
-				break;
+
 			case RTW_BUILD_NS:
 			case RTW_BUILD_X:
 			case RTW_BUILD_EW:

@@ -33,7 +33,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 			if (IsBuoy(t) || IsRailWaypoint(t)) return OT_GOTO_WAYPOINT;
 			if (IsHangar(t)) return OT_GOTO_DEPOT;
 			return OT_GOTO_STATION;
-			break;
+
 		case MP_WATER:   if (::IsShipDepot(t)) return OT_GOTO_DEPOT; break;
 		case MP_ROAD:    if (::GetRoadTileType(t) == ROAD_TILE_DEPOT) return OT_GOTO_DEPOT; break;
 		case MP_RAILWAY:

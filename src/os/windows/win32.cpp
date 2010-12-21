@@ -718,7 +718,7 @@ HRESULT OTTDSHGetFolderPath(HWND hwnd, int csidl, HANDLE hToken, DWORD dwFlags, 
 				_tcsncat(pszPath, _T("\\Fonts"), MAX_PATH);
 
 				return (HRESULT)0;
-				break;
+
 			/* XXX - other types to go here when needed... */
 		}
 	}
