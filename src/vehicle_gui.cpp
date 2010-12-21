@@ -994,7 +994,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, Veh
  * @param selection Selected vehicle to draw a frame around
  * @param skip      Number of pixels to skip at the front (for scrolling)
  */
-static void DrawVehicleImage(const Vehicle *v, int left, int right, int y, VehicleID selection, int skip)
+void DrawVehicleImage(const Vehicle *v, int left, int right, int y, VehicleID selection, int skip)
 {
 	switch (v->type) {
 		case VEH_TRAIN:    DrawTrainImage(Train::From(v), left, right, y, selection, skip); break;
