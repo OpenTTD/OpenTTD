@@ -2257,3 +2257,21 @@ const GroundVehicleCache *Vehicle::GetGroundVehicleCache() const
 		return &RoadVehicle::From(this)->gcache;
 	}
 }
+
+/**
+ * Calculates the set of vehicles that will be affected by a given selection.
+ * @param set Set of affected vehicles.
+ * @param v First vehicle of the selection.
+ * @param num_vehicles Number of vehicles in the selection.
+ * @pre \c set must be empty.
+ * @post \c set will contain the vehicles that will be refitted.
+ */
+void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles)
+{
+	if (v->type == VEH_TRAIN) {
+		for (Train *u = Train::From(v); u != NULL && num_vehicles > 0; num_vehicles--, u = u->Next()) {
+			/* Include current vehicle in the selection. */
+			set.Include(u->index);
+		}
+	}
+}

@@ -183,4 +183,7 @@ bool CanVehicleUseStation(const Vehicle *v, const struct Station *st);
 
 void ReleaseDisastersTargetingVehicle(VehicleID vehicle);
 
+typedef SmallVector<VehicleID, 2> VehicleSet;
+void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles);
+
 #endif /* VEHICLE_FUNC_H */

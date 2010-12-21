@@ -244,20 +244,31 @@ static CommandCost GetRefitCost(EngineID engine_type)
  * Refits a vehicle (chain).
  * This is the vehicle-type independent part of the CmdRefitXXX functions.
  * @param v            The vehicle to refit.
- * @param only_this    Whether to only refit this vehicle, or the whole chain.
+ * @param only_this    Whether to only refit this vehicle, or to check the rest of them.
+ * @param num_vehicles Number of vehicles to refit. Zero means the whole chain.
  * @param new_cid      Cargotype to refit to
  * @param new_subtype  Cargo subtype to refit to
  * @param flags        Command flags
  * @return Refit cost.
  */
-static CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byte new_subtype, DoCommandFlag flags)
+static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, CargoID new_cid, byte new_subtype, DoCommandFlag flags)
 {
 	CommandCost cost(v->GetExpenseType(false));
 	uint total_capacity = 0;
 	uint total_mail_capacity = 0;
+	num_vehicles = num_vehicles == 0 ? UINT8_MAX : num_vehicles;
+
+	VehicleSet vehicles_to_refit;
+	if (!only_this) {
+		GetVehicleSet(vehicles_to_refit, v, num_vehicles);
+		/* In this case, we need to check the whole chain. */
+		v = v->First();
+	}
 
 	v->InvalidateNewGRFCacheOfChain();
 	for (; v != NULL; v = (only_this ? NULL : v->Next())) {
+		if (v->type == VEH_TRAIN && !vehicles_to_refit.Contains(v->index) && !only_this) continue;
+
 		const Engine *e = Engine::Get(v->engine_type);
 		if (!e->CanCarryCargo() || !HasBit(e->info.refit_mask, new_cid)) continue;
 
@@ -305,9 +316,10 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, CargoID new_cid, byt
  * @param flags type of operation
  * @param p1 vehicle ID to refit
  * @param p2 various bitstuffed elements
- * - p2 = (bit 0-7) - the new cargo type to refit to
- * - p2 = (bit 8-15) - the new cargo subtype to refit to
- * - p2 = (bit 16) - refit only this vehicle
+ * - p2 = (bit 0-7)   - New cargo type to refit to.
+ * - p2 = (bit 8-15)  - New cargo subtype to refit to.
+ * - p2 = (bit 16)    - Refit only this vehicle. Used only for cloning vehicles.
+ * - p2 = (bit 17-24) - Number of vehicles to refit. Zero means all vehicles. Only used if "refit only this vehicle" is false.
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -337,8 +349,9 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 	/* For ships and aircrafts there is always only one. */
 	bool only_this = HasBit(p2, 16) || front->type == VEH_SHIP || front->type == VEH_AIRCRAFT;
+	uint8 num_vehicles = GB(p2, 17, 8);
 
-	CommandCost cost = RefitVehicle(v, only_this, new_cid, new_subtype, flags);
+	CommandCost cost = RefitVehicle(v, only_this, num_vehicles, new_cid, new_subtype, flags);
 
 	if (flags & DC_EXEC) {
 		/* Update the cached variables */
