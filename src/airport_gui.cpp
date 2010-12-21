@@ -46,6 +46,10 @@ void CcBuildAirport(const CommandCost &result, TileIndex tile, uint32 p1, uint32
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
+/**
+ * Place an airport.
+ * @param tile Position to put the new airport.
+ */
 static void PlaceAirport(TileIndex tile)
 {
 	if (_selected_airport_index == -1) return;
@@ -85,14 +89,14 @@ struct BuildAirToolbarWindow : Window {
 	{
 		switch (widget) {
 			case ATW_AIRPORT:
-				if (HandlePlacePushButton(this, ATW_AIRPORT, SPR_CURSOR_AIRPORT, HT_RECT, PlaceAirport)) {
+				if (HandlePlacePushButton(this, ATW_AIRPORT, SPR_CURSOR_AIRPORT, HT_RECT, NULL)) {
 					ShowBuildAirportPicker(this);
 					this->last_user_action = widget;
 				}
 				break;
 
 			case ATW_DEMOLISH:
-				HandlePlacePushButton(this, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
+				HandlePlacePushButton(this, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, NULL);
 				this->last_user_action = widget;
 				break;
 
@@ -111,7 +115,17 @@ struct BuildAirToolbarWindow : Window {
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		_place_proc(tile);
+		switch (this->last_user_action) {
+			case ATW_AIRPORT:
+				PlaceAirport(tile);
+				break;
+
+			case ATW_DEMOLISH:
+				PlaceProc_DemolishArea(tile);
+				break;
+
+			default: NOT_REACHED();
+		}
 	}
 
 	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
