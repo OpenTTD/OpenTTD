@@ -65,28 +65,15 @@ enum AirportToolbarWidgets {
 };
 
 
-static void BuildAirClick_Airport(Window *w)
-{
-	if (HandlePlacePushButton(w, ATW_AIRPORT, SPR_CURSOR_AIRPORT, HT_RECT, PlaceAirport)) ShowBuildAirportPicker(w);
-}
-
-static void BuildAirClick_Demolish(Window *w)
-{
-	HandlePlacePushButton(w, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
-}
-
-
-typedef void OnButtonClick(Window *w);
-static OnButtonClick * const _build_air_button_proc[] = {
-	BuildAirClick_Airport,
-	BuildAirClick_Demolish,
-};
-
+/** Airport build toolbar window handler. */
 struct BuildAirToolbarWindow : Window {
+	int last_user_action; // Last started user action.
+
 	BuildAirToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->InitNested(desc, window_number);
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
+		this->last_user_action = WIDGET_LIST_END;
 	}
 
 	~BuildAirToolbarWindow()
@@ -96,9 +83,21 @@ struct BuildAirToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (!IsInsideBS(widget, ATW_AIRPORT, lengthof(_build_air_button_proc))) return;
+		switch (widget) {
+			case ATW_AIRPORT:
+				if (HandlePlacePushButton(this, ATW_AIRPORT, SPR_CURSOR_AIRPORT, HT_RECT, PlaceAirport)) {
+					ShowBuildAirportPicker(this);
+					this->last_user_action = widget;
+				}
+				break;
 
-		_build_air_button_proc[widget - ATW_AIRPORT](this);
+			case ATW_DEMOLISH:
+				HandlePlacePushButton(this, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
+				this->last_user_action = widget;
+				break;
+
+			default: break;
+		}
 	}
 
 
