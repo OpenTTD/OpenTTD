@@ -466,6 +466,7 @@ struct RefitWindow : public Window {
 
 	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order) : Window()
 	{
+		this->sel = -1;
 		this->CreateNestedTree(desc);
 
 		this->vscroll = this->GetScrollbar(VRW_SCROLLBAR);
@@ -479,7 +480,7 @@ struct RefitWindow : public Window {
 		this->owner = v->owner;
 
 		this->order = order;
-		this->sel  = -1;
+		this->SetWidgetDisabledState(VRW_REFITBUTTON, this->sel == -1);
 	}
 
 	virtual void OnInit()
@@ -505,6 +506,7 @@ struct RefitWindow : public Window {
 				}
 			}
 
+			this->SetWidgetDisabledState(VRW_REFITBUTTON, this->sel == -1);
 			/* If the selected refit option was not found, scroll the window to the initial position. */
 			if (this->sel == -1) this->vscroll->ScrollTowards(0);
 		} else {
@@ -614,6 +616,8 @@ struct RefitWindow : public Window {
 		switch (widget) {
 			case VRW_MATRIX: { // listbox
 				this->sel = this->vscroll->GetScrolledRowFromWidget(pt.y, this, VRW_MATRIX);
+				if (this->sel == INT_MAX) this->sel = -1;
+				this->SetWidgetDisabledState(VRW_REFITBUTTON, this->sel == -1);
 				this->InvalidateData(1);
 
 				if (click_count == 1) break;
