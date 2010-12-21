@@ -122,12 +122,14 @@ void QZ_GameSizeChanged();
 
 void QZ_GameLoop();
 
-void QZ_ShowMouse();
-void QZ_HideMouse();
-
 uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int display_depth);
 
-/* Subclass of NSWindow to cater our special needs */
+/** Category of NSCursor to allow cursor showing/hiding */
+@interface NSCursor (OTTD_QuickdrawCursor)
++ (NSCursor *) clearCocoaCursor;
+@end
+
+/** Subclass of NSWindow to cater our special needs */
 @interface OTTD_CocoaWindow : NSWindow {
 	CocoaSubdriver *driver;
 }
@@ -143,13 +145,23 @@ uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_i
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag;
 @end
 
-/* Subclass of NSView to fix Quartz rendering */
+/** Subclass of NSView to fix Quartz rendering and mouse awareness */
 @interface OTTD_CocoaView : NSView {
 	CocoaSubdriver *driver;
+	NSTrackingRectTag trackingtag;
 }
 - (void)setDriver:(CocoaSubdriver*)drv;
 - (void)drawRect:(NSRect)rect;
 - (BOOL)isOpaque;
+- (BOOL)acceptsFirstResponder;
+- (BOOL)becomeFirstResponder;
+- (void)setTrackingRect;
+- (void)clearTrackingRect;
+- (void)resetCursorRects;
+- (void)viewWillMoveToWindow:(NSWindow *)win;
+- (void)viewDidMoveToWindow;
+- (void)mouseEntered:(NSEvent *)theEvent;
+- (void)mouseExited:(NSEvent *)theEvent;
 @end
 
 /** Delegate for our NSWindow to send ask for quit on close */

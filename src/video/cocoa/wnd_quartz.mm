@@ -351,8 +351,6 @@ WindowQuartzSubdriver::WindowQuartzSubdriver(int bpp)
 
 WindowQuartzSubdriver::~WindowQuartzSubdriver()
 {
-	QZ_ShowMouse();
-
 	/* Release window mode resources */
 	if (this->window != nil) [ this->window close ];
 

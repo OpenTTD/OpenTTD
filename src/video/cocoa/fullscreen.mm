@@ -293,9 +293,6 @@ class FullscreenSubdriver: public CocoaSubdriver {
 		mouseLocation.x /= this->device_width;
 		mouseLocation.y /= this->device_height;
 
-		/* Hide mouse in order to avoid glitch in 8bpp */
-		QZ_HideMouse();
-
 		/* Fade display to zero gamma */
 		OTTD_QuartzGammaTable gamma_table;
 		gamma_error = this->FadeGammaOut(&gamma_table);
@@ -333,6 +330,9 @@ class FullscreenSubdriver: public CocoaSubdriver {
 		/* If we don't hide menu bar, it will get events and interrupt the program */
 		HideMenuBar();
 
+		/* Hide the OS cursor */
+		CGDisplayHideCursor(this->display_id);
+
 		/* Fade the display to original gamma */
 		if (!gamma_error) FadeGammaIn(&gamma_table);
 
@@ -351,6 +351,8 @@ class FullscreenSubdriver: public CocoaSubdriver {
 		CGPoint display_mouseLocation;
 		display_mouseLocation.x = mouseLocation.x * this->device_width;
 		display_mouseLocation.y = this->device_height - (mouseLocation.y * this->device_height);
+
+		_cursor.in_window = true;
 
 		CGDisplayMoveCursorToPoint(this->display_id, display_mouseLocation);
 
@@ -384,14 +386,15 @@ ERR_NO_MATCH:
 
 		CGReleaseAllDisplays();
 
+		/* Bring back the cursor */
+		CGDisplayShowCursor(this->display_id);
+
 		ShowMenuBar();
 
 		/* Reset the main screen's rectangle
 		 * See comment in SetVideoMode for why we do this */
 		NSRect screen_rect = NSMakeRect(0, 0, CGDisplayPixelsWide(this->display_id), CGDisplayPixelsHigh(this->display_id));
 		[ [ NSScreen mainScreen ] setFrame:screen_rect ];
-
-		QZ_ShowMouse();
 
 		/* Destroy the pixel buffer */
 		if (this->pixel_buffer != NULL) {

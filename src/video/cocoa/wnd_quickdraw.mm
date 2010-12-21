@@ -353,8 +353,6 @@ WindowQuickdrawSubdriver::WindowQuickdrawSubdriver(int bpp)
 
 WindowQuickdrawSubdriver::~WindowQuickdrawSubdriver()
 {
-	QZ_ShowMouse();
-
 	/* Release window mode resources */
 	if (this->window != nil) [ this->window close ];
 

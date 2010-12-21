@@ -55,7 +55,6 @@ enum RightMouseButtonEmulationState {
 };
 
 
-static bool _show_mouse = true;
 static unsigned int _current_mods;
 static bool _tab_is_down;
 static bool _emulating_right_button;
@@ -70,34 +69,6 @@ static uint32 GetTick()
 
 	gettimeofday(&tim, NULL);
 	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
-}
-
-
-void QZ_ShowMouse()
-{
-	if (!_show_mouse) {
-		[ NSCursor unhide ];
-		_show_mouse = true;
-
-		/* Hide the openttd cursor when leaving the window */
-		if (_cocoa_subdriver != NULL) UndrawMouseCursor();
-		_cursor.in_window = false;
-	}
-}
-
-void QZ_HideMouse()
-{
-	if (_show_mouse) {
-		/* Don't hide the cursor when compiling in debug mode.
-		 * Note: Not hiding the cursor will cause artefacts around it in 8bpp fullscreen mode. */
-#ifndef _DEBUG
-		[ NSCursor hide ];
-#endif
-		_show_mouse = false;
-
-		/* Show the openttd cursor again */
-		_cursor.in_window = true;
-	}
 }
 
 static void QZ_WarpCursor(int x, int y)
@@ -403,7 +374,6 @@ static bool QZ_PollEvent()
 
 	if (event == nil) return false;
 	if (!_cocoa_subdriver->IsActive()) {
-		QZ_ShowMouse();
 		[ NSApp sendEvent:event ];
 		return true;
 	}
@@ -419,18 +389,15 @@ static bool QZ_PollEvent()
 		case NSLeftMouseDragged:
 			pt = _cocoa_subdriver->GetMouseLocation(event);
 			if (!_cocoa_subdriver->MouseIsInsideView(&pt) && !_emulating_right_button) {
-				QZ_ShowMouse();
 				[ NSApp sendEvent:event ];
 				break;
 			}
 
-			QZ_HideMouse();
 			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
 			break;
 
 		case NSRightMouseDragged:
 			pt = _cocoa_subdriver->GetMouseLocation(event);
-			QZ_HideMouse();
 			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
 			break;
 
@@ -446,12 +413,6 @@ static bool QZ_PollEvent()
 				[ NSApp sendEvent:event ];
 			}
 
-			if (!_cocoa_subdriver->MouseIsInsideView(&pt)) {
-				QZ_ShowMouse();
-				break;
-			}
-
-			QZ_HideMouse();
 			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
 
 			/* Right mouse button emulation */
@@ -467,12 +428,7 @@ static bool QZ_PollEvent()
 			[ NSApp sendEvent:event ];
 
 			pt = _cocoa_subdriver->GetMouseLocation(event);
-			if (!_cocoa_subdriver->MouseIsInsideView(&pt)) {
-				QZ_ShowMouse();
-				break;
-			}
 
-			QZ_HideMouse();
 			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
 
 			/* Right mouse button emulation */
@@ -487,12 +443,10 @@ static bool QZ_PollEvent()
 		case NSRightMouseDown:
 			pt = _cocoa_subdriver->GetMouseLocation(event);
 			if (!_cocoa_subdriver->MouseIsInsideView(&pt)) {
-				QZ_ShowMouse();
 				[ NSApp sendEvent:event ];
 				break;
 			}
 
-			QZ_HideMouse();
 			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
 			QZ_MouseButtonEvent(1, YES);
 			break;
@@ -500,12 +454,10 @@ static bool QZ_PollEvent()
 		case NSRightMouseUp:
 			pt = _cocoa_subdriver->GetMouseLocation(event);
 			if (!_cocoa_subdriver->MouseIsInsideView(&pt)) {
-				QZ_ShowMouse();
 				[ NSApp sendEvent:event ];
 				break;
 			}
 
-			QZ_HideMouse();
 			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
 			QZ_MouseButtonEvent(1, NO);
 			break;
@@ -515,12 +467,10 @@ static bool QZ_PollEvent()
 		case NSOtherMouseDown:
 			pt = QZ_GetMouseLocation(event);
 			if (!QZ_MouseIsInsideView(&pt)) {
-				QZ_ShowMouse();
 				[ NSApp sendEvent:event ];
 				break;
 			}
 
-			QZ_HideMouse();
 			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
 			QZ_MouseButtonEvent([ event buttonNumber ], YES);
 			break;
@@ -528,12 +478,10 @@ static bool QZ_PollEvent()
 		case NSOtherMouseUp:
 			pt = QZ_GetMouseLocation(event);
 			if (!QZ_MouseIsInsideView(&pt)) {
-				QZ_ShowMouse();
 				[ NSApp sendEvent:event ];
 				break;
 			}
 
-			QZ_HideMouse();
 			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
 			QZ_MouseButtonEvent([ event buttonNumber ], NO);
 			break;
