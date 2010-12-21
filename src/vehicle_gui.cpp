@@ -368,6 +368,10 @@ struct RefitWindow : public Window {
 	int vehicle_width;           ///< Width of the vehicle being drawn.
 	int sprite_left;             ///< Left position of the vehicle sprite.
 	int sprite_right;            ///< Right position of the vehicle sprite.
+	uint vehicle_margin;         ///< Margin to use while selecting vehicles when the vehicle image is centered.
+	int click_x;                 ///< Position of the first click while dragging.
+	VehicleID selected_vehicle;  ///< First vehicle in the current selection.
+	uint8 num_vehicles;          ///< Number of selected vehicles.
 
 	/**
 	 * Collects all (cargo, subcargo) refit options of a vehicle chain.
@@ -377,7 +381,12 @@ struct RefitWindow : public Window {
 		for (uint i = 0; i < NUM_CARGO; i++) this->list[i].Clear();
 		Vehicle *v = Vehicle::Get(this->window_number);
 
+		/* Check only the selected vehicles. */
+		VehicleSet vehicles_to_refit;
+		GetVehicleSet(vehicles_to_refit, Vehicle::Get(this->selected_vehicle), this->num_vehicles);
+
 		do {
+			if (v->type == VEH_TRAIN && !vehicles_to_refit.Contains(v->index)) continue;
 			const Engine *e = Engine::Get(v->engine_type);
 			uint32 cmask = e->info.refit_mask;
 			byte callback_mask = e->info.callback_mask;
@@ -484,6 +493,7 @@ struct RefitWindow : public Window {
 		nwi->widget_data = STR_REFIT_TRAIN_REFIT_BUTTON + v->type;
 		nwi->tool_tip    = STR_REFIT_TRAIN_REFIT_TOOLTIP + v->type;
 		this->GetWidget<NWidgetStacked>(VRW_SHOW_HSCROLLBAR)->SetDisplayedPlane(v->IsGroundVehicle() ? 0 : SZSP_HORIZONTAL);
+		this->GetWidget<NWidgetCore>(VRW_VEHICLE_PANEL_DISPLAY)->tool_tip = (v->type == VEH_TRAIN) ? STR_REFIT_SELECT_VEHICLES_TOOLTIP : STR_NULL;
 
 		this->FinishInitNested(desc, v->index);
 		this->owner = v->owner;
@@ -536,8 +546,10 @@ struct RefitWindow : public Window {
 		this->sprite_right = vehicle_panel_display->pos_x + vehicle_panel_display->current_x - 1;
 		if (_current_text_dir == TD_RTL) {
 			this->sprite_right -= sprite_width;
+			this->vehicle_margin = vehicle_panel_display->current_x - sprite_right;
 		} else {
 			this->sprite_left += sprite_width;
+			this->vehicle_margin = sprite_left;
 		}
 
 		this->DrawWidgets();
@@ -575,7 +587,8 @@ struct RefitWindow : public Window {
 	StringID GetCapacityString(RefitOption *option) const
 	{
 		Vehicle *v = Vehicle::Get(this->window_number);
-		CommandCost cost = DoCommand(v->tile, v->index, option->cargo | option->subtype << 8, DC_QUERY_COST, GetCmdRefitVeh(v->type));
+		CommandCost cost = DoCommand(v->tile, this->selected_vehicle, option->cargo | option->subtype << 8 |
+				this->num_vehicles << 17, DC_QUERY_COST, GetCmdRefitVeh(v->type));
 
 		if (cost.Failed()) return INVALID_STRING_ID;
 
@@ -623,8 +636,17 @@ struct RefitWindow : public Window {
 	virtual void OnInvalidateData(int data)
 	{
 		switch (data) {
-			case 0: { // The consist lenght of the vehicle has changed; rebuild the entire list.
+			case 0: { // The consist has changed; rebuild the entire list.
+				/* Clear the selection. */
+				Vehicle *v = Vehicle::Get(this->window_number);
+				this->selected_vehicle = v->index;
+				this->num_vehicles = UINT8_MAX;
+				/* FALL THROUGH */
+			}
+
+			case 2: { // The vehicle selection has changed; rebuild the entire list.
 				this->BuildRefitList();
+
 				/* The vehicle width has changed too. */
 				this->vehicle_width = GetVehicleWidth(Vehicle::Get(this->window_number));
 				uint max_width = 0;
@@ -653,9 +675,72 @@ struct RefitWindow : public Window {
 		}
 	}
 
+	int GetClickPosition(int click_x)
+	{
+		const NWidgetCore *matrix_widget = this->GetWidget<NWidgetCore>(VRW_VEHICLE_PANEL_DISPLAY);
+		if (_current_text_dir == TD_RTL) click_x = matrix_widget->current_x - click_x;
+		click_x -= this->vehicle_margin;
+		click_x += this->hscroll->GetPosition();
+
+		return click_x;
+	}
+
+	void SetSelectedVehicles(int drag_x)
+	{
+		drag_x = GetClickPosition(drag_x);
+
+		int left_x  = min(this->click_x, drag_x);
+		int right_x = max(this->click_x, drag_x);
+		this->num_vehicles = 0;
+
+		Vehicle *v = Vehicle::Get(this->window_number);
+		/* Find the vehicle part that was clicked. */
+		switch (v->type) {
+			case VEH_TRAIN: {
+				/* Don't select anything if we are not clicking in the vehicle. */
+				if (left_x >= 0) {
+					const Train *u = Train::From(v);
+					bool start_counting = false;
+					for (; u != NULL; u = u->Next()) {
+						int current_width = u->GetDisplayImageWidth();
+						left_x  -= current_width;
+						right_x -= current_width;
+
+						if (left_x < 0 && !start_counting) {
+							this->selected_vehicle = u->index;
+							start_counting = true;
+						}
+
+						if (start_counting) this->num_vehicles++;
+						if (right_x < 0) break;
+					}
+				}
+
+				/* If the selection is not correct, clear it. */
+				if (this->num_vehicles != 0) break;
+				/* FALL THROUGH */
+			}
+
+			default:
+				/* Clear the selection. */
+				this->selected_vehicle = v->index;
+				this->num_vehicles = UINT8_MAX;
+				break;
+		}
+	}
+
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (widget) {
+			case VRW_VEHICLE_PANEL_DISPLAY: { // Vehicle image.
+				if (this->order != INVALID_VEH_ORDER_ID) break;
+				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(VRW_VEHICLE_PANEL_DISPLAY);
+				this->click_x = GetClickPosition(pt.x - nwi->pos_x);
+				this->SetSelectedVehicles(pt.x - nwi->pos_x);
+				SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
+				break;
+			}
+
 			case VRW_MATRIX: { // listbox
 				this->sel = this->vscroll->GetScrolledRowFromWidget(pt.y, this, VRW_MATRIX);
 				if (this->sel == INT_MAX) this->sel = -1;
@@ -671,12 +756,25 @@ struct RefitWindow : public Window {
 					const Vehicle *v = Vehicle::Get(this->window_number);
 
 					if (this->order == INVALID_VEH_ORDER_ID) {
-						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, GetCmdRefitVeh(v))) delete this;
+						if (DoCommandP(v->tile, this->selected_vehicle, this->cargo->cargo | this->cargo->subtype << 8 | this->num_vehicles << 17, GetCmdRefitVeh(v))) delete this;
 					} else {
 						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8 | this->order << 16, CMD_ORDER_REFIT)) delete this;
 					}
 				}
 				break;
+		}
+	}
+
+	virtual void OnDragDrop(Point pt, int widget)
+	{
+		switch (widget) {
+			case VRW_VEHICLE_PANEL_DISPLAY: { // Vehicle image.
+				if (this->order != INVALID_VEH_ORDER_ID) break;
+				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(VRW_VEHICLE_PANEL_DISPLAY);
+				this->SetSelectedVehicles(pt.x - nwi->pos_x);
+				this->InvalidateData(2);
+				break;
+			}
 		}
 	}
 
