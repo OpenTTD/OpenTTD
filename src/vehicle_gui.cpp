@@ -2397,3 +2397,37 @@ void CcBuildPrimaryVehicle(const CommandCost &result, TileIndex tile, uint32 p1,
 	const Vehicle *v = Vehicle::Get(_new_vehicle_id);
 	ShowVehicleViewWindow(v);
 }
+
+/**
+ * Get the width of a vehicle (including all parts of the consist) in pixels.
+ * @param v Vehicle to get the width for.
+ * @return Width of the vehicle.
+ */
+int GetVehicleWidth(Vehicle *v)
+{
+	int vehicle_width = 0;
+
+	switch (v->type) {
+		case VEH_TRAIN:
+			for (const Train *u = Train::From(v); u != NULL; u = u->Next()) {
+				vehicle_width += u->GetDisplayImageWidth();
+			}
+			break;
+
+		case VEH_ROAD:
+			for (const RoadVehicle *u = RoadVehicle::From(v); u != NULL; u = u->Next()) {
+				vehicle_width += u->GetDisplayImageWidth();
+			}
+			break;
+
+		default:
+			bool rtl = _current_text_dir == TD_RTL;
+			SpriteID sprite = v->GetImage(rtl ? DIR_E : DIR_W);
+			const Sprite *real_sprite = GetSprite(sprite, ST_NORMAL);
+			vehicle_width = real_sprite->width;
+
+			break;
+	}
+
+	return vehicle_width;
+}
