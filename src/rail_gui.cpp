@@ -352,140 +352,9 @@ static bool RailToolbar_CtrlChanged(Window *w)
 
 
 /**
- * The "rail N"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_N(Window *w)
-{
-	HandlePlacePushButton(w, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, HT_LINE | HT_DIR_VL, PlaceRail_N);
-}
-
-/**
- * The "rail NE"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_NE(Window *w)
-{
-	HandlePlacePushButton(w, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, HT_LINE | HT_DIR_X, PlaceRail_NE);
-}
-
-/**
- * The "rail E"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_E(Window *w)
-{
-	HandlePlacePushButton(w, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, HT_LINE | HT_DIR_HL, PlaceRail_E);
-}
-
-/**
- * The "rail NW"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_NW(Window *w)
-{
-	HandlePlacePushButton(w, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, HT_LINE | HT_DIR_Y, PlaceRail_NW);
-}
-
-/**
- * The "auto-rail"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_AutoRail(Window *w)
-{
-	HandlePlacePushButton(w, RTW_AUTORAIL, GetRailTypeInfo(_cur_railtype)->cursor.autorail, HT_RAIL, PlaceRail_AutoRail);
-}
-
-/**
- * The "demolish"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_Demolish(Window *w)
-{
-	HandlePlacePushButton(w, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
-}
-
-/**
- * The "build depot"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_Depot(Window *w)
-{
-	if (HandlePlacePushButton(w, RTW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, HT_RECT, PlaceRail_Depot)) {
-		ShowBuildTrainDepotPicker(w);
-	}
-}
-
-/**
- * The "build waypoint"-button click proc of the build-rail toolbar.
- * If there are newGRF waypoints, also open a window to pick the waypoint type.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_Waypoint(Window *w)
-{
-	_waypoint_count = StationClass::GetCount(STAT_CLASS_WAYP);
-	if (HandlePlacePushButton(w, RTW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT, PlaceRail_Waypoint) &&
-			_waypoint_count > 1) {
-		ShowBuildWaypointPicker(w);
-	}
-}
-
-/**
- * The "build station"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_Station(Window *w)
-{
-	if (HandlePlacePushButton(w, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, HT_RECT, PlaceRail_Station)) ShowStationBuilder(w);
-}
-
-/**
- * The "build signal"-button click proc of the build-rail toolbar.
- * Start ShowSignalBuilder() and/or HandleAutoSignalPlacement().
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_AutoSignals(Window *w)
-{
-	bool started = HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT, PlaceRail_AutoSignals);
-	if (started && _settings_client.gui.enable_signal_gui != _ctrl_pressed) {
-		ShowSignalBuilder(w);
-	}
-}
-
-/**
- * The "build bridge"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_Bridge(Window *w)
-{
-	HandlePlacePushButton(w, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT, PlaceRail_Bridge);
-}
-
-/**
- * The "build tunnel"-button click proc of the build-rail toolbar.
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_Tunnel(Window *w)
-{
-	HandlePlacePushButton(w, RTW_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, HT_SPECIAL, PlaceRail_Tunnel);
-}
-
-/**
  * The "remove"-button click proc of the build-rail toolbar.
  * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
+ * @see BuildRailToolbarWindow::OnClick()
  */
 static void BuildRailClick_Remove(Window *w)
 {
@@ -515,18 +384,6 @@ static void BuildRailClick_Remove(Window *w)
 		}
 	}
 }
-
-/**
- * The "convert-rail"-button click proc of the build-rail toolbar.
- * Switches to 'convert-rail' mode
- * @param w Build-rail toolbar window
- * @see BuildRailToolbWndProc()
- */
-static void BuildRailClick_Convert(Window *w)
-{
-	HandlePlacePushButton(w, RTW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, HT_RECT, PlaceRail_ConvertRail);
-}
-
 
 static void DoRailroadTrack(int mode)
 {
@@ -592,13 +449,9 @@ static void HandleAutoSignalPlacement()
 }
 
 
-/**
- * Based on the widget clicked, update the status of the 'remove' button.
- * @param w              Rail toolbar window
- * @param clicked_widget Widget clicked in the toolbar
- */
+/** Rail toolbar management class. */
 struct BuildRailToolbarWindow : Window {
-	RailType railtype;
+	RailType railtype; ///< Rail type to build.
 
 	BuildRailToolbarWindow(const WindowDesc *desc, WindowNumber window_number, RailType railtype) : Window()
 	{
@@ -695,51 +548,60 @@ struct BuildRailToolbarWindow : Window {
 		_remove_button_clicked = false;
 		switch (widget) {
 			case RTW_BUILD_NS:
-				BuildRailClick_N(this);
+				HandlePlacePushButton(this, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, HT_LINE | HT_DIR_VL, PlaceRail_N);
 				break;
 
 			case RTW_BUILD_X:
-				BuildRailClick_NE(this);
+				HandlePlacePushButton(this, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, HT_LINE | HT_DIR_X, PlaceRail_NE);
 				break;
 
 			case RTW_BUILD_EW:
-				BuildRailClick_E(this);
+				HandlePlacePushButton(this, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, HT_LINE | HT_DIR_HL, PlaceRail_E);
 				break;
 
 			case RTW_BUILD_Y:
-				BuildRailClick_NW(this);
+				HandlePlacePushButton(this, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, HT_LINE | HT_DIR_Y, PlaceRail_NW);
 				break;
 
 			case RTW_AUTORAIL:
-				BuildRailClick_AutoRail(this);
+				HandlePlacePushButton(this, RTW_AUTORAIL, GetRailTypeInfo(_cur_railtype)->cursor.autorail, HT_RAIL, PlaceRail_AutoRail);
 				break;
 
 			case RTW_DEMOLISH:
-				BuildRailClick_Demolish(this);
+				HandlePlacePushButton(this, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
 				break;
 
 			case RTW_BUILD_DEPOT:
-				BuildRailClick_Depot(this);
+				if (HandlePlacePushButton(this, RTW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, HT_RECT, PlaceRail_Depot)) {
+					ShowBuildTrainDepotPicker(this);
+				}
 				break;
 
 			case RTW_BUILD_WAYPOINT:
-				BuildRailClick_Waypoint(this);
+				_waypoint_count = StationClass::GetCount(STAT_CLASS_WAYP);
+				if (HandlePlacePushButton(this, RTW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT, PlaceRail_Waypoint) && _waypoint_count > 1) {
+					ShowBuildWaypointPicker(this);
+				}
 				break;
 
 			case RTW_BUILD_STATION:
-				BuildRailClick_Station(this);
+				if (HandlePlacePushButton(this, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, HT_RECT, PlaceRail_Station)) ShowStationBuilder(this);
 				break;
 
-			case RTW_BUILD_SIGNALS:
-				BuildRailClick_AutoSignals(this);
+			case RTW_BUILD_SIGNALS: {
+				bool started = HandlePlacePushButton(this, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT, PlaceRail_AutoSignals);
+				if (started && _settings_client.gui.enable_signal_gui != _ctrl_pressed) {
+					ShowSignalBuilder(this);
+				}
 				break;
+			}
 
 			case RTW_BUILD_BRIDGE:
-				BuildRailClick_Bridge(this);
+				HandlePlacePushButton(this, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT, PlaceRail_Bridge);
 				break;
 
 			case RTW_BUILD_TUNNEL:
-				BuildRailClick_Tunnel(this);
+				HandlePlacePushButton(this, RTW_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, HT_SPECIAL, PlaceRail_Tunnel);
 				break;
 
 			case RTW_REMOVE:
@@ -747,7 +609,7 @@ struct BuildRailToolbarWindow : Window {
 				break;
 
 			case RTW_CONVERT_RAIL:
-				BuildRailClick_Convert(this);
+				HandlePlacePushButton(this, RTW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, HT_RECT, PlaceRail_ConvertRail);
 				break;
 
 			default: NOT_REACHED();
