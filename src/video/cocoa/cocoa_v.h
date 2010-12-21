@@ -42,9 +42,41 @@ public:
 };
 
 
-
+/**
+ * Generic display driver for cocoa
+ * On grounds to not duplicate some code, it contains a few variables
+ * which are not used by all device drivers.
+ */
 class CocoaSubdriver {
 public:
+	int device_width;
+	int device_height;
+	int device_depth;
+
+	int window_width;
+	int window_height;
+	int window_pitch;
+
+	int buffer_depth;
+	void *pixel_buffer;   // used for direct pixel access
+	void *window_buffer;  // has colour translation from palette to screen
+	id window;            // pointer to window object
+
+#	define MAX_DIRTY_RECTS 100
+	Rect dirty_rects[MAX_DIRTY_RECTS];
+	int num_dirty_rects;
+	uint32 palette[256];
+
+	bool active;
+	bool setup;
+
+	id cocoaview;         // pointer to view object
+
+	/* Separate driver vars for Quarz
+	 * Needed here in order to avoid much code duplication */
+	CGContextRef cgcontext;
+
+	/* Driver methods */
 	virtual ~CocoaSubdriver() {}
 
 	virtual void Draw(bool force_update = false) = 0;

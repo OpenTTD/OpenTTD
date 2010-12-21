@@ -149,21 +149,10 @@ bool QZ_CanDisplay8bpp()
 }
 
 class FullscreenSubdriver: public CocoaSubdriver {
-	int                device_width;
-	int                device_height;
-	int                device_depth;
-	int                window_pitch;
-	void              *window_buffer;
-	void              *pixel_buffer;
-
 	CGDirectDisplayID  display_id;         ///< 0 == main display (only support single display)
 	CFDictionaryRef    cur_mode;           ///< current mode of the display
 	CFDictionaryRef    save_mode;          ///< original mode of the display
 	CGDirectPaletteRef palette;            ///< palette of an 8-bit display
-
-	#define MAX_DIRTY_RECTS 100
-	Rect dirty_rects[MAX_DIRTY_RECTS];
-	int num_dirty_rects;
 
 
 	/* Gamma functions to try to hide the flash from a res switch

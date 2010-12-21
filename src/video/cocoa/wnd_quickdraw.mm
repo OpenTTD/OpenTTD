@@ -73,38 +73,7 @@ class WindowQuickdrawSubdriver;
 @end
 
 class WindowQuickdrawSubdriver: public CocoaSubdriver {
-	int device_width;
-	int device_height;
-	int device_depth;
-
-	int window_width;
-	int window_height;
-	int window_pitch;
-
-	int buffer_depth;
-
-	void *pixel_buffer;
-	void *window_buffer;
-
-	id window;
-
-	#define MAX_DIRTY_RECTS 100
-	Rect dirty_rects[MAX_DIRTY_RECTS];
-	int num_dirty_rects;
-
-	uint32 palette[256];
-
-public:
-	bool active;
-	bool setup;
-
-	id cocoaview;
-
 private:
-	void GetDeviceInfo();
-
-	bool SetVideoMode(int width, int height);
-
 	/**
 	 * This function copies 32bpp pixels from the screen buffer in 16bpp windowed mode.
 	 *
@@ -138,6 +107,8 @@ private:
 	inline void BlitToView(int left, int top, int right, int bottom);
 	void DrawResizeIcon();
 
+	virtual void GetDeviceInfo();
+	virtual bool SetVideoMode(int width, int height);
 
 public:
 	WindowQuickdrawSubdriver(int bpp);
