@@ -62,16 +62,6 @@ class WindowQuartzSubdriver;
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag;
 @end
 
-/* Delegate for our NSWindow to send ask for quit on close */
-@interface OTTD_QuartzWindowDelegate : NSObject {
-	WindowQuartzSubdriver *driver;
-}
-
-- (void)setDriver:(WindowQuartzSubdriver*)drv;
-
-- (BOOL)windowShouldClose:(id)sender;
-@end
-
 /* Subclass of NSView to fix Quartz rendering */
 @interface OTTD_QuartzView : NSView {
 	WindowQuartzSubdriver *driver;
@@ -243,42 +233,6 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 
 @end
 
-@implementation OTTD_QuartzWindowDelegate
-
-- (void)setDriver:(WindowQuartzSubdriver*)drv
-{
-	driver = drv;
-}
-
-- (BOOL)windowShouldClose:(id)sender
-{
-	HandleExitGameRequest();
-
-	return NO;
-}
-
-- (void)windowDidBecomeKey:(NSNotification*)aNotification
-{
-	driver->active = true;
-}
-
-- (void)windowDidResignKey:(NSNotification*)aNotification
-{
-	driver->active = false;
-}
-
-- (void)windowDidBecomeMain:(NSNotification*)aNotification
-{
-	driver->active = true;
-}
-
-- (void)windowDidResignMain:(NSNotification*)aNotification
-{
-	driver->active = false;
-}
-
-@end
-
 @implementation OTTD_QuartzView
 
 - (void)setDriver:(WindowQuartzSubdriver*)drv
@@ -400,7 +354,7 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 
 	/* Check if we should recreate the window */
 	if (this->window == nil) {
-		OTTD_QuartzWindowDelegate *delegate;
+		OTTD_CocoaWindowDelegate *delegate;
 
 		/* Set the window style */
 		unsigned int style = NSTitledWindowMask;
@@ -436,7 +390,7 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 
 		[ this->window useOptimizedDrawing:YES ];
 
-		delegate = [ [ OTTD_QuartzWindowDelegate alloc ] init ];
+		delegate = [ [ OTTD_CocoaWindowDelegate alloc ] init ];
 		[ delegate setDriver:this ];
 		[ this->window setDelegate:[ delegate autorelease ] ];
 	} else {

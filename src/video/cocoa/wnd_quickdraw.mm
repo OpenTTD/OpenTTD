@@ -62,16 +62,6 @@ class WindowQuickdrawSubdriver;
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(unsigned int)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag;
 @end
 
-/* Delegate for our NSWindow to send ask for quit on close */
-@interface OTTD_QuickdrawWindowDelegate : NSObject {
-	WindowQuickdrawSubdriver *driver;
-}
-
-- (void)setDriver:(WindowQuickdrawSubdriver*)drv;
-
-- (BOOL)windowShouldClose:(id)sender;
-@end
-
 class WindowQuickdrawSubdriver: public CocoaSubdriver {
 private:
 	/**
@@ -236,42 +226,6 @@ public:
 
 @end
 
-@implementation OTTD_QuickdrawWindowDelegate
-- (void)setDriver:(WindowQuickdrawSubdriver*)drv
-{
-	driver = drv;
-}
-
-- (BOOL)windowShouldClose:(id)sender
-{
-	HandleExitGameRequest();
-
-	return NO;
-}
-
-- (void)windowDidBecomeKey:(NSNotification*)aNotification
-{
-	driver->active = true;
-}
-
-- (void)windowDidResignKey:(NSNotification*)aNotification
-{
-	driver->active = false;
-}
-
-- (void)windowDidBecomeMain:(NSNotification*)aNotification
-{
-	driver->active = true;
-}
-
-- (void)windowDidResignMain:(NSNotification*)aNotification
-{
-	driver->active = false;
-}
-
-@end
-
-
 static const int _resize_icon_width  = 16;
 static const int _resize_icon_height = 16;
 
@@ -329,7 +283,7 @@ bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height)
 
 	/* Check if we should recreate the window */
 	if (this->window == nil) {
-		OTTD_QuickdrawWindowDelegate *delegate;
+		OTTD_CocoaWindowDelegate *delegate;
 
 		/* Set the window style */
 		unsigned int style = NSTitledWindowMask;
@@ -360,7 +314,7 @@ bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height)
 		[ this->window setAcceptsMouseMovedEvents:YES ];
 		[ this->window setViewsNeedDisplay:NO ];
 
-		delegate = [ [ OTTD_QuickdrawWindowDelegate alloc ] init ];
+		delegate = [ [ OTTD_CocoaWindowDelegate alloc ] init ];
 		[ delegate setDriver:this ];
 		[ this->window setDelegate: [ delegate autorelease ] ];
 	} else {

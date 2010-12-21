@@ -124,4 +124,15 @@ void QZ_HideMouse();
 
 uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int display_depth);
 
+/** Delegate for our NSWindow to send ask for quit on close */
+@interface OTTD_CocoaWindowDelegate : NSObject {
+	CocoaSubdriver *driver;
+}
+
+- (void)setDriver:(CocoaSubdriver*)drv;
+
+- (BOOL)windowShouldClose:(id)sender;
+@end
+
+
 #endif /* VIDEO_COCOA_H */

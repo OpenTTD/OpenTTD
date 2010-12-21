@@ -407,4 +407,40 @@ void cocoaReleaseAutoreleasePool()
 	[ _ottd_autorelease_pool release ];
 }
 
+@implementation OTTD_CocoaWindowDelegate
+/** Initialize the video driver */
+- (void)setDriver:(CocoaSubdriver*)drv
+{
+	driver = drv;
+}
+/** Handle closure requests */
+- (BOOL)windowShouldClose:(id)sender
+{
+	HandleExitGameRequest();
+
+	return NO;
+}
+/** Handle key acceptance */
+- (void)windowDidBecomeKey:(NSNotification*)aNotification
+{
+	driver->active = true;
+}
+/** Resign key acceptance */
+- (void)windowDidResignKey:(NSNotification*)aNotification
+{
+	driver->active = false;
+}
+/** Handle becoming main window */
+- (void)windowDidBecomeMain:(NSNotification*)aNotification
+{
+	driver->active = true;
+}
+/** Resign being main window */
+- (void)windowDidResignMain:(NSNotification*)aNotification
+{
+	driver->active = false;
+}
+
+@end
+
 #endif /* WITH_COCOA */
