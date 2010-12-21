@@ -80,31 +80,6 @@ static void GenericPlaceRail(TileIndex tile, int cmd)
 			CcPlaySound1E);
 }
 
-static void PlaceRail_N(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_FIX_VERTICAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
-}
-
-static void PlaceRail_NE(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_FIX_Y | VPM_RAILDIRS, DDSP_PLACE_RAIL);
-}
-
-static void PlaceRail_E(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_FIX_HORIZONTAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
-}
-
-static void PlaceRail_NW(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_FIX_X | VPM_RAILDIRS, DDSP_PLACE_RAIL);
-}
-
-static void PlaceRail_AutoRail(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_PLACE_RAIL);
-}
-
 /**
  * Try to add an additional rail-track at the entrance of a depot
  * @param tile  Tile to use for adding the rail-track
@@ -152,13 +127,10 @@ void CcRailDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 	}
 }
 
-static void PlaceRail_Depot(TileIndex tile)
-{
-	DoCommandP(tile, _cur_railtype, _build_depot_direction,
-			CMD_BUILD_TRAIN_DEPOT | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT),
-			CcRailDepot);
-}
-
+/**
+ * Place a rail waypoint.
+ * @param tile Position to start dragging a waypoint.
+ */
 static void PlaceRail_Waypoint(TileIndex tile)
 {
 	if (_remove_button_clicked) {
@@ -186,6 +158,10 @@ void CcStation(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 	if (_railstation.station_class == STAT_CLASS_DFLT && _railstation.station_type == 0 && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
+/**
+ * Place a rail station.
+ * @param tile Position to place or start dragging a station.
+ */
 static void PlaceRail_Station(TileIndex tile)
 {
 	if (_remove_button_clicked) {
@@ -258,13 +234,17 @@ static void GenericPlaceSignals(TileIndex tile)
 	}
 }
 
-static void PlaceRail_Bridge(TileIndex tile)
+/**
+ * Start placing a rail bridge.
+ * @param tile Position of the first tile of the bridge.
+ * @param w    Rail toolbar window.
+ */
+static void PlaceRail_Bridge(TileIndex tile, Window *w)
 {
 	if (IsBridgeTile(tile)) {
 		TileIndex other_tile = GetOtherTunnelBridgeEnd(tile);
-		Window *w = GetCallbackWnd();
 		Point pt = {0, 0};
-		if (w != NULL) w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, tile, other_tile);
+		w->OnPlaceMouseUp(VPM_X_OR_Y, DDSP_BUILD_BRIDGE, pt, tile, other_tile);
 	} else {
 		VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
 	}
@@ -279,21 +259,6 @@ void CcBuildRailTunnel(const CommandCost &result, TileIndex tile, uint32 p1, uin
 	} else {
 		SetRedErrorSquare(_build_tunnel_endtile);
 	}
-}
-
-static void PlaceRail_Tunnel(TileIndex tile)
-{
-	DoCommandP(tile, _cur_railtype | (TRANSPORT_RAIL << 8), 0, CMD_BUILD_TUNNEL | CMD_MSG(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE), CcBuildRailTunnel);
-}
-
-static void PlaceRail_ConvertRail(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CONVERT_RAIL);
-}
-
-static void PlaceRail_AutoSignals(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_SIGNALDIRS, DDSP_BUILD_SIGNALS);
 }
 
 
@@ -648,23 +613,23 @@ struct BuildRailToolbarWindow : Window {
 	{
 		switch (this->last_user_action) {
 			case RTW_BUILD_NS:
-				PlaceRail_N(tile);
+				VpStartPlaceSizing(tile, VPM_FIX_VERTICAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case RTW_BUILD_X:
-				PlaceRail_NE(tile);
+				VpStartPlaceSizing(tile, VPM_FIX_Y | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case RTW_BUILD_EW:
-				PlaceRail_E(tile);
+				VpStartPlaceSizing(tile, VPM_FIX_HORIZONTAL | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case RTW_BUILD_Y:
-				PlaceRail_NW(tile);
+				VpStartPlaceSizing(tile, VPM_FIX_X | VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case RTW_AUTORAIL:
-				PlaceRail_AutoRail(tile);
+				VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
 			case RTW_DEMOLISH:
@@ -672,7 +637,9 @@ struct BuildRailToolbarWindow : Window {
 				break;
 
 			case RTW_BUILD_DEPOT:
-				PlaceRail_Depot(tile);
+				DoCommandP(tile, _cur_railtype, _build_depot_direction,
+						CMD_BUILD_TRAIN_DEPOT | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT),
+						CcRailDepot);
 				break;
 
 			case RTW_BUILD_WAYPOINT:
@@ -684,19 +651,19 @@ struct BuildRailToolbarWindow : Window {
 				break;
 
 			case RTW_BUILD_SIGNALS:
-				PlaceRail_AutoSignals(tile);
+				VpStartPlaceSizing(tile, VPM_SIGNALDIRS, DDSP_BUILD_SIGNALS);
 				break;
 
 			case RTW_BUILD_BRIDGE:
-				PlaceRail_Bridge(tile);
+				PlaceRail_Bridge(tile, this);
 				break;
 
 			case RTW_BUILD_TUNNEL:
-				PlaceRail_Tunnel(tile);
+				DoCommandP(tile, _cur_railtype | (TRANSPORT_RAIL << 8), 0, CMD_BUILD_TUNNEL | CMD_MSG(STR_ERROR_CAN_T_BUILD_TUNNEL_HERE), CcBuildRailTunnel);
 				break;
 
 			case RTW_CONVERT_RAIL:
-				PlaceRail_ConvertRail(tile);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CONVERT_RAIL);
 				break;
 
 			default: NOT_REACHED();
