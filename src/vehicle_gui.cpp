@@ -766,7 +766,10 @@ struct RefitWindow : public Window {
 				}
 
 				/* If the selection is not correct, clear it. */
-				if (this->num_vehicles != 0) break;
+				if (this->num_vehicles != 0) {
+					if (_ctrl_pressed) this->num_vehicles = UINT8_MAX;
+					break;
+				}
 				/* FALL THROUGH */
 			}
 
@@ -787,7 +790,7 @@ struct RefitWindow : public Window {
 				this->click_x = GetClickPosition(pt.x - nwi->pos_x);
 				this->SetSelectedVehicles(pt.x - nwi->pos_x);
 				this->SetWidgetDirty(VRW_VEHICLE_PANEL_DISPLAY);
-				SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
+				if (!_ctrl_pressed) SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 				break;
 			}
 
