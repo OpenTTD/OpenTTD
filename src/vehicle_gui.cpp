@@ -614,6 +614,55 @@ struct RefitWindow : public Window {
 				DrawVehicleImage(v, this->sprite_left + WD_FRAMERECT_LEFT, this->sprite_right - WD_FRAMERECT_RIGHT,
 					r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, this->hscroll != NULL ? this->hscroll->GetPosition() : 0);
 
+				/* Highlight selected vehicles. */
+				int x = 0;
+				switch (v->type) {
+					case VEH_TRAIN: {
+						VehicleSet vehicles_to_refit;
+						GetVehicleSet(vehicles_to_refit, Vehicle::Get(this->selected_vehicle), this->num_vehicles);
+
+						int left = INT32_MIN;
+						int width = 0;
+
+						for (Train *u = Train::From(v); u != NULL; u = u->Next()) {
+							/* Start checking. */
+							if (vehicles_to_refit.Contains(u->index) && left == INT32_MIN) {
+								left = x - this->hscroll->GetPosition() + r.left + this->vehicle_margin;
+								width = 0;
+							}
+
+							/* Draw a selection. */
+							if ((!vehicles_to_refit.Contains(u->index) || u->Next() == NULL) && left != INT32_MIN) {
+								if (u->Next() == NULL && vehicles_to_refit.Contains(u->index)) {
+									int current_width = u->GetDisplayImageWidth();
+									width += current_width;
+									x += current_width;
+								}
+
+								int right = Clamp(left + width, 0, r.right);
+								left = max(0, left);
+
+								if (_current_text_dir == TD_RTL) {
+									right = this->GetWidget<NWidgetCore>(VRW_VEHICLE_PANEL_DISPLAY)->current_x - left;
+									left = right - width;
+								}
+
+								if (left != right) {
+									DrawFrameRect(left, r.top + WD_FRAMERECT_TOP, right, r.top + WD_FRAMERECT_TOP + 13, COLOUR_WHITE, FR_BORDERONLY);
+								}
+
+								left = INT32_MIN;
+							}
+
+							int current_width = u->GetDisplayImageWidth();
+							width += current_width;
+							x += current_width;
+						}
+						break;
+					}
+
+					default: break;
+				}
 				break;
 			}
 
@@ -737,6 +786,7 @@ struct RefitWindow : public Window {
 				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(VRW_VEHICLE_PANEL_DISPLAY);
 				this->click_x = GetClickPosition(pt.x - nwi->pos_x);
 				this->SetSelectedVehicles(pt.x - nwi->pos_x);
+				this->SetWidgetDirty(VRW_VEHICLE_PANEL_DISPLAY);
 				SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 				break;
 			}
@@ -762,6 +812,19 @@ struct RefitWindow : public Window {
 					}
 				}
 				break;
+		}
+	}
+
+	virtual void OnMouseDrag(Point pt, int widget)
+	{
+		switch (widget) {
+			case VRW_VEHICLE_PANEL_DISPLAY: { // Vehicle image.
+				if (this->order != INVALID_VEH_ORDER_ID) break;
+				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(VRW_VEHICLE_PANEL_DISPLAY);
+				this->SetSelectedVehicles(pt.x - nwi->pos_x);
+				this->SetWidgetDirty(VRW_VEHICLE_PANEL_DISPLAY);
+				break;
+			}
 		}
 	}
 
