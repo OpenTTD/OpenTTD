@@ -1314,6 +1314,12 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		GetString(this->edit_str_buf, str, &this->edit_str_buf[max_bytes - 1]);
 		str_validate(this->edit_str_buf, &this->edit_str_buf[max_bytes - 1], false, true);
 
+		/* Make sure the name isn't too long for the text buffer in the number of
+		 * characters (not bytes). max_chars also counts the '\0' characters. */
+		while (Utf8StringLength(this->edit_str_buf) + 1 > max_chars) {
+			*Utf8PrevChar(this->edit_str_buf + strlen(this->edit_str_buf)) = '\0';
+		}
+
 		if ((flags & QSF_ACCEPT_UNCHANGED) == 0) this->orig = strdup(this->edit_str_buf);
 
 		this->caption = caption;
