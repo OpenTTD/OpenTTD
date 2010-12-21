@@ -329,20 +329,10 @@ public:
 	}
 };
 
-static void Place_LandInfo(TileIndex tile)
+void ShowLandInfo(TileIndex tile)
 {
 	DeleteWindowById(WC_LAND_INFO, 0);
 	new LandInfoWindow(tile);
-}
-
-void PlaceLandBlockInfo()
-{
-	if (_cursor.sprite == SPR_CURSOR_QUERY) {
-		ResetObjectToPlace();
-	} else {
-		_place_proc = Place_LandInfo;
-		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, HT_RECT, WC_MAIN_TOOLBAR, 0);
-	}
 }
 
 /** Widgets for the land info window. */

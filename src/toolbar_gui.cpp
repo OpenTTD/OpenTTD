@@ -755,6 +755,21 @@ static void MenuClickNewspaper(int index)
 
 /* --- Help button menu --- */
 
+static void Place_LandInfo(TileIndex tile)
+{
+	ShowLandInfo(tile);
+}
+
+static void PlaceLandBlockInfo()
+{
+	if (_cursor.sprite == SPR_CURSOR_QUERY) {
+		ResetObjectToPlace();
+	} else {
+		_place_proc = Place_LandInfo;
+		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, HT_RECT, WC_MAIN_TOOLBAR, 0);
+	}
+}
+
 static void ToolbarHelpClick(Window *w)
 {
 	PopupMainToolbMenu(w, TBN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 9 : 8);

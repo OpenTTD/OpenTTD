@@ -46,7 +46,7 @@ void ShowGenerateLandscape();
 void ShowHeightmapLoad();
 
 /* misc_gui.cpp */
-void PlaceLandBlockInfo();
+void ShowLandInfo(TileIndex tile);
 void ShowAboutWindow();
 void ShowBuildTreesToolbar();
 void ShowTownDirectory();
