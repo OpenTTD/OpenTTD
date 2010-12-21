@@ -356,7 +356,6 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 	return _cocoa_subdriver->IsFullscreen() == full_screen;
 }
 
-
 /* This is needed since sometimes assert is called before the videodriver is initialized */
 void CocoaDialog(const char *title, const char *message, const char *buttonLabel)
 {
@@ -406,6 +405,112 @@ void cocoaReleaseAutoreleasePool()
 {
 	[ _ottd_autorelease_pool release ];
 }
+
+
+
+@implementation OTTD_CocoaWindow
+
+- (void)setDriver:(CocoaSubdriver*)drv
+{
+	driver = drv;
+}
+/**
+  * Minimize the window
+  */
+- (void)miniaturize:(id)sender
+{
+	/* make the alpha channel opaque so anim won't have holes in it */
+	driver->SetPortAlphaOpaque();
+
+	/* window is hidden now */
+	driver->active = false;
+
+	QZ_ShowMouse();
+
+	[ super miniaturize:sender ];
+}
+
+/**
+ * This method fires just before the window deminaturizes from the Dock.
+ * We'll save the current visible surface, let the window manager redraw any
+ * UI elements, and restore the surface. This way, no expose event
+ * is required, and the deminiaturize works perfectly.
+ */
+- (void)display
+{
+	driver->SetPortAlphaOpaque();
+
+	/* save current visible surface */
+	[ self cacheImageInRect:[ driver->cocoaview frame ] ];
+
+	/* let the window manager redraw controls, border, etc */
+	[ super display ];
+
+	/* restore visible surface */
+	[ self restoreCachedImage ];
+
+	/* window is visible again */
+	driver->active = true;
+}
+/**
+ * Define the rectangle we draw our window in
+ */
+- (void)setFrame:(NSRect)frameRect display:(BOOL)flag
+{
+	[ super setFrame:frameRect display:flag ];
+
+	/* Don't do anything if the window is currently being created */
+	if (driver->setup) return;
+
+	if (!driver->WindowResized()) error("Cocoa: Failed to resize window.");
+}
+/**
+ * Handle hiding of the application
+ */
+- (void)appDidHide:(NSNotification*)note
+{
+	driver->active = false;
+}
+/**
+ * Fade-in the application and restore display plane
+ */
+- (void)appWillUnhide:(NSNotification*)note
+{
+	driver->SetPortAlphaOpaque ();
+
+	/* save current visible surface */
+	[ self cacheImageInRect:[ driver->cocoaview frame ] ];
+}
+/**
+ * Unhide and restore display plane and re-activate driver
+ */
+- (void)appDidUnhide:(NSNotification*)note
+{
+	/* restore cached image, since it may not be current, post expose event too */
+	[ self restoreCachedImage ];
+
+	driver->active = true;
+}
+/**
+ * Initialize event system for the application rectangle
+ */
+- (id)initWithContentRect:(NSRect)contentRect styleMask:(unsigned int)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag
+{
+	/* Make our window subclass receive these application notifications */
+	[ [ NSNotificationCenter defaultCenter ] addObserver:self
+		selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
+
+	[ [ NSNotificationCenter defaultCenter ] addObserver:self
+		selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
+
+	[ [ NSNotificationCenter defaultCenter ] addObserver:self
+		selector:@selector(appWillUnhide:) name:NSApplicationWillUnhideNotification object:NSApp ];
+
+	return [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ];
+}
+
+@end
+
 
 
 

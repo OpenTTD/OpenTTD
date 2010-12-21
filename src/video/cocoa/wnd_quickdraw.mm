@@ -46,22 +46,6 @@
 class WindowQuickdrawSubdriver;
 
 
-/* Subclass of NSWindow to fix genie effect and support resize events  */
-@interface OTTD_QuickdrawWindow : NSWindow {
-	WindowQuickdrawSubdriver *driver;
-}
-
-- (void)setDriver:(WindowQuickdrawSubdriver*)drv;
-
-- (void)miniaturize:(id)sender;
-- (void)display;
-- (void)setFrame:(NSRect)frameRect display:(BOOL)flag;
-- (void)appDidHide:(NSNotification*)note;
-- (void)appWillUnhide:(NSNotification*)note;
-- (void)appDidUnhide:(NSNotification*)note;
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(unsigned int)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag;
-@end
-
 class WindowQuickdrawSubdriver: public CocoaSubdriver {
 private:
 	/**
@@ -130,102 +114,6 @@ public:
 	bool WindowResized();
 };
 
-
-@implementation OTTD_QuickdrawWindow
-
-- (void)setDriver:(WindowQuickdrawSubdriver*)drv
-{
-	driver = drv;
-}
-
-
-/* we override these methods to fix the miniaturize animation/dock icon bug */
-- (void)miniaturize:(id)sender
-{
-	/* make the alpha channel opaque so anim won't have holes in it */
-	driver->SetPortAlphaOpaque ();
-
-	/* window is hidden now */
-	driver->active = false;
-
-	QZ_ShowMouse();
-
-	[ super miniaturize:sender ];
-}
-
-- (void)display
-{
-	/* This method fires just before the window deminaturizes from the Dock.
-	 * We'll save the current visible surface, let the window manager redraw any
-	 * UI elements, and restore the surface. This way, no expose event
-	 * is required, and the deminiaturize works perfectly.
-	 */
-
-	driver->SetPortAlphaOpaque();
-
-	/* save current visible surface */
-	[ self cacheImageInRect:[ driver->cocoaview frame ] ];
-
-	/* let the window manager redraw controls, border, etc */
-	[ super display ];
-
-	/* restore visible surface */
-	[ self restoreCachedImage ];
-
-	/* window is visible again */
-	driver->active = true;
-}
-
-- (void)setFrame:(NSRect)frameRect display:(BOOL)flag
-{
-	[ super setFrame:frameRect display:flag ];
-
-	/* Don't do anything if the window is currently being created */
-	if (driver->setup) return;
-
-	if (!driver->WindowResized()) error("Cocoa: Failed to resize window.");
-}
-
-- (void)appDidHide:(NSNotification*)note
-{
-	driver->active = false;
-}
-
-
-- (void)appWillUnhide:(NSNotification*)note
-{
-	driver->SetPortAlphaOpaque ();
-
-	/* save current visible surface */
-	[ self cacheImageInRect:[ driver->cocoaview frame ] ];
-}
-
-- (void)appDidUnhide:(NSNotification*)note
-{
-	/* restore cached image, since it may not be current, post expose event too */
-	[ self restoreCachedImage ];
-
-	driver->active = true;
-}
-
-
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(unsigned int)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag
-{
-	/* Make our window subclass receive these application notifications */
-	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-		selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
-
-	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-		selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
-
-	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-		selector:@selector(appWillUnhide:) name:NSApplicationWillUnhideNotification object:NSApp ];
-
-	return [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ];
-}
-
-@end
-
 static const int _resize_icon_width  = 16;
 static const int _resize_icon_height = 16;
 
@@ -291,7 +179,7 @@ bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height)
 		style |= NSResizableWindowMask;
 
 		/* Manually create a window, avoids having a nib file resource */
-		this->window = [ [ OTTD_QuickdrawWindow alloc ] initWithContentRect:contentRect
+		this->window = [ [ OTTD_CocoaWindow alloc ] initWithContentRect:contentRect
 						styleMask:style	backing:NSBackingStoreBuffered defer:NO ];
 
 		if (this->window == nil) {

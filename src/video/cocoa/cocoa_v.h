@@ -99,6 +99,9 @@ public:
 	virtual bool MouseIsInsideView(NSPoint *pt) = 0;
 
 	virtual bool IsActive() = 0;
+
+	virtual void SetPortAlphaOpaque() { return; };
+	virtual bool WindowResized() { return false; };
 };
 
 extern CocoaSubdriver *_cocoa_subdriver;
@@ -123,6 +126,22 @@ void QZ_ShowMouse();
 void QZ_HideMouse();
 
 uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int display_depth);
+
+/* Subclass of NSWindow to cater our special needs */
+@interface OTTD_CocoaWindow : NSWindow {
+	CocoaSubdriver *driver;
+}
+
+- (void)setDriver:(CocoaSubdriver*)drv;
+
+- (void)miniaturize:(id)sender;
+- (void)display;
+- (void)setFrame:(NSRect)frameRect display:(BOOL)flag;
+- (void)appDidHide:(NSNotification*)note;
+- (void)appWillUnhide:(NSNotification*)note;
+- (void)appDidUnhide:(NSNotification*)note;
+- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag;
+@end
 
 /* Subclass of NSView to fix Quartz rendering */
 @interface OTTD_CocoaView : NSView {
