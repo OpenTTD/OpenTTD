@@ -451,13 +451,15 @@ static void HandleAutoSignalPlacement()
 
 /** Rail toolbar management class. */
 struct BuildRailToolbarWindow : Window {
-	RailType railtype; ///< Rail type to build.
+	RailType railtype;    ///< Rail type to build.
+	int last_user_action; ///< Last started user action.
 
 	BuildRailToolbarWindow(const WindowDesc *desc, WindowNumber window_number, RailType railtype) : Window()
 	{
 		this->InitNested(desc);
 		this->SetupRailToolbar(railtype);
 		this->DisableWidget(RTW_REMOVE);
+		this->last_user_action = WIDGET_LIST_END;
 
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
@@ -548,48 +550,60 @@ struct BuildRailToolbarWindow : Window {
 		_remove_button_clicked = false;
 		switch (widget) {
 			case RTW_BUILD_NS:
-				HandlePlacePushButton(this, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, HT_LINE | HT_DIR_VL, PlaceRail_N);
+				HandlePlacePushButton(this, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, HT_LINE | HT_DIR_VL, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case RTW_BUILD_X:
-				HandlePlacePushButton(this, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, HT_LINE | HT_DIR_X, PlaceRail_NE);
+				HandlePlacePushButton(this, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, HT_LINE | HT_DIR_X, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case RTW_BUILD_EW:
-				HandlePlacePushButton(this, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, HT_LINE | HT_DIR_HL, PlaceRail_E);
+				HandlePlacePushButton(this, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, HT_LINE | HT_DIR_HL, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case RTW_BUILD_Y:
-				HandlePlacePushButton(this, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, HT_LINE | HT_DIR_Y, PlaceRail_NW);
+				HandlePlacePushButton(this, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, HT_LINE | HT_DIR_Y, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case RTW_AUTORAIL:
-				HandlePlacePushButton(this, RTW_AUTORAIL, GetRailTypeInfo(_cur_railtype)->cursor.autorail, HT_RAIL, PlaceRail_AutoRail);
+				HandlePlacePushButton(this, RTW_AUTORAIL, GetRailTypeInfo(_cur_railtype)->cursor.autorail, HT_RAIL, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case RTW_DEMOLISH:
-				HandlePlacePushButton(this, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
+				HandlePlacePushButton(this, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case RTW_BUILD_DEPOT:
-				if (HandlePlacePushButton(this, RTW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, HT_RECT, PlaceRail_Depot)) {
+				if (HandlePlacePushButton(this, RTW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, HT_RECT, NULL)) {
 					ShowBuildTrainDepotPicker(this);
+					this->last_user_action = widget;
 				}
 				break;
 
 			case RTW_BUILD_WAYPOINT:
+				this->last_user_action = widget;
 				_waypoint_count = StationClass::GetCount(STAT_CLASS_WAYP);
-				if (HandlePlacePushButton(this, RTW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT, PlaceRail_Waypoint) && _waypoint_count > 1) {
+				if (HandlePlacePushButton(this, RTW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, HT_RECT, NULL) && _waypoint_count > 1) {
 					ShowBuildWaypointPicker(this);
 				}
 				break;
 
 			case RTW_BUILD_STATION:
-				if (HandlePlacePushButton(this, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, HT_RECT, PlaceRail_Station)) ShowStationBuilder(this);
+				if (HandlePlacePushButton(this, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, HT_RECT, NULL)) {
+					ShowStationBuilder(this);
+					this->last_user_action = widget;
+				}
 				break;
 
 			case RTW_BUILD_SIGNALS: {
-				bool started = HandlePlacePushButton(this, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT, PlaceRail_AutoSignals);
+				this->last_user_action = widget;
+				bool started = HandlePlacePushButton(this, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, HT_RECT, NULL);
 				if (started && _settings_client.gui.enable_signal_gui != _ctrl_pressed) {
 					ShowSignalBuilder(this);
 				}
@@ -597,11 +611,13 @@ struct BuildRailToolbarWindow : Window {
 			}
 
 			case RTW_BUILD_BRIDGE:
-				HandlePlacePushButton(this, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT, PlaceRail_Bridge);
+				HandlePlacePushButton(this, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, HT_RECT, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case RTW_BUILD_TUNNEL:
-				HandlePlacePushButton(this, RTW_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, HT_SPECIAL, PlaceRail_Tunnel);
+				HandlePlacePushButton(this, RTW_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, HT_SPECIAL, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case RTW_REMOVE:
@@ -609,7 +625,8 @@ struct BuildRailToolbarWindow : Window {
 				break;
 
 			case RTW_CONVERT_RAIL:
-				HandlePlacePushButton(this, RTW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, HT_RECT, PlaceRail_ConvertRail);
+				HandlePlacePushButton(this, RTW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, HT_RECT, NULL);
+				this->last_user_action = widget;
 				break;
 
 			default: NOT_REACHED();
@@ -629,7 +646,61 @@ struct BuildRailToolbarWindow : Window {
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		_place_proc(tile);
+		switch (this->last_user_action) {
+			case RTW_BUILD_NS:
+				PlaceRail_N(tile);
+				break;
+
+			case RTW_BUILD_X:
+				PlaceRail_NE(tile);
+				break;
+
+			case RTW_BUILD_EW:
+				PlaceRail_E(tile);
+				break;
+
+			case RTW_BUILD_Y:
+				PlaceRail_NW(tile);
+				break;
+
+			case RTW_AUTORAIL:
+				PlaceRail_AutoRail(tile);
+				break;
+
+			case RTW_DEMOLISH:
+				PlaceProc_DemolishArea(tile);
+				break;
+
+			case RTW_BUILD_DEPOT:
+				PlaceRail_Depot(tile);
+				break;
+
+			case RTW_BUILD_WAYPOINT:
+				PlaceRail_Waypoint(tile);
+				break;
+
+			case RTW_BUILD_STATION:
+				PlaceRail_Station(tile);
+				break;
+
+			case RTW_BUILD_SIGNALS:
+				PlaceRail_AutoSignals(tile);
+				break;
+
+			case RTW_BUILD_BRIDGE:
+				PlaceRail_Bridge(tile);
+				break;
+
+			case RTW_BUILD_TUNNEL:
+				PlaceRail_Tunnel(tile);
+				break;
+
+			case RTW_CONVERT_RAIL:
+				PlaceRail_ConvertRail(tile);
+				break;
+
+			default: NOT_REACHED();
+		}
 	}
 
 	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
