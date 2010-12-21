@@ -729,7 +729,7 @@ struct RefitWindow : public Window {
 		const NWidgetCore *matrix_widget = this->GetWidget<NWidgetCore>(VRW_VEHICLE_PANEL_DISPLAY);
 		if (_current_text_dir == TD_RTL) click_x = matrix_widget->current_x - click_x;
 		click_x -= this->vehicle_margin;
-		click_x += this->hscroll->GetPosition();
+		if (this->hscroll != NULL) click_x += this->hscroll->GetPosition();
 
 		return click_x;
 	}
