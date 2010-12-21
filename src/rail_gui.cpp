@@ -74,11 +74,10 @@ void CcPlaySound1E(const CommandCost &result, TileIndex tile, uint32 p1, uint32 
 static void GenericPlaceRail(TileIndex tile, int cmd)
 {
 	DoCommandP(tile, _cur_railtype, cmd,
-		_remove_button_clicked ?
-		CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
-		CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK),
-		CcPlaySound1E
-	);
+			_remove_button_clicked ?
+			CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
+			CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK),
+			CcPlaySound1E);
 }
 
 static void PlaceRail_N(TileIndex tile)
@@ -156,8 +155,8 @@ void CcRailDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 static void PlaceRail_Depot(TileIndex tile)
 {
 	DoCommandP(tile, _cur_railtype, _build_depot_direction,
-		CMD_BUILD_TRAIN_DEPOT | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT),
-		CcRailDepot);
+			CMD_BUILD_TRAIN_DEPOT | CMD_MSG(STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT),
+			CcRailDepot);
 }
 
 static void PlaceRail_Waypoint(TileIndex tile)
@@ -254,8 +253,8 @@ static void GenericPlaceSignals(TileIndex tile)
 		}
 
 		DoCommandP(tile, p1, 0, CMD_BUILD_SIGNALS |
-			CMD_MSG((w != NULL && _convert_signal_button) ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE),
-			CcPlaySound1E);
+				CMD_MSG((w != NULL && _convert_signal_button) ? STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_ERROR_CAN_T_BUILD_SIGNALS_HERE),
+				CcPlaySound1E);
 	}
 }
 
@@ -533,10 +532,9 @@ static void BuildRailClick_Convert(Window *w)
 static void DoRailroadTrack(int mode)
 {
 	DoCommandP(TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), _cur_railtype | (mode << 4),
-		_remove_button_clicked ?
-		CMD_REMOVE_RAILROAD_TRACK | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
-		CMD_BUILD_RAILROAD_TRACK  | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK)
-	);
+			_remove_button_clicked ?
+			CMD_REMOVE_RAILROAD_TRACK | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
+			CMD_BUILD_RAILROAD_TRACK  | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK));
 }
 
 static void HandleAutodirPlacement()
@@ -587,14 +585,11 @@ static void HandleAutoSignalPlacement()
 
 	/* _settings_client.gui.drag_signals_density is given as a parameter such that each user
 	 * in a network game can specify his/her own signal density */
-	DoCommandP(
-		TileVirtXY(thd->selstart.x, thd->selstart.y),
-		TileVirtXY(thd->selend.x, thd->selend.y),
-		p2,
-		_remove_button_clicked ?
+	DoCommandP(TileVirtXY(thd->selstart.x, thd->selstart.y), TileVirtXY(thd->selend.x, thd->selend.y), p2,
+			_remove_button_clicked ?
 			CMD_REMOVE_SIGNAL_TRACK | CMD_MSG(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM) :
 			CMD_BUILD_SIGNAL_TRACK  | CMD_MSG(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE),
-		CcPlaySound1E);
+			CcPlaySound1E);
 }
 
 
