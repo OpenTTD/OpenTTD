@@ -128,8 +128,9 @@ void DrawRoadVehDetails(const Vehicle *v, int left, int right, int y)
  * @param right     The maximum horizontal position
  * @param y         Vertical position to draw at
  * @param selection Selected vehicle to draw a frame around
+ * @param skip      Number of pixels to skip at the front (for scrolling)
  */
-void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID selection)
+void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID selection, int skip)
 {
 	bool rtl = _current_text_dir == TD_RTL;
 	Direction dir = rtl ? DIR_E : DIR_W;
@@ -143,7 +144,7 @@ void DrawRoadVehImage(const Vehicle *v, int left, int right, int y, VehicleID se
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
 
-	int px = rtl ? max_width : 0;
+	int px = rtl ? max_width + skip : -skip;
 	for (; u != NULL && (rtl ? px > 0 : px < max_width); u = u->Next()) {
 		Point offset;
 		int width = u->GetDisplayImageWidth(&offset);

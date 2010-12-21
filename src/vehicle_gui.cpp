@@ -998,7 +998,7 @@ void DrawVehicleImage(const Vehicle *v, int left, int right, int y, VehicleID se
 {
 	switch (v->type) {
 		case VEH_TRAIN:    DrawTrainImage(Train::From(v), left, right, y, selection, skip); break;
-		case VEH_ROAD:     DrawRoadVehImage(v, left, right, y, selection);  break;
+		case VEH_ROAD:     DrawRoadVehImage(v, left, right, y, selection, skip);  break;
 		case VEH_SHIP:     DrawShipImage(v, left, right, y, selection);     break;
 		case VEH_AIRCRAFT: DrawAircraftImage(v, left, right, y, selection); break;
 		default: NOT_REACHED();
