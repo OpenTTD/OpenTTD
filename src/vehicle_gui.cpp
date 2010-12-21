@@ -346,6 +346,9 @@ static void DrawVehicleRefitWindow(const SubtypeList list[NUM_CARGO], int sel, u
 /** Widget numbers of the vehicle refit window. */
 enum VehicleRefitWidgets {
 	VRW_CAPTION,
+	VRW_VEHICLE_PANEL_DISPLAY,
+	VRW_SHOW_HSCROLLBAR,
+	VRW_HSCROLLBAR,
 	VRW_SELECTHEADER,
 	VRW_MATRIX,
 	VRW_SCROLLBAR,
@@ -360,7 +363,11 @@ struct RefitWindow : public Window {
 	SubtypeList list[NUM_CARGO]; ///< List of refit subtypes available for each sorted cargo.
 	VehicleOrderID order;        ///< If not #INVALID_VEH_ORDER_ID, selection is part of a refit order (rather than execute directly).
 	uint information_width;      ///< Width required for correctly displaying all cargos in the information panel.
-	Scrollbar *vscroll;
+	Scrollbar *vscroll;          ///< The main scrollbar.
+	Scrollbar *hscroll;          ///< Only used for long vehicles.
+	int vehicle_width;           ///< Width of the vehicle being drawn.
+	int sprite_left;             ///< Left position of the vehicle sprite.
+	int sprite_right;            ///< Right position of the vehicle sprite.
 
 	/**
 	 * Collects all (cargo, subcargo) refit options of a vehicle chain.
@@ -470,11 +477,13 @@ struct RefitWindow : public Window {
 		this->CreateNestedTree(desc);
 
 		this->vscroll = this->GetScrollbar(VRW_SCROLLBAR);
+		this->hscroll = (v->IsGroundVehicle() ? this->GetScrollbar(VRW_HSCROLLBAR) : NULL);
 		this->GetWidget<NWidgetCore>(VRW_SELECTHEADER)->tool_tip = STR_REFIT_TRAIN_LIST_TOOLTIP + v->type;
 		this->GetWidget<NWidgetCore>(VRW_MATRIX)->tool_tip       = STR_REFIT_TRAIN_LIST_TOOLTIP + v->type;
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(VRW_REFITBUTTON);
 		nwi->widget_data = STR_REFIT_TRAIN_REFIT_BUTTON + v->type;
 		nwi->tool_tip    = STR_REFIT_TRAIN_REFIT_TOOLTIP + v->type;
+		this->GetWidget<NWidgetStacked>(VRW_SHOW_HSCROLLBAR)->SetDisplayedPlane(v->IsGroundVehicle() ? 0 : SZSP_HORIZONTAL);
 
 		this->FinishInitNested(desc, v->index);
 		this->owner = v->owner;
@@ -515,12 +524,35 @@ struct RefitWindow : public Window {
 		}
 	}
 
+	virtual void OnPaint()
+	{
+		/* Determine amount of items for scroller. */
+		if (this->hscroll != NULL) this->hscroll->SetCount(this->vehicle_width);
+
+		/* Calculate sprite position. */
+		NWidgetCore *vehicle_panel_display = this->GetWidget<NWidgetCore>(VRW_VEHICLE_PANEL_DISPLAY);
+		int sprite_width = max(0, ((int)vehicle_panel_display->current_x - this->vehicle_width) / 2);
+		this->sprite_left = vehicle_panel_display->pos_x;
+		this->sprite_right = vehicle_panel_display->pos_x + vehicle_panel_display->current_x - 1;
+		if (_current_text_dir == TD_RTL) {
+			this->sprite_right -= sprite_width;
+		} else {
+			this->sprite_left += sprite_width;
+		}
+
+		this->DrawWidgets();
+	}
+
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
 			case VRW_MATRIX:
 				resize->height = WD_MATRIX_TOP + FONT_HEIGHT_NORMAL + WD_MATRIX_BOTTOM;
 				size->height = resize->height * 8;
+				break;
+
+			case VRW_VEHICLE_PANEL_DISPLAY:
+				size->height = GetVehicleHeight(Vehicle::Get(this->window_number)->type);
 				break;
 
 			case VRW_INFOPANEL:
@@ -564,6 +596,14 @@ struct RefitWindow : public Window {
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
+			case VRW_VEHICLE_PANEL_DISPLAY: {
+				Vehicle *v = Vehicle::Get(this->window_number);
+				DrawVehicleImage(v, this->sprite_left + WD_FRAMERECT_LEFT, this->sprite_right - WD_FRAMERECT_RIGHT,
+					r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, this->hscroll != NULL ? this->hscroll->GetPosition() : 0);
+
+				break;
+			}
+
 			case VRW_MATRIX:
 				DrawVehicleRefitWindow(this->list, this->sel, this->vscroll->GetPosition(), this->vscroll->GetCapacity(), this->resize.step_height, r);
 				break;
@@ -585,6 +625,8 @@ struct RefitWindow : public Window {
 		switch (data) {
 			case 0: { // The consist lenght of the vehicle has changed; rebuild the entire list.
 				this->BuildRefitList();
+				/* The vehicle width has changed too. */
+				this->vehicle_width = GetVehicleWidth(Vehicle::Get(this->window_number));
 				uint max_width = 0;
 
 				/* Check the width of all cargo information strings. */
@@ -640,7 +682,9 @@ struct RefitWindow : public Window {
 
 	virtual void OnResize()
 	{
+		this->vehicle_width = GetVehicleWidth(Vehicle::Get(this->window_number));
 		this->vscroll->SetCapacityFromWidget(this, VRW_MATRIX);
+		if (this->hscroll != NULL) this->hscroll->SetCapacityFromWidget(this, VRW_VEHICLE_PANEL_DISPLAY);
 		this->GetWidget<NWidgetCore>(VRW_MATRIX)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 };
@@ -649,6 +693,13 @@ static const NWidgetPart _nested_vehicle_refit_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, VRW_CAPTION), SetDataTip(STR_REFIT_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	/* Vehicle display + scrollbar. */
+	NWidget(NWID_VERTICAL),
+		NWidget(WWT_PANEL, COLOUR_GREY, VRW_VEHICLE_PANEL_DISPLAY), SetMinimalSize(228, 14), SetResize(1, 0), SetScrollbar(VRW_HSCROLLBAR), EndContainer(),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, VRW_SHOW_HSCROLLBAR),
+			NWidget(NWID_HSCROLLBAR, COLOUR_GREY, VRW_HSCROLLBAR),
+		EndContainer(),
 	EndContainer(),
 	NWidget(WWT_TEXTBTN, COLOUR_GREY, VRW_SELECTHEADER), SetDataTip(STR_REFIT_TITLE, STR_NULL), SetResize(1, 0),
 	/* Matrix + scrollbar. */
