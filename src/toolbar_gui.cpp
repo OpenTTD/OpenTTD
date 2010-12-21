@@ -64,6 +64,8 @@ enum ToolbarMode {
 /** Callback functions. */
 enum CallBackFunction {
 	CBF_NONE,
+	CBF_PLACE_SIGN,
+	CBF_PLACE_LANDINFO,
 };
 
 enum ToolbarNormalWidgets {
@@ -251,13 +253,14 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 
 static ToolbarMode _toolbar_mode;
 
-static void SelectSignTool()
+static CallBackFunction SelectSignTool()
 {
 	if (_cursor.sprite == SPR_CURSOR_SIGN) {
 		ResetObjectToPlace();
+		return CBF_NONE;
 	} else {
 		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, HT_RECT, WC_MAIN_TOOLBAR, 0);
-		_place_proc = PlaceProc_Sign;
+		return CBF_PLACE_SIGN;
 	}
 }
 
@@ -771,7 +774,7 @@ static CallBackFunction MenuClickForest(int index)
 	switch (index) {
 		case 0: ShowTerraformToolbar();  break;
 		case 1: ShowBuildTreesToolbar(); break;
-		case 2: SelectSignTool();        break;
+		case 2: return SelectSignTool();
 	}
 	return CBF_NONE;
 }
@@ -810,18 +813,14 @@ static CallBackFunction MenuClickNewspaper(int index)
 
 /* --- Help button menu --- */
 
-static void Place_LandInfo(TileIndex tile)
-{
-	ShowLandInfo(tile);
-}
-
-static void PlaceLandBlockInfo()
+static CallBackFunction PlaceLandBlockInfo()
 {
 	if (_cursor.sprite == SPR_CURSOR_QUERY) {
 		ResetObjectToPlace();
+		return CBF_NONE;
 	} else {
-		_place_proc = Place_LandInfo;
 		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, HT_RECT, WC_MAIN_TOOLBAR, 0);
+		return CBF_PLACE_LANDINFO;
 	}
 }
 
@@ -849,7 +848,7 @@ static void MenuClickWorldScreenshot()
 static CallBackFunction MenuClickHelp(int index)
 {
 	switch (index) {
-		case 0: PlaceLandBlockInfo();          break;
+		case 0: return PlaceLandBlockInfo();
 		case 2: IConsoleSwitch();              break;
 		case 3: ShowAIDebugWindow();           break;
 		case 4: MenuClickSmallScreenshot();    break;
@@ -972,8 +971,7 @@ static CallBackFunction ToolbarScenPlaceSign(Window *w)
 {
 	w->HandleButtonClick(TBSE_PLACESIGNS);
 	SndPlayFx(SND_15_BEEP);
-	SelectSignTool();
-	return CBF_NONE;
+	return SelectSignTool();
 }
 
 static CallBackFunction ToolbarBtn_NULL(Window *w)
@@ -1357,11 +1355,15 @@ enum MainToolbarHotkeys {
 	MTHK_SIGN_LIST,
 };
 
+/** Main toolbar. */
 struct MainToolbarWindow : Window {
+	CallBackFunction last_started_action; ///< Last started user action.
+
 	MainToolbarWindow(const WindowDesc *desc) : Window()
 	{
 		this->InitNested(desc, 0);
 
+		this->last_started_action = CBF_NONE;
 		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 		this->SetWidgetDisabledState(TBN_PAUSE, _networking && !_network_server); // if not server, disable pause button
 		this->SetWidgetDisabledState(TBN_FASTFORWARD, _networking); // if networking, disable fast-forward button
@@ -1391,7 +1393,8 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
-		_menu_clicked_procs[widget](index);
+		CallBackFunction cbf = _menu_clicked_procs[widget](index);
+		if (cbf != CBF_NONE) this->last_started_action = cbf;
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -1441,7 +1444,17 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		_place_proc(tile);
+		switch (this->last_started_action) {
+			case CBF_PLACE_SIGN:
+				PlaceProc_Sign(tile);
+				break;
+
+			case CBF_PLACE_LANDINFO:
+				ShowLandInfo(tile);
+				break;
+
+			default: NOT_REACHED();
+		}
 	}
 
 	virtual void OnTick()
@@ -1640,11 +1653,13 @@ enum MainToolbarEditorHotkeys {
 };
 
 struct ScenarioEditorToolbarWindow : Window {
-public:
+	CallBackFunction last_started_action; ///< Last started user action.
+
 	ScenarioEditorToolbarWindow(const WindowDesc *desc) : Window()
 	{
 		this->InitNested(desc, 0);
 
+		this->last_started_action = CBF_NONE;
 		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
@@ -1697,7 +1712,8 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		if (_game_mode == GM_MENU) return;
-		_scen_toolbar_button_procs[widget](this);
+		CallBackFunction cbf = _scen_toolbar_button_procs[widget](this);
+		if (cbf != CBF_NONE) this->last_started_action = cbf;
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)
@@ -1705,12 +1721,14 @@ public:
 		/* The map button is in a different location on the scenario
 		 * editor toolbar, so we need to adjust for it. */
 		if (widget == TBSE_SMALLMAP) widget = TBN_SMALLMAP;
-		_menu_clicked_procs[widget](index);
+		CallBackFunction cbf = _menu_clicked_procs[widget](index);
+		if (cbf != CBF_NONE) this->last_started_action = cbf;
 		SndPlayFx(SND_15_BEEP);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
+		CallBackFunction cbf = CBF_NONE;
 		switch (CheckHotkeyMatch(scenedit_maintoolbar_hotkeys, keycode, this)) {
 			case MTEHK_PAUSE:               ToolbarPauseClick(this); break;
 			case MTEHK_FASTFORWARD:         ToolbarFastForwardClick(this); break;
@@ -1722,9 +1740,9 @@ public:
 			case MTEHK_BUILD_ROAD:          ToolbarScenBuildRoad(this); break;
 			case MTEHK_BUILD_DOCKS:         ToolbarScenBuildDocks(this); break;
 			case MTEHK_BUILD_TREES:         ToolbarScenPlantTrees(this); break;
-			case MTEHK_SIGN:                ToolbarScenPlaceSign(this); break;
+			case MTEHK_SIGN:                cbf = ToolbarScenPlaceSign(this); break;
 			case MTEHK_MUSIC:               ShowMusicWindow(); break;
-			case MTEHK_LANDINFO:            PlaceLandBlockInfo(); break;
+			case MTEHK_LANDINFO:            cbf = PlaceLandBlockInfo(); break;
 			case MTEHK_SMALL_SCREENSHOT:    MenuClickSmallScreenshot(); break;
 			case MTEHK_ZOOMEDIN_SCREENSHOT: MenuClickZoomedInScreenshot(); break;
 			case MTEHK_GIANT_SCREENSHOT:    MenuClickWorldScreenshot(); break;
@@ -1735,12 +1753,23 @@ public:
 			case MTEHK_EXTRA_VIEWPORT:      ShowExtraViewPortWindowForTileUnderCursor(); break;
 			default: return ES_NOT_HANDLED;
 		}
+		if (cbf != CBF_NONE) this->last_started_action = cbf;
 		return ES_HANDLED;
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		_place_proc(tile);
+		switch (this->last_started_action) {
+			case CBF_PLACE_SIGN:
+				PlaceProc_Sign(tile);
+				break;
+
+			case CBF_PLACE_LANDINFO:
+				ShowLandInfo(tile);
+				break;
+
+			default: NOT_REACHED();
+		}
 	}
 
 	virtual void OnTimeout()
