@@ -1712,27 +1712,27 @@ public:
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		switch (CheckHotkeyMatch(scenedit_maintoolbar_hotkeys, keycode, this)) {
-			case MTEHK_PAUSE: ToolbarPauseClick(this); break;
-			case MTEHK_FASTFORWARD: ToolbarFastForwardClick(this); break;
-			case MTEHK_SETTINGS: ShowGameOptions(); break;
-			case MTEHK_SAVEGAME: MenuClickSaveLoad(); break;
-			case MTEHK_GENLAND: ToolbarScenGenLand(this); break;
-			case MTEHK_GENTOWN: ToolbarScenGenTown(this); break;
-			case MTEHK_GENINDUSTRY: ToolbarScenGenIndustry(this); break;
-			case MTEHK_BUILD_ROAD: ToolbarScenBuildRoad(this); break;
-			case MTEHK_BUILD_DOCKS: ToolbarScenBuildDocks(this); break;
-			case MTEHK_BUILD_TREES: ToolbarScenPlantTrees(this); break;
-			case MTEHK_SIGN: ToolbarScenPlaceSign(this); break;
-			case MTEHK_MUSIC: ShowMusicWindow(); break;
-			case MTEHK_LANDINFO: PlaceLandBlockInfo(); break;
-			case MTEHK_SMALL_SCREENSHOT: MenuClickSmallScreenshot(); break;
+			case MTEHK_PAUSE:               ToolbarPauseClick(this); break;
+			case MTEHK_FASTFORWARD:         ToolbarFastForwardClick(this); break;
+			case MTEHK_SETTINGS:            ShowGameOptions(); break;
+			case MTEHK_SAVEGAME:            MenuClickSaveLoad(); break;
+			case MTEHK_GENLAND:             ToolbarScenGenLand(this); break;
+			case MTEHK_GENTOWN:             ToolbarScenGenTown(this); break;
+			case MTEHK_GENINDUSTRY:         ToolbarScenGenIndustry(this); break;
+			case MTEHK_BUILD_ROAD:          ToolbarScenBuildRoad(this); break;
+			case MTEHK_BUILD_DOCKS:         ToolbarScenBuildDocks(this); break;
+			case MTEHK_BUILD_TREES:         ToolbarScenPlantTrees(this); break;
+			case MTEHK_SIGN:                ToolbarScenPlaceSign(this); break;
+			case MTEHK_MUSIC:               ShowMusicWindow(); break;
+			case MTEHK_LANDINFO:            PlaceLandBlockInfo(); break;
+			case MTEHK_SMALL_SCREENSHOT:    MenuClickSmallScreenshot(); break;
 			case MTEHK_ZOOMEDIN_SCREENSHOT: MenuClickZoomedInScreenshot(); break;
-			case MTEHK_GIANT_SCREENSHOT: MenuClickWorldScreenshot(); break;
-			case MTEHK_ZOOM_IN: ToolbarZoomInClick(this); break;
-			case MTEHK_ZOOM_OUT: ToolbarZoomOutClick(this); break;
-			case MTEHK_TERRAFORM: ShowEditorTerraformToolbar(); break;
-			case MTEHK_SMALLMAP: ShowSmallMap(); break;
-			case MTEHK_EXTRA_VIEWPORT: ShowExtraViewPortWindowForTileUnderCursor(); break;
+			case MTEHK_GIANT_SCREENSHOT:    MenuClickWorldScreenshot(); break;
+			case MTEHK_ZOOM_IN:             ToolbarZoomInClick(this); break;
+			case MTEHK_ZOOM_OUT:            ToolbarZoomOutClick(this); break;
+			case MTEHK_TERRAFORM:           ShowEditorTerraformToolbar(); break;
+			case MTEHK_SMALLMAP:            ShowSmallMap(); break;
+			case MTEHK_EXTRA_VIEWPORT:      ShowExtraViewPortWindowForTileUnderCursor(); break;
 			default: return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
