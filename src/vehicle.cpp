@@ -2269,9 +2269,28 @@ const GroundVehicleCache *Vehicle::GetGroundVehicleCache() const
 void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles)
 {
 	if (v->type == VEH_TRAIN) {
-		for (Train *u = Train::From(v); u != NULL && num_vehicles > 0; num_vehicles--, u = u->Next()) {
+		Train *u = Train::From(v);
+		/* If the first vehicle in the selection is part of an articulated vehicle, add the previous parts of the vehicle. */
+		if (u->IsArticulatedPart()) {
+			u = u->GetFirstEnginePart();
+			while (u->index != v->index) {
+				set.Include(u->index);
+				u = u->GetNextArticPart();
+			}
+		}
+
+		for (;u != NULL && num_vehicles > 0; num_vehicles--, u = u->Next()) {
 			/* Include current vehicle in the selection. */
 			set.Include(u->index);
+
+			/* If the vehicle is multiheaded, add the other part too. */
+			if (u->IsMultiheaded()) set.Include(u->other_multiheaded_part->index);
+		}
+
+		/* If the last vehicle is part of an articulated vehicle, add the following parts of the vehicle. */
+		while (u != NULL && u->IsArticulatedPart()) {
+			set.Include(u->index);
+			u = u->Next();
 		}
 	}
 }
