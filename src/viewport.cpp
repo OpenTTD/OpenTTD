@@ -2037,8 +2037,8 @@ void UpdateTileSelection()
 	int x1;
 	int y1;
 
-	_thd.new_drawstyle = HT_NONE;
-	_thd.new_diagonal = false;
+	HighLightStyle new_drawstyle = HT_NONE;
+	bool new_diagonal = false;
 
 	if (_thd.place_mode == HT_SPECIAL) {
 		x1 = _thd.selend.x;
@@ -2050,7 +2050,7 @@ void UpdateTileSelection()
 			y1 &= ~TILE_UNIT_MASK;
 
 			if (IsDraggingDiagonal()) {
-				_thd.new_diagonal = true;
+				new_diagonal = true;
 			} else {
 				if (x1 >= x2) Swap(x1, x2);
 				if (y1 >= y2) Swap(y1, y2);
@@ -2059,11 +2059,11 @@ void UpdateTileSelection()
 			_thd.new_pos.y = y1;
 			_thd.new_size.x = x2 - x1;
 			_thd.new_size.y = y2 - y1;
-			if (!_thd.new_diagonal) {
+			if (!new_diagonal) {
 				_thd.new_size.x += TILE_SIZE;
 				_thd.new_size.y += TILE_SIZE;
 			}
-			_thd.new_drawstyle = _thd.next_drawstyle;
+			new_drawstyle = _thd.next_drawstyle;
 		}
 	} else if ((_thd.place_mode & HT_DRAG_MASK) != HT_NONE) {
 		Point pt = GetTileBelowCursor();
@@ -2072,30 +2072,30 @@ void UpdateTileSelection()
 		if (x1 != -1) {
 			switch (_thd.place_mode & HT_DRAG_MASK) {
 				case HT_RECT:
-					_thd.new_drawstyle = HT_RECT;
+					new_drawstyle = HT_RECT;
 					break;
 				case HT_POINT:
-					_thd.new_drawstyle = HT_POINT;
+					new_drawstyle = HT_POINT;
 					x1 += TILE_SIZE / 2;
 					y1 += TILE_SIZE / 2;
 					break;
 				case HT_RAIL:
 					/* Draw one highlighted tile in any direction */
-					_thd.new_drawstyle = GetAutorailHT(pt.x, pt.y);
+					new_drawstyle = GetAutorailHT(pt.x, pt.y);
 					break;
 				case HT_LINE:
 					switch (_thd.place_mode & HT_DIR_MASK) {
-						case HT_DIR_X: _thd.new_drawstyle = HT_LINE | HT_DIR_X; break;
-						case HT_DIR_Y: _thd.new_drawstyle = HT_LINE | HT_DIR_Y; break;
+						case HT_DIR_X: new_drawstyle = HT_LINE | HT_DIR_X; break;
+						case HT_DIR_Y: new_drawstyle = HT_LINE | HT_DIR_Y; break;
 
 						case HT_DIR_HU:
 						case HT_DIR_HL:
-							_thd.new_drawstyle = (pt.x & TILE_UNIT_MASK) + (pt.y & TILE_UNIT_MASK) <= TILE_SIZE ? HT_LINE | HT_DIR_HU : HT_LINE | HT_DIR_HL;
+							new_drawstyle = (pt.x & TILE_UNIT_MASK) + (pt.y & TILE_UNIT_MASK) <= TILE_SIZE ? HT_LINE | HT_DIR_HU : HT_LINE | HT_DIR_HL;
 							break;
 
 						case HT_DIR_VL:
 						case HT_DIR_VR:
-							_thd.new_drawstyle = (pt.x & TILE_UNIT_MASK) > (pt.y & TILE_UNIT_MASK) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
+							new_drawstyle = (pt.x & TILE_UNIT_MASK) > (pt.y & TILE_UNIT_MASK) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
 							break;
 
 						default: NOT_REACHED();
@@ -2113,24 +2113,24 @@ void UpdateTileSelection()
 	}
 
 	/* redraw selection */
-	if (_thd.drawstyle != _thd.new_drawstyle ||
+	if (_thd.drawstyle != new_drawstyle ||
 			_thd.pos.x != _thd.new_pos.x || _thd.pos.y != _thd.new_pos.y ||
 			_thd.size.x != _thd.new_size.x || _thd.size.y != _thd.new_size.y ||
 			_thd.outersize.x != _thd.new_outersize.x ||
 			_thd.outersize.y != _thd.new_outersize.y ||
-			_thd.diagonal    != _thd.new_diagonal) {
+			_thd.diagonal    != new_diagonal) {
 		/* clear the old selection? */
 		if (_thd.drawstyle) SetSelectionTilesDirty();
 
-		_thd.drawstyle = _thd.new_drawstyle;
+		_thd.drawstyle = new_drawstyle;
 		_thd.pos = _thd.new_pos;
 		_thd.size = _thd.new_size;
 		_thd.outersize = _thd.new_outersize;
-		_thd.diagonal = _thd.new_diagonal;
+		_thd.diagonal = new_diagonal;
 		_thd.dirty = 0xff;
 
 		/* draw the new selection? */
-		if (_thd.new_drawstyle) SetSelectionTilesDirty();
+		if (new_drawstyle != HT_NONE) SetSelectionTilesDirty();
 	}
 }
 
