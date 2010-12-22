@@ -1923,7 +1923,16 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 	if (HasBit(e->info.callback_mask, CBM_VEHICLE_VISUAL_EFFECT)) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_VISUAL_EFFECT, 0, 0, this->engine_type, this);
 
-		if (callback != CALLBACK_FAILED) this->vcache.cached_vis_effect = GB(callback, 0, 8);
+		if (callback != CALLBACK_FAILED) {
+			callback = GB(callback, 0, 8);
+			/* Avoid accidentally setting 'visual_effect' to the default value
+			 * Since bit 6 (disable effects) is set anyways, we can safely erase some bits. */
+			if (callback == VE_DEFAULT) {
+				assert(HasBit(callback, VE_DISABLE_EFFECT));
+				SB(callback, VE_TYPE_START, VE_TYPE_COUNT, 0);
+			}
+			this->vcache.cached_vis_effect = callback;
+		}
 	}
 
 	if (!allow_power_change && powered_before != HasBit(this->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER)) {
