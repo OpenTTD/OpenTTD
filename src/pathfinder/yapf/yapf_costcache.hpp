@@ -9,8 +9,8 @@
 
 /** @file yapf_costcache.hpp Caching of segment costs. */
 
-#ifndef  YAPF_COSTCACHE_HPP
-#define  YAPF_COSTCACHE_HPP
+#ifndef YAPF_COSTCACHE_HPP
+#define YAPF_COSTCACHE_HPP
 
 #include "../../date_func.h"
 

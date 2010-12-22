@@ -9,8 +9,8 @@
 
 /** @file yapf_common.hpp Commonly used classes for YAPF. */
 
-#ifndef  YAPF_COMMON_HPP
-#define  YAPF_COMMON_HPP
+#ifndef YAPF_COMMON_HPP
+#define YAPF_COMMON_HPP
 
 /** YAPF origin provider base class - used when origin is one tile / multiple trackdirs */
 template <class Types>

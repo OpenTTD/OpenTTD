@@ -9,8 +9,8 @@
 
 /** @file array.hpp Array without an explicit maximum size. */
 
-#ifndef  ARRAY_HPP
-#define  ARRAY_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
 #include "fixedsizearray.hpp"
 #include "str.hpp"

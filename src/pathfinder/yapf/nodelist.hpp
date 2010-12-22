@@ -9,8 +9,8 @@
 
 /** @file nodelist.hpp List of nodes used for the A-star pathfinder. */
 
-#ifndef  NODELIST_HPP
-#define  NODELIST_HPP
+#ifndef NODELIST_HPP
+#define NODELIST_HPP
 
 #include "../../misc/array.hpp"
 #include "../../misc/hashtable.hpp"

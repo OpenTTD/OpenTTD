@@ -9,8 +9,8 @@
 
 /** @file yapf_costbase.hpp Handling of cost determination. */
 
-#ifndef  YAPF_COSTBASE_HPP
-#define  YAPF_COSTBASE_HPP
+#ifndef YAPF_COSTBASE_HPP
+#define YAPF_COSTBASE_HPP
 
 struct CYapfCostBase {
 	FORCEINLINE static bool stSlopeCost(TileIndex tile, Trackdir td)

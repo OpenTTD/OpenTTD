@@ -9,8 +9,8 @@
 
 /** @file binaryheap.hpp Binary heap implementation. */
 
-#ifndef  BINARYHEAP_HPP
-#define  BINARYHEAP_HPP
+#ifndef BINARYHEAP_HPP
+#define BINARYHEAP_HPP
 
 #include "../core/alloc_func.hpp"
 

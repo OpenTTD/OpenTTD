@@ -9,8 +9,8 @@
 
 /** @file fixedsizearray.hpp A fixed size array that doesn't create items until needed. */
 
-#ifndef  FIXEDSIZEARRAY_HPP
-#define  FIXEDSIZEARRAY_HPP
+#ifndef FIXEDSIZEARRAY_HPP
+#define FIXEDSIZEARRAY_HPP
 
 #include "../core/alloc_func.hpp"
 

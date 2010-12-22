@@ -9,8 +9,8 @@
 
 /** @file str.hpp String formating? */
 
-#ifndef  STR_HPP
-#define  STR_HPP
+#ifndef STR_HPP
+#define STR_HPP
 
 #include <errno.h>
 #include <stdarg.h>

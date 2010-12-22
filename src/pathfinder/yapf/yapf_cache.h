@@ -9,8 +9,8 @@
 
 /** @file yapf_cache.h Entry point for OpenTTD to YAPF's cache. */
 
-#ifndef  YAPF_CACHE_H
-#define  YAPF_CACHE_H
+#ifndef YAPF_CACHE_H
+#define YAPF_CACHE_H
 
 #include "../../track_type.h"
 

@@ -9,8 +9,8 @@
 
 /** @file yapf.h Entry point for OpenTTD to YAPF. */
 
-#ifndef  YAPF_H
-#define  YAPF_H
+#ifndef YAPF_H
+#define YAPF_H
 
 #include "../../direction_type.h"
 #include "../../track_type.h"

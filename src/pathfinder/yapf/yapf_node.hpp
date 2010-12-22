@@ -9,8 +9,8 @@
 
 /** @file yapf_node.hpp Node in the pathfinder's graph. */
 
-#ifndef  YAPF_NODE_HPP
-#define  YAPF_NODE_HPP
+#ifndef YAPF_NODE_HPP
+#define YAPF_NODE_HPP
 
 /** Yapf Node Key that evaluates hash from (and compares) tile & exit dir. */
 struct CYapfNodeKeyExitDir {

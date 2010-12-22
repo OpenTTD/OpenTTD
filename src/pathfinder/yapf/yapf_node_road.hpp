@@ -9,8 +9,8 @@
 
 /** @file yapf_node_road.hpp Node tailored for road pathfinding. */
 
-#ifndef  YAPF_NODE_ROAD_HPP
-#define  YAPF_NODE_ROAD_HPP
+#ifndef YAPF_NODE_ROAD_HPP
+#define YAPF_NODE_ROAD_HPP
 
 /** Yapf Node for road YAPF */
 template <class Tkey_>

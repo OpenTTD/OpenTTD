@@ -9,8 +9,8 @@
 
 /** @file hashtable.hpp Hash table support. */
 
-#ifndef  HASHTABLE_HPP
-#define  HASHTABLE_HPP
+#ifndef HASHTABLE_HPP
+#define HASHTABLE_HPP
 
 #include "../core/math_func.hpp"
 

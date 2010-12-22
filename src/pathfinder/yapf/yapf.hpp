@@ -9,8 +9,8 @@
 
 /** @file yapf.hpp Base includes/functions for YAPF. */
 
-#ifndef  YAPF_HPP
-#define  YAPF_HPP
+#ifndef YAPF_HPP
+#define YAPF_HPP
 
 #include "../../landscape.h"
 #include "../pathfinder_func.h"

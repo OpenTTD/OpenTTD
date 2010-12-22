@@ -9,8 +9,8 @@
 
 /** @file yapf_base.hpp Base classes for YAPF. */
 
-#ifndef  YAPF_BASE_HPP
-#define  YAPF_BASE_HPP
+#ifndef YAPF_BASE_HPP
+#define YAPF_BASE_HPP
 
 #include "../../debug.h"
 #include "../../settings_type.h"

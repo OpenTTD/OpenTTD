@@ -9,8 +9,8 @@
 
 /** @file pf_performance_timer.hpp Performance timer for pathfinders. */
 
-#ifndef  PF_PERFORMANCE_TIMER_HPP
-#define  PF_PERFORMANCE_TIMER_HPP
+#ifndef PF_PERFORMANCE_TIMER_HPP
+#define PF_PERFORMANCE_TIMER_HPP
 
 extern uint64 ottd_rdtsc();
 
