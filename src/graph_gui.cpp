@@ -1160,7 +1160,7 @@ private:
 	/** Sort the company league by performance history */
 	static int CDECL PerformanceSorter(const Company * const *c1, const Company * const *c2)
 	{
-		return (*c2)->old_economy[1].performance_history - (*c1)->old_economy[1].performance_history;
+		return (*c2)->old_economy[0].performance_history - (*c1)->old_economy[0].performance_history;
 	}
 
 public:
@@ -1201,7 +1201,7 @@ public:
 
 			SetDParam(0, c->index);
 			SetDParam(1, c->index);
-			SetDParam(2, GetPerformanceTitleFromValue(c->old_economy[1].performance_history));
+			SetDParam(2, GetPerformanceTitleFromValue(c->old_economy[0].performance_history));
 			DrawString(text_left, text_right, y, STR_COMPANY_LEAGUE_COMPANY_NAME);
 			y += FONT_HEIGHT_NORMAL;
 		}
