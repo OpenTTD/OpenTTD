@@ -1895,14 +1895,14 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 	this->vcache.cached_vis_effect = 0;
 
 	const Engine *e = Engine::Get(this->engine_type);
-	byte default_effect = VE_DEFAULT;
+	byte visual_effect = VE_DEFAULT;
 	switch (this->type) {
-		case VEH_TRAIN:    default_effect = e->u.rail.visual_effect; break;
-		case VEH_ROAD:     default_effect = e->u.road.visual_effect; break;
-		case VEH_SHIP:     default_effect = e->u.ship.visual_effect; break;
+		case VEH_TRAIN: visual_effect = e->u.rail.visual_effect; break;
+		case VEH_ROAD:  visual_effect = e->u.road.visual_effect; break;
+		case VEH_SHIP:  visual_effect = e->u.ship.visual_effect; break;
 		default: break;
 	}
-	if (default_effect == VE_DEFAULT) {
+	if (visual_effect == VE_DEFAULT) {
 		if (this->type == VEH_TRAIN && !(Train::From(this)->IsWagon() || Train::From(this)->IsArticulatedPart())) {
 			if (e->u.rail.engclass == 0) {
 				/* Steam is offset by -4 units */
@@ -1916,7 +1916,7 @@ void Vehicle::UpdateVisualEffect(bool allow_power_change)
 			SetBit(this->vcache.cached_vis_effect, VE_DISABLE_EFFECT);
 		}
 	} else {
-		this->vcache.cached_vis_effect = default_effect;
+		this->vcache.cached_vis_effect = visual_effect;
 	}
 
 	/* Check powered wagon / visual effect callback */
