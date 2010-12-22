@@ -155,6 +155,8 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject *object) con
 			/* Reset values to current scope.
 			 * Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
 			object->scope = this->var_scope;
+		} else if (adjust->variable == 0x7B) {
+			value = GetVariable(object, adjust->parameter, last_value, &available);
 		} else {
 			value = GetVariable(object, adjust->variable, adjust->parameter, &available);
 		}
