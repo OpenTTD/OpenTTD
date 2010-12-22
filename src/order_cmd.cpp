@@ -750,7 +750,6 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 {
 	VehicleID veh_id = GB(p1, 0, 20);
 	VehicleOrderID sel_ord = GB(p2, 0, 8);
-	Order *order;
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 
@@ -762,8 +761,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	/* If we did not select an order, we maybe want to de-clone the orders */
 	if (sel_ord >= v->GetNumOrders()) return DecloneOrder(v, flags);
 
-	order = v->GetOrder(sel_ord);
-	if (order == NULL) return CMD_ERROR;
+	if (v->GetOrder(sel_ord) == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) DeleteOrder(v, sel_ord);
 	return CommandCost();
