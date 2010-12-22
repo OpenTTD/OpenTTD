@@ -94,4 +94,4 @@ void SetCompanySetting(uint index, int32 value);
 
 extern VehicleDefaultSettings _old_vds;
 
-#endif /* SETTINGS_H */
+#endif /* SETTINGS_INTERNAL_H */

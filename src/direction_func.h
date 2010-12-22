@@ -234,4 +234,4 @@ static inline bool IsValidAxis(Axis d)
 	return d < AXIS_END;
 }
 
-#endif /* DIRECTION_H */
+#endif /* DIRECTION_FUNC_H */

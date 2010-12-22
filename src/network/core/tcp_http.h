@@ -143,4 +143,4 @@ public:
 
 #endif /* ENABLE_NETWORK */
 
-#endif /* NETWORK_CORE_HTTP_H */
+#endif /* NETWORK_CORE_TCP_HTTP_H */

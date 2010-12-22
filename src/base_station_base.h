@@ -251,4 +251,4 @@ struct SpecializedStation : public BaseStation {
 
 #define FOR_ALL_BASE_STATIONS_OF_TYPE(name, var) FOR_ALL_ITEMS_FROM(name, station_index, var, 0) if (name::IsExpected(var))
 
-#endif /* STATION_BASE_H */
+#endif /* BASE_STATION_BASE_H */

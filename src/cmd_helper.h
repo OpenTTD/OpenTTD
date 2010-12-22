@@ -24,4 +24,4 @@ template<typename T, uint S, uint N, typename U> static inline T Extract(U v)
 	return IsInsideMM(masked, EnumPropsT<T>::begin, EnumPropsT<T>::end) ? (T)masked : EnumPropsT<T>::invalid;
 }
 
-#endif
+#endif /* CMD_HELPER_H */

@@ -431,4 +431,4 @@ public:
 #define FOR_ALL_ORDER_LISTS_FROM(var, start) FOR_ALL_ITEMS_FROM(OrderList, orderlist_index, var, start)
 #define FOR_ALL_ORDER_LISTS(var) FOR_ALL_ORDER_LISTS_FROM(var, 0)
 
-#endif /* ORDER_H */
+#endif /* ORDER_BASE_H */

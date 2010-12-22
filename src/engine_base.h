@@ -148,4 +148,4 @@ static inline const AircraftVehicleInfo *AircraftVehInfo(EngineID e)
 	return &Engine::Get(e)->u.air;
 }
 
-#endif /* ENGINE_TYPE_H */
+#endif /* ENGINE_BASE_H */

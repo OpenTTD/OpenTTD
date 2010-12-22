@@ -99,4 +99,4 @@ struct NewGRFClass {
 	static const Tspec *GetByGrf(uint32 grfid, byte local_id, int *index);
 };
 
-#endif /* NEWGRF_STATION_H */
+#endif /* NEWGRF_CLASS_H */
