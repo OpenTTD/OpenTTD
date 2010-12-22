@@ -238,7 +238,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Fare cli
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Seleziona dimensione grande/piccola della finestra
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra di scorrimento - scorre l'elenco su/giù
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra di scorrimento - scorre l'elenco a sinistra/destra
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolisce edifici etc. su un riquadro di terra. CTRL seleziona l'area diagonalmente
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolisce edifici etc. su un riquadro di terra. CTRL seleziona l'area diagonalmente. MAIUSC alterna fra costruzione e stima dei costi
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Predefinito
@@ -333,9 +333,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generazi
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generazione città
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generazione industrie
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Costruzione strade
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Pianta alberi
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Pianta alberi. MAIUSC alterna fra costruzione e stima dei costi
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Posiziona cartello
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Posiziona oggetto
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Posiziona oggetto. MAIUSC alterna fra costruzione e stima dei costi
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salva scenario
@@ -1916,16 +1916,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Costruzione fer
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Costruzione monorotaia
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Costruzione maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Costruisce binari. CTRL alterna costruzione/rimozione.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Costruisce binari usando la modalità automatica. CTRL alterna costruzione/rimozione.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Costruisce un deposito ferroviario (per comprare e manutenere i treni)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Trasforma la rotaia in un waypoint. CTRL abilita l'unione con altri waypoint.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Costruisce una stazione ferroviaria. CTRL abilita l'unione con altre stazioni.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Costruisce i segnali ferroviari. CTRL alterna segnali semaforici/luminosi.{}Trascinare il cursore per costruire segnali su un tratto rettilineo di rotaie, con CTRL per andare automaticamente fino al raccordo successivo.{}Tenere premuto CTRL mentre si attiva il pulsante per non aprire la finestra segnali.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Costruisce un ponte ferroviario
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Costruisce un tunnel ferroviario
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Costruisce binari. CTRL alterna costruzione/rimozione. MAIUSC alterna fra costruzione e stima dei costi
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Costruisce binari usando la modalità automatica. CTRL alterna costruzione/rimozione. MAIUSC alterna fra costruzione e stima dei costi
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Costruisce un deposito ferroviario (per comprare e manutenere i treni). MAIUSC alterna fra costruzione e stima dei costi
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Trasforma la rotaia in un waypoint. CTRL abilita l'unione con altri waypoint. MAIUSC alterna fra costruzione e stima dei costi
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Costruisce una stazione ferroviaria. CTRL abilita l'unione con altre stazioni. MAIUSC alterna fra costruzione e stima dei costi
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Costruisce i segnali ferroviari. CTRL alterna segnali semaforici/luminosi.{}Trascinare il cursore per costruire segnali su un tratto rettilineo di rotaie, con CTRL per andare automaticamente fino al raccordo successivo.{}Tenere premuto CTRL mentre si attiva il pulsante per non aprire la finestra segnali. MAIUSC alterna fra costruzione e stima dei costi
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Costruisce un ponte ferroviario. MAIUSC alterna fra costruzione e stima dei costi
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Costruisce un tunnel ferroviario. MAIUSC alterna fra costruzione e stima dei costi
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alterna costruzione/rimozione di binari, segnali, waypoint e stazioni. Tenere premuto CTRL per rimuovere anche i binari.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converte/aggiorna il tipo di rotaie
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converte/aggiorna il tipo di rotaie. MAIUSC alterna fra costruzione e stima dei costi
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientamento deposito
@@ -1966,7 +1966,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Segnale 
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Segnale combinato (luminoso){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Segnale a percorso (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Può essere superato al contrario
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Segnale a percorso s. u. (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversione segnali - Se attivato, facendo clic su un segnale esistente lo si converte nel tipo selezionato, mentre con CTRL+clic se ne modifica la variante
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversione segnali - Se attivato, facendo clic su un segnale esistente lo si converte nel tipo selezionato, mentre con CTRL+clic se ne modifica la variante. MAIUSC+clic mostra il costo stimato della conversione
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Distanza fra i segnali costruiti automaticamente trascinando il cursore
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Riduce la distanza fra i segnali costruiti
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumenta la distanza fra i segnali costruiti
@@ -1989,21 +1989,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubolare, Silic
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Costruzione strade
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Costruzione tranvie
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Costruisce una sezione di strada. CTRL alterna costruzione/rimozione.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Costruisce una sezione di tranvia. CTRL alterna costruzione/rimozione.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Costruisce sezioni di strada usando la modalità automatica. CTRL alterna costruzione/rimozione.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Costruisce sezioni di tranvia usando la modalità automatica. CTRL alterna costruzione/rimozione.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito automezzi (per comprare e manutenere i veicoli)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito tranviario (per comprare e manutenere i veicoli)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Costruisce una stazione degli autobus. CTRL abilita l'unione con altre stazioni.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Costruisce una stazione tram passeggeri. CTRL abilita l'unione con altre stazioni.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Costruisce un'area di carico per camion. CTRL abilita l'unione con altre stazioni.
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Costruisce una stazione tram merci. CTRL abilita l'unione con altre stazioni.
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Costruisce una sezione di strada. CTRL alterna costruzione/rimozione. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Costruisce una sezione di tranvia. CTRL alterna costruzione/rimozione. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Costruisce sezioni di strada usando la modalità automatica. CTRL alterna costruzione/rimozione. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Costruisce sezioni di tranvia usando la modalità automatica. CTRL alterna costruzione/rimozione. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito automezzi (per comprare e manutenere i veicoli). MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Costruisce un deposito tranviario (per comprare e manutenere i veicoli). MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Costruisce una stazione degli autobus. CTRL abilita l'unione con altre stazioni. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Costruisce una stazione tram passeggeri. CTRL abilita l'unione con altre stazioni. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Costruisce un'area di carico per camion. CTRL abilita l'unione con altre stazioni. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Costruisce una stazione tram merci. CTRL abilita l'unione con altre stazioni. MAIUSC alterna fra costruzione e stima dei costi
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Attiva/disattiva strade a senso unico
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Costruisce un ponte stradale
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Costruisce un ponte tranviario
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Costruisce un tunnel stradale
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Costruisce un tunnel tranviario
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Costruisce un ponte stradale. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Costruisce un ponte tranviario. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Costruisce un tunnel stradale. MAIUSC alterna fra costruzione e stima dei costi
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Costruisce un tunnel tranviario. MAIUSC alterna fra costruzione e stima dei costi
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Seleziona fra costruzione/rimozione di strade
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Seleziona fra costruzione/rimozione di tranvie
 
@@ -2026,12 +2026,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selezion
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Costr. trasporti su acqua
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Trasporti su acqua
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Costruisce canali
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Costruisce chiuse per i canali
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Costruisce un deposito navale (per comprare e manutenere le navi)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Costruisce un molo per le navi. CTRL abilita l'unione con altre stazioni.
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Posiziona una boa che può essere usata come waypoint
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Costruisce un acquedotto
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Costruisce canali. MAIUSC alterna fra costruzione e stima dei costi
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Costruisce chiuse per i canali. MAIUSC alterna fra costruzione e stima dei costi
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Costruisce un deposito navale (per comprare e manutenere le navi). MAIUSC alterna fra costruzione e stima dei costi
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Costruisce un molo per le navi. CTRL abilita l'unione con altre stazioni. MAIUSC alterna fra costruzione e stima dei costi
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Posiziona una boa che può essere usata come waypoint. MAIUSC alterna fra costruzione e stima dei costi
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Costruisce un acquedotto. MAIUSC alterna fra costruzione e stima dei costi
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definisce una zona d'acqua.{}Costruisce un canale, a meno che non si tenga premuto CTRL mentre si fa clic al livello del mare, provocando l'allagamento dei dintorni
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Crea fiumi
 
@@ -2044,7 +2044,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Molo
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroporti
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Costruisce un aeroporto. CTRL abilita l'unione con altre stazioni.
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Costruisce un aeroporto. CTRL abilita l'unione con altre stazioni. MAIUSC alterna fra costruzione e stima dei costi
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selezione aeroporto
@@ -2071,14 +2071,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Rumore g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Modellazione terreno
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abbassa un angolo di terreno. Trascinando, l'area selezionata viene livellata alla nuova quota del primo angolo. CTRL seleziona l'area diagonalmente
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Alza un angolo di terreno. Trascinando, l'area selezionata viene livellata alla nuova quota del primo angolo. CTRL seleziona l'area diagonalmente
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Livella un'area di terreno alla quota del primo angolo selezionato. CTRL seleziona l'area diagonalmente
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acquista terreno per usi futuri
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Abbassa un angolo di terreno. Trascinando, l'area selezionata viene livellata alla nuova quota del primo angolo. CTRL seleziona l'area diagonalmente. MAIUSC alterna fra costruzione e stima dei costi
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Alza un angolo di terreno. Trascinando, l'area selezionata viene livellata alla nuova quota del primo angolo. CTRL seleziona l'area diagonalmente. MAIUSC alterna fra costruzione e stima dei costi
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Livella un'area di terreno alla quota del primo angolo selezionato. CTRL seleziona l'area diagonalmente. MAIUSC alterna fra costruzione e stima dei costi
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acquista terreno per usi futuri. MAIUSC alterna fra costruzione e stima dei costi
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selezione oggetto
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleziona l'oggetto da costruire
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleziona l'oggetto da costruire. MAIUSC alterna fra costruzione e stima dei costi
 STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Categoria oggetto
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Anteprima dell'oggetto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensione: {GOLD}{NUM} x {NUM} riquadri
@@ -2090,7 +2090,7 @@ STR_OBJECT_CLASS_TRNS                                           :Trasmettitori
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Alberi
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Seleziona il tipo di albero da piantare
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Alberi casuali
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Pianta alberi di specie a caso
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Pianta alberi di specie a caso. MAIUSC alterna fra costruzione e stima dei costi
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Alberi casuali
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pianta alberi casualmente nel paesaggio
 
@@ -2111,7 +2111,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Si è si
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generazione città
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nuova città
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fonda una nuova città
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fonda una nuova città. MAIUSC+clic mostra solo il costo stimato
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Città casuale
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fonda una città in una posizione casuale
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Alcune città casuali
@@ -2703,7 +2703,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Costruis
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vedi sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Visualizza la sede della compagnia
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Sposta sede
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ricostruisce la sede della compagnia in un altro luogo pagando l'1% del valore della compagnia
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Ricostruisce la sede della compagnia in un altro luogo pagando l'1% del valore della compagnia. MAIUSC+clic mostra il costo stimato senza ricostruire la sede
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nuova faccia
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Seleziona una nuova faccia per il presidente
@@ -2716,8 +2716,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Cambia i
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Compra il 25% delle azioni
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendi il 25% delle azioni
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Compra una quota del 25% di questa compagnia
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vende una quota pari al 25% di questa compagnia
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Compra una quota del 25% di questa compagnia. MAIUSC+clic mostra il costo stimato senza comprare azioni
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vende una quota pari al 25% di questa compagnia. MAIUSC+clic mostra il costo stimato senza vendere azioni
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome della compagnia
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome del presidente
@@ -2850,10 +2850,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Compra v
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Compra nave
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Compra aeromobile
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra il veicolo ferroviario selezionato
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra l'automezzo selezionato
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra la nave selezionata
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'aeromobile selezionato
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra il veicolo ferroviario selezionato. MAIUSC+clic mostra il costo stimato senza comprare
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra l'automezzo selezionato. MAIUSC+clic mostra il costo stimato senza comprare
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra la nave selezionata. MAIUSC+clic mostra il costo stimato senza comprare
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'aeromobile selezionato. MAIUSC+clic mostra il costo stimato senza comprare
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Rinomina
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Rinomina
@@ -2918,10 +2918,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clona au
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clona nave
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clona aeromobile
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Compra una copia di un treno, inclusi tutti i vagoni. Fare clic su questo pulsante e quindi su un treno dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Compra una copia di un automezzo. Fare clic su questo pulsante e quindi su un automezzo dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Compra una copia di una nave. Fare clic su questo pulsante e quindi su una nave dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Compra una copia di un aeromobile. Fare clic su questo pulsante e quindi su un aeromobile dentro o fuori dall'hangar. Tenere premuto CTRL per condividere gli ordini
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Compra una copia di un treno, inclusi tutti i vagoni. Fare clic su questo pulsante e quindi su un treno dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini. MAIUSC+clic mostra il costo stimato senza comprare
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Compra una copia di un automezzo. Fare clic su questo pulsante e quindi su un automezzo dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini. MAIUSC+clic mostra il costo stimato senza comprare
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Compra una copia di una nave. Fare clic su questo pulsante e quindi su una nave dentro o fuori dal deposito. Tenere premuto CTRL per condividere gli ordini. MAIUSC+clic mostra il costo stimato senza comprare
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Compra una copia di un aeromobile. Fare clic su questo pulsante e quindi su un aeromobile dentro o fuori dall'hangar. Tenere premuto CTRL per condividere gli ordini. MAIUSC+clic mostra il costo stimato senza comprare
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la visuale principale sulla posizione del deposito ferroviario. CTRL+clic lo mostra in una mini visuale.
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la visuale principale sulla posizione del deposito automezzi. CTRL+clic lo mostra in una mini visuale.
@@ -3005,10 +3005,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Manda l'
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Manda la nave al deposito. CTRL+clic per eseguire solo una manutenzione
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Manda l'aeromobile all'hangar. CTRL+clic per eseguire solo una manutenzione
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Compra una copia del treno, inclusi tutti i vagoni. Tenere premuto CTRL per condividere gli ordini
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Compra una copia dell'automezzo. Tenere premuto CTRL per condividere gli ordini
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Compra una copia della nave. Tenere premuto CTRL per condividere gli ordini
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Compra una copia dell'aeromobile. Tenere premuto CTRL per condividere gli ordini
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Compra una copia del treno, inclusi tutti i vagoni. Tenere premuto CTRL per condividere gli ordini. MAIUSC+clic mostra il costo stimato senza comprare
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Compra una copia dell'automezzo. Tenere premuto CTRL per condividere gli ordini. . MAIUSC+clic mostra il costo stimato senza comprare
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Compra una copia della nave. Tenere premuto CTRL per condividere gli ordini. MAIUSC+clic mostra il costo stimato senza comprare
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Compra una copia dell'aeromobile. Tenere premuto CTRL per condividere gli ordini. MAIUSC+clic mostra il costo stimato senza comprare
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forza il treno a proseguire senza aspettare il segnale di via libera
 
@@ -3133,6 +3133,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Selezionare il tipo di carico da trasportare:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nuova capacità: {GOLD}{CARGO}{}{BLACK}Costo riadattamento: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nuova capacità: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Costo riadattamento: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Seleziona i veicoli da riadattare. Trascinare col mouse per selezionare più veicoli. Fare clic sullo spazio vuote per selezionarli tutti. CTRL+clic seleziona anche la parte successiva della composizione
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selezionare il tipo di carico da far trasportare al treno
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selezionare il tipo di carico da far trasportare all'automezzo

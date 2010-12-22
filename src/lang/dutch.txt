@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klik en 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Schakel tussen groot/klein venster
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - verschuift de lijst verticaal
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Schuifbalk - verschuift de lijst naar links/rechts
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sloop gebouwen etc. op een stuk land. Ctrl selecteerd het gebeied diagonaal
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Sloop gebouwen etc. op een stuk land. Ctrl selecteerd het gebeied diagonaal. Shift wisselt bouwen/toon verwachte kosten
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standaard
@@ -2071,12 +2071,12 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Geluidso
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreinvorming
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Verlaag een hoek van het land. Slepen verlaagd de eerst gekozen hoek en egaliseerd het geselecteerde gebied naar de nieuwe hoekhoogte. Ctrl selecteerd het gebied diagonaal
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Verhoog een hoek van het land. Slepen verhoogd de eerste geselecteerde hoek en egaliseerd het geselecteerd gebied naar de nieuwe hoekhoogte. Ctrl selecteerd het gebied diagonaal
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land naar de hoogte van de eerst geselecteerde hoek. Ctrl selecteerd een diagonaal gebied
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop land voor toekomstig gebruik
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Egaliseer land naar de hoogte van de eerst geselecteerde hoek. Ctrl selecteerd een diagonaal gebied. Shift+Klik wisselt tussen bouwen/tonen verwachte kosten
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Koop land voor toekomstig gebruik. Shift+Klik wisselt tussen bouwen/tonen verwachte kosten
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Keuze van Object
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Kies het te bouwen object
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Kies het te bouwen object. Shift+Klik wisselt tussen bouwen/tonen verwachte kosten
 STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Object klasse
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Bekijk het object
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grootte: {GOLD}{NUM} x {NUM} tegels
@@ -2088,7 +2088,7 @@ STR_OBJECT_CLASS_TRNS                                           :Zender
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bomen
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies een soort boom om te planten
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige soorten bomen
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plant bomen van willekeurige soort
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plant bomen van willekeurige soort. Shift+Klik wisselt tussen bouwen/toont verwachte kosten
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Willekeurige bomen
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Verspreid bomen willekeurig over de kaart
 
@@ -2109,7 +2109,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Weet je 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Stadsontwikkeling
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nieuwe stad
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Sticht nieuwe stad
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Sticht nieuwe stad. Shift+Klik toont aleen de verwachte kosten
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Willekeurige stad
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Sticht stad op willekeurige locatie
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veel willekeurige steden
@@ -2701,7 +2701,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Bouw bed
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Bekijk bedrijfshoofdkwartier
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Toon bedrijfshoofdkwartier
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Verplaats bedrijfshoofdkwartier
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Herbouw bedrijfshoofdkwartier ergens anders voor 1% van de bedrijfswaarde
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Herbouw bedrijfshoofdkwartier ergens anders voor 1% van de bedrijfswaarde. Shift+Klik toont verwachte kosten zonder HQ te verplaatsen
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nieuw gezicht
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Kies nieuw gezicht voor directeur
@@ -2714,8 +2714,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Verander
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Koop 25% aandeel in bedrijf
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Verkoop 25% aandeel in bedrijf
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Koop een aandeel van 25% in dit bedrijf
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkoop een aandeel van 25% in dit bedrijf
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Koop een aandeel van 25% in dit bedrijf. Shift+Klik toont verwachte kosten zonder te kopen
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkoop een aandeel van 25% in dit bedrijf. Shift+Klik toont verwachte kosten zonder te kopen
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Bedrijfsnaam
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Naam van directeur
@@ -2848,10 +2848,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Koop weg
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Koop schip
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Koop vliegtuig
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Koop het geselecteerde railvoertuig
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Koop het geselecteerde railvoertuig. Shift+Klik toont verwachte kosten zonder te kopen
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Koop het geselecteerde wegvoertuig
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Koop het geselecteerde schip
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Koop het geselecteerde vliegtuig
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Koop het geselecteerde schip. Shift+Klik toont verwachte kosten zonder te kopen
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Koop het geselecteerde vliegtuig. Shift+Klik toont verwachte kosten zonder te kopen
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Hernoem
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Hernoem
@@ -2916,10 +2916,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kloon we
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloon schip
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloon vliegtuig
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Hierdoor wordt een kopie gekocht van een wegvoertuig. Klik op deze knop en dan op een wegvoertuig binnen of buiten de garage. Ctrl+klik deelt de orders
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Hierdoor wordt een kopie gekocht van een schip. Klik op deze knop en dan op een schip binnen of buiten het dok. Ctrl+klik deelt de orders
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hierdoor wordt een kopie gekocht van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van een trein inclusief wagons. Klik op deze knop en dan op een trein binnen of buiten het depot. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Hierdoor wordt een kopie gekocht van een wegvoertuig. Klik op deze knop en dan op een wegvoertuig binnen of buiten de garage. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Hierdoor wordt een kopie gekocht van een schip. Klik op deze knop en dan op een schip binnen of buiten het dok. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hierdoor wordt een kopie gekocht van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centreer het scherm op de locatie van het treindepot. Ctrl+klik opent een nieuw scherm op de locatie van het treindepot
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de garage. Ctrl+klik opent een nieuw scherm op de locatie van de garage
@@ -3003,10 +3003,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur we
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Stuur schip naar dok. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vliegtuig naar hangar. Ctrl+klik voor alleen onderhoud
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Hierdoor wordt een kopie gekocht van deze trein inclusief wagons. Ctrl+klik deelt de orders
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Hierdoor wordt een kopie gekocht van dit wegvoertuig. Ctrl+klik deelt de orders
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van dit schip. Ctrl+klik deelt de orders
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hierdoor wordt een kopie gekocht van dit vliegtuig. Ctrl+klik deelt de orders
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Hierdoor wordt een kopie gekocht van deze trein inclusief wagons. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Hierdoor wordt een kopie gekocht van dit wegvoertuig. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hierdoor wordt een kopie gekocht van dit schip. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hierdoor wordt een kopie gekocht van dit vliegtuig. Ctrl+klik deelt de orders. Shift+Klik toont verwachte kosten zonder te kopen
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forceer trein verder te rijden zonder te wachten op een groen signaal
 
@@ -3131,6 +3131,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Selecteer goederentype om te vervoeren:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kosten van ombouwen: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Kies het voertuig om om te bouwen. Slepen met de muis geeft de mogelijkheid om meerdere voertuigen te selecteren. Klikken op een lege ruimte selecteerd het hele voertuig. Ctrl+Klik selecteerd a voertuig en de volgende keten
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies goederentype dat deze trein moet vervoeren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecteer goederentype dat dit wegvoertuig moet vervoeren

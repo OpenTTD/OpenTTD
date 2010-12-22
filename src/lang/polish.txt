@@ -539,15 +539,15 @@ STR_ABBREV_ALL                                                  :{TINYFONT}+
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} pasażer{P "" ów ów}
-STR_BAGS                                                        :{COMMA} worki
+STR_BAGS                                                        :{COMMA} wor{P ek ki ków}
 STR_BAGS.d                                                      :{COMMA} worków
 STR_BAGS.c                                                      :{COMMA} workom
 STR_BAGS.b                                                      :{COMMA} worki
 STR_BAGS.n                                                      :{COMMA} workami
 STR_BAGS.m                                                      :{COMMA} workach
 STR_BAGS.w                                                      :{COMMA} worki
-STR_TONS                                                        :{COMMA} ton
-STR_LITERS                                                      :{COMMA} litrów
+STR_TONS                                                        :{COMMA} ton{P a "" ""}
+STR_LITERS                                                      :{COMMA} litr{P "" ów ów}
 STR_ITEMS                                                       :{COMMA} sztuk{P a i ""}
 STR_CRATES                                                      :{COMMA} skrzy{P nia nie ń}
 
@@ -1182,7 +1182,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} czeka w zajezdni
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} czeka w hangarze
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} ma za mało poleceń w rozkładzie
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} ma nieważne polecenie
@@ -2889,7 +2889,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informacje o ładunku/naprawie dla '{1:ENGINE}' różnią się od listy zakupu po zbudowaniu. Może to spowodować, że autoodnowienie/-zamiana nie wykona remontu poprawnie.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' spowodował nieskończoną pętlę w wywołaniu produkcji.
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<nieprawidłowy ładunek>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} of <nieprawidłowy ładunek>
