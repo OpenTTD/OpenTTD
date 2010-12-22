@@ -11,8 +11,8 @@
  * @file core.h Base for all network types (UDP and TCP)
  */
 
-#ifndef NETWORK_CORE_H
-#define NETWORK_CORE_H
+#ifndef NETWORK_CORE_CORE_H
+#define NETWORK_CORE_CORE_H
 
 #include "../../newgrf_config.h"
 #include "config.h"
@@ -82,4 +82,4 @@ public:
 
 #endif /* ENABLE_NETWORK */
 
-#endif /* NETWORK_CORE_H */
+#endif /* NETWORK_CORE_CORE_H */

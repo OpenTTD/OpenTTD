@@ -9,8 +9,8 @@
 
 /** @file ai_info.hpp AIInfo keeps track of all information of an AI, like Author, Description, ... */
 
-#ifndef AI_INFO
-#define AI_INFO
+#ifndef AI_INFO_HPP
+#define AI_INFO_HPP
 
 #ifdef ENABLE_AI
 
@@ -158,4 +158,4 @@ private:
 };
 
 #endif /* ENABLE_AI */
-#endif /* AI_INFO */
+#endif /* AI_INFO_HPP */

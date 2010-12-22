@@ -9,8 +9,8 @@
 
 /** @file script_info.hpp ScriptInfo keeps track of all information of a script, like Author, Description, ... */
 
-#ifndef SCRIPT_INFO
-#define SCRIPT_INFO
+#ifndef SCRIPT_INFO_HPP
+#define SCRIPT_INFO_HPP
 
 #include <squirrel.h>
 #include "../misc/countedptr.hpp"
@@ -101,4 +101,4 @@ private:
 	const char *url;
 };
 
-#endif /* SCRIPT_INFO */
+#endif /* SCRIPT_INFO_HPP */

@@ -9,8 +9,8 @@
 
 /** @file engine_func.h Functions related to engines. */
 
-#ifndef ENGINE_H
-#define ENGINE_H
+#ifndef ENGINE_FUNC_H
+#define ENGINE_FUNC_H
 
 #include "engine_type.h"
 #include "vehicle_type.h"
@@ -31,4 +31,4 @@ void StartupOneEngine(Engine *e, Date aging_date);
 
 uint GetTotalCapacityOfArticulatedParts(EngineID engine);
 
-#endif /* ENGINE_H */
+#endif /* ENGINE_FUNC_H */

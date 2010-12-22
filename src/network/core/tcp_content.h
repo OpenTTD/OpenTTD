@@ -11,8 +11,8 @@
  * @file tcp_content.h Basic functions to receive and send TCP packets to/from the content server.
  */
 
-#ifndef NETWORK_CORE_CONTENT_H
-#define NETWORK_CORE_CONTENT_H
+#ifndef NETWORK_CORE_TCP_CONTENT_H
+#define NETWORK_CORE_TCP_CONTENT_H
 
 #include "os_abstraction.h"
 #include "tcp.h"
@@ -215,4 +215,4 @@ public:
 
 #endif /* ENABLE_NETWORK */
 
-#endif /* NETWORK_CORE_CONTENT_H */
+#endif /* NETWORK_CORE_TCP_CONTENT_H */

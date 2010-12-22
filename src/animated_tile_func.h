@@ -9,8 +9,8 @@
 
 /** @file animated_tile_func.h Tile animation! */
 
-#ifndef ANIMATED_TILE_H
-#define ANIMATED_TILE_H
+#ifndef ANIMATED_TILE_FUNC_H
+#define ANIMATED_TILE_FUNC_H
 
 #include "tile_type.h"
 
@@ -19,4 +19,4 @@ void DeleteAnimatedTile(TileIndex tile);
 void AnimateAnimatedTiles();
 void InitializeAnimatedTiles();
 
-#endif /* ANIMATED_TILE_H */
+#endif /* ANIMATED_TILE_FUNC_H */

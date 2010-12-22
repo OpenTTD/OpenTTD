@@ -9,8 +9,8 @@
 
 /** @file waypoint_base.h Base of waypoints. */
 
-#ifndef WAYPOINT_H
-#define WAYPOINT_H
+#ifndef WAYPOINT_BASE_H
+#define WAYPOINT_BASE_H
 
 #include "base_station_base.h"
 
@@ -64,4 +64,4 @@ struct Waypoint : SpecializedStation<Waypoint, true> {
 
 #define FOR_ALL_WAYPOINTS(var) FOR_ALL_BASE_STATIONS_OF_TYPE(Waypoint, var)
 
-#endif /* WAYPOINT_H */
+#endif /* WAYPOINT_BASE_H */

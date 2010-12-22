@@ -9,8 +9,8 @@
 
 /** @file core/address.h Wrapper for network addresses. */
 
-#ifndef NETWORK_ADDRESS_H
-#define NETWORK_ADDRESS_H
+#ifndef NETWORK_CORE_ADDRESS_H
+#define NETWORK_CORE_ADDRESS_H
 
 #include "os_abstraction.h"
 #include "config.h"
@@ -264,4 +264,4 @@ public:
 };
 
 #endif /* ENABLE_NETWORK */
-#endif /* NETWORK_ADDRESS_H */
+#endif /* NETWORK_CORE_ADDRESS_H */
