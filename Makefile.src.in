@@ -262,10 +262,10 @@ else
 endif
 ifdef STRIP
 	$(Q)$(STRIP) $@
+endif
 ifeq ($(OS), DOS)
 	$(E) '$(STAGE) Adding CWSDPMI stub to $@'
 	$(Q)$(ROOT_DIR)/os/dos/make_dos_binary_selfcontained.sh $(SRC_OBJS_DIR)/$@
-endif
 endif
 
 # The targets to compile the endian-code
