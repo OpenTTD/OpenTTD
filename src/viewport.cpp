@@ -1882,7 +1882,7 @@ static void PlaceObject()
 	pt = GetTileBelowCursor();
 	if (pt.x == -1) return;
 
-	if (_thd.place_mode == HT_POINT) {
+	if ((_thd.place_mode & HT_DRAG_MASK) == HT_POINT) {
 		pt.x += 8;
 		pt.y += 8;
 	}
@@ -2040,7 +2040,7 @@ void UpdateTileSelection()
 	HighLightStyle new_drawstyle = HT_NONE;
 	bool new_diagonal = false;
 
-	if (_thd.place_mode == HT_SPECIAL) {
+	if ((_thd.place_mode & HT_DRAG_MASK) == HT_SPECIAL) {
 		x1 = _thd.selend.x;
 		y1 = _thd.selend.y;
 		if (x1 != -1) {
@@ -2167,15 +2167,16 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 		_thd.selstart.y += TILE_SIZE / 2;
 	}
 
-	if (_thd.place_mode == HT_RECT) {
-		_thd.place_mode = HT_SPECIAL;
-		_thd.next_drawstyle = HT_RECT;
+	HighLightStyle others = _thd.place_mode & ~HT_DRAG_MASK;
+	if ((_thd.place_mode & HT_DRAG_MASK) == HT_RECT) {
+		_thd.place_mode = HT_SPECIAL | others;
+		_thd.next_drawstyle = HT_RECT | others;
 	} else if (_thd.place_mode & (HT_RAIL | HT_LINE)) {
-		_thd.place_mode = HT_SPECIAL;
-		_thd.next_drawstyle = _thd.drawstyle;
+		_thd.place_mode = HT_SPECIAL | others;
+		_thd.next_drawstyle = _thd.drawstyle | others;
 	} else {
-		_thd.place_mode = HT_SPECIAL;
-		_thd.next_drawstyle = HT_POINT;
+		_thd.place_mode = HT_SPECIAL | others;
+		_thd.next_drawstyle = HT_POINT | others;
 	}
 	_special_mouse_mode = WSM_SIZING;
 }
@@ -2803,14 +2804,15 @@ EventState VpHandlePlaceSizingDrag()
 	/* mouse button released..
 	 * keep the selected tool, but reset it to the original mode. */
 	_special_mouse_mode = WSM_NONE;
-	if (_thd.next_drawstyle == HT_RECT) {
-		_thd.place_mode = HT_RECT;
+	HighLightStyle others = _thd.next_drawstyle & ~HT_DRAG_MASK;
+	if ((_thd.next_drawstyle & HT_DRAG_MASK) == HT_RECT) {
+		_thd.place_mode = HT_RECT | others;
 	} else if (_thd.select_method & VPM_SIGNALDIRS) {
-		_thd.place_mode = HT_RECT;
+		_thd.place_mode = HT_RECT | others;
 	} else if (_thd.select_method & VPM_RAILDIRS) {
-		_thd.place_mode = (_thd.select_method & ~VPM_RAILDIRS) ? _thd.next_drawstyle : HT_RAIL;
+		_thd.place_mode = (_thd.select_method & ~VPM_RAILDIRS) ? _thd.next_drawstyle : (HT_RAIL | others);
 	} else {
-		_thd.place_mode = HT_POINT;
+		_thd.place_mode = HT_POINT | others;
 	}
 	SetTileSelectSize(1, 1);
 
