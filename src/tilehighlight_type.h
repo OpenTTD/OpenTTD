@@ -27,6 +27,7 @@ enum HighLightStyle {
 	HT_LINE      = 0x008, ///< used for autorail highlighting (longer streches), lower bits: direction
 	HT_RAIL      = 0x080, ///< autorail (one piece), lower bits: direction
 	HT_VEHICLE   = 0x100, ///< vehicle is accepted as target as well (bitmask)
+	HT_DIAGONAL  = 0x200, ///< Also allow 'diagonal rectangles'.
 	HT_DRAG_MASK = 0x0F8, ///< masks the drag-type
 
 	/* lower bits (used with HT_LINE and HT_RAIL):
@@ -72,6 +73,8 @@ struct TileHighlightData {
 
 	ViewportPlaceMethod select_method;            ///< The method which governs how tiles are selected.
 	ViewportDragDropSelectionProcess select_proc; ///< The procedure that has to be called when the selection is done.
+
+	bool IsDraggingDiagonal();
 };
 
 #endif /* TILEHIGHLIGHT_TYPE_H */

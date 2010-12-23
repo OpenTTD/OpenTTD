@@ -2026,6 +2026,15 @@ static HighLightStyle GetAutorailHT(int x, int y)
 }
 
 /**
+ * Is the user dragging a 'diagonal rectangle'?
+ * @return User is dragging a rotated rectangle.
+ */
+bool TileHighlightData::IsDraggingDiagonal()
+{
+	return (this->place_mode & HT_DIAGONAL) != 0 && _ctrl_pressed && _left_button_down;
+}
+
+/**
  * Updates tile highlighting for all cases.
  * Uses _thd.selstart and _thd.selend and _thd.place_mode (set elsewhere) to determine _thd.pos and _thd.size
  * Also drawstyle is determined. Uses _thd.new.* as a buffer and calls SetSelectionTilesDirty() twice,
@@ -2049,7 +2058,7 @@ void UpdateTileSelection()
 			x1 &= ~TILE_UNIT_MASK;
 			y1 &= ~TILE_UNIT_MASK;
 
-			if (IsDraggingDiagonal()) {
+			if (_thd.IsDraggingDiagonal()) {
 				new_diagonal = true;
 			} else {
 				if (x1 >= x2) Swap(x1, x2);
@@ -2724,7 +2733,7 @@ calc_heightdiff_single_direction:;
 				/* If dragging an area (eg dynamite tool) and it is actually a single
 				 * row/column, change the type to 'line' to get proper calculation for height */
 				style = (HighLightStyle)_thd.next_drawstyle;
-				if (IsDraggingDiagonal()) {
+				if (_thd.IsDraggingDiagonal()) {
 					/* Determine the "area" of the diagonal dragged selection.
 					 * We assume the area is the number of tiles along the X
 					 * edge and the number of tiles along the Y edge. However,

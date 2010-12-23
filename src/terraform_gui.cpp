@@ -174,22 +174,22 @@ enum TerraformToolbarWidgets {
 
 static void TerraformClick_Lower(Window *w)
 {
-	HandlePlacePushButton(w, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT, PlaceProc_LowerLand);
+	HandlePlacePushButton(w, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT | HT_DIAGONAL, PlaceProc_LowerLand);
 }
 
 static void TerraformClick_Raise(Window *w)
 {
-	HandlePlacePushButton(w, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT, PlaceProc_RaiseLand);
+	HandlePlacePushButton(w, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT | HT_DIAGONAL, PlaceProc_RaiseLand);
 }
 
 static void TerraformClick_Level(Window *w)
 {
-	HandlePlacePushButton(w, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, PlaceProc_LevelLand);
 }
 
 static void TerraformClick_Dynamite(Window *w)
 {
-	HandlePlacePushButton(w, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, PlaceProc_DemolishArea);
 }
 
 static void TerraformClick_BuyLand(Window *w)
@@ -546,7 +546,7 @@ static const NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
  */
 static void EditorTerraformClick_Dynamite(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, PlaceProc_DemolishArea);
 }
 
 static void EditorTerraformClick_LowerBigLand(Window *w)
@@ -561,7 +561,7 @@ static void EditorTerraformClick_RaiseBigLand(Window *w)
 
 static void EditorTerraformClick_LevelLand(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, PlaceProc_LevelLand);
 }
 
 static void EditorTerraformClick_RockyArea(Window *w)
@@ -621,17 +621,6 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 
 		MarkWholeScreenDirty();
 	}
-}
-
-/**
- * Checks whether we are currently dragging diagonally.
- * @returns True iff we are selecting a diagonal rectangle for an action that supports it, otherwise false.
- */
-bool IsDraggingDiagonal()
-{
-	return _ctrl_pressed && _left_button_down && (
-			_place_proc == PlaceProc_DemolishArea || _place_proc == PlaceProc_LevelLand ||
-			_place_proc == PlaceProc_RaiseLand    || _place_proc == PlaceProc_LowerLand);
 }
 
 struct ScenarioEditorLandscapeGenerationWindow : Window {
