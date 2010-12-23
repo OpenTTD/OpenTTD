@@ -1141,6 +1141,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Denne in
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lufthavnenes levealder udløber aldrig: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Advar hvis et faretøj bliver væk: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Kontroller køretøjers ordreliste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nej
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, men udelad stoppede køretøjer
@@ -1209,6 +1210,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Sæt automatisk på pause når nyt spil startes: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Når pauset tillad: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ingen handlinger
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Alle ikke-byggemæssige handlinger
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alle på nær landskabs-ændrende handlinger
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alle handlinger
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Brug avanceret køretøjsliste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Fra
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eget firma
@@ -1295,6 +1301,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Placeri
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Venstre
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Center
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Højre
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Position af statusbar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Venstre
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Midt i
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Højre
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vinduernes sammenkoblings afstand: {ORANGE}slået fra
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Vinduesbegræsning (ikke-sticky): {ORANGE}{STRING}
@@ -1417,6 +1427,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktisk klima
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropisk klima
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Legetøjsland
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ændre dato: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Skift år
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifikation af produktion: {ORANGE}{STRING}
 
 # Livery window
@@ -1680,6 +1691,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Henter s
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Henter selskabsinfo..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} foran dig
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} hentet indtil videre
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} hentet indtil videre
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Afbryd forbindelse
@@ -1772,6 +1784,8 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :serveren er ful
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :sendte for mange kommandoer
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mulig forbindelses tab
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De sidste {NUM} sekunder{P "" s} er der ikke ankommet data fra serveren
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -1943,7 +1957,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Udgangss
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombisignal (elektrisk){}Kombisignalet fungerer både som indgangs- og udgangssignal. Dette muliggør opbygning af store forgreninger af signaler.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avanceret signal (elektrisk){}Et avanceret signal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en rute til et sikkert sted at stoppe. Avancerede signaler kan passeres fra bagsiden.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Ensrettet avanceret signal (elektrisk){}Et avanceret signal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en rute til et sikkert sted at stoppe. Ensrettede avancerede signaler kan ikke passeres fra bagsiden.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalkonvertering{}Når denne er valgt, vil klik på et eksisterende signal konvertere det til den valgte signaltype og -variant. CTRL-klik vil skifte den eksisterende signalvariant.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalkonvertering{}Når denne er valgt, vil klik på et eksisterende signal konvertere det til den valgte signaltype og -variant. CTRL-klik vil skifte den eksisterende signalvariant. Skift+click viser den vurderede pris for konvertering
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Træk-og-slip signaltæthed
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Formindsk træk-og-slip signaltæthed
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Forøg træk-og-slip signaltæthed
@@ -2003,7 +2017,7 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Vælg re
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Bygning af vandveje
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vandveje
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Byg kanaler.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Byg kanaler. Skift tasten vælger mellem byg og vis pris
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Byg sluser
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Byg skibsdok (til køb og servicering af skibe)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Byg havn. Ctrl tillader at sammenslutte stationer
@@ -2127,6 +2141,7 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Byg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansiér
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Huse
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landområde-information
@@ -2263,6 +2278,10 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}Slet
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}Slet det valgte gemte spil
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}Gem
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Gem det nuværende spil, med det valgte navn
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Åbn
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Åbn det markerede spil
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Spil Detaljer
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ingen information til rådighed
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Skriv et navn til det gemte spil
 
@@ -2381,6 +2400,7 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktivere
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Indtast NewGRF-parameter
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Luk
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Nulstil
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Sæt alle parameter til deres standart niveau
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
@@ -2431,6 +2451,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøg på bru
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} indeholder en ødelagt sprite. Alle ødelagte sprites vil blive vist som et rødt spørgsmålstegn (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Indeholder flere "Action 8" poster.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Læs forbi enden af pseudo-sprite
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Det brugte basis graftik sæt mangler en række elementer.{}Updater venligst grafik sættet
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Advarsel!
@@ -2445,13 +2466,16 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglen
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD kan gå ned, når spillet sættes i gang igen. Undlad at indsende fejlrapporter for efterfølgende nedbrud.{}Vil du virkelig sætte spillet i gang igen?
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :Ingen
+STR_NEWGRF_LIST_ALL_FOUND                                       :Alle filer tilstede
+STR_NEWGRF_LIST_MISSING                                         :{RED}Manglende filer
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}Denne NewGRFs opførsel '{0:STRING}' vil sandsynligvis forårsage at spillet går ned.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Den ændrer toglængden for '{1:ENGINE}' mens den ikke er i depot.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Den ændrer toglængden for '{1:ENGINE}' mens den ikke er i depot
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra firmaet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Spillet går muligvis ned.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' indeholder forkert information.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' indeholder forkert information
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fragt-/ombygningsinformation for '{1:ENGINE}' afviger fra indkøbslisten efter konstruktion. Dette kan medføre, at autofornyelse ikke fungerer korrekt.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' forårsagede en uendelig løkke i produktions-callback'en.
 
@@ -3072,6 +3096,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacite
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Ombyg)
 STR_REFIT_TITLE                                                 :{GOLD}Vælg den lasttype der skal transporteres:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nye kapacitet: {GOLD}{CARGO},{GOLD}{CARGO}{}{BLACK}Pris for at ombygge: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Vælg køretøjer der skal ombygges. klik og træk med musen for at vælge flere køretøjer. Klik på et tomt felt for at vælge hele køretøjet. Ctrl + klik vælger et køretøj og den efterfølgende kæde
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vælg den lasttype toget skal kører med
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vælg lasttype som lastbilen skal transportere
@@ -3157,11 +3183,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Spring o
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Slet
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Slet den markerede ordre
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Slet alle ordrer
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Ophør med at dele
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Ophør med at dele order-liste. Ctrl+klik sletter også ordrerne for dette fartøj.
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gå til
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gå til nærmeste depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Flyv til nærmeste hangar
 STR_ORDER_CONDITIONAL                                           :Betinget ordrespring
+STR_ORDER_SHARE                                                 :Del ordrer
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Indsæt en ny ordre før den markerede, eller i slutningen af ordrelisten. Ctrl laver stationsordrer med 'Vilkårlig fuld last', kontrolsted ordrer med 'Uden stop', og depotordrer med 'Service'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Indsæt en avanceret ordre
 
@@ -3401,6 +3431,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... ejes
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ejes af et andet selskab
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Navnet skal være unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} i vejen
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ikke tilladt imens spillet er på pause
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} de lokale myndigheder nægter at tillade dette
@@ -3445,6 +3476,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... der 
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Byen vil ikke kunne bygge veje. Du kan tillade byer at bygge veje via Avancerede indstillinger->Økonomi->Byer.
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Vejarbejde i gang
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Kan ikke slette denne by...{}En station eller et depot refererer til byen, eller en brik der er ejet a byen kan ikke fjernes
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... Der er ingen egnede steder at placere en statue
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... for mange industrier
@@ -3494,6 +3526,7 @@ STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}Kan ikke fjerne passager-sporvognsstation
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}Kan ikke fjerne fragt-sporvognsstation
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Det er nødvendigt at fjerne vejen først
+STR_ERROR_THERE_IS_NO_STATION                                   :{WHITE}... der er ingen station her
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Det er nødvendigt at rive stationen ned først
 STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Det er nødvendigt at nedrive rutebilstationen først
@@ -3558,6 +3591,8 @@ STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan ikke
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan ikke fjerne jernbane herfra...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kan ikke fjerne signaler herfra...
 STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan ikke konvertere signaler her...
+STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... der er ikke noget spor
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... der er ingen signaler
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan ikke konvertere jernbanetype her...
 
@@ -3568,6 +3603,8 @@ STR_ERROR_CAN_T_BUILD_ROAD_HERE                                 :{WHITE}Kan ikke
 STR_ERROR_CAN_T_BUILD_TRAMWAY_HERE                              :{WHITE}Kan ikke bygge sporvej her...
 STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Kan ikke fjerne vej herfra...
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Kan ikke fjerne sporvej her...
+STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... der er ingen vej
+STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... der er ikke noget spor
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Kan ikke bygge en kanal her...
@@ -3592,6 +3629,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Broen er
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- og slutposition skal være på linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... begge ender af en bro skal være på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... broen er for lang
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Broen ville slutte udenfor kortet
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge en tunnel her...
@@ -3602,6 +3640,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnelle
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Det er umuligt at lave en udgravning til tunnelen i den anden ende
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... for mange objecter
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Der er et objekt i vejen
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... selskabets hovedkontor i vejen
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Kan ikke købe dette landområde...
@@ -3664,6 +3703,7 @@ STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Fly er i
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}For mange køretøjer i spillet
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Kan ikke ændre serviceinterval...
 
+STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... fartøjet er ødelagt
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Kan ikke få toget til at passere signalet...
@@ -3688,6 +3728,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... kør
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... et køretøj, der deler denne ordre, kan ikke køre til den station
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan ikke dele ordreliste...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kan ikke ophøre med at dele ordrer-liste...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan ikke kopiere ordreliste...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... for langt fra forrige destination
 

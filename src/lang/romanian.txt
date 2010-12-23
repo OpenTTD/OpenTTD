@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Apasă �
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Comutator pentru dimensiunea ferestrei
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de defilare - defilează în listă sus/jos
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bara de defilare - stânga/dreapta
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolează clădiri, străzi, etc. pe un pătrăţel de teren. Ctrl. pentru selectare pe diagonală
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolează clădiri, străzi, etc. pe un pătrăţel de teren. Ctrl. pentru selectare pe diagonală. Shift comută construcție/estimare cost
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Prestabilit(e)
@@ -802,7 +802,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} aşteaptă în depou
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} aşteaptă în hangar
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} are prea puţine ordine în program
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} nu are nici un ordin
@@ -2509,7 +2509,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Datele despre marfa/regarnisire pentru '{1:ENGINE}' diferă de valorile iniţiale după construcţie. Acest lucru ar putea cauza eşuarea autorenovarii/schimbarii.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' a cauzat o buclă infinită în funcţia de producţie
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<cargo invalid>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <cargo invalid>
@@ -3003,10 +3003,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Trimite 
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Trimite nava în şantier. Ctrl+clic pentru întreţinere
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Trimite aeronava la hangar. Ctrl+clic pentru întreţinere
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Acest buton va crea o copie a întregului tren. Ctrl+click a sincroniza comenzile
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Acest buton va crea o copie a autovehiculului. Ctrl+click va sincroniza comenzile
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Acest buton va crea o copie a navei. Ctrl+click va sincroniza comenzile
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Acest buton va crea o copie a aeronavei. Ctrl+Click va sincroniza comenzile
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Acest buton va crea o copie a întregului tren. Ctrl+click a sincroniza comenzileShift-Click va afișa costul estimat fără a achiziționa trenul
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Acest buton va crea o copie a autovehiculului. Ctrl+click va sincroniza comenzileShift-Click va afișa costul estimat fără a achiziționa vehiculul
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Acest buton va crea o copie a navei. Ctrl+click va sincroniza comenzile. Shift-Click va afișa costul estimat fără a achiziționa nava
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Acest buton va crea o copie a aeronavei. Ctrl+Click va sincroniza comenzile. Shift-Click va afișa costul estimat fără a cumpăra aeronava
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forţează trenul să ignore semnalizarea de oprire
 
@@ -3131,13 +3131,14 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Alege tipul încărcăturii:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Noua capacitate: {GOLD}{CARGO}{}{BLACK}Costul transformării: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Capacitate nouă: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Costul schimbării: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Seletează vehiculele pentru modificare. Trage cu mouse-ul pentru a selecta mai multe vehicule. Click pe spațiu gol pentru a selecta intregul vehicul. Ctrl+Click va selecta un vehicul si lanțul atașat
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Alege tipul de marfă transportat de tren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Alege tipul de marfă pe care o transportă autovehiculul
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Alege tipul de încărcătură ce va fi transportat de navă
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Alege tipul de încărcătură ce va fi transportat de aeronavă
 
-STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Modificã încãrcãturã
+STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Modificã tip încãrcãturã
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Adaptare autovehicul
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Schimbă marfa transportată de navă
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Schimbă marfa transportată de aeronavă

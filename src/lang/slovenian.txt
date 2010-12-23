@@ -278,7 +278,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klikni i
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Preklopi veliko/majhno velikost okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Drsnik - premakne seznam gor/dol
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Drsni trak - premika seznam levo/desno
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Poruši zgradbe itd. na kvadratku zemlje. Ctrl izbere diagonalno območje
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Poruši zgradbe itd. na kvadratku zemlje. Ctrl izbere diagonalno območje. Shift preklaplja med izgradnjo in predvidenimi stroški
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Privzeto
@@ -373,9 +373,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generato
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generator mest
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generator industrije
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Gradnja cest
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadi drevesa
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Posadi drevesa. Shift preklaplja med izgradnjo in predvidenimi stroški
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Postavi znak
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Postavi objekt
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Postavi objekt. Shift preklaplja med izgradnjo in predvidenimi stroški
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Shrani scenarij
@@ -1956,16 +1956,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Gradnja elektri
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Gradnja enotirne železnice
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Gradnja magnetne železnice
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Zgradi tračnice. Ctrl preklopi gradnja/rušenje za gradnjo železnice
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gradi tire s pomočjo Samodejne gradnje. Ctrl preklopi gradnja/rušenje za gradnjo železnice
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Zgradi žel. garažo (za izdelavo in servis vlakov)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pretvori tire v točko poti. Ctrl omogoči združevanje točk poti
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zgradi žel. postajo. Ctrl omogoči združevanje postaj
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zgradi železniško signalizacijo. Ctrl preklopi semaforje/svetlobne signale{}Vlečenje zgradi signale po ravni črti. Ctrl zgradi signale do naslednjega križišča{}Ctrl+Klik odpre izbiro signala
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zgradi žel. most
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zgradi žel. predor
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Zgradi tračnice. Ctrl preklopi gradnja/rušenje za gradnjo železnice. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Gradi tire s pomočjo Samodejne gradnje. Ctrl preklopi gradnja/rušenje za gradnjo železnice. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Zgradi žel. garažo (za izdelavo in servis vlakov). Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Pretvori tire v točko poti. Ctrl omogoči združevanje točk poti. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Zgradi žel. postajo. Ctrl omogoči združevanje postaj. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Zgradi železniško signalizacijo. Ctrl preklopi semaforje/svetlobne signale{}Vlečenje zgradi signale po ravni črti. Ctrl zgradi signale do naslednjega križišča{}Ctrl+Klik odpre izbiro signala. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Zgradi žel. most. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Zgradi žel. predor. Shift preklaplja med izgradnjo in predvidenimi stroški
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Preklopi gradnja/rušenje železniških prog, signalov, točk poti in postaj. Držanje Ctrl odstrani tudi tire s točk poti in postaj
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadgradi tip tirov
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Pretvori/nadgradi tip tirov. Shift preklaplja med izgradnjo in predvidenimi stroški
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Smer žel. garaže
@@ -2006,7 +2006,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Izhodni 
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinirani signal (električni){}Kombinirani signal deluje kot vhodni in izhodni. To omogoča gradnjo velikih vej signalizacije
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Napredni signal (električni){}Napredni signal omogoča vstop več kot enemu vlaku v odsek proge, če ima na voljo prostor za varno ustavitev. Napredni signali se lahko prevozijo s hrbtne strani
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Napredni enosmerni signal (električni){}Napredni signal omogoča vstop več kot enemu vlaku v odsek proge, če ima na voljo prostor za varno ustavitev. Napredni signali se lahko prevozijo s hrbtne strani
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamenjava signala{}Ko je možnost izbrana, se ob kliku na obstoječi signal le ta spremeni v izbrano vrsto. Ctrl-Klik preklaplja obstoječo vrsto
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zamenjava signala{}Ko je možnost izbrana, se ob kliku na obstoječi signal le ta spremeni v izbrano vrsto. Ctrl-Klik preklaplja obstoječo vrsto. Shift+Klik prikaže predviden strošek zamenjave
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Gostota vlečnih signalov
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Zmanjšaj gostoto signala za vlečenje
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Povečaj gostoto signala za vlečenjeIncrease dragging signal density
@@ -2029,21 +2029,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Cevast, Silicij
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Cestne gradnje
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Gradnja tramvaj proge
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Zgradi cestni odsek. Ctrl preklopi gradnja/rušenje za gradnjo ceste
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Zgradi odsek proge. Ctrl preklopi gradnja/rušenje za gradnjo proge za tramvaje
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Gradnja cestnega odseka v avtomatskem načinu. Ctrl preklopi gradnja/rušenje za gradnjo ceste
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Gradnja tramvaj proge v avtomatskem načinu. Ctrl preklopi gradnja/rušenje za gradnjo proge za tramvaje
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Zgradi garažo cestnih vozil (za izdelavo in servis vozil)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Zgradi tramvaj garažo (za izdelavo in servisiranje vozil)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Zgradi avtobusno postajo. Ctrl mogoči združevanje postaj
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Zgradi potniško tramvaj postajo. Ctrl omogoči združevanje postaj
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Zgradi tovorno postajo. Ctrl omogoči združevanje postaj
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Zgradi tovorno tramvaj postajo. Ctrl omogoči združevanje postaj
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Zgradi cestni odsek. Ctrl preklopi gradnja/rušenje za gradnjo ceste. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Zgradi odsek proge. Ctrl preklopi gradnja/rušenje za gradnjo proge za tramvaje. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Gradnja cestnega odseka v avtomatskem načinu. Ctrl preklopi gradnja/rušenje za gradnjo ceste. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Gradnja tramvaj proge v avtomatskem načinu. Ctrl preklopi gradnja/rušenje za gradnjo proge za tramvaje. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Zgradi garažo cestnih vozil (za izdelavo in servis vozil). Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Zgradi tramvaj garažo (za izdelavo in servisiranje vozil). Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Zgradi avtobusno postajo. Ctrl mogoči združevanje postaj. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Zgradi potniško tramvaj postajo. Ctrl omogoči združevanje postaj. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Zgradi tovorno postajo. Ctrl omogoči združevanje postaj. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Zgradi tovorno tramvaj postajo. Ctrl omogoči združevanje postaj. Shift preklaplja med izgradnjo in predvidenimi stroški
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Omogoči/onemogoči enosmerne ceste
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Zgradi cestni most
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Zgradi most za tramvaj
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Zgradi cestni predor
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Zgradi predor za tramvaj
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Zgradi cestni most. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Zgradi most za tramvaj. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Zgradi cestni predor. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Zgradi predor za tramvaj. Shift preklaplja med izgradnjo in predvidenimi stroški
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Preklopi gradnja/rušenje cestnih konstrukcij
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Preklop gradi/odstrani za tramvaj progo
 
@@ -2066,12 +2066,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Izbor or
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Gradnja vodnih poti
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vodne poti
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Zgradi kanale
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Gradnja zapornic
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Zgradi ladjedelnico (za izgradnjo in servisiranje ladij)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Zgradi ladijski dok. Ctrl omogoči združevanje postaj
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavi bojo, ki je lahko uporabljena kot točka poti
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Gradnja akvedukta
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Zgradi kanale. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Gradnja zapornic. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Zgradi ladjedelnico (za izgradnjo in servisiranje ladij). Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Zgradi ladijski dok. Ctrl omogoči združevanje postaj. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavi bojo, ki je lahko uporabljena kot točka poti. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Gradnja akvedukta. Shift preklaplja med izgradnjo in predvidenimi stroški
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Določi področje vode.{}Naredi kanal, razen če je pritisnjen Ctrl na morski gladini, ko bo poplavilo okolico.
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Položi reke
 
@@ -2084,7 +2084,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Pristani
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Letališča
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Zgradi letališče. Ctrl omogoči združevanje postaj
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Zgradi letališče. Ctrl omogoči združevanje postaj. Shift preklaplja med izgradnjo in predvidenimi stroški
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Izbira letališča
@@ -2111,14 +2111,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Efektivn
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Izdelava terena
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Znižaj rob terena. Vlečenje zniža izbrani kot in izravna višino. Ctrl izbere diagonalno območje
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvišaj rob terena. Vlečenje zviša izbrani kot in poravna na enako višino. Ctrl izbere diagonalno območje
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Zravnaj zemljo na višino prvega izbranega kota. Ctrl izbere diagonalno območje
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zemljišče za prihodnjo rabo
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Znižaj rob terena. Vlečenje zniža izbrani kot in izravna višino. Ctrl izbere diagonalno območje. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvišaj rob terena. Vlečenje zviša izbrani kot in poravna na enako višino. Ctrl izbere diagonalno območje. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Zravnaj zemljo na višino prvega izbranega kota. Ctrl izbere diagonalno območje. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zemljišče za prihodnjo rabo. Shift preklaplja med izgradnjo in predvidenimi stroški
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Izbor zgradbe
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Izberi zgradbo za postavitev
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Izberi zgradbo za postavitev. Shift preklaplja med izgradnjo in predvidenimi stroški
 STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Vrsta zgradbe
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Predogled zgradbe
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM} x {NUM} plošč
@@ -2130,7 +2130,7 @@ STR_OBJECT_CLASS_TRNS                                           :Oddajniki
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drevesa
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izberi vrsto drevesa za sajenje
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drevesa naključne vrste
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Postavi drevesa naključne vrste
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Postavi drevesa naključne vrste. Shift preklaplja med izgradnjo in predvidenimi stroški
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Naključna drevesa
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Posadi drevesa naključno po ozemlju
 
@@ -2151,7 +2151,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Zagotovo
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generator mest
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Novo mesto
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Zgradi novo mesto
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Zgradi novo mesto. Shift+Klik prikaže predviden strošek
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Naključno mesto
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Zgradi mesto na naključni lokaciji
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Več naključnih mest
@@ -2743,7 +2743,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Zgradi s
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Poglej sedež podjetja
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Poglej sedež podjetja
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Preseli sedež
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Preseli sedež podjetja drugam za ceno 1% vrednosti podjetja
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Preseli sedež podjetja drugam za ceno 1% vrednosti podjetja. Shift+Klik prikaže predviden strošek brez selitve
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nov obraz
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Izberi nov obraz za direktorja
@@ -2756,8 +2756,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Spremeni
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kupi 25% delnic podjetja
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Prodaj 25% delnic podjetja
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kupi 25% delnic tega podjetja
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodaj 25% delnic tega podjetja
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kupi 25% delnic tega podjetja. Shift+Klik prikaže predviden strošek brez nakupa
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Prodaj 25% delnic tega podjetja. Shift+Klik prikaže predviden dobiček brez prodaje
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Ime podjetja
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktorjevo ime
@@ -2890,10 +2890,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kupi voz
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kupi ladjo
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Kupi letalo
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kupi izbrano železniško vozilo
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kupi izbrano cestno vozilo
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kupi izbrano ladjo
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kupi izbrano letalo
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kupi izbrano železniško vozilo. Shift+Klik prikaže predviden strošek brez nakupa
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kupi izbrano cestno vozilo. Shift+Klik prikaže predviden strošek brez nakupa
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kupi izbrano ladjo. Shift+Klik prikaže predviden strošek brez nakupa
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kupi izbrano letalo. Shift+Klik prikaže predviden strošek brez nakupa
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Preimenuj
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Preimenuj
@@ -2958,10 +2958,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kloniraj
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kloniraj ladjo
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kloniraj letalo
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}To bo kupilo kopijo vlaka vključno z vsemi vagoni. Klikni na ta gumb in nato na vlak v ali zunaj garaže. Ctrl+Klik skopira tudi navodila
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}To bo kupilo kopijo vozila. Klikni na ta gumb in nato na vozilo v ali zunaj garaže. Ctrl+Klik skopira tudi ukaze
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}To bo kupilo kopijo ladje. Klikni na ta gumb in nato na ladjo v ali zunaj ladjedelnice. Ctrl+Klik skopira tudi ukaze
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}To bo kupilo kopijo letala. Klikni na ta gumb in nato na letalo v ali zunaj hangarja. Ctrl+Klik skopira tudi ukaze
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}To bo kupilo kopijo vlaka vključno z vsemi vagoni. Klikni na ta gumb in nato na vlak v ali zunaj garaže. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}To bo kupilo kopijo vozila. Klikni na ta gumb in nato na vozilo v ali zunaj garaže. Ctrl+Klik skopira tudi ukaze. Shift+Klik prikaže predviden strošek brez nakupa
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}To bo kupilo kopijo ladje. Klikni na ta gumb in nato na ladjo v ali zunaj ladjedelnice. Ctrl+Klik skopira tudi ukaze. Shift+Klik prikaže predviden strošek brez nakupa
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}To bo kupilo kopijo letala. Klikni na ta gumb in nato na letalo v ali zunaj hangarja. Ctrl+Klik skopira tudi ukaze. Shift+Klik prikaže predviden strošek brez nakupa
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Osredotoči pogled na lokacijo železniške garaže. Ctrl+Klik odpre nov pogled na lokaciji zelezniške garaže
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Osredotoči pogled na lokacijo cestne garaže. Ctrl+Klik odpre nov pogled na lokaciji cestne garaže
@@ -3045,10 +3045,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošlji 
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Pošlji ladjo v ladjedelnico. Ctrl+Klik samo na servis
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Pošlji letalo v hangar. Ctrl+Klik samo na servis
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}To bo kupilo kopijo vlaka vključno z vsemi vagoni. Ctrl+Klik skopira tudi navodila
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}To bo kupilo kopijo cestnega vozila. Ctrl+Klik skopira tudi navodila
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}To bo kupilo kopijo ladje. Ctrl+Klik skopira tudi navodila
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}To bo kupilo kopijo letala. Ctrl+Klik skopira tudi navodila
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}To bo kupilo kopijo vlaka vključno z vsemi vagoni. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}To bo kupilo kopijo cestnega vozila. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}To bo kupilo kopijo ladje. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}To bo kupilo kopijo letala. Ctrl+Klik skopira tudi navodila. Shift+Klik prikaže predviden strošek brez nakupa
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Prisili vlak, naj nadaljuje brez čakanja signalov
 

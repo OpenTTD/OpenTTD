@@ -3315,6 +3315,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Выберите тип груза для перевозки:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Новая ёмкость: {GOLD}{CARGO}{}{BLACK}Стоимость переоборудования: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Новая ёмкость: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Стоимость переоборудования: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Выберите вагоны для переоборудования. Можно обвести мышью несколько вагонов. Щелчок за пределами состава выберет весь состав. Ctrl+щелчок выберет вагоны до конца состава.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Выберите тип груза для перевозки
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Выберите тип груза для перевозки

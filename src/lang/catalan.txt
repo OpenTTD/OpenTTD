@@ -237,7 +237,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Prem i a
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Intercanvia mida gran/petita de finestra
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplaçament - desplaça la llista amunt/avall
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplaçament - desplaça la llista dreta/esquerra
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Enderroca edificis, etc. en un quadre de terreny
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Enderroca edificis, etc. en un quadre de terreny. Ctrl selecciona l'àrea en diagonal. Shift commuta construir/mostrar el cost estimat
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Predeterminat
@@ -332,9 +332,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generaci
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generació de Poblacions
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generació d'indústries
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construcció de carreteres
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta arbres
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Planta arbres. Shift commuta construeix/mostra el cost estimat
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Situa una senyal
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Situa objecte
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Situa objecte. Shift commuta construeix/mostra el cost estimat
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Desa l'escenari
@@ -803,7 +803,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} està esperant a la drassana
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} està esperant a l'hangar
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} té massa poques ordres a l'agenda
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} té una ordre buida
@@ -814,8 +814,8 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} s'està fent vell
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} s'està fent molt vell
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} s'està fent molt vell i necessita ser substituït urgentment
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no pot trobar un camí per on continuar.
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} està perdut.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} no pot trobar un camí per on continuar
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} s'ha perdut
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}El benefici del {VEHICLE} l'any passat va ser de {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}El {VEHICLE} s'ha parat perquè l'ordre de remodelació ha fallat
@@ -830,8 +830,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} ara accepta {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} ara accepta {STRING} i {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Oferta de subvenció caducada: {}{}{STRING} des de {STRING} fins a {STRING} no tindrà subvenció.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvenció retirada:{}{}{STRING} des de {STRING} fins a {STRING} ja no està subvencionat.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Oferta de subvenció expirada: {}{}{STRING} des de {STRING} fins a {STRING} no tindrà subvenció
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvenció retirada:{}{}{STRING} des de {STRING} fins a {STRING} ja no està subvencionat
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Oferta de subvenció per a un servei:{}{} El primer servei de {STRING} des de {STRING} fins a {STRING} tindrà una subvenció d'un any per part de l'autoritat local!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subvenció per a un servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} rebrà un 50% addicional durant el pròxim any!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subvenció per a un servei concedida a {STRING}!{}{} Servei de {STRING} des de {STRING} fins a {STRING} pagarà el doble de la tarifa durant el pròxim any!
@@ -1089,7 +1089,7 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Mostra 
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permet construir en desnivells i costes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permet terraformar sota edificis, rails, etc. (autopendent): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permet una mida més real de l'àrea d'influència: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permet l'esborrat de propietats de les poblacions: carreteres, ponts, túnels, etc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Activa la construcció de trens molt llargs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantitat de fum/xispes del vehicle: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Cap
@@ -1142,10 +1142,11 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permet 
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permet circular a través de les parades en carreteres propietat de competidors: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permet construir estacions annexes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Activa diversos paquets de motors NewGRF: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es pot canviar aquest ajustament quan hi ha vehicles.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No es pot canviar aquest ajustament quan hi ha vehicles
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Els aeroports mai caduquen: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Avisa si el vehicle es perd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revisa ordres dels vehicles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :si, excepte vehicles parats
@@ -1210,12 +1211,17 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desactivat
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Desplaçament amb el botó esquerre: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Utilitza el format de data curta {ORANGE}{STRING}{LTBLUE} en els jocs desats.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Utilitza el format de data curta {ORANGE}{STRING}{LTBLUE} en els jocs desats
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :llarga (31st Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Posa en pausa automàticament en començar un nou joc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Quan s'estigui en pausa permet: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :sense accions
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :totes les accions no-constructores
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :tot menys les accions modificadores del paisatge
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :totes les accions
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilitza la llista de vehicles avançada: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Inactiu
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Pròpia companyia
@@ -1417,7 +1423,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Estàs 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampes
 STR_CHEATS_TOOLTIP                                              :{BLACK}Els quadres marcats indiquen que ja has fet servir aquesta trampa
-STR_CHEATS_WARNING                                              :{BLACK}Atenció! Estàs a punt d'enredar als teus companys competidors. Pensa que una cosa així serà recordada per tota la eternitat!.
+STR_CHEATS_WARNING                                              :{BLACK}Atenció! Estàs a punt d'enredar als teus companys competidors. Pensa que una cosa així serà recordada per tota la eternitat
 STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementa els diners en {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugant com la companyia: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries, objectes inamovibles): {ORANGE}{STRING}
@@ -1480,16 +1486,16 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Seleccio
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nova Cara
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Genera una nova cara aleatòria
 STR_FACE_ADVANCED                                               :{BLACK}Avançat
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Selecció de cara avançada.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Selecció de cara avançada
 STR_FACE_SIMPLE                                                 :{BLACK}Simple
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecció de cara simple.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecció de cara simple
 STR_FACE_LOAD                                                   :{BLACK}Carrega
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carrega la cara preferida
 STR_FACE_LOAD_DONE                                              :{WHITE}La teva cara preferida ha estat carregada des de l'arxiu de configuració d'OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Cara jugador nu.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Veure i/o assigna el número de la cara del president
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Veure i/o assigna el número de la cara del president
-STR_FACE_FACECODE_SET                                           :{WHITE}El número de la nova cara ha estat assignat.
+STR_FACE_FACECODE_SET                                           :{WHITE}El número de la nova cara ha estat assignat
 STR_FACE_FACECODE_ERR                                           :{WHITE}No s'ha pogut assignar el número de cara del president - ha de ser un nombre entre 0 i 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Desa
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Desa la cara preferida
@@ -1574,7 +1580,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualit
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Busca servidor
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cercant un servidor a la xarxa
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Afegeix un servidor
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Afegeix un servidor a la llista que sempre es comprovarà per a jocs iniciats.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Afegeix un servidor a la llista que sempre es comprovarà per a jocs iniciats
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Inicia el servidor
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Inicia en un servidor propi
 
@@ -1682,15 +1688,15 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Ajuda a 
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Connectant...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Connectant..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autoritzant..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Esperant..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Descarregant mapa..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Processant dades..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrant..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Connectant...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autoritzant...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Esperant...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Descarregant mapa...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Processant dades...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrant...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtenint informació del joc..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtenint informació de la companyia..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtenint informació del joc...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtenint informació de la companyia...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} rivals
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} descarregats fins ara
@@ -1731,7 +1737,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Utilitza
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Unir-se
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Unir-se i jugar amb aquesta companyia
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Contrasenya
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protegeix la teva Empresa amb contrasenya per tal d'evitar que la utilitzin usuaris no autoritzats.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protegeix la teva Empresa amb contrasenya per tal d'evitar que la utilitzin usuaris no autoritzats
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Estableix la contrasenya de l'Empresa
 
 # Network chat
@@ -1876,15 +1882,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opcions de transparència
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Commuta la transparència dels rètols d'estació. Ctrl+Clic per bloquejar.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Commuta la transparència dels arbres. Ctrl+Clic per bloquejar.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Commuta la transparència de les cases. Ctrl+Clic per bloquejar.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Commuta la transparència de les indústries. Ctrl+Clic per bloquejar.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Commuta la transparència dels edificis com ara estacions, cotxeres, punts de trobada i catenàries. Ctrl+Clic per bloquejar.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Commuta la transparència dels ponts. Ctrl+Clic per bloquejar.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Commuta la transparència de les estructures com ara fars i antenes. Ctrl+Clic per bloquejar.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Commuta la transparència de la catenària. CTRL+clic per bloquejar.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Commuta la transparència dels indicadors de càrrega. Ctrl+Clic per bloquejar.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Commuta la transparència dels rètols d'estació. Ctrl+Clic per bloquejar
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Commuta la transparència dels arbres. Ctrl+Clic per bloquejar
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Commuta la transparència de les cases. Ctrl+Clic per bloquejar
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Commuta la transparència de les indústries. Ctrl+Clic per bloquejar
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Commuta la transparència dels edificis com ara estacions, cotxeres, punts de trobada i catenàries. Ctrl+Clic per bloquejar
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Commuta la transparència dels ponts. Ctrl+Clic per bloquejar
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Commuta la transparència de les estructures com ara fars i antenes. Ctrl+Clic per bloquejar
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Commuta la transparència de la catenària. CTRL+clic per bloquejar
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Commuta la transparència dels indicadors de càrrega. Ctrl+Clic per bloquejar
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Mostra els objectes invisibles enlloc de transparents
 
 # Base for station construction window(s)
@@ -1909,16 +1915,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcció de
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcció de Monorail
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcció de Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construeix vies de tren. Ctrl canvia entre contrueix/treu la construcció de vies
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construeix vies de tren utilitzant el mode Autorail. Ctrl canvia entre construeix/treu la construcció de vies de tren
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construeix unes cotxeres (per construir i revisar trens)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteix una via en un punt de control. Ctrl permet ajuntar punts de control
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construeix una estació de tren. Ctrl permet ajuntar estacions
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren. Ctrl commuta el semàfor/senyals de llums{}Arrossegant es construeixen senyals al llarg d'un tros recte de rail. Ctrl construeix senyals fins a la propera intersecció{}Ctrl+Clic commuta l'obertura de la finestra de detecció de senyals
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construeix un pont de tren
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix un túnel per a trens
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construeix vies de tren. Ctrl canvia entre contrueix/treu la construcció de vies. Shift commuta construeix/mostra el cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construeix vies de tren utilitzant el mode Autorail. Ctrl canvia entre construeix/treu la construcció de vies de tren. Shift commuta construeix/mostra el cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construeix unes cotxeres (per construir i revisar trens). Shift commuta construeix/mostra el cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converteix una via en un punt de control. Ctrl permet ajuntar punts de control. Shift commuta construeix/mostra el cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construeix una estació de tren. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construeix senyals de tren. Ctrl commuta el semàfor/senyals de llums{}Arrossegant es construeixen senyals al llarg d'un tros recte de rail. Ctrl construeix senyals fins a la propera intersecció{}Ctrl+Clic commuta l'obertura de la finestra de detecció de senyals. Shift commuta construeix/mostra el cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construeix un pont de tren. Shift commuta construeix/mostra el cost estimat
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construeix un túnel per a trens. Shift commuta construeix/mostra el cost estimat
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Commuta construeix/treu per vies de tren, senyals, punts de control i estacions. Manté Ctrl per treure també les vies dels punts de control i de les estacions
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteix/Millora el tipus de via
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converteix/Millora el tipus de via. Shift commuta construeix/mostra el cost estimat
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientació Cotxeres
@@ -1947,19 +1953,19 @@ STR_STATION_CLASS_WAYP                                          :Punt de pas
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selecció de senyals
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Senyal de tram (semàfor){}Aquest es el tipus més bàsic de senyal, permetent només un tren en el mateix tram a la vegada.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Senyal d'entrada (semàfor){}En verd mentre hi hagi una o més senyals de sortida en verd en la secció següent de vies. En cas contrari està en vermell.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Senyal de Sortida (semàfor){}Es comporta com una senyal de tram però és necessari actuar sobre el color correcte en les pre-senyals d'entrada i combinada.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Senyal Combinada (semàfor){}La senyal combinada simplement actua com a senyal d'entrada i sortida. Això permet construir grans extensions de pre-senyals.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Senyal de camí (semàfor){}Una senyal de camí permet entrar dins d'un tram a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals de camí poden ser passades des de darrera.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Senyal de camí d'un sentit (semàfor){}Una senyal de camí permet entrar dins d'un tram a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals de camí d'un sentit poden ser passades des de darrera.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Senyal de tram (elèctrica){}Aquest es el tipus més bàsic de senyal, permeten entrar a cada tram només un tren a la vegada.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Senyal d'entrada (elèctrica){}En verd mentre hi hagi una o més senyals de sortida en verd en la secció següent de vies. En cas contrari està en vermell.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Senyal de Sortida (elèctrica){}Es comporta com una senyal de tram però és necessari actuar sobre el color correcte en les pre-senyals d'entrada i combinades.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Senyal Combinada (elèctrica){}La senyal combinada simplement actua com a senyal d'entrada i sortida. Això permet construir grans extensions de pre-senyals.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Senyal de camí (elèctrica){}Una senyal de camí permet entrar dins d'un tram a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals de camí estàndard poden ser passades des de darrera.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Senyal de camí d'un sentit (elèctrica){}Una senyal de camí permet entrar dins d'un tram a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals de camí d'un sentit poden ser passades des de darrera.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversió de senyals{}Quan esta seleccionat, clicant una senyal existent la converteix en el tipus de senyal seleccionada i variants, CTRL+Clic commuta la variant existent.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Senyal de tram (semàfor){}Aquest es el tipus més bàsic de senyal, permetent només un tren en el mateix tram a la vegada
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Senyal d'entrada (semàfor){}En verd mentre hi hagi una o més senyals de sortida en verd en la secció següent de vies. En cas contrari està en vermell
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Senyal de Sortida (semàfor){}Es comporta com una senyal de tram però és necessari actuar sobre el color correcte en les pre-senyals d'entrada i combinada
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Senyal Combinada (semàfor){}La senyal combinada simplement actua com a senyal d'entrada i sortida. Això permet construir grans extensions de pre-senyals
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Senyal de camí (semàfor){}Una senyal de camí permet entrar dins d'un tram a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals de camí poden ser passades des de darrera
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Senyal de camí d'un sentit (semàfor){}Una senyal de camí permet entrar dins d'un tram a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals de camí d'un sentit poden ser passades des de darrera
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Senyal de tram (elèctrica){}Aquest es el tipus més bàsic de senyal, permeten entrar a cada tram només un tren a la vegada
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Senyal d'entrada (elèctrica){}En verd mentre hi hagi una o més senyals de sortida en verd en la secció següent de vies. En cas contrari està en vermell
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Senyal de Sortida (elèctrica){}Es comporta com una senyal de tram però és necessari actuar sobre el color correcte en les pre-senyals d'entrada i combinades
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Senyal Combinada (elèctrica){}La senyal combinada simplement actua com a senyal d'entrada i sortida. Això permet construir grans extensions de pre-senyals
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Senyal de camí (elèctrica){}Una senyal de camí permet entrar dins d'un tram a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals de camí estàndard poden ser passades des de darrera
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Senyal de camí d'un sentit (elèctrica){}Una senyal de camí permet entrar dins d'un tram a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals de camí d'un sentit poden ser passades des de darrera
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Conversió de senyals{}Quan esta seleccionat, clicant una senyal existent la converteix en el tipus de senyal seleccionada i variants, CTRL+Clic commuta la variant existent. Shift+Clic mostra el cost de conversió estimat
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densitat de senyals en arrossegar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Disminueix la densitat de senyals en arrossegar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Incrementa la densitat de senyals en arrossegar
@@ -1982,21 +1988,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silico
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construcció de Carreteres
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construcció de Tramvies
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construeix una secció de carretera. Ctrl canvia entre construeix/treu la construcció de carreteres
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construeix una secció de via de tramvia. Ctrl canvia entre construeix/treu la construcció de vies de tramvia
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construeix secció de carretera utilitzant el mode Autocarretera. Ctrl canvia entre construeix/treu la construcció de carreteres
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construeix secció de tramvia utilitzant el mode Autotramvia. Ctrl canvia entre construeix/treu la construcció de vies de tramvia
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construeix una cotxera (per comprar i revisar vehicles)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construeix cotxeres de tramvies (per comprar i revisar tramvies)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construeix estacions d'autobús. Ctrl permet ajuntar estacions
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construeix una estació de tramvies. Ctrl permet ajuntar estacions
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construeix un moll de càrrega. Ctrl permet ajuntar estacions
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construeix una estació de tramvies de mercaderies. Ctrl permet ajuntar estacions
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construeix una secció de carretera. Ctrl commuta construeix/treu la construcció de carreteres. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construeix una secció de via de tramvia. Ctrl commuta construeix/treu la construcció de vies de tramvia. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construeix secció de carretera utilitzant el mode Autocarretera. Ctrl commuta construeix/treu la construcció de carreteres. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construeix secció de tramvia utilitzant el mode Autotramvia. Ctrl commuta construeix/treu la construcció de vies de tramvia. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construeix una cotxera (per comprar i revisar vehicles). Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construeix cotxeres de tramvies (per comprar i revisar tramvies). Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construeix estacions d'autobús. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construeix una estació de tramvies. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construeix un moll de càrrega. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construeix una estació de tramvies de mercaderies. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activa/Desactiva les carreteres d'un sentit
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construeix un pont per carretera
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construeix pont per tramvies
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construeix un túnel per carretera
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construeix un túnel per a tramvies
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construeix un pont per carretera. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construeix pont per tramvies. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construeix un túnel per carretera. Shift commuta construeix/mostra el cost estimat
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construeix un túnel per a tramvies. Shift commuta construeix/mostra el cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Intercanvia funció construeix/treu per la construcció de carreteres
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Canvia construeix/treu de la construcció de vies de tramvia
 
@@ -2019,14 +2025,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Seleccio
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construcció de canals
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canals
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canals.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construeix rescloses
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construeix una drassana (per comprar i revisar vaixells)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construeix un port. Ctrl permet ajuntar estacions
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Situa una boia que pot ser útil per fer punts de control addicionals
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK} Construeix aqüeducte
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construeix canals. Shift commuta construeix/mostra el cost estimat
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construeix rescloses. Shift commuta construeix/mostra el cost estimat
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construeix una drassana (per comprar i revisar vaixells). Shift commuta construeix/mostra el cost estimat
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construeix un port. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Situa una boia que pot ser útil per fer punts de control addicionals. Shift commuta construeix/mostra el cost estimat
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK} Construeix aqüeducte. Shift commuta construeix/mostra el cost estimat
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Defineix l'àrea d'aigua.{}Fa un canal, excepte si CTRL està polsat al nivell del mar, llavors s'inundaran els voltants
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Situa rius.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Situa rius
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Drassanes
@@ -2037,7 +2043,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Moll
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroports
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construeix un aeroport. Ctrl permet ajuntar estacions
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construeix un aeroport. Ctrl permet ajuntar estacions. Shift commuta construeix/mostra el cost estimat
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Aeroports
@@ -2067,11 +2073,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Creació
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rebaixa una cantonada del terreny
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Eleva una cantonada del terreny
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Anivella el terreny
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Compra un terreny per un ús posterior
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Compra un terreny per un ús posterior. Shift commuta construeix/mostra el cost estimat
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecció d'objecte
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecciona l'objecte a construir
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecciona l'objecte a construir. Shift commuta construeix/mostra el cost estimat
 STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Classe d'objecte
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Previsualització de l'objecte
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Mida: {GOLD}{NUM} x {NUM} cel·les
@@ -2083,7 +2089,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissors
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona el tipus d'arbre a plantar
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres de tipus aleatori
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Situar arbres de tipus aleatori
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Situar arbres de tipus aleatori. Shift commuta construeix/mostra el cost estimat
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Arbres Aleatoris
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta arbres aleatòriament al paisatge
 
@@ -2104,7 +2110,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estàs s
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generació de Poblacions
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Població
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda una nova població
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda una nova població. Shift+Clic mostra el cost estimat
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Localitat Aleatòria
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Funda una població en un lloc aleatori
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Moltes poblacions aleatòries
@@ -2294,7 +2300,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Desa el 
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carrega
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carrega el joc seleccionat
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalls del joc
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hi ha informació disponible.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}No hi ha informació disponible
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2458,23 +2464,23 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Alerta: {S
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ha passat un error fatal d'un NewGRF: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} no funcionarà amb la versió de TTDPatch informada per OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} és per la versió {STRING} de TTD.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} no funcionarà amb la versió de TTDPatch informada per OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} és per la versió {STRING} de TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} està dissenyat per ser utilitzat amb {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paràmetre invàlid per {1:STRING}: paràmetre {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} ha de ser carregat abans de {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} ha de ser carregat després de {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} necessita OpenTTD versió {STRING} o més modern.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} ha de ser carregat abans de {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} ha de ser carregat després de {STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} necessita OpenTTD versió {STRING} o més modern
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :l'arxiu GRF dissenyat està pendent de traduir
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Hi ha massa arxius NewGRF carregats.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregant {2:STRING} com a NewGRF estàtic amb {4:STRING} podria causar desincronitzacions.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite no esperat.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Acció desconeguda 0 atributs.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Intenta utilitzar una ID invàlida.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conté un sprite corrupte. Tots els sprites corruptes seran mostrats amb un interrogant vermell (?).
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conté múltiples Accions 8 entrades.
-STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura després de la fi d'un pseudo-sprite.
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}al joc de gràfics base establert actualment li falten un nombre d'sprites.{}Si us plau actualitza el joc de gràfics base.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Hi ha massa arxius NewGRF carregats
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregant {2:STRING} com a NewGRF estàtic amb {4:STRING} podria causar desincronitzacions
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite no esperat
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Acció desconeguda 0 atributs
+STR_NEWGRF_ERROR_INVALID_ID                                     :Intenta utilitzar una ID invàlida
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conté un sprite corrupte. Tots els sprites corruptes seran mostrats amb un interrogant vermell (?)
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conté múltiples Accions 8 entrades
+STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura després de la fi d'un pseudo-sprite
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Al joc de gràfics base establert actualment li falten un nombre d'sprites.{}Si us plau actualitza el joc de gràfics base
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
@@ -2495,16 +2501,16 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Arxius 
 STR_NEWGRF_LIST_MISSING                                         :{RED}Arxius que falten
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF '{0:STRING}' probablement causarà desincronitzacions i/o penjades.
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Canvia l'estat del vagó amb potència per '{1:ENGINE}' quan no sigui dins la cotxera.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Canvia la llargada del vehicle pel '{1:ENGINE}' quan no sigui dins del dipòsit.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' pertanyent a la '{COMPANY}' té una llargada invàlida. Això està causat probablement per problemes amb els NewGRFs. El joc podria desincronitzar-se i/o penjar-se.
+STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF '{0:STRING}' probablement causarà desincronitzacions i/o penjades
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Canvia l'estat del vagó amb potència per '{1:ENGINE}' quan no sigui dins la cotxera
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Canvia la llargada del vehicle pel '{1:ENGINE}' quan no sigui dins del dipòsit
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' pertanyent a la '{COMPANY}' té una llargada invàlida. Això està causat probablement per problemes amb els NewGRFs. El joc podria desincronitzar-se i/o penjar-se
 
-STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' està donant informació incorrecta.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{1:ENGINE}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenova/-substitueix.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha provocat un bucle infinit en la crida de producció.
+STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' està donant informació incorrecta
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La informació de càrrega/remodelació per '{1:ENGINE}' no encaixa amb la llista de compres després de la construcció. Això podria causar un mal funcionament de autorenova/-substitueix
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha provocat un bucle infinit en la crida de producció
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<càrrega invàlida>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <càrrega invàlida>
@@ -2696,7 +2702,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construe
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Veure Seu
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Veure seu de la companyia
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Trasllada la Seu
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Trasllada la seu de la companyia a un altre lloc amb el cost d'un 1% del seu valor
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Trasllada la seu de la companyia a un altre lloc amb el cost d'un 1% del seu valor. Shift+Clic mostra el cost estimat sense traslladar la seu
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova Cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Selecciona una nova cara pel president
@@ -2709,8 +2715,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Canvia e
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Compra un 25% d'accions
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vendre un 25% d'accions
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Compra el 25% d'accions d'aquesta companyia
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Ven un 25% d'accions d'aquesta companyia
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Compra el 25% d'accions d'aquesta companyia. Shift+Clic mostra el cost estimat sense comprar cap acció
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Ven un 25% d'accions d'aquesta companyia. Shift+Clic mostra el cost estimat sense vendre cap acció
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nom Empresa
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom President
@@ -2843,10 +2849,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Compra V
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Compra Vaixell
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Compra Avió
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra el vehicle ferroviari seleccionat
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra l'automòbil seleccionat
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra el vaixell seleccionat
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'avió seleccionat
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra el vehicle ferroviari destacat. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra l'automòbil destacat. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra el vaixell destacat. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra l'avió destacat. Shift+Clic mostra el cost estimat sense comprar-lo
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Canvia el nom
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Canvia el nom
@@ -2911,10 +2917,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clona Ve
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clona Vaixell
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clona Avió
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Això comprarà una còpia del tren inclosos tots els vagons. Clica aquest botó i després en un tren dins o fora de les cotxeres. Control+Clic compartirà les ordres
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Això comprarà una còpia del vehicle. Clica aquest botó i després en un vehicle dins o fora de les cotxeres. Control+Clic compartirà les ordres
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Això comprarà una còpia del vaixell. Prem aquest botó i després en un vaixell dins o fora les drassanes. Control+Clic compartirà les ordres
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Això comprarà una còpia d'un avió. Prem aquest botó i després en un avió dins o fora l'hangar. Control+Clic compartirà les ordres
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Això comprarà una còpia del tren inclosos tots els vagons. Clica aquest botó i després en un tren dins o fora de les cotxeres. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Això comprarà una còpia del vehicle. Clica aquest botó i després en un vehicle dins o fora de les cotxeres. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Això comprarà una còpia del vaixell. Prem aquest botó i després en un vaixell dins o fora les drassanes. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Això comprarà una còpia d'un avió. Prem aquest botó i després en un avió dins o fora l'hangar. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centra la vista principal al lloc de la cotxera. Ctrl+Clic obre una nova vista al lloc de la cotxera
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centra la vista principal al lloc de la cotxera. Ctrl+Clic obre una nova vista al lloc de la cotxera
@@ -2983,7 +2989,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Trens Monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Trens Maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la substitució automàtica mantingui la llargària del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la substitució automàtica mantingui la llargada del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2998,10 +3004,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia el
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Envia el vaixell a la drassana. CTRL+Clic per només revisió
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Envia avió a l'hangar
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Això comprarà una còpia del tren inclosos tots els vagons. Control+Clic compartirà les ordres
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Això comprarà una còpia del vehicle. Control+Clic compartirà les ordres
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Això comprarà una còpia del vaixell. Control+Clic compartirà les ordres
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Això comprarà una còpia de l'avió. Control+Clic compartirà les ordres
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Això comprarà una còpia del tren inclosos tots els vagons. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Això comprarà una còpia del vehicle. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Això comprarà una còpia del vaixell. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Això comprarà una còpia de l'avió. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Obliga al tren a actuar sense esperar a tenir la senyal lliure
 
@@ -3126,6 +3132,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Selecciona el tipus de càrrega a transportar:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacitat: {GOLD}{CARGO}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacitat: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cost de remodelació: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecciona els vehicles a remodelar. Arrossegant amb el ratolí permet la selecció de múltiples vehicles. Clicant en un espai buit es seleccionarà el vehicle sencer. Ctrl+Clic seleccionarà un vehicle i la cadena següent
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecciona tipus de càrrega a transportar
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecciona el tipus de càrrega a transportar pel vehicle
@@ -3211,11 +3218,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Salta l'
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Esborra
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Esborra l'ordre seleccionada
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Esborra totes les ordres
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Deixa de compartir
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Deixa de compartir la llista d'ordres. Ctrl+Clic esborra totes ordres per aquest vehicle
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ves a
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ves al dipòsit més proper
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ves a l'hangar més proper
 STR_ORDER_CONDITIONAL                                           :Ordre de salt condicionada
+STR_ORDER_SHARE                                                 :Comparteix ordres
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Ctrl crea les ordres d'estació 'carrega qualsevol càrrega', les ordres de punt de control 'sense parada' i les ordres de cotxeres 'revisió'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Insereix una ordre avançada
 
@@ -3272,7 +3283,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordres
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Commuta a la llista d'ordres
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horari - clica sobre l'ordre per marcar-la.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horari - clica sobre una ordre per marcar-la
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sense viatge
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viatge (fora d'horari)
@@ -3334,7 +3345,7 @@ STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mata la 
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Activa/Desactiva el trencament quan un missatge de registre IA coincideixi amb la cadena de trencament
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Trencament activat:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Trencament activat
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quan un missatge de registre IA coincideixi amb aquesta cadena, el joc es pausarà.
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quan un missatge de registre IA coincideixi amb aquesta cadena, el joc es pausarà
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Distingeix entre majúscules i minúscules
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Commuta la distinció entre majúscules i minúscules quan es comparin els missatges de registre IA amb la cadena de trencament
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continua
@@ -3344,8 +3355,8 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Veure la
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD està compilat sense suport IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... no hi ha IAs disponibles!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IAs via el sistema de "Contingut en línia".
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una de les IAs s'ha penjat. Si us plau reporta això a l'autor de la IA amb una captura de pantalla de la finestra de depuració IA.
+STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IAs via el sistema de "Contingut en línia"
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una de les IAs s'ha penjat. Si us plau reporta això a l'autor de la IA amb una captura de pantalla de la finestra de depuració IA
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra de depuració IA només està disponible pel servidor
 
 # AI configuration window
@@ -3415,25 +3426,25 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :L'arxiu no es p
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No es pot escriure a l'arxiu
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :El test d'integritat de dades ha fallat
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}El joc s'ha desat en una versió sense suport de tramvies. Tots els tramvies s'han eliminat.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}El joc s'ha desat en una versió sense suport de tramvies. S'han eliminat tots els tramvies
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Generació del mapa avortada...{}... no hi ha llocs adequats per als pobles
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... no hi ha poblacions en aquest escenari
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossible carregar un terreny des del PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... fitxer no trobat.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... no s'ha pogut convertir la imatge. Es necessita una imatge PNG de 8 o 24-bit.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguna cosa ha anat malament. Ho sento. (probablement un fitxer corrupte)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... no s'ha trobar el fitxer
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... no s'ha pogut convertir el tipus d'imatge. Es necessita una imatge PNG de 8 o 24-bit
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguna cosa ha anat malament (probablement un fitxer corrupte)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Impossible carregar el terreny des del BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... no s'ha pogut convertir la imatge.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... no s'ha pogut convertir el tipus d'imatge
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Alerta d'escala
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}No es recomana redimensionar massa el mapa d'origen. Vols continuar amb la generació?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Només s'ha trobat el conjunt de sons buit. Si vols sons al joc, instal·la un conjunt de sons amb el sistema de descàrregues de continguts en línia.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Només s'ha trobat el conjunt de sons buit. Si vols sons al joc, instal·la un conjunt de sons amb el sistema de descàrregues de continguts en línia
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Còpia de pantalla desada correctament a disc com a '{STRING}'
@@ -3458,6 +3469,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... prop
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... l'àrea és propietat d'una altra companyia
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}El nom ha de ser únic
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} en el camí
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No està permès mentre s'està en pausa
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Les autoritats locals de {TOWN} no permeten fer això
@@ -3500,7 +3512,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... mass
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... massa prop d'una altra població
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... massa poblacions
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... no queda espai al mapa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El poble no construirà carrers. Pots activar la construcció de carrers via Paràmetres avançats->Economia->Pobles.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El poble no construirà carrers. Pots activar la construcció de carrers via Paràmetres avançats->Economia->Pobles
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obres en progrés
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No es pot eliminar aquest poble...{}Hi ha una estació o una cotxera al poble o una cel·la pertanyent al poble no pot ser eliminada
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hi ha un lloc adequat per situar l'estàtua al centre d'aquest poble
@@ -3606,7 +3618,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipus de cotxer
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} és massa llarg després de la substitució
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}No s'han aplicat normes d'autosubstitució/renovació.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}No s'han aplicat normes d'autosubstitució/renovació
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(límit de diners)
 
 # Rail construction errors
@@ -3659,6 +3671,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}El pont 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Inici i final han d'estar en línia recta
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... els extrems del pont han d'estar tots dos a terra
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... el pont és massa llarg
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}El pont acabaria fora del mapa
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Aquí no es pot construir el túnel...
@@ -3758,13 +3771,14 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... el v
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un vehicle que comparteix aquesta ordre no pot anar a aquesta estació
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}No es pot compartir la llista d'ordres...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}No es pot deixar de compartir la llista d'ordres...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}No es pot copiar la llista d'ordres...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... massa lluny del destí previ
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Impossible establir l'horari del vehicle...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Els vehicles només poden esperar a les estacions.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Aquest vehicle no para en aquesta estació.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Els vehicles només poden esperar a les estacions
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Aquest vehicle no para en aquesta estació
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... massa senyals

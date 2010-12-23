@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klik dan
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Tandai besar/kecil ukuran jendela
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Batang Geser - Geser daftar ke atas/bawah
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Batang Geser - Geser daftar ke kiri/kanan
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Runtuhkan bangunan, dll dalam area kotak
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Runtuhkan bangunan, dll dalam area kotak. Ctrl untuk memilih secara diagonal. Shift untuk menampilkan perkiraan biaya
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standar
@@ -2069,9 +2069,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Tingkat 
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Proses Lansekap
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rendahkan sudut area
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Naikkan sudut dataran tanah
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Permukaan tanah
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Turunkan penjuru dataran. Drag untuk menurunkan penjuru pertama dan meratakan area setinggi penjuru yg baru. Ctrl untuk memilih secara diagonal. Shift untuk menampilkan perkiraan biaya
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Naikkan penjuru dataran. Drag untuk menaikkan penjuru pertama dan meratakan area setinggi penjuru yg baru. Ctrl untuk memilih secara diagonal. Shift untuk menampilkan perkiraan biaya
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ratakan permukaan setinggi ujung kotak terpilih. Ctrl untuk memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tanah untuk digunakan pada masa depan
 
 # Object construction window
