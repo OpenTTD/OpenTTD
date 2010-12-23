@@ -382,6 +382,9 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 					v->colourmap = PAL_NONE;
 					if (v->IsEngineCountable()) Company::Get(new_owner)->num_engines[v->engine_type]++;
 					if (v->IsPrimaryVehicle()) v->unitnumber = unitidgen[v->type].NextID();
+
+					/* Invalidate the vehicle's cargo payment "owner cache". */
+					if (v->cargo_payment != NULL) v->cargo_payment->owner = NULL;
 				}
 			}
 		}
