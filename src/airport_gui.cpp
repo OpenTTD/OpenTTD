@@ -96,7 +96,7 @@ struct BuildAirToolbarWindow : Window {
 				break;
 
 			case ATW_DEMOLISH:
-				HandlePlacePushButton(this, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, NULL);
+				HandlePlacePushButton(this, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, NULL);
 				this->last_user_action = widget;
 				break;
 

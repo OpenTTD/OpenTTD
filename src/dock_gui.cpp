@@ -142,7 +142,7 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case DTW_DEMOLISH: // Demolish aka dynamite button
-				HandlePlacePushButton(this, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, NULL);
+				HandlePlacePushButton(this, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, NULL);
 				break;
 
 			case DTW_DEPOT: // Build depot button

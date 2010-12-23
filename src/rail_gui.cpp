@@ -540,7 +540,7 @@ struct BuildRailToolbarWindow : Window {
 				break;
 
 			case RTW_DEMOLISH:
-				HandlePlacePushButton(this, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT, NULL);
+				HandlePlacePushButton(this, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, NULL);
 				this->last_user_action = widget;
 				break;
 
