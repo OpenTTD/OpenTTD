@@ -2645,7 +2645,7 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 	}
 
 	/* Needed so level-land is placed correctly */
-	if (_thd.next_drawstyle == HT_POINT) {
+	if ((_thd.next_drawstyle & HT_DRAG_MASK) == HT_POINT) {
 		x += TILE_SIZE / 2;
 		y += TILE_SIZE / 2;
 	}
