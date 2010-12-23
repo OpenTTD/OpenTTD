@@ -297,7 +297,7 @@ STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDE
 
 
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
 
@@ -736,7 +736,7 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 # NewGRF 'it's broken' warnings
 
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
 # Sign list window

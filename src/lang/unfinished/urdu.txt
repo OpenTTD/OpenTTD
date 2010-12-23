@@ -581,7 +581,7 @@ STR_NEWS_MESSAGES_FULL                                          :مکمل
 
 
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
 
@@ -919,7 +919,7 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE} جای�
 # NewGRF 'it's broken' warnings
 
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<غلط سامان>
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :<غلط سامان> کا {COMMA}
 STR_NEWGRF_INVALID_ENGINE                                       :<غلط انجن ماڈل>

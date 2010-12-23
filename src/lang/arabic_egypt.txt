@@ -802,7 +802,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} تنتظر في حوض السفن
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} تنتظر في الحظيرة
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} لديها اوامر قليلة جدا في جدولها
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} لديها امر غير صالح
@@ -2499,7 +2499,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}الرس
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}التكلفة \ السعة ل '{1:ENGINE}' تختلف ما بين قائمة الشراء و مابعد البناء. قد يتسبب هذا في فشل التبديل الذاتي.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' تسبب بدورة غير منتهية في نداء الانتاج
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<حمولة غير صالحة>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :؟؟
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} لـ<حمولة غير صالحة>

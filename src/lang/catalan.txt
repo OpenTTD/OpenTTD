@@ -2070,9 +2070,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Soroll g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Creació de paisatge
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rebaixa una cantonada del terreny
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Eleva una cantonada del terreny
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Anivella el terreny
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Rebaixa una cantonada del terreny. Arrossegant rebaixa la primera cantonada seleccionada i anivella l'àrea seleccionada a la nova alçada de la cantonada. Ctrl selecciona l'àrea diagonalment. Shift commuta construeix/mostra el cost estimat
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Eleva una cantonada del terreny. Arrossegant eleva la primera cantonada selecciona i anivella l'àrea a la nova alçada de la cantonada. Ctrl selecciona l'àrea diagonalment. Shift commuta construeix/mostra el cost estimat
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Anivella el terreny a l'alçada de la primera cantonada seleccionada. Ctrl selecciona l'àrea diagonalment. Shift commuta construeix/mostra el cost estimat
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Compra un terreny per un ús posterior. Shift commuta construeix/mostra el cost estimat
 
 # Object construction window
@@ -3154,7 +3154,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horari
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Commuta a la vista d'horaris
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Llista d'ordres - clica en una per seleccionar-la
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Llista d'ordres - clica en una ordre per marcar-la. Ctrl+Clic desplaça cap a la destinació de l'ordre
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3227,7 +3227,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ves al dipòsit
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ves a l'hangar més proper
 STR_ORDER_CONDITIONAL                                           :Ordre de salt condicionada
 STR_ORDER_SHARE                                                 :Comparteix ordres
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Ctrl crea les ordres d'estació 'carrega qualsevol càrrega', les ordres de punt de control 'sense parada' i les ordres de cotxeres 'revisió'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista. Ctrl crea les ordres d'estació 'carrega qualsevol càrrega', les ordres de punt de control 'sense parada' i les ordres de cotxeres 'revisió'. 'Comparteix ordres' o Ctrl permet que aquest vehicle comparteixi ordres amb el vehicle seleccionat. Clicant un vehicle copia les ordres des d'aquest vehicle
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Insereix una ordre avançada
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra tots els vehicles que tenen les mateixes ordres

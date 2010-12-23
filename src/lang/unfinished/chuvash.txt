@@ -448,7 +448,7 @@ STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Гра�
 
 
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
 
@@ -1020,7 +1020,7 @@ STR_NEWGRF_LIST_NONE                                            :Ҫук
 # NewGRF 'it's broken' warnings
 
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 
 # Sign list window
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Филтр тасат

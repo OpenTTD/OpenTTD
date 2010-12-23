@@ -801,7 +801,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE} กำลังรออยู่ในอู่
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} กำลังรออยู่ในโรงจอด
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} มีคำสั่งน้อยเกินไปในกำหนดการเดินทาง
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} มีคำสั่งว่าง
@@ -2153,7 +2153,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE} รถ�
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ให้รายละเอียดไม่ถูกต้อง.
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 
 # Sign list window
 STR_SIGN_LIST_CLEAR                                             :{BLACK}ล้างตัวกรอง

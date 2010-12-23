@@ -774,7 +774,7 @@ STR_NEWS_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Mae {VEH
 STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}Mae {VEHICLE} yn aros yn y depo
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}Mae {VEHICLE} yn aros yn yr awrendy
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Mae gan {VEHICLE} rhy ychydig o orchmynion yn ei amserlen
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Mae gan {VEHICLE} orchymyn gwallus
@@ -2325,7 +2325,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}Mae NewG
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Mae'r wybodaeth cargo/ailffitio ar gyfer '{1:ENGINE}' yn wahanol i'r rhestr brynu wedi'r adeiladu. Gall hyn beri i awtoadnewyddy/-ddisodli fethu ag ailfitio'n gywir.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' creu lwp anorffen yn y production callback.
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Rhestr Arwyddion - {COMMA} Arwydd{P "" ion}

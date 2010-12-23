@@ -571,7 +571,7 @@ STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK
 
 
 
-# Start of order review system.
+# Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
 
@@ -1013,7 +1013,7 @@ STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Тоа �
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Возот '{VEHICLE}' сопстевеност на '{COMPANY}' има невалидна должина. Проблемот е веројатно предизвикан од нови графички фајлови. Играта може да се десинхронизира или да падне.
 
 
-# 'User removed essential NewGRFs'-placeholders for stuff without specs.
+# 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<валиден товар>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} на <неважечки товар>
