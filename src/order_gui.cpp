@@ -586,7 +586,7 @@ private:
 	{
 		this->LowerWidget(ORDER_WIDGET_GOTO);
 		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
-		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT, this);
+		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_NONE, this);
 		this->goto_type = OPOS_CONDITIONAL;
 	}
 
@@ -598,7 +598,7 @@ private:
 	{
 		this->LowerWidget(ORDER_WIDGET_GOTO);
 		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
-		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_RECT | HT_VEHICLE, this);
+		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, HT_VEHICLE, this);
 		this->goto_type = OPOS_SHARE;
 	}
 
