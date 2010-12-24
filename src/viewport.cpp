@@ -898,7 +898,7 @@ static bool IsPartOfAutoLine(int px, int py)
 	px -= _thd.selstart.x;
 	py -= _thd.selstart.y;
 
-	if ((_thd.drawstyle & ~HT_DIR_MASK) != HT_LINE) return false;
+	if ((_thd.drawstyle & HT_DRAG_MASK) != HT_LINE) return false;
 
 	switch (_thd.drawstyle & HT_DIR_MASK) {
 		case HT_DIR_X:  return py == 0; // x direction
@@ -970,8 +970,8 @@ static void DrawTileSelection(const TileInfo *ti)
 	bool is_redsq = _thd.redsq == ti->tile;
 	if (is_redsq) DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING);
 
-	/* no selection active? */
-	if (_thd.drawstyle == 0) return;
+	/* No tile selection active? */
+	if ((_thd.drawstyle & HT_DRAG_MASK) == HT_NONE) return;
 
 	if (_thd.diagonal) { // We're drawing a 45 degrees rotated (diagonal) rectangle
 		if (IsInsideRotatedRectangle((int)ti->x, (int)ti->y)) {
@@ -1903,7 +1903,8 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 		if (v != NULL && VehicleClicked(v)) return true;
 	}
 
-	if (_thd.place_mode & HT_DRAG_MASK) {
+	/* Vehicle placement mode already handled above. */
+	if ((_thd.place_mode & HT_DRAG_MASK) != HT_NONE) {
 		PlaceObject();
 		return true;
 	}
@@ -2128,8 +2129,8 @@ void UpdateTileSelection()
 			_thd.outersize.x != _thd.new_outersize.x ||
 			_thd.outersize.y != _thd.new_outersize.y ||
 			_thd.diagonal    != new_diagonal) {
-		/* clear the old selection? */
-		if (_thd.drawstyle) SetSelectionTilesDirty();
+		/* Clear the old tile selection? */
+		if ((_thd.drawstyle & HT_DRAG_MASK) != HT_NONE) SetSelectionTilesDirty();
 
 		_thd.drawstyle = new_drawstyle;
 		_thd.pos = _thd.new_pos;
@@ -2138,8 +2139,8 @@ void UpdateTileSelection()
 		_thd.diagonal = new_diagonal;
 		_thd.dirty = 0xff;
 
-		/* draw the new selection? */
-		if (new_drawstyle != HT_NONE) SetSelectionTilesDirty();
+		/* Draw the new tile selection? */
+		if ((new_drawstyle & HT_DRAG_MASK) != HT_NONE) SetSelectionTilesDirty();
 	}
 }
 

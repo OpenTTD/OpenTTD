@@ -382,7 +382,7 @@ static void HandleAutoSignalPlacement()
 	TileHighlightData *thd = &_thd;
 	uint32 p2 = GB(thd->drawstyle, 0, 3); // 0..5
 
-	if (thd->drawstyle == HT_RECT) { // one tile case
+	if ((thd->drawstyle & HT_DRAG_MASK) == HT_RECT) { // one tile case
 		GenericPlaceSignals(TileVirtXY(thd->selend.x, thd->selend.y));
 		return;
 	}
