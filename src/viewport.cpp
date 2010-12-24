@@ -2176,7 +2176,7 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 		_thd.selstart.y += TILE_SIZE / 2;
 	}
 
-	HighLightStyle others = _thd.place_mode & ~HT_DRAG_MASK;
+	HighLightStyle others = _thd.place_mode & ~(HT_DRAG_MASK | HT_DIR_MASK);
 	if ((_thd.place_mode & HT_DRAG_MASK) == HT_RECT) {
 		_thd.place_mode = HT_SPECIAL | others;
 		_thd.next_drawstyle = HT_RECT | others;
@@ -2813,7 +2813,7 @@ EventState VpHandlePlaceSizingDrag()
 	/* mouse button released..
 	 * keep the selected tool, but reset it to the original mode. */
 	_special_mouse_mode = WSM_NONE;
-	HighLightStyle others = _thd.next_drawstyle & ~HT_DRAG_MASK;
+	HighLightStyle others = _thd.place_mode & ~(HT_DRAG_MASK | HT_DIR_MASK);
 	if ((_thd.next_drawstyle & HT_DRAG_MASK) == HT_RECT) {
 		_thd.place_mode = HT_RECT | others;
 	} else if (_thd.select_method & VPM_SIGNALDIRS) {
