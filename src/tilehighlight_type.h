@@ -27,8 +27,8 @@ enum HighLightStyle {
 	HT_LINE      = 0x008, ///< used for autorail highlighting (longer streches), lower bits: direction
 	HT_RAIL      = 0x080, ///< autorail (one piece), lower bits: direction
 	HT_VEHICLE   = 0x100, ///< vehicle is accepted as target as well (bitmask)
-	HT_DIAGONAL  = 0x200, ///< Also allow 'diagonal rectangles'.
-	HT_DRAG_MASK = 0x0F8, ///< masks the drag-type
+	HT_DIAGONAL  = 0x200, ///< Also allow 'diagonal rectangles'. Only usable in combination with #HT_RECT or #HT_POINT.
+	HT_DRAG_MASK = 0x0F8, ///< Mask for the tile drag-type modes.
 
 	/* lower bits (used with HT_LINE and HT_RAIL):
 	 * (see ASCII art in table/autorail.h for a visual interpretation) */
