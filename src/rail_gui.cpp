@@ -361,7 +361,7 @@ static void DoRailroadTrack(int mode)
 static void HandleAutodirPlacement()
 {
 	TileHighlightData *thd = &_thd;
-	int trackstat = thd->drawstyle & 0xF; // 0..5
+	int trackstat = thd->drawstyle & HT_DIR_MASK; // 0..5
 
 	if (thd->drawstyle & HT_RAIL) { // one tile case
 		GenericPlaceRail(TileVirtXY(thd->selend.x, thd->selend.y), trackstat);
