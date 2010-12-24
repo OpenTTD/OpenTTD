@@ -172,50 +172,6 @@ enum TerraformToolbarWidgets {
 	TTW_PLACE_OBJECT,                     ///< Place object button
 };
 
-static void TerraformClick_Lower(Window *w)
-{
-	HandlePlacePushButton(w, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT | HT_DIAGONAL, PlaceProc_LowerLand);
-}
-
-static void TerraformClick_Raise(Window *w)
-{
-	HandlePlacePushButton(w, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT | HT_DIAGONAL, PlaceProc_RaiseLand);
-}
-
-static void TerraformClick_Level(Window *w)
-{
-	HandlePlacePushButton(w, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, PlaceProc_LevelLand);
-}
-
-static void TerraformClick_Dynamite(Window *w)
-{
-	HandlePlacePushButton(w, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, PlaceProc_DemolishArea);
-}
-
-static void TerraformClick_BuyLand(Window *w)
-{
-	HandlePlacePushButton(w, TTW_BUY_LAND, SPR_CURSOR_BUY_LAND, HT_RECT, PlaceProc_BuyLand);
-}
-
-static void TerraformClick_Trees(Window *w)
-{
-	/* This button is NOT a place-push-button, so don't treat it as such */
-	w->HandleButtonClick(TTW_PLANT_TREES);
-	ShowBuildTreesToolbar();
-}
-
-static void TerraformClick_PlaceSign(Window *w)
-{
-	HandlePlacePushButton(w, TTW_PLACE_SIGN, SPR_CURSOR_SIGN, HT_RECT, PlaceProc_Sign);
-}
-
-static void TerraformClick_PlaceObject(Window *w)
-{
-	/* Don't show the place object button when there are no objects to place. */
-	if (ObjectClass::GetCount() == 0) return;
-	if (HandlePlacePushButton(w, TTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Object)) ShowBuildObjectPicker(w);
-}
-
 struct TerraformToolbarWindow : Window {
 	TerraformToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
@@ -241,35 +197,39 @@ struct TerraformToolbarWindow : Window {
 
 		switch (widget) {
 			case TTW_LOWER_LAND: // Lower land button
-				TerraformClick_Lower(this);
+				HandlePlacePushButton(this, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT | HT_DIAGONAL, PlaceProc_LowerLand);
 				break;
 
 			case TTW_RAISE_LAND: // Raise land button
-				TerraformClick_Raise(this);
+				HandlePlacePushButton(this, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT | HT_DIAGONAL, PlaceProc_RaiseLand);
 				break;
 
 			case TTW_LEVEL_LAND: // Level land button
-				TerraformClick_Level(this);
+				HandlePlacePushButton(this, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, PlaceProc_LevelLand);
 				break;
 
 			case TTW_DEMOLISH: // Demolish aka dynamite button
-				TerraformClick_Dynamite(this);
+				HandlePlacePushButton(this, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, PlaceProc_DemolishArea);
 				break;
 
 			case TTW_BUY_LAND: // Buy land button
-				TerraformClick_BuyLand(this);
+				HandlePlacePushButton(this, TTW_BUY_LAND, SPR_CURSOR_BUY_LAND, HT_RECT, PlaceProc_BuyLand);
 				break;
 
 			case TTW_PLANT_TREES: // Plant trees button
-				TerraformClick_Trees(this);
+				/* This button is NOT a place-push-button, so don't treat it as such */
+				this->HandleButtonClick(TTW_PLANT_TREES);
+				ShowBuildTreesToolbar();
 				break;
 
 			case TTW_PLACE_SIGN: // Place sign button
-				TerraformClick_PlaceSign(this);
+				HandlePlacePushButton(this, TTW_PLACE_SIGN, SPR_CURSOR_SIGN, HT_RECT, PlaceProc_Sign);
 				break;
 
 			case TTW_PLACE_OBJECT: // Place object button
-				TerraformClick_PlaceObject(this);
+				/* Don't show the place object button when there are no objects to place. */
+				if (ObjectClass::GetCount() == 0) return;
+				if (HandlePlacePushButton(this, TTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Object)) ShowBuildObjectPicker(this);
 				break;
 
 			default: NOT_REACHED();
@@ -566,45 +526,6 @@ static const NWidgetPart _nested_scen_edit_land_gen_widgets[] = {
 };
 
 /**
- * @todo Merge with terraform_gui.cpp (move there) after I have cooled down at its braindeadness
- * and changed OnButtonClick to include the widget as well in the function declaration. Post 0.4.0 - Darkvater
- */
-static void EditorTerraformClick_Dynamite(Window *w)
-{
-	HandlePlacePushButton(w, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, PlaceProc_DemolishArea);
-}
-
-static void EditorTerraformClick_LowerBigLand(Window *w)
-{
-	HandlePlacePushButton(w, ETTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT, PlaceProc_LowerBigLand);
-}
-
-static void EditorTerraformClick_RaiseBigLand(Window *w)
-{
-	HandlePlacePushButton(w, ETTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT, PlaceProc_RaiseBigLand);
-}
-
-static void EditorTerraformClick_LevelLand(Window *w)
-{
-	HandlePlacePushButton(w, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, PlaceProc_LevelLand);
-}
-
-static void EditorTerraformClick_RockyArea(Window *w)
-{
-	HandlePlacePushButton(w, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, HT_RECT, PlaceProc_RockyArea);
-}
-
-static void EditorTerraformClick_Desert(Window *w)
-{
-	HandlePlacePushButton(w, ETTW_PLACE_DESERT, SPR_CURSOR_DESERT, HT_RECT, PlaceProc_DesertArea);
-}
-
-static void EditorTerraformClick_PlaceObject(Window *w)
-{
-	if (HandlePlacePushButton(w, ETTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Object)) ShowBuildObjectPicker(w);
-}
-
-/**
  * Callback function for the scenario editor 'reset landscape' confirmation window
  * @param w Window unused
  * @param confirmed boolean value, true when yes was clicked, false otherwise
@@ -686,31 +607,31 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 		switch (widget) {
 			case ETTW_DEMOLISH: // Demolish aka dynamite button
-				EditorTerraformClick_Dynamite(this);
+				HandlePlacePushButton(this, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, PlaceProc_DemolishArea);
 				break;
 
 			case ETTW_LOWER_LAND: // Lower land button
-				EditorTerraformClick_LowerBigLand(this);
+				HandlePlacePushButton(this, ETTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT, PlaceProc_LowerBigLand);
 				break;
 
 			case ETTW_RAISE_LAND: // Raise land button
-				EditorTerraformClick_RaiseBigLand(this);
+				HandlePlacePushButton(this, ETTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT, PlaceProc_RaiseBigLand);
 				break;
 
 			case ETTW_LEVEL_LAND: // Level land button
-				EditorTerraformClick_LevelLand(this);
+				HandlePlacePushButton(this, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, PlaceProc_LevelLand);
 				break;
 
 			case ETTW_PLACE_ROCKS: // Place rocks button
-				EditorTerraformClick_RockyArea(this);
+				HandlePlacePushButton(this, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, HT_RECT, PlaceProc_RockyArea);
 				break;
 
 			case ETTW_PLACE_DESERT: // Place desert button (in tropical climate)
-				EditorTerraformClick_Desert(this);
+				HandlePlacePushButton(this, ETTW_PLACE_DESERT, SPR_CURSOR_DESERT, HT_RECT, PlaceProc_DesertArea);
 				break;
 
 			case ETTW_PLACE_OBJECT: // Place transmitter button
-				EditorTerraformClick_PlaceObject(this);
+				if (HandlePlacePushButton(this, ETTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Object)) ShowBuildObjectPicker(this);
 				break;
 
 			case ETTW_INCREASE_SIZE:
