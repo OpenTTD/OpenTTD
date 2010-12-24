@@ -131,31 +131,13 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 	return true;
 }
 
-typedef void OnButtonClick(Window *w);
-
-static void PlaceProc_BuyLand(TileIndex tile)
-{
-	DoCommandP(tile, OBJECT_OWNED_LAND, 0, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_PURCHASE_THIS_LAND), CcPlaySound1E);
-}
-
+/**
+ * Start a drag for demolishing an area.
+ * @param tile Position of one corner.
+ */
 void PlaceProc_DemolishArea(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
-}
-
-static void PlaceProc_RaiseLand(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_RAISE_AND_LEVEL_AREA);
-}
-
-static void PlaceProc_LowerLand(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LOWER_AND_LEVEL_AREA);
-}
-
-static void PlaceProc_LevelLand(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
 }
 
 /** Enum referring to the widgets of the terraform toolbar */
@@ -267,15 +249,15 @@ struct TerraformToolbarWindow : Window {
 	{
 		switch (this->last_user_action) {
 			case TTW_LOWER_LAND: // Lower land button
-				PlaceProc_LowerLand(tile);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LOWER_AND_LEVEL_AREA);
 				break;
 
 			case TTW_RAISE_LAND: // Raise land button
-				PlaceProc_RaiseLand(tile);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_RAISE_AND_LEVEL_AREA);
 				break;
 
 			case TTW_LEVEL_LAND: // Level land button
-				PlaceProc_LevelLand(tile);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
 				break;
 
 			case TTW_DEMOLISH: // Demolish aka dynamite button
@@ -283,7 +265,7 @@ struct TerraformToolbarWindow : Window {
 				break;
 
 			case TTW_BUY_LAND: // Buy land button
-				PlaceProc_BuyLand(tile);
+				DoCommandP(tile, OBJECT_OWNED_LAND, 0, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_PURCHASE_THIS_LAND), CcPlaySound1E);
 				break;
 
 			case TTW_PLACE_SIGN: // Place sign button
@@ -466,26 +448,6 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 			}
 		}
 	}
-}
-
-static void PlaceProc_RaiseBigLand(TileIndex tile)
-{
-	CommonRaiseLowerBigLand(tile, 1);
-}
-
-static void PlaceProc_LowerBigLand(TileIndex tile)
-{
-	CommonRaiseLowerBigLand(tile, 0);
-}
-
-static void PlaceProc_RockyArea(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_ROCKS);
-}
-
-static void PlaceProc_DesertArea(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_DESERT);
 }
 
 static const int8 _multi_terraform_coords[][2] = {
@@ -736,23 +698,23 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				break;
 
 			case ETTW_LOWER_LAND: // Lower land button
-				PlaceProc_LowerBigLand(tile);
+				CommonRaiseLowerBigLand(tile, 0);
 				break;
 
 			case ETTW_RAISE_LAND: // Raise land button
-				PlaceProc_RaiseBigLand(tile);
+				CommonRaiseLowerBigLand(tile, 1);
 				break;
 
 			case ETTW_LEVEL_LAND: // Level land button
-				PlaceProc_LevelLand(tile);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
 				break;
 
 			case ETTW_PLACE_ROCKS: // Place rocks button
-				PlaceProc_RockyArea(tile);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_ROCKS);
 				break;
 
 			case ETTW_PLACE_DESERT: // Place desert button (in tropical climate)
-				PlaceProc_DesertArea(tile);
+				VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_DESERT);
 				break;
 
 			case ETTW_PLACE_OBJECT: // Place transmitter button
