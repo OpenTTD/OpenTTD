@@ -216,17 +216,6 @@ static void TerraformClick_PlaceObject(Window *w)
 	if (HandlePlacePushButton(w, TTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Object)) ShowBuildObjectPicker(w);
 }
 
-static OnButtonClick * const _terraform_button_proc[] = {
-	TerraformClick_Lower,
-	TerraformClick_Raise,
-	TerraformClick_Level,
-	TerraformClick_Dynamite,
-	TerraformClick_BuyLand,
-	TerraformClick_Trees,
-	TerraformClick_PlaceSign,
-	TerraformClick_PlaceObject,
-};
-
 struct TerraformToolbarWindow : Window {
 	TerraformToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
@@ -248,7 +237,43 @@ struct TerraformToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (widget >= TTW_BUTTONS_START) _terraform_button_proc[widget - TTW_BUTTONS_START](this);
+		if (widget < TTW_BUTTONS_START) return;
+
+		switch (widget) {
+			case TTW_LOWER_LAND: // Lower land button
+				TerraformClick_Lower(this);
+				break;
+
+			case TTW_RAISE_LAND: // Raise land button
+				TerraformClick_Raise(this);
+				break;
+
+			case TTW_LEVEL_LAND: // Level land button
+				TerraformClick_Level(this);
+				break;
+
+			case TTW_DEMOLISH: // Demolish aka dynamite button
+				TerraformClick_Dynamite(this);
+				break;
+
+			case TTW_BUY_LAND: // Buy land button
+				TerraformClick_BuyLand(this);
+				break;
+
+			case TTW_PLANT_TREES: // Plant trees button
+				TerraformClick_Trees(this);
+				break;
+
+			case TTW_PLACE_SIGN: // Place sign button
+				TerraformClick_PlaceSign(this);
+				break;
+
+			case TTW_PLACE_OBJECT: // Place object button
+				TerraformClick_PlaceObject(this);
+				break;
+
+			default: NOT_REACHED();
+		}
 	}
 
 	virtual void OnTimeout()
@@ -579,17 +604,6 @@ static void EditorTerraformClick_PlaceObject(Window *w)
 	if (HandlePlacePushButton(w, ETTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Object)) ShowBuildObjectPicker(w);
 }
 
-static OnButtonClick * const _editor_terraform_button_proc[] = {
-	EditorTerraformClick_Dynamite,
-	EditorTerraformClick_LowerBigLand,
-	EditorTerraformClick_RaiseBigLand,
-	EditorTerraformClick_LevelLand,
-	EditorTerraformClick_RockyArea,
-	EditorTerraformClick_Desert,
-	EditorTerraformClick_PlaceObject
-};
-
-
 /**
  * Callback function for the scenario editor 'reset landscape' confirmation window
  * @param w Window unused
@@ -668,35 +682,61 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
-		if (IsInsideMM(widget, ETTW_BUTTONS_START, ETTW_BUTTONS_END)) {
-			_editor_terraform_button_proc[widget - ETTW_BUTTONS_START](this);
-		} else {
-			switch (widget) {
-				case ETTW_INCREASE_SIZE:
-				case ETTW_DECREASE_SIZE: { // Increase/Decrease terraform size
-					int size = (widget == ETTW_INCREASE_SIZE) ? 1 : -1;
-					this->HandleButtonClick(widget);
-					size += _terraform_size;
+		if (widget < ETTW_BUTTONS_START) return;
 
-					if (!IsInsideMM(size, 1, 8 + 1)) return;
-					_terraform_size = size;
+		switch (widget) {
+			case ETTW_DEMOLISH: // Demolish aka dynamite button
+				EditorTerraformClick_Dynamite(this);
+				break;
 
-					SndPlayFx(SND_15_BEEP);
-					this->SetDirty();
-					break;
-				}
-				case ETTW_NEW_SCENARIO: // gen random land
-					this->HandleButtonClick(widget);
-					ShowCreateScenario();
-					break;
-				case ETTW_RESET_LANDSCAPE: // Reset landscape
-					ShowQuery(
-						STR_QUERY_RESET_LANDSCAPE_CAPTION,
-						STR_RESET_LANDSCAPE_CONFIRMATION_TEXT,
-						NULL,
-						ResetLandscapeConfirmationCallback);
-					break;
+			case ETTW_LOWER_LAND: // Lower land button
+				EditorTerraformClick_LowerBigLand(this);
+				break;
+
+			case ETTW_RAISE_LAND: // Raise land button
+				EditorTerraformClick_RaiseBigLand(this);
+				break;
+
+			case ETTW_LEVEL_LAND: // Level land button
+				EditorTerraformClick_LevelLand(this);
+				break;
+
+			case ETTW_PLACE_ROCKS: // Place rocks button
+				EditorTerraformClick_RockyArea(this);
+				break;
+
+			case ETTW_PLACE_DESERT: // Place desert button (in tropical climate)
+				EditorTerraformClick_Desert(this);
+				break;
+
+			case ETTW_PLACE_OBJECT: // Place transmitter button
+				EditorTerraformClick_PlaceObject(this);
+				break;
+
+			case ETTW_INCREASE_SIZE:
+			case ETTW_DECREASE_SIZE: { // Increase/Decrease terraform size
+				int size = (widget == ETTW_INCREASE_SIZE) ? 1 : -1;
+				this->HandleButtonClick(widget);
+				size += _terraform_size;
+
+				if (!IsInsideMM(size, 1, 8 + 1)) return;
+				_terraform_size = size;
+
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
 			}
+
+			case ETTW_NEW_SCENARIO: // gen random land
+				this->HandleButtonClick(widget);
+				ShowCreateScenario();
+				break;
+
+			case ETTW_RESET_LANDSCAPE: // Reset landscape
+				ShowQuery(STR_QUERY_RESET_LANDSCAPE_CAPTION, STR_RESET_LANDSCAPE_CONFIRMATION_TEXT, NULL, ResetLandscapeConfirmationCallback);
+				break;
+
+			default: NOT_REACHED();
 		}
 	}
 
