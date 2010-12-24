@@ -31,7 +31,7 @@ enum HighLightStyle {
 	HT_DRAG_MASK = 0x0F8, ///< masks the drag-type
 
 	/* lower bits (used with HT_LINE and HT_RAIL):
-	 * (see ASCII art in autorail.h for a visual interpretation) */
+	 * (see ASCII art in table/autorail.h for a visual interpretation) */
 	HT_DIR_X  = 0,    ///< X direction
 	HT_DIR_Y  = 1,    ///< Y direction
 	HT_DIR_HU = 2,    ///< horizontal upper
