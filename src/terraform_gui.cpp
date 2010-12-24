@@ -172,12 +172,16 @@ enum TerraformToolbarWidgets {
 	TTW_PLACE_OBJECT,                     ///< Place object button
 };
 
+/** Terra form toolbar managing class. */
 struct TerraformToolbarWindow : Window {
+	int last_user_action; ///< Last started user action.
+
 	TerraformToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		/* This is needed as we like to have the tree available on OnInit. */
 		this->CreateNestedTree(desc);
 		this->FinishInitNested(desc, window_number);
+		this->last_user_action = WIDGET_LIST_END;
 	}
 
 	~TerraformToolbarWindow()
@@ -197,23 +201,28 @@ struct TerraformToolbarWindow : Window {
 
 		switch (widget) {
 			case TTW_LOWER_LAND: // Lower land button
-				HandlePlacePushButton(this, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT | HT_DIAGONAL, PlaceProc_LowerLand);
+				HandlePlacePushButton(this, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT | HT_DIAGONAL, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case TTW_RAISE_LAND: // Raise land button
-				HandlePlacePushButton(this, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT | HT_DIAGONAL, PlaceProc_RaiseLand);
+				HandlePlacePushButton(this, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT | HT_DIAGONAL, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case TTW_LEVEL_LAND: // Level land button
-				HandlePlacePushButton(this, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, PlaceProc_LevelLand);
+				HandlePlacePushButton(this, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case TTW_DEMOLISH: // Demolish aka dynamite button
-				HandlePlacePushButton(this, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, PlaceProc_DemolishArea);
+				HandlePlacePushButton(this, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case TTW_BUY_LAND: // Buy land button
-				HandlePlacePushButton(this, TTW_BUY_LAND, SPR_CURSOR_BUY_LAND, HT_RECT, PlaceProc_BuyLand);
+				HandlePlacePushButton(this, TTW_BUY_LAND, SPR_CURSOR_BUY_LAND, HT_RECT, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case TTW_PLANT_TREES: // Plant trees button
@@ -223,13 +232,17 @@ struct TerraformToolbarWindow : Window {
 				break;
 
 			case TTW_PLACE_SIGN: // Place sign button
-				HandlePlacePushButton(this, TTW_PLACE_SIGN, SPR_CURSOR_SIGN, HT_RECT, PlaceProc_Sign);
+				HandlePlacePushButton(this, TTW_PLACE_SIGN, SPR_CURSOR_SIGN, HT_RECT, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case TTW_PLACE_OBJECT: // Place object button
 				/* Don't show the place object button when there are no objects to place. */
 				if (ObjectClass::GetCount() == 0) return;
-				if (HandlePlacePushButton(this, TTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Object)) ShowBuildObjectPicker(this);
+				if (HandlePlacePushButton(this, TTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, NULL)) {
+					ShowBuildObjectPicker(this);
+					this->last_user_action = widget;
+				}
 				break;
 
 			default: NOT_REACHED();
@@ -252,7 +265,37 @@ struct TerraformToolbarWindow : Window {
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		_place_proc(tile);
+		switch (this->last_user_action) {
+			case TTW_LOWER_LAND: // Lower land button
+				PlaceProc_LowerLand(tile);
+				break;
+
+			case TTW_RAISE_LAND: // Raise land button
+				PlaceProc_RaiseLand(tile);
+				break;
+
+			case TTW_LEVEL_LAND: // Level land button
+				PlaceProc_LevelLand(tile);
+				break;
+
+			case TTW_DEMOLISH: // Demolish aka dynamite button
+				PlaceProc_DemolishArea(tile);
+				break;
+
+			case TTW_BUY_LAND: // Buy land button
+				PlaceProc_BuyLand(tile);
+				break;
+
+			case TTW_PLACE_SIGN: // Place sign button
+				PlaceProc_Sign(tile);
+				break;
+
+			case TTW_PLACE_OBJECT: // Place object button
+				PlaceProc_Object(tile);
+				break;
+
+			default: NOT_REACHED();
+		}
 	}
 
 	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
@@ -558,13 +601,17 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 	}
 }
 
+/** Landscape generation window handler in the scenario editor. */
 struct ScenarioEditorLandscapeGenerationWindow : Window {
+	int last_user_action; ///< Last started user action.
+
 	ScenarioEditorLandscapeGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window()
 	{
 		this->CreateNestedTree(desc);
 		NWidgetStacked *show_desert = this->GetWidget<NWidgetStacked>(ETTW_SHOW_PLACE_DESERT);
 		show_desert->SetDisplayedPlane(_settings_game.game_creation.landscape == LT_TROPIC ? 0 : SZSP_NONE);
 		this->FinishInitNested(desc, window_number);
+		this->last_user_action = WIDGET_LIST_END;
 	}
 
 	virtual void OnPaint()
@@ -607,31 +654,40 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 		switch (widget) {
 			case ETTW_DEMOLISH: // Demolish aka dynamite button
-				HandlePlacePushButton(this, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, PlaceProc_DemolishArea);
+				HandlePlacePushButton(this, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case ETTW_LOWER_LAND: // Lower land button
-				HandlePlacePushButton(this, ETTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT, PlaceProc_LowerBigLand);
+				HandlePlacePushButton(this, ETTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case ETTW_RAISE_LAND: // Raise land button
-				HandlePlacePushButton(this, ETTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT, PlaceProc_RaiseBigLand);
+				HandlePlacePushButton(this, ETTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case ETTW_LEVEL_LAND: // Level land button
-				HandlePlacePushButton(this, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, PlaceProc_LevelLand);
+				HandlePlacePushButton(this, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case ETTW_PLACE_ROCKS: // Place rocks button
-				HandlePlacePushButton(this, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, HT_RECT, PlaceProc_RockyArea);
+				HandlePlacePushButton(this, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, HT_RECT, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case ETTW_PLACE_DESERT: // Place desert button (in tropical climate)
-				HandlePlacePushButton(this, ETTW_PLACE_DESERT, SPR_CURSOR_DESERT, HT_RECT, PlaceProc_DesertArea);
+				HandlePlacePushButton(this, ETTW_PLACE_DESERT, SPR_CURSOR_DESERT, HT_RECT, NULL);
+				this->last_user_action = widget;
 				break;
 
 			case ETTW_PLACE_OBJECT: // Place transmitter button
-				if (HandlePlacePushButton(this, ETTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, PlaceProc_Object)) ShowBuildObjectPicker(this);
+				if (HandlePlacePushButton(this, ETTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, NULL)) {
+					ShowBuildObjectPicker(this);
+					this->last_user_action = widget;
+				}
 				break;
 
 			case ETTW_INCREASE_SIZE:
@@ -674,7 +730,37 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		_place_proc(tile);
+		switch (this->last_user_action) {
+			case ETTW_DEMOLISH: // Demolish aka dynamite button
+				PlaceProc_DemolishArea(tile);
+				break;
+
+			case ETTW_LOWER_LAND: // Lower land button
+				PlaceProc_LowerBigLand(tile);
+				break;
+
+			case ETTW_RAISE_LAND: // Raise land button
+				PlaceProc_RaiseBigLand(tile);
+				break;
+
+			case ETTW_LEVEL_LAND: // Level land button
+				PlaceProc_LevelLand(tile);
+				break;
+
+			case ETTW_PLACE_ROCKS: // Place rocks button
+				PlaceProc_RockyArea(tile);
+				break;
+
+			case ETTW_PLACE_DESERT: // Place desert button (in tropical climate)
+				PlaceProc_DesertArea(tile);
+				break;
+
+			case ETTW_PLACE_OBJECT: // Place transmitter button
+				PlaceProc_Object(tile);
+				break;
+
+			default: NOT_REACHED();
+		}
 	}
 
 	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
