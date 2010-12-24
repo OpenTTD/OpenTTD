@@ -89,55 +89,107 @@ STR_CARGO_SINGULAR_COLA                                         :कोला
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :कँडी फ्लास
 STR_CARGO_SINGULAR_BUBBLE                                       :बुडबुडा
 STR_CARGO_SINGULAR_TOFFEE                                       :टॉफी
+STR_CARGO_SINGULAR_BATTERY                                      :बॅटरी
 STR_CARGO_SINGULAR_PLASTIC                                      :प्लॅस्टिक
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :फसफसणारं पेय
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} प्रवासी{P "" s}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} प्रवासी
 STR_QUANTITY_COAL                                               :{WEIGHT} कोळसा
+STR_QUANTITY_MAIL                                               :{COMMA} पिश{P वी व्या} टपाल
 STR_QUANTITY_OIL                                                :{VOLUME} तेल
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} पशुधन
+STR_QUANTITY_GOODS                                              :{COMMA} खो{P कं की} वस्तू
 STR_QUANTITY_GRAIN                                              :{WEIGHT} धान्य
 STR_QUANTITY_WOOD                                               :{WEIGHT} लाकूड
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} लोहखनिज
+STR_QUANTITY_STEEL                                              :{WEIGHT} पोलाद
+STR_QUANTITY_VALUABLES                                          :{COMMA} पिश{P वी व्या} किंमती ऐवज
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} अशद्ध तांबे
 STR_QUANTITY_MAIZE                                              :{WEIGHT} मका
-STR_QUANTITY_FRUIT                                              :{WEIGHT} फळ
+STR_QUANTITY_FRUIT                                              :{WEIGHT} फळं
+STR_QUANTITY_DIAMONDS                                           :{COMMA} पिश{P वी व्या} हिरे
 STR_QUANTITY_FOOD                                               :{WEIGHT} अन्न
 STR_QUANTITY_PAPER                                              :{WEIGHT} कागद
+STR_QUANTITY_GOLD                                               :{COMMA} पिश{P वी व्या} सोनं
 STR_QUANTITY_WATER                                              :{VOLUME} पाणी
+STR_QUANTITY_WHEAT                                              :{WEIGHT} गहू
 STR_QUANTITY_RUBBER                                             :{VOLUME} रबर
 STR_QUANTITY_SUGAR                                              :{WEIGHT} साखर
+STR_QUANTITY_TOYS                                               :{COMMA} खेळ{P णं णी}
+STR_QUANTITY_SWEETS                                             :{COMMA} गोड पदार्थांच्या पिशव्या
+STR_QUANTITY_COLA                                               :{VOLUME} कोला
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} म्हातारीचा कापूस
+STR_QUANTITY_BUBBLES                                            :{COMMA} बुडबु {P डा डे}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} टॉफी
+STR_QUANTITY_BATTERIES                                          :{COMMA} बॅट{P री ऱ्या}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} प्लॅस्टिक
-STR_QUANTITY_N_A                                                :एन. ए.
+STR_QUANTITY_N_A                                                :उपलब्ध नाही
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}प्र
+STR_ABBREV_COAL                                                 :{TINYFONT}को
+STR_ABBREV_MAIL                                                 :{TINYFONT}टपाल
+STR_ABBREV_OIL                                                  :{TINYFONT}तेल
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}पशु
+STR_ABBREV_GOODS                                                :{TINYFONT}वस्तू
+STR_ABBREV_GRAIN                                                :{TINYFONT}धान्य
+STR_ABBREV_WOOD                                                 :{TINYFONT}ला
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}लोह
+STR_ABBREV_STEEL                                                :{TINYFONT}पो
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}तांबे
+STR_ABBREV_MAIZE                                                :{TINYFONT}मका
+STR_ABBREV_FRUIT                                                :{TINYFONT}फळ
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}हिरे
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} प्रवासी
+STR_BAGS                                                        :{COMMA} पिश{P वी व्या}
+STR_TONS                                                        :{COMMA} टन
+STR_LITERS                                                      :{COMMA} लिटर
+STR_ITEMS                                                       :{COMMA}
+STR_CRATES                                                      :{COMMA} खो{P कं की}
 
 # Colours, do not shuffle
+STR_COLOUR_DARK_BLUE                                            :गडद निळा
+STR_COLOUR_PALE_GREEN                                           :फिकट हिरवा
+STR_COLOUR_PINK                                                 :गुलाबी
 STR_COLOUR_YELLOW                                               :पिवळा
 STR_COLOUR_RED                                                  :लाल
+STR_COLOUR_LIGHT_BLUE                                           :फिकट निळा
 STR_COLOUR_GREEN                                                :हिरवा
+STR_COLOUR_DARK_GREEN                                           :गडद हिरवा
 STR_COLOUR_BLUE                                                 :निळा
 STR_COLOUR_PURPLE                                               :जांभळा
+STR_COLOUR_ORANGE                                               :केशरी
+STR_COLOUR_GREY                                                 :करडा
 STR_COLOUR_WHITE                                                :पांढरा
 
 # Units used in OpenTTD
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 
 
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} किग्रॅ
+
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} टन
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} किलो
 
 
-
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} लिटर
 
 
 
 # Common window strings
 
 STR_BUTTON_LOCATION                                             :{BLACK}जागा
+STR_BUTTON_RENAME                                               :{BLACK}नाव बदला
 
 
 # Query window
+STR_BUTTON_CANCEL                                               :{BLACK}रद्द करा
+STR_BUTTON_OK                                                   :{BLACK}ठीक आहे
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -146,6 +198,8 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}लांबी: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}लांबीरुंदी : {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}लांबी: {NUM}{}उंचीतील फरक: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}क्षेत्रफळ: {NUM} x {NUM}{}उंचीतील फरक: {HEIGHT}
 
 
 # These are used in buttons
@@ -155,9 +209,32 @@ STR_SORT_BY_CAPTION_DATE                                        :{BLACK}दि�
 # These are used in dropdowns
 STR_SORT_BY_POPULATION                                          :लोकसंख्या
 STR_SORT_BY_NAME                                                :नाव
+STR_SORT_BY_PRODUCTION                                          :निर्मिती
+STR_SORT_BY_TYPE                                                :प्रकार
+STR_SORT_BY_NUMBER                                              :क्रमांक
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :गेल्या वर्षीचा नफा
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :चालू वर्षीचा नफा
+STR_SORT_BY_AGE                                                 :वय
+STR_SORT_BY_RELIABILITY                                         :विश्वासार्हता
+STR_SORT_BY_MAX_SPEED                                           :सर्वोच्च वेग
+STR_SORT_BY_VALUE                                               :किंमत
 STR_SORT_BY_LENGTH                                              :लांबी
+STR_SORT_BY_LIFE_TIME                                           :उर्वरित आयुर्मान
+STR_SORT_BY_FACILITY                                            :स्थानक प्रकार
+STR_SORT_BY_COST                                                :किंमत
+STR_SORT_BY_POWER                                               :ताकद
+STR_SORT_BY_RUNNING_COST                                        :चालवण्याचा खर्च
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :ताकद/चालवण्याचा खर्च
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK} खेळ स्थगित करा
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}पर्याय
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}शहरांची यादी दाखवा
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}कंपनीच्या स्थानकांची यादी दाखवा
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}कंपनीची आर्थिक माहिती दाखवा
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}कंपनीची सर्वसाधारण माहिती दाखवा
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}आलेख दाखवा
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK} लोहमार्ग बांधा
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}रस्ते बांधा
 
 # Extra tooltips for the scenario editor toolbar
@@ -424,6 +501,15 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :मुळ
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :खरेखुरे
 
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE} वाहन हरवल्यास सूचित करा: {ORANGE}{STRING}
+
+
+
+
+
+
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :कोणतीही कृती नाही
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :सर्व कृत्या
 
 
 
@@ -432,14 +518,9 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :खरेखु
 
 
 
-
-
-
-
-
-
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}स्टेटसबार वरचं स्थान: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :डावीकडे
-STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :मधे
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :मधोमध
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :उजवीकडे
 
 
@@ -460,12 +541,13 @@ STR_INTRO_CAPTION                                               :{WHITE}ओप�
 # Abandon game
 
 # Cheat window
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}चालू वर्ष बदला
 
 # Livery window
 
 
-STR_LIVERY_SMALL_PLANE                                          :छोट विमान
-STR_LIVERY_LARGE_PLANE                                          :मोठ विमान
+STR_LIVERY_SMALL_PLANE                                          :छोटं विमान
+STR_LIVERY_LARGE_PLANE                                          :मोठं विमान
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}चेहरा निवड
@@ -545,6 +627,8 @@ STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}स्�
 ############ Leave those lines in this order!!
 
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}आत्तापर्यंत {BYTES} डाऊनलोड झाल्या आहेत.
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} डाऊनलोड झालं आहे
 
 
 
@@ -566,6 +650,8 @@ STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}स्�
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE} संपर्क तुटला असण्याची शक्यता
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE} गेल्या {NUM} सेकंदांत सर्वरकडून काहीच माहिती आलेली नाही
 
 # Network related errors
 ############ Leave those lines in this order!!
@@ -969,6 +1055,7 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :विमान
 
 
 
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}सर्व आदेश रद्द करा
 
 
 
@@ -1045,6 +1132,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}अं�
 # Error message titles
 
 # Generic construction errors
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE} स्थगित असताना परवानगी नाही.
 
 # Local authority errors
 
@@ -1087,6 +1175,7 @@ STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}अध�
 # Tree related errors
 
 # Bridge related errors
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}पूल नकाशाबाहेर जाईल.
 
 # Tunnel related errors
 
@@ -1129,16 +1218,53 @@ STR_TOWN_BUILDING_NAME_STADIUM_2                                :क्रीड
 STR_TOWN_BUILDING_NAME_OFFICES_1                                :सरकारी खाते
 STR_TOWN_BUILDING_NAME_HOUSES_2                                 :घराणे
 STR_TOWN_BUILDING_NAME_CINEMA_1                                 :सिनेमा
+STR_TOWN_BUILDING_NAME_IGLOO_1                                  :इग्लू
 
 ##id 0x4800
 # industry names
+STR_INDUSTRY_NAME_COAL_MINE                                     :कोळशाची खाण
+STR_INDUSTRY_NAME_POWER_STATION                                 :विद्युतनिर्मिती प्रकल्प
+STR_INDUSTRY_NAME_FOREST                                        :वन
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :तेलशुद्धीकरण प्रकल्प
+STR_INDUSTRY_NAME_OIL_RIG                                       :तेलविहीर
+STR_INDUSTRY_NAME_FACTORY                                       :कारखाना
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :छापखाना
+STR_INDUSTRY_NAME_STEEL_MILL                                    :पोलाद कारखाना
 STR_INDUSTRY_NAME_FARM                                          :शेत
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :अशुद्ध तांब्याची खाण
+STR_INDUSTRY_NAME_OIL_WELLS                                     :तेलविहिरी
+STR_INDUSTRY_NAME_BANK                                          :बॅंक
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :अन्न निर्मिती प्रकल्प
+STR_INDUSTRY_NAME_PAPER_MILL                                    :कागद गिरणी
+STR_INDUSTRY_NAME_GOLD_MINE                                     :सोन्याची खाण
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :बॅंक
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :हिऱ्यांची खाण
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :लोहखनिजाची खाण
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :फळे लागवड क्षेत्र
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :रबर लागवड क्षेत्र
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :पाणी पुरवठा केंद्र
+STR_INDUSTRY_NAME_WATER_TOWER                                   :पाण्याची टाकी
+STR_INDUSTRY_NAME_FACTORY_2                                     :कारखाना
 STR_INDUSTRY_NAME_FARM_2                                        :शेत
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :लाकूडगिरणी
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :म्हातारीच्या कापसाचं वन
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :गोड पदार्थांचा कारखाना
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :बॅटऱ्यांचं शेत
+STR_INDUSTRY_NAME_COLA_WELLS                                    :कोला विहीर
+STR_INDUSTRY_NAME_TOY_SHOP                                      :खेळण्यांचं दुकान
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :खेळण्यांचा कारखाना
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :प्लॅस्टिकचं कारंजं
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :फसफसणाऱ्या पेयांचा कारखाना
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :बुडबुडा निर्माण प्रकल्प
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :साखरेची खाण
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :निनावी
+STR_SV_TRAIN_NAME                                               :रेल्वे {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :रस्त्यावरील वाहन {COMMA}
 STR_SV_SHIP_NAME                                                :जहाज {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :विमान {COMMA}
 
@@ -1148,25 +1274,47 @@ STR_SV_STNAME_SOUTH                                             :{STRING} दक
 STR_SV_STNAME_EAST                                              :{STRING} पूर्व
 STR_SV_STNAME_WEST                                              :{STRING} पश्चिम
 STR_SV_STNAME_CENTRAL                                           :{STRING} केंद्रीय
+STR_SV_STNAME_HALT                                              :{STRING} थांबा
+STR_SV_STNAME_VALLEY                                            :{STRING} दरी
+STR_SV_STNAME_WOODS                                             :{STRING} वन विभाग
+STR_SV_STNAME_LAKESIDE                                          :{STRING} तळेकाठ
 STR_SV_STNAME_AIRPORT                                           :{STRING} विमानतळ
+STR_SV_STNAME_OILFIELD                                          :{STRING} तेल प्रकल्प
+STR_SV_STNAME_MINES                                             :{STRING} खाण
+STR_SV_STNAME_DOCKS                                             :{STRING} बंदर
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
+STR_SV_STNAME_BRANCH                                            :{STRING} शाखा
+STR_SV_STNAME_UPPER                                             :वरचं {STRING}
+STR_SV_STNAME_LOWER                                             :खालचं {STRING}
 STR_SV_STNAME_FOREST                                            :{STRING} वन
+STR_SV_STNAME_FALLBACK                                          :{STRING} स्थानक #{NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
 # Vehicle names
-STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :सेम्पसन यु ५२
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :एम् पी एस् तेलवाहू जहाज
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :सी एस् इंक. तेलवाहू जहाज
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :एम पी एस् प्रवासी नौका
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :एफ् एफ् पी प्रवासी नौका
+STR_VEHICLE_NAME_SHIP_BAKEWELL_300_HOVERCRAFT                   :बेकवेल ३०० हॉवरक्राफ्ट
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :चगर-चग प्रवासी नौका
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :शिवरशेकर प्रवासी नौका
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :येट मालवाहू जहाज
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :बॅकवेल मालवाहू जहाज
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :मायटीमूव्हर मालवाहू जहाज
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :पॉवरनॉट मालवाहू जहाज
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :सॅम्पसन यु ५२
 STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :कोलमेन कौंट
 STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :एफ एफ पी डार्ट
 STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :येट होगन
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :बेकवेल कॉट्स्वल्ड एल बी-३
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :बेकवेल लकेट एल बी-८
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :बेकवेल लकेट एल बी-९
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :बेकवेल लकेट एल बी ८०
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :बेकवेल लकेट एल बी-१०
-STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :बेकवेल लकेट एल बी-११
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :बॅकवेल कॉट्स्वल्ड एल बी-३
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_8                 :बॅकवेल लकेट एल बी-८
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :बॅकवेल लकेट एल बी-९
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :बॅकवेल लकेट एल बी ८०
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_10                :बॅकवेल लकेट एल बी-१०
+STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :बॅकवेल लकेट एल बी-११
 STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :येट एरोस्पेस वाय ए सी १-११
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :डार्विन १००
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :डार्विन २००
@@ -1174,27 +1322,30 @@ STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :डार्व
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :डार्विन ४००
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :डार्विन ५००
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :डार्विन ६००
-STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :गुरु गेलेक्सी
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :एरटेक्सी ए२१
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :एरटेक्सी ए३१
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :एरटेक्सी ए३२
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :एरटेक्सी ए३३
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :गुरु गॅलेक्सी
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :एअरटॅक्सी ए२१
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :एअरटॅक्सी ए३१
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :एअरटॅक्सी ए३२
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :एअरटॅक्सी ए३३
 STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :येट एरोस्पेस वाय ए इ ४६
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :डिंगर १००
-STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :एरटेक्सी ए३४-१०००
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :एअरटॅक्सी ए३४-१०००
 STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :येट झी-शटल
-STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :केल्लिंग के १
-STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :केल्लिंग के ६
-STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :केल्लिंग के ७
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :केलिंग के १
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :केलिंग के ६
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :केलिंग के ७
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :डार्विन ७००
-STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :एफ एफ पी हैपरडार्ट २
+STR_VEHICLE_NAME_AIRCRAFT_FFP_HYPERDART_2                       :एफ एफ पी हायपरडार्ट २
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :डिंगर २००
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :डिंगर १०००
-STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :प्लोडीफट १००
-STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :प्लोडीफट ५००
-STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :फ्लाश्बंग एकस १
-STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :जुग्गेर्प्लाने एम १
-STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :फ्लाश्बंग विझ्झेर
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_100                        :प्लॉडीफट १००
+STR_VEHICLE_NAME_AIRCRAFT_PLODDYPHUT_500                        :प्लॉडीफट ५००
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_X1                          :फ्लॅशबॅंग एक्स १
+STR_VEHICLE_NAME_AIRCRAFT_JUGGERPLANE_M1                        :जगरप्लेन एम१
+STR_VEHICLE_NAME_AIRCRAFT_FLASHBANG_WIZZER                      :फ्लॅशबॅंग वायझर
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :ट्रिकॅरियो हेलिकॉप्टर
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :गुरू एक्स्२ हेलिकॉप्टर
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :पॉवरनॉट हेलिकॉप्टर
 
 ##id 0x8800
 # Formatting of some strings
@@ -1206,9 +1357,18 @@ STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRI
 STR_FORMAT_GROUP_NAME                                           :गट्टा {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} रेल्वे डेपो
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} रेल्वे डेपो #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN}रस्त्यावरील वाहनांचा डेपो
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN}रस्त्यावरील वाहनांचा डेपो #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} हॅंगर
 
+STR_UNKNOWN_STATION                                             :अज्ञात स्थानक
+STR_DEFAULT_SIGN_NAME                                           :चिन्ह
+STR_COMPANY_SOMEONE                                             :कोणीतरी
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :प्रेक्षक, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

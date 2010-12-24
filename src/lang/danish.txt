@@ -1085,7 +1085,7 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Vis kø
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillad bygning på skråninger og kyster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillad landskabsformning under bygninger, spor, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Tillad mere realistisk størrelse på stationernes opland: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillad nedriving af industribygninger, flere veje, osv: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillad nedriving af flere by-ejede veje, broer og tunneler: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Aktiver bygning af meget lange tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ingen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1204,7 +1204,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Fra
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Venstreklik-scrolling: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Brug {ORANGE}{STRING}{LTBLUE}-datoformatet til navne på gemte spil.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Brug {ORANGE}{STRING}{LTBLUE} datoformatet til navne på gemte spil.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Dec 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1729,7 +1729,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Brug den
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Tilslut dig
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Tilslut dig og spil som dette firma
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Kodeord
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Beskyt dit selskab med et kodeord for at undgå, at fremmede slutter sig til spillet.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Beskyt dit selskab med et kodeord for at undgå, at fremmede slutter sig til det.
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Sæt selskabets kodeord
 
 # Network chat
@@ -1945,13 +1945,13 @@ STR_STATION_CLASS_WAYP                                          :Kontrolsteder
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalvalg
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardsignal (semafor){}Signaler er nødvendige for at undgå sammenstød mellem tog på jernbanenetværk med mere end et tog.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Standardsignal (semafor){}Dette er den mest almindelige type signal, og tillader kun et tog ad gangen på den samme signalblok
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Indgangssignal (semafor){}Grønt så længe der er et eller flere grønne udgangssignaler fra den efterfølgende sporsektion. Ellers vises rødt.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Udgangssignal (semafor){}Fungerer som et normalt signal men er nødvendigt for at vise den korrekte farve ved indgangs- og kombisignaler.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombisignal (semafor){}Kombisignalet fungerer både som indgangs- og udgangssignal. Dette muliggør opbygning af store forgreninger af signaler.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Avanceret signal (semafor){}Et avanceret signal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en rute til et sikkert sted at stoppe. Avancerede signaler kan passeres fra bagsiden.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Ensrettet avanceret signal (semafor){}Et avanceret signal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en rute til et sikkert sted at stoppe. Ensrettede avancerede signaler kan ikke passeres fra bagsiden.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standardsignal (electrisk){}Signaler er nødvendige for at undgå sammenstød mellem tog på jernbanenetværk med mere end et tog.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Standardsignal (electrisk){}Dette er den mest almindelige type signal, og tillader kun et tog ad gangen på den samme signalblok
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Indgangssignal (elektrisk){}Grønt så længe der er et eller flere grønne udgangssignaler fra den efterfølgende sporsektion. Ellers vises rødt.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Udgangssignal (elektrisk){}Fungerer som et normalt signal, men er nødvendigt for at vise den korrekte farve ved indgangs- og kombisignaler.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombisignal (elektrisk){}Kombisignalet fungerer både som indgangs- og udgangssignal. Dette muliggør opbygning af store forgreninger af signaler.
@@ -2062,8 +2062,8 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Generere
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskabsværktøjer
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sænk punkter i landskabet
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hæv punkter i landskabet
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Udjævn land
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hæv punkter i landskabet. Træk hæver det først valgte punkt, og udjævner det markerede område til denne højde. CTRL markere på skrå. SKIFT viser anslåede pris
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Udjævn land til en højde svarende til det først markerede hjørne. CTRL vælger områder på skrå. SKIFT viser anslåede pris
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Køb land til senere brug
 
 # Object construction window
@@ -2389,6 +2389,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Tjek om 
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Filnavn: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatible version: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palette: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameter: {SILVER}{STRING}
@@ -3314,6 +3315,7 @@ STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Når en 
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Match store og små bogstaver
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortsæt
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sæt spillet i gang, og start den kunstige intelligens igen
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Se debug output for denne AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD er kompileret uden understøttelse for kunstig intelligens...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... ingen kunstig intelligens er tilgængeligt!

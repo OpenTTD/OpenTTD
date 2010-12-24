@@ -3256,6 +3256,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Виберіть вид вантажу для перевезення:-
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Нова місткість: {GOLD}{CARGO}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Нова місткість: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Вибрати транспорт для переобладнання. Перетягування мишкою дозволяє виділити декілька одиниць транспорту. Клік на порожньому місці виділить усю одиницю транспорту. Ctrl+Клік мишкою виділить транспорт та ланцюжок перевезень за ним.
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Виберіть вид вантажу для перевезення
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Оберіть тип вантажу для перевезення

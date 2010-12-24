@@ -283,6 +283,7 @@ STR_SORT_BY_RATING_MIN                                          :Malplejalta ŝa
 STR_SORT_BY_ENGINE_ID                                           :Maŝina ID (klasika ordigo)
 STR_SORT_BY_COST                                                :Kosto
 STR_SORT_BY_POWER                                               :Potenco
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Premega eltiro
 STR_SORT_BY_INTRO_DATE                                          :Enkonduka dato
 STR_SORT_BY_RUNNING_COST                                        :Irkosto
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenco/Irkosto
@@ -1016,6 +1017,7 @@ STR_NUM_LOW                                                     :Malalte
 STR_NUM_NORMAL                                                  :Normale
 STR_NUM_HIGH                                                    :Alte
 STR_NUM_CUSTOM                                                  :Ŝanĝitaj
+STR_NUM_CUSTOM_NUMBER                                           :Alia ({NUM})
 
 STR_VARIETY_NONE                                                :Neniu
 STR_VARIETY_VERY_LOW                                            :Tre Malalta
@@ -1034,6 +1036,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :Tre Malalte
 STR_SEA_LEVEL_LOW                                               :Malalte
 STR_SEA_LEVEL_MEDIUM                                            :Meze
 STR_SEA_LEVEL_HIGH                                              :Alte
+STR_SEA_LEVEL_CUSTOM                                            :Alia
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Alia ({NUM}%)
 
 STR_DISASTER_NONE                                               :Neniu
 STR_DISASTER_REDUCED                                            :Malpli
@@ -1129,6 +1133,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Ne eblas
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flughavenoj neniam antikviĝas: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Avertu se veturilo estas perdita: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Revui veturilajn ordonojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jes, escepte de haltigitaj veturiloj
@@ -1198,6 +1203,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :mallonga (31-12
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Aŭtomate paŭzu startante novan ludon: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Permesu dum paŭza: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :senagoj
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :ĉiuj senkonstruaj agoj
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ĉiuj krom landaspekto ŝanĝanta agoj
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :ĉiuj agoj
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uzu la avancitan veturilaron: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Ne
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Propra kompanio
@@ -1281,6 +1291,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Loko de
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Maldekstre
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Centre
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Dekstre
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Loko de kondiĉbaro: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Maldekstro
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centro
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Dekstro
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Fenestroliga distanco: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenestroliga distanco: {ORANGE}malaktiva
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Fenestra mollimo (ne-glueca): {ORANGE}{STRING}
@@ -1403,6 +1417,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktikeca landa
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Tropikeca landaspekto
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Ludolandaspekto
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ŝanĝu daton: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ŝanĝu nunan jaron
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ebligu ŝanĝi produktvalorojn: {ORANGE}{STRING}
 
 # Livery window
@@ -1666,6 +1681,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Kaptante
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Kaptante kompaniajn informojn..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kliento{P "" j} antaŭ vi
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} ĝis nun elŝutiĝis
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} ĝis nun elŝutiĝis
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Malkonektu
@@ -2348,6 +2364,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Kontroli
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Dosiernomo: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versio: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kongrua versio: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paletro: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametroj: {SILVER}{STRING}
@@ -2365,9 +2382,13 @@ STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Reigu
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Kondiĉu ĉiujn parametrojn al ilia norma valoro
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parametro {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Nombro da parametroj: {ORANGE}{NUM}
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspektu - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Magistro
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} je {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objekto
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Tipo de relo
 
@@ -2649,6 +2670,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Lastmonata produktado:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportiĝis)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centri ĉefvidon ĉe la industrio. Stir+Klak por malfermi novan vidujon ĉe la industrioloko.
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produkta nivelo: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Bezonas: {YELLOW}{STRING.n}{STRING}
@@ -2664,6 +2686,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Produkta
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝu produktadon
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Ŝanĝu produktan nivelon (procento, limigo je 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Trajno{P "" j}
@@ -3041,6 +3064,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacito
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Transformu)
 STR_REFIT_TITLE                                                 :{GOLD}Elektu ŝarĝotipon por porti:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova kapablo: {GOLD}{CARGO}{}{BLACK}Transformkosto: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova enhavebelco: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kosto de transformo: {GOLD}{CURRENCY}
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elektu ŝarĝospecon portotan de la trajno
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elektu portotan ŝarĝon de la stratveturilo
@@ -3123,11 +3147,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Transsal
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Forviŝu
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Forviŝi la elektitan ordonon.
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Forviŝu ĉiujn ordonojn
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Haltu kunhavanta
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Haltu kunhavanta la ordonan registron. Stir+Klak ankaŭ forviŝas ĉiujn ordonojn por ĉi tio veturilo
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Iru al
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Iru al la plej proksima garaĝo.
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Iru al la plej proksima hangaro.
 STR_ORDER_CONDITIONAL                                           :Kondiĉe transsaltu ordonon
+STR_ORDER_SHARE                                                 :Kunhavu ordonojn
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Enigi novan ordonon antaŭ la elektita ordono, aŭ aldoni fine de la listo.
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Enigi altnivelan ordonon.
 
@@ -3237,6 +3265,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Agordoj 
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Ŝanĝi agordojn de la AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reŝarĝi AI-on
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Mortigi la AI-on, reŝarĝi la skripton, kaj restarti la AI-on
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}Daŭrigu
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Malpaŭzu kaj daŭrigi la AI
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vidu forigeraran eligon de ĉiu tio AI
 
@@ -3305,8 +3334,11 @@ STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Ludkonse
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Ne eblas forviŝi dosieron
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Ludŝarĝado Fiaskis{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interna eraro: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Rompa konservludo - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Konservludo estas fari kun pli novan version
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Ne legebla dosiero
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Ne enskribebla dosiero
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Datena rekteco kontrolo fiaskis
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ne disponebla>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Ludon estis konservinta en versio sen subteno por tramveturilo. Ĉiujn tramveturilojn estas formovita.
 
@@ -3350,10 +3382,12 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... pose
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... regiono estas posedata de alia kompanio
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nomo devas esti ununura
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} okupas la lokon
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ne permesa dum paŭzo
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}La loka estraro de {TOWN} rifuzas permesi ĉi tion
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}La lokaj estroj de {TOWN} rifuzas permesi konstruadon de plia flughaveno ĉi-urbe
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokestro ne permesas aerohavenon kaŭze de brugravecoj
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Via subaĉeta provo estas
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}malkovrita de regiona esploristo
 
@@ -3549,6 +3583,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Ponto es
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Komenco kaj fino devas esti samliniaj
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... ambaŭ pontfinoj devas esti sur tero
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... ponto estas tro longa
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Ponto estus finata ekster de la mapo
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Ne povas konstrui tunelon ĉi tie...
@@ -3648,6 +3683,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vetu
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... veturilo kunhavanta ĉi tiun ordonon ne povas iri al tiu stacio
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Ne povas kunhavigi ordonliston...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Ne povas halti kunhavante ordonan registron...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Ne povas kopii ordonliston...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... tro for de la antaŭa destino
 
