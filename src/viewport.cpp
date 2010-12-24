@@ -2840,7 +2840,7 @@ void SetObjectToPlaceWnd(CursorID icon, PaletteID pal, HighLightStyle mode, Wind
 void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowClass window_class, WindowNumber window_num)
 {
 	/* undo clicking on button and drag & drop */
-	if (_thd.place_mode != HT_NONE || _special_mouse_mode == WSM_DRAGDROP) {
+	if ((_thd.place_mode & ~HT_DIR_MASK) != HT_NONE || _special_mouse_mode == WSM_DRAGDROP) {
 		Window *w = FindWindowById(_thd.window_class, _thd.window_number);
 		if (w != NULL) {
 			/* Call the abort function, but set the window class to something
