@@ -1084,7 +1084,7 @@ public:
 	{
 		switch (widget) {
 			case TSEW_NEWTOWN:
-				HandlePlacePushButton(this, TSEW_NEWTOWN, SPR_CURSOR_TOWN, HT_RECT, NULL);
+				HandlePlacePushButton(this, TSEW_NEWTOWN, SPR_CURSOR_TOWN, HT_RECT);
 				break;
 
 			case TSEW_RANDOMTOWN:

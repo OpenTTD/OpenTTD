@@ -183,27 +183,27 @@ struct TerraformToolbarWindow : Window {
 
 		switch (widget) {
 			case TTW_LOWER_LAND: // Lower land button
-				HandlePlacePushButton(this, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT | HT_DIAGONAL, NULL);
+				HandlePlacePushButton(this, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
 			case TTW_RAISE_LAND: // Raise land button
-				HandlePlacePushButton(this, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT | HT_DIAGONAL, NULL);
+				HandlePlacePushButton(this, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
 			case TTW_LEVEL_LAND: // Level land button
-				HandlePlacePushButton(this, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, NULL);
+				HandlePlacePushButton(this, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
 			case TTW_DEMOLISH: // Demolish aka dynamite button
-				HandlePlacePushButton(this, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, NULL);
+				HandlePlacePushButton(this, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
 			case TTW_BUY_LAND: // Buy land button
-				HandlePlacePushButton(this, TTW_BUY_LAND, SPR_CURSOR_BUY_LAND, HT_RECT, NULL);
+				HandlePlacePushButton(this, TTW_BUY_LAND, SPR_CURSOR_BUY_LAND, HT_RECT);
 				this->last_user_action = widget;
 				break;
 
@@ -214,14 +214,14 @@ struct TerraformToolbarWindow : Window {
 				break;
 
 			case TTW_PLACE_SIGN: // Place sign button
-				HandlePlacePushButton(this, TTW_PLACE_SIGN, SPR_CURSOR_SIGN, HT_RECT, NULL);
+				HandlePlacePushButton(this, TTW_PLACE_SIGN, SPR_CURSOR_SIGN, HT_RECT);
 				this->last_user_action = widget;
 				break;
 
 			case TTW_PLACE_OBJECT: // Place object button
 				/* Don't show the place object button when there are no objects to place. */
 				if (ObjectClass::GetCount() == 0) return;
-				if (HandlePlacePushButton(this, TTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, NULL)) {
+				if (HandlePlacePushButton(this, TTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT)) {
 					ShowBuildObjectPicker(this);
 					this->last_user_action = widget;
 				}
@@ -616,37 +616,37 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 		switch (widget) {
 			case ETTW_DEMOLISH: // Demolish aka dynamite button
-				HandlePlacePushButton(this, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL, NULL);
+				HandlePlacePushButton(this, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
 			case ETTW_LOWER_LAND: // Lower land button
-				HandlePlacePushButton(this, ETTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT, NULL);
+				HandlePlacePushButton(this, ETTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, HT_POINT);
 				this->last_user_action = widget;
 				break;
 
 			case ETTW_RAISE_LAND: // Raise land button
-				HandlePlacePushButton(this, ETTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT, NULL);
+				HandlePlacePushButton(this, ETTW_RAISE_LAND, ANIMCURSOR_RAISELAND, HT_POINT);
 				this->last_user_action = widget;
 				break;
 
 			case ETTW_LEVEL_LAND: // Level land button
-				HandlePlacePushButton(this, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL, NULL);
+				HandlePlacePushButton(this, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, HT_POINT | HT_DIAGONAL);
 				this->last_user_action = widget;
 				break;
 
 			case ETTW_PLACE_ROCKS: // Place rocks button
-				HandlePlacePushButton(this, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, HT_RECT, NULL);
+				HandlePlacePushButton(this, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, HT_RECT);
 				this->last_user_action = widget;
 				break;
 
 			case ETTW_PLACE_DESERT: // Place desert button (in tropical climate)
-				HandlePlacePushButton(this, ETTW_PLACE_DESERT, SPR_CURSOR_DESERT, HT_RECT, NULL);
+				HandlePlacePushButton(this, ETTW_PLACE_DESERT, SPR_CURSOR_DESERT, HT_RECT);
 				this->last_user_action = widget;
 				break;
 
 			case ETTW_PLACE_OBJECT: // Place transmitter button
-				if (HandlePlacePushButton(this, ETTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT, NULL)) {
+				if (HandlePlacePushButton(this, ETTW_PLACE_OBJECT, SPR_CURSOR_TRANSMITTER, HT_RECT)) {
 					ShowBuildObjectPicker(this);
 					this->last_user_action = widget;
 				}

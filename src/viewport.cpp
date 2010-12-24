@@ -49,7 +49,6 @@
 
 #include "table/strings.h"
 
-PlaceProc *_place_proc;
 Point _tile_fract_coords;
 
 struct StringSpriteToDraw {
