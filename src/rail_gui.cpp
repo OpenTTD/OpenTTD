@@ -360,11 +360,10 @@ static void DoRailroadTrack(int mode)
 
 static void HandleAutodirPlacement()
 {
-	TileHighlightData *thd = &_thd;
-	int trackstat = thd->drawstyle & HT_DIR_MASK; // 0..5
+	int trackstat = _thd.drawstyle & HT_DIR_MASK; // 0..5
 
-	if (thd->drawstyle & HT_RAIL) { // one tile case
-		GenericPlaceRail(TileVirtXY(thd->selend.x, thd->selend.y), trackstat);
+	if (_thd.drawstyle & HT_RAIL) { // one tile case
+		GenericPlaceRail(TileVirtXY(_thd.selend.x, _thd.selend.y), trackstat);
 		return;
 	}
 
@@ -379,11 +378,10 @@ static void HandleAutodirPlacement()
  */
 static void HandleAutoSignalPlacement()
 {
-	TileHighlightData *thd = &_thd;
-	uint32 p2 = GB(thd->drawstyle, 0, 3); // 0..5
+	uint32 p2 = GB(_thd.drawstyle, 0, 3); // 0..5
 
-	if ((thd->drawstyle & HT_DRAG_MASK) == HT_RECT) { // one tile case
-		GenericPlaceSignals(TileVirtXY(thd->selend.x, thd->selend.y));
+	if ((_thd.drawstyle & HT_DRAG_MASK) == HT_RECT) { // one tile case
+		GenericPlaceSignals(TileVirtXY(_thd.selend.x, _thd.selend.y));
 		return;
 	}
 
@@ -406,7 +404,7 @@ static void HandleAutoSignalPlacement()
 
 	/* _settings_client.gui.drag_signals_density is given as a parameter such that each user
 	 * in a network game can specify his/her own signal density */
-	DoCommandP(TileVirtXY(thd->selstart.x, thd->selstart.y), TileVirtXY(thd->selend.x, thd->selend.y), p2,
+	DoCommandP(TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), p2,
 			_remove_button_clicked ?
 			CMD_REMOVE_SIGNAL_TRACK | CMD_MSG(STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM) :
 			CMD_BUILD_SIGNAL_TRACK  | CMD_MSG(STR_ERROR_CAN_T_BUILD_SIGNALS_HERE),

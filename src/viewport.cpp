@@ -2406,29 +2406,29 @@ static void CheckOverflow(int &test, int &other, int max, int mult)
 }
 
 /** while dragging */
-static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int method)
+static void CalcRaildirsDrawstyle(int x, int y, int method)
 {
 	HighLightStyle b;
 
-	int dx = thd->selstart.x - (thd->selend.x & ~TILE_UNIT_MASK);
-	int dy = thd->selstart.y - (thd->selend.y & ~TILE_UNIT_MASK);
+	int dx = _thd.selstart.x - (_thd.selend.x & ~TILE_UNIT_MASK);
+	int dy = _thd.selstart.y - (_thd.selend.y & ~TILE_UNIT_MASK);
 	uint w = abs(dx) + TILE_SIZE;
 	uint h = abs(dy) + TILE_SIZE;
 
 	if (method & ~(VPM_RAILDIRS | VPM_SIGNALDIRS)) {
 		/* We 'force' a selection direction; first four rail buttons. */
 		method &= ~(VPM_RAILDIRS | VPM_SIGNALDIRS);
-		int raw_dx = thd->selstart.x - thd->selend.x;
-		int raw_dy = thd->selstart.y - thd->selend.y;
+		int raw_dx = _thd.selstart.x - _thd.selend.x;
+		int raw_dy = _thd.selstart.y - _thd.selend.y;
 		switch (method) {
 			case VPM_FIX_X:
 				b = HT_LINE | HT_DIR_Y;
-				x = thd->selstart.x;
+				x = _thd.selstart.x;
 				break;
 
 			case VPM_FIX_Y:
 				b = HT_LINE | HT_DIR_X;
-				y = thd->selstart.y;
+				y = _thd.selstart.y;
 				break;
 
 			case VPM_FIX_HORIZONTAL:
@@ -2445,8 +2445,8 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 					 * a vertical line from the selected end point intersect and
 					 * use that point as the end point. */
 					int offset = (raw_dx - raw_dy) / 2;
-					x = thd->selstart.x - (offset & ~TILE_UNIT_MASK);
-					y = thd->selstart.y + (offset & ~TILE_UNIT_MASK);
+					x = _thd.selstart.x - (offset & ~TILE_UNIT_MASK);
+					y = _thd.selstart.y + (offset & ~TILE_UNIT_MASK);
 
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
@@ -2480,8 +2480,8 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 					 * a horizontal line from the selected end point intersect and
 					 * use that point as the end point. */
 					int offset = (raw_dx + raw_dy + (int)TILE_SIZE) / 2;
-					x = thd->selstart.x - (offset & ~TILE_UNIT_MASK);
-					y = thd->selstart.y - (offset & ~TILE_UNIT_MASK);
+					x = _thd.selstart.x - (offset & ~TILE_UNIT_MASK);
+					y = _thd.selstart.y - (offset & ~TILE_UNIT_MASK);
 
 					/* 'Build' the last half rail tile if needed */
 					if ((offset & TILE_UNIT_MASK) > (TILE_SIZE / 2)) {
@@ -2504,7 +2504,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 			default:
 				NOT_REACHED();
 		}
-	} else if (TileVirtXY(thd->selstart.x, thd->selstart.y) == TileVirtXY(x, y)) { // check if we're only within one tile
+	} else if (TileVirtXY(_thd.selstart.x, _thd.selstart.y) == TileVirtXY(x, y)) { // check if we're only within one tile
 		if (method & VPM_RAILDIRS) {
 			b = GetAutorailHT(x, y);
 		} else { // rect for autosignals on one tile
@@ -2518,7 +2518,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 		} else {
 			b = HT_LINE | HT_DIR_X;
 		}
-		y = thd->selstart.y;
+		y = _thd.selstart.y;
 	} else if (w == TILE_SIZE) { // Or Y direction?
 		if (dy == (int)TILE_SIZE) { // 2x1 special handling
 			b = (Check2x1AutoRail(1)) | HT_LINE;
@@ -2527,29 +2527,29 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 		} else {
 			b = HT_LINE | HT_DIR_Y;
 		}
-		x = thd->selstart.x;
+		x = _thd.selstart.x;
 	} else if (w > h * 2) { // still count as x dir?
 		b = HT_LINE | HT_DIR_X;
-		y = thd->selstart.y;
+		y = _thd.selstart.y;
 	} else if (h > w * 2) { // still count as y dir?
 		b = HT_LINE | HT_DIR_Y;
-		x = thd->selstart.x;
+		x = _thd.selstart.x;
 	} else { // complicated direction
 		int d = w - h;
-		thd->selend.x = thd->selend.x & ~TILE_UNIT_MASK;
-		thd->selend.y = thd->selend.y & ~TILE_UNIT_MASK;
+		_thd.selend.x = _thd.selend.x & ~TILE_UNIT_MASK;
+		_thd.selend.y = _thd.selend.y & ~TILE_UNIT_MASK;
 
 		/* four cases. */
-		if (x > thd->selstart.x) {
-			if (y > thd->selstart.y) {
+		if (x > _thd.selstart.x) {
+			if (y > _thd.selstart.y) {
 				/* south */
 				if (d == 0) {
 					b = (x & TILE_UNIT_MASK) > (y & TILE_UNIT_MASK) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
 				} else if (d >= 0) {
-					x = thd->selstart.x + h;
+					x = _thd.selstart.x + h;
 					b = HT_LINE | HT_DIR_VL;
 				} else {
-					y = thd->selstart.y + w;
+					y = _thd.selstart.y + w;
 					b = HT_LINE | HT_DIR_VR;
 				}
 			} else {
@@ -2557,23 +2557,23 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 				if (d == 0) {
 					b = (x & TILE_UNIT_MASK) + (y & TILE_UNIT_MASK) >= TILE_SIZE ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
 				} else if (d >= 0) {
-					x = thd->selstart.x + h;
+					x = _thd.selstart.x + h;
 					b = HT_LINE | HT_DIR_HL;
 				} else {
-					y = thd->selstart.y - w;
+					y = _thd.selstart.y - w;
 					b = HT_LINE | HT_DIR_HU;
 				}
 			}
 		} else {
-			if (y > thd->selstart.y) {
+			if (y > _thd.selstart.y) {
 				/* east */
 				if (d == 0) {
 					b = (x & TILE_UNIT_MASK) + (y & TILE_UNIT_MASK) >= TILE_SIZE ? HT_LINE | HT_DIR_HL : HT_LINE | HT_DIR_HU;
 				} else if (d >= 0) {
-					x = thd->selstart.x - h;
+					x = _thd.selstart.x - h;
 					b = HT_LINE | HT_DIR_HU;
 				} else {
-					y = thd->selstart.y + w;
+					y = _thd.selstart.y + w;
 					b = HT_LINE | HT_DIR_HL;
 				}
 			} else {
@@ -2581,10 +2581,10 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 				if (d == 0) {
 					b = (x & TILE_UNIT_MASK) > (y & TILE_UNIT_MASK) ? HT_LINE | HT_DIR_VL : HT_LINE | HT_DIR_VR;
 				} else if (d >= 0) {
-					x = thd->selstart.x - h;
+					x = _thd.selstart.x - h;
 					b = HT_LINE | HT_DIR_VR;
 				} else {
-					y = thd->selstart.y - w;
+					y = _thd.selstart.y - w;
 					b = HT_LINE | HT_DIR_VL;
 				}
 			}
@@ -2592,7 +2592,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 	}
 
 	if (_settings_client.gui.measure_tooltip) {
-		TileIndex t0 = TileVirtXY(thd->selstart.x, thd->selstart.y);
+		TileIndex t0 = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
 		TileIndex t1 = TileVirtXY(x, y);
 		uint distance = DistanceManhattan(t0, t1) + 1;
 		byte index = 0;
@@ -2614,9 +2614,9 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 		ShowMeasurementTooltips(measure_strings_length[index], index, params);
 	}
 
-	thd->selend.x = x;
-	thd->selend.y = y;
-	thd->next_drawstyle = b;
+	_thd.selend.x = x;
+	_thd.selend.y = y;
+	_thd.next_drawstyle = b;
 }
 
 /**
@@ -2640,7 +2640,7 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 	if (method & (VPM_RAILDIRS | VPM_SIGNALDIRS)) {
 		_thd.selend.x = x;
 		_thd.selend.y = y;
-		CalcRaildirsDrawstyle(&_thd, x, y, method);
+		CalcRaildirsDrawstyle(x, y, method);
 		return;
 	}
 
