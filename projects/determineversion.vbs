@@ -157,8 +157,10 @@ Function DetermineSVNVersion()
 
 	If version <> "norev000" Then
 		If InStr(url, "branches") Then
-			url = Mid(url, InStr(url, "branches/") + 9)
-			branch = Mid(url, 1, InStr(2, url, "/") - 1)
+			branch = Mid(url, InStr(url, "branches/") + 9)
+		End If
+		If InStr(url, "tags") Then
+			version = Mid(url, InStr(url, "tags/") + 5)
 		End If
 	Else ' version <> "norev000"
 		' svn detection failed, reset error and try git
