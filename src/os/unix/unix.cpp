@@ -151,10 +151,10 @@ static const char *GetLocalCode()
 static const char *convert_tofrom_fs(iconv_t convd, const char *name)
 {
 	static char buf[1024];
-	/* Work around buggy iconv implementation where inbuf is wrongly typed as
-	 * non-const. Correct implementation is at
-	 * http://www.opengroup.org/onlinepubs/007908799/xsh/iconv.html */
-#ifdef HAVE_BROKEN_ICONV
+	/* There are different implementations of iconv. The older ones,
+	 * e.g. SUSv2, pass a const pointer, whereas the newer ones, e.g.
+	 * IEEE 1003.1 (2004), pass a non-const pointer. */
+#ifdef HAVE_NON_CONST_ICONV
 	char *inbuf = const_cast<char*>(name);
 #else
 	const char *inbuf = name;

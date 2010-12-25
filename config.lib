@@ -1658,8 +1658,8 @@ make_cflags_and_ldflags() {
 			fi
 		fi
 
-		if [ "$have_broken_iconv" != "no" ]; then
-			CFLAGS="$CFLAGS -DHAVE_BROKEN_ICONV"
+		if [ "$have_non_const_iconv" != "no" ]; then
+			CFLAGS="$CFLAGS -DHAVE_NON_CONST_ICONV"
 		fi
 	fi
 
@@ -2916,9 +2916,9 @@ detect_iconv() {
 
 	log 1 "checking iconv... found"
 
-	# Check if we need to work around buggy iconv implementation where inbuf
-	# is wrongly typed as non-const. Correct implementation is at
-	# http://www.opengroup.org/onlinepubs/007908799/xsh/iconv.html
+	# There are different implementations of iconv. The older ones,
+	# e.g. SUSv2, pass a const pointer, whereas the newer ones, e.g.
+	# IEEE 1003.1 (2004), pass a non-const pointer.
 
 	cat > tmp.iconv.cpp << EOF
 #include "src/stdafx.h"
@@ -2938,8 +2938,8 @@ EOF
 	ret=$?
 	log 2 "executing $execute"
 	log 2 "  exit code $ret"
-	if [ "$ret" = "0" ]; then have_broken_iconv="no"; else have_broken_iconv="yes"; fi
-	log 1 "checking if iconv has non-const inbuf... $have_broken_iconv"
+	if [ "$ret" = "0" ]; then have_non_const_iconv="no"; else have_non_const_iconv="yes"; fi
+	log 1 "checking if iconv has non-const inbuf... $have_non_const_iconv"
 
 	cat > tmp.iconv.cpp << EOF
 #include "src/stdafx.h"
@@ -3249,13 +3249,13 @@ generate_src_osx() {
 
 		# We don't want to duplicate the x86_64 stuff for each target, so do it once here
 		if [ "$type" = "ppc64" ] || [ "$type" = "x86_64" ]; then
-			# 64 bits is always 10.5 or higher. Furthermore it has a broken ICONV
+			# 64 bits is always 10.5 or higher. Furthermore it has a non const ICONV
 			# and they also removed support for QuickTime/QuickDraw
 			if [ -n "$osx_sdk_path" ]; then
 				CFLAGS="-isysroot $osx_sdk_path $CFLAGS_orig"
 				LDFLAGS="-Wl,-syslibroot,$osx_sdk_path $LDFLAGS_orig"
 			fi
-			CFLAGS="$CFLAGS -D_SQ64 -DHAVE_BROKEN_ICONV -DNO_QUICKTIME -UENABLE_COCOA_QUICKDRAW"
+			CFLAGS="$CFLAGS -D_SQ64 -DHAVE_NON_CONST_ICONV -DNO_QUICKTIME -UENABLE_COCOA_QUICKDRAW"
 			LIBS="`echo $LIBS | sed 's/-framework QuickTime//'`"
 		fi
 
