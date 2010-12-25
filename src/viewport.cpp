@@ -1040,8 +1040,7 @@ static void DrawTileSelection(const TileInfo *ti)
 	}
 
 	/* Check if it's inside the outer area? */
-	if (!is_redsq && _thd.outersize.x &&
-			_thd.size.x < _thd.size.x + _thd.outersize.x &&
+	if (!is_redsq && _thd.outersize.x > 0 &&
 			IsInsideBS(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
 			IsInsideBS(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
 		/* Draw a blue rect. */
