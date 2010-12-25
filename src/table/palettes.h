@@ -206,49 +206,44 @@ static const ExtraPaletteValues _extra_palette_values = {
 };
 #undef M
 
-/* Colour table for colours in lang files (e.g. {BLACK}) */
-struct StringColour {
-	byte text;
-	byte shadow;
-};
-
-static const StringColour _string_colourmap[][17] = {
+/** Colour mapping for the TextColours. */
+static const byte _string_colourmap[][17] = {
 	{ // DOS palette.
-		{ 150,   1 }, // TC_BLUE
-		{  12,   1 }, // TC_SILVER
-		{ 189,   1 }, // TC_GOLD
-		{ 184,   1 }, // TC_RED
-		{ 174,   1 }, // TC_PURPLE
-		{  30,   1 }, // TC_LIGHT_BROWN
-		{ 195,   1 }, // TC_ORANGE
-		{ 209,   1 }, // TC_GREEN
-		{  68,   1 }, // TC_YELLOW
-		{  95,   1 }, // TC_DARK_GREEN
-		{  79,   1 }, // TC_CREAM
-		{ 116,   1 }, // TC_BROWN
-		{  15,   1 }, // TC_WHITE
-		{ 152,   1 }, // TC_LIGHT_BLUE
-		{   6,   1 }, // TC_GREY
-		{ 133,   1 }, // TC_DARK_BLUE
-		{   1,   0 }, // TC_BLACK
+		150, // TC_BLUE
+		 12, // TC_SILVER
+		189, // TC_GOLD
+		184, // TC_RED
+		174, // TC_PURPLE
+		 30, // TC_LIGHT_BROWN
+		195, // TC_ORANGE
+		209, // TC_GREEN
+		 68, // TC_YELLOW
+		 95, // TC_DARK_GREEN
+		 79, // TC_CREAM
+		116, // TC_BROWN
+		 15, // TC_WHITE
+		152, // TC_LIGHT_BLUE
+		  6, // TC_GREY
+		133, // TC_DARK_BLUE
+		  1, // TC_BLACK
 	},
 	{ // Windows palette.
-		{ 150, 215 }, // TC_BLUE
-		{  12, 215 }, // TC_SILVER
-		{ 189, 215 }, // TC_GOLD
-		{ 184, 215 }, // TC_RED
-		{ 174, 215 }, // TC_PURPLE
-		{  30, 215 }, // TC_LIGHT_BROWN
-		{ 195, 215 }, // TC_ORANGE
-		{ 209, 215 }, // TC_GREEN
-		{  68, 215 }, // TC_YELLOW
-		{  95, 215 }, // TC_DARK_GREEN
-		{  79, 215 }, // TC_CREAM
-		{ 116, 215 }, // TC_BROWN
-		{  15, 215 }, // TC_WHITE
-		{ 152, 215 }, // TC_LIGHT_BLUE
-		{  32, 215 }, // TC_GREY
-		{ 133, 215 }, // TC_DARK_BLUE
-		{ 215,   0 }, // TC_BLACK
+		150, // TC_BLUE
+		 12, // TC_SILVER
+		189, // TC_GOLD
+		184, // TC_RED
+		174, // TC_PURPLE
+		 30, // TC_LIGHT_BROWN
+		195, // TC_ORANGE
+		209, // TC_GREEN
+		 68, // TC_YELLOW
+		 95, // TC_DARK_GREEN
+		 79, // TC_CREAM
+		116, // TC_BROWN
+		 15, // TC_WHITE
+		152, // TC_LIGHT_BLUE
+		 32, // TC_GREY
+		133, // TC_DARK_BLUE
+		215, // TC_BLACK
 	}
 };

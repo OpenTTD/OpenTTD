@@ -284,13 +284,14 @@ static void SetColourRemap(TextColour colour)
 {
 	if (colour == TC_INVALID) return;
 
-	if (colour & TC_IS_PALETTE_COLOUR) {
-		_string_colourremap[1] = colour & ~TC_IS_PALETTE_COLOUR;
-		_string_colourremap[2] = (_use_palette == PAL_DOS) ? 1 : 215;
-	} else {
-		_string_colourremap[1] = _string_colourmap[_use_palette][colour].text;
-		_string_colourremap[2] = _string_colourmap[_use_palette][colour].shadow;
-	}
+	/* Black strings have no shading ever; the shading is black, so it
+	 * would be invisible at best, but it actually makes it illegible. */
+	bool no_shade   = colour == TC_BLACK;
+	bool raw_colour = colour & TC_IS_PALETTE_COLOUR;
+	colour &= ~TC_IS_PALETTE_COLOUR;
+
+	_string_colourremap[1] = raw_colour ? (byte)colour : _string_colourmap[_use_palette][colour];
+	_string_colourremap[2] = no_shade ? 0 : (_use_palette == PAL_DOS ? 1 : 215);
 	_colour_remap_ptr = _string_colourremap;
 }
 
