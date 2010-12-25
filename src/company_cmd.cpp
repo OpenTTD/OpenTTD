@@ -118,8 +118,8 @@ void SetLocalCompany(CompanyID new_company)
  */
 uint16 GetDrawStringCompanyColour(CompanyID company)
 {
-	if (!Company::IsValidID(company)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOUR;
-	return (_colour_gradient[_company_colours[company]][4]) | IS_PALETTE_COLOUR;
+	if (!Company::IsValidID(company)) return _colour_gradient[COLOUR_WHITE][4] | TC_IS_PALETTE_COLOUR;
+	return (_colour_gradient[_company_colours[company]][4]) | TC_IS_PALETTE_COLOUR;
 }
 
 /**

@@ -284,8 +284,8 @@ static void SetColourRemap(TextColour colour)
 {
 	if (colour == TC_INVALID) return;
 
-	if (colour & IS_PALETTE_COLOUR) {
-		_string_colourremap[1] = colour & ~IS_PALETTE_COLOUR;
+	if (colour & TC_IS_PALETTE_COLOUR) {
+		_string_colourremap[1] = colour & ~TC_IS_PALETTE_COLOUR;
 		_string_colourremap[2] = (_use_palette == PAL_DOS) ? 1 : 215;
 	} else {
 		_string_colourremap[1] = _string_colourmap[_use_palette][colour].text;

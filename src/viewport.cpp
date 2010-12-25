@@ -1407,9 +1407,9 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 			/* if we didn't draw a rectangle, or if transparant building is on,
 			 * draw the text in the colour the rectangle would have */
 			if (IsTransparencySet(TO_SIGNS) && ss->string != STR_WHITE_SIGN) {
-				/* Real colours need the IS_PALETTE_COLOUR flag
+				/* Real colours need the TC_IS_PALETTE_COLOUR flag
 				 * otherwise colours from _string_colourmap are assumed. */
-				colour = (TextColour)_colour_gradient[ss->colour][6] | IS_PALETTE_COLOUR;
+				colour = (TextColour)_colour_gradient[ss->colour][6] | TC_IS_PALETTE_COLOUR;
 			}
 
 			/* Draw the rectangle if 'tranparent station signs' is off,
