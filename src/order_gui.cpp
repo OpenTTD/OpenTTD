@@ -1090,7 +1090,20 @@ public:
 	{
 		switch (widget) {
 			case ORDER_WIDGET_ORDER_LIST: {
-				ResetObjectToPlace();
+				if (this->goto_type == OPOS_CONDITIONAL) {
+					this->goto_type = OPOS_GOTO;
+					int order_id = this->GetOrderFromPt(_cursor.pos.y - this->top);
+					if (order_id != INVALID_ORDER) {
+						Order order;
+						order.next = NULL;
+						order.index = 0;
+						order.MakeConditional(order_id);
+
+						DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 20), order.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_ERROR_CAN_T_INSERT_NEW_ORDER));
+					}
+					ResetObjectToPlace();
+					break;
+				}
 
 				int sel = this->GetOrderFromPt(pt.y);
 
@@ -1348,21 +1361,6 @@ public:
 
 	virtual void OnPlaceObjectAbort()
 	{
-		if (this->goto_type == OPOS_CONDITIONAL) {
-			this->goto_type = OPOS_GOTO;
-			NWidgetBase *nwid = this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST);
-			if (IsInsideBS(_cursor.pos.x, this->left + nwid->pos_x, nwid->current_x) && IsInsideBS(_cursor.pos.y, this->top + nwid->pos_y, nwid->current_y)) {
-				int order_id = this->GetOrderFromPt(_cursor.pos.y - this->top);
-				if (order_id != INVALID_ORDER) {
-					Order order;
-					order.next = NULL;
-					order.index = 0;
-					order.MakeConditional(order_id);
-
-					DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 20), order.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_ERROR_CAN_T_INSERT_NEW_ORDER));
-				}
-			}
-		}
 		this->RaiseWidget(ORDER_WIDGET_GOTO);
 		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
 
