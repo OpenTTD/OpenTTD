@@ -2839,18 +2839,16 @@ void SetObjectToPlaceWnd(CursorID icon, PaletteID pal, HighLightStyle mode, Wind
 
 void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowClass window_class, WindowNumber window_num)
 {
-	/* undo clicking on button and drag & drop */
-	if ((_thd.place_mode & ~HT_DIR_MASK) != HT_NONE || _special_mouse_mode == WSM_DRAGDROP) {
+	if (_thd.window_class != WC_INVALID) {
+		/* Undo clicking on button and drag & drop */
 		Window *w = FindWindowById(_thd.window_class, _thd.window_number);
-		if (w != NULL) {
-			/* Call the abort function, but set the window class to something
-			 * that will never be used to avoid infinite loops. Setting it to
-			 * the 'next' window class must not be done because recursion into
-			 * this function might in some cases reset the newly set object to
-			 * place or not properly reset the original selection. */
-			_thd.window_class = WC_INVALID;
-			w->OnPlaceObjectAbort();
-		}
+		/* Call the abort function, but set the window class to something
+		 * that will never be used to avoid infinite loops. Setting it to
+		 * the 'next' window class must not be done because recursion into
+		 * this function might in some cases reset the newly set object to
+		 * place or not properly reset the original selection. */
+		_thd.window_class = WC_INVALID;
+		if (w != NULL) w->OnPlaceObjectAbort();
 	}
 
 	SetTileSelectSize(1, 1);

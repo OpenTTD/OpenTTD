@@ -653,8 +653,7 @@ void Window::DeleteChildWindows(WindowClass wc) const
  */
 Window::~Window()
 {
-	if ((_thd.place_mode & ~HT_DIR_MASK) != HT_NONE &&
-			_thd.window_class == this->window_class &&
+	if (_thd.window_class == this->window_class &&
 			_thd.window_number == this->window_number) {
 		ResetObjectToPlace();
 	}
