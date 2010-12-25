@@ -286,9 +286,9 @@ static void SetColourRemap(TextColour colour)
 
 	/* Black strings have no shading ever; the shading is black, so it
 	 * would be invisible at best, but it actually makes it illegible. */
-	bool no_shade   = colour == TC_BLACK;
+	bool no_shade   = colour & TC_NO_SHADE || colour == TC_BLACK;
 	bool raw_colour = colour & TC_IS_PALETTE_COLOUR;
-	colour &= ~TC_IS_PALETTE_COLOUR;
+	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR);
 
 	_string_colourremap[1] = raw_colour ? (byte)colour : _string_colourmap[_use_palette][colour];
 	_string_colourremap[2] = no_shade ? 0 : (_use_palette == PAL_DOS ? 1 : 215);
