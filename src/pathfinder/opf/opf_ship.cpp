@@ -205,8 +205,11 @@ Track OPFShipChooseTrack(const Ship *v, TileIndex tile, DiagDirection enterdir, 
 	uint dist = FindShipTrack(v, tile, enterdir, tracks, 0, &track);
 
 	/* If the dist equals zero, or distr equals one (the extra reversing penalty),
-	 * then we found our destination and we are not lost. */
-	path_found = (dist == 0 || distr == 1);
+	 * then we found our destination and we are not lost.
+	 * When we are not lost (yet) and the distance to our destination becomes
+	 * less, then we aren't lost yet.
+	 * So, we only become lost when the distance to our destination increases. */
+	path_found = (dist == 0 || distr == 1 || (!(v->vehicle_flags & VF_PATHFINDER_LOST) && min(dist, distr) < DistanceManhattan(tile, v->dest_tile)));
 	if (dist <= distr) return track;
 	return INVALID_TRACK; // We could better reverse
 }
