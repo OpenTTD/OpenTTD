@@ -2863,7 +2863,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aktualni
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uwaga!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Zamierzasz wprowadzić zmiany do gry w toku; to może zawiesić OpenTTD. W takim przypadku nie wysyłaj raportów o błedach.{}Czy jesteś całkowicie pewien?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Zamierzasz wprowadzić zmiany do uruchomionej gry; to może zawiesić OpenTTD lub uszkodzić stan gry. W takim przypadku nie wysyłaj raportów o błędach.{}Czy jesteś całkowicie pewien?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nie można dodać pliku: taki sam GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Nie znaleziono pasującego pliku (wczytano kompatybilny GRF)
@@ -3389,10 +3389,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Wyślij 
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Wyślij statek do stoczni
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Wyślij samolot do hangaru
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Ctrl+klik spowoduje współdzielenie poleceń
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Ctrl+klik spowoduje współdzielenie poleceń
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Spowoduje zakup kopii statku. Ctrl+klik spowoduje współdzielenie poleceń
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Spowoduje zakup kopii samolotu. Ctrl+klik spowoduje współdzielenie poleceń
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik tylko pokazuje szacowany koszt
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik tylko pokazuje szacowany koszt
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Spowoduje zakup kopii statku. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik tylko pokazuje szacunkowy koszt
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Spowoduje zakup kopii samolotu. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik pokazuje tylko szacowany koszt
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Wymuszony start pociągu bez czekania na sygnał
 
@@ -3517,6 +3517,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Wybierz typ ładunku do przewozu:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nowa pojemność: {GOLD}{CARGO}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nowa pojemność: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Koszt przekształcenia: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Wybierz pojazdy do przebudowania. Przeciągając myszkę można wybierać więcej pojazdów. Klikając na puste pole zaznaczysz cały pojazd. Ctrl+klik zaznaczy pojazd i dołączony skład
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Wybierz jaki ładunek ma przewozić pociąg
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Wybierz ładunek jaki ma przewozić ten samochód

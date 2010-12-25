@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klaku ka
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Ŝaltu inter granda kaj malgranda fenestro
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skrolbreto - skrolas la liston supren/malsupren
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skrolbreto - skrolas la liston dekstren/maldekstren
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Detruu konstruaĵojn ktp. sur landkvadrato
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Detruu konstruaĵojn ktp. sur landkvadrato. Stir elektas diagonale la areon. Shift aktivas/malaktivas la konstruaĵon/montraĵon estiman koston
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Normo
@@ -1280,10 +1280,13 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :hazarda
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Permesu ke urboj konstruu stratojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Urboj estas permesa konstrui traknivelajn pasejojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Permesu urbe kontrolatan laŭtecon por flughavenoj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Konstruanta urbojn en ludo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :prohibita
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesita
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permesite, propra urbomapo
 
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :{LTBLUE}En ludo metanta de arbojn: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :neniu {RED}(rompas lignejo)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nur en pluvarbaroj
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ĉie
 
@@ -2023,6 +2026,7 @@ STR_AIRPORT_CLASS_LARGE                                         :Grandaj flughav
 STR_AIRPORT_CLASS_HUB                                           :Nabaj flughavenoj
 STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopterhaveno
 
+STR_STATION_BUILD_NOISE                                         :{BLACK}Bruon generis: {GOLD}{COMMA}
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landaspekto
@@ -2281,6 +2285,7 @@ STR_MAPGEN_TREE_PLACER                                          :{BLACK}Arba alg
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terentipo:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Marnivelo:
 STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Reguleco:
+STR_MAPGEN_VARIETY                                              :{BLACK}Diverseca distribuo:
 STR_MAPGEN_GENERATE                                             :{WHITE}Generu
 
 # Strings for map borders at game generation
@@ -2337,6 +2342,7 @@ STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivaj 
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Malaktiva dosieroj de NewGRF
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Elektu antaŭaro:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtroteksto:
+STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Ŝarĝu la elektan antaŭaron
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Konservu antaŭaron
 STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Konservu la nunan liston kiel antaŭaro
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Enigu nomon por la antaŭaro
@@ -3223,6 +3229,7 @@ STR_TIMETABLE_DAYS                                              :{COMMA} tago{P 
 STR_TIMETABLE_TICKS                                             :{COMMA} tiko{P "" j}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK} {STRING} necesas por plenumigi ĉi tiun horaron.
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Ĉi tio horaro postulos alemnaŭ {STRING} plenigi (ne ĉiu horarita)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Ĉi tiu veturilo nun iras akurate
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Ĉi tiu veturilo nun malfruas je {STRING}
@@ -3237,6 +3244,8 @@ STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ŝanĝu 
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Vakigi tempon
 
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reigu malfruan kalkulumon
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reigu malfruan kalkulumon, tiel la veturilon estos akuratan
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Aŭtomata plenigo
 

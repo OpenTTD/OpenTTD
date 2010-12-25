@@ -3173,6 +3173,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Izberi tip tovora:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova zmogljivost: {GOLD}{CARGO}{}{BLACK}Cena preureditve: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova zmogljivost: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cena preureditve: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Izberi vozila za preureditev. Povleci z miško, da izbereš več vozil. Klik na prazen prostor bo izbral celotno vozilo. Ctrl+Klik bo izbral vozilo in tista, ki mu sledijo
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Izberi nov tip tovora za prevoz z vlakom
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Izberi tip tovora, ki ga bo vozilo prevažalo

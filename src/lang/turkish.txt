@@ -1146,6 +1146,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Araçlar
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Havalimanlarının süresi asla dolmasın: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Araç yolunu kaybederse uyar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Arac talimatlarını önizle: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :hayır
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :evet, ama durmuş araçlar hariç
@@ -3131,6 +3132,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Tasinacak kargo türünü seçin:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Yeni kapasite: {GOLD}{CARGO}{}{BLACK}Modifiye fiyatı: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Yeni kapasite: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Modifiye bedeli: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Dönüşecek araçları seçin. Fare ile sürüklemek birden fazla aracı seçmeye izin verir. Boş alana tıklamak tüm aracı seçtirir. Ctrl+tık bir aracı ve takip eden katarı seçmeye olan sağlar
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenin taşıyacağı kargo türünü seçin
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kamyonun taşıyacağı kargo türünü seçin
@@ -3216,6 +3218,7 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Şimdiki
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Sil
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Seçili talimatı sil
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Tüm emirleri sil
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Paylaşmaktan vazgeç
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Emir listesini paylaşmaktan vazgeç. Ctrl+Tık tüm emir listesini siler
 
