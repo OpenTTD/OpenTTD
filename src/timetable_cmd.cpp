@@ -72,7 +72,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	VehicleOrderID order_number = GB(p1, 20, 8);
 	Order *order = v->GetOrder(order_number);
-	if (order == NULL) return CMD_ERROR;
+	if (order == NULL || order->IsType(OT_AUTOMATIC)) return CMD_ERROR;
 
 	bool is_journey = HasBit(p1, 28);
 
@@ -238,11 +238,17 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	v->current_order_time = 0;
 
 	if (!_settings_game.order.timetabling) return;
+	if (v->current_order.IsType(OT_AUTOMATIC)) return; // no timetabling of auto orders
+
+	VehicleOrderID first_manual_order = 0;
+	for (Order *o = v->GetFirstOrder(); o != NULL && o->IsType(OT_AUTOMATIC); o = o->next) {
+		++first_manual_order;
+	}
 
 	bool just_started = false;
 
 	/* This vehicle is arriving at the first destination in the timetable. */
-	if (v->cur_order_index == 0 && travelling) {
+	if (v->cur_order_index == first_manual_order && travelling) {
 		/* If the start date hasn't been set, or it was set automatically when
 		 * the vehicle last arrived at the first destination, update it to the
 		 * current time. Otherwise set the late counter appropriately to when
@@ -279,7 +285,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 			ChangeTimetable(v, v->cur_order_index, time_taken, travelling);
 		}
 
-		if (v->cur_order_index == 0 && travelling) {
+		if (v->cur_order_index == first_manual_order && travelling) {
 			/* If we just started we would have returned earlier and have not reached
 			 * this code. So obviously, we have completed our round: So turn autofill
 			 * off again. */

@@ -38,6 +38,7 @@ enum OrderType {
 	OT_DUMMY         = 5,
 	OT_GOTO_WAYPOINT = 6,
 	OT_CONDITIONAL   = 7,
+	OT_AUTOMATIC     = 8,
 	OT_END
 };
 

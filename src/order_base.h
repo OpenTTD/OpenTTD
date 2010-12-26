@@ -124,6 +124,12 @@ public:
 	void MakeConditional(VehicleOrderID order);
 
 	/**
+	 * Makes this order an automatic order.
+	 * @param destination the station to go to.
+	 */
+	void MakeAutomatic(StationID destination);
+
+	/**
 	 * Gets the destination of this order.
 	 * @pre IsType(OT_GOTO_WAYPOINT) || IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION).
 	 * @return the destination of the order.

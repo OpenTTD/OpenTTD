@@ -119,7 +119,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
-						if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT))
+						if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT) || order->IsType(OT_AUTOMATIC))
 								&& order->GetDestination() == vli.index) {
 							*list->Append() = v;
 							break;

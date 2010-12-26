@@ -3252,6 +3252,8 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automatic)
+
 STR_ORDER_FULL_LOAD                                             :(Full load)
 STR_ORDER_FULL_LOAD_ANY                                         :(Full load any cargo)
 STR_ORDER_NO_LOAD                                               :(No loading)
@@ -3285,6 +3287,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Switch t
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Timetable - click on an order to highlight it
 
 STR_TIMETABLE_NO_TRAVEL                                         :No travel
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Travel (automatic; timetabled by next manual order)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
 STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING1}
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING1}
