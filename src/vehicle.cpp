@@ -1764,7 +1764,7 @@ void Vehicle::BeginLoading()
 		/* We weren't scheduled to stop here. Insert an automatic order
 		 * to show that we are stopping here. */
 		Order *in_list = this->GetOrder(this->cur_order_index);
-		if (this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID &&
+		if ((this->orders.list == NULL || this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID) &&
 				((in_list == NULL && this->cur_order_index == 0) ||
 				(in_list != NULL && (!in_list->IsType(OT_AUTOMATIC) ||
 				in_list->GetDestination() != this->last_station_visited)))) {
