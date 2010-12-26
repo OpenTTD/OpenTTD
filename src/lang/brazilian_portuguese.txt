@@ -830,8 +830,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} agora aceita {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} agora aceita {STRING} e {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}A oferta do subsídio expirou:{}{} Transporte de {STRING} de {STRING} para {STRING} não será mais subsidiado.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsídio removido:{}{} Transporte de {STRING} de {STRING} para {STRING} não será mais subsidiado.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} não será mais subsidiado
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsídio removido:{}{} Serviço de {STRING} de {STRING} para {STRING} não será mais subsidiado
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Oferta de transporte subsidiado:{}{} Primeiro transporte de {STRING} de {STRING} para {STRING} receberá o subsídio de um ano da autoridade local!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsídio concedido a {STRING}!{}{} Transporte de {STRING} de {STRING} para {STRING} receberá 50% extra durante um ano!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsídio concedido a {STRING}!{}{} Transporte de {STRING} de {STRING} para {STRING} receberá em dobro durante um ano!
@@ -1142,7 +1142,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permitir estações drive-through nas ruas de outros competidores: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Ativar múltiplos conjuntos NewGRF de locomotivas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Impossível alterar essa configuração enquanto houverem veículos.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Impossível alterar essa configuração enquanto houverem veículos
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeroportos nunca expiram: {ORANGE}{STRING}
 
@@ -1211,7 +1211,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Mover a tela com o botão esquerdo: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Use o formato de data {ORANGE}{STRING}{LTBLUE} para criar arquivos de salvamento.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Use o formato de data {ORANGE}{STRING}{LTBLUE} para criar arquivos de salvamento
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :comprido (31 Dez 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curto (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1423,7 +1423,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Tem a c
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trapaças
 STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de verificação indicam se esta trapaça já foi usada antes
-STR_CHEATS_WARNING                                              :{BLACK}Atenção! Você está prestes a trair os seus oponentes. Saiba que isto ficará registrado para sempre.
+STR_CHEATS_WARNING                                              :{BLACK}Atenção! Você está prestes a trair os seus oponentes. Saiba que isto ficará registrado para sempre
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando pela Co.: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadeira mágica (destrói indústrias, objetos estáticos): {ORANGE}{STRING}
@@ -1486,16 +1486,16 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Rostos f
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Novo Rosto
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Gerar novo rosto aleatoriamente
 STR_FACE_ADVANCED                                               :{BLACK}Avançado
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Seleção de face avançada.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Seleção de rosto avançada
 STR_FACE_SIMPLE                                                 :{BLACK}Simples
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Seleção de face simples.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Seleção de rosto simples.
 STR_FACE_LOAD                                                   :{BLACK}Carregar
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carregar face favorita
 STR_FACE_LOAD_DONE                                              :{WHITE}Seu rosto favorito foi carregado do arquivo de configuração do OpenTTD
 STR_FACE_FACECODE                                               :{BLACK}Número da face do jogador.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver e/ou alterar número da face do presidente da companhia
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver e/ou alterar número da face do presidente
-STR_FACE_FACECODE_SET                                           :{WHITE}Novo código de número da face face foi alterado
+STR_FACE_FACECODE_SET                                           :{WHITE}Novo código de número de rosto foi escolhido
 STR_FACE_FACECODE_ERR                                           :{WHITE}Não pôde alterar o número de face do presidente - precisa ser um número entre 0 e 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Salvar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Salvar face favorita
@@ -1580,7 +1580,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Atualiza
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Localizar servidor
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Pesquisar por um servidor na rede
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Adicionar servidor
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adiciona um servidor à lista que será sempre verificada se existem jogos ocorrendo.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adiciona um servidor à lista que será sempre verificada se existem jogos ocorrendo
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Iniciar um servidor próprio
 
@@ -1688,15 +1688,15 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Auxiliar
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Conectando...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Conectando..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizando..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Esperando..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Obtendo mapa..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Processando dados..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrando..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Conectando...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizando...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Esperando...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Obtendo mapa...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Processando dados...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrando...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtendo informações do jogo..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtendo informações da empresa..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtendo informações do jogo...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtendo informações da empresa...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} à sua frente
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} baixado até agora
@@ -1737,7 +1737,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Usar est
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Entrar
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Entrar e jogar como essa companhia
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Senha
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Usar senha na empresa para prevenir utilizadores não autorizados.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Protege a sua empresa com uma senha para prevenir a entrada de usuários não autorizados
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Definir senha para empresa
 
 # Network chat
@@ -1882,15 +1882,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Falha na
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opções de Transparência
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Alternar transparência para sinais de estação. Ctrl+Clique para travar.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Alternar transparência para árvores. Ctrl+Clique para travar.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Alternar transparência para casas. Ctrl+Clique para travar.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Alternar transparência para indústrias. Ctrl+Clique para travar.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Alternar transparência para construções como estações, depósitos, pontos de controle e eletrificação da ferrovia. Ctrl+Clique para travar.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Alternar transparência para pontes. Ctrl+Clique para travar.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Alternar transparência para estruturas como faróis e antenas. Ctrl+Clique para travar.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Alternar transparência para catenária. CTRL+click para travar.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Altera transparência para os indicadores de carga. Ctrl+Clique para travar.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Alternar transparência para sinais de estação. Ctrl+Clique para travar
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Alternar transparência para árvores. Ctrl+Clique para travar
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Alternar transparência para casas. Ctrl+Clique para travar
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Alternar transparência para indústrias. Ctrl+Clique para travar
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Alternar transparência para construções como estações, depósitos, pontos de controle. Ctrl+Clique para travar
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Alternar transparência para pontes. Ctrl+Clique para travar
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Alternar transparência para estruturas como faróis e antenas. Ctrl+Clique para travar
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Alternar transparência para catenária. Ctrl+Clique para travar
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Altera transparência para os indicadores de carga. Ctrl+Clique para travar
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir objetivos como invisíveis ao invés de transparentes.
 
 # Base for station construction window(s)
@@ -1953,19 +1953,19 @@ STR_STATION_CLASS_WAYP                                          :Pontos de contr
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Seleção de Sinais
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinais padrão (semáforos){}Sinais são necessários para impedir trens de colidirem nas malhas ferroviárias com mais de um trem.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Verde contanto que haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, fica vermelho.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (semáforo){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal combo (semáforo){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal avançado(Semáforo){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal avançado de mão única(Semáforo){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Padrão (elétrico){}Sinais são necessários para impedir que trens batam em redes de ferrovias com mais de uma máquina.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de entrada (elétrico){}Verde contanto que haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, fica vermelho.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída(elétrico){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal combo (elétrico){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinais padrão (semáforos){}Sinais são necessários para impedir trens de colidirem nas malhas ferroviárias com mais de um trem
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Verde enquanto haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, mostra vermelho
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de saída (semáforo){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal combo (semáforo){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal avançado(Semáforo){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal avançado de mão única(Semáforo){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Padrão (elétrico){}Sinais são necessários para impedir que trens batam em redes de ferrovias com mais de uma máquina
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de entrada (elétrico){}Verde enquanto haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, mostra vermelho
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída(elétrico){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal combo (elétrico){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal avançado(Elétrico){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal avançado de mão única(Elétrico){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Quando selecionado, clicar num sinal existente converte-o para o tipo selecionado e suas variantes. CTRL+clique muda a variante atual.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal avançado de mão única(Elétrico){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Quando selecionado, clicar num sinal existente converte-o para o tipo selecionado e suas variantes. Ctrl+Clique muda a variante atual. Shift+Clique mostra a estimação de custo da conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidade dos sinais ao clicar e arrastar
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuir a densidade dos sinais
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar a densidade dos sinais
@@ -2025,14 +2025,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Selecion
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construção de Hidrovias
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Hidrovias
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Shift altera construção/mostrar estimação de custo
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir eclusas. Shift altera construção/estimação de custo
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito naval (para a compra e manutenção de embarcações). Shift altera construção/estimação de custo
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl permite a união de estações. Shift altera construção/estimação de custo
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Posicione a bóia, que pode ser usada como ponto de rota. Shift altera construção/estimação de custo
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Shift altera construção/estimação de custo
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Define área com água.{}Faz um canal, a menos se CTRL for pressionado ao nível do mar, neste caso inundará ao redor
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Criar Rios
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Criar rios
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientação do Depósito Naval
@@ -2300,7 +2300,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Salvar o
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Carregar
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Carrega o jogo selecionado
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalhes do Jogo
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2464,23 +2464,23 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atenção:
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Erro Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Um erro de NewGRF fatal ocorreu: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} não irá funcionar com a versão do TTDPatch encontrada pelo OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} funciona na versão {STRING} de TTD.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} não irá funcionar com a versão do TTDPatch encontrada pelo OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} funciona na versão {STRING} de TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} é projetado para ser usado com {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :parâmetro inválido para {1:STRING}: parâmetro {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve ser carregado antes de {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve ser carregado depois de {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requer versão {STRING} ou maior do OpenTTD.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} deve ser carregado antes de {STRING}
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} deve ser carregado depois de {STRING}
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requer versão {STRING} ou maior do OpenTTD
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Muitos NewGRFs foram carregados.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {2:STRING} como um NewGRF estático em conjunto com {4:STRING} pode causar desincronias.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demais NewGRFs estão carregados
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {2:STRING} como um NewGRF estático em conjunto com {4:STRING} pode causar desincronias
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite não esperado
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade Ação Desconhecida 0
-STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um sprite corrupto. Todos os sprites corruptos serão exibidos como um "?" vermelho.
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém 8 entradas de Ação múltipla.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um sprite corrupto. Todos os sprites corruptos serão exibidos como um "?" vermelho
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém entradas múltiplas de Ação 8
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Continuar lendo após o fim do pseudo-sprite
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}A base de gráficos em uso não contém alguns "sprites".{}Por favor atualize a base de gráficos.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Estão faltando alguns sprites na base de gráficos em uso.{}Por favor atualize a base de gráficos
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
@@ -2501,10 +2501,10 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Arquivo
 STR_NEWGRF_LIST_MISSING                                         :{RED}Arquivos faltando
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' tem altas chances de causar desincronias e/ou travamentos.
+STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' tem altas chances de causar desincronias e/ou travamentos
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Alterou o estado do vagão motorizado para '{1:ENGINE}' estando fora de um depósito
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Mudou o tamanho do veículo para '{1:ENGINE}' estando fora de um depósito
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{VEHICLE}' de '{COMPANY}' tem um tamanho inválido. Provavelmente causado por um NewGRF. O jogo pode travar ou sair de sincronia.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{VEHICLE}' de '{COMPANY}' tem um tamanho inválido. Provavelmente causado por um NewGRF. O jogo pode travar ou sair de sincronia
 
 STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' retorna informação incorreta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de adaptação para '{1:ENGINE}' difere da lista de compras após a construção. Isso pode causar erros na autosubstituição/autoadaptação.
@@ -3132,6 +3132,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Selecionar tipo de carga:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacidade: {GOLD}{CARGO}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecione os veículos para recuperar. Arrastar com o mouse permite a seleção de vários veículos. Clicar em espaço vazio selecionará todo o veículo. Ctrl+Clique selecionará um veículo e a lista de construção em seguida
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Selecionar tipo de carga para o trem
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecionar tipo de carga para o automóvel
@@ -3153,7 +3154,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Plano de horário
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Exibe o plano de horário
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique numa ordem para a selecionar
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique numa ordem para a selecionar. Ctrl+Clique rola para o destino da ordem
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3213,7 +3214,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}O valor 
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Digite o valor a ser comparado
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Saltar
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pula a ordem atual e executa a próxima. CTRL + clique pula a ordem selecionada
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Pula a ordem atual e executa a próxima. Ctrl+Clique pula a ordem selecionada
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Remover
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Remover a ordem selecionada
@@ -3251,6 +3252,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Adaptar a {STR
 STR_ORDER_STOP_ORDER                                            :(Parar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
 
 STR_ORDER_FULL_LOAD                                             :(Carregar totalmente)
 STR_ORDER_FULL_LOAD_ANY                                         :(Carregar totalmente qualquer carga)

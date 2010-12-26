@@ -3348,6 +3348,8 @@ STR_ORDER_STOP_ORDER                                            :(Stani)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automatsko)
+
 STR_ORDER_FULL_LOAD                                             :(Puni ukrcaj)
 STR_ORDER_FULL_LOAD_ANY                                         :(Puni ukrcaj bilo kojeg tereta)
 STR_ORDER_NO_LOAD                                               :(Nema ukrcaja)
@@ -3381,6 +3383,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Promijen
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Vozni red - klikni na naredbu kako bi ju označio.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nema putovanja
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Putovanje (automatsko; prema rasporedu sljedeće ručno određene naredbe)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Putovanje (izvan voznog reda)
 STR_TIMETABLE_TRAVEL_FOR                                        :Putovanje za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i boravak za {STRING}

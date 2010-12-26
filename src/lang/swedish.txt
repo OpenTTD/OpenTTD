@@ -1145,6 +1145,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det är 
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flygplatser blir aldrig gamla: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Varna om forden är vilse: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Granska fordonens destinationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nej
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon
@@ -1215,6 +1216,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automatiskt vid start av nytt spel: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Tillåt när spelet är pausat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :inga åtgärder
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :allt förutom att bygga
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :allt förutom landskapsarkitektur
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :alla åtgärder
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Använd den avancerade fordonslistan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Av
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eget företag
@@ -1428,6 +1434,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Sub-arktiskt la
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Sub-tropiskt landskap
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Leksakslandskap
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Byt datum: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ändra nuvarande år
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktivera modifierande produceringsvärden: {ORANGE}{STRING}
 
 # Livery window
@@ -1691,6 +1698,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hämtar 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hämtar företagsinfo...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} före oss
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} nedladdade hittills
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} nerladdat hittills
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koppla ifrån
@@ -1783,6 +1791,8 @@ STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :servern är ful
 STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :skickade för många kommandon
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Anslutningen har troligtvis försvunnit
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De senaste {NUM} sekunderna har inget data mottagits från servern
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -1909,7 +1919,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bygg depå (för konstruktion eller service av tåg). Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ändra räls till riktmärke. Ctrl aktiverar sammanfogning av riktmärken. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg järnvägsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg järnvägssignaler. Ctrl växlar mellan semaforer/elektriska signaler{}Dra för att bygga signaler utmed en rak sträcka räls. Ctrl bygger signal till nästa korsning{}Ctrl+Musklick aktiverar öppning av signalväljningsfönstret
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg järnvägssignaler. Ctrl växlar mellan semaforer/elektriska signaler{}Dra för att bygga signaler utmed en rak sträcka räls. Ctrl bygger signal till nästa korsning{}Ctrl+Musklick aktiverar öppning av signalväljningsfönstret. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg järnvägsbro. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg järnvägstunnel. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, riktmärken och stationer. Håll nere Ctrl för att även ta bort räls från waypoints och stationer
@@ -3206,11 +3216,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Hoppa ö
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Ta bort
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Ta bort markerad order
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Ta bort alla order
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Sluta dela
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Sluta dela orderlistan. Ctrl+Klick tar även bort alla order för det här fordonet
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gå Till
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Åk till närmsta depå
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Åk till närmsta hangar
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
+STR_ORDER_SHARE                                                 :Dela order
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan. Håll in Ctrl för att välja 'full last någon frakttyp' vid stationer, 'åk non-stop via' vid riktmärken, och 'service' vid tågdepåer. Använd knappen 'Dela order' eller Ctrl+klicka på fordon för att dela order från annat fordon
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Lägg till avancerad order
 
@@ -3236,6 +3250,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Anpassa för {
 STR_ORDER_STOP_ORDER                                            :(Stanna)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
 
 STR_ORDER_FULL_LOAD                                             :(Full last)
 STR_ORDER_FULL_LOAD_ANY                                         :(Full last någon frakttyp)
@@ -3453,6 +3468,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... ägs
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ägs av ett annat företag
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet måste vara unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} i vägen
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Inte tillåtet när spelet är pausat
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} de lokala myndigheterna tillåter inte detta
@@ -3654,6 +3670,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Bro är 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start- och slutpunkt måste ligga i linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... brons båda ändar måste vara på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... för lång bro
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Bron slutar utanför kartans gränser
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan inte bygga tunnel här...
@@ -3753,6 +3770,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... ford
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ett fordon som delar denna order kan inte komma till denna station
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan inte dela orderlistan...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kan inte sluta dela orderlistan...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan inte kopiera orderlistan...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... för långt från föregående destination
 

@@ -3294,6 +3294,8 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Avtomatično)
+
 STR_ORDER_FULL_LOAD                                             :(Napolni)
 STR_ORDER_FULL_LOAD_ANY                                         :(Napolni kakršenkoli tovor)
 STR_ORDER_NO_LOAD                                               :(Brez polnjenja)
@@ -3327,6 +3329,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Preklop 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Urnik - klikni na ukaz, da ga označiš
 
 STR_TIMETABLE_NO_TRAVEL                                         :Brez potovanja
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Potovanje (avtomatično; urnik z naslednjim ukazom)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez urnika)
 STR_TIMETABLE_TRAVEL_FOR                                        :Potuj za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :in ostani za {STRING}

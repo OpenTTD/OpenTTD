@@ -3252,6 +3252,8 @@ STR_ORDER_STOP_ORDER                                            :(Pysähdy)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automaattinen)
+
 STR_ORDER_FULL_LOAD                                             :(Täysi lastaus)
 STR_ORDER_FULL_LOAD_ANY                                         :(Lastaa täyteen mitä tahansa rahtia)
 STR_ORDER_NO_LOAD                                               :(Ei lastausta)
@@ -3285,6 +3287,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Vaihda m
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataulu - klikkaa määräystä valitaksesi sen
 
 STR_TIMETABLE_NO_TRAVEL                                         :Ei kulkua
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kulje (automaattinen; aikataulu seuraavan manuaalisen määräyksen mukaisesti)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
 STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}

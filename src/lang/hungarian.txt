@@ -3316,6 +3316,8 @@ STR_ORDER_STOP_ORDER                                            :(megáll)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automata)
+
 STR_ORDER_FULL_LOAD                                             :(mindenből teljes rakományra vár)
 STR_ORDER_FULL_LOAD_ANY                                         :(bármiből teljes rakományra vár)
 STR_ORDER_NO_LOAD                                               :(nem vesz fel rakományt)
@@ -3349,6 +3351,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Átkapcs
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Menetrend - egy utasítás kijelöléshez kattints rá
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nincs utazás
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Megy (automata; menetrend a következő kézi utasítás alapján)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Következő célpontig a menetidő időzítetlen
 STR_TIMETABLE_TRAVEL_FOR                                        :Következő célpontig rendelkezésre álló menetidő: {STRING}
 STR_TIMETABLE_STAY_FOR                                          :állomásra és maradj ott {STRING}ig

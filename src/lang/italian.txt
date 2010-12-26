@@ -3254,6 +3254,8 @@ STR_ORDER_STOP_ORDER                                            :(Ferma)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automatico)
+
 STR_ORDER_FULL_LOAD                                             :(Attendi pieno carico)
 STR_ORDER_FULL_LOAD_ANY                                         :(Attendi carico)
 STR_ORDER_NO_LOAD                                               :(Non caricare)
@@ -3287,7 +3289,8 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Passa al
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tabella oraria - fare clic su un ordine per selezionarlo
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nessun viaggio
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaggia senza orario
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viaggia (automatico; orario basato sul successivo ordine manuale)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaggia (senza orario)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viaggia per {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e sosta per {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaggia per {STRING}

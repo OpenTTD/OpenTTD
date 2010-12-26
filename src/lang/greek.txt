@@ -234,7 +234,7 @@ STR_BAGS                                                        :{COMMA} Σάκ�
 STR_TONS                                                        :{COMMA} Τόνοι
 STR_LITERS                                                      :{COMMA} Λίτρα
 STR_ITEMS                                                       :{COMMA} αντικείμενα
-STR_CRATES                                                      :{COMMA} Κουτιά
+STR_CRATES                                                      :{COMMA} Κουτ{P ί ιά}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Σκούρο Μπλε
@@ -300,7 +300,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Κάντ
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Μπάρα κίνησης - κινεί τη λίστα αριστερά/δεξιά
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κ.λπ. σε συγκεκριμένο τετράγωνο. Με Ctrl επιλέγετε την επιφάνεια διαγώνια.
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Κατεδάφιση κτιρίων κ.λπ. σε συγκεκριμένο τετράγωνο. Με Ctrl επιλέγετε την επιφάνεια διαγώνια. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Προεπιλογή
@@ -347,6 +347,7 @@ STR_SORT_BY_RATING_MIN                                          :Χαμηλότ�
 STR_SORT_BY_ENGINE_ID                                           :EngineID (κλασσική ταξινόμηση)
 STR_SORT_BY_COST                                                :Κόστος
 STR_SORT_BY_POWER                                               :Δύναμη
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Δύναμη έλξης
 STR_SORT_BY_INTRO_DATE                                          :Ημερομηνία Παρουσιάσης
 STR_SORT_BY_RUNNING_COST                                        :Κόστος Συντήρησης
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Δύναμη/Κόστος Συντήρησης
@@ -394,8 +395,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Δημι
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Δημιουργία πόλης
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Δημιουργία Βιομηχανίας
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Κατασκευή δρόμου
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Φύτευση Δέντρων
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Φύτευση Δέντρων. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Τοποθέτηση πινακίδας
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Τοποθέτηση αντικειμένου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Αποθήκευση σεναρίου
@@ -651,6 +653,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Λεπτ
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Εμφάνιση λεπτομεριών για αυτή την εταιρία
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Οχήματα:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Σταθμοί:
@@ -1181,6 +1184,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Να ε
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Επιτρέπεται η δημιουργία πολύ μακριών τρένων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Κανένα
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Γνήσιο
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Αρχικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ρεαλιστικό
@@ -1202,6 +1207,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Χει�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :κανένα
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :όπως σε άλλες βιομηχανίες
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :επικείμενη
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Έπιπεδη περιοχή γύρω από τις βιομηχανίες: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανα πόλη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Εμφάνιση ολόκληρης ημερομηνίας στη γραμμή κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Εμφάνιση σήμανσης στην πλευρά οδήγησης: {ORANGE}{STRING}
@@ -1231,6 +1237,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Δεν �
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Τα αεροδρόμια δεν λήγουν ποτέ: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Ειδοποίηση όταν ένα όχημα χαθεί: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Επανεξέταση οδηγιών τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :όχι
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ναι, αλλά εξαιρούνται τα σταματημένα οχήματα
@@ -1301,6 +1308,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Αυτόματη παύση κατά την εκκίνηση ενός νέου παιχνιδιού: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Όταν το παιχνίδι είναι σε παύση επιτρέπονται: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :καμία ενέργεια
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :όλες οι μη κατασκευαστικές ενέργειες
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :ολές εκτός από τις ενέργειες διαμόρφωσης τοπίου
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :όλες οι ενέργειες
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Χρήση της προχωρημένης λίστας οχημάτων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :όχι
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Η εταιρία μου
@@ -1388,10 +1400,13 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Θέσ�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Αριστερά
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Κέντρο
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Δεξιά
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Αριστερά
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Κέντρο
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Δέξια
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Χάμηλο όριο παραθύρου (μη καρφωμένο): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Χάμηλο όριο παραθύρου (μη καρφωμένο): {ORANGE}απενεργοποιημένο
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Μέγιστο όριο μη καρφωμένων παραθύρων: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Μέγιστο όριο μη καρφωμένων παραθύρων: {ORANGE}απενεργοποιημένο
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Ρυθμός ανάπτυξης πόλης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Μηδενικός
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Αργός
@@ -1510,6 +1525,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Πολικό τ
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Υποτροπικό τοπίο
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Τοπίο παιχνιδότοπου
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Αλλαγή ημ/νίας: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Αλλαγή τρέχοντος έτους
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ενεργοποίηση δυνατότητας αλλαγής τιμών παραγωγής: {ORANGE}{STRING}
 
 # Livery window
@@ -1687,9 +1703,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Ομιλ
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Οι υπόλοιποι παίκτες θα γνωρίζουν ποια γλώσσα ομιλείται στο διακομιστή
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Έναρξη παιχνιδιού
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Έναρξη νέου δικτυακού παιχνιδιού από τυχαίο χάρτη ή σενάριο
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Έναρξη νέου δικτυακού παιχνιδιού από τυχαίο χάρτη ή από επιλεγμένο σενάριο
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Φόρτωση παιχνιδιού
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Συνέχεια ενός αποθηκευμένου παιχνιδιού με πολλούς παίκτες (επιβεβαιώστε πως συνδέεστε ως ο σωστός παίκτης)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Συνέχεια ενός αποθηκευμένου παιχνιδιού με πολλούς παίκτες (επιβεβαιώστε πως συνδέεστε στη σωστή εταιρία)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Εισάγετε το όνομα του δικτυακού παιχνιδιού
 
@@ -1773,6 +1789,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Ανεύ
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Ανεύρεση πληροφοριών της εταρίας...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} συμπαίκτ{P ης ες} είναι πριν από σας
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} κατέβηκαν μέχρι τώρα
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} κατέβηκαν μέχρι τώρα
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Αποσύνδεση
@@ -1844,6 +1861,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Ο δι�
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Έχει απαγορευτεί η είσοδος σας από το διακομιστή
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Έχετε εκδιωχτεί από το παιχνίδι
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Η χρήση cheats δεν επιτρέπεται σε αυτό το διακομιστή
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Αποστέλνεις πάρα πολλές εντολές στο διακομιστή
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Γενικό πρόβλημα
@@ -1861,8 +1879,11 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :λάθος comp
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :Εκδιωχθήκατε από το διακομιστή
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :προσπαθησε να χρησιμοποιησει cheat
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :Διακομιστής γεμάτος
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :στέλνει πάρα πολλές εντολές
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Πιθανή απώλεια σύνδεσης
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}T{P ο α} {NUM} δευτερόλεπτ{P ο α} κάνενα δεδομένο δεν έχει από το διακομιστή
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -1984,16 +2005,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Κατασκε�
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Κατασκευή Monorail Σιδηροδρόμου
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Κατασκευή μαγνητικού σιδηροδρόμου
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηρόδρομου. Ctrl εναλλάσει την κατασκευή/αφαίρεση σιδηρόδρομου
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Σιδηροτροχία. Ctrl εναλλάσει την κατασκευή/αφαίρεση σιδηρόδρομου
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστασίου (για αγορά και επισκευή τρένων)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή σιδηροτροχιάς σε σημείο καθοδήγησης. Ctrl ενεργοποιεί συνένωση σημείων καθοδήγησης
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Ctrl ενεργοποιηει συνένωση σταθμών
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών. Ctrl εναλλάσει σηματοφόρους/σηματοδότες. {}Σύροντας κατασκευάζει σηματοδότες σε μια ευθεία σιδηροδρόμου. Ctrl κατασκευάζει μέχρι την επομένη διαστάυρωση {}Ctrl+κλικ εναλλάσει το άνοιγμα του παραθύρου επιλογής σηματοδοτών
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Κατασκευή σιδηρόδρομου. Ctrl εναλλάσει την κατασκευή/αφαίρεση σιδηρόδρομου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Σιδηροτροχία. Ctrl εναλλάσει την κατασκευή/αφαίρεση σιδηρόδρομου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Κατασκευή αμαξοστασίου (για αγορά και επισκευή τρένων). Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Μετατροπή σιδηροτροχιάς σε σημείο καθοδήγησης. Ctrl ενεργοποιεί συνένωση σημείων καθοδήγησης. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Κατασκευή σταθμού τρένων. Ctrl ενεργοποιηει συνένωση σταθμών.Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Κατασκευή σηματοδοτών. Ctrl εναλλάσει σηματοφόρους/σηματοδότες. {}Σύροντας κατασκευάζει σηματοδότες σε μια ευθεία σιδηροδρόμου. Ctrl κατασκευάζει μέχρι την επομένη διαστάυρωση {}Ctrl+κλικ εναλλάσει το άνοιγμα του παραθύρου επιλογής σηματοδοτών. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για σιδηρόδρομους, σηματοδότες, σημείων καθοδήγησης και σταθμών. Κρατώντας το Ctrl αφαιρεί επίσης σιδηρόδρομο απο σημεία καθοδήγησης και σταθμούς
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετατροπή/Αλλαγή τύπου γραμμής
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Μετατροπή/Αλλαγή τύπου γραμμής. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Προσανατολισμός Αμαξοστασίου
@@ -2057,21 +2078,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Σιλικόν�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή Δρόμου
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Κατασκευή τροχιόδρομου(τραμ)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή κομματιού δρόμου. Ctrl εναλλάσει την κατασκευή/αφαίρεση δρόμου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιόδρομου(τραμ). Ctrl εναλλάσει την κατασκευή/αφαίρεση τροχιόδρομου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου χρησιμοποιώντας τον Αυτόματο Δρόμο. Ctrl εναλλάσει την κατασκευή/αφαίρεση δρόμου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή γραμμής τραμ χρησιμοποιώντας την Αυτόματη Γραμμή για τραμ. Ctrl εναλλάσει την κατασκευή/αφαίρεση τροχιόδρομου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων (για αγορά και επισκευή οχημάτων)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τραμ (για αγορά και επισκευή οχημάτων)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Ctrl ενεργοποιηεί συνένωση σταθμών
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τραμ. Ctrl ενεργοποιηει συνένωση επιβατικών σταθμών
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών. Ctrl ενεργοποιεί συνένωση σταθμών φόρτωσης
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ. Ctrl ενεργοποιεί συνένωση εμπορευματικών σταθμών
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Κατασκευή κομματιού δρόμου. Ctrl εναλλάσει την κατασκευή/αφαίρεση δρόμου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Κατασκευή κομματιού τροχιόδρομου(τραμ). Ctrl εναλλάσει την κατασκευή/αφαίρεση τροχιόδρομου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Κατασκευή οδικού δικτύου χρησιμοποιώντας τον Αυτόματο Δρόμο. Ctrl εναλλάσει την κατασκευή/αφαίρεση δρόμου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Κατασκευή γραμμής τραμ χρησιμοποιώντας την Αυτόματη Γραμμή για τραμ. Ctrl εναλλάσει την κατασκευή/αφαίρεση τροχιόδρομου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων (για αγορά και επισκευή οχημάτων). Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Κατασκευή αμαξοστασίου οχημάτων τραμ (για αγορά και επισκευή οχημάτων). Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Κατασκευή σταθμού λεωφορείων. Ctrl ενεργοποιηεί συνένωση σταθμών. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Κατασκευή επιβατικού σταθμού τραμ. Ctrl ενεργοποιηει συνένωση επιβατικών σταθμών. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών. Ctrl ενεργοποιεί συνένωση σταθμών φόρτωσης. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ. Ctrl ενεργοποιεί συνένωση εμπορευματικών σταθμών. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Ενεργοποίηση/Απενεργοποίηση μονόδρομων
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Κατασκευή γέφυρας δρόμου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιόδρομου(τραμ)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Κατασκευή τούνελ δρόμου
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιόδρομου(τραμ)
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Κατασκευή γέφυρας δρόμου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Κατασκευή γέφυρας τροχιόδρομου(τραμ). Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Κατασκευή τούνελ δρόμου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Κατασκευή τούνελ τροχιόδρομου(τραμ). Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για αυτοκινητόδρομους
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Εναλλαγή κτισίματος/αφαίρεσης της κατασκευής τροχιόδρομου
 
@@ -2095,11 +2116,11 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Επιλ
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Κατασκευή καναλιού νερού
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Κανάλια νερού
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Δημιουργία καναλιών.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή Υδατοφράκτη
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευάστε ναπήγειο πλοίων (για αγορά και επισκευή πλοίων)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων. Ctrl ενεργοποιεί συνένωση λιμένων
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Τοποθετήστε μια σημαδούρα που μπορεί να χρησιμοποιήθει ως σημείο καθοδήγησης
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Κατασκευή καναλιού
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Κατασκευή υδατοφράκτη. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Κατασκευάστε ναπήγειο πλοίων (για αγορά και επισκευή πλοίων). Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Κατασκευή λιμένα πλοίων. Ctrl ενεργοποιεί συνένωση λιμένων. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Τοποθετήστε μια σημαδούρα που μπορεί να χρησιμοποιήθει ως σημείο καθοδήγησης. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Κατασκευή καναλιού. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Προσδιορισμός θαλάσσιας επιφάνειας.{}Δημιουργία καναλιού, εκτός εάν το πλήκτρο CTRL είναι κρατημένο στο επίπεδο της θάλασσας, όπου θα πλημμυρίσει τις παρακείμενες περιοχές.
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Τοποθέτησε ποτάμια
 
@@ -2112,12 +2133,13 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Λιμά
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Αεροδρόμια
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατασκευή αεροδρομίου. Ctrl ενεργοποιεί συνένωση αεροδρομίων
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Κατασκευή αεροδρομίου. Ctrl ενεργοποιεί συνένωση αεροδρομίων. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Επιλογή Αεροδρομίου
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Επιλογή μεγέθους/τύπου αεροδρομίου
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Κλάση αεροδρομίου
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Σχεδιασμός {NUM}
 
 STR_AIRPORT_SMALL                                               :Μικρό
 STR_AIRPORT_CITY                                                :Πόλης
@@ -2138,19 +2160,26 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Παρα
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Μορφοποίηση εδάφους
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Χαμηλώστε μια γωνία του εδάφους. Με drag υποβαθμίζετε την πρώτη επιλεγμένη γωνία και ισοπεδώνει την επιφάνεια στο νέο ύψος. Με Ctrl επιλέγετε την επιφάνεια διαγώνια.
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Ανυψώστε μια γωνία του εδάφους. Με drag ανυψώνεται η πρώτη επιλεγμένη γωνία και ισοπεδώνεται η επιφάνεια στο νέο ύψος. Με Ctrl επιλέγετε την επιφάνεια διαγώνια.
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ισοπέδωση της γης στο ύψος της πρώτης γωνίας. Με Ctrl επιλέγετε την επιφάνεια διαγώνια.
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Αγορά γης για μελλοντική χρήση
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Χαμηλώστε μια γωνία του εδάφους. Με drag υποβαθμίζετε την πρώτη επιλεγμένη γωνία και ισοπεδώνει την επιφάνεια στο νέο ύψος. Με Ctrl επιλέγετε την επιφάνεια διαγώνια. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Ανυψώστε μια γωνία του εδάφους. Με drag ανυψώνεται η πρώτη επιλεγμένη γωνία και ισοπεδώνεται η επιφάνεια στο νέο ύψος. Με Ctrl επιλέγετε την επιφάνεια διαγώνια. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ισοπέδωση της γης στο ύψος της πρώτης γωνίας. Με Ctrl επιλέγετε την επιφάνεια διαγώνια. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Αγορά γης για μελλοντική χρήση. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Επιλογή Αντικείμενου
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Επιλογή αντικείμενου για κατασκευή. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Κλάση αντικείμενου
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Προεπισκόπιση του αντικείμενου
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Μέγεθος: {GOLD}{NUM} x {NUM} τετράγωνα
 
+STR_OBJECT_CLASS_LTHS                                           :Φάροι
+STR_OBJECT_CLASS_TRNS                                           :Αναμεταδότες
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Δέντρα
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Δέντρα τυχαίου τύπου
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Βάλε δέντρα τυχαίου τύπου
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Βάλε δέντρα τυχαίου τύπου. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Τυχαία Δέντρα
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Φύτευση δέντρων τυχαία στο τοπίο
 
@@ -2470,6 +2499,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Έλεγ
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Όνομα αρχείου: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Έκδοση: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Ελάχ. συμβατή έκδοση: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Παλέτα: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Παράμετροι: {SILVER}{STRING}
@@ -2483,6 +2513,8 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Εισα
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Αλλαγή παραμέτρων NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Κλείσιμο
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Επαναφορά
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ρύθμιση όλων των παραμέτρων στις προεπιλεγμένες τιμές
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Παράμετρος {NUM}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Πλήθος παραμέτρων: {ORANGE}{NUM}
 
@@ -2572,6 +2604,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυ�
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα πινακίδων - {COMMA} Πινακίδ{P α ες}
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Καθαρισμός κειμένου φίλτρου
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Αλλαγή κειμένου πινακίδας
@@ -2604,6 +2637,7 @@ STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Εμφά
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Αλλαγή ονόματος πόλης
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Επέκταση
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Αύξηση μεγέθους της πόλης
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Διαγραφή
 STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Διαγράφη της πόλης ολοκληρωτικά
 
@@ -2784,6 +2818,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Παραγωγή προηγούμενου μήνα:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην περιοχή της βιομηχανίας
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Έπιπεδο παραγωγής: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Απαιτεί: {YELLOW}{STRING}{STRING}
@@ -2799,6 +2834,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Παρά
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Αλλαγή παραγωγής (πολλαπλάσιο του 8, μέχρι το 2040)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Αλλαγή του έπιπεδου παραγωγής (ποσοστιαία, μέχρι το 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Τρέν{P ο α}
@@ -3183,6 +3219,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Χωρη
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Μετατροπή)
 STR_REFIT_TITLE                                                 :{GOLD}Επιλέξτε τύπο εμπορεύματος για μεταφορά:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Νεα χωρητικότητα: {GOLD}{CARGO}{}{BLACK}Κόστος μετατροπής: {GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Νεα χωρητικότητα: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Κόστος μετατροπής: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Επιλέγει το όχημα για μετατροπή. Σύροντας με το ποντίκι επιτρέπει επιλογή πολλαπλών οχημάτων. Κάνοντας κλικ σε άδειο χώρο θα επιλέξει όλο το όχημα. Ctrl+κλικ θα γίνει επιλογή του οχήματος και την επόμενης αλυσίδας
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Επιλέξτε το τύπο εμπορεύματος που το όχημα δρόμου θα μεταφέρει
@@ -3268,11 +3306,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Παρα
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Διαγραφή
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Διαγράφη της επιλεγμένης εντολής
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Διαγραφή όλων των εντολών
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Διακοπή μοιράσματος
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Διακοπή μοιράσματος της λίστας εντολών. Ctrl+κλικ διαγράφει επιπλέον όλες τις εντολές από αυτό το όχημα
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Πήγαινε Στο
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Πήγαινε στο κοντινότερο αμαξοστάσιο
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Πήγαινε στο κοντινότερο υπόστεγο
 STR_ORDER_CONDITIONAL                                           :Εκτέλεση εντόλης υπο προυπόθεση
+STR_ORDER_SHARE                                                 :Μοίρασμα εντολών
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Εισάγετε μια νέα εντολή πριν την επιλεγμένη, ή να προστεθεί στο τέλος της λίστας. Ctrl κάνει τις εντολές του σταθμού 'πληρής φόρτωση οποιοδήποτε εμπορεύματος', εντολές σημείου καθοδήγησης 'χωρίς στάση' and εντολές αμαξοστασίου 'επισκευή'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Εισαγώγη μιας προχωρημένης εντολής
 
@@ -3298,6 +3340,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Μετατρο
 STR_ORDER_STOP_ORDER                                            :(Στάση)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
 
 STR_ORDER_FULL_LOAD                                             :(Πλήρης φόρτωση)
 STR_ORDER_FULL_LOAD_ANY                                         :(Πλήρης φόρτωση οποιουδήποτε εμπορεύματος)
@@ -3396,6 +3439,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Ταύτ
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Μεταβολή της ταύτισης όταν η γίνεται η σύγκριση με μια καταχώρηση του ΑΙ με ένα break string
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Συνέχεια
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Συνέχιση του παιχνιδιού και της λειτουργίας του AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Εμφάνιση της εξόδου αποσφαλμάτωσης για αυτό το AI
 
 STR_ERROR_NO_AI                                                 :{WHITE}Στο OpenTTD δεν ενσωματώθηκε υποστήριξη ΤΝ...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... καμία ΤΝ δεν είναι διαθέσιμη!
@@ -3513,6 +3557,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... ιδ
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... αυτή η περιοχή είναι ιδιοκτησία άλλης εταιρίας
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Το όνομα πρέπει να είναι μοναδικό
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} στη μέση
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Δεν επιτρέπεται όσο είναι το παιχνίδι σε παύση
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Οι τοπικές αρχές της πόλης {TOWN} δεν το επιτρέπουν
@@ -3555,7 +3600,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... πο
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... πολύ κοντά σε άλλη πόλη
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... πάρα πολλές πόλεις
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... δεν υπάρχει αλλος χώρος στον χάρτη
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Η πόλη δεν θα οικοδομεί δρόμους. Μπορείτε να ενεργοποιήσετε την κατασκευή οδών μέσω των Προχωρημένων Επιλογών->Οικονομία->Πόλεις.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Η πόλη δεν θα οικοδομεί δρόμους. Μπορείτε να ενεργοποιήσετε την κατασκευή οδών μέσω των Προχωρημένων Επιλογών->Οικονομία->Πόλεις
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Έργα οδοποιϊας σε εξέλιξη
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Δεν γίνεται να διαγραφεί η πόλη...{}Ένας σταθμός ή ένα αμαξοστάσιο αναφέρεται στην πόλη ή ένα κομμάτι της πόλης δεν μπορεί να αφαιρεθεί
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... δεν υπάρχει κατάλληλο μέρος για άγαλμα στο κέντρο αυτής της πόλης
@@ -3712,6 +3757,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Η γέ�
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Η αρχή και το τέλος πρέπει να είναι σε ευθεία
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... και τα δύο άκρα της γέφυρας πρέπει να είναι σε έδαφος
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... γέφυρα πολλή μεγάλη
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Η γέφυρα θα καταλήξει εκτός χάρτη
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Δεν μπορεί να χτιστεί τούνελ εδώ...
@@ -3810,13 +3856,14 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... Το
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... ένα όχημα που μοιράζεται αυτή την εντολή δεν μπορεί να πάει σε αυτό τον σταθμό
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Αδύνατο να μοιραστεί η λίστα εντολών...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Δεν μπορεί να σταματήσει η λίστα κοινόχρηστων εντολών
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Αδύνατο να αντιγραφεί η λίστα εντολών...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... πολύ μακριά από τον προηγούμενο προορισμό
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Δεν μπορεί να δρομολογηθεί το όχημα...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Τα οχήματα μπορούν να περιμένουν μόνο στους σταθμούς.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Αυτό το όχημα δεν σταματάει σε αυτό το σταθμό.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Τα οχήματα μπορούν να περιμένουν μόνο στους σταθμούς
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Αυτό το όχημα δεν σταματάει σε αυτό το σταθμό
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... πάρα πολλοί σηματοδότες
