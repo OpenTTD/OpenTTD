@@ -272,17 +272,18 @@ private:
 	friend void AfterLoadVehicles(bool part_of_load); ///< For instantiating the shared vehicle chain
 	friend const struct SaveLoad *GetOrderListDescription(); ///< Saving and loading of order lists.
 
-	Order *first;                   ///< First order of the order list
-	VehicleOrderID num_orders;      ///< NOSAVE: How many orders there are in the list
-	uint num_vehicles;              ///< NOSAVE: Number of vehicles that share this order list
-	Vehicle *first_shared;          ///< NOSAVE: pointer to the first vehicle in the shared order chain
+	Order *first;                     ///< First order of the order list.
+	VehicleOrderID num_orders;        ///< NOSAVE: How many orders there are in the list.
+	VehicleOrderID num_manual_orders; ///< NOSAVE: How many manually added orders are there in the list.
+	uint num_vehicles;                ///< NOSAVE: Number of vehicles that share this order list.
+	Vehicle *first_shared;            ///< NOSAVE: pointer to the first vehicle in the shared order chain.
 
-	Ticks timetable_duration;       ///< NOSAVE: Total duration of the order list
+	Ticks timetable_duration;         ///< NOSAVE: Total duration of the order list
 
 public:
 	/** Default constructor producing an invalid order list. */
 	OrderList(VehicleOrderID num_orders = INVALID_VEH_ORDER_ID)
-		: first(NULL), num_orders(num_orders), num_vehicles(0), first_shared(NULL),
+		: first(NULL), num_orders(num_orders), num_manual_orders(0), num_vehicles(0), first_shared(NULL),
 		  timetable_duration(0) { }
 
 	/**
@@ -326,6 +327,12 @@ public:
 	 * @return number of orders in the chain.
 	 */
 	inline VehicleOrderID GetNumOrders() const { return this->num_orders; }
+
+	/**
+	 * Get number of manually added orders in the order list.
+	 * @return number of manual orders in the chain.
+	 */
+	inline VehicleOrderID GetNumManualOrders() const { return this->num_manual_orders; }
 
 	/**
 	 * Insert a new order into the order chain.

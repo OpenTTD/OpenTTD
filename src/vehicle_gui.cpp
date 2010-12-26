@@ -2447,7 +2447,7 @@ public:
 					/* FALL THROUGH, if aircraft. Does this even happen? */
 
 				default:
-					if (v->GetNumOrders() == 0) {
+					if (v->GetNumManualOrders() == 0) {
 						str = STR_VEHICLE_STATUS_NO_ORDERS + _settings_client.gui.vehicle_speed;
 						SetDParam(0, v->GetDisplaySpeed());
 					} else {

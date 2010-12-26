@@ -212,11 +212,13 @@ void OrderList::Initialize(Order *chain, Vehicle *v)
 	this->first_shared = v;
 
 	this->num_orders = 0;
+	this->num_manual_orders = 0;
 	this->num_vehicles = 1;
 	this->timetable_duration = 0;
 
 	for (Order *o = this->first; o != NULL; o = o->next) {
 		++this->num_orders;
+		if (!o->IsType(OT_AUTOMATIC)) ++this->num_manual_orders;
 		this->timetable_duration += o->wait_time + o->travel_time;
 	}
 
@@ -239,6 +241,7 @@ void OrderList::FreeChain(bool keep_orderlist)
 	if (keep_orderlist) {
 		this->first = NULL;
 		this->num_orders = 0;
+		this->num_manual_orders = 0;
 		this->timetable_duration = 0;
 	} else {
 		delete this;
@@ -277,6 +280,7 @@ void OrderList::InsertOrderAt(Order *new_order, int index)
 		}
 	}
 	++this->num_orders;
+	if (!new_order->IsType(OT_AUTOMATIC)) ++this->num_manual_orders;
 	this->timetable_duration += new_order->wait_time + new_order->travel_time;
 }
 
@@ -296,6 +300,7 @@ void OrderList::DeleteOrderAt(int index)
 		prev->next = to_remove->next;
 	}
 	--this->num_orders;
+	if (!to_remove->IsType(OT_AUTOMATIC)) --this->num_manual_orders;
 	this->timetable_duration -= (to_remove->wait_time + to_remove->travel_time);
 	delete to_remove;
 }
@@ -362,6 +367,7 @@ bool OrderList::IsCompleteTimetable() const
 void OrderList::DebugCheckSanity() const
 {
 	VehicleOrderID check_num_orders = 0;
+	VehicleOrderID check_num_manual_orders = 0;
 	uint check_num_vehicles = 0;
 	Ticks check_timetable_duration = 0;
 
@@ -369,9 +375,11 @@ void OrderList::DebugCheckSanity() const
 
 	for (const Order *o = this->first; o != NULL; o = o->next) {
 		++check_num_orders;
+		if (!o->IsType(OT_AUTOMATIC)) ++check_num_manual_orders;
 		check_timetable_duration += o->wait_time + o->travel_time;
 	}
 	assert(this->num_orders == check_num_orders);
+	assert(this->num_manual_orders == check_num_manual_orders);
 	assert(this->timetable_duration == check_timetable_duration);
 
 	for (const Vehicle *v = this->first_shared; v != NULL; v = v->NextShared()) {
@@ -379,8 +387,9 @@ void OrderList::DebugCheckSanity() const
 		assert(v->orders.list == this);
 	}
 	assert(this->num_vehicles == check_num_vehicles);
-	DEBUG(misc, 6, "... detected %u orders, %u vehicles, %i ticks", (uint)this->num_orders,
-	      this->num_vehicles, this->timetable_duration);
+	DEBUG(misc, 6, "... detected %u orders (%u manual), %u vehicles, %i ticks",
+			(uint)this->num_orders, (uint)this->num_manual_orders,
+			this->num_vehicles, this->timetable_duration);
 }
 
 /**
