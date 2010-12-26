@@ -15,7 +15,11 @@
 #include "smallvec_type.hpp"
 #include "sort_func.hpp"
 
-/** Simple pair of data. Both types have to be POD ("Plain Old Data")! */
+/**
+ * Simple pair of data. Both types have to be POD ("Plain Old Data")!
+ * @tvar T Key type.
+ * @tvar U Value type.
+ */
 template <typename T, typename U>
 struct SmallPair {
 	T first;
@@ -28,6 +32,10 @@ struct SmallPair {
 /**
  * Implementation of simple mapping class. Both types have to be POD ("Plain Old Data")!
  * It has inherited accessors from SmallVector().
+ * @tvar T Key type.
+ * @tvar U Value type.
+ * @tvar S Unit of allocation.
+ *
  * @see SmallVector
  */
 template <typename T, typename U, uint S = 16>
