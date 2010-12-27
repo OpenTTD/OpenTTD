@@ -103,6 +103,7 @@ public:
 	FORCEINLINE bool PfCalcCost(Node& n, const TrackFollower *tf)
 	{
 		int segment_cost = 0;
+		uint tiles = 0;
 		/* start at n.m_key.m_tile / n.m_key.m_td and walk to the end of segment */
 		TileIndex tile = n.m_key.m_tile;
 		Trackdir trackdir = n.m_key.m_td;
@@ -134,6 +135,7 @@ public:
 
 			/* if we skipped some tunnel tiles, add their cost */
 			segment_cost += F.m_tiles_skipped * YAPF_TILE_LENGTH;
+			tiles += F.m_tiles_skipped + 1;
 
 			/* add hilly terrain penalty */
 			segment_cost += Yapf().SlopeCost(tile, F.m_new_tile, trackdir);
@@ -148,6 +150,7 @@ public:
 			/* move to the next tile */
 			tile = F.m_new_tile;
 			trackdir = new_td;
+			if (tiles > MAX_MAP_SIZE) break;;
 		};
 
 		/* save end of segment back to the node */
