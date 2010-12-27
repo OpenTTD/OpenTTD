@@ -3342,6 +3342,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Izaberite vrstu tereta za prevoz:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova nosivost: {GOLD}{CARGO}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova nosivost: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Cena prepravke: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Obeležavanje vozila za prepravku. Povlačenjem miša moguće je obležiti više vozila. Klikom na prazan prostor obležava celo vozilo. Sa Ctrl+Klik će se obeležiti vozilo i prateći lanac
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Označite vrstu tovara za prepravljanje voza
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Označite vrstu tovara za prepravljanje drumskog vozila
@@ -3461,6 +3462,8 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Prepravi za {S
 STR_ORDER_STOP_ORDER                                            :(Stani)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
+STR_ORDER_AUTOMATIC                                             :(Automatski)
 
 STR_ORDER_FULL_LOAD                                             :(Pun utovar)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pun utovar bilo kog)

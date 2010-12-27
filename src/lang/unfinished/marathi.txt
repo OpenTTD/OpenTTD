@@ -32,7 +32,7 @@ STR_CARGO_PLURAL_COAL                                           :कोळसा
 STR_CARGO_PLURAL_MAIL                                           :पत्रे
 STR_CARGO_PLURAL_OIL                                            :तेल
 STR_CARGO_PLURAL_LIVESTOCK                                      :पशुधन
-STR_CARGO_PLURAL_GOODS                                          :माल
+STR_CARGO_PLURAL_GOODS                                          :वस्तू
 STR_CARGO_PLURAL_GRAIN                                          :धान्य
 STR_CARGO_PLURAL_WOOD                                           :लाकूड
 STR_CARGO_PLURAL_IRON_ORE                                       :लोहखनिज
@@ -66,7 +66,7 @@ STR_CARGO_SINGULAR_COAL                                         :कोळसा
 STR_CARGO_SINGULAR_MAIL                                         :पत्र
 STR_CARGO_SINGULAR_OIL                                          :तेल
 STR_CARGO_SINGULAR_LIVESTOCK                                    :पशुधन
-STR_CARGO_SINGULAR_GOODS                                        :माल
+STR_CARGO_SINGULAR_GOODS                                        :वस्तू
 STR_CARGO_SINGULAR_GRAIN                                        :धान्य
 STR_CARGO_SINGULAR_WOOD                                         :लाकूड
 STR_CARGO_SINGULAR_IRON_ORE                                     :लोह खनिज
@@ -125,6 +125,7 @@ STR_QUANTITY_BUBBLES                                            :{COMMA} बु�
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} टॉफी
 STR_QUANTITY_BATTERIES                                          :{COMMA} बॅट{P री ऱ्या}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} प्लॅस्टिक
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} फसफसणारी पे{P य ये}
 STR_QUANTITY_N_A                                                :उपलब्ध नाही
 
 # Two letter abbreviation of cargo name
@@ -139,10 +140,29 @@ STR_ABBREV_GRAIN                                                :{TINYFONT}ध�
 STR_ABBREV_WOOD                                                 :{TINYFONT}ला
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}लोह
 STR_ABBREV_STEEL                                                :{TINYFONT}पो
+STR_ABBREV_VALUABLES                                            :{TINYFONT}मौल्य
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}तांबे
 STR_ABBREV_MAIZE                                                :{TINYFONT}मका
 STR_ABBREV_FRUIT                                                :{TINYFONT}फळ
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}हिरे
+STR_ABBREV_FOOD                                                 :{TINYFONT}अन्न
+STR_ABBREV_PAPER                                                :{TINYFONT}का
+STR_ABBREV_GOLD                                                 :{TINYFONT}सोनं
+STR_ABBREV_WATER                                                :{TINYFONT}पाणी
+STR_ABBREV_WHEAT                                                :{TINYFONT}गहू
+STR_ABBREV_RUBBER                                               :{TINYFONT}रबर
+STR_ABBREV_SUGAR                                                :{TINYFONT}सा
+STR_ABBREV_TOYS                                                 :{TINYFONT}खे
+STR_ABBREV_SWEETS                                               :{TINYFONT}गोड
+STR_ABBREV_COLA                                                 :{TINYFONT}कोला
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}म्हाता
+STR_ABBREV_BUBBLES                                              :{TINYFONT}बु
+STR_ABBREV_TOFFEE                                               :{TINYFONT}टॉ
+STR_ABBREV_BATTERIES                                            :{TINYFONT}बॅ
+STR_ABBREV_PLASTIC                                              :{TINYFONT}प्लॅ
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}फस
+STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}सर्व
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} प्रवासी
@@ -162,6 +182,7 @@ STR_COLOUR_LIGHT_BLUE                                           :फिकट �
 STR_COLOUR_GREEN                                                :हिरवा
 STR_COLOUR_DARK_GREEN                                           :गडद हिरवा
 STR_COLOUR_BLUE                                                 :निळा
+STR_COLOUR_CREAM                                                :दुधी
 STR_COLOUR_PURPLE                                               :जांभळा
 STR_COLOUR_ORANGE                                               :केशरी
 STR_COLOUR_GREY                                                 :करडा
@@ -186,6 +207,12 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} लि�
 STR_BUTTON_LOCATION                                             :{BLACK}जागा
 STR_BUTTON_RENAME                                               :{BLACK}नाव बदला
 
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}खिडकी बंद करा
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}खिडकीचं नाव - खिडकी हलवण्यासाठी हे पकडून ओढा.
+STR_TOOLTIP_SHADE                                               :{BLACK}गवाक्ष - फक्त नावाची पट्टी दाखवा
+STR_TOOLTIP_RESIZE                                              :{BLACK}खिडकीचा आकार बदलण्यासाठी पकडून ओढा
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}खिडकीचा आकार लहान/मोठा करा
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}जमिनीच्या एका चौकोनावरील इमारत नष्ट करणे इ. Ctrl ने तिरका प्रदेश निवडता येतो. Shift नं इमारती किंवा किंमतीचा अंदाज दिसणं चालू/बंद होतं.
 
 # Query window
 STR_BUTTON_CANCEL                                               :{BLACK}रद्द करा
@@ -216,15 +243,18 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :गेल्य
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :चालू वर्षीचा नफा
 STR_SORT_BY_AGE                                                 :वय
 STR_SORT_BY_RELIABILITY                                         :विश्वासार्हता
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :मालाच्या प्रकारानुसार एकूण मालवहन क्षमता
 STR_SORT_BY_MAX_SPEED                                           :सर्वोच्च वेग
 STR_SORT_BY_VALUE                                               :किंमत
 STR_SORT_BY_LENGTH                                              :लांबी
 STR_SORT_BY_LIFE_TIME                                           :उर्वरित आयुर्मान
+STR_SORT_BY_TIMETABLE_DELAY                                     :वेळापत्रकीय अंतर
 STR_SORT_BY_FACILITY                                            :स्थानक प्रकार
 STR_SORT_BY_COST                                                :किंमत
 STR_SORT_BY_POWER                                               :ताकद
 STR_SORT_BY_RUNNING_COST                                        :चालवण्याचा खर्च
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :ताकद/चालवण्याचा खर्च
+STR_SORT_BY_CARGO_CAPACITY                                      :मालवाहन क्षमता
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK} खेळ स्थगित करा
@@ -236,29 +266,51 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}कं�
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}आलेख दाखवा
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK} लोहमार्ग बांधा
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}रस्ते बांधा
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}बोटींचा धक्का बांधा
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}विमानतळ बांधा
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}आवाज/संगीत खिडकी दाखवा
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}ओपेन टीटीडी
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}सुरुवातीची तारीख एक वर्ष मागे न्या
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}सुरुवातीची तारीख एक वर्ष पुढे न्या
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}सुरुवातीचं वर्ष पुरवण्यासाठी क्लिक करा
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}नकाशा, शहरांची यादी दाखवा
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}रस्तेबांधणी
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_QUIT                                     :बंद करा
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :खेळाचे पर्याय
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF पर्याय
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :पारदर्शकता पर्याय
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :शहरांची नावे दाखवा
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :स्थानकांची नावे दाखवा
+STR_SETTINGS_MENU_FULL_DETAIL                                   :पूर्ण तपशील
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :इमारती पारदर्शक
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :स्थानकांची नावे पारदर्शक
 ############ range ends here
 
 ############ range for file menu starts
+STR_FILE_MENU_QUIT_GAME                                         :खेळ सोडून द्या
+STR_FILE_MENU_EXIT                                              :बाहेर पडा
 ############ range ends here
 
 ############ range for map menu starts
-STR_MAP_MENU_MAP_OF_WORLD                                       :विश्वाचा नक्षा
+STR_MAP_MENU_MAP_OF_WORLD                                       :वैश्विक नकाशा
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :शहरांची यादी
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :सापडलेलं शहर
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
 ############ range ends here
 
 ############ range for graph menu starts
+STR_GRAPH_MENU_INCOME_GRAPH                                     :आवक आलेख
 ############ range ends here
 
 ############ range for company league menu starts
@@ -268,18 +320,24 @@ STR_MAP_MENU_MAP_OF_WORLD                                       :विश्व
 ############ range ends here
 
 ############ range for railway construction menu starts
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :लोहमार्ग बांधणी
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :विद्युत लोहमार्ग बांधणी
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :मॅग्लेव बांधणी
 ############ range ends here
 
 ############ range for road construction menu starts
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :रस्तेबांधणी
 ############ range ends here
 
 ############ range for waterways construction menu starts
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :जलमार्ग बांधणी
 ############ range ends here
 
 ############ range for airport construction menu starts
 ############ range ends here
 
 ############ range for landscaping menu starts
+STR_LANDSCAPING_MENU_PLANT_TREES                                :झाडे लावा
 ############ range ends here
 
 ############ range for music menu starts
@@ -287,6 +345,8 @@ STR_TOOLBAR_SOUND_MUSIC                                         :ध्वनी
 ############ range ends here
 
 ############ range for message menu starts
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :निरोपांचे पर्याय
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :निरोपांचा इतिहास
 ############ range ends here
 
 ############ range for about menu starts
@@ -294,6 +354,10 @@ STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन �
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
+STR_ORDINAL_NUMBER_1ST                                          :प्रथम
+STR_ORDINAL_NUMBER_2ND                                          :द्वितीय
+STR_ORDINAL_NUMBER_3RD                                          :तृतीय
+STR_ORDINAL_NUMBER_4TH                                          :चौथे
 ############ range for days ends
 
 ############ range for months starts
@@ -546,22 +610,43 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}चा�
 # Livery window
 
 
-STR_LIVERY_SMALL_PLANE                                          :छोटं विमान
+STR_LIVERY_SMALL_PLANE                                          :लहान विमान
 STR_LIVERY_LARGE_PLANE                                          :मोठं विमान
 
 # Face selection window
 STR_FACE_CAPTION                                                :{WHITE}चेहरा निवड
 
 STR_FACE_MALE_BUTTON                                            :{BLACK}पुरूष
+STR_FACE_MALE_TOOLTIP                                           :{BLACK}पुरूष चेहेरा निवडा
 STR_FACE_FEMALE_BUTTON                                          :{BLACK}स्त्री
+STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}स्त्री चेहेरा निवडा
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}नवीन चेहरा
+STR_FACE_SIMPLE                                                 :{BLACK}सुटसुटीत
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}सुटसुटीत चेहेरा निवड
+STR_FACE_FACECODE                                               :{BLACK}खेळाडू चेहेरा क्र.
 STR_FACE_EUROPEAN                                               :{BLACK}युरोपिअन
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}युरोपिअन चेहेरा निवडा
 STR_FACE_AFRICAN                                                :{BLACK}अफ्रिकन
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}आफ्रिकन चेहेरा निवडा
 STR_FACE_YES                                                    :हो
 STR_FACE_NO                                                     :नाही
-STR_FACE_EYECOLOUR                                              :डोळ्याचं रंग:
+STR_FACE_MOUSTACHE_EARRING_TOOLTIP                              :{BLACK}मिशी अथवा कर्णफुले असू द्या
+STR_FACE_HAIR                                                   :केस:
+STR_FACE_HAIR_TOOLTIP                                           :{BLACK}केस बदला
+STR_FACE_EYEBROWS                                               :भुवया:
+STR_FACE_EYEBROWS_TOOLTIP                                       :{BLACK}भुवया बदला
+STR_FACE_EYECOLOUR                                              :डोळ्यांचा रंग:
+STR_FACE_EYECOLOUR_TOOLTIP                                      :{BLACK}डोळ्यांचा रंग बदला
 STR_FACE_GLASSES                                                :चष्मा:
+STR_FACE_GLASSES_TOOLTIP                                        :{BLACK}चष्मा असू द्या
+STR_FACE_GLASSES_TOOLTIP_2                                      :{BLACK}चष्मा बदला
 STR_FACE_NOSE                                                   :नाक:
+STR_FACE_NOSE_TOOLTIP                                           :{BLACK}नाक बदला
+STR_FACE_LIPS                                                   :ओठ:
+STR_FACE_MOUSTACHE                                              :मिश्या:
+STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}ओठ किंवा मिश्या बदला
+STR_FACE_CHIN                                                   :हनुवटी:
+STR_FACE_CHIN_TOOLTIP                                           :{BLACK}हनुवटी बदला
 
 # Network server list
 
@@ -708,11 +793,11 @@ STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}वि�
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}ठेवणी {NUM}
 
-STR_AIRPORT_SMALL                                               :छोट
+STR_AIRPORT_SMALL                                               :लहान
 STR_AIRPORT_INTERNATIONAL                                       :आंतरराष्ट्रीय
 
-STR_AIRPORT_CLASS_SMALL                                         :छोटे विमानतळ
-STR_AIRPORT_CLASS_LARGE                                         :मोठे विमानतळ
+STR_AIRPORT_CLASS_SMALL                                         :लहान विमानतळ
+STR_AIRPORT_CLASS_LARGE                                         :मोठं विमानतळ
 
 
 # Landscaping toolbar
@@ -729,15 +814,15 @@ STR_PLANT_TREE_CAPTION                                          :{WHITE}झा�
 # Town generation window (SE)
 
 
-STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}छोट
-STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}मोठ
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}लहान
+STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}मोठं
 
 
 # Fund new industry window
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}खर्च: {YELLOW}{CURRENCY}
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}घर
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}घरे
 
 # Land area window
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}विमानतळाच नाव: {LTBLUE}{STRING}
@@ -749,6 +834,7 @@ STR_LAI_CLEAR_DESCRIPTION_DESERT                                :वाळवं
 
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :रस्ता
+STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :प्रकाशदिव्यांसह रस्ता
 
 # Houses come directly from their building names
 
@@ -832,12 +918,12 @@ STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 
 # Town directory window
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_POPULATION                                             :{BLACK}विश्व लोकसंख्या: {COMMA}
+STR_TOWN_POPULATION                                             :{BLACK}वैश्विक लोकसंख्या: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}लोकसंख्या: {ORANGE}{COMMA}{BLACK}  घर: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} गरज
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING}{BLACK} आवश्यक
 
 
 
@@ -1064,6 +1150,8 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}सर�
 
 
 
+
+STR_ORDER_AUTOMATIC                                             :(आपोआप)
 
 
 

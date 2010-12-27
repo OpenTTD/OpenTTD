@@ -3609,6 +3609,8 @@ STR_ORDER_STOP_ORDER                                            :(Стоп)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Аўтаматычна)
+
 STR_ORDER_FULL_LOAD                                             :(Поўная загрузка)
 STR_ORDER_FULL_LOAD_ANY                                         :(Поўная загрузка любым грузам)
 STR_ORDER_NO_LOAD                                               :(Не грузіцца)
@@ -3642,6 +3644,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Пера
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Расклад - выберыце заданьне.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Няма назначэньня
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Прабег (аўтаматычна; у расклад наступным заданьнем уручную)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Час у шляху (не зададзены)
 STR_TIMETABLE_TRAVEL_FOR                                        :Час у шляху - {STRING}
 STR_TIMETABLE_STAY_FOR                                          :і чакаць {STRING}

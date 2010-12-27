@@ -529,8 +529,8 @@ STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLAC
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betaling voor het leveren van 10 eenheden (of 10,000 liter) aan vracht over een afstand van 20 vakjes
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Alles aan
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Alles uit
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Toon alle vrachtsoorten op de vrachtvergoedingen grafiek
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Toon geen vrachtsoorten op de vrachtvergoedingen grafiek
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Toon alle vrachtsoorten op de grafiek van vrachtprijzen
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Toon geen vrachtsoorten op de grafiek van vrachtprijzen
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Schakel grafiek voor vrachttype aan/uit
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -572,14 +572,14 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lening:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Aantal voertuigen met winst in het afgelopen jaar. Dit is inclusief wegvoertuigen, treinen, schepen en vliegtuigen.
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal recentelijk bezochte stationsonderdelen. Elke deel van een station (bijv. treinstation, bushalte, vliegveld) wordt geteld, zelfs als deze zijn verbonden met één station
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Aantal voertuigen met winst in het afgelopen jaar. Hierbij tellen wegvoertuigen, treinen, schepen en vliegtuigen allemaal mee
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Aantal recentelijk bezochte stationsonderdelen. Elk deel van een station (bijv. treinstation, bushalte, vliegveld) wordt geteld, zelfs als deze met elkaar zijn verbonden tot één station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}De winst van het voertuig met het laagste inkomen (van alle voertuigen ouder dan 2 jaar)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}De hoeveelheid geld die is verdiend in het kwartaal met de laagste winst van de afgelopen 12 kwartalen
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}De hoeveelheid geld die is verdiend in het kwartaal met de hoogste winst van de afgelopen 12 kwartalen
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Het aantal eenheden aan vracht dat in de afgelopen vier kwartalen is afgeleverd
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Aantal soorten vracht die in het laatste kwartaal zijn afgeleverd
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Hoeveelheid contant geld
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Hoeveelheid geld op de bank
 STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}De hoeveelheid geld die dit bedrijf leent
 STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Totaal aantal punten uit de mogelijke punten
 
@@ -592,7 +592,7 @@ STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLAC
 STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Aangepast 1
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Aangepast 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Muziekvolume
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Geluidsvolume
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Effectenvolume
 STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
 STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
 STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
@@ -719,10 +719,10 @@ STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {S
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Bericht
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Berichtopties
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Instelling voor alle berichtsoorten (Uit/Kort/Volledig)
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Instelling voor alle berichtsoorten (Uit/Samengevat/Volledig)
 STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Speel een geluid af voor samengevatte nieuwsberichten
 STR_NEWS_MESSAGES_OFF                                           :Uit
-STR_NEWS_MESSAGES_SUMMARY                                       :Kort
+STR_NEWS_MESSAGES_SUMMARY                                       :Samengevat
 STR_NEWS_MESSAGES_FULL                                          :Volledig
 
 STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Berichtsoorten:
@@ -785,7 +785,7 @@ STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Gebrek aan nabije bomen noodzaakt {STRING} dreigende sluitng aan te kondigen!
 
 STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}Europese Monetaire Unie!{}{}De Euro is geïntroduceerd als de enige munt voor alledaagse transacties in jouw land!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Wereld Recessie!{}{}Financiële experts vrezen het ergste terwijl economie ineenstort!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Wereldwijde Recessie!{}{}Financiële experts vrezen het ergste terwijl economie ineenstort!
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Recessie Voorbij!{}{}Toenemende handel geeft industrie vertrouwen terwijl economie verstevigt!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} verhoogt productie!
@@ -966,8 +966,8 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modus vo
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verlaag de wisselkoers van jouw munteenheid ten opzicht van de Pond (£) met één
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verhoog de wisselkoers van jouw munteenheid ten opzicht van de Pond (£) met één
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verlaag de wisselkoers van jouw munteenheid ten opzicht van de Pond (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Verhoog de wisselkoers van jouw munteenheid ten opzicht van de Pond (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Stel de wisselkoers in van jouw munteenheid ten opzichte van de Pond (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken: {ORANGE}{STRING}
@@ -980,7 +980,7 @@ STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Stel het
 
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Overgaan op de Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Overgaan op de Euro: {ORANGE}nooit
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Stel het jaar in waarop de Euro wordt geïntroduceerd
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Stel het jaar in waarin de Euro wordt geïntroduceerd
 STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Eerder naar de Euro
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Later naar de Euro
 
@@ -1005,9 +1005,9 @@ STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Opslaan
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Aantal steden: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Aantal industrieën: {ORANGE}{STRING}
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maximale lening: {ORANGE}{CURRENCY}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maximale startlening: {ORANGE}{CURRENCY}
 STR_DIFFICULTY_LEVEL_SETTING_INITIAL_INTEREST_RATE              :{LTBLUE}Startrente: {ORANGE}{COMMA}%
-STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Operationele kosten van voertuigen: {ORANGE}{STRING}
+STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_RUNNING_COSTS              :{LTBLUE}Bedrijfskosten van voertuigen: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_CONSTRUCTION_SPEED_OF_COMPETITOR   :{LTBLUE}Bouwsnelheid van tegenstanders: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_VEHICLE_BREAKDOWNS                 :{LTBLUE}Voertuigdefecten: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_SUBSIDY_MULTIPLIER                 :{LTBLUE}Vermenigvuldigingsfactor subsidies: {ORANGE}{STRING}
@@ -1021,7 +1021,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Houding
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Geen
-STR_NUM_VERY_LOW                                                :Erg laag
+STR_NUM_VERY_LOW                                                :Zeer Laag
 STR_NUM_LOW                                                     :Laag
 STR_NUM_NORMAL                                                  :Normaal
 STR_NUM_HIGH                                                    :Hoog
@@ -1029,19 +1029,19 @@ STR_NUM_CUSTOM                                                  :Aangepast
 STR_NUM_CUSTOM_NUMBER                                           :Aangepast ({NUM})
 
 STR_VARIETY_NONE                                                :Geen
-STR_VARIETY_VERY_LOW                                            :Heel Laag
+STR_VARIETY_VERY_LOW                                            :Zeer Laag
 STR_VARIETY_LOW                                                 :Laag
 STR_VARIETY_MEDIUM                                              :Gemiddeld
 STR_VARIETY_HIGH                                                :Hoog
-STR_VARIETY_VERY_HIGH                                           :Heel Hoog
+STR_VARIETY_VERY_HIGH                                           :Zeer Hoog
 
-STR_AI_SPEED_VERY_SLOW                                          :Erg langzaam
+STR_AI_SPEED_VERY_SLOW                                          :Zeer Langzaam
 STR_AI_SPEED_SLOW                                               :Langzaam
 STR_AI_SPEED_MEDIUM                                             :Gemiddeld
 STR_AI_SPEED_FAST                                               :Snel
-STR_AI_SPEED_VERY_FAST                                          :Erg snel
+STR_AI_SPEED_VERY_FAST                                          :Zeer Snel
 
-STR_SEA_LEVEL_VERY_LOW                                          :Erg laag
+STR_SEA_LEVEL_VERY_LOW                                          :Zeer Laag
 STR_SEA_LEVEL_LOW                                               :Laag
 STR_SEA_LEVEL_MEDIUM                                            :Gemiddeld
 STR_SEA_LEVEL_HIGH                                              :Hoog
@@ -1057,8 +1057,8 @@ STR_SUBSIDY_X2                                                  :x2
 STR_SUBSIDY_X3                                                  :x3
 STR_SUBSIDY_X4                                                  :x4
 
-STR_TERRAIN_TYPE_VERY_FLAT                                      :Erg plat
-STR_TERRAIN_TYPE_FLAT                                           :Plat
+STR_TERRAIN_TYPE_VERY_FLAT                                      :Zeer Vlak
+STR_TERRAIN_TYPE_FLAT                                           :Vlak
 STR_TERRAIN_TYPE_HILLY                                          :Heuvelachtig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergachtig
 
@@ -1071,9 +1071,9 @@ STR_REVERSE_AT_END_OF_LINE_ONLY                                 :Aan het eind va
 STR_DISASTERS_OFF                                               :Uit
 STR_DISASTERS_ON                                                :Aan
 
-STR_CITY_APPROVAL_PERMISSIVE                                    :Tolerant
-STR_CITY_APPROVAL_TOLERANT                                      :Neutraal
-STR_CITY_APPROVAL_HOSTILE                                       :Negatief
+STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk
+STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
+STR_CITY_APPROVAL_HOSTILE                                       :Vijandig
 
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Geen bruikbare AIs beschikbaar...{}U kunt diverse AI's downloaden via het 'Online Content' systeem
 STR_WARNING_DIFFICULTY_TO_CUSTOM                                :{WHITE}Deze actie past de moeilijkheidsgraad aan naar 'aangepast'
@@ -1100,7 +1100,7 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisch
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Wegvoertuig acceleratie model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Origineel
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisch
-STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingshoek voor treinen {ORANGE}{STRING}%
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsgraad voor treinen {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Hellingsgraad voor wegvoertuigen {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbied treinen en schepen om 90° te draaien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
@@ -1111,15 +1111,15 @@ STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflati
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Vracht alleen bezorgen aan een station als er vraag naar is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Bouwen van zeer lange bruggen toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Sta 'Ga naar depot' order toe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Handmatige bouwmethode voor primaire industrie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Handmatige bouwmethode voor primaire industrieën: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :zoals andere industrieën
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :proberen
-STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Platte omgeving rond industrieën: {ORANGE}{STRING} tegel{P 0:1 "" s}
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Vlakke omgeving rond industrieën: {ORANGE}{STRING} tegel{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Meerdere vergelijkbare industrieën per stad toestaan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Altijd lange datum in statusbalk weergeven: {ORANGE}{STRING}
+STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Geef de datum in de statusbalk altijd in lang formaat weer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Seinen aan rijzijde plaatsen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Financieel overzicht aan het eind van het jaar weergeven: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Financieel overzicht aan het einde van het jaar weergeven: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nieuwe orders zijn standaard 'non-stop': {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Nieuwe treinorders stoppen de trein standaard {ORANGE}{STRING}{LTBLUE} van het perron
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :aan het begin
@@ -1131,8 +1131,8 @@ STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Omkopen
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Kopen van exclusieve transportrechten toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Geld geven aan andere bedrijven toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Vrij gevormde stations: {ORANGE}{STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewichtsverhouding voor vracht om zware treinen te simuleren: {ORANGE}{STRING}
-STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Vliegtuigsnelheidsverhouding: {ORANGE}1 / {STRING}
+STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewichtsfactor voor vracht om zware treinen te simuleren: {ORANGE}{STRING}
+STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor voor vliegtuigsnelheden: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Aantal vliegtuigcrashes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Geen
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Verminderd
@@ -3252,6 +3252,8 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automatisch)
+
 STR_ORDER_FULL_LOAD                                             :(Volledig laden)
 STR_ORDER_FULL_LOAD_ANY                                         :(Één soort vracht volledig laden)
 STR_ORDER_NO_LOAD                                               :(Niet laden)
@@ -3285,6 +3287,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Ga naar 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstregeling - klik op een order om te selecteren
 
 STR_TIMETABLE_NO_TRAVEL                                         :Niet rijden
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Rijd (automatisch; volgens dienstregeling bij volgende handmatige bestemming)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
 STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}

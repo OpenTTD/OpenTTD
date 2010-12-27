@@ -1164,7 +1164,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}:Benark
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Satu atau lebih petak di bucu utara tidak kosong
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Satu atau lebih petak di salah satu bucu bukan air
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Keluasan maks stesen: {ORANGE}{STRING} {RED}Amaran: Ketetapan tinggi akan melembabkan permainan
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Keluasan maks stesen: {ORANGE}{STRING} petak{P 0:1 "" s} {RED}Amaran: Tetapan tinggi melembabkan permainan
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Serviskan helikopter di helipad secara automatik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kaitkan toolbar lanskap kepada toolbar keretapi/jalanraya/air/lapangan terbang: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Hijau
@@ -1232,13 +1232,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Benarka
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes sebelum AI digantung: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Tempoh waktu servis dalam peratusan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Tempoh servis lazim untuk keretapi: {ORANGE}{STRING} hari/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Tempoh servis lazim untuk keretapi: {ORANGE}{STRING} hari{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Tempoh servis lazim untuk keretapi: {ORANGE}tiada
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Tempoh servis lazim untuk kenderaan jalanraya: {ORANGE}{STRING} hari/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Tempoh servis lazim untuk kenderaan jalanraya: {ORANGE}{STRING} hari{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Tempoh servis lazim untuk kenderaan jalanraya: {ORANGE}tiada
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Tempoh servis lazim untuk pesawat: {ORANGE}{STRING} hari/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Tempoh servis lazim untuk pesawat: {ORANGE}{STRING} hari{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Tempoh servis lazim untuk pesawat: {ORANGE}tiada
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Tempoh servis lazim untuk kapal: {ORANGE}{STRING} hari/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Tempoh servis lazim untuk kapal: {ORANGE}{STRING} hari{P 0:1 "" s}/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Tempoh servis lazim untuk kapal: {ORANGE}tiada
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Servis tidak diperlukan apabila kerosakan kenderaan ditetapkan kepada tiada: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Benarkan had kelajuan untuk gerabak: {ORANGE}{STRING}
@@ -1283,10 +1283,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Keduduk
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Kiri
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Tengah
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Kanan
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Lingkungan lekatan tetingkap: {ORANGE}{STRING} px
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Lingkungan lekatan tetingkap: {ORANGE}{STRING} pixel{P 0:1 "" s}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Lingkungan lekatan tetingkap: {ORANGE}tiada
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Had lembut tetingkap (tidak melekat): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Had lembut tetingkap (tidak melekat): {ORANGE}tiada
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Had maksimum tetingkap tidak melekat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Had maksimum tetingkap tidak melekat: {ORANGE}tiada
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Kelajuaan pertumbuhan bandar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Tiada
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Lambat
@@ -1582,9 +1582,9 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa y
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Pemain lain akan tahu bahasa apa yang digunakan di pelayan ini
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Mulakan permainan
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Mulakan permainan baru di peta rambang, atau senario
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Mulakan talian permainan baru dari peta rawak, atau senario dipilih
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Buka Permainan
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Sambung permainan berbilang pemain yang tersimpan terlebih dahulu (pastikan anda menyambung sebagai pemain yang betul)
+STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Sambung permainan berbilang pemain yang tersimpan (pastikan anda menyambung sebagai syarikat yang betul)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Masukkan nama untuk permainan rangkaian
 
@@ -2066,10 +2066,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Menurunk
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Janakan tanah secara rambang
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Hasilkan senario baru
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Bentukkan lanskap semula
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Keluarkan semua harta pemain dari peta
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Keluarkan semua harta milik syarikat dari peta
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Bentukkan lanskap semula
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Pastikah anda untuk membuang semua harta milik pemain?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Anda pasti untuk membuang semua harta milik syarikat?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Pembentukan Bandar
@@ -3019,6 +3019,7 @@ STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Ubahsuai
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Pergi melalui {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Pergi terus-menerus melalui {WAYPOINT}
+
 
 
 

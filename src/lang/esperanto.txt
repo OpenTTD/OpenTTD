@@ -1104,6 +1104,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Permana
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :neniu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kiel aliaj industrioj
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospektori
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ebena areo ĉirkaŭ industrioj: {ORANGE}{STRING} kahelo{P 0:1 "" j}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permesu pliajn similajn industriojn en la sama urbo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Ĉiam montru longan daton en la statbreto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Montru signalojn veturflanke: {ORANGE}{STRING}
@@ -3187,6 +3188,8 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Transformu al 
 STR_ORDER_STOP_ORDER                                            :(Haltu)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
+STR_ORDER_AUTOMATIC                                             :(Aŭtomata)
 
 STR_ORDER_FULL_LOAD                                             :(Plena Ŝarĝo)
 STR_ORDER_FULL_LOAD_ANY                                         :(Ŝarĝu ĝis plena ajnan kargon)

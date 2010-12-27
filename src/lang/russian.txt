@@ -3436,6 +3436,8 @@ STR_ORDER_STOP_ORDER                                            :(Стоп)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Автоматически)
+
 STR_ORDER_FULL_LOAD                                             :(Полная погрузка)
 STR_ORDER_FULL_LOAD_ANY                                         :(Полная погрузка любым грузом)
 STR_ORDER_NO_LOAD                                               :(Не грузиться)
@@ -3469,6 +3471,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Пере
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Расписание - выберите задание.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Нет назначения
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Пробег (автоматически; в расписание следующим заданием вручную)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Время в пути (не задано)
 STR_TIMETABLE_TRAVEL_FOR                                        :Время в пути - {STRING}
 STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}
