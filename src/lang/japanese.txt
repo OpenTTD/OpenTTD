@@ -165,7 +165,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}無
 STR_ABBREV_ALL                                                  :{TINYFONT}全
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} 人の乗客
+STR_PASSENGERS                                                  :{COMMA} 乗客
 STR_BAGS                                                        :{COMMA} 袋
 STR_TONS                                                        :{COMMA} トン
 STR_LITERS                                                      :{COMMA} リットル
@@ -280,6 +280,7 @@ STR_SORT_BY_RATING_MIN                                          :最低い貨物
 STR_SORT_BY_ENGINE_ID                                           :EngineID（旧式）
 STR_SORT_BY_COST                                                :値段
 STR_SORT_BY_POWER                                               :出力
+STR_SORT_BY_TRACTIVE_EFFORT                                     :牽引力
 STR_SORT_BY_INTRO_DATE                                          :登場日付
 STR_SORT_BY_RUNNING_COST                                        :運転費
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :出力／運転費
@@ -329,6 +330,7 @@ STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}産業�
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}道路の建設
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}木を植林
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}標示を設置
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}物を置いて下さい。（シフト）で物の価格を表します。
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :シナリオを保存
@@ -548,6 +550,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}詳細
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}（{CURRCOMPACT}／{CURRCOMPACT}）
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}（{COMMA}／{COMMA}）
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}％
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}この会社についで（詳しい情報を見る）
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}車両数：
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}駅数：
@@ -772,11 +775,11 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}供給不足によって{STRING}が間近く閉鎖！
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}周辺の森林不足によって{STRING}が間近く閉鎖！
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}欧州通貨統合！{}{}我が国はここからユーロを通貨として使用！
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}欧州通貨統合！{}{}この国は今からユーロを通貨として使用になります。
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}世界中不景気！{}{}経済がスランプに陥る、アナリストの不安説！
 STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}スランプの終わり！{}{}経済が上昇気流、産業が好転！
 
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY}の生産量が増えた！
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY}の生産量が増えました。
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}{INDUSTRY}で新しい石炭層の発見！{}予報：生産量2倍！
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}{INDUSTRY}で新しい油層の発見！{}予報：生産量 2倍！
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}{INDUSTRY}で改良した農法。予報：生産量 2倍！
@@ -830,9 +833,9 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}ビューアへコピー
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}主の画面の場所をこのビューアにコピーします
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}　主画面の場所をビューアにコピーする
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}ビューアからペースト
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}このビューアの場所をメイン画面にペーストします
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}現在の画面をマインスクリーンにペーストする
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}ゲームの設定
@@ -1014,6 +1017,7 @@ STR_NUM_LOW                                                     :低い
 STR_NUM_NORMAL                                                  :通常
 STR_NUM_HIGH                                                    :高い
 STR_NUM_CUSTOM                                                  :カスタム
+STR_NUM_CUSTOM_NUMBER                                           :カスタム ({NUM})
 
 STR_VARIETY_NONE                                                :なし
 STR_VARIETY_VERY_LOW                                            :とても低い
@@ -1032,6 +1036,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :特に低い
 STR_SEA_LEVEL_LOW                                               :低い
 STR_SEA_LEVEL_MEDIUM                                            :中位
 STR_SEA_LEVEL_HIGH                                              :高い
+STR_SEA_LEVEL_CUSTOM                                            :カスタム
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :カスタム ({NUM}%)
 
 STR_DISASTER_NONE                                               :なし
 STR_DISASTER_REDUCED                                            :軽減
@@ -1125,6 +1131,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}車両�
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}空港の購入可能期限がない： {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}車両の行き先が無いなら注意する: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}列車の指令をレビュー：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :切
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :入（停止中の車両を取り除く）
@@ -1193,6 +1200,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO 標準
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}新規ゲームを開始したときに自動的にポーズ：{ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}一時停止（ポース）の時この行動を許可 {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :行動が無い
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :建設以外の行動
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :土地を変更以外すべての行動
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :すべての行動
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}詳細の車両リストを使用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :切
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :自分
@@ -1278,6 +1290,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}メイ�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :左
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :中位
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :右
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}お知らせバ−の置き場: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :左
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :中央
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :右
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}ウィンドウスナップ範囲：{ORANGE}切
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}ウィンドウ数のソフトウェア制限 (non-sticky): {ORANGE}{STRING}
@@ -1388,7 +1404,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}この�
 # Cheat window
 STR_CHEATS                                                      :{WHITE}チート
 STR_CHEATS_TOOLTIP                                              :{BLACK}以前にこのチートを使用したことがあることを示します
-STR_CHEATS_WARNING                                              :{BLACK}注意! チートすると、競争者の裏切りとして見られていて、永遠にのろわれる可能性があります！
+STR_CHEATS_WARNING                                              :{BLACK}注意: チートをしたら、競争者の裏切りとして見られていて、永遠にのろわれる可能性があります。
 STR_CHEAT_MONEY                                                 :{LTBLUE}残額に{CURRENCY}を追加
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}会社: {ORANGE}{COMMA}でプレイする
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}ゴジラブルドーザー(産業など何でも破壊できる) : {ORANGE}{STRING}
@@ -1400,6 +1416,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :亜寒帯国
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :亜熱帯国
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :玩具国
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}日付を変更: {ORANGE}{DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}年を変更する
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産量の変更を入にする：{ORANGE}{STRING}
 
 # Livery window
@@ -1663,6 +1680,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}ゲー�
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}会社情報を読み込み中...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}先に {NUM} 人のプレヤーがいる
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES}ダウンロードをした
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES}／{BYTES} がダウンロードした
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}接続を解除
@@ -1734,6 +1752,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}サー�
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}このサーバに禁止されています
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}げーむから蹴られました
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}このサーバ上にチートを許可しません
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}プレーヤがサーバにコマンドを送り過ぎです。
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般エラー
@@ -1751,8 +1770,10 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :wrong company-i
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :サーバに蹴られた
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :チートして試していた
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :サーバ満員
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :コマンドを送りすぎ
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}ネットワークに接続を無くしたかのせいがあります
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2031,7 +2052,14 @@ STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}土地�
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来用に土地を購入
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}選択物
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}建設する物を選択して下さい。（シフト）で物の価格を表します
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}物のクラス
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}物のプレヴィウ
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}サイズ: {GOLD}{NUM} x {NUM} マス
 
+STR_OBJECT_CLASS_LTHS                                           :ライトハウス
+STR_OBJECT_CLASS_TRNS                                           :ラジオツランスメーター
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}木
@@ -2114,6 +2142,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}座標�
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}購入年：{LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}駅の種類：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}駅の種類：{LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}空港のクラス: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}空港の名前: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}空港のタイル名: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}受入れる貨物：{LTBLUE}
@@ -2334,6 +2364,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}抜け�
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}ファイル名：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID：{SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最小対応するバージョン: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}パレット：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}設定：{SILVER}{STRING}
@@ -2345,9 +2376,13 @@ STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}切
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF設定を入力
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}リセット
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}すべてのパラメータをデファルトヴァルウに変更する
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}パラメータの数: {ORANGE}{NUM}
 
 # NewGRF inspect window
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :物
 
 
 # Sprite aligner window
@@ -2375,6 +2410,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :無効な ID �
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} は壊れたスプライトを含みます。壊れたスプライトは赤疑問符として表示されます。
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :複数の Action 8 の項目を含んでいます。
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :擬似スプライト読込:既に終端に達しました
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}現在を使ってるグラフィックセットが複数のダータが無いです。.{}セットを更新して下さいますよう、お願いします。
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
@@ -2400,6 +2436,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標示のリスト - {COMMA}つの標示
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}フィルターを消去する
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}標示のテキストを編集
@@ -2610,6 +2647,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}先月の生産量：
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK}（{COMMA}％運送済み）
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}主の画面を産業の場所に移動します
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}生産量: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}必要な原料：{YELLOW}{STRING}{STRING}
@@ -2625,6 +2663,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}産物�
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}生産量を変更 (パーセンテージ、800%まで可能)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - 列車{COMMA}本
@@ -2874,8 +2913,8 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}飛行�
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}すべての車両を含めて、この列車を複製します。Control+クリックすると、指令を共有します。
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}道路車両を複製します。Control+クリックすると、指令を共有します。
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}船舶を複製します。Control+クリックすると、指令を共有します
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}飛行機を複製します。Control+クリックすると、指令リストを共有します。
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}船を購入します。（コントロール+クリック）すると、プランを共有します。（シフト＋クイック）をすると、）船の価格を表せます。
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}飛行機を購入します。（コントロール+クリック）をすると、このリストを共有します。（シフト＋クリック）をすると、飛行機の価格を表示します。
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}列車の続行を強制します(信号を無視します)
 
@@ -2991,6 +3030,8 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}容量�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE}(改装)
 STR_REFIT_TITLE                                                 :{GOLD}運送する貨物の種類を選択：
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}改装後の積載量：{GOLD}{CARGO}{}{BLACK}改装費用：{GOLD}{CURRENCY}
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}新しいキャパシティ: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}レフィットの価格: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}レフィットが行う車両を選択して下さい。マウスでドラーグをすると、複数の車両を選択できます。空スペースにクリックすると車両内すべての物を選択します。（コントロール＋クリック）をすると車両内の物とその後のチェーンを選択します。
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車が運送する貨物を選択
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}運送する貨物種類を選択します
@@ -3020,11 +3061,11 @@ STR_ORDERS_END_OF_ORDERS                                        :- - 指令終�
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共有指令の終了- -
 
 # Order bottom buttons
-STR_ORDER_NON_STOP                                              :{BLACK}直行便
+STR_ORDER_NON_STOP                                              :{BLACK}直通運転（途中停車しない）
 STR_ORDER_GO_TO                                                 :行く
-STR_ORDER_GO_NON_STOP_TO                                        :無停車で行く
+STR_ORDER_GO_NON_STOP_TO                                        :まで直通運転（途中の駅を通過する）
 STR_ORDER_GO_VIA                                                :経由停車点
-STR_ORDER_GO_NON_STOP_VIA                                       :無停車で行くの経由停車点
+STR_ORDER_GO_NON_STOP_VIA                                       :まで直通運転（経由点を通る）
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}選択した指令の停止方法を変更します
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}いずれかを全積載
@@ -3074,11 +3115,15 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}実行�
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}削除
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}選択した指令を削除します
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}車両のオーダを消去する
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}共有を止める
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}注文オーダの共有が止まる。（コントロール＋クリック）を押したら、リストも消去します。
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}駅を選択
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :近辺の電車庫へ行く
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :近辺の格納庫へ行く
 STR_ORDER_CONDITIONAL                                           :条件ジャンプ
+STR_ORDER_SHARE                                                 :オーダを共有する
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}選択した指令の前／リストの終わりに新規指令を挿入します
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}詳しい注文を挿入
 
@@ -3089,7 +3134,7 @@ STR_ORDER_GO_TO_WAYPOINT                                        :{WAYPOINT}を�
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :{WAYPOINT}を経て直行で行く
 
 STR_ORDER_SERVICE_AT                                            :修理：
-STR_ORDER_SERVICE_NON_STOP_AT                                   :回送して修理：
+STR_ORDER_SERVICE_NON_STOP_AT                                   :回送して修理を行う
 
 STR_ORDER_NEAREST_DEPOT                                         :最も近い
 STR_ORDER_NEAREST_HANGAR                                        :最も近い格納庫
@@ -3103,6 +3148,8 @@ STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改
 STR_ORDER_STOP_ORDER                                            :（停止）
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
+STR_ORDER_AUTOMATIC                                             :（自動的）
 
 STR_ORDER_FULL_LOAD                                             :(全積載)
 STR_ORDER_FULL_LOAD_ANY                                         :(いずれか一種の貨物を全積載するまで待つ)
@@ -3129,6 +3176,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}指令�
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}時刻表 - 指令を選択するにはクリックします。
 
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :自動的運行（次の注文により時刻表を変更）
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :運行（未計画）
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}運行
 STR_TIMETABLE_STAY_FOR                                          :{STRING}停車
@@ -3171,6 +3219,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}コン�
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}コンピュータのプレーヤの設定を切り替える
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI を再起動
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}AI を停止して、スクリプトを読み込んで、AI を再起動します。
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}AIのコンソールを見る
 
 STR_ERROR_NO_AI                                                 :{WHITE}この OpenTTD は AI のサポートが入っていません...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... 使用可能なAIがありません！
@@ -3286,6 +3335,7 @@ STR_ERROR_OWNED_BY                                              :{WHITE}... 所�
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... この土地は他の会社に所有されています
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名前は唯一でなければなりません
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING}があります
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}一時停止（ポース）の時この行動をいけません
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}の町議会が拒否しました。
@@ -3470,6 +3520,7 @@ STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}橋端�
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}橋が低すぎて、地形に対応していません
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}一直線の橋しか建設できません
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... 橋の先端は両方地面に建設しなければなりません
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}橋がマップから出ますから建てられません。
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}ここにトンネルを建設できません...
@@ -3565,6 +3616,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}その�
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}命令を共有使用とする乗り物はその駅に行くことが出来ません。
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}指令リストを共有できません...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}（エーラ）リストの共有を止める事ができません。
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}指令リストをコピーできません...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 前の目的地から遠すぎます
 

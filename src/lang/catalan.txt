@@ -3253,6 +3253,8 @@ STR_ORDER_STOP_ORDER                                            :(Para)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automàtic)
+
 STR_ORDER_FULL_LOAD                                             :(Carrega del tot)
 STR_ORDER_FULL_LOAD_ANY                                         :(Carrega del tot qualsevol càrrega)
 STR_ORDER_NO_LOAD                                               :(No carregar)
@@ -3286,6 +3288,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Commuta 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horari - clica sobre una ordre per marcar-la
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sense viatge
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viatge (automàtic; programat per la següent ordre manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viatge (fora d'horari)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i estigues {STRING}

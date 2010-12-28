@@ -2089,7 +2089,7 @@ STR_OBJECT_CLASS_TRNS                                           :Vericiler
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Ağaçlar
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Dikilecek ağaç türünü seçin
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Rastgele türde ağaçlar
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Rastgele türde ağaçlar koy
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Rastgele türde ağaçlar koy. Shift ile ağaç koyma/maliyet gösterme tercihi yapılır
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Rastgele Ağaç
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Haritaya rastgele ağaç dik
 
@@ -2110,7 +2110,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Oyuncuya
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Şehir Yapımı
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Yeni Şehir
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Yeni şehir kur
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Yeni şehir kur. Shift+tıklama sadece tahmini maliyeti gösterir
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Rastgele Şehir
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Rastgele bir yerde şehir kur
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Birçok rastgele şehir
@@ -2702,7 +2702,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Şirket 
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Binaya Bak
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Şirket binasını gör
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Binayı Taşı
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Şirket değerinin %1'i karşılığında binanın yerini değiştir
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Şirket değerinin %1'i karşılığında binanın yerini değiştir. Shift+tıklama şirket binasının yerini değiştirmeden tahmini maliyeti gösterir
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Yeni Surat
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Müdür için yeni surat seç
@@ -2715,8 +2715,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Müdür�
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}%25'ini satın al
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}%25'ini geri ver
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Şirketin %25 hissesini al
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Şirketin %25 hissesini sat
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Şirketin %25 hissesini al. Shift+tıklama hisse satın almadan tahmini maliyeti gösterir
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Şirketin %25 hissesini satar. Shift+tıklama hisse satmadan tahmini maliyeti gösterir
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Şirketin ismi
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Yöneticinin ismi
@@ -3004,10 +3004,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Aracı g
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Tersaneye gönder
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Uçağı hangara gönder
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Ctrl-tıklama emirleri paylaştırır
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Arabanın bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Geminin bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Uçağın bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Tüm vagonlarla birlikte treni kopyalar. Ctrl-tıklama emirleri paylaştırır. Shift+tıklama satın almadan tahmini maliyeti gösterir
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Arabanın bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır. Shift+tıklama satın almadan tahmini maliyeti gösterir
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Geminin bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır. Shift+tıklama satın almadan tahmini maliyeti gösterir
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Uçağın bir kopyasını satın alır. Ctrl-tıklama emirleri paylaştırır. Shift-tıklama satın almadan tahmini maliyetigösterir
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Treni sinyale uymadan ilerlemeye zorla
 
@@ -3253,6 +3253,8 @@ STR_ORDER_STOP_ORDER                                            :(Dur)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Otomatik)
+
 STR_ORDER_FULL_LOAD                                             :(Tam yükle)
 STR_ORDER_FULL_LOAD_ANY                                         :(Bir kargoyu tam yükle)
 STR_ORDER_NO_LOAD                                               :(Yükleme yapma)
@@ -3286,6 +3288,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Emir gö
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman çizelgesi - işaretlemek için bir talimata tıklayın.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sefer yok
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Yolculuk (otomatik; bir sonraki manuel emir tarafından zamanlanır)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Gezi (zamanlı değil)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} boyunca yol al
 STR_TIMETABLE_STAY_FOR                                          :{STRING} bekle

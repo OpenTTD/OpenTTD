@@ -303,12 +303,12 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Visa all
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Visa grafer
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Visa ledande företag
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Bekosta konstruktion av en ny industri eller lista alla industrier
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Visa lista över företagets tåg. Ctrl+Musklick döljer listan över grupper
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Visa lista över företagets vägfordon. Ctrl+Musklick döljer listan över grupper
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Visa lista över företagets skepp. Ctrl+Musklick döljer listan över grupper
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Visa lista över företagets flygplan. Ctrl+Musklick döljer listan över grupper
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zooma in
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zooma ut
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Visa lista över företagets tåg. Ctrl+klick döljer listan över grupper
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Visa lista över företagets vägfordon. Ctrl+klick döljer listan över grupper
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Visa lista över företagets skepp. Ctrl+klick döljer listan över grupper
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Visa lista över företagets flygplan. Ctrl+klick döljer listan över grupper
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zooma in vyn
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zooma ut vyn
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bygg järnväg
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bygg vägar
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bygg hamnar
@@ -842,9 +842,9 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vyfönster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiera till vy
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiera kartans position till detta Vyfönster
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiera huvudvyns position till detta vyfönster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Klistra in vyn
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Flytta kartans position till den här vyn
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Flytta huvudvyns position till positionen i det här vyfönstret
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spelinställningar
@@ -1376,7 +1376,7 @@ STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Kontroll
 STR_INTRO_AI_SETTINGS                                           :{BLACK}Inställningar för datorspelare
 STR_INTRO_QUIT                                                  :{BLACK}Avsluta
 
-STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starta ett nytt spel. Ctrl+Musklick hoppar över landskapskonfigurationen
+STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Starta ett nytt spel. Ctrl+klick hoppar över landskapskonfigurationen
 STR_INTRO_TOOLTIP_LOAD_GAME                                     :{BLACK}Ladda ett sparat spel
 STR_INTRO_TOOLTIP_PLAY_HEIGHTMAP                                :{BLACK}Starta ett nytt spel, och använd en höjdkarta som landskap
 STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}Starta nytt spel, som använder ett eget scenario
@@ -1919,7 +1919,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bygg jä
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bygg depå (för konstruktion eller service av tåg). Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ändra räls till riktmärke. Ctrl aktiverar sammanfogning av riktmärken. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bygg järnvägsstation. Ctrl aktiverar sammansättning av stationer. Shift växlar mellan att bygga/visa beräknad kostnad
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg järnvägssignaler. Ctrl växlar mellan semaforer/elektriska signaler{}Dra för att bygga signaler utmed en rak sträcka räls. Ctrl bygger signal till nästa korsning{}Ctrl+Musklick aktiverar öppning av signalväljningsfönstret. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Bygg järnvägssignaler. Ctrl växlar mellan semaforer/elektriska signaler{}Dra för att bygga signaler utmed en rak sträcka räls. Ctrl bygger signal till nästa korsning{}Ctrl+klick aktiverar öppning av signalväljningsfönstret. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bygg järnvägsbro. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Bygg järnvägstunnel. Shift växlar mellan att bygga/visa beräknad kostnad
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Växla mellan att bygga/ta bort järnväg, signaler, riktmärken och stationer. Håll nere Ctrl för att även ta bort räls från waypoints och stationer
@@ -2506,7 +2506,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Fordonl�
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ger felaktig information
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att den automatiska förnyelsen slår fel
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att utomatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en ändlös loop i en produktions-callback-funktion
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -2534,7 +2534,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Mata in 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städer
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Inga -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stadsnamn - klicka på ett namn för att centrera vyn på staden. Ctrl+Musklick öppnar en ny vy över stadens läge
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stadsnamn - klicka på ett namn för att centrera huvudvyn på staden. Ctrl+klick öppnar en ny vy över stadens läge
 STR_TOWN_POPULATION                                             :{BLACK}Global folkmängd: {COMMA}
 
 # Town view window
@@ -2548,7 +2548,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} krävs under vintern
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} levererat den senaste månaden
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Bullernivågräns i stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera vyn på staden. Ctrl+Musklick öppnar en ny vy över stadens läge
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera huvudvyn på staden. Ctrl+klick öppnar en ny vy över stadens läge
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Lokala myndigheter
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Visa information om de lokala myndigheterna
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Byt namn på staden
@@ -2594,10 +2594,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Inga -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Redan subventionerade rutter:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} från {STRING} till {STRING}{YELLOW} ({COMPANY}{YELLOW}, tills {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klicka för att centrera vyn ovanför industrin/staden. Ctrl+Musklick öppnar en ny vy över industrin/stadens läge
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klicka för att centrera huvudvyn ovanför industrin/staden. Ctrl+klick öppnar en ny vy över industrin/stadens läge
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamn - klicka på ett namn för att centrera vyn på stationen. Ctrl+Musklick öppnar en ny vy över stationens läge
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamn - klicka på ett namn för att centrera huvudvyn på stationen. Ctrl+klick öppnar en ny vy över stationens läge
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Håll nere Ctrl för att markera mer än en sak
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Station{P "" er}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2614,7 +2614,7 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO}
 STR_STATION_VIEW_EN_ROUTE_FROM                                  :{YELLOW}({SHORTCARGO} på väg från {STATION})
 
 STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Accepterar
-STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Visa lista över accepterat gods. Ctrl+Musklick döljer listan över grupper
+STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Visa lista över accepterat gods
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Accepterar: {WHITE}{STRING}
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Värderingar
@@ -2633,7 +2633,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Utmärkt
 STR_CARGO_RATING_OUTSTANDING                                    :Enastående
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrera vyn på stationen. Ctrl+Musklick öppnar en ny vy över stationens läge
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrera huvudvyn på stationen. Ctrl+klick öppnar en ny vy över stationens läge
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Byt namn på stationen
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Visa alla tåg där denna station finns med i rutten
@@ -2645,9 +2645,9 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Byt namn på st
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrera vyn på riktmärket. Ctrl+Musklick öppnar en ny vy över riktmärkets läge
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrera huvudvyn på riktmärket. Ctrl+klick öppnar en ny vy över riktmärkets läge
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Byt namn på riktmärke
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera vyn på bojen. Ctrl+Musklick öppnar en ny vy över bojens läge
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrera huvudvyn på bojen. Ctrl+klick öppnar en ny vy över bojens läge
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Ändra namn på boj
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ändra namn på riktmärke
@@ -2728,13 +2728,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Inga 
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transporterat)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporterat)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - klicka på namnet för att centrera vyn över industrin. Ctrl+Musklick öppnar en ny vy över industrins läge
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - klicka på namnet för att centrera huvudvyn över industrin. Ctrl+klick öppnar en ny vy över industrins läge
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produktion förra månaden:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transporterat)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrera vyn ovanför industrin. Ctrl+Musklick öppnar en ny vy över industrins läge
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrera huvudvyn ovanför industrin. Ctrl+klick öppnar en ny vy över industrins läge
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Produktionsnivå: {YELLOW}{COMMA}%
 
 ############ range for requires starts
@@ -2833,7 +2833,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vikt: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitet: {GOLD}{CARGO}, {CARGO}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserade vagnar: {GOLD}+{POWER}{BLACK} Vikt: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Upprustningsbar till: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Anpassningsbar till: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alla typer av last
 STR_PURCHASE_INFO_ALL_BUT                                       :Allt utom {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximal Dragkraft: {GOLD}{FORCE}
@@ -2917,14 +2917,14 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klona sk
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klona flygplan
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Köper en kopia av ett tåg inklusive alla vagnar. Tryck på den här knappen och sen på ett tåg i eller utanför depån. Ctrl+klick gör så att de delar order. Shift+klick visar kostnad utan att köpa
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Köper en kopia av ett fordon. Tryck på den här knappen och sen på ett vägfordon i eller utanför depån. Ctrl+musklick gör så att de delar order. Shift+klick visar kostnad utan att köpa
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Köper en kopia av ett skepp. Tryck på den här knappen och sedan på ett skepp i eller utanför depån. Ctrl+musklick gör så att de delar order. Shift+klick visar kostnad utan att köpa
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Köper en kopia av ett fordon. Tryck på den här knappen och sen på ett vägfordon i eller utanför depån. Ctrl+klick gör så att de delar order. Shift+klick visar kostnad utan att köpa
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Köper en kopia av ett skepp. Tryck på den här knappen och sedan på ett skepp i eller utanför depån. Ctrl+klick gör så att de delar order. Shift+klick visar kostnad utan att köpa
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Köper en kopia av ett flygplan. Tryck på den här knappen och sedan på ett flygplan i eller utanför hangaren. Ctrl+klick gör så att de delar order. Shift+klick visar kostnad utan att köpa
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrera vyn ovanför depån. Ctrl+Musklick öppnar en ny vy över depåns läge
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrera vyn ovanför bussgaraget. Ctrl+Musklick öppnar en ny vy över bussgaragets läge
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrera vyn ovanför skeppdepån. Ctrl+Musklick öppnar en ny vy över skeppdepåns läge
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrera vyn ovanför hangaren. Ctrl+Musklick öppnar en ny vy över hangarens läge
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrera huvudvyn ovanför depån. Ctrl+klick öppnar en ny vy över depåns läge
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrera huvudvyn ovanför bussgaraget. Ctrl+klick öppnar en ny vy över bussgaragets läge
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrera huvudvyn ovanför skeppdepån. Ctrl+klick öppnar en ny vy över skeppdepåns läge
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrera huvudvyn ovanför hangaren. Ctrl+klick öppnar en ny vy över hangarens läge
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Ge en lista av alla tåg som har denna depå i dess körschema
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Ge en lista av alla fordon som har denna depå i dess körschema
@@ -2993,12 +2993,12 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gör så
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrera vyn ovanför tåget. Ctrl+Musklick följer tåget i huvudvyn
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrera vyn ovanför fordonet. Ctrl+Musklick följer fordonet i huvudvyn
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrera vyn ovanför skeppet. Ctrl+Musklick följer skeppet i huvudvyn
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrera vyn ovanför flygplanet. Ctrl+Musklick följer flygplanet i huvudvyn
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrera huvudvyn ovanför tåget. Ctrl+klick följer tåget i huvudvyn
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrera huvudvyn ovanför fordonet. Ctrl+klick följer fordonet i huvudvyn
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrera huvudvyn ovanför skeppet. Ctrl+klick följer skeppet i huvudvyn
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrera huvudvyn ovanför flygplanet. Ctrl+klick följer flygplanet i huvudvyn
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Skicka tåg till depå
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Skicka tåg till depå. Ctrl+klick skickar tåget enbart på service
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Skicka fordon till depå. CTRL + klick servar endast
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Skicka skepp till depå. CTRL + klick servar endast
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Skicka flygplan till hangar. CTRL + klick servar endast
@@ -3018,17 +3018,17 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Anpassa 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Byt tågets riktning
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Tvinga fordonet att vända om
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Visa tågets order. Ctrl+Musklick visar tågets tidtabell
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Visa fordonets order. Ctrl+Musklick visar fordonets tidtabell
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Visa skeppets order. Ctrl+Musklick visar skeppets tidtabell.
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Visa flygplanets order. Ctrl+Musklick visar flygplanets tidtabell
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Visa tågets order. Ctrl+klick visar tågets tidtabell
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Visa fordonets order. Ctrl+klick visar fordonets tidtabell
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Visa skeppets order. Ctrl+klick visar skeppets tidtabell.
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Visa flygplanets order. Ctrl+klick visar flygplanets tidtabell
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Visa tågdetaljer
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Visa vägfordonsdetaljer
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Visa skeppdetaljer
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Visa flygplan detaljer
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktuell tåghandling - klicka här för att stoppa/starta tåg. Ctrl+Klick för att scrolla till destination.
+STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktuell tåghandling - klicka här för att stoppa/starta tåg. Ctrl+klick för att scrolla till destination.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Nuvarande fordonsaktivitet - Klicka här för att stoppa/starta fordon. Ctrl+Klick för att scrolla till destination.
 STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Nuvarande skeppshandling - Klicka här för att stoppa/starta skepp. Ctrl+Klick för att scrolla till destination
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Nuvarande flygplanshandling - Klicka här för att stoppa/starta flygplan. Ctr+klick för att scrolla till destinationen
@@ -3095,8 +3095,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK} Överf�
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Serviceintervall: {LTBLUE}{COMMA}dagar{BLACK}   Senaste service: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Serviceintervall: {LTBLUE}{COMMA}%{BLACK}   Senaste service: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Öka serviceintervall med 10. Ctrl+Musklick ökar serviceintervall med 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Minska serviceintervall med 10. Ctrl+Musklick minskar servinceintervall med 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Öka serviceintervall med 10. Ctrl+klick ökar serviceintervall med 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Minska serviceintervall med 10. Ctrl+klick minskar servinceintervall med 5
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Byt namn på tåg
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Byt namn på vägfordon
@@ -3131,6 +3131,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Välj godstyp att frakta:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Anpassningens kostnad: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Ny kapacitet: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kostnad för anpassning: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Välj vilka fordon som ska anpassas. Genom att dra med musen kan flera fordon väljas. Klicka på en tom yta för att välja hela fordonet. Ctrl+Klick på ett fordon kommer att välja hela resterande kedjan
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Välj godstyp för tåget att bära
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Välj lasttyp för fordon
@@ -3220,7 +3221,7 @@ STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Ta bort 
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Sluta dela
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Sluta dela orderlistan. Ctrl+Klick tar även bort alla order för det här fordonet
 
-STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Gå Till
+STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Åk Till
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Åk till närmsta depå
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Åk till närmsta hangar
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
@@ -3251,6 +3252,7 @@ STR_ORDER_STOP_ORDER                                            :(Stanna)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automatisk)
 
 STR_ORDER_FULL_LOAD                                             :(Full last)
 STR_ORDER_FULL_LOAD_ANY                                         :(Full last någon frakttyp)
@@ -3285,10 +3287,11 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Byt till
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tidtabell - klicka på en order för att markera den
 
 STR_TIMETABLE_NO_TRAVEL                                         :Ingen resa
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Avres (Inte tillagd i tidtabell)
-STR_TIMETABLE_TRAVEL_FOR                                        :Res till {STRING}
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Restid (automatisk; tidtabellen baseras på nästa manuella order)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Restid (inte angiven)
+STR_TIMETABLE_TRAVEL_FOR                                        :Res i {STRING}
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :och resa för {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :och res i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
 
@@ -3313,7 +3316,7 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Rensa ti
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Rensa räknaren för sen ankomst
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nollställ räknaren för sen ankomst så att fordonet kommer i tid
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofyll
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Fyll i automatiskt
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll i tidtabellen automatiskt med värden från nästa resa (Ctrl+klick för att försöka behålla väntetiderna)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Förväntat

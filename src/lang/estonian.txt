@@ -613,6 +613,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Täpsust
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Vaata lisainfot selle ettevõtte kohta
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Sõidukeid:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Jaamu:
@@ -1097,6 +1098,7 @@ STR_SEA_LEVEL_VERY_LOW                                          :Väga madal
 STR_SEA_LEVEL_LOW                                               :Madal
 STR_SEA_LEVEL_MEDIUM                                            :Keskmine
 STR_SEA_LEVEL_HIGH                                              :Kõrge
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Kohandatud ({NUM}%)
 
 STR_DISASTER_NONE                                               :Puudub
 STR_DISASTER_REDUCED                                            :Vähendatud
@@ -1194,6 +1196,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõiduki
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aegumatud lennuväljad: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Hoiata kui sõiduk on eksinud: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Sõidukite sihtpunktide ülevaade: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jah, kuid jäta välja seisatud veovahendid
@@ -1264,6 +1267,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lühike (31-12-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Mängu seiskamine alguses: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Lubatud seisaku ajal: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :mitte ükski toiming
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :kõik mitte-ehituslikud toimingud
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :kõik peale maastikku muutvate toimingute
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :kõik tõimingud
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Laiendatud sõidukinimekiri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Väljas
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Oma ettevõte
@@ -1351,6 +1359,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}Tööri
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :Vasakul
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :Keskel
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :Paremal
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Seisundiriba asukoht: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Vasakul
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Keskel
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Paremal
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Akna haaramisraadius: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Akna haaramisraadius: {ORANGE}välja lülitatud
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Aknapiirang (kinnistamata): {ORANGE}{STRING}
@@ -1736,6 +1748,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hangin m
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hangin ettevõtte infot...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i} sinu ees
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} allalaaditud
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} allalaaditud
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Katkesta
@@ -1807,6 +1820,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server o
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sinu sisenemine siia serverisse on keelatud
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sind visati mängust välja
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Selles serveris on petmine keelatud
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Sa saatsid serverile liiga palju käsklusi korraga
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :üldine viga
@@ -1826,6 +1840,7 @@ STR_NETWORK_ERROR_CLIENT_CHEATER                                :üritas pettust
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :server on täis
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Võimalik ühenduse katkemine
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -2108,7 +2123,13 @@ STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Maapinna
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Maa ostmine tulevaseks kasutamiseks
 
 # Object construction window
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekti valik
+STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objektiklass
+STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objekti eelvaade
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Suurus: {GOLD}{NUM} x {NUM} ruutu
 
+STR_OBJECT_CLASS_LTHS                                           :Majakad
+STR_OBJECT_CLASS_TRNS                                           :Saatejaamad
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Puud
@@ -2203,6 +2224,8 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Ehitatud: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Jaama liik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Jaama rühm: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Lennujaama liik: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Lennujaama nimi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lennujaama osa nimi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Vastuvõetavad veosed: {LTBLUE}
@@ -2434,6 +2457,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Otsi kas
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Faili nimi: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versioon: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. ühilduv versioon: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palett: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameetrid: {SILVER}{STRING}
@@ -2447,6 +2471,7 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sisesta 
 # NewGRF parameters window
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Muuda NewGRF parameetreid
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Sulge
+STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Nulli
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameeter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 
@@ -2498,6 +2523,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Vale tunnuse ka
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisaldab vigast pilti. Kõiki vigaseid pilte näidatakse punase küsimärgina (?).
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisaldab mitmeid Action 8 kirjeid
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Loeti pseudo-sprite'i lõpust kaugemale
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Hetkel kasutatavast alus graafikapaketist puuduvad mõned spraidid.{}Palun uuenda alus graafikapaketti
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Ettevaatust!
@@ -2535,6 +2561,8 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<vigane tööst
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide nimekiri - {COMMA} Silt{P "" i}
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Tühista filter
+STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Tühista teksti filter
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Sildi muutmine
@@ -2748,6 +2776,7 @@ STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTR
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Eelmise kuu valmistoodang:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% veetud)
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vaate keskendamine tööstusele
+STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Tootlikkuse tase: {YELLOW}{COMMA}%
 
 ############ range for requires starts
 STR_INDUSTRY_VIEW_REQUIRES_CARGO                                :{BLACK}Vajab: {YELLOW}{STRING}{STRING}
@@ -2763,6 +2792,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}Toodab: 
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Tootlikuse muutmine
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuda tootlikkuse taset (protsent, kuni 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} rong{P "" i}
@@ -3226,6 +3256,9 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Jäta pr
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Kustuta
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Kustuta valitud käsk
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Kustuta kõik käsud
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Lõpeta jagamine
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Peata käskude jagamine. Ctrl+klõps kustutab ka kõik sellele sõidukile antud käsud
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mine
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mine lähimasse depoosse
@@ -3256,6 +3289,8 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Seadista ümbe
 STR_ORDER_STOP_ORDER                                            :(Peatu)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
+STR_ORDER_AUTOMATIC                                             :(Automaatne)
 
 STR_ORDER_FULL_LOAD                                             :(Laaditakse täis)
 STR_ORDER_FULL_LOAD_ANY                                         :(Ühte kaupa laaditakse täis)
@@ -3673,6 +3708,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Sild on 
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Algus ja lõpp peavad samal joonel olema
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... mõlemad sillaotsad peavad olema maal
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}.. sild on liiga pik
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Sild lõpeks väljaspool kaarti
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Siia ei saa tunnelit ehitada...
