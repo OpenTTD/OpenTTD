@@ -195,7 +195,7 @@ uint Engine::GetDisplayDefaultCapacity(uint16 *mail_capacity) const
 			return GetEngineProperty(this->index, PROP_SHIP_CARGO_CAPACITY, this->u.ship.capacity);
 
 		case VEH_AIRCRAFT: {
-			uint capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_PASSENGER_CAPACITY, this->u.air.passenger_capacity);;
+			uint capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_PASSENGER_CAPACITY, this->u.air.passenger_capacity);
 			CargoID cargo = this->GetDefaultCargoType();
 			if (IsCargoInClass(cargo, CC_PASSENGERS)) {
 				if (mail_capacity != NULL) *mail_capacity = GetEngineProperty(this->index, PROP_AIRCRAFT_MAIL_CAPACITY, this->u.air.mail_capacity);

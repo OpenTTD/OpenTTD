@@ -150,7 +150,7 @@ public:
 			/* move to the next tile */
 			tile = F.m_new_tile;
 			trackdir = new_td;
-			if (tiles > MAX_MAP_SIZE) break;;
+			if (tiles > MAX_MAP_SIZE) break;
 		};
 
 		/* save end of segment back to the node */
