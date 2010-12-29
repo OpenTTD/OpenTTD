@@ -677,7 +677,7 @@ void RecomputePrices()
 	SetWindowClassesDirty(WC_BUILD_VEHICLE);
 	SetWindowClassesDirty(WC_REPLACE_VEHICLE);
 	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
-	SetWindowDirty(WC_PAYMENT_RATES, 0);
+	InvalidateWindowData(WC_PAYMENT_RATES, 0);
 }
 
 /** Let all companies pay the monthly interest on their loan. */
