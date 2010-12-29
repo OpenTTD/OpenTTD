@@ -2528,7 +2528,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Skriv in
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Byer
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ingen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bynavn - klikk på navnet for å gå til byen. CTRL+klikk åpner et nytt tilleggsvindu over byen
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bynavn - klikk på navnet for å gå til byen. Ctrl+klikk åpner et nytt tilleggsvindu over byen
 STR_TOWN_POPULATION                                             :{BLACK}Verdensbefolkning: {COMMA}
 
 # Town view window
@@ -2913,7 +2913,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kopier l
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil skape en kopi av et tog inkludert alle vognene. Klikk denne knappen og så på et hvilket som helst annet tog utenfor eller inni togstallen . CTRL+klikk vil sørge for delte ordre
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil skape en kopi av et kjøretøy. Klikk denne knappen og deretter på et hvilket som helst annet kjøretøy utenfor eller inni garasjen. CTRL+klikk vil sørge for delte ordre
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil skape en kopi av et skip. Klikk på denne knappen og så på et hvilket som helst annet skip utenfor eller inni skipsdokken. CTRL+klikk vil sørge for delte ordre
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil skape en kopi av et luftfartøy. Klikk denne knappen og så på hvilket som helst annet luftfartøy utenfor eller inni hangaren. CTRL+klikk vil sørge for delte ordre
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil skape en kopi av et luftfartøy. Klikk denne knappen og så på hvilket som helst annet luftfartøy utenfor eller inni hangaren. Ctrl+klikk vil sørge for delte ordre. Shift+klikk viser estimert kostnad.
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Gå til togstall. CTRL+klikk åpner et nytt tilleggsvindu over togstallen
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Gå til garasje. CTRL+klikk åpner et nytt tilleggsvindu over garasjen
@@ -2997,10 +2997,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send kj�
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Send skipet til en skipsdokk. CTRL+klikk for kun å utføre vedlikehold
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Send luftfartøyet til en hangar. CTRL+klikk for kun å utføre vedlikehold
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dette vil skape en kopi av toget, inkludert alle vognene. CTRL+klikk vil sørge for delte ordre
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Dette vil skape en kopi av toget, inkludert alle vognene. Ctrl+klikk vil sørge for delte ordre. Shift+klikk viser estimert kostnad.
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Dette vil skape en kopi av kjøretøyet. CTRL+klikk vil sørge for delte ordre
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil skape en kopi av skipet. CTRL+klikk vil sørge for delte ordre
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil skape en kopi av luftfartøyet. CTRL+klikk vil sørge for delte ordre
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Dette vil skape en kopi av skipet. CTRL+klikk vil sørge for delte ordre. Shift+klikk viser estimert kostnad.
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Dette vil skape en kopi av luftfartøyet. Ctrl+klikk vil sørge for delte ordre. Shift+klikk viser estimert kostnad.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Tving toget til å fortsette uten å vente på klarsignal
 
@@ -3240,6 +3240,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Bygg om til {S
 STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
 
 STR_ORDER_FULL_LOAD                                             :(Full last)
 STR_ORDER_FULL_LOAD_ANY                                         :(Full last av alle varetyper)

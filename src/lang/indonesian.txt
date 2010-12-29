@@ -1182,7 +1182,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Ijinkan
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Kotak pada ujung utara tidak kosong
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Kotak pada salah satu ujung peta bukanlah perairan
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Sebaran stasiun maks.: {ORANGE}{STRING} {RED}Peringatan: Makin tinggi, Makin lambat
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Sebaran stasiun maks.: {ORANGE}{STRING} kotak {RED}Peringatan: Makin tinggi, makin memperlambat permainan
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Perbaikan helikopter di helipad secara otomatis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tempel toolbar Landsekap ke toolbar rel/jalan/air/bandara: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Warna daratan pada peta kecil: {ORANGE}{STRING}
@@ -2101,10 +2101,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Kurangi 
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Buat wilayah secara acak
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Ciptakan Skenario baru
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Kembalikan lansekap seperti semula
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Buang semua kekayaan/kepimilikan para pemain dari peta
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Hapus semua kekayaan/kepemilikan pemain dari permainan
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Kembalikan lansekap seperti semula
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Apakah anda yakin untuk menghapus semua kekayaan para pemain ?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Apakah anda yakin untuk menghapus semua kekayaan para pemain?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Pertumbuhan Kota
@@ -2483,7 +2483,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Beberapa
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Peringatan!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda akan mengubah game yg sudah berjalan. Ini dapat menghentikan OpenTTD.{}Apakah anda yakin?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda akan mengubah game yg sudah berjalan. Ini dapat menghentikan OpenTTD. Jangan melaporkan kesalahan tentang hal ini. {}Apakah anda yakin?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Tidak dapat menambahkan: GRF ID sudah ada
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Berkas yang cocok tidak diketemukan (GRF kompatibel telah dimuat)
@@ -3131,6 +3131,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Pilih jenis kargo yang akan dibawa:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Kapasitas baru: {GOLD}{CARGO}{}{BLACK}Biaya ubah kargo: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Kapasitas baru: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Biaya modifikasi: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Pilih kendaraan yg akan dimodifikasi. Drag untuk memilih sekaligus beberapa kendaraan. Klik pada ruang kosong untuk memilih semua kendaraan. Ctrl+Klik untuk memilih kendaraan berikut rangkaiannya
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pilih jenis kargo yang akan dibawa kereta
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pilih jenis kargo truk yang akan dibawa
@@ -3152,7 +3153,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Jadwal
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Tampilkan daftar jadwal keberangkatan
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Daftar perintah - klik pada perintah untuk menandainya. CTRL + klik ke stasiun
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Daftar perintah - klik pada perintah untuk menandainya. CTRL + klik untuk mengunjungi tujuan
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3225,7 +3226,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Pergi ke depo t
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar terdekat
 STR_ORDER_CONDITIONAL                                           :Melompat ke perintah lain
 STR_ORDER_SHARE                                                 :Berbagi perintah
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Masukkan pemberhentian baru sebelum pemberhentian yang terpilih, atau tambahkan pada akhir daftar. Sambil menekan Ctrl, akan membuat : <1>pemberhentian ke stasiun menjadi 'muat penuh sembarang', <2> penunjuk jalan menjadi 'non-stop', dan <3> pemberhentian di bengkel/depo/galangan/hangar menjadi 'perbaikan'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Masukkan pemberhentian baru sebelum pemberhentian yang terpilih, atau tambahkan pada akhir daftar. Ctrl, akan membuat pemberhentian ke stasiun menjadi 'muat penuh sembarang', penunjuk jalan menjadi 'non-stop', dan pemberhentian di bengkel/depo/galangan/hangar menjadi 'perbaikan'. 'Berbagi Perintah' atau Ctrl akan membuat perintah berbagi dengan kendaraan yg terpilih. Klik pada kendaraan untuk menduplikat daftar perintah dari kendaraan tersebut
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Masukkan perintah berikutnya
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Tampilkan semua kendaraan yang mempunyai perintah bersama.
@@ -3250,6 +3251,8 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Pasang {STRING
 STR_ORDER_STOP_ORDER                                            :(Berhenti)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
+STR_ORDER_AUTOMATIC                                             :(Otomatis)
 
 STR_ORDER_FULL_LOAD                                             :(Penuhi Semua)
 STR_ORDER_FULL_LOAD_ANY                                         :(Penuhi salah satu)
@@ -3284,6 +3287,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Tampilka
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Daftar Jadwal Keberangkatan - Klik salah satu tujuan untuk memilihnya
 
 STR_TIMETABLE_NO_TRAVEL                                         :Tidak berjalan
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Perjalanan (otomatis; akan dijadwalkan pada perintah manual berikutnya)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Perjalanan belum terjadwal
 STR_TIMETABLE_TRAVEL_FOR                                        :Berjalan selama {STRING}
 STR_TIMETABLE_STAY_FOR                                          :dan tinggal selama {STRING}

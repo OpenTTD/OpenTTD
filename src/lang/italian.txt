@@ -2536,7 +2536,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Inserire
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Città
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nessuna -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomi delle città - fare clic su un nome per centrare la visuale sulla città. CTRL+clic la mostra in una mini visuale.
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomi delle città - fare clic su un nome per centrare la visuale principale sulla città. CTRL+clic la mostra in una mini visuale.
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
 
 # Town view window
@@ -2596,10 +2596,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Nessuno -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Servizi già sovvenzionati:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} da {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, fino al {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Fare clic su un servizio per centrare la visuale sull'industria o città. CTRL+clic mostra l'industria/città in una mini visuale.
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Fare clic su un servizio per centrare la visuale principale sull'industria o città. CTRL+clic mostra l'industria/città in una mini visuale.
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomi delle stazioni - fare clic su un nome per centrare la visuale sulla stazione. CTRL+clic la mostra in una mini visuale.
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomi delle stazioni - fare clic su un nome per centrare la visuale principale sulla stazione. CTRL+clic la mostra in una mini visuale.
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tenere premuto CTRL per selezionare più di un elemento
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} stazion{P 1 e i}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}

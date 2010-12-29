@@ -166,11 +166,11 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} penumpang{P "" s}
-STR_BAGS                                                        :{COMMA} beg
-STR_TONS                                                        :{COMMA} tan
-STR_LITERS                                                      :{COMMA} liter
-STR_ITEMS                                                       :{COMMA} barangan
-STR_CRATES                                                      :{COMMA} kotak
+STR_BAGS                                                        :{COMMA} beg{P "" s}
+STR_TONS                                                        :{COMMA} tan{P "" s}
+STR_LITERS                                                      :{COMMA} liter{P "" s}
+STR_ITEMS                                                       :{COMMA} barangan{P "" s}
+STR_CRATES                                                      :{COMMA} kotak{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Biru Gelap
@@ -836,7 +836,7 @@ STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tetingka
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Salin ke tetingkap pemandangan
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Salin lokasi pemandangan global kepada tetingkap pemandangan ini
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Tampal daripada tetingkap pemandangan
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Salin lokasi tetingkap pemandangan ini kepada pemandangan global
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Salin lokasi tetingkap pemandangan ini kepada pemandangan utama
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Pilihan Permainan
@@ -1218,10 +1218,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Alat bi
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Perbelanjaan kumpulan dalam tetingkap kewangan syarikat: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Paparkan alat binaan apabila tiada kenderaan yang sesuai: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks keretapi setiap pemain: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks kenderaan jalanraya setiap pemain: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks pesawat setiap pemain: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks kapal setiap pemain: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maks keretapi setiap syarikat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maks kenderaan jalanraya setiap syarikat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maks pesawat setiap syarikat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Maks kapal setiap syarikat: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Nafikan keretapi untuk komputer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Nafikan kenderaan jalanraya untuk komputer: {ORANGE}{STRING}
@@ -1462,8 +1462,8 @@ STR_FACE_LOAD                                                   :{BLACK}Buka
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Buka wajah kegemaran anda
 STR_FACE_LOAD_DONE                                              :{WHITE}Wajah kegemaran anda telah dimuat daripada fail config OpenTTD.
 STR_FACE_FACECODE                                               :{BLACK}Wajah pemain no.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Pandang dan/atau tetapkan nombor wajah pemain
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Pandang dan/atau tetapkan nombor wajah pemain
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Lihat dan/atau tetapkan nombor wajah presiden syarikat
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Lihat dan/atau tetapkan nombor wajah presiden
 STR_FACE_FACECODE_SET                                           :{WHITE}Kod baru nombor wajah telah ditetapkan.
 STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat menetapkan nombor wajah pemain - nombor mesti di antara 0 dan 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Simpan
@@ -2546,7 +2546,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik di atas servis untuk memusatkan pemandangan kepada industri/bandar. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi bandar
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama stesen - klik pada nama untuk memusatkan pemandangan di stesen. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi stesen
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nama stesen - klik pada nama untuk memusatkan pemandangan ke stesen. Ctrl+Klik membuka tetingkap pemandangan di lokasi stesen
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Tekan Ctrl untuk memilih lebih daripada satu butiran
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stesen
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2663,8 +2663,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Tukar na
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Beli 25% saham dalam syarikat ini
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Jual 25% saham dalam syarikat ini
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Beli 25% saham dalam syarikat ini
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25% saham dalam syarikat ini
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Beli 25% saham dalam syarikat ini. Shift+Klik menunjukkan anggaran kos tanpa membeli saham
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25% saham dalam syarikat ini. Shift+Klik menunjukkan anggaran kos tanpa menjual saham
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Syarikat
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pengurus
@@ -2677,7 +2677,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Tiada
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% dihantar)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% dihantar)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nama industri - klik pada nama untuk memusatkan pemandangan di industri. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi industri
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nama industri - klik pada nama untuk memusatkan pemandangan ke industri. Ctrl+Klik membuka tetingkap pemandangan di lokasi industri
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -2797,10 +2797,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Beli Ken
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Beli Kapal
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Beli Pesawat
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Beli gerabak keretapi yang terpilih
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Beli kenderaan jalanraya yang terpilih
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Beli kapal yang terpilih
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Beli pesawat yang terpilih
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Beli gerabak keretapi yang terpilih. Shift+Click menunjukkan anggaran kos tanpa membeli
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Beli kenderaan jalanraya yang terpilih. Shift+Click menunjukkan anggaran kos tanpa membeli
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Beli kapal yang terpilih. Shift+Click menunjukkan anggaran kos tanpa membeli
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Beli pesawat yang terpilih. Shift+Click menunjukkan anggaran kos tanpa membeli
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Namakan semula
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Namakan semula
@@ -2865,10 +2865,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonkan 
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonkan Kapal
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonkan Pesawat
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Perbuatan ini akan menyalin sebuah keretapi termasuk semua gerabaknya. Klik butang ini dan kemudian di keretapi di luar atau di dalam depoh. Ctrl+Klik untuk berkongsi arahan
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Perbuatan ini akan menyalin kenderaan jalanraya. Klik butang ini dan kemudian di kenderaan jalanraya di luar atau di dalam depoh. Ctrl+Klik untuk berkongsi arahan
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Perbuatan ini akan menyalin sebuah kapal. Klik butang ini dan kemudian di kapal di luar atau di dalam depoh. Ctrl+Klik untuk berkongsi arahan
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Perbuatan ini akan menyalin sebuah pesawat. Klik butang ini dan kemudian di pesawat di luar atau di dalam depoh. Ctrl+Klik untuk berkongsi arahan
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Perbuatan ini akan membeli salinan keretapi termasuk semua gerabaknya. Klik butang ini dan kemudian di keretapi di luar atau di dalam depoh. Ctrl+Klik untuk berkongsi arahan. Shift+Click menunjukkan anggaran kos tanpa membeli
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Perbuatan ini akan membeli salinan kenderaan jalanraya. Klik butang ini dan kemudian di kenderaan jalanraya di luar atau di dalam depot. Ctrl+Klik untuk berkongsi arahan. Shift+Click menunjukkan anggaran kos tanpa membeli
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Perbuatan ini akan membeli salinan kapal. Klik butang ini dan kemudian di kapal di luar atau di dalam depot. Ctrl+Klik untuk berkongsi arahan. Shift+Click menunjukkan anggaran kos tanpa membeli
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ini akan membeli salinan pesawat. Klik butang ini dan kemudian di pesawat di luar atau di dalam depot. Ctrl+Klik untuk berkongsi arahan. Shift+Click menunjukkan anggaran kos tanpa membeli
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Pusatkan pemandangan utama ke lokasi depoh keretapi. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi depoh keretapi
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Pusatkan pemandangan utama ke lokasi depoh kenderaan jalanraya. Ctrl+Klik untuk membuka tetingkap pemandangan di lokasi depoh kenderaan jalanraya
