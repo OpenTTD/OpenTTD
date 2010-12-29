@@ -216,15 +216,15 @@ CommandCost CmdAutofillTimetable(TileIndex tile, DoCommandFlag flags, uint32 p1,
 			ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
 			ClrBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
 		}
-	}
 
-	for (Vehicle *v2 = v->FirstShared(); v2 != NULL; v2 = v2->NextShared()) {
-		if (v2 != v) {
-			/* Stop autofilling; only one vehicle at a time can perform autofill */
-			ClrBit(v2->vehicle_flags, VF_AUTOFILL_TIMETABLE);
-			ClrBit(v2->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
+		for (Vehicle *v2 = v->FirstShared(); v2 != NULL; v2 = v2->NextShared()) {
+			if (v2 != v) {
+				/* Stop autofilling; only one vehicle at a time can perform autofill */
+				ClrBit(v2->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+				ClrBit(v2->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
+			}
+			SetWindowDirty(WC_VEHICLE_TIMETABLE, v2->index);
 		}
-		SetWindowDirty(WC_VEHICLE_TIMETABLE, v2->index);
 	}
 
 	return CommandCost();
