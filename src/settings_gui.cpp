@@ -1153,7 +1153,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, const SettingDesc *sd
 	if (sdb->cmd == SDT_BOOLX) {
 		static const Colours _bool_ctabs[2][2] = {{COLOUR_CREAM, COLOUR_RED}, {COLOUR_DARK_GREEN, COLOUR_GREEN}};
 		/* Draw checkbox for boolean-value either on/off */
-		bool on = (*(bool*)var);
+		bool on = (bool)ReadValue(var, sd->save.conv);
 
 		DrawFrameRect(buttons_left, button_y, buttons_left + 19, button_y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
 		SetDParam(0, on ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);

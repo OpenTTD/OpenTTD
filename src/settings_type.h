@@ -99,7 +99,7 @@ struct GUISettings {
 	bool   station_dragdrop;                 ///< whether drag and drop is enabled for stations
 	bool   station_show_coverage;            ///< whether to highlight coverage area
 	bool   persistent_buildingtools;         ///< keep the building tools active after usage
-	uint8  expenses_layout;                  ///< layout of expenses window
+	bool   expenses_layout;                  ///< layout of expenses window
 
 	uint16 console_backlog_timeout;          ///< the minimum amount of time items should be in the console backlog before they will be removed in ~3 seconds granularity.
 	uint16 console_backlog_length;           ///< the minimum amount of items in the console backlog before items will be removed.
