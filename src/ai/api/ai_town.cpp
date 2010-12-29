@@ -129,6 +129,13 @@
 	return ::HasBit(::Town::Get(town_id)->statues, _current_company);
 }
 
+/* static */ bool AITown::IsCity(TownID town_id)
+{
+	if (!IsValidTown(town_id)) return false;
+
+	return ::Town::Get(town_id)->larger_town;
+}
+
 /* static */ int AITown::GetRoadReworkDuration(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return -1;

@@ -7980,6 +7980,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   15508
     GetHouseCount(): 30
     GetRating():     0
+    IsCity():        true
   Town 1
     IsValidTown():   true
     GetName():       Trenningville
@@ -7987,6 +7988,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   46751
     GetHouseCount(): 17
     GetRating():     0
+    IsCity():        false
   Town 2
     IsValidTown():   true
     GetName():       Tonston
@@ -7994,6 +7996,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   28365
     GetHouseCount(): 19
     GetRating():     0
+    IsCity():        false
   Town 3
     IsValidTown():   true
     GetName():       Tunford
@@ -8001,6 +8004,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   41895
     GetHouseCount(): 11
     GetRating():     0
+    IsCity():        false
   Town 4
     IsValidTown():   true
     GetName():       Wruntown
@@ -8008,6 +8012,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   41450
     GetHouseCount(): 18
     GetRating():     0
+    IsCity():        true
   Town 5
     IsValidTown():   true
     GetName():       Fratston
@@ -8015,6 +8020,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   55007
     GetHouseCount(): 11
     GetRating():     0
+    IsCity():        false
   Town 6
     IsValidTown():   true
     GetName():       Muningville
@@ -8022,6 +8028,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   38200
     GetHouseCount(): 28
     GetRating():     0
+    IsCity():        false
   Town 7
     IsValidTown():   true
     GetName():       Hutford
@@ -8029,6 +8036,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   59234
     GetHouseCount(): 33
     GetRating():     0
+    IsCity():        false
   Town 8
     IsValidTown():   true
     GetName():       Satown
@@ -8036,6 +8044,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   51267
     GetHouseCount(): 20
     GetRating():     0
+    IsCity():        true
   Town 9
     IsValidTown():   true
     GetName():       Frindinghattan
@@ -8043,6 +8052,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   5825
     GetHouseCount(): 18
     GetRating():     0
+    IsCity():        false
   Town 10
     IsValidTown():   true
     GetName():       Nuntburg
@@ -8050,6 +8060,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   6446
     GetHouseCount(): 26
     GetRating():     6
+    IsCity():        false
   Town 11
     IsValidTown():   true
     GetName():       Fort Frindston
@@ -8057,6 +8068,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   14935
     GetHouseCount(): 13
     GetRating():     0
+    IsCity():        false
   Town 12
     IsValidTown():   true
     GetName():       Gintborough
@@ -8064,6 +8076,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   32740
     GetHouseCount(): 28
     GetRating():     0
+    IsCity():        true
   Town 13
     IsValidTown():   true
     GetName():       Great Hinninghall
@@ -8071,6 +8084,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   9595
     GetHouseCount(): 14
     GetRating():     0
+    IsCity():        false
   Town 14
     IsValidTown():   true
     GetName():       Prundinghall
@@ -8078,6 +8092,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   51298
     GetHouseCount(): 18
     GetRating():     0
+    IsCity():        false
   Town 15
     IsValidTown():   true
     GetName():       Beningville
@@ -8085,6 +8100,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   42338
     GetHouseCount(): 33
     GetRating():     6
+    IsCity():        false
   Town 16
     IsValidTown():   true
     GetName():       Kennville
@@ -8092,6 +8108,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   17345
     GetHouseCount(): 33
     GetRating():     0
+    IsCity():        true
   Town 17
     IsValidTown():   true
     GetName():       Quarfingfield
@@ -8099,6 +8116,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   24252
     GetHouseCount(): 13
     GetRating():     0
+    IsCity():        false
   Town 18
     IsValidTown():   true
     GetName():       Nefingbridge
@@ -8106,6 +8124,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   10574
     GetHouseCount(): 13
     GetRating():     0
+    IsCity():        false
   Town 19
     IsValidTown():   true
     GetName():       Mendston
@@ -8113,6 +8132,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   6511
     GetHouseCount(): 14
     GetRating():     0
+    IsCity():        false
   Town 20
     IsValidTown():   true
     GetName():       Chenfingbourne
@@ -8120,6 +8140,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   22585
     GetHouseCount(): 15
     GetRating():     6
+    IsCity():        true
   Town 21
     IsValidTown():   true
     GetName():       Franinghead
@@ -8127,6 +8148,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   9634
     GetHouseCount(): 27
     GetRating():     0
+    IsCity():        false
   Town 22
     IsValidTown():   true
     GetName():       Natborough
@@ -8134,6 +8156,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   51891
     GetHouseCount(): 12
     GetRating():     0
+    IsCity():        false
   Town 23
     IsValidTown():   true
     GetName():       Larborough
@@ -8141,6 +8164,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   59622
     GetHouseCount(): 27
     GetRating():     0
+    IsCity():        false
   Town 24
     IsValidTown():   true
     GetName():       Little Frutford
@@ -8148,6 +8172,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   19596
     GetHouseCount(): 34
     GetRating():     4
+    IsCity():        true
   Town 25
     IsValidTown():   true
     GetName():       Grinnway
@@ -8155,6 +8180,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   16433
     GetHouseCount(): 15
     GetRating():     0
+    IsCity():        false
   Town 26
     IsValidTown():   true
     GetName():       Beburg
@@ -8162,6 +8188,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   39505
     GetHouseCount(): 18
     GetRating():     0
+    IsCity():        false
   Town 27
     IsValidTown():   true
     GetName():       Fudhattan
@@ -8169,6 +8196,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetLocation():   45525
     GetHouseCount(): 19
     GetRating():     0
+    IsCity():        false
   Valid Towns:       28
   GetTownCount():    28
 

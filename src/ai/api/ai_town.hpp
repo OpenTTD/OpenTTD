@@ -227,6 +227,14 @@ public:
 	static bool HasStatue(TownID town_id);
 
 	/**
+	 * Find out if the town is a city.
+	 * @param town_id The town to check.
+	 * @pre IsValidTown(town_id).
+	 * @return True if the town is a city.
+	 */
+	static bool IsCity(TownID town_id);
+
+	/**
 	 * Find out how long the town is undergoing road reconstructions.
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).

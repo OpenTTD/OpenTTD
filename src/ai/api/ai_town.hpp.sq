@@ -71,6 +71,7 @@ void SQAITown_Register(Squirrel *engine)
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetDistanceSquareToTile,           "GetDistanceSquareToTile",           3, ".ii");
 	SQAITown.DefSQStaticMethod(engine, &AITown::IsWithinTownInfluence,             "IsWithinTownInfluence",             3, ".ii");
 	SQAITown.DefSQStaticMethod(engine, &AITown::HasStatue,                         "HasStatue",                         2, ".i");
+	SQAITown.DefSQStaticMethod(engine, &AITown::IsCity,                            "IsCity",                            2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetRoadReworkDuration,             "GetRoadReworkDuration",             2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetExclusiveRightsCompany,         "GetExclusiveRightsCompany",         2, ".i");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetExclusiveRightsDuration,        "GetExclusiveRightsDuration",        2, ".i");

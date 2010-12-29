@@ -1477,6 +1477,7 @@ function Regression::Town()
 		print("    GetLocation():   " + AITown.GetLocation(i));
 		print("    GetHouseCount(): " + AITown.GetHouseCount(i));
 		print("    GetRating():     " + AITown.GetRating(i, AICompany.COMPANY_SELF));
+		print("    IsCity():        " + AITown.IsCity(i));
 	}
 	print("  Valid Towns:       " + j);
 	print("  GetTownCount():    " + AITown.GetTownCount());
