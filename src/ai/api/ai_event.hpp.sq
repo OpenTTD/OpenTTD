@@ -52,6 +52,7 @@ void SQAIEvent_Register(Squirrel *engine)
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_STATION_FIRST_VEHICLE,       "AI_ET_STATION_FIRST_VEHICLE");
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_DISASTER_ZEPPELINER_CRASHED, "AI_ET_DISASTER_ZEPPELINER_CRASHED");
 	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_DISASTER_ZEPPELINER_CLEARED, "AI_ET_DISASTER_ZEPPELINER_CLEARED");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_TOWN_FOUNDED,                "AI_ET_TOWN_FOUNDED");
 
 	SQAIEvent.DefSQMethod(engine, &AIEvent::GetEventType, "GetEventType", 1, "x");
 

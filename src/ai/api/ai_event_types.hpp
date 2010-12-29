@@ -800,4 +800,37 @@ private:
 	StationID station;
 };
 
+/**
+ * Event Town Founded, indicating a new town has been created.
+ */
+class AIEventTownFounded : public AIEvent {
+public:
+	/** Get the name of this class to identify it towards squirrel. */
+	static const char *GetClassName() { return "AIEventTownFounded"; }
+
+	/**
+	 * @param town The town that was created.
+	 */
+	AIEventTownFounded(TownID town) :
+		AIEvent(AI_ET_TOWN_FOUNDED),
+		town(town)
+	{}
+
+	/**
+	 * Convert an AIEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static AIEventTownFounded *Convert(AIEvent *instance) { return (AIEventTownFounded *)instance; }
+
+	/**
+	 * Get the TownID of the town.
+	 * @return The TownID of the town that was created.
+	 */
+	TownID GetTownID() { return this->town; }
+
+private:
+	TownID town;
+};
+
 #endif /* AI_EVENT_TYPES_HPP */

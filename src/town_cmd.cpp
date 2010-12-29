@@ -47,6 +47,7 @@
 #include "depot_base.h"
 #include "object_map.h"
 #include "object_base.h"
+#include "ai/ai.hpp"
 
 #include "table/strings.h"
 #include "table/town_land.h"
@@ -1605,6 +1606,7 @@ CommandCost CmdFoundTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			SetDParam(1, t->index);
 
 			AddNewsItem(STR_NEWS_NEW_TOWN, NS_INDUSTRY_OPEN, NR_TILE, tile, NR_NONE, UINT32_MAX, cn);
+			AI::BroadcastNewEvent(new AIEventTownFounded(t->index));
 		}
 	}
 	return cost;
