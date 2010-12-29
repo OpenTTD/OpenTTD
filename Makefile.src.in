@@ -256,9 +256,9 @@ ifeq ($(OS), PSP)
 	# Because of a bug in the PSP GCC tools, linking via CXX results
 	#  in total chaos and more problems then you can handle. So we need
 	#  CC to link OpenTTD for PSP
-	$(Q)$(CC_HOST) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
+	$(Q)+$(CC_HOST) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
 else
-	$(Q)$(CXX_HOST) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
+	$(Q)+$(CXX_HOST) $(LDFLAGS) $(OBJS) $(LIBS) -o $@
 endif
 ifdef STRIP
 	$(Q)$(STRIP) $@
