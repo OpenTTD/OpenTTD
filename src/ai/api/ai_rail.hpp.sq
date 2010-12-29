@@ -79,6 +79,7 @@ void SQAIRail_Register(Squirrel *engine)
 	AIError::RegisterErrorMapString(AIRail::ERR_NONUNIFORM_STATIONS_DISABLED, "ERR_NONUNIFORM_STATIONS_DISABLED");
 	AIError::RegisterErrorMapString(AIRail::ERR_RAILTYPE_DISALLOWS_CROSSING,  "ERR_RAILTYPE_DISALLOWS_CROSSING");
 
+	SQAIRail.DefSQStaticMethod(engine, &AIRail::GetName,                         "GetName",                         2, ".i");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::IsRailTile,                      "IsRailTile",                      2, ".i");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::IsLevelCrossingTile,             "IsLevelCrossingTile",             2, ".i");
 	SQAIRail.DefSQStaticMethod(engine, &AIRail::IsRailDepotTile,                 "IsRailDepotTile",                 2, ".i");

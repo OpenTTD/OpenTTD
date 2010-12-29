@@ -7209,6 +7209,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   Count():             1
   ListDump:
     RailType:                0
+    GetName():               Railway construction
     IsRailTypeAvailable():   true
     GetMaxSpeed():           0
 

@@ -19,6 +19,18 @@
 #include "../../newgrf.h"
 #include "../../newgrf_generic.h"
 #include "../../newgrf_station.h"
+#include "../../strings_func.h"
+
+/* static */ char *AIRail::GetName(RailType rail_type)
+{
+	if (!IsRailTypeAvailable(rail_type)) return NULL;
+
+	static const int len = 64;
+	char *railtype_name = MallocT<char>(len);
+
+	::GetString(railtype_name, GetRailTypeInfo((::RailType)rail_type)->strings.menu_text, &railtype_name[len - 1]);
+	return railtype_name;
+}
 
 /* static */ bool AIRail::IsRailTile(TileIndex tile)
 {

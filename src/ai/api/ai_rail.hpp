@@ -97,6 +97,18 @@ public:
 	};
 
 	/**
+	 * Get the name of a rail type.
+	 * @param rail_type The rail type to get the name of.
+	 * @pre IsRailTypeAvailable(rail_type).
+	 * @return The name the rail type has.
+	 * @note Since there is no string with only the name of the track, the text which
+	 *  is shown in the dropdown where you can chose a track type is returned. This
+	 *  means that the name could be something like "Maglev construction" instead
+	 *  of just "Maglev".
+	 */
+	static char *GetName(RailType rail_type);
+
+	/**
 	 * Checks whether the given tile is actually a tile with rail that can be
 	 *  used to traverse a tile. This excludes rail depots but includes
 	 *  stations and waypoints.
