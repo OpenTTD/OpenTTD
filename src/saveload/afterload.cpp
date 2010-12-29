@@ -2011,7 +2011,7 @@ bool AfterLoadGame()
 				wp->train_station.tile = wp->xy;
 				wp->train_station.w = 1;
 				wp->train_station.h = 1;
-			} else {;
+			} else {
 				wp->train_station.tile = INVALID_TILE;
 				wp->train_station.w = 0;
 				wp->train_station.h = 0;
