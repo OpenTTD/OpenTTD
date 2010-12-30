@@ -3025,6 +3025,7 @@ STR_ORDER_STOP_ORDER                                            :(Stopio)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+
 STR_ORDER_FULL_LOAD                                             :(Llwyth llawn)
 STR_ORDER_FULL_LOAD_ANY                                         :(Llwyth llawn o unrhyw gargo)
 STR_ORDER_NO_LOAD                                               :(Dim llwytho)

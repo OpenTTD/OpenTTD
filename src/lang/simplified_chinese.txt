@@ -812,7 +812,7 @@ STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} 已经达到报废年限
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} 已经达到报废年限，必须马上更新！
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} 无法找到道路
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} 迷路了.
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} 无法找到路线.
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}去年的利润为 {CURRENCY}
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}适配调度计划失败，已终止 {VEHICLE}
@@ -1142,6 +1142,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}当有�
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}总允许建设小型机场： {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}当列车无法找到路线时提示: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}检查车辆的调度计划：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :不检查
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :检查 不包括停运的车辆
@@ -1856,7 +1857,7 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}已下�
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}无法链接到下载服务器...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}下载失败...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 丢失链接
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 链接丢失
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 文件无法写入
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法解压该扩展包
 
@@ -3103,6 +3104,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}运力�
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (改装)
 STR_REFIT_TITLE                                                 :{GOLD}选择要运输的货物类型：
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}新的装载能力：{GOLD}{CARGO}{}{BLACK}改装费用：{GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}请选择要改装的车辆. 拖动鼠标可多选.点击空白区域选择整辆列车. Ctrl+左键 选定该车厢及其之后车厢。
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}选择希望列车装载的货物类型
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}选择要运输的货物类型：
@@ -3188,6 +3190,7 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}跳过�
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}删除
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}删除高亮的调度命令
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}删除全部调度
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}前往
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的车库
@@ -3218,6 +3221,8 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(改装为{STRI
 STR_ORDER_STOP_ORDER                                            :(停留)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+
+STR_ORDER_AUTOMATIC                                             :(自动)
 
 STR_ORDER_FULL_LOAD                                             :（装满全部货物）
 STR_ORDER_FULL_LOAD_ANY                                         :（装满任意货物后离开）

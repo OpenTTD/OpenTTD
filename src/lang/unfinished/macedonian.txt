@@ -1272,6 +1272,7 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Прен
 
 
 
+
 # Time table window
 
 

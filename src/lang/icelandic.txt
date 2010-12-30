@@ -3225,6 +3225,7 @@ STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+
 STR_ORDER_FULL_LOAD                                             :(Fullhlaða)
 STR_ORDER_FULL_LOAD_ANY                                         :(Fullhlaða hvaða farmi sem er)
 STR_ORDER_NO_LOAD                                               :(Ekki hlaða)

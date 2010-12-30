@@ -3194,6 +3194,7 @@ STR_ORDER_STOP_ORDER                                            :(עצור)
 
 STR_ORDER_GO_TO_STATION                                         :{2:STRING} {1:STATION} {0:STRING}
 
+
 STR_ORDER_FULL_LOAD                                             :(העמס הכל)
 STR_ORDER_FULL_LOAD_ANY                                         :(העמס כל סוג מטען במלואו)
 STR_ORDER_NO_LOAD                                               :(אל תעמיס)

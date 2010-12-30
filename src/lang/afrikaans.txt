@@ -3119,6 +3119,7 @@ STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+
 STR_ORDER_FULL_LOAD                                             :(Vol laai)
 STR_ORDER_FULL_LOAD_ANY                                         :(Vol laai eenigge vrag)
 STR_ORDER_NO_LOAD                                               :(Geen op laai)

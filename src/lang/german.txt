@@ -3253,6 +3253,7 @@ STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+
 STR_ORDER_FULL_LOAD                                             :(Voll beladen)
 STR_ORDER_FULL_LOAD_ANY                                         :(Mit einer Fracht voll beladen)
 STR_ORDER_NO_LOAD                                               :(Nicht beladen)

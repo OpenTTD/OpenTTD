@@ -786,6 +786,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Biddel l-isem t
 
 
 
+
 # Time table window
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Skeda - agħfas fuq ordni biex tagħzilha.

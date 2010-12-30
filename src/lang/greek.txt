@@ -506,6 +506,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Εναλλαγή Κονσόλας
 STR_ABOUT_MENU_AI_DEBUG                                         :Αποσφαλμάτωση AI
 STR_ABOUT_MENU_SCREENSHOT                                       :Φωτογραφία Οθόνης
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Μεγένθυση στη φωτογραφία εικόνας
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Μεγάλη Φωτογραφία Οθόνης (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά με το 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής Sprite
@@ -1186,6 +1187,7 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επι�
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Επιτρέπεται η δημιουργία πολύ μακριών τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Κανένα
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Γνήσιο
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Ρεαλιστικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Μοντέλο επιτάχυνσης τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Αρχικό
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Ρεαλιστικό
@@ -2249,6 +2251,8 @@ STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Κάντ
 STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Κάντε κλικ στο εμπόρευμα για να δείτε τους προμηθεύτες και τους πελάτες
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Εμφάνιση αλυσίδας
 STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Εμφάνιση βιομηχανιών προμήθειας και αποδοχής εμπορευμάτων
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Σύνδεση με το μικροχάρτη
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Επιλογή των εμφανιζόμενων βιομηχανιών και στο μικροχάρτη
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Πληροφορίες Περιοχής Εδάφους
@@ -2516,6 +2520,7 @@ STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Κλεί
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Επαναφορά
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Ρύθμιση όλων των παραμέτρων στις προεπιλεγμένες τιμές
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Παράμετρος {NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Πλήθος παραμέτρων: {ORANGE}{NUM}
 
 # NewGRF inspect window
@@ -2604,6 +2609,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<μη έγκυ�
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Λίστα πινακίδων - {COMMA} Πινακίδ{P α ες}
+STR_SIGN_LIST_CLEAR                                             :{BLACK}Καθαρισμός φίλτρου
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Καθαρισμός κειμένου φίλτρου
 
 # Sign window
@@ -3341,6 +3347,7 @@ STR_ORDER_STOP_ORDER                                            :(Στάση)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Αυτόματο)
 
 STR_ORDER_FULL_LOAD                                             :(Πλήρης φόρτωση)
 STR_ORDER_FULL_LOAD_ANY                                         :(Πλήρης φόρτωση οποιουδήποτε εμπορεύματος)
@@ -3375,6 +3382,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Αλλα
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Δρομολόγια - κλικ σε μια εντολή για την τονίσετε.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Μη ταξιδέψεις
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ταξίδι (αυτόματα; με δρομολόγιο στην επόμενη μη αυτόματη εντολή)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ταξίδεψε (όχι μεσώ δρομολογίου)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ταξίδεψε για {STRING}
 STR_TIMETABLE_STAY_FOR                                          :και μείνε για {STRING}
@@ -3481,6 +3489,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Να μ�
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Παράμετροι AI
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Κλείσιμο
 STR_AI_SETTINGS_RESET                                           :{BLACK}Επαναφορά
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3768,6 +3777,7 @@ STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Το τ�
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Αδύνατο να γίνει εκσκαφή γης στην άλλη άκρη του τούνελ
 
 # Object related errors
+STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... πάρα πολλά αντικείμενα
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Δεν μπορεί να κτιστεί το αντικείμενο...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Αντικείμενο στη μέση
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... κεντρικά γραφεία εταιρίας στη μέση

@@ -1203,6 +1203,7 @@ STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Савӑ
 
 
 
+
 # Time table window
 
 

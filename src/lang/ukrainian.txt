@@ -3377,6 +3377,7 @@ STR_ORDER_STOP_ORDER                                            :(зупинит
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+
 STR_ORDER_FULL_LOAD                                             :(Завантажити все)
 STR_ORDER_FULL_LOAD_ANY                                         :(Повністю завантажити будь-який вид вантажу)
 STR_ORDER_NO_LOAD                                               :(Не завантажуватись)

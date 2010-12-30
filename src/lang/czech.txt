@@ -3346,6 +3346,7 @@ STR_ORDER_STOP_ORDER                                            :(Zastavit)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+
 STR_ORDER_FULL_LOAD                                             :(plně naložit)
 STR_ORDER_FULL_LOAD_ANY                                         :(plně naložit cokoli)
 STR_ORDER_NO_LOAD                                               :(nenakládat)

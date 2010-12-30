@@ -3053,6 +3053,7 @@ STR_ORDER_STOP_ORDER                                            :(Apstādināt)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+
 STR_ORDER_FULL_LOAD                                             :(Piekraut pilnu)
 STR_ORDER_FULL_LOAD_ANY                                         :(Piekraut pilnu ar jebkuru kravu)
 STR_ORDER_NO_LOAD                                               :(Bez iekraušanas)
