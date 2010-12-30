@@ -2008,6 +2008,17 @@ static HighLightStyle GetAutorailHT(int x, int y)
 }
 
 /**
+ * Reset tile highlighting.
+ */
+void TileHighlightData::Reset()
+{
+	this->pos.x = 0;
+	this->pos.y = 0;
+	this->new_pos.x = 0;
+	this->new_pos.y = 0;
+}
+
+/**
  * Is the user dragging a 'diagonal rectangle'?
  * @return User is dragging a rotated rectangle.
  */

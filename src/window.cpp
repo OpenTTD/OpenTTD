@@ -1366,10 +1366,7 @@ void ResetWindowSystem()
 {
 	UnInitWindowSystem();
 	InitWindowSystem();
-	_thd.pos.x = 0;
-	_thd.pos.y = 0;
-	_thd.new_pos.x = 0;
-	_thd.new_pos.y = 0;
+	_thd.Reset();
 }
 
 static void DecreaseWindowCounters()
