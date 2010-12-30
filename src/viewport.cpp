@@ -2146,7 +2146,7 @@ void UpdateTileSelection()
 static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_cond = TCC_LEFT_CLICK)
 {
 	if (!_settings_client.gui.measure_tooltip) return;
-	GuiShowTooltips(FindWindowById(_thd.window_class, _thd.window_number), str, paramcount, params, close_cond);
+	GuiShowTooltips(_thd.GetCallbackWnd(), str, paramcount, params, close_cond);
 }
 
 /** highlighting tiles while only going over them with the mouse */
@@ -2791,7 +2791,7 @@ EventState VpHandlePlaceSizingDrag()
 	if (_special_mouse_mode != WSM_SIZING) return ES_NOT_HANDLED;
 
 	/* stop drag mode if the window has been closed */
-	Window *w = FindWindowById(_thd.window_class, _thd.window_number);
+	Window *w = _thd.GetCallbackWnd();
 	if (w == NULL) {
 		ResetObjectToPlace();
 		return ES_HANDLED;
@@ -2834,7 +2834,7 @@ void SetObjectToPlace(CursorID icon, PaletteID pal, HighLightStyle mode, WindowC
 {
 	if (_thd.window_class != WC_INVALID) {
 		/* Undo clicking on button and drag & drop */
-		Window *w = FindWindowById(_thd.window_class, _thd.window_number);
+		Window *w = _thd.GetCallbackWnd();
 		/* Call the abort function, but set the window class to something
 		 * that will never be used to avoid infinite loops. Setting it to
 		 * the 'next' window class must not be done because recursion into

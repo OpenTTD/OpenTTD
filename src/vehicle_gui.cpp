@@ -2585,7 +2585,7 @@ bool VehicleClicked(const Vehicle *v)
 	v = v->First();
 	if (!v->IsPrimaryVehicle()) return false;
 
-	FindWindowById(_thd.window_class, _thd.window_number)->OnVehicleSelect(v);
+	_thd.GetCallbackWnd()->OnVehicleSelect(v);
 	return true;
 }
 
