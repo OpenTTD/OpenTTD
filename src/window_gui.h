@@ -821,8 +821,6 @@ enum SpecialMouseMode {
 };
 extern SpecialMouseMode _special_mouse_mode;
 
-Window *GetCallbackWnd();
-
 void SetFocusedWindow(Window *w);
 
 void ScrollbarClickHandler(Window *w, NWidgetCore *nw, int x, int y);

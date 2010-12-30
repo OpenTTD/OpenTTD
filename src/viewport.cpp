@@ -1871,7 +1871,7 @@ static void PlaceObject()
 	_tile_fract_coords.x = pt.x & TILE_UNIT_MASK;
 	_tile_fract_coords.y = pt.y & TILE_UNIT_MASK;
 
-	w = GetCallbackWnd();
+	w = _thd.GetCallbackWnd();
 	if (w != NULL) w->OnPlaceObject(pt, TileVirtXY(pt.x, pt.y));
 }
 
@@ -2015,6 +2015,17 @@ bool TileHighlightData::IsDraggingDiagonal()
 {
 	return (this->place_mode & HT_DIAGONAL) != 0 && _ctrl_pressed && _left_button_down;
 }
+
+/**
+ * Get the window that started the current highlighting.
+ * @return The window that requested the current tile highlighting, or \c NULL if not available.
+ */
+Window *TileHighlightData::GetCallbackWnd()
+{
+	return FindWindowById(this->window_class, this->window_number);
+}
+
+
 
 /**
  * Updates tile highlighting for all cases.

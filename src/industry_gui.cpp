@@ -482,7 +482,7 @@ public:
 
 					this->SetDirty();
 
-					if (GetCallbackWnd() == this &&
+					if (_thd.GetCallbackWnd() == this &&
 							((_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
 							this->selected_type == INVALID_INDUSTRYTYPE ||
 							!this->enabled[this->selected_index])) {

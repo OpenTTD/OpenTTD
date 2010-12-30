@@ -75,6 +75,7 @@ struct TileHighlightData {
 	ViewportDragDropSelectionProcess select_proc; ///< The procedure that has to be called when the selection is done.
 
 	bool IsDraggingDiagonal();
+	Window *GetCallbackWnd();
 };
 
 #endif /* TILEHIGHLIGHT_TYPE_H */

@@ -1400,16 +1400,11 @@ static void DecreaseWindowCounters()
 	}
 }
 
-Window *GetCallbackWnd()
-{
-	return FindWindowById(_thd.window_class, _thd.window_number);
-}
-
 static void HandlePlacePresize()
 {
 	if (_special_mouse_mode != WSM_PRESIZE) return;
 
-	Window *w = GetCallbackWnd();
+	Window *w = _thd.GetCallbackWnd();
 	if (w == NULL) return;
 
 	Point pt = GetTileBelowCursor();
@@ -1430,7 +1425,7 @@ static EventState HandleDragDrop()
 	if (_special_mouse_mode != WSM_DRAGDROP) return ES_NOT_HANDLED;
 	if (_left_button_down) return ES_HANDLED;
 
-	Window *w = GetCallbackWnd();
+	Window *w = _thd.GetCallbackWnd();
 
 	if (w != NULL) {
 		/* send an event in client coordinates. */
@@ -1454,7 +1449,7 @@ static EventState HandleMouseDrag()
 	if (_special_mouse_mode != WSM_DRAGDROP) return ES_NOT_HANDLED;
 	if (!_left_button_down || (_cursor.delta.x == 0 && _cursor.delta.y == 0)) return ES_NOT_HANDLED;
 
-	Window *w = GetCallbackWnd();
+	Window *w = _thd.GetCallbackWnd();
 
 	if (w != NULL) {
 		/* Send an event in client coordinates. */
