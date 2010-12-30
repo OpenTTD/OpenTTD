@@ -13,6 +13,7 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
+#include "network_admin.h"
 #include "network_client.h"
 #include "network_server.h"
 #include "network.h"
@@ -267,6 +268,7 @@ static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owne
 	CommandPacket *cp;
 	while (--to_go >= 0 && (cp = queue->Pop(true)) != NULL) {
 		DistributeCommandPacket(*cp, owner);
+		NetworkAdminCmdLogging(owner, cp);
 		free(cp);
 	}
 }

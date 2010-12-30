@@ -56,6 +56,8 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_CHAT,            ///< The server received a chat message and relays it.
 	ADMIN_PACKET_SERVER_RCON,            ///< The server's reply to a remove console command.
 	ADMIN_PACKET_SERVER_CONSOLE,         ///< The server gives the admin the data that got printed to its console.
+	ADMIN_PACKET_SERVER_CMD_NAMES,       ///< The server sends out the names of the DoCommands to the admins.
+	ADMIN_PACKET_SERVER_CMD_LOGGING,     ///< The server gives the admin copies of incoming command packets.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -76,6 +78,8 @@ enum AdminUpdateType {
 	ADMIN_UPDATE_COMPANY_STATS,   ///< Updates about the statistics of companies.
 	ADMIN_UPDATE_CHAT,            ///< The admin would like to have chat messages.
 	ADMIN_UPDATE_CONSOLE,         ///< The admin would like to have console messages.
+	ADMIN_UPDATE_CMD_NAMES,       ///< The admin would like a list of all DoCommand names.
+	ADMIN_UPDATE_CMD_LOGGING,     ///< The admin would like to have DoCommand information.
 	ADMIN_UPDATE_END              ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -339,6 +343,43 @@ protected:
 	 * string  Text as found on the console of the server.
 	 */
 	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CONSOLE);
+
+	/**
+	 * Send DoCommand names to the bot upon request only.
+	 * Multiple of these packets can follow each other in order to provide
+	 * all known DoCommand names.
+	 *
+	 * NOTICE: Data provided with this packet is not stable and will not be
+	 *         treated as such. Do not rely on IDs or names to be constant
+	 *         across different versions / revisions of OpenTTD.
+	 *         Data provided in this packet is for logging purposes only.
+	 *
+	 * These three fields are repeated until the packet is full:
+	 * bool    Data to follow.
+	 * uint16  ID of the DoCommand.
+	 * string  Name of DoCommand.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CMD_NAMES);
+
+	/**
+	 * Send incoming command packets to the admin network.
+	 * This is for logging purposes only.
+	 *
+	 * NOTICE: Data provided with this packet is not stable and will not be
+	 *         treated as such. Do not rely on IDs or names to be constant
+	 *         across different versions / revisions of OpenTTD.
+	 *         Data provided in this packet is for logging purposes only.
+	 *
+	 * uint32  ID of the client sending the command.
+	 * uint8   ID of the company (0..MAX_COMPANIES-1).
+	 * uint16  ID of the command.
+	 * uint32  P1 (variable data passed to the command).
+	 * uint32  P2 (variable data passed to the command).
+	 * uint32  Tile where this is taking place.
+	 * string  Text passed to the command.
+	 * uint32  Frame of execution.
+	 */
+	DECLARE_ADMIN_RECEIVE_COMMAND(ADMIN_PACKET_SERVER_CMD_LOGGING);
 
 	NetworkRecvStatus HandlePacket(Packet *p);
 public:

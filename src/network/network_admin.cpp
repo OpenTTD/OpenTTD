@@ -18,6 +18,8 @@
 #include "network_admin.h"
 #include "network.h"
 #include "network_base.h"
+#include "network_server.h"
+#include "../command_func.h"
 #include "../company_base.h"
 #include "../console_func.h"
 #include "../core/pool_func.hpp"
@@ -25,6 +27,7 @@
 #include "../rev.h"
 
 #include "table/strings.h"
+#include "network_client.h"
 
 /* This file handles all the admin network commands. */
 
@@ -50,6 +53,8 @@ static const AdminUpdateFrequency _admin_update_type_frequencies[] = {
 	ADMIN_FREQUENCY_POLL |                         ADMIN_FREQUENCY_WEEKLY | ADMIN_FREQUENCY_MONTHLY | ADMIN_FREQUENCY_QUARTERLY | ADMIN_FREQUENCY_ANUALLY, ///< ADMIN_UPDATE_COMPANY_STATS
 	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CHAT
 	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CONSOLE
+	ADMIN_FREQUENCY_POLL,                                                                                                                                  ///< ADMIN_UPDATE_CMD_NAMES
+	                       ADMIN_FREQUENCY_AUTOMATIC,                                                                                                      ///< ADMIN_UPDATE_CMD_LOGGING
 };
 assert_compile(lengthof(_admin_update_type_frequencies) == ADMIN_UPDATE_END);
 
@@ -448,6 +453,53 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(const char *origi
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdNames()
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_CMD_NAMES);
+
+	for (uint i = 0; i < CMD_END; i++) {
+		const char *cmdname = GetCommandName(i);
+
+		/* Should SEND_MTU be exceeded, start a new packet
+		 * (magic 5: 1 bool "more data" and one uint16 "command id", one
+    * byte for string '\0' termination and 1 bool "no more data" */
+		if (p->size + strlen(cmdname) + 5 >= SEND_MTU) {
+			p->Send_bool(false);
+			this->SendPacket(p);
+
+			p = new Packet(ADMIN_PACKET_SERVER_CMD_NAMES);
+		}
+
+		p->Send_bool(true);
+		p->Send_uint16(i);
+		p->Send_string(cmdname);
+	}
+
+	/* Marker to notify the end of the packet has been reached. */
+	p->Send_bool(false);
+	this->SendPacket(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdLogging(ClientID client_id, const CommandPacket *cp)
+{
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_CMD_LOGGING);
+
+	p->Send_uint32(client_id);
+	p->Send_uint8 (cp->company);
+	p->Send_uint16(cp->cmd & CMD_ID_MASK);
+	p->Send_uint32(cp->p1);
+	p->Send_uint32(cp->p2);
+	p->Send_uint32(cp->tile);
+	p->Send_string(cp->text);
+	p->Send_uint32(cp->frame);
+
+	this->SendPacket(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /***********
  * Receiving functions
  ************/
@@ -549,6 +601,11 @@ DEF_ADMIN_RECEIVE_COMMAND(Server, ADMIN_PACKET_ADMIN_POLL)
 		case ADMIN_UPDATE_COMPANY_STATS:
 			/* the admin is requesting company stats. */
 			this->SendCompanyStats();
+			break;
+
+		case ADMIN_UPDATE_CMD_NAMES:
+			/* The admin is requesting the names of DoCommands. */
+			this->SendCmdNames();
 			break;
 
 		default:
@@ -742,6 +799,23 @@ void NetworkAdminConsole(const char *origin, const char *string)
 	FOR_ALL_ADMIN_SOCKETS(as) {
 		if (as->update_frequency[ADMIN_UPDATE_CONSOLE] & ADMIN_FREQUENCY_AUTOMATIC) {
 			as->SendConsole(origin, string);
+		}
+	}
+}
+
+/**
+ * Distribute CommandPacket details over the admin network for logging purposes.
+ * @param owner The owner of the CommandPacket (who sent us the CommandPacket).
+ * @param cp    The CommandPacket to be distributed.
+ */
+void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket *cp)
+{
+	ClientID client_id = owner == NULL ? _network_own_client_id : owner->client_id;
+
+	ServerNetworkAdminSocketHandler *as;
+	FOR_ALL_ADMIN_SOCKETS(as) {
+		if (as->update_frequency[ADMIN_UPDATE_CMD_LOGGING] & ADMIN_FREQUENCY_AUTOMATIC) {
+			as->SendCmdLogging(client_id, cp);
 		}
 	}
 }

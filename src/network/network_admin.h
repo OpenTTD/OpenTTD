@@ -64,6 +64,8 @@ public:
 	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, const char *msg, int64 data);
 	NetworkRecvStatus SendRcon(uint16 colour, const char *command);
 	NetworkRecvStatus SendConsole(const char *origin, const char *command);
+	NetworkRecvStatus SendCmdNames();
+	NetworkRecvStatus SendCmdLogging(ClientID client_id, const CommandPacket *cp);
 
 	static void Send();
 	static void AcceptConnection(SOCKET s, const NetworkAddress &address);
@@ -95,6 +97,7 @@ void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_i
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
 void NetworkServerSendAdminRcon(AdminIndex admin_index, ConsoleColour colour_code, const char *string);
 void NetworkAdminConsole(const char *origin, const char *string);
+void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket *cp);
 
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_ADMIN_H */

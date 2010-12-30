@@ -113,6 +113,9 @@ Admin Network
     - ADMIN_PACKET_SERVER_CONSOLE
 
 
+  ADMIN_UPDATE_CMD_LOGGING results in the server sending:
+    - ADMIN_PACKET_SERVER_CMD_LOGGING
+
 3. Polling manually
 -------------------
 
@@ -122,6 +125,7 @@ Admin Network
     - ADMIN_UPDATE_COMPANY_INFO
     - ADMIN_UPDATE_COMPANY_ECONOMY
     - ADMIN_UPDATE_COMPANY_STATS
+    - ADMIN_UPDATE_CMD_NAMES
 
   ADMIN_UPDATE_CLIENT_INFO and ADMIN_UPDATE_COMPANY_INFO accept an additional
   parameter. This parameter is used to specify a certain client or company.
@@ -202,4 +206,9 @@ Admin Network
     a CLIENT_JOIN / COMPANY_NEW packet without having received the INFO packet
     it may be a good idea to POLL for the specific ID.
 
+  ADMIN_PACKET_SERVER_CMD_NAMES and ADMIN_PACKET_SERVER_CMD_LOGGING
+    Data provided with these packets is not stable and will not be
+    treated as such. Do not rely on IDs or names to be constant
+    across different versions / revisions of OpenTTD.
+    Data provided in this packet is for logging purposes only.
 
