@@ -1747,9 +1747,10 @@ void Vehicle::BeginLoading()
 		current_order.MakeLoading(true);
 		UpdateVehicleTimetable(this, true);
 
-		for (Order *order = this->GetOrder(this->cur_order_index);
-				order != NULL && order->IsType(OT_AUTOMATIC);
-				order = order->next) {
+		const Order *order = this->GetOrder(this->cur_order_index);
+		while (order != NULL && order->IsType(OT_AUTOMATIC)) {
+			/* Delete order effectively deletes order, so get the next before deleting it. */
+			order = order->next;
 			DeleteOrder(this, this->cur_order_index);
 		}
 
