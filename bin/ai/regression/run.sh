@@ -25,7 +25,7 @@ fi
 if [ -n "$gdb" ]; then
 	$gdb ./openttd -x -c ai/regression/regression.cfg $params -g ai/regression/regression.sav
 else
-	./openttd -x -c ai/regression/regression.cfg $params -g ai/regression/regression.sav -d ai=2 2>&1 | awk '{ gsub("0x(\\(nil\\)|0+)", "0x00000000", $0); gsub("^dbg: \\[ai\\]", "", $0); gsub("^ ", "ERROR: ", $0); gsub("ERROR: \\[1\\] ", "", $0); gsub("\\[P\\] ", "", $0); print $0; }' > tmp.regression
+	./openttd -x -c ai/regression/regression.cfg $params -g ai/regression/regression.sav -d ai=2 2>&1 | awk '{ gsub("0x(\\(nil\\)|0+)(x0)?", "0x00000000", $0); gsub("^dbg: \\[ai\\]", "", $0); gsub("^ ", "ERROR: ", $0); gsub("ERROR: \\[1\\] ", "", $0); gsub("\\[P\\] ", "", $0); print $0; }' > tmp.regression
 fi
 
 if [ -z "$gdb" ]; then
