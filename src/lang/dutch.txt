@@ -1881,15 +1881,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon gedo
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Doorzichtigheidsopties
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Schakel transparantie voor stationsnamen aan/uit. Ctrl+Klik om vast te zetten
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Schakel transparantie voor bomen aan/uit. Ctrl+Klik om vast te zetten
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Schakel transparantie voor huizen aan/uit. Ctrl+Klik om vast te zetten
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Schakel transparantie voor industrieën aan/uit. Ctrl+Klik om vast te zetten
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Schakel transparantie voor gebouwen zoals stations, depots en controleposten aan/uit. Ctrl+Klik om vast te zetten
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Schakel transparantie voor bruggen aan/uit. Ctrl+Klik om vast te zetten
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Schakel transparantie voor gebouwen zoals vuurtorens en antennes aan/uit. Ctrl+Klik om vast te zetten
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Schakel transparantie voor stationsnamen aan/uit. Ctrl+klik om vast te zetten
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Schakel transparantie voor bomen aan/uit. Ctrl+klik om vast te zetten
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Schakel transparantie voor huizen aan/uit. Ctrl+klik om vast te zetten
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Schakel transparantie voor industrieën aan/uit. Ctrl+klik om vast te zetten
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Schakel transparantie voor gebouwen zoals stations, depots en controleposten aan/uit. Ctrl+klik om vast te zetten
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Schakel transparantie voor bruggen aan/uit. Ctrl+klik om vast te zetten
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Schakel transparantie voor gebouwen zoals vuurtorens en antennes aan/uit. Ctrl+klik om vast te zetten
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Schakel transparantie voor bovenleiding aan/uit. Ctrl+klik voor onthouden
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Schakel transparantie voor laadindicatoren aan/uit. Ctrl+Klik om vast te zetten
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Schakel transparantie voor laadindicatoren aan/uit. Ctrl+klik om vast te zetten
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Maak objecten onzichtbaar in plaats van transparant
 
 # Base for station construction window(s)
@@ -1919,7 +1919,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bouw spo
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bouw treindepot (om treinen te kopen en te onderhouden). Shift schakelt tussen bouwen/inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Bouw spoor om naar controlepost. Houd Ctrl ingedrukt om samen te voegen met andere controlepost. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bouw treinstation. Houd Ctrl ingedrukt om samen te voegen met ander station. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plaats seinen. Ctrl wisselt tussen armseinen en lichtseinen{}Slepen plaatst seinen langs een recht stuk spoor. Ctrl bouwt seinen tot de volgende wissel{}Ctrl+Klik schakelt het openen van het keuzescherm voor seinen aan/uit. Shift schakelt tussen bouwen/inschatting van de kosten
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plaats seinen. Ctrl wisselt tussen armseinen en lichtseinen{}Slepen plaatst seinen langs een recht stuk spoor. Ctrl bouwt seinen tot de volgende wissel{}Ctrl+klik schakelt het openen van het keuzescherm voor seinen aan/uit. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bouw spoorbrug. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Graaf spoortunnel. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Kies tussen bouwen en verwijderen van sporen, seinen, controleposten en stations. Houd Ctrl ingedrukt om ook het spoor van controleposten en stations te verwijderen
@@ -2535,7 +2535,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Geef een
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Steden
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE} Geen
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het scherm te centreren op de stad. Ctrl+Klik opent een nieuw kijkvenster op de locatie van de stad
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het scherm te centreren op de stad. Ctrl+klik opent een nieuw kijkvenster op de locatie van de stad
 STR_TOWN_POPULATION                                             :{BLACK}Wereldbevolking: {COMMA}
 
 # Town view window
@@ -2549,7 +2549,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} noodzakelijk in de winter
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} afgelopen maand afgeleverd
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geluidslimiet in stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van de stad. Ctrl+Klik opent een nieuw kijkvenster op de locatie van de stad
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van de stad. Ctrl+klik opent een nieuw kijkvenster op de locatie van de stad
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeente
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Geef informatie over de gemeente weer
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Hernoem plaats
@@ -2595,10 +2595,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE} Geen
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Bestaande subsidies:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} van {STRING} naar {STRING}{YELLOW} ({COMPANY}{YELLOW}, tot {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik op de dienst om het dorp/industrie te centreren. Ctrl+Klik opent een nieuw venster op de locatie van het dorp/industrie
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik op de dienst om het dorp/industrie te centreren. Ctrl+klik opent een nieuw venster op de locatie van het dorp/industrie
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - klik op naam om het scherm te centreren op het station. Ctrl+Klik opent een nieuw venster op de locatie van het station
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - klik op naam om het scherm te centreren op het station. Ctrl+klik opent een nieuw venster op de locatie van het station
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Houd Ctrl ingedrukt om meer items te kiezen
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stations
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2634,7 +2634,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Geweldig
 STR_CARGO_RATING_OUTSTANDING                                    :Uitstekend
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centreer het scherm op de locatie van het station. Ctrl+Klik opent een nieuw venster op de locatie van het station
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centreer het scherm op de locatie van het station. Ctrl+klik opent een nieuw venster op de locatie van het station
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Hernoem station
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Geef alle treinen weer die dit station in hun opdrachtenlijst hebben
@@ -2646,9 +2646,9 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Hernoem station
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centreer scherm op de locatie van de controlepost. Ctrl+Klik opent een nieuw venster op de locatie van de controlepost
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centreer scherm op de locatie van de controlepost. Ctrl+klik opent een nieuw venster op de locatie van de controlepost
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Verander naam controlepost
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer hoofdscherm op boeilocatie. Ctrl+Klik opent een nieuw venster op de locatie van de boei
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer hoofdscherm op boeilocatie. Ctrl+klik opent een nieuw venster op de locatie van de boei
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Verander naam boei
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Naam controlepost aanpassen
@@ -2678,9 +2678,9 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lening
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Max lening: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Leen {CURRENCY}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vergroot lening. Ctrl+Klik om zoveel als mogelijk te lenen
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vergroot lening. Ctrl+klik om zoveel als mogelijk te lenen
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betaal {CURRENCY} terug
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betaal deel van lening terug. Ctrl+Klik om zoveel als mogelijk terug te betalen
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betaal deel van lening terug. Ctrl+klik om zoveel als mogelijk terug te betalen
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -2729,13 +2729,13 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE} Geen
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% vervoerd)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% vervoerd)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - klik op naam om scherm te centreren op industrie. Ctrl+Klik opent een nieuw venster op de locatie van de industrie
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - klik op naam om scherm te centreren op industrie. Ctrl+klik opent een nieuw venster op de locatie van de industrie
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Productie vorige maand:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% getransporteerd)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centreer het scherm op de locatie van de industrie. Ctrl+Klik opent een nieuws venster op de locatie van de industrie
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centreer het scherm op de locatie van de industrie. Ctrl+klik opent een nieuws venster op de locatie van de industrie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Productieniveau: {YELLOW}{COMMA}%
 
 ############ range for requires starts
@@ -3132,7 +3132,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Selecteer goederentype om te vervoeren:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Kosten van ombouwen: {GOLD}{CURRENCY}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Kies het voertuig om om te bouwen. Slepen met de muis geeft de mogelijkheid om meerdere voertuigen te selecteren. Klikken op een lege ruimte selecteerd het hele voertuig. Ctrl+Klik selecteerd a voertuig en de volgende keten
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Kies het voertuig om om te bouwen. Slepen met de muis geeft de mogelijkheid om meerdere voertuigen te selecteren. Klikken op een lege ruimte selecteerd het hele voertuig. Ctrl+klik selecteerd a voertuig en de volgende keten
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Kies goederentype dat deze trein moet vervoeren
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Selecteer goederentype dat dit wegvoertuig moet vervoeren
@@ -3220,7 +3220,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Verwijde
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Verwijder de geselecteerde order
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Verwijder alle orders
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stop met delen
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop met delen van de order lijst. Ctrl+Klik verwijderd verder ook alle order van dit voertuig
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Stop met delen van de order lijst. Ctrl+klik verwijderd verder ook alle order van dit voertuig
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Ga naar
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtstbijzijnde depot
