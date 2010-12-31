@@ -1535,8 +1535,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Pojazdy
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autoodnawianie pojazdów gdy stają się stare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoodnowienie następuje {ORANGE}{STRING}{LTBLUE} miesięcy przed/po maks. wieku
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Min. ilość pieniędzy potrzebna do autoodnowienia: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o błędzie: {ORANGE}{STRING} sekund{P a y ""}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Opóźnienie dla akcji przy najechaniu: {ORANGE}{STRING} sekund{P 0:1 a ""}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o błędzie: {ORANGE}{STRING} sekund{P 0:1 a y ""}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Opóźnienie dla akcji przy najechaniu: {ORANGE}{STRING} sekund{P 0:1 a y ""}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Opóźnienie dla akcji przy najechaniu: {ORANGE}wyłączone
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Pokaż populację miasta w jego nazwie: {ORANGE}{STRING}
 
