@@ -50,7 +50,7 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    3, "", CF_NOEURO, "",             NBSP"TL",        1, STR_GAME_OPTIONS_CURRENCY_TRY    }, ///< turkish lira
 	{   52, "", 2009,      "",             NBSP"Sk",        1, STR_GAME_OPTIONS_CURRENCY_SKK    }, ///< slovak koruna
 	{    4, "", CF_NOEURO, "R$"NBSP,       "",              0, STR_GAME_OPTIONS_CURRENCY_BRL    }, ///< brazil real
-	{   20, "", CF_NOEURO, "",             NBSP"EEK",       1, STR_GAME_OPTIONS_CURRENCY_EEK    }, ///< estonian krooni
+	{   20, "", 2011,      "",             NBSP"EEK",       1, STR_GAME_OPTIONS_CURRENCY_EEK    }, ///< estonian krooni
 	{    1, "", CF_NOEURO, "",             "",              2, STR_GAME_OPTIONS_CURRENCY_CUSTOM }, ///< custom currency
 };
 
