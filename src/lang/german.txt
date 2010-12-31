@@ -1975,6 +1975,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Eisenbah
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Straßenbrücke wählen
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brückenauswahl - Auf die gewünschte Brücke klicken, um sie zu bauen
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Stahlhängebrücke
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Stahlträgerbrücke
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Auslegerbrücke (Stahl)
@@ -3253,6 +3254,7 @@ STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automatisch)
 
 STR_ORDER_FULL_LOAD                                             :(Voll beladen)
 STR_ORDER_FULL_LOAD_ANY                                         :(Mit einer Fracht voll beladen)
@@ -3287,6 +3289,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Zur Auft
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan - Einträge anklicken, um sie zu markieren
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nicht unterwegs
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Unterwegs (automatisch; Fahrplan abhängig vom nächsten manuellen Auftrag)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Unterwegs (ohne Fahrplan)
 STR_TIMETABLE_TRAVEL_FOR                                        :Unterwegs für {STRING}
 STR_TIMETABLE_STAY_FOR                                          :und {STRING} lang bleiben

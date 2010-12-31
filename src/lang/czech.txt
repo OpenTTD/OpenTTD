@@ -2056,6 +2056,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Zvolit �
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Zvolit silniční most
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Výběr mostů - staví se kliknutím na obrázek mostu
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Zavěšený, ocelový
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Trámový, ocelový
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konzolový, ocelový
@@ -3346,6 +3347,7 @@ STR_ORDER_STOP_ORDER                                            :(Zastavit)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(automatický)
 
 STR_ORDER_FULL_LOAD                                             :(plně naložit)
 STR_ORDER_FULL_LOAD_ANY                                         :(plně naložit cokoli)
@@ -3380,6 +3382,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Přepnou
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní řád - příkaz vybereš kliknutím
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nikam nejet
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Jet do (automatický; jizdní řád podle následujícího ručního příkazu)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
 STR_TIMETABLE_TRAVEL_FOR                                        :Jet do {STRING}
 STR_TIMETABLE_STAY_FOR                                          :a zůstat {STRING}

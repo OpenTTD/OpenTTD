@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Click v�
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Bật kích cỡ cửa sổ lớn/nhỏ
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cuộn lên/xuống
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Thanh cuộn sang trái/phải
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Phá hủy công trình etc. trên một ô đất
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Phá hủy các tòa nhà v.v... trên 1 lô đất. Ctrl để chọn vùng theo đường chéo. Shift để chọn hiển thị chi phí xây dựng/phá hủy
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Mặc định
@@ -1973,6 +1973,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Chọn L
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Chọn Loại Cầu Đường Bộ
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Chọn cầu - chọn loại cầu bạn muốn xây dựng
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Cầu treo thép
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Cầu dầm thép
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cầu dầm chìa thép
@@ -3246,6 +3247,7 @@ STR_ORDER_STOP_ORDER                                            :(Dừng)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Tự động)
 
 STR_ORDER_FULL_LOAD                                             :(Bốc đầy hàng)
 STR_ORDER_FULL_LOAD_ANY                                         :(Bốc đủ bất kỳ hàng nào)

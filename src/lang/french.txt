@@ -1975,6 +1975,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Choisir 
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Choisir Pont Routier
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sélection de pont - cliquer sur le type de pont désiré pour le construire
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspendu en acier
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :À poutres en Acier
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Porte-à-faux en acier

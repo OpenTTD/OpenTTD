@@ -1974,6 +1974,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Valitse 
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Valitse maantiesilta
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Sillan valinta - napsauta valittua siltaa rakentaaksesi sen.
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Riippusilta, terästä
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Palkki, terästä
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Ulokepalkki, terästä
@@ -2534,7 +2535,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Syötä 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Kaupungit
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ei mitään -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Kaupunkien nimet - nimen klikkaaminen keskittää näkymän kaupunkiin. Ctrl+Klik avaa uuden näkymäikkunan kaupungin sijaintiin
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Kaupunkien nimet - nimen klikkaaminen keskittää päänäkymän kaupunkiin. Ctrl+Klik avaa uuden näkymäikkunan kaupungin sijaintiin
 STR_TOWN_POPULATION                                             :{BLACK}Maailman asukasluku: {COMMA}
 
 # Town view window
@@ -2594,10 +2595,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ei mitään -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Käytetyt tuet:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} välille {STRING}-{STRING}{YELLOW} ({COMPANY}{YELLOW}, {DATE_SHORT} asti)
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Napsauta palvelua keskittääksesi näkymän teollisuuteen/kaupunkiin. Ctrl+Klik avaa uuden näkymäikkunan teollisuuden/kaupungin sijaintiin
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Napsauta palvelua keskittääksesi päänäkymän teollisuuteen/kaupunkiin. Ctrl+Klik avaa uuden näkymäikkunan teollisuuden/kaupungin sijaintiin
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Asemien nimet - napsauta nimeä keskittääksesi näkymän asemaan. Ctrl+Klik avaa uuden näkymäikkunan aseman sijaintiin
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Asemien nimet - napsauta nimeä keskittääksesi päänäkymän asemaan. Ctrl+Klik avaa uuden näkymäikkunan aseman sijaintiin
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Pidä Ctrl-näppäin painettuna valitaksesi useamman kuin yhden vaihtoehdon
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} asema{P "" a}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2728,7 +2729,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ei mi
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% kuljetettu)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% kuljetettu)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Teollisuusmuotojen nimet - klikkaa nimeä kohdistaaksesi näkymän teollisuuslaitokseen. Ctrl+Klik avaa uuden näkymäikkunan teollisuuslaitoksen sijaintiin
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Teollisuusmuotojen nimet - klikkaa nimeä kohdistaaksesi päänäkymän teollisuuslaitokseen. Ctrl+Klik avaa uuden näkymäikkunan teollisuuslaitoksen sijaintiin
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

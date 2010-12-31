@@ -1490,7 +1490,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Eenvoudi
 STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Eenvoudige gezichtskeuze
 STR_FACE_LOAD                                                   :{BLACK}Laden
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Laad favoriet gezicht
-STR_FACE_LOAD_DONE                                              :{WHITE}Je favoriete gezicht is geladen uit het OpenTTD-configuratiebestand.
+STR_FACE_LOAD_DONE                                              :{WHITE}Je favoriete gezicht is geladen uit het OpenTTD-configuratiebestand
 STR_FACE_FACECODE                                               :{BLACK}Gezichtsnummer
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Bekijk en/of bewaar gezichtsnummer van de bedrijfspresident
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Bekijk en/of bewaar huidig gezichtsnummer
@@ -1498,7 +1498,7 @@ STR_FACE_FACECODE_SET                                           :{WHITE}Nieuwe g
 STR_FACE_FACECODE_ERR                                           :{WHITE}Kon gezichtsnummer niet bewaren - het moet een getal zijn tussen 0 en 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Opslaan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Sla favoriet gezicht op
-STR_FACE_SAVE_DONE                                              :{WHITE}Dit gezicht wordt zal worden opgeslagen als jouw favoriet in het OpenTTD-configuratiebestand.
+STR_FACE_SAVE_DONE                                              :{WHITE}Dit gezicht wordt zal worden opgeslagen als jouw favoriet in het OpenTTD-configuratiebestand
 STR_FACE_EUROPEAN                                               :{BLACK}Europeaans
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Selecteer Europeaanse gezichten
 STR_FACE_AFRICAN                                                :{BLACK}Afrikaans
@@ -1601,7 +1601,7 @@ STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (adverteren)
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} speler{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximaal aantal spelers:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies een maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden.
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies het maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} bedr{P ijf ijven}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Max bedrijven:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Beperk de server tot een bepaald aantal bedrijven
@@ -1609,7 +1609,7 @@ STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} to
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max toeschouwers:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Beperk de server tot een bepaald aantal toeschouwers
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Gesproken taal:
-STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server.
+STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start spel
 STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of geselecteerd scenario
@@ -1662,7 +1662,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Lets
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Multiplayerlobby
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Klaar om deel te nemen: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Een lijst met alle bedrijven die momenteel in dit spel bestaan. Je kan meedoen met een bestaand bedrijf of een nieuw bedrijf beginnen.
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Een lijst met alle bedrijven die momenteel in dit spel bestaan. Je kan meedoen met een bestaand bedrijf of een nieuw bedrijf beginnen
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}BEDRIJFSINFORMATIE
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Bedrijfsnaam: {WHITE}{STRING}
@@ -1816,7 +1816,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} he
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heeft zijn/haar naam gewijzigd naar {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gaf je bedrijf {2:CURRENCY}
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Je gaf {2:CURRENCY} aan {1:STRING}
-STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De server heeft de sessie gestopt.
+STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De server heeft de sessie gestopt
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De server wordt opnieuw gestart...{}Wacht aub...
 
 # Content downloading window
@@ -1922,7 +1922,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bouw tre
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Plaats seinen. Ctrl wisselt tussen armseinen en lichtseinen{}Slepen plaatst seinen langs een recht stuk spoor. Ctrl bouwt seinen tot de volgende wissel{}Ctrl+Klik schakelt het openen van het keuzescherm voor seinen aan/uit. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Bouw spoorbrug. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Graaf spoortunnel. Shift schakelt tussen bouwen/inschatting van de kosten
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Kies tussen bouwen en verwijderen van sporen, seinen, controleposten en stations. Houd Ctrl ingedrukt om ook het spoor van controleposten en stations te verwijderen.
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Kies tussen bouwen en verwijderen van sporen, seinen, controleposten en stations. Houd Ctrl ingedrukt om ook het spoor van controleposten en stations te verwijderen
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Verander spoortype. Shift schakelt tussen bouwen/inschatting van de kosten
 
 # Rail depot construction window
@@ -1974,6 +1974,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Kies typ
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Kies type brug
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brugkeuze - klik op de gewenste brug om die te bouwen
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Hang, Staal
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Koker, Staal
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever, Staal
@@ -2534,7 +2535,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Geef een
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Steden
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE} Geen
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het scherm te centreren op de stad. Ctrl+klik opent een nieuw kijkvenster
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Plaatsnamen - klik op naam om het scherm te centreren op de stad. Ctrl+Klik opent een nieuw kijkvenster op de locatie van de stad
 STR_TOWN_POPULATION                                             :{BLACK}Wereldbevolking: {COMMA}
 
 # Town view window
@@ -2677,9 +2678,9 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lening
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Max lening: {BLACK}{CURRENCY}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Leen {CURRENCY}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vergroot lening. Ctrl+Klik om zoveel als mogelijk te lenen.
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Vergroot lening. Ctrl+Klik om zoveel als mogelijk te lenen
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Betaal {CURRENCY} terug
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betaal deel van lening terug. Ctrl+Klik om zoveel als mogelijk terug te betalen.
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Betaal deel van lening terug. Ctrl+Klik om zoveel als mogelijk terug te betalen
 
 # Company view
 STR_COMPANY_VIEW_CAPTION                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
@@ -3226,7 +3227,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtst
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde hangar
 STR_ORDER_CONDITIONAL                                           :Conditionele order sprong
 STR_ORDER_SHARE                                                 :Orders delen
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan het eind van de lijst. Ctrl-klik maakt stationsorders "Volledig één soort vracht laden", controlepost-orders "Ga non-stop via" en depot-orders "Onderhoud bij".
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan het eind van de lijst. Ctrl+klik maakt stationsorders "Volledig één soort vracht laden", controlepost-orders "Ga non-stop via" en depot-orders "Onderhoud bij". "Orders delen" of Ctrl laat dit voertuig de orders delen met het geselecteerde voertuig. Klikken op een voertuig kopieert de orders van dat voertuig
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Voeg een geavanceerde order toe
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Toon alle voertuigen met dezelfde gedeelde orders
