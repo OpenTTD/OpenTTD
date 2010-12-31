@@ -26,6 +26,7 @@ Source:        %{name}-%{version}-source.tar.bz2
 Requires:      fontconfig
 Requires:      SDL
 Requires:      zlib
+Requires:      xz-devel
 BuildRequires: gcc-c++
 BuildRequires: fontconfig-devel
 BuildRequires: libpng-devel

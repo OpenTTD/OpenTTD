@@ -1,6 +1,6 @@
 OpenTTD README
-Last updated:    2010-12-24
-Release version: 1.1.0-beta1
+Last updated:    2010-12-31
+Release version: 1.1.0-beta2
 ------------------------------------------------------------------------
 
 

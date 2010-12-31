@@ -1,3 +1,24 @@
+1.1.0-beta2 (2010-12-31)
+------------------------------------------------------------------------
+- Feature: Command logging using the admin interface (r21668)
+- Feature: Concept of automatic station orders; add stub orders for intermediate stations and remove them when not visiting them anymore. This allows you to see what trains visit a station without actually having to order a vehicle to stop at all stations (r21642)
+- Add: [NoAI] AIEventTownFounded (r21664)
+- Add: [NoAI] AIRail::GetName() to get the name of a railtype (r21663)
+- Add: [NoAI] AITown::IsCity() so AIs can find out which towns grow faster than others (r21654)
+- Change: Do not show price to build a bridge in the scenario editor as they are free to build there [FS#4358] (r21673)
+- Change: Do not highlight tile when selecting a vehicle to clone or an order to skip to (r21616)
+- Fix: Estonia introduced the Euro in 2011 (r21670)
+- Fix: Autofill timetable had side effects in test mode, possibly causing desyncs in MP [FS#4354] (r21660)
+- Fix: Cargo payment graph was not properly invalidated when payment rate changed [FS#4351] (r21658)
+- Fix: Use a bool instead of uint8 to store a bool and use the dedicated accessor function when reading boolean settings [FS#4345] (r21656)
+- Fix: Infinite loop in the road pathfinder due to bouncing around in an 'one way' trap; two one ways pointing towards eachother making it impossible to leave [FS#4338] (r21651)
+- Fix: Make '[centre|main] view' consistent, and make '[main|global] view' consistent [FS#4339] (r21650)
+- Fix: Newly created skip-to order was created at wrong place (r21633)
+- Fix: Ships with the old pathfinder would easily show up as lost, even when it would eventually find a path. Now also the distance from the 'end' of the pathfinding run to the destination is compared to the current distance to the destination; if the distance to the destination at the end of the pathfinder run is less than the current distance from the destination the ship will not be marked as lost. This means that the ships with the old pathfinder will less likely get marked as lost, but due to the design of the old ship pathfinder there 'lostness' is merely a best guess. When you still get a lost message you need to build buoys to guide the ship pathfinder [FS#4325] (r21631)
+- Fix: Version detection of subversion branches and tags got broken (r21630)
+- Fix: Crash under certain circumstances when using autorail [FS#4327] (r21619)
+
+
 1.1.0-beta1 (2010-12-24)
 ------------------------------------------------------------------------
 - Feature: [NewGRF] Variable 7B for accessing 60+x variables while taking the parameter from the accumulator (r21604)

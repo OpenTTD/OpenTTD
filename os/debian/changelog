@@ -1,9 +1,8 @@
-openttd (1.1~svn-0) UNRELEASED; urgency=low
+openttd (1.1.0~beta2); urgency=low
 
-  * Unreleased SVN version. Versioned to allow normal upgrades to released
-    versions.
+  * New upstream release 1.1.0-beta2
 
- -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 24 Dec 2010 00:00:00 +0000
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 31 Dec 2010 18:00:00 +0100
 
 openttd (1.1.0~beta1); urgency=low
 
