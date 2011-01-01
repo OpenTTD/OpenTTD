@@ -294,14 +294,14 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 	if (this->cocoaview == nil) {
 		this->cocoaview = [ [ OTTD_QuartzView alloc ] initWithFrame:contentRect ];
 		if (this->cocoaview == nil) {
-			DEBUG(driver, 0, "Could not create the Quickdraw view.");
+			DEBUG(driver, 0, "Could not create the Quartz view.");
 			this->setup = false;
 			return false;
 		}
 
 		[ this->cocoaview setDriver:this ];
 
-		[ this->cocoaview setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
+		[ (NSView*)this->cocoaview setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
 		[ this->window setContentView:cocoaview ];
 		[ this->cocoaview release ];
 		[ this->window makeKeyAndOrderFront:nil ];

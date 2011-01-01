@@ -511,7 +511,7 @@ void cocoaReleaseAutoreleasePool()
 /**
  * Initialize event system for the application rectangle
  */
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(unsigned int)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag
+- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag
 {
 	/* Make our window subclass receive these application notifications */
 	[ [ NSNotificationCenter defaultCenter ] addObserver:self
