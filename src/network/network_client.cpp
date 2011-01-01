@@ -1067,12 +1067,13 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_RCON)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	char rcon_out[NETWORK_RCONCOMMAND_LENGTH];
+	uint colour_code = p->Recv_uint16();
+	if (!IsValidConsoleColour(colour_code)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	ConsoleColour colour_code = (ConsoleColour)p->Recv_uint16();
+	char rcon_out[NETWORK_RCONCOMMAND_LENGTH];
 	p->Recv_string(rcon_out, sizeof(rcon_out));
 
-	IConsolePrint(colour_code, rcon_out);
+	IConsolePrint((ConsoleColour)colour_code, rcon_out);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }

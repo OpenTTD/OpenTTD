@@ -30,4 +30,10 @@ enum ConsoleColour {
 	CC_WHITE   = 12,
 };
 
+static inline bool IsValidConsoleColour(uint c)
+{
+	return c == CC_DEFAULT || c == CC_ERROR || c == CC_WARNING || c == CC_INFO ||
+			c == CC_DEBUG || c == CC_COMMAND || c == CC_WHITE;
+}
+
 #endif /* CONSOLE_TYPE_H */
