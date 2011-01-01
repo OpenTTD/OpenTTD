@@ -86,6 +86,8 @@ void IConsoleFree()
  */
 void IConsolePrint(ConsoleColour colour_code, const char *string)
 {
+	assert(IsValidConsoleColour(colour_code));
+
 	char *str;
 #ifdef ENABLE_NETWORK
 	if (_redirect_console_to_client != INVALID_CLIENT_ID) {
@@ -128,6 +130,8 @@ void IConsolePrint(ConsoleColour colour_code, const char *string)
  */
 void CDECL IConsolePrintF(ConsoleColour colour_code, const char *format, ...)
 {
+	assert(IsValidConsoleColour(colour_code));
+
 	va_list va;
 	char buf[ICON_MAX_STREAMSIZE];
 
