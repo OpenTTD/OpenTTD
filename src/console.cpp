@@ -20,13 +20,8 @@
 
 #include <stdarg.h>
 
-#define ICON_BUFFER 79
-#define ICON_HISTORY_SIZE 20
-#define ICON_LINE_HEIGHT 12
-#define ICON_RIGHT_BORDERWIDTH 10
-#define ICON_BOTTOM_BORDERWIDTH 12
-#define ICON_MAX_ALIAS_LINES 40
-#define ICON_TOKEN_COUNT 20
+static const uint ICON_TOKEN_COUNT = 20;     ///< Maximum number of tokens in one command
+static const uint ICON_MAX_ALIAS_LINES = 40; ///< Maximum number of commands executed by one alias
 
 /* console parser */
 IConsoleCmd   *_iconsole_cmds;    ///< list of registered commands
