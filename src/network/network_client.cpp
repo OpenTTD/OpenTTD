@@ -312,7 +312,9 @@ static const char *GenerateCompanyPasswordHash(const char *password)
 	memset(salted_password, 0, sizeof(salted_password));
 	snprintf(salted_password, sizeof(salted_password), "%s", password);
 	/* Add the game seed and the server's ID as the salt. */
-	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) salted_password[i] ^= _password_server_id[i] ^ (_password_game_seed >> i);
+	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) {
+		salted_password[i] ^= _password_server_id[i] ^ (_password_game_seed >> (i % 32));
+	}
 
 	Md5 checksum;
 	uint8 digest[16];
