@@ -977,6 +977,9 @@ static void ValidateSettings()
 
 static bool DifficultyReset(int32 level)
 {
+	/* In game / in the scenario editor you can set the difficulty level only to custom. This is
+	 * needed by the AI Gui code that sets the difficulty level when you change any AI settings. */
+	if (_game_mode != GM_MENU && level != 3) return false;
 	SetDifficultyLevel(level, (_game_mode == GM_MENU) ? &_settings_newgame.difficulty : &_settings_game.difficulty);
 	return true;
 }
