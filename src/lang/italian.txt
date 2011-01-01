@@ -1976,6 +1976,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selezion
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Seleziona ponte stradale
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selezione ponte - fare clic sul ponte desiderato per costruirlo
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Sospeso, Acciaio
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :A travatura, Acciaio
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :A mensola, Acciaio

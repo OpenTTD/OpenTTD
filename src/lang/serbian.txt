@@ -2169,6 +2169,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Izbor ž
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Izbor drumskog mosta
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Izbor mosta - gradnja se potvrđuje klikom na željeni most
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Viseći, čelični
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Gredni, čelični
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Obešeni, čelični
