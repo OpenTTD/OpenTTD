@@ -1507,8 +1507,6 @@ DEF_CONSOLE_CMD(ConSayClient)
 	return true;
 }
 
-extern void HashCurrentCompanyPassword(const char *password);
-
 DEF_CONSOLE_CMD(ConCompanyPassword)
 {
 	if (argc == 0) {

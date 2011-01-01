@@ -333,7 +333,7 @@ static const char *GenerateCompanyPasswordHash(const char *password)
 /**
  * Hash the current company password; used when the server 'company' sets his/her password.
  */
-void HashCurrentCompanyPassword(const char *password)
+static void HashCurrentCompanyPassword(const char *password)
 {
 	_password_game_seed = _settings_game.game_creation.generation_seed;
 	strecpy(_password_server_id, _settings_client.network.network_id, lastof(_password_server_id));
