@@ -25,6 +25,7 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "window_func.h"
+#include "tile_map.h"
 
 #include "table/strings.h"
 
@@ -682,14 +683,19 @@ static bool MakeWorldScreenshot()
 	ViewPort vp;
 	const ScreenshotFormat *sf;
 
+	/* We need to account for a hill or high building at tile 0,0. */
+	int extra_height_top = TileHeight(0) * TILE_HEIGHT + 150;
+	/* If there is a hill at the bottom don't create a large black area. */
+	int reclaim_height_bottom = TileHeight(MapSize() - 1) * TILE_HEIGHT;
+
 	vp.zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 	vp.left = 0;
 	vp.top = 0;
 	vp.virtual_left = -(int)MapMaxX() * TILE_PIXELS;
-	vp.virtual_top = 0;
+	vp.virtual_top = -extra_height_top;
 	vp.virtual_width = (MapMaxX() + MapMaxY()) * TILE_PIXELS;
 	vp.width = vp.virtual_width;
-	vp.virtual_height = (MapMaxX() + MapMaxY()) * TILE_PIXELS >> 1;
+	vp.virtual_height = ((MapMaxX() + MapMaxY()) * TILE_PIXELS >> 1) + extra_height_top - reclaim_height_bottom;
 	vp.height = vp.virtual_height;
 
 	sf = _screenshot_formats + _cur_screenshot_format;
