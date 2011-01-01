@@ -321,7 +321,7 @@ static const char *GenerateCompanyPasswordHash(const char *password)
 	static char hashed_password[NETWORK_SERVER_ID_LENGTH];
 
 	/* Generate the MD5 hash */
-	checksum.Append((const uint8*)salted_password, sizeof(salted_password) - 1);
+	checksum.Append(salted_password, sizeof(salted_password) - 1);
 	checksum.Finish(digest);
 
 	for (int di = 0; di < 16; di++) sprintf(hashed_password + di * 2, "%02x", digest[di]);
