@@ -108,10 +108,10 @@ int AIConfig::GetSetting(const char *name) const
 {
 	SettingValueList::const_iterator it = this->settings.find(name);
 	/* Return the default value if the setting is not set, or if we are in a not-custom difficult level */
-	if (it == this->settings.end() || ((_game_mode == GM_MENU) ? _settings_newgame.difficulty.diff_level : _settings_game.difficulty.diff_level) != 3) {
+	if (it == this->settings.end() || GetGameSettings().difficulty.diff_level != 3) {
 		if (this->info == NULL) {
 			assert(strcmp("start_date", name) == 0);
-			switch ((_game_mode == GM_MENU) ? _settings_newgame.difficulty.diff_level : _settings_game.difficulty.diff_level) {
+			switch (GetGameSettings().difficulty.diff_level) {
 				case 0: return AI::START_NEXT_EASY;
 				case 1: return AI::START_NEXT_MEDIUM;
 				case 2: return AI::START_NEXT_HARD;

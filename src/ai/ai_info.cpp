@@ -338,7 +338,7 @@ int AIInfo::GetSettingDefaultValue(const char *name) const
 	for (AIConfigItemList::const_iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
 		if (strcmp((*it).name, name) != 0) continue;
 		/* The default value depends on the difficulty level */
-		switch ((_game_mode == GM_MENU) ? _settings_newgame.difficulty.diff_level : _settings_game.difficulty.diff_level) {
+		switch (GetGameSettings().difficulty.diff_level) {
 			case 0: return (*it).easy_value;
 			case 1: return (*it).medium_value;
 			case 2: return (*it).hard_value;
