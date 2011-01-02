@@ -186,7 +186,7 @@ struct GameOptionsWindow : Window {
 
 	GameOptionsWindow(const WindowDesc *desc) : Window()
 	{
-		this->opt = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
+		this->opt = &GetGameSettings();
 		this->reload = false;
 
 		this->InitNested(desc);
@@ -591,7 +591,7 @@ public:
 
 		/* Copy current settings (ingame or in intro) to temporary holding place
 		 * change that when setting stuff, copy back on clicking 'OK' */
-		this->opt_mod_temp = (_game_mode == GM_MENU) ? _settings_newgame : _settings_game;
+		this->opt_mod_temp = GetGameSettings();
 		/* Setup disabled buttons when creating window
 		 * disable all other difficulty buttons during gameplay except for 'custom' */
 		this->SetWidgetsDisabledState(_game_mode != GM_MENU,
@@ -696,7 +696,7 @@ public:
 				break;
 
 			case GDW_ACCEPT: { // Save button - save changes
-				GameSettings *opt_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
+				GameSettings *opt_ptr = &GetGameSettings();
 
 				uint i;
 				GetSettingFromName("difficulty.diff_level", &i);
@@ -1526,7 +1526,7 @@ struct GameSettingsWindow : Window {
 	{
 		static bool first_time = true;
 
-		settings_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
+		settings_ptr = &GetGameSettings();
 
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		if (first_time) {

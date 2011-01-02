@@ -17,6 +17,7 @@
 #include "transport_type.h"
 #include "network/core/config.h"
 #include "company_type.h"
+#include "openttd.h"
 
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
@@ -437,5 +438,14 @@ extern GameSettings _settings_game;
 
 /** The settings values that are used for new games and/or modified in config file. */
 extern GameSettings _settings_newgame;
+
+/**
+ * Get the settings-object applicable for the current situation: the newgame settings
+ * when we're in the main menu and otherwise the settings of the current game.
+ */
+static inline GameSettings &GetGameSettings()
+{
+	return (_game_mode == GM_MENU) ? _settings_newgame : _settings_game;
+}
 
 #endif /* SETTINGS_TYPE_H */

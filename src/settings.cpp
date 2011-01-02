@@ -980,7 +980,7 @@ static bool DifficultyReset(int32 level)
 	/* In game / in the scenario editor you can set the difficulty level only to custom. This is
 	 * needed by the AI Gui code that sets the difficulty level when you change any AI settings. */
 	if (_game_mode != GM_MENU && level != 3) return false;
-	SetDifficultyLevel(level, (_game_mode == GM_MENU) ? &_settings_newgame.difficulty : &_settings_game.difficulty);
+	SetDifficultyLevel(level, &GetGameSettings().difficulty);
 	return true;
 }
 
@@ -1020,7 +1020,7 @@ static bool DifficultyNoiseChange(int32 i)
 
 static bool MaxNoAIsChange(int32 i)
 {
-	if (((_game_mode == GM_MENU) ? _settings_newgame.difficulty : _settings_game.difficulty).max_no_competitors != 0 &&
+	if (GetGameSettings().difficulty.max_no_competitors != 0 &&
 #ifdef ENABLE_AI
 			AI::GetInfoList()->size() == 0 &&
 #endif /* ENABLE_AI */
@@ -1644,8 +1644,7 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	if (flags & DC_EXEC) {
-		GameSettings *s = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
-		void *var = GetVariableAddress(s, &sd->save);
+		void *var = GetVariableAddress(&GetGameSettings(), &sd->save);
 
 		int32 oldval = (int32)ReadValue(var, sd->save.conv);
 		int32 newval = (int32)p2;
@@ -1724,7 +1723,7 @@ bool SetSettingValue(uint index, int32 value, bool force_newgame)
 	 * of settings because changing a company-based setting in a game also
 	 * changes its defaults. At least that is the convention we have chosen */
 	if (sd->save.conv & SLF_NETWORK_NO) {
-		void *var = GetVariableAddress((_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game, &sd->save);
+		void *var = GetVariableAddress(&GetGameSettings(), &sd->save);
 		Write_ValidateSetting(var, sd, value);
 
 		if (_game_mode != GM_MENU) {
@@ -1963,7 +1962,7 @@ void IConsoleListSettings(const char *prefilter)
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (prefilter != NULL && strstr(sd->desc.name, prefilter) == NULL) continue;
 		char value[80];
-		const void *ptr = GetVariableAddress((_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game, &sd->save);
+		const void *ptr = GetVariableAddress(&GetGameSettings(), &sd->save);
 
 		if (sd->desc.cmd == SDT_BOOLX) {
 			snprintf(value, lengthof(value), (*(bool*)ptr == 1) ? "on" : "off");
