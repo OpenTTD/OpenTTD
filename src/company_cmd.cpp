@@ -896,6 +896,10 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		default: return CMD_ERROR;
 	}
 
+	InvalidateWindowClassesData(WC_GAME_OPTIONS);
+	InvalidateWindowClassesData(WC_AI_SETTINGS);
+	InvalidateWindowClassesData(WC_AI_LIST);
+
 	return CommandCost();
 }
 

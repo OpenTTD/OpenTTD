@@ -289,6 +289,7 @@ enum OptionMenuEntries {
 	OME_GAMEOPTIONS,
 	OME_DIFFICULTIES,
 	OME_SETTINGS,
+	OME_AI_SETTINGS,
 	OME_NEWGRFSETTINGS,
 	OME_TRANSPARENCIES,
 	OME_SHOW_TOWNNAMES,
@@ -307,6 +308,10 @@ static CallBackFunction ToolbarOptionsClick(Window *w)
 	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_GAME_OPTIONS,             OME_GAMEOPTIONS, false));
 	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_DIFFICULTY_SETTINGS,      OME_DIFFICULTIES, false));
 	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_CONFIG_SETTINGS,          OME_SETTINGS, false));
+	/* Changes to the per-AI settings don't get send from the server to the clients. Clients get
+	 * the settings once they join but never update it. As such don't show the window at all
+	 * to network clients. */
+	if (!_networking || _network_server) list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_AI_SETTINGS, OME_AI_SETTINGS, false));
 	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_NEWGRF_SETTINGS,          OME_NEWGRFSETTINGS, false));
 	list->push_back(new DropDownListStringItem(STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS,     OME_TRANSPARENCIES, false));
 	list->push_back(new DropDownListItem(-1, false));
@@ -330,6 +335,7 @@ static CallBackFunction MenuClickSettings(int index)
 		case OME_GAMEOPTIONS:          ShowGameOptions();                               return CBF_NONE;
 		case OME_DIFFICULTIES:         ShowGameDifficulty();                            return CBF_NONE;
 		case OME_SETTINGS:             ShowGameSettings();                              return CBF_NONE;
+		case OME_AI_SETTINGS:          ShowAIConfigWindow();                            return CBF_NONE;
 		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking && _settings_client.gui.UserIsAllowedToChangeNewGRFs(), true, true, &_grfconfig); return CBF_NONE;
 		case OME_TRANSPARENCIES:       ShowTransparencyToolbar();                       break;
 

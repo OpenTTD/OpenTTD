@@ -185,6 +185,11 @@ struct AIListWindow : public Window {
 
 	virtual void OnInvalidateData(int data)
 	{
+		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) {
+			delete this;
+			return;
+		}
+
 		this->vscroll->SetCount((int)this->ai_info_list->size() + 1);
 
 		/* selected goes from -1 .. length of ai list - 1. */
@@ -263,7 +268,7 @@ struct AISettingsWindow : public Window {
 		this->vscroll = this->GetScrollbar(AIS_WIDGET_SCROLLBAR);
 		this->FinishInitNested(desc, slot);  // Initializes 'this->line_height' as side effect.
 
-		this->SetWidgetDisabledState(AIS_WIDGET_RESET, _game_mode != GM_MENU);
+		this->SetWidgetDisabledState(AIS_WIDGET_RESET, _game_mode != GM_MENU && Company::IsValidID(this->slot));
 
 		this->vscroll->SetCount((int)this->ai_config->GetConfigList()->size());
 	}
@@ -297,7 +302,7 @@ struct AISettingsWindow : public Window {
 		int y = r.top;
 		for (; this->vscroll->IsVisible(i) && it != config->GetConfigList()->end(); i++, it++) {
 			int current_value = config->GetSetting((*it).name);
-			bool editable = (_game_mode == GM_MENU) || ((it->flags & AICONFIG_INGAME) != 0);
+			bool editable = _game_mode == GM_MENU || !Company::IsValidID(this->slot) || (it->flags & AICONFIG_INGAME) != 0;
 
 			StringID str;
 			TextColour colour;
@@ -353,7 +358,7 @@ struct AISettingsWindow : public Window {
 				AIConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
 				for (int i = 0; i < num; i++) it++;
 				AIConfigItem config_item = *it;
-				if (_game_mode != GM_MENU && (config_item.flags & AICONFIG_INGAME) == 0) return;
+				if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot) && (config_item.flags & AICONFIG_INGAME) == 0) return;
 
 				bool bool_item = (config_item.flags & AICONFIG_BOOLEAN) != 0;
 
@@ -398,8 +403,10 @@ struct AISettingsWindow : public Window {
 				break;
 
 			case AIS_WIDGET_RESET:
-				this->ai_config->ResetSettings();
-				this->SetDirty();
+				if (_game_mode == GM_MENU || !Company::IsValidID(this->slot)) {
+					this->ai_config->ResetSettings();
+					this->SetDirty();
+				}
 				break;
 		}
 	}
@@ -409,6 +416,7 @@ struct AISettingsWindow : public Window {
 		if (StrEmpty(str)) return;
 		AIConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
 		for (int i = 0; i < this->clicked_row; i++) it++;
+		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot) && (it->flags & AICONFIG_INGAME) == 0) return;
 		int32 value = atoi(str);
 		this->ai_config->SetSetting((*it).name, value);
 		this->CheckDifficultyLevel();
@@ -428,6 +436,11 @@ struct AISettingsWindow : public Window {
 			this->clicked_button = -1;
 			this->SetDirty();
 		}
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) delete this;
 	}
 };
 
@@ -556,7 +569,7 @@ struct AIConfigWindow : public Window {
 	{
 		switch (widget) {
 			case AIC_WIDGET_NUMBER:
-				SetDParam(0, _settings_newgame.difficulty.max_no_competitors);
+				SetDParam(0, GetGameSettings().difficulty.max_no_competitors);
 				break;
 		}
 	}
@@ -571,6 +584,25 @@ struct AIConfigWindow : public Window {
 		}
 	}
 
+	/**
+	 * Can the AI config in the given company slot be edited?
+	 * @param slot The slot to query.
+	 * @return True if and only if the given AI Config slot can e edited.
+	 */
+	static bool IsEditable(CompanyID slot)
+	{
+		if (_game_mode != GM_NORMAL) {
+			return slot > 0 && slot <= GetGameSettings().difficulty.max_no_competitors;
+		}
+		if (Company::IsValidID(slot) || slot < 0) return false;
+
+		int max_slot = GetGameSettings().difficulty.max_no_competitors;
+		for (CompanyID cid = COMPANY_FIRST; cid < (CompanyID)max_slot && cid < MAX_COMPANIES; cid++) {
+			if (Company::IsValidHumanID(cid)) max_slot++;
+		}
+		return slot < max_slot;
+	}
+
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (widget) {
@@ -579,16 +611,16 @@ struct AIConfigWindow : public Window {
 				for (int i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < MAX_COMPANIES; i++) {
 					StringID text;
 
-					if (AIConfig::GetConfig((CompanyID)i)->GetInfo() != NULL) {
+					if ((_game_mode != GM_NORMAL && i == 0) || (_game_mode == GM_NORMAL && Company::IsValidHumanID(i))) {
+						text = STR_AI_CONFIG_HUMAN_PLAYER;
+					} else if (AIConfig::GetConfig((CompanyID)i)->GetInfo() != NULL) {
 						SetDParamStr(0, AIConfig::GetConfig((CompanyID)i)->GetInfo()->GetName());
 						text = STR_JUST_RAW_STRING;
-					} else if (i == 0) {
-						text = STR_AI_CONFIG_HUMAN_PLAYER;
 					} else {
 						text = STR_AI_CONFIG_RANDOM_AI;
 					}
 					DrawString(r.left + 10, r.right - 10, y + WD_MATRIX_TOP, text,
-							(this->selected_slot == i) ? TC_WHITE : ((i > _settings_newgame.difficulty.max_no_competitors || i == 0) ? TC_SILVER : TC_ORANGE));
+							(this->selected_slot == i) ? TC_WHITE : (IsEditable((CompanyID)i) ? TC_ORANGE : TC_SILVER));
 					y += this->line_height;
 				}
 				break;
@@ -603,9 +635,9 @@ struct AIConfigWindow : public Window {
 			case AIC_WIDGET_INCREASE: {
 				int new_value;
 				if (widget == AIC_WIDGET_DECREASE) {
-					new_value = max(0, _settings_newgame.difficulty.max_no_competitors - 1);
+					new_value = max(0, GetGameSettings().difficulty.max_no_competitors - 1);
 				} else {
-					new_value = min(MAX_COMPANIES - 1, _settings_newgame.difficulty.max_no_competitors + 1);
+					new_value = min(MAX_COMPANIES - 1, GetGameSettings().difficulty.max_no_competitors + 1);
 				}
 				IConsoleSetSetting("difficulty.max_no_competitors", new_value);
 				this->InvalidateData();
@@ -620,8 +652,8 @@ struct AIConfigWindow : public Window {
 			}
 
 			case AIC_WIDGET_MOVE_UP:
-				if (this->selected_slot > 1) {
-					Swap(_settings_newgame.ai_config[this->selected_slot], _settings_newgame.ai_config[this->selected_slot - 1]);
+				if (IsEditable(this->selected_slot) && IsEditable((CompanyID)(this->selected_slot - 1))) {
+					Swap(GetGameSettings().ai_config[this->selected_slot], GetGameSettings().ai_config[this->selected_slot - 1]);
 					this->selected_slot--;
 					this->vscroll->ScrollTowards(this->selected_slot);
 					this->InvalidateData();
@@ -629,8 +661,8 @@ struct AIConfigWindow : public Window {
 				break;
 
 			case AIC_WIDGET_MOVE_DOWN:
-				if (this->selected_slot < _settings_newgame.difficulty.max_no_competitors) {
-					Swap(_settings_newgame.ai_config[this->selected_slot], _settings_newgame.ai_config[this->selected_slot + 1]);
+				if (IsEditable(this->selected_slot) && IsEditable((CompanyID)(this->selected_slot + 1))) {
+					Swap(GetGameSettings().ai_config[this->selected_slot], GetGameSettings().ai_config[this->selected_slot + 1]);
 					this->selected_slot++;
 					this->vscroll->ScrollTowards(this->selected_slot);
 					this->InvalidateData();
@@ -663,16 +695,16 @@ struct AIConfigWindow : public Window {
 
 	virtual void OnInvalidateData(int data)
 	{
-		if (this->selected_slot == 0 || this->selected_slot > _settings_newgame.difficulty.max_no_competitors) {
+		if (!IsEditable(this->selected_slot)) {
 			this->selected_slot = INVALID_COMPANY;
 		}
 
-		this->SetWidgetDisabledState(AIC_WIDGET_DECREASE, _settings_newgame.difficulty.max_no_competitors == 0);
-		this->SetWidgetDisabledState(AIC_WIDGET_INCREASE, _settings_newgame.difficulty.max_no_competitors == MAX_COMPANIES - 1);
+		this->SetWidgetDisabledState(AIC_WIDGET_DECREASE, GetGameSettings().difficulty.max_no_competitors == 0);
+		this->SetWidgetDisabledState(AIC_WIDGET_INCREASE, GetGameSettings().difficulty.max_no_competitors == MAX_COMPANIES - 1);
 		this->SetWidgetDisabledState(AIC_WIDGET_CHANGE, this->selected_slot == INVALID_COMPANY);
 		this->SetWidgetDisabledState(AIC_WIDGET_CONFIGURE, this->selected_slot == INVALID_COMPANY);
-		this->SetWidgetDisabledState(AIC_WIDGET_MOVE_UP, this->selected_slot == INVALID_COMPANY || this->selected_slot == 1);
-		this->SetWidgetDisabledState(AIC_WIDGET_MOVE_DOWN, this->selected_slot == INVALID_COMPANY || this->selected_slot == _settings_newgame.difficulty.max_no_competitors);
+		this->SetWidgetDisabledState(AIC_WIDGET_MOVE_UP, this->selected_slot == INVALID_COMPANY || !IsEditable((CompanyID)(this->selected_slot - 1)));
+		this->SetWidgetDisabledState(AIC_WIDGET_MOVE_DOWN, this->selected_slot == INVALID_COMPANY || !IsEditable((CompanyID)(this->selected_slot + 1)));
 	}
 };
 

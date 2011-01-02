@@ -348,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Quit
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Game options
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Difficulty settings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Advanced settings
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI settings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF settings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparency options
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Town names displayed
