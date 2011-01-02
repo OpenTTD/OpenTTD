@@ -1479,7 +1479,7 @@ static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *li
 static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescProcList *proc_list)
 {
 	proc(ini, (const SettingDesc*)_misc_settings,    "misc",  NULL);
-	proc(ini, (const SettingDesc*)_music_settings,   "music", &msf);
+	proc(ini, (const SettingDesc*)_music_settings,   "music", &_msf);
 #if defined(WIN32) && !defined(DEDICATED)
 	proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
 #endif /* WIN32 */

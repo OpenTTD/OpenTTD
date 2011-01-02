@@ -22,7 +22,7 @@
 #include "base_media_func.h"
 
 static SoundEntry _original_sounds[ORIGINAL_SAMPLE_COUNT];
-MusicFileSettings msf;
+MusicFileSettings _msf;
 
 static void OpenBankFile(const char *filename)
 {
@@ -227,7 +227,7 @@ void SndCopyToPool()
  */
 static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, int bottom)
 {
-	if (msf.effect_vol == 0) return;
+	if (_msf.effect_vol == 0) return;
 
 	const Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
@@ -243,7 +243,7 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 			StartSound(
 				sound,
 				panning,
-				(msf.effect_vol * _vol_factor_by_zoom[vp->zoom - ZOOM_LVL_BEGIN]) / 256
+				(_msf.effect_vol * _vol_factor_by_zoom[vp->zoom - ZOOM_LVL_BEGIN]) / 256
 			);
 			return;
 		}
@@ -272,7 +272,7 @@ void SndPlayVehicleFx(SoundID sound, const Vehicle *v)
 
 void SndPlayFx(SoundID sound)
 {
-	StartSound(sound, 0.5, msf.effect_vol);
+	StartSound(sound, 0.5, _msf.effect_vol);
 }
 
 INSTANTIATE_BASE_MEDIA_METHODS(BaseMedia<SoundsSet>, SoundsSet)

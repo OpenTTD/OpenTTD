@@ -63,8 +63,8 @@ static byte _playlist_new_style[NUM_SONGS_CLASS + 1];
 /** Indices of all ezy street songs */
 static byte _playlist_ezy_street[NUM_SONGS_CLASS + 1];
 
-assert_compile(lengthof(msf.custom_1) == NUM_SONGS_PLAYLIST + 1);
-assert_compile(lengthof(msf.custom_2) == NUM_SONGS_PLAYLIST + 1);
+assert_compile(lengthof(_msf.custom_1) == NUM_SONGS_PLAYLIST + 1);
+assert_compile(lengthof(_msf.custom_2) == NUM_SONGS_PLAYLIST + 1);
 
 /** The different playlists that can be played. */
 static byte * const _playlists[] = {
@@ -72,8 +72,8 @@ static byte * const _playlists[] = {
 	_playlist_old_style,
 	_playlist_new_style,
 	_playlist_ezy_street,
-	msf.custom_1,
-	msf.custom_2,
+	_msf.custom_1,
+	_msf.custom_2,
 };
 
 /**
@@ -116,8 +116,8 @@ void InitializeMusic()
 		_playlists[k + 1][j] = 0;
 	}
 
-	ValidatePlaylist(msf.custom_1);
-	ValidatePlaylist(msf.custom_2);
+	ValidatePlaylist(_msf.custom_1);
+	ValidatePlaylist(_msf.custom_2);
 
 	if (BaseMusic::GetUsedSet()->num_available < _music_wnd_cursong) {
 		/* If there are less songs than the currently played song,
@@ -191,17 +191,17 @@ static void SelectSongToPlay()
 
 	memset(_cur_playlist, 0, sizeof(_cur_playlist));
 	do {
-		const char *filename = BaseMusic::GetUsedSet()->files[_playlists[msf.playlist][i] - 1].filename;
+		const char *filename = BaseMusic::GetUsedSet()->files[_playlists[_msf.playlist][i] - 1].filename;
 		/* We are now checking for the existence of that file prior
 		 * to add it to the list of available songs */
 		if (!StrEmpty(filename) && FioCheckFileExists(filename, GM_DIR)) {
-			_cur_playlist[j] = _playlists[msf.playlist][i];
+			_cur_playlist[j] = _playlists[_msf.playlist][i];
 			j++;
 		}
-	} while (_playlists[msf.playlist][++i] != 0 && j < lengthof(_cur_playlist) - 1);
+	} while (_playlists[_msf.playlist][++i] != 0 && j < lengthof(_cur_playlist) - 1);
 
 	/* Do not shuffle when on the intro-start window, as the song to play has to be the original TTD Theme*/
-	if (msf.shuffle && _game_mode != GM_MENU) {
+	if (_msf.shuffle && _game_mode != GM_MENU) {
 		i = 500;
 		do {
 			uint32 r = InteractiveRandom();
@@ -235,7 +235,7 @@ static void PlayPlaylistSong()
 		if (_cur_playlist[0] == 0) {
 			_song_is_active = false;
 			_music_wnd_cursong = 0;
-			msf.playing = false;
+			_msf.playing = false;
 			return;
 		}
 	}
@@ -254,9 +254,9 @@ void ResetMusic()
 
 void MusicLoop()
 {
-	if (!msf.playing && _song_is_active) {
+	if (!_msf.playing && _song_is_active) {
 		StopMusic();
-	} else if (msf.playing && !_song_is_active) {
+	} else if (_msf.playing && !_song_is_active) {
 		PlayPlaylistSong();
 	}
 
@@ -275,7 +275,7 @@ void MusicLoop()
 
 static void SelectPlaylist(byte list)
 {
-	msf.playlist = list;
+	_msf.playlist = list;
 	InvalidateWindowData(WC_MUSIC_TRACK_SELECTION, 0);
 	InvalidateWindowData(WC_MUSIC_WINDOW, 0);
 }
@@ -299,15 +299,15 @@ struct MusicTrackSelectionWindow : public Window {
 		this->InitNested(desc, number);
 		this->LowerWidget(MTSW_LIST_LEFT);
 		this->LowerWidget(MTSW_LIST_RIGHT);
-		this->SetWidgetDisabledState(MTSW_CLEAR, msf.playlist <= 3);
-		this->LowerWidget(MTSW_ALL + msf.playlist);
+		this->SetWidgetDisabledState(MTSW_CLEAR, _msf.playlist <= 3);
+		this->LowerWidget(MTSW_ALL + _msf.playlist);
 	}
 
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
 			case MTSW_PLAYLIST:
-				SetDParam(0, STR_MUSIC_PLAYLIST_ALL + msf.playlist);
+				SetDParam(0, STR_MUSIC_PLAYLIST_ALL + _msf.playlist);
 				break;
 		}
 	}
@@ -315,9 +315,9 @@ struct MusicTrackSelectionWindow : public Window {
 	virtual void OnInvalidateData(int data = 0)
 	{
 		for (int i = 0; i < 6; i++) {
-			this->SetWidgetLoweredState(MTSW_ALL + i, i == msf.playlist);
+			this->SetWidgetLoweredState(MTSW_ALL + i, i == _msf.playlist);
 		}
-		this->SetWidgetDisabledState(MTSW_CLEAR, msf.playlist <= 3);
+		this->SetWidgetDisabledState(MTSW_CLEAR, _msf.playlist <= 3);
 		this->SetDirty();
 	}
 
@@ -383,7 +383,7 @@ struct MusicTrackSelectionWindow : public Window {
 				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0);
 
 				int y = r.top + WD_FRAMERECT_TOP;
-				for (const byte *p = _playlists[msf.playlist]; *p != 0; p++) {
+				for (const byte *p = _playlists[_msf.playlist]; *p != 0; p++) {
 					uint i = *p - 1;
 					SetDParam(0, GetTrackNumber(i));
 					SetDParam(1, 2);
@@ -402,10 +402,10 @@ struct MusicTrackSelectionWindow : public Window {
 			case MTSW_LIST_LEFT: { // add to playlist
 				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
 
-				if (msf.playlist < 4) return;
+				if (_msf.playlist < 4) return;
 				if (!IsInsideMM(y, 0, BaseMusic::GetUsedSet()->num_available)) return;
 
-				byte *p = _playlists[msf.playlist];
+				byte *p = _playlists[_msf.playlist];
 				for (uint i = 0; i != NUM_SONGS_PLAYLIST - 1; i++) {
 					if (p[i] == 0) {
 						/* Find the actual song number */
@@ -427,10 +427,10 @@ struct MusicTrackSelectionWindow : public Window {
 			case MTSW_LIST_RIGHT: { // remove from playlist
 				int y = this->GetRowFromWidget(pt.y, widget, 0, FONT_HEIGHT_SMALL);
 
-				if (msf.playlist < 4) return;
+				if (_msf.playlist < 4) return;
 				if (!IsInsideMM(y, 0, NUM_SONGS_PLAYLIST)) return;
 
-				byte *p = _playlists[msf.playlist];
+				byte *p = _playlists[_msf.playlist];
 				for (uint i = y; i != NUM_SONGS_PLAYLIST - 1; i++) {
 					p[i] = p[i + 1];
 				}
@@ -441,7 +441,7 @@ struct MusicTrackSelectionWindow : public Window {
 			}
 
 			case MTSW_CLEAR: // clear
-				for (uint i = 0; _playlists[msf.playlist][i] != 0; i++) _playlists[msf.playlist][i] = 0;
+				for (uint i = 0; _playlists[_msf.playlist][i] != 0; i++) _playlists[_msf.playlist][i] = 0;
 				this->SetDirty();
 				StopMusic();
 				SelectSongToPlay();
@@ -535,8 +535,8 @@ struct MusicWindow : public Window {
 	MusicWindow(const WindowDesc *desc, WindowNumber number) : Window()
 	{
 		this->InitNested(desc, number);
-		this->LowerWidget(msf.playlist + MW_ALL);
-		this->SetWidgetLoweredState(MW_SHUFFLE, msf.shuffle);
+		this->LowerWidget(_msf.playlist + MW_ALL);
+		this->SetWidgetLoweredState(MW_SHUFFLE, _msf.shuffle);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
@@ -624,7 +624,7 @@ struct MusicWindow : public Window {
 
 			case MW_MUSIC_VOL: case MW_EFFECT_VOL: {
 				DrawFrameRect(r.left, r.top + 2, r.right, r.bottom - 2, COLOUR_GREY, FR_LOWERED);
-				byte volume = (widget == MW_MUSIC_VOL) ? msf.music_vol : msf.effect_vol;
+				byte volume = (widget == MW_MUSIC_VOL) ? _msf.music_vol : _msf.effect_vol;
 				int x = (volume * (r.right - r.left) / 127);
 				if (_current_text_dir == TD_RTL) {
 					x = r.right - x;
@@ -640,7 +640,7 @@ struct MusicWindow : public Window {
 	virtual void OnInvalidateData(int data = 0)
 	{
 		for (int i = 0; i < 6; i++) {
-			this->SetWidgetLoweredState(MW_ALL + i, i == msf.playlist);
+			this->SetWidgetLoweredState(MW_ALL + i, i == _msf.playlist);
 		}
 		this->SetDirty();
 	}
@@ -661,17 +661,17 @@ struct MusicWindow : public Window {
 				break;
 
 			case MW_STOP: // stop playing
-				msf.playing = false;
+				_msf.playing = false;
 				break;
 
 			case MW_PLAY: // start playing
-				msf.playing = true;
+				_msf.playing = true;
 				break;
 
 			case MW_MUSIC_VOL: case MW_EFFECT_VOL: { // volume sliders
 				int x = pt.x - this->GetWidget<NWidgetBase>(widget)->pos_x;
 
-				byte *vol = (widget == MW_MUSIC_VOL) ? &msf.music_vol : &msf.effect_vol;
+				byte *vol = (widget == MW_MUSIC_VOL) ? &_msf.music_vol : &_msf.effect_vol;
 
 				byte new_vol = x * 127 / this->GetWidget<NWidgetBase>(widget)->current_x;
 				if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
@@ -686,8 +686,8 @@ struct MusicWindow : public Window {
 			}
 
 			case MW_SHUFFLE: // toggle shuffle
-				msf.shuffle ^= 1;
-				this->SetWidgetLoweredState(MW_SHUFFLE, msf.shuffle);
+				_msf.shuffle ^= 1;
+				this->SetWidgetLoweredState(MW_SHUFFLE, _msf.shuffle);
 				this->SetWidgetDirty(MW_SHUFFLE);
 				StopMusic();
 				SelectSongToPlay();

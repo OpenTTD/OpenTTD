@@ -691,7 +691,7 @@ int ttd_main(int argc, char *argv[])
 	_screen.zoom = ZOOM_LVL_NORMAL;
 
 	/* restore saved music volume */
-	_music_driver->SetVolume(msf.music_vol);
+	_music_driver->SetVolume(_msf.music_vol);
 
 	NetworkStartUp(); // initialize network-core
 

@@ -16,7 +16,7 @@
 #include "vehicle_type.h"
 #include "tile_type.h"
 
-extern MusicFileSettings msf;
+extern MusicFileSettings _msf;
 
 void SndPlayTileFx(SoundID sound, TileIndex tile);
 void SndPlayVehicleFx(SoundID sound, const Vehicle *v);
