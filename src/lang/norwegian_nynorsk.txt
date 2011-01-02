@@ -167,7 +167,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}IN
 STR_ABBREV_ALL                                                  :{TINYFONT}ALLE
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passasjerar
+STR_PASSENGERS                                                  :{COMMA} passasjer{P "" s}
 STR_BAGS                                                        :{COMMA} sekkar
 STR_TONS                                                        :{COMMA} tonn
 STR_LITERS                                                      :{COMMA} liter
@@ -2558,7 +2558,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikk på teneste for å midtstille hovedvisninga på industri/by. CTRL+klikk syner industri/by i eit nytt tilleggsvindauge
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasjonsnamn - Klikk på stasjonsnamnet for å sjå stasjonen i hovedvisninga. CTRL+klikk syner stasjonen i eit nytt tilleggsvindauge
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stasjonsnamn - Klikk på namnet for å syne stasjonen i hovedvisninga. CTRL+klikk syner stasjonen i eit tilleggsvindauge
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hald inne CTRL for å velje fleire
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stasjon{P "" ar}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2689,7 +2689,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}{NBSP}% transportert)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transportert)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - Klikk på industrinamnet for å syne industrien i hovedvisninga. CTRL+klikk syner industrien i eit nytt tilleggsvindauge
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - Klikk på namnet for å syne industrien i hovedvisninga. CTRL+klikk syner industrien i eit tilleggsvindauge
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

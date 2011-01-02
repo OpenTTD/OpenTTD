@@ -331,9 +331,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Pertumbu
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Pertumbuhan Kota
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Membuat Industri
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Pembangunan Jalan
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Menanam Pohon
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Menanam Pohon. Shift untuk menampilkan perkiraan biaya
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Memasang pengenal
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Penempatan Obyek
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Tempatkan Obyek. Shift untuk menampilkan perkiraan biaya
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Simpan Skenario
@@ -348,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Keluar
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pengaturan permainan
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Pengaturan tingkat kesulitan
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Pengaturan lanjutan
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Pengaturan AI
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Pengaturan NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Pengaturan Transparansi
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nama kota ditampilkan
@@ -1153,17 +1154,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :semua kendaraan
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Ingatkan jika ada kendaraan yg merugi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kendaraan tidak pernah kadaluarsa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Perbarui otomatis kendaraan yang telah tua: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Perbarui otomatis kendaraan {ORANGE}{STRING}{LTBLUE} bulan sblm/sesudah usia maks.
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Perbarui otomatis kendaraan pada {ORANGE}{STRING}{LTBLUE} bulan sblm/sesudah usia maksimalnya
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimal dana tersedia untuk perbaruan otomatis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durasi pesan kesalahan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Waktu tunggu hover event: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durasi pesan kesalahan: {ORANGE}{STRING} detik
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Waktu tunggu tips muncul: {ORANGE}{STRING} detik
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Waktu tunggu hover event: {ORANGE}dimatikan
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Tampilkan populasi kota di label nama kota: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Pembangkit dataran: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Asli
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Jarak maks. Kilang Minyak Dari tepi{ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Jarak maks. Kilang Minyak Dari tepi: {ORANGE}{STRING} kotak
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Tinggi garis salju: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Kekasaran daratan(hanya TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sangat halus
@@ -1494,8 +1495,8 @@ STR_FACE_LOAD_DONE                                              :{WHITE}Wajah fa
 STR_FACE_FACECODE                                               :{BLACK}Wajah pemain no.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Lihat/ubah nomor wajah pemain
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Lihat/ubah nomer wajah pemain
-STR_FACE_FACECODE_SET                                           :{WHITE}Nomer kode wajah baru telah diatur
-STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat mengubah nomer wajah pemain - haruslah angka antara 0 dan 4,294,967,295!
+STR_FACE_FACECODE_SET                                           :{WHITE}Tidak dapat mengubah nomer wajah pemain - nomer harus diantara 0 - 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Tidak dapat mengubah nomer wajah pemain - harus antara 0 - 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Simpan
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Simpan wajah kesukaanmu
 STR_FACE_SAVE_DONE                                              :{WHITE}Wajah ini akan disimpan sebagai favorit dalam berkas config OpenTTD.
@@ -1612,7 +1613,7 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa p
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Agar pemain lain mengetahui bahasa apa yang digunakan pada sever
 
 STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Mulai permainan
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Mulai satu permainan dalam jaringan dari salah satu peta acak atau skenario
+STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Mulai bermain bersama dari peta secara acak atau skenario terpilih
 STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Buka Permainan
 STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Lanjutkan permainan bersama dari simpanan terdahulu (pastikan untuk terhubung sebagai pemain yang benar)
 
@@ -1914,16 +1915,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Konstruksi Rel 
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Pembangunan Monorel
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Pembangunan Maglev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bangun rel. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi rel
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bangun rel kereta menggunakan mode Autorail. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi rel
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bangun depo (untuk pembelian dan perbaikan kereta)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ubah rel menjadi waypoint. Ctrl untuk mengaktifkan penggabungan waypoint
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bangun stasiun kereta. Ctrl untuk mengaktifkan penggabungan stasiun
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Membangun sinyal kereta. Ctrl - berganti sinyal bendera-lampu.
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Membangun Jembatan rel
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Membangun terowongan kereta
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Bangun rel. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi rel. Shift untuk menampilkan perkiraan biaya
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Bangun rel kereta menggunakan mode Autorail. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi rel. Shift untuk menampilkan perkiraan biaya
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Bangun depo (untuk pembelian dan perbaikan kereta). Shift untuk menampilkan perkiraan biaya
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ubah rel menjadi waypoint. Ctrl untuk mengaktifkan penggabungan waypoint. Shift untuk menampilkan perkiraan biaya
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Bangun stasiun kereta. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Membangun sinyal kereta. Ctrl - berganti sinyal bendera-lampu. Drag - membuat sinyal sepanjang rel. Shift untuk menampilkan perkiraan biaya
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Membangun Jembatan kereta. Shift untuk menampilkan perkiraan biaya
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Membangun terowongan kereta. Shift untuk menampilkan perkiraan biaya
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Membangun/bongkar rel kereta, sinyal, waypoint, dan stasiun. Tekan Ctrl juga dapat membongkar rel pada waypoint dan stasiun
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konversi jenis rel
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konversi jenis rel. Shift untuk menampilkan perkiraan biaya
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Pilihan arah depo
@@ -1964,7 +1965,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinyal K
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinyal Kombo (elektris){}Sinyal Kombo berfungsi ganda, sebagai Sinyal masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinyal Jalur (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard bisa di lewati dari arah belakang
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinyal Jalur Searah (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak bisa di lewati dari arah belakangnya
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konversi Sinyal{}Jika terpilih, klik pada sinyal yang telah ada akan mengakibatkan sinyal berubah jenisnya, CTRL-click untuk mengubah secara berturut-turut
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konversi Sinyal{}Jika terpilih, klik pada sinyal yang telah ada akan mengakibatkan sinyal berubah jenisnya, CTRL-click untuk mengubah secara berturut-turut. Shift untuk menampilkan perkiraan biaya
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Kerapatan Sinyal
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Kurangi kerapatan sinyal
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Tambah kerapatan sinyal
@@ -1974,6 +1975,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Pilih Je
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Pilih Jembatan
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Pilihan jembatan - Klik pada jembatan yang ingin anda bangun
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensi, Baja
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Balok, Baja
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Beton, Baja
@@ -1987,21 +1989,21 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Pipa, Silikon
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Pembangunan Jalan
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Konstruksi Jalan Trem
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bangun bagian jalan. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalan
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bangun jalur trem. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalur trem
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bangun jalan menggunakan mode Autoroad. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalan
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bangun jalur trem menggunakan mode Autotram. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalur trem
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bangun bengkel (untuk pembelian dan perbaikan kendaraan)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bangun bengkel (untuk pembelian dan perbaikan trem)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bangun stasiun bus. Ctrl untuk mengaktifkan penggabungan stasiun
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bangun stasion trem penumpang. Ctrl untuk mengaktifkan penggabungan stasiun
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bangun terminal bongkar muat. Ctrl untuk mengaktifkan penggabungan stasiun
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bangun stasiun trem. Ctrl untuk mengaktifkan penggabungan stasiun
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bangun bagian jalan. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalan. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bangun jalur trem. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalur trem. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bangun jalan menggunakan mode Autoroad. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalan. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Bangun jalur trem menggunakan mode Autotram. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalur trem. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Bangun bengkel (untuk pembelian dan perbaikan kendaraan). Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Bangun bengkel (untuk pembelian dan perbaikan trem). Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Bangun stasiun bus. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Bangun stasion trem penumpang. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Bangun terminal bongkar muat. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Bangun stasiun trem. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Aktif/Non Aktifkan jalan satu arah
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Membangun jembatan
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Membangun jembatan trem
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Membangun terowongan
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Membangun terowongan trem
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Membangun jembatan. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Membangun jembatan trem. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Membangun terowongan. Shift untuk menampilkan perkiraan biaya
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Membangun terowongan trem. Shift untuk menampilkan perkiraan biaya
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Bangun/Bongkar konstruksi jalanan
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Membangun/bongkar konstruksi jalur trem
 
@@ -2024,12 +2026,12 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Pilih ar
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Konstruksi Perairan.
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Perairan
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Membangun kanal
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Membangun pengunci
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bangun galangan kapal (untuk pembelian dan perbaikan kapal)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bangun pelabuhan. Ctrl untuk mengaktifkan penggabungan stasiun
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Tempatkan pelampung yang dapat digunakan sebagai petunjuk arah
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Membangun jembatan air
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Membangun kanal. Shift untuk menampilkan perkiraan biaya
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Membangun pengunci kanal. Shift untuk menampilkan perkiraan biaya
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Bangun galangan kapal (untuk pembelian dan perbaikan kapal). Shift untuk menampilkan perkiraan biaya
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Bangun pelabuhan. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Tempatkan pelampung yang dapat digunakan sebagai petunjuk arah. Shift untuk menampilkan perkiraan biaya
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Membangun jembatan air. Shift untuk menampilkan perkiraan biaya
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Membuat area perairan .{}Membuat kanal, kecuali jika CTRL ditekan pada level yang sejajar dengan laut, maka air akan memenuhi permukaan
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Membuat sungai
 
@@ -2042,7 +2044,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Pelabuha
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Bandara
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bangun bandara. Ctrl untuk mengaktifkan penggabungan stasiun
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Bangun bandara. Ctrl untuk mengaktifkan penggabungan stasiun. Shift untuk menampilkan perkiraan biaya
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Pilih Bandara
@@ -2072,11 +2074,11 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Proses L
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Turunkan penjuru dataran. Drag untuk menurunkan penjuru pertama dan meratakan area setinggi penjuru yg baru. Ctrl untuk memilih secara diagonal. Shift untuk menampilkan perkiraan biaya
 STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Naikkan penjuru dataran. Drag untuk menaikkan penjuru pertama dan meratakan area setinggi penjuru yg baru. Ctrl untuk memilih secara diagonal. Shift untuk menampilkan perkiraan biaya
 STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Ratakan permukaan setinggi ujung kotak terpilih. Ctrl untuk memilih area secara diagonal. Shift untuk menampilkan perkiraan biaya
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tanah untuk digunakan pada masa depan
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tanah untuk digunakan pada masa depan. Shift untuk menampilkan perkiraan biaya
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pemilihan obyek
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih obyek yg akan dibangun
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih obyek yg akan dibangun. Shift untuk menampilkan perkiraan biaya
 STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Kelas obyek
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pra-tayang obyek
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Ukuran: {GOLD}{NUM} x {NUM} kotak
@@ -2088,7 +2090,7 @@ STR_OBJECT_CLASS_TRNS                                           :Pemancar
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pepohonan
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pilih jenis pohon untuk ditanam
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tanam pohon secara acak
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Tempatkan tipe Tumbuhan secara acak
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Tempatkan tipe tumbuhan secara acak. Shift untuk menampilkan perkiraan biaya
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Pohon Acak
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Menanam pohon secara acak pada lansekap
 
@@ -2109,7 +2111,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Apakah a
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Pertumbuhan Kota
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Kota baru
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Membangun kota baru
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Membangun kota baru. Shift untuk menampilkan perkiraan biaya
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Kota secara acak
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Membangun kota di lokasi secara acak
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Buat kota secara acak
@@ -2701,7 +2703,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Membangu
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Lokasi Kantor
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Tampilkan kantor pusat
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Pindah Kantor Pusat
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Membangun kembali kantor pusat perusahaan di tempat lain dengan 1% ongkos dari nilai perusahaan
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Membangun kembali kantor pusat perusahaan di tempat lain dengan 1% ongkos dari nilai perusahaan. Shift untuk menampilkan perkiraan biaya
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Ganti Wajah
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Pilih wajah baru pimpinan
@@ -2714,8 +2716,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ubah nam
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Beli 25% saham perusahaan
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Jual 25% saham perusahaan
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Beli 25% saham perusahaan ini
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25% saham perusahaan ini
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Beli 25% saham perusahaan ini. Shift untuk menampilkan perkiraan biaya
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25% saham perusahaan ini. Shift untuk menampilkan perkiraan biaya
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Perusahaan
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pimpinan
@@ -2848,10 +2850,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Beli Ken
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Beli Kapal
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Beli Pesawat
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Beli kereta yang dipilih
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Beli kendaraan yang dipilih
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Beli kapal yang dipilih
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Beli pesawat yang dipilih
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Beli kereta yang dipilih. Shift untuk menampilkan perkiraan biaya
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Beli kendaraan yang dipilih. Shift untuk menampilkan perkiraan biaya
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Beli kapal yang dipilih. Shift untuk menampilkan perkiraan biaya
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Beli pesawat yang dipilih. Shift untuk menampilkan perkiraan biaya
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Ubah Nama
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Ganti Nama
@@ -2916,10 +2918,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Gandakan
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Gandakan
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Gandakan
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ini akan membeli satu unit kereta yang sama termasuk gerbongnya. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. Ctrl+Click untuk berbagi perintah
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar bengkel.Ctrl+Click untuk berbagi perintah
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ini akan membeli satu unit kapal yang sama . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Ctrl+Click untuk berbagi perintah
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ini akan membeli satu unit pesawat yang sama. Klik tombol ini dan kemudian pada satu pesawat didalam atau diluar hangar. Ctrl+Click untuk berbagi perintah
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ini akan membeli satu unit kereta yang sama termasuk gerbongnya. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar bengkel.Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ini akan membeli satu unit kapal yang sama . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ini akan membeli satu unit pesawat yang sama. Klik tombol ini dan kemudian pada satu pesawat didalam atau diluar hangar. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Arahkan pandangan utama pada lokasi depo. Ctrl+Click akan membuka viewport baru pada lokasi depo
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan utama pada lokasi bengkel kendaraan. Ctrl+Click akan membuka viewport baru pada lokasi bengkel kendaraan
@@ -3003,10 +3005,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Perintah
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Perintahkan kapal berhenti di galangan. CTRL+klik hanya akan memerintahkan perbaikan di galangan
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Perintahkan pesawat berhenti di hangar. CTRL+klik hanya akan memerintahkan perbaikan di hangar
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Untuk membeli rangkaian kereta yang sama termasuk gerbongnya. Ctrl-Klik untuk berbagi perintah
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Ctrl+Click akan berbagi perintah
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ini akan membeli satu unit kapal yang sama. Ctrl+Click akan berbagi perintah
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ini akan membali satu unit pesawat yang sama. Ctrl+Click untuk berbagi perintah
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Untuk membeli rangkaian kereta yang sama termasuk gerbongnya. Ctrl-Klik untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ini akan membeli satu unit kendaraan yang sama. Ctrl+Click akan berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ini akan membeli satu unit kapal yang sama. Ctrl+Click akan berbagi perintah. Shift untuk menampilkan perkiraan biaya
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ini akan membali satu unit pesawat yang sama. Ctrl+Click untuk berbagi perintah. Shift untuk menampilkan perkiraan biaya
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Paksa kereta terus berjalan tanpa menunggu sinyal hijau
 
@@ -3789,7 +3791,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Tidak da
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Tidak dapat menghapus tanda...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :Tiruan Transport Tycoon Deluxe
+STR_DESKTOP_SHORTCUT_COMMENT                                    :Permainan simulasi berdasarkan Transport Tycoon Deluxe
 
 ##id 0x2000
 # Town building names

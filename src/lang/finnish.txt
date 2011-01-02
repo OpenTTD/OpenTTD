@@ -348,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Poistu
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Pelin asetukset
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vaikeusasetukset
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Lisäasetukset
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Tekoälyn asetukset
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-asetukset
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läpinäkyvyysasetukset
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Kaupunkien nimet näkyvissä
