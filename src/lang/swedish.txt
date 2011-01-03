@@ -348,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avsluta
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelinställningar
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Svårighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avancerade inställningar
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI-inställningar
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-inställningar
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Inställningar för genomskinlighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stadsnamn visas

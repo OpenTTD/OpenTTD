@@ -444,6 +444,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Završi
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Postavke igre
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Postavke težine
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Napredne postavke
+STR_SETTINGS_MENU_AI_SETTINGS                                   :UI postavke
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Postavke za NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Postavke prozirnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikaži imena gradova
@@ -2070,6 +2071,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Odaberi 
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Odaberi cestovni most
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Izbor mosta - klikni na most koji želiš izgraditi
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Viseći, čelični
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Noseći, čelični
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konzolni, čelični

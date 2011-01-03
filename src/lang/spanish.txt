@@ -349,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Salir
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opciones de juego
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Configuración de dificultad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Opciones avanzadas
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Configuración de IA
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configuración NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opciones de transparencia
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Ver nombres de pueblos
@@ -1558,7 +1559,7 @@ STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Pulse en
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Servidor al que has estado conectado la última vez:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Pulsa para seleccionar el servidor al que has jugado la última vez
 
-STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO JUEGO
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACIÓN DEL JUEGO
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Clientes: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Idioma: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Escenario: {WHITE}{STRING}
@@ -1665,7 +1666,7 @@ STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Sala de 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Preparándose para unirse: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Listado de empresas actualmente en el juego. Puede unirse a una empresa existente o crear una nueva si hay espacio libre
 
-STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFO EMPRESA
+STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFORMACIÓN DE LA EMPRESA
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Nombre empresa: {WHITE}{STRING}
 STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}Inauguración: {WHITE}{NUM}
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}Valor empresa: {WHITE}{CURRENCY}

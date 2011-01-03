@@ -348,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spelopties
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Moeilijkheidsgraad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Geavanceerde instellingen
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI instellingen
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF instellingen
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Doorzichtigheidsopties
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Toon plaatsnamen
@@ -3341,7 +3342,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selectee
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Naam van computerspeler
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Instellingen van AI
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}AI instellingen
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Wijzig de instellingen van de AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Verwijder computerspeler, herlaad het script en herstart computerspeler

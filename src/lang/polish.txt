@@ -727,6 +727,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Wyjście
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcje gry
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Ustawienia trudności
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ustawienia zaawanasowane
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Ustawienia SI
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Ustawienia NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcje przeźroczystości
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Wyświetlanie nazw miast
@@ -2354,6 +2355,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Wybierz 
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Wybierz most drogowy
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Wybór mostu - kliknij na wybranym moście, aby go zbudować
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Podwieszany, stalowy
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Dźwigarowy, stalowy
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Wspornikowy, stalowy

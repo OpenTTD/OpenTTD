@@ -536,6 +536,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izađi
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcije
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Podešavanje težine
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Detaljna podešavanja
+STR_SETTINGS_MENU_AI_SETTINGS                                   :VI podešavanja
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF podešavanja
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcije transparentnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Prikazana imena naselja
