@@ -981,7 +981,7 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CHAT)
 	}
 
 	if (ci != NULL) {
-		NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColour(ci->client_playas), self_send, name, msg, data);
+		NetworkTextMessage(action, GetDrawStringCompanyColour(ci->client_playas), self_send, name, msg, data);
 	}
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -1069,13 +1069,13 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_RCON)
 {
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	uint colour_code = p->Recv_uint16();
+	TextColour colour_code = (TextColour)p->Recv_uint16();
 	if (!IsValidConsoleColour(colour_code)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	char rcon_out[NETWORK_RCONCOMMAND_LENGTH];
 	p->Recv_string(rcon_out, sizeof(rcon_out));
 
-	IConsolePrint((ConsoleColour)colour_code, rcon_out);
+	IConsolePrint(colour_code, rcon_out);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }

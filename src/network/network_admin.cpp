@@ -783,7 +783,7 @@ void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_i
  * @param colour_code The colour of the string.
  * @param string      The string to show.
  */
-void NetworkServerSendAdminRcon(AdminIndex admin_index, ConsoleColour colour_code, const char *string)
+void NetworkServerSendAdminRcon(AdminIndex admin_index, TextColour colour_code, const char *string)
 {
 	ServerNetworkAdminSocketHandler::Get(admin_index)->SendRcon(colour_code, string);
 }

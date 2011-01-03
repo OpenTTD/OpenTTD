@@ -958,7 +958,7 @@ DEF_CONSOLE_CMD(ConEchoC)
 	}
 
 	if (argc < 3) return false;
-	IConsolePrint((ConsoleColour)atoi(argv[1]), argv[2]);
+	IConsolePrint((TextColour)atoi(argv[1]), argv[2]);
 	return true;
 }
 
@@ -1626,7 +1626,7 @@ DEF_CONSOLE_CMD(ConContent)
 			static const char * const types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap", "Base sound", "Base music" };
 			assert_compile(lengthof(types) == CONTENT_TYPE_END - CONTENT_TYPE_BEGIN);
 			static const char * const states[] = { "Not selected", "Selected", "Dep Selected", "Installed", "Unknown" };
-			static const ConsoleColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
+			static const TextColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
 
 			const ContentInfo *ci = *iter;
 			IConsolePrintF(state_to_colour[ci->state], "%d, %s, %s, %s", ci->id, types[ci->type - 1], states[ci->state], ci->name);

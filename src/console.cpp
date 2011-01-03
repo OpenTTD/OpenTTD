@@ -84,7 +84,7 @@ void IConsoleFree()
  * @param colour_code the colour of the command. Red in case of errors, etc.
  * @param string the message entered or output on the console (notice, error, etc.)
  */
-void IConsolePrint(ConsoleColour colour_code, const char *string)
+void IConsolePrint(TextColour colour_code, const char *string)
 {
 	assert(IsValidConsoleColour(colour_code));
 
@@ -128,7 +128,7 @@ void IConsolePrint(ConsoleColour colour_code, const char *string)
  * by any other means. Uses printf() style format, for more information look
  * at IConsolePrint()
  */
-void CDECL IConsolePrintF(ConsoleColour colour_code, const char *format, ...)
+void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...)
 {
 	assert(IsValidConsoleColour(colour_code));
 

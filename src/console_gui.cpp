@@ -489,8 +489,8 @@ static void IConsoleHistoryNavigate(int direction)
  * @param colour_code the colour of the command. Red in case of errors, etc.
  * @param str the message entered or output on the console (notice, error, etc.)
  */
-void IConsoleGUIPrint(ConsoleColour colour_code, char *str)
+void IConsoleGUIPrint(TextColour colour_code, char *str)
 {
-	new IConsoleLine(str, (TextColour)colour_code);
+	new IConsoleLine(str, colour_code);
 	SetWindowDirty(WC_CONSOLE, 0);
 }

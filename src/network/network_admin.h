@@ -95,7 +95,7 @@ void NetworkAdminCompanyRemove(CompanyID company_id, AdminCompanyRemoveReason bc
 
 void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_id, const char *msg, int64 data = 0, bool from_admin = false);
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
-void NetworkServerSendAdminRcon(AdminIndex admin_index, ConsoleColour colour_code, const char *string);
+void NetworkServerSendAdminRcon(AdminIndex admin_index, TextColour colour_code, const char *string);
 void NetworkAdminConsole(const char *origin, const char *string);
 void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket *cp);
 

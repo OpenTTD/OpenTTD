@@ -72,7 +72,7 @@ NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id);
 const char *GetClientIP(NetworkClientInfo *ci);
 
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
-void NetworkServerSendRcon(ClientID client_id, ConsoleColour colour_code, const char *string);
+void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const char *string);
 void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const char *msg, ClientID from_id, int64 data = 0, bool from_admin = false);
 
 void NetworkServerKickClient(ClientID client_id);
