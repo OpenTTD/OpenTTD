@@ -32,4 +32,6 @@ void IConsoleError(const char *string);
 /* Parser */
 void IConsoleCmdExec(const char *cmdstr);
 
+bool IsValidConsoleColour(TextColour c);
+
 #endif /* CONSOLE_FUNC_H */

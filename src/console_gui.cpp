@@ -494,3 +494,24 @@ void IConsoleGUIPrint(TextColour colour_code, char *str)
 	new IConsoleLine(str, colour_code);
 	SetWindowDirty(WC_CONSOLE, 0);
 }
+
+
+/**
+ * Check whether the given TextColour is valid for console usage.
+ * @param c The text colour to compare to.
+ * @return true iff the TextColour is valid for console usage.
+ */
+bool IsValidConsoleColour(TextColour c)
+{
+	/* A normal text colour is used. */
+	if (!(c & TC_IS_PALETTE_COLOUR)) return TC_BEGIN <= c && c < TC_END;
+
+	/* A text colour from the palette is used; must be the company
+	 * colour gradient, so it must be one of those. */
+	c &= ~TC_IS_PALETTE_COLOUR;
+	for (uint i = TC_BEGIN; i < TC_END; i++) {
+		if (_colour_gradient[i][4] == c) return true;
+	}
+
+	return false;
+}

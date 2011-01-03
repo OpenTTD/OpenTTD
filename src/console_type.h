@@ -30,10 +30,4 @@ static const TextColour CC_DEBUG   = TC_LIGHT_BROWN; ///< Colour for debug outpu
 static const TextColour CC_COMMAND = TC_GOLD;        ///< Colour for the console's commands.
 static const TextColour CC_WHITE   = TC_WHITE;       ///< White console lines for various things such as the welcome.
 
-static inline bool IsValidConsoleColour(uint c)
-{
-	return c == CC_DEFAULT || c == CC_ERROR || c == CC_WARNING || c == CC_INFO ||
-			c == CC_DEBUG || c == CC_COMMAND || c == CC_WHITE;
-}
-
 #endif /* CONSOLE_TYPE_H */
