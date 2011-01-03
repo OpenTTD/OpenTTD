@@ -294,6 +294,11 @@ void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 	return AI::ai_scanner->GetAIConsoleList(p, last);
 }
 
+/* static */ char *AI::GetConsoleLibraryList(char *p, const char *last)
+{
+	 return AI::ai_scanner->GetAIConsoleLibraryList(p, last);
+}
+
 /* static */ const AIInfoList *AI::GetInfoList()
 {
 	return AI::ai_scanner->GetAIInfoList();

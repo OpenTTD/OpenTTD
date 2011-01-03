@@ -343,6 +343,19 @@ char *AIScanner::GetAIConsoleList(char *p, const char *last) const
 	return p;
 }
 
+char *AIScanner::GetAIConsoleLibraryList(char *p, const char *last) const
+{
+	p += seprintf(p, last, "List of AI Libraries:\n");
+	AILibraryList::const_iterator it = this->library_list.begin();
+	for (; it != this->library_list.end(); it++) {
+		AILibrary *i = (*it).second;
+		p += seprintf(p, last, "%10s (v%d): %s\n", i->GetName(), i->GetVersion(), i->GetDescription());
+	}
+	p += seprintf(p, last, "\n");
+
+	return p;
+}
+
 #if defined(ENABLE_NETWORK)
 #include "../network/network_content.h"
 #include "../3rdparty/md5/md5.h"

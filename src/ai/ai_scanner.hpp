@@ -59,6 +59,11 @@ public:
 	char *GetAIConsoleList(char *p, const char *last) const;
 
 	/**
+	 * Get the list of available AI Libraries for the console.
+	 */
+	char *GetAIConsoleLibraryList(char *p, const char *last) const;
+
+	/**
 	 * Get the list of all registered AIs.
 	 */
 	const AIInfoList *GetAIInfoList() { return &this->info_list; }

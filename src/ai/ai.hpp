@@ -126,6 +126,8 @@ public:
 
 	/** Wrapper function for AIScanner::GetAIConsoleList */
 	static char *GetConsoleList(char *p, const char *last);
+	/** Wrapper function for AIScanner::GetAIConsoleLibraryList */
+	static char *GetConsoleLibraryList(char *p, const char *last);
 	/** Wrapper function for AIScanner::GetAIInfoList */
 	static const AIInfoList *GetInfoList();
 	/** Wrapper function for AIScanner::GetUniqueAIInfoList */
