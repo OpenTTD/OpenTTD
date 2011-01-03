@@ -958,7 +958,7 @@ DEF_CONSOLE_CMD(ConEchoC)
 	}
 
 	if (argc < 3) return false;
-	IConsolePrint((TextColour)atoi(argv[1]), argv[2]);
+	IConsolePrint((TextColour)Clamp(atoi(argv[1]), TC_BEGIN, TC_END - 1), argv[2]);
 	return true;
 }
 

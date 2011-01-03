@@ -204,6 +204,7 @@ template <> struct EnumPropsT<Colours> : MakeEnumPropsT<Colours, byte, COLOUR_DA
 
 /** Colour of the strings, see _string_colourmap in table/palettes.h or docs/ottd-colourtext-palette.png */
 enum TextColour {
+	TC_BEGIN       = 0x00,
 	TC_FROMSTRING  = 0x00,
 	TC_BLUE        = 0x00,
 	TC_SILVER      = 0x01,
@@ -222,6 +223,7 @@ enum TextColour {
 	TC_GREY        = 0x0E,
 	TC_DARK_BLUE   = 0x0F,
 	TC_BLACK       = 0x10,
+	TC_END,
 	TC_INVALID     = 0xFF,
 
 	TC_IS_PALETTE_COLOUR = 0x100, ///< Colour value is already a real palette colour index, not an index of a StringColour.
