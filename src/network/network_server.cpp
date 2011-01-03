@@ -1703,12 +1703,14 @@ void NetworkServer_Tick(bool send_frame)
 			if (lag > _settings_client.network.max_join_time) {
 				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->client_id, _settings_client.network.max_join_time);
 				cs->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
+				continue;
 			}
 		} else if (cs->status == NetworkClientSocket::STATUS_INACTIVE) {
 			uint lag = NetworkCalculateLag(cs);
 			if (lag > 4 * DAY_TICKS) {
 				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->client_id, 4 * DAY_TICKS);
 				cs->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
+				continue;
 			}
 		}
 
