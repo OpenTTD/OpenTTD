@@ -58,6 +58,9 @@ Company::Company(uint16 name_1, bool is_ai)
 	this->name_1 = name_1;
 	this->location_of_HQ = INVALID_TILE;
 	this->is_ai = is_ai;
+	this->terraform_limit = _settings_game.construction.terraform_frame_burst << 16;
+	this->clear_limit     = _settings_game.construction.clear_frame_burst << 16;
+
 	for (uint j = 0; j < 4; j++) this->share_owners[j] = COMPANY_SPECTATOR;
 	InvalidateWindowData(WC_PERFORMANCE_DETAIL, 0, INVALID_COMPANY);
 }
@@ -250,6 +253,16 @@ void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cst)
 	cost >>= 8;
 	if (c->money_fraction > m) cost++;
 	if (cost != 0) SubtractMoneyFromAnyCompany(c, CommandCost(cst.GetExpensesType(), cost));
+}
+
+/** Update the landscaping limits per company. */
+void UpdateLandscapingLimits()
+{
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		c->terraform_limit = min(c->terraform_limit + _settings_game.construction.terraform_per_64k_frames, _settings_game.construction.terraform_frame_burst << 16);
+		c->clear_limit     = min(c->clear_limit     + _settings_game.construction.clear_per_64k_frames,     _settings_game.construction.clear_frame_burst << 16);
+	}
 }
 
 /**

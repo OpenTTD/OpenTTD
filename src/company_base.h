@@ -69,6 +69,9 @@ struct CompanyProperties {
 	int16 bankrupt_timeout;          ///< If bigger than \c 0, amount of time to wait for an answer on an offer to buy this company.
 	Money bankrupt_value;
 
+	uint32 terraform_limit;          ///< Amount of tileheights we can (still) terraform (times 65536).
+	uint32 clear_limit;              ///< Amount of tiles we can (still) clear (times 65536).
+
 	/**
 	 * If \c true, the company is (also) controlled by the computer (a NoAI program).
 	 * @note It is possible that the user is also participating in such a company.

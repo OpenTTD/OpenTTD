@@ -140,6 +140,9 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDNULL(1, 107, 111), ///< is_noai
 	SLE_CONDNULL(1, 4, 99),
 
+	SLE_CONDVAR(CompanyProperties, terraform_limit,       SLE_UINT32,                156, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyProperties, clear_limit,           SLE_UINT32,                156, SL_MAX_VERSION),
+
 	SLE_END()
 };
 

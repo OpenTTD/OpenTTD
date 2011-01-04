@@ -18,6 +18,8 @@
 #include "economy_func.h"
 #include "genworld.h"
 #include "object_base.h"
+#include "company_base.h"
+#include "company_func.h"
 
 #include "table/strings.h"
 
@@ -346,6 +348,11 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		}
 	}
 
+	Company *c = Company::GetIfValid(_current_company);
+	if (c != NULL && (int)GB(c->terraform_limit, 16, 16) < ts.modheight_count) {
+		return_cmd_error(STR_ERROR_TERRAFORM_LIMIT_REACHED);
+	}
+
 	if (flags & DC_EXEC) {
 		/* change the height */
 		{
@@ -368,6 +375,8 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 				MarkTileDirtyByTile(*ti);
 			}
 		}
+
+		if (c != NULL) c->terraform_limit -= ts.modheight_count << 16;
 	}
 	return total_cost;
 }
@@ -411,6 +420,9 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	CommandCost last_error(lm == LM_LEVEL ? STR_ERROR_ALREADY_LEVELLED : INVALID_STRING_ID);
 	bool had_success = false;
 
+	const Company *c = Company::GetIfValid(_current_company);
+	int limit = (c == NULL ? INT32_MAX : GB(c->terraform_limit, 16, 16));
+
 	TileArea ta(tile, p1);
 	TileIterator *iter = HasBit(p2, 0) ? (TileIterator *)new DiagonalTileIterator(tile, p1) : new OrthogonalTileIterator(ta);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
@@ -420,6 +432,9 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			CommandCost ret = DoCommand(t, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
 			if (ret.Failed()) {
 				last_error = ret;
+
+				/* Did we reach the limit? */
+				if (ret.GetErrorMessage() == STR_ERROR_TERRAFORM_LIMIT_REACHED) limit = 0;
 				break;
 			}
 
@@ -431,12 +446,21 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					return cost;
 				}
 				DoCommand(t, SLOPE_N, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
+			} else {
+				/* When we're at the terraform limit we better bail (unneeded) testing as well.
+				 * This will probably cause the terraforming cost to be underestimated, but only
+				 * when it's near the terraforming limit. Even then, the estimation is
+				 * completely off due to it basically counting terraforming double, so it being
+				 * cut off earlier might even give a better estimate in some cases. */
+				if (--limit <= 0) break;
 			}
 
 			cost.AddCost(ret);
 			curh += (curh > h) ? -1 : 1;
 			had_success = true;
 		}
+
+		if (limit <= 0) break;
 	}
 
 	delete iter;

@@ -371,7 +371,11 @@ const SettingDesc _settings[] = {
  SDT_CONDOMANY(GameSettings, vehicle.road_side,                    SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 1,   1, _roadsides,       STR_NULL,                                  CheckRoadSide, NULL),
 
 	    SDT_BOOL(GameSettings, construction.build_on_slopes,                                        0,NN,  true,                    STR_CONFIG_SETTING_BUILDONSLOPES,          NULL),
-	 SDT_CONDVAR(GameSettings, construction.command_pause_level,     SLE_UINT8,154, SL_MAX_VERSION, 0,MS|NN,  1,     0,       3, 1, STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL, NULL),
+	 SDT_CONDVAR(GameSettings, construction.command_pause_level,     SLE_UINT8,154, SL_MAX_VERSION, 0,MS|NN,  1,    0,        3, 1, STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL,    NULL),
+	 SDT_CONDVAR(GameSettings, construction.terraform_per_64k_frames,SLE_UINT32,156,SL_MAX_VERSION, 0, 0, 64 << 16, 0,  1 << 30, 1, STR_NULL, NULL),
+	 SDT_CONDVAR(GameSettings, construction.terraform_frame_burst,  SLE_UINT16,156, SL_MAX_VERSION, 0, 0, 4096,     0,  1 << 30, 1, STR_NULL, NULL),
+	 SDT_CONDVAR(GameSettings, construction.clear_per_64k_frames,   SLE_UINT32,156, SL_MAX_VERSION, 0, 0, 64 << 16, 0,  1 << 30, 1, STR_NULL, NULL),
+	 SDT_CONDVAR(GameSettings, construction.clear_frame_burst,      SLE_UINT16,156, SL_MAX_VERSION, 0, 0, 4096,     0,  1 << 30, 1, STR_NULL, NULL),
 	SDT_CONDBOOL(GameSettings, construction.autoslope,                          75, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_AUTOSLOPE,              NULL),
 	    SDT_BOOL(GameSettings, construction.extra_dynamite,                                         0, 0,  true,                    STR_CONFIG_SETTING_EXTRADYNAMITE,          NULL),
 	    SDT_BOOL(GameSettings, construction.longbridges,                                            0,NN,  true,                    STR_CONFIG_SETTING_LONGBRIDGES,            NULL),

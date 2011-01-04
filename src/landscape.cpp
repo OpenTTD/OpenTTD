@@ -32,6 +32,7 @@
 #include "object_base.h"
 #include "water_map.h"
 #include "economy_func.h"
+#include "company_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -616,6 +617,11 @@ CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		cost.AddCost(GetWaterClass(tile) == WATER_CLASS_CANAL ? _price[PR_CLEAR_CANAL] : _price[PR_CLEAR_WATER]);
 	}
 
+	Company *c = (flags & DC_AUTO) ? NULL : Company::GetIfValid(_current_company);
+	if (c != NULL && (int)GB(c->clear_limit, 16, 16) < 1) {
+		return_cmd_error(STR_ERROR_CLEARING_LIMIT_REACHED);
+	}
+
 	const ClearedObjectArea *coa = FindClearedObject(tile);
 
 	/* If this tile was the first tile which caused object destruction, always
@@ -633,7 +639,10 @@ CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		cost.AddCost(_tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags));
 	}
 
-	if (do_clear && (flags & DC_EXEC)) DoClearSquare(tile);
+	if (flags & DC_EXEC) {
+		if (c != NULL) c->clear_limit -= 1 << 16;
+		if (do_clear) DoClearSquare(tile);
+	}
 	return cost;
 }
 
@@ -656,6 +665,9 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 
+	const Company *c = (flags & DC_AUTO) ? NULL : Company::GetIfValid(_current_company);
+	int limit = (c == NULL ? INT32_MAX : GB(c->clear_limit, 16, 16));
+
 	TileArea ta(tile, p1);
 	TileIterator *iter = HasBit(p2, 0) ? (TileIterator *)new DiagonalTileIterator(tile, p1) : new OrthogonalTileIterator(ta);
 	for (; *iter != INVALID_TILE; ++(*iter)) {
@@ -663,6 +675,9 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		CommandCost ret = DoCommand(t, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		if (ret.Failed()) {
 			last_error = ret;
+
+			/* We may not clear more tiles. */
+			if (c != NULL && GB(c->clear_limit, 16, 16) < 1) break;
 			continue;
 		}
 
@@ -684,6 +699,9 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					ta.w == 1 && ta.h == 1 ? EV_EXPLOSION_SMALL : EV_EXPLOSION_LARGE
 				);
 			}
+		} else {
+			/* When we're at the clearing limit we better bail (unneed) testing as well. */
+			if (ret.GetCost() != 0 && --limit <= 0) break;
 		}
 		cost.AddCost(ret);
 	}

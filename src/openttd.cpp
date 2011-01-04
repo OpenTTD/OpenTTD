@@ -1236,6 +1236,7 @@ void StateGameLoop()
 {
 	/* dont execute the state loop during pause */
 	if (_pause_mode != PM_UNPAUSED) {
+		UpdateLandscapingLimits();
 		CallWindowTickEvent();
 		return;
 	}
@@ -1248,6 +1249,7 @@ void StateGameLoop()
 		CallVehicleTicks();
 		CallLandscapeTick();
 		ClearStorageChanges(true);
+		UpdateLandscapingLimits();
 
 		CallWindowTickEvent();
 		NewsLoop();
@@ -1273,6 +1275,7 @@ void StateGameLoop()
 		ClearStorageChanges(true);
 
 		AI::GameLoop();
+		UpdateLandscapingLimits();
 
 		CallWindowTickEvent();
 		NewsLoop();
