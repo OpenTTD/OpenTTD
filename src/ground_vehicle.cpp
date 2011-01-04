@@ -127,7 +127,7 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	}
 	/* Air drag; the air drag coefficient is in an arbitrary NewGRF-unit,
 	 * so we need some magic conversion factor. */
-	resistance += (area * this->gcache.cached_air_drag * speed * speed) / 500;
+	resistance += (area * this->gcache.cached_air_drag * speed * speed) / 1000;
 
 	resistance += this->GetSlopeResistance();
 
@@ -151,7 +151,8 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	}
 
 	if (mode == AS_ACCEL) {
-		return (force - resistance) / (mass * 2);
+		/* Divide by 4 to compensate for the wacky game scale. */
+		return (force - resistance) / (mass * 4);
 	} else {
 		return min(-force - resistance, -10000) / mass;
 	}
