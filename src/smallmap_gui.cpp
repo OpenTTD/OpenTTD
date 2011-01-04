@@ -992,6 +992,8 @@ public:
 
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
 		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
+		this->GetWidget<NWidgetCore>(SM_WIDGET_LEGEND)->SetDataTip(STR_NULL,
+				(this->map_type == SMT_INDUSTRY) ? STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION : STR_NULL);
 
 		this->SetZoomLevel(ZLC_INITIALIZE, NULL);
 		this->SmallMapCenterOnCurrentPos();
@@ -1152,6 +1154,9 @@ public:
 
 		/* Hide Enable all/Disable all buttons if is not industry type small map */
 		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
+
+		this->GetWidget<NWidgetCore>(SM_WIDGET_LEGEND)->SetDataTip(STR_NULL,
+				(this->map_type == SMT_INDUSTRY) ? STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION : STR_NULL);
 
 		this->SetDirty();
 	}
