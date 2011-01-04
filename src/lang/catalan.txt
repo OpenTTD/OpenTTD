@@ -702,8 +702,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactiva-ho tot
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activa-ho tot
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostra alçada
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}No mostris les indústries al mapa
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mostra totes les indústries al mapa
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}No mostris les indústries al mapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostra totes les indústries al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Commuta mostrar els mapes d'alçades
 
 # Status bar messages

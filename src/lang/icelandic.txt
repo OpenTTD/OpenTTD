@@ -700,8 +700,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Fela allt
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Sýna allt
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Sýna hæð
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Sýna ekki iðnaði
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Sýna alla iðnaði
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Sýna ekki iðnaði
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Sýna alla iðnaði
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Sýna/fela hæðakort
 
 # Status bar messages

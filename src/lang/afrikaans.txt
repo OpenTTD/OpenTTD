@@ -689,8 +689,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Sper alle
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ontsper alle
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Vertoon hoogte
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Moet nie enige nywerheide op die kaart vertoon
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Vertoon alle nywerheide op die kaart
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Moet nie enige nywerheide op die kaart vertoon
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Vertoon alle nywerheide op die kaart
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Tokkel vertooning van hoogtekaart
 
 # Status bar messages

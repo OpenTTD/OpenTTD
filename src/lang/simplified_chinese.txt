@@ -698,8 +698,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全部禁用
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}全部启用
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}显示高度
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}在地图上不显示工业设施
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}在地图上显示所有工业设施
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}在地图上不显示工业设施
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}在地图上显示所有工业设施
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}切换高度图显示
 
 # Status bar messages

@@ -710,8 +710,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}השתק את כולן
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}הצג את כולן
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}הצג גובה
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}אל תציג תעשיות על המפה
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}הצג את כל התעשיות על המפה
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}אל תציג תעשיות על המפה
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}הצג את כל התעשיות על המפה
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}שנה מצב הצגה של מפת גבהים
 
 # Status bar messages

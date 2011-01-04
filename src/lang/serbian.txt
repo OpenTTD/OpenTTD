@@ -896,8 +896,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Sva sakrivena
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Sva prikazana
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Prikaži visine
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Sakrij sve fabrike na karti
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Prikaži na karti sve fabrike
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Sakrij sve fabrike na karti
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Prikaži na karti sve fabrike
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Promena prikaza elevacije
 
 # Status bar messages

@@ -758,8 +758,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Kõik välja
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Kõik sisse
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Kõrguse näitamine
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Kaardil tööstuseid ei näidata
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Kaardil kõikide tööstuste näitamine
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Kaardil tööstuseid ei näidata
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Kaardil kõikide tööstuste näitamine
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Kõrguskaardi näitamise vahetamine
 
 # Status bar messages

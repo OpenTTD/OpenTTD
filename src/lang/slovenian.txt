@@ -742,8 +742,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Onemogoči vse
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Omogoči vse
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Prikaži višino
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Na zemljevidu ne prikaži nobene industrije
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Na zemljevidu prikaži vse industrije
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Na zemljevidu ne prikaži nobene industrije
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Na zemljevidu prikaži vse industrije
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Preklopi vidljivost višinske karte
 
 # Status bar messages

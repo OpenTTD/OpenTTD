@@ -703,8 +703,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Disabilita tutti
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Abilita tutti
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostra altitudine
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Nasconde tutte le industrie dalla mappa
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mostra tutte le industrie sulla mappa
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nasconde tutte le industrie dalla mappa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostra tutte le industrie sulla mappa
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Attiva/disattiva la visualizzazione della mappa altimetrica
 
 # Status bar messages

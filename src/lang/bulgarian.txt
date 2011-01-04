@@ -701,8 +701,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Изключване на всички
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Включване на всички
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Височина на снега
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Не показвай индустрии на картата
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Покажи всички индустрии на картата
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Не показвай индустрии на картата
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Покажи всички индустрии на картата
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Показване/скриване на височинна карта
 
 # Status bar messages

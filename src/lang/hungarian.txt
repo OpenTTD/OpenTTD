@@ -764,8 +764,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Kikapcsol mind
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Bekapcsol mind
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mutasd a magasságot
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ne mutasd a gazdasági létesítményeket a térképen
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mutasd az összes gazdasági létesítményt a térképen
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ne mutasd a gazdasági létesítményeket a térképen
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mutasd az összes gazdasági létesítményt a térképen
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Magasságtérkép be/kikapcsolása
 
 # Status bar messages

@@ -699,8 +699,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Malaktivigu ĉiujn
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktivigu ĉiujn
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Montru altecon
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ne montri industriojn sur la mapo.
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Montri ĉiujn industriojn sur la mapo.
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ne montri industriojn sur la mapo.
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Montri ĉiujn industriojn sur la mapo.
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Ŝaltu montro de altecmapo
 
 # Status bar messages

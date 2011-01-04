@@ -701,8 +701,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}모두 사용 안함
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}모두 사용
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}고도 보여주기
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}지도상에 모든 사업 보여주기 않기
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}지도상에 모든 산업 보여주기
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}지도상에 모든 사업 보여주기 않기
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}지도상에 모든 산업 보여주기
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}고도 표시 토글
 
 # Status bar messages

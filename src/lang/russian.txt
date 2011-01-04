@@ -846,8 +846,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Выключить все
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Включить все
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Рельеф
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Скрыть все предприятия на карте
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Показать все предприятия на карте
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Скрыть все предприятия на карте
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Показать все предприятия на карте
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Отображение рельефа на карте
 
 # Status bar messages

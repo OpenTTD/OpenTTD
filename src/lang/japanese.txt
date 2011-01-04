@@ -691,8 +691,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}すべてを切
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}すべてを入
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}雪の高さ
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}地図に産業を示さないようにします
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}地図のぜんぶの産業を示す
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}地図に産業を示さないようにします
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}地図のぜんぶの産業を示す
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}ハイトマップを示すのをトグルします
 
 # Status bar messages

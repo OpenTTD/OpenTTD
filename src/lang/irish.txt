@@ -700,8 +700,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Díchumasaigh gach
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Cumasaigh gach
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Taispeáin airde
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ná taispeáin aon tionscal ar an léarscáil
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Taispeáin gach tionscal ar an léarscáil
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ná taispeáin aon tionscal ar an léarscáil
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Taispeáin gach tionscal ar an léarscáil
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Scoránaigh an mapa airde a thaipeáint
 
 # Status bar messages

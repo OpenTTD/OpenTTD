@@ -699,8 +699,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全部關閉
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}全部打開
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}顯示高度
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}地圖不顯示任何工業
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}地圖顯示所有工業
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}地圖不顯示任何工業
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}地圖顯示所有工業
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}切換高度圖顯示
 
 # Status bar messages

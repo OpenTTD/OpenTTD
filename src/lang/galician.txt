@@ -688,8 +688,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactivar todo
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activar todo
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altitude
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Non mostrar industrias no mapa
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Mostrar tódalas industrias no mapa
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Non mostrar industrias no mapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar tódalas industrias no mapa
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar a última mensaxe ou noticia

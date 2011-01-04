@@ -797,8 +797,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Onemogući sve
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Omogući sve
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Pokaži visinu
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Ne prikazuj industrije na karti
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Prikaži sve industrije na karti
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ne prikazuj industrije na karti
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Prikaži sve industrije na karti
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Aktiviraj prikaz visinske karte
 
 # Status bar messages

@@ -692,8 +692,8 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Nyahaktifkan semua
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktifkan semua
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Paparkan ketinggian
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Jangan paparkan industri dalam peta
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Senaraikan semua industri dalam peta
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Jangan paparkan industri dalam peta
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Senaraikan semua industri dalam peta
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Papar atau padamkan heightmap
 
 # Status bar messages
