@@ -164,7 +164,7 @@ static LegendAndColour _legend_land_owners[NUM_NO_COMPANY_ENTRIES + MAX_COMPANIE
  * This is required in order to have the indutry slots all filled up
  */
 static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES + 1];
-/* For connecting industry type to position in industries list(small map legend) */
+/** For connecting industry type to position in industries list(small map legend) */
 static uint _industry_to_list_pos[NUM_INDUSTRYTYPES];
 /** Show heightmap in industry mode of smallmap window. */
 static bool _smallmap_industry_show_heightmap;
