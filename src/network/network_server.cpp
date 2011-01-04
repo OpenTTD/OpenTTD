@@ -1812,6 +1812,8 @@ void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded)
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (cs->status >= NetworkClientSocket::STATUS_PRE_ACTIVE) cs->SendCompanyUpdate();
 	}
+
+	NetworkAdminCompanyUpdate(Company::GetIfValid(company_id));
 }
 
 /**
