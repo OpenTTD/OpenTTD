@@ -518,9 +518,6 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile, TileType t)
 	}
 }
 
-
-static uint32 _owner_colours[OWNER_END + 1];
-
 /**
  * Return the colour a tile would be displayed with in the small map in mode "Owner".
  *
@@ -533,8 +530,8 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 	Owner o;
 
 	switch (t) {
-		case MP_INDUSTRY: o = OWNER_END;          break;
-		case MP_HOUSE:    o = OWNER_TOWN;         break;
+		case MP_INDUSTRY: return MKCOLOUR(0x20202020);
+		case MP_HOUSE:    return MKCOLOUR(0xB4B4B4B4);
 		default:          o = GetTileOwner(tile); break;
 		/* FIXME: For MP_ROAD there are multiple owners.
 		 * GetTileOwner returns the rail owner (level crossing) resp. the owner of ROADTYPE_ROAD (normal road),
@@ -542,8 +539,15 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 		 */
 	}
 
-	if (o <= MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) o = OWNER_NONE;
-	return _owner_colours[o];
+	if ((o <= MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) || o == OWNER_NONE) {
+		return _heightmap_schemes[_settings_client.gui.smallmap_land_colour].default_colour;
+	} else if (o == OWNER_WATER) {
+		return MKCOLOUR(0xCACACACA);
+	} else if (o == OWNER_TOWN) {
+		return MKCOLOUR(0xB4B4B4B4);
+	}
+
+	return _legend_land_owners[_company_to_list_pos[o]].colour * 0x01010101;
 }
 
 /** Vehicle colours in #SMT_VEHICLES mode. Indexed by #VehicleTypeByte. */
@@ -943,22 +947,6 @@ class SmallMapWindow : public Window {
 
 		/* Clear it */
 		GfxFillRect(dpi->left, dpi->top, dpi->left + dpi->width - 1, dpi->top + dpi->height - 1, 0);
-
-		/* Setup owner table */
-		if (this->map_type == SMT_OWNER) {
-			const Company *c;
-
-			/* Fill with some special colours */
-			_owner_colours[OWNER_TOWN]  = MKCOLOUR(0xB4B4B4B4);
-			_owner_colours[OWNER_NONE]  = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].default_colour;
-			_owner_colours[OWNER_WATER] = MKCOLOUR(0xCACACACA);
-			_owner_colours[OWNER_END]   = MKCOLOUR(0x20202020); // Industry
-
-			/* Now fill with the company colours */
-			FOR_ALL_COMPANIES(c) {
-				_owner_colours[c->index] = _colour_gradient[c->colour][5] * 0x01010101;
-			}
-		}
 
 		/* Which tile is displayed at (dpi->left, dpi->top)? */
 		int dx;
