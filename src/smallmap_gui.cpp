@@ -138,13 +138,14 @@ static const LegendAndColour _legend_vegetation[] = {
 	MKEND()
 };
 
-static const LegendAndColour _legend_land_owners[] = {
+static LegendAndColour _legend_land_owners[] = {
 	MK(0xCA, STR_SMALLMAP_LEGENDA_WATER),
-	MK(0x54, STR_SMALLMAP_LEGENDA_NO_OWNER),
+	MK(0x00, STR_SMALLMAP_LEGENDA_NO_OWNER), // This colour will vary depending on settings.
 	MK(0xB4, STR_SMALLMAP_LEGENDA_TOWNS),
 	MK(0x20, STR_SMALLMAP_LEGENDA_INDUSTRIES),
 	MKEND()
 };
+
 #undef MK
 #undef MC
 #undef MS
@@ -283,6 +284,14 @@ void BuildLandLegend()
 	for (LegendAndColour *lc = _legend_land_contours; lc->legend == STR_TINY_BLACK_HEIGHT; lc++) {
 		lc->colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[lc->u.height];
 	}
+}
+
+/**
+ * Completes the array for the owned property legend.
+ */
+void BuildOwnerLegend()
+{
+	_legend_land_owners[1].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].default_colour;
 }
 
 struct AndOr {
@@ -973,6 +982,7 @@ class SmallMapWindow : public Window {
 public:
 	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(), refresh(FORCE_REFRESH_PERIOD)
 	{
+		BuildOwnerLegend();
 		this->InitNested(desc, window_number);
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 

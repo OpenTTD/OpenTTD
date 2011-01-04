@@ -15,5 +15,6 @@
 void BuildIndustriesLegend();
 void ShowSmallMap();
 void BuildLandLegend();
+void BuildOwnerLegend();
 
 #endif /* SMALLMAP_GUI_H */

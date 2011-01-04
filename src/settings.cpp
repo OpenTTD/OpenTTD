@@ -720,6 +720,7 @@ static bool RedrawScreen(int32 p1)
 static bool RedrawSmallmap(int32 p1)
 {
 	BuildLandLegend();
+	BuildOwnerLegend();
 	SetWindowClassesDirty(WC_SMALLMAP);
 	return true;
 }
