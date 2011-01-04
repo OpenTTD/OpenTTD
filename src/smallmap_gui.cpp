@@ -168,6 +168,8 @@ static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES + 1];
 static uint _industry_to_list_pos[NUM_INDUSTRYTYPES];
 /** Show heightmap in industry mode of smallmap window. */
 static bool _smallmap_industry_show_heightmap;
+/** For connecting company ID to position in owner list (small map legend) */
+static uint _company_to_list_pos[MAX_COMPANIES];
 
 /**
  * Fills an array for the industries legends.
@@ -309,6 +311,7 @@ void BuildOwnerLegend()
 		_legend_land_owners[i].show_on_map = true;
 		_legend_land_owners[i].col_break = false;
 		_legend_land_owners[i].end = false;
+		_company_to_list_pos[c->index] = i;
 		i++;
 	}
 
@@ -539,6 +542,7 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 		 */
 	}
 
+	if (o <= MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) o = OWNER_NONE;
 	return _owner_colours[o];
 }
 
@@ -1003,6 +1007,28 @@ class SmallMapWindow : public Window {
 		_cur_dpi = old_dpi;
 	}
 
+	/**
+	 * Function to set up widgets depending on the information being shown on the smallmap.
+	 */
+	void SetupWidgetData()
+	{
+		StringID legend_tooltip;
+		switch (this->map_type) {
+			case SMT_INDUSTRY:
+				legend_tooltip = STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION;
+				break;
+
+			case SMT_OWNER:
+				legend_tooltip = STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION;
+				break;
+
+			default:
+				legend_tooltip = STR_NULL;
+				break;
+		}
+		this->GetWidget<NWidgetCore>(SM_WIDGET_LEGEND)->SetDataTip(STR_NULL, legend_tooltip);
+	}
+
 public:
 	uint min_number_of_columns;    ///< Minimal number of columns in legends.
 
@@ -1017,8 +1043,8 @@ public:
 
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
 		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
-		this->GetWidget<NWidgetCore>(SM_WIDGET_LEGEND)->SetDataTip(STR_NULL,
-				(this->map_type == SMT_INDUSTRY) ? STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION : STR_NULL);
+
+		this->SetupWidgetData();
 
 		this->SetZoomLevel(ZLC_INITIALIZE, NULL);
 		this->SmallMapCenterOnCurrentPos();
@@ -1152,8 +1178,14 @@ public:
 						}
 					} else if (this->map_type == SMT_OWNER && tbl->u.company != INVALID_COMPANY) {
 						SetDParam(0, tbl->u.company);
-						DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_COMPANY, TC_BLACK);
-						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0); // Outer border of the legend colour
+						if (!tbl->show_on_map) {
+							/* Simply draw the string, not the black border of the legend colour.
+							 * This will enforce the idea of the disabled item */
+							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_COMPANY, TC_GREY);
+						} else {
+							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_COMPANY, TC_BLACK);
+							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0); // Outer border of the legend colour
+						}
 					} else {
 						if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->u.height * TILE_HEIGHT_STEP);
 
@@ -1182,8 +1214,7 @@ public:
 		/* Hide Enable all/Disable all buttons if is not industry type small map */
 		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
 
-		this->GetWidget<NWidgetCore>(SM_WIDGET_LEGEND)->SetDataTip(STR_NULL,
-				(this->map_type == SMT_INDUSTRY) ? STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION : STR_NULL);
+		this->SetupWidgetData();
 
 		this->SetDirty();
 	}
@@ -1289,6 +1320,44 @@ public:
 							}
 						} else {
 							_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
+						}
+					}
+					this->SetDirty();
+				} else if (this->map_type == SMT_OWNER) {
+					/* If click on companies label, find right company and enable/disable it. */
+					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_LEGEND);
+					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
+					uint columns = this->GetNumberColumnsLegend(wi->current_x);
+					uint number_of_rows = max(CeilDiv(_smallmap_company_count, columns), this->min_number_of_fixed_rows);
+					if (line >= number_of_rows) break;
+
+					bool rtl = _current_text_dir == TD_RTL;
+					int x = pt.x - wi->pos_x;
+					if (rtl) x = wi->current_x - x;
+					uint column = (x - WD_FRAMERECT_LEFT) / this->column_width;
+
+					/* Check if click is on company label. */
+					int company_pos = (column * number_of_rows) + line;
+					if (company_pos < NUM_NO_COMPANY_ENTRIES) break;
+					if (company_pos < _smallmap_company_count) {
+						if (_ctrl_pressed) {
+							/* Disable all, except the clicked one */
+							bool changes = false;
+							for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
+								bool new_state = i == company_pos;
+								if (_legend_land_owners[i].show_on_map != new_state) {
+									changes = true;
+									_legend_land_owners[i].show_on_map = new_state;
+								}
+							}
+							if (!changes) {
+								/* Nothing changed? Then show all (again). */
+								for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
+									_legend_land_owners[i].show_on_map = true;
+								}
+							}
+						} else {
+							_legend_land_owners[company_pos].show_on_map = !_legend_land_owners[company_pos].show_on_map;
 						}
 					}
 					this->SetDirty();
