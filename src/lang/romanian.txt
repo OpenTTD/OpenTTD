@@ -348,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ieşire din joc
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opţiunile jocului
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Setări dificultate
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Setări avansate
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Setări IA
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Setări NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opţiuni transparenţă
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Afişează numele oraşelor
@@ -1974,6 +1975,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Alege po
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Alege pod rutier
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Alegere pod - click pe podul preferat pentru a-l construi
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensie, Oţel
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Grindă, Oţel
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Arc, Oţel
@@ -2701,7 +2703,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vezi sediul
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vezi sediul companiei
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mută sediu
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Mută sediul companiei (costa 1% din valoarea companiei)
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Mută sediul companiei (costa 1% din valoarea companiei). Shift+Click arată estimarea de cost fără a muta sediul companiei
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Schimbă poza
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Alege o nouă poză a preşedintelui
@@ -2728,7 +2730,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nimic
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportat)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportat)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Numele industriilor - clic pe nume pentru focalizarea pe industrie. Ctrl+Click deshide o fereastra cu locaţia industriei
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Numele industriilor - clic pe nume pentru focalizarea pe industrie. Ctrl+Click deschide o fereastră cu locaţia industriei
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}

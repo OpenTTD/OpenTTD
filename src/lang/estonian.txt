@@ -405,6 +405,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Välju
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Mängu valikud
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Raskusastme seadistused
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Täpsemad seaded
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Tehismõistuse seaded
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF seadistused
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läbipaistvuse valikud
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Näidatavad linnanimed
@@ -498,7 +499,7 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maaala andmed
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja
 STR_ABOUT_MENU_AI_DEBUG                                         :Tehismõistuse silumine
-STR_ABOUT_MENU_SCREENSHOT                                       :Ekraanitõmmis (Ctrl-S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Ekraanitõmmis
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suumitud ekraanitõmmis
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Terve kaardi ekraanitõmmis
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' kohta
@@ -1212,15 +1213,15 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Sõiduk
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vananenud sõidukite uuendamine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Piirvanuse saavutanud veovahendit uuendatakse {ORANGE}{STRING}{LTBLUE} kuu piires
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Nõutud rahasumma uuendamiseks: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Veateadete kestus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Ülelibistussündmuste viivitus: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Veateadete kestus: {ORANGE}{STRING} sekund{P 0:1 "" it}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Ülelibistussündmuste viivitus: {ORANGE}{STRING} sekund{P 0:1 "" it}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Ülelibistussündmuste viivitus: {ORANGE}keelatud
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Rahvaarv alevike nimesiltidel: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Maaala Generaator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Algupärane
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Naftatöötlustehaste piirkaugus kaardiservast {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Naftatöötlustehaste piirkaugus kaardiservast {ORANGE}{STRING} ruut{P 0:1 "" u}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Lumepiiri kõrgus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Maa mägisus (TerraGenesis ainult) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väga sile
@@ -2031,6 +2032,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Vali rau
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Vali sillatüüp
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Silla valik - ehitamiseks klõpsi sobival sillal
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Rippsild, terasest
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Raamistikuga, terasest
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Ulgtugi, terasest
@@ -3655,7 +3657,7 @@ STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ei saa m
 STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... peab olema depoos peatatud
 STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... peab garaažis peatatud olema
 STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... peab olema sadamas peatatud
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}Lennuk peab olema peatatud angaari sees
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... peab olema peatatud angaari sees
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Ainult depoos peatunud ronge saab muuta
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Rong on liiga pikk

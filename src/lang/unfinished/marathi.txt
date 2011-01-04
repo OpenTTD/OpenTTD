@@ -185,6 +185,7 @@ STR_COLOUR_BLUE                                                 :निळा
 STR_COLOUR_CREAM                                                :दुधी
 STR_COLOUR_PURPLE                                               :जांभळा
 STR_COLOUR_ORANGE                                               :केशरी
+STR_COLOUR_BROWN                                                :तपकिरी
 STR_COLOUR_GREY                                                 :करडा
 STR_COLOUR_WHITE                                                :पांढरा
 
@@ -772,6 +773,7 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE} गे�
 
 # Bridge selection window
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_WOODEN                                          :लाकडी
 
 
