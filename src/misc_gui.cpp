@@ -199,7 +199,7 @@ public:
 		snprintf(tmp, lengthof(tmp), "0x%.4X", tile);
 		SetDParam(0, TileX(tile));
 		SetDParam(1, TileY(tile));
-		SetDParam(2, TileHeight(tile));
+		SetDParam(2, GetTileZ(tile) / TILE_HEIGHT);
 		SetDParamStr(3, tmp);
 		GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_LANDINFO_COORDS, lastof(this->landinfo_data[line_nr]));
 		line_nr++;
