@@ -1146,7 +1146,7 @@ static const OldChunks vehicle_chunk[] = {
 
 	OCL_SVAR(  OC_UINT8, Vehicle, owner ),
 	OCL_SVAR(   OC_TILE, Vehicle, tile ),
-	OCL_SVAR( OC_UINT16, Vehicle, cur_image ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, cur_image ),
 
 	OCL_NULL( 8 ),        ///< Vehicle sprite box, calculated automatically
 
