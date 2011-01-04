@@ -629,10 +629,10 @@ CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		if ((flags & DC_NO_WATER) && HasTileWaterClass(tile) && IsTileOnWater(tile)) {
 			return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 		}
-		if (do_clear && (flags & DC_EXEC)) DoClearSquare(tile);
-		return cost;
+	} else {
+		cost.AddCost(_tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags));
 	}
-	cost.AddCost(_tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags));
+
 	if (do_clear && (flags & DC_EXEC)) DoClearSquare(tile);
 	return cost;
 }
