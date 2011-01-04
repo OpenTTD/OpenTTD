@@ -1013,20 +1013,36 @@ class SmallMapWindow : public Window {
 	void SetupWidgetData()
 	{
 		StringID legend_tooltip;
+		StringID enable_all_tooltip;
+		StringID disable_all_tooltip;
+		int plane;
 		switch (this->map_type) {
 			case SMT_INDUSTRY:
 				legend_tooltip = STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION;
+				enable_all_tooltip = STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES;
+				disable_all_tooltip = STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES;
+				plane = 0;
 				break;
 
 			case SMT_OWNER:
 				legend_tooltip = STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION;
+				enable_all_tooltip = STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES;
+				disable_all_tooltip = STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES;
+				plane = 0;
 				break;
 
 			default:
 				legend_tooltip = STR_NULL;
+				enable_all_tooltip = STR_NULL;
+				disable_all_tooltip = STR_NULL;
+				plane = 1;
 				break;
 		}
+
 		this->GetWidget<NWidgetCore>(SM_WIDGET_LEGEND)->SetDataTip(STR_NULL, legend_tooltip);
+		this->GetWidget<NWidgetCore>(SM_WIDGET_ENABLE_ALL)->SetDataTip(STR_SMALLMAP_ENABLE_ALL, enable_all_tooltip);
+		this->GetWidget<NWidgetCore>(SM_WIDGET_DISABLE_ALL)->SetDataTip(STR_SMALLMAP_DISABLE_ALL, disable_all_tooltip);
+		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECT_BUTTONS)->SetDisplayedPlane(plane);
 	}
 
 public:
@@ -1042,7 +1058,6 @@ public:
 		this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_industry_show_heightmap);
 
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
-		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECT_BUTTONS)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
 
 		this->SetupWidgetData();
 
@@ -1211,9 +1226,6 @@ public:
 		this->map_type = map_type;
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 
-		/* Hide Enable all/Disable all buttons if is not industry type small map */
-		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECT_BUTTONS)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
-
 		this->SetupWidgetData();
 
 		this->SetDirty();
@@ -1364,16 +1376,28 @@ public:
 				}
 				break;
 
-			case SM_WIDGET_ENABLE_ALL: // Enable all industries
-				for (int i = 0; i != _smallmap_industry_count; i++) {
-					_legend_from_industries[i].show_on_map = true;
+			case SM_WIDGET_ENABLE_ALL:
+				if (this->map_type == SMT_INDUSTRY) {
+					for (int i = 0; i != _smallmap_industry_count; i++) {
+						_legend_from_industries[i].show_on_map = true;
+					}
+				} else if (this->map_type == SMT_OWNER) {
+					for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
+						_legend_land_owners[i].show_on_map = true;
+					}
 				}
 				this->SetDirty();
 				break;
 
-			case SM_WIDGET_DISABLE_ALL: // Disable all industries
-				for (int i = 0; i != _smallmap_industry_count; i++) {
-					_legend_from_industries[i].show_on_map = false;
+			case SM_WIDGET_DISABLE_ALL:
+				if (this->map_type == SMT_INDUSTRY) {
+					for (int i = 0; i != _smallmap_industry_count; i++) {
+						_legend_from_industries[i].show_on_map = false;
+					}
+				} else {
+					for (int i = NUM_NO_COMPANY_ENTRIES; i != _smallmap_company_count; i++) {
+						_legend_land_owners[i].show_on_map = false;
+					}
 				}
 				this->SetDirty();
 				break;
@@ -1648,8 +1672,8 @@ static const NWidgetPart _nested_smallmap_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, SM_WIDGET_SELECT_BUTTONS),
 					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLE_ALL), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLE_ALL), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLE_ALL), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_NULL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLE_ALL), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_NULL),
 						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_SHOW_HEIGHT), SetDataTip(STR_SMALLMAP_SHOW_HEIGHT, STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetFill(1, 1),
