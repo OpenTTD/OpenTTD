@@ -50,6 +50,7 @@
 #include "../engine_func.h"
 #include "../rail_gui.h"
 #include "../core/backup_type.hpp"
+#include "../smallmap_gui.h"
 
 #include "table/strings.h"
 
@@ -263,6 +264,9 @@ static void InitializeWindowsAndCaches()
 	CheckTrainsLengths();
 	ShowNewGRFError();
 	ShowAIDebugWindowIfAIError();
+
+	/* Rebuild the smallmap list of owners. */
+	BuildOwnerLegend();
 }
 
 typedef void (CDECL *SignalHandlerPointer)(int);

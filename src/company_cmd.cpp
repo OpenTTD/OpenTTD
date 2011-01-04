@@ -34,6 +34,7 @@
 #include "vehicle_base.h"
 #include "vehicle_func.h"
 #include "sprite.h"
+#include "smallmap_gui.h"
 
 #include "table/strings.h"
 
@@ -539,6 +540,8 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	SetWindowDirty(WC_GRAPH_LEGEND, 0);
 	SetWindowDirty(WC_TOOLBAR_MENU, 0);
 	SetWindowDirty(WC_CLIENT_LIST, 0);
+	BuildOwnerLegend();
+	InvalidateWindowData(WC_SMALLMAP, 0, 1);
 
 	if (is_ai && (!_networking || _network_server)) AI::StartNew(c->index);
 
@@ -890,6 +893,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			delete c;
 			AI::BroadcastNewEvent(new AIEventCompanyBankrupt(c_index));
 			CompanyAdminBankrupt(c_index);
+			BuildOwnerLegend();
+			InvalidateWindowData(WC_SMALLMAP, 0, 1);
 			break;
 		}
 

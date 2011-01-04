@@ -52,12 +52,18 @@ enum SmallMapWindowWidgets {
 };
 
 static int _smallmap_industry_count; ///< Number of used industries
+static int _smallmap_company_count;  ///< Number of entries in the owner legend.
+
+static const int NUM_NO_COMPANY_ENTRIES = 4; ///< Number of entries in the owner legend that are not companies.
 
 /** Macro for ordinary entry of LegendAndColour */
 #define MK(a, b) {a, b, {INVALID_INDUSTRYTYPE}, true, false, false}
 
 /** Macro for a height legend entry with configurable colour. */
 #define MC(height)  {0, STR_TINY_BLACK_HEIGHT, {height}, true, false, false}
+
+/** Macro for non-company owned property entry of LegendAndColour */
+#define MO(a, b) {a, b, {INVALID_COMPANY}, true, false, false}
 
 /** Macro for end of list marker in arrays of LegendAndColour */
 #define MKEND() {0, STR_NULL, {INVALID_INDUSTRYTYPE}, true, true, false}
@@ -73,8 +79,9 @@ struct LegendAndColour {
 	uint8 colour;              ///< Colour of the item on the map.
 	StringID legend;           ///< String corresponding to the coloured item.
 	union {
-		IndustryType type; ///< Type of industry.
-		uint8 height;      ///< Height in tiles.
+		IndustryType type;     ///< Type of industry.
+		uint8 height;          ///< Height in tiles.
+		CompanyID company;     ///< Company to display.
 	} u;
 	bool show_on_map;          ///< For filtering industries, if \c true, industry is shown on the map in colour.
 	bool end;                  ///< This is the end of the list.
@@ -138,17 +145,18 @@ static const LegendAndColour _legend_vegetation[] = {
 	MKEND()
 };
 
-static LegendAndColour _legend_land_owners[] = {
-	MK(0xCA, STR_SMALLMAP_LEGENDA_WATER),
-	MK(0x00, STR_SMALLMAP_LEGENDA_NO_OWNER), // This colour will vary depending on settings.
-	MK(0xB4, STR_SMALLMAP_LEGENDA_TOWNS),
-	MK(0x20, STR_SMALLMAP_LEGENDA_INDUSTRIES),
-	MKEND()
+static LegendAndColour _legend_land_owners[NUM_NO_COMPANY_ENTRIES + MAX_COMPANIES + 1] = {
+	MO(0xCA, STR_SMALLMAP_LEGENDA_WATER),
+	MO(0x00, STR_SMALLMAP_LEGENDA_NO_OWNER), // This colour will vary depending on settings.
+	MO(0xB4, STR_SMALLMAP_LEGENDA_TOWNS),
+	MO(0x20, STR_SMALLMAP_LEGENDA_INDUSTRIES),
+	/* The legend will be terminated after adding the companies. */
 };
 
 #undef MK
 #undef MC
 #undef MS
+#undef MO
 #undef MKEND
 
 /**
@@ -292,6 +300,23 @@ void BuildLandLegend()
 void BuildOwnerLegend()
 {
 	_legend_land_owners[1].colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].default_colour;
+
+	int i = NUM_NO_COMPANY_ENTRIES;
+	const Company *c;
+	FOR_ALL_COMPANIES(c) {
+		_legend_land_owners[i].colour = _colour_gradient[c->colour][5];
+		_legend_land_owners[i].u.company = c->index;
+		_legend_land_owners[i].show_on_map = true;
+		_legend_land_owners[i].col_break = false;
+		_legend_land_owners[i].end = false;
+		i++;
+	}
+
+	/* Terminate the list */
+	_legend_land_owners[i].end = true;
+
+	/* Store maximum amount of owner legend entries. */
+	_smallmap_company_count = i;
 }
 
 struct AndOr {
@@ -983,7 +1008,6 @@ public:
 
 	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(), refresh(FORCE_REFRESH_PERIOD)
 	{
-		BuildOwnerLegend();
 		this->InitNested(desc, window_number);
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 
@@ -1025,7 +1049,7 @@ public:
 	 */
 	uint GetLegendHeight(uint num_columns) const
 	{
-		uint num_rows = max(this->min_number_of_fixed_rows, CeilDiv(_smallmap_industry_count, num_columns));
+		uint num_rows = max(this->min_number_of_fixed_rows, CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), num_columns));
 		return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + num_rows * FONT_HEIGHT_SMALL;
 	}
 
@@ -1052,6 +1076,14 @@ public:
 					SetDParam(0, tbl->legend);
 					SetDParam(1, IndustryPool::MAX_SIZE);
 					str = STR_SMALLMAP_INDUSTRY;
+				} else if (i == SMT_OWNER) {
+					if (tbl->u.company != INVALID_COMPANY) {
+						/* Non-fixed legend entries for the owner view. */
+						SetDParam(0, tbl->u.company);
+						str = STR_SMALLMAP_COMPANY;
+					} else {
+						str = tbl->legend;
+					}
 				} else {
 					if (tbl->col_break) {
 						this->min_number_of_fixed_rows = max(this->min_number_of_fixed_rows, height);
@@ -1083,7 +1115,7 @@ public:
 
 			case SM_WIDGET_LEGEND: {
 				uint columns = this->GetNumberColumnsLegend(r.right - r.left + 1);
-				uint number_of_rows = max(this->map_type == SMT_INDUSTRY ? CeilDiv(_smallmap_industry_count, columns) : 0, this->min_number_of_fixed_rows);
+				uint number_of_rows = max((this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER) ? CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), columns) : 0, this->min_number_of_fixed_rows);
 				bool rtl = _current_text_dir == TD_RTL;
 				uint y_org = r.top + WD_FRAMERECT_TOP;
 				uint x = rtl ? r.right - this->column_width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT;
@@ -1097,7 +1129,7 @@ public:
 				uint blob_right = rtl ? this->column_width - 1 : LEGEND_BLOB_WIDTH;
 
 				for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
-					if (tbl->col_break || (this->map_type == SMT_INDUSTRY && i++ >= number_of_rows)) {
+					if (tbl->col_break || ((this->map_type == SMT_INDUSTRY || this->map_type == SMT_OWNER) && i++ >= number_of_rows)) {
 						/* Column break needed, continue at top, COLUMN_WIDTH pixels
 						 * (one "row") to the right. */
 						x += rtl ? -(int)this->column_width : this->column_width;
@@ -1118,10 +1150,14 @@ public:
 							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
 							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0); // Outer border of the legend colour
 						}
+					} else if (this->map_type == SMT_OWNER && tbl->u.company != INVALID_COMPANY) {
+						SetDParam(0, tbl->u.company);
+						DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_COMPANY, TC_BLACK);
+						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0); // Outer border of the legend colour
 					} else {
 						if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->u.height * TILE_HEIGHT_STEP);
 
-						/* Anything that is not an industry is using normal process */
+						/* Anything that is not an industry or a company is using normal process */
 						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0);
 						DrawString(x + text_left, x + text_right, y, tbl->legend);
 					}
@@ -1284,14 +1320,27 @@ public:
 	/**
 	 * Notifications for the smallmap window.
 	 * - data = 0: Displayed industries at the industry chain window have changed.
+	 * - data = 1: Companies have changed.
 	 */
 	virtual void OnInvalidateData(int data)
 	{
-		extern uint64 _displayed_industries;
-		if (this->map_type != SMT_INDUSTRY) this->SwitchMapType(SMT_INDUSTRY);
+		switch (data) {
+			case 1:
+				/* The owner legend has already been rebuilt. */
+				this->ReInit();
+				break;
 
-		for (int i = 0; i != _smallmap_industry_count; i++) {
-			_legend_from_industries[i].show_on_map = HasBit(_displayed_industries, _legend_from_industries[i].u.type);
+			case 0: {
+				extern uint64 _displayed_industries;
+				if (this->map_type != SMT_INDUSTRY) this->SwitchMapType(SMT_INDUSTRY);
+
+				for (int i = 0; i != _smallmap_industry_count; i++) {
+					_legend_from_industries[i].show_on_map = HasBit(_displayed_industries, _legend_from_industries[i].u.type);
+				}
+				break;
+			}
+
+			default: NOT_REACHED();
 		}
 		this->SetDirty();
 	}
