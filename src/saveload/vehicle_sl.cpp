@@ -630,7 +630,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Vehicle, y_pos,                 SLE_INT32,                    6, SL_MAX_VERSION),
 		     SLE_VAR(Vehicle, z_pos,                 SLE_UINT8),
 
-		     SLE_VAR(Vehicle, cur_image,             SLE_UINT16),
+		     SLE_VAR(Vehicle, cur_image,             SLE_FILE_U16 | SLE_VAR_U32),
 		SLE_CONDNULL(5,                                                            0,  57),
 		     SLE_VAR(Vehicle, progress,              SLE_UINT8),
 		     SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
@@ -669,7 +669,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Vehicle, current_order.dest,    SLE_FILE_U8 | SLE_VAR_U16,    0,   4),
 		 SLE_CONDVAR(Vehicle, current_order.dest,    SLE_UINT16,                   5, SL_MAX_VERSION),
 
-		     SLE_VAR(Vehicle, cur_image,             SLE_UINT16),
+		     SLE_VAR(Vehicle, cur_image,             SLE_FILE_U16 | SLE_VAR_U32),
 		 SLE_CONDVAR(Vehicle, age,                   SLE_FILE_U16 | SLE_VAR_I32,   0,  30),
 		 SLE_CONDVAR(Vehicle, age,                   SLE_INT32,                   31, SL_MAX_VERSION),
 		     SLE_VAR(Vehicle, tick_counter,          SLE_UINT8),
