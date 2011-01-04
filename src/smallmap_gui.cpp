@@ -167,7 +167,7 @@ static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES + 1];
 /** For connecting industry type to position in industries list(small map legend) */
 static uint _industry_to_list_pos[NUM_INDUSTRYTYPES];
 /** Show heightmap in industry mode of smallmap window. */
-static bool _smallmap_industry_show_heightmap;
+static bool _smallmap_industry_show_heightmap = false;
 /** For connecting company ID to position in owner list (small map legend) */
 static uint _company_to_list_pos[MAX_COMPANIES];
 
@@ -1053,7 +1053,6 @@ public:
 		this->InitNested(desc, window_number);
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 
-		_smallmap_industry_show_heightmap = false;
 		BuildLandLegend();
 		this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_industry_show_heightmap);
 
