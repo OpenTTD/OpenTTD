@@ -1291,7 +1291,7 @@ public:
 					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_LEGEND); // Label panel
 					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
 					uint columns = this->GetNumberColumnsLegend(wi->current_x);
-					uint number_of_rows = max(CeilDiv(_smallmap_industry_count, columns), this->min_number_of_fixed_rows);
+					uint number_of_rows = max(CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), columns), this->min_number_of_fixed_rows);
 					if (line >= number_of_rows) break;
 
 					bool rtl = _current_text_dir == TD_RTL;
@@ -1328,7 +1328,7 @@ public:
 					const NWidgetBase *wi = this->GetWidget<NWidgetBase>(SM_WIDGET_LEGEND);
 					uint line = (pt.y - wi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_SMALL;
 					uint columns = this->GetNumberColumnsLegend(wi->current_x);
-					uint number_of_rows = max(CeilDiv(_smallmap_company_count, columns), this->min_number_of_fixed_rows);
+					uint number_of_rows = max(CeilDiv(max(_smallmap_company_count, _smallmap_industry_count), columns), this->min_number_of_fixed_rows);
 					if (line >= number_of_rows) break;
 
 					bool rtl = _current_text_dir == TD_RTL;
