@@ -547,7 +547,6 @@ class SmallMapWindow : public Window {
 
 	static const uint LEGEND_BLOB_WIDTH = 8;              ///< Width of the coloured blob in front of a line text in the #SM_WIDGET_LEGEND widget.
 	static const uint INDUSTRY_MIN_NUMBER_OF_COLUMNS = 2; ///< Minimal number of columns in the #SM_WIDGET_LEGEND widget for the #SMT_INDUSTRY legend.
-	uint min_number_of_columns;    ///< Minimal number of columns in  legends.
 	uint min_number_of_fixed_rows; ///< Minimal number of rows in the legends for the fixed layouts only (all except #SMT_INDUSTRY).
 	uint column_width;             ///< Width of a column in the #SM_WIDGET_LEGEND widget.
 
@@ -980,6 +979,8 @@ class SmallMapWindow : public Window {
 	}
 
 public:
+	uint min_number_of_columns;    ///< Minimal number of columns in legends.
+
 	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(), refresh(FORCE_REFRESH_PERIOD)
 	{
 		BuildOwnerLegend();
@@ -997,16 +998,6 @@ public:
 
 		this->SetZoomLevel(ZLC_INITIALIZE, NULL);
 		this->SmallMapCenterOnCurrentPos();
-	}
-
-	/**
-	 * Compute maximal required height of the legends.
-	 * @return Maximally needed height for displaying the smallmap legends in pixels.
-	 */
-	inline uint GetMaxLegendHeight() const
-	{
-		uint num_rows = max(this->min_number_of_fixed_rows, CeilDiv(_smallmap_industry_count, this->min_number_of_columns));
-		return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + num_rows * FONT_HEIGHT_SMALL;
 	}
 
 	/**
@@ -1028,12 +1019,12 @@ public:
 	}
 
 	/**
-	 * Compute height given a width.
+	 * Compute height given a number of columns.
+	 * @param Number of columns.
 	 * @return Needed height for displaying the smallmap legends in pixels.
 	 */
-	uint GetLegendHeight(uint width) const
+	uint GetLegendHeight(uint num_columns) const
 	{
-		uint num_columns = this->GetNumberColumnsLegend(width);
 		uint num_rows = max(this->min_number_of_fixed_rows, CeilDiv(_smallmap_industry_count, num_columns));
 		return WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + num_rows * FONT_HEIGHT_SMALL;
 	}
@@ -1423,7 +1414,7 @@ public:
 
 		this->smallmap_window = dynamic_cast<SmallMapWindow *>(w);
 		this->smallest_x = max(display->smallest_x, bar->smallest_x + smallmap_window->GetMinLegendWidth());
-		this->smallest_y = display->smallest_y + max(bar->smallest_y, smallmap_window->GetMaxLegendHeight());
+		this->smallest_y = display->smallest_y + max(bar->smallest_y, smallmap_window->GetLegendHeight(smallmap_window->min_number_of_columns));
 		this->fill_x = max(display->fill_x, bar->fill_x);
 		this->fill_y = (display->fill_y == 0 && bar->fill_y == 0) ? 0 : min(display->fill_y, bar->fill_y);
 		this->resize_x = max(display->resize_x, bar->resize_x);
@@ -1448,7 +1439,7 @@ public:
 			bar->AssignSizePosition(ST_SMALLEST, x, y + display->smallest_y, bar->smallest_x, bar->smallest_y, rtl);
 		}
 
-		uint bar_height = max(bar->smallest_y, this->smallmap_window->GetLegendHeight(given_width - bar->smallest_x));
+		uint bar_height = max(bar->smallest_y, this->smallmap_window->GetLegendHeight(this->smallmap_window->GetNumberColumnsLegend(given_width - bar->smallest_x)));
 		uint display_height = given_height - bar_height;
 		display->AssignSizePosition(ST_RESIZE, x, y, given_width, display_height, rtl);
 		bar->AssignSizePosition(ST_RESIZE, x, y + display_height, given_width, bar_height, rtl);
