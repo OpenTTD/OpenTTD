@@ -166,8 +166,8 @@ static LegendAndColour _legend_land_owners[NUM_NO_COMPANY_ENTRIES + MAX_COMPANIE
 static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES + 1];
 /** For connecting industry type to position in industries list(small map legend) */
 static uint _industry_to_list_pos[NUM_INDUSTRYTYPES];
-/** Show heightmap in industry mode of smallmap window. */
-static bool _smallmap_industry_show_heightmap = false;
+/** Show heightmap in industry and owner mode of smallmap window. */
+static bool _smallmap_show_heightmap = false;
 /** For connecting company ID to position in owner list (small map legend) */
 static uint _company_to_list_pos[MAX_COMPANIES];
 
@@ -443,7 +443,7 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile, TileType t)
 	}
 
 	const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
-	return ApplyMask(_smallmap_industry_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour, &_smallmap_vehicles_andor[t]);
+	return ApplyMask(_smallmap_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour, &_smallmap_vehicles_andor[t]);
 }
 
 /**
@@ -540,7 +540,8 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 	}
 
 	if ((o <= MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) || o == OWNER_NONE) {
-		return _heightmap_schemes[_settings_client.gui.smallmap_land_colour].default_colour;
+		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
+		return _smallmap_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour;
 	} else if (o == OWNER_WATER) {
 		return MKCOLOUR(0xCACACACA);
 	} else if (o == OWNER_TOWN) {
@@ -1042,7 +1043,7 @@ public:
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 
 		BuildLandLegend();
-		this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_industry_show_heightmap);
+		this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_show_heightmap);
 
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
 
@@ -1390,8 +1391,8 @@ public:
 				break;
 
 			case SM_WIDGET_SHOW_HEIGHT: // Enable/disable showing of heightmap.
-				_smallmap_industry_show_heightmap = !_smallmap_industry_show_heightmap;
-				this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_industry_show_heightmap);
+				_smallmap_show_heightmap = !_smallmap_show_heightmap;
+				this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_show_heightmap);
 				this->SetDirty();
 				break;
 		}
