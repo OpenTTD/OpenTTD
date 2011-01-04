@@ -6904,6 +6904,7 @@ static void InitializeGRFSpecial()
 
 	_ttdpatch_flags[2] =                                                      (1 << 0x01)  // loadallgraphics - obsolote
 	                   |                                                      (1 << 0x03)  // semaphores
+	                   |                                                      (1 << 0x0A)  // newobjects
 	                   |                                                      (0 << 0x0B)  // enhancedgui
 	                   |                                                      (0 << 0x0C)  // newagerating
 	                   |  ((_settings_game.construction.build_on_slopes ? 1 : 0) << 0x0D)  // buildonslopes
