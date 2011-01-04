@@ -45,9 +45,9 @@ enum SmallMapWindowWidgets {
 	SM_WIDGET_OWNERS,            ///< Button to select the owners view.
 	SM_WIDGET_CENTERMAP,         ///< Button to move smallmap center to main window center.
 	SM_WIDGET_TOGGLETOWNNAME,    ///< Toggle button to display town names.
-	SM_WIDGET_SELECTINDUSTRIES,  ///< Selection widget for the buttons at the industry mode.
-	SM_WIDGET_ENABLEINDUSTRIES,  ///< Button to enable display of all industries.
-	SM_WIDGET_DISABLEINDUSTRIES, ///< Button to disable display of all industries.
+	SM_WIDGET_SELECT_BUTTONS,    ///< Selection widget for the buttons present in some smallmap modes.
+	SM_WIDGET_ENABLE_ALL,        ///< Button to enable display of all legend entries.
+	SM_WIDGET_DISABLE_ALL,       ///< Button to disable display of all legend entries.
 	SM_WIDGET_SHOW_HEIGHT,       ///< Show heightmap toggle button.
 };
 
@@ -1042,7 +1042,7 @@ public:
 		this->SetWidgetLoweredState(SM_WIDGET_SHOW_HEIGHT, _smallmap_industry_show_heightmap);
 
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
-		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
+		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECT_BUTTONS)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
 
 		this->SetupWidgetData();
 
@@ -1212,7 +1212,7 @@ public:
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 
 		/* Hide Enable all/Disable all buttons if is not industry type small map */
-		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECTINDUSTRIES)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
+		this->GetWidget<NWidgetStacked>(SM_WIDGET_SELECT_BUTTONS)->SetDisplayedPlane(this->map_type != SMT_INDUSTRY);
 
 		this->SetupWidgetData();
 
@@ -1364,14 +1364,14 @@ public:
 				}
 				break;
 
-			case SM_WIDGET_ENABLEINDUSTRIES: // Enable all industries
+			case SM_WIDGET_ENABLE_ALL: // Enable all industries
 				for (int i = 0; i != _smallmap_industry_count; i++) {
 					_legend_from_industries[i].show_on_map = true;
 				}
 				this->SetDirty();
 				break;
 
-			case SM_WIDGET_DISABLEINDUSTRIES: // Disable all industries
+			case SM_WIDGET_DISABLE_ALL: // Disable all industries
 				for (int i = 0; i != _smallmap_industry_count; i++) {
 					_legend_from_industries[i].show_on_map = false;
 				}
@@ -1646,10 +1646,10 @@ static const NWidgetPart _nested_smallmap_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_PANEL, COLOUR_BROWN),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(NWID_SELECTION, INVALID_COLOUR, SM_WIDGET_SELECTINDUSTRIES),
+				NWidget(NWID_SELECTION, INVALID_COLOUR, SM_WIDGET_SELECT_BUTTONS),
 					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLEINDUSTRIES), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_SMALLMAP_TOOLTIP_ENABLE_ALL),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLEINDUSTRIES), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_SMALLMAP_TOOLTIP_DISABLE_ALL),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_ENABLE_ALL), SetDataTip(STR_SMALLMAP_ENABLE_ALL, STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, SM_WIDGET_DISABLE_ALL), SetDataTip(STR_SMALLMAP_DISABLE_ALL, STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES),
 						NWidget(WWT_TEXTBTN, COLOUR_BROWN, SM_WIDGET_SHOW_HEIGHT), SetDataTip(STR_SMALLMAP_SHOW_HEIGHT, STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT),
 					EndContainer(),
 					NWidget(NWID_SPACER), SetFill(1, 1),
