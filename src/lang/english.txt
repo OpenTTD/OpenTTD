@@ -1092,7 +1092,7 @@ STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :disabled
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Show vehicle speed in status bar: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Allow building on slopes and coasts: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allow terraforming under buildings, tracks, etc. (autoslope): {ORANGE}{STRING1}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allow landscaping under buildings, tracks, etc. (autoslope): {ORANGE}{STRING1}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Allow removal of more town-owned roads, bridges and tunnels: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Enable building very long trains: {ORANGE}{STRING1}
@@ -1184,7 +1184,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightm
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Counter clockwise
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clockwise
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}The height level a flat scenario map gets: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enable terraforming the tiles at the map borders: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enable landscaping the tiles at the map borders: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
@@ -3476,7 +3476,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... site
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... already built
 STR_ERROR_OWNED_BY                                              :{WHITE}... owned by {STRING2}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... area is owned by another company
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... terraforming limit reached
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... landscaping limit reached
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... tile clearing limit reached
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Name must be unique
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} in the way
