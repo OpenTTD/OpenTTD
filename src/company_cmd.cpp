@@ -906,8 +906,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			delete c;
 			AI::BroadcastNewEvent(new AIEventCompanyBankrupt(c_index));
 			CompanyAdminBankrupt(c_index);
-			BuildOwnerLegend();
-			InvalidateWindowData(WC_SMALLMAP, 0, 1);
 			break;
 		}
 

@@ -65,6 +65,9 @@ static const int NUM_NO_COMPANY_ENTRIES = 4; ///< Number of entries in the owner
 /** Macro for non-company owned property entry of LegendAndColour */
 #define MO(a, b) {a, b, {INVALID_COMPANY}, true, false, false}
 
+/** Macro used for forcing a rebuild of the owner legend the first time it is used. */
+#define MOEND() {0, 0, {OWNER_NONE}, true, true, false}
+
 /** Macro for end of list marker in arrays of LegendAndColour */
 #define MKEND() {0, STR_NULL, {INVALID_INDUSTRYTYPE}, true, true, false}
 
@@ -150,13 +153,15 @@ static LegendAndColour _legend_land_owners[NUM_NO_COMPANY_ENTRIES + MAX_COMPANIE
 	MO(0x00, STR_SMALLMAP_LEGENDA_NO_OWNER), // This colour will vary depending on settings.
 	MO(0xB4, STR_SMALLMAP_LEGENDA_TOWNS),
 	MO(0x20, STR_SMALLMAP_LEGENDA_INDUSTRIES),
-	/* The legend will be terminated after adding the companies. */
+	/* The legend will be terminated the first time it is used. */
+	MOEND(),
 };
 
 #undef MK
 #undef MC
 #undef MS
 #undef MO
+#undef MOEND
 #undef MKEND
 
 /**
@@ -1107,6 +1112,12 @@ public:
 					str = STR_SMALLMAP_INDUSTRY;
 				} else if (i == SMT_OWNER) {
 					if (tbl->u.company != INVALID_COMPANY) {
+						if (!Company::IsValidID(tbl->u.company)) {
+							/* Rebuild the owner legend. */
+							BuildOwnerLegend();
+							this->OnInit();
+							return;
+						}
 						/* Non-fixed legend entries for the owner view. */
 						SetDParam(0, tbl->u.company);
 						str = STR_SMALLMAP_COMPANY;
@@ -1130,6 +1141,22 @@ public:
 
 		/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
 		this->column_width = min_width + LEGEND_BLOB_WIDTH + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+	}
+
+	virtual void OnPaint()
+	{
+		if (this->map_type == SMT_OWNER) {
+			for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
+				if (tbl->u.company != INVALID_COMPANY && !Company::IsValidID(tbl->u.company)) {
+					/* Rebuild the owner legend. */
+					BuildOwnerLegend();
+					this->InvalidateData(1);
+					break;
+				}
+			}
+		}
+
+		this->DrawWidgets();
 	}
 
 	virtual void DrawWidget(const Rect &r, int widget) const
