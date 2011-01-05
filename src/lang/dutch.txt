@@ -664,6 +664,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Toon ind
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Toon transportroutes op de kaart
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Toon begroeiïng op de kaart
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Toon landeigenaren op de kaart
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klik op een industriesoort om deze weer te geven. Ctrl+klik verbergt alle andere industriesoorten behalve de geselecteerde. Nogmaals Ctrl+klik geeft opnieuw alle industriesoorten weer.
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klik op een bedrijf om de bedrijfseigendommen weer te geven. Ctrl+klik verbergt alle andere bedrijven behalve de geselecteerde. Nogmaals Ctrl+klik geeft opnieuw alle bedrijven weer.
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Wegen
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Spoorwegen
@@ -697,6 +699,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Plaatsnamen op de kaart aan/uit
 STR_SMALLMAP_CENTER                                             :{BLACK}Centreer de kaart op huidige positie
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Alles uitschakelen
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Alles inschakelen
@@ -704,6 +707,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Toon hoo
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Toon geen industrieën op de kaart
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Toon alle industrieën op de kaart
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Schakel tonen van hoogte aan/uit
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Verberg bedrijfseigendommen op de kaart
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Toon alle bedrijfseigendommen op de kaart
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Toon laatste (nieuws)bericht
@@ -3471,6 +3476,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... loka
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... reeds gebouwd
 STR_ERROR_OWNED_BY                                              :{WHITE}... is eigendom van {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebied is van ander bedrijf
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... limiet landschapsaanpassing bereikt
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... legen van tegels limiet bereikt
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naam moet uniek zijn
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} in de weg
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niet toegestaan wanneer gepauzeerd

@@ -664,6 +664,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Show ind
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Show transport routes on map
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Show vegetation on map
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Show land owners on map
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Click on an industry type to toggle displaying it. Ctrl+Click disables all types except the selected one. Ctrl+Click on it again to enable all industry types
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Click on a company to toggle displaying its property. Ctrl+Click disables all companies except the selected one. Ctrl+Click on it again to enable all companies
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Roads
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Railroads
@@ -697,6 +699,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Toggle town names on/off on map
 STR_SMALLMAP_CENTER                                             :{BLACK}Center the minimap on the current position
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Disable all
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Enable all
@@ -704,6 +707,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Show hei
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Display no industries on the map
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Display all industries on the map
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Toggle display of heightmap
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Display no company property on the map
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Display all company property on the map
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Show last message or news report
@@ -3471,6 +3476,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... site
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... already built
 STR_ERROR_OWNED_BY                                              :{WHITE}... owned by {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... area is owned by another company
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... terraforming limit reached
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... tile clearing limit reached
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Name must be unique
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} in the way
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Not allowed while paused

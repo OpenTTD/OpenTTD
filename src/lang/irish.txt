@@ -703,6 +703,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Taispeá
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ná taispeáin aon tionscal ar an léarscáil
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Taispeáin gach tionscal ar an léarscáil
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Scoránaigh an mapa airde a thaipeáint
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Ná taispeáin maoin ar bith na cuideachta ar an léarscáil
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Taispeáin maoin uile na cuideachta ar an léarscáil
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Taispeáin an teachtaireacht nó an tuairic nuachta deiridh
@@ -3454,6 +3456,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... níl
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... tógtha cheana féin
 STR_ERROR_OWNED_BY                                              :{WHITE}... is le {STRING} é
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... is le cuideachta eile an limistéar
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... baineadh an teorainn tírdhreachaithe amach
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... baineadh teorainn glanta na dtíleanna amach
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Caithfidh ainm uathúil a bheith ann
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}Tá {1:STRING} sa bhealach
 

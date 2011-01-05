@@ -666,6 +666,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Mostra l
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostra i percorsi di trasporto sulla mappa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostra la vegetazione sulla mappa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostra i proprietari dei terreni sulla mappa
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Fare clic su un tipo di industria per attivare/disattivare la visualizzazione.CTRL+clic disabilita tutti i tipi tranne quello selezionato. CTRL+clic nuovamente abilita tutti i tipi
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Fare clic su una compagnia per attivare/disattivare la visualizzazione delle sue proprietà. CTRL+clic disabilita tutte le compagnie tranne quella selezionata. CTRL+clic nuovamente abilita tutte le compagnie
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Strade
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Ferrovie
@@ -699,6 +701,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Attiva/disattiva la visualizzazione dei nomi delle città sulla mappa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra la minimappa sulla posizione corrente
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Disabilita tutti
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Abilita tutti
@@ -706,6 +709,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostra a
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nasconde tutte le industrie dalla mappa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostra tutte le industrie sulla mappa
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Attiva/disattiva la visualizzazione della mappa altimetrica
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nasconde le proprietà di tutte le compagnie dalla mappa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostra le proprietà di tutte le compagnie sulla mappa
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostra l'ultimo messaggio o notizia
@@ -1181,7 +1186,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotazio
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antioraria
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Oraria
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Altitudine delle mappe pianeggiante: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Abilita la scelta del tipo di riquadri sui bordi della mappa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Consenti la rimodellazione del riquadri di terreno ai bordi della mappa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Uno o più riquadri sul lato nord non sono vuoti
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Uno o più riquadri su uno dei bordi non sono d'acqua
 
@@ -3473,6 +3478,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... sito
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... già costruito
 STR_ERROR_OWNED_BY                                              :{WHITE}... posseduto da {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... l'area appartiene a un'altra compagnia
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... raggiunto limite rimodellazione terreno
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... raggiunto limite ripulitura aree
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Il nome deve essere univoco
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} di mezzo
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Non consentito durante la pausa

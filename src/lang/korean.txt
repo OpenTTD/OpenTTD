@@ -697,6 +697,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}도시 이름 표시/숨기기
 STR_SMALLMAP_CENTER                                             :{BLACK}소형맵을 현재 위치로 이동시킵니다.
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}모두 사용 안함
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}모두 사용
