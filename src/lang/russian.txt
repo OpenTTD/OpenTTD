@@ -809,6 +809,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Пока
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Показать маршруты на карте
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Показать растительность на карте
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Показать владельцев земли на карте
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Щелчок по типу предприятия переключает отображение его на карте. Ctrl+щелчок отключает все типы, кроме выбранного. Повторный Ctrl+щелчок включает все типы предприятий.
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Щелчок по названию компании переключает отображение её собственности на карте. Ctrl+щелчок отключает отображение всех компаний, кроме выбранной. Повторный Ctrl+щелчок включает отображение всех компаний.
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Дороги
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Железные дороги
@@ -842,6 +844,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Включить/выключить названия городов
 STR_SMALLMAP_CENTER                                             :{BLACK}Центрировать миникарту по этой позиции
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Выключить все
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Включить все
@@ -849,6 +852,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Рель
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Скрыть все предприятия на карте
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Показать все предприятия на карте
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Отображение рельефа на карте
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Скрыть собственность всех компаний
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Показать собственность всех компаний на карте
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Показать последнее сообщение или новость
@@ -1241,7 +1246,7 @@ STR_CONFIG_SETTING_ON                                           :да
 STR_CONFIG_SETTING_DISABLED                                     :отключено
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Показывать скорость транспорта в панели статуса: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Разрешить строительство на склонах и на берегу: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Разрешить терраформ. под зданиями, дорогами и т.д. (автоспуски): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Разрешить изм. ландшафта под зданиями, дорогами и т. д. (автоспуски): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Зона покрытия зависит от типа станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрешить снос (почти) всех городских объектов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Разрешить очень длинные поезда: {ORANGE}{STRING}
@@ -1333,7 +1338,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Вра�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Против часовой стрелки
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовой стрелке
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Уровень высоты для карт с плоским рельефом: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Разрешить терраформинг на краю карты: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Разрешить изменение ландшафта на краю карты: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Одна или несколько клеток в северном углу не пусты
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Одна или несколько клеток берега без воды
 
@@ -3655,6 +3660,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... не
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... уже построено
 STR_ERROR_OWNED_BY                                              :{WHITE}... принадлежит {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... участок принадлежит другой компании
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... количество ландшафтных изменений ограничено
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... количество очищаемых клеток ограничено
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Имя должно быть уникальным
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} на пути
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Запрещено во время паузы
