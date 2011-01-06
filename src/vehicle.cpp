@@ -1744,15 +1744,17 @@ void Vehicle::BeginLoading()
 
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
 			this->current_order.GetDestination() == this->last_station_visited) {
-		current_order.MakeLoading(true);
-		UpdateVehicleTimetable(this, true);
-
+		/* Delete all automatic orders which were not reached */
 		const Order *order = this->GetOrder(this->cur_order_index);
 		while (order != NULL && order->IsType(OT_AUTOMATIC)) {
 			/* Delete order effectively deletes order, so get the next before deleting it. */
 			order = order->next;
 			DeleteOrder(this, this->cur_order_index);
 		}
+
+		/* Now cur_order_index points to the destination station, and we can start loading */
+		this->current_order.MakeLoading(true);
+		UpdateVehicleTimetable(this, true);
 
 		/* Furthermore add the Non Stop flag to mark that this station
 		 * is the actual destination of the vehicle, which is (for example)
@@ -1774,7 +1776,7 @@ void Vehicle::BeginLoading()
 			InsertOrder(this, auto_order, this->cur_order_index);
 			if (this->cur_order_index > 0) --this->cur_order_index;
 		}
-		current_order.MakeLoading(false);
+		this->current_order.MakeLoading(false);
 	}
 
 	Station::Get(this->last_station_visited)->loading_vehicles.push_back(this);
