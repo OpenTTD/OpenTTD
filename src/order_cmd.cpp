@@ -796,8 +796,6 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord)
 	Vehicle *u = v->FirstShared();
 	DeleteOrderWarnings(u);
 	for (; u != NULL; u = u->NextShared()) {
-		if (sel_ord < u->cur_order_index) u->cur_order_index--;
-
 		assert(v->orders.list == u->orders.list);
 
 		/* NON-stop flag is misused to see if a train is in a station that is
@@ -808,6 +806,8 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord)
 			 * stay indefinitely at this station anymore. */
 			if (u->current_order.GetLoadType() & OLFB_FULL_LOAD) u->current_order.SetLoadType(OLF_LOAD_IF_POSSIBLE);
 		}
+
+		if (sel_ord < u->cur_order_index) u->cur_order_index--;
 
 		/* Update any possible open window of the vehicle */
 		InvalidateVehicleOrder(u, sel_ord | (INVALID_VEH_ORDER_ID << 8));
