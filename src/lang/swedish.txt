@@ -664,6 +664,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Visa ind
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Visa transportrutter på kartan
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Visa vegetation på kartan
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Visa markägare på kartan
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klicka på en typ av industri för att växla om den visas. Ctrl+Klick visar inga andra typer av industrier. Ctrl+Klick igen visar alla typer av industrier.
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klicka på ett företag för att växla om det företagets egendomar visas. Ctrl+Klick visar inga företag utom det valda. Ctrl+Klick igen visar alla företag.
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Vägar
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Järnvägar
@@ -705,6 +707,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Visa hö
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Visa inga industrier på kartan
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Visa alla industrier på kartan
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Växla visning av höjdkarta
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Visa inga företags egendomar på kartan
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Visa alla företags egendomar på kartan
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Visa senaste meddelande eller nyhet
@@ -3472,6 +3476,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... plat
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... redan byggd
 STR_ERROR_OWNED_BY                                              :{WHITE}... ägs av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ägs av ett annat företag
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... landskapsarkitektursbegränsning uppnådd
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... rutrensningsbegränsning uppnådd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Namnet måste vara unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} i vägen
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Inte tillåtet när spelet är pausat

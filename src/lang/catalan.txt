@@ -665,6 +665,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Mostra l
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostra les rutes de transport al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostra la vegetació al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostra els propietaris del terreny al mapa
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clica sobre el tipus d'indústria per commutar mostrar-les. Ctrl+Clic desactiva tots els tipus excepte la seleccionada. Ctrl+Clic sobre un altre cop activa tots els tipus d'indústria
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Clica sobre la companyia per commutar mostrar les seves propietats. Ctrl+Clic desactiva totes les companyies excepte la seleccionada. Ctrl+Clic sobre un altre cop per activar totes les companyies
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Carreteres
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Vies
@@ -698,6 +700,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Activa/desactiva noms de poblacions al mapa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra el mapa petit a la posició actual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactiva-ho tot
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activa-ho tot
@@ -705,6 +708,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostra a
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}No mostris les indústries al mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostra totes les indústries al mapa
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Commuta mostrar els mapes d'alçades
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}No mostris cap propietat de la companyia al mapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostra totes les propietats de la companyia al mapa
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostra el darrer missatge o notícia
@@ -1088,7 +1093,7 @@ STR_CONFIG_SETTING_ON                                           :Actiu
 STR_CONFIG_SETTING_DISABLED                                     :desactivat
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Mostra la velocitat del vehicle a la barra d'estat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permet construir en desnivells i costes: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permet terraformar sota edificis, rails, etc. (autopendent): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permet modelar el terreny sota edificis, rails, etc. (autopendent): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permet una mida més real de l'àrea d'influència: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Activa la construcció de trens molt llargs: {ORANGE}{STRING}
@@ -1180,7 +1185,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotaci�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antihorari
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Alçada que un escenari pla pren: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Activa la terraformació de cel·les a les vores del mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Activa modelar el terreny de cel·les a les vores del mapa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o més cel·les al vèrtex nord no està buit
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o més cel·les en una de les vores no és aigua
 
@@ -3472,6 +3477,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... lloc
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... ja construït
 STR_ERROR_OWNED_BY                                              :{WHITE}... propietat de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... l'àrea és propietat d'una altra companyia
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... s'ha arribat al límit de neteja de paisatge
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... s'ha arribat al límit de neteja de cel·les
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}El nom ha de ser únic
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} en el camí
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No està permès mentre s'està en pausa
