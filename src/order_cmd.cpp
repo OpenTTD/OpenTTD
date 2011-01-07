@@ -1332,7 +1332,7 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	CargoID cargo = GB(p2, 0, 8);
 	byte subtype  = GB(p2, 8, 8);
 
-	if (cargo >= NUM_CARGO) return CMD_ERROR;
+	if (cargo >= NUM_CARGO && cargo != CT_NO_REFIT) return CMD_ERROR;
 
 	const Vehicle *v = Vehicle::GetIfValid(veh);
 	if (v == NULL || !v->IsPrimaryVehicle()) return CMD_ERROR;
