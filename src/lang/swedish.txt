@@ -1092,7 +1092,7 @@ STR_CONFIG_SETTING_ON                                           :På
 STR_CONFIG_SETTING_DISABLED                                     :Avaktiverat
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Visa fordonshastighet i statusfältet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillåt konstruktion på sluttningar och kuster: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillåt terraformning under byggnader, spår, etc. (autoslope): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillåt landskapsarkitektur under byggnader, spår, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Tillåt mer realistiska uppsamlingsområden för stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillåt borttagning av fler stadsägda vägar, broar och tunnlar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tillåt väldigt långa tåg: {ORANGE}{STRING}
@@ -1103,7 +1103,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistiskt
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Accelerationsmodell för tåg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisk
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Accelerationsmodell för tåg: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Accelerationsmodell för vägfordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisk
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Slutnings lutning för tåg {ORANGE}{STRING}%
@@ -1184,7 +1184,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Höjkar
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Motsols
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Medsols
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Vilken nivåhöjd en platt scenario-karta får: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Tillåt förändring av rutorna vid kartans kanter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Tillåt landskapsarkitektur på rutorna vid kartans kanter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}En eller fler rutor vid den norra gränsen är inte tomma
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}En eller fler rutor vid en av gränserna är inte vatten
 

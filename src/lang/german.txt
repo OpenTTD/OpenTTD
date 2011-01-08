@@ -665,6 +665,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Industri
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Transportwege auf der Weltkarte anzeigen
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Vegetation auf der Weltkarte anzeigen
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Landeigentümer auf der Weltkarte anzeigen
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Anzeige einer Industrie umschalten durch Klick. Strg+Klick zeigt alle an außer die Industrie. Neuerliches Strg+Klick zeigt alle Industrien
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Anzeigeeigenschaften mit Klick auf Firma ändern. Strg+Klick deaktiviert alle Firmen außer die ausgewählte. Wiederholtes Strg+Klick aktiviert alle Firmen
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Straßen
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Gleise
