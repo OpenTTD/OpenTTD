@@ -462,7 +462,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCmdNames()
 
 		/* Should SEND_MTU be exceeded, start a new packet
 		 * (magic 5: 1 bool "more data" and one uint16 "command id", one
-    * byte for string '\0' termination and 1 bool "no more data" */
+		 * byte for string '\0' termination and 1 bool "no more data" */
 		if (p->size + strlen(cmdname) + 5 >= SEND_MTU) {
 			p->Send_bool(false);
 			this->SendPacket(p);
