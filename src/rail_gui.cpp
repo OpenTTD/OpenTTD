@@ -980,17 +980,19 @@ public:
 
 		_railstation.newstations = newstation;
 
+		if (!newstation || _railstation.station_class >= (int)StationClass::GetCount()) {
+			/* New stations are not available or changed, so ensure the default station
+			 * type is 'selected'. */
+			_railstation.station_class = STAT_CLASS_DFLT;
+			_railstation.station_type = 0;
+		}
 		if (newstation) {
 			_railstation.station_count = StationClass::GetCount(_railstation.station_class);
+			_railstation.station_type = min(_railstation.station_type, _railstation.station_count - 1);
 
 			this->vscroll->SetCount(_railstation.station_count);
 			this->vscroll->SetCapacity(GB(this->GetWidget<NWidgetCore>(BRSW_NEWST_LIST)->widget_data, MAT_ROW_START, MAT_ROW_BITS));
 			this->vscroll->SetPosition(Clamp(_railstation.station_type - 2, 0, max(this->vscroll->GetCount() - this->vscroll->GetCapacity(), 0)));
-		} else {
-			/* New stations are not available, so ensure the default station
-			 * type is 'selected'. */
-			_railstation.station_class = STAT_CLASS_DFLT;
-			_railstation.station_type = 0;
 		}
 	}
 
