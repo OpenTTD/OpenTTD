@@ -957,10 +957,10 @@ public:
 	BuildRailStationWindow(const WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(parent)
 	{
 		this->coverage_height = 2 * FONT_HEIGHT_NORMAL + 3 * WD_PAR_VSEP_NORMAL;
+		this->vscroll = NULL;
 		_railstation.newstations = newstation;
 
 		this->CreateNestedTree(desc);
-		this->vscroll = this->GetScrollbar(BRSW_NEWST_SCROLL);
 		NWidgetStacked *newst_additions = this->GetWidget<NWidgetStacked>(BRSW_SHOW_NEWST_ADDITIONS);
 		newst_additions->SetDisplayedPlane(newstation ? 0 : SZSP_NONE);
 		newst_additions = this->GetWidget<NWidgetStacked>(BRSW_SHOW_NEWST_MATRIX);
@@ -995,6 +995,7 @@ public:
 				if (i == STAT_CLASS_WAYP) continue;
 				count++;
 			}
+			this->vscroll = this->GetScrollbar(BRSW_NEWST_SCROLL);
 			this->vscroll->SetCount(count);
 			this->vscroll->SetCapacity(GB(this->GetWidget<NWidgetCore>(BRSW_NEWST_LIST)->widget_data, MAT_ROW_START, MAT_ROW_BITS));
 			this->vscroll->SetPosition(Clamp(_railstation.station_class - 2, 0, max(this->vscroll->GetCount() - this->vscroll->GetCapacity(), 0)));
@@ -1073,6 +1074,7 @@ public:
 				size->width = max(size->width, d.width + padding.width);
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 				size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
+				resize->height = this->line_height;
 				break;
 			}
 
@@ -1175,6 +1177,14 @@ public:
 				}
 				break;
 			}
+		}
+	}
+
+	virtual void OnResize()
+	{
+		if (this->vscroll != NULL) { // New stations available.
+			this->vscroll->SetCapacityFromWidget(this, BRSW_NEWST_LIST);
+			this->GetWidget<NWidgetCore>(BRSW_NEWST_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 		}
 	}
 
