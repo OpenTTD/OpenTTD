@@ -909,6 +909,7 @@ enum BuildRailStationWidgets {
 	BRSW_SHOW_NEWST_ADDITIONS, ///< Selection for newstation class selection list.
 	BRSW_SHOW_NEWST_MATRIX,    ///< Selection for newstation image matrix.
 	BRSW_SHOW_NEWST_RESIZE,    ///< Selection for panel and resize at bottom right for newstation.
+	BRSW_SHOW_NEWST_TYPE,      ///< Display of selected station type.
 	BRSW_NEWST_DROPDOWN,
 	BRSW_NEWST_LIST,           ///< List with newstation station types.
 	BRSW_NEWST_SCROLL,         ///< Scrollbar of the #BRSW_NEWST_LIST.
@@ -970,6 +971,8 @@ public:
 	BuildRailStationWindow(const WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(parent)
 	{
 		this->coverage_height = 2 * FONT_HEIGHT_NORMAL + 3 * WD_PAR_VSEP_NORMAL;
+		_railstation.newstations = newstation;
+
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(BRSW_NEWST_SCROLL);
 		NWidgetStacked *newst_additions = this->GetWidget<NWidgetStacked>(BRSW_SHOW_NEWST_ADDITIONS);
@@ -989,8 +992,6 @@ public:
 		}
 		this->SetWidgetLoweredState(BRSW_HIGHLIGHT_OFF, !_settings_client.gui.station_show_coverage);
 		this->SetWidgetLoweredState(BRSW_HIGHLIGHT_ON, _settings_client.gui.station_show_coverage);
-
-		_railstation.newstations = newstation;
 
 		if (!newstation || _railstation.station_class >= (int)StationClass::GetCount()) {
 			/* New stations are not available or changed, so ensure the default station
@@ -1099,6 +1100,28 @@ public:
 				break;
 			}
 
+			case BRSW_SHOW_NEWST_TYPE: {
+				if (!_railstation.newstations) {
+					size->width = 0;
+					size->height = 0;
+					break;
+				}
+
+				/* If newstations exist, compute the non-zero minimal size. */
+				Dimension d = {0, 0};
+				StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
+				for (StationClassID statclass = STAT_CLASS_BEGIN; statclass < (StationClassID)StationClass::GetCount(); statclass++) {
+					if (statclass == STAT_CLASS_WAYP) continue;
+					for (uint16 j = 0; j < StationClass::GetCount(statclass); j++) {
+						const StationSpec *statspec = StationClass::Get(statclass, j);
+						SetDParam(0, (statspec != NULL && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT);
+						d = maxdim(d, GetStringBoundingBox(str));
+					}
+				}
+				size->width = max(size->width, d.width + padding.width);
+				break;
+			}
+
 			case BRSW_COVERAGE_TEXTS:
 				size->height = this->coverage_height;
 				break;
@@ -1185,6 +1208,11 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		if (widget == BRSW_NEWST_DROPDOWN) SetDParam(0, StationClass::GetName(_railstation.station_class));
+
+		if (widget == BRSW_SHOW_NEWST_TYPE) {
+			const StationSpec *statspec = StationClass::Get(_railstation.station_class, _railstation.station_type);
+			SetDParam(0, (statspec != NULL && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT);
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
@@ -1416,7 +1444,8 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 					NWidget(WWT_PANEL, COLOUR_GREY, BRSW_PLATFORM_DIR_Y), SetMinimalSize(66, 48), SetFill(0, 0), SetDataTip(0x0, STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP), EndContainer(),
 					NWidget(NWID_SPACER), SetMinimalSize(7, 0), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_NUMBER_OF_TRACKS, STR_NULL), SetPadding(2, 2, 0, 2),
+				NWidget(WWT_LABEL, COLOUR_DARK_GREEN, BRSW_SHOW_NEWST_TYPE), SetMinimalSize(144, 11), SetDataTip(STR_ORANGE_STRING, STR_NULL), SetPadding(1, 2, 4, 2),
+				NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_NUMBER_OF_TRACKS, STR_NULL), SetPadding(0, 2, 0, 2),
 				NWidget(NWID_HORIZONTAL),
 					NWidget(NWID_SPACER), SetFill(1, 0),
 					NWidget(WWT_TEXTBTN, COLOUR_GREY, BRSW_PLATFORM_NUM_1), SetMinimalSize(15, 12), SetDataTip(STR_BLACK_1, STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP),
