@@ -58,7 +58,7 @@ static uint32 CanalGetVariable(const ResolverObject *object, byte variable, byte
 		case 0x81: return GetTerrainType(tile);
 
 		/* Random data for river or canal tiles, otherwise zero */
-		case 0x83: return GetWaterTileRandomBits(tile);
+		case 0x83: return IsTileType(tile, MP_WATER) ? GetWaterTileRandomBits(tile) : 0;
 	}
 
 	DEBUG(grf, 1, "Unhandled canal variable 0x%02X", variable);
