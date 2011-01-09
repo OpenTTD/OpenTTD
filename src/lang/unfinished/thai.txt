@@ -699,8 +699,6 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}ไม่เรียกใช้งานทั้งหมด
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}เรียกใช้งานทั้งหมด
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}แสดงความสูง
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}ไม่แสดงอุตสาหกรรมในแผนที่
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}แสดงอุตสาหรรมทั้งหมดในแผนที่
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}เปลี่ยนการแสดง heightmap
 
 # Status bar messages

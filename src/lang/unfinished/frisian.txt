@@ -688,8 +688,6 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Alles ûtsette
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Alles oansette
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Lit hichte sjen
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Lit gjin yndustrieën sjen op de kaart
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Lit alle yndustrieën sjen op de kaart
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Lit lêste (neis)berjocht sjen

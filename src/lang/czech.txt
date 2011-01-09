@@ -778,6 +778,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Zobrazovat na mapě jména měst
 STR_SMALLMAP_CENTER                                             :{BLACK}Vystředit malou mapu na tomto místě
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Vypnout všechny
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Zapnout všechny

@@ -350,6 +350,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Avslutt
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spillinnstillinger
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Vanskelighetsgrad
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Avanserte innstillinger
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Instillinger for kunstig intelligens
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-innstillinger
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Instillinger for gjennomsiktighet
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Vis bynavn
@@ -698,6 +699,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Skru av/på bynavn på kartet
 STR_SMALLMAP_CENTER                                             :{BLACK}Midstill oversiktskartet på gjeldende posisjon
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Deaktiver alle
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Aktiver alle
@@ -705,6 +707,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Vis høy
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ikke vis industrier på kartet
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Vis alle industrier på kartet
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Veksle mellom visning av høydekart
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Ikke vis bedriftseide eiendommer på kartet
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Vis alle bedriftseide eiendommer på kartet
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Vis siste melding eller nyhetsrapport
@@ -1104,7 +1108,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Original
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisk
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsnivå for tog {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Hellingsnivå for kjøretøy {ORANGE}{STRING}{NBSP}%
-STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip å gjøre 90-graders svinger: {ORANGE}{STRING}
+STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip å gjøre 90° svinger: {ORANGE}{STRING}
 STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Slå sammen stasjoner som bygges ved siden av hverandre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillat sammenslåing av stasjoner som ikke ligger inntil hverandre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Bruk forbedret lastealgoritme: {ORANGE}{STRING}
@@ -1147,6 +1151,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Det er i
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Flyplasser utgår aldri: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Varsle hvis et kjøretøy er tapt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Inspiser kjøretøyenes ordre: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :ja, men utelukk stoppede kjøretøy
@@ -1217,6 +1222,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-200
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatisk ved start av nytt spill: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Når spillet er satt på pause, tillat: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :ingen handlinger
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :alle ikke-konstruerings relaterte hanlinger
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alt utenom landskapsendring
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Alle handlinger
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert kjøretøyliste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :Av
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :Eget firma
@@ -1430,6 +1440,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Subarktisk land
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Subtropisk landskap
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Leketøylandskap
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Endre dato: {ORANGE} {DATE_SHORT}
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Endre nåværende årstall
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tillat endring av produksjonsmengder: {ORANGE}{STRING}
 
 # Livery window
@@ -1693,6 +1704,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Henter s
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Henter firmainformasjon..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} foran deg
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} nedlastet så langt
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} lastet ned hittil
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Koble fra
@@ -3210,11 +3222,14 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Hopp ove
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Slett
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Slett den markerte ordren
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Slett alle ordre
+STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Stopp Deling
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Kjør til
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gå til nærmeste garasje/stall/hangar/dokk
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gå til nærmeste hangar
 STR_ORDER_CONDITIONAL                                           :Betinget ordrehopp
+STR_ORDER_SHARE                                                 :Del ordre
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Sett inn en ny ordre før den markerte ordren, eller legg til i slutten av listen. CTRL gir ordren 'full last, enhver varetype', kontrollpunktordre 'direkte' og verkstedsordre 'vedlikehold'
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Sett inn en avansert ordre
 
@@ -3456,8 +3471,10 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}...{NBSP
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... allerede bygget
 STR_ERROR_OWNED_BY                                              :{WHITE}...{NBSP}eies av {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området eies av et annet firma
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... grense for landskapsendring har blitt nådd
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Navn må være unikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} er i veien
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Du kan ikke gjøre dette imens spillet er satt på pause
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN}s bystyre nekter deg å gjøre dette.
@@ -3659,6 +3676,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Broen er
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Start og slutt må være på linje
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}...{NBSP}broens ender må være på land
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... broen er for lang
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Broen ville ende utenfor enden kartet
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Kan ikke bygge tunnel her...
@@ -3758,6 +3776,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... kjø
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... et kjøretøy som deler denne ordren kan ikke gå til den stasjonen
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Kan ikke dele ordreliste...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Kan ikke stoppe deling av ordreliste...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Kan ikke kopiere ordreliste...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}...{NBSP}for langt i fra forrige destinasjon
 

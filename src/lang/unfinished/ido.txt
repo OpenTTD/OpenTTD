@@ -407,8 +407,6 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Baskulas urbo-nomi sur/for la mapo
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Montras alteso
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL                                :{BLACK}Montras nula industrii sur la mapo
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL                                 :{BLACK}Montras omna industrii sur la mapo
 
 # Status bar messages
 
