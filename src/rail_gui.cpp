@@ -877,8 +877,6 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 
 /** Enum referring to the widgets of the rail stations window */
 enum BuildRailStationWidgets {
-	BRSW_BACKGROUND,           ///< Window background.
-
 	BRSW_PLATFORM_DIR_X,       ///< Button to select '/' view.
 	BRSW_PLATFORM_DIR_Y,       ///< Button to select '\' view.
 
@@ -902,6 +900,7 @@ enum BuildRailStationWidgets {
 
 	BRSW_HIGHLIGHT_OFF,        ///< Button for turning coverage highlighting off.
 	BRSW_HIGHLIGHT_ON,         ///< Button for turning coverage highlighting on.
+	BRSW_COVERAGE_TEXTS,       ///< Empty space for the coverage texts.
 
 	BRSW_SHOW_NEWST_ADDITIONS, ///< Selection for newstation class selection list.
 	BRSW_NEWST_DROPDOWN,
@@ -915,6 +914,7 @@ enum BuildRailStationWidgets {
 struct BuildRailStationWindow : public PickerWindowBase {
 private:
 	uint line_height;     ///< Height of a single line in the newstation selection matrix (#BRSW_NEWST_LIST widget).
+	uint coverage_height; ///< Height of the coverage texts.
 	Scrollbar *vscroll;   ///< Vertical scrollbar of the new station list.
 
 	/**
@@ -962,6 +962,7 @@ private:
 public:
 	BuildRailStationWindow(const WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(parent)
 	{
+		this->coverage_height = 2 * FONT_HEIGHT_NORMAL + 3 * WD_PAR_VSEP_NORMAL;
 		this->CreateNestedTree(desc);
 		this->vscroll = this->GetScrollbar(BRSW_NEWST_SCROLL);
 		NWidgetStacked *newst_additions = this->GetWidget<NWidgetStacked>(BRSW_SHOW_NEWST_ADDITIONS);
@@ -1035,15 +1036,17 @@ public:
 		this->DrawWidgets();
 
 		/* 'Accepts' and 'Supplies' texts. */
-		int top = this->GetWidget<NWidgetBase>(BRSW_HIGHLIGHT_ON)->pos_y + this->GetWidget<NWidgetBase>(BRSW_HIGHLIGHT_ON)->current_y + WD_PAR_VSEP_NORMAL;
-		NWidgetBase *back_nwi = this->GetWidget<NWidgetBase>(BRSW_BACKGROUND);
-		int right = back_nwi->pos_x +  back_nwi->current_x;
-		int bottom = back_nwi->pos_y +  back_nwi->current_y;
-		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
-		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
-		/* Resize background if the text is not equally long as the window. */
-		if (top > bottom || (top < bottom && back_nwi->current_y > back_nwi->smallest_y)) {
-			ResizeWindow(this, 0, top - bottom);
+		NWidgetBase *cov = this->GetWidget<NWidgetBase>(BRSW_COVERAGE_TEXTS);
+		int top = cov->pos_y + WD_PAR_VSEP_NORMAL;
+		int left = cov->pos_x + WD_FRAMERECT_LEFT;
+		int right = cov->pos_x + cov->current_x - WD_FRAMERECT_RIGHT;
+		int bottom = cov->pos_y + cov->current_y;
+		top = DrawStationCoverageAreaText(left, right, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
+		top = DrawStationCoverageAreaText(left, right, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
+		/* Resize the coverage text space if the text is not equally long as the window. */
+		if (top != bottom) {
+			this->coverage_height += top - bottom;
+			this->ReInit();
 		}
 	}
 
@@ -1077,6 +1080,10 @@ public:
 				size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
 				break;
 			}
+
+			case BRSW_COVERAGE_TEXTS:
+				size->height = this->coverage_height;
+				break;
 		}
 	}
 
@@ -1316,7 +1323,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_STATION_BUILD_RAIL_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BRSW_BACKGROUND),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 		/* begin newstations gui additions. */
 		NWidget(NWID_SELECTION, INVALID_COLOUR, BRSW_SHOW_NEWST_ADDITIONS),
 			NWidget(NWID_VERTICAL),
@@ -1376,7 +1383,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 										SetDataTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
 			NWidget(NWID_SPACER), SetMinimalSize(2, 0), SetFill(1, 0),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 20), SetResize(0, 1),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, BRSW_COVERAGE_TEXTS), SetFill(1, 1),
 	EndContainer(),
 };
 
