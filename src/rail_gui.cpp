@@ -1469,7 +1469,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 
 /** High level window description of the station-build window (default & newGRF) */
 static const WindowDesc _station_builder_desc(
-	WDP_AUTO, 0, 0,
+	WDP_AUTO, 350, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
 	_nested_station_builder_widgets, lengthof(_nested_station_builder_widgets)
