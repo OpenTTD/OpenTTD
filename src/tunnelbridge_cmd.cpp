@@ -39,6 +39,7 @@
 #include "company_base.h"
 #include "newgrf_railtype.h"
 #include "object_base.h"
+#include "water.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1104,7 +1105,12 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		}
 
 		if (!ice) {
-			DrawClearLandTile(ti, 3);
+			TileIndex next = ti->tile + TileOffsByDiagDir(tunnelbridge_direction);
+			if (ti->tileh != SLOPE_FLAT && ti->z == 0 && HasTileWaterClass(next) && GetWaterClass(next) == WATER_CLASS_SEA) {
+				DrawShoreTile(ti->tileh);
+			} else {
+				DrawClearLandTile(ti, 3);
+			}
 		} else {
 			DrawGroundSprite(SPR_FLAT_SNOW_DESERT_TILE + SlopeToSpriteOffset(ti->tileh), PAL_NONE);
 		}
