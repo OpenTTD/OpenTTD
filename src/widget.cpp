@@ -1404,6 +1404,7 @@ void NWidgetMatrix::SetCount(int count)
 	count += -this->pip_inter + this->pip_pre + this->pip_post; // We counted an inter too much in the multiplication above
 	this->sb->SetCount(count);
 	this->sb->SetCapacity(this->sb->IsVertical() ? this->current_y : this->current_x);
+	this->sb->SetStepSize(this->sb->IsVertical() ? this->widget_h  : this->widget_w);
 }
 
 /**
