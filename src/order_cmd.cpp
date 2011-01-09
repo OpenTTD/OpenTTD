@@ -429,6 +429,7 @@ TileIndex Order::GetLocation(const Vehicle *v) const
 	switch (this->GetType()) {
 		case OT_GOTO_WAYPOINT:
 		case OT_GOTO_STATION:
+		case OT_AUTOMATIC:
 			return BaseStation::Get(this->GetDestination())->xy;
 
 		case OT_GOTO_DEPOT:
