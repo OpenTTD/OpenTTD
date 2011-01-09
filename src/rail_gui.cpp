@@ -877,36 +877,36 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 
 /** Enum referring to the widgets of the rail stations window */
 enum BuildRailStationWidgets {
-	BRSW_BACKGROUND,
+	BRSW_BACKGROUND,           ///< Window background.
 
-	BRSW_PLATFORM_DIR_X,
-	BRSW_PLATFORM_DIR_Y,
+	BRSW_PLATFORM_DIR_X,       ///< Button to select '/' view.
+	BRSW_PLATFORM_DIR_Y,       ///< Button to select '\' view.
 
-	BRSW_PLATFORM_NUM_1,
-	BRSW_PLATFORM_NUM_2,
-	BRSW_PLATFORM_NUM_3,
-	BRSW_PLATFORM_NUM_4,
-	BRSW_PLATFORM_NUM_5,
-	BRSW_PLATFORM_NUM_6,
-	BRSW_PLATFORM_NUM_7,
+	BRSW_PLATFORM_NUM_1,       ///< Button to select stations with a single platform.
+	BRSW_PLATFORM_NUM_2,       ///< Button to select stations with 2 platforms.
+	BRSW_PLATFORM_NUM_3,       ///< Button to select stations with 3 platforms.
+	BRSW_PLATFORM_NUM_4,       ///< Button to select stations with 4 platforms.
+	BRSW_PLATFORM_NUM_5,       ///< Button to select stations with 5 platforms.
+	BRSW_PLATFORM_NUM_6,       ///< Button to select stations with 6 platforms.
+	BRSW_PLATFORM_NUM_7,       ///< Button to select stations with 7 platforms.
 
-	BRSW_PLATFORM_LEN_1,
-	BRSW_PLATFORM_LEN_2,
-	BRSW_PLATFORM_LEN_3,
-	BRSW_PLATFORM_LEN_4,
-	BRSW_PLATFORM_LEN_5,
-	BRSW_PLATFORM_LEN_6,
-	BRSW_PLATFORM_LEN_7,
+	BRSW_PLATFORM_LEN_1,       ///< Button to select single tile length station platforms.
+	BRSW_PLATFORM_LEN_2,       ///< Button to select 2 tiles length station platforms.
+	BRSW_PLATFORM_LEN_3,       ///< Button to select 3 tiles length station platforms.
+	BRSW_PLATFORM_LEN_4,       ///< Button to select 4 tiles length station platforms.
+	BRSW_PLATFORM_LEN_5,       ///< Button to select 5 tiles length station platforms.
+	BRSW_PLATFORM_LEN_6,       ///< Button to select 6 tiles length station platforms.
+	BRSW_PLATFORM_LEN_7,       ///< Button to select 7 tiles length station platforms.
 
-	BRSW_PLATFORM_DRAG_N_DROP,
+	BRSW_PLATFORM_DRAG_N_DROP, ///< Button to enable drag and drop type station placement.
 
-	BRSW_HIGHLIGHT_OFF,
-	BRSW_HIGHLIGHT_ON,
+	BRSW_HIGHLIGHT_OFF,        ///< Button for turning coverage highlighting off.
+	BRSW_HIGHLIGHT_ON,         ///< Button for turning coverage highlighting on.
 
-	BRSW_SHOW_NEWST_ADDITIONS,
+	BRSW_SHOW_NEWST_ADDITIONS, ///< Selection for newstation class selection list.
 	BRSW_NEWST_DROPDOWN,
-	BRSW_NEWST_LIST,
-	BRSW_NEWST_SCROLL,
+	BRSW_NEWST_LIST,           ///< List with newstation station types.
+	BRSW_NEWST_SCROLL,         ///< Scrollbar of the #BRSW_NEWST_LIST.
 
 	BRSW_PLATFORM_NUM_BEGIN = BRSW_PLATFORM_NUM_1 - 1,
 	BRSW_PLATFORM_LEN_BEGIN = BRSW_PLATFORM_LEN_1 - 1,
@@ -914,8 +914,8 @@ enum BuildRailStationWidgets {
 
 struct BuildRailStationWindow : public PickerWindowBase {
 private:
-	uint line_height; ///< Height of a single line in the newstation selection matrix (#BRSW_NEWST_LIST widget).
-	Scrollbar *vscroll;
+	uint line_height;     ///< Height of a single line in the newstation selection matrix (#BRSW_NEWST_LIST widget).
+	Scrollbar *vscroll;   ///< Vertical scrollbar of the new station list.
 
 	/**
 	 * Verify whether the currently selected station size is allowed after selecting a new station class/type.
