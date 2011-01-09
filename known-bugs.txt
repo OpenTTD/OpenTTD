@@ -1,13 +1,13 @@
 OpenTTD's known bugs
-Last updated:    2010-12-31
-Release version: 1.1.0-beta2
+Last updated:    2010-01-09
+Release version: 1.1.0-beta3
 ------------------------------------------------------------------------
 
 
 Table of Contents:
 ------------------
 1) About
-2) Known bugs in the this stable release
+2) Known bugs in this release
 3) Known bugs that will not be solved
 
 
@@ -22,12 +22,12 @@ specifics, we welcome you to report them. React to the given bug indicated
 by the number below on http://bugs.openttd.org.
 
 
-2) Known bugs in this stable release:
--- ----------------------------------
-The following bugs are known to exist in this stable release and
-we intend to fix them. Some bugs are known but are not fixable or
-fixing them would cause further problems. Those bugs can be found
-in the "Known bugs that will not be solved" section.
+2) Known bugs in this release:
+-- ---------------------------
+The following bugs are known to exist in this release and we intend to
+fix them. Some bugs are known but are not fixable or fixing them would
+cause further problems. Those bugs can be found in the "Known bugs that
+will not be solved" section.
 
 The bugs in this section all refer to a ticket in our bug tracking system
 that you can find at: http://bugs.openttd.org

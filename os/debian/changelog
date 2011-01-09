@@ -1,3 +1,9 @@
+openttd (1.1.0~beta3) unstable; urgency=low
+
+  * New upstream release 1.1.0-beta3
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Sun, 09 Jan 2011 18:00:00 +0100
+
 openttd (1.1.0~beta2) unstable; urgency=low
 
   * New upstream release 1.1.0-beta2
