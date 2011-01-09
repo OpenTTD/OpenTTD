@@ -442,13 +442,23 @@ static void DispatchHoverEvent(Window *w, int x, int y)
  * @param nwid the widget where the scrollwheel was used
  * @param wheel scroll up or down
  */
-static void DispatchMouseWheelEvent(Window *w, const NWidgetCore *nwid, int wheel)
+static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 {
 	if (nwid == NULL) return;
 
 	/* Using wheel on caption/shade-box shades or unshades the window. */
 	if (nwid->type == WWT_CAPTION || nwid->type == WWT_SHADEBOX) {
 		w->SetShaded(wheel < 0);
+		return;
+	}
+
+	/* Wheeling a vertical scrollbar. */
+	if (nwid->type == NWID_VSCROLLBAR) {
+		NWidgetScrollbar *sb = static_cast<NWidgetScrollbar *>(nwid);
+		if (sb->GetCount() > sb->GetCapacity()) {
+			sb->UpdatePosition(wheel);
+			w->SetDirty();
+		}
 		return;
 	}
 
