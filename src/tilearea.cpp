@@ -139,15 +139,22 @@ TileIterator &DiagonalTileIterator::operator++()
 {
 	assert(this->tile != INVALID_TILE);
 
+	bool new_line = false;
 	do {
 		/* Iterate using the rotated coordinates. */
 		if (this->a_max > 0) {
-			++this->a_cur;
+			this->a_cur += 2;
+			new_line = this->a_cur >= this->a_max;
 		} else {
-			--this->a_cur;
+			this->a_cur -= 2;
+			new_line = this->a_cur <= this->a_max;
 		}
-		if (this->a_cur == this->a_max) {
-			this->a_cur = 0;
+		if (new_line) {
+			/* offset of initial a_cur: one tile in the same direction as a_max
+			 * every second line.
+			 */
+			this->a_cur = abs(this->a_cur) % 2 ? 0 : (this->a_max > 0 ? 1 : -1);
+
 			if (this->b_max > 0) {
 				++this->b_cur;
 			} else {
