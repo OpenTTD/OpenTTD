@@ -556,9 +556,17 @@ private:
 	uint16 count;           ///< Number of elements in the list.
 	uint16 cap;             ///< Number of visible elements of the scroll bar.
 	uint16 pos;             ///< Index of first visible item of the list.
+	uint16 stepsize;        ///< Distance to scroll, when pressing the buttons or using the wheel.
 
 public:
-	Scrollbar(bool is_vertical) : is_vertical(is_vertical)
+	/** Stepping sizes when scrolling */
+	enum ScrollbarStepping {
+		SS_RAW,             ///< Step in single units.
+		SS_SMALL,           ///< Step in #stepsize units.
+		SS_BIG,             ///< Step in #cap units.
+	};
+
+	Scrollbar(bool is_vertical) : is_vertical(is_vertical), stepsize(1)
 	{
 	}
 
@@ -609,6 +617,16 @@ public:
 	}
 
 	/**
+	 * Set the distance to scroll when using the buttons or the wheel.
+	 * @param stepsize Scrolling speed.
+	 */
+	void SetStepSize(uint16 stepsize)
+	{
+		assert(stepsize > 0);
+		this->stepsize = stepsize;
+	}
+
+	/**
 	 * Sets the number of elements in the list
 	 * @param num the number of elements in the list
 	 * @note updates the position if needed
@@ -655,10 +673,16 @@ public:
 	 * Updates the position of the first visible element by the given amount.
 	 * If the position would be too low or high it will be clamped appropriately
 	 * @param difference the amount of change requested
+	 * @param unit The stepping unit of \a difference
 	 */
-	void UpdatePosition(int difference)
+	void UpdatePosition(int difference, ScrollbarStepping unit = SS_SMALL)
 	{
 		if (difference == 0) return;
+		switch (unit) {
+			case SS_SMALL: difference *= this->stepsize; break;
+			case SS_BIG:   difference *= this->cap; break;
+			default: break;
+		}
 		this->SetPosition(Clamp(this->pos + difference, 0, max(this->count - this->cap, 0)));
 	}
 
