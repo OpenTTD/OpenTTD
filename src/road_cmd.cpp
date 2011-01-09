@@ -1240,7 +1240,10 @@ static void DrawTile_Road(TileInfo *ti)
 				DrawGroundSprite(road, pal);
 
 				SpriteID rail = GetCustomRailSprite(rti, ti->tile, RTSG_CROSSING) + axis;
-				DrawGroundSprite(rail, PAL_NONE);
+				/* Draw tracks, but draw PBS reserved tracks darker. */
+				pal = (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && HasCrossingReservation(ti->tile)) ? PALETTE_CRASH : PAL_NONE;
+				DrawGroundSprite(rail, pal);
+
 				DrawRailTileSeq(ti, &_crossing_layout, TO_CATENARY, rail, 0, PAL_NONE);
 			} else {
 				SpriteID image = rti->base_sprites.crossing;
