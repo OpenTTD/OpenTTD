@@ -910,8 +910,7 @@ enum BuildRailStationWidgets {
 	BRSW_SHOW_NEWST_MATRIX,    ///< Selection for newstation image matrix.
 	BRSW_SHOW_NEWST_RESIZE,    ///< Selection for panel and resize at bottom right for newstation.
 	BRSW_SHOW_NEWST_TYPE,      ///< Display of selected station type.
-	BRSW_NEWST_DROPDOWN,
-	BRSW_NEWST_LIST,           ///< List with newstation station types.
+	BRSW_NEWST_LIST,           ///< List with available newstation classes.
 	BRSW_NEWST_SCROLL,         ///< Scrollbar of the #BRSW_NEWST_LIST.
 
 	BRSW_PLATFORM_NUM_BEGIN = BRSW_PLATFORM_NUM_1 - 1,
@@ -954,19 +953,6 @@ private:
 		}
 	}
 
-	/** Build a dropdown list of available station classes */
-	static DropDownList *BuildStationClassDropDown()
-	{
-		DropDownList *list = new DropDownList();
-
-		for (uint i = 0; i < StationClass::GetCount(); i++) {
-			if (i == STAT_CLASS_WAYP) continue;
-			list->push_back(new DropDownListStringItem(StationClass::GetName((StationClassID)i), i, false));
-		}
-
-		return list;
-	}
-
 public:
 	BuildRailStationWindow(const WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(parent)
 	{
@@ -1004,9 +990,14 @@ public:
 			_railstation.station_count = StationClass::GetCount(_railstation.station_class);
 			_railstation.station_type = min(_railstation.station_type, _railstation.station_count - 1);
 
-			this->vscroll->SetCount(_railstation.station_count);
+			int count = 0;
+			for (uint i = 0; i < StationClass::GetCount(); i++) {
+				if (i == STAT_CLASS_WAYP) continue;
+				count++;
+			}
+			this->vscroll->SetCount(count);
 			this->vscroll->SetCapacity(GB(this->GetWidget<NWidgetCore>(BRSW_NEWST_LIST)->widget_data, MAT_ROW_START, MAT_ROW_BITS));
-			this->vscroll->SetPosition(Clamp(_railstation.station_type - 2, 0, max(this->vscroll->GetCount() - this->vscroll->GetCapacity(), 0)));
+			this->vscroll->SetPosition(Clamp(_railstation.station_class - 2, 0, max(this->vscroll->GetCount() - this->vscroll->GetCapacity(), 0)));
 
 			this->vscroll2 = this->GetScrollbar(BRSW_MATRIX_SCROLL);
 			NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(BRSW_MATRIX);
@@ -1072,29 +1063,14 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case BRSW_NEWST_DROPDOWN: {
+			case BRSW_NEWST_LIST: {
 				Dimension d = {0, 0};
 				for (uint i = 0; i < StationClass::GetCount(); i++) {
 					if (i == STAT_CLASS_WAYP) continue;
 					SetDParam(0, StationClass::GetName((StationClassID)i));
 					d = maxdim(d, GetStringBoundingBox(STR_BLACK_STRING));
 				}
-				d.width += padding.width;
-				d.height += padding.height;
-				*size = maxdim(*size, d);
-				break;
-			}
-			case BRSW_NEWST_LIST: {
-				Dimension d = GetStringBoundingBox(STR_STATION_CLASS_DFLT);
-				for (StationClassID statclass = STAT_CLASS_BEGIN; statclass < (StationClassID)StationClass::GetCount(); statclass++) {
-					if (statclass == STAT_CLASS_WAYP) continue;
-					for (uint16 j = 0; j < StationClass::GetCount(statclass); j++) {
-						const StationSpec *statspec = StationClass::Get(statclass, j);
-						if (statspec != NULL && statspec->name != 0) d = maxdim(d, GetStringBoundingBox(statspec->name));
-					}
-				}
 				size->width = max(size->width, d.width + padding.width);
-
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 				size->height = GB(this->GetWidget<NWidgetCore>(widget)->widget_data, MAT_ROW_START, MAT_ROW_BITS) * this->line_height;
 				break;
@@ -1163,20 +1139,17 @@ public:
 				break;
 
 			case BRSW_NEWST_LIST: {
-				uint y = r.top;
-				for (uint16 i = this->vscroll->GetPosition(); i < _railstation.station_count && this->vscroll->IsVisible(i); i++) {
-					const StationSpec *statspec = StationClass::Get(_railstation.station_class, i);
-
-					StringID str = STR_STATION_CLASS_DFLT;
-					if (statspec != NULL && statspec->name != 0) {
-						if (HasBit(statspec->callback_mask, CBM_STATION_AVAIL) && GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
-							GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->line_height - 2, 0, FILLRECT_CHECKER);
-						}
-						str = statspec->name;
+				uint statclass = 0;
+				uint row = 0;
+				for (uint i = 0; i < StationClass::GetCount(); i++) {
+					if (i == STAT_CLASS_WAYP) continue;
+					if (this->vscroll->IsVisible(statclass)) {
+						SetDParam(0, StationClass::GetName((StationClassID)i));
+						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, row * this->line_height + r.top + WD_MATRIX_TOP, STR_JUST_STRING,
+								(StationClassID)i == _railstation.station_class ? TC_WHITE : TC_BLACK);
+						row++;
 					}
-					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, str, i == _railstation.station_type ? TC_WHITE : TC_BLACK);
-
-					y += this->line_height;
+					statclass++;
 				}
 				break;
 			}
@@ -1207,8 +1180,6 @@ public:
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget == BRSW_NEWST_DROPDOWN) SetDParam(0, StationClass::GetName(_railstation.station_class));
-
 		if (widget == BRSW_SHOW_NEWST_TYPE) {
 			const StationSpec *statspec = StationClass::Get(_railstation.station_class, _railstation.station_type);
 			SetDParam(0, (statspec != NULL && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT);
@@ -1342,29 +1313,30 @@ public:
 				this->SetDirty();
 				break;
 
-			case BRSW_NEWST_DROPDOWN:
-				ShowDropDownList(this, BuildStationClassDropDown(), _railstation.station_class, BRSW_NEWST_DROPDOWN);
-				break;
-
 			case BRSW_NEWST_LIST: {
 				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, BRSW_NEWST_LIST, 0, this->line_height);
-				if (y >= _railstation.station_count) return;
+				if (y >= (int)StationClass::GetCount()) return;
+				for (uint i = 0; i < StationClass::GetCount(); i++) {
+					if (i == STAT_CLASS_WAYP) continue;
+					if (y == 0) {
+						if (_railstation.station_class != (StationClassID)i) {
+							_railstation.station_class = (StationClassID)i;
+							_railstation.station_count = StationClass::GetCount(_railstation.station_class);
+							_railstation.station_type  = min((int)_railstation.station_type, max(0, (int)_railstation.station_count - 1));
 
-				/* Check station availability callback */
-				const StationSpec *statspec = StationClass::Get(_railstation.station_class, y);
-				if (statspec != NULL && HasBit(statspec->callback_mask, CBM_STATION_AVAIL) &&
-						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
+							this->CheckSelectedSize(StationClass::Get(_railstation.station_class, _railstation.station_type));
 
-				_railstation.station_type = y;
-
-				this->CheckSelectedSize(statspec);
-
-				NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(BRSW_MATRIX);
-				matrix->SetClicked(_railstation.station_type);
-
-				SndPlayFx(SND_15_BEEP);
-				this->SetDirty();
-				DeleteWindowById(WC_SELECT_STATION, 0);
+							NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(BRSW_MATRIX);
+							matrix->SetCount(_railstation.station_count);
+							matrix->SetClicked(_railstation.station_type);
+						}
+						SndPlayFx(SND_15_BEEP);
+						this->SetDirty();
+						DeleteWindowById(WC_SELECT_STATION, 0);
+						break;
+					}
+					y--;
+				}
 				break;
 			}
 
@@ -1390,28 +1362,6 @@ public:
 		}
 	}
 
-	virtual void OnDropdownSelect(int widget, int index)
-	{
-		if (_railstation.station_class != index) {
-			_railstation.station_class = (StationClassID)index;
-			_railstation.station_type  = 0;
-			_railstation.station_count = StationClass::GetCount(_railstation.station_class);
-
-			this->CheckSelectedSize(StationClass::Get(_railstation.station_class, _railstation.station_type));
-
-			this->vscroll->SetCount(_railstation.station_count);
-			this->vscroll->SetPosition(_railstation.station_type);
-
-			NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(BRSW_MATRIX);
-			matrix->SetCount(_railstation.station_count);
-			matrix->SetClicked(_railstation.station_type);
-		}
-
-		SndPlayFx(SND_15_BEEP);
-		this->SetDirty();
-		DeleteWindowById(WC_SELECT_STATION, 0);
-	}
-
 	virtual void OnTick()
 	{
 		CheckRedrawStationCoverage(this);
@@ -1427,13 +1377,10 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_VERTICAL),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, BRSW_SHOW_NEWST_ADDITIONS),
-					NWidget(NWID_VERTICAL),
-						NWidget(WWT_DROPDOWN, COLOUR_GREY, BRSW_NEWST_DROPDOWN), SetMinimalSize(134, 12), SetFill(1, 0), SetPadding(3, 7, 3, 7), SetDataTip(STR_BLACK_STRING, STR_STATION_BUILD_STATION_CLASS_TOOLTIP),
-						NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7),
-							NWidget(WWT_MATRIX, COLOUR_GREY, BRSW_NEWST_LIST), SetMinimalSize(122, 71), SetFill(1, 0), SetDataTip(0x501, STR_STATION_BUILD_STATION_TYPE_TOOLTIP), SetScrollbar(BRSW_NEWST_SCROLL),
-							NWidget(NWID_VSCROLLBAR, COLOUR_GREY, BRSW_NEWST_SCROLL),
-						EndContainer(),
-						NWidget(NWID_SPACER), SetMinimalSize(0, 1),
+					NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7), SetPadding(2, 0, 1, 0),
+						NWidget(WWT_MATRIX, COLOUR_GREY, BRSW_NEWST_LIST), SetMinimalSize(122, 71), SetFill(1, 0),
+								SetDataTip(0x501, STR_STATION_BUILD_STATION_CLASS_TOOLTIP), SetScrollbar(BRSW_NEWST_SCROLL),
+						NWidget(NWID_VSCROLLBAR, COLOUR_GREY, BRSW_NEWST_SCROLL),
 					EndContainer(),
 				EndContainer(),
 				NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetMinimalSize(144, 11), SetDataTip(STR_STATION_BUILD_ORIENTATION, STR_NULL), SetPadding(1, 2, 0, 2),
