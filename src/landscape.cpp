@@ -617,7 +617,7 @@ CommandCost CmdLandscapeClear(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		cost.AddCost(GetWaterClass(tile) == WATER_CLASS_CANAL ? _price[PR_CLEAR_CANAL] : _price[PR_CLEAR_WATER]);
 	}
 
-	Company *c = (flags & DC_AUTO) ? NULL : Company::GetIfValid(_current_company);
+	Company *c = (flags & (DC_AUTO | DC_BANKRUPT)) ? NULL : Company::GetIfValid(_current_company);
 	if (c != NULL && (int)GB(c->clear_limit, 16, 16) < 1) {
 		return_cmd_error(STR_ERROR_CLEARING_LIMIT_REACHED);
 	}
@@ -665,7 +665,7 @@ CommandCost CmdClearArea(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	CommandCost last_error = CMD_ERROR;
 	bool had_success = false;
 
-	const Company *c = (flags & DC_AUTO) ? NULL : Company::GetIfValid(_current_company);
+	const Company *c = (flags & (DC_AUTO | DC_BANKRUPT)) ? NULL : Company::GetIfValid(_current_company);
 	int limit = (c == NULL ? INT32_MAX : GB(c->clear_limit, 16, 16));
 
 	TileArea ta(tile, p1);
