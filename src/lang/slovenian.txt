@@ -390,6 +390,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Izhod
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti igre
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nastavitve težavnosti
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Napredne nastavitve
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Nastavitve UI
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF nastavitve
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavitve prozornega pogleda
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Imena mest prikazana
@@ -738,6 +739,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Vključi/izključi imena mest na zemljevidu
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrira majhen zemljevid na trenutno lokacijo
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Onemogoči vse
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Omogoči vse
@@ -745,6 +747,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Prikaži
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Na zemljevidu ne prikaži nobene industrije
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Na zemljevidu prikaži vse industrije
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Preklopi vidljivost višinske karte
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Ne prikaži lastnine podjetja na zemljevidu
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Prikaži vso lastnino podjetja na zemljevidu
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Prikaži zadnje sporočilo ali novico
@@ -1128,7 +1132,7 @@ STR_CONFIG_SETTING_ON                                           :Vklopi
 STR_CONFIG_SETTING_DISABLED                                     :onemogočeno
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Prikaz hitrosti vozil v vrstici stanja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dovoli gradnjo hiš na nagibih ali obali: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dovoli oblikovanje terena pod objekti (tiri, hiše) (samonaklon): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dovoli oblikovanje terena pod objekti, tiri, ipd. (samonaklon): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnični območni zajem postaj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest in mostov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Omogoči gradnjo zelo dolgih vlakov: {ORANGE}{STRING}
@@ -2016,6 +2020,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Izberi �
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Izberi cestni most
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Izbira mostu - klikni na željeni most za izgradnjo
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Viseč, Jeklen
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Nosilni, Jeklen
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Nosilni križi, Jeklen
@@ -3511,6 +3516,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... nepr
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... že zgrajeno
 STR_ERROR_OWNED_BY                                              :{WHITE}... v lasti {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemljišče je last drugega podjetja
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... dosežena omejitev izdelave terena
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... dosežena omejitev čiščenja terena
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Ime mora biti edinstveno
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} na poti
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ni dovoljeno med pavzo
@@ -4341,6 +4348,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}

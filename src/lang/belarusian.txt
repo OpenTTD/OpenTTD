@@ -1161,9 +1161,9 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вакно прагляду {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Капіяваць у вакно прагляду
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Капіяваць месцазнаходжаньне з асноўнага экрана ў гэтае вакно
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Скапіяваць бягучую пазыцыю ў вакно прагляду
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Уставіць з вакна прагляду
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Перайсьці да гэтага месца ў асноўным экране
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Перайсьці да гэтага месца ў асноўным вакне
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Наладкі гульні
@@ -1409,7 +1409,7 @@ STR_CONFIG_SETTING_ON                                           :так
 STR_CONFIG_SETTING_DISABLED                                     :адключана
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Паказваць хуткасьць транспарту ў панэлі статусу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Дазволіць будаўніцтва на сьхілах і на беразе: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Дазволіць тэраформінг пад будынкамі, дарогамі і г.д. (аўтасьхіл): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Дазволіць зьмену ляндшафту пад будынкамі, дарогамі й г. д. (аўтаспускі): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Зона пакрыцьця залежыць ад тыпу станцыі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Дазволіць знос амаль усіх гарадзкіх аб'ектаў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Дазволіць вельмі доўгія цягнікі: {ORANGE}{STRING}
@@ -1501,7 +1501,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Кру�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :супраць руху гадзіньнікавай стрэлкі
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :па гадзіньнікавай стрэлцы
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Ўзровень вышыні для мапаў з пляскатым рэльефам: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Дазволіць тэраформінг на краі мапы: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Дазволіць зьмену ляндшафту на краю мапы: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Адна ці некалькі клетак ў паўночным куце мапы не пустыя
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Адна ці некалькі клетак берага без вады
 
@@ -2938,7 +2938,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Няма -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Маршруты, якія ўжо субсыдуюцца:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} па маршруце з {STRING} у {STRING}{YELLOW} ({COMPANY}{YELLOW}, да {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Націсьніце на маршрут для адлюстраваньня прадпрыемства/горада. Ctrl+клік паказвае ў дадатковым вакне.
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Націсьніце на маршрут для адлюстраваньня прадпрыемства/горада. Ctrl+пстрычка паказвае ў дадатковым вакне.
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Сьпіс станцыяў - пстрычка па назьве паказвае станцыю ў асноўным вакне. Ctrl+клiк паказвае ў дадатковым вакне.
@@ -4747,6 +4747,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}

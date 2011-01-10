@@ -2854,10 +2854,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kjøp kj
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kjøp skip
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Kjøp luftfartøy
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kjøp valgt tog/vogn
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kjøp valgt kjøretøy
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kjøp valgt skip
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kjøp valgt luftfartøy
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kjøp valgt tog/vogn. Shift+Klikk viser estimerte kostnader uten kjøp av tog/vogn
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kjøp valgt kjøretøy. Shift+Klikk viser estimerte kostnader uten kjøp av kjøretøy
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kjøp valgt skip. Shift+Klikk viser estimerte kostnader uten kjøp av fartøy
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kjøp valgt luftfartøy. Shift+klikk viser estimerte kostnader uten å kjøpe fartøyet
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Endre navn
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Endre navn
@@ -2923,8 +2923,8 @@ STR_DEPOT_CLONE_SHIP                                            :{BLACK}Kopier s
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Kopier luftfartøy
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Dette vil skape en kopi av et tog inkludert alle vognene. Klikk denne knappen og så på et hvilket som helst annet tog utenfor eller inni togstallen . CTRL+klikk vil sørge for delte ordre
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil skape en kopi av et kjøretøy. Klikk denne knappen og deretter på et hvilket som helst annet kjøretøy utenfor eller inni garasjen. CTRL+klikk vil sørge for delte ordre
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil skape en kopi av et skip. Klikk på denne knappen og så på et hvilket som helst annet skip utenfor eller inni skipsdokken. CTRL+klikk vil sørge for delte ordre
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Dette vil skape en kopi av et kjøretøy. Klikk denne knappen og deretter på et hvilket som helst kjøretøy utenfor eller inni garasjen. CTRL+klikk vil sørge for delte ordre
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Dette vil skape en kopi av et skip. Klikk på denne knappen og så på et hvilket som helst skip utenfor eller inni skipsdokken. CTRL+klikk vil sørge for delte ordre
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Dette vil skape en kopi av et luftfartøy. Klikk denne knappen og så på hvilket som helst annet luftfartøy utenfor eller inni hangaren. Ctrl+klikk vil sørge for delte ordre. Shift+klikk viser estimert kostnad.
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Gå til togstall. CTRL+klikk åpner et nytt tilleggsvindu over togstallen
