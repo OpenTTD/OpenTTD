@@ -139,26 +139,38 @@ TileIterator &DiagonalTileIterator::operator++()
 {
 	assert(this->tile != INVALID_TILE);
 
+	/* Determine the next tile, while clipping at map borders */
 	bool new_line = false;
 	do {
 		/* Iterate using the rotated coordinates. */
-		if (this->a_max > 0) {
-			this->a_cur += 2;
-			new_line = this->a_cur >= this->a_max;
-		} else {
-			this->a_cur -= 2;
-			new_line = this->a_cur <= this->a_max;
-		}
-		if (new_line) {
-			/* offset of initial a_cur: one tile in the same direction as a_max
-			 * every second line.
-			 */
-			this->a_cur = abs(this->a_cur) % 2 ? 0 : (this->a_max > 0 ? 1 : -1);
-
+		if (this->a_max == 1 || this->a_max == -1) {
+			/* Special case: Every second column has zero length, skip them completely */
+			this->a_cur = 0;
 			if (this->b_max > 0) {
-				++this->b_cur;
+				this->b_cur = min(this->b_cur + 2, this->b_max);
 			} else {
-				--this->b_cur;
+				this->b_cur = max(this->b_cur - 2, this->b_max);
+			}
+		} else {
+			/* Every column has at least one tile to process */
+			if (this->a_max > 0) {
+				this->a_cur += 2;
+				new_line = this->a_cur >= this->a_max;
+			} else {
+				this->a_cur -= 2;
+				new_line = this->a_cur <= this->a_max;
+			}
+			if (new_line) {
+				/* offset of initial a_cur: one tile in the same direction as a_max
+				 * every second line.
+				 */
+				this->a_cur = abs(this->a_cur) % 2 ? 0 : (this->a_max > 0 ? 1 : -1);
+
+				if (this->b_max > 0) {
+					++this->b_cur;
+				} else {
+					--this->b_cur;
+				}
 			}
 		}
 
