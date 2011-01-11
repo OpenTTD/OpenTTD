@@ -859,6 +859,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Prikazuj
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Prikazuje putne rute na karti
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Prikazuje vegetaciju na karti
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Prikazuje vlasništva na karti
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klikom na industriju se prikazuju/ne prikazuju njene fabrike. Ctrl+Klik prikazuje fabrike samo odabrane. Sa ponovnim Ctrl+Klik prikazuju se fabrike svih industrija
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikom na preduzeće se prikazuje/ne prikazuje njeno vlasništvo. Ctrl+Klik prikazuje vlasništvo samo odabranog. Sa ponovnim Ctrl+Klik prikazuju se vlasništva svih preduzeća
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Putevi
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Pruge
@@ -892,6 +894,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Prikazuje imena naselja na karti
 STR_SMALLMAP_CENTER                                             :{BLACK}Pozicionira kartu na trenutnu poziciju
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Sva sakrivena
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Sva prikazana
@@ -899,6 +902,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Prikaži
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Sakrij sve fabrike na karti
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Prikaži na karti sve fabrike
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Promena prikaza elevacije
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Uklanja prikaz vlasništva preduzeća sa karte
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Prikazuje vlasništvo preduzeća na karti
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Prikaži poslednju poruku ili izveštaj
@@ -3682,6 +3687,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... mest
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... već izgrađeno
 STR_ERROR_OWNED_BY                                              :{WHITE}... je u vlasništvu igrača {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemljište je u vlasništvu drugog preduzeća
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... dostignuto ograničenje u izmeni reljefa
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... dostignuto ograničenje u čišćenju pločica
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Naziv mora biti jedinstven
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} je na putu
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Nije dozvoljeno tokom pauze
@@ -4474,6 +4481,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}

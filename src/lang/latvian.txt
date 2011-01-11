@@ -342,6 +342,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Iziet
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spēles režīmi
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Grūtības pakāpes
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Papildus opcijas
+STR_SETTINGS_MENU_AI_SETTINGS                                   :MI uzstādījumi
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF opcijas
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Caurspīdības uzstādījumi
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Rādīt pilsētu nosaukumus
@@ -647,6 +648,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Rādīt 
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Rādīt pārvadājuma maršrutus uz kartes
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Rādīt  augu valsti uz kartes
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Rādīt zemes īpašniekus uz kartes
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klikšķināt uz rūpnīcas tipa lai pārslēgtu tā atainošanu. Ctrl+klikšķis atslēdz visas rūpnīcas, izņemot izvēlēto tipu. Atkārtots Ctrl+klikšķis uz tā ieslēgs visus rūpnīcu tipus
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikšķināt uz kompānijas, lai pārslēgtu tās īpašumu attēlošanu. Ctrl+klikšķis atslēdz visas kompānijas, izņemot izvēlēto. Atkārtots Ctrl+klikšķis uz tās ieslēgs visas kompānijas
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Ceļi
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Dzelzsceļi
@@ -680,9 +683,14 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Rādīt/nerādīt pilsētu nosaukumus uz kartes
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrēt minikartes patreizējo pozīciju
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Atspējot visu
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Iespējot visu
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nerādīt uz kartes nevienu rūpnīcu
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Parādīt uz kartes visas rūpnīcas
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nerādīt nevienas kompānijas īpašumus uz kartes
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Parādīt uz kartes visu kompāniju īpašumus
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Parādīt pēdējo ziņojumu vai avīzes rakstu
@@ -1100,6 +1108,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Šo para
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Lidostas darbosies mūžīgi: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Brīdināt, ja transportlīdzeklis ir noklīdis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :{LTBLUE}Pārskatīt transportu rīkojumus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :nē
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apstādinātos transportus
@@ -1885,6 +1894,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Izvēlie
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Izvēlieties tiltu
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Tilta izvēle - klik uz vēlamo tiltu, lai to uzbūvētu
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Vanšu, Tērauda
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Tērauda spraišļu
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Konsole, Tērauda
@@ -2939,6 +2949,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Ietilpī
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Pārbūvēt)
 STR_REFIT_TITLE                                                 :{GOLD}Izvēlies kravas tipu, ko vest:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Jaunā ietilpība: {GOLD}{CARGO}{}{BLACK}Pārveidošanas izmaksas: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Izvēlēties transportlīdzekļus pielāgošanai. Vilkšana ar peli ļauj izvēlēties vairākus transportlīdzekļus. Klikšķināšana tukšumā atzīmēs visus transportlīdzekļus. Ctrl+klikšķis atzīmēs izvēlēto un visus tam sekojošus transportlīdzekļus
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Izvēlaties kravas veidu, ko pārvadāt ar vilcienu
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Izvēlies kravas tipu mašīnai
@@ -3023,11 +3034,14 @@ STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Izlaist 
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Izdzēst
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Dzēst atzīmēto rīkojumu
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Dzēst visus rīkojumus
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Pārtraukt rīkojumu koplietošanu. Ctrl+klikšķis papildus dzēš arī šī transportlīdzekļa rīkojumus
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Doties uz
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Braukt uz tuvāko depo
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Braukt uz tuvāko angāru
 STR_ORDER_CONDITIONAL                                           :Nosacīts maršruta lēciens
+STR_ORDER_SHARE                                                 :Koplietot rīkojumus
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Ievietot jaunu rīkojumu pirms atzīmētā rīkojuma, vai saraksta beigās. Ctrl stacijā norīko piekraut pilnu ar jebkuru kravu, maršruta punktam braukt cauri bez apstājas un depo veikt apkopi
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Ievietot sarežģītāku komandu
 
@@ -3053,6 +3067,7 @@ STR_ORDER_STOP_ORDER                                            :(Apstādināt)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automātiski)
 
 STR_ORDER_FULL_LOAD                                             :(Piekraut pilnu)
 STR_ORDER_FULL_LOAD_ANY                                         :(Piekraut pilnu ar jebkuru kravu)
@@ -3087,6 +3102,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Pārslē
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Saraksts-uzklikšķiniet uz maršrutu, lai izceltu to
 
 STR_TIMETABLE_NO_TRAVEL                                         :Bez braukšanas
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Ceļot (automātiski; iegrafikosies līdz ar nākamo pašrocīgo rīkojumu)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Braukšana (nav pēc saraksta )
 STR_TIMETABLE_TRAVEL_FOR                                        :Braukt līdz{STRING}
 STR_TIMETABLE_STAY_FOR                                          :un palikt līdz{STRING}
@@ -3239,6 +3255,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... viet
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... jau uzbūvēts
 STR_ERROR_OWNED_BY                                              :{WHITE}... pieder {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... zemes gabals pieder citam uzņēmumam
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... sasniegts ainavu limits
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... sasniegts lauku attīrīšanas limits
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Vārdam jābūt unikālam
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} traucē
 
@@ -3427,6 +3445,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}Tilts ir
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}Sākumam un beigām jābūt uz vienas līnijas
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... abiem tilta galiem jābūt uz zemes
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... tilts ir pārāk garš
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Tilts beigtos ārpus kartes
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Šeit nevar būvēt tuneli
@@ -3523,6 +3542,7 @@ STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... tran
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... transportlīdzeklis, kam kopīgs šis rīkojums, nespēj doties uz norādīto staciju
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Nevar dalīties ar rīkojumu sarakstu...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Nevar pārtraukt koplietot rīkojumus...
 STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Nevar kopēt rīkojumu sarakstu...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... pārāk tāla no iepriekšējā punkta
 
@@ -4001,6 +4021,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
