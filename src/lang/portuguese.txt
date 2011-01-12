@@ -349,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do Jogo
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Nível de Dificuldade
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Opções Avançadas
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Definições de IA
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostrar nomes de cidades
@@ -697,6 +698,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar/ocultar nomes das cidades no mapa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrar o mapa na posição actual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desactivar tudo
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Activar tudo
@@ -1975,6 +1977,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Seleccio
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Seleccionar Ponte de Estrada
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Selecção de ponte - clique na ponte desejada para a construir
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensa, Aço
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Vigas, Aço
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever, Aço
@@ -4259,6 +4262,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
