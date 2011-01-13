@@ -183,6 +183,7 @@ STR_COLOUR_GREEN                                                :हिरवा
 STR_COLOUR_DARK_GREEN                                           :गडद हिरवा
 STR_COLOUR_BLUE                                                 :निळा
 STR_COLOUR_CREAM                                                :दुधी
+STR_COLOUR_MAUVE                                                :फिक्का जांभळा
 STR_COLOUR_PURPLE                                               :जांभळा
 STR_COLOUR_ORANGE                                               :केशरी
 STR_COLOUR_BROWN                                                :तपकिरी
@@ -246,6 +247,7 @@ STR_SORT_BY_AGE                                                 :वय
 STR_SORT_BY_RELIABILITY                                         :विश्वासार्हता
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :मालाच्या प्रकारानुसार एकूण मालवहन क्षमता
 STR_SORT_BY_MAX_SPEED                                           :सर्वोच्च वेग
+STR_SORT_BY_MODEL                                               :मोडल
 STR_SORT_BY_VALUE                                               :किंमत
 STR_SORT_BY_LENGTH                                              :लांबी
 STR_SORT_BY_LIFE_TIME                                           :उर्वरित आयुर्मान
@@ -265,6 +267,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}कं�
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}कंपनीची आर्थिक माहिती दाखवा
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}कंपनीची सर्वसाधारण माहिती दाखवा
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}आलेख दाखवा
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}द्श्य मोठे करा
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}द्श्य छोटे करा
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK} लोहमार्ग बांधा
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}रस्ते बांधा
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}बोटींचा धक्का बांधा
@@ -278,8 +282,10 @@ STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}सु�
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}सुरुवातीचं वर्ष पुरवण्यासाठी क्लिक करा
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}नकाशा, शहरांची यादी दाखवा
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}रस्तेबांधणी
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}चिन्ह लावा
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :बंद करा
 ############ range for SE file menu starts
 
@@ -289,6 +295,7 @@ STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF पर�
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :पारदर्शकता पर्याय
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :शहरांची नावे दाखवा
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :स्थानकांची नावे दाखवा
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :चिन्ह दाखवा
 STR_SETTINGS_MENU_FULL_DETAIL                                   :पूर्ण तपशील
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :इमारती पारदर्शक
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :स्थानकांची नावे पारदर्शक
@@ -301,6 +308,7 @@ STR_FILE_MENU_EXIT                                              :बाहेर
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :वैश्विक नकाशा
+STR_MAP_MENU_SIGN_LIST                                          :चिन्हांची यादी
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :शहरांची यादी
 ############ end of the 'Display map' dropdown
@@ -323,11 +331,13 @@ STR_GRAPH_MENU_INCOME_GRAPH                                     :आवक आ�
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :लोहमार्ग बांधणी
 STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :विद्युत लोहमार्ग बांधणी
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :मोनोरेल बांधणी
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :मॅग्लेव बांधणी
 ############ range ends here
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :रस्तेबांधणी
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :ट्रामगाडी बांधणी
 ############ range ends here
 
 ############ range for waterways construction menu starts
@@ -335,10 +345,12 @@ STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :जलमार
 ############ range ends here
 
 ############ range for airport construction menu starts
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :विमानतळ बांधणी
 ############ range ends here
 
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_PLANT_TREES                                :झाडे लावा
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :चिन्ह लावा
 ############ range ends here
 
 ############ range for music menu starts
@@ -351,6 +363,8 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :निरोप
 ############ range ends here
 
 ############ range for about menu starts
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :जागाची माहिती
+STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :ओपेन टीटीडी बद्दल
 ############ range ends here
 
@@ -363,6 +377,18 @@ STR_ORDINAL_NUMBER_4TH                                          :चौथे
 
 ############ range for months starts
 
+STR_MONTH_JAN                                                   :जानेवारी
+STR_MONTH_FEB                                                   :फेब्रूवारी
+STR_MONTH_MAR                                                   :मार्च
+STR_MONTH_APR                                                   :एप्रिल
+STR_MONTH_MAY                                                   :मे
+STR_MONTH_JUN                                                   :जून
+STR_MONTH_JUL                                                   :जुलै
+STR_MONTH_AUG                                                   :ऑगस्ट
+STR_MONTH_SEP                                                   :सप्टेंबर
+STR_MONTH_OCT                                                   :ऑक्टोबर
+STR_MONTH_NOV                                                   :नोव्हेंबर
+STR_MONTH_DEC                                                   :डिसेंबर
 ############ range for months ends
 
 # Graph window
@@ -417,6 +443,7 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}बर्फ
 
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 
 # Status bar messages
@@ -1525,6 +1552,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
