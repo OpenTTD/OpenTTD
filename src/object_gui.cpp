@@ -36,6 +36,10 @@ enum BuildObjectWidgets {
 	BOW_OBJECT_SPRITE,  ///< A preview sprite of the object.
 	BOW_OBJECT_SIZE,    ///< The size of an object.
 	BOW_INFO,           ///< Other information about the object (from the NewGRF).
+
+	BOW_SELECT_MATRIX,  ///< Selection preview matrix of objects of a given class.
+	BOW_SELECT_IMAGE,   ///< Preview image in the #BOW_SELECT_MATRIX.
+	BOW_SELECT_SCROLL,  ///< Scrollbar next to the #BOW_SELECT_MATRIX.
 };
 
 /** The window used for building objects. */
@@ -72,6 +76,8 @@ public:
 		this->vscroll->SetCount(ObjectClass::GetCount(_selected_object_class));
 		this->SelectFirstAvailableObject(true);
 		this->GetWidget<NWidgetMatrix>(BOW_OBJECT_MATRIX)->SetCount(4);
+
+		this->GetWidget<NWidgetMatrix>(BOW_SELECT_MATRIX)->SetCount(ObjectClass::GetCount(_selected_object_class));
 	}
 
 	virtual ~BuildObjectWindow()
@@ -132,6 +138,8 @@ public:
 					if (spec->views >= 2) size->width  += resize->width;
 					if (spec->views >= 4) size->height += resize->height;
 				}
+				resize->width = 0;
+				resize->height = 0;
 				break;
 			}
 
@@ -177,6 +185,11 @@ public:
 				size->height = this->info_height;
 				break;
 
+			case BOW_SELECT_MATRIX:
+				fill->height = 1;
+				resize->height = 1;
+				break;
+
 			default: break;
 		}
 	}
@@ -218,6 +231,34 @@ public:
 				break;
 			}
 
+			case BOW_SELECT_IMAGE: {
+				if (_selected_object_index < 0) break;
+
+				int obj_index = GB(widget, 16, 16);
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, obj_index);
+				if (spec == NULL) break;
+
+				if (!spec->IsAvailable()) {
+					GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, 0, FILLRECT_CHECKER);
+				}
+				DrawPixelInfo tmp_dpi;
+				/* Set up a clipping area for the preview. */
+				if (FillDrawPixelInfo(&tmp_dpi, r.left + 1, r.top, (r.right - 1) - (r.left + 1) + 1, r.bottom - r.top + 1)) {
+					DrawPixelInfo *old_dpi = _cur_dpi;
+					_cur_dpi = &tmp_dpi;
+					if (spec->grf_prop.grffile == NULL) {
+						extern const DrawTileSprites _objects[];
+						const DrawTileSprites *dts = &_objects[spec->grf_prop.local_id];
+						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - TILE_PIXELS, dts, PAL_NONE);
+					} else {
+						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - TILE_PIXELS, spec,
+								min(_selected_object_view, spec->views - 1));
+					}
+					_cur_dpi = old_dpi;
+				}
+				break;
+			}
+
 			case BOW_INFO: {
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
 				if (spec == NULL) break;
@@ -246,6 +287,10 @@ public:
 		}
 	}
 
+	/**
+	 * Select the specified object in #_selected_object_class class.
+	 * @param object_index Object index to select, \c -1 means select nothing.
+	 */
 	void SelectOtherObject(int object_index)
 	{
 		_selected_object_index = object_index;
@@ -258,6 +303,7 @@ public:
 		}
 
 		this->GetWidget<NWidgetMatrix>(BOW_OBJECT_MATRIX)->SetClicked(_selected_object_view);
+		this->GetWidget<NWidgetMatrix>(BOW_SELECT_MATRIX)->SetClicked(_selected_object_index);
 		this->UpdateSelectSize();
 		this->SetDirty();
 	}
@@ -284,6 +330,13 @@ public:
 			case BOW_OBJECT_LIST: {
 				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->nested_array[widget]->pos_y) / this->line_height;
 				if (num_clicked >= this->vscroll->GetCount()) break;
+				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, num_clicked);
+				if (spec->IsAvailable()) this->SelectOtherObject(num_clicked);
+				break;
+			}
+
+			case BOW_SELECT_IMAGE: {
+				int num_clicked = GB(widget, 16, 16);
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, num_clicked);
 				if (spec->IsAvailable()) this->SelectOtherObject(num_clicked);
 				break;
@@ -338,6 +391,7 @@ public:
 		assert(widget == BOW_CLASS_DROPDOWN);
 		_selected_object_class = (ObjectClassID)index;
 		this->vscroll->SetCount(ObjectClass::GetCount(_selected_object_class));
+		this->GetWidget<NWidgetMatrix>(BOW_SELECT_MATRIX)->SetCount(ObjectClass::GetCount(_selected_object_class));
 		this->SelectFirstAvailableObject(false);
 	}
 };
@@ -347,20 +401,40 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN), SetDataTip(STR_OBJECT_BUILD_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
-	NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(1, 0),
-		NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetPadding(2, 5, 2, 5), SetDataTip(STR_OBJECT_BUILD_CLASS_LABEL, STR_NULL), SetFill(1, 0),
-		NWidget(WWT_DROPDOWN, COLOUR_GREY, BOW_CLASS_DROPDOWN), SetPadding(0, 5, 2, 5), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_OBJECT_BUILD_TOOLTIP),
-		NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 2, 5),
-			NWidget(WWT_MATRIX, COLOUR_GREY, BOW_OBJECT_LIST), SetFill(1, 0), SetDataTip(0x501, STR_OBJECT_BUILD_TOOLTIP), SetScrollbar(BOW_SCROLLBAR),
-			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, BOW_SCROLLBAR),
-		EndContainer(),
-		NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 0, 5),
-			NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, BOW_OBJECT_MATRIX), SetPIP(0, 2, 0),
-				NWidget(WWT_PANEL, COLOUR_GREY, BOW_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
+		NWidget(NWID_HORIZONTAL), SetPadding(2, 0, 0, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetPadding(0, 5, 2, 5), SetDataTip(STR_OBJECT_BUILD_CLASS_LABEL, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_DROPDOWN, COLOUR_GREY, BOW_CLASS_DROPDOWN), SetPadding(0, 5, 2, 5), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_OBJECT_BUILD_TOOLTIP),
+				NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 2, 5),
+					NWidget(WWT_MATRIX, COLOUR_GREY, BOW_OBJECT_LIST), SetFill(1, 0), SetDataTip(0x501, STR_OBJECT_BUILD_TOOLTIP), SetScrollbar(BOW_SCROLLBAR),
+					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, BOW_SCROLLBAR),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 0, 5),
+					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, BOW_OBJECT_MATRIX), SetPIP(0, 2, 0),
+						NWidget(WWT_PANEL, COLOUR_GREY, BOW_OBJECT_SPRITE), SetDataTip(0x0, STR_OBJECT_BUILD_PREVIEW_TOOLTIP), EndContainer(),
+					EndContainer(),
+				EndContainer(),
+				NWidget(WWT_TEXT, COLOUR_DARK_GREEN, BOW_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL), SetPadding(2, 5, 2, 5),
+			EndContainer(),
+			NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(BOW_SELECT_SCROLL),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, BOW_SELECT_MATRIX), SetFill(0, 1), SetPIP(0, 2, 0), SetScrollbar(BOW_SELECT_SCROLL),
+						NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BOW_SELECT_IMAGE), SetMinimalSize(66, 60), SetDataTip(0x0, STR_OBJECT_BUILD_TOOLTIP),
+								SetFill(0, 0), SetResize(0, 0), SetScrollbar(BOW_SELECT_SCROLL),
+						EndContainer(),
+					EndContainer(),
+					NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, BOW_SELECT_SCROLL),
+				EndContainer(),
 			EndContainer(),
 		EndContainer(),
-		NWidget(WWT_TEXT, COLOUR_DARK_GREEN, BOW_OBJECT_SIZE), SetDataTip(STR_OBJECT_BUILD_SIZE, STR_NULL), SetPadding(2, 5, 2, 5),
-		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, BOW_INFO), SetPadding(2, 5, 0, 5),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, BOW_INFO), SetPadding(2, 5, 0, 5), SetFill(1, 0), SetResize(1, 0),
+			NWidget(NWID_VERTICAL),
+				NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(0, 1), EndContainer(),
+				NWidget(WWT_RESIZEBOX, COLOUR_DARK_GREEN),
+			EndContainer(),
+		EndContainer(),
 	EndContainer(),
 };
 
