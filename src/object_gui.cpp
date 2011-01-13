@@ -29,8 +29,7 @@ static uint8 _selected_object_view;          ///< the view of the selected objec
 
 /** Object widgets in the object picker window. */
 enum BuildObjectWidgets {
-	BOW_CLASS_DROPDOWN, ///< The dropdown with classes.
-	BOW_OBJECT_LIST,    ///< The list with objects of a given class.
+	BOW_CLASS_LIST,     ///< The list with classes.
 	BOW_SCROLLBAR,      ///< The scrollbar associated with the list.
 	BOW_OBJECT_MATRIX,  ///< The matrix with preview sprites.
 	BOW_OBJECT_SPRITE,  ///< A preview sprite of the object.
@@ -50,18 +49,6 @@ class BuildObjectWindow : public PickerWindowBase {
 	int info_height;                    ///< The height of the info box.
 	Scrollbar *vscroll;                 ///< The scollbar.
 
-	/** Build a dropdown list of available object classes */
-	static DropDownList *BuildObjectClassDropDown()
-	{
-		DropDownList *list = new DropDownList();
-
-		for (uint i = 0; i < ObjectClass::GetCount(); i++) {
-			list->push_back(new DropDownListStringItem(ObjectClass::GetName((ObjectClassID)i), i, false));
-		}
-
-		return list;
-	}
-
 public:
 	BuildObjectWindow(const WindowDesc *desc, Window *w) : PickerWindowBase(w), info_height(1)
 	{
@@ -70,10 +57,10 @@ public:
 		this->vscroll = this->GetScrollbar(BOW_SCROLLBAR);
 		this->vscroll->SetCapacity(5);
 		this->vscroll->SetPosition(0);
+		this->vscroll->SetCount(ObjectClass::GetCount());
 
 		this->FinishInitNested(desc, 0);
 
-		this->vscroll->SetCount(ObjectClass::GetCount(_selected_object_class));
 		this->SelectFirstAvailableObject(true);
 		this->GetWidget<NWidgetMatrix>(BOW_OBJECT_MATRIX)->SetCount(4);
 
@@ -87,10 +74,6 @@ public:
 	virtual void SetStringParameters(int widget) const
 	{
 		switch (widget) {
-			case BOW_CLASS_DROPDOWN:
-				SetDParam(0, ObjectClass::GetName(_selected_object_class));
-				break;
-
 			case BOW_OBJECT_SIZE: {
 				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, _selected_object_index);
 				int size = spec == NULL ? 0 : spec->size;
@@ -106,26 +89,11 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case BOW_CLASS_DROPDOWN: {
-				Dimension d = {0, 0};
+			case BOW_CLASS_LIST: {
 				for (uint i = 0; i < ObjectClass::GetCount(); i++) {
-					SetDParam(0, ObjectClass::GetName((ObjectClassID)i));
-					d = maxdim(d, GetStringBoundingBox(STR_BLACK_STRING));
+					size->width = max(size->width, GetStringBoundingBox(ObjectClass::GetName((ObjectClassID)i)).width);
 				}
-				d.width += padding.width;
-				d.height += padding.height;
-				*size = maxdim(*size, d);
-				break;
-			}
-
-			case BOW_OBJECT_LIST: {
-				for (int i = 0; i < NUM_OBJECTS; i++) {
-					const ObjectSpec *spec = ObjectSpec::Get(i);
-					if (!spec->enabled) continue;
-
-					size->width = max(size->width, GetStringBoundingBox(spec->name).width);
-				}
-
+				size->width += padding.width;
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 				size->height = this->vscroll->GetCapacity() * this->line_height;
 				break;
@@ -197,14 +165,12 @@ public:
 	virtual void DrawWidget(const Rect &r, int widget) const
 	{
 		switch (GB(widget, 0, 16)) {
-			case BOW_OBJECT_LIST: {
+			case BOW_CLASS_LIST: {
 				int y = r.top;
-				for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < ObjectClass::GetCount(_selected_object_class); i++) {
-					const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, i);
-					if (!spec->IsAvailable()) {
-						GfxFillRect(r.left + 1, y + 1, r.right - 1, y + this->line_height - 2, 0, FILLRECT_CHECKER);
-					}
-					DrawString(r.left + WD_MATRIX_LEFT, r.right + WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, spec->name, ((int)i == _selected_object_index) ? TC_WHITE : TC_BLACK);
+				for (uint i = this->vscroll->GetPosition(); this->vscroll->IsVisible(i) && i < ObjectClass::GetCount(); i++) {
+					SetDParam(0, ObjectClass::GetName((ObjectClassID)i));
+					DrawString(r.left + WD_MATRIX_LEFT, r.right + WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, STR_JUST_STRING,
+							((int)i == _selected_object_class) ? TC_WHITE : TC_BLACK);
 					y += this->line_height;
 				}
 				break;
@@ -323,15 +289,13 @@ public:
 	virtual void OnClick(Point pt, int widget, int click_count)
 	{
 		switch (GB(widget, 0, 16)) {
-			case BOW_CLASS_DROPDOWN:
-				ShowDropDownList(this, BuildObjectClassDropDown(), _selected_object_class, BOW_CLASS_DROPDOWN);
-				break;
-
-			case BOW_OBJECT_LIST: {
+			case BOW_CLASS_LIST: {
 				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->nested_array[widget]->pos_y) / this->line_height;
-				if (num_clicked >= this->vscroll->GetCount()) break;
-				const ObjectSpec *spec = ObjectClass::Get(_selected_object_class, num_clicked);
-				if (spec->IsAvailable()) this->SelectOtherObject(num_clicked);
+				if (num_clicked >= (int)ObjectClass::GetCount()) break;
+
+				_selected_object_class = (ObjectClassID)num_clicked;
+				this->GetWidget<NWidgetMatrix>(BOW_SELECT_MATRIX)->SetCount(ObjectClass::GetCount(_selected_object_class));
+				this->SelectFirstAvailableObject(false);
 				break;
 			}
 
@@ -385,15 +349,6 @@ public:
 		/* If all objects are unavailable, select nothing. */
 		this->SelectOtherObject(-1);
 	}
-
-	virtual void OnDropdownSelect(int widget, int index)
-	{
-		assert(widget == BOW_CLASS_DROPDOWN);
-		_selected_object_class = (ObjectClassID)index;
-		this->vscroll->SetCount(ObjectClass::GetCount(_selected_object_class));
-		this->GetWidget<NWidgetMatrix>(BOW_SELECT_MATRIX)->SetCount(ObjectClass::GetCount(_selected_object_class));
-		this->SelectFirstAvailableObject(false);
-	}
 };
 
 static const NWidgetPart _nested_build_object_widgets[] = {
@@ -404,10 +359,8 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 		NWidget(NWID_HORIZONTAL), SetPadding(2, 0, 0, 0),
 			NWidget(NWID_VERTICAL),
-				NWidget(WWT_LABEL, COLOUR_DARK_GREEN), SetPadding(0, 5, 2, 5), SetDataTip(STR_OBJECT_BUILD_CLASS_LABEL, STR_NULL), SetFill(1, 0),
-				NWidget(WWT_DROPDOWN, COLOUR_GREY, BOW_CLASS_DROPDOWN), SetPadding(0, 5, 2, 5), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_OBJECT_BUILD_TOOLTIP),
 				NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 2, 5),
-					NWidget(WWT_MATRIX, COLOUR_GREY, BOW_OBJECT_LIST), SetFill(1, 0), SetDataTip(0x501, STR_OBJECT_BUILD_TOOLTIP), SetScrollbar(BOW_SCROLLBAR),
+					NWidget(WWT_MATRIX, COLOUR_GREY, BOW_CLASS_LIST), SetFill(1, 0), SetDataTip(0x501, STR_OBJECT_BUILD_CLASS_TOOLTIP), SetScrollbar(BOW_SCROLLBAR),
 					NWidget(NWID_VSCROLLBAR, COLOUR_GREY, BOW_SCROLLBAR),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPadding(0, 5, 0, 5),
