@@ -2464,7 +2464,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakup te
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Wybór obiektu
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Wybierz obiekt do budowy. Shift przełącza pomiędzy trybem budowy a szacowaniem jej kosztów
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Kategoria obiektu
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Podgląd obiektu
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmiar: {GOLD}{NUM} x {NUM} pól
 

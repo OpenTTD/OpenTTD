@@ -2136,7 +2136,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Nusipirk
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekto pasirinkimas
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pasirink norimą objektą statymui
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objekto klasė
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objekto peržiūra
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dydis: {GOLD}{NUM} x {NUM} kvad.
 

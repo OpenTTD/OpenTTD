@@ -2083,7 +2083,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kjøp la
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektvalg
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Velg objekt å bygge
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objectklasse
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Forhåndsvisning av objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Størrelse: {GOLD}{NUM} x {NUM} ruter
 

@@ -2058,7 +2058,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}购买�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}物体选单
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}物体的等级
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小: {GOLD}{NUM} x {NUM} 瓦
 
 STR_OBJECT_CLASS_LTHS                                           :灯塔

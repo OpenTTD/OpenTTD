@@ -2079,7 +2079,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Cumpăr�
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecţia obiectelor
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selectaţi obiectele pentru construcţie. Shift comută între construire/afişare cost estimat
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Clasa obiectului
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Previzualizarea obiectului
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensiune: {GOLD}{NUM} x {NUM} pătrăţele
 

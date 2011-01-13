@@ -2085,7 +2085,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land fü
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektauswahl
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Objektauswahl - Auf das gewünschte Objekt klicken, um es zu bauen. Shift schaltet zwischen Bauen und Kostenvoranschlag um
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objektklasse
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vorschau des Objekts
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Größe: {GOLD}{NUM} x {NUM} Felder
 

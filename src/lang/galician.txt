@@ -2011,7 +2011,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selección Obxectos
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecciona o obxecto a construír
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Clase do obxecto
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Previsualización do obxecto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño: {GOLD}{NUM} x {NUM} cadros
 

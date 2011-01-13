@@ -2180,7 +2180,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zem
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Odabir objekta
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Odaberi objekt za izgradnju. Shift mijenja prikaz građenje/procjena troškova.
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Klasa objekta
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pregled objekta
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Veličina: {GOLD}{NUM} x {NUM} polja
 

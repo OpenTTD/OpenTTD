@@ -2080,7 +2080,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Gelecekt
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Nesne Seçimi
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Yapılacak nesneyi seçin
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Nesne sınıfı
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Nesnenin önizlemesi
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Boyut: {GOLD}{NUM} x {NUM} kare
 

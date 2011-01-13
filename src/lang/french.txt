@@ -2085,7 +2085,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acheter 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Sélection de l'objet
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Sélectionner l'objet à construire. Shift pour basculer entre construire et afficher le coût estimé
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Type d'objet
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Aperçu de l'objet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Taille{NBSP}: {GOLD}{NUM} x {NUM} cases
 

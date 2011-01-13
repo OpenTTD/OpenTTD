@@ -1408,7 +1408,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Keapje l
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekt seleksje
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selektearje te bouen objekt
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}objekt klasse
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Besjoch objekt yn it foar
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grutte: {GOLD}{NUM} x {NUM} Flakken
 

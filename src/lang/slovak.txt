@@ -2134,7 +2134,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakupit 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Výber objektov
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vybrať objekt na postavenie
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Trieda objektov
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Náhľad objektu
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmery: {GOLD}{NUM} x {NUM} polí
 

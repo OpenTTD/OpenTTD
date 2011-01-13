@@ -2078,7 +2078,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Seleção de Objeto
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecione o objeto a ser construído. Shift altera construção/estimação de custo
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Classe do objeto
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objeto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} ladrilhos
 

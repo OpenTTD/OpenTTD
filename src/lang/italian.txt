@@ -2086,7 +2086,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acquista
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selezione oggetto
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleziona l'oggetto da costruire. MAIUSC alterna fra costruzione e stima dei costi
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Categoria oggetto
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Anteprima dell'oggetto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensione: {GOLD}{NUM} x {NUM} riquadri
 

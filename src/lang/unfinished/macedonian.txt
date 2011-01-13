@@ -852,7 +852,6 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Поди
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Избор на објект
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Одберете објект да се изгради
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Класата на објектот
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Преглед на објектот
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Големина: {GOLD}{NUM} x {NUM} плочки
 

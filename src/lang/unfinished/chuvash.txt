@@ -898,7 +898,6 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Вертолё�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Объект суйлани
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Объект класс
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Виҫе: {GOLD}{NUM} x {NUM} тӑваткалсем
 
 STR_OBJECT_CLASS_LTHS                                           :Маяксем

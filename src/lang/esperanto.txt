@@ -2046,7 +2046,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Aĉetu l
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Elekto de Objekto
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Eletku objekton por konstrui
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objekta klaso
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Antaŭvido de la objekto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeco: {GOLD}{NUM} x {NUM} kaheloj
 

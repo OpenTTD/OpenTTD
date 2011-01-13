@@ -1398,7 +1398,6 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Helikoptero air
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektu hautaketa
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Aukeratu objektua eraikitzeko
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objektu klasea
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektua aurreikusi
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamainua: {GOLD}{NUM} x {NUM} karratu
 

@@ -2069,7 +2069,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Køb lan
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekt valg
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vælg objektet der skal bygges
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objekt klasse
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Forvisning af objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Størrelse: {GOLD}{NUM} x {NUM} felter
 

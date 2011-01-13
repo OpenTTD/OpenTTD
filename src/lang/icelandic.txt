@@ -2060,7 +2060,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaupa la
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Hlutaval
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Veldu hlut til að byggja
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Flokkur hlutar
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Sýnishorn af hlutnum
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Stærð: {GOLD}{NUM} x {NUM} fletir
 

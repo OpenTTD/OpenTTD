@@ -2124,7 +2124,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zem
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Izbor zgradbe
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Izberi zgradbo za postavitev. Shift preklaplja med izgradnjo in predvidenimi stroški
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Vrsta zgradbe
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Predogled zgradbe
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM} x {NUM} plošč
 

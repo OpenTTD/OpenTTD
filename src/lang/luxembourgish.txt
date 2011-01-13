@@ -2067,7 +2067,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kaaf Lan
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selektioun vum Objekt
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Wiel d'Objekt dat gebaut gëtt
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objektklass
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Preview vum Objekt
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Gréisst: {GOLD}{NUM} x {NUM} Felder
 

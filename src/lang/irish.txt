@@ -2071,7 +2071,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Ceannaig
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Roghnú oibiachta
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Roghnaigh oibiacht le tógáil
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Aicme na hoibiachta
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Réamhamharc ar an oibiacht
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Méid: {GOLD}{NUM} x {NUM} tíl
 

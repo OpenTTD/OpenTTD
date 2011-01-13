@@ -2079,7 +2079,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tan
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pemilihan obyek
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih obyek yg akan dibangun. Shift untuk menampilkan perkiraan biaya
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Kelas obyek
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pra-tayang obyek
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Ukuran: {GOLD}{NUM} x {NUM} kotak
 

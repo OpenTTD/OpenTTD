@@ -2084,7 +2084,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Osta maa
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektin Valinta
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Valitse rakennettava objekti. Shift vaihtaa rakennustilan ja kustannearvion välillä
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objektin luokka
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektin esikatselu
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Koko: {GOLD}{NUM} x {NUM} ruutua
 

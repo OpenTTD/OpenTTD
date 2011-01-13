@@ -2209,7 +2209,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купи
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Вибір об'єкта
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Виберіть об'єкт для побудови
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Клас об'єкта
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Попередній перегляд об'єкта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Розмір: {GOLD}{NUM} x {NUM} клітинок
 

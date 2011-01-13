@@ -2163,7 +2163,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakoupit
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Výběr objektu
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vyberte objekt, který se má postavit. Stisknutý Shift pro zobrazení odhadu ceny
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Druh objektu
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Náhled objektu
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM}{NBSP}x{NBSP}{NUM}
 

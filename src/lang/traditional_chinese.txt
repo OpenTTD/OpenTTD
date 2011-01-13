@@ -2067,7 +2067,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}購買�
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}選擇物件
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}選擇要建立的物件。按 Shift 可切換建立／顯示預估的建立費用
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}物件 Class
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}預覽此物件
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小：{GOLD}{NUM} x {NUM} 格
 

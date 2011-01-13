@@ -2279,7 +2279,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupovina
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Izbor Objekta
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Odabir objekta za izgradnju. Shift prebacuje između izgradnje i prikaza procene troškova
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Klasa objekta
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Privremeno prikazuje objekat
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Veličina: {GOLD}{NUM} x {NUM} pločica
 

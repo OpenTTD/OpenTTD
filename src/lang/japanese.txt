@@ -2054,7 +2054,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来�
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}選択物
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}建設する物を選択して下さい。（シフト）で物の価格を表します
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}物のクラス
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}物のプレヴィウ
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}サイズ: {GOLD}{NUM} x {NUM} マス
 

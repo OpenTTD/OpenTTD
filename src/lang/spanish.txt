@@ -2085,7 +2085,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selección de Objeto
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleccionar objeto a construir. Shift permite mostrar una estimación del precio
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Clase de objeto
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vista previa del objeto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño: {GOLD}{NUM} x {NUM} casillas
 

@@ -2081,7 +2081,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecção de Objecto
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleccionar objecto para construir
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Classe do objecto
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objecto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} quadrados
 

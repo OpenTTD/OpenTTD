@@ -2030,7 +2030,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Pirkt ze
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektu izvēle
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Izvēlēties objektu būvniecībai. Shift pārslēdz būvniecību/izmaksu attēlošanu
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Objekta klase
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objekta paraugs
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Izmērs: {GOLD}{NUM} x {NUM} lauciņi
 

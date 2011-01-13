@@ -2170,7 +2170,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Αγορ
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Επιλογή Αντικείμενου
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Επιλογή αντικείμενου για κατασκευή. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Κλάση αντικείμενου
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Προεπισκόπιση του αντικείμενου
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Μέγεθος: {GOLD}{NUM} x {NUM} τετράγωνα
 

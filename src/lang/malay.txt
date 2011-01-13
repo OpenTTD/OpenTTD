@@ -2043,7 +2043,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Beli tan
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Pilihan Objek
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Pilih objek untuk dibina
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Kelas objek
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Saiz: {GOLD}{NUM} x {NUM} petak
 
 STR_OBJECT_CLASS_LTHS                                           :Rumah Api

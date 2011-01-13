@@ -2067,7 +2067,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}شاء �
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}اختيار الاجسام
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}اختر جسم لبنائة
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}فئة الجسم
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}عرض الجسم
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}حجم: {GOLD}{NUM} x {NUM} مربع
 

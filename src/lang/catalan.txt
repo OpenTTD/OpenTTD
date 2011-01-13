@@ -2085,7 +2085,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Compra u
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecció d'objecte
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecciona l'objecte a construir. Shift commuta construeix/mostra el cost estimat
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Classe d'objecte
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Previsualització de l'objecte
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Mida: {GOLD}{NUM} x {NUM} cel·les
 

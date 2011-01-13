@@ -1991,7 +1991,6 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}ถม�
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}การเลือกวัตถุ
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}เลือกวัตถุเพื่อสร้าง
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}ระดับวัตถุ
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}ตัวอย่างวัตถุ
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}ขนาด: {GOLD}{NUM} x {NUM} ช่อง
 

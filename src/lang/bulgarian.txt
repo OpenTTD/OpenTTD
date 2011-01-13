@@ -2083,7 +2083,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купи
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Избор на обект
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Избери обект за построяване
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Клас на обекта
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Изглед на обекта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} x {NUM} плочки
 

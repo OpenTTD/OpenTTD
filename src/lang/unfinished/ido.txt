@@ -691,7 +691,6 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Helikoptero-aer
 # Landscaping toolbar
 
 # Object construction window
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Klaso di objekto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeso: {GOLD}{NUM} x {NUM} kareli
 
 

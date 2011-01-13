@@ -2080,7 +2080,6 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Mua đ�
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Trình Chọn Đối Tượng
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Chọn đối tượng để xây
-STR_OBJECT_BUILD_CLASS_LABEL                                    :{BLACK}Loại đối tượng
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Xem trước đối tượng
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Kích thước: {GOLD}{NUM} x {NUM} ô
 
