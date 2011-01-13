@@ -95,6 +95,7 @@ public:
 				}
 				size->width += padding.width;
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				resize->height = this->line_height;
 				size->height = this->vscroll->GetCapacity() * this->line_height;
 				break;
 			}
@@ -284,6 +285,12 @@ public:
 			int h = GB(spec->size, HasBit(_selected_object_view, 0) ? 0 : 4, 4);
 			SetTileSelectSize(w, h);
 		}
+	}
+
+	virtual void OnResize()
+	{
+		this->vscroll->SetCapacityFromWidget(this, BOW_CLASS_LIST);
+		this->GetWidget<NWidgetCore>(BOW_CLASS_LIST)->widget_data = (this->vscroll->GetCapacity() << MAT_ROW_START) + (1 << MAT_COL_START);
 	}
 
 	virtual void OnClick(Point pt, int widget, int click_count)
