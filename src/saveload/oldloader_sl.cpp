@@ -189,6 +189,10 @@ void FixOldVehicles()
 			RoadVehicle *rv = RoadVehicle::From(v);
 			if (rv->state != RVSB_IN_DEPOT && rv->state != RVSB_WORMHOLE) {
 				ClrBit(rv->state, 2);
+				if (IsTileType(rv->tile, MP_STATION) && _m[rv->tile].m5 >= 168) {
+					/* Update the vehicle's road state to show we're in a drive through road stop. */
+					SetBit(rv->state, RVS_IN_DT_ROAD_STOP);
+				}
 			}
 		}
 
