@@ -177,7 +177,7 @@ uint GetMaxSpriteID()
 
 static void *AllocSprite(size_t);
 
-static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
+static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 {
 	uint8 file_slot = sc->file_slot;
 	size_t file_pos = sc->file_pos;
@@ -194,9 +194,7 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 		SpriteLoader::Sprite sprite;
 
 		if (sprite_loader.LoadSprite(&sprite, file_slot, sc->id, sprite_type)) {
-			sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
-
-			return sc->ptr;
+			return BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 		}
 		/* If the PNG couldn't be loaded, fall back to 8bpp grfs */
 #else
@@ -224,8 +222,6 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 		static const int RECOLOUR_SPRITE_SIZE = 257;
 		byte *dest = (byte *)AllocSprite(max(RECOLOUR_SPRITE_SIZE, num));
 
-		sc->ptr = dest;
-
 		if (_palette_remap_grf[sc->file_slot]) {
 			byte *dest_tmp = AllocaM(byte, max(RECOLOUR_SPRITE_SIZE, num));
 
@@ -241,7 +237,7 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 			FioReadBlock(dest, num);
 		}
 
-		return sc->ptr;
+		return dest;
 	}
 
 	/* Ugly hack to work around the problem that the old landscape
@@ -261,7 +257,6 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 
 		num = width * height;
 		sprite = (Sprite *)AllocSprite(sizeof(*sprite) + num);
-		sc->ptr = sprite;
 		sprite->height = height;
 		sprite->width  = width;
 		sprite->x_offs = FioReadWord();
@@ -281,7 +276,7 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 			}
 		}
 
-		return sc->ptr;
+		return sprite;
 	}
 
 	assert(sprite_type == ST_NORMAL || sprite_type == ST_FONT);
@@ -293,9 +288,7 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
 		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL);
 	}
-	sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
-
-	return sc->ptr;
+	return BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 }
 
 
@@ -586,12 +579,10 @@ void *GetRawSprite(SpriteID sprite, SpriteType type)
 	/* Update LRU */
 	sc->lru = ++_sprite_lru_counter;
 
-	void *p = sc->ptr;
-
 	/* Load the sprite, if it is not loaded, yet */
-	if (p == NULL) p = ReadSprite(sc, sprite, type);
+	if (sc->ptr == NULL) sc->ptr = ReadSprite(sc, sprite, type);
 
-	return p;
+	return sc->ptr;
 }
 
 
