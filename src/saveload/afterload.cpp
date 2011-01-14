@@ -2012,8 +2012,8 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(124)) {
-		/* The train station tile area was added */
+	if (IsSavegameVersionBefore(124) && !IsSavegameVersionBefore(1)) {
+		/* The train station tile area was added, but for really old (TTDPatch) it's already valid. */
 		Waypoint *wp;
 		FOR_ALL_WAYPOINTS(wp) {
 			if (wp->facilities & FACIL_TRAIN) {
