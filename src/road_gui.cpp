@@ -28,6 +28,7 @@
 #include "tilehighlight_func.h"
 #include "company_base.h"
 #include "hotkeys.h"
+#include "road_gui.h"
 
 #include "table/strings.h"
 
@@ -79,11 +80,27 @@ static void PlaceRoad_Bridge(TileIndex tile, Window *w)
 	}
 }
 
-void CcBuildRoadTunnel(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+/**
+ * Callback executed after a build road tunnel command has been called.
+ *
+ * @param result Whether the build succeeded.
+ * @param start_tile Starting tile of the tunnel.
+ * @param p1 bit 0-3 railtype or roadtypes
+ *           bit 8-9 transport type
+ * @param p2 unused
+ */
+ void CcBuildRoadTunnel(const CommandCost &result, TileIndex start_tile, uint32 p1, uint32 p2)
 {
 	if (result.Succeeded()) {
-		SndPlayTileFx(SND_20_SPLAT_2, tile);
+		SndPlayTileFx(SND_20_SPLAT_2, start_tile);
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
+
+		DiagDirection start_direction = ReverseDiagDir(GetTunnelBridgeDirection(start_tile));
+		ConnectRoadToStructure(start_tile, start_direction);
+
+		TileIndex end_tile = GetOtherTunnelBridgeEnd(start_tile);
+		DiagDirection end_direction = ReverseDiagDir(GetTunnelBridgeDirection(end_tile));
+		ConnectRoadToStructure(end_tile, end_direction);
 	} else {
 		SetRedErrorSquare(_build_tunnel_endtile);
 	}
