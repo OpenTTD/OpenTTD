@@ -281,8 +281,6 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 			}
 		}
 
-		sc->type = sprite_type;
-
 		return sc->ptr;
 	}
 
