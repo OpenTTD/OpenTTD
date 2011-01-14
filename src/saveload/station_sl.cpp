@@ -66,21 +66,25 @@ void MoveBuoysToWaypoints()
 		char *name         = st->name;
 		st->name           = NULL;
 		Date build_date    = st->build_date;
+		/* TTDPatch could use "buoys with rail station" for rail waypoints */
+		bool train         = st->train_station.tile != INVALID_TILE;
 
 		/* Delete the station, so we can make it a real waypoint. */
 		delete st;
 
-		Waypoint *wp = new (index) Waypoint(xy);
+		Waypoint *wp   = new (index) Waypoint(xy);
 		wp->town       = town;
-		wp->string_id  = STR_SV_STNAME_BUOY;
+		wp->string_id  = train ? STR_SV_STNAME_WAYPOINT : STR_SV_STNAME_BUOY;
 		wp->name       = name;
 		wp->delete_ctr = 0; // Just reset delete counter for once.
 		wp->build_date = build_date;
-		wp->owner      = OWNER_NONE;
+		wp->owner      = train ? GetTileOwner(xy) : OWNER_NONE;
 
 		if (IsInsideBS(string_id, STR_SV_STNAME_BUOY, 9)) wp->town_cn = string_id - STR_SV_STNAME_BUOY;
 
-		if (IsBuoyTile(xy) && GetStationIndex(xy) == index) {
+		if (train) {
+			wp->facilities |= FACIL_TRAIN;
+		} else if (IsBuoyTile(xy) && GetStationIndex(xy) == index) {
 			wp->facilities |= FACIL_DOCK;
 		}
 
