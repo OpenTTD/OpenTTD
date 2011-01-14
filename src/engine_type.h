@@ -146,7 +146,7 @@ enum EngineFlags {
 };
 
 static const uint NUM_VEHICLE_TYPES             =   6;
-static const uint MAX_LENGTH_ENGINE_NAME_CHARS  =  31; ///< The maximum length of an engine name in characters including '\0'
+static const uint MAX_LENGTH_ENGINE_NAME_CHARS  =  32; ///< The maximum length of an engine name in characters including '\0'
 static const uint MAX_LENGTH_ENGINE_NAME_PIXELS = 160; ///< The maximum length of an engine name in pixels
 
 static const EngineID INVALID_ENGINE = 0xFFFF;

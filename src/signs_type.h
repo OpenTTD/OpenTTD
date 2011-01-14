@@ -17,7 +17,7 @@ struct Sign;
 
 static const SignID INVALID_SIGN = 0xFFFF;
 
-static const uint MAX_LENGTH_SIGN_NAME_CHARS  =  31; ///< The maximum length of a sign name in characters including '\0'
+static const uint MAX_LENGTH_SIGN_NAME_CHARS  =  32; ///< The maximum length of a sign name in characters including '\0'
 static const uint MAX_LENGTH_SIGN_NAME_PIXELS = 255; ///< The maximum length of a sign name in pixels
 
 #endif /* SIGNS_TYPE_H */

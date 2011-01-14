@@ -18,7 +18,7 @@ static const GroupID ALL_GROUP     = 0xFFFD;
 static const GroupID DEFAULT_GROUP = 0xFFFE; ///< ungrouped vehicles are in this group.
 static const GroupID INVALID_GROUP = 0xFFFF;
 
-static const uint MAX_LENGTH_GROUP_NAME_CHARS  =  31; ///< The maximum length of a group name in characters including '\0'
+static const uint MAX_LENGTH_GROUP_NAME_CHARS  =  32; ///< The maximum length of a group name in characters including '\0'
 static const uint MAX_LENGTH_GROUP_NAME_PIXELS = 150; ///< The maximum length of a group name in pixels
 
 struct Group;

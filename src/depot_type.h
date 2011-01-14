@@ -15,7 +15,7 @@
 typedef uint16 DepotID;
 struct Depot;
 
-static const uint MAX_LENGTH_DEPOT_NAME_CHARS  =  31; ///< The maximum length of a depot name in characters including '\0'
+static const uint MAX_LENGTH_DEPOT_NAME_CHARS  =  32; ///< The maximum length of a depot name in characters including '\0'
 static const uint MAX_LENGTH_DEPOT_NAME_PIXELS = 180; ///< The maximum length of a depot name in pixels
 
 #endif /* DEPOT_TYPE_H */

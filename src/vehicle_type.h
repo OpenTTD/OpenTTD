@@ -64,7 +64,7 @@ enum DepotCommand {
 	DEPOT_COMMAND_MASK  = 0xFU << 28,
 };
 
-static const uint MAX_LENGTH_VEHICLE_NAME_CHARS  =  31; ///< The maximum length of a vehicle name in characters including '\0'
+static const uint MAX_LENGTH_VEHICLE_NAME_CHARS  =  32; ///< The maximum length of a vehicle name in characters including '\0'
 static const uint MAX_LENGTH_VEHICLE_NAME_PIXELS = 150; ///< The maximum length of a vehicle name in pixels
 
 /** Vehicle acceleration models. */

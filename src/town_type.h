@@ -105,7 +105,7 @@ enum TownFounding {
 /** It needs to be 8bits, because we save and load it as such */
 typedef SimpleTinyEnumT<TownFounding, byte> TownFoundingByte;
 
-static const uint MAX_LENGTH_TOWN_NAME_CHARS  =  31; ///< The maximum length of a town name in characters including '\0'
+static const uint MAX_LENGTH_TOWN_NAME_CHARS  =  32; ///< The maximum length of a town name in characters including '\0'
 static const uint MAX_LENGTH_TOWN_NAME_PIXELS = 130; ///< The maximum length of a town name in pixels
 
 #endif /* TOWN_TYPE_H */
