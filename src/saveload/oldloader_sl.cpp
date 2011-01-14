@@ -34,9 +34,9 @@
 #include "../table/engines.h"
 #include "../table/townname.h"
 
-static bool   _read_ttdpatch_flags;
+static bool _read_ttdpatch_flags;
 
-static uint8  *_old_map3;
+static uint8 *_old_map3;
 
 void FixOldMapArray()
 {
@@ -491,14 +491,15 @@ static uint16 _old_extra_chunk_nums;
 
 static void ReadTTDPatchFlags()
 {
+	if (_savegame_type == SGT_TTO) {
+		_old_vehicle_multiplier = 1;
+		_bump_assert_value = 0;
+		return;
+	}
+
 	if (_read_ttdpatch_flags) return;
 
 	_read_ttdpatch_flags = true;
-
-	if (_savegame_type == SGT_TTO) {
-		_old_vehicle_multiplier = 1;
-		return;
-	}
 
 	/* TTDPatch misuses _old_map3 for flags.. read them! */
 	_old_vehicle_multiplier = _old_map3[0];
