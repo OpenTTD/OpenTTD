@@ -255,7 +255,7 @@ static const SpriteLoader::Sprite *ResizeSprite(const SpriteLoader::Sprite *spri
 	return sprite;
 }
 
-Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator)
+Sprite *Blitter_32bppOptimized::Encode(SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
 {
 	/* streams of pixels (a, r, g, b channels)
 	 *

@@ -25,6 +25,8 @@ struct Sprite {
 
 extern uint _sprite_cache_size;
 
+typedef void *AllocatorProc(size_t size);
+
 void *GetRawSprite(SpriteID sprite, SpriteType type);
 bool SpriteExists(SpriteID sprite);
 

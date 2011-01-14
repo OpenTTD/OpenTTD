@@ -91,7 +91,7 @@ void Blitter_32bppSimple::DrawColourMappingRect(void *dst, int width, int height
 	DEBUG(misc, 0, "32bpp blitter doesn't know how to draw this colour table ('%d')", pal);
 }
 
-Sprite *Blitter_32bppSimple::Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator)
+Sprite *Blitter_32bppSimple::Encode(SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
 {
 	Sprite *dest_sprite;
 	SpriteLoader::CommonPixel *dst;
