@@ -64,6 +64,7 @@ void MoveBuoysToWaypoints()
 		Town *town         = st->town;
 		StringID string_id = st->string_id;
 		char *name         = st->name;
+		st->name           = NULL;
 		Date build_date    = st->build_date;
 
 		/* Delete the station, so we can make it a real waypoint. */
