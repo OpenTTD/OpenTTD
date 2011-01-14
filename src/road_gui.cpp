@@ -135,7 +135,12 @@ static const RoadTypeInfo _road_type_infos[] = {
 	},
 };
 
-static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
+/**
+ * If required, connects a new structure to an existing road or tram by building the missing roadbit.
+ * @param tile Tile containing the structure to connect.
+ * @param direction Direction to check.
+ */
+void ConnectRoadToStructure(TileIndex tile, DiagDirection direction)
 {
 	tile += TileOffsByDiagDir(direction);
 	/* if there is a roadpiece just outside of the station entrance, build a connecting route */
@@ -153,7 +158,7 @@ void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 	DiagDirection dir = (DiagDirection)GB(p1, 0, 2);
 	SndPlayTileFx(SND_1F_SPLAT, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-	BuildRoadOutsideStation(tile, dir);
+	ConnectRoadToStructure(tile, dir);
 }
 
 /**
@@ -179,9 +184,9 @@ void CcRoadStop(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	TileArea roadstop_area(tile, GB(p1, 0, 8), GB(p1, 8, 8));
 	TILE_AREA_LOOP(cur_tile, roadstop_area) {
-		BuildRoadOutsideStation(cur_tile, dir);
+		ConnectRoadToStructure(cur_tile, dir);
 		/* For a drive-through road stop build connecting road for other entrance. */
-		if (HasBit(p2, 1)) BuildRoadOutsideStation(cur_tile, ReverseDiagDir(dir));
+		if (HasBit(p2, 1)) ConnectRoadToStructure(cur_tile, ReverseDiagDir(dir));
 	}
 }
 
