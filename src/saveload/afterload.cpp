@@ -153,7 +153,7 @@ static void ConvertTownOwner()
 				/* FALL THROUGH */
 
 			case MP_TUNNELBRIDGE:
-				if (GetTileOwner(tile) & 0x80) SetTileOwner(tile, OWNER_TOWN);
+				if (_m[tile].m1 & 0x80) SetTileOwner(tile, OWNER_TOWN);
 				break;
 
 			default: break;
