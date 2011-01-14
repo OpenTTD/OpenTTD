@@ -1007,10 +1007,22 @@ const Sprite *GetGlyph(FontSize size, WChar key)
 
 	FT_UInt glyph_index = FT_Get_Char_Index(face, key);
 	if (glyph_index == 0) {
-		GetGlyph(size, '?');
-		glyph = GetGlyphPtr(size, '?');
-		SetGlyphPtr(size, key, glyph, true);
-		return glyph->sprite;
+		if (key == '?') {
+			/* The font misses the '?' character. Use sprite font. */
+			SpriteID sprite = GetUnicodeGlyph(size, key);
+			Sprite *spr = (Sprite*)GetRawSprite(sprite, ST_FONT, AllocateFont);
+			assert(spr != NULL);
+			new_glyph.sprite = spr;
+			new_glyph.width  = spr->width + (size != FS_NORMAL);
+			SetGlyphPtr(size, key, &new_glyph, false);
+			return new_glyph.sprite;
+		} else {
+			/* Use '?' for missing characters. */
+			GetGlyph(size, '?');
+			glyph = GetGlyphPtr(size, '?');
+			SetGlyphPtr(size, key, glyph, true);
+			return glyph->sprite;
+		}
 	}
 	FT_Load_Glyph(face, glyph_index, FT_LOAD_DEFAULT);
 	FT_Render_Glyph(face->glyph, aa ? FT_RENDER_MODE_NORMAL : FT_RENDER_MODE_MONO);
