@@ -453,7 +453,10 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				 * when it's near the terraforming limit. Even then, the estimation is
 				 * completely off due to it basically counting terraforming double, so it being
 				 * cut off earlier might even give a better estimate in some cases. */
-				if (--limit <= 0) break;
+				if (--limit <= 0) {
+					had_success = true;
+					break;
+				}
 			}
 
 			cost.AddCost(ret);
