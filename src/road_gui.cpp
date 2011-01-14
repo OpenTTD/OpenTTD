@@ -89,7 +89,7 @@ static void PlaceRoad_Bridge(TileIndex tile, Window *w)
  *           bit 8-9 transport type
  * @param p2 unused
  */
- void CcBuildRoadTunnel(const CommandCost &result, TileIndex start_tile, uint32 p1, uint32 p2)
+void CcBuildRoadTunnel(const CommandCost &result, TileIndex start_tile, uint32 p1, uint32 p2)
 {
 	if (result.Succeeded()) {
 		SndPlayTileFx(SND_20_SPLAT_2, start_tile);
