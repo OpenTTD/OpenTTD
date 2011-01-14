@@ -469,22 +469,27 @@ bool AfterLoadGame()
 		_pause_mode &= ~PMB_PAUSED_NETWORK;
 	}
 
-	/* in very old versions, size of train stations was stored differently */
+	/* In very old versions, size of train stations was stored differently.
+	 * They had swapped width and height if station was built along the Y axis.
+	 * TTO and TTD used 3 bits for width/height, while OpenTTD used 4.
+	 * Because the data stored by TTDPatch are unusable for rail stations > 7x7,
+	 * recompute the width and height. Doing this unconditionally for all old
+	 * savegames simplifies the code. */
 	if (IsSavegameVersionBefore(2)) {
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->train_station.tile != 0 && st->train_station.h == 0) {
-				uint n = _savegame_type == SGT_OTTD ? 4 : 3; // OTTD uses 4 bits per dimensions, TTD 3 bits
-				uint w = GB(st->train_station.w, n, n);
-				uint h = GB(st->train_station.w, 0, n);
-
-				if (GetRailStationAxis(st->train_station.tile) != AXIS_X) Swap(w, h);
-
-				st->train_station.w = w;
-				st->train_station.h = h;
-
-				assert(GetStationIndex(st->train_station.tile + TileDiffXY(w - 1, h - 1)) == st->index);
-			}
+			st->train_station.w = st->train_station.h = 0;
+		}
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (!IsTileType(t, MP_STATION)) continue;
+			if (_m[t].m5 > 7) continue; // is it a rail station tile?
+			st = Station::Get(_m[t].m2);
+			assert(st->train_station.tile != 0);
+			int dx = TileX(t) - TileX(st->train_station.tile);
+			int dy = TileY(t) - TileY(st->train_station.tile);
+			assert(dx >= 0 && dy >= 0);
+			st->train_station.w = max<uint>(st->train_station.w, dx + 1);
+			st->train_station.h = max<uint>(st->train_station.h, dy + 1);
 		}
 	}
 
