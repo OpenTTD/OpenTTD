@@ -23,6 +23,9 @@
 #include "widgets/dropdown_func.h"
 #include "core/geometry_func.hpp"
 #include "openttd.h"
+#include "cmd_helper.h"
+#include "tunnelbridge_map.h"
+#include "road_gui.h"
 
 #include "table/strings.h"
 
@@ -46,13 +49,27 @@ typedef GUIList<BuildBridgeData> GUIBridgeList; ///< List of bridges, used in #B
  * Callback executed after a build Bridge CMD has been called
  *
  * @param result Whether the build succeeded
- * @param tile The tile where the command has been executed
- * @param p1 not used
- * @param p2 not used
+ * @param end_tile End tile of the bridge.
+ * @param p1 packed start tile coords (~ dx)
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit  0- 7) - bridge type (hi bh)
+ * - p2 = (bit  8-11) - rail type or road types.
+ * - p2 = (bit 15-16) - transport type.
  */
-void CcBuildBridge(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
+void CcBuildBridge(const CommandCost &result, TileIndex end_tile, uint32 p1, uint32 p2)
 {
-	if (result.Succeeded()) SndPlayTileFx(SND_27_BLACKSMITH_ANVIL, tile);
+	if (result.Failed()) return;
+	SndPlayTileFx(SND_27_BLACKSMITH_ANVIL, end_tile);
+
+	TransportType transport_type = Extract<TransportType, 15, 2>(p2);
+
+	if (transport_type == TRANSPORT_ROAD) {
+		DiagDirection end_direction = ReverseDiagDir(GetTunnelBridgeDirection(end_tile));
+		ConnectRoadToStructure(end_tile, end_direction);
+
+		DiagDirection start_direction = ReverseDiagDir(GetTunnelBridgeDirection(p1));
+		ConnectRoadToStructure(p1, start_direction);
+	}
 }
 
 /** Names of the widgets of the build-bridge selection window. */
