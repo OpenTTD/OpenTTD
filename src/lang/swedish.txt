@@ -2084,6 +2084,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Köp mar
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Val av objekt
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Välj objekt att bygga. Shift växlar mellan att bygga/visa beräknad kostnad
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Välj typ av objekt att bygga
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Förhandsvisning av objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Storlek: {GOLD}{NUM} x {NUM} rutor
 

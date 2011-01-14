@@ -1163,8 +1163,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Renouve
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renouveler les véhicules {ORANGE}{STRING}{LTBLUE} mois avant/après l'âge maximum
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Argent minimum avant auto-renouvellement{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Temps d'affichage des messages d'erreur{NBSP}: {ORANGE}{STRING} seconde{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Délai avant les événements de survol{NBSP}: {ORANGE}{STRING} seconde{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Délai avant les événements de survol{NBSP}: {ORANGE}désactivé
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Affichage des infobulles{NBSP}: {ORANGE}survoler pendant {STRING} seconde{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Affichage des infobulles{NBSP}: {ORANGE}clic droit
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Afficher la population d'une ville dans son label{NBSP}: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Générateur de terrain{NBSP}: {ORANGE}{STRING}
@@ -2085,6 +2085,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Acheter 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Sélection de l'objet
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Sélectionner l'objet à construire. Shift pour basculer entre construire et afficher le coût estimé
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Choisir le type d'objet à construire
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Aperçu de l'objet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Taille{NBSP}: {GOLD}{NUM} x {NUM} cases
 

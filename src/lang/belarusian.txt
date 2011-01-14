@@ -2421,6 +2421,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Набы
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Выбар аб'екта
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Абярыце ствараны аб'ект. Пры націснутым Shift - ацэнка кошту пабудовы.
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Абярыце клас аб'екта для будаўніцтва
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Прагляд аб'екта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Памер: {GOLD}{NUM} x {NUM} клетак
 

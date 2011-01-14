@@ -2148,6 +2148,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Földter
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektum kiválaszás
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Építendő objektum kiválasztása. Shift lenyomásával megmutatja a becsült költséget
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Válaszd ki az építendő objektum típusát
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektum előnézete
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Méret: {GOLD}{NUM} x {NUM} mező
 

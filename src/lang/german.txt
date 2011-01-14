@@ -894,7 +894,7 @@ STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Maßeinh
 STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Auswahl der Maßeinheiten
 
 ############ start of measuring units region
-STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :US-Maße
+STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Britisch
 STR_GAME_OPTIONS_MEASURING_UNITS_METRIC                         :metrisch
 STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :SI-Basiseinheiten
 ############ end of measuring units region
@@ -1163,8 +1163,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Fahrzeu
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Erneuere Fahrzeug {ORANGE}{STRING}{LTBLUE} Monat{P 0:1 "" e} vor/nach Maximalalter
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimaler Kontostand für automatisches Erneuern: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Dauer der Fehlermeldungen: {ORANGE}{STRING} Sekunde{P 0:1 "" n}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Verzögerung von Hilfstexten: {ORANGE}{STRING} Sekunde{P 0:1 "" n}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Verzögerung von Hilfstexten: {ORANGE}keine, aber nur via Rechtsklick
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Anzeige von Hilfstexten: {ORANGE}Mit der Maus {STRING} Sekunde{P 0:1 "" n} verweilen
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Anzeige von Hilfstexten: {ORANGE}Per Rechtsklick
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Zeige die Einwohnerzahl von Städten neben ihrem Namen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Algorithmus zur Landschaftserzeugung: {ORANGE}{STRING}
@@ -2085,6 +2085,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Land fü
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektauswahl
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Objektauswahl - Auf das gewünschte Objekt klicken, um es zu bauen. Shift schaltet zwischen Bauen und Kostenvoranschlag um
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Objektklasse auswählen
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vorschau des Objekts
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Größe: {GOLD}{NUM} x {NUM} Felder
 
@@ -4270,6 +4271,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}

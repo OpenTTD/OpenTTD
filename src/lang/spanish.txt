@@ -1163,8 +1163,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Renovac
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Renovar automáticamente vehículos que estén a {ORANGE}{STRING}{LTBLUE} mes{P 0:1 "" es} antes/después de su edad máxima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Mínimo de dinero requerido para renovación automática: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duración de mensajes de error: {ORANGE}{STRING} segundo{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Retraso requerido al mantener ratón: {ORANGE}{STRING} segundo{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Retraso requerido al mantener ratón: {ORANGE}desactivado
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Mostrar mensajes de ayuda: {ORANGE}Mantener ratón durante {STRING} segundo{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Mostrar mensajes de ayuda: {ORANGE}Click derecho
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Muestra la población de un pueblo en su etiqueta: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generador terreno: {ORANGE}{STRING}
@@ -2085,6 +2085,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selección de Objeto
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleccionar objeto a construir. Shift permite mostrar una estimación del precio
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Seleccione el tipo de objeto a construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vista previa del objeto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño: {GOLD}{NUM} x {NUM} casillas
 
@@ -2133,7 +2134,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Pequeña
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Mediana
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Grande
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Aleatorio
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Selecciona el tamaño del pueblo
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Seleccione el tamaño del pueblo
 STR_FOUND_TOWN_CITY                                             :{BLACK}Ciudad
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Las ciudades crecen más rápido que los pueblos{}Dependiendo de los ajustes, son mayores al ser fundadas
 
