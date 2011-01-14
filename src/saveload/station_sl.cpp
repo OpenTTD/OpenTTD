@@ -42,14 +42,16 @@ void MoveBuoysToWaypoints()
 	/* Buoy orders become waypoint orders */
 	OrderList *ol;
 	FOR_ALL_ORDER_LISTS(ol) {
-		if (ol->GetFirstSharedVehicle()->type != VEH_SHIP) continue;
+		VehicleType vt = ol->GetFirstSharedVehicle()->type;
+		if (vt != VEH_SHIP && vt != VEH_TRAIN) continue;
 
 		for (Order *o = ol->GetFirstOrder(); o != NULL; o = o->next) UpdateWaypointOrder(o);
 	}
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type != VEH_SHIP) continue;
+		VehicleType vt = v->type;
+		if (vt != VEH_SHIP && vt != VEH_TRAIN) continue;
 
 		UpdateWaypointOrder(&v->current_order);
 	}
