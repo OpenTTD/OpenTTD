@@ -1485,12 +1485,13 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner 
 	if (new_owner != INVALID_OWNER) {
 		SetTileOwner(tile, new_owner);
 	} else {
-		if (DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR).Failed()) {
-			/* When clearing the bridge/tunnel failed there are still vehicles on/in
-			 * the bridge/tunnel. As all *our* vehicles are already removed, they
-			 * must be of another owner. Therefore this can't be rail tunnel/bridge.
-			 * In that case we can safely reassign the ownership to OWNER_NONE. */
-			assert(GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL);
+		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
+			/* Since all of our vehicles have been removed, it is safe to remove the rail
+			 * bridge / tunnel. */
+			CommandCost ret = DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
+			assert(ret.Succeeded());
+		} else {
+			/* In any other case, we can safely reassign the ownership to OWNER_NONE. */
 			SetTileOwner(tile, OWNER_NONE);
 		}
 	}
