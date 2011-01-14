@@ -175,9 +175,15 @@ uint GetMaxSpriteID()
 	return _spritecache_items;
 }
 
-static void *AllocSprite(size_t);
-
-static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_type)
+/**
+ * Read a sprite from disk.
+ * @param sc          Location of sprite.
+ * @param id          Sprite number.
+ * @param sprite_type Type of sprite.
+ * @param allocator   Allocator function to use.
+ * @return Read sprite data.
+ */
+static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_type, AllocatorProc *allocator)
 {
 	uint8 file_slot = sc->file_slot;
 	size_t file_pos = sc->file_pos;
@@ -194,7 +200,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		SpriteLoader::Sprite sprite;
 
 		if (sprite_loader.LoadSprite(&sprite, file_slot, sc->id, sprite_type)) {
-			return BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
+			return BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, allocator);
 		}
 		/* If the PNG couldn't be loaded, fall back to 8bpp grfs */
 #else
@@ -220,7 +226,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		 * GRFs which are the same as 257 byte recolour sprites, but with the last
 		 * 240 bytes zeroed.  */
 		static const int RECOLOUR_SPRITE_SIZE = 257;
-		byte *dest = (byte *)AllocSprite(max(RECOLOUR_SPRITE_SIZE, num));
+		byte *dest = (byte *)allocator(max(RECOLOUR_SPRITE_SIZE, num));
 
 		if (_palette_remap_grf[sc->file_slot]) {
 			byte *dest_tmp = AllocaM(byte, max(RECOLOUR_SPRITE_SIZE, num));
@@ -256,7 +262,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		byte *dest;
 
 		num = width * height;
-		sprite = (Sprite *)AllocSprite(sizeof(*sprite) + num);
+		sprite = (Sprite *)allocator(sizeof(*sprite) + num);
 		sprite->height = height;
 		sprite->width  = width;
 		sprite->x_offs = FioReadWord();
@@ -288,7 +294,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
 		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL);
 	}
-	return BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
+	return BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, allocator);
 }
 
 
@@ -580,7 +586,7 @@ void *GetRawSprite(SpriteID sprite, SpriteType type)
 	sc->lru = ++_sprite_lru_counter;
 
 	/* Load the sprite, if it is not loaded, yet */
-	if (sc->ptr == NULL) sc->ptr = ReadSprite(sc, sprite, type);
+	if (sc->ptr == NULL) sc->ptr = ReadSprite(sc, sprite, type, AllocSprite);
 
 	return sc->ptr;
 }
