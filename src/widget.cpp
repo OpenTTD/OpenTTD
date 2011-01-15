@@ -1374,7 +1374,7 @@ void NWidgetMatrix::SetColour(Colours colour)
 void NWidgetMatrix::SetClicked(int clicked)
 {
 	this->clicked = clicked;
-	if (this->sb != NULL && this->widgets_x != 0) {
+	if (this->clicked >= 0 && this->sb != NULL && this->widgets_x != 0) {
 		int vpos = (this->clicked / this->widgets_x) * this->widget_h; // Vertical position of the top.
 		/* Need to scroll down -> Scroll to the bottom.
 		 * However, last entry has no 'this->pip_inter' underneath, and we must stay below this->sb->GetCount() */
