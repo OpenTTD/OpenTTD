@@ -170,7 +170,6 @@ static inline uint32 GetCmdSendToDepot(const BaseVehicle *v)
 
 CommandCost EnsureNoVehicleOnGround(TileIndex tile);
 CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
-void StopAllVehicles();
 
 extern VehicleID _new_vehicle_id;
 extern uint16 _returned_refit_capacity;

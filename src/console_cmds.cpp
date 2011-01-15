@@ -161,17 +161,6 @@ DEF_CONSOLE_CMD(ConResetTile)
 
 	return false;
 }
-
-DEF_CONSOLE_CMD(ConStopAllVehicles)
-{
-	if (argc == 0) {
-		IConsoleHelp("Stops all vehicles in the game. For debugging only! Use at your own risk... Usage: 'stopall'");
-		return true;
-	}
-
-	StopAllVehicles();
-	return true;
-}
 #endif /* _DEBUG */
 
 DEF_CONSOLE_CMD(ConScrollToTile)
@@ -1742,7 +1731,6 @@ DEF_CONSOLE_CMD(ConNewGRFReload)
 static void IConsoleDebugLibRegister()
 {
 	IConsoleCmdRegister("resettile",        ConResetTile);
-	IConsoleCmdRegister("stopall",          ConStopAllVehicles);
 	IConsoleAliasRegister("dbg_echo",       "echo %A; echo %B");
 	IConsoleAliasRegister("dbg_echo2",      "echo %!");
 }

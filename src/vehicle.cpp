@@ -2174,19 +2174,6 @@ Order *Vehicle::GetNextManualOrder(int index) const
 	return order;
 }
 
-void StopAllVehicles()
-{
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		/* Code ripped from CmdStartStopTrain. Can't call it, because of
-		 * ownership problems, so we'll duplicate some code, for now */
-		v->vehstatus |= VS_STOPPED;
-		v->MarkDirty();
-		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
-	}
-}
-
 void VehiclesYearlyLoop()
 {
 	Vehicle *v;
