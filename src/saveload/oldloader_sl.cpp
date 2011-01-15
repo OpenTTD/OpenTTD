@@ -1656,7 +1656,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_ASSERT( OC_TTO, 0x496AC ),
 
-	OCL_VAR ( OC_UINT16,    1, &_vehicle_id_ctr_day ),
+	OCL_NULL ( 2 ), // _vehicle_id_ctr_day
 
 	OCL_CHUNK(  8, LoadOldSubsidy ),
 

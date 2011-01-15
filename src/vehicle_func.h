@@ -172,7 +172,6 @@ CommandCost EnsureNoVehicleOnGround(TileIndex tile);
 CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
 void StopAllVehicles();
 
-extern VehicleID _vehicle_id_ctr_day;
 extern VehicleID _new_vehicle_id;
 extern uint16 _returned_refit_capacity;
 extern uint16 _returned_mail_refit_capacity;
