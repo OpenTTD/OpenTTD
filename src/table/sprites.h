@@ -1332,7 +1332,7 @@ static const SpriteID SPR_SELECT_TOYLAND_PUSHED      = 4889;
  * Cursors */
 static const CursorID SPR_CURSOR_MOUSE          = 0;
 static const CursorID SPR_CURSOR_ZZZ            = 1;
-static const CursorID SPR_CURSOR_BOUY           = 702;
+static const CursorID SPR_CURSOR_BUOY           = 702;
 static const CursorID SPR_CURSOR_QUERY          = 719;
 static const CursorID SPR_CURSOR_HQ             = 720;
 static const CursorID SPR_CURSOR_SHIP_DEPOT     = 721;

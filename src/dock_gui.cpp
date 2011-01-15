@@ -157,7 +157,7 @@ struct BuildDocksToolbarWindow : Window {
 
 			case DTW_BUOY: // Build buoy button
 				if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-				HandlePlacePushButton(this, DTW_BUOY, SPR_CURSOR_BOUY, HT_RECT);
+				HandlePlacePushButton(this, DTW_BUOY, SPR_CURSOR_BUOY, HT_RECT);
 				break;
 
 			case DTW_RIVER: // Build river button (in scenario editor)
