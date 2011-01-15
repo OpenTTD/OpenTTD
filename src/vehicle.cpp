@@ -1736,6 +1736,18 @@ uint GetVehicleCapacity(const Vehicle *v, uint16 *mail_capacity)
 	return capacity;
 }
 
+/**
+ * Delete all automatic orders which were not reached.
+ */
+void Vehicle::DeleteUnreachedAutoOrders()
+{
+	const Order *order = this->GetOrder(this->cur_order_index);
+	while (order != NULL && order->IsType(OT_AUTOMATIC)) {
+		/* Delete order effectively deletes order, so get the next before deleting it. */
+		order = order->next;
+		DeleteOrder(this, this->cur_order_index);
+	}
+}
 
 void Vehicle::BeginLoading()
 {
@@ -1743,13 +1755,7 @@ void Vehicle::BeginLoading()
 
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
 			this->current_order.GetDestination() == this->last_station_visited) {
-		/* Delete all automatic orders which were not reached */
-		const Order *order = this->GetOrder(this->cur_order_index);
-		while (order != NULL && order->IsType(OT_AUTOMATIC)) {
-			/* Delete order effectively deletes order, so get the next before deleting it. */
-			order = order->next;
-			DeleteOrder(this, this->cur_order_index);
-		}
+		this->DeleteUnreachedAutoOrders();
 
 		/* Now cur_order_index points to the destination station, and we can start loading */
 		this->current_order.MakeLoading(true);

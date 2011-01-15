@@ -243,6 +243,8 @@ public:
 	GroundVehicleCache *GetGroundVehicleCache();
 	const GroundVehicleCache *GetGroundVehicleCache() const;
 
+	void DeleteUnreachedAutoOrders();
+
 	/**
 	 * Handle the loading of the vehicle; when not it skips through dummy
 	 * orders and does nothing in all other cases.
