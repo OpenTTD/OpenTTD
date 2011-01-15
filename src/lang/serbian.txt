@@ -1357,8 +1357,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automat
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatska zamena nakon {ORANGE}{STRING}{LTBLUE} mesec{P 0:1 "" a i} pre/posle zastarenja
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Najmanja potrebna količina novca za zamenu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje ispisa poruka o grešci: {ORANGE}{STRING} sekund{P 0:1 a e i}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Odlaganje događaja pri zadržavanju pokazivača: {ORANGE}{STRING} sekund{P a e i}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Odlaganje događaja pri zadržavanju pokazivača: {ORANGE}isključeno
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Prikaz opisa alatke: {ORANGE}Zadržavanje pokazivača {STRING} sekund{P u e i}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Prikaz opisa alatke: {ORANGE}Desni klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikazivanje broja populacije pored naziva naselja: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Oblikovanje reljefa: {ORANGE}{STRING}
@@ -2145,7 +2145,7 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Izbor du
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Prevlačenje
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Gradnja stanice prevlačenjem
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Odaberite klasu stanice za gradnju
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Izbor klase stanica za prikaz
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Odaberite vrstu stanice za gradnju
 
 STR_STATION_CLASS_DFLT                                          :Uobičajna stanica
@@ -2279,6 +2279,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupovina
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Izbor Objekta
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Odabir objekta za izgradnju. Shift prebacuje između izgradnje i prikaza procene troškova
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Izbor klase objekata za izgradnju
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Privremeno prikazuje objekat
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Veličina: {GOLD}{NUM} x {NUM} pločica
 

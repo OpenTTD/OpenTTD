@@ -528,7 +528,7 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valores 
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tasas de pago por carga
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Días en tránsito
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pago por entregar 10 unidades (o 1,000 litros) de mercancía a una distancia de 20 cuadros
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pago por entregar 10 unidades (o 1,000 litros) de mercancía a una distancia de 20 casillas
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Activar todos
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Desactivar todos
 STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todos los tipos de carga en el gráfico de tarifas de pagos por carga
@@ -1186,8 +1186,8 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :A la izquierda
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horario
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}El nivel de la altura del mapa plano tiene: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Habilitar la modificación del terreno en los bordes del mapa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Uno o más cuadrados del borde más al norte no están vacios
-STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Uno o más cuadrados en uno de los bordes no son agua
+STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o más casillas del borde norte no están vacías
+STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o más casillas en uno de los bordes no son agua
 
 STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Expansión máxima de estaciones: {ORANGE}{STRING} casilla{P 0:1 "" s}{RED}Advertencia: Valores altos ralentizan
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Mantener los helicópteros en helipuertos automáticamente: {ORANGE}{STRING}

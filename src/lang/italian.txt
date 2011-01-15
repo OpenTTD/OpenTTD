@@ -1164,8 +1164,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Rinnova
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova un veicolo {ORANGE}{STRING}{LTBLUE} mes{P 0:1 e i} prima/dopo l'età massima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Rinnova solo se disponibile il fondo minimo di {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Durata dei messaggi d'errore: {ORANGE}{STRING} second{P 0:1 o i}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Ritardo eventi mouse: {ORANGE}{STRING} second{P 0:1 o i}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Ritardo eventi mouse: {ORANGE}eventi disabilitati
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Mostra suggerimenti: {ORANGE}Al passaggio del mouse dopo {STRING} second{P 0:1 o i}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Mostra suggerimenti: {ORANGE}A clic col pulsante destro
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mostra la popolazione di una città nell'etichetta del nome: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generatore terreno: {ORANGE}{STRING}

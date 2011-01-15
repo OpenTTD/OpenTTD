@@ -1219,8 +1219,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vananen
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Piirvanuse saavutanud veovahendit uuendatakse {ORANGE}{STRING}{LTBLUE} kuu piires
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Nõutud rahasumma uuendamiseks: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Veateadete kestus: {ORANGE}{STRING} sekund{P 0:1 "" it}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Ülelibistussündmuste viivitus: {ORANGE}{STRING} sekund{P 0:1 "" it}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Ülelibistussündmuste viivitus: {ORANGE}keelatud
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Kuva spikreid: {ORANGE}Hõljudes objekti kohal {STRING} sekundit
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Kuva spikker: {ORANGE}Paremklõpsuga
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Rahvaarv alevike nimesiltidel: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Maaala Generaator: {ORANGE}{STRING}
