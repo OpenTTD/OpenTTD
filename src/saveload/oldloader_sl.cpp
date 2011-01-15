@@ -34,7 +34,9 @@
 #include "../table/engines.h"
 #include "../table/townname.h"
 
-static bool _read_ttdpatch_flags;
+static bool _read_ttdpatch_flags;    ///< Have we (tried to) read TTDPatch extra flags?
+static uint16 _old_extra_chunk_nums; ///< Number of extra TTDPatch chunks
+static byte _old_vehicle_multiplier; ///< TTDPatch vehicle multiplier
 
 static uint8 *_old_map3;
 
@@ -483,23 +485,23 @@ extern TileIndex *_animated_tile_list;
 extern uint _animated_tile_count;
 extern char *_old_name_array;
 
-static byte   _old_vehicle_multiplier;
 static uint32 _old_town_index;
 static uint16 _old_string_id;
 static uint16 _old_string_id_2;
-static uint16 _old_extra_chunk_nums;
 
 static void ReadTTDPatchFlags()
 {
-	if (_savegame_type == SGT_TTO) {
-		_old_vehicle_multiplier = 1;
-		_bump_assert_value = 0;
-		return;
-	}
-
 	if (_read_ttdpatch_flags) return;
 
 	_read_ttdpatch_flags = true;
+
+	/* Set default values */
+	_old_vehicle_multiplier = 1;
+	_ttdp_version = 0;
+	_old_extra_chunk_nums = 0;
+	_bump_assert_value = 0;
+
+	if (_savegame_type == SGT_TTO) return;
 
 	/* TTDPatch misuses _old_map3 for flags.. read them! */
 	_old_vehicle_multiplier = _old_map3[0];
@@ -1729,10 +1731,10 @@ static const OldChunks main_chunk[] = {
 
 bool LoadTTDMain(LoadgameState *ls)
 {
-	_read_ttdpatch_flags = false;
-	_ttdp_version = 0;
-
 	DEBUG(oldloader, 3, "Reading main chunk...");
+
+	_read_ttdpatch_flags = false;
+
 	/* Load the biggest chunk */
 	SmallStackSafeStackAlloc<byte, OLD_MAP_SIZE * 2> map3;
 	_old_map3 = map3.data;
@@ -1774,6 +1776,8 @@ bool LoadTTDMain(LoadgameState *ls)
 bool LoadTTOMain(LoadgameState *ls)
 {
 	DEBUG(oldloader, 3, "Reading main chunk...");
+
+	_read_ttdpatch_flags = false;
 
 	SmallStackSafeStackAlloc<byte, 103 * sizeof(Engine)> engines; // we don't want to call Engine constructor here
 	_old_engines = (Engine *)engines.data;
