@@ -1733,6 +1733,7 @@ bool ProcessOrders(Vehicle *v)
 	if (((v->current_order.IsType(OT_GOTO_STATION) && (v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) || v->current_order.IsType(OT_GOTO_WAYPOINT)) &&
 			IsTileType(v->tile, MP_STATION) &&
 			v->current_order.GetDestination() == GetStationIndex(v->tile)) {
+		v->DeleteUnreachedAutoOrders();
 		/* We set the last visited station here because we do not want
 		 * the train to stop at this 'via' station if the next order
 		 * is a no-non-stop order; in that case not setting the last

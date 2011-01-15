@@ -1265,6 +1265,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 		if (t.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) {
 			/* Part of orders */
+			v->DeleteUnreachedAutoOrders();
 			UpdateVehicleTimetable(v, true);
 			v->IncrementOrderIndex();
 		}
