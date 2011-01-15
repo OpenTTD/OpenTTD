@@ -1352,7 +1352,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 		}
 
 		/* Check if item is valid */
-		if (!FillGRFDetails(c, is_static)) {
+		if (!FillGRFDetails(c, is_static) || HasBit(c->flags, GCF_INVALID)) {
 			const char *msg;
 
 			if (c->status == GCS_NOT_FOUND) {
@@ -1361,6 +1361,8 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 				msg = "unsafe for static use";
 			} else if (HasBit(c->flags, GCF_SYSTEM)) {
 				msg = "system NewGRF";
+			} else if (HasBit(c->flags, GCF_INVALID)) {
+				msg = "incompatible to this version of OpenTTD";
 			} else {
 				msg = "unknown";
 			}

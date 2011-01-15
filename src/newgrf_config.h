@@ -25,7 +25,7 @@ enum GCF_Flags {
 	GCF_COPY,       ///< The data is copied from a grf in _all_grfs
 	GCF_INIT_ONLY,  ///< GRF file is processed up to GLS_INIT
 	GCF_RESERVED,   ///< GRF file passed GLS_RESERVE stage
-
+	GCF_INVALID,    ///< GRF is unusable with this version of OpenTTD
 };
 
 /** Status of GRF */
@@ -170,6 +170,7 @@ enum FindGRFConfigMode {
 	FGCM_EXACT,       ///< Only find Grfs matching md5sum
 	FGCM_COMPATIBLE,  ///< Find best compatible Grf wrt. desired_version
 	FGCM_NEWEST,      ///< Find newest Grf
+	FGCM_NEWEST_VALID,///< Find newest Grf, ignoring Grfs with GCF_INVALID set
 	FGCM_ANY,         ///< Use first found
 };
 

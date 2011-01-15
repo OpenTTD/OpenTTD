@@ -115,6 +115,7 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 	/* Show flags */
 	if (c->status == GCS_NOT_FOUND)       y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_NOT_FOUND);
 	if (c->status == GCS_DISABLED)        y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_DISABLED);
+	if (HasBit(c->flags, GCF_INVALID))    y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_SETTINGS_INCOMPATIBLE);
 	if (HasBit(c->flags, GCF_COMPATIBLE)) y = DrawStringMultiLine(x, right, y, bottom, STR_NEWGRF_COMPATIBLE_LOADED);
 
 	/* Draw GRF info if it exists */
@@ -888,7 +889,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			}
 
 			case SNGRFS_ADD: {
-				if (this->avail_sel == NULL || !this->editable) break;
+				if (this->avail_sel == NULL || !this->editable || HasBit(this->avail_sel->flags, GCF_INVALID)) break;
 
 				GRFConfig **list;
 				/* Find last entry in the list, checking for duplicate grfid on the way */
@@ -1047,7 +1048,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 					if (c->status != GCS_NOT_FOUND && !compatible) continue;
 
 					const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, compatible ? c->original_md5sum : c->ident.md5sum);
-					if (f == NULL) continue;
+					if (f == NULL || HasBit(f->flags, GCF_INVALID)) continue;
 
 					*l = new GRFConfig(*f);
 					(*l)->next = c->next;
@@ -1084,7 +1085,7 @@ struct NewGRFWindow : public QueryStringBaseWindow {
 			SNGRFS_TOGGLE_PALETTE,
 			WIDGET_LIST_END
 		);
-		this->SetWidgetDisabledState(SNGRFS_ADD, !this->editable || this->avail_sel == NULL);
+		this->SetWidgetDisabledState(SNGRFS_ADD, !this->editable || this->avail_sel == NULL || HasBit(this->avail_sel->flags, GCF_INVALID));
 
 		bool disable_all = this->active_sel == NULL || !this->editable;
 		this->SetWidgetsDisabledState(disable_all,
@@ -1233,7 +1234,7 @@ private:
 			if (_settings_client.gui.newgrf_show_old_versions) {
 				*this->avails.Append() = c;
 			} else {
-				const GRFConfig *best = FindGRFConfig(c->ident.grfid, FGCM_NEWEST);
+				const GRFConfig *best = FindGRFConfig(c->ident.grfid, HasBit(c->flags, GCF_INVALID) ? FGCM_NEWEST : FGCM_NEWEST_VALID);
 				/*
 				 * If the best version is 0, then all NewGRF with this GRF ID
 				 * have version 0, so for backward compatability reasons we

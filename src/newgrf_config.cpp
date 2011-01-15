@@ -444,7 +444,7 @@ GRFListCompatibility IsGoodGRFConfigList(GRFConfig *grfconfig)
 
 	for (GRFConfig *c = grfconfig; c != NULL; c = c->next) {
 		const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, c->ident.md5sum);
-		if (f == NULL) {
+		if (f == NULL || HasBit(f->flags, GCF_INVALID)) {
 			char buf[256];
 
 			/* If we have not found the exactly matching GRF try to find one with the
@@ -630,6 +630,8 @@ const GRFConfig *FindGRFConfig(uint32 grfid, FindGRFConfigMode mode, const uint8
 		if (!c->ident.HasGrfIdentifier(grfid, md5sum)) continue;
 		/* return it, if the exact same newgrf is found, or if we do not care about finding "the best" */
 		if (md5sum != NULL || mode == FGCM_ANY) return c;
+		/* Skip incompatible stuff, unless explicitly allowed */
+		if (mode != FGCM_NEWEST && HasBit(c->flags, GCF_INVALID)) continue;
 		/* check version compatibility */
 		if (mode == FGCM_COMPATIBLE && (c->version < desired_version || c->min_loadable_version > desired_version)) continue;
 		/* remember the newest one as "the best" */

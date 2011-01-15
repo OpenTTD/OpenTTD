@@ -5313,15 +5313,21 @@ static void SkipIf(ByteReader *buf)
 /* Action 0x08 (GLS_FILESCAN) */
 static void ScanInfo(ByteReader *buf)
 {
-	buf->ReadByte();
-	uint32 grfid  = buf->ReadDWord();
+	uint8 grf_version = buf->ReadByte();
+	uint32 grfid      = buf->ReadDWord();
+	const char *name  = buf->ReadString();
 
 	_cur_grfconfig->ident.grfid = grfid;
+
+	/* TODO We are incompatible to grf_version < 2 as well, but due to broken GRFs out there, we accept these till the next stable */
+	if (/*grf_version < 2 || */grf_version > 7) {
+		SetBit(_cur_grfconfig->flags, GCF_INVALID);
+		DEBUG(grf, 0, "%s: NewGRF \"%s\" (GRFID %08X) uses GRF version %d, which is incompatible with this version of OpenTTD.", _cur_grfconfig->filename, name, BSWAP32(grfid), grf_version);
+	}
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
 	if (GB(grfid, 24, 8) == 0xFF) SetBit(_cur_grfconfig->flags, GCF_SYSTEM);
 
-	const char *name = buf->ReadString();
 	AddGRFTextToList(&_cur_grfconfig->name, 0x7F, grfid, name);
 
 	if (buf->HasData()) {
