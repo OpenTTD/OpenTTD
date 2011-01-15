@@ -64,7 +64,9 @@ public:
 		this->SelectFirstAvailableObject(true);
 		this->GetWidget<NWidgetMatrix>(BOW_OBJECT_MATRIX)->SetCount(4);
 
-		this->GetWidget<NWidgetMatrix>(BOW_SELECT_MATRIX)->SetCount(ObjectClass::GetCount(_selected_object_class));
+		NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(BOW_SELECT_MATRIX);
+		matrix->SetScrollbar(this->GetScrollbar(BOW_SELECT_SCROLL));
+		matrix->SetCount(ObjectClass::GetCount(_selected_object_class));
 	}
 
 	virtual ~BuildObjectWindow()
@@ -379,7 +381,7 @@ static const NWidgetPart _nested_build_object_widgets[] = {
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetScrollbar(BOW_SELECT_SCROLL),
 				NWidget(NWID_HORIZONTAL),
-					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, BOW_SELECT_MATRIX), SetFill(0, 1), SetPIP(0, 2, 0), SetScrollbar(BOW_SELECT_SCROLL),
+					NWidget(NWID_MATRIX, COLOUR_DARK_GREEN, BOW_SELECT_MATRIX), SetFill(0, 1), SetPIP(0, 2, 0),
 						NWidget(WWT_PANEL, COLOUR_DARK_GREEN, BOW_SELECT_IMAGE), SetMinimalSize(66, 60), SetDataTip(0x0, STR_OBJECT_BUILD_TOOLTIP),
 								SetFill(0, 0), SetResize(0, 0), SetScrollbar(BOW_SELECT_SCROLL),
 						EndContainer(),
