@@ -1249,7 +1249,7 @@ static const SpriteID SPR_IMG_AIRPORT       = 744;
 /* dock_gui.c */
 static const SpriteID SPR_IMG_SHIP_DEPOT    = 748;
 static const SpriteID SPR_IMG_SHIP_DOCK     = 746;
-static const SpriteID SPR_IMG_BOUY          = 693;
+static const SpriteID SPR_IMG_BUOY          = 693;
 static const SpriteID SPR_IMG_AQUEDUCT      = SPR_OPENTTD_BASE + 145;
 
 /* music_gui.c */

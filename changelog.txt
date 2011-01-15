@@ -2346,7 +2346,7 @@
 - Fix: Several desync fixes (incorrect roadstop update of old games, autoreplace bugs) [FS#551] (r8137, r8147, r8157)
 - Fix: Some disaster-events fixed: combat chopper shoots from right position, submarine once again moves around (r8140, r8158)
 - Fix: 'out of sprite memory' warning messages due to incorrect assumption of requested memory for sprites (r8133)
-- Fix: Bouys are now built and numbered 1..9 not 9..1 [FS#538] (r8123)
+- Fix: Buoys are now built and numbered 1..9 not 9..1 [FS#538] (r8123)
 - Fix: Clicking for more news properly cycles through the news history backwards, and does not show the first item doubly if it's already open (r8049)
 - Fix: Crash when removing a town in the scenario editor while the query window is open for one of the town's tiles (r8030)
 - Fix: Overflow of system-ticks was not handled properly, resulting in a possibly unresponsive server/client (r8028)

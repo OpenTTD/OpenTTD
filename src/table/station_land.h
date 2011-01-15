@@ -395,7 +395,7 @@ static const DrawTileSeqStruct _station_display_datas_81[] = {
 
 /* Buoy, which will _always_ drown under the ship */
 static const DrawTileSeqStruct _station_display_datas_82[] = {
-	TILE_SEQ_LINE( 4,  -1,  0,  0,  0,  0, SPR_IMG_BOUY)
+	TILE_SEQ_LINE( 4,  -1,  0,  0,  0,  0, SPR_IMG_BUOY)
 	TILE_SEQ_END()
 };
 

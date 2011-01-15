@@ -273,7 +273,7 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 
 /**
  * Build a buoy.
- * @param tile tile where to place the bouy
+ * @param tile tile where to place the buoy
  * @param flags operation to perform
  * @param p1 unused
  * @param p2 unused
