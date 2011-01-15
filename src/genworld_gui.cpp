@@ -755,7 +755,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 					this->widget_id = widget;
 					SetDParam(0, _settings_newgame.game_creation.custom_town_number);
 					ShowQueryString(STR_JUST_INT, STR_MAPGEN_NUMBER_OF_TOWNS, 5, 50, this, CS_NUMERAL, QSF_NONE);
-				};
+				}
 				IConsoleSetSetting("difficulty.number_towns", index);
 				break;
 
@@ -776,7 +776,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 					this->widget_id = widget;
 					SetDParam(0, _settings_newgame.game_creation.custom_sea_level);
 					ShowQueryString(STR_JUST_INT, STR_MAPGEN_QUANTITY_OF_SEA_LAKES, 3, 50, this, CS_NUMERAL, QSF_NONE);
-				};
+				}
 				GameMode old_gm = _game_mode;
 				_game_mode = GM_MENU;
 				IConsoleSetSetting("difficulty.quantity_sea_lakes", index);

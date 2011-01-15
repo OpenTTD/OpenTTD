@@ -721,7 +721,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 		switch (wl) {
 			case WL_WARNING: IConsolePrint(CC_WARNING, buf); break;
 			default:         IConsoleError(buf); break;
-		};
+		}
 	}
 
 	bool no_timeout = wl == WL_CRITICAL;

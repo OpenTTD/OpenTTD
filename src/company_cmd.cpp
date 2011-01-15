@@ -437,7 +437,7 @@ static Colours GenerateCompanyColour()
 				Swap(colours[j - 1], colours[j]);
 			}
 		}
-	};
+	}
 
 	/* Move the colours that look similar to each company's colour to the side */
 	Company *c;

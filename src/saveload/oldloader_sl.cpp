@@ -1530,7 +1530,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 						DEBUG(oldloader, 3, "TTDPatch game using GRF file with GRFID %0X", BSWAP32(c->ident.grfid));
 					}
 					len -= 5;
-				};
+				}
 
 				/* Append static NewGRF configuration */
 				AppendStaticGRFConfigs(&_grfconfig);

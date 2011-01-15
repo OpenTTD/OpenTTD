@@ -849,7 +849,7 @@ struct DepotWindow : Window {
 		this->sel = INVALID_VEHICLE;
 		this->vehicle_over = INVALID_VEHICLE;
 		this->SetWidgetDirty(DEPOT_WIDGET_MATRIX);
-	};
+	}
 
 	virtual void OnMouseDrag(Point pt, int widget)
 	{

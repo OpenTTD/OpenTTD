@@ -145,7 +145,7 @@ public:
 		this->padding_right = right;
 		this->padding_bottom = bottom;
 		this->padding_left = left;
-	};
+	}
 
 	FORCEINLINE uint GetHorizontalStepSize(SizingType sizing) const;
 	FORCEINLINE uint GetVerticalStepSize(SizingType sizing) const;

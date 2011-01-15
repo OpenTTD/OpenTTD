@@ -424,7 +424,7 @@ struct MainWindow : Window
 		this->viewport->scrollpos_y += ScaleByZoom(delta.y, vp->zoom);
 		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
 		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
-	};
+	}
 
 	virtual void OnMouseWheel(int wheel)
 	{

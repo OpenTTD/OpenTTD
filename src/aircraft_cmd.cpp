@@ -1664,7 +1664,7 @@ static bool AirportSetBlocks(Aircraft *v, const AirportFTA *current_pos, const A
 				break;
 			}
 			current = current->next;
-		};
+		}
 
 		/* if the block to be checked is in the next position, then exclude that from
 		 * checking, because it has been set by the airplane before */

@@ -129,7 +129,7 @@ AirportFTAClass::~AirportFTAClass()
 			AirportFTA *next = current->next;
 			free(current);
 			current = next;
-		};
+		}
 	}
 	free(layout);
 }

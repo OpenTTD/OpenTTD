@@ -1545,7 +1545,7 @@ public:
 	{
 		this->InitNested(desc, TRANSPORT_RAIL);
 		this->OnInvalidateData();
-	};
+	}
 
 	virtual void SetStringParameters(int widget) const
 	{
@@ -1782,7 +1782,7 @@ struct BuildRailWaypointWindow : PickerWindowBase {
 
 		matrix->SetCount(_waypoint_count);
 		matrix->SetClicked(_cur_waypoint_type);
-	};
+	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{

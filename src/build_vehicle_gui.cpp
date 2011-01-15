@@ -609,7 +609,7 @@ static int DrawRailEnginePurchaseInfo(int left, int right, int y, EngineID engin
 		SetDParam(1, rvi->pow_wag_weight);
 		DrawString(left, right, y, STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT);
 		y += FONT_HEIGHT_NORMAL;
-	};
+	}
 
 	return y;
 }

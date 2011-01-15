@@ -741,7 +741,7 @@ public:
 	PickerWindowBase(Window *parent) : Window()
 	{
 		this->parent = parent;
-	};
+	}
 
 	virtual ~PickerWindowBase();
 };
