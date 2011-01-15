@@ -259,3 +259,12 @@ OpenTTD hangs when started on 32 bits Windows [FS#4083]
 	The reason we do not use the "win32" music driver as default are
 	described in the "Long delay between switching music/song" section
 	of this document.
+
+Pre- and exit signals are not dragged [FS#4378]
+	Unlike all other signal types, the entry- and exit signals are not
+	dragged but instead normal signals are placed on subsequent track
+	sections. This is done on purpose as this is the usually more con-
+	venient solution. There are little to no occasions where more than
+	one entry or exit signal in a row are useful. This is different
+	for all other signal types where several in a row can serve one
+	purpose or another.
