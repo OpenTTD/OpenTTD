@@ -22,77 +22,77 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(cadena sin determinar)
+STR_UNDEFINED                                                   :(cadena no definida)
 STR_JUST_NOTHING                                                :Nada
 
 # Cargo related strings
 # Plural cargo name
-STR_CARGO_PLURAL_NOTHING                                        :Nada
-STR_CARGO_PLURAL_PASSENGERS                                     :Pasajeros
-STR_CARGO_PLURAL_COAL                                           :Carbón
-STR_CARGO_PLURAL_MAIL                                           :Correo
-STR_CARGO_PLURAL_OIL                                            :Petróleo
-STR_CARGO_PLURAL_LIVESTOCK                                      :Ganado
-STR_CARGO_PLURAL_GOODS                                          :Mercancías
-STR_CARGO_PLURAL_GRAIN                                          :Grano
-STR_CARGO_PLURAL_WOOD                                           :Madera
-STR_CARGO_PLURAL_IRON_ORE                                       :Mineral de Hierro
-STR_CARGO_PLURAL_STEEL                                          :Acero
-STR_CARGO_PLURAL_VALUABLES                                      :Objetos de Valor
-STR_CARGO_PLURAL_COPPER_ORE                                     :Mineral de Cobre
-STR_CARGO_PLURAL_MAIZE                                          :Maíz
-STR_CARGO_PLURAL_FRUIT                                          :Frutas
-STR_CARGO_PLURAL_DIAMONDS                                       :Diamantes
-STR_CARGO_PLURAL_FOOD                                           :Alimentos
-STR_CARGO_PLURAL_PAPER                                          :Papel
-STR_CARGO_PLURAL_GOLD                                           :Oro
-STR_CARGO_PLURAL_WATER                                          :Agua
-STR_CARGO_PLURAL_WHEAT                                          :Trigo
-STR_CARGO_PLURAL_RUBBER                                         :Caucho
-STR_CARGO_PLURAL_SUGAR                                          :Azúcar
-STR_CARGO_PLURAL_TOYS                                           :Juguetes
-STR_CARGO_PLURAL_CANDY                                          :Dulces
-STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Algodón Dulce
-STR_CARGO_PLURAL_BUBBLES                                        :Burbujas
-STR_CARGO_PLURAL_TOFFEE                                         :Caramelos
-STR_CARGO_PLURAL_BATTERIES                                      :Pilas
-STR_CARGO_PLURAL_PLASTIC                                        :Plástico
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Refrescos
+STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}Pasajeros
+STR_CARGO_PLURAL_COAL                                           :{G=m}Carbón
+STR_CARGO_PLURAL_MAIL                                           :{G=m}Correo
+STR_CARGO_PLURAL_OIL                                            :{G=m}Petróleo
+STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}Ganado
+STR_CARGO_PLURAL_GOODS                                          :{G=f}Mercancías
+STR_CARGO_PLURAL_GRAIN                                          :{G=m}Grano
+STR_CARGO_PLURAL_WOOD                                           :{G=f}Madera
+STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Mineral de Hierro
+STR_CARGO_PLURAL_STEEL                                          :{G=m}Acero
+STR_CARGO_PLURAL_VALUABLES                                      :{G=m}Objetos de Valor
+STR_CARGO_PLURAL_COPPER_ORE                                     :{G=m}Mineral de Cobre
+STR_CARGO_PLURAL_MAIZE                                          :{G=m}Maíz
+STR_CARGO_PLURAL_FRUIT                                          :{G=f}Frutas
+STR_CARGO_PLURAL_DIAMONDS                                       :{G=m}Diamantes
+STR_CARGO_PLURAL_FOOD                                           :{G=m}Alimentos
+STR_CARGO_PLURAL_PAPER                                          :{G=m}Papel
+STR_CARGO_PLURAL_GOLD                                           :{G=m}Oro
+STR_CARGO_PLURAL_WATER                                          :{G=m}Agua
+STR_CARGO_PLURAL_WHEAT                                          :{G=m}Trigo
+STR_CARGO_PLURAL_RUBBER                                         :{G=m}Caucho
+STR_CARGO_PLURAL_SUGAR                                          :{G=m}Azúcar
+STR_CARGO_PLURAL_TOYS                                           :{G=m}Juguetes
+STR_CARGO_PLURAL_CANDY                                          :{G=m}Dulces
+STR_CARGO_PLURAL_COLA                                           :{G=f}Cola
+STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=m}Algodón Dulce
+STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Burbujas
+STR_CARGO_PLURAL_TOFFEE                                         :{G=m}Caramelos
+STR_CARGO_PLURAL_BATTERIES                                      :{G=f}Pilas
+STR_CARGO_PLURAL_PLASTIC                                        :{G=m}Plástico
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=m}Refrescos
 
 # Singular cargo name
-STR_CARGO_SINGULAR_NOTHING                                      :Nada
-STR_CARGO_SINGULAR_PASSENGER                                    :Pasajero
-STR_CARGO_SINGULAR_COAL                                         :Carbón
-STR_CARGO_SINGULAR_MAIL                                         :Correo
-STR_CARGO_SINGULAR_OIL                                          :Petróleo
-STR_CARGO_SINGULAR_LIVESTOCK                                    :Ganado
-STR_CARGO_SINGULAR_GOODS                                        :Mercancía
-STR_CARGO_SINGULAR_GRAIN                                        :Grano
-STR_CARGO_SINGULAR_WOOD                                         :Madera
-STR_CARGO_SINGULAR_IRON_ORE                                     :Mineral de Hierro
-STR_CARGO_SINGULAR_STEEL                                        :Acero
-STR_CARGO_SINGULAR_VALUABLES                                    :Objetos de Valor
-STR_CARGO_SINGULAR_COPPER_ORE                                   :Mineral de Cobre
-STR_CARGO_SINGULAR_MAIZE                                        :Maíz
-STR_CARGO_SINGULAR_FRUIT                                        :Fruta
-STR_CARGO_SINGULAR_DIAMOND                                      :Diamantes
-STR_CARGO_SINGULAR_FOOD                                         :Alimento
-STR_CARGO_SINGULAR_PAPER                                        :Papel
-STR_CARGO_SINGULAR_GOLD                                         :Oro
-STR_CARGO_SINGULAR_WATER                                        :Agua
-STR_CARGO_SINGULAR_WHEAT                                        :Trigo
-STR_CARGO_SINGULAR_RUBBER                                       :Caucho
-STR_CARGO_SINGULAR_SUGAR                                        :Azúcar
-STR_CARGO_SINGULAR_TOY                                          :Juguete
-STR_CARGO_SINGULAR_CANDY                                        :Dulce
-STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Algodón Dulce
-STR_CARGO_SINGULAR_BUBBLE                                       :Burbuja
-STR_CARGO_SINGULAR_TOFFEE                                       :Caramelo
-STR_CARGO_SINGULAR_BATTERY                                      :Pilas
-STR_CARGO_SINGULAR_PLASTIC                                      :Plástico
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Refresco
+STR_CARGO_SINGULAR_NOTHING                                      :
+STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Pasajero
+STR_CARGO_SINGULAR_COAL                                         :{G=m}Carbón
+STR_CARGO_SINGULAR_MAIL                                         :{G=m}Correo
+STR_CARGO_SINGULAR_OIL                                          :{G=m}Petróleo
+STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Ganado
+STR_CARGO_SINGULAR_GOODS                                        :{G=f}Mercancía
+STR_CARGO_SINGULAR_GRAIN                                        :{G=m}Grano
+STR_CARGO_SINGULAR_WOOD                                         :{G=f}Madera
+STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Mineral de Hierro
+STR_CARGO_SINGULAR_STEEL                                        :{G=m}Acero
+STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}Objetos de Valor
+STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=m}Mineral de Cobre
+STR_CARGO_SINGULAR_MAIZE                                        :{G=m}Maíz
+STR_CARGO_SINGULAR_FRUIT                                        :{G=f}Fruta
+STR_CARGO_SINGULAR_DIAMOND                                      :{G=m}Diamantes
+STR_CARGO_SINGULAR_FOOD                                         :{G=m}Alimento
+STR_CARGO_SINGULAR_PAPER                                        :{G=m}Papel
+STR_CARGO_SINGULAR_GOLD                                         :{G=m}Oro
+STR_CARGO_SINGULAR_WATER                                        :{G=m}Agua
+STR_CARGO_SINGULAR_WHEAT                                        :{G=m}Trigo
+STR_CARGO_SINGULAR_RUBBER                                       :{G=m}Caucho
+STR_CARGO_SINGULAR_SUGAR                                        :{G=m}Azúcar
+STR_CARGO_SINGULAR_TOY                                          :{G=m}Juguete
+STR_CARGO_SINGULAR_CANDY                                        :{G=m}Dulce
+STR_CARGO_SINGULAR_COLA                                         :{G=f}Cola
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=m}Algodón Dulce
+STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Burbuja
+STR_CARGO_SINGULAR_TOFFEE                                       :{G=m}Caramelo
+STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Pila
+STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}Plástico
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refresco
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -218,12 +218,12 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pies
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Escribe patrón de filtrado
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduce una palabra clave para filtrar la lista
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Escriba un patrón de filtrado
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Introduzca una palabra clave para filtrar la lista
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Seleccione ordenación (descendiente/ascendiente)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Seleccione criterio de orden
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecciona criterio de filtro
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Seleccione criterio de filtrado
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
 STR_BUTTON_LOCATION                                             :{BLACK}Sitio
 STR_BUTTON_RENAME                                               :{BLACK}Renombrar
@@ -275,7 +275,7 @@ STR_SORT_BY_MAX_SPEED                                           :Velocidad máxi
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Longitud
-STR_SORT_BY_LIFE_TIME                                           :Tiempo de vida remanente
+STR_SORT_BY_LIFE_TIME                                           :Tiempo de vida restante
 STR_SORT_BY_TIMETABLE_DELAY                                     :Retraso en horarios
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING                                             :Carga en espera
@@ -292,7 +292,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Capacidad de ca
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar juego
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avanzar el juego rápidamente
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance rápido del juego
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opciones
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Guardar juego, abandonar juego, salir
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Mostrar mapa
@@ -318,7 +318,7 @@ STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abre la 
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Mostrar ventana de sonido/música
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Mostrar último mensaje/noticia, mostrar opciones de mensajes
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Información de área, consola, depuración IA, capturas, acerca de OpenTTD
-STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Alternar barras de herramientas
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Cambiar barras de herramientas
 
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Guardar escenario, cargar escenario, abandonar editor, salir
@@ -647,8 +647,8 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Potentado
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnate del siglo
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} logra el estado '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} de {COMPANY} logra el estado '{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}¡{COMPANY} logra el estado '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}¡{PRESIDENTNAME} de {COMPANY} logra el estado '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
@@ -752,48 +752,48 @@ STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informa
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer tren llega a {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer autobús llega a {STATION}!
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer camión llega a {STATION}!
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Los ciudadanos celebran . . .{}Llega primer tranvía de pasajeros a {STATION}!
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Los ciudadanos celebran . . .{}Llega primer tranvía de carga a {STATION}!
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer tranvía de pasajeros llega a {STATION}!
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer tranvía de carga llega a {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Los ciudadanos celebran . . .{}¡Primer barco llega a {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Los ciudadanos celebran . . .{}¡Primera aeronave llega a {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}¡Siniestro ferroviario!{}{COMMA} fallecidos en la explosión de la colisión
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}¡Siniestro ferroviario!{}{COMMA} fallecidos en la explosión resultante tras la colisión
 STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}¡Accidente de tráfico!{}El conductor fallece en la explosión tras la colisión con el tren
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Accidente de tráfico!{}{COMMA} fallecidos en la explosión tras la colisión con el tren
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}¡Accidente de tráfico!{}{COMMA} fallecidos en la explosión resultante tras la colisión con el tren
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}¡Avión siniestrado!{}{COMMA} fallecidos en la explosión en {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Accidente aéreo!{}La aeronave se quedó sin combustible, {COMMA} personas mueren en la tragedia!
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}¡Accidente aéreo!{}La aeronave se quedó sin combustible, ¡{COMMA} personas fallecen en la tragedia!
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}¡Desastre de zepelín en {STATION}!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}¡Desastre con un zepelín en {STATION}!
 STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}¡Vehículo terrestre destruido en colisión con OVNI!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}¡Explosión de refinería de petróleo cerca de {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}¡Fábrica destruida en sospechosas circunstancias cerca de {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}¡Fábrica destruida bajo sospechosas circunstancias cerca de {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}¡OVNI aterriza cerca de {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}¡Hundimiento de mina de carbón deja ola de destrucción en {TOWN}!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}¡Inundación!{}Al menos {COMMA} desaparecidos o muertos después de las terribles inundaciones!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}¡Empresa en problemas!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} debe ser vendida o declarada en bancarrota a no ser que mejore su actuación!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}¡{STRING} debe ser vendida o declarada en bancarrota a no ser que pronto mejore su actuación!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}¡Absorción de empresa de transportes!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}¡{STRING} ha sido vendida a {STRING} por {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}¡Bancarrota!
-STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} ha sido cerrada por acreedores y todos sus activos se han vendido!
+STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}¡{STRING} ha sido cerrada por sus acreedores y todos sus activos han sido vendidos!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}¡Nueva empresa de transportes!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} comienza su construcción cerca de {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} ha sido comprada por {STRING}!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}¡{STRING} comienza su construcción cerca de {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}¡{STRING} ha sido adquirida por {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} patrocina la construcción del nuevo pueblo {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}¡{STRING} patrocina la construcción del nuevo pueblo {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nuevo {STRING} bajo construcción cerca de {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nuevo {STRING} está siendo plantado cerca de {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}¡Nuev{G o a} {STRING} en construcción cerca de {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}¡Nuev{G o a} {STRING} está siendo plantad{G o a} cerca de {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}¡La industria de {STRING} anuncia cierre inminente!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Problemas con el suministro causa que {STRING} anuncie su cierre inminente!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}¡La falta de árboles cercanos causa que {STRING} anuncie su cierre inmediato!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}¡La industria {STRING} anuncia su inminente cierre!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}¡Problemas con el suministro hacen que {STRING} anuncie su inminente cierre!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}¡La falta de árboles cercanos hace que {STRING} anuncie su inminente cierre!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}¡Unión Monetaria Europea!{}{}El Euro es introducido como la moneda oficial para todas las transacciones de su país!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}¡Recesión Mundial!{}{}¡Los expertos financieros son pesimistas con hundimiento económico!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}¡Fin de la Recesión!{}{}¡Mejora en el comercio da ánimos a las industrias mientras la economía se fortalece!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}¡Unión Monetaria Europea!{}{}¡El Euro es introducido como la nueva moneda oficial de todas las transacciones de su país!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}¡Recesión Mundial!{}{}¡Los expertos financieros son pesimistas con respecto al hundimiento económico!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}¡Fin de la Recesión!{}{}¡Mejora en el comercio da confianza a las industrias mientras la economía se fortalece!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}¡{INDUSTRY} incrementa su producción!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}¡Nueva veta de carbón encontrada en {INDUSTRY}!{}¡Se espera doblar la producción!
@@ -827,9 +827,9 @@ STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Los bene
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} se detuvo debido a un fallo en una orden de reforma
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Renovación automática fallida para {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nuevo {STRING} ahora disponible!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}¡Nuev{G o a} {STRING} ahora disponible!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nuevo {STRING} ahora disponible!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}¡Nuev{G o a} {STRING} ahora disponible!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ya no acepta {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ya no acepta {STRING} ni {STRING}
@@ -838,13 +838,13 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Oferta de subvención terminada:{}{}{STRING} de {STRING} a {STRING} ya no conlleva una subvención
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subvención retirada:{}{}Servicio de {STRING} desde {STRING} a {STRING} ya no está subvencionado
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Se ofrece subvención en la línea:{}{}El primer {STRING} que cubra la línea desde {STRING} a {STRING} recibirá una subvención durante un año por parte de las autoridades locales!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Se ofrece subvención:{}{}¡Al primer servicio de {STRING} que cubra la línea desde {STRING} a {STRING} se le otorgará una subvención durante un año por parte de las autoridades locales!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING} a {STRING} pagará el 50% más durante un año!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING} a {STRING} pagará tasa doble durante un año!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING} a {STRING} pagará tasa triple durante un año!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡Servicio de {STRING} desde {STRING} a {STRING} pagará tasa cuádruple durante un año!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Colapso circulatorio en {TOWN}!{}{}¡Programa de reconstrucción de carreteras patrocinado por {STRING} causa 6 meses de problemas a los conductores!
+STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}¡Colapso circulatorio en {TOWN}!{}{}¡Programa de reconstrucción de carreteras patrocinado por {STRING} causa 6 meses de problemas a los conductores!
 
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
@@ -934,14 +934,14 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalán
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguardado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre grabados automáticos del juego
 
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Apagado
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Desactivado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Cada 3 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Cada 6 meses
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 meses
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Seleccione el idioma para el interfaz del juego
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Seleccione el idioma a emplear para la interfaz del juego
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantalla completa
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marca esta opción para jugar OpenTTD a pantalla completa
@@ -1429,7 +1429,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Está
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trucos
 STR_CHEATS_TOOLTIP                                              :{BLACK}Las casillas indican si ha usado este truco antes
-STR_CHEATS_WARNING                                              :{BLACK}Atención! Usted está a punto de traicionar a sus competidores. Tenga presente que tal deshonra será recordada para toda la eternidad
+STR_CHEATS_WARNING                                              :{BLACK}¡Atención! Usted está a punto de traicionar a sus competidores. Tenga presente que tal deshonra será recordada para toda la eternidad
 STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementar dinero en {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugando como la empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldózer mágico (elimina industrias, objetos inamovibles): {ORANGE}{STRING}
@@ -1502,7 +1502,7 @@ STR_FACE_FACECODE                                               :{BLACK}Cara del
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Ver y/o asignar número de cara de presidente
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Ver y/o asignar número de cara de presidente
 STR_FACE_FACECODE_SET                                           :{WHITE}Nuevo código de cara ha sido asignado
-STR_FACE_FACECODE_ERR                                           :{WHITE}No se puede asignar número de cara de presidente - debe ser un número entre 0 y 4,294,967,295!
+STR_FACE_FACECODE_ERR                                           :{WHITE}No se puede asignar número de cara de presidente - ¡debe ser un número entre 0 y 4,294,967,295!
 STR_FACE_SAVE                                                   :{BLACK}Guardar
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Guardar cara favorita
 STR_FACE_SAVE_DONE                                              :{WHITE}Esta cara ha sido guardada como tu favorita en el fichero de configuración
@@ -1666,7 +1666,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Letón
 ############ End of leave-in-this-order
 
 # Network game lobby
-STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Sala de estar del juego multijugador
+STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Sala de espera de la partida multijugador
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Preparándose para unirse: {ORANGE}{STRING}
 STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Listado de empresas actualmente en el juego. Puede unirse a una empresa existente o crear una nueva si hay espacio libre
@@ -1849,7 +1849,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Has sel
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esta dependencia ha sido seleccionada para ser descargada
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ya tienes esto
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Este contenido es desconocido y no puede ser descargado en OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Este es un sustituto de un {STRING} existente
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Este es un sustituto de un{G "" a} {STRING} existente
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nombre: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versión: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descripción: {WHITE}{STRING}
@@ -1863,14 +1863,14 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ¡No es posible descargar contenido!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gráficos base
-STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
-STR_CONTENT_TYPE_AI                                             :IA
-STR_CONTENT_TYPE_AI_LIBRARY                                     :Librería de IAs
-STR_CONTENT_TYPE_SCENARIO                                       :Escenario
-STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de alturas
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sonidos base
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Música base
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m}Gráficos base
+STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
+STR_CONTENT_TYPE_AI                                             :{G=f}IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Librería de IAs
+STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Escenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=m}Mapa de alturas
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :{G=m}Sonidos base
+STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m}Música base
 
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descargando contenido...
@@ -2426,6 +2426,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parámet
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}No tiene información disponible
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fichero no encontrado
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible con esta versión de OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Introduce los parámetros del NewGRF
 
@@ -2490,7 +2491,7 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lectura despué
 STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Al conjunto de gráficos base actualmente en uso le faltan algunos sprites.{}El conjunto de gráficos base debe ser actualizado
 
 # NewGRF related 'general' warnings
-STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Precaución!
+STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}¡Precaución!
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Se van a modificar los NewGRF de una partida ya comenzada. Esto puede provocar un error fatal en OpenTTD o romper la partida.{}No se deben crear reportes de bugs por problemas causados por esta acción.{}¿Está completamente seguro de esto?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No se puede añadir: GRF ID duplicado
@@ -2823,8 +2824,8 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nuevos Vehícul
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuevos Vehículos de Monorraíl
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuevos Vehículos Maglev
 
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Vehículos de Ferrocarril
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuevos vehículos
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nuevos Vehículos de Ferrocarril
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuevos Vehículos
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuevos Barcos
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nueva Aeronave
 
@@ -2953,13 +2954,13 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Está a
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensaje del fabricante de vehículos
-STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Hemos diseñado un nuevo vehículo: {STRING} - ¿estás interesado en el uso exclusivo por un año de este vehículo, para que podamos ver cómo rinde antes de ponerlo universalmente disponible?
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotora
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :vehículo de carretera
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :aeronave
-STR_ENGINE_PREVIEW_SHIP                                         :barco
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotora de monorraíl
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotora maglev
+STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Hemos diseñado un{G "" a} nuev{G o a} {STRING} - ¿estaría interesado en el uso exclusivo por un año de este vehículo, para que podamos comprobar cómo rinde antes de que esté universalmente disponible?
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}locomotora
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}vehículo de carretera
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=f}aeronave
+STR_ENGINE_PREVIEW_SHIP                                         :{G=m}barco
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=f}locomotora de monorraíl
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=f}locomotora maglev
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidad: {VELOCITY}  Potencia: {POWER}{}Coste Operativo: {CURRENCY}/año{}Capacidad: {CARGO}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidad: {VELOCITY}  Potencia: {POWER}  F.T. Máxima: {6:FORCE}{}Coste de operación: {4:CURRENCY}/año{}Capacidad: {5:CARGO}
@@ -3363,7 +3364,7 @@ STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Quitar p
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostrar salida de depuración de esta IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD está compilado sin soporte para IA...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... no hay IAs disponibles!
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... ¡no hay IAs disponibles!
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No se encontró IA apropiada para cargar.{}Esta es una IA por defecto que no realiza acción alguna.{}Puedes descargar nuevas IAs mediante el sistema de 'Contenido Online'
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Una de las IA ejecutadas ha fallado. Por favor, reporte el fallo al autor de la misma desde la ventana Depuración de IA
@@ -3423,7 +3424,7 @@ STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Coste es
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Ingreso estimado: {CURRENCY}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}El grabado está en progreso,{}por favor espere hasta que termine!
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}El guardado está en progreso,{}¡por favor espere hasta que termine!
 STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Error en Autoguardado
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}No es posible leer la unidad
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Error guardando juego{}{STRING}
@@ -3600,7 +3601,7 @@ STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}No se pu
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}No se puede retirar punto de ruta aquí...
 STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Primero se debe retirar punto de ruta para trenes
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... boya en medio
-STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... boya en uso por otra empresa!
+STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... ¡boya en uso por otra empresa!
 
 # Depot related errors
 STR_ERROR_CAN_T_BUILD_TRAIN_DEPOT                               :{WHITE}No se puede construir depósito aquí...
@@ -3699,7 +3700,7 @@ STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}No se pu
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}Objeto en medio
 STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sede de empresa está en medio
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}No es posible comprar este terreno...
-STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ya es de su propiedad!
+STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... ¡ya es de su propiedad!
 
 # Group related errors
 STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}No se puede crear grupo...
@@ -3839,43 +3840,43 @@ STR_TOWN_BUILDING_NAME_PIGGY_BANK_1                             :Banco Cerdito
 
 ##id 0x4800
 # industry names
-STR_INDUSTRY_NAME_COAL_MINE                                     :Mina de Carbón
-STR_INDUSTRY_NAME_POWER_STATION                                 :Central Eléctrica
-STR_INDUSTRY_NAME_SAWMILL                                       :Aserradero
-STR_INDUSTRY_NAME_FOREST                                        :Bosque
-STR_INDUSTRY_NAME_OIL_REFINERY                                  :Refinería de Petróleo
-STR_INDUSTRY_NAME_OIL_RIG                                       :Plataforma Petrolífera
-STR_INDUSTRY_NAME_FACTORY                                       :Fábrica
-STR_INDUSTRY_NAME_PRINTING_WORKS                                :Imprenta
-STR_INDUSTRY_NAME_STEEL_MILL                                    :Acería
-STR_INDUSTRY_NAME_FARM                                          :Granja
-STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :Mina de Cobre
-STR_INDUSTRY_NAME_OIL_WELLS                                     :Pozos Petrolíferos
-STR_INDUSTRY_NAME_BANK                                          :Banco
-STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :Planta Procesadora de Alimentos
-STR_INDUSTRY_NAME_PAPER_MILL                                    :Papelera
-STR_INDUSTRY_NAME_GOLD_MINE                                     :Mina de Oro
-STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :Banco
-STR_INDUSTRY_NAME_DIAMOND_MINE                                  :Mina de Diamantes
-STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :Mina de Hierro
-STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :Plantación de Fruta
-STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :Plantación de Caucho
-STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Suministro de Agua
-STR_INDUSTRY_NAME_WATER_TOWER                                   :Torre de Agua
-STR_INDUSTRY_NAME_FACTORY_2                                     :Fábrica
-STR_INDUSTRY_NAME_FARM_2                                        :Granja
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Aserradero
-STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Bosque de Algodón Dulce
-STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Fábrica de Dulces
-STR_INDUSTRY_NAME_BATTERY_FARM                                  :Granja de Pilas
-STR_INDUSTRY_NAME_COLA_WELLS                                    :Pozos de Cola
-STR_INDUSTRY_NAME_TOY_SHOP                                      :Tienda de Juguetes
-STR_INDUSTRY_NAME_TOY_FACTORY                                   :Fábrica de Juguetes
-STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Fuentes de Plástico
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Fábrica de Refrescos
-STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Generador de Burbujas
-STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Cantera de Caramelos
-STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mina de Azúcar
+STR_INDUSTRY_NAME_COAL_MINE                                     :{G=f}Mina de Carbón
+STR_INDUSTRY_NAME_POWER_STATION                                 :{G=f}Central Eléctrica
+STR_INDUSTRY_NAME_SAWMILL                                       :{G=m}Aserradero
+STR_INDUSTRY_NAME_FOREST                                        :{G=m}Bosque
+STR_INDUSTRY_NAME_OIL_REFINERY                                  :{G=f}Refinería de Petróleo
+STR_INDUSTRY_NAME_OIL_RIG                                       :{G=f}Plataforma Petrolífera
+STR_INDUSTRY_NAME_FACTORY                                       :{G=f}Fábrica
+STR_INDUSTRY_NAME_PRINTING_WORKS                                :{G=f}Imprenta
+STR_INDUSTRY_NAME_STEEL_MILL                                    :{G=f}Acería
+STR_INDUSTRY_NAME_FARM                                          :{G=f}Granja
+STR_INDUSTRY_NAME_COPPER_ORE_MINE                               :{G=f}Mina de Cobre
+STR_INDUSTRY_NAME_OIL_WELLS                                     :{G=m}Pozos Petrolíferos
+STR_INDUSTRY_NAME_BANK                                          :{G=m}Banco
+STR_INDUSTRY_NAME_FOOD_PROCESSING_PLANT                         :{G=f}Planta Procesadora de Alimentos
+STR_INDUSTRY_NAME_PAPER_MILL                                    :{G=f}Papelera
+STR_INDUSTRY_NAME_GOLD_MINE                                     :{G=f}Mina de Oro
+STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :{G=m}Banco
+STR_INDUSTRY_NAME_DIAMOND_MINE                                  :{G=f}Mina de Diamantes
+STR_INDUSTRY_NAME_IRON_ORE_MINE                                 :{G=f}Mina de Hierro
+STR_INDUSTRY_NAME_FRUIT_PLANTATION                              :{G=f}Plantación de Fruta
+STR_INDUSTRY_NAME_RUBBER_PLANTATION                             :{G=f}Plantación de Caucho
+STR_INDUSTRY_NAME_WATER_SUPPLY                                  :{G=m}Suministro de Agua
+STR_INDUSTRY_NAME_WATER_TOWER                                   :{G=f}Torre de Agua
+STR_INDUSTRY_NAME_FACTORY_2                                     :{G=f}Fábrica
+STR_INDUSTRY_NAME_FARM_2                                        :{G=f}Granja
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :{G=m}Aserradero
+STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :{G=m}Bosque de Algodón Dulce
+STR_INDUSTRY_NAME_CANDY_FACTORY                                 :{G=f}Fábrica de Dulces
+STR_INDUSTRY_NAME_BATTERY_FARM                                  :{G=f}Granja de Pilas
+STR_INDUSTRY_NAME_COLA_WELLS                                    :{G=m}Pozos de Cola
+STR_INDUSTRY_NAME_TOY_SHOP                                      :{G=f}Tienda de Juguetes
+STR_INDUSTRY_NAME_TOY_FACTORY                                   :{G=f}Fábrica de Juguetes
+STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :{G=f}Fuentes de Plástico
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :{G=f}Fábrica de Refrescos
+STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :{G=m}Generador de Burbujas
+STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :{G=f}Cantera de Caramelos
+STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mina de Azúcar
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!

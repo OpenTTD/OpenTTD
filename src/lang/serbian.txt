@@ -2620,6 +2620,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametr
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Podaci nepostoje
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Odabrana datoteka nije nađena
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Isključen
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nije kompatibilno sa ovom OpenTTD verzijom
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Unesite NewGRF parametre
 

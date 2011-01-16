@@ -2550,6 +2550,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Пара
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Немає доступної інформації
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Таких файлів не знайдено
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Вимкнено
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Несумісне з поточною версією OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Введіть параметри NewGRF
 

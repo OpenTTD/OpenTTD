@@ -2427,6 +2427,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametr
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informazioni non disponibili
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}File corrispondente non trovato
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Disabilitato
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatibile con questa versione di OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Inserire i parametri NewGRF
 

@@ -2425,6 +2425,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametr
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ei tietoa
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sopivaa tiedostoa ei löydy
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Ei käytössä
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Epäyhteensopiva tämän OpenTTD-version kanssa
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Anna NewGRF-parametrit
 

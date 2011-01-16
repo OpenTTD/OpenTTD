@@ -2425,6 +2425,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramera
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ingen information tillgänglig
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Matchande fil hittades ej
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Avstängd
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ej kompatibel med den här versionen av OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Skriv NewGRF parameterar
 

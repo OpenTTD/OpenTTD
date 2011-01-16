@@ -2510,9 +2510,10 @@ STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: 
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametry: {SILVER}{STRING}
 
-STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Není dostupná žádná informace
+STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Informace nejsou k dispozici
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nenalezen odpovídající soubor
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Vypnuto
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Není kompatibilní s touto verzí OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Zadej parametry grafiky
 

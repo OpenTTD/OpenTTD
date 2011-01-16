@@ -1542,8 +1542,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Autoodn
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Autoodnowienie następuje {ORANGE}{STRING}{LTBLUE} miesięcy przed/po maks. wieku
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Min. ilość pieniędzy potrzebna do autoodnowienia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o błędzie: {ORANGE}{STRING} sekund{P 0:1 a y ""}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Opóźnienie dla akcji przy najechaniu: {ORANGE}{STRING} sekund{P 0:1 a y ""}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Opóźnienie dla akcji przy najechaniu: {ORANGE}wyłączone
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Pokaż podpowiedzi: {ORANGE}Po przytrzymaniu kursora przez {STRING} sekund{P 0:1 ę y ""}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Pokaż podpowiedzi: {ORANGE}Prawy przycisk myszy
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Pokaż populację miasta w jego nazwie: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Generator krajobrazu: {ORANGE}{STRING}
@@ -2805,6 +2805,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametr
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Brak dostępnych informacji
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Nie znaleziono pasującego pliku
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Niedostępny
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Niekompatybilne z tą wersją OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Wprowadź parametry NewGRF
 

@@ -2482,6 +2482,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parameet
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Andmed puuduvad
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Sobivat faili ei leitud
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Väljas
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Mitteühilduv selle OpenTTD versiooniga
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Sisesta NewGRF parameetrid
 
