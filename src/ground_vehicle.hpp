@@ -112,9 +112,9 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	FORCEINLINE byte UpdateInclination(bool new_tile, bool turned)
 	{
 		byte old_z = this->z_pos;
-		this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
 
 		if (new_tile) {
+			this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
 			ClrBit(this->gv_flags, GVF_GOINGUP_BIT);
 			ClrBit(this->gv_flags, GVF_GOINGDOWN_BIT);
 
@@ -131,6 +131,18 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 				if (middle_z != this->z_pos) {
 					SetBit(this->gv_flags, (middle_z > old_z) ? GVF_GOINGUP_BIT : GVF_GOINGDOWN_BIT);
 				}
+			}
+		} else {
+			/* Flat tile, tile with two opposing corners raised and tile with 3 corners
+			 * raised can never have sloped track ... */
+			static const uint32 never_sloped = 1 << SLOPE_FLAT | 1 << SLOPE_EW | 1 << SLOPE_NS | 1 << SLOPE_NWS | 1 << SLOPE_WSE | 1 << SLOPE_SEN | 1 << SLOPE_ENW;
+			/* ... unless it's a bridge head. */
+			if (IsTileType(this->tile, MP_TUNNELBRIDGE) || // the following check would be true for tunnels anyway
+					(T::From(this)->TileMayHaveSlopedTrack() && !HasBit(never_sloped, GetTileSlope(this->tile, NULL)))) {
+				this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
+			} else {
+				/* Verify that assumption. */
+				assert(this->z_pos == GetSlopeZ(this->x_pos, this->y_pos));
 			}
 		}
 
