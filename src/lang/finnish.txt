@@ -1247,7 +1247,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Näytä
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Pidä rakennustyökalut aktiivisina käytön jälkeen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ryhmitä kulut yhtiön rahoitusikkunassa: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Näytä rakennustyökalut, vaikka sopivia ajoneuvoja ei ole saatavilla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Suurin sallittu junien määrä yhtiötä kohden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Suurin sallittu ajoneuvojen määrä yhtiötä kohden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Suurin sallittu lentokoneiden määrä yhtiötä kohden: {ORANGE}{STRING}

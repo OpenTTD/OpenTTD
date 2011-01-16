@@ -1239,7 +1239,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{ORANGE}{STRING
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{ORANGE}{STRING}{LTBLUE}: שמור על כלי הבנייה פעילים לאחר השימוש
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{ORANGE}{STRING}{LTBLUE} : קבץ הוצאות בחלון הכספים של החברה
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{ORANGE}{STRING}{LTBLUE} :הצג כלי בניה גם כאשר אין כלי רכב זמינים לנצלם
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{ORANGE}{STRING}{LTBLUE} :מספר רכבות מירבי לשחקן
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{ORANGE}{STRING}{LTBLUE} :מספר משאיות/אוטובוסים מירבי לשחקן
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{ORANGE}{STRING}{LTBLUE} :מספר כלי טייס מירבי לשחקן

@@ -1232,7 +1232,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}แส�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}ให้คงการแสดงเครื่องมือการสร้างหลังการใช้: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}จัดกลุ่มรายจ่ายในหน้าต่างการเงินของบริษัท: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}แสดงเครื่องมือการสร้างเมื่อไม่มียานพาหนะที่นำมาใช้ได้: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}ขบวนรถไฟมากที่สุดต่อผู้เล่น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}ยานพาหนะมากที่สุดต่อผู้เล่น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}เครื่องบินมากที่สุดต่อผู้เล่น: {ORANGE}{STRING}

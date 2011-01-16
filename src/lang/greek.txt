@@ -1335,7 +1335,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Εμφ�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Διατήρηση των οικοδομικών εργαλείων ενεργών μετά από χρήση τους: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Εμφάνιση οικοδομικών εργαλίων όταν δεν υπάρχουν κατάλληλα οχήματα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Μέγιστος αριθμός τρένων ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Μέγιστα οχήματα ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροπλάνα ανα παίκτη: {ORANGE}{STRING}

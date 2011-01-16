@@ -1248,7 +1248,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Affiche
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Conserver les outils de construction actifs après usage{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Regrouper les dépenses dans la fenêtre des finances{NBSP}: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Afficher les outils de construction quand aucun véhicule approprié n'est disponible{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Nombre maximum de trains par compagnie{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Nombre maximum de véhicules routiers par compagnie{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Nombre maximum d'aéronefs par compagnie{NBSP}: {ORANGE}{STRING}

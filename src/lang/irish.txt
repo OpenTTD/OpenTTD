@@ -1237,7 +1237,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Taispe�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Fág uirlisí tógála gníomhach i ndiaidh úsáide: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Speansais an ghrúpa i bhfuinneog airgeadais cuideachta: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Taispeáin uirlisí tógála nuar nach bhfuil aon fheithicil fheiliúnach ar fáil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Uaslíon na dtraenacha in aghaidh an imreora: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Uaslíon na bhfeithiclí bóthair in aghaidh an imreora: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Uaslíon na n-eitleán in aghaidh an imreora: {ORANGE}{STRING}

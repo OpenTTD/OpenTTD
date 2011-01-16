@@ -1247,7 +1247,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Пок�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Запази инстументите активни след употреба: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Групирай разходите във финансовия прозорец на компанията: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Строене при липса на подходящи ПС: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Макс. брой влакове за компания: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Макс. брой коли за компания: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Макс. брой самолети за компания: {ORANGE}{STRING}

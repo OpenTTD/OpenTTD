@@ -1235,7 +1235,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}اظه�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE} ابقاء ادوات البناء فعالة بعد استخدامها: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE} النفقات للمجموعة في النافذة المالية: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}عرض ادوات البناء عندما لا توجد مركبات متاحة بعد: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}الحد الأعلى لعدد القطارات لكل لاعب: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}الحد الأعلى لعدد العربات لكل لاعب: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}الحد الأعلى لعدد الطائرات لكل لاعب: {ORANGE}{STRING}

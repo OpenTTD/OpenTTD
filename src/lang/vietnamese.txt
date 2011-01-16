@@ -1243,7 +1243,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Hiện 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Vẫn giữ công cụ xây dựng sau khi dùng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Phân nhóm thu nhập/chi phí trong bảng tài chính: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Hiện công cụ xây dựng dù không có ph.tiện nào thích hợp hiện có: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Số tàu hỏa tối đa mỗi người chơi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Số xe ôtô tối đa mỗi người chơi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Số máy bay tối đa mỗi người chơi: {ORANGE}{STRING}

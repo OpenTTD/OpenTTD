@@ -1203,7 +1203,6 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Último dispoñ
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Máis usado
 STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Mostra-las vías reservadas: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostra-las ferramentas de construción cando non haxa vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Nº máximo de trens por xogador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Nº máximo de vehículos de estrada por xogador: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Nº máximo de avións por xogador: {ORANGE}{STRING}

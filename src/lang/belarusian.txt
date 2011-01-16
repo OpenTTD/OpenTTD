@@ -1564,7 +1564,6 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Пак�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Захоўваць актыўнымі інструмэнты будаўніцтва пасьля ўжываньня: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Групаваць выдаткі ў вакне фінансаў кампаніі: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Паказваць вакно будаўніцтва, калі няма прыдатнага адпаведнага транспарту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Максымальная колькасьць цягнікоў на гульца: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Максымальная колькасьць аўтатранспарту на гульца: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Максымальная колькасьць самалётаў на гульца: {ORANGE}{STRING}
