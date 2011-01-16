@@ -1424,6 +1424,30 @@ static void HandlePlacePresize()
 }
 
 /**
+ * Handle dragging in mouse dragging mode (#WSM_DRAGDROP).
+ * @return State of handling the event.
+ */
+static EventState HandleMouseDrag()
+{
+	Window *w;
+
+	if (_special_mouse_mode != WSM_DRAGDROP) return ES_NOT_HANDLED;
+	if (!_left_button_down || (_cursor.delta.x == 0 && _cursor.delta.y == 0)) return ES_NOT_HANDLED;
+
+	w = _thd.GetCallbackWnd();
+
+	if (w != NULL) {
+		/* Send an event in client coordinates. */
+		Point pt;
+		pt.x = _cursor.pos.x - w->left;
+		pt.y = _cursor.pos.y - w->top;
+		w->OnMouseDrag(pt, GetWidgetFromPos(w, pt.x, pt.y));
+	}
+
+	return ES_HANDLED;
+}
+
+/**
  * Handle drop in mouse dragging mode (#WSM_DRAGDROP).
  * @return State of handling the event.
  */
@@ -1443,28 +1467,6 @@ static EventState HandleDragDrop()
 	}
 
 	ResetObjectToPlace();
-
-	return ES_HANDLED;
-}
-
-/**
- * Handle dragging in mouse dragging mode (#WSM_DRAGDROP).
- * @return State of handling the event.
- */
-static EventState HandleMouseDrag()
-{
-	if (_special_mouse_mode != WSM_DRAGDROP) return ES_NOT_HANDLED;
-	if (!_left_button_down || (_cursor.delta.x == 0 && _cursor.delta.y == 0)) return ES_NOT_HANDLED;
-
-	Window *w = _thd.GetCallbackWnd();
-
-	if (w != NULL) {
-		/* Send an event in client coordinates. */
-		Point pt;
-		pt.x = _cursor.pos.x - w->left;
-		pt.y = _cursor.pos.y - w->top;
-		w->OnMouseDrag(pt, GetWidgetFromPos(w, pt.x, pt.y));
-	}
 
 	return ES_HANDLED;
 }
