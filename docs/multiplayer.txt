@@ -1,9 +1,21 @@
-Multiplayer Manual for OpenTTD
-==============================
+Multiplayer manual for OpenTTD
+Last updated:    2010-11-30
+------------------------------------------------------------------------
 
-1. Starting a Server
----------------------
 
+Table of contents
+-----------------
+1.0) Starting a server
+2.0) Connecting to a server
+ * 2.1) Connecting to a server over the console
+3.0) Playing internet games
+4.0) Tips for servers
+5.0) Some useful things
+6.0) Troubleshooting
+
+
+1.0) Starting a server
+---- -----------------
  - Click "multiplayer" on the startup screen
  - Click "start server"
  - Type in a game name
@@ -14,9 +26,8 @@ Multiplayer Manual for OpenTTD
  - Start playing
 
 
-2. Connecting to a Server
---------------------------
-
+2.0) Connecting to a server
+---- ----------------------
  - Click "multiplayer" on the startup screen
 
  - If you want to connect to any network game in your LAN click on 'LAN', then
@@ -43,17 +54,14 @@ Multiplayer Manual for OpenTTD
 
  - Happy playing
 
-
-3. Connecting to a Server over the Console
--------------------------------------------
-
+2.1) Connecting to a server over the console
+---- ---------------------------------------
  - Open the console and type in the following command:
     connect <ip/host>:<port>#<company-no>
 
 
-4. Playing Internet-Games
---------------------------
-
+3.0) Playing internet games
+---- ----------------------
  - Servers with a red dot behind it have a different version then you have. You
    will not be able to join those servers.
 
@@ -83,9 +91,8 @@ Multiplayer Manual for OpenTTD
    NB: changing frame_freq has more effect on the bandwidth then sync_freq.
 
 
-5. Tips for servers
---------------------
-
+4.0) Tips for servers
+---- ----------------
  - You can launch a dedicated server by adding -D as parameter.
  - In UNIX like systems, you can fork your dedicated server by adding -f as
    parameter.
@@ -142,9 +149,8 @@ Multiplayer Manual for OpenTTD
        #max_clients * #max_clients * bytes_per_frame * 10 KiB.
 
 
-6. Some useful things
-----------------------
-
+5.0) Some useful things
+---- ------------------
  - You can protect your company so nobody else can join uninvited. To do this,
    set a password in your Company Screen
 
@@ -156,9 +162,8 @@ Multiplayer Manual for OpenTTD
  - Servers can now kick players, so don't make them use it!
 
 
-7. Troubleshooting
-------------------
-
+6.0) Troubleshooting
+---- ---------------
  - My advertising server does not show up in list at servers.openttd.org
      Run openttd with the '-d net=2' parameter, as this will show whether it
      receives replies from the master server. If it does not receive replies it

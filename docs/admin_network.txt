@@ -1,19 +1,23 @@
-Admin Network
-
-   Preface
-1. Joining the network
-2. Asking for updates
-3. Polling manually
-4. Sending rcon commands
-5. Sending chat
-6. Receiving chat
-7. Disconnecting
-8. Certain packet information
+OpenTTD's admin network
+Last updated:    2010-12-30
+------------------------------------------------------------------------
 
 
-   Preface
-----------
+Table of contents
+-----------------
+1.0) Preface
+2.0) Joining the network
+3.0) Asking for updates
+ * 3.1) Polling manually
+4.0) Sending rcon commands
+5.0) Sending chat
+ * 5.1) Receiving chat
+6.0) Disconnecting
+7.0) Certain packet information
 
+
+1.0) Preface
+---- -------
   The admin network provides a dedicated network protocol designed for other
   applications to communicate with OpenTTD. Connected applications can execute
   console commands remotely (rcon commands) with no further authentication.
@@ -33,12 +37,11 @@ Admin Network
   removed from packets in later versions, except the possibility that complete
   packets are dropped in favour of a new packet.
   This though will be reflected in the protocol version as announced in the
-  ADMIN_PACKET_SERVER_PROTOCOL in section 1.
+  ADMIN_PACKET_SERVER_PROTOCOL in section 2.0).
 
 
-1. Joining the network
-----------------------
-
+2.0) Joining the network
+---- -------------------
   Create a TCP connection to the server on port 3977. The application is
   expected to authenticate within 10 seconds.
 
@@ -68,9 +71,8 @@ Admin Network
   However, ADMIN_PACKET_SERVER_WELCOME only after a ADMIN_PACKET_SERVER_NEWGAME
 
 
-2. Asking for updates
----------------------
-
+3.0) Asking for updates
+---- ------------------
   Asking for updates is done with ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY.
   With this packet you define which update you wish to receive at which
   frequency.
@@ -116,9 +118,8 @@ Admin Network
   ADMIN_UPDATE_CMD_LOGGING results in the server sending:
     - ADMIN_PACKET_SERVER_CMD_LOGGING
 
-3. Polling manually
--------------------
-
+3.1) Polling manually
+---- ----------------
   Certain AdminUpdateTypes can also be polled:
     - ADMIN_UPDATE_DATE
     - ADMIN_UPDATE_CLIENT_INFO
@@ -138,9 +139,8 @@ Admin Network
   Additional debug information can be found with a debug level of net=3.
 
 
-4. Sending rcon commands
-------------------------
-
+4.0) Sending rcon commands
+---- ---------------------
   Rcon runs separate from the ADMIN_UPDATE_CONSOLE AdminUpdateType. Requesting
   the execution of a remote console command is done with the packet
   ADMIN_PACKET_ADMIN_RCON.
@@ -158,9 +158,8 @@ Admin Network
   was not sent from the admin network.
 
 
-5. Sending Chat
----------------
-
+5.0) Sending chat
+---- ------------
   Sending a ADMIN_PACKET_ADMIN_CHAT results in chat originating from the server.
 
   Currently four types of chat are supported:
@@ -173,10 +172,8 @@ Admin Network
   using the respective DestType and ID.
   This is a message prefixed with the 3 stars, e.g. *** foo has joined the game
 
-
-6. Receiving chat
------------------
-
+5.1) Receiving chat
+---- -------------
   Register ADMIN_UPDATE_CHAT at ADMIN_FREQUENCY_AUTOMATIC to receive chat.
   The application will be able to receive all chat the server can see.
 
@@ -184,16 +181,14 @@ Admin Network
   private chat for to the server is distributed into the admin network.
 
 
-7. Disconnecting
-----------------
-
+6.0) Disconnecting
+---- -------------
   It is a kind thing to say good bye before leaving. Do this by sending the
   ADMIN_PACKET_ADMIN_QUIT packet.
 
 
-8. Certain packet information
------------------------------
-
+7.0) Certain packet information
+---- --------------------------
   All ADMIN_PACKET_SERVER_* packets have an enum value greater 100.
 
   ADMIN_PACKET_SERVER_WELCOME
@@ -211,4 +206,3 @@ Admin Network
     treated as such. Do not rely on IDs or names to be constant
     across different versions / revisions of OpenTTD.
     Data provided in this packet is for logging purposes only.
-

@@ -1,18 +1,18 @@
 OpenTTD's known bugs
-Last updated:    2010-01-09
+Last updated:    2011-01-09
 Release version: 1.1.0-beta3
 ------------------------------------------------------------------------
 
 
-Table of Contents:
-------------------
-1) About
-2) Known bugs in this release
-3) Known bugs that will not be solved
+Table of contents
+-----------------
+1.0) About
+2.0) Known bugs in this release
+ * 2.1) Known bugs that will not be solved
 
 
-1) About:
--- ------
+1.0) About
+---- -----
 All bugs listed below are marked as known. Please do not submit any bugs
 that are the same as these. If you do, do not act surprised, because
 we WILL flame you!!
@@ -22,8 +22,8 @@ specifics, we welcome you to report them. React to the given bug indicated
 by the number below on http://bugs.openttd.org.
 
 
-2) Known bugs in this release:
--- ---------------------------
+2.0) Known bugs in this release
+---- --------------------------
 The following bugs are known to exist in this release and we intend to
 fix them. Some bugs are known but are not fixable or fixing them would
 cause further problems. Those bugs can be found in the "Known bugs that
@@ -43,9 +43,8 @@ these bugs ourselves.
 - 3447	[OSX] SDL port is unuseable
 - 2484	[OSX] Cannot enter CJK characters
 
-
-3) Known bugs that will not be solved:
--- -----------------------------------
+2.1) Known bugs that will not be solved
+---- ----------------------------------
 This section lists all known bugs that we do not intend to fix and the
 reasons why we think that fixing them is infeasible. We might make some
 minor improvements that reduce the scope of these bugs, but we will not

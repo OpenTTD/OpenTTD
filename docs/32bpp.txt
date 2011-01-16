@@ -1,15 +1,24 @@
 32bpp and OpenTTD
-=================
+Last updated:    2007-06-13
+------------------------------------------------------------------------
 
+
+Table of contents
+-----------------
+1.0) About
+2.0) The format
+
+
+1.0) About
+---- -----
 OpenTTD has 32bpp support. This means: OpenTTD still is 8bpp, but it has the
 posibility to override the graphics with 32bpp. This means that it isn't a
 replacement of grf or newgrf, but simply an addition. If you want to use 32bpp
 graphics of a newgrf, you do need the newgrf itself too (with 8bpp graphics).
 
 
-The Format
-----------
-
+2.0) The format
+---- ----------
 32bpp images are stored in PNG. They should go in:
   data/sprites/<grfname>/<SpriteID>.png
 
@@ -33,4 +42,3 @@ to add this information. Sadly enough most graphical editors trashes those
 chunks upon save, so you have to readd it every time you save your image.
 
 Your images should be the same as the grf, in size.
-

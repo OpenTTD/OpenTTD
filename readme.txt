@@ -1,34 +1,35 @@
-OpenTTD README
+OpenTTD readme
 Last updated:    2011-01-09
 Release version: 1.1.0-beta3
 ------------------------------------------------------------------------
 
 
-Table of Contents:
-------------------
+Table of contents
+-----------------
 1.0) About
 2.0) Contacting
- * 2.1 Reporting Bugs
- * 2.2 Reporting Desyncs
-3.0) Supported Platforms
+ * 2.1) Reporting bugs
+ * 2.2) Reporting desyncs
+3.0) Supported platforms
 4.0) Installing and running OpenTTD
- * 4.1 (Required) 3rd party files
- * 4.2 OpenTTD directories
- * 4.3 Portable Installations (External Media)
+ * 4.1) (Required) 3rd party files
+ * 4.2) OpenTTD directories
+ * 4.3) Portable installations (portable media)
 5.0) OpenTTD features
-6.0) Configuration File
+ * 5.1) Logging of potentially dangerous actions
+6.0) Configuration file
 7.0) Compiling
  * 7.1) Required/optional libraries
  * 7.2) Supported compilers
 8.0) Translating
- * 8.1 Translation
- * 8.2 Previewing
+ * 8.1) Translation
+ * 8.2) Previewing
 9.0) Troubleshooting
 X.X) Credits
 
 
-1.0) About:
----- ------
+1.0) About
+---- -----
 OpenTTD is a transport simulation game based upon the popular game Transport
 Tycoon Deluxe, written by Chris Sawyer. It attempts to mimic the original
 game as closely as possible while extending it with new features.
@@ -36,7 +37,8 @@ game as closely as possible while extending it with new features.
 OpenTTD is licensed under the GNU General Public License version 2.0. For
 more information, see the file 'COPYING'.
 
-2.0) Contacting:
+
+2.0) Contacting
 ---- ----------
 The easiest way to contact the OpenTTD team is by submitting bug reports or
 posting comments in our forums. You can also chat with us on IRC (#openttd
@@ -47,9 +49,8 @@ The OpenTTD homepage is http://www.openttd.org/.
 You can also find the OpenTTD forums at
 http://forum.openttd.org/
 
-
-2.1) Reporting Bugs:
----- ---------------
+2.1) Reporting bugs
+---- --------------
 First of all, check whether the bug is not already known. Do this by looking
 through the file called 'known-bugs.txt' which is distributed with OpenTTD
 like this readme.
@@ -87,8 +88,8 @@ following information in your bug report:
  * Attach crash.dmp, crash.log and crash.sav. These files are usually created
    next to your openttd.cfg. The crash handler will tell you the location.
 
-2.2) Reporting Desyncs:
----- ------------------
+2.2) Reporting desyncs
+---- -----------------
 As desyncs are hard to make reproducible OpenTTD has the ability to log all
 actions done by clients so we can replay the whole game in an effort to make
 desyncs better reproducible. You need to turn this ability on. When turned
@@ -140,8 +141,9 @@ Do NOT remove the dmp_cmds savegames of a desync you have reported until the
 desync has been fixed; if you, by accident, send us the wrong savegames we
 will not be able to reproduce the desync and thus will be unable to fix it.
 
-3.0) Supported Platforms:
----- --------------------
+
+3.0) Supported platforms
+---- -------------------
 OpenTTD has been ported to several platforms and operating systems. It shouldn't
 be very difficult to port it to a new platform. The currently working platforms
 are:
@@ -157,9 +159,8 @@ are:
   Windows              - Win32 GDI (faster) or SDL or Allegro
 
 
-4.0) Installing and running OpenTTD:
----- -------------------------------
-
+4.0) Installing and running OpenTTD
+---- ------------------------------
 Installing OpenTTD is fairly straightforward. Either you have downloaded an
 archive which you have to extract to a directory where you want OpenTTD to
 be installed, or you have downloaded an installer, which will automatically
@@ -186,9 +187,8 @@ automatically selected (and downloaded) if you get the AIs via the "Check
 Online Content". If you do not have an AI but have configured OpenTTD to start
 an AI a message will be shown that the 'dummy' AI has been started.
 
-4.1) (Required) 3rd party files:
----- ---------------------------
-
+4.1) (Required) 3rd party files
+---- --------------------------
 Before you run OpenTTD, you need to put the game's data files into a data/
 directory which can be located in various places addressed in the following
 section.
@@ -248,8 +248,7 @@ wait for an error message to pop up. The error message will tell you
 "couldn't find library 'lib-name'". Download that library and try again.
 
 4.2) OpenTTD directories
----- -------------------------------
-
+---- -------------------
 The required 3rd party files listed in the section 4.1 "(Required) 3rd party files"
 as well as other non-compulsory extensions (NewGRFs, AI, heightmaps, scenarios) can be
 placed in a few different locations:
@@ -289,10 +288,8 @@ Place 3rd party files in shared directory (or in personal directory if you don't
 have write access on shared directory) and have your openttd.cfg config file in
 personal directory (where the game will then also place savegames and screenshots).
 
-
-4.3) Portable Installations (External Media):
----- ----------------------------------------
-
+4.3) Portable installations (portable media)
+---- ---------------------------------------
 You can install OpenTTD on external media so you can take it with you, i.e.
 using a USB key, or a USB HDD, etc.
 Create a directory where you shall store the game in (i.e. OpenTTD/).
@@ -305,9 +302,8 @@ As always - additional grf files are stored in the data/ dir (for details,
 again, see section 4.1).
 
 
-5.0) OpenTTD features:
----- -----------------
-
+5.0) OpenTTD features
+---- ----------------
 OpenTTD has a lot of features going beyond the original Transport Tycoon Deluxe
 emulation. Unfortunately, there is currently no comprehensive list of features,
 but there is a basic features list on the web, and some optional features can be
@@ -326,10 +322,8 @@ Several important non-standard controls:
 * Hovering over a GUI element shows tooltips. This can be changed to right click
   via the advanced settings.
 
-
-5.1) Logging of potentially dangerous actions:
+5.1) Logging of potentially dangerous actions
 ---- ----------------------------------------
-
 OpenTTD is a complex program, and together with NewGRF, it may show a buggy
 behaviour. But not only bugs in code can cause problems. There are several
 ways to affect game state possibly resulting in program crash or multiplayer
@@ -358,8 +352,8 @@ You can show the game log by typing 'gamelog' in the console or by running
 OpenTTD in debug mode.
 
 
-6.0) Configuration File:
----- -------------------
+6.0) Configuration file
+---- ------------------
 The configuration file for OpenTTD (openttd.cfg) is in a simple Windows-like
 .INI format. It's mostly undocumented. Almost all settings can be changed
 ingame by using the 'Advanced Settings' window.
@@ -368,8 +362,8 @@ described in section 4.2. If you do not have an openttd.cfg OpenTTD will
 create one after closing.
 
 
-7.0) Compiling:
----- ----------
+7.0) Compiling
+---- ---------
 Windows:
   You need Microsoft Visual Studio .NET. Open the project file
   and it should build automatically. In case you want to build with SDL support
@@ -421,8 +415,8 @@ DOS:
   will be generated that does not need cwsdpmi.exe by adding the cswdstub.exe
   to the created OpenTTD binary.
 
-7.1) Required/optional libraries:
----- -------------------
+7.1) Required/optional libraries
+---- ---------------------------
 The following libraries are used by OpenTTD for:
   - libSDL/liballegro: hardware access (video, sound, mouse)
   - zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads, heightmaps
@@ -446,7 +440,7 @@ GRFCodec can be found at: http://www.openttd.org/download-grfcodec
 The compilation of these extra graphics does generally not happen, unless
 you remove the graphics file using "make maintainer-clean".
 
-7.2) Supported compilers:
+7.2) Supported compilers
 ---- -------------------
 The following compilers are known to compile OpenTTD:
   - Microsoft Visual C++ (MSVC) 2005, 2008 and 2010.
@@ -470,8 +464,9 @@ The following compilers are known not to compile OpenTTD:
 If any of these compilers can compile OpenTTD again, please let us know.
 Patches to support more compilers are welcome.
 
-8.0) Translating:
----- -------------------
+
+8.0) Translating
+---- -----------
 See http://www.openttd.org/development for up-to-date information.
 
 The use of the online Translator service, located at
@@ -485,8 +480,8 @@ Please contact the translations manager (http://www.openttd.org/contact)
 before beginning the translation process! This avoids double work, as
 someone else may have already started translating to the same language.
 
-8.1) Translation:
----- -------------------
+8.1) Translation
+---- -----------
 So, now that you've notified the development team about your intention to
 translate (You did, right? Of course you did.) you can pick up english.txt
 (found in the SVN repository under /src/lang) and translate.
@@ -503,8 +498,8 @@ Note: Do not alter the following parts of the file:
     * Lines beginning with ## (such as ##id), other than the first two lines of
       the file
 
-8.2) Previewing:
----- -------------------
+8.2) Previewing
+---- ----------
 In order to view the translation in the game, you need to compile your language
 file with the strgen utility. You can download the precompiled strgen from:
 http://www.openttd.org/download-strgen
@@ -523,9 +518,9 @@ should also be.
 
 That's all! You should now be able to select the language in the game options.
 
+
 9.0) Troubleshooting
 ---- ---------------
-
 To see all startup options available to you, start OpenTTD with the
 "./openttd -h" option. This might help you tweak some of the settings.
 
@@ -558,8 +553,9 @@ will be output to the console at the moment, so use the '-d' flag (on windows)
 to see this list. You just have to find the files (http://grfcrawler.tt-forums.net/)
 put them in the data/ folder and you're set to go.
 
-X.X) Credits:
----- --------
+
+X.X) Credits
+---- -------
 The OpenTTD team (in alphabetical order):
   Albert Hofkamp (Alberth)       - GUI expert
   Jean-François Claeys (Belugas) - GUI, newindustries and more

@@ -1,5 +1,17 @@
-STRGEN USAGE
-------------
+OpenTTD and strgen
+Last updated:    2009-06-30
+------------------------------------------------------------------------
+
+
+Table of contents
+-----------------
+1.0) strgen usage
+ * 1.1) Examples
+ * 1.2) strgen command switches
+
+
+1.0) strgen usage
+---- ------------
 This guide is only interesting for people who want to alter something
 themselves without access to translator.openttd.org. Please note that
 your compiled language file will only be compatible with the OpenTTD version
@@ -14,8 +26,8 @@ strgen takes as argument a txt file and translates it to a lng file, allowing
 it to be used inside OpenTTD. strgen needs the master language file
 english.txt to work. Below are some examples of strgen usage.
 
-EXAMPLES
---------
+1.1) Examples
+---- --------
 Example 1:
 if you are in the root of your working copy (svn code), you should type
 strgen/strgen -s lang lang/english.txt
@@ -35,8 +47,8 @@ resulting language file to go to /tmp. Use
 You can interchange english.txt to whichever language you want to generate a
 .lng file for.
 
-STRGEN COMMAND SWITCHES
------------------------
+1.2) strgen command switches
+---- -----------------------
 -v | --version
 strgen will tell what svn revision it was last modified
 
