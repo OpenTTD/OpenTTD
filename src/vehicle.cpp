@@ -1468,7 +1468,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 	assert(IsCompanyBuildableVehicleType(type));
 
 	if (!Company::IsValidID(_local_company)) return false;
-	if (_settings_client.gui.always_build_infrastructure) return true;
+	if (!_settings_client.gui.disable_unsuitable_building) return true;
 
 	UnitID max;
 	switch (type) {

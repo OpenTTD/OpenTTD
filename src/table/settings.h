@@ -598,7 +598,7 @@ const SettingDesc _settings[] = {
 	 SDTC_BOOL(gui.vehicle_income_warn,                  S,  0,  true,                        STR_CONFIG_SETTING_WARN_INCOME_LESS,            NULL),
 	  SDTC_VAR(gui.order_review_system,       SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_SETTING_ORDER_REVIEW,                NULL),
 	 SDTC_BOOL(gui.lost_vehicle_warn,                    S,  0,  true,                        STR_CONFIG_SETTING_WARN_LOST_VEHICLE,           NULL),
-	 SDTC_BOOL(gui.always_build_infrastructure,          S,  0, false,                        STR_CONFIG_SETTING_ALWAYS_BUILD_INFRASTRUCTURE, RedrawScreen),
+	 SDTC_BOOL(gui.disable_unsuitable_building,          S,  0,  true,                        STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING, RedrawScreen),
 	 SDTC_BOOL(gui.new_nonstop,                          S,  0, false,                        STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT,          NULL),
 	  SDTC_VAR(gui.stop_location,             SLE_UINT8, S, MS,     2,        0,        2, 1, STR_CONFIG_SETTING_STOP_LOCATION,               NULL),
 	 SDTC_BOOL(gui.keep_all_autosave,                    S,  0, false,                        STR_NULL,                                       NULL),

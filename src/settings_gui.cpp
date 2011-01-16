@@ -1315,7 +1315,7 @@ static SettingEntry _settings_ui[] = {
 	SettingEntry("gui.timetable_arrival_departure"),
 	SettingEntry("gui.quick_goto"),
 	SettingEntry("gui.default_rail_type"),
-	SettingEntry("gui.always_build_infrastructure"),
+	SettingEntry("gui.disable_unsuitable_building"),
 	SettingEntry("gui.persistent_buildingtools"),
 	SettingEntry("gui.coloured_news_year"),
 };
