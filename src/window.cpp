@@ -1424,15 +1424,15 @@ static void HandlePlacePresize()
 }
 
 /**
- * Handle dragging in mouse dragging mode (#WSM_DRAGDROP).
+ * Handle dragging and dropping in mouse dragging mode (#WSM_DRAGDROP).
  * @return State of handling the event.
  */
-static EventState HandleMouseDrag()
+static EventState HandleMouseDragDrop()
 {
 	Window *w;
 
-	if (_special_mouse_mode != WSM_DRAGDROP) return ES_NOT_HANDLED;
-	if (!_left_button_down || (_cursor.delta.x == 0 && _cursor.delta.y == 0)) return ES_NOT_HANDLED;
+	if (_special_mouse_mode != WSM_DRAGDROP) goto handle_dragdop;
+	if (!_left_button_down || (_cursor.delta.x == 0 && _cursor.delta.y == 0)) goto handle_dragdop;
 
 	w = _thd.GetCallbackWnd();
 
@@ -1445,18 +1445,12 @@ static EventState HandleMouseDrag()
 	}
 
 	return ES_HANDLED;
-}
 
-/**
- * Handle drop in mouse dragging mode (#WSM_DRAGDROP).
- * @return State of handling the event.
- */
-static EventState HandleDragDrop()
-{
+handle_dragdop:
 	if (_special_mouse_mode != WSM_DRAGDROP) return ES_NOT_HANDLED;
 	if (_left_button_down) return ES_HANDLED;
 
-	Window *w = _thd.GetCallbackWnd();
+	w = _thd.GetCallbackWnd();
 
 	if (w != NULL) {
 		/* send an event in client coordinates. */
@@ -2178,8 +2172,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	UpdateTileSelection();
 
 	if (VpHandlePlaceSizingDrag()  == ES_HANDLED) return;
-	if (HandleMouseDrag()          == ES_HANDLED) return;
-	if (HandleDragDrop()           == ES_HANDLED) return;
+	if (HandleMouseDragDrop()      == ES_HANDLED) return;
 	if (HandleWindowDragging()     == ES_HANDLED) return;
 	if (HandleScrollbarScrolling() == ES_HANDLED) return;
 	if (HandleViewportScroll()     == ES_HANDLED) return;
