@@ -8,7 +8,7 @@
 ##decimalsep ,
 ##winlangid 0x0c0a
 ##grflangid 0x04
-##gender masculino femenino
+##gender m f
 
 
 # $Id$
