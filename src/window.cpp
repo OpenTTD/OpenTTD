@@ -1431,8 +1431,10 @@ static EventState HandleMouseDragDrop()
 {
 	Window *w;
 
-	if (_special_mouse_mode != WSM_DRAGDROP) goto handle_dragdop;
-	if (!_left_button_down || (_cursor.delta.x == 0 && _cursor.delta.y == 0)) goto handle_dragdop;
+	if (_special_mouse_mode != WSM_DRAGDROP) return ES_NOT_HANDLED;
+
+	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return ES_HANDLED; // Dragging, but the mouse did not move.
+	if (!_left_button_down) goto handle_dragdop;
 
 	w = _thd.GetCallbackWnd();
 
@@ -1447,9 +1449,6 @@ static EventState HandleMouseDragDrop()
 	return ES_HANDLED;
 
 handle_dragdop:
-	if (_special_mouse_mode != WSM_DRAGDROP) return ES_NOT_HANDLED;
-	if (_left_button_down) return ES_HANDLED;
-
 	w = _thd.GetCallbackWnd();
 
 	if (w != NULL) {
