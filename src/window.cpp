@@ -1429,38 +1429,24 @@ static void HandlePlacePresize()
  */
 static EventState HandleMouseDragDrop()
 {
-	Window *w;
-
 	if (_special_mouse_mode != WSM_DRAGDROP) return ES_NOT_HANDLED;
 
 	if (_left_button_down && _cursor.delta.x == 0 && _cursor.delta.y == 0) return ES_HANDLED; // Dragging, but the mouse did not move.
-	if (!_left_button_down) goto handle_dragdop;
 
-	w = _thd.GetCallbackWnd();
-
+	Window *w = _thd.GetCallbackWnd();
 	if (w != NULL) {
 		/* Send an event in client coordinates. */
 		Point pt;
 		pt.x = _cursor.pos.x - w->left;
 		pt.y = _cursor.pos.y - w->top;
-		w->OnMouseDrag(pt, GetWidgetFromPos(w, pt.x, pt.y));
+		if (_left_button_down) {
+			w->OnMouseDrag(pt, GetWidgetFromPos(w, pt.x, pt.y));
+		} else {
+			w->OnDragDrop(pt, GetWidgetFromPos(w, pt.x, pt.y));
+		}
 	}
 
-	return ES_HANDLED;
-
-handle_dragdop:
-	w = _thd.GetCallbackWnd();
-
-	if (w != NULL) {
-		/* send an event in client coordinates. */
-		Point pt;
-		pt.x = _cursor.pos.x - w->left;
-		pt.y = _cursor.pos.y - w->top;
-		w->OnDragDrop(pt, GetWidgetFromPos(w, pt.x, pt.y));
-	}
-
-	ResetObjectToPlace();
-
+	if (!_left_button_down) ResetObjectToPlace(); // Button released, finished dragging.
 	return ES_HANDLED;
 }
 
