@@ -1,5 +1,5 @@
 OpenTTD's known bugs
-Last updated:    2011-01-09
+Last updated:    2011-01-17
 Release version: 1.1.0-beta3
 ------------------------------------------------------------------------
 
@@ -267,3 +267,21 @@ Pre- and exit signals are not dragged [FS#4378]
 	one entry or exit signal in a row are useful. This is different
 	for all other signal types where several in a row can serve one
 	purpose or another.
+
+Station build date is incorrect [FS#4415]
+	The tile query tool will show the date of the last (re)construction
+	at the station and not the date of the first construction. This is
+	due to compatability reasons with NewGRFs and the fact that it is
+	wrong to say that the station is built in a particular year when it
+	was completely destroyed/rebuilt later on.
+	The tile query tool can be fixed by changing the "Build date" text
+	to "Date at which the last (re)construction took place" but this is
+	deemed too specific and long for that window.
+
+Can't change volume inside OpenTTD [FS#4416]
+	Some backends do not provide a means to change the volume of sound
+	effects or music. The mixing of music and sound is left to external
+	libraries/the operating system we can't handle the volume control
+	in OpenTTD. As a result you can't change the volume inside OpenTTD
+	for backends such as SDL; just use the volume control provided by
+	your operating system.
