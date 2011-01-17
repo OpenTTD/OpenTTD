@@ -57,35 +57,33 @@ static int _smallmap_company_count;  ///< Number of entries in the owner legend.
 static const int NUM_NO_COMPANY_ENTRIES = 4; ///< Number of entries in the owner legend that are not companies.
 
 /** Macro for ordinary entry of LegendAndColour */
-#define MK(a, b) {a, b, {INVALID_INDUSTRYTYPE}, true, false, false}
+#define MK(a, b) {a, b, INVALID_INDUSTRYTYPE, 0, INVALID_COMPANY, true, false, false}
 
 /** Macro for a height legend entry with configurable colour. */
-#define MC(height)  {0, STR_TINY_BLACK_HEIGHT, {height}, true, false, false}
+#define MC(height)  {0, STR_TINY_BLACK_HEIGHT, INVALID_INDUSTRYTYPE, height, INVALID_COMPANY, true, false, false}
 
 /** Macro for non-company owned property entry of LegendAndColour */
-#define MO(a, b) {a, b, {INVALID_COMPANY}, true, false, false}
+#define MO(a, b) {a, b, INVALID_INDUSTRYTYPE, 0, INVALID_COMPANY, true, false, false}
 
 /** Macro used for forcing a rebuild of the owner legend the first time it is used. */
-#define MOEND() {0, 0, {OWNER_NONE}, true, true, false}
+#define MOEND() {0, 0, INVALID_INDUSTRYTYPE, 0, OWNER_NONE, true, true, false}
 
 /** Macro for end of list marker in arrays of LegendAndColour */
-#define MKEND() {0, STR_NULL, {INVALID_INDUSTRYTYPE}, true, true, false}
+#define MKEND() {0, STR_NULL, INVALID_INDUSTRYTYPE, 0, INVALID_COMPANY, true, true, false}
 
 /**
  * Macro for break marker in arrays of LegendAndColour.
  * It will have valid data, though
  */
-#define MS(a, b) {a, b, {INVALID_INDUSTRYTYPE}, true, false, true}
+#define MS(a, b) {a, b, INVALID_INDUSTRYTYPE, 0, INVALID_COMPANY, true, false, true}
 
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
 	uint8 colour;              ///< Colour of the item on the map.
 	StringID legend;           ///< String corresponding to the coloured item.
-	union {
-		IndustryType type;     ///< Type of industry.
-		uint8 height;          ///< Height in tiles.
-		CompanyID company;     ///< Company to display.
-	} u;
+	IndustryType type;         ///< Type of industry. Only valid for industry entries.
+	uint8 height;              ///< Height in tiles. Only valid for height legend entries.
+	CompanyID company;         ///< Company to display. Only valid for company entries of the owner legend.
 	bool show_on_map;          ///< For filtering industries, if \c true, industry is shown on the map in colour.
 	bool end;                  ///< This is the end of the list.
 	bool col_break;            ///< Perform a column break and go further at the next column.
@@ -190,7 +188,7 @@ void BuildIndustriesLegend()
 		if (indsp->enabled) {
 			_legend_from_industries[j].legend = indsp->name;
 			_legend_from_industries[j].colour = indsp->map_colour;
-			_legend_from_industries[j].u.type = ind;
+			_legend_from_industries[j].type = ind;
 			_legend_from_industries[j].show_on_map = true;
 			_legend_from_industries[j].col_break = false;
 			_legend_from_industries[j].end = false;
@@ -297,7 +295,7 @@ static const SmallMapColourScheme _heightmap_schemes[] = {
 void BuildLandLegend()
 {
 	for (LegendAndColour *lc = _legend_land_contours; lc->legend == STR_TINY_BLACK_HEIGHT; lc++) {
-		lc->colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[lc->u.height];
+		lc->colour = _heightmap_schemes[_settings_client.gui.smallmap_land_colour].height_colours[lc->height];
 	}
 }
 
@@ -312,7 +310,7 @@ void BuildOwnerLegend()
 	const Company *c;
 	FOR_ALL_COMPANIES(c) {
 		_legend_land_owners[i].colour = _colour_gradient[c->colour][5];
-		_legend_land_owners[i].u.company = c->index;
+		_legend_land_owners[i].company = c->index;
 		_legend_land_owners[i].show_on_map = true;
 		_legend_land_owners[i].col_break = false;
 		_legend_land_owners[i].end = false;
@@ -1111,15 +1109,15 @@ public:
 					SetDParam(1, IndustryPool::MAX_SIZE);
 					str = STR_SMALLMAP_INDUSTRY;
 				} else if (i == SMT_OWNER) {
-					if (tbl->u.company != INVALID_COMPANY) {
-						if (!Company::IsValidID(tbl->u.company)) {
+					if (tbl->company != INVALID_COMPANY) {
+						if (!Company::IsValidID(tbl->company)) {
 							/* Rebuild the owner legend. */
 							BuildOwnerLegend();
 							this->OnInit();
 							return;
 						}
 						/* Non-fixed legend entries for the owner view. */
-						SetDParam(0, tbl->u.company);
+						SetDParam(0, tbl->company);
 						str = STR_SMALLMAP_COMPANY;
 					} else {
 						str = tbl->legend;
@@ -1147,7 +1145,7 @@ public:
 	{
 		if (this->map_type == SMT_OWNER) {
 			for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
-				if (tbl->u.company != INVALID_COMPANY && !Company::IsValidID(tbl->u.company)) {
+				if (tbl->company != INVALID_COMPANY && !Company::IsValidID(tbl->company)) {
 					/* Rebuild the owner legend. */
 					BuildOwnerLegend();
 					this->InvalidateData(1);
@@ -1197,7 +1195,7 @@ public:
 						/* Industry name must be formatted, since it's not in tiny font in the specs.
 						 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font */
 						SetDParam(0, tbl->legend);
-						SetDParam(1, Industry::GetIndustryTypeCount(tbl->u.type));
+						SetDParam(1, Industry::GetIndustryTypeCount(tbl->type));
 						if (!tbl->show_on_map) {
 							/* Simply draw the string, not the black border of the legend colour.
 							 * This will enforce the idea of the disabled item */
@@ -1206,8 +1204,8 @@ public:
 							DrawString(x + text_left, x + text_right, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
 							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0); // Outer border of the legend colour
 						}
-					} else if (this->map_type == SMT_OWNER && tbl->u.company != INVALID_COMPANY) {
-						SetDParam(0, tbl->u.company);
+					} else if (this->map_type == SMT_OWNER && tbl->company != INVALID_COMPANY) {
+						SetDParam(0, tbl->company);
 						if (!tbl->show_on_map) {
 							/* Simply draw the string, not the black border of the legend colour.
 							 * This will enforce the idea of the disabled item */
@@ -1217,7 +1215,7 @@ public:
 							GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0); // Outer border of the legend colour
 						}
 					} else {
-						if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->u.height * TILE_HEIGHT_STEP);
+						if (this->map_type == SMT_CONTOUR) SetDParam(0, tbl->height * TILE_HEIGHT_STEP);
 
 						/* Anything that is not an industry or a company is using normal process */
 						GfxFillRect(x + blob_left, y + 1, x + blob_right, y + row_height - 1, 0);
@@ -1443,7 +1441,7 @@ public:
 				if (this->map_type != SMT_INDUSTRY) this->SwitchMapType(SMT_INDUSTRY);
 
 				for (int i = 0; i != _smallmap_industry_count; i++) {
-					_legend_from_industries[i].show_on_map = HasBit(_displayed_industries, _legend_from_industries[i].u.type);
+					_legend_from_industries[i].show_on_map = HasBit(_displayed_industries, _legend_from_industries[i].type);
 				}
 				break;
 			}
