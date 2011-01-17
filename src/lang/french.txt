@@ -1248,6 +1248,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Affiche
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Conserver les outils de construction actifs après usage{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Regrouper les dépenses dans la fenêtre des finances{NBSP}: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Désactiver la construction d'infrastructure lorsqu'il n'y a pas de véhicule adapté disponible{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Nombre maximum de trains par compagnie{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Nombre maximum de véhicules routiers par compagnie{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Nombre maximum d'aéronefs par compagnie{NBSP}: {ORANGE}{STRING}
@@ -2425,6 +2426,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramèt
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Pas d'informations disponibles
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fichier correspondant non trouvé
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Désactivé
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatible avec cette version d'OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Entrer les paramètres NewGRF
 

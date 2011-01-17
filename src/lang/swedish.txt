@@ -1162,8 +1162,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Förnya
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Förnya automatiskt fordon {ORANGE}{STRING}{LTBLUE} månad{P 0:1 "" er} före/efter maximal ålder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minst mängd pengar för auto-förnyelse av fordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING} sekund{P 0:1 "" er}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Fördröjning av hover event: {ORANGE}{STRING} sekund{P 0:1 "" er}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Fördröjning av hover event: {ORANGE}avstängd
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Visa tooltips: {ORANGE}Efter {STRING} sekund{P 0:1 "" er}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Visa tooltips: {ORANGE}högerklicka
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Visa invånarantal i stadsnamnet: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING}
@@ -1247,6 +1247,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Visa re
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Håll byggnadsverktyg aktiva efter att de använts: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Gruppera utgifter i företagets finansfönster: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Inaktivera byggande av infrastruktur när inga passande fordon är tillgängliga: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Max antal vägfordon per företag: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Max antal luftfarkoster per företag: {ORANGE}{STRING}

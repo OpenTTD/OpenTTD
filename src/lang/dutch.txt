@@ -1162,8 +1162,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Vernieu
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Vernieuw voertuig automatisch {ORANGE}{STRING}{LTBLUE} maand{P 0:1 "" en} voor/na max. leeftijd
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Minimum benodigd geld voor automatisch vernieuwen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING} seconde{P 0:1 "" n}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Vertraging muis-over: {ORANGE}{STRING} seconde{P 0:1 "" n}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Vertraging muis-over: {ORANGE}uit
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Toon tooltips: {ORANGE}Muis-over voor {STRING} seconde{P 0:1 "" n}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Toon tooltips: {ORANGE}Rechts klikken
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Geef het inwoneraantal bij een stad weer: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landgenerator: {ORANGE}{STRING}
@@ -1247,6 +1247,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Toon ge
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hou bouwgereedschappen actief na gebruik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Groepeer uitgaven in bedrijfsfinanciënscherm: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Bouwen van infrstructuur uitschakelen wanneer geen geschikt voertuig beschikbaar is: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per bedrijf: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximaal aantal wegvoertuigen per bedrijf: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximaal aantal vliegtuigen per bedrijf: {ORANGE}{STRING}
@@ -2424,6 +2425,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramete
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Geen informatie beschikbaar
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Bestand niet gevonden
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Uitgeschakeld
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Niet compatible met deze versie van OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-parameters ingeven
 

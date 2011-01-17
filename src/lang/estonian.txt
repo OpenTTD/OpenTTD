@@ -1304,6 +1304,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Varunda
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Ehitustööriistad pärast kasutamist tegusad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Kulutuste rühmitamine ettevõtte finantsaknas: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Blokeeri infrastruktuuri ehitamine kui sobivad sõidukid puuduvad: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Enim ronge ettevõtte kohta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Enim mootorsõidukeid ettevõtte kohta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Enim õhusõidukeid ettevõtte kohta: {ORANGE}{STRING}
@@ -2565,6 +2566,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Puuduvad f
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}' käitumine põhjustab tõenäoliselt sünkrooni katkemisi ja/või mängu kokkujooksmiseid.
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}See muutis sõiduki '{1:ENGINE}' vedavate vagunite olekut väljaspool depood
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Depoost väljas asudes on sõiduki '{1:ENGINE}' pikkus muudetud.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Ettevõtte '{1:COMPANY}' rongil '{0:VEHICLE}' on ebasobiv pikkus. See on tõenäoliselt põhjustatud problemaatilistest NewGRF-dest. Mäng võib kokku joosta või sünkroonist välja minna
 
@@ -3350,6 +3352,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Lülita 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Sõiduplaan - esiletõstmiseks klõpsa sihtpunktil
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sõitu pole
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reisi (automaatne; ajakava järgmise manuaalse käsu järgi)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Sõitmine (sõiduplaanita)
 STR_TIMETABLE_TRAVEL_FOR                                        :Sõida {STRING}
 STR_TIMETABLE_STAY_FOR                                          :ja oota {STRING}

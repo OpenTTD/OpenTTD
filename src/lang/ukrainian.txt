@@ -447,7 +447,7 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Пере
 # Extra tooltips for the scenario editor toolbar
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Зберегти сценарій, завантажити сценарій, вийти з редактору сценарію, вихід
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор сценарію
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор сценаріїв
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Перенести початкову дату на 1 рік назад
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Перенести початкову дату на 1 рік вперед
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Натисніть, щоб ввести рік початку
@@ -1156,15 +1156,15 @@ STR_NUM_VERY_LOW                                                :дуже мал
 STR_NUM_LOW                                                     :мало
 STR_NUM_NORMAL                                                  :нормально
 STR_NUM_HIGH                                                    :багато
-STR_NUM_CUSTOM                                                  :Власні
-STR_NUM_CUSTOM_NUMBER                                           :Вибірковий ({NUM})
+STR_NUM_CUSTOM                                                  :вибірково
+STR_NUM_CUSTOM_NUMBER                                           :вибірково ({NUM})
 
-STR_VARIETY_NONE                                                :Нема
-STR_VARIETY_VERY_LOW                                            :Дуже низька
-STR_VARIETY_LOW                                                 :Низька
-STR_VARIETY_MEDIUM                                              :Середня
-STR_VARIETY_HIGH                                                :Велика
-STR_VARIETY_VERY_HIGH                                           :Дуже велика
+STR_VARIETY_NONE                                                :немає
+STR_VARIETY_VERY_LOW                                            :дуже мало
+STR_VARIETY_LOW                                                 :мало
+STR_VARIETY_MEDIUM                                              :нормально
+STR_VARIETY_HIGH                                                :багато
+STR_VARIETY_VERY_HIGH                                           :дуже багато
 
 STR_AI_SPEED_VERY_SLOW                                          :дуже повільна
 STR_AI_SPEED_SLOW                                               :повільна
@@ -1172,10 +1172,10 @@ STR_AI_SPEED_MEDIUM                                             :середня
 STR_AI_SPEED_FAST                                               :швидка
 STR_AI_SPEED_VERY_FAST                                          :дуже швидка
 
-STR_SEA_LEVEL_VERY_LOW                                          :дуже мало
-STR_SEA_LEVEL_LOW                                               :мало
-STR_SEA_LEVEL_MEDIUM                                            :середньо
-STR_SEA_LEVEL_HIGH                                              :багато
+STR_SEA_LEVEL_VERY_LOW                                          :дуже низький
+STR_SEA_LEVEL_LOW                                               :низький
+STR_SEA_LEVEL_MEDIUM                                            :середній
+STR_SEA_LEVEL_HIGH                                              :високий
 STR_SEA_LEVEL_CUSTOM                                            :Вибірковий
 STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Вибірковий ({NUM}%)
 
@@ -1292,19 +1292,19 @@ STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Зат�
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Показувати населення міста поруч з назвою: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Генератор ландшафту: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Класичний
-STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :ТерраГен
+STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :класичний
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. віддаленість від краю для нафтових свердловин {ORANGE}{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Висота рівня снігу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Нерівність землі (лише для TerraGenesis) : {ORANGE}{STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Дуже гладкий
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубий
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Дуже грубий
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :дуже гладкий
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :гладкий
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :грубий
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :дуже грубий
 STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Алгоритм насадження дерев: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Немає
-STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Класичний
-STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Покращений
+STR_CONFIG_SETTING_TREE_PLACER_NONE                             :немає
+STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :класичне
+STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :покращене
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Обертання карти висот: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Проти годинникової
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :За годинниковою
@@ -1372,6 +1372,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Пок�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Залишити інструменти активними після використання: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Групувати витрати у вікні фінансів компанії: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Вимкнути побудову інфраструктури, якщо до неї немає відповідного транспорту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Макс. поїздів у гравця: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Макс. авто у гравця: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Макс. літаків у гравця: {ORANGE}{STRING}
@@ -1447,11 +1448,11 @@ STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}При�
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}М'який ліміт вікна (не прилипає): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}М'який ліміт вікна (не прилипає): {ORANGE}нема
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Швидкість росту міста: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Немає
-STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Повільна
-STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Середня
-STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Швидка
-STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Дуже швидка
+STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :немає
+STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :повільна
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :середня
+STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :швидка
+STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :дуже швидка
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :{LTBLUE}Кількість міст, які будуть рости вдвічі швидше: {ORANGE}1 з {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :{LTBLUE}Кількість міст, які будуть рости вдвічі швидше: {ORANGE}нема
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Початковий коефіцієнт розміру міст: {ORANGE}{STRING}
@@ -1494,8 +1495,8 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 STR_INTRO_NEW_GAME                                              :{BLACK}Нова гра
 STR_INTRO_LOAD_GAME                                             :{BLACK}Завантажити гру
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Грати за сценарієм
-STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Грати з карти висот
-STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Редактор сценарію
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Грати з картою висот
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Редактор сценаріїв
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Мережева гра
 
 STR_INTRO_GAME_OPTIONS                                          :{BLACK}Налаштування гри
@@ -2454,7 +2455,7 @@ STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ланд
 STR_MAPGEN_TREE_PLACER                                          :{BLACK}Насадження дерев:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафту:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Рівень моря:
-STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Згладжений:
+STR_MAPGEN_SMOOTHNESS                                           :{BLACK}Гладкість:
 STR_MAPGEN_VARIETY                                              :{BLACK}Розподіл різноманітності:
 STR_MAPGEN_GENERATE                                             :{WHITE}Генерувати
 
@@ -2466,8 +2467,8 @@ STR_MAPGEN_SOUTHEAST                                            :{BLACK}півд
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}південно-західний
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}вільний формат
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Вода
-STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Будь-який
-STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Будь-який
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}довільно
+STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}довільно
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вручну
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот рельєфу
@@ -2758,7 +2759,7 @@ STR_STATION_VIEW_CARGO_RATING                                   :{WHITE}{STRING}
 STR_CARGO_RATING_APPALLING                                      :жахливо
 STR_CARGO_RATING_VERY_POOR                                      :дуже погано
 STR_CARGO_RATING_POOR                                           :погано
-STR_CARGO_RATING_MEDIOCRE                                       :середньо
+STR_CARGO_RATING_MEDIOCRE                                       :посередньо
 STR_CARGO_RATING_GOOD                                           :добре
 STR_CARGO_RATING_VERY_GOOD                                      :дуже добре
 STR_CARGO_RATING_EXCELLENT                                      :відмінно
