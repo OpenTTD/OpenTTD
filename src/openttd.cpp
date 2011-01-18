@@ -1258,7 +1258,7 @@ void StateGameLoop()
 			/* Save the desync savegame if needed. */
 			char name[MAX_PATH];
 			snprintf(name, lengthof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
-			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
+			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR, false);
 		}
 
 		CheckCaches();

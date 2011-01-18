@@ -2615,7 +2615,7 @@ SaveOrLoadResult LoadWithFilter(LoadFilter *reader)
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, bool threaded)
 {
 	/* An instance of saving is already active, so don't go saving again */
-	if (_sl.saveinprogress && mode == SL_SAVE) {
+	if (_sl.saveinprogress && mode == SL_SAVE && threaded) {
 		/* if not an autosave, but a user action, show error message */
 		if (!_do_autosave) ShowErrorMessage(STR_ERROR_SAVE_STILL_IN_PROGRESS, INVALID_STRING_ID, WL_ERROR);
 		return SL_OK;
