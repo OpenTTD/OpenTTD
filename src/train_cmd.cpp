@@ -3146,6 +3146,11 @@ static void TrainController(Train *v, Vehicle *nomove)
 					TryReserveRailTrack(gp.new_tile, DiagDirToDiagTrack(GetTunnelBridgeDirection(gp.new_tile)));
 					CheckNextTrainTile(v);
 				}
+				/* Prevent v->UpdateInclination() being called with wrong parameters.
+				 * This could happen if the train was reversed inside the tunnel/bridge. */
+				if (gp.old_tile == gp.new_tile) {
+					gp.old_tile = GetOtherTunnelBridgeEnd(gp.old_tile);
+				}
 			} else {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
