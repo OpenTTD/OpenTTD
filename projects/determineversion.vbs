@@ -237,7 +237,7 @@ Function DetermineSVNVersion()
 		If version = "norev000" Then
 			' git detection failed, reset error and try mercurial (hg)
 			Err.Clear
-			Set oExec = WshShell.Exec("hg parents")
+			Set oExec = WshShell.Exec("hg id -i")
 			If Err.Number = 0 Then
 				' Wait till the application is finished ...
 				Do While oExec.Status = 0
@@ -245,8 +245,21 @@ Function DetermineSVNVersion()
 
 				If oExec.ExitCode = 0 Then
 					line = OExec.StdOut.ReadLine()
-					hash = Mid(line, InStrRev(line, ":") + 1)
+					hash = Left(line, 12)
 					version = "h" & Mid(hash, 1, 8)
+
+					' Check if a tag is currently checked out
+					Err.Clear
+					Set oExec = WshShell.Exec("hg id -t")
+					If Err.Number = 0 Then
+						line = oExec.StdOut.ReadLine()
+						If Len(line) > 0 And line <> "tip" Then
+							version = line
+							branch = ""
+						End If ' Len(line) > 0 And line <> "tip"
+					End If ' Err.Number = 0
+
+					Err.Clear
 					Set oExec = WshShell.Exec("hg status ../")
 					If Err.Number = 0 Then
 						Do
