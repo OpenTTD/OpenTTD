@@ -697,7 +697,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Desierto
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Nieve
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Poner/quitar nombres de pueblos en el mapa
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Mostrar/ocultar nombres de pueblos en el mapa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrar mapa en la posición actual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}

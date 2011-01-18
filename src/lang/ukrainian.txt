@@ -1176,8 +1176,8 @@ STR_SEA_LEVEL_VERY_LOW                                          :дуже низ
 STR_SEA_LEVEL_LOW                                               :низький
 STR_SEA_LEVEL_MEDIUM                                            :середній
 STR_SEA_LEVEL_HIGH                                              :високий
-STR_SEA_LEVEL_CUSTOM                                            :Вибірковий
-STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Вибірковий ({NUM}%)
+STR_SEA_LEVEL_CUSTOM                                            :вибірковий
+STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :вибірковий ({NUM}%)
 
 STR_DISASTER_NONE                                               :відкл.
 STR_DISASTER_REDUCED                                            :знижено
@@ -2466,10 +2466,10 @@ STR_MAPGEN_NORTHEAST                                            :{BLACK}півн
 STR_MAPGEN_SOUTHEAST                                            :{BLACK}південно-східний
 STR_MAPGEN_SOUTHWEST                                            :{BLACK}південно-західний
 STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}вільний формат
-STR_MAPGEN_BORDER_WATER                                         :{BLACK}Вода
+STR_MAPGEN_BORDER_WATER                                         :{BLACK}вода
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}довільно
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}довільно
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Вручну
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}вручну
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Поворот рельєфу
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назва рельєфу:

@@ -1226,8 +1226,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automat
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Automatikus járműfelújítás {ORANGE}{STRING}{LTBLUE} hónappal a max. életkora előtt/után
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Automatikus járműfelújításhoz szükséges min. pénz: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING} másodperc
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Lebegési események késése: {ORANGE}{STRING} másodperc
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Lebegési események késése: {ORANGE}kikapcsolva
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Eszközinformációk megjelnítése: {ORANGE}Késleltetés {STRING} másodperccel
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Eszközinformációk megjelenítése: {ORANGE}Jobb egérgombbal
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mutassa a település lakosságát a feliratban: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Terep generálás: {ORANGE}{STRING}
@@ -1311,6 +1311,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágán
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Építő eszközök aktívak maradnak használat után: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Kiadási/bevételi adatok csoportosítása a pénzügyi ablakban: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Infrastruktúra építésének tiltása amíg nem elérhető megfelelő jármű: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximum vonat cégenként: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximum közúti jármű cégenként: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximum repülőgép cégenként: {ORANGE}{STRING}
@@ -2488,6 +2489,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramét
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Nem érhető el információ
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Fájl nem található
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Kikapcsolva
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nem kompatibilis az OpenTTD ezen verziójával
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Adj meg NewGRF paramétereket
 

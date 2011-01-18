@@ -21,111 +21,111 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :（不定義）
-STR_JUST_NOTHING                                                :なし
+STR_UNDEFINED                                                   :（文字列が未定義です）
+STR_JUST_NOTHING                                                :存在しない
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :旅客
 STR_CARGO_PLURAL_COAL                                           :石炭
-STR_CARGO_PLURAL_MAIL                                           :郵便袋
+STR_CARGO_PLURAL_MAIL                                           :郵便物
 STR_CARGO_PLURAL_OIL                                            :石油
 STR_CARGO_PLURAL_LIVESTOCK                                      :家畜
 STR_CARGO_PLURAL_GOODS                                          :商品
 STR_CARGO_PLURAL_GRAIN                                          :穀物
 STR_CARGO_PLURAL_WOOD                                           :木材
-STR_CARGO_PLURAL_IRON_ORE                                       :鉄鉱
+STR_CARGO_PLURAL_IRON_ORE                                       :鉄鉱石
 STR_CARGO_PLURAL_STEEL                                          :鋼鉄
 STR_CARGO_PLURAL_VALUABLES                                      :貴重品
-STR_CARGO_PLURAL_COPPER_ORE                                     :銅鉱
+STR_CARGO_PLURAL_COPPER_ORE                                     :銅鉱石
 STR_CARGO_PLURAL_MAIZE                                          :トウモロコシ
 STR_CARGO_PLURAL_FRUIT                                          :果物
 STR_CARGO_PLURAL_DIAMONDS                                       :ダイヤモンド
 STR_CARGO_PLURAL_FOOD                                           :食品
 STR_CARGO_PLURAL_PAPER                                          :紙
-STR_CARGO_PLURAL_GOLD                                           :黄金
+STR_CARGO_PLURAL_GOLD                                           :金
 STR_CARGO_PLURAL_WATER                                          :水
 STR_CARGO_PLURAL_WHEAT                                          :小麦
 STR_CARGO_PLURAL_RUBBER                                         :ゴム
 STR_CARGO_PLURAL_SUGAR                                          :砂糖
-STR_CARGO_PLURAL_TOYS                                           :玩具
-STR_CARGO_PLURAL_CANDY                                          :菓子
+STR_CARGO_PLURAL_TOYS                                           :おもちゃ
+STR_CARGO_PLURAL_CANDY                                          :お菓子
 STR_CARGO_PLURAL_COLA                                           :コーラ
-STR_CARGO_PLURAL_COTTON_CANDY                                   :綿菓子
+STR_CARGO_PLURAL_COTTON_CANDY                                   :わたあめ
 STR_CARGO_PLURAL_BUBBLES                                        :泡
 STR_CARGO_PLURAL_TOFFEE                                         :タフィー
 STR_CARGO_PLURAL_BATTERIES                                      :電池
 STR_CARGO_PLURAL_PLASTIC                                        :プラスチック
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :ソーダ
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :炭酸飲料
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :旅客
 STR_CARGO_SINGULAR_COAL                                         :石炭
-STR_CARGO_SINGULAR_MAIL                                         :郵便袋
+STR_CARGO_SINGULAR_MAIL                                         :郵便物
 STR_CARGO_SINGULAR_OIL                                          :石油
 STR_CARGO_SINGULAR_LIVESTOCK                                    :家畜
 STR_CARGO_SINGULAR_GOODS                                        :商品
 STR_CARGO_SINGULAR_GRAIN                                        :穀物
 STR_CARGO_SINGULAR_WOOD                                         :木材
-STR_CARGO_SINGULAR_IRON_ORE                                     :鉄鉱
+STR_CARGO_SINGULAR_IRON_ORE                                     :鉄鉱石
 STR_CARGO_SINGULAR_STEEL                                        :鋼鉄
 STR_CARGO_SINGULAR_VALUABLES                                    :貴重品
-STR_CARGO_SINGULAR_COPPER_ORE                                   :銅鉱
+STR_CARGO_SINGULAR_COPPER_ORE                                   :銅鉱石
 STR_CARGO_SINGULAR_MAIZE                                        :トウモロコシ
 STR_CARGO_SINGULAR_FRUIT                                        :果物
 STR_CARGO_SINGULAR_DIAMOND                                      :ダイヤモンド
 STR_CARGO_SINGULAR_FOOD                                         :食品
 STR_CARGO_SINGULAR_PAPER                                        :紙
-STR_CARGO_SINGULAR_GOLD                                         :黄金
+STR_CARGO_SINGULAR_GOLD                                         :金
 STR_CARGO_SINGULAR_WATER                                        :水
 STR_CARGO_SINGULAR_WHEAT                                        :小麦
 STR_CARGO_SINGULAR_RUBBER                                       :ゴム
 STR_CARGO_SINGULAR_SUGAR                                        :砂糖
-STR_CARGO_SINGULAR_TOY                                          :玩具
-STR_CARGO_SINGULAR_CANDY                                        :菓子
+STR_CARGO_SINGULAR_TOY                                          :おもちゃ
+STR_CARGO_SINGULAR_CANDY                                        :お菓子
 STR_CARGO_SINGULAR_COLA                                         :コーラ
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :綿菓子
+STR_CARGO_SINGULAR_COTTON_CANDY                                 :わたあめ
 STR_CARGO_SINGULAR_BUBBLE                                       :泡
 STR_CARGO_SINGULAR_TOFFEE                                       :タフィー
 STR_CARGO_SINGULAR_BATTERY                                      :電池
 STR_CARGO_SINGULAR_PLASTIC                                      :プラスチック
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :ソーダ
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :ソーダ水
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :乗客{COMMA}人
+STR_QUANTITY_PASSENGERS                                         :旅客{COMMA}人
 STR_QUANTITY_COAL                                               :石炭{WEIGHT}
-STR_QUANTITY_MAIL                                               :郵便袋{COMMA}袋
+STR_QUANTITY_MAIL                                               :郵便物{COMMA}袋
 STR_QUANTITY_OIL                                                :石油{VOLUME}
 STR_QUANTITY_LIVESTOCK                                          :家畜{COMMA}頭
 STR_QUANTITY_GOODS                                              :商品{COMMA}箱
 STR_QUANTITY_GRAIN                                              :穀物{WEIGHT}
 STR_QUANTITY_WOOD                                               :木材{WEIGHT}
-STR_QUANTITY_IRON_ORE                                           :鉄鉱{WEIGHT}
+STR_QUANTITY_IRON_ORE                                           :鉄鉱石{WEIGHT}
 STR_QUANTITY_STEEL                                              :鋼鉄{WEIGHT}
 STR_QUANTITY_VALUABLES                                          :貴重品{COMMA}袋
-STR_QUANTITY_COPPER_ORE                                         :銅鉱{WEIGHT}
+STR_QUANTITY_COPPER_ORE                                         :銅鉱石{WEIGHT}
 STR_QUANTITY_MAIZE                                              :トウモロコシ{WEIGHT}
 STR_QUANTITY_FRUIT                                              :果物{WEIGHT}
 STR_QUANTITY_DIAMONDS                                           :ダイヤモンド{COMMA}袋
 STR_QUANTITY_FOOD                                               :食品{WEIGHT}
 STR_QUANTITY_PAPER                                              :紙{WEIGHT}
-STR_QUANTITY_GOLD                                               :黄金{COMMA}袋
+STR_QUANTITY_GOLD                                               :金{COMMA}袋
 STR_QUANTITY_WATER                                              :水{VOLUME}
 STR_QUANTITY_WHEAT                                              :小麦{WEIGHT}
 STR_QUANTITY_RUBBER                                             :ゴム{VOLUME}
 STR_QUANTITY_SUGAR                                              :砂糖{WEIGHT}
-STR_QUANTITY_TOYS                                               :玩具{COMMA}個
-STR_QUANTITY_SWEETS                                             :菓子{COMMA}袋
+STR_QUANTITY_TOYS                                               :おもちゃ{COMMA}個
+STR_QUANTITY_SWEETS                                             :お菓子{COMMA}袋
 STR_QUANTITY_COLA                                               :コーラ{VOLUME}
-STR_QUANTITY_CANDYFLOSS                                         :綿菓子{WEIGHT}
+STR_QUANTITY_CANDYFLOSS                                         :わたあめ{WEIGHT}
 STR_QUANTITY_BUBBLES                                            :泡{COMMA}つ
 STR_QUANTITY_TOFFEE                                             :タフィー{WEIGHT}
 STR_QUANTITY_BATTERIES                                          :電池{COMMA}本
 STR_QUANTITY_PLASTIC                                            :プラスチック{VOLUME}
-STR_QUANTITY_FIZZY_DRINKS                                       :ソーダ{COMMA}
+STR_QUANTITY_FIZZY_DRINKS                                       :ソーダ水{COMMA}
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -134,7 +134,7 @@ STR_ABBREV_PASSENGERS                                           :{TINYFONT}客
 STR_ABBREV_COAL                                                 :{TINYFONT}炭
 STR_ABBREV_MAIL                                                 :{TINYFONT}郵
 STR_ABBREV_OIL                                                  :{TINYFONT}油
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}畜
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}飼
 STR_ABBREV_GOODS                                                :{TINYFONT}品
 STR_ABBREV_GRAIN                                                :{TINYFONT}穀
 STR_ABBREV_WOOD                                                 :{TINYFONT}木
@@ -142,7 +142,7 @@ STR_ABBREV_IRON_ORE                                             :{TINYFONT}鉄
 STR_ABBREV_STEEL                                                :{TINYFONT}鋼
 STR_ABBREV_VALUABLES                                            :{TINYFONT}貴
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}銅
-STR_ABBREV_MAIZE                                                :{TINYFONT}ト
+STR_ABBREV_MAIZE                                                :{TINYFONT}ﾄｳ
 STR_ABBREV_FRUIT                                                :{TINYFONT}果
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}ダ
 STR_ABBREV_FOOD                                                 :{TINYFONT}食
@@ -154,10 +154,10 @@ STR_ABBREV_RUBBER                                               :{TINYFONT}ゴ
 STR_ABBREV_SUGAR                                                :{TINYFONT}糖
 STR_ABBREV_TOYS                                                 :{TINYFONT}玩
 STR_ABBREV_SWEETS                                               :{TINYFONT}菓
-STR_ABBREV_COLA                                                 :{TINYFONT}コ
-STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}綿
+STR_ABBREV_COLA                                                 :{TINYFONT}Co
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}わ
 STR_ABBREV_BUBBLES                                              :{TINYFONT}泡
-STR_ABBREV_TOFFEE                                               :{TINYFONT}タ
+STR_ABBREV_TOFFEE                                               :{TINYFONT}ﾀﾌ
 STR_ABBREV_BATTERIES                                            :{TINYFONT}電
 STR_ABBREV_PLASTIC                                              :{TINYFONT}プ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ソ
@@ -165,15 +165,15 @@ STR_ABBREV_NONE                                                 :{TINYFONT}無
 STR_ABBREV_ALL                                                  :{TINYFONT}全
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} 乗客
-STR_BAGS                                                        :{COMMA} 袋
-STR_TONS                                                        :{COMMA} トン
-STR_LITERS                                                      :{COMMA} リットル
-STR_ITEMS                                                       :{COMMA} 件
-STR_CRATES                                                      :{COMMA} 箱
+STR_PASSENGERS                                                  :{COMMA}人
+STR_BAGS                                                        :{COMMA}袋
+STR_TONS                                                        :{COMMA}トン
+STR_LITERS                                                      :{COMMA}リットル
+STR_ITEMS                                                       :{COMMA}件
+STR_CRATES                                                      :{COMMA}箱
 
 # Colours, do not shuffle
-STR_COLOUR_DARK_BLUE                                            :紺青色
+STR_COLOUR_DARK_BLUE                                            :紺色
 STR_COLOUR_PALE_GREEN                                           :薄緑色
 STR_COLOUR_PINK                                                 :ピンク色
 STR_COLOUR_YELLOW                                               :黄色
@@ -183,7 +183,7 @@ STR_COLOUR_GREEN                                                :緑色
 STR_COLOUR_DARK_GREEN                                           :濃緑色
 STR_COLOUR_BLUE                                                 :青色
 STR_COLOUR_CREAM                                                :クリーム色
-STR_COLOUR_MAUVE                                                :藤色
+STR_COLOUR_MAUVE                                                :モーブ色
 STR_COLOUR_PURPLE                                               :紫色
 STR_COLOUR_ORANGE                                               :オレンジ色
 STR_COLOUR_BROWN                                                :茶色
@@ -191,48 +191,51 @@ STR_COLOUR_GREY                                                 :灰色
 STR_COLOUR_WHITE                                                :白色
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}mi/h
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA}km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA}m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}馬力
 STR_UNITS_POWER_METRIC                                          :{COMMA}馬力
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}トン
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}キロ
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA}トン
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA}kg
 
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}リットル
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}ℓ
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}リットル
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}m³
 
-STR_UNITS_FORCE_SI                                              :{COMMA} kN
+STR_UNITS_FORCE_SI                                              :{COMMA}kN
 
+STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}ft
+STR_UNITS_HEIGHT_SI                                             :{COMMA}m
 
 # Common window strings
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィルターを入力
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}フィルターのキーワードを入力します
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}フィルターのキーワードを入力
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ替えの順序を選択（昇順／降順）
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}並べ替えの基準を選択
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}フィルターの条件を選択します
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ替えの順序を選択します。（昇順／降順）
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}並べ替えの基準を選択します。
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}フィルタリングの基準を選択します。
 STR_BUTTON_SORT_BY                                              :{BLACK}並べ替え
 STR_BUTTON_LOCATION                                             :{BLACK}見つける
-STR_BUTTON_RENAME                                               :{BLACK}名称を変更
+STR_BUTTON_RENAME                                               :{BLACK}名前を変更
 
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ウィンドウを閉じます
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ウィンドウのタイトル - ウィンドウを動かすには、クリックしてドラッグします
-STR_TOOLTIP_SHADE                                               :{BLACK}ウィンドウを小さくする - ウィンドウのタイトル・バーのみの表示
-STR_TOOLTIP_STICKY                                              :{BLACK}「すべてのウィンドウを閉じる」をクリックしてもこのウィンドウを閉じられないようにします
-STR_TOOLTIP_RESIZE                                              :{BLACK}リサイズするには、クリックしてドラッグします
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}大きい／小さいウィンドウサイズを切り替えます
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スクロールバー
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スクロールバー - リストをスクロールします
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ウィンドウを閉じます。
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ウィンドウのタイトルです。ドラッグでウィンドウが動きます。
+STR_TOOLTIP_SHADE                                               :{BLACK}ウィンドウを畳みます。タイトル・バーだけの表示になります。
+STR_TOOLTIP_DEBUG                                               :{BLACK}NewGRFのデバック情報を表示します。
+STR_TOOLTIP_STICKY                                              :{BLACK}「すべてのウィンドウを閉じる」をクリックしても、このウィンドウが閉じられないようにします。
+STR_TOOLTIP_RESIZE                                              :{BLACK}ドラッグすると、ウインドウの大きさを変えられます。
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}ウィンドウの大きさを切り替えます
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スクロールバーです。リストを縦にスクロールします。
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スクロールバーです。リストを横にスクロールします。
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}土地上の建物などを破壊します
 
 # Query window
@@ -345,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :終了
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームの基本設定
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易度の設定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :パッチ設定
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AIの設定。
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :半透明設定
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :市町村名を表示
@@ -439,8 +443,10 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :コンソールのオンオフ
 STR_ABOUT_MENU_AI_DEBUG                                         :AI のデバッグ
 STR_ABOUT_MENU_SCREENSHOT                                       :スクリーンショット（Ctrl-S）
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :拡大してスクリーンショット
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :大型スクリーンショット（Ctrl-G）
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :OpenTTDについて
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :スプライトを整列します。
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -522,6 +528,10 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}会社�
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}貨物の運送価格
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}運送日
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}貨物10単位（もしくは1万リットル）を距離20角運送するとの運賃を表示します
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}全て使用可能。
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}全て使用不可。
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}全ての貨物の、報酬レートグラフを表示。
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}全ての貨物の報酬レートグラフを非表示。
 STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}貨物種類のグラフを切り替えます
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
@@ -654,6 +664,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}地図�
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}地図に運送経路を表示します
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}地図に植物を表示します
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}地図に土地の所有者を表示します
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}産業をクリックすると、表示方法が切り替わります。Ctrlキー+クリックで、その産業以外を使用不可にします。もう一度同じ操作をすると、元に戻ります。
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}会社の所有物をクリックすると、表示方法が切り替わります。Ctrlキー+クリックで、その会社以外の所有物を使用不可にします。もう一度同じ操作をすると、元に戻ります。
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}道路
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}鉄道
@@ -687,6 +699,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}地図に町名の表示を切り替えます
 STR_SMALLMAP_CENTER                                             :{BLACK}ミニマップを現在の場所に移動します
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}すべてを切
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}すべてを入
@@ -694,6 +707,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}雪の�
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}地図に産業を示さないようにします
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}地図のぜんぶの産業を示す
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}ハイトマップを示すのをトグルします
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}会社の資産を非表示にします。
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}地図に全ての会社の資産を表示します。
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}最後のメッセージ／報道を表示します
@@ -1081,6 +1096,10 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}建物�
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}より現実的な受入れ地域を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}より多くの町有の道路／橋などの破壊を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}超長型列車の作成を許容：{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}車両の 煙/火の粉 の量{ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :なし
+STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :オリジナル
+STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :リアルな
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}電車の加速モデル：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :オリジナル
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :現実的
@@ -1102,6 +1121,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}第一�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :なし
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :他の産業と同様
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :探鉱
+STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}産業のある場所の平坦さ:{ORANGE}{STRING}タイル
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}町内に重複している産業の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}常に状況バーに長型日付を表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}信号を運転側に表示：{ORANGE}{STRING}
@@ -1142,6 +1162,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}車両�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}車両が最高使用年数の {ORANGE}{STRING}{LTBLUE} ヶ月間前／後に自動交換
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}自動交換するための最小資金：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}エラーメッセージの表示時間：{ORANGE}{STRING}
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}ツールのヒントを見る: {ORANGE}飛ぶための{STRING}次
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}ツールのヒントを見る: {ORANGE}右クリック
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}町名に人口を含む：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}地形作成：{ORANGE}{STRING}
@@ -1225,6 +1247,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}予約�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}ビルドのツールバーは使用後に表示したままにする：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}財政ウィンドウ内でグループ分けされた費用表示をする: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}列車に合った施設を建設してください。{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}一人のプレヤーの道路車両数上限：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}一人のプレヤーの飛行機数上限：{ORANGE}{STRING}
@@ -1236,6 +1259,7 @@ STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :{LTBLUE}コン�
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :{LTBLUE}コンピュータは船舶を使用しない：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}マルチプレイヤーゲームで AI を許容（実験的）：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}#opcodes 前のAIが一時停止していた: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}修理間隔をパーセントで表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
@@ -1274,6 +1298,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :格子状（2x2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :格子状（3x3）
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ランダム
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}町は道路建設を許容： {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}町に平面交差の建設を許可: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}空港建設に対する街の騒音レベル規制を許可する: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}インゲームで街の新設に出資: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :不可能
@@ -1773,6 +1798,7 @@ STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :コマンドを
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}ネットワークに接続を無くしたかのせいがあります
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}最後の{NUM} 瞬間 サーバーからデータが届きませんでした。
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -1821,15 +1847,18 @@ STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}これ�
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}これをダウンロードをするために選択しました
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}依存性によりダウンロードを選択されます
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}これはもうダウンロードされました
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}不明なコンテンツの為、OpenTTDでダウンロード出来ません。
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}現在の物と取り替えます{STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}項目名：{WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}バージョン：{WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}説明：{WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL：{WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}種類：{WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}サイズ：{WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}この選択をすると: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}前提項目：{WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}タグ：{WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}この OpenTTD は zlib のサポートが入っていないため...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTDは、"zlib"のサポートをしていません。
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ダウンロードすることができません！
 
 # Order of these is important!
@@ -1951,6 +1980,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}鉄道�
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}道路橋を選択
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}橋の選択 - お好きな橋を建設するにはクリックします
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING}、{}　{VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :つり橋、鋼鉄製
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :けた橋、鋼鉄製
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :カンチレバー橋、鋼鉄製
@@ -2025,6 +2055,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}空港�
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}空港の選択
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}空港のサイズ／種類を選択します
 STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}空港の種類
+STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}レイアウト{NUM}
 
 STR_AIRPORT_SMALL                                               :町空港
 STR_AIRPORT_CITY                                                :市空港
@@ -2053,6 +2084,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}将来�
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}選択物
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}建設する物を選択して下さい。（シフト）で物の価格を表します
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}造る物を選びます。
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}物のプレヴィウ
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}サイズ: {GOLD}{NUM} x {NUM} マス
 
@@ -2124,11 +2156,23 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}建設
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}出資
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}産業チェーンから{STRING}産業
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}産業チェーンから{STRING}貨物
+STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}産業を生成
+STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}産業を受け入れる。
+STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}家屋
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}産業をクリックすると、その配給元と顧客を見に行きます。
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}貨物をクリックすると、その配給元と顧客を見に行きます。
+STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}続きを表示。
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}貨物の配給と受け入れをしている産業を表示。
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}小マップに結ぶ。
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}小マップでも、産業を選べます。
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地域情報
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}破壊費用：{LTBLUE}破壊不可
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}破壊費用：{RED}{CURRENCY}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}撤去すると収入: {LTBLUE}{CURRENCY}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :N/A
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}所有者：{LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}道路の所有者: {LTBLUE}{STRING}
@@ -2259,6 +2303,12 @@ STR_SAVELOAD_DELETE_BUTTON                                      :{BLACK}削除
 STR_SAVELOAD_DELETE_TOOLTIP                                     :{BLACK}選択したゲームを削除します
 STR_SAVELOAD_SAVE_BUTTON                                        :{BLACK}保存
 STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}指定したファイル名で現在のゲームを保存します
+STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}ロード
+STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}ロードするゲームを選びました。
+STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}ゲームの詳細
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}情報はありません
+STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
+STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}セーブゲーム名を入力
 
@@ -2333,6 +2383,10 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}ゲー�
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRFの設定
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}NewGRFの詳細情報
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}有効なNewGRFファイル
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}無効なNewGRFファイル
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}プリセットの選択:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}フィルター:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}選択したプリセットを開きます
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}プリセットを保存
@@ -2362,6 +2416,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}抜け�
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}ファイル名：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID：{SILVER}{STRING}
+STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}バージョン: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最小対応するバージョン: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}パレット：{SILVER}{STRING}
@@ -2370,21 +2425,45 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}設定�
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}情報はありません
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}一致しているファイルが見つかりません
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}切
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}このバージョンのOpenTTDと適合しません。
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF設定を入力
 
 # NewGRF parameters window
+STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}NewGRFパラメータの変更
+STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}閉じる
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}リセット
 STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}すべてのパラメータをデファルトヴァルウに変更する
+STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :パラメーター{NUM}
+STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}パラメータの数: {ORANGE}{NUM}
 
 # NewGRF inspect window
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}検査する - {STRING}
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}派生元
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}オブジェクトの派生範囲を調べる
 
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} at {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :物
+STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :線路の種類
 
+STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRFの変数 60+x のパラメーター (16進)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}スプライトを整列{COMMA} ({STRING})
+STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}次のスプライト
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}次のノーマルスプライトに進めます。疑似/リカラー/フォントスプライトとラッピングされた範囲は、終わりまでスキップします。
+STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}スプライトへ行く
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}所定のスプライトへ行く。それがノーマルスプライトでなければ、次のノーマルスプライトに進む。
+STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}前のスプライト
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}前のノーマルスプライトに戻ります。疑似/リカラー/フォントスプライトとラッピングされた範囲は、初めまでスキップします。
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}現在選択されているスプライトの代表。このスプライトを描画するときは、整列しません。
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}XとYオフセットを変更し、その周りにスプライトを移動します。
+STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}Xオフセット: {NUM}, Yオフセット: {NUM}
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}スプライトを選びます。
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}画面内のどこかから、スプライトを選びます
 
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}スプライトへ行きます。
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -2423,11 +2502,18 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF フ
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}ポーズを解除した場合は、OpenTTD の安定性に悪影響を与える可能性があります。この後クラッシュが行った場合は、バグレポートの報告をご遠慮ください。{}ポーズを解除してもよろしいですか？
 
 # NewGRF status
+STR_NEWGRF_LIST_NONE                                            :なし
+STR_NEWGRF_LIST_ALL_FOUND                                       :現存する全てのファイル
+STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}一致したファイル
+STR_NEWGRF_LIST_MISSING                                         :{RED}欠けているファイル
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' のビヘービアは desync もしくはクラッシュを行わせる可能性があります！
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}機関車の状態を'{1:ENGINE}'と車庫で交換しました。
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}列車の長さを '{1:ENGINE}'と車庫で交換しました。
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」が所有している「{0:VEHICLE}」という電車は無効な長さがあります。使用している NewGRF が原因であるかもしれません。desync もしくはクラッシュが行う可能性があります！
 
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' の情報が誤っています。
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' は生産コールバック内で無限ループを起こしました.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -3331,6 +3417,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 地�
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... すでに建設されました
 STR_ERROR_OWNED_BY                                              :{WHITE}... 所有者は {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... この土地は他の会社に所有されています
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}風景の境界です。
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}タイルの境界を除去します。
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名前は唯一でなければなりません
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING}があります
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}一時停止（ポース）の時この行動をいけません
@@ -4090,6 +4178,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
