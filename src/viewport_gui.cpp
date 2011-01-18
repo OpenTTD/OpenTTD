@@ -137,11 +137,8 @@ public:
 
 	virtual void OnScroll(Point delta)
 	{
-		const ViewPort *vp = IsPtInWindowViewport(this, _cursor.pos.x, _cursor.pos.y);
-		if (vp == NULL) return;
-
-		this->viewport->scrollpos_x += ScaleByZoom(delta.x, vp->zoom);
-		this->viewport->scrollpos_y += ScaleByZoom(delta.y, vp->zoom);
+		this->viewport->scrollpos_x += ScaleByZoom(delta.x, this->viewport->zoom);
+		this->viewport->scrollpos_y += ScaleByZoom(delta.y, this->viewport->zoom);
 		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
 		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
 	}
