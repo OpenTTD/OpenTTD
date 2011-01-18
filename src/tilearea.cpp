@@ -104,6 +104,11 @@ void TileArea::ClampToMap()
 	this->h = min(this->h, MapSizeY() - TileY(this->tile));
 }
 
+/**
+ * Construct the iterator.
+ * @param begin Tile from where to begin iterating.
+ * @param end   Tile where to end the iterating.
+ */
 DiagonalTileIterator::DiagonalTileIterator(TileIndex corner1, TileIndex corner2) : TileIterator(corner2), base_x(TileX(corner2)), base_y(TileY(corner2)), a_cur(0), b_cur(0)
 {
 	assert(corner1 < MapSize());
@@ -135,6 +140,9 @@ DiagonalTileIterator::DiagonalTileIterator(TileIndex corner1, TileIndex corner2)
 	}
 }
 
+/**
+ * Move ourselves to the next tile in the rectange on the map.
+ */
 TileIterator &DiagonalTileIterator::operator++()
 {
 	assert(this->tile != INVALID_TILE);

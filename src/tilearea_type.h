@@ -137,16 +137,8 @@ private:
 	int a_max, b_max;    ///< The (rotated) x and y coordinates of the end of the iteration.
 
 public:
-	/**
-	 * Construct the iterator.
-	 * @param begin Tile from where to begin iterating.
-	 * @param end   Tile where to end the iterating.
-	 */
 	DiagonalTileIterator(TileIndex begin, TileIndex end);
 
-	/**
-	 * Move ourselves to the next tile in the rectange on the map.
-	 */
 	TileIterator& operator ++();
 };
 

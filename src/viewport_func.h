@@ -28,11 +28,6 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y);
 Point GetTileBelowCursor();
 void UpdateViewportPosition(Window *w);
 
-/**
- * Mark all viewports dirty for repaint.
- *
- * @ingroup dirty
- */
 void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 
 bool DoZoomInOutWindow(ZoomStateChange how, Window *w);

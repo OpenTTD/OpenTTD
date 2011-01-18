@@ -338,7 +338,7 @@ public:
 	/* virtual */ void FillNestedArray(NWidgetBase **array, uint length);
 
 	/** Return whether the container is empty. */
-	inline bool IsEmpty() { return head == NULL; };
+	inline bool IsEmpty() { return head == NULL; }
 
 	/* virtual */ NWidgetBase *GetWidgetOfType(WidgetType tp);
 

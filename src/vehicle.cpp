@@ -96,6 +96,12 @@ void VehicleServiceInDepot(Vehicle *v)
 	SetWindowDirty(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
 }
 
+/**
+ * Check if the vehicle needs to go to a depot in near future (if a opportunity presents itself) for service or replacement.
+ *
+ * @see NeedsAutomaticServicing()
+ * @return true if the vehicle should go to a depot if a opportunity presents itself.
+ */
 bool Vehicle::NeedsServicing() const
 {
 	/* Stopped or crashed vehicles will not move, as such making unmovable
@@ -156,6 +162,11 @@ bool Vehicle::NeedsServicing() const
 	return pending_replace;
 }
 
+/**
+ * Checks if the current order should be interupted for a service-in-depot-order.
+ * @see NeedsServicing()
+ * @return true if the current order should be interupted.
+ */
 bool Vehicle::NeedsAutomaticServicing() const
 {
 	if (_settings_game.order.gotodepot && this->HasDepotOrder()) return false;
@@ -657,6 +668,7 @@ void Vehicle::HandlePathfindingResult(bool path_found)
 	}
 }
 
+/** Destroy all stuff that (still) needs the virtual functions to work properly */
 void Vehicle::PreDestructor()
 {
 	if (CleaningPool()) return;
@@ -1026,6 +1038,12 @@ void CheckVehicleBreakdown(Vehicle *v)
 	}
 }
 
+/**
+ * Handle all of the aspects of a vehicle breakdown
+ * This includes adding smoke and sounds, and ending the breakdown when appropriate.
+ * @return true iff the vehicle is stopped because of a breakdown
+ * @note This function always returns false for aircraft, since these never stop for breakdowns
+ */
 bool Vehicle::HandleBreakdown()
 {
 	/* Possible states for Vehicle::breakdown_ctr
@@ -1393,6 +1411,13 @@ VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y
 	return _tile_type_procs[GetTileType(tile)]->vehicle_enter_tile_proc(v, tile, x, y);
 }
 
+/**
+ * Initializes the structure. Vehicle unit numbers are supposed not to change after
+ * struct initialization, except after each call to this->NextID() the returned value
+ * is assigned to a vehicle.
+ * @param type type of vehicle
+ * @param owner owner of vehicles
+ */
 FreeUnitIDGenerator::FreeUnitIDGenerator(VehicleType type, CompanyID owner) : cache(NULL), maxid(0), curid(0)
 {
 	/* Find maximum */
@@ -1418,6 +1443,7 @@ FreeUnitIDGenerator::FreeUnitIDGenerator(VehicleType type, CompanyID owner) : ca
 	}
 }
 
+/** Returns next free UnitID. Supposes the last returned value was assigned to a vehicle. */
 UnitID FreeUnitIDGenerator::NextID()
 {
 	if (this->maxid <= this->curid) return ++this->curid;
@@ -1658,11 +1684,22 @@ static PaletteID GetEngineColourMap(EngineID engine_type, CompanyID company, Eng
 	return map;
 }
 
+/**
+ * Get the colour map for an engine. This used for unbuilt engines in the user interface.
+ * @param engine_type ID of engine
+ * @param company ID of company
+ * @return A ready-to-use palette modifier
+ */
 PaletteID GetEnginePalette(EngineID engine_type, CompanyID company)
 {
 	return GetEngineColourMap(engine_type, company, INVALID_ENGINE, NULL);
 }
 
+/**
+ * Get the colour map for a vehicle.
+ * @param v Vehicle to get colour map for
+ * @return A ready-to-use palette modifier
+ */
 PaletteID GetVehiclePalette(const Vehicle *v)
 {
 	if (v->IsGroundVehicle()) {
@@ -1823,6 +1860,11 @@ void Vehicle::LeaveStation()
 }
 
 
+/**
+ * Handle the loading of the vehicle; when not it skips through dummy
+ * orders and does nothing in all other cases.
+ * @param mode is the non-first call for this vehicle in this tick?
+ */
 void Vehicle::HandleLoading(bool mode)
 {
 	switch (this->current_order.GetType()) {
@@ -1848,6 +1890,12 @@ void Vehicle::HandleLoading(bool mode)
 	this->IncrementOrderIndex();
 }
 
+/**
+ * Send this vehicle to the depot using the given command(s).
+ * @param flags   the command flags (like execute and such).
+ * @param command the command to execute.
+ * @return the cost of the depot action.
+ */
 CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 {
 	CommandCost ret = CheckOwnership(this->owner);
@@ -1913,6 +1961,10 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 
 }
 
+/**
+ * Update the cached visual effect.
+ * @param allow_power_change true if the wagon-is-powered-state may change.
+ */
 void Vehicle::UpdateVisualEffect(bool allow_power_change)
 {
 	bool powered_before = HasBit(this->vcache.cached_vis_effect, VE_DISABLE_WAGON_POWER);
@@ -1975,6 +2027,10 @@ static const int8 _vehicle_smoke_pos[8] = {
 	1, 1, 1, 0, -1, -1, -1, 0
 };
 
+/**
+ * Draw visual effects (smoke and/or sparks) for a vehicle chain.
+ * @pre this->IsPrimaryVehicle()
+ */
 void Vehicle::ShowVisualEffect() const
 {
 	assert(this->IsPrimaryVehicle());
@@ -2092,6 +2148,10 @@ void Vehicle::ShowVisualEffect() const
 	if (sound) PlayVehicleSound(this, VSE_VISUAL_EFFECT);
 }
 
+/**
+ * Set the next vehicle of this vehicle.
+ * @param next the next vehicle. NULL removes the next vehicle.
+ */
 void Vehicle::SetNext(Vehicle *next)
 {
 	assert(this != next);
@@ -2116,6 +2176,11 @@ void Vehicle::SetNext(Vehicle *next)
 	}
 }
 
+/**
+ * Adds this vehicle to a shared vehicle chain.
+ * @param shared_chain a vehicle of the chain with shared vehicles.
+ * @pre !this->IsOrderListShared()
+ */
 void Vehicle::AddToShared(Vehicle *shared_chain)
 {
 	assert(this->previous_shared == NULL && this->next_shared == NULL);
@@ -2136,6 +2201,9 @@ void Vehicle::AddToShared(Vehicle *shared_chain)
 	shared_chain->orders.list->AddVehicle(this);
 }
 
+/**
+ * Removes the vehicle from the shared order list.
+ */
 void Vehicle::RemoveFromShared()
 {
 	/* Remember if we were first and the old window number before RemoveVehicle()

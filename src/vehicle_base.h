@@ -229,10 +229,8 @@ public:
 	NewGRFCache grf_cache;              ///< Cache of often used calculated NewGRF values
 	VehicleCache vcache;                ///< Cache of often used vehicle values.
 
-	/** Create a new vehicle */
 	Vehicle(VehicleType type = VEH_INVALID);
 
-	/** Destroy all stuff that (still) needs the virtual functions to work properly */
 	void PreDestructor();
 	/** We want to 'destruct' the right class. */
 	virtual ~Vehicle();
@@ -245,11 +243,6 @@ public:
 
 	void DeleteUnreachedAutoOrders();
 
-	/**
-	 * Handle the loading of the vehicle; when not it skips through dummy
-	 * orders and does nothing in all other cases.
-	 * @param mode is the non-first call for this vehicle in this tick?
-	 */
 	void HandleLoading(bool mode = false);
 
 	/**
@@ -454,10 +447,6 @@ public:
 	 */
 	Money GetDisplayProfitLastYear() const { return (this->profit_last_year >> 8); }
 
-	/**
-	 * Set the next vehicle of this vehicle.
-	 * @param next the next vehicle. NULL removes the next vehicle.
-	 */
 	void SetNext(Vehicle *next);
 
 	/**
@@ -508,16 +497,7 @@ public:
 	 */
 	inline Order *GetFirstOrder() const { return (this->orders.list == NULL) ? NULL : this->orders.list->GetFirstOrder(); }
 
-	/**
-	 * Adds this vehicle to a shared vehicle chain.
-	 * @param shared_chain a vehicle of the chain with shared vehicles.
-	 * @pre !this->IsOrderListShared()
-	 */
 	void AddToShared(Vehicle *shared_chain);
-
-	/**
-	 * Removes the vehicle from the shared order list.
-	 */
 	void RemoveFromShared();
 
 	/**
@@ -585,29 +565,11 @@ public:
 	}
 
 
-	/**
-	 * Handle all of the aspects of a vehicle breakdown
-	 * This includes adding smoke and sounds, and ending the breakdown when appropriate.
-	 * @return true iff the vehicle is stopped because of a breakdown
-	 * @note This function always returns false for aircraft, since these never stop for breakdowns
-	 */
 	bool HandleBreakdown();
 
 	bool NeedsAutorenewing(const Company *c) const;
 
-	/**
-	 * Check if the vehicle needs to go to a depot in near future (if a opportunity presents itself) for service or replacement.
-	 *
-	 * @see NeedsAutomaticServicing()
-	 * @return true if the vehicle should go to a depot if a opportunity presents itself.
-	 */
 	bool NeedsServicing() const;
-
-	/**
-	 * Checks if the current order should be interupted for a service-in-depot-order.
-	 * @see NeedsServicing()
-	 * @return true if the current order should be interupted.
-	 */
 	bool NeedsAutomaticServicing() const;
 
 	/**
@@ -629,24 +591,9 @@ public:
 	 */
 	virtual bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse) { return false; }
 
-	/**
-	 * Send this vehicle to the depot using the given command(s).
-	 * @param flags   the command flags (like execute and such).
-	 * @param command the command to execute.
-	 * @return the cost of the depot action.
-	 */
 	CommandCost SendToDepot(DoCommandFlag flags, DepotCommand command);
 
-	/**
-	 * Update the cached visual effect.
-	 * @param allow_power_change true if the wagon-is-powered-state may change.
-	 */
 	void UpdateVisualEffect(bool allow_power_change = true);
-
-	/*
-	 * Draw visual effects (smoke and/or sparks) for a vehicle chain.
-	 * @pre this->IsPrimaryVehicle()
-	 */
 	void ShowVisualEffect() const;
 
 	/**
@@ -828,16 +775,7 @@ struct FreeUnitIDGenerator {
 	UnitID maxid; ///< maximum ID at the moment of constructor call
 	UnitID curid; ///< last ID returned; 0 if none
 
-	/**
-	 * Initializes the structure. Vehicle unit numbers are supposed not to change after
-	 * struct initialization, except after each call to this->NextID() the returned value
-	 * is assigned to a vehicle.
-	 * @param type type of vehicle
-	 * @param owner owner of vehicles
-	 */
 	FreeUnitIDGenerator(VehicleType type, CompanyID owner);
-
-	/** Returns next free UnitID. Supposes the last returned value was assigned to a vehicle. */
 	UnitID NextID();
 
 	/** Releases allocated memory */
