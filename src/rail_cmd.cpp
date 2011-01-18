@@ -97,6 +97,9 @@ RailType AllocateRailType(RailTypeLabel label)
 			/* Make us compatible with ourself. */
 			rti->powered_railtypes    = (RailTypes)(1 << rt);
 			rti->compatible_railtypes = (RailTypes)(1 << rt);
+
+			/* We also introduce ourself. */
+			rti->introduces_railtypes = (RailTypes)(1 << rt);
 			return rt;
 		}
 	}

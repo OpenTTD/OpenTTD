@@ -194,7 +194,7 @@ RailType GetBestRailtype(const CompanyID company)
 
 RailTypes GetCompanyRailtypes(CompanyID company)
 {
-	RailTypes rt = RAILTYPES_NONE;
+	RailTypes rts = RAILTYPES_NONE;
 
 	Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
@@ -206,12 +206,12 @@ RailTypes GetCompanyRailtypes(CompanyID company)
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
 				assert(rvi->railtype < RAILTYPE_END);
-				SetBit(rt, rvi->railtype);
+				rts |= GetRailTypeInfo(rvi->railtype)->introduces_railtypes;
 			}
 		}
 	}
 
-	return rt;
+	return rts;
 }
 
 RailType GetRailTypeByLabel(RailTypeLabel label)

@@ -3209,6 +3209,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 
 			case 0x0E: // Compatible railtype list
 			case 0x0F: // Powered railtype list
+			case 0x19: // Introduced railtype list
 			{
 				/* Rail type compatibility bits are added to the existing bits
 				 * to allow multiple GRFs to modify compatibility with the
@@ -3218,10 +3219,10 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 					RailTypeLabel label = buf->ReadDWord();
 					RailType rt = GetRailTypeByLabel(BSWAP32(label));
 					if (rt != INVALID_RAILTYPE) {
-						if (prop == 0x0E) {
-							SetBit(rti->compatible_railtypes, rt);
-						} else {
-							SetBit(rti->powered_railtypes, rt);
+						switch (prop) {
+							case 0x0E: SetBit(rti->compatible_railtypes, rt);            break;
+							case 0x0F: SetBit(rti->powered_railtypes, rt);               break;
+							case 0x19: SetBit(rti->introduces_railtypes, rt);            break;
 						}
 					}
 				}
@@ -3303,6 +3304,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 
 			case 0x0E: // Compatible railtype list
 			case 0x0F: // Powered railtype list
+			case 0x19: // Introduced railtype list
 				for (int j = buf->ReadByte(); j != 0; j--) buf->ReadDWord();
 				break;
 

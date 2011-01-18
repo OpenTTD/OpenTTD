@@ -693,22 +693,21 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
-	/* Use C++ spec to zero whole array. */
-	bool used_railtype[RAILTYPE_END] = { false };
+	RailTypes used_railtypes = RAILTYPES_NONE;
 
 	/* Find the used railtypes. */
 	Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
 		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
 
-		used_railtype[e->u.rail.railtype] = true;
+		used_railtypes |= GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes;
 	}
 
 	const Company *c = Company::Get(_local_company);
 	DropDownList *list = new DropDownList();
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 		/* If it's not used ever, don't show it to the user. */
-		if (!used_railtype[rt]) continue;
+		if (!HasBit(used_railtypes, rt)) continue;
 
 		const RailtypeInfo *rti = GetRailTypeInfo(rt);
 		/* Skip rail type if it has no label */

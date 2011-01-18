@@ -217,6 +217,11 @@ struct RailtypeInfo {
 	byte map_colour;
 
 	/**
+	 * Bitmask of which other railtypes are introduced when this railtype is introduced.
+	 */
+	RailTypes introduces_railtypes;
+
+	/**
 	 * Sprite groups for resolving sprites
 	 */
 	const SpriteGroup *group[RTSG_END];

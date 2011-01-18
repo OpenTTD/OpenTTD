@@ -614,7 +614,7 @@ static void AcceptEnginePreview(EngineID eid, CompanyID company)
 	SetBit(e->company_avail, company);
 	if (e->type == VEH_TRAIN) {
 		assert(e->u.rail.railtype < RAILTYPE_END);
-		SetBit(c->avail_railtypes, e->u.rail.railtype);
+		c->avail_railtypes |= GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes;
 	} else if (e->type == VEH_ROAD) {
 		SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
@@ -760,7 +760,7 @@ static void NewVehicleAvailable(Engine *e)
 		/* maybe make another rail type available */
 		RailType railtype = e->u.rail.railtype;
 		assert(railtype < RAILTYPE_END);
-		FOR_ALL_COMPANIES(c) SetBit(c->avail_railtypes, railtype);
+		FOR_ALL_COMPANIES(c) c->avail_railtypes |= GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes;
 	} else if (e->type == VEH_ROAD) {
 		/* maybe make another road type available */
 		FOR_ALL_COMPANIES(c) SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
