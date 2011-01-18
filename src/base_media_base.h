@@ -104,14 +104,6 @@ struct BaseSet {
 		return Tnum_files - this->valid_files;
 	}
 
-	/**
-	 * Read the set information from a loaded ini.
-	 * @param ini      the ini to read from
-	 * @param path     the path to this ini file (for filenames)
-	 * @param full_filename the full filename of the loaded file (for error reporting purposes)
-	 * @param allow_empty_filename empty filenames are valid
-	 * @return true if loading was successful.
-	 */
 	bool FillSetDetails(IniFile *ini, const char *path, const char *full_filename, bool allow_empty_filename = true);
 
 	/**
@@ -177,42 +169,11 @@ public:
 		return fs.Scan(GetExtension(), Tbase_set::SUBDIR, Tbase_set::SUBDIR != GM_DIR);
 	}
 
-	/**
-	 * Set the set to be used.
-	 * @param name of the set to use
-	 * @return true if it could be loaded
-	 */
 	static bool SetSet(const char *name);
-
-	/**
-	 * Returns a list with the sets.
-	 * @param p    where to print to
-	 * @param last the last character to print to
-	 * @return the last printed character
-	 */
 	static char *GetSetsList(char *p, const char *last);
-
-	/**
-	 * Count the number of available graphics sets.
-	 * @return the number of sets
-	 */
 	static int GetNumSets();
-
-	/**
-	 * Get the index of the currently active graphics set
-	 * @return the current set's index
-	 */
 	static int GetIndexOfUsedSet();
-
-	/**
-	 * Get the name of the graphics set at the specified index
-	 * @return the name of the set
-	 */
 	static const Tbase_set *GetSet(int index);
-	/**
-	 * Return the used set.
-	 * @return the used set.
-	 */
 	static const Tbase_set *GetUsedSet();
 
 	/**

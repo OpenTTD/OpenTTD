@@ -31,6 +31,14 @@ template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplica
 		return false; \
 	}
 
+/**
+ * Read the set information from a loaded ini.
+ * @param ini      the ini to read from
+ * @param path     the path to this ini file (for filenames)
+ * @param full_filename the full filename of the loaded file (for error reporting purposes)
+ * @param allow_empty_filename empty filenames are valid
+ * @return true if loading was successful.
+ */
 template <class T, size_t Tnum_files, Subdirectory Tsubdir>
 bool BaseSet<T, Tnum_files, Tsubdir>::FillSetDetails(IniFile *ini, const char *path, const char *full_filename, bool allow_empty_filename)
 {
@@ -208,6 +216,11 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length)
 	return ret;
 }
 
+/**
+ * Set the set to be used.
+ * @param name of the set to use
+ * @return true if it could be loaded
+ */
 template <class Tbase_set>
 /* static */ bool BaseMedia<Tbase_set>::SetSet(const char *name)
 {
@@ -229,6 +242,12 @@ template <class Tbase_set>
 	return false;
 }
 
+/**
+ * Returns a list with the sets.
+ * @param p    where to print to
+ * @param last the last character to print to
+ * @return the last printed character
+ */
 template <class Tbase_set>
 /* static */ char *BaseMedia<Tbase_set>::GetSetsList(char *p, const char *last)
 {
@@ -293,6 +312,10 @@ template <class Tbase_set>
 
 #endif /* ENABLE_NETWORK */
 
+/**
+ * Count the number of available graphics sets.
+ * @return the number of sets
+ */
 template <class Tbase_set>
 /* static */ int BaseMedia<Tbase_set>::GetNumSets()
 {
@@ -304,6 +327,10 @@ template <class Tbase_set>
 	return n;
 }
 
+/**
+ * Get the index of the currently active graphics set
+ * @return the current set's index
+ */
 template <class Tbase_set>
 /* static */ int BaseMedia<Tbase_set>::GetIndexOfUsedSet()
 {
@@ -316,6 +343,10 @@ template <class Tbase_set>
 	return -1;
 }
 
+/**
+ * Get the name of the graphics set at the specified index
+ * @return the name of the set
+ */
 template <class Tbase_set>
 /* static */ const Tbase_set *BaseMedia<Tbase_set>::GetSet(int index)
 {
@@ -327,6 +358,10 @@ template <class Tbase_set>
 	error("Base" SET_TYPE "::GetSet(): index %d out of range", index);
 }
 
+/**
+ * Return the used set.
+ * @return the used set.
+ */
 template <class Tbase_set>
 /* static */ const Tbase_set *BaseMedia<Tbase_set>::GetUsedSet()
 {

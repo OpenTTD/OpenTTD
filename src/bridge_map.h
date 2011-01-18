@@ -85,30 +85,10 @@ static inline Axis GetBridgeAxis(TileIndex t)
 	return (Axis)(GB(_m[t].m6, 6, 2) - 1);
 }
 
-/**
- * Finds the northern end of a bridge starting at a middle tile
- * @param t the bridge tile to find the bridge ramp for
- */
 TileIndex GetNorthernBridgeEnd(TileIndex t);
-
-/**
- * Finds the southern end of a bridge starting at a middle tile
- * @param t the bridge tile to find the bridge ramp for
- */
 TileIndex GetSouthernBridgeEnd(TileIndex t);
-
-
-/**
- * Starting at one bridge end finds the other bridge end
- * @param t the bridge ramp tile to find the other bridge ramp for
- */
 TileIndex GetOtherBridgeEnd(TileIndex t);
 
-/**
- * Get the height ('z') of a bridge in pixels.
- * @param tile the bridge ramp tile to get the bridge height from
- * @return the height of the bridge in pixels
- */
 uint GetBridgeHeight(TileIndex tile);
 
 /**

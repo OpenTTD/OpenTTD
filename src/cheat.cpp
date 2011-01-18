@@ -19,6 +19,10 @@ void InitializeCheats()
 	memset(&_cheats, 0, sizeof(Cheats));
 }
 
+/**
+ * Return true if any cheat has been used, false otherwise
+ * @return has a cheat been used?
+ */
 bool CheatHasBeenUsed()
 {
 	/* Cannot use lengthof because _cheats is of type Cheats, not Cheat */

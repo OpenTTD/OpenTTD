@@ -16,10 +16,6 @@
 #include "group_type.h"
 #include "vehicle_type.h"
 
-/**
- * When an engine is made buildable or is removed from being buildable, add/remove it from the build/autoreplace lists
- * @param type The type of engine
- */
 void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type);
 void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g);
 void ShowReplaceGroupVehicleWindow(GroupID group, VehicleType veh);

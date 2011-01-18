@@ -73,6 +73,12 @@ char *CrashLog::LogCompiler(char *buffer, const char *last) const
 	return buffer;
 }
 
+/**
+ * Writes OpenTTD's version to the buffer.
+ * @param buffer The begin where to write at.
+ * @param last   The last position in the buffer to write to.
+ * @return the position of the \c '\0' character after the buffer.
+ */
 char *CrashLog::LogOpenTTDVersion(char *buffer, const char *last) const
 {
 	return buffer + seprintf(buffer, last,
@@ -105,6 +111,13 @@ char *CrashLog::LogOpenTTDVersion(char *buffer, const char *last) const
 	);
 }
 
+/**
+ * Writes the (important) configuration settings to the buffer.
+ * E.g. graphics set, sound set, blitter and AIs.
+ * @param buffer The begin where to write at.
+ * @param last   The last position in the buffer to write to.
+ * @return the position of the \c '\0' character after the buffer.
+ */
 char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 {
 	buffer += seprintf(buffer, last,
@@ -181,6 +194,12 @@ char *CrashLog::LogConfiguration(char *buffer, const char *last) const
 # include <zlib.h>
 #endif
 
+/**
+ * Writes information (versions) of the used libraries.
+ * @param buffer The begin where to write at.
+ * @param last   The last position in the buffer to write to.
+ * @return the position of the \c '\0' character after the buffer.
+ */
 char *CrashLog::LogLibraries(char *buffer, const char *last) const
 {
 	buffer += seprintf(buffer, last, "Libraries:\n");
@@ -243,11 +262,21 @@ char *CrashLog::LogLibraries(char *buffer, const char *last) const
 	return buffer;
 }
 
+/**
+ * Helper function for printing the gamelog.
+ * @param s the string to print.
+ */
 /* static */ void CrashLog::GamelogFillCrashLog(const char *s)
 {
 	CrashLog::gamelog_buffer += seprintf(CrashLog::gamelog_buffer, CrashLog::gamelog_last, "%s\n", s);
 }
 
+/**
+ * Writes the gamelog data to the buffer.
+ * @param buffer The begin where to write at.
+ * @param last   The last position in the buffer to write to.
+ * @return the position of the \c '\0' character after the buffer.
+ */
 char *CrashLog::LogGamelog(char *buffer, const char *last) const
 {
 	CrashLog::gamelog_buffer = buffer;
@@ -256,6 +285,12 @@ char *CrashLog::LogGamelog(char *buffer, const char *last) const
 	return CrashLog::gamelog_buffer + seprintf(CrashLog::gamelog_buffer, last, "\n");
 }
 
+/**
+ * Fill the crash log buffer with all data of a crash log.
+ * @param buffer The begin where to write at.
+ * @param last   The last position in the buffer to write to.
+ * @return the position of the \c '\0' character after the buffer.
+ */
 char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 {
 	time_t cur_time = time(NULL);
@@ -281,6 +316,15 @@ char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 	return buffer;
 }
 
+/**
+ * Write the crash log to a file.
+ * @note On success the filename will be filled with the full path of the
+ *       crash log file. Make sure filename is at least \c MAX_PATH big.
+ * @param buffer The begin of the buffer to write to the disk.
+ * @param filename      Output for the filename of the written file.
+ * @param filename_last The last position in the filename buffer.
+ * @return true when the crash log was successfully written.
+ */
 bool CrashLog::WriteCrashLog(const char *buffer, char *filename, const char *filename_last) const
 {
 	seprintf(filename, filename_last, "%scrash.log", _personal_dir);
@@ -301,6 +345,14 @@ bool CrashLog::WriteCrashLog(const char *buffer, char *filename, const char *fil
 	return 0;
 }
 
+/**
+ * Write the (crash) savegame to a file.
+ * @note On success the filename will be filled with the full path of the
+ *       crash save file. Make sure filename is at least \c MAX_PATH big.
+ * @param filename      Output for the filename of the written file.
+ * @param filename_last The last position in the filename buffer.
+ * @return true when the crash save was successfully made.
+ */
 bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 {
 	/* If the map array doesn't exist, saving will fail too. If the map got
@@ -319,6 +371,14 @@ bool CrashLog::WriteSavegame(char *filename, const char *filename_last) const
 	}
 }
 
+/**
+ * Write the (crash) screenshot to a file.
+ * @note On success the filename will be filled with the full path of the
+ *       screenshot. Make sure filename is at least \c MAX_PATH big.
+ * @param filename      Output for the filename of the written file.
+ * @param filename_last The last position in the filename buffer.
+ * @return true when the crash screenshot was successfully made.
+ */
 bool CrashLog::WriteScreenshot(char *filename, const char *filename_last) const
 {
 	/* Don't draw when we have invalid screen size */
@@ -329,6 +389,12 @@ bool CrashLog::WriteScreenshot(char *filename, const char *filename_last) const
 	return res;
 }
 
+/**
+ * Makes the crash log, writes it to a file and then subsequently tries
+ * to make a crash dump and crash savegame. It uses DEBUG to write
+ * information like paths to the console.
+ * @return true when everything is made successfully.
+ */
 bool CrashLog::MakeCrashLog() const
 {
 	/* Don't keep looping logging crashes. */
@@ -384,11 +450,19 @@ bool CrashLog::MakeCrashLog() const
 	return ret;
 }
 
+/**
+ * Sets a message for the error message handler.
+ * @param message The error message of the error.
+ */
 /* static */ void CrashLog::SetErrorMessage(const char *message)
 {
 	CrashLog::message = message;
 }
 
+/**
+ * Try to close the sound/video stuff so it doesn't keep lingering around
+ * incorrect video states or so, e.g. keeping dpmi disabled.
+ */
 /* static */ void CrashLog::AfterCrashLogCleanup()
 {
 	if (_music_driver != NULL) _music_driver->Stop();

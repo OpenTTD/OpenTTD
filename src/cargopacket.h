@@ -55,34 +55,8 @@ public:
 	/** Maximum number of items in a single cargo packet. */
 	static const uint16 MAX_COUNT = UINT16_MAX;
 
-	/**
-	 * Create a new packet for savegame loading.
-	 */
 	CargoPacket();
-
-	/**
-	 * Creates a new cargo packet
-	 * @param source      the source station of the packet
-	 * @param source_xy   the source location of the packet
-	 * @param count       the number of cargo entities to put in this packet
-	 * @param source_type the 'type' of source the packet comes from (for subsidies)
-	 * @param source_id   the actual source of the packet (for subsidies)
-	 * @pre count != 0
-	 */
 	CargoPacket(StationID source, TileIndex source_xy, uint16 count, SourceType source_type, SourceID source_id);
-
-	/**
-	 * Creates a new cargo packet. Initializes the fields that cannot be changed later.
-	 * Used when loading or splitting packets.
-	 * @param count           the number of cargo entities to put in this packet
-	 * @param days_in_transit number of days the cargo has been in transit
-	 * @param source          the station the cargo was initially loaded
-	 * @param source_xy       the station location the cargo was initially loaded
-	 * @param loaded_at_xy    the location the cargo was loaded last
-	 * @param feeder_share    feeder share the packet has already accumulated
-	 * @param source_type     the 'type' of source the packet comes from (for subsidies)
-	 * @param source_id       the actual source of the packet (for subsidies)
-	 */
 	CargoPacket(uint16 count, byte days_in_transit, StationID source, TileIndex source_xy, TileIndex loaded_at_xy, Money feeder_share = 0, SourceType source_type = ST_INDUSTRY, SourceID source_id = INVALID_SOURCE);
 
 	/** Destroy the packet */
@@ -211,24 +185,12 @@ protected:
 
 	List packets;               ///< The cargo packets in this list
 
-	/**
-	 * Update the cache to reflect adding of this packet.
-	 * Increases count and days_in_transit
-	 * @param cp a new packet to be inserted
-	 */
 	void AddToCache(const CargoPacket *cp);
-
-	/**
-	 * Update the cached values to reflect the removal of this packet.
-	 * Decreases count and days_in_transit
-	 * @param cp Packet to be removed from cache
-	 */
 	void RemoveFromCache(const CargoPacket *cp);
 
 public:
 	/** Create the cargo list */
 	CargoList() {}
-	/** And destroy it ("frees" all cargo packets) */
 	~CargoList();
 
 	/**
@@ -277,47 +239,12 @@ public:
 	}
 
 
-	/**
-	 * Appends the given cargo packet
-	 * @warning After appending this packet may not exist anymore!
-	 * @note Do not use the cargo packet anymore after it has been appended to this CargoList!
-	 * @param cp the cargo packet to add
-	 * @pre cp != NULL
-	 */
 	void Append(CargoPacket *cp);
-
-	/**
-	 * Truncates the cargo in this list to the given amount. It leaves the
-	 * first count cargo entities and removes the rest.
-	 * @param max_remaining the maximum amount of entities to be in the list after the command
-	 */
 	void Truncate(uint max_remaining);
 
-	/**
-	 * Moves the given amount of cargo to another list.
-	 * Depending on the value of mta the side effects of this function differ:
-	 *  - MTA_FINAL_DELIVERY: destroys the packets that do not originate from a specific station
-	 *  - MTA_CARGO_LOAD:     sets the loaded_at_xy value of the moved packets
-	 *  - MTA_TRANSFER:       just move without side effects
-	 *  - MTA_UNLOAD:         just move without side effects
-	 * @param dest  the destination to move the cargo to
-	 * @param count the amount of cargo entities to move
-	 * @param mta   how to handle the moving (side effects)
-	 * @param data  Depending on mta the data of this variable differs:
-	 *              - MTA_FINAL_DELIVERY - station ID of packet's origin not to remove
-	 *              - MTA_CARGO_LOAD     - station's tile index of load
-	 *              - MTA_TRANSFER       - unused
-	 *              - MTA_UNLOAD         - unused
-	 * @param payment The payment helper
-	 *
-	 * @pre mta == MTA_FINAL_DELIVERY || dest != NULL
-	 * @pre mta == MTA_UNLOAD || mta == MTA_CARGO_LOAD || payment != NULL
-	 * @return true if there are still packets that might be moved from this cargo list
-	 */
 	template <class Tother_inst>
 	bool MoveTo(Tother_inst *dest, uint count, MoveToAction mta, CargoPayment *payment, uint data = 0);
 
-	/** Invalidates the cached data and rebuild it */
 	void InvalidateCache();
 };
 
@@ -331,18 +258,7 @@ protected:
 
 	Money feeder_share; ///< Cache for the feeder share
 
-	/**
-	 * Update the cache to reflect adding of this packet.
-	 * Increases count, feeder share and days_in_transit
-	 * @param cp a new packet to be inserted
-	 */
 	void AddToCache(const CargoPacket *cp);
-
-	/**
-	 * Update the cached values to reflect the removal of this packet.
-	 * Decreases count, feeder share and days_in_transit
-	 * @param cp Packet to be removed from cache
-	 */
 	void RemoveFromCache(const CargoPacket *cp);
 
 public:
@@ -360,12 +276,8 @@ public:
 		return this->feeder_share;
 	}
 
-	/**
-	 * Ages the all cargo in this list
-	 */
 	void AgeCargo();
 
-	/** Invalidates the cached data and rebuild it */
 	void InvalidateCache();
 
 	/**

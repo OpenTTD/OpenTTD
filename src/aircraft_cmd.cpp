@@ -533,6 +533,11 @@ static void PlayAircraftSound(const Vehicle *v)
 }
 
 
+/**
+ * Update cached values of an aircraft.
+ * Currently caches callback 36 max speed.
+ * @param v Vehicle
+ */
 void UpdateAircraftCache(Aircraft *v)
 {
 	uint max_speed = GetVehicleProperty(v, PROP_AIRCRAFT_SPEED, 0);

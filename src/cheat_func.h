@@ -18,10 +18,6 @@ extern Cheats _cheats;
 
 void ShowCheatWindow();
 
-/**
- * Return true if any cheat has been used, false otherwise
- * @return has a cheat been used?
- */
 bool CheatHasBeenUsed();
 
 #endif /* CHEAT_FUNC_H */

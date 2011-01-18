@@ -26,10 +26,6 @@ private:
 	/** Temporary 'local' location of the end of the buffer. */
 	static const char *gamelog_last;
 
-	/**
-	 * Helper function for printing the gamelog.
-	 * @param s the string to print.
-	 */
 	static void GamelogFillCrashLog(const char *s);
 protected:
 	/**
@@ -85,60 +81,16 @@ protected:
 	virtual char *LogModules(char *buffer, const char *last) const;
 
 
-	/**
-	 * Writes OpenTTD's version to the buffer.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
 	char *LogOpenTTDVersion(char *buffer, const char *last) const;
-
-	/**
-	 * Writes the (important) configuration settings to the buffer.
-	 * E.g. graphics set, sound set, blitter and AIs.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
 	char *LogConfiguration(char *buffer, const char *last) const;
-
-	/**
-	 * Writes information (versions) of the used libraries.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
 	char *LogLibraries(char *buffer, const char *last) const;
-
-	/**
-	 * Writes the gamelog data to the buffer.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
 	char *LogGamelog(char *buffer, const char *last) const;
 
 public:
 	/** Stub destructor to silence some compilers. */
 	virtual ~CrashLog() {}
 
-	/**
-	 * Fill the crash log buffer with all data of a crash log.
-	 * @param buffer The begin where to write at.
-	 * @param last   The last position in the buffer to write to.
-	 * @return the position of the \c '\0' character after the buffer.
-	 */
 	char *FillCrashLog(char *buffer, const char *last) const;
-
-	/**
-	 * Write the crash log to a file.
-	 * @note On success the filename will be filled with the full path of the
-	 *       crash log file. Make sure filename is at least \c MAX_PATH big.
-	 * @param buffer The begin of the buffer to write to the disk.
-	 * @param filename      Output for the filename of the written file.
-	 * @param filename_last The last position in the filename buffer.
-	 * @return true when the crash log was successfully written.
-	 */
 	bool WriteCrashLog(const char *buffer, char *filename, const char *filename_last) const;
 
 	/**
@@ -151,33 +103,9 @@ public:
 	 *         was successful (not all OSes support dumping files).
 	 */
 	virtual int WriteCrashDump(char *filename, const char *filename_last) const;
-
-	/**
-	 * Write the (crash) savegame to a file.
-	 * @note On success the filename will be filled with the full path of the
-	 *       crash save file. Make sure filename is at least \c MAX_PATH big.
-	 * @param filename      Output for the filename of the written file.
-	 * @param filename_last The last position in the filename buffer.
-	 * @return true when the crash save was successfully made.
-	 */
 	bool WriteSavegame(char *filename, const char *filename_last) const;
-
-	/**
-	 * Write the (crash) screenshot to a file.
-	 * @note On success the filename will be filled with the full path of the
-	 *       screenshot. Make sure filename is at least \c MAX_PATH big.
-	 * @param filename      Output for the filename of the written file.
-	 * @param filename_last The last position in the filename buffer.
-	 * @return true when the crash screenshot was successfully made.
-	 */
 	bool WriteScreenshot(char *filename, const char *filename_last) const;
 
-	/**
-	 * Makes the crash log, writes it to a file and then subsequently tries
-	 * to make a crash dump and crash savegame. It uses DEBUG to write
-	 * information like paths to the console.
-	 * @return true when everything is made successfully.
-	 */
 	bool MakeCrashLog() const;
 
 	/**
@@ -187,16 +115,7 @@ public:
 	 */
 	static void InitialiseCrashLog();
 
-	/**
-	 * Sets a message for the error message handler.
-	 * @param message The error message of the error.
-	 */
 	static void SetErrorMessage(const char *message);
-
-	/**
-	 * Try to close the sound/video stuff so it doesn't keep lingering around
-	 * incorrect video states or so, e.g. keeping dpmi disabled.
-	 */
 	static void AfterCrashLogCleanup();
 };
 

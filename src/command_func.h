@@ -34,47 +34,24 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
  */
 #define return_cmd_error(errcode) return CommandCost(errcode);
 
-/**
- * Execute a command
- */
 CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags, uint32 cmd, const char *text = NULL);
 CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags);
 
-/**
- * Execute a network safe DoCommand function
- */
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback = NULL, const char *text = NULL, bool my_cmd = true);
 bool DoCommandP(const CommandContainer *container, bool my_cmd = true);
 
-/** Internal helper function for DoCommandP. Do not use. */
 CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, bool my_cmd, bool estimate_only);
 
 #ifdef ENABLE_NETWORK
-/**
- * Send a command over the network
- */
 void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, CompanyID company);
 #endif /* ENABLE_NETWORK */
 
 extern Money _additional_cash_required;
 
-/**
- * Checks if a integer value belongs to a command.
- */
 bool IsValidCommand(uint32 cmd);
-/**
- * Returns the flags from a given command.
- */
 byte GetCommandFlags(uint32 cmd);
-/**
- * Returns the name of a given command.
- */
 const char *GetCommandName(uint32 cmd);
-/**
- * Returns the current money available which can be used for a command.
- */
 Money GetAvailableMoneyForCommand();
-
 bool IsCommandAllowedWhilePaused(uint32 cmd);
 
 /**
