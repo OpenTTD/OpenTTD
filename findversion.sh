@@ -99,6 +99,11 @@ elif [ -d "$ROOT_DIR/.git" ]; then
 		# No rev? Maybe it is a custom git-svn clone
 		REV_NR=`LC_ALL=C git log --pretty=format:%b --grep="git-svn-id:.*@[0-9]*" -1 | sed "s@.*\@\([0-9]*\).*@\1@"`
 	fi
+	TAG=`git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null`
+	if [ -n "$TAG" ]; then
+		BRANCH=""
+		REV=$TAG
+	fi
 elif [ -d "$ROOT_DIR/.hg" ]; then
 	# We are a hg checkout
 	if [ -n "`hg status | grep -v '^?'`" ]; then

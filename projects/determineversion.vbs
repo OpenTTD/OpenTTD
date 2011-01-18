@@ -201,7 +201,7 @@ Function DetermineSVNVersion()
 						End If ' line <> "master"
 					End If ' Err.Number = 0
 
-					Set oExec = WshShell.Exec("git log --pretty=format:%s --grep=" & Chr(34) & "^(svn r[0-9]*)" & Chr(34) & " -1 ../")
+					Set oExec = WshShell.Exec("git log --pretty=format:%s --grep=" & Chr(34) & "^(svn r[0-9]*)" & Chr(34) & " -1")
 					if Err.Number = 0 Then
 						revision = Mid(oExec.StdOut.ReadLine(), 7)
 						revision = Mid(revision, 1, InStr(revision, ")") - 1)
@@ -210,13 +210,26 @@ Function DetermineSVNVersion()
 						' No revision? Maybe it is a custom git-svn clone
 						' Reset error number as WshShell.Exec will not do that on success
 						Err.Clear
-						Set oExec = WshShell.Exec("git log --pretty=format:%b --grep=" & Chr(34) & "git-svn-id:.*@[0-9]*" & Chr(34) & " -1 ../")
+						Set oExec = WshShell.Exec("git log --pretty=format:%b --grep=" & Chr(34) & "git-svn-id:.*@[0-9]*" & Chr(34) & " -1")
 						If Err.Number = 0 Then
 							revision = oExec.StdOut.ReadLine()
 							revision = Mid(revision, InStr(revision, "@") + 1)
 							revision = Mid(revision, 1, InStr(revision, " ") - 1)
 						End If ' Err.Number = 0
 					End If ' revision = ""
+
+					' Check if a tag is currently checked out
+					Err.Clear
+					Set oExec = WshShell.Exec("git name-rev --name-only --tags --no-undefined HEAD")
+					If Err.Number = 0 Then
+						' Wait till the application is finished ...
+						Do While oExec.Status = 0
+						Loop
+						If oExec.ExitCode = 0 Then
+							version = oExec.StdOut.ReadLine()
+							branch = ""
+						End If ' oExec.ExitCode = 0
+					End If ' Err.Number = 0
 				End If ' Err.Number = 0
 			End If ' oExec.ExitCode = 0
 		End If ' Err.Number = 0
