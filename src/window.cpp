@@ -39,6 +39,7 @@
 
 static Point _drag_delta; ///< delta between mouse cursor and upper left corner of dragged window
 static Window *_mouseover_last_w = NULL; ///< Window of the last #MOUSEOVER event.
+static Window *_last_scroll_window = NULL; ///< Window of the last scroll event.
 
 /** List of windows opened at the screen sorted from the front. */
 Window *_z_front_window = NULL;
@@ -670,6 +671,9 @@ Window::~Window()
 
 	/* Prevent Mouseover() from resetting mouse-over coordinates on a non-existing window */
 	if (_mouseover_last_w == this) _mouseover_last_w = NULL;
+
+	/* We can't scroll the window when it's closed. */
+	if (_last_scroll_window == this) _last_scroll_window = NULL;
 
 	/* Make sure we don't try to access this window as the focused window when it doesn't exist anymore. */
 	if (_focused_window == this) _focused_window = NULL;
@@ -1345,6 +1349,7 @@ void InitWindowSystem()
 	_z_front_window = NULL;
 	_focused_window = NULL;
 	_mouseover_last_w = NULL;
+	_last_scroll_window = NULL;
 	_scrolling_viewport = false;
 	_mouse_hovering = false;
 
@@ -1882,17 +1887,21 @@ static EventState HandleViewportScroll()
 
 	if (!_scrolling_viewport) return ES_NOT_HANDLED;
 
-	Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+	/* When we don't have a last scroll window we are starting to scroll.
+	 * When the last scroll window and this are not the same we went
+	 * outside of the window and should not left-mouse scroll anymore. */
+	if (_last_scroll_window == NULL) _last_scroll_window = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	if (!(_right_button_down || scrollwheel_scrolling || (_settings_client.gui.left_mouse_btn_scrolling && _left_button_down)) || w == NULL) {
+	if (_last_scroll_window == NULL || !(_right_button_down || scrollwheel_scrolling || (_settings_client.gui.left_mouse_btn_scrolling && _left_button_down))) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
+		_last_scroll_window = NULL;
 		return ES_NOT_HANDLED;
 	}
 
-	if (w == FindWindowById(WC_MAIN_WINDOW, 0) && w->viewport->follow_vehicle != INVALID_VEHICLE) {
+	if (_last_scroll_window == FindWindowById(WC_MAIN_WINDOW, 0) && _last_scroll_window->viewport->follow_vehicle != INVALID_VEHICLE) {
 		/* If the main window is following a vehicle, then first let go of it! */
-		const Vehicle *veh = Vehicle::Get(w->viewport->follow_vehicle);
+		const Vehicle *veh = Vehicle::Get(_last_scroll_window->viewport->follow_vehicle);
 		ScrollMainWindowTo(veh->x_pos, veh->y_pos, veh->z_pos, true); // This also resets follow_vehicle
 		return ES_NOT_HANDLED;
 	}
@@ -1915,7 +1924,7 @@ static EventState HandleViewportScroll()
 	}
 
 	/* Create a scroll-event and send it to the window */
-	if (delta.x != 0 || delta.y != 0) w->OnScroll(delta);
+	if (delta.x != 0 || delta.y != 0) _last_scroll_window->OnScroll(delta);
 
 	_cursor.delta.x = 0;
 	_cursor.delta.y = 0;
