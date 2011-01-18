@@ -279,8 +279,14 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 		if (!v->current_order.IsType(OT_CONDITIONAL) && (travelling || time_taken > v->current_order.wait_time)) {
 			/* Round the time taken up to the nearest day, as this will avoid
 			 * confusion for people who are timetabling in days, and can be
-			 * adjusted later by people who aren't. */
-			time_taken = CeilDiv(time_taken, DAY_TICKS) * DAY_TICKS;
+			 * adjusted later by people who aren't.
+			 * For trains/aircraft multiple movement cycles are done in one
+			 * tick. This makes it possible to leave the station and process
+			 * e.g. a depot order in the same tick, causing it to not fill
+			 * the timetable entry like is done for road vehicles/ships.
+			 * Thus always make sure at least one tick is used between the
+			 * processing of different orders when filling the timetable. */
+			time_taken = CeilDiv(max(time_taken, 1U), DAY_TICKS) * DAY_TICKS;
 
 			ChangeTimetable(v, v->cur_order_index, time_taken, travelling);
 		}
