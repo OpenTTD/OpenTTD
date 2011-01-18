@@ -19,6 +19,7 @@
 #include "economy_func.h"
 #include "slope_type.h"
 #include "strings_type.h"
+#include "date_type.h"
 
 /** Railtype flags. */
 enum RailTypeFlags {
@@ -217,6 +218,21 @@ struct RailtypeInfo {
 	byte map_colour;
 
 	/**
+	 * Introduction date.
+	 * When #INVALID_DATE or a vehicle using this railtype gets introduced earlier,
+	 * the vehicle's introduction date will be used instead for this railtype.
+	 * The introduction at this date is furthermore limited by the
+	 * #introduction_required_types.
+	 */
+	Date introduction_date;
+
+	/**
+	 * Bitmask of railtypes that are required for this railtype to be introduced
+	 * at a given #introduction_date.
+	 */
+	RailTypes introduction_required_railtypes;
+
+	/**
 	 * Bitmask of which other railtypes are introduced when this railtype is introduced.
 	 */
 	RailTypes introduces_railtypes;
@@ -367,6 +383,8 @@ bool ValParamRailtype(const RailType rail);
  * @return The "best" railtype a company has available
  */
 RailType GetBestRailtype(const CompanyID company);
+
+RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date);
 
 /**
  * Get the rail types the given company can build.

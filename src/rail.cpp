@@ -192,6 +192,40 @@ RailType GetBestRailtype(const CompanyID company)
 	return RAILTYPE_RAIL;
 }
 
+/**
+ * Add the rail types that are to be introduced at the given date.
+ * @param current The currently available railtypes.
+ * @param date    The date for the introduction comparisions.
+ * @return The rail types that should be available when date
+ *         introduced rail types are taken into account as well.
+ */
+RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date)
+{
+	RailTypes rts = current;
+
+	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+		const RailtypeInfo *rti = GetRailTypeInfo(rt);
+		/* Unused rail type. */
+		if (rti->label == 0) continue;
+
+		/* Not date introduced. */
+		if (!IsInsideMM(rti->introduction_date, 0, MAX_DAY)) continue;
+
+		/* Not yet introduced at this date. */
+		if (rti->introduction_date > date) continue;
+
+		/* Have we introduced all required railtypes? */
+		RailTypes required = rti->introduction_required_railtypes;
+		if ((rts & required) != required) continue;
+
+		rts |= rti->introduces_railtypes;
+	}
+
+	/* When we added railtypes we need to run this method again; the added
+	 * railtypes might enable more rail types to become introduced. */
+	return rts == current ? rts : AddDateIntroducedRailTypes(rts, date);
+}
+
 RailTypes GetCompanyRailtypes(CompanyID company)
 {
 	RailTypes rts = RAILTYPES_NONE;
@@ -211,7 +245,7 @@ RailTypes GetCompanyRailtypes(CompanyID company)
 		}
 	}
 
-	return rts;
+	return AddDateIntroducedRailTypes(rts, _date);
 }
 
 RailType GetRailTypeByLabel(RailTypeLabel label)

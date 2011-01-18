@@ -3209,6 +3209,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 
 			case 0x0E: // Compatible railtype list
 			case 0x0F: // Powered railtype list
+			case 0x18: // Railtype list required for date introduction
 			case 0x19: // Introduced railtype list
 			{
 				/* Rail type compatibility bits are added to the existing bits
@@ -3222,6 +3223,7 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 						switch (prop) {
 							case 0x0E: SetBit(rti->compatible_railtypes, rt);            break;
 							case 0x0F: SetBit(rti->powered_railtypes, rt);               break;
+							case 0x18: SetBit(rti->introduction_required_railtypes, rt); break;
 							case 0x19: SetBit(rti->introduces_railtypes, rt);            break;
 						}
 					}
@@ -3255,6 +3257,10 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 
 			case 0x16: // Map colour
 				rti->map_colour = MapDOSColour(buf->ReadByte());
+				break;
+
+			case 0x17: // Introduction date
+				rti->introduction_date = buf->ReadDWord();
 				break;
 
 			default:
@@ -3304,6 +3310,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 
 			case 0x0E: // Compatible railtype list
 			case 0x0F: // Powered railtype list
+			case 0x18: // Railtype list required for date introduction
 			case 0x19: // Introduced railtype list
 				for (int j = buf->ReadByte(); j != 0; j--) buf->ReadDWord();
 				break;
@@ -3314,6 +3321,10 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 			case 0x15: // Acceleration model
 			case 0x16: // Map colour
 				buf->ReadByte();
+				break;
+
+			case 0x17: // Introduction date
+				buf->ReadDWord();
 				break;
 
 			default:

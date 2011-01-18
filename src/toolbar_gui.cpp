@@ -703,6 +703,9 @@ static CallBackFunction ToolbarBuildRailClick(Window *w)
 		used_railtypes |= GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes;
 	}
 
+	/* Get the date introduced railtypes as well. */
+	used_railtypes = AddDateIntroducedRailTypes(used_railtypes, MAX_DAY);
+
 	const Company *c = Company::Get(_local_company);
 	DropDownList *list = new DropDownList();
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
