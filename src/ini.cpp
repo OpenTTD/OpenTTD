@@ -26,6 +26,12 @@
 # include <shellapi.h>
 #endif
 
+/**
+ * Construct a new in-memory item of an Ini file.
+ * @param parent the group we belong to
+ * @param name   the name of the item
+ * @param len    the length of the name of the item
+ */
 IniItem::IniItem(IniGroup *parent, const char *name, size_t len) : next(NULL), value(NULL), comment(NULL)
 {
 	if (len == 0) len = strlen(name);
@@ -35,6 +41,7 @@ IniItem::IniItem(IniGroup *parent, const char *name, size_t len) : next(NULL), v
 	parent->last_item = &this->next;
 }
 
+/** Free everything we loaded. */
 IniItem::~IniItem()
 {
 	free(this->name);
@@ -44,12 +51,22 @@ IniItem::~IniItem()
 	delete this->next;
 }
 
+/**
+ * Replace the current value with another value.
+ * @param value the value to replace with.
+ */
 void IniItem::SetValue(const char *value)
 {
 	free(this->value);
 	this->value = strdup(value);
 }
 
+/**
+ * Construct a new in-memory group of an Ini file.
+ * @param parent the file we belong to
+ * @param name   the name of the group
+ * @param len    the length of the name of the group
+ */
 IniGroup::IniGroup(IniFile *parent, const char *name, size_t len) : next(NULL), type(IGT_VARIABLES), item(NULL), comment(NULL)
 {
 	if (len == 0) len = strlen(name);
@@ -69,6 +86,7 @@ IniGroup::IniGroup(IniFile *parent, const char *name, size_t len) : next(NULL), 
 	}
 }
 
+/** Free everything we loaded. */
 IniGroup::~IniGroup()
 {
 	free(this->name);
@@ -78,6 +96,13 @@ IniGroup::~IniGroup()
 	delete this->next;
 }
 
+/**
+ * Get the item with the given name, and if it doesn't exist
+ * and create is true it creates a new item.
+ * @param name   name of the item to find.
+ * @param create whether to create an item when not found or not.
+ * @return the requested item or NULL if not found.
+ */
 IniItem *IniGroup::GetItem(const char *name, bool create)
 {
 	for (IniItem *item = this->item; item != NULL; item = item->next) {
@@ -90,6 +115,9 @@ IniItem *IniGroup::GetItem(const char *name, bool create)
 	return new IniItem(this, name, strlen(name));
 }
 
+/**
+ * Clear all items in the group
+ */
 void IniGroup::Clear()
 {
 	delete this->item;
@@ -97,17 +125,30 @@ void IniGroup::Clear()
 	this->last_item = &this->item;
 }
 
+/**
+ * Construct a new in-memory Ini file representation.
+ * @param list_group_names A NULL terminated list with groups that should be
+ *                         loaded as lists instead of variables.
+ */
 IniFile::IniFile(const char * const *list_group_names) : group(NULL), comment(NULL), list_group_names(list_group_names)
 {
 	this->last_group = &this->group;
 }
 
+/** Free everything we loaded. */
 IniFile::~IniFile()
 {
 	free(this->comment);
 	delete this->group;
 }
 
+/**
+ * Get the group with the given name, and if it doesn't exist
+ * create a new group.
+ * @param name name of the group to find.
+ * @param len  the maximum length of said name.
+ * @return the requested group.
+ */
 IniGroup *IniFile::GetGroup(const char *name, size_t len)
 {
 	if (len == 0) len = strlen(name);
@@ -125,6 +166,10 @@ IniGroup *IniFile::GetGroup(const char *name, size_t len)
 	return group;
 }
 
+/**
+ * Remove the group with the given name.
+ * @param name name of the group to remove.
+ */
 void IniFile::RemoveGroup(const char *name)
 {
 	size_t len = strlen(name);
@@ -152,6 +197,11 @@ void IniFile::RemoveGroup(const char *name)
 	delete group;
 }
 
+/**
+ * Load the Ini file's data from the disk.
+ * @param filename the file to load.
+ * @pre nothing has been loaded yet.
+ */
 void IniFile::LoadFromDisk(const char *filename)
 {
 	assert(this->last_group == &this->group);
@@ -268,6 +318,11 @@ void IniFile::LoadFromDisk(const char *filename)
 	fclose(in);
 }
 
+/**
+ * Save the Ini file's data to the disk.
+ * @param filename the file to save to.
+ * @return true if saving succeeded.
+ */
 bool IniFile::SaveToDisk(const char *filename)
 {
 	/*

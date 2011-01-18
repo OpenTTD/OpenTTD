@@ -128,25 +128,8 @@ int GetStringHeight(StringID str, int maxw);
 Dimension GetStringMultiLineBoundingBox(StringID str, const Dimension &suggestion);
 void LoadStringWidthTable();
 
-/**
- * Let the dirty blocks repainting by the video driver.
- *
- * @ingroup dirty
- */
 void DrawDirtyBlocks();
-
-/**
- * Set a new dirty block.
- *
- * @ingroup dirty
- */
 void SetDirtyBlocks(int left, int top, int right, int bottom);
-
-/**
- * Marks the whole screen as dirty.
- *
- * @ingroup dirty
- */
 void MarkWholeScreenDirty();
 
 void GfxInitPalettes();

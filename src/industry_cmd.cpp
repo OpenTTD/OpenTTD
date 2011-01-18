@@ -2644,6 +2644,10 @@ void InitializeIndustries()
 	_industry_builder.Reset();
 }
 
+/**
+ * Is an industry with the spec a raw industry?
+ * @return true if it should be handled as a raw industry
+ */
 bool IndustrySpec::IsRawIndustry() const
 {
 	/* Lumber mills are extractive/organic, but can always be built like a non-raw industry */
@@ -2651,6 +2655,10 @@ bool IndustrySpec::IsRawIndustry() const
 			(this->behaviour & INDUSTRYBEH_CUT_TREES) == 0;
 }
 
+/**
+ * Get the cost for constructing this industry
+ * @return the cost (inflation corrected etc)
+ */
 Money IndustrySpec::GetConstructionCost() const
 {
 	/* Building raw industries like secondary uses different price base */
@@ -2658,11 +2666,21 @@ Money IndustrySpec::GetConstructionCost() const
 			PR_BUILD_INDUSTRY_RAW : PR_BUILD_INDUSTRY] * this->cost_multiplier) >> 8;
 }
 
+/**
+ * Get the cost for removing this industry
+ * Take note that the cost will always be zero for non-grf industries.
+ * Only if the grf author did specified a cost will it be applicable.
+ * @return the cost (inflation corrected etc)
+ */
 Money IndustrySpec::GetRemovalCost() const
 {
 	return (_price[PR_CLEAR_INDUSTRY] * this->removal_cost_multiplier) >> 8;
 }
 
+/**
+ * Determines whether this industrytype uses smooth economy or whether it uses standard/newgrf production changes.
+ * @return true if smooth economy is used.
+ */
 bool IndustrySpec::UsesSmoothEconomy() const
 {
 	return _settings_game.economy.smooth_economy &&

@@ -473,6 +473,13 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	}
 }
 
+/**
+ * Draws wires on a tunnel tile
+ *
+ * DrawTile_TunnelBridge() calls this function to draw the wires on the bridge.
+ *
+ * @param ti The Tileinfo to draw the tile for
+ */
 void DrawCatenaryOnBridge(const TileInfo *ti)
 {
 	TileIndex end = GetSouthernBridgeEnd(ti->tile);
@@ -530,6 +537,11 @@ void DrawCatenaryOnBridge(const TileInfo *ti)
 	}
 }
 
+/**
+ * Draws overhead wires and pylons for electric railways.
+ * @param ti The TileInfo struct of the tile being drawn
+ * @see DrawCatenaryRailway
+ */
 void DrawCatenary(const TileInfo *ti)
 {
 	switch (GetTileType(ti->tile)) {

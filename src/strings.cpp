@@ -1383,6 +1383,10 @@ extern void SortNetworkLanguages();
 static inline void SortNetworkLanguages() {}
 #endif /* ENABLE_NETWORK */
 
+/**
+ * Check whether the header is a valid header for OpenTTD.
+ * @return true iff the header is deemed valid.
+ */
 bool LanguagePackHeader::IsValid() const
 {
 	return this->ident        == TO_LE32(LanguagePackHeader::IDENT) &&

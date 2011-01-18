@@ -43,9 +43,6 @@ extern Tile *_m;
  */
 extern TileExtended *_me;
 
-/**
- * Allocate a new map with the given size.
- */
 void AllocateMap(uint size_x, uint size_y);
 
 /**
@@ -256,9 +253,6 @@ static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
  */
 #define TILE_ADDXY(tile, x, y) TILE_ADD(tile, TileDiffXY(x, y))
 
-/**
- * Adds an offset to a tile and check if we are still on the map.
- */
 TileIndex TileAddWrap(TileIndex tile, int addx, int addy);
 
 /**
@@ -403,14 +397,7 @@ static inline DiagDirection DiagdirBetweenTiles(TileIndex tile_from, TileIndex t
  */
 typedef bool TestTileOnSearchProc(TileIndex tile, void *user_data);
 
-/**
- * Searches for some cirumstances of a tile around a given tile with a helper function.
- */
 bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, void *user_data);
-
-/**
- * Searches for some cirumstances of a tile around a given rectangle with a helper function.
- */
 bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOnSearchProc proc, void *user_data);
 
 /**
@@ -431,9 +418,6 @@ static inline TileIndex RandomTileSeed(uint32 r)
  */
 #define RandomTile() RandomTileSeed(Random())
 
-/**
- * Finds the distance for the closest tile with water/land given a tile
- */
 uint GetClosestWaterDistance(TileIndex tile, bool water);
 
 #endif /* MAP_FUNC_H */

@@ -134,30 +134,9 @@ struct IndustrySpec {
 	bool enabled;                         ///< entity still available (by default true).newgrf can disable it, though
 	GRFFileProps grf_prop;                ///< properties related to the grf file
 
-	/**
-	 * Is an industry with the spec a raw industry?
-	 * @return true if it should be handled as a raw industry
-	 */
 	bool IsRawIndustry() const;
-
-	/**
-	 * Get the cost for constructing this industry
-	 * @return the cost (inflation corrected etc)
-	 */
 	Money GetConstructionCost() const;
-
-	/**
-	 * Get the cost for removing this industry
-	 * Take note that the cost will always be zero for non-grf industries.
-	 * Only if the grf author did specified a cost will it be applicable.
-	 * @return the cost (inflation corrected etc)
-	 */
 	Money GetRemovalCost() const;
-
-	/**
-	 * Determines whether this industrytype uses smooth economy or whether it uses standard/newgrf production changes.
-	 * @return true if smooth economy is used.
-	 */
 	bool UsesSmoothEconomy() const;
 };
 

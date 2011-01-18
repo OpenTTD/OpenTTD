@@ -1638,6 +1638,11 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom)
 	}
 }
 
+/**
+ * Mark a tile given by its index dirty for repaint.
+ * @param tile The tile to mark dirty.
+ * @ingroup dirty
+ */
 void MarkTileDirtyByTile(TileIndex tile)
 {
 	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, GetTileZ(tile));

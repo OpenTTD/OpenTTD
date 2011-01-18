@@ -28,11 +28,6 @@ CommandCost CheckOwnership(Owner owner, TileIndex tile = 0);
 CommandCost CheckTileOwnership(TileIndex tile);
 
 /* misc functions */
-/**
- * Mark a tile given by its index dirty for repaint.
- *
- * @ingroup dirty
- */
 void MarkTileDirtyByTile(TileIndex tile);
 
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);

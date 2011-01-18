@@ -57,10 +57,6 @@ struct LanguagePackHeader {
 	char genders[MAX_NUM_GENDERS][CASE_GENDER_LEN]; ///< the genders used by this translation
 	char cases[MAX_NUM_CASES][CASE_GENDER_LEN];     ///< the cases used by this translation
 
-	/**
-	 * Check whether the header is a valid header for OpenTTD.
-	 * @return true iff the header is deemed valid.
-	 */
 	bool IsValid() const;
 
 	/**

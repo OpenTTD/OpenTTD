@@ -121,10 +121,6 @@ struct HouseSpec {
 	byte processing_time;              ///< Periodic refresh multiplier
 	byte minimum_life;                 ///< The minimum number of years this house will survive before the town rebuilds it
 
-	/**
-	 * Get the cost for removing this house
-	 * @return the cost (inflation corrected etc)
-	 */
 	Money GetRemovalCost() const;
 
 	static FORCEINLINE HouseSpec *Get(size_t house_id)

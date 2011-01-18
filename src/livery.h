@@ -78,11 +78,6 @@ struct Livery {
 	byte colour2; ///< Second colour, for vehicles with 2CC support.
 };
 
-/**
- * Reset the livery schemes to the company's primary colour.
- * This is used on loading games without livery information and on new company start up.
- * @param c Company to reset.
- */
 void ResetCompanyLivery(Company *c);
 
 #endif /* LIVERY_H */

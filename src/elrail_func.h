@@ -34,11 +34,6 @@ static inline bool HasCatenaryDrawn(RailType rt)
 	return HasCatenary(rt) && !IsInvisibilitySet(TO_CATENARY) && !_settings_game.vehicle.disable_elrails;
 }
 
-/**
- * Draws overhead wires and pylons for electric railways.
- * @param ti The TileInfo struct of the tile being drawn
- * @see DrawCatenaryRailway
- */
 void DrawCatenary(const TileInfo *ti);
 void DrawCatenaryOnTunnel(const TileInfo *ti);
 void DrawCatenaryOnBridge(const TileInfo *ti);

@@ -1559,7 +1559,7 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 	_video_driver->MakeDirty(left, top, right - left, bottom - top);
 }
 
-/*!
+/**
  * Repaints the rectangle blocks which are marked as 'dirty'.
  *
  * @see SetDirtyBlocks
@@ -1653,7 +1653,7 @@ void DrawDirtyBlocks()
 	_invalid_rect.bottom = 0;
 }
 
-/*!
+/**
  * This function extends the internal _invalid_rect rectangle as it
  * now contains the rectangle defined by the given parameters. Note
  * the point (0,0) is top left.
@@ -1705,10 +1705,11 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
 	} while (--height != 0);
 }
 
-/*!
+/**
  * This function mark the whole screen as dirty. This results in repainting
  * the whole screen. Use this with care as this function will break the
  * idea about marking only parts of the screen as 'dirty'.
+ * @ingroup dirty
  */
 void MarkWholeScreenDirty()
 {

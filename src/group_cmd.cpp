@@ -409,6 +409,14 @@ void UpdateTrainGroupID(Train *v)
 	SetWindowDirty(WC_REPLACE_VEHICLE, VEH_TRAIN);
 }
 
+/**
+ * Get the number of engines with EngineID id_e in the group with GroupID
+ * id_g
+ * @param company The company the group belongs to
+ * @param id_g The GroupID of the group used
+ * @param id_e The EngineID of the engine to count
+ * @return The number of engines with EngineID id_e in the group
+ */
 uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 {
 	if (Group::IsValidID(id_g)) return Group::Get(id_g)->num_engines[id_e];
