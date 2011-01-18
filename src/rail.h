@@ -360,59 +360,18 @@ int TicksToLeaveDepot(const Train *v);
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);
 
 
-/**
- * Finds out if a company has a certain railtype available
- * @param company the company in question
- * @param railtype requested RailType
- * @return true if company has requested RailType available
- */
 bool HasRailtypeAvail(const CompanyID company, const RailType railtype);
-
-/**
- * Validate functions for rail building.
- * @param rail the railtype to check.
- * @return true if the current company may build the rail.
- */
 bool ValParamRailtype(const RailType rail);
-
-/**
- * Returns the "best" railtype a company can build.
- * As the AI doesn't know what the BEST one is, we have our own priority list
- * here. When adding new railtypes, modify this function
- * @param company the company "in action"
- * @return The "best" railtype a company has available
- */
-RailType GetBestRailtype(const CompanyID company);
 
 RailTypes AddDateIntroducedRailTypes(RailTypes current, Date date);
 
-/**
- * Get the rail types the given company can build.
- * @param c the company to get the rail types for.
- * @return the rail types.
- */
+RailType GetBestRailtype(const CompanyID company);
 RailTypes GetCompanyRailtypes(const CompanyID c);
 
-/**
- * Get the rail type for a given label.
- * @param label the railtype label.
- * @return the railtype.
- */
 RailType GetRailTypeByLabel(RailTypeLabel label);
 
-/**
- * Reset all rail type information to its default values.
- */
 void ResetRailTypes();
-
-/**
- * Resolve sprites of custom rail types
- */
 void InitRailTypes();
-
-/**
- * Allocate a new rail type label
- */
 RailType AllocateRailType(RailTypeLabel label);
 
 #endif /* RAIL_H */

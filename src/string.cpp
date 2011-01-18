@@ -48,6 +48,20 @@ static int CDECL vseprintf(char *str, const char *last, const char *format, va_l
 	return min((int)diff, vsnprintf(str, diff + 1, format, ap));
 }
 
+/**
+ * Appends characters from one string to another.
+ *
+ * Appends the source string to the destination string with respect of the
+ * terminating null-character and the maximum size of the destination
+ * buffer.
+ *
+ * @note usage ttd_strlcat(dst, src, lengthof(dst));
+ * @note lengthof() applies only to fixed size arrays
+ *
+ * @param dst The buffer containing the target string
+ * @param src The buffer containing the string to append
+ * @param size The maximum size of the destination buffer
+ */
 void ttd_strlcat(char *dst, const char *src, size_t size)
 {
 	assert(size > 0);
@@ -60,6 +74,20 @@ void ttd_strlcat(char *dst, const char *src, size_t size)
 }
 
 
+/**
+ * Copies characters from one buffer to another.
+ *
+ * Copies the source string to the destination buffer with respect of the
+ * terminating null-character and the maximum size of the destination
+ * buffer.
+ *
+ * @note usage ttd_strlcpy(dst, src, lengthof(dst));
+ * @note lengthof() applies only to fixed size arrays
+ *
+ * @param dst The destination buffer
+ * @param src The buffer containing the string to copy
+ * @param size The maximum size of the destination buffer
+ */
 void ttd_strlcpy(char *dst, const char *src, size_t size)
 {
 	assert(size > 0);
@@ -70,6 +98,22 @@ void ttd_strlcpy(char *dst, const char *src, size_t size)
 }
 
 
+/**
+ * Appends characters from one string to another.
+ *
+ * Appends the source string to the destination string with respect of the
+ * terminating null-character and and the last pointer to the last element
+ * in the destination buffer. If the last pointer is set to NULL no
+ * boundary check is performed.
+ *
+ * @note usage: strecat(dst, src, lastof(dst));
+ * @note lastof() applies only to fixed size arrays
+ *
+ * @param dst The buffer containing the target string
+ * @param src The buffer containing the string to append
+ * @param last The pointer to the last element of the destination buffer
+ * @return The pointer to the terminating null-character in the destination buffer
+ */
 char *strecat(char *dst, const char *src, const char *last)
 {
 	assert(dst <= last);
@@ -82,6 +126,22 @@ char *strecat(char *dst, const char *src, const char *last)
 }
 
 
+/**
+ * Copies characters from one buffer to another.
+ *
+ * Copies the source string to the destination buffer with respect of the
+ * terminating null-character and the last pointer to the last element in
+ * the destination buffer. If the last pointer is set to NULL no boundary
+ * check is performed.
+ *
+ * @note usage: strecpy(dst, src, lastof(dst));
+ * @note lastof() applies only to fixed size arrays
+ *
+ * @param dst The destination buffer
+ * @param src The buffer containing the string to copy
+ * @param last The pointer to the last element of the destination buffer
+ * @return The pointer to the terminating null-character in the destination buffer
+ */
 char *strecpy(char *dst, const char *src, const char *last)
 {
 	assert(dst <= last);
@@ -115,6 +175,14 @@ char *CDECL str_fmt(const char *str, ...)
 }
 
 
+/**
+ * Scans the string for valid characters and if it finds invalid ones,
+ * replaces them with a question mark '?' (if not ignored)
+ * @param str the string to validate
+ * @param last the last valid character of str
+ * @param allow_newlines whether newlines should be allowed or ignored
+ * @param ignore whether to ignore or replace with a question mark
+ */
 void str_validate(char *str, const char *last, bool allow_newlines, bool ignore)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
@@ -169,6 +237,13 @@ void str_validate(char *str, const char *last, bool allow_newlines, bool ignore)
 	*dst = '\0';
 }
 
+/**
+ * Checks whether the given string is valid, i.e. contains only
+ * valid (printable) characters and is properly terminated.
+ * @param str  The string to validate.
+ * @param last The last character of the string, i.e. the string
+ *             must be terminated here or earlier.
+ */
 bool StrValid(const char *str, const char *last)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
@@ -193,6 +268,7 @@ bool StrValid(const char *str, const char *last)
 	return *str == '\0';
 }
 
+/** Scans the string for colour codes and strips them */
 void str_strip_colours(char *str)
 {
 	char *dst = str;

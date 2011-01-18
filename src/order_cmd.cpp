@@ -42,6 +42,10 @@ INSTANTIATE_POOL_METHODS(Order)
 OrderListPool _orderlist_pool("OrderList");
 INSTANTIATE_POOL_METHODS(OrderList)
 
+/**
+ * 'Free' the order
+ * @note ONLY use on "current_order" vehicle orders!
+ */
 void Order::Free()
 {
 	this->type  = OT_NOTHING;
@@ -50,6 +54,10 @@ void Order::Free()
 	this->next  = NULL;
 }
 
+/**
+ * Makes this order a Go To Station order.
+ * @param destination the station to go to.
+ */
 void Order::MakeGoToStation(StationID destination)
 {
 	this->type = OT_GOTO_STATION;
@@ -57,6 +65,15 @@ void Order::MakeGoToStation(StationID destination)
 	this->dest = destination;
 }
 
+/**
+ * Makes this order a Go To Depot order.
+ * @param destination   the depot to go to.
+ * @param order         is this order a 'default' order, or an overriden vehicle order?
+ * @param non_stop_type how to get to the depot?
+ * @param action        what to do in the depot?
+ * @param cargo         the cargo type to change to.
+ * @param subtype       the subtype to change to.
+ */
 void Order::MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type, OrderDepotActionFlags action, CargoID cargo, byte subtype)
 {
 	this->type = OT_GOTO_DEPOT;
@@ -67,6 +84,10 @@ void Order::MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderN
 	this->SetRefit(cargo, subtype);
 }
 
+/**
+ * Makes this order a Go To Waypoint order.
+ * @param destination the waypoint to go to.
+ */
 void Order::MakeGoToWaypoint(StationID destination)
 {
 	this->type = OT_GOTO_WAYPOINT;
@@ -74,24 +95,38 @@ void Order::MakeGoToWaypoint(StationID destination)
 	this->dest = destination;
 }
 
+/**
+ * Makes this order a Loading order.
+ * @param ordered is this an ordered stop?
+ */
 void Order::MakeLoading(bool ordered)
 {
 	this->type = OT_LOADING;
 	if (!ordered) this->flags = 0;
 }
 
+/**
+ * Makes this order a Leave Station order.
+ */
 void Order::MakeLeaveStation()
 {
 	this->type = OT_LEAVESTATION;
 	this->flags = 0;
 }
 
+/**
+ * Makes this order a Dummy order.
+ */
 void Order::MakeDummy()
 {
 	this->type = OT_DUMMY;
 	this->flags = 0;
 }
 
+/**
+ * Makes this order an conditional order.
+ * @param order the order to jump to.
+ */
 void Order::MakeConditional(VehicleOrderID order)
 {
 	this->type = OT_CONDITIONAL;
@@ -99,18 +134,33 @@ void Order::MakeConditional(VehicleOrderID order)
 	this->dest = 0;
 }
 
+/**
+ * Makes this order an automatic order.
+ * @param destination the station to go to.
+ */
 void Order::MakeAutomatic(StationID destination)
 {
 	this->type = OT_AUTOMATIC;
 	this->dest = destination;
 }
 
+/**
+ * Make this depot order also a refit order.
+ * @param cargo   the cargo type to change to.
+ * @param subtype the subtype to change to.
+ * @pre IsType(OT_GOTO_DEPOT).
+ */
 void Order::SetRefit(CargoID cargo, byte subtype)
 {
 	this->refit_cargo = cargo;
 	this->refit_subtype = subtype;
 }
 
+/**
+ * Does this order have the same type, flags and destination?
+ * @param other the second order to compare to.
+ * @return true if the type, flags and destination match.
+ */
 bool Order::Equals(const Order &other) const
 {
 	/* In case of go to nearest depot orders we need "only" compare the flags
@@ -128,11 +178,22 @@ bool Order::Equals(const Order &other) const
 	return this->type == other.type && this->flags == other.flags && this->dest == other.dest;
 }
 
+/**
+ * Pack this order into a 32 bits integer, or actually only
+ * the type, flags and destination.
+ * @return the packed representation.
+ * @note unpacking is done in the constructor.
+ */
 uint32 Order::Pack() const
 {
 	return this->dest << 16 | this->flags << 8 | this->type;
 }
 
+/**
+ * Pack this order into a 16 bits integer as close to the TTD
+ * representation as possible.
+ * @return the TTD-like packed representation.
+ */
 uint16 Order::MapOldOrder() const
 {
 	uint16 order = this->GetType();
@@ -155,6 +216,10 @@ uint16 Order::MapOldOrder() const
 	return order;
 }
 
+/**
+ * Create an order based on a packed representation of that order.
+ * @param packed the packed representation.
+ */
 Order::Order(uint32 packed)
 {
 	this->type    = (OrderType)GB(packed,  0,  8);
@@ -191,6 +256,7 @@ void InvalidateVehicleOrder(const Vehicle *v, int data)
  *
  * Assign data to an order (from another order)
  *   This function makes sure that the index is maintained correctly
+ * @param other the data to copy (except next pointer).
  *
  */
 void Order::AssignOrder(const Order &other)
@@ -206,6 +272,11 @@ void Order::AssignOrder(const Order &other)
 	this->travel_time = other.travel_time;
 }
 
+/**
+ * Recomputes everything.
+ * @param chain first order in the chain
+ * @param v one of vehicle that is using this orderlist
+ */
 void OrderList::Initialize(Order *chain, Vehicle *v)
 {
 	this->first = chain;
@@ -230,6 +301,11 @@ void OrderList::Initialize(Order *chain, Vehicle *v)
 	for (const Vehicle *u = v->NextShared(); u != NULL; u = u->NextShared()) ++this->num_vehicles;
 }
 
+/**
+ * Free a complete order chain.
+ * @param keep_orderlist If this is true only delete the orders, otherwise also delete the OrderList.
+ * @note do not use on "current_order" vehicle orders!
+ */
 void OrderList::FreeChain(bool keep_orderlist)
 {
 	Order *next;
@@ -248,6 +324,11 @@ void OrderList::FreeChain(bool keep_orderlist)
 	}
 }
 
+/**
+ * Get a certain order of the order chain.
+ * @param index zero-based index of the order within the chain.
+ * @return the order at position index.
+ */
 Order *OrderList::GetOrderAt(int index) const
 {
 	if (index < 0) return NULL;
@@ -260,6 +341,11 @@ Order *OrderList::GetOrderAt(int index) const
 	return order;
 }
 
+/**
+ * Insert a new order into the order chain.
+ * @param new_order is the order to insert into the chain.
+ * @param index is the position where the order is supposed to be inserted.
+ */
 void OrderList::InsertOrderAt(Order *new_order, int index)
 {
 	if (this->first == NULL) {
@@ -285,6 +371,10 @@ void OrderList::InsertOrderAt(Order *new_order, int index)
 }
 
 
+/**
+ * Remove an order from the order list and delete it.
+ * @param index is the position of the order which is to be deleted.
+ */
 void OrderList::DeleteOrderAt(int index)
 {
 	if (index >= this->num_orders) return;
@@ -305,6 +395,11 @@ void OrderList::DeleteOrderAt(int index)
 	delete to_remove;
 }
 
+/**
+ * Move an order to another position within the order list.
+ * @param from is the zero-based position of the order to move.
+ * @param to is the zero-based position where the order is moved to.
+ */
 void OrderList::MoveOrder(int from, int to)
 {
 	if (from >= this->num_orders || to >= this->num_orders || from == to) return;
@@ -332,12 +427,21 @@ void OrderList::MoveOrder(int from, int to)
 	}
 }
 
+/**
+ * Removes the vehicle from the shared order list.
+ * @note This is supposed to be called when the vehicle is still in the chain
+ * @param v vehicle to remove from the list
+ */
 void OrderList::RemoveVehicle(Vehicle *v)
 {
 	--this->num_vehicles;
 	if (v == this->first_shared) this->first_shared = v->NextShared();
 }
 
+/**
+ * Checks whether a vehicle is part of the shared vehicle chain.
+ * @param v is the vehicle to search in the shared vehicle chain.
+ */
 bool OrderList::IsVehicleInSharedOrdersList(const Vehicle *v) const
 {
 	for (const Vehicle *v_shared = this->first_shared; v_shared != NULL; v_shared = v_shared->NextShared()) {
@@ -347,6 +451,11 @@ bool OrderList::IsVehicleInSharedOrdersList(const Vehicle *v) const
 	return false;
 }
 
+/**
+ * Gets the position of the given vehicle within the shared order vehicle list.
+ * @param v is the vehicle of which to get the position
+ * @return position of v within the shared vehicle chain.
+ */
 int OrderList::GetPositionInSharedOrderList(const Vehicle *v) const
 {
 	int count = 0;
@@ -354,6 +463,10 @@ int OrderList::GetPositionInSharedOrderList(const Vehicle *v) const
 	return count;
 }
 
+/**
+ * Checks whether all orders of the list have a filled timetable.
+ * @return whether all orders have a filled timetable.
+ */
 bool OrderList::IsCompleteTimetable() const
 {
 	for (Order *o = this->first; o != NULL; o = o->next) {
@@ -364,6 +477,9 @@ bool OrderList::IsCompleteTimetable() const
 	return true;
 }
 
+/**
+ * Checks for internal consistency of order list. Triggers assertion if something is wrong.
+ */
 void OrderList::DebugCheckSanity() const
 {
 	VehicleOrderID check_num_orders = 0;
@@ -1524,6 +1640,13 @@ void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist)
 	}
 }
 
+/**
+ * Clamp the service interval to the correct min/max. The actual min/max values
+ * depend on whether it's in percent or days.
+ * @param interval proposed service interval
+ * @param company_id the owner of the vehicle
+ * @return Clamped service interval
+ */
 uint16 GetServiceIntervalClamped(uint interval, CompanyID company_id)
 {
 	return (Company::Get(company_id)->settings.vehicle.servint_ispercent) ? Clamp(interval, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(interval, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);

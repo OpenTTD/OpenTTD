@@ -28,12 +28,7 @@ struct Sign : SignPool::PoolItem<&_sign_pool> {
 	byte         z;
 	OwnerByte    owner; // placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
 
-	/**
-	 * Creates a new sign
-	 */
 	Sign(Owner owner = INVALID_OWNER);
-
-	/** Destroy the sign */
 	~Sign();
 
 	void UpdateVirtCoord();

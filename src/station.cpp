@@ -155,6 +155,11 @@ void Station::AddFacility(StationFacility new_facility_bit, TileIndex facil_xy)
 	this->build_date = _date;
 }
 
+/**
+ * Marks the tiles of the station as dirty.
+ *
+ * @ingroup dirty
+ */
 void Station::MarkTilesDirty(bool cargo_change) const
 {
 	TileIndex tile = this->train_station.tile;

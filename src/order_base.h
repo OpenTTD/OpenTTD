@@ -53,10 +53,6 @@ public:
 	Order() : refit_cargo(CT_NO_REFIT) {}
 	~Order() {}
 
-	/**
-	 * Create an order based on a packed representation of that order.
-	 * @param packed the packed representation.
-	 */
 	Order(uint32 packed);
 
 	/**
@@ -72,61 +68,15 @@ public:
 	 */
 	inline OrderType GetType() const { return (OrderType)GB(this->type, 0, 4); }
 
-	/**
-	 * 'Free' the order
-	 * @note ONLY use on "current_order" vehicle orders!
-	 */
 	void Free();
 
-	/**
-	 * Makes this order a Go To Station order.
-	 * @param destination the station to go to.
-	 */
 	void MakeGoToStation(StationID destination);
-
-	/**
-	 * Makes this order a Go To Depot order.
-	 * @param destination   the depot to go to.
-	 * @param order         is this order a 'default' order, or an overriden vehicle order?
-	 * @param non_stop_type how to get to the depot?
-	 * @param action        what to do in the depot?
-	 * @param cargo         the cargo type to change to.
-	 * @param subtype       the subtype to change to.
-	 */
 	void MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, OrderNonStopFlags non_stop_type = ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS, OrderDepotActionFlags action = ODATF_SERVICE_ONLY, CargoID cargo = CT_NO_REFIT, byte subtype = 0);
-
-	/**
-	 * Makes this order a Go To Waypoint order.
-	 * @param destination the waypoint to go to.
-	 */
 	void MakeGoToWaypoint(StationID destination);
-
-	/**
-	 * Makes this order a Loading order.
-	 * @param ordered is this an ordered stop?
-	 */
 	void MakeLoading(bool ordered);
-
-	/**
-	 * Makes this order a Leave Station order.
-	 */
 	void MakeLeaveStation();
-
-	/**
-	 * Makes this order a Dummy order.
-	 */
 	void MakeDummy();
-
-	/**
-	 * Makes this order an conditional order.
-	 * @param order the order to jump to.
-	 */
 	void MakeConditional(VehicleOrderID order);
-
-	/**
-	 * Makes this order an automatic order.
-	 * @param destination the station to go to.
-	 */
 	void MakeAutomatic(StationID destination);
 
 	/**
@@ -164,12 +114,6 @@ public:
 	 */
 	inline byte GetRefitSubtype() const { return this->refit_subtype; }
 
-	/**
-	 * Make this depot order also a refit order.
-	 * @param cargo   the cargo type to change to.
-	 * @param subtype the subtype to change to.
-	 * @pre IsType(OT_GOTO_DEPOT).
-	 */
 	void SetRefit(CargoID cargo, byte subtype = 0);
 
 	/** How must the consist be loaded? */
@@ -225,38 +169,11 @@ public:
 		return true;
 	}
 
-	/**
-	 * Assign the given order to this one.
-	 * @param other the data to copy (except next pointer).
-	 */
 	void AssignOrder(const Order &other);
-
-	/**
-	 * Does this order have the same type, flags and destination?
-	 * @param other the second order to compare to.
-	 * @return true if the type, flags and destination match.
-	 */
 	bool Equals(const Order &other) const;
 
-	/**
-	 * Pack this order into a 32 bits integer, or actually only
-	 * the type, flags and destination.
-	 * @return the packed representation.
-	 * @note unpacking is done in the constructor.
-	 */
 	uint32 Pack() const;
-
-	/**
-	 * Pack this order into a 16 bits integer as close to the TTD
-	 * representation as possible.
-	 * @return the TTD-like packed representation.
-	 */
 	uint16 MapOldOrder() const;
-
-	/**
-	 * Converts this order from an old savegame's version;
-	 * it moves all bits to the new location.
-	 */
 	void ConvertFromOldSavegame();
 };
 
@@ -296,11 +213,6 @@ public:
 	/** Destructor. Invalidates OrderList for re-usage by the pool. */
 	~OrderList() {}
 
-	/**
-	 * Recomputes everything.
-	 * @param chain first order in the chain
-	 * @param v one of vehicle that is using this orderlist
-	 */
 	void Initialize(Order *chain, Vehicle *v);
 
 	/**
@@ -309,11 +221,6 @@ public:
 	 */
 	inline Order *GetFirstOrder() const { return this->first; }
 
-	/**
-	 * Get a certain order of the order chain.
-	 * @param index zero-based index of the order within the chain.
-	 * @return the order at position index.
-	 */
 	Order *GetOrderAt(int index) const;
 
 	/**
@@ -334,24 +241,8 @@ public:
 	 */
 	inline VehicleOrderID GetNumManualOrders() const { return this->num_manual_orders; }
 
-	/**
-	 * Insert a new order into the order chain.
-	 * @param new_order is the order to insert into the chain.
-	 * @param index is the position where the order is supposed to be inserted.
-	 */
 	void InsertOrderAt(Order *new_order, int index);
-
-	/**
-	 * Remove an order from the order list and delete it.
-	 * @param index is the position of the order which is to be deleted.
-	 */
 	void DeleteOrderAt(int index);
-
-	/**
-	 * Move an order to another position within the order list.
-	 * @param from is the zero-based position of the order to move.
-	 * @param to is the zero-based position where the order is moved to.
-	 */
 	void MoveOrder(int from, int to);
 
 	/**
@@ -372,17 +263,7 @@ public:
 	 */
 	inline uint GetNumVehicles() const { return this->num_vehicles; }
 
-	/**
-	 * Checks whether a vehicle is part of the shared vehicle chain.
-	 * @param v is the vehicle to search in the shared vehicle chain.
-	 */
 	bool IsVehicleInSharedOrdersList(const Vehicle *v) const;
-
-	/**
-	 * Gets the position of the given vehicle within the shared order vehicle list.
-	 * @param v is the vehicle of which to get the position
-	 * @return position of v within the shared vehicle chain.
-	 */
 	int GetPositionInSharedOrderList(const Vehicle *v) const;
 
 	/**
@@ -393,17 +274,8 @@ public:
 	 */
 	inline void AddVehicle(Vehicle *v) { ++this->num_vehicles; }
 
-	/**
-	 * Removes the vehicle from the shared order list.
-	 * @note This is supposed to be called when the vehicle is still in the chain
-	 * @param v vehicle to remove from the list
-	 */
 	void RemoveVehicle(Vehicle *v);
 
-	/**
-	 * Checks whether all orders of the list have a filled timetable.
-	 * @return whether all orders have a filled timetable.
-	 */
 	bool IsCompleteTimetable() const;
 
 	/**
@@ -424,16 +296,8 @@ public:
 	 */
 	void UpdateOrderTimetable(Ticks delta) { this->timetable_duration += delta; }
 
-	/**
-	 * Free a complete order chain.
-	 * @param keep_orderlist If this is true only delete the orders, otherwise also delete the OrderList.
-	 * @note do not use on "current_order" vehicle orders!
-	 */
 	void FreeChain(bool keep_orderlist = false);
 
-	/**
-	 * Checks for internal consistency of order list. Triggers assertion if something is wrong.
-	 */
 	void DebugCheckSanity() const;
 };
 

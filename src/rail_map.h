@@ -490,9 +490,6 @@ static inline bool HasOnewaySignalBlockingTrackdir(TileIndex tile, Trackdir td)
 }
 
 
-/**
- * Return the rail type of tile, or INVALID_RAILTYPE if this is no rail tile.
- */
 RailType GetTileRailType(TileIndex tile);
 
 /** The ground 'under' the rail */

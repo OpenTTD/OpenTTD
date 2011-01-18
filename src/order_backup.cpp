@@ -20,6 +20,7 @@
 OrderBackupPool _order_backup_pool("BackupOrder");
 INSTANTIATE_POOL_METHODS(OrderBackup)
 
+/** Free everything that is allocated. */
 OrderBackup::~OrderBackup()
 {
 	free(this->name);
@@ -34,6 +35,11 @@ OrderBackup::~OrderBackup()
 	}
 }
 
+/**
+ * Create an order backup for the given vehicle.
+ * @param v    The vehicle to make a backup of.
+ * @param user The user that is requesting the backup.
+ */
 OrderBackup::OrderBackup(const Vehicle *v, uint32 user)
 {
 	this->user             = user;
@@ -62,6 +68,10 @@ OrderBackup::OrderBackup(const Vehicle *v, uint32 user)
 	}
 }
 
+/**
+ * Restore the data of this order to the given vehicle.
+ * @param v The vehicle to restore to.
+ */
 void OrderBackup::DoRestore(Vehicle *v)
 {
 	/* If we have a custom name, process that */
@@ -84,6 +94,12 @@ void OrderBackup::DoRestore(Vehicle *v)
 	DoCommand(0, this->group, v->index, DC_EXEC, CMD_ADD_VEHICLE_GROUP);
 }
 
+/**
+ * Create an order backup for the given vehicle.
+ * @param v    The vehicle to make a backup of.
+ * @param user The user that is requesting the backup.
+ * @note Will automatically remove any previous backups of this user.
+ */
 /* static */ void OrderBackup::Backup(const Vehicle *v, uint32 user)
 {
 	/* Don't use reset as that broadcasts over the network to reset the variable,
@@ -95,6 +111,12 @@ void OrderBackup::DoRestore(Vehicle *v)
 	new OrderBackup(v, user);
 }
 
+/**
+ * Restore the data of this order to the given vehicle.
+ * @param v    The vehicle to restore to.
+ * @param user The user that built the vehicle, thus wants to restore.
+ * @note After restoration the backup will automatically be removed.
+ */
 /* static */ void OrderBackup::Restore(Vehicle *v, uint32 user)
 {
 	OrderBackup *ob;
@@ -106,6 +128,12 @@ void OrderBackup::DoRestore(Vehicle *v)
 	}
 }
 
+/**
+ * Reset an OrderBackup given a tile and user.
+ * @param tile The tile associated with the OrderBackup.
+ * @param user The user associated with the OrderBackup.
+ * @note Must not be used from the GUI!
+ */
 /* static */ void OrderBackup::ResetOfUser(TileIndex tile, uint32 user)
 {
 	OrderBackup *ob;
@@ -131,6 +159,12 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	return CommandCost();
 }
 
+/**
+ * Reset an user's OrderBackup if needed.
+ * @param user The user associated with the OrderBackup.
+ * @pre _network_server.
+ * @note Must not be used from a command.
+ */
 /* static */ void OrderBackup::ResetUser(uint32 user)
 {
 	assert(_network_server);
@@ -145,6 +179,12 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	}
 }
 
+/**
+ * Reset the OrderBackups from GUI/game logic.
+ * @param tile     The tile of the order backup.
+ * @param from_gui Whether the call came from the GUI, i.e. whether
+ *                 it must be synced over the network.
+ */
 /* static */ void OrderBackup::Reset(TileIndex t, bool from_gui)
 {
 	/* The user has CLIENT_ID_SERVER as default when network play is not active,
@@ -177,6 +217,10 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	}
 }
 
+/**
+ * Clear the group of all backups having this group ID.
+ * @param group The group to clear.
+ */
 /* static */ void OrderBackup::ClearGroup(GroupID group)
 {
 	OrderBackup *ob;
@@ -185,6 +229,13 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 	}
 }
 
+/**
+ * Clear/update the (clone) vehicle from an order backup.
+ * @param v The vehicle to clear.
+ * @pre v != NULL
+ * @note If it is not possible to set another vehicle as clone
+ *       "example", then this backed up order will be removed.
+ */
 /* static */ void OrderBackup::ClearVehicle(const Vehicle *v)
 {
 	assert(v != NULL);

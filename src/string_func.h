@@ -29,101 +29,20 @@
 #include "core/bitmath_func.hpp"
 #include "string_type.h"
 
-/**
- * Appends characters from one string to another.
- *
- * Appends the source string to the destination string with respect of the
- * terminating null-character and the maximum size of the destination
- * buffer.
- *
- * @note usage ttd_strlcat(dst, src, lengthof(dst));
- * @note lengthof() applies only to fixed size arrays
- *
- * @param dst The buffer containing the target string
- * @param src The buffer containing the string to append
- * @param size The maximum size of the destination buffer
- */
 void ttd_strlcat(char *dst, const char *src, size_t size);
-
-/**
- * Copies characters from one buffer to another.
- *
- * Copies the source string to the destination buffer with respect of the
- * terminating null-character and the maximum size of the destination
- * buffer.
- *
- * @note usage ttd_strlcpy(dst, src, lengthof(dst));
- * @note lengthof() applies only to fixed size arrays
- *
- * @param dst The destination buffer
- * @param src The buffer containing the string to copy
- * @param size The maximum size of the destination buffer
- */
 void ttd_strlcpy(char *dst, const char *src, size_t size);
 
-/**
- * Appends characters from one string to another.
- *
- * Appends the source string to the destination string with respect of the
- * terminating null-character and and the last pointer to the last element
- * in the destination buffer. If the last pointer is set to NULL no
- * boundary check is performed.
- *
- * @note usage: strecat(dst, src, lastof(dst));
- * @note lastof() applies only to fixed size arrays
- *
- * @param dst The buffer containing the target string
- * @param src The buffer containing the string to append
- * @param last The pointer to the last element of the destination buffer
- * @return The pointer to the terminating null-character in the destination buffer
- */
 char *strecat(char *dst, const char *src, const char *last);
-
-/**
- * Copies characters from one buffer to another.
- *
- * Copies the source string to the destination buffer with respect of the
- * terminating null-character and the last pointer to the last element in
- * the destination buffer. If the last pointer is set to NULL no boundary
- * check is performed.
- *
- * @note usage: strecpy(dst, src, lastof(dst));
- * @note lastof() applies only to fixed size arrays
- *
- * @param dst The destination buffer
- * @param src The buffer containing the string to copy
- * @param last The pointer to the last element of the destination buffer
- * @return The pointer to the terminating null-character in the destination buffer
- */
 char *strecpy(char *dst, const char *src, const char *last);
 
 int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FORMAT(3, 4);
 
 char *CDECL str_fmt(const char *str, ...) WARN_FORMAT(1, 2);
 
-/**
- * Scans the string for valid characters and if it finds invalid ones,
- * replaces them with a question mark '?' (if not ignored)
- * @param str the string to validate
- * @param last the last valid character of str
- * @param allow_newlines whether newlines should be allowed or ignored
- * @param ignore whether to ignore or replace with a question mark
- */
 void str_validate(char *str, const char *last, bool allow_newlines = false, bool ignore = false);
-
-/** Scans the string for colour codes and strips them */
 void str_strip_colours(char *str);
-
-/** Convert the given string to lowercase, only works with ASCII! */
 void strtolower(char *str);
 
-/**
- * Checks whether the given string is valid, i.e. contains only
- * valid (printable) characters and is properly terminated.
- * @param str  The string to validate.
- * @param last The last character of the string, i.e. the string
- *             must be terminated here or earlier.
- */
 bool StrValid(const char *str, const char *last);
 
 /**
@@ -152,16 +71,8 @@ static inline size_t ttd_strnlen(const char *str, size_t maxlen)
 	return t - str;
 }
 
-/** Convert the md5sum number to a 'hexadecimal' string, return next pos in buffer */
 char *md5sumToString(char *buf, const char *last, const uint8 md5sum[16]);
 
-/**
- * Only allow certain keys. You can define the filter to be used. This makes
- *  sure no invalid keys can get into an editbox, like BELL.
- * @param key character to be checked
- * @param afilter the filter to use
- * @return true or false depending if the character is printable/valid or not
- */
 bool IsValidChar(WChar key, CharSetFilter afilter);
 
 size_t Utf8Decode(WChar *c, const char *s);

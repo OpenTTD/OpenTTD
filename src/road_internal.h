@@ -15,21 +15,10 @@
 #include "tile_cmd.h"
 #include "road_type.h"
 
-/**
- * Clean up unneccesary RoadBits of a planed tile.
- * @param tile current tile
- * @param org_rb planed RoadBits
- * @return optimised RoadBits
- */
 RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb);
 
 CommandCost CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType rt, DoCommandFlag flags, bool town_check = true);
 
-/**
- * Draw the catenary for tram road bits
- * @param ti   information about the tile (position, slope)
- * @param tram the roadbits to draw the catenary for
- */
 void DrawTramCatenary(const TileInfo *ti, RoadBits tram);
 
 #endif /* ROAD_INTERNAL_H */

@@ -16,23 +16,8 @@
 #include "company_type.h"
 #include "object_type.h"
 
-/**
- * Update the CompanyHQ to the state associated with the given score
- * @param tile  The (northern) tile of the company HQ, or INVALID_TILE.
- * @param score The current (performance) score of the company.
- */
 void UpdateCompanyHQ(TileIndex tile, uint score);
 
-/**
- * Actually build the object.
- * @param type  The type of object to build.
- * @param tile  The tile to build the northern tile of the object on.
- * @param owner The owner of the object.
- * @param town  Town the tile is related with.
- * @param view  The view for the object.
- * @pre All preconditions for building the object at that location
- *      are met, e.g. slope and clearness of tiles are checked.
- */
 void BuildObject(ObjectType type, TileIndex tile, CompanyID owner = OWNER_NONE, struct Town *town = NULL, uint8 view = 0);
 
 void PlaceProc_Object(TileIndex tile);

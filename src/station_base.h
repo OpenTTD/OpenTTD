@@ -199,11 +199,6 @@ public:
 
 	void AddFacility(StationFacility new_facility_bit, TileIndex facil_xy);
 
-	/**
-	 * Marks the tiles of the station as dirty.
-	 *
-	 * @ingroup dirty
-	 */
 	void MarkTilesDirty(bool cargo_change) const;
 
 	void UpdateVirtCoord();

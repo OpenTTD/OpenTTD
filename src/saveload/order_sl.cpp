@@ -17,6 +17,10 @@
 
 #include "saveload.h"
 
+/**
+ * Converts this order from an old savegame's version;
+ * it moves all bits to the new location.
+ */
 void Order::ConvertFromOldSavegame()
 {
 	uint8 old_flags = this->flags;

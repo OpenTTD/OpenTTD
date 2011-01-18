@@ -32,13 +32,6 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 #define MIN_SERVINT_DAYS    30
 #define MAX_SERVINT_DAYS   800
 
-/**
- * Clamp the service interval to the correct min/max. The actual min/max values
- * depend on whether it's in percent or days.
- * @param interval proposed service interval
- * @param company_id the owner of the vehicle
- * @return Clamped service interval
- */
 uint16 GetServiceIntervalClamped(uint interval, CompanyID company_id);
 
 #endif /* ORDER_FUNC_H */

@@ -43,6 +43,11 @@ ObjectPool _object_pool("Object");
 INSTANTIATE_POOL_METHODS(Object)
 uint16 Object::counts[NUM_OBJECTS];
 
+/**
+ * Get the object associated with a tile.
+ * @param tile The tile to fetch the object for.
+ * @return The object.
+ */
 /* static */ Object *Object::GetByTile(TileIndex tile)
 {
 	return Object::Get(GetObjectIndex(tile));
@@ -55,6 +60,16 @@ void InitializeObjects()
 	Object::ResetTypeCounts();
 }
 
+/**
+ * Actually build the object.
+ * @param type  The type of object to build.
+ * @param tile  The tile to build the northern tile of the object on.
+ * @param owner The owner of the object.
+ * @param town  Town the tile is related with.
+ * @param view  The view for the object.
+ * @pre All preconditions for building the object at that location
+ *      are met, e.g. slope and clearness of tiles are checked.
+ */
 void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, uint8 view)
 {
 	const ObjectSpec *spec = ObjectSpec::Get(type);
@@ -113,6 +128,11 @@ static void IncreaseAnimationStage(TileIndex tile)
 /** We encode the company HQ size in the animation stage. */
 #define IncreaseCompanyHQSize IncreaseAnimationStage
 
+/**
+ * Update the CompanyHQ to the state associated with the given score
+ * @param tile  The (northern) tile of the company HQ, or INVALID_TILE.
+ * @param score The current (performance) score of the company.
+ */
 void UpdateCompanyHQ(TileIndex tile, uint score)
 {
 	if (tile == INVALID_TILE) return;

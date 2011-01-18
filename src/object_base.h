@@ -35,11 +35,6 @@ struct Object : ObjectPool::PoolItem<&_object_pool> {
 	/** Make sure the right destructor is called as well! */
 	~Object() {}
 
-	/**
-	 * Get the object associated with a tile.
-	 * @param tile The tile to fetch the object for.
-	 * @return The object.
-	 */
 	static Object *GetByTile(TileIndex tile);
 
 	/**

@@ -45,7 +45,7 @@ RailtypeInfo _railtypes[RAILTYPE_END];
 assert_compile(sizeof(_original_railtypes) <= sizeof(_railtypes));
 
 /**
- * Initialize rail type information.
+ * Reset all rail type information to its default values.
  */
 void ResetRailTypes()
 {
@@ -76,6 +76,9 @@ void ResolveRailTypeGUISprites(RailtypeInfo *rti)
 	}
 }
 
+/**
+ * Resolve sprites of custom rail types
+ */
 void InitRailTypes()
 {
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
@@ -84,6 +87,9 @@ void InitRailTypes()
 	}
 }
 
+/**
+ * Allocate a new rail type label
+ */
 RailType AllocateRailType(RailTypeLabel label)
 {
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
