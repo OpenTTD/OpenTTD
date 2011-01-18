@@ -310,6 +310,18 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	v->lateness_counter -= (timetabled - time_taken);
 
+	/* When we are more late than this timetabled bit takes we (somewhat expensively)
+	 * check how many ticks the (fully filled) timetable has. If a timetable cycle is
+	 * shorter than the amount of ticks we are late we reduce the lateness by the
+	 * length of a full cycle till lateness is less than the length of a timetable
+	 * cycle. When the timetable isn't fully filled the cycle will be INVALID_TICKS. */
+	if (v->lateness_counter > (int)timetabled) {
+		Ticks cycle = v->orders.list->GetTimetableTotalDuration();
+		if (cycle != INVALID_TICKS && v->lateness_counter > cycle) {
+			v->lateness_counter %= cycle;
+		}
+	}
+
 	for (v = v->FirstShared(); v != NULL; v = v->NextShared()) {
 		SetWindowDirty(WC_VEHICLE_TIMETABLE, v->index);
 	}
