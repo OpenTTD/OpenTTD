@@ -1481,8 +1481,6 @@ static bool StationJoinerNeeded(CommandContainer cmd, TileArea ta)
 	 * return true (i.e. just flash the old window) */
 	Window *selection_window = FindWindowById(WC_SELECT_STATION, 0);
 	if (selection_window != NULL) {
-		if (!_ctrl_pressed) return true;
-
 		/* Abort current distant-join and start new one */
 		delete selection_window;
 		UpdateTileSelection();
@@ -1512,7 +1510,6 @@ void ShowSelectBaseStationIfNeeded(CommandContainer cmd, TileArea ta)
 {
 	if (StationJoinerNeeded<T>(cmd, ta)) {
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
-		if (BringWindowToFrontById(WC_SELECT_STATION, 0)) return;
 		new SelectStationWindow<T>(&_select_station_desc, cmd, ta);
 	} else {
 		DoCommandP(&cmd);
