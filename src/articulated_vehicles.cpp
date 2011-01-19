@@ -28,7 +28,7 @@ static const uint MAX_ARTICULATED_PARTS = 100; ///< Maximum of articulated parts
  * @param mirrored Returns whether the part shall be flipped.
  * @return engine to add or INVALID_ENGINE
  */
-static EngineID GetNextArticPart(uint index, EngineID front_type, Vehicle *front = NULL, bool *mirrored = NULL)
+static EngineID GetNextArticulatedPart(uint index, EngineID front_type, Vehicle *front = NULL, bool *mirrored = NULL)
 {
 	assert(front == NULL || front->engine_type == front_type);
 
@@ -55,7 +55,7 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 
 	uint i;
 	for (i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		if (GetNextArticPart(i, engine_type, v) == INVALID_ENGINE) break;
+		if (GetNextArticulatedPart(i, engine_type, v) == INVALID_ENGINE) break;
 	}
 
 	delete v;
@@ -113,7 +113,7 @@ CargoArray GetCapacityOfArticulatedParts(EngineID engine)
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return capacity;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		EngineID artic_engine = GetNextArticPart(i, engine);
+		EngineID artic_engine = GetNextArticulatedPart(i, engine);
 		if (artic_engine == INVALID_ENGINE) break;
 
 		cargo_capacity = GetVehicleDefaultCapacity(artic_engine, &cargo_type);
@@ -138,7 +138,7 @@ bool IsArticulatedVehicleRefittable(EngineID engine)
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return false;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		EngineID artic_engine = GetNextArticPart(i, engine);
+		EngineID artic_engine = GetNextArticulatedPart(i, engine);
 		if (artic_engine == INVALID_ENGINE) break;
 
 		if (IsEngineRefittable(artic_engine)) return true;
@@ -165,7 +165,7 @@ void GetArticulatedRefitMasks(EngineID engine, bool include_initial_cargo_type, 
 	if (!HasBit(e->info.callback_mask, CBM_VEHICLE_ARTIC_ENGINE)) return;
 
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
-		EngineID artic_engine = GetNextArticPart(i, engine);
+		EngineID artic_engine = GetNextArticulatedPart(i, engine);
 		if (artic_engine == INVALID_ENGINE) break;
 
 		veh_cargos = GetAvailableVehicleCargoTypes(artic_engine, include_initial_cargo_type);
@@ -223,7 +223,7 @@ bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *carg
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				v = Train::From(v)->HasArticulatedPart() ? Train::From(v)->GetNextArticPart() : NULL;
+				v = Train::From(v)->HasArticulatedPart() ? Train::From(v)->GetNextArticulatedPart() : NULL;
 				break;
 
 			case VEH_ROAD:
@@ -270,7 +270,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 
 		switch (v->type) {
 			case VEH_TRAIN:
-				v = Train::From(v)->HasArticulatedPart() ? Train::From(v)->GetNextArticPart() : NULL;
+				v = Train::From(v)->HasArticulatedPart() ? Train::From(v)->GetNextArticulatedPart() : NULL;
 				break;
 
 			case VEH_ROAD:
@@ -306,7 +306,7 @@ void AddArticulatedParts(Vehicle *first)
 	Vehicle *v = first;
 	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		bool flip_image;
-		EngineID engine_type = GetNextArticPart(i, first->engine_type, first, &flip_image);
+		EngineID engine_type = GetNextArticulatedPart(i, first->engine_type, first, &flip_image);
 		if (engine_type == INVALID_ENGINE) return;
 
 		/* In the (very rare) case the GRF reported wrong number of articulated parts

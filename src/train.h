@@ -267,7 +267,7 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 	 * Result is undefined for normal engine.
 	 * @return next part of articulated engine
 	 */
-	FORCEINLINE Train *GetNextArticPart() const
+	FORCEINLINE Train *GetNextArticulatedPart() const
 	{
 		assert(this->HasArticulatedPart());
 		return this->Next();
@@ -302,7 +302,7 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 	FORCEINLINE Train *GetLastEnginePart()
 	{
 		Train *v = this;
-		while (v->HasArticulatedPart()) v = v->GetNextArticPart();
+		while (v->HasArticulatedPart()) v = v->GetNextArticulatedPart();
 		return v;
 	}
 
@@ -313,7 +313,7 @@ struct Train : public GroundVehicle<Train, VEH_TRAIN> {
 	FORCEINLINE Train *GetNextVehicle() const
 	{
 		const Train *v = this;
-		while (v->HasArticulatedPart()) v = v->GetNextArticPart();
+		while (v->HasArticulatedPart()) v = v->GetNextArticulatedPart();
 
 		/* v now contains the last artic part in the engine */
 		return v->Next();

@@ -2373,7 +2373,7 @@ void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles)
 			u = u->GetFirstEnginePart();
 			while (u->index != v->index) {
 				set.Include(u->index);
-				u = u->GetNextArticPart();
+				u = u->GetNextArticulatedPart();
 			}
 		}
 
