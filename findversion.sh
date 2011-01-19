@@ -93,16 +93,16 @@ elif [ -d "$ROOT_DIR/.git" ]; then
 	fi
 	HASH=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`
 	REV="g`echo $HASH | cut -c1-8`"
-	BRANCH=`git symbolic-ref -q HEAD 2>/dev/null | sed 's@.*/@@;s@^master$@@'`
+	BRANCH="`git symbolic-ref -q HEAD 2>/dev/null | sed 's@.*/@@;s@^master$@@'`"
 	REV_NR=`LC_ALL=C git log --pretty=format:%s --grep="^(svn r[0-9]*)" -1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
 	if [ -z "$REV_NR" ]; then
 		# No rev? Maybe it is a custom git-svn clone
 		REV_NR=`LC_ALL=C git log --pretty=format:%b --grep="git-svn-id:.*@[0-9]*" -1 | sed "s@.*\@\([0-9]*\).*@\1@"`
 	fi
-	TAG=`git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null`
+	TAG="`git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null`"
 	if [ -n "$TAG" ]; then
 		BRANCH=""
-		REV=$TAG
+		REV="$TAG"
 	fi
 elif [ -d "$ROOT_DIR/.hg" ]; then
 	# We are a hg checkout
@@ -111,11 +111,11 @@ elif [ -d "$ROOT_DIR/.hg" ]; then
 	fi
 	HASH=`LC_ALL=C hg id -i | cut -c1-12`
 	REV="h`echo $HASH | cut -c1-8`"
-	BRANCH=`hg branch | sed 's@^default$@@'`
-	TAG=`hg id -t`
-	if [ -n "$TAG" ] && [ $TAG != "tip" ]; then
+	BRANCH="`hg branch | sed 's@^default$@@'`"
+	TAG="`hg id -t | grep -v 'tip$'`"
+	if [ -n "$TAG" ]; then
 		BRANCH=""
-		REV=$TAG
+		REV="$TAG"
 	fi
 	REV_NR=`LC_ALL=C hg log -f -k "(svn r" -l 1 --template "{desc}\n" | head -n 1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
 elif [ -f "$ROOT_DIR/.ottdrev" ]; then

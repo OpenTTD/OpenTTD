@@ -253,10 +253,10 @@ Function DetermineSVNVersion()
 					Set oExec = WshShell.Exec("hg id -t")
 					If Err.Number = 0 Then
 						line = oExec.StdOut.ReadLine()
-						If Len(line) > 0 And line <> "tip" Then
+						If Len(line) > 0 And Right(line, 3) <> "tip" Then
 							version = line
 							branch = ""
-						End If ' Len(line) > 0 And line <> "tip"
+						End If ' Len(line) > 0 And Right(line, 3) <> "tip"
 					End If ' Err.Number = 0
 
 					Err.Clear
