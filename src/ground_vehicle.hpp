@@ -162,6 +162,114 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 		GVSF_FREE_WAGON       = 4, ///< First in a wagon chain (in depot) (not used for road vehicles).
 		GVSF_MULTIHEADED      = 5, ///< Engine is multiheaded (not used for road vehicles).
 	};
+
+	/**
+	 * Set front engine state.
+	 */
+	FORCEINLINE void SetFrontEngine() { SetBit(this->subtype, GVSF_FRONT); }
+
+	/**
+	 * Remove the front engine state.
+	 */
+	FORCEINLINE void ClearFrontEngine() { ClrBit(this->subtype, GVSF_FRONT); }
+
+	/**
+	 * Set a vehicle to be an articulated part.
+	 */
+	FORCEINLINE void SetArticulatedPart() { SetBit(this->subtype, GVSF_ARTICULATED_PART); }
+
+	/**
+	 * Clear a vehicle from being an articulated part.
+	 */
+	FORCEINLINE void ClearArticulatedPart() { ClrBit(this->subtype, GVSF_ARTICULATED_PART); }
+
+	/**
+	 * Set a vehicle to be a wagon.
+	 */
+	FORCEINLINE void SetWagon() { SetBit(this->subtype, GVSF_WAGON); }
+
+	/**
+	 * Clear wagon property.
+	 */
+	FORCEINLINE void ClearWagon() { ClrBit(this->subtype, GVSF_WAGON); }
+
+	/**
+	 * Set engine status.
+	 */
+	FORCEINLINE void SetEngine() { SetBit(this->subtype, GVSF_ENGINE); }
+
+	/**
+	 * Clear engine status.
+	 */
+	FORCEINLINE void ClearEngine() { ClrBit(this->subtype, GVSF_ENGINE); }
+
+	/**
+	 * Set a vehicle as a free wagon.
+	 */
+	FORCEINLINE void SetFreeWagon() { SetBit(this->subtype, GVSF_FREE_WAGON); }
+
+	/**
+	 * Clear a vehicle from being a free wagon.
+	 */
+	FORCEINLINE void ClearFreeWagon() { ClrBit(this->subtype, GVSF_FREE_WAGON); }
+
+	/**
+	 * Set a vehicle as a multiheaded engine.
+	 */
+	FORCEINLINE void SetMultiheaded() { SetBit(this->subtype, GVSF_MULTIHEADED); }
+
+	/**
+	 * Clear multiheaded engine property.
+	 */
+	FORCEINLINE void ClearMultiheaded() { ClrBit(this->subtype, GVSF_MULTIHEADED); }
+
+	/**
+	 * Check if the vehicle is a front engine.
+	 * @return Returns true if the vehicle is a front engine.
+	 */
+	FORCEINLINE bool IsFrontEngine() const { return HasBit(this->subtype, GVSF_FRONT); }
+
+	/**
+	 * Check if the vehicle is a free wagon (got no engine in front of it).
+	 * @return Returns true if the vehicle is a free wagon.
+	 */
+	FORCEINLINE bool IsFreeWagon() const { return HasBit(this->subtype, GVSF_FREE_WAGON); }
+
+	/**
+	 * Check if a vehicle is an engine (can be first in a consist).
+	 * @return Returns true if vehicle is an engine.
+	 */
+	FORCEINLINE bool IsEngine() const { return HasBit(this->subtype, GVSF_ENGINE); }
+
+	/**
+	 * Check if a vehicle is a wagon.
+	 * @return Returns true if vehicle is a wagon.
+	 */
+	FORCEINLINE bool IsWagon() const { return HasBit(this->subtype, GVSF_WAGON); }
+
+	/**
+	 * Check if the vehicle is a multiheaded engine.
+	 * @return Returns true if the vehicle is a multiheaded engine.
+	 */
+	FORCEINLINE bool IsMultiheaded() const { return HasBit(this->subtype, GVSF_MULTIHEADED); }
+
+	/**
+	 * Tell if we are dealing with the rear end of a multiheaded engine.
+	 * @return True if the engine is the rear part of a dualheaded engine.
+	 */
+	FORCEINLINE bool IsRearDualheaded() const { return this->IsMultiheaded() && !this->IsEngine(); }
+
+	/**
+	 * Check if the vehicle is an articulated part of an engine.
+	 * @return Returns true if the vehicle is an articulated part.
+	 */
+	FORCEINLINE bool IsArticulatedPart() const { return HasBit(this->subtype, GVSF_ARTICULATED_PART); }
+
+	/**
+	 * Check if an engine has an articulated part.
+	 * @return True if the engine has an articulated part.
+	 */
+	FORCEINLINE bool HasArticulatedPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
 };
 
 #endif /* GROUND_VEHICLE_HPP */

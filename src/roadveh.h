@@ -75,12 +75,6 @@ static const uint RVC_TURN_AROUND_START_FRAME_SHORT_TRAM = 16;
 static const uint RVC_DRIVE_THROUGH_STOP_FRAME           = 11;
 static const uint RVC_DEPOT_STOP_FRAME                   = 11;
 
-enum RoadVehicleSubType {
-	RVST_FRONT,
-	RVST_ARTIC_PART,
-};
-
-
 void RoadVehUpdateCache(RoadVehicle *v);
 
 /**
@@ -127,34 +121,6 @@ struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	bool IsBus() const;
 
 	int GetCurrentMaxSpeed() const;
-
-	/**
-	 * Check if vehicle is a front engine
-	 * @return Returns true if vehicle is a front engine
-	 */
-	FORCEINLINE bool IsFrontEngine() const { return this->subtype == RVST_FRONT; }
-
-	/**
-	 * Set front engine state
-	 */
-	FORCEINLINE void SetFrontEngine() { this->subtype = RVST_FRONT; }
-
-	/**
-	 * Check if vehicl is an articulated part of an engine
-	 * @return Returns true if vehicle is an articulated part
-	 */
-	FORCEINLINE bool IsArticulatedPart() const { return this->subtype == RVST_ARTIC_PART; }
-
-	/**
-	 * Set a vehicle to be an articulated part
-	 */
-	FORCEINLINE void SetArticulatedPart() { this->subtype = RVST_ARTIC_PART; }
-
-	/**
-	 * Check if an engine has an articulated part.
-	 * @return True if the engine has an articulated part.
-	 */
-	FORCEINLINE bool HasArticulatedPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
 
 protected: // These functions should not be called outside acceleration code.
 
