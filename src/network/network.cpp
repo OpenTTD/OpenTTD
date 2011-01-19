@@ -150,6 +150,75 @@ byte NetworkSpectatorCount()
 	return count;
 }
 
+extern uint32 _password_game_seed;
+extern char _password_server_id[NETWORK_SERVER_ID_LENGTH];
+
+/**
+ * Sets/resets company password
+ * @param password new password, "" or "*" resets password
+ * @return new password
+ */
+const char *NetworkChangeCompanyPassword(const char *password)
+{
+	if (strcmp(password, "*") == 0) password = "";
+
+	if (!_network_server) {
+		NetworkClientSetPassword(password);
+	} else {
+		HashCurrentCompanyPassword(password);
+	}
+
+	return password;
+}
+
+/**
+ * Generates a hashed password for the company name.
+ * @param password the password to 'encrypt'.
+ * @return the hashed password.
+ */
+const char *GenerateCompanyPasswordHash(const char *password)
+{
+	if (StrEmpty(password)) return password;
+
+	char salted_password[NETWORK_SERVER_ID_LENGTH];
+
+	memset(salted_password, 0, sizeof(salted_password));
+	snprintf(salted_password, sizeof(salted_password), "%s", password);
+	/* Add the game seed and the server's ID as the salt. */
+	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) {
+		salted_password[i] ^= _password_server_id[i] ^ (_password_game_seed >> (i % 32));
+	}
+
+	Md5 checksum;
+	uint8 digest[16];
+	static char hashed_password[NETWORK_SERVER_ID_LENGTH];
+
+	/* Generate the MD5 hash */
+	checksum.Append(salted_password, sizeof(salted_password) - 1);
+	checksum.Finish(digest);
+
+	for (int di = 0; di < 16; di++) sprintf(hashed_password + di * 2, "%02x", digest[di]);
+	hashed_password[lengthof(hashed_password) - 1] = '\0';
+
+	return hashed_password;
+}
+
+/**
+ * Hash the current company password; used when the server 'company' sets his/her password.
+ */
+void HashCurrentCompanyPassword(const char *password)
+{
+	_password_game_seed = _settings_game.game_creation.generation_seed;
+	strecpy(_password_server_id, _settings_client.network.network_id, lastof(_password_server_id));
+
+	const char *new_pw = GenerateCompanyPasswordHash(password);
+	strecpy(_network_company_states[_local_company].password, new_pw, lastof(_network_company_states[_local_company].password));
+
+	if (_network_server) {
+		NetworkServerUpdateCompanyPassworded(_local_company, !StrEmpty(_network_company_states[_local_company].password));
+	}
+}
+
 /**
  * Check if the company we want to join requires a password.
  * @param company_id id of the company we want to check the 'passworded' flag for.

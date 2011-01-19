@@ -108,6 +108,7 @@ public:
 typedef ClientNetworkGameSocketHandler MyClient;
 
 void NetworkClient_Connected();
+void NetworkClientSetPassword(const char *password);
 
 extern CompanyID _network_join_as;
 
