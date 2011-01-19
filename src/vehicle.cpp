@@ -629,7 +629,7 @@ bool Vehicle::IsEngineCountable() const
 		case VEH_TRAIN:
 			return !Train::From(this)->IsArticulatedPart() && // tenders and other articulated parts
 					!Train::From(this)->IsRearDualheaded(); // rear parts of multiheaded engines
-		case VEH_ROAD: return RoadVehicle::From(this)->IsRoadVehFront();
+		case VEH_ROAD: return RoadVehicle::From(this)->IsFrontEngine();
 		case VEH_SHIP: return true;
 		default: return false; // Only count company buildable vehicles
 	}
@@ -830,7 +830,7 @@ void CallVehicleTicks()
 
 				if (v->type == VEH_TRAIN && Train::From(v)->IsWagon()) continue;
 				if (v->type == VEH_AIRCRAFT && v->subtype != AIR_HELICOPTER) continue;
-				if (v->type == VEH_ROAD && !RoadVehicle::From(v)->IsRoadVehFront()) continue;
+				if (v->type == VEH_ROAD && !RoadVehicle::From(v)->IsFrontEngine()) continue;
 
 				v->motion_counter += v->cur_speed;
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */

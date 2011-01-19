@@ -307,7 +307,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 
 		RoadVehicle *u;
 		FOR_ALL_ROADVEHICLES(u) {
-			if (u->IsRoadVehFront()) {
+			if (u->IsFrontEngine()) {
 				v->dest_tile = u->index;
 				v->age = 0;
 				return true;
@@ -319,7 +319,7 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 	} else {
 		/* Target a vehicle */
 		RoadVehicle *u = RoadVehicle::Get(v->dest_tile);
-		assert(u != NULL && u->type == VEH_ROAD && u->IsRoadVehFront());
+		assert(u != NULL && u->type == VEH_ROAD && u->IsFrontEngine());
 
 		uint dist = Delta(v->x_pos, u->x_pos) + Delta(v->y_pos, u->y_pos);
 

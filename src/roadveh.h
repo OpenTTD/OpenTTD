@@ -109,7 +109,7 @@ struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_ROADVEH_INC : EXPENSES_ROADVEH_RUN; }
-	bool IsPrimaryVehicle() const { return this->IsRoadVehFront(); }
+	bool IsPrimaryVehicle() const { return this->IsFrontEngine(); }
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed / 2; }
 	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed / 2; }
@@ -132,12 +132,12 @@ struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	 * Check if vehicle is a front engine
 	 * @return Returns true if vehicle is a front engine
 	 */
-	FORCEINLINE bool IsRoadVehFront() const { return this->subtype == RVST_FRONT; }
+	FORCEINLINE bool IsFrontEngine() const { return this->subtype == RVST_FRONT; }
 
 	/**
 	 * Set front engine state
 	 */
-	FORCEINLINE void SetRoadVehFront() { this->subtype = RVST_FRONT; }
+	FORCEINLINE void SetFrontEngine() { this->subtype = RVST_FRONT; }
 
 	/**
 	 * Check if vehicl is an articulated part of an engine
