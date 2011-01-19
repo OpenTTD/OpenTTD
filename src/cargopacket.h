@@ -62,10 +62,12 @@ public:
 	/** Destroy the packet. */
 	~CargoPacket() { }
 
+	CargoPacket *Split(uint new_size);
+	void Merge(CargoPacket *cp);
 
 	/**
 	 * Gets the number of 'items' in this packet.
-	 * @return the item count.
+	 * @return Item count.
 	 */
 	FORCEINLINE uint16 Count() const
 	{

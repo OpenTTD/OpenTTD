@@ -86,6 +86,31 @@ CargoPacket::CargoPacket(uint16 count, byte days_in_transit, StationID source, T
 }
 
 /**
+ * Split this packet in two and return the split off part.
+ * @param new_size Size of the remaining part.
+ * @return Split off part.
+ */
+FORCEINLINE CargoPacket *CargoPacket::Split(uint new_size)
+{
+	Money fs = this->feeder_share * new_size / static_cast<uint>(this->count);
+	CargoPacket *cp_new = new CargoPacket(new_size, this->days_in_transit, this->source, this->source_xy, this->loaded_at_xy, fs, this->source_type, this->source_id);
+	this->feeder_share -= fs;
+	this->count -= new_size;
+	return cp_new;
+}
+
+/**
+ * Merge another packet into this one.
+ * @param cp Packet to be merged in.
+ */
+FORCEINLINE void CargoPacket::Merge(CargoPacket *cp)
+{
+	this->count += cp->count;
+	this->feeder_share += cp->feeder_share;
+	delete cp;
+}
+
+/**
  * Invalidates (sets source_id to INVALID_SOURCE) all cargo packets from given source.
  * @param src_type Type of source.
  * @param src Index of source.
@@ -168,10 +193,7 @@ void CargoList<Tinst>::Append(CargoPacket *cp)
 	for (List::reverse_iterator it(this->packets.rbegin()); it != this->packets.rend(); it++) {
 		CargoPacket *icp = *it;
 		if (Tinst::AreMergable(icp, cp) && icp->count + cp->count <= CargoPacket::MAX_COUNT) {
-			icp->count        += cp->count;
-			icp->feeder_share += cp->feeder_share;
-
-			delete cp;
+			icp->Merge(cp);
 			return;
 		}
 	}
@@ -291,16 +313,15 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta
 			cp->count = left;
 		} else {
 			/* But... the rest needs package splitting. */
-			Money fs = cp->feeder_share * max_move / static_cast<uint>(cp->count);
-			cp->feeder_share -= fs;
-			cp->count -= max_move;
+			CargoPacket *cp_new = cp->Split(cp->count - max_move);
 
-			CargoPacket *cp_new = new CargoPacket(max_move, cp->days_in_transit, cp->source, cp->source_xy, (mta == MTA_CARGO_LOAD) ? data : cp->loaded_at_xy, fs, cp->source_type, cp->source_id);
 			static_cast<Tinst *>(this)->RemoveFromCache(cp_new); // this reflects the changes in cp.
 
 			if (mta == MTA_TRANSFER) {
 				/* Add the feeder share before inserting in dest. */
 				cp_new->feeder_share += payment->PayTransfer(cp_new, max_move);
+			} else if (mta == MTA_CARGO_LOAD) {
+				cp_new->loaded_at_xy = data;
 			}
 
 			dest->Append(cp_new);
