@@ -347,7 +347,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const char *p
 NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyPassword(const char *password)
 {
 	Packet *p = new Packet(PACKET_CLIENT_COMPANY_PASSWORD);
-	p->Send_string(GenerateCompanyPasswordHash(password));
+	p->Send_string(GenerateCompanyPasswordHash(password, _password_server_id, _password_game_seed));
 	my_client->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -426,7 +426,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const char *pa
 {
 	Packet *p = new Packet(PACKET_CLIENT_SET_PASSWORD);
 
-	p->Send_string(GenerateCompanyPasswordHash(password));
+	p->Send_string(GenerateCompanyPasswordHash(password, _password_server_id, _password_game_seed));
 	my_client->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -457,11 +457,11 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const char *pass, con
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company, const char *pass)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company, const char *password)
 {
 	Packet *p = new Packet(PACKET_CLIENT_MOVE);
 	p->Send_uint8(company);
-	p->Send_string(GenerateCompanyPasswordHash(pass));
+	p->Send_string(GenerateCompanyPasswordHash(password, _password_server_id, _password_game_seed));
 	my_client->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }

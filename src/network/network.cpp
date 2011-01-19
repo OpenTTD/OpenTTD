@@ -150,9 +150,6 @@ byte NetworkSpectatorCount()
 	return count;
 }
 
-extern uint32 _password_game_seed;
-extern char _password_server_id[NETWORK_SERVER_ID_LENGTH];
-
 /**
  * Sets/resets company password
  * @param password new password, "" or "*" resets password
@@ -172,11 +169,13 @@ const char *NetworkChangeCompanyPassword(const char *password)
 }
 
 /**
- * Generates a hashed password for the company name.
- * @param password the password to 'encrypt'.
- * @return the hashed password.
+ * Hash the given password using server ID and game seed.
+ * @param password Password to hash.
+ * @param password_server_id Server ID.
+ * @param password_game_seed Game seed.
+ * @return The hashed password.
  */
-const char *GenerateCompanyPasswordHash(const char *password)
+const char *GenerateCompanyPasswordHash(const char *password, const char *password_server_id, uint32 password_game_seed)
 {
 	if (StrEmpty(password)) return password;
 
@@ -186,7 +185,7 @@ const char *GenerateCompanyPasswordHash(const char *password)
 	snprintf(salted_password, sizeof(salted_password), "%s", password);
 	/* Add the game seed and the server's ID as the salt. */
 	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) {
-		salted_password[i] ^= _password_server_id[i] ^ (_password_game_seed >> (i % 32));
+		salted_password[i] ^= password_server_id[i] ^ (password_game_seed >> (i % 32));
 	}
 
 	Md5 checksum;
@@ -208,10 +207,13 @@ const char *GenerateCompanyPasswordHash(const char *password)
  */
 void HashCurrentCompanyPassword(const char *password)
 {
-	_password_game_seed = _settings_game.game_creation.generation_seed;
-	strecpy(_password_server_id, _settings_client.network.network_id, lastof(_password_server_id));
+	uint32 password_game_seed;
+	char password_server_id[NETWORK_SERVER_ID_LENGTH];
 
-	const char *new_pw = GenerateCompanyPasswordHash(password);
+	password_game_seed = _settings_game.game_creation.generation_seed;
+	strecpy(password_server_id, _settings_client.network.network_id, lastof(password_server_id));
+
+	const char *new_pw = GenerateCompanyPasswordHash(password, password_server_id, password_game_seed);
 	strecpy(_network_company_states[_local_company].password, new_pw, lastof(_network_company_states[_local_company].password));
 
 	if (_network_server) {
