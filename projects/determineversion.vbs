@@ -278,11 +278,23 @@ Function DetermineSVNVersion()
 							End If ' line <> "default"
 						End If ' Err.Number = 0
 
-						Set oExec = WshShell.Exec("hg log -f -k " & Chr(34) & "(svn r" & Chr(34) & " -l 1 --template " & Chr(34) & "{desc}\n" & Chr(34) & " --cwd ../")
+						Set oExec = WshShell.Exec("hg log -f -k " & Chr(34) & "(svn r" & Chr(34) & " -l 1 --template " & Chr(34) & "{desc|firstline}\n" & Chr(34) & " --cwd ../")
 						If Err.Number = 0 Then
-							revision = Mid(OExec.StdOut.ReadLine(), 7)
-							revision = Mid(revision, 1, InStr(revision, ")") - 1)
+							line = oExec.StdOut.ReadLine()
+							If Left(line, 6) = "(svn r" Then
+								revision = Mid(line, 7)
+								revision = Mid(revision, 1, InStr(revision, ")") - 1)
+							End If 'Left(line, 6) = "(svn r"
 						End If ' Err.Number = 0
+
+						If revision = "" Then
+							' No rev? Maybe it is a custom hgsubversion clone
+							Err.Clear
+							Set oExec = WshShell.Exec("hg parent --template=" & Chr(34) & "{svnrev}" & Chr(34))
+							If Err.Number = 0 Then
+								revision = oExec.StdOut.ReadLine()
+							End If ' Err.Number = 0
+						End If ' revision = ""
 					End If ' Err.Number = 0
 				End If ' oExec.ExitCode = 0
 			End If ' Err.Number = 0

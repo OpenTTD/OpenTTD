@@ -117,7 +117,11 @@ elif [ -d "$ROOT_DIR/.hg" ]; then
 		BRANCH=""
 		REV="$TAG"
 	fi
-	REV_NR=`LC_ALL=C hg log -f -k "(svn r" -l 1 --template "{desc}\n" | head -n 1 | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
+	REV_NR=`LC_ALL=C hg log -f -k "(svn r" -l 1 --template "{desc|firstline}\n" | grep "^(svn r[0-9]*)" | sed "s@.*(svn r\([0-9]*\)).*@\1@"`
+	if [ -z "$REV_NR" ]; then
+		# No rev? Maybe it is a custom hgsubversion clone
+		REV_NR=`LC_ALL=C hg parent --template="{svnrev}"`
+	fi
 elif [ -f "$ROOT_DIR/.ottdrev" ]; then
 	# We are an exported source bundle
 	cat $ROOT_DIR/.ottdrev
