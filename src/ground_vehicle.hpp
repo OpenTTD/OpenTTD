@@ -149,6 +149,19 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 		this->UpdateViewport(true, turned);
 		return old_z;
 	}
+
+	/**
+	 * Enum to handle ground vehicle subtypes.
+	 * Do not access it directly unless you have to. Use the subtype access functions.
+	 */
+	enum GroundVehicleSubtypeFlags {
+		GVSF_FRONT            = 0, ///< Leading engine of a consist.
+		GVSF_ARTICULATED_PART = 1, ///< Articulated part of an engine.
+		GVSF_WAGON            = 2, ///< Wagon (not used for road vehicles).
+		GVSF_ENGINE           = 3, ///< Engine that can be front engine, but might be placed behind another engine (not used for road vehicles).
+		GVSF_FREE_WAGON       = 4, ///< First in a wagon chain (in depot) (not used for road vehicles).
+		GVSF_MULTIHEADED      = 5, ///< Engine is multiheaded (not used for road vehicles).
+	};
 };
 
 #endif /* GROUND_VEHICLE_HPP */
