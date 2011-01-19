@@ -932,7 +932,7 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalán
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Autoguardado
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre grabados automáticos del juego
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selección del intervalo entre guardados automáticos del juego
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Desactivado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Cada mes
@@ -1405,7 +1405,7 @@ STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Salir de
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Salir
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}¿Está seguro de abandonar y regresar a {STRING}?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}¿Está seguro de abandonar OpenTTD y regresar a {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Si
 STR_QUIT_NO                                                     :{BLACK}No
 
@@ -1423,7 +1423,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonar Juego
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}¿Estás seguro que deseas abandonar este juego?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}¿Está seguro que desea abandonar este juego?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Está seguro de que desea salir de este escenario?
 
 # Cheat window
@@ -1442,7 +1442,7 @@ STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Terreno subtrop
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Terreno juguetelandia
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar fecha: {ORANGE} {DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Cambiar año actual
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activar modificación de los valores de producción: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permitir modificación de los valores de producción: {ORANGE}{STRING}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}Nuevo Esquema de Color
@@ -1586,7 +1586,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Recargar
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Buscar servidor
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Buscar en la red servidores
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Añadir servidor
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Añade a la lista un servidor en el que siempre se comprobará si hay un juego en marcha
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Añade el servidor a una lista que siempre será comprobada para buscar juegos en marcha
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Comenzar servidor
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Comenzar un nuevo servidor
 
@@ -1710,8 +1710,8 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconectar
 
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Teclee la contraseña
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introduce contraseña
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Introduzca la contraseña
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introduzca la contraseña
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}Lista de clientes
@@ -1733,7 +1733,7 @@ STR_NETWORK_SPECTATORS                                          :Espectadores
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduce la cantidad de dinero que deseas dar
 
 # Network set password
-STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No grabar la contraseña introducida
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No guardar la contraseña introducida
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Asignar a la empresa una nueva contraseña
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Contraseña de la empresa
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}Contraseña por defecto de la empresa
@@ -1916,7 +1916,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir pun
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir un punto de ruta separado
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcción de ferrocarril
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcción de Ferrocarril
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcción Línea Eléctrica de Ferrocarril
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construcción de Monorraíl
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construcción de Maglev
@@ -1949,7 +1949,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Elige n�
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Longitud de andén
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Elige longitud de la estación de trenes
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrastrar y soltar
-STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construir una estación con arrastrar & soltar
+STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construir una estación mediante arrastrar y soltar
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecciona el tipo de estación a mostrar
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Selecciona el tipo de estación a construir
@@ -2359,11 +2359,11 @@ STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Cambiar 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Tipo de escenario
 STR_SE_MAPGEN_FLAT_WORLD                                        :{WHITE}Tierra llana
-STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generar una tierra llana
+STR_SE_MAPGEN_FLAT_WORLD_TOOLTIP                                :{BLACK}Generar un escenario llano
 STR_SE_MAPGEN_RANDOM_LAND                                       :{WHITE}Tierra aleatoria
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT                                 :{BLACK}Altura tierra llana:
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Mueve la altura de la tierra llana hacia abajo
-STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Mueve la altura de la tierra llana hacia arriba
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_DOWN                            :{BLACK}Reduce la altura de la tierra llana
+STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_UP                              :{BLACK}Aumenta la altura de la tierra llana
 
 STR_SE_MAPGEN_FLAT_WORLD_HEIGHT_QUERY_CAPT                      :{WHITE}Cambia la altura de la tierra llana
 
@@ -2390,8 +2390,8 @@ STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Archivos
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Seleccionar perfil:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Patrón de filtrado:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Cargar la programación seleccionada
-STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Grabar
-STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Grabar lista actual como una programación
+STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Guardar
+STR_NEWGRF_SETTINGS_PRESET_SAVE_TOOLTIP                         :{BLACK}Guardar lista actual como una programación
 STR_NEWGRF_SETTINGS_PRESET_SAVE_QUERY                           :{BLACK}Introduce nombre de la programación
 STR_NEWGRF_SETTINGS_PRESET_DELETE                               :{BLACK}Borrar
 STR_NEWGRF_SETTINGS_PRESET_DELETE_TOOLTIP                       :{BLACK}Borrar la programación seleccionada
@@ -2409,7 +2409,7 @@ STR_NEWGRF_SETTINGS_FILE_TOOLTIP                                :{BLACK}Una list
 
 STR_NEWGRF_SETTINGS_SET_PARAMETERS                              :{BLACK}Establecer parámetros
 STR_NEWGRF_SETTINGS_TOGGLE_PALETTE                              :{BLACK}Seleccionar paleta
-STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Seleccionar la paleta del NewGRF seleccionado.{}Hazlo cuando los gráficos de este NewGRF se vean rosa en el juego
+STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Seleccionar la paleta del NewGRF seleccionado.{}Esto es necesario cuando los gráficos de este NewGRF se vean de color rosa
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Aplicar cambios
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Encontrar contenido que falta en línea
@@ -2479,7 +2479,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parámetro inco
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} debe ser cargado antes de {STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} debe ser cargado después de {STRING}
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requiere OpenTTD versión {STRING} o superior
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :el fichero GRF ha sido diseñado para ser traducido
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :El fichero GRF ha sido diseñado para ser traducido
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs han sido cargados
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {2:STRING} como NewGRF estático con {4:STRING} puede causar desincronizaciones
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado
@@ -2498,8 +2498,8 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No se pu
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Fichero no encontrado (GRF compatible cargado)
 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}GRF(s) compatibles cargados para ficheros que faltan
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichero(s) GRF perdidos han sido desactivados
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichero(s) GRF no encontrados han sido desactivados
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF no encontrados
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
 
 # NewGRF status
@@ -2527,7 +2527,7 @@ STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria inco
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de carteles - {COMMA} Carteles
-STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Comprobar mayúsculas/minúsculas
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Mayúsculas/minúsculas
 STR_SIGN_LIST_CLEAR                                             :{BLACK}Borrar filtro
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Activa/desactiva la comprobación de mayúsculas y minúsculas al filtrar la lista de carteles
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}Borrar texto de filtrado
@@ -2668,7 +2668,7 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construcción
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nuevos vehículos
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Coste operación Trenes
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Coste de Operación de Vehículos
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Coste de operación de vehículos de carretera
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Coste operación Aeronaves
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Coste operación Barcos
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Mantenimiento de Propiedades
@@ -2729,7 +2729,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender 2
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nombre Empresa
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nombre del Presidente
 
-STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estamos buscando una empresa de transportes para adquirir la nuestra{}{}¿Deseas comprar {COMPANY} por {CURRENCY}?
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estamos buscando una empresa de transportes para adquirir la nuestra{}{}¿Desea comprar {COMPANY} por {CURRENCY}?
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrias
@@ -2776,7 +2776,7 @@ STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aeronave
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINYFONT}{BLACK}Beneficio este año: {CURRENCY} (año anterior: {CURRENCY})
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Trenes disponibles
-STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos disponibles
+STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Vehículos de carretera disponibles
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos disponibles
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aviones disponibles
 STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver la lista de modelos disponibles para este tipo de vehículo
@@ -2825,7 +2825,7 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nuevos Vehícul
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nuevos Vehículos Maglev
 
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nuevos Vehículos de Ferrocarril
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuevos Vehículos
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nuevos Vehículos de Carretera
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nuevos Barcos
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nueva Aeronave
 
@@ -2847,18 +2847,18 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}F.T máxima: {GOLD}{FORCE}
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de vehículo - Click en vehículo para información
-STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos - Click en vehículo para información
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Lista de selección de vehículos de raíl - Click en vehículo para información
+STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Lista de selección de vehículos de carretera - Click en vehículo para información
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Lista de selección de barcos - Click en barco para información
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Lista de selección de aeronaves- Click en aeronave para información
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Comprar Vehículo
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Comprar vehículo
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Comprar vehículo
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Comprar barco
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar aeronave
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar el tren o vagón resaltado. Shift+Click muestra una estimación del precio sin realizar la compra
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar el vehículo resaltado. Shift+Click muestra una estimación del precio sin realizar la compra
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar el vehículo de raíl resaltado. Shift+Click muestra una estimación del precio sin realizar la compra
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar el vehículo de carretera resaltado. Shift+Click muestra una estimación del precio sin realizar la compra
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar el barco resaltado. Shift+Click muestra una estimación del precio sin realizar la compra
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar la aeronave resaltada. Shift+Click muestra una estimación del precio sin realizar la compra
 
@@ -2872,8 +2872,8 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Renombra
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Renombrar tipo de barco
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Renombrar tipo de aeronave
 
-STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renombrar tipo de vehículo
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renombrar tipo de vehículo
+STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Renombrar tipo de vehículo de raíl
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Renombrar tipo de vehículo de carretera
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Renombrar tipo de barco
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Renombrar tipo de aeronave
 
@@ -2889,39 +2889,39 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} ve
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenes - arrastrar vehículo con Click izquierdo para añadir/retirar del tren, Click derecho para mostrar información. Mantén pulsado Ctrl para usar estos comandos con el resto del tren
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos - Click derecho en vehículo para información
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Vehículos de carretera - Click derecho en vehículo para información
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Barcos - Click derecho en barco para información
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Aeronave - Click derecho en la aeronave para información
 
-STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrastrar aquí vehículo para venderlo
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrastra aquí el vehículo para venderlo
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arrastra barco aquí para venderlo
-STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arrastra aeronave aquí para venderla
+STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Arrastrar aquí el vehículo de raíl para venderlo
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Arrastrar aquí el vehículo de carretera para venderlo
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Arrastrar barco aquí para venderlo
+STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Arrastrar aeronave aquí para venderla
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Arrastrar la locomotora aquí para vender el tren entero
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TOOLTIP                         :{BLACK}Vender todos los trenes del depósito
-STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vender todos los vehículos del depósito
+STR_DEPOT_SELL_ALL_BUTTON_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vender todos los vehículos de carretera del depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TOOLTIP                          :{BLACK}Vender todos los barcos del astillero
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TOOLTIP                      :{BLACK}Vender todas las aeronaves del hangar
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TOOLTIP                             :{BLACK}Reemplaza automáticamente todos los trenes del depósito
-STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Reemplaza automáticamente todos los vehículos del depósito
+STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Reemplaza automáticamente todos los vehículos de carretera del depósito
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Reemplaza automáticamente todos los barcos del astillero
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Reemplaza automáticamente todas las aeronaves del hangar
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nuevos Vehículos
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nuevos vehículos
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nuevos vehículos
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nuevos barcos
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nueva aeronave
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Comprar nuevo vehículo de tren
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Comprar nuevo vehículo
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Comprar nuevo vehículo de raíl
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Comprar nuevo vehículo de carretera
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Comprar nuevo barco
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Comprar nueva aeronave
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clonar tren
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonar vehículo
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonar vehículo de carretera
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar barco
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar aeronave
 
@@ -2997,7 +2997,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Vehículos de M
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehículos Maglev
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retirar vagón: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer que el reemplazo automático mantenga la longitud del tren quitando vagones (empezando por adelante), si el cambio de locomotora produce un tren más largo
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer que el reemplazo automático mantenga la longitud del tren quitando vagones (empezando por el frente), si el cambio de locomotora produce un tren más largo
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3486,8 +3486,8 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}No permi
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Las autoridades locales de {TOWN} rechazan esto
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}{TOWN} la autoridad local rechaza la construcción de otro aeropuerto en este pueblo
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Las autoridades locales de {TOWN} rechazan el permiso para el aeropuerto debido al ruido
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Las autoridades locales de {TOWN} rechazan la construcción de otro aeropuerto en este pueblo
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}Las autoridades locales de {TOWN} rechazan el permiso para el aeropuerto debido a su preocupación por el ruido
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Su intento de soborno ha sido
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}descubierto por un investigador regional
 
@@ -3611,10 +3611,10 @@ STR_ERROR_CAN_T_BUILD_SHIP_DEPOT                                :{WHITE}No se pu
 
 STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}No se puede renombrar depósito...
 
-STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... debe ser detenido dentro de un depósito
-STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... debe ser detenido dentro de un depósito
-STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... debe ser detenido dentro de un astillero
-STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... debe ser detenido dentro de un hangar
+STR_ERROR_TRAIN_MUST_BE_STOPPED_INSIDE_DEPOT                    :{WHITE}... debe de estar detenido dentro de un depósito
+STR_ERROR_ROAD_VEHICLE_MUST_BE_STOPPED_INSIDE_DEPOT             :{WHITE}... debe de estar detenido dentro de un depósito
+STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... debe de estar detenido dentro de un astillero
+STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... debe de estar detenido dentro de un hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Los trenes únicamente pueden ser modificarse estando detenidos dentro de un depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren demasiado largo
@@ -3751,8 +3751,8 @@ STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}No se pu
 STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}No se puede vender barco...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}No se puede vender la aeronave...
 
-STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vehículo no disponible
-STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vehículo no disponible
+STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vehículo de raíl no disponible
+STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Vehículo de carretera no disponible
 STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Barco no disponible
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Aeronave no disponible
 
@@ -3821,7 +3821,7 @@ STR_TOWN_BUILDING_NAME_WAREHOUSE_1                              :Almacén
 STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_3                           :Bloque de oficinas
 STR_TOWN_BUILDING_NAME_STADIUM_1                                :Estadio
 STR_TOWN_BUILDING_NAME_OLD_HOUSES_1                             :Casas viejas
-STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Cabañas
+STR_TOWN_BUILDING_NAME_COTTAGES_1                               :Casitas
 STR_TOWN_BUILDING_NAME_HOUSES_1                                 :Casas
 STR_TOWN_BUILDING_NAME_FLATS_1                                  :Apartamentos
 STR_TOWN_BUILDING_NAME_TALL_OFFICE_BLOCK_2                      :Bloque alto de oficinas

@@ -195,8 +195,8 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}mi/h
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}馬力
-STR_UNITS_POWER_METRIC                                          :{COMMA}馬力
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}ドラ�
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}ウィンドウの大きさを切り替えます
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スクロールバーです。リストを縦にスクロールします。
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}スクロールバーです。リストを横にスクロールします。
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}土地上の建物などを破壊します
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}四角形の範囲の建物などを破壊します。Ctrlキーを押すと、斜めの範囲になります。Shiftキーを押しながら決定すると、コストを見積もります。
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}デフォルト
@@ -244,14 +244,14 @@ STR_BUTTON_CANCEL                                               :{BLACK}キャ�
 STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
-STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+STR_OSK_KEYBOARD_LAYOUT                                         :1234567890-^\qwertyuiop@[asdfghjkl;:]zxcvbnm,./\
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :!"#$%&'()=~|QWERTYUIOP`{{}ASDFGHJKL+*{}}ZXCVBNM<>?_
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}長さ：{NUM}
 STR_MEASURE_AREA                                                :{BLACK}地域：{NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}長さ：{NUM}{}高さの違い：{HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域：{NUM} x {NUM}{}高さの違い：{HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}地域：{NUM}×{NUM}{}高さの違い：{HEIGHT}
 
 
 # These are used in buttons
@@ -268,53 +268,53 @@ STR_SORT_BY_NUMBER                                              :番号
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :昨年の損益
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :今年の損益
 STR_SORT_BY_AGE                                                 :使用年数
-STR_SORT_BY_RELIABILITY                                         :信頼度
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :貨物種類当たりの総容量
+STR_SORT_BY_RELIABILITY                                         :信頼性
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :貨物の種類別の総容量
 STR_SORT_BY_MAX_SPEED                                           :最大速度
 STR_SORT_BY_MODEL                                               :モデル
 STR_SORT_BY_VALUE                                               :価値
 STR_SORT_BY_LENGTH                                              :長さ
-STR_SORT_BY_LIFE_TIME                                           :残りライフタイム
-STR_SORT_BY_TIMETABLE_DELAY                                     :時刻の遅延
+STR_SORT_BY_LIFE_TIME                                           :寿命までの期間
+STR_SORT_BY_TIMETABLE_DELAY                                     :到着時刻の遅れ
 STR_SORT_BY_FACILITY                                            :駅の種類
-STR_SORT_BY_WAITING                                             :到着待ち貨物の価値
-STR_SORT_BY_RATING_MAX                                          :最高貨物評価
-STR_SORT_BY_RATING_MIN                                          :最低い貨物評価
-STR_SORT_BY_ENGINE_ID                                           :EngineID（旧式）
+STR_SORT_BY_WAITING                                             :積載待ち貨物の価値
+STR_SORT_BY_RATING_MAX                                          :貨物運搬の最高評価
+STR_SORT_BY_RATING_MIN                                          :貨物運搬の最低評価
+STR_SORT_BY_ENGINE_ID                                           :エンジンID（標準）
 STR_SORT_BY_COST                                                :値段
-STR_SORT_BY_POWER                                               :出力
+STR_SORT_BY_POWER                                               :動力
 STR_SORT_BY_TRACTIVE_EFFORT                                     :牽引力
-STR_SORT_BY_INTRO_DATE                                          :登場日付
-STR_SORT_BY_RUNNING_COST                                        :運転費
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :出力／運転費
-STR_SORT_BY_CARGO_CAPACITY                                      :貨物容量
+STR_SORT_BY_INTRO_DATE                                          :導入日
+STR_SORT_BY_RUNNING_COST                                        :運転費用
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :動力／運転費用
+STR_SORT_BY_CARGO_CAPACITY                                      :積載容量
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ポーズ
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}ゲームを早送り
-STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}設定
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}セーブ、ゲームを断念、終了
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}地図を表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}町のリストを表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}助成金を表示
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}会社の駅を表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}会社の財務状況を表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}会社の一般情報を表示します
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}グラフを表示します
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ゲームをポーズします。
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}ゲームスピードを早くします。
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}ゲームオプションの設定画面を開きます。
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}データのセーブ、ゲームの中断、OpenTTDの終了ができます。
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}地図の表示、ビューポートの表示、看板のリストの表示ができます。
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}町の名簿を表示します。
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}助成金のリストを表示します。
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}会社所有の駅のリストを表示します。
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}会社の財務諸表を表示します。
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}会社の一般的な情報を表示します。
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}さまざまなグラフを表示します。
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}会社の成績表を表示します
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}新規産業の建設を出資
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}会社の列車のリストを表示します。コントロール+クリックはグループ／車両のリストを示すのをトグルします
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}会社の道路車両のリストを表示します。コントロール+クリックはグループ／車両のリストを示すのをトグルします
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}会社の船舶のリストを表示します。コントロール+クリックはグループ／車両のリストを示すのをトグルします
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}会社の飛行機のリストを表示します。コントロール+クリックはグループ／車両のリストを示すのをトグルします
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}ズームインします
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ズームアウトします
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}鉄道を建設します
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}道路を建設します
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}埠頭を建設します
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}空港を建設します
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}整地したり、植林したりするには、地形のツールバーを開きます
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}エフェクト／音楽のウィンドウを表示します
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}新しい産業の建設に出資します。
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}会社所有の列車のリストとグループを表示します。Ctrlキー+クリックでリストのみ表示します。
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}会社所有の道路車両のリストとグループを表示します。Ctrlキー+クリックでリストのみ表示します。
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}会社所有の船舶のリストとグループを表示します。Ctrlキー+クリックでリストのみ表示します。
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}会社所有の飛行機のリストとグループを表示します。Ctrlキー+クリックでリストのみ表示します。
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}ズームインします。
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ズームアウトします。
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}鉄道を建設します。
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}道路を建設します。
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}埠頭を建設します。
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}空港を建設します。
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}地形のツールバーを開きます。整地や植林などを行うことができます。
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}音楽／効果音のウィンドウを表示します。
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}最後のメッセージ、メッセージの設定を表示します
 STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域情報、コンソール、AIデバグ、スクリーンショット、OpenTTDいついて
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}ツールバーの切り替え
@@ -2514,12 +2514,21 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}列車�
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}「{1:COMPANY}」が所有している「{0:VEHICLE}」という電車は無効な長さがあります。使用している NewGRF が原因であるかもしれません。desync もしくはクラッシュが行う可能性があります！
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' の情報が誤っています。
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}貨物/修理情報'{1:ENGINE}'建設の後に異なる購入リスト
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' は生産コールバック内で無限ループを起こしました.
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
+STR_NEWGRF_INVALID_CARGO                                        :<壊れそうな 貨物>
+STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} は <壊れそうな貨物>
+STR_NEWGRF_INVALID_ENGINE                                       :<壊れそうな列車モデル>
+STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<潰れそうな産業>
 
 # Sign list window
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標示のリスト - {COMMA}つの標示
+STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}一致
+STR_SIGN_LIST_CLEAR                                             :{BLACK}フィルターを消去
+STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}フィルターの適用方法を一致/不一致で切り替える
 STR_SIGN_LIST_CLEAR_TOOLTIP                                     :{BLACK}フィルターを消去する
 
 # Sign window
@@ -2644,7 +2653,10 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :駅／荷役所
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}メイン画面を中間地点に移動します。Ctrlきー+クリックで、中間地点のビューポイントを開きます。
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}通過点の名前を変更する
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}メイン画面をブイに移動します。Ctrlキー+クリックでブイのビューポイントを開きます。
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}ブイの名前を変える
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}通過点名を変更
 
@@ -2865,10 +2877,14 @@ STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}船舶�
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}飛行機の名称を変更
 
 # Depot window
+STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}車庫の名前を変えます
+STR_DEPOT_RENAME_DEPOT_CAPTION                                  :車庫の名前を変える
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM}車両{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列車 - 情報を見るには列車をクリックします。車両を追加／取り除くにはドラッグします。
@@ -3044,9 +3060,17 @@ STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}指令�
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}{WAYPOINT}へ行く
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}へ行く、{VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}先頭へ{DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}先頭へ{DEPOT}, {VELOCITY}
 
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}サービスで{DEPOT}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}サービスで{DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
+STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINYFONT}{RED}停止中
+STR_VEHICLE_COMMAND_STOPPED                                     :{RED}停止中
+STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINYFONT}{GREEN}発進中
+STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}発進中
 
 # Vehicle details
 STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE}（詳細）
@@ -3175,6 +3199,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :必要であれ
 STR_ORDER_DROP_HALT_DEPOT                                       :停止
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}修理が必要でないとこの指令をスキップ
 
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}ベースに車両のデータをジャンプ
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :積載率
 STR_ORDER_CONDITIONAL_RELIABILITY                               :信頼度
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :最高速度
@@ -3182,6 +3207,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :乗り物の経
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :修理要求有
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :常に
 
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}車両の価格を見る
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :の
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ではない
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :未満の
@@ -3226,6 +3252,7 @@ STR_ORDER_TRAIN_DEPOT                                           :電車庫
 STR_ORDER_ROAD_VEHICLE_DEPOT                                    :車庫
 STR_ORDER_SHIP_DEPOT                                            :造船所
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :（{STRING}に改装）
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改装して、止める)
@@ -3242,10 +3269,17 @@ STR_ORDER_UNLOAD                                                :(降ろして�
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(降ろして全積載まで待つ)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(降ろしていずれか一種のを全積載)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(降ろして空荷のまま出発)
+STR_ORDER_TRANSFER                                              :(転載して積載)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(転載して満載するまで待つ)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(転載していずれかを満載するまで待つ)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(転載して何も積まない)
 STR_ORDER_NO_UNLOAD                                             :（積み荷を降ろさずに貨物を積む）
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（積み荷を降ろさずに満載するまで待つ）
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（積み荷を降ろさずにいずれかを満載するまで待つ）
 
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[手前に止まる]
+STR_ORDER_STOP_LOCATION_MIDDLE                                  :[中間に止まる]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[奥に止まる]
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :指令{COMMA}に飛ぶ
 STR_ORDER_CONDITIONAL_NUM                                       :{1:STRING} が {3:COMMA}{2:STRING}時、指令{0:COMMA}に飛ぶ
@@ -3260,10 +3294,12 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}指令�
 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}時刻表 - 指令を選択するにはクリックします。
 
+STR_TIMETABLE_NO_TRAVEL                                         :どこにも行かない
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :自動的運行（次の注文により時刻表を変更）
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :運行（未計画）
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}運行
 STR_TIMETABLE_STAY_FOR                                          :{STRING}停車
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :と{STRING}へ行く
 STR_TIMETABLE_DAYS                                              :{COMMA}日間
 STR_TIMETABLE_TICKS                                             :{COMMA}ティック
 
@@ -3273,8 +3309,11 @@ STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}この�
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}この車両は現在定刻しています
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}この車両は現在{STRING}遅刻しています
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}この車両は現在{STRING}早刻しています
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}このタイムテーブルはまだ始まってません
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}このタイムテーブルは{STRING}にスタート
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}開始日
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}タイムテーブルを始める日時を選んでください
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}時間を変更
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択した指令の実行時間を変更します
@@ -3286,13 +3325,23 @@ STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}遅刻�
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}遅刻回数をリセットして、車両が定刻になります
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動時刻
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}自動的に全ての行き先を設定する(Ctrlキー+クリックで遅延時間をキープ)
 
+STR_TIMETABLE_EXPECTED                                          :{BLACK}予想された
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}予定されていた
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}推測と予定表を切り返える
 
+STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :A:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :D:
 
 
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}日付設定
 STR_DATE_SET_DATE                                               :{BLACK}日付設定
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}タイムテーブルの選択日時と同じ開始日時を使う
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}日を選択
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}月を選択
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}年を選択
 
 
 # AI debug window

@@ -1306,8 +1306,8 @@ STR_CONFIG_SETTING_TREE_PLACER_NONE                             :немає
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :класичне
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :покращене
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Обертання карти висот: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Проти годинникової
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :За годинниковою
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :проти годинникової
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :за годинниковою
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Рівень висоти для карт з пласким рельєфом: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Дозволити міняти рельєф клітинок на межі карти: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Одна або більше клітинок з північного краю не є пустими
