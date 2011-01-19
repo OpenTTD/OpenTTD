@@ -163,7 +163,7 @@ const char *NetworkChangeCompanyPassword(const char *password)
 	if (strcmp(password, "*") == 0) password = "";
 
 	if (!_network_server) {
-		NetworkClientSetPassword(password);
+		NetworkClientSetCompanyPassword(password);
 	} else {
 		HashCurrentCompanyPassword(password);
 	}

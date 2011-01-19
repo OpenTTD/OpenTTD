@@ -1178,7 +1178,7 @@ void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const 
 	MyClient::SendChat(action, type, dest, msg, data);
 }
 
-void NetworkClientSetPassword(const char *password)
+void NetworkClientSetCompanyPassword(const char *password)
 {
 	MyClient::SendSetPassword(password);
 }
