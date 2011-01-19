@@ -1629,6 +1629,26 @@ bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
 	return true;
 }
 
+/**
+ * Hash the current company password; used when the server 'company' sets his/her password.
+ * @param password The password to hash.
+ */
+void HashCurrentCompanyPassword(const char *password)
+{
+	uint32 password_game_seed;
+	char password_server_id[NETWORK_SERVER_ID_LENGTH];
+
+	password_game_seed = _settings_game.game_creation.generation_seed;
+	strecpy(password_server_id, _settings_client.network.network_id, lastof(password_server_id));
+
+	const char *new_pw = GenerateCompanyPasswordHash(password, password_server_id, password_game_seed);
+	strecpy(_network_company_states[_local_company].password, new_pw, lastof(_network_company_states[_local_company].password));
+
+	if (_network_server) {
+		NetworkServerUpdateCompanyPassworded(_local_company, !StrEmpty(_network_company_states[_local_company].password));
+	}
+}
+
 /* Handle the local command-queue */
 static void NetworkHandleCommandQueue(NetworkClientSocket *cs)
 {

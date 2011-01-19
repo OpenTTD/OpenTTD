@@ -168,6 +168,7 @@ uint NetworkCalculateLag(const NetworkClientSocket *cs);
 NetworkClientSocket *NetworkFindClientStateFromClientID(ClientID client_id);
 StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
+const char *GenerateCompanyPasswordHash(const char *password, const char *password_server_id, uint32 password_game_seed);
 
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_INTERNAL_H */

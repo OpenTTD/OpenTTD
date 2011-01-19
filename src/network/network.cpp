@@ -203,25 +203,6 @@ const char *GenerateCompanyPasswordHash(const char *password, const char *passwo
 }
 
 /**
- * Hash the current company password; used when the server 'company' sets his/her password.
- */
-void HashCurrentCompanyPassword(const char *password)
-{
-	uint32 password_game_seed;
-	char password_server_id[NETWORK_SERVER_ID_LENGTH];
-
-	password_game_seed = _settings_game.game_creation.generation_seed;
-	strecpy(password_server_id, _settings_client.network.network_id, lastof(password_server_id));
-
-	const char *new_pw = GenerateCompanyPasswordHash(password, password_server_id, password_game_seed);
-	strecpy(_network_company_states[_local_company].password, new_pw, lastof(_network_company_states[_local_company].password));
-
-	if (_network_server) {
-		NetworkServerUpdateCompanyPassworded(_local_company, !StrEmpty(_network_company_states[_local_company].password));
-	}
-}
-
-/**
  * Check if the company we want to join requires a password.
  * @param company_id id of the company we want to check the 'passworded' flag for.
  * @return true if the company requires a password.

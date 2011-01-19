@@ -19,9 +19,6 @@ void NetworkStartUp();
 void NetworkShutDown();
 void NetworkDrawChatMessage();
 
-const char *GenerateCompanyPasswordHash(const char *password, const char *password_server_id, uint32 password_game_seed);
-void HashCurrentCompanyPassword(const char *password);
-
 extern bool _networking;         ///< are we in networking mode?
 extern bool _network_server;     ///< network-server is active
 extern bool _network_available;  ///< is network mode available?
