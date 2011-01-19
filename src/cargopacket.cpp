@@ -313,7 +313,7 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta
 			cp->count = left;
 		} else {
 			/* But... the rest needs package splitting. */
-			CargoPacket *cp_new = cp->Split(cp->count - max_move);
+			CargoPacket *cp_new = cp->Split(max_move);
 
 			static_cast<Tinst *>(this)->RemoveFromCache(cp_new); // this reflects the changes in cp.
 
