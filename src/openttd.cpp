@@ -823,7 +823,7 @@ static void MakeNewGameDone()
 	/* We are the server, we start a new company (not dedicated),
 	 * so set the default password *if* needed. */
 	if (_network_server && !StrEmpty(_settings_client.network.default_company_pass)) {
-		NetworkChangeCompanyPassword(_settings_client.network.default_company_pass);
+		NetworkChangeCompanyPassword(_local_company, _settings_client.network.default_company_pass);
 	}
 #endif /* ENABLE_NETWORK */
 

@@ -278,9 +278,9 @@ ClientNetworkGameSocketHandler * ClientNetworkGameSocketHandler::my_client = NUL
 static uint32 last_ack_frame;
 
 /** One bit of 'entropy' used to generate a salt for the company passwords. */
-uint32 _password_game_seed;
+static uint32 _password_game_seed;
 /** The other bit of 'entropy' used to generate a salt for the company passwords. */
-char _password_server_id[NETWORK_SERVER_ID_LENGTH];
+static char _password_server_id[NETWORK_SERVER_ID_LENGTH];
 
 /** Maximum number of companies of the currently joined server. */
 static uint8 _network_server_max_companies;
@@ -1178,6 +1178,10 @@ void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const 
 	MyClient::SendChat(action, type, dest, msg, data);
 }
 
+/**
+ * Set/Reset company password on the client side.
+ * @param password Password to be set.
+ */
 void NetworkClientSetCompanyPassword(const char *password)
 {
 	MyClient::SendSetPassword(password);

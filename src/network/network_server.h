@@ -118,7 +118,7 @@ public:
 };
 
 void NetworkServer_Tick(bool send_frame);
-void HashCurrentCompanyPassword(const char *password);
+void NetworkServerSetCompanyPassword(CompanyID company_id, const char *password, bool already_hashed = true);
 
 #define FOR_ALL_CLIENT_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientSocket, clientsocket_index, var, start)
 #define FOR_ALL_CLIENT_SOCKETS(var) FOR_ALL_CLIENT_SOCKETS_FROM(var, 0)

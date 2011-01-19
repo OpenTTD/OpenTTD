@@ -2311,7 +2311,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 			snprintf(_settings_client.network.default_company_pass, lengthof(_settings_client.network.default_company_pass), "%s", this->edit_str_buf);
 		}
 
-		NetworkChangeCompanyPassword(this->edit_str_buf);
+		NetworkChangeCompanyPassword(_local_company, this->edit_str_buf);
 	}
 
 	virtual void OnPaint()

@@ -151,18 +151,19 @@ byte NetworkSpectatorCount()
 }
 
 /**
- * Sets/resets company password
- * @param password new password, "" or "*" resets password
- * @return new password
+ * Change the company password of a given company.
+ * @param company_id ID of the company the password should be changed for.
+ * @param password The unhashed password we like to set ('*' or '' resets the password)
+ * @return The password.
  */
-const char *NetworkChangeCompanyPassword(const char *password)
+const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *password, bool already_hashed)
 {
 	if (strcmp(password, "*") == 0) password = "";
 
-	if (!_network_server) {
-		NetworkClientSetCompanyPassword(password);
+	if (_network_server) {
+		NetworkServerSetCompanyPassword(company_id, password, already_hashed);
 	} else {
-		HashCurrentCompanyPassword(password);
+		NetworkClientSetCompanyPassword(password);
 	}
 
 	return password;

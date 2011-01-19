@@ -835,7 +835,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				assert(_local_company == COMPANY_SPECTATOR);
 				SetLocalCompany(c->index);
 				if (!StrEmpty(_settings_client.network.default_company_pass)) {
-					NetworkChangeCompanyPassword(_settings_client.network.default_company_pass);
+					NetworkChangeCompanyPassword(_local_company, _settings_client.network.default_company_pass);
 				}
 
 				/* Now that we have a new company, broadcast our company settings to

@@ -1530,7 +1530,7 @@ DEF_CONSOLE_CMD(ConCompanyPassword)
 		return false;
 	}
 
-	const char *password = NetworkChangeCompanyPassword(argv[1]);
+	const char *password = NetworkChangeCompanyPassword(_local_company, argv[1], false);
 
 	if (StrEmpty(password)) {
 		IConsolePrintF(CC_WARNING, "Company password cleared");
