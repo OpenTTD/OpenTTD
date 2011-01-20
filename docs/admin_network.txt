@@ -1,5 +1,5 @@
 OpenTTD's admin network
-Last updated:    2010-12-30
+Last updated:    2011-01-20
 ------------------------------------------------------------------------
 
 
@@ -38,6 +38,9 @@ Table of contents
   packets are dropped in favour of a new packet.
   This though will be reflected in the protocol version as announced in the
   ADMIN_PACKET_SERVER_PROTOCOL in section 2.0).
+
+  A reference implementation in Java for a client connecting to the admin interface
+  can be found at: http://dev.openttdcoop.org/projects/joan
 
 
 2.0) Joining the network
