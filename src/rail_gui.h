@@ -13,10 +13,12 @@
 #define RAIL_GUI_H
 
 #include "rail_type.h"
+#include "widgets/dropdown_type.h"
 
 struct Window *ShowBuildRailToolbar(RailType railtype);
 void ReinitGuiAfterToggleElrail(bool disable);
 bool ResetSignalVariant(int32 = 0);
 void InitializeRailGUI();
+DropDownList *GetRailTypeDropDownList(bool for_replacement = false);
 
 #endif /* RAIL_GUI_H */

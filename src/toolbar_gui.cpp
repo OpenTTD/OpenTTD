@@ -691,50 +691,9 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 /* --- Rail button menu --- */
 
-/**
- * Compare railtypes based on their sorting order.
- * @param first  The railtype to compare to.
- * @param second The railtype to compare.
- * @return True iff the first should be sorted before the second.
- */
-static bool CompareRailTypes(const DropDownListItem *first, const DropDownListItem *second)
-{
-	return GetRailTypeInfo((RailType)first->result)->sorting_order < GetRailTypeInfo((RailType)second->result)->sorting_order;
-}
-
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
-	RailTypes used_railtypes = RAILTYPES_NONE;
-
-	/* Find the used railtypes. */
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
-		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
-
-		used_railtypes |= GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes;
-	}
-
-	/* Get the date introduced railtypes as well. */
-	used_railtypes = AddDateIntroducedRailTypes(used_railtypes, MAX_DAY);
-
-	const Company *c = Company::Get(_local_company);
-	DropDownList *list = new DropDownList();
-	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-		/* If it's not used ever, don't show it to the user. */
-		if (!HasBit(used_railtypes, rt)) continue;
-
-		const RailtypeInfo *rti = GetRailTypeInfo(rt);
-		/* Skip rail type if it has no label */
-		if (rti->label == 0) continue;
-
-		StringID str = rti->max_speed > 0 ? STR_TOOLBAR_RAILTYPE_VELOCITY : STR_JUST_STRING;
-		DropDownListParamStringItem *item = new DropDownListParamStringItem(str, rt, !HasBit(c->avail_railtypes, rt));
-		item->SetParam(0, rti->strings.menu_text);
-		item->SetParam(1, rti->max_speed);
-		list->push_back(item);
-	}
-	list->sort(CompareRailTypes);
-	ShowDropDownList(w, list, _last_built_railtype, TBN_RAILS, 140, true, true);
+	ShowDropDownList(w, GetRailTypeDropDownList(), _last_built_railtype, TBN_RAILS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
