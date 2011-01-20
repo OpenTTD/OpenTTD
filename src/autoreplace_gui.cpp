@@ -25,6 +25,7 @@
 #include "engine_gui.h"
 #include "settings_func.h"
 #include "core/geometry_func.hpp"
+#include "rail_gui.h"
 
 #include "table/strings.h"
 
@@ -420,18 +421,9 @@ public:
 				this->SetDirty();
 				break;
 
-			case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: { // Railtype selection dropdown menu
-				const Company *c = Company::Get(_local_company);
-				DropDownList *list = new DropDownList();
-				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
-					const RailtypeInfo *rti = GetRailTypeInfo(rt);
-					/* Skip rail type if it has no label */
-					if (rti->label == 0) continue;
-					list->push_back(new DropDownListStringItem(rti->strings.replace_text, rt, !HasBit(c->avail_railtypes, rt)));
-				}
-				ShowDropDownList(this, list, sel_railtype, RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN);
+			case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: // Railtype selection dropdown menu
+				ShowDropDownList(this, GetRailTypeDropDownList(true), sel_railtype, RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN);
 				break;
-			}
 
 			case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: // toggle renew_keep_length
 				DoCommandP(0, GetCompanySettingIndex("company.renew_keep_length"), Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1, CMD_CHANGE_COMPANY_SETTING);
