@@ -1,6 +1,6 @@
 OpenTTD's known bugs
-Last updated:    2011-01-17
-Release version: 1.1.0-beta3
+Last updated:    2011-01-21
+Release version: 1.1.0-beta4
 ------------------------------------------------------------------------
 
 
@@ -39,7 +39,6 @@ officially supporting Mac OS X again. For now it remains unsupported and
 we only apply bug fixes provided by the community but we are unable to fix
 these bugs ourselves.
 
-- 3569	Location of wagons can be outside of the wagon
 - 3447	[OSX] SDL port is unuseable
 - 2484	[OSX] Cannot enter CJK characters
 
