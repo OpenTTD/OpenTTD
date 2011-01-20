@@ -238,6 +238,11 @@ struct RailtypeInfo {
 	RailTypes introduces_railtypes;
 
 	/**
+	 * The sorting order of this railtype for the toolbar dropdown.
+	 */
+	byte sorting_order;
+
+	/**
 	 * Sprite groups for resolving sprites
 	 */
 	const SpriteGroup *group[RTSG_END];

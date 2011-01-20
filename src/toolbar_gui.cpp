@@ -691,6 +691,17 @@ static CallBackFunction ToolbarZoomOutClick(Window *w)
 
 /* --- Rail button menu --- */
 
+/**
+ * Compare railtypes based on their sorting order.
+ * @param first  The railtype to compare to.
+ * @param second The railtype to compare.
+ * @return True iff the first should be sorted before the second.
+ */
+static bool CompareRailTypes(const DropDownListItem *first, const DropDownListItem *second)
+{
+	return GetRailTypeInfo((RailType)first->result)->sorting_order < GetRailTypeInfo((RailType)second->result)->sorting_order;
+}
+
 static CallBackFunction ToolbarBuildRailClick(Window *w)
 {
 	RailTypes used_railtypes = RAILTYPES_NONE;
@@ -722,6 +733,7 @@ static CallBackFunction ToolbarBuildRailClick(Window *w)
 		item->SetParam(1, rti->max_speed);
 		list->push_back(item);
 	}
+	list->sort(CompareRailTypes);
 	ShowDropDownList(w, list, _last_built_railtype, TBN_RAILS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;

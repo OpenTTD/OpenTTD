@@ -106,6 +106,14 @@ RailType AllocateRailType(RailTypeLabel label)
 
 			/* We also introduce ourself. */
 			rti->introduces_railtypes = (RailTypes)(1 << rt);
+
+			/* Default sort order; order of allocation, but with some
+			 * offsets so it's easier for NewGRF to pick a spot without
+			 * changing the order of other (original) rail types.
+			 * The << is so you can place other railtypes in between the
+			 * other railtypes, the 7 is to be able to place something
+			 * before the first (default) rail type. */
+			rti->sorting_order = rt << 4 | 7;
 			return rt;
 		}
 	}

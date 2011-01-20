@@ -104,6 +104,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* introduction rail types */
 		RAILTYPES_RAIL,
 
+		/* sort order */
+		0 << 4 | 7,
+
 		{ NULL },
 	},
 
@@ -196,6 +199,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* introduction rail types */
 		RAILTYPES_ELECTRIC,
 
+		/* sort order */
+		1 << 4 | 7,
+
 		{ NULL },
 	},
 
@@ -284,6 +290,9 @@ static const RailtypeInfo _original_railtypes[] = {
 		/* introduction rail types */
 		RAILTYPES_MONO,
 
+		/* sort order */
+		2 << 4 | 7,
+
 		{ NULL },
 	},
 
@@ -371,6 +380,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* introduction rail types */
 		RAILTYPES_MAGLEV,
+
+		/* sort order */
+		3 << 4 | 7,
 
 		{ NULL },
 	},

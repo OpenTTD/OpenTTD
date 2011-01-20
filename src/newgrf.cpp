@@ -3263,6 +3263,10 @@ static ChangeInfoResult RailTypeChangeInfo(uint id, int numinfo, int prop, ByteR
 				rti->introduction_date = buf->ReadDWord();
 				break;
 
+			case 0x1A: // Sort order
+				rti->sorting_order = buf->ReadByte();
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;
@@ -3320,6 +3324,7 @@ static ChangeInfoResult RailTypeReserveInfo(uint id, int numinfo, int prop, Byte
 			case 0x12: // Station graphic
 			case 0x15: // Acceleration model
 			case 0x16: // Map colour
+			case 0x1A: // Sort order
 				buf->ReadByte();
 				break;
 
