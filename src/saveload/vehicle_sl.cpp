@@ -296,31 +296,33 @@ void AfterLoadVehicles(bool part_of_load)
 		}
 	}
 
-	if (IsSavegameVersionBefore(105)) {
-		/* Before 105 there was no order for shared orders, thus it messed up horribly */
-		FOR_ALL_VEHICLES(v) {
-			if (v->First() != v || v->orders.list != NULL || v->previous_shared != NULL || v->next_shared == NULL) continue;
+	if (part_of_load) {
+		if (IsSavegameVersionBefore(105)) {
+			/* Before 105 there was no order for shared orders, thus it messed up horribly */
+			FOR_ALL_VEHICLES(v) {
+				if (v->First() != v || v->orders.list != NULL || v->previous_shared != NULL || v->next_shared == NULL) continue;
 
-			v->orders.list = new OrderList(NULL, v);
-			for (Vehicle *u = v; u != NULL; u = u->next_shared) {
-				u->orders.list = v->orders.list;
+				v->orders.list = new OrderList(NULL, v);
+				for (Vehicle *u = v; u != NULL; u = u->next_shared) {
+					u->orders.list = v->orders.list;
+				}
 			}
 		}
-	}
 
-	if (IsSavegameVersionBefore(157)) {
-		/* The road vehicle subtype was converted to a flag. */
-		RoadVehicle *rv;
-		FOR_ALL_ROADVEHICLES(rv) {
-			if (rv->subtype == 0) {
-				/* The road vehicle is at the front. */
-				rv->SetFrontEngine();
-			} else if (rv->subtype == 1) {
-				/* The road vehicle is an articulated part. */
-				rv->subtype = 0;
-				rv->SetArticulatedPart();
-			} else {
-				NOT_REACHED();
+		if (IsSavegameVersionBefore(157)) {
+			/* The road vehicle subtype was converted to a flag. */
+			RoadVehicle *rv;
+			FOR_ALL_ROADVEHICLES(rv) {
+				if (rv->subtype == 0) {
+					/* The road vehicle is at the front. */
+					rv->SetFrontEngine();
+				} else if (rv->subtype == 1) {
+					/* The road vehicle is an articulated part. */
+					rv->subtype = 0;
+					rv->SetArticulatedPart();
+				} else {
+					NOT_REACHED();
+				}
 			}
 		}
 	}
@@ -360,7 +362,7 @@ void AfterLoadVehicles(bool part_of_load)
 	}
 
 	/* Stop non-front engines */
-	if (IsSavegameVersionBefore(112)) {
+	if (part_of_load && IsSavegameVersionBefore(112)) {
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == VEH_TRAIN) {
 				Train *t = Train::From(v);
