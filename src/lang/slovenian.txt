@@ -1202,8 +1202,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Samoobn
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Samoobnovi, ko je vozilo {ORANGE}{STRING}{LTBLUE} mesec{P "" a e ev} pred/po največji starosti
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Samoobnovi najmanj potrebnega denarja za obnovo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Trajanje sporočila o napaki: {ORANGE}{STRING} sekund{P a i e ""}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Zamik lebdečih dogodkov: {ORANGE}{STRING} sekund{P a i e ""}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Zamik lebdečih dogodkov: {ORANGE}onemogočeno
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Pokaži obvestilo: {ORANGE}Lebdi {STRING} sekund{P o i e ""}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Pokaži obvestilo: {ORANGE}Desni klik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Prikaz števila prebivalcev ob imenu mesta: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Urejevalnik terena: {ORANGE}{STRING}
@@ -2123,6 +2123,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Kupi zem
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Izbor zgradbe
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Izberi zgradbo za postavitev. Shift preklaplja med izgradnjo in predvidenimi stroški
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Izberi vrsto objekta za gradnjo
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Predogled zgradbe
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost: {GOLD}{NUM} x {NUM} plošč
 
@@ -2463,6 +2464,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametr
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Ni informacij
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ni ujemajoče datoteke
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Onemogočeno
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nekompatibilno s to različico OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Vnesi NewGRF parametre
 

@@ -195,8 +195,8 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}mi/h
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp （英馬力）
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp （英馬力）
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
@@ -282,7 +282,7 @@ STR_SORT_BY_RATING_MAX                                          :貨物運搬の
 STR_SORT_BY_RATING_MIN                                          :貨物運搬の最低評価
 STR_SORT_BY_ENGINE_ID                                           :エンジンID（標準）
 STR_SORT_BY_COST                                                :値段
-STR_SORT_BY_POWER                                               :動力
+STR_SORT_BY_POWER                                               :仕事率
 STR_SORT_BY_TRACTIVE_EFFORT                                     :牽引力
 STR_SORT_BY_INTRO_DATE                                          :導入日
 STR_SORT_BY_RUNNING_COST                                        :運転費用
@@ -315,67 +315,67 @@ STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}埠頭�
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}空港を建設します。
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}地形のツールバーを開きます。整地や植林などを行うことができます。
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}音楽／効果音のウィンドウを表示します。
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}最後のメッセージ、メッセージの設定を表示します
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域情報、コンソール、AIデバグ、スクリーンショット、OpenTTDいついて
-STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}ツールバーの切り替え
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}最後のメッセージとニュースの表示と、メッセージオプションの設定ができます。
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}地域の情報、コンソール、AIのデバッグ、スクリーンショット、OpenTTDについて、などのツール群です。
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}ツールバーの切り替えをします。
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}シナリオを開く、保存、エディタを終了など
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}シナリオのセーブ、シナリオのロード、シナリオエディタの終了、OpenTTDの終了ができます。
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}シナリオエディタ
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}開始日を1年間減らします
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}開始日を1年間増やします
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}クリックして開始年を入力します
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}地図、町のリストを表示します
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}地形の作成
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}市町村の建設
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}産業の建設
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}道路の建設
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}木を植林
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}標示を設置
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}物を置いて下さい。（シフト）で物の価格を表します。
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}開始時期を1年戻します。
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}開始時期を1年進めます。
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}クリックで、開始年を入力できます。
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}地図と町のリストを表示します。
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}地形の生成をします。
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}町を生成します。
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}産業を生成します。
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}道路を建設します。
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}木を植えます。Shiftキーを押しながら決定するとコストを見積もります。
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}看板を設置します。
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}物を設置します。Shiftキーを押しながら決定するとコストを見積もります。
 
 ############ range for SE file menu starts
-STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :シナリオを保存
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :シナリオを開く
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :ハイトマップを開く
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :エディタを終了
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :シナリオをセーブ
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :シナリオをロード
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :ハイトマップをロード
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :タイトルに戻る
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :終了
+STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終了
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームの基本設定
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプションの設定
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易度の設定
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :パッチ設定
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :追加のゲームオプションの設定
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AIの設定。
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :半透明設定
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :市町村名を表示
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :駅名を表示
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :通過点を標示
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :標示を表示
-STR_SETTINGS_MENU_FULL_ANIMATION                                :高級のアニメーション
-STR_SETTINGS_MENU_FULL_DETAIL                                   :高級の画像
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :建物を半透明で表示
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :標示を半透明で表示
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度の設定
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :町の名前を表示する
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :駅の名前を表示する
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :中継地点の名前を表示する
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :看板を表示する
+STR_SETTINGS_MENU_FULL_ANIMATION                                :アニメーションを完全に表示する
+STR_SETTINGS_MENU_FULL_DETAIL                                   :画像の細部を完全に表示する
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :建物の表示を半透明にする
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :駅の看板の表示を半透明にする
 ############ range ends here
 
 ############ range for file menu starts
-STR_FILE_MENU_SAVE_GAME                                         :ゲームを保存
-STR_FILE_MENU_LOAD_GAME                                         :ロード
-STR_FILE_MENU_QUIT_GAME                                         :ゲームを断念
-STR_FILE_MENU_EXIT                                              :終了
+STR_FILE_MENU_SAVE_GAME                                         :ゲームデータをセーブ
+STR_FILE_MENU_LOAD_GAME                                         :ゲームデータをロード
+STR_FILE_MENU_QUIT_GAME                                         :タイトルに戻る
+STR_FILE_MENU_EXIT                                              :OpenTTDを終了
 ############ range ends here
 
 ############ range for map menu starts
-STR_MAP_MENU_MAP_OF_WORLD                                       :世界の地図
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :特別ビューア
-STR_MAP_MENU_SIGN_LIST                                          :標示のリスト
+STR_MAP_MENU_MAP_OF_WORLD                                       :世界地図
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :ビューポートを開く
+STR_MAP_MENU_SIGN_LIST                                          :看板のリスト
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :市町村のリスト
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :町のリスト
 ############ end of the 'Display map' dropdown
-STR_TOWN_MENU_FOUND_TOWN                                        :町を建設
+STR_TOWN_MENU_FOUND_TOWN                                        :町の新設に出資
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -383,38 +383,38 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :助成金
 ############ range ends here
 
 ############ range for graph menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :営業利益
-STR_GRAPH_MENU_INCOME_GRAPH                                     :収入グラフ
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :運送済み貨物のグラフ
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :成績グラフ
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :会社価値グラフ
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :貨物運送料
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :売上総利益の推移
+STR_GRAPH_MENU_INCOME_GRAPH                                     :売上高の推移
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :貨物を運送した量の推移
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :格付けの推移
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :総資産の推移
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :運送報酬の相場
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :会社の成績表
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :詳しい成績表
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :会社の格付けの順位
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :会社の格付けの詳細
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :産業リスト
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :新規産業の建設を出資
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :産業のリスト
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :産業の新設に出資
 ############ range ends here
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :鉄道の建設
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :電鉄の建設
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :電化鉄道の建設
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :モノレールの建設
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :磁気浮上式鉄道の建設
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :マグレブ（リニア）の建設
 ############ range ends here
 
 ############ range for road construction menu starts
 STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :道路の建設
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :路面電車線の建設
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :路面電車の建設
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :水路を建設
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :水路の建設
 ############ range ends here
 
 ############ range for airport construction menu starts
@@ -422,100 +422,100 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :空港の建設
 ############ range ends here
 
 ############ range for landscaping menu starts
-STR_LANDSCAPING_MENU_LANDSCAPING                                :地形
-STR_LANDSCAPING_MENU_PLANT_TREES                                :木を植林
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :標示を設置
+STR_LANDSCAPING_MENU_LANDSCAPING                                :地形のツール
+STR_LANDSCAPING_MENU_PLANT_TREES                                :木を植える
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :看板の設置
 ############ range ends here
 
 ############ range for music menu starts
-STR_TOOLBAR_SOUND_MUSIC                                         :エフェクト／音楽
+STR_TOOLBAR_SOUND_MUSIC                                         :効果音／音楽
 ############ range ends here
 
 ############ range for message menu starts
-STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :最後のメッセージ
+STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :最後のメッセージとニュース
 STR_NEWS_MENU_MESSAGE_SETTINGS                                  :メッセージの設定
-STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :メッセージ履歴
+STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :メッセージの履歴
 ############ range ends here
 
 ############ range for about menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :地域情報
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :地域の情報
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :コンソールのオンオフ
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :コンソールの表示／非表示
 STR_ABOUT_MENU_AI_DEBUG                                         :AI のデバッグ
-STR_ABOUT_MENU_SCREENSHOT                                       :スクリーンショット（Ctrl-S）
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :拡大してスクリーンショット
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :大型スクリーンショット（Ctrl-G）
+STR_ABOUT_MENU_SCREENSHOT                                       :スクリーンショットを取る
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :高解像度のスクリーンショットを取る
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :全体のスクリーンショットを取る
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :OpenTTDについて
-STR_ABOUT_MENU_SPRITE_ALIGNER                                   :スプライトを整列します。
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :スプライトを整列
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :1日
-STR_ORDINAL_NUMBER_2ND                                          :2日
-STR_ORDINAL_NUMBER_3RD                                          :3日
-STR_ORDINAL_NUMBER_4TH                                          :4日
-STR_ORDINAL_NUMBER_5TH                                          :5日
-STR_ORDINAL_NUMBER_6TH                                          :6日
-STR_ORDINAL_NUMBER_7TH                                          :7日
-STR_ORDINAL_NUMBER_8TH                                          :8日
-STR_ORDINAL_NUMBER_9TH                                          :9日
-STR_ORDINAL_NUMBER_10TH                                         :10日
-STR_ORDINAL_NUMBER_11TH                                         :11日
-STR_ORDINAL_NUMBER_12TH                                         :12日
-STR_ORDINAL_NUMBER_13TH                                         :13日
-STR_ORDINAL_NUMBER_14TH                                         :14日
-STR_ORDINAL_NUMBER_15TH                                         :15日
-STR_ORDINAL_NUMBER_16TH                                         :16日
-STR_ORDINAL_NUMBER_17TH                                         :17日
-STR_ORDINAL_NUMBER_18TH                                         :18日
-STR_ORDINAL_NUMBER_19TH                                         :19日
-STR_ORDINAL_NUMBER_20TH                                         :20日
-STR_ORDINAL_NUMBER_21ST                                         :21日
-STR_ORDINAL_NUMBER_22ND                                         :22日
-STR_ORDINAL_NUMBER_23RD                                         :23日
-STR_ORDINAL_NUMBER_24TH                                         :24日
-STR_ORDINAL_NUMBER_25TH                                         :25日
-STR_ORDINAL_NUMBER_26TH                                         :26日
-STR_ORDINAL_NUMBER_27TH                                         :27日
-STR_ORDINAL_NUMBER_28TH                                         :28日
-STR_ORDINAL_NUMBER_29TH                                         :29日
-STR_ORDINAL_NUMBER_30TH                                         :30日
-STR_ORDINAL_NUMBER_31ST                                         :31日
+STR_ORDINAL_NUMBER_1ST                                          :1
+STR_ORDINAL_NUMBER_2ND                                          :2
+STR_ORDINAL_NUMBER_3RD                                          :3
+STR_ORDINAL_NUMBER_4TH                                          :4
+STR_ORDINAL_NUMBER_5TH                                          :5
+STR_ORDINAL_NUMBER_6TH                                          :6
+STR_ORDINAL_NUMBER_7TH                                          :7
+STR_ORDINAL_NUMBER_8TH                                          :8
+STR_ORDINAL_NUMBER_9TH                                          :9
+STR_ORDINAL_NUMBER_10TH                                         :10
+STR_ORDINAL_NUMBER_11TH                                         :11
+STR_ORDINAL_NUMBER_12TH                                         :12
+STR_ORDINAL_NUMBER_13TH                                         :13
+STR_ORDINAL_NUMBER_14TH                                         :14
+STR_ORDINAL_NUMBER_15TH                                         :15
+STR_ORDINAL_NUMBER_16TH                                         :16
+STR_ORDINAL_NUMBER_17TH                                         :17
+STR_ORDINAL_NUMBER_18TH                                         :18
+STR_ORDINAL_NUMBER_19TH                                         :19
+STR_ORDINAL_NUMBER_20TH                                         :20
+STR_ORDINAL_NUMBER_21ST                                         :21
+STR_ORDINAL_NUMBER_22ND                                         :22
+STR_ORDINAL_NUMBER_23RD                                         :23
+STR_ORDINAL_NUMBER_24TH                                         :24
+STR_ORDINAL_NUMBER_25TH                                         :25
+STR_ORDINAL_NUMBER_26TH                                         :26
+STR_ORDINAL_NUMBER_27TH                                         :27
+STR_ORDINAL_NUMBER_28TH                                         :28
+STR_ORDINAL_NUMBER_29TH                                         :29
+STR_ORDINAL_NUMBER_30TH                                         :30
+STR_ORDINAL_NUMBER_31ST                                         :31
 ############ range for days ends
 
 ############ range for months starts
-STR_MONTH_ABBREV_JAN                                            :1月
-STR_MONTH_ABBREV_FEB                                            :2月
-STR_MONTH_ABBREV_MAR                                            :3月
-STR_MONTH_ABBREV_APR                                            :4月
-STR_MONTH_ABBREV_MAY                                            :5月
-STR_MONTH_ABBREV_JUN                                            :6月
-STR_MONTH_ABBREV_JUL                                            :7月
-STR_MONTH_ABBREV_AUG                                            :8月
-STR_MONTH_ABBREV_SEP                                            :9月
-STR_MONTH_ABBREV_OCT                                            :10月
-STR_MONTH_ABBREV_NOV                                            :11月
-STR_MONTH_ABBREV_DEC                                            :12月
+STR_MONTH_ABBREV_JAN                                            :1
+STR_MONTH_ABBREV_FEB                                            :2
+STR_MONTH_ABBREV_MAR                                            :3
+STR_MONTH_ABBREV_APR                                            :4
+STR_MONTH_ABBREV_MAY                                            :5
+STR_MONTH_ABBREV_JUN                                            :6
+STR_MONTH_ABBREV_JUL                                            :7
+STR_MONTH_ABBREV_AUG                                            :8
+STR_MONTH_ABBREV_SEP                                            :9
+STR_MONTH_ABBREV_OCT                                            :10
+STR_MONTH_ABBREV_NOV                                            :11
+STR_MONTH_ABBREV_DEC                                            :12
 
-STR_MONTH_JAN                                                   :1月
-STR_MONTH_FEB                                                   :2月
-STR_MONTH_MAR                                                   :3月
-STR_MONTH_APR                                                   :4月
-STR_MONTH_MAY                                                   :5月
-STR_MONTH_JUN                                                   :6月
-STR_MONTH_JUL                                                   :７月
-STR_MONTH_AUG                                                   :8月
-STR_MONTH_SEP                                                   :9月
-STR_MONTH_OCT                                                   :10月
-STR_MONTH_NOV                                                   :11月
-STR_MONTH_DEC                                                   :12月
+STR_MONTH_JAN                                                   :1
+STR_MONTH_FEB                                                   :2
+STR_MONTH_MAR                                                   :3
+STR_MONTH_APR                                                   :4
+STR_MONTH_MAY                                                   :5
+STR_MONTH_JUN                                                   :6
+STR_MONTH_JUL                                                   :7
+STR_MONTH_AUG                                                   :8
+STR_MONTH_SEP                                                   :9
+STR_MONTH_OCT                                                   :10
+STR_MONTH_NOV                                                   :11
+STR_MONTH_DEC                                                   :12
 ############ range for months ends
 
 # Graph window
-STR_GRAPH_KEY_BUTTON                                            :{BLACK}説明
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}対応
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}グラフの説明を表示します
-STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}月{} {STRING}月
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}月{} {STRING}月{}{NUM}年
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
@@ -1159,7 +1159,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :入（すべて
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}車両の利益が損失になってから警告を表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}車両の購入可能期限がない：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}車両が古くなるとき自動交換：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}車両が最高使用年数の {ORANGE}{STRING}{LTBLUE} ヶ月間前／後に自動交換
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}車両が最高使用年数の {ORANGE}{STRING}{LTBLUE} ヶ月前後に自動交換
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}自動交換するための最小資金：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}エラーメッセージの表示時間：{ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}ツールのヒントを見る: {ORANGE}飛ぶための{STRING}次
@@ -2169,7 +2169,7 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}小マ�
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}小マップでも、産業を選べます。
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地域情報
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地域の情報
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}破壊費用：{LTBLUE}破壊不可
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}破壊費用：{RED}{CURRENCY}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}撤去すると収入: {LTBLUE}{CURRENCY}
@@ -4144,8 +4144,8 @@ STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :パワーノー
 ##id 0x8800
 # Formatting of some strings
 STR_FORMAT_DATE_TINY                                            :{2:NUM}-{1:STRING}-{0:STRING}
-STR_FORMAT_DATE_SHORT                                           :{1:NUM}年{0:STRING}
-STR_FORMAT_DATE_LONG                                            :{2:NUM}年{1:STRING}{0:STRING}
+STR_FORMAT_DATE_SHORT                                           :{1:NUM}年{0:STRING}月
+STR_FORMAT_DATE_LONG                                            :{2:NUM}年{1:STRING}月{0:STRING}日
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_FORMAT_BUOY_NAME                                            :{TOWN} ブイ
