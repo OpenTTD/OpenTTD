@@ -1,5 +1,5 @@
 Multiplayer manual for OpenTTD
-Last updated:    2010-11-30
+Last updated:    2011-01-20
 ------------------------------------------------------------------------
 
 
@@ -10,6 +10,7 @@ Table of contents
  * 2.1) Connecting to a server over the console
 3.0) Playing internet games
 4.0) Tips for servers
+ * 4.1) Imposing landscaping limits
 5.0) Some useful things
 6.0) Troubleshooting
 
@@ -147,6 +148,46 @@ Table of contents
    quadratic to the amount of clients. In short, a rule of thumb for, the
    maximum memory usage for packets is:
        #max_clients * #max_clients * bytes_per_frame * 10 KiB.
+
+4.1) Imposing landscaping limits
+---- ---------------------------
+ - You can impose limits on companies by the following 4 settings:
+   - terraform_per_64k_frames
+   - terraform_frame_burst
+   - clear_per_64k_frames
+   - clear_frame_burst
+
+ - Explaining 'per_64K_frames' and 'burst'
+    - 'burst' defines 3 things, the maximum limit, the limit of a single action,
+      and the initial value for the limit assigned to a new company.
+      This setting is fairly simple and requires no math.
+
+      A value of 1 means a single tile can be affected by a single action.
+      This results in having to click 400 times when wanting to cover an area
+      of 20 x 20 tiles.
+
+      The default value 4096 covers an area of 64 x 64 tiles.
+
+    - 'per_64k_frames' defines the number of tiles added to each companies limit
+      per frame (however not past the possible maximum value,the 'burst').
+      64k rather resembles the exact number of 65536 frames. So setting this
+      variable to 65536 means: 65536 / 65536 = 1 tile per frame.
+      As a day consists of 74 frames, a company's limit is increased by 74
+      tiles during the course of a single day (2.22 seconds).
+
+      To achieve a 1 tile per day increase the following calculation is needed:
+      1 / 74 (frames per day) * 65536 (per_64k_frames) = 885.62...
+      after rounding: a value of 886 means adding a bit over 1 tile per day.
+
+      There is still enough space to scale this value downwards:
+      decreasing this value to 127 results in a bit over 1 tile added to the
+      allowance per week (7 days).
+
+      To create a setup in which a company gets an initial allowance only,
+      set the value to 0 - no increase of the allowance per frame.
+
+ - Even though construction actions include a clear tile action, they are not
+   affected by the above settings.
 
 
 5.0) Some useful things
