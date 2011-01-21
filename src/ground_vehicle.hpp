@@ -75,6 +75,8 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	GroundVehicleCache gcache; ///< Cache of often calculated values.
 	uint16 gv_flags;           ///< @see GroundVehicleFlags.
 
+	typedef GroundVehicle<T, Type> GroundVehicleBase; ///< Our type
+
 	/**
 	 * The constructor at SpecializedVehicle must be called.
 	 */

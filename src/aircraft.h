@@ -50,7 +50,7 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	byte turn_counter;             ///< Ticks between each turn to prevent > 45 degree turns.
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
-	Aircraft() : SpecializedVehicle<Aircraft, VEH_AIRCRAFT>() {}
+	Aircraft() : SpecializedVehicleBase() {}
 	/** We want to 'destruct' the right class. */
 	virtual ~Aircraft() { this->PreDestructor(); }
 

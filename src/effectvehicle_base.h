@@ -27,7 +27,7 @@ struct EffectVehicle : public SpecializedVehicle<EffectVehicle, VEH_EFFECT> {
 	byte animation_substate;
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
-	EffectVehicle() : SpecializedVehicle<EffectVehicle, VEH_EFFECT>() {}
+	EffectVehicle() : SpecializedVehicleBase() {}
 	/** We want to 'destruct' the right class. */
 	virtual ~EffectVehicle() {}
 

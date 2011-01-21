@@ -644,6 +644,8 @@ template <class T, VehicleType Type>
 struct SpecializedVehicle : public Vehicle {
 	static const VehicleType EXPECTED_TYPE = Type; ///< Specialized type
 
+	typedef SpecializedVehicle<T, Type> SpecializedVehicleBase; ///< Our type
+
 	/**
 	 * Set vehicle type correctly
 	 */
@@ -758,7 +760,7 @@ struct DisasterVehicle : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER
 	VehicleID big_ufo_destroyer_target;
 
 	/** We don't want GCC to zero our struct! It already is zeroed and has an index! */
-	DisasterVehicle() : SpecializedVehicle<DisasterVehicle, VEH_DISASTER>() {}
+	DisasterVehicle() : SpecializedVehicleBase() {}
 	/** We want to 'destruct' the right class. */
 	virtual ~DisasterVehicle() {}
 
