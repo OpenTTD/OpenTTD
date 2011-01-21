@@ -1487,6 +1487,10 @@ static void ReverseTrainSwapVeh(Train *v, int l, int r)
 		UpdateStatusAfterSwap(a);
 		UpdateStatusAfterSwap(b);
 	} else {
+		/* Swap GVF_GOINGUP_BIT/GVF_GOINGDOWN_BIT.
+		 * This is a little bit redundant way, a->gv_flags will
+		 * be (re)set twice, but it reduces code duplication */
+		SwapTrainFlags(&a->gv_flags, &a->gv_flags);
 		UpdateStatusAfterSwap(a);
 	}
 
