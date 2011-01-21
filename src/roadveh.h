@@ -262,6 +262,36 @@ protected: // These functions should not be called outside acceleration code.
 
 		return trackbits == TRACK_BIT_X || trackbits == TRACK_BIT_Y;
 	}
+
+	/**
+	 * Road vehicles have to use GetSlopeZ() to compute their height
+	 * if they are reversing because in that case, their direction
+	 * is not parallel with the road. It is safe to return \c true
+	 * even if it is not reversing.
+	 * @return are we (possibly) reversing?
+	 */
+	FORCEINLINE bool HasToUseGetSlopeZ()
+	{
+		const RoadVehicle *rv = this->First();
+
+		/* Check if this vehicle is in the same direction as the road under.
+		 * We already know it has either GVF_GOINGUP_BIT or GVF_GOINGDOWN_BIT set. */
+
+		if (rv->state <= RVSB_TRACKDIR_MASK && IsReversingRoadTrackdir((Trackdir)rv->state)) {
+			/* If the first vehicle is reversing, this vehicle may be reversing too
+			 * (especially if this is the first, and maybe the only, vehicle).*/
+			return true;
+		}
+
+		while (rv != this) {
+			/* If any previous vehicle has different direction,
+			 * we may be in the middle of reversing. */
+			if (this->direction != rv->direction) return true;
+			rv = rv->Next();
+		}
+
+		return false;
+	}
 };
 
 #define FOR_ALL_ROADVEHICLES(var) FOR_ALL_VEHICLES_OF_TYPE(RoadVehicle, var)

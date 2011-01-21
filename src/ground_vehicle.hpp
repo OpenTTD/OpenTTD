@@ -148,16 +148,73 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	/**
 	 * Updates vehicle's Z position.
 	 * Inclination can't change in the middle of a tile.
+	 * The faster code is used for trains and road vehicles unless they are
+	 * reversing on a sloped tile.
 	 */
 	FORCEINLINE void UpdateZPosition()
 	{
-		/* Vehicle's Z position can change only if it has GVF_GOINGUP_BIT or GVF_GOINGDOWN_BIT set */
-		if (HasBit(this->gv_flags, GVF_GOINGUP_BIT) || HasBit(this->gv_flags, GVF_GOINGDOWN_BIT)) {
-			this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
-		} else {
-			/* Verify that assumption. */
-			assert(this->z_pos == GetSlopeZ(this->x_pos, this->y_pos));
+#if 0
+		/* The following code does this: */
+
+		if (HasBit(this->gv_flags, GVF_GOINGUP_BIT)) {
+			switch (this->direction) {
+				case DIR_NE:
+					this->z_pos += (this->x_pos & 1); break;
+				case DIR_SW:
+					this->z_pos += (this->x_pos & 1) ^ 1; break;
+				case DIR_NW:
+					this->z_pos += (this->y_pos & 1); break;
+				case DIR_SE:
+					this->z_pos += (this->y_pos & 1) ^ 1; break;
+				default: break;
+			}
+		} else if (HasBit(this->gv_flags, GVF_GOINGDOWN_BIT)) {
+			switch (this->direction) {
+				case DIR_NE:
+					this->z_pos -= (this->x_pos & 1); break;
+				case DIR_SW:
+					this->z_pos -= (this->x_pos & 1) ^ 1; break;
+				case DIR_NW:
+					this->z_pos -= (this->y_pos & 1); break;
+				case DIR_SE:
+					this->z_pos -= (this->y_pos & 1) ^ 1; break;
+				default: break;
+			}
 		}
+
+		/* But gcc 4.4.5 isn't able to nicely optimise it, and the resulting
+		 * code is full of conditional jumps. */
+#endif
+
+		/* Vehicle's Z position can change only if it has GVF_GOINGUP_BIT or GVF_GOINGDOWN_BIT set.
+		 * Furthermore, if this function is called once every time the vehicle's position changes,
+		 * we know the Z position changes by +/-1 at certain moments - when x_pos, y_pos is odd/even,
+		 * depending on orientation of the slope and vehicle's direction */
+
+		if (HasBit(this->gv_flags, GVF_GOINGUP_BIT) || HasBit(this->gv_flags, GVF_GOINGDOWN_BIT)) {
+			if (T::From(this)->HasToUseGetSlopeZ()) {
+				/* In some cases, we have to use GetSlopeZ() */
+				this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
+				return;
+			}
+			/* DirToDiagDir() is a simple right shift */
+			DiagDirection dir = DirToDiagDir(this->direction);
+			/* Read variables, so the compiler knows the access doesn't trap */
+			int8 x_pos = this->x_pos;
+			int8 y_pos = this->y_pos;
+			/* DiagDirToAxis() is a simple mask */
+			int8 d = DiagDirToAxis(dir) == AXIS_X ? x_pos : y_pos;
+			/* We need only the least significant bit */
+			d &= 1;
+			/* Conditional "^ 1". Optimised to "(dir - 1) <= 1". */
+			d ^= (int8)(dir == DIAGDIR_SW || dir == DIAGDIR_SE);
+			/* Subtraction instead of addition because we are testing for GVF_GOINGUP_BIT.
+			 * GVF_GOINGUP_BIT is used because it's bit 0, so simple AND can be used,
+			 * without any shift */
+			this->z_pos += HasBit(this->gv_flags, GVF_GOINGUP_BIT) ? d : -d;
+		}
+
+		assert(this->z_pos == GetSlopeZ(this->x_pos, this->y_pos));
 	}
 
 	/**

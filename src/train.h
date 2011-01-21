@@ -380,6 +380,16 @@ protected: // These functions should not be called outside acceleration code.
 		/* Any track that isn't TRACK_BIT_X or TRACK_BIT_Y cannot be sloped. */
 		return this->track == TRACK_BIT_X || this->track == TRACK_BIT_Y;
 	}
+
+	/**
+	 * Trains can always use the faster algorithm because they
+	 * have always the same direction as the track under them.
+	 * @return false
+	 */
+	FORCEINLINE bool HasToUseGetSlopeZ()
+	{
+		return false;
+	}
 };
 
 #define FOR_ALL_TRAINS(var) FOR_ALL_VEHICLES_OF_TYPE(Train, var)
