@@ -460,7 +460,7 @@ static Vehicle *EnumCheckRoadVehCrashTrain(Vehicle *v, void *data)
 
 uint RoadVehicle::Crash(bool flooded)
 {
-	uint pass = Vehicle::Crash(flooded);
+	uint pass = this->GroundVehicleBase::Crash(flooded);
 	if (this->IsFrontEngine()) {
 		pass += 1; // driver
 

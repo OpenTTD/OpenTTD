@@ -87,6 +87,21 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	int GetAcceleration() const;
 
 	/**
+	 * Common code executed for crashed ground vehicles
+	 * @param flooded was this vehicle flooded?
+	 * @return number of victims
+	 */
+	/* virtual */ uint Crash(bool flooded)
+	{
+		/* Crashed vehicles aren't going up or down */
+		for (T *v = T::From(this); v != NULL; v = v->Next()) {
+			ClrBit(v->gv_flags, GVF_GOINGUP_BIT);
+			ClrBit(v->gv_flags, GVF_GOINGDOWN_BIT);
+		}
+		return this->Vehicle::Crash(flooded);
+	}
+
+	/**
 	 * Calculates the total slope resistance for this vehicle.
 	 * @return Slope resistance.
 	 */
