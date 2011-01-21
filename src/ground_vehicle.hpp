@@ -151,12 +151,8 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 */
 	FORCEINLINE void UpdateZPosition()
 	{
-		/* Flat tile, tile with two opposing corners raised and tile with 3 corners
-		 * raised can never have sloped track ... */
-		static const uint32 never_sloped = 1 << SLOPE_FLAT | 1 << SLOPE_EW | 1 << SLOPE_NS | 1 << SLOPE_NWS | 1 << SLOPE_WSE | 1 << SLOPE_SEN | 1 << SLOPE_ENW;
-		/* ... unless it's a bridge head. */
-		if (IsTileType(this->tile, MP_TUNNELBRIDGE) || // the following check would be true for tunnels anyway
-				(T::From(this)->TileMayHaveSlopedTrack() && !HasBit(never_sloped, GetTileSlope(this->tile, NULL)))) {
+		/* Vehicle's Z position can change only if it has GVF_GOINGUP_BIT or GVF_GOINGDOWN_BIT set */
+		if (HasBit(this->gv_flags, GVF_GOINGUP_BIT) || HasBit(this->gv_flags, GVF_GOINGDOWN_BIT)) {
 			this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
 		} else {
 			/* Verify that assumption. */
