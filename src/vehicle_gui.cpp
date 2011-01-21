@@ -1416,7 +1416,7 @@ public:
 					case VL_SHARED_ORDERS: // Shared Orders
 						if (this->vehicles.Length() == 0) {
 							/* We can't open this window without vehicles using this order
-							* and we should close the window when deleting the order      */
+							 * and we should close the window when deleting the order. */
 							NOT_REACHED();
 						}
 						SetDParam(0, this->vscroll->GetCount());

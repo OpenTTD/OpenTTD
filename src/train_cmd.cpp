@@ -2772,7 +2772,7 @@ uint Train::Crash(bool flooded)
 		}
 
 		/* we may need to update crossing we were approaching,
-		* but must be updated after the train has been marked crashed */
+		 * but must be updated after the train has been marked crashed */
 		TileIndex crossing = TrainApproachingCrossingTile(this);
 		if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
 

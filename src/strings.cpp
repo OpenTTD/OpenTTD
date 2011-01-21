@@ -1745,8 +1745,8 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 
 		if (bad_font) {
 			/* Our fallback font does miss characters too, so keep the
-				* user chosen font as that is more likely to be any good than
-				* the wild guess we made */
+			 * user chosen font as that is more likely to be any good than
+			 * the wild guess we made */
 			UninitFreeType();
 			InitFreeType();
 		}

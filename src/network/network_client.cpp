@@ -209,8 +209,8 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 	if (my_client->CanSendReceive()) {
 		NetworkRecvStatus res = my_client->ReceivePackets();
 		if (res != NETWORK_RECV_STATUS_OKAY) {
-			/* The client made an error of which we can not recover
-				*   close the client and drop back to main menu */
+			/* The client made an error of which we can not recover.
+			 * Close the connection and drop back to the main menu. */
 			my_client->ClientError(res);
 			return false;
 		}

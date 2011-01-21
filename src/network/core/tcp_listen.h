@@ -75,7 +75,7 @@ public:
 			/* Can we handle a new client? */
 			if (!Tsocket::AllowConnection()) {
 				/* no more clients allowed?
-				* Send to the client that we are full! */
+				 * Send to the client that we are full! */
 				Packet p(Tfull_packet);
 				p.PrepareToSend();
 

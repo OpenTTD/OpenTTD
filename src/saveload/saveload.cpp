@@ -2026,12 +2026,12 @@ struct ZlibSaveFilter : SaveFilter {
 			this->z.avail_out = sizeof(buf);
 
 			/**
-			* For the poor next soul who sees many valgrind warnings of the
-			* "Conditional jump or move depends on uninitialised value(s)" kind:
-			* According to the author of zlib it is not a bug and it won't be fixed.
-			* http://groups.google.com/group/comp.compression/browse_thread/thread/b154b8def8c2a3ef/cdf9b8729ce17ee2
-			* [Mark Adler, Feb 24 2004, 'zlib-1.2.1 valgrind warnings' in the newgroup comp.compression]
-			*/
+			 * For the poor next soul who sees many valgrind warnings of the
+			 * "Conditional jump or move depends on uninitialised value(s)" kind:
+			 * According to the author of zlib it is not a bug and it won't be fixed.
+			 * http://groups.google.com/group/comp.compression/browse_thread/thread/b154b8def8c2a3ef/cdf9b8729ce17ee2
+			 * [Mark Adler, Feb 24 2004, 'zlib-1.2.1 valgrind warnings' in the newgroup comp.compression]
+			 */
 			int r = deflate(&this->z, mode);
 
 			/* bytes were emitted? */
