@@ -447,7 +447,7 @@ char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, const char *str, i
 				StringID string;
 				string  = ((uint8)*str++);
 				string |= ((uint8)*str++) << 8;
-				d += Utf8Encode(d, SCC_STRING_ID);
+				d += Utf8Encode(d, SCC_NEWGRF_STRINL);
 				d += Utf8Encode(d, MapGRFStringID(grfid, string));
 				break;
 			}
@@ -1059,7 +1059,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 			return SCC_CURRENCY;
 
 		case SCC_NEWGRF_PRINT_STRING_ID:
-			return SCC_STRING1;
+			return SCC_NEWGRF_PRINT_STRING_ID;
 
 		case SCC_NEWGRF_PRINT_DATE:
 			return SCC_DATE_LONG;

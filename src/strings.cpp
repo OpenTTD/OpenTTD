@@ -37,6 +37,7 @@
 #include "smallmap_gui.h"
 #include "window_func.h"
 #include "debug.h"
+#include <stack>
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -121,6 +122,8 @@ static inline int64 *GetArgvPtr(int64 **argv, int n, const int64 *argve, WChar *
 const char *GetStringPtr(StringID string)
 {
 	switch (GB(string, 11, 5)) {
+		/* GetGRFStringPtr doesn't handle 0xD4xx ids, we need to convert those to 0xD0xx. */
+		case 26: return GetStringPtr(GetGRFStringID(0, 0xD000 + GB(string, 0, 10)));
 		case 28: return GetGRFStringPtr(GB(string, 0, 11));
 		case 29: return GetGRFStringPtr(GB(string, 0, 11) + 0x0800);
 		case 30: return GetGRFStringPtr(GB(string, 0, 11) + 0x1000);
@@ -622,7 +625,7 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
  * @param argt  Pointer to an array with the string codes used to parse the argv array.
  * @param dry_run True when the argt array is not yet initialized.
  */
-static char *FormatString(char *buff, const char *str, int64 *argv, const int64 *argve, uint casei, const char *last, WChar *argt, bool dry_run)
+static char *FormatString(char *buff, const char *str_arg, int64 *argv, const int64 *argve, uint casei, const char *last, WChar *argt, bool dry_run)
 {
 	/* When there is no array with types there is no need to do a dry run. */
 	if (argt == NULL) dry_run = true;
@@ -634,18 +637,26 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 		 * pass makes sure the argv array is correctly filled and the second
 		 * pass can reference later values without problems. */
 		struct TextRefStack *backup = CreateTextRefStackBackup();
-		FormatString(buff, str, argv, argve, casei, last, argt, true);
+		FormatString(buff, str_arg, argv, argve, casei, last, argt, true);
 		RestoreTextRefStackBackup(backup);
 	} else if (!dry_run) {
-		FormatString(buff, str, argv, argve, casei, last, argt, true);
+		FormatString(buff, str_arg, argv, argve, casei, last, argt, true);
 	}
 	WChar b;
 	int64 *argv_orig = argv;
 	WChar *argt_orig = argt;
 	uint modifier = 0;
 	char *buf_start = buff;
+	std::stack<const char *> str_stack;
+	str_stack.push(str_arg);
 
-	while ((b = Utf8Consume(&str)) != '\0') {
+	while (true) {
+		while (!str_stack.empty() && (b = Utf8Consume(&str_stack.top())) == '\0') {
+			str_stack.pop();
+		}
+		if (str_stack.empty()) break;
+		const char *&str = str_stack.top();
+
 		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 			/* We need to pass some stuff as it might be modified; oh boy. */
 			//todo: should argve be passed here too?
@@ -654,6 +665,19 @@ static char *FormatString(char *buff, const char *str, int64 *argv, const int64 
 		}
 
 		switch (b) {
+			case SCC_NEWGRF_STRINL: {
+				StringID substr = Utf8Consume(&str);
+				str_stack.push(GetStringPtr(substr));
+				break;
+			}
+
+			case SCC_NEWGRF_PRINT_STRING_ID: {
+				StringID substr = GetInt32(&argv, argve, &argt, SCC_NEWGRF_PRINT_STRING_ID);
+				str_stack.push(GetStringPtr(substr));
+				break;
+			}
+
+
 			case SCC_SETX: // {SETX}
 				if (buff + Utf8CharLen(SCC_SETX) + 1 < last) {
 					buff += Utf8Encode(buff, SCC_SETX);

@@ -134,6 +134,8 @@ enum StringControlCode {
 	SCC_NEWGRF_ROTATE_TOP_4_WORDS,             ///< Rotate the top 4 words of the stack (W4 W1 W2 W3)
 	SCC_NEWGRF_LAST = SCC_NEWGRF_ROTATE_TOP_4_WORDS,
 
+	SCC_NEWGRF_STRINL,                         ///< Inline another string at the current position, StringID is encoded in the string
+
 	/* Special printable symbols.
 	 * These are mapped to the original glyphs */
 	SCC_LESSTHAN       = SCC_SPRITE_START + 0x3C,
