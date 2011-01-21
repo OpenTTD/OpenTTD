@@ -348,8 +348,9 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Изход
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Игрови опции
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Опции за трудност
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Настройки за трудност
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Настройки за напреднали
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Настройки на изкуствения интелект (ИИ)
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Newgrf настройки
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки на прозрачност
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Показване имената на градовете
@@ -697,6 +698,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Покажи имената на градовете на картата
 STR_SMALLMAP_CENTER                                             :{BLACK}Фиксиране на малката карта на текущата позиция
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Изключване на всички
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Включване на всички
@@ -704,6 +706,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Висо
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Не показвай индустрии на картата
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Покажи всички индустрии на картата
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Показване/скриване на височинна карта
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Скриване на собствеността на компанията от картата
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Показване на цялата собственост на компанията на картата
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Покажи последното съобщение или отчет на новините
@@ -1247,6 +1251,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Пок�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Запази инстументите активни след употреба: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Групирай разходите във финансовия прозорец на компанията: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Изключване строеж на инфраструктура, когато съответващите превозни средства са недостъпни:{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Макс. брой влакове за компания: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Макс. брой коли за компания: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Макс. брой самолети за компания: {ORANGE}{STRING}
@@ -1979,6 +1984,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Избе
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Избор на асфалтов мост
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Избиране на мост - натисни върху избрания от теб мост, за да се построи
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Висящ, Стоманен
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Гредоред, Стоманен
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Конзолен, Стоманен
@@ -2082,6 +2088,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купи
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Избор на обект
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Избери обект за построяване
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Избор на клас на обекта за строене
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Изглед на обекта
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Размер: {GOLD}{NUM} x {NUM} плочки
 
@@ -2422,6 +2429,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Пара
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Няма налична информация
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Не е намерен отговарящ файл
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Изключен
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{G=n}{RED}Несъвместимо с тази версия на OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Въвеждане на NewGRF параметри
 
@@ -2491,8 +2499,8 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}На п
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Не може да се добави файл: дупликиран GRF ID
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Липсват файлове (заредени са съвместими GRF файлове)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Съвместими GRF файлове за заредени вместо липсващите
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Липсващите GRF файлове за изключени
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Съвместими GRF файлове са заредени вместо липсващите
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Липсващите GRF файлове са изключени
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Липсва GRF файл(ове)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Може да счупи OpenTTD. Не пускайте съобщение за грешка за последвали счупвания.{}Желаете ли да се махне паузата?
 
@@ -2585,7 +2593,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Ини
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Финансиране преустройството на градската пътна мрежа. Ще породи значителен разрив на градския трафик за не повече от 6 месеца.{} Цена: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Строеж на статуя в чест на вашата компания.{} Цена: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Финансиране изграждането на нови комерсиални сгради в града.{} Цена: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Покупка на едногодишни специални транспортни права в града. Градските власти ще позволят единствено на пътниците и товара да използват гарите на вашата компания.{} Цена: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Покупка на едногодишни специални транспортни права в града. Градските власти ще позволят на пътниците и товара да използват само гарите на вашата компания.{} Цена: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Подкупването на местната власт за да увеличи рейтинга носи огромен риск ако бъдете хванати.{} Цена: {CURRENCY}
 
 # Subsidies window
@@ -2729,7 +2737,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- От�
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% превозено)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% превозено)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Имена на индустриите - натисни за да фокусираш върху индустрията. Ctrl+Click отваря прозорец на нов изглед върху индустрията.
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Имена на индустриите - натисни за да фокусираш върху индустрията. Ctrl+Click отваря нов прозорец на изглед върху индустрията.
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3252,6 +3260,7 @@ STR_ORDER_STOP_ORDER                                            :(Спри)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :{G=n}(Автоматично)
 
 STR_ORDER_FULL_LOAD                                             :(Напълно натовари)
 STR_ORDER_FULL_LOAD_ANY                                         :(Напълно натовари какъвто и да е товар)
@@ -3460,6 +3469,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... не
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... вече е построено
 STR_ERROR_OWNED_BY                                              :{WHITE}... собственост на {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... земята е притежание на друга компания
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... достигнат е максималният допустим брой плочки за промяна на терена
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... достигнат е максималният допустим брой плочки за изчистване
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Името трябва да е уникално
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} пречи
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Не е позволено по време на пауза
@@ -3521,7 +3532,8 @@ STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... са
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... може да бъде построен само в градове с население повече от 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... може да бъде построено само около и в джунглите
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... може да бъде построено само около и в пустините
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... може да се построи само в град
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... може да бъде построено само в градове
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... може да бъде построено само в ниски пространства
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... може да бъде поставено само до краищата на картата
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... гора може да се засажда само над линията на снега
 
@@ -4242,6 +4254,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}

@@ -230,10 +230,10 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ΟΛ�
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} επιβάτ{P ης ες}
-STR_BAGS                                                        :{COMMA} Σάκκοι
+STR_BAGS                                                        :{COMMA} σάκκ {P ος οι}
 STR_TONS                                                        :{COMMA} Τόνοι
-STR_LITERS                                                      :{COMMA} Λίτρα
-STR_ITEMS                                                       :{COMMA} αντικείμενα
+STR_LITERS                                                      :{COMMA} Λίτρ{P ο α}
+STR_ITEMS                                                       :{COMMA} αντικείμεν{P ο α}
 STR_CRATES                                                      :{COMMA} Κουτ{P ί ιά}
 
 # Colours, do not shuffle
@@ -505,9 +505,9 @@ STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Πληροφο�
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Εναλλαγή Κονσόλας
 STR_ABOUT_MENU_AI_DEBUG                                         :Αποσφαλμάτωση AI
-STR_ABOUT_MENU_SCREENSHOT                                       :Φωτογραφία Οθόνης
+STR_ABOUT_MENU_SCREENSHOT                                       :Στιγμιότυπο οθόνης
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Μεγένθυση στη φωτογραφία εικόνας
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Μεγάλη Φωτογραφία Οθόνης (Ctrl-G)
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Στιγμιότυπο οθόνης για ολο το χάρτη(Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Σχετικά με το 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Ευθυγραμμιστής Sprite
 ############ range ends here
@@ -1038,8 +1038,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ανάλ
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Διαλέξτε την ανάλυση της οθόνης που θέλετε
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :άλλη
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Τύπος αρχείου φωτογραφίας οθόνης
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Επιλογή του τύπου αρχείου για τη φωτογραφίας οθόνης
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Τύπος αρχείου στιγμιότυπου οθόνης
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Επιλογή του τύπου αρχείου για το στιγμιότυπο οθόνης
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Βασικό σετ γραφικών
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Επιλογή του βασικού σετ γραφικών που θα χρησιμοποιηθεί
@@ -1251,7 +1251,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Αυτ�
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Αυτόματη Ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Διάρκεια μηνύματος σφάλματος: {ORANGE}{STRING}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Καθυστέρηση για αναδυόμενα γεγονότα: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Καθυστέρηση για αναδυόμενα γεγονότα: {ORANGE}απενεργοποιημένο
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Εμφάνιση αναδυόμενων γεγονότων: {ORANGE}Δεξί κλικ
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Γεννήτρια Γης: {ORANGE}{STRING}
@@ -1335,6 +1335,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Εμφ�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Διατήρηση των οικοδομικών εργαλείων ενεργών μετά από χρήση τους: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Ομαδοποίηση εξόδων στο παράθυρο οικονομικών της εταιρίας: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Απενεργοποιήση των υποδομών για τα οχήματα που δεν είναι διαθέσιμα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Μέγιστος αριθμός τρένων ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Μέγιστα οχήματα ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροπλάνα ανα παίκτη: {ORANGE}{STRING}
@@ -2169,6 +2170,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Αγορ
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Επιλογή Αντικείμενου
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Επιλογή αντικείμενου για κατασκευή. Shift εναλλάσει χτίσιμο/εμφάνιση εκτίμησης κόστος
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Επιλογή της κλάσης του αντικείμενου για χτήσιμο
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Προεπισκόπιση του αντικείμενου
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Μέγεθος: {GOLD}{NUM} x {NUM} τετράγωνα
 
@@ -2509,6 +2511,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Παρά
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Δεν υπάρχουν διαθέσιμες πληροφορίες
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Δεν βρέθηκε το ταυτοποιημένο αρχείο
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Απενεργοποιημένο
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Μη συμβατό με αυτή την έκδοση του OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Εισαγώγη παραμέτρων NewGRF
 
@@ -2684,7 +2687,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Κάντε κλίκ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία της βιομηχανίας/πόλης
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - Κλικ στο όνομα για κεντράρισμα εικόνας. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία του σταθμού
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Ονόματα σταθμών - Κλικ στο όνομα για κεντράρισμα στο σταθμό. Ctrl-κλικ ανοίγει ένα νεο παράθυρο προβολής στην τοποθεσία του σταθμού
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Κρατήστε πατημένο το Ctrl για να επιλέξετε περισσοτέρα αντικείμενα
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Σταθμ{P ός οί}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -3542,8 +3545,8 @@ STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Αλλ�
 STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Μόνο το σετ ανάγκης ήχου βρέθηκε.Αν θέλετε ήχους, εγκαταστήστε ένα πακέτο ήχων μέσω του συστήματος μεταφόρτωσης υλικού.
 
 # Screenshot related messages
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Φωτογραφία εικόνας αποθηκεύθηκε επιτυχώς ώς '{STRING}'
-STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Φωτογραφία εικόνας απέτυχε!
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Το στιγμιότυπο οθόνης αποθηκεύθηκε επιτυχώς ώς '{STRING}'
+STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Το στιγμιότυπο οθόνης απέτυχε!
 
 # Error message titles
 STR_ERROR_MESSAGE_CAPTION                                       :{YELLOW}Μήνυμα
@@ -4356,6 +4359,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
