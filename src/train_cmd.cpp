@@ -1454,6 +1454,22 @@ static void UpdateStatusAfterSwap(Train *v)
 	/* Call the proper EnterTile function unless we are in a wormhole. */
 	if (v->track != TRACK_BIT_WORMHOLE) {
 		VehicleEnterTile(v, v->tile, v->x_pos, v->y_pos);
+	} else {
+		/* VehicleEnter_TunnelBridge() sets TRACK_BIT_WORMHOLE when the vehicle
+		 * is on the last bit of the bridge head (frame == TILE_SIZE - 1).
+		 * If we were swapped with such a vehicle, we have set TRACK_BIT_WORMHOLE,
+		 * when we shouldn't have. Check if this is the case. */
+		TileIndex vt = TileVirtXY(v->x_pos, v->y_pos);
+		if (IsTileType(vt, MP_TUNNELBRIDGE)) {
+			VehicleEnterTile(v, vt, v->x_pos, v->y_pos);
+			if (v->track != TRACK_BIT_WORMHOLE && IsBridgeTile(v->tile)) {
+				/* We have just left the wormhole, possibly set the
+				 * "goingdown" bit. UpdateInclination() can be used
+				 * because we are at the border of the tile. */
+				v->UpdateInclination(true, true);
+				return;
+			}
+		}
 	}
 
 	v->UpdateViewport(true, true);
