@@ -437,6 +437,42 @@ static void FixOwnerOfRailTrack(TileIndex t)
 	MakeClear(t, CLEAR_GRASS, 0);
 }
 
+/**
+ * Fixes inclination of a vehicle. Older OpenTTD versions didn't update the bits correctly.
+ * @param v vehicle
+ * @param dir vehicle's direction, or # INVALID_DIR if it can be ignored
+ * @return inclination bits to set
+ */
+static uint FixVehicleInclination(Vehicle *v, Direction dir)
+{
+	/* Compute place where this vehicle entered the tile */
+	int entry_x = v->x_pos;
+	int entry_y = v->y_pos;
+	switch (dir) {
+		case DIR_NE: entry_x |= TILE_UNIT_MASK; break;
+		case DIR_NW: entry_y |= TILE_UNIT_MASK; break;
+		case DIR_SW: entry_x &= ~TILE_UNIT_MASK; break;
+		case DIR_SE: entry_y &= ~TILE_UNIT_MASK; break;
+		case INVALID_DIR: break;
+		default: NOT_REACHED();
+	}
+	byte entry_z = GetSlopeZ(entry_x, entry_y);
+
+	/* Compute middle of the tile. */
+	int middle_x = (v->x_pos & ~TILE_UNIT_MASK) + HALF_TILE_SIZE;
+	int middle_y = (v->y_pos & ~TILE_UNIT_MASK) + HALF_TILE_SIZE;
+	byte middle_z = GetSlopeZ(middle_x, middle_y);
+
+	/* middle_z == entry_z, no height change. */
+	if (middle_z == entry_z) return 0;
+
+	/* middle_z < entry_z, we are going downwards. */
+	if (middle_z < entry_z) return 1U << GVF_GOINGDOWN_BIT;
+
+	/* middle_z > entry_z, we are going upwards. */
+	return 1U << GVF_GOINGUP_BIT;
+}
+
 bool AfterLoadGame()
 {
 	SetSignalHandlers();
@@ -2416,6 +2452,84 @@ bool AfterLoadGame()
 		FOR_ALL_COMPANIES(c) {
 			c->terraform_limit = _settings_game.construction.terraform_frame_burst << 16;
 			c->clear_limit     = _settings_game.construction.clear_frame_burst << 16;
+		}
+	}
+
+	if (IsSavegameVersionBefore(158)) {
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			switch (v->type) {
+				case VEH_TRAIN: {
+					Train *t = Train::From(v);
+					/* Clear both bits first. */
+					ClrBit(t->gv_flags, GVF_GOINGUP_BIT);
+					ClrBit(t->gv_flags, GVF_GOINGDOWN_BIT);
+
+					/* Crashed vehicles can't be going up/down. */
+					if (t->vehstatus & VS_CRASHED) break;
+
+					/* Only X/Y tracks can be sloped. */
+					if (t->track != TRACK_BIT_X && t->track != TRACK_BIT_Y) break;
+
+					t->gv_flags |= FixVehicleInclination(t, t->direction);
+					break;
+				}
+				case VEH_ROAD: {
+					RoadVehicle *rv = RoadVehicle::From(v);
+					ClrBit(rv->gv_flags, GVF_GOINGUP_BIT);
+					ClrBit(rv->gv_flags, GVF_GOINGDOWN_BIT);
+
+					/* Crashed vehicles can't be going up/down. */
+					if (rv->vehstatus & VS_CRASHED) break;
+
+					if (rv->state == RVSB_IN_DEPOT || rv->state == RVSB_WORMHOLE) break;
+
+					TrackStatus ts = GetTileTrackStatus(rv->tile, TRANSPORT_ROAD, rv->compatible_roadtypes);
+					TrackBits trackbits = TrackStatusToTrackBits(ts);
+
+					/* Only X/Y tracks can be sloped. */
+					if (trackbits != TRACK_BIT_X && trackbits != TRACK_BIT_Y) break;
+
+					Direction dir = rv->direction;
+
+					/* Test if we are reversing. */
+					Axis a = trackbits == TRACK_BIT_X ? AXIS_X : AXIS_Y;
+					if (AxisToDirection(a) != dir &&
+							AxisToDirection(a) != ReverseDir(dir)) {
+						/* When reversing, the road vehicle is on the edge of the tile,
+						 * so it can be safely compared to the middle of the tile. */
+						dir = INVALID_DIR;
+					}
+
+					rv->gv_flags |= FixVehicleInclination(rv, dir);
+					break;
+				}
+				case VEH_SHIP:
+					break;
+
+				default:
+					continue;
+			}
+
+			if (IsBridgeTile(v->tile) && TileVirtXY(v->x_pos, v->y_pos) == v->tile) {
+				/* In old versions, z_pos was 1 unit lower on bridge heads.
+				 * However, this invalid state could be converted to new savegames
+				 * by loading and saving the game in a new version. */
+				v->z_pos = GetSlopeZ(v->x_pos, v->y_pos);
+				DiagDirection dir = GetTunnelBridgeDirection(v->tile);
+				if (v->type == VEH_TRAIN && !(v->vehstatus & VS_CRASHED) &&
+						v->direction != DiagDirToDir(dir)) {
+					/* If the train has left the bridge, it shouldn't have
+					 * track == TRACK_BIT_WORMHOLE - this could happen
+					 * when the train was reversed while on the last "tick"
+					 * on the ramp before leaving the ramp to the bridge. */
+					Train::From(v)->track = DiagDirToDiagTrackBits(dir);
+				}
+			}
+
+			/* If the vehicle is really above v->tile (not in a wormhole),
+			 * it should have set v->z_pos correctly. */
+			assert(v->tile != TileVirtXY(v->x_pos, v->y_pos) || v->z_pos == GetSlopeZ(v->x_pos, v->y_pos));
 		}
 	}
 
