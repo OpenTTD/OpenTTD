@@ -125,7 +125,6 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 				 * direction it is sloped, we get the 'z' at the center of
 				 * the tile (middle_z) and the edge of the tile (old_z),
 				 * which we then can compare. */
-				static const int HALF_TILE_SIZE = TILE_SIZE / 2;
 				static const int INV_TILE_SIZE_MASK = ~(TILE_SIZE - 1);
 
 				byte middle_z = GetSlopeZ((this->x_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE, (this->y_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE);
