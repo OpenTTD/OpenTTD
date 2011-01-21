@@ -106,6 +106,50 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	}
 
 	/**
+	 * Updates vehicle's Z position and inclination.
+	 * Used when the vehicle entered given tile.
+	 * @pre The vehicle has to be at (or near to) a border of the tile,
+	 *      directed towards tile centre
+	 */
+	FORCEINLINE void UpdateZPositionAndInclination()
+	{
+		this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
+		ClrBit(this->gv_flags, GVF_GOINGUP_BIT);
+		ClrBit(this->gv_flags, GVF_GOINGDOWN_BIT);
+
+		if (T::From(this)->TileMayHaveSlopedTrack()) {
+			/* To check whether the current tile is sloped, and in which
+			 * direction it is sloped, we get the 'z' at the center of
+			 * the tile (middle_z) and the edge of the tile (old_z),
+			 * which we then can compare. */
+			byte middle_z = GetSlopeZ((this->x_pos & ~TILE_UNIT_MASK) | HALF_TILE_SIZE, (this->y_pos & ~TILE_UNIT_MASK) | HALF_TILE_SIZE);
+
+			if (middle_z != this->z_pos) {
+				SetBit(this->gv_flags, (middle_z > this->z_pos) ? GVF_GOINGUP_BIT : GVF_GOINGDOWN_BIT);
+			}
+		}
+	}
+
+	/**
+	 * Updates vehicle's Z position.
+	 * Inclination can't change in the middle of a tile.
+	 */
+	FORCEINLINE void UpdateZPosition()
+	{
+		/* Flat tile, tile with two opposing corners raised and tile with 3 corners
+		 * raised can never have sloped track ... */
+		static const uint32 never_sloped = 1 << SLOPE_FLAT | 1 << SLOPE_EW | 1 << SLOPE_NS | 1 << SLOPE_NWS | 1 << SLOPE_WSE | 1 << SLOPE_SEN | 1 << SLOPE_ENW;
+		/* ... unless it's a bridge head. */
+		if (IsTileType(this->tile, MP_TUNNELBRIDGE) || // the following check would be true for tunnels anyway
+				(T::From(this)->TileMayHaveSlopedTrack() && !HasBit(never_sloped, GetTileSlope(this->tile, NULL)))) {
+			this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
+		} else {
+			/* Verify that assumption. */
+			assert(this->z_pos == GetSlopeZ(this->x_pos, this->y_pos));
+		}
+	}
+
+	/**
 	 * Checks if the vehicle is in a slope and sets the required flags in that case.
 	 * @param new_tile True if the vehicle reached a new tile.
 	 * @param turned Indicates if the vehicle has turned.
@@ -116,35 +160,9 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 		byte old_z = this->z_pos;
 
 		if (new_tile) {
-			this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
-			ClrBit(this->gv_flags, GVF_GOINGUP_BIT);
-			ClrBit(this->gv_flags, GVF_GOINGDOWN_BIT);
-
-			if (T::From(this)->TileMayHaveSlopedTrack()) {
-				/* To check whether the current tile is sloped, and in which
-				 * direction it is sloped, we get the 'z' at the center of
-				 * the tile (middle_z) and the edge of the tile (old_z),
-				 * which we then can compare. */
-				static const int INV_TILE_SIZE_MASK = ~(TILE_SIZE - 1);
-
-				byte middle_z = GetSlopeZ((this->x_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE, (this->y_pos & INV_TILE_SIZE_MASK) | HALF_TILE_SIZE);
-
-				if (middle_z != this->z_pos) {
-					SetBit(this->gv_flags, (middle_z > old_z) ? GVF_GOINGUP_BIT : GVF_GOINGDOWN_BIT);
-				}
-			}
+			this->UpdateZPositionAndInclination();
 		} else {
-			/* Flat tile, tile with two opposing corners raised and tile with 3 corners
-			 * raised can never have sloped track ... */
-			static const uint32 never_sloped = 1 << SLOPE_FLAT | 1 << SLOPE_EW | 1 << SLOPE_NS | 1 << SLOPE_NWS | 1 << SLOPE_WSE | 1 << SLOPE_SEN | 1 << SLOPE_ENW;
-			/* ... unless it's a bridge head. */
-			if (IsTileType(this->tile, MP_TUNNELBRIDGE) || // the following check would be true for tunnels anyway
-					(T::From(this)->TileMayHaveSlopedTrack() && !HasBit(never_sloped, GetTileSlope(this->tile, NULL)))) {
-				this->z_pos = GetSlopeZ(this->x_pos, this->y_pos);
-			} else {
-				/* Verify that assumption. */
-				assert(this->z_pos == GetSlopeZ(this->x_pos, this->y_pos));
-			}
+			this->UpdateZPosition();
 		}
 
 		this->UpdateViewport(true, turned);
