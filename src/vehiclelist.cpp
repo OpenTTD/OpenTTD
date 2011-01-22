@@ -10,7 +10,6 @@
 /** @file vehiclelist.cpp Lists of vehicles. */
 
 #include "stdafx.h"
-#include "vehicle_gui.h"
 #include "train.h"
 #include "vehiclelist.h"
 

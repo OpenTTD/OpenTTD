@@ -10,7 +10,6 @@
 /** @file gamelog.cpp Definition of functions used for logging of important changes in the game */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "saveload/saveload.h"
 #include "string_func.h"
 #include "settings_type.h"

@@ -12,7 +12,6 @@
 #ifndef AI_ACCOUNTING_HPP
 #define AI_ACCOUNTING_HPP
 
-#include "../../stdafx.h"
 #include "ai_object.hpp"
 
 /**

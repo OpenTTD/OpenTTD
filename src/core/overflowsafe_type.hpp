@@ -12,7 +12,6 @@
 #ifndef OVERFLOWSAFE_TYPE_HPP
 #define OVERFLOWSAFE_TYPE_HPP
 
-#include "math_func.hpp"
 
 /**
  * Overflow safe template for integers, i.e. integers that will never overflow

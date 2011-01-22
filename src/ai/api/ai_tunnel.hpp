@@ -12,7 +12,6 @@
 #ifndef AI_TUNNEL_HPP
 #define AI_TUNNEL_HPP
 
-#include "ai_object.hpp"
 #include "ai_vehicle.hpp"
 
 /**

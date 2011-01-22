@@ -12,13 +12,11 @@
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"
-#include "../debug.h"
 #include "../strings_func.h"
 #include "../date_func.h"
 #include "network_admin.h"
 #include "network_server.h"
 #include "network_udp.h"
-#include "network.h"
 #include "network_base.h"
 #include "../console_func.h"
 #include "../company_base.h"
@@ -27,7 +25,6 @@
 #include "../saveload/saveload_filter.h"
 #include "../station_base.h"
 #include "../genworld.h"
-#include "../fileio_func.h"
 #include "../company_func.h"
 #include "../company_gui.h"
 #include "../window_func.h"
@@ -37,7 +34,6 @@
 #include "../core/random_func.hpp"
 #include "../rev.h"
 
-#include "table/strings.h"
 
 /* This file handles all the server-commands */
 

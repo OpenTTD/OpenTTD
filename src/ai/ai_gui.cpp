@@ -10,7 +10,6 @@
 /** @file ai_gui.cpp Window for configuring the AIs */
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../table/sprites.h"
 #include "../gui.h"
 #include "../querystring_gui.h"

@@ -23,7 +23,6 @@
 #include "tunnelbridge_map.h"
 #include "newgrf_object.h"
 #include "genworld.h"
-#include "core/mem_func.hpp"
 
 /**
  * Constructor of generic class

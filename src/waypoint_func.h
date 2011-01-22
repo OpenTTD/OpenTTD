@@ -12,7 +12,6 @@
 #ifndef WAYPOINT_FUNC_H
 #define WAYPOINT_FUNC_H
 
-#include "direction_type.h"
 #include "rail_type.h"
 #include "command_type.h"
 #include "station_type.h"

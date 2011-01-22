@@ -10,10 +10,8 @@
 /** @file town_gui.cpp GUI for towns. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "town.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "gui.h"
 #include "command_func.h"
 #include "company_func.h"
@@ -36,7 +34,6 @@
 #include "genworld.h"
 #include "sprite.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 typedef GUIList<const Town*> GUITownList;

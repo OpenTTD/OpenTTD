@@ -12,7 +12,6 @@
 #ifndef AI_INDUSTRYTYPELIST_HPP
 #define AI_INDUSTRYTYPELIST_HPP
 
-#include "ai_list.hpp"
 #include "ai_industrytype.hpp"
 
 /**

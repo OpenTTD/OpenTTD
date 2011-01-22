@@ -12,7 +12,6 @@
 #ifndef AI_EVENT_TYPES_HPP
 #define AI_EVENT_TYPES_HPP
 
-#include "ai_object.hpp"
 #include "ai_event.hpp"
 #include "ai_company.hpp"
 

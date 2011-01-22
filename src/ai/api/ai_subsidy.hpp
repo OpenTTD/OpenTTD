@@ -12,7 +12,6 @@
 #ifndef AI_SUBSIDY_HPP
 #define AI_SUBSIDY_HPP
 
-#include "ai_object.hpp"
 #include "ai_company.hpp"
 
 /**

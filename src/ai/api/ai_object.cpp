@@ -11,7 +11,11 @@
 
 #include "../../stdafx.h"
 #include "../../script/squirrel.hpp"
+#include "../../command_func.h"
 #include "../../company_base.h"
+#include "../../company_func.h"
+#include "../../network/network.h"
+#include "../../tunnelbridge.h"
 
 #include "../ai_storage.hpp"
 #include "../ai_instance.hpp"

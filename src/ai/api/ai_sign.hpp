@@ -12,9 +12,7 @@
 #ifndef AI_SIGN_HPP
 #define AI_SIGN_HPP
 
-#include "ai_object.hpp"
 #include "ai_error.hpp"
-#include "ai_company.hpp"
 
 /**
  * Class that handles all sign related functions.

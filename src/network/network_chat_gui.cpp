@@ -14,7 +14,6 @@
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"
-#include "../date_func.h"
 #include "../gfx_func.h"
 #include "../strings_func.h"
 #include "../blitter/factory.hpp"

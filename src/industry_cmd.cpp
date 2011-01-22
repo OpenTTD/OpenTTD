@@ -23,7 +23,6 @@
 #include "tree_map.h"
 #include "newgrf_cargo.h"
 #include "newgrf_debug.h"
-#include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
 #include "autoslope.h"
 #include "water.h"

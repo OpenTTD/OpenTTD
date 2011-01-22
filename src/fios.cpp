@@ -13,7 +13,6 @@
  */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "fios.h"
 #include "fileio_func.h"
 #include "tar_type.h"

@@ -32,7 +32,6 @@
 #include "string_func.h"
 #include "widgets/dropdown_func.h"
 #include "timetable.h"
-#include "vehiclelist.h"
 #include "articulated_vehicles.h"
 #include "spritecache.h"
 #include "core/geometry_func.hpp"

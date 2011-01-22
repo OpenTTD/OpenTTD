@@ -14,7 +14,6 @@
 
 #include "gfx_type.h"
 #include "viewport_type.h"
-#include "vehicle_type.h"
 #include "window_type.h"
 #include "tile_type.h"
 

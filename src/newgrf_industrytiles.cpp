@@ -14,7 +14,6 @@
 #include "viewport_func.h"
 #include "landscape.h"
 #include "newgrf.h"
-#include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
 #include "newgrf_sound.h"
 #include "newgrf_text.h"

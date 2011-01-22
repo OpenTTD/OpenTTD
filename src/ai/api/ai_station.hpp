@@ -12,8 +12,6 @@
 #ifndef AI_STATION_HPP
 #define AI_STATION_HPP
 
-#include "ai_object.hpp"
-#include "ai_error.hpp"
 #include "ai_road.hpp"
 #include "ai_basestation.hpp"
 

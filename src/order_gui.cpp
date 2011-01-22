@@ -18,7 +18,6 @@
 #include "timetable.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "vehicle_func.h"
 #include "company_func.h"
 #include "widgets/dropdown_func.h"
 #include "textbuf_gui.h"

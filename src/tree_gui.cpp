@@ -10,7 +10,6 @@
 /** @file tree_gui.cpp GUIs for building trees. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "window_gui.h"
 #include "gfx_func.h"
 #include "tilehighlight_func.h"

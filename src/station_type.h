@@ -12,7 +12,6 @@
 #ifndef STATION_TYPE_H
 #define STATION_TYPE_H
 
-#include "core/enum_type.hpp"
 #include "core/smallvec_type.hpp"
 #include "tilearea_type.h"
 

@@ -10,7 +10,6 @@
 /** @file genworld.cpp Functions to generate a map. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "landscape.h"
 #include "company_func.h"
 #include "thread/thread.h"

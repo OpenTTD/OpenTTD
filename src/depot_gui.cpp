@@ -13,7 +13,6 @@
 #include "train.h"
 #include "ship.h"
 #include "aircraft.h"
-#include "roadveh.h"
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "viewport_func.h"

@@ -13,11 +13,9 @@
 #include "landscape.h"
 #include "window_gui.h"
 #include "viewport_func.h"
-#include "gfx_func.h"
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "window_func.h"
-#include "tilehighlight_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

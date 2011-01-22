@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 #include <stdarg.h>
-#include "openttd.h"
 #include "company_func.h"
 #include "gfx_func.h"
 #include "console_func.h"
@@ -20,9 +19,7 @@
 #include "genworld.h"
 #include "blitter/factory.hpp"
 #include "zoom_func.h"
-#include "map_func.h"
 #include "vehicle_base.h"
-#include "cheat_type.h"
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "network/network.h"
@@ -35,7 +32,6 @@
 #include "toolbar_gui.h"
 #include "statusbar_gui.h"
 
-#include "table/sprites.h"
 
 static Point _drag_delta; ///< delta between mouse cursor and upper left corner of dragged window
 static Window *_mouseover_last_w = NULL; ///< Window of the last #MOUSEOVER event.

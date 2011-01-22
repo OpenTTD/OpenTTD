@@ -21,7 +21,6 @@
 #include "company_func.h"
 #include "company_base.h"
 #include "strings_func.h"
-#include "openttd.h"
 #include "hotkeys.h"
 
 enum HighscoreWidgets {

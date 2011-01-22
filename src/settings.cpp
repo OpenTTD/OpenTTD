@@ -36,7 +36,6 @@
 #include "train.h"
 #include "news_func.h"
 #include "window_func.h"
-#include "strings_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "company_func.h"

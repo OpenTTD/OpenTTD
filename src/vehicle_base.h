@@ -13,7 +13,6 @@
 #define VEHICLE_BASE_H
 
 #include "track_type.h"
-#include "direction_type.h"
 #include "command_type.h"
 #include "order_base.h"
 #include "cargopacket.h"

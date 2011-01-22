@@ -10,7 +10,6 @@
 /** @file group_gui.cpp GUI for the group window. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
 #include "vehicle_gui.h"

@@ -11,7 +11,6 @@
 
 #include "../stdafx.h"
 #include "../date_func.h"
-#include "../openttd.h"
 #include "../zoom_func.h"
 #include "../vehicle_func.h"
 #include "../window_gui.h"

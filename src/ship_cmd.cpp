@@ -13,7 +13,6 @@
 #include "ship.h"
 #include "landscape.h"
 #include "timetable.h"
-#include "command_func.h"
 #include "news_func.h"
 #include "company_func.h"
 #include "pathfinder/npf/npf_func.h"
@@ -32,7 +31,6 @@
 #include "sound_func.h"
 #include "ai/ai.hpp"
 #include "pathfinder/opf/opf_ship.h"
-#include "landscape_type.h"
 #include "engine_base.h"
 #include "company_base.h"
 

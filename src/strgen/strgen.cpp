@@ -10,10 +10,7 @@
 /** @file strgen.cpp Tool to create computer readable (stand-alone) translation files. */
 
 #include "../stdafx.h"
-#include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"
-#include "../core/math_func.hpp"
-#include "../core/mem_func.hpp"
 #include "../string_func.h"
 #include "../strings_type.h"
 #include "../language.h"

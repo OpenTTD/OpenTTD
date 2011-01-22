@@ -10,6 +10,7 @@
 /** @file ai_order.cpp Implementation of AIOrder. */
 
 #include "../../stdafx.h"
+#include "ai_order.hpp"
 #include "ai_vehicle.hpp"
 #include "../ai_instance.hpp"
 #include "../../debug.h"

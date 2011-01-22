@@ -17,7 +17,6 @@
 #include "cargotype.h"
 #include "track_func.h"
 #include "road_type.h"
-#include "newgrf_properties.h"
 #include "newgrf_engine.h"
 
 struct RoadVehicle;

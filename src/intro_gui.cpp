@@ -10,7 +10,6 @@
 /** @file intro_gui.cpp The main menu GUI. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"

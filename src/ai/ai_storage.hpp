@@ -12,12 +12,7 @@
 #ifndef AI_STORAGE_HPP
 #define AI_STORAGE_HPP
 
-#include "../command_func.h"
-#include "../map_func.h"
-#include "../network/network.h"
-#include "../company_func.h"
 #include "../signs_func.h"
-#include "../tunnelbridge.h"
 #include "../vehicle_func.h"
 #include "../road_type.h"
 #include "../group.h"

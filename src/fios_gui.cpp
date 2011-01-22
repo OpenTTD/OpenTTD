@@ -10,7 +10,6 @@
 /** @file fios_gui.cpp GUIs for loading/saving games, scenarios, heightmaps, ... */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "saveload/saveload.h"
 #include "gui.h"
 #include "gfx_func.h"

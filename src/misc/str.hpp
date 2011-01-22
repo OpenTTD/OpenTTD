@@ -15,6 +15,7 @@
 #include <errno.h>
 #include <stdarg.h>
 #include "blob.hpp"
+#include "../core/math_func.hpp"
 #include "../string_func.h"
 
 /** Blob based case sensitive ANSI/UTF-8 string */

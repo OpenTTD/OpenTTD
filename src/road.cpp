@@ -10,7 +10,6 @@
 /** @file road.cpp Generic road related functions. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "rail_map.h"
 #include "road_map.h"
 #include "water_map.h"

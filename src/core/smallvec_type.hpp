@@ -14,7 +14,6 @@
 
 #include "alloc_func.hpp"
 #include "mem_func.hpp"
-#include "math_func.hpp"
 
 /**
  * Simple vector template class.

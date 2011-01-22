@@ -15,7 +15,6 @@
 #include "gfx_type.h"
 #include "tile_type.h"
 #include "newgrf_generic.h"
-#include "newgrf_callbacks.h"
 
 /**
  * List of different canal 'features'.

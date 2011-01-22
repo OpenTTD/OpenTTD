@@ -12,10 +12,7 @@
 #ifndef AI_VEHICLE_HPP
 #define AI_VEHICLE_HPP
 
-#include "ai_object.hpp"
-#include "ai_error.hpp"
 #include "ai_road.hpp"
-#include "ai_order.hpp"
 
 /**
  * Class that handles all vehicle related functions.

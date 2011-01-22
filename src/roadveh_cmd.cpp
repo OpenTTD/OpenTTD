@@ -18,7 +18,6 @@
 #include "company_func.h"
 #include "vehicle_gui.h"
 #include "articulated_vehicles.h"
-#include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "pathfinder/yapf/yapf.h"
 #include "strings_func.h"

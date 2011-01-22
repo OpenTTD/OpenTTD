@@ -11,7 +11,6 @@
 
 #include "stdafx.h"
 
-#include "map_func.h"
 #include "tilearea_type.h"
 
 /**

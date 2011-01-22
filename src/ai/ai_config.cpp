@@ -10,10 +10,8 @@
 /** @file ai_config.cpp Implementation of AIConfig. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../settings_type.h"
 #include "../core/random_func.hpp"
-#include "../core/math_func.hpp"
 #include "ai.hpp"
 #include "ai_config.hpp"
 

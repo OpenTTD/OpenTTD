@@ -10,7 +10,6 @@
 /** @file industry_gui.cpp GUIs related to industries. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "gui.h"
 #include "sound_func.h"
 #include "window_func.h"

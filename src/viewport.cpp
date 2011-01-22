@@ -45,7 +45,6 @@
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "window_gui.h"
-#include "terraform_gui.h"
 
 #include "table/strings.h"
 

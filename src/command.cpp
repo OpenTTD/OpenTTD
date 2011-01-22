@@ -10,7 +10,6 @@
 /** @file command.cpp Handling of commands. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "landscape.h"
 #include "gui.h"
 #include "command_func.h"

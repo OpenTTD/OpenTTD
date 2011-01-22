@@ -74,6 +74,7 @@
 #include "api/ai_waypointlist.hpp.sq"
 
 #include "../company_base.h"
+#include "../company_func.h"
 #include "../fileio_func.h"
 
 /** The maximum number of operations for saving or loading the data of an AI. */

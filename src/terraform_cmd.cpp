@@ -10,7 +10,6 @@
 /** @file terraform_cmd.cpp Commands related to terraforming. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "command_func.h"
 #include "tunnel_map.h"
 #include "bridge_map.h"

@@ -19,7 +19,6 @@
 #include "window_func.h"
 #include "autoreplace_func.h"
 #include "company_func.h"
-#include "widgets/dropdown_type.h"
 #include "engine_base.h"
 #include "window_gui.h"
 #include "engine_gui.h"

@@ -10,7 +10,6 @@
 /** @file statusbar_gui.cpp The GUI for the bottom status bar. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "date_func.h"
 #include "gfx_func.h"
 #include "news_func.h"

@@ -12,7 +12,6 @@
 #ifndef BLITTER_NULL_HPP
 #define BLITTER_NULL_HPP
 
-#include "base.hpp"
 #include "factory.hpp"
 
 class Blitter_Null : public Blitter {

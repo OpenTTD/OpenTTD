@@ -13,9 +13,7 @@
 #define NEWGRF_OBJECT_H
 
 #include "newgrf_callbacks.h"
-#include "date_type.h"
 #include "economy_func.h"
-#include "strings_type.h"
 #include "tile_cmd.h"
 #include "object_type.h"
 #include "newgrf_animation_type.h"

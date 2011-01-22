@@ -24,7 +24,6 @@
 #include "string_func.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
-#include "openttd.h"
 #include "highscore.h"
 #include "base_media_base.h"
 #include "company_base.h"
@@ -33,7 +32,6 @@
 #include "core/geometry_func.hpp"
 #include "ai/ai.hpp"
 #include "language.h"
-#include <map>
 
 #include "table/sprites.h"
 #include "table/strings.h"

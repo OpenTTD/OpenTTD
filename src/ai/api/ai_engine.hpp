@@ -12,9 +12,7 @@
 #ifndef AI_ENGINE_HPP
 #define AI_ENGINE_HPP
 
-#include "ai_object.hpp"
 #include "ai_vehicle.hpp"
-#include "ai_road.hpp"
 #include "ai_rail.hpp"
 #include "ai_airport.hpp"
 

@@ -16,7 +16,6 @@
 #include "depot_func.h"
 #include "slope_func.h"
 #include "tile_map.h"
-#include "openttd.h"
 
 /**
  * Autoslope check for tiles with an entrance on an edge.

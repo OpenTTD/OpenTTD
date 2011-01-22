@@ -45,7 +45,6 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "gamelog.h"
-#include "cheat_type.h"
 #include "animated_tile_func.h"
 #include "roadstop_base.h"
 #include "functions.h"

@@ -10,7 +10,6 @@
 /** @file screenshot.cpp The creation of screenshots! */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "fileio_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
@@ -18,7 +17,6 @@
 #include "blitter/factory.hpp"
 #include "zoom_func.h"
 #include "core/endian_func.hpp"
-#include "map_func.h"
 #include "saveload/saveload.h"
 #include "company_func.h"
 #include "strings_func.h"

@@ -16,7 +16,6 @@
 #include "newgrf_sound.h"
 #include "vehicle_base.h"
 #include "sound_func.h"
-#include "core/mem_func.hpp"
 
 static SmallVector<SoundEntry, 8> _sounds;
 

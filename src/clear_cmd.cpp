@@ -10,7 +10,6 @@
 /** @file clear_cmd.cpp Commands related to clear tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "clear_map.h"
 #include "command_func.h"
 #include "landscape.h"

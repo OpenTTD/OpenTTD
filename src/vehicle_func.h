@@ -19,7 +19,6 @@
 #include "engine_type.h"
 #include "transport_type.h"
 #include "newgrf_config.h"
-#include "company_type.h"
 #include "track_type.h"
 #include "livery.h"
 

@@ -26,7 +26,6 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "window_func.h"
-#include "tilehighlight_func.h"
 #include "querystring_gui.h"
 #include "console_func.h"
 #include "core/geometry_func.hpp"

@@ -10,7 +10,6 @@
 /** @file graph_gui.cpp GUI that shows performance graphs. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "graph_gui.h"
 #include "window_gui.h"
 #include "company_base.h"

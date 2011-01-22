@@ -12,7 +12,6 @@
 #include "stdafx.h"
 #include "company_base.h"
 #include "company_func.h"
-#include "core/mem_func.hpp"
 #include "debug.h"
 #include "newgrf.h"
 #include "newgrf_class_func.h"

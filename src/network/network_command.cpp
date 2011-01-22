@@ -12,11 +12,9 @@
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"
-#include "../debug.h"
 #include "network_admin.h"
 #include "network_client.h"
 #include "network_server.h"
-#include "network.h"
 #include "../command_func.h"
 #include "../company_func.h"
 #include "../settings_type.h"

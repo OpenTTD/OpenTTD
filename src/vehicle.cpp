@@ -52,7 +52,6 @@
 #include "vehiclelist.h"
 #include "tunnel_map.h"
 #include "depot_map.h"
-#include "ground_vehicle.hpp"
 
 #include "table/strings.h"
 

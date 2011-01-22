@@ -15,7 +15,6 @@
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
 #include "../settings_type.h"
-#include "../openttd.h"
 #include "../debug.h"
 #include "../rev.h"
 

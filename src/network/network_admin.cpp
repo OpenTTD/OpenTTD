@@ -12,11 +12,9 @@
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"
-#include "../debug.h"
 #include "../strings_func.h"
 #include "../date_func.h"
 #include "network_admin.h"
-#include "network.h"
 #include "network_base.h"
 #include "network_server.h"
 #include "../command_func.h"
@@ -26,8 +24,6 @@
 #include "../map_func.h"
 #include "../rev.h"
 
-#include "table/strings.h"
-#include "network_client.h"
 
 /* This file handles all the admin network commands. */
 

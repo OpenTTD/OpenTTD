@@ -17,7 +17,6 @@
 #include "newgrf_class.h"
 #include "newgrf_commons.h"
 #include "sprite.h"
-#include "direction_type.h"
 #include "cargo_type.h"
 #include "station_type.h"
 #include "rail_type.h"

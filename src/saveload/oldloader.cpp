@@ -10,7 +10,6 @@
 /** @file oldloader.cpp Functions for handling of TTO/TTD/TTDP savegames. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../debug.h"
 #include "../strings_type.h"
 #include "../string_func.h"
