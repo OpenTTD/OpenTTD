@@ -1686,9 +1686,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Όνομ
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Το όνομα του παιχνιδιού θα εμφανιστεί στους άλλους παίκτες στο μενού επιλογής παιχνιδιού για πολλούς παίκτες
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Θέστε κωδικό
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Προστατέψτε το παιχνίδι με έναν κωδικό εάν δε θέλετε να είναι δημοσίως προσβάσιμο
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Επιλέξτε έναν χάρτη:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Σε ποιό χάρτη θέλετε να παίξετε;
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Δημιουργία τυχαίου νέου παιχνιδιού
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (αναγγελία)
@@ -1704,10 +1701,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Περι
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Ομιλούμενη γλώσσα:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Οι υπόλοιποι παίκτες θα γνωρίζουν ποια γλώσσα ομιλείται στο διακομιστή
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Έναρξη παιχνιδιού
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Έναρξη νέου δικτυακού παιχνιδιού από τυχαίο χάρτη ή από επιλεγμένο σενάριο
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Φόρτωση παιχνιδιού
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Συνέχεια ενός αποθηκευμένου παιχνιδιού με πολλούς παίκτες (επιβεβαιώστε πως συνδέεστε στη σωστή εταιρία)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Εισάγετε το όνομα του δικτυακού παιχνιδιού
 

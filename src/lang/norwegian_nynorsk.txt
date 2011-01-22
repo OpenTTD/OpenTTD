@@ -1573,9 +1573,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spelnamn
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spelnamnet vil verte vist til andre spelarar i fleirspelarmenyen
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Set passord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskytt spelet ditt med passord så ikkje kven som helst kan verte med på det
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Vel eit kart:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Kva kart vil du spele?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Lag eit tilfeldig spel
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internett
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internett (annonser)
@@ -1591,10 +1588,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begrens 
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk som vert tala på tenaren:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre spelarar skal vete kva språk ein talar på denne tenaren
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start spel
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start eit nytt nettverksspel frå ein tilfeldig bane, eller eit scenario
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Last inn spel
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Gjenoppta eit tidlegare lagra fleirspelarspel (ver sikker på at du koblar deg til som den rette spelaren)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Gje eit namn til nettverksspelet
 

@@ -1599,9 +1599,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spielnam
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Der Name des Spieles wird anderen Spielern im Mehrspielerdialog angezeigt
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Passwort setzen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Ein Passwort verhindert, dass unbefugte Leute beitreten
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Spielfeld auswählen:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Welches Spielfeld soll verwendet werden?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Spiel nach Zufallsprinzip erstellen
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (ankündigen)
@@ -1617,10 +1614,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begrenzt
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Gesprochene Sprache:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Damit andere Spieler wissen, welche Sprache auf diesem Server gesprochen wird
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Spiel beginnen
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Startet ein neues Mehrspielerspiel auf einem zufällig generierten Spielfeld oder dem ausgewählten Szenario
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Spiel Laden
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Lädt ein gespeichertes Spiel (Darauf achten, anschließend der richtigen Firma anschließend beizutreten)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Namen für das Netzwerkspiel eingeben
 

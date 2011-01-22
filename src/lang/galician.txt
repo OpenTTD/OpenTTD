@@ -1538,9 +1538,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nome:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome da partida mostraráse a outros xogadores no menú de selección de partida multixogador
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Establecer contrasinal
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protexe a túa partida cun contrasinal se non queres que outras persoas se unan
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Selecciona un mapa:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}¿Qué mapa queres xogar?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Xerar unha nova partida aleatoriamente
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (anunciar)
@@ -1556,10 +1553,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita-l
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma falado:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Outros xogadores sabrán cal é o idioma que se fala no servidor
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Iniciar Partida
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Comezar unha nova partida en rede a partires dun mapa aleatorio, ou un escenario
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Cargar Partida
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Resumir unha partida multixogador anterior (asegúrate de conectarte coma o xogador correcto)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Escribe o nome para a partida en rede
 

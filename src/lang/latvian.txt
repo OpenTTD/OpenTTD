@@ -1556,9 +1556,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spēles 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spēles nosaukums, kas tiks attēlots citiem spēlētajiem vairākspēlētāju spēļu izvēlnē
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Uzstādīt paroli
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Aizsargā jūsu spēli ar paroli, ja jūs nevēlaties, lai tā būtu publiski pieejama
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Izvēlaties karti:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Kuru karti jūs vēlaties spēlēt?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Ģenerēt jaunu spēli pēc gadījuma principa
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internets
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internets (reklamēt)
@@ -1574,10 +1571,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ierobež
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Valodu, kurā runā:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Citi lietotāji zinās, kurā valodā tiek runāts uz servera
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Sākt spēli
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Sāk jaunu tīkla spēli ar nejaušu karti vai scenāriju
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Ielādēt spēli
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Atsākt iepriekš saglabātu vairākspēlētāju spēli (esi pārliecināts, ka atsākat kā pareizs spēlētājs)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Ievadiet tīkla spēles nosaukumu
 

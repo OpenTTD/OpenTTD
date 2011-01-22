@@ -1584,9 +1584,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}שם ה�
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}השם שיוצג למשתתפים אחרים בתפריט משחק רשת
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}קבע סיסמה
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}הגן על המשחק שלך עם סיסמה אם אתה לא רוצה שהוא יהיה זמין לכולם
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}בחר מפה:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}באיזה מפה אתה רוצה לשחק?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :צור משחק אקראי חדש
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / אינטרנט
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :(אינטרנט (פרסם
@@ -1602,10 +1599,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}הגבל
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}שפת דיבור:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}שחקנים אחרים ידעו איו שפה מדוברת בשרת
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}התחל משחק
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}התחל משחק רשת עם מפה אקראית
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}טען משחק
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}טען משחק רשת שנשמר בעבר
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}הזן שם למשחק רשת
 

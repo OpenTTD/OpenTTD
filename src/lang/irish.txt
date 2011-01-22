@@ -1587,9 +1587,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Ainm an 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Taispeánfar ainm an chluiche d'imreoirí eile sa roghchlár le cluiche ilimreorí a roghnú
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Socraigh pasfhocal
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Cosain do chluiche le pasfhocal más mian leat nach mbeidh rochtain phoiblí air
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Roghnaigh léarscáil:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Cén léarscáil is mian leat a imirt?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Cruthaigh cluiche nua randamach
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Idirlíon
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Idirlíon (déan fógraíocht)
@@ -1605,10 +1602,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Déan an
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}An teanga a labhraítear:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Beidh a fhios ag imreoirí eile cén teanga a labhraítear ar an bhfreastalaí
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Tosaigh Cluiche
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Tosaigh cluiche líonra nua ó léarscáil randamach, nó ó scéal
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Lódáil Cluiche
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Atosaigh cluiche ilimreoirí a sábháladh níos luaithe (déan cinnte go nascfaidh tú leis an imreoir ceart)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Iontráil ainm don chluiche líonra
 

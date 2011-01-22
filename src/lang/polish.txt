@@ -1979,9 +1979,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nazwa gr
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nazwa gry będzie wyświetlana u innych graczy w menu gry wieloosobowej
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Ustaw hasło
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zabezpiecz grę hasłem jeśli nie chcesz, by była publicznie dostępna
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Wybierz mapę:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Na której mapie chcesz grać?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Tworzenie losowej nowej gry
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (publiczny)
@@ -1997,10 +1994,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ogranicz
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Używany język:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Inni gracze będą poinformowani jaki język jest używany na serwerze
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Rozpocznij grę
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Uruchom nową grę sieciową z losową mapą lub wybranym scenariuszem
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Wczytaj grę
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Przywróć wcześniej zapisaną grę wieloosobową (upewnij się, że połączyłeś się jako odpowiednia firma)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Wpisz nazwę dla gry sieciowej
 

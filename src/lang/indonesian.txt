@@ -1593,9 +1593,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nama Per
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nama permainan akan ditampilkan kepada pemain lainnya didalam Menu seleksi dari "multiplayer game"
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Atur kata sandi
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Lindungi permainan ini dengan kata kunci jika anda tidak ingin membiarkannya terbuka untuk umum
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Pilih peta:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Peta mana yang akan dimainkan?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Bangkitkan permainan baru secara acak
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (mengiklankan)
@@ -1611,10 +1608,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Batasi j
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa pembicaraan:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Agar pemain lain mengetahui bahasa apa yang digunakan pada sever
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Mulai permainan
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Mulai bermain bersama dari peta secara acak atau skenario terpilih
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Buka Permainan
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Lanjutkan permainan bersama dari simpanan terdahulu (pastikan untuk terhubung sebagai pemain yang benar)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Masukkan nama dari permainan di jaringan
 

@@ -1600,9 +1600,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Oyun ad�
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Bu oyun adı diğer oyuncuların server listesinde görünecek
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Parola koy
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Erişimi kısıtlamak için oyuna parola koy
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Harita seç:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Hangi haritada oynamak istiyorsun?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Rastgele haritada oyna
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :İnternet (reklam vererek)
@@ -1618,10 +1615,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Sunucuda
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Konuşulan dil:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Diğer oyuncular sunucuda hangi dilin konuşulacağını bilecek
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Oyunu Başlat
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Rastgele harita ya da senaryoda network oyunu aç
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Oyun Yükle
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Kayıtlı oyunu devam ettir (doğru oyuncu olarak bağlandığından emin ol)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Ağ oyunu için bir isim girin
 

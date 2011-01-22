@@ -1586,9 +1586,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Ludnomo:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}La ludnomo estos montrata al aliaj ludantoj en la ludelektejo por plurludantaj ludoj.
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Agordu pasvorton
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protektu vian ludon per pasvorto por ne publike atingebligi ĝin
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Elektu mapon:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Kiun mapon vi volas ludi?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generu hazardan novan ludon
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Loka reto / Interreto
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Interreto (reklamu)
@@ -1604,10 +1601,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limigu l
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Parolata lingvo:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aliaj ludantoj scios kiu lingvo paroliĝas en la servilo
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Startu Ludon
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Komencu novan retan ludon de hazarda mapo, aŭ scenaro
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Ŝarĝu Ludon
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Restartu antaŭan plurludantan ludon (certigu ke vi kiel la korekta ludanto konektu)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Tajpu nomon por la retludo
 

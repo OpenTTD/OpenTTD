@@ -1916,9 +1916,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Назв
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назва гульні, якую гульцы ўбачаць у мэню выбару сеткавай гульні
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Усталяваць пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Абараніце вашу гульню паролем, калі ня хочаце рабіць яе публічна даступнай
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Выбар мапы:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}На якой мапе Вы жадаеце гуляць?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Згенэраваць выпадковую новую мапу
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Лакальная сетка / Інтэрнэт
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Інтэрнэт (зьмясціць у агульны сьпіс)
@@ -1934,10 +1931,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Абме
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Мова зносінаў:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Іншыя гульцы будуць ведаць, на якой мове размаўляюць на сэрвэры
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Запуск гульні
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Пачаць новую сеткавую гульню на выпадковай мапе ці сцэнары
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Загрузіць гульню
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Працягнуць захаваную раней сеткавую гульню (праверце, што далучыліся правільным гульцом)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Увядзіце назву сеткавай гульні
 

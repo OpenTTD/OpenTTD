@@ -1598,9 +1598,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spillnav
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spillnavnet er det som vises til andre spillere i listen over spill
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sett passord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskytt ditt spill med et passord hvis du ikke vil at hvem som helst skal bli med på det
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Velg et kart:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Hvilket kart vil du spille på?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Lag et tilfeldig spill
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internett
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internett (annonsér)
@@ -1616,10 +1613,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begrens 
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk de snakker på tjeneren:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre spillere skal kunne vite hvilket språk man snakker på denne tjeneren
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start spill
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start et nytt nettverks spill på et tilfeldig kart, eller et valgt scenario kart
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Last inn spill
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Fortsett et tidligere lagret flerspiller spill (pass på å koble til som den korrekte spilleren)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Skriv inn et navn for nettverksspillet
 

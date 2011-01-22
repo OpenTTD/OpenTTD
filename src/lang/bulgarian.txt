@@ -1603,9 +1603,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Име �
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Името на играта ще се вижда от другите играчи при избор на игра
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Поставяне на парола
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитаване на вашата игра с парола за да не е публично достъпна
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Избор на карта:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Коя карта желаете да играете?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Генерирай произволна нова игра
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Интернет
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Интернет (реклама)
@@ -1621,10 +1618,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Огра
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Говорим език:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Другите играчи ще знаят езика на който се говори на сървъра
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Начало на игра
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Започване на нова мрежова игра от случайна карта или от избран сценарий
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Зареждане на игра
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Продължаване на предварително записана мрежова игра (проверете дали се свързвате в правилната компания)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Въведете име за мрежовата игра
 

@@ -1150,14 +1150,11 @@ STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Start di
 STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start in spul foar multispilers
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spulnamme:
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Selektear in lân:
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Ynternet
 STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} taskôger{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksimaal tal taskôgers:
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start Spul
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Laad Spul
 
 
 # Network game languages

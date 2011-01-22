@@ -1655,9 +1655,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Žaidimo
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Žaidimo pavadinimas bus rodomas kitiems žaidėjams meniu
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nustatyti slaptažodi
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Apsaugokite savo žaidimą slaptažodžiu, jei nenorite, kad jis būtų viešai prieinamas
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Pasirinkite žemėlapį:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Kuriame žemėlapyje norite žaisti?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Sukurti atsitiktinį naują žaidimą
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Vietinis tinklas/ Internetas
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internetas (visiems)
@@ -1673,10 +1670,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Riboti s
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Kalba:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Kiti žaidėjai žinos kokia kalba kalbama serveryje
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Pradėti žaidimą
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Predėti naują žaidimą tinkle (atsitiktinis žemėlapis ar scenarijus)
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Atverti žaidimą
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Atstatyti anksčiau išsaugotą žaidimą tinkle (įsitikink kad prisijungei prie to pačio žaidėjo)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Įveskite tinklo žaidimo pavadinimą
 

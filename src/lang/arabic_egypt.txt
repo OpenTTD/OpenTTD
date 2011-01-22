@@ -1585,9 +1585,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}أسم �
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}أسم اللعبة سيظهر للآخرين في قائمة تعدد اللاعبين
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}ضع كلمة سر
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}احم لعبتك برقم سري حتى لا تصبح لعبتك مفتوحة للجميع
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}اختر خريطة:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}في أي خريطة تود ان تلعب؟
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :ولد لعبة جديدة عشوائيا
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :شبكة محلية / انترنت
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :انترنت (دعاية)
@@ -1603,10 +1600,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}حدد �
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}اللغة المتحدثة:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}اللاعبين الآخرين سيعرفون اللغة المتحدثة
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}أبدأ اللعبة
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}ابدأ لعبة شبكة جديدة من خريطة عشوائية او سيناريو.
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}حمل اللعبة
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}استعادة لعبة متعددة اللاعبين سابقة (تأكد من الربط باللاعب الصحيح).
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}أدخل أسم اللعبة للشبكة
 

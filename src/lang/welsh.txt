@@ -1506,9 +1506,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Enw gêm
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Bydd y gêm yn weladwy i chwaraewyr amlchwaraewr eraill yn y ddewislen dewis gêm
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Gosod cyfrinair
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Diogelwch eich gêm â chyfrinair os nad ydych am i fynediad ato fod yn gyhoeddus
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Dewiswch fap:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Pa fap hoffech chi chwarae?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Cynhyrchu gêm newydd ar hap
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Rhyngrwyd
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Rhyngrwyd (hysbysebu)
@@ -1524,10 +1521,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}rhoi cyf
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Iaith i'w siarad:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Rhoi gwybod i'r chwaraewyr pa iaith y dylid ei siarad ar y gweinydd
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Dechrau Gêm
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Dechrau gêm rwydwaith newydd gyda map ar hap neu senario
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Llwytho Gêm
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Parhau gyda gêm amlchwaraewr sydd wedi'i chadw (sicrhewch eich bod yn cysylltu fel y chwaraewr cywir)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Rhowch enw ar gyfer y gêm rhwydwaith
 

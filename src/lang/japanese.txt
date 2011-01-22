@@ -1599,9 +1599,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}ゲー�
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}他のプレヤーが見える多人数ゲームメニューに表示するゲーム名を指定します
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}パスワードを指定
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ゲームをパスワードで保護することができます。正しいパスワードを入力しないと、接続できません。
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}地図を選択：
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}プレイするマップを選択してください
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :新規ランダムゲームを作成
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN／インターネット
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :インターネット（公開）
@@ -1617,10 +1614,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}サー�
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}言語：
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}サーバ上の主の言語を表示します
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}ゲームを開始
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}ランダムな地図もしくはシナリオを用いて新規ネットワークゲームを開始します
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}ゲームを開く
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}直近に保存したマルチプレイヤーゲームを再開します（注意：正しい会社に接続してください）
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}ネットワークゲーム名を入力
 

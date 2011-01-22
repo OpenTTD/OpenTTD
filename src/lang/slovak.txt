@@ -1652,9 +1652,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nazov hr
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nazov hry, ktory uvidia ostatni v zozname sietovych hier
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nastavit heslo
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zabezpeč hru heslom, ak nechceš povoliť verejný prístup
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Vyber mapu:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Ktoru mapu chces hrat?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Vygenerovať náhodnú novú hru
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (oznamit)
@@ -1670,10 +1667,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Omedzi m
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jazyk hracov:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby ostatni hraci vedeli, akym jazykom sa bude hovorit na serveri.
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Spustit hru
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenara
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Nahrať hru
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Pokracovat v ulozenej hre (uistite sa, ze sa pripojite ako spravny hrac)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Zadajte názov sietovej hry
 

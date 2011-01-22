@@ -1663,9 +1663,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Játék 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}A játék neve fog megjelenni a többi játékosnak a többjátékos menüben
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Jelszó beállítása
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Védd le a játékodat jelszóval, ha nem akarod hogy illetéktelenek csatlakozzanak
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Válassz egy térképet:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Melyik terképen akarsz játszani?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Véletlenszerű új játék
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Hálózat / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (reklámoz)
@@ -1681,10 +1678,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}A megfig
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Beszélt nyelv:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Játék elindítása
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Új hálózati játék indítása véletlen vagy egy kiválasztott pályával
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Játék betöltése
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Korábban elmentett többjátékos játék folytatása (győződj meg, hogy a megfelelő céghez kapcsolódtál)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Add meg a hálózati játékhoz a neved
 

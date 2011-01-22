@@ -1585,9 +1585,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spillnum
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Den Numm deen an der Lëscht vun den Spiller ugewissen gëtt
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Passwuert setzen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}En Passwuert fir d'Spill setzen, dass et net Public accessibel ass
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Kaart wielen:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Wéi eng Kaart wëllt der spillen?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generéiert en zoufällegt neit Spill
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (Werben)
@@ -1603,10 +1600,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}D'Unzuel
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Geschwaaten Sprooch:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aaner Leit gesin wéi eng Sprooch um Server geschwaat gëtt
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Spill starten
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Eng nei Partie iwwert d'Netzwierk starten
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Spill lueden
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Eng méi aal Multiplayerpartie lueden (als richtegen Spiller connectéieren)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Gidd en Numm fir d'Spill un
 

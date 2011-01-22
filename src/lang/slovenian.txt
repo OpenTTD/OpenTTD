@@ -1639,9 +1639,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Ime igre
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Ime bo prikazano drugim igralcem na večigralskem seznamu
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nastavi geslo
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zaščiti igro z geslom, če želiš preprečiti dostop nepovabljenim
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Izberi ozemlje:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Kateri zemljevid želiš igrati?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Ustvari naključno novo igro
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Lokalno omrežje / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (oglašuj)
@@ -1657,10 +1654,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Omeji st
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Govorni jezik:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igralci bodo lahko vedeli, kateri jezik se govori na strežniku
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Začni igro
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Poženi novo večigralsko igro na naključnem ozemlju ali v izbranem scenariju
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Naloži igro
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Nadaljuj prej shranjeno večigralsko igro (pazi, da se povežeš v pravilno podjetje)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Vpiši ime za mrežno igro
 

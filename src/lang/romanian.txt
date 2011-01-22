@@ -1599,9 +1599,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nume joc
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Numele jocului va fi afişat celorlalţi jucători în meniul de selectare al jocurilor multiplayer
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Pune parolă
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protejează-ţi jocul cu o parolă dacă nu vrei să intre jucători neautorizaţi
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Alege o hartă:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Ce hartă doreşti să joci?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generează o hartă aleatoare
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (fă reclamă)
@@ -1617,10 +1614,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limiteaz
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Limba vorbită:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ceilalţi jucători vor şti în ce limbă se discută pe server.
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Începe jocul
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Începe un joc nou în reţea cu o hartă aleatoare sau scenariul selectat
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Încarcă joc
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Reia un joc multiplayer salvat anterior (asigură-te că te-ai conectat la compania corespunzătoare)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Introduceţi un nume pentru joc
 

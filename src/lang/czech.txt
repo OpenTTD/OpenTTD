@@ -1681,9 +1681,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Jméno h
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Jméno hry se zobrazí ostatním hráčům v nabídce síťové hry
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nastavit heslo
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Svoji hru si můžeš ochránit heslem, když nechceš, aby se ti do ni hlásili jiní lidé
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Vyber mapu:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Ve které mapě si chceš zahrát?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Vytvořit novou náhodnou hru
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :internet (zveřejnit)
@@ -1699,10 +1696,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Omezit s
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jazyk ve hře:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby ostatní hráči věděli, jakým jazykem se bude ve hře mluvit
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Začít hru
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Začít novou hru po síti s náhodnou mapou nebo se scénářem
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Nahrát hru
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Pokračovat ve dříve uložené hře pro více hráčů (ujisti se, že se připojuješ na správnou společnost)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Zadej jméno této síťové hry
 

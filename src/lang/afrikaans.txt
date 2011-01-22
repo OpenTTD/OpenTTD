@@ -1559,9 +1559,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spel naa
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Die spel naam sal vertoon word na ander spelers in die multispeler keuse
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Stel wagwoord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskerm jou spel met 'n wagwoord as jy wil dit nie publieke toepassing laat wees nie
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Kies 'n kaart
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Watter kaart wil jy speel?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Genereer nuwe lukraake speletjie
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (adverteer)
@@ -1577,10 +1574,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Beperk d
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Taal gepraat:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ander spelers sal weet watter taal op die verskaffer gepraat is
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Begin Spel
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Begin 'n nuwe netwerk spel van 'n lukraak kaart of draaiboek
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Laai Spel
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Hervat 'n vroeër gespaar multispeler speletjie (wees seker om te konnekteer as die korrekte speler)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Tik 'n naam in vir die netwerk speeletjie
 

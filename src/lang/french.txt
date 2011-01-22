@@ -1600,9 +1600,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nom de l
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Le nom de la partie sera affiché aux autres joueurs dans le menu de sélection de partie multijoueur
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Choisir le mot de passe
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protéger votre partie avec un mot de passe si vous ne souhaitez pas que d'autres l'utilisent
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Choisir une carte{NBSP}:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Sur quelle carte désirez-vous jouer{NBSP}?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Créer une partie aléatoirement
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (publier)
@@ -1618,10 +1615,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limiter 
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Langue utilisée{NBSP}:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Les autres joueurs sauront quelle langue est parlée sur ce serveur
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Démarrer la partie
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Démarrer une nouvelle partie réseau à partir d'une carte aléatoire, ou d'un scénario
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Charger une partie
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continuer une partie multijoueur sauvée précédemment (attention à reprendre la même compagnie)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Entrer un nom pour la partie en réseau
 

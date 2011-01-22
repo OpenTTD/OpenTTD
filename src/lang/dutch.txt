@@ -1599,9 +1599,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spelnaam
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De spelnaam wordt weergegeven aan andere spelers in het multiplayer-spelselectie menu
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Kies wachtwoord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bescherm je spel met een wachtwoord als je niet wilt dat deze algemeen toegankelijk is
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Selecteer een kaart:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Op welke kaart wil je spelen?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Genereer willekeurig nieuw spel
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (adverteren)
@@ -1617,10 +1614,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Beperk d
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Gesproken taal:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start spel
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start een nieuw netwerkspel van een willekeurige kaart, of geselecteerd scenario
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Laad spel
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Hervat een eerder opgeslagen netwerkspel (wees er zeker van dat je verbindt met het juiste bedrijf)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Geef de naam van het netwerk spel
 

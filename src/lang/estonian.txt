@@ -1656,9 +1656,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Mängu n
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Mängu nime näidatakse teistele mänijatele võrgumängu serverite nimekirjas
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sea parool
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Kaitse oma mäng parooliga, kui sa ei taha, et kõik sellele ligi pääseksid
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Vali kaart:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Millist kaarti sa tahad mängida?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Tekita suvaline kaart
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (reklaami)
@@ -1674,10 +1671,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Teatud v
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Räägitav keel:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Teistele mängijatele teadmiseks, et mis keelt serveris räägitakse
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Alusta mängu
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Uue võrgumängu alustamine suvalise kaardiga või valitud stsenaariumiga
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Mängu laadimine
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Varasema võrgumängu jätkamine (vaata, et ühendad ennast õige mängijana)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sisesta võrgumängu nimi
 

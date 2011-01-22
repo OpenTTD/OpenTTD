@@ -1583,9 +1583,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}遊戲�
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}遊戲名稱會顯示在其他玩家多人遊戲的遊戲清單中
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}設定密碼
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果您不想讓大眾連線的話，可以用密碼保護遊戲
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}選擇地圖：
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}您想玩哪個地圖？
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :隨機產生新場景
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :區域網路／網際網路
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :網際網路 (廣告)
@@ -1601,10 +1598,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}限制�
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}溝通語言：
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}讓其他人知道這個伺服器使用的溝通語言
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}開始遊戲
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}以隨機地圖或自選場景開始新的連線遊戲
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}載入遊戲
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}繼續先前儲存的多人遊戲 (記得以正確的公司身份連線)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}為連線遊戲輸入一個名稱
 

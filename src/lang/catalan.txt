@@ -1599,9 +1599,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nom del 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}El nom del joc es mostrarà a altres jugadors en el menú de selecció de joc multijugador
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Posa una contrasenya
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegeix el teu joc amb una contrasenya si no vols que d'altre gent el pugui utilitzar
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Selecciona un mapa:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}amb quin mapa vols jugar?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Genera un nou joc aleatori
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (anunci)
@@ -1617,10 +1614,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita e
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma parlat:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Els altres jugadors sabran quin idioma es parla en aquest servidor.
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Inicia el Joc
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Inicia un nou joc de xarxa des d'un mapa aleatori, o l'escenari seleccionat
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Carrega Joc
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continua amb un joc multijugador desat prèviament (comprova que estàs connectat amb la companyia correcta)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Posa el nom del joc per xarxa
 

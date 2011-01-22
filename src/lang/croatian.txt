@@ -1695,9 +1695,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Ime igre
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Ime igre bit će prikazno drugim igračima u izborniku za odabir igre s više igrača
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Postavi zaporku
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zaštiti svoju igru pomoću zaporke ukoliko ne želiš da bude javno dostupna
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Odaberi kartu:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Koju kartu želiš igrati?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Stvori nasumičnu novu igru
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (oglasi)
@@ -1713,10 +1710,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ogranič
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jezik kojim se govori:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igrači znat će kojim se jezikom govori na poslužitelju
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Započni igru
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Započni novu igru u mreži na nasumičnoj mapi ili iz odabranog scenarija
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Učitaj igru
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Nastavi ranije snimljenu igru za više igrača (pazite da se spojite pod točnim imenom kompanije)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Upišite ime mrežne igre
 

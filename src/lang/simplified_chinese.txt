@@ -1579,9 +1579,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}游戏�
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}游戏名称将显示在其他玩家的联机游戏界面中
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}设置密码：
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果不希望你的游戏被外人加入，请设置一个密码
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}选择地图：
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}选择你要玩的地图
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :随机生成新游戏
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :局域网 / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (advertise)
@@ -1597,10 +1594,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}限制�
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}语言选项：
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}其他玩家可以知道服务器的官方语言
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}开始游戏
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}以指定场景或随机地图开始游戏
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}读取游戏
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}恢复以前保存的联机游戏{}(请确认所有玩家都连接正确)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}为您的联机游戏取名
 

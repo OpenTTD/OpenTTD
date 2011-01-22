@@ -1593,9 +1593,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nome do 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome do jogo será exibido aos outros jogadores no menu de seleção de jogos multi-jogador
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Definir senha
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteja o jogo com uma senha se não desejar que seja publicamente acessível
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Selecionar um mapa:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Em qual mapa deseja jogar?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Gerar novo jogo aleatório
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Rede Local / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (divulgar)
@@ -1611,10 +1608,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita o
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma falado:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Outros jogadores saberão o idioma utilizado no servidor.
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Iniciar Jogo
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Iniciar um novo jogo em rede com mapa aleatório, ou cenário escolhido
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Abrir Jogo
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Continuar um jogo multi-jogador anteriormente gravado (assegure-se de conectar à companhia correta)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Coloque o nome para o jogo em rede
 

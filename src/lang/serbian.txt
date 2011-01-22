@@ -1794,9 +1794,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Naziv pa
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Naziv partije će se prikazati na spisku izbora mrežnih partija drugih igrača
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Postavi lozinku
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Ukoliko ne želite da bude javno dostupna zaštitite Vašu partiju lozinkom
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Odaberite teren:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Na kom terenu želite da igrate?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Stvaranje nove proizvoljne partije
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (sa oglašavanjem)
@@ -1812,10 +1809,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Odaberit
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Govorni jezik:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igrači će znati sa kojim jezikom se razgovara na serveru
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Pokreni partiju
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Pokreće novu mrežnu partiju sa proizvoljnim terenom, ili odabranim scenarijom
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Učitaj Partiju
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Nastavlja ranije sačuvanu mrežnu partiju (proverite da li ste postavljeni na odgovarajuće preduzeće)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Unos naziva mrežne partije
 

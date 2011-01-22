@@ -1601,9 +1601,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nome par
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Il nome della partita sarà mostrato dagli altri giocatori nel menu di selezione delle partite multigiocatore
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Imposta password
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegge la partita con una password in modo che non sia accessibile pubblicamente
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Seleziona mappa:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Selezionare la mappa con la quale si desidera giocare
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Crea partita casuale
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (pubblicizza)
@@ -1619,10 +1616,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita i
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Lingua parlata:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Fa sapere agli altri giocatori quale lingua è parlata sul server
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Avvia partita
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Inizia una nuova partita in rete con una mappa casuale o lo scenario selezionato
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Carica partita
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Riprende una partita multigiocatore salvata in precedenza (assicurarsi di connettersi alla compagnia corretta)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Inserire il nome della partita
 

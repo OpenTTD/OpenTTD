@@ -1599,9 +1599,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Namn:
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Namnet på nätverksspelet kommer att synas för andra spelare i multiplayer menyn
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Bestäm lösenord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Skydda spelet med ett lösenord så att inte andra än dom som har lösenordet kan gå med i spelet
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Välj karta:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Vilken karta vill du spela?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Skapa slumpmässigt nytt spel
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (publik)
@@ -1617,10 +1614,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begräns
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk som talas:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andra spelare kommer vara medvetna vilket språk som talas på servern.
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Starta spelet
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Starta ett nytt nätverksspel med en slumpmässig karta eller från valt scenario
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Ladda spel
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Återuppta ett tidigare sparat spel för flera spelare (tänk på att ansluta till rätt företag vid start)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Mata in ett namn för nätverksspelet
 

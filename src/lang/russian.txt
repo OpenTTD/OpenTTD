@@ -1753,9 +1753,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Назв
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Название игры, которое игроки увидят в меню выбора сетевой игры
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Установить пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитите вашу игру паролем, если не хотите, чтобы к ней могли подключиться посторонние.
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Выбор карты:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}На какой карте вы хотите играть?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Сгенерировать случайную карту
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Локальная сеть / Интернет
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Интернет (поместить в общий список)
@@ -1771,10 +1768,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Огра
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Язык общения:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Другие игроки будут знать, на каком языке общаются на сервере
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Запуск игры
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Запуск новой сетевой игры с произвольной карты или сценария
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Загрузка игры
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Продолжить ранее сохранённую сетевую игру (проверьте, что подсоединились прежним игроком)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Введите название сетевой игры
 

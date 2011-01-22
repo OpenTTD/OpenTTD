@@ -1578,9 +1578,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Nafn lei
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nafn leiksins mun vera sýnilegt öðrum leikmönnum í fjölspilunarvalmyndinni
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Veldu lykilorð
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Verndaðu leikinn þinn með lykilorði ef þú vilt ekki að óboðnir tengist honum
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Veldu kort:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Hvaða kort viltu spila?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Búa til nýjan leik
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Staðarnet / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (auglýsa)
@@ -1596,10 +1593,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Takmarka
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Tungumál:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Hefja leik
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Hefja nýjan netleik í sérvöldu korti eða landslagi af handahófi
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Hlaða leik
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Hefja aftur vistaðan fjölspilunarleik (vertu viss um að tengjast sem réttur leikmaður)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sláðu inn nafn netleiksins
 

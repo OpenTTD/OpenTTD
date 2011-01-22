@@ -1599,9 +1599,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Pelin ni
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nimi näytetään muille pelaajille moninpelivalikossa.
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Aseta salasana
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Jos peliin ei halua ulkopuolisia, voi sen suojata salasanalla.
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Valitse kartta:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Mitä karttaa haluat pelata?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Luo uusi satunnainen peli
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :Lähiverkko / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (mainosta)
@@ -1617,10 +1614,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Rajoita 
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Puhuttu kieli:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
 
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Aloita peli
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Aloita uusi verkkopeli satunnaisella kartalla tai valitulla skenaariolla
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Lataa peli
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Jatka aiemmin tallennettua moninpeliä (muista liittyä oikeaan yhtiöön)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Syötä nimi verkkopelille
 
