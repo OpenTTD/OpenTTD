@@ -1877,7 +1877,7 @@ STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Skift ge
 STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Skift gennemsigtighed for træer. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Skift gennemsigtighed for huse. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Skift gennemsigtighed for industrier. CTRL+Klik for at låse værdi.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Skift gennemsigtighed for konstruktioner som stationer, værksteder, kontrolsteder og køreledninger. CTRL+Klik for at låse værdi.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Skift gennemsigtighed for konstruktioner som stationer, remiser og waypoints. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Skift gennemsigtighed for broer. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Skift gennemsigtighed for strukturer som fyrtårne og antenner. CTRL+Klik for at låse værdi.
 STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Slå transparens til/fra for køreledninger. CTRL+klik for at låse.

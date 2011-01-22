@@ -237,7 +237,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Pencerey
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Pencere boyutunu büyült/küçült
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Kaydırma çubuğu - listeyi aşağı/yukarı kaydırır
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Kaydırma çubuğu - listeyi sağa/sola kaydır
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Bir arazi üzerinde bulunan binaları ve benzeri yapıları yık
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Bir arazi üzerinde bulunan binaları ve benzeri yapıları yık. Ctrl bir alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Varsayılan
@@ -332,9 +332,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Harita y
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Şehir yapımı
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Fabrika yapımı
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Yol yapımı
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Ağaç dik
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Ağaç dik. Shift ile tıklama maliyet tahminini gösterir
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tabela koy
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Nesneyi yerleştirin
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Nesneyi yerleştirin. Shift ile tıklama maliyet tahminini gösterir
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Senaryoyu kaydet
@@ -820,7 +820,7 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} eskiyor
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} çok eskidi
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} çok eskiyor ve acilen değiştirilmesi gerekiyor
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} devam edecek bir yol bulamıyor.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} devam edecek bir yol bulamıyor
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} kayboldu
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE} aracının geçen yıl karı {CURRENCY} idi
 
@@ -836,8 +836,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} artık {STRING} istiyor
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} artık {STRING} ve {STRING} istiyor
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Teşvik önerisinin süresi doldu: {}{}{STRING} {STRING} -> {STRING} artık teşvik almayacak.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Teşvik geri çekildi:{}{}{1:STRING} -> {2:STRING} arasındaki {0:STRING} taşıma hizmeti artık teşvik almayacak.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Teşvik önerisinin süresi doldu: {}{}{1:STRING} ile {2:STRING} arasındaki {0:STRING} taşıma hizmeti artık teşvik almayacak
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Teşvik geri çekildi:{}{}{1:STRING} ile {2:STRING} arasındaki {0:STRING} taşıma hizmeti artık teşvik almayacak
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Hizmet teşviği önerildi: {}{} {1:STRING} -> {2:STRING} arası ilk {0:STRING} taşıma hizmeti belediyeden teşvik alacak!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca %50 fazla gelir sağlayacak!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Hizmet teşviği {0:STRING} şirketine verildi!{}{}{2:STRING} -> {3:STRING} arasındaki {1:STRING} taşıma hizmeti bir yıl boyunca iki kat fazla gelir sağlayacak!
@@ -1095,7 +1095,7 @@ STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Durum �
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Sahile ve eğimli araziye inşaat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Binaların, yolların, vb. altında kazıya izin ver (otomatik betonlama): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Daha gerçekçi kapsama alanı: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Şehrin yollarını, köprülerini yıkma izinli: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Daha fazla şehir yollarını, köprülerini ve tünellerini yıkmaya izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlere izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Lokomotif duman/kıvılcım miktarı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Hiçbiri
@@ -1148,7 +1148,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Şehiri
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Rakiplerin yolu üzerinde durak yapmaya izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Bitişik istasyonlar izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Birden çok NewGRF lokomotif setini aktifleştir: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Araçlar varken bu ayarı değiştirmezsiniz.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Araçlar varken bu ayarı değiştirmezsiniz
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Havalimanlarının süresi asla dolmasın: {ORANGE}{STRING}
 
@@ -1217,7 +1217,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Kapalı
 
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Sol tık ile ekran kaydır: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Kaydedilen oyun isimlerinde {ORANGE}{STRING}{LTBLUE} tarih biçimini kullan.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Kaydedilen oyun isimlerinde {ORANGE}{STRING}{LTBLUE} tarih biçimini kullan
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :uzun (31 Ara 2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kısa (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1248,6 +1248,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Ayrıla
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Yapı araçlarını kullanımdan sonra aktif tut: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Şirket mali tablosunda grup harcamaları: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Uygun araç bulunmadığında ilgili altyapıların yapılmasını engelle: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Her oyuncu için en fazla uçak: {ORANGE}{STRING}
@@ -1428,7 +1429,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu sena
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Hileler
 STR_CHEATS_TOOLTIP                                              :{BLACK}Onay kutuları bu hilenin daha önce kullanılıp kullanmadığını bildirir.
-STR_CHEATS_WARNING                                              :{BLACK}Uyarı! Rakiplerine ihanet etmek üzeresin. Böyle bir davranışı sonsuza dek unutmayacaklarını akılda tut.
+STR_CHEATS_WARNING                                              :{BLACK}Uyarı! Rakiplerine ihanet etmek üzeresin. Böyle bir davranışı sonsuza dek unutmayacaklarını akılda tut
 STR_CHEAT_MONEY                                                 :{LTBLUE}Parayı {CURRENCY} kadar arttır
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Oynanan şirket: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli buldozer (fabrikaları, silinemeyen nesneleri siler): {ORANGE}{STRING}
@@ -1491,16 +1492,16 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Bayan su
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Yeni Surat
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Rastgele surat yap
 STR_FACE_ADVANCED                                               :{BLACK}Gelişmiş
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Gelişmiş yüz seçimi.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Gelişmiş yüz seçimi
 STR_FACE_SIMPLE                                                 :{BLACK}Basit
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Basit yüz seçimi.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Basit yüz seçimi
 STR_FACE_LOAD                                                   :{BLACK}Yükle
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Tercih edilen yüzü yükle
 STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi
 STR_FACE_FACECODE                                               :{BLACK}Oyuncu yüzü no.
 STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Oyuncu suratının numarasını göster/değiştir
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Oyuncu suratının numarasını göster/değiştir
-STR_FACE_FACECODE_SET                                           :{WHITE}Surat numarası ayarlandı.
+STR_FACE_FACECODE_SET                                           :{WHITE}Surat numarası ayarlandı
 STR_FACE_FACECODE_ERR                                           :{WHITE}Oyuncu surat numarası ayarlanamadı - 0 ve 4.294.967.295 arasında bir sayı olmalı!
 STR_FACE_SAVE                                                   :{BLACK}Kaydet
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tercih edilen yüzü kaydet
@@ -1585,7 +1586,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Sunucu b
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Sunucu bul
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Sunucu bulmak için bir agi ara
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Sunucu ekle
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Her zaman çalışan oyunlarına bakabilmek için bir sunucu ekle.
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Her zaman çalışan oyunlarına bakabilmek için bir sunucu ekle
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Sunucu başlat
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Kendi sunucunu başlat
 
@@ -1693,15 +1694,15 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Şirket 
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}Bağlanıyor...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Bağlanıyor..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Onaylanıyor..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Bekliyor..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Harita indiriliyor..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Veriler işleniyor..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Kaydolunuyor..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Bağlanıyor...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Onaylanıyor...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Bekliyor...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Harita indiriliyor...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Veriler işleniyor...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Kaydolunuyor...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Oyun bilgisi aliniyor..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Şirket bilgisi aliniyor..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Oyun bilgisi aliniyor...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Şirket bilgisi aliniyor...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} -> önünde olan oyuncular
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}Şu ana kadar {BYTES} indirildi
@@ -1742,7 +1743,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}Bu şirk
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}Katıl
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}Katıl ve bu şirket olarak oyna
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}Parola
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Başkalarınin girmemesi için parola koy.
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}Başkalarınin girmemesi için parola koy
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}Şirket parolası
 
 # Network chat
@@ -1887,15 +1888,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}İndiril
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Şeffaflık Seçenekleri
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Durak tabelaları için şeffaflık. Kilitlemek için Ctrl ile tıklayın.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Ağaçlar için şeffaflık. Kilitlemek için Ctrl ile tıklayın.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Evler için şeffaflık. Kilitlemek için Ctrl ile tıklayın.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Fabrikalar için şeffaflık. Kilitlemek için Ctrl ile tıklayın.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}İstasyonlar, garajlar tershaneler vb. için şeffaflık. Kilitlemek için Ctrl ile tıklayın.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Köprüler için şeffaflık. Kilitlemek için Ctrl ile tıklayın.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Antenler ve deniz fenerleri için şeffaflık. Kilitlemek için Ctrl ile tıklayın.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Tren elektrik hatları için şeffaflığı aç/kapat. Kilitlemek için Ctrl ile tıklayın.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparan yükleme göstergesi. Kilitlemek için Ctrl ile tıklayın.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Durak tabelaları için şeffaflık. Kilitlemek için Ctrl ile tıklayın
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Ağaçlar için şeffaflık. Kilitlemek için Ctrl ile tıklayın
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Evler için şeffaflık. Kilitlemek için Ctrl ile tıklayın
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Fabrikalar için şeffaflık. Kilitlemek için Ctrl ile tıklayın
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}İstasyonlar, garajlar tershaneler vb. için şeffaflık. Kilitlemek için Ctrl ile tıklayın
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Köprüler için şeffaflık. Kilitlemek için Ctrl ile tıklayın
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Antenler ve deniz fenerleri için şeffaflık. Kilitlemek için Ctrl ile tıklayın
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Tren elektrik hatları için şeffaflığı aç/kapat. Kilitlemek için Ctrl ile tıklayın
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transparan yükleme göstergesi. Kilitlemek için Ctrl ile tıklayın
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nesneleri şeffaf değil görünmez yap
 
 # Base for station construction window(s)
@@ -1920,16 +1921,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrikli Ray 
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monoray Yapımı
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Maglev Yapımı
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Demiryolu yap. Ctrl demiryolu inşa ederken silmeyi açar/kapatır
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Otoray modunda ray yap. Ctrl ray yap/kaldır seçimini değiştirir
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tren deposu yap (tren yapımı ve bakımı için)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rayı yerimine çevir. Ctrl yerimlerini birleştirmeyi mümkün kılar
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Tren istasyonu yap. Ctrl istasyonları birleştirmeyi mümkün kılar
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Demiryolu sinyali yap. Ctrl semafor/ışıklı işaret seçimi yapar{}Sürükleme düz bir ray boyunca işaretleri koyar. Ctrl sonraki kavşağa kadar işaretleri koyar{}Ctrl+tık işaret seçim penceresini açar/kapatır
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Demiryolu köprüsü yap
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Demiryolu tüneli yap
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Demiryolu yap. Ctrl demiryolu inşa ederken silmeyi açar/kapatır. Shift ile tıklama maliyet tahminini gösterir
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Otoray modunda ray yap. Ctrl ray yap/kaldır seçimini değiştirir. Shift ile tıklama maliyet tahminini gösterir
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Tren deposu yap (tren yapımı ve bakımı için). Shift ile tıklama maliyet tahminini gösterir
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Rayı yerimine çevir. Ctrl yerimlerini birleştirmeyi mümkün kılar. Shift ile tıklama maliyet tahminini gösterir
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Tren istasyonu yap. Ctrl istasyonları birleştirmeyi mümkün kılar. Shift ile tıklama maliyet tahminini gösterir
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Demiryolu sinyali yap. Ctrl semafor/ışıklı işaret seçimi yapar{}Sürükleme düz bir ray boyunca işaretleri koyar. Ctrl sonraki kavşağa kadar işaretleri koyar{}Ctrl+tık işaret seçim penceresini açar/kapatır. Shift ile tıklama maliyet tahminini gösterir
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Demiryolu köprüsü yap. Shift ile tıklama maliyet tahminini gösterir
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Demiryolu tüneli yap. Shift ile tıklama maliyet tahminini gösterir
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Trenyolu, işaret, yerimi ve istasyon yapımında sil/yap arasında geçiş. Yerimi ve istasyon raylarını da silmek için Ctrl'yi basılı tutun
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Ray türünü dönüştür/geliştir
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Ray türünü dönüştür/geliştir. Shift ile tıklama maliyet tahminini gösterir
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Tren Garı Yönü
@@ -1958,19 +1959,19 @@ STR_STATION_CLASS_WAYP                                          :Yerimleri
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Sinyal Seçimi
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Sinyali (semafor){}Bu en temel sinyal tipidir, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Giriş-Sinyali (semafor){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Çıkış Sinyali (semafor){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blok Sinyali (semafor){}Bu en temel sinyal tipidir, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Giriş-Sinyali (semafor){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Çıkış Sinyali (semafor){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Karışık Sinyal (semafor){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu şekilde büyük ön sinyal "ağaçları" yapabilirsiniz
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Yol Sinyali (semafor){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Standart yol sinyalleri arka taraftan geçişe izin verir.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Tek Yön Yol Sinyali (semafor){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Tek yön yol sinyalleri arka taraftan geçişe izin vermez.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blok Sinyali (elektrikli){}En temel sinyal tipidir, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Giriş-Sinyali (elektrikli){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Çıkış Sinyali (elektrikli){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Karışık Sinyal (elektrikli){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu şekilde büyük ön sinyal "ağaçları" yapabilirsiniz.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Yol Sinyali (elektrikli){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Standart yol sinyalleri arka taraftan geçişe izin verir.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Tek Yön Yol Sinyali (elektrikli){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Tek yön yol sinyalleri arka taraftan geçişe izin vermez.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sinyal Dönüştür{}Seçildiğinde, tıklama var olan sinyali seçili sinyal tür ve alt türüne çevirir, CTRL ile tıklama mevcut alt türü değiştirir.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Yol Sinyali (semafor){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Standart yol sinyalleri arka taraftan geçişe izin verir
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Tek Yön Yol Sinyali (semafor){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Tek yön yol sinyalleri arka taraftan geçişe izin vermez
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Blok Sinyali (elektrikli){}En temel sinyal tipidir, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Giriş-Sinyali (elektrikli){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Çıkış Sinyali (elektrikli){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Karışık Sinyal (elektrikli){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu şekilde büyük ön sinyal "ağaçları" yapabilirsiniz
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Yol Sinyali (elektrikli){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Standart yol sinyalleri arka taraftan geçişe izin verir
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Tek Yön Yol Sinyali (elektrikli){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Tek yön yol sinyalleri arka taraftan geçişe izin vermez
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Sinyal Dönüştür{}Seçildiğinde, tıklama var olan sinyali seçili sinyal tür ve alt türüne çevirir, CTRL ile tıklama mevcut alt türü değiştirir. Shift ile tıklama maliyet tahminini gösterir
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Sinyal sürükleme yoğunluğu
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Sinyal sürükleme yoğunluğunu azalt
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Sinyal sürükleme yoğunluğunu arttır
@@ -1994,9 +1995,9 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Silikon, Tüpl�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Yol Yapımı
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Tramvay Yapımı
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Yol bölmesi yap. Ctrl yol için yap/kaldır geçişi sağlar
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvay yolu yap. Ctrl tramvay yolu için yap/kaldır geçişi sağlar
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Otoyol modunu kullanarak yol yap. Ctrl yol yapımı için yap/kaldır geçişi sağlar
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Yol bölmesi yap. Ctrl yol için yap/kaldır geçişi sağlar. Shift ile tıklama maliyet tahminini gösterir
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Tramvay yolu yap. Ctrl tramvay yolu için yap/kaldır geçişi sağlar. Shift ile tıklama maliyet tahminini gösterir
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Otoyol modunu kullanarak yol yap. Ctrl yol yapımı için yap/kaldır geçişi sağlar. Shift ile tıklama maliyet tahminini gösterir
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Otoray modunu kullanarak tramvay yolu yap
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Garaj yap (araç alımı ve bakımı için)
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Tramvay garı yap (araç alımı ve tamiri için)
@@ -2005,10 +2006,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Yolcu tr
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Kamyon yükleme bölgesi yap
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Yük tramvayı istasyonu yap
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Tek yönlü yolları etkinleştir/kapat
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Köprü yap
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Tramvay köprüsü yap
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Tünel Yap
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tramvay tüneli yap
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Köprü yap. Shift ile tıklama maliyet tahminini gösterir
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Tramvay köprüsü yap. Shift ile tıklama maliyet tahminini gösterir
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Tünel Yap. Shift ile tıklama maliyet tahminini gösterir
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tramvay tüneli yap. Shift ile tıklama maliyet tahminini gösterir
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Yol yap/sil arasında geçiş yap
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Tramvay yapımı/yıkımı
 
@@ -2031,14 +2032,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Yük tra
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Suyolu inşaatı
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Suyolu
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanal yap.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Kilit yap
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Kanal yap. Shift ile tıklama maliyet tahminini gösterir
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Kilit yap. Shift ile tıklama maliyet tahminini gösterir
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Tersane yap (gemi yapmak ve bakımları için)
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}İskele yap
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Yerimi olarak kullanilabilecek bir şamandıra yerlestir
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Su kemeri yap
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Yerimi olarak kullanilabilecek bir şamandıra yerlestir. Shift ile tıklama maliyet tahminini gösterir
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Su kemeri yap. Shift ile tıklama maliyet tahminini gösterir
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Su alanını belirle.{}Deniz seviyesinde CTRL tuşu basılı olmadığı sürece kanal yapar, basılıysa etraftakileri su altında bırakır
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Irmak oluştur.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Irmak oluştur
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Tersane Yönü
@@ -2076,14 +2077,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Üretile
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Arazi düzenleme
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Araziyi alçalt
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Araziyi yükselt
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Düzleştir
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Gelecekte kullanım için arazi satın al
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Arazinin bir köşesini alçalt. Sürükleme ilk seçilen köşeyi alçaltır ve seçilen araziyi yeni yüksekliğe indirir. Ctrl bir alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Arazinin bir köşesini yükselt. Sürükleme ilk seçilen köşeyi yükseltir ve seçilen araziyi yeni yüksekliğe çıkarır. Ctrl bir alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Bir alanı ilk seçilen köşenin yüksekliğine düzle. Ctrl ile alanı köşeden köşeye seçer. Shift ile tıklama maliyet tahminini gösterir
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Gelecekte kullanım için arazi satın al. Shift ile tıklama maliyet tahminini gösterir
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Nesne Seçimi
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Yapılacak nesneyi seçin
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Yapılacak nesneyi seçin. Shift ile tıklama maliyet tahminini gösterir
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}İnşa edilecek nesnenin sınıfını seçin
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Nesnenin önizlemesi
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Boyut: {GOLD}{NUM} x {NUM} kare
@@ -2306,7 +2307,7 @@ STR_SAVELOAD_SAVE_TOOLTIP                                       :{BLACK}Oyunu se
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Yükle
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Seçili oyunu yükle
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Oyun Ayrıntıları
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Mevcut bilgi yok.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Mevcut bilgi yok
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -2425,6 +2426,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Seçenek
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Hiç bilgi yok
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Eşleşen dosya bulunamadı
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Etkisiz
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}OpenTTD'nin bu sürümüyle uyumlu değil
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF seçeneklerini girin
 
@@ -2470,23 +2472,23 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Uyarı: {S
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hata: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Ölümcül hata: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ölümcül bir NewGRF hatası oluştu: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} OpenTTD tarafından belirtilen TTDPatch sürümüyle çalışmayacaktır.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}, TTD'nin {STRING} sürümü içindir.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} OpenTTD tarafından belirtilen TTDPatch sürümüyle çalışmayacaktır
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}, TTD'nin {STRING} sürümü içindir
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}, {STRING} ile kullanılmak için tasarlanmıştır
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{1:STRING} için geçersiz parametre: {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} önce, {STRING} ondan sonra yüklenmeli.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} sonra, {STRING} ondan önce yüklenmeli.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} OpenTTD {STRING} veya daha yüksek bir sürüm gerektirir.
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} önce, {STRING} ondan sonra yüklenmeli
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} sonra, {STRING} ondan önce yüklenmeli
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} OpenTTD {STRING} veya daha yüksek bir sürüm gerektirir
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING} adlı NewGRF'yi {4:STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmeyen sprayt.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Bilinmeyen Action 0 özelliği.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING} adlı NewGRF'yi {4:STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmeyen sprayt
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Bilinmeyen Action 0 özelliği
 STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID kullanımı denemesi
-STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir sprayt içeriyor. Tüm bozuk spraytlar kırmızı bir soru işareti (?) olarak görünecektir.
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden fazla Action 8 girişi içeriyor.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir sprayt içeriyor. Tüm bozuk spraytlar kırmızı bir soru işareti (?) olarak görünecektir
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden fazla Action 8 girişi içeriyor
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Pseudo-sprite bitiminden sonrasını okudu
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı spraytları içermiyor.{}Lütfen temel grafik kümesini güncelleyin.
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Kullanımda olan temel grafik kümesi bazı spraytları içermiyor.{}Lütfen temel grafik kümesini güncelleyin
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Uyarı!
@@ -2507,14 +2509,14 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Uyumlu 
 STR_NEWGRF_LIST_MISSING                                         :{RED}Eksik dosyalar
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' davranışı muhtemelen senkron kaybı ve/veya çakılmalara neden olacak.
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' davranışı muhtemelen senkron kaybı ve/veya çakılmalara neden olacak
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}'{1:ENGINE}' için enerjilendirilmiş wagon durumunu depo dışındayken değiştirdi
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' hangar içinde değilken araç uzunluğunu değiştirdi.
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICLE}' adlı tren '{COMPANY}' şirketine ait olup uzunluğu geçersizdir. Muhtemelen NewGRF'lerle ilgili bir problemden kaynaklanıyor. Oyun senkron kaybına uğrayabilir ya da çakılabilir.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' hangar içinde değilken araç uzunluğunu değiştirdi
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICLE}' adlı tren '{COMPANY}' şirketine ait olup uzunluğu geçersizdir. Muhtemelen NewGRF'lerle ilgili bir problemden kaynaklanıyor. Oyun senkron kaybına uğrayabilir ya da çakılabilir
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geçersiz bilgi vermektedir.
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' için kargo tür değişim bilgisi yapımdan sonraki alım listesinden farklı. Bu otomatik yenileme-değiştirmenin kargo türünü doğru şekilde değiştirmesine engel olabilir.
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' üretim yordamında sonsuz döngüye neden oldu.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' geçersiz bilgi vermektedir
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}'{1:ENGINE}' için kargo tür değişim bilgisi yapımdan sonraki alım listesinden farklı. Bu otomatik yenileme-değiştirmenin kargo türünü doğru şekilde değiştirmesine engel olabilir
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' üretim yordamında sonsuz döngüye neden oldu
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<geçersiz kargo>
@@ -2777,7 +2779,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Kullanılabilir
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Kullanılabilir Arabalar
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Kullanılabilir Gemiler
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Kullanılabilir Uçaklar
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Bu araç türü için mümkün olan lokomotif tasarimlari
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Bu araç türü için mümkün olan lokomotif tasarımlarını göster
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Listeyi yönet
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Listedeki tüm araçlara talimat ver
@@ -2995,7 +2997,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Monoray Araçla
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Araçları
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon kaldırma: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır(en önden başlayarak yeterli sayıda vagon silinir).
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır (en önden başlayarak yeterli sayıda vagon silinir)
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3226,7 +3228,7 @@ STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Sil
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Seçili talimatı sil
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Tüm emirleri sil
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Paylaşmaktan vazgeç
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Emir listesini paylaşmaktan vazgeç. Ctrl+Tık tüm emir listesini siler
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Emir listesini paylaşmaktan vazgeç. Ctrl+Tık ayrıca tüm emir listesini siler
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Git
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :En yakın gara git
@@ -3291,7 +3293,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Talimatlar
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Emir görünümüne geç
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman çizelgesi - işaretlemek için bir talimata tıklayın.
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman çizelgesi - işaretlemek için bir talimata tıklayın
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sefer yok
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Yolculuk (otomatik; bir sonraki manuel emir tarafından zamanlanır)
@@ -3364,8 +3366,8 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Bu YZ i�
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD YZ desteği olmadan derlenmiş...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... hiç YZ yok!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan YZ'lerden biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte YZ'nin yazarına bildirin.
+STR_ERROR_AI_NO_AI_FOUND                                        :Yüklenecek uygun bir YZ bulunamadı.{}Bu YZ boş bir YZ'dir ve hiçbir şey yapmaz.{}'Çevrimiçi İçerik" sistemiyle pekçok YZ'yi indirebilirsiniz
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Çalışan YZ'lerden biri çakıldı. Lütfen bu durumu AI Hata Ayıklama Penceresi görüntüsüyle birlikte YZ'nin yazarına bildirin
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
 
 # AI configuration window
@@ -3435,25 +3437,25 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Dosya okunabili
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Dosya yazılabilir değil
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Veri sağlamlık kontrolü başarısız
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<uygun değil>
-STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır.
+STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır
 
 # Map generation messages
 STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Harita oluşturulması iptal edildi...{}... uygun yerleşim bölgesi yok
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... Bu senaryoda hiç şehir yok
 
 STR_ERROR_PNGMAP                                                :{WHITE}PNG'den yükseklik haritası yüklenemedi...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... dosya bulunamadı.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... resim türü işlenemiyor. 8 veya 24-bit PNG resmi gerekli.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... yanlış bir şeyler oldu. (dosya bozuk olabilir)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... dosya bulunamadı
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... resim türü işlenemiyor. 8 veya 24-bit PNG resmi gerekli
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... yanlış bir şeyler oldu (muhtemelen dosya bozuk)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Arazi BMP'den yüklenemedi...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... resim türü çevrilemedi.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... resim türü çevrilemedi
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
 
 # Soundset messages
-STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Yalnız yedek ses kümesi bulundu. Ses istiyorsanız, içerik indirme sisteminden ses kümesi indirin.
+STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Yalnız yedek ses kümesi bulundu. Ses istiyorsanız, içerik indirme sisteminden ses kümesi indirin
 
 # Screenshot related messages
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekran görüntüsü '{STRING}' olarak kaydedildi
@@ -3523,7 +3525,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... hari
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... başka bir şehire çok yakın
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... çok fazla şehir var
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... haritada boş yer yok
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Şehir yol yapmayacak. Yol yapımını Gelişmiş Ayarlar->Ekonomi->Şehirler'den etkinleştirebilirsiniz.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Şehir yol yapmayacak. Yol yapımını Gelişmiş Ayarlar->Ekonomi->Şehirler'den etkinleştirebilirsiniz
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Yol çalışmaları
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Bu kasaba silinemiyor...{}Bir istasyon ya da garaj kasabaya atıfta bulunuyor ya da bir kasaba karesi kaldırılamıyor
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... bu şehrin merkezinde heykel için uygun bir yer yok
@@ -3629,7 +3631,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Yanlış gar t�
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} değiştirmeden sonra çok uzun oldu
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Hiçbir otomatik değiştirme/yenileme kuralı uygulanmadı.
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Hiçbir otomatik değiştirme/yenileme kuralı uygulanmadı
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(para yetmedi)
 
 # Rail construction errors
@@ -3788,8 +3790,8 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... önc
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Aracın zaman çizelgesi oluşturulamıyor...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Araçlar sadece istasyonlarda bekleyebilir.
-STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Araç bu istasyonda durmuyor.
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Araçlar sadece istasyonlarda bekleyebilir
+STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Araç bu istasyonda durmuyor
 
 # Sign related errors
 STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... çok fazla tabela var

@@ -22,7 +22,7 @@
 STR_NULL                                                        :
 STR_EMPTY                                                       :
 STR_UNDEFINED                                                   :（文字列が未定義です）
-STR_JUST_NOTHING                                                :存在しない
+STR_JUST_NOTHING                                                :なし
 
 # Cargo related strings
 # Plural cargo name
@@ -245,7 +245,7 @@ STR_BUTTON_OK                                                   :{BLACK}OK
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :{NBSP}1234567890-^\qwertyuiop@[asdfghjkl;:] zxcvbnm,./\
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :{NBSP}!"#$%&'()=~|QWERTYUIOP`{{}ASDFGHJKL+*} ZXCVBNM<>?_
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :{NBSP}!"#$%&'() =~|QWERTYUIOP`{{}ASDFGHJKL+*} ZXCVBNM<>?_
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}長さ： {NUM}
@@ -347,7 +347,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終�
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプションの設定
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易度の設定
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :追加のゲームオプションの設定
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :拡張オプションの設定
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AIの設定。
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度の設定
@@ -637,17 +637,17 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}曲を�
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}{NUM}年に到達した会社のハイスコア{}（難易度： {STRING}）
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}{NUM}の会社の格付けの順位
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :ビジネスマン
-STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :企業家
-STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :大実業家
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :事務家
+STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :起業家
+STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :実業家
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :資本家
-STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :大立者
-STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :大御所
-STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :大将軍
+STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :大事業家
+STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :権力者
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :世紀の大君
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}、{COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'（{COMMA}）
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} は「{STRING}」に達した！
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME}（{COMPANY}）は「{STRING}」に達した！
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   （{COMMA}）
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} は '{STRING}' の称号を獲得した！
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} の {COMPANY} は '{STRING}' の称号を獲得した！
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}地図 - {STRING}
