@@ -64,33 +64,14 @@ public:
 
 	virtual NetworkRecvStatus CloseConnection(bool error = true);
 
-	/**
-	 * Start the querying
-	 * @param sock     the socket of this connection
-	 * @param callback the callback for HTTP retrieval
-	 * @param url      the url at the server
-	 * @param data     the data to send
-	 * @param depth    the depth (redirect recursion) of the queries
-	 */
 	NetworkHTTPSocketHandler(SOCKET sock, HTTPCallback *callback,
 			const char *host, const char *url, const char *data, int depth);
 
-	/** Free whatever needs to be freed. */
 	~NetworkHTTPSocketHandler();
 
-	/**
-	 * Connect to the given URI.
-	 * @param uri      the URI to connect to.
-	 * @param callback the callback to send data back on.
-	 * @param data     the data we want to send (as POST).
-	 * @param depth    the recursion/redirect depth.
-	 */
 	static int Connect(char *uri, HTTPCallback *callback,
 			const char *data = NULL, int depth = 0);
 
-	/**
-	 * Do the receiving for all HTTP connections.
-	 */
 	static void HTTPReceive();
 };
 

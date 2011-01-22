@@ -24,6 +24,10 @@ static const SaveLoad _newgrf_mapping_desc[] = {
 	SLE_END()
 };
 
+/**
+ * Save a GRF ID + local id -> OpenTTD's id mapping.
+ * @param mapping The mapping to save.
+ */
 void Save_NewGRFMapping(const OverrideManagerBase &mapping)
 {
 	for (uint i = 0; i < mapping.GetMaxMapping(); i++) {
@@ -32,6 +36,10 @@ void Save_NewGRFMapping(const OverrideManagerBase &mapping)
 	}
 }
 
+/**
+ * Load a GRF ID + local id -> OpenTTD's id mapping.
+ * @param mapping The mapping to load.
+ */
 void Load_NewGRFMapping(OverrideManagerBase &mapping)
 {
 	/* Clear the current mapping stored.

@@ -487,6 +487,14 @@ static const WindowDesc _newgrf_inspect_desc(
 	_nested_newgrf_inspect_widgets, lengthof(_nested_newgrf_inspect_widgets)
 );
 
+/**
+ * Show the inspect window for a given feature and index.
+ * The index is normally an in-game location/identifier, such
+ * as a TileIndex or an IndustryID depending on the feature
+ * we want to inspect.
+ * @param feature The feature we want to inspect.
+ * @param index   The index/identifier of the feature to inspect.
+ */
 void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 {
 	if (!IsNewGRFInspectable(feature, index)) return;
@@ -495,6 +503,14 @@ void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 	AllocateWindowDescFront<NewGRFInspectWindow>(&_newgrf_inspect_desc, wno);
 }
 
+/**
+ * Delete inspect window for a given feature and index.
+ * The index is normally an in-game location/identifier, such
+ * as a TileIndex or an IndustryID depending on the feature
+ * we want to inspect.
+ * @param feature The feature we want to delete the window for.
+ * @param index   The index/identifier of the feature to delete.
+ */
 void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 {
 	if (feature == GSF_INVALID) return;
@@ -507,6 +523,15 @@ void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 	if (w != NULL) w->ReInit();
 }
 
+/**
+ * Can we inspect the data given a certain feature and index.
+ * The index is normally an in-game location/identifier, such
+ * as a TileIndex or an IndustryID depending on the feature
+ * we want to inspect.
+ * @param feature The feature we want to inspect.
+ * @param index   The index/identifier of the feature to inspect.
+ * @return true if there is something to show.
+ */
 bool IsNewGRFInspectable(GrfSpecFeature feature, uint index)
 {
 	const NIFeature *nif = GetFeature(GetInspectWindowNumber(feature, index));
@@ -514,6 +539,11 @@ bool IsNewGRFInspectable(GrfSpecFeature feature, uint index)
 	return nif->helper->IsInspectable(index);
 }
 
+/**
+ * Get the GrfSpecFeature associated with the tile.
+ * @param tile The tile to get the feature from.
+ * @return the GrfSpecFeature.
+ */
 GrfSpecFeature GetGrfSpecFeature(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
@@ -533,6 +563,11 @@ GrfSpecFeature GetGrfSpecFeature(TileIndex tile)
 	}
 }
 
+/**
+ * Get the GrfSpecFeature associated with the vehicle.
+ * @param type The vehicle type to get the feature from.
+ * @return the GrfSpecFeature.
+ */
 GrfSpecFeature GetGrfSpecFeature(VehicleType type)
 {
 	switch (type) {
@@ -813,6 +848,9 @@ static const WindowDesc _sprite_aligner_desc(
 	_nested_sprite_aligner_widgets, lengthof(_nested_sprite_aligner_widgets)
 );
 
+/**
+ * Show the window for aligning sprites.
+ */
 void ShowSpriteAlignerWindow()
 {
 	AllocateWindowDescFront<SpriteAlignerWindow>(&_sprite_aligner_desc, 0);

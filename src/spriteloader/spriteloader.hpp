@@ -50,6 +50,11 @@ public:
 
 	/**
 	 * Load a sprite from the disk and return a sprite struct which is the same for all loaders.
+	 * @param sprite      The sprite to fill with data.
+	 * @param file_slot   The file "descriptor" of the file we read from.
+	 * @param file_pos    The position within the file the image begins.
+	 * @param sprite_type The type of sprite we're trying to load.
+	 * @return true iff loading went okay.
 	 */
 	virtual bool LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type) = 0;
 

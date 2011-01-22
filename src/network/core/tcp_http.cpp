@@ -23,6 +23,14 @@
 /** List of open HTTP connections. */
 static SmallVector<NetworkHTTPSocketHandler *, 1> _http_connections;
 
+/**
+ * Start the querying
+ * @param sock     the socket of this connection
+ * @param callback the callback for HTTP retrieval
+ * @param url      the url at the server
+ * @param data     the data to send
+ * @param depth    the depth (redirect recursion) of the queries
+ */
 NetworkHTTPSocketHandler::NetworkHTTPSocketHandler(SOCKET s,
 		HTTPCallback *callback, const char *host, const char *url,
 		const char *data, int depth) :
@@ -57,6 +65,7 @@ NetworkHTTPSocketHandler::NetworkHTTPSocketHandler(SOCKET s,
 	*_http_connections.Append() = this;
 }
 
+/** Free whatever needs to be freed. */
 NetworkHTTPSocketHandler::~NetworkHTTPSocketHandler()
 {
 	this->CloseConnection();
@@ -175,6 +184,13 @@ int NetworkHTTPSocketHandler::HandleHeader()
 	return 0;
 }
 
+/**
+ * Connect to the given URI.
+ * @param uri      the URI to connect to.
+ * @param callback the callback to send data back on.
+ * @param data     the data we want to send (as POST).
+ * @param depth    the recursion/redirect depth.
+ */
 /* static */ int NetworkHTTPSocketHandler::Connect(char *uri, HTTPCallback *callback, const char *data, int depth)
 {
 	char *hname = strstr(uri, "://");
@@ -274,6 +290,9 @@ int NetworkHTTPSocketHandler::Receive()
 	}
 }
 
+/**
+ * Do the receiving for all HTTP connections.
+ */
 /* static */ void NetworkHTTPSocketHandler::HTTPReceive()
 {
 	/* No connections, just bail out. */

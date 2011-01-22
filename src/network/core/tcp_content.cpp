@@ -16,11 +16,13 @@
 #include "../../stdafx.h"
 #include "tcp_content.h"
 
+/** Clear everything in the struct */
 ContentInfo::ContentInfo()
 {
 	memset(this, 0, sizeof(*this));
 }
 
+/** Free everything allocated */
 ContentInfo::~ContentInfo()
 {
 	free(this->dependencies);
@@ -42,6 +44,10 @@ void ContentInfo::TransferFrom(ContentInfo *other)
 	}
 }
 
+/**
+ * Get the size of the data as send over the network.
+ * @return the size.
+ */
 size_t ContentInfo::Size() const
 {
 	size_t len = 0;
@@ -54,6 +60,10 @@ size_t ContentInfo::Size() const
 			sizeof(*this->dependencies) * this->dependency_count;
 }
 
+/**
+ * Is the state either selected or autoselected?
+ * @return true iff that's the case
+ */
 bool ContentInfo::IsSelected() const
 {
 	switch (this->state) {
@@ -67,6 +77,10 @@ bool ContentInfo::IsSelected() const
 	}
 }
 
+/**
+ * Is the information from this content info valid?
+ * @return true iff it's valid
+ */
 bool ContentInfo::IsValid() const
 {
 	return this->state < ContentInfo::INVALID && this->type >= CONTENT_TYPE_BEGIN && this->type < CONTENT_TYPE_END;
@@ -88,8 +102,10 @@ void NetworkContentSocketHandler::Close()
 #define CONTENT_COMMAND(type) case type: return this->NetworkPacketReceive_ ## type ## _command(p); break;
 
 /**
- * Handle an incoming packets by sending it to the correct function.
- * @param p the received packet
+ * Handle the given packet, i.e. pass it to the right
+ * parser receive command.
+ * @param p the packet to handle
+ * @return true if we should immediately handle further packets, false otherwise
  */
 bool NetworkContentSocketHandler::HandlePacket(Packet *p)
 {

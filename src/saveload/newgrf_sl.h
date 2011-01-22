@@ -14,16 +14,7 @@
 
 #include "../newgrf_commons.h"
 
-/**
- * Save a GRF ID + local id -> OpenTTD's id mapping.
- * @param mapping The mapping to save.
- */
 void Save_NewGRFMapping(const OverrideManagerBase &mapping);
-
-/**
- * Load a GRF ID + local id -> OpenTTD's id mapping.
- * @param mapping The mapping to load.
- */
 void Load_NewGRFMapping(OverrideManagerBase &mapping);
 
 #endif /* SAVELOAD_NEWGRF_SL_H */

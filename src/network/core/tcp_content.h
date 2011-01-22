@@ -82,30 +82,13 @@ struct ContentInfo {
 	State state;             ///< Whether the content info is selected (for download)
 	bool upgrade;            ///< This item is an upgrade
 
-	/** Clear everything in the struct */
 	ContentInfo();
-
-	/** Free everything allocated */
 	~ContentInfo();
 
 	void TransferFrom(ContentInfo *other);
 
-	/**
-	 * Get the size of the data as send over the network.
-	 * @return the size.
-	 */
 	size_t Size() const;
-
-	/**
-	 * Is the state either selected or autoselected?
-	 * @return true iff that's the case
-	 */
 	bool IsSelected() const;
-
-	/**
-	 * Is the information from this content info valid?
-	 * @return true iff it's valid
-	 */
 	bool IsValid() const;
 };
 
@@ -187,12 +170,6 @@ protected:
 	 */
 	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_SERVER_CONTENT);
 
-	/**
-	 * Handle the given packet, i.e. pass it to the right
-	 * parser receive command.
-	 * @param p the packet to handle
-	 * @return true if we should immediately handle further packets, false otherwise
-	 */
 	bool HandlePacket(Packet *p);
 public:
 	/**
@@ -209,7 +186,6 @@ public:
 	/** On destructing of this class, the socket needs to be closed */
 	virtual ~NetworkContentSocketHandler() { this->Close(); }
 
-	/** Do the actual receiving of packets. */
 	void ReceivePackets();
 };
 

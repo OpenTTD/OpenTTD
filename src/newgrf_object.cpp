@@ -35,17 +35,31 @@ extern const ObjectSpec _original_objects[NEW_OBJECT_OFFSET];
 /** All the object specifications. */
 ObjectSpec _object_specs[NUM_OBJECTS];
 
+/**
+ * Get the specification associated with a specific ObjectType.
+ * @param index The object type to fetch.
+ * @return The specification.
+ */
 /* static */ const ObjectSpec *ObjectSpec::Get(ObjectType index)
 {
 	assert(index < NUM_OBJECTS);
 	return &_object_specs[index];
 }
 
+/**
+ * Get the specification associated with a tile.
+ * @param tile The tile to fetch the data for.
+ * @return The specification.
+ */
 /* static */ const ObjectSpec *ObjectSpec::GetByTile(TileIndex tile)
 {
 	return ObjectSpec::Get(GetObjectType(tile));
 }
 
+/**
+ * Check whether the object is available at this time.
+ * @return true if it is available.
+ */
 bool ObjectSpec::IsAvailable() const
 {
 	return this->enabled && _date > this->introduction_date &&
@@ -54,6 +68,10 @@ bool ObjectSpec::IsAvailable() const
 			(flags & (_game_mode != GM_EDITOR ? OBJECT_FLAG_ONLY_IN_SCENEDIT : OBJECT_FLAG_ONLY_IN_GAME)) == 0;
 }
 
+/**
+ * Gets the index of this spec.
+ * @return The index.
+ */
 uint ObjectSpec::Index() const
 {
 	return this - _object_specs;

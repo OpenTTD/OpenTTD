@@ -754,6 +754,12 @@ static void DeleteNewsItem(NewsItem *ni)
 	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
 }
 
+/**
+ * Delete a news item type about a vehicle.
+ * When the news item type is INVALID_STRING_ID all news about the vehicle gets deleted.
+ * @param vid  The vehicle to remove the news for.
+ * @param news The news type to remove.
+ */
 void DeleteVehicleNews(VehicleID vid, StringID news)
 {
 	NewsItem *ni = _oldest_news;

@@ -34,52 +34,13 @@ struct NewGrfDebugSpritePicker {
 
 extern NewGrfDebugSpritePicker _newgrf_debug_sprite_picker;
 
-/**
- * Can we inspect the data given a certain feature and index.
- * The index is normally an in-game location/identifier, such
- * as a TileIndex or an IndustryID depending on the feature
- * we want to inspect.
- * @param feature The feature we want to inspect.
- * @param index   The index/identifier of the feature to inspect.
- * @return true if there is something to show.
- */
 bool IsNewGRFInspectable(GrfSpecFeature feature, uint index);
-
-/**
- * Show the inspect window for a given feature and index.
- * The index is normally an in-game location/identifier, such
- * as a TileIndex or an IndustryID depending on the feature
- * we want to inspect.
- * @param feature The feature we want to inspect.
- * @param index   The index/identifier of the feature to inspect.
- */
 void ShowNewGRFInspectWindow(GrfSpecFeature feature, uint index);
-
-/**
- * Delete inspect window for a given feature and index.
- * The index is normally an in-game location/identifier, such
- * as a TileIndex or an IndustryID depending on the feature
- * we want to inspect.
- * @param feature The feature we want to delete the window for.
- * @param index   The index/identifier of the feature to delete.
- */
 void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index);
 
-/**
- * Get the GrfSpecFeature associated with the tile.
- * @return the GrfSpecFeature.
- */
 GrfSpecFeature GetGrfSpecFeature(TileIndex tile);
-
-/**
- * Get the GrfSpecFeature associated with the vehicle.
- * @return the GrfSpecFeature.
- */
 GrfSpecFeature GetGrfSpecFeature(VehicleType type);
 
-/**
- * Show the window for aligning sprites.
- */
 void ShowSpriteAlignerWindow();
 
 #endif /* NEWGRF_DEBUG_H */

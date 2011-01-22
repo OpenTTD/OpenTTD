@@ -105,6 +105,10 @@ struct PersistentStorageArray : BaseStorageArray {
 		return this->storage[pos];
 	}
 
+	/**
+	 * Clear the changes, or assign them permanently to the storage.
+	 * @param keep_changes Whether to assign or ditch the changes.
+	 */
 	void ClearChanges(bool keep_changes)
 	{
 		assert(this->prev_storage != NULL);
@@ -166,25 +170,7 @@ struct TemporaryStorageArray : BaseStorageArray {
 	}
 };
 
-/**
- * Add the changed storage array to the list of changed arrays.
- * This is done so we only have to revert/save the changed
- * arrays, which saves quite a few clears, etc. after callbacks.
- * @param storage the array that has changed
- */
 void AddChangedStorage(BaseStorageArray *storage);
-
-
-/**
- * Clear the changes made since the last ClearStorageChanges.
- * This is done for *all* storages that have been registered to with
- * AddChangedStorage since the previous ClearStorageChanges.
- *
- * This can be done in two ways:
- *  - saving the changes permanently
- *  - reverting to the previous version
- * @param keep_changes do we save or revert the changes since the last ClearChanges?
- */
 void ClearStorageChanges(bool keep_changes);
 
 #endif /* NEWGRF_STORAGE_H */

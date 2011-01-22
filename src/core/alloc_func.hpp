@@ -12,12 +12,13 @@
 #ifndef ALLOC_FUNC_HPP
 #define ALLOC_FUNC_HPP
 
-/**
+/*
  * Functions to exit badly with an error message.
  * It has to be linked so the error messages are not
  * duplicated in each object file making the final
  * binary needlessly large.
  */
+
 void NORETURN MallocError(size_t size);
 void NORETURN ReallocError(size_t size);
 

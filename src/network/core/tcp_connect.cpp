@@ -21,6 +21,10 @@
 /** List of connections that are currently being created */
 static SmallVector<TCPConnecter *,  1> _tcp_connecters;
 
+/**
+ * Create a new connecter for the given address
+ * @param address the (un)resolved address to connect to
+ */
 TCPConnecter::TCPConnecter(const NetworkAddress &address) :
 	connected(false),
 	aborted(false),
@@ -34,6 +38,7 @@ TCPConnecter::TCPConnecter(const NetworkAddress &address) :
 	}
 }
 
+/** The actual connection function */
 void TCPConnecter::Connect()
 {
 	this->sock = this->address.Connect();
@@ -44,12 +49,21 @@ void TCPConnecter::Connect()
 	}
 }
 
-
+/**
+ * Entry point for the new threads.
+ * @param param the TCPConnecter instance to call Connect on.
+ */
 /* static */ void TCPConnecter::ThreadEntry(void *param)
 {
 	static_cast<TCPConnecter*>(param)->Connect();
 }
 
+/**
+ * Check whether we need to call the callback, i.e. whether we
+ * have connected or aborted and call the appropriate callback
+ * for that. It's done this way to ease on the locking that
+ * would otherwise be needed everywhere.
+ */
 /* static */ void TCPConnecter::CheckCallbacks()
 {
 	for (TCPConnecter **iter = _tcp_connecters.Begin(); iter < _tcp_connecters.End(); /* nothing */) {
@@ -76,6 +90,7 @@ void TCPConnecter::Connect()
 	}
 }
 
+/** Kill all connection attempts. */
 /* static */ void TCPConnecter::KillAll()
 {
 	for (TCPConnecter **iter = _tcp_connecters.Begin(); iter != _tcp_connecters.End(); iter++) (*iter)->killed = true;

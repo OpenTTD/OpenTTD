@@ -37,23 +37,8 @@ struct Randomizer {
 	/** The state of the randomizer */
 	uint32 state[2];
 
-	/**
-	 * Generate the next pseudo random number
-	 * @return the random number
-	 */
 	uint32 Next();
-
-	/**
-	 * Generate the next pseudo random number scaled to max
-	 * @param max the maximum value of the returned random number
-	 * @return the random number
-	 */
 	uint32 Next(uint32 max);
-
-	/**
-	 * (Re)set the state of the random number generator.
-	 * @param seed the new state
-	 */
 	void SetSeed(uint32 seed);
 };
 extern Randomizer _random; ///< Random used in the game state calculations

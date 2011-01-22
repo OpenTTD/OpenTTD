@@ -21,6 +21,7 @@
 template <typename Tspec, typename Tid, Tid Tmax>
 NewGRFClass<Tspec, Tid, Tmax> NewGRFClass<Tspec, Tid, Tmax>::classes[Tmax];
 
+/** Reset the classes, i.e. clear everything. */
 DEFINE_NEWGRF_CLASS_METHOD(void)::Reset()
 {
 	for (Tid i = (Tid)0; i < Tmax; i++) {
@@ -35,6 +36,13 @@ DEFINE_NEWGRF_CLASS_METHOD(void)::Reset()
 	InsertDefaults();
 }
 
+/**
+ * Allocate a class with a given global class ID.
+ * @param cls_id The global class id, such as 'DFLT'.
+ * @return The (non global!) class ID for the class.
+ * @note Upon allocating the same global class ID for a
+ *       second time, this first allocation will be given.
+ */
 DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32 global_id)
 {
 	for (Tid i = (Tid)0; i < Tmax; i++) {
@@ -52,12 +60,23 @@ DEFINE_NEWGRF_CLASS_METHOD(Tid)::Allocate(uint32 global_id)
 	return (Tid)0;
 }
 
+/**
+ * Set the name of a particular class.
+ * @param cls_id The id for the class.
+ * @pre index < GetCount(cls_id)
+ * @param name   The new name for the class.
+ */
 DEFINE_NEWGRF_CLASS_METHOD(void)::SetName(Tid cls_id, StringID name)
 {
 	assert(cls_id < Tmax);
 	classes[cls_id].name = name;
 }
 
+/**
+ * Assign a spec to one of the classes.
+ * @param spec The spec to assign.
+ * @note The spec must have a valid class id set.
+ */
 DEFINE_NEWGRF_CLASS_METHOD(void)::Assign(Tspec *spec)
 {
 	assert(spec->cls_id < Tmax);
@@ -69,12 +88,22 @@ DEFINE_NEWGRF_CLASS_METHOD(void)::Assign(Tspec *spec)
 	cls->spec[i] = spec;
 }
 
+/**
+ * Get the name of a particular class.
+ * @param cls_id The class to get the name of.
+ * @pre index < GetCount(cls_id)
+ * @return The name of said class.
+ */
 DEFINE_NEWGRF_CLASS_METHOD(StringID)::GetName(Tid cls_id)
 {
 	assert(cls_id < Tmax);
 	return classes[cls_id].name;
 }
 
+/**
+ * Get the number of allocated classes.
+ * @return The number of classes.
+ */
 DEFINE_NEWGRF_CLASS_METHOD(uint)::GetCount()
 {
 	uint i;
@@ -82,12 +111,25 @@ DEFINE_NEWGRF_CLASS_METHOD(uint)::GetCount()
 	return i;
 }
 
+/**
+ * Get the number of allocated specs within a particular class.
+ * @param cls_id The class to get the size of.
+ * @pre cls_id < GetCount()
+ * @return The size of the class.
+ */
 DEFINE_NEWGRF_CLASS_METHOD(uint)::GetCount(Tid cls_id)
 {
 	assert(cls_id < Tmax);
 	return classes[cls_id].count;
 }
 
+/**
+ * Get a spec from a particular class at a given index.
+ * @param cls_id The class to get the spec from.
+ * @param index  The index where to find the spec.
+ * @pre index < GetCount(cls_id)
+ * @return The spec at given location.
+ */
 DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::Get(Tid cls_id, uint index)
 {
 	assert(cls_id < Tmax);
@@ -97,6 +139,13 @@ DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::Get(Tid cls_id, uint index)
 	return NULL;
 }
 
+/**
+ * Retrieve a spec by GRF location.
+ * @param grfid    GRF ID of spec.
+ * @param local_id Index within GRF file of spec.
+ * @param index    Pointer to return the index of the spec in its class. If NULL then not used.
+ * @return The spec.
+ */
 DEFINE_NEWGRF_CLASS_METHOD(const Tspec *)::GetByGrf(uint32 grfid, byte local_id, int *index)
 {
 	uint j;

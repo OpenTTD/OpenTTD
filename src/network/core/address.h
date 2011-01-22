@@ -41,15 +41,6 @@ private:
 	 */
 	typedef SOCKET (*LoopProc)(addrinfo *runp);
 
-	/**
-	 * Resolve this address into a socket
-	 * @param family the type of 'protocol' (IPv4, IPv6)
-	 * @param socktype the type of socket (TCP, UDP, etc)
-	 * @param flags the flags to send to getaddrinfo
-	 * @param sockets the list of sockets to add the sockets to
-	 * @param func the inner working while looping over the address info
-	 * @return the resolved socket or INVALID_SOCKET.
-	 */
 	SOCKET Resolve(int family, int socktype, int flags, SocketList *sockets, LoopProc func);
 public:
 	/**
@@ -105,33 +96,9 @@ public:
 		memcpy(this, &address, sizeof(*this));
 	}
 
-	/**
-	 * Get the hostname; in case it wasn't given the
-	 * IPv4 dotted representation is given.
-	 * @return the hostname
-	 */
 	const char *GetHostname();
-
-	/**
-	 * Get the address as a string, e.g. 127.0.0.1:12345.
-	 * @param buffer the buffer to write to
-	 * @param last the last element in the buffer
-	 * @param with_family whether to add the family (e.g. IPvX).
-	 */
 	void GetAddressAsString(char *buffer, const char *last, bool with_family = true);
-
-	/**
-	 * Get the address as a string, e.g. 127.0.0.1:12345.
-	 * @param with_family whether to add the family (e.g. IPvX).
-	 * @return the address
-	 * @note NOT thread safe
-	 */
 	const char *GetAddressAsString(bool with_family = true);
-
-	/**
-	 * Get the address in its internal representation.
-	 * @return the address
-	 */
 	const sockaddr_storage *GetAddress();
 
 	/**
@@ -145,16 +112,7 @@ public:
 		return this->address_length;
 	}
 
-	/**
-	 * Get the port
-	 * @return the port
-	 */
 	uint16 GetPort() const;
-
-	/**
-	 * Set the port
-	 * @param port set the port number
-	 */
 	void SetPort(uint16 port);
 
 	/**
@@ -166,19 +124,7 @@ public:
 		return this->address_length != 0;
 	}
 
-	/**
-	 * Checks of this address is of the given family.
-	 * @param family the family to check against
-	 * @return true if it is of the given family
-	 */
 	bool IsFamily(int family);
-
-	/**
-	 * Checks whether this IP address is contained by the given netmask.
-	 * @param netmask the netmask in CIDR notation to test against.
-	 * @note netmask without /n assumes all bits need to match.
-	 * @return true if this IP is within the netmask.
-	 */
 	bool IsInNetmask(char *netmask);
 
 	/**
@@ -233,33 +179,10 @@ public:
 		return this->CompareTo(address) < 0;
 	}
 
-	/**
-	 * Connect to the given address.
-	 * @return the connected socket or INVALID_SOCKET.
-	 */
 	SOCKET Connect();
-
-	/**
-	 * Make the given socket listen.
-	 * @param socktype the type of socket (TCP, UDP, etc)
-	 * @param sockets the list of sockets to add the sockets to
-	 */
 	void Listen(int socktype, SocketList *sockets);
 
-	/**
-	 * Convert the socket type into a string
-	 * @param socktype the socket type to convert
-	 * @return the string representation
-	 * @note only works for SOCK_STREAM and SOCK_DGRAM
-	 */
 	static const char *SocketTypeAsString(int socktype);
-
-	/**
-	 * Convert the address family into a string
-	 * @param family the family to convert
-	 * @return the string representation
-	 * @note only works for AF_INET, AF_INET6 and AF_UNSPEC
-	 */
 	static const char *AddressFamilyAsString(int family);
 };
 

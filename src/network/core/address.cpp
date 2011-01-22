@@ -16,6 +16,11 @@
 #include "address.h"
 #include "../../debug.h"
 
+/**
+ * Get the hostname; in case it wasn't given the
+ * IPv4 dotted representation is given.
+ * @return the hostname
+ */
 const char *NetworkAddress::GetHostname()
 {
 	if (StrEmpty(this->hostname) && this->address.ss_family != AF_UNSPEC) {
@@ -25,6 +30,10 @@ const char *NetworkAddress::GetHostname()
 	return this->hostname;
 }
 
+/**
+ * Get the port.
+ * @return the port.
+ */
 uint16 NetworkAddress::GetPort() const
 {
 	switch (this->address.ss_family) {
@@ -40,6 +49,10 @@ uint16 NetworkAddress::GetPort() const
 	}
 }
 
+/**
+ * Set the port.
+ * @param port set the port number.
+ */
 void NetworkAddress::SetPort(uint16 port)
 {
 	switch (this->address.ss_family) {
@@ -57,6 +70,12 @@ void NetworkAddress::SetPort(uint16 port)
 	}
 }
 
+/**
+ * Get the address as a string, e.g. 127.0.0.1:12345.
+ * @param buffer the buffer to write to
+ * @param last the last element in the buffer
+ * @param with_family whether to add the family (e.g. IPvX).
+ */
 void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool with_family)
 {
 	if (this->GetAddress()->ss_family == AF_INET6) buffer = strecpy(buffer, "[", last);
@@ -75,6 +94,12 @@ void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool wit
 	}
 }
 
+/**
+ * Get the address as a string, e.g. 127.0.0.1:12345.
+ * @param with_family whether to add the family (e.g. IPvX).
+ * @return the address
+ * @note NOT thread safe
+ */
 const char *NetworkAddress::GetAddressAsString(bool with_family)
 {
 	/* 6 = for the : and 5 for the decimal port number */
@@ -94,6 +119,10 @@ static SOCKET ResolveLoopProc(addrinfo *runp)
 	return !INVALID_SOCKET;
 }
 
+/**
+ * Get the address in its internal representation.
+ * @return the address
+ */
 const sockaddr_storage *NetworkAddress::GetAddress()
 {
 	if (!this->IsResolved()) {
@@ -107,6 +136,11 @@ const sockaddr_storage *NetworkAddress::GetAddress()
 	return &this->address;
 }
 
+/**
+ * Checks of this address is of the given family.
+ * @param family the family to check against
+ * @return true if it is of the given family
+ */
 bool NetworkAddress::IsFamily(int family)
 {
 	if (!this->IsResolved()) {
@@ -115,6 +149,12 @@ bool NetworkAddress::IsFamily(int family)
 	return this->address.ss_family == family;
 }
 
+/**
+ * Checks whether this IP address is contained by the given netmask.
+ * @param netmask the netmask in CIDR notation to test against.
+ * @note netmask without /n assumes all bits need to match.
+ * @return true if this IP is within the netmask.
+ */
 bool NetworkAddress::IsInNetmask(char *netmask)
 {
 	/* Resolve it if we didn't do it already */
@@ -169,6 +209,15 @@ bool NetworkAddress::IsInNetmask(char *netmask)
 	return true;
 }
 
+/**
+ * Resolve this address into a socket
+ * @param family the type of 'protocol' (IPv4, IPv6)
+ * @param socktype the type of socket (TCP, UDP, etc)
+ * @param flags the flags to send to getaddrinfo
+ * @param sockets the list of sockets to add the sockets to
+ * @param func the inner working while looping over the address info
+ * @return the resolved socket or INVALID_SOCKET.
+ */
 SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *sockets, LoopProc func)
 {
 	struct addrinfo *ai;
@@ -266,6 +315,10 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
 	return sock;
 }
 
+/**
+ * Connect to the given address.
+ * @return the connected socket or INVALID_SOCKET.
+ */
 SOCKET NetworkAddress::Connect()
 {
 	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString());
@@ -324,6 +377,11 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 	return sock;
 }
 
+/**
+ * Make the given socket listen.
+ * @param socktype the type of socket (TCP, UDP, etc)
+ * @param sockets the list of sockets to add the sockets to
+ */
 void NetworkAddress::Listen(int socktype, SocketList *sockets)
 {
 	assert(sockets != NULL);
@@ -340,6 +398,12 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 	}
 }
 
+/**
+ * Convert the socket type into a string
+ * @param socktype the socket type to convert
+ * @return the string representation
+ * @note only works for SOCK_STREAM and SOCK_DGRAM
+ */
 /* static */ const char *NetworkAddress::SocketTypeAsString(int socktype)
 {
 	switch (socktype) {
@@ -349,6 +413,12 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 	}
 }
 
+/**
+ * Convert the address family into a string
+ * @param family the family to convert
+ * @return the string representation
+ * @note only works for AF_INET, AF_INET6 and AF_UNSPEC
+ */
 /* static */ const char *NetworkAddress::AddressFamilyAsString(int family)
 {
 	switch (family) {

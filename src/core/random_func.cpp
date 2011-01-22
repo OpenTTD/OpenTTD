@@ -15,6 +15,10 @@
 
 Randomizer _random, _interactive_random;
 
+/**
+ * Generate the next pseudo random number
+ * @return the random number
+ */
 uint32 Randomizer::Next()
 {
 	const uint32 s = this->state[0];
@@ -24,17 +28,30 @@ uint32 Randomizer::Next()
 	return this->state[1] = ROR(s, 3) - 1;
 }
 
+/**
+ * Generate the next pseudo random number scaled to max
+ * @param max the maximum value of the returned random number
+ * @return the random number
+ */
 uint32 Randomizer::Next(uint32 max)
 {
 	return ((uint64)this->Next() * (uint64)max) >> 32;
 }
 
+/**
+ * (Re)set the state of the random number generator.
+ * @param seed the new state
+ */
 void Randomizer::SetSeed(uint32 seed)
 {
 	this->state[0] = seed;
 	this->state[1] = seed;
 }
 
+/**
+ * (Re)set the state of the random number generators.
+ * @param seed the new state
+ */
 void SetRandomSeed(uint32 seed)
 {
 	_random.SetSeed(seed);

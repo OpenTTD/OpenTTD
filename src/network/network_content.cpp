@@ -982,6 +982,7 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 	}
 }
 
+/** Clear all downloaded content information. */
 void ClientNetworkContentSocketHandler::Clear()
 {
 	for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) delete *iter;

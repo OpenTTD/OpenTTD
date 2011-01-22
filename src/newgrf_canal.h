@@ -50,12 +50,6 @@ struct WaterFeature {
 extern WaterFeature _water_feature[CF_END];
 
 
-/**
- * Lookup the base sprite to use for a canal.
- * @param feature Which canal feature we want.
- * @param tile Tile index of canal, if appropriate.
- * @return Base sprite returned by GRF, or 0 if none.
- */
 SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile);
 
 uint GetCanalSpriteOffset(CanalFeature feature, TileIndex tile, uint cur_offset);

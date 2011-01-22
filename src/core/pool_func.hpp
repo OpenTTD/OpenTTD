@@ -20,6 +20,10 @@
 	template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, bool Tcache, bool Tzero> \
 	type Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tcache, Tzero>
 
+/**
+ * Create a clean pool.
+ * @param name The name for the pool.
+ */
 DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
 		name(name),
 		size(0),
@@ -31,6 +35,12 @@ DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
 		alloc_cache(NULL)
 { }
 
+/**
+ * Resizes the pool so 'index' can be addressed
+ * @param index index we will allocate later
+ * @pre index >= this->size
+ * @pre index < Tmax_size
+ */
 DEFINE_POOL_METHOD(inline void)::ResizeFor(size_t index)
 {
 	assert(index >= this->size);
@@ -44,6 +54,10 @@ DEFINE_POOL_METHOD(inline void)::ResizeFor(size_t index)
 	this->size = new_size;
 }
 
+/**
+ * Searches for first free index
+ * @return first free index, NO_FREE_ITEM on failure
+ */
 DEFINE_POOL_METHOD(inline size_t)::FindFirstFree()
 {
 	size_t index = this->first_free;
@@ -69,6 +83,13 @@ DEFINE_POOL_METHOD(inline size_t)::FindFirstFree()
 	return NO_FREE_ITEM;
 }
 
+/**
+ * Makes given index valid
+ * @param size size of item
+ * @param index index of item
+ * @pre index < this->size
+ * @pre this->Get(index) == NULL
+ */
 DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 {
 	assert(this->data[index] == NULL);
@@ -92,6 +113,12 @@ DEFINE_POOL_METHOD(inline void *)::AllocateItem(size_t size, size_t index)
 	return item;
 }
 
+/**
+ * Allocates new item
+ * @param size size of item
+ * @return pointer to allocated item
+ * @note error() on failure! (no free item)
+ */
 DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
 {
 	size_t index = this->FindFirstFree();
@@ -104,6 +131,13 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
 	return this->AllocateItem(size, index);
 }
 
+/**
+ * Allocates new item with given index
+ * @param size size of item
+ * @param index index of item
+ * @return pointer to allocated item
+ * @note usererror() on failure! (index out of range or already used)
+ */
 DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
 {
 	if (index >= Tmax_size) {
@@ -119,6 +153,12 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size, size_t index)
 	return this->AllocateItem(size, index);
 }
 
+/**
+ * Deallocates memory used by this index and marks item as free
+ * @param index item to deallocate
+ * @pre unit is allocated (non-NULL)
+ * @note 'delete NULL' doesn't cause call of this function, so it is safe
+ */
 DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 {
 	assert(index < this->size);
@@ -136,6 +176,7 @@ DEFINE_POOL_METHOD(void)::FreeItem(size_t index)
 	if (!this->cleaning) Titem::PostDestructor(index);
 }
 
+/** Destroys all items in the pool and resets all member variables. */
 DEFINE_POOL_METHOD(void)::CleanPool()
 {
 	this->cleaning = true;

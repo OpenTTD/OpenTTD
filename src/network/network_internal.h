@@ -161,7 +161,6 @@ void NetworkExecuteLocalCommandQueue();
 void NetworkFreeLocalCommandQueue();
 void NetworkSyncCommandQueue(NetworkClientSocket *cs);
 
-/* from network.c */
 void NetworkError(StringID error_string);
 void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send, const char *name, const char *str = "", int64 data = 0);
 uint NetworkCalculateLag(const NetworkClientSocket *cs);

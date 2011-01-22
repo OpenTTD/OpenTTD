@@ -97,6 +97,12 @@ static void NewCanalResolver(ResolverObject *res, TileIndex tile, const GRFFile 
 }
 
 
+/**
+ * Lookup the base sprite to use for a canal.
+ * @param feature Which canal feature we want.
+ * @param tile Tile index of canal, if appropriate.
+ * @return Base sprite returned by GRF, or 0 if none.
+ */
 SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 {
 	ResolverObject object;
