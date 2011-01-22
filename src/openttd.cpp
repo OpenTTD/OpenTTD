@@ -1010,15 +1010,6 @@ void SwitchToMode(SwitchMode new_mode)
 			MakeNewGame(false, new_mode == SM_NEWGAME);
 			break;
 
-		case SM_START_SCENARIO: // New Game --> Choose one of the preset scenarios
-#ifdef ENABLE_NETWORK
-			if (_network_server) {
-				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded scenario)", _file_to_saveload.title);
-			}
-#endif /* ENABLE_NETWORK */
-			StartScenario();
-			break;
-
 		case SM_LOAD: { // Load game, Play Scenario
 			ResetGRFConfig(true);
 			ResetWindowSystem();
