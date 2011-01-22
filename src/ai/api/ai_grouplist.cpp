@@ -9,6 +9,7 @@
 
 /** @file ai_grouplist.cpp Implementation of AIGroupList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_grouplist.hpp"
 #include "../../company_func.h"
 #include "../../group.h"

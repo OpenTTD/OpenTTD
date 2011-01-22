@@ -12,7 +12,6 @@
 #ifndef AI_ORDER_HPP
 #define AI_ORDER_HPP
 
-#include "ai_object.hpp"
 #include "ai_error.hpp"
 
 /**

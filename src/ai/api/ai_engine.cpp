@@ -9,6 +9,7 @@
 
 /** @file ai_engine.cpp Implementation of AIEngine. */
 
+#include "../../stdafx.h"
 #include "ai_engine.hpp"
 #include "ai_cargo.hpp"
 #include "../../company_func.h"

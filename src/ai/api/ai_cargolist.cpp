@@ -9,6 +9,7 @@
 
 /** @file ai_cargolist.cpp Implementation of AICargoList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_cargolist.hpp"
 #include "ai_industry.hpp"
 #include "../../cargotype.h"

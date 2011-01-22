@@ -9,6 +9,7 @@
 
 /** @file ai_bridge.cpp Implementation of AIBridge. */
 
+#include "../../stdafx.h"
 #include "ai_bridge.hpp"
 #include "ai_rail.hpp"
 #include "../ai_instance.hpp"

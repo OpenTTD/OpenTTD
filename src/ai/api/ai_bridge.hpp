@@ -12,9 +12,7 @@
 #ifndef AI_BRIDGE_HPP
 #define AI_BRIDGE_HPP
 
-#include "ai_object.hpp"
 #include "ai_vehicle.hpp"
-#include "ai_error.hpp"
 
 /**
  * Class that handles all bridge related functions.

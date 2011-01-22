@@ -9,6 +9,7 @@
 
 /** @file ai_railtypelist.cpp Implementation of AIRailTypeList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_railtypelist.hpp"
 #include "../../rail.h"
 #include "../../company_func.h"

@@ -9,6 +9,7 @@
 
 /** @file ai_industrytypelist.cpp Implementation of AIIndustryTypeList. */
 
+#include "../../stdafx.h"
 #include "ai_industrytypelist.hpp"
 #include "../../industry.h"
 

@@ -9,6 +9,7 @@
 
 /** @file ai_subsidylist.cpp Implementation of AISubsidyList. */
 
+#include "../../stdafx.h"
 #include "ai_subsidylist.hpp"
 #include "../../subsidy_base.h"
 

@@ -12,8 +12,8 @@
 #ifndef AI_TILELIST_HPP
 #define AI_TILELIST_HPP
 
-#include "ai_list.hpp"
 #include "ai_station.hpp"
+#include "ai_list.hpp"
 
 /**
  * Creates an empty list, in which you can add tiles.

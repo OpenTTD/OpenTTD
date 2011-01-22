@@ -9,6 +9,7 @@
 
 /** @file ai_bridgelist.cpp Implementation of AIBridgeList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_bridgelist.hpp"
 #include "ai_bridge.hpp"
 #include "../../bridge.h"

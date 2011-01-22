@@ -9,6 +9,7 @@
 
 /** @file ai_waypoint.cpp Implementation of AIWaypoint. */
 
+#include "../../stdafx.h"
 #include "ai_waypoint.hpp"
 #include "ai_rail.hpp"
 #include "ai_marine.hpp"

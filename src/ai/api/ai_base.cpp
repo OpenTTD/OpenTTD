@@ -9,6 +9,7 @@
 
 /** @file ai_base.cpp Implementation of AIBase. */
 
+#include "../../stdafx.h"
 #include "ai_base.hpp"
 #include "../../network/network.h"
 #include "../../core/random_func.hpp"

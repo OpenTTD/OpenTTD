@@ -12,8 +12,6 @@
 #ifndef AI_WAYPOINT_HPP
 #define AI_WAYPOINT_HPP
 
-#include "ai_object.hpp"
-#include "ai_error.hpp"
 #include "ai_basestation.hpp"
 
 /**

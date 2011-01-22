@@ -9,6 +9,7 @@
 
 /** @file ai_testmode.cpp Implementation of AITestMode. */
 
+#include "../../stdafx.h"
 #include "ai_testmode.hpp"
 #include "../../company_base.h"
 #include "../../company_func.h"

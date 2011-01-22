@@ -9,6 +9,7 @@
 
 /** @file ai_enginelist.cpp Implementation of AIEngineList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_enginelist.hpp"
 #include "../../company_func.h"
 #include "../../engine_base.h"

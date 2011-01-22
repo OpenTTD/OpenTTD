@@ -9,6 +9,7 @@
 
 /** @file ai_depotlist.cpp Implementation of AIDepotList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_depotlist.hpp"
 #include "../../company_func.h"
 #include "../../depot_base.h"

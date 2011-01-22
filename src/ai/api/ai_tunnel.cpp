@@ -9,6 +9,7 @@
 
 /** @file ai_tunnel.cpp Implementation of AITunnel. */
 
+#include "../../stdafx.h"
 #include "ai_tunnel.hpp"
 #include "ai_rail.hpp"
 #include "../ai_instance.hpp"

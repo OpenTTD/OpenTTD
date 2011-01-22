@@ -9,6 +9,7 @@
 
 /** @file ai_marine.cpp Implementation of AIMarine. */
 
+#include "../../stdafx.h"
 #include "ai_marine.hpp"
 #include "ai_station.hpp"
 #include "../../station_base.h"

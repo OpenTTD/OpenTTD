@@ -9,6 +9,7 @@
 
 /** @file ai_log.cpp Implementation of AILog. */
 
+#include "../../stdafx.h"
 #include "ai_log.hpp"
 #include "../../core/alloc_func.hpp"
 #include "../../company_func.h"

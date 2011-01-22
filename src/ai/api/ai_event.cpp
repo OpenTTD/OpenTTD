@@ -9,6 +9,7 @@
 
 /** @file ai_event.cpp Implementation of AIEvent. */
 
+#include "../../stdafx.h"
 #include "ai_event_types.hpp"
 
 #include <queue>

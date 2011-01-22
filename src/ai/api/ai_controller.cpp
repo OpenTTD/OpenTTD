@@ -10,6 +10,7 @@
 /** @file ai_controller.cpp Implementation of AIControler. */
 
 #include "../../stdafx.h"
+#include "../../stdafx.h"
 #include "../../string_func.h"
 #include "../../company_base.h"
 #include "../../rev.h"

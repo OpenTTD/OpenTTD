@@ -9,6 +9,7 @@
 
 /** @file ai_basestation.cpp Implementation of AIBaseStation. */
 
+#include "../../stdafx.h"
 #include "ai_basestation.hpp"
 #include "../../station_base.h"
 #include "../../string_func.h"

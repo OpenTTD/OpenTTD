@@ -9,6 +9,7 @@
 
 /** @file ai_accounting.cpp Implementation of AIAccounting. */
 
+#include "../../stdafx.h"
 #include "ai_accounting.hpp"
 
 Money AIAccounting::GetCosts()

@@ -9,6 +9,7 @@
 
 /** @file ai_stationlist.cpp Implementation of AIStationList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_stationlist.hpp"
 #include "ai_vehicle.hpp"
 #include "../../company_func.h"

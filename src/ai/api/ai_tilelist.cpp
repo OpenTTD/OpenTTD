@@ -9,6 +9,7 @@
 
 /** @file ai_tilelist.cpp Implementation of AITileList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_tilelist.hpp"
 #include "ai_industry.hpp"
 #include "../../industry.h"

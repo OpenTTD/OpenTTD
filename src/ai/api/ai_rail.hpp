@@ -12,8 +12,6 @@
 #ifndef AI_RAIL_HPP
 #define AI_RAIL_HPP
 
-#include "ai_object.hpp"
-#include "ai_error.hpp"
 #include "ai_tile.hpp"
 
 /**

@@ -9,6 +9,7 @@
 
 /** @file ai_cargo.cpp Implementation of AICargo. */
 
+#include "../../stdafx.h"
 #include "ai_cargo.hpp"
 #include "../../cargotype.h"
 #include "../../economy_func.h"

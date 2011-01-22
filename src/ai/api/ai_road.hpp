@@ -12,8 +12,6 @@
 #ifndef AI_ROAD_HPP
 #define AI_ROAD_HPP
 
-#include "ai_object.hpp"
-#include "ai_error.hpp"
 #include "ai_tile.hpp"
 
 /**

@@ -12,7 +12,6 @@
 #ifndef AI_BASESTATION_HPP
 #define AI_BASESTATION_HPP
 
-#include "ai_object.hpp"
 #include "ai_error.hpp"
 
 /**

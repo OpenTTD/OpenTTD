@@ -12,8 +12,6 @@
 #ifndef AI_INDUSTRYTYPE_HPP
 #define AI_INDUSTRYTYPE_HPP
 
-#include "ai_object.hpp"
-#include "ai_error.hpp"
 #include "ai_list.hpp"
 
 /**

@@ -9,6 +9,7 @@
 
 /** @file ai_group.cpp Implementation of AIGroup. */
 
+#include "../../stdafx.h"
 #include "ai_group.hpp"
 #include "ai_engine.hpp"
 #include "../ai_instance.hpp"

@@ -9,6 +9,7 @@
 
 /** @file ai_town.cpp Implementation of AITown. */
 
+#include "../../stdafx.h"
 #include "ai_town.hpp"
 #include "ai_map.hpp"
 #include "ai_cargo.hpp"

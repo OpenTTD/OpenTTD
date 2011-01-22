@@ -9,8 +9,10 @@
 
 /** @file ai_industrytype.cpp Implementation of AIIndustryType. */
 
+#include "../../stdafx.h"
 #include "ai_industrytype.hpp"
 #include "ai_map.hpp"
+#include "ai_error.hpp"
 #include "../../strings_func.h"
 #include "../../industry.h"
 #include "../../newgrf_industries.h"

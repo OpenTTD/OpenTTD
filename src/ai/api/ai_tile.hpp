@@ -12,7 +12,6 @@
 #ifndef AI_TILE_HPP
 #define AI_TILE_HPP
 
-#include "ai_list.hpp"
 #include "ai_error.hpp"
 #include "ai_company.hpp"
 

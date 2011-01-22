@@ -9,6 +9,7 @@
 
 /** @file ai_industry.cpp Implementation of AIIndustry. */
 
+#include "../../stdafx.h"
 #include "ai_industry.hpp"
 #include "ai_cargo.hpp"
 #include "ai_map.hpp"

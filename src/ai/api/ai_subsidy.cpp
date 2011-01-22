@@ -9,6 +9,7 @@
 
 /** @file ai_subsidy.cpp Implementation of AISubsidy. */
 
+#include "../../stdafx.h"
 #include "ai_subsidy.hpp"
 #include "ai_date.hpp"
 #include "../../subsidy_base.h"

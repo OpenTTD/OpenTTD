@@ -9,6 +9,7 @@
 
 /** @file ai_company.cpp Implementation of AICompany. */
 
+#include "../../stdafx.h"
 #include "ai_company.hpp"
 #include "ai_error.hpp"
 #include "../../command_func.h"

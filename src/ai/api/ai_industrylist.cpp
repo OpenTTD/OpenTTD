@@ -9,6 +9,7 @@
 
 /** @file ai_industrylist.cpp Implementation of AIIndustryList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_industrylist.hpp"
 #include "../../industry.h"
 

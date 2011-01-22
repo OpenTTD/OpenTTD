@@ -9,6 +9,7 @@
 
 /** @file ai_error.cpp Implementation of AIError. */
 
+#include "../../stdafx.h"
 #include "ai_error.hpp"
 #include "../../core/bitmath_func.hpp"
 

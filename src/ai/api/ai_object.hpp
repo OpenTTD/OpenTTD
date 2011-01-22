@@ -12,7 +12,6 @@
 #ifndef AI_OBJECT_HPP
 #define AI_OBJECT_HPP
 
-#include "../../stdafx.h"
 #include "../../misc/countedptr.hpp"
 #include "../../road_type.h"
 #include "../../rail_type.h"

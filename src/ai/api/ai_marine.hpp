@@ -12,7 +12,6 @@
 #ifndef AI_MARINE_HPP
 #define AI_MARINE_HPP
 
-#include "ai_object.hpp"
 #include "ai_error.hpp"
 
 /**

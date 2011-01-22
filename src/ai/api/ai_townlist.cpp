@@ -9,6 +9,7 @@
 
 /** @file ai_townlist.cpp Implementation of AITownList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_townlist.hpp"
 #include "../../town.h"
 

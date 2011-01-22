@@ -9,6 +9,7 @@
 
 /** @file ai_vehicle.cpp Implementation of AIVehicle. */
 
+#include "../../stdafx.h"
 #include "ai_engine.hpp"
 #include "ai_cargo.hpp"
 #include "ai_gamesettings.hpp"

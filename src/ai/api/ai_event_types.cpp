@@ -9,6 +9,7 @@
 
 /** @file ai_event_types.cpp Implementation of all EventTypes. */
 
+#include "../../stdafx.h"
 #include "ai_event_types.hpp"
 #include "ai_vehicle.hpp"
 #include "../../command_type.h"

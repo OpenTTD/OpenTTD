@@ -12,7 +12,6 @@
 #ifndef AI_GAMESETTINGS_HPP
 #define AI_GAMESETTINGS_HPP
 
-#include "ai_object.hpp"
 #include "ai_vehicle.hpp"
 
 /**

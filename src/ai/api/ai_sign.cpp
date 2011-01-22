@@ -9,6 +9,7 @@
 
 /** @file ai_sign.cpp Implementation of AISign. */
 
+#include "../../stdafx.h"
 #include "ai_sign.hpp"
 #include "table/strings.h"
 #include "../ai_instance.hpp"

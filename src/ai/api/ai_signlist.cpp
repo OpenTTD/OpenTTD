@@ -9,6 +9,7 @@
 
 /** @file ai_signlist.cpp Implementation of AISignList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_signlist.hpp"
 #include "ai_sign.hpp"
 #include "../../signs_base.h"

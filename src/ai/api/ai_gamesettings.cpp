@@ -9,6 +9,7 @@
 
 /** @file ai_gamesettings.cpp Implementation of AIGameSettings. */
 
+#include "../../stdafx.h"
 #include "ai_gamesettings.hpp"
 #include "../../settings_internal.h"
 

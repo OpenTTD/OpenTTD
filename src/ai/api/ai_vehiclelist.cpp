@@ -9,6 +9,7 @@
 
 /** @file ai_vehiclelist.cpp Implementation of AIVehicleList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_vehiclelist.hpp"
 #include "ai_group.hpp"
 #include "ai_map.hpp"

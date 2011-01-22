@@ -9,6 +9,7 @@
 
 /** @file ai_airport.cpp Implementation of AIAirport. */
 
+#include "../../stdafx.h"
 #include "ai_airport.hpp"
 #include "ai_station.hpp"
 #include "../../station_base.h"

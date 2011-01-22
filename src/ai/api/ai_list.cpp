@@ -9,6 +9,7 @@
 
 /** @file ai_list.cpp Implementation of AIList. */
 
+#include "../../stdafx.h"
 #include "ai_list.hpp"
 #include "../../debug.h"
 #include "../../script/squirrel.hpp"

@@ -9,6 +9,7 @@
 
 /** @file ai_rail.cpp Implementation of AIRail. */
 
+#include "../../stdafx.h"
 #include "ai_rail.hpp"
 #include "ai_map.hpp"
 #include "ai_station.hpp"

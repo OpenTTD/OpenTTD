@@ -9,6 +9,7 @@
 
 /** @file ai_waypointlist.cpp Implementation of AIWaypointList and friends. */
 
+#include "../../stdafx.h"
 #include "ai_waypointlist.hpp"
 #include "ai_vehicle.hpp"
 #include "../../company_func.h"

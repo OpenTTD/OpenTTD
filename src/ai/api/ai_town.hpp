@@ -12,7 +12,6 @@
 #ifndef AI_TOWN_HPP
 #define AI_TOWN_HPP
 
-#include "ai_object.hpp"
 #include "ai_company.hpp"
 
 /**

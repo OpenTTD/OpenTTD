@@ -9,6 +9,7 @@
 
 /** @file ai_execmode.cpp Implementation of AIExecMode. */
 
+#include "../../stdafx.h"
 #include "ai_execmode.hpp"
 #include "../../company_base.h"
 #include "../../company_func.h"

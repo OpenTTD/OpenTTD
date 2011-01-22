@@ -9,6 +9,7 @@
 
 /** @file ai_tile.cpp Implementation of AITile. */
 
+#include "../../stdafx.h"
 #include "ai_tile.hpp"
 #include "ai_map.hpp"
 #include "ai_town.hpp"

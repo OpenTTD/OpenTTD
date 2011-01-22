@@ -9,6 +9,7 @@
 
 /** @file ai_date.cpp Implementation of AIDate. */
 
+#include "../../stdafx.h"
 #include "ai_date.hpp"
 #include "../../date_func.h"
 
