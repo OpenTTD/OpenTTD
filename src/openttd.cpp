@@ -857,10 +857,6 @@ static void MakeNewEditorWorld()
 	GenerateWorld(GWM_EMPTY, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 }
 
-void StartupCompanies();
-void StartupDisasters();
-extern void StartupEconomy();
-
 /**
  * Load the specified savegame but on error do different things.
  * If loading fails due to corrupt savegame, bad version, etc. go back to
@@ -911,53 +907,6 @@ bool SafeLoad(const char *filename, int mode, GameMode newgm, Subdirectory subdi
 			_game_mode = ogm;
 			return false;
 	}
-}
-
-/**
- * Start Scenario starts a new game based on a scenario.
- * Eg 'New Game' --> select a preset scenario
- * This starts a scenario based on your current difficulty settings
- */
-static void StartScenario()
-{
-	_game_mode = GM_NORMAL;
-
-	/* invalid type */
-	if (_file_to_saveload.mode == SL_INVALID) {
-		DEBUG(sl, 0, "Savegame is obsolete or invalid format: '%s'", _file_to_saveload.name);
-		SetDParamStr(0, GetSaveLoadErrorString());
-		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
-		_game_mode = GM_MENU;
-		return;
-	}
-
-	/* Reinitialize windows */
-	ResetWindowSystem();
-
-	SetupColoursAndInitialWindow();
-
-	ResetGRFConfig(true);
-
-	/* Load game */
-	if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, SCENARIO_DIR)) {
-		SetDParamStr(0, GetSaveLoadErrorString());
-		ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
-		return;
-	}
-
-	_settings_game.difficulty = _settings_newgame.difficulty;
-
-	/* Inititalize data */
-	StartupEconomy();
-	StartupCompanies();
-	StartupEngines();
-	StartupDisasters();
-
-	SetLocalCompany(COMPANY_FIRST);
-	Company *c = Company::Get(COMPANY_FIRST);
-	c->settings = _settings_client.company;
-
-	MarkWholeScreenDirty();
 }
 
 void SwitchToMode(SwitchMode new_mode)
