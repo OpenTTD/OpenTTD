@@ -203,7 +203,6 @@ void BuildFileList()
 	FiosFreeSavegameList();
 
 	switch (_saveload_mode) {
-		case SLD_NEW_GAME:
 		case SLD_LOAD_SCENARIO:
 		case SLD_SAVE_SCENARIO:
 			FiosGetScenarioList(_saveload_mode); break;
@@ -716,7 +715,6 @@ static const FileType _file_modetotype[] = {
 	FT_SAVEGAME,  ///< used for SLD_SAVE_GAME
 	FT_SCENARIO,  ///< used for SLD_SAVE_SCENARIO
 	FT_HEIGHTMAP, ///< used for SLD_LOAD_HEIGHTMAP
-	FT_SAVEGAME,  ///< SLD_NEW_GAME
 };
 
 void ShowSaveLoadDialog(SaveLoadDialogMode mode)

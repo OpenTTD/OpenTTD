@@ -98,7 +98,6 @@ enum SaveLoadDialogMode {
 	SLD_SAVE_GAME,
 	SLD_SAVE_SCENARIO,
 	SLD_LOAD_HEIGHTMAP,
-	SLD_NEW_GAME,
 };
 
 /* The different types of files been handled by the system */

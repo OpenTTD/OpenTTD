@@ -279,7 +279,7 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 	_fios_items.Clear();
 
 	/* A parent directory link exists if we are not in the root directory */
-	if (!FiosIsRoot(_fios_path) && mode != SLD_NEW_GAME) {
+	if (!FiosIsRoot(_fios_path)) {
 		fios = _fios_items.Append();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
@@ -288,7 +288,7 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 	}
 
 	/* Show subdirectories */
-	if (mode != SLD_NEW_GAME && (dir = ttd_opendir(_fios_path)) != NULL) {
+	if ((dir = ttd_opendir(_fios_path)) != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
 			strecpy(d_name, FS2OTTD(dirent->d_name), lastof(d_name));
 
@@ -329,7 +329,7 @@ static void FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc 
 	QSortT(_fios_items.Get(sort_start), _fios_items.Length() - sort_start, CompareFiosItems);
 
 	/* Show drives */
-	if (mode != SLD_NEW_GAME) FiosGetDrives();
+	FiosGetDrives();
 
 	_fios_items.Compact();
 }
@@ -433,7 +433,7 @@ static FiosType FiosGetScenarioListCallback(SaveLoadDialogMode mode, const char 
 		return FIOS_TYPE_SCENARIO;
 	}
 
-	if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO || mode == SLD_NEW_GAME) {
+	if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 		if (strcasecmp(ext, ".sv0") == 0 || strcasecmp(ext, ".ss0") == 0 ) {
 			GetOldSaveGameName(file, title, last);
 			return FIOS_TYPE_OLD_SCENARIO;
