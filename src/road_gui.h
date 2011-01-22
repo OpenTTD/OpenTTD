@@ -13,6 +13,8 @@
 #define ROAD_GUI_H
 
 #include "road_type.h"
+#include "tile_type.h"
+#include "direction_type.h"
 
 struct Window *ShowBuildRoadToolbar(RoadType roadtype);
 struct Window *ShowBuildRoadScenToolbar();
