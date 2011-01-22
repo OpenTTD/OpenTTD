@@ -1599,9 +1599,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Game nam
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}The game name will be displayed to other players in the multiplayer game selection menu
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Set password
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protect your game with a password if you don't want it to be publicly accessible
-STR_NETWORK_START_SERVER_SELECT_MAP                             :{BLACK}Select a map:
-STR_NETWORK_START_SERVER_SELECT_MAP_TOOLTIP                     :{BLACK}Which map do you want to play?
-STR_NETWORK_START_SERVER_SERVER_RANDOM_GAME                     :Generate random new game
 
 STR_NETWORK_START_SERVER_LAN_INTERNET                           :LAN / Internet
 STR_NETWORK_START_SERVER_INTERNET_ADVERTISE                     :Internet (advertise)
@@ -1616,11 +1613,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spec
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limit the server to a certain amount of spectators
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Language spoken:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Other players will know which language is spoken on the server
-
-STR_NETWORK_START_SERVER_START_GAME                             :{BLACK}Start Game
-STR_NETWORK_START_SERVER_START_GAME_TOOLTIP                     :{BLACK}Start a new network game from a random map, or the selected scenario
-STR_NETWORK_START_SERVER_LOAD_GAME                              :{BLACK}Load Game
-STR_NETWORK_START_SERVER_LOAD_GAME_TOOLTIP                      :{BLACK}Resume an earlier saved multiplayer game (be sure to connect to the correct company)
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Enter a name for the network game
 
