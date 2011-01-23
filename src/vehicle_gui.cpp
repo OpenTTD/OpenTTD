@@ -614,6 +614,7 @@ struct RefitWindow : public Window {
 					r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, this->hscroll != NULL ? this->hscroll->GetPosition() : 0);
 
 				/* Highlight selected vehicles. */
+				if (this->order != INVALID_VEH_ORDER_ID) break;
 				int x = 0;
 				switch (v->type) {
 					case VEH_TRAIN: {
