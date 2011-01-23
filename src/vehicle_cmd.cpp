@@ -316,10 +316,10 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
  * @param flags type of operation
  * @param p1 vehicle ID to refit
  * @param p2 various bitstuffed elements
- * - p2 = (bit 0-7)   - New cargo type to refit to.
+ * - p2 = (bit 0-4)   - New cargo type to refit to.
+ * - p2 = (bit 7)     - Refit only this vehicle. Used only for cloning vehicles.
  * - p2 = (bit 8-15)  - New cargo subtype to refit to.
- * - p2 = (bit 16)    - Refit only this vehicle. Used only for cloning vehicles.
- * - p2 = (bit 17-24) - Number of vehicles to refit. Zero means all vehicles. Only used if "refit only this vehicle" is false.
+ * - p2 = (bit 16-23) - Number of vehicles to refit. Zero means all vehicles. Only used if "refit only this vehicle" is false.
  * @param text unused
  * @return the cost of this operation or an error
  */
@@ -343,13 +343,13 @@ CommandCost CmdRefitVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (front->vehstatus & VS_CRASHED) return_cmd_error(STR_ERROR_VEHICLE_IS_DESTROYED);
 
 	/* Check cargo */
-	CargoID new_cid = GB(p2, 0, 8);
+	CargoID new_cid = GB(p2, 0, 5);
 	byte new_subtype = GB(p2, 8, 8);
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;
 
 	/* For ships and aircrafts there is always only one. */
-	bool only_this = HasBit(p2, 16) || front->type == VEH_SHIP || front->type == VEH_AIRCRAFT;
-	uint8 num_vehicles = GB(p2, 17, 8);
+	bool only_this = HasBit(p2, 7) || front->type == VEH_SHIP || front->type == VEH_AIRCRAFT;
+	uint8 num_vehicles = GB(p2, 16, 8);
 
 	CommandCost cost = RefitVehicle(v, only_this, num_vehicles, new_cid, new_subtype, flags);
 
@@ -759,7 +759,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				/* Find out what's the best sub type */
 				byte subtype = GetBestFittingSubType(v, w);
 				if (w->cargo_type != v->cargo_type || w->cargo_subtype != subtype) {
-					CommandCost cost = DoCommand(0, w->index, v->cargo_type | (subtype << 8) | 1U << 16, flags, GetCmdRefitVeh(v));
+					CommandCost cost = DoCommand(0, w->index, v->cargo_type | 1U << 7 | (subtype << 8), flags, GetCmdRefitVeh(v));
 					if (cost.Succeeded()) total_cost.AddCost(cost);
 				}
 

@@ -587,7 +587,7 @@ struct RefitWindow : public Window {
 	{
 		Vehicle *v = Vehicle::Get(this->window_number);
 		CommandCost cost = DoCommand(v->tile, this->selected_vehicle, option->cargo | option->subtype << 8 |
-				this->num_vehicles << 17, DC_QUERY_COST, GetCmdRefitVeh(v->type));
+				this->num_vehicles << 16, DC_QUERY_COST, GetCmdRefitVeh(v->type));
 
 		if (cost.Failed()) return INVALID_STRING_ID;
 
@@ -810,7 +810,7 @@ struct RefitWindow : public Window {
 
 					if (this->order == INVALID_VEH_ORDER_ID) {
 						bool delete_window = this->selected_vehicle == v->index && this->num_vehicles == UINT8_MAX;
-						if (DoCommandP(v->tile, this->selected_vehicle, this->cargo->cargo | this->cargo->subtype << 8 | this->num_vehicles << 17, GetCmdRefitVeh(v)) && delete_window) delete this;
+						if (DoCommandP(v->tile, this->selected_vehicle, this->cargo->cargo | this->cargo->subtype << 8 | this->num_vehicles << 16, GetCmdRefitVeh(v)) && delete_window) delete this;
 					} else {
 						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8 | this->order << 16, CMD_ORDER_REFIT)) delete this;
 					}
