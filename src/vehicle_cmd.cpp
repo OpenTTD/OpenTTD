@@ -270,19 +270,27 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		if (v->type == VEH_TRAIN && !vehicles_to_refit.Contains(v->index) && !only_this) continue;
 
 		const Engine *e = Engine::Get(v->engine_type);
-		if (!e->CanCarryCargo() || !HasBit(e->info.refit_mask, new_cid)) continue;
+		if (!e->CanCarryCargo()) continue;
+
+		/* If the vehicle is not refittable, count its capacity nevertheless if the cargo matches */
+		bool refittable = HasBit(e->info.refit_mask, new_cid);
+		if (!refittable && v->cargo_type != new_cid) continue;
 
 		/* Back up the vehicle's cargo type */
 		CargoID temp_cid = v->cargo_type;
 		byte temp_subtype = v->cargo_subtype;
-		v->cargo_type = new_cid;
-		v->cargo_subtype = new_subtype;
+		if (refittable) {
+			v->cargo_type = new_cid;
+			v->cargo_subtype = new_subtype;
+		}
 
 		uint16 mail_capacity = 0;
 		uint amount = GetVehicleCapacity(v, &mail_capacity);
 		total_capacity += amount;
 		/* mail_capacity will always be zero if the vehicle is not an aircraft. */
 		total_mail_capacity += mail_capacity;
+
+		if (!refittable) continue;
 
 		/* Restore the original cargo type */
 		v->cargo_type = temp_cid;
