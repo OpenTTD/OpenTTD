@@ -104,6 +104,7 @@ static void RailVehicleLengthChanged(const Train *u)
 void CheckTrainsLengths()
 {
 	const Train *v;
+	bool first = true;
 
 	FOR_ALL_TRAINS(v) {
 		if (v->First() == v && !(v->vehstatus & VS_CRASHED)) {
@@ -116,7 +117,12 @@ void CheckTrainsLengths()
 						SetDParam(1, v->owner);
 						ShowErrorMessage(STR_BROKEN_VEHICLE_LENGTH, INVALID_STRING_ID, WL_CRITICAL);
 
-						if (!_networking) DoCommandP(0, PM_PAUSED_ERROR, 1, CMD_PAUSE);
+						if (!_networking && first) {
+							first = false;
+							DoCommandP(0, PM_PAUSED_ERROR, 1, CMD_PAUSE);
+						}
+						/* Break so we warn only once for each train. */
+						break;
 					}
 				}
 			}
