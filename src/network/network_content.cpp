@@ -878,10 +878,13 @@ void ClientNetworkContentSocketHandler::ReverseLookupTreeDependency(ConstContent
 {
 	*tree.Append() = child;
 
-	/* First find all direct parents */
-	for (ConstContentIterator iter = tree.Begin(); iter != tree.End(); iter++) {
+	/* First find all direct parents. We can't use the "normal" iterator as
+	 * we are including stuff into the vector and as such the vector's data
+	 * store can be reallocated (and thus move), which means out iterating
+	 * pointer gets invalid. So fall back to the indices. */
+	for (uint i = 0; i < tree.Length(); i++) {
 		ConstContentVector parents;
-		this->ReverseLookupDependency(parents, *iter);
+		this->ReverseLookupDependency(parents, tree[i]);
 
 		for (ConstContentIterator piter = parents.Begin(); piter != parents.End(); piter++) {
 			tree.Include(*piter);
