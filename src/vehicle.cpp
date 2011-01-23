@@ -2359,7 +2359,7 @@ const GroundVehicleCache *Vehicle::GetGroundVehicleCache() const
  * Calculates the set of vehicles that will be affected by a given selection.
  * @param set Set of affected vehicles.
  * @param v First vehicle of the selection.
- * @param num_vehicles Number of vehicles in the selection.
+ * @param num_vehicles Number of vehicles in the selection (not counting articulated parts).
  * @pre \c set must be empty.
  * @post \c set will contain the vehicles that will be refitted.
  */
@@ -2367,27 +2367,20 @@ void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles)
 {
 	if (v->type == VEH_TRAIN) {
 		Train *u = Train::From(v);
-		/* If the first vehicle in the selection is part of an articulated vehicle, add the previous parts of the vehicle. */
-		if (u->IsArticulatedPart()) {
-			u = u->GetFirstEnginePart();
-			while (u->index != v->index) {
+		/* Only include whole vehicles, so start with the first articulated part */
+		u = u->GetFirstEnginePart();
+
+		/* Include num_vehicles vehicles, not counting articulated parts */
+		for (; u != NULL && num_vehicles > 0; num_vehicles--) {
+			do {
+				/* Include current vehicle in the selection. */
 				set.Include(u->index);
-				u = u->GetNextArticulatedPart();
-			}
-		}
 
-		for (;u != NULL && num_vehicles > 0; num_vehicles--, u = u->Next()) {
-			/* Include current vehicle in the selection. */
-			set.Include(u->index);
+				/* If the vehicle is multiheaded, add the other part too. */
+				if (u->IsMultiheaded()) set.Include(u->other_multiheaded_part->index);
 
-			/* If the vehicle is multiheaded, add the other part too. */
-			if (u->IsMultiheaded()) set.Include(u->other_multiheaded_part->index);
-		}
-
-		/* If the last vehicle is part of an articulated vehicle, add the following parts of the vehicle. */
-		while (u != NULL && u->IsArticulatedPart()) {
-			set.Include(u->index);
-			u = u->Next();
+				u = u->Next();
+			} while (u != NULL && u->IsArticulatedPart());
 		}
 	}
 }

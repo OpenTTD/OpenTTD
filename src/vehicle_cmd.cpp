@@ -245,7 +245,7 @@ static CommandCost GetRefitCost(EngineID engine_type)
  * This is the vehicle-type independent part of the CmdRefitXXX functions.
  * @param v            The vehicle to refit.
  * @param only_this    Whether to only refit this vehicle, or to check the rest of them.
- * @param num_vehicles Number of vehicles to refit. Zero means the whole chain.
+ * @param num_vehicles Number of vehicles to refit (not counting articulated parts). Zero means the whole chain.
  * @param new_cid      Cargotype to refit to
  * @param new_subtype  Cargo subtype to refit to
  * @param flags        Command flags
@@ -319,7 +319,8 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
  * - p2 = (bit 0-4)   - New cargo type to refit to.
  * - p2 = (bit 7)     - Refit only this vehicle. Used only for cloning vehicles.
  * - p2 = (bit 8-15)  - New cargo subtype to refit to.
- * - p2 = (bit 16-23) - Number of vehicles to refit. Zero means all vehicles. Only used if "refit only this vehicle" is false.
+ * - p2 = (bit 16-23) - Number of vehicles to refit (not counting articulated parts). Zero means all vehicles.
+ *                      Only used if "refit only this vehicle" is false.
  * @param text unused
  * @return the cost of this operation or an error
  */

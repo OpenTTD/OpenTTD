@@ -758,9 +758,14 @@ struct RefitWindow : public Window {
 						if (left_x < 0 && !start_counting) {
 							this->selected_vehicle = u->index;
 							start_counting = true;
+
+							/* Count the first vehicle, even if articulated part */
+							this->num_vehicles++;
+						} else if (start_counting && !u->IsArticulatedPart()) {
+							/* Do not count articulated parts */
+							this->num_vehicles++;
 						}
 
-						if (start_counting) this->num_vehicles++;
 						if (right_x < 0) break;
 					}
 				}
