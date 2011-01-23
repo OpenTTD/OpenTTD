@@ -112,7 +112,13 @@ public:
 		CF_INVALID = -1, ///< Invalid compare function, do not use.
 	};
 
-	/** Different constants related to the OrderPosition */
+	/**
+	 * Index in the list of orders for a vehicle. The first order has index 0, the second
+	 * order index 1, etc. The current order can be queried by using ORDER_CURRENT. Do not
+	 * use ORDER_INVALID yourself, it's used as return value by for example ResolveOrderPosition.
+	 * @note Automatic orders are hidden from AIs, so OrderPosition 0 will always be the first
+	 * manual order.
+	 */
 	enum OrderPosition {
 		ORDER_CURRENT = 0xFF, ///< Constant that gets resolved to the current order.
 		ORDER_INVALID = -1,   ///< An invalid order.
