@@ -1614,7 +1614,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}サー�
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}言語：
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}サーバ上の主の言語を表示します
 
-
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}ネットワークゲーム名を入力
 
 # Network game languages
@@ -3350,6 +3349,9 @@ STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}停止�
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}停止
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}AIログメッセージがこの文字列にマッチしたときゲームはポーズされます。
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}マッチケース
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}AIのログメッセージと文字列の一致条件を切り替え
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}続ける
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}AIの一時中断を解く
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}AIのコンソールを見る
 
 STR_ERROR_NO_AI                                                 :{WHITE}この OpenTTD は AI のサポートが入っていません...
@@ -3392,6 +3394,7 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}AI を�
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI のパラメータ
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}閉じる
 STR_AI_SETTINGS_RESET                                           :{BLACK}リセット
+STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
 
 # Vehicle loading indicators
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -4263,6 +4266,7 @@ STR_GREEN_STRING                                                :{GREEN}{STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
+STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
 STR_TINY_BLACK_VEHICLE                                          :{TINYFONT}{BLACK}{VEHICLE}
 STR_TINY_RIGHT_ARROW                                            :{TINYFONT}{RIGHTARROW}
 
@@ -4280,3 +4284,4 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
+STR_TOOLBAR_RAILTYPE_VELOCITY                                   :{STRING} ({VELOCITY})

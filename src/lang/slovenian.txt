@@ -706,6 +706,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Prikaži
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Prikaži transportne poti na zemljevidu
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Prikaži vegetacijo na zemljevidu
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Prikaži lastnike terena na zemljevidu
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klikni na tip industrije za preklop vidljivosti. Ctrl+Klik onemogoči vse tipe razen izbranega. Ctrl+Klik še enkrat omogoči vse tipe
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikni na podjetje za preklop vidljivosti njenih nepremičnin. Ctrl+Klik onemogoči vsa podjetja razen izbranega. Ctrl+Klik še enkrat omogoči vsa podjetja
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Ceste
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Železnice
@@ -1653,7 +1655,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Največj
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Omeji strežnik na določeno število opazovalcev
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Govorni jezik:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igralci bodo lahko vedeli, kateri jezik se govori na strežniku
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Vpiši ime za mrežno igro
 

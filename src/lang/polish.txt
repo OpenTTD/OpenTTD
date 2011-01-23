@@ -1212,8 +1212,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Dostępn
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} już nie akceptuje {STRING.d}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} już nie akceptuje {STRING.d} ani {STRING.d}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} już akceptuje {STRING}
-STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} już akceptuje {STRING} i {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} akceptuje już {STRING}
+STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} akceptuje już {STRING} i {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subsydiowanie wygasło:{}{}{STRING} z {STRING} do {STRING} nie będzie już dotowane
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Koniec dotacji:{}{}Przewóz {STRING.d} z {STRING} do {STRING} nie jest już subsydiowany
@@ -1659,7 +1659,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Data ro
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Pozwól na łagodną ekonomię (więcej małych zmian): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Pozwól kupować udziały w innych firmach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Udział w zyskach w przypadku częściowego transportu (przeładunku): {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} kratk
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} krat{P kę ki ek}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatycznie buduj semafory przed: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Uaktywnij okno budowania sygnałów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Domyślny typ sygnalizatorów: {ORANGE}{STRING}
@@ -1943,7 +1943,7 @@ STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Kliknij 
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Serwer z którym ostatnio się połączyłeś:
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Kliknij, aby wybrać serwer na którym grałeś ostatnio
 
-STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFO O GRZE
+STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}INFORMACJE O GRZE
 STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Klienci: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Język: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Krajobraz: {WHITE}{STRING}
@@ -1993,7 +1993,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maksymal
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ogranicz serwer do określonej ilości widzów
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Używany język:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Inni gracze będą poinformowani jaki język jest używany na serwerze
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Wpisz nazwę dla gry sieciowej
 
@@ -2199,7 +2198,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serwer z
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Restart serwera...{}Proszę czekać...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Pobieranie zawartości
+STR_CONTENT_TITLE                                               :{WHITE}Pobieranie dodatkowej zawartości
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Rodzaj zawartości
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nazwa
@@ -2216,7 +2215,7 @@ STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Pobierz
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Rozpocznij ściąganie zaznaczonych danych
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Całkowity rozmiar: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}OPIS ZAWARTOŚCI
-STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}To nie zostało wybrane do ściągnięcia
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Ten dodatek nie został wybrany do pobrania
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}To zostało wybrane do ściągnięcia
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ta zależność została wybrana do ściągnięcia
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Już to posiadasz
@@ -2652,7 +2651,7 @@ STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Cylindryczny mo
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akwedukt
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Nadajnik
-STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Latarnia
+STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Latarnia morska
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Siedziba firmy
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Teren w posiadaniu firmy
 
@@ -3206,7 +3205,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Prędko�
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Prędkość: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Koszty użytkowania: {GOLD}{CURRENCY}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Pojemność: {GOLD}{CARGO} {STRING}
-STR_PURCHASE_INFO_REFITTABLE                                    :(przebudowalny)
+STR_PURCHASE_INFO_REFITTABLE                                    :(przebudowywalny)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Zaprojektowany: {GOLD}{NUM}{BLACK} Żywotność: {GOLD}{COMMA} lat
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maksymalna niezawodność: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Koszt: {GOLD}{CURRENCY}
@@ -3478,7 +3477,7 @@ STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Ładowno
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Ładowność: {LTBLUE}{CARGO}{3:STRING} (x{4:NUM})
 STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}Ładowność: {LTBLUE}{CARGO}, {CARGO}{STRING}
 
-STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wartość transferu: {LTBLUE}{CURRENCY}
+STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Wartość ładunku: {LTBLUE}{CURRENCY}
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Okres między serwisowaniem: {LTBLUE}{COMMA}dni{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Okres między serwisowaniem: {LTBLUE}{COMMA}%{BLACK}   Ostatni serwis: {LTBLUE}{DATE_LONG}
@@ -3504,7 +3503,7 @@ STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO}
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Ładunek
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Pokaż szczegóły przewożonych ładunków
-STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informacja
+STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}Informacje
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}Pokaż szczegóły pociągu
 STR_VEHICLE_DETAIL_TAB_CAPACITIES                               :{BLACK}Pojemność
 STR_VEHICLE_DETAILS_TRAIN_CAPACITIES_TOOLTIP                    :{BLACK}Pokaż pojemność każdego wagonu
@@ -3863,8 +3862,8 @@ STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRIN
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Niedozwolone w trakcie pauzy
 
 # Local authority errors
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Lokalne władze {TOWN} nie pozwalają na to
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Lokalne władze {TOWN} nie pozwalają na budowę kolejnego lotniska w tym mieście
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na to
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Lokalne władze miasta {TOWN} nie pozwalają na budowę kolejnego lotniska w tym mieście
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} lokalne władzę odmawiają zgody na lotnisko ze względu na poziom hałasu
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Twoja próba wręczenia łapówki została
 STR_ERROR_BRIBE_FAILED_2                                        :{WHITE}wykryta przez lokalnych śledczych
@@ -4015,7 +4014,7 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limit funduszy
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Niemożliwa kombinacja torów
 STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Należy najpierw usunąć sygnalizację
-STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nieodpowiednie tory
+STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Nieodpowiednie tory/brak torów
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Należy najpierw usunąć tory
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Droga jest jednokierunkowa lub zablokowana
 STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Przejazd kolejowy nie dozwolony dla tego typu torów

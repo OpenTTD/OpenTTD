@@ -1739,7 +1739,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Обме
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Мова:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Інші гравці будуть знати якою мовою спілкуються на сервері
 
-
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Введіть назву мережевої гри
 
 # Network game languages
@@ -2195,8 +2194,8 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Гене
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Ландшафт
 STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Опустити край ділянки землі. Протягування мишою опускає вибраний край і вирівнює вибрану ділянку до його нової висоти. Утримуйте Ctrl для виділення клітинок по діагоналі, або Shift - для показу очікуваних витрат
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Підняти ділянку землі. Протягування мишою піднімає вибраний край і вирівнює вибрану ділянку до його нової висоти. Утримуйте Ctrl для виділення клітинок по діагоналі, або Shift - для показу очікуваних витрат
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Вирівняти землю до висоти обраного краю. Утримуйте Ctrl для виділення клітинок по діагоналі, або Shift - для показу очікуваних витрат
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Підняти край ділянки землі. Протягування мишою піднімає вибраний край і вирівнює вибрану ділянку до його нової висоти. Утримуйте Ctrl для виділення клітинок по діагоналі, або Shift - для показу очікуваних витрат
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Вирівняти ділянку землі до висоти першого обраного краю. Утримуйте Ctrl для виділення клітинок по діагоналі, або Shift - для показу очікуваних витрат
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Купити ділянку для використання у майбутньому. Утримуйте Shift для показу вартості ділянки
 
 # Object construction window

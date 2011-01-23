@@ -127,7 +127,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} de car
 STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P "" s}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} de plástico
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} refresco{P "" s}
-STR_QUANTITY_N_A                                                :N/D
+STR_QUANTITY_N_A                                                :Ninguna
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
@@ -1189,7 +1189,7 @@ STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Habilit
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o más casillas del borde norte no están vacías
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Una o más casillas en uno de los bordes no son agua
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Expansión máxima de estaciones: {ORANGE}{STRING} casilla{P 0:1 "" s}{RED}Advertencia: Valores altos ralentizan
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}Expansión máxima de estaciones: {ORANGE}{STRING} casilla{P 0:1 "" s} {RED}Valores altos ralentizan
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Mantener los helicópteros en helipuertos automáticamente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Une la barra de terreno a la barra de construcción: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Color de terreno usado en el mapa: {ORANGE}{STRING}
@@ -1615,7 +1615,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limitar 
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma hablado:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Otros jugadores sabrán cual es el idioma hablado en este servidor
 
-
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Introduce un nombre para el juego en red
 
 # Network game languages
@@ -1868,7 +1867,7 @@ STR_CONTENT_TYPE_BASE_MUSIC                                     :{G=m}Música ba
 # Content downloading progress window
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descargando contenido...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Solicitando ficheros...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Actualmente descargando {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Descargando {STRING} ({NUM} of {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descarga completada
 STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} descargadas ({NUM} %)
 
@@ -3616,7 +3615,7 @@ STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No se pu
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipo de ferrocarril incompatible
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No se puede mover vehículo...
-STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}El motor posterior seguirá siempre su contraparte delantera
+STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}El motor posterior debe seguir siempre a su contraparte delantera
 STR_ERROR_UNABLE_TO_FIND_ROUTE_TO                               :{WHITE}No se puede encontrar ruta al depósito
 STR_ERROR_UNABLE_TO_FIND_LOCAL_DEPOT                            :{WHITE}No se puede encontrar ruta al depósito
 
