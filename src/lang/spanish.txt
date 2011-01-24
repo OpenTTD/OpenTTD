@@ -2913,7 +2913,7 @@ STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Comprar 
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Comprar nueva aeronave
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clonar tren
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonar vehículo de carretera
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonar vehículo
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar barco
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar aeronave
 

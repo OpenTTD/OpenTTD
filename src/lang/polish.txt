@@ -1210,8 +1210,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Dostępn{G y a e} now{G y a e} {STRING} - {ENGINE}!
 
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} już nie akceptuje {STRING.d}
-STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} już nie akceptuje {STRING.d} ani {STRING.d}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} nie akceptuje już {STRING.d}
+STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} nie akceptuje już {STRING.d} ani {STRING.d}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} akceptuje już {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} akceptuje już {STRING} i {STRING}
 
