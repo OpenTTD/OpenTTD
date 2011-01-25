@@ -30,20 +30,20 @@ STR_JUST_NOTHING                                                :Nada
 STR_CARGO_PLURAL_NOTHING                                        :
 STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}Passageiros
 STR_CARGO_PLURAL_COAL                                           :{G=m}Carvão
-STR_CARGO_PLURAL_MAIL                                           :{G=f}Cartas
+STR_CARGO_PLURAL_MAIL                                           :{G=f}Correspondências
 STR_CARGO_PLURAL_OIL                                            :{G=m}Petróleo
-STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}Gado
-STR_CARGO_PLURAL_GOODS                                          :{G=m}Bens
-STR_CARGO_PLURAL_GRAIN                                          :{G=m}Grãos
+STR_CARGO_PLURAL_LIVESTOCK                                      :{G=f}Criação
+STR_CARGO_PLURAL_GOODS                                          :{G=f}Mercadorias
+STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereais
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Madeira
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Minério de Ferro
 STR_CARGO_PLURAL_STEEL                                          :{G=m}Aço
-STR_CARGO_PLURAL_VALUABLES                                      :{G=m}Dinheiro
+STR_CARGO_PLURAL_VALUABLES                                      :{G=f}Preciosidade
 STR_CARGO_PLURAL_COPPER_ORE                                     :{G=m}Minério de Cobre
 STR_CARGO_PLURAL_MAIZE                                          :{G=m}Milho
 STR_CARGO_PLURAL_FRUIT                                          :{G=f}Fruta
-STR_CARGO_PLURAL_DIAMONDS                                       :{G=m}Diamante
-STR_CARGO_PLURAL_FOOD                                           :{G=f}Comida
+STR_CARGO_PLURAL_DIAMONDS                                       :{G=m}Diamantes
+STR_CARGO_PLURAL_FOOD                                           :{G=m}Alimentos
 STR_CARGO_PLURAL_PAPER                                          :{G=m}Papel
 STR_CARGO_PLURAL_GOLD                                           :{G=m}Ouro
 STR_CARGO_PLURAL_WATER                                          :{G=f}Água
@@ -52,7 +52,7 @@ STR_CARGO_PLURAL_RUBBER                                         :{G=f}Borracha
 STR_CARGO_PLURAL_SUGAR                                          :{G=m}Açúcar
 STR_CARGO_PLURAL_TOYS                                           :{G=m}Brinquedos
 STR_CARGO_PLURAL_CANDY                                          :{G=m}Doces
-STR_CARGO_PLURAL_COLA                                           :{G=m}Xarope
+STR_CARGO_PLURAL_COLA                                           :{G=f}Cola
 STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=m}Algodão Doce
 STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Bolhas
 STR_CARGO_PLURAL_TOFFEE                                         :{G=m}Caramelo
@@ -62,9 +62,9 @@ STR_CARGO_PLURAL_FIZZY_DRINKS                                   :{G=m}Refrigeran
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
-STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Passageiros
+STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Passageiro
 STR_CARGO_SINGULAR_COAL                                         :{G=m}Carvão
-STR_CARGO_SINGULAR_MAIL                                         :{G=f}Cartas
+STR_CARGO_SINGULAR_MAIL                                         :{G=f}Correspondência
 STR_CARGO_SINGULAR_OIL                                          :{G=m}Petróleo
 STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Gado
 STR_CARGO_SINGULAR_GOODS                                        :{G=m}Bens
@@ -349,6 +349,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do Jogo
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Configurações de dificuldade
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Configurações avançadas
+STR_SETTINGS_MENU_AI_SETTINGS                                   :Definições de IA
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configurar NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Exibir nomes de cidades
@@ -664,6 +665,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Exibe in
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Exibe rotas de transporte no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Exibe vegetação no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Exibe proprietários de terra no mapa
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clique em um tipo de indústria para alternar sua exibição. Ctrl+Clique desabilita todos os tipos exceto a selecionada. Ctrl+Clique nela novamente para habilitar todos os tipos de indústrias
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Clique em uma compania para alternar a exibição de suas propriedades. Ctrl+Clique desabilita todas as companias exceto a selecionada. Ctrl+Clique nela novamente para habilitar todas as companias
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Rodovias
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Ferrovias
@@ -697,6 +700,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Alterna exibir/ocultar nomes das cidades no mapa
 STR_SMALLMAP_CENTER                                             :{BLACK}Centralizar o minimapa na posição atual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desativar tudo
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ativar tudo
@@ -704,6 +708,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostra a
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Não mostrar nenhuma indústria no mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar todas as indústrias no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Alterna a exibição do mapa de altitudes
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Mostrar nenhuma propriedade da compania no mapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostrar toda propriedade da compania no mapa
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Exibe a última mensagem ou notícia
@@ -843,9 +849,9 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Visualizador {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar para o visualizador
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar a localização do visualizador global para este visualizador
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar o local da tela principal para esta janela
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Colar do visualizador
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização deste visualizador para o visualizador global
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização deste visualizador para o visualizador principal
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opções do Jogo
@@ -1087,7 +1093,7 @@ STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :desativado
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Exibir velocidade do veículo na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir terraformação sob edifícios, ruas, etc. (auto nivelação): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir paisagismo sob edifícios, ruas, etc. (auto nivelação): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permitir dimensionamento mais realista das áreas de abrangência: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permitir a remoção de mais rodovias, pontes, etc. das cidades: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permitir a construção de trens muito longos: {ORANGE}{STRING}
@@ -1157,8 +1163,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Auto-re
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} m{P 0:1 ês eses} antes/depois da idade máx.
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Dinheiro mínimo para fazer auto-renovação: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING} segundo{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Intervalo para eventos mouse-sobre: {ORANGE}{STRING} segundo{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Intervalo para eventos mouse-sobre: {ORANGE}desativado
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Mostrar dicas: {ORANGE}Passe por{STRING} segundo{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Mostrar dicas: {ORANGE}Clique direito
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Exibir população da cidade na janela da cidade: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Gerador de Terreno: {ORANGE}{STRING}
@@ -1179,7 +1185,7 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotaç�
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido Anti-Horário
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido Horário
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}A altitude de um mapa regular é de: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Permitir alteração do terreno nas bordas do mapa: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Permitir paisagismo nas telhas na bordas do mapa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Há construções na borda norte do mapa
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Há bordas acima da nível do mar
 
@@ -1204,7 +1210,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Scroll map
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Desligado
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocidade do scrollwheel do mapa: {ORANGE}{STRING}
 
-STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Compatibilizar o botão direito do mouse: {ORANGE}{STRING}
+STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulação do clique direito: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Clique de comando
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Clique de controle
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
@@ -1242,6 +1248,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Exibir 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Manter a barra de construção aberta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupar despesas na janela de financas da companhia: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Desativar construção de infraestrutura quando nenhum veículo adequado estiver disponível: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por companhia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Máximo de automóveis por companhia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por companhia: {ORANGE}{STRING}
@@ -1608,7 +1615,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limita o
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma falado:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Outros jogadores saberão o idioma utilizado no servidor.
 
-
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Coloque o nome para o jogo em rede
 
 # Network game languages
@@ -1967,6 +1973,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Selecion
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Selecionar Ponte Rodoviária
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Seleção de ponte - clique na ponte desejada para construir
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Suspensa, Aço
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :Vigas, Aço
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :Cantilever, Aço
@@ -2070,6 +2077,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Seleção de Objeto
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selecione o objeto a ser construído. Shift altera construção/estimação de custo
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selecione uma categoria de objeto para construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objeto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} ladrilhos
 
@@ -2410,6 +2418,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parâmet
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Sem informação disponível
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Arquivo correspondente não encontrado
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desativado
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatível com esta versão de OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Insira novos parâmetros de NewGRF
 
@@ -2526,7 +2535,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Coloque 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Cidades
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nenhum -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomes das cidades - clique no nome para centralizar a visualização na cidade. Ctrl+Clique abre uma nova janela de visualização
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nomes das cidades - clique no nome para centralizar a visualização principal na cidade. Ctrl+Clique abre uma nova janela na localização da cidade
 STR_TOWN_POPULATION                                             :{BLACK}População mundial: {COMMA}
 
 # Town view window
@@ -2586,10 +2595,10 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Nenhum -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Transporte subsidiados:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} de {STRING} para {STRING}{YELLOW} ({COMPANY}{YELLOW}, até {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique num serviço para centralizar a visualização numa indústria/cidade.Ctrl+Clique abre uma nova janela de visualização
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clique num serviço para centralizar a visualização principal numa indústria/cidade.Ctrl+Clique abre uma nova janela na localização da indústria/cidade
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nome da estação - clique no nome para centralizar a visualização na estação. Ctrl+Clique abre uma nova janela de visualização
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nomes da estação - clique no nome para centralizar a visualização principal na estação. Ctrl+Clique abre uma nova janela na localização da estação
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Segure Ctrl para selecionar mais de um item
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estações
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -2720,7 +2729,7 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nenhu
 STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes das indústrias - clique no nome para localizar a indústria. Ctrl+Clique abre uma nova janela de visualização
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes das indústrias - clique no nome para centralizar a visçao principal na indústria. Ctrl+Clique abre uma nova janela na localização da indústria
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3244,6 +3253,7 @@ STR_ORDER_STOP_ORDER                                            :(Parar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automatico)
 
 STR_ORDER_FULL_LOAD                                             :(Carregar totalmente)
 STR_ORDER_FULL_LOAD_ANY                                         :(Carregar totalmente qualquer carga)
@@ -3278,6 +3288,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Alternar
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Plano de horário - selecione uma ordem clicando nela
 
 STR_TIMETABLE_NO_TRAVEL                                         :Não viajar
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viagem (automático; calendarizadas pela próxima ordem manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não progamado)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar para {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
@@ -3459,6 +3470,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... loca
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já construído
 STR_ERROR_OWNED_BY                                              :{WHITE}... propriedade de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a área é propriedade de outra empresa
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... limite de paisagismo atingido
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... limite atingido de remoção de telha
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nome deve ser único
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} no caminho
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não permitido enquanto pausado
@@ -4251,6 +4264,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}

@@ -1248,6 +1248,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Reservi
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Belasse Bauwerkzeuge aktiv nach Benutzung: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Zwischensummen für Kategorien bei Firmenausgaben:{ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Bauen der Infrastruktur deaktivieren sollten entsprechende Fahrzeuge nicht verfügbar sein: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Firma: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Maximale Anzahl der Straßenfahrzeuge pro Firma: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Maximale Anzahl der Flugzeuge pro Firma: {ORANGE}{STRING}
@@ -1613,7 +1614,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max. Zus
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begrenzt den Server auf eine gewisse Anzahl an Zuschauern
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Gesprochene Sprache:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Damit andere Spieler wissen, welche Sprache auf diesem Server gesprochen wird
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Namen für das Netzwerkspiel eingeben
 
@@ -2418,6 +2418,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Paramete
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Keine Informationen verfügbar
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Zugehörige Datei nicht gefunden
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Deaktiviert
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Nicht mit dieser Version von OpenTTD kompatibel
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}NewGRF-Parameter eingeben
 

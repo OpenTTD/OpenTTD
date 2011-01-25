@@ -2278,10 +2278,10 @@ STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Ланц
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Виробники
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Споживачі
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Будинки
-STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Натисніть на підприємство аби побачити його постачальників та споживачів
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Натисніть на вантаж аби побачити його постачальників та споживачів
+STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Натисніть на підприємство аби побачити його постачальників та покупців
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Натисніть на вантаж аби побачити його постачальників та покупців
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Показати ланцюг
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Показати постачальників та виробників
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Показати виробників та споживачів
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Приєднати до мінікарти
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Ви також можете вибирати промисловість на мінікарті
 
