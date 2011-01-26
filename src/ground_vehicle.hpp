@@ -404,7 +404,12 @@ protected:
 			tempmax = max(this->cur_speed - (this->cur_speed / 10) - 1, max_speed);
 		}
 
-		this->cur_speed = spd = Clamp(this->cur_speed + ((int)spd >> 8), min_speed, tempmax);
+		/* Enforce a maximum and minimum speed. Normally we would use something like
+		 * Clamp for this, but in this case min_speed might be below the maximum speed
+		 * threshold for some reason. That makes acceleration fail and assertions
+		 * happen in Clamp. So make it explicit that min_speed overrules the maximum
+		 * speed by explicit ordering of min and max. */
+		this->cur_speed = spd = max(min(this->cur_speed + ((int)spd >> 8), tempmax), min_speed);
 
 		int scaled_spd = this->GetAdvanceSpeed(spd);
 
