@@ -336,7 +336,7 @@ void AfterLoadVehicles(bool part_of_load)
 			case VEH_TRAIN: {
 				Train *t = Train::From(v);
 				if (t->IsFrontEngine() || t->IsFreeWagon()) {
-					t->tcache.last_speed = t->cur_speed; // update displayed train speed
+					t->gcache.last_speed = t->cur_speed; // update displayed train speed
 					t->ConsistChanged(false);
 				}
 				break;

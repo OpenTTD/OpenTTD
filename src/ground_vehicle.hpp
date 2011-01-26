@@ -13,7 +13,9 @@
 #define GROUND_VEHICLE_HPP
 
 #include "vehicle_base.h"
+#include "vehicle_gui.h"
 #include "landscape.h"
+#include "window_func.h"
 
 /** What is the status of our acceleration? */
 enum AccelStatus {
@@ -41,6 +43,9 @@ struct GroundVehicleCache {
 	uint16 cached_total_length;     ///< Length of the whole vehicle (valid only for the first engine).
 	EngineID first_engine;          ///< Cached EngineID of the front vehicle. INVALID_ENGINE for the front vehicle itself.
 	uint8 cached_veh_length;        ///< Length of this vehicle in units of 1/8 of normal length. It is cached because this can be set by a callback.
+
+	/* Cached UI information. */
+	uint16 last_speed;              ///< The last speed we did display, so we only have to redraw when this changes.
 };
 
 /** Ground vehicle flags. */
@@ -357,6 +362,21 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 * @return True if the engine has an articulated part.
 	 */
 	FORCEINLINE bool HasArticulatedPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
+
+	/**
+	 * Update the GUI variant of the current speed of the vehicle.
+	 * Also mark the widget dirty when that is needed, i.e. when
+	 * the speed of this vehicle has changed.
+	 */
+	FORCEINLINE void SetLastSpeed()
+	{
+		if (this->cur_speed != this->gcache.last_speed) {
+			if (_settings_client.gui.vehicle_speed || (this->gcache.last_speed == 0) != (this->cur_speed == 0)) {
+				SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+			}
+			this->gcache.last_speed = this->cur_speed;
+		}
+	}
 };
 
 #endif /* GROUND_VEHICLE_HPP */

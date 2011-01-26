@@ -1395,17 +1395,6 @@ void Train::UpdateDeltaXY(Direction direction)
 	this->z_extent      = 6;
 }
 
-static inline void SetLastSpeed(Train *v, int spd)
-{
-	int old = v->tcache.last_speed;
-	if (spd != old) {
-		v->tcache.last_speed = spd;
-		if (_settings_client.gui.vehicle_speed || (old == 0) != (spd == 0)) {
-			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		}
-	}
-}
-
 /** Mark a train as stuck and stop it if it isn't stopped right now. */
 static void MarkTrainAsStuck(Train *v)
 {
@@ -1418,7 +1407,7 @@ static void MarkTrainAsStuck(Train *v)
 		/* Stop train */
 		v->cur_speed = 0;
 		v->subspeed = 0;
-		SetLastSpeed(v, 0);
+		v->SetLastSpeed();
 
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
@@ -1843,7 +1832,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 				ToggleBit(v->flags, VRF_REVERSING);
 			} else {
 				v->cur_speed = 0;
-				SetLastSpeed(v, 0);
+				v->SetLastSpeed();
 				HideFillingPercent(&v->fill_percent_te_id);
 				ReverseTrainDirection(v);
 			}
@@ -3659,7 +3648,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 	int adv_spd = v->GetAdvanceDistance();
 	if (j < adv_spd) {
 		/* if the vehicle has speed 0, update the last_speed field. */
-		if (v->cur_speed == 0) SetLastSpeed(v, v->cur_speed);
+		if (v->cur_speed == 0) v->SetLastSpeed();
 	} else {
 		TrainCheckIfLineEnds(v);
 		/* Loop until the train has finished moving. */
@@ -3683,7 +3672,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 				ProcessOrders(v);
 			}
 		}
-		SetLastSpeed(v, v->cur_speed);
+		v->SetLastSpeed();
 	}
 
 	for (Train *u = v; u != NULL; u = u->Next()) {
