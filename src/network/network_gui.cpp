@@ -62,7 +62,7 @@ void SortNetworkLanguages()
 	}
 
 	/* Sort the strings (we don't move 'any' and the 'invalid' one) */
-	QSortT(_language_dropdown, NETLANG_COUNT - 1, &StringIDSorter);
+	QSortT(_language_dropdown + 1, NETLANG_COUNT - 1, &StringIDSorter);
 }
 
 /**
