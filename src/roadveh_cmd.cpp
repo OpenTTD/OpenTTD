@@ -651,7 +651,6 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
  */
 static int RoadVehAccelerate(RoadVehicle *v)
 {
-	uint oldspeed = v->cur_speed;
 	uint accel = v->overtaking != 0 ? 256 : 0;
 	accel += (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) ? 256 : v->GetAcceleration();
 	uint spd = v->subspeed + accel;
@@ -671,13 +670,6 @@ static int RoadVehAccelerate(RoadVehicle *v)
 	if (v->state == RVSB_WORMHOLE && !(v->vehstatus & VS_HIDDEN)) {
 		RoadVehicle *first = v->First();
 		first->cur_speed = min(first->cur_speed, GetBridgeSpec(GetBridgeType(v->tile))->speed * 2);
-	}
-
-	/* Update statusbar only if speed has changed to save CPU time */
-	if (oldspeed != v->cur_speed) {
-		if (_settings_client.gui.vehicle_speed) {
-			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		}
 	}
 
 	int scaled_spd = v->GetAdvanceSpeed(spd);
@@ -1496,6 +1488,8 @@ static bool RoadVehController(RoadVehicle *v)
 		/* Test for a collision, but only if another movement will occur. */
 		if (j >= adv_spd && RoadVehCheckTrainCrash(v)) break;
 	}
+
+	v->SetLastSpeed();
 
 	for (RoadVehicle *u = v; u != NULL; u = u->Next()) {
 		if ((u->vehstatus & VS_HIDDEN) != 0) continue;
