@@ -649,28 +649,16 @@ static void RoadVehArrivesAt(const RoadVehicle *v, Station *st)
  * the distance to drive before moving a step on the map.
  * @return distance to drive.
  */
-static int RoadVehAccelerate(RoadVehicle *v)
+int RoadVehicle::UpdateSpeed()
 {
-	uint accel = v->overtaking != 0 ? 256 : 0;
-	accel += (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) ? 256 : v->GetAcceleration();
-	uint spd = v->subspeed + accel;
+	switch (_settings_game.vehicle.roadveh_acceleration_model) {
+		default: NOT_REACHED();
+		case AM_ORIGINAL:
+			return this->DoUpdateSpeed(this->overtaking != 0 ? 512 : 256, 0, this->GetCurrentMaxSpeed());
 
-	v->subspeed = (uint8)spd;
-
-	int tempmax = v->GetCurrentMaxSpeed();
-	if (v->cur_speed > tempmax) {
-		tempmax = v->cur_speed - (v->cur_speed / 10) - 1;
+		case AM_REALISTIC:
+			return this->DoUpdateSpeed(this->GetAcceleration() + (this->overtaking != 0 ? 256 : 0), this->GetAccelerationStatus() == AS_BRAKE ? 0 : 4, this->GetCurrentMaxSpeed());
 	}
-
-	/* Force a minimum speed of 1 km/h when realistic acceleration is on. */
-	int min_speed = (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) ? 0 : 4;
-	v->cur_speed = spd = Clamp(v->cur_speed + ((int)spd >> 8), min_speed, tempmax);
-
-	int scaled_spd = v->GetAdvanceSpeed(spd);
-
-	scaled_spd += v->progress;
-	v->progress = 0;
-	return scaled_spd;
 }
 
 static Direction RoadVehGetNewDirection(const RoadVehicle *v, int x, int y)
@@ -1466,7 +1454,7 @@ static bool RoadVehController(RoadVehicle *v)
 	v->ShowVisualEffect();
 
 	/* Check how far the vehicle needs to proceed */
-	int j = RoadVehAccelerate(v);
+	int j = v->UpdateSpeed();
 
 	int adv_spd = v->GetAdvanceDistance();
 	bool blocked = false;

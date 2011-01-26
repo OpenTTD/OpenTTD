@@ -120,6 +120,7 @@ struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	bool IsBus() const;
 
 	int GetCurrentMaxSpeed() const;
+	int UpdateSpeed();
 
 protected: // These functions should not be called outside acceleration code.
 
