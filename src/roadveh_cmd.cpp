@@ -666,12 +666,6 @@ static int RoadVehAccelerate(RoadVehicle *v)
 	int min_speed = (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) ? 0 : 4;
 	v->cur_speed = spd = Clamp(v->cur_speed + ((int)spd >> 8), min_speed, tempmax);
 
-	/* Apply bridge speed limit */
-	if (v->state == RVSB_WORMHOLE && !(v->vehstatus & VS_HIDDEN)) {
-		RoadVehicle *first = v->First();
-		first->cur_speed = min(first->cur_speed, GetBridgeSpec(GetBridgeType(v->tile))->speed * 2);
-	}
-
 	int scaled_spd = v->GetAdvanceSpeed(spd);
 
 	scaled_spd += v->progress;
@@ -1070,6 +1064,12 @@ static bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *p
 	if (v->state == RVSB_WORMHOLE) {
 		/* Vehicle is entering a depot or is on a bridge or in a tunnel */
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
+
+		/* Apply bridge speed limit */
+		if (!(v->vehstatus & VS_HIDDEN)) {
+			RoadVehicle *first = v->First();
+			first->cur_speed = min(first->cur_speed, GetBridgeSpec(GetBridgeType(v->tile))->speed * 2);
+		}
 
 		if (v->IsFrontEngine()) {
 			const Vehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
