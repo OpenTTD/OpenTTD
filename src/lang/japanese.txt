@@ -655,17 +655,17 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}地図 -
 STR_SMALLMAP_TYPE_CONTOURS                                      :地形
 STR_SMALLMAP_TYPE_VEHICLES                                      :車両
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :産業
-STR_SMALLMAP_TYPE_ROUTES                                        :経路
+STR_SMALLMAP_TYPE_ROUTES                                        :路線
 STR_SMALLMAP_TYPE_VEGETATION                                    :植物
 STR_SMALLMAP_TYPE_OWNERS                                        :所有者
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}地図に土地の状態を表示します
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}地図に車両を表示します
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}地図に産業を表示します
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}地図に運送経路を表示します
-STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}地図に植物を表示します
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}地図に土地の所有者を表示します
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}産業をクリックすると、表示方法が切り替わります。Ctrlキー+クリックで、その産業以外を使用不可にします。もう一度同じ操作をすると、元に戻ります。
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}会社の所有物をクリックすると、表示方法が切り替わります。Ctrlキー+クリックで、その会社以外の所有物を使用不可にします。もう一度同じ操作をすると、元に戻ります。
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}地形の地図を表示します。
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}車両の場所の地図を表示します。
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}産業の分布の地図を表示します。
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}経路の地図を表示します。
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}植物の分布の地図を表示します。
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}土地の所有者の地図を表示します。
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}産業名をクリックすると、産業の表示／非表示が切り替わります。Ctrlキー+クリックで、その産業以外の表示を切り替えます。もう一度同じ操作をすると、元に戻ります。
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}会社名をクリックすると、その会社の所有している建物の表示／非表示が切り替わります。Ctrlキー+クリックで、その会社以外の表示を切り替えます。もう一度同じ操作をすると、元に戻ります。
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}道路
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}鉄道
@@ -685,7 +685,7 @@ STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}埠頭
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}荒地
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}草地
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}裸地
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}空地
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}田畑
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}木
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}岩石
@@ -696,7 +696,7 @@ STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}砂漠
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}雪
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}地図に町名の表示を切り替えます
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}地図での町名の表示／非表示を切り替えます。
 STR_SMALLMAP_CENTER                                             :{BLACK}ミニマップを現在の場所に移動します
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}

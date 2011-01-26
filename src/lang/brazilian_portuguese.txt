@@ -38,7 +38,7 @@ STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereais
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Madeira
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Minério de Ferro
 STR_CARGO_PLURAL_STEEL                                          :{G=m}Aço
-STR_CARGO_PLURAL_VALUABLES                                      :{G=f}Preciosidade
+STR_CARGO_PLURAL_VALUABLES                                      :{G=f}Preciosidades
 STR_CARGO_PLURAL_COPPER_ORE                                     :{G=m}Minério de Cobre
 STR_CARGO_PLURAL_MAIZE                                          :{G=m}Milho
 STR_CARGO_PLURAL_FRUIT                                          :{G=f}Fruta
@@ -66,52 +66,52 @@ STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Passageiro
 STR_CARGO_SINGULAR_COAL                                         :{G=m}Carvão
 STR_CARGO_SINGULAR_MAIL                                         :{G=f}Correspondência
 STR_CARGO_SINGULAR_OIL                                          :{G=m}Petróleo
-STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Gado
-STR_CARGO_SINGULAR_GOODS                                        :{G=m}Bens
-STR_CARGO_SINGULAR_GRAIN                                        :{G=m}Grãos
+STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Criação
+STR_CARGO_SINGULAR_GOODS                                        :{G=m}Mercadorias
+STR_CARGO_SINGULAR_GRAIN                                        :{G=m}Cereais
 STR_CARGO_SINGULAR_WOOD                                         :{G=f}Madeira
 STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Minério de ferro
 STR_CARGO_SINGULAR_STEEL                                        :{G=m}Aço
-STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}Dinheiro
+STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}Preciosidades
 STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=m}Minério de cobre
 STR_CARGO_SINGULAR_MAIZE                                        :{G=m}Milho
 STR_CARGO_SINGULAR_FRUIT                                        :{G=f}Fruta
 STR_CARGO_SINGULAR_DIAMOND                                      :{G=m}Diamante
-STR_CARGO_SINGULAR_FOOD                                         :{G=f}Comida
+STR_CARGO_SINGULAR_FOOD                                         :{G=f}Alimento
 STR_CARGO_SINGULAR_PAPER                                        :{G=m}Papel
 STR_CARGO_SINGULAR_GOLD                                         :{G=m}Ouro
 STR_CARGO_SINGULAR_WATER                                        :{G=f}Água
 STR_CARGO_SINGULAR_WHEAT                                        :{G=m}Trigo
 STR_CARGO_SINGULAR_RUBBER                                       :{G=f}Borracha
 STR_CARGO_SINGULAR_SUGAR                                        :{G=m}Açúcar
-STR_CARGO_SINGULAR_TOY                                          :{G=m}Brinquedos
-STR_CARGO_SINGULAR_CANDY                                        :{G=m}Doces
-STR_CARGO_SINGULAR_COLA                                         :{G=m}Xarope
+STR_CARGO_SINGULAR_TOY                                          :{G=m}Brinquedo
+STR_CARGO_SINGULAR_CANDY                                        :{G=m}Doce
+STR_CARGO_SINGULAR_COLA                                         :{G=m}Cola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=m}Algodão doce
-STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Bolhas
+STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Bolha
 STR_CARGO_SINGULAR_TOFFEE                                       :{G=m}Caramelo
-STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Pilhas
+STR_CARGO_SINGULAR_BATTERY                                      :{G=f}Pilha
 STR_CARGO_SINGULAR_PLASTIC                                      :{G=m}Plástico
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refrigerantes
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refrigerante
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passageiro{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} de carvão
-STR_QUANTITY_MAIL                                               :{COMMA} pacote{P "" s} de cartas
+STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correspondência
 STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} insumo{P "" s} de gado
-STR_QUANTITY_GOODS                                              :{COMMA} caixa{P "" s} de bens
-STR_QUANTITY_GRAIN                                              :{WEIGHT} de grãos
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} número{P "" s} de criação
+STR_QUANTITY_GOODS                                              :{COMMA} caixa{P "" s} de mercadorias
+STR_QUANTITY_GRAIN                                              :{WEIGHT} de cereais
 STR_QUANTITY_WOOD                                               :{WEIGHT} de madeira
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de minério de ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT} de aço
-STR_QUANTITY_VALUABLES                                          :{COMMA} saco{P "" s} de dinheiro
+STR_QUANTITY_VALUABLES                                          :{COMMA} saco{P "" s} de preciosidades
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de minério de cobre
 STR_QUANTITY_MAIZE                                              :{WEIGHT} de milho
 STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamante
-STR_QUANTITY_FOOD                                               :{WEIGHT} de comida
+STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamantes
+STR_QUANTITY_FOOD                                               :{WEIGHT} de alimentos
 STR_QUANTITY_PAPER                                              :{WEIGHT} de papel
 STR_QUANTITY_GOLD                                               :{COMMA} saco{P "" s} de ouro
 STR_QUANTITY_WATER                                              :{VOLUME} de água
@@ -119,8 +119,8 @@ STR_QUANTITY_WHEAT                                              :{WEIGHT} de tri
 STR_QUANTITY_RUBBER                                             :{VOLUME} de borracha
 STR_QUANTITY_SUGAR                                              :{WEIGHT} de açúcar
 STR_QUANTITY_TOYS                                               :{COMMA} brinquedo{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} saco{P "" s} de doce{P "" s}
-STR_QUANTITY_COLA                                               :{VOLUME} de xarope
+STR_QUANTITY_SWEETS                                             :{COMMA} saco{P "" s} de doces{P "" s}
+STR_QUANTITY_COLA                                               :{VOLUME} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algodão doce
 STR_QUANTITY_BUBBLES                                            :{COMMA} bolha{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} de caramelo
@@ -135,13 +135,13 @@ STR_ABBREV_PASSENGERS                                           :{TINYFONT}PA
 STR_ABBREV_COAL                                                 :{TINYFONT}CV
 STR_ABBREV_MAIL                                                 :{TINYFONT}CA
 STR_ABBREV_OIL                                                  :{TINYFONT}PE
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}GA
-STR_ABBREV_GOODS                                                :{TINYFONT}BE
-STR_ABBREV_GRAIN                                                :{TINYFONT}GR
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}CR
+STR_ABBREV_GOODS                                                :{TINYFONT}ME
+STR_ABBREV_GRAIN                                                :{TINYFONT}CE
 STR_ABBREV_WOOD                                                 :{TINYFONT}MA
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}MF
 STR_ABBREV_STEEL                                                :{TINYFONT}AÇ
-STR_ABBREV_VALUABLES                                            :{TINYFONT}DI
+STR_ABBREV_VALUABLES                                            :{TINYFONT}PR
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}MC
 STR_ABBREV_MAIZE                                                :{TINYFONT}MI
 STR_ABBREV_FRUIT                                                :{TINYFONT}FT
@@ -152,7 +152,7 @@ STR_ABBREV_GOLD                                                 :{TINYFONT}OU
 STR_ABBREV_WATER                                                :{TINYFONT}AG
 STR_ABBREV_WHEAT                                                :{TINYFONT}TG
 STR_ABBREV_RUBBER                                               :{TINYFONT}BO
-STR_ABBREV_SUGAR                                                :{TINYFONT}ÇU
+STR_ABBREV_SUGAR                                                :{TINYFONT}AÇ
 STR_ABBREV_TOYS                                                 :{TINYFONT}BR
 STR_ABBREV_SWEETS                                               :{TINYFONT}DO
 STR_ABBREV_COLA                                                 :{TINYFONT}CO
@@ -160,13 +160,13 @@ STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}AD
 STR_ABBREV_BUBBLES                                              :{TINYFONT}BO
 STR_ABBREV_TOFFEE                                               :{TINYFONT}CL
 STR_ABBREV_BATTERIES                                            :{TINYFONT}PI
-STR_ABBREV_PLASTIC                                              :{TINYFONT}PS
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}RE
 STR_ABBREV_NONE                                                 :{TINYFONT}NADA
 STR_ABBREV_ALL                                                  :{TINYFONT}TUDO
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passageiros{P "" s}
+STR_PASSENGERS                                                  :{COMMA} passageiro{P "" s}
 STR_BAGS                                                        :{COMMA} saco{P "" s}
 STR_TONS                                                        :{COMMA} tonelada{P "" s}
 STR_LITERS                                                      :{COMMA} litro{P "" s}
@@ -175,7 +175,7 @@ STR_CRATES                                                      :{COMMA} caixa{P
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Azul Escuro
-STR_COLOUR_PALE_GREEN                                           :Verde Claro
+STR_COLOUR_PALE_GREEN                                           :Verde Pálido
 STR_COLOUR_PINK                                                 :Rosa
 STR_COLOUR_YELLOW                                               :Amarelo
 STR_COLOUR_RED                                                  :Vermelho
@@ -218,26 +218,26 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pés
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Entre com o filtro desejado
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Entre uma palavra a ser filtrada
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Digite a sequencia de filtro
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Digite uma palavra-chave para filtrar a lista
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecionar forma de ordenação (descendente/ascendente)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Seleciona um critério de classificação
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Seleciona critério para filtração
-STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecionar ordem de classificação (descendente/ascendente)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecionar critério de classificação
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecionar critério para filtração
+STR_BUTTON_SORT_BY                                              :{BLACK}Classificar por
 STR_BUTTON_LOCATION                                             :{BLACK}Localização
 STR_BUTTON_RENAME                                               :{BLACK}Renomear
 
-STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fecha janela
-STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste para mover a janela
-STR_TOOLTIP_SHADE                                               :{BLACK}Esmaecer janela - mostra apenas a barra de título
-STR_TOOLTIP_DEBUG                                               :{BLACK}Exibir informação de NewGRF para "debugging"
-STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela para não fechar pela tecla 'Fechar Todas as Janelas'
+STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
+STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
+STR_TOOLTIP_SHADE                                               :{BLACK}Obscurecer janela - mostra apenas a barra de título
+STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informações de depuração do NewGRF
+STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como infechável pela tecla 'Fechar Todas as Janelas'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar a janela
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alterna entre janela grande/pequena
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela de tamanho grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - rola a lista acima/abaixo
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - Move a lista para esquerda/direita
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demole edifícios etc. num quadrado de terreno. Ctrl seleciona a área diagonalmente. Shift altera construção/mostrar estimação de custo
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - rola a lista para esquerda/direita
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir edifícios etc. num quadrado de terreno. Ctrl seleciona a área diagonalmente. Shift alterna construção/mostrar estimativa de custo
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Padrão
@@ -250,9 +250,9 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Comprimento: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Área: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Comprimento: {NUM}{}Diferença de Altura: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Diferença de altura: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM} x {NUM}{}Diferença de altura: {HEIGHT}
 
 
 # These are used in buttons
@@ -267,82 +267,82 @@ STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportado
 STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Lucros do último ano
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Lucro anual
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Lucro este ano
 STR_SORT_BY_AGE                                                 :Idade
 STR_SORT_BY_RELIABILITY                                         :Confiabilidade
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidade total por tipo de carga
 STR_SORT_BY_MAX_SPEED                                           :Velocidade máxima
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
-STR_SORT_BY_LENGTH                                              :Tamanho
+STR_SORT_BY_LENGTH                                              :Comprimento
 STR_SORT_BY_LIFE_TIME                                           :Vida útil restante
-STR_SORT_BY_TIMETABLE_DELAY                                     :Atraso do plano de horário
+STR_SORT_BY_TIMETABLE_DELAY                                     :Atraso de horário
 STR_SORT_BY_FACILITY                                            :Tipo de estação
-STR_SORT_BY_WAITING                                             :Valor da carga aguardando
+STR_SORT_BY_WAITING                                             :Valor da carga em espera
 STR_SORT_BY_RATING_MAX                                          :Maior avaliação de carga
 STR_SORT_BY_RATING_MIN                                          :Menor avaliação de carga
-STR_SORT_BY_ENGINE_ID                                           :No de Reg (padrão)
+STR_SORT_BY_ENGINE_ID                                           :N° de Reg (padrão)
 STR_SORT_BY_COST                                                :Custo
 STR_SORT_BY_POWER                                               :Potência
-STR_SORT_BY_TRACTIVE_EFFORT                                     :Tração
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Força de tração
 STR_SORT_BY_INTRO_DATE                                          :Data de Introdução
 STR_SORT_BY_RUNNING_COST                                        :Custo de Manutenção
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potência por Custo
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potência/Custo de Manutenção
 STR_SORT_BY_CARGO_CAPACITY                                      :Capacidade de Carga
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa o jogo
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Aumentar velocidade do jogo
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar jogo
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Acelera o jogo
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar jogo, abandonar jogo, sair
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Exibir mapa, visualização extra ou lista de placas
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Exibe diretório de cidades
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar jogo, abandonar jogo, desistir
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Exibir mapa, janela extra ou lista de placas
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Exibir diretório de cidades
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Exibir subsídios
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Exibe lista de estações da empresa
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Exibe informações financeiras da empresa
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Exibe informações gerais da empresa
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Exibe gráficos
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Exibe tabela de classificação das empresas
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financiar construção de uma nova indústria
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Exibe lista de trens da empresa. Ctrl+Clique liga/desliga a abertura da lista de trens/grupos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Exibe lista de automóveis da empresa. Ctrl+Clique liga/desliga a abertura da lista de automóveis/grupos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Exibe lista de embarcações da empresa. Ctrl+Clique liga/desliga a abertura da lista de embarações/grupos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Exibe lista de aeronaves da empresa. Ctrl+Clique liga/desliga a abertura da lista de aeronaves/grupos
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Aumenta o zoom
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Reduz o zoom
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Constrói ferrovias
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Constrói rodovias
-STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Constrói docas
-STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Constrói aeroportos
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abra a barra de modelação ambiental para elevar ou baixar terreno, plantar árvores, etc.
-STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Exibe janela som/música
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Exibe a última mensagem/notícia, exibir opções de mensagens
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações sobre o terreno, console, Debug da IA, screenshots, sobre OpenTTD
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Exibir lista de estações da empresa
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Exibir informações financeiras da empresa
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Exibir informações gerais da empresa
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Exibir diagramas
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Exibir tabela de classificação das empresas
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fundar construção de nova indústria or listar todas as indústrias
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Exibir lista de trens da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Exibir lista de veículos rodoviários da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Exibe lista de embarcações da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Exibe lista de aeronaves da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Amplia a visão
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Reduzir a visão
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir ferrovias
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construir rodovias
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construir docas
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construir aeroportos
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir a barra de paisagismo para elevar ou baixar terreno, plantar árvores, etc.
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Exibir janela de som/música
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Exibir a última mensagem/notícia, exibir opções de mensagens
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações sobre o terreno, console, Depuração de IA, screenshots, sobre OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar a barra de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvar cenário, abrir cenário, abandonar editor de cenário, sair
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvar cenário, abrir cenário, abandonar editor de cenário, desistir
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de Cenário
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Retrocede a data de inicio em 1 ano
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Avança a data de inicio em 1 ano
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clique para colocar o ano de início
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Mover a data inicial 1 ano para trás
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Mover a data inicial 1 ano para frente
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clique para digitar o ano de início
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Exibir mapa, lista de cidades
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Gerar terreno
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Gerar cidades
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gerar indústrias
-STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Contruir rodovias
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Shift altera construção/estimação de custo
-STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Posicione a placa
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Posicione o objeto. Shift altera construção/estimação de custo
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Geração de paisagem
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Geração de cidade
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Geração de indústria
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Contrução de rodovias
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Shift alterna construção/mostrar estimativa de custo
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar placa
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Shift alterna construção/mostrar estimativa de custo
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvar cenário
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Abrir cenário
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Carregar relevo
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Sair do editor
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Carregar cenário
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Carregar heightmap
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Desistir do editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Sair
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Desistir
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -350,28 +350,28 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do Jog
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Configurações de dificuldade
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Configurações avançadas
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Definições de IA
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Configurar NewGRF
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições do NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Exibir nomes de cidades
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Exibir nomes de estações
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Exibir nomes de pontos de controle
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Exibir placas
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nomes de cidade exibidas
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Nomes de estação exibidas
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Nomes de ponto de caminho exibidas
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Placas exibidas
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Animação completa
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Máximo de detalhes
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edifícios transparentes
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Nomes de estações transparentes
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Placas de estações transparentes
 ############ range ends here
 
 ############ range for file menu starts
 STR_FILE_MENU_SAVE_GAME                                         :Salvar jogo
-STR_FILE_MENU_LOAD_GAME                                         :Abrir jogo
+STR_FILE_MENU_LOAD_GAME                                         :Carregar jogo
 STR_FILE_MENU_QUIT_GAME                                         :Abandonar jogo
 STR_FILE_MENU_EXIT                                              :Sair
 ############ range ends here
 
 ############ range for map menu starts
-STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa mundi
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Visualizador extra
+STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa do mundo
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Janela extra
 STR_MAP_MENU_SIGN_LIST                                          :Lista de placas
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de cidades
@@ -847,11 +847,11 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Tráfego caótico em {TOWN}!{}{} Programa de reconstrução rodoviária financiado por {STRING} provoca 6 meses de miséria aos condutores!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Visualizador {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar para o visualizador
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar o local da tela principal para esta janela
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Colar do visualizador
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização deste visualizador para o visualizador principal
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Janela {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar para janela
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar o local da visão para esta janela
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Colar da janela
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização desta janela para a visão
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opções do Jogo
@@ -1197,7 +1197,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde escuro
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violeta
 STR_CONFIG_SETTING_REVERSE_SCROLLING                            :{LTBLUE}Rolar a tela no sentido oposto ao movimento do mouse: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Melhorar deslocamento do vizualizador extra: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :{LTBLUE}Suavizar rolamento da janela: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :{LTBLUE}Exibe distâncias quando usar ferramentas de construção: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :{LTBLUE}Exibir cores das empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :Nenhum
@@ -1399,7 +1399,7 @@ STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Exibir o
 STR_INTRO_TOOLTIP_DIFFICULTY_OPTIONS                            :{BLACK}Exibir opções de dificuldade
 STR_INTRO_TOOLTIP_ADVANCED_SETTINGS                             :{BLACK}Exibe as configurações avançadas
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Exibir configs. dos NewGRF
-STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checka por conteúdo on-line e upgrades
+STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Checar por conteúdo novo e atualizado para baixar
 STR_INTRO_TOOLTIP_AI_SETTINGS                                   :{BLACK}Exibir configs. da IA
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Sair de 'OpenTTD'
 
@@ -1423,13 +1423,13 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonar jogo
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Tem certeza que deseja abandonar este jogo?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Tem a certeza que deseja abandonar este cenário?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Você tem certeza que deseja abandonar este jogo?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Você tem certeza que quer abandonar este cenário?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trapaças
-STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de verificação indicam se esta trapaça já foi usada antes
-STR_CHEATS_WARNING                                              :{BLACK}Atenção! Você está prestes a trair os seus oponentes. Saiba que isto ficará registrado para sempre
+STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de verificação indicam se você usou esta trapaça antes
+STR_CHEATS_WARNING                                              :{BLACK}Atenção! Você está prestes a trair os seus companheiros oponentes. Tenha em mente que tal desgraça será lembrada pela eternidade
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando pela Co.: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadeira mágica (destrói indústrias, objetos estáticos): {ORANGE}{STRING}
@@ -1961,7 +1961,7 @@ STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Pa
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de entrada (elétrico){}Verde enquanto haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, mostra vermelho
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de saída(elétrico){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal combo (elétrico){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal avançado(Elétrico){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal de trajeto(Elétrico){}Um sinal de trajeto permite mais de um trem entrar em um bloco de sinal ao mesmo tempo, se o trem puder reservar um trajeto para um ponto seguro de parada. Sinais de trajeto padrões podem ser passados pelo lado de trás
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal avançado de mão única(Elétrico){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária
 STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter sinal{}Quando selecionado, clicar num sinal existente converte-o para o tipo selecionado e suas variantes. Ctrl+Clique muda a variante atual. Shift+Clique mostra a estimação de custo da conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidade dos sinais ao clicar e arrastar
@@ -2069,9 +2069,9 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreno
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Baixar um canto do terreno
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar um canto do terreno
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar terreno
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Baixar um canto do terreno. Arrastar abaixa o primeiro canto selecionado e nivela a área selecionada à altura do novo canto. CTRL seleciona a área diagonalmente. Shift alterna construção/mostra de estimativa de custo
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK} Elevar um canto do terreno. Arrastar eleva o primeiro canto selecionado e nivela a área selecionada à nova altura do canto. Ctrl seleciona a área diagonalmente. Shift alterna contrução/mostra de estimativa de custo
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar uma área do terreno à altura do primeiro canto selecionado. Ctrl seleciona uma área diagonalmente. Shift alterna contrução/mostra de estimativa de custo
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro. Shift altera construção/estimação de custo
 
 # Object construction window
@@ -2507,7 +2507,7 @@ STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Mudou o 
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{VEHICLE}' de '{COMPANY}' tem um tamanho inválido. Provavelmente causado por um NewGRF. O jogo pode travar ou sair de sincronia
 
 STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF '{0:STRING}' retorna informação incorreta
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de adaptação para '{1:ENGINE}' difere da lista de compras após a construção. Isso pode causar erros na autosubstituição/autoadaptação.
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informação de carga/readaptação para '{1:ENGINE}' difere da lista de aquisição após a construção. Isso pode causar a autorenovação/-substituição à falhar a readaptação corretamente.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no callback da produção
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
@@ -2549,7 +2549,7 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} necessário no inverno
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_LAST_MONTH                   :{ORANGE}{CARGO}{BLACK} entregue no mes passado
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centralizar visualização na cidade. Ctrl+Clique abre uma nova janela de visualização
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visão no local da cidade. Ctrl+Clique abre uma nova janela no local da cidade
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridade local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Exibir informações sobre a autoridade local
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Renomear cidade
@@ -2579,7 +2579,7 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novos
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar exclusividade da rede de transportes
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a autoridade local
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Iniciar uma campanha publicitária pequena, para atrair mais passageiros e cargas para sua empresa.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Iniciar uma pequena campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Custo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Iniciar uma campanha publicitária média, para atrair mais passageiros e cargas para sua empresa.{}Custo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Iniciar uma campanha publicitária grande, para atrair mais passageiros e cargas para sua empresa.{}Custo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Financiar a reconstrução da malha rodoviária urbana. Causa engarrafamentos consideráveis ao tráfego por até 6 meses.{}Custo: {CURRENCY}
@@ -2634,7 +2634,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Excelente
 STR_CARGO_RATING_OUTSTANDING                                    :Proeminente
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centralizar visualização no local estação. Ctrl+Clique abre uma nova janela de visualização
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar visão no local da estação. Ctrl+Clique abre uma nova janela no local da estação
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Alterar o nome da estação
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Exibir todos os trens que possuem esta estação nas ordens de serviço
@@ -2646,9 +2646,9 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Renomear estaç
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centralizar visualização no local do ponto de controle. Ctrl+Clique abre uma nova janela de visualização.
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar visão no local do ponto de caminho. Ctrl+Clique abre uma nova janela no local do ponto de caminho
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Renomear ponto de controle
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centralizar visualização na localização da bóia. Ctrl+Clique abre uma nova janela de visualização
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visão no local da bóia. Ctrl+Clique abre uma nova janela no local da bóia
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Renomear bóia
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de controle
@@ -2735,7 +2735,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes da
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produção no mês passado:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportado)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centralizar visualização na localização da indústria.Ctrl+Clique abre uma nova janela de visualização
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centrar visão no local da indústria.Ctrl+Clique abre uma nova janela no local da indústria
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nível de produção: {YELLOW}{COMMA}%
 
 ############ range for requires starts
@@ -2922,10 +2922,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Isso ir�
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Isso irá comprar uma cópia da embarcação. Clique neste botão e depois em uma embarcação dentro ou fora do depósito naval. Ctrl+Clique compartilhará as ordens. Shift+Clique mostra estimação de custo sem compra
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Isso irá comprar uma cópia de uma aeronave. Clique nesse botão e depois em uma aeronave dentro ou fora do hangar. Ctrl+Clique compartilhará as ordens. Shift+Clique mostra estimação de custo sem compra
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centralizar visualização na localização de um depósito ferroviário. Ctrl+Clique abre uma nova janela de visualização
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visão no local de um depósito ferroviário. Ctrl+Clique abre uma nova janela no local do depósito de trem
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centralizar visualização na localização da garagem. Ctrl+Clique abre uma nova janela de visualização
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centralizar visualização na localização do depósito naval. Ctrl+Clique abre uma nova janela de visualização
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centralizar visualização na localização do hangar. Ctrl+Clique abre uma nova janela de visualização
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar visão no local do depósito naval. Ctrl+Clique abre uma nova janela no local do depósito naval
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar visão no local do hangar. Ctrl+Clique abre uma nova janela no local do hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obtém uma lista de todos os trens com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obtém uma lista de todos os automóveis com esta garagem em suas ordens
@@ -2994,10 +2994,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Faz auto
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centralizar visualização na localização do trem. Ctrl+Clique segue o trem.
+STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrar visão no local do trem. Ctrl+Clique seguirá o trem na visão principal.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centralizar visualização na localização do veículo. Ctrl+Clique segue o veículo
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centralizar visualização na localização da embarcação. Ctrl+Clique segue o navio
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centralizar visualização na localização da aeronave. Ctrl+Clique segue a aeronave
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrar visão no local da embarcação. Ctrl+Clique seguirá o navio na visão
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrar visão no local da aeronave. Ctrl+Clique seguirá a aeronave na visão
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar trem para o depósito
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar veículo para a garagem. CTRL+clique irá apenas reparar
@@ -3227,7 +3227,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir para depósi
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir para hangar mais próximo
 STR_ORDER_CONDITIONAL                                           :Pulo de ordem condicional
 STR_ORDER_SHARE                                                 :Compartilhar ordens
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir nova ordem antes da ordem selecionada, ou adicionar no fim da lista. Ctrl marca estações como 'carregar completamente qualquer carga', pontos de controle como 'sem parar' e depósitos como 'manutenção'
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir nova ordem antes da ordem em destaque, ou adicionar no fim da lista. Ctrl torna ordens da estação 'carregar completamente qualquer carga', ordens de pontos de controle como 'sem parada' e ordens de depósito como 'serviço'. 'Compartilhar ordens' ou Ctrl deixa este veículo compartilhar ordens com o veículo selecionado. Clicar num veículo copia as ordens daquele veículo
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Inserir ordem avançada
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Exibir todos os veículos com a mesma rota

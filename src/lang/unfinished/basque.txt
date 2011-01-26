@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Click et
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Aldatu handia/txikia leihoaren tamaina
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Korritu barra - korrituz zerrenda gora/behera
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Korritu Barra - korrituz zerrenda ezkerra/eskuma
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Eraikinak etab desegin lurreko karratu batean
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Eraikinak etab. edo lur karratu bat eraistea. Ctrl area diagonalki aukeratzen du. Mayus eraikinaren kostu estimatua erakusten du.
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Lehenetsia
@@ -331,9 +331,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Paisaiar
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Herrien sorkuntza
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrien sorkuntza
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Errepideen eraikuntza
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Zuhaitzak landatu
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Zuhaitzak landatu. Mayus eraikinaren kostu estimatua aktibatzen du
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Errotulua ipini
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektua ipini
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Objektua ipini. Mayus eraikinaren kostu estimatua aktibatzen du
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Eszenarioa gorde
@@ -348,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Irten
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Jokoaren aukerak
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Zailtasun ezarpenak
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Ezarpen aurreratuak
+STR_SETTINGS_MENU_AI_SETTINGS                                   :IA-ren ezarpenak
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ezarpenak
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Transparentzia aukerak
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Herri izen erakutsiak
@@ -696,10 +697,14 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Aukeratu hirien izenak on/off mapan
 STR_SMALLMAP_CENTER                                             :{BLACK}Mapa txikia horain zauden posizioan zentratu
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Dena desgaitu
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Dena gaitu
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Altuera erakutsi
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Ez erakutsi industriarik mapan
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Erakutsi industria guztiak mapan
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Erakutsi konpaniaren propietate denak mapan
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Erakutsi azken mezu edo albiste erreportaia
@@ -810,8 +815,8 @@ STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} zaharra bihurtzen ari da
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} oso zaharra bihurtzen ari da
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} oso zaharra bihurtzen ari da eta premiaz ordeztu behar da
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ezin du biderik aurkitu jarraitzeko.
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} galduta dago.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} ezin du biderik aurkitu jarraitzeko
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} galduta dago
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}-ren irabazia aurreko urtean {CURRENCY} izan da
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} gelditua izan da agindutako eraldaketa tronpatu eta gero
@@ -826,8 +831,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} orain {STRING} onartzen du
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION}{STRING} eta {STRING} orain onartzen ditu
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Diru-laguntza eskaintza agortu egin da:{}{}{STRING} {STRING}tik {STRING}ra doanarentzat ez dago diru-laguntzarik orain.
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Diru-laguntza kenduta:{}{}{STRING} Ez dago diru-laguntzarik {STRING}tik {STRING}ra garraiatzeagatik.
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}Subsidio eskaintza agortu egin da:{}{}{STRING} {STRING}tik {STRING}ra doanarentzat ez dago subsidiorik orain.
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsidioa kenduta:{}{}{STRING} Ez dago subsidiorik {STRING}(e)tik {STRING}(e)ra garraiatzeagatik.
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Diru-laguntza eskaintza:{}{} {STRING} {STRING}tik {STRING}ra doan lehenengoari bertako udalak diru-laguntza emango dio urte batetan zehar!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Diru-laguntza{STRING}entzako!{}{}{STRING} {STRING}tik {STRING}ra egindako serbitzuak %50-a gehiago irabaziko dute hurrengo urtean zehar!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Diru-laguntza {STRING}entzako da!{}{}{STRING} {STRING}tik {STRING}ra egiten duen serbitzuak bikoitza irabaziko du hurrengo urtean zehar!
@@ -1078,9 +1083,9 @@ STR_CONFIG_SETTING_ON                                           :Piztuta
 STR_CONFIG_SETTING_DISABLED                                     :desaktibatua
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Ibilgailuaren abiadura estatu barran ikusi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Aldapa eta kostan eraikitzea baimendu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Eraikinen, trenbideen etabarren azpian paisaia aldatzeabaimendu. (autoaldapak): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Eraikinen, trenbideen etabarren azpian paisaia aldatzea baimendu. (autoaldapak): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Bilketa guneen tamaina errealago egitea baimendu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Udalarenak diren errepide, zubi, etabar gehiago kentzea baimendu: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Herriarenak diren errepide, zubi eta tunel gehiago kentzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tren oso luzeak eraikitzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Trenaren ke/txinparta kantitatea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Bat ere ez
@@ -1134,8 +1139,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :normal
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :ez
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :bai, baina geldi dauden garraioak baztertu
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :garraio guztiena
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Gertakariak azaltzearen atzerapena: {ORANGE}{STRING} segundu{P 0:1 "" ak}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Gertakariak azaltzearen atzerapena: {ORANGE}desaktibatua
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Erakutsi tresnei buruzko argibideak: {ORANGE}Pasatu sagua {STRING} segundu{P 0:1 "" ak}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Erakutsi tresnei buruzko argibideak: {ORANGE}Eskuineko Click
 
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Originala
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
@@ -1282,7 +1287,6 @@ STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Paisaia
 
 
 
-
 # Network game languages
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -1359,6 +1363,7 @@ STR_CONTENT_TYPE_BASE_MUSIC                                     :Base musika
 # Signal window
 
 # Bridge selection window
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 
 
 # Road construction toolbar
@@ -1397,7 +1402,8 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Helikoptero air
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektu hautaketa
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Aukeratu objektua eraikitzeko
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Aukeratu objektua eraikitzeko. Mayus eraikinaren kostuen estimazioa aktibatzen du
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Hautatu objektu klase bat eraikitzeko
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektua aurreikusi
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamainua: {GOLD}{NUM} x {NUM} karratu
 
@@ -1461,7 +1467,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Konpainia jabe 
 STR_SAVELOAD_LOAD_BUTTON                                        :{BLACK}Kargatu
 STR_SAVELOAD_LOAD_TOOLTIP                                       :{BLACK}Aukeratutako partida kargatu
 STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Jokoaren Xehetasunak
-STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ez dago informaziorik.
+STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Ez dago informaziorik
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 
@@ -1496,6 +1502,7 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}NewGRF a
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Bertsioa: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Gutxienezko bertsio bateragarria: {SILVER}{NUM}
 
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}OpenTTD-ren bertsio honekin bateraezina
 
 
 # NewGRF parameters window
@@ -1532,7 +1539,7 @@ STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Joan "sp
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}NewGRF errore larri bat gertatu da: {}{STRING}
-STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aukeratuta daukazun oinarrizko grafiko paketean "sprite" batzuk falta dira {}Mesedez eguneratu oinarrizko grafiko paketea
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Aukeratuta daukazun oinarrizko grafiko paketean "sprite" batzuk falta dira.{}Mesedez eguneratu oinarrizko grafiko paketea
 
 # NewGRF related 'general' warnings
 
@@ -1752,6 +1759,7 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARG
 
 
 
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Eskari guztiak ezabatu
 
 
 
@@ -1764,6 +1772,7 @@ STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automatikoa)
 
 
 
@@ -1836,6 +1845,8 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ez dago baliag
 # Error message titles
 
 # Generic construction errors
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... terraformazio mugara iritsi da
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... karratua nibelazio mugara iritsi da
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} bidean
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Ezin da jokoa geldituta dagoenean
 
@@ -1899,6 +1910,7 @@ STR_ERROR_TREE_WRONG_TERRAIN_FOR_TREE_TYPE                      :{WHITE}... zuha
 
 # Bridge related errors
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... zubia luzeegia da
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Zubia mapatik kanpo amaituko zuen
 
 # Tunnel related errors
 
@@ -2044,6 +2056,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
