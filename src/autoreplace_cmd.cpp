@@ -292,7 +292,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
  * @param evaluate_callback shall the start/stop callback be evaluated?
  * @return success or error
  */
-static inline CommandCost StartStopVehicle(const Vehicle *v, bool evaluate_callback)
+static inline CommandCost CmdStartStopVehicle(const Vehicle *v, bool evaluate_callback)
 {
 	return DoCommand(0, v->index, evaluate_callback ? 1 : 0, DC_EXEC | DC_AUTOREPLACE, CMD_START_STOP_VEHICLE);
 }
@@ -305,7 +305,7 @@ static inline CommandCost StartStopVehicle(const Vehicle *v, bool evaluate_callb
  * @param whole_chain move all vehicles following 'v' (true), or only 'v' (false)
  * @return success or error
  */
-static inline CommandCost MoveVehicle(const Vehicle *v, const Vehicle *after, DoCommandFlag flags, bool whole_chain)
+static inline CommandCost CmdMoveVehicle(const Vehicle *v, const Vehicle *after, DoCommandFlag flags, bool whole_chain)
 {
 	return DoCommand(0, v->index | (whole_chain ? 1 : 0) << 20, after != NULL ? after->index : INVALID_VEHICLE, flags, CMD_MOVE_RAIL_VEHICLE);
 }
@@ -330,10 +330,10 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 	if (cost.Succeeded()) {
 		/* Start the vehicle, might be denied by certain things */
 		assert((new_head->vehstatus & VS_STOPPED) != 0);
-		cost.AddCost(StartStopVehicle(new_head, true));
+		cost.AddCost(CmdStartStopVehicle(new_head, true));
 
 		/* Stop the vehicle again, but do not care about evil newgrfs allowing starting but not stopping :p */
-		if (cost.Succeeded()) cost.AddCost(StartStopVehicle(new_head, false));
+		if (cost.Succeeded()) cost.AddCost(CmdStartStopVehicle(new_head, false));
 	}
 
 	/* Last do those things which do never fail (resp. we do not care about), but which are not undo-able */
@@ -379,7 +379,7 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, DoCommandFlag flags, b
 
 		if ((flags & DC_EXEC) != 0) {
 			/* Move the new vehicle behind the old */
-			MoveVehicle(new_v, old_v, DC_EXEC, false);
+			CmdMoveVehicle(new_v, old_v, DC_EXEC, false);
 
 			/* Take over cargo
 			 * Note: We do only transfer cargo from the old to the new vehicle.
@@ -451,7 +451,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 		if (cost.Succeeded()) {
 			/* Separate the head, so we can start constructing the new chain */
 			Train *second = Train::From(old_head)->GetNextUnit();
-			if (second != NULL) cost.AddCost(MoveVehicle(second, NULL, DC_EXEC | DC_AUTOREPLACE, true));
+			if (second != NULL) cost.AddCost(CmdMoveVehicle(second, NULL, DC_EXEC | DC_AUTOREPLACE, true));
 
 			assert(Train::From(new_head)->GetNextUnit() == NULL);
 
@@ -470,11 +470,11 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 						/* Move the old engine to a separate row with DC_AUTOREPLACE. Else
 						 * moving the wagon in front may fail later due to unitnumber limit.
 						 * (We have to attach wagons without DC_AUTOREPLACE.) */
-						MoveVehicle(old_vehs[i], NULL, DC_EXEC | DC_AUTOREPLACE, false);
+						CmdMoveVehicle(old_vehs[i], NULL, DC_EXEC | DC_AUTOREPLACE, false);
 					}
 
 					if (last_engine == NULL) last_engine = append;
-					cost.AddCost(MoveVehicle(append, new_head, DC_EXEC, false));
+					cost.AddCost(CmdMoveVehicle(append, new_head, DC_EXEC, false));
 					if (cost.Failed()) break;
 				}
 				if (last_engine == NULL) last_engine = new_head;
@@ -493,10 +493,10 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 
 					if (RailVehInfo(append->engine_type)->railveh_type == RAILVEH_WAGON) {
 						/* Insert wagon after 'last_engine' */
-						CommandCost res = MoveVehicle(append, last_engine, DC_EXEC, false);
+						CommandCost res = CmdMoveVehicle(append, last_engine, DC_EXEC, false);
 
 						if (res.Succeeded() && wagon_removal && new_head->gcache.cached_total_length > old_total_length) {
-							MoveVehicle(append, NULL, DC_EXEC | DC_AUTOREPLACE, false);
+							CmdMoveVehicle(append, NULL, DC_EXEC | DC_AUTOREPLACE, false);
 							break;
 						}
 
@@ -565,12 +565,12 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 			if ((flags & DC_EXEC) == 0) {
 				/* Separate the head, so we can reattach the old vehicles */
 				Train *second = Train::From(old_head)->GetNextUnit();
-				if (second != NULL) MoveVehicle(second, NULL, DC_EXEC | DC_AUTOREPLACE, true);
+				if (second != NULL) CmdMoveVehicle(second, NULL, DC_EXEC | DC_AUTOREPLACE, true);
 
 				assert(Train::From(old_head)->GetNextUnit() == NULL);
 
 				for (int i = num_units - 1; i > 0; i--) {
-					CommandCost ret = MoveVehicle(old_vehs[i], old_head, DC_EXEC | DC_AUTOREPLACE, false);
+					CommandCost ret = CmdMoveVehicle(old_vehs[i], old_head, DC_EXEC | DC_AUTOREPLACE, false);
 					assert(ret.Succeeded());
 				}
 			}
@@ -671,7 +671,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 		bool was_stopped = free_wagon || ((v->vehstatus & VS_STOPPED) != 0);
 
 		/* Stop the vehicle */
-		if (!was_stopped) cost.AddCost(StartStopVehicle(v, true));
+		if (!was_stopped) cost.AddCost(CmdStartStopVehicle(v, true));
 		if (cost.Failed()) return cost;
 
 		assert(v->IsStoppedInDepot());
@@ -699,7 +699,7 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1
 		}
 
 		/* Restart the vehicle */
-		if (!was_stopped) cost.AddCost(StartStopVehicle(v, false));
+		if (!was_stopped) cost.AddCost(CmdStartStopVehicle(v, false));
 	}
 
 	if (cost.Succeeded() && nothing_to_do) cost = CommandCost(STR_ERROR_AUTOREPLACE_NOTHING_TO_DO);
