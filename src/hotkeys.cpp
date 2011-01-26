@@ -73,7 +73,7 @@ static uint16 ParseCode(const char *start, const char *end)
 		}
 	}
 	if (end - start == 1) {
-		if (*start >= 'a' && *start <= 'z') return *start - ('a' - 'A');
+		if (*start >= 'a' && *start <= 'z') return *start - ('a'-'A');
 		return *start;
 	}
 	return 0;

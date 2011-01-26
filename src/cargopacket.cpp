@@ -276,7 +276,7 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta
 			max_move -= cp->count;
 			this->packets.erase(it++);
 			static_cast<Tinst *>(this)->RemoveFromCache(cp);
-			switch(mta) {
+			switch (mta) {
 				case MTA_FINAL_DELIVERY:
 					payment->PayFinalDelivery(cp, cp->count);
 					delete cp;

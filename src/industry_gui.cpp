@@ -796,7 +796,7 @@ public:
 
 	virtual void SetStringParameters(int widget) const
 	{
-		if (widget== IVW_CAPTION) SetDParam(0, this->window_number);
+		if (widget == IVW_CAPTION) SetDParam(0, this->window_number);
 	}
 
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)

@@ -1428,7 +1428,7 @@ public:
 	static Hotkey<OrdersWindow> order_hotkeys[];
 };
 
-Hotkey<OrdersWindow> OrdersWindow::order_hotkeys[]= {
+Hotkey<OrdersWindow> OrdersWindow::order_hotkeys[] = {
 	Hotkey<OrdersWindow>('D', "skip", 0, &OrdersWindow::OrderClick_Skip),
 	Hotkey<OrdersWindow>('F', "delete", 0, &OrdersWindow::OrderClick_Delete),
 	Hotkey<OrdersWindow>('G', "goto", 0, &OrdersWindow::OrderClick_Goto),

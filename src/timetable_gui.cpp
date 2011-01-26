@@ -395,7 +395,7 @@ struct TimetableWindow : Window {
 						TextColour colour = (i == selected) ? TC_WHITE : TC_BLACK;
 						if (order->IsType(OT_CONDITIONAL)) {
 							string = STR_TIMETABLE_NO_TRAVEL;
-						} else if(order->IsType(OT_AUTOMATIC)) {
+						} else if (order->IsType(OT_AUTOMATIC)) {
 							string = STR_TIMETABLE_NOT_TIMETABLEABLE;
 							colour = ((i == selected) ? TC_SILVER : TC_GREY) | TC_NO_SHADE;
 						} else if (order->travel_time == 0) {
