@@ -1206,6 +1206,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 sareta
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 sareta
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ausazko
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Hirietan egin daitezke maila bereko pasaguneak: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}Herriake: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :debekatua
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :onartua
 
@@ -1226,7 +1227,19 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normala
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Arina
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Oso arina
 
+STR_CONFIG_SETTING_GUI                                          :{ORANGE}Interfacea
+STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Eraikuntza
+STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Garraioak
+STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Geltokiak
+STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomia
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Lehiakideak
+STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Erakutsi aukerak
+STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakzioa
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinaleak
+STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Ordenagailu jokalariak
+STR_CONFIG_SETTING_VEHICLES_TRAINS                              :{ORANGE}Trenak
+STR_CONFIG_SETTING_ECONOMY_TOWNS                                :{ORANGE}Herriak
+STR_CONFIG_SETTING_ECONOMY_INDUSTRIES                           :{ORANGE}Industriak
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Gomendatua)
@@ -1234,12 +1247,24 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_NPF             :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_YAPF            :YAPF {BLUE}(Gomendatua)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Gomendatua)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ez gomendatua)
 
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
+STR_INTRO_NEW_GAME                                              :{BLACK}Partida Berria
+STR_INTRO_LOAD_GAME                                             :{BLACK}Partida Kargatu
+STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Eszenarioa Jokatu
+STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Eszenario Editorea
+STR_INTRO_MULTIPLAYER                                           :{BLACK}Multijokoa
 
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Joko Ezarpenak
+STR_INTRO_DIFFICULTY                                            :{BLACK}Zailtasuna ({STRING})
+STR_INTRO_ADVANCED_SETTINGS                                     :{BLACK}Ezarpen Aurreratuak
+STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-ren Ezarpenak
+STR_INTRO_AI_SETTINGS                                           :{BLACK}IA-ren Ezarpenak
+STR_INTRO_QUIT                                                  :{BLACK}Irten
 
 
 
