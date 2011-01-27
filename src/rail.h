@@ -337,26 +337,22 @@ static inline Money RailClearCost(RailType railtype)
  */
 static inline Money RailConvertCost(RailType from, RailType to)
 {
-	/* rail -> el. rail
-	 * calculate the price as 5 / 4 of (cost build el. rail) - (cost build rail)
-	 * (the price of workers to get to place is that 1/4)
-	 */
-	if (HasPowerOnRail(from, to)) {
-		Money cost = ((RailBuildCost(to) - RailBuildCost(from)) * 5) >> 2;
-		if (cost != 0) return cost;
+	/* Get the costs for removing and building anew
+	 * A conversion can never be more costly */
+	Money rebuildcost = RailBuildCost(to) + RailClearCost(from);
+
+	/* Conversion between somewhat compatible railtypes:
+	 * Pay 1/8 of the target rail cost (labour costs) and additionally any difference in the
+	 * build costs, if the target type is more expensive (material upgrade costs).
+	 * Upgrade can never be more expensive than re-building. */
+	if (HasPowerOnRail(from, to) || HasPowerOnRail(to, from)) {
+		Money upgradecost = RailBuildCost(to) / 8 + max((Money)0, RailBuildCost(to) - RailBuildCost(from));
+		return min(upgradecost, rebuildcost);
 	}
 
-	/* el. rail -> rail
-	 * calculate the price as 1 / 4 of (cost build el. rail) - (cost build rail)
-	 * (the price of workers is 1 / 4 + price of copper sold to a recycle center)
-	 */
-	if (HasPowerOnRail(to, from)) {
-		Money cost = (RailBuildCost(from) - RailBuildCost(to)) >> 2;
-		if (cost != 0) return cost;
-	}
-
-	/* make the price the same as remove + build new type */
-	return RailBuildCost(to) + RailClearCost(from);
+	/* make the price the same as remove + build new type for rail types
+	 * which are not compatible in any way */
+	return rebuildcost;
 }
 
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
