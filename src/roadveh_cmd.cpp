@@ -155,6 +155,11 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
 	DrawSprite(sprite, pal, preferred_x, y);
 }
 
+/**
+ * Get length of a road vehicle.
+ * @param v Road vehicle to query length.
+ * @return Length of the given road vehicle.
+ */
 static uint GetRoadVehLength(const RoadVehicle *v)
 {
 	uint length = 8;
@@ -167,6 +172,11 @@ static uint GetRoadVehLength(const RoadVehicle *v)
 	return length;
 }
 
+/**
+ * Update the cache of a road vehicle.
+ * @param v Road vehicle needing an update of its cache.
+ * @pre \a v must be first road vehicle.
+ */
 void RoadVehUpdateCache(RoadVehicle *v)
 {
 	assert(v->type == VEH_ROAD);

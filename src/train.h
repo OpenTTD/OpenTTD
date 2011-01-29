@@ -21,26 +21,16 @@
 
 struct Train;
 
+/** Rail vehicle flags. */
 enum VehicleRailFlags {
-	VRF_REVERSING         = 0,
+	VRF_REVERSING                     = 0,
+	VRF_POWEREDWAGON                  = 3, ///< Wagon is powered.
+	VRF_REVERSE_DIRECTION             = 4, ///< Reverse the visible direction of the vehicle.
 
-	/* used to store if a wagon is powered or not */
-	VRF_POWEREDWAGON      = 3,
-
-	/* used to reverse the visible direction of the vehicle */
-	VRF_REVERSE_DIRECTION = 4,
-
-	/* used to mark that electric train engine is allowed to run on normal rail */
-	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6,
-
-	/* used for vehicle var 0xFE bit 8 (toggled each time the train is reversed, accurate for first vehicle only) */
-	VRF_TOGGLE_REVERSE = 7,
-
-	/* used to mark a train that can't get a path reservation */
-	VRF_TRAIN_STUCK    = 8,
-
-	/* used to mark a train that is just leaving a station */
-	VRF_LEAVING_STATION = 9,
+	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6, ///< Electric train engine is allowed to run on normal rail. */
+	VRF_TOGGLE_REVERSE                = 7, ///< Used for vehicle var 0xFE bit 8 (toggled each time the train is reversed, accurate for first vehicle only).
+	VRF_TRAIN_STUCK                   = 8, ///< Train can't get a path reservation.
+	VRF_LEAVING_STATION               = 9, ///< Train is just leaving a station.
 };
 
 /** Modes for ignoring signals. */

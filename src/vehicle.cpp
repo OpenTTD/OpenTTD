@@ -903,6 +903,10 @@ static void DoDrawVehicle(const Vehicle *v)
 		v->x_extent, v->y_extent, v->z_extent, v->z_pos, (v->vehstatus & VS_SHADOW) != 0);
 }
 
+/**
+ * Add the vehicle sprites that should be drawn at a part of the screen.
+ * @param dpi Rectangle being drawn.
+ */
 void ViewportAddVehicles(DrawPixelInfo *dpi)
 {
 	/* The bounding rectangle */
@@ -954,6 +958,13 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	}
 }
 
+/**
+ * Find the vehicle close to the clicked coordinates.
+ * @param vp Viewport clicked in.
+ * @param x  X coordinate in the viewport.
+ * @param y  Y coordinate in the viewport.
+ * @return Closest vehicle, or \c NULL if none found.
+ */
 Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 {
 	Vehicle *found = NULL, *v;
@@ -984,6 +995,10 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 	return found;
 }
 
+/**
+ * Decrease the value of a vehicle.
+ * @param v %Vehicle to devaluate.
+ */
 void DecreaseVehicleValue(Vehicle *v)
 {
 	v->value -= v->value >> 8;
@@ -1187,6 +1202,10 @@ uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *colour)
 	return (count * 100) / max;
 }
 
+/**
+ * Vehicle entirely entered the depot, update its status, orders, vehicle windows, service it, etc.
+ * @param v Vehicle that entered a depot.
+ */
 void VehicleEnterDepot(Vehicle *v)
 {
 	/* Always work with the front of the vehicle */
@@ -2357,11 +2376,11 @@ const GroundVehicleCache *Vehicle::GetGroundVehicleCache() const
 
 /**
  * Calculates the set of vehicles that will be affected by a given selection.
- * @param set Set of affected vehicles.
+ * @param set [inout] Set of affected vehicles.
  * @param v First vehicle of the selection.
  * @param num_vehicles Number of vehicles in the selection (not counting articulated parts).
- * @pre \c set must be empty.
- * @post \c set will contain the vehicles that will be refitted.
+ * @pre \a set must be empty.
+ * @post \a set will contain the vehicles that will be refitted.
  */
 void GetVehicleSet(VehicleSet &set, Vehicle *v, uint8 num_vehicles)
 {

@@ -118,7 +118,7 @@ extern bool LoadOldVehicle(LoadgameState *ls, int num);
 extern bool AfterLoadGame();
 extern void FixOldVehicles();
 
-/** Vehicle data structure. */
+/** %Vehicle data structure. */
 struct Vehicle : VehiclePool::PoolItem<&_vehicle_pool>, BaseVehicle {
 private:
 	Vehicle *next;                      ///< pointer to the next vehicle in the chain
@@ -141,7 +141,7 @@ public:
 	/**
 	 * Heading for this tile.
 	 * For airports and train stations this tile does not necessarily belong to the destination station,
-	 * but it can be used for heuristical purposes to estimate the distance.
+	 * but it can be used for heuristic purposes to estimate the distance.
 	 */
 	TileIndex dest_tile;
 
