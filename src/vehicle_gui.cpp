@@ -1785,7 +1785,7 @@ struct VehicleDetailsWindow : Window {
 	uint GetRoadVehDetailsHeight(const Vehicle *v)
 	{
 		uint desired_height;
-		if (RoadVehicle::From(v)->HasArticulatedPart()) {
+		if (v->HasArticulatedPart()) {
 			/* An articulated RV has its text drawn under the sprite instead of after it, hence 15 pixels extra. */
 			desired_height = WD_FRAMERECT_TOP + 15 + 3 * FONT_HEIGHT_NORMAL + 2 + WD_FRAMERECT_BOTTOM;
 			/* Add space for the cargo amount for each part. */
@@ -1962,7 +1962,7 @@ struct VehicleDetailsWindow : Window {
 				uint text_right = r.right - (rtl ? sprite_width : 0);
 
 				/* Articulated road vehicles use a complete line. */
-				if (v->type == VEH_ROAD && RoadVehicle::From(v)->HasArticulatedPart()) {
+				if (v->type == VEH_ROAD && v->HasArticulatedPart()) {
 					DrawVehicleImage(v, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, INVALID_VEHICLE, 0);
 				} else {
 					uint sprite_left  = rtl ? text_right : r.left;

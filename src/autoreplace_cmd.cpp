@@ -101,18 +101,18 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 	assert(!part_of_chain || new_head->IsPrimaryVehicle());
 	/* Loop through source parts */
 	for (Vehicle *src = old_veh; src != NULL; src = src->Next()) {
-		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != Train::From(old_veh)->other_multiheaded_part && !Train::From(src)->IsArticulatedPart()) {
+		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != Train::From(old_veh)->other_multiheaded_part && !src->IsArticulatedPart()) {
 			/* Skip vehicles, which do not belong to old_veh */
-			src = Train::From(src)->GetLastEnginePart();
+			src = src->GetLastEnginePart();
 			continue;
 		}
 		if (src->cargo_type >= NUM_CARGO || src->cargo.Count() == 0) continue;
 
 		/* Find free space in the new chain */
 		for (Vehicle *dest = new_head; dest != NULL && src->cargo.Count() > 0; dest = dest->Next()) {
-			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != Train::From(new_head)->other_multiheaded_part && !Train::From(dest)->IsArticulatedPart()) {
+			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != Train::From(new_head)->other_multiheaded_part && !dest->IsArticulatedPart()) {
 				/* Skip vehicles, which do not belong to new_head */
-				dest = Train::From(dest)->GetLastEnginePart();
+				dest = dest->GetLastEnginePart();
 				continue;
 			}
 			if (dest->cargo_type != src->cargo_type) continue;
@@ -218,7 +218,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
  */
 static EngineID GetNewEngineType(const Vehicle *v, const Company *c)
 {
-	assert(v->type != VEH_TRAIN || !Train::From(v)->IsArticulatedPart());
+	assert(v->type != VEH_TRAIN || !v->IsArticulatedPart());
 
 	if (v->type == VEH_TRAIN && Train::From(v)->IsRearDualheaded()) {
 		/* we build the rear ends of multiheaded trains with the front ones */

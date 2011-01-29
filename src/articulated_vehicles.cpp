@@ -221,19 +221,7 @@ bool IsArticulatedVehicleCarryingDifferentCargos(const Vehicle *v, CargoID *carg
 			}
 		}
 
-		switch (v->type) {
-			case VEH_TRAIN:
-				v = Train::From(v)->HasArticulatedPart() ? Train::From(v)->GetNextArticulatedPart() : NULL;
-				break;
-
-			case VEH_ROAD:
-				v = RoadVehicle::From(v)->HasArticulatedPart() ? v->Next() : NULL;
-				break;
-
-			default:
-				v = NULL;
-				break;
-		}
+		v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : NULL;
 	} while (v != NULL);
 
 	if (cargo_type != NULL) *cargo_type = first_cargo;
@@ -268,19 +256,7 @@ void CheckConsistencyOfArticulatedVehicle(const Vehicle *v)
 		assert(v->cargo_type < NUM_CARGO);
 		real_default_capacity[v->cargo_type] += v->cargo_cap;
 
-		switch (v->type) {
-			case VEH_TRAIN:
-				v = Train::From(v)->HasArticulatedPart() ? Train::From(v)->GetNextArticulatedPart() : NULL;
-				break;
-
-			case VEH_ROAD:
-				v = RoadVehicle::From(v)->HasArticulatedPart() ? v->Next() : NULL;
-				break;
-
-			default:
-				v = NULL;
-				break;
-		}
+		v = v->HasArticulatedPart() ? v->GetNextArticulatedPart() : NULL;
 	} while (v != NULL);
 
 	/* Check whether the vehicle carries more cargos than expected */

@@ -797,7 +797,7 @@ struct DepotWindow : Window {
 				loaded  [w->cargo_type] += w->cargo.Count();
 			}
 
-			if (w->type == VEH_TRAIN && !Train::From(w)->HasArticulatedPart()) {
+			if (w->type == VEH_TRAIN && !w->HasArticulatedPart()) {
 				num++;
 				if (!whole_chain) break;
 			}
@@ -911,7 +911,7 @@ struct DepotWindow : Window {
 						} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 							this->vehicle_over = INVALID_VEHICLE;
 							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
-						} else if (gdvp.head != NULL && Train::From(gdvp.head)->IsFrontEngine()) {
+						} else if (gdvp.head != NULL && gdvp.head->IsFrontEngine()) {
 							ShowVehicleViewWindow(gdvp.head);
 						}
 					}
