@@ -671,6 +671,75 @@ public:
 	{
 		return this->Next() != NULL && this->Next()->IsArticulatedPart();
 	}
+
+	/**
+	 * Get the next part of an articulated engine.
+	 * @return Next part of the articulated engine.
+	 * @pre The vehicle is an articulated engine.
+	 */
+	FORCEINLINE Vehicle *GetNextArticulatedPart() const
+	{
+		assert(this->HasArticulatedPart());
+		return this->Next();
+	}
+
+	/**
+	 * Get the first part of an articulated engine.
+	 * @return First part of the engine.
+	 */
+	FORCEINLINE Vehicle *GetFirstEnginePart()
+	{
+		Vehicle *v = this;
+		while (v->IsArticulatedPart()) v = v->Previous();
+		return v;
+	}
+
+	/**
+	 * Get the first part of an articulated engine.
+	 * @return First part of the engine.
+	 */
+	FORCEINLINE const Vehicle *GetFirstEnginePart() const
+	{
+		const Vehicle *v = this;
+		while (v->IsArticulatedPart()) v = v->Previous();
+		return v;
+	}
+
+	/**
+	 * Get the last part of an articulated engine.
+	 * @return Last part of the engine.
+	 */
+	FORCEINLINE Vehicle *GetLastEnginePart()
+	{
+		Vehicle *v = this;
+		while (v->HasArticulatedPart()) v = v->GetNextArticulatedPart();
+		return v;
+	}
+
+	/**
+	 * Get the next real (non-articulated part) vehicle in the consist.
+	 * @return Next vehicle in the consist.
+	 */
+	FORCEINLINE Vehicle *GetNextVehicle() const
+	{
+		const Vehicle *v = this;
+		while (v->HasArticulatedPart()) v = v->GetNextArticulatedPart();
+
+		/* v now contains the last articulated part in the engine */
+		return v->Next();
+	}
+
+	/**
+	 * Get the previous real (non-articulated part) vehicle in the consist.
+	 * @return Previous vehicle in the consist.
+	 */
+	FORCEINLINE Vehicle *GetPrevVehicle() const
+	{
+		Vehicle *v = this->Previous();
+		while (v != NULL && v->IsArticulatedPart()) v = v->Previous();
+
+		return v;
+	}
 };
 
 #define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)
@@ -721,6 +790,49 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	FORCEINLINE T *Previous() const { return (T *)this->Vehicle::Previous(); }
 
+	/**
+	 * Get the next part of an articulated engine.
+	 * @return Next part of the articulated engine.
+	 * @pre The vehicle is an articulated engine.
+	 */
+	FORCEINLINE T *GetNextArticulatedPart() { return (T *)this->Vehicle::GetNextArticulatedPart(); }
+
+	/**
+	 * Get the next part of an articulated engine.
+	 * @return Next part of the articulated engine.
+	 * @pre The vehicle is an articulated engine.
+	 */
+	FORCEINLINE T *GetNextArticulatedPart() const { return (T *)this->Vehicle::GetNextArticulatedPart(); }
+
+	/**
+	 * Get the first part of an articulated engine.
+	 * @return First part of the engine.
+	 */
+	FORCEINLINE T *GetFirstEnginePart() { return (T *)this->Vehicle::GetFirstEnginePart(); }
+
+	/**
+	 * Get the first part of an articulated engine.
+	 * @return First part of the engine.
+	 */
+	FORCEINLINE const T *GetFirstEnginePart() const { return (const T *)this->Vehicle::GetFirstEnginePart(); }
+
+	/**
+	 * Get the last part of an articulated engine.
+	 * @return Last part of the engine.
+	 */
+	FORCEINLINE T *GetLastEnginePart() { return (T *)this->Vehicle::GetLastEnginePart(); }
+
+	/**
+	 * Get the next real (non-articulated part) vehicle in the consist.
+	 * @return Next vehicle in the consist.
+	 */
+	FORCEINLINE T *GetNextVehicle() const { return (T *)this->Vehicle::GetNextVehicle(); }
+
+	/**
+	 * Get the previous real (non-articulated part) vehicle in the consist.
+	 * @return Previous vehicle in the consist.
+	 */
+	FORCEINLINE T *GetPrevVehicle() const { return (T *)this->Vehicle::GetPrevVehicle(); }
 
 	/**
 	 * Tests whether given index is a valid index for vehicle of this type
