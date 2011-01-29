@@ -303,12 +303,6 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	FORCEINLINE void ClearMultiheaded() { ClrBit(this->subtype, GVSF_MULTIHEADED); }
 
 	/**
-	 * Check if the vehicle is a front engine.
-	 * @return Returns true if the vehicle is a front engine.
-	 */
-	FORCEINLINE bool IsFrontEngine() const { return HasBit(this->subtype, GVSF_FRONT); }
-
-	/**
 	 * Check if the vehicle is a free wagon (got no engine in front of it).
 	 * @return Returns true if the vehicle is a free wagon.
 	 */
@@ -337,18 +331,6 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	 * @return True if the engine is the rear part of a dualheaded engine.
 	 */
 	FORCEINLINE bool IsRearDualheaded() const { return this->IsMultiheaded() && !this->IsEngine(); }
-
-	/**
-	 * Check if the vehicle is an articulated part of an engine.
-	 * @return Returns true if the vehicle is an articulated part.
-	 */
-	FORCEINLINE bool IsArticulatedPart() const { return HasBit(this->subtype, GVSF_ARTICULATED_PART); }
-
-	/**
-	 * Check if an engine has an articulated part.
-	 * @return True if the engine has an articulated part.
-	 */
-	FORCEINLINE bool HasArticulatedPart() const { return this->Next() != NULL && this->Next()->IsArticulatedPart(); }
 
 	/**
 	 * Update the GUI variant of the current speed of the vehicle.

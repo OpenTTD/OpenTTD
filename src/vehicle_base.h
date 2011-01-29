@@ -644,6 +644,33 @@ public:
 	bool IsEngineCountable() const;
 	bool HasDepotOrder() const;
 	void HandlePathfindingResult(bool path_found);
+
+	/**
+	 * Check if the vehicle is a front engine.
+	 * @return Returns true if the vehicle is a front engine.
+	 */
+	FORCEINLINE bool IsFrontEngine() const
+	{
+		return this->IsGroundVehicle() && HasBit(this->subtype, GVSF_FRONT);
+	}
+
+	/**
+	 * Check if the vehicle is an articulated part of an engine.
+	 * @return Returns true if the vehicle is an articulated part.
+	 */
+	FORCEINLINE bool IsArticulatedPart() const
+	{
+		return this->IsGroundVehicle() && HasBit(this->subtype, GVSF_ARTICULATED_PART);
+	}
+
+	/**
+	 * Check if an engine has an articulated part.
+	 * @return True if the engine has an articulated part.
+	 */
+	FORCEINLINE bool HasArticulatedPart() const
+	{
+		return this->Next() != NULL && this->Next()->IsArticulatedPart();
+	}
 };
 
 #define FOR_ALL_VEHICLES_FROM(var, start) FOR_ALL_ITEMS_FROM(Vehicle, vehicle_index, var, start)
