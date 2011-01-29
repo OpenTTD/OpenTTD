@@ -786,8 +786,8 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 				}
 			}
 
-			if (w->IsGroundVehicle() && w->HasArticulatedPart()) {
-				w = w->GetNextArticulatedPart();
+			if (v->IsGroundVehicle() && v->HasArticulatedPart()) {
+				v = v->GetNextArticulatedPart();
 			} else {
 				break;
 			}
