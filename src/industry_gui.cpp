@@ -1778,7 +1778,7 @@ struct CargoesField {
 			if (pt.x < cpos + CargoesField::HOR_CARGO_WIDTH) return this->u.cargo.vertical_cargoes[col];
 			cpos += CargoesField::HOR_CARGO_WIDTH + CargoesField::HOR_CARGO_SPACE;
 		}
-		// col = 0 -> left of first col, 1 -> left of 2nd col, ... this->u.cargo.num_cargoes right of last-col
+		/* col = 0 -> left of first col, 1 -> left of 2nd col, ... this->u.cargo.num_cargoes right of last-col. */
 
 		int vpos = VERT_INTER_INDUSTRY_SPACE / 2 + VERT_CARGO_EDGE;
 		uint row;
@@ -1789,7 +1789,7 @@ struct CargoesField {
 		}
 		if (row == MAX_CARGOES) return INVALID_CARGO;
 
-		// row = 0 -> at first horizontal row, row = 1 -> second horizontal row, 2 = 3rd horizontal row.
+		/* row = 0 -> at first horizontal row, row = 1 -> second horizontal row, 2 = 3rd horizontal row. */
 		if (col == 0) {
 			if (this->u.cargo.supp_cargoes[row] != INVALID_CARGO) return this->u.cargo.vertical_cargoes[this->u.cargo.supp_cargoes[row]];
 			if (left != NULL) {
