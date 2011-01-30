@@ -1159,8 +1159,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Auto-re
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} m{P 0:1 ês eses} antes/depois da idade máxima
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Dinheiro mínimo para fazer auto-renovação: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING} segundo{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Atraso de eventos de pairar do rato: {ORANGE}{STRING} segundo{P 0:1 "" s}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Atraso de eventos de pairar do rato: {ORANGE}desactivado
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Mostrar dicas da ferramenta: {ORANGE}{STRING} segundo{P 0:1 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Mostrar dicas da ferramenta: {ORANGE}Click direito
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Mostra população da cidade na janela da cidade: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Gerador de terra: {ORANGE}{STRING}
@@ -1609,7 +1609,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Máximo 
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limitar o servidor a um certo número de espectadores
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Idioma falado:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Outros jogadores ficarão a conhecer o idioma utilizado no servidor.
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Digite nome para o jogo de rede
 
@@ -2073,6 +2072,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecção de Objecto
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleccionar objecto para construir
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selecionar a classe do objecto a construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objecto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} quadrados
 
@@ -2413,6 +2413,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parâmet
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Sem informação disponível
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Ficheiro correspondente não encontrado
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Desactivado
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Incompatível com esta versão do OpenTTD
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}Insira parâmetros do NewGRF
 
@@ -3246,6 +3247,7 @@ STR_ORDER_STOP_ORDER                                            :(Parar)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
+STR_ORDER_AUTOMATIC                                             :(Automático)
 
 STR_ORDER_FULL_LOAD                                             :(Encher)
 STR_ORDER_FULL_LOAD_ANY                                         :(Encher de qq. carga)
