@@ -59,6 +59,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 		MarkTileDirtyByTile(tile);
 	}
 	_generating_world = false;
+	InvalidateWindowClassesData(WC_TOWN_VIEW, 0);
 }
 
 /** Scenario editor command that generates rocky areas */
