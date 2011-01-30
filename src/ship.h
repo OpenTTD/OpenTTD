@@ -27,7 +27,6 @@ struct Ship: public SpecializedVehicle<Ship, VEH_SHIP> {
 	/** We want to 'destruct' the right class. */
 	virtual ~Ship() { this->PreDestructor(); }
 
-	const char *GetTypeString() const { return "ship"; }
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_SHIP_INC : EXPENSES_SHIP_RUN; }

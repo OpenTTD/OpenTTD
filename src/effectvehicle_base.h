@@ -31,7 +31,6 @@ struct EffectVehicle : public SpecializedVehicle<EffectVehicle, VEH_EFFECT> {
 	/** We want to 'destruct' the right class. */
 	virtual ~EffectVehicle() {}
 
-	const char *GetTypeString() const { return "special vehicle"; }
 	void UpdateDeltaXY(Direction direction);
 	bool Tick();
 };

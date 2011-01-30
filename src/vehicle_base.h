@@ -259,12 +259,6 @@ public:
 	void HandleLoading(bool mode = false);
 
 	/**
-	 * Get a string 'representation' of the vehicle type.
-	 * @return the string representation.
-	 */
-	virtual const char *GetTypeString() const { return "base vehicle"; }
-
-	/**
 	 * Marks the vehicles to be redrawn and updates cached variables
 	 *
 	 * This method marks the area of the vehicle on the screen as dirty.
@@ -916,7 +910,6 @@ struct DisasterVehicle : public SpecializedVehicle<DisasterVehicle, VEH_DISASTER
 	/** We want to 'destruct' the right class. */
 	virtual ~DisasterVehicle() {}
 
-	const char *GetTypeString() const { return "disaster vehicle"; }
 	void UpdateDeltaXY(Direction direction);
 	bool Tick();
 };

@@ -98,7 +98,6 @@ struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 
 	friend struct GroundVehicle<RoadVehicle, VEH_ROAD>; // GroundVehicle needs to use the acceleration functions defined at RoadVehicle.
 
-	const char *GetTypeString() const { return "road vehicle"; }
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_ROADVEH_INC : EXPENSES_ROADVEH_RUN; }

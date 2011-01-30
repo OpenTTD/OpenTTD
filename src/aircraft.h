@@ -54,7 +54,6 @@ struct Aircraft : public SpecializedVehicle<Aircraft, VEH_AIRCRAFT> {
 	/** We want to 'destruct' the right class. */
 	virtual ~Aircraft() { this->PreDestructor(); }
 
-	const char *GetTypeString() const { return "aircraft"; }
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_AIRCRAFT_INC : EXPENSES_AIRCRAFT_RUN; }
