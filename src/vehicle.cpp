@@ -63,7 +63,7 @@ uint16 _returned_mail_refit_capacity; ///< Stores the mail capacity after a refi
 byte _age_cargo_skip_counter;         ///< Skip aging of cargo?
 
 
-/* Initialize the vehicle-pool */
+/** The pool with all our precious vehicles. */
 VehiclePool _vehicle_pool("Vehicle");
 INSTANTIATE_POOL_METHODS(Vehicle)
 
@@ -1805,9 +1805,13 @@ void Vehicle::DeleteUnreachedAutoOrders()
 	}
 }
 
+/**
+ * Prepare everything to begin the loading when arriving at a station.
+ * @pre IsTileType(this->tile, MP_STATION) || this->type == VEH_SHIP.
+ */
 void Vehicle::BeginLoading()
 {
-	assert(IsTileType(tile, MP_STATION) || type == VEH_SHIP);
+	assert(IsTileType(this->tile, MP_STATION) || this->type == VEH_SHIP);
 
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
 			this->current_order.GetDestination() == this->last_station_visited) {
@@ -1854,16 +1858,20 @@ void Vehicle::BeginLoading()
 	this->MarkDirty();
 }
 
+/**
+ * Perform all actions when leaving a station.
+ * @pre this->current_order.IsType(OT_LOADING)
+ */
 void Vehicle::LeaveStation()
 {
-	assert(current_order.IsType(OT_LOADING));
+	assert(this->current_order.IsType(OT_LOADING));
 
 	delete this->cargo_payment;
 
 	/* Only update the timetable if the vehicle was supposed to stop here. */
-	if (current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE) UpdateVehicleTimetable(this, false);
+	if (this->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE) UpdateVehicleTimetable(this, false);
 
-	current_order.MakeLeaveStation();
+	this->current_order.MakeLeaveStation();
 	Station *st = Station::Get(this->last_station_visited);
 	st->loading_vehicles.remove(this);
 

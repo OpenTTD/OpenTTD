@@ -473,6 +473,11 @@ static uint FixVehicleInclination(Vehicle *v, Direction dir)
 	return 1U << GVF_GOINGUP_BIT;
 }
 
+/**
+ * Perform a (large) amount of savegame conversion *magic* in order to
+ * load older savegames and to fill the caches for various purposes.
+ * @return True iff conversion went without a problem.
+ */
 bool AfterLoadGame()
 {
 	SetSignalHandlers();

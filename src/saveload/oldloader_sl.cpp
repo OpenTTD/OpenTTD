@@ -163,6 +163,11 @@ static void FixOldTowns()
 
 static StringID *_old_vehicle_names;
 
+/**
+ * Convert the old style vehicles into something that resembles
+ * the old new style savegames. Then #AfterLoadGame can handle
+ * the rest of the conversion.
+ */
 void FixOldVehicles()
 {
 	Vehicle *v;
@@ -1212,6 +1217,12 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_END()
 };
 
+/**
+ * Load the vehicles of an old style savegame.
+ * @param ls  State (buffer) of the currently loaded game.
+ * @param num The number of vehicles to load.
+ * @return True iff loading went without problems.
+ */
 bool LoadOldVehicle(LoadgameState *ls, int num)
 {
 	/* Read the TTDPatch flags, because we need some info from it */
