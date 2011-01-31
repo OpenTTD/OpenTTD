@@ -1860,7 +1860,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 
 	/* Get the current order */
 	order = v->GetOrder(v->cur_real_order_index);
-	if (order->IsType(OT_AUTOMATIC)) {
+	if (order != NULL && order->IsType(OT_AUTOMATIC)) {
 		assert(v->GetNumManualOrders() == 0);
 		order = NULL;
 	}
@@ -1927,7 +1927,7 @@ bool ProcessOrders(Vehicle *v)
 	v->UpdateRealOrderIndex();
 
 	const Order *order = v->GetOrder(v->cur_real_order_index);
-	if (order->IsType(OT_AUTOMATIC)) {
+	if (order != NULL && order->IsType(OT_AUTOMATIC)) {
 		assert(v->GetNumManualOrders() == 0);
 		order = NULL;
 	}
