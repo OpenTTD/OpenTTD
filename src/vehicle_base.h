@@ -222,7 +222,8 @@ public:
 
 	byte vehstatus;                     ///< Status
 	Order current_order;                ///< The current order (+ status, like: loading)
-	VehicleOrderID cur_order_index;     ///< The index to the current order
+	VehicleOrderID cur_real_order_index;///< The index to the current real (non-automatic) order
+	VehicleOrderID cur_auto_order_index;///< The index to the current automatic order
 
 	union {
 		OrderList *list;            ///< Pointer to the order list for this vehicle
@@ -549,7 +550,8 @@ public:
 	{
 		this->unitnumber = src->unitnumber;
 
-		this->cur_order_index = src->cur_order_index;
+		this->cur_real_order_index = src->cur_real_order_index;
+		this->cur_auto_order_index = src->cur_auto_order_index;
 		this->current_order = src->current_order;
 		this->dest_tile  = src->dest_tile;
 
@@ -599,15 +601,83 @@ public:
 	void UpdateVisualEffect(bool allow_power_change = true);
 	void ShowVisualEffect() const;
 
+private:
 	/**
-	 * Increments cur_order_index, keeps care of the wrap-around and invalidates the GUI.
+	 * Advance cur_real_order_index to the next real order.
+	 * cur_auto_order_index is not touched.
+	 */
+	void SkipToNextRealOrderIndex()
+	{
+		if (this->GetNumManualOrders() > 0) {
+			/* Advance to next real order */
+			do {
+				this->cur_real_order_index++;
+				if (this->cur_real_order_index >= this->GetNumOrders()) this->cur_real_order_index = 0;
+			} while (this->GetOrder(this->cur_real_order_index)->IsType(OT_AUTOMATIC));
+		} else {
+			this->cur_real_order_index = 0;
+		}
+	}
+
+public:
+	/**
+	 * Increments cur_auto_order_index, keeps care of the wrap-around and invalidates the GUI.
+	 * cur_real_order_index is incremented as well, if needed.
 	 * Note: current_order is not invalidated.
 	 */
-	void IncrementOrderIndex()
+	void IncrementAutoOrderIndex()
 	{
-		this->cur_order_index++;
-		if (this->cur_order_index >= this->GetNumOrders()) this->cur_order_index = 0;
+		if (this->cur_auto_order_index == this->cur_real_order_index) {
+			/* Increment real order index as well */
+			this->SkipToNextRealOrderIndex();
+		}
+
+		assert(this->cur_real_order_index == 0 || this->cur_real_order_index < this->GetNumOrders());
+
+		/* Advance to next automatic order */
+		do {
+			this->cur_auto_order_index++;
+			if (this->cur_auto_order_index >= this->GetNumOrders()) this->cur_auto_order_index = 0;
+		} while (this->cur_auto_order_index != this->cur_real_order_index && !this->GetOrder(this->cur_auto_order_index)->IsType(OT_AUTOMATIC));
+
 		InvalidateVehicleOrder(this, 0);
+	}
+
+	/**
+	 * Advanced cur_real_order_index to the next real order, keeps care of the wrap-around and invalidates the GUI.
+	 * cur_auto_order_index is incremented as well, if it was equal to cur_real_order_index, i.e. cur_real_order_index is skipped
+	 * but not any automatic orders.
+	 * Note: current_order is not invalidated.
+	 */
+	void IncrementRealOrderIndex()
+	{
+		if (this->cur_auto_order_index == this->cur_real_order_index) {
+			/* Increment both real and auto order */
+			this->IncrementAutoOrderIndex();
+		} else {
+			/* Increment real order only */
+			this->SkipToNextRealOrderIndex();
+			InvalidateVehicleOrder(this, 0);
+		}
+	}
+
+	/**
+	 * Skip automatic orders until cur_real_order_index is a non-automatic order.
+	 */
+	void UpdateRealOrderIndex()
+	{
+		/* Make sure the index is valid */
+		if (this->cur_real_order_index >= this->GetNumOrders()) this->cur_real_order_index = 0;
+
+		if (this->GetNumManualOrders() > 0) {
+			/* Advance to next real order */
+			while (this->GetOrder(this->cur_real_order_index)->IsType(OT_AUTOMATIC)) {
+				this->cur_real_order_index++;
+				if (this->cur_real_order_index >= this->GetNumOrders()) this->cur_real_order_index = 0;
+			}
+		} else {
+			this->cur_real_order_index = 0;
+		}
 	}
 
 	/**
@@ -619,8 +689,6 @@ public:
 	{
 		return (this->orders.list == NULL) ? NULL : this->orders.list->GetOrderAt(index);
 	}
-
-	Order *GetNextManualOrder(int index) const;
 
 	/**
 	 * Returns the last order of a vehicle, or NULL if it doesn't exists

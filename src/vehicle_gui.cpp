@@ -1187,7 +1187,7 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, Veh
 	VehicleOrderID oid = start;
 
 	do {
-		if (oid == v->cur_order_index) DrawString(left, right, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
+		if (oid == v->cur_real_order_index) DrawString(left, right, y, STR_TINY_RIGHT_ARROW, TC_BLACK);
 
 		if (order->IsType(OT_GOTO_STATION)) {
 			SetDParam(0, order->GetDestination());
@@ -1294,7 +1294,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 			DrawString(text_left, text_right, y, STR_TINY_GROUP, TC_BLACK);
 		}
 
-		if (show_orderlist) DrawSmallOrderList(v, orderlist_left, orderlist_right, y, v->cur_order_index);
+		if (show_orderlist) DrawSmallOrderList(v, orderlist_left, orderlist_right, y, v->cur_real_order_index);
 
 		if (v->IsInDepot()) {
 			str = STR_BLUE_COMMA;

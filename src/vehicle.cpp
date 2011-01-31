@@ -1266,7 +1266,7 @@ void VehicleEnterDepot(Vehicle *v)
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 
-		const Order *real_order = v->GetNextManualOrder(v->cur_order_index);
+		const Order *real_order = v->GetOrder(v->cur_real_order_index);
 		Order t = v->current_order;
 		v->current_order.MakeDummy();
 
@@ -1303,7 +1303,7 @@ void VehicleEnterDepot(Vehicle *v)
 			/* Part of orders */
 			v->DeleteUnreachedAutoOrders();
 			UpdateVehicleTimetable(v, true);
-			v->IncrementOrderIndex();
+			v->IncrementAutoOrderIndex();
 		}
 		if (t.GetDepotActionType() & ODATFB_HALT) {
 			/* Vehicles are always stopped on entering depots. Do not restart this one. */
@@ -1797,11 +1797,25 @@ uint GetVehicleCapacity(const Vehicle *v, uint16 *mail_capacity)
  */
 void Vehicle::DeleteUnreachedAutoOrders()
 {
-	const Order *order = this->GetOrder(this->cur_order_index);
-	while (order != NULL && order->IsType(OT_AUTOMATIC)) {
-		/* Delete order effectively deletes order, so get the next before deleting it. */
-		order = order->next;
-		DeleteOrder(this, this->cur_order_index);
+	const Order *order = this->GetOrder(this->cur_auto_order_index);
+	while (order != NULL) {
+		if (this->cur_auto_order_index == this->cur_real_order_index) break;
+
+		if (order->IsType(OT_AUTOMATIC)) {
+			/* Delete order effectively deletes order, so get the next before deleting it. */
+			order = order->next;
+			DeleteOrder(this, this->cur_auto_order_index);
+		} else {
+			/* Skip non-automatic orders, e.g. service-orders */
+			order = order->next;
+			this->cur_auto_order_index++;
+		}
+
+		/* Wrap around */
+		if (order == NULL) {
+			order = this->GetOrder(0);
+			this->cur_auto_order_index = 0;
+		}
 	}
 }
 
@@ -1817,7 +1831,7 @@ void Vehicle::BeginLoading()
 			this->current_order.GetDestination() == this->last_station_visited) {
 		this->DeleteUnreachedAutoOrders();
 
-		/* Now cur_order_index points to the destination station, and we can start loading */
+		/* Now both order indices point to the destination station, and we can start loading */
 		this->current_order.MakeLoading(true);
 		UpdateVehicleTimetable(this, true);
 
@@ -1832,14 +1846,14 @@ void Vehicle::BeginLoading()
 		/* We weren't scheduled to stop here. Insert an automatic order
 		 * to show that we are stopping here, but only do that if the order
 		 * list isn't empty. */
-		Order *in_list = this->GetOrder(this->cur_order_index);
+		Order *in_list = this->GetOrder(this->cur_auto_order_index);
 		if (in_list != NULL && this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID &&
 				(!in_list->IsType(OT_AUTOMATIC) ||
 				in_list->GetDestination() != this->last_station_visited)) {
 			Order *auto_order = new Order();
 			auto_order->MakeAutomatic(this->last_station_visited);
-			InsertOrder(this, auto_order, this->cur_order_index);
-			if (this->cur_order_index > 0) --this->cur_order_index;
+			InsertOrder(this, auto_order, this->cur_auto_order_index);
+			if (this->cur_auto_order_index > 0) --this->cur_auto_order_index;
 		}
 		this->current_order.MakeLoading(false);
 	}
@@ -1913,7 +1927,7 @@ void Vehicle::HandleLoading(bool mode)
 		default: return;
 	}
 
-	this->IncrementOrderIndex();
+	this->IncrementAutoOrderIndex();
 }
 
 /**
@@ -1948,7 +1962,7 @@ CommandCost Vehicle::SendToDepot(DoCommandFlag flags, DepotCommand command)
 		if (flags & DC_EXEC) {
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
 			 * then skip to the next order; effectively cancelling this forced service */
-			if (this->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) this->IncrementOrderIndex();
+			if (this->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) this->IncrementRealOrderIndex();
 
 			this->current_order.MakeDummy();
 			SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
@@ -2259,20 +2273,6 @@ void Vehicle::RemoveFromShared()
 
 	this->next_shared     = NULL;
 	this->previous_shared = NULL;
-}
-
-/**
- * Get the next manual (not OT_AUTOMATIC) order after the one at the given index.
- * @param index The index to start searching at.
- * @return The next manual order at or after index or NULL if there is none.
- */
-Order *Vehicle::GetNextManualOrder(int index) const
-{
-	Order *order = this->GetOrder(index);
-	while (order != NULL && order->IsType(OT_AUTOMATIC)) {
-		order = order->next;
-	}
-	return order;
 }
 
 void VehiclesYearlyLoop()

@@ -2536,6 +2536,14 @@ bool AfterLoadGame()
 			 * it should have set v->z_pos correctly. */
 			assert(v->tile != TileVirtXY(v->x_pos, v->y_pos) || v->z_pos == GetSlopeZ(v->x_pos, v->y_pos));
 		}
+
+		/* Fill Vehicle::cur_real_order_index */
+		FOR_ALL_VEHICLES(v) {
+			if (!v->IsPrimaryVehicle()) continue;
+
+			v->cur_real_order_index = v->cur_auto_order_index;
+			v->UpdateRealOrderIndex();
+		}
 	}
 
 	/* Road stops is 'only' updating some caches */

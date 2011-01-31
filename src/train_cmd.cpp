@@ -2291,7 +2291,7 @@ public:
 		old_order(_v->current_order),
 		old_dest_tile(_v->dest_tile),
 		old_last_station_visited(_v->last_station_visited),
-		index(_v->cur_order_index)
+		index(_v->cur_real_order_index)
 	{
 	}
 
@@ -2348,7 +2348,7 @@ public:
 			/* Don't increment inside the while because otherwise conditional
 			 * orders can lead to an infinite loop. */
 			++this->index;
-		} while (this->index != this->v->cur_order_index);
+		} while (this->index != this->v->cur_real_order_index);
 
 		return false;
 	}
@@ -2602,7 +2602,7 @@ TileIndex Train::GetOrderStationLocation(StationID station)
 	const Station *st = Station::Get(station);
 	if (!(st->facilities & FACIL_TRAIN)) {
 		/* The destination station has no trainstation tiles. */
-		this->IncrementOrderIndex();
+		this->IncrementRealOrderIndex();
 		return 0;
 	}
 

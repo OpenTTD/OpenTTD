@@ -195,8 +195,11 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 
 	SpriteID sprite = rtl ? SPR_ARROW_LEFT : SPR_ARROW_RIGHT;
 	Dimension sprite_size = GetSpriteSize(sprite);
-	if (v->cur_order_index == order_index) {
-		DrawSprite(sprite, PAL_NONE, rtl ? right - sprite_size.width : left, y + ((int)FONT_HEIGHT_NORMAL - (int)sprite_size.height) / 2);
+	if (v->cur_real_order_index == order_index) {
+		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + ((int)FONT_HEIGHT_NORMAL - (int)sprite_size.height) / 2);
+		DrawSprite(sprite, PAL_NONE, rtl ? right - 2 * sprite_size.width : left + sprite_size.width, y + ((int)FONT_HEIGHT_NORMAL - (int)sprite_size.height) / 2);
+	} else if (v->cur_auto_order_index == order_index) {
+		DrawSprite(sprite, PAL_NONE, rtl ? right -     sprite_size.width : left,                     y + ((int)FONT_HEIGHT_NORMAL - (int)sprite_size.height) / 2);
 	}
 
 	TextColour colour = TC_BLACK;
@@ -207,7 +210,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 	}
 
 	SetDParam(0, order_index + 1);
-	DrawString(left, rtl ? right - sprite_size.width - 3 : middle, y, STR_ORDER_INDEX, colour, SA_RIGHT | SA_FORCE);
+	DrawString(left, rtl ? right - 2 * sprite_size.width - 3 : middle, y, STR_ORDER_INDEX, colour, SA_RIGHT | SA_FORCE);
 
 	SetDParam(5, STR_EMPTY);
 
@@ -684,10 +687,10 @@ private:
 	void OrderClick_Skip(int i)
 	{
 		/* Don't skip when there's nothing to skip */
-		if (_ctrl_pressed && this->vehicle->cur_order_index == this->OrderGetSel()) return;
+		if (_ctrl_pressed && this->vehicle->cur_auto_order_index == this->OrderGetSel()) return;
 		if (this->vehicle->GetNumOrders() <= 1) return;
 
-		DoCommandP(this->vehicle->tile, this->vehicle->index, _ctrl_pressed ? this->OrderGetSel() : ((this->vehicle->cur_order_index + 1) % this->vehicle->GetNumOrders()),
+		DoCommandP(this->vehicle->tile, this->vehicle->index, _ctrl_pressed ? this->OrderGetSel() : ((this->vehicle->cur_auto_order_index + 1) % this->vehicle->GetNumOrders()),
 				CMD_SKIP_TO_ORDER | CMD_MSG(_ctrl_pressed ? STR_ERROR_CAN_T_SKIP_TO_ORDER : STR_ERROR_CAN_T_SKIP_ORDER));
 	}
 
@@ -1026,7 +1029,7 @@ public:
 
 		bool rtl = _current_text_dir == TD_RTL;
 		SetDParam(0, 99);
-		int index_column_width = GetStringBoundingBox(STR_ORDER_INDEX).width + GetSpriteSize(rtl ? SPR_ARROW_RIGHT : SPR_ARROW_LEFT).width + 3;
+		int index_column_width = GetStringBoundingBox(STR_ORDER_INDEX).width + 2 * GetSpriteSize(rtl ? SPR_ARROW_RIGHT : SPR_ARROW_LEFT).width + 3;
 		int middle = rtl ? r.right - WD_FRAMETEXT_RIGHT - index_column_width : r.left + WD_FRAMETEXT_LEFT + index_column_width;
 
 		int y = r.top + WD_FRAMERECT_TOP;

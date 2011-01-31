@@ -690,7 +690,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x0A: return v->current_order.MapOldOrder();
 		case 0x0B: return v->current_order.GetDestination();
 		case 0x0C: return v->GetNumOrders();
-		case 0x0D: return v->cur_order_index;
+		case 0x0D: return v->cur_real_order_index;
 		case 0x10:
 		case 0x11: {
 			uint ticks;

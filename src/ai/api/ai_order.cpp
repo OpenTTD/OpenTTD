@@ -132,7 +132,7 @@ static const Order *ResolveOrder(VehicleID vehicle_id, AIOrder::OrderPosition or
 	if (!AIVehicle::IsValidVehicle(vehicle_id)) return ORDER_INVALID;
 
 	if (order_position == ORDER_CURRENT) {
-		int cur_order_pos = ::Vehicle::Get(vehicle_id)->cur_order_index;
+		int cur_order_pos = ::Vehicle::Get(vehicle_id)->cur_real_order_index;
 		const Order *order = ::Vehicle::Get(vehicle_id)->GetOrder(0);
 		if (order == NULL) return ORDER_INVALID;
 		int num_automatic_orders = 0;

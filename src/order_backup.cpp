@@ -44,7 +44,7 @@ OrderBackup::OrderBackup(const Vehicle *v, uint32 user)
 {
 	this->user             = user;
 	this->tile             = v->tile;
-	this->orderindex       = v->cur_order_index;
+	this->orderindex       = v->cur_auto_order_index;
 	this->group            = v->group_id;
 	this->service_interval = v->service_interval;
 
@@ -87,7 +87,10 @@ void OrderBackup::DoRestore(Vehicle *v)
 	}
 
 	uint num_orders = v->GetNumOrders();
-	if (num_orders != 0) v->cur_order_index = this->orderindex % num_orders;
+	if (num_orders != 0) {
+		v->cur_real_order_index = v->cur_auto_order_index = this->orderindex % num_orders;
+		v->UpdateRealOrderIndex();
+	}
 	v->service_interval = this->service_interval;
 
 	/* Restore vehicle group */

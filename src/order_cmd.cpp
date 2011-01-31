@@ -824,12 +824,21 @@ void InsertOrder(Vehicle *v, Order *new_o, VehicleOrderID sel_ord)
 		assert(v->orders.list == u->orders.list);
 
 		/* If there is added an order before the current one, we need
-		 * to update the selected order */
-		if (sel_ord <= u->cur_order_index) {
-			uint cur = u->cur_order_index + 1;
+		 * to update the selected order. We do not change automatic/real order indices though.
+		 * If the new order is between the current auto order and real order, the auto order will
+		 * later skip the inserted order. */
+		if (sel_ord <= u->cur_real_order_index) {
+			uint cur = u->cur_real_order_index + 1;
 			/* Check if we don't go out of bound */
 			if (cur < u->GetNumOrders()) {
-				u->cur_order_index = cur;
+				u->cur_real_order_index = cur;
+			}
+		}
+		if (sel_ord <= u->cur_auto_order_index) {
+			uint cur = u->cur_auto_order_index + 1;
+			/* Check if we don't go out of bound */
+			if (cur < u->GetNumOrders()) {
+				u->cur_auto_order_index = cur;
 			}
 		}
 		/* Update any possible open window of the vehicle */
@@ -917,14 +926,31 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord)
 
 		/* NON-stop flag is misused to see if a train is in a station that is
 		 * on his order list or not */
-		if (sel_ord == u->cur_order_index && u->current_order.IsType(OT_LOADING)) {
+		if (sel_ord == u->cur_real_order_index && u->current_order.IsType(OT_LOADING)) {
 			u->current_order.SetNonStopType(ONSF_STOP_EVERYWHERE);
 			/* When full loading, "cancel" that order so the vehicle doesn't
 			 * stay indefinitely at this station anymore. */
 			if (u->current_order.GetLoadType() & OLFB_FULL_LOAD) u->current_order.SetLoadType(OLF_LOAD_IF_POSSIBLE);
 		}
 
-		if (sel_ord < u->cur_order_index) u->cur_order_index--;
+		if (sel_ord < u->cur_real_order_index) {
+			u->cur_real_order_index--;
+		} else if (sel_ord == u->cur_real_order_index) {
+			u->UpdateRealOrderIndex();
+		}
+
+		if (sel_ord < u->cur_auto_order_index) {
+			u->cur_auto_order_index--;
+		} else if (sel_ord == u->cur_auto_order_index) {
+			/* Make sure the index is valid */
+			if (u->cur_auto_order_index >= u->GetNumOrders()) u->cur_auto_order_index = 0;
+
+			/* Skip non-automatic orders for the auto-order-index (e.g. if the current auto order was deleted */
+			while (u->cur_auto_order_index != u->cur_real_order_index && !u->GetOrder(u->cur_auto_order_index)->IsType(OT_AUTOMATIC)) {
+				u->cur_auto_order_index++;
+				if (u->cur_auto_order_index >= u->GetNumOrders()) u->cur_auto_order_index = 0;
+			}
+		}
 
 		/* Update any possible open window of the vehicle */
 		InvalidateVehicleOrder(u, sel_ord | (INVALID_VEH_ORDER_ID << 8));
@@ -965,13 +991,14 @@ CommandCost CmdSkipToOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 	Vehicle *v = Vehicle::GetIfValid(veh_id);
 
-	if (v == NULL || !v->IsPrimaryVehicle() || sel_ord == v->cur_order_index || sel_ord >= v->GetNumOrders() || v->GetNumOrders() < 2) return CMD_ERROR;
+	if (v == NULL || !v->IsPrimaryVehicle() || sel_ord == v->cur_auto_order_index || sel_ord >= v->GetNumOrders() || v->GetNumOrders() < 2) return CMD_ERROR;
 
 	CommandCost ret = CheckOwnership(v->owner);
 	if (ret.Failed()) return ret;
 
 	if (flags & DC_EXEC) {
-		v->cur_order_index = sel_ord;
+		v->cur_auto_order_index = v->cur_real_order_index = sel_ord;
+		v->UpdateRealOrderIndex();
 
 		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 
@@ -1027,13 +1054,36 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		DeleteOrderWarnings(u);
 
 		for (; u != NULL; u = u->NextShared()) {
-			/* Update the current order */
-			if (u->cur_order_index == moving_order) {
-				u->cur_order_index = target_order;
-			} else if (u->cur_order_index > moving_order && u->cur_order_index <= target_order) {
-				u->cur_order_index--;
-			} else if (u->cur_order_index < moving_order && u->cur_order_index >= target_order) {
-				u->cur_order_index++;
+			/* Update the current order.
+			 * There are multiple ways to move orders, which result in cur_auto_order_index
+			 * and cur_real_order_index to not longer make any sense. E.g. moving another
+			 * real order between them.
+			 *
+			 * Basically one could choose to preserve either of them, but not both.
+			 * While both ways are suitable in this or that case from a human point of view, neither
+			 * of them makes really sense.
+			 * However, from an AI point of view, preserving cur_real_order_index is the most
+			 * predictable and transparent behaviour.
+			 *
+			 * With that decision it basically does not matter what we do to cur_auto_order_index.
+			 * If we change orders between the auto- and real-index, the auto orders are mostly likely
+			 * completely out-dated anyway. So, keep it simple and just keep cur_auto_order_index as well.
+			 * The worst which can happen is that a lot of automatic orders are removed when reaching current_order.
+			 */
+			if (u->cur_real_order_index == moving_order) {
+				u->cur_real_order_index = target_order;
+			} else if (u->cur_real_order_index > moving_order && u->cur_real_order_index <= target_order) {
+				u->cur_real_order_index--;
+			} else if (u->cur_real_order_index < moving_order && u->cur_real_order_index >= target_order) {
+				u->cur_real_order_index++;
+			}
+
+			if (u->cur_auto_order_index == moving_order) {
+				u->cur_auto_order_index = target_order;
+			} else if (u->cur_auto_order_index > moving_order && u->cur_auto_order_index <= target_order) {
+				u->cur_auto_order_index--;
+			} else if (u->cur_auto_order_index < moving_order && u->cur_auto_order_index >= target_order) {
+				u->cur_auto_order_index++;
 			}
 
 			assert(v->orders.list == u->orders.list);
@@ -1289,7 +1339,7 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			 * so do not care and those orders should not be active
 			 * when this function is called.
 			 */
-			if (sel_ord == u->cur_order_index &&
+			if (sel_ord == u->cur_real_order_index &&
 					(u->current_order.IsType(OT_GOTO_STATION) || u->current_order.IsType(OT_LOADING)) &&
 					u->current_order.GetLoadType() != order->GetLoadType()) {
 				u->current_order.SetLoadType(order->GetLoadType());
@@ -1468,7 +1518,7 @@ CommandCost CmdOrderRefit(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			InvalidateVehicleOrder(u, -2);
 
 			/* If the vehicle already got the current depot set as current order, then update current order as well */
-			if (u->cur_order_index == order_number && (u->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) {
+			if (u->cur_real_order_index == order_number && (u->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) {
 				u->current_order.SetRefit(cargo, subtype);
 			}
 		}
@@ -1742,7 +1792,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 		case OT_GOTO_DEPOT:
 			if ((order->GetDepotOrderType() & ODTFB_SERVICE) && !v->NeedsServicing()) {
 				UpdateVehicleTimetable(v, true);
-				v->IncrementOrderIndex();
+				v->IncrementRealOrderIndex();
 				break;
 			}
 
@@ -1771,7 +1821,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 				}
 
 				UpdateVehicleTimetable(v, true);
-				v->IncrementOrderIndex();
+				v->IncrementRealOrderIndex();
 			} else {
 				if (v->type != VEH_AIRCRAFT) {
 					v->dest_tile = Depot::Get(order->GetDestination())->xy;
@@ -1787,12 +1837,15 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 		case OT_CONDITIONAL: {
 			VehicleOrderID next_order = ProcessConditionalOrder(order, v);
 			if (next_order != INVALID_VEH_ORDER_ID) {
+				/* Jump to next_order. cur_auto_order_index becomes exactly that order,
+				 * cur_real_order_index might come after next_order. */
 				UpdateVehicleTimetable(v, false);
-				v->cur_order_index = next_order;
-				v->current_order_time += v->GetOrder(next_order)->travel_time;
+				v->cur_auto_order_index = v->cur_real_order_index = next_order;
+				v->UpdateRealOrderIndex();
+				v->current_order_time += v->GetOrder(v->cur_real_order_index)->travel_time;
 			} else {
 				UpdateVehicleTimetable(v, true);
-				v->IncrementOrderIndex();
+				v->IncrementRealOrderIndex();
 			}
 			break;
 		}
@@ -1802,18 +1855,22 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 			return false;
 	}
 
-	assert(v->cur_order_index < v->GetNumOrders());
+	assert(v->cur_auto_order_index < v->GetNumOrders());
+	assert(v->cur_real_order_index < v->GetNumOrders());
 
 	/* Get the current order */
-	order = v->GetNextManualOrder(v->cur_order_index);
-	if (order == NULL) {
-		order = v->GetNextManualOrder(0);
-		if (order == NULL) {
-			v->current_order.Free();
-			v->dest_tile = 0;
-			return false;
-		}
+	order = v->GetOrder(v->cur_real_order_index);
+	if (order->IsType(OT_AUTOMATIC)) {
+		assert(v->GetNumManualOrders() == 0);
+		order = NULL;
 	}
+
+	if (order == NULL) {
+		v->current_order.Free();
+		v->dest_tile = 0;
+		return false;
+	}
+
 	v->current_order = *order;
 	return UpdateOrderDest(v, order, conditional_depth + 1);
 }
@@ -1863,13 +1920,17 @@ bool ProcessOrders(Vehicle *v)
 		 * visited station will cause the vehicle to still stop. */
 		v->last_station_visited = v->current_order.GetDestination();
 		UpdateVehicleTimetable(v, true);
-		v->IncrementOrderIndex();
+		v->IncrementAutoOrderIndex();
 	}
 
 	/* Get the current order */
-	if (v->cur_order_index >= v->GetNumOrders()) v->cur_order_index = 0;
+	v->UpdateRealOrderIndex();
 
-	const Order *order = v->GetNextManualOrder(v->cur_order_index);
+	const Order *order = v->GetOrder(v->cur_real_order_index);
+	if (order->IsType(OT_AUTOMATIC)) {
+		assert(v->GetNumManualOrders() == 0);
+		order = NULL;
+	}
 
 	/* If no order, do nothing. */
 	if (order == NULL || (v->type == VEH_AIRCRAFT && !CheckForValidOrders(v))) {

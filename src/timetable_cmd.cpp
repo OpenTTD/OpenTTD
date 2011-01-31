@@ -33,7 +33,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
 	v->orders.list->UpdateOrderTimetable(delta);
 
 	for (v = v->FirstShared(); v != NULL; v = v->NextShared()) {
-		if (v->cur_order_index == order_number && v->current_order.Equals(*order)) {
+		if (v->cur_real_order_index == order_number && v->current_order.Equals(*order)) {
 			if (is_journey) {
 				v->current_order.travel_time = time;
 			} else {
@@ -248,7 +248,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	bool just_started = false;
 
 	/* This vehicle is arriving at the first destination in the timetable. */
-	if (v->cur_order_index == first_manual_order && travelling) {
+	if (v->cur_real_order_index == first_manual_order && travelling) {
 		/* If the start date hasn't been set, or it was set automatically when
 		 * the vehicle last arrived at the first destination, update it to the
 		 * current time. Otherwise set the late counter appropriately to when
@@ -288,10 +288,10 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 			 * processing of different orders when filling the timetable. */
 			time_taken = CeilDiv(max(time_taken, 1U), DAY_TICKS) * DAY_TICKS;
 
-			ChangeTimetable(v, v->cur_order_index, time_taken, travelling);
+			ChangeTimetable(v, v->cur_real_order_index, time_taken, travelling);
 		}
 
-		if (v->cur_order_index == first_manual_order && travelling) {
+		if (v->cur_real_order_index == first_manual_order && travelling) {
 			/* If we just started we would have returned earlier and have not reached
 			 * this code. So obviously, we have completed our round: So turn autofill
 			 * off again. */

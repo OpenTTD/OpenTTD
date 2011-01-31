@@ -206,7 +206,7 @@ struct TimetableWindow : Window {
 		bool travelling = (!v->current_order.IsType(OT_LOADING) || v->current_order.GetNonStopType() == ONSF_STOP_EVERYWHERE);
 		Ticks start_time = _date_fract - v->current_order_time;
 
-		FillTimetableArrivalDepartureTable(v, v->cur_order_index % v->GetNumOrders(), travelling, table, start_time);
+		FillTimetableArrivalDepartureTable(v, v->cur_real_order_index % v->GetNumOrders(), travelling, table, start_time);
 
 		return (travelling && v->lateness_counter < 0);
 	}
@@ -425,7 +425,7 @@ struct TimetableWindow : Window {
 				if (total_time <= 0 || v->GetNumOrders() <= 1 || !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) break;
 
 				TimetableArrivalDeparture *arr_dep = AllocaM(TimetableArrivalDeparture, v->GetNumOrders());
-				const VehicleOrderID cur_order = v->cur_order_index % v->GetNumOrders();
+				const VehicleOrderID cur_order = v->cur_real_order_index % v->GetNumOrders();
 
 				VehicleOrderID earlyID = BuildArrivalDepartureList(v, arr_dep) ? cur_order : (VehicleOrderID)INVALID_VEH_ORDER_ID;
 
