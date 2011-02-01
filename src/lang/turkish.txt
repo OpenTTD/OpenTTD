@@ -1093,12 +1093,12 @@ STR_CONFIG_SETTING_ON                                           :Açık
 STR_CONFIG_SETTING_DISABLED                                     :kapalı
 STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Durum çubuğunda arabanın hızını göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Sahile ve eğimli araziye inşaat: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Binaların, yolların, vb. altında kazıya izin ver (otomatik betonlama): {ORANGE}{STRING}
-STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Daha gerçekçi kapsama alanı: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Daha fazla şehir yollarını, köprülerini ve tünellerini yıkmaya izin ver: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlere izin ver: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Lokomotif duman/kıvılcım miktarı: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Hiçbiri
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Binaların, yolların, rayların v.b. altındaki araziyi değiştirmeye izin ver (otomatik eğim): {ORANGE}{STRING}
+STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}İstasyon kapsama alanlarının daha gerçeğe yakın ölçülerde olmasına izin ver: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Şehirlere ait köprülerin, yolların ve tünellerin yıkılmasına izin vermeleri için, şehir yetkililerinin toleransını artır: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlerin yapımına izin ver: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Araçlardan çıkan duman veya kıvılcım miktarı: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Yok
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orijinal
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Gerçekçi
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Tren ivme modeli: {ORANGE}{STRING}
@@ -1160,17 +1160,17 @@ STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tüm araçlar i
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :{LTBLUE}Bir aracın geliri eksi olunca uyar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Eski araçlar sürekli üretilsin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Araç eskiyince otomatik olarak yenile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Araç ömrüne su kadar ay yaklaşınca yenile: {ORANGE}{STRING}{LTBLUE}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Aracı, ömrünü doldurmadan/doldurduktan {ORANGE}{STRING}{LTBLUE} ay önce/sonra yenile
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Yenileme icin gerekli en az parayı otomatik yenile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hata mesajı görünme süresi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Hover gecikmesi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Hover gecikmesi: {ORANGE}kapalı
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Hata mesajlarının ekranda kalma süresi: {ORANGE}{STRING} saniye
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Fare ipuçlarının belirmesi için: {ORANGE} Fare kursörünü {STRING} saniye nesnenin üzerinde hareketsiz kalması gerekmektedir
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{ORANGE}Farenin sağ tuşuna tıklandığında {LTBLUE}fare ipuçlarını göster
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Şehir nüfusunu isminin yanına yaz: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Arazi üretici: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Özgün
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Petrol Rafinerilerinin kenardan mak. uzaklığı{ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Petrol Rafinerilerinin harita kenarından azami uzaklığı: {ORANGE}{STRING} karedir.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Kar kalınlığı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Arazinin engebesi (sadece TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Dümdüz
@@ -1185,11 +1185,11 @@ STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :{LTBLUE}Yüksek
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Saat yönünün tersi
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Saat yönü
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Düzlük bir senaryonun yükseklik seviyesi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Harita sınırlarında kareleri şekillendirmeye izin ver: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Harita kenarlarındaki karelerde bulunan araziyi şekillendirmeye izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Kuzey kenarda bir veya daha fazla kare boş değil
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Kenarlardan birinde bir veya daha fazla kare su değil
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}İstasyon genişleme sınırı: {ORANGE}{STRING} {RED}Uyarı: Yüksek değerler oyunu yavaşlatır
+STR_CONFIG_SETTING_STATION_SPREAD                               :{LTBLUE}İstasyon kapsama alanı sınırı: {ORANGE}{STRING} karedir. {RED}Uyarı: Yüksek değerler oyunu yavaşlatır
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubuğunu diğer araç çubuklarına bağla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :{LTBLUE}Küçük haritada kullanılan toprak rengi: {ORANGE}{STRING}
@@ -1249,10 +1249,10 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Yapı a
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Şirket mali tablosunda grup harcamaları: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Uygun araç bulunmadığında ilgili altyapıların yapılmasını engelle: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Her oyuncu için en fazla uçak: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Her oyuncu için en fazla gemi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Şirket başına azami tren sayısı: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Şirket başına azami karayolu aracı: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Şirket başına azami uçak sayısı: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_SHIPS                                    :{LTBLUE}Şirket başına azami gemi sayısı: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :{LTBLUE}Bilgisayar tren kullanmasın: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :{LTBLUE}Bilgisayar araba kullanmasın: {ORANGE}{STRING}
@@ -1263,13 +1263,13 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :{LTBLUE}Çok oy
 STR_CONFIG_SETTING_AI_MAX_OPCODES                               :{LTBLUE}YZ duraklatılmadan önceki opkod sayısı: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :{LTBLUE}Servis gecikmeleri yüzde ile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Trenler için varsayılan servis gecikmesi: {ORANGE}{STRING} gün/%
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :{LTBLUE}Trenler için varsayılan servis sıklığı: {ORANGE}{STRING} gün/%
 STR_CONFIG_SETTING_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Trenler için varsayılan servis gecikmesi: {ORANGE}kapalı
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Arabalar için varsayılan servis gecikmesi:: {ORANGE}{STRING} gün/%
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :{LTBLUE}Karayolu araçları için varsayılan servis sıklığı: {ORANGE}{STRING} gün/%
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_DISABLED               :{LTBLUE}Arabalar için varsayılan servis gecikmesi:: {ORANGE}kapalı
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Uçaklar için varsayılan servis gecikmesi: {ORANGE}{STRING} gün/%
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :{LTBLUE}Uçaklar için varsayılan servis sıklığı: {ORANGE}{STRING} gün/%
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Uçaklar için varsayılan servis gecikmesi: {ORANGE}kapalı
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Gemiler için varsayılan servis gecikmesi: {ORANGE}{STRING} gün/%
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :{LTBLUE}Gemiler için varsayılan servis sıklığı: {ORANGE}{STRING} gün/%
 STR_CONFIG_SETTING_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Gemiler için varsayılan servis gecikmesi: {ORANGE}kapalı
 STR_CONFIG_SETTING_NOSERVICE                                    :{LTBLUE}Bozulmalar kapalıysa sevisler kapalı olsun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :{LTBLUE}Vagonların treni yavaşlatması izinli: {ORANGE}{STRING}
@@ -1280,7 +1280,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Başlan
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Yüzeysel ekonomi (daha çok ve küçük çapta değişiklikler): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Diğer şirketlerin hisseleri alınabilsin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Besleme sistemlerinde etap paylarının ödenme yüzdesi: {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Sürüklerken her: {ORANGE}{STRING} karede bir sinyal koy
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Fareyi sürüklerken her: {ORANGE}{STRING} karede bir sinyal koy
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bu tarihten önce ışık yerine semafor kullan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Sinyal arayüzünü etkinleştir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Varsayılan sinyal tipi: {ORANGE}{STRING}
@@ -1319,10 +1319,10 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}Durum �
 STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Sol
 STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Orta
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Sağ
-STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}{STRING} piksel
+STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Pencerelerin yapışma uzaklığı: {ORANGE}{STRING} piksel
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}kapalı
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Pencere soft sınırı (yapşkan olmayan): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Pencere soft sınırı (yapşkan olmayan): {ORANGE}kapalı
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Azami sabitlenmemiş pencere sayısı: {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Azami sabitlenmemiş pencere sayısı: {ORANGE}kapalı
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Şehirlerin genişleme hızı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Hiçbiri
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Yavaş
@@ -1499,10 +1499,10 @@ STR_FACE_LOAD                                                   :{BLACK}Yükle
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Tercih edilen yüzü yükle
 STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi
 STR_FACE_FACECODE                                               :{BLACK}Oyuncu yüzü no.
-STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Oyuncu suratının numarasını göster/değiştir
-STR_FACE_FACECODE_CAPTION                                       :{WHITE}Oyuncu suratının numarasını göster/değiştir
+STR_FACE_FACECODE_TOOLTIP                                       :{BLACK}Şirket başkanının yüz portre numarasını göster ve/veya düzenle
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Şirket başkanının yüz portre numarasını göster ve/veya düzenle
 STR_FACE_FACECODE_SET                                           :{WHITE}Surat numarası ayarlandı
-STR_FACE_FACECODE_ERR                                           :{WHITE}Oyuncu surat numarası ayarlanamadı - 0 ve 4.294.967.295 arasında bir sayı olmalı!
+STR_FACE_FACECODE_ERR                                           :{WHITE}Şirket başkanının yüz portre numarası hatalıdır. - Yüz portre numarası 0 ve 4,294,967,295 arasında bir sayı olmalıdır!
 STR_FACE_SAVE                                                   :{BLACK}Kaydet
 STR_FACE_SAVE_TOOLTIP                                           :{BLACK}Tercih edilen yüzü kaydet
 STR_FACE_SAVE_DONE                                              :{WHITE}Bu yüz OpenTTD ayar dosyasına favoriniz olarak kaydedilecek
@@ -2278,12 +2278,12 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Satın alınmı
 
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD Hakkında
-STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Orijinal kopyalama hakkı {COPYRIGHT} 1995 Chris Sawyer, Her hakkı saklıdır
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD sürüm {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2011 OpenTTD takımı
+STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Telif hakkı {COPYRIGHT} 1995 Chris Sawyer, Her hakkı saklıdır
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD {REV} versiyonu
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2011 OpenTTD ekibi
 
 # Save/load game/scenario
-STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Kaydet
+STR_SAVELOAD_SAVE_CAPTION                                       :{WHITE}Oyunu Kaydet
 STR_SAVELOAD_LOAD_CAPTION                                       :{WHITE}Yükle
 STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Senaryoyu Kaydet
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Senaryoyu Yükle
