@@ -775,11 +775,10 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 
 	if (od.u->cur_speed == 0 || (od.u->vehstatus & VS_STOPPED)) {
 		v->overtaking_ctr = 0x11;
-		v->overtaking = 0x10;
+		v->overtaking = RVSB_DRIVE_SIDE;
 	} else {
-//		if (CheckRoadBlockedForOvertaking(&od)) return;
 		v->overtaking_ctr = 0;
-		v->overtaking = 0x10;
+		v->overtaking = RVSB_DRIVE_SIDE;
 	}
 }
 
