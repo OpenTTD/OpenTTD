@@ -2390,12 +2390,19 @@ bool AfterLoadGame()
 			bool hidden;
 			if (dir == vdir) { // Entering tunnel
 				hidden = frame >= _tunnel_visibility_frame[dir];
+				v->tile = vtile;
 			} else if (dir == ReverseDiagDir(vdir)) { // Leaving tunnel
 				hidden = frame < TILE_SIZE - _tunnel_visibility_frame[dir];
-			} else { // Something freaky going on?
-				NOT_REACHED();
+				/* v->tile changes at the moment when the vehicle leaves the tunnel. */
+				v->tile = hidden ? GetOtherTunnelBridgeEnd(vtile) : vtile;
+			} else {
+				/* We could get here in two cases:
+				 * - for road vehicles, it is reversing at the end of the tunnel
+				 * - it is crashed in the tunnel entry (both train or RV destroyed by UFO)
+				 * Whatever case it is, do not change anything and use the old values.
+				 * Especially changing RV's state would break its reversing in the middle. */
+				continue;
 			}
-			v->tile = vtile;
 
 			if (hidden) {
 				v->vehstatus |= VS_HIDDEN;
