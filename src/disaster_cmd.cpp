@@ -67,6 +67,8 @@ enum DisasterSubType {
 	ST_BIG_SUBMARINE,
 };
 
+static const uint INITIAL_DISASTER_VEHICLE_ZPOS = 135; ///< Initial Z position of flying disaster vehicles.
+
 static void DisasterClearSquare(TileIndex tile)
 {
 	if (EnsureNoVehicleOnGround(tile).Failed()) return;
@@ -527,7 +529,7 @@ static bool DisasterTick_Big_Ufo(DisasterVehicle *v)
 		}
 		DisasterVehicle *u = new DisasterVehicle();
 
-		InitializeDisasterVehicle(u, -6 * (int)TILE_SIZE, v->y_pos, 135, DIR_SW, ST_BIG_UFO_DESTROYER);
+		InitializeDisasterVehicle(u, -6 * (int)TILE_SIZE, v->y_pos, INITIAL_DISASTER_VEHICLE_ZPOS, DIR_SW, ST_BIG_UFO_DESTROYER);
 		u->big_ufo_destroyer_target = v->index;
 
 		DisasterVehicle *w = new DisasterVehicle();
@@ -691,7 +693,7 @@ static void Disaster_Zeppeliner_Init()
 	}
 
 	DisasterVehicle *v = new DisasterVehicle();
-	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_ZEPPELINER);
+	InitializeDisasterVehicle(v, x, 0, INITIAL_DISASTER_VEHICLE_ZPOS, DIR_SE, ST_ZEPPELINER);
 
 	/* Allocate shadow */
 	DisasterVehicle *u = new DisasterVehicle();
@@ -712,7 +714,7 @@ static void Disaster_Small_Ufo_Init()
 	DisasterVehicle *v = new DisasterVehicle();
 	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
-	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_SMALL_UFO);
+	InitializeDisasterVehicle(v, x, 0, INITIAL_DISASTER_VEHICLE_ZPOS, DIR_SE, ST_SMALL_UFO);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
@@ -746,7 +748,7 @@ static void Disaster_Airplane_Init()
 	int x = (MapSizeX() + 9) * TILE_SIZE - 1;
 	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
-	InitializeDisasterVehicle(v, x, y, 135, DIR_NE, ST_AIRPLANE);
+	InitializeDisasterVehicle(v, x, y, INITIAL_DISASTER_VEHICLE_ZPOS, DIR_NE, ST_AIRPLANE);
 
 	DisasterVehicle *u = new DisasterVehicle();
 	v->SetNext(u);
@@ -776,7 +778,7 @@ static void Disaster_Helicopter_Init()
 	int x = -16 * (int)TILE_SIZE;
 	int y = TileY(found->location.tile) * TILE_SIZE + 37;
 
-	InitializeDisasterVehicle(v, x, y, 135, DIR_SW, ST_HELICOPTER);
+	InitializeDisasterVehicle(v, x, y, INITIAL_DISASTER_VEHICLE_ZPOS, DIR_SW, ST_HELICOPTER);
 
 	DisasterVehicle *u = new DisasterVehicle();
 	v->SetNext(u);
@@ -799,7 +801,7 @@ static void Disaster_Big_Ufo_Init()
 	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 	int y = MapMaxX() * TILE_SIZE - 1;
 
-	InitializeDisasterVehicle(v, x, y, 135, DIR_NW, ST_BIG_UFO);
+	InitializeDisasterVehicle(v, x, y, INITIAL_DISASTER_VEHICLE_ZPOS, DIR_NW, ST_BIG_UFO);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
@@ -965,7 +967,7 @@ void ReleaseDisastersTargetingVehicle(VehicleID vehicle)
 				/* Revert to target-searching */
 				v->current_order.SetDestination(0);
 				v->dest_tile = RandomTile();
-				v->z_pos = 135;
+				v->z_pos = INITIAL_DISASTER_VEHICLE_ZPOS;
 				v->age = 0;
 			}
 		}
