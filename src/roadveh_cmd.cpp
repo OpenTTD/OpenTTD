@@ -1114,6 +1114,9 @@ static bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *p
 again:
 		uint start_frame = RVC_DEFAULT_START_FRAME;
 		if (IsReversingRoadTrackdir(dir)) {
+			/* When turning around we can't be overtaking. */
+			v->overtaking = 0;
+
 			/* Turning around */
 			if (v->roadtype == ROADTYPE_TRAM) {
 				/* Determine the road bits the tram needs to be able to turn around
