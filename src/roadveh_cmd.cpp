@@ -437,7 +437,7 @@ static void RoadVehSetRandomDirection(RoadVehicle *v)
 		uint32 r = Random();
 
 		v->direction = ChangeDir(v->direction, delta[r & 3]);
-		v->UpdateInclination(false, true);
+		v->UpdateViewport(true, true);
 	} while ((v = v->Next()) != NULL);
 }
 
