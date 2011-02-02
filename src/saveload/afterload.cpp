@@ -2377,6 +2377,10 @@ bool AfterLoadGame()
 		 * get messed up just after loading the savegame. This fixes that. */
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
+			/* Not all vehicle types can be inside a tunnel. Furthermore,
+			 * testing IsTunnelTile() for invalid tiles causes a crash. */
+			if (!v->IsGroundVehicle()) continue;
+
 			/* Is the vehicle in a tunnel? */
 			if (!IsTunnelTile(v->tile)) continue;
 
