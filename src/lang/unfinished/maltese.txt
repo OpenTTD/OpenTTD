@@ -284,6 +284,11 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 
 
 
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Turix industriji fuq il-mappa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Uri l-industriji kollha fuq il-mappa
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Turix il-propjeta tal-kumpanija fuq il-mappa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Uri l-propjeta kollha tal-kumpanija fuq il-mappa
 
 # Status bar messages
 
@@ -306,6 +311,7 @@ STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Ibni ind
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
 
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} mitluf
 
 
 
@@ -371,6 +377,15 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}Avza jekk jintilef il-vehikolu: {ORANGE}{STRING}
+
+
+
+
+
+
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :l-ebda azzjoni
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :l-azzjonijiet kollha
 
 
 
@@ -379,12 +394,9 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
-
-
-
-
-
-
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :Xellug
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Centru
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Lemin
 
 
 
@@ -403,6 +415,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 # Abandon game
 
 # Cheat window
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ibdel is-sena
 
 # Livery window
 
@@ -424,7 +437,6 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 
 
 
-
 # Network game languages
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -440,6 +452,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :oħrajn
 ############ Leave those lines in this order!!
 
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} imnizzlin s'issa
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} imnizzlin s'issa
 
 
 
@@ -498,6 +512,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 # Signal window
 
 # Bridge selection window
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 
 
 # Road construction toolbar
@@ -522,6 +537,7 @@ STR_NETWORK_ERROR_CLIENT_WRONG_PASSWORD                         :password ħażi
 # Landscaping toolbar
 
 # Object construction window
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Aghzel il-klassi tal-oggett li se tibni
 
 
 # Tree planting window (last two for SE only)
@@ -583,6 +599,7 @@ STR_NEWGRF_SETTINGS_RESCAN_FILES_TOOLTIP                        :{BLACK}Aġġorn
 
 
 
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Ma jaqblux ma din il-verzjoni ta' OpenTTD
 
 
 # NewGRF parameters window
@@ -773,6 +790,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Biddel l-isem t
 
 
 
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Hassar l-ordnijiet kollha
 
 
 
@@ -782,6 +800,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Biddel l-isem t
 
 
 
+STR_ORDER_AUTOMATIC                                             :(Awtomatiku)
 
 
 
@@ -880,6 +899,7 @@ STR_ERROR_CAN_T_RENAME_DEPOT                                    :{WHITE}Ma tista
 # Tree related errors
 
 # Bridge related errors
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}Il-pont jispicca barra l-mappa
 
 # Tunnel related errors
 
@@ -1201,6 +1221,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
