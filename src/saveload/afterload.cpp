@@ -2242,20 +2242,6 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionBefore(139)) {
-		Train *t;
-		FOR_ALL_TRAINS(t) {
-			/* Copy old GOINGUP / GOINGDOWN flags. */
-			if (HasBit(t->flags, 1)) {
-				ClrBit(t->flags, 1);
-				SetBit(t->gv_flags, GVF_GOINGUP_BIT);
-			} else if (HasBit(t->flags, 2)) {
-				ClrBit(t->flags, 2);
-				SetBit(t->gv_flags, GVF_GOINGDOWN_BIT);
-			}
-		}
-	}
-
 	if (IsSavegameVersionBefore(140)) {
 		Station *st;
 		FOR_ALL_STATIONS(st) {
@@ -2470,6 +2456,14 @@ bool AfterLoadGame()
 			switch (v->type) {
 				case VEH_TRAIN: {
 					Train *t = Train::From(v);
+
+					/* Clear old GOINGUP / GOINGDOWN flags.
+					 * It was changed in savegame version 139, but savegame
+					 * version 158 doesn't use these bits, so it doesn't hurt
+					 * to clear them unconditionally. */
+					ClrBit(t->flags, 1);
+					ClrBit(t->flags, 2);
+
 					/* Clear both bits first. */
 					ClrBit(t->gv_flags, GVF_GOINGUP_BIT);
 					ClrBit(t->gv_flags, GVF_GOINGDOWN_BIT);
