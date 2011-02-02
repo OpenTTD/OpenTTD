@@ -108,7 +108,7 @@ static void FixTTDDepots()
 {
 	const Depot *d;
 	FOR_ALL_DEPOTS_FROM(d, 252) {
-		if (!IsRoadDepotTile(d->xy) && !IsRailDepotTile(d->xy) && !IsShipDepotTile(d->xy) && !IsHangarTile(d->xy)) {
+		if (!IsDepotTile(d->xy) || GetDepotIndex(d->xy) != d->index) {
 			/** Workaround for SVXConverter bug, depots 252-255 could be invalid */
 			delete d;
 		}
@@ -670,7 +670,10 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, d, depot_chunk)) return false;
 
 	if (d->xy != 0) {
-		d->town = Town::Get(RemapTownIndex(_old_town_index));
+		/* In some cases, there could be depots referencing invalid town. */
+		Town *t = Town::GetIfValid(RemapTownIndex(_old_town_index));
+		if (t == NULL) t = Town::GetRandom();
+		d->town = t;
 	} else {
 		delete d;
 	}
