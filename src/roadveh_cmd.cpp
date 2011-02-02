@@ -773,13 +773,10 @@ static void RoadVehCheckOvertake(RoadVehicle *v, RoadVehicle *u)
 	od.tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (CheckRoadBlockedForOvertaking(&od)) return;
 
-	if (od.u->cur_speed == 0 || (od.u->vehstatus & VS_STOPPED)) {
-		v->overtaking_ctr = 0x11;
-		v->overtaking = RVSB_DRIVE_SIDE;
-	} else {
-		v->overtaking_ctr = 0;
-		v->overtaking = RVSB_DRIVE_SIDE;
-	}
+	/* When the vehicle in front of us is stopped we may only take
+	 * half the time to pass it than when the vehicle is moving. */
+	v->overtaking_ctr = (od.u->cur_speed == 0 || (od.u->vehstatus & VS_STOPPED)) ? RV_OVERTAKE_TIMEOUT / 2 : 0;
+	v->overtaking = RVSB_DRIVE_SIDE;
 }
 
 static void RoadZPosAffectSpeed(RoadVehicle *v, byte old_z)
@@ -1043,7 +1040,7 @@ static bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *p
 		if (IsTileType(v->tile, MP_STATION)) {
 			/* Force us to be not overtaking! */
 			v->overtaking = 0;
-		} else if (++v->overtaking_ctr >= 35) {
+		} else if (++v->overtaking_ctr >= RV_OVERTAKE_TIMEOUT) {
 			/* If overtaking just aborts at a random moment, we can have a out-of-bound problem,
 			 *  if the vehicle started a corner. To protect that, only allow an abort of
 			 *  overtake if we are on straight roads */
