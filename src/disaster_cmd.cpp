@@ -307,17 +307,28 @@ static bool DisasterTick_Ufo(DisasterVehicle *v)
 		}
 		v->current_order.SetDestination(1);
 
+		uint n = 0; // Total number of targetable road vehicles.
 		RoadVehicle *u;
 		FOR_ALL_ROADVEHICLES(u) {
-			if (u->IsFrontEngine()) {
-				v->dest_tile = u->index;
-				v->age = 0;
-				return true;
-			}
+			if (u->IsFrontEngine()) n++;
 		}
 
-		delete v;
-		return false;
+		if (n == 0) {
+			/* If there are no targetable road vehicles, destroy the UFO. */
+			delete v;
+			return false;
+		}
+
+		n = RandomRange(n); // Choose one of them.
+		FOR_ALL_ROADVEHICLES(u) {
+			/* Find (n+1)-th road vehicle. */
+			if (u->IsFrontEngine() && (n-- == 0)) break;
+		}
+
+		/* Target it. */
+		v->dest_tile = u->index;
+		v->age = 0;
+		return true;
 	} else {
 		/* Target a vehicle */
 		RoadVehicle *u = RoadVehicle::Get(v->dest_tile);
