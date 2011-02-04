@@ -622,9 +622,6 @@ CommandCost CmdInsertOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			/* Non stop only allowed for ground vehicles. */
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && !v->IsGroundVehicle()) return CMD_ERROR;
 
-			/* No load and no unload are mutual exclusive. */
-			if ((new_order.GetLoadType() & OLFB_NO_LOAD) && (new_order.GetUnloadType() & OUFB_NO_UNLOAD)) return CMD_ERROR;
-
 			/* Filter invalid load/unload types. */
 			switch (new_order.GetLoadType()) {
 				case OLF_LOAD_IF_POSSIBLE: case OLFB_FULL_LOAD: case OLF_FULL_LOAD_ANY: case OLFB_NO_LOAD: break;
@@ -1250,17 +1247,10 @@ CommandCost CmdModifyOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			case MOF_UNLOAD:
 				order->SetUnloadType((OrderUnloadFlags)data);
-				if ((data & OUFB_NO_UNLOAD) != 0 && (order->GetLoadType() & OLFB_NO_LOAD) != 0) {
-					order->SetLoadType((OrderLoadFlags)(order->GetLoadType() & ~OLFB_NO_LOAD));
-				}
 				break;
 
 			case MOF_LOAD:
 				order->SetLoadType((OrderLoadFlags)data);
-				if ((data & OLFB_NO_LOAD) != 0 && (order->GetUnloadType() & OUFB_NO_UNLOAD) != 0) {
-					/* No load + no unload isn't compatible */
-					order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() & ~OUFB_NO_UNLOAD));
-				}
 				break;
 
 			case MOF_DEPOT_ACTION: {

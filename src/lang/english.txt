@@ -3251,9 +3251,10 @@ STR_ORDER_TRANSFER                                              :(Transfer and t
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfer and wait for full load)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfer and wait for any full load)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfer and leave empty)
-STR_ORDER_NO_UNLOAD                                             :(No unload and take cargo)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No unload and wait for full load)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No unload and wait for any full load)
+STR_ORDER_NO_UNLOAD                                             :(No unloading and take cargo)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No unloading and wait for full load)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No unloading and wait for any full load)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No unloading and no loading)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[near end]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]

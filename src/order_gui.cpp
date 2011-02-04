@@ -88,7 +88,7 @@ static const StringID _station_load_types[][5] = {
 		INVALID_STRING_ID,
 		STR_ORDER_NO_UNLOAD_FULL_LOAD,
 		STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY,
-		INVALID_STRING_ID,
+		STR_ORDER_NO_UNLOAD_NO_LOAD,
 	}
 };
 
