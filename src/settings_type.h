@@ -382,7 +382,6 @@ struct EconomySettings {
 /** Settings related to stations. */
 struct StationSettings {
 	bool   modified_catchment;               ///< different-size catchment areas
-	bool   join_stations;                    ///< allow joining of train stations
 	bool   adjacent_stations;                ///< allow stations to be built directly adjacent to other stations
 	bool   distant_join_stations;            ///< allow to join non-adjacent stations
 	bool   never_expire_airports;            ///< never expire airports

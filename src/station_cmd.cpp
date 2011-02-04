@@ -1150,9 +1150,6 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		if (st->owner != _current_company) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_STATION);
 
 		if (st->train_station.tile != INVALID_TILE) {
-			/* check if we want to expanding an already existing station? */
-			if (!_settings_game.station.join_stations) return_cmd_error(STR_ERROR_TOO_CLOSE_TO_ANOTHER_RAILROAD);
-
 			CommandCost ret = CanExpandRailStation(st, new_location, axis);
 			if (ret.Failed()) return ret;
 		}

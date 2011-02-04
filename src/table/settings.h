@@ -424,7 +424,7 @@ const SettingDesc _settings[] = {
 	SDT_CONDBOOL(GameSettings, vehicle.dynamic_engines,                         95, SL_MAX_VERSION, 0,NN,  true,                    STR_CONFIG_SETTING_DYNAMIC_ENGINES,        ChangeDynamicEngines),
 	 SDT_CONDVAR(GameSettings, vehicle.plane_crashes,                SLE_UINT8,138, SL_MAX_VERSION, 0,MS,     2,     0,       2, 1, STR_CONFIG_SETTING_PLANE_CRASHES,          NULL),
 
-	    SDT_BOOL(GameSettings, station.join_stations,                                               0, 0,  true,                    STR_CONFIG_SETTING_JOINSTATIONS,           NULL),
+	SDT_CONDNULL(                                                            1,  0, 158), // station.join_stations
 	SDTC_CONDBOOL(             gui.sg_full_load_any,                            22,             92, 0, 0,  true,                    STR_NULL,                                  NULL),
 	    SDT_BOOL(GameSettings, order.improved_load,                                                 0,NN,  true,                    STR_CONFIG_SETTING_IMPROVEDLOAD,           NULL),
 	    SDT_BOOL(GameSettings, order.selectgoods,                                                   0, 0,  true,                    STR_CONFIG_SETTING_SELECTGOODS,            NULL),
