@@ -2990,12 +2990,12 @@ static void TrainController(Train *v, Vehicle *nomove)
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255 - 100;
-							if (_settings_game.pf.wait_oneway_signal == 255 || ++v->wait_counter < _settings_game.pf.wait_oneway_signal * 20) return;
+							if (!_settings_game.pf.reverse_at_signals || ++v->wait_counter < _settings_game.pf.wait_oneway_signal * 20) return;
 						} else if (HasSignalOnTrackdir(gp.new_tile, i)) {
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255 - 10;
-							if (_settings_game.pf.wait_twoway_signal == 255 || ++v->wait_counter < _settings_game.pf.wait_twoway_signal * 73) {
+							if (!_settings_game.pf.reverse_at_signals || ++v->wait_counter < _settings_game.pf.wait_twoway_signal * 73) {
 								DiagDirection exitdir = TrackdirToExitdir(i);
 								TileIndex o_tile = TileAddByDiagDir(gp.new_tile, exitdir);
 
@@ -3010,7 +3010,7 @@ static void TrainController(Train *v, Vehicle *nomove)
 						 * reversing of stuck trains is disabled, don't reverse.
 						 * This does not apply if the reason for reversing is a one-way
 						 * signal blocking us, because a train would then be stuck forever. */
-						if (_settings_game.pf.wait_for_pbs_path == 255 && !HasOnewaySignalBlockingTrackdir(gp.new_tile, i) &&
+						if (!_settings_game.pf.reverse_at_signals && !HasOnewaySignalBlockingTrackdir(gp.new_tile, i) &&
 								UpdateSignalsOnSegment(v->tile, enterdir, v->owner) == SIGSEG_PBS) {
 							v->wait_counter = 0;
 							return;
@@ -3578,7 +3578,7 @@ static bool TrainLocoHandler(Train *v, bool mode)
 		++v->wait_counter;
 
 		/* Should we try reversing this tick if still stuck? */
-		bool turn_around = v->wait_counter % (_settings_game.pf.wait_for_pbs_path * DAY_TICKS) == 0 && _settings_game.pf.wait_for_pbs_path < 255;
+		bool turn_around = v->wait_counter % (_settings_game.pf.wait_for_pbs_path * DAY_TICKS) == 0 && _settings_game.pf.reverse_at_signals;
 
 		if (!turn_around && v->wait_counter % _settings_game.pf.path_backoff_interval != 0 && v->force_proceed == TFP_NONE) return true;
 		if (!TryPathReserve(v)) {

@@ -1449,6 +1449,7 @@ static SettingEntry _settings_vehicles_servicing[] = {
 static SettingsPage _settings_vehicles_servicing_page = {_settings_vehicles_servicing, lengthof(_settings_vehicles_servicing)};
 
 static SettingEntry _settings_vehicles_trains[] = {
+	SettingEntry("pf.reverse_at_signals"),
 	SettingEntry("vehicle.train_acceleration_model"),
 	SettingEntry("vehicle.train_slope_steepness"),
 	SettingEntry("vehicle.max_train_length"),

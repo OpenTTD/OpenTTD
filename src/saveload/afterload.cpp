@@ -2551,6 +2551,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (IsSavegameVersionBefore(159)) {
+		/* If the savegame is old (before version 100), then the value of 255
+		 * for these settings did not mean "disabled". As such everything
+		 * before then did reverse.
+		 * To simplify stuff we disable all turning around or we do not
+		 * disable anything at all. So, if some reversing was disabled we
+		 * will keep reversing disabled, otherwise it'll be turned on. */
+		_settings_game.pf.reverse_at_signals = IsSavegameVersionBefore(100) || (_settings_game.pf.wait_oneway_signal != 255 && _settings_game.pf.wait_twoway_signal != 255 && _settings_game.pf.wait_for_pbs_path != 255);
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

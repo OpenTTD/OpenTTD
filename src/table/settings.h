@@ -473,6 +473,7 @@ const SettingDesc _settings[] = {
 
 	     SDT_VAR(GameSettings, vehicle.extend_vehicle_life,          SLE_UINT8,                     0, 0,     0,     0,     100, 0, STR_NULL,                                  NULL),
 	     SDT_VAR(GameSettings, economy.dist_local_authority,         SLE_UINT8,                     0, 0,    20,     5,      60, 0, STR_NULL,                                  NULL),
+	SDT_CONDBOOL(GameSettings, pf.reverse_at_signals,                          159, SL_MAX_VERSION, 0, 0, false,                    STR_CONFIG_SETTING_REVERSE_AT_SIGNALS,     NULL),
 	     SDT_VAR(GameSettings, pf.wait_oneway_signal,                SLE_UINT8,                     0, 0,    15,     2,     255, 0, STR_NULL,                                  NULL),
 	     SDT_VAR(GameSettings, pf.wait_twoway_signal,                SLE_UINT8,                     0, 0,    41,     2,     255, 0, STR_NULL,                                  NULL),
 	 SDT_CONDVAR(GameSettings, economy.town_noise_population[0],    SLE_UINT16, 96, SL_MAX_VERSION, 0, 0,   800,   200,   65535, 0, STR_NULL,                                  NULL),
