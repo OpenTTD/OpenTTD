@@ -16,7 +16,7 @@
 #define ENGINES_H
 
 /**
- * Writes the properties of a train or road vehicle into the EngineInfo struct.
+ * Writes the properties of a train into the EngineInfo struct.
  * @see EngineInfo
  * @param a base introduction date (days since 1920-01-01)
  * @param b decay speed
@@ -24,10 +24,9 @@
  * @param d base life (years)
  * @param e cargo type
  * @param f Bitmask of the climates
- * @note the 0x80 in parameter b sets the "is carriage bit"
  * @note the 5 between b and f is the load amount
  */
-#define MK(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY }
+#define MT(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_FLIPS, 0, 0, STR_EMPTY }
 
 /**
  * Writes the properties of a train carriage into the EngineInfo struct.
@@ -37,10 +36,23 @@
  * @param d base life (years)
  * @param e cargo type
  * @param f Bitmask of the climates
- * @see MK
+ * @see MT
  * @note the 5 between b and f is the load amount
  */
-#define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY }
+#define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 1 << EF_RAIL_FLIPS, 0, 0, STR_EMPTY }
+
+/**
+ * Writes the properties of a road vehicle into the EngineInfo struct.
+ * @see EngineInfo
+ * @param a base introduction date (days since 1920-01-01)
+ * @param b decay speed
+ * @param c life length (years)
+ * @param d base life (years)
+ * @param e cargo type
+ * @param f Bitmask of the climates
+ * @note the 5 between b and f is the load amount
+ */
+#define MR(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, f, e, 0, 8, 0, 0, 0, STR_EMPTY }
 
 /**
  * Writes the properties of a ship into the EngineInfo struct.
@@ -50,7 +62,6 @@
  * @param d base life (years)
  * @param e cargo type
  * @param f Bitmask of the climates
- * @see MK
  * @note the 10 between b and f is the load amount
  */
 #define MS(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 10, f, e, 0, 8, 0, 0, 0, STR_EMPTY }
@@ -62,7 +73,6 @@
  * @param c life length (years)
  * @param d base life (years)
  * @param e Bitmask of the climates
- * @see MK
  * @note the 20 between b and e is the load amount
  */
 #define MA(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 20, e, CT_INVALID, 0, 8, 0, 0, 0, STR_EMPTY }
@@ -81,33 +91,33 @@ static const EngineInfo _orig_engine_info[] = {
 	 *      |    decay_speed         cargo_type
 	 *      |    |    lifelength     |         climates
 	 *      |    |    |    |         |         | */
-	MK(  1827,  20,  15,  30, 0              , T      ), //   0 Kirby Paul Tank (Steam)
-	MK( 12784,  20,  22,  30, 0              ,   A|S  ), //   1 MJS 250 (Diesel)
-	MK(  9497,  20,  20,  50, 0              ,       Y), //   2 Ploddyphut Choo-Choo
-	MK( 11688,  20,  20,  30, 0              ,       Y), //   3 Powernaut Choo-Choo
-	MK( 16802,  20,  20,  30, 0              ,       Y), //   4 Mightymover Choo-Choo
-	MK( 18993,  20,  20,  30, 0              ,       Y), //   5 Ploddyphut Diesel
-	MK( 20820,  20,  20,  30, 0              ,       Y), //   6 Powernaut Diesel
-	MK(  8766,  20,  20,  30, 0              ,   A|S  ), //   7 Wills 2-8-0 (Steam)
-	MK(  5114,  20,  21,  30, 0              , T      ), //   8 Chaney 'Jubilee' (Steam)
-	MK(  5479,  20,  20,  30, 0              , T      ), //   9 Ginzu 'A4' (Steam)
-	MK( 12419,  20,  23,  25, 0              , T      ), //  10 SH '8P' (Steam)
-	MK( 13149,  20,  12,  30, CT_PASSENGERS  , T      ), //  11 Manley-Morel DMU (Diesel)
-	MK( 23376,  20,  15,  35, CT_PASSENGERS  , T      ), //  12 'Dash' (Diesel)
-	MK( 14976,  20,  18,  28, 0              , T      ), //  13 SH/Hendry '25' (Diesel)
-	MK( 14245,  20,  20,  30, 0              , T      ), //  14 UU '37' (Diesel)
-	MK( 15341,  20,  22,  33, 0              , T      ), //  15 Floss '47' (Diesel)
-	MK( 14976,  20,  20,  25, 0              ,   A|S  ), //  16 CS 4000 (Diesel)
-	MK( 16437,  20,  20,  30, 0              ,   A|S  ), //  17 CS 2400 (Diesel)
-	MK( 18993,  20,  22,  30, 0              ,   A|S  ), //  18 Centennial (Diesel)
-	MK( 13880,  20,  22,  30, 0              ,   A|S  ), //  19 Kelling 3100 (Diesel)
-	MK( 20454,  20,  22,  30, 0              ,   A|S  ), //  20 Turner Turbo (Diesel)
-	MK( 16071,  20,  22,  30, 0              ,   A|S  ), //  21 MJS 1000 (Diesel)
-	MK( 20820,  20,  20,  25, CT_MAIL        , T      ), //  22 SH '125' (Diesel)
-	MK( 16437,  20,  23,  30, 0              , T      ), //  23 SH '30' (Electric)
-	MK( 19359,  20,  23,  80, 0              , T      ), //  24 SH '40' (Electric)
-	MK( 23376,  20,  25,  30, 0              , T      ), //  25 'T.I.M.' (Electric)
-	MK( 26298,  20,  25,  50, 0              , T      ), //  26 'AsiaStar' (Electric)
+	MT(  1827,  20,  15,  30, 0              , T      ), //   0 Kirby Paul Tank (Steam)
+	MT( 12784,  20,  22,  30, 0              ,   A|S  ), //   1 MJS 250 (Diesel)
+	MT(  9497,  20,  20,  50, 0              ,       Y), //   2 Ploddyphut Choo-Choo
+	MT( 11688,  20,  20,  30, 0              ,       Y), //   3 Powernaut Choo-Choo
+	MT( 16802,  20,  20,  30, 0              ,       Y), //   4 Mightymover Choo-Choo
+	MT( 18993,  20,  20,  30, 0              ,       Y), //   5 Ploddyphut Diesel
+	MT( 20820,  20,  20,  30, 0              ,       Y), //   6 Powernaut Diesel
+	MT(  8766,  20,  20,  30, 0              ,   A|S  ), //   7 Wills 2-8-0 (Steam)
+	MT(  5114,  20,  21,  30, 0              , T      ), //   8 Chaney 'Jubilee' (Steam)
+	MT(  5479,  20,  20,  30, 0              , T      ), //   9 Ginzu 'A4' (Steam)
+	MT( 12419,  20,  23,  25, 0              , T      ), //  10 SH '8P' (Steam)
+	MT( 13149,  20,  12,  30, CT_PASSENGERS  , T      ), //  11 Manley-Morel DMU (Diesel)
+	MT( 23376,  20,  15,  35, CT_PASSENGERS  , T      ), //  12 'Dash' (Diesel)
+	MT( 14976,  20,  18,  28, 0              , T      ), //  13 SH/Hendry '25' (Diesel)
+	MT( 14245,  20,  20,  30, 0              , T      ), //  14 UU '37' (Diesel)
+	MT( 15341,  20,  22,  33, 0              , T      ), //  15 Floss '47' (Diesel)
+	MT( 14976,  20,  20,  25, 0              ,   A|S  ), //  16 CS 4000 (Diesel)
+	MT( 16437,  20,  20,  30, 0              ,   A|S  ), //  17 CS 2400 (Diesel)
+	MT( 18993,  20,  22,  30, 0              ,   A|S  ), //  18 Centennial (Diesel)
+	MT( 13880,  20,  22,  30, 0              ,   A|S  ), //  19 Kelling 3100 (Diesel)
+	MT( 20454,  20,  22,  30, 0              ,   A|S  ), //  20 Turner Turbo (Diesel)
+	MT( 16071,  20,  22,  30, 0              ,   A|S  ), //  21 MJS 1000 (Diesel)
+	MT( 20820,  20,  20,  25, CT_MAIL        , T      ), //  22 SH '125' (Diesel)
+	MT( 16437,  20,  23,  30, 0              , T      ), //  23 SH '30' (Electric)
+	MT( 19359,  20,  23,  80, 0              , T      ), //  24 SH '40' (Electric)
+	MT( 23376,  20,  25,  30, 0              , T      ), //  25 'T.I.M.' (Electric)
+	MT( 26298,  20,  25,  50, 0              , T      ), //  26 'AsiaStar' (Electric)
 	MW(  1827,  20,  20,  50, CT_PASSENGERS  , T|A|S|Y), //  27 Passenger Carriage
 	MW(  1827,  20,  20,  50, CT_MAIL        , T|A|S|Y), //  28 Mail Van
 	MW(  1827,  20,  20,  50, CT_COAL        , T|A    ), //  29 Coal Truck
@@ -135,9 +145,9 @@ static const EngineInfo _orig_engine_info[] = {
 	MW(  1827,  20,  20,  50, CT_BATTERIES   ,       Y), //  51 Battery Truck
 	MW(  1827,  20,  20,  50, CT_FIZZY_DRINKS,       Y), //  52 Fizzy Drink Truck
 	MW(  1827,  20,  20,  50, CT_PLASTIC     ,       Y), //  53 Plastic Truck
-	MK( 28490,  20,  20,  50, 0              , T|A|S  ), //  54 'X2001' (Electric)
-	MK( 31047,  20,  20,  50, CT_PASSENGERS  , T|A|S  ), //  55 'Millennium Z1' (Electric)
-	MK( 28855,  20,  20,  50, 0              ,       Y), //  56 Wizzowow Z99
+	MT( 28490,  20,  20,  50, 0              , T|A|S  ), //  54 'X2001' (Electric)
+	MT( 31047,  20,  20,  50, CT_PASSENGERS  , T|A|S  ), //  55 'Millennium Z1' (Electric)
+	MT( 28855,  20,  20,  50, 0              ,       Y), //  56 Wizzowow Z99
 	MW(  1827,  20,  20,  50, CT_PASSENGERS  , T|A|S|Y), //  57 Passenger Carriage
 	MW(  1827,  20,  20,  50, CT_MAIL        , T|A|S|Y), //  58 Mail Van
 	MW(  1827,  20,  20,  50, CT_COAL        , T|A    ), //  59 Coal Truck
@@ -165,11 +175,11 @@ static const EngineInfo _orig_engine_info[] = {
 	MW(  1827,  20,  20,  50, CT_BATTERIES   ,       Y), //  81 Battery Truck
 	MW(  1827,  20,  20,  50, CT_FIZZY_DRINKS,       Y), //  82 Fizzy Drink Truck
 	MW(  1827,  20,  20,  50, CT_PLASTIC     ,       Y), //  83 Plastic Truck
-	MK( 36525,  20,  20,  50, 0              , T|A|S  ), //  84 Lev1 'Leviathan' (Electric)
-	MK( 39447,  20,  20,  50, 0              , T|A|S  ), //  85 Lev2 'Cyclops' (Electric)
-	MK( 42004,  20,  20,  50, 0              , T|A|S  ), //  86 Lev3 'Pegasus' (Electric)
-	MK( 42735,  20,  20,  50, 0              , T|A|S  ), //  87 Lev4 'Chimaera' (Electric)
-	MK( 36891,  20,  20,  60, 0              ,       Y), //  88 Wizzowow Rocketeer
+	MT( 36525,  20,  20,  50, 0              , T|A|S  ), //  84 Lev1 'Leviathan' (Electric)
+	MT( 39447,  20,  20,  50, 0              , T|A|S  ), //  85 Lev2 'Cyclops' (Electric)
+	MT( 42004,  20,  20,  50, 0              , T|A|S  ), //  86 Lev3 'Pegasus' (Electric)
+	MT( 42735,  20,  20,  50, 0              , T|A|S  ), //  87 Lev4 'Chimaera' (Electric)
+	MT( 36891,  20,  20,  60, 0              ,       Y), //  88 Wizzowow Rocketeer
 	MW(  1827,  20,  20,  50, CT_PASSENGERS  , T|A|S|Y), //  89 Passenger Carriage
 	MW(  1827,  20,  20,  50, CT_MAIL        , T|A|S|Y), //  90 Mail Van
 	MW(  1827,  20,  20,  50, CT_COAL        , T|A    ), //  91 Coal Truck
@@ -197,94 +207,94 @@ static const EngineInfo _orig_engine_info[] = {
 	MW(  1827,  20,  20,  50, CT_BATTERIES   ,       Y), // 113 Battery Truck
 	MW(  1827,  20,  20,  50, CT_FIZZY_DRINKS,       Y), // 114 Fizzy Drink Truck
 	MW(  1827,  20,  20,  50, CT_PLASTIC     ,       Y), // 115 Plastic Truck
-	MK(  3378,  20,  12,  40, CT_PASSENGERS  , T|A|S  ), // 116 MPS Regal Bus
-	MK( 16071,  20,  15,  30, CT_PASSENGERS  , T|A|S  ), // 117 Hereford Leopard Bus
-	MK( 24107,  20,  15,  40, CT_PASSENGERS  , T|A|S  ), // 118 Foster Bus
-	MK( 32142,  20,  15,  80, CT_PASSENGERS  , T|A|S  ), // 119 Foster MkII Superbus
-	MK(  9132,  20,  15,  40, CT_PASSENGERS  ,       Y), // 120 Ploddyphut MkI Bus
-	MK( 18993,  20,  15,  40, CT_PASSENGERS  ,       Y), // 121 Ploddyphut MkII Bus
-	MK( 32873,  20,  15,  80, CT_PASSENGERS  ,       Y), // 122 Ploddyphut MkIII Bus
-	MK(  5479,  20,  15,  55, CT_COAL        , T|A    ), // 123 Balogh Coal Truck
-	MK( 20089,  20,  15,  55, CT_COAL        , T|A    ), // 124 Uhl Coal Truck
-	MK( 33969,  20,  15,  85, CT_COAL        , T|A    ), // 125 DW Coal Truck
-	MK(  5479,  20,  15,  55, CT_MAIL        , T|A|S  ), // 126 MPS Mail Truck
-	MK( 21550,  20,  15,  55, CT_MAIL        , T|A|S  ), // 127 Reynard Mail Truck
-	MK( 35795,  20,  15,  85, CT_MAIL        , T|A|S  ), // 128 Perry Mail Truck
-	MK(  5479,  20,  15,  55, CT_MAIL        ,       Y), // 129 MightyMover Mail Truck
-	MK( 21550,  20,  15,  55, CT_MAIL        ,       Y), // 130 Powernaught Mail Truck
-	MK( 35795,  20,  15,  85, CT_MAIL        ,       Y), // 131 Wizzowow Mail Truck
-	MK(  5479,  20,  15,  55, CT_OIL         , T|A|S  ), // 132 Witcombe Oil Tanker
-	MK( 19359,  20,  15,  55, CT_OIL         , T|A|S  ), // 133 Foster Oil Tanker
-	MK( 31047,  20,  15,  85, CT_OIL         , T|A|S  ), // 134 Perry Oil Tanker
-	MK(  5479,  20,  15,  55, CT_LIVESTOCK   , T|A    ), // 135 Talbott Livestock Van
-	MK( 21915,  20,  15,  55, CT_LIVESTOCK   , T|A    ), // 136 Uhl Livestock Van
-	MK( 37256,  20,  15,  85, CT_LIVESTOCK   , T|A    ), // 137 Foster Livestock Van
-	MK(  5479,  20,  15,  55, CT_GOODS       , T|A|S  ), // 138 Balogh Goods Truck
-	MK( 19724,  20,  15,  55, CT_GOODS       , T|A|S  ), // 139 Craighead Goods Truck
-	MK( 31047,  20,  15,  85, CT_GOODS       , T|A|S  ), // 140 Goss Goods Truck
-	MK(  5479,  20,  15,  55, CT_GRAIN       , T|A|S  ), // 141 Hereford Grain Truck
-	MK( 21185,  20,  15,  55, CT_GRAIN       , T|A|S  ), // 142 Thomas Grain Truck
-	MK( 32873,  20,  15,  85, CT_GRAIN       , T|A|S  ), // 143 Goss Grain Truck
-	MK(  5479,  20,  15,  55, CT_WOOD        , T|A|S  ), // 144 Witcombe Wood Truck
-	MK( 19724,  20,  15,  55, CT_WOOD        , T|A|S  ), // 145 Foster Wood Truck
-	MK( 35430,  20,  15,  85, CT_WOOD        , T|A|S  ), // 146 Moreland Wood Truck
-	MK(  5479,  20,  15,  55, CT_IRON_ORE    , T      ), // 147 MPS Iron Ore Truck
-	MK( 20820,  20,  15,  55, CT_IRON_ORE    , T      ), // 148 Uhl Iron Ore Truck
-	MK( 33238,  20,  15,  85, CT_IRON_ORE    , T      ), // 149 Chippy Iron Ore Truck
-	MK(  5479,  20,  15,  55, CT_STEEL       , T      ), // 150 Balogh Steel Truck
-	MK( 21185,  20,  15,  55, CT_STEEL       , T      ), // 151 Uhl Steel Truck
-	MK( 31777,  20,  15,  85, CT_STEEL       , T      ), // 152 Kelling Steel Truck
-	MK(  5479,  20,  15,  55, CT_VALUABLES   , T|A|S  ), // 153 Balogh Armoured Truck
-	MK( 22281,  20,  15,  55, CT_VALUABLES   , T|A|S  ), // 154 Uhl Armoured Truck
-	MK( 33603,  20,  15,  85, CT_VALUABLES   , T|A|S  ), // 155 Foster Armoured Truck
-	MK(  5479,  20,  15,  55, CT_FOOD        ,   A|S  ), // 156 Foster Food Van
-	MK( 18628,  20,  15,  55, CT_FOOD        ,   A|S  ), // 157 Perry Food Van
-	MK( 30681,  20,  15,  85, CT_FOOD        ,   A|S  ), // 158 Chippy Food Van
-	MK(  5479,  20,  15,  55, CT_PAPER       ,   A    ), // 159 Uhl Paper Truck
-	MK( 21185,  20,  15,  55, CT_PAPER       ,   A    ), // 160 Balogh Paper Truck
-	MK( 31777,  20,  15,  85, CT_PAPER       ,   A    ), // 161 MPS Paper Truck
-	MK(  5479,  20,  15,  55, CT_COPPER_ORE  ,     S  ), // 162 MPS Copper Ore Truck
-	MK( 20820,  20,  15,  55, CT_COPPER_ORE  ,     S  ), // 163 Uhl Copper Ore Truck
-	MK( 33238,  20,  15,  85, CT_COPPER_ORE  ,     S  ), // 164 Goss Copper Ore Truck
-	MK(  5479,  20,  15,  55, CT_WATER       ,     S  ), // 165 Uhl Water Tanker
-	MK( 20970,  20,  15,  55, CT_WATER       ,     S  ), // 166 Balogh Water Tanker
-	MK( 33388,  20,  15,  85, CT_WATER       ,     S  ), // 167 MPS Water Tanker
-	MK(  5479,  20,  15,  55, CT_FRUIT       ,     S  ), // 168 Balogh Fruit Truck
-	MK( 21335,  20,  15,  55, CT_FRUIT       ,     S  ), // 169 Uhl Fruit Truck
-	MK( 33753,  20,  15,  85, CT_FRUIT       ,     S  ), // 170 Kelling Fruit Truck
-	MK(  5479,  20,  15,  55, CT_RUBBER      ,     S  ), // 171 Balogh Rubber Truck
-	MK( 20604,  20,  15,  55, CT_RUBBER      ,     S  ), // 172 Uhl Rubber Truck
-	MK( 33023,  20,  15,  85, CT_RUBBER      ,     S  ), // 173 RMT Rubber Truck
-	MK(  5479,  20,  15,  55, CT_SUGAR       ,       Y), // 174 MightyMover Sugar Truck
-	MK( 19724,  20,  15,  55, CT_SUGAR       ,       Y), // 175 Powernaught Sugar Truck
-	MK( 33238,  20,  15,  85, CT_SUGAR       ,       Y), // 176 Wizzowow Sugar Truck
-	MK(  5479,  20,  15,  55, CT_COLA        ,       Y), // 177 MightyMover Cola Truck
-	MK( 20089,  20,  15,  55, CT_COLA        ,       Y), // 178 Powernaught Cola Truck
-	MK( 33603,  20,  15,  85, CT_COLA        ,       Y), // 179 Wizzowow Cola Truck
-	MK(  5479,  20,  15,  55, CT_COTTON_CANDY,       Y), // 180 MightyMover Candyfloss Truck
-	MK( 20454,  20,  15,  55, CT_COTTON_CANDY,       Y), // 181 Powernaught Candyfloss Truck
-	MK( 33969,  20,  15,  85, CT_COTTON_CANDY,       Y), // 182 Wizzowow Candyfloss Truck
-	MK(  5479,  20,  15,  55, CT_TOFFEE      ,       Y), // 183 MightyMover Toffee Truck
-	MK( 20820,  20,  15,  55, CT_TOFFEE      ,       Y), // 184 Powernaught Toffee Truck
-	MK( 34334,  20,  15,  85, CT_TOFFEE      ,       Y), // 185 Wizzowow Toffee Truck
-	MK(  5479,  20,  15,  55, CT_TOYS        ,       Y), // 186 MightyMover Toy Van
-	MK( 21185,  20,  15,  55, CT_TOYS        ,       Y), // 187 Powernaught Toy Van
-	MK( 34699,  20,  15,  85, CT_TOYS        ,       Y), // 188 Wizzowow Toy Van
-	MK(  5479,  20,  15,  55, CT_CANDY       ,       Y), // 189 MightyMover Sweet Truck
-	MK( 21550,  20,  15,  55, CT_CANDY       ,       Y), // 190 Powernaught Sweet Truck
-	MK( 35064,  20,  15,  85, CT_CANDY       ,       Y), // 191 Wizzowow Sweet Truck
-	MK(  5479,  20,  15,  55, CT_BATTERIES   ,       Y), // 192 MightyMover Battery Truck
-	MK( 19874,  20,  15,  55, CT_BATTERIES   ,       Y), // 193 Powernaught Battery Truck
-	MK( 35430,  20,  15,  85, CT_BATTERIES   ,       Y), // 194 Wizzowow Battery Truck
-	MK(  5479,  20,  15,  55, CT_FIZZY_DRINKS,       Y), // 195 MightyMover Fizzy Drink Truck
-	MK( 20239,  20,  15,  55, CT_FIZZY_DRINKS,       Y), // 196 Powernaught Fizzy Drink Truck
-	MK( 35795,  20,  15,  85, CT_FIZZY_DRINKS,       Y), // 197 Wizzowow Fizzy Drink Truck
-	MK(  5479,  20,  15,  55, CT_PLASTIC     ,       Y), // 198 MightyMover Plastic Truck
-	MK( 20604,  20,  15,  55, CT_PLASTIC     ,       Y), // 199 Powernaught Plastic Truck
-	MK( 32873,  20,  15,  85, CT_PLASTIC     ,       Y), // 200 Wizzowow Plastic Truck
-	MK(  5479,  20,  15,  55, CT_BUBBLES     ,       Y), // 201 MightyMover Bubble Truck
-	MK( 20970,  20,  15,  55, CT_BUBBLES     ,       Y), // 202 Powernaught Bubble Truck
-	MK( 33023,  20,  15,  85, CT_BUBBLES     ,       Y), // 203 Wizzowow Bubble Truck
+	MR(  3378,  20,  12,  40, CT_PASSENGERS  , T|A|S  ), // 116 MPS Regal Bus
+	MR( 16071,  20,  15,  30, CT_PASSENGERS  , T|A|S  ), // 117 Hereford Leopard Bus
+	MR( 24107,  20,  15,  40, CT_PASSENGERS  , T|A|S  ), // 118 Foster Bus
+	MR( 32142,  20,  15,  80, CT_PASSENGERS  , T|A|S  ), // 119 Foster MkII Superbus
+	MR(  9132,  20,  15,  40, CT_PASSENGERS  ,       Y), // 120 Ploddyphut MkI Bus
+	MR( 18993,  20,  15,  40, CT_PASSENGERS  ,       Y), // 121 Ploddyphut MkII Bus
+	MR( 32873,  20,  15,  80, CT_PASSENGERS  ,       Y), // 122 Ploddyphut MkIII Bus
+	MR(  5479,  20,  15,  55, CT_COAL        , T|A    ), // 123 Balogh Coal Truck
+	MR( 20089,  20,  15,  55, CT_COAL        , T|A    ), // 124 Uhl Coal Truck
+	MR( 33969,  20,  15,  85, CT_COAL        , T|A    ), // 125 DW Coal Truck
+	MR(  5479,  20,  15,  55, CT_MAIL        , T|A|S  ), // 126 MPS Mail Truck
+	MR( 21550,  20,  15,  55, CT_MAIL        , T|A|S  ), // 127 Reynard Mail Truck
+	MR( 35795,  20,  15,  85, CT_MAIL        , T|A|S  ), // 128 Perry Mail Truck
+	MR(  5479,  20,  15,  55, CT_MAIL        ,       Y), // 129 MightyMover Mail Truck
+	MR( 21550,  20,  15,  55, CT_MAIL        ,       Y), // 130 Powernaught Mail Truck
+	MR( 35795,  20,  15,  85, CT_MAIL        ,       Y), // 131 Wizzowow Mail Truck
+	MR(  5479,  20,  15,  55, CT_OIL         , T|A|S  ), // 132 Witcombe Oil Tanker
+	MR( 19359,  20,  15,  55, CT_OIL         , T|A|S  ), // 133 Foster Oil Tanker
+	MR( 31047,  20,  15,  85, CT_OIL         , T|A|S  ), // 134 Perry Oil Tanker
+	MR(  5479,  20,  15,  55, CT_LIVESTOCK   , T|A    ), // 135 Talbott Livestock Van
+	MR( 21915,  20,  15,  55, CT_LIVESTOCK   , T|A    ), // 136 Uhl Livestock Van
+	MR( 37256,  20,  15,  85, CT_LIVESTOCK   , T|A    ), // 137 Foster Livestock Van
+	MR(  5479,  20,  15,  55, CT_GOODS       , T|A|S  ), // 138 Balogh Goods Truck
+	MR( 19724,  20,  15,  55, CT_GOODS       , T|A|S  ), // 139 Craighead Goods Truck
+	MR( 31047,  20,  15,  85, CT_GOODS       , T|A|S  ), // 140 Goss Goods Truck
+	MR(  5479,  20,  15,  55, CT_GRAIN       , T|A|S  ), // 141 Hereford Grain Truck
+	MR( 21185,  20,  15,  55, CT_GRAIN       , T|A|S  ), // 142 Thomas Grain Truck
+	MR( 32873,  20,  15,  85, CT_GRAIN       , T|A|S  ), // 143 Goss Grain Truck
+	MR(  5479,  20,  15,  55, CT_WOOD        , T|A|S  ), // 144 Witcombe Wood Truck
+	MR( 19724,  20,  15,  55, CT_WOOD        , T|A|S  ), // 145 Foster Wood Truck
+	MR( 35430,  20,  15,  85, CT_WOOD        , T|A|S  ), // 146 Moreland Wood Truck
+	MR(  5479,  20,  15,  55, CT_IRON_ORE    , T      ), // 147 MPS Iron Ore Truck
+	MR( 20820,  20,  15,  55, CT_IRON_ORE    , T      ), // 148 Uhl Iron Ore Truck
+	MR( 33238,  20,  15,  85, CT_IRON_ORE    , T      ), // 149 Chippy Iron Ore Truck
+	MR(  5479,  20,  15,  55, CT_STEEL       , T      ), // 150 Balogh Steel Truck
+	MR( 21185,  20,  15,  55, CT_STEEL       , T      ), // 151 Uhl Steel Truck
+	MR( 31777,  20,  15,  85, CT_STEEL       , T      ), // 152 Kelling Steel Truck
+	MR(  5479,  20,  15,  55, CT_VALUABLES   , T|A|S  ), // 153 Balogh Armoured Truck
+	MR( 22281,  20,  15,  55, CT_VALUABLES   , T|A|S  ), // 154 Uhl Armoured Truck
+	MR( 33603,  20,  15,  85, CT_VALUABLES   , T|A|S  ), // 155 Foster Armoured Truck
+	MR(  5479,  20,  15,  55, CT_FOOD        ,   A|S  ), // 156 Foster Food Van
+	MR( 18628,  20,  15,  55, CT_FOOD        ,   A|S  ), // 157 Perry Food Van
+	MR( 30681,  20,  15,  85, CT_FOOD        ,   A|S  ), // 158 Chippy Food Van
+	MR(  5479,  20,  15,  55, CT_PAPER       ,   A    ), // 159 Uhl Paper Truck
+	MR( 21185,  20,  15,  55, CT_PAPER       ,   A    ), // 160 Balogh Paper Truck
+	MR( 31777,  20,  15,  85, CT_PAPER       ,   A    ), // 161 MPS Paper Truck
+	MR(  5479,  20,  15,  55, CT_COPPER_ORE  ,     S  ), // 162 MPS Copper Ore Truck
+	MR( 20820,  20,  15,  55, CT_COPPER_ORE  ,     S  ), // 163 Uhl Copper Ore Truck
+	MR( 33238,  20,  15,  85, CT_COPPER_ORE  ,     S  ), // 164 Goss Copper Ore Truck
+	MR(  5479,  20,  15,  55, CT_WATER       ,     S  ), // 165 Uhl Water Tanker
+	MR( 20970,  20,  15,  55, CT_WATER       ,     S  ), // 166 Balogh Water Tanker
+	MR( 33388,  20,  15,  85, CT_WATER       ,     S  ), // 167 MPS Water Tanker
+	MR(  5479,  20,  15,  55, CT_FRUIT       ,     S  ), // 168 Balogh Fruit Truck
+	MR( 21335,  20,  15,  55, CT_FRUIT       ,     S  ), // 169 Uhl Fruit Truck
+	MR( 33753,  20,  15,  85, CT_FRUIT       ,     S  ), // 170 Kelling Fruit Truck
+	MR(  5479,  20,  15,  55, CT_RUBBER      ,     S  ), // 171 Balogh Rubber Truck
+	MR( 20604,  20,  15,  55, CT_RUBBER      ,     S  ), // 172 Uhl Rubber Truck
+	MR( 33023,  20,  15,  85, CT_RUBBER      ,     S  ), // 173 RMT Rubber Truck
+	MR(  5479,  20,  15,  55, CT_SUGAR       ,       Y), // 174 MightyMover Sugar Truck
+	MR( 19724,  20,  15,  55, CT_SUGAR       ,       Y), // 175 Powernaught Sugar Truck
+	MR( 33238,  20,  15,  85, CT_SUGAR       ,       Y), // 176 Wizzowow Sugar Truck
+	MR(  5479,  20,  15,  55, CT_COLA        ,       Y), // 177 MightyMover Cola Truck
+	MR( 20089,  20,  15,  55, CT_COLA        ,       Y), // 178 Powernaught Cola Truck
+	MR( 33603,  20,  15,  85, CT_COLA        ,       Y), // 179 Wizzowow Cola Truck
+	MR(  5479,  20,  15,  55, CT_COTTON_CANDY,       Y), // 180 MightyMover Candyfloss Truck
+	MR( 20454,  20,  15,  55, CT_COTTON_CANDY,       Y), // 181 Powernaught Candyfloss Truck
+	MR( 33969,  20,  15,  85, CT_COTTON_CANDY,       Y), // 182 Wizzowow Candyfloss Truck
+	MR(  5479,  20,  15,  55, CT_TOFFEE      ,       Y), // 183 MightyMover Toffee Truck
+	MR( 20820,  20,  15,  55, CT_TOFFEE      ,       Y), // 184 Powernaught Toffee Truck
+	MR( 34334,  20,  15,  85, CT_TOFFEE      ,       Y), // 185 Wizzowow Toffee Truck
+	MR(  5479,  20,  15,  55, CT_TOYS        ,       Y), // 186 MightyMover Toy Van
+	MR( 21185,  20,  15,  55, CT_TOYS        ,       Y), // 187 Powernaught Toy Van
+	MR( 34699,  20,  15,  85, CT_TOYS        ,       Y), // 188 Wizzowow Toy Van
+	MR(  5479,  20,  15,  55, CT_CANDY       ,       Y), // 189 MightyMover Sweet Truck
+	MR( 21550,  20,  15,  55, CT_CANDY       ,       Y), // 190 Powernaught Sweet Truck
+	MR( 35064,  20,  15,  85, CT_CANDY       ,       Y), // 191 Wizzowow Sweet Truck
+	MR(  5479,  20,  15,  55, CT_BATTERIES   ,       Y), // 192 MightyMover Battery Truck
+	MR( 19874,  20,  15,  55, CT_BATTERIES   ,       Y), // 193 Powernaught Battery Truck
+	MR( 35430,  20,  15,  85, CT_BATTERIES   ,       Y), // 194 Wizzowow Battery Truck
+	MR(  5479,  20,  15,  55, CT_FIZZY_DRINKS,       Y), // 195 MightyMover Fizzy Drink Truck
+	MR( 20239,  20,  15,  55, CT_FIZZY_DRINKS,       Y), // 196 Powernaught Fizzy Drink Truck
+	MR( 35795,  20,  15,  85, CT_FIZZY_DRINKS,       Y), // 197 Wizzowow Fizzy Drink Truck
+	MR(  5479,  20,  15,  55, CT_PLASTIC     ,       Y), // 198 MightyMover Plastic Truck
+	MR( 20604,  20,  15,  55, CT_PLASTIC     ,       Y), // 199 Powernaught Plastic Truck
+	MR( 32873,  20,  15,  85, CT_PLASTIC     ,       Y), // 200 Wizzowow Plastic Truck
+	MR(  5479,  20,  15,  55, CT_BUBBLES     ,       Y), // 201 MightyMover Bubble Truck
+	MR( 20970,  20,  15,  55, CT_BUBBLES     ,       Y), // 202 Powernaught Bubble Truck
+	MR( 33023,  20,  15,  85, CT_BUBBLES     ,       Y), // 203 Wizzowow Bubble Truck
 	MS(  2922,   5,  30,  50, CT_OIL         , T|A|S  ), // 204 MPS Oil Tanker
 	MS( 17167,   5,  30,  90, CT_OIL         , T|A|S  ), // 205 CS-Inc. Oil Tanker
 	MS(  2192,   5,  30,  55, CT_PASSENGERS  , T|A|S  ), // 206 MPS Passenger Ferry
@@ -342,8 +352,9 @@ static const EngineInfo _orig_engine_info[] = {
 #undef S
 #undef A
 #undef T
-#undef MK
+#undef MT
 #undef MW
+#undef MR
 #undef MS
 #undef MA
 
