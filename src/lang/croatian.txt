@@ -1186,12 +1186,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne
 STR_CONFIG_SETTING_OFF                                          :Isključeno
 STR_CONFIG_SETTING_ON                                           :Uključeno
 STR_CONFIG_SETTING_DISABLED                                     :onemogućeno
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Pokaži brzinu vozila u statusnoj traci: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dopusti izgradnju na kosinama i obalama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dopusti modeliranje zemlje ispod građevina, tračnica, itd (autonagib): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dopusti realističnije veličine područja zahvaćanja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dopusti rušenje više cesta, mostova i tunela u vlasništvu grada: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Omogući sastavljanje vrlo dugačkih vlakova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/iskri za lokomotive: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nema
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1205,21 +1203,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :{G=middle}Stvar
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmost kosina za vlakove {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nagib padine za cestovna vozila {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zabrani vlakovima i brodovima skretanja pod 90 stupnjeva: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Spoji željezničke postaje koje se izgrade jedna pokraj druge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dopusti spajanje postaja koje nisu izravno jedna do druge {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Koristi unaprijeđeni utovarni algoritam: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Postupno utovaruj u vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostavi teret na postaju samo ako na njoj postoji potražnja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Dopusti izgradnju vrlo dugačkih mostova: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Dopusti naredbe za slanje u spremište: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Ručna metoda izgradnje primarne industrije: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nijedna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kao i druge industrije
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prosperirajuća
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ravna površina oko industrija: {ORANGE}{STRING} polje
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Dopusti više sličnih industrija po gradu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Uvijek pokaži dugi datum u statusnoj traci: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Pokaži signale na vozačkoj strani: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pokaži financijski prozor na kraju godine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Za nove naredbe početna je vrijednost 'neprekidno': {ORANGE}{STRING}
@@ -1232,7 +1226,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pomakni
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dopusti potkupljivanje lokalne samouprave: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dopusti kupovinu ekskluzivnih prijevoznih prava: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dopusti slanje novca drugim tvrtkama: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Neujednačene postaje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Težinski množitelj za teret za simulaciju teških vlakova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor brzine zrakoplova: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Broj padova zrakoplova: {ORANGE}{STRING}
@@ -1331,7 +1324,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Koristi
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Isključeno
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Vlastita tvrtka
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Sve tvrtke
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Omogući vozni red za vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Pokaži vozni red u otkucajima rađe nego u danima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Pokaži dolaske i odlaske u voznim redovima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Brzo kreiranje naredbi vozila: {ORANGE}{STRING}
@@ -1709,7 +1701,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks pro
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ograniči poslužitelj na određeni broj gledatelja
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jezik kojim se govori:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Drugi igrači znat će kojim se jezikom govori na poslužitelju
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Upišite ime mrežne igre
 
@@ -3136,23 +3127,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Odlaze�
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Slupan!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pokvareno
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zaustavljen
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Zaustavljam
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Zaustavljam, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nema struje
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Čekanje slobodne putanje
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Kreće se prema {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Kreće se prema {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Nema naredbi
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nema naredbi, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Ide prema {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ide prema {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Na putu za {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Na putu za {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servis u {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis u {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3645,7 +3627,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Ovdje ni
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Spaja više od jedne postojeće postaje/terminala
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... postaja previše proširena
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... neujednačene postaje onemogućene
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Previše postaja/terminala
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Previše dijelova željezničke postaje
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Previše autobusnih postaja
@@ -4385,7 +4366,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

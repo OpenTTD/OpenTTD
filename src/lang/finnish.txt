@@ -1090,12 +1090,11 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Lisäase
 STR_CONFIG_SETTING_OFF                                          :pois
 STR_CONFIG_SETTING_ON                                           :päällä
 STR_CONFIG_SETTING_DISABLED                                     :pois käytöstä
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Näytä liikennevälineen nopeus tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Rakentaminen rinteisiin ja rannikolle sallittu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Kaupungin omistamien teiden, siltojen ja tunneleiden raivaaminen sallittu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Erittäin pitkien junien rakentaminen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Junien maksimipituus: {ORANGE}{STRING} ruutu{P 0:1 "" a}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Kulkuneuvon savun/kipinöiden määrä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ei yhtään
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Alkuperäinen
@@ -1109,21 +1108,19 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistinen
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Mäkien jyrkkyys junille {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Mäkien jyrkkyys ajoneuvoille {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}90 asteen käännökset kielletty junilta ja laivoilta: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Yhdistä vierekkäiset rautatieasemat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Salli ei-vierekkäisten asemien yhdistäminen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Käytä kehittyneempää lastausalgoritmia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Lataa kulkuneuvot vähitellen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflaatio: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Pura rahti asemalle vain, kun on kysyntää: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Erittäin pitkien siltojen rakentaminen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Varikollemenomääräykset: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Siltojen maksimipituus: {ORANGE}{STRING} ruutu{P 0:1 "" a}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Tunneleiden maksimipituus: {ORANGE}{STRING} ruutu{P 0:1 "" a}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuaalinen raakateollisuuden rakentamistapa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ei mikään
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kuten muut tehtaat
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :koekaivaus
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Tasainen alue teollisuuksien ympärillä: {ORANGE}{STRING} ruutu{P 0:1 "" a}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Kaupungissa voi olla useita samanlaisia teollisuustyyppejä: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Näytä aina koko päiväys tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Näytä opastimet ajokaistalla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Näytä rahoitusikkuna vuoden lopussa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Uudet määräykset ovat oletusarvoisesti nonstop-tyyppisiä: {ORANGE}{STRING}
@@ -1136,7 +1133,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Vierit�
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Salli kuljetusyksinoikeuksien ostaminen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Salli rahan lähettäminen muille yhtiöille: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Epäyhtenäiset asemat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Rahdin painokerroin raskaiden junien simulointia varten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lentokoneen nopeuskerroin: {ORANGE}1/{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lentokoneonnettomuuksien määrä: {ORANGE}{STRING}
@@ -1173,7 +1169,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Suurin 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Lumirajan korkeus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Maaston epätasaisuus (vain TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erittäin tasainen
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Tasainen (sileä)
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Tasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Epätasainen
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erittäin epätasainen
 STR_CONFIG_SETTING_TREE_PLACER                                  :{LTBLUE}Puiden sijoittelualgoritmi: {ORANGE}{STRING}
@@ -1218,7 +1214,7 @@ STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Vasemma
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Käytä {ORANGE}{STRING}{LTBLUE} päivämäärämuotoa tallennettujen pelien niminä
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :pitkä (31. joulu 2008)
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lyhyt (31-12-2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lyhyt (31.12.2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}Uusi peli alkaa pysäytettynä: {ORANGE}{STRING}
@@ -1235,7 +1231,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Lastaus
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Pois
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Oma yhtiö
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Kaikki yhtiöt
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Aikataulut ajoneuvoille: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Näytä aikataulu tickseissä päivien sijaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Näytä saapuminen ja lähtö aikatauluissa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Nopea kulkuneuvon käskyjen luominen: {ORANGE}{STRING}
@@ -1361,6 +1356,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laivoje
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Alkuperäinen {BLUE}(Suositeltu)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ei suositeltu)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automaattinen kääntyminen opastimilla: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Muuta asetusarvo
 
@@ -1613,7 +1609,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Katsojie
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Rajoita katsojien määrää palvelimella
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Puhuttu kieli:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Toiset pelaajat tietävät tästä, mitä kieltä palvelimella puhutaan.
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Syötä nimi verkkopelille
 
@@ -3040,23 +3035,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Poistuu
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kolaroitu!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Hajonnut
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Pysäytetty
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Pysäytetään
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Pysäytetään, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ei virtaa
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Odottaa vapaata reittiä
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Suuntana {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Suuntana {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Ei pysähdyksiä
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Ei pysähdyksiä, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Kohde: {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Kohde: {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Suuntana {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Suuntana {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Huolto kohteessa {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Huolto kohteessa {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3266,9 +3252,10 @@ STR_ORDER_TRANSFER                                              :(Siirrä ja las
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Siirrä ja odota uuden lastin täyttymistä)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Siirrä ja odota minkä tahansa lastin täyttymistä)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Siirrä rahti ja jätä tyhjäksi)
-STR_ORDER_NO_UNLOAD                                             :(Ei lastin purkua, mutta lastaa rahti)
+STR_ORDER_NO_UNLOAD                                             :(Ei purkua mutta lastaa rahti)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ei lastin purkua, mutta odota uuden lastin täyttymistä)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ei lastin purkua, mutta odota minkä tahansa lastin täyttymistä)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ei purkua eikä lastausta)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[alkupäähän]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskelle]
@@ -3549,7 +3536,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Lentoken
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Liitä yhteen useampi asema/lastausalue.
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... asema liian levittäytynyt
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... epäsymmetriset asemat poissa käytöstä.
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Liian monta asemaa ja lastausaluetta.
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Rautatieasema on jakautunut liian moneen osaan
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Liian monta linja-autopysäkkiä.
@@ -3685,6 +3671,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Tunneli 
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Toinen tunneli on tiellä.
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunneli loppuisi kartan ulkopuolelle
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Maata ei voi kaivaa tunnelin toisessa päässä.
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunneli liian pitkä
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... liian monta kohdetta
@@ -4252,7 +4239,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

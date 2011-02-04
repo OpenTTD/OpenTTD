@@ -749,9 +749,6 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Biddel l-isem t
 # Messages in the start stop button in the vehicle view
 
 
-
-
-
 # Vehicle stopped/started animations
 
 # Vehicle details
@@ -1209,7 +1206,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

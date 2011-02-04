@@ -1094,12 +1094,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}הגדר
 STR_CONFIG_SETTING_OFF                                          :כבוי
 STR_CONFIG_SETTING_ON                                           :דלוק
 STR_CONFIG_SETTING_DISABLED                                     :מבוטל
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}הצג את מהירות כלי הרכב בשורת המצב: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}אפשר לבנות על מידרונות וחופים: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{ORANGE}{STRING}{LTBLUE} :'אפשר יצירת מילוי עפר תחת מבנים, פסי רכבת וכו
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}אפשר לאזורי אגירת מים להיראות יותר ריאליסטיים: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}אפשר הסרה של יותר כבישים גשרים וכו' שבבעלות עיירות: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}אפשר בנייה של רכבות ארוכות מאד: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{ORANGE}{STRING}{LTBLUE} :מודל האצת רכבות
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :מקורי
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :מציאותי
@@ -1109,21 +1107,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :מציאותי
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}תלילות מדרון עבור רכבות {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}תלילות המדרון עבור כלי רכב {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}אסור על רכבות וספינות לבצע פניות של 90 מעלות: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}אפשר חיבור של תחנות שנבנות ליד תחנה קיימת: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{ORANGE}{STRING}{LTBLUE} :אפשר חיבור בין תחנות שאינן צמודות זו לזו
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}השתמש באלגוריתם טעינה משופר: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}טען כלי רכב בהדרגה: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}אנפלציה: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}מסור סחורה לתחנה רק כאשר יש ביקוש: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}אפשר בניה של גשרים ארוכים מאד: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}:'אפשר הוראות 'לך למוסך {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{ORANGE}{STRING}{LTBLUE} :שיטת היצירה של משאבי טבע חדשים
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :בכלל לא
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :כמו שאר התעשיות
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :חיפוש אחר התעשיות
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}אזור שטוח סביב התעשיות: {ORANGE}{STRING} משבצות{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{ORANGE}{STRING}{LTBLUE} :אפשר יצירת מספר תעשיות זהות בשטחה של עיר אחת
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}תמיד תראה תאריך מלא בסגל הסטטוס: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}הראה רמזורים בצד הנהיגה: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}הראה את חלון מערך הכספים בכל סוף שנה : {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}הוראות חדשות הם תמיד 'לא לעצור' כבחירת מחדל: {ORANGE}{STRING}
@@ -1136,7 +1130,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{ORANGE}{STRING
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}אפשר נתינת שוחד לערים מקומיים {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}אפשר קנייה של אפשריות הובלה בלעדיים : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}אפשר שלחת כספים לחברות אחרות: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{ORANGE}{STRING}{LTBLUE} :תחנות הטרוגניות
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}הכפלת משקל מטען כדי לחקות רכבות כבדות: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{ORANGE}1 / {STRING}{LTBLUE} :מקדם המהירות עבור מטוסים
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}מספר התרסקויות מטוסים: {ORANGE}{STRING}
@@ -1227,7 +1220,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{ORANGE}{STRING
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :כבוי
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :עבור כלים של החברה שלי
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :עבור כל הכלים
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{ORANGE}{STRING}{LTBLUE} :אפשר לוח זמנים לכל הרכבים
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{ORANGE}{STRING}{LTBLUE} :הצג לוח זמנים בפעימות במקום בימים
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}הצג לוחות זמנים של הגעות ועזיבות: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{ORANGE}{STRING}{LTBLUE} :יצירה מהירה של מסלול הנסיעה
@@ -1598,7 +1590,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK} :מספ
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}הגבלת השרת למספר צופים מסויים
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}שפת דיבור:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}שחקנים אחרים ידעו איו שפה מדוברת בשרת
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}הזן שם למשחק רשת
 
@@ -2979,23 +2970,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE} עוז
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}!התרסק/הֿ
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}התקלקל
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}נעצרה
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}עוצרת
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} ,עוצרת
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}סוג מסילה לא מתאים לרכבת זו
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}ממתינה לנתיב פנוי
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}פונה אל {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}פונה אל {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}אין הוראות
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}אין הוראות, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}{WAYPOINT} :בדרך אל
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE} {1:VELOCITY},{0:WAYPOINT} :בדרך אל
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}בדרך אל {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}בדרך אל {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}קבלת שירות ב{DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}קבלת שירות ב{DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3473,7 +3455,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}לא נ�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}ניסיון לחבר בין תחנות קיימות
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... פריסת התחנה חורגת מהמותר
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... תחנות לא אחידות מבוטלות
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}יותר מידי תחנות/אזורי טעינה
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}התחנה מורכבת מיותר מידי חלקים
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}יותר מידי תחנות אוטובוס
@@ -4166,7 +4147,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

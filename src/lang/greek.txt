@@ -1183,12 +1183,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Προη
 STR_CONFIG_SETTING_OFF                                          :Ανενεργό
 STR_CONFIG_SETTING_ON                                           :Ενεργό
 STR_CONFIG_SETTING_DISABLED                                     :απενεργοποιημένο
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Εμφάνιση της ταχύτητας του οχήματος στη γραμμή κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Επιτρέπεται το χτίσιμο σε πλαγιές και ακτές: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ. (αυτόματη κλίση): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Επιτρέπονται πιο ρεαλιστικά ταξινομημένες περιοχές συλλογής : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Επιτρέπεται η αφαίρεση περισσότερων ιδιοκτησιών πόλεων: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Επιτρέπεται η δημιουργία πολύ μακριών τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Κανένα
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Γνήσιο
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Ρεαλιστικό
@@ -1201,21 +1199,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Ρεαλιστ�
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Υπερβολική κλίση γραμμης τρένων κατά {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Υπερβολική κλίση για τα οχήματα δρόμου {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Απαγόρευση στα τρένα και πλοια να κάνουν στροφες 90°: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Συνένωση σταθμών τρένων χτισμένων δίπλα σε άλλο: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Να επιτρέπεται η συνένωση μη παρακείμενων σταθμών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Χρησιμοποίηση βελτιωμένου αλγόριθμου φόρτωσης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Φόρτωση οχημάτων σταδιακά: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Πληθωρισμός: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Παράδοση φορτίου σε σταθμό μόνο όταν υπάρχει ζήτηση: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Επιτρέπεται να χτίζονται πολύ μακριές γέφυρες: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Επιτρέπονται οι εντολές αποστολής σε αμαξοστάσιο: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Χειροκίνητη μέθοδος κατασκευής βιομηχανιών πρώτων υλών: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :κανένα
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :όπως σε άλλες βιομηχανίες
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :επικείμενη
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Έπιπεδη περιοχή γύρω από τις βιομηχανίες: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανα πόλη: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Εμφάνιση ολόκληρης ημερομηνίας στη γραμμή κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Εμφάνιση σήμανσης στην πλευρά οδήγησης: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Εμφάνιση παράθυρου οικονομικών στο τέλος του έτους: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Οι νέες οδηγίες είναι 'χωρίς στάση' από προεπιλογή: {ORANGE}{STRING}
@@ -1228,7 +1222,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Μετ�
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Επιτρέπεται η αγορά αποκλειστικών δικαιωμάτων μεταφοράς: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Να επιτρέπεται η αποστολή χρημάτων σε άλλες εταιρίες: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ανομοιόμορφοι σταθμοί: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Πολλαπλασιαστής βάρους σε φορτία για εξομοίωση βαρέων τρένων: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Συντελεστής ταχύτητας αεροπλάνων: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Αριθμός των αεροπορικών ατυχυμάτων: {ORANGE}{STRING}
@@ -1327,7 +1320,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Χρή�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :όχι
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Η εταιρία μου
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Όλες οι εταιρίες
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ενεργοποίηση δρομολογίων για τα οχήματα: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Εμφάνιση δρομολογίων σε στιγμές αντί για ημέρες: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Εμφάνιση άφιξη και αναχώρηση στα δρομολόγια: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Γρήγορη δημιουργία εντολών για τα οχήματα: {ORANGE}{STRING}
@@ -3132,23 +3124,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Ανα�
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Κατεστραμμένο!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Χαλασμένο
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Σταματημένο
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Σταματάει
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Σταματάει, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Χώρις ενέργεια κίνησης
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Αναμονή για ελεύθερη τροχιά
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Πάει προς {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Πάει προς {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Δεν έχει οδηγίες
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Δεν έχει οδηγίες, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Καθ' οδόν {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Πορεία προς {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Κατεύθυνση για το {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Κατεύθυνση για το {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Επισκευή στο {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Επισκευή στο {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3639,7 +3622,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Δεν �
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Γειτονεύει με περισσότερες από μια υπάρχουσες περιοχές σταθμών/φόρτωσης
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... ο σταθμός είναι υπερβολικά απλωμένος
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... ανομοιόμορφοι σταθμοί απενεργοποιημένοι
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Πάρα πολλές περιοχές σταθμών/φόρτωσης
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Πάρα πολλά κομμάτια σιδηροδρομικού σταθμού
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Πάρα πολλές στάσεις λεωφορείου
@@ -4344,7 +4326,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

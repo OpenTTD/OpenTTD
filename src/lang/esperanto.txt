@@ -1080,12 +1080,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancita
 STR_CONFIG_SETTING_OFF                                          :Malaktiva
 STR_CONFIG_SETTING_ON                                           :Aktiva
 STR_CONFIG_SETTING_DISABLED                                     :malaktiva
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Montru veturilrapidon en statbreto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permesu konstrui sur kliniĝoj kaj bordoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permesu terecigon sub konstruaĵoj, trakoj, ktp. (aŭtodeklivo): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permesu pli realgrandaj kaptoregionoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permesu forigon de pli da urbaj stratoj, pontoj ktp: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permesu konstrui tre longajn trajnojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Kvanto da lokomotivo fumo/fajreroj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Neniu
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originale
@@ -1099,21 +1097,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realisme
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kruteco de deklivo por vagonaroj {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Kruteco de deklivo por stratveturiloj {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vagonaroj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ligu stacidomojn konstruatajn unu apud la alia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permesu ligi staciojn ne rekte najbarajn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Uzu plibonigitan ŝarĝalgoritmon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Laŭgrade ŝarĝu veturilojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacio: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Nur liveru ŝarĝon al stacio se estas peto: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Permesu konstruadon de tre longaj pontoj: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Permesu ordonojn por iri al garaĝo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Permana ĉefa industri-konstrumaniero: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :neniu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kiel aliaj industrioj
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospektori
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ebena areo ĉirkaŭ industrioj: {ORANGE}{STRING} kahelo{P 0:1 "" j}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permesu pliajn similajn industriojn en la sama urbo: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Ĉiam montru longan daton en la statbreto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Montru signalojn veturflanke: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Montru financan fenestron fine de la jaro: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Novaj ordonoj estas 'sen-halte' per defaŭlto: {ORANGE}{STRING}
@@ -1126,7 +1120,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Ŝovu f
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permesu subaĉeti la lokajn estrojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permesu aĉeti ekskluzivajn transportrajtojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permesu sendi monon al aliaj kompanioj: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nekonformaj stacioj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Aviadil-rapidec-faktoro: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Nombro da aviadilokraŝoj: {ORANGE}{STRING}
@@ -1224,7 +1217,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Uzu ŝa
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Ne
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propra kompanio
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Ĉiuj kompanioj
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ebligu horarigon por veturiloj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Montru horaron laŭ tikoj anstataŭ laŭ tagoj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Montru alvenojn kaj forirojn sur horaroj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rapidkreo de veturilordonoj: {ORANGE}{STRING}
@@ -1600,7 +1592,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Spektant
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limigu la servilon al certa kvanto da spektantoj
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Parolata lingvo:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aliaj ludantoj scios kiu lingvo paroliĝas en la servilo
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Tajpu nomon por la retludo
 
@@ -2980,23 +2971,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Foriran
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kraŝis!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Panea
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Haltis
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Haltiĝas
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Haltiĝas, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Senforte
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Atendas haveblan padon
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Irante al {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Irante al {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Neniu ordono
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Neniu ordono, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Irante al {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Irante al {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Irante al {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Irante al {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Prizorgo en {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Prizorgo en {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3472,7 +3454,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Ne povas
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Alligas pli ol unu ekzistantan stacion/ŝarĝejon
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacio tro vastas
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... nekonformaj stacioj neebligitaj
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Tro da stacioj/ŝarĝejoj
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Tro da partoj de stacidomo
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Tro da bushaltejoj
@@ -4175,7 +4156,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

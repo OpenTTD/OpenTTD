@@ -1076,12 +1076,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Tetapan 
 STR_CONFIG_SETTING_OFF                                          :Matikan
 STR_CONFIG_SETTING_ON                                           :Hidupkan
 STR_CONFIG_SETTING_DISABLED                                     :tiada
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Paparkan status kelajuan kenderaan di status bar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Benarkan pembinaan di tepi pantai dan cerun bukit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Benarkan pengubahsuaian tanah di bawah bangunan, landasan, dan sebagainya (autocerun): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Benarkan kawasan tangkapan yang lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Benarkan lebih pemusnahan jalanraya, jambatan, dan sbgnya yang dimiliki bandar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Benarkan pembinaan keretapi yang sangat panjang: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Tiada
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Asli
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistik
@@ -1090,20 +1088,16 @@ STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Asal
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistik
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Kecerunan bukit untuk keretapi {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Halangkan keretapi dan kapal daripada membuat pusingan 90 darjah: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Sambungkan stesen keretapi yang dibina bersebelahan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Benarkan penyambungan stesen yang tidak bersebelahan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Gunakan algoritma muatan yang diperbaiki: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Muatkan kenderaan sedikit demi sedikit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Hantarkan kargo ke stesen hanya jika ada permintaan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Benarkan pembinaan jambatan yang sangat panjang: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Benarkan arahan pergi ke depoh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Cara pembinaan manual industri utama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :tiada
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lain
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :sedang prospek
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Benarkan pelbagai industri sejenis di setiap bandar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Sentiasa paparkan tarikh panjang di status bar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Paparkan isyarat di sebelah pemandu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Paparkan tetingkap kewangan setiap penghujung tahun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Arahan baru ialah 'tanpa henti' secara lazim: {ORANGE}{STRING}
@@ -1116,7 +1110,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Gerakka
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Benarkan pihak berkuasa dirasuah: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Benarkan pembelian hak pengangkutan eksklusif: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Benarkan menghantar wang ke syarikat lain: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Stesen tidak seragam: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pengganda keberatan tambang muatan untuk simulasi keretapi berat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor kelajuan pesawat: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :tiada
@@ -1205,7 +1198,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Gunakan
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Matikan
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Syarikat Sendiri
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Semua syarikat
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Benarkan penjadualan untuk kenderaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Paparkan jadual menggunakan tanda rait dan bukan hari: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Paparkan ketibaan dan pelepasan dalam jadual: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Pewujudan pantas arahan kenderaan: {ORANGE}{STRING}
@@ -1576,7 +1568,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks pen
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Hadkan bilangan penyaksi dalam pelayan
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Bahasa yang digunakan:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Pemain lain akan tahu bahasa apa yang digunakan di pelayan ini
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Masukkan nama untuk permainan rangkaian
 
@@ -2936,16 +2927,9 @@ STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Ubahsuai
 
 # Messages in the start stop button in the vehicle view
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Menuju ke {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Menuju ke {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Tiada perintah
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Tiada perintah, {VELOCITY}
-
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Menuju ke {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Menuju ke {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servis di {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis di {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3231,7 +3215,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Lapangan
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Lebih daripada satu stesen/kawasan muatan bersempadanan
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stesen terlalu meluas
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... stesen yang tidak seragam tidak dibenarkan
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Terlampau stesen/kawasan muatan
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Terlampau banyak bahagian-bahagian stesen keretapi
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Terlampau banyak stesen bas
@@ -3924,7 +3907,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

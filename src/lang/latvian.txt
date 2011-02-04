@@ -1066,12 +1066,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Papildus
 STR_CONFIG_SETTING_OFF                                          :Izslēgts
 STR_CONFIG_SETTING_ON                                           :Ieslēgts
 STR_CONFIG_SETTING_DISABLED                                     :atspējots
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Rādīt transportu ātrumu statusa joslā: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Atļaut celt uz nelīdzenas zemes un krastiem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Atļaut zemes transformācijas zem dažādām būvēm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Atļaut realistiskākus mikrorajonus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Atļaut pilsētai piederošo ceļu un tiltu nojaukšanu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Atļaut ļoti garu vilcienu būvēšanu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Transportlīdzekļa izmešu efektu daudzums: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nekāds
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Oriģinālais
@@ -1083,21 +1081,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :{LTBLUE}Ceļu t
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Oriģinālais
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Reālistisks
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Aizliedz vilcieniem un kuģiem veikt 90 grādu pagriezienus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Savienot vilciena stacijas, kas celtas blakus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Atļaut savienot stacijas, kas neatrodas tieši blakus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Lietot uzlabotu piekraušanas algoritmu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Piekraut automašīnas pakāpeniski: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflācija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Transportēt kravu uz staciju tikai tad, ja ir pieprasijums: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Aļaut ļoti garu tiltu celtniecību: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Atļaut "doties uz depo" komandu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Pašrocīgā primāro rūpniecības objektu būvniecības metode: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kā citas industrijas
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ienesīga
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Līdzens laukums ap rūpnīcām: {ORANGE}{STRING} lauciņ{P š i u}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Atļaut vairākas līdzīgas rūpnīcas vienā pilsētā : {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vienmēr rādīt garu datumu statusa joslā: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Rādīt signālus braukšanas pusē: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Gada beigās rādīt finanšu pārskatu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Jaunie rīkojumi ir nepārtraukti pēc noklusējuma: {ORANGE}{STRING}
@@ -1110,7 +1104,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Bīdīt
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Atļaut vietējo varas iestāžu piekukuļošanu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Atļaut iegādāties ekskluzīvās pārvadājumu tiesības: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Atļaut pārsūtīt naudu citiem uzņēmumiem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ne-uniformas stacijas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Svara koeficients kravām, lai simulētu smagus vilcienus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lidaparātu ātruma koeficients: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :{G=f}normāla
@@ -1204,7 +1197,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Lietot 
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Izslēgts
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Paša uzņēmums
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Visas kompānijas
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Iespējot kustības sarakstu veidošanu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rādīt sarakstu tikšķos nevis dienās: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Ātrā transporta norīkojumu veidošana: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Sliežu tips pēc noklusējuma: {ORANGE}{STRING}
@@ -1570,7 +1562,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks. no
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ierobežo serveri noteiktam novērotāju skaitam
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Valodu, kurā runā:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Citi lietotāji zinās, kurā valodā tiek runāts uz servera
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Ievadiet tīkla spēles nosaukumu
 
@@ -2957,23 +2948,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Aizbrau
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Cietis avārijā!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Salūzis
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Apstādināts
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Apstājas
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Apstājas, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED} Nav jaudas
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Gaida pēc brīva ceļa
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Dodas uz {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Dodas uz {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Nav rīkojumu
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nav rīkojumu, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Dodas uz {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Dodas uz {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Dodas uz {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Dodas uz {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Apkalpošana {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Apkalpošana {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3432,7 +3414,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Šeit ne
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Piekļaujas vairāk par vienu staciju/iekraušanas zonu
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacija ir pārāk izplesta
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... neregulāras stacijas atspējotas
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Pārāk daudz staciju/iekraušanas zonu
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Pārāk daudz dzelzceļastacijas daļu
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Pa'ra'k daudz autobusa pieturu
@@ -4133,7 +4114,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

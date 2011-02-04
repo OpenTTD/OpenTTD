@@ -1090,12 +1090,11 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :disabled
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Show vehicle speed in status bar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Allow building on slopes and coasts: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allow terraforming under buildings, tracks, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Allow removal of more town-owned roads, bridges and tunnels: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Enable building very long trains: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximum length of trains: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Amount of vehicle smoke/sparks: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :None
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1109,21 +1108,19 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistic
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Slope steepness for trains {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Slope steepness for road vehicles {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forbid trains and ships to make 90 deg turns: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allow joining stations not directly adjacent: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Use improved loading algorithm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Load vehicles gradually: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Deliver cargo to a station only when there is a demand: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Allow building very long bridges: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Allow goto depot orders: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maximum bridge length: {ORANGE}{STRING} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maximum tunnel length: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manual primary industry construction method: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :none
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as other industries
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecting
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Flat area around industries: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Allow multiple similar industries per town: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Always show long date in the status bar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Show signals on the drive side: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}New orders are 'non-stop' by default: {ORANGE}{STRING}
@@ -1136,7 +1133,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pan win
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Allow buying exclusive transport rights: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Allow sending money to other companies: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Plane speed factor: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Number of plane crashes: {ORANGE}{STRING}
@@ -1235,7 +1231,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Use loa
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Off
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Own company
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :All companies
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Show arrival and departure in timetables: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Quick creation of vehicle orders: {ORANGE}{STRING}
@@ -1361,6 +1356,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommended)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recommended)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatic reversing at signals: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Change setting value
 
@@ -1613,7 +1609,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max spec
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limit the server to a certain number of spectators
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Language spoken:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Other players will know which language is spoken on the server
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Enter a name for the network game
 
@@ -3040,23 +3035,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Leaving
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Crashed!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Broken down
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stopped
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Stopping
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stopping, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}No power
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Waiting for free path
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Heading for {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Heading for {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}No orders
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}No orders, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Heading for {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Heading for {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Heading for {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Maintenance at {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Maintenance at {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3266,9 +3252,10 @@ STR_ORDER_TRANSFER                                              :(Transfer and t
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfer and wait for full load)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfer and wait for any full load)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfer and leave empty)
-STR_ORDER_NO_UNLOAD                                             :(No unload and take cargo)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No unload and wait for full load)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No unload and wait for any full load)
+STR_ORDER_NO_UNLOAD                                             :(No unloading and take cargo)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No unloading and wait for full load)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No unloading and wait for any full load)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No unloading and no loading)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[near end]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[middle]
@@ -3549,7 +3536,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Can't bu
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjoins more than one existing station/loading area
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station too spread out
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... nonuniform stations disabled
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Too many stations/loading areas
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Too many railroad station parts
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Too many bus stops
@@ -3611,7 +3597,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... must
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trains can only be altered when stopped inside a depot
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Train too long
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Can't reverse direction of vehicle...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Can't turn vehicles consisting of multiple units
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... consists of multiple units
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Incompatible rail types
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Can't move vehicle...
@@ -3685,6 +3671,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Must dem
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Another tunnel in the way
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel would end out of the map
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Unable to excavate land for other end of tunnel
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunnel too long
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... too many objects
@@ -4252,7 +4239,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

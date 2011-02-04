@@ -1039,30 +1039,24 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ffurfwed
 STR_CONFIG_SETTING_OFF                                          :I  Ffwrdd
 STR_CONFIG_SETTING_ON                                           :Ymlaen
 STR_CONFIG_SETTING_DISABLED                                     :analluogwyd
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Dangos cyflymder y cerbyd yn y bar statws: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Caniatáu adeiladu a'r lethrau ac arfordiroedd {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Caniatáu daearffurfio o dan adeiladau, traciau, etc. (awtolethru): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Caniatáu ardaloedd dalgylch mwy realistig eu maint: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Caniatáu chwalu ffyrdd, pontydd ayb. o eiddo trefi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Galluogi adeiladu trenau hir iawn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model cyflymu trenau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Gwreiddiol
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistig
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Rhwystro trenau a llongau rhag troi 90 gradd: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Uno gorsafoedd trên sydd drws nesaf i'w gilydd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Caniatáu cyfuno gorsafoedd nad ydynt yn union gyfochrog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Defnyddio'r algorithm llwytho gwell: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Llwytho cerbydau'n raddol: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Chwyddiant: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Danfon llwyth i orsaf dim ond pan fo galw: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Caniatáu adeiladu pontydd hir iawn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Caniatáu gorchmynion mynd i depo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Prif ddull adeiladu diwydiant â llaw: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :dim
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :fel diwydiannau eraill
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :chwilio am adnoddau crai
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Caniatáu nifer o ddiwydiannau bach i bob tref: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Dangos y dyddiad hir yn y bar statws drwy'r amser: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Dangos signalau ar yr ochr yrru: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Gosodir gorchmynion newydd yn 'ddi-stop' fel rhagosodiad: {ORANGE}{STRING}
@@ -1075,7 +1069,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Tremio'
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Caniatáu llwgrwobrwyo'r awdurdod lleol: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Caniatáu prynu hawliau cludo unigryw: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Caniatáu trosglwyddo arian i gwmnïau eraill: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Gorsafoedd anunffurf: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Lluosogydd pwysau ar gyfer llwythi i adlewyrchu trenau trwm{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Ffactor cyflymder awyrenau: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Dim
@@ -1160,7 +1153,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Dangos 
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :I ffwrdd
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eich cwmni
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Pob cwmni
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Galluogi amserlennu ar gyfer cerbydau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Dangos amserlen fesul ticiau yn hytrach na dyddiau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creu cyflym ar gyfer gorchmynion cerbydau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :{LTBLUE}Math rheilffordd ragosodedig (ar ôl gêm newydd/llwytho gêm ): {ORANGE}{STRING}
@@ -1520,7 +1512,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Uchafswm
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}rhoi cyfyngiad penodol ar sawl gwyliwr mae'r gweinydd yn ei ganiatáu
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Iaith i'w siarad:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Rhoi gwybod i'r chwaraewyr pa iaith y dylid ei siarad ar y gweinydd
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Rhowch enw ar gyfer y gêm rhwydwaith
 
@@ -2822,20 +2813,13 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Gadael
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Wedi crashio!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Torri lawr
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Wedi stopio
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Wrthi'n stopio
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Wrthi'n stopio {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Dim Pŵer
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Aros am lwybr clir
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Ar ei ffordd i {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Ar ei ffordd i {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Dim gorchmynion
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Dim gorchmynion, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Mynd am {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Mynd am {WAYPOINT}, {VELOCITY}
-
-
 
 # Vehicle stopped/started animations
 
@@ -3267,7 +3251,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Methu ad
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Mae'n ymylu ar fwy nag un gorsaf/ardal lwytho sydd eisoes yn bodoli
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... mae'r orsaf yn rhy wasgaredig
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... analluogwyd gorsafoedd anunffurf
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Gormod o orsafoedd/ardaloedd llwytho
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Mae gan yr orsaf ormod o rannau
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Gormod o arosfannau bysus
@@ -3935,7 +3918,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

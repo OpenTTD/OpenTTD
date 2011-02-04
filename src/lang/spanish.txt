@@ -1091,12 +1091,11 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Opciones
 STR_CONFIG_SETTING_OFF                                          :No
 STR_CONFIG_SETTING_ON                                           :Sí
 STR_CONFIG_SETTING_DISABLED                                     :desactivado
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Mostrar velocidad del vehículo en la barra de estado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permitir la construcción en cuestas y orillas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir modificar terreno bajo carreteras, raíles, etc.: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permitir tamaño del área de captación más realista: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permitir eliminar más propiedades de pueblos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permitir la construcción de trenes muy largos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Máxima longitud de trenes: {ORANGE}{STRING} casilla{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Cantidad de humo/chispas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ninguna
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1110,21 +1109,19 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realista
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinación de las cuestas para trenes: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinación de cuestas para vehículos de carretera: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibir a trenes y barcos realizar giros de 90 grados: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Unir estaciones de tren unas junto a otras: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitir unir estaciones no adyacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo mejorado de carga: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Cargar vehículos gradualmente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflación: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Entregar mercancía a una estación sólo si hay demanda: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Permitir la construcción de puentes muy largos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Permitir órdenes de ir a depósito: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Máxima longitud de puentes: {ORANGE}{STRING} casilla{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Máxima longitud de túneles: {ORANGE}{STRING} casilla{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Método de construcción de industria primaria: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ninguno
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como las otras industrias
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospección
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Área plana alrededor de industrias: {ORANGE}{STRING} casilla{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Construcción de más de una industria similar por pueblo: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mostrar siempre fecha larga en la barra de estado: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostrar señales en el lado de conducción: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostrar ventana de finanzas al final del año: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nuevas órdenes son 'sin parada' por defecto: {ORANGE}{STRING}
@@ -1137,7 +1134,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Desplaz
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir sobornos a la autoridad local: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permitir comprar derechos de transporte exclusivos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir enviar dinero a otras empresas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Estaciones no uniformes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Carga el multiplicador de peso para simular trenes pesados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor velocidad avión: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Cantidad de aviones estrellados: {ORANGE}{STRING}
@@ -1236,7 +1232,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Usar in
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Apagado
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propia empresa
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Todas las empresas
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Activar horarios para vehículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horario en ticks en vez de en días: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostrar salidas y llegadas en horarios: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creación rápida de órdenes para vehículos: {ORANGE}{STRING}
@@ -1362,6 +1357,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Encamin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(No recomendado)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Cambio de sentido automático en señales: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Cambiar valor de la opción
 
@@ -3040,23 +3036,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Abandon
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}¡Siniestrado!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Averiado
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parado
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Deteniéndose
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Deteniéndose, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sin potencia
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperando ruta libre
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Hacia {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Hacia {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Sin órdenes
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sin órdenes, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Hacia {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Hacia {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Hacia {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Hacia {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servicio en {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servicio en {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3269,6 +3256,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir y d
 STR_ORDER_NO_UNLOAD                                             :(No descargar y tomar carga)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descargar y esperar a carga completa)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descargar y esperar a cualquier carga completa)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(No descargar y no cargar)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[cerca del fin]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[medio]
@@ -3549,7 +3537,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}No se pu
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Adjunta más de una estación/zona de carga existente
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estación demasiado extendida
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... estaciones no uniformes desactivadas
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Demasiadas estaciones/zonas de carga
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Demasiadas partes de estación de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de autobús
@@ -3685,6 +3672,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Primero 
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Otro túnel en el camino
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}El túnel terminaría fuera del mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}No se puede excavar en la tierra al otro lado del túnel
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel demasiado largo
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiados objetos
@@ -4252,7 +4240,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

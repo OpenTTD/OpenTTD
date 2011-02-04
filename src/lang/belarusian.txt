@@ -1407,12 +1407,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Пашы
 STR_CONFIG_SETTING_OFF                                          :не
 STR_CONFIG_SETTING_ON                                           :так
 STR_CONFIG_SETTING_DISABLED                                     :адключана
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Паказваць хуткасьць транспарту ў панэлі статусу: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Дазволіць будаўніцтва на сьхілах і на беразе: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Дазволіць зьмену ляндшафту пад будынкамі, дарогамі й г. д. (аўтаспускі): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Зона пакрыцьця залежыць ад тыпу станцыі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Дазволіць знос амаль усіх гарадзкіх аб'ектаў: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Дазволіць вельмі доўгія цягнікі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Колькасць дыму/іскраў у лакаматываў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :няма
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :арыгiнальная
@@ -1426,21 +1424,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :рэаліст�
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Крутасьць сьхілаў для цягнікоў: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Крутасьць сьхілаў для аўтатранспарту: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забараніць цягнікам і караблям 90-градусныя павароты: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Аб'ядноўваць пабудаваныя побач чыгуначныя станцыі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Дазволіць аб'яднаньне станцыяў, не прымыкаючых адна да адной: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Выкарыстоўваць палепшаны алгарытм загрузкі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Паступовая загрузка транспарту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Уключыць інфляцыю: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Пастаўляць груз на станцыю, толькі калі на яго быў попыт: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Дазволіць будаўніцтва вельмі доўгіх мастоў: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Дэпо можна дадаць у маршрут: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Мэтад стварэньня сыравінных прадпрыемстваў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не ствараць
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як i iншыя
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :геолагаразьведка
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Плоскi рэльеф вакол прадпрыемстваў: {ORANGE}{STRING} клет{P ка кi ак}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Дазволіць некалькі прадпрыемстваў аднаго тыпу на горад: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Заўсёды поўная дата ў панэлі стану: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Паказваць сыгналы на баку руху: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Паказваць фінансавую статыстыку напрыканцы года: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Ствараць заданні з пазнакай «без прыпынкаў»: {ORANGE}{STRING}
@@ -1453,7 +1447,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Пер�
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Дазволіць падкупляць мясцовыя ўлады: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Дазволіць купляць эксклюзыўныя трансп. правы: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Дазволіць перадачу грошай іншым кампаніям: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Станцыі могуць быць адвольнай формы: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Множнік вагі для сымуляцыі цяжкіх таварных цягнікоў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Каэфіцыент хуткасьці для самалётаў: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Верагоднасьць авіякатастрофаў: {ORANGE}{STRING}
@@ -1552,7 +1545,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Пак�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :не
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :для сваёй кампаніі
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :для ўсіх кампаніяў
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Уключыць расклад руху транспарту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Паказваць расклад ў «ціках» замест дзён: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Паказваць у раскладах час прыбыцьця й адпраўленьня: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Хуткае стварэньне заданьняў транспарту: {ORANGE}{STRING}
@@ -1930,7 +1922,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Абмежаваць максымальную колькасьць назіральнікаў на сэрвэры
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Мова зносінаў:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Іншыя гульцы будуць ведаць, на якой мове размаўляюць на сэрвэры
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Увядзіце назву сеткавай гульні
 
@@ -3397,23 +3388,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Ад'я
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Трапіў у аварыю!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Паломка
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Спынены
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Спыняецца
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Спыняецца; {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Няма току
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Чакае вольнай каляіны
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Iдзе да {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Iдзе да {STATION}; {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Няма заданьняў
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Няма заданьняў; {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Iдзе да {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Iдзе да {WAYPOINT}; {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Iдзе ў {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Iдзе ў {DEPOT}; {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Абслуг. у {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Абслуг. у {DEPOT}; {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3906,7 +3888,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Тут �
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Далучаецца больш чым да адной існуючай станцыі
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... станцыя занадта вялікая
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... выкарыстаньне непрамавугольных станцыяў забаронена
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Занадта шмат станцыяў і прыпынкаў
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Занадта вялікая чыгуначная станцыя
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Занадта шмат аўтобусных прыпынкаў
@@ -4729,7 +4710,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

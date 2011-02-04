@@ -1083,12 +1083,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}進階�
 STR_CONFIG_SETTING_OFF                                          :關
 STR_CONFIG_SETTING_ON                                           :開
 STR_CONFIG_SETTING_DISABLED                                     :關閉
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}於狀態列顯示交通工具速度：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}可在斜坡及岸邊興建：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允許在建築物或是軌道底下改變地形斜度 (autoslope)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}依車站種類不同改變收集範圍：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}可移除更多市鎮所有的道路、橋樑等：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}提高列車長度限制：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}列車產生的蒸氣／火花數量：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :無
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :原版
@@ -1102,20 +1100,16 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :真實
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}列車最大坡度 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}車輛最大坡度 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列車及船舶直角轉向：{ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}合併建在一起的車站：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}允許將不相鄰的車站與附近的車站結合：{ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}使用改善後的裝載演算法：{ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}交通工具逐步裝載：{ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}通貨膨脹：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}有需求才向車站供貨：{ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}提高橋樑長度限制：{ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}可以下「到機廠」指令：{ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}修改基礎工業的建造方式：{ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :無法建造
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :與其他工業相同
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :需探勘
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}每個市鎮可擁有多個同類工業：{ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}永遠於狀態列顯示長日期格式：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}於駕駛側顯示號誌：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}於年末顯示財政視窗：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}設定指令時預設選擇「直達」指令：{ORANGE}{STRING}
@@ -1128,7 +1122,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}滑鼠�
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}可向地方政府行賄：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}允許購買市鎮的專屬運輸權：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}允許流通資金給其他公司：{ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}不規則形狀車站：{ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}貨物重量倍率，以模擬較重列車：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飛機速度比例：{ORANGE}{STRING} 分之一
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}飛機墜機機率：{ORANGE}{STRING}
@@ -1221,7 +1214,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}使用�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :無
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :自家公司
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :所有公司
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}啟用交通工具時刻表：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}顯示時刻表時以 Tick 取代日為單位：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}顯示時刻表排定的到離時間：{ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}快速建立交通工具調度命令：{ORANGE}{STRING}
@@ -1597,7 +1589,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}旁觀�
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}限制可加入的旁觀者數量
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}溝通語言：
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}讓其他人知道這個伺服器使用的溝通語言
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}為連線遊戲輸入一個名稱
 
@@ -3018,23 +3009,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}正在�
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}撞毀！
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}故障
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}停止
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}正在停止
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}正在停止，{VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}沒有電力
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}正在等候路徑開放
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}正前往 {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}正前往 {STATION}，{VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}沒有指令
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}沒有指令，{VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}正前往 {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}正前往 {WAYPOINT}，{VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}正前往 {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}正前往 {DEPOT}，{VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}正在維護於 {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}正在維護於 {DEPOT}，{VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3516,7 +3498,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}無法�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}鄰接超過一個現有車站／載貨區
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... 車站範圍太大
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... 未開啟不規則車站功能
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}太多車站／載貨區
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}太多火車站元件
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}太多公車站
@@ -4217,7 +4198,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

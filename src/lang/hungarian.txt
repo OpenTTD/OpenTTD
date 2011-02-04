@@ -1154,12 +1154,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Haladó 
 STR_CONFIG_SETTING_OFF                                          :Ki
 STR_CONFIG_SETTING_ON                                           :Be
 STR_CONFIG_SETTING_DISABLED                                     :kikapcsolva
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Járművek sebességének kijelzése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Lejtőre és partokra építés: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Épületek, vágányok, stb. alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Települési tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Járművek kipufogógáz/füst mennyisége: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nincs
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Eredeti
@@ -1173,21 +1171,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Valósághű
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Lejtő meredeksége vonatoknak: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lejtő meredeksége közúti járműveknek: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tehetnek 90 fokos kanyart: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Meglévő vasútállomás utólag bővíthető: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Nem közvetlen szomszédos állomások egyesítése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Járművek egymás utáni telerakodása (egyidejű helyett): {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Járművek fokozatos rakodása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Infláció: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Csak igény esetén kerüljön rakomány az állomásra: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Nagyon hosszú hidak engedélyezése: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}'Menj a garázsba' engedélyezés a menetrendben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Kézi nyersanyaglelőhely-létesítési módszer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nincs
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mint általában
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :kutatás támogatása
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Gazdasági épületek körüli sík terület: {ORANGE}{STRING} mező
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Több ugyanolyan gazdasági épület településenként: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mindig teljes dátum a képernyőn: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Jelzők a menetirány szerinti oldalon legyenek: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Pénzügyi összesítés minden év végén: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Minden új utasítás alapból 'non-stop': {ORANGE}{STRING}
@@ -1200,7 +1194,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Ablakmo
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetősége: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Kizárólagos szállítási jogok vételének engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Pénz küldésének engedélyezése másik vállalatok részére: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Különböző vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak nehéz vonatok szimulációjára: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Repülőgép sebességszorzó: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lezuhanó repülőgépek száma: {ORANGE}{STRING}
@@ -1299,7 +1292,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Rakodá
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Kikapcsolva
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Saját vállalat
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Minden vállalat
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Időalapú menetrend engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetrendi idő-alapegység tick a nap helyett: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Indulás és érkezés megjelenítése a menetrendekben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Gyors menetrend-készítés: {ORANGE}{STRING}
@@ -1677,7 +1669,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max. meg
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}A megfigyelők maximális száma a szerveren
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Beszélt nyelv:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Add meg a hálózati játékhoz a neved
 
@@ -3104,23 +3095,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Indul
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Balesetet szenvedett!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Lerobbant
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Áll
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Lassít
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Lassít, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nincs áram
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Szabad útra vár
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}{STATION} állomás felé
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION} állomás felé, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Nincs menetrend
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Nincs menetrend, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Útban {WAYPOINT} felé
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Útban {WAYPOINT} felé, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Útban {DEPOT} felé
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Útban {DEPOT} felé, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Javítás {DEPOT} helyen
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Javítás {DEPOT} helyen, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3613,7 +3595,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nem ép�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Több állomással/rakodóhellyel érintkezik
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... az állomás túl kiterjedt
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... csak egyféle vágánytípusú állomások lehetnek
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Túl sok az állomás/rakodóhely
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Túl sok vasútállomás-rész
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Túl sok buszmegálló
@@ -4353,7 +4334,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

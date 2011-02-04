@@ -1132,12 +1132,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Napredne
 STR_CONFIG_SETTING_OFF                                          :Izklopi
 STR_CONFIG_SETTING_ON                                           :Vklopi
 STR_CONFIG_SETTING_DISABLED                                     :onemogočeno
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Prikaz hitrosti vozil v vrstici stanja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dovoli gradnjo hiš na nagibih ali obali: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dovoli oblikovanje terena pod objekti, tiri, ipd. (samonaklon): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnični območni zajem postaj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest in mostov: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Omogoči gradnjo zelo dolgih vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/isker vozil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Brez
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originalno
@@ -1151,21 +1149,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistično
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Naklon vzpona za vlake {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Naklon vzpona za cestna vozila {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prepreči vlakom in ladjam 90° zavoje: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Združi železniške postaje, ki si stojijo blizu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dovoli združevanje postaj, ki niso v dotiku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Uporabi izboljšan algoritem polnjenja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Postopno polni vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostavi tovor postaji le ob povpraševanju: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Dovoli gradnjo zelo dolgih mostov: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Dovoli ukaz 'pojdi v garažo': {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Glavni ročni način gradnje industrij: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :brez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kot ostale industrije
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :obetaven
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Izravnan teren okrog industrij: {ORANGE}{STRING} plošč{P a i e ""}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Dovoli več enakih industrij na mesto: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vedno prikaži dolg datum v vrstici stanja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Prikaz signalov na vozni smeri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Prikaz okna financ na koncu leta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Novi ukazi so privzeti 'non-stop': {ORANGE}{STRING}
@@ -1178,7 +1172,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Premakn
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dovoli podkupovanje mestnih oblasti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dovoli nakup ekskluzivnih prevoznih dovoljenj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dovoli pošiljanje denarja drugim podjetjem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Neenake postaje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Koeficient teže tovora za simulacijo težkih vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor hitrosti letal: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Število letalskih nesreč: {ORANGE}{STRING}
@@ -1277,7 +1270,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Uporabi
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Izklop
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Lastno podjetje
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Vsa podjetja
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Omogoči urnike vozil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Prikaz urnikov v pikah namesto dneh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Prikaži prihod in odhod v urnikih: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Hitro ustvarjanje ukazov vozila: {ORANGE}{STRING}
@@ -3081,23 +3073,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Zapuš�
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Uničen!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}V okvari
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Ustavljeno
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Se ustavlja
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Se ustavlja, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ni napetosti
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Čaka na prosto pot
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Pelje proti {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Pelje proti {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Brez ukazov
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Brez ukazov, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Pelje proti {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Pelje proti {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Pelje proti {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Pelje proti {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servis v {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servis v {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3590,7 +3573,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Tukaj ni
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Združi dve ali več postaj
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... postaja preveč razširjena
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... nehomogene postaje izklopljene
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Preveč postaj na zemljevidu
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Preveč delov železniške postaje
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Preveč avtobusnih postaj
@@ -4331,7 +4313,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

@@ -695,7 +695,6 @@ STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}भा�
 
 
 
-
 # Network game languages
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ENGLISH                                        :इंग्रजी
@@ -1129,9 +1128,6 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :विमान
 # Messages in the start stop button in the vehicle view
 
 
-
-
-
 # Vehicle stopped/started animations
 
 # Vehicle details
@@ -1540,7 +1536,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

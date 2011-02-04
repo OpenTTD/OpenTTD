@@ -585,7 +585,6 @@ STR_QUIT_NO                                                     :{BLACK}Ne
 
 
 
-
 # Network game languages
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -955,10 +954,6 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Aeronavo
 
 # Messages in the start stop button in the vehicle view
 
-
-
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Servado ad {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Servado ad {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -1250,7 +1245,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

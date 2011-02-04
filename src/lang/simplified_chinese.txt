@@ -1082,12 +1082,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}高级�
 STR_CONFIG_SETTING_OFF                                          :关闭
 STR_CONFIG_SETTING_ON                                           :打开
 STR_CONFIG_SETTING_DISABLED                                     :禁用
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}在状态栏中显示车辆速度：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}允许在斜坡和河岸上建设：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允许在建筑、轨道下方改变地形（自动斜坡）： {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}允许更真实的客源范围：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁等：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}允许购买超长列车：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}火车头产生的蒸气/火花数量: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :无
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :原版
@@ -1101,20 +1099,16 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :改良真实版
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}坡度对列车速度的影响 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}坡度对汽车速度的影响 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}禁止列车和轮船 90 度转弯：{ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}将相邻的火车站进行整合：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}允许非毗邻站台合并：{ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}使用进阶的装货算法：{ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}装货时循序渐进：{ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}通货膨胀：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}仅在车站接受此货物时卸货：{ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}允许建造超长桥梁：{ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}允许前往车库的计划任务：{ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}原料工业建设方式： {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :不允许
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :同其他工业
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :探矿式
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}允许在一个城镇中建设多个同类工业设施：{ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}永远在状态栏中显示长日期：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}在列车前进的方向显示信号灯：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}在年终显示财务报表：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}新的调度命令默认为“不停车”： {ORANGE}{STRING}
@@ -1127,7 +1121,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}当鼠�
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}允许贿赂地方政府：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}允许买断经营权： {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}允许向其他公司转移资金： {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}允许异形站台：{ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}根据装载货物的数量模拟超重列车：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飞机速度比例： {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}空难: {ORANGE}{STRING}
@@ -1221,7 +1214,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}使用�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :关闭
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :玩家公司
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :全部公司
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}允许使用时间表： {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}使用时间标记而不是天为单位： {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}在时刻表中显示到达时间和出发时间： {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}快速创建车辆调度计划：{ORANGE}{STRING}
@@ -1593,7 +1585,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}旁观�
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}限制服务器上旁观者的数量
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}语言选项：
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}其他玩家可以知道服务器的官方语言
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}为您的联机游戏取名
 
@@ -3004,23 +2995,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}发车
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}撞毁!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}抛锚
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}停运
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}正在停止
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}正在停止，{VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}没有电力
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}等待空余轨道
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}正在前往 {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}正在前往 {STATION}，{VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}没有目标
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}没有目标，{VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}正在前往{WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}正在前往{WAYPOINT}，{VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}正前往 {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}正前往 {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}正在服务于 {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}正在服务于 {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3504,7 +3486,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}不能�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}与另一车站相连
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}站区太大了……
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}已禁用了异形站台……
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}车站过多
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}分体站台太多
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}公共汽车站过多
@@ -4205,7 +4186,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

@@ -710,7 +710,6 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا 
 
 
 
-
 # Network game languages
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -1068,12 +1067,7 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :ڈیپو کا �
 
 # Messages in the start stop button in the vehicle view
 
-
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE} روانگی {DEPOT} کی طرف
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE} روانگی {DEPOT} کی طرف، {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE} {DEPOT} پر خدمات
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE} {DEPOT} پر خدمات، {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -1407,7 +1401,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

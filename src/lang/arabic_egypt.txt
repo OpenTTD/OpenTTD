@@ -1084,12 +1084,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}الاع
 STR_CONFIG_SETTING_OFF                                          :قفل
 STR_CONFIG_SETTING_ON                                           :فتح
 STR_CONFIG_SETTING_DISABLED                                     :غير مفعل
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}عرض سرعة المركبه في شريط الحاله :{ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}السماح بالبناء على المنحدرات و السواحل: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}السماح باعادة بناء التلال تحت المباني, الطرق, الخ .-الانحدار الذاتي- {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}السماح ببناء قطارات طويلة جدا{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}كمية دخان/شرار القطارات:{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :بدون
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :اصلي
@@ -1103,21 +1101,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :واقعي
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}تدرج ميلان سكة القطار {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}نسبة الميلان للعربات {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة : {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}ربط محطات القطار المبنيه بجوار بعض: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE} السماح بربط محطتين غير متجاورتين : {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}أستخدام خوارزمية التحميل المحسنه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}تحميل القطارات بالتدريج: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}التضخم: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}أوصل الحموله للمحطه إذا كان هناك حاجة فقط: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}السمح ببناء جسور طويلة جداً: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}السماح بأمر الذهاب للورشة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}طريقة بناء المصانع الأولية يدوية : {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :بدون
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ككل المصانع الأخرى
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :تنقيب
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}المساحة المستوية حول المصانع: {ORANGE}{STRING} مربع
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}السماح بوجود اكثر من مصنع من نفس النوع في المدينة الواحدة: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}استخدام التاريخ الطويل في لوحة العرض دائما: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}اظهار الاشارات على جهة السائق: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}أعرض نافذة المالية في آخر السنه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}الامر الجديد - بدون توقف - قياسيا: {ORANGE}{STRING}
@@ -1130,7 +1124,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}حرك 
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}السماح برشوة السلطات االمحليه: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}السماح بشراء حقوق النقل الحصري: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}السماح بتحويل المال للشركات الأخرى: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}محطات غير متساوية: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}مضاعفة وزن الشحنة لمحاكاة القطارات الثقيلة: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}معامل السرعة للطائرة : {ORANGE} 1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}عدد الطائرات المتحطمة: {ORANGE}{STRING}
@@ -1223,7 +1216,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}تفع�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :بدون
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :لشركتك
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :كل الشركات
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}تمكين جدولة اعمال المركبات: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}عرض جدولة الأعمال بالمهام بدلا من الأيام: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}عرض الوصول و المغادرة في جدولة الاعمال: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE} انشاء اوامر بسرعة : {ORANGE}{STRING}
@@ -1599,7 +1591,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}أقصى
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}حدد عدد المشاهدين لهذا الخادم
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}اللغة المتحدثة:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}اللاعبين الآخرين سيعرفون اللغة المتحدثة
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}أدخل أسم اللعبة للشبكة
 
@@ -3019,23 +3010,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}يرح�
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}تحطم!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED} متعطل
 STR_VEHICLE_STATUS_STOPPED                                      :{RED} متوقف
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}يتوقف
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}يتوقف , {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}لا توجد طاقة
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}ينتظر لمسار متاح
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}تتوجة الى {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}تتوجة الى {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}لايوجد اوامر وجهات
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}لا يوجد اوامر وجهات , {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}متوجه ل{WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}متوجه ل {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}يتوجة الى {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}يتوجة الى {DEPOT} , {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}الصيانة في {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}الصيانة في {DEPOT} , {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3518,7 +3500,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}لا ي�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}جاور اكثر من محطة موجودة مسبقا
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... المحطة واسعة جدا
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}منع المحطات الغير منتظمة ...
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}الكثير من المحطات واماكن التحميل
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}قطاعات المحطة كثيرة جدا
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}محطات توقف الباصات كثيرة جدا
@@ -4219,7 +4200,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

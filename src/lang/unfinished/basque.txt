@@ -1081,12 +1081,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Konfigur
 STR_CONFIG_SETTING_OFF                                          :Itzalita
 STR_CONFIG_SETTING_ON                                           :Piztuta
 STR_CONFIG_SETTING_DISABLED                                     :desaktibatua
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Ibilgailuaren abiadura estatu barran ikusi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Aldapa eta kostan eraikitzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Eraikinen, trenbideen etabarren azpian paisaia aldatzea baimendu. (autoaldapak): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Bilketa guneen tamaina errealago egitea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Herriarenak diren errepide, zubi eta tunel gehiago kentzea baimendu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tren oso luzeak eraikitzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Trenaren ke/txinparta kantitatea: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Bat ere ez
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originala
@@ -1100,21 +1098,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Errealista
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Aldapen zailtasuna trenentzako {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Aldapen zailtasuna errepide garraioetarako{ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Itsasontzi eta trenei 90 graduko biraketak debekatu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Elkar-ondoan dauden geltokiak bateratu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Elkarren ondoan ez baina oso hurbil dauden geltokiak bateratu : {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Zamatzeko algoritmo hobetua erabili: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Ibilgailuak mailaka zamatu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflazioa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Geltoki batetan bakarrik bertan hartzen duten zama baino ez utzi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Zubi oso luzeak eraikitzea baimendu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Grajera joateko aginduak baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Industria primarioa eraikitzeko era: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ezer ez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :beste industriak bezala
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospekzioa
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Area laua industrien inguruan: {ORANGE}{STRING} karratu{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Indutria berdin asko baimendu hiri bakoitzean: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Data luzea ikusi beti estatu barran: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}seinaleak gidatzen den aldean jarri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Finantzien informazio taula urtearen bukaeran agertu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Agindu berriak "ez gelditu" dira beti: {ORANGE}{STRING}
@@ -1127,7 +1121,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Leioa m
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Udaletxeko agintariak erostea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Garraiatzeko eskubide esklusiboen erosketa baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Beste empresei dirua bidaltzea baimendu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Era berekoak ez diren geltokiak bateratzea baimendu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Zamaren pisuaren biderkatzailea tren astunagoak simulatzeko: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}hegazkinen: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Hegazkinen akzidente kopurua : {ORANGE}{STRING}
@@ -1732,12 +1725,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 # Messages in the start stop button in the vehicle view
 
-
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE} {DEPOT}-ra joaten
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE} {DEPOT}-ra joaten, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Berrikuspena {DEPOT}-an
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Berrikuspena {DEPOT}-an, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -2069,7 +2057,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

@@ -1090,12 +1090,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweider
 STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :Un
 STR_CONFIG_SETTING_DISABLED                                     :ausgeschalt
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Weis d'Geschwindegkeet an der Statusbar un: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Erlaabt d'Bauen op Küsten an op Ofhäng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Erlaabt Landforumung ënnert Gebaier, Stroossen, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Erlaabt méi realistësch Staugréisstplazen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Erlaabt d'Ewechhuelen vun méi Stroosen, Brécken, etc. vun der Stad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bau vun ganz groussen Zich aschalten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Unzuel vun Gefiererdamp/partikel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Keen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1109,21 +1107,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistësch
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Neigungsstärkt fir Zich{ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Steigung fir Stroossengefierer {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbidd Zich an Schëffer fir 90 Grad Kéieren ze maachen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Nopergaren zesummensetzen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Erlaabt Statiounen zesummen ze setzen och wann se net direkt uneneen leien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Benotz verbesserten Luedalgorithmus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Lued d'Gefierer schrëttweis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflatioun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Luedung nëmmen ofliwweren wann et gebraucht gëtt: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Erlaab ganz laang Brécken: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Erlaab Depot Opträg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuel Primär Industriebau Method: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keng
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wei aaner Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Erkundung
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Flaacht Land rondërem Industrien: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Erlaabt méi der selwecht Industrien pro Stad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Emmer den laangen Datum an der Statusbar uweisen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Weis d'Signaler op der Fuerersäit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Weis d'Finanzen um Ënn vum Joër: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nei Opträg sinn 'non-stop' par defaut: {ORANGE}{STRING}
@@ -1136,7 +1130,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}D'Fëns
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Erlaabt Bestiechung vun den Gemengen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Erlaabt exklusiv Transportrechter ze kafen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Erlaabt d'Schécken vun Suen un aner Firmen: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Netuniform Statiounen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewiichtsmultiplizéirer fir Luedungen fir schwéier Zich: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fliger Geschwindegkeetsfaktor: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Unzuel Fligercrashen: {ORANGE}{STRING}
@@ -1235,7 +1228,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Weist d
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Aus
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eegen Firma
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :All Firmen
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Erlaab Zäitpläng fir Gefierer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Weis de Zäitplang an Intervallen amplaz vun Deeg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Weis Arrivée an Départ am Zaitplang un: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Schnellkreatiounvun Gefieropträg: {ORANGE}{STRING}
@@ -3039,23 +3031,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Verloos
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pann
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestoppt
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Stopt
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stopt, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Keng Energie
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Ward op en fraien Wee
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Um Wee fir {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Um Wee op {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Keng Opträg
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Keng Opträg, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Um Wee fir {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Um Wee fir {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Um Wee an den {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Um Wee an den {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Revisioun am {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Revisioun am {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3548,7 +3531,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kann den
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenzt un méi wéi eng Gare un
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... Statioun ze ausgebreed
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... Net Uniform Statiounen ofgeschalt
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Ze vill Garen
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Ze vill Garesdeeler
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Ze vill Busgaren
@@ -4251,7 +4233,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

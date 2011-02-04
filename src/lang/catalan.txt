@@ -1091,12 +1091,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Paràmet
 STR_CONFIG_SETTING_OFF                                          :Inactiu
 STR_CONFIG_SETTING_ON                                           :Actiu
 STR_CONFIG_SETTING_DISABLED                                     :desactivat
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Mostra la velocitat del vehicle a la barra d'estat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permet construir en desnivells i costes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permet modelar el terreny sota edificis, rails, etc. (autopendent): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permet una mida més real de l'àrea d'influència: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Activa la construcció de trens molt llargs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantitat de fum/xispes del vehicle: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Cap
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1110,21 +1108,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realístic
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Inclinació de les pujades per als trens {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Inclinació de les pujades per als vehicles {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Prohibeix fer girs de 90 graus als trens i vaixells: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ajunta estacions de tren fetes al costat d'una altra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permet ajuntar estacions no annexes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Utilitza algorisme millorat de càrrega: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Carrega els vehicles gradualment: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflació: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Entrega càrregues en una estació només quan hi ha demananda: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Permet construir ponts molt llargs: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Permet ordres per anar a cotxeres: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Mètode de construcció de la indústria primària manual: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :cap
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :com les altres indústries
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospeccionant
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Zona plana al voltant de les indústries: {ORANGE}{STRING} cel·l{P 0:1 a es}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permet vàries indústries similars a cada població: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Mostra sempre la data llarga a la barra d'estat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Mostra senyals en el sentit de la marxa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Mostra la finestra de balanç al finalitzar cada any: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les noves ordres són 'sense parada' per defecte: {ORANGE}{STRING}
@@ -1137,7 +1131,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Finestr
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permet subornar a les autoritats locals: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permet comprar els drets del transport en exclusiva: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permet enviar diners a altres companyies: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Estacions no uniformes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de pes per contenidor per simular trens pesats: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor de velocitat dels avions: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Nombre d'accidents d'avió: {ORANGE}{STRING}
@@ -1236,7 +1229,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Utilitz
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Inactiu
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Pròpia companyia
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Totes les companyies
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Habilita horaris dels vehicles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra horaris en marques enlloc de dies: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Mostra l'arribada i la sortida als horaris: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creació ràpida d'ordres per a vehicles: {ORANGE}{STRING}
@@ -3040,23 +3032,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Deixant
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Avariat
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Parat
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Parant
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Parant, a {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Sense energia
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Esperant una ruta lliure
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Cap a {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Cap a {STATION}, a {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Sense ordres
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sense ordres, a {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Cap a {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Cap a {WAYPOINT}, a {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Cap a {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Cap a {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Revisió a {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Revisió a {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3549,7 +3532,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Aquí no
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Fusiona més d'una estació/àrea de càrrega existent
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... estació massa extensa
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... estacions no uniformes desactivades
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Massa estacions/àrees de càrrega
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Hi ha massa parts d'estacions de tren
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Massa parades d'autobús
@@ -4252,7 +4234,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

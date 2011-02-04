@@ -1081,12 +1081,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancere
 STR_CONFIG_SETTING_OFF                                          :Fra
 STR_CONFIG_SETTING_ON                                           :Til
 STR_CONFIG_SETTING_DISABLED                                     :deaktiveret
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Vis køretøjets fart i statusbaren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillad bygning på skråninger og kyster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillad landskabsformning under bygninger, spor, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Tillad mere realistisk størrelse på stationernes opland: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillad nedriving af flere by-ejede veje, broer og tunneler: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Aktiver bygning af meget lange tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ingen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistisk
@@ -1099,21 +1097,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisk
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Skråningers stejlhed for tog {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Stejlhed for hældninger for køretøjer {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Forbyd skibe og tog at dreje 90 grader: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillad sammenkædning af stationer der ikke ligger direkte op ad hinanden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Brug forbedret indlæsningsalgoritme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Last køretøjer gradvist: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Aflever kun last til en station hvis der er en forespørgsel: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Tillad bygning af meget lange broer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Tillad gå til depot ordrer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode til manuel opførsel af primær industri: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ingen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :som andre industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :efterforskning
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Fladt område omkring industri: {ORANGE}{STRING} felt{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Tillad flere af samme slags industri per by: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Vis altid lang dato i statusbaren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Vis signaler i kørselssiden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Vis finansvinduet i slutningen af året: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordrer er 'uden stop' som standard: {ORANGE}{STRING}
@@ -1126,7 +1120,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Panoré
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillad bestikkelse af de lokale myndigheder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillad køb af eksklusive transportrettigheder: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillad at sende penge til andre firmaer: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke uniforme stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Vægtfaktor for fragt for at simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fly-hastighedsfaktor: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Antal flystyrt: {ORANGE}{STRING}
@@ -1223,7 +1216,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Benyt l
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Fra
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eget firma
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle firmaer
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Slå køreplaner for transportmidler til: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis køreplan i tik i stedet for dage: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Vis ankomst og afgang i tidsplaner: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Hurtig oprettelse af køretøjsordrer: {ORANGE}{STRING}
@@ -1599,7 +1591,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks. ti
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begræns serveren til et bestemt antal tilskurere
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Talt sprog:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre spillere vil vide hvilket sprog, der bliver talt på serveren
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Skriv et navn for netværksspillet
 
@@ -2997,23 +2988,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Forlade
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Forulykket!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Gået i stykker
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppet
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Stopper
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stopper, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ingen strøm
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Afventer fri passage
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Retning mod {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Retning mod {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Ingen ordrer
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Ingen ordrer, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Retning mod {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Retning mod {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Retning mod {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Retning mod {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Service ved {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Service ved {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3499,7 +3481,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan ikke
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grænser op til mere end en eksisterende station/fragtcentral
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stationen er for spredt
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... ikke-uniforme stationer er slået fra
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}For mange stationer/fragtcentraler
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Banegården er i for mange dele
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}For mange busterminaler
@@ -4198,7 +4179,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

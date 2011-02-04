@@ -1086,12 +1086,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ardsocru
 STR_CONFIG_SETTING_OFF                                          :As
 STR_CONFIG_SETTING_ON                                           :Air
 STR_CONFIG_SETTING_DISABLED                                     :díchumasaithe
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Taispeáin luas feithiclí sa bharra stádais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Ceadaigh tógáil a dhéanamh ar fhánaí agus ar chóstaí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ceadaigh athrú talún faoi fhoirgnimh, ráillí iarnróid srl. (uathfhánú): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ceadaigh ceantair stáisiún ar mhéid níos realaíoch: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ceadaigh tuilleadh bóithre, droichid srl. ar le baile iad a bhaint: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Cumasaigh traenacha an-fhada a thógáil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Méid deataigh/splancacha na dtraenacha: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Deatach ar bith
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Bunaidh
@@ -1105,21 +1103,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Réalaíoch
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Géire na fána do thraenacha {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Géire na fána d'fheithiclí bóthair {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Cuir cosc ar thraenacha agus ar longa casadh 90° a dhéanamh: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Ceangail stáisiúin traenach a thógtar in aice lena chéile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Ceadaigh stáisiúin a changal nach bhfuil taobh lena gcéile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Úsáid an algartam lódála feabhsaithe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Lódáil feithiclí de réir a chéile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Boilsciú: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Ná déan lastas a sheachadadh chuig stáisiún ach má tá éileamh ann: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Ceadaing droichid an-fhada a thógáil: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Ceadaigh orduithe téigh chuig iosta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Modh tógála tionscail de láimh go príomhúil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ceann ar bith
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :cosúil le tionscail eile
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :cuardach
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ceantar réidh thart timpeall na dtionscal: {ORANGE}{STRING} {P 0:1 th th th dt t}íl
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Ceadaigh tionscail cosúla iolracha in aon bhaile amháin: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Taispáin an dáta fada i gcónaí sa bharra stádais: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Taispeáin comharthaí ar thaobh na tiomána: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Taispeáin an fhuinneoig airgeadais ag deireadh na bliana: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Bíonn orduithe nua 'gan-stad' mar réamhshocrú: {ORANGE}{STRING}
@@ -1132,7 +1126,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Peanái
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Ceadaigh breabanna a thabhairt don údarás áitiúil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Ceadaigh cearta eisiach iompair a cheannach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Ceadaigh airgead a sheoladh chuig cuideachtaí eile: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Stáisiúin ilfhoirmeach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Iolraitheoir meáchain don lastas le traenacha troma a ionsamhladh: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fachtóir luais na n-eitleán: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Líon na dtimpistí eitleáin: {ORANGE}{STRING}
@@ -1225,7 +1218,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Úsáid
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :As
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Do chuideachta féin
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Gach cuideachta
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Cumasaigh socrú amchláir d'fheithiclí: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Taispeáin an t-amchlár i dticeanna seachas i laethanta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Taispeáin am teacht isteach agus fágála in amchláir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Orduithe feithiclí a chruthú go scioptha: {ORANGE}{STRING}
@@ -1601,7 +1593,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Uaslíon
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Déan an freastalaí a theorannú go líon áirithe féachadóirí
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}An teanga a labhraítear:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Beidh a fhios ag imreoirí eile cén teanga a labhraítear ar an bhfreastalaí
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Iontráil ainm don chluiche líonra
 
@@ -3024,23 +3015,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Ag fág
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Tuairteáilte!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Briste síos
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoptha
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Ag stopadh
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Ag stopadh, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Gan chumhacht
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Ag fanacht ar chosán saor
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Ag déanamh ar {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Ag déanamh ar {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Gan ordú
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Gan ordú, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Ag déanamh ar {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Ag déanamh ar {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Ag dul chuig {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Ag dul chuig {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Seirbhís ag {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Seirbhís ag {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3525,7 +3507,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Ní féi
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Tá sé taobh le níos mó ná stáisiún/limistéar lódála amháin eile atá ann cheana
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... tá an stáisiún ró-leata amach
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... tá stáisiún nach bhfuil aonfhoirme díchumasaithe
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}An iomarca stáisiún/limistéar lódála
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}An iomarca codanna stáisiún iarnróid
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}An iomarca stadanna bus
@@ -4226,7 +4207,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

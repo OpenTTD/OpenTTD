@@ -1091,12 +1091,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gelişmi
 STR_CONFIG_SETTING_OFF                                          :Kapalı
 STR_CONFIG_SETTING_ON                                           :Açık
 STR_CONFIG_SETTING_DISABLED                                     :kapalı
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Durum çubuğunda arabanın hızını göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Sahile ve eğimli araziye inşaat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Binaların, yolların, rayların v.b. altındaki araziyi değiştirmeye izin ver (otomatik eğim): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}İstasyon kapsama alanlarının daha gerçeğe yakın ölçülerde olmasına izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Şehirlere ait köprülerin, yolların ve tünellerin yıkılmasına izin vermeleri için, şehir yetkililerinin toleransını artır: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlerin yapımına izin ver: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Araçlardan çıkan duman veya kıvılcım miktarı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Yok
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orijinal
@@ -1110,21 +1108,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Gerçekçi
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Trenler için eğim dikliği {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Kara taşıtları için eğim dikliği %{ORANGE}{STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Tren ve gemilerin 90 derece dönmesini yasakla: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Yan yana yapılan tren istasyonlarını birleştir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Doğrudan bitişik olmayan istasyonları birleştirme izni: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Geliştirilmiş yükleme algoritması kullan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Araçlar yavaş yavaş dolsun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Enflasyon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Sadece istek varsa kargo kabul edilsin: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Çok uzun köprülere izin ver: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Garaja git talimati etkin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Üretim fabrikalarının yapım yöntemi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :hiçbiri
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :diğer fabrikalar gibi
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :tetkik aramayla
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Fabrikalar etrafındaki düz alan: {ORANGE}{STRING} kare
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Bir şehirde birden fazla aynı fabrika olması izinli: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Durum çubuğunda uzun tarih göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Sinyalizasyon sürüş yönünde olsun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Sene sonunda ekonomik durumu göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Yeni emirler için 'durmaksızın' varsayılır: {ORANGE}{STRING}
@@ -1137,7 +1131,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Fare ke
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Belediye rüşveti izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Şehrin ulaşım haklarını satın alma izinli: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Diğer şirketlere para gönderme izinli: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Uçak hızı çarpanı: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Uçak kazası sayısı: {ORANGE}{STRING}
@@ -1236,7 +1229,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Araç y
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Kapalı
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Kendi şirketim
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Tüm şirketler
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Araç zaman çizelgesi açık: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zaman tablosunda gün yerine işlemci zamanı kullan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Çıkış ve varışları çizelgelerde göster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Araç emirlerinin hızlı oluşturulması: {ORANGE}{STRING}
@@ -3040,23 +3032,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Ayrıl�
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Çarptı!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Arızalı
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Durdu
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Frenliyor
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Frenliyor, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Elektrik yok
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Boş yol bekleniyor
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Gidiyor {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Gidiyor {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Talimat yok
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Talimat yok, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Gidiyor -> {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Gidiyor -> {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}{DEPOT}'na doğru hareket ediyor
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}'na doğru hareket ediyor, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}{DEPOT}'nda bakıma gir
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}'nda bakıma gir, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3549,7 +3532,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Buraya h
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Birden fazla istasyona bitişik
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... istasyon çok yayılmış
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... özel istasyon ayarı kapalı
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Haritada çok fazla istasyon var
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Çok fazla demiryolu istasyon parçası var
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Çok fazla durak var
@@ -4262,7 +4244,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

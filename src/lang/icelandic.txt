@@ -1081,12 +1081,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Þróað
 STR_CONFIG_SETTING_OFF                                          :Nei
 STR_CONFIG_SETTING_ON                                           :Já
 STR_CONFIG_SETTING_DISABLED                                     :óvirkt
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Sýna hraða farartækis á upplýsingaslá: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Leyfilegt að byggja í halla og á strönd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leyfa landslagsbreytingar undir byggingum, teinum o.fl. (landfylling): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Raunverulegri stærð svæðis sem stöðvar ná yfir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Leyfa meiri eyðingu vega, brúa, gangna o.s.frv. í eigu bæjar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Leyfa mjög langar lestir: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Magn reyks/neista frá lestum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Enginn
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Upphaflegt
@@ -1100,21 +1098,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Raunveruleg
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Brattleiki brekkna fyrir lestar {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Halli brekku fyrir bifreiðar {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Banna lestum og skipum að taka 90° beygjur: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Sameina lestarstöðvar sem byggðar eru samsíða: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Leyfa sameiningu stöðva sem ekki tengjast á korti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Nota endurbættan algóriþma við hleðslu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Ferma farartæki smám saman: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Verðbólga: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Aðeins afhlaða farmi á stöðvum þar sem er eftirspurn: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Leyfa byggingu mjög langra brúa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Skýli má vera á áætlun lesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Fjármögnun nýrra hráefnisiðnaða: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :engin
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :eins og annarra iðnaða
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :með jarðefnisleit
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Jafnslétt svæði í kringum iðnað: {ORANGE}{STRING} flötur{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Leyfa marga svipaða iðnaði í sama bæ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Sýna alltaf fulla dagsetningu á upplýsingaslá: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Sýna umferðarljós akstursmegin: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Sýna fjármálaglugga í lok árs: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nýjar skipanir eru "hraðleiðar" sem sjálfgildi {ORANGE}{STRING}
@@ -1127,7 +1121,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Færa s
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Leyfilegt að múta bæjaryfirvöldum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Heimila sölu á sérleyfi til flutninga: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Heimila peningagreiðslur til annarra fyrirtækja: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Órétthyrndar lestarstöðvar leyfðar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Margfalda þyngd farms til að líkja eftir þyngri lestum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hraðastuðull flugvéla: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Fjöldi flugvélaslysa: {ORANGE}{STRING}
@@ -1220,7 +1213,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Sýna s
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Engra fyrirtækja
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eigin fyrirtækis
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Allra fyrirtækja
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Virkja áætlanir fyrir farartæki: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Birta áætlanir í slögum frekar en dögum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Sýna komu og brottfaratíma í áætlunum: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Fljótleg gerð áætlunar: {ORANGE}{STRING}
@@ -1592,7 +1584,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Hámarks
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Takmarka fjölda áhorfanda á vefþjóninum
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Tungumál:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sláðu inn nafn netleiksins
 
@@ -3009,23 +3000,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Yfirgef
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Árekstur!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Vélarbilun
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stöðvaður
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Stöðva
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stöðva, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ekkert afl
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Bíð eftir lausri leið
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Á leið til {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Á leið til {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Engar skipanir
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Engar skipanir, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Á leið til {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Á leið til {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Á leið til {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Á leið til {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Þjónusta í {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Þjónusta í {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3507,7 +3489,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Get ekki
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Tengist fleiri en einni annarri stöð
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stöð of dreyfð
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... óregluleg lögun lestarstöðva bönnuð
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Of margar stöðvar/lestunarsvæði
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Of margir hlutar af lestarstöðvum
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Of margar strætisvagnastöðvar
@@ -4208,7 +4189,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

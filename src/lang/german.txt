@@ -1091,12 +1091,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Erweiter
 STR_CONFIG_SETTING_OFF                                          :Aus
 STR_CONFIG_SETTING_ON                                           :An
 STR_CONFIG_SETTING_DISABLED                                     :ausgeschaltet
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Fahrzeuggeschwindigkeit in der Statusleiste anzeigen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Das Bauen an Hängen und Küsten erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Landschaftsbau unter Gebäuden, Gleisen, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Verschiedene Stationstypen haben unterschiedlich große Einzugsgebiete: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Entfernung von weiteren Straßen, Brücken, usw. erlauben: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bau von sehr langen Zügen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Menge an Rauch / Funken von Lokomotiven: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Keine
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1110,21 +1108,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisch
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Stärke von Steigungen für Züge: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Stärke von Steigungen für Straßenfahrzeuge: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zügen und Schiffen 90°-Kurven verbieten: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Bahnhöfe vereinigen, die nebeneinander gebaut werden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Erlaubt nicht direkt benachbarte Stationen zu verbinden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Verbessertes Beladeverfahren nutzen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Fahrzeuge schrittweise beladen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Industrien beliefern nur Stationen mit passendem Transport: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Bau von sehr langen Brücken erlauben: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}"Fahre zum Depot"-Aufträge im Fahrplan erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manueller Bau von Rohstoffindustrien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nicht erlaubt
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Wie andere Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Durch Prospektion
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Ebenes Gelände um Industrien: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Mehrere gleichartige Industrien pro Stadt erlauben: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Lange Datumsanzeige in der Statusleiste (links unten): {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Signale auf der Seite der Straßenverkehrsrichtung anzeigen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Zeige Firmenfinanzen am Ende des Jahres: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Aufträge standardmäßig ohne Zwischenhalt anfahren: {ORANGE}{STRING}
@@ -1137,7 +1131,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Spielfe
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Bestechen der Stadtverwaltung erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Den Erwerb exklusiver Transportrechte erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Schenken von Geld an andere Firmen erlauben: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ungleichförmige Bahnhöfe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen, um schwere Züge zu simulieren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor für Geschwindigkeit von Flugzeugen: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Anzahl Flugzeugabstürze: {ORANGE}{STRING}
@@ -1236,7 +1229,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Ladesta
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Aus
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eigene Firma
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle Firmen
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Fahrpläne für Fahrzeuge aktivieren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zeitpläne in Ticks anstatt in Tagen anzeigen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Zeige Ankunft und Abfahrt im Fahrplan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Schnelle Erzeugung von Aufträgen für Fahrzeuge: {ORANGE}{STRING}
@@ -3040,23 +3032,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Abfahrt
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Unfall!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Panne
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Angehalten
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Halte an
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Halte an, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Keine Energie
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Warte auf freie Wege
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Unterwegs nach {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Unterwegs nach {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Keine Aufträge
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Keine Aufträge, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Fahre zu {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Fahre zu {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Fährt zu {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Fährt zu {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Wartung in {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Wartung in {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3549,7 +3532,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Flughafe
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grenzt an mehr als eine vorhandene Station/Ladeplatz
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... Bahnhof ist zu groß
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... ungleichförmige Stationen deaktiviert
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Zu viele Stationen/Ladeplätze im Umkreis
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Zu viele Bahnsteigteile
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Zu viele Busbahnhöfe
@@ -4252,7 +4234,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

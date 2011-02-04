@@ -1090,12 +1090,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Thiết 
 STR_CONFIG_SETTING_OFF                                          :Tắt
 STR_CONFIG_SETTING_ON                                           :Bật
 STR_CONFIG_SETTING_DISABLED                                     :tắt
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Hiện tốc độ phương tiện trong thanh trạng thái: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Cho phép xây dựng trên dốc và bờ biển: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Cho phép thay đổi nền đất dưới công trình, đường.. (tự làm dốc): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Mô phỏng thực tế diện tích khu vực đón hàng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Cho phép giải toả nhiều hơn đường, cầu ... của đô thị: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Bật chức năng xây tàu hoả rất nhiều toa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Lượng khói thải của phương tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Không
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Nguyên bản
@@ -1109,21 +1107,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Giống thực 
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Độ dốc khi vượt dốc cho tàu hoả {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Độ dốc cho xe ôtô là {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Ngăn tàu hỏa và tàu thủy chuyển hướng 90 độ: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Gộp chung ga tàu hoả xây sát nhau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Cho phép gộp ga, bến, cảng không sát nhau: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Sử dụng thuật toán bốc/dỡ hàng cải tiến: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Bốc/dỡ hàng lên phương tiện dần dần: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Lạm phát: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dỡ hàng hóa tại ga, bến, cảng chỉ khi nơi đó có nhu cầu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Cho phép xây cầu cực dài: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Cho phép lộ trình đi về xưởng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Tuỳ chỉnh phương thức xây dựng nhà máy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :không
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :như nhà máy khác
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :hứa hẹn
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Vùng đất phẳng quanh khu công nghiệp: {ORANGE}{STRING} ô
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Cho phép nhiều nhà máy tương tự nhau trong mỗi đô thị: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Luôn luôn hiện ngày tháng đầy đủ trên thanh trạng thái: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Hiển thị tín hiệu cùng phía làn đường: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Hiện bảng tài chính vào cuối năm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Đặt các điểm lộ trình mới sẽ là 'chạy suốt" làm mặc định: {ORANGE}{STRING}
@@ -1136,7 +1130,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Cuộn 
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Cho phép hối lộ chính quyền địa phương: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Cho phép mua quyền vận tải độc quyền: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Cho phép chuyển tiền cho các công ty khác: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ga không đồng kiểu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Hệ số cân nặng để mô phỏng của tàu hỏa chở nặng: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hệ số tốc độ máy bay: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Số vụ tai nạn máy bay: {ORANGE}{STRING}
@@ -1235,7 +1228,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Hiển 
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Tắt
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Công ty mình
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Tất cả công ty
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Bật lịch trình (lộ trình có thời gian) cho ph.tiện: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Hiện lịch trình ở dạng số nhịp thay vì ngày: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Hiển thị nơi đến và nơi đi trên lịch trình: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Tạo nhanh lộ trình cho phương tiện: {ORANGE}{STRING}
@@ -3039,23 +3031,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Rời b
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Tai nạn!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Hỏng hóc
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Dừng
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Đang dừng
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Đang dừng, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Không có năng lượng
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Chờ đường thông
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Nhắm tới {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Nhắm tới {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Không lộ trình
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Không lộ trình, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Nhắm tới {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Nhắm tới {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Nhắm tới {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Nhắm tới {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Phục vụ tại {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Phục vụ tại {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3548,7 +3531,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Không t
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Nối thêm nhiều hơn một ga, bến, cảng đã tồn tại
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... ga, bến, cảng trải quá rộng
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... tuỳ chọn ga, bến, cảng đa kiểu không được bật
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Quá nhiều ga, bến, cảng rồi
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Quá nhiều mảnh của ga tàu hoả
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Quá nhiều điểm đừng xe buýt
@@ -4251,7 +4233,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

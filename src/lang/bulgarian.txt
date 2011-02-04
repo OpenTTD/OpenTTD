@@ -1089,12 +1089,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Наст
 STR_CONFIG_SETTING_OFF                                          :изключено
 STR_CONFIG_SETTING_ON                                           :включено
 STR_CONFIG_SETTING_DISABLED                                     :изключено
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Скорост на МПС в лента за състоянието: {ORANGE}{STRING.f}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Строене на склонове и брегове: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Тераформиране под постройки (autoslope): {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}По-реалистична зона за обслужване: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Разрушаване на повече градска собственост: {ORANGE}{STRING.n}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Много дълги влакове: {ORANGE}{STRING.p}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Количество на дим/искри от превозното средство: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Без
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Оригинално
@@ -1116,21 +1114,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :{G=m}Реали
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Стръмнина на склона за влакове {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Стръмнина на склона за пътни превозни средства {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Забрани 90 градусовите завои: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Обединяване на гари построени една до друга: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Позволено е присъединяването на станции, които не се допират: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Подобрен алгоритъм за зареждане: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Постепенно зареждане на автомобилите: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Инфлация: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Доставяне на стока до станция само ако има търсене: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Много дълги мостове: {ORANGE}{STRING.p}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Планирано обслужване в пътния лист: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Ръчен строеж на първични индустрии: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :нищо
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :като други промишлености
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :предстоящ
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Равно място около индустрията: {ORANGE}{STRING} плочк{P а и}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Няколко еднакви индустрии на град: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Дълга дата в лента за състоянието: {ORANGE}{STRING.f}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Семафорите от страната на пътното движение: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Финансов отчет в края на годината: {ORANGE}{STRING.m}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}По подразбиране новите зповеди са 'без спиране': {ORANGE}{STRING}
@@ -1143,7 +1137,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Мес�
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Позволи купуване на изклучителни транспортни права: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Позволи изпращане на пари до други компаний: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Нестандартни станции: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Теглови множител за симулация на тежки влакове: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Скоростен множител за самолети: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Разбивания на самолети: {ORANGE}{STRING}
@@ -1239,7 +1232,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Тов�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :изключени
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :само за собствената компания
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :за всички компании
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Времеслужене на ПС: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Разписанието в цикли вместо дни: {ORANGE}{STRING.n}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Покажи пристигането и заминаването в расписанията: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Бързо създаване на задачите на превозните средства: {ORANGE}{STRING}
@@ -1617,7 +1609,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ограничаване на сървъра до определен брой наблюдатели
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Говорим език:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Другите играчи ще знаят езика на който се говори на сървъра
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Въведете име за мрежовата игра
 
@@ -3041,23 +3032,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Нап�
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Катастрофа!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{G=m}{RED}Повреден
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Спрян
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Спира
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Спира, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Няма мощност
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Изчакване за свободен път
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Отиващ към {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Отиващ към {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Без заповеди
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Без заповеди, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Отиващ към {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Отиващ към {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Отправя се към {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Отправя се към {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Сервиз в {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Сервиз в {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3541,7 +3523,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Тук �
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Граничи с повече от една гара/товарна платформа
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... станцията е прекалено разпръсната
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... неправилните станции са изключени
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Твърде много гари/товарни платформи
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Твърде много части на гара
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Твърде много автобусни спирки
@@ -4235,7 +4216,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

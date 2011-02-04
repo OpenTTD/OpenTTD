@@ -1086,12 +1086,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}고급 �
 STR_CONFIG_SETTING_OFF                                          :끔
 STR_CONFIG_SETTING_ON                                           :켬
 STR_CONFIG_SETTING_DISABLED                                     :사용불가
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}상태바에 차량 속도를 표시 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}경사/해안가 건설을 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}좀더 현실적인 역세권 지정 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}매우 긴 열차 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}기관차 매연/전기 스파크의 양: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :없음
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :오리지널
@@ -1105,20 +1103,16 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :현실적
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}열차를 위한 경사면의 경사도: {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}자동차를 위한 경사면의 경사도 {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}바로 옆에 역이 있으면 그 역의 이름으로 건설 (새로운 이름X) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}역이 붙어있지 않아도 같은 이름으로 역을 짓는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}화물을 차량에 단계적으로 싣기 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}인플레이션 (화폐가치하락) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}매우 긴 다리 건설 허용 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}차량기지(차고/격납고)를 경로에 지정하는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}1차 산업 시설 건설 방법: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :없음 (건설 불가)
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :건설 가능 (위치 선택 가능, 7배 비용)
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :건설 가능 (무작위 위치)
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}한 도시에 비슷한 산업시설을 여러 개 건설할 수 있게 허용 : {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}신호기를 차량 통행 방향에 설치 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}새 경로는 기본으로 직통 처리: {ORANGE}{STRING}
@@ -1131,7 +1125,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}가장�
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}독점 운송권 구입 허용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}다른 회사에게 돈을 송금하는 것을 허용: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}이미 지어진 역에 추가로 역을 증축하는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}비행기 속도 인수: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}비행기 추락 횟수: {ORANGE}{STRING}
@@ -1224,7 +1217,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}적재 
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :끄기
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :소유한 회사
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :모든 회사
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}시간표에서 출발일과 도착일 표시: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}빠른 행선지 설정: {ORANGE}{STRING}
@@ -1601,7 +1593,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}최대 �
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}게임을 관전하는 접속자의 수를 제한합니다
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}대화 언어:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}서버에서 주로 사용하는 언어를 고르십시오.
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}네트워크 게임에서 사용할 이름을 입력하세요
 
@@ -3015,23 +3006,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}떠남
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}충돌!!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}고장
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}정지함
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}정지중
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY}의 속도로 정지중
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}기관차 없음
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}빈 경로 탐색중
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION}{G 0 "으" ""}로 향하는 중, ({VELOCITY})
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}경로 없음
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}경로 없음 ({VELOCITY})
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}{WAYPOINT}{G 0 "으" ""}로 향하는 중
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}{G 0 "으" ""}로 향하는 중, ({VELOCITY})
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}{DEPOT}{G 0 "으" ""}로 향하는 중
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}{G 0 "으" ""}로 향하는 중, ({VELOCITY})
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}{DEPOT}{G 0 "으" ""}로 점검하러 가는 중
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}{G 0 "으" ""}로 점검하러 가는 중, ({VELOCITY})
 
 # Vehicle stopped/started animations
@@ -3514,7 +3496,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}여기�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}2개 이상의 역이 인접합니다
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... 역이 너무 큽니다.
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... 역을 결합할 수 없습니다! (패치 구성 참고)
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}역이 너무 많습니다
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}철도역 조각이 너무 많습니다
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}버스 정류장이 너무 많습니다
@@ -4215,7 +4196,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

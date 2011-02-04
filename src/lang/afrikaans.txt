@@ -1070,12 +1070,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Gevorder
 STR_CONFIG_SETTING_OFF                                          :Af
 STR_CONFIG_SETTING_ON                                           :Aan
 STR_CONFIG_SETTING_DISABLED                                     :gestrem
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Wys voertuig spoed in die standbaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Laat bou op skuinstes en kusse toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Laat terraforming toe onder geboue, spoore, ens. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Laat meer realisties grootte opvangsgebied toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Laat verwydering van meer stad-besite paaie, bruge, ens toe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Ontsper gebou van baie lang treine: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Trein versnelling model: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Oorspronklik
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realisties
@@ -1085,20 +1083,16 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realisties
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hoë steil die helling is vir treine {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Hoë steil die helling is vir pad voertuie {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbied triene en skepe om 90 graad draaie te maak: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}sluit aan trein stasies gebou naby mekaar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Laat toe dat stasies lanks mekaar gebind kan word: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Gebruik verebeterde laai algoritme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Laai voertuie geleidelik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Aflewer vrag na 'n stasie slegs as daar 'n aanvrag is:: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Laat bou van baie lank bruë toe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Laat vorder-na depot opdrae toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manual primêre nywerheid konstruksie metode: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as ander nywerhede
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vooruitsigting
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Laat meer as een soortgelyke nywerhede per dorp toe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Toon altyd lang datum in die standbaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Toon seine op die bestuur kant: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Toon finansies venster op die einde van die jaar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nuwe bevele is vooraf 'geen-stop' {ORANGE}{STRING}
@@ -1111,7 +1105,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Was ske
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Laat omkooping van die plaaslike raad toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Laat die koop van eksklusief vervoer regte toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Laat die stuur van geld na ander maatskappye toe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Ongelyk stasies: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewig vermenivoud vir vrag om swaar treine te simuleer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Vliegtuig spoed faktor: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Aantal vliegtuig botsings: {ORANGE}{STRING}
@@ -1202,7 +1195,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Gebruik
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Af
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eie maatskappy
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle maatskappye
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Ontsper timetabling vir voertuie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Vertoon rooster in tike liewer as dae: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Toon aankoms en vertrek in tydroosters: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Vinnige skepping van voertuig opdragte: {ORANGE}{STRING}
@@ -1573,7 +1565,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maks aan
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Beperk die verskaffer na 'n sekere bedrag van aanskouers
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Taal gepraat:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ander spelers sal weet watter taal op die verskaffer gepraat is
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Tik 'n naam in vir die netwerk speeletjie
 
@@ -2913,20 +2904,13 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Verlaat
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Botsing!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Teenspoed
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestop
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Ophou
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Ophou, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Geen Krag
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Wag vir beskikbare pad
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Op pad na {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Op pad na {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Geen opdrae
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Geen opdrae, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Op pad na {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Op pad na {WAYPOINT}, {VELOCITY}
-
-
 
 # Vehicle stopped/started animations
 
@@ -3389,7 +3373,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Lughawe 
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Grens aan meer as een bestaande stasie/laai area
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... Stasie te ver van mekaar af
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... ongelyk stasies is versper
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Te veel stasies/laai areas
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Te veel treinstasie deele
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushalte
@@ -4067,7 +4050,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

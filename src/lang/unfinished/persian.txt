@@ -789,7 +789,6 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}آیا 
 
 
 
-
 # Network game languages
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -1412,9 +1411,6 @@ STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}عمل �
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}پر / خالی کردن
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}تصادف کرده!
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}متوقف شده
-
-
-
 
 
 # Vehicle stopped/started animations
@@ -2191,7 +2187,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

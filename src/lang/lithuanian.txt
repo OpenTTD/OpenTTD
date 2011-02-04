@@ -1159,12 +1159,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Sudėtin
 STR_CONFIG_SETTING_OFF                                          :Išjungta
 STR_CONFIG_SETTING_ON                                           :Įjungta
 STR_CONFIG_SETTING_DISABLED                                     :išjungta
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Rodyti tr. priemonės greitį statuso eilutėje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Leisti statyti pastatus pakrantėse ir ant šlaitų: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Kurti tikroviškesnio dydžio mikrorajonus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Leisti griauti miestams priklausančius tiltus, kelius ir kt.: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Leisti statyti ypač ilgus traukinius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Traukinių įsibėgėjimo nustatymas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalus
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistiškas
@@ -1174,21 +1172,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistiškas
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Atbrailų statumas traukiniams {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Nuokalnių statumas automobiliams {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Drausti traukiniams/laivams pasisukti 90 laips.kampu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Leisti sujungti greta pastatytas stoteles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Leidžia sujungti stoteles, kurios nėra šalia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Naudoti patobulintą krovimo algoritmą: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Pakrauti tr. priemones paeiliui: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Infliacija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Pristatyti krovinį stotelei tiktai tuomet, kai yra poreikis: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Leisti statyti labai ilgus tiltus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Leisti naudoti užduotį 'Keliauti į depą': {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Pagrindinis pramonės statymo būdas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nėra
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip kitos gamyklos
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vaizdavimas
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Lygi vieta aplink gamyklas: {ORANGE}{STRING} kvadratėl{P 0:1 is iai ių}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Leisti kelias panašias pramonės įmones viename mieste: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Rodyti pilną datą būsenos eilutėje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Šviesoforus rodyti vairuotojo pusėje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Rodyti finansinę ataskaitą metų pabaigoje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nauji nurodymai yra 'non-stop' pagal nutylėjimą: {ORANGE}{STRING}
@@ -1201,7 +1195,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Slinkti
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Leisti papirkinėti miesto valdžią: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Leisti pirkti išskirtines transporto teises: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Leisti siųsti pinigus kitoms kompanijoms: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nestandartines stoteles: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Krovinių svorio daugiklis skirtas imituoti pakrautus traukinius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Lėktuvų greičio daugiklis: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Lėktuvų avarijų kiekis: {ORANGE}{STRING}
@@ -1293,7 +1286,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Naudot�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Išjungta
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Savo įmonės
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Visų įmonių
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Leisti sudaryti laikinius tvarkaraščius: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Rodyti laiką tvarkaraštyje užuot dienas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Rodyti arvykimą ir išvykimą tvarkaraščiuose: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Greitas tr. priemonių paskyrimų kūrimas: {ORANGE}{STRING}
@@ -1669,7 +1661,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Daugiaus
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Riboti serverį iki tam tikro skaičiaus žiurovų
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Kalba:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Kiti žaidėjai žinos kokia kalba kalbama serveryje
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Įveskite tinklo žaidimo pavadinimą
 
@@ -3076,23 +3067,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Palieka
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Avarija!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Sugedęs
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Sustabdyta
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Stabdoma
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stabdomas, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Nėra energijos
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Laukiama laisvo kelio
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Laukiama {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Važiuojama į {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Neturi užduočių
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Neturi užduočių, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Juda į {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Juda į {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Važiuoja link {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Važiuoja link {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Remontuoti {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Remontuoti {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3574,7 +3556,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Negalima
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Ribojasi su daugiau nei viena stotele/pakrovimo aikštele
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stotis per daug išsiplėtusi
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... nestandartines stoteles atjungtos
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Per daug stotelių
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Perdaug traukinių stoties dalių
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Per daug autobusų stotelių
@@ -4268,7 +4249,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

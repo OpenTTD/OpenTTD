@@ -1090,12 +1090,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Setări 
 STR_CONFIG_SETTING_OFF                                          :Inactiv
 STR_CONFIG_SETTING_ON                                           :Activ
 STR_CONFIG_SETTING_DISABLED                                     :dezactivat
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Afişează viteza vehiculelor în bara de stare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permite construirea pe coastă şi în pantă: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permite arii de cuprindere mai realiste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Permite construcţia de trenuri foarte lungi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Cantitatea de fum/ scântei ale locomotivei: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Deloc
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1109,21 +1107,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realist
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Înclinarea pantelor pentru trenuri {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Înclinarea pantei (pentru vehicule) {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor şi navelor să facă întoarceri la 90°: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Uneşte gările alăturate: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permite unirea staţiilor neînvecinate: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Foloseşte algoritm de încărcare îmbunătăţit: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Încarcă vehiculele gradual: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflaţia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Livrează marfa doar în staţiile unde aceasta este cerută: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Permite construcţia de poduri foarte lungi: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Permite ordine de tipul "mergi la depou": {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metoda manuală de construcţie a industriilor primare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :niciuna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ca alte industrii
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :de prospecţie
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Suprafaţă plană în jurul industriilor: {ORANGE}{STRING} pătrăţel{P 0:1 "" e}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Permite mai multe industrii similare în acelaşi oras: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Afişează întotdeauna data în format lung în bara de stare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Afişează semafoarele pe partea de circulaţie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Afişează finanţele la sfârşitul fiecărui an: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Ordinele noi sunt implicit 'fără oprire': {ORANGE}{STRING}
@@ -1136,7 +1130,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Mută i
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permite mituirea autorităţilor locale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permite cumpărarea de drepturi exclusive de transport: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permite transfer de bani către alte companii: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Staţii neuniforme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicator greutate pt marfar pt simularea trenurilor grele: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor de viteză pentru avioane: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Numărul avioanelor care se prăbușesc: {ORANGE}{STRING}
@@ -1235,7 +1228,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Folose�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Oprit
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Propria companie
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Toate companiile
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Foloseşte orarul pentru vehicule: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Arată orarul pe programări, nu pe zile: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Afişează plecările şi sosirile în orare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Creare rapidă a ordinelor pentru vehicule: {ORANGE}{STRING}
@@ -1613,7 +1605,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Spectato
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limitează serverul la un anumit număr de spectatori
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Limba vorbită:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ceilalţi jucători vor şti în ce limbă se discută pe server.
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Introduceţi un nume pentru joc
 
@@ -3040,23 +3031,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Pleaca
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Accident!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Defect
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Oprit
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Oprire
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Oprire, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Fara curent
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Astept cale libera
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Spre {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Spre {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Fără comenzi
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Fără comenzi, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Merge spre {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Merge spre {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Merge către {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Merge către {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Service la {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Service la {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3549,7 +3531,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nu se po
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Este adiacentă mai multor staţii
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... staţie prea întinsă
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... staţiile neuniforme nu sunt permise
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Prea multe staţii
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Staţia are prea multe componente
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Prea multe staţii de autobuz
@@ -4252,7 +4233,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

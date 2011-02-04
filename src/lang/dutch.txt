@@ -1090,12 +1090,11 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Geavance
 STR_CONFIG_SETTING_OFF                                          :Uit
 STR_CONFIG_SETTING_ON                                           :Aan
 STR_CONFIG_SETTING_DISABLED                                     :uitgeschakeld
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Geef voertuigsnelheid weer in statusbalk: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Bouwen op hellingen en kusten toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Omgeving aanpassen onder gebouwen, spoorwegen, enz. toestaan (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Gebruik meer realistische handelsgebieden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Sta verwijderen van meer stedelijke wegen, bruggen en tunnels toe: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Zeer lange treinen toestaan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximum lengte van treinen: {ORANGE}{STRING} vakje{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Hoeveelheid rook/vonken: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Geen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Origineel
@@ -1109,21 +1108,19 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisch
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Hellingsgraad voor treinen {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Hellingsgraad voor wegvoertuigen {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Verbied treinen en schepen om 90° te draaien: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Sta het samenvoegen van niet direct aaneensluitende stations toe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Gebruik verbeterd laadalgoritme: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Voertuigen geleidelijk laden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflatie: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Vracht alleen bezorgen aan een station als er vraag naar is: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Bouwen van zeer lange bruggen toestaan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Sta 'Ga naar depot' order toe: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maximum brug lengte: {ORANGE}{STRING} vakje{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maximum tunnel lengte: {ORANGE}{STRING} vakje{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Handmatige bouwmethode voor primaire industrieën: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :geen
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :zoals andere industrieën
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :proberen
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Vlakke omgeving rond industrieën: {ORANGE}{STRING} tegel{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Meerdere vergelijkbare industrieën per stad toestaan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Geef de datum in de statusbalk altijd in lang formaat weer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Seinen aan rijzijde plaatsen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Financieel overzicht aan het einde van het jaar weergeven: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nieuwe orders zijn standaard 'non-stop': {ORANGE}{STRING}
@@ -1136,7 +1133,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Verschu
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Omkopen van de gemeente toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Kopen van exclusieve transportrechten toestaan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Geld geven aan andere bedrijven toestaan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Vrij gevormde stations: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewichtsfactor voor vracht om zware treinen te simuleren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor voor vliegtuigsnelheden: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Aantal vliegtuigcrashes: {ORANGE}{STRING}
@@ -1235,7 +1231,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Gebruik
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Uit
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eigen bedrijf
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alle bedrijven
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Activeer dienstregeling voor voertuigen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon dienstregeling in tikken ipv in dagen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Toon aankomst- en vertrektijden in dienstregeling: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Snel voertuigorders maken: {ORANGE}{STRING}
@@ -1361,6 +1356,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Routezo
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Aanbevolen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Niet aanbevolen)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatisch omdraaien bij seinen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Verander waarde
 
@@ -1613,7 +1609,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max toes
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Beperk de server tot een bepaald aantal toeschouwers
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Gesproken taal:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andere spelers zullen weten welke taal er wordt gesproken op de server
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Geef de naam van het netwerk spel
 
@@ -3040,23 +3035,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Vertrek
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Gecrasht!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Motorpech
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Gestopt
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Gestopt
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Aan het stoppen, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Geen stroom
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Wacht op vrije route
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Op weg naar {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Op weg naar {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Geen orders
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Geen orders, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Op weg naar {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Op weg naar {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Onderweg naar {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Onderweg naar {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Onderhoud in {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Onderhoud in {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3172,7 +3158,7 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Verander
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Alle vracht volladen
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laden indien beschikbaar
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Volledig laden
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Volledig één soort vracht laden
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Eén soort vracht volledig laden
 STR_ORDER_DROP_NO_LOADING                                       :Niet laden
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Verander het laad-gedrag van de geselecteerde order
 
@@ -3227,7 +3213,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtst
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde hangar
 STR_ORDER_CONDITIONAL                                           :Conditionele order sprong
 STR_ORDER_SHARE                                                 :Orders delen
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan het eind van de lijst. Ctrl+klik maakt stationsorders "Volledig één soort vracht laden", controlepost-orders "Ga non-stop via" en depot-orders "Onderhoud bij". "Orders delen" of Ctrl laat dit voertuig de orders delen met het geselecteerde voertuig. Klikken op een voertuig kopieert de orders van dat voertuig
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan het eind van de lijst. Ctrl+klik maakt stationsorders "Eén soort vracht volledig laden", controlepost-orders "Ga non-stop via" en depot-orders "Onderhoud bij". "Orders delen" of Ctrl laat dit voertuig de orders delen met het geselecteerde voertuig. Klikken op een voertuig kopieert de orders van dat voertuig
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Voeg een geavanceerde order toe
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Toon alle voertuigen met dezelfde gedeelde orders
@@ -3259,16 +3245,17 @@ STR_ORDER_FULL_LOAD                                             :(Volledig laden
 STR_ORDER_FULL_LOAD_ANY                                         :(Één soort vracht volledig laden)
 STR_ORDER_NO_LOAD                                               :(Niet laden)
 STR_ORDER_UNLOAD                                                :(Lossen en vracht meenemen)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Lossen en wacht tot volledig vol)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lossen en wacht tot één soort vracht vol)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Lossen en volledig laden)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lossen en één soort vracht volledig laden)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Lossen en vertrek leeg)
 STR_ORDER_TRANSFER                                              :(Overladen en neem vracht mee)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overladen en wacht tot volledig vol)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overladen en wacht tot één soort vol)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overladen en volledig laden)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overladen en één soort vracht volledig laden)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Overladen en vertrek leeg)
 STR_ORDER_NO_UNLOAD                                             :(Niet lossen en neem vracht mee)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet lossen en wacht tot volledig vol)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet lossen en wacht tot één soort vol)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet lossen en volledig laden)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet lossen en één soort vracht volledig laden)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Niet lossen en niet laden)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[vlak bij einde]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[midden]
@@ -3549,7 +3536,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan hier
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Voegt meer dan één bestaand (laad)station samen
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station te omvangrijk
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... niet-uniforme stations uit
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Teveel (laad)stations
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Teveel treinstationsdelen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes
@@ -3611,7 +3597,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... moet
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Treinen kunnen alleen aangepast worden als ze gestopt zijn binnen een depot
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trein te lang
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan de richting van het voertuig niet omdraaien...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Kan voertuigen bestaande uit meerdere eenheden niet omdraaien
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... bestaat uit meerdere eenheden
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :spoortypes niet verenigbaar
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Kan voertuig niet verplaatsen...
@@ -3685,6 +3671,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Tunnel m
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Andere tunnel in de weg
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel eindigt buiten de kaart
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan geen land uitgraven voor andere uiteinde tunnel
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunnel te lang
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... te veel objecten
@@ -4252,7 +4239,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

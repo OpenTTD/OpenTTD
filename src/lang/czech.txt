@@ -1172,12 +1172,11 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Pokroči
 STR_CONFIG_SETTING_OFF                                          :vypnuto
 STR_CONFIG_SETTING_ON                                           :zapnuto
 STR_CONFIG_SETTING_DISABLED                                     :vypnuto
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Ukazovat rychlost vozidla ve stavové liště: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Povolit výstavbu na svazích kopců a na pobřežích: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Srovnání terénu pod budovami, kolejemi atd. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Povolit u oblasti pokrytí realističtější velikost: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů a tunelů: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Povolit stavbu dlouhých vlaků: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximální délka vlaků: {ORANGE}{STRING} pol{P e e í}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}množství kouře/jisker u stroje: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Žádný
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originální
@@ -1191,21 +1190,19 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :realistický
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Strmost svahu pro vlaky: {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Strmost svahu pro silniční vozidla: {ORANGE}{STRING}{NBSP}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakům a lodím otáčení o 90 stupňů: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Spojovat stanice postavené vedle sebe: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Umožnit spojení nesousedících stanic: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Použít vylepšený algoritmus nakládání: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Nakládat vozidla postupně: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflace: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dodávat zboží do stanice jen když je poptávka: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Povolit stavbu velmi dlouhých mostů: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Povolit příkaz 'jeď do depa': {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maximální délka mostů: {ORANGE}{STRING} pol{P e e í}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maximální délka tunelů: {ORANGE}{STRING} pol{P e e í}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Způsob manuálního budování primárního průmyslu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :žádný
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jako u ostatniho průmyslu
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :průzkum
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Plochá oblast okolo průmyslu: {ORANGE}{STRING} čtvereček
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Povolit více stejného průmyslu kolem jednoho města: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Ukazovat dlouhé datum ve stavové liště: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Ukazovat semafory na straně, kde jezdí silniční vozidla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Ukazovat finanční okno na konci každého roku: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Vydávat nové příkazy jako 'bez zastavení': {ORANGE}{STRING}
@@ -1218,7 +1215,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Posouva
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Povolit úplatek místní správě: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Umožnit kupování výhradních přepravních práv: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Umožnit zasílání peněz ostatním společnostem: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Nejednolité stanice: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pro simulaci těžkých vlaků vynásobit hmotnost nákladu: {ORANGE}{STRING}x
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Činitel rychlosti letadel: {ORANGE}1/{STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Počet leteckých havárií: {ORANGE}{STRING}
@@ -1317,7 +1313,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Použí
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :ne
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :u vlastní společnosti
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :u všech společností
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Povolit jízdní řády vozidel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazit jízdní řády v cyklech místo ve dnech: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Ukazovat v jízdním řádu příjezdy a odjezdy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Rychlejší zadávání příkazů pro vozidla: {ORANGE}{STRING}
@@ -1443,6 +1438,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Hledač
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :původní {BLUE}(doporučený)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(nedoporučuje se)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatické otáčení vlaků na semaforech: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Změnit hodnotu nastavení
 
@@ -1695,7 +1691,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Maximál
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Omezit serverem pocet pozorovatelů
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Jazyk ve hře:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby ostatní hráči věděli, jakým jazykem se bude ve hře mluvit
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Zadej jméno této síťové hry
 
@@ -3134,23 +3129,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Odjíž
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Nehoda!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Porucha
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Zastaveno
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Zastavuje
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Zastavuje, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Bez proudu
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Čekám na volnou cestu
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Míří do {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Míří do {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Bez příkazů
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Bez příkazů, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Míří do {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Míří do {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Míří do {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Míří do {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Údržba v {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Údržba v {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3363,6 +3349,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(přeložit a n
 STR_ORDER_NO_UNLOAD                                             :(nevykládat a hned naložit)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(nevykládat a plně naložit)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(nevykládat a plně naložit čímkoli)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(nevykládat ani nenakládat)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[na začátku]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[uprostřed]
@@ -3643,7 +3630,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Zde nelz
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Spojuje více jak jedno existující nádraží nebo nákladovou rampu...
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stanice je příliš rozlehlá
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... nejednolité stanice nejsou povoleny
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Příliš mnoho nádraží nebo nákladových ramp
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Příliš mnoho staničních částí
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Příliš mnoho autobusových zastávek
@@ -3779,6 +3765,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Je nutn�
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}V cestě je jiný tunel
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel by končil mimo mapu
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nelze vyrovnat zemi na druhém konci tunelu
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel je příliš dlouhý
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... příliš mnoho objektů
@@ -4470,7 +4457,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

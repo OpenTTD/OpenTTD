@@ -1090,12 +1090,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}拡張�
 STR_CONFIG_SETTING_OFF                                          :切
 STR_CONFIG_SETTING_ON                                           :入
 STR_CONFIG_SETTING_DISABLED                                     :切
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}状況バーに車両速度を表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}傾斜地／海岸上の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}建物、道路、鉄道などの下の地形変更を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}より現実的な受入れ地域を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}より多くの町有の道路／橋などの破壊を許容：{ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}超長型列車の作成を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}車両の 煙/火の粉 の量{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :なし
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :オリジナル
@@ -1109,21 +1107,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :現実的
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}列車にとって{ORANGE}{STRING}%の急傾斜度
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}道路車両にとって{ORANGE}{STRING}%の急傾斜度
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}列車／船舶が直角に曲がらないようにする：{ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}互いに隣接した駅の統合：{ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}互いに隣接していない駅の統合を許容する：{ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}改良された積載アルゴリズムを使用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}車両に段階的に積載: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}インフレ：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}需要のあるときのみ駅へ貨物を運送：{ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}超長型橋の建設を許容：{ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}「車庫へ回送」という指令を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}第一次産業の手動の建設方法：{ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :なし
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :他の産業と同様
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :探鉱
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}産業のある場所の平坦さ:{ORANGE}{STRING}タイル
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}町内に重複している産業の建設を許容：{ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}常に状況バーに長型日付を表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}信号を運転側に表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}年末に財政ウインドウを表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}新規指令にデフォルトで 'non-stop'をつける: {ORANGE}{STRING}
@@ -1136,7 +1130,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}マウ�
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}町議会の買収を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}独占的運送権の購入を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}他社への送金を許容：{ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}不統一の駅を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}重い列車のシミュレーションのための重量乗数の設定：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飛行機のスピード係数: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}墜落事故数: {ORANGE}{STRING}
@@ -1235,7 +1228,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}積み�
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :切
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :自分
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :すべて
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}車両の時刻表を使用：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}日の代わりに時刻表をティックで表示：{ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}時刻表に発着情報を表示する: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}【駅を選択】をデフォルトでONにする： {ORANGE}{STRING}
@@ -3039,23 +3031,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}出発�
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}事故！
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}故障中
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}停止中
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}停車中
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}停車中、{VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}動力がありません
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}空き経路待ち中
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}{STATION}へ行く
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION}へ行く、{VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}指令なし
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}指令なし、{VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}{WAYPOINT}へ行く
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}へ行く、{VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}先頭へ{DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}先頭へ{DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}サービスで{DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}サービスで{DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3548,7 +3531,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}ここ�
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}複数のすでに存在している駅／バス停／荷役所に接しています
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... 駅が広すぎます
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... 不統一の駅が建設できません
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}駅／バス停／荷役所が多すぎます
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}駅の部分が多すぎます。
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}バス停が多すぎます
@@ -4251,7 +4233,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

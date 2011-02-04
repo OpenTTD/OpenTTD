@@ -1090,12 +1090,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Avancera
 STR_CONFIG_SETTING_OFF                                          :Av
 STR_CONFIG_SETTING_ON                                           :På
 STR_CONFIG_SETTING_DISABLED                                     :Avaktiverat
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Visa fordonshastighet i statusfältet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillåt konstruktion på sluttningar och kuster: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillåt landskapsarkitektur under byggnader, spår, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Tillåt mer realistiska uppsamlingsområden för stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillåt borttagning av fler stadsägda vägar, broar och tunnlar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Tillåt väldigt långa tåg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mängden rök/gnistor från fordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ingen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1109,21 +1107,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistisk
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Slutnings lutning för tåg {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lutningars lutningsgrad för vägfordon {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Förbjud tåg och skepp att göra 90° svängar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Kombinera tågstationer som byggs bredvid varandra: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillåt att stationer som inte är byggda direkt brevid varandra slås ihop: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Använd förbättrad algoritm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Lasta fordon gradvis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Leverera gods till en station enbart om någon frågar efter det: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Tillåt väldigt långa broar: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Tillåt order att gå till depå/bussgarage: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuell prioritering för industrins konstruktionsmetod: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Inget
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andra industrier
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospekterande
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Platt område runt industrier: {ORANGE}{STRING} rut{P 0:1 a or}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Tillåt flera industrier av samma typ per stad: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Visa alltid långt datum i statusfältet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Visa signaler på körsidan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Visa finansfönstret vid slutet av året: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nya orders är 'non-stop' om inte annat anges.{ORANGE}{STRING}
@@ -1136,7 +1130,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Scrolla
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillåt mutning av de lokala myndigheterna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillåt köp av exklusiva transporträttigheter: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillåt skicka pengar till andra företag: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Icke-rektangulära stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Godsfaktor för att simulera tunga tåg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hastighetsfaktor för flygplan: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Antal flygplanskrascher: {ORANGE}{STRING}
@@ -1235,7 +1228,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Använd
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Av
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Eget företag
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Alla företag
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Aktivera Tidtabeller för fordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Visa tidtabeller räknat i ticks istället för dagar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Visa inkommande och avgående i tidtabeller: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Snabbskapande av fordonsorder: {ORANGE}{STRING}
@@ -1613,7 +1605,6 @@ STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Max obse
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Begränsa antalet observatörer på servern
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk som talas:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andra spelare kommer vara medvetna vilket språk som talas på servern.
-
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Mata in ett namn för nätverksspelet
 
@@ -3040,23 +3031,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Lämnar
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kraschad!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Motorstopp
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppat
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Stannar
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stannar, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ingen Kraft
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Väntar på ledig väg
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}På väg mot {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}På väg mot {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Inga order
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Inga order, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}På väg mot {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}På väg mot {WAYPOINT} i {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}På väg mot {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}På väg mot {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Service vid {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Service vid {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3549,7 +3531,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Kan inte
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Angränsar till mer än en station/hållplats
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... station för utspridd
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... ej enhetliga stationer inaktiverade
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}För många stationer/hållplatser
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}För många delar på järnvägsstationen
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}För många busshållplatser
@@ -4252,7 +4233,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

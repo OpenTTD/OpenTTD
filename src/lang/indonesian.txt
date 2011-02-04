@@ -1090,12 +1090,10 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Pengatur
 STR_CONFIG_SETTING_OFF                                          :Tidak
 STR_CONFIG_SETTING_ON                                           :Ya
 STR_CONFIG_SETTING_DISABLED                                     :Non-aktifkan
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Tampilkan kecepatan di status bar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Ijinkan pembangunan di lereng dan pantai: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ijinkan pembentukan slop dibawah bangunan, rel, dsb. (otomatiskan): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ijinkan ukuran jangkauan wilayah lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ijinkan menggusur lebih banyak jalan, jembatan, terowongan milik kota, dsb: {ORANGE}{STRING}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Ijinkan membuat rangkaian gerbong yang sangat panjang: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Banyaknya asap / percikan lokomotif: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Tidak ada
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orisinil
@@ -1109,21 +1107,17 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_REALISTIC    :Realistis
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :{LTBLUE}Tingkat dataran slope pada kereta {ORANGE}{STRING}%
 STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS                 :{LTBLUE}Lereng kecuraman untuk kendaraan {ORANGE}{STRING}%
 STR_CONFIG_SETTING_FORBID_90_DEG                                :{LTBLUE}Kereta dan kapal dilarang belok 90 derajat: {ORANGE}{STRING}
-STR_CONFIG_SETTING_JOINSTATIONS                                 :{LTBLUE}Gabungkan pembangunan stasiun kereta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :{LTBLUE}Ijinkan menggabung stasiun meski tdk menempel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Gunakan algoritma pengangkutan terbaru : {ORANGE}{STRING}
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Angkut secara bertahap: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Menerima kargo di suatu stasiun hanya jika dibutuhkan: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Ijinkan membangun jembatan yang sangat panjang: {ORANGE}{STRING}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Ijinkan pemberhentian di depo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode pembangunan Industri primer : {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :tidak ada
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lainnya
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :lebih prospektif
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Tanah datar di sekitar industri: {ORANGE}{STRING} kotak{P 0:1 ""}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Ijinkan lebih dari satu industri sejenis dalam satu kota: {ORANGE}{STRING}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Selalu tampilkan tgl lengkap pada status bar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Tampilkan sinyal pada lajur kendara: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Tampilkan laporan keuangan pada akhir tahun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Tujuan baru standarnya adalah 'non-stop': {ORANGE}{STRING}
@@ -1136,7 +1130,6 @@ STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Geser t
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Ijinkan kolusi pada penguasa setempat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Ijinkan pembelian hak ekslusif pengelolaan transportasi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Ijinkan pengiriman uang ke perusahaan lain: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONUNIFORM_STATIONS                          :{LTBLUE}Stasiun tidak seragam: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Faktor kali muatan untuk simulasi kereta yang berat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor kecepatan pesawat: {ORANGE}1 / {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :{LTBLUE}Frekuensi kecelakaan pesawat: {ORANGE}{STRING}
@@ -1235,7 +1228,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Tampilk
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Non-aktif
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Perusahaan sendiri
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :Semua perusahaan
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Aktifkan penjadwalan untuk kendaraan: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Penjadwalan menggunakan satuan titik , bukan satuan hari: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Tampilkan keberangkatan dan kedatangan pada jadwal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Buat pemberhentian kendaraan secara cepat: {ORANGE}{STRING}
@@ -3039,23 +3031,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Berangk
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kecelakaan!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Rusak
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Berhenti
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Berhenti
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Akan berhenti, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Tidak ada daya
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Menunggu sampai jalur bebas
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Menuju ke {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Menuju ke {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}Belum ada perintah
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Belum ada perintah, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Menuju ke {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Menuju ke {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Menuju ke {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Menuju ke {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Perbaikan pada {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Perbaikan pada {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
@@ -3548,7 +3531,6 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Tidak da
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}berdempetan dengan lebih dari satu stasiun yang telah ada
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stasiun terlalu membentang/melebar
-STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED                        :{WHITE}... Stasiun tidak seragam tidak aktif
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Terlalu banyak stasiun/area bongkar muat
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Terlalu banyak bag. stasiun
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Terlalu banyak pemberhentian Bus
@@ -4251,7 +4233,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}
