@@ -1334,7 +1334,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		/* We loaded less cargo than possible for all cargo types and it's not full
 		 * load and we're not supposed to wait any longer: stop loading. */
 		if (!anything_unloaded && full_load_amount == 0 && !(v->current_order.GetLoadType() & OLFB_FULL_LOAD) &&
-				(!_settings_game.order.timetabling || v->current_order_time >= (uint)max(v->current_order.wait_time - v->lateness_counter, 0))) {
+				v->current_order_time >= (uint)max(v->current_order.wait_time - v->lateness_counter, 0)) {
 			SetBit(v->vehicle_flags, VF_STOP_LOADING);
 		}
 	} else {

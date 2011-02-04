@@ -1115,7 +1115,6 @@ STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Load ve
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Deliver cargo to a station only when there is a demand: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Allow building very long bridges: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_GOTODEPOT                                    :{LTBLUE}Allow goto depot orders: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manual primary industry construction method: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :none
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as other industries
@@ -1232,7 +1231,6 @@ STR_CONFIG_SETTING_LOADING_INDICATORS                           :{LTBLUE}Use loa
 STR_CONFIG_SETTING_LOADING_INDICATORS_OFF                       :Off
 STR_CONFIG_SETTING_LOADING_INDICATORS_OWN                       :Own company
 STR_CONFIG_SETTING_LOADING_INDICATORS_ALL                       :All companies
-STR_CONFIG_SETTING_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :{LTBLUE}Show arrival and departure in timetables: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_QUICKGOTO                                    :{LTBLUE}Quick creation of vehicle orders: {ORANGE}{STRING1}

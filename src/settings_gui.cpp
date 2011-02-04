@@ -1263,8 +1263,6 @@ uint SettingsPage::Draw(GameSettings *settings_ptr, int left, int right, int bas
 
 
 static SettingEntry _settings_ui_display[] = {
-	SettingEntry("gui.vehicle_speed"),
-	SettingEntry("gui.status_long_date"),
 	SettingEntry("gui.date_format_in_default_names"),
 	SettingEntry("gui.population_in_label"),
 	SettingEntry("gui.measure_tooltip"),
@@ -1467,7 +1465,6 @@ static SettingEntry _settings_vehicles[] = {
 	SettingEntry(&_settings_vehicles_autorenew_page, STR_CONFIG_SETTING_VEHICLES_AUTORENEW),
 	SettingEntry(&_settings_vehicles_servicing_page, STR_CONFIG_SETTING_VEHICLES_SERVICING),
 	SettingEntry(&_settings_vehicles_trains_page, STR_CONFIG_SETTING_VEHICLES_TRAINS),
-	SettingEntry("order.gotodepot"),
 	SettingEntry("gui.new_nonstop"),
 	SettingEntry("gui.order_review_system"),
 	SettingEntry("gui.vehicle_income_warn"),
@@ -1479,7 +1476,6 @@ static SettingEntry _settings_vehicles[] = {
 	SettingEntry("vehicle.max_ships"),
 	SettingEntry("vehicle.plane_speed"),
 	SettingEntry("vehicle.plane_crashes"),
-	SettingEntry("order.timetabling"),
 	SettingEntry("vehicle.dynamic_engines"),
 	SettingEntry("vehicle.roadveh_acceleration_model"),
 	SettingEntry("vehicle.roadveh_slope_steepness"),

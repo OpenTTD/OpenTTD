@@ -168,7 +168,7 @@ bool Vehicle::NeedsServicing() const
  */
 bool Vehicle::NeedsAutomaticServicing() const
 {
-	if (_settings_game.order.gotodepot && this->HasDepotOrder()) return false;
+	if (this->HasDepotOrder()) return false;
 	if (this->current_order.IsType(OT_LOADING)) return false;
 	if (this->current_order.IsType(OT_GOTO_DEPOT) && this->current_order.GetDepotOrderType() != ODTFB_SERVICE) return false;
 	return NeedsServicing();
@@ -1912,8 +1912,7 @@ void Vehicle::HandleLoading(bool mode)
 			uint wait_time = max(this->current_order.wait_time - this->lateness_counter, 0);
 
 			/* Not the first call for this tick, or still loading */
-			if (mode || !HasBit(this->vehicle_flags, VF_LOADING_FINISHED) ||
-					(_settings_game.order.timetabling && this->current_order_time < wait_time)) return;
+			if (mode || !HasBit(this->vehicle_flags, VF_LOADING_FINISHED) || this->current_order_time < wait_time) return;
 
 			this->PlayLeaveStationSound();
 

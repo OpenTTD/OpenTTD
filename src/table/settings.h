@@ -393,7 +393,7 @@ const SettingDesc _settings[] = {
 	    SDT_BOOL(GameSettings, pf.forbid_90_deg,                                                    0, 0, false,                    STR_CONFIG_SETTING_FORBID_90_DEG,          NULL),
 	    SDT_BOOL(GameSettings, vehicle.mammoth_trains,                                              0,NN,  true,                    STR_CONFIG_SETTING_MAMMOTHTRAINS,          NULL),
 	 SDT_CONDVAR(GameSettings, vehicle.smoke_amount,                 SLE_UINT8,145, SL_MAX_VERSION, 0,MS,     1,     0,       2, 0, STR_CONFIG_SETTING_SMOKE_AMOUNT,           NULL),
-	    SDT_BOOL(GameSettings, order.gotodepot,                                                     0, 0,  true,                    STR_CONFIG_SETTING_GOTODEPOT,              NULL),
+	SDT_CONDNULL(                                                            1,  0, 158), // order.gotodepot
 	    SDT_BOOL(GameSettings, pf.roadveh_queue,                                                    0, 0,  true,                    STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING,  NULL),
 
 	SDT_CONDBOOL(GameSettings, pf.new_pathfinding_all,                           0,             86, 0, 0, false,                    STR_NULL,                                  NULL),
@@ -419,7 +419,7 @@ const SettingDesc _settings[] = {
 	    SDT_BOOL(GameSettings, vehicle.wagon_speed_limits,                                          0,NN,  true,                    STR_CONFIG_SETTING_WAGONSPEEDLIMITS,       UpdateConsists),
 	SDT_CONDBOOL(GameSettings, vehicle.disable_elrails,                         38, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_SETTING_DISABLE_ELRAILS,        SettingsDisableElrail),
 	 SDT_CONDVAR(GameSettings, vehicle.freight_trains,               SLE_UINT8, 39, SL_MAX_VERSION, 0,NN,     1,     1,     255, 1, STR_CONFIG_SETTING_FREIGHT_TRAINS,         NULL),
-	SDT_CONDBOOL(GameSettings, order.timetabling,                               67, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_TIMETABLE_ALLOW,        NULL),
+	SDT_CONDNULL(                                                            1, 67, 158), // order.timetabling
 	 SDT_CONDVAR(GameSettings, vehicle.plane_speed,                  SLE_UINT8, 90, SL_MAX_VERSION, 0,NN,     4,     1,       4, 0, STR_CONFIG_SETTING_PLANE_SPEED,            NULL),
 	SDT_CONDBOOL(GameSettings, vehicle.dynamic_engines,                         95, SL_MAX_VERSION, 0,NN,  true,                    STR_CONFIG_SETTING_DYNAMIC_ENGINES,        ChangeDynamicEngines),
 	 SDT_CONDVAR(GameSettings, vehicle.plane_crashes,                SLE_UINT8,138, SL_MAX_VERSION, 0,MS,     2,     0,       2, 1, STR_CONFIG_SETTING_PLANE_CRASHES,          NULL),

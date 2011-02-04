@@ -325,49 +325,47 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	order.index = 0;
 
 	/* check depot first */
-	if (_settings_game.order.gotodepot) {
-		switch (GetTileType(tile)) {
-			case MP_RAILWAY:
-				if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_company)) {
-					if (IsRailDepot(tile)) {
-						order.MakeGoToDepot(GetDepotIndex(tile), ODTFB_PART_OF_ORDERS,
-								_settings_client.gui.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
-						if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
-						return order;
-					}
-				}
-				break;
-
-			case MP_ROAD:
-				if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_company)) {
+	switch (GetTileType(tile)) {
+		case MP_RAILWAY:
+			if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_company)) {
+				if (IsRailDepot(tile)) {
 					order.MakeGoToDepot(GetDepotIndex(tile), ODTFB_PART_OF_ORDERS,
 							_settings_client.gui.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 					return order;
 				}
-				break;
+			}
+			break;
 
-			case MP_STATION:
-				if (v->type != VEH_AIRCRAFT) break;
-				if (IsHangar(tile) && IsTileOwner(tile, _local_company)) {
-					order.MakeGoToDepot(GetStationIndex(tile), ODTFB_PART_OF_ORDERS, ONSF_STOP_EVERYWHERE);
-					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
-					return order;
-				}
-				break;
+		case MP_ROAD:
+			if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_company)) {
+				order.MakeGoToDepot(GetDepotIndex(tile), ODTFB_PART_OF_ORDERS,
+						_settings_client.gui.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
+				if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
+				return order;
+			}
+			break;
 
-			case MP_WATER:
-				if (v->type != VEH_SHIP) break;
-				if (IsShipDepot(tile) && IsTileOwner(tile, _local_company)) {
-					order.MakeGoToDepot(GetDepotIndex(tile), ODTFB_PART_OF_ORDERS, ONSF_STOP_EVERYWHERE);
-					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
-					return order;
-				}
-				break;
+		case MP_STATION:
+			if (v->type != VEH_AIRCRAFT) break;
+			if (IsHangar(tile) && IsTileOwner(tile, _local_company)) {
+				order.MakeGoToDepot(GetStationIndex(tile), ODTFB_PART_OF_ORDERS, ONSF_STOP_EVERYWHERE);
+				if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
+				return order;
+			}
+			break;
 
-			default:
-				break;
-		}
+		case MP_WATER:
+			if (v->type != VEH_SHIP) break;
+			if (IsShipDepot(tile) && IsTileOwner(tile, _local_company)) {
+				order.MakeGoToDepot(GetDepotIndex(tile), ODTFB_PART_OF_ORDERS, ONSF_STOP_EVERYWHERE);
+				if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
+				return order;
+			}
+			break;
+
+		default:
+			break;
 	}
 
 	/* check waypoint */
@@ -778,10 +776,6 @@ public:
 	virtual void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 	{
 		switch (widget) {
-			case ORDER_WIDGET_TIMETABLE_VIEW:
-				if (!_settings_game.order.timetabling) size->width = 0;
-				break;
-
 			case ORDER_WIDGET_ORDER_LIST:
 				resize->height = FONT_HEIGHT_NORMAL;
 				size->height = 6 * resize->height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;

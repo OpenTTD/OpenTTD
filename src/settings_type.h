@@ -329,9 +329,7 @@ struct OrderSettings {
 	bool   improved_load;                    ///< improved loading algorithm
 	bool   gradual_loading;                  ///< load vehicles gradually
 	bool   selectgoods;                      ///< only send the goods to station if a train has been there
-	bool   gotodepot;                        ///< allow goto depot in orders
 	bool   no_servicing_if_no_breakdowns;    ///< dont send vehicles to depot when breakdowns are disabled
-	bool   timetabling;                      ///< whether to allow timetabling
 	bool   serviceathelipad;                 ///< service helicopters at helipads automatically (no need to send to depot)
 };
 
