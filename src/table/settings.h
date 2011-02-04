@@ -393,7 +393,8 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, vehicle.train_slope_steepness,        SLE_UINT8,133, SL_MAX_VERSION, 0, 0,     3,     0,      10, 1, STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS,  TrainSlopeSteepnessChanged),
 	 SDT_CONDVAR(GameSettings, vehicle.roadveh_slope_steepness,      SLE_UINT8,139, SL_MAX_VERSION, 0, 0,     7,     0,      10, 1, STR_CONFIG_SETTING_ROAD_VEHICLE_SLOPE_STEEPNESS,  RoadVehSlopeSteepnessChanged),
 	    SDT_BOOL(GameSettings, pf.forbid_90_deg,                                                    0, 0, false,                    STR_CONFIG_SETTING_FORBID_90_DEG,          NULL),
-	    SDT_BOOL(GameSettings, vehicle.mammoth_trains,                                              0,NN,  true,                    STR_CONFIG_SETTING_MAMMOTHTRAINS,          NULL),
+	 SDT_CONDVAR(GameSettings, vehicle.max_train_length,             SLE_UINT8,159, SL_MAX_VERSION, 0,NN,     7,     1,      64, 1, STR_CONFIG_SETTING_TRAIN_LENGTH,           NULL),
+	SDT_CONDNULL(                                                          1,  0,   158), // vehicle.mammoth_trains
 	 SDT_CONDVAR(GameSettings, vehicle.smoke_amount,                 SLE_UINT8,145, SL_MAX_VERSION, 0,MS,     1,     0,       2, 0, STR_CONFIG_SETTING_SMOKE_AMOUNT,           NULL),
 	SDT_CONDNULL(                                                            1,  0, 158), // order.gotodepot
 	    SDT_BOOL(GameSettings, pf.roadveh_queue,                                                    0, 0,  true,                    STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING,  NULL),

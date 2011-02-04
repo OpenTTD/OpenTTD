@@ -1094,7 +1094,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Allow b
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allow landscaping under buildings, tracks, etc. (autoslope): {ORANGE}{STRING1}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Allow removal of more town-owned roads, bridges and tunnels: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_MAMMOTHTRAINS                                :{LTBLUE}Enable building very long trains: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximum length of trains: {ORANGE}{STRING1} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Amount of vehicle smoke/sparks: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :None
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original

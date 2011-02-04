@@ -285,8 +285,8 @@ struct DepotWindow : Window {
 				DrawTrainImage(u, image_left + (rtl ? 0 : x_space), image_right - (rtl ? x_space : 0), sprite_y - 1,
 						this->sel, free_wagon ? 0 : this->hscroll->GetPosition(), this->vehicle_over);
 
-				/* Number of wagons relative to a standard length wagon (rounded up) */
-				SetDParam(0, CeilDiv(u->gcache.cached_total_length, 8));
+				/* Length of consist in tiles (rounded up) */
+				SetDParam(0, CeilDiv(u->gcache.cached_total_length, TILE_SIZE));
 				DrawString(rtl ? left + WD_FRAMERECT_LEFT : right - this->count_width, rtl ? left + this->count_width : right - WD_FRAMERECT_RIGHT, y + (this->resize.step_height - FONT_HEIGHT_SMALL) / 2, STR_TINY_BLACK_COMA, TC_FROMSTRING, SA_RIGHT); // Draw the counter
 				break;
 			}

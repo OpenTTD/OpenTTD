@@ -944,20 +944,21 @@ static CommandCost CheckTrainAttachment(Train *t)
 
 	/* The maximum length for a train. For each part we decrease this by one
 	 * and if the result is negative the train is simply too long. */
-	int allowed_len = _settings_game.vehicle.mammoth_trains ? 100 : 10;
+	int allowed_len = _settings_game.vehicle.max_train_length * TILE_SIZE - t->gcache.cached_veh_length;
 
 	Train *head = t;
 	Train *prev = t;
 
 	/* Break the prev -> t link so it always holds within the loop. */
 	t = t->Next();
-	allowed_len--;
 	prev->SetNext(NULL);
 
 	/* Make sure the cache is cleared. */
 	head->InvalidateNewGRFCache();
 
 	while (t != NULL) {
+		allowed_len -= t->gcache.cached_veh_length;
+
 		Train *next = t->Next();
 
 		/* Unlink the to-be-added piece; it is already unlinked from the previous
@@ -966,8 +967,6 @@ static CommandCost CheckTrainAttachment(Train *t)
 
 		/* Don't check callback for articulated or rear dual headed parts */
 		if (!t->IsArticulatedPart() && !t->IsRearDualheaded()) {
-			allowed_len--; // We do not count articulated parts and rear heads either.
-
 			/* Back up and clear the first_engine data to avoid using wagon override group */
 			EngineID first_engine = t->gcache.first_engine;
 			t->gcache.first_engine = INVALID_ENGINE;
@@ -1002,7 +1001,7 @@ static CommandCost CheckTrainAttachment(Train *t)
 		t = next;
 	}
 
-	if (allowed_len <= 0) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
+	if (allowed_len < 0) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
 	return CommandCost();
 }
 
