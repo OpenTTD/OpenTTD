@@ -42,7 +42,6 @@ struct DifficultySettings {
 
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
 struct GUISettings {
-	bool   vehicle_speed;                    ///< show vehicle speed
 	bool   sg_full_load_any;                 ///< new full load calculation, any cargo must be full read from pre v93 savegames
 	bool   lost_vehicle_warn;                ///< if a vehicle can't find its destination, show a warning
 	uint8  order_review_system;              ///< perform order reviews on vehicles

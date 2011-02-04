@@ -2404,7 +2404,7 @@ public:
 					}
 				} else {
 					SetDParam(0, v->GetDisplaySpeed());
-					str = STR_VEHICLE_STATUS_TRAIN_STOPPING + _settings_client.gui.vehicle_speed;
+					str = STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL;
 				}
 			} else { // no train
 				str = STR_VEHICLE_STATUS_STOPPED;
@@ -2416,7 +2416,7 @@ public:
 				case OT_GOTO_STATION: {
 					SetDParam(0, v->current_order.GetDestination());
 					SetDParam(1, v->GetDisplaySpeed());
-					str = STR_VEHICLE_STATUS_HEADING_FOR_STATION + _settings_client.gui.vehicle_speed;
+					str = STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL;
 					break;
 				}
 
@@ -2425,9 +2425,9 @@ public:
 					SetDParam(1, v->current_order.GetDestination());
 					SetDParam(2, v->GetDisplaySpeed());
 					if (v->current_order.GetDepotActionType() & ODATFB_HALT) {
-						str = STR_VEHICLE_STATUS_HEADING_FOR_DEPOT + _settings_client.gui.vehicle_speed;
+						str = STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL;
 					} else {
-						str = STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE + _settings_client.gui.vehicle_speed;
+						str = STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL;
 					}
 					break;
 				}
@@ -2439,7 +2439,7 @@ public:
 				case OT_GOTO_WAYPOINT: {
 					assert(v->type == VEH_TRAIN || v->type == VEH_SHIP);
 					SetDParam(0, v->current_order.GetDestination());
-					str = STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT + _settings_client.gui.vehicle_speed;
+					str = STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL;
 					SetDParam(1, v->GetDisplaySpeed());
 					break;
 				}
@@ -2453,7 +2453,7 @@ public:
 
 				default:
 					if (v->GetNumManualOrders() == 0) {
-						str = STR_VEHICLE_STATUS_NO_ORDERS + _settings_client.gui.vehicle_speed;
+						str = STR_VEHICLE_STATUS_NO_ORDERS_VEL;
 						SetDParam(0, v->GetDisplaySpeed());
 					} else {
 						str = STR_EMPTY;

@@ -307,9 +307,7 @@ static bool ShipAccelerate(Vehicle *v)
 	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
-		if (_settings_client.gui.vehicle_speed) {
-			SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		}
+		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	/* Convert direction-indepenent speed into direction-dependent speed. (old movement method) */

@@ -1090,7 +1090,6 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Advanced
 STR_CONFIG_SETTING_OFF                                          :Off
 STR_CONFIG_SETTING_ON                                           :On
 STR_CONFIG_SETTING_DISABLED                                     :disabled
-STR_CONFIG_SETTING_VEHICLESPEED                                 :{LTBLUE}Show vehicle speed in status bar: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Allow building on slopes and coasts: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Allow landscaping under buildings, tracks, etc. (autoslope): {ORANGE}{STRING1}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING1}
@@ -3038,23 +3037,14 @@ STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Leaving
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Crashed!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Broken down
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stopped
-STR_VEHICLE_STATUS_TRAIN_STOPPING                               :{RED}Stopping
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stopping, {VELOCITY}
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}No power
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Waiting for free path
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION                          :{LTBLUE}Heading for {STATION}
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Heading for {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS                                    :{LTBLUE}No orders
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}No orders, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT                         :{LTBLUE}Heading for {WAYPOINT}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT                            :{ORANGE}Heading for {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Heading for {DEPOT}, {VELOCITY}
-
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE                    :{LTBLUE}Service at {DEPOT}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Service at {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations

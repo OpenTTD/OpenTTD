@@ -340,7 +340,7 @@ struct GroundVehicle : public SpecializedVehicle<T, Type> {
 	FORCEINLINE void SetLastSpeed()
 	{
 		if (this->cur_speed != this->gcache.last_speed) {
-			if (_settings_client.gui.vehicle_speed || (this->gcache.last_speed == 0) != (this->cur_speed == 0)) {
+			if ((this->gcache.last_speed == 0) != (this->cur_speed == 0)) {
 				SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 			}
 			this->gcache.last_speed = this->cur_speed;
