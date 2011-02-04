@@ -1113,7 +1113,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Use imp
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Load vehicles gradually: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Deliver cargo to a station only when there is a demand: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_LONGBRIDGES                                  :{LTBLUE}Allow building very long bridges: {ORANGE}{STRING1}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maximum bridge length: {ORANGE}{STRING1} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maximum tunnel length: {ORANGE}{STRING1} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manual primary industry construction method: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :none
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as other industries
@@ -3668,6 +3669,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Must dem
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Another tunnel in the way
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel would end out of the map
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Unable to excavate land for other end of tunnel
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunnel too long
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... too many objects

@@ -201,7 +201,8 @@ struct GameCreationSettings {
 struct ConstructionSettings {
 	bool   build_on_slopes;                  ///< allow building on slopes
 	bool   autoslope;                        ///< allow terraforming under things
-	bool   longbridges;                      ///< allow 100 tile long bridges
+	uint16 max_bridge_length;                ///< maximum length of bridges
+	uint16 max_tunnel_length;                ///< maximum length of tunnels
 	bool   signal_side;                      ///< show signals on right side
 	bool   extra_dynamite;                   ///< extra dynamite
 	bool   road_stop_on_town_road;           ///< allow building of drive-through road stops on town owned roads

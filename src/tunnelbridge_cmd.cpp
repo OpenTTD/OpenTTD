@@ -175,7 +175,7 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoCommandFlag flags)
 {
 	if (flags & DC_QUERY_COST) {
-		if (bridge_len <= (_settings_game.construction.longbridges ? MAX_BRIDGE_LENGTH_LONGBRIDGES : MAX_BRIDGE_LENGTH)) return CommandCost();
+		if (bridge_len <= _settings_game.construction.max_bridge_length) return CommandCost();
 		return_cmd_error(STR_ERROR_BRIDGE_TOO_LONG);
 	}
 
@@ -184,8 +184,7 @@ CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoC
 	const BridgeSpec *b = GetBridgeSpec(bridge_type);
 	if (b->avail_year > _cur_year) return CMD_ERROR;
 
-	uint max = b->max_length;
-	if (max >= MAX_BRIDGE_LENGTH && _settings_game.construction.longbridges) max = MAX_BRIDGE_LENGTH_LONGBRIDGES;
+	uint max = min(b->max_length, _settings_game.construction.max_bridge_length);
 
 	if (b->min_length > bridge_len) return CMD_ERROR;
 	if (bridge_len <= max) return CommandCost();
@@ -259,7 +258,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 		CommandCost ret = CheckBridgeAvailability(bridge_type, bridge_len, flags);
 		if (ret.Failed()) return ret;
 	} else {
-		if (bridge_len > (_settings_game.construction.longbridges ? MAX_BRIDGE_LENGTH_LONGBRIDGES : MAX_BRIDGE_LENGTH)) return_cmd_error(STR_ERROR_BRIDGE_TOO_LONG);
+		if (bridge_len > _settings_game.construction.max_bridge_length) return_cmd_error(STR_ERROR_BRIDGE_TOO_LONG);
 	}
 
 	uint z_start;
@@ -582,6 +581,8 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 	/* if the command fails from here on we want the end tile to be highlighted */
 	_build_tunnel_endtile = end_tile;
+
+	if (tiles > _settings_game.construction.max_tunnel_length) return_cmd_error(STR_ERROR_TUNNEL_TOO_LONG);
 
 	if (HasTileWaterGround(end_tile)) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 

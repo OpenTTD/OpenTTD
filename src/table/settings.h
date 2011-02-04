@@ -378,7 +378,9 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, construction.clear_frame_burst,      SLE_UINT16,156, SL_MAX_VERSION, 0, 0, 4096,     0,  1 << 30, 1, STR_NULL, NULL),
 	SDT_CONDBOOL(GameSettings, construction.autoslope,                          75, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_AUTOSLOPE,              NULL),
 	    SDT_BOOL(GameSettings, construction.extra_dynamite,                                         0, 0,  true,                    STR_CONFIG_SETTING_EXTRADYNAMITE,          NULL),
-	    SDT_BOOL(GameSettings, construction.longbridges,                                            0,NN,  true,                    STR_CONFIG_SETTING_LONGBRIDGES,            NULL),
+	 SDT_CONDVAR(GameSettings, construction.max_bridge_length,      SLE_UINT16,159, SL_MAX_VERSION, 0,NN,    64,    1,     2048, 1, STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH,      NULL),
+	 SDT_CONDVAR(GameSettings, construction.max_tunnel_length,      SLE_UINT16,159, SL_MAX_VERSION, 0,NN,    64,    1,     2048, 1, STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH,      NULL),
+	SDT_CONDNULL(                                                            1,  0, 158), // construction.longbridges
 	    SDT_BOOL(GameSettings, construction.signal_side,                                            N,NN,  true,                    STR_CONFIG_SETTING_SIGNALSIDE,             RedrawScreen),
 	    SDT_BOOL(GameSettings, station.never_expire_airports,                                       0,NN, false,                    STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS,  NULL),
 	 SDT_CONDVAR(GameSettings, economy.town_layout,                  SLE_UINT8, 59, SL_MAX_VERSION, 0,MS,TL_ORIGINAL,TL_BEGIN,NUM_TLS - 1, 1, STR_CONFIG_SETTING_TOWN_LAYOUT,  TownFoundingChanged),

@@ -43,7 +43,7 @@ typedef uint BridgeType; ///< Bridge spec number.
 struct BridgeSpec {
 	Year avail_year;             ///< the year where it becomes available
 	byte min_length;             ///< the minimum length (not counting start and end tile)
-	byte max_length;             ///< the maximum length (not counting start and end tile)
+	uint16 max_length;           ///< the maximum length (not counting start and end tile)
 	uint16 price;                ///< the price multiplier
 	uint16 speed;                ///< maximum travel speed (1 unit = 1/1.6 mph = 1 km-ish/h)
 	SpriteID sprite;             ///< the sprite which is used in the GUI
@@ -71,8 +71,5 @@ CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoC
 int CalcBridgeLenCostFactor(int x);
 
 void ResetBridges();
-
-static const uint MAX_BRIDGE_LENGTH             =  16; ///< Maximum length of the bridge
-static const uint MAX_BRIDGE_LENGTH_LONGBRIDGES = 100; ///< Maximum length of the bridge with longbridges enabled
 
 #endif /* BRIDGE_H */

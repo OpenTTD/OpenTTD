@@ -1426,6 +1426,7 @@ static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, ByteR
 
 			case 0x0A: // Maximum length
 				bridge->max_length = buf->ReadByte();
+				if (bridge->max_length > 16) bridge->max_length = 0xFFFF;
 				break;
 
 			case 0x0B: // Cost factor
@@ -6901,7 +6902,7 @@ static void InitializeGRFSpecial()
 	_ttdpatch_flags[0] = ((_settings_game.station.never_expire_airports ? 1 : 0) << 0x0C)  // keepsmallairport
 	                   |                                                      (1 << 0x0D)  // newairports
 	                   |                                                      (1 << 0x0E)  // largestations
-	                   |      ((_settings_game.construction.longbridges ? 1 : 0) << 0x0F)  // longbridges
+	                   | ((_settings_game.construction.max_bridge_length > 16 ? 1 : 0) << 0x0F)  // longbridges
 	                   |                                                      (0 << 0x10)  // loadtime
 	                   |                                                      (1 << 0x12)  // presignals
 	                   |                                                      (1 << 0x13)  // extpresignals
