@@ -1122,7 +1122,6 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :as other indust
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospecting
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Flat area around industries: {ORANGE}{STRING1} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Allow multiple similar industries per town: {ORANGE}{STRING1}
-STR_CONFIG_SETTING_LONGDATE                                     :{LTBLUE}Always show long date in the status bar: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Show signals on the drive side: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING1}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}New orders are 'non-stop' by default: {ORANGE}{STRING1}
@@ -4239,7 +4238,6 @@ STR_COMPANY_MONEY                                               :{WHITE}{CURRENC
 STR_BLACK_DATE_LONG                                             :{BLACK}{DATE_LONG}
 STR_BLACK_CROSS                                                 :{BLACK}{CROSS}
 STR_SILVER_CROSS                                                :{SILVER}{CROSS}
-STR_WHITE_DATE_SHORT                                            :{WHITE}{DATE_SHORT}
 STR_WHITE_DATE_LONG                                             :{WHITE}{DATE_LONG}
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_DATE_LONG_SMALL                                             :{TINYFONT}{BLACK}{DATE_LONG}

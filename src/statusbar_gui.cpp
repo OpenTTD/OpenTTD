@@ -136,7 +136,7 @@ struct StatusBarWindow : Window {
 			case SBW_LEFT:
 				/* Draw the date */
 				SetDParam(0, _date);
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, (_pause_mode || _settings_client.gui.status_long_date) ? STR_WHITE_DATE_LONG : STR_WHITE_DATE_SHORT, TC_FROMSTRING, SA_HOR_CENTER);
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, STR_WHITE_DATE_LONG, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 
 			case SBW_RIGHT: {
