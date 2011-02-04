@@ -5129,7 +5129,7 @@ static void CfgApply(ByteReader *buf)
 			uint32 value = GetParamVal(param_num + i / 4, NULL);
 			/* Reset carry flag for each iteration of the variable (only really
 			 * matters if param_size is greater than 4) */
-			if (i == 0) carry = false;
+			if (i % 4 == 0) carry = false;
 
 			if (add_value) {
 				uint new_value = preload_sprite[offset + i] + GB(value, (i % 4) * 8, 8) + (carry ? 1 : 0);
