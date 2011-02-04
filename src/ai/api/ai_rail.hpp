@@ -35,9 +35,6 @@ public:
 		/** Track not suitable for signals */
 		ERR_UNSUITABLE_TRACK,              // [STR_ERROR_NO_SUITABLE_RAILROAD_TRACK]
 
-		/** Non-uniform stations is diabled */
-		ERR_NONUNIFORM_STATIONS_DISABLED,  // [STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED]
-
 		/** This railtype cannot have crossings */
 		ERR_RAILTYPE_DISALLOWS_CROSSING,   // [STR_ERROR_CROSSING_DISALLOWED]
 	};

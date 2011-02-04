@@ -6965,7 +6965,7 @@ static void InitializeGRFSpecial()
 	                   |                                                      (1 << 0x0B)  // newcargo
 	                   |                                                      (1 << 0x0C)  // enhancemultiplayer
 	                   |                                                      (1 << 0x0D)  // onewayroads
-	                   |   ((_settings_game.station.nonuniform_stations ? 1 : 0) << 0x0E)  // irregularstations
+	                   |                                                      (1 << 0x0E)  // irregularstations
 	                   |                                                      (1 << 0x0F)  // statistics
 	                   |                                                      (1 << 0x10)  // newsounds
 	                   |                                                      (1 << 0x11)  // autoreplace

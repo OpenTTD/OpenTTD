@@ -902,19 +902,6 @@ static void FloodVehicles(TileIndex tile)
 		return;
 	}
 
-	/* if non-uniform stations are disabled, flood some train in this train station (if there is any) */
-	if (!_settings_game.station.nonuniform_stations && IsTileType(tile, MP_STATION) && GetStationType(tile) == STATION_RAIL) {
-		const Station *st = Station::GetByTile(tile);
-
-		TILE_AREA_LOOP(t, st->train_station) {
-			if (st->TileBelongsToRailStation(t)) {
-				FindVehicleOnPos(tile, &z, &FloodVehicleProc);
-			}
-		}
-
-		return;
-	}
-
 	if (!IsBridgeTile(tile)) {
 		FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 		return;

@@ -933,46 +933,13 @@ CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis a
 {
 	TileArea cur_ta = st->train_station;
 
-	if (_settings_game.station.nonuniform_stations) {
-		/* determine new size of train station region.. */
-		int x = min(TileX(cur_ta.tile), TileX(new_ta.tile));
-		int y = min(TileY(cur_ta.tile), TileY(new_ta.tile));
-		new_ta.w = max(TileX(cur_ta.tile) + cur_ta.w, TileX(new_ta.tile) + new_ta.w) - x;
-		new_ta.h = max(TileY(cur_ta.tile) + cur_ta.h, TileY(new_ta.tile) + new_ta.h) - y;
-		new_ta.tile = TileXY(x, y);
-	} else {
-		/* do not allow modifying non-uniform stations,
-		 * the uniform-stations code wouldn't handle it well */
-		TILE_AREA_LOOP(t, cur_ta) {
-			if (!st->TileBelongsToRailStation(t)) { // there may be adjoined station
-				return_cmd_error(STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED);
-			}
-		}
+	/* determine new size of train station region.. */
+	int x = min(TileX(cur_ta.tile), TileX(new_ta.tile));
+	int y = min(TileY(cur_ta.tile), TileY(new_ta.tile));
+	new_ta.w = max(TileX(cur_ta.tile) + cur_ta.w, TileX(new_ta.tile) + new_ta.w) - x;
+	new_ta.h = max(TileY(cur_ta.tile) + cur_ta.h, TileY(new_ta.tile) + new_ta.h) - y;
+	new_ta.tile = TileXY(x, y);
 
-		/* check so the orientation is the same */
-		if (GetRailStationAxis(cur_ta.tile) != axis) {
-			return_cmd_error(STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED);
-		}
-
-		/* check if the new station adjoins the old station in either direction */
-		if (cur_ta.w == new_ta.w && cur_ta.tile == new_ta.tile + TileDiffXY(0, new_ta.h)) {
-			/* above */
-			new_ta.h += cur_ta.h;
-		} else if (cur_ta.w == new_ta.w && cur_ta.tile == new_ta.tile - TileDiffXY(0, cur_ta.h)) {
-			/* below */
-			new_ta.tile = cur_ta.tile;
-			new_ta.h += new_ta.h;
-		} else if (cur_ta.h == new_ta.h && cur_ta.tile == new_ta.tile + TileDiffXY(new_ta.w, 0)) {
-			/* to the left */
-			new_ta.w += cur_ta.w;
-		} else if (cur_ta.h == new_ta.h && cur_ta.tile == new_ta.tile - TileDiffXY(cur_ta.w, 0)) {
-			/* to the right */
-			new_ta.tile = cur_ta.tile;
-			new_ta.w += cur_ta.w;
-		} else {
-			return_cmd_error(STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED);
-		}
-	}
 	/* make sure the final size is not too big. */
 	if (new_ta.w > _settings_game.station.station_spread || new_ta.h > _settings_game.station.station_spread) {
 		return_cmd_error(STR_ERROR_STATION_TOO_SPREAD_OUT);
@@ -1165,7 +1132,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 	StationID est = INVALID_STATION;
 	SmallVector<Train *, 4> affected_vehicles;
 	/* Clear the land below the station. */
-	CommandCost cost = CheckFlatLandRailStation(TileArea(tile_org, w_org, h_org), flags, 5 << axis, _settings_game.station.nonuniform_stations ? &est : NULL, rt, affected_vehicles);
+	CommandCost cost = CheckFlatLandRailStation(TileArea(tile_org, w_org, h_org), flags, 5 << axis, &est, rt, affected_vehicles);
 	if (cost.Failed()) return cost;
 	/* Add construction expenses. */
 	cost.AddCost((numtracks * _price[PR_BUILD_STATION_RAIL] + _price[PR_BUILD_STATION_RAIL_LENGTH]) * plat_len);
@@ -1408,11 +1375,6 @@ CommandCost RemoveFromRailBaseStation(TileArea ta, SmallVector<T *, 4> &affected
 			if (ret.Failed()) continue;
 		}
 
-		/* Do not allow removing from stations if non-uniform stations are not enabled
-		 * The check must be here to give correct error message
-		 */
-		if (!_settings_game.station.nonuniform_stations) return_cmd_error(STR_ERROR_NONUNIFORM_STATIONS_DISALLOWED);
-
 		/* If we reached here, the tile is valid so increase the quantity of tiles we will remove */
 		quantity++;
 
@@ -1572,7 +1534,7 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	/* clear all areas of the station */
 	TILE_AREA_LOOP(tile, ta) {
-		/* for nonuniform stations, only remove tiles that are actually train station tiles */
+		/* only remove tiles that are actually train station tiles */
 		if (!st->TileBelongsToRailStation(tile)) continue;
 
 		CommandCost ret = EnsureNoVehicleOnGround(tile);
@@ -1624,8 +1586,8 @@ CommandCost RemoveRailStation(T *st, DoCommandFlag flags)
  */
 static CommandCost RemoveRailStation(TileIndex tile, DoCommandFlag flags)
 {
-	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
-	if (_current_company == OWNER_WATER && _settings_game.station.nonuniform_stations) {
+	/* if there is flooding, remove platforms tile by tile */
+	if (_current_company == OWNER_WATER) {
 		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAIL_STATION);
 	}
 
@@ -1645,8 +1607,8 @@ static CommandCost RemoveRailStation(TileIndex tile, DoCommandFlag flags)
  */
 static CommandCost RemoveRailWaypoint(TileIndex tile, DoCommandFlag flags)
 {
-	/* if there is flooding and non-uniform stations are enabled, remove waypoints tile by tile */
-	if (_current_company == OWNER_WATER && _settings_game.station.nonuniform_stations) {
+	/* if there is flooding, remove waypoints tile by tile */
+	if (_current_company == OWNER_WATER) {
 		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAIL_WAYPOINT);
 	}
 

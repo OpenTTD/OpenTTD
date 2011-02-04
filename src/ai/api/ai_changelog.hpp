@@ -33,6 +33,7 @@
  * \li HasNext for all lists.
  * \li AIAbstractList, use AIList instead.
  * \li AIList::ChangeItem, use AIList::SetValue instead.
+ * \li AIRail::ERR_NONUNIFORM_STATIONS_DISABLED, that error is never returned anymore.
  *
  * Other changes:
  * \li AIEngine::GetMaxTractiveEffort can be used for road vehicles.

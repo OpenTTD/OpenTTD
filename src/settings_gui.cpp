@@ -1356,7 +1356,6 @@ static SettingsPage _settings_stations_cargo_page = {_settings_stations_cargo, l
 static SettingEntry _settings_stations[] = {
 	SettingEntry(&_settings_stations_cargo_page, STR_CONFIG_SETTING_STATIONS_CARGOHANDLING),
 	SettingEntry("station.join_stations"),
-	SettingEntry("station.nonuniform_stations"),
 	SettingEntry("station.adjacent_stations"),
 	SettingEntry("station.distant_join_stations"),
 	SettingEntry("station.station_spread"),
