@@ -85,7 +85,6 @@ struct GUISettings {
 	Year   coloured_news_year;               ///< when does newspaper become coloured?
 	bool   timetable_in_ticks;               ///< whether to show the timetable in ticks rather than days
 	bool   quick_goto;                       ///< Allow quick access to 'goto button' in vehicle orders window
-	bool   bridge_pillars;                   ///< show bridge pillars for high bridges
 	bool   auto_euro;                        ///< automatically switch to euro in 2002
 	byte   drag_signals_density;             ///< many signals density
 	Year   semaphore_build_before;           ///< build semaphore signals automatically before this year

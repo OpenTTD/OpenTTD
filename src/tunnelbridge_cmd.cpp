@@ -1336,7 +1336,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 
 			DrawGroundSpriteAt(image, pal, x - ti->x, y - ti->y, z - ti->z);
 		}
-	} else if (_settings_client.gui.bridge_pillars) {
+	} else {
 		/* draw pillars below for high bridges */
 		DrawBridgePillars(psid, ti, axis, drawfarpillar, x, y, z);
 	}
