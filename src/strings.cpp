@@ -1110,7 +1110,7 @@ static char *FormatString(char *buff, const char *str_arg, int64 *argv, const in
 
 				assert(e != NULL);
 
-				if (e->name != NULL && e->info.string_id != STR_NEWGRF_INVALID_ENGINE) {
+				if (e->name != NULL && e->IsEnabled()) {
 					buff = strecpy(buff, e->name, last);
 				} else {
 					buff = GetStringWithArgs(buff, e->info.string_id, NULL, NULL, last);

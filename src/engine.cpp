@@ -145,6 +145,15 @@ Engine::~Engine()
 }
 
 /**
+ * Checks whether the engine spec is properly initialised.
+ * @return true if enabled
+ */
+bool Engine::IsEnabled() const
+{
+	return this->info.string_id != STR_NEWGRF_INVALID_ENGINE;
+}
+
+/**
  * Determines whether an engine can carry something.
  * A vehicle cannot carry anything if its capacity is zero, or none of the possible cargos is available in the climate.
  * @return true if the vehicle can carry something.
@@ -935,7 +944,7 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 	/* check if it's available */
 	if (!HasBit(e->company_avail, company)) return false;
 
-	if (e->info.string_id == STR_NEWGRF_INVALID_ENGINE) return false;
+	if (!e->IsEnabled()) return false;
 
 	if (type == VEH_TRAIN) {
 		/* Check if the rail type is available to this company */

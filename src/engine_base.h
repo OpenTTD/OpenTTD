@@ -61,6 +61,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	Engine();
 	Engine(VehicleType type, EngineID base);
 	~Engine();
+	bool IsEnabled() const;
 
 	/**
 	 * Determines the default cargo type of an engine.
