@@ -189,6 +189,17 @@ struct IConsoleWindow : Window
 		_iconsole_mode = ICONSOLE_CLOSED;
 	}
 
+	/**
+	 * Scroll the content of the console.
+	 * @param amount Number of lines to scroll back.
+	 */
+	void Scroll(int amount)
+	{
+		int max_scroll = max<int>(0, IConsoleLine::size + 1 - this->height / this->line_height);
+		IConsoleWindow::scroll = Clamp<int>(IConsoleWindow::scroll + amount, 0, max_scroll);
+		this->SetDirty();
+	}
+
 	virtual void OnPaint()
 	{
 		const int right = this->width - 5;
@@ -245,39 +256,19 @@ struct IConsoleWindow : Window
 				break;
 
 			case WKC_SHIFT | WKC_PAGEDOWN:
-				if (IConsoleWindow::scroll - scroll_height < 0) {
-					IConsoleWindow::scroll = 0;
-				} else {
-					IConsoleWindow::scroll -= scroll_height;
-				}
-				this->SetDirty();
+				this->Scroll(-scroll_height);
 				break;
 
 			case WKC_SHIFT | WKC_PAGEUP:
-				if (IConsoleWindow::scroll + scroll_height > IConsoleLine::size - scroll_height) {
-					IConsoleWindow::scroll = IConsoleLine::size - scroll_height;
-				} else {
-					IConsoleWindow::scroll += scroll_height;
-				}
-				this->SetDirty();
+				this->Scroll(scroll_height);
 				break;
 
 			case WKC_SHIFT | WKC_DOWN:
-				if (IConsoleWindow::scroll <= 0) {
-					IConsoleWindow::scroll = 0;
-				} else {
-					--IConsoleWindow::scroll;
-				}
-				this->SetDirty();
+				this->Scroll(-1);
 				break;
 
 			case WKC_SHIFT | WKC_UP:
-				if (IConsoleWindow::scroll >= IConsoleLine::size) {
-					IConsoleWindow::scroll = IConsoleLine::size;
-				} else {
-					++IConsoleWindow::scroll;
-				}
-				this->SetDirty();
+				this->Scroll(1);
 				break;
 
 			case WKC_BACKQUOTE:
