@@ -51,6 +51,7 @@
 #include "../rail_gui.h"
 #include "../core/backup_type.hpp"
 #include "../smallmap_gui.h"
+#include "../news_func.h"
 
 #include "table/strings.h"
 
@@ -2604,6 +2605,8 @@ void ReloadNewGRFData()
 	AfterLoadStations();
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
+	/* Delete news referring to no longer existing entities */
+	DeleteInvalidEngineNews();
 	/* Update livery selection windows */
 	for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) InvalidateWindowData(WC_COMPANY_COLOUR, i);
 	/* redraw the whole screen */

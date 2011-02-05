@@ -28,6 +28,7 @@
 #include "statusbar_gui.h"
 #include "company_manager_face.h"
 #include "company_func.h"
+#include "engine_base.h"
 #include "engine_gui.h"
 #include "core/geometry_func.hpp"
 
@@ -803,6 +804,23 @@ void DeleteIndustryNews(IndustryID iid)
 	while (ni != NULL) {
 		NewsItem *next = ni->next;
 		if ((ni->reftype1 == NR_INDUSTRY && ni->ref1 == iid) || (ni->reftype2 == NR_INDUSTRY && ni->ref2 == iid)) {
+			DeleteNewsItem(ni);
+		}
+		ni = next;
+	}
+}
+
+/**
+ * Remove engine announcements for invalid engines.
+ */
+void DeleteInvalidEngineNews()
+{
+	NewsItem *ni = _oldest_news;
+
+	while (ni != NULL) {
+		NewsItem *next = ni->next;
+		if ((ni->reftype1 == NR_ENGINE && (!Engine::IsValidID(ni->ref1) || !Engine::Get(ni->ref1)->IsEnabled())) ||
+				(ni->reftype2 == NR_ENGINE && (!Engine::IsValidID(ni->ref2) || !Engine::Get(ni->ref2)->IsEnabled()))) {
 			DeleteNewsItem(ni);
 		}
 		ni = next;

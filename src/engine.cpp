@@ -499,6 +499,7 @@ void SetCachedEngineCounts()
 
 void SetupEngines()
 {
+	DeleteWindowByClass(WC_ENGINE_PREVIEW);
 	_engine_pool.CleanPool();
 
 	assert(_engine_mngr.Length() >= _engine_mngr.NUM_DEFAULT_ENGINES);
@@ -858,6 +859,9 @@ void EnginesMonthlyLoop()
 				e->age++;
 				CalcEngineReliability(e);
 			}
+
+			/* Do not introduce invalid engines */
+			if (!e->IsEnabled()) continue;
 
 			if (!(e->flags & ENGINE_AVAILABLE) && _date >= (e->intro_date + DAYS_IN_YEAR)) {
 				/* Introduce it to all companies */

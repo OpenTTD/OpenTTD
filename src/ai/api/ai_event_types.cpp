@@ -19,8 +19,15 @@
 #include "../../articulated_vehicles.h"
 #include "table/strings.h"
 
+bool AIEventEnginePreview::IsEngineValid() const
+{
+	const Engine *e = ::Engine::GetIfValid(this->engine);
+	return e != NULL && e->IsEnabled();
+}
+
 char *AIEventEnginePreview::GetName()
 {
+	if (!this->IsEngineValid()) return NULL;
 	static const int len = 64;
 	char *engine_name = MallocT<char>(len);
 
@@ -31,6 +38,7 @@ char *AIEventEnginePreview::GetName()
 
 CargoID AIEventEnginePreview::GetCargoType()
 {
+	if (!this->IsEngineValid()) return CT_INVALID;
 	CargoArray cap = ::GetCapacityOfArticulatedParts(this->engine);
 
 	CargoID most_cargo = CT_INVALID;
@@ -47,6 +55,7 @@ CargoID AIEventEnginePreview::GetCargoType()
 
 int32 AIEventEnginePreview::GetCapacity()
 {
+	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
 	switch (e->type) {
 		case VEH_ROAD:
@@ -69,6 +78,7 @@ int32 AIEventEnginePreview::GetCapacity()
 
 int32 AIEventEnginePreview::GetMaxSpeed()
 {
+	if (!this->IsEngineValid()) return -1;
 	const Engine *e = ::Engine::Get(this->engine);
 	int32 max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
 	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
@@ -77,16 +87,19 @@ int32 AIEventEnginePreview::GetMaxSpeed()
 
 Money AIEventEnginePreview::GetPrice()
 {
+	if (!this->IsEngineValid()) return -1;
 	return ::Engine::Get(this->engine)->GetCost();
 }
 
 Money AIEventEnginePreview::GetRunningCost()
 {
+	if (!this->IsEngineValid()) return -1;
 	return ::Engine::Get(this->engine)->GetRunningCost();
 }
 
 int32 AIEventEnginePreview::GetVehicleType()
 {
+	if (!this->IsEngineValid()) return AIVehicle::VT_INVALID;
 	switch (::Engine::Get(this->engine)->type) {
 		case VEH_ROAD:     return AIVehicle::VT_ROAD;
 		case VEH_TRAIN:    return AIVehicle::VT_RAIL;
@@ -98,6 +111,7 @@ int32 AIEventEnginePreview::GetVehicleType()
 
 bool AIEventEnginePreview::AcceptPreview()
 {
+	if (!this->IsEngineValid()) return false;
 	return AIObject::DoCommand(0, this->engine, 0, CMD_WANT_ENGINE_PREVIEW);
 }
 

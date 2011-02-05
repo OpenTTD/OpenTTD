@@ -51,6 +51,7 @@ extern bool _news_ticker_sound;
 
 extern NewsTypeData _news_type_data[];
 
+void DeleteInvalidEngineNews();
 void DeleteVehicleNews(VehicleID vid, StringID news);
 void DeleteStationNews(StationID sid);
 void DeleteIndustryNews(IndustryID iid);

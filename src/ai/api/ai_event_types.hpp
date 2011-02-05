@@ -296,6 +296,7 @@ public:
 
 private:
 	EngineID engine;
+	bool IsEngineValid() const;
 };
 
 /**
