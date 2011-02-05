@@ -921,6 +921,17 @@ static bool InvalidateIndustryViewWindow(int32 p1)
 	return true;
 }
 
+/**
+ * Update the town authority window after a town authority setting change.
+ * @param p1 Unused.
+ * @return Always true.
+ */
+static bool RedrawTownAuthority(int32 p1)
+{
+	SetWindowClassesDirty(WC_TOWN_AUTHORITY);
+	return true;
+}
+
 /*
  * A: competitors
  * B: competitor start time. Deprecated since savegame version 110.

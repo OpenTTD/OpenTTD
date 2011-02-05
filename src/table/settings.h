@@ -42,6 +42,7 @@ static bool InvalidateVehTimetableWindow(int32 p1);
 static bool InvalidateCompanyLiveryWindow(int32 p1);
 static bool InvalidateNewGRFChangeWindows(int32 p1);
 static bool InvalidateIndustryViewWindow(int32 p1);
+static bool RedrawTownAuthority(int32 p1);
 
 #ifdef ENABLE_NETWORK
 static bool UpdateClientName(int32 p1);
@@ -448,8 +449,8 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, construction.industry_platform,       SLE_UINT8,148, SL_MAX_VERSION, 0, 0,     1,     0,       4, 0, STR_CONFIG_SETTING_INDUSTRY_PLATFORM,      NULL),
 	    SDT_BOOL(GameSettings, economy.multiple_industry_per_town,                                  0, 0, false,                    STR_CONFIG_SETTING_MULTIPINDTOWN,          NULL),
 	SDT_CONDNULL(                                                            1,  0, 140),
-	    SDT_BOOL(GameSettings, economy.bribe,                                                       0, 0,  true,                    STR_CONFIG_SETTING_BRIBE,                  NULL),
-	SDT_CONDBOOL(GameSettings, economy.exclusive_rights,                        79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_EXCLUSIVE,        NULL),
+	    SDT_BOOL(GameSettings, economy.bribe,                                                       0, 0,  true,                    STR_CONFIG_SETTING_BRIBE,                  RedrawTownAuthority),
+	SDT_CONDBOOL(GameSettings, economy.exclusive_rights,                        79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_EXCLUSIVE,        RedrawTownAuthority),
 	SDT_CONDBOOL(GameSettings, economy.give_money,                              79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_GIVE_MONEY,       NULL),
 	     SDT_VAR(GameSettings, game_creation.snow_line_height,       SLE_UINT8,                     0, 0, DEF_SNOWLINE_HEIGHT, MIN_SNOWLINE_HEIGHT, MAX_SNOWLINE_HEIGHT, 0, STR_CONFIG_SETTING_SNOWLINE_HEIGHT, NULL),
 	SDT_CONDNULL(                                                            4,  0, 143),
