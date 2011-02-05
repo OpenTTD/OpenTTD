@@ -1105,8 +1105,16 @@ static inline void ChangeVehicleWindow(WindowClass window_class, VehicleID from_
 {
 	Window *w = FindWindowById(window_class, from_index);
 	if (w != NULL) {
+		/* Update window_number */
 		w->window_number = to_index;
 		if (w->viewport != NULL) w->viewport->follow_vehicle = to_index;
+
+		/* Update vehicle drag data */
+		if (_thd.window_class == window_class && _thd.window_number == (WindowNumber)from_index) {
+			_thd.window_number = to_index;
+		}
+
+		/* Notify the window */
 		w->InvalidateData();
 	}
 }
