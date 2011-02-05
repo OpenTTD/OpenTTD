@@ -314,8 +314,9 @@ struct MainWindow : Window
 			case GHK_CENTER_ZOOM: {
 				Point pt = GetTileBelowCursor();
 				if (pt.x != -1) {
+					bool instant = (num == GHK_CENTER_ZOOM && this->viewport->zoom != ZOOM_LVL_MIN);
 					if (num == GHK_CENTER_ZOOM) MaxZoomInOut(ZOOM_IN, this);
-					ScrollMainWindowTo(pt.x, pt.y);
+					ScrollMainWindowTo(pt.x, pt.y, -1, instant);
 				}
 				break;
 			}
