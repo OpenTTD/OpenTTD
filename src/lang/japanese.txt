@@ -347,7 +347,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :OpenTTDを終�
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :ゲームオプションの設定
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :難易度の設定
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :拡張オプションの設定
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :追加機能の設定
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AIの設定。
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRFの設定
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明度の設定
@@ -697,21 +697,21 @@ STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}雪
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}地図での町名の表示／非表示を切り替えます。
-STR_SMALLMAP_CENTER                                             :{BLACK}ミニマップを現在の場所に移動します
+STR_SMALLMAP_CENTER                                             :{BLACK}ミニマップの画面を、メイン画面で表示している場所に移動します。
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}すべてを切
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}すべてを入
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}雪の高さ
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}地図に産業を示さないようにします
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}地図のぜんぶの産業を示す
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}ハイトマップを示すのをトグルします
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}会社の資産を非表示にします。
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}地図に全ての会社の資産を表示します。
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全て非表示
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}全て表示
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}標高を表示
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}全ての産業を非表示にします。
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}全ての産業を表示します。
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}標高別に色分けをするかどうかを切り替えます。
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}全ての会社の所有物を非表示にします。
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}全ての会社の所有物を表示します。
 
 # Status bar messages
-STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}最後のメッセージ／報道を表示します
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}最後のメッセージ／ニュースを表示します。
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}＊＊ポーズ＊＊
 STR_STATUSBAR_AUTOSAVE                                          :{RED}自動保存

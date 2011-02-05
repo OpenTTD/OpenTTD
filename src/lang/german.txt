@@ -1028,6 +1028,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Toleran
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Keine
+STR_FUNDING_ONLY                                                :Nur durch Spieler
+STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Sehr niedrig
 STR_NUM_LOW                                                     :Niedrig
 STR_NUM_NORMAL                                                  :Normal
@@ -1095,6 +1097,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Das Bau
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Landschaftsbau unter Gebäuden, Gleisen, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Verschiedene Stationstypen haben unterschiedlich große Einzugsgebiete: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Entfernung von weiteren Straßen, Brücken, usw. erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximale Länge von Zügen: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Menge an Rauch / Funken von Lokomotiven: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Keine
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1113,6 +1116,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Verbess
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Fahrzeuge schrittweise beladen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Industrien beliefern nur Stationen mit passendem Transport: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maximale Brückenlänge: {ORANGE}{STRING} Feld{P 0:1 "" er}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maximale Tunnellänge: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manueller Bau von Rohstoffindustrien: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nicht erlaubt
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Wie andere Industrien
@@ -1130,6 +1135,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Fahrzeu
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Spielfeld scrollen, wenn die Maus am Bildrand anstößt: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Bestechen der Stadtverwaltung erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Den Erwerb exklusiver Transportrechte erlauben: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Finanzierung von Straßenbauarbeiten erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Schenken von Geld an andere Firmen erlauben: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen, um schwere Züge zu simulieren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor für Geschwindigkeit von Flugzeugen: {ORANGE}1 / {STRING}
@@ -1354,6 +1360,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :OPF {BLUE}(empfohlen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(nicht empfohlen)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatisches Umdrehen an Signalen: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Wert der Einstellung ändern
 
@@ -3252,6 +3259,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Umladen und le
 STR_ORDER_NO_UNLOAD                                             :(Nicht entladen, aber laden)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nicht entladen, aber auf volle Ladung warten)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nicht entladen, aber voll beladen mit beliebiger Fracht)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Kein Entladen und kein Laden)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[am Anfang]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[in der Mitte]
@@ -3667,6 +3675,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Der Tunn
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Ein anderer Tunnel ist im Weg
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel würde außerhalb des Spielfelds enden
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Land kann am anderen Ende des Tunnels nicht angehoben werden
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... Tunnel zu lang
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... zu viele Objekte

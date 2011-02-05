@@ -1289,6 +1289,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dozvolj
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dozvoljena izmena nagiba ispod zgrada, koloseka, itd. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Realističnije veličine prihvatnih površina: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dozvoljeno uklanjanje više gradskih kolovoza, mostova i tunela: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Najveća dužina vozova: {ORANGE}{STRING} pločic{P 0:1 a e a}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/varnica vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nema
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originalna
@@ -1307,6 +1308,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Koristi
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Postepeno utovarivanje u vozilo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostavljanje tovara na stanicu samo ako ima potražnje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Najveća dužina mosta: {ORANGE}{STRING} pločic{P 0:1 a e a}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Najveća dužina tunela: {ORANGE}{STRING} pločic{P 0:1 a e a}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metod izgradnje finansiranih primarnih industrija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nikakav
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :uobičajan
@@ -1548,6 +1551,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pretra�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Originalno {BLUE}(Preporučuje se)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nepreporučuje se)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatska promena smera kod signalizacije: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Promena vrednosti
 
@@ -3459,9 +3463,10 @@ STR_ORDER_TRANSFER                                              :(Prevoz i utova
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Prevoz i pun utovar svega)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Prevoz i pun utovar bilo kog)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Prevoz bez utovara)
-STR_ORDER_NO_UNLOAD                                             :(Bez istovara utovar)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Bez istovara i pun utovar svega)
+STR_ORDER_NO_UNLOAD                                             :(Bez istovara i utovar)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Bez istovara i pun utovar)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Bez istovara i pun utovar bilo kog)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Bez istovara i bez utovara)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[pri početku]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[na sredini]
@@ -3803,7 +3808,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... mora
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vozovi se mogu izmeniti samo kada su zaustavljeni u depou
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Voz je predugačak
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Voz ne može da promeni smer...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ne može se okrenuti vozilo od više delova
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... sastoji se od više jedinica
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Različite vrste železnice
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ne može se ukloniti vozilo...
@@ -3877,6 +3882,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Potrebno
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Drugi tunel je na putu
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel bi završio van okvira terena
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nije moguće iskopati drugi kraj tunela
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel je predugačak
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... ima previše objekata

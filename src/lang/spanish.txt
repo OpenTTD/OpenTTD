@@ -1028,6 +1028,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Actitud
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Ninguno
+STR_FUNDING_ONLY                                                :Solo fundadas
+STR_MINIMAL                                                     :Mínimo
 STR_NUM_VERY_LOW                                                :Muy Bajo
 STR_NUM_LOW                                                     :Bajo
 STR_NUM_NORMAL                                                  :Normal
@@ -1133,6 +1135,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cola de
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Desplazar ventana mediante el cursor en los bordes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir sobornos a la autoridad local: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permitir comprar derechos de transporte exclusivos: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permitir pagar la reconstrucción de las carreteras locales: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir enviar dinero a otras empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Carga el multiplicador de peso para simular trenes pesados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor velocidad avión: {ORANGE}1 / {STRING}
@@ -3555,7 +3558,7 @@ STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... las 
 STR_ERROR_CAN_T_REMOVE_PART_OF_STATION                          :{WHITE}No se puede retirar parte de la estación...
 STR_ERROR_MUST_REMOVE_RAILWAY_STATION_FIRST                     :{WHITE}Debes retirar la estación de trenes primero
 STR_ERROR_CAN_T_REMOVE_BUS_STATION                              :{WHITE}No se puede retirar estación de bus...
-STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}No se puede quitar la estación de camiones...
+STR_ERROR_CAN_T_REMOVE_TRUCK_STATION                            :{WHITE}No se puede quitar estación de camiones...
 STR_ERROR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                   :{WHITE}No se puede quitar estación de tranvía de pasajeros...
 STR_ERROR_CAN_T_REMOVE_CARGO_TRAM_STATION                       :{WHITE}No se puede quitar estación de tranvía de carga...
 STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Primero debe retirar la parada
@@ -3598,7 +3601,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... debe
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Los trenes únicamente pueden ser modificarse estando detenidos dentro de un depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren demasiado largo
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}No se puede invertir dirección del vehículo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}No se pude dar la vuelta a un vehículo compuesto por múltiples unidades...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... vehículo compuesto por múltiples unidades
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipo de ferrocarril incompatible
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}No se puede mover vehículo...

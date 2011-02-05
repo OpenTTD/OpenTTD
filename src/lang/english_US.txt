@@ -1027,6 +1027,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}City co
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :None
+STR_FUNDING_ONLY                                                :Funding only
+STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Very Low
 STR_NUM_LOW                                                     :Low
 STR_NUM_NORMAL                                                  :Normal
@@ -1132,6 +1134,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Road ve
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Allow buying exclusive transport rights: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Allow funding local road reconstruction: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Allow sending money to other companies: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Plane speed factor: {ORANGE}1 / {STRING}

@@ -1411,6 +1411,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Даз�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Дазволіць зьмену ляндшафту пад будынкамі, дарогамі й г. д. (аўтаспускі): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Зона пакрыцьця залежыць ад тыпу станцыі: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Дазволіць знос амаль усіх гарадзкіх аб'ектаў: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Макс. даўжыня цягнiкоў: {ORANGE}{STRING} клет{P 0:1 ка кi ак}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Колькасць дыму/іскраў у лакаматываў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :няма
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :арыгiнальная
@@ -1429,6 +1430,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Вык�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Паступовая загрузка транспарту: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Уключыць інфляцыю: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Пастаўляць груз на станцыю, толькі калі на яго быў попыт: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Макс. даўжыня мастоў: {ORANGE}{STRING} клет{P 0:1 ка кi ак}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Макс. даўжыня тунэляў: {ORANGE}{STRING} клет{P 0:1 ка кi ак}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Мэтад стварэньня сыравінных прадпрыемстваў: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :не ствараць
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :як i iншыя
@@ -1670,6 +1673,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Аль�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :арыгінальны {BLUE}(рэкамендуецца)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(не рэкамэндуецца)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Аўтаматычны разварот перад сыгналамi: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Зьмяніць значэньне
 
@@ -3608,6 +3612,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Перадац
 STR_ORDER_NO_UNLOAD                                             :(Не разгружацца й забраць груз)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Не разгружацца й чакаць поўнай загрузкі)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не разгружацца й чакаць поўнай загрузкі любым грузам)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Не разгружацца й не грузiцца)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[пачатак станцыi]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[сярэдзiна станцыi]
@@ -4023,6 +4028,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Спач
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Іншы тунэль на шляху
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Тунэль заканчваецца па-за межамі мапы
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Немагчыма падняць/апусьціць зямлю для іншага канца тунэля
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... тунэль занадта доўгi
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... занадта шмат аб'ектаў

@@ -1470,10 +1470,11 @@ STR_CONFIG_SETTING_CAPTION                                      :{WHITE}Ustawien
 STR_CONFIG_SETTING_OFF                                          :wył.
 STR_CONFIG_SETTING_ON                                           :wł.
 STR_CONFIG_SETTING_DISABLED                                     :niedostępne
-STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Pozwól budować na pochyłościach i wybrzeżach: {ORANGE}{STRING}
+STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Pozwól budować na pochyłym terenie i wybrzeżach: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Pozwól na zmiany terenu pod budynkami, torami itp. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Pozwól na bardziej realistyczny zasięg obejmowania: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Pozwól usuwać drogi, mosty, tunele, itp. należące do miasta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksymalna długość pociągów: {ORANGE}{STRING} p{P ole ola ól}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Ilość dymu / iskier lokomotywy: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :brak
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :oryginalnie
@@ -1492,6 +1493,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Użyj u
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Stopniowy załadunek pojazdów: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostarcz ładunek na stację tylko jeśli jest zapotrzebowanie: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksymalna długość mostu: {ORANGE}{STRING} p{P ole ola ól}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksymalna długość tunelu: {ORANGE}{STRING} p{P ole ola ól}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Budowa przedsiębiorstw wydobywczych: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :budowa niedostępna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :jak inne przedsiębiorstwa
@@ -1710,7 +1713,7 @@ STR_CONFIG_SETTING_CONSTRUCTION                                 :{ORANGE}Konstru
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Pojazdy
 STR_CONFIG_SETTING_STATIONS                                     :{ORANGE}Stacje
 STR_CONFIG_SETTING_ECONOMY                                      :{ORANGE}Ekonomia
-STR_CONFIG_SETTING_AI                                           :{ORANGE}Zawodnicy
+STR_CONFIG_SETTING_AI                                           :{ORANGE}Rywale
 STR_CONFIG_SETTING_DISPLAY_OPTIONS                              :{ORANGE}Opcje wyświetlania
 STR_CONFIG_SETTING_INTERACTION                                  :{ORANGE}Interakcja
 STR_CONFIG_SETTING_CONSTRUCTION_SIGNALS                         :{ORANGE}Sygnały
@@ -1733,6 +1736,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Wytycza
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Oryginalne {BLUE}(Zalecane)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nie zalecane)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatycznie zawracaj przy sygnałach: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmiana wartości
 
@@ -1954,7 +1958,7 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Przyłą
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Odśwież serwer
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Odśwież informacje o serwerze
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Szukanie serwera
+STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Znajdź serwery
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Przeszukuje sieć w poszukiwaniu serwera
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj serwer
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaj serwer do listy, która będzie przeszukiwana w poszukiwaniu uruchomionych gier
@@ -2190,7 +2194,7 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serwer z
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Restart serwera...{}Proszę czekać...
 
 # Content downloading window
-STR_CONTENT_TITLE                                               :{WHITE}Pobieranie dodatkowej zawartości
+STR_CONTENT_TITLE                                               :{WHITE}Przeglądarka dodatkowej zawartości
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
 STR_CONTENT_TYPE_CAPTION_TOOLTIP                                :{BLACK}Rodzaj zawartości
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nazwa
@@ -2204,14 +2208,14 @@ STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznacz 
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Zaznacz całą zawartość, aby nie była pobrana
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtr etykiety/nazwy:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Pobierz
-STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Rozpocznij ściąganie zaznaczonych danych
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Rozpocznij pobieranie zaznaczonych danych
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Całkowity rozmiar: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}OPIS ZAWARTOŚCI
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Ten dodatek nie został wybrany do pobrania
-STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}To zostało wybrane do ściągnięcia
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ta zależność została wybrana do ściągnięcia
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dodatek ten został wybrany do pobrania
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Zależność ta została wybrana do pobrania
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Już to posiadasz
-STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Te dane są nieznane i nie mogą być ściągnięte przez OpenTTD
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ta zawartość jest nieznana i nie może zostać pobrana do OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}To jest zamiennik dla istniejącego {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nazwa: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Wersja: {WHITE}{STRING}
@@ -2236,11 +2240,11 @@ STR_CONTENT_TYPE_BASE_SOUNDS                                    :Podstawowe dźw
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Podstawowa muzyka
 
 # Content downloading progress window
-STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Ściąganie...
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Pobieranie dodatkowej zawartości...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Żądanie plików...
-STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Obecnie ściągane {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Aktualnie pobierane {STRING} ({NUM} z {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Pobieranie ukończone
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}Ściągnięto {BYTES} z {BYTES} ({NUM} %)
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}Pobrano {BYTES} z {BYTES} ({NUM} %)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nie można połączyć do serwera dodatków...
@@ -2735,7 +2739,7 @@ STR_GENERATION_WORLD                                            :{WHITE}Tworzeni
 STR_GENERATION_ABORT                                            :{BLACK}Przerwij
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Przerwij tworzenie świata
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Czy na pewno chcesz przerwać tworzenie?
-STR_GENERATION_PROGRESS                                         :{WHITE}gotowe w {NUM} %
+STR_GENERATION_PROGRESS                                         :{WHITE}Ukończono w {NUM} %
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Tworzenie świata
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Tworzenie drzew
@@ -2779,10 +2783,10 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Znajdź 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Sprawdź czy zagubiony dodatek może być znaleziony online
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Nazwa pliku: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}Identyfikator GRF: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Wersja: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Kompatybilność z wersją min.: {SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}suma MD5: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}Suma MD5: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametry: {SILVER}{STRING}
 
@@ -3637,6 +3641,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Przeładuj i p
 STR_ORDER_NO_UNLOAD                                             :(Nie rozładowuj i weź ładunek)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozładowuj i czekaj na pełen załadunek)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozładowuj i czekaj na pełen załadunek któregoś z towarów)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Nie rozładowuj i nie ładuj)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[bliższy koniec]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[środek]
@@ -3877,7 +3882,7 @@ STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Nie moż
 STR_ERROR_PROTECTED                                             :{WHITE}Ta firma jeszcze nie sprzedaje akcji...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nie można wybudować żadnego miasta
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nie można wybudować miasta
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Nie można zmienić nazwy miasta...
 STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Nie można tutaj zbudować miasta...
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Nie można rozszerzyć miasta...
@@ -4052,6 +4057,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Należy 
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Inny tunel na drodze
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Koniec tunelu poza mapą
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nie można wydrążyć drugiego końca tunelu
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel jest za długi
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... zbyt wiele obiektów

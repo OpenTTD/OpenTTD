@@ -1109,6 +1109,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Postoj 
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :žádný
+STR_FUNDING_ONLY                                                :Pouze dotace
+STR_MINIMAL                                                     :Nejmenší
 STR_NUM_VERY_LOW                                                :velmi nízké
 STR_NUM_LOW                                                     :nízké
 STR_NUM_NORMAL                                                  :střední
@@ -1214,6 +1216,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Silnič
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Posouvat okno, když je kurzor na okraji: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Povolit úplatek místní správě: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Umožnit kupování výhradních přepravních práv: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Povolit dotování rekonstrukce místních silnic: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Umožnit zasílání peněz ostatním společnostem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Pro simulaci těžkých vlaků vynásobit hmotnost nákladu: {ORANGE}{STRING}x
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Činitel rychlosti letadel: {ORANGE}1/{STRING}
@@ -3691,7 +3694,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... mus�
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaky lze měnit, jen když stojí v depu
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Příliš dlouhý vlak
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nelze otočit vozidlo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nelze otáčet vozidla složená z více strojů...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... se skládá z několika vozů
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Neslučitelné druhy kolejí
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nelze přesunout vozidlo...
