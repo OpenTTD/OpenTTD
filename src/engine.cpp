@@ -29,6 +29,7 @@
 #include "engine_func.h"
 #include "engine_base.h"
 #include "company_base.h"
+#include "vehicle_func.h"
 
 #include "table/strings.h"
 #include "table/engines.h"
@@ -427,6 +428,25 @@ EngineID EngineOverrideManager::GetID(VehicleType type, uint16 grf_local_id, uin
 		}
 	}
 	return INVALID_ENGINE;
+}
+
+/**
+ * Tries to reset the engine mapping to match the current NewGRF configuration.
+ * This is only possible when there are currently no vehicles in the game.
+ * @return false if resetting failed due to present vehicles.
+ */
+bool EngineOverrideManager::ResetToCurrentNewGRFConfig()
+{
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (IsCompanyBuildableVehicleType(v)) return false;
+	}
+
+	/* Reset the engines, they will get new EngineIDs */
+	_engine_mngr.ResetToDefaultMapping();
+	ReloadNewGRFData();
+
+	return true;
 }
 
 /**

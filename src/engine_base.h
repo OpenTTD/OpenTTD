@@ -114,6 +114,8 @@ struct EngineOverrideManager : SmallVector<EngineIDMapping, 256> {
 
 	void ResetToDefaultMapping();
 	EngineID GetID(VehicleType type, uint16 grf_local_id, uint32 grfid);
+
+	static bool ResetToCurrentNewGRFConfig();
 };
 
 extern EngineOverrideManager _engine_mngr;
