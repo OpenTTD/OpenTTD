@@ -143,7 +143,9 @@ public:
 
 	virtual void OnMouseWheel(int wheel)
 	{
-		ZoomInOrOutToCursorWindow(wheel < 0, this);
+		if (_settings_client.gui.scrollwheel_scrolling == 0) {
+			ZoomInOrOutToCursorWindow(wheel < 0, this);
+		}
 	}
 
 	virtual void OnInvalidateData(int data = 0)

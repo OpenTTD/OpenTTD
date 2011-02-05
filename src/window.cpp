@@ -2184,10 +2184,8 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	if (vp != NULL && (_game_mode == GM_MENU || IsGeneratingWorld())) return;
 
 	if (mousewheel != 0) {
-		if (_settings_client.gui.scrollwheel_scrolling == 0) {
-			/* Send mousewheel event to window */
-			w->OnMouseWheel(mousewheel);
-		}
+		/* Send mousewheel event to window */
+		w->OnMouseWheel(mousewheel);
 
 		/* Dispatch a MouseWheelEvent for widgets if it is not a viewport */
 		if (vp == NULL) DispatchMouseWheelEvent(w, w->nested_root->GetWidgetFromPos(x - w->left, y - w->top), mousewheel);
