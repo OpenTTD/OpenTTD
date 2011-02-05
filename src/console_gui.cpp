@@ -177,7 +177,7 @@ struct IConsoleWindow : Window
 	IConsoleWindow() : Window()
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
-		this->line_height = FONT_HEIGHT_NORMAL;
+		this->line_height = FONT_HEIGHT_NORMAL + ICON_LINE_SPACING;
 		this->line_offset = GetStringBoundingBox("] ").width + 5;
 
 		this->InitNested(&_console_window_desc, 0);
@@ -194,7 +194,7 @@ struct IConsoleWindow : Window
 		const int right = this->width - 5;
 
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0);
-		int ypos = this->height - this->line_height - ICON_LINE_SPACING;
+		int ypos = this->height - this->line_height;
 		for (const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll); print != NULL; print = print->previous) {
 			SetDParamStr(0, print->buffer);
 			ypos = DrawStringMultiLine(5, right, 0, ypos, STR_JUST_RAW_STRING, print->colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - ICON_LINE_SPACING;
