@@ -342,6 +342,11 @@ struct IConsoleWindow : Window
 		}
 		return ES_HANDLED;
 	}
+
+	virtual void OnMouseWheel(int wheel)
+	{
+		this->Scroll(-wheel);
+	}
 };
 
 int IConsoleWindow::scroll = 0;
