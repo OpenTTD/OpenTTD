@@ -484,7 +484,7 @@ private:
 	};
 
 	int selected_order;
-	OrderID order_over;     ///< Order over which another order is dragged, \c INVALID_ORDER if none.
+	VehicleOrderID order_over;         ///< Order over which another order is dragged, \c INVALID_VEH_ORDER_ID if none.
 	OrderPlaceObjectState goto_type;
 	const Vehicle *vehicle; ///< Vehicle owning the orders being displayed and manipulated.
 	Scrollbar *vscroll;
@@ -494,7 +494,7 @@ private:
 	 * @return the memorised order if it is a vaild one
 	 *  else return the number of orders
 	 */
-	int OrderGetSel() const
+	VehicleOrderID OrderGetSel() const
 	{
 		int num = this->selected_order;
 		return (num >= 0 && num < vehicle->GetNumOrders()) ? num : vehicle->GetNumOrders();
@@ -506,18 +506,18 @@ private:
 	 *  the position of the scrollbar.
 	 *
 	 * @param y Y-value of the click relative to the window origin
-	 * @return The selected order if the order is valid, else return \c INVALID_ORDER.
+	 * @return The selected order if the order is valid, else return \c INVALID_VEH_ORDER_ID.
 	 */
-	int GetOrderFromPt(int y)
+	VehicleOrderID GetOrderFromPt(int y)
 	{
 		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(ORDER_WIDGET_ORDER_LIST);
 		int sel = (y - nwid->pos_y - WD_FRAMERECT_TOP) / nwid->resize_y; // Selected line in the ORDER_WIDGET_ORDER_LIST panel.
 
-		if ((uint)sel >= this->vscroll->GetCapacity()) return INVALID_ORDER;
+		if ((uint)sel >= this->vscroll->GetCapacity()) return INVALID_VEH_ORDER_ID;
 
 		sel += this->vscroll->GetPosition();
 
-		return (sel <= vehicle->GetNumOrders() && sel >= 0) ? sel : INVALID_ORDER;
+		return (sel <= vehicle->GetNumOrders() && sel >= 0) ? sel : INVALID_VEH_ORDER_ID;
 	}
 
 	/**
@@ -757,7 +757,7 @@ public:
 		this->FinishInitNested(desc, v->index);
 
 		this->selected_order = -1;
-		this->order_over = INVALID_ORDER;
+		this->order_over = INVALID_VEH_ORDER_ID;
 		this->owner = v->owner;
 
 		if (_settings_client.gui.quick_goto && v->owner == _local_company) {
@@ -872,7 +872,7 @@ public:
 		if (this->vehicle->owner != _local_company) return; // No buttons are displayed with competitor order windows.
 
 		bool shared_orders = this->vehicle->IsOrderListShared();
-		int sel = this->OrderGetSel();
+		VehicleOrderID sel = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel);
 
 		/* Second row. */
@@ -1032,7 +1032,7 @@ public:
 		int i = this->vscroll->GetPosition();
 		const Order *order = this->vehicle->GetOrder(i);
 		/* First draw the highlighting underground if it exists. */
-		if (this->order_over != INVALID_ORDER) {
+		if (this->order_over != INVALID_VEH_ORDER_ID) {
 			while (order != NULL) {
 				/* Don't draw anything if it extends past the end of the window. */
 				if (!this->vscroll->IsVisible(i)) break;
@@ -1079,7 +1079,7 @@ public:
 	{
 		switch (widget) {
 			case ORDER_WIDGET_COND_VALUE: {
-				int sel = this->OrderGetSel();
+				VehicleOrderID sel = this->OrderGetSel();
 				const Order *order = this->vehicle->GetOrder(sel);
 
 				if (order != NULL && order->IsType(OT_CONDITIONAL)) {
@@ -1102,8 +1102,8 @@ public:
 			case ORDER_WIDGET_ORDER_LIST: {
 				if (this->goto_type == OPOS_CONDITIONAL) {
 					this->goto_type = OPOS_GOTO;
-					int order_id = this->GetOrderFromPt(_cursor.pos.y - this->top);
-					if (order_id != INVALID_ORDER) {
+					VehicleOrderID order_id = this->GetOrderFromPt(_cursor.pos.y - this->top);
+					if (order_id != INVALID_VEH_ORDER_ID) {
 						Order order;
 						order.next = NULL;
 						order.index = 0;
@@ -1115,7 +1115,7 @@ public:
 					break;
 				}
 
-				int sel = this->GetOrderFromPt(pt.y);
+				VehicleOrderID sel = this->GetOrderFromPt(pt.y);
 
 				if (_ctrl_pressed && sel < this->vehicle->GetNumOrders()) {
 					TileIndex xy = this->vehicle->GetOrder(sel)->GetLocation(this->vehicle);
@@ -1127,7 +1127,7 @@ public:
 				this->DeleteChildWindows();
 				HideDropDownMenu(this);
 
-				if (sel == INVALID_ORDER || this->vehicle->owner != _local_company) {
+				if (sel == INVALID_VEH_ORDER_ID || this->vehicle->owner != _local_company) {
 					/* Deselect clicked order */
 					this->selected_order = -1;
 				} else if (sel == this->selected_order) {
@@ -1302,10 +1302,10 @@ public:
 	{
 		switch (widget) {
 			case ORDER_WIDGET_ORDER_LIST: {
-				int from_order = this->OrderGetSel();
-				int to_order = this->GetOrderFromPt(pt.y);
+				VehicleOrderID from_order = this->OrderGetSel();
+				VehicleOrderID to_order = this->GetOrderFromPt(pt.y);
 
-				if (!(from_order == to_order || from_order == INVALID_ORDER || from_order > this->vehicle->GetNumOrders() || to_order == INVALID_ORDER || to_order > this->vehicle->GetNumOrders()) &&
+				if (!(from_order == to_order || from_order == INVALID_VEH_ORDER_ID || from_order > this->vehicle->GetNumOrders() || to_order == INVALID_VEH_ORDER_ID || to_order > this->vehicle->GetNumOrders()) &&
 						DoCommandP(this->vehicle->tile, this->vehicle->index, from_order | (to_order << 16), CMD_MOVE_ORDER | CMD_MSG(STR_ERROR_CAN_T_MOVE_THIS_ORDER))) {
 					this->selected_order = -1;
 					this->UpdateButtonState();
@@ -1324,16 +1324,15 @@ public:
 
 		ResetObjectToPlace();
 
-		if (this->order_over != INVALID_ORDER) {
+		if (this->order_over != INVALID_VEH_ORDER_ID) {
 			/* End of drag-and-drop, hide dragged order destination highlight. */
-			this->order_over = INVALID_ORDER;
+			this->order_over = INVALID_VEH_ORDER_ID;
 			this->SetWidgetDirty(ORDER_WIDGET_ORDER_LIST);
 		}
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-
 		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
 		return CheckHotkeyMatch<OrdersWindow>(order_hotkeys, keycode, this) != -1 ? ES_HANDLED : ES_NOT_HANDLED;
@@ -1375,8 +1374,8 @@ public:
 		this->SetWidgetDirty(ORDER_WIDGET_GOTO);
 
 		/* Remove drag highlighting if it exists. */
-		if (this->order_over != INVALID_ORDER) {
-			this->order_over = INVALID_ORDER;
+		if (this->order_over != INVALID_VEH_ORDER_ID) {
+			this->order_over = INVALID_VEH_ORDER_ID;
 			this->SetWidgetDirty(ORDER_WIDGET_ORDER_LIST);
 		}
 	}
@@ -1385,16 +1384,16 @@ public:
 	{
 		if (this->selected_order != -1 && widget == ORDER_WIDGET_ORDER_LIST) {
 			/* An order is dragged.. */
-			OrderID from_order = this->OrderGetSel();
-			OrderID to_order = this->GetOrderFromPt(pt.y);
+			VehicleOrderID from_order = this->OrderGetSel();
+			VehicleOrderID to_order = this->GetOrderFromPt(pt.y);
 			uint num_orders = this->vehicle->GetNumOrders();
 
-			if (from_order != INVALID_ORDER && from_order <= num_orders) {
-				if (to_order != INVALID_ORDER && to_order <= num_orders) { // ..over an existing order.
+			if (from_order != INVALID_VEH_ORDER_ID && from_order <= num_orders) {
+				if (to_order != INVALID_VEH_ORDER_ID && to_order <= num_orders) { // ..over an existing order.
 					this->order_over = to_order;
 					this->SetWidgetDirty(widget);
-				} else if (from_order != to_order && this->order_over != INVALID_ORDER) { // ..outside of the order list.
-					this->order_over = INVALID_ORDER;
+				} else if (from_order != to_order && this->order_over != INVALID_VEH_ORDER_ID) { // ..outside of the order list.
+					this->order_over = INVALID_VEH_ORDER_ID;
 					this->SetWidgetDirty(widget);
 				}
 			}
