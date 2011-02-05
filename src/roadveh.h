@@ -90,7 +90,7 @@ struct RoadVehicle : public GroundVehicle<RoadVehicle, VEH_ROAD> {
 	uint16 blocked_ctr;
 	byte overtaking;        ///< Set to #RVSB_DRIVE_SIDE when overtaking, otherwise 0.
 	byte overtaking_ctr;    ///< The length of the current overtake attempt.
-	uint16 crashed_ctr;
+	uint16 crashed_ctr;     ///< Animation counter when the vehicle has crashed. @see RoadVehIsCrashed
 	byte reverse_ctr;
 
 	RoadType roadtype;

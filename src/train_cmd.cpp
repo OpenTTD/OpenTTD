@@ -3299,6 +3299,10 @@ static void DeleteLastWagon(Train *v)
 	}
 }
 
+/**
+ * Rotate all vehicles of a (crashed) train chain randomly to animate the crash.
+ * @param v First crashed vehicle.
+ */
 static void ChangeTrainDirRandomly(Train *v)
 {
 	static const DirDiff delta[] = {
@@ -3319,6 +3323,11 @@ static void ChangeTrainDirRandomly(Train *v)
 	} while ((v = v->Next()) != NULL);
 }
 
+/**
+ * Handle a crashed train.
+ * @param v First train vehicle.
+ * @return %Vehicle chain still exists.
+ */
 static bool HandleCrashedTrain(Train *v)
 {
 	int state = ++v->crash_anim_pos;
