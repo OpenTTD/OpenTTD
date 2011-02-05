@@ -285,13 +285,16 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 /*  use INVALID_OWNER as new_owner to delete the company. */
 void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 {
+	/* We need to set _current_company to old_owner before we try to move
+	 * the client. This is needed as it needs to know whether "you" really
+	 * are the current local company. */
+	Backup<CompanyByte> cur_company(_current_company, old_owner, FILE_LINE);
 #ifdef ENABLE_NETWORK
 	/* In all cases, make spectators of clients connected to that company */
 	if (_networking) NetworkClientsToSpectators(old_owner);
 #endif /* ENABLE_NETWORK */
 
 	Town *t;
-	Backup<CompanyByte> cur_company(_current_company, old_owner, FILE_LINE);
 
 	assert(old_owner != new_owner);
 
@@ -520,8 +523,16 @@ static void CompanyCheckBankrupt(Company *c)
 				break;
 			}
 
-			/* Actually remove the company. */
-			DoCommand(0, 2 | (c->index << 16), 0, DC_EXEC, CMD_COMPANY_CTRL);
+			/* Actually remove the company, but not when we're a network client.
+			 * In case of network clients we will be getting a command from the
+			 * server. It is done in this way as we are called from the
+			 * StateGameLoop which can't change the current company, and thus
+			 * updating the local company triggers an assert later on. In the
+			 * case of a network game the command will be processed at a time
+			 * that changing the current company is okay. In case of single
+			 * player we are sure (the above check) that we are not the local
+			 * company and thus we won't be moved. */
+			if (!_networking || _network_server) DoCommandP(0, 2 | (c->index << 16), 0, CMD_COMPANY_CTRL);
 			break;
 	}
 }
