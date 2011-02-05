@@ -451,6 +451,7 @@ const SettingDesc _settings[] = {
 	SDT_CONDNULL(                                                            1,  0, 140),
 	    SDT_BOOL(GameSettings, economy.bribe,                                                       0, 0,  true,                    STR_CONFIG_SETTING_BRIBE,                  RedrawTownAuthority),
 	SDT_CONDBOOL(GameSettings, economy.exclusive_rights,                        79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_EXCLUSIVE,        RedrawTownAuthority),
+	SDT_CONDBOOL(GameSettings, economy.fund_roads,                             160, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_FUND_ROAD,        RedrawTownAuthority),
 	SDT_CONDBOOL(GameSettings, economy.give_money,                              79, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_SETTING_ALLOW_GIVE_MONEY,       NULL),
 	     SDT_VAR(GameSettings, game_creation.snow_line_height,       SLE_UINT8,                     0, 0, DEF_SNOWLINE_HEIGHT, MIN_SNOWLINE_HEIGHT, MAX_SNOWLINE_HEIGHT, 0, STR_CONFIG_SETTING_SNOWLINE_HEIGHT, NULL),
 	SDT_CONDNULL(                                                            4,  0, 143),
