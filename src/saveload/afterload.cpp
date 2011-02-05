@@ -2561,6 +2561,14 @@ bool AfterLoadGame()
 		_settings_game.pf.reverse_at_signals = IsSavegameVersionBefore(100) || (_settings_game.pf.wait_oneway_signal != 255 && _settings_game.pf.wait_twoway_signal != 255 && _settings_game.pf.wait_for_pbs_path != 255);
 	}
 
+	if (IsSavegameVersionBefore(160)) {
+		/* Setting difficulty number_industries other than zero get bumped to +1
+		 * since a new option (very low at position1) has been added */
+		if (_settings_game.difficulty.number_industries > 0) {
+			_settings_game.difficulty.number_industries++;
+		}
+	}
+
 	/* Road stops is 'only' updating some caches */
 	AfterLoadRoadStops();
 	AfterLoadLabelMaps();

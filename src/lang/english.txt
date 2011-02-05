@@ -1027,6 +1027,7 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}City co
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :None
+STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Very Low
 STR_NUM_LOW                                                     :Low
 STR_NUM_NORMAL                                                  :Normal
