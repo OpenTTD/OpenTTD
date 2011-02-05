@@ -193,12 +193,12 @@ struct IConsoleWindow : Window
 	{
 		const int right = this->width - 5;
 
-		GfxFillRect(this->left, this->top, this->width, this->height - 1, 0);
+		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0);
 		int ypos = this->height - this->line_height - ICON_LINE_SPACING;
 		for (const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll); print != NULL; print = print->previous) {
 			SetDParamStr(0, print->buffer);
-			ypos = DrawStringMultiLine(5, right, top, ypos, STR_JUST_RAW_STRING, print->colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - ICON_LINE_SPACING;
-			if (ypos <= top) break;
+			ypos = DrawStringMultiLine(5, right, 0, ypos, STR_JUST_RAW_STRING, print->colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - ICON_LINE_SPACING;
+			if (ypos <= 0) break;
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
 		int delta = this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH;
