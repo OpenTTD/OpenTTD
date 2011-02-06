@@ -6912,7 +6912,7 @@ static void InitializeGRFSpecial()
 	                   |                                                      (1 << 0x1E); // generalfixes
 
 	_ttdpatch_flags[1] =   ((_settings_game.economy.station_noise_level ? 1 : 0) << 0x07)  // moreairports - based on units of noise
-	                   |  ((_settings_game.vehicle.max_train_length > 5 ? 1 : 0) << 0x08)  // mammothtrains
+	                   |                                                      (1 << 0x08)  // mammothtrains
 	                   |                                                      (1 << 0x09)  // trainrefit
 	                   |                                                      (0 << 0x0B)  // subsidiaries
 	                   |         ((_settings_game.order.gradual_loading ? 1 : 0) << 0x0C)  // gradualloading
