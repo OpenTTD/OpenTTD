@@ -128,6 +128,7 @@ public:
 #endif /* !NO_DEBUG_MESSAGES */
 
 		Yapf().PfSetStartupNodes();
+		bool bDestFound = true;
 
 		while (true) {
 			m_num_steps++;
@@ -146,12 +147,12 @@ public:
 				m_nodes.PopOpenNode(n->GetKey());
 				m_nodes.InsertClosedNode(*n);
 			} else {
-				m_pBestDestNode = m_pBestIntermediateNode;
+				bDestFound = false;
 				break;
 			}
 		}
 
-		bool bDestFound = (m_pBestDestNode != NULL) && (m_pBestDestNode != m_pBestIntermediateNode);
+		bDestFound &= (m_pBestDestNode != NULL);
 
 #ifndef NO_DEBUG_MESSAGES
 		perf.Stop();
