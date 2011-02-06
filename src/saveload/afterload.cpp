@@ -1448,10 +1448,10 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(58)) {
-		/* Setting difficulty number_industries other than zero get bumped to +1
-		 * since a new option (very low at position1) has been added */
-		if (_settings_game.difficulty.number_industries > 0) {
-			_settings_game.difficulty.number_industries++;
+		/* Setting difficulty industry_density other than zero get bumped to +1
+		 * since a new option (very low at position 1) has been added */
+		if (_settings_game.difficulty.industry_density > 0) {
+			_settings_game.difficulty.industry_density++;
 		}
 
 		/* Same goes for number of towns, although no test is needed, just an increment */
@@ -2563,10 +2563,10 @@ bool AfterLoadGame()
 	}
 
 	if (IsSavegameVersionBefore(160)) {
-		/* Setting difficulty number_industries other than zero get bumped to +1
-		 * since a new option (very low at position1) has been added */
-		if (_settings_game.difficulty.number_industries > 0) {
-			_settings_game.difficulty.number_industries++;
+		/* Setting difficulty industry_density other than zero get bumped to +1
+		 * since a new option (minimal at position 1) has been added */
+		if (_settings_game.difficulty.industry_density > 0) {
+			_settings_game.difficulty.industry_density++;
 		}
 	}
 

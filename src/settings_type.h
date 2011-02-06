@@ -35,7 +35,7 @@ enum IndustryDensity {
 struct DifficultySettings {
 	byte   max_no_competitors;               ///< the number of competitors (AIs)
 	byte   number_towns;                     ///< the amount of towns
-	byte   number_industries;                ///< The industry density. @see IndustryDensity
+	byte   industry_density;                 ///< The industry density. @see IndustryDensity
 	uint32 max_loan;                         ///< the maximum initial loan
 	byte   initial_interest;                 ///< amount of interest (to pay over the loan)
 	byte   vehicle_costs;                    ///< amount of money spent on vehicle running cost
