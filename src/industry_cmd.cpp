@@ -1903,7 +1903,7 @@ static uint GetNumberOfIndustries()
 	};
 
 	assert(_settings_game.difficulty.number_industries < lengthof(numof_industry_table));
-	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_industries : 1;
+	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_industries : 2;
 	return ScaleByMapSize(numof_industry_table[difficulty]);
 }
 
