@@ -810,10 +810,10 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on liian vähän käskyjä
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on virhe
-STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Ajoneuvolla {VEHICLE} on toistuvia määräyksiä
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Kulkuneuvon {VEHICLE} aikataulussa on virheellinen asema
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}Kulkuneuvolla {VEHICLE} on liian vähän käskyjä
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Kulkuneuvolla {VEHICLE} on virheellinen käsky
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Ajoneuvolla {VEHICLE} on toistuvia käskyjä
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Kulkuneuvon {VEHICLE} käskyissä on virheellinen asema
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} on tulossa vanhaksi
@@ -1125,7 +1125,7 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Tasaine
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :{LTBLUE}Kaupungissa voi olla useita samanlaisia teollisuustyyppejä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SIGNALSIDE                                   :{LTBLUE}Näytä opastimet ajokaistalla: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SHOWFINANCES                                 :{LTBLUE}Näytä rahoitusikkuna vuoden lopussa: {ORANGE}{STRING}
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Uudet määräykset ovat oletusarvoisesti nonstop-tyyppisiä: {ORANGE}{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :{LTBLUE}Uudet käskyt ovat oletusarvoisesti nonstop-tyyppisiä: {ORANGE}{STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :{LTBLUE}Uudet junien käskyt pysäyttävät junan aseman {ORANGE}{STRING}{LTBLUE}
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :loppuun
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskelle
@@ -2635,10 +2635,10 @@ STR_CARGO_RATING_OUTSTANDING                                    :Loistava
 STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Keskitä näkymä aseman sijaintiin. Ctrl+Klik avaa uuden näkymäikkunan aseman sijaintiin
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Muuta aseman nimi.
 
-STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Näytä kaikki junat, joilla on asema aikataulussaan.
-STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Näytä kaikki autot, joilla on asema aikataulussaan.
-STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Näytä kaikki lentokoneet, joilla on asema aikataulussaan.
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näytä kaikki laivat, joilla on asema aikataulussaan.
+STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Näytä kaikki junat, joilla on tämä asema käskyissään.
+STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Näytä kaikki autot, joilla on tämä asema käskyissään.
+STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Näytä kaikki lentokoneet, joilla on tämä asema käskyissään.
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Näytä kaikki laivat, joilla on tämä asema käskyissään.
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Nimeä asema/lastausalue
 
@@ -2784,7 +2784,7 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Lähetä variko
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Pysäytä kaikki listalla olevat kulkuneuvot klikkaamalla
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Käynnistä kaikki listalla olevat ajoneuvot klikkaamalla
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}{COMMA} ajoneuvon jaettu aikataulu
+STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}{COMMA} ajoneuvon jaetut käskyt
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Kaikki junat
@@ -3139,16 +3139,16 @@ STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Sovita l
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Sovita lentokone kuljettamaan valittua rahtityyppiä.
 
 # Order view
-STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (aikataulu)
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Käskyt)
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Aikataulu
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Näytä aikataulu
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Aikataulu - napsauta määräystä korostaaksesi sen. Ctrl+Klik siirtää näkymän kohteeseen
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Käskyt - napsauta käskyä korostaaksesi sen. Ctrl+Klik siirtää näkymän kohteeseen
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :- - Aikataulun loppu - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jaetun aikataulun loppu - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Käskyjen loppu - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jaettujen käskyjen loppu - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Nonstop
@@ -3156,21 +3156,21 @@ STR_ORDER_GO_TO                                                 :Mene
 STR_ORDER_GO_NON_STOP_TO                                        :Mene pysähtymättä
 STR_ORDER_GO_VIA                                                :Mene kautta
 STR_ORDER_GO_NON_STOP_VIA                                       :Mene pysähtymättä kautta
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Muuta korostetun määräyksen pysähtymiskäyttäytymistä
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Muuta korostetun käskyn pysähtymiskäyttäytymistä
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Lastaa täyteen mikä tahansa rahtityyppi
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lastaa jos saatavilla
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Lastaa täyteen kaikki rahtityypit
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Lastaa täyteen mikä tahansa rahtityyppi
 STR_ORDER_DROP_NO_LOADING                                       :Älä lastaa rahtia
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Muuta korostetun määräyksen lastauskäyttäytymistä
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Muuta korostetun käskyn lastauskäyttäytymistä
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Pura koko lasti
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Pura lasti, jos asema hyväksyy sitä
 STR_ORDER_DROP_UNLOAD                                           :Pura kaikki
 STR_ORDER_DROP_TRANSFER                                         :Siirrä
 STR_ORDER_DROP_NO_UNLOADING                                     :Ei rahdinpurkua
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Muuta korostetun määräyksen purkamiskäyttäytymistä
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Muuta korostetun käskyn purkamiskäyttäytymistä
 
 STR_ORDER_REFIT                                                 :{BLACK}Sovita
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Valitse mihin rahtityyppiin tämä käsky sovittaa. Ctrl+Klik poistaa sovituskäskyn
@@ -3179,7 +3179,7 @@ STR_ORDER_SERVICE                                               :{BLACK}Huolto
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mene aina
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Huolto, jos tarpeen
 STR_ORDER_DROP_HALT_DEPOT                                       :Pysähdy
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ohita tämä määräys, ellei palvelua tarvita.
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Ohita tämä käsky, ellei palvelua tarvita.
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Kulkuneuvon tiedot, joiden perusteella hypätään
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Lastin prosentuaalinen määrä
@@ -3203,23 +3203,23 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Arvo, jo
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Syötä arvo, johon verrataan
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Ohita
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Ohita nykyinen pysähdys ja aloita seuraava. Ctrl+Klik hyppää valittuun määräykseen
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Ohita nykyinen käsky ja aloita seuraava. Ctrl+Klik hyppää valittuun käskyyn
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Poista
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Poista korostettu määräys.
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Poista kaikki määräykset
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Poista korostettu käsky
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Poista kaikki käskyt
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Lopeta jakaminen
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Lopeta määräysten jakaminen. Ctrl+Klik poistaa lisäksi kaikki tämän kulkuneuvon määräykset
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Lopeta käskyjen jakaminen. Ctrl+Klik poistaa lisäksi kaikki tämän kulkuneuvon käskyt
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mene
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mene lähimmälle varikolle
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimmälle varikolle
-STR_ORDER_CONDITIONAL                                           :Ehdollinen hyppymääräys
-STR_ORDER_SHARE                                                 :Jaa määräykset
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uusi käsky ennen valittua, tai lisää listan viimeiseksi. Ctrl tekee asemakäskyistä 'lastaa täyteen kaikki rahti', reittipistekäskyistä 'non-stop' ja veturitallikäskyistä 'huolto'. 'Jaa määräykset' jakaa määräykset valitun kulkuneuvon kanssa. Kulkuneuvon klikkaaminen kopioi määräykset siitä kulkuneuvosta
-STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Lisää kehittynyt määräys
+STR_ORDER_CONDITIONAL                                           :Ehdollinen hyppykäsky
+STR_ORDER_SHARE                                                 :Jaa käskyt
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisää uusi käsky ennen valittua, tai lisää listan viimeiseksi. Ctrl tekee asemakäskyistä 'lastaa täyteen kaikki rahti', reittipistekäskyistä 'non-stop' ja veturitallikäskyistä 'huolto'. 'Jaa käskyt' jakaa käskyt valitun kulkuneuvon kanssa. Kulkuneuvon klikkaaminen kopioi käskyt siitä kulkuneuvosta
+STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Lisää kehittynyt käsky
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä kaikki ajoneuvot, joilla on sama aikataulu
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näytä kaikki ajoneuvot, jotka jakavat nämä käskyt
 
 # String parts to build the order string
 STR_ORDER_GO_TO_WAYPOINT                                        :Kierrä reittipisteen {WAYPOINT} kautta
@@ -3264,21 +3264,21 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[alkupäähän]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[keskelle]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[loppupäähän]
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Hyppää määräykseen {COMMA}
-STR_ORDER_CONDITIONAL_NUM                                       :Hyppää määräykseen {COMMA}, kun {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Hyppää määräykseen {COMMA}, kun {STRING} {STRING}
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Hyppää käskyyn {COMMA}
+STR_ORDER_CONDITIONAL_NUM                                       :Hyppää käskyyn {COMMA}, kun {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Hyppää käskyyn {COMMA}, kun {STRING} {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (virheellinen käsky)
 
 # Time table window
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (aikataulu)
-STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Määräykset
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Vaihda määräysnäkymään
+STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Käskyt
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Vaihda käskynäkymään
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataulu - klikkaa määräystä valitaksesi sen
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataulu - klikkaa käskyä valitaksesi sen
 
 STR_TIMETABLE_NO_TRAVEL                                         :Ei kulkua
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kulje (automaattinen; aikataulu seuraavan manuaalisen määräyksen mukaisesti)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Kulje (automaattinen; aikataulu seuraavan manuaalisen käskyn mukaisesti)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
 STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
@@ -3763,11 +3763,11 @@ STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Tätä r
 STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Tähän riviin ei voi siirtyä.
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... kulkuneuvo ei pääse kaikille asemille
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... kulkuneuvo ei pääse tälle asemalle
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... kulkuneuvo, jonka kanssa aikataulu on jaettu, ei pääse tälle asemalle
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... kulkuneuvo, jonka kanssa käskyt on jaettu, ei pääse tälle asemalle
 
-STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Aikataulua ei voi jakaa...
-STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Määräysten jakamista ei voitu lopettaa...
-STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Aikataulua ei voi kopioida...
+STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Käskyjä ei voida jakaa...
+STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Käskyjen jakamista ei voida lopettaa...
+STR_ERROR_CAN_T_COPY_ORDER_LIST                                 :{WHITE}Käskyjä ei voida kopioida...
 STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liian kaukana edellisestä määränpäästä
 
 # Timetable related errors

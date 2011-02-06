@@ -1388,7 +1388,7 @@ STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Pokaż n
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Zapisz
 
 ############ range for difficulty settings starts
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksymalna ilość przeciwników: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Maksymalna liczba przeciwników: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Ilość miast: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Ilość przedsiębiorstw: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Maksymalna początkowa pożyczka: {ORANGE}{CURRENCY}
@@ -1407,6 +1407,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Nastawi
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Brak
+STR_FUNDING_ONLY                                                :Tylko sponsorowanie
+STR_MINIMAL                                                     :Minimalna
 STR_NUM_VERY_LOW                                                :Bardzo mało
 STR_NUM_LOW                                                     :Mało
 STR_NUM_NORMAL                                                  :Średnio
@@ -1512,6 +1514,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Ustawia
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Przesuń okno, kiedy kursor jest przy krawędzi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Pozwól dawać łapówki lokalnym władzom: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Pozwól na kupno wyłączności transportowej: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Pozwalaj na sponsorowanie odbudowy lokalnych dróg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Pozwól na wysyłanie pieniędzy do innych firm: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Współczynnik prędkości samolotu: {ORANGE}1 / {STRING}
@@ -2202,7 +2205,7 @@ STR_CONTENT_NAME_CAPTION_TOOLTIP                                :{BLACK}Nazwa za
 STR_CONTENT_MATRIX_TOOLTIP                                      :{BLACK}Kliknij na linii, aby zobaczyć szczegóły{}Kliknij na kwadracie wyboru, aby zaznaczyć go do pobrania
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Zaznacz wszystko
 STR_CONTENT_SELECT_ALL_CAPTION_TOOLTIP                          :{BLACK}Zaznacz całą zawartość do pobrania
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Wybierz ulepszenia
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Wybierz uaktualnienia
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Wybierz całą zawartość do pobrania, która jest ulepszeniem dla istniejącej zawartości
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznacz wszystko
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Zaznacz całą zawartość, aby nie była pobrana
@@ -2216,7 +2219,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Dodatek
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Zależność ta została wybrana do pobrania
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Już to posiadasz
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ta zawartość jest nieznana i nie może zostać pobrana do OpenTTD
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}To jest zamiennik dla istniejącego {STRING}
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Jest to uaktualnienie dla dodatku {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nazwa: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Wersja: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Opis: {WHITE}{STRING}
@@ -2754,7 +2757,7 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ustawien
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Szczegółowe informacje o NewGRF
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktywne pliki NewGRF
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Nieaktywne pliki NewGRF
-STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Wybierz konfiguracje:
+STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Wybierz konfigurację:
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filtruj napis:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Załaduj wskazany stan ustawień
 STR_NEWGRF_SETTINGS_PRESET_SAVE                                 :{BLACK}Zapisz schemat

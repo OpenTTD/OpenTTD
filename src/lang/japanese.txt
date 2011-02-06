@@ -713,57 +713,57 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}全て�
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}最後のメッセージ／ニュースを表示します。
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}＊＊ポーズ＊＊
-STR_STATUSBAR_AUTOSAVE                                          :{RED}自動保存
-STR_STATUSBAR_SAVING_GAME                                       :{RED}＊＊ゲームを保存中＊＊
+STR_STATUSBAR_PAUSED                                            :{YELLOW}＊＊ポーズ中＊＊
+STR_STATUSBAR_AUTOSAVE                                          :{RED}オートセーブ
+STR_STATUSBAR_SAVING_GAME                                       :{RED}＊＊ゲームをセーブ中＊＊
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}メッセージ履歴
-STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}最近表示したニュースやその他のメッセージのリストを表示します
-STR_MESSAGE_NEWS_FORMAT                                         :{STRING} - {STRING}
+STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}最近のニュースやメッセージのリストです。
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}メッセージ
 STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}メッセージの設定
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}すべてのメッセージ種類を：切／概要／完全
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}概要ニュースを表示するときに、サウンドを再生
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}全てのメッセージの表示を切り替え
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}ニュースを簡易表示するときに音を鳴らす。
 STR_NEWS_MESSAGES_OFF                                           :切
-STR_NEWS_MESSAGES_SUMMARY                                       :概要
+STR_NEWS_MESSAGES_SUMMARY                                       :簡易
 STR_NEWS_MESSAGES_FULL                                          :完全
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}メッセージの種類：
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}プレヤーの駅へ車両の初めての到着
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}競争者の駅へ車両の初めての到着
+STR_NEWS_MESSAGE_TYPES                                          :{BLACK}メッセージの表示方法
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}自分の新しい駅に初めて車両が到着
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}競争相手の新しい駅に初めて車両が到着
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}事故／災害
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}会社情報
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}産業の開始
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}産業の閉鎖
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}産業の開業
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}産業の閉業
 STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}経済の変化
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}自社が運送している産業の生産量が変化したとき
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}競争者が運送している産業の生産量が変更したとき
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}その他の産業の生産量が変更したとき
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}会社の車両についての勧告／情報
-STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}新式の乗り物
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}貨物の受入れの変化
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}自分が運送している産業の生産量の変化
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}競争相手が運送している産業の生産量の変化
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}その他の産業の生産量の変化
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}会社の車両の勧告／情報
+STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}新しい乗り物の登場
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}受入れする貨物の変化
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}助成金
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}一般情報
 
-STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}町民の祝賀{}初列車が{STATION}駅に到着！
-STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}町民の祝賀！{}初バスが{STATION}バス停に到着！
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}町民の祝賀！{}初トラックが{STATION}荷役所に到着！
-STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}町民の祝賀{}初乗客用路面電車が{STATION}駅に到着！
-STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}町民の祝賀{}初貨物用路面電車が{STATION}駅に到着！
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}町民の祝賀！{}初船舶が{STATION}に到着！
-STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}町民の祝賀！{}初飛行機が{STATION}に到着！
+STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIGFONT}{BLACK}{STATION}に初めて列車が到着！{}住民から歓声が湧き上がっている模様。
+STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIGFONT}{BLACK}{STATION}に初めてバスが到着！{}住民から歓声が湧き上がっている模様。
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIGFONT}{BLACK}{STATION}に初めてトラックが到着！{}住民から歓声が湧き上がっている模様。
+STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIGFONT}{BLACK}{STATION}に初めて旅客用路面電車が到着！{}住民から歓声が湧き上がっている模様。
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK}{STATION}に初めて貨物用路面電車が到着！{}住民から歓声が湧き上がっている模様。
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}{STATION}に初めて船舶が到着！{}住民から歓声が湧き上がっている模様。
+STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}{STATION}に初めて航空機が到着！{}住民から歓声が湧き上がっている模様。
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}列車事故！{}{COMMA}人が死亡
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}交通事故！{}列車に衝突、運転者が死亡
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}交通事故！{}列車に衝突、{COMMA}人が死亡
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}墜落事故！{}{COMMA}人が{STATION}で死亡
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}墜落事故！{}燃料切れ、{COMMA}人が死亡
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}列車衝突事故発生！{}列車同士の衝突により、乗車していた{COMMA}人が死亡。
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}自動車衝突事故発生！{}列車との衝突により、自動車の運転者が死亡。
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}自動車衝突事故発生！{}列車との衝突により、自動車に乗車していた{COMMA}人が死亡。
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}飛行機墜落事故発生！{}{1:STATION}で飛行機が墜落し、搭乗していた{0:COMMA}人が死亡。
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}飛行機墜落事故発生！{}燃料切れにより飛行機が墜落し、搭乗していた{COMMA}人が死亡。
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}{STATION}で飛行船墜落！
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}交通事故！UFO と衝突、車両が壊れた！
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}{STATION}で飛行船が墜落！
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}自動車がUFOとの衝突により破壊！
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}{TOWN}付近で石油精製所が爆発！
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}{TOWN}工場が破壊！状況が不審
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}{TOWN}付近にUFOが着陸！
@@ -1027,6 +1027,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}町議�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :なし
+STR_FUNDING_ONLY                                                :出資のみ
+STR_MINIMAL                                                     :最小
 STR_NUM_VERY_LOW                                                :特に低い
 STR_NUM_LOW                                                     :低い
 STR_NUM_NORMAL                                                  :通常
@@ -1094,6 +1096,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}傾斜�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}建物、道路、鉄道などの下の地形変更を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}より現実的な受入れ地域を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}より多くの町有の道路／橋などの破壊を許容：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}列車の長さの最大: {ORANGE}{STRING} タイル
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}車両の 煙/火の粉 の量{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :なし
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :オリジナル
@@ -1112,6 +1115,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}改良�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}車両に段階的に積載: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}インフレ：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}需要のあるときのみ駅へ貨物を運送：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}橋の長さの最大: {ORANGE}{STRING} タイル
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}トンネルの長さの最大: {ORANGE}{STRING} タイル
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}第一次産業の手動の建設方法：{ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :なし
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :他の産業と同様
@@ -1129,6 +1134,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}車両�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}マウスが端にあるとき画面を移動：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}町議会の買収を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}独占的運送権の購入を許容：{ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}地方の道路の再建に出資するのを許容: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}他社への送金を許容：{ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}重い列車のシミュレーションのための重量乗数の設定：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飛行機のスピード係数: {ORANGE}1 / {STRING}
@@ -1353,6 +1359,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船舶�
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :本来{BLUE}（おすすめ）
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF{RED}（すすめない）
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}信号待ちで自動的に折り返す: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}設定を変更します
 
@@ -3251,6 +3258,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(転載して�
 STR_ORDER_NO_UNLOAD                                             :（積み荷を降ろさずに貨物を積む）
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（積み荷を降ろさずに満載するまで待つ）
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（積み荷を降ろさずにいずれかを満載するまで待つ）
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(降ろさず積載しない)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[手前に止まる]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[中間に止まる]
@@ -3666,6 +3674,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}先に�
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}他のトンネルがすでにあります
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}トンネルの突き当たりは地図の外にあります。
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}向こうの土地を掘削できません
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... トンネルが長すぎます
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... オブジェクトが多すぎます

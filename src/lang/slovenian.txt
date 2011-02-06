@@ -1069,6 +1069,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Odnos m
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Brez
+STR_FUNDING_ONLY                                                :Samo financiranje
+STR_MINIMAL                                                     :Minimalno
 STR_NUM_VERY_LOW                                                :Zelo malo
 STR_NUM_LOW                                                     :Malo
 STR_NUM_NORMAL                                                  :Normalno
@@ -1136,6 +1138,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dovoli 
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dovoli oblikovanje terena pod objekti, tiri, ipd. (samonaklon): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnični območni zajem postaj: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest in mostov: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Največja dolžina vlakov: {ORANGE}{STRING} plošč{P a i e ""}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/isker vozil: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Brez
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Originalno
@@ -1154,6 +1157,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Uporabi
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Postopno polni vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostavi tovor postaji le ob povpraševanju: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Največja dolžina mostov: {ORANGE}{STRING} plošč{P a i e ""}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Največja dolžina predorov: {ORANGE}{STRING} plošč{P a i e ""}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Glavni ročni način gradnje industrij: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :brez
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kot ostale industrije
@@ -1171,6 +1176,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Cestna 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Premakni okno, ko je miška na robu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dovoli podkupovanje mestnih oblasti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dovoli nakup ekskluzivnih prevoznih dovoljenj: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Dovoli financiranje obnove lokalnih cest: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dovoli pošiljanje denarja drugim podjetjem: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Koeficient teže tovora za simulacijo težkih vlakov: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor hitrosti letal: {ORANGE}1 / {STRING}
@@ -1395,6 +1401,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Logarit
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Priporočen)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ni priporočen)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Avtomatično obračanje pri signalih: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Spremeni vrednost
 
@@ -3293,6 +3300,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Pretovori in p
 STR_ORDER_NO_UNLOAD                                             :(Ne razloži in vzemi tovor)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne razloži in počakaj na polno)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne razloži in počakaj na polno česarkoli)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ne razloži in ne naloži)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[začetna stran]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sredina]
@@ -3634,7 +3642,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... mora
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaki so lahko spremenjeni šele, ko stojijo v garaži
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vlak je predolg
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Ni mogoče spremeniti smeri vozila...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Ni moč obrniti vozil, sestavljenih iz večih enot...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... sestavljen iz večih enot
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Nezdružljiv tip tirov
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Ni mogoče premakniti vozila...
@@ -3708,6 +3716,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Najprej 
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Obstoječi predor v napoto
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Predor bi se končal izven ozemlja
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ni mogoče izkopati zaključka predora na drugi strani
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... predolg predor
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... preveč objektov

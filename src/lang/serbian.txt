@@ -1222,6 +1222,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Stav vl
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Nijedan
+STR_FUNDING_ONLY                                                :Samo finansiranje
+STR_MINIMAL                                                     :Najmanji
 STR_NUM_VERY_LOW                                                :Veoma mali
 STR_NUM_LOW                                                     :Mali
 STR_NUM_NORMAL                                                  :Normalan
@@ -1327,6 +1329,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Vozila 
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pomeranje prozora kada miš priđe ivicama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dozvoljeno podmićivanje lokalnih vlasti: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dozvoljena kupovina ekskluzivnih prava prevoza: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Dozvoljeno finansiranje rekonstrukcije lokalnih puteva: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dozvoljeno slanje novca drugim preduzećima: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Množilac težine tovara za simulaciju opterećenja vozova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Delitelj brzine leta aviona: {ORANGE}1 / {STRING}
@@ -2772,7 +2775,7 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podmićivanje l
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Ulaganje u malu reklamnu kampanju će doneti preduzeću više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Ulaganje u reklamnu kampanju srednje veličine će doneti preduzeću više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Ulaganje u veliku reklamnu kampanju će doneti preduzeću više putnika i robe iz ovog naselja.{} Trošak: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Finansiranje rekonstrukcije lokalne mreže puteva. Može prouzrokovati kolaps u drumskom saobraćaju u trajanju do 6 meseci.{} Trošak: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansiranje rekonstrukcije lokalne mreže puteva. Može prouzrokovati kolaps u drumskom saobraćaju u trajanju do 6 meseci.{} Trošak: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Otkrivanje spomenika preduzeća.{} Trošak: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Finansiranje izgradnje novih komercijalnih objekata u naselju.{} Trošak: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kupovina ekskluzivnih prava prevoza od lokalne vlasti na godinu dana, osigurava da će lokalni korisnici prevoza koristiti isključivo usluge vašeg preduzeća.{} Trošak: {CURRENCY}

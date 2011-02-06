@@ -1177,6 +1177,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Отн�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Нет
+STR_FUNDING_ONLY                                                :Строить самому
+STR_MINIMAL                                                     :Минимальное
 STR_NUM_VERY_LOW                                                :Очень малое
 STR_NUM_LOW                                                     :Малое
 STR_NUM_NORMAL                                                  :Среднее
@@ -1286,6 +1288,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Авт�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Смещать обзор, когда курсор находится у края экрана: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Разрешить подкупать местные власти: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Разрешить покупать эксклюзивные трансп. права: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Разрешить финансирование реконструкции дорог: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Разрешить передачу денег другим компаниям: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Множитель увеличения веса груза для товарных поездов: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Коэффициент скорости авиатранспорта: {ORANGE}1/{STRING}
@@ -3781,7 +3784,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... до
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Структуру поезда можно менять только в депо
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Поезд слишком длинный
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Не удалось развернуть поезд...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Невозможно развернуть многосоставный транспорт
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... состоит из нескольких частей
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Несовместимый тип рельс
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Невозможно переместить транспортное средство...

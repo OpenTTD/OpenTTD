@@ -237,7 +237,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de deslize - desloca a lista para cima/baixo
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de deslize - desloca a lista para a esquerda/direita
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir edifícios, etc. num quadrado de terreno
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolir edifícios, etc. num quadrado de terreno. Ctrl selecciona a área na diagonal. Shift alterna construção/mostrando estimativa de custos
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Por Omissão
@@ -332,9 +332,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Gerar te
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Gerar cidades
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Gerar indústrias
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Construir estradas
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Shift alterna contruir/mostrar custo estimado
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar sinais
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objecto
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objecto. Shift alterna contruir/mostrar custo estimado
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Guardar cenário
@@ -665,6 +665,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Mostrar 
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostrar rotas de transporte no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostrar vegetação no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostrar proprietários do terreno no mapa
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clique num tipo de indústria para alternar exibi-lo. Ctrl+Clique desativa todos os tipos, exceto a selecionada. Ctrl+Clique novamente para ativar todos os tipos de indústria
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK} Clique em uma empresa para alternar exibindo as suas propriedades. Ctrl+Clique desativa todas as empresas, exceto a selecionada. Ctrl+Clique nele novamente para habilitar todas as empresas
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Estradas
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Caminhos-de-ferro
@@ -706,6 +708,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar 
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Não mostrar indústrias no mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar todas as indústrias no mapa
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Alternar a disposição do mapa de alturas
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Mostrar propriedades que não sejam de empresas no mapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostrar todos as propriedades da empresa no mapa
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar a última mensagem ou notícia
@@ -1024,6 +1028,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Atitude
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Nenhum
+STR_FUNDING_ONLY                                                :Financiamento apenas
+STR_MINIMAL                                                     :Mínimo
 STR_NUM_VERY_LOW                                                :Muito Baixo
 STR_NUM_LOW                                                     :Baixo
 STR_NUM_NORMAL                                                  :Normal
@@ -1088,9 +1094,10 @@ STR_CONFIG_SETTING_OFF                                          :Desligado
 STR_CONFIG_SETTING_ON                                           :Ligado
 STR_CONFIG_SETTING_DISABLED                                     :desactivado
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir formação de terra em infraestruturas (auto-declive): {ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir formação de terra sob os edifícios, vias, etc. (auto-declive): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dimensionamento mais realista de áreas de abrangência: {ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permitir remover das cidades mais estradas, pontes, etc: {ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permitir remover das cidades mais estradas, pontes e túneis: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Comprimento máximo de comboios: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantidade de fumo/faíscas de veículos: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nenhum
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1109,6 +1116,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usar al
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Carregar veículos gradualmente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflação: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Entregar carga a uma estação só quando houver procura: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Comprimento máximo para pontes: {ORANGE}{STRING} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Comprimento máximo para túneis: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Método de financiamento de indústrias primárias: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenhum
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mesmo método
@@ -1126,6 +1135,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Fila de
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o rato está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permitir comprar exclusivo dos direitos de transportes: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permitir o financiamento de reconstrução de estradas locais:{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir enviar dinheiro para outras empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular comboios pesados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor de velocidade de aeronaves: {ORANGE}1 / {STRING}
@@ -1137,7 +1147,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permiti
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}Permitir estações de passagem em estradas do adversário: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}Utilizar múltiplos conjuntos NewGRF de veículos: {ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Não é possivel mudar quando já existem veículos.
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Não é possível mudar quando já existem veículos.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}Aeroportos nunca expiram: {ORANGE}{STRING}
 
@@ -1236,6 +1246,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}Mostrar
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Deixar ferramentas de construção activas depois de usadas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}Agrupar despesas na janela de finanças da empresa: {ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Desativar construção de infra-estrutura quando não estão disponíveis veículos adequados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por empresa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}Máximo de veículos de estrada por empresa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por empresa: {ORANGE}{STRING}
@@ -1349,6 +1360,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Sistema
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Não recomendado)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Inversão automática nos sinais: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Alterar valor
 
@@ -1416,7 +1428,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Tem a c
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Truques
 STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de verificação indicam se já usou este truque antes
-STR_CHEATS_WARNING                                              :{BLACK}Atenção! Está prestes a trair os seus oponentes. Tenha em conta que isto ficará registado para sempre.
+STR_CHEATS_WARNING                                              :{BLACK} Atenção! Está prestes a trair seus concorrentes. Tenha em mente que a desonra vai ser lembrada para a eternidade
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando como empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, objectos amovíveis etc.): {ORANGE}{STRING}
@@ -1479,9 +1491,9 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}Seleccio
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}Nova Cara
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}Gerar nova cara aleatoriamente
 STR_FACE_ADVANCED                                               :{BLACK}Avançado
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Selecção avançada de cara.
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}Seleção avançada de cara.
 STR_FACE_SIMPLE                                                 :{BLACK}Simples
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Selecção simples de cara.
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}Seleção simples de cara.
 STR_FACE_LOAD                                                   :{BLACK}Carregar
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}Carregar cara preferida
 STR_FACE_LOAD_DONE                                              :{WHITE}A sua cara preferida foi carregada a partir do ficheiro de configuração do OpenTTD.
@@ -1673,14 +1685,14 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Auxiliar
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}A ligar...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) A ligar..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizando..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Em espera..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) A obter mapa..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Processando dados..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) A ligar...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorizando...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Em espera...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) A obter mapa...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Processando dados...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) A registar..
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}A obter a informação de jogo..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}A obter a informação de jogo...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}A obter a informação da empresa..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} à sua frente
@@ -1867,15 +1879,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Não foi
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opções de Transparência
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comutar transparência para sinais das estações. Pressione Ctrl enquanto clica para bloquear.
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Comutar transparência das árvores. Pressione Ctrl enquanto clica para bloquear.
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Comutar transparência das casas. Pressione Ctrl enquanto clica para bloquear.
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Comutar transparência das indústrias. Pressione Ctrl enquanto clica para bloquear.
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Comutar transparência para edificações como estações, depósitos, pontos-de-passagem e catenárias. Pressione Ctrl enquanto clica para bloquear.
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Comutar transparência para pontes. Pressione Ctrl enquanto clica para bloquear.
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comutar transparência para estruturas como faróis-terrestres e antenas. Pressione Ctrl enquanto clica para bloquear.
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comutar transparência para catenária. CTRL+clique para fechar.
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Alterar transparência para indicadores de carga. Pressione Ctrl enquanto clica para bloquear.
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comutar transparência para sinais das estações. Ctrl+Clique para bloquear.
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Comutar transparência das árvores. Ctrl+Clique para bloquear.
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Comutar transparência das casas. Ctrl+Clique para bloquear.
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Comutar transparência das indústrias. Ctrl+Clique para bloquear.
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Comutar transparência para edificações como estações, depósitos, pontos-de-passagem e catenária. Ctrl+Clique para bloquear.
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Comutar transparência para pontes. Ctrl+Clique para bloquear.
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Comutar transparência para estruturas como faróis-terrestres e antenas. Ctrl+Clique parabloquear.
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Comutar transparência para catenária. Ctrl+Clique para bloquear.
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Alterar transparência para indicadores de carga. Ctrl+Clique para bloquear.
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Definir objectos como invisíveis em vez de transparentes
 
 # Base for station construction window(s)
@@ -1900,16 +1912,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construir camin
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Construir monocarril
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Construir MagLev
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha férrea. Ctrl alterna a construção/remoção de linha férrea
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir caminhos-de-ferro usando o modo automático. Ctrl alterna a construção/remoção de caminhos-de-ferro
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de comboios)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de passagem. Ctrl permite juntar pontos de passagem
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl permite juntar estações
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl alterna entre s. clássicos/luminosos{}Arrastar constrói sinais numa linha de caminho-de-ferro. Ctrl constrói sinais até a próxima junção{}Ctrl+Clique alterna entre abrir a janela de selecção de sinais
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Construir linha férrea. Ctrl alterna a construção/remoção de linha férrea. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Construir caminhos-de-ferro usando o modo automático. Ctrl alterna a construção/remoção de caminhos-de-ferro. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Construir depósito ferroviário (para compra e manutenção de comboios). Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Converter linha em ponto de passagem. Ctrl permite juntar pontos de passagem. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Construir estação ferroviária. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Construir sinais ferroviários. Ctrl alterna entre s. clássicos/luminosos{}Arrastar constrói sinais numa linha de caminho-de-ferro. Ctrl constrói sinais até a próxima junção{}Ctrl+Clique alterna entre abrir a janela de selecção de sinais. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Construir ponte ferroviária. Shift alterna contruir/mostrar custo estimado
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Construir túnel ferroviário. Shift alterna contruir/mostrar custo estimado
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Alternar entre construir/remover linha férrea, sinais, pontos de passagem e estações. Fixar o Ctrl também remove a linha férrea de pontos de passagem e estações
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Actualizar tipo de linha
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Converter/Actualizar tipo de linha. Shift alterna contruir/mostrar custo estimado
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Orientação do Depósito
@@ -1938,19 +1950,19 @@ STR_STATION_CLASS_WAYP                                          :Pontos de passa
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Selecção de Sinal
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal Normal (clássico){}Este é o tipo mais básico de sinal, que só permite um comboio dentro da mesma linha ferroviária ao mesmo tempo.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (clássico){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de Saída (clássico){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pré-sinais de entrada e combinado.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal Combinado (clássico){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal para encaminhar (clássico){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal para encaminhar de sentido único (clássico){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança. Os comboios não podem passar no sentido oposto dos sinais.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Sinal Normal (semáforo){}Este é o tipo mais básico de sinal, que só permite um comboio dentro da mesma linha ferroviária ao mesmo tempo.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Sinal de Entrada (semáforo){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Sinal de Saída (semáforo){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pré-sinais de entrada e combinado.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Sinal Combinado (semáforo){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Sinal (semáforo){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança. Sinais normais podem ser passados no sentido contrário.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Sinal de sentido único (semáforo){}Os sinais permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança. Os comboios não podem passar no sentido oposto dos sinais.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Sinal Normal(eléctrico){}Este é o tipo mais básico de sinal, que só permite um comboio dentro da mesma linha ferroviária ao mesmo tempo.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Sinal de Entrada (eléctrico){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Sinal de Saída (eléctrico){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pré-sinais de entrada e combinado.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Sinal Combinado (eléctrico){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pré-sinais.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal para encaminhar (eléctrico){}Os sinais permitem que vários comboios entrem na mesma linha ao mesmo tempo, desde que consigam chegar ao seu destino em segurança.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal para encaminhar de sentido único (eléctrico){}Um sinal de trajecto permite que mais de um comboio passe ao mesmo tempo um sinal se, o comboio conseguir reservar um caminho para onde posteriormente possa parar sem prejudicar o seguinte. Sinais de um único sentido não podem ser passados no sentido contrário.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter Sinal{}Quando seleccionado, ao fazer clique num sinal existente este será convertido no tipo e variante de sinal seleccionado, Ctrl+clique irá comutar a variante existente.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Sinal (eléctrico){}Os sinais permitem que vários comboios entrem na mesma linha ao mesmo tempo, desde que consigam chegar ao seu destino em segurança. Sinais padrão podem ser passados no sentido contrário.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Sinal de sentido único (eléctrico){}Um sinal de trajecto permite que mais de um comboio passe ao mesmo tempo um sinal se, o comboio conseguir reservar um caminho para onde posteriormente possa parar sem prejudicar o seguinte. Sinais de um único sentido não podem ser passados no sentido contrário.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Converter Sinal{}Quando seleccionado, ao fazer clique num sinal existente este será convertido no tipo e variante de sinal seleccionado, Ctrl+clique irá comutar a variante existente. Shift+Clique mostra estimativa do custo de conversão
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Densidade de sinais
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Diminuir densidade de sinais
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Aumentar densidade de sinais
@@ -1975,20 +1987,20 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silíc
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Construir Estradas
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Construção de eléctricos
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Construir estradas. Ctrl alterna a construção/remoção de estradas
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir secção de carris para eléctricos. Ctrl alterna a construção/remoção de carris para eléctricos
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estradas usando o modo automático. Ctrl alterna a construção/remoção de estradas
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir carris para eléctricos usando o modo automático. Ctrl alterna a construção/remoção de carris para eléctricos
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de veículos de estrada (para compra e manutenção de veículos de estrada)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de eléctricos (para compra e manutenção)
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de autocarros. Ctrl permite juntar estações
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir paragem de eléctricos para passageiros. Ctrl permite juntar estações
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir área de carregamento de camiões. Ctrl permite juntar estações
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir paragem de eléctricos para carga. Ctrl permite juntar estações
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Construir secção de carris para eléctricos. Ctrl alterna a construção/remoção de carris para eléctricos. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Construir estradas usando o modo automático. Ctrl alterna a construção/remoção de estradas. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Construir carris para eléctricos usando o modo automático. Ctrl alterna a construção/remoção de carris para eléctricos. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Construir depósito de veículos de estrada (para compra e manutenção de veículos de estrada). Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Construir depósito de eléctricos (para compra e manutenção). Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Construir estação de autocarros. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Construir paragem de eléctricos para passageiros. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Construir área de carregamento de camiões. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Construir paragem de eléctricos para carga. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Activar/Desactivar estradas de sentido único
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte de estrada
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para eléctricos
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel de estrada
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para eléctricos
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Construir ponte de estrada. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Construir ponte para eléctricos. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construir túnel de estrada. Shift alterna contruir/mostrar custo estimado
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel para eléctricos. Shift alterna contruir/mostrar custo estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Alternar entre construir/remover estradas
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alternar construir/remover linhas de eléctricos e sinais
 
@@ -2011,14 +2023,14 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Seleccio
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Construção de Canais
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Canais
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais.
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir diques
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito naval (para compra e manutenção de barcos)
-STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl permite juntar estações
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Bóia de posição, que pode ser usada para marcar pontos de rota adicionais
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Construir canais. Shift alterna construção/estimativa de custos
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Construir diques. Shift alterna contruir/mostrar custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Construir depósito naval (para compra e manutenção de barcos). Shift alterna contruir/mostrar custo estimado
+STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construir doca naval. Ctrl permite juntar estações. Shift alterna contruir/mostar custo estimado
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Bóia de posição, que pode ser usada para marcar pontos de rota adicionais. Shift alterna contrução/mostra de custos estimados
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construir aqueduto. Shift alterna contruir/mostar custo estimado
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definir área de água.{}Construir um canal, a não ser que a tecla Ctrl esteja pressionada a nível do mar, nesse caso inundará as zonas circundantes
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar rios.
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Colocar rios
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientação do Depósito
@@ -2029,7 +2041,7 @@ STR_STATION_BUILD_DOCK_CAPTION                                  :{WHITE}Doca
 
 # Airport toolbar
 STR_TOOLBAR_AIRCRAFT_CAPTION                                    :{WHITE}Aeroportos
-STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeroporto. Ctrl permite juntar estações
+STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Construir aeroporto. Ctrl permite juntar estações. Shift alterna contruir/mostrar custo estimado
 
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Selecção de Aeroporto
@@ -2056,14 +2068,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Ruído g
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreno
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Baixar um canto do terreno
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Levantar um canto do terreno
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nivelar terreno
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Baixa um canto da terra. Arrastando abaixa o primeiro canto selecionado e os níveis a área selecionada para a altura do canto novo. Ctrl selecciona a área na diagonal. Shift alterna construção/estimativa de custos
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Elevar um canto da terra. Arrastando eleva o primeiro canto selecionado e os níveis a área selecionada para a altura do canto novo. Ctrl selecciona a área na diagonal. Shift alterna construção/estimativa de custos
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Nívelar uma área de terra até a altura do primeiro canto selecionado. Ctrl selecciona a área na diagonal. Shift alterna construção/estimativa de custos
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Comprar terreno para uso futuro. Shift alterna construir/mostrar custo estimado
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Selecção de Objecto
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleccionar objecto para construir
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Seleccionar objecto para construir. Shift alterna construir/mostrar custo estimado
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selecionar a classe do objecto a construir
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Pré-visualização do objecto
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho: {GOLD}{NUM} x {NUM} quadrados
@@ -2075,7 +2087,7 @@ STR_OBJECT_CLASS_TRNS                                           :Transmissores
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolha um tipo de árvore para plantar
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árvores de tipo aleatório
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árvores de tipo aleatório. Shift alterna contruir/mostrar custo estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantar árvores aleatoriamente no terreno
 
@@ -2096,7 +2108,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Tem a ce
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Gerar Cidades
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Cidade
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova cidade
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Fundar nova cidade. Shift+Clique mostra apenas o custo estimado
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Cidade Aleatória
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Fundar uma cidade num local aleatório
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Várias cidades aleatórias
@@ -2451,7 +2463,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aviso: {SI
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ocorreu um erro fatal no NewGRF: {}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} não funciona com a versão do TTDPatch reportada pelo OpenTTD.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} não funciona com a versão do TTDPatch reportada por OpenTTD.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} é para a versão {STRING} do TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} foi concebido para ser usado com {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parâmetro inválido para {1:STRING}: parâmetro {STRING} ({NUM})
@@ -2461,9 +2473,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} requ
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :ficheiro GRF concebido para o traduzir
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs carregados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {2:STRING} como NewGRF estático com {4:STRING} pode causar dessincronização.
-STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Objecto gráfico inesperado.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Objecto gráfico inesperado
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade de Action 0 desconhecida.
-STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um objecto gráfico corrompido. Todos os objectos gráficos corrompidos serão apresentados como um ponto de interrogação (?) vermelho.
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém múltiplas entradas Action 8.
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Leitura ultrapassou o fim do pseudo-gráfico.
@@ -2471,7 +2483,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}O conjun
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Alerta!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vai alterar um jogo em andamento. O OpenTTD pode terminar abruptamente.{}Tem a certeza que quer continuar?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vai alterar um jogo em andamento. O OpenTTD pode terminar abruptamente.Não envie relatórios de erros sobre estas questões.{}Tem a certeza que quer continuar?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar ficheiro: GRF ID duplicado
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ficheiro correspondente não encontrado (GRF compatível carregado)
@@ -2490,10 +2502,10 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}Faltam fic
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}O comportamento do NewGRF '{0:STRING}' pode causar dessincronizações e/ou outros problemas.
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Mudou o estado electrificado do modelo de vagão '{1:ENGINE}' quando fora do depósito.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Mudou o comprimento do modelo de veículo '{1:ENGINE}' quando fora do depósito.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica o comprimento do veículo para '{1:ENGINE}' quando fora do depósito.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O Comboio '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido. Possivelmente devido a problemas com os novos NewGRFs. Podem ocorrer erros de sincronização e a aplicação pode terminar.
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' fornece informação incorrecta.
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' fornece informação incorrecta
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}A informação de carga/adaptação do modelo de veículo '{1:ENGINE}' difere da que consta na lista de veículos depois de adquirido. Isto poderá causar problemas ao adaptar quando automaticamente renovado/substituído.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no callback de produção.
 
@@ -2689,7 +2701,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Construi
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Ver sede
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Ver sede da empresa
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mover sede
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa noutro sítio por 1% do valor da empresa
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa noutro sítio por 1% do valor da empresa. Shift+Clique mostra valor estimado sem mover a sede
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nova Cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Seleccione uma nova cara para o presidente
@@ -2702,8 +2714,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Alterar 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Comprar 25% de acções
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Vender 25% de acções
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Comprar 25% de acções nesta empresa
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender 25% de acções nesta empresa
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Comprar 25% de acções nesta empresa. Shift+Clique mostra valor estimado sem comprar nenhuma ação
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender 25% de acções nesta empresa. Shift+Clique mostra valor estimado sem vender nenhuma ação
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nome da Empresa
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nome do Presidente
@@ -2758,7 +2770,7 @@ STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Comboios Dispon
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Veículos Disponíveis
 STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :Barcos Disponíveis
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :Aeronaves Disponíveis
-STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver lista de designs disponíveis de locomotivas para este tipo de veículo.
+STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}Ver lista de modelos disponíveis de locomotivas para este tipo de veículo.
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}Gerir lista
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}Enviar instruções a todos os veículos desta lista
@@ -2836,10 +2848,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Comprar 
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Comprar Barco
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar Aeronave
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário seleccionado
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo de estrada seleccionado
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar barco seleccionado
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar aeronave seleccionada
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Comprar o veículo ferroviário seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Comprar o veículo de estrada seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Comprar barco seleccionado. Shift+Clique mostra estimativa de custo, sem comprar
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Comprar aeronave seleccionada. Shift+Clique mostra estimativa de custo, sem comprar
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renomear
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renomear
@@ -2904,10 +2916,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clonar V
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clonar Barco
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar Aeronave
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esta acção comprará uma cópia de um comboio, incluindo as carruagens. Clique neste botão e, de seguida, num comboio que se encontre dentro ou fora do depósito. Pressione Ctrl enquanto clica para partilhar as ordens
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta acção comprará uma cópia de um veículo. Clique neste botão e, de seguida, num veículo que se encontre dentro ou fora do depósito. Pressione Ctrl enquanto clica para partilhar as ordens
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta acção comprará uma cópia de um barco. Clique neste botão e, de seguida, num barco que se encontre dentro ou fora do depósito. Pressione Ctrl enquanto clica para partilhar as ordens
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta acção comprará uma cópia de uma aeronave. Clique neste botão e, de seguida, numa aeronave que se encontre dentro ou fora do hangar. Pressione Ctrl enquanto clica para partilhar as ordens
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Esta acção comprará uma cópia de um comboio, incluindo as carruagens. Clique neste botão e, de seguida, num comboio que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Esta acção comprará uma cópia de um veículo. Clique neste botão e, de seguida, num veículo que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Esta acção comprará uma cópia de um barco. Clique neste botão e, de seguida, num barco que se encontre dentro ou fora do depósito. Ctrl+Clique irá partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Esta acção comprará uma cópia de uma aeronave. Clique neste botão e, de seguida, numa aeronave que se encontre dentro ou fora do hangar. Ctrl+Clique ira partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visualização na localização de um depósito ferroviário. Ctrl+Clique abre um novo visualizador na localização do depósito ferroviário
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centrar visualização na localização do depósito de veículos de estrada. Ctrl+Clique abre um novo visualizador na localização do depósito de veículos
@@ -2976,7 +2988,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Monocarris
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevs
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover vagões: {ORANGE}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do comboio, removendo vagões (do início), nas situações em que a substituição da locomotiva resultar num comboio maior.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do comboio, removendo vagões (do início), nas situações em que a substituição da locomotiva pode resultar num comboio mais comprido.
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -2991,10 +3003,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Mandar v
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Mandar barco para o depósito
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Mandar aeronave para o hangar
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Esta acção comprará uma cópia do comboio, incluindo as carruagens. Pressione Ctrl enquanto clica para partilhar as ordens
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Esta acção comprará uma cópia do veículo. Pressione Ctrl enquanto clica para partilhar as ordens
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Esta acção comprará uma cópia do barco. Pressione Ctrl enquanto clica para partilhar as ordens
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esta acção comprará uma cópia da aeronave. Pressione Ctrl enquanto clica para partilhar as ordens
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Esta acção comprará uma cópia do comboio, incluindo as carruagens. Ctrl+Clique irá partilhar as ordens.Shift+Clique Shift + Clique mostra estimativa de custo, sem comprar
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Esta acção comprará uma cópia do veículo. Ctrl+Clique para partilhar as ordens.Shift+Clique mostra estimativa de custo, sem comprar
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Esta acção comprará uma cópia do barco. Ctrl+Clique para partilhar as ordens. Shift+Clique mostra estimativa de custo, sem comprar
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esta acção comprará uma cópia da aeronave. Ctrl+Clique para partilhar as ordens.Shift+Clique mostra estimativa de custo, sem comprar
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forçar comboio a prosseguir sem esperar pelo sinal
 
@@ -3059,7 +3071,7 @@ STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Máx. velocidade: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Max. velocidade: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Custo: {LTBLUE}{WEIGHT_S} {BLACK}Peso: {LTBLUE}{POWER}{BLACK} Máx. velocidade: {LTBLUE}{VELOCITY} {BLACK}Máx. F.T.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Máx. velocidade: {LTBLUE}{VELOCITY} {BLACK}Máx. E.T.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucro neste ano: {LTBLUE}{CURRENCY} (último ano: {CURRENCY})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Avarias desde o último serviço: {LTBLUE}{COMMA}
@@ -3110,6 +3122,7 @@ STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE
 STR_REFIT_TITLE                                                 :{GOLD}Seleccionar tipo de carga:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nova capacidade: {GOLD}{CARGO}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nova capacidade: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selecionar os veículos a reaparelhar. Arrastando com o rato permite selecionar vários veículos. Clicando sobre um espaço vazio irá selecionar todo o veículo. Ctrl+Clique irá selecionar um veículo e composição
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Seleccionar tipo de carga do comboio
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Seleccione o tipo de carga para o veículo
@@ -3131,7 +3144,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horário
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Mudar para a vista de horário
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique numa ordem para a seleccionar
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de ordens - clique numa ordem para a seleccionar. Ctrl+Clique mostra o destino da ordem
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING}
 
@@ -3204,7 +3217,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir para o depó
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir para o hangar mais próximo
 STR_ORDER_CONDITIONAL                                           :Saltar ordem condicional
 STR_ORDER_SHARE                                                 :Partilhar ordens
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir nova ordem antes da ordem seleccionada, ou adicionar ao fim da lista. Ctrl torna em 'encher' as ordens em estações, em 'sem parar' as ordens de pontos de passagem e em 'serviço' as ordens em depósitos
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Inserir nova ordem antes da ordem seleccionada, ou adicionar ao fim da lista. Ctrl torna em 'encher' as ordens em estações, em 'sem parar' as ordens de pontos de passagem e em 'serviço' as ordens em depósitos. 'Ordens Partilhadas' ou Ctrl permite que este veículos partilhe ordens com o veículo escolhido. Clicando em um veículo de copia as ordens desse veículo
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}Inserir uma ordem avançada
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Mostra todos os veículos que seguem este mesmo trajecto
@@ -3246,6 +3259,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir e p
 STR_ORDER_NO_UNLOAD                                             :(Não descarregar e carregar mercadoria)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Não descarregar e aguardar até encher)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Não descarregar e aguardar até encher de qq. carga)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Não descarregar e não carregar)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[extremo perto]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[no meio]
@@ -3265,6 +3279,7 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Mudar pa
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horário - clique numa ordem para a seleccionar.
 
 STR_TIMETABLE_NO_TRAVEL                                         :Não viaja
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viagem (automático; calendarizadas por próxima ordem manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viagem (sem programação)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
@@ -3334,8 +3349,8 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver saí
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD é construido sem suporte IA...
 STR_ERROR_NO_AI_SUB                                             :{WHITE}... não há nenhuma IA disponível!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Não foi encontrada IA adequada para carregar.{}Esta IA é um pacote vazio e não fará nada.{}Pode descarregar várias IA através do sistema 'Conteúdo Online'.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Um dos jogadores computador teve um erro. Por favor relate isto ao autor do jogador com uma imagem da janela de depuramento de erros.
+STR_ERROR_AI_NO_AI_FOUND                                        :Não foi encontrada IA adequada para carregar.{}Esta IA é um pacote vazio e não fará nada.{}Pode descarregar várias IA através do sistema 'Conteúdo Online'
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Um dos jogadores computador teve um erro. Por favor reporte isto ao autor do jogador com uma imagem da janela de depuramento de erros.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}A janela Depuração da IA está disponível apenas para o servidor
 
 # AI configuration window
@@ -3412,12 +3427,12 @@ STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Geraçã
 STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... não existe nenhuma cidade neste cenário
 
 STR_ERROR_PNGMAP                                                :{WHITE}Impossível carregar paisagem de PNG...
-STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... ficheiro não encontrado.
-STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... impossível converter imagem. Necessário PNG de 8 ou 24 bits.
-STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguma coisa correu mal. Desculpe. (provavelmente um ficheiro corrompido)
+STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... ficheiro não encontrado
+STR_ERROR_PNGMAP_IMAGE_TYPE                                     :{WHITE}... não pode converter tipo de imagem. Necessário PNG de 8 ou 24 bits.
+STR_ERROR_PNGMAP_MISC                                           :{WHITE}... alguma coisa correu mal (provavelmente um ficheiro corrompido)
 
 STR_ERROR_BMPMAP                                                :{WHITE}Impossível carregar paisagem de BMP...
-STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... impossível converter tipo de imagem.
+STR_ERROR_BMPMAP_IMAGE_TYPE                                     :{WHITE}... não pode converter tipo de imagem
 
 STR_WARNING_HEIGHTMAP_SCALE_CAPTION                             :{WHITE}Aviso de redimensionamento
 STR_WARNING_HEIGHTMAP_SCALE_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com a criação?
@@ -3446,6 +3461,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... sít
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... já construído
 STR_ERROR_OWNED_BY                                              :{WHITE}... propriedade de {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... a área é propriedade de outra empresa
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... atingido o limite para terraformação
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... atingido o limite para limpeza de quadrados
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nome deve ser único
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} no caminho
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Não permitido durante pausa
@@ -3491,7 +3508,7 @@ STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... muit
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... muito perto de outra cidade
 STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... demasiadas cidades
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não existe mais espaço no mapa
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não construirá estradas. Pode-se permitir a construção de estradas por Opções Avançadas->Economia->Cidades.
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não construirá estradas. Pode-se permitir a construção de estradas por Opções Avançadas->Economia->Cidades
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Trabalhos na estrada em curso
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Não é possível eliminar esta cidade...{}Uma estação ou depósito refere-se à cidade ou não é possível remover terreno pertencente à cidade
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... não há um sítio adequado para uma estátua no centro desta cidade
@@ -3584,7 +3601,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... tem 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os comboios só podem ser alterados quando parados num depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Comboio muito longo
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Impossível inverter a direcção do veículo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Não é possível virar comboios compostos por unidades múltiplas
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... compostos por unidades múltiplas
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Vias férreas incompatíveis
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Não é possível mover veículo...
@@ -3658,6 +3675,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Deverá 
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Há outro túnel no caminho
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}O túnel terminaria fora do mapa
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Não é possível escavar o terreno para o outro lado do túnel
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel muito longo
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... demasiados objectos
