@@ -348,7 +348,7 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, difficulty.max_no_competitors,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,0,MAX_COMPANIES-1,1,STR_NULL,                                  MaxNoAIsChange),
 	SDT_CONDNULL(                                                            1, 97, 109),
 	 SDT_CONDVAR(GameSettings, difficulty.number_towns,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     0,      4,  1, STR_NUM_VERY_LOW,                          DifficultyChange),
-	 SDT_CONDVAR(GameSettings, difficulty.number_industries,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     5,     0,      5,  1, STR_FUNDING_ONLY,                          DifficultyChange),
+	 SDT_CONDVAR(GameSettings, difficulty.number_industries,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NG, ID_END-1,  0,ID_END-1, 1, STR_FUNDING_ONLY,                          DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.max_loan,                 SLE_UINT32, 97, SL_MAX_VERSION, 0,NS|CR,300000,100000,500000,50000,STR_NULL,                               DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.initial_interest,          SLE_UINT8, 97, SL_MAX_VERSION, 0,NS,     2,     2,      4,  1, STR_NULL,                                  DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.vehicle_costs,             SLE_UINT8, 97, SL_MAX_VERSION, 0,NS,     0,     0,      2,  1, STR_SEA_LEVEL_LOW,                         DifficultyChange),
@@ -362,7 +362,7 @@ const SettingDesc _settings[] = {
 	 SDT_CONDVAR(GameSettings, difficulty.economy,                   SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      1,  1, STR_ECONOMY_STEADY,                        DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.line_reverse_mode,         SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      1,  1, STR_REVERSE_AT_END_OF_LINE_AND_AT_STATIONS,DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.disasters,                 SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      1,  1, STR_DISASTERS_OFF,                         DifficultyChange),
-	 SDT_CONDVAR(GameSettings, difficulty.town_council_tolerance,    SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      2,  1, STR_CITY_APPROVAL_PERMISSIVE,                            DifficultyNoiseChange),
+	 SDT_CONDVAR(GameSettings, difficulty.town_council_tolerance,    SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      2,  1, STR_CITY_APPROVAL_PERMISSIVE,              DifficultyNoiseChange),
 	 SDT_CONDVAR(GameSettings, difficulty.diff_level,                SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     3,     0,      3,  0, STR_NULL,                                  DifficultyReset),
 
 	/* There are only 21 predefined town_name values (0-20), but you can have more with newgrf action F so allow these bigger values (21-255). Invalid values will fallback to english on use and (undefined string) in GUI. */

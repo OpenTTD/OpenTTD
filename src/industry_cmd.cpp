@@ -1847,7 +1847,7 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
 	uint32 chance = ind_spc->appear_creation[_settings_game.game_creation.landscape] * 16; // * 16 to increase precision
 	if (!ind_spc->enabled || chance == 0 || ind_spc->num_table == 0 ||
 			!CheckIfCallBackAllowsAvailability(it, IACT_MAPGENERATION) ||
-			(_game_mode != GM_EDITOR && _settings_game.difficulty.number_industries == 0)) {
+			(_game_mode != GM_EDITOR && _settings_game.difficulty.number_industries == ID_FUND_ONLY)) {
 		*force_at_least_one = false;
 		return 0;
 	} else {
@@ -1868,7 +1868,7 @@ static uint32 GetScaledIndustryGenerationProbability(IndustryType it, bool *forc
  */
 static uint16 GetIndustryGamePlayProbability(IndustryType it, byte *min_number)
 {
-	if (_settings_game.difficulty.number_industries == 0) {
+	if (_settings_game.difficulty.number_industries == ID_FUND_ONLY) {
 		*min_number = 0;
 		return 0;
 	}
@@ -1902,8 +1902,8 @@ static uint GetNumberOfIndustries()
 		80,   // high
 	};
 
-	assert(_settings_game.difficulty.number_industries < lengthof(numof_industry_table));
-	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_industries : 2;
+	assert(lengthof(numof_industry_table) == ID_END);
+	uint difficulty = (_game_mode != GM_EDITOR) ? _settings_game.difficulty.number_industries : (uint)ID_VERY_LOW;
 	return ScaleByMapSize(numof_industry_table[difficulty]);
 }
 
@@ -1994,7 +1994,7 @@ void IndustryBuildData::Reset()
 void IndustryBuildData::MonthlyLoop()
 {
 	static const int NEWINDS_PER_MONTH = 0x38000 / (10 * 12); // lower 16 bits is a float fraction, 3.5 industries per decade, divided by 10 * 12 months.
-	if (_settings_game.difficulty.number_industries == 0) return; // 'no industries' setting,
+	if (_settings_game.difficulty.number_industries == ID_FUND_ONLY) return; // 'no industries' setting,
 
 	/* To prevent running out of unused industries for the player to connect,
 	 * add a fraction of new industries each month, but only if the manager can keep up. */
@@ -2010,7 +2010,7 @@ void IndustryBuildData::MonthlyLoop()
  */
 void GenerateIndustries()
 {
-	if (_game_mode != GM_EDITOR && _settings_game.difficulty.number_industries == 0) return; // No industries in the game.
+	if (_game_mode != GM_EDITOR && _settings_game.difficulty.number_industries == ID_FUND_ONLY) return; // No industries in the game.
 
 	uint32 industry_probs[NUM_INDUSTRYTYPES];
 	bool force_at_least_one[NUM_INDUSTRYTYPES];

@@ -602,7 +602,7 @@ public:
 		this->SetupArrays();
 
 		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
-		if (indsp == NULL) this->enabled[this->selected_index] = _settings_game.difficulty.number_industries != 0;
+		if (indsp == NULL) this->enabled[this->selected_index] = _settings_game.difficulty.number_industries != ID_FUND_ONLY;
 		this->SetButtons();
 	}
 };

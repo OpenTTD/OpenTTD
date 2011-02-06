@@ -19,11 +19,23 @@
 #include "company_type.h"
 #include "openttd.h"
 
+/** Available industry map generation densities. */
+enum IndustryDensity {
+	ID_FUND_ONLY, ///< The game does not build industries.
+	ID_MINIMAL,   ///< Start with just the industries that must be present.
+	ID_VERY_LOW,  ///< Very few industries at game start.
+	ID_LOW,       ///< Few industries at game start.
+	ID_NORMAL,    ///< Normal amount of industries at game start.
+	ID_HIGH,      ///< Many industries at game start.
+
+	ID_END,       ///< Number of industry density settings.
+};
+
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
 	byte   max_no_competitors;               ///< the number of competitors (AIs)
 	byte   number_towns;                     ///< the amount of towns
-	byte   number_industries;                ///< the amount of industries
+	byte   number_industries;                ///< The industry density. @see IndustryDensity
 	uint32 max_loan;                         ///< the maximum initial loan
 	byte   initial_interest;                 ///< amount of interest (to pay over the loan)
 	byte   vehicle_costs;                    ///< amount of money spent on vehicle running cost
