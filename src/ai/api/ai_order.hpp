@@ -457,6 +457,7 @@ public:
 	 * @param order_flags The new flags given to the order.
 	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
 	 * @pre AreOrderFlagsValid(GetOrderDestination(vehicle_id, order_position), order_flags).
+	 * @pre (order_flags & AIOF_GOTO_NEAREST_DEPOT) == (GetOrderFlags(vehicle_id, order_position) & AIOF_GOTO_NEAREST_DEPOT).
 	 * @exception AIError::ERR_OWNED_BY_ANOTHER_COMPANY
 	 * @return True if and only if the order was changed.
 	 */

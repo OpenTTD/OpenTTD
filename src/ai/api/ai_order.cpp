@@ -509,6 +509,8 @@ static void _DoCommandReturnSetOrderFlags(class AIInstance *instance)
 
 	AIOrderFlags current = GetOrderFlags(vehicle_id, order_position);
 
+	EnforcePrecondition(false, (order_flags & AIOF_GOTO_NEAREST_DEPOT) == (current & AIOF_GOTO_NEAREST_DEPOT));
+
 	if ((current & AIOF_NON_STOP_FLAGS) != (order_flags & AIOF_NON_STOP_FLAGS)) {
 		return AIObject::DoCommand(0, vehicle_id | (order_position << 20), (order_flags & AIOF_NON_STOP_FLAGS) << 4 | MOF_NON_STOP, CMD_MODIFY_ORDER, NULL, &_DoCommandReturnSetOrderFlags);
 	}
