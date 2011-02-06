@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "core/alloc_func.hpp"
 #include "tile_map.h"
+#include "water_map.h"
 
 #if defined(_MSC_VER)
 /* Why the hell is that not in all MSVC headers?? */
@@ -339,7 +340,7 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
  */
 uint GetClosestWaterDistance(TileIndex tile, bool water)
 {
-	if (IsTileType(tile, MP_WATER) == water) return 0;
+	if (HasTileWaterGround(tile) == water) return 0;
 
 	uint max_dist = water ? 0x7F : 0x200;
 
@@ -368,7 +369,7 @@ uint GetClosestWaterDistance(TileIndex tile, bool water)
 				/* MP_VOID tiles are not checked (interval is [min; max) for IsInsideMM())*/
 				if (IsInsideMM(x, min_xy, max_x) && IsInsideMM(y, min_xy, max_y)) {
 					TileIndex t = TileXY(x, y);
-					if (IsTileType(t, MP_WATER) == water) return dist;
+					if (HasTileWaterGround(t) == water) return dist;
 				}
 				x += dx;
 				y += dy;
