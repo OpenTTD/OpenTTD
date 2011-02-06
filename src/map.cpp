@@ -336,7 +336,6 @@ bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOn
  * @param tile  the tile to find the distance too
  * @param water whether to find water or land
  * @return distance to nearest water (max 0x7F) / land (max 0x1FF; 0x200 if there is no land)
- * @note FAILS when an industry should be seen as water
  */
 uint GetClosestWaterDistance(TileIndex tile, bool water)
 {
