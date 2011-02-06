@@ -151,8 +151,16 @@ int GroundVehicle<T, Type>::GetAcceleration() const
 	}
 
 	if (mode == AS_ACCEL) {
-		/* Divide by 4 to compensate for the wacky game scale. */
-		return (force - resistance) / (mass * 4);
+		/* Easy way out when there is no acceleration. */
+		if (force == resistance) return 0;
+
+		/* When we accelerate, make sure we always keep doing that, even when
+		 * the excess force is more than the mass. Otherwise a vehicle going
+		 * down hill will never slow down enough, and a vehicle that came up
+		 * a hill will never speed up enough to (eventually) get back to the
+		 * same (maximum) speed. */
+		int accel = (force - resistance) / (mass * 4);
+		return force < resistance ? min(-1, accel) : max(1, accel);
 	} else {
 		return min(-force - resistance, -10000) / mass;
 	}
