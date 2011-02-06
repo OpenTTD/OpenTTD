@@ -2010,7 +2010,7 @@ void IndustryBuildData::MonthlyLoop()
  */
 void GenerateIndustries()
 {
-	if (_settings_game.difficulty.number_industries == 0) return; // No industries.
+	if (_game_mode != GM_EDITOR && _settings_game.difficulty.number_industries == 0) return; // No industries in the game.
 
 	uint32 industry_probs[NUM_INDUSTRYTYPES];
 	bool force_at_least_one[NUM_INDUSTRYTYPES];
