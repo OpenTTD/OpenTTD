@@ -2265,6 +2265,12 @@ detect_sdl() {
 		return 0
 	fi
 
+	if [ "$os" = "OSX" ]; then
+		log 1 "WARNING: sdl is known to fail on some versions of Mac OS X"
+		log 1 "WARNING: with some hardware configurations. Use at own risk!"
+		sleep 5
+	fi
+
 	if [ "$with_sdl" = "1" ] || [ "$with_sdl" = "" ] || [ "$with_sdl" = "2" ]; then
 		sdl_config="sdl-config"
 	else

@@ -39,7 +39,6 @@ officially supporting Mac OS X again. For now it remains unsupported and
 we only apply bug fixes provided by the community but we are unable to fix
 these bugs ourselves.
 
-- 3447	[OSX] SDL port is unuseable
 - 2484	[OSX] Cannot enter CJK characters
 
 2.1) Known bugs that will not be solved
@@ -211,6 +210,15 @@ OpenTTD not properly resizing with SDL on X [FS#3305]
 	Window managers that are known to exhibit this behaviour are KDE's
 	and GNOME's. With the XFCE's and LXDE's window managers the resize
 	event is sent when the user releases the mouse.
+
+Incorrect colours, crashes upon exit, debug warnings and smears upon
+window resizing with SDL on Mac OS X [FS#3447]
+	Video handling with (lib)SDL under Mac OS X is known to fail on some
+	versions of Mac OS X with some hardware configurations. Some of the
+	problems happen only under some circumstances whereas others are
+	always present.
+	We suggest that the SDL video/sound backend is not used for OpenTTD
+	in combinations with Mac OS X.
 
 Train crashes entering same junction from block and path signals [FS#3928]
 	When a train has reserved a path from a path signal to a two way
