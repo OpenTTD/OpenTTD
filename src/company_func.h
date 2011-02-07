@@ -12,6 +12,7 @@
 #ifndef COMPANY_FUNC_H
 #define COMPANY_FUNC_H
 
+#include "command_type.h"
 #include "company_type.h"
 #include "tile_type.h"
 #include "gfx_type.h"
@@ -24,6 +25,12 @@ void ShowBuyCompanyDialog(CompanyID company);
 void CompanyAdminUpdate(const Company *company);
 void CompanyAdminBankrupt(CompanyID company_id);
 void UpdateLandscapingLimits();
+
+bool CheckCompanyHasMoney(CommandCost &cost);
+void SubtractMoneyFromCompany(CommandCost cost);
+void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cost);
+CommandCost CheckOwnership(Owner owner, TileIndex tile = 0);
+CommandCost CheckTileOwnership(TileIndex tile);
 
 extern CompanyByte _local_company;
 extern CompanyByte _current_company;

@@ -20,13 +20,6 @@ void DrawClearLandTile(const TileInfo *ti, byte set);
 void DrawClearLandFence(const TileInfo *ti);
 void TileLoopClearHelper(TileIndex tile);
 
-/* company_cmd.cpp */
-bool CheckCompanyHasMoney(CommandCost &cost);
-void SubtractMoneyFromCompany(CommandCost cost);
-void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cost);
-CommandCost CheckOwnership(Owner owner, TileIndex tile = 0);
-CommandCost CheckTileOwnership(TileIndex tile);
-
 /* misc functions */
 void MarkTileDirtyByTile(TileIndex tile);
 

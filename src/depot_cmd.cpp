@@ -12,7 +12,7 @@
 #include "stdafx.h"
 #include "command_func.h"
 #include "depot_base.h"
-#include "functions.h"
+#include "company_func.h"
 #include "string_func.h"
 #include "town.h"
 #include "vehicle_gui.h"

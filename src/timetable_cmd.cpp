@@ -11,7 +11,7 @@
 
 #include "stdafx.h"
 #include "command_func.h"
-#include "functions.h"
+#include "company_func.h"
 #include "date_func.h"
 #include "window_func.h"
 #include "vehicle_base.h"
