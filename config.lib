@@ -6,8 +6,13 @@
 # See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
 
 log() {
-	if [ $1 = "1" ]; then echo "$2"; fi
-	echo "$2" >> $config_log
+	if [ $1 = "1" ]; then
+		shift
+		echo "$@"
+	else
+		shift
+	fi
+	echo "$@" >> $config_log
 }
 
 set_default() {
@@ -455,6 +460,7 @@ detect_params() {
 
 	# Clean the logfile
 	echo "" > $config_log
+	log 2 "Invocation: $0 $*"
 }
 
 save_params() {
@@ -531,7 +537,7 @@ check_params() {
 	check_build
 	check_host
 
-# Check for universal builds; they only make sense for OSX, so fail if enabled for another OS
+	# Check for universal builds; they only make sense for OSX, so fail if enabled for another OS
 	if [ "$enable_universal" = "0" ]; then
 		log 1 "checking universal build... no"
 	else
