@@ -1781,17 +1781,19 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			cur_company.Restore();
 		}
 	} else {
-		int count = indspec->num_table;
-		int num = GB(p1, 8, 8);
-		if (num >= count) return CMD_ERROR;
+		int num_layouts = indspec->num_table;
+		int layout = GB(p1, 8, 8);
+		if (layout >= num_layouts) return CMD_ERROR;
 
 		CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
-		do {
-			if (--count < 0) return ret;
-			if (--num < 0) num = indspec->num_table - 1;
-			ret = CreateNewIndustryHelper(tile, it, flags, indspec, num, random_var8f, random_initial_bits, _current_company, IACT_USERCREATION, &ind);
-		} while (ret.Failed());
+		/* Check subsequently each layout, starting with the given layout in p1 */
+		for (int i = 0; i < num_layouts; i++) {
+			layout = (layout + 1) % num_layouts;
+			ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, _current_company, IACT_USERCREATION, &ind);
+			if (ret.Succeeded()) break;
+		}
 
+		/* If it still failed, there's no suitable layout to build here, return the error */
 		if (ret.Failed()) return ret;
 	}
 
