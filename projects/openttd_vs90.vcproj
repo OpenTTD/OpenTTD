@@ -824,6 +824,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\clear_func.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\cmd_helper.h"
 				>
 			</File>
@@ -985,10 +989,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\fontcache.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\functions.h"
 				>
 			</File>
 			<File

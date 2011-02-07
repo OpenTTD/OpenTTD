@@ -18,7 +18,7 @@
 #include "bridge_map.h"
 #include "genworld.h"
 #include "autoslope.h"
-#include "functions.h"
+#include "clear_func.h"
 #include "water.h"
 #include "window_func.h"
 #include "company_gui.h"

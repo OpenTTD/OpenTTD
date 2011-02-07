@@ -388,6 +388,7 @@
     <ClInclude Include="..\src\cargotype.h" />
     <ClInclude Include="..\src\cheat_func.h" />
     <ClInclude Include="..\src\cheat_type.h" />
+    <ClInclude Include="..\src\clear_func.h" />
     <ClInclude Include="..\src\cmd_helper.h" />
     <ClInclude Include="..\src\command_func.h" />
     <ClInclude Include="..\src\command_type.h" />
@@ -429,7 +430,6 @@
     <ClInclude Include="..\src\fileio_type.h" />
     <ClInclude Include="..\src\fios.h" />
     <ClInclude Include="..\src\fontcache.h" />
-    <ClInclude Include="..\src\functions.h" />
     <ClInclude Include="..\src\gamelog.h" />
     <ClInclude Include="..\src\gamelog_internal.h" />
     <ClInclude Include="..\src\genworld.h" />

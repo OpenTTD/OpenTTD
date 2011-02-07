@@ -121,6 +121,7 @@ cargopacket.h
 cargotype.h
 cheat_func.h
 cheat_type.h
+clear_func.h
 cmd_helper.h
 command_func.h
 command_type.h
@@ -162,7 +163,6 @@ fileio_func.h
 fileio_type.h
 fios.h
 fontcache.h
-functions.h
 gamelog.h
 gamelog_internal.h
 genworld.h

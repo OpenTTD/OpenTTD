@@ -19,7 +19,7 @@
 #include "town.h"
 #include "genworld.h"
 #include "transparency.h"
-#include "functions.h"
+#include "clear_func.h"
 #include "company_func.h"
 #include "sound_func.h"
 #include "water_map.h"

@@ -29,7 +29,7 @@
 #include "water.h"
 #include "station_gui.h"
 #include "strings_func.h"
-#include "functions.h"
+#include "clear_func.h"
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"

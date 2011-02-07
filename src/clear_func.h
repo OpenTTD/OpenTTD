@@ -7,17 +7,16 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file functions.h Some generic functions that actually shouldn't be here. */
+/** @file clear_func.h Functions related to clear (MP_CLEAR) land. */
 
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#ifndef CLEAR_FUNC_H
+#define CLEAR_FUNC_H
 
 #include "tile_cmd.h"
 
-/* clear_land.cpp */
 void DrawHillyLandTile(const TileInfo *ti);
 void DrawClearLandTile(const TileInfo *ti, byte set);
 void DrawClearLandFence(const TileInfo *ti);
 void TileLoopClearHelper(TileIndex tile);
 
-#endif /* FUNCTIONS_H */
+#endif /* CLEAR_FUNC_H */

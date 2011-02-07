@@ -15,7 +15,7 @@
 #include "landscape.h"
 #include "genworld.h"
 #include "landscape_type.h"
-#include "functions.h"
+#include "clear_func.h"
 #include "economy_func.h"
 #include "viewport_func.h"
 #include "water.h"
