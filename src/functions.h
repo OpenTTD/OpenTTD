@@ -26,10 +26,4 @@ void MarkTileDirtyByTile(TileIndex tile);
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
 void ShowFeederIncomeAnimation(int x, int y, int z, Money cost);
 
-void AskExitGame();
-void AskExitToGameMenu();
-
-int ttd_main(int argc, char *argv[]);
-void HandleExitGameRequest();
-
 #endif /* FUNCTIONS_H */

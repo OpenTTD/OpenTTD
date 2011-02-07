@@ -66,4 +66,10 @@ typedef SimpleTinyEnumT<PauseMode, byte> PauseModeByte;
 /** The current pause mode */
 extern PauseModeByte _pause_mode;
 
+void AskExitGame();
+void AskExitToGameMenu();
+
+int ttd_main(int argc, char *argv[]);
+void HandleExitGameRequest();
+
 #endif /* OPENTTD_H */
