@@ -19,7 +19,7 @@
 #include "newgrf_storage.h"
 #include "strings_func.h"
 #include "gfx_func.h"
-#include "functions.h"
+#include "texteff.hpp"
 #include "town.h"
 #include "date_func.h"
 #include "company_func.h"

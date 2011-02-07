@@ -23,7 +23,4 @@ void TileLoopClearHelper(TileIndex tile);
 /* misc functions */
 void MarkTileDirtyByTile(TileIndex tile);
 
-void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
-void ShowFeederIncomeAnimation(int x, int y, int z, Money cost);
-
 #endif /* FUNCTIONS_H */

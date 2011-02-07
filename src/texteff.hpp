@@ -12,6 +12,7 @@
 #ifndef TEXTEFF_HPP
 #define TEXTEFF_HPP
 
+#include "economy_type.h"
 #include "gfx_type.h"
 #include "strings_type.h"
 
@@ -38,5 +39,8 @@ void RemoveTextEffect(TextEffectID effect_id);
 TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID colour);
 void UpdateFillingPercent(TextEffectID te_id, uint8 percent, StringID colour);
 void HideFillingPercent(TextEffectID *te_id);
+
+void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
+void ShowFeederIncomeAnimation(int x, int y, int z, Money cost);
 
 #endif /* TEXTEFF_HPP */
