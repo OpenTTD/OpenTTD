@@ -34,7 +34,6 @@
 #include "string_func.h"
 #include "newgrf_cargo.h"
 #include "cheat_type.h"
-#include "functions.h"
 #include "animated_tile_func.h"
 #include "date_func.h"
 #include "subsidy_func.h"

@@ -22,7 +22,6 @@
 #include "tgp.h"
 #include "genworld.h"
 #include "fios.h"
-#include "functions.h"
 #include "date_func.h"
 #include "water.h"
 #include "effectvehicle_func.h"

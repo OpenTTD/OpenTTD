@@ -29,7 +29,6 @@
 #include "group_gui.h"
 #include "strings_func.h"
 #include "zoom_func.h"
-#include "functions.h"
 #include "date_func.h"
 #include "window_func.h"
 #include "vehicle_func.h"

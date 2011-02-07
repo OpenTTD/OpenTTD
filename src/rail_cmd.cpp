@@ -25,7 +25,6 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "tunnelbridge.h"
-#include "functions.h"
 #include "elrail_func.h"
 #include "town.h"
 #include "pbs.h"

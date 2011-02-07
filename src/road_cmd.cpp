@@ -25,7 +25,6 @@
 #include "sound_func.h"
 #include "tunnelbridge.h"
 #include "cheat_type.h"
-#include "functions.h"
 #include "effectvehicle_func.h"
 #include "effectvehicle_base.h"
 #include "elrail_func.h"

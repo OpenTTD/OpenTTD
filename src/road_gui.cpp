@@ -18,7 +18,6 @@
 #include "command_func.h"
 #include "road_cmd.h"
 #include "station_func.h"
-#include "functions.h"
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"

@@ -22,7 +22,6 @@
 #include "industry_map.h"
 #include "newgrf_canal.h"
 #include "strings_func.h"
-#include "functions.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "company_func.h"

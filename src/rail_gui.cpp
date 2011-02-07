@@ -20,7 +20,6 @@
 #include "newgrf_station.h"
 #include "company_base.h"
 #include "strings_func.h"
-#include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
 #include "sound_func.h"
