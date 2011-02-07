@@ -1027,6 +1027,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Reacţi
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Nimic
+STR_FUNDING_ONLY                                                :Doar finanțare
+STR_MINIMAL                                                     :Minim
 STR_NUM_VERY_LOW                                                :Foarte scăzut
 STR_NUM_LOW                                                     :Scăzut
 STR_NUM_NORMAL                                                  :Normal
@@ -1094,6 +1096,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permite
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permite arii de cuprindere mai realiste: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Lungimea maximă a trenurilor: {ORANGE}{STRING} dale{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Cantitatea de fum/ scântei ale locomotivei: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Deloc
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1112,6 +1115,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Folose�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Încarcă vehiculele gradual: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflaţia: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Livrează marfa doar în staţiile unde aceasta este cerută: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Lungimea maximă a podurilor: {ORANGE}{STRING} dale{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Lungimea maximă a tunelurilor: {ORANGE}{STRING} dale{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metoda manuală de construcţie a industriilor primare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :niciuna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ca alte industrii
@@ -1129,6 +1134,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Autoveh
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Mută imaginea când mouse-ul este la marginea ecranului: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permite mituirea autorităţilor locale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permite cumpărarea de drepturi exclusive de transport: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permite finanțarea reconstrucției străzilor locale: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permite transfer de bani către alte companii: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicator greutate pt marfar pt simularea trenurilor grele: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Factor de viteză pentru avioane: {ORANGE}1 / {STRING}
@@ -1353,6 +1359,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algorit
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomandat)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nerecomandat)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Întoarcere automată la semafoare: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Schimbă valoarea setării
 
@@ -3251,6 +3258,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferă - p
 STR_ORDER_NO_UNLOAD                                             :(Nu descărca şi preia încărcătura)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nu descărca şi aşteaptă încărcare maximă)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nu descărca şi aşteaptă orice încărcătură)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Fără încărcare sau descărcare)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[la capatul apropiat]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[la mijloc]
@@ -3592,7 +3600,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... treb
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trenurile pot fi modificate doar când staţionează într-un depou
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren prea lung
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nu se poate inversa direcţia vehiculului...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nu se pot întoarce vehiculele alcătuite din mai multe unităţi
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... este alcătui din mai multe unități
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipuri de sine incompatibile
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nu se poate muta vehiculul...
@@ -3666,6 +3674,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Mai înt
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Intersectare cu alt tunel
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunelul ar ieşi din hartă
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Terenul de la celălalt capăt al tunelului este imposibil de excavat
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... Tunel prea lung
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... prea multe obiecte

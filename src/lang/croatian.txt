@@ -1123,6 +1123,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Stav gr
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Ništa
+STR_FUNDING_ONLY                                                :Samo financiranje
+STR_MINIMAL                                                     :Minimalno
 STR_NUM_VERY_LOW                                                :Vrlo nisko
 STR_NUM_LOW                                                     :Nisko
 STR_NUM_NORMAL                                                  :Normalno
@@ -1190,6 +1192,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Dopusti
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Dopusti modeliranje zemlje ispod građevina, tračnica, itd (autonagib): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Dopusti realističnije veličine područja zahvaćanja: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Dopusti rušenje više cesta, mostova i tunela u vlasništvu grada: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Najveća dužina vlakova: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Količina dima/iskri za lokomotive: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nema
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1208,6 +1211,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Koristi
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Postupno utovaruj u vozila: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflacija: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Dostavi teret na postaju samo ako na njoj postoji potražnja: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Najveća dužina mostova: {ORANGE}{STRING} tile{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Najveća dužina tunela: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Ručna metoda izgradnje primarne industrije: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nijedna
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kao i druge industrije
@@ -1225,6 +1230,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Nizanje
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Pomakni prozor kada je miš na rubu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Dopusti potkupljivanje lokalne samouprave: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Dopusti kupovinu ekskluzivnih prijevoznih prava: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Dozvoli financiranje rekonstrukcije lokalnih cesta: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Dopusti slanje novca drugim tvrtkama: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Težinski množitelj za teret za simulaciju teških vlakova: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor brzine zrakoplova: {ORANGE}1 / {STRING}
@@ -1449,6 +1455,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pronala
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Preporučljivo)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nije preporučljivo)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatsko okretanje na signalima: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Promijeni vrijednost postavke
 
@@ -3346,7 +3353,8 @@ STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferiraj i
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferiraj i otiđi prazan)
 STR_ORDER_NO_UNLOAD                                             :(Preuzmi teret bez iskrcavanja)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Čekaj puni ukrcaj bez iskrcavanja)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Čeaj bilo koji puni ukrcaj bez iskrcavanja)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Čekaj bilo koji puni ukrcaj bez iskrcavanja)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Bez iskrcaja i bez ukrcaja)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[početak]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[sredina]
@@ -3688,7 +3696,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... mora
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlakovi mogu biti izmjenjeni jedino kad su zaustavljeni u spremištu
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Predugačak vlak
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nije moguće promjeniti smjer vozila...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Nije moguće promijeniti smjer vozila koja se sastoje od više jedinica...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... sastoji se od više jedinica
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Nekompatibilna vrsta tračnica
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nije moguće ukloniti vozilo...
@@ -3762,6 +3770,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Najprije
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Smeta drugi tunel
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunel bi završio izvan karte
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Ne moguće iskopoati zemlju na drugoj strani tunela
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunel predugačak
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... previše objekata

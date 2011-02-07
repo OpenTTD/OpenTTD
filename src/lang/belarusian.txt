@@ -3818,7 +3818,7 @@ STR_ERROR_ALREADY_BUILT                                         :{WHITE}... уж
 STR_ERROR_OWNED_BY                                              :{WHITE}... належыць {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... участак належыць іншай кампаніі
 STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... дасягнуты лiмiт ляндшафтных зьменаў
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... лiмiт ачышчаных клетак дасягнуты
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... дасягнута абмежаваньне па колькасці ачышчаных клетак
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Імя павінна быць унікальным
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} на шляху
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Забаронена падчас паўзы
@@ -3969,7 +3969,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Няправі�
 
 # Autoreplace related errors
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}ТС «{VEHICLE}» занадта доўгі пасьля замены
-STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Няма да чаго ўжыць правілы аўтазамены/абнаўленьня
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Правілы аўтазамены/абнаўленьня не былі ўжыты
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(мала грошай)
 
 # Rail construction errors

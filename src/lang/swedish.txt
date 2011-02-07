@@ -1027,6 +1027,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Stadens
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Ingen
+STR_FUNDING_ONLY                                                :Endast finansiering
+STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Väldigt låg
 STR_NUM_LOW                                                     :Låg
 STR_NUM_NORMAL                                                  :Normal
@@ -1094,6 +1096,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Tillåt
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Tillåt landskapsarkitektur under byggnader, spår, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Tillåt mer realistiska uppsamlingsområden för stationer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Tillåt borttagning av fler stadsägda vägar, broar och tunnlar: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximal längd för tåg: {ORANGE}{STRING} rut{P 0:1 a or}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Mängden rök/gnistor från fordon: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Ingen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1112,6 +1115,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Använd
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Lasta fordon gradvis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Leverera gods till en station enbart om någon frågar efter det: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maximal brolängd: {ORANGE}{STRING} rut{P 0:1 a or}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maximal tunnellängd {ORANGE}{STRING} rut{P 0:1 a or}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuell prioritering för industrins konstruktionsmetod: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Inget
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Som andra industrier
@@ -1129,6 +1134,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Vägfor
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Scrolla vyn när musen är vid kanten: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Tillåt mutning av de lokala myndigheterna: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillåt köp av exklusiva transporträttigheter: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Tillåt finansiering av lokal vägrekonstruktion: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillåt skicka pengar till andra företag: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Godsfaktor för att simulera tunga tåg: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Hastighetsfaktor för flygplan: {ORANGE}1 / {STRING}
@@ -1353,6 +1359,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Vägfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Rekommenderad)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ej rekommenderad)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Backa automatiskt vid signaler: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ändra inställningsvärde
 
@@ -3251,6 +3258,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Överför och 
 STR_ORDER_NO_UNLOAD                                             :(Lasta ej av men lasta på)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ladda ej av men vänta på full last)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ladda ej av men vänta på full last av någon frakttyp)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Lasta ej av och lasta ej)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[början]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[mitten]
@@ -3666,6 +3674,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Måste r
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}En annan tunnel i vägen
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunneln slutar utanför kartans gränser
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kan inte gräva till marken på andra sidan av tunneln
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunnel för lång
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... för många objekt

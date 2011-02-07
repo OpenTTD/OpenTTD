@@ -3015,7 +3015,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Reformar
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Reformar barco para que transporte otro tipo de carga
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Reformar aeronave para llevar otro tipo de carga
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Revertir dirección del tren
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Cambiar dirección del tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Forzar vehículo a girar
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Ver órdenes del tren. Ctrl+Click muestra su horario
@@ -3600,7 +3600,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... debe
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Los trenes únicamente pueden ser modificarse estando detenidos dentro de un depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren demasiado largo
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}No se puede invertir dirección del vehículo...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}No se puede cambiar dirección del vehículo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... vehículo compuesto por múltiples unidades
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipo de ferrocarril incompatible
 
@@ -3746,7 +3746,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... el v
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No se puede pasar la señal en peligro al tren...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No se puede revertir la dirección...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}No se puede cambiar la dirección...
 STR_ERROR_TRAIN_START_NO_CATENARY                               :Esta vía carece la catenaria, así que el tren no puede comenzar
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}No se puede girar vehículo de carretera...
