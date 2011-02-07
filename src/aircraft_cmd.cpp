@@ -26,7 +26,6 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
-#include "functions.h"
 #include "cheat_type.h"
 #include "company_base.h"
 #include "ai/ai.hpp"

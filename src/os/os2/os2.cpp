@@ -14,7 +14,7 @@
 #include "../../gui.h"
 #include "../../fileio_func.h"
 #include "../../fios.h"
-#include "../../functions.h"
+#include "../../openttd.h"
 #include "../../core/random_func.hpp"
 #include "../../string_func.h"
 #include "../../textbuf_gui.h"

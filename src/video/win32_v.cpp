@@ -18,7 +18,6 @@
 #include "../network/network.h"
 #include "../core/math_func.hpp"
 #include "../core/random_func.hpp"
-#include "../functions.h"
 #include "../texteff.hpp"
 #include "win32_v.h"
 #include <windows.h>

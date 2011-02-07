@@ -20,7 +20,7 @@
 #include <shlobj.h> /* SHGetFolderPath */
 #include "win32.h"
 #include "../../core/alloc_func.hpp"
-#include "../../functions.h"
+#include "../../openttd.h"
 #include "../../core/random_func.hpp"
 #include "../../string_func.h"
 #include "../../crashlog.h"

@@ -23,7 +23,7 @@
 #include "../blitter/factory.hpp"
 #include "../network/network.h"
 #include "../core/random_func.hpp"
-#include "../functions.h"
+#include "../core/math_func.hpp"
 #include "allegro_v.h"
 #include <allegro.h>
 

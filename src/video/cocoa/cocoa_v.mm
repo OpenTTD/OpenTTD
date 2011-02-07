@@ -31,7 +31,6 @@
 #include "../../blitter/factory.hpp"
 #include "../../fileio_func.h"
 #include "../../gfx_func.h"
-#include "../../functions.h"
 
 #import <sys/param.h> /* for MAXPATHLEN */
 

@@ -17,7 +17,6 @@
 #include "news_func.h"
 #include "vehicle_gui.h"
 #include "strings_func.h"
-#include "functions.h"
 #include "window_func.h"
 #include "timetable.h"
 #include "vehicle_func.h"

@@ -20,7 +20,6 @@
 #include "train.h"
 #include "aircraft.h"
 #include "newgrf_text.h"
-#include "functions.h"
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "string_func.h"

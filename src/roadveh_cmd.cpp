@@ -22,7 +22,6 @@
 #include "pathfinder/yapf/yapf.h"
 #include "strings_func.h"
 #include "tunnelbridge_map.h"
-#include "functions.h"
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"

@@ -11,7 +11,7 @@
 
 #include "../../stdafx.h"
 #include "../../textbuf_gui.h"
-#include "../../functions.h"
+#include "../../openttd.h"
 #include "../../crashlog.h"
 #include "../../core/random_func.hpp"
 

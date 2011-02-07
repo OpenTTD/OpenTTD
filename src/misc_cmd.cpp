@@ -17,7 +17,6 @@
 #include "network/network.h"
 #include "network/network_func.h"
 #include "strings_func.h"
-#include "functions.h"
 #include "company_func.h"
 #include "company_gui.h"
 #include "company_base.h"
