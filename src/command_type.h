@@ -343,6 +343,7 @@ enum CommandType {
 	CMDT_OTHER_MANAGEMENT,       ///< Renaming stuff, changing company colours, placing signs, etc.
 	CMDT_COMPANY_SETTING,        ///< Changing settings related to a company.
 	CMDT_SERVER_SETTING,         ///< Pausing/removing companies/server settings.
+	CMDT_CHEAT,                  ///< A cheat of some sorts.
 
 	CMDT_END,                    ///< Magic end marker.
 };
