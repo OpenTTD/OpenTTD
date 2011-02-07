@@ -1759,6 +1759,8 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	randomizer.SetSeed(p2);
 	uint16 random_initial_bits = GB(p2, 0, 16);
 	uint32 random_var8f = randomizer.Next();
+	int num_layouts = indspec->num_table;
+	CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
 
 	Industry *ind = NULL;
 	if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
@@ -1774,18 +1776,23 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 					 * because parameter evaluation order is not guaranteed in the c++ standard
 					 */
 					tile = RandomTile();
-					CommandCost ret = CreateNewIndustryHelper(tile, it, flags, indspec, RandomRange(indspec->num_table), random_var8f, random_initial_bits, cur_company.GetOriginalValue(), IACT_PROSPECTCREATION, &ind);
+					/* Start with a random layout */
+					int layout = RandomRange(num_layouts);
+					/* Check now each layout, starting with the random one */
+					for (int j = 0; j < num_layouts; j++) {
+						layout = (layout + 1) % num_layouts;
+						ret = CreateNewIndustryHelper(tile, it, flags, indspec, layout, random_var8f, random_initial_bits, cur_company.GetOriginalValue(), IACT_PROSPECTCREATION, &ind);
+						if (ret.Succeeded()) break;
+					}
 					if (ret.Succeeded()) break;
 				}
 			}
 			cur_company.Restore();
 		}
 	} else {
-		int num_layouts = indspec->num_table;
 		int layout = GB(p1, 8, 8);
 		if (layout >= num_layouts) return CMD_ERROR;
 
-		CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
 		/* Check subsequently each layout, starting with the given layout in p1 */
 		for (int i = 0; i < num_layouts; i++) {
 			layout = (layout + 1) % num_layouts;
