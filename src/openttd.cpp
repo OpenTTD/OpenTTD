@@ -204,7 +204,7 @@ static void ShowHelp()
 	/* We need to initialize the AI, so it finds the AIs */
 	TarScanner::DoScan();
 	AI::Initialize();
-	p = AI::GetConsoleList(p, lastof(buf));
+	p = AI::GetConsoleList(p, lastof(buf), true);
 	AI::Uninitialize(true);
 
 	/* ShowInfo put output to stderr, but version information should go

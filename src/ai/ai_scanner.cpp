@@ -330,11 +330,12 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam, bool force_
 	return info;
 }
 
-char *AIScanner::GetAIConsoleList(char *p, const char *last) const
+char *AIScanner::GetAIConsoleList(char *p, const char *last, bool newest_only) const
 {
 	p += seprintf(p, last, "List of AIs:\n");
-	AIInfoList::const_iterator it = this->info_list.begin();
-	for (; it != this->info_list.end(); it++) {
+	const AIInfoList &list = newest_only ? this->info_single_list : this->info_list;
+	AIInfoList::const_iterator it = list.begin();
+	for (; it != list.end(); it++) {
 		AIInfo *i = (*it).second;
 		p += seprintf(p, last, "%10s (v%d): %s\n", i->GetName(), i->GetVersion(), i->GetDescription());
 	}

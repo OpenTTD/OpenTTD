@@ -53,7 +53,7 @@ public:
 	/**
 	 * Get the list of available AIs for the console.
 	 */
-	char *GetAIConsoleList(char *p, const char *last) const;
+	char *GetAIConsoleList(char *p, const char *last, bool newest_only) const;
 
 	/**
 	 * Get the list of available AI Libraries for the console.

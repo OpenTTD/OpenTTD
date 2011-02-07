@@ -125,7 +125,7 @@ public:
 	static int GetStartNextTime();
 
 	/** Wrapper function for AIScanner::GetAIConsoleList */
-	static char *GetConsoleList(char *p, const char *last);
+	static char *GetConsoleList(char *p, const char *last, bool newest_only = false);
 	/** Wrapper function for AIScanner::GetAIConsoleLibraryList */
 	static char *GetConsoleLibraryList(char *p, const char *last);
 	/** Wrapper function for AIScanner::GetAIInfoList */

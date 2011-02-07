@@ -289,9 +289,9 @@ void CcAI(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2)
 	return DAYS_IN_YEAR;
 }
 
-/* static */ char *AI::GetConsoleList(char *p, const char *last)
+/* static */ char *AI::GetConsoleList(char *p, const char *last, bool newest_only)
 {
-	return AI::ai_scanner->GetAIConsoleList(p, last);
+	return AI::ai_scanner->GetAIConsoleList(p, last, newest_only);
 }
 
 /* static */ char *AI::GetConsoleLibraryList(char *p, const char *last)
