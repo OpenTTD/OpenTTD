@@ -1782,20 +1782,16 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		}
 	} else {
 		int count = indspec->num_table;
-		const IndustryTileTable * const *itt = indspec->table;
 		int num = GB(p1, 8, 8);
 		if (num >= count) return CMD_ERROR;
 
 		CommandCost ret = CommandCost(STR_ERROR_SITE_UNSUITABLE);
-		SmallVector<ClearedObjectArea, 1> object_areas(_cleared_object_areas);
 		do {
 			if (--count < 0) return ret;
 			if (--num < 0) num = indspec->num_table - 1;
-			ret = CheckIfIndustryTilesAreFree(tile, itt[num], num, it, random_initial_bits, _current_company, IACT_USERCREATION);
-			_cleared_object_areas = object_areas;
+			ret = CreateNewIndustryHelper(tile, it, flags, indspec, num, random_var8f, random_initial_bits, _current_company, IACT_USERCREATION, &ind);
 		} while (ret.Failed());
 
-		ret = CreateNewIndustryHelper(tile, it, flags, indspec, num, random_var8f, random_initial_bits, _current_company, IACT_USERCREATION, &ind);
 		if (ret.Failed()) return ret;
 	}
 
