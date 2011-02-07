@@ -16,7 +16,7 @@
 #include "yapf_node_rail.hpp"
 #include "yapf_costrail.hpp"
 #include "yapf_destrail.hpp"
-#include "../../functions.h"
+#include "../../viewport_func.h"
 
 #define DEBUG_YAPF_CACHE 0
 

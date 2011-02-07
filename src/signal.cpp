@@ -14,7 +14,7 @@
 #include "station_map.h"
 #include "tunnelbridge_map.h"
 #include "vehicle_func.h"
-#include "functions.h"
+#include "viewport_func.h"
 #include "train.h"
 #include "company_base.h"
 

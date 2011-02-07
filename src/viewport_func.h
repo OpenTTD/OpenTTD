@@ -74,4 +74,6 @@ void UpdateAllVirtCoords();
 
 extern Point _tile_fract_coords;
 
+void MarkTileDirtyByTile(TileIndex tile);
+
 #endif /* VIEWPORT_FUNC_H */

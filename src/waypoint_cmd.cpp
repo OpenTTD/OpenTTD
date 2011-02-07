@@ -19,7 +19,7 @@
 #include "waypoint_base.h"
 #include "pathfinder/yapf/yapf_cache.h"
 #include "strings_func.h"
-#include "functions.h"
+#include "viewport_func.h"
 #include "window_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"

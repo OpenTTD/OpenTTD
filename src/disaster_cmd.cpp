@@ -34,7 +34,7 @@
 #include "company_func.h"
 #include "strings_func.h"
 #include "date_func.h"
-#include "functions.h"
+#include "viewport_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "effectvehicle_func.h"

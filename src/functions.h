@@ -20,7 +20,4 @@ void DrawClearLandTile(const TileInfo *ti, byte set);
 void DrawClearLandFence(const TileInfo *ti);
 void TileLoopClearHelper(TileIndex tile);
 
-/* misc functions */
-void MarkTileDirtyByTile(TileIndex tile);
-
 #endif /* FUNCTIONS_H */

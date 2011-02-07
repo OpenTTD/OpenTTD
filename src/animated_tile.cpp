@@ -11,7 +11,8 @@
 
 #include "stdafx.h"
 #include "core/alloc_func.hpp"
-#include "functions.h"
+#include "tile_cmd.h"
+#include "viewport_func.h"
 
 /** The table/list with animated tiles. */
 TileIndex *_animated_tile_list = NULL;

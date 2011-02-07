@@ -18,7 +18,7 @@
 #include "../gamelog_internal.h"
 #include "../network/network.h"
 #include "../gfxinit.h"
-#include "../functions.h"
+#include "../viewport_func.h"
 #include "../industry.h"
 #include "../clear_map.h"
 #include "../vehicle_func.h"

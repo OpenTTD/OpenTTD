@@ -10,7 +10,7 @@
 /** @file pbs.cpp PBS support routines */
 
 #include "stdafx.h"
-#include "functions.h"
+#include "viewport_func.h"
 #include "vehicle_func.h"
 #include "pathfinder/follow_track.hpp"
 

@@ -13,7 +13,7 @@
 #include "command_func.h"
 #include "tunnel_map.h"
 #include "bridge_map.h"
-#include "functions.h"
+#include "viewport_func.h"
 #include "economy_func.h"
 #include "genworld.h"
 #include "object_base.h"

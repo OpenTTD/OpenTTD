@@ -13,7 +13,7 @@
 #include "company_func.h"
 #include "company_base.h"
 #include "roadveh.h"
-#include "functions.h"
+#include "viewport_func.h"
 #include "window_func.h"
 #include "date_func.h"
 #include "command_func.h"

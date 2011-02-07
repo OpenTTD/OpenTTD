@@ -12,7 +12,7 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../network/network.h"
-#include "../../functions.h"
+#include "../../viewport_func.h"
 #include "../../ship.h"
 #include "../../roadstop_base.h"
 #include "../pathfinder_func.h"

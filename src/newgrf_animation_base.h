@@ -14,7 +14,7 @@
 #include "animated_tile_func.h"
 #include "core/random_func.hpp"
 #include "date_func.h"
-#include "functions.h"
+#include "viewport_func.h"
 #include "newgrf_animation_type.h"
 #include "newgrf_callbacks.h"
 
