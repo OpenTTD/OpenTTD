@@ -50,6 +50,7 @@
 #include "effectvehicle_func.h"
 #include "effectvehicle_base.h"
 #include "vehiclelist.h"
+#include "bridge_map.h"
 #include "tunnel_map.h"
 #include "depot_map.h"
 
@@ -2108,11 +2109,13 @@ void Vehicle::ShowVisualEffect() const
 		/* Show no smoke when:
 		 * - Smoke has been disabled for this vehicle
 		 * - The vehicle is not visible
+		 * - The vehicle is under a bridge
 		 * - The vehicle is on a depot tile
 		 * - The vehicle is on a tunnel tile
 		 * - The vehicle is a train engine that is currently unpowered */
 		if (disable_effect ||
 				v->vehstatus & VS_HIDDEN ||
+				(MayHaveBridgeAbove(v->tile) && IsBridgeAbove(v->tile)) ||
 				IsDepotTile(v->tile) ||
 				IsTunnelTile(v->tile) ||
 				(v->type == VEH_TRAIN &&
