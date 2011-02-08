@@ -270,6 +270,11 @@ void AfterLoadVehicles(bool part_of_load)
 				if (IsSavegameVersionBefore(105)) { // Pre-105 didn't save an OrderList
 					if (mapping[v->orders.old] == NULL) {
 						/* This adds the whole shared vehicle chain for case b */
+
+						/* Creating an OrderList here is safe because the number of vehicles
+						 * allowed in these savegames matches the number of OrderLists. As
+						 * such each vehicle can get an OrderList and it will (still) fit. */
+						assert(OrderList::CanAllocateItem());
 						v->orders.list = mapping[v->orders.old] = new OrderList(v->orders.old, v);
 					} else {
 						v->orders.list = mapping[v->orders.old];
@@ -752,7 +757,7 @@ void Load_VEHS()
 
 		SlObject(v, GetVehicleDescription(vtype));
 
-		if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v)) {
+		if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v) && CargoPacket::CanAllocateItem()) {
 			/* Don't construct the packet with station here, because that'll fail with old savegames */
 			CargoPacket *cp = new CargoPacket(_cargo_count, _cargo_days, _cargo_source, _cargo_source_xy, _cargo_loaded_at_xy, _cargo_feeder_share);
 			v->cargo.Append(cp);

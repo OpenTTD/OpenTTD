@@ -472,7 +472,7 @@ static void SlNullPointers()
  * @note This function does never return as it throws an exception to
  *       break out of all the saveload code.
  */
-static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
+void NORETURN SlError(StringID string, const char *extra_msg)
 {
 	/* Distinguish between loading into _load_check_data vs. normal save/load. */
 	if (_sl.action == SLA_LOAD_CHECK) {

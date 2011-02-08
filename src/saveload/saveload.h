@@ -13,6 +13,7 @@
 #define SAVELOAD_H
 
 #include "../fileio_type.h"
+#include "../strings_type.h"
 
 #ifdef SIZE_MAX
 #undef SIZE_MAX
@@ -539,6 +540,7 @@ void SlGlobList(const SaveLoadGlobVarList *sldg);
 void SlArray(void *array, size_t length, VarType conv);
 void SlObject(void *object, const SaveLoad *sld);
 bool SlObjectMember(void *object, const SaveLoad *sld);
+void NORETURN SlError(StringID string, const char *extra_msg = NULL);
 void NORETURN SlErrorCorrupt(const char *msg);
 
 bool SaveloadCrashWithMissingNewGRFs();

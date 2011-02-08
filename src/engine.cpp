@@ -497,6 +497,9 @@ void SetCachedEngineCounts()
 	}
 }
 
+/**
+ * Initialise the engine pool with the data from the original vehicles.
+ */
 void SetupEngines()
 {
 	DeleteWindowByClass(WC_ENGINE_PREVIEW);
@@ -506,6 +509,9 @@ void SetupEngines()
 	const EngineIDMapping *end = _engine_mngr.End();
 	uint index = 0;
 	for (const EngineIDMapping *eid = _engine_mngr.Begin(); eid != end; eid++, index++) {
+		/* Assert is safe; there won't be more than 256 original vehicles
+		 * in any case, and we just cleaned the pool. */
+		assert(Engine::CanAllocateItem());
 		const Engine *e = new Engine(eid->type, eid->internal_id);
 		assert(e->index == index);
 	}

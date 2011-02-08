@@ -284,7 +284,11 @@ static void Load_STNS()
 					/* In old versions, enroute_from used 0xFF as INVALID_STATION */
 					StationID source = (IsSavegameVersionBefore(7) && _cargo_source == 0xFF) ? INVALID_STATION : _cargo_source;
 
-					/* Don't construct the packet with station here, because that'll fail with old savegames */
+					/* Make sure we can allocate the CargoPacket. This is safe
+					 * as there can only be ~64k stations and 32 cargos in these
+					 * savegame versions. As the CargoPacketPool has more than
+					 * 16 million entries; it fits by an order of magnitude. */
+					assert(CargoPacket::CanAllocateItem());
 					ge->cargo.Append(new CargoPacket(GB(_waiting_acceptance, 0, 12), _cargo_days, source, _cargo_source_xy, _cargo_source_xy, _cargo_feeder_share));
 					SB(ge->acceptance_pickup, GoodsEntry::PICKUP, 1, 1);
 				}
