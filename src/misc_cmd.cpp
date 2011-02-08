@@ -190,8 +190,6 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
 
 /**
  * Change the financial flow of your company.
- * This is normally only enabled in offline mode, but if there is a debug
- * build, you can cheat (to test).
  * @param tile unused
  * @param flags operation to perform
  * @param p1 the amount of money to receive (if negative), or spend (if positive)
@@ -201,9 +199,6 @@ CommandCost CmdPause(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, 
  */
 CommandCost CmdMoneyCheat(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-#ifndef _DEBUG
-	if (_networking) return CMD_ERROR;
-#endif
 	return CommandCost(EXPENSES_OTHER, -(int32)p1);
 }
 
