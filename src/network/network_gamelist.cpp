@@ -16,6 +16,7 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
+#include "../window_func.h"
 #include "../thread/thread.h"
 #include "network_internal.h"
 #include "network_udp.h"
@@ -195,6 +196,8 @@ void NetworkAfterNewGRFScan()
 			}
 		}
 	}
+
+	InvalidateWindowClassesData(WC_NETWORK_WINDOW);
 }
 
 #endif /* ENABLE_NETWORK */
