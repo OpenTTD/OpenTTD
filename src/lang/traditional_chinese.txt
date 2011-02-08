@@ -331,9 +331,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}產生�
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}產生市鎮
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}產生工業
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}建造道路
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植樹
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}植樹。按 Shift 可切換種植／顯示預估的種植費用
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}放置標誌
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}放置物件
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}放置物件。按 Shift 可切換興建／顯示預估的興建費用
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :儲存場景
@@ -828,8 +828,8 @@ STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} 現在接受 {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} 現在接受 {STRING} 及 {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}補助過期：{}{}將 {STRING} 從 {STRING} 運到 {STRING} 從此不再提供補助。
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}補助結束：{}{}將 {STRING} 從 {STRING} 運到 {STRING} 不再提供補助。
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}補助過期：{}{}將 {STRING} 從 {STRING} 運到 {STRING} 現在起不再提供補助
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}補助結束：{}{}將 {STRING} 從 {STRING} 運到 {STRING} 的服務不再提供補助
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}提供補助：{}{}首先將 {STRING} 從 {STRING} 運到 {STRING} 的公司將得到地方政府補助一年！
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}{STRING} 獲得補助！{}{}將 {STRING} 從 {STRING} 運到 {STRING} 的服務可在往後一年收到額外 50% 的運費補助！
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}{STRING} 獲得補助！{}{}將 {STRING} 從 {STRING} 運到 {STRING} 的服務可在往後一年收到雙倍運費補助！
@@ -1084,9 +1084,9 @@ STR_CONFIG_SETTING_OFF                                          :關
 STR_CONFIG_SETTING_ON                                           :開
 STR_CONFIG_SETTING_DISABLED                                     :關閉
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}可在斜坡及岸邊興建：{ORANGE}{STRING}
-STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允許在建築物或是軌道底下改變地形斜度 (autoslope)：{ORANGE}{STRING}
+STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允許在建築物或軌道底下改變地形斜度 (autoslope)：{ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}依車站種類不同改變收集範圍：{ORANGE}{STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}可移除更多市鎮所有的道路、橋樑等：{ORANGE}{STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}可移除更多市鎮所有的道路、橋樑及隧道：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}列車產生的蒸氣／火花數量：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :無
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :原版
@@ -1132,7 +1132,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :{LTBLUE}可在�
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :{LTBLUE}可在競爭對手所有的道路上建設路邊車站：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ADJACENT_STATIONS                            :{LTBLUE}允許按 Ctrl 鍵興建相鄰車站： {ORANGE}{STRING}
 STR_CONFIG_SETTING_DYNAMIC_ENGINES                              :{LTBLUE}允許載入多個 NewGRF 車輛組：{ORANGE}{STRING}
-STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}當此項目為交通工具時不能修改此設定。
+STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}當此項目為交通工具時不能修改此設定
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :{LTBLUE}機場永不過期：{ORANGE}{STRING}
 
@@ -1146,8 +1146,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}交通�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}當交通工具在使用年限 {ORANGE}{STRING}{LTBLUE} 個月前／後自動更新
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}自動翻新所需最低餘額：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}錯誤訊息顯示時間：{ORANGE}{STRING} 秒
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}滑鼠停留時顯示提示的延遲時間：{ORANGE}{STRING} 秒
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}滑鼠停留時顯示工具提示的延遲時間：{ORANGE}停用
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}顯示工具提示：{ORANGE}滑鼠停留 {STRING} 秒後顯示
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}顯示工具提示：{ORANGE}滑鼠右鍵
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}於標籤顯示市鎮人口：{ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}地形產生器：{ORANGE}{STRING}
@@ -1405,7 +1405,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}你確�
 # Cheat window
 STR_CHEATS                                                      :{WHITE}作弊
 STR_CHEATS_TOOLTIP                                              :{BLACK}方塊被勾選代表您用過這個密技
-STR_CHEATS_WARNING                                              :{BLACK}警告！您正準備背叛您的競爭對手，請記住這種恥辱將永傳不朽
+STR_CHEATS_WARNING                                              :{BLACK}警告！您正準備背叛您的競爭對手。請記住這種恥辱將永傳不朽
 STR_CHEAT_MONEY                                                 :{LTBLUE}增加金錢：{CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}切換玩家操控的公司：{ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土機 (可摧毀工業、無法移除的物件)：{ORANGE}{STRING}
@@ -1467,9 +1467,9 @@ STR_FACE_FEMALE_TOOLTIP                                         :{BLACK}選擇�
 STR_FACE_NEW_FACE_BUTTON                                        :{BLACK}產生新臉孔
 STR_FACE_NEW_FACE_TOOLTIP                                       :{BLACK}隨機產生新臉孔
 STR_FACE_ADVANCED                                               :{BLACK}進階
-STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}進階選擇新臉孔
+STR_FACE_ADVANCED_TOOLTIP                                       :{BLACK}進階臉孔選擇
 STR_FACE_SIMPLE                                                 :{BLACK}簡易
-STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}簡易選擇新臉孔
+STR_FACE_SIMPLE_TOOLTIP                                         :{BLACK}簡易臉孔選擇
 STR_FACE_LOAD                                                   :{BLACK}載入
 STR_FACE_LOAD_TOOLTIP                                           :{BLACK}載入喜愛臉孔
 STR_FACE_LOAD_DONE                                              :{WHITE}您喜愛的臉孔已從 OpenTTD 設定檔中載入
@@ -1561,7 +1561,7 @@ STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}更新�
 STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}尋找伺服器
 STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}尋找網路上的伺服器
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}新增伺服器
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}在清單新增一定會檢查遊戲的伺服器
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}在清單新增會檢查遊戲進行的伺服器
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}起動伺服器
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}起動您自己的伺服器
 
@@ -1661,15 +1661,15 @@ STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}共同�
 STR_NETWORK_CONNECTING_CAPTION                                  :{WHITE}連線中...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) 連線中..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) 認證中..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) 等待中..
-STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) 下載地圖中..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) 資料處理中..
-STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) 註冊中..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) 連線中...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) 認證中...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) 等待中...
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) 下載地圖中...
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) 資料處理中...
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) 註冊中...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}取得遊戲資訊中..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}取得公司資訊中..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}取得遊戲資訊中...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}取得公司資訊中...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}在您之前有 {NUM} 個用戶端
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} 已下載
@@ -1709,7 +1709,7 @@ STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}使用�
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}加入
 STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}加入並操控此公司
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}密碼
-STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}以密碼保護您的公司，避免其他玩家隨意接手
+STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}以密碼保護您的公司，避免未授權的玩家接手
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}設定公司密碼
 
 # Network chat
@@ -1853,15 +1853,15 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}無法�
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透明度選項
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}切換車站標籤是否透明，按住 CTRL 點選可鎖定
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}切換樹木是否透明，按住 CTRL 點選可鎖定
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}切換房屋是否透明，按住 CTRL 點選可鎖定
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}切換工業是否透明，按住 CTRL 點選可鎖定
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}切換建築物是否透明，如車站、廠棚、號誌站等，按住 CTRL 點選可鎖定
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}切換橋樑是否透明，按住 CTRL 點選可鎖定
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}切換公用設施是否透明，如燈塔、天線塔等，按住 CTRL 點選可鎖定
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}切換供電線是否透明，按住 CTRL 點選可鎖定
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}切換裝載進度指示是否透明，按住 CTRL 點選可鎖定
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}切換車站標籤是否透明。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}切換樹木是否透明。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}切換房屋是否透明。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}切換工業是否透明。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}切換建築物是否透明，如車站、廠棚、號誌站等。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}切換橋樑是否透明。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}切換公用設施是否透明，如燈塔、天線塔等。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}切換供電線是否透明。按住 CTRL 點選可鎖定
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}切換裝載進度指示是否透明。按住 CTRL 點選可鎖定
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}讓物件完全隱藏，而非透明顯示
 
 # Base for station construction window(s)
@@ -1886,7 +1886,7 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :鋪設電氣化
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :鋪設單軌
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :鋪設磁浮軌
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}鋪設鐵軌。 按住 Ctrl 可切換鋪設／拆除模式
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}鋪設鐵軌。 按住 Ctrl 可切換鋪設／拆除模式，按 Shift 可切換鋪設／顯示預估的鋪設費用
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}以自動模式鋪設鐵軌。 按住 Ctrl 可切換鋪設／拆除模式
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}興建鐵路機廠 (用來購置及維修列車)
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}將軌道轉成號誌站。 按住 Ctrl 可興建相鄰車站
@@ -3219,9 +3219,9 @@ STR_ORDER_TRANSFER                                              :(轉運且載�
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(轉運且等待滿載)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(轉運且等待任一種類滿載)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(轉運後空車離開)
-STR_ORDER_NO_UNLOAD                                             :(不卸載但裝載)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(不卸載但等待滿載)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(不卸載但等待任一種類滿載)
+STR_ORDER_NO_UNLOAD                                             :(不卸載且裝載)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(不卸載且等待滿載)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(不卸載且等待任一種類滿載)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[近端]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[中間]
@@ -3557,9 +3557,9 @@ STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... 必�
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... 必須停在機棚内
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}列車只有在停放於機廠內的時候才能變動
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車太長
+STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列車過長
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}無法調轉車輛方向...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}無法迴轉由多節車廂組成的車輛
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... 由多節車廂組成
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :軌道種類不相容
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}無法移動車輛...
@@ -3632,6 +3632,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}必須�
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}被另一條隧道擋住
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}隧道出口不能超過地圖邊緣
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}無法挖掘隧道出口
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... 隧道過長
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... 已有太多物件

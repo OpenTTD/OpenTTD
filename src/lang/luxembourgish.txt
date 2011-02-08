@@ -1027,6 +1027,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Dem Sta
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Keng
+STR_FUNDING_ONLY                                                :Nëmmen finanzéiren
+STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Ganz niddreg
 STR_NUM_LOW                                                     :Wéineg
 STR_NUM_NORMAL                                                  :Normal
@@ -1094,6 +1096,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Erlaabt
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Erlaabt Landforumung ënnert Gebaier, Stroossen, etc. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Erlaabt méi realistësch Staugréisstplazen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Erlaabt d'Ewechhuelen vun méi Stroosen, Brécken, etc. vun der Stad: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maximal Längt vun Zich: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Unzuel vun Gefiererdamp/partikel: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Keen
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1112,6 +1115,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Benotz 
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Lued d'Gefierer schrëttweis: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflatioun: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Luedung nëmmen ofliwweren wann et gebraucht gëtt: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maximal Bréckenlängt: {ORANGE}{STRING} Feld{P 0:1 "" er}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maximal Tunnellängt: {ORANGE}{STRING} Feld{P 0:1 "" er}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manuel Primär Industriebau Method: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keng
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wei aaner Industrien
@@ -1129,6 +1134,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Strooss
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}D'Fënster schwenken wann d'Maus um Rand ass: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Erlaabt Bestiechung vun den Gemengen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Erlaabt exklusiv Transportrechter ze kafen: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Erlab Stroossenrenovatiounen ze finanzéiren: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Erlaabt d'Schécken vun Suen un aner Firmen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Gewiichtsmultiplizéirer fir Luedungen fir schwéier Zich: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fliger Geschwindegkeetsfaktor: {ORANGE}1 / {STRING}
@@ -1353,6 +1359,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pfadfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(recommandéiert)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nët recommandéiert)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatëscht Emdréinen bei Signaler: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Astellung änneren
 
@@ -3248,9 +3255,10 @@ STR_ORDER_TRANSFER                                              :(Transferéiere
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferéieren an voll lueden)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferéieren an mat all Wuer voll lueden)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferéieren an eidel loosen)
-STR_ORDER_NO_UNLOAD                                             :(Net entlueden an weider belueden)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Net entlueden an voll weider belueden)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Net entlueden an mat all Wuer voll belueden)
+STR_ORDER_NO_UNLOAD                                             :(Net entlueden an Wueren lueden)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Net entlueden an op voll Beluedung warden)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Net entlueden an op all voll Beluedung warden)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Keen Ent- an Belueden)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[noot Enn]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[Mëtt]
@@ -3666,6 +3674,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Muss den
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Aaneren Tunnel am Wee
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel géif ausserhalb der Kaart erauskommen
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kann d'Land net fir dei aaner Säit vum Tunnel fräi leen
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... Tunnel ze laang
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... zevill Objekter
