@@ -568,6 +568,13 @@ DEF_GAME_RECEIVE_COMMAND(Client, PACKET_SERVER_CLIENT_INFO)
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
+	/* There are at most as many ClientInfo as ClientSocket objects in a
+	 * server. Having more Infos than a server can have means something
+	 * has gone wrong somewhere, i.e. the server has more Infos than it
+	 * has actual clients. That means the server is feeding us an invalid
+	 * state. So, bail out! This server is broken. */
+	if (!NetworkClientInfo::CanAllocateItem()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+
 	/* We don't have this client_id yet, find an empty client_id, and put the data there */
 	ci = new NetworkClientInfo(client_id);
 	ci->client_playas = playas;
