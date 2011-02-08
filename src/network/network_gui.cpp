@@ -791,37 +791,9 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
-		switch (data) {
-			/* Remove the selection */
-			case 1:
-				this->server = NULL;
-				this->list_pos = SLP_INVALID;
-				break;
-
-			/* Reiterate the whole server list as we downloaded some files */
-			case 2:
-				for (NetworkGameList **iter = this->servers.Begin(); iter != this->servers.End(); iter++) {
-					NetworkGameList *item = *iter;
-					bool missing_grfs = false;
-					for (GRFConfig *c = item->info.grfconfig; c != NULL; c = c->next) {
-						if (c->status != GCS_NOT_FOUND) continue;
-
-						const GRFConfig *f = FindGRFConfig(c->ident.grfid, FGCM_EXACT, c->ident.md5sum);
-						if (f == NULL) {
-							missing_grfs = true;
-							continue;
-						}
-
-						c->filename  = f->filename;
-						CleanUpGRFText(c->name);
-						c->name      = DuplicateGRFText(f->name);
-						c->info      = f->info;
-						c->status    = GCS_UNKNOWN;
-					}
-
-					if (!missing_grfs) item->info.compatible = item->info.version_compatible;
-				}
-				break;
+		if (data == 1) {
+			this->server = NULL;
+			this->list_pos = SLP_INVALID;
 		}
 		this->servers.ForceRebuild();
 		this->SetDirty();
