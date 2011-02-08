@@ -1849,7 +1849,8 @@ void Vehicle::BeginLoading()
 		Order *in_list = this->GetOrder(this->cur_auto_order_index);
 		if (in_list != NULL && this->orders.list->GetNumOrders() < MAX_VEH_ORDER_ID &&
 				(!in_list->IsType(OT_AUTOMATIC) ||
-				in_list->GetDestination() != this->last_station_visited)) {
+				in_list->GetDestination() != this->last_station_visited) &&
+				Order::CanAllocateItem()) {
 			Order *auto_order = new Order();
 			auto_order->MakeAutomatic(this->last_station_visited);
 			InsertOrder(this, auto_order, this->cur_auto_order_index);
@@ -2226,7 +2227,7 @@ void Vehicle::AddToShared(Vehicle *shared_chain)
 {
 	assert(this->previous_shared == NULL && this->next_shared == NULL);
 
-	if (!shared_chain->orders.list) {
+	if (shared_chain->orders.list == NULL) {
 		assert(shared_chain->previous_shared == NULL);
 		assert(shared_chain->next_shared == NULL);
 		this->orders.list = shared_chain->orders.list = new OrderList(NULL, shared_chain);
