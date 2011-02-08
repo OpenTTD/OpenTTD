@@ -636,7 +636,7 @@ void GenerateObjects()
 	/* add lighthouses */
 	uint maxx = MapMaxX();
 	uint maxy = MapMaxY();
-	for (int loop_count = 0; loop_count < 1000 && lighthouses_to_build != 0; loop_count++) {
+	for (int loop_count = 0; loop_count < 1000 && lighthouses_to_build != 0 && Object::CanAllocateItem(); loop_count++) {
 		uint r = Random();
 
 		/* Scatter the lighthouses more evenly around the perimeter */
