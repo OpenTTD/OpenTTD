@@ -15,8 +15,8 @@
 #include "cargopacket.h"
 #include "company_type.h"
 
-/** Type of pool to store cargo payments in. */
-typedef Pool<CargoPayment, CargoPaymentID, 512, 64000> CargoPaymentPool;
+/** Type of pool to store cargo payments in; little over 1 million. */
+typedef Pool<CargoPayment, CargoPaymentID, 512, 0xFF000> CargoPaymentPool;
 /** The actual pool to store cargo payments in. */
 extern CargoPaymentPool _cargo_payment_pool;
 

@@ -88,10 +88,12 @@ CargoPacket::CargoPacket(uint16 count, byte days_in_transit, StationID source, T
 /**
  * Split this packet in two and return the split off part.
  * @param new_size Size of the remaining part.
- * @return Split off part.
+ * @return Split off part, or NULL if no packet could be allocated!
  */
 FORCEINLINE CargoPacket *CargoPacket::Split(uint new_size)
 {
+	if (!CargoPacket::CanAllocateItem()) return NULL;
+
 	Money fs = this->feeder_share * new_size / static_cast<uint>(this->count);
 	CargoPacket *cp_new = new CargoPacket(new_size, this->days_in_transit, this->source, this->source_xy, this->loaded_at_xy, fs, this->source_type, this->source_id);
 	this->feeder_share -= fs;
@@ -314,6 +316,9 @@ bool CargoList<Tinst>::MoveTo(Tother_inst *dest, uint max_move, MoveToAction mta
 		} else {
 			/* But... the rest needs package splitting. */
 			CargoPacket *cp_new = cp->Split(max_move);
+
+			/* We could not allocate a CargoPacket? Is the map that full? */
+			if (cp_new == NULL) return false;
 
 			static_cast<Tinst *>(this)->RemoveFromCache(cp_new); // this reflects the changes in cp.
 

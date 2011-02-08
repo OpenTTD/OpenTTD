@@ -3165,6 +3165,10 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 
 static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceType source_type, SourceID source_id)
 {
+	/* We can't allocate a CargoPacket? Then don't do anything
+	 * at all; i.e. just discard the incoming cargo. */
+	if (!CargoPacket::CanAllocateItem()) return 0;
+
 	GoodsEntry &ge = st->goods[type];
 	amount += ge.amount_fract;
 	ge.amount_fract = GB(amount, 0, 8);
