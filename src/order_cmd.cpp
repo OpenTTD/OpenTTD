@@ -1389,6 +1389,10 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 				}
 			}
 
+			if (src->orders.list == NULL && !OrderList::CanAllocateItem()) {
+				return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
+			}
+
 			if (flags & DC_EXEC) {
 				/* If the destination vehicle had a OrderList, destroy it */
 				DeleteVehicleOrders(dst);

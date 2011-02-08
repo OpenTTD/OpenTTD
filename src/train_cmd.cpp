@@ -1332,6 +1332,10 @@ CommandCost CmdSellRailWagon(DoCommandFlag flags, Vehicle *t, uint16 data, uint3
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
 	for (Train *t = sell_head; t != NULL; t = t->Next()) cost.AddCost(-t->value);
 
+	if (first->orders.list == NULL && !OrderList::CanAllocateItem()) {
+		return_cmd_error(STR_ERROR_NO_MORE_SPACE_FOR_ORDERS);
+	}
+
 	/* do it? */
 	if (flags & DC_EXEC) {
 		/* First normalise the sub types of the chain. */
