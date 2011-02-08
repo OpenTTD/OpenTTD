@@ -619,7 +619,7 @@ void GenerateObjects()
 
 	SetGeneratingWorldProgress(GWP_OBJECT, radiotower_to_build + lighthouses_to_build);
 
-	for (uint i = ScaleByMapSize(1000); i != 0; i--) {
+	for (uint i = ScaleByMapSize(1000); i != 0 && Object::CanAllocateItem(); i--) {
 		TileIndex tile = RandomTile();
 
 		uint h;
