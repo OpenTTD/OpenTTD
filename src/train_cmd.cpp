@@ -1807,6 +1807,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 		if (flags & DC_EXEC) {
 			ToggleBit(v->flags, VRF_REVERSE_DIRECTION);
 
+			front->ConsistChanged(false);
 			SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
 			SetWindowDirty(WC_VEHICLE_DETAILS, front->index);
 			SetWindowDirty(WC_VEHICLE_VIEW, front->index);
