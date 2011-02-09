@@ -384,6 +384,11 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 
 	if (static_access) return NULL;
 
+	if (!Engine::CanAllocateItem()) {
+		grfmsg(0, "Can't allocate any more engines");
+		return NULL;
+	}
+
 	size_t engine_pool_size = Engine::GetPoolSize();
 
 	/* ... it's not, so create a new one based off an existing engine */
@@ -528,6 +533,8 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 
 	for (int i = 0; i < numinfo; i++) {
 		Engine *e = GetNewEngine(_cur_grffile, VEH_TRAIN, engine + i);
+		if (e == NULL) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
+
 		EngineInfo *ei = &e->info;
 		RailVehicleInfo *rvi = &e->u.rail;
 
@@ -777,6 +784,8 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 
 	for (int i = 0; i < numinfo; i++) {
 		Engine *e = GetNewEngine(_cur_grffile, VEH_ROAD, engine + i);
+		if (e == NULL) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
+
 		EngineInfo *ei = &e->info;
 		RoadVehicleInfo *rvi = &e->u.road;
 
@@ -916,6 +925,8 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop
 
 	for (int i = 0; i < numinfo; i++) {
 		Engine *e = GetNewEngine(_cur_grffile, VEH_SHIP, engine + i);
+		if (e == NULL) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
+
 		EngineInfo *ei = &e->info;
 		ShipVehicleInfo *svi = &e->u.ship;
 
@@ -1042,6 +1053,8 @@ static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int 
 
 	for (int i = 0; i < numinfo; i++) {
 		Engine *e = GetNewEngine(_cur_grffile, VEH_AIRCRAFT, engine + i);
+		if (e == NULL) return CIR_INVALID_ID; // No engine could be allocated, so neither can any next vehicles
+
 		EngineInfo *ei = &e->info;
 		AircraftVehicleInfo *avi = &e->u.air;
 
@@ -3639,7 +3652,10 @@ static void SkipAct1(ByteReader *buf)
  * defined spritegroup. */
 static const SpriteGroup *GetGroupFromGroupID(byte setid, byte type, uint16 groupid)
 {
-	if (HasBit(groupid, 15)) return new CallbackResultSpriteGroup(groupid);
+	if (HasBit(groupid, 15)) {
+		assert(CallbackResultSpriteGroup::CanAllocateItem());
+		return new CallbackResultSpriteGroup(groupid);
+	}
 
 	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
 		grfmsg(1, "GetGroupFromGroupID(0x%02X:0x%02X): Groupid 0x%04X does not exist, leaving empty", setid, type, groupid);
@@ -3652,7 +3668,10 @@ static const SpriteGroup *GetGroupFromGroupID(byte setid, byte type, uint16 grou
 /* Helper function to either create a callback or a result sprite group. */
 static const SpriteGroup *CreateGroupFromGroupID(byte feature, byte setid, byte type, uint16 spriteid, uint16 num_sprites)
 {
-	if (HasBit(spriteid, 15)) return new CallbackResultSpriteGroup(spriteid);
+	if (HasBit(spriteid, 15)) {
+		assert(CallbackResultSpriteGroup::CanAllocateItem());
+		return new CallbackResultSpriteGroup(spriteid);
+	}
 
 	if (spriteid >= _cur_grffile->spriteset_numsets) {
 		grfmsg(1, "CreateGroupFromGroupID(0x%02X:0x%02X): Sprite set %u invalid, max %u", setid, type, spriteid, _cur_grffile->spriteset_numsets);
@@ -3677,6 +3696,7 @@ static const SpriteGroup *CreateGroupFromGroupID(byte feature, byte setid, byte 
 		return NULL;
 	}
 
+	assert(ResultSpriteGroup::CanAllocateItem());
 	return new ResultSpriteGroup(_cur_grffile->spriteset_start + spriteid * num_sprites, num_sprites);
 }
 
@@ -3724,6 +3744,7 @@ static void NewSpriteGroup(ByteReader *buf)
 			byte varadjust;
 			byte varsize;
 
+			assert(DeterministicSpriteGroup::CanAllocateItem());
 			DeterministicSpriteGroup *group = new DeterministicSpriteGroup();
 			act_group = group;
 			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
@@ -3789,6 +3810,7 @@ static void NewSpriteGroup(ByteReader *buf)
 		case 0x83: // Parent scope
 		case 0x84: // Relative scope
 		{
+			assert(RandomizedSpriteGroup::CanAllocateItem());
 			RandomizedSpriteGroup *group = new RandomizedSpriteGroup();
 			act_group = group;
 			group->var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
@@ -3835,6 +3857,7 @@ static void NewSpriteGroup(ByteReader *buf)
 						return;
 					}
 
+					assert(RealSpriteGroup::CanAllocateItem());
 					RealSpriteGroup *group = new RealSpriteGroup();
 					act_group = group;
 
@@ -3870,6 +3893,7 @@ static void NewSpriteGroup(ByteReader *buf)
 					byte num_building_sprites = max((uint8)1, type);
 					uint i;
 
+					assert(TileLayoutSpriteGroup::CanAllocateItem());
 					TileLayoutSpriteGroup *group = new TileLayoutSpriteGroup();
 					act_group = group;
 					/* num_building_stages should be 1, if we are only using non-custom sprites */
@@ -3949,6 +3973,7 @@ static void NewSpriteGroup(ByteReader *buf)
 						break;
 					}
 
+					assert(IndustryProductionSpriteGroup::CanAllocateItem());
 					IndustryProductionSpriteGroup *group = new IndustryProductionSpriteGroup();
 					act_group = group;
 					group->version = type;
@@ -4077,7 +4102,16 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 
 	EngineID *engines = AllocaM(EngineID, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		engines[i] = GetNewEngine(_cur_grffile, (VehicleType)feature, buf->ReadExtendedByte())->index;
+		Engine *e = GetNewEngine(_cur_grffile, (VehicleType)feature, buf->ReadExtendedByte());
+		if (e == NULL) {
+			/* No engine could be allocated?!? Deal with it. Okay,
+			 * this might look bad. Also make sure this NewGRF
+			 * gets disabled, as a half loaded one is bad. */
+			HandleChangeInfoResult("VehicleMapSpriteGroup", CIR_INVALID_ID, 0, 0);
+			return;
+		}
+
+		engines[i] = e->index;
 		if (!wagover) last_engines[i] = engines[i];
 	}
 
