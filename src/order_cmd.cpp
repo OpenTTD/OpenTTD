@@ -907,6 +907,21 @@ CommandCost CmdDeleteOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 }
 
 /**
+ * Cancel the current loading order of the vehicle as the order was deleted.
+ * @param v the vehicle
+ */
+static void CancelLoadingDueToDeletedOrder(Vehicle *v)
+{
+	assert(v->current_order.IsType(OT_LOADING));
+	/* NON-stop flag is misused to see if a train is in a station that is
+	 * on his order list or not */
+	v->current_order.SetNonStopType(ONSF_STOP_EVERYWHERE);
+	/* When full loading, "cancel" that order so the vehicle doesn't
+	 * stay indefinitely at this station anymore. */
+	if (v->current_order.GetLoadType() & OLFB_FULL_LOAD) v->current_order.SetLoadType(OLF_LOAD_IF_POSSIBLE);
+}
+
+/**
  * Delete an order but skip the parameter validation.
  * @param v       The vehicle to delete the order from.
  * @param sel_ord The id of the order to be deleted.
@@ -920,13 +935,8 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord)
 	for (; u != NULL; u = u->NextShared()) {
 		assert(v->orders.list == u->orders.list);
 
-		/* NON-stop flag is misused to see if a train is in a station that is
-		 * on his order list or not */
 		if (sel_ord == u->cur_real_order_index && u->current_order.IsType(OT_LOADING)) {
-			u->current_order.SetNonStopType(ONSF_STOP_EVERYWHERE);
-			/* When full loading, "cancel" that order so the vehicle doesn't
-			 * stay indefinitely at this station anymore. */
-			if (u->current_order.GetLoadType() & OLFB_FULL_LOAD) u->current_order.SetLoadType(OLF_LOAD_IF_POSSIBLE);
+			CancelLoadingDueToDeletedOrder(u);
 		}
 
 		if (sel_ord < u->cur_real_order_index) {
