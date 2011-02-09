@@ -22,7 +22,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
-STR_UNDEFINED                                                   :(undefined string)
+STR_UNDEFINED                                                   :(sequencia indefinida)
 STR_JUST_NOTHING                                                :Nada
 
 # Cargo related strings
@@ -32,7 +32,7 @@ STR_CARGO_PLURAL_PASSENGERS                                     :{G=m}Passageiro
 STR_CARGO_PLURAL_COAL                                           :{G=m}Carvão
 STR_CARGO_PLURAL_MAIL                                           :{G=f}Correspondências
 STR_CARGO_PLURAL_OIL                                            :{G=m}Petróleo
-STR_CARGO_PLURAL_LIVESTOCK                                      :{G=f}Criação
+STR_CARGO_PLURAL_LIVESTOCK                                      :{G=m}Gado
 STR_CARGO_PLURAL_GOODS                                          :{G=f}Mercadorias
 STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereais
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Madeira
@@ -100,8 +100,8 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} passage
 STR_QUANTITY_COAL                                               :{WEIGHT} de carvão
 STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correspondência
 STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} número{P "" s} de criação
-STR_QUANTITY_GOODS                                              :{COMMA} caixa{P "" s} de mercadorias
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} cabeça{P "" s} de gado
+STR_QUANTITY_GOODS                                              :{COMMA} engradado{P "" s} de mercadorias
 STR_QUANTITY_GRAIN                                              :{WEIGHT} de cereais
 STR_QUANTITY_WOOD                                               :{WEIGHT} de madeira
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de minério de ferro
@@ -838,11 +838,11 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} não será mais subsidiado
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsídio removido:{}{} Serviço de {STRING} de {STRING} para {STRING} não será mais subsidiado
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Oferta de transporte subsidiado:{}{} Primeiro transporte de {STRING} de {STRING} para {STRING} receberá o subsídio de um ano da autoridade local!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsídio concedido a {STRING}!{}{} Transporte de {STRING} de {STRING} para {STRING} receberá 50% extra durante um ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsídio concedido a {STRING}!{}{} Transporte de {STRING} de {STRING} para {STRING} receberá em dobro durante um ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsídio concedido a {STRING}!{}{} Transporte de {STRING} de {STRING} para {STRING} receberá o triplo durante um ano!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsídio concedido a {STRING}!{}{} Transporte de {STRING} de {STRING} para {STRING} receberá o quadruplo durante um ano!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsídio de serviço oferecido:{}{} Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá subsídio de um ano da autoridade local!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará 50% extra durante o próximo ano ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o dobro de impostos durante o próximo ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o triplo de impostos durante o próximo ano!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o quadruplo de impostos durante o próximo ano!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK}Tráfego caótico em {TOWN}!{}{} Programa de reconstrução rodoviária financiado por {STRING} provoca 6 meses de miséria aos condutores!
 
@@ -1028,6 +1028,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Atitude
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Nenhum
+STR_FUNDING_ONLY                                                :Apenas financiamento
+STR_MINIMAL                                                     :Mínimo
 STR_NUM_VERY_LOW                                                :Muito baixo
 STR_NUM_LOW                                                     :Baixo
 STR_NUM_NORMAL                                                  :Normal
@@ -1095,6 +1097,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Permiti
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Permitir paisagismo sob edifícios, ruas, etc. (auto nivelação): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Permitir dimensionamento mais realista das áreas de abrangência: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Permitir a remoção de mais rodovias, pontes, etc. das cidades: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Comprimento máximo de trens: {ORANGE}{STRING} telha{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Quantidade de fumaça/fagulhas das locomotivas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nenhum
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Original
@@ -1113,6 +1116,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Usar al
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Carregar veículos gradualmente: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflação: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Somente entregar carga a uma estação quando houver procura: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Comprimento máximo de ponte: {ORANGE}{STRING} telha{P 0:1 "" s}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Comprimento máximo de túnel: {ORANGE}{STRING} telha{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Método manual de constução de indústria primária: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nenhum
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :como as outras indústrias
@@ -1130,6 +1135,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Fila de
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o cursor está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Permtir compra de direitos exclusivos de transporte: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Permitir financiamento de reconstrução de estrada local: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir o envio de dinheiro a outras empresas: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para trens simulando trens pesados: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Fator de velocidade para aeronaves: {ORANGE}1 / {STRING}
@@ -1354,6 +1360,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfin
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Não recomendado)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Reversão automática em sinais: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Alterar valor
 
@@ -2476,7 +2483,7 @@ STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}Estão f
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Cuidado!
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual. Isto pode travar o OpenTTD. Não envie relatórios de erro sobre esses travamentos.{}Tem absoluta certeza que deseja fazer isto?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações num jogo em progresso. Isto pode travar o OpenTTD ou quebrar o estado do jogo. Não envie relatórios de erros sobre esses assuntos.{}Você tem certeza absoluta sobre isso?
 
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar: registro de GRF já existe
 STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Arquivo procurado não encontrado (carregado compatível com GRF)
@@ -2571,9 +2578,9 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novos
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar exclusividade da rede de transportes
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a autoridade local
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Iniciar uma pequena campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Custo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Iniciar uma campanha publicitária média, para atrair mais passageiros e cargas para sua empresa.{}Custo: {CURRENCY}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Iniciar uma campanha publicitária grande, para atrair mais passageiros e cargas para sua empresa.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar uma pequena campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar uma campanha publicitária média, para atrair mais passageiros e carga para seus serviços de transporte.{}Custo: {CURRENCY}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar uma grande campanha publicitária, para atrair mais passageiros e cargas para seus serviços de transporte.{}Custo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Financiar a reconstrução da malha rodoviária urbana. Causa engarrafamentos consideráveis ao tráfego por até 6 meses.{}Custo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Construir uma estátua em honra para sua empresa.{} Custo: {CURRENCY}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Financiar a construção de edifícios comerciais novos na cidade.{}Custo: {CURRENCY}
@@ -2911,7 +2918,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clonar A
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Isso irá comprar uma cópia do trem, incluindo todos os vagões. Clique neste botão e depois em um trem dentro ou fora do depósito. Ctrl+Clique compartilhará as ordens. Shift+Clique mostra estimação de custo sem compra
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Isso irá comprar uma cópia do automóvel. Clique neste botão e depois em um automóvel dentro ou fora da garagem. Ctrl+Clique compartilhará as ordens. Shift+Clique mostra estimação de custo sem compra
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Isso irá comprar uma cópia da embarcação. Clique neste botão e depois em uma embarcação dentro ou fora do depósito naval. Ctrl+Clique compartilhará as ordens. Shift+Clique mostra estimação de custo sem compra
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Isso irá comprar uma cópia da embarcação. Clique neste botão e depois em uma embarcação dentro ou fora do depósito naval. Ctrl+Clique irá compartilhar as ordens. Shift+Clique mostra custo estimado sem comprar
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Isso irá comprar uma cópia de uma aeronave. Clique nesse botão e depois em uma aeronave dentro ou fora do hangar. Ctrl+Clique compartilhará as ordens. Shift+Clique mostra estimação de custo sem compra
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visão no local de um depósito ferroviário. Ctrl+Clique abre uma nova janela no local do depósito de trem
@@ -3238,24 +3245,25 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 STR_ORDER_AUTOMATIC                                             :(Automatico)
 
-STR_ORDER_FULL_LOAD                                             :(Carregar totalmente)
-STR_ORDER_FULL_LOAD_ANY                                         :(Carregar totalmente qualquer carga)
-STR_ORDER_NO_LOAD                                               :(Não carregando)
-STR_ORDER_UNLOAD                                                :(Descarregar e carregar)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarregar e aguardar carga completa)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarregar e aguardar por qualquer tipo de carga completa)
+STR_ORDER_FULL_LOAD                                             :(Carregar completamente)
+STR_ORDER_FULL_LOAD_ANY                                         :(Carregar completamente qualquer carga)
+STR_ORDER_NO_LOAD                                               :(Não carregar)
+STR_ORDER_UNLOAD                                                :(Descarregar e tomar carga)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarregar e esperar carregamento completo)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarregar e esperar por qualquer carregamento completo)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Descarregar e sair vazio)
-STR_ORDER_TRANSFER                                              :(Transferir e carregar)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferir e aguardar por carga completa)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir e aguardar por qualquer tipo de carga completa)
+STR_ORDER_TRANSFER                                              :(Transferir e tomar carga)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferir e esperar por carregamento completo)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir e esperar por qualquer carregamento completo)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir e sair vazio)
-STR_ORDER_NO_UNLOAD                                             :(Não descarregar e carregar)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Não descarregar e aguardar carga completa)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Não descarregar e aguardar por qualquer tipo de carga completa)
+STR_ORDER_NO_UNLOAD                                             :(Não descarregar e tomar carga)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Não descarregar e esperar carregamento completo)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Não descarregar e esperar por qualquer carregamento completo)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Não descarregar e não carregar)
 
-STR_ORDER_STOP_LOCATION_NEAR_END                                :[início]
+STR_ORDER_STOP_LOCATION_NEAR_END                                :[quase no fim]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[meio]
-STR_ORDER_STOP_LOCATION_FAR_END                                 :[fim]
+STR_ORDER_STOP_LOCATION_FAR_END                                 :[extremidade]
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Saltar para a ordem {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Saltar para a ordem {COMMA} quando {STRING} {STRING} {COMMA}
@@ -3264,97 +3272,97 @@ STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Saltar para a o
 STR_INVALID_ORDER                                               :{RED} (Ordem Inválida)
 
 # Time table window
-STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Timetable)
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horário)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Ordens
-STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Alternar para ver as ordens
+STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Alternar para visão de ordens
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Plano de horário - selecione uma ordem clicando nela
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horário - clique sobre uma ordem para destaca-la
 
 STR_TIMETABLE_NO_TRAVEL                                         :Não viajar
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viagem (automático; calendarizadas pela próxima ordem manual)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não progamado)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viagem (automático; calendarizada pela próxima ordem manual)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não calendarizado)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar para {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar por {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tique{P "" s}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Esse horário será completo em {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Esse horário será completo em no mínimo {STRING} (nem todos agendados)
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Este horário levará {STRING} para completar
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Este horário levará no mínimo {STRING} para completar (nem todos calendarizados)
 
-STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Esse veículo está no horário
-STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Esse veículo está {STRING} atrasado
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Esse veículo está {STRING} adiantado
-STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este plano de horário ainda não começou
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este plano de horário começará em{STRING}
+STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este veículo está atualmente circulando pontualmente
+STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este veículo está atualmente circulando {STRING} atrasado
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este veículo está atualmente circulando {STRING} adiantado
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horário ainda não começou
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horário começará em{STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Data de início
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecione uma data como ponto de início para este plano de horário
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecione uma data como ponto de início para este horário
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mudar horário
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muda a quantidade de tempo que a ordem deverá levar
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mudar a quantidade de tempo que a ordem destacada deverá levar
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Resetar horário
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Reseta a quantidade de tempo para a ordem selecionada
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Limpar Horário
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpar a quantidade de tempo para a ordem destacada
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Resetar contador de atraso
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseta o contador de atraso, fazendo o veículo estar na hora
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Restabelecer Contador de Atraso
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Restabelecer o contador de atraso,então o veículo estará pontual
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autopreencher
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preenche automaticamente com os valores da próxima viagem. (CTRL-clique para tentar manter os intervalos de espera)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preencher o horário automaticamente com os valores da próxima jornada. (CTRL+Clique para tentar manter os tempos de espera)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Esperado
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}Reservado
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Mudar entre esperado e reservado
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Agendado
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Mudar entre esperado e agendado
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :C:
-STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :I:
+STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :P:
 
 
 # Date window (for timetable)
-STR_DATE_CAPTION                                                :{WHITE}Marcar data
-STR_DATE_SET_DATE                                               :{BLACK}Marcar data
-STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Usar a data selecionada como início do plano de horário
+STR_DATE_CAPTION                                                :{WHITE}Estabelecer data
+STR_DATE_SET_DATE                                               :{BLACK}Estabelecer data
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Usar a data selecionada como data de início para o horário
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selecionar dia
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selecionar mês
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecionar ano
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Debug da IA
+STR_AI_DEBUG                                                    :{WHITE}Depurar IA
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Nome da IA
-STR_AI_DEBUG_SETTINGS                                           :{BLACK}Config. da IA
-STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Mudar as config. da IA
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}Definições da IA
+STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Alterar as definições da IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Desativar a IA, recarregar o script e religar a IA
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ativar/desativar paragem quando o registo da IA for igual à string de paragemas
-STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Ruptura em:
-STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Ruptura em
-STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quando a mensagem do registo da IA for igual a esta string, o jogo é pausado
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Caso de igualdade
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar o caso de igualdade quando se compara o resgisto da IA contra a string de paragem
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Desativar a IA, recarregar o script e reiniciar a IA
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Ativar/desativar pausagem quando uma mensagem de registo da IA corresponder á sequencia de falhas
+STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Falha em:
+STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Falha em
+STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Quando uma mensagem do registo da IA corresponder a esta sequencia, o jogo é pausado
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Corresponder "case"
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Alternar correspondencia de "case" quando comparar mensagens de resgisto da IA contra a sequencia de falhas
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Continuar
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Despausar e continuar o AI
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Veja a depuração desta IA
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Ver a depuração produzida desta IA
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD é feito sem suporte para IA...
-STR_ERROR_NO_AI_SUB                                             :{WHITE}... não há IAs disponíveis!
+STR_ERROR_NO_AI_SUB                                             :{WHITE}... nenhuma IAs está disponível!
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Nenhuma IA encontrada. {} Essa é uma IA inativa e não faz nada. {} Você pode pode baixar várias IA através do sistema de 'Conteúdo Online'
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uma das IA's travou. Favor relatar ao autor da IA com uma screenshot da Janela de Debug da IA
+STR_ERROR_AI_NO_AI_FOUND                                        :Nenhuma IA adequada encontrada para carregar. {} Esta IA é falsa e não irá fazer nada. {} Você pode pode baixar várias IA através do sistema de 'Conteúdo Online'
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Uma das em execução IA's travou. Favor relatar isto ao autor da IA com uma captura de tela da Janela de Depuração da IA
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Debug de IA só é acessível pelo servidor
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuração da IA
 STR_AI_CONFIG_LIST_TOOLTIP                                      :{BLACK}Todas as IA's que serão carregadas no próximo jogo
-STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador Humano
-STR_AI_CONFIG_RANDOM_AI                                         :IA Randômica
+STR_AI_CONFIG_HUMAN_PLAYER                                      :Jogador humano
+STR_AI_CONFIG_RANDOM_AI                                         :IA aleatória
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Subir
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Move a IA selecionada para cima na lista
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Mover a IA selecionada para cima na lista
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Descer
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Move a IA selecionada para baixo na lista
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Mover a IA selecionada para baixo na lista
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Selecionar IA
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Carregar outra IA
@@ -3365,14 +3373,14 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Configur
 STR_AI_LIST_CAPTION                                             :{WHITE}IA's disponíveis
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Clique para selecionar uma IA
 
-STR_AI_LIST_AUTHOR                                              :{BLACK}Progamador: {STRING}
+STR_AI_LIST_AUTHOR                                              :{BLACK}Autor: {STRING}
 STR_AI_LIST_VERSION                                             :{BLACK}Versão: {NUM}
 STR_AI_LIST_URL                                                 :{BLACK}URL: {STRING}
 
 STR_AI_LIST_ACCEPT                                              :{BLACK}Aceitar
-STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Aceita a IA selecionada
+STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecionar a IA destacada
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
-STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não muda a IA atual
+STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar IA
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parâmetros da IA
@@ -3391,26 +3399,26 @@ STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{U
 # Income 'floats'
 STR_INCOME_FLOAT_COST_SMALL                                     :{TINYFONT}{RED}Custo: {CURRENCY}
 STR_INCOME_FLOAT_COST                                           :{RED}Custo: {CURRENCY}
-STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Lucro: {CURRENCY}
-STR_INCOME_FLOAT_INCOME                                         :{GREEN}Lucro: {CURRENCY}
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transfer: {CURRENCY}
-STR_FEEDER                                                      :{YELLOW}Transferência: {CURRENCY}
+STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINYFONT}{GREEN}Renda: {CURRENCY}
+STR_INCOME_FLOAT_INCOME                                         :{GREEN}Renda: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transferir: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Custo Estimado: {CURRENCY}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Lucro Estimado: {CURRENCY}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Renda Estimada: {CURRENCY}
 
 # Saveload messages
-STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Gravação em progresso,{}por favor aguarde até que termine!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Falha ao salvar automaticamente
+STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Salvamento ainda em progresso,{}por favor aguarde até que termine!
+STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Autosalvar falhou
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Incapaz de ler unidade
-STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Falha ao Salvar Jogo{}{STRING}
-STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Incapaz de remover o arquivo
-STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Falha ao Abrir Jogo{}{STRING}
+STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Salvar o Jogo Falhou{}{STRING}
+STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Incapaz de excluir arquivo
+STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Carregar Jogo Falhou{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erro interno: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Arquivo corrompido - {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :O arquivo foi criado utilizando uma versão mais nova
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Jogo salvo inutilizado - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Jogo salvo é feito com versão mais nova
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Arquivo não legível
-STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Arquivo não editável
-STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integridade do arquivo falha
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Arquivo não gravável
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Verificação de integridade de dados falhou
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<não disponível>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos
 
@@ -3593,7 +3601,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... deve
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Os trens só podem ser alterados quando parados num depósito
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Trem muito longo
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Impossível virar o veículo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Impossível virar veículos formados por unidades múltiplas
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... consiste de multiplas unidades
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipo de ferrovia incompatível
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Impossível mover veículo...
@@ -3667,6 +3675,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Remova o
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Há outro túnel no caminho
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}O túnel não tem onde sair
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Incapaz de escavar o terreno para o outro lado do túnel
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... túnel muito longo
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... objetos demais
@@ -3922,7 +3931,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elétr
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elétrico)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elétrico)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Vagão de Passageiros
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Vagão de Cartas
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Vagão de Correspondências
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Vagão de Carvão
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_OIL_TANKER                    :Tanque de Petróleo
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_LIVESTOCK_VAN                 :Vagão de Gado

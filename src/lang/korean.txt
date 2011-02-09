@@ -1090,6 +1090,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}경사/
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}좀더 현실적인 역세권 지정 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}열차의 최대 길이: {ORANGE}{STRING} 타일{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}기관차 매연/전기 스파크의 양: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :없음
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :오리지널
@@ -1108,6 +1109,7 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}향상�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}화물을 차량에 단계적으로 싣기 : {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}인플레이션 (화폐가치하락) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음 : {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}터널의 최대 길이: {ORANGE}{STRING} 타일{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}1차 산업 시설 건설 방법: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :없음 (건설 불가)
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :건설 가능 (위치 선택 가능, 7배 비용)
@@ -3630,6 +3632,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}터널�
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}도중에 다른 터널이 있습니다
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}터널이 맵 끝을 통과합니다
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}지형 문제로 터널의 반대쪽 출구를 만들 수 없습니다
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... 터널이 너무 깁니다!
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... 오브젝트가 너무 많습니다.
