@@ -123,6 +123,10 @@ DEFINE_POOL_METHOD(void *)::GetNew(size_t size)
 {
 	size_t index = this->FindFirstFree();
 
+#ifdef OTTD_ASSERT
+	assert(this->checked != 0);
+	this->checked--;
+#endif /* OTTD_ASSERT */
 	if (index == NO_FREE_ITEM) {
 		error("%s: no more free items", this->name);
 	}

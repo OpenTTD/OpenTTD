@@ -409,6 +409,11 @@ void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
 	#define assert(expression) if (!(expression)) error("Assertion failed at line %i of %s: %s", __LINE__, __FILE__, #expression);
 #endif
 
+/* Asserts are enabled if NDEBUG isn't defined, or if we are using MSVC and WITH_ASSERT is defined. */
+#if !defined(NDEBUG) || (defined(_MSC_VER) && defined(WITH_ASSERT))
+	#define OTTD_ASSERT
+#endif
+
 #if defined(MORPHOS) || defined(__NDS__) || defined(__DJGPP__)
 	/* MorphOS and NDS don't have C++ conformant _stricmp... */
 	#define _stricmp stricmp
