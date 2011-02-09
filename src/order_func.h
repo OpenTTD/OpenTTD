@@ -20,7 +20,7 @@
 void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination);
 void InvalidateVehicleOrder(const Vehicle *v, int data);
 void CheckOrders(const Vehicle*);
-void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist = false);
+void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist = false, bool reset_order_indices = true);
 bool ProcessOrders(Vehicle *v);
 bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth = 0);
 VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v);

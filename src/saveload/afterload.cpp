@@ -2564,6 +2564,9 @@ bool AfterLoadGame()
 		FOR_ALL_VEHICLES(v) {
 			if (!v->IsPrimaryVehicle()) continue;
 
+			/* Older versions are less strict with indices being in range and fix them on the fly */
+			if (v->cur_auto_order_index >= v->GetNumOrders()) v->cur_auto_order_index = 0;
+
 			v->cur_real_order_index = v->cur_auto_order_index;
 			v->UpdateRealOrderIndex();
 		}
