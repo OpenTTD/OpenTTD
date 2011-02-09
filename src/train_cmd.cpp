@@ -1806,11 +1806,11 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, DoCommandFlag flags, uint32
 
 		if (flags & DC_EXEC) {
 			ToggleBit(v->flags, VRF_REVERSE_DIRECTION);
-			SetWindowDirty(WC_VEHICLE_DEPOT, v->tile);
-			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
-			/* We cancel any 'skip signal at dangers' here */
-			v->force_proceed = TFP_NONE;
-			SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+
+			SetWindowDirty(WC_VEHICLE_DEPOT, front->tile);
+			SetWindowDirty(WC_VEHICLE_DETAILS, front->index);
+			SetWindowDirty(WC_VEHICLE_VIEW, front->index);
+			SetWindowClassesDirty(WC_TRAINS_LIST);
 		}
 	} else {
 		/* turn the whole train around */
