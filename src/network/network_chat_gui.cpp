@@ -398,11 +398,11 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 					/* If we are completing at the begin of the line, skip the ': ' we added */
 					if (tb_buf == pre_buf) {
 						offset = 0;
-						length = (tb->max_bytes - 1) - 2;
+						length = (tb->bytes - 1) - 2;
 					} else {
 						/* Else, find the place we are completing at */
 						offset = strlen(pre_buf) + 1;
-						length = (tb->max_bytes - 1) - offset;
+						length = (tb->bytes - 1) - offset;
 					}
 
 					/* Compare if we have a match */
