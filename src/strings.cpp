@@ -551,21 +551,23 @@ struct UnitConversion {
 	/**
 	 * Convert value from OpenTTD's internal unit into the displayed value.
 	 * @param input The input to convert.
+	 * @param round Whether to round the value or not.
 	 * @return The converted value.
 	 */
-	int64 ToDisplay(int64 input) const
+	int64 ToDisplay(int64 input, bool round = true) const
 	{
-		return (input * this->multiplier) >> this->shift;
+		return ((input * this->multiplier) + (round && this->shift != 0 ? 1 << (this->shift - 1) : 0)) >> this->shift;
 	}
 
 	/**
 	 * Convert the displayed value back into a value of OpenTTD's internal unit.
 	 * @param input The input to convert.
+	 * @param round Whether to round the value or not.
 	 * @return The converted value.
 	 */
-	int64 FromDisplay(int64 input) const
+	int64 FromDisplay(int64 input, bool round = true) const
 	{
-		return ((input << this->shift) + this->multiplier / 2) / this->multiplier;
+		return ((input << this->shift) + (round ? this->multiplier / 2 : 0)) / this->multiplier;
 	}
 };
 
@@ -594,7 +596,7 @@ static const Units _units[] = {
 		{   1,  0}, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
 		{1000,  0}, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
 		{   1,  0}, STR_UNITS_FORCE_SI,
-		{   3,  0}, STR_UNITS_HEIGHT_IMPERIAL,
+		{   3,  0}, STR_UNITS_HEIGHT_IMPERIAL, // "Wrong" conversion factor for more nicer GUI values
 	},
 	{ // Metric (km/h, hp, metric ton, litre, kN, metre)
 		{ 103,  6}, STR_UNITS_VELOCITY_METRIC,
@@ -621,7 +623,10 @@ static const Units _units[] = {
  */
 uint ConvertSpeedToDisplaySpeed(uint speed)
 {
-	return _units[_settings_game.locale.units].c_velocity.ToDisplay(speed);
+	/* For historical reasons we don't want to mess with the
+	 * conversion for speed. So, don't round it and keep the
+	 * original conversion factors instead of the real ones. */
+	return _units[_settings_game.locale.units].c_velocity.ToDisplay(speed, false);
 }
 
 /**
