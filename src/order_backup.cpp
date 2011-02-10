@@ -111,7 +111,9 @@ void OrderBackup::DoRestore(Vehicle *v)
 	FOR_ALL_ORDER_BACKUPS(ob) {
 		if (ob->user == user) delete ob;
 	}
-	new OrderBackup(v, user);
+	if (OrderBackup::CanAllocateItem()) {
+		new OrderBackup(v, user);
+	}
 }
 
 /**
