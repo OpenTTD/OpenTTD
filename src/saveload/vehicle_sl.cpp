@@ -289,6 +289,12 @@ void AfterLoadVehicles(bool part_of_load)
 					}
 				}
 			}
+
+			/* In some old savegames there might be some "crap" stored. */
+			if (IsSavegameVersionBefore(160) && !v->IsPrimaryVehicle()) {
+				v->current_order.Free();
+				v->unitnumber = 0;
+			}
 		}
 	}
 
