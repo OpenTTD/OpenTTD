@@ -121,6 +121,27 @@ public:
 	}
 
 	LandInfoWindow(TileIndex tile) : Window(), tile(tile) {
+		this->InitNested(&_land_info_desc);
+
+#if defined(_DEBUG)
+#	define LANDINFOD_LEVEL 0
+#else
+#	define LANDINFOD_LEVEL 1
+#endif
+		DEBUG(misc, LANDINFOD_LEVEL, "TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
+		DEBUG(misc, LANDINFOD_LEVEL, "type_height  = %#x", _m[tile].type_height);
+		DEBUG(misc, LANDINFOD_LEVEL, "m1           = %#x", _m[tile].m1);
+		DEBUG(misc, LANDINFOD_LEVEL, "m2           = %#x", _m[tile].m2);
+		DEBUG(misc, LANDINFOD_LEVEL, "m3           = %#x", _m[tile].m3);
+		DEBUG(misc, LANDINFOD_LEVEL, "m4           = %#x", _m[tile].m4);
+		DEBUG(misc, LANDINFOD_LEVEL, "m5           = %#x", _m[tile].m5);
+		DEBUG(misc, LANDINFOD_LEVEL, "m6           = %#x", _m[tile].m6);
+		DEBUG(misc, LANDINFOD_LEVEL, "m7           = %#x", _me[tile].m7);
+#undef LANDINFOD_LEVEL
+	}
+
+	virtual void OnInit()
+	{
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 
 		/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
@@ -297,24 +318,6 @@ public:
 			}
 		}
 		if (!found) this->landinfo_data[LAND_INFO_MULTICENTER_LINE][0] = '\0';
-
-		this->InitNested(&_land_info_desc);
-
-#if defined(_DEBUG)
-#	define LANDINFOD_LEVEL 0
-#else
-#	define LANDINFOD_LEVEL 1
-#endif
-		DEBUG(misc, LANDINFOD_LEVEL, "TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
-		DEBUG(misc, LANDINFOD_LEVEL, "type_height  = %#x", _m[tile].type_height);
-		DEBUG(misc, LANDINFOD_LEVEL, "m1           = %#x", _m[tile].m1);
-		DEBUG(misc, LANDINFOD_LEVEL, "m2           = %#x", _m[tile].m2);
-		DEBUG(misc, LANDINFOD_LEVEL, "m3           = %#x", _m[tile].m3);
-		DEBUG(misc, LANDINFOD_LEVEL, "m4           = %#x", _m[tile].m4);
-		DEBUG(misc, LANDINFOD_LEVEL, "m5           = %#x", _m[tile].m5);
-		DEBUG(misc, LANDINFOD_LEVEL, "m6           = %#x", _m[tile].m6);
-		DEBUG(misc, LANDINFOD_LEVEL, "m7           = %#x", _me[tile].m7);
-#undef LANDINFOD_LEVEL
 	}
 
 	virtual bool IsNewGRFInspectable() const
