@@ -14,6 +14,7 @@
 #include "roadveh.h"
 #include "vehicle_func.h"
 #include "engine_func.h"
+#include "company_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -51,6 +52,7 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 	if (!purchase_window) {
 		v = new Vehicle();
 		v->engine_type = engine_type;
+		v->owner = _current_company;
 	}
 
 	uint i;
