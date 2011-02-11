@@ -1091,6 +1091,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}A váro
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Semmi
+STR_FUNDING_ONLY                                                :Csak finanszírozás
+STR_MINIMAL                                                     :Minimális
 STR_NUM_VERY_LOW                                                :Nagyon kevés
 STR_NUM_LOW                                                     :Kevés
 STR_NUM_NORMAL                                                  :Normál
@@ -1158,6 +1160,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Lejtőr
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Épületek, vágányok, stb. alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett állomási vonzáskörzetek bekapcsolása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Települési tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Vonatok maximális hossza: {ORANGE}{STRING} mező
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Járművek kipufogógáz/füst mennyisége: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Nincs
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Eredeti
@@ -1176,6 +1179,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Jármű
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Járművek fokozatos rakodása: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Infláció: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Csak igény esetén kerüljön rakomány az állomásra: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Hidak maximális hossza: {ORANGE}{STRING} mező
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Alagutak maximális hossza: {ORANGE}{STRING} mező
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Kézi nyersanyaglelőhely-létesítési módszer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nincs
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mint általában
@@ -1193,6 +1198,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Közút
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Ablakmozgatás, ha az egér a képernyő szélén van: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetősége: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Kizárólagos szállítási jogok vételének engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Helyi útfelújítások finanszírozásának engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Pénz küldésének engedélyezése másik vállalatok részére: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak nehéz vonatok szimulációjára: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Repülőgép sebességszorzó: {ORANGE}1 / {STRING}
@@ -1417,6 +1423,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Útvona
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Eredeti (OPF) {BLUE}(Ajánlott)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ellenjavallt)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Automatikus megfordulás jelzőknél: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Válassz beállítási értéket
 
@@ -3301,20 +3308,21 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 STR_ORDER_AUTOMATIC                                             :(Automata)
 
-STR_ORDER_FULL_LOAD                                             :(mindenből teljes rakományra vár)
-STR_ORDER_FULL_LOAD_ANY                                         :(bármiből teljes rakományra vár)
-STR_ORDER_NO_LOAD                                               :(nem vesz fel rakományt)
+STR_ORDER_FULL_LOAD                                             :(Mindenből teljes berakodás)
+STR_ORDER_FULL_LOAD_ANY                                         :(Bármiből teljes berakodás)
+STR_ORDER_NO_LOAD                                               :(Nincs berakodás)
 STR_ORDER_UNLOAD                                                :(Kirakodás és rakományfelvétel)
-STR_ORDER_UNLOAD_FULL_LOAD                                      :(Lerakodás és mindenből teljes rakományra várakozás)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lerakodás és bármiből teljes rakományra várakozás)
-STR_ORDER_UNLOAD_NO_LOAD                                        :(Lerakodás és üresen indulás)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Kirakodás és mindenből teljes berakodás)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Kirakodás és bármiből teljes berakodás)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Kirakodás és üresen indulás)
 STR_ORDER_TRANSFER                                              :(Elszállítás és rakományfelvétel)
-STR_ORDER_TRANSFER_FULL_LOAD                                    :(Elszállítás és mindenből teljes rakományra várakozás)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Elszállítás és bármiből teljes rakományra várakozás)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Elszállítás és mindenből teljes berakodás)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Elszállítás és bármiből teljes berakodás)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Elszállítás és üresen indulás)
 STR_ORDER_NO_UNLOAD                                             :(Ki nem rakodás és rakományfelvétel)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ki nem rakodás és mindenből teljes rakományra várakozás)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ki nem rakodás és bármiből teljes rakományra várakozás)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ki nem rakodás és mindenből teljes berakodás)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ki nem rakodás és bármiből teljes berakodás)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Nincs ki- és berakodás)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[közeli vég]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[közép]
@@ -3656,7 +3664,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... hang
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Csak a járműtelepen álló vonatokat lehet megváltoztatni
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Túl hosszú a vonat
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}A járművet nem lehet megfordítani...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Több részből álló járművet nem lehet megfordítani...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... több részből álló járművet tartalmaz
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Nem kompatibilis pályatípusok
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nem mozgathatod a járművet...
@@ -3730,6 +3738,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Előbb l
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Másik alagút van az útban
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Az alagút vége a pályán kívülre esik
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nem lehet kiásni a földet az alagút túloldalán
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... alagút túl hosszú
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... túl sok az objektum

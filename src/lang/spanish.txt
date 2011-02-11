@@ -3267,7 +3267,7 @@ STR_ORDER_STOP_LOCATION_FAR_END                                 :[lejos del fin]
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Saltar a orden {COMMA}
 STR_ORDER_CONDITIONAL_NUM                                       :Saltar a orden {COMMA} cuando {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Saltar a orden{COMMA} cuando {STRING} {STRING}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Saltar a orden {COMMA} cuando {STRING} {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Orden inválida)
 
