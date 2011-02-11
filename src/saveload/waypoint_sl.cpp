@@ -93,6 +93,8 @@ void MoveWaypointsToBaseStations()
 		}
 	}
 
+	if (!Waypoint::CanAllocateItem(_old_waypoints.Length())) SlError(STR_ERROR_TOO_MANY_STATIONS_LOADING);
+
 	/* All saveload conversions have been done. Create the new waypoints! */
 	for (OldWaypoint *wp = _old_waypoints.Begin(); wp != _old_waypoints.End(); wp++) {
 		Waypoint *new_wp = new Waypoint(wp->xy);

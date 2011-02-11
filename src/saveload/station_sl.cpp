@@ -75,6 +75,9 @@ void MoveBuoysToWaypoints()
 		/* Delete the station, so we can make it a real waypoint. */
 		delete st;
 
+		/* Stations and waypoints are in the same pool, so if a station
+		 * is deleted there must be place for a Waypoint. */
+		assert(Waypoint::CanAllocateItem());
 		Waypoint *wp   = new (index) Waypoint(xy);
 		wp->town       = town;
 		wp->string_id  = train ? STR_SV_STNAME_WAYPOINT : STR_SV_STNAME_BUOY;
