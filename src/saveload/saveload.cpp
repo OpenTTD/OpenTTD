@@ -2382,13 +2382,20 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 	} catch (...) {
 		ClearSaveLoadState();
 
-		/* Skip the "colour" character */
-		DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
+		AsyncSaveFinishProc asfp = SaveFileDone;
+
+		/* We don't want to shout when saving is just
+		 * cancelled due to a client disconnecting. */
+		if (_sl.error_str != STR_NETWORK_ERROR_LOSTCONNECTION) {
+			/* Skip the "colour" character */
+			DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
+			asfp = SaveFileError;
+		}
 
 		if (threaded) {
-			SetAsyncSaveFinish(SaveFileError);
+			SetAsyncSaveFinish(asfp);
 		} else {
-			SaveFileError();
+			asfp();
 		}
 		return SL_ERROR;
 	}

@@ -69,7 +69,6 @@ struct PacketWriter : SaveFilter {
 	/** Make sure everything is cleaned up. */
 	~PacketWriter()
 	{
-
 		/* Prevent double frees. */
 		if (this->cs != NULL) {
 			if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->BeginCritical();
@@ -99,7 +98,8 @@ struct PacketWriter : SaveFilter {
 
 	/* virtual */ void Write(byte *buf, size_t size)
 	{
-		if (this->cs == NULL) return;
+		/* We want to abort the saving when the socket is closed. */
+		if (this->cs == NULL) SlError(STR_NETWORK_ERROR_LOSTCONNECTION);
 
 		if (this->current == NULL) this->current = new Packet(PACKET_SERVER_MAP_DATA);
 
@@ -125,7 +125,8 @@ struct PacketWriter : SaveFilter {
 
 	/* virtual */ void Finish()
 	{
-		if (this->cs == NULL) return;
+		/* We want to abort the saving when the socket is closed. */
+		if (this->cs == NULL) SlError(STR_NETWORK_ERROR_LOSTCONNECTION);
 
 		if (this->cs->savegame_mutex != NULL) this->cs->savegame_mutex->BeginCritical();
 
@@ -181,6 +182,10 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 	if (this->savegame != NULL) this->savegame->cs = NULL;
 
 	if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
+
+	/* Make sure the saving is completely cancelled. */
+	if (this->savegame != NULL) WaitTillSaved();
+
 	delete this->savegame_mutex;
 }
 
