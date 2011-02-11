@@ -2012,6 +2012,12 @@ struct ZlibSaveFilter : SaveFilter {
 		if (deflateInit(&this->z, compression_level) != Z_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
 
+	/** Clean up what we allocated. */
+	~ZlibSaveFilter()
+	{
+		deflateEnd(&this->z);
+	}
+
 	/**
 	 * Helper loop for writing the data.
 	 * @param p    The bytes to write.
@@ -2056,7 +2062,6 @@ struct ZlibSaveFilter : SaveFilter {
 	{
 		this->WriteLoop(NULL, 0, Z_FINISH);
 		this->chain->Finish();
-		deflateEnd(&this->z);
 	}
 };
 
@@ -2134,6 +2139,12 @@ struct LZMASaveFilter : SaveFilter {
 		if (lzma_easy_encoder(&this->lzma, compression_level, LZMA_CHECK_CRC32) != LZMA_OK) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR, "cannot initialize compressor");
 	}
 
+	/** Clean up what we allocated. */
+	~LZMASaveFilter()
+	{
+		lzma_end(&this->lzma);
+	}
+
 	/**
 	 * Helper loop for writing the data.
 	 * @param p      The bytes to write.
@@ -2170,7 +2181,6 @@ struct LZMASaveFilter : SaveFilter {
 	{
 		this->WriteLoop(NULL, 0, LZMA_FINISH);
 		this->chain->Finish();
-		lzma_end(&this->lzma);
 	}
 };
 
