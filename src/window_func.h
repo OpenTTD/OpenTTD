@@ -23,6 +23,7 @@ void ResizeWindow(Window *w, int x, int y);
 int PositionMainToolbar(Window *w);
 int PositionStatusbar(Window *w);
 int PositionNewsMessage(Window *w);
+int PositionNetworkChatWindow(Window *w);
 
 int GetMainViewTop();
 int GetMainViewBottom();

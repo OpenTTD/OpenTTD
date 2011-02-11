@@ -2675,6 +2675,17 @@ int PositionNewsMessage(Window *w)
 	return PositionWindow(w, WC_NEWS_WINDOW, _settings_client.gui.statusbar_pos);
 }
 
+/**
+ * (Re)position network chat window at the screen.
+ * @param w Window structure of the network chat window, may also be \c NULL.
+ * @return X coordinate of left edge of the repositioned network chat winodw.
+ */
+int PositionNetworkChatWindow(Window *w)
+{
+	DEBUG(misc, 5, "Repositioning network chat window...");
+	return PositionWindow(w, WC_SEND_NETWORK_MSG, _settings_client.gui.statusbar_pos);
+}
+
 
 /**
  * Switches viewports following vehicles, which get autoreplaced
@@ -2739,7 +2750,7 @@ void RelocateAllWindows(int neww, int newh)
 			case WC_SEND_NETWORK_MSG:
 				ResizeWindow(w, Clamp(neww, 320, 640) - w->width, 0);
 				top = newh - w->height - FindWindowById(WC_STATUS_BAR, 0)->height;
-				left = (neww - w->width) >> 1;
+				left = PositionNetworkChatWindow(w);
 				break;
 
 			case WC_CONSOLE:

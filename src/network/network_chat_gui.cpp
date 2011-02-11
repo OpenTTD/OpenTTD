@@ -303,6 +303,8 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		this->SetFocusedWidget(NWCW_TEXTBOX);
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
 		_chat_tab_completion_active = false;
+
+		PositionNetworkChatWindow(this);
 	}
 
 	~NetworkChatWindow()
@@ -457,7 +459,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 	virtual Point OnInitialPosition(const WindowDesc *desc, int16 sm_width, int16 sm_height, int window_number)
 	{
-		Point pt = { (_screen.width - max(sm_width, desc->default_width)) / 2, _screen.height - sm_height - FindWindowById(WC_STATUS_BAR, 0)->height };
+		Point pt = { 0, _screen.height - sm_height - FindWindowById(WC_STATUS_BAR, 0)->height };
 		return pt;
 	}
 

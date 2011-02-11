@@ -693,6 +693,7 @@ static bool v_PositionStatusbar(int32 p1)
 	if (_game_mode != GM_MENU) {
 		PositionStatusbar(NULL);
 		PositionNewsMessage(NULL);
+		PositionNetworkChatWindow(NULL);
 	}
 	return true;
 }
