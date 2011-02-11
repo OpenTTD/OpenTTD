@@ -600,7 +600,7 @@ static const Units _units[] = {
 	},
 	{ // Metric (km/h, hp, metric ton, litre, kN, metre)
 		{ 103,  6}, STR_UNITS_VELOCITY_METRIC,
-		{   1,  0}, STR_UNITS_POWER_METRIC,
+		{4153, 12}, STR_UNITS_POWER_METRIC,
 		{   1,  0}, STR_UNITS_WEIGHT_SHORT_METRIC, STR_UNITS_WEIGHT_LONG_METRIC,
 		{1000,  0}, STR_UNITS_VOLUME_SHORT_METRIC, STR_UNITS_VOLUME_LONG_METRIC,
 		{   1,  0}, STR_UNITS_FORCE_SI,
@@ -608,7 +608,7 @@ static const Units _units[] = {
 	},
 	{ // SI (m/s, kilowatt, kilogram, cubic metre, kilonewton, metre)
 		{1831, 12}, STR_UNITS_VELOCITY_SI,
-		{ 764, 10}, STR_UNITS_POWER_SI,
+		{6109, 13}, STR_UNITS_POWER_SI,
 		{1000,  0}, STR_UNITS_WEIGHT_SHORT_SI, STR_UNITS_WEIGHT_LONG_SI,
 		{   1,  0}, STR_UNITS_VOLUME_SHORT_SI, STR_UNITS_VOLUME_LONG_SI,
 		{   1,  0}, STR_UNITS_FORCE_SI,
