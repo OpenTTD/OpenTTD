@@ -463,6 +463,15 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company, co
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/**
+ * Check whether the client is actually connected (and in the game).
+ * @return True when the client is connected.
+ */
+bool ClientNetworkGameSocketHandler::IsConnected()
+{
+	return my_client != NULL && my_client->status == STATUS_ACTIVE;
+}
+
 
 /***********
  * Receiving functions

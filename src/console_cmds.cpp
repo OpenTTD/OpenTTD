@@ -19,6 +19,7 @@
 #include "network/network_func.h"
 #include "network/network_base.h"
 #include "network/network_admin.h"
+#include "network/network_client.h"
 #include "command_func.h"
 #include "settings_func.h"
 #include "fios.h"
@@ -90,7 +91,7 @@ DEF_CONSOLE_HOOK(ConHookNeedNetwork)
 {
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
-	if (!_networking) {
+	if (!_networking || (!_network_server && !MyClient::IsConnected())) {
 		if (echo) IConsoleError("Not connected. This command is only available in multiplayer.");
 		return CHR_DISALLOW;
 	}

@@ -100,6 +100,8 @@ public:
 	static NetworkRecvStatus SendRCon(const char *password, const char *command);
 	static NetworkRecvStatus SendMove(CompanyID company, const char *password);
 
+	static bool IsConnected();
+
 	static void Send();
 	static bool Receive();
 	static bool GameLoop();
