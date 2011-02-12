@@ -54,6 +54,7 @@ void SetSaveLoadError(uint16 str);
 const char *GetSaveLoadErrorString();
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb, bool threaded = true);
 void WaitTillSaved();
+void ProcessAsyncSaveFinish();
 void DoExitSave();
 
 SaveOrLoadResult SaveWithFilter(struct SaveFilter *writer, bool threaded);

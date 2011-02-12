@@ -181,8 +181,12 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 	if (this->savegame != NULL) this->savegame->cs = NULL;
 	if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
 
-	/* Make sure the saving is completely cancelled. */
-	if (this->savegame != NULL) WaitTillSaved();
+	/* Make sure the saving is completely cancelled.
+	 * Yes, we need to handle the save finish as well
+	 * as the next connection in this "loop" might
+	 * just be requesting the map and such. */
+	WaitTillSaved();
+	ProcessAsyncSaveFinish();
 
 	while (this->savegame_packets != NULL) {
 		Packet *p = this->savegame_packets->next;
