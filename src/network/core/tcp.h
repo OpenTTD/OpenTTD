@@ -19,6 +19,14 @@
 
 #ifdef ENABLE_NETWORK
 
+/** The states of sending the packets. */
+enum SendPacketsState {
+	SPS_CLOSED,      ///< The connection got closed.
+	SPS_NONE_SENT,   ///< The buffer is still full, so no (parts of) packets could be sent.
+	SPS_PARTLY_SENT, ///< The packets are partly sent; there are more packets to be sent in the queue.
+	SPS_ALL_SENT,    ///< All packets in the queue are sent.
+};
+
 /** Base socket handler for all TCP sockets */
 class NetworkTCPSocketHandler : public NetworkSocketHandler {
 private:
@@ -36,8 +44,7 @@ public:
 
 	virtual NetworkRecvStatus CloseConnection(bool error = true);
 	virtual void SendPacket(Packet *packet);
-	bool SendPackets(bool closing_down = false);
-	bool IsPacketQueueEmpty();
+	SendPacketsState SendPackets(bool closing_down = false);
 
 	virtual Packet *ReceivePacket();
 

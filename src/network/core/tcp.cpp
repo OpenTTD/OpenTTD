@@ -90,14 +90,14 @@ void NetworkTCPSocketHandler::SendPacket(Packet *packet)
  * @return \c true if a (part of a) packet could be sent and
  *         the connection is not closed yet.
  */
-bool NetworkTCPSocketHandler::SendPackets(bool closing_down)
+SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 {
 	ssize_t res;
 	Packet *p;
 
 	/* We can not write to this socket!! */
-	if (!this->writable) return false;
-	if (!this->IsConnected()) return false;
+	if (!this->writable) return SPS_NONE_SENT;
+	if (!this->IsConnected()) return SPS_CLOSED;
 
 	p = this->packet_queue;
 	while (p != NULL) {
@@ -110,14 +110,14 @@ bool NetworkTCPSocketHandler::SendPackets(bool closing_down)
 					DEBUG(net, 0, "send failed with error %d", err);
 					this->CloseConnection();
 				}
-				return false;
+				return SPS_CLOSED;
 			}
-			return true;
+			return SPS_PARTLY_SENT;
 		}
 		if (res == 0) {
 			/* Client/server has left us :( */
 			if (!closing_down) this->CloseConnection();
-			return false;
+			return SPS_CLOSED;
 		}
 
 		p->pos += res;
@@ -129,11 +129,11 @@ bool NetworkTCPSocketHandler::SendPackets(bool closing_down)
 			delete p;
 			p = this->packet_queue;
 		} else {
-			return true;
+			return SPS_PARTLY_SENT;
 		}
 	}
 
-	return true;
+	return SPS_ALL_SENT;
 }
 
 /**
@@ -214,11 +214,6 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 
 	p->PrepareToRead();
 	return p;
-}
-
-bool NetworkTCPSocketHandler::IsPacketQueueEmpty()
-{
-	return this->packet_queue == NULL;
 }
 
 /**

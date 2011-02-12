@@ -573,13 +573,23 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 
 		if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
 
-		/* Send all packets (forced) and check if we have send it all */
-		if (this->SendPackets() && this->IsPacketQueueEmpty()) {
-			/* All are sent, increase the sent_packets */
-			if (this->savegame_packets != NULL) sent_packets *= 2;
-		} else {
-			/* Not everything is sent, decrease the sent_packets */
-			if (sent_packets > 1) sent_packets /= 2;
+		switch (this->SendPackets()) {
+			case SPS_CLOSED:
+				return NETWORK_RECV_STATUS_CONN_LOST;
+
+			case SPS_ALL_SENT:
+				/* All are sent, increase the sent_packets */
+				if (this->savegame_packets != NULL) sent_packets *= 2;
+				break;
+
+			case SPS_PARTLY_SENT:
+				/* Only a part is sent; leave the transmission state. */
+				break;
+
+			case SPS_NONE_SENT:
+				/* Not everything is sent, decrease the sent_packets */
+				if (sent_packets > 1) sent_packets /= 2;
+				break;
 		}
 	}
 	return NETWORK_RECV_STATUS_OKAY;
