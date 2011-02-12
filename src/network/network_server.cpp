@@ -571,6 +571,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			}
 		}
 
+		if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
+
 		/* Send all packets (forced) and check if we have send it all */
 		if (this->SendPackets() && this->IsPacketQueueEmpty()) {
 			/* All are sent, increase the sent_packets */
@@ -579,8 +581,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			/* Not everything is sent, decrease the sent_packets */
 			if (sent_packets > 1) sent_packets /= 2;
 		}
-
-		if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
 	}
 	return NETWORK_RECV_STATUS_OKAY;
 }
