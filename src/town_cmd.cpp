@@ -1756,6 +1756,12 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 		 * placement is so bad it couldn't grow at all */
 		if (t->population > 0) return t;
 		DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
+
+		/* We already know that we can allocate a single town when
+		 * entering this function. However, we create and delete
+		 * a town which "resets" the allocation checks. As such we
+		 * need to check again when assertions are enabled. */
+		assert(Town::CanAllocateItem());
 	} while (--attempts != 0);
 
 	return NULL;
