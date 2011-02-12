@@ -178,13 +178,17 @@ ServerNetworkGameSocketHandler::~ServerNetworkGameSocketHandler()
 	OrderBackup::ResetUser(this->client_id);
 
 	if (this->savegame_mutex != NULL) this->savegame_mutex->BeginCritical();
-	delete this->savegame_packets;
 	if (this->savegame != NULL) this->savegame->cs = NULL;
-
 	if (this->savegame_mutex != NULL) this->savegame_mutex->EndCritical();
 
 	/* Make sure the saving is completely cancelled. */
 	if (this->savegame != NULL) WaitTillSaved();
+
+	while (this->savegame_packets != NULL) {
+		Packet *p = this->savegame_packets->next;
+		delete this->savegame_packets;
+		this->savegame_packets = p;
+	}
 
 	delete this->savegame_mutex;
 }
