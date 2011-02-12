@@ -2530,6 +2530,8 @@ static bool SearchTileForStatue(TileIndex tile, void *user_data)
  */
 static CommandCost TownActionBuildStatue(Town *t, DoCommandFlag flags)
 {
+	if (!Object::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_OBJECTS);
+
 	TileIndex tile = t->xy;
 	if (CircularTileSearch(&tile, 9, SearchTileForStatue, NULL)) {
 		if (flags & DC_EXEC) {
