@@ -189,6 +189,7 @@ struct GRFTempEngineData {
 	uint16 cargo_disallowed;
 	RailTypeLabel railtypelabel;
 	bool refitmask_valid;    ///< Did the newgrf set any refittability property? If not, default refittability will be applied.
+	bool prop27_set;         ///< Did the NewGRF set property 27 (misc flags)?
 	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
 };
 
@@ -753,6 +754,7 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 			case 0x27: // Miscellaneous flags
 				ei->misc_flags = buf->ReadByte();
 				_loaded_newgrf_features.has_2CC |= HasBit(ei->misc_flags, EF_USES_2CC);
+				_gted[e->index].prop27_set = true;
 				break;
 
 			case 0x28: // Cargo classes allowed
@@ -7476,6 +7478,13 @@ static void FinaliseEngineArray()
 			if (eid.grfid != INVALID_GRFID || eid.internal_id != eid.substitute_id) {
 				e->info.string_id = STR_NEWGRF_INVALID_ENGINE;
 			}
+		}
+
+		/* When the train does not set property 27 (misc flags), but it
+		 * is overridden by a NewGRF graphically we want to disable the
+		 * flipping possibility. */
+		if (e->type == VEH_TRAIN && !_gted[e->index].prop27_set && e->grf_prop.grffile != NULL && is_custom_sprite(e->u.rail.image_index)) {
+			ClrBit(e->info.misc_flags, EF_RAIL_FLIPS);
 		}
 
 		/* Skip wagons, there livery is defined via the engine */
