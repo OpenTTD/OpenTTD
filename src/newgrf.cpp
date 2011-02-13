@@ -7628,7 +7628,16 @@ static void FinaliseHouseArray()
 
 		/* We need to check all houses again to we are sure that multitile houses
 		 * did get consecutive IDs and none of the parts are missing. */
-		IsHouseSpecValid(hs, next1, next2, next3, NULL);
+		if (!IsHouseSpecValid(hs, next1, next2, next3, NULL)) {
+			/* GetHouseNorthPart checks 3 houses that are directly before
+			 * it in the house pool. If any of those houses have multi-tile
+			 * flags set it assumes it's part of a multitile house. Since
+			 * we can have invalid houses in the pool marked as disabled, we
+			 * don't want to have them influencing valid tiles. As such set
+			 * building_flags to zero here to make sure any house following
+			 * this one in the pool is properly handled as 1x1 house. */
+			hs->building_flags = 0;
+		}
 	}
 
 	if (min_year != 0) {
