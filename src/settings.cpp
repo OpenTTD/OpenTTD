@@ -1147,16 +1147,6 @@ static bool StationCatchmentChanged(int32 p1)
 }
 
 
-static bool MarkAllTrainsDirty(int32 p1)
-{
-	Train *t;
-	FOR_ALL_TRAINS(t) {
-		if (t->IsPrimaryVehicle()) t->MarkDirty();
-	}
-	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
-	return true;
-}
-
 #ifdef ENABLE_NETWORK
 
 static bool UpdateClientName(int32 p1)
