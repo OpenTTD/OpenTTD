@@ -150,6 +150,7 @@ public:
 	 * - "0.7"
 	 * - "1.0"
 	 * - "1.1"
+	 * - "1.2"
 	 *
 	 * @return The version this AI is compatible with.
 	 * @note This function is optional.

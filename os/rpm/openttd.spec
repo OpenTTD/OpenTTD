@@ -13,7 +13,7 @@
 #-------------------------------------------------------------------------------
 
 Name:          openttd
-Version:       1.1.0
+Version:       1.2.0
 Release:       1%{?dist}
 
 Group:         Amusements/Games

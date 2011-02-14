@@ -1,3 +1,9 @@
+openttd (1.2.0~alpha) unstable; urgency=low
+
+  * Alpha releases of trunk leading to 1.2.0-beta1
+
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Mon, 14 Feb 2011 22:00:00 +0100
+
 openttd (1.1.0~beta5) unstable; urgency=low
 
   * New upstream release 1.1.0-beta5
