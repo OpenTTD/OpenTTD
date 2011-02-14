@@ -494,7 +494,10 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 						/* Insert wagon after 'last_engine' */
 						CommandCost res = CmdMoveVehicle(append, last_engine, DC_EXEC, false);
 
-						if (res.Succeeded() && wagon_removal && new_head->gcache.cached_total_length > old_total_length) {
+						/* When we allow removal of wagons, either the move failing due
+						 * to the train becoming too long, or the train becoming longer
+						 * would move the vehicle to the empty vehicle chain. */
+						if (wagon_removal && (res.Failed() ? res.GetErrorMessage() == STR_ERROR_TRAIN_TOO_LONG : new_head->gcache.cached_total_length > old_total_length)) {
 							CmdMoveVehicle(append, NULL, DC_EXEC | DC_AUTOREPLACE, false);
 							break;
 						}
@@ -511,6 +514,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 
 			/* Sell superfluous new vehicles that could not be inserted. */
 			if (cost.Succeeded() && wagon_removal) {
+				assert(new_head->gcache.cached_total_length <= _settings_game.vehicle.max_train_length * TILE_SIZE);
 				for (int i = 1; i < num_units; i++) {
 					Vehicle *wagon = new_vehs[i];
 					if (wagon == NULL) continue;
