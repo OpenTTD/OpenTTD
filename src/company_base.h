@@ -53,7 +53,7 @@ struct CompanyProperties {
 
 	RailTypes avail_railtypes;       ///< Rail types available to the company.
 
-	byte block_preview;              ///< Number of months that the company is not allowed to get new exclusive engine previews.
+	byte block_preview;              ///< Number of quarters that the company is not allowed to get new exclusive engine previews (see CompaniesGenStatistics).
 
 	uint32 cargo_types;              ///< Which cargo types were transported the last year.
 

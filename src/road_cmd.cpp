@@ -50,7 +50,7 @@ bool RoadVehiclesAreBuilt()
 	return false;
 }
 
-/* Invalid RoadBits on slopes  */
+/** Invalid RoadBits on slopes.  */
 static const RoadBits _invalid_tileh_slopes_road[2][15] = {
 	/* The inverse of the mixable RoadBits on a leveled slope */
 	{

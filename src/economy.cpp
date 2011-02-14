@@ -552,6 +552,7 @@ static void CompaniesGenStatistics()
 	}
 	cur_company.Restore();
 
+	/* Only run the economic statics and update company stats every 3rd month (1st of quarter). */
 	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month)) return;
 
 	Company *c;

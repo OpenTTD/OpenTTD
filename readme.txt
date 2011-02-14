@@ -534,9 +534,9 @@ look at http://wiki.openttd.org/index.php/Command_line.
 The most frequent problem is missing data files. Please install OpenGFX and
 possibly OpenSFX and OpenMSX. See section 4.1.1 for more information.
 
-Under, especially, Ubuntu OpenTTD can be extremely slow and freeze/hand under
-certain circumstance. See known-bugs.txt for more information and how to
-solve this problem on your computer.
+Under certain circumstance, especially on Ubuntu OpenTTD can be extremely slow
+and/or freeze. See known-bugs.txt for more information and how to solve this
+problem on your computer.
 
 Under Windows 98 and lower it is impossible to use a dedicated server; it will
 fail to start. Perhaps this is for the better because those OSes are not known

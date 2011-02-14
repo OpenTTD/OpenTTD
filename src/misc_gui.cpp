@@ -331,6 +331,10 @@ public:
 	}
 };
 
+/**
+ * Show land information window.
+ * @param tile The tile to show information about.
+ */
 void ShowLandInfo(TileIndex tile)
 {
 	DeleteWindowById(WC_LAND_INFO, 0);
@@ -704,7 +708,7 @@ public:
  * Display an error message in a window.
  * @param summary_msg  General error message showed in first line. Must be valid.
  * @param detailed_msg Detailed error message showed in second line. Can be INVALID_STRING_ID.
- * @param wl           Message severity
+ * @param wl           Message severity.
  * @param x            World X position (TileVirtX) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  * @param y            World Y position (TileVirtY) of the error location. Set both x and y to 0 to just center the message when there is no related error tile.
  */
@@ -736,6 +740,12 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 	new ErrmsgWindow(pt, summary_msg, detailed_msg, no_timeout);
 }
 
+/**
+ * Display estimated costs.
+ * @param cost Estimated cost (or income if negative).
+ * @param x    X position of the notification window.
+ * @param y    Y position of the notification window.
+ */
 void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 {
 	StringID msg = STR_MESSAGE_ESTIMATED_COST;
@@ -748,6 +758,13 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 	ShowErrorMessage(msg, INVALID_STRING_ID, WL_INFO, x, y);
 }
 
+/**
+ * Display animated income or costs on the map.
+ * @param x    World X position of the animation location.
+ * @param y    World Y position of the animation location.
+ * @param z    World Z position of the animation location.
+ * @param cost Estimated cost (or income if negative).
+ */
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 {
 	Point pt = RemapCoords(x, y, z);
@@ -761,6 +778,13 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 	AddTextEffect(msg, pt.x, pt.y, DAY_TICKS, TE_RISING);
 }
 
+/**
+ * Display animated feeder income.
+ * @param x    World X position of the animation location.
+ * @param y    World Y position of the animation location.
+ * @param z    World Z position of the animation location.
+ * @param cost Estimated feeder income.
+ */
 void ShowFeederIncomeAnimation(int x, int y, int z, Money cost)
 {
 	Point pt = RemapCoords(x, y, z);
@@ -769,6 +793,15 @@ void ShowFeederIncomeAnimation(int x, int y, int z, Money cost)
 	AddTextEffect(STR_FEEDER, pt.x, pt.y, DAY_TICKS, TE_RISING);
 }
 
+/**
+ * Display vehicle loading indicators.
+ * @param x       World X position of the animation location.
+ * @param y       World Y position of the animation location.
+ * @param z       World Z position of the animation location.
+ * @param percent Estimated feeder income.
+ * @param string  String which is drawn on the map.
+ * @return        TextEffectID to be used for future updates of the loading indicators.
+ */
 TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID string)
 {
 	Point pt = RemapCoords(x, y, z);
@@ -779,6 +812,11 @@ TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID str
 	return AddTextEffect(string, pt.x, pt.y, 0, TE_STATIC);
 }
 
+/**
+ * Update vehicle loading indicators.
+ * @param te_id   TextEffectID to be updated.
+ * @param string  String wich is printed.
+ */
 void UpdateFillingPercent(TextEffectID te_id, uint8 percent, StringID string)
 {
 	assert(string != STR_NULL);
@@ -787,6 +825,10 @@ void UpdateFillingPercent(TextEffectID te_id, uint8 percent, StringID string)
 	UpdateTextEffect(te_id, string);
 }
 
+/**
+ * Hide vehicle loading indicators.
+ * @param *te_id TextEffectID which is supposed to be hidden.
+ */
 void HideFillingPercent(TextEffectID *te_id)
 {
 	if (*te_id == INVALID_TE_ID) return;

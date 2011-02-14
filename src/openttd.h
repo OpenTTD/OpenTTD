@@ -14,12 +14,14 @@
 
 #include "core/enum_type.hpp"
 
+/** Mode which defines the state of the game. */
 enum GameMode {
 	GM_MENU,
 	GM_NORMAL,
 	GM_EDITOR,
 };
 
+/** Mode which defines what mode we're switching to. */
 enum SwitchMode {
 	SM_NONE,
 	SM_NEWGAME,

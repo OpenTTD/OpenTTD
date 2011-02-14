@@ -56,6 +56,10 @@ static bool _script_running; ///< Script is running (used to abort execution whe
 
 #ifdef ENABLE_NETWORK
 
+/**
+ * Check network availability and inform in console about failure of detection.
+ * @return Network availability.
+ */
 static inline bool NetworkAvailable(bool echo)
 {
 	if (!_network_available) {
@@ -65,6 +69,10 @@ static inline bool NetworkAvailable(bool echo)
 	return true;
 }
 
+/**
+ * Check whether we are a server.
+ * @return Are we a server? True when yes, false otherwise.
+ */
 DEF_CONSOLE_HOOK(ConHookServerOnly)
 {
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
@@ -76,6 +84,10 @@ DEF_CONSOLE_HOOK(ConHookServerOnly)
 	return CHR_ALLOW;
 }
 
+/**
+ * Check whether we are a client in a network game.
+ * @return Are we a client in a network game? True when yes, false otherwise.
+ */
 DEF_CONSOLE_HOOK(ConHookClientOnly)
 {
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
@@ -87,6 +99,10 @@ DEF_CONSOLE_HOOK(ConHookClientOnly)
 	return CHR_ALLOW;
 }
 
+/**
+ * Check whether we are in a multiplayer game.
+ * @return True when we are client or server in a network game.
+ */
 DEF_CONSOLE_HOOK(ConHookNeedNetwork)
 {
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
@@ -98,6 +114,10 @@ DEF_CONSOLE_HOOK(ConHookNeedNetwork)
 	return CHR_ALLOW;
 }
 
+/**
+ * Check whether we are in single player mode.
+ * @return True when no network is active.
+ */
 DEF_CONSOLE_HOOK(ConHookNoNetwork)
 {
 	if (_networking) {
@@ -127,11 +147,19 @@ DEF_CONSOLE_HOOK(ConHookNewGRFDeveloperTool)
 	return CHR_HIDE;
 }
 
+/**
+ * Show help for the console.
+ * @param str String to print in the console.
+ */
 static void IConsoleHelp(const char *str)
 {
 	IConsolePrintF(CC_WARNING, "- %s", str);
 }
 
+/**
+ * Reset status of all engines.
+ * @return Will always succeed.
+ */
 DEF_CONSOLE_CMD(ConResetEngines)
 {
 	if (argc == 0) {
@@ -143,6 +171,11 @@ DEF_CONSOLE_CMD(ConResetEngines)
 	return true;
 }
 
+/**
+ * Reset status of the engine pool.
+ * @return Will always return true.
+ * @note Resetting the pool only succeeds when there are no vehicles ingame.
+ */
 DEF_CONSOLE_CMD(ConResetEnginePool)
 {
 	if (argc == 0) {
@@ -164,6 +197,11 @@ DEF_CONSOLE_CMD(ConResetEnginePool)
 }
 
 #ifdef _DEBUG
+/**
+ * Reset a tile to bare land in debug mode.
+ * param tile number.
+ * @return True when the tile is reset or the help on usage was printed (0 or two parameters).
+ */
 DEF_CONSOLE_CMD(ConResetTile)
 {
 	if (argc == 0) {
@@ -184,6 +222,15 @@ DEF_CONSOLE_CMD(ConResetTile)
 }
 #endif /* _DEBUG */
 
+/**
+ * Scroll to a tile on the map.
+ * @param arg1 tile tile number or tile x coordinate.
+ * @param arg2 optionally tile y coordinate.
+ * @note When only one argument is given it is intepreted as the tile number.
+ *       When two arguments are given, they are interpreted as the tile's x
+ *       and y coordinates.
+ * @return True when either console help was shown or a proper amount of parameters given.
+ */
 DEF_CONSOLE_CMD(ConScrollToTile)
 {
 	switch (argc) {
@@ -223,7 +270,11 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 	return false;
 }
 
-/* Save the map to a file */
+/**
+ * Save the map to a file.
+ * @param filename the filename to save the map to.
+ * @return True when help was displayed or the file attempted to be saved.
+ */
 DEF_CONSOLE_CMD(ConSave)
 {
 	if (argc == 0) {
@@ -247,7 +298,10 @@ DEF_CONSOLE_CMD(ConSave)
 	return false;
 }
 
-/* Explicitly save the configuration */
+/**
+ * Explicitly save the configuration.
+ * @return True.
+ */
 DEF_CONSOLE_CMD(ConSaveConfig)
 {
 	if (argc == 0) {
@@ -261,6 +315,12 @@ DEF_CONSOLE_CMD(ConSaveConfig)
 	return true;
 }
 
+/**
+ * Get savegame file informations.
+ * @param file The savegame filename to return information about. Can be the actual name
+ *             or a numbered entry into the filename list.
+ * @return FiosItem The information on the file.
+ */
 static const FiosItem *GetFiosItem(const char *file)
 {
 	_saveload_mode = SLD_LOAD_GAME;
