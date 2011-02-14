@@ -5374,8 +5374,7 @@ static void ScanInfo(ByteReader *buf)
 
 	_cur_grfconfig->ident.grfid = grfid;
 
-	/* TODO We are incompatible to grf_version < 2 as well, but due to broken GRFs out there, we accept these till the next stable */
-	if (/*grf_version < 2 || */grf_version > 7) {
+	if (grf_version < 2 || grf_version > 7) {
 		SetBit(_cur_grfconfig->flags, GCF_INVALID);
 		DEBUG(grf, 0, "%s: NewGRF \"%s\" (GRFID %08X) uses GRF version %d, which is incompatible with this version of OpenTTD.", _cur_grfconfig->filename, name, BSWAP32(grfid), grf_version);
 	}
