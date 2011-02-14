@@ -1031,6 +1031,9 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		InvalidateWindowData(WC_DELIVERED_CARGO, 0);
 		InvalidateWindowData(WC_PERFORMANCE_HISTORY, 0);
 		InvalidateWindowData(WC_COMPANY_VALUE, 0);
+		/* The smallmap owner view also stores the company colours. */
+		BuildOwnerLegend();
+		InvalidateWindowData(WC_SMALLMAP, 0, 1);
 
 		/* Company colour data is indirectly cached. */
 		Vehicle *v;
