@@ -255,6 +255,13 @@ static bool MakeWindow(bool full_screen)
 		settings.dmPelsHeight = _wnd.height_org;
 		settings.dmDisplayFrequency = _display_hz;
 
+		/* Test fullscreen with current resolution, if it fails use desktop resolution. */
+		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN | CDS_TEST) != DISP_CHANGE_SUCCESSFUL) {
+			RECT r;
+			GetWindowRect(GetDesktopWindow(), &r);
+			return _video_driver->ChangeResolution(r.right - r.left, r.bottom - r.top);
+		}
+
 		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
 			MakeWindow(false);  // don't care about the result
 			return false;  // the request failed
