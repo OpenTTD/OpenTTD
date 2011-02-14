@@ -1179,7 +1179,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Izslēgta
 STR_CONFIG_SETTING_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Kreisā-klikšķa ritināšana: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Izmantot {ORANGE}{STRING}{LTBLUE} datuma formātu priekš saglabāto spēļu nosaukumiem .
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :garšs (31-ais Dec.2008)
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :garš (31-ais Dec.2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :īss (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
@@ -3547,6 +3547,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Vispirms
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Traucē cits tunelis
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunelis beigsies ārpus kartes
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Nevar izrakt citu tuneli
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunelis ir pārāk garš
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... pārak daudz objektu
