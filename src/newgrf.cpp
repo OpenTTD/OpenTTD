@@ -7636,7 +7636,7 @@ static void FinaliseHouseArray()
 			 * don't want to have them influencing valid tiles. As such set
 			 * building_flags to zero here to make sure any house following
 			 * this one in the pool is properly handled as 1x1 house. */
-			hs->building_flags = 0;
+			hs->building_flags = TILE_NO_FLAG;
 		}
 	}
 
