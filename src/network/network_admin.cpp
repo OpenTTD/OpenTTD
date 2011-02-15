@@ -81,7 +81,12 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
  */
 /* static */ bool ServerNetworkAdminSocketHandler::AllowConnection()
 {
-	return !StrEmpty(_settings_client.network.admin_password) && _network_admins_connected < MAX_ADMINS;
+	bool accept = !StrEmpty(_settings_client.network.admin_password) && _network_admins_connected < MAX_ADMINS;
+	/* We can't go over the MAX_ADMINS limit here. However, if we accept
+	 * the connection, there has to be space in the pool. */
+	assert_compile(NetworkAdminSocketPool::MAX_SIZE == MAX_ADMINS);
+	assert(!accept || ServerNetworkAdminSocketHandler::CanAllocateItem());
+	return accept;
 }
 
 /** Send the packets for the server sockets. */
