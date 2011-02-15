@@ -2419,7 +2419,7 @@ CommandCost CmdDeleteTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 							try_clear = true;
 						} else {
 							/* Tell to find a new town. */
-							o->town = NULL;
+							if (flags & DC_EXEC) o->town = NULL;
 						}
 					}
 				}
