@@ -275,7 +275,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	/* We can't go over the MAX_CLIENTS limit here. However, the
 	 * pool must have place for all clients and ourself. */
 	assert_compile(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENTS + 1);
-	assert(ServerNetworkGameSocketHandler::CanAllocateItem());
+	assert(!accept || ServerNetworkGameSocketHandler::CanAllocateItem());
 	return accept;
 }
 
