@@ -38,7 +38,7 @@ STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereais
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Madeira
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Minério de Ferro
 STR_CARGO_PLURAL_STEEL                                          :{G=m}Aço
-STR_CARGO_PLURAL_VALUABLES                                      :{G=f}Preciosidades
+STR_CARGO_PLURAL_VALUABLES                                      :{G=f}Objetos de Valor
 STR_CARGO_PLURAL_COPPER_ORE                                     :{G=m}Minério de Cobre
 STR_CARGO_PLURAL_MAIZE                                          :{G=m}Milho
 STR_CARGO_PLURAL_FRUIT                                          :{G=f}Fruta
@@ -66,14 +66,14 @@ STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Passageiro
 STR_CARGO_SINGULAR_COAL                                         :{G=m}Carvão
 STR_CARGO_SINGULAR_MAIL                                         :{G=f}Correspondência
 STR_CARGO_SINGULAR_OIL                                          :{G=m}Petróleo
-STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Criação
+STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Gado
 STR_CARGO_SINGULAR_GOODS                                        :{G=m}Mercadorias
 STR_CARGO_SINGULAR_GRAIN                                        :{G=m}Cereais
 STR_CARGO_SINGULAR_WOOD                                         :{G=f}Madeira
-STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Minério de ferro
+STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Minério de Ferro
 STR_CARGO_SINGULAR_STEEL                                        :{G=m}Aço
-STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}Preciosidades
-STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=m}Minério de cobre
+STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}Objetos de Valor
+STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=m}Minério de Cobre
 STR_CARGO_SINGULAR_MAIZE                                        :{G=m}Milho
 STR_CARGO_SINGULAR_FRUIT                                        :{G=f}Fruta
 STR_CARGO_SINGULAR_DIAMOND                                      :{G=m}Diamante
@@ -98,7 +98,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refrigeran
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passageiro{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} de carvão
-STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correspondência
+STR_QUANTITY_MAIL                                               :{COMMA} bolsa{P "" s} de correspondência
 STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} cabeça{P "" s} de gado
 STR_QUANTITY_GOODS                                              :{COMMA} engradado{P "" s} de mercadorias
@@ -106,20 +106,20 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT} de cer
 STR_QUANTITY_WOOD                                               :{WEIGHT} de madeira
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de minério de ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT} de aço
-STR_QUANTITY_VALUABLES                                          :{COMMA} saco{P "" s} de preciosidades
+STR_QUANTITY_VALUABLES                                          :{COMMA} bolsa{P "" s} de objetos de valor
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de minério de cobre
 STR_QUANTITY_MAIZE                                              :{WEIGHT} de milho
 STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamantes
+STR_QUANTITY_DIAMONDS                                           :{COMMA} bolsa{P "" s} de diamantes
 STR_QUANTITY_FOOD                                               :{WEIGHT} de alimentos
 STR_QUANTITY_PAPER                                              :{WEIGHT} de papel
-STR_QUANTITY_GOLD                                               :{COMMA} saco{P "" s} de ouro
+STR_QUANTITY_GOLD                                               :{COMMA} bolsa{P "" s} de ouro
 STR_QUANTITY_WATER                                              :{VOLUME} de água
 STR_QUANTITY_WHEAT                                              :{WEIGHT} de trigo
 STR_QUANTITY_RUBBER                                             :{VOLUME} de borracha
 STR_QUANTITY_SUGAR                                              :{WEIGHT} de açúcar
 STR_QUANTITY_TOYS                                               :{COMMA} brinquedo{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} saco{P "" s} de doces{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA} bolsa{P "" s} de doces
 STR_QUANTITY_COLA                                               :{VOLUME} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algodão doce
 STR_QUANTITY_BUBBLES                                            :{COMMA} bolha{P "" s}
@@ -133,15 +133,15 @@ STR_QUANTITY_N_A                                                :N/D
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PA
 STR_ABBREV_COAL                                                 :{TINYFONT}CV
-STR_ABBREV_MAIL                                                 :{TINYFONT}CA
+STR_ABBREV_MAIL                                                 :{TINYFONT}CO
 STR_ABBREV_OIL                                                  :{TINYFONT}PE
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}CR
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}GA
 STR_ABBREV_GOODS                                                :{TINYFONT}ME
 STR_ABBREV_GRAIN                                                :{TINYFONT}CE
 STR_ABBREV_WOOD                                                 :{TINYFONT}MA
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}MF
 STR_ABBREV_STEEL                                                :{TINYFONT}AÇ
-STR_ABBREV_VALUABLES                                            :{TINYFONT}PR
+STR_ABBREV_VALUABLES                                            :{TINYFONT}OV
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}MC
 STR_ABBREV_MAIZE                                                :{TINYFONT}MI
 STR_ABBREV_FRUIT                                                :{TINYFONT}FT
@@ -167,15 +167,15 @@ STR_ABBREV_ALL                                                  :{TINYFONT}TUDO
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passageiro{P "" s}
-STR_BAGS                                                        :{COMMA} saco{P "" s}
+STR_BAGS                                                        :{COMMA} bolsa{P "" s}
 STR_TONS                                                        :{COMMA} tonelada{P "" s}
 STR_LITERS                                                      :{COMMA} litro{P "" s}
-STR_ITEMS                                                       :{COMMA} ite{P m ns}
-STR_CRATES                                                      :{COMMA} caixa{P "" s}
+STR_ITEMS                                                       :{COMMA} cabeça{P "" s}
+STR_CRATES                                                      :{COMMA} engradado{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Azul Escuro
-STR_COLOUR_PALE_GREEN                                           :Verde Pálido
+STR_COLOUR_PALE_GREEN                                           :Verde Claro
 STR_COLOUR_PINK                                                 :Rosa
 STR_COLOUR_YELLOW                                               :Amarelo
 STR_COLOUR_RED                                                  :Vermelho
@@ -196,8 +196,8 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
+STR_UNITS_POWER_METRIC                                          :{COMMA}cv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
@@ -218,19 +218,19 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pés
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Digite a sequencia de filtro
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Digite o filtro de série
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Digite uma palavra-chave para filtrar a lista
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecionar ordem de classificação (descendente/ascendente)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecionar critério de classificação
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecionar critério para filtração
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecione ordem de classificação (descendente/ascendente)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecione critério de classificação
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecione critério para filtração
 STR_BUTTON_SORT_BY                                              :{BLACK}Classificar por
-STR_BUTTON_LOCATION                                             :{BLACK}Localização
+STR_BUTTON_LOCATION                                             :{BLACK}Local
 STR_BUTTON_RENAME                                               :{BLACK}Renomear
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
-STR_TOOLTIP_SHADE                                               :{BLACK}Obscurecer janela - mostra apenas a barra de título
+STR_TOOLTIP_SHADE                                               :{BLACK}Obscurecer janela - mostrar apenas a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informações de depuração do NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como infechável pela tecla 'Fechar Todas as Janelas'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar a janela

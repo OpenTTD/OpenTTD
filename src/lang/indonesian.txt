@@ -403,7 +403,7 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Danai industri 
 
 ############ range for railway construction menu starts
 STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Pembangunan Rel
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Konstruksi Rel Kereta Listrik
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Pembangunan Rel Kereta Listrik
 STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Pembangunan Monorel
 STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Pembangunan Maglev
 ############ range ends here
@@ -1027,6 +1027,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}Sikap p
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Tidak ada
+STR_FUNDING_ONLY                                                :Hanya pendanaan
+STR_MINIMAL                                                     :Minimal
 STR_NUM_VERY_LOW                                                :Sangat sedikit
 STR_NUM_LOW                                                     :Sedikit
 STR_NUM_NORMAL                                                  :Normal
@@ -1094,6 +1096,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Ijinkan
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}Ijinkan pembentukan slop dibawah bangunan, rel, dsb. (otomatiskan): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}Ijinkan ukuran jangkauan wilayah lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}Ijinkan menggusur lebih banyak jalan, jembatan, terowongan milik kota, dsb: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Panjang maksimum kereta: {ORANGE}{STRING} kotak
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Banyaknya asap / percikan lokomotif: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Tidak ada
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orisinil
@@ -1112,6 +1115,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}Gunakan
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}Angkut secara bertahap: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}Menerima kargo di suatu stasiun hanya jika dibutuhkan: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Panjang maksimum jembatan: {ORANGE}{STRING} kotak
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Panjang maksimum terowongan: {ORANGE}{STRING} kotak
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode pembangunan Industri primer : {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :tidak ada
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lainnya
@@ -1129,6 +1134,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}Kendara
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}Geser tampilan saat mouse ada di tepi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}Ijinkan kolusi pada penguasa setempat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}Ijinkan pembelian hak ekslusif pengelolaan transportasi: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}Ijinkan pendanaan rekonstruksi jalan lokal: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}Ijinkan pengiriman uang ke perusahaan lain: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}Faktor kali muatan untuk simulasi kereta yang berat: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}Faktor kecepatan pesawat: {ORANGE}1 / {STRING}
@@ -1312,8 +1318,8 @@ STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :Tengah
 STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :Kanan
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}Lekatkan jendela pada: {ORANGE}{STRING} px
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pelekatan jendela: {ORANGE}dimatikan
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Batas jumlah jendela (non-sticky): {ORANGE}{STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Batas jumlah jendela (non-sticky): {ORANGE}tak ada
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}Batas jumlah jendela (tak lekat): {ORANGE}{STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :{LTBLUE}Batas jumlah jendela (tak lekat): {ORANGE}tak ada
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :{LTBLUE}Kecepatan pertumbuhan kota: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Tidak tumbuh
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Pelan
@@ -1353,6 +1359,7 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pencari
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_OPF                     :Orisinil {BLUE}(Dianjurkan)
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Tdk dianjurkan)
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}Berputar otomatis di sinyal: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ganti nilai tetapan
 
@@ -1899,8 +1906,8 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Gabungka
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Pisahkan waypoint
 
 # Rail construction toolbar
-STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Pembangun Rel Kereta
-STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Konstruksi Rel Kereta Listrik
+STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Pembangunan Rel Kereta
+STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Pembangunan Rel Kereta Listrik
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Pembangunan Monorel
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Pembangunan Maglev
 
@@ -1977,7 +1984,7 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Pipa, Silikon
 
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Pembangunan Jalan
-STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Konstruksi Jalan Trem
+STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Pembangunan Jalan Trem
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Bangun bagian jalan. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalan. Shift untuk menampilkan perkiraan biaya
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Bangun jalur trem. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalur trem. Shift untuk menampilkan perkiraan biaya
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Bangun jalan menggunakan mode Autoroad. Ctrl untuk mengganti mode bangun/bongkar pada konstruksi jalan. Shift untuk menampilkan perkiraan biaya
@@ -3250,7 +3257,8 @@ STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfer dan m
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfer dan biarkan kosong)
 STR_ORDER_NO_UNLOAD                                             :(Jangan bongkar tapi muat)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Jangan bongkar tapi muat sampai penuh)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Jangan bongkar tapi muat sampai ada yang penuh)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Jangan bongkar dan tunggu muat sampai ada yang penuh)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Jangan bongkar dan jangan muat)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[agak belakang]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[tengah]
@@ -3592,7 +3600,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... haru
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Kereta hanya dapat diubah ketika berhenti di dalam depo
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Kereta terlalu panjang
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Tidak dapat memutar balik arah kendaraan...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... berisi unit berganda
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Jenis rel tidak sesuai
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Tidak dapat memindahkan kendaraan...
@@ -3666,6 +3674,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Harus me
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Bersinggungan dengan terowongan lain
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Terowongan boleh berakhir di luar peta
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Tidak dapat menyesuaikan kemiringan tanah di ujung terowongan
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... terowongan terlalu panjang
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... terlalu banyak obyek
