@@ -331,9 +331,9 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Landskab
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Bygenerering
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Industrigenerering
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Bygning af vej
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant træer
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plant træer. Shift viser prisestimat
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Placér skilt
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placér objekt
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Placér objekt. Shift viser tidsestimat
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Gem scenarie
@@ -446,6 +446,7 @@ STR_ABOUT_MENU_SCREENSHOT                                       :Skærmbillede (
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Zoomet skærmbillede
 STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Kæmpe skærmbillede (Ctrl-G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
+STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Tilpas grafikelement
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
@@ -849,7 +850,7 @@ STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalite
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Hent global
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Hent lokalitet fra global visning til dette vindue
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Sæt global
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Sæt lokaliteten af det globale vindue til den samme som dette vindue
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Sæt den globale lokalitet til det samme som dette vindue
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Spilvalg
@@ -1159,7 +1160,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køret�
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}Automatisk fornyelse af gamle køretøjer: {ORANGE}{STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}Forny automatisk køretøj {ORANGE}{STRING}{LTBLUE} md. før/efter maks. alder
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}Min. kontanter før automatisk køretøjsfornyelse: {ORANGE}{STRING}
-STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Levetid for fejlmeddelser: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}Levetid for fejlmeddelse: {ORANGE}{STRING} sekund{P 0:1 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}Vis værktøjstips: {ORANGE}Hold musen over i {STRING} sekund{P 0:1 "" er}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}Vis værktøjstips: {ORANGE}Højreklik
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Vis byens indbyggertal i bynavnet: {ORANGE}{STRING}
@@ -1167,7 +1168,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}Vis bye
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}Landskabs generator: {ORANGE}{STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Den maksimale distance fra kanten til olieraffinaderier {ORANGE}{STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Olieraffinaderiers maksimale distance fra kanten: {ORANGE}{STRING} felt{P 0:1 "" er}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :{LTBLUE}Snelinjehøjden: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Tærrenets hårdhed (kun TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Meget blødt
@@ -1276,7 +1277,7 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :{LTBLUE}Start d
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :{LTBLUE}Aktiver rolig økonomi (flere små ændringer): {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :{LTBLUE}Tillad at købe aktier i andre selskaber: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :{LTBLUE}Procentdel af etape afkastet der skal bruges i overførsels systemet : {ORANGE}{STRING}%
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved trækning placer signal hvert: {ORANGE}{STRING} felt
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved trækning, placer signal hvert: {ORANGE}{STRING}. felt
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Byg automatisk semaforer før: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :{LTBLUE}Slå signalbrugerfladen til: {ORANGE}{STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signaltype der bygges som standard: {ORANGE}{STRING}
@@ -1295,6 +1296,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 gitter
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :tilfældig
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :{LTBLUE}Byer kan bygge veje: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :{LTBLUE}Byer kan bygge niveaukryds: {ORANGE}{STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :{LTBLUE}Tillad byer at fastsætte støjgrænser for lufthavne: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :{LTBLUE}At stifte byer i selve spillet: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :ikke tilladt
@@ -1909,16 +1911,16 @@ STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrisk jernb
 STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :Monorailkonstruktion
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :Magnetskinnekonstruktion
 
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Byg jernbane. Ctrl muliggør at bygge/fjerne elementer i togkonstruktion
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Byg jernbane med auto-jernbane-værktøj. Ctrl muliggør at bygge/fjerne elementer i togkonstruktion
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byg remise (til køb og servicering af tog)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ændre jernbane til kontrolsted. Ctrl tillader sammenslutning af waypoints
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byg jernbanegård. Ctrl tillader sammenslutning af stationer.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}Byg jernbane. Ctrl skifter mellem at bygge og fjerne elementer. Shift skifter mellem at bygge og vise prisoverslag.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Byg jernbane med auto-jernbane-værktøj. Ctrl skifter mellem at bygge og fjerne elementer. Shift skifter mellem at bygge og vise prisoverslag.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Byg remise (til køb og servicering af tog). Shift skifter mellem at bygge og vise prisoverslag.
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Ombyg jernbane til kontrolsted. Ctrl tillader sammenslutning af kontrolsteder. Shift skifter mellem at bygge og vise prisoverslag.
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Byg jernbanegård. Ctrl tillader sammenslutning af stationer. Shift skifter mellem at bygge og vise prisoverslag.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Byg jernbanesignaler. Ctrl+Klik skifter mellem semaforer/lyssignaler.{}Hvis musen trækkes langs sporet bygges signaler ned af en lige side af sporet. Ctrl bygger signaler indtil næste kryds.{}Ctrl-Klik åbner/lukker signal-vælgeren.
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Byg togbro
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Byg togtunnel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Skift mellem bygning/fjernelse af jernbaneskinner, signaler, waypoints og stationer. Hvis Ctrl holdes nede fjernes også togspor fra waypoints og stationer.
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konverter/opgradér typen af jernbane
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Ombyg/opgradér typen af jernbane. Shift skifter mellem at bygge og vise prisoverslag.
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}Retning af remise
@@ -1959,7 +1961,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Udgangss
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombisignal (elektrisk){}Kombisignalet fungerer både som indgangs- og udgangssignal. Dette muliggør opbygning af store forgreninger af signaler.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avanceret signal (elektrisk){}Et avanceret signal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en rute til et sikkert sted at stoppe. Avancerede signaler kan passeres fra bagsiden.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Ensrettet avanceret signal (elektrisk){}Et avanceret signal tillader, at mere en et tog ad gangen kan køre inden for en signalblok, hvis toget kan reservere en rute til et sikkert sted at stoppe. Ensrettede avancerede signaler kan ikke passeres fra bagsiden.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalkonvertering{}Når denne er valgt, vil klik på et eksisterende signal konvertere det til den valgte signaltype og -variant. CTRL-klik vil skifte den eksisterende signalvariant. Skift+click viser den vurderede pris for konvertering
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Signalombygning{}Når denne er valgt, vil klik på et eksisterende signal ombygge det til den valgte signaltype og -variant. Ctrl vil skifte den eksisterende signalvariant. Shift skifter mellem at bygge og vise prisoverslag.
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Træk-og-slip signaltæthed
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Formindsk træk-og-slip signaltæthed
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Forøg træk-og-slip signaltæthed
@@ -2439,9 +2441,13 @@ STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_RAIL_TYPE                  :Jernbanetype
 STR_NEWGRF_INSPECT_QUERY_CAPTION                                :{WHITE}NewGRF variabel 60+x parameter (hexadecimal)
 
 # Sprite aligner window
+STR_SPRITE_ALIGNER_CAPTION                                      :{WHITE}Tilpasser grafikelement {COMMA} ({STRING})
 STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}Næste grafikelement
+STR_SPRITE_ALIGNER_NEXT_TOOLTIP                                 :{BLACK}Fortsæt til næste normale grafikelement, spring pseudo/genfarvede/skrift-grafikelementer over og omsvøb til sidst
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Gå til grafikelement
+STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Gå til grafikken. Hvis den ikke er et normalt grafikelement, fortsæt til næste normale element
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Tidligere grafikelement
+STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Gå til forrige normale grafikelement, spring pseudo/omfarvede/skrift-elementer og omsvøb fra begyndelsen.
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Repræsentation af den markerede sprite. Justeringen ignoreres når denne sprite tegnes.
 STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Flyt spriten rundt for at ændre X- og Y-forskydningen
 STR_SPRITE_ALIGNER_OFFSETS                                      :{BLACK}X-forskydning: {NUM}, Y-forskydning: {NUM}
@@ -3334,6 +3340,7 @@ STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Breakpio
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Breakpoint slået til
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Når en computerspillers log besked er lig denne tekststreng, vil spillet gå på standby.
 STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Match store og små bogstaver
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Vis matchende stort/lille bogstav ved sammenligning af AI log beskeder messages mod teksten
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Fortsæt
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Sæt spillet i gang, og start den kunstige intelligens igen
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Se debug output for denne AI
@@ -3614,15 +3621,16 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Det er n
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Ingen brugbar jernbane
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Det er nødvendigt at fjerne jernbaneskinnerne først
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Vejen er ensrettet eller blokeret
+STR_ERROR_CROSSING_DISALLOWED                                   :{WHITE}Niveaukrydsning ikke tilladt for denne type skinner
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Kan ikke bygge signaler her...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Kan ikke bygge jernbane her...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Kan ikke fjerne jernbane herfra...
 STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Kan ikke fjerne signaler herfra...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan ikke konvertere signaler her...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Kan ikke ombygge signaler her...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}... der er ikke noget spor
 STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... der er ingen signaler
 
-STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan ikke konvertere jernbanetype her...
+STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Kan ikke ombygge jernbanetype her...
 
 # Road construction errors
 STR_ERROR_MUST_REMOVE_ROAD_FIRST                                :{WHITE}Det er nødvendigt at fjerne vejen først

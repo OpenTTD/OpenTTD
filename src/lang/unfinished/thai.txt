@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}คล�
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}เปลี่ยนขนาดหน้าต่าง ใหญ่/เล็ก
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}แถบเลื่อน - ใช้เลื่อนรายการ ขึ้น/ลง
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}แถบเลื่อน - ใช้เลื่อนรายการ ซ้าย/ขวา
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}ทำลายสิ่งก่อสร้าง และสิ่งต่างๆ ในพื้นที่ช่องนั้น
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}ทำลายสิ่งก่อสร้าง และสิ่งต่างๆ ในพื้นที่ช่องหนึ่ง. กด Ctrl เพื่อเลือกพื้นที่แบบทะแยง. กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้างและแสดงมูลค่า
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}ค่าปกติ
@@ -1018,6 +1018,8 @@ STR_DIFFICULTY_LEVEL_SETTING_CITY_APPROVAL                      :{LTBLUE}ทั�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :ไม่มี
+STR_FUNDING_ONLY                                                :ระดมทุนเท่านั้น
+STR_MINIMAL                                                     :ต่ำสุด
 STR_NUM_VERY_LOW                                                :ต่ำมาก
 STR_NUM_LOW                                                     :ต่ำ
 STR_NUM_NORMAL                                                  :ปกติ
@@ -1085,6 +1087,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}อน�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}อนุญาตให้เปลี่ยนสภาพพื้นผิวใต้สิ่งก่อสร้าง, ราง, ฯลฯ (ปรับความชันอัตโนมัติ): {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}อนุญาตให้มีขนาดของพื้นที่เก็บน้ำที่สมเหตุสมผลมากขึ้น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}อนุญาตให้ทำลายถนน, สะพาน, สิ่งก่อสร้างของเมืองได้มากขึ้น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}ความยาวของรถไฟที่มากที่สุด: {ORANGE}{STRING} ตาราง
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}จำนวนของหัวจักร ควัน/ประกาย: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :ไม่มี
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :ดั้งเดิม
@@ -1103,6 +1106,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}ใช�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}บรรจุเข้าไปในพาหนะทีละน้อยๆ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}ภาวะเงินเฟ้อ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}ส่งสินค้าที่บรรทุกลงที่สถานีที่มีความต้องการเท่านั้น: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}ความยาวสะพานมากสุด: {ORANGE}{STRING} ตาราง
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}ความยาวอุโมงค์มากสุด: {ORANGE}{STRING} ตาราง
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}กำหนดวิธีหลักในการก่อสร้างอุตสาหกรรมเอง: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ไม่เลย
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ตามอุตสาหกรรมอื่นๆ
@@ -1120,6 +1125,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}กา�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}เลื่อนหน้าต่างเมื่อเม้าส์อยู่ใกล้ขอบหน้าจอ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}อนุญาตให้ติดสินบนเจ้าหน้าที่ท้องถิ่น: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}อนุญาตให้ซื้อสิทธิ์การขนส่งแต่เพียงผู้เดียว: {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}อนุญาตให้ใช้เงินทุนในการก่อสร้างถนนใหม่: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}อนุญาตให้ส่งเงินแก่บริษัทอื่นๆ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}ตัวคุณสำหรับการขนส่งสินค้า เพื่อจำลองรถไฟหนัก: {ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}อัตราส่วนความเร็วเครื่องบิน: {ORANGE}1 / {STRING}
@@ -1145,8 +1151,8 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :{LTBLUE}เป�
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :{LTBLUE}เปลี่ยนยานพาหนะใหม่โดยอัตโนมัติเมื่อครบ {ORANGE}{STRING}{LTBLUE} เดือน ก่อน/หลัง สิ้นสุดอายุ
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :{LTBLUE}จำนวนเงินขั้นต่ำที่ให้เปลี่ยนยานพาหนะโดยอัตโนมัติ: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :{LTBLUE}ระยะเวลาแสดงข้อความผิดพลาด: {ORANGE}{STRING} วินาที
-STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}เวลาหน่วงของ hover events: {ORANGE}{STRING} วินาที
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}เวลาหน่วงของ hover events: {ORANGE}ปิดใช้งาน
+STR_CONFIG_SETTING_HOVER_DELAY                                  :{LTBLUE}แสดงคำแนะนำเครื่องมือ: {ORANGE}ชี้เป็นเวลา{STRING} วินาที
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :{LTBLUE}แสดงคำแนะนำเครื่องมือ: {ORANGE}คลิกขวา
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :{LTBLUE}แสดงจำนวนประชากรของเมืองในป้ายชื่อเมือง: {ORANGE}{STRING}
 
 STR_CONFIG_SETTING_LAND_GENERATOR                               :{LTBLUE}ตัวสังเคราะห์ภูมิประเทศ: {ORANGE}{STRING}
@@ -1946,8 +1952,8 @@ STR_BRIDGE_TUBULAR_SILICON                                      :สะพาน
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}สร้างถนน
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}การก่อสร้างรถราง
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}สร้างถนน กด Ctrl เพื่อสร้าง/รื้อถอน ถนน
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}สร้างสะพานสำหรับรถยนต์
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}สร้างสะพานสำหรับรถราง
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}สร้างสะพานสำหรับรถยนต์ กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้างและการแสดงมูลค่าโดยประมาณ
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}สร้างสะพานสำหรับรถราง กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้างและการแสดงมูลค่าโดยประมาณ
 
 # Road depot construction window
 
@@ -1973,7 +1979,7 @@ STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}ถม�
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}การเลือกวัตถุ
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}เลือกวัตถุเพื่อสร้าง
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}เลือกวัตถุเพื่อสร้าง กด Shift เพื่อสลับระหว่างสิ่งปลูกสร้างและการแสดงมูลค่าโดยประมาณ
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}ตัวอย่างวัตถุ
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}ขนาด: {GOLD}{NUM} x {NUM} ช่อง
 
@@ -1994,7 +2000,7 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}ยก�
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}สร้างเมือง
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}เมืองใหม่
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ก่อสร้างเมืองใหม่
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}ก่อสร้างเมืองใหม่ เมื่อกด Shift+คลิกเมาส์ จะแสดงมูลค่าโดยประมาณ
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}สุ่มเมือง
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}สร้างเมืองโดยการสุ่มที่ตั้ง
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}สุ่มหลายๆ เมือง
@@ -2250,10 +2256,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}ซื�
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}ซื้อเรือ
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}ซื้อเครื่องบิน
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}ซื้อรถไฟที่เลือกไว้
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}ซื้อรถที่เลือกไว้
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}ซื้อเรือที่เลือกไว้
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}ซื้อเครื่องบินที่เลือกไว้
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}ซื้อรถไฟที่เลือกไว้ เมื่อกด Shift+คลิกเมาส์ จะแสดงมูลค่าโดยประมาณโดยไม่ทำการซื้อ
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}ซื้อรถที่เลือกไว้ เมื่อกด Shift+คลิกเมาส์ จะแสดงมูลค่าโดยประมาณโดยไม่ทำการซื้อ
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}ซื้อเรือที่เลือกไว้ เมื่อกด Shift+คลิกเมาส์ จะแสดงมูลค่าโดยประมาณโดยไม่ทำการซื้อ
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}ซื้อเครื่องบินที่เลือกไว้ เมื่อกด Shift+คลิกเมาส์ จะแสดงมูลค่าโดยประมาณโดยไม่ทำการซื้อ
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}เปลี่ยนชื่อ
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}เปลี่ยนชื่อ
@@ -2390,6 +2396,7 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - สิ้�
 
 
 
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(ไม่มีการขนถ่ายสินค้า)
 
 
 
@@ -2556,6 +2563,7 @@ STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}... จ�
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... สะพานมีความยาวมากเกินไป
 
 # Tunnel related errors
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... อุโมงค์มีความยาวมากเกินไป
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... มีวัตถุมากเกินไป
