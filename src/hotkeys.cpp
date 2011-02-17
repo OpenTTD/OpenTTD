@@ -95,8 +95,14 @@ static uint16 ParseKeycode(const char *start, const char *end)
 		uint16 code = ParseCode(start, cur);
 		if (code == 0) return 0;
 		if (code & WKC_SPECIAL_KEYS) {
+			/* Some completely wrong keycode we don't support. */
+			if (code & ~WKC_SPECIAL_KEYS) return 0;
 			keycode |= code;
 		} else {
+			/* Ignore invalid keycodes */
+			if (code >= 128) {
+				return 0;
+			}
 			/* Ignore the code if it has more then 1 letter. */
 			if (keycode & ~WKC_SPECIAL_KEYS) return 0;
 			keycode |= code;
