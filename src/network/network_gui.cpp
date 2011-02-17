@@ -347,7 +347,12 @@ protected:
 	/** Sort the server list */
 	void SortNetworkGameList()
 	{
-		if (!this->servers.Sort()) return;
+		bool did_sort = this->servers.Sort();
+		/* In case of 0 or 1 servers there is no sorting, thus this->list_pos
+		 * isn't set to a "sane" value. So, we only take the short way out
+		 * when we did not (re)sort and we have a valid this->list_pos, or
+		 * there are no servers to actually select. */
+		if (!did_sort && (this->list_pos != SLP_INVALID || this->servers.Length() == 0)) return;
 
 		/* After sorting ngl->sort_list contains the sorted items. Put these back
 		 * into the original list. Basically nothing has changed, we are only
