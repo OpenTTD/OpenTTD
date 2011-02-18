@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}點選�
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}切換大／小視窗
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}捲軸 - 上下捲動清單
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}捲軸 - 左右捲動清單
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}拆卸一格中的建築物等
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}拆卸建築物等。在格子裡的土地。按Ctrl以對角選擇區域。Shift切換建築或顯示預估成本。
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}預設值
@@ -1887,15 +1887,15 @@ STR_RAIL_TOOLBAR_MONORAIL_CONSTRUCTION_CAPTION                  :鋪設單軌
 STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :鋪設磁浮軌
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}鋪設鐵軌。 按住 Ctrl 可切換鋪設／拆除模式，按 Shift 可切換鋪設／顯示預估的鋪設費用
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}以自動模式鋪設鐵軌。 按住 Ctrl 可切換鋪設／拆除模式
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}興建鐵路機廠 (用來購置及維修列車)
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}將軌道轉成號誌站。 按住 Ctrl 可興建相鄰車站
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}興建火車站。 按住 Ctrl 可興建相鄰車站
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}興建鐵路號誌。 按住 Ctrl 點選可切換懸臂／燈號號誌{} 於直線鐵路上拖曳可興建多個號誌。 按住 Ctrl 拖曳則只興建號誌至下個岔道{} 於選單按鈕按住 Ctrl 點選可切換顯示號誌選擇視窗
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}興建鐵路橋樑
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}挖掘鐵路隧道
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}以自動模式鋪設鐵軌。 按住 Ctrl 可切換鋪設／拆除模式。按Shift可切換建築/顯示預估成本。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}興建鐵路機廠 (用來購置及維修列車)。按Shift可切換建築/顯示預估成本。
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}將軌道轉成號誌站。 按住 Ctrl 可興建相鄰車站。按Shift可切換建築/顯示預估成本。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}興建火車站。 按住 Ctrl 可興建相鄰車站。按Shift可切換建築/顯示預估成本。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}興建鐵路號誌。 按住 Ctrl 點選可切換懸臂／燈號號誌{} 於直線鐵路上拖曳可興建多個號誌。 按住 Ctrl 拖曳則只興建號誌至下個岔道{} 於選單按鈕。按住 Ctrl 點選可切換顯示號誌選擇視窗。按Shift可切換建築/顯示預估成本。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}興建鐵路橋樑。按Shift可切換建築/顯示預估成本。
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}挖掘鐵路隧道。按Shift可切換建築/顯示預估成本。
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}切換建築／移除鐵軌、號誌、號誌站及車站。 按住 Ctrl 點選可移除號誌站及車站中的鐵軌
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}轉換／升級軌道種類
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}轉換／升級軌道種類。按Shift可切換建築/顯示預估成本。
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}鐵路機廠方向
@@ -1924,7 +1924,7 @@ STR_STATION_CLASS_WAYP                                          :號誌站
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}號誌選擇
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}閉塞號誌 (懸臂){}當路網中有多列列車時，為了避免發生相撞意外就必須設置號誌
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}閉塞號誌 (信號){}這是最常見的基本號誌，在同一時間裡只允許一列火車在同個區塊裡。
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}入口號誌 (懸臂){}當綠燈亮時，代表此號誌後有一個以上的出口號誌呈現綠燈，否則將會亮紅燈
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}出口號誌 (懸臂){}與閉塞號誌類似，但它還會負責觸發前頭的入口號誌及組合號誌
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}組合號誌 (懸臂){}組合號誌同時具有入口／出口號誌的特性，這可讓玩家設置一卡車的預告號誌
@@ -3729,7 +3729,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... 與�
 
 # Timetable related errors
 STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}無法為交通工具加入時刻表...
-STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}交通工具只能於車站內待命
+STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}交通工具只能於車站內停著
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}此交通工具將不停靠此車站
 
 # Sign related errors

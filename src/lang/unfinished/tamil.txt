@@ -165,12 +165,12 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NO
 STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} பயணிகள்
-STR_BAGS                                                        :{COMMA} பைகள்
-STR_TONS                                                        :{COMMA} டன்
-STR_LITERS                                                      :{COMMA} லிட்டர்
+STR_PASSENGERS                                                  :{COMMA} பயணி{P "" கள்}
+STR_BAGS                                                        :{COMMA} பை{P "" கள்}
+STR_TONS                                                        :{COMMA} டன்{P "" கள்}
+STR_LITERS                                                      :{COMMA} லிட்டர்{P "" கள்}
 STR_ITEMS                                                       :{COMMA} பொருட்கள்
-STR_CRATES                                                      :{COMMA} பேட்டிகள்
+STR_CRATES                                                      :{COMMA} பெட்டி{P "" கள்}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :கருநீலம்
@@ -236,7 +236,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Click an
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Toggle large/small window size
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - scrolls list up/down
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Scroll bar - scrolls list left/right
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}நிலப்பகுதியில் கட்டிடம் போன்றவற்றை இடிக்க
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}சதுர நிலப்பகுதியில் கட்டிடம் போன்றவற்றை இடிக்க. Ctrl தேர்வுசெய்திட. Shift உத்தேச செலவை/கட்டிடத்தை காட்டிட
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Default
@@ -364,6 +364,11 @@ STR_SORT_BY_WAITING                                             :Waiting cargo v
 
 
 
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}எந்த ஆலைகளையும் வரைபடத்தில் காட்டாதே
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}அனைத்து ஆலைகளையும் வரைபடத்தில் காட்டு
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}எந்த கம்பெனி சொத்துக்களையும் வரைபடத்தில் காட்டாதே
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}அனைத்து கம்பெனி சொத்துக்களையும் வரைபடத்தில் காட்டு
 
 # Status bar messages
 
@@ -386,6 +391,7 @@ STR_SORT_BY_WAITING                                             :Waiting cargo v
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
 
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} தொலைந்துவிட்டது
 
 
 
@@ -435,6 +441,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவ
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends
 
+STR_FUNDING_ONLY                                                :நிதியளிப்பு மட்டும்
+STR_MINIMAL                                                     :குறைந்தபட்சம்
 
 
 
@@ -450,6 +458,12 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}பாலத்தின் அதிகபட்ச நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}அதிகபட்ச சுரங்க நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}உள்ளூர் சாலை மறுசீரமைக்க நிதியளி: {ORANGE}{STRING}
+
+
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :{LTBLUE}வாகனம் தொலைந்தால் எச்சரிக்கை செய்: {ORANGE}{STRING}
 
 
 
@@ -457,6 +471,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}தகுந்த வாகனம் இல்லாதபோது Disable infrastructure building: {ORANGE}{STRING}
 
 
 
@@ -464,10 +479,12 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 
 
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :இடது
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :மத்திய
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :வலது
 
 
-
-
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}சிக்னல்களில் தானியங்கி மீட்சி: {ORANGE}{STRING}
 
 
 # Intro window
@@ -484,6 +501,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 # Abandon game
 
 # Cheat window
+STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}நடப்பு வருடத்தை மாற்று
 
 # Livery window
 
@@ -520,6 +538,8 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 ############ Leave those lines in this order!!
 
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} இதுவரை பதிவிறக்கியது
+STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} இதுவரை பதிவிறக்கியது
 
 
 
@@ -541,6 +561,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}கடந்த {NUM} வினாடி{P "" களில்} சர்வரிலிருந்து சர்வரிலிருந்து எந்த டேட்டாவும் கிடைக்கவில்லை
 
 # Network related errors
 ############ Leave those lines in this order!!
@@ -575,6 +596,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 # Signal window
 
 # Bridge selection window
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 
 
 # Road construction toolbar
@@ -600,6 +622,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 # Object construction window
 
+STR_OBJECT_CLASS_LTHS                                           :கலங்கரைவிளக்கு
 
 # Tree planting window (last two for SE only)
 
@@ -616,6 +639,8 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 # Industry cargoes window
 
 # Land area window
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}விமான நிலைய வகுப்பு: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}விமான நிலைய பெயர்: {LTBLUE}{STRING}
 
 # Description of land area of different tiles
 
@@ -836,6 +861,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 
 
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}அனைத்து ஆர்டர்களையும் ரத்து செய்
 
 
 
@@ -845,7 +871,9 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 
 
+STR_ORDER_AUTOMATIC                                             :(தானியங்கி)
 
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(லோடிங் அன்லோடிங் தடைசெய்யப்பட்டுள்ளது)
 
 
 
@@ -853,6 +881,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 # Time table window
 
 
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :பயணம் (தானியங்கி; அடுத்த கால அட்டவணையில் மனிதனால் இயக்க)
 
 
 
@@ -947,6 +976,7 @@ STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...ட�
 # Bridge related errors
 
 # Tunnel related errors
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... சுரங்கம் வெகு நீளம்
 
 # Object related errors
 
@@ -1071,6 +1101,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}
