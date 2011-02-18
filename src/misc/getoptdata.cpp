@@ -56,28 +56,21 @@ set_optval: // Handle option value of *odata .
 					return odata->id;
 
 				case ODF_HAS_VALUE:
-					if (this->cont != NULL) { // Remainder of the argument is the option value.
-						this->opt = this->cont;
-						this->cont = NULL;
-						return odata->id;
-					}
-					if (this->numleft == 0) return -2; // Missing the option value.
-					this->opt = this->argv[0];
-					this->argv++;
-					this->numleft--;
-					return odata->id;
-
 				case ODF_OPTIONAL_VALUE:
 					if (this->cont != NULL) { // Remainder of the argument is the option value.
 						this->opt = this->cont;
 						this->cont = NULL;
 						return odata->id;
 					}
-					if (this->numleft > 0 && this->argv[0][0] != '-') {
-						this->opt = this->argv[0];
-						this->argv++;
-						this->numleft--;
-					}
+					/* No more arguments, either return an error or a value-less option. */
+					if (this->numleft == 0) return (odata->flags == ODF_HAS_VALUE) ? -2 : odata->id;
+
+					/* Next argument looks like another option, let's not return it as option value. */
+					if (odata->flags == ODF_OPTIONAL_VALUE && this->argv[0][0] == '-') return odata->id;
+
+					this->opt = this->argv[0]; // Next argument is the option value.
+					this->argv++;
+					this->numleft--;
 					return odata->id;
 
 				default: NOT_REACHED();
