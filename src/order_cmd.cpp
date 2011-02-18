@@ -1470,6 +1470,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 					assert(dst->orders.list->GetFirstOrder() == NULL);
 					assert(!dst->orders.list->IsShared());
 					delete dst->orders.list;
+					assert(OrderList::CanAllocateItem());
 					dst->orders.list = new OrderList(first, dst);
 				}
 
