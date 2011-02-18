@@ -2286,6 +2286,12 @@
     <ClInclude Include="..\src\misc\fixedsizearray.hpp">
       <Filter>Misc</Filter>
     </ClInclude>
+    <ClCompile Include="..\src\misc\getoptdata.cpp">
+      <Filter>Misc</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src\misc\getoptdata.h">
+      <Filter>Misc</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\misc\hashtable.hpp">
       <Filter>Misc</Filter>
     </ClInclude>

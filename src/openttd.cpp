@@ -59,6 +59,7 @@
 #include "core/backup_type.hpp"
 #include "hotkeys.h"
 #include "newgrf.h"
+#include "misc/getoptdata.h"
 
 
 #include "town.h"
@@ -214,73 +215,6 @@ static void ShowHelp()
 #endif
 }
 
-
-struct MyGetOptData {
-	char *opt;
-	int numleft;
-	char **argv;
-	const char *options;
-	char *cont;
-
-	MyGetOptData(int argc, char **argv, const char *options)
-	{
-		opt = NULL;
-		numleft = argc;
-		this->argv = argv;
-		this->options = options;
-		cont = NULL;
-	}
-};
-
-static int MyGetOpt(MyGetOptData *md)
-{
-	char *s = md->cont;
-	if (s != NULL) {
-		goto md_continue_here;
-	}
-
-	for (;;) {
-		if (--md->numleft < 0) return -1;
-
-		s = *md->argv++;
-		if (*s == '-') {
-md_continue_here:;
-			s++;
-			if (*s != 0) {
-				const char *r;
-				/* Found argument, try to locate it in options. */
-				if (*s == ':' || (r = strchr(md->options, *s)) == NULL) {
-					/* ERROR! */
-					return -2;
-				}
-				if (r[1] == ':') {
-					char *t;
-					/* Item wants an argument. Check if the argument follows, or if it comes as a separate arg. */
-					if (!*(t = s + 1)) {
-						/* It comes as a separate arg. Check if out of args? */
-						if (--md->numleft < 0 || *(t = *md->argv) == '-') {
-							/* Check if item is optional? */
-							if (r[2] != ':') return -2;
-							md->numleft++;
-							t = NULL;
-						} else {
-							md->argv++;
-						}
-					}
-					md->opt = t;
-					md->cont = NULL;
-					return *s;
-				}
-				md->opt = NULL;
-				md->cont = s;
-				return *s;
-			}
-		} else {
-			/* This is currently not supported. */
-			return -2;
-		}
-	}
-}
 
 /**
  * Extract the resolution from the given string and store
@@ -452,9 +386,9 @@ int ttd_main(int argc, char *argv[])
 #endif
 	;
 
-	MyGetOptData mgo(argc - 1, argv + 1, optformat);
+	GetOptData mgo(argc - 1, argv + 1, optformat);
 
-	while ((i = MyGetOpt(&mgo)) != -1) {
+	while ((i = mgo.GetOpt()) != -1) {
 		switch (i) {
 		case 'I': free(graphics_set); graphics_set = strdup(mgo.opt); break;
 		case 'S': free(sounds_set); sounds_set = strdup(mgo.opt); break;

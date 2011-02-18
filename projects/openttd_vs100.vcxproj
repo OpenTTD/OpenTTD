@@ -1022,6 +1022,8 @@
     <ClCompile Include="..\src\misc\dbg_helpers.cpp" />
     <ClInclude Include="..\src\misc\dbg_helpers.h" />
     <ClInclude Include="..\src\misc\fixedsizearray.hpp" />
+    <ClCompile Include="..\src\misc\getoptdata.cpp" />
+    <ClInclude Include="..\src\misc\getoptdata.h" />
     <ClInclude Include="..\src\misc\hashtable.hpp" />
     <ClInclude Include="..\src\misc\str.hpp" />
     <ClCompile Include="..\src\network\core\address.cpp" />

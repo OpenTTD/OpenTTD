@@ -3436,6 +3436,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\misc\getoptdata.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\misc\getoptdata.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\misc\hashtable.hpp"
 				>
 			</File>
