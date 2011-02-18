@@ -76,6 +76,7 @@
     <ClCompile Include="..\src\core\alloc_func.cpp" />
     <ClCompile Include="..\src\strgen\strgen.cpp" />
     <ClCompile Include="..\src\string.cpp" />
+    <ClCompile Include="..\src\misc\getoptdata.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\core\alloc_func.hpp" />
@@ -84,6 +85,7 @@
     <ClInclude Include="..\src\core\endian_func.hpp" />
     <ClInclude Include="..\src\stdafx.h" />
     <ClInclude Include="..\src\string.h" />
+    <ClInclude Include="..\src\misc\getoptdata.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -54,11 +54,15 @@ alloc_func.o: $(SRC_DIR)/core/alloc_func.cpp endian_host.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSTRGEN -c -o $@ $<
 
+getoptdata.o: $(SRC_DIR)/misc/getoptdata.cpp $(SRC_DIR)/misc/getoptdata.h
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/misc/%.cpp=%.cpp)'
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSTRGEN -c -o $@ $<
+
 lang/english.txt: $(LANG_DIR)/english.txt
 	$(Q)mkdir -p lang
 	$(Q)cp $(LANG_DIR)/english.txt lang/english.txt
 
-$(STRGEN): alloc_func.o string.o strgen.o
+$(STRGEN): alloc_func.o string.o strgen.o getoptdata.o
 	$(E) '$(STAGE) Compiling and Linking $@'
 	$(Q)$(CXX_BUILD) $(LDFLAGS_BUILD) $^ -o $@
 

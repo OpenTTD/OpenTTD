@@ -125,6 +125,10 @@
 				RelativePath="..\src\string.cpp"
 				>
 			</File>
+			<File
+				RelativePath="..\src\misc\getoptdata.cpp"
+				>
+			</File>
 		</Filter>
 		<File
 			RelativePath="..\src\core\alloc_func.hpp"
@@ -148,6 +152,10 @@
 		</File>
 		<File
 			RelativePath="..\src\string.h"
+			>
+		</File>
+		<File
+			RelativePath="..\src\misc\getoptdata.h"
 			>
 		</File>
 	</Files>

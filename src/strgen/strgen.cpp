@@ -14,6 +14,7 @@
 #include "../string_func.h"
 #include "../strings_type.h"
 #include "../language.h"
+#include "../misc/getoptdata.h"
 #include "../table/control_codes.h"
 
 #include <stdarg.h>
@@ -1193,108 +1194,117 @@ static inline char *replace_pathsep(char *s)
 static inline char *replace_pathsep(char *s) { return s; }
 #endif
 
+/** Options of strgen. */
+static const OptionData _opts[] = {
+	  GETOPT_NOVAL(     'v',  "--version"),
+	GETOPT_GENERAL('C', '\0', "-export-commands", ODF_NO_VALUE),
+	GETOPT_GENERAL('L', '\0', "-export-plurals",  ODF_NO_VALUE),
+	GETOPT_GENERAL('P', '\0', "-export-pragmas",  ODF_NO_VALUE),
+	  GETOPT_NOVAL(     't',  "--todo"),
+	  GETOPT_NOVAL(     'w',  "--warning"),
+	  GETOPT_NOVAL(     'h',  "--help"),
+	GETOPT_GENERAL('h', '?',  NULL,               ODF_NO_VALUE),
+	  GETOPT_VALUE(     's',  "--source_dir"),
+	  GETOPT_VALUE(     'd',  "--dest_dir"),
+	GETOPT_END(),
+};
+
 int CDECL main(int argc, char *argv[])
 {
 	char pathbuf[MAX_PATH];
 	const char *src_dir = ".";
 	const char *dest_dir = NULL;
 
-	while (argc > 1 && *argv[1] == '-') {
-		if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
-			puts("$Revision$");
-			return 0;
-		}
+	GetOptData mgo(argc - 1, argv + 1, _opts);
+	for (;;) {
+		int i = mgo.GetOpt();
+		if (i == -1) break;
 
-		if (strcmp(argv[1], "-export-commands") == 0) {
-			printf("args\tflags\tcommand\treplacement\n");
-			for (const CmdStruct *cs = _cmd_structs; cs < endof(_cmd_structs); cs++) {
-				char flags;
-				switch (cs->value) {
-					case 0x200E: case 0x200F: // Implicit BIDI controls
-					case 0x202A: case 0x202B: case 0x202C: case 0x202D: case 0x202E: // Explicit BIDI controls
-					case 0xA0: // Non breaking space
-					case '\n': // Newlines may be added too
-					case '{':  // This special
-						/* This command may be in the translation when it is not in base */
-						flags = 'i';
-						break;
+		switch (i) {
+			case 'v':
+				puts("$Revision$");
+				return 0;
 
-					default:
-						if (cs->proc == EmitGender) {
-							flags = 'g'; // Command needs number of parameters defined by number of genders
-						} else if (cs->proc == EmitPlural) {
-							flags = 'p'; // Command needs number of parameters defined by plural value
-						} else {
-							flags = '0'; // Command needs no parameters
-						}
+			case 'C':
+				printf("args\tflags\tcommand\treplacement\n");
+				for (const CmdStruct *cs = _cmd_structs; cs < endof(_cmd_structs); cs++) {
+					char flags;
+					switch (cs->value) {
+						case 0x200E: case 0x200F: // Implicit BIDI controls
+						case 0x202A: case 0x202B: case 0x202C: case 0x202D: case 0x202E: // Explicit BIDI controls
+						case 0xA0: // Non breaking space
+						case '\n': // Newlines may be added too
+						case '{':  // This special
+							/* This command may be in the translation when it is not in base */
+							flags = 'i';
+							break;
+
+						default:
+							if (cs->proc == EmitGender) {
+								flags = 'g'; // Command needs number of parameters defined by number of genders
+							} else if (cs->proc == EmitPlural) {
+								flags = 'p'; // Command needs number of parameters defined by plural value
+							} else {
+								flags = '0'; // Command needs no parameters
+							}
+					}
+					printf("%i\t%c\t\"%s\"\t\"%s\"\n", cs->consumes, flags, cs->cmd, strstr(cs->cmd, "STRING") ? "STRING" : cs->cmd);
 				}
-				printf("%i\t%c\t\"%s\"\t\"%s\"\n", cs->consumes, flags, cs->cmd, strstr(cs->cmd, "STRING") ? "STRING" : cs->cmd);
-			}
-			return 0;
-		}
+				return 0;
 
-		if (strcmp(argv[1], "-export-plurals") == 0) {
-			printf("count\tdescription\n");
-			for (const PluralForm *pf = _plural_forms; pf < endof(_plural_forms); pf++) {
-				printf("%i\t\"%s\"\n", pf->plural_count, pf->description);
-			}
-			return 0;
-		}
+			case 'L':
+				printf("count\tdescription\n");
+				for (const PluralForm *pf = _plural_forms; pf < endof(_plural_forms); pf++) {
+					printf("%i\t\"%s\"\n", pf->plural_count, pf->description);
+				}
+				return 0;
 
-		if (strcmp(argv[1], "-export-pragmas") == 0) {
-			printf("name\tflags\tdefault\tdescription\n");
-			for (size_t i = 0; i < lengthof(_pragmas); i++) {
-				printf("\"%s\"\t%s\t\"%s\"\t\"%s\"\n",
-						_pragmas[i][0], _pragmas[i][1], _pragmas[i][2], _pragmas[i][3]);
-			}
-			return 0;
-		}
+			case 'P':
+				printf("name\tflags\tdefault\tdescription\n");
+				for (size_t i = 0; i < lengthof(_pragmas); i++) {
+					printf("\"%s\"\t%s\t\"%s\"\t\"%s\"\n",
+							_pragmas[i][0], _pragmas[i][1], _pragmas[i][2], _pragmas[i][3]);
+				}
+				return 0;
 
-		if (strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "--todo") == 0) {
-			_show_todo |= 1;
-			argc--, argv++;
-			continue;
-		}
+			case 't':
+				_show_todo |= 1;
+				break;
 
-		if (strcmp(argv[1], "-w") == 0 || strcmp(argv[1], "--warning") == 0) {
-			_show_todo |= 2;
-			argc--, argv++;
-			continue;
-		}
+			case 'w':
+				_show_todo |= 2;
+				break;
 
-		if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-?") == 0) {
-			puts(
-				"strgen - $Revision$\n"
-				" -v | --version    print version information and exit\n"
-				" -t | --todo       replace any untranslated strings with '<TODO>'\n"
-				" -w | --warning    print a warning for any untranslated strings\n"
-				" -h | -? | --help  print this help message and exit\n"
-				" -s | --source_dir search for english.txt in the specified directory\n"
-				" -d | --dest_dir   put output file in the specified directory, create if needed\n"
-				" -export-commands  export all commands and exit\n"
-				" -export-plurals   export all plural forms and exit\n"
-				" -export-pragmas   export all pragmas and exit\n"
-				" Run without parameters and strgen will search for english.txt and parse it,\n"
-				" creating strings.h. Passing an argument, strgen will translate that language\n"
-				" file using english.txt as a reference and output <language>.lng."
-			);
-			return 0;
-		}
+			case 'h':
+				puts(
+					"strgen - $Revision$\n"
+					" -v | --version    print version information and exit\n"
+					" -t | --todo       replace any untranslated strings with '<TODO>'\n"
+					" -w | --warning    print a warning for any untranslated strings\n"
+					" -h | -? | --help  print this help message and exit\n"
+					" -s | --source_dir search for english.txt in the specified directory\n"
+					" -d | --dest_dir   put output file in the specified directory, create if needed\n"
+					" -export-commands  export all commands and exit\n"
+					" -export-plurals   export all plural forms and exit\n"
+					" -export-pragmas   export all pragmas and exit\n"
+					" Run without parameters and strgen will search for english.txt and parse it,\n"
+					" creating strings.h. Passing an argument, strgen will translate that language\n"
+					" file using english.txt as a reference and output <language>.lng."
+				);
+				return 0;
 
-		if (argc > 2 && (strcmp(argv[1], "-s") == 0 || strcmp(argv[1], "--source_dir") == 0)) {
-			src_dir = replace_pathsep(argv[2]);
-			argc -= 2, argv += 2;
-			continue;
-		}
+			case 's':
+				src_dir = replace_pathsep(mgo.opt);
+				break;
 
-		if (argc > 2 && (strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "--dest_dir") == 0)) {
-			dest_dir = replace_pathsep(argv[2]);
-			argc -= 2, argv += 2;
-			continue;
-		}
+			case 'd':
+				dest_dir = replace_pathsep(mgo.opt);
+				break;
 
-		fprintf(stderr, "Invalid arguments\n");
-		return 0;
+			case -2:
+				fprintf(stderr, "Invalid arguments\n");
+				return 0;
+		}
 	}
 
 	if (dest_dir == NULL) dest_dir = src_dir; // if dest_dir is not specified, it equals src_dir
@@ -1303,7 +1313,7 @@ int CDECL main(int argc, char *argv[])
 	 * strgen generates strings.h to the destination directory. If it is supplied
 	 * with a (free) parameter the program will translate that language to destination
 	 * directory. As input english.txt is parsed from the source directory */
-	if (argc == 1) {
+	if (mgo.numleft == 0) {
 		mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
 
 		/* parse master file */
@@ -1316,7 +1326,7 @@ int CDECL main(int argc, char *argv[])
 		ottd_mkdir(dest_dir);
 		mkpath(pathbuf, lengthof(pathbuf), dest_dir, "strings.h");
 		WriteStringsH(pathbuf);
-	} else if (argc == 2) {
+	} else if (mgo.numleft == 1) {
 		char *r;
 
 		mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
@@ -1325,12 +1335,12 @@ int CDECL main(int argc, char *argv[])
 		_masterlang = false;
 		ParseFile(pathbuf, true);
 		MakeHashOfStrings();
-		ParseFile(replace_pathsep(argv[1]), false); // target file
+		ParseFile(replace_pathsep(mgo.argv[0]), false); // target file
 		if (_errors) return 1;
 
 		/* get the targetfile, strip any directories and append to destination path */
-		r = strrchr(argv[1], PATHSEPCHAR);
-		mkpath(pathbuf, lengthof(pathbuf), dest_dir, (r != NULL) ? &r[1] : argv[1]);
+		r = strrchr(mgo.argv[0], PATHSEPCHAR);
+		mkpath(pathbuf, lengthof(pathbuf), dest_dir, (r != NULL) ? &r[1] : mgo.argv[0]);
 
 		/* rename the .txt (input-extension) to .lng */
 		r = strrchr(pathbuf, '.');

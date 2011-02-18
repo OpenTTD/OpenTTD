@@ -16,6 +16,9 @@
     <ClCompile Include="..\src\string.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\misc\getoptdata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\core\alloc_func.hpp" />
@@ -24,5 +27,6 @@
     <ClInclude Include="..\src\core\endian_func.hpp" />
     <ClInclude Include="..\src\stdafx.h" />
     <ClInclude Include="..\src\string.h" />
+    <ClInclude Include="..\src\misc\getoptdata.h" />
   </ItemGroup>
 </Project>
