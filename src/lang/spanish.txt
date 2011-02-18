@@ -3282,7 +3282,7 @@ STR_TIMETABLE_NO_TRAVEL                                         :Sin viaje
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado por la próxima orden manual)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
-STR_TIMETABLE_STAY_FOR                                          :y permanecer durante {STRING}
+STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} día{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}

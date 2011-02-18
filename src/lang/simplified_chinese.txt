@@ -347,6 +347,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :退出
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :游戏选项
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :难度设定
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :高级设置
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI 设定
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF 设置
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :透明选项
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :显示城镇名称
@@ -661,6 +662,7 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}在地�
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}在地图上显示运输路线
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}在地图上显示植被分布
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}在地图上显示各公司所属
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}点击一种工业类型以显示. Ctrl+左击 只显示该工业类型. 再度 Ctrl+左击 显示所有工业类型
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}公路
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}铁路
@@ -694,6 +696,7 @@ STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLAC
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}切换是否显示城镇名称
 STR_SMALLMAP_CENTER                                             :{BLACK}在地图中心点显示当前位置
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}全部禁用
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}全部启用
@@ -1086,6 +1089,7 @@ STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}允许�
 STR_CONFIG_SETTING_AUTOSLOPE                                    :{LTBLUE}允许在建筑、轨道下方改变地形（自动斜坡）： {ORANGE}{STRING}
 STR_CONFIG_SETTING_CATCHMENT                                    :{LTBLUE}允许更真实的客源范围：{ORANGE}{STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁等：{ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}火车最大长度: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}火车头产生的蒸气/火花数量: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :无
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :原版
@@ -1104,6 +1108,8 @@ STR_CONFIG_SETTING_IMPROVEDLOAD                                 :{LTBLUE}使用�
 STR_CONFIG_SETTING_GRADUAL_LOADING                              :{LTBLUE}装货时循序渐进：{ORANGE}{STRING}
 STR_CONFIG_SETTING_INFLATION                                    :{LTBLUE}通货膨胀：{ORANGE}{STRING}
 STR_CONFIG_SETTING_SELECTGOODS                                  :{LTBLUE}仅在车站接受此货物时卸货：{ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}桥梁最大长度: {ORANGE}{STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}隧道最大长度: {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}原料工业建设方式： {ORANGE}{STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :不允许
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :同其他工业
@@ -1120,6 +1126,7 @@ STR_CONFIG_SETTING_ROAD_VEHICLE_QUEUEING                        :{LTBLUE}汽车�
 STR_CONFIG_SETTING_AUTOSCROLL                                   :{LTBLUE}当鼠标移动到屏幕边缘时移动屏幕：{ORANGE}{STRING}
 STR_CONFIG_SETTING_BRIBE                                        :{LTBLUE}允许贿赂地方政府：{ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :{LTBLUE}允许买断经营权： {ORANGE}{STRING}
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}允许使用资助地方道路修整功能: {ORANGE}{STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :{LTBLUE}允许向其他公司转移资金： {ORANGE}{STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :{LTBLUE}根据装载货物的数量模拟超重列车：{ORANGE}{STRING}
 STR_CONFIG_SETTING_PLANE_SPEED                                  :{LTBLUE}飞机速度比例： {ORANGE}1 / {STRING}
@@ -1206,6 +1213,11 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :英式时间 (3
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :简短形式 (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :{LTBLUE}开始新游戏时自动暂停： {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}暂停时允许: {ORANGE}{STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :没有操作
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :除建设面板外全部操作
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :除景观面板操作外全部操作
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :所有操作
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用高级车辆列表： {ORANGE}{STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OFF                   :关闭
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_OWN                   :玩家公司
@@ -1225,6 +1237,7 @@ STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :{LTBLUE}显示�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}建造工具使用后仍选中： {ORANGE}{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :{LTBLUE}企业财政窗口中的组群支出：{ORANGE}{STRING}
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}不显示没有对应车辆的轨道建设面板: {ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_TRAINS                                   :{LTBLUE}每位玩家最大火车数量：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :{LTBLUE}每位玩家最大汽车数量：{ORANGE}{STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :{LTBLUE}每位玩家最大飞机数量：{ORANGE}{STRING}
@@ -1291,6 +1304,10 @@ STR_CONFIG_SETTING_TOOLBAR_POS                                  :{LTBLUE}主工�
 STR_CONFIG_SETTING_TOOLBAR_POS_LEFT                             :左侧
 STR_CONFIG_SETTING_TOOLBAR_POS_CENTER                           :中央
 STR_CONFIG_SETTING_TOOLBAR_POS_RIGHT                            :右侧
+STR_CONFIG_SETTING_STATUSBAR_POS                                :{LTBLUE}状态栏位置: {ORANGE}{STRING}
+STR_CONFIG_SETTING_STATUSBAR_POS_LEFT                           :左侧
+STR_CONFIG_SETTING_STATUSBAR_POS_CENTER                         :中央
+STR_CONFIG_SETTING_STATUSBAR_POS_RIGHT                          :右侧
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :{LTBLUE}窗口依附半径：{ORANGE}{STRING} 像素
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :{LTBLUE}窗口依附半径：{ORANGE}禁用
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :{LTBLUE}窗口软性限制（非粘滞）： {ORANGE}{STRING}
@@ -1668,6 +1685,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}获取�
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}获取公司信息
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}您前面还有 {NUM} 个客户端
+STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} 已下载
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} 已下载
 
 STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}断开
@@ -1739,6 +1757,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}服务�
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}您的IP已被该服务器封禁(ban)
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}您已被踢出服务器
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}此服务器不允许作弊
+STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}您向服务器发送操作指令过于频繁
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :一般错误
@@ -1756,8 +1775,10 @@ STR_NETWORK_ERROR_CLIENT_COMPANY_MISMATCH                       :错误的公司
 STR_NETWORK_ERROR_CLIENT_KICKED                                 :被服务器踢出
 STR_NETWORK_ERROR_CLIENT_CHEATER                                :正在尝试作弊
 STR_NETWORK_ERROR_CLIENT_SERVER_FULL                            :服务器满员
+STR_NETWORK_ERROR_CLIENT_TOO_MANY_COMMANDS                      :操作指令过于频繁
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}失去链接
 
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
@@ -1939,6 +1960,7 @@ STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}选择�
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}选择公路桥梁
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}选择桥梁 - 点击选择喜欢的桥梁进行建设
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING}，{} {VELOCITY} {WHITE}{CURRENCY}
+STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :钢制悬索
 STR_BRIDGE_NAME_GIRDER_STEEL                                    :钢制桁桥
 STR_BRIDGE_NAME_CANTILEVER_STEEL                                :钢制悬臂
@@ -2372,6 +2394,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}看看�
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}文件名：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}版本: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}最低兼容版本: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5 码：{SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}调色板: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}参数：{SILVER}{STRING}
@@ -2379,6 +2402,7 @@ STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}参数�
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}没有可用的信息
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}没有找到对应的文件
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}禁用
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}与此版本OpenTTD不兼容
 
 STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}输入 NewGRF 参数
 
@@ -2386,8 +2410,10 @@ STR_NEWGRF_SETTINGS_PARAMETER_QUERY                             :{BLACK}输入 N
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}调整 NewGRF 参数
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}关闭
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}重置
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}全部参数恢复默认
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :参数 {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
+STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}参数数目: {ORANGE}{NUM}
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}检查 - {STRING}
@@ -2438,6 +2464,7 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用无
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素{}所有损坏的图形元素{}将显示为红色的问号（？）
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含复数的 Action 8 入口。
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :读取最后的伪 Sprite 结尾
+STR_NEWGRF_ERROR_MISSING_SPRITES                                :{WHITE}当前基础图组缺失参数.{}请进行修正
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}注意！
@@ -2708,6 +2735,7 @@ STR_INDUSTRY_VIEW_PRODUCES_CARGO_CARGO                          :{BLACK}产出: 
 ############ range for produces ends
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变产量
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}修改产量 (百分比, 最高 800%)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} 列火车
@@ -3169,6 +3197,7 @@ STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}前往
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的车库
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的机库
 STR_ORDER_CONDITIONAL                                           :条件性命令跳过
+STR_ORDER_SHARE                                                 :共享调度计划
 STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}在调度列表的结尾或高亮显示项目前面{}增加一条新指令，Ctrl使车站命令为“装满任意货物”{}路点命令为“不停车”{}车库命令为“保养”
 STR_ORDERS_GO_TO_DROPDOWN_TOOLTIP                               :{BLACK}插入高级指令
 
@@ -3209,8 +3238,9 @@ STR_ORDER_TRANSFER_FULL_LOAD                                    :（联运并等
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :（联运并装满任意货物离开）
 STR_ORDER_TRANSFER_NO_LOAD                                      :（联运并空车离开）
 STR_ORDER_NO_UNLOAD                                             :（不卸载并若有就装货）
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（不卸载并等待全部装满）
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（不卸载并装满任意货物离开）
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（不卸载并等待全部货物装满）
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（不卸货并装满任意货物离开）
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(不卸货也不装货)
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[月台近端]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[月台中间]
@@ -3294,6 +3324,7 @@ STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}符合�
 STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}切换对比AI 记录信息是否与断点字符串相符时是否要符合大小写
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}继续
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}取消暂停AI
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}查看此AI的调试输出
 
 STR_ERROR_NO_AI                                                 :{WHITE}OpenTTD在编译的时候没有加入AI支持……
 STR_ERROR_NO_AI_SUB                                             :{WHITE}…… 目前没有可用AI！
@@ -3410,8 +3441,10 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... 地�
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... 已经建好了
 STR_ERROR_OWNED_BY                                              :{WHITE}归 {STRING} 所有
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... 此区域由另一公司所有
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... 景观数量限制已达上限
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}名称重复!请重新命名.
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}目标位置有 {1:STRING}
+STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}暂停时不能进行此操作
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} 地方政府不批准此操作……
@@ -3457,7 +3490,7 @@ STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}地图�
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}这个城镇不能建造道路{}你可以在"高级设置->经济->城镇"处{}设置允许城镇建设道路
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}正在进行道路工程
 STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}无法删除城镇...{}城镇范围内还有车站、车库或无法移除的区块
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 城镇中心没有合适的地方放置公司雕像
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... 城市中心没有合适的地方放置公司塑像
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}…… 游戏中的工业过多
@@ -3547,7 +3580,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... 飞�
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}只有列车停在车库中时才能更改挂车
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}列车过长
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}无法调转车辆方向...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}不能命令多节的汽车掉头
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... 含有多节车辆
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :铁路类型不匹配
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}不能移动这项调度计划……
@@ -3612,6 +3645,7 @@ STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :{WHITE}桥梁�
 STR_ERROR_START_AND_END_MUST_BE_IN                              :{WHITE}起止两端必须在一条线上
 STR_ERROR_ENDS_OF_BRIDGE_MUST_BOTH                              :{WHITE}桥的两端必须都位于地面上
 STR_ERROR_BRIDGE_TOO_LONG                                       :{WHITE}... 桥梁太长
+STR_ERROR_BRIDGE_THROUGH_MAP_BORDER                             :{WHITE}桥梁终点将越出地图
 
 # Tunnel related errors
 STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}不能在这里开凿隧道……
@@ -3620,6 +3654,7 @@ STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}必须�
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}规划位置中有另一条隧道
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}隧道出口将超出地图边界
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}隧道出口的地形无法处理
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... 隧道过长
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... 对象物太多
@@ -3726,7 +3761,7 @@ STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}不能�
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}无法删除标记...
 
 # Translatable comment for OpenTTD's desktop shortcut
-STR_DESKTOP_SHORTCUT_COMMENT                                    :克隆 TTD 全新版
+STR_DESKTOP_SHORTCUT_COMMENT                                    :基于Transport Tycoon Deluxe（运输大亨豪华版）的模拟运营游戏
 
 ##id 0x2000
 # Town building names
@@ -4197,6 +4232,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}

@@ -38,7 +38,7 @@ STR_CARGO_PLURAL_GRAIN                                          :{G=m}Cereais
 STR_CARGO_PLURAL_WOOD                                           :{G=f}Madeira
 STR_CARGO_PLURAL_IRON_ORE                                       :{G=m}Minério de Ferro
 STR_CARGO_PLURAL_STEEL                                          :{G=m}Aço
-STR_CARGO_PLURAL_VALUABLES                                      :{G=f}Preciosidades
+STR_CARGO_PLURAL_VALUABLES                                      :{G=f}Objetos de Valor
 STR_CARGO_PLURAL_COPPER_ORE                                     :{G=m}Minério de Cobre
 STR_CARGO_PLURAL_MAIZE                                          :{G=m}Milho
 STR_CARGO_PLURAL_FRUIT                                          :{G=f}Fruta
@@ -66,14 +66,14 @@ STR_CARGO_SINGULAR_PASSENGER                                    :{G=m}Passageiro
 STR_CARGO_SINGULAR_COAL                                         :{G=m}Carvão
 STR_CARGO_SINGULAR_MAIL                                         :{G=f}Correspondência
 STR_CARGO_SINGULAR_OIL                                          :{G=m}Petróleo
-STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Criação
+STR_CARGO_SINGULAR_LIVESTOCK                                    :{G=m}Gado
 STR_CARGO_SINGULAR_GOODS                                        :{G=m}Mercadorias
 STR_CARGO_SINGULAR_GRAIN                                        :{G=m}Cereais
 STR_CARGO_SINGULAR_WOOD                                         :{G=f}Madeira
-STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Minério de ferro
+STR_CARGO_SINGULAR_IRON_ORE                                     :{G=m}Minério de Ferro
 STR_CARGO_SINGULAR_STEEL                                        :{G=m}Aço
-STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}Preciosidades
-STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=m}Minério de cobre
+STR_CARGO_SINGULAR_VALUABLES                                    :{G=m}Objetos de Valor
+STR_CARGO_SINGULAR_COPPER_ORE                                   :{G=m}Minério de Cobre
 STR_CARGO_SINGULAR_MAIZE                                        :{G=m}Milho
 STR_CARGO_SINGULAR_FRUIT                                        :{G=f}Fruta
 STR_CARGO_SINGULAR_DIAMOND                                      :{G=m}Diamante
@@ -98,7 +98,7 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :{G=m}Refrigeran
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passageiro{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} de carvão
-STR_QUANTITY_MAIL                                               :{COMMA} saco{P "" s} de correspondência
+STR_QUANTITY_MAIL                                               :{COMMA} bolsa{P "" s} de correspondência
 STR_QUANTITY_OIL                                                :{VOLUME} de petróleo
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} cabeça{P "" s} de gado
 STR_QUANTITY_GOODS                                              :{COMMA} engradado{P "" s} de mercadorias
@@ -106,20 +106,20 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT} de cer
 STR_QUANTITY_WOOD                                               :{WEIGHT} de madeira
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de minério de ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT} de aço
-STR_QUANTITY_VALUABLES                                          :{COMMA} saco{P "" s} de preciosidades
+STR_QUANTITY_VALUABLES                                          :{COMMA} bolsa{P "" s} de objetos de valor
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de minério de cobre
 STR_QUANTITY_MAIZE                                              :{WEIGHT} de milho
 STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruta
-STR_QUANTITY_DIAMONDS                                           :{COMMA} saco{P "" s} de diamantes
+STR_QUANTITY_DIAMONDS                                           :{COMMA} bolsa{P "" s} de diamantes
 STR_QUANTITY_FOOD                                               :{WEIGHT} de alimentos
 STR_QUANTITY_PAPER                                              :{WEIGHT} de papel
-STR_QUANTITY_GOLD                                               :{COMMA} saco{P "" s} de ouro
+STR_QUANTITY_GOLD                                               :{COMMA} bolsa{P "" s} de ouro
 STR_QUANTITY_WATER                                              :{VOLUME} de água
 STR_QUANTITY_WHEAT                                              :{WEIGHT} de trigo
 STR_QUANTITY_RUBBER                                             :{VOLUME} de borracha
 STR_QUANTITY_SUGAR                                              :{WEIGHT} de açúcar
 STR_QUANTITY_TOYS                                               :{COMMA} brinquedo{P "" s}
-STR_QUANTITY_SWEETS                                             :{COMMA} saco{P "" s} de doces{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA} bolsa{P "" s} de doces
 STR_QUANTITY_COLA                                               :{VOLUME} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} de algodão doce
 STR_QUANTITY_BUBBLES                                            :{COMMA} bolha{P "" s}
@@ -133,15 +133,15 @@ STR_QUANTITY_N_A                                                :N/D
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PA
 STR_ABBREV_COAL                                                 :{TINYFONT}CV
-STR_ABBREV_MAIL                                                 :{TINYFONT}CA
+STR_ABBREV_MAIL                                                 :{TINYFONT}CO
 STR_ABBREV_OIL                                                  :{TINYFONT}PE
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}CR
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}GA
 STR_ABBREV_GOODS                                                :{TINYFONT}ME
 STR_ABBREV_GRAIN                                                :{TINYFONT}CE
 STR_ABBREV_WOOD                                                 :{TINYFONT}MA
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}MF
 STR_ABBREV_STEEL                                                :{TINYFONT}AÇ
-STR_ABBREV_VALUABLES                                            :{TINYFONT}PR
+STR_ABBREV_VALUABLES                                            :{TINYFONT}OV
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}MC
 STR_ABBREV_MAIZE                                                :{TINYFONT}MI
 STR_ABBREV_FRUIT                                                :{TINYFONT}FT
@@ -167,15 +167,15 @@ STR_ABBREV_ALL                                                  :{TINYFONT}TUDO
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passageiro{P "" s}
-STR_BAGS                                                        :{COMMA} saco{P "" s}
+STR_BAGS                                                        :{COMMA} bolsa{P "" s}
 STR_TONS                                                        :{COMMA} tonelada{P "" s}
 STR_LITERS                                                      :{COMMA} litro{P "" s}
-STR_ITEMS                                                       :{COMMA} ite{P m ns}
-STR_CRATES                                                      :{COMMA} caixa{P "" s}
+STR_ITEMS                                                       :{COMMA} cabeça{P "" s}
+STR_CRATES                                                      :{COMMA} engradado{P "" s}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Azul Escuro
-STR_COLOUR_PALE_GREEN                                           :Verde Pálido
+STR_COLOUR_PALE_GREEN                                           :Verde Claro
 STR_COLOUR_PINK                                                 :Rosa
 STR_COLOUR_YELLOW                                               :Amarelo
 STR_COLOUR_RED                                                  :Vermelho
@@ -196,8 +196,8 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
-STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
+STR_UNITS_POWER_METRIC                                          :{COMMA}cv
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
@@ -218,22 +218,22 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} pés
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Digite a sequencia de filtro
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Digite o filtro de série
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Digite uma palavra-chave para filtrar a lista
 
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecionar ordem de classificação (descendente/ascendente)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecionar critério de classificação
-STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecionar critério para filtração
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecione ordem de classificação (descendente/ascendente)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecione critério de classificação
+STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecione critério para filtração
 STR_BUTTON_SORT_BY                                              :{BLACK}Classificar por
-STR_BUTTON_LOCATION                                             :{BLACK}Localização
+STR_BUTTON_LOCATION                                             :{BLACK}Local
 STR_BUTTON_RENAME                                               :{BLACK}Renomear
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
-STR_TOOLTIP_SHADE                                               :{BLACK}Obscurecer janela - mostra apenas a barra de título
+STR_TOOLTIP_SHADE                                               :{BLACK}Obscurecer janela - mostrar apenas a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informações de depuração do NewGRF
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como infechável pela tecla 'Fechar Todas as Janelas'
-STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar a janela
+STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para redimensionar esta janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela de tamanho grande/pequena
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - rola a lista acima/abaixo
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de rolagem - rola a lista para esquerda/direita
@@ -266,8 +266,8 @@ STR_SORT_BY_PRODUCTION                                          :Produção
 STR_SORT_BY_TYPE                                                :Tipo
 STR_SORT_BY_TRANSPORTED                                         :Transportado
 STR_SORT_BY_NUMBER                                              :Número
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Lucros do último ano
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Lucro este ano
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Lucro do ano passado
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Lucro deste ano
 STR_SORT_BY_AGE                                                 :Idade
 STR_SORT_BY_RELIABILITY                                         :Confiabilidade
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidade total por tipo de carga
@@ -275,13 +275,13 @@ STR_SORT_BY_MAX_SPEED                                           :Velocidade máx
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Comprimento
-STR_SORT_BY_LIFE_TIME                                           :Vida útil restante
+STR_SORT_BY_LIFE_TIME                                           :Tempo de vida restante
 STR_SORT_BY_TIMETABLE_DELAY                                     :Atraso de horário
 STR_SORT_BY_FACILITY                                            :Tipo de estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
 STR_SORT_BY_RATING_MAX                                          :Maior avaliação de carga
 STR_SORT_BY_RATING_MIN                                          :Menor avaliação de carga
-STR_SORT_BY_ENGINE_ID                                           :N° de Reg (padrão)
+STR_SORT_BY_ENGINE_ID                                           :RG da Locomotiva (classificação clássica)
 STR_SORT_BY_COST                                                :Custo
 STR_SORT_BY_POWER                                               :Potência
 STR_SORT_BY_TRACTIVE_EFFORT                                     :Força de tração
@@ -292,54 +292,54 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Capacidade de C
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar jogo
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Acelera o jogo
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Acelerar o jogo
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opções
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Salvar jogo, abandonar jogo, desistir
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Exibir mapa, janela extra ou lista de placas
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Exibir diretório de cidades
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Exibir catálogo de povoados
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Exibir subsídios
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Exibir lista de estações da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Exibir informações financeiras da empresa
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Exibir informações gerais da empresa
-STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Exibir diagramas
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Exibir gráficos
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Exibir tabela de classificação das empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Fundar construção de nova indústria or listar todas as indústrias
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Exibir lista de trens da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Exibir lista de veículos rodoviários da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Exibe lista de embarcações da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Exibe lista de aeronaves da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Amplia a visão
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Exibir lista de embarcações da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Exibir lista de aeronaves da empresa. Ctrl+Clique alterna a abertura da lista de grupos/veículos
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ampliar a visão
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Reduzir a visão
-STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir ferrovias
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir linha ferroviária
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construir rodovias
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construir docas
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construir aeroportos
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir a barra de paisagismo para elevar ou baixar terreno, plantar árvores, etc.
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir a barra de paisagismo para elevar ou abaixar terreno, plantar árvores, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Exibir janela de som/música
-STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Exibir a última mensagem/notícia, exibir opções de mensagens
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações sobre o terreno, console, Depuração de IA, screenshots, sobre OpenTTD
+STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Exibir a última mensagem/notícia, exibir opções de mensagem
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informações sobre o terreno, console, Depurar IA, capturas de tela, sobre OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Trocar a barra de ferramentas
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvar cenário, abrir cenário, abandonar editor de cenário, desistir
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Salvar cenário, carregar cenário, abandonar editor de cenário, desistir
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor de Cenário
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Mover a data inicial 1 ano para trás
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Mover a data inicial 1 ano para frente
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Clique para digitar o ano de início
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Exibir mapa, lista de cidades
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Exibir mapa, catálogo de povoados
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Geração de paisagem
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Geração de cidade
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Geração de povoado
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Geração de indústria
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Contrução de rodovias
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Shift alterna construção/mostrar estimativa de custo
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantar árvores. Shift alterna construção/exibição de custo estimado
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Colocar placa
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Shift alterna construção/mostrar estimativa de custo
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Colocar objeto. Shift alterna construção/exibição de custo estimado
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Salvar cenário
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Carregar cenário
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Carregar heightmap
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Carregar mapa de elevação
 STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Desistir do editor
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Desistir
@@ -347,19 +347,19 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Desistir
 
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opções do Jogo
-STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Configurações de dificuldade
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Configurações avançadas
+STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Definições de dificuldade
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :Definições avançadas
 STR_SETTINGS_MENU_AI_SETTINGS                                   :Definições de IA
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Definições do NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opções de Transparência
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nomes de cidade exibidas
-STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Nomes de estação exibidas
-STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Nomes de ponto de caminho exibidas
-STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Placas exibidas
-STR_SETTINGS_MENU_FULL_ANIMATION                                :Animação completa
-STR_SETTINGS_MENU_FULL_DETAIL                                   :Máximo de detalhes
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Nomes de povoados exibidos
+STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Nomes de estações exibidos
+STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Nomes de pontos de parada exibidos
+STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Sinais exibidos
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Animação total
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Detalhamento total
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Edifícios transparentes
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Placas de estações transparentes
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Sinais de estações transparentes
 ############ range ends here
 
 ############ range for file menu starts
@@ -372,11 +372,11 @@ STR_FILE_MENU_EXIT                                              :Sair
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa do mundo
 STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Janela extra
-STR_MAP_MENU_SIGN_LIST                                          :Lista de placas
+STR_MAP_MENU_SIGN_LIST                                          :Lista de sinais
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de cidades
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Lista de povoados
 ############ end of the 'Display map' dropdown
-STR_TOWN_MENU_FOUND_TOWN                                        :Fundar cidade
+STR_TOWN_MENU_FOUND_TOWN                                        :Fundar povoado
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
@@ -384,48 +384,48 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsídios
 ############ range ends here
 
 ############ range for graph menu starts
-STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Lucros operacionais
-STR_GRAPH_MENU_INCOME_GRAPH                                     :Receita
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Cargas entregues
-STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Histórico de lucro
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Valor da empresa
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas por carga
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gráfico de lucro operacional
+STR_GRAPH_MENU_INCOME_GRAPH                                     :Gráfico de renda
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfico de carga entregue
+STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Gráfico de histórico de desempenho
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gráfico de avaliação da empresa
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Taxa de pagamento de carga
 ############ range ends here
 
 ############ range for company league menu starts
-STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Classificação das empresas
-STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Avaliação detalhada
+STR_GRAPH_MENU_COMPANY_LEAGUE_TABLE                             :Tabela da liga de empresa
+STR_GRAPH_MENU_DETAILED_PERFORMANCE_RATING                      :Avaliação detalhada de performance
 ############ range ends here
 
 ############ range for industry menu starts
-STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Diretório de indústrias
+STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Catálogo de indústrias
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Financiar nova indústria
 ############ range ends here
 
 ############ range for railway construction menu starts
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construir ferrovias
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construir ferrovias elétricas
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construir ferrovias (monotrilho)
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construir ferrovias MagLev
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Construção de ferrovia
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Construção de ferrovia elétrificada
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Construção de monotrilho
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :Construção de Maglev
 ############ range ends here
 
 ############ range for road construction menu starts
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construir rodovias
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Construção de rodovia
 STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Construção de Bonde
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construção de hidrovias
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Construção de canais
 ############ range ends here
 
 ############ range for airport construction menu starts
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construir aeroporto
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Construção de aeroporto
 ############ range ends here
 
 ############ range for landscaping menu starts
-STR_LANDSCAPING_MENU_LANDSCAPING                                :Paisagem
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Paisagismo
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantar árvores
-STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Colocar placas
+STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Colocar sinal
 ############ range ends here
 
 ############ range for music menu starts
@@ -434,19 +434,19 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Som/música
 
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Última mensagem/notícia
-STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Opções de mensagens
+STR_NEWS_MENU_MESSAGE_SETTINGS                                  :Definições de mensagem
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Histórico de Mensagens
 ############ range ends here
 
 ############ range for about menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informações do terreno
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informação da área do terreno
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Ativar/desativar console
-STR_ABOUT_MENU_AI_DEBUG                                         :Debug da I.A.
-STR_ABOUT_MENU_SCREENSHOT                                       :Captura de tela (Ctrl-S)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Foto ampliada
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de tela gigante (Ctrl+G)
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre o OpenTTD...
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Alternar console
+STR_ABOUT_MENU_AI_DEBUG                                         :Depurar I.A.
+STR_ABOUT_MENU_SCREENSHOT                                       :Captura de tela
+STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ampliado em captura de tela
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Captura de tela do mapa inteiro
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Sobre 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Alinhador de "sprites"
 ############ range ends here
 
@@ -513,158 +513,158 @@ STR_MONTH_DEC                                                   :Dezembro
 ############ range for months ends
 
 # Graph window
-STR_GRAPH_KEY_BUTTON                                            :{BLACK}Legenda
-STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Exibir legenda dos gráficos
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}Chave
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Exibir chave aos gráficos
 STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
 STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{} {NUM}
 STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
-STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfico de Lucros Operacionais
-STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfico de Rendimentos
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfico de Lucro Operacional
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfico de Renda
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregues
-STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Avaliações da empresa (máximo=1000)
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Avaliações de desempenho da empresa (avaliação máxima=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valor da empresa
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas por carga
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Taxa de Pagamento de Carga
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dias em trânsito
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Pagamento por entregar 10 unidades (ou 10 000 litros) de carga numa distância de 20 quadrados
-STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Ativar tudo
-STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Desativar todos
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Apresentar todas as taxas de pagamento de cargas no gráfico
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não apresentar as taxas de pagamento de cargas no gráfico
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alternar exibir/ocultar gráfico para o tipo de carga
+STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Habilitar tudo
+STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Desabilitar tudo
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Exibir todas as cargas no gráfico de taxas de pagamento de cargas
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Não exibir cargas no gráfico de taxas de pagamento de cargas
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alternar gráfico para o tipo de carga em ligado/desligado
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibe avaliações de performance detalhadas
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Exibir avaliações de performance detalhadas
 
 # Graph key window
-STR_GRAPH_KEY_CAPTION                                           :{WHITE}Legendas dos gráficos da empresa
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clique aqui para alternar exibir/ocultar empresas no gráfico
+STR_GRAPH_KEY_CAPTION                                           :{WHITE}Chave para gráficos da empresa
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Clique aqui para alternar a entrada da empresa no gráfico em ligado/desligado
 
 # Company league window
-STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Classificação de Empresas
+STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Tabela da Liga das Empresas
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Engenheiro
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gestor de Tráfego
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Gerenciador de Tráfego
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordenador de Transportes
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de Rotas
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de Rota
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Diretor
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Chefe Executivo
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Diretor Executivo
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Dirigente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnata
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalhes de rendimentos
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Avaliação detalhada do desempenho
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalhes
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Veja detalhes desta compahia
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Ver detalhes sobre esta empresa
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Veículos:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estações:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. lucros:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. rendimentos:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Máx. rendimentos:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Lucro mín.:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Renda mín.:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Renda Máx.:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregue:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carga:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dinheiro:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Empréstimo:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de veículos que deram lucro ano passado. Incluindo automóveis, trens, embarcações e aeronaves
-STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de segmentos de estação. Cada parte de uma estação (ex. estação ferroviária, estação de ônibus, aeroporto) é contado, mesmo se eles unidos como uma estação só.
-STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}O lucro do veículo com o menor rendimento (de todos os veículos com mais de 2 anos)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no trimestre com os lucros mais baixos dos últimos 12 trimestres
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Dinheiro conseguido no trimestre com os lucros mais altos dos últimos 12 trimestres
-STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregues nos últimos 4 trimestres.
-STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Tipos de carga entregues no último trimestre.
-STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Dinheiro 'em mãos'
-STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}Tem um empréstimo muito elevado?
-STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de pontos sobre o máximo de pontos
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Número de veículos que deram lucro ano passado. Isto inckui automóveis, trens, embarcações e aeronaves
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Número de partes de estações recentemente atendidas. Cada parte de uma estação (ex. estação de trem, ponto de ônibus, aeroporto) é contado, mesmo se eles estão conectados como uma estação
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}O lucro do veículo com o menor rendimento (apenas veículos com mais de dois anos são considerados)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Quantidade de dinheiro ganho no trimestre com o menor lucro dos últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TOOLTIP                       :{BLACK}Quantidade de dinheiro ganho no trimestre com o maior lucro dos últimos 12 trimestres
+STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Unidades de carga entregue nos últimos quatro trimestres.
+STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Número de tipos de carga entregues no último trimestre.
+STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Quantidade de dinheiro que esta empresa tem no banco
+STR_PERFORMANCE_DETAIL_LOAN_TOOLTIP                             :{BLACK}A quantidade de dinheiro que esta empresa tomou por empréstimo
+STR_PERFORMANCE_DETAIL_TOTAL_TOOLTIP                            :{BLACK}Total de pontos de pontos possíveis
 
 # Music window
-STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Músicas
+STR_MUSIC_JAZZ_JUKEBOX_CAPTION                                  :{WHITE}Jazz Jukebox
 STR_MUSIC_PLAYLIST_ALL                                          :{TINYFONT}{BLACK}Todos
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINYFONT}{BLACK}Antigo
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINYFONT}{BLACK}Moderno
-STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Easy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Personaliz. 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personaliz. 2
+STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINYFONT}{BLACK}Ezy Street
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINYFONT}{BLACK}Personalizado 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINYFONT}{BLACK}Personalizado 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINYFONT}{BLACK}Volume da Música
-STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume dos efeitos
+STR_MUSIC_EFFECTS_VOLUME                                        :{TINYFONT}{BLACK}Volume dos Efeitos
 STR_MUSIC_RULER_MIN                                             :{TINYFONT}{BLACK}MIN
 STR_MUSIC_RULER_MAX                                             :{TINYFONT}{BLACK}MAX
 STR_MUSIC_RULER_MARKER                                          :{TINYFONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINYFONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINYFONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINYFONT}{DKGREEN}------
-STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}'{STRING}'
+STR_MUSIC_TITLE_NAME                                            :{TINYFONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINYFONT}{BLACK}Faixa
 STR_MUSIC_XTITLE                                                :{TINYFONT}{BLACK}Título
-STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Embaralhar
+STR_MUSIC_SHUFFLE                                               :{TINYFONT}{BLACK}Misturar
 STR_MUSIC_PROGRAM                                               :{TINYFONT}{BLACK}Programa
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Muda para a faixa anterior da seleção
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Muda para a faixa seguinte da seleção
-STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Pára a reprodução de música
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Inicia a reprodução de música
-STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Arraste os cursores para ajustar o volume da música e efeitos sonoros
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Seleciona programa 'todas as faixas'
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Seleciona programa 'estilo antigo'
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Seleciona programa 'estilo moderno'
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Passar para a faixa anterior na seleção
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Passar para a próxima faixa na seleção
+STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Parar de tocar música
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Começar a tocar música
+STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Arraste os controles deslizantes para definir os volumes de musicas e efeitos sonoros
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Selecionar programa 'todas as faixas'
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Selecionar programa 'antigo'
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Selecionar programa 'moderno'
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selecionar programa 'Ezy Street'
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Seleciona programa 'Personalizado 1'
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Seleciona programa 'Personalizado 2'
-STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Alterna exibir/ocultar programação aleatória
-STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Exibe a janela de seleção de faixas de música
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selecionar programa 'Personalizado 1' (definido pelo usuário)
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selecionar programa 'Personalizado 2' (definido pelo usuário)
+STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Alternar programa misturado em ligado/desligado
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Exibir janela de seleção de faixas de música
 
-STR_ERROR_NO_SONGS                                              :{WHITE}Um set de músicas sem músicas foi selecionado. Nenhuma música será tocada
+STR_ERROR_NO_SONGS                                              :{WHITE}Um conjunto de músicas sem canções foi selecionado. Nenhuma música será tocada
 
 # Playlist window
-STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Programação Musical
+STR_PLAYLIST_MUSIC_PROGRAM_SELECTION                            :{WHITE}Seleção de Programa de Música
 STR_PLAYLIST_TRACK_NAME                                         :{TINYFONT}{LTBLUE}{ZEROFILL_NUM} '{STRING}'
 STR_PLAYLIST_TRACK_INDEX                                        :{TINYFONT}{BLACK}Índice de faixas
 STR_PLAYLIST_PROGRAM                                            :{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}Limpar
 STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}Salvar
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Limpa programa atual (somente Personaliz. 1 ou Personaliz. 2)
-STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Grava configuração de música
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clique na faixa de música para a adicionar ao programa atual (somente Personaliz. 1 ou Personaliz. 2)
-STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clique na música para remover da programação (Custom1 ou Custom2 somente)
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Limpar programa atual (apenas Personalizado 1 ou Personalizado 2)
+STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}Salvar definições de música
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Clique na faixa de música para a adicionar ao programa atual (apenas Personalizado 1 ou Personalizado 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clique na faixa de música para remover do programa atual (apenas Personalizado 1 ou Personalizado 2)
 
 # Highscore window
-STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}Top de empresas que chegaram a {NUM}{} ({STRING} Nível)
-STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabela da Liga de Empresas em {NUM}
+STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIGFONT}{BLACK}As maiores empresas que alcançaram{NUM}{} ({STRING} Nível)
+STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIGFONT}{BLACK}Tabela da Liga das Empresas em {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Negociante
-STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresário
-STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrial
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Empresário
+STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empreendedor
+STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrialista
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Capitalista
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnata
-STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Grande magnata
-STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnata do século
+STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mandachuva
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Magnata do Século
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} conquista o status de '{STRING}'!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} de {COMPANY} conquista o status de '{STRING}'!
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIGFONT}{BLACK}{COMPANY} alcança o status de '{STRING}'!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIGFONT}{WHITE}{PRESIDENTNAME} de {COMPANY} alcança o status de '{STRING}'!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa - {STRING}
 
-STR_SMALLMAP_TYPE_CONTOURS                                      :Relevos
+STR_SMALLMAP_TYPE_CONTOURS                                      :Contorno
 STR_SMALLMAP_TYPE_VEHICLES                                      :Veículos
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Indústrias
 STR_SMALLMAP_TYPE_ROUTES                                        :Rotas
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetação
 STR_SMALLMAP_TYPE_OWNERS                                        :Proprietários
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Exibe relevo do terreno no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Exibe veículos no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Exibe indústrias no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Exibe rotas de transporte no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Exibe vegetação no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Exibe proprietários de terra no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Exibir contornos do terreno no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Exibir veículos no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Exibir indústrias no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Exibir rotas de transporte no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Exibir vegetação no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Exibir proprietários de terreno no mapa
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clique em um tipo de indústria para alternar sua exibição. Ctrl+Clique desabilita todos os tipos exceto a selecionada. Ctrl+Clique nela novamente para habilitar todos os tipos de indústrias
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Clique em uma compania para alternar a exibição de suas propriedades. Ctrl+Clique desabilita todas as companias exceto a selecionada. Ctrl+Clique nela novamente para habilitar todas as companias
 
@@ -675,77 +675,77 @@ STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINYFONT}{BLAC
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINYFONT}{BLACK}Veículos
 STR_SMALLMAP_LEGENDA_TRAINS                                     :{TINYFONT}{BLACK}Trens
 STR_SMALLMAP_LEGENDA_ROAD_VEHICLES                              :{TINYFONT}{BLACK}Automóveis
-STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Embarcação
+STR_SMALLMAP_LEGENDA_SHIPS                                      :{TINYFONT}{BLACK}Embarcações
 STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINYFONT}{BLACK}Aeronaves
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINYFONT}{BLACK}Rotas de Transporte
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINYFONT}{BLACK}Floresta
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINYFONT}{BLACK}Estação Ferroviária
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Área de Carga
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINYFONT}{BLACK}Compartimento de Carga de Caminhões
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINYFONT}{BLACK}Estação de Ônibus
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINYFONT}{BLACK}Aeroporto/Heliporto
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINYFONT}{BLACK}Doca
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINYFONT}{BLACK}Terreno Irregular
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINYFONT}{BLACK}Gramado
-STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Terra Limpa
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINYFONT}{BLACK}Terreno Descoberto
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINYFONT}{BLACK}Campos
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINYFONT}{BLACK}Árvores
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINYFONT}{BLACK}Rochas
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINYFONT}{BLACK}Água
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINYFONT}{BLACK}Sem Proprietário
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Cidades
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINYFONT}{BLACK}Povoados
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINYFONT}{BLACK}Indústrias
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINYFONT}{BLACK}Deserto
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINYFONT}{BLACK}Neve
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Alterna exibir/ocultar nomes das cidades no mapa
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Alternar nomes do povoados no mapa em ligado/desligado
 STR_SMALLMAP_CENTER                                             :{BLACK}Centralizar o minimapa na posição atual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 STR_SMALLMAP_COMPANY                                            :{TINYFONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desativar tudo
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Ativar tudo
-STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostra altitudes
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Não mostrar nenhuma indústria no mapa
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar todas as indústrias no mapa
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Alterna a exibição do mapa de altitudes
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Mostrar nenhuma propriedade da compania no mapa
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostrar toda propriedade da compania no mapa
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Desabilitar tudo
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Habilitar tudo
+STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Mostrar altitude
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Não exibir indústrias no mapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Exibir todas as indústrias no mapa
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Alternar a exibição de mapa de elevação
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Não exibir propriedade da empresa no mapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Exibir todas as propriedades da empresa no mapa
 
 # Status bar messages
-STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Exibe a última mensagem ou notícia
+STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Exibir a última mensagem ou notícia
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PAUSADO *  *
-STR_STATUSBAR_AUTOSAVE                                          :{RED}Gravado automaticamente
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUSADO  *  *
+STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSALVO
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALVANDO JOGO  *  *
 
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Histórico de Mensagens
-STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Lista de notícias recentes
+STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Uma lista das mensagens de notícias recentes
 STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
 
 # Message settings window
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mensagem
-STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Opções de Mensagens
-STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Configurações para todos os tipos de mensagem(on/off/resumo)
-STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Tocar som para notícias resumidas
+STR_NEWS_MESSAGE_OPTIONS_CAPTION                                :{WHITE}Opções de Mensagem
+STR_NEWS_MESSAGES_ALL                                           :{YELLOW}Definir todos os tipos de mensagem para: Desligado / Resumo / Completa
+STR_NEWS_MESSAGES_SOUND                                         :{YELLOW}Tocar som para mensagens de notícias resumidas
 STR_NEWS_MESSAGES_OFF                                           :Desligado
 STR_NEWS_MESSAGES_SUMMARY                                       :Resumo
-STR_NEWS_MESSAGES_FULL                                          :Completo
+STR_NEWS_MESSAGES_FULL                                          :Completa
 
-STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Tipos de mensagens:
+STR_NEWS_MESSAGE_TYPES                                          :{BLACK}Tipos de mensagem:
 STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OWN              :{YELLOW}Chegada do primeiro veículo à estação do jogador
-STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Chegada do primeiro veículo à estação de um oponente
+STR_NEWS_MESSAGE_TYPE_ARRIVAL_OF_FIRST_VEHICLE_OTHER            :{YELLOW}Chegada do primeiro veículo na estação concorrente
 STR_NEWS_MESSAGE_TYPE_ACCIDENTS_DISASTERS                       :{YELLOW}Acidentes / desastres
 STR_NEWS_MESSAGE_TYPE_COMPANY_INFORMATION                       :{YELLOW}Informações da empresa
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_OPEN                             :{YELLOW}Abertura de indústrias
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CLOSE                            :{YELLOW}Fechamento de indústrias
-STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Alterações econômicas
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Mudanças na produção das indústrias servidas pela companhia
-STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Mudanças na produção de indústrias providas pelo(s) competidor(es)
+STR_NEWS_MESSAGE_TYPE_ECONOMY_CHANGES                           :{YELLOW}Mudanças econômicas
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_COMPANY        :{YELLOW}Mudanças na produção das indústrias servidas pela empresa
+STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_SERVED_BY_OTHER          :{YELLOW}Mudanças na produção de indústrias servida pelo(s) concorrente(es)
 STR_NEWS_MESSAGE_TYPE_INDUSTRY_CHANGES_UNSERVED                 :{YELLOW}Outras mudanças de produção das indústrias
-STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Notícias / informações sobre os veículos da companhia
+STR_NEWS_MESSAGE_TYPE_ADVICE_INFORMATION_ON_COMPANY             :{YELLOW}Conselhos / informações sobre os veículos da empresa
 STR_NEWS_MESSAGE_TYPE_NEW_VEHICLES                              :{YELLOW}Novos veículos
-STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Alterações de aceitação de carga
+STR_NEWS_MESSAGE_TYPE_CHANGES_OF_CARGO_ACCEPTANCE               :{YELLOW}Mudanças à aceitação de carga
 STR_NEWS_MESSAGE_TYPE_SUBSIDIES                                 :{YELLOW}Subsídios
 STR_NEWS_MESSAGE_TYPE_GENERAL_INFORMATION                       :{YELLOW}Informações gerais
 
@@ -782,7 +782,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} foi comprada por {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} patrocinou a construção da cidade {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} patrocinou a construção do novo povoado {TOWN}!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G o a} {STRING} em construção em {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G o a} {STRING} sendo plantada em {TOWN}!
@@ -2109,7 +2109,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Tem cert
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Gerar Cidades
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Cidade
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda nova cidade. Shift+Clique apenas mosta a estimação de custo
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Cidade Aleatória
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Povoado Aleatório
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Constrói cidade num local aleatório
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Várias cidades aleatórias
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Cobrir o mapa com cidades colocadas aleatoriamente
@@ -2120,12 +2120,12 @@ STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Clique p
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nome aleatório
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Gerar novo nome aleatoriamente
 
-STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Tamanho da cidade:
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Tamanho do povoado:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Pequena
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Média
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Grande
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Randômico
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Seleciona tamanho da cidade
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Selecionar tamanho do povoado
 STR_FOUND_TOWN_CITY                                             :{BLACK}Cidade
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Cidades grandes cresem mais rápido que as cidades normais{}Dependendo das configs. são maiores quando fundadas.
 
@@ -3506,7 +3506,7 @@ STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Impossí
 STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Impossível extender a cidade...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... muito perto da borda do mapa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... muito perto de outra cidade
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... existem cidades demais
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... muitos povoados
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... não há mais espaço no mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}A cidade não irá construir estradas. Você pode ativar essa opção através de Config. Avançadas>Economia>Cidades
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Recapeamento rodoviário em progresso
