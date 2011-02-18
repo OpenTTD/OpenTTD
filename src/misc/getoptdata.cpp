@@ -16,56 +16,75 @@
  * Find the next option.
  * @return Function returns one
  * - An option letter if it found another option.
- * - -1 if option processing is finished.
+ * - -1 if option processing is finished. Inspect #argv and #numleft to find the command line arguments.
  * - -2 if an error was encountered.
  */
 int GetOptData::GetOpt()
 {
+	const OptionData *odata;
+
 	char *s = this->cont;
-	if (s != NULL) {
-		goto md_continue_here;
+	if (s == NULL) {
+		if (this->numleft == 0) return -1; // No arguments left -> finished.
+
+		s = this->argv[0];
+		if (*s != '-') return -1; // No leading '-' -> not an option -> finished.
+
+		this->argv++;
+		this->numleft--;
+
+		/* Is it a long option? */
+		for (odata = this->options; odata->flags != ODF_END; odata++) {
+			if (odata->longname != NULL && !strcmp(odata->longname, s)) { // Long options always use the entire argument.
+				this->cont = NULL;
+				goto set_optval;
+			}
+		}
+
+		s++; // Skip leading '-'.
 	}
 
-	for (;;) {
-		if (--this->numleft < 0) return -1;
+	/* Is it a short option? */
+	for (odata = this->options; odata->flags != ODF_END; odata++) {
+		if (odata->shortname != '\0' && *s == odata->shortname) {
+			this->cont = (s[1] != '\0') ? s + 1 : NULL;
 
-		s = *this->argv++;
-		if (*s == '-') {
-md_continue_here:;
-			s++;
-			if (*s != 0) {
-				const char *r;
-				/* Found argument, try to locate it in options. */
-				if (*s == ':' || (r = strchr(this->options, *s)) == NULL) {
-					/* ERROR! */
-					return -2;
-				}
-				if (r[1] == ':') {
-					char *t;
-					/* Item wants an argument. Check if the argument follows, or if it comes as a separate arg. */
-					if (!*(t = s + 1)) {
-						/* It comes as a separate arg. Check if out of args? */
-						if (--this->numleft < 0 || *(t = *this->argv) == '-') {
-							/* Check if item is optional? */
-							if (r[2] != ':') return -2;
-							this->numleft++;
-							t = NULL;
-						} else {
-							this->argv++;
-						}
+set_optval: // Handle option value of *odata .
+			this->opt = NULL;
+			switch (odata->flags) {
+				case ODF_NO_VALUE:
+					return odata->id;
+
+				case ODF_HAS_VALUE:
+					if (this->cont != NULL) { // Remainder of the argument is the option value.
+						this->opt = this->cont;
+						this->cont = NULL;
+						return odata->id;
 					}
-					this->opt = t;
-					this->cont = NULL;
-					return *s;
-				}
-				this->opt = NULL;
-				this->cont = s;
-				return *s;
+					if (this->numleft == 0) return -2; // Missing the option value.
+					this->opt = this->argv[0];
+					this->argv++;
+					this->numleft--;
+					return odata->id;
+
+				case ODF_OPTIONAL_VALUE:
+					if (this->cont != NULL) { // Remainder of the argument is the option value.
+						this->opt = this->cont;
+						this->cont = NULL;
+						return odata->id;
+					}
+					if (this->numleft > 0 && this->argv[0][0] != '-') {
+						this->opt = this->argv[0];
+						this->argv++;
+						this->numleft--;
+					}
+					return odata->id;
+
+				default: NOT_REACHED();
 			}
-		} else {
-			/* This is currently not supported. */
-			return -2;
 		}
 	}
+
+	return -2; // No other ways to interpret the text -> error.
 }
 

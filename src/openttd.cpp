@@ -342,10 +342,41 @@ void MakeNewgameSettingsLive()
 extern void DedicatedFork();
 #endif
 
+/** Options of OpenTTD. */
+static const OptionData _options[] = {
+	 GETOPT_SHORT_VALUE('I'),
+	 GETOPT_SHORT_VALUE('S'),
+	 GETOPT_SHORT_VALUE('M'),
+	 GETOPT_SHORT_VALUE('m'),
+	 GETOPT_SHORT_VALUE('s'),
+	 GETOPT_SHORT_VALUE('v'),
+	 GETOPT_SHORT_VALUE('b'),
+#if defined(ENABLE_NETWORK)
+	GETOPT_SHORT_OPTVAL('D'),
+	GETOPT_SHORT_OPTVAL('n'),
+	 GETOPT_SHORT_VALUE('l'),
+	 GETOPT_SHORT_VALUE('p'),
+	 GETOPT_SHORT_VALUE('P'),
+#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
+	 GETOPT_SHORT_NOVAL('f'),
+#endif
+#endif /* ENABLE_NETWORK */
+	 GETOPT_SHORT_VALUE('r'),
+	 GETOPT_SHORT_VALUE('t'),
+	GETOPT_SHORT_OPTVAL('d'),
+	 GETOPT_SHORT_NOVAL('e'),
+	GETOPT_SHORT_OPTVAL('i'),
+	GETOPT_SHORT_OPTVAL('g'),
+	 GETOPT_SHORT_VALUE('G'),
+	 GETOPT_SHORT_VALUE('c'),
+	 GETOPT_SHORT_NOVAL('x'),
+	 GETOPT_SHORT_NOVAL('h'),
+	GETOPT_END()
+};
+
+
 int ttd_main(int argc, char *argv[])
 {
-	int i;
-	const char *optformat;
 	char *musicdriver = NULL;
 	char *sounddriver = NULL;
 	char *videodriver = NULL;
@@ -376,18 +407,9 @@ int ttd_main(int argc, char *argv[])
 	_switch_mode_errorstr = INVALID_STRING_ID;
 	_config_file = NULL;
 
-	/* The last param of the following function means this:
-	 *   a letter means: it accepts that param (e.g.: -h)
-	 *   a ':' behind it means: it need a param (e.g.: -m<driver>)
-	 *   a '::' behind it means: it can optional have a param (e.g.: -d<debug>) */
-	optformat = "m:s:v:b:hD::n::ei::I:S:M:t:d::r:g::G:c:xl:p:P:"
-#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
-		"f"
-#endif
-	;
+	GetOptData mgo(argc - 1, argv + 1, _options);
 
-	GetOptData mgo(argc - 1, argv + 1, optformat);
-
+	int i;
 	while ((i = mgo.GetOpt()) != -1) {
 		switch (i) {
 		case 'I': free(graphics_set); graphics_set = strdup(mgo.opt); break;
@@ -476,18 +498,25 @@ int ttd_main(int argc, char *argv[])
 		case 'G': generation_seed = atoi(mgo.opt); break;
 		case 'c': _config_file = strdup(mgo.opt); break;
 		case 'x': save_config = false; break;
-		case -2:
 		case 'h':
-			/* The next two functions are needed to list the graphics sets.
-			 * We can't do them earlier because then we can't show it on
-			 * the debug console as that hasn't been configured yet. */
-			DeterminePaths(argv[0]);
-			BaseGraphics::FindSets();
-			BaseSounds::FindSets();
-			BaseMusic::FindSets();
-			ShowHelp();
-			return 0;
+			i = -2; // Force printing of help.
+			break;
 		}
+		if (i == -2) break;
+	}
+
+	if (i == -2 || mgo.numleft > 0) {
+		/* Either the user typed '-h', he made an error, or he added unrecognized command line arguments.
+		 * In all cases, print the help, and exit.
+		 *
+		 * The next two functions are needed to list the graphics sets. We can't do them earlier
+		 * because then we cannot show it on the debug console as that hasn't been configured yet. */
+		DeterminePaths(argv[0]);
+		BaseGraphics::FindSets();
+		BaseSounds::FindSets();
+		BaseMusic::FindSets();
+		ShowHelp();
+		return 0;
 	}
 
 #if defined(WINCE) && defined(_DEBUG)
