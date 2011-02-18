@@ -1,5 +1,5 @@
 Multiplayer manual for OpenTTD
-Last updated:    2011-01-20
+Last updated:    2011-02-16
 ------------------------------------------------------------------------
 
 
@@ -17,6 +17,12 @@ Table of contents
 
 1.0) Starting a server
 ---- -----------------
+ - Make sure that you have your firewall of the computer as well as possible
+   routers or modems of the server configured such that:
+   * port 3979 is free for both UDP and TCP connections in- and outgoing
+   * port 3978 is free outbound for UDP in order to advertise with the master
+     server (if desired). Otherwise you'll have to tell players your IP.
+   * port 3977 if use of the admin interface is desired (see admin_network.txt)
  - Click "multiplayer" on the startup screen
  - Click "start server"
  - Type in a game name
@@ -206,7 +212,8 @@ Table of contents
 6.0) Troubleshooting
 ---- ---------------
  - My advertising server does not show up in list at servers.openttd.org
-     Run openttd with the '-d net=2' parameter, as this will show whether it
-     receives replies from the master server. If it does not receive replies it
-     is most likely that you need to configure your router to forward ports
-     3979 (both TCP and UDP) to the computer that is hosting the game.
+     Run openttd with the '-d net=2' parameter. That will show which incoming
+     communication is received, whether the replies from the master server or
+     communication from an admin tool reach the programme. See section 1
+     'Starting a server' further up for the ports and protocols used by OpenTTD.
+     The ports can be configured in the config file.
