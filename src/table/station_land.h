@@ -780,6 +780,8 @@ static const DrawTileSeqStruct _station_display_datas_waypoint_Y[] = {
 #undef TILE_SEQ_END
 #undef TILE_SEQ_LINE
 #undef TILE_SEQ_LINE_PAL
+#undef TILE_SEQ_CHILD
+#undef TILE_SEQ_GROUND
 
 /**
  * Constructor macro of a DrawTileSprites structure
