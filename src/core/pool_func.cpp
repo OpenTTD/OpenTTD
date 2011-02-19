@@ -12,6 +12,10 @@
 #include "../stdafx.h"
 #include "pool_type.hpp"
 
+/**
+ * Destructor removes this object from the pool vector and
+ * deletes the vector itself if this was the last item removed.
+ */
 PoolBase::~PoolBase()
 {
 	PoolVector *pools = PoolBase::GetPools();
@@ -19,6 +23,9 @@ PoolBase::~PoolBase()
 	if (pools->Length() == 0) delete pools;
 }
 
+/**
+ * Clean all pools - calls Pool::CleanPool()
+ */
 /* static */ void PoolBase::CleanAll()
 {
 	PoolVector *pools = PoolBase::GetPools();

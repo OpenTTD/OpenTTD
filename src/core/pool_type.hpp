@@ -28,9 +28,6 @@ struct PoolBase {
 		return pools;
 	}
 
-	/**
-	 * Clean all pools - calls Pool::CleanPool()
-	 */
 	static void CleanAll();
 
 	/**
@@ -41,10 +38,6 @@ struct PoolBase {
 		*PoolBase::GetPools()->Append() = this;
 	}
 
-	/**
-	 * Destructor removes this object from the pool vector and
-	 * deletes the vector itself if this was the last item removed.
-	 */
 	~PoolBase();
 
 	/**

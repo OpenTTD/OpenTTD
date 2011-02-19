@@ -270,9 +270,9 @@ static void ShutdownGame()
 	free(_config_file);
 #endif
 
-	ResetNewGRFData();
-
 	PoolBase::CleanAll();
+
+	ResetNewGRFData();
 
 	/* Close all and any open filehandles */
 	FioCloseAll();
