@@ -43,7 +43,7 @@ void DrawCommonTileSeq(const TileInfo *ti, const DrawTileSprites *dts, Transpare
 
 		PaletteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
 
-		if ((byte)dtss->delta_z != 0x80) {
+		if (dtss->IsParentSprite()) {
 			parent_sprite_encountered = true;
 			AddSortableSpriteToDraw(
 				image, pal,
@@ -94,7 +94,7 @@ void DrawCommonTileSeqInGUI(int x, int y, const DrawTileSprites *dts, int32 orig
 
 		PaletteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, default_palette);
 
-		if ((byte)dtss->delta_z != 0x80) {
+		if (dtss->IsParentSprite()) {
 			Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
 			DrawSprite(image, pal, x + pt.x, y + pt.y);
 

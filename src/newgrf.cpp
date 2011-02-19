@@ -1223,7 +1223,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 						DrawTileSeqStruct *dtss = const_cast<DrawTileSeqStruct *>(&dts->seq[seq_count - 1]);
 
 						dtss->delta_x = buf->ReadByte();
-						if ((byte) dtss->delta_x == 0x80) break;
+						if (dtss->IsTerminator()) break;
 						dtss->delta_y = buf->ReadByte();
 						dtss->delta_z = buf->ReadByte();
 						dtss->size_x = buf->ReadByte();
@@ -3955,7 +3955,7 @@ static void NewSpriteGroup(ByteReader *buf)
 
 						if (type > 0) {
 							seq->delta_z = buf->ReadByte();
-							if ((byte)seq->delta_z == 0x80) continue;
+							if (!seq->IsParentSprite()) continue;
 						}
 
 						seq->size_x = buf->ReadByte();
@@ -3964,7 +3964,7 @@ static void NewSpriteGroup(ByteReader *buf)
 					}
 
 					/* Set the terminator value. */
-					const_cast<DrawTileSeqStruct *>(group->dts->seq)[i].delta_x = (int8)0x80;
+					const_cast<DrawTileSeqStruct *>(group->dts->seq)[i].MakeTerminator();
 
 					break;
 				}
