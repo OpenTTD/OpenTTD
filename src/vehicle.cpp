@@ -736,7 +736,10 @@ Vehicle::~Vehicle()
 {
 	free(this->name);
 
-	if (CleaningPool()) return;
+	if (CleaningPool()) {
+		this->cargo.OnCleanPool();
+		return;
+	}
 
 	/* sometimes, eg. for disaster vehicles, when company bankrupts, when removing crashed/flooded vehicles,
 	 * it may happen that vehicle chain is deleted when visible */

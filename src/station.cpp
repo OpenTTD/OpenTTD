@@ -70,7 +70,12 @@ Station::Station(TileIndex tile) :
  */
 Station::~Station()
 {
-	if (CleaningPool()) return;
+	if (CleaningPool()) {
+		for (CargoID c = 0; c < NUM_CARGO; c++) {
+			this->goods[c].cargo.OnCleanPool();
+		}
+		return;
+	}
 
 	while (!this->loading_vehicles.empty()) {
 		this->loading_vehicles.front()->LeaveStation();

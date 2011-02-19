@@ -155,6 +155,16 @@ CargoList<Tinst>::~CargoList()
 }
 
 /**
+ * Empty the cargo list, but don't free the cargo packets;
+ * the cargo packets are cleaned by CargoPacket's CleanPool.
+ */
+template <class Tinst>
+void CargoList<Tinst>::OnCleanPool()
+{
+	this->packets.clear();
+}
+
+/**
  * Update the cached values to reflect the removal of this packet.
  * Decreases count and days_in_transit.
  * @param cp Packet to be removed from cache.

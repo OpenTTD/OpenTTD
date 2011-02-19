@@ -197,6 +197,8 @@ public:
 
 	~CargoList();
 
+	void OnCleanPool();
+
 	/**
 	 * Returns a pointer to the cargo packet list (so you can iterate over it etc).
 	 * @return Pointer to the packet list.
