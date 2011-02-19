@@ -611,12 +611,6 @@ static void DrawCanalWater(TileIndex tile)
 	DrawWaterEdges(true, 0, tile);
 }
 
-struct LocksDrawTileStruct {
-	int8 delta_x, delta_y, delta_z;
-	byte width, height, depth;
-	SpriteID image;
-};
-
 #include "table/water_land.h"
 
 /**
