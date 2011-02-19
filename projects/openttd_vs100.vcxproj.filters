@@ -1077,6 +1077,9 @@
     <ClInclude Include="..\src\core\overflowsafe_type.hpp">
       <Filter>Core Source Code</Filter>
     </ClInclude>
+    <ClCompile Include="..\src\core\pool_func.cpp">
+      <Filter>Core Source Code</Filter>
+    </ClCompile>
     <ClInclude Include="..\src\core\pool_func.hpp">
       <Filter>Core Source Code</Filter>
     </ClInclude>

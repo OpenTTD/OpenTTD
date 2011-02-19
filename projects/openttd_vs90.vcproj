@@ -1752,6 +1752,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\pool_func.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\core\pool_func.hpp"
 				>
 			</File>

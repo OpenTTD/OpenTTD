@@ -12,6 +12,47 @@
 #ifndef POOL_TYPE_HPP
 #define POOL_TYPE_HPP
 
+#include "smallvec_type.hpp"
+
+typedef SmallVector<struct PoolBase *, 4> PoolVector; ///< Vector of pointers to PoolBase
+
+/** Base class for base of all pools. */
+struct PoolBase {
+	/**
+	 * Function used to access the vector of all pools.
+	 * @return pointer to vector of all pools
+	 */
+	static PoolVector *GetPools()
+	{
+		static PoolVector *pools = new PoolVector();
+		return pools;
+	}
+
+	/**
+	 * Clean all pools - calls Pool::CleanPool()
+	 */
+	static void CleanAll();
+
+	/**
+	 * Contructor registers this object in the pool vector.
+	 */
+	PoolBase()
+	{
+		*PoolBase::GetPools()->Append() = this;
+	}
+
+	/**
+	 * Destructor removes this object from the pool vector and
+	 * deletes the vector itself if this was the last item removed.
+	 */
+	~PoolBase();
+
+	/**
+	 * Virtual method that deletes all items in the pool.
+	 */
+	virtual void CleanPool() = 0;
+};
+
 /**
  * Base class for all pools.
  * @tparam Titem        Type of the class/struct that is going to be pooled
@@ -23,7 +64,7 @@
  * @warning when Tcache is enabled *all* instances of this pool's item must be of the same size.
  */
 template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, bool Tcache = false, bool Tzero = true>
-struct Pool {
+struct Pool : PoolBase {
 	static const size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
 
 	const char * const name; ///< Name of this pool
@@ -40,7 +81,7 @@ struct Pool {
 	Titem **data;        ///< Pointer to array of pointers to Titem
 
 	Pool(const char *name);
-	void CleanPool();
+	virtual void CleanPool();
 
 	/**
 	 * Returs Titem with given index
