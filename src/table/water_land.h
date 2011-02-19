@@ -9,154 +9,146 @@
 
 /** @file water_land.h Sprites to use and how to display them for water tiles (depots/locks). */
 
-struct WaterDrawTileStruct {
-	byte delta_x;
-	byte delta_y;
-	byte delta_z;
-	byte size_x;
-	byte size_y;
-	byte size_z;
-	SpriteID image;
-};
+/**
+ * Constructor macro for an image without a palette in a DrawTileSeqStruct array.
+ * @param dx  Offset in x direction
+ * @param dy  Offset in y direction
+ * @param dz  Offset in z direction
+ * @param sx  Size in x direction
+ * @param sy  Size in y direction
+ * @param sz  Size in z direction
+ * @param img Sprite to draw
+ */
+#define TILE_SEQ_LINE(dx, dy, dz, sx, sy, sz, img) { dx, dy, dz, sx, sy, sz, {img, PAL_NONE} },
 
-#define BEGIN(image) { 0, 0, 0, 0, 0, 0, image }
+/** Constructor macro for a terminating DrawTileSeqStruct entry in an array */
+#define TILE_SEQ_END() { (int8)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
-/** Constructor macro for a terminating WaterDrawTileStruct entry in an array */
-#define TILE_SEQ_END() { 0x80, 0, 0, 0, 0, 0, 0 }
+/**
+ * Constructor macro of a DrawTileSprites structure
+ * @param img   Ground sprite without palette of the tile
+ * @param dtss  Sequence child sprites of the tile
+ */
+#define TILE_SPRITE_LINE(img, dtss) { {img, PAL_NONE}, dtss },
 
-static const WaterDrawTileStruct _shipdepot_display_seq_1[] = {
-	BEGIN(0xFDD),
-	{ 0, 15, 0, 16, 1, 0x14, 0xFE8 | (1 << PALETTE_MODIFIER_COLOUR) },
+static const DrawTileSeqStruct _shipdepot_display_seq_1[] = {
+	TILE_SEQ_LINE( 0, 15, 0, 16, 1, 0x14, 0xFE8 | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _shipdepot_display_seq_2[] = {
-	BEGIN(0xFDD),
-	{ 0,  0, 0, 16, 1, 0x14, 0xFEA },
-	{ 0, 15, 0, 16, 1, 0x14, 0xFE6 | (1 << PALETTE_MODIFIER_COLOUR) },
+static const DrawTileSeqStruct _shipdepot_display_seq_2[] = {
+	TILE_SEQ_LINE( 0,  0, 0, 16, 1, 0x14, 0xFEA)
+	TILE_SEQ_LINE( 0, 15, 0, 16, 1, 0x14, 0xFE6 | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _shipdepot_display_seq_3[] = {
-	BEGIN(0xFDD),
-	{ 15, 0, 0, 1, 0x10, 0x14, 0xFE9 | (1 << PALETTE_MODIFIER_COLOUR) },
+static const DrawTileSeqStruct _shipdepot_display_seq_3[] = {
+	TILE_SEQ_LINE( 15, 0, 0, 1, 0x10, 0x14, 0xFE9 | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _shipdepot_display_seq_4[] = {
-	BEGIN(0xFDD),
-	{  0, 0, 0, 1, 16, 0x14, 0xFEB },
-	{ 15, 0, 0, 1, 16, 0x14, 0xFE7 | (1 << PALETTE_MODIFIER_COLOUR) },
+static const DrawTileSeqStruct _shipdepot_display_seq_4[] = {
+	TILE_SEQ_LINE(  0, 0, 0, 1, 16, 0x14, 0xFEB)
+	TILE_SEQ_LINE( 15, 0, 0, 1, 16, 0x14, 0xFE7 | (1 << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct * const _shipdepot_display_seq[] = {
-	_shipdepot_display_seq_1,
-	_shipdepot_display_seq_2,
-	_shipdepot_display_seq_3,
-	_shipdepot_display_seq_4,
+static const DrawTileSprites _shipdepot_display_data[] = {
+	TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_1)
+	TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_2)
+	TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_3)
+	TILE_SPRITE_LINE(0xFDD, _shipdepot_display_seq_4)
 };
 
-static const WaterDrawTileStruct _lock_display_seq_0[] = {
-	BEGIN(1),
-	{ 0,   0, 0, 0x10, 1, 0x14, 0 + 1 },
-	{ 0, 0xF, 0, 0x10, 1, 0x14, 4 + 1 },
+static const DrawTileSeqStruct _lock_display_seq_0[] = {
+	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 0 + 1)
+	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 4 + 1)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_1[] = {
-	BEGIN(0),
-	{   0, 0, 0, 1, 0x10, 0x14, 0 },
-	{ 0xF, 0, 0, 1, 0x10, 0x14, 4 },
+static const DrawTileSeqStruct _lock_display_seq_1[] = {
+	TILE_SEQ_LINE(   0, 0, 0, 1, 0x10, 0x14, 0)
+	TILE_SEQ_LINE( 0xF, 0, 0, 1, 0x10, 0x14, 4)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_2[] = {
-	BEGIN(2),
-	{ 0,   0, 0, 0x10, 1, 0x14, 0 + 2 },
-	{ 0, 0xF, 0, 0x10, 1, 0x14, 4 + 2 },
+static const DrawTileSeqStruct _lock_display_seq_2[] = {
+	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 0 + 2)
+	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 4 + 2)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_3[] = {
-	BEGIN(3),
-	{   0, 0, 0, 1, 0x10, 0x14, 0 + 3 },
-	{ 0xF, 0, 0, 1, 0x10, 0x14, 4 + 3 },
+static const DrawTileSeqStruct _lock_display_seq_3[] = {
+	TILE_SEQ_LINE(   0, 0, 0, 1, 0x10, 0x14, 0 + 3)
+	TILE_SEQ_LINE( 0xF, 0, 0, 1, 0x10, 0x14, 4 + 3)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_0b[] = {
-	BEGIN(0xFDD),
-	{ 0,   0, 0, 0x10, 1, 0x14, 8 + 1 },
-	{ 0, 0xF, 0, 0x10, 1, 0x14, 12 + 1 },
+static const DrawTileSeqStruct _lock_display_seq_0b[] = {
+	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 8 + 1)
+	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 12 + 1)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_1b[] = {
-	BEGIN(0xFDD),
-	{   0, 0, 0, 0x1, 0x10, 0x14, 8 },
-	{ 0xF, 0, 0, 0x1, 0x10, 0x14, 12 },
+static const DrawTileSeqStruct _lock_display_seq_1b[] = {
+	TILE_SEQ_LINE(   0, 0, 0, 0x1, 0x10, 0x14, 8)
+	TILE_SEQ_LINE( 0xF, 0, 0, 0x1, 0x10, 0x14, 12)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_2b[] = {
-	BEGIN(0xFDD),
-	{ 0,   0, 0, 0x10, 1, 0x14, 8 + 2 },
-	{ 0, 0xF, 0, 0x10, 1, 0x14, 12 + 2 },
+static const DrawTileSeqStruct _lock_display_seq_2b[] = {
+	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 8 + 2)
+	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 12 + 2)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_3b[] = {
-	BEGIN(0xFDD),
-	{   0, 0, 0, 1, 0x10, 0x14, 8 + 3 },
-	{ 0xF, 0, 0, 1, 0x10, 0x14, 12 + 3 },
+static const DrawTileSeqStruct _lock_display_seq_3b[] = {
+	TILE_SEQ_LINE(   0, 0, 0, 1, 0x10, 0x14, 8 + 3)
+	TILE_SEQ_LINE( 0xF, 0, 0, 1, 0x10, 0x14, 12 + 3)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_0t[] = {
-	BEGIN(0xFDD),
-	{ 0,   0, 0, 0x10, 1, 0x14, 16 + 1 },
-	{ 0, 0xF, 0, 0x10, 1, 0x14, 20 + 1 },
+static const DrawTileSeqStruct _lock_display_seq_0t[] = {
+	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 16 + 1)
+	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 20 + 1)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_1t[] = {
-	BEGIN(0xFDD),
-	{   0, 0, 0, 0x1, 0x10, 0x14, 16 },
-	{ 0xF, 0, 0, 0x1, 0x10, 0x14, 20 },
+static const DrawTileSeqStruct _lock_display_seq_1t[] = {
+	TILE_SEQ_LINE(   0, 0, 0, 0x1, 0x10, 0x14, 16)
+	TILE_SEQ_LINE( 0xF, 0, 0, 0x1, 0x10, 0x14, 20)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_2t[] = {
-	BEGIN(0xFDD),
-	{ 0,   0, 0, 0x10, 1, 0x14, 16 + 2 },
-	{ 0, 0xF, 0, 0x10, 1, 0x14, 20 + 2 },
+static const DrawTileSeqStruct _lock_display_seq_2t[] = {
+	TILE_SEQ_LINE( 0,   0, 0, 0x10, 1, 0x14, 16 + 2)
+	TILE_SEQ_LINE( 0, 0xF, 0, 0x10, 1, 0x14, 20 + 2)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct _lock_display_seq_3t[] = {
-	BEGIN(0xFDD),
-	{   0, 0, 0, 1, 0x10, 0x14, 16 + 3 },
-	{ 0xF, 0, 0, 1, 0x10, 0x14, 20 + 3 },
+static const DrawTileSeqStruct _lock_display_seq_3t[] = {
+	TILE_SEQ_LINE(   0, 0, 0, 1, 0x10, 0x14, 16 + 3)
+	TILE_SEQ_LINE( 0xF, 0, 0, 1, 0x10, 0x14, 20 + 3)
 	TILE_SEQ_END()
 };
 
-static const WaterDrawTileStruct * const _lock_display_seq[] = {
-	_lock_display_seq_0,
-	_lock_display_seq_1,
-	_lock_display_seq_2,
-	_lock_display_seq_3,
+static const DrawTileSprites _lock_display_data[] = {
+	TILE_SPRITE_LINE(1, _lock_display_seq_0)
+	TILE_SPRITE_LINE(0, _lock_display_seq_1)
+	TILE_SPRITE_LINE(2, _lock_display_seq_2)
+	TILE_SPRITE_LINE(3, _lock_display_seq_3)
 
-	_lock_display_seq_0b,
-	_lock_display_seq_1b,
-	_lock_display_seq_2b,
-	_lock_display_seq_3b,
+	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_0b)
+	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_1b)
+	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_2b)
+	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_3b)
 
-	_lock_display_seq_0t,
-	_lock_display_seq_1t,
-	_lock_display_seq_2t,
-	_lock_display_seq_3t,
+	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_0t)
+	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_1t)
+	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_2t)
+	TILE_SPRITE_LINE(0xFDD, _lock_display_seq_3t)
 };
 
-#undef BEGIN
+#undef TILE_SEQ_LINE
 #undef TILE_SEQ_END
+#undef TILE_SPRITE_LINE

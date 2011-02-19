@@ -617,23 +617,23 @@ static void DrawCanalWater(TileIndex tile)
  * Draw a build sprite sequence for water tiles.
  * If buildings are invisible, nothing will be drawn.
  * @param ti      Tile info.
- * @param wdts    Sprite sequence to draw.
+ * @param dtss     Sprite sequence to draw.
  * @param base    Base sprite.
  * @param offset  Additional sprite offset.
  * @param palette Palette to use.
  */
-static void DrawWaterTileStruct(const TileInfo *ti, const WaterDrawTileStruct *wdts, SpriteID base, uint offset, PaletteID palette, CanalFeature feature)
+static void DrawWaterTileStruct(const TileInfo *ti, const DrawTileSeqStruct *dtss, SpriteID base, uint offset, PaletteID palette, CanalFeature feature)
 {
 	/* Don't draw if buildings are invisible. */
 	if (IsInvisibilitySet(TO_BUILDINGS)) return;
 
-	for (; wdts->delta_x != 0x80; wdts++) {
-		uint tile_offs = offset + wdts->image;
+	for (; !dtss->IsTerminator(); dtss++) {
+		uint tile_offs = offset + dtss->image.sprite;
 		if (feature < CF_END) tile_offs = GetCanalSpriteOffset(feature, ti->tile, tile_offs);
 		AddSortableSpriteToDraw(base + tile_offs, palette,
-			ti->x + wdts->delta_x, ti->y + wdts->delta_y,
-			wdts->size_x, wdts->size_y,
-			wdts->size_z, ti->z + wdts->delta_z,
+			ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+			dtss->size_x, dtss->size_y,
+			dtss->size_z, ti->z + dtss->delta_z,
 			IsTransparencySet(TO_BUILDINGS));
 	}
 }
@@ -642,10 +642,10 @@ static void DrawWaterTileStruct(const TileInfo *ti, const WaterDrawTileStruct *w
 static void DrawWaterLock(const TileInfo *ti)
 {
 	int section = GetSection(ti->tile);
-	const WaterDrawTileStruct *wdts = _lock_display_seq[section];
+	const DrawTileSprites &dts = _lock_display_data[section];
 
 	/* Draw ground sprite. */
-	SpriteID image = wdts++->image;
+	SpriteID image = dts.ground.sprite;
 
 	SpriteID water_base = GetCanalSprite(CF_WATERSLOPE, ti->tile);
 	if (water_base == 0) {
@@ -674,15 +674,14 @@ static void DrawWaterLock(const TileInfo *ti)
 		zoffs = ti->z > z_threshold ? 24 : 0;
 	}
 
-	DrawWaterTileStruct(ti, wdts, base, zoffs, PAL_NONE, CF_LOCKS);
+	DrawWaterTileStruct(ti, dts.seq, base, zoffs, PAL_NONE, CF_LOCKS);
 }
 
 /** Draw a ship depot tile. */
 static void DrawWaterDepot(const TileInfo *ti)
 {
 	DrawWaterClassGround(ti);
-	/* Skip first entry in _shipdepot_display_seq as this is the ground sprite. */
-	DrawWaterTileStruct(ti, _shipdepot_display_seq[GetSection(ti->tile)] + 1, 0, 0, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)), CF_END);
+	DrawWaterTileStruct(ti, _shipdepot_display_data[GetSection(ti->tile)].seq, 0, 0, COMPANY_SPRITE_COLOUR(GetTileOwner(ti->tile)), CF_END);
 }
 
 static void DrawRiverWater(const TileInfo *ti)
@@ -776,14 +775,10 @@ static void DrawTile_Water(TileInfo *ti)
 
 void DrawShipDepotSprite(int x, int y, int image)
 {
-	const WaterDrawTileStruct *wdts = _shipdepot_display_seq[image];
+	const DrawTileSprites &dts = _shipdepot_display_data[image];
 
-	DrawSprite(wdts++->image, PAL_NONE, x, y);
-
-	for (; wdts->delta_x != 0x80; wdts++) {
-		Point pt = RemapCoords(wdts->delta_x, wdts->delta_y, wdts->delta_z);
-		DrawSprite(wdts->image, COMPANY_SPRITE_COLOUR(_local_company), x + pt.x, y + pt.y);
-	}
+	DrawSprite(dts.ground.sprite, dts.ground.pal, x, y);
+	DrawOrigTileSeqInGUI(x, y, &dts, COMPANY_SPRITE_COLOUR(_local_company));
 }
 
 
