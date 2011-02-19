@@ -37,7 +37,7 @@ STR_CARGO_PLURAL_GRAIN                                          :Nôt
 STR_CARGO_PLURAL_WOOD                                           :Hout
 STR_CARGO_PLURAL_IRON_ORE                                       :Izererts
 STR_CARGO_PLURAL_STEEL                                          :Stiel
-STR_CARGO_PLURAL_VALUABLES                                      :Kostber guod
+STR_CARGO_PLURAL_VALUABLES                                      :Kostberheden
 STR_CARGO_PLURAL_COPPER_ORE                                     :Kopererts
 STR_CARGO_PLURAL_MAIZE                                          :Mais
 STR_CARGO_PLURAL_FRUIT                                          :Fruit
@@ -99,22 +99,22 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} passazj
 STR_QUANTITY_COAL                                               :{WEIGHT} stienkoal
 STR_QUANTITY_MAIL                                               :{COMMA} tassen mei post
 STR_QUANTITY_OIL                                                :{VOLUME} oalje
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} bist{P "" en}
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} Oantal bist{P "" en}
 STR_QUANTITY_GOODS                                              :{COMMA} krat{P "" ten} guod
 STR_QUANTITY_GRAIN                                              :{WEIGHT} nôt
 STR_QUANTITY_WOOD                                               :{WEIGHT} hout
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} izererts
 STR_QUANTITY_STEEL                                              :{WEIGHT} stiel
-STR_QUANTITY_VALUABLES                                          :{COMMA} sekken kostber guod
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} koper
+STR_QUANTITY_VALUABLES                                          :{COMMA} sek{P "" ken} kostberheden
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} kopererts
 STR_QUANTITY_MAIZE                                              :{WEIGHT} mais
 STR_QUANTITY_FRUIT                                              :{WEIGHT} fruit
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sek{P "" ken} diamanten
 STR_QUANTITY_FOOD                                               :{WEIGHT} iten
 STR_QUANTITY_PAPER                                              :{WEIGHT} papier
-STR_QUANTITY_GOLD                                               :{COMMA} sekken goud
+STR_QUANTITY_GOLD                                               :{COMMA} sek{P "" ken} goud
 STR_QUANTITY_WATER                                              :{VOLUME} wetter
-STR_QUANTITY_WHEAT                                              :{WEIGHT} nôt
+STR_QUANTITY_WHEAT                                              :{WEIGHT} weet
 STR_QUANTITY_RUBBER                                             :{VOLUME} rubber
 STR_QUANTITY_SUGAR                                              :{WEIGHT} sûker
 STR_QUANTITY_TOYS                                               :{COMMA} stik{P "" ken} boartersguod
@@ -140,7 +140,7 @@ STR_ABBREV_GRAIN                                                :{TINYFONT}NT
 STR_ABBREV_WOOD                                                 :{TINYFONT}HT
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}IE
 STR_ABBREV_STEEL                                                :{TINYFONT}ST
-STR_ABBREV_VALUABLES                                            :{TINYFONT}KG
+STR_ABBREV_VALUABLES                                            :{TINYFONT}KH
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}KE
 STR_ABBREV_MAIZE                                                :{TINYFONT}MS
 STR_ABBREV_FRUIT                                                :{TINYFONT}FT
@@ -168,7 +168,8 @@ STR_ABBREV_ALL                                                  :{TINYFONT}AL
 STR_PASSENGERS                                                  :{COMMA} passazjiers
 STR_BAGS                                                        :{COMMA} sekken
 STR_TONS                                                        :{COMMA} Ton
-STR_LITERS                                                      :{COMMA} liters
+STR_LITERS                                                      :{COMMA} liter{P "" s}
+STR_ITEMS                                                       :{COMMA} foarwerp{P "" en}
 STR_CRATES                                                      :{COMMA} kratten
 
 # Colours, do not shuffle
@@ -993,11 +994,13 @@ STR_DISASTERS_ON                                                :Oan
 STR_CONFIG_SETTING_OFF                                          :út
 STR_CONFIG_SETTING_ON                                           :oan
 STR_CONFIG_SETTING_BUILDONSLOPES                                :{LTBLUE}Stea it bouen op in helling ta: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}Maksimum lingte fan treinen: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :{LTBLUE}Utjefte fan steam/fonken by treinen: {ORANGE}{STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Gjin
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orizjiniel
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistysk
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Orizjiniel
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimale tunnel lingte: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :neat
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :lyk as oare yndustrieën
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :{LTBLUE}Meitsje Lân om de yndustry hinne flak: {ORANGE}{STRING} tile{P 0:1 "" s}
@@ -1998,6 +2001,7 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Oanienwei lâns
 
 
 
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(net lade of losse)
 
 
 
@@ -2256,6 +2260,7 @@ STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Plak net
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Tunnel mat earst fuorthelle wurde
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Oare tunnel yn't plak
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Kin net grûn foar it oare ein fan'e tunnel ôfgraavje
+STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunnel te lang
 
 # Object related errors
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... te folle objekten
