@@ -82,7 +82,6 @@ static inline void DecreaseGroupNumVehicle(GroupID id_g)
 }
 
 
-void InitializeGroup();
 void SetTrainGroupID(Train *v, GroupID grp);
 void UpdateTrainGroupID(Train *v);
 void RemoveVehicleFromGroup(const Vehicle *v);

@@ -55,7 +55,6 @@ uint16 Object::counts[NUM_OBJECTS];
 /** Initialize/reset the objects. */
 void InitializeObjects()
 {
-	_object_pool.CleanPool();
 	Object::ResetTypeCounts();
 }
 

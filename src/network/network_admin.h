@@ -21,7 +21,7 @@
 extern AdminIndex _redirect_console_to_admin;
 
 class ServerNetworkAdminSocketHandler;
-typedef Pool<ServerNetworkAdminSocketHandler, AdminIndex, 2, MAX_ADMINS> NetworkAdminSocketPool;
+typedef Pool<ServerNetworkAdminSocketHandler, AdminIndex, 2, MAX_ADMINS, PT_NADMIN> NetworkAdminSocketPool;
 extern NetworkAdminSocketPool _networkadminsocket_pool;
 
 /** Class for handling the server side of the game connection. */

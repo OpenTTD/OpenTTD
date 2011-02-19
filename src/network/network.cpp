@@ -493,9 +493,7 @@ void ParseConnectionString(const char **company, const char **port, char *connec
  */
 static void InitializeNetworkPools(bool close_admins = true)
 {
-	_networkclientsocket_pool.CleanPool();
-	_networkclientinfo_pool.CleanPool();
-	if (close_admins) _networkadminsocket_pool.CleanPool();
+	PoolBase::Clean(PT_NCLIENT | (close_admins ? PT_NADMIN : PT_NONE));
 }
 
 /**

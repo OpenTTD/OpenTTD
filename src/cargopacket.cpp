@@ -18,14 +18,6 @@ CargoPacketPool _cargopacket_pool("CargoPacket");
 INSTANTIATE_POOL_METHODS(CargoPacket)
 
 /**
- * Initialize, i.e. clean, the pool with cargo packets.
- */
-void InitializeCargoPackets()
-{
-	_cargopacket_pool.CleanPool();
-}
-
-/**
  * Create a new packet for savegame loading.
  */
 CargoPacket::CargoPacket()

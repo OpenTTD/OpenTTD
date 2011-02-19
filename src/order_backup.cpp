@@ -254,8 +254,3 @@ CommandCost CmdClearOrderBackup(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 		}
 	}
 }
-
-void InitializeOrderBackups()
-{
-	_order_backup_pool.CleanPool();
-}

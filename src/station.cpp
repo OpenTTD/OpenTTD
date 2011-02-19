@@ -514,9 +514,3 @@ StationRect& StationRect::operator = (const Rect &src)
 	this->bottom = src.bottom;
 	return *this;
 }
-
-
-void InitializeStations()
-{
-	_station_pool.CleanPool();
-}

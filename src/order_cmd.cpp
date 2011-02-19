@@ -2009,9 +2009,3 @@ bool Order::ShouldStopAtStation(const Vehicle *v, StationID station) const
 			/* Finally do stop when there is no non-stop flag set for this type of station. */
 			!(this->GetNonStopType() & (is_dest_station ? ONSF_NO_STOP_AT_DESTINATION_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS));
 }
-
-void InitializeOrders()
-{
-	_order_pool.CleanPool();
-	_orderlist_pool.CleanPool();
-}

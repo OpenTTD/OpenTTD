@@ -387,9 +387,3 @@ void RoadStop::Entry::CheckIntegrity(const RoadStop *rs) const
 	temp.Rebuild(rs, rs->east == this);
 	if (temp.length != this->length || temp.occupied != this->occupied) NOT_REACHED();
 }
-
-
-void InitializeRoadStops()
-{
-	_roadstop_pool.CleanPool();
-}

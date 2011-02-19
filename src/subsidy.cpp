@@ -62,14 +62,6 @@ void Subsidy::AwardTo(CompanyID company)
 	InvalidateWindowData(WC_SUBSIDIES_LIST, 0);
 }
 
-/**
- * Initializes subsidies, files don't have to include subsidy_base,h this way
- */
-void InitializeSubsidies()
-{
-	_subsidy_pool.CleanPool();
-}
-
 Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 {
 	NewsReferenceType reftype1 = NR_NONE;

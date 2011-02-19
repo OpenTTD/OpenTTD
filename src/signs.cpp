@@ -59,13 +59,3 @@ void UpdateAllSignVirtCoords()
 		si->UpdateVirtCoord();
 	}
 }
-
-/**
- *
- * Initialize the signs
- *
- */
-void InitializeSigns()
-{
-	_sign_pool.CleanPool();
-}

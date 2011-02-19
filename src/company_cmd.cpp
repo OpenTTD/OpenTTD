@@ -601,7 +601,6 @@ static void MaybeStartNewCompany()
 /** Initialize the pool of companies. */
 void InitializeCompanies()
 {
-	_company_pool.CleanPool();
 	_cur_company_tick_index = 0;
 }
 

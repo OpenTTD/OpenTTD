@@ -134,8 +134,3 @@ CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, Group
 
 	return CMD_ERROR;
 }
-
-void InitializeEngineRenews()
-{
-	_enginerenew_pool.CleanPool();
-}

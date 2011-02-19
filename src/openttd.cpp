@@ -270,7 +270,7 @@ static void ShutdownGame()
 	free(_config_file);
 #endif
 
-	PoolBase::CleanAll();
+	PoolBase::Clean(PT_ALL);
 
 	ResetNewGRFData();
 

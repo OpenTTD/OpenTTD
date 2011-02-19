@@ -67,11 +67,6 @@ Group::~Group()
 	free(this->num_engines);
 }
 
-void InitializeGroup()
-{
-	_group_pool.CleanPool();
-}
-
 
 /**
  * Create a new vehicle group.

@@ -3028,11 +3028,6 @@ void TownsYearlyLoop()
 	}
 }
 
-void InitializeTowns()
-{
-	_town_pool.CleanPool();
-}
-
 static CommandCost TerraformTile_Town(TileIndex tile, DoCommandFlag flags, uint z_new, Slope tileh_new)
 {
 	if (AutoslopeEnabled()) {

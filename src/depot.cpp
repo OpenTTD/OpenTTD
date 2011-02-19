@@ -52,8 +52,3 @@ Depot::~Depot()
 	}
 	DeleteWindowById(GetWindowClassForVehicleType(vt), VehicleListIdentifier(VL_DEPOT_LIST, vt, GetTileOwner(this->xy), this->index).Pack());
 }
-
-void InitializeDepots()
-{
-	_depot_pool.CleanPool();
-}

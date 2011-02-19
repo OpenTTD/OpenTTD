@@ -25,6 +25,7 @@
 #include "tilehighlight_func.h"
 #include "network/network_func.h"
 #include "window_func.h"
+#include "core/pool_type.hpp"
 
 
 extern TileIndex _cur_tileloop_tile;
@@ -33,10 +34,6 @@ extern void MakeNewgameSettingsLive();
 void InitializeSound();
 void InitializeMusic();
 void InitializeVehicles();
-void InitializeDepots();
-void InitializeEngineRenews();
-void InitializeOrders();
-void InitializeOrderBackups();
 void InitializeClearLand();
 void InitializeRailGui();
 void InitializeRoadGui();
@@ -45,13 +42,7 @@ void InitializeDockGui();
 void InitializeObjectGui();
 void InitializeIndustries();
 void InitializeObjects();
-void InitializeTowns();
-void InitializeSubsidies();
 void InitializeTrees();
-void InitializeSigns();
-void InitializeStations();
-void InitializeRoadStops();
-void InitializeCargoPackets();
 void InitializeCompanies();
 void InitializeCheats();
 void InitializeNPF();
@@ -77,15 +68,12 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 		InitializeOldNames();
 	}
 
+	PoolBase::Clean(PT_NORMAL);
+
 	InitializeSound();
 	InitializeMusic();
 
-	InitializeEngineRenews();
 	InitializeVehicles();
-	InitializeDepots();
-	InitializeOrders();
-	InitializeOrderBackups();
-	InitializeGroup();
 
 	InitNewsItemStructs();
 	InitializeLandscape();
@@ -96,13 +84,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settin
 	InitializeDockGui();
 	InitializeObjectGui();
 	InitializeAIGui();
-	InitializeTowns();
-	InitializeSubsidies();
 	InitializeTrees();
-	InitializeSigns();
-	InitializeStations();
-	InitializeRoadStops();
-	InitializeCargoPackets();
 	InitializeIndustries();
 	InitializeObjects();
 	InitializeBuildingCounts();

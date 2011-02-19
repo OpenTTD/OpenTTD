@@ -13,11 +13,25 @@
 #define POOL_TYPE_HPP
 
 #include "smallvec_type.hpp"
+#include "enum_type.hpp"
+
+/** Various types of a pool. */
+enum PoolType {
+	PT_NONE    = 0x00, ///< No pool is selected.
+	PT_NORMAL  = 0x01, ///< Normal pool containing game objects.
+	PT_NCLIENT = 0x02, ///< Network client pools.
+	PT_NADMIN  = 0x04, ///< Network admin pool.
+	PT_DATA    = 0x08, ///< NewGRF or other data, that is not reset together with normal pools.
+	PT_ALL     = 0x0F, ///< All pool types.
+};
+DECLARE_ENUM_AS_BIT_SET(PoolType)
 
 typedef SmallVector<struct PoolBase *, 4> PoolVector; ///< Vector of pointers to PoolBase
 
 /** Base class for base of all pools. */
 struct PoolBase {
+	const PoolType type; ///< Type of this pool.
+
 	/**
 	 * Function used to access the vector of all pools.
 	 * @return pointer to vector of all pools
@@ -28,12 +42,13 @@ struct PoolBase {
 		return pools;
 	}
 
-	static void CleanAll();
+	static void Clean(PoolType);
 
 	/**
 	 * Contructor registers this object in the pool vector.
+	 * @param pt type of this pool.
 	 */
-	PoolBase()
+	PoolBase(PoolType pt) : type(pt)
 	{
 		*PoolBase::GetPools()->Append() = this;
 	}
@@ -52,11 +67,12 @@ struct PoolBase {
  * @tparam Tindex       Type of the index for this pool
  * @tparam Tgrowth_step Size of growths; if the pool is full increase the size by this amount
  * @tparam Tmax_size    Maximum size of the pool
+ * @tparam Tpool_type   Type of this pool
  * @tparam Tcache       Whether to perform 'alloc' caching, i.e. don't actually free/malloc just reuse the memory
  * @tparam Tzero        Whether to zero the memory
  * @warning when Tcache is enabled *all* instances of this pool's item must be of the same size.
  */
-template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, bool Tcache = false, bool Tzero = true>
+template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type = PT_NORMAL, bool Tcache = false, bool Tzero = true>
 struct Pool : PoolBase {
 	static const size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
 
@@ -116,7 +132,7 @@ struct Pool : PoolBase {
 	 * Base class for all PoolItems
 	 * @tparam Tpool The pool this item is going to be part of
 	 */
-	template <struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tcache, Tzero> *Tpool>
+	template <struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tpool_type, Tcache, Tzero> *Tpool>
 	struct PoolItem {
 		Tindex index; ///< Index of this pool item
 

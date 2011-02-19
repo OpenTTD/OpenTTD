@@ -17,14 +17,15 @@
 #include "pool_type.hpp"
 
 #define DEFINE_POOL_METHOD(type) \
-	template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, bool Tcache, bool Tzero> \
-	type Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tcache, Tzero>
+	template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type, bool Tcache, bool Tzero> \
+	type Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tpool_type, Tcache, Tzero>
 
 /**
  * Create a clean pool.
  * @param name The name for the pool.
  */
 DEFINE_POOL_METHOD(inline)::Pool(const char *name) :
+		PoolBase(Tpool_type),
 		name(name),
 		size(0),
 		first_free(0),

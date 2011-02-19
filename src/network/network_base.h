@@ -19,7 +19,7 @@
 #include "../core/pool_type.hpp"
 #include "../company_type.h"
 
-typedef Pool<NetworkClientInfo, ClientIndex, 8, MAX_CLIENT_SLOTS> NetworkClientInfoPool;
+typedef Pool<NetworkClientInfo, ClientIndex, 8, MAX_CLIENT_SLOTS, PT_NCLIENT> NetworkClientInfoPool;
 extern NetworkClientInfoPool _networkclientinfo_pool;
 
 struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_pool> {

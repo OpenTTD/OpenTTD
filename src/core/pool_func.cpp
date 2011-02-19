@@ -24,14 +24,15 @@ PoolBase::~PoolBase()
 }
 
 /**
- * Clean all pools - calls Pool::CleanPool()
+ * Clean all pools of given type.
+ * @param pt pool types to clean.
  */
-/* static */ void PoolBase::CleanAll()
+/* static */ void PoolBase::Clean(PoolType pt)
 {
 	PoolVector *pools = PoolBase::GetPools();
 	PoolBase **end = pools->End();
 	for (PoolBase **ppool = pools->Begin(); ppool != end; ppool++) {
 		PoolBase *pool = *ppool;
-		pool->CleanPool();
+		if (pool->type & pt) pool->CleanPool();
 	}
 }

@@ -2638,8 +2638,6 @@ void IndustryMonthlyLoop()
 
 void InitializeIndustries()
 {
-	_industry_pool.CleanPool();
-
 	Industry::ResetIndustryCounts();
 	_industry_sound_tile = 0;
 

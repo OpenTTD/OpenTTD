@@ -586,9 +586,6 @@ static AutoreplaceMap _vehicles_to_autoreplace;
 
 void InitializeVehicles()
 {
-	_vehicle_pool.CleanPool();
-	_cargo_payment_pool.CleanPool();
-
 	_age_cargo_skip_counter = 1;
 
 	_vehicles_to_autoreplace.Reset();
