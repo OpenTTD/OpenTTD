@@ -265,23 +265,14 @@ static void ShutdownGame()
 
 	/* Uninitialize variables that are allocated dynamically */
 	GamelogReset();
-	_town_pool.CleanPool();
-	_industry_pool.CleanPool();
-	_station_pool.CleanPool();
-	_roadstop_pool.CleanPool();
-	_vehicle_pool.CleanPool();
-	_sign_pool.CleanPool();
-	_order_pool.CleanPool();
-	_group_pool.CleanPool();
-	_cargopacket_pool.CleanPool();
-	_engine_pool.CleanPool();
-	_company_pool.CleanPool();
 
 #ifdef ENABLE_NETWORK
 	free(_config_file);
 #endif
 
 	ResetNewGRFData();
+
+	PoolBase::CleanAll();
 
 	/* Close all and any open filehandles */
 	FioCloseAll();
