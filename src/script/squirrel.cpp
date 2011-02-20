@@ -188,7 +188,19 @@ bool Squirrel::MethodExists(HSQOBJECT instance, const char *method_name)
 bool Squirrel::Resume(int suspend)
 {
 	assert(!this->crashed);
+	/* Did we use more operations than we should have in the
+	 * previous tick? If so, subtract that from the current run. */
+	if (this->overdrawn_ops > 0 && suspend > 0) {
+		this->overdrawn_ops -= suspend;
+		/* Do we need to wait even more? */
+		if (this->overdrawn_ops >= 0) return true;
+
+		/* We can now only run whatever is "left". */
+		suspend = -this->overdrawn_ops;
+	}
+
 	this->crashed = !sq_resumecatch(this->vm, suspend);
+	this->overdrawn_ops = -this->vm->_ops_till_suspend;
 	return this->vm->_suspended != 0;
 }
 
@@ -310,6 +322,7 @@ Squirrel::Squirrel()
 	this->print_func = NULL;
 	this->global_pointer = NULL;
 	this->crashed = false;
+	this->overdrawn_ops = 0;
 
 	/* Handle compile-errors ourself, so we can display it nicely */
 	sq_setcompilererrorhandler(this->vm, &Squirrel::CompileError);
