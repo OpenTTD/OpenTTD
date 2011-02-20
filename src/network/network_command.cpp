@@ -221,10 +221,11 @@ void NetworkExecuteLocalCommandQueue()
 }
 
 /**
- * Free the local command queue.
+ * Free the local command queues.
  */
 void NetworkFreeLocalCommandQueue()
 {
+	_local_wait_queue.Free();
 	_local_execution_queue.Free();
 }
 
