@@ -46,7 +46,7 @@ STR_CARGO_PLURAL_FOOD                                           :Iten
 STR_CARGO_PLURAL_PAPER                                          :Papier
 STR_CARGO_PLURAL_GOLD                                           :Goud
 STR_CARGO_PLURAL_WATER                                          :Wetter
-STR_CARGO_PLURAL_WHEAT                                          :Nôt
+STR_CARGO_PLURAL_WHEAT                                          :Weet
 STR_CARGO_PLURAL_RUBBER                                         :Rubber
 STR_CARGO_PLURAL_SUGAR                                          :Sûker
 STR_CARGO_PLURAL_TOYS                                           :Boartersguod
@@ -114,17 +114,17 @@ STR_QUANTITY_FOOD                                               :{WEIGHT} iten
 STR_QUANTITY_PAPER                                              :{WEIGHT} papier
 STR_QUANTITY_GOLD                                               :{COMMA} sek{P "" ken} goud
 STR_QUANTITY_WATER                                              :{VOLUME} wetter
-STR_QUANTITY_WHEAT                                              :{WEIGHT} weet
-STR_QUANTITY_RUBBER                                             :{VOLUME} rubber
-STR_QUANTITY_SUGAR                                              :{WEIGHT} sûker
-STR_QUANTITY_TOYS                                               :{COMMA} stik{P "" ken} boartersguod
+STR_QUANTITY_WHEAT                                              :{WEIGHT} fan weet
+STR_QUANTITY_RUBBER                                             :{VOLUME} fan rubber
+STR_QUANTITY_SUGAR                                              :{WEIGHT} fan sûker
+STR_QUANTITY_TOYS                                               :{COMMA} boartersguod
 STR_QUANTITY_SWEETS                                             :{COMMA} sek{P "" ken} snobbersguod
-STR_QUANTITY_COLA                                               :{VOLUME} fet{P "" ten} kola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} sûkerspin
+STR_QUANTITY_COLA                                               :{VOLUME} fan kola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} fan sûkerspin
 STR_QUANTITY_BUBBLES                                            :{COMMA} buorl{P "" s}
-STR_QUANTITY_TOFFEE                                             :{WEIGHT} toffee
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} fan toffee
 STR_QUANTITY_BATTERIES                                          :{COMMA} batterij{P "" en}
-STR_QUANTITY_PLASTIC                                            :{VOLUME} plestik
+STR_QUANTITY_PLASTIC                                            :{VOLUME} fan plestik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} frisdrink{P "" en}
 STR_QUANTITY_N_A                                                :N/B
 
@@ -166,21 +166,21 @@ STR_ABBREV_ALL                                                  :{TINYFONT}AL
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA} passazjiers
-STR_BAGS                                                        :{COMMA} sekken
+STR_BAGS                                                        :{COMMA} sek{P "" ken}
 STR_TONS                                                        :{COMMA} Ton
 STR_LITERS                                                      :{COMMA} liter{P "" s}
 STR_ITEMS                                                       :{COMMA} foarwerp{P "" en}
-STR_CRATES                                                      :{COMMA} kratten
+STR_CRATES                                                      :{COMMA} kret{P "" ten}
 
 # Colours, do not shuffle
-STR_COLOUR_DARK_BLUE                                            :Tsjuster Blauw
-STR_COLOUR_PALE_GREEN                                           :Fel Grien
+STR_COLOUR_DARK_BLUE                                            :Donker Blau
+STR_COLOUR_PALE_GREEN                                           :Bleek Grien
 STR_COLOUR_PINK                                                 :Rôze
 STR_COLOUR_YELLOW                                               :Giel
 STR_COLOUR_RED                                                  :Read
 STR_COLOUR_LIGHT_BLUE                                           :Ljocht Blauw
 STR_COLOUR_GREEN                                                :Grien
-STR_COLOUR_DARK_GREEN                                           :Tsjuster Grien
+STR_COLOUR_DARK_GREEN                                           :Donker Grien
 STR_COLOUR_BLUE                                                 :Blauw
 STR_COLOUR_CREAM                                                :Krêm
 STR_COLOUR_MAUVE                                                :Ljocht Pears
@@ -208,7 +208,7 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
@@ -229,11 +229,12 @@ STR_BUTTON_RENAME                                               :{BLACK}Omneame
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Slút finster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Finstertitel - hjirmei kinst it finster ferslepe
-STR_TOOLTIP_DEBUG                                               :{BLACK}Show NewGRF debug information
+STR_TOOLTIP_SHADE                                               :{BLACK}Skaad finster - allinne titel balke sjen litte
+STR_TOOLTIP_DEBUG                                               :{BLACK}Lit NijeGRF debug ynformaasje sjen
 STR_TOOLTIP_STICKY                                              :{BLACK}Skerm as net-slútber markeare mei de kaai 'Slút alle skermen'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik en sleep om skermgrutte oan te passen
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Wikselje tusken lytse/grutte skermgrutte
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rolbalke - rollet de list op/del
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rolbalke - rôlje de list op/del
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rôlbalke - rôlje list links/rjochts
 STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Brek gebouen ensfh. ôf op in stikje lân
 
@@ -247,9 +248,9 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 
 # Measurement tooltip
-STR_MEASURE_LENGTH                                              :{BLACK}Lengte: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Gebied: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lengte: {NUM}{}Hichte ferskil: {HEIGHT}
+STR_MEASURE_LENGTH                                              :{BLACK}Lingte: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Gebiet: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lingte: {NUM}{}Hichte ferskil: {HEIGHT}
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Gebied: {NUM} x {NUM}{}Hichte ferskil: {HEIGHT}
 
 
@@ -266,13 +267,14 @@ STR_SORT_BY_TRANSPORTED                                         :Ferfierd
 STR_SORT_BY_NUMBER                                              :Nûmer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Fertsjinste lêst jier
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Fertsjinste dit jier
-STR_SORT_BY_AGE                                                 :Âldens
+STR_SORT_BY_AGE                                                 :âlderdom
 STR_SORT_BY_RELIABILITY                                         :Fertroudens
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Totaal oan kapasiteit per fracht soart
 STR_SORT_BY_MAX_SPEED                                           :Maksimale gong
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wearde
 STR_SORT_BY_LENGTH                                              :Lingte
+STR_SORT_BY_LIFE_TIME                                           :Restearjendeal libbensdagen
 STR_SORT_BY_TIMETABLE_DELAY                                     :Vertraging
 STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_WAITING                                             :Wearde fan fracht
@@ -281,6 +283,7 @@ STR_SORT_BY_RATING_MIN                                          :Minste fracht f
 STR_SORT_BY_ENGINE_ID                                           :Treintype
 STR_SORT_BY_COST                                                :Kosten
 STR_SORT_BY_POWER                                               :Krêft
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Lûkkrêft besykje
 STR_SORT_BY_INTRO_DATE                                          :Yntroduksjedatum
 STR_SORT_BY_RUNNING_COST                                        :Ûnderhâldskosten
 STR_SORT_BY_POWER_VS_RUNNING_COST                               :Vermogen/Ûnderhâldskosten
@@ -345,6 +348,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ôfslúte
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spul Opsjes
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Swierrichheid ynstellings
 STR_SETTINGS_MENU_CONFIG_SETTINGS                               :oantal ynstellings útwreidje
+STR_SETTINGS_MENU_AI_SETTINGS                                   :AI ynstellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ynstellings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Trochsjoch opsjes
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stêd nammen sjen litte
@@ -366,6 +370,7 @@ STR_FILE_MENU_EXIT                                              :Ôfslúte
 
 ############ range for map menu starts
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart fan 'e wrâld
+STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra sichtber diel
 STR_MAP_MENU_SIGN_LIST                                          :Buordsjeslist
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
 STR_TOWN_MENU_TOWN_DIRECTORY                                    :Stêden list
@@ -435,6 +440,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berjochtenskied
 ############ range for about menu starts
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebiet Ynformaasje
 STR_ABOUT_MENU_SEPARATOR                                        :
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Ein console
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermfoto (Ctrl-S)
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :tichtby helje skermfoto
@@ -568,6 +574,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lean:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}oantal vehikels dy't winst makke hawwe yn it lêste jier
+STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}In stikmennich koartlyn makke stasjon underdielen. elk underdiel fan in stasjon (û.o. trein stasjon, bus halte, fleanfjild) binne teld, sels all binne se oaninoar plakt as ien stasjon
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Stikken guod ôflevere yn de lêste 12 moanne
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Oantal soarten guod ôlevere yn de lêste trije moanne
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Jild dat dit beriuw op de bank stean hat
@@ -653,6 +660,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Lit yndu
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Lit transportrûtes sjen op 'e kaart
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Lit fegetaasje sjen op 'e kaart
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Lit lân eigners sjen op 'e kaart
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}klik op in yndustry soart om it finster te slute. Ctrl+klick skeakelje alle typen út útsein de selektearje. Ctrl+klick opnij om alle yndustry soarte oan te setten
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK} klik op in bedriuw om syn eigendom sjen te litten. Ctrl+klick skeakelje alle bedriuwe út útsein de selektearje. Ctrl+klick opnij om alle bedriuwe oan te setten
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINYFONT}{BLACK}Diken
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINYFONT}{BLACK}Treinspoaren
@@ -689,6 +698,10 @@ STR_SMALLMAP_TOWN                                               :{TINYFONT}{WHIT
 STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Alles ûtsette
 STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Alles oansette
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Lit hichte sjen
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Lit gjin yndustryen op de map sjen
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Lit alle yndustryen op de map sjen
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Lit gjin bedriuws eigendomen op de map sjen
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Lit alle bedriuws eigendomen op de map sjen
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Lit lêste (neis)berjocht sjen
@@ -1000,6 +1013,7 @@ STR_CONFIG_SETTING_SMOKE_AMOUNT_NONE                            :Gjin
 STR_CONFIG_SETTING_SMOKE_AMOUNT_ORIGINAL                        :Orizjiniel
 STR_CONFIG_SETTING_SMOKE_AMOUNT_REALISTIC                       :Realistysk
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_ORIGINAL     :Orizjiniel
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}Maksimale brêge hichte: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}Maksimale tunnel lingte: {ORANGE}{STRING} tile{P 0:1 "" s}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :neat
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :lyk as oare yndustrieën
@@ -1026,8 +1040,11 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violet
 
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :{LTBLUE}Stea ta by pausseare: {ORANGE}{STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :gjin aksjes
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :alle net konstruksje aksjes
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :alles behalve lânskiplike feroare aksje
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Eltse Aksje
 
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :{LTBLUE}Ynfrastruktuer bouwurk stilsette wannear't gjin geskikte fuortúgen beskikber binne: {ORANGE}{STRING}
 
 
 
@@ -1404,6 +1421,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Keapje l
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekt seleksje
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Selektearje te bouen objekt
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Selektearje klasse fan it te bouwen objekt
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Besjoch objekt yn it foar
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grutte: {GOLD}{NUM} x {NUM} Flakken
 
@@ -1616,6 +1634,7 @@ STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: 
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}gjin ynformaasje beskikber
 STR_NEWGRF_SETTINGS_DISABLED                                    :{RED}Útskeakele
+STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}Dat strykt net mei dizze ferzje fan OpenTTD
 
 
 # NewGRF parameters window
@@ -1716,7 +1735,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Gjin -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tsjinsten dy't al subsydzje krije:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fan {STRING} nei {STRING}{YELLOW} ({COMPANY}{YELLOW}, oant {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik om te sentrearen op yndusty/stêd
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik om te sentrearen op yndusty/stêd. Ctrl+klick iepent in nij sichtber diel op yndustry/stêd lokaasje
 
 # Station list window
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
@@ -1967,6 +1986,8 @@ STR_VEHICLE_DETAIL_TAB_TOTAL_CARGO                              :{BLACK}Totale F
 
 
 # Vehicle refit
+STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nije kapasiteit: {GOLD}{CARGO}, {GOLD}{CARGO}{}{BLACK}kosten fan werfolje: {GOLD}{CURRENCY}
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Selektearje in ferfiermiddel foar reparaasje. sleep mei de mûs om meardere ferfiermiddels te selekttearjen. Ctrl+klick sil in ferfiermiddel selektearje en de neikommende rige
 
 
 
@@ -2000,6 +2021,7 @@ STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Oanienwei lâns
 
 
 
+STR_ORDER_AUTOMATIC                                             :( Automatysk)
 
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(net lade of losse)
 
@@ -2009,6 +2031,7 @@ STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(net lade of lo
 # Time table window
 
 
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reizgje (automatic; timetabled by next manual order)
 
 
 
@@ -2095,6 +2118,8 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... terr
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... is al bout
 STR_ERROR_OWNED_BY                                              :{WHITE}... is fan {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... gebiet is fan in oar bedriuw
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... lânskip kreëar limyt berikt
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... tegel oprom limyt berikt
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} yn it paad
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Net tastean. Pausearre
 
@@ -2822,6 +2847,7 @@ STR_TINY_BLACK_STATION                                          :{TINYFONT}{BLAC
 STR_BLACK_STRING                                                :{BLACK}{STRING}
 STR_BLACK_RAW_STRING                                            :{BLACK}{STRING}
 STR_GREEN_STRING                                                :{GREEN}{STRING}
+STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_RED_STRING                                                  :{RED}{STRING}
 STR_WHITE_STRING                                                :{WHITE}{STRING}
 STR_TINY_BLACK_HEIGHT                                           :{TINYFONT}{BLACK}{HEIGHT}

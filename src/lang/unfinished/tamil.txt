@@ -169,7 +169,7 @@ STR_PASSENGERS                                                  :{COMMA} பய�
 STR_BAGS                                                        :{COMMA} பை{P "" கள்}
 STR_TONS                                                        :{COMMA} டன்{P "" கள்}
 STR_LITERS                                                      :{COMMA} லிட்டர்{P "" கள்}
-STR_ITEMS                                                       :{COMMA} பொருட்கள்
+STR_ITEMS                                                       :{COMMA} பொருட்கள்{P "" s}
 STR_CRATES                                                      :{COMMA} பெட்டி{P "" கள்}
 
 # Colours, do not shuffle
@@ -287,6 +287,7 @@ STR_SORT_BY_WAITING                                             :Waiting cargo v
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_AI_SETTINGS                                   :செயற்கை அறிவாற்றல் அமைப்பு
 ############ range ends here
 
 ############ range for file menu starts
@@ -334,14 +335,79 @@ STR_SORT_BY_WAITING                                             :Waiting cargo v
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
+STR_ORDINAL_NUMBER_1ST                                          :1st
+STR_ORDINAL_NUMBER_2ND                                          :2nd
+STR_ORDINAL_NUMBER_3RD                                          :3rd
+STR_ORDINAL_NUMBER_4TH                                          :4th
+STR_ORDINAL_NUMBER_5TH                                          :5வது
+STR_ORDINAL_NUMBER_6TH                                          :6வது
+STR_ORDINAL_NUMBER_7TH                                          :7வது
+STR_ORDINAL_NUMBER_8TH                                          :8வது
+STR_ORDINAL_NUMBER_9TH                                          :9வது
+STR_ORDINAL_NUMBER_10TH                                         :10வது
+STR_ORDINAL_NUMBER_11TH                                         :11வது
+STR_ORDINAL_NUMBER_12TH                                         :12வது
+STR_ORDINAL_NUMBER_13TH                                         :13வது
+STR_ORDINAL_NUMBER_14TH                                         :14வது
+STR_ORDINAL_NUMBER_15TH                                         :15வது
+STR_ORDINAL_NUMBER_16TH                                         :16வது
+STR_ORDINAL_NUMBER_17TH                                         :17வது
+STR_ORDINAL_NUMBER_18TH                                         :18வது
+STR_ORDINAL_NUMBER_19TH                                         :19வது
+STR_ORDINAL_NUMBER_20TH                                         :20வது
+STR_ORDINAL_NUMBER_21ST                                         :21வது
+STR_ORDINAL_NUMBER_22ND                                         :22வது
+STR_ORDINAL_NUMBER_23RD                                         :23வது
+STR_ORDINAL_NUMBER_24TH                                         :24வது
+STR_ORDINAL_NUMBER_25TH                                         :25வது
+STR_ORDINAL_NUMBER_26TH                                         :26வது
+STR_ORDINAL_NUMBER_27TH                                         :27வது
+STR_ORDINAL_NUMBER_28TH                                         :28வது
+STR_ORDINAL_NUMBER_29TH                                         :29வது
+STR_ORDINAL_NUMBER_30TH                                         :30வது
+STR_ORDINAL_NUMBER_31ST                                         :31வது
 ############ range for days ends
 
 ############ range for months starts
+STR_MONTH_ABBREV_JAN                                            :ஜனவரி
+STR_MONTH_ABBREV_FEB                                            :பெப்
+STR_MONTH_ABBREV_MAR                                            :மார்ச்
+STR_MONTH_ABBREV_APR                                            :ஏப்ரல்
+STR_MONTH_ABBREV_MAY                                            :மே
+STR_MONTH_ABBREV_JUN                                            :ஜூன்
+STR_MONTH_ABBREV_JUL                                            :ஜூலை
+STR_MONTH_ABBREV_AUG                                            :ஆகஸ்டு
+STR_MONTH_ABBREV_SEP                                            :செப்
+STR_MONTH_ABBREV_OCT                                            :அக்டோபர்
+STR_MONTH_ABBREV_NOV                                            :நவம்பர்
+STR_MONTH_ABBREV_DEC                                            :டிசம்பர்
 
+STR_MONTH_JAN                                                   :சனவரி
+STR_MONTH_FEB                                                   :பிப்ரவரி
+STR_MONTH_MAR                                                   :மார்ச்
+STR_MONTH_APR                                                   :ஏப்ரல்
+STR_MONTH_MAY                                                   :மே
+STR_MONTH_JUN                                                   :ஜூன்
+STR_MONTH_JUL                                                   :ஜூலை
+STR_MONTH_AUG                                                   :ஆகஸ்ட்
+STR_MONTH_SEP                                                   :செப்டம்பர்
+STR_MONTH_OCT                                                   :அக்டோபர்
+STR_MONTH_NOV                                                   :நவம்பர்
+STR_MONTH_DEC                                                   :டிசம்பர்
 ############ range for months ends
 
 # Graph window
+STR_GRAPH_KEY_BUTTON                                            :{BLACK}பட விளக்கக் குறிப்பு
+STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}பட விளக்கக் குறிப்பு காண்பி
+STR_GRAPH_X_LABEL_MONTH                                         :{TINYFONT}{STRING}{} {STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_Y_LABEL                                               :{TINYFONT}{STRING}
+STR_GRAPH_Y_LABEL_NUMBER                                        :{TINYFONT}{COMMA}
 
+STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}தொழிற்பாட்டு இலாப வரைபடம்
+STR_GRAPH_INCOME_CAPTION                                        :{WHITE}வருமான வரைபடம்
+STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}கம்பெனி செயல்வரம்பு (அதிகபட்ச செயல்வரம்பு=1000)
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}கம்பெனி மதிப்பீடுகள்
 
 
 
@@ -458,6 +524,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Custom ({NUM}%)
 
 # Advanced settings window
 
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :{LTBLUE}ரயில் வண்டியின் அதிகபட்ச நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :{LTBLUE}பாலத்தின் அதிகபட்ச நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :{LTBLUE}அதிகபட்ச சுரங்க நீளம்: {ORANGE}{STRING} tile{P 0:1 "" கள்}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :{LTBLUE}உள்ளூர் சாலை மறுசீரமைக்க நிதியளி: {ORANGE}{STRING}
@@ -928,6 +995,8 @@ STR_TIMETABLE_NOT_TIMETABLEABLE                                 :பயணம்
 # Error message titles
 
 # Generic construction errors
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... நிலத்தோற்ற மாற்ற வரம்பு எட்ட பட்டுள்ளது
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... மாற்ற வரம்பு எட்ட பட்டுள்ளது
 
 # Local authority errors
 
@@ -1024,6 +1093,24 @@ STR_SV_STNAME                                                   :{STRING}
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :டர்வின் 500
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :டர்வின் 600
+STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :குரு கலக்சி
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A21                           :அர் டாக்சி அ21
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A31                           :அர் டாக்சி அ31
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A32                           :அர் டாக்சி அ32
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A33                           :அர் டாக்சி அ33
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAE46                  :ஈஏட் ஏரொஸ்பேஸ் YAe46
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_100                            :டிங்௧ர் 100
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :அர் டாக்சி அ34-1000
+STR_VEHICLE_NAME_AIRCRAFT_YATE_Z_SHUTTLE                        :ஈஏட் Z-ஸ்ஹட்டள்
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K1                            :கெல்லிங்க் கெ1
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K6                            :கெல்லிங்க் கெ6
+STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :கெல்லிங்க் கெ7
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :டர்வின் 700
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :டிங்௧ர் 200
+STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :டிங்௧ர் 1000
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :குரு X2 காற்றியக்கவியல்
 
 ##id 0x8800
 # Formatting of some strings
@@ -1032,7 +1119,15 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_FORMAT_BUOY_NAME                                            :{TOWN} காவியக்கட்டை
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} காவியக்கட்டை #{COMMA}
+STR_FORMAT_COMPANY_NUM                                          :(கம்பெனி {COMMA})
+STR_FORMAT_GROUP_NAME                                           :குழு {COMMA}
+STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} பாதைப்புள்ளி
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} பாதைப்புள்ளி #{COMMA}
 
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} ரயில் பணிமனை
 
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
