@@ -483,11 +483,12 @@ void NORETURN SlError(StringID string, const char *extra_msg)
 		_sl.error_str = string;
 		free(_sl.extra_msg);
 		_sl.extra_msg = (extra_msg == NULL) ? NULL : strdup(extra_msg);
-		/* We have to NULL all pointers here; we might be in a state where
-		 * the pointers are actually filled with indices, which means that
-		 * when we access them during cleaning the pool dereferences of
-		 * those indices will be made with segmentation faults as result. */
 	}
+
+	/* We have to NULL all pointers here; we might be in a state where
+	 * the pointers are actually filled with indices, which means that
+	 * when we access them during cleaning the pool dereferences of
+	 * those indices will be made with segmentation faults as result. */
 	if (_sl.action == SLA_LOAD || _sl.action == SLA_PTRS) SlNullPointers();
 	throw std::exception();
 }
