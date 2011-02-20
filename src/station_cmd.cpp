@@ -3452,16 +3452,21 @@ static bool CanRemoveRoadWithStop(TileIndex tile, DoCommandFlag flags)
 	/* Yeah... water can always remove stops, right? */
 	if (_current_company == OWNER_WATER) return true;
 
-	Owner road_owner = _current_company;
-	Owner tram_owner = _current_company;
-
 	RoadTypes rts = GetRoadTypes(tile);
-	if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
-	if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+	if (HasBit(rts, ROADTYPE_TRAM)) {
+		Owner tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+		if (tram_owner != OWNER_NONE && CheckOwnership(tram_owner).Failed()) return false;
+	}
+	if (HasBit(rts, ROADTYPE_ROAD)) {
+		Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+		if (road_owner != OWNER_TOWN) {
+			if (road_owner != OWNER_NONE && CheckOwnership(road_owner).Failed()) return false;
+		} else {
+			if (CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, ROADTYPE_ROAD, flags).Failed()) return false;
+		}
+	}
 
-	if ((road_owner != OWNER_TOWN && CheckOwnership(road_owner).Failed()) || CheckOwnership(tram_owner).Failed()) return false;
-
-	return road_owner != OWNER_TOWN || CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, ROADTYPE_ROAD, flags).Succeeded();
+	return true;
 }
 
 CommandCost ClearTile_Station(TileIndex tile, DoCommandFlag flags)
