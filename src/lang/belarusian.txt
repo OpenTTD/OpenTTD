@@ -152,7 +152,7 @@ STR_CARGO_PLURAL_WHEAT.abl                                      :пшаніца�
 STR_CARGO_PLURAL_WHEAT.pre                                      :пшаніцы
 STR_CARGO_PLURAL_RUBBER                                         :{G=m}Каўчук
 STR_CARGO_PLURAL_RUBBER.gen                                     :каўчуку
-STR_CARGO_PLURAL_RUBBER.dat                                     :каўкучу
+STR_CARGO_PLURAL_RUBBER.dat                                     :каўчуку
 STR_CARGO_PLURAL_RUBBER.acc                                     :каўчук
 STR_CARGO_PLURAL_RUBBER.abl                                     :каўчукам
 STR_CARGO_PLURAL_RUBBER.pre                                     :каўчуку

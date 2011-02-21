@@ -715,7 +715,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Exibir t
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Exibir a última mensagem ou notícia
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUSADO  *  *
-STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSALVO
+STR_STATUSBAR_AUTOSAVE                                          :{RED}Salvo Automaticamente
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SALVANDO JOGO  *  *
 
 # News message history
@@ -757,51 +757,51 @@ STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIGFONT}{BLACK
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIGFONT}{BLACK}Cidadãos celebram . . .{} Primeira embarcação chega a {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIGFONT}{BLACK}Cidadãos celebram . . .{}Primeira aeronave chega a {STATION}!
 
-STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Acidente Ferroviário!{} {COMMA} mortos numa explosão após a colisão
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Acidente Rodoviário!{} Condutor morre numa explosão após a colisão com um trem
-STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Acidente Rodoviário!{} {COMMA} mortos numa explosão após a colisão com um trem
-STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Acidente Aéreo!{} {COMMA} mortos numa explosão em {STATION}
-STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Acidente Aéreo!{} Aeronave ficou sem combustível, {COMMA} mortos numa explosão
+STR_NEWS_TRAIN_CRASH                                            :{BIGFONT}{BLACK}Acidente de trem!{} {COMMA} morrem em explosão após colisão
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIGFONT}{BLACK}Acidente de Veículo Rodoviário!{} Condutor morre em explosão após colisão com um trem
+STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIGFONT}{BLACK}Acidente de Veículo Rodoviário!{} {COMMA} morrem em explosão após colisão com um trem
+STR_NEWS_AIRCRAFT_CRASH                                         :{BIGFONT}{BLACK}Acidente Aéreo!{} {COMMA} morrem em explosão na {STATION}
+STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIGFONT}{BLACK}Acidente Aéreo!{}Aeronave ficou sem combustível, {COMMA} morrem em explosão
 
-STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Acidente de Zepelim em {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Automóvel destruído em colisão com OVNI!
-STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Explosão na refinaria de petróleo em {TOWN}!
-STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fábrica destruída em circunstâncias suspeitas em {TOWN}!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}OVNI pousa próximo a {TOWN}!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Afundamento da mina de carvão deixa um rasto de destruição em {TOWN}!
-STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Inundações!{}Pelo menos {COMMA} perdidos ou mortos após terríveis inundações!
+STR_NEWS_DISASTER_ZEPPELIN                                      :{BIGFONT}{BLACK}Desastre de Zepelim na {STATION}!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIGFONT}{BLACK}Veículo rodoviário destruído em colisão com 'OVNI'!
+STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIGFONT}{BLACK}Explosão em refinaria de petróleo perto de {TOWN}!
+STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIGFONT}{BLACK}Fábrica destruída em circunstâncias suspeitas perto de {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIGFONT}{BLACK}'OVNI' cai próximo a {TOWN}!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIGFONT}{BLACK}Afundamento da mina de carvão deixa rasto de destruição próximo a{TOWN}!
+STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIGFONT}{BLACK}Inundações!{}Pelo menos {COMMA} desaparecidos, supostamente mortos após inundações significativas!
 
-STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Empresa de transportes em dificuldades!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} será vendida ou declarada falida a menos que melhore os seus rendimentos em breve!
+STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIGFONT}{BLACK}Empresa de transporte em apuros!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIGFONT}{BLACK}{STRING} será vendida ou declarada falida a menos que aumente o desempenho em breve!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIGFONT}{BLACK}Fusão de empresa de transportes!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} foi vendida a {STRING} por {CURRENCY}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIGFONT}{BLACK}Falida!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIGFONT}{BLACK}{STRING} foi fechada pelos credores e todos os seus bens foram vendidos!
-STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nova empresa de transportes!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} inicia construção em {TOWN}!
-STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} foi comprada por {STRING}!
-STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Presidente)
+STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIGFONT}{BLACK}Nova empresa de transportes lançada!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIGFONT}{BLACK}{STRING} inicia construção próximo a {TOWN}!
+STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIGFONT}{BLACK}{STRING} foi retomada por {STRING}!
+STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENTNAME}{}(Gerente)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIGFONT}{STRING} patrocinou a construção do novo povoado {TOWN}!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G o a} {STRING} em construção em {TOWN}!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G o a} {STRING} sendo plantada em {TOWN}!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIGFONT}{BLACK}Nov{G o a} {STRING} em construção próximo a {TOWN}!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIGFONT}{BLACK}Nov{G o a} {STRING} sendo plantada próximo a {TOWN}!
 
-STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} anuncia o fechamento!
-STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Problemas de abastecimento forçaram {STRING} a anunciar o fechamento!
-STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Falta de árvores nas proximidades forçaram {STRING} a anunciar o fechamento!
+STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIGFONT}{BLACK}{STRING} anuncia o encerramento iminente!
+STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIGFONT}{BLACK}Problemas de fornecimento causam {STRING} a anunciar o fechamento iminente!
+STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIGFONT}{BLACK}Falta de árvores nas proximidades causam {STRING} a anunciar o fechamento iminente!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}União Monetária Europeia!{}{} O Euro é introduzido como moeda única para todas as transações no seu país!
-STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Recessão Mundial!{}{}Economistas temem enquanto a economia se arrasta!
-STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Fim da recessão!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIGFONT}{BLACK}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para as operações diárias em seu país!
+STR_NEWS_BEGIN_OF_RECESSION                                     :{BIGFONT}{BLACK}Recessão Mundial!{}{}Peritos financeiros temem o pior enquanto a economia cai!
+STR_NEWS_END_OF_RECESSION                                       :{BIGFONT}{BLACK}Fim da recessão!{}{}Recuperação no comércio dá confiança para as indústrias enquanto a economia fortalece!
 
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} aumenta a produção!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nova jazida de carvão encontrada em {INDUSTRY}!{}A expectativa é dobrar a produção!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Novas reservas de petróleo encontradas em {INDUSTRY}!{}A expectativa é dobrar a produção!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Métodos aperfeiçoados de agricultura em {INDUSTRY}! A expectativa é dobrar a produção!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIGFONT}{BLACK}Nova camada de carvão encontrada em {INDUSTRY}!{}A produção deverá dobrar!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIGFONT}{BLACK}Novas reservas de petróleo encontradas em {INDUSTRY}!{}A produção deverá dobrar!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIGFONT}{BLACK}Métodos melhorados de agricultura em {INDUSTRY} deverão dobrar a produção!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIGFONT}{BLACK}A produção de {STRING} em {INDUSTRY} aumentou em {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}{INDUSTRY} diminui a produção em 50%
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Infestação de insetos causa destruição em {INDUSTRY}!{}Produção diminui em 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIGFONT}{BLACK}A produção de {INDUSTRY} caiu em 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIGFONT}{BLACK}Infestação de insetos causa destruição em {INDUSTRY}!{}A produção caiu em 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIGFONT}{BLACK}A produção de {STRING} em {INDUSTRY} diminuiu em {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} está aguardando no depósito
@@ -811,33 +811,33 @@ STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE
 
 # Start of order review system
 # DON'T ADD OR REMOVE LINES HERE
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} tem poucas ordens na lista de paradas
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tem uma ordem inválida
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} tem tem muito poucas ordens no horário
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} tem uma ordem nula
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} tem ordens duplicadas
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tem uma estação inválida na lista de paradas
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} tem uma estação inválida em suas ordens
 # end of order system
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} está ficando velho
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} está ficando muito velho
-STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} está ficando muito velho e necessita ser substituído
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} não pode encontrar um caminho para seguir
+STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} está ficando muito velho e precisa urgentemente de substituição
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} não consegue encontrar um caminho para continuar
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} está perdido
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :O lucro de {WHITE}{VEHICLE}, no ano passado foi de {CURRENCY}
 
-STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou por erro na ordem de adaptação
-STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autosubstituição falhou com {VEHICLE}{}{STRING}
+STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}{VEHICLE} parou porque uma readaptação ordenada falhou
+STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autorenovação falhou no {VEHICLE}{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nov{G o a} {STRING} agora disponível!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIGFONT}{BLACK}Nov{G o a} {STRING} já está disponível!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIGFONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G o a} {STRING} agora disponível!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G o a} {STRING} já está disponível!  -  {ENGINE}
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} não aceita mais {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} não aceita mais {STRING} ou {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} agora aceita {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} agora aceita {STRING} e {STRING}
 
-STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} não será mais subsidiado
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsídio removido:{}{} Serviço de {STRING} de {STRING} para {STRING} não será mais subsidiado
+STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIGFONT}{BLACK}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} agora não irá atrair um subsídio
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIGFONT}{BLACK}Subsídio removido:{}{} Serviço de {STRING} de {STRING} para {STRING} não é mais subsidiado
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIGFONT}{BLACK}Subsídio de serviço oferecido:{}{} Primeiro serviço de {STRING} de {STRING} para {STRING} atrairá subsídio de um ano da autoridade local!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará 50% extra durante o próximo ano ano!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIGFONT}{BLACK}Subsídio de serviço concedido á {STRING}!{}{}{STRING} serviço de {STRING} para {STRING} pagará o dobro de impostos durante o próximo ano!
@@ -849,21 +849,21 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIGFONT}{BLACK
 # Extra view window
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Janela {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar para janela
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar o local da visão para esta janela
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar o local da tela principal para esta janela
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Colar da janela
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização desta janela para a visão
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a localização desta janela para a tela principal
 
 # Game options window
 STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Opções do Jogo
-STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidade monetária
-STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Seleção de unidade monetária
+STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Unidades monetárias
+STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Seleção de unidades monetárias
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :Libras (£)
-STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólar ($)
+STR_GAME_OPTIONS_CURRENCY_USD                                   :Dólares ($)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (€)
 STR_GAME_OPTIONS_CURRENCY_YEN                                   :Yen (¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Shilling Austríaco (ATS)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Xelim Austríaco (ATS)
 STR_GAME_OPTIONS_CURRENCY_BEF                                   :Franco Belga (BEF)
 STR_GAME_OPTIONS_CURRENCY_CHF                                   :Franco Suíço (CHF)
 STR_GAME_OPTIONS_CURRENCY_CZK                                   :Coroa Checa (CZK)
@@ -878,7 +878,7 @@ STR_GAME_OPTIONS_CURRENCY_ISK                                   :Coroa Islandesa
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira Italiana (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Guilda Holandesa (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Coroa Norueguesa (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Polaco (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty Polonês (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Lei Romeno (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo Russo (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tolar Eslovênio (SIT)
@@ -890,8 +890,8 @@ STR_GAME_OPTIONS_CURRENCY_EEK                                   :Coroa Estoniana
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
 ############ end of currency region
 
-STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unidade de medida
-STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Seleção da unidade de medida
+STR_GAME_OPTIONS_MEASURING_UNITS_FRAME                          :{BLACK}Unidades de medidas
+STR_GAME_OPTIONS_MEASURING_UNITS_DROPDOWN_TOOLTIP               :{BLACK}Seleção de unidades de medidas
 
 ############ start of measuring units region
 STR_GAME_OPTIONS_MEASURING_UNITS_IMPERIAL                       :Imperial
@@ -900,12 +900,12 @@ STR_GAME_OPTIONS_MEASURING_UNITS_SI                             :Sistema Interna
 ############ end of measuring units region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automóveis
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Selecionar lado da rodovia por onde os automóveis deverão dirigir
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Andam pela esquerda
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Andam pela direita
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Selecionar lado da rodovia para automóveis dirigir
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Dirigir na esquerda
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Dirigir na direita
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nomes das cidades
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selecionar o estilo dos nomes das cidades
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nomes dos povoados
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selecionar o estilo dos nomes dos povoados
 
 ############ start of townname region
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inglês (Original)
@@ -913,13 +913,13 @@ STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francês
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemão
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inglês (Adicional)
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Latino-Americano
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Absurdo
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Idiota
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Sueco
 STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holandês
 STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Finlandês
-STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polaco
+STR_GAME_OPTIONS_TOWN_NAME_POLISH                               :Polonês
 STR_GAME_OPTIONS_TOWN_NAME_SLOVAK                               :Eslovaco
-STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Noreguês
+STR_GAME_OPTIONS_TOWN_NAME_NORWEGIAN                            :Norueguês
 STR_GAME_OPTIONS_TOWN_NAME_HUNGARIAN                            :Húngaro
 STR_GAME_OPTIONS_TOWN_NAME_AUSTRIAN                             :Austríaco
 STR_GAME_OPTIONS_TOWN_NAME_ROMANIAN                             :Romeno
@@ -932,7 +932,7 @@ STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalão
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvar automaticamente
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecionar o intervalo para salvar automaticamente
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Selecionar o intervalo entre jogos salvos automaticos
 
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Desativado
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :A cada mês
@@ -944,56 +944,56 @@ STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecionar o idioma da interface do jogo
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Tela cheia
-STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Selecione esta opção para jogar o OpenTTD em modo de tela cheia
+STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marcar esta caixa para jogar OpenTTD modo de tela cheia
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolução da tela
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecionar a resolução da tela que deseja utilizar
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecionar a resolução da tela para usar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato da foto
-STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecionar o formato de foto que deseja utilizar
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT                              :{BLACK}Formato da captura de tela
+STR_GAME_OPTIONS_SCREENSHOT_FORMAT_TOOLTIP                      :{BLACK}Selecionar o formato da captura de tela para usar
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set de gráficos base
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecione o set de gráficos a ser utilizado
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arquivo faltando/corrupto{P "" s}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informações adicionais sobre o set de gráficos base
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecionar o conjunto de gráficos base para usar
+STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} arquivo{P "" s} faltando/corrompido{P "" s}
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informações adicionais sobre o conjunto de gráficos base
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set de sons base
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecione o set de gráficos a ser utilizado
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informações sobr o set de sons base
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Conjunto de sons base
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Selecionar o conjunto base de sons para usar
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informações sobre o conjunto de sons base
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Set de músicas base
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecione o set de músicas a ser usado
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} arquivo corrompido{P "" s}
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Info. adicional sobre o set de músicas base
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Conjunto de músicas base
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selecionar o conjunto de músicas base para usar
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} arquivo{P "" s} corrompido{P "" s}
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informação adicional sobre o conjunto de músicas base
 
-STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Falha no modo de tela cheia
+STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Modo de tela cheia falhou
 
 # Custom currency window
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
+STR_CURRENCY_WINDOW                                             :{WHITE}Moeda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de câmbio: {ORANGE}{CURRENCY} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminui a taxa de câmbio em uma Libra (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumenta a taxa de câmbio em uma Libra (£)
-STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Define a taxa de câmbio para 1 Libra (£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Diminuir a quantidade de sua moeda por uma Libra(£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Aumentar a quantidade de sua moeda por uma Libra(£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Definir a taxa de câmbio de sua moeda por uma Libra(£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Define o separador numérico
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Definir o separador para a sua moeda
 
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefixo: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Define o prefixo
+STR_CURRENCY_SET_CUSTOM_CURRENCY_PREFIX_TOOLTIP                 :{BLACK}Definir a sequência de prefixo por a sua moeda
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufixo: {ORANGE}{STRING}
-STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Define o sufixo
+STR_CURRENCY_SET_CUSTOM_CURRENCY_SUFFIX_TOOLTIP                 :{BLACK}Definir a sequência de sufixo por a sua moeda
 
-STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Mudar para Euro: {ORANGE}{NUM}
-STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Mudar para Euro: {ORANGE}nunca
-STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Seleciona o ano para trocar para Euro
-STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Troca para Euro antes
-STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Trocar para Euro depois
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Alternar para Euro: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Alternar para Euro: {ORANGE}nunca
+STR_CURRENCY_SET_CUSTOM_CURRENCY_TO_EURO_TOOLTIP                :{BLACK}Definir o ano para alternar para Euro
+STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Alternar para Euro anteriormente
+STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Alternar para euro posteriormente
 
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prevêr: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previsão: {ORANGE}{CURRENCY}
 STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Libras (£) na sua moeda
-STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar parametro de moeda personalizada
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Alterar o parâmetro de moeda personalizada
 
 # Difficulty level window
 STR_DIFFICULTY_LEVEL_CAPTION                                    :Nível de Dificuldade{WHITE}
@@ -1005,11 +1005,11 @@ STR_DIFFICULTY_LEVEL_HARD                                       :{BLACK}Difícil
 STR_DIFFICULTY_LEVEL_CUSTOM                                     :{BLACK}Personalizado
 ############ range for difficulty levels ends
 
-STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Exibir melhores pontuações
+STR_DIFFICULTY_LEVEL_HIGH_SCORE_BUTTON                          :{BLACK}Exibir tabela de maiores pontuações
 STR_DIFFICULTY_LEVEL_SAVE                                       :{BLACK}Salvar
 
 ############ range for difficulty settings starts
-STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Número máximo de oponentes: {ORANGE}{COMMA}
+STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Número máximo de concorrentes: {ORANGE}{COMMA}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_TOWNS                        :{LTBLUE}Quantidade de cidades: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_NO_OF_INDUSTRIES                   :{LTBLUE}Quantidade de indústrias: {ORANGE}{STRING}
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_INITIAL_LOAN_000           :{LTBLUE}Empréstimo máximo inicial: {ORANGE}{CURRENCY}

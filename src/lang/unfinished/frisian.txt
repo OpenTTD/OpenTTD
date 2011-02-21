@@ -71,7 +71,7 @@ STR_CARGO_SINGULAR_GRAIN                                        :Nôt
 STR_CARGO_SINGULAR_WOOD                                         :Hout
 STR_CARGO_SINGULAR_IRON_ORE                                     :Iizererts
 STR_CARGO_SINGULAR_STEEL                                        :Stiel
-STR_CARGO_SINGULAR_VALUABLES                                    :Kostber guod
+STR_CARGO_SINGULAR_VALUABLES                                    :Kostberheden
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Kopererts
 STR_CARGO_SINGULAR_MAIZE                                        :Mais
 STR_CARGO_SINGULAR_FRUIT                                        :Fruit
@@ -80,14 +80,14 @@ STR_CARGO_SINGULAR_FOOD                                         :Iten
 STR_CARGO_SINGULAR_PAPER                                        :Papier
 STR_CARGO_SINGULAR_GOLD                                         :Goud
 STR_CARGO_SINGULAR_WATER                                        :Wetter
-STR_CARGO_SINGULAR_WHEAT                                        :Nôt
+STR_CARGO_SINGULAR_WHEAT                                        :Weet
 STR_CARGO_SINGULAR_RUBBER                                       :Rubber
 STR_CARGO_SINGULAR_SUGAR                                        :Sûker
 STR_CARGO_SINGULAR_TOY                                          :Boartersguod
 STR_CARGO_SINGULAR_CANDY                                        :Snobbersguod
 STR_CARGO_SINGULAR_COLA                                         :Kola
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sûkerspin
-STR_CARGO_SINGULAR_BUBBLE                                       :Bubbel
+STR_CARGO_SINGULAR_BUBBLE                                       :Bûle
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffee
 STR_CARGO_SINGULAR_BATTERY                                      :Batterij
 STR_CARGO_SINGULAR_PLASTIC                                      :Plestik
@@ -95,25 +95,25 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Frisdrinken
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} passazjiers
-STR_QUANTITY_COAL                                               :{WEIGHT} stienkoal
-STR_QUANTITY_MAIL                                               :{COMMA} tassen mei post
-STR_QUANTITY_OIL                                                :{VOLUME} oalje
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} Oantal bist{P "" en}
+STR_QUANTITY_PASSENGERS                                         :{COMMA} passazjier{P "" s}
+STR_QUANTITY_COAL                                               :{WEIGHT} fan stienkoal
+STR_QUANTITY_MAIL                                               :{COMMA} tas{P "" sen} mei post
+STR_QUANTITY_OIL                                                :{VOLUME} fan oalje
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} In stikmennich bist{P "" en}
 STR_QUANTITY_GOODS                                              :{COMMA} krat{P "" ten} guod
-STR_QUANTITY_GRAIN                                              :{WEIGHT} nôt
-STR_QUANTITY_WOOD                                               :{WEIGHT} hout
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} izererts
-STR_QUANTITY_STEEL                                              :{WEIGHT} stiel
+STR_QUANTITY_GRAIN                                              :{WEIGHT} fan nôt
+STR_QUANTITY_WOOD                                               :{WEIGHT} fan hout
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} fan izererts
+STR_QUANTITY_STEEL                                              :{WEIGHT} fan stiel
 STR_QUANTITY_VALUABLES                                          :{COMMA} sek{P "" ken} kostberheden
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} kopererts
-STR_QUANTITY_MAIZE                                              :{WEIGHT} mais
-STR_QUANTITY_FRUIT                                              :{WEIGHT} fruit
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} fan kopererts
+STR_QUANTITY_MAIZE                                              :{WEIGHT} fan mais
+STR_QUANTITY_FRUIT                                              :{WEIGHT} fan fruit
 STR_QUANTITY_DIAMONDS                                           :{COMMA} sek{P "" ken} diamanten
-STR_QUANTITY_FOOD                                               :{WEIGHT} iten
-STR_QUANTITY_PAPER                                              :{WEIGHT} papier
+STR_QUANTITY_FOOD                                               :{WEIGHT} fan iten
+STR_QUANTITY_PAPER                                              :{WEIGHT} fan papier
 STR_QUANTITY_GOLD                                               :{COMMA} sek{P "" ken} goud
-STR_QUANTITY_WATER                                              :{VOLUME} wetter
+STR_QUANTITY_WATER                                              :{VOLUME} fan wetter
 STR_QUANTITY_WHEAT                                              :{WEIGHT} fan weet
 STR_QUANTITY_RUBBER                                             :{VOLUME} fan rubber
 STR_QUANTITY_SUGAR                                              :{WEIGHT} fan sûker
@@ -121,7 +121,7 @@ STR_QUANTITY_TOYS                                               :{COMMA} boarter
 STR_QUANTITY_SWEETS                                             :{COMMA} sek{P "" ken} snobbersguod
 STR_QUANTITY_COLA                                               :{VOLUME} fan kola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} fan sûkerspin
-STR_QUANTITY_BUBBLES                                            :{COMMA} buorl{P "" s}
+STR_QUANTITY_BUBBLES                                            :{COMMA} bûle{P "" n}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} fan toffee
 STR_QUANTITY_BATTERIES                                          :{COMMA} batterij{P "" en}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} fan plestik
@@ -165,7 +165,7 @@ STR_ABBREV_NONE                                                 :{TINYFONT}NE
 STR_ABBREV_ALL                                                  :{TINYFONT}AL
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} passazjiers
+STR_PASSENGERS                                                  :{COMMA} passazjier{P "" s}
 STR_BAGS                                                        :{COMMA} sek{P "" ken}
 STR_TONS                                                        :{COMMA} Ton
 STR_LITERS                                                      :{COMMA} liter{P "" s}
@@ -173,17 +173,17 @@ STR_ITEMS                                                       :{COMMA} foarwer
 STR_CRATES                                                      :{COMMA} kret{P "" ten}
 
 # Colours, do not shuffle
-STR_COLOUR_DARK_BLUE                                            :Donker Blau
-STR_COLOUR_PALE_GREEN                                           :Bleek Grien
+STR_COLOUR_DARK_BLUE                                            :Donkerblau
+STR_COLOUR_PALE_GREEN                                           :Ljochtgrien
 STR_COLOUR_PINK                                                 :Rôze
 STR_COLOUR_YELLOW                                               :Giel
 STR_COLOUR_RED                                                  :Read
-STR_COLOUR_LIGHT_BLUE                                           :Ljocht Blauw
+STR_COLOUR_LIGHT_BLUE                                           :Ljochtblauw
 STR_COLOUR_GREEN                                                :Grien
-STR_COLOUR_DARK_GREEN                                           :Donker Grien
+STR_COLOUR_DARK_GREEN                                           :Donkergrien
 STR_COLOUR_BLUE                                                 :Blauw
 STR_COLOUR_CREAM                                                :Krêm
-STR_COLOUR_MAUVE                                                :Ljocht Pears
+STR_COLOUR_MAUVE                                                :Ljochtpears
 STR_COLOUR_PURPLE                                               :Pears
 STR_COLOUR_ORANGE                                               :Oranje
 STR_COLOUR_BROWN                                                :Brún
@@ -191,7 +191,7 @@ STR_COLOUR_GREY                                                 :Griis
 STR_COLOUR_WHITE                                                :Wyt
 
 # Units used in OpenTTD
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} m/o
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mpo
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/o
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
@@ -217,26 +217,26 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA} ft
 STR_UNITS_HEIGHT_SI                                             :{COMMA} m
 
 # Common window strings
-STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Typ de namme fan filter
-STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Typ in wurd om in list te filterjen foar
+STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Foer filter namme yn
+STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Typ in wurd yn om de list te filterjen
 
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selektear skiftrjochting (oprinnend/ôfrinnend)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selektear skiftnoarm
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selekear filternoarm
 STR_BUTTON_SORT_BY                                              :{BLACK}Skifte op
 STR_BUTTON_LOCATION                                             :{BLACK}Lokaasje
-STR_BUTTON_RENAME                                               :{BLACK}Omneame
+STR_BUTTON_RENAME                                               :{BLACK}op 'e nij neamme
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Slút finster
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Finstertitel - hjirmei kinst it finster ferslepe
 STR_TOOLTIP_SHADE                                               :{BLACK}Skaad finster - allinne titel balke sjen litte
 STR_TOOLTIP_DEBUG                                               :{BLACK}Lit NijeGRF debug ynformaasje sjen
-STR_TOOLTIP_STICKY                                              :{BLACK}Skerm as net-slútber markeare mei de kaai 'Slút alle skermen'
+STR_TOOLTIP_STICKY                                              :{BLACK}Skerm as net-slútber markeare mei de knop 'Slút alle skermen'
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klik en sleep om skermgrutte oan te passen
-STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Wikselje tusken lytse/grutte skermgrutte
-STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rolbalke - rôlje de list op/del
-STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Rôlbalke - rôlje list links/rjochts
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Brek gebouen ensfh. ôf op in stikje lân
+STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Wikselje tusken lyts/grutter skermgrutte
+STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skowbalke - skow de list op/del
+STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Skowbalke - skow list links/rjochts
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Brek gebouen ensafierder ôf op in stikje lân. Ctrl selektearet it gebiet diagonaal. Shift skeakelt tusken bouwe/taksearje fan de kosten
 
 # Query window
 STR_BUTTON_DEFAULT                                              :{BLACK}Standert
@@ -255,38 +255,38 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Gebied: 
 
 
 # These are used in buttons
-STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Populaasje
+STR_SORT_BY_CAPTION_POPULATION                                  :{BLACK}Ynwenners
 STR_SORT_BY_CAPTION_NAME                                        :{BLACK}Namme
 STR_SORT_BY_CAPTION_DATE                                        :{BLACK}Datum
 # These are used in dropdowns
-STR_SORT_BY_POPULATION                                          :Populaasje
+STR_SORT_BY_POPULATION                                          :Ynwenners
 STR_SORT_BY_NAME                                                :Namme
 STR_SORT_BY_PRODUCTION                                          :Produksje
-STR_SORT_BY_TYPE                                                :Type
+STR_SORT_BY_TYPE                                                :Soart
 STR_SORT_BY_TRANSPORTED                                         :Ferfierd
 STR_SORT_BY_NUMBER                                              :Nûmer
-STR_SORT_BY_PROFIT_LAST_YEAR                                    :Fertsjinste lêst jier
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Fertsjinste lêste jier
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Fertsjinste dit jier
 STR_SORT_BY_AGE                                                 :âlderdom
-STR_SORT_BY_RELIABILITY                                         :Fertroudens
-STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Totaal oan kapasiteit per fracht soart
-STR_SORT_BY_MAX_SPEED                                           :Maksimale gong
+STR_SORT_BY_RELIABILITY                                         :Betrouberens
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kapasiteit per soart fracht
+STR_SORT_BY_MAX_SPEED                                           :Maksimumfaasje
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wearde
 STR_SORT_BY_LENGTH                                              :Lingte
-STR_SORT_BY_LIFE_TIME                                           :Restearjendeal libbensdagen
-STR_SORT_BY_TIMETABLE_DELAY                                     :Vertraging
+STR_SORT_BY_LIFE_TIME                                           :Restearjende libbensdagen
+STR_SORT_BY_TIMETABLE_DELAY                                     :Opûnthâld yn de tsjinstregeling
 STR_SORT_BY_FACILITY                                            :Stasjonstype
-STR_SORT_BY_WAITING                                             :Wearde fan fracht
+STR_SORT_BY_WAITING                                             :Wearde fan wachtsjende fracht
 STR_SORT_BY_RATING_MAX                                          :Heechste fracht foldwaning
 STR_SORT_BY_RATING_MIN                                          :Minste fracht foldwanning
-STR_SORT_BY_ENGINE_ID                                           :Treintype
+STR_SORT_BY_ENGINE_ID                                           :Reau ID (klassyke soart)
 STR_SORT_BY_COST                                                :Kosten
 STR_SORT_BY_POWER                                               :Krêft
-STR_SORT_BY_TRACTIVE_EFFORT                                     :Lûkkrêft besykje
+STR_SORT_BY_TRACTIVE_EFFORT                                     :Lûkkrêft
 STR_SORT_BY_INTRO_DATE                                          :Yntroduksjedatum
-STR_SORT_BY_RUNNING_COST                                        :Ûnderhâldskosten
-STR_SORT_BY_POWER_VS_RUNNING_COST                               :Vermogen/Ûnderhâldskosten
+STR_SORT_BY_RUNNING_COST                                        :Bedriuwskosten
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :Vermogen/Bedriuwskosten
 STR_SORT_BY_CARGO_CAPACITY                                      :Frachtkapasiteit
 
 # Tooltips for the main toolbar
@@ -294,60 +294,60 @@ STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausear 
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}De tiid hâldt gjin skoft (rapper)
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opsjes
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Opslaan, ferlitte, ôfslúte
-STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Lit de kaart sjen
+STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Lit de kaart sjen, ekstra finster of buordsje list
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Lit in list fan alle stêden sjen
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Lit Subsydzjes sjen
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Lit list fan stasjons sjen
-STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Lit finansjele ynformaasje sjen oer it bedriuw
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Lit de list mei stasjons fan it bedriuw sjen
+STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Lit finansjele ynformaasje oer it bedriuw sjen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}Lit algemiene bedriuwsynformaasje sjen
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Lit grafyken sjen
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Lit de bedriuwskompetysjetabel sjen
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Betelje de bou fan in nije yndustry
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Lit in list sjen fan de treinen fan dit bedriuw. Ctrl + klik ipent of slût de groep/fiertúg list sjen
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Lit in list sjen fan de auto's fan dit bedriuw. Ctrl + klik ipent of slût de groep/fiertúg list sjen
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Lit in list sjen fan de skepen fan dit bedriuw. Ctrl + klik ipent of slût de groep/fiertúg list sjen
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Lit in list sjen fan de fleantúgen fan dit bedriuw.
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Zoom it byld yn
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Zoom it byld út
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Lit in list sjen fan de treinen fan dit bedriuw. Ctrl + klik ipent of slût de groep/reau list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Lit in list sjen fan de auto's fan dit bedriuw. Ctrl + Klik ipent of slût de groep/reau list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Lit in list sjen fan de skepen fan dit bedriuw. Ctrl + Klik ipent of slût de groep/reau list
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Lit in list sjen fan de fleantúgen fan dit bedriuw. Ctrl+Klik skeakelt tusken de list groep/reau
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ynzoome
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}ûtzoome
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Bou in spoarwei
-STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Bou in autodyk
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Dike-oanlizze
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Bou havens
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bou fleanfjilden
-STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Iepenje de lânskips ark
+STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Iepenje it lânskips ark om it lân te ferheegje/ferleegje, beamplantsje, etsetera
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Lit lûd/musyk finster sjen
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Lit lêste (neis)berjocht sjen / lit berjocht ynstellings sjen
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lân ynformaasje
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Lân ynformaasje, console, AI-debug, screenshots, oer OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Skeakelje tusken ark
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Sla scenario op, laad scenario, slût ôf
-STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Lânskipferbouer
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Bewarje Lânskips bouer, Lânskips bouer lade, Lânskips bouer ferlitte, slût ôf
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}Iepen TTD
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Lânskips bouer
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Set it startjier 1 jier efterút
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Set it startjier 1 jier foarút
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik om it startjier yn te fieren
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Lit de kaart en de stêdenlist sjen
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Lânskip generaasje
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Lânskip untwikkeling
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Stêd generaasje
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Yndustry generaasje
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Wegenbou
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Plantsje beammen
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Beammen plantsje. Shift skeakelt tusken bouwe/taksearje fan de kosten
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Set in buordsje del
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Jou objekt in plak
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Jou objekt in plak. Shift skeakelt tusken bouwe/taksearje fan de kosten
 
 ############ range for SE file menu starts
-STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Sla scenario op
-STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Laad scenario
-STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Laad hichtekaart
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Slút de lânskipsbouer
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Lânskipsbouer bewarje
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Lânskipsbouer lade
+STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Hichtekaart lade
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Lânskipsbouer ofslute
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Ôfslúte
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Ofslute
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spul Opsjes
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Spul opsje
 STR_SETTINGS_MENU_DIFFICULTY_SETTINGS                           :Swierrichheid ynstellings
-STR_SETTINGS_MENU_CONFIG_SETTINGS                               :oantal ynstellings útwreidje
+STR_SETTINGS_MENU_CONFIG_SETTINGS                               :wiidweidiche ynstellings
 STR_SETTINGS_MENU_AI_SETTINGS                                   :AI ynstellings
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF ynstellings
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Trochsjoch opsjes
@@ -355,8 +355,8 @@ STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Stêd nammen sj
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Stasjon nammen sjen litte
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Nammen fan kontrôleposten sjen litte
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Buordsjes sjen litte
-STR_SETTINGS_MENU_FULL_ANIMATION                                :Folle animaasje
-STR_SETTINGS_MENU_FULL_DETAIL                                   :Folle detail
+STR_SETTINGS_MENU_FULL_ANIMATION                                :Folsleine animaasje
+STR_SETTINGS_MENU_FULL_DETAIL                                   :Folsleine detais
 STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Trochsichtige gebouwen
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Trochsjoch statjons nammen
 ############ range ends here
@@ -365,7 +365,7 @@ STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Trochsjoch stat
 STR_FILE_MENU_SAVE_GAME                                         :Spul opslaan
 STR_FILE_MENU_LOAD_GAME                                         :Spul lade
 STR_FILE_MENU_QUIT_GAME                                         :Spul ferlitte
-STR_FILE_MENU_EXIT                                              :Ôfslúte
+STR_FILE_MENU_EXIT                                              :Ofslúte
 ############ range ends here
 
 ############ range for map menu starts
@@ -385,10 +385,10 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsydzjes
 ############ range for graph menu starts
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Fertsjinstengrafyk
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Ynkomsten grafyk
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Ôflevere fracht grafyk
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Oflevere fracht grafyk
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Prestaasjeskiednisgrafyk
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Bedriuwswearde grafyk
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Fracht ôfbetelling grafyk
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Frachtpriize grafyk
 ############ range ends here
 
 ############ range for company league menu starts
@@ -402,27 +402,27 @@ STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Betelje nije yn
 ############ range ends here
 
 ############ range for railway construction menu starts
-STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoarwei konstruksje
-STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektryske spoarwei konstruksje
-STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorail konstruksje
-STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :MagLev konstruksje
+STR_RAIL_MENU_RAILROAD_CONSTRUCTION                             :Spoarwei bouwe
+STR_RAIL_MENU_ELRAIL_CONSTRUCTION                               :Elektryske spoarwei bouwe
+STR_RAIL_MENU_MONORAIL_CONSTRUCTION                             :Monorail bouwe
+STR_RAIL_MENU_MAGLEV_CONSTRUCTION                               :MagLev bouwe
 ############ range ends here
 
 ############ range for road construction menu starts
-STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Wegenbou
-STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tramwei konstruksje
+STR_ROAD_MENU_ROAD_CONSTRUCTION                                 :Wegen bouwe
+STR_ROAD_MENU_TRAM_CONSTRUCTION                                 :Tramwei bouwe
 ############ range ends here
 
 ############ range for waterways construction menu starts
-STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Wetterwei konstruksje
+STR_WATERWAYS_MENU_WATERWAYS_CONSTRUCTION                       :Wetterwei bouwe
 ############ range ends here
 
 ############ range for airport construction menu starts
-STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Fleanfjild konstruksje
+STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Fleanfjild bouwe
 ############ range ends here
 
 ############ range for landscaping menu starts
-STR_LANDSCAPING_MENU_LANDSCAPING                                :Lânskip
+STR_LANDSCAPING_MENU_LANDSCAPING                                :Lânskips foarming
 STR_LANDSCAPING_MENU_PLANT_TREES                                :Plantsje beammen
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Set buordsje del
 ############ range ends here
@@ -438,49 +438,49 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Berjochtenskied
 ############ range ends here
 
 ############ range for about menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebiet Ynformaasje
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebiets ynformaasje
 STR_ABOUT_MENU_SEPARATOR                                        :
-STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Ein console
+STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skeakel console oan/ût
 STR_ABOUT_MENU_AI_DEBUG                                         :AI debug
-STR_ABOUT_MENU_SCREENSHOT                                       :Skermfoto (Ctrl-S)
+STR_ABOUT_MENU_SCREENSHOT                                       :Skermfoto
 STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :tichtby helje skermfoto
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :skermfoto fan de hiele wrald (Ctrl+G)
-STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Oer 'OpenTTD'
+STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :skermfoto fan de hiele wrald
+STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Oer 'IepenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Flakken rjochtsje
 ############ range ends here
 
 ############ range for days starts (also used for the place in the highscore window)
-STR_ORDINAL_NUMBER_1ST                                          :1
-STR_ORDINAL_NUMBER_2ND                                          :2
-STR_ORDINAL_NUMBER_3RD                                          :3
-STR_ORDINAL_NUMBER_4TH                                          :4
-STR_ORDINAL_NUMBER_5TH                                          :5
-STR_ORDINAL_NUMBER_6TH                                          :6
-STR_ORDINAL_NUMBER_7TH                                          :7
-STR_ORDINAL_NUMBER_8TH                                          :8
-STR_ORDINAL_NUMBER_9TH                                          :9
-STR_ORDINAL_NUMBER_10TH                                         :10
-STR_ORDINAL_NUMBER_11TH                                         :11
-STR_ORDINAL_NUMBER_12TH                                         :12
-STR_ORDINAL_NUMBER_13TH                                         :13
-STR_ORDINAL_NUMBER_14TH                                         :14
-STR_ORDINAL_NUMBER_15TH                                         :15
-STR_ORDINAL_NUMBER_16TH                                         :16
-STR_ORDINAL_NUMBER_17TH                                         :17
-STR_ORDINAL_NUMBER_18TH                                         :18
-STR_ORDINAL_NUMBER_19TH                                         :19
-STR_ORDINAL_NUMBER_20TH                                         :20
-STR_ORDINAL_NUMBER_21ST                                         :21
-STR_ORDINAL_NUMBER_22ND                                         :22
-STR_ORDINAL_NUMBER_23RD                                         :23
-STR_ORDINAL_NUMBER_24TH                                         :24
-STR_ORDINAL_NUMBER_25TH                                         :25
-STR_ORDINAL_NUMBER_26TH                                         :26
-STR_ORDINAL_NUMBER_27TH                                         :27
-STR_ORDINAL_NUMBER_28TH                                         :28
-STR_ORDINAL_NUMBER_29TH                                         :29
-STR_ORDINAL_NUMBER_30TH                                         :30
-STR_ORDINAL_NUMBER_31ST                                         :31
+STR_ORDINAL_NUMBER_1ST                                          :1st
+STR_ORDINAL_NUMBER_2ND                                          :2e
+STR_ORDINAL_NUMBER_3RD                                          :3e
+STR_ORDINAL_NUMBER_4TH                                          :4e
+STR_ORDINAL_NUMBER_5TH                                          :5e
+STR_ORDINAL_NUMBER_6TH                                          :6e
+STR_ORDINAL_NUMBER_7TH                                          :7e
+STR_ORDINAL_NUMBER_8TH                                          :8e
+STR_ORDINAL_NUMBER_9TH                                          :9e
+STR_ORDINAL_NUMBER_10TH                                         :10e
+STR_ORDINAL_NUMBER_11TH                                         :11e
+STR_ORDINAL_NUMBER_12TH                                         :12e
+STR_ORDINAL_NUMBER_13TH                                         :13e
+STR_ORDINAL_NUMBER_14TH                                         :14e
+STR_ORDINAL_NUMBER_15TH                                         :15e
+STR_ORDINAL_NUMBER_16TH                                         :16e
+STR_ORDINAL_NUMBER_17TH                                         :17e
+STR_ORDINAL_NUMBER_18TH                                         :18e
+STR_ORDINAL_NUMBER_19TH                                         :19e
+STR_ORDINAL_NUMBER_20TH                                         :20e
+STR_ORDINAL_NUMBER_21ST                                         :21e
+STR_ORDINAL_NUMBER_22ND                                         :22e
+STR_ORDINAL_NUMBER_23RD                                         :23e
+STR_ORDINAL_NUMBER_24TH                                         :24e
+STR_ORDINAL_NUMBER_25TH                                         :25e
+STR_ORDINAL_NUMBER_26TH                                         :26e
+STR_ORDINAL_NUMBER_27TH                                         :27e
+STR_ORDINAL_NUMBER_28TH                                         :28e
+STR_ORDINAL_NUMBER_29TH                                         :29e
+STR_ORDINAL_NUMBER_30TH                                         :30e
+STR_ORDINAL_NUMBER_31ST                                         :31e
 ############ range for days ends
 
 ############ range for months starts
@@ -525,44 +525,44 @@ STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Stiks fr
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Bedriuwsprestaasjewurdearring (maksimale wurdearring=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Bedriuwswearden
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtbetellingshichtes
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Deien ûnderweis
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betelling foar levering fan 10 ienheiden (of 10,000 liter) fracht oer in ôfstân fan 20 hokskes
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Frachtpriizen
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}Dagen ûnderweis
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINYFONT}{BLACK}Betelling foar levering fan 10 ienheiden (of 10,000 liter) fracht oer in ôfstân fan 20 hokjes
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINYFONT}{BLACK}Alles oansette
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINYFONT}{BLACK}Alles ûtsette
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Lit alle type fracht sjen yn de opbringsten grafyk
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Lit gjin fan de typen fracht sjen yn de opbringsten grafyk
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Set grafyk foar frachttype oan/út
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Lit alle soarte fracht sjen yn de opbringsten grafyk
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Lit gjin soarte fracht sjen yn de opbringsten grafyk
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Set grafyk foar frachtsoart oan/út
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINYFONT}{BLACK}{STRING}
 
-STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Lit detail prestaasje sjen
+STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Lit detaillearre prestaasje sjen
 
 # Graph key window
 STR_GRAPH_KEY_CAPTION                                           :{WHITE}Kaai foar bedriuwsgrafiken
-STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klik hjir om te bedriuwstagong foar grafyk oan of út te sette
+STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klik hjir om dit bedriuw wol as net sjen te litten op de grafyk
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Bedriuwskompetysjetabel
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Inzjenieur
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Ferkearsbehearder
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transportcoördinator
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Rûteûnderhâlder
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Ferkearslieder
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transport coördinator
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Rûte Opsichter
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Bestjoerder
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Direkteur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Foarsitter
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Yndustrieel
 
 # Performance detail window
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Prestaasje detail
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaillearre prestaasje score
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
-STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Sjoch details oer dit bedriuw
+STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Sjoch de details oer dit bedriuw
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Ferfiermiddels:
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Reau:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasjons:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. fertsjinste:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. ynkomsten:
@@ -573,8 +573,10 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Jild:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lean:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}oantal vehikels dy't winst makke hawwe yn it lêste jier
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}oantal vehikels dy't winst makke hawwe yn it lêste jier. Hjirbij telle Reau
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}In stikmennich koartlyn makke stasjon underdielen. elk underdiel fan in stasjon (û.o. trein stasjon, bus halte, fleanfjild) binne teld, sels all binne se oaninoar plakt as ien stasjon
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}De winst fan it reau mei it leechste ynkomme (fan alle reau alder dan 2 yier)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}In mannich jild dat is fertsjinne yn it fearnsjier mei de leechste winst fan de ôfrûne 12 fearnsjiers
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}Stikken guod ôflevere yn de lêste 12 moanne
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}Oantal soarten guod ôlevere yn de lêste trije moanne
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}Jild dat dit beriuw op de bank stean hat
@@ -1688,7 +1690,7 @@ STR_EDIT_SIGN_CAPTION                                           :{WHITE}Feroarje
 # Town directory window
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Stêden
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stêdsnammen - klik op de namme om it byld op dy stêd te sintrearen
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Stêdsnammen - klik op de namme om it byld op dy stêd te sintrearen. Ctrl+klick iepent in nij sichtber diel op de stêd lokaasje
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}

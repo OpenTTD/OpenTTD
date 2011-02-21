@@ -2067,14 +2067,14 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Generere
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskabsværktøjer
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sænk punkter i landskabet
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hæv punkter i landskabet. Træk hæver det først valgte punkt, og udjævner det markerede område til denne højde. CTRL markere på skrå. SKIFT viser anslåede pris
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Udjævn land til en højde svarende til det først markerede hjørne. CTRL vælger områder på skrå. SKIFT viser anslåede pris
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Sænk punkter i landskabet. Ved trækning sænkes det først valgte hjørne, og udligner det valgte område til samme niveau. Ctrl vælger området diagonalt. Shift skifter mellem at bygge og vise prisoverslag.
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Hæv punkter i landskabet. Ved trækning hæves det først valgte hjørne, og resten af det valgte område udlignes til samme højde. Ctrl vælger området diagonalt. Shift skifter mellem at bygge og vise prisoverslag.
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Udjævn et område til en højde svarende til det først markerede hjørne. Ctrl vælger området diagonalt. Shift skifter mellem at bygge og vise prisoverslag.
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Køb land til senere brug
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekt valg
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vælg objektet der skal bygges
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vælg objektet der skal bygges. Shift skifter mellem at bygge og vise prisoverslag.
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vælg hvilken objekttype du vil bygge
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Forvisning af objektet
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Størrelse: {GOLD}{NUM} x {NUM} felter
@@ -2086,14 +2086,14 @@ STR_OBJECT_CLASS_TRNS                                           :Sendere
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Træer
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vælg typen af træer der skal plantes
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Træer af tilfældig type
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Placer træer af tilfældig type
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Placer træer af tilfældig type. Shift skifter mellem at bygge og vise prisoverslag.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tilfældige træer
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant træer tilfældigt i landskabet
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land-generering
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Placér klippeområder i landskabet
-STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Hold CTRL nede for at fjerne det
+STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Definer ørkenområde.{}Hold Ctrl nede for at fjerne det.
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Forstør landområdet der skal sænkes/hæves
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Formindsk landområdet der skal sænkes/hæves
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Generer tilfældigt land
@@ -2107,7 +2107,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Er du si
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Bygenerering
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Ny by
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Opfør en ny by
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Opfør en ny by. Shift skifter mellem at bygge og vise prisoverslag.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Tilfældig by
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Grundlæg et tilfældigt sted
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Mange tilfældige byer
@@ -2512,7 +2512,7 @@ STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRI
 STR_NEWGRF_INVALID_CARGO                                        :<ikke gyldigt gods>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
 STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} af <ikke gyldigt gods>
-STR_NEWGRF_INVALID_ENGINE                                       :<ikke gyldig motor>
+STR_NEWGRF_INVALID_ENGINE                                       :<ugyldig køretøjsmodel>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<ikke gyldig industri type>
 
 # Sign list window
@@ -2533,7 +2533,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Indtast 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Byer
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ingen -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bynavne - klik på et navn for at centrere skærmen over byen. Ctrl+Klik åbner et nyt vindue ved byens lokalitet
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Bynavne - klik på et navn for at centrere skærmen over byen. Ctrl+Klik åbner et nyt vindue ved byens lokalitet.
 STR_TOWN_POPULATION                                             :{BLACK}Verdens befolkning: {COMMA}
 
 # Town view window
@@ -2593,11 +2593,11 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ingen -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Tilskudsordninger der allerede er vundet:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} fra {STRING} til {STRING}{YELLOW} ({COMPANY}{YELLOW}, indtil {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen. Ctrl+Klik åbner et nyt vindue ved industriens/byens lokalitet
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen. Ctrl+Klik åbner et nyt vindue ved industriens/byens lokalitet.
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnavne - klik på et navn for at centrere skærmen over stationen. Ctrl+Klik åbner et nyt vindue ved stationens lokalitet
-STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold Ctrl nede for at vælge mere end en ting
+STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Hold Ctrl nede for at vælge mere end én ting
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Stationer
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATIONFEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
@@ -2700,7 +2700,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Byg sels
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Vis HK
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Vis selskabets hovedkvarter
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flyt hovedkvarter
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Flyt selskabets hovedkvarter for 1% af selskabsværdien
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Flyt selskabets hovedkvarter for 1% af selskabsværdien. Shift skifter mellem at flytte og vise prisoverslag.
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nyt ansigt
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Vælg nyt ansigt til direktøren
@@ -2713,8 +2713,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Ændrer 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Køb 25% aktier i selskabet
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Sælg 25% aktier i selskabet
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Køb 25% aktier i dette selskab
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sælg 25% aktier i dette selskab
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Køb 25% aktier i dette selskab. Shift skifter mellem at købe og vise prisoverslag.
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sælg 25% aktier i dette selskab. Shift skifter mellem at sælge og vise prisoverslag.
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Selskabsnavn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktørens navn
@@ -2825,7 +2825,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighe
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftsomkostninger: {GOLD}{CURRENCY}/år
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Lasteevne: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(kan ombygges)
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designet: {GOLD}{NUM}{BLACK} Levealder: {GOLD}{COMMA} år
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designet: {GOLD}{NUM}{BLACK} Levetid: {GOLD}{COMMA} år
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. pålidelighed: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Pris: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vægt: {GOLD}{WEIGHT_S} ({WEIGHT_S})
@@ -2847,10 +2847,10 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Køb kø
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Køb skib
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Køb et fly
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Køb det markerede lokomotiv/togvogn
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Køb det markerede køretøj
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Køb det markerede skib
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Køb det markerede fly
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Køb det markerede lokomotiv/togvogn. Shift skifter mellem at købe og vise prisoverslag.
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Køb det markerede køretøj. Shift skifter mellem at købe og vise prisoverslag.
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Køb det markerede skib. Shift skifter mellem at købe og vise prisoverslag.
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Køb det markerede fly. Shift skifter mellem at købe og vise prisoverslag.
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Omdøb
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Omdøb

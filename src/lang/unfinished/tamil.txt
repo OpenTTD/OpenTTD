@@ -278,30 +278,78 @@ STR_SORT_BY_LIFE_TIME                                           :மீதமி
 STR_SORT_BY_TIMETABLE_DELAY                                     :Timetable delay
 STR_SORT_BY_FACILITY                                            :நிலைய வகை
 STR_SORT_BY_WAITING                                             :Waiting cargo value
+STR_SORT_BY_RATING_MAX                                          :சரக்கு உச்ச வகைமதிப்பு
+STR_SORT_BY_RATING_MIN                                          :சரக்கு மீச்சிறு வகைமதிப்பு
+STR_SORT_BY_ENGINE_ID                                           :இயந்திரம் அடையாளம் (வரிசை செய்)
+STR_SORT_BY_COST                                                :செலவு
+STR_SORT_BY_POWER                                               :சக்தி
+STR_SORT_BY_TRACTIVE_EFFORT                                     :இழுக்கை முயற்சி
+STR_SORT_BY_INTRO_DATE                                          :அறிமுகப்படுத்தப்பட்ட தேதி
+STR_SORT_BY_RUNNING_COST                                        :நடத்துதல் செலவு
+STR_SORT_BY_POWER_VS_RUNNING_COST                               :ஆற்றல்/நடத்துதல் செலவு
+STR_SORT_BY_CARGO_CAPACITY                                      :சரக்கு கொள்ளளவு
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}இடை நிறுத்து
+STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}விருப்பத் தேர்வு
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}நகர புத்தகம் காண்பி
+STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}உதவித் தொகை காண்பி
+STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}வரைபடம் காண்பி
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}உரு அளவு பெரிதாக்கு
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}உரு அளவு சிறிதாக்கு
+STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}இரயில்பாதை கட்டு
+STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}சாலைகள் கட்டு
+STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}கப்பல் செப்பனிடுமிடம் கட்டு
+STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}விமான நிலையங்கள் கட்டு
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}இசை மையம் காண்பி
+STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}கருவிப் பட்டை மாற்று
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}சித்திரக்காட்சி திருத்தி
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}நிலத்தோற்றம் உருவாக்கு
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}நகரம் உருவாக்கு
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}தொழிற்சாலை உருவாக்கு
+STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}சாலை திருத்த வேலை
+STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}தகவல் பலகை வை
 
 ############ range for SE file menu starts
+STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :சித்திரக்காட்சியை பதி
+STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :சித்திரக்காட்சியை ஏற்று
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :திருத்தியை விட்டுச் செல்
+STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :விட்டுச் செல்
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :விளையாட்டு விருப்ப பேரம்
 STR_SETTINGS_MENU_AI_SETTINGS                                   :செயற்கை அறிவாற்றல் அமைப்பு
 ############ range ends here
 
 ############ range for file menu starts
+STR_FILE_MENU_SAVE_GAME                                         :விளையாட்டை பதி
+STR_FILE_MENU_LOAD_GAME                                         :விளையாட்டை ஏற்று
+STR_FILE_MENU_QUIT_GAME                                         :விளையாட்டை கைவிடு
+STR_FILE_MENU_EXIT                                              :வெளியேறு
 ############ range ends here
 
 ############ range for map menu starts
+STR_MAP_MENU_MAP_OF_WORLD                                       :உலகப் படம்
 ############ range for town menu starts, yet the town directory is shown in the map menu in the scenario editor
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :நகர புத்தகம்
 ############ end of the 'Display map' dropdown
+STR_TOWN_MENU_FOUND_TOWN                                        :நகரம் உருவாக்கு
 ############ end of the 'Town' dropdown
 
 ############ range for subsidies menu starts
+STR_SUBSIDIES_MENU_SUBSIDIES                                    :உதவித் தொகைகள்
 ############ range ends here
 
 ############ range for graph menu starts
+STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :தொழிற்பாட்டு இலாப வரைபடம்
+STR_GRAPH_MENU_INCOME_GRAPH                                     :வருமான வரைபடம்
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :கொண்டு சேர்கப்பட்ட சரக்கு வரைபடம்
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :கம்பெனி மதிப்பீடு வரைபடம்
 ############ range ends here
 
 ############ range for company league menu starts
@@ -409,6 +457,7 @@ STR_GRAPH_INCOME_CAPTION                                        :{WHITE}வர�
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}கம்பெனி செயல்வரம்பு (அதிகபட்ச செயல்வரம்பு=1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}கம்பெனி மதிப்பீடுகள்
 
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINYFONT}{BLACK}எடுத்துச் செல்லுதல் நாட்கள்
 
 
 # Graph key window
@@ -423,8 +472,12 @@ STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}கம�
 
 
 # Playlist window
+STR_PLAYLIST_CLEAR                                              :{TINYFONT}{BLACK}அழி
+STR_PLAYLIST_SAVE                                               :{TINYFONT}{BLACK}பதி
+STR_PLAYLIST_TOOLTIP_SAVE_MUSIC_SETTINGS                        :{BLACK}இசை அமைப்பை பத
 
 # Highscore window
+STR_HIGHSCORE_POSITION                                          :{BIGFONT}{BLACK}{COMMA}.
 
 # Smallmap window
 
@@ -557,17 +610,33 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :{LTBLUE}சி�
 # Intro window
 
 
+STR_INTRO_QUIT                                                  :{BLACK}விட்டுச் செல்
 
 
 
 
 # Quit window
+STR_QUIT_YES                                                    :{BLACK}ஆமாம்
+STR_QUIT_NO                                                     :{BLACK}இல்லை
 
 # Supported OSes
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS{NBSP}X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_HAIKU                                                :Haiku
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}விளையாட்டை கைவிடு
 
 # Cheat window
+STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :மிதமான நிலத்தோற்றம்
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :வட துருவ நிலத்தோற்றம்
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}நடப்பு வருடத்தை மாற்று
 
 # Livery window
@@ -1093,6 +1162,63 @@ STR_SV_STNAME                                                   :{STRING}
 
 ##id 0x8000
 # Vehicle names
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_PAPER_TRUCK                   :Uhl பேபர் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_PAPER_TRUCK                   :MPS பேபர் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :பாலொகஃ பழ ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl பழ ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :கேஈல்லிங் பழ ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :பாலொகஃ இறப்பர் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl இறப்பர் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT இறப்பர் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :மைடீமூவ்ர் சக்கரை ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :பவர்னாட் சக்கரை ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :வீஸவொவ் சக்கரை ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :மைடீமூவ்ர் கோளா ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :பவர்னாட் கோளா ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :வீஸவொவ் கோளா ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :மைடீமூவ்ர் பன்ஜி மிட்டாய் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :பவர்னாட் பன்ஜி மிட்டாய் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :வீஸவொவ் பன்ஜி மிட்டாய் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :மைடீமூவ்ர் மிட்டாய் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :பவர்னாட் மிட்டாய் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :வீஸவொவ் மிட்டாய் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOY_VAN               :மைடீமூவர் விளையாட்டுப்பொருள் கூடுந்து
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOY_VAN               :பவர்னாட் விளையாட்டுப்பொருள் கூடுந்து
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOY_VAN                  :வீஸவொவ் விளையாட்டுப்பொருள் கூடுந்து
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_CANDY_TRUCK           :மைடீமூவ்ர் இனிப்பு ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :பவர்னாட் இனிப்பு ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :வீஸவொவ் இனிப்பு ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :மைடீமூவ்ர் மின்கல ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :பவர்னாட் மின்கல ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :வீஸவொவ் மின்கல ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :மைடீமூவ்ர் Fizzy Drink ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :பவர்னட் Fizzy Drink ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :வீஸவொவ் Fizzy Drink ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :மைடீமூவ்ர் பிளாஸ்டிக் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :பவர்னாட் பிளாஸ்டிக் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :வீஸவொவ் பிளாஸ்டிக் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BUBBLE_TRUCK          :மைடீமூவ்ர் ப்பபுல் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BUBBLE_TRUCK          :பவர்னாட் ப்பபுல் ட்ரக்
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BUBBLE_TRUCK             :வீஸவொவ் ப்பபுல் ட்ரக்
+STR_VEHICLE_NAME_SHIP_MPS_OIL_TANKER                            :MPS எண்ணெய்க்கப்பல்
+STR_VEHICLE_NAME_SHIP_CS_INC_OIL_TANKER                         :CS-Inc. எண்ணெய்க்கப்பல்
+STR_VEHICLE_NAME_SHIP_MPS_PASSENGER_FERRY                       :MPS பயணப்படகு
+STR_VEHICLE_NAME_SHIP_FFP_PASSENGER_FERRY                       :FFP பயணப்படகு
+STR_VEHICLE_NAME_SHIP_CHUGGER_CHUG_PASSENGER                    :சுக்கெர்-சுக் பயணப்படகு
+STR_VEHICLE_NAME_SHIP_SHIVERSHAKE_PASSENGER_FERRY               :ஸெவர்ஸெஅக் பயணப்படகு
+STR_VEHICLE_NAME_SHIP_YATE_CARGO_SHIP                           :ஈஏட் சரக்குக் கப்பல்
+STR_VEHICLE_NAME_SHIP_BAKEWELL_CARGO_SHIP                       :பெக்வெல் சரக்குக் கப்பல்
+STR_VEHICLE_NAME_SHIP_MIGHTYMOVER_CARGO_SHIP                    :மைடீமூவர் சரக்குக் கப்பல்
+STR_VEHICLE_NAME_SHIP_POWERNAUT_CARGO_SHIP                      :பவர்னட் சரக்குக் கப்பல்
+STR_VEHICLE_NAME_AIRCRAFT_SAMPSON_U52                           :ஸம்ப்ஸன் U52
+STR_VEHICLE_NAME_AIRCRAFT_COLEMAN_COUNT                         :கொல்மன் கவுன்ட்
+STR_VEHICLE_NAME_AIRCRAFT_FFP_DART                              :FFP டார்ட்
+STR_VEHICLE_NAME_AIRCRAFT_YATE_HAUGAN                           :ஈஏட் ஹவ்கன்
+STR_VEHICLE_NAME_AIRCRAFT_YATE_AEROSPACE_YAC_1_11               :ஈஏட் ஏரொஸ்பேஸ் YAC 1-11
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_100                            :டர்வின் 100
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_200                            :டர்வின் 200
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_300                            :டர்வின் 300
+STR_VEHICLE_NAME_AIRCRAFT_DARWIN_400                            :டர்வின் 400
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_500                            :டர்வின் 500
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :டர்வின் 600
 STR_VEHICLE_NAME_AIRCRAFT_GURU_GALAXY                           :குரு கலக்சி
@@ -1110,7 +1236,9 @@ STR_VEHICLE_NAME_AIRCRAFT_KELLING_K7                            :கெல்ல
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_700                            :டர்வின் 700
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_200                            :டிங்௧ர் 200
 STR_VEHICLE_NAME_AIRCRAFT_DINGER_1000                           :டிங்௧ர் 1000
-STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :குரு X2 காற்றியக்கவியல்
+STR_VEHICLE_NAME_AIRCRAFT_TRICARIO_HELICOPTER                   :டீரைக்காரிஒ ஹெலிகாப்டர்
+STR_VEHICLE_NAME_AIRCRAFT_GURU_X2_HELICOPTER                    :குரு X2 ஹெலிகாப்டர்
+STR_VEHICLE_NAME_AIRCRAFT_POWERNAUT_HELICOPTER                  :பவர்னாட் ஹெலிகாப்டர்
 
 ##id 0x8800
 # Formatting of some strings
@@ -1128,9 +1256,19 @@ STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} பா�
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} பாதைப்புள்ளி #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} ரயில் பணிமனை
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} ரயில் வண்டி டீபோ #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} வாகன டீபோ
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} வாகன டீபோ #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} கப்பல் நிலையம்
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} கப்பல் நிலையம் #{COMMA}
+STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} விமான கூடாரம்
 
+STR_UNKNOWN_STATION                                             :தெரியாத நிலையம்
+STR_DEFAULT_SIGN_NAME                                           :அறிவிக்கை பலகை
+STR_COMPANY_SOMEONE                                             :யாரோ ஒருவர்
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :பார்வையாளர், {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
