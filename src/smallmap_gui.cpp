@@ -542,11 +542,10 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile, TileType t)
 		 */
 	}
 
-	if ((o < MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) || o == OWNER_NONE) {
+	if ((o < MAX_COMPANIES && !_legend_land_owners[_company_to_list_pos[o]].show_on_map) || o == OWNER_NONE || o == OWNER_WATER) {
+		if (t == MP_WATER) return MKCOLOUR(0xCACACACA);
 		const SmallMapColourScheme *cs = &_heightmap_schemes[_settings_client.gui.smallmap_land_colour];
 		return _smallmap_show_heightmap ? cs->height_colours[TileHeight(tile)] : cs->default_colour;
-	} else if (o == OWNER_WATER) {
-		return MKCOLOUR(0xCACACACA);
 	} else if (o == OWNER_TOWN) {
 		return MKCOLOUR(0xB4B4B4B4);
 	}
