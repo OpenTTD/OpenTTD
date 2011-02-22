@@ -682,7 +682,7 @@ bool AfterLoadGame()
 	}
 
 	/* make sure there is a town in the game */
-	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, UINT_MAX)) {
+	if (_game_mode == GM_NORMAL && Town::GetNumItems() == 0) {
 		SetSaveLoadError(STR_ERROR_NO_TOWN_IN_SCENARIO);
 		/* Restore the signals */
 		ResetSignalHandlers();
